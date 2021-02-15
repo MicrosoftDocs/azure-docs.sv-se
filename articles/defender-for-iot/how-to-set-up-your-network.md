@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621320"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523863"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Om installation av Azure Defender för IoT-nätverk
 
@@ -534,24 +534,23 @@ Granska den här listan innan du distribuerar webbplatsen:
 
 | **#** | **Aktivitet eller aktivitet** | **Status** | **Kommentarer** |
 |--|--|--|--|
-| 1 | Ange global. | ☐ |  |
-| 3 | Beställ apparater. | ☐ |  |
-| 4 | Förbered en lista över undernät i nätverket. | ☐ |  |
-| 5 | Ange en VLAN-lista över produktions nätverken. | ☐ |  |
-| 6 | Ange en lista över växel modeller i nätverket. | ☐ |  |
-| 7 | Ange en lista över leverantörer och protokoll för den industriella utrustningen. | ☐ |  |
-| 8 | Ange nätverks information för sensorer (IP-adress, undernät, D-GW, DNS). | ☐ |  |
-| 9 | Skapa nödvändiga brand Väggs regler och åtkomst listan. | ☐ |  |
-| 10 | Skapa utsträckta portar på växlar för port övervakning eller konfigurera nätverks tryckningar efter behov. | ☐ |  |
-| 11 | Förbered rack utrymme för sensor utrustning. | ☐ |  |
-| 12 | Förbered en arbets station för personal. | ☐ |  |
-| 13 | Ange ett tangent bord, en bildskärm och en mus för-rack-enheter för Defender för IoT. | ☐ |  |
-| 14 | Rack och kabel av enheterna. | ☐ |  |
-| 15 | Allokera plats resurser för att stödja distribution. | ☐ |  |
-| 16 | Skapa Active Directory grupper eller lokala användare. | ☐ |  |
-| 17 | Konfigurera utbildning (själv inlärning). | ☐ |  |
-| 18 | Go eller no-go. | ☐ |  |
-| 19 | Schemalägg distributions datumet. | ☐ |  |
+| 1 | Beställ apparater. | ☐ |  |
+| 2 | Förbered en lista över undernät i nätverket. | ☐ |  |
+| 3 | Ange en VLAN-lista över produktions nätverken. | ☐ |  |
+| 4 | Ange en lista över växel modeller i nätverket. | ☐ |  |
+| 5 | Ange en lista över leverantörer och protokoll för den industriella utrustningen. | ☐ |  |
+| 6 | Ange nätverks information för sensorer (IP-adress, undernät, D-GW, DNS). | ☐ |  |
+| 7 | Skapa nödvändiga brand Väggs regler och åtkomst listan. | ☐ |  |
+| 8 | Skapa utsträckta portar på växlar för port övervakning eller konfigurera nätverks tryckningar efter behov. | ☐ |  |
+| 9 | Förbered rack utrymme för sensor utrustning. | ☐ |  |
+| 10 | Förbered en arbets station för personal. | ☐ |  |
+| 11 | Ange ett tangent bord, en bildskärm och en mus för-rack-enheter för Defender för IoT. | ☐ |  |
+| 12 | Rack och kabel av enheterna. | ☐ |  |
+| 13 | Allokera plats resurser för att stödja distribution. | ☐ |  |
+| 14 | Skapa Active Directory grupper eller lokala användare. | ☐ |  |
+| 15 | Konfigurera utbildning (själv inlärning). | ☐ |  |
+| 16 | Go eller no-go. | ☐ |  |
+| 17 | Schemalägg distributions datumet. | ☐ |  |
 
 
 | **Datum** | **Obs!** | **Distributions datum** | **Obs!** |
@@ -564,7 +563,7 @@ Granska den här listan innan du distribuerar webbplatsen:
 
 En översikt över det industriella nätverks diagrammet gör att du kan definiera rätt plats för Defender för IoT-utrustning.
 
-1.  Visa ett globalt nätverks diagram för den industriella miljö miljön. Till exempel:
+1.  Visa ett globalt nätverks diagram för den industriella miljö miljön. Exempel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagram över industri miljö för det globala nätverket.":::
 
@@ -606,7 +605,7 @@ En översikt över det industriella nätverks diagrammet gör att du kan definie
 
     Vad är principen? __________________________________ 
 
-    Till exempel:
+    Exempel:
 
     - Siemens
 
@@ -696,6 +695,6 @@ Kontakta en Active Directory administratör om du vill skapa en Active Directory
 | Kamera | |
 | X-ray-dator | |
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Om Defender för IoT-installation](how-to-install-software.md)

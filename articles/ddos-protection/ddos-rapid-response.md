@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814201"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521789"
 ---
 # <a name="azure-ddos-rapid-response"></a>Snabb svar för Azure DDoS
 
@@ -30,7 +30,7 @@ Under en aktiv åtkomst har Azure DDoS Protection standard kunder åtkomst till 
 
 Du bör bara engagera DRR om: 
 
-- Under en DDoS-attack om du upptäcker att prestandan för den skyddade resursen är allvarligt försämrad eller om resursen inte är tillgänglig. Gå igenom steg 2 ovan om hur du konfigurerar Övervakare för att identifiera resurs tillgänglighet och prestanda problem.
+- Under en DDoS-attack om du upptäcker att prestandan för den skyddade resursen är allvarligt försämrad eller om resursen inte är tillgänglig. 
 - Du tror att din resurs är utsatt för DDoS-attack, men DDoS Protection tjänsten minskar risken på ett effektivt sätt.
 - Du planerar en virus händelse som ökar nätverks trafiken markant.
 - För attacker som har stor inverkan på verksamheten.

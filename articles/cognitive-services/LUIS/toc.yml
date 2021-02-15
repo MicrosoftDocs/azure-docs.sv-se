@@ -413,7 +413,7 @@
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
-      href: luis-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: Konfigurera virtuella nätverk
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md

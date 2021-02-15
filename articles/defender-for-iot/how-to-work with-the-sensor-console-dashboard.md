@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: eb37434213dd756ba5d7137b93a1cd37da5bb9ae
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509090"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523642"
 ---
 # <a name="the-dashboard"></a>Instrument panelen
 
@@ -46,7 +46,7 @@ UA-mätaren i mitten av sidan visar antalet sådana aviseringar. Om du vill visa
 
 Varje status ruta beskrivs i det här avsnittet.
 
-| Status ruta och mätare | Description |
+| Status ruta och mätare | Beskrivning |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="Kritiska aviseringar"::: | **Kritiska aviseringar** – rutan längst upp i mitten av sidan visar antalet kritiska aviseringar. Markera den här rutan om du vill visa beskrivningar av aviseringarna på tids linjen och i listan under mätare, om sådana finns.                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="Huvud varningar"::: | **Större aviseringar** – rutan längst upp till höger på sidan visar antalet huvud varningar. Markera den här rutan om du vill visa beskrivningar av aviseringarna på tids linjen och i listan under mätare, om sådana finns.                                     |
@@ -100,6 +100,6 @@ Välj nedåtpilen **V** längst ned i varnings rutan för att visa information o
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/unauthorized-internet-connectivity-detection-v3.png" alt-text="Obehörig Internet anslutning upptäckt":::
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Arbeta med aviseringar på sensorn](how-to-work-with-alerts-on-your-sensor.md)

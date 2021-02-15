@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c702cb16267d5495feedd8d361092b23b6d4deac
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 569a1365e73acbc2fdaf351f2e2cff21181241e1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372473"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523489"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ta en rundtur i Azure IoT Central-användargränssnittet
 
@@ -97,8 +97,8 @@ Den översta menyn visas på varje sida:
 
 * Ange **ett** sökvärde om du vill söka efter enhets mallar och enheter.
 * Om du vill ändra språket eller temat för användar gränssnittet väljer du ikonen **Inställningar** . Läs mer om hur [du hanterar dina program inställningar](howto-manage-preferences.md)
-* Om du vill logga ut från programmet väljer du **konto** ikonen.
 * Om du behöver hjälp och support väljer du listrutan **Hjälp** för att visa en lista med resurser. Du kan [Hämta information om ditt program](./howto-get-app-info.md) från länken **om din app** . I ett program i den kostnads fria pris Planen inkluderar support resurserna åtkomst till [Live Chat](howto-show-hide-chat.md).
+* Om du vill logga ut från programmet väljer du **konto** ikonen.
 
 Du kan välja mellan ett ljust eller ett mörkt tema för användargränssnittet:
 

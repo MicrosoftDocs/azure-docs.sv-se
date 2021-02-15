@@ -1,5 +1,5 @@
 ---
-title: Arbeta med aviseringar i den lokala hanterings konsolen
+title: Arbeta med aviseringar på den lokala hanteringskonsolen
 description: Använd den lokala hanterings konsolen för att få en Enterprise-vy över de senaste hoten i nätverket och bättre förstå hur sensor användare hanterar dem.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842853"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523625"
 ---
-# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeta med aviseringar i den lokala hanterings konsolen 
+# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeta med aviseringar på den lokala hanteringskonsolen 
 
 Du kan göra följande från fönstret **aviseringar** i hanterings konsolen:
 
@@ -119,13 +119,34 @@ Visa enheterna i en zon karta:
 
 ## <a name="manage-alert-events"></a>Hantera aviserings händelser
 
-Du kan hantera aviserings händelser som upptäckts av organisations sensorer enligt följande:
+Det finns flera alternativ för att hantera aviserings händelser från den lokala hanterings konsolen.
 
 - Lär dig eller bekräfta aviserings händelser. Välj **lär & bekräfta** om du vill veta alla aviserings händelser som kan godkännas och bekräfta alla aviserings händelser som för närvarande inte har bekräftats.
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="Välj lär & bekräfta för att lära dig allt.":::
 
 - Stäng av och inaktivera varnings händelser.
+
+Mer information om hur du lär dig mer om att lära, bekräfta och stänga av varnings händelser finns i artikeln sensor [Hantera aviserings händelser](how-to-manage-the-alert-event.md) .
+
+## <a name="export-alert-information"></a>Exportera aviserings information
+
+Exportera aviserings information till en. csv-fil. Du kan exportera information om alla aviseringar som identifierats eller exportera information baserat på den filtrerade vyn. Följande information exporteras:
+
+- Käll adress
+- Mål adress
+- Aviseringsrubrik
+- Allvarlighetsgrad för avisering
+- Aviserings meddelande
+- Ytterligare information
+- Bekräftad status
+- PCAP tillgänglighet
+
+Att exportera:
+
+1. Välj aviseringar på menyn på sidan.
+1. Välj Exportera.
+1. Välj Exportera utökade aviseringar för att exportera aviserings information i separata rader för varje avisering som täcker flera enheter. När du väljer Exportera utökade aviseringar skapar CSV-filen en dubblett av aviseringen med de unika objekten på varje rad. Med det här alternativet blir det enklare att undersöka exporterade aviserings händelser.  
 
 ## <a name="create-alert-exclusion-rules"></a>Skapa undantags regler för varningar
 
@@ -225,6 +246,6 @@ Regler som du skapar med hjälp av API: et visas i fönstret **undantags regel**
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Skärm bild av vyn Redigera Exkluderings regel.":::
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Arbeta med aviseringar på sensorn](how-to-work-with-alerts-on-your-sensor.md)

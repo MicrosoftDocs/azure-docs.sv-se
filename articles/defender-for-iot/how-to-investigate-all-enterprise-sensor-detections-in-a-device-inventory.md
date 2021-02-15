@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b4d824386a7c14165697f4b93f2e93cf0182a855
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625472"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100524033"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Undersök alla identifieringar av företags sensor i enhets inventeringen
 
@@ -51,7 +51,7 @@ I följande tabell beskrivs tabell kolumnerna i enhets inventeringen.
 
 Med funktionerna för data integrering kan du förbättra data i enhets inventeringen med information från andra företags resurser. Dessa källor omfattar CMDBs, DNS, brand väggar och webb-API: er.
 
-Du kan använda den här informationen för att lära dig. Till exempel:
+Du kan använda den här informationen för att lära dig. Exempel:
 
 - Datum för enhets inköp och garanti datum från sista och samma garanti
 
@@ -225,6 +225,6 @@ Följande ytterligare zon information är tillgänglig:
 
 - **Uppdaterings förlopp**: om den anslutna sensorn håller på att uppgraderas visas uppgraderings status. Under uppgraderingen tar inte den lokala hanterings konsolen emot enhets information från sensorn.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Undersök identifieringar av sensorer i en enhetsinventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

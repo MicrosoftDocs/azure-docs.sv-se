@@ -3,12 +3,12 @@ title: Ta bort ett Microsoft Azure Recovery Services-valv
 description: I den här artikeln lär du dig hur du tar bort beroenden och sedan tar bort ett Azure Backup Recovery Services-valv.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520467"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Ta bort ett Azure Backup Recovery Services-valv
 
@@ -45,7 +45,7 @@ Om du vill ta bort ett valv korrekt måste du följa stegen i den här ordningen
   - **Moln skydds objekt**: gå till instrument panelen för valv-menyn > **säkerhets kopierings objekt**. Alla objekt som anges här måste tas bort med **stoppa säkerhets kopiering** eller **ta bort säkerhetskopierade data** tillsammans med sina säkerhets kopierings data.  [Följ de här stegen](#delete-protected-items-in-the-cloud) för att ta bort dessa objekt.
   - **SQL Server instans**: gå till instrument panelen för valvet > **säkerhets kopierings infrastruktur**  >  **skyddade servrar**. I skyddade servrar väljer du den server som ska avregistreras. Om du vill ta bort valvet måste du avregistrera alla servrar. Högerklicka på den skyddade servern och välj **avregistrera**.
   - **Mars-skyddade servrar**: gå till instrument panelen för valv-menyn > **säkerhets kopierings infrastruktur**  >  **skyddade servrar**. Om du har MARS-skyddade servrar måste alla objekt som anges här tas bort tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort mars-skyddade servrar.
-  - **Mabs-eller DPM-hanterings servrar**: gå till instrument panelen för valvet > **säkerhets kopierings**  >  **hanterings servrar**för säkerhets kopiering. Om du har DPM eller Azure Backup Server (MABS) måste alla objekt som anges här tas bort eller avregistreras tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort hanterings servrarna.
+  - **Mabs-eller DPM-hanterings servrar**: gå till instrument panelen för valvet > **säkerhets kopierings**  >  **hanterings servrar** för säkerhets kopiering. Om du har DPM eller Azure Backup Server (MABS) måste alla objekt som anges här tas bort eller avregistreras tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort hanterings servrarna.
 
 - **Steg 4**: du måste se till att alla registrerade lagrings konton tas bort. Gå till instrument panelen för valv-menyn > **säkerhets kopierings infrastruktur**  >  **lagrings konton**. Om du har lagrings konton som listas här måste du avregistrera alla. Information om hur du avregistrerar kontot finns i [avregistrera ett lagrings konto](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -59,11 +59,11 @@ Börja med att läsa avsnittet **[innan du börjar](#before-you-start)** och fö
 
 Utför följande steg för att stoppa skyddet och ta bort säkerhetskopierade data:
 
-1. Gå till **Recovery Services valv**från portalen och gå sedan till **säkerhets kopierings objekt**. Välj sedan de skyddade objekten i molnet (till exempel Azure Virtual Machines Azure Storage [tjänsten Azure Files] eller SQL Server på Azure Virtual Machines).
+1. Gå till **Recovery Services valv** från portalen och gå sedan till **säkerhets kopierings objekt**. I listan typ av **säkerhets kopierings hantering** väljer du sedan de skyddade objekten i molnet (till exempel Azure Virtual Machines Azure Storage [tjänsten Azure Files] eller SQL Server på Azure Virtual Machines).
 
     ![Välj typ av säkerhets kopiering.](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. Högerklicka för att välja säkerhets kopierings objekt. Beroende på om objektet för säkerhets kopian är skyddat eller inte, visar menyn antingen rutan **stoppa säkerhets kopiering** eller fönstret **ta bort säkerhets kopierings data** .
+2. Du ser en lista över alla objekt för kategorin. Högerklicka för att välja säkerhets kopierings objekt. Beroende på om objektet för säkerhets kopian är skyddat eller inte, visar menyn antingen rutan **stoppa säkerhets kopiering** eller fönstret **ta bort säkerhets kopierings data** .
 
     - Om fönstret **stoppa säkerhets kopiering** visas väljer du **ta bort säkerhets kopierings data** på den nedrullningsbara menyn. Ange namnet på det säkerhetskopierade objektet (det här fältet är Skift läges känsligt) och välj sedan en orsak i den nedrullningsbara menyn. Ange dina kommentarer, om du har några. Välj sedan **stoppa säkerhets kopiering**.
 
@@ -73,7 +73,7 @@ Utför följande steg för att stoppa skyddet och ta bort säkerhetskopierade da
 
          ![Rutan ta bort säkerhets kopierings data.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-3. Kontrol lera **meddelande** ikonen: ![ meddelande ikonen.](./media/backup-azure-delete-vault/messages.png) När processen har slutförts visar tjänsten följande meddelande: *stoppar säkerhets kopiering och tar bort säkerhetskopierade data för*säkerhets kopierings*objekt.* *Åtgärden har slutförts*.
+3. Kontrol lera **meddelande** ikonen: ![ meddelande ikonen.](./media/backup-azure-delete-vault/messages.png) När processen har slutförts visar tjänsten följande meddelande: *stoppar säkerhets kopiering och tar bort säkerhetskopierade data för* säkerhets kopierings *objekt.* *Åtgärden har slutförts*.
 4. Välj **Uppdatera** på menyn **säkerhets kopierings objekt** för att se till att säkerhets kopierings objekt har tagits bort.
 
       ![Sidan ta bort säkerhets kopierings objekt.](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -131,8 +131,8 @@ När den här processen är klar kan du ta bort säkerhets kopierings objekt fr�
 
     ![Stoppa en schemalagd säkerhets kopiering.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Du uppmanas att ange en PIN-kod för säkerhet (personal Identification Number) som du måste generera manuellt. Det gör du genom att först logga in på Azure Portal.
-5. Gå till inställningar för **Recovery Services valv**  >  **Settings**  >  **Properties**.
-6. Under **säkerhets-PIN**väljer du **generera**. Kopiera den här PIN-koden. PIN-koden är bara giltig i fem minuter.
+5. Gå till inställningar för **Recovery Services valv**  >    >  .
+6. Under **säkerhets-PIN** väljer du **generera**. Kopiera den här PIN-koden. PIN-koden är bara giltig i fem minuter.
 7. I hanterings konsolen klistrar du in PIN-koden och väljer sedan **OK**.
 
     ![Skapa en säkerhets kod.](./media/backup-azure-delete-vault/security-pin.png)
@@ -156,7 +156,7 @@ Gör så här om du vill stoppa skyddet och ta bort säkerhetskopierade data:
 
 1. Öppna DPM-administratörskonsol och välj sedan **skydd** i navigerings fältet.
 2. I visningsfönstret väljer du den skydds grupps medlem som du vill ta bort. Högerklicka för att markera alternativet **sluta skydda grupp medlemmar** .
-3. I dialog rutan **stoppa skydd** väljer du **ta bort skyddade data**och markerar sedan kryss rutan **ta bort lagring online** . Välj sedan **stoppa skydd**.
+3. I dialog rutan **stoppa skydd** väljer du **ta bort skyddade data** och markerar sedan kryss rutan **ta bort lagring online** . Välj sedan **stoppa skydd**.
 
     ![Välj Ta bort skyddade data från fönstret sluta skydda.](./media/backup-azure-delete-vault/delete-storage-online.png)
 
@@ -172,7 +172,7 @@ Gör så här om du vill stoppa skyddet och ta bort säkerhetskopierade data:
 
 #### <a name="method-2"></a>Metod 2
 
-Öppna hanterings konsolen för **Mabs** eller **DPM** . Under **Välj data skydds metod**avmarkerar du kryss rutan  **Jag vill ha onlineskydd** .
+Öppna hanterings konsolen för **Mabs** eller **DPM** . Under **Välj data skydds metod** avmarkerar du kryss rutan  **Jag vill ha onlineskydd** .
 
   ![Välj data skydds metod.](./media/backup-azure-delete-vault/data-protection-method.png)
 
