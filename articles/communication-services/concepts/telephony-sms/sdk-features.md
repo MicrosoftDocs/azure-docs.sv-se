@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2448840fcbbea686972f8f948d428bda7b3c2bf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391753"
 ---
 # <a name="sms-client-library-overview"></a>Översikt över klientbiblioteket för SMS
 
@@ -27,7 +27,7 @@ Azure Communication Services SMS-klient bibliotek kan användas för att lägga 
 
 I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i våra klient bibliotek.
 
-| Grupp med funktioner | Kapacitet                                                                            | JS  | Java | .NET | Python |
+| Grupp med funktioner | Funktion                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |
 | Kärn funktioner | Skicka och ta emot SMS-meddelanden </br> *Unicode-emojis stöds*                        | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Ta emot leverans rapporter för skickade meddelanden                                            | ✔️   | ✔️    | ✔️    | ✔️      |
@@ -49,4 +49,4 @@ Följande dokument kan vara intressanta för dig:
 
 - Bekanta dig med allmänna [SMS-koncept](../telephony-sms/concepts.md)
 - Hämta ett SMS-kompatibelt [telefonnummer](../../quickstarts/telephony-sms/get-phone-number.md)
-- [Planera SMS-lösningen](../telephony-sms/plan-solution.md)
+- [Telefonnummer typer i Azure Communication Services](../telephony-sms/plan-solution.md)

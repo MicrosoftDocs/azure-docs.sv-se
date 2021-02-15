@@ -1,22 +1,18 @@
 ---
 title: Tills aktivitet i Azure Data Factory
 description: Aktiviteten until kör en uppsättning aktiviteter i en slinga tills villkoret som är associerat med aktiviteten utvärderas till sant eller tids gränsen uppnås.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ab3644b11273017ea6e4e5a395a7d3cc3a201217
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486036"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385378"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Tills aktivitet i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,11 +51,11 @@ Aktiviteten Until fungerar på samma sätt som en do-until-loopstruktur i ett pr
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-name | `Until`Aktivitetens namn. | Sträng | Yes
-typ | Måste **anges till till.** | Sträng | Yes
-uttryck | Uttryck som måste utvärderas till sant eller falskt | Uttryck.  | Yes
-timeout | Loopen för att göra-tills-tiden är slut efter den angivna tiden här. | Sträng. `d.hh:mm:ss` (eller) `hh:mm:ss` . Standardvärdet är 7 dagar. Högsta värde är: 90 dagar. | No
-Aktiviteter | Uppsättning aktiviteter som körs tills uttrycket utvärderas till `true` . | Matris med aktiviteter. |  Yes
+name | `Until`Aktivitetens namn. | Sträng | Ja
+typ | Måste **anges till till.** | Sträng | Ja
+uttryck | Uttryck som måste utvärderas till sant eller falskt | Uttryck.  | Ja
+timeout | Loopen för att göra-tills-tiden är slut efter den angivna tiden här. | Sträng. `d.hh:mm:ss` (eller) `hh:mm:ss` . Standardvärdet är 7 dagar. Högsta värde är: 90 dagar. | Inga
+Aktiviteter | Uppsättning aktiviteter som körs tills uttrycket utvärderas till `true` . | Matris med aktiviteter. |  Ja
 
 ## <a name="example-1"></a>Exempel 1
 

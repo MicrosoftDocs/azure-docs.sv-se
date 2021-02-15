@@ -1,23 +1,18 @@
 ---
 title: Läsa in data i Azure Data Lake Storage Gen2
 description: Använd Azure Data Factory för att kopiera data till Azure Data Lake Storage Gen2
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ca9ca495f2b3449b5aeb933bbd8d312fc9341fd9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 61e34d41d9f7a60b6ad74e12331864e6ba08e4f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554142"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370809"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Läs in data i Azure Data Lake Storage Gen2 med Azure Data Factory
 
@@ -42,17 +37,17 @@ Den här artikeln visar hur du använder verktyget Data Factory Kopiera data fö
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
-1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory** :
+1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory**:
    
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. På sidan **ny data fabrik** anger du värden för följande fält:
  
-    * **Namn** : Ange ett globalt unikt namn för din Azure Data Factory. Om du får felet "Data Factory name *YourDataFactoryName* är inte tillgängligt" anger du ett annat namn på data fabriken. Du kan till exempel använda namnet _**dittnamn**_**ADFTutorialDataFactory**. Försök att skapa data fabriken igen. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
-    * **Prenumeration** : Välj din Azure-prenumeration där du vill skapa data fabriken. 
-    * **Resurs grupp** : Välj en befintlig resurs grupp i list rutan eller Välj alternativet för att **Skapa nytt** och ange namnet på en resurs grupp. Mer information om resursgrupper finns i [Använda resursgrupper till att hantera Azure-resurser](../azure-resource-manager/management/overview.md).  
-    * **Version** : Välj **V2**.
-    * **Plats** : Välj plats för data fabriken. Endast platser som stöds visas i listrutan. De data lager som används av Data Factory kan finnas på andra platser och regioner. 
+    * **Namn**: Ange ett globalt unikt namn för din Azure Data Factory. Om du får felet "Data Factory name *YourDataFactoryName* är inte tillgängligt" anger du ett annat namn på data fabriken. Du kan till exempel använda namnet _**dittnamn**_**ADFTutorialDataFactory**. Försök att skapa data fabriken igen. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
+    * **Prenumeration**: Välj din Azure-prenumeration där du vill skapa data fabriken. 
+    * **Resurs grupp**: Välj en befintlig resurs grupp i list rutan eller Välj alternativet för att **Skapa nytt** och ange namnet på en resurs grupp. Mer information om resursgrupper finns i [Använda resursgrupper till att hantera Azure-resurser](../azure-resource-manager/management/overview.md).  
+    * **Version**: Välj **V2**.
+    * **Plats**: Välj plats för data fabriken. Endast platser som stöds visas i listrutan. De data lager som används av Data Factory kan finnas på andra platser och regioner. 
 
 3. Välj **Skapa**.
 

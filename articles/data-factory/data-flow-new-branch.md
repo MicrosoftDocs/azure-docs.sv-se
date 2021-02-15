@@ -3,17 +3,16 @@ title: Flera grenar i mappnings data flödet
 description: Replikera data strömmar i mappa data flöde med flera grenar
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: a1dd4baecd0e1f817c93652fbc0766069ccf5583
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040138"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378204"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>Skapa en ny gren i mappnings data flödet
 

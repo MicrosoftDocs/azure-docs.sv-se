@@ -93,8 +93,6 @@
           href: storage-how-to-create-file-share.md
         - name: Distribuera Azure File Sync
           href: storage-sync-files-deployment-guide.md
-        - name: Skapa en premium-filresurs
-          href: storage-how-to-create-premium-fileshare.md
         - name: Skapa en NFS-filresurs
           href: storage-files-how-to-create-nfs-shares.md
         - name: SQL Server FCI med premium-filresurser

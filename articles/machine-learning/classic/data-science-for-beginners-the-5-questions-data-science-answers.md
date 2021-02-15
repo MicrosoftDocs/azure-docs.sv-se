@@ -3,18 +3,18 @@ title: 'ML Studio (klassisk): data vetenskap för nybörjare – Azure'
 description: Data vetenskap för nybörjare är en genom gång av grundläggande begrepp i 5 korta videor, från och med 5 frågor data vetenskaps svar. Från Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307481"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520399"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Datavetenskap för nybörjare, video 1: Fem frågor och svar om datavetenskap
 
@@ -45,7 +45,7 @@ I den första videon pratar vi om "de 5 frågorna om data vetenskaps svar".
 
 Data vetenskap använder siffror och namn (kallas även kategorier eller etiketter) för att förutse svar på frågor.
 
-Det kan bli överrasknings, men *det finns bara fem frågor som data vetenskaps svar* :
+Det kan bli överrasknings, men *det finns bara fem frågor som data vetenskaps svar*:
 
 * Är det här en eller B?
 * Är det här underligt?

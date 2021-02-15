@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787306"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516710"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Visa och konfigurera telemetri för DDoS-skydd
 
@@ -39,7 +39,6 @@ Följande [mått](../azure-monitor/platform/metrics-supported.md#microsoftnetwor
 
 | Metric | Mått visnings namn | Enhet | Sammansättningstyp | Beskrivning |
 | --- | --- | --- | --- | --- |
-| ByteCount | Antal byte | Antal | Totalt | Totalt antal byte som skickats inom tids perioden |
 | BytesDroppedDDoS | Ignorerade inkommande byte DDoS | BytesPerSecond | Maximal | Ignorerade inkommande byte DDoS| 
 | BytesForwardedDDoS | Inkommande byte, vidarebefordrade DDoS | BytesPerSecond | Maximal | Inkommande byte, vidarebefordrade DDoS |
 | BytesInDDoS | DDoS för inkommande byte | BytesPerSecond | Maximal | DDoS för inkommande byte |
@@ -47,11 +46,9 @@ Följande [mått](../azure-monitor/platform/metrics-supported.md#microsoftnetwor
 | DDoSTriggerTCPPackets | Inkommande TCP-paket för att utlösa DDoS-minskning | CountPerSecond | Maximal | Inkommande TCP-paket för att utlösa DDoS-minskning |
 | DDoSTriggerUDPPackets | Ingående UDP-paket för att utlösa DDoS-minskning | CountPerSecond | Maximal | Ingående UDP-paket för att utlösa DDoS-minskning |
 | IfUnderDDoSAttack | Under DDoS-attack eller inte | Antal | Maximal | Under DDoS-attack eller inte |
-| PacketCount | Antal paket | Antal | Totalt | Totalt antal överförda paket inom tids perioden |
 | PacketsDroppedDDoS | Inkommande paket som släppts DDoS | CountPerSecond | Maximal | Inkommande paket som släppts DDoS |
 | PacketsForwardedDDoS | Vidarebefordrade inkommande paket DDoS | CountPerSecond | Maximal | Vidarebefordrade inkommande paket DDoS |
 | PacketsInDDoS | DDoS för inkommande paket | CountPerSecond | Maximal | DDoS för inkommande paket |
-| SynCount | Antal SYN | Antal | Totalt | Totalt antal skickade SYN paket inom tids perioden |
 | TCPBytesDroppedDDoS | Inkommande TCP-byte utelämnade DDoS | BytesPerSecond | Maximal | Inkommande TCP-byte utelämnade DDoS |
 | TCPBytesForwardedDDoS | Inkommande TCP byte-vidarebefordrade DDoS | BytesPerSecond | Maximal | Inkommande TCP byte-vidarebefordrade DDoS |
 | TCPBytesInDDoS | DDoS för inkommande TCP-byte | BytesPerSecond | Maximal | DDoS för inkommande TCP-byte |
@@ -64,7 +61,6 @@ Följande [mått](../azure-monitor/platform/metrics-supported.md#microsoftnetwor
 | UDPPacketsDroppedDDoS | Ignorerade inkommande UDP-paket DDoS | CountPerSecond | Maximal | Ignorerade inkommande UDP-paket DDoS |
 | UDPPacketsForwardedDDoS | Vidarebefordrade inkommande UDP-paket DDoS | CountPerSecond | Maximal | Vidarebefordrade inkommande UDP-paket DDoS |
 | UDPPacketsInDDoS | DDoS för inkommande UDP-paket | CountPerSecond | Maximal | DDoS för inkommande UDP-paket |
-| VipAvailability | Tillgänglighet för datasökvägar | Antal | Genomsnitt | Genomsnittlig tillgänglighet för IP-adress per tids längd |
 
 ## <a name="prerequisites"></a>Krav
 

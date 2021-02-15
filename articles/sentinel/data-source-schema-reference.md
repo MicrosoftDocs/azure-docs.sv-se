@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 32ec711309190d4bb7c6c98a05b6a75cf88a8f5c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b5d53ec6c6a8002c72a53d6928d56e55d520ef38
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920513"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390835"
 ---
 # <a name="data-source-schema-reference"></a>Schema referens för data Källa
 
@@ -37,6 +37,9 @@ Den här artikeln innehåller en lista över Azure-scheman och data käll schema
 | **Nätverk**                          | NSG flödes loggar          | AzureNetworkAnalytics  | [Schema-och data agg regering i Trafikanalys](/azure/network-watcher/traffic-analytics-schema) |
 | | | | |
 
+> [!NOTE]
+> Mer information finns i hela [Azure Monitor data referens](/azure/azure-monitor/reference/).
+>
 ## <a name="3rd-party-vendor-data-sources"></a>leverantörs data källor från tredje part
 
 I följande tabell visas tredjeparts leverantörer och deras syslog-eller common Event format (CEF)-mappnings dokumentation för olika typer av loggar som stöds, som innehåller fält mappningar för CEF och exempel loggar för varje kategori typ.

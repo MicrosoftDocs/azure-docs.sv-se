@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a6d7b760ffd1931fa5dcdb3a67dd02f2798957a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365845"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initiera klient program med hjälp av MSAL.js
 
@@ -36,7 +36,7 @@ När du har registrerat din app behöver du några eller alla följande värden 
 
 | Värde | Krävs | Beskrivning |
 |:----- | :------: | :---------- |
-| Program-ID (klient) | Krävs | Ett GUID som unikt identifierar ditt program i Microsoft Identity Platform. |
+| Program-ID (klient) | Obligatorisk | Ett GUID som unikt identifierar ditt program i Microsoft Identity Platform. |
 | Myndighet | Valfritt | Identitets leverantörens URL ( *instansen*) och *inloggnings mål gruppen* för ditt program. Instansen och inloggnings mål gruppen, när de sammanfogas, utgör *utfärdaren*. |
 | Katalog-ID (klient) | Valfritt | Ange detta om du skapar ett branschspecifika program enbart för din organisation, vilket ofta kallas ett program för en *klient*. |
 | Omdirigerings-URI | Valfritt | Om du skapar en webbapp anger i vilken `redirectUri` identitet leverantören (Microsoft Identity Platform) ska returnera de säkerhetstoken som den har utfärdat. |
@@ -153,9 +153,9 @@ Det här MSAL.js 2. x-kod exemplet på GitHub demonstrerar instansiering av en [
 <!-- LINKS - External -->
 [msal-browser]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/
 [msal-core]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/
-[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#acquiretokenredirect
-[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_configuration_.html
-[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html#handleredirectpromise
-[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#loginredirect
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
+[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#acquiretokenredirect
+[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal.html#configuration
+[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html#handleredirectpromise
+[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#loginredirect
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html

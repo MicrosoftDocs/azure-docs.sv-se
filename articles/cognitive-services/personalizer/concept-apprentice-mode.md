@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: f2b9f6dfe60aa50eb4ec6da76fe8781ecd8a1f13
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951335"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385038"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>Använd lärlings läget för att träna Personanpassare utan att påverka ditt befintliga program
 
@@ -63,7 +63,7 @@ Lär dig om i lärlings läge skiljer sig från online-läget på följande sät
 |--|--|--|
 |Påverkan på användar upplevelsen|Du kan använda ett befintligt användar beteende för att träna Personanpassare genom att låta den se till att den fungerar (inte påverkar) vad din **standard åtgärd** skulle ha och den erhållna belöningen. Det innebär att användarnas upplevelse och att affärs resultaten från dem inte påverkas.|Visa topp åtgärd som returnerades från rang anrop för att påverka användar beteendet.|
 |Inlärnings hastighet|Personanpassare kommer att lära sig långsammare i lärlings läge än vid inlärning i online-läge. Lärlings läget kan bara lära sig genom att känna till de förmåner som erhålls av din **standard åtgärd**, vilket begränsar inlärnings hastigheten, eftersom ingen utforskning kan utföras.|Lär dig snabbare eftersom det kan utnyttja den aktuella modellen och utforska nya trender.|
-|Tak för inlärnings effektivitet|En personanpassare kan approximera, mycket sällan matcha, och aldrig överskrida prestanda för din bas affärs logik (den totala belöningen som uppnåtts av **standard åtgärden** för varje rang anrop).|En personanpassare bör överskrida program bas linjen, och med tiden där den stannar, bör du utföra en offline-utvärdering och funktions utvärdering för att fortsätta att få förbättringar i modellen. |
+|Tak för inlärnings effektivitet|En personanpassare kan approximera, mycket sällan matcha, och aldrig överskrida prestanda för din bas affärs logik (den totala belöningen som uppnåtts av **standard åtgärden** för varje rang anrop). Detta ungefärligt tak minskas av utforskning. Med utforskningen vid 20% är det mycket osannolikt att prestandan för lärlings läge överstiger 80% och 60% är ett rimligt mål för att reglera onlineläge.|En personanpassare bör överskrida program bas linjen, och med tiden där den stannar, bör du utföra en offline-utvärdering och funktions utvärdering för att fortsätta att få förbättringar i modellen. |
 |Ranka API-värde för rewardActionId|Användarnas upplevelse påverkas inte, eftersom _rewardActionId_ alltid är den första åtgärd som du skickar i rang förfrågan. Med andra ord syns inte rang-API: et för ditt program i lärlings läge. Belönings-API: er i programmet bör inte ändra hur det använder sig av belönings-API: et mellan ett läge och ett annat.|Användarens upplevelse ändras av _rewardActionId_ som används av personanpassare för ditt program. |
 |Utvärderingar|Personanpassaren är en jämförelse av belönings summorna som din standard affärs logik hämtar, och den totala belönings funktionen för belöningar skulle bli om i onlineläge vid det här läget. Det finns en jämförelse i Azure Portal för resursen|Utvärdera tillverkarens effektivitet genom att köra [offline-utvärderingar](concepts-offline-evaluation.md)som gör att du kan jämföra den totala personliga belönings tjänsten med de potentiella fördelarna med programmets bas linje.|
 

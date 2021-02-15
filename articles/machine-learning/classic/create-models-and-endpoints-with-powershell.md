@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): skapa flera modell & slut punkter – Azure'
 description: Använd PowerShell för att skapa flera Machine Learning-modeller och webb tjänst slut punkter med samma algoritm men olika data uppsättningar för utbildning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ef9ea055f437b53313dc9ee11b0b91f095664f5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322861"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520518"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Skapa flera webb tjänst slut punkter från ett experiment med ML Studio (klassisk) och PowerShell
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Här är ett vanligt problem med Machine Learning: du vill skapa många modeller som har samma utbildnings arbets flöde och använda samma algoritm. Men du vill att de ska ha olika data uppsättningar för utbildning som indata. Den här artikeln visar hur du gör detta i skala i Azure Machine Learning Studio (klassisk) med bara ett enda experiment.
 
@@ -55,7 +55,7 @@ Det finns andra sätt som du kan ha gjort. Du kan använda en SQL-fråga med en 
 
 ![En utbildad modell modul ger utdata till en webb tjänst utmatnings modul](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Nu ska vi köra det här övnings experimentet med hjälp av standardvärdet *rental001.csv* som inlärnings data uppsättningen. Om du visar utdata från **evaluate** -modulen (klicka på utdata och väljer **visualisera** ) kan du se att du får en vettigt prestanda på *AUC* = 0,91. Nu är du redo att distribuera en webb tjänst från det här övnings experimentet.
+Nu ska vi köra det här övnings experimentet med hjälp av standardvärdet *rental001.csv* som inlärnings data uppsättningen. Om du visar utdata från **evaluate** -modulen (klicka på utdata och väljer **visualisera**) kan du se att du får en vettigt prestanda på *AUC* = 0,91. Nu är du redo att distribuera en webb tjänst från det här övnings experimentet.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>Distribuera utbildnings-och poängsättnings webb tjänster
 Du distribuerar utbildnings webb tjänsten genom att klicka på knappen **Konfigurera webb tjänst** under experimentets arbets yta och välja **distribuera webb tjänst**. Anropa den här webb tjänsten "cykel uthyrnings utbildning".
@@ -123,7 +123,7 @@ For ($i = 1; $i -le 10; $i++){
 
 Som du ser ovan, i stället för att skapa 10 olika JSON-filer för BES-jobb, skapar du en dynamisk konfigurations sträng dynamiskt i stället. Mata sedan in den till parametern *jobConfigString* för **InvokeAmlWebServceBESEndpoint** -cmdleten. Det finns faktiskt inget behov av att spara en kopia på disk.
 
-Om allt går bra, efter ett tag kan du se 10. iLearner-filer, från *model001. iLearner* till *model010. iLearner* , i ditt Azure Storage-konto. Nu är du redo att uppdatera webb tjänst slut punkterna för 10 Poäng med dessa modeller med hjälp av PowerShell-cmdleten **patch-AmlWebServiceEndpoint** . Kom ihåg att du bara kan korrigera de slut punkter som inte är standard som du har skapat tidigare.
+Om allt går bra, efter ett tag kan du se 10. iLearner-filer, från *model001. iLearner* till *model010. iLearner*, i ditt Azure Storage-konto. Nu är du redo att uppdatera webb tjänst slut punkterna för 10 Poäng med dessa modeller med hjälp av PowerShell-cmdleten **patch-AmlWebServiceEndpoint** . Kom ihåg att du bara kan korrigera de slut punkter som inte är standard som du har skapat tidigare.
 
 ```powershell
 # Patch the 10 endpoints with respective .ilearner models

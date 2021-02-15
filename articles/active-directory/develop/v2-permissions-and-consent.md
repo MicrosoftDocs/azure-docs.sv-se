@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090195"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102486"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Behörigheter och medgivande i Microsoft Identity Platform
 
@@ -181,7 +181,7 @@ I allmänhet ska behörigheterna definieras statiskt för ett visst program. De 
 
 Så här konfigurerar du listan med statiskt begärda behörigheter för ett program:
 
-1. Gå till ditt program i snabb starten <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal- <span class="docon docon-navigate-external x-hidden-focus"></span> Appregistreringar</a> .
+1. Gå till ditt program i snabb starten <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure Portal-Appregistreringar</a> .
 1. Välj ett program eller [skapa en app](quickstart-register-app.md) om du inte redan har gjort det.
 1. På sidan **Översikt** för program under **Hantera** väljer du API- **behörigheter**  >  **Lägg till en behörighet**.
 1. Välj **Microsoft Graph** i listan över tillgängliga API: er. Lägg sedan till de behörigheter som din app kräver.

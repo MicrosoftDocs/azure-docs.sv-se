@@ -1,24 +1,28 @@
 ---
-title: Så här konfigurerar du geo-replikering för Azure cache för Redis | Microsoft Docs
-description: Lär dig hur du replikerar Azure-cachen för Redis-instanser i olika geografiska regioner.
+title: Konfigurera geo-replikering för Premium Azure-cache för Redis-instanser
+description: Lär dig hur du replikerar Azure-cachen för Redis Premium-instanser i Azure-regioner
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 27ccc81ddf0a771de9fb15f60820dfd3efa6146e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536886"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386883"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Så här konfigurerar du geo-replikering för Azure cache för Redis
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurera geo-replikering för Premium Azure-cache för Redis-instanser
 
-Geo-replikering är en mekanism för att länka två Premium-nivåer i Azure-cache för Redis-instanser. Ett cacheminne har valts som primärt länkat cache och den andra som sekundär länkad cache. Den sekundära länkade cachen blir skrivskyddad och data som skrivs till den primära cachen replikeras till den sekundära länkade cachen. Data överföring mellan de primära och sekundära cache-instanserna skyddas av TLS. Geo-replikering kan användas för att konfigurera ett cacheminne som omfattar två Azure-regioner. Den här artikeln innehåller en guide för hur du konfigurerar geo-replikering för Azure-cache på Premium nivå för Redis-instanser.
+I den här artikeln får du lära dig hur du konfigurerar en geo-replikerad Azure-cache med hjälp av Azure Portal.
+
+Länkar mellan geo-replikering tillsammans två Premium Azure-cache för Redis-instanser och skapar en datareplikering. Dessa cache-instanser finns vanligt vis i olika Azure-regioner, men de är inte obligatoriska för. En instans fungerar som primär och den andra som den sekundära. De primära hanterar läsnings-och skriv förfrågningar och sprider ändringar till den sekundära. Den här processen fortsätter tills länken mellan de två instanserna tas bort.
 
 > [!NOTE]
-> Geo-replikering är utformad som en katastrof återställnings lösning. Som standard skrivs ditt program till och läses från den primära regionen. Det kan också konfigureras för att läsa från den sekundära regionen. Geo-replikering ger inte automatisk redundans på grund av problem med extra nätverks fördröjning mellan regioner om resten av programmet finns kvar i den primära regionen. Du måste hantera och initiera redundansväxlingen genom att ta bort länken till det sekundära cacheminnet. Detta upphöjer den till den nya primära instansen.
+> Geo-replikering är utformad som en katastrof återställnings lösning.
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>Krav för geo-replikering
 
@@ -75,7 +79,7 @@ När geo-replikering har kon figurer ATS gäller följande begränsningar för d
 
     ![Skärm bild som visar hur du visar länk status för primära och sekundära cacheminnen.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    När replikeringen har slutförts ändras **länkens status** till **slutförd** .
+    När replikeringen har slutförts ändras **länkens status** till **slutförd**.
 
     ![Cache-status](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 

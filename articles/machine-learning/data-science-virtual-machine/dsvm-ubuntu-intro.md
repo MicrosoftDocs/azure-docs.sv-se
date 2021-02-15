@@ -2,18 +2,17 @@
 title: 'Snabb start: skapa en Ubuntu-Data Science Virtual Machine'
 titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurera och skapa en Data Science Virtual Machine för Linux (Ubuntu) för att göra analyser och maskin inlärning.
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b25d9846f3bb678c182fa22d824f7b4171d2d803
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109852"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515639"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Snabb start: Konfigurera Data Science Virtual Machine för Linux (Ubuntu)
 
@@ -30,7 +29,7 @@ Om du vill skapa en Ubuntu 18,04-Data Science Virtual Machine måste du ha en Az
 
 Här följer stegen för att skapa en instans av Data Science Virtual Machine Ubuntu 18,04:
 
-1. Öppna [Azure-portalen](https://portal.azure.com). Du kan uppmanas att logga in på ditt Azure-konto om du inte redan har loggat in.
+1. Gå till [Azure-portalen](https://portal.azure.com). Du kan uppmanas att logga in på ditt Azure-konto om du inte redan har loggat in.
 1. Hitta listan med virtuella datorer genom att skriva in "data science Virtual Machine" och välja "Data Science Virtual Machine-Ubuntu 18,04"
 
 1. I nästa fönster väljer du **skapa**.

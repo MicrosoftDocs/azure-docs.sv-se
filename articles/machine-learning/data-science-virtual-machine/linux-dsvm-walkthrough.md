@@ -3,18 +3,17 @@ title: Utforska Linux
 titleSuffix: Azure Data Science Virtual Machine
 description: Lär dig hur du utför flera vanliga data vetenskaps uppgifter med hjälp av Linux-Data Science Virtual Machine.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315793"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517679"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Data vetenskap med en Ubuntu Data Science Virtual Machine i Azure
 
@@ -62,7 +61,7 @@ mv headers spambaseHeaders.data
 
 Data uppsättningen har flera typer av statistik för varje e-post:
 
-* Kolumner som **Word \_ FREQ \_ _Word_** anger procent andelen ord i e-postmeddelandet som matchar *Word*. Om **Word- \_ FREQ \_** till exempel är **1** , *gör* 1% av alla ord i e-postmeddelandet.
+* Kolumner som **Word \_ FREQ \_ _Word_** anger procent andelen ord i e-postmeddelandet som matchar *Word*. Om **Word- \_ FREQ \_** till exempel är **1**, *gör* 1% av alla ord i e-postmeddelandet.
 * Kolumner som **char \_ FREQ \_ _char_** anger procent andelen alla tecken i e-postmeddelandet som är *char*.
 * **längd på stor begynnelse \_ \_ \_** är den längsta längden för en sekvens med versaler.
 * **\_ \_ \_ genomsnittlig genomsnittlig längd på versaler** är den genomsnittliga längden för alla sekvenser med versaler.
@@ -315,7 +314,7 @@ Flera exempel antecknings böcker är redan installerade på DSVM:
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* nalysdatamängd *t* OOL *t* o *L* s *E* asily) är ett grafiskt R-verktyg för Data utvinning. Rattle har ett intuitivt gränssnitt som gör det enkelt att läsa in, utforska och transformera data och bygga och utvärdera modeller. [Rattle: ett användar gränssnitt för Data utvinning för R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) innehåller en genom gång som visar Rattle-funktioner.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A* nalysdatamängd *t* OOL *t* o *L* s *E* asily) är ett grafiskt R-verktyg för Data utvinning. Rattle har ett intuitivt gränssnitt som gör det enkelt att läsa in, utforska och transformera data och bygga och utvärdera modeller. [Rattle: ett användar gränssnitt för Data utvinning för R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) innehåller en genom gång som visar Rattle-funktioner.
 
 Installera och starta Rattle genom att köra följande kommandon:
 
@@ -355,7 +354,7 @@ Du kan också använda fliken **utforska** för att generera inblickade områden
 1. Välj **Kör**.
 1. Rattle varnar dig om att det rekommenderar högst 40 variabler. Välj **Ja** om du vill visa ritningen.
 
-Det finns några intressanta korrelationer som följer: _teknik_ är starkt korrelerad med _HP_ och _labb_ , till exempel. Det är också starkt korrelerat med _650_ eftersom rikt numret för data uppsättnings givarna är 650.
+Det finns några intressanta korrelationer som följer: _teknik_ är starkt korrelerad med _HP_ och _labb_, till exempel. Det är också starkt korrelerat med _650_ eftersom rikt numret för data uppsättnings givarna är 650.
 
 De numeriska värdena för korrelationer mellan ord är tillgängliga i fönstret **utforska** . Det är intressant att notera, till exempel att _tekniken_ är negativ korrelerad med _dina_ och _pengar_.
 
@@ -387,7 +386,7 @@ En användbar funktion i Rattle är möjligheten att köra flera Machine Learnin
 
 1. För **typ** väljer du **alla**.
 1. Välj **Kör**.
-1. När Rattle är klar kan du välja valfritt **typ** värde, t. ex. **SVM** , och visa resultatet.
+1. När Rattle är klar kan du välja valfritt **typ** värde, t. ex. **SVM**, och visa resultatet.
 1. Du kan också jämföra modellens prestanda på validerings uppsättningen med hjälp av fliken **utvärdera** . Till exempel visar **fel mat** ris urvalet visualiserings mat ris, övergripande fel och genomsnittligt klass fel för varje modell i validerings uppsättningen. Du kan också Rita ROC kurvor, köra känslighets analyser och utföra andra typer av modell utvärderingar.
 
 När du är klar med att skapa modeller väljer du fliken **logg** för att visa den R-kod som kördes av Rattle under sessionen. Du kan välja knappen **Exportera** för att spara den.
@@ -416,7 +415,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-Ändra linjen för **IPv4-lokala anslutningar** så att den använder **MD5** i stället för **identitet** , så att vi kan logga in med ett användar namn och lösen ord:
+Ändra linjen för **IPv4-lokala anslutningar** så att den använder **MD5** i stället för **identitet**, så att vi kan logga in med ett användar namn och lösen ord:
 
 ```
 # IPv4 local connections:
@@ -473,7 +472,7 @@ Kom igång genom att öppna SQuirreL SQL på **program** -menyn. Så här konfig
 
 Så här konfigurerar du anslutningen till den lokala servern:
 
-1. Välj alias för **Windows** -  >  **vy.**
+1. Välj alias för **Windows**-  >  **vy.**
 1. Välj **+** knappen för att skapa ett nytt alias. För det nya aliasnamnet anger du **spam-databasen**. 
 1. För **driv rutin** väljer du **postgresql**.
 1. Ange URL: en till **JDBC: postgresql://localhost/spam**.
@@ -494,7 +493,7 @@ Det finns många fler frågor som du kan köra för att utforska dessa data. Hur
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Eller vilka egenskaper för e-post som ofta innehåller *3D* ?
+Eller vilka egenskaper för e-post som ofta innehåller *3D*?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;

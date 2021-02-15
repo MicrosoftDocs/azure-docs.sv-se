@@ -1,24 +1,19 @@
 ---
 title: Transformera data med U-SQL-skript – Azure
 description: Lär dig hur du bearbetar eller transformerar data genom att köra U-SQL-skript på Azure Data Lake Analytics Compute service-version 1.
-services: data-factory
-documentationcenter: ''
-ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631469"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392926"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformera data genom att köra U-SQL-skript på Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -48,9 +43,9 @@ Följande tabell innehåller beskrivningar av de allmänna egenskaper som använ
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| **bastyp** |Egenskapen Type ska anges till: **AzureDataLakeAnalytics** . |Ja |
-| **accountName** |Azure Data Lake Analytics konto namn. |Ja |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nej |
+| **bastyp** |Egenskapen Type ska anges till: **AzureDataLakeAnalytics**. |Ja |
+| **Konto** |Azure Data Lake Analytics konto namn. |Ja |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Inga |
 | **subscriptionId** |ID för Azure-prenumeration |Nej (om inget anges används prenumerationen på data fabriken). |
 | **resourceGroupName** |Azure-resursgruppsnamn |Nej (om inget värde anges används resurs gruppen för data fabriken). |
 
@@ -58,7 +53,7 @@ Följande tabell innehåller beskrivningar av de allmänna egenskaper som använ
 Om du vill använda tjänstens huvud namns autentisering registrerar du en program enhet i Azure Active Directory (Azure AD) och ger den åtkomst till Data Lake Store. Detaljerade anvisningar finns i [tjänst-till-tjänst-autentisering](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
 * Program-ID
 * Program nyckel 
-* Klientorganisations-ID
+* Klient-ID:t
 
 Använd tjänstens huvud namns autentisering genom att ange följande egenskaper:
 
@@ -114,7 +109,7 @@ Du kan också använda autentisering med användarens autentiseringsuppgifter f�
 ```
 
 #### <a name="token-expiration"></a>Förfallo datum för token
-Den auktoriseringskod som du genererade med knappen **auktorisera** upphör att gälla efter en stund. Se följande tabell för förfallo tiderna för olika typer av användar konton. Du kan se följande fel meddelande när **token för autentisering upphör att gälla** : fel i autentiseringsuppgift: INVALID_GRANT-AADSTS70002: fel vid verifiering av autentiseringsuppgifter. AADSTS70008: den angivna åtkomst tilldelningen har förfallit eller återkallats. Spårnings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelations-ID: fac30a0c-6BE6-4e02-8d69-a776d2ffefd7 tidsstämpel: 2015-12-15 21:09:31Z
+Den auktoriseringskod som du genererade med knappen **auktorisera** upphör att gälla efter en stund. Se följande tabell för förfallo tiderna för olika typer av användar konton. Du kan se följande fel meddelande när **token för autentisering upphör att gälla**: fel i autentiseringsuppgift: INVALID_GRANT-AADSTS70002: fel vid verifiering av autentiseringsuppgifter. AADSTS70008: den angivna åtkomst tilldelningen har förfallit eller återkallats. Spårnings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelations-ID: fac30a0c-6BE6-4e02-8d69-a776d2ffefd7 tidsstämpel: 2015-12-15 21:09:31Z
 
 | Användar typ | Upphör att gälla efter |
 |:--- |:--- |
@@ -208,16 +203,16 @@ I följande tabell beskrivs namn och beskrivningar av egenskaper som är unika f
 
 | Egenskap            | Beskrivning                              | Krävs                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| typ                | Egenskapen Type måste anges till **DataLakeAnalyticsU-SQL** . | Ja                                      |
+| typ                | Egenskapen Type måste anges till **DataLakeAnalyticsU-SQL**. | Ja                                      |
 | linkedServiceName   | Referens till Azure Data Lake Analytics som registrerats som en länkad tjänst i Data Factory | Ja                                      |
 | scriptPath          | Sökväg till mapp som innehåller U-SQL-skriptet. Filens namn är Skift läges känsligt. | Nej (om du använder skript)                   |
 | scriptLinkedService | Länkad tjänst som länkar det lagrings utrymme som innehåller skriptet till data fabriken | Nej (om du använder skript)                   |
-| skript              | Ange infogat skript i stället för att ange scriptPath och scriptLinkedService. Till exempel `"script": "CREATE DATABASE test"`. | Nej (om du använder scriptPath och scriptLinkedService) |
-| degreeOfParallelism | Det maximala antalet noder som används samtidigt för att köra jobbet. | Nej                                       |
-| prioritet            | Bestämmer vilka jobb som inte är i kö som ska väljas för att köras först. Ju lägre siffra, desto högre prioritet. | Nej                                       |
-| parametrar          | Parametrar för U-SQL-skriptet          | Nej                                       |
-| runtimeVersion      | Körnings version av U-SQL-motorn som ska användas | Nej                                       |
-| compilationMode     | <p>Compiler-läge för U-SQL. Måste vara något av följande värden:</p> <ul><li>**Semantisk:** Utför endast semantiska kontroller och nödvändiga Sanity-kontroller.</li><li>**Fullständig:** Genomför fullständig kompilering, inklusive syntaxkontroll, optimering, kodgenerering, osv.</li><li>**Enkel:** Utför fullständig kompilering med TargetType-inställningen till en enda.</li></ul><p>Om du inte anger något värde för den här egenskapen, fastställer servern det optimala kompilerings läget. </p> | Nej                                       |
+| skript              | Ange infogat skript i stället för att ange scriptPath och scriptLinkedService. Exempel: `"script": "CREATE DATABASE test"`. | Nej (om du använder scriptPath och scriptLinkedService) |
+| degreeOfParallelism | Det maximala antalet noder som används samtidigt för att köra jobbet. | Inga                                       |
+| prioritet            | Bestämmer vilka jobb som inte är i kö som ska väljas för att köras först. Ju lägre siffra, desto högre prioritet. | Inga                                       |
+| parametrar          | Parametrar för U-SQL-skriptet          | Inga                                       |
+| runtimeVersion      | Körnings version av U-SQL-motorn som ska användas | Inga                                       |
+| compilationMode     | <p>Compiler-läge för U-SQL. Måste vara något av följande värden:</p> <ul><li>**Semantisk:** Utför endast semantiska kontroller och nödvändiga Sanity-kontroller.</li><li>**Fullständig:** Genomför fullständig kompilering, inklusive syntaxkontroll, optimering, kodgenerering, osv.</li><li>**Enkel:** Utför fullständig kompilering med TargetType-inställningen till en enda.</li></ul><p>Om du inte anger något värde för den här egenskapen, fastställer servern det optimala kompilerings läget. </p> | Inga                                       |
 
 Se [SearchLogProcessing.txt skript definition](#sample-u-sql-script) för skript definitionen. 
 

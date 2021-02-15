@@ -3,18 +3,18 @@ title: 'ML Studio (klassisk): importera utbildnings data – Azure'
 description: Så här importerar du data till Azure Machine Learning Studio (klassisk) från olika data källor. Lär dig mer om vilka data typer och data format som stöds.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: db5f3cc4b9530c4aeac40786756b36cc0ac98728
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302783"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520382"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Importera dina utbildnings data till Azure Machine Learning Studio (klassisk) från olika data källor
 
@@ -73,12 +73,12 @@ Följande data typer kan identifieras av Studio (klassisk):
 * DateTime
 * TimeSpan
 
-Studio använder en intern datatyp som kallas ***data tabell** _ för att skicka data mellan moduler. Du kan uttryckligen konvertera dina data till data tabell format med hjälp av modulen [konvertera till data uppsättning][convert-to-dataset] .
+Studio använder en intern datatyp som kallas ***data tabell*** för att skicka data mellan moduler. Du kan uttryckligen konvertera dina data till data tabell format med hjälp av modulen [konvertera till data uppsättning][convert-to-dataset] .
 
 Alla moduler som accepterar andra format än data tabeller kommer att konvertera data till data tabellen tyst innan de skickas till nästa modul.
 
 Vid behov kan du konvertera data tabell format tillbaka till CSV-, TSV-, ARFF-eller SVMLight-format med andra konverterings moduler.
-Titta i avsnittet _ *konverteringar för data format** i modulen modul för moduler som utför dessa funktioner.
+Titta i avsnittet **data format konverteringar** i modulen modul för moduler som utför dessa funktioner.
 
 ## <a name="data-capacities"></a>Data kapaciteter
 

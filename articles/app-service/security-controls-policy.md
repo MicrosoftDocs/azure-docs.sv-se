@@ -1,16 +1,16 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure App Service
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure App Service. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 ms.service: app-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4a024b37e6ac5e1b70ad4bdf9877b16e0cd5668e
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 4cd6c6726331c6366a9075f23764e9459243a32b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556343"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096182"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-service"></a>Azure Policy kontroll av efterlevnad för Azure App Service
 

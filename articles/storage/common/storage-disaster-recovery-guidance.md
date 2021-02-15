@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783988"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379836"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Haveriberedskap och lagringskontoredundans
 
@@ -23,7 +23,7 @@ Microsoft strävar efter att se till att Azure-tjänster alltid är tillgänglig
 
 Azure Storage stöder redundans för geo-redundanta lagrings konton. Med konto redundans kan du initiera redundansväxlingen för ditt lagrings konto om den primära slut punkten blir otillgänglig. Redundansväxlingen uppdaterar den sekundära slut punkten för att bli den primära slut punkten för ditt lagrings konto. När redundansväxlingen är klar kan klienter börja skriva till den nya primära slut punkten.
 
-Det finns ett konto för redundans för allmänna v1-, General-Purpose v2-och Blob Storage-konto typer med Azure Resource Manager distributioner. Redundansväxling av kontot stöds för alla offentliga regioner men är inte tillgänglig i suveräna eller nationella moln för tillfället.
+Redundansväxling är tillgängligt för konton av typen generell användning v1, generell användning v2 och bloblagring med Azure Resource Manager-distributioner. Redundansväxling av kontot stöds för alla offentliga regioner men är inte tillgänglig i suveräna eller nationella moln för tillfället.
 
 Den här artikeln beskriver koncepten och processen som är inblandade i ett konto för redundans och beskriver hur du förbereder ditt lagrings konto för återställning med minsta möjliga mängd kund påverkan. Information om hur du startar en redundansväxling av ett konto i Azure Portal eller PowerShell finns i [initiera ett konto redundansväxling](storage-initiate-account-failover.md).
 
@@ -55,7 +55,7 @@ Tänk också på följande rekommendationer för att upprätthålla hög tillgä
 
 - **Diskar:** Använd [Azure Backup](https://azure.microsoft.com/services/backup/) för att säkerhetskopiera de virtuella dator diskar som används av dina virtuella Azure-datorer. Överväg också att använda [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) för att skydda dina virtuella datorer i händelse av en regional katastrof.
 - **Blockera blobbar:** Aktivera [mjuk borttagning](../blobs/soft-delete-blob-overview.md) för att skydda mot borttagningar på objekt nivå och skriv över eller kopiera block-blobar till ett annat lagrings konto i en annan region [med AZCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)eller [Azure Data flyttnings bibliotek](storage-use-data-movement-library.md).
-- **Filer:** Använd [AzCopy](./storage-use-azcopy-v10.md) eller [Azure PowerShell](/powershell/module/az.storage/) för att kopiera filer till ett annat lagrings konto i en annan region.
+- **Filer:** Använd [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) för att säkerhetskopiera dina fil resurser. Aktivera även [mjuk borttagning](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) för att skydda mot oavsiktlig fil resurs borttagningar. För GEO-redundans när GRS inte är tillgängligt använder du [AzCopy](./storage-use-azcopy-v10.md) eller [Azure PowerShell](/powershell/module/az.storage/) för att kopiera filerna till ett annat lagrings konto i en annan region.
 - **Tabeller:** Använd [AzCopy](./storage-use-azcopy-v10.md) för att exportera tabell data till ett annat lagrings konto i en annan region.
 
 ## <a name="track-outages"></a>Spåra avbrott

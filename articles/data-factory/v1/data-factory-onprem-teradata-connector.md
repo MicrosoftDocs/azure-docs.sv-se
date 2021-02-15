@@ -1,23 +1,18 @@
 ---
 title: Flytta data från Teradata med Azure Data Factory
 description: Lär dig mer om Teradata Connector för tjänsten Data Factory som gör att du kan flytta data från Teradata-databasen
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019607"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387214"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Flytta data från Teradata med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -63,12 +58,12 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **OnPremisesTeradata** |Yes |
-| server |Namnet på Teradata-servern. |Yes |
-| authenticationType |Typ av autentisering som används för att ansluta till Teradata-databasen. Möjliga värden är: Anonym, Basic och Windows. |Yes |
-| användarnamn |Ange användar namn om du använder Basic-eller Windows-autentisering. |No |
-| password |Ange lösen ordet för det användar konto som du har angett för användar namnet. |No |
-| gatewayName |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala Teradata-databasen. |Yes |
+| typ |Egenskapen Type måste anges till: **OnPremisesTeradata** |Ja |
+| server |Namnet på Teradata-servern. |Ja |
+| authenticationType |Typ av autentisering som används för att ansluta till Teradata-databasen. Möjliga värden är: Anonym, Basic och Windows. |Ja |
+| användarnamn |Ange användar namn om du använder Basic-eller Windows-autentisering. |Inga |
+| password |Ange lösen ordet för det användar konto som du har angett för användar namnet. |Inga |
+| gatewayName |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala Teradata-databasen. |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [skapa data uppsättningar](data-factory-create-datasets.md) . Avsnitt som struktur, tillgänglighet och princip för en data uppsättnings-JSON liknar alla typer av data uppsättningar (Azure SQL, Azure Blob, Azure Table osv.).
@@ -84,7 +79,7 @@ När källan är av typen **RelationalSource** (som innehåller Teradata) är f�
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| DocumentDB |Använd den anpassade frågan för att läsa data. |SQL-frågesträng. Exempel: Välj * från tabellen tabell. |Yes |
+| DocumentDB |Använd den anpassade frågan för att läsa data. |SQL-frågesträng. Exempel: Välj * från tabellen tabell. |Ja |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-exempel: kopiera data från Teradata till Azure-Blob
 I följande exempel finns exempel på JSON-definitioner som du kan använda för att skapa en pipeline med hjälp av [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data från Teradata till Azure Blob Storage. Data kan dock kopieras till någon av de handfat som anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med kopierings aktiviteten i Azure Data Factory.

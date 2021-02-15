@@ -2,13 +2,13 @@
 title: Azure Event Grid säkerhet och autentisering
 description: Beskriver Azure Event Grid och dess begrepp.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 02/12/2021
+ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109597"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371728"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Auktorisera åtkomst till Event Grid resurser
 Med Azure Event Grid kan du kontrol lera åtkomst nivån som ges till olika användare för att utföra olika **hanterings åtgärder** , till exempel lista händelse prenumerationer, skapa nya och generera nycklar. Event Grid använder rollbaserad åtkomst kontroll i Azure (Azure RBAC).
@@ -51,6 +51,8 @@ Du kan [tilldela dessa roller till en användare eller grupp](../role-based-acce
         "Actions": [
           "Microsoft.Authorization/*/read",
           "Microsoft.EventGrid/eventSubscriptions/*",
+          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
+          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
           "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
           "Microsoft.EventGrid/locations/eventSubscriptions/read",
           "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
@@ -188,7 +190,7 @@ Om du använder en händelse hanterare som inte är en webhook (till exempel en 
 Du måste ha behörigheten **Microsoft. EventGrid/EventSubscriptions/Write** på den resurs som är händelse källa. Du behöver den här behörigheten eftersom du skriver en ny prenumeration i resursens omfattning. Vilken resurs som krävs varierar beroende på om du prenumererar på ett system ämne eller ett anpassat ämne. Båda typerna beskrivs i det här avsnittet.
 
 ### <a name="system-topics-azure-service-publishers"></a>System ämnen (Azure Service Publisher)
-I system avsnitt måste du ha behörighet att skriva en ny händelse prenumeration vid resurs publiceringen av händelsen. Formatet för resursen är: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Om du inte är ägare eller deltagare för käll resursen i system avsnitt måste du ha behörighet att skriva en ny händelse prenumeration i omfånget för resurs publicering av händelsen. Formatet för resursen är: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
 Om du till exempel vill prenumerera på en händelse på ett lagrings konto med namnet **acct**, behöver du behörigheten Microsoft. EventGrid/EventSubscriptions/Write på: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 

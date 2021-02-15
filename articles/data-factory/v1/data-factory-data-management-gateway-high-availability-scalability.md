@@ -1,23 +1,18 @@
 ---
 title: Hög tillgänglighet med data Management Gateway i Azure Data Factory
 description: Den här artikeln förklarar hur du kan skala ut en gateway för data hantering genom att lägga till fler noder och skala upp genom att öka antalet samtidiga jobb som kan köras på en nod.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003624"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391736"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway – hög tillgänglighet och skalbarhet (för hands version)
 > [!NOTE]
@@ -49,7 +44,7 @@ Följande diagram innehåller en översikt över funktionerna för skalbarhet oc
 
 En **logisk Gateway** är den gateway som du lägger till i en data fabrik i Azure Portal. Tidigare kunde du bara associera en lokal Windows-dator med Data Management Gateway installerat med en logisk Gateway. Den här lokala gateway-datorn kallas för en nod. Nu kan du koppla upp till **fyra fysiska noder** med en logisk Gateway. En logisk Gateway med flera noder kallas för en **Gateway för flera noder**.  
 
-Alla de här noderna är **aktiva**. De kan bearbeta data förflyttnings jobb för att flytta data mellan lokala och molnbaserade data lager. En av noderna fungerar som både dispatcher och Worker. Andra noder i grupperna är arbetsnoder. En **dispatcher** -nod hämtar uppgifter för data förflyttning/jobb från moln tjänsten och skickar dem till arbetsnoder (inklusive sig själv). En **worker** arbetsnoden kör data förflyttnings jobb för att flytta data mellan lokala och molnbaserade data lager. Alla noder är anställda. Endast en nod kan vara både sändning och arbetare.    
+Alla de här noderna är **aktiva**. De kan bearbeta data förflyttnings jobb för att flytta data mellan lokala och molnbaserade data lager. En av noderna fungerar som både dispatcher och Worker. Andra noder i grupperna är arbetsnoder. En **dispatcher** -nod hämtar uppgifter för data förflyttning/jobb från moln tjänsten och skickar dem till arbetsnoder (inklusive sig själv). En  arbetsnoden kör data förflyttnings jobb för att flytta data mellan lokala och molnbaserade data lager. Alla noder är anställda. Endast en nod kan vara både sändning och arbetare.    
 
 Du kan vanligt vis börja med en nod och **skala ut** för att lägga till fler noder eftersom de befintliga noderna är överbelastade med data flyttnings belastningen. Du kan också **skala upp** kapaciteten för data förflyttning i en gateway-nod genom att öka antalet samtidiga jobb som tillåts att köras på noden. Den här funktionen är även tillgänglig med en gateway med en nod (även om funktionen skalbarhets-och tillgänglighet inte är aktive rad). 
 
@@ -98,7 +93,7 @@ Det här avsnittet förutsätter att du har gått igenom följande två artiklar
         > I avsnittet [TLS/SSL-certifikat krävs](#tlsssl-certificate-requirements) en lista över kraven för att använda ett TLS/SSL-certifikat. 
     5. När gatewayen har installerats klickar du på Starta Configuration Manager:
     
-        ![Manuell installation – starta Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
+        ![Manuell installation – starta Configuration Manager](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)     
     6. du ser Data Management Gateway Configuration Manager på noden (lokal Windows-dator) som visar anslutnings status, **Gateway-namn** och **nodnamn**.  
 
         ![Data Management Gateway-installationen lyckades](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
@@ -185,7 +180,7 @@ Du kan aktivera **Avancerade inställningar** på sidan **Gateway** om du vill s
 
 Övervaknings egenskap | Beskrivning
 :------------------ | :---------- 
-Name | Namnet på den logiska gatewayen och noder som är associerade med gatewayen.  
+Namn | Namnet på den logiska gatewayen och noder som är associerade med gatewayen.  
 Status | Status för den logiska gatewayen och gateway-noderna. Exempel: online/offline/begränsat/osv. Information om dessa statusar finns i avsnittet om [Gateway-status](#gateway-status) . 
 Version | Visar versionen för den logiska gatewayen och varje gateway-nod. Versionen av den logiska gatewayen fastställs baserat på den version av majoriteten av noderna i gruppen. Om det finns noder med olika versioner i installations programmet för den logiska gatewayen fungerar bara noderna med samma versions nummer som den logiska gatewayen. Andra är i begränsat läge och måste uppdateras manuellt (endast om automatisk uppdatering Miss lyckas). 
 Tillgängligt minne | Tillgängligt minne på en gateway-nod. Det här värdet är en nära real tids ögonblicks bild. 
@@ -200,11 +195,11 @@ Roll | Det finns två typer av roller – dispatcher och Worker. Alla noder är 
 
 Följande tabell innehåller möjliga status värden för en **Gateway-nod**: 
 
-Status  | Kommentarer/scenarier
+Status    | Kommentarer/scenarier
 :------- | :------------------
 Online | Noden är ansluten till Data Factory tjänsten.
 Offline | Noden är offline.
-Fortsätter | Noden uppdateras automatiskt.
+Uppgradera | Noden uppdateras automatiskt.
 Begränsad | På grund av anslutnings problem. Kan bero på problem med HTTP-port 8050, problem med Service Bus-anslutning eller utfärdande av autentiseringsuppgifter. 
 Inaktiv | Noden har en annan konfiguration än konfigurationen av andra majoritets noder.<br/><br/> En nod kan vara inaktiv när den inte kan ansluta till andra noder. 
 

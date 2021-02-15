@@ -105,6 +105,8 @@
       items:
         - name: Omvandla data genom att mappa dataflöden
           items:
+            - name: Transformera data i sjön med delta sjö
+              href: tutorial-data-flow-delta-lake.md
             - name: Omvandla data genom att mappa dataflöden
               href: tutorial-data-flow.md
             - name: Videokurser för dataflödesmappning
@@ -556,6 +558,8 @@
           href: data-flow-lookup.md
         - name: Ny gren
           href: data-flow-new-branch.md
+        - name: Parsa
+          href: data-flow-parse.md
         - name: Pivotera
           href: data-flow-pivot.md
         - name: Rangordning
@@ -806,6 +810,8 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Inbyggda Azure Policy-program
+      href: policy-reference.md
 - name: Resurser
   items:
     - name: Faktablad

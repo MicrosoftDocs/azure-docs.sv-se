@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: cc31ad851441c980365841b1131405339a1092fa
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626282"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378629"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -284,6 +284,7 @@ Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-tr
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
 - Det finns för närvarande inte stöd för att aktivera och inaktivera SQL Server Agent i SQL-hanterad instans. SQL Agent körs alltid.
+- Jobb schema utlösare baserat på en inaktiv processor stöds inte.
 - SQL Server Agent inställningarna är skrivskyddade. Proceduren `sp_set_agent_properties` stöds inte i SQL-hanterad instans. 
 - Jobb
   - Steg för T-SQL-jobb stöds.
@@ -306,13 +307,7 @@ Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-tr
   - Proxyservrar stöds inte.
 - EventLog stöds inte.
 - Användaren måste mappas direkt till Azure AD server-huvudobjektet (inloggning) för att skapa, ändra eller köra SQL Agent-jobb. Användare som inte är direkt mappade, till exempel användare som tillhör en Azure AD-grupp som har behörighet att skapa, ändra eller köra SQL Agent-jobb, kan inte effektivt utföra dessa åtgärder. Detta beror på personifiering av hanterade instanser och [körs som begränsningar](#logins-and-users).
-
-Följande SQL Agent-funktioner stöds för närvarande inte:
-
-- Proxy
-- Schemalägga jobb på en inaktiv processor
-- Aktivera eller inaktivera en agent
-- Aviseringar
+- Funktionen multi Server-Administration för Master-/Target-jobb (MSX/TSX) stöds inte.
 
 Information om SQL Server Agent finns i [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 

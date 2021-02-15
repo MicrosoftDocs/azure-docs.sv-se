@@ -1,32 +1,27 @@
 ---
 title: Konfigurera ett virtuellt nätverk – Premium-Tier Azure-cache för Redis-instans
-description: Lär dig hur du skapar och hanterar stöd för virtuella nätverk för din Azure-cache på Premium-nivå för Redis-instanser.
+description: Lär dig hur du skapar och hanterar stöd för virtuella nätverk för din Azure-cache på Premium-nivå för Redis-instans
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.date: 02/08/2021
+ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833838"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375280"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Konfigurera stöd för virtuella nätverk för en Azure-cache på Premium-nivå för Redis-instans
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurera stöd för virtuella nätverk för en Premium Azure-cache för Redis-instans
 
-Azure cache för Redis har olika cache-erbjudanden, vilket ger flexibilitet i valet av cache-storlek och-funktioner. På Premium-nivå-funktionerna ingår kluster, persistence och stöd för virtuella nätverk. Ett virtuellt nätverk är ett privat nätverk i molnet. När ett Azure-cache för Redis-instans har kon figurer ATS med ett virtuellt nätverk, är det inte offentligt adresserat och kan endast nås från virtuella datorer och program i det virtuella nätverket. Den här artikeln beskriver hur du konfigurerar stöd för virtuella nätverk för en Azure-cache på Premium-nivå för Redis-instans.
+[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) -distribution ger förbättrad säkerhet och isolering tillsammans med undernät, åtkomst kontroll principer och andra funktioner för att ytterligare begränsa åtkomst. När ett Azure-cache för Redis-instans har kon figurer ATS med ett virtuellt nätverk, är det inte offentligt adresserat och kan endast nås från virtuella datorer och program i det virtuella nätverket. Den här artikeln beskriver hur du konfigurerar stöd för virtuella nätverk för en Azure-cache på Premium-nivå för Redis-instans.
 
 > [!NOTE]
 > Azure cache för Redis har stöd för både den klassiska distributions modellen och Azure Resource Manager virtuella nätverk.
 > 
 
-## <a name="why-virtual-network"></a>Varför Virtual Network?
-
-[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) -distribution ger förbättrad säkerhet och isolering för Azure cache för Redis-instans, tillsammans med undernät, åtkomst kontroll principer och andra funktioner för att ytterligare begränsa åtkomst.
-
-## <a name="virtual-network-support"></a>Stöd för virtuellt nätverk
+## <a name="set-up-virtual-network-support"></a>Konfigurera stöd för virtuella nätverk
 
 Stöd för virtuella nätverk konfigureras i fönstret **ny Azure-cache för Redis** under skapandet av cache.
 

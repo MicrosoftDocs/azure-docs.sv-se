@@ -1,23 +1,18 @@
 ---
 title: Flytta data från OData-källor
 description: Lär dig mer om hur du flyttar data från OData-källor med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019658"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380074"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Flytta data från en OData-källa med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -62,13 +57,13 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **OData** |Yes |
-| url |URL för OData-tjänsten. |Yes |
-| authenticationType |Typ av autentisering som används för att ansluta till OData-källan. <br/><br/> För Cloud OData är möjliga värden Anonym, Basic och OAuth (Obs Azure Data Factory stöder för närvarande endast Azure Active Directory baserade OAuth). <br/><br/> För lokala OData-enheter är möjliga värden Anonym, Basic och Windows. |Yes |
+| typ |Egenskapen Type måste anges till: **OData** |Ja |
+| url |URL för OData-tjänsten. |Ja |
+| authenticationType |Typ av autentisering som används för att ansluta till OData-källan. <br/><br/> För Cloud OData är möjliga värden Anonym, Basic och OAuth (Obs Azure Data Factory stöder för närvarande endast Azure Active Directory baserade OAuth). <br/><br/> För lokala OData-enheter är möjliga värden Anonym, Basic och Windows. |Ja |
 | användarnamn |Ange användar namn om du använder grundläggande autentisering. |Ja (endast om du använder grundläggande autentisering) |
 | password |Ange lösen ordet för det användar konto som du har angett för användar namnet. |Ja (endast om du använder grundläggande autentisering) |
 | authorizedCredential |Om du använder OAuth klickar du på knappen **auktorisera** i guiden Data Factory kopiering eller redigeraren och anger dina autentiseringsuppgifter. sedan genereras värdet för den här egenskapen automatiskt. |Ja (endast om du använder OAuth-autentisering) |
-| gatewayName |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala OData-tjänsten. Ange endast om du kopierar data från den lokala OData-källan. |No |
+| gatewayName |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala OData-tjänsten. Ange endast om du kopierar data från den lokala OData-källan. |Inga |
 
 ### <a name="using-basic-authentication"></a>Använda grundläggande autentisering
 ```json
@@ -147,7 +142,7 @@ Avsnittet **typeProperties** är olika för varje typ av data uppsättning och i
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| path |Sökväg till OData-resursen |No |
+| path |Sökväg till OData-resursen |Inga |
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
 En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns i artikeln [skapa pipeliner](data-factory-create-pipelines.md) . Egenskaper som namn, beskrivning, indata och utdata-tabeller och policy är tillgängliga för alla typer av aktiviteter.
@@ -158,7 +153,7 @@ När källan är av typen **RelationalSource** (som inkluderar OData) finns föl
 
 | Egenskap | Beskrivning | Exempel | Obligatorisk |
 | --- | --- | --- | --- |
-| DocumentDB |Använd den anpassade frågan för att läsa data. |"? $select = namn, beskrivning&$top = 5" |No |
+| DocumentDB |Använd den anpassade frågan för att läsa data. |"? $select = namn, beskrivning&$top = 5" |Inga |
 
 ## <a name="type-mapping-for-odata"></a>Typ mappning för OData
 Som anges i artikeln [data förflyttnings aktiviteter](data-factory-data-movement-activities.md) utför kopierings aktiviteten automatiska typ konverteringar från käll typer till mottagar typer med följande två stegs metod.
@@ -176,7 +171,7 @@ När du flyttar data från OData används följande mappningar från OData-typer
 | EDM. DateTime |DateTime |
 | EDM. decimal |Decimal |
 | Edm.Double |Double |
-| EDM. Single |Enskilt |
+| EDM. Single |Enkel |
 | EDM. GUID |GUID |
 | EDM. Int16 |Int16 |
 | Edm.Int32 |Int32 |

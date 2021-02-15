@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa363b1eeddff6c3b10d8e36371becb8b690697c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382640"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Säkerhets anvisningar för Azure Stack Edge Mini R
 
@@ -27,14 +27,14 @@ Läs all säkerhets information i den här artikeln innan du använder din Azure
 
 Följande signal ord för varnings signaler är:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Varnings symbol](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png)| **Risk:** Indikerar en farlig situation som, om de inte undviks, leder till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada.|
 |
 
 Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azure Stack Edge Mini R-enhet:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Läs alla instruktioner först](./media/azure-stack-edge-mini-r-safety/icon-safety-read-all-instructions.png) | Läs alla instruktioner först |
 | ![Meddelande Ikons ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **meddelande:** | Anger information som anses viktig, men inte risk relaterad. |
@@ -161,7 +161,6 @@ Netgear A6150 WiFi USB-adaptern kan endast användas med godkända antenner. Den
 
 ![Varning om reglerande information – inomhus bruk](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
 
-
 Användarna uppmanas att använda Högströms polärdiagram som primära användare (prioriterade användare) av banden 5250 – 5350 MHz och 5650 – 5850 MHz, och dessa Radarer kan orsaka störningar och/eller skada till LE-LAN-enheter.
 
 Den här utrustningen genererar, använder och kan utgå från Radio frekvens energi och, om de inte installeras och används i enlighet med anvisningarna, kan orsaka skadlig störning av radio kommunikation. Det finns dock ingen garanti för att störningar inte sker i en viss installation.
@@ -205,11 +204,13 @@ En tabell med den särskilda absorptions frekvensen (SAR) som är genomsnittlig 
 
 #### <a name="european-union"></a>EUROPEISKA UNIONEN:
 
-Begära en kopia av EU: s försäkran om överensstämmelse för denna utrustning.
+Begära en kopia av EU: s försäkran om överensstämmelse för denna utrustning. Skicka ett e-postmeddelande till [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
 
 Netgear A6150 WiFi USB-adaptern som medföljer denna utrustning är kompatibel med direktiv 2014/53/EU och kan också tillhandahållas på begäran.
 
-> ![Varnings ikon 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) Detta är en produkt i klass a. I en inhemsk miljö kan den här produkten orsaka radio störningar, vilket innebär att användaren kan behöva vidta lämpliga åtgärder.
+![Varnings ikon 13 ](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **Varning:**  
+
+Detta är en produkt i en klass. I en inhemsk miljö kan den här produkten orsaka radio störningar, vilket innebär att användaren kan behöva vidta lämpliga åtgärder.
 
 Omhändertagande av avfalls batterier och elektriska och elektroniska produkter:
 

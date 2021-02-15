@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
+ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: ea3a36fdc9ff9458677f43ef43bd7f45ea4652bd
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c686902ed23e0f1a94bc9548d0a876ecbbce8f31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576641"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377881"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-anslutningspartner och peering-platser
 
@@ -122,13 +122,14 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Internet-lösningar – moln anslutning](https://www.is.co.za/solution/cloud-connect/)** |Stöds |Stöds |Kapstaden, Johannesburg, London |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Stöds |Stöds |Amsterdam, Amsterdam2, köpen hamn, Dublin, Frankfurt, London, Marseille, Paris, Zürich |
 | **[IRIDEOS](https://irideos.it/)** |Stöds |Stöds |Milano |
+| **Järn Bergs** | Stöds |Stöds |Washington DC |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Stöds |Stöds | Amsterdam, London2, Silicon dal, Toronto, Washington DC |
 | **Jaguar-nätverk** |Stöds |Stöds |Marseille, Paris |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Stöds |Stöds |London, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Stöds |Stöds |Seoul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Stöds |Stöds |Auckland, Sydney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Stöds | Stöds | Amsterdam |
-| **[KT](https://cloud.kt.com/portal/ktcloudportal.epc.productintro.partnershipcloud_ConnectHub.html)** | Stöds | Stöds | Seoul |
+| **[KT](https://cloud.kt.com/)** | Stöds | Stöds | Seoul |
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Stöds |Stöds |Amsterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapore, Washington DC |
 | **LG CNS** |Stöds |Stöds |Busan, Söul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Stöds |Stöds |Kapstaden, Johannesburg |
@@ -157,7 +158,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Sohonet](https://www.sohonet.com/fastlane/)** |Stöds |Stöds |London2 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |Stöds |Stöds |Auckland, Sydney |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |Stöds |Stöds |Chicago, Silicon Valley, Washington DC |
-| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Stöds | Stöds | Zürich |
+| **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Stöds | Stöds | Genève, Zürich |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Stöds |Stöds |Amsterdam, Chennai, Hong Kong SAR, London, Mumbai, Sao Paulo, Silicon dal, Singapore, Washington DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Stöds |Stöds |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Stöds |Stöds |London, London2, Singapore2 |
@@ -166,7 +167,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | **[Telin](https://www.telin.net/)** | Stöds | Stöds |Jakarta |
 | **Telmex Uninet**| Stöds | Stöds | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Stöds |Stöds |Melbourne, Singapore, Sydney |
-| **[Telus](https://www.telus.com)** |Stöds |Stöds |Montrealprotokollet, Seattle, Toronto, Vancouver |
+| **[Telus](https://www.telus.com)** |Stöds |Stöds |Montrealprotokollet, Seattle, Quebec City, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Stöds |Stöds |Kapstaden, Johannesburg |
 | **[TID dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Stöds | Stöds | Kuala Lumpur |
 | **[Tokai-kommunikation](https://www.tokai-com.co.jp/en/)** | Stöds | Stöds | Osaka, Tokyo2 |

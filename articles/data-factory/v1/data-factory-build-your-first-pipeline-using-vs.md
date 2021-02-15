@@ -1,23 +1,19 @@
 ---
 title: Bygg din första data fabrik (Visual Studio)
 description: I den här självstudien skapar du ett exempel på en Azure Data Factory-pipeline med hjälp av Visual Studio.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: b0532e75ac581bad3b5dd8669a591186dc320a86
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496576"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377456"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Självstudiekurs: Skapa en datafabrik med hjälp av Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -563,7 +559,7 @@ Du kan länka två aktiviteter (köra en aktivitet efter en annan) genom att st�
 
 ## <a name="see-also"></a>Se även
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |I den här artikeln beskriver vi pipelines och aktiviteter i Azure Data Factory och hur du kan använda dem för att konstruera datadrivna arbetsflöden för ditt scenario eller ditt företag. |
 | [Datauppsättningar](data-factory-create-datasets.md) |I den här artikeln förklaras hur datauppsättningar fungerar i Azure Data Factory. |

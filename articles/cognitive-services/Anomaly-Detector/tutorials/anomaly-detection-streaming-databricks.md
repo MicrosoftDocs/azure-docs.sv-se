@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368720"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519141"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Självstudie: avvikelse identifiering vid strömmande data med Azure Databricks
 
@@ -163,9 +163,9 @@ I den här självstudien använder du [Azure Cognitive Services avvikelse igenk�
 
     |Värde |Beskrivning  |
     |---------|---------|
-    |Name     | Ett namn för avvikelse detektor resursen.        |
+    |Namn     | Ett namn för avvikelse detektor resursen.        |
     |Prenumeration     | Den Azure-prenumeration som resursen ska associeras med.        |
-    |Plats     | En Azure-plats.        |
+    |Location     | En Azure-plats.        |
     |Prisnivå     | En pris nivå för tjänsten. Mer information om priser för avvikelse detektor finns på [sidan med priser](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
     |Resursgrupp     | Ange om du vill skapa en ny resursgrupp eller välja en befintlig.        |
 
@@ -554,7 +554,7 @@ Nu har du strömmat data från Azure Event Hubs till Azure Databricks nästan i 
 
 ## <a name="run-anomaly-detection-on-tweets"></a>Kör avvikelse identifiering på tweets
 
-I det här avsnittet ska du köra avvikelse identifiering på Tweets som tagits emot med hjälp av API: t för avvikelse identifiering. I det här avsnittet lägger du till kodfragmenten till samma **AnalyzeTweetsFromEventHub** -anteckningsbok.
+I det här avsnittet ska du köra avvikelse identifiering på Tweets som tagits emot med hjälp av API: t för avvikelse identifiering. I det här avsnittet lägger du till kodfragmenten till samma **AnalyzeTweetsFromEventHub**-anteckningsbok.
 
 För att utföra avvikelse identifiering måste du först aggregera ditt mått antal per timme.
 ```scala
@@ -586,7 +586,7 @@ groupTime                       average
 
 Hämta sedan det sammanställda resultatet till delta. Eftersom avvikelse identifiering kräver ett längre historik fönster använder vi delta för att behålla historik data för den punkt som du vill identifiera.
 Ersätt "[placeholder: Table Name]" med ett kvalificerat delta tabell namn som ska skapas (till exempel "tweets"). Ersätt "[placeholder: mappnamn för kontroll punkter]" med ett sträng värde som är unikt varje gången du kör den här koden (till exempel "ETL-from-eventhub-20190605").
-Om du vill veta mer om delta Lake på Azure Databricks, se [delta Lake-guide](https://docs.azuredatabricks.net/delta/index.html)
+Om du vill veta mer om delta Lake på Azure Databricks, se [delta Lake-guide](/databricks/delta/)
 
 
 ```scala

@@ -42,6 +42,14 @@
     - name: Benchmark för Azure-säkerhet
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
+    - name: Azure Security benchmark Foundation
+      items:
+        - name: Översikt
+          displayName: 'standards, azure, benchmark, foundation'
+          href: ./samples/azure-security-benchmark-foundation/index.md
+        - name: Distributionssteg
+          displayName: 'standards, azure, benchmark, foundation, deploy'
+          href: ./samples/azure-security-benchmark-foundation/deploy.md
     - name: Den australiska regeringens ISM PROTECTED-kontroller
       items:
         - name: Översikt

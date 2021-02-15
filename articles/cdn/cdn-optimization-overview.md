@@ -4,22 +4,16 @@ description: Lär dig hur Azure Content Delivery Network kan optimera leverans b
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004508"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387928"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimera Azure CDN för typen av innehålls leverans
 
@@ -64,7 +58,11 @@ Microsoft rekommenderar att du testar prestanda variationer mellan olika leveran
 
 ## <a name="select-and-configure-optimization-types"></a>Välj och konfigurera optimerings typer
 
-När du skapar en CDN-slutpunkt väljer du en optimerings typ som bäst matchar det scenario och den typ av innehåll som du vill att slut punkten ska leverera. **Allmän webb leverans** är standard valet. För befintliga **Azure CDN Standard från Akamai** -slutpunkter kan du när som helst uppdatera optimerings alternativet. Den här ändringen avbryter inte leverans från Azure CDN. 
+När du skapar en CDN-slutpunkt väljer du en optimerings typ som bäst matchar det scenario och den typ av innehåll som du vill att slut punkten ska leverera. 
+
+**Allmän webb leverans** är standard valet. Du kan bara uppdatera **Azure CDN Standard från optimering av Akamai** -slutpunkter när som helst. 
+
+För **Azure CDN Standard från Microsoft**, **Azure CDN Standard från Verizon** och **Azure CDN Premium från Verizon**, kan du inte.
 
 1. Välj en slut punkt i **Azure CDns profil för standard från Akamai** .
 

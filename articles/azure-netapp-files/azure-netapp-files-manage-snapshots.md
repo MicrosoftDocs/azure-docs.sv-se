@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629671"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379122"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Hantera ögonblicksbilder med hjälp av Azure NetApp Files
 
@@ -187,7 +187,9 @@ Om du inte vill [återställa hela ögonblicks bilden till en volym](#restore-a-
 
 Den monterade volymen innehåller en ögonblicks bilds katalog med namnet  `.snapshot` (i NFS-klienter) eller `~snapshot` (i SMB-klienter) som är tillgänglig för klienten. Katalogen för ögonblicks bilder innehåller under kataloger som motsvarar ögonblicks bilderna av volymen. Varje under katalog innehåller filerna i ögonblicks bilden. Om du av misstag tar bort eller skriver över en fil, kan du återställa filen till den överordnade katalogen för skriv skydd genom att kopiera filen från en under katalog i ögonblicks bild till katalogen för Läs-och skriv åtgärder. 
 
-Om du inte ser ögonblicks bilds katalogen kan den vara dold eftersom alternativet Dölj sökväg för ögonblicks bild är aktiverat. Du kan [Redigera alternativet Dölj ögonblicks bild Sök väg](#edit-the-hide-snapshot-path-option) om du vill inaktivera det.  
+Du kan styra åtkomsten till ögonblicks bild kataloger med hjälp av alternativet för att [dölja ögonblicks bilds Sök väg](#edit-the-hide-snapshot-path-option). Det här alternativet styr huruvida katalogen ska döljas från klienterna. Därför styr den också åtkomst till filer och mappar i ögonblicks bilderna.  
+
+NFSv 4.1 visar inte `.snapshot` katalogen ( `ls -la` ). Men när alternativet Dölj ögonblicks bilds Sök vägen inte är inställt, kan du fortfarande komma åt `.snapshot` katalogen via nfsv 4.1 genom att använda `cd <snapshot-path>` kommandot från klientens kommando rad. 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Återställa en fil med hjälp av en Linux NFS-klient 
 
@@ -269,4 +271,4 @@ Du kan ta bort ögonblicks bilder som du inte längre behöver behålla.
 * [Felsöka policyer för ögonblicksbilder](troubleshoot-snapshot-policies.md)
 * [Resursbegränsningar för Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files ögonblicks bilder 101 video](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
-* [Vad är Azure Application enhetligt verktyg för ögonblicks bilder](azacsnap-introduction.md)
+* [Vad är verktyget Azure Application Consistent Snapshot?](azacsnap-introduction.md)

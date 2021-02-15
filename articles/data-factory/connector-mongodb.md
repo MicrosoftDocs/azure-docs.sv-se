@@ -1,23 +1,18 @@
 ---
 title: Kopiera data från MongoDB
 description: Lär dig hur du kopierar data från Mongo DB till mottagar data lager med stöd för en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2021
-ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: eae2d2adfe2cfdd7e47f2ace9ede9253003aa5bf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028700"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368786"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopiera data från MongoDB med hjälp av Azure Data Factory
 
@@ -57,7 +52,7 @@ Följande egenskaper stöds för den länkade tjänsten MongoDB:
 | typ |Egenskapen Type måste anges till: **MongoDbV2** |Ja |
 | Begär |Ange anslutnings strängen MongoDB, t. ex. `mongodb://[username:password@]host[:port][/[database][?options]]` . Mer information finns i [MongoDB manuell i anslutnings strängen](https://docs.mongodb.com/manual/reference/connection-string/) . <br/><br /> Du kan också ange en anslutnings sträng i Azure Key Vault. Mer information finns [i lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) . |Ja |
 | databas | Namnet på den databas som du vill få åtkomst till. | Ja |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Nej |
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 **Exempel:**
 
@@ -118,12 +113,12 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **MongoDbV2Source** | Ja |
-| filter | Anger urvals filter med hjälp av fråge operatorer. Om du vill returnera alla dokument i en samling utelämnar du den här parametern eller skickar ett tomt dokument ( {} ). | Nej |
-| cursorMethods. Project | Anger de fält som ska returneras i dokument för projektion. Om du vill returnera alla fält i de matchande dokumenten utelämnar du den här parametern. | Nej |
-| cursorMethods. sort | Anger i vilken ordning som frågan returnerar matchande dokument. Se [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nej |
-| cursorMethods. Limit | Anger det maximala antalet dokument som servern returnerar. Referera till [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nej |
-| cursorMethods. Skip | Anger antalet dokument som ska hoppas över och från där MongoDB börjar returnera resultat. Se [cursor. SKIP ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nej |
-| batchSize | Anger antalet dokument som ska returneras i varje batch av svaret från MongoDB-instansen. I de flesta fall kommer ändringar av batchstorleken inte att påverka användaren eller programmet. Cosmos DB gränser för varje batch får inte överstiga 40 MB i storlek, vilket är summan av batchSize storlek, så minska det här värdet om dokument storleken är stor. | Nej<br/>(Standardvärdet är **100**) |
+| filter | Anger urvals filter med hjälp av fråge operatorer. Om du vill returnera alla dokument i en samling utelämnar du den här parametern eller skickar ett tomt dokument ( {} ). | Inga |
+| cursorMethods. Project | Anger de fält som ska returneras i dokument för projektion. Om du vill returnera alla fält i de matchande dokumenten utelämnar du den här parametern. | Inga |
+| cursorMethods. sort | Anger i vilken ordning som frågan returnerar matchande dokument. Se [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Inga |
+| cursorMethods. Limit | Anger det maximala antalet dokument som servern returnerar. Referera till [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Inga |
+| cursorMethods. Skip | Anger antalet dokument som ska hoppas över och från där MongoDB börjar returnera resultat. Se [cursor. SKIP ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Inga |
+| batchSize | Anger antalet dokument som ska returneras i varje batch av svaret från MongoDB-instansen. I de flesta fall kommer ändringar av batchstorleken inte att påverka användaren eller programmet. Cosmos DB gränser för varje batch får inte överstiga 40 MB i storlek, vilket är summan av batchSize storlek, så minska det här värdet om dokument storleken är stor. | Inga<br/>(Standardvärdet är **100**) |
 
 >[!TIP]
 >ADF-support använder BSON-dokument i **strikt läge**. Kontrol lera att filter frågan är i strikt läge i stället för Shell-läge. Du hittar mer information på [MongoDB manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).

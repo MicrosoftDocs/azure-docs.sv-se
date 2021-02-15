@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202971"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363210"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiera en ny IoT-enhetstyp i Azure IoT Central-programmet
 
@@ -31,9 +31,9 @@ Ett verktyg kan till exempel skapa en enhets mal len för en ansluten fläkt med
 - Skickar fläkt drifts tillstånd
 - Ger en skrivbar fläkt hastighets egenskap
 - Innehåller ett kommando för att starta om enheten
-- Ger dig en övergripande vy av enheten via en instrument panel
+- Ger dig en övergripande vy av enheten med hjälp av en vy
 
-Med den här enhets mal len kan en operatör skapa och ansluta Real fläkt enheter. Alla dessa fläktar har mått, egenskaper och kommandon som operatörer använder för att övervaka och hantera dem. Operatörer använder [enhets instrument paneler](#add-dashboards) och formulär för att interagera med fläkt enheterna. En enhets utvecklare använder mallen för att förstå hur enheten interagerar med programmet. Läs mer i [telemetri, egenskaper och kommando nytto laster](concepts-telemetry-properties-commands.md).
+Med den här enhets mal len kan en operatör skapa och ansluta Real fläkt enheter. Alla dessa fläktar har mått, egenskaper och kommandon som operatörer använder för att övervaka och hantera dem. Operatorer använder [enhets vyer](#add-views) och-formulär för att interagera med fläkt enheterna. En enhets utvecklare använder mallen för att förstå hur enheten interagerar med programmet. Läs mer i [telemetri, egenskaper och kommando nytto laster](concepts-telemetry-properties-commands.md).
 
 > [!NOTE]
 > Endast konstruktörer och administratörer kan skapa, redigera och ta bort mallar för enheter. Alla användare kan skapa enheter på sidan **enheter** från befintliga enhets mallar.
@@ -46,8 +46,8 @@ I ett IoT Central-program använder en enhets mall en enhets modell för att bes
 > IoT Central kräver en fullständig modell med alla refererade gränssnitt i samma fil, när du importerar en modell från modell databasen använder du nyckelordet "Expanded" för att få den fullständiga versionen.
 Till exempel. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
 
-- Skapa en enhets modell med hjälp av [Digitals definitions språk (DTDL)-version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code har ett tillägg som stöder redigering av DTDL-modeller. Mer information finns i [Installera och använda redigerings verktygen för DTDL](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Publicera sedan modellen till den offentliga modellens lagrings plats. Läs mer i [enhets modellens lagrings plats](../../iot-pnp/concepts-model-repository.md). Implementera din enhets kod från modellen och Anslut din riktiga enhet till ditt IoT Central-program. IoT Central söker efter och importerar enhets modellen från det offentliga lagrings platsen och skapar en mall för enheten. Du kan sedan lägga till alla moln egenskaper, anpassningar och instrument paneler som ditt IoT Central program behöver för enhets mal len.
-- Redigera en enhets modell med hjälp av DTDL. Implementera din enhets kod från modellen. Importera enhets modellen manuellt till IoT Central programmet och Lägg sedan till eventuella moln egenskaper, anpassningar och instrument paneler som ditt IoT Central program behöver.
+- Skapa en enhets modell med hjälp av [Digitals definitions språk (DTDL)-version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Visual Studio Code har ett tillägg som stöder redigering av DTDL-modeller. Mer information finns i [Installera och använda redigerings verktygen för DTDL](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Publicera sedan modellen till den offentliga modellens lagrings plats. Läs mer i [enhets modellens lagrings plats](../../iot-pnp/concepts-model-repository.md). Implementera din enhets kod från modellen och Anslut din riktiga enhet till ditt IoT Central-program. IoT Central söker efter och importerar enhets modellen från det offentliga lagrings platsen och skapar en mall för enheten. Du kan sedan lägga till alla moln egenskaper, anpassningar och vyer som ditt IoT Central program behöver för enhets mal len.
+- Redigera en enhets modell med hjälp av DTDL. Implementera din enhets kod från modellen. Importera enhets modellen manuellt till IoT Central programmet och Lägg sedan till eventuella moln egenskaper, anpassningar och vyer som dina IoT Central program behöver.
 
 > [!TIP]
 > IoT Central kräver en fullständig modell med alla refererade gränssnitt i samma fil. När du importerar en modell från modell databasen använder du nyckelordet *Expanded* för att hämta den fullständiga versionen.
@@ -72,8 +72,8 @@ En enhets mall innehåller:
 
 - En _enhets modell_ som anger telemetri, egenskaper och kommandon som enheten implementerar. Dessa funktioner är ordnade i en eller flera komponenter.
 - _Moln egenskaper_ som definierar information som IoT Central program lagrar om dina enheter. Till exempel kan en moln egenskap registrera datumet då enheten senast servades. Den här informationen delas aldrig med enheten.
-- _Anpassningar_ gör att verktyget åsidosätter vissa av definitionerna i enhets modellen. Verktyget kan till exempel åsidosätta namnet på en enhets egenskap. Egenskaps namn visas i IoT Central instrument paneler och formulär.
-- _Instrument paneler och formulär_ gör att verktyget kan skapa ett användar gränssnitt som gör att operatörer kan övervaka och hantera de enheter som är anslutna till ditt program.
+- _Anpassningar_ gör att verktyget åsidosätter vissa av definitionerna i enhets modellen. Verktyget kan till exempel åsidosätta namnet på en enhets egenskap. Egenskaps namn visas i IoT Central vyer och formulär.
+- Med _vyer och formulär_ kan verktyget skapa ett användar gränssnitt som gör att operatörer kan övervaka och hantera de enheter som är anslutna till ditt program.
 
 Så här skapar du en enhets mal len i IoT Central:
 
@@ -129,17 +129,17 @@ I följande tabell visas konfigurations inställningarna för en telemetri-funkt
 
 | Fält | Beskrivning |
 | ----- | ----------- |
-| Visningsnamn | Visnings namnet för telemetri-värdet som används på instrument paneler och formulär. |
-| Name | Namnet på fältet i telemetri meddelandet. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Visningsnamn | Visnings namnet för telemetri-värdet som används i vyer och formulär. |
+| Namn | Namnet på fältet i telemetri meddelandet. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Telemetridata. |
 | Semantisk typ | Den semantiska typen av telemetri, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Data typen telemetri, till exempel Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. Schemat är inte tillgängligt för semantiska typer av händelse och tillstånd. |
 | Allvarlighetsgrad | Endast tillgängligt för den semantiska händelse typen. Allvarlighets graderna är **fel**, **information** eller **Varning**. |
 | Tillstånds värden | Endast tillgängligt för semantisk typ av tillstånd. Definiera möjliga tillstånds värden, som var och en har visnings namn, namn, uppräknings typ och värde. |
 | Enhet | En enhet för telemetri-värdet, till exempel **mph**, **%** eller **&deg; C**. |
-| Visa enhet | En visnings enhet för användning på instrument paneler och formulär. |
+| Visa enhet | En visnings enhet som används i vyer och formulär. |
 | Kommentar | Eventuella kommentarer om telemetri-funktionerna. |
-| Description | En beskrivning av telemetri-funktionen. |
+| Beskrivning | En beskrivning av telemetri-funktionen. |
 
 ### <a name="properties"></a>Egenskaper
 
@@ -149,8 +149,8 @@ I följande tabell visas konfigurations inställningarna för en egenskaps funkt
 
 | Fält | Beskrivning |
 | ----- | ----------- |
-| Visningsnamn | Visnings namnet för egenskap svärdet som används på instrument paneler och formulär. |
-| Name | Egenskapens namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Visningsnamn | Visnings namnet för egenskap svärdet som används i vyer och formulär. |
+| Namn | Egenskapens namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Immaterialrätt. |
 | Semantisk typ | Den semantiska typen för egenskapen, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Egenskaps data typen, t. ex. Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. Schemat är inte tillgängligt för semantiska typer av händelse och tillstånd. |
@@ -158,9 +158,9 @@ I följande tabell visas konfigurations inställningarna för en egenskaps funkt
 | Allvarlighetsgrad | Endast tillgängligt för den semantiska händelse typen. Allvarlighets graderna är **fel**, **information** eller **Varning**. |
 | Tillstånds värden | Endast tillgängligt för semantisk typ av tillstånd. Definiera möjliga tillstånds värden, som var och en har visnings namn, namn, uppräknings typ och värde. |
 | Enhet | En enhet för egenskap svärdet, till exempel **mph**, **%** eller **&deg; C**. |
-| Visa enhet | En visnings enhet för användning på instrument paneler och formulär. |
+| Visa enhet | En visnings enhet som används i vyer och formulär. |
 | Kommentar | Kommentarer om egenskaps funktionen. |
-| Description | En beskrivning av egenskaps funktionen. |
+| Beskrivning | En beskrivning av egenskaps funktionen. |
 
 ### <a name="commands"></a>Kommandon
 
@@ -170,11 +170,11 @@ I följande tabell visas konfigurations inställningarna för en kommando funkti
 
 | Fält | Beskrivning |
 | ----- | ----------- |
-| Visningsnamn | Visnings namnet för kommandot som används på instrument paneler och formulär. |
-| Name | Kommandots namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
+| Visningsnamn | Visnings namnet för kommandot som används i vyer och formulär. |
+| Namn | Kommandots namn. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. Det här fältet måste vara alfanumeriskt. |
 | Typ av kapacitet | Kommandoprompt. |
 | Kommentar | Eventuella kommentarer om kommando funktionen. |
-| Description | En beskrivning av kommando funktionen. |
+| Beskrivning | En beskrivning av kommando funktionen. |
 | Förfrågan | Om aktive rad, en definition av Request-parametern, inklusive: namn, visnings namn, schema, enhet och visnings enhet. |
 | Svarsåtgärder | Om aktive rad, en definition av kommando svaret, inklusive: namn, visnings namn, schema, enhet och visnings enhet. |
 
@@ -209,8 +209,8 @@ I följande tabell visas konfigurations inställningarna för en moln egenskap:
 
 | Fält | Beskrivning |
 | ----- | ----------- |
-| Visningsnamn | Visnings namnet för moln egenskap svärdet som används på instrument paneler och formulär. |
-| Name | Namnet på moln egenskapen. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. |
+| Visningsnamn | Visnings namnet för moln egenskap svärdet som används i vyer och formulär. |
+| Namn | Namnet på moln egenskapen. IoT Central genererar ett värde för det här fältet från visnings namnet, men du kan välja ett eget värde om det behövs. |
 | Semantisk typ | Den semantiska typen för egenskapen, till exempel temperatur, tillstånd eller händelse. Valet av semantisk typ avgör vilka av följande fält som är tillgängliga. |
 | Schema | Data typen Cloud Property, till exempel Double, String eller Vector. De tillgängliga alternativen bestäms av semantisk typ. |
 
@@ -234,24 +234,24 @@ Att generera standardvyer är ett snabbt sätt att visualisera viktig enhets inf
 
 När du har valt **generera standardvyer** ser du att de har lagts till automatiskt under avsnittet **vyer** i din enhets mall.
 
-## <a name="add-dashboards"></a>Lägg till instrument paneler
+## <a name="add-views"></a>Lägga till vyer
 
-Lägg till instrument paneler till en enhets mall för att aktivera operatörer för att visualisera en enhet med hjälp av diagram och mått. Du kan ha flera instrument paneler för en enhets mall.
+Lägg till vyer i en enhets mall för att aktivera operatörer för att visualisera en enhet med hjälp av diagram och mått. Du kan ha flera vyer för en enhets mall.
 
-Lägga till en instrument panel i en enhets mall:
+Så här lägger du till en vy i en enhets mal len:
 
 1. Gå till din enhets mall och välj **vyer**.
 1. Välj **visualisera enheten**.
-1. Ange ett namn på instrument panelen i **instrument panelens namn**.
-1. Lägg till paneler på instrument panelen från listan över statiska, egenskaper, moln egenskaper, telemetri och kommando paneler. Dra och släpp de paneler som du vill lägga till på instrument panelen.
+1. Ange ett namn för vyn i **visnings namn**.
+1. Lägg till paneler i vyn från listan över statiska, egenskaper, moln egenskaper, telemetri och kommando paneler. Dra och släpp de paneler som du vill lägga till i vyn.
 1. Om du vill rita flera telemetri värden på en enda diagram panel väljer du telemetri-värden och väljer sedan **kombinera**.
 1. Konfigurera varje panel som du lägger till för att anpassa hur data visas. Öppna det här alternativet genom att välja kugg hjuls ikonen eller genom att välja **ändra konfiguration** på diagram panelen.
-1. Ordna och ändra storlek på panelerna på instrument panelen.
+1. Ordna och ändra storlek på panelerna i vyn.
 1. Spara ändringarna.
 
-### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurera förhands gransknings enheten för att visa instrument panelen
+### <a name="configure-preview-device-to-view"></a>Konfigurera förhands gransknings enheten för visning
 
-Välj **Konfigurera för hands versions enhet** om du vill visa och testa din instrument panel. Med den här funktionen kan du se instrument panelen när din operatör ser den när den har publicerats. Använd den här funktionen för att kontrol lera att dina vyer visar rätt data. Du kan välja bland följande alternativ:
+Välj **Konfigurera för hands versions enhet** om du vill visa och testa vyn. Med den här funktionen kan du se vyn när din operatör ser den när den har publicerats. Använd den här funktionen för att kontrol lera att dina vyer visar rätt data. Du kan välja bland följande alternativ:
 
 - Ingen förhands gransknings enhet.
 - Den riktiga testen het som du har konfigurerat för din enhets mall.

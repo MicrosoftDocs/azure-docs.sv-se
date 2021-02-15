@@ -2,19 +2,16 @@
 title: Excel-format i Azure Data Factory
 description: I det här avsnittet beskrivs hur du hanterar Excel-formatet i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902050"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386534"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Excel-format i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,12 +32,12 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 | location         | Plats inställningar för filen/filerna. Varje filbaserad koppling har sin egen plats typ och de egenskaper som stöds under `location` . | Ja      |
 | Inställda SheetName        | Namnet på Excel-kalkylbladet för att läsa data.                       | Ange `sheetName` eller `sheetIndex` |
 | sheetIndex | Excel-kalkylbladets index för att läsa data från 0. | Ange `sheetName` eller `sheetIndex` |
-| intervall            | Cell intervallet i det aktuella kalkyl bladet för att hitta de selektiva data, t. ex.:<br>-Ej angiven: läser hela kalkyl bladet som en tabell från den första icke-tomma raden och kolumnen<br>- `A3`: läser en tabell som börjar från den aktuella cellen, identifierar dynamiskt alla rader nedan och alla kolumner till höger<br>- `A3:H5`: läser det här fasta intervallet som en tabell<br>- `A3:A3`: läser den här enkla cellen | Nej       |
-| firstRowAsHeader | Anger om den första raden i angivet kalkyl blad/intervall ska behandlas som en rubrik rad med kolumn namn.<br>Tillåtna värden är **True** och **false** (standard). | Nej       |
-| nullValue        | Anger sträng representationen för null-värde. <br>Standardvärdet är en **tom sträng**. | Nej       |
-| komprimering | Grupp egenskaper för att konfigurera fil komprimering. Konfigurera det här avsnittet när du vill utföra komprimering/expandering under aktivitets körningen. | Nej |
+| intervall            | Cell intervallet i det aktuella kalkyl bladet för att hitta de selektiva data, t. ex.:<br>-Ej angiven: läser hela kalkyl bladet som en tabell från den första icke-tomma raden och kolumnen<br>- `A3`: läser en tabell som börjar från den aktuella cellen, identifierar dynamiskt alla rader nedan och alla kolumner till höger<br>- `A3:H5`: läser det här fasta intervallet som en tabell<br>- `A3:A3`: läser den här enkla cellen | Inga       |
+| firstRowAsHeader | Anger om den första raden i angivet kalkyl blad/intervall ska behandlas som en rubrik rad med kolumn namn.<br>Tillåtna värden är **True** och **false** (standard). | Inga       |
+| nullValue        | Anger sträng representationen för null-värde. <br>Standardvärdet är en **tom sträng**. | Inga       |
+| komprimering | Grupp egenskaper för att konfigurera fil komprimering. Konfigurera det här avsnittet när du vill utföra komprimering/expandering under aktivitets körningen. | Inga |
 | typ<br/>(*under `compression`*) | Komprimerings-codec som används för att läsa/skriva JSON-filer. <br>Tillåtna värden är **bzip2**, **gzip**, **DEFLATE**, **ZipDeflate**, **TarGzip**, **tar**, **fästning** eller **lz4**. Standardvärdet är inte komprimerat.<br>**Obs!** kopierings aktiviteten stöder för närvarande inte "fästfunktionen" & "lz4" och kart data flödet stöder inte "ZipDeflate", "TarGzip" och "tar".<br>**Obs!** när du använder kopierings aktivitet för att expandera **ZipDeflate** -filer och skriva till filbaserat mottagar data lager, extraheras filerna till mappen: `<path specified in dataset>/<folder named as source zip file>/` . | Nej.  |
-| nivå<br/>(*under `compression`*) | Komprimerings förhållandet. <br>Tillåtna värden är **optimalt** eller **snabbast**.<br>- **Snabbast:** Komprimerings åtgärden bör utföras så snabbt som möjligt, även om den resulterande filen inte komprimeras optimalt.<br>- **Optimalt**: komprimerings åtgärden bör komprimeras optimalt, även om åtgärden tar längre tid att slutföra. Mer information finns i avsnittet [komprimerings nivå](/dotnet/api/system.io.compression.compressionlevel) . | Nej       |
+| nivå<br/>(*under `compression`*) | Komprimerings förhållandet. <br>Tillåtna värden är **optimalt** eller **snabbast**.<br>- **Snabbast:** Komprimerings åtgärden bör utföras så snabbt som möjligt, även om den resulterande filen inte komprimeras optimalt.<br>- **Optimalt**: komprimerings åtgärden bör komprimeras optimalt, även om åtgärden tar längre tid att slutföra. Mer information finns i avsnittet [komprimerings nivå](/dotnet/api/system.io.compression.compressionlevel) . | Inga       |
 
 Nedan visas ett exempel på en Excel-datauppsättning på Azure Blob Storage:
 
@@ -74,12 +71,12 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 
 ### <a name="excel-as-source"></a>Excel som källa 
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****.
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* källa \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Typ egenskapen för kopierings aktivitets källan måste anges till **ExcelSource**. | Ja      |
-| storeSettings | En grupp egenskaper för att läsa data från ett data lager. Varje filbaserad koppling har sina egna Läs inställningar som stöds under `storeSettings` . | Nej       |
+| storeSettings | En grupp egenskaper för att läsa data från ett data lager. Varje filbaserad koppling har sina egna Läs inställningar som stöds under `storeSettings` . | Inga       |
 
 ```json
 "activities": [

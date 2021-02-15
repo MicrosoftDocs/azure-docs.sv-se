@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820610"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516846"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Undersök en misstänkt IoT-enhet
 
-Defender för IoT-tjänstens aviseringar ger tydliga indikationer när IoT-enheter misstänks delta i misstänkta aktiviteter eller när det finns indikationer på att en enhet har komprometterats.
+Defender för IoT service-aviseringar ger tydliga indikationer när IoT-enheter meddelas om misstänkta aktiviteter eller om det finns indikationer på att en enhet har komprometterats.
 
 I den här hand boken använder du de undersöknings förslag som du kan använda för att fastställa potentiella risker för din organisation, bestämma hur du ska åtgärda och upptäcka de bästa sätten att förhindra liknande attacker i framtiden.
 
@@ -39,12 +39,12 @@ Hitta din Log Analytics-arbetsyta för data lagring:
 1. Öppna din IoT-hubb,
 1. Under **säkerhet** väljer du **Inställningar** och sedan **data insamling**.
 1. Ändra konfigurations information för Log Analytics arbets ytan.
-1. Klicka på **Spara**.
+1. Välj **Spara**.
 
 Följande konfiguration, gör följande för att komma åt data som lagras i din Log Analytics-arbetsyta:
 
-1. Markera och klicka på en Defender för IoT-avisering i IoT Hub.
-1. Klicka på **ytterligare undersökning**.
+1. Välj och välj en Defender för IoT-avisering i IoT Hub.
+1. Välj **ytterligare undersökning**.
 1. Välj **om du vill se vilka enheter som har den här aviseringen Klicka här och visa kolumnen DeviceID**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>Gransknings steg för misstänkta IoT-enheter
@@ -55,7 +55,7 @@ Se exempel på KQL-frågorna nedan för att komma igång med att undersöka avis
 
 ### <a name="related-alerts"></a>Relaterade aviseringar
 
-Om du vill ta reda på om andra aviseringar har utlösts runt samma tid använder du följande KQL-fråga:
+Du kan ta reda på om andra aviseringar utlöstes runt samma tid genom följande KQL-fråga:
 
   ```
   let device = "YOUR_DEVICE_ID";

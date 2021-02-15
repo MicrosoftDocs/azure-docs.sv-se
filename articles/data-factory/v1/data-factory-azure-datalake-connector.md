@@ -1,24 +1,19 @@
 ---
 title: Kopiera data till och från Azure Data Lake Storage Gen1
 description: Lär dig hur du kopierar data till och från Data Lake Store med hjälp av Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 16cef1fb35efcbe12a4054304e3f354c03b37227
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637657"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379411"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiera data till och från Data Lake Storage Gen1 med Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -35,7 +30,7 @@ Du kan kopiera data **från Azure Data Lake Store** till följande data lager:
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-Du kan kopiera data från följande data lager **till Azure Data Lake Store** :
+Du kan kopiera data från följande data lager **till Azure Data Lake Store**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -52,13 +47,13 @@ Vi rekommenderar att du använder tjänstens huvud namns autentisering, särskil
 ## <a name="get-started"></a>Kom igång
 Du kan skapa en pipeline med en kopierings aktivitet som flyttar data till/från en Azure Data Lake Store med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline för att kopiera data är att använda **guiden Kopiera** . En själv studie kurs om hur du skapar en pipeline med hjälp av guiden Kopiera finns i [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md).
+Det enklaste sättet att skapa en pipeline för att kopiera data är att använda **guiden Kopiera**. En själv studie kurs om hur du skapar en pipeline med hjälp av guiden Kopiera finns i [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md).
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager mall** , .net- **API** och **REST API** . Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
-1. Skapa en **data fabrik** . En data fabrik kan innehålla en eller flera pipeliner.
+1. Skapa en **data fabrik**. En data fabrik kan innehålla en eller flera pipeliner.
 2. Skapa **länkade tjänster** för att länka indata och utdata från data lager till din data fabrik. Om du t. ex. kopierar data från en Azure Blob Storage till en Azure Data Lake Store, skapar du två länkade tjänster för att länka ditt Azure Storage-konto och Azure Data Lake lagra till din data fabrik. För länkade tjänst egenskaper som är speciella för Azure Data Lake Store, se avsnittet [länkade tjänst egenskaper](#linked-service-properties) .
 2. Skapa data **uppsättningar** som representerar indata och utdata för kopierings åtgärden. I exemplet som nämns i det sista steget skapar du en data uppsättning för att ange BLOB-behållaren och mappen som innehåller indata. Du kan också skapa en annan data uppsättning för att ange mappen och sökvägen i Data Lake Store som innehåller data som kopieras från blob-lagringen. För data uppsättnings egenskaper som är speciella för Azure Data Lake Store, se avsnittet [Egenskaper för data mängd](#dataset-properties) .
 3. Skapa en **pipeline** med en kopierings aktivitet som tar en data uppsättning som indata och en data uppsättning som utdata. I exemplet ovan använder du BlobSource som källa och AzureDataLakeStoreSink som mottagare för kopierings aktiviteten. På samma sätt kan du använda AzureDataLakeStoreSource och BlobSink i kopierings aktiviteten om du kopierar från Azure Data Lake Store till Azure Blob Storage. Information om kopierings aktiviteter som är speciell för Azure Data Lake Store finns i avsnittet [Kopiera aktivitets egenskaper](#copy-activity-properties) . Om du vill ha mer information om hur du använder ett data lager som källa eller mottagare klickar du på länken i föregående avsnitt för ditt data lager.
@@ -72,7 +67,7 @@ En länkad tjänst länkar ett data lager till en data fabrik. Du skapar en län
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| **bastyp** | Egenskapen Type måste anges till **AzureDataLakeStore** . | Ja |
+| **bastyp** | Egenskapen Type måste anges till **AzureDataLakeStore**. | Ja |
 | **dataLakeStoreUri** | Information om Azure Data Lake Store-kontot. Den här informationen tar något av följande format: `https://[accountname].azuredatalakestore.net/webhdfs/v1` eller `adl://[accountname].azuredatalakestore.net/` . | Ja |
 | **subscriptionId** | ID för Azure-prenumeration som Data Lake Stores kontot tillhör. | Krävs för Sink |
 | **resourceGroupName** | Namnet på den Azure-resurs grupp som Data Lake Store kontot tillhör. | Krävs för Sink |
@@ -81,11 +76,11 @@ En länkad tjänst länkar ett data lager till en data fabrik. Du skapar en län
 Om du vill använda tjänstens huvud namns autentisering registrerar du en program enhet i Azure Active Directory (Azure AD) och ger den åtkomst till Data Lake Store. Detaljerade anvisningar finns i [tjänst-till-tjänst-autentisering](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
 * Program-ID
 * Program nyckel
-* Klientorganisations-ID
+* Klient-ID:t
 
 > [!IMPORTANT]
 > Se till att ge tjänstens huvud behörighet rätt behörighet i Azure Data Lake Store:
->- **Om du vill använda data Lake Store som källa** , bevilja du minst **läsa + kör** data åtkomst behörighet för att visa och kopiera innehållet i en mapp, eller **Läs** behörighet för att kopiera en enskild fil. Inget krav på åtkomst kontroll på konto nivå.
+>- **Om du vill använda data Lake Store som källa**, bevilja du minst **läsa + kör** data åtkomst behörighet för att visa och kopiera innehållet i en mapp, eller **Läs** behörighet för att kopiera en enskild fil. Inget krav på åtkomst kontroll på konto nivå.
 >- **Om du vill använda data Lake Store som mottagare** ger du minst behörigheten **Skriv + kör** data åtkomst för att skapa underordnade objekt i mappen. Och om du använder Azure IR för att öka kopieringen (både källa och mottagare finns i molnet), så att du kan Data Factory identifiera Data Lake Store region, bevilja minst **läsar** roll i konto åtkomst kontroll (IAM). Om du vill undvika den här IAM-rollen [anger du executionLocation](data-factory-data-movement-activities.md#global) med platsen för data Lake Store i kopierings aktiviteten.
 >- Om du **använder kopierings guiden för att redigera pipeliner ger du** minst **läsar** roll i konto åtkomst kontroll (IAM). Du kan också bevilja minst **Läs** -och kör behörighet till data Lake Store roten ("/") och dess underordnade. Annars kan du se meddelandet "de angivna autentiseringsuppgifterna är ogiltiga."
 
@@ -125,7 +120,7 @@ Du kan också använda autentisering med användarens autentiseringsuppgifter f�
 
 > [!IMPORTANT]
 > Se till att ge användaren rätt behörighet i Azure Data Lake Store:
->- **Om du vill använda data Lake Store som källa** , bevilja du minst **läsa + kör** data åtkomst behörighet för att visa och kopiera innehållet i en mapp, eller **Läs** behörighet för att kopiera en enskild fil. Inget krav på åtkomst kontroll på konto nivå.
+>- **Om du vill använda data Lake Store som källa**, bevilja du minst **läsa + kör** data åtkomst behörighet för att visa och kopiera innehållet i en mapp, eller **Läs** behörighet för att kopiera en enskild fil. Inget krav på åtkomst kontroll på konto nivå.
 >- **Om du vill använda data Lake Store som mottagare** ger du minst behörigheten **Skriv + kör** data åtkomst för att skapa underordnade objekt i mappen. Och om du använder Azure IR för att öka kopieringen (både källa och mottagare finns i molnet), så att du kan Data Factory identifiera Data Lake Store region, bevilja minst **läsar** roll i konto åtkomst kontroll (IAM). Om du vill undvika den här IAM-rollen [anger du executionLocation](data-factory-data-movement-activities.md#global) med platsen för data Lake Store i kopierings aktiviteten.
 >- Om du **använder kopierings guiden för att redigera pipeliner ger du** minst **läsar** roll i konto åtkomst kontroll (IAM). Du kan också bevilja minst **Läs** -och kör behörighet till data Lake Store roten ("/") och dess underordnade. Annars kan du se meddelandet "de angivna autentiseringsuppgifterna är ogiltiga."
 
@@ -233,17 +228,17 @@ Mer information om de Data Factory klasser som används i koden finns i avsnitte
     ```
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-Om du vill ange en data uppsättning som representerar indata i en Data Lake Store anger du egenskapen **Type** för data uppsättningen till **AzureDataLakeStore** . Ange egenskapen **linkedServiceName** för data uppsättningen till namnet på den länkade tjänsten Data Lake Store. En fullständig lista över JSON-avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [skapa data uppsättningar](data-factory-create-datasets.md) . Avsnitt i en data uppsättning i JSON, till exempel **struktur** , **tillgänglighet** och **policy** , liknar alla typer av data uppsättningar (till exempel Azure SQL Database, Azure blob och Azure Table). Avsnittet **typeProperties** är olika för varje typ av data uppsättning och innehåller information som till exempel plats och format för data i data lagret.
+Om du vill ange en data uppsättning som representerar indata i en Data Lake Store anger du egenskapen **Type** för data uppsättningen till **AzureDataLakeStore**. Ange egenskapen **linkedServiceName** för data uppsättningen till namnet på den länkade tjänsten Data Lake Store. En fullständig lista över JSON-avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [skapa data uppsättningar](data-factory-create-datasets.md) . Avsnitt i en data uppsättning i JSON, till exempel **struktur**, **tillgänglighet** och **policy**, liknar alla typer av data uppsättningar (till exempel Azure SQL Database, Azure blob och Azure Table). Avsnittet **typeProperties** är olika för varje typ av data uppsättning och innehåller information som till exempel plats och format för data i data lagret.
 
 Avsnittet **typeProperties** för en data uppsättning av typen **AzureDataLakeStore** innehåller följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | **folderPath** |Sökväg till behållaren och mappen i Data Lake Store. |Ja |
-| **fileName** |Namnet på filen i Azure Data Lake Store. Egenskapen **filename** är valfri och Skift läges känslig. <br/><br/>Om du anger **filename** fungerar aktiviteten (inklusive kopia) på den aktuella filen.<br/><br/>Om inget **fil namn** har angetts innehåller Copy alla filer i **folderPath** i data uppsättningen för indata.<br/><br/>Om inget **fil namn** har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren, är namnet på den genererade filen i formatet `Data._Guid_.txt` . Exempel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nej |
-| **partitionedBy** |Egenskapen **partitionedBy** är valfri. Du kan använda den för att ange en dynamisk sökväg och ett fil namn för Time Series-data. **FolderPath** kan till exempel vara parameterstyrda för varje timme med data. Mer information och exempel finns i egenskapen partitionedBy. |Nej |
-| **formatering** | Följande format typer stöds: text **Forms** , **JsonFormat** , **AvroFormat** , **OrcFormat** och **ParquetFormat** . Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) i fil- [och komprimerings format som stöds av Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel. <br><br> Om du vill kopiera filer "i befintligt skick" mellan filbaserade butiker (binär kopia) hoppar du över `format` avsnittet i både indata och utdata-datauppsättnings definitioner. |Nej |
-| **komprimering** | Ange typ och nivå för komprimeringen för data. Typer som stöds är **gzip** , **DEFLATE** , **BZip2** och **ZipDeflate** . De nivåer som stöds är **optimala** och **snabbaste** . Mer information finns i [fil-och komprimerings format som stöds av Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nej |
+| **fileName** |Namnet på filen i Azure Data Lake Store. Egenskapen **filename** är valfri och Skift läges känslig. <br/><br/>Om du anger **filename** fungerar aktiviteten (inklusive kopia) på den aktuella filen.<br/><br/>Om inget **fil namn** har angetts innehåller Copy alla filer i **folderPath** i data uppsättningen för indata.<br/><br/>Om inget **fil namn** har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren, är namnet på den genererade filen i formatet `Data._Guid_.txt` . Exempel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Inga |
+| **partitionedBy** |Egenskapen **partitionedBy** är valfri. Du kan använda den för att ange en dynamisk sökväg och ett fil namn för Time Series-data. **FolderPath** kan till exempel vara parameterstyrda för varje timme med data. Mer information och exempel finns i egenskapen partitionedBy. |Inga |
+| **formatering** | Följande format typer stöds: text **Forms**, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) i fil- [och komprimerings format som stöds av Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel. <br><br> Om du vill kopiera filer "i befintligt skick" mellan filbaserade butiker (binär kopia) hoppar du över `format` avsnittet i både indata och utdata-datauppsättnings definitioner. |Inga |
+| **komprimering** | Ange typ och nivå för komprimeringen för data. Typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**. De nivåer som stöds är **optimala** och **snabbaste**. Mer information finns i [fil-och komprimerings format som stöds av Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Inga |
 
 ### <a name="the-partitionedby-property"></a>Egenskapen partitionedBy
 Du kan ange dynamiska **folderPath** -och **filename** -egenskaper för Time Series-data med egenskapen **partitionedBy** , Data Factory Functions och systemvariabler. Mer information finns i artikeln [Azure Data Factory-Functions och system Variables](data-factory-functions-variables.md) .
@@ -281,15 +276,15 @@ Egenskaperna som är tillgängliga i avsnittet **typeProperties** i en aktivitet
 
 **AzureDataLakeStoreSource** stöder följande egenskap i avsnittet **typeProperties** :
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| **rekursiva** |Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. |Sant (standardvärde), falskt |Nej |
+| **rekursiva** |Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. |Sant (standardvärde), falskt |Inga |
 
 **AzureDataLakeStoreSink** stöder följande egenskaper i avsnittet **typeProperties** :
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| **copyBehavior** |Anger kopierings beteendet. |<b>PreserveHierarchy</b>: filens hierarki bevaras i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><br/><b>FlattenHierarchy</b>: alla filer från källmappen skapas på den första nivån i målmappen. Målattribut skapas med namn som skapats automatiskt.<br/><br/><b>MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om filen eller BLOB-namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars genereras fil namnet automatiskt. |Nej |
+| **copyBehavior** |Anger kopierings beteendet. |<b>PreserveHierarchy</b>: filens hierarki bevaras i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><br/><b>FlattenHierarchy</b>: alla filer från källmappen skapas på den första nivån i målmappen. Målattribut skapas med namn som skapats automatiskt.<br/><br/><b>MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om filen eller BLOB-namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars genereras fil namnet automatiskt. |Inga |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekursiva och copyBehavior-exempel
 I det här avsnittet beskrivs det resulterande beteendet för kopierings åtgärden för olika kombinationer av rekursiva och copyBehavior värden.

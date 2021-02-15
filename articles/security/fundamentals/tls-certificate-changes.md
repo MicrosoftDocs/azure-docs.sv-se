@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475360"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389407"
 ---
 # <a name="azure-tls-certificate-changes"></a>Ändringar i Azure TLS-certifikat  
 
@@ -24,7 +24,7 @@ Microsoft uppdaterar Azure-tjänster för att använda TLS-certifikat från en a
 
 Befintliga Azure-slutpunkter har övergått till ett stegvist sätt sedan den 13 augusti 2020. Alla nyligen skapade Azure TLS/SSL-slutpunkter innehåller uppdaterade certifikat som går samman till de nya rot certifikat utfärdarna.
 
-Tjänstspecifik information:
+Alla Azure-tjänster påverkas av den här ändringen. Här följer ytterligare information om vissa tjänster:
 
 - [Azure Active Directory](../../active-directory/index.yml) (Azure AD)-tjänster började den här över gången den 7 juli 2020.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) och [DPS](../../iot-dps/index.yml) finns kvar på Baltimore CyberTrust-rot certifikat utfärdare men deras mellanliggande certifikat utfärdare kommer att ändras. [Klicka här om du vill ha mer information](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).

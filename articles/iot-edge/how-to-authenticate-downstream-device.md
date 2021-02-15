@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678831"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391991"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Autentisera en underordnad enhet på Azure IoT Hub
 
@@ -68,6 +68,11 @@ Ange följande information när du skapar den nya enhets identiteten:
 * Välj **Ange en överordnad enhet** och välj den IoT Edge gateway-enhet som den här underordnade enheten ska ansluta till. Du kan alltid ändra överordnad senare.
 
    ![Skapa enhets-ID med symmetrisk nyckel-auth i portalen](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >Att ange den överordnade enheten som ska vara ett valfritt steg för underordnade enheter som använder symmetrisk nyckel autentisering. Men från och med IoT Edge version 1.1.0 varje underordnad enhet måste tilldelas en överordnad enhet.
+   >
+   >Du kan konfigurera IoT Edge Hub så att den går tillbaka till föregående beteende genom att ställa in miljövariabeln **AuthenticationMode** på värdet **CloudAndScope**.
 
 Du kan också använda [IoT-tillägget för Azure CLI för](https://github.com/Azure/azure-iot-cli-extension) att slutföra samma åtgärd. I följande exempel används [AZ IoT Hub Device-Identity-](/cli/azure/ext/azure-iot/iot/hub/device-identity) kommandot för att skapa en ny IoT-enhet med symmetrisk nyckel autentisering och tilldela en överordnad enhet:
 
@@ -201,7 +206,7 @@ Eller
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-Tack vare den överordnade/underordnade relationen kan du förenkla anslutnings strängen genom att anropa gatewayen direkt som anslutnings värd. Till exempel:
+Tack vare den överordnade/underordnade relationen kan du förenkla anslutnings strängen genom att anropa gatewayen direkt som anslutnings värd. Exempel:
 
 ```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

@@ -1,19 +1,17 @@
 ---
 title: Felsöka Azure Data Factory | Microsoft Docs
 description: Lär dig hur du felsöker externa kontroll aktiviteter i Azure Data Factory.
-services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.reviewer: craigg
-ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822292"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382811"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Felsöka Azure Data Factory
 
@@ -21,7 +19,7 @@ ms.locfileid: "97822292"
 
 Den här artikeln utforskar vanliga fel söknings metoder för externa kontroll aktiviteter i Azure Data Factory.
 
-## <a name="connector-and-copy-activity"></a>Anslutnings-och kopierings aktivitet
+## <a name="connector-and-copy-activity"></a>Anslutningsprogram och kopieringsaktivitet
 
 Information om anslutnings problem, till exempel ett problem med kopierings aktiviteten, finns i [felsöka Azure Data Factory anslutningar](connector-troubleshoot-guide.md).
 
@@ -441,7 +439,7 @@ Följande tabell gäller för U-SQL.
 
 - **Rekommendation**: kontrol lera att slut punkten som du försöker trycka på svarar på begär Anden. Du kan använda verktyg som Fiddler/Postman.
 
-## <a name="custom"></a>Anpassad
+## <a name="custom"></a>Anpassat
 
 Följande tabell gäller för Azure Batch.
  

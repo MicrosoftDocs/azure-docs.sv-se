@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173523"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102554"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web Authentication Library
 
@@ -70,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-00
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web är ett projekt med öppen källkod som finns på GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity- <span class="docon docon-navigate-external x-hidden-focus"></span> Web</a>
+Microsoft Identity Web är ett projekt med öppen källkod som finns på GitHub: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-Web</a>
 
 [Wiki-lagringsplatsen](https://github.com/AzureAD/microsoft-identity-web/wiki) innehåller ytterligare dokumentation, och om du behöver hjälp eller upptäcka en bugg kan du [skicka in ett problem](https://github.com/AzureAD/microsoft-identity-web/issues).
 
@@ -82,14 +82,14 @@ Microsoft Identity Web innehåller flera funktioner som inte tillhandahålls om 
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Logga in användare](scenario-web-app-sign-user-app-configuration.md) i Web Apps             | <li>Arbets- eller skolkonton<li>Sociala identiteter (med Azure AD B2C) | <li>Arbets- eller skolkonton<li>Personliga Microsoft-konton<li>Sociala identiteter (med Azure AD B2C)     |
 | [Skydda webb-API: er](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Arbets- eller skolkonton<li>Sociala identiteter (med Azure AD B2C) | <li>Arbets- eller skolkonton<li>Personliga Microsoft-konton<li>Sociala identiteter (med Azure AD B2C)     |
-| Verifiering av utfärdare i appar för flera klient organisationer                                                   | Nej                                                                   | Ja, för [alla moln](authentication-national-cloud.md) och [Azure AD B2C](../../active-directory-b2c/index.yml) |
-| Webbapp/API [anrop Microsoft Graph] [scenario-API-anrop-Graph]                             | Nej                                                                   | Ja                                                                                                     |
-| Webbapp/API [anropar webb-API] [scenario-API-anrop-API]                                       | Nej                                                                   | Ja                                                                                                     |
-| Har stöd för autentiseringsuppgifter för certifikat                                                         | Nej                                                                   | Ja, inklusive Azure Key Vault                                                                          |
-| Stegvist godkännande och stöd för villkorlig åtkomst i Web Apps                           | Nej                                                                   | Ja, i MVC, kniv sidor och blixt                                                                    |
-| Token krypterings certifikat i webb-API: er                                                | Nej                                                                   | Ja                                                                                                     |
-| [Verifiering av omfattningar/app-roll] [scenario – API-validering] i webb-API: er                        | Nej                                                                   | Ja                                                                                                     |
-| `WWW-Authenticate` Skapa sidhuvud i webb-API: er                                         | Nej                                                                   | Ja                                                                                                     |
+| Verifiering av utfärdare i appar för flera klient organisationer                                                   | Inga                                                                   | Ja, för [alla moln](authentication-national-cloud.md) och [Azure AD B2C](../../active-directory-b2c/index.yml) |
+| Webbapp/API [anrop Microsoft Graph] [scenario-API-anrop-Graph]                             | Inga                                                                   | Ja                                                                                                     |
+| Webbapp/API [anropar webb-API] [scenario-API-anrop-API]                                       | Inga                                                                   | Ja                                                                                                     |
+| Har stöd för autentiseringsuppgifter för certifikat                                                         | Inga                                                                   | Ja, inklusive Azure Key Vault                                                                          |
+| Stegvist godkännande och stöd för villkorlig åtkomst i Web Apps                           | Inga                                                                   | Ja, i MVC, kniv sidor och blixt                                                                    |
+| Token krypterings certifikat i webb-API: er                                                | Inga                                                                   | Ja                                                                                                     |
+| [Verifiering av omfattningar/app-roll] [scenario – API-validering] i webb-API: er                        | Inga                                                                   | Ja                                                                                                     |
+| `WWW-Authenticate` Skapa sidhuvud i webb-API: er                                         | Inga                                                                   | Ja                                                                                                     |
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -99,12 +99,14 @@ Om du vill se hur Microsoft Identity Web fungerar, kan du prova vår själv stud
 
 Microsoft Identity Web wiki på GitHub innehåller omfattande referens dokumentation för olika aspekter av biblioteket. Du kan till exempel hitta certifikat användning, stegvisa medgivande och referens för villkorlig åtkomst här:
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Använda certifikat med Microsoft. Identity. Web <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHub
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Stegvist medgivande och villkorlig åtkomst <span class="docon docon-navigate-external x-hidden-focus"></span> </a> GitHub
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Använda certifikat med Microsoft. Identity. Web</a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">Stegvist medgivande och villkorlig åtkomst</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->
 <!--  [miw-certs-decrypt]: microsoft-identity-web-certificates.md#decryption-certificates  -->
 <!--  [miw-inc-consent-ca-header]: microsoft-identity-web-consent-conditional-access.md#handling-incremental-consent-or-conditional-access-in-web-apis  -->
 <!--  [miw-inc-consent-ca]: microsoft-identity-web-consent-conditional-access.md  -->
-[scenario-API-anrops-API]: scenario-Web-API-Call-API-Call-API. MD # alternativ-1-anrop-Microsoft-Graph-with-SDK [scenario-API-Call-Graph]: scenario-Web-API-Call-API-Call-Graph. MD # alternativ-1-Call-Microsoft-Graph-with-SDK [scenario-API-verifiering]: scenario-protected-web-api-verification-scope-app-roles.md
+[scenario-API-anrops-API]: scenario-Web-API-Call-API-Call-API. MD # alternativ-1-Call-Microsoft-Graph-with-the-SDK  
+[scenario-API-anrop-Graph]: scenario-Web-API-Call-API-Call-API. MD # alternativ-1-Call-Microsoft-Graph-with-the-SDK  
+[scenario – API-validering]: scenario-protected-web-api-verification-scope-app-roles.md  
