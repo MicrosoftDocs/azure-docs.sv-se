@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: b33c456d47426a3721e8582f24ffd603db0429c9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340041"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522928"
 ---
 # <a name="security-module"></a>Säkerhetsmodul
 
@@ -40,7 +40,7 @@ Egenskaperna för enhets säkerhet underhålls i en dedikerad säkerhetsmodul f�
 
 Mer information om hur du skapar, anpassar och konfigurerar den dubbla finns i [skapa säkerhetsmodul](quickstart-create-security-twin.md) , grupp två och [Konfigurera säkerhets agenter](how-to-agent-configuration.md) . Mer information om hur modulen finns i IoT Hub finns i [förstå modulernas dubblare](../iot-hub/iot-hub-devguide-module-twins.md) .
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Defender för IoT](overview.md)
 - [Distribuera säkerhetsagenter](how-to-deploy-agent.md)

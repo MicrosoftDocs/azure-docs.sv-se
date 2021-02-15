@@ -131,8 +131,8 @@
               displayName: 'Active Directory, roles, permissions'
               href: how-to-create-and-manage-users.md
             - name: Definiera global användaråtkomstkontroll
-              displayName: 'business unit, site, region'
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
         - name: Styr vilken trafik som övervakas
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
           href: how-to-control-what-traffic-is-monitored.md
@@ -140,8 +140,8 @@
           displayName: 'disconnect, connect, activation file, sensor backup'
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: Hantera enskilda sensorer
-          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
         - name: Hantera sensorer i molnet
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Hantera den lokala hanteringskonsolen
@@ -153,10 +153,13 @@
           items:
             - name: Undersök alla identifieringar av företagssensorer i en enhetsinventering
               href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
             - name: Undersök identifieringar av sensorer i en enhetsinventering
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry'
         - name: Arbeta med kartan över sensorenheter
           href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom'
         - name: Arbeta med aviseringar som identifierats av en sensor
           items:
             - name: Arbeta med en avisering på en sensor
@@ -165,8 +168,10 @@
               href: how-to-view-alerts.md
             - name: Visa informationen som tillhandahålls i aviseringar
               href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
             - name: Hantera aviseringshändelsen
               href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
             - name: Påskynda incidenthantering för en avisering
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
@@ -175,18 +180,21 @@
               displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 'Få insikter om globala, regionala och lokala hot'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
         - name: Arbeta med aviseringar på den lokala hanteringskonsolen
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Skapa rapporter
           items:
             - name: Skapa risk utvärderings rapporter
               href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score'
             - name: Skapa angrepps vektor rapporter
               href: how-to-create-attack-vector-reports.md
             - name: Skapa data utvinnings rapporter
               href: how-to-create-data-mining-queries.md
             - name: Skapa trender och statistik rapporter
-              href: how-to-create-data-mining-queries.md
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
         - name: Berika enhetsinformation
           items:
             - name: Arbeta med enhetsmeddelanden

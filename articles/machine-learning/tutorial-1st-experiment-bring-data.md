@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622802"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378015"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Självstudie: Använd dina egna data (del 4 av 4)
 
@@ -82,21 +82,8 @@ optimizer = optim.SGD(
 
 Ditt skript accepterar nu _data Sök vägen_ som ett argument. Börja med genom att testa det lokalt. Lägg till i din själv studie katalog struktur en mapp med namnet `data` . Katalog strukturen bör se ut så här:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Katalog strukturen visar. azureml, data och src-under kataloger":::
+
 
 Om du inte körde `train.py` lokalt i den föregående själv studie kursen har du inte `data/` katalogen. I det här fallet kör du `torchvision.datasets.CIFAR10` metoden lokalt med `download=True` i `train.py` skriptet.
 

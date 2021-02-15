@@ -4,15 +4,15 @@ description: Lär dig hur du hanterar enskilda sensorer, inklusive hur du hanter
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508768"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523982"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -86,7 +86,7 @@ Du får ett fel meddelande om det inte gick att överföra aktiverings filen. F�
 
 - **För moln anslutna sensorer**: sensorn kan inte ansluta till Internet. Kontrol lera sensorns nätverks konfiguration. Om sensorn behöver ansluta via en webbproxy för att få åtkomst till Internet kontrollerar du att proxyservern har kon figurer ATS korrekt på skärmen **sensor nätverks konfiguration** . Kontrol lera att \* . Azure-Devices.net:443 är tillåtet i brand väggen och/eller proxyservern. Om jokertecken inte stöds eller om du vill ha mer kontroll, ska FQDN för din speciella Defender för IoT Hub öppnas i brand väggen och/eller proxyservern. Mer information finns i [referens-IoT Hub slut punkter](../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **För moln anslutna sensorer**: aktiverings filen är giltig men Defender för IoT avvisade den. Om du inte kan lösa det här problemet kan du ladda ned en annan aktivering från sidan **sensor hantering** i Defender for IoT-portalen. Kontakta Microsoft Support om detta inte fungerar.
+- **För moln anslutna sensorer**: aktiverings filen är giltig men Defender för IoT avvisade den. Om du inte kan lösa det här problemet kan du hämta en annan aktivering från sidan platser och sensorer i Defender for IoT-portalen. Kontakta Microsoft Support om detta inte fungerar.
 
 ## <a name="manage-certificates"></a>Hantera certifikat
 
@@ -114,7 +114,7 @@ Defender för IoT-sensorn och den lokala hanterings konsolen använder SSL och T
  
  - Säker kommunikation mellan sensorer och en lokal hanterings konsol. 
 
-När den har installerats genererar enheten ett lokalt självsignerat certifikat för att tillåta preliminär åtkomst till webb konsolen. Enterprise SSL och TLS-certifikat kan installeras med hjälp av [`cyberx-xsense-certificate-import`](#cli-commands) kommando rads verktyget. 
+När den har installerats genererar enheten ett lokalt självsignerat certifikat för att tillåta preliminär åtkomst till webb konsolen. Enterprise SSL och TLS-certifikat kan installeras med hjälp av [`cyberx-xsense-certificate-import`](#cli-commands) kommando rads verktyget.
 
  > [!NOTE]
  > För integrerings-och vidarebefordrings regler där installationen är klienten och initieraren av sessionen används vissa certifikat och är inte relaterade till system certifikaten.  
@@ -282,7 +282,7 @@ När du använder CLI-kommandot:
 
 Hantera dina certifikat med följande kommandon:
 
-| Description | CLI-kommando |
+| Beskrivning | CLI-kommando |
 |--|--|
 | Generera en ny privat nyckel och certifikat signerings förfrågan | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Generera ett självsignerat certifikat | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ Hantera dina certifikat med följande kommandon:
 
 Använd de här kommandona om du behöver kontrol lera informationen i ett certifikat, CSR eller privat nyckel.
 
-| Description | CLI-kommando |
+| Beskrivning | CLI-kommando |
 |--|--|
 | Kontrol lera en begäran om certifikat signering (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
 | Kontrol lera en privat nyckel | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Använd de här kommandona om du behöver kontrol lera informationen i ett certi
 
 Om du får ett fel meddelande om att den privata nyckeln inte matchar certifikatet, eller om ett certifikat som har installerats på en plats inte är betrott, använder du följande kommandon för att åtgärda felet.
 
-| Description | CLI-kommando |
+| Beskrivning | CLI-kommando |
 |--|--|
 | Kontrol lera en MD5-hash av den offentliga nyckeln för att kontrol lera att den matchar det som finns i en CSR eller privat nyckel | 81.1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 11.2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Om du vill konvertera certifikat och nycklar till olika format så att de är kompatibla med vissa typer av servrar, eller program, använder du dessa kommandon.
 
-| Description | CLI-kommando |
+| Beskrivning | CLI-kommando |
 |--|--|
 | Konvertera en DER-fil (. CRT. cer. der) till PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Konvertera en PEM-fil till DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -363,15 +363,23 @@ Om sensorn har registrerats som en molnbaserad sensor definieras sensor namnet a
 
 Så här ändrar du namnet:
 
-1. På Azure Defender för IoT-portalen går du till sidan **sensor hantering** .
+1. På Azure Defender för IoT-portalen går du till sidan platser och sensorer.
 
-1. Ta bort sensorn från fönstret **sensor hantering** .
+1. Ta bort sensorn från sidan platser och sensorer.
 
-1. Registrera igen med det nya namnet.
+1. Registrera med det nya namnet genom att välja **onboard sensor** på sidan komma igång.
 
 1. Hämta den nya aktiverings filen.
 
-1. Logga in på sensorn och överför den nya aktiverings filen.
+1. Logga in på konsolen Defender för IoT-sensorn.
+
+1. I sensor konsolen väljer du **Systeminställningar** och väljer sedan **Återaktivering**.
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Ladda upp aktiverings filen för att återaktivera sensorn.":::
+
+1. Välj **överför** och välj den fil som du sparade.
+
+1. Välj **Aktivera**.
 
 ## <a name="update-the-sensor-network-configuration"></a>Uppdatera sensor nätverks konfigurationen
 
@@ -387,7 +395,7 @@ Om du skapar en ny IP-adress kan du behöva logga in igen.
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="Konfigurera dina nätverks inställningar.":::
 
-3. Ange parametrarna enligt följande:
+3. Ange parametrarna:
 
     | Parameter | Beskrivning |
     |--|--|
@@ -458,7 +466,7 @@ Så här sparar du säkerhets kopian på en extern SMB-server:
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. Redigera `fstab` : 
+3. Redigera `fstab` :
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Följande procedur beskriver hur du uppdaterar en fristående sensor med hjälp 
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="Skärm bild av uppgraderings versionen som visas när du loggar in.":::
 
-## <a name="forward-sensor-failure-alerts"></a>Aviseringar om vidarebefordrande sensor 
+## <a name="forward-sensor-failure-alerts"></a>Aviseringar om vidarebefordrande sensor
 
 Du kan vidarebefordra aviseringar till tredje part för att ge information om:
 
@@ -562,7 +570,7 @@ För att komma åt system egenskaper:
 
 3. Välj **system egenskaper** i avsnittet **Allmänt** .
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Forsknings och paket för hot information](how-to-work-with-threat-intelligence-packages.md)
 

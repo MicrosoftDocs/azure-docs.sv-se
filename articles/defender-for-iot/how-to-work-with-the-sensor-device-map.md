@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509056"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523846"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Undersök sensor identifieringar i enhets kartan
 
@@ -36,7 +36,7 @@ Följande verktyg används för att arbeta i kartan.
 
 Användar rollen avgör vilka verktyg som är tillgängliga i enhets kartans fönster. Mer information om användar roller finns i [skapa och hantera användare](how-to-create-and-manage-users.md) .
 
-| Symbol | Description |
+| Symbol | Beskrivning |
 |---|---|
 | :::image type="icon" source="media/how-to-work-with-maps/search-bar-icon-v2.png" border="false":::| Sök efter IP-adress eller MAC-adress för en speciell enhet. Ange IP-adressen eller MAC-adressen i text rutan. Kartan visar den enhet som du sökte efter med enheter som är anslutna till den. |
 | Grupp markering och filter <br /> :::image type="content" source="media/how-to-work-with-maps/group-highlight-and-filters-v2.png" alt-text="Skärm bild av gruppens högdagrar och filter."::: | Filtrera eller markera kartan baserat på standard och anpassade enhets grupper. |
@@ -118,7 +118,7 @@ Visa grupper efter:
 
 Följande fördefinierade grupper är tillgängliga:
 
-| Gruppnamn | Description |
+| Gruppnamn | Beskrivning |
 |--|--|
 | **Kända program** | Enheter som använder reserverade portar, till exempel TCP.  |
 | **portar som inte är standard (standard)** | Enheter som använder andra portar än standard portar eller portar som inte har tilldelats ett alias. |
@@ -267,7 +267,7 @@ Det finns en mängd olika verktyg för att lära dig mer om enheter som utgör e
 
 Följande etiketter och indikatorer kan visas på enheter på kartan:
 
-| Enhets etikett | Description |
+| Enhets etikett | Beskrivning |
 |--|--|
 | :::image type="content" source="media/how-to-work-with-maps/host-v2.png" alt-text="IP-värdnamn"::: | IP-adressens värdnamn och IP-adress eller undernäts adresser |
 | :::image type="content" source="media/how-to-work-with-maps/amount-alerts-v2.png" alt-text="Antal aviseringar"::: | Antal aviseringar som är associerade med enheten |
@@ -313,24 +313,24 @@ Följande information kan uppdateras manuellt. Information som anges manuellt å
 
   - Purdue-skikt
 
-  - Description
+  - Beskrivning
 
 | Objekt | Beskrivning |
 |--|--|
 | Grundläggande information | Den grundläggande information som krävs. |
-| Name | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
+| Namn | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
 | Typ | Enhets typen som identifierades av sensorn. <br /> Mer information finns i [Visa enhets typer](#view-device-types). |
 | Leverantör | Enhets leverantören. Detta bestäms av de inledande tecknen i enhetens MAC-adress. Det här fältet är skrivskyddat. |
 | Operativsystem | Enhetens operativ system identifierat av sensorn. |
 | Purdue-skikt | Det Purdue-skikt som identifieras av sensorn för den här enheten, inklusive: <br /> -Automatisk <br /> -Process kontroll <br /> – Övervakare <br /> – Enterprise |
-| Description | Ett fritext fält. <br /> Lägg till mer information om enheten. |
+| Beskrivning | Ett fritext fält. <br /> Lägg till mer information om enheten. |
 | Attribut | Eventuell ytterligare information som identifierades om enheten under inlärnings perioden och som inte tillhör andra kategorier visas i avsnittet attribut. <br /> Informationen är RO. |
 | Inställningar | Du kan ändra enhets inställningarna manuellt för att förhindra falska positiva identifieringar: <br /> - **Auktoriserad enhet**: under inlärnings perioden identifieras alla enheter som identifieras i nätverket som auktoriserade enheter. När en enhet identifieras efter inlärnings perioden visas den som en oauktoriserad enhet som standard. Du kan ändra den här definitionen manuellt. <br /> - **Kallas skanner**: aktivera det här alternativet om du vet att enheten är känd som skanner och det inte finns något behov av att varna dig om den. <br /> - **Programmerings enhet**: aktivera det här alternativet om du vet att den här enheten kallas en programmerings enhet och används för att göra programmerings ändringar. Att identifiera det som en programmerings enhet förhindrar aviseringar för programmerings ändringar från den här till gången. |
 | Anpassade grupper | De anpassade grupperna i enhets kartan där enheten ingår. |
 | Stat | Enhetens säkerhet och status för auktorisering: <br /> -Statusen är `Secured` när det inte finns några aviseringar <br /> – När det finns aviseringar om enheten visas antalet aviseringar <br /> – Statusen `Unauthorized` visas för enheter som har lagts till i nätverket efter inlärnings perioden. Du kan definiera enheten manuellt som `Authorized Device` i inställningarna <br /> – Om den här enhetens adress definieras som en dynamisk adress `DHCP` läggs den till i status. |
 
 
-| Nätverk | Description |
+| Nätverk | Beskrivning |
 |--|--|
 | Gränssnitt | Enhetens gränssnitt. Ett RO-fält. |
 | Protokoll | De protokoll som används av enheten. Ett RO-fält. |
@@ -489,7 +489,7 @@ I det här avsnittet beskrivs hur du visar programfiler och jämför versioner. 
 
 :::image type="content" source="media/how-to-work-with-maps/timeline-view.png" alt-text="tids linje fönster för programmering":::
 
-|Tids linje typ för programmering | Description |
+|Tids linje typ för programmering | Beskrivning |
 |--|--|
 | Programmerad enhet | Innehåller information om den enhet som har programmerats, inklusive värdnamn och fil. |
 | Senaste händelser | Visar de 50 senaste händelserna som identifierats av sensorn. <br />För att markera en händelse, Hovra över den och klicka på stjärnan. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> De senaste 50 händelserna kan visas. |
@@ -544,7 +544,7 @@ Att jämföra:
 
 Förutom att granska information i tids linjen för programmering, kan du komma åt programmerings information i enhets Fönstret Egenskaper och enhets inventeringen.
 
-| Enhetstyp | Description |
+| Enhetstyp | Beskrivning |
 |--|--|
 | Enhetsegenskaper | Fönstret enhets egenskaper innehåller information om den senaste programmerings händelsen som identifierats på device\. :::image type="content" source="media/how-to-work-with-maps/information-from-device-v2.png" alt-text="Enhetens egenskaper"::: |
 | Enhets inventeringen | Enhets inventeringen visar om enheten är en programmerings device\. :::image type="content" source="media/how-to-work-with-maps/inventory-v2.png" alt-text="Inventering av enheter"::: |
@@ -709,6 +709,6 @@ Att exportera:
 
 1. Välj ett export alternativ.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)

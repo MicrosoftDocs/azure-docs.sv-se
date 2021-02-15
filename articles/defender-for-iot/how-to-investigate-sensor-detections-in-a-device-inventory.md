@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508870"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523999"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Undersök identifieringar av sensorer i en enhetsinventering
 
@@ -32,7 +32,7 @@ Följande attribut visas i enhets inventerings tabellen.
 
 | Parameter | Beskrivning |
 |--|--|
-| Name | Enhetens namn som sensorn upptäckte den eller som anges av användaren. |
+| Namn | Enhetens namn som sensorn upptäckte den eller som anges av användaren. |
 | Typ | Typ av enhet som bestäms av sensorn eller som anges av användaren. |
 | Leverantör | Namnet på enhetens leverantör, enligt vad som definieras i MAC-adressen. |
 | Operativsystem | Enhetens operativ system, om det upptäcks. |
@@ -223,7 +223,7 @@ Så här exporterar du en CSV-fil:
 
 - På den övre högra menyn i enhets inventeringen väljer du :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: . CSV-rapporten genereras och hämtas.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Undersök alla identifieringar av företagssensorer i en enhetsinventering](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

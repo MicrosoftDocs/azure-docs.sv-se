@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: f8018200e64646ec7894ac76999e2cb766ef380c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb3df574029a7c13488830e01354e738930fcd7f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418215"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523438"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Hoxhunt för automatisk användar etablering
 
@@ -41,18 +41,17 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 * [En Azure AD-klient](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Ett användar konto i Azure AD med [behörighet](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
 * En Hoxhunt-klient.
-* Ett användar konto i Hoxhunt med administratörs behörighet.
-
+* SCIM API-nyckel och SCIM slut punkts-URL för din organisation (konfigurerad av Hoxhunt support).
+?
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
 1. Lär dig mer om [hur etableringstjänsten fungerar](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Ta reda på vem som finns i [etableringsomfånget](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Ta reda på vilka data som ska [mappas mellan Azure AD och Hoxhunt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
 ## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Hoxhunt för att ge stöd för etablering med Azure AD
-
-Konfigurera Hoxhunt till att stödja etablering med Azure AD – Skriv ett e-postmeddelande till Hoxhunt support ( support@hoxhunt.com ).
-De kommer att tillhandahålla **autentiseringstoken** och **scim slut punkts-URL**.
-
+?
+Kontakta [Hoxhunt-supporten](mailto:support@hoxhunt.com) för att ta emot scim API-nyckel och scim slut punkts-URL för att konfigurera Hoxhunt till stöd för etablering med Azure AD.
+?
 ## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till Hoxhunt från Azure AD-programgalleriet
 
 Lägg till Hoxhunt från Azure AD-programgalleriet för att börja hantera etablering till Hoxhunt. Om du tidigare har konfigurerat Hoxhunt för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509039"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523574"
 ---
 # <a name="work-with-device-notifications"></a>Arbeta med enhetsmeddelanden
 
@@ -48,7 +48,7 @@ Så här visar du meddelanden:
 
 Använd Sök filter för att visa meddelanden som intresserar dig.
 
-| Filtrera efter | Description |
+| Filtrera efter | Beskrivning |
 |--|--|
 | Filtrera efter typ | Visa meddelanden som avser ett bestämt intresse områden. Du kan till exempel endast visa meddelanden för inaktiva enheter. |
 | Filtrera efter datum intervall | Visa meddelanden som avser ett angivet tidsintervall. Visa till exempel meddelanden som skickats under den senaste veckan. |
@@ -58,7 +58,7 @@ Använd Sök filter för att visa meddelanden som intresserar dig.
 
 I följande tabell beskrivs de typer av meddelande händelser som du kan få, tillsammans med alternativen för att hantera dem. Du kan uppdatera enhets informationen med ett Rekommenderat värde eller stänga meddelandet. När du stänger ett meddelande uppdateras inte enhets informationen med den rekommenderade informationen. Om trafiken identifieras igen kommer meddelandet att skickas igen.
 
-| Meddelande händelse typer | Description | Svar |
+| Meddelande händelse typer | Beskrivning | Svar |
 |--|--|--|
 | Ny IP identifierades | En ny IP-adress är kopplad till enheten. Fem scenarier kan identifieras: <br /><br /> En ytterligare IP-adress var kopplad till en enhet. Den här enheten är också kopplad till en befintlig MAC-adress.<br /><br /> En ny IP-adress har identifierats för en enhet som använder en befintlig MAC-adress. För närvarande kommunicerar enheten inte med hjälp av en IP-adress.<br /> <br /> En ny IP-adress har identifierats för en enhet som använder ett NetBIOS-namn. <br /><br /> En IP-adress identifierades som hanterings gränssnitt för en enhet som är associerad med en MAC-adress. <br /><br /> En ny IP-adress har identifierats för en enhet som använder en virtuell IP-adress. | **Ange ytterligare IP-adress till enhet** (slå samman enheter) <br /> <br />**Ersätt befintlig IP** <br /> <br /> **Stäng**<br /> Ta bort meddelandet. |
 | Inaktiva enheter | Trafiken identifierades inte på en enhet i mer än 60 dagar. | **Ta bort** <br /> Om enheten inte är en del av nätverket tar du bort den. <br /><br />**Stäng** <br /> Ta bort meddelandet om enheten ingår i nätverket. Om enheten är inaktiv (till exempel eftersom den av misstag inte är frånkopplad från nätverket), Stäng meddelandet och Återanslut enheten. |
@@ -98,6 +98,6 @@ Undersök rekommendationerna för att utöka OS-klassificeringen. Den här infor
 
 När du godkänner en rekommendation kommer operativ systemets typ information att uppdateras i sensorn.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Visa aviseringar](how-to-view-alerts.md)

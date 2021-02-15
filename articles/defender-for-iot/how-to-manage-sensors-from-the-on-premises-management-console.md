@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624599"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523965"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Hantera sensorer från hanterings konsolen
 
@@ -72,7 +72,7 @@ Du kan uppdatera flera sensorer samtidigt från den lokala hanterings konsolen.
 
 Så här uppdaterar du flera sensorer:
 
-1. Öppna [Azure-portalen](https://portal.azure.com/).
+1. Gå till [Azure-portalen](https://portal.azure.com/).
 
 2. Gå till Azure Defender för IoT.
 
@@ -144,7 +144,7 @@ Du kan skicka aviseringar till tredje part med information om frånkopplade sens
 
 Sensorer skyddas av fem Defender för IoT-motorer. Du kan aktivera eller inaktivera motorer för anslutna sensorer.
 
-| Motor | Description | Exempelscenario |
+| Motor | Beskrivning | Exempelscenario |
 |--|--|--|
 | Protokolls brotts motor | Ett protokoll fel uppstår när paket strukturen eller fält värden inte följer protokoll specifikationen. | Aviseringen "Ogiltig MODBUS-åtgärd (funktions kod noll)". Den här varningen anger att en primär enhet skickade en begäran med funktions kod 0 till en sekundär enhet. Detta är inte tillåtet enligt protokoll specifikationen och den sekundära enheten kanske inte kan hantera inaktuella inmatade enheter. |
 | Princip överträdelse motor | En princip överträdelse inträffar med en avvikelse från bas linje beteendet som definierats i den inlärda eller konfigurerade principen. | Varningen "obehörig HTTP-användare agent". Den här varningen anger att ett program som inte har lärts eller godkänts av principen används som en HTTP-klient på en enhet. Detta kan vara en ny webbläsare eller ett annat program på den enheten. |
@@ -315,6 +315,6 @@ Så här konfigurerar du en SMB-server så att du kan spara en sensor säkerhets
 
 9. Ange `Backup.shared_location` till `<backup_folder_name_on_cyberx_server>` .
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Hantera enskilda sensorer](how-to-manage-individual-sensors.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 1729a20825eb554a4fd2ee60141994e57e62f030
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3a7dabfed86dab463b38ae45278ead7f5acb5ef9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810001"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521959"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>Agentbaserad lösning för enhetsskapare
 
@@ -44,7 +44,7 @@ Defender för IoT-rekommendationer och-varningar (analys av pipeline-utdata) skr
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Mikroagentens arkitektur.":::
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)
 

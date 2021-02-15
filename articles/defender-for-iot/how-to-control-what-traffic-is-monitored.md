@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624692"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522401"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Styr vilken trafik som övervakas
 
@@ -157,7 +157,7 @@ Om du arbetar med dynamiska nätverk hanterar du ändringar av IP-adress som int
 
 Genom att definiera dynamiska IP-adresser på varje sensor kan du använda omfattande, transparent stöd i instanser av IP-adress ändringar. Detta säkerställer omfattande rapportering för varje unik enhet.
 
-Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Till exempel:
+Sensor konsolen visar den mest aktuella IP-adressen som är kopplad till enheten och indikerar vilka enheter som är dynamiska. Exempel:
 
 - Rapporten data utvinnings rapport och enhets inventering sammanför all aktivitet som har lärts från enheten som en enhet, oavsett IP-adressen. De här rapporterna visar vilka adresser som har definierats som DHCP-adresser.
 
@@ -295,7 +295,7 @@ Visa genomsöknings resultat:
 
 1. När genomsökningen är färdig väljer du **Visa Sök Resultat** i fönstret **åtgärder** . CSV-filen med genomsöknings resultaten hämtas till datorn.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  [Undersök sensor identifieringar i enhets kartan](how-to-work-with-the-sensor-device-map.md)

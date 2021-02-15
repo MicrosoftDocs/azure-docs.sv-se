@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625272"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364842"
 ---
 # <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt
 
@@ -44,7 +44,7 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 |                   | Skicka och ta emot Skriv meddelanden när en medlem aktivt skriver ett meddelande i en chatt-tråd <br/> *Inte tillgängligt när det finns fler än 20 medlemmar i en chatt-tråd*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Hämta alla meddelanden i en chatt-tråd <br/> *Unicode-emojis stöds*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | Skicka emojis som en del av meddelande innehållet                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Signalering i real tid (aktiverat av patentskyddat signal paket)| Få ett meddelande när en användare får ett nytt meddelande i en chatt-tråd som de är medlem i                                     | ✔️   | ❌    | ❌  | ❌  |
+|Signalering i real tid (aktiverat av patentskyddat signal paket * *)| Få ett meddelande när en användare får ett nytt meddelande i en chatt-tråd som de är medlem i                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Få ett meddelande när ett meddelande har redigerats av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Få ett meddelande när ett meddelande har tagits bort av en annan medlem i en chatt-tråd som de är medlem i                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Få ett meddelande när en annan Chat-tråd medlem skriver                                                             | ✔️   | ❌    | ❌    | ❌  |
@@ -53,6 +53,8 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 | Övervakning        | Övervaka användning avseende meddelanden som skickas                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Övervaka kvalitet och status för API-begäranden som görs av din app och konfigurera aviseringar via portalen                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Ytterligare funktioner | Använd [API:er för Cognitive Services](../../../cognitive-services/index.yml) tillsammans med klient biblioteket i Chat för att aktivera intelligenta funktioner – *språk översättning & sentiment analys av det inkommande meddelandet på en klient, tal till text konvertering för att skapa ett meddelande när medlemmen pratar, osv.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+* * Det tillverkarspecifika signal paketet implementeras med hjälp av Web Sockets. Det kommer att återgå till lång avsökning om Web Sockets inte stöds.
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Java Script Chat-klient bibliotek stöd av OS och webbläsare
 

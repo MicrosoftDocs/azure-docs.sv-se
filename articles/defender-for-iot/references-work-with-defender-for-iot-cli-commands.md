@@ -1,5 +1,5 @@
 ---
-title: Arbeta med Defender för IoT CLI-kommandon
+title: Arbeta med Defender for IoT-CLI-kommandon
 description: Den här artikeln beskriver Defender för IoT CLI-kommandon för sensorer och lokala hanterings konsoler.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845260"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523149"
 ---
-# <a name="work-with-defender-for-iot-cli-commands"></a>Arbeta med Defender för IoT CLI-kommandon
+# <a name="work-with-defender-for-iot-cli-commands"></a>Arbeta med Defender for IoT-CLI-kommandon
 
 I den här artikeln beskrivs CLI-kommandon för sensorer och lokala hanterings konsoler. Kommandona är tillgängliga för administratörer, Cyberx-användare och support användare.
 
@@ -290,6 +290,6 @@ När du använder verktyget:
 
 - Bekräfta med IT-domänen (som den visas i certifikatet) med DNS-servern och motsvarande IP-adress. 
     
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [API: er för IoT API-sensor och hanterings konsol](references-work-with-defender-for-iot-apis.md)

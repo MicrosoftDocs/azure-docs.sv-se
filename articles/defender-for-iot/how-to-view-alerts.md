@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509085"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523676"
 ---
 # <a name="view-alerts"></a>Visa aviseringar
 
@@ -24,7 +24,7 @@ Du kan också visa aviseringar från sensorns instrument panel.
 
 För att visa aviseringar:
 
-- Välj **aviseringar** på menyn på sidan. **Aviserings fönstret visar** de aviseringar som sensorn har identifierat.
+- Välj **aviseringar** på menyn på sidan. Aviserings fönstret visar de aviseringar som sensorn har identifierat.
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="Vy över aviserings skärmen.":::
 
@@ -32,7 +32,7 @@ För att visa aviseringar:
 
 Du kan visa aviseringar efter olika kategorier från huvudvyerna **aviseringar** . Välj en avisering för att granska informationen och hantera händelsen.
 
-| Sortera efter typ | Description |
+| Sortera efter typ | Beskrivning |
 |--|--|
 | **Viktiga aviseringar** | Aviseringar sorterade efter prioritet. |
 | **Fästa aviseringar** | Aviseringar som användaren har fäst för ytterligare undersökning. Fästa aviseringar arkiveras inte och lagras i 14 dagar i den fästa mappen. |
@@ -42,21 +42,21 @@ Du kan visa aviseringar efter olika kategorier från huvudvyerna **aviseringar**
 
 ## <a name="search-for-alerts-of-interest"></a>Sök efter aviseringar av intresse
 
-Huvud vyn **aviseringar** innehåller olika Sök funktioner som hjälper dig att hitta aviseringar om intresse.
+Huvud vyn aviseringar innehåller olika Sök funktioner som hjälper dig att hitta aviseringar om intresse.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="Skärm bild för varningar inlärning.":::
 
-### <a name="text-search"></a>Texts ökning 
+### <a name="text-search"></a>Texts ökning
 
-Använd alternativet **kostnads fri sökning** för att söka efter aviseringar efter text, siffror eller tecken.
+Använd alternativet kostnads fri sökning för att söka efter aviseringar efter text, siffror eller tecken.
 
 Att söka:
 
-- Skriv den text som krävs i det **kostnads fria Sök** fältet och tryck på RETUR på tangent bordet.
+- Skriv den text som krävs i det kostnads fria Sök fältet och tryck på RETUR på tangent bordet.
 
 Rensa sökningen:
 
-- Ta bort texten i det **kostnads fria Sök** fältet och tryck på RETUR på tangent bordet.
+- Ta bort texten i det kostnads fria Sök fältet och tryck på RETUR på tangent bordet.
 
 ### <a name="device-group-or-device-ip-address-search"></a>Sök efter enhets grupp eller enhets-IP-adress
 
@@ -100,7 +100,7 @@ Aviserings meddelanden innehåller följande åtgärder:
 
 - Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: om du vill lära dig och bekräfta alla aviseringar.
 
-- Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: att exportera aviserings listan till en CSV-fil och välj alternativet Exportera. Välj **Exportera avisering** för det vanliga alternativet Exportera till CSV. Eller Välj **utökad varnings export** för möjligheten att lägga till separata rader för ytterligare information om en AVISERING i CSV-filen.
+- Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: om du vill exportera aviserings information till en. csv-fil. Använd alternativet för **utökad aviserings export** för att exportera aviserings information i separata rader för varje avisering som täcker flera enheter.
 
 ## <a name="alert-pop-up-window-options"></a>Alternativ för popup-fönstret avisering
 

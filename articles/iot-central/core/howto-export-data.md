@@ -8,12 +8,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515911"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522622"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportera IoT-data till moln mål med hjälp av data export
 
@@ -168,14 +168,14 @@ Nu när du har ett mål för att exportera data till, konfigurerar du data expor
 
 ## <a name="monitor-your-export"></a>Övervaka exporten
 
-Förutom att se status för dina exporter i IoT Central kan du övervaka hur mycket data som flödar genom exporten och se om det finns export fel i Azure Monitor data plattformen. Du kan komma åt Mät värden för dina exporter och enhetens hälso tillstånd i diagram i Azure Portal, en REST API eller frågor i PowerShell eller Azure CLI. För närvarande kan du övervaka dessa data export mått i Azure Monitor:
+Förutom att se status för dina exporter i IoT Central kan du använda [Azure Monitor](../../azure-monitor/overview.md) för att se hur mycket data du exporterar och eventuella export fel. Du kan komma åt export-och enhets hälso mått i diagram i Azure Portal, med en REST API eller med frågor i PowerShell eller Azure CLI. För närvarande kan du övervaka följande data export mått i Azure Monitor:
 
-1. Antal meddelanden inkommande att exportera innan filter tillämpas
-2. Antal meddelanden som passerar genom filter
-3. Antal meddelanden som har exporter ATS till destinationer
-4. Antal fel som har påträffats
- 
-[Läs mer om hur du kommer åt IoT Central mått.](howto-monitor-application-health.md)
+- Antal meddelanden inkommande att exportera innan filter tillämpas.
+- Antal meddelanden som passerar genom filter.
+- Antal meddelanden som har exporter ATS till mål.
+- Antal fel som har påträffats.
+
+Mer information finns i [övervaka den övergripande hälsan för ett IoT Central program](howto-monitor-application-health.md).
 
 ## <a name="destinations"></a>Mål
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507578"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522487"
 ---
 # <a name="sensor-data-mining-queries"></a>Frågor om sensor Data utvinning
 
@@ -138,7 +138,7 @@ Så här skapar du en data utvinnings rapport:
 
 I följande tabell beskrivs hanterings alternativ för Data utvinning:
 
-| Ikon bild | Description |
+| Ikon bild | Beskrivning |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Redigera rapport parametrarna. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | Exportera som PDF. |
@@ -285,3 +285,7 @@ Så här skapar du en rapport:
 3. I den högra List rutan väljer du den rapport som du vill generera.
 
 4. Om du vill skapa en PDF-fil med rapport resultaten väljer du :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: .
+
+## <a name="next-steps"></a>Nästa steg
+
+[Sensor trender och statistik rapporter](how-to-create-trends-and-statistics-reports.md).

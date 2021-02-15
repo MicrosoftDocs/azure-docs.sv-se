@@ -1,23 +1,18 @@
 ---
 title: Flytta data från Amazon RedShift med hjälp av Azure Data Factory
 description: Lär dig hur du flyttar data från Amazon-RedShift med hjälp av Azure Data Factory kopierings aktivitet.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463085"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377558"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Flytta data från Amazon RedShift med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -61,12 +56,12 @@ Följande tabell innehåller beskrivningar av de JSON-element som är speciella 
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| **bastyp** |Den här egenskapen måste anges till **AmazonRedshift**. |Yes |
-| **servernamn** |IP-adressen eller värd namnet för Amazon RedShift-servern. |Yes |
+| **bastyp** |Den här egenskapen måste anges till **AmazonRedshift**. |Ja |
+| **servernamn** |IP-adressen eller värd namnet för Amazon RedShift-servern. |Ja |
 | **lastning** |Numret på den TCP-port som Amazon RedShift-servern använder för att lyssna efter klient anslutningar. |Nej (standard är 5439) |
-| **databas** |Namnet på Amazon RedShift-databasen. |Yes |
-| **användar** |Namnet på den användare som har åtkomst till databasen. |Yes |
-| **lösenord** |Lösen ordet för användar kontot. |Yes |
+| **databas** |Namnet på Amazon RedShift-databasen. |Ja |
+| **användar** |Namnet på den användare som har åtkomst till databasen. |Ja |
+| **lösenord** |Lösen ordet för användar kontot. |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 
@@ -87,7 +82,7 @@ För kopierings aktiviteten, när källan är av typen **AmazonRedshiftSource**,
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
 | **frågeterm** | Använd den anpassade frågan för att läsa data. |Nej (om egenskapen **TableName** för en data uppsättning anges) |
-| **redshiftUnloadSettings** | Innehåller egenskaps gruppen när du använder kommandot RedShift **Unload** . | No |
+| **redshiftUnloadSettings** | Innehåller egenskaps gruppen när du använder kommandot RedShift **Unload** . | Inga |
 | **s3LinkedServiceName** | Amazon S3 som används som ett interimistiskt lager. Den länkade tjänsten anges med ett Azure Data Factory namn av typen **en awsaccesskey**. | Krävs när du använder egenskapen **redshiftUnloadSettings** |
 | **bucketName** | Anger den Amazon S3-Bucket som ska användas för att lagra interims data. Om den här egenskapen inte anges genererar kopiera aktivitet automatiskt en Bucket. | Krävs när du använder egenskapen **redshiftUnloadSettings** |
 

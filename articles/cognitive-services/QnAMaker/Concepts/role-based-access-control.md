@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c411250f7d850e56c9c54c27e888cba8f3acfece
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379717"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522214"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Samar beta med andra författare och redigerare
 
@@ -25,7 +25,7 @@ Den här Azure RBAC-funktionen innehåller:
 * Lägg snabbt till författare och redigerare i alla kunskaps banker i resursen eftersom kontrollen finns på resurs nivå, inte på kunskaps bas nivån.
 
 > [!NOTE]
-> När du är säker på att du vill lägga till en anpassad under domän för resursen. Den [anpassade under domänen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) ska vara närvarande som standard, men om den inte är det lägger du till den
+> Se till att lägga till en anpassad under domän för resursen. Den [anpassade under domänen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) ska vara närvarande som standard, men om den inte är det lägger du till den
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Åtkomst tillhandahålls av en definierad roll
 

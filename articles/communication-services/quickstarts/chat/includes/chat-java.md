@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: edf48bc75817b3510264d852eb9cc717ed022f33
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915524"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379696"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -56,7 +56,7 @@ Referera till `azure-communication-chat` paketet med chatt-API: erna i Pom-filen
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -66,9 +66,8 @@ För autentisering måste klienten referera till `azure-communication-common` pa
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
-
 ```
 
 ## <a name="object-model"></a>Objekt modell
@@ -83,7 +82,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 | ChatThreadAsyncClient | Den här klassen krävs för den asynkrona chatt funktionen. Du får en instans via ChatAsyncClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton. |
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
-Om du vill skapa en chatt-klient använder du SIP-slutpunkten och den åtkomsttoken som genererades som en del av de nödvändiga stegen. Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. När du har genererat dessa token på servern skickar du tillbaka dem till en klient enhet. Du måste använda klassen CommunicationUserCredential från det vanliga klient biblioteket för att skicka token till din Chat-klient. 
+Om du vill skapa en chatt-klient använder du SIP-slutpunkten och den åtkomsttoken som genererades som en del av de nödvändiga stegen. Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. När du har genererat dessa token på servern skickar du tillbaka dem till en klient enhet. Du måste använda klassen CommunicationTokenCredential från det vanliga klient biblioteket för att skicka token till din Chat-klient. 
 
 När du lägger till import instruktionerna ska du bara lägga till importer från com. Azure. Communication. Chat och com. Azure. Communication. chatt. Models-namnrymder, och inte från com. Azure. Communication. chatt. implementation-namnrymden. I app. java-filen som genererades via maven kan du använda följande kod för att börja med:
 
@@ -112,8 +111,8 @@ public class App
         // User access token fetched from your trusted service
         String userAccessToken = "<USER_ACCESS_TOKEN>";
 
-        // Create a CommunicationUserCredential with the given access token, which is only valid until the token is valid
-        CommunicationUserCredential userCredential = new CommunicationUserCredential(userAccessToken);
+        // Create a CommunicationTokenCredential with the given access token, which is only valid until the token is valid
+        CommunicationTokenCredential userCredential = new CommunicationTokenCredential(userAccessToken);
 
         // Initialize the chat client
         final ChatClientBuilder builder = new ChatClientBuilder();
@@ -132,27 +131,27 @@ Använd `createChatThread` metoden för att skapa en chatt-tråd.
 `createChatThreadOptions` används för att beskriva tråd förfrågan.
 
 - Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
-- Används `members` för att visa en lista över tråd medlemmar som ska läggas till i tråden. `ChatThreadMember` tar användaren som du skapade i snabb starten av [användar åtkomst-token](../../access-tokens.md) .
+- Används `participants` för att visa en lista över tråd deltagarna som ska läggas till i tråden. `ChatParticipant` tar användaren som du skapade i snabb starten av [användar åtkomst-token](../../access-tokens.md) .
 
-Svaret `chatThreadClient` används för att utföra åtgärder på den skapade chatt-tråden: lägga till medlemmar i chatten, skicka ett meddelande, ta bort ett meddelande, osv. Den innehåller en `chatThreadId` egenskap som är det unika ID: t för chatt-tråden. Egenskapen kan nås av den offentliga metoden. getChatThreadId ().
+Svaret `chatThreadClient` används för att utföra åtgärder på den skapade chatten: lägga till deltagare i chatt-tråden, skicka ett meddelande, ta bort ett meddelande, osv. Den innehåller en `chatThreadId` egenskap som är det unika ID: t för chatt-tråden. Egenskapen kan nås av den offentliga metoden. getChatThreadId ().
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(firstUser)
-    .setDisplayName("Member Display Name 1");
+    .setDisplayName("Participant Display Name 1");
     
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(secondUser)
-    .setDisplayName("Member Display Name 2");
+    .setDisplayName("Participant Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
 CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
     .setTopic("Topic")
-    .setMembers(members);
+    .setParticipants(participants);
 ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
 String chatThreadId = chatThreadClient.getChatThreadId();
 ```
@@ -163,7 +162,7 @@ Använd `sendMessage` metoden för att skicka ett meddelande till den tråd som 
 `sendChatMessageOptions` används för att beskriva begäran om chatt-meddelande.
 
 - Används `content` för att tillhandahålla Chat-meddelandets innehåll.
-- Används `priority` för att ange prioritets nivå för chatt meddelande, till exempel "normal" eller "hög"; den här egenskapen kan användas för att få en användar gränssnitts indikator för mottagaren i appen, för att uppmärksamma meddelandet eller köra anpassad affärs logik.
+- Används `type` för att ange innehålls typen för chatt meddelandet, text eller HTML.
 - Används `senderDisplayName` för att ange avsändarens visnings namn.
 
 Svaret `sendChatMessageResult` innehåller ett `id` , som är det unika ID: t för meddelandet.
@@ -171,7 +170,7 @@ Svaret `sendChatMessageResult` innehåller ett `id` , som är det unika ID: t f�
 ```Java
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
     .setContent("Message content")
-    .setPriority(ChatMessagePriority.NORMAL)
+    .setType(ChatMessageType.TEXT)
     .setSenderDisplayName("Sender Display Name");
 
 SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendChatMessageOptions);
@@ -181,7 +180,7 @@ String chatMessageId = sendChatMessageResult.getId();
 
 ## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
 
-`getChatThreadClient`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till medlemmar, skicka meddelande, osv. `chatThreadId` är det unika ID: t för den befintliga chatt tråden.
+`getChatThreadClient`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. `chatThreadId` är det unika ID: t för den befintliga chatt tråden.
 
 ```Java
 String chatThreadId = "Id";
@@ -206,7 +205,7 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` returnerar olika typer av meddelanden som kan identifieras av `chatMessage.getType()` . Dessa typer är:
 
-- `Text`: Vanligt chatt-meddelande som skickas av en tråd medlem.
+- `Text`: Vanligt chatt-meddelande som skickas av en tråd deltagare.
 
 - `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats.
 
@@ -216,44 +215,44 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Lägg till en användare som medlem i Chat-tråden
+## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
-När en chatt-tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att skicka meddelanden till chatt-tråden och lägga till/ta bort andra medlemmar. Du måste börja med att hämta en ny åtkomsttoken och identitet för den användaren. Innan du anropar addMembers-metoden kontrollerar du att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
+När en chatt-tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att skicka meddelanden till chatt-tråden och lägga till/ta bort andra deltagare. Du måste börja med att hämta en ny åtkomsttoken och identitet för den användaren. Innan du anropar addParticipants-metoden kontrollerar du att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
 
-Använd `addMembers` metoden för att lägga till tråd medlemmar i den tråd som identifieras av threadId.
+Använd `addParticipants` metoden för att lägga till deltagare i tråden som identifieras av threadId.
 
-- Används `members` för att visa en lista över medlemmar som ska läggas till i chatt-tråden.
-- `user`, krävs, är den CommunicationUser som du har skapat av CommunicationIdentityClient i [användar åtkomst-token](../../access-tokens.md) snabb start.
-- `display_name`, valfritt är visnings namnet för tråd medlemmen.
-- `share_history_time`, valfritt, är den tid som chatt-historiken delas med medlemmen. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du inte vill dela någon historik tidigare när medlemmen lades till, ställer du in den på det aktuella datumet. Om du vill dela del historik anger du det datum som krävs.
+- Används `listParticipants` för att visa en lista över deltagare som ska läggas till i chatt-tråden.
+- `user`, krävs, är den CommunicationUserIdentifier som du har skapat av CommunicationIdentityClient i [användar åtkomst-token](../../access-tokens.md) snabb start.
+- `display_name`, valfritt är visnings namnet för tråd deltagaren.
+- `share_history_time`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela del historik anger du det datum som krävs.
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(user1)
     .setDisplayName("Display Name 1");
 
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(user2)
     .setDisplayName("Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
-AddChatThreadMembersOptions addChatThreadMembersOptions = new AddChatThreadMembersOptions()
-    .setMembers(members);
-chatThreadClient.addMembers(addChatThreadMembersOptions);
+AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
+    .setParticipants(participants);
+chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
 ## <a name="remove-user-from-a-chat-thread"></a>Ta bort användare från en chatt-tråd
 
-På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra användar identiteter för de medlemmar som du har lagt till.
+På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra användar identiteter för de deltagare som du har lagt till.
 
-Använd `removeMember` , där `user` är den CommunicationUser som du har skapat.
+Använd `removeParticipant` , där `user` är den CommunicationUserIdentifier som du har skapat.
 
 ```Java
-chatThreadClient.removeMember(user);
+chatThreadClient.removeParticipant(user);
 ```
 
 ## <a name="run-the-code"></a>Kör koden

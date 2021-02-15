@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90937392"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522962"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Felsöknings guide för säkerhetsagent (Linux)
 
@@ -102,16 +102,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 | Autentisering | Filformat | Den aktuella filen har inte rätt format. | Kontrol lera att filen har rätt format. De filtyper som stöds är. pfx och. pem. | Kontrol lera att filen är en giltig certifikat fil. |
 | Autentisering | Behörighet saknas | Agenten kunde inte autentisera mot IoT Hub med de angivna autentiseringsuppgifterna. | Verifiera autentiseringsinställningarna i LocalConfiguration-filen, gå igenom konfigurationen för autentisering och kontrol lera att alla detaljer är korrekta. kontrol lera att hemligheten i filen matchar den autentiserade identiteten. | Verifiera autentiseringsinställningarna i Authentication.config, gå igenom konfigurationen för autentisering och kontrol lera att alla detaljer är korrekta. kontrol lera sedan att hemligheten i filen matchar den autentiserade identiteten.
 | Autentisering | Hittades inte | Enheten/modulen hittades. | Verifiera autentisering av autentisering – kontrol lera att värd namnet är rätt, att enheten finns i IoT Hub och har en azureiotsecurity-modul. |  Verifiera autentisering av autentisering – kontrol lera att värd namnet är rätt, att enheten finns i IoT Hub och har en azureiotsecurity-modul. |
-| Autentisering | Saknad konfiguration | En konfiguration saknas i *Authentication.configs * filen. Fel meddelandet ska ange vilken nyckel som saknas. | Lägg till den saknade nyckeln i *LocalConfiguration.jsi* filen.| Lägg till den saknade nyckeln i *Authentication.config* -filen, se [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) för mer information. |
+| Autentisering | Saknad konfiguration | En konfiguration saknas i *Authentication.configs* filen. Fel meddelandet ska ange vilken nyckel som saknas. | Lägg till den saknade nyckeln i *LocalConfiguration.jsi* filen.| Lägg till den saknade nyckeln i *Authentication.config* -filen, se [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) för mer information. |
 | Autentisering | Konfiguration av rälsförhöjning | Det går inte att parsa ett konfigurations värde. Fel meddelandet ska ange vilken nyckel nyckeln inte kan parsas. Det går inte att parsa ett konfigurations värde eftersom värdet inte är av den förväntade typen, eller så ligger värdet utanför intervallet. |Korrigera värdet för nyckeln i **LocalConfiguration.jsi** filen. |Korrigera värdet för nyckeln i **Authentication.config** -filen för att matcha schemat, se [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) för mer information.|
 |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs [översikten över](overview.md) Defender for IoT-tjänsten
-- Läs mer om Defender för IoT- [arkitektur](architecture.md)
-- Aktivera [tjänsten](quickstart-onboard-iot-hub.md) Defender för IoT
-- Läs [vanliga frågor och svar](resources-frequently-asked-questions.md) om Defender för IoT-tjänsten
-- Lär dig hur du kommer åt [rå säkerhets data](how-to-security-data-access.md)
-- Förstå [rekommendationer](concept-recommendations.md)
-- Förstå säkerhets [aviseringar](concept-security-alerts.md)
+Läs [översikten över](overview.md) Defender for IoT-tjänsten Läs mer om Defender för IoT- [arkitektur](architecture.md) aktivera Defender för IoT [-tjänsten](quickstart-onboard-iot-hub.md) Läs [vanliga frågor och svar](resources-frequently-asked-questions.md) om Defender för IoT-tjänsten Läs mer om hur du kommer åt [rå säkerhets data](how-to-security-data-access.md) förstå [rekommendationer](concept-recommendations.md) förstå säkerhets [aviseringar](concept-security-alerts.md)

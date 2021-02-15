@@ -4,12 +4,12 @@ description: Förstå hur IP-adresser och geolokalisering hanteras med Azure App
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333315"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521925"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Hantering av geolokalisering och IP-adresser
 
@@ -77,7 +77,7 @@ Om du bara behöver ändra beteendet för en enskild Application Insights resurs
     ![Skärm bilden lägger till ett kommatecken efter "IbizaAIExtension" och lägger till en ny rad nedan med "DisableIpMasking": true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Om det uppstår ett fel som säger att ** _resurs gruppen finns på en plats som inte stöds av en eller flera resurser i mallen. Välj en annan resurs grupp._** Välj tillfälligt en annan resurs grupp i list rutan och välj sedan den ursprungliga resurs gruppen igen för att lösa problemet.
+    > Om det uppstår ett fel som säger att **_resurs gruppen finns på en plats som inte stöds av en eller flera resurser i mallen. Välj en annan resurs grupp._** Välj tillfälligt en annan resurs grupp i list rutan och välj sedan den ursprungliga resurs gruppen igen för att lösa problemet.
 
 5. Välj **Jag accepterar**  >  **köp**. 
 
@@ -99,7 +99,7 @@ Om du bara behöver ändra beteendet för en enskild Application Insights resurs
     
     En lista med egenskaper kommer att returneras som ett resultat. En av egenskaperna ska läsas `DisableIpMasking: true` . Om du kör PowerShell innan du distribuerar den nya egenskapen med Azure Resource Manager, finns inte egenskapen.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>Rest-API
 
 [REST API](/rest/api/azure/) -nyttolasten för att göra samma ändringar är följande:
 
@@ -241,7 +241,7 @@ requests
 
 Nyligen insamlade IP-adresser visas i `customDimensions_client-ip` kolumnen. Standard `client-ip` kolumnen kommer fortfarande att ha alla fyra oktetter, antingen noll. 
 
-Om du testar från localhost och värdet för `customDimensions_client-ip` är `::1` , förväntas det här värdet. `::1` representerar loopback-adressen i IPv6. Den motsvarar `127.0.01` i IPv4.
+Om du testar från localhost och värdet för `customDimensions_client-ip` är `::1` , förväntas det här värdet. `::1` representerar loopback-adressen i IPv6. Den motsvarar `127.0.0.1` i IPv4.
 
 ## <a name="next-steps"></a>Nästa steg
 

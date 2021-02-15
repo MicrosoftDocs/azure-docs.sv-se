@@ -1,22 +1,18 @@
 ---
 title: Beräknings miljöer som stöds av Azure Data Factory version 1
 description: Lär dig mer om beräknings miljöer som du kan använda i Azure Data Factory pipelines (till exempel Azure HDInsight) för att transformera eller bearbeta data.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9f970b66bd30ef2faf705d2fb41825bb81bbb8c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 07e13036a427ff7ff4f0cbbd2dfd6fbe272bf915
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496100"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377201"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Beräknings miljöer som stöds av Azure Data Factory version 1
 > [!NOTE]
@@ -121,14 +117,14 @@ Följande JSON definierar en Linux-baserad länkad HDInsight-tjänst på begära
 ### <a name="properties"></a>Egenskaper
 | Egenskap                     | Beskrivning                              | Krävs |
 | ---------------------------- | ---------------------------------------- | -------- |
-| typ                         | Ange egenskapen type till **HDInsightOnDemand**. | Yes      |
-| clusterSize                  | Antalet arbets uppgifter och datanoder i klustret. HDInsight-klustret skapas med två huvudnoder, förutom antalet arbets noder som du anger för den här egenskapen. Noderna har storlek Standard_D3, som har 4 kärnor. Ett kluster med fyra arbets noder tar 24 kärnor (4 \* 4 = 16 kärnor för arbetsnoder, plus 2 \* 4 = 8 kärnor för Head-noder). Mer information om Standard_D3 nivån finns i [skapa Linux-baserade Hadoop-kluster i HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Yes      |
-| timeToLive                   | Den tillåtna inaktiva tiden för HDInsight-klustret på begäran. Anger hur länge HDInsight-klustret på begäran förblir aktivt när en aktivitets körning är färdig, om det inte finns några andra aktiva jobb i klustret.<br /><br />Om en aktivitets körning till exempel tar 6 minuter och **TimeToLive** har angetts till 5 minuter förblir klustret aktiv i 5 minuter efter 6 minuters bearbetning av aktivitets körningen. Om en annan aktivitet körs i fönstret 6 minuter bearbetas den av samma kluster.<br /><br />Att skapa ett HDInsight-kluster på begäran är en dyr åtgärd (det kan ta en stund). Använd den här inställningen vid behov för att förbättra prestandan för en data fabrik genom att återanvända ett HDInsight-kluster på begäran.<br /><br />Om du ställer in värdet för **TimeToLive** på **0**, tas klustret bort så snart aktiviteten körs klart. Men om du anger ett högt värde kan klustret vara inaktivt, vilket leder till höga kostnader. Det är viktigt att ange rätt värde utifrån dina behov.<br /><br />Om **TimeToLive** -värdet har angetts korrekt kan flera pipelines dela instansen av HDInsight-klustret på begäran. | Yes      |
-| version                      | Versionen av HDInsight-klustret. För tillåtna HDInsight-versioner, se [HDInsight-versioner som stöds](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Om det här värdet inte anges används den [senaste HDI standard versionen](../../hdinsight/hdinsight-component-versioning.md) . | No       |
-| linkedServiceName            | Den Azure Storage länkade tjänsten som ska användas av klustret på begäran för att lagra och bearbeta data. HDInsight-klustret skapas i samma region som det här lagrings kontot.<p>För närvarande kan du inte skapa ett HDInsight-kluster på begäran som använder Azure Data Lake Store som lagrings plats. Om du vill lagra resultat data från HDInsight-bearbetning i Data Lake Store använder du kopierings aktivitet för att kopiera data från Blob Storage till Data Lake Store. </p> | Yes      |
-| additionalLinkedServiceNames | Anger ytterligare lagrings konton för den länkade HDInsight-tjänsten. Data Factory registrerar lagrings kontona för din räkning. Dessa lagrings konton måste finnas i samma region som HDInsight-klustret. HDInsight-klustret skapas i samma region som det lagrings konto som anges av egenskapen **linkedServiceName** . | No       |
-| osType                       | Typ av operativ system. Tillåtna värden är **Linux** och **Windows**. Om det här värdet inte anges används **Linux** .  <br /><br />Vi rekommenderar starkt att du använder Linux-baserade HDInsight-kluster. Indragnings datumet för HDInsight i Windows är den 31 juli 2018. | No       |
-| hcatalogLinkedServiceName    | Namnet på den länkade Azure SQL-tjänsten som pekar på HCatalog-databasen. HDInsight-klustret på begäran skapas med hjälp av SQL-databasen som metaarkiv. | No       |
+| typ                         | Ange egenskapen type till **HDInsightOnDemand**. | Ja      |
+| clusterSize                  | Antalet arbets uppgifter och datanoder i klustret. HDInsight-klustret skapas med två huvudnoder, förutom antalet arbets noder som du anger för den här egenskapen. Noderna har storlek Standard_D3, som har 4 kärnor. Ett kluster med fyra arbets noder tar 24 kärnor (4 \* 4 = 16 kärnor för arbetsnoder, plus 2 \* 4 = 8 kärnor för Head-noder). Mer information om Standard_D3 nivån finns i [skapa Linux-baserade Hadoop-kluster i HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ja      |
+| timeToLive                   | Den tillåtna inaktiva tiden för HDInsight-klustret på begäran. Anger hur länge HDInsight-klustret på begäran förblir aktivt när en aktivitets körning är färdig, om det inte finns några andra aktiva jobb i klustret.<br /><br />Om en aktivitets körning till exempel tar 6 minuter och **TimeToLive** har angetts till 5 minuter förblir klustret aktiv i 5 minuter efter 6 minuters bearbetning av aktivitets körningen. Om en annan aktivitet körs i fönstret 6 minuter bearbetas den av samma kluster.<br /><br />Att skapa ett HDInsight-kluster på begäran är en dyr åtgärd (det kan ta en stund). Använd den här inställningen vid behov för att förbättra prestandan för en data fabrik genom att återanvända ett HDInsight-kluster på begäran.<br /><br />Om du ställer in värdet för **TimeToLive** på **0**, tas klustret bort så snart aktiviteten körs klart. Men om du anger ett högt värde kan klustret vara inaktivt, vilket leder till höga kostnader. Det är viktigt att ange rätt värde utifrån dina behov.<br /><br />Om **TimeToLive** -värdet har angetts korrekt kan flera pipelines dela instansen av HDInsight-klustret på begäran. | Ja      |
+| version                      | Versionen av HDInsight-klustret. För tillåtna HDInsight-versioner, se [HDInsight-versioner som stöds](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Om det här värdet inte anges används den [senaste HDI standard versionen](../../hdinsight/hdinsight-component-versioning.md) . | Inga       |
+| linkedServiceName            | Den Azure Storage länkade tjänsten som ska användas av klustret på begäran för att lagra och bearbeta data. HDInsight-klustret skapas i samma region som det här lagrings kontot.<p>För närvarande kan du inte skapa ett HDInsight-kluster på begäran som använder Azure Data Lake Store som lagrings plats. Om du vill lagra resultat data från HDInsight-bearbetning i Data Lake Store använder du kopierings aktivitet för att kopiera data från Blob Storage till Data Lake Store. </p> | Ja      |
+| additionalLinkedServiceNames | Anger ytterligare lagrings konton för den länkade HDInsight-tjänsten. Data Factory registrerar lagrings kontona för din räkning. Dessa lagrings konton måste finnas i samma region som HDInsight-klustret. HDInsight-klustret skapas i samma region som det lagrings konto som anges av egenskapen **linkedServiceName** . | Inga       |
+| osType                       | Typ av operativ system. Tillåtna värden är **Linux** och **Windows**. Om det här värdet inte anges används **Linux** .  <br /><br />Vi rekommenderar starkt att du använder Linux-baserade HDInsight-kluster. Indragnings datumet för HDInsight i Windows är den 31 juli 2018. | Inga       |
+| hcatalogLinkedServiceName    | Namnet på den länkade Azure SQL-tjänsten som pekar på HCatalog-databasen. HDInsight-klustret på begäran skapas med hjälp av SQL-databasen som metaarkiv. | Inga       |
 
 #### <a name="example-linkedservicenames-json"></a>Exempel: LinkedServiceNames JSON
 
@@ -144,14 +140,14 @@ För detaljerad konfiguration av HDInsight-klustret på begäran kan du ange fö
 
 | Egenskap               | Beskrivning                              | Krävs |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | Anger kärn konfigurations parametrar (core-site.xml) för HDInsight-klustret som ska skapas. | No       |
-| hBaseConfiguration     | Anger konfigurations parametrar för HBase (hbase-site.xml) för HDInsight-klustret. | No       |
-| hdfsConfiguration      | Anger konfigurations parametrar för HDFS (hdfs-site.xml) för HDInsight-klustret. | No       |
-| hiveConfiguration      | Anger Hive-konfigurations parametrar (hive-site.xml) för HDInsight-klustret. | No       |
-| mapReduceConfiguration | Anger konfigurations parametrar för MapReduce (mapred-site.xml) för HDInsight-klustret. | No       |
-| oozieConfiguration     | Anger konfigurations parametrar för Oozie (oozie-site.xml) för HDInsight-klustret. | No       |
-| stormConfiguration     | Anger Storm-konfigurations parametrar (storm-site.xml) för HDInsight-klustret. | No       |
-| yarnConfiguration      | Anger konfigurations parametrar för garn (yarn-site.xml) för HDInsight-klustret. | No       |
+| coreConfiguration      | Anger kärn konfigurations parametrar (core-site.xml) för HDInsight-klustret som ska skapas. | Inga       |
+| hBaseConfiguration     | Anger konfigurations parametrar för HBase (hbase-site.xml) för HDInsight-klustret. | Inga       |
+| hdfsConfiguration      | Anger konfigurations parametrar för HDFS (hdfs-site.xml) för HDInsight-klustret. | Inga       |
+| hiveConfiguration      | Anger Hive-konfigurations parametrar (hive-site.xml) för HDInsight-klustret. | Inga       |
+| mapReduceConfiguration | Anger konfigurations parametrar för MapReduce (mapred-site.xml) för HDInsight-klustret. | Inga       |
+| oozieConfiguration     | Anger konfigurations parametrar för Oozie (oozie-site.xml) för HDInsight-klustret. | Inga       |
+| stormConfiguration     | Anger Storm-konfigurations parametrar (storm-site.xml) för HDInsight-klustret. | Inga       |
+| yarnConfiguration      | Anger konfigurations parametrar för garn (yarn-site.xml) för HDInsight-klustret. | Inga       |
 
 #### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>Exempel: konfiguration av HDInsight-kluster på begäran med avancerade egenskaper
 
@@ -197,9 +193,9 @@ Om du vill ange storleken på huvud-, data-och ZooKeeper-noderna använder du f�
 
 | Egenskap          | Beskrivning                              | Krävs |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Anger storleken på Head-noden. Standardvärdet är **Standard_D3**. Mer information finns i [Ange Node-storlekar](#specify-node-sizes). | No       |
-| dataNodeSize      | Anger data nodens storlek. Standardvärdet är **Standard_D3**. | No       |
-| zookeeperNodeSize | Anger storleken på ZooKeeper-noden. Standardvärdet är **Standard_D3**. | No       |
+| headNodeSize      | Anger storleken på Head-noden. Standardvärdet är **Standard_D3**. Mer information finns i [Ange Node-storlekar](#specify-node-sizes). | Inga       |
+| dataNodeSize      | Anger data nodens storlek. Standardvärdet är **Standard_D3**. | Inga       |
+| zookeeperNodeSize | Anger storleken på ZooKeeper-noden. Standardvärdet är **Standard_D3**. | Inga       |
 
 #### <a name="specify-node-sizes"></a>Ange Node-storlekar
 För sträng värden som du måste ange för egenskaperna som beskrivs i föregående avsnitt, se [storlekar för virtuella datorer](../../virtual-machines/sizes.md). Värdena måste följa de cmdletar och API: er som refereras till i [virtuella dator storlekar](../../virtual-machines/sizes.md). Storleken på den stora (standard) datanoden har 7 GB minne. Detta kanske inte räcker för ditt scenario. 
@@ -257,11 +253,11 @@ Du kan skapa en länkad HDInsight-tjänst för att registrera ditt eget HDInsigh
 ### <a name="properties"></a>Egenskaper
 | Egenskap          | Beskrivning                              | Krävs |
 | ----------------- | ---------------------------------------- | -------- |
-| typ              | Ange egenskapen type till **HDInsight**. | Yes      |
-| clusterUri        | URI för HDInsight-klustret.        | Yes      |
-| användarnamn          | Namnet på det användar konto som ska användas för att ansluta till ett befintligt HDInsight-kluster. | Yes      |
-| password          | Lösen ordet för användar kontot.   | Yes      |
-| linkedServiceName | Namnet på den länkade lagrings tjänsten som refererar till blob-lagringen som används av HDInsight-klustret. <p>För närvarande kan du inte ange en Data Lake Store länkad tjänst för den här egenskapen. Om HDInsight-klustret har åtkomst till Data Lake Store, kan du komma åt data i Data Lake Store från Hive-eller gris-skript. </p> | Yes      |
+| typ              | Ange egenskapen type till **HDInsight**. | Ja      |
+| clusterUri        | URI för HDInsight-klustret.        | Ja      |
+| användarnamn          | Namnet på det användar konto som ska användas för att ansluta till ett befintligt HDInsight-kluster. | Ja      |
+| password          | Lösen ordet för användar kontot.   | Ja      |
+| linkedServiceName | Namnet på den länkade lagrings tjänsten som refererar till blob-lagringen som används av HDInsight-klustret. <p>För närvarande kan du inte ange en Data Lake Store länkad tjänst för den här egenskapen. Om HDInsight-klustret har åtkomst till Data Lake Store, kan du komma åt data i Data Lake Store från Hive-eller gris-skript. </p> | Ja      |
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch länkad tjänst
 Du kan skapa en länkad batch-tjänst för att registrera en batch-pool med virtuella datorer (VM) till en data fabrik. Du kan köra Microsoft .NET anpassade aktiviteter med antingen batch eller HDInsight.
@@ -305,11 +301,11 @@ Ett annat alternativ är att tillhandahålla **batchUri** -slutpunkten. Exempel:
 ### <a name="properties"></a>Egenskaper
 | Egenskap          | Beskrivning                              | Krävs |
 | ----------------- | ---------------------------------------- | -------- |
-| typ              | Ange egenskapen type till **AzureBatch**. | Yes      |
-| accountName       | Namnet på batch-kontot.         | Yes      |
-| accessKey         | Åtkomst nyckeln för batch-kontot.  | Yes      |
-| poolName          | Namnet på poolen med virtuella datorer.    | Yes      |
-| linkedServiceName | Namnet på den länkade lagrings tjänst som är associerad med den här länkade batch-tjänsten. Den här länkade tjänsten används för att mellanlagra filer som krävs för att köra aktiviteten och för att lagra aktivitets körnings loggar. | Yes      |
+| typ              | Ange egenskapen type till **AzureBatch**. | Ja      |
+| accountName       | Namnet på batch-kontot.         | Ja      |
+| accessKey         | Åtkomst nyckeln för batch-kontot.  | Ja      |
+| poolName          | Namnet på poolen med virtuella datorer.    | Ja      |
+| linkedServiceName | Namnet på den länkade lagrings tjänst som är associerad med den här länkade batch-tjänsten. Den här länkade tjänsten används för att mellanlagra filer som krävs för att köra aktiviteten och för att lagra aktivitets körnings loggar. | Ja      |
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klassisk) länkad tjänst
 Du kan skapa en Azure Machine Learning Studio (klassisk) länkad tjänst för att registrera en Studio (klassisk) slut punkt för batch-poäng till en data fabrik.
@@ -332,9 +328,9 @@ Du kan skapa en Azure Machine Learning Studio (klassisk) länkad tjänst för at
 ### <a name="properties"></a>Egenskaper
 | Egenskap   | Beskrivning                              | Krävs |
 | ---------- | ---------------------------------------- | -------- |
-| Typ       | Ange egenskapen type till **azureml**. | Yes      |
-| mlEndpoint | URL för batch-poäng.                   | Yes      |
-| apiKey     | Den publicerade arbets ytans modells API.     | Yes      |
+| Typ       | Ange egenskapen type till **azureml**. | Ja      |
+| mlEndpoint | URL för batch-poäng.                   | Ja      |
+| apiKey     | Den publicerade arbets ytans modells API.     | Ja      |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics länkad tjänst
 Du kan skapa en Data Lake Analytics länkad tjänst för att länka en Data Lake Analytics Compute-tjänst till en Azure Data Factory. Data Lake Analytics U-SQL-aktiviteten i pipelinen refererar till den här länkade tjänsten. 
@@ -343,28 +339,28 @@ I följande tabell beskrivs de allmänna egenskaper som används i JSON-definiti
 
 | Egenskap                 | Beskrivning                              | Krävs                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| typ                 | Ange egenskapen type till **AzureDataLakeAnalytics**. | Yes                                      |
-| accountName          | Namnet på Data Lake Analyticss kontot.  | Yes                                      |
-| dataLakeAnalyticsUri | Data Lake Analytics-URI.           | No                                       |
-| subscriptionId       | ID för Azure-prenumerationen.                    | No<br /><br />(Om det inte anges används Data Factory-prenumerationen.) |
-| resourceGroupName    | Namnet på Azure-resurs gruppen.                | No<br /><br /> (Om den inte anges används data fabriks resurs gruppen.) |
+| typ                 | Ange egenskapen type till **AzureDataLakeAnalytics**. | Ja                                      |
+| accountName          | Namnet på Data Lake Analyticss kontot.  | Ja                                      |
+| dataLakeAnalyticsUri | Data Lake Analytics-URI.           | Inga                                       |
+| subscriptionId       | ID för Azure-prenumerationen.                    | Inga<br /><br />(Om det inte anges används Data Factory-prenumerationen.) |
+| resourceGroupName    | Namnet på Azure-resurs gruppen.                | Inga<br /><br /> (Om den inte anges används data fabriks resurs gruppen.) |
 
 ### <a name="authentication-options"></a>Autentiseringsalternativ
 Du kan välja mellan autentisering med hjälp av ett huvud namn för tjänsten eller en användares autentiseringsuppgifter för den länkade tjänsten Data Lake Analytics.
 
 #### <a name="service-principal-authentication-recommended"></a>Autentisering av tjänstens huvud namn (rekommenderas)
 Om du vill använda tjänstens huvud namns autentisering registrerar du en programentitet i Azure Active Directory (Azure AD). Ge sedan Azure AD åtkomst till Data Lake Store. Detaljerade anvisningar finns i [tjänst-till-tjänst-autentisering](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
-* Program-ID:t
+* Program-ID
 * Program nyckel 
-* Klientorganisations-ID
+* Klient-ID:t
 
 Använd tjänstens huvud namns autentisering genom att ange följande egenskaper:
 
 | Egenskap                | Beskrivning                              | Krävs |
 | :---------------------- | :--------------------------------------- | :------- |
-| servicePrincipalId  | Programmets klient-ID.     | Yes      |
-| servicePrincipalKey | Programmets nyckel.           | Yes      |
-| tenant              | Klient information (domän namn eller klient-ID) där ditt program finns. För att få den här informationen kan du Hovra musen i det övre högra hörnet av Azure Portal. | Yes      |
+| servicePrincipalId  | Programmets klient-ID.     | Ja      |
+| servicePrincipalKey | Programmets nyckel.           | Ja      |
+| tenant              | Klient information (domän namn eller klient-ID) där ditt program finns. För att få den här informationen kan du Hovra musen i det övre högra hörnet av Azure Portal. | Ja      |
 
 **Exempel: autentisering av tjänstens huvud namn**
 ```json
@@ -390,8 +386,8 @@ Ange följande egenskaper för autentisering av användar referenser för Data L
 
 | Egenskap          | Beskrivning                              | Krävs |
 | :---------------- | :--------------------------------------- | :------- |
-| auktorisering | I Data Factory redigeraren väljer du knappen **auktorisera** . Ange autentiseringsuppgifterna som tilldelar den automatiskt genererade auktoriserings-URL: en till den här egenskapen. | Yes      |
-| sessionId     | OAuth-sessions-ID från OAuth-auktoriseringsbegäran. Varje sessions-ID är unikt och kan bara användas en gång. Den här inställningen genereras automatiskt när du använder Data Factory redigeraren. | Yes      |
+| auktorisering | I Data Factory redigeraren väljer du knappen **auktorisera** . Ange autentiseringsuppgifterna som tilldelar den automatiskt genererade auktoriserings-URL: en till den här egenskapen. | Ja      |
+| sessionId     | OAuth-sessions-ID från OAuth-auktoriseringsbegäran. Varje sessions-ID är unikt och kan bara användas en gång. Den här inställningen genereras automatiskt när du använder Data Factory redigeraren. | Ja      |
 
 **Exempel: autentisering med användar behörighet**
 ```json

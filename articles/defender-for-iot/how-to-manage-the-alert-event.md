@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508751"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523931"
 ---
 # <a name="manage-alert-events"></a>Hantera aviserings händelser
 
@@ -23,7 +23,8 @@ Följande alternativ är tillgängliga för hantering av aviserings händelser:
  | **Learn** | Auktorisera den identifierade händelsen. Mer information finns i [om att lära och ta reda på händelser](#about-learning-and-unlearning-events). |
  | **Bekräfta** | Dölj aviseringen en gång för den identifierade händelsen. Aviseringen utlöses igen om händelsen upptäcks igen. Mer information finns i avsnittet [om att bekräfta och bekräfta händelser](#about-acknowledging-and-unacknowledging-events). |
  | **Mikrofon** | Ignorera kontinuerlig aktivitet med identiska enheter och jämförbar trafik. Mer information finns i om att stänga av och stänga av [händelser](#about-muting-and-unmuting-events). |
-
+ 
+Du kan också exportera aviserings information.
 ## <a name="about-learning-and-unlearning-events"></a>Om att lära och ta reda på händelser
 
 Händelser som indikerar att avvikelser i det inlärda nätverket kan avspegla giltiga nätverks ändringar. Exempel kan innehålla en ny auktoriserad enhet som anslöt till nätverket eller en godkänd inbyggd program uppdatering.
@@ -68,9 +69,9 @@ I dessa situationer är inlärning inte tillgängligt. När inlärningen inte ka
 > [!NOTE] 
 > Du kan inte stänga av händelser där en Internet enhet definieras som källa eller mål.
 
-### <a name="what-traffic-is-muted"></a>Vilken trafik är avstängd?
+### <a name="what-alert-activity-is-muted"></a>Vilken aviserings aktivitet är avstängd?
 
-Ett mutet scenario omfattar nätverks enheterna och trafik som identifieras för en händelse. Aviserings rubriken beskriver den trafik som är avstängd.
+Ett inmutet scenario omfattar nätverks enheter och trafik som identifierats för en händelse. Aviserings rubriken beskriver den trafik som är avstängd.
 
 Enheten eller enheterna som är avstängda visas som en avbildning i aviseringen. Om två enheter visas stängs den aktuella varnings trafiken mellan dem.
 
@@ -106,6 +107,25 @@ När en händelse är avstängd ignoreras den varje gång källan skickar ett HT
 
 2. Hovra över en avisering för att se om den är avstängd.  
 
-## <a name="see-also"></a>Se även
+## <a name="export-alert-information"></a>Exportera aviserings information
+
+Exportera aviserings information till en. csv-fil. Du kan exportera information om alla aviseringar som identifierats eller exportera information baserat på den filtrerade vyn. Följande information exporteras:
+
+- Käll adress
+- Mål adress
+- Aviseringsrubrik
+- Allvarlighetsgrad för avisering
+- Aviserings meddelande
+- Ytterligare information
+- Bekräftad status
+- PCAP tillgänglighet
+
+Att exportera:
+
+1. Välj aviseringar på menyn på sidan.
+1. Välj Exportera.
+1. Välj Exportera utökade aviseringar för att exportera aviserings information i separata rader för varje avisering som täcker flera enheter. När du väljer Exportera utökade aviseringar, skapar CSV-filen en dubblett av aviserings händelsen med de unika objekten på varje rad. Med det här alternativet blir det enklare att undersöka exporterade aviserings händelser.
+
+## <a name="next-steps"></a>Nästa steg
 
 [Styr vilken trafik som övervakas](how-to-control-what-traffic-is-monitored.md)

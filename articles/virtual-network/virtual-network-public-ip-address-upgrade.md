@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493727"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522894"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Uppgradera offentliga IP-adresser
 
@@ -36,7 +36,7 @@ Följande scenarier granskas i den här artikeln:
 För att kunna uppgradera en offentlig IP-adress, får den inte kopplas till någon resurs (se [den här sidan](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) för mer information om hur du avassocierar offentliga IP-adresser).
 
 >[!IMPORTANT]
->Offentliga IP-adresser som uppgraderas från Basic till standard-SKU: n fortsätter att ha inga [tillgänglighets zoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Det innebär att de inte kan kopplas till en Azure-resurs som antingen är zon-redundant eller knuten till en fördefinierad zon i regioner där det erbjuds.
+>Offentliga IP-adresser som uppgraderas från Basic till standard SKU: n fortsätter att ha inga garanterade [tillgänglighets zoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Se till att det är förväntat i åtanke när du väljer vilka resurser som ska associeras med en IP-adress.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic till standard – PowerShell**](#tab/option-upgrade-powershell)

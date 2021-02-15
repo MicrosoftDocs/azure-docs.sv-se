@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623762"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522588"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -225,7 +225,7 @@ I följande tabell beskrivs parametrarna i fönstret **plats hantering** .
 
 | Parameter | Beskrivning |
 |--|--|
-| Name | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
+| Namn | Sensorns namn. Du kan bara ändra det här namnet från sensorn. Mer information finns i användar handboken för Defender for IoT. |
 | IP-adress | Sensorns IP-adress. |
 | Version | Sensor versionen. |
 | Anslutning | Sensor anslutnings status. Statusen kan vara **ansluten** eller **frånkopplad**. |
@@ -316,6 +316,6 @@ Ta bort tilldelning och ta bort en sensor:
 
 3. Om du vill ta bort den ej tilldelade sensorn från platsen väljer du sensorn från listan över ej tilldelade sensorer och väljer :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Felsöka sensorn och den lokala hanteringskonsolen](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

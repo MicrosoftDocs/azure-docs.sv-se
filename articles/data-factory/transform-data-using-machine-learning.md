@@ -3,19 +3,16 @@ title: Skapa data pipeliner för förutsägelser
 description: Lär dig hur du skapar en förutsägelse pipeline genom att använda Azure Machine Learning Studio (klassisk) – batch-körning av aktiviteter i Azure Data Factory.
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: 50ef97bca0a5359c49ba2f18b1ec789ab076350a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 37a31891c3c1d812b396548036c4b59cc6523c2d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637742"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375671"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Skapa en förutsägelse pipeline med Azure Machine Learning Studio (klassisk) och Azure Data Factory
 
@@ -27,9 +24,9 @@ ms.locfileid: "92637742"
 
 [Azure Machine Learning Studio (klassisk)](https://azure.microsoft.com/documentation/services/machine-learning/) ger dig möjlighet att bygga, testa och distribuera lösningar för förutsägelse analys. Från en överblick på hög nivå görs det i tre steg:
 
-1. **Skapa ett övnings experiment** . Du gör det här steget med hjälp av Azure Machine Learning Studio (klassisk). Azure Machine Learning Studio (klassisk) är en samarbets miljö för visuell utveckling som du använder för att träna och testa en förutsägelse analys modell med hjälp av tränings data.
-2. **Konvertera det till ett förutsägelse experiment** . När din modell har tränats med befintliga data och du är redo att använda den för att skapa nya data, förbereder du och effektiviserar experimentet med poäng.
-3. **Distribuera den som en webb tjänst** . Du kan publicera bedömnings experimentet som en Azure-webbtjänst. Du kan skicka data till din modell via den här webb tjänst slut punkten och ta emot resultat förutsägelser från modellen.
+1. **Skapa ett övnings experiment**. Du gör det här steget med hjälp av Azure Machine Learning Studio (klassisk). Azure Machine Learning Studio (klassisk) är en samarbets miljö för visuell utveckling som du använder för att träna och testa en förutsägelse analys modell med hjälp av tränings data.
+2. **Konvertera det till ett förutsägelse experiment**. När din modell har tränats med befintliga data och du är redo att använda den för att skapa nya data, förbereder du och effektiviserar experimentet med poäng.
+3. **Distribuera den som en webb tjänst**. Du kan publicera bedömnings experimentet som en Azure-webbtjänst. Du kan skicka data till din modell via den här webb tjänst slut punkten och ta emot resultat förutsägelser från modellen.
 
 ### <a name="data-factory-and-azure-machine-learning-studio-classic-together"></a>Data Factory och Azure Machine Learning Studio (klassisk) tillsammans
 Med Azure Data Factory kan du enkelt skapa pipelines som använder en publicerad [Azure Machine Learning Studio (klassisk)](https://azure.microsoft.com/documentation/services/machine-learning) webb tjänst för förutsägelse analys. Med hjälp av **aktiviteten kör batch-körning** i en Azure Data Factory pipeline kan du anropa en Azure Machine Learning Studio (klassisk) webb tjänst för att göra förutsägelser för data i batch.
@@ -39,7 +36,7 @@ Med tiden måste förutsägande modeller i de Azure Machine Learning Studio (kla
 1. Publicera utbildnings experimentet (inte förutsägande experiment) som en webb tjänst. Du gör det här steget i Azure Machine Learning Studio (klassisk) som du gjorde för att exponera ett förutsägelse experiment som en webb tjänst i föregående scenario.
 2. Använd batch-körningen Azure Machine Learning Studio (klassisk) för att anropa webb tjänsten för inlärnings experimentet. I princip kan du använda batch-körningen Azure Machine Learning Studio (klassisk) för att anropa webb tjänsten för webb tjänster och Poäng för utbildning.
 
-När du är färdig med omträningen uppdaterar du bedömnings webb tjänsten (förutsägande experiment som exponeras som en webb tjänst) med den nya modellen genom att använda den **Azure Machine Learning Studio (klassisk) uppdatera resurs aktiviteten** . Mer information finns i uppdatera [modeller med hjälp av artikeln Uppdatera resurs aktivitet](update-machine-learning-models.md) .
+När du är färdig med omträningen uppdaterar du bedömnings webb tjänsten (förutsägande experiment som exponeras som en webb tjänst) med den nya modellen genom att använda den **Azure Machine Learning Studio (klassisk) uppdatera resurs aktiviteten**. Mer information finns i uppdatera [modeller med hjälp av artikeln Uppdatera resurs aktivitet](update-machine-learning-models.md) .
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klassisk) länkad tjänst
 
@@ -126,15 +123,15 @@ Följande JSON-kodfragment definierar en Azure Machine Learning Studio (klassisk
 }
 ```
 
-| Egenskap          | Beskrivning                              | Krävs |
+| Egenskap          | Beskrivning                              | Obligatorisk |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | Namn på aktiviteten i pipelinen     | Ja      |
-| description       | Text som beskriver vad aktiviteten gör.  | Nej       |
-| typ              | För Data Lake Analytics U-SQL-aktivitet är aktivitets typen **AzureMLBatchExecution** . | Ja      |
+| beskrivning       | Text som beskriver vad aktiviteten gör.  | Inga       |
+| typ              | För Data Lake Analytics U-SQL-aktivitet är aktivitets typen **AzureMLBatchExecution**. | Ja      |
 | linkedServiceName | Länkade tjänster till den Azure Machine Learning Studio (klassiska) länkade tjänsten. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) . | Ja      |
-| webServiceInputs  | Nyckel, värdepar, mappar namnen på Azure Machine Learning Studio (klassiska) webb tjänst indata. Nyckeln måste matcha de indataparametrar som definierats i webb tjänsten för publicerade Azure Machine Learning Studio (klassisk). Värdet är ett Azure Storage länkade tjänster och egenskaper för fil Sök väg som anger indata-BLOB-platser. | Nej       |
-| webServiceOutputs | Nyckel, värdepar, mappar namn på Azure Machine Learning Studio (klassiska) utdata från webb tjänsten. Nyckeln måste matcha de utdataparametrar som definierats i webb tjänsten för publicerade Azure Machine Learning Studio (klassisk). Värdet är ett Azure Storage länkade tjänster och egenskaper för fil Sök väg som anger utgående BLOB-platser. | Nej       |
-| Dublettparameternamnet  | Nyckel, värdepar som ska skickas till den Azure Machine Learning Studio (klassiska) slut punkt för batch-körning av tjänst. Nycklar måste matcha namnen på de webb tjänst parametrar som definierats i webb tjänsten publicerad Azure Machine Learning Studio (klassisk). Värden skickas i egenskapen Dublettparameternamnet för batch-körningen Azure Machine Learning Studio (klassisk) | Nej       |
+| webServiceInputs  | Nyckel, värdepar, mappar namnen på Azure Machine Learning Studio (klassiska) webb tjänst indata. Nyckeln måste matcha de indataparametrar som definierats i webb tjänsten för publicerade Azure Machine Learning Studio (klassisk). Värdet är ett Azure Storage länkade tjänster och egenskaper för fil Sök väg som anger indata-BLOB-platser. | Inga       |
+| webServiceOutputs | Nyckel, värdepar, mappar namn på Azure Machine Learning Studio (klassiska) utdata från webb tjänsten. Nyckeln måste matcha de utdataparametrar som definierats i webb tjänsten för publicerade Azure Machine Learning Studio (klassisk). Värdet är ett Azure Storage länkade tjänster och egenskaper för fil Sök väg som anger utgående BLOB-platser. | Inga       |
+| Dublettparameternamnet  | Nyckel, värdepar som ska skickas till den Azure Machine Learning Studio (klassiska) slut punkt för batch-körning av tjänst. Nycklar måste matcha namnen på de webb tjänst parametrar som definierats i webb tjänsten publicerad Azure Machine Learning Studio (klassisk). Värden skickas i egenskapen Dublettparameternamnet för batch-körningen Azure Machine Learning Studio (klassisk) | Inga       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenario 1: experiment som använder webb tjänst indata/utdata som refererar till data i Azure Blob Storage
 
@@ -213,7 +210,7 @@ Nu ska vi titta på ett scenario för att använda webb tjänst parametrar. Du h
 > [!NOTE]
 > Webb tjänst parametrarna är Skift läges känsliga, så se till att namnen som du anger i aktivitets-JSON matchar de som exponeras av webb tjänsten.
 
-När du är färdig med omträningen uppdaterar du bedömnings webb tjänsten (förutsägande experiment som exponeras som en webb tjänst) med den nya modellen genom att använda den **Azure Machine Learning Studio (klassisk) uppdatera resurs aktiviteten** . Mer information finns i uppdatera [modeller med hjälp av artikeln Uppdatera resurs aktivitet](update-machine-learning-models.md) .
+När du är färdig med omträningen uppdaterar du bedömnings webb tjänsten (förutsägande experiment som exponeras som en webb tjänst) med den nya modellen genom att använda den **Azure Machine Learning Studio (klassisk) uppdatera resurs aktiviteten**. Mer information finns i uppdatera [modeller med hjälp av artikeln Uppdatera resurs aktivitet](update-machine-learning-models.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande artiklar som förklarar hur du omformar data på andra sätt:

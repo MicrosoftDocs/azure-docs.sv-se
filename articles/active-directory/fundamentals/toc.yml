@@ -25,6 +25,8 @@
   items:
     - name: Säkerhet
       items:
+        - name: Skydda Microsoft 365 från lokala attacker
+          href: protect-m365-from-on-premises-attacks.md
         - name: Säkert externt samarbete
           items:
             - name: Översikt över säker extern åtkomst
@@ -47,8 +49,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: '9 Säker åtkomst till Teams, SharePoint och OneDrive'
               href: 9-secure-access-teams-sharepoint.md
-        - name: Skydda Microsoft 365 från lokala attacker
-          href: protect-m365-from-on-premises-attacks.md
+        - name: Säkra tjänst konton
+          items:
+            - name: Introduktion till lokala tjänst konton
+              href: service-accounts-on-premises.md
+            - name: 'Skydda grupp MSA: er'
+              href: service-accounts-group-managed.md
+            - name: 'Skydda fristående MSA: er'
+              href: service-accounts-standalone-managed.md
+            - name: Skydda dator konton
+              href: service-accounts-computer.md
+            - name: Skydda användarbaserade tjänst konton
+              href: service-accounts-user-on-premises.md
+            - name: Styr lokala tjänst konton
+              href: service-accounts-govern-on-premises.md
         - name: Aktivera MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Standardinställningar för säkerhet

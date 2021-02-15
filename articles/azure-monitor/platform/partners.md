@@ -4,12 +4,12 @@ description: Lär dig mer om Azure Monitors partner och hur du kan komma åt dok
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bfec05935b4cbe5c3c4495f7c261bd34bc0a0032
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500248"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522179"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Partnerintegrering i Azure Monitor
 
@@ -275,6 +275,24 @@ SIGNL4 – appen för mobila aviseringar för drifts team – är det snabbaste 
 
 [Dokumentation om SIGNL4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
+## <a name="site24x7"></a>Site24x7
+
+![Site24x7-logotyp](./media/partners/site24-7.png)
+
+Site24x7 tillhandahåller avancerad och fullständig stack-lösning för Azure-övervakning, vilket ger insyn och insyn i dina program och gör det möjligt för program ägare att upptäcka prestanda Flask halsar snabbt, automatisera fel matchning och optimera deras prestanda.
+Med Site24x7 Azure-övervakning kommer du att kunna:
+
+* Övervaka fler än 100 Azure-IaaS och PaaS-tjänster.
+* Få djupgående övervakning för virtuella Windows-och Linux-datorer med exklusiva Azure-tillägg, direkt från Azure Marketplace.
+* Felsök program med inblick i loggar från Azure. Skicka loggar till Site24x7, spara Sök frågor, ange frågebaserade aviseringar och hantera Azure-loggar från en enda instrument panel.
+* Identifiera eventuella problem med tjänstens hälsa och se till att du har tillförlitliga distributioner via hälso kontrollen för Azure Deployment Manager (ADM).
+* Automatisera fel matchning med en uppsättning verktyg för IT-automatisering.
+* Övervaka hela Microsoft-Ecosphere, till exempel SQL, Exchange, Active Directory, Office 365, IIS och Hyper-V-program.
+* Integrera sömlöst med tjänster från tredje part som Microsoft Teams, PagerDuty, Zapier och mycket annat.
+
+[Dokumentation om plats dygnet runt](https://www.site24x7.com/)
+
+
 ## <a name="solarwinds"></a>SolarWinds
 
 [Dokumentation om SolarWinds](https://www.solarwinds.com/topics/azure-monitoring)
@@ -315,15 +333,15 @@ Turbonomic levererar arbets belastnings automatisering för Hybrid moln genom at
 
 Genom att använda Azure Monitor för att dirigera övervaknings data till en Azure Event Hub kan du enkelt integrera med vissa externa SIEM och övervaknings verktyg. Följande partners är kända för integrering via Händelsehubben. 
 
-| Verktyg | Värd i Azure | Description |
+| Verktyg | Värd i Azure | Beskrivning |
 |:---|:---| :---|
-|  IBM QRadar | No | Microsoft Azure DSM-och Microsoft Azure Event Hub-protokollet kan hämtas från [IBM support-webbplatsen](https://www.ibm.com/support). Du kan lära dig mer om integrering med Azure på [QRADAR DSM-konfiguration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | No | [Microsoft Azure Add-On för Splunk](https://splunkbase.splunk.com/app/3757/) är ett projekt med öppen källkod som finns i Splunkbase. <br><br> Om du inte kan installera ett tillägg i din Splunk-instans, om du t. ex. använder en proxy eller som körs på Splunk-molnet, kan du vidarebefordra händelserna till insamlaren för HTTP-Splunk med hjälp av [Azure Function för Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), som utlöses av nya meddelanden i händelsehubben. |
-| SumoLogic | No | Anvisningar för att konfigurera SumoLogic för att använda data från en händelsehubben är tillgängliga vid [insamling av loggar för Azure audit-appen från Event Hub](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | No | Smart Connector för ArcSight Azure Event Hub är tillgängligt som en del av [ArcSight Smart Connector-samlingen](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
-| Syslog-server | No | Om du vill strömma Azure Monitor data direkt till en Syslog-server kan du använda en [lösning som baseras på en Azure-funktion](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | No| Anvisningar för att konfigurera LogRhythm för att samla in loggar från en Event Hub finns [här](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
-|Logz.io | Yes | Mer information finns i [komma igång med övervakning och loggning med Logz.io för Java-appar som körs på Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio)
+|  IBM QRadar | Nej | Microsoft Azure DSM-och Microsoft Azure Event Hub-protokollet kan hämtas från [IBM support-webbplatsen](https://www.ibm.com/support). Du kan lära dig mer om integrering med Azure på [QRADAR DSM-konfiguration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | Nej | [Microsoft Azure Add-On för Splunk](https://splunkbase.splunk.com/app/3757/) är ett projekt med öppen källkod som finns i Splunkbase. <br><br> Om du inte kan installera ett tillägg i din Splunk-instans, om du t. ex. använder en proxy eller som körs på Splunk-molnet, kan du vidarebefordra händelserna till insamlaren för HTTP-Splunk med hjälp av [Azure Function för Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), som utlöses av nya meddelanden i händelsehubben. |
+| SumoLogic | Nej | Anvisningar för att konfigurera SumoLogic för att använda data från en händelsehubben är tillgängliga vid [insamling av loggar för Azure audit-appen från Event Hub](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Nej | Smart Connector för ArcSight Azure Event Hub är tillgängligt som en del av [ArcSight Smart Connector-samlingen](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Syslog-server | Nej | Om du vill strömma Azure Monitor data direkt till en Syslog-server kan du använda en [lösning som baseras på en Azure-funktion](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | Nej| Anvisningar för att konfigurera LogRhythm för att samla in loggar från en Event Hub finns [här](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+|Logz.io | Ja | Mer information finns i [komma igång med övervakning och loggning med Logz.io för Java-appar som körs på Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>Nästa steg

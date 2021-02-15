@@ -2,19 +2,19 @@
 title: Så här konfigurerar du åtkomst kontroll för din Synapse-arbetsyta
 description: Den här artikeln lär dig hur du styr åtkomsten till en Synapse-arbetsyta med hjälp av Azure-roller, Synapse-roller, SQL-behörigheter och git-behörigheter.
 services: synapse-analytics
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218084"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102180"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Så här konfigurerar du åtkomst kontroll för din Synapse-arbetsyta 
 
@@ -272,7 +272,7 @@ Om du vill hantera åtkomst kan du lägga till och ta bort användare i de säke
 Som ett sista steg för att skydda arbets ytan bör du skydda nätverks åtkomsten med:
 - [Arbets ytans brand vägg](./synapse-workspace-ip-firewall.md)
 - [Hanterat virtuellt nätverk](./synapse-workspace-managed-vnet.md) 
-- [Privata slutpunkter](./synapse-workspace-managed-private-endpoints.md)
+- [Privata slut punkter](./synapse-workspace-managed-private-endpoints.md)
 - [Private Link](../../azure-sql/database/private-endpoint-overview.md)
 
 ## <a name="step-10-completion"></a>STEG 10: Slutför Ande

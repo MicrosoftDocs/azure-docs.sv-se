@@ -3,12 +3,12 @@ title: Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behålla
 description: Den här artikeln beskriver hur du konfigurerar övervakning för ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 4 eller senare.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944531"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521636"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behållare
 
@@ -121,7 +121,7 @@ Om du inte har en arbets yta att ange kan du gå till avsnittet [integrera med s
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    Exempel:
+    Här är kommandot som du måste köra när du har fyllt i tre variabler med export kommandon:
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 

@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746027"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523370"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Avsektor för Horisont av patentskyddat protokoll
 
@@ -320,7 +320,7 @@ I det här avsnittet beskrivs grundläggande parametrar.
 | **sanity_failure_codes** | Detta är de koder som returneras från parsern om det finns en Sanity konflikt angående identiteten för koden. Se magic number verifiering i C++-avsnittet. | Sträng |
 | **malformed_codes** | Detta är koder som har identifierats korrekt, men ett fel har upptäckts. Till exempel om fält längden är för kort eller lång, eller om ett värde är ogiltigt. | Sträng |
 | **dissect_as** | En matris som definierar var den angivna protokoll trafiken ska tas emot. | TCP/UDP, Port osv. |
-| **fields** | Deklarationen för vilka fält som ska extraheras från trafiken. Varje fält har sitt eget ID (namn) och typ (numerisk, sträng, rå data, matris, komplex). Till exempel är fält [funktionen](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) som extraheras i implementerings parsern-filen. Fälten som skrivs i konfigurations filen är de enda som kan läggas till i lagret. |  |
+| **fält** | Deklarationen för vilka fält som ska extraheras från trafiken. Varje fält har sitt eget ID (namn) och typ (numerisk, sträng, rå data, matris, komplex). Till exempel är fält [funktionen](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) som extraheras i implementerings parsern-filen. Fälten som skrivs i konfigurations filen är de enda som kan läggas till i lagret. |  |
 
 ### <a name="other-advanced-fields"></a>Andra avancerade fält 
 
@@ -396,7 +396,7 @@ Detta validerar att det överförda paketet matchar protokollets validerings par
 
 Använd till exempel de första 8 byten som *Magic number*. Om Sanity Miss lyckas returneras ett Sanity fel svar.
 
-Ett exempel:
+Exempel:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -1640,6 +1640,6 @@ Du kan övervaka programmets beteende i real tid genom att analysera antalet *Ma
 
 Välj knappen övervaka för ditt plugin-program från översikten.
 
-Nästa steg
+## <a name="next-steps"></a>Nästa steg
 
 Konfigurera ditt [Horisont-API](references-horizon-api.md)

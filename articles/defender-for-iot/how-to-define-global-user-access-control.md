@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 81ede3506337e76c84e20203ac27a3d441fdcef8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624650"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522282"
 ---
 # <a name="define-global-access-control"></a>Definiera global åtkomst kontroll
 
@@ -88,6 +88,6 @@ När du skapar regler bör du vara medveten om följande information:
 
 - Om ingen affär senhet eller region har valts får användarna åtkomst till alla definierade affär senheter och regioner.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Om Defender för IoT Console-användare](how-to-create-and-manage-users.md)

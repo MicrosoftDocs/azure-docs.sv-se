@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539347"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523948"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Hantera den lokala hanteringskonsolen
 
@@ -399,7 +399,7 @@ Så här återställer du ditt lösenord:
 
 Följande procedur beskriver hur du uppdaterar program versionen för den lokala hanterings konsolen. Uppdaterings processen tar cirka 30 minuter.
 
-1. Öppna [Azure-portalen](https://portal.azure.com/).
+1. Gå till [Azure-portalen](https://portal.azure.com/).
 
 1. Gå till Defender för IoT.
 
@@ -415,7 +415,7 @@ Följande procedur beskriver hur du uppdaterar program versionen för den lokala
 
 1. Välj den fil som du laddade ned från sidan Defender för IoT- **uppdateringar** .
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Hantera sensorer från hanterings konsolen](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

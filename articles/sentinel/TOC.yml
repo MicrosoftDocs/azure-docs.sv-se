@@ -210,6 +210,8 @@
                       href: connect-zscaler.md
                 - name: STEG 3 Verifiera anslutningen
                   href: connect-cef-verify.md
+        - name: Skapa anpassade anslutningar
+          href: create-custom-connector.md
         - name: Ansluta till hotinformation
           href: connect-threat-intelligence.md
         - name: Ansluta virtuella datorer i Azure Stack
@@ -255,8 +257,6 @@
           href: hunting-with-rest-api.md
         - name: Hantera watchlists med REST-API
           href: watchlist-with-rest-api.md
-    - name: Azure Monitor data referens
-      href: /azure/azure-monitor/reference/
     - name: Logic Apps-anslutningsappen i Azure Sentinel
       href: /connectors/azuresentinel/
     - name: Schema för nätverksnormalisering
@@ -275,8 +275,6 @@
   items:
     - name: Användbara resurser
       href: resources.md
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Blogg om säkerhet, sekretess och efterlevnad i Azure'
       href: /archive/blogs/azuresecurity/
     - name: Regional tillgänglighet
