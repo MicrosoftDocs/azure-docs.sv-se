@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556315"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393759"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsök problem med CI-CD, Azure DevOps och GitHub i ADF 
 
@@ -78,14 +77,14 @@ CI/CD versions pipelinen fungerar inte med följande fel:
 
 #### <a name="cause"></a>Orsak
 
-Detta beror på ett Integration Runtime med samma namn i mål fabriken men med en annan typ. Integration Runtime måste vara av samma typ vid distribution.
+Detta beror på en integration runtime med samma namn i mål fabriken men med en annan typ. Integration Runtime måste vara av samma typ vid distribution.
 
 #### <a name="recommendation"></a>Rekommendation
 
 - Läs följande metod tips för CI/CD nedan:
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- Integrerings körningar ändras inte ofta och liknar varandra i alla steg i CI/CD, så Data Factory förväntar dig att du har samma namn och typ av integration runtime i alla stadier av CI/CD. Om namn och typer & egenskaper skiljer sig åt, se till att matcha källans och målets IR-konfiguration och distribuera sedan lanserings pipelinen.
+- Integrerings körningar ändras inte ofta och liknar varandra i alla steg i CI/CD, så Data Factory förväntar dig att du har samma namn och typ av integration runtime i alla stadier av CI/CD. Om namn och typer & egenskaper skiljer sig åt, måste du matcha konfigurationen för källans och målets konfigurations körning och sedan distribuera pipelinen för version.
 - Om du vill dela integrerings körningar i alla faser bör du överväga att använda en ternär fabrik som bara innehåller de delade integrerings körningarna. Du kan använda den här delade fabriken i alla dina miljöer som en länkad integration runtime-typ.
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>Det gick inte att skapa eller uppdatera dokument på grund av Ogiltig referens
@@ -133,7 +132,7 @@ Du kan inte flytta Data Factory från en resurs grupp till en annan, som inte ha
 
 #### <a name="resolution"></a>Lösning
 
-Du måste ta bort SSIS-IR och Shared IRs för att tillåta flytt åtgärden. Om du inte vill ta bort IRs, så är det bästa sättet att följa dokumentet kopiera och klona för att kopiera och när det är färdigt, ta bort den gamla data fabriken.
+Du måste ta bort SSIS-IR och Shared IRs för att tillåta flytt åtgärden. Om du inte vill ta bort integrerings körningarna, är det bästa sättet att följa dokumentet kopiera och klona för att kopiera och när det är färdigt, ta bort den gamla Data Factory.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>Det går inte att exportera och importera ARM-mall
 
@@ -150,6 +149,34 @@ Du har skapat en kund roll som användare och den har inte den behörighet som k
 #### <a name="resolution"></a>Lösning
 
 För att lösa problemet måste du lägga till följande behörighet i rollen: *Microsoft. DataFactory/factors/queryFeaturesValue/Action*. Den här behörigheten ska inkluderas som standard i rollen Data Factory deltagare.
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatisk publicering för CI/CD utan att klicka på knappen publicera  
+
+#### <a name="issue"></a>Problem
+
+Manuell publicering med knapp klickning i ADF-portalen aktiverar inte automatisk CI/CD-åtgärd.
+
+#### <a name="cause"></a>Orsak
+
+Tills det nyligen har du klickat på knappen för att publicera ADF-pipeline för distributioner. Nu kan du göra processen till automatisk. 
+
+#### <a name="resolution"></a>Lösning
+
+CI/CD-processen har förbättrats. Funktionen **automatiserad publicering** tar, validerar och exporterar alla mallar för Azure Resource Manager (arm) från ADF-UX. Det gör det möjligt att använda logiken via ett offentligt tillgängligt NPM-paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . På så sätt kan du programmatiskt utlösa dessa åtgärder i stället för att behöva gå till ADF-ANVÄNDARGRÄNSSNITTET och göra en knapp klickning. Detta ger din CI/CD-pipeline en **verklig** kontinuerlig integrerings upplevelse. Följ [förbättringarna i ADF CI/CD-publicering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) för mer information. 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Det går inte att publicera på grund av 4 MB ARM-mall  
+
+#### <a name="issue"></a>Problem
+
+Du kan inte distribuera eftersom du träffar Azure Resource Manager gränsen på 4 MB Total storlek. Du behöver en lösning för att distribuera när gränsen har passerats. 
+
+#### <a name="cause"></a>Orsak
+
+Azure Resource Manager begränsar storleken på mallen till 4 MB. Begränsa storleken på din mall till 4 MB och varje parameter fil till 64 KB. Gränsen på 4 MB gäller för mallens slutliga tillstånd när den har utökats med iterativa resurs definitioner och värden för variabler och parametrar. Men du har överskridit gränsen. 
+
+#### <a name="resolution"></a>Lösning
+
+För små till medelstora lösningar är en enskild mall enklare att förstå och underhålla. Du kan se alla resurser och värden i en enda fil. I avancerade scenarier kan du använda länkade mallar till att dela upp lösningen i riktade komponenter. Följ bästa praxis vid [användning av länkade och kapslade mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
 
 ## <a name="next-steps"></a>Nästa steg
 

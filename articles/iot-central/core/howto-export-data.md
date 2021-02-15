@@ -4,16 +4,16 @@ description: Hur du använder den nya data exporten för att exportera dina IoT-
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515911"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportera IoT-data till moln mål med hjälp av data export
 
@@ -166,6 +166,17 @@ Nu när du har ett mål för att exportera data till, konfigurerar du data expor
 
 1. När du är klar med konfigurationen av exporten väljer du **Spara**. Efter några minuter visas dina data i dina mål.
 
+## <a name="monitor-your-export"></a>Övervaka exporten
+
+Förutom att se status för dina exporter i IoT Central kan du övervaka hur mycket data som flödar genom exporten och se om det finns export fel i Azure Monitor data plattformen. Du kan komma åt Mät värden för dina exporter och enhetens hälso tillstånd i diagram i Azure Portal, en REST API eller frågor i PowerShell eller Azure CLI. För närvarande kan du övervaka dessa data export mått i Azure Monitor:
+
+1. Antal meddelanden inkommande att exportera innan filter tillämpas
+2. Antal meddelanden som passerar genom filter
+3. Antal meddelanden som har exporter ATS till destinationer
+4. Antal fel som har påträffats
+ 
+[Läs mer om hur du kommer åt IoT Central mått.](howto-monitor-application-health.md)
+
 ## <a name="destinations"></a>Mål
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage-mål
@@ -233,7 +244,6 @@ I följande exempel visas ett exporterat telemetri-meddelande:
     }
 }
 ```
-
 ### <a name="message-properties"></a>Meddelande egenskaper
 
 Telemetri-meddelanden har egenskaper för metadata förutom nytto lasten för telemetri. Föregående kodfragment visar exempel på system meddelanden som `deviceId` och `enqueuedTime` . Mer information om system meddelande egenskaperna finns i [system egenskaper för D2C IoT Hub-meddelanden](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968474"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373376"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Träna och distribuera en Custom Speech-modell
 
@@ -40,7 +40,19 @@ Det första steget för att träna en modell är att överföra tränings data. 
 3. Välj **träna modell**.
 4. Ge din utbildning ett **namn** och en **Beskrivning**.
 5. I listan **scenario och bas linje modell** väljer du det scenario som passar din domän bäst. Om du inte är säker på vilket scenario du väljer väljer du **Allmänt**. Bas linje modellen är start punkten för utbildning. Den senaste modellen är vanligt vis det bästa valet.
-6. På sidan **Välj tränings data** väljer du en eller flera relaterade text data uppsättningar eller ljud och data uppsättningar med mänskligt avskrifter som du vill använda för utbildning. När du tränar en ny modell börjar du med relaterad text. utbildning med ljud och mänsklig avskrift kan ta mycket längre tid (upp till [flera dagar](how-to-custom-speech-evaluate-data.md#improve-model-recognition)).
+6. På sidan **Välj tränings data** väljer du en eller flera relaterade text data uppsättningar eller ljud och data uppsättningar med mänskligt avskrifter som du vill använda för utbildning.
+
+> [!NOTE]
+> När du tränar en ny modell börjar du med relaterad text. utbildning med ljud och mänsklig avskrift kan ta mycket längre tid **(upp till [flera dagar](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)**).
+
+> [!NOTE]
+> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.
+
+> [!NOTE]
+> I fall när du ändrar bas modellen som används för utbildning och du har ljud i träning-datauppsättningen, kontrollerar du *alltid* om den nya valda bas modellen [stöder utbildning med ljuddata](language-support.md#speech-to-text). Om den tidigare använda bas modellen inte har stöd för utbildning med ljuddata, och hierarkin data uppsättning innehåller ljud, ökar inlärnings tiden med den nya bas modellen **drastiskt** , och det kan enkelt gå från flera timmar till flera dagar. Detta gäller särskilt om din röst tjänst prenumeration **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+>
+> Om du möter problemet som beskrivs i stycket ovan kan du snabbt minska inlärnings tiden genom att minska mängden ljud i data uppsättningen eller ta bort det helt och hållet texten kvar. Det sistnämnda alternativet är starkt rekommenderat om din prenumeration på röst tjänsten **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+
 7. När träningen är klar kan du göra en precisions testning för den nytränade modellen. Det här är valfritt.
 8. Välj **skapa** för att skapa din anpassade modell.
 

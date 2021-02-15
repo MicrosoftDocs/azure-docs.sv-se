@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: d5556ffb18a7a67e9415310f221e470761bf8cb8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098647"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388217"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Utvärdera resultat från automatiska maskin inlärnings experiment
 
@@ -234,10 +234,7 @@ I det här exemplet är det viktigt att den bättre modellen har en förväntad 
 
 Även om modell utvärderings mått och diagram är bra för att mäta den allmänna kvaliteten i en modell, är det viktigt att kontrol lera vilken data uppsättning som en modell som används för att göra sina förutsägelser viktiga vid en eventuell bedömning av AI. Det är anledningen till att den automatiserade ML ger en instrument panel för modell tolkning som mäter och rapporterar de relativa bidragen för data uppsättnings funktioner.
 
-![Funktions betydelse](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 För att Visa tolknings instrument panelen i Studio:
-
 1. [Logga in på Studio](https://ml.azure.com/) och navigera till din arbets yta
 2. På den vänstra menyn väljer du **experiment**
 3. Välj experimentet i listan över experiment
@@ -246,10 +243,11 @@ För att Visa tolknings instrument panelen i Studio:
 6. På fliken **förklaringar** kan du se att en förklaring redan har skapats om modellen var den bästa
 7. Om du vill skapa en ny förklaring väljer du **förklara modell** och väljer den fjärrberäkning som du vill beräkna förklaringar för
 
+[Lär dig mer om modell förklaringar i automatiserad ml](how-to-machine-learning-interpretability-automl.md).
+
 > [!NOTE]
 > ForecastTCN-modellen stöds för närvarande inte av automatiska ML-förklaringar och andra prognos modeller kan ha begränsad åtkomst till tolknings verktyg.
 
 ## <a name="next-steps"></a>Nästa steg
 * Prova de [automatiska antecknings exemplen för Machine Learning-modeller](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
-* Lär dig mer om [ansvariga AI-erbjudanden i automatiserad ml](how-to-machine-learning-interpretability-automl.md).
 * För automatiserade ML-frågor, kontakta askautomatedml@microsoft.com .

@@ -1,22 +1,18 @@
 ---
 title: Lägg till variabel aktivitet i Azure Data Factory
 description: Lär dig hur du ställer in aktiviteten Lägg till variabel för att lägga till ett värde till en befintlig mat ris variabel som definieras i en Data Factory pipeline
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: 16bdd1d31440ed440faf67e939485da613e3886f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a9ed44e05c371460ae3ceab721f2236f6ec7fd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490949"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383422"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Lägg till variabel aktivitet i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,12 +20,12 @@ Använd aktiviteten Lägg till variabel för att lägga till ett värde till en 
 
 ## <a name="type-properties"></a>Typ egenskaper
 
-Egenskap | Beskrivning | Krävs
+Egenskap | Beskrivning | Obligatorisk
 -------- | ----------- | --------
-name | Namn på aktiviteten i pipeline | Yes
+name | Namn på aktiviteten i pipeline | Ja
 beskrivning | Text som beskriver vad aktiviteten gör | nej
-typ | Aktivitets typen är AppendVariable | yes
-värde | Sträng tecken eller uttrycks objekt värde som används för att lägga till angiven variabel | yes
+typ | Aktivitets typen är AppendVariable | ja
+värde | Sträng tecken eller uttrycks objekt värde som används för att lägga till angiven variabel | ja
 variableName | Namnet på variabeln som ska ändras av aktivitet, variabeln måste vara av typen matris | ja
 
 ## <a name="next-steps"></a>Nästa steg

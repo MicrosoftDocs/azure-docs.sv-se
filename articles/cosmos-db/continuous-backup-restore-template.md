@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538484"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381825"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>Konfigurera och hantera kontinuerlig säkerhets kopiering och tidpunkts återställning (för hands version) – använda Azure Resource Manager mallar
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -28,7 +28,7 @@ Den här artikeln beskriver hur du etablerar ett konto med kontinuerlig säkerhe
 
 ## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>Etablera ett konto med kontinuerlig säkerhets kopiering
 
-Du kan använda Azure Resource Manager mallar för att distribuera ett Azure Cosmos DB-konto med kontinuerligt läge. När du definierar mallen för att etablera ett konto inkluderar du parametern "backupPolicy" som visas i följande exempel:
+Du kan använda Azure Resource Manager mallar för att distribuera ett Azure Cosmos DB-konto med kontinuerligt läge. När du definierar mallen för att etablera ett konto inkluderar du `backupPolicy` parametern som visas i följande exempel:
 
 ```json
 {
@@ -66,9 +66,9 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 Du kan också återställa ett konto med hjälp av Resource Manager-mallen. När du definierar mallen ingår följande parametrar:
 
-* Ange "createMode"-parametern till "Restore"
-* Definiera "restoreParameters", Observera att värdet "restoreSource" extraheras från utdata från `az cosmosdb restorable-database-account list` kommandot för ditt käll konto. Attributet instans-ID för ditt konto namn används för att utföra återställningen.
-* Ange parametern "restoreMode" till "PointInTime" och konfigurera värdet "restoreTimestampInUtc".
+* Ange `createMode` parametern för att *återställa*
+* Definiera `restoreParameters` , Observera att `restoreSource` värdet extraheras från resultatet av `az cosmosdb restorable-database-account list` kommandot för ditt käll konto. Attributet instans-ID för ditt konto namn används för att utföra återställningen.
+* Ange `restoreMode` parametern till *PointInTime* och konfigurera `restoreTimestampInUtc` värdet.
 
 ```json
 {

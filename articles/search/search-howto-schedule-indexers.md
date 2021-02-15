@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063221"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097984"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Så här schemalägger du indexerare i Azure Kognitiv sökning
 
 En indexerare körs vanligt vis en gång, omedelbart efter att den har skapats. Därefter kan du köra den igen på begäran med antingen Azure Portal, [köra indexerare (rest)](/rest/api/searchservice/run-indexer)eller ett Azure SDK. Alternativt kan du också konfigurera en indexerare så att den körs enligt ett schema. Några situationer där indexerare schemaläggning är användbart är bland annat:
 
-* Källdata ändras med tiden och du vill att Sök indexet ska bearbeta delta automatiskt.
-* Källdata är mycket stora och du vill sprida bearbetningen av indexeraren över tid. Mer information om indexering av stora data volymer finns i [så här indexerar du stora data mängder i Azure kognitiv sökning](search-howto-large-index.md).
+* Källdata ändras med tiden och du vill att Sök indexeraren automatiskt ska bearbeta differensen.
+
+* Källdata är mycket stora och du vill sprida bearbetningen av indexeraren över tid. Indexerare-jobb omfattas av en maximal körnings tid på 24 timmar för vanliga data källor och 2 timmar för indexerare med färdighetsuppsättningar. Om indexeringen inte kan slutföras inom det maximala intervallet kan du konfigurera ett schema som körs var 2: e timme. Indexerare kan automatiskt hämta var de slutade, som ett tecken på ett internt vatten märke som markerar var indexeringen senast avslutades. Att köra en indexerare på ett återkommande 2 tim schema gör det möjligt för IT att bearbeta en mycket stor data uppsättning (många miljoner dokument) utöver intervallet som tillåts för ett enda jobb. Mer information om hur du indexerar stora data volymer finns i [så här indexerar du stora data uppsättningar i Azure kognitiv sökning](search-howto-large-index.md).
+
 * Ett Sök index fylls i från flera data källor och du vill att indexerarna ska köras vid olika tidpunkter för att minska konflikter.
 
 Ett schema kan se ut ungefär så här: från och med 1 januari och körs var 50: e minut.

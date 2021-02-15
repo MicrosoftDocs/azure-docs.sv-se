@@ -1,17 +1,17 @@
 ---
 title: Anslutnings arkitektur – Azure Database for MariaDB
 description: Beskriver anslutnings arkitekturen för din Azure Database for MariaDB-Server.
-author: mksuni
-ms.author: sumuth
-ms.service: jroth
+author: Bashar-MSFT
+ms.author: bahusse
+ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 57e14fa4a026dafb085ea636611ab26b6bad7c01
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.date: 2/11/2021
+ms.openlocfilehash: a83b570637d18fd0e92cd80ed87acbef8c7a9d77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661712"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368072"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Anslutnings arkitektur i Azure Database for MariaDB
 Den här artikeln förklarar Azure Database for MariaDB anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for MariaDB-instans från klienter både inom och utanför Azure.
@@ -50,14 +50,14 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Mari
 | Brasilien, södra |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Kanada, centrala |40.85.224.249  | | |
 | Kanada, östra | 40.86.226.166    | | |
-| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| Central US | 23.99.160.139, 52.182.136.37, 52.182.136.38 | 13.67.215.62 | |
 | Kina, östra | 139.219.130.35    | | |
 | Kina, östra 2 | 40.73.82.1  | | |
 | Kina, norra | 139.219.15.17    | | |
 | Kina, norra 2 | 40.73.50.0     | | |
 | Asien, östra | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
 | East US |40.71.8.203, 40.71.83.113 |40.121.158.30|191.238.6.43 |
-| USA, östra 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  | | |
+| USA, östra 2 | 40.70.144.38, 52.167.105.38  | 52.177.185.181 | |
 | Frankrike, centrala | 40.79.137.0, 40.79.129.1  | | |
 | Frankrike, södra | 40.79.177.0     | | |
 | Tyskland, centrala | 51.4.144.100     | | |
@@ -65,22 +65,22 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Mari
 | Indien, centrala | 104.211.96.159     | | |
 | Södra Indien | 104.211.224.146  | | |
 | Indien, västra | 104.211.160.80    | | |
-| Japan, östra | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
-| Japan, västra | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    | | |
-| Sydkorea, centrala | 52.231.32.42   | | |
-| Sydkorea, södra | 52.231.200.86    | | |
-| USA, norra centrala | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Europa, norra | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Japan, östra | 40.79.192.23 | 13.78.61.196 | |
+| Japan, västra | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
+| Sydkorea, centrala | 52.231.17.13   | 52.231.32.42 | |
+| Sydkorea, södra | 52.231.145.3     | 52.231.200.86 | |
+| USA, norra centrala | 52.162.104.35, 52.162.104.36    | 23.96.178.199 | |
+| Europa, norra | 52.138.224.6, 52.138.224.7  | 40.113.93.91 |191.235.193.75 |
 | Sydafrika, norra  | 102.133.152.0    | | |
 | Sydafrika, västra | 102.133.24.0   | | |
 | USA, södra centrala |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
-| Sydostasien | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     | | |
+| Sydostasien | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
 | Förenade Arabemiraten Central | 20.37.72.64  | | |
 | Förenade Arabemiraten, norra | 65.52.248.0    | | |
 | Storbritannien, södra | 51.140.184.11   | | |
 | Storbritannien, västra | 51.141.8.11  | | |
 | USA, västra centrala | 13.78.145.25     | | |
-| Europa, västra |13.69.105.208,104.40.169.187 |40.68.37.158 | 191.237.232.75|
+| Europa, västra |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA, västra |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | USA, västra 2 | 13.66.226.202  | | |
 ||||

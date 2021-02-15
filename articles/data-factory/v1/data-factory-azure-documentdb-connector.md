@@ -1,23 +1,18 @@
 ---
 title: Flytta data till/från Azure Cosmos DB
 description: Lär dig hur du flyttar data till/från Azure Cosmos DB samling med Azure Data Factory
-services: data-factory, cosmosdb
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
-ms.service: multiple
-ms.workload: data-services
+ms.author: jingwang
+ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91f2b338ac9cda96521a5fe1d555de054826e273
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a90b26c677c3d53794bce3c2ff48c618415e4cf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637640"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379377"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Flytta data till och från Azure Cosmos DB med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -36,12 +31,12 @@ Du kan kopiera data från alla käll data lager som stöds till Azure Cosmos DB 
 
 Om du vill kopiera data som-är till/från JSON-filer eller en annan Cosmos DB samling, se [Importera/exportera JSON-dokument](#importexport-json-documents).
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopierings aktivitet som flyttar data till/från Azure Cosmos DB med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera** . Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
+Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager mall** , .net- **API** och **REST API** . Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -56,7 +51,7 @@ I följande avsnitt finns information om JSON-egenskaper som används för att d
 ## <a name="linked-service-properties"></a>Egenskaper för länkad tjänst
 Följande tabell innehåller en beskrivning av JSON-element som är speciella för Azure Cosmos DB länkade tjänsten.
 
-| **Egenskap** | **Beskrivning** | **Krävs** |
+| **Egenskap** | **Beskrivning** | **Obligatoriskt** |
 | --- | --- | --- |
 | typ |Egenskapen Type måste anges till: **DocumentDb** |Ja |
 | Begär |Ange information som krävs för att ansluta till Azure Cosmos DB databasen. |Ja |
@@ -80,7 +75,7 @@ En fullständig lista över avsnitt & egenskaper som är tillgängliga för att 
 
 Avsnittet typeProperties är olika för varje typ av data uppsättning och innehåller information om platsen för data i data lagret. Avsnittet typeProperties för data uppsättningen av typen **DocumentDbCollection** har följande egenskaper.
 
-| **Egenskap** | **Beskrivning** | **Krävs** |
+| **Egenskap** | **Beskrivning** | **Obligatoriskt** |
 | --- | --- | --- |
 | Samling |Namnet på den Cosmos DB dokument samlingen. |Ja |
 
@@ -121,18 +116,18 @@ Vilka egenskaper som är tillgängliga i avsnittet typeProperties i aktiviteten 
 
 Om kopierings aktiviteten är av typen **DocumentDbCollectionSource** är följande egenskaper tillgängliga i avsnittet **typeProperties** :
 
-| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Krävs** |
+| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Obligatoriskt** |
 | --- | --- | --- | --- |
-| DocumentDB |Ange frågan för att läsa data. |Frågesträng som stöds av Azure Cosmos DB. <br/><br/>Exempel: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nej <br/><br/>Om inget anges används SQL-instruktionen som körs: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |Specialtecken som visar att dokumentet är kapslat |Valfritt Character. <br/><br/>Azure Cosmos DB är ett NoSQL-arkiv för JSON-dokument, där kapslade strukturer tillåts. Azure Data Factory gör det möjligt för användaren att ange hierarki via nestingSeparator, vilket är "." i exemplen ovan. Med avgränsaren genererar kopierings aktiviteten "name"-objektet med tre underordnade element först, i mitten och sist, enligt namnet. First "," Name. mitten "och" Name. last "i tabell definitionen. |Nej |
+| DocumentDB |Ange frågan för att läsa data. |Frågesträng som stöds av Azure Cosmos DB. <br/><br/>Exempel: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Inga <br/><br/>Om inget anges används SQL-instruktionen som körs: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |Specialtecken som visar att dokumentet är kapslat |Valfritt Character. <br/><br/>Azure Cosmos DB är ett NoSQL-arkiv för JSON-dokument, där kapslade strukturer tillåts. Azure Data Factory gör det möjligt för användaren att ange hierarki via nestingSeparator, vilket är "." i exemplen ovan. Med avgränsaren genererar kopierings aktiviteten "name"-objektet med tre underordnade element först, i mitten och sist, enligt namnet. First "," Name. mitten "och" Name. last "i tabell definitionen. |Inga |
 
 **DocumentDbCollectionSink** stöder följande egenskaper:
 
-| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Krävs** |
+| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Obligatoriskt** |
 | --- | --- | --- | --- |
 | nestingSeparator |Ett specialtecken i käll kolumnens namn som anger att det kapslade dokumentet behövs. <br/><br/>Till exempel ovan: `Name.First` i tabellen utdata skapas följande JSON-struktur i Cosmos DB-dokumentet:<br/><br/>"Namn": {<br/>    "First": "John"<br/>}, |Tecken som används för att avgränsa kapslingsnivåer.<br/><br/>Standardvärdet är `.` (dot). |Tecken som används för att avgränsa kapslingsnivåer. <br/><br/>Standardvärdet är `.` (dot). |
 | writeBatchSize |Antal parallella förfrågningar till Azure Cosmos DB tjänst för att skapa dokument.<br/><br/>Du kan finjustera prestandan när du kopierar data till/från Cosmos DB med hjälp av den här egenskapen. Du kan vänta en bättre prestanda när du ökar writeBatchSize eftersom fler parallella förfrågningar till Cosmos DB skickas. Du måste dock undvika begränsning som kan resultera i fel meddelandet: "begär ande frekvens är stor".<br/><br/>Begränsningen bestäms av ett antal faktorer, inklusive dokument storlek, antal villkor i dokument, indexerings policy för mål samling osv. För kopierings åtgärder kan du använda en bättre samling (t. ex. S3) för att få flest data flöde tillgängligt (2 500 enheter för programbegäran/sekund). |Integer |Nej (standard: 5) |
-| writeBatchTimeout |Vänte tid för att slutföra åtgärden innan tids gränsen uppnåddes. |tidsintervall<br/><br/> Exempel: "00:30:00" (30 minuter). |Nej |
+| writeBatchTimeout |Vänte tid för att slutföra åtgärden innan tids gränsen uppnåddes. |tidsintervall<br/><br/> Exempel: "00:30:00" (30 minuter). |Inga |
 
 ## <a name="importexport-json-documents"></a>Importera/exportera JSON-dokument
 Med hjälp av den här Cosmos DB-anslutningen kan du enkelt
@@ -478,7 +473,7 @@ Sedan blir utdata-JSON i Cosmos DB:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos DB är ett NoSQL-arkiv för JSON-dokument, där kapslade strukturer tillåts. Azure Data Factory gör det möjligt för användaren att ange hierarki via **nestingSeparator** , vilket är "." i det här exemplet. Med avgränsaren genererar kopierings aktiviteten "name"-objektet med tre underordnade element först, i mitten och sist, enligt namnet. First "," Name. mitten "och" Name. last "i tabell definitionen.
+Azure Cosmos DB är ett NoSQL-arkiv för JSON-dokument, där kapslade strukturer tillåts. Azure Data Factory gör det möjligt för användaren att beteckna en hierarki via **nestingSeparator**, vilket är "." i det här exemplet. Med avgränsaren genererar kopierings aktiviteten "name"-objektet med tre underordnade element först, i mitten och sist, enligt namnet. First "," Name. mitten "och" Name. last "i tabell definitionen.
 
 ## <a name="appendix"></a>Bilaga
 1. **Fråga:** Stöder kopierings aktiviteten uppdatering av befintliga poster?

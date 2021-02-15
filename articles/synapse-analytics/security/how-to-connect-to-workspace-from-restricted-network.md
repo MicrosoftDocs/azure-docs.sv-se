@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218373"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384528"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Ansluta till arbets ytans resurser från ett begränsat nätverk
 
@@ -74,7 +74,7 @@ När den privata länk slut punkten har skapats kan du komma åt inloggnings sid
 
 Du måste skapa följande för att få åtkomst till resurserna i Azure Synapse Analytics Studio-arbetsytans resurs:
 
-- Minst en privat länk slut punkt med en **dev** -typ för **mål under resurs**.
+- Minst en privat länk slut punkt med en **mål under resurs** typ av **dev**.
 - Två andra valfria privata länk slut punkter med typer av **SQL** eller **SqlOnDemand**, beroende på vilka resurser i arbets ytan som du vill få åtkomst till.
 
 Att skapa dessa liknar hur du skapar slut punkten i föregående steg.  
@@ -146,7 +146,8 @@ När du har lagt till den virtuella nätverks länken måste du lägga till DNS-
 
 * För **namn** skriver du in de dedikerade namn strängarna för olika privata slut punkter: 
   * **Web** är för den privata slut punkten för åtkomst till Azure Synapse Analytics Studio.
-  * "***YourWorkSpaceName * * _" är för den privata slut punkten för SQL-frågekörningen i SQL-poolen och även för den privata slut punkten för att få åtkomst till allt annat i Azure Synapse Analytics Studio-arbetsytor. _ "*** YourWorkSpaceName *-OnDemand * *" gäller den privata slut punkten för SQL-frågekörningen i den inbyggda poolen.
+  * "***YourWorkSpaceName***" är för den privata slut punkten för SQL-FRÅGEKÖRNINGEN i SQL-poolen och även för den privata slut punkten för att få åtkomst till allt annat i Azure Synapse Analytics Studio-arbetsytor.
+  * "***YourWorkSpaceName *-OnDemand**" gäller den privata slut punkten för SQL-frågekörningen i den inbyggda poolen.
 * I **typ** väljer du DNS-posttypen endast **en** . 
 * För **IP-adress**, skriver du in motsvarande IP-adress för varje privat slut punkt. Du kan hämta IP-adressen i **nätverks gränssnittet** från din privata slut punkts översikt.
 

@@ -4,12 +4,12 @@ description: Förhindra att användare uppdaterar eller tar bort Azure-resurser 
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428325"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369483"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Låsa resurser för att förhindra oväntade ändringar
 
@@ -32,7 +32,7 @@ Resource Manager-lås gäller endast för åtgärder som sker i hanteringsplanet
 
 Att använda Lås kan leda till oväntade resultat eftersom vissa åtgärder som inte verkar ändra resursen verkligen kräver åtgärder som blockeras av låset. Lås förhindrar alla åtgärder som kräver en POST-begäran till Azure Resource Manager API. Några vanliga exempel på åtgärder som blockeras av lås är:
 
-* Ett skrivskyddat lås på ett **lagrings konto** förhindrar att alla användare visar nycklarna. Åtgärden för att visa nycklar hanteras via en POST-begäran eftersom nycklarna som returneras är tillgängliga för skrivåtgärder.
+* Ett skrivskyddat lås på ett **lagrings konto** förhindrar att användare visar konto nycklarna. Åtgärden Azure Storage [list nycklar](/rest/api/storagerp/storageaccounts/listkeys) hanteras via en post-begäran för att skydda åtkomsten till konto nycklarna, som ger fullständig åtkomst till data i lagrings kontot. När ett skrivskyddat lås har kon figurer ATS för ett lagrings konto måste användare som inte har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-eller Queue-data. Ett skrivskyddat lås förhindrar också tilldelningen av Azure RBAC-roller som är begränsade till lagrings kontot eller till en data behållare (BLOB container eller queue).
 
 * Ett skrivskyddat lås på en **App Service** resurs förhindrar att Visual Studio-Server Explorer visar filer för resursen, eftersom denna interaktion kräver skriv åtkomst.
 

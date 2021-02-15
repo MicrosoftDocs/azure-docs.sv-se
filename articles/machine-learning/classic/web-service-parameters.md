@@ -4,23 +4,22 @@ description: Så här använder du Azure Machine Learning webb tjänst parametra
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 4a5857e44623f545f2807592c0f6f7b6dae366f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518342"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Använd Azure Machine Learning Studio (klassiska) webb tjänst parametrar
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 En Azure Machine Learning-webbtjänst skapas genom att publicera ett experiment som innehåller moduler med konfigurerbara parametrar. I vissa fall kanske du vill ändra modulens beteende medan webb tjänsten körs. Med *webb tjänst parametrar* kan du göra det här. 
@@ -52,7 +51,7 @@ Vi kan till exempel anta att vi har ett experiment med en modul för [export av 
 2. Ange lagrings typ:
    
    * Under **ange data mål väljer du** Azure Blob Storage.
-   * Under **Ange Autentiseringstyp väljer du** "konto".
+   * Under **Ange Autentiseringstyp väljer du**"konto".
    * Ange konto informationen för Azure Blob Storage. 
 
 3. Klicka på ikonen till höger om **sökvägen till bloben som börjar med container parametern**. Det ser ut så här:

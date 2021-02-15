@@ -4,15 +4,15 @@ description: Azure skydds Security-bas linjen ger procedur vägledning och resur
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392382"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azures säkerhets bas linje för Azure skydds
 
@@ -69,7 +69,11 @@ Anslutning till Gateway Manager och Azure Service tag är skyddat (låst) av Azu
 
 **Vägledning**: Azure skydds är integrerat med Azure Active Directory (Azure AD) som är Azures standard tjänst för identitets-och åtkomst hantering. Användare kan komma åt Azure Portal med Azure AD-autentisering för att hantera Azure skydds-tjänsten (skapa, uppdatera och ta bort skydds-resurser).
 
-Att ansluta till virtuella datorer med Azure skydds är beroende av antingen en SSH-nyckel eller användar namn/lösen ord, och stöder för närvarande inte användning av autentiseringsuppgifter för Azure AD.
+Att ansluta till virtuella datorer med Azure skydds är beroende av antingen en SSH-nyckel eller användar namn/lösen ord, och stöder för närvarande inte användning av autentiseringsuppgifter för Azure AD. 
+
+Du kan lagra dina SSH-nycklar som Azure Key Vault hemligheter och använda dessa hemligheter för att ansluta till dina virtuella datorer med Azure skydds. Du kan kontrol lera användarnas åtkomst till dessa hemligheter genom att [tilldela Key Vault åtkomst principer](../key-vault/general/assign-access-policy-portal.md) antingen för enskilda användare eller Azure AD-grupper. Användarna behöver följande behörigheter för att kunna använda den här metoden för att ansluta till en virtuell dator:
+- **Få** åtkomst till hemligheterna som lagras i vald Azure Key Vault
+- **Lista** åtkomst till hemligheterna som lagras i vald Azure Key Vault
 
 Förutom en SSH-nyckel eller användar namn/lösen ord när du ansluter till virtuella datorer med Azure skydds behöver du följande roll tilldelningar:
 - Läsar roll på den virtuella mål datorn
@@ -106,7 +110,8 @@ Läs mer i följande referenser:
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Använd kraftfulla verifieringskontroller för all Azure Active Directory-baserad åtkomst
 
-**Vägledning**: Azure skydds är integrerat med Azure Active Directory (Azure AD) för åtkomst och hantering av tjänsten. Konfigurera Azure-Multi-Factor Authentication för din Azure AD-klient. Azure AD stöder starka verifierings kontroller med Multi-Factor Authentication (MFA) och starka metoder för lösen ords kryptering.  
+**Vägledning**: Azure skydds är integrerat med Azure Active Directory (Azure AD) för åtkomst och hantering av tjänsten. Konfigurera Azure Active Directory Multi-Factor Authentication för din Azure AD-klient. Azure AD stöder starka verifierings kontroller med Multi-Factor Authentication (MFA) och starka metoder för lösen ords kryptering.
+  
 - Multi-Factor Authentication: Aktivera Azure AD MFA och följ Azure Security Center rekommendationer för identitets-och åtkomst hantering för MFA-installationen. MFA kan tillämpas på alla användare, välja användare eller på nivån per användare baserat på inloggnings villkor och riskfaktorer. 
 
 - Lösen ords kryptering: tre alternativ för lösen ords kryptering är tillgängliga: Windows Hello för företag, Microsoft Authenticator app och lokala autentiseringsmetoder som smartkort. 
@@ -375,7 +380,7 @@ Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG) och 
 
 - [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Aktivera Azures resurs loggar för Azure skydds ](diagnostic-logs.md)
+- [Aktivera Azures resurs loggar för Azure skydds](diagnostic-logs.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

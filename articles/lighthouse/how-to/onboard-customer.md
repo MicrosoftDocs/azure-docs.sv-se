@@ -1,14 +1,14 @@
 ---
 title: Registrera en kund i Azure Lighthouse
 description: Lär dig hur du kan publicera en kund i Azure Lighthouse, så att deras resurser kan nås och hanteras via din egen klient med Azure-delegerad resurs hantering.
-ms.date: 01/14/2021
+ms.date: 02/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232683"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372152"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Registrera en kund i Azure Lighthouse
 
@@ -311,12 +311,13 @@ Om du behöver göra ändringar när kunden har publicerats kan du [Uppdatera de
 Om du inte kan publicera kunden eller om dina användare har problem med att komma åt de delegerade resurserna kontrollerar du följande tips och krav och försöker igen.
 
 - `managedbyTenantId`Värdet får inte vara samma som klient-ID: t för den prenumeration som registreras.
-- Det går inte att ha flera tilldelningar i samma definitions område `mspOfferName` . 
+- Det går inte att ha flera tilldelningar i samma definitions område `mspOfferName` .
 - **Microsoft. ManagedServices** -resurs leverantören måste vara registrerad för den delegerade prenumerationen. Detta bör ske automatiskt under distributionen, men om inte kan du [registrera den manuellt](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Auktoriseringar får inte innehålla några användare med den inbyggda rollen [ägare](../../role-based-access-control/built-in-roles.md#owner) eller någon inbyggd roll med [DataActions](../../role-based-access-control/role-definitions.md#dataactions).
 - Grupper måste skapas med en [**grupp typ**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) som **säkerhet** och inte **Microsoft 365**.
 - Det kan finnas ytterligare fördröjning innan åtkomst har Aktiver ATS för [kapslade grupper](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md).
 - Användare som behöver visa resurser i Azure Portal måste ha rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) (eller en annan inbyggd roll som inkluderar läsar åtkomst).
+- De [inbyggda Azure-rollerna](../../role-based-access-control/built-in-roles.md) som du inkluderar i auktoriseringar får inte innehålla föråldrade roller. Om en inbyggd Azure-roll blir föråldrad kommer alla användare som har varit registrerade med rollen att förlora åtkomsten och du kan inte publicera ytterligare delegeringar. Du kan åtgärda detta genom att uppdatera mallen så att den endast använder inbyggda roller som stöds och sedan utföra en ny distribution.
 
 ## <a name="next-steps"></a>Nästa steg
 

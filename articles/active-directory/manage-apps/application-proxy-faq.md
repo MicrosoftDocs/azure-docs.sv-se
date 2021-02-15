@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257785"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370826"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy
 
@@ -106,6 +106,15 @@ Standard längden är 85 sekunder. Inställningen "Long" är 180 sekunder. Det g
 
 Nej, detta stöds inte för närvarande.
 
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>Vad händer om jag tar bort CWAP_AuthSecret (klient hemligheten) i appens registrering?
+
+Klient hemligheten, som även kallas *CWAP_AuthSecret*, läggs automatiskt till i programobjektet (program registrering) när Azure AD-programproxy-appen skapas.
+
+Klient hemligheten är giltig i ett år. En ny klient hemlighet för ett år skapas automatiskt innan den aktuella giltiga klient hemligheten upphör att gälla. Tre CWAP_AuthSecret klient hemligheter bevaras i programobjektet hela tiden. 
+
+> [!IMPORTANT]
+> Borttagning av CWAP_AuthSecret bryter förautentisering för Azure AD-programproxy. Ta inte bort CWAP_AuthSecret.
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Hur gör jag för att ändra landnings sidan mina program inläsningar?
 
 På sidan program registreringar kan du ändra start sidans URL till önskad extern URL för landnings sidan. Den angivna sidan kommer att läsas in när programmet startas från Mina appar eller Office 365-portalen. Konfigurations steg finns i [Ange en anpassad start sida för publicerade appar med hjälp av Azure AD-programproxy](./application-proxy-configure-custom-home-page.md)
@@ -187,11 +196,11 @@ Nej. Azure AD-programproxy har utformats för att fungera med Azure AD och uppfy
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Fungerar WebSocket-supporten för andra program än QlikSense?
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>Fungerar WebSocket-supporten för andra program än QlikSense och HTML5 i fjärr skrivbords webb klienten (HTML5)?
 
 För närvarande är stödet för WebSocket-protokoll fortfarande i offentlig för hands version och det kanske inte fungerar för andra program. Vissa kunder har blandat framgång med WebSocket-protokoll med andra program. Vi vill gärna höra resultatet om du testar sådana scenarier. Skicka oss din feedback på aadapfeedback@microsoft.com .
 
-Funktioner (EventLogs, PowerShell och Fjärrskrivbordstjänster) i Windows administrations Center (WAC) eller på en webb klient för fjärr skrivbord fungerar inte via Azure AD-programproxy för närvarande.
+Funktioner (EventLogs, PowerShell och Fjärrskrivbordstjänster) i Windows administrations Center (WAC) fungerar inte via Azure AD-programproxy för närvarande.
 
 ## <a name="link-translation"></a>Länk Översättning
 

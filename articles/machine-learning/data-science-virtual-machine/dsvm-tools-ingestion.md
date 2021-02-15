@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Lär dig mer om de verktyg och verktyg för data inmatning som är förinstallerade på Data Science Virtual Machine.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 89cf81f8d0a66c29a345f56676fbb97601743710
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 21a6efa8108bfd0a317eb955e8b3ffcfba0862a2
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519379"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine verktyg för data inmatning
 
@@ -69,7 +68,7 @@ Här följer några data flytt verktyg som är tillgängliga i DSVM.
 | Länkar till exempel      | [Importera data för CosmosDB](../../cosmos-db/import-data.md)      |
 | Relaterade verktyg på DSVM      | AzCopy, AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure Lagringsutforskaren
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 | Kategori | Värde |
 | ------------- | ------------- |
@@ -77,7 +76,7 @@ Här följer några data flytt verktyg som är tillgängliga i DSVM.
 | DSVM-versioner som stöds      | Windows      |
 | Vanliga användnings områden      | Importera och exportera data från DSVM.    |
 |  Hur använder man/kör den?    | Sök efter "Azure Storage Explorer" på Start menyn. |
-| Länkar till exempel      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| Länkar till exempel      | [Azure Lagringsutforskaren](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

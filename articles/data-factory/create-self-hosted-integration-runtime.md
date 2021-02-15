@@ -1,22 +1,17 @@
 ---
 title: Skapa en lokal Integration Runtime
 description: Lär dig hur du skapar en integration runtime med egen värd i Azure Data Factory, vilket gör att data fabriker kan komma åt data lager i ett privat nätverk.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-manager: shwang
-ms.custom: seo-lt-2019
-ms.date: 12/25/2020
-ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217455"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389524"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Skapa och konfigurera lokalt installerad integrationskörning
 
@@ -30,7 +25,6 @@ Den här artikeln beskriver hur du kan skapa och konfigurera en lokal IR-anslutn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Att tänka på vid användning av en egen värd IR
 
 - Du kan använda en enda integration runtime med egen värd för flera lokala data källor. Du kan också dela den med en annan data fabrik i samma Azure Active Directory-klient (Azure AD). Mer information finns i [dela en integration runtime med egen värd](./create-shared-self-hosted-integration-runtime-powershell.md).
@@ -42,7 +36,6 @@ Den här artikeln beskriver hur du kan skapa och konfigurera en lokal IR-anslutn
 - Använd integration runtime med egen värd även om data lagret finns i molnet på en virtuell IaaS-dator (Azure Infrastructure as a Service).
 - Aktiviteter kan Miss Miss kan utföras i en integration runtime med egen värd som du har installerat på en Windows Server för vilken FIPS-kompatibel kryptering har Aktiver ATS. För att undvika det här problemet har du två alternativ: lagra autentiseringsuppgifter/hemliga värden i en Azure Key Vault eller inaktivera FIPS-kompatibel kryptering på servern. Om du vill inaktivera FIPS-kompatibel kryptering ändrar du följande register under nyckels värde från 1 (aktiverat) till 0 (inaktiverat): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Om du använder den lokala [integrerings körningen som proxy för SSIS integration runtime](./self-hosted-integration-runtime-proxy-ssis.md)kan FIPS-kompatibel kryptering aktive ras och används när data flyttas från lokalt till Azure Blob Storage som ett mellanlagringsområde.
 
-
 ## <a name="command-flow-and-data-flow"></a>Kommando flöde och data flöde
 
 När du flyttar data mellan lokala platser och molnet använder aktiviteten en lokal integration runtime för att överföra data mellan en lokal data källa och molnet.
@@ -51,32 +44,36 @@ Här följer en översikt över de data flödes steg som krävs för att kopiera
 
 ![Översikt över data flödet på hög nivå](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
-1. En datautvecklare skapar en integration runtime med egen värd i en Azure-datafabrik med hjälp av en PowerShell-cmdlet. För närvarande har Azure Portal inte stöd för den här funktionen.
-2. Data utvecklaren skapar en länkad tjänst för ett lokalt data lager. Utvecklaren gör detta genom att ange den instansen för integration runtime med egen värd som tjänsten ska använda för att ansluta till data lager.
-3. Noden för integration runtime med egen värd krypterar autentiseringsuppgifterna med hjälp av Windows Data Protection Application Programming Interface (DPAPI) och sparar autentiseringsuppgifterna lokalt. Om flera noder är inställda för hög tillgänglighet synkroniseras autentiseringsuppgifterna ytterligare mellan andra noder. Varje nod krypterar autentiseringsuppgifterna med DPAPI och lagrar dem lokalt. Synkronisering av autentiseringsuppgifter är transparent för data utvecklaren och hanteras av IR med egen värd.
-4. Azure Data Factory kommunicerar med integration runtime med egen värd för att schemalägga och hantera jobb. Kommunikationen sker via en kontroll kanal som använder en delad [Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay) -anslutning. När ett aktivitets jobb måste köras Data Factory köar begäran tillsammans med information om autentiseringsuppgifter. Det gör att autentiseringsuppgifterna inte redan lagras på den lokala integrerings körningen. Den egen värdbaserade integrerings körningen startar jobbet när den söker efter kön.
-5. Den lokala integrerings körningen kopierar data mellan en lokal lagrings plats och en moln lagrings plats. Kopians riktning beror på hur kopierings aktiviteten konfigureras i data pipelinen. I det här steget kommunicerar den egen värdbaserade integrerings körningen direkt med molnbaserade lagrings tjänster som Azure Blob Storage via en säker HTTPS-kanal.
+1. En datautvecklare skapar en integration runtime med egen värd i en Azure-datafabrik med hjälp av Azure Portal eller PowerShell-cmdleten.
 
+2. Data utvecklaren skapar en länkad tjänst för ett lokalt data lager. Utvecklaren gör detta genom att ange den instansen för integration runtime med egen värd som tjänsten ska använda för att ansluta till data lager.
+
+3. Noden för integration runtime med egen värd krypterar autentiseringsuppgifterna med hjälp av Windows Data Protection Application Programming Interface (DPAPI) och sparar autentiseringsuppgifterna lokalt. Om flera noder är inställda för hög tillgänglighet synkroniseras autentiseringsuppgifterna ytterligare mellan andra noder. Varje nod krypterar autentiseringsuppgifterna med DPAPI och lagrar dem lokalt. Synkronisering av autentiseringsuppgifter är transparent för data utvecklaren och hanteras av IR med egen värd.
+
+4. Azure Data Factory kommunicerar med integration runtime med egen värd för att schemalägga och hantera jobb. Kommunikationen sker via en kontroll kanal som använder en delad [Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay) -anslutning. När ett aktivitets jobb måste köras Data Factory köar begäran tillsammans med information om autentiseringsuppgifter. Det gör att autentiseringsuppgifterna inte redan lagras på den lokala integrerings körningen. Den egen värdbaserade integrerings körningen startar jobbet när den söker efter kön.
+
+5. Den lokala integrerings körningen kopierar data mellan en lokal lagrings plats och en moln lagrings plats. Kopians riktning beror på hur kopierings aktiviteten konfigureras i data pipelinen. I det här steget kommunicerar den egen värdbaserade integrerings körningen direkt med molnbaserade lagrings tjänster som Azure Blob Storage via en säker HTTPS-kanal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - De Windows-versioner som stöds är:
-  + Windows 8,1
-  + Windows 10
-  + Windows Server 2012
-  + Windows Server 2012 R2
-  + Windows Server 2016
-  + Windows Server 2019
-   
+  - Windows 8,1
+  - Windows 10
+  - Windows Server 2012
+  - Windows Server 2012 R2
+  - Windows Server 2016
+  - Windows Server 2019
+
 Installation av integration runtime med egen värd på en domänkontrollant stöds inte.
-- Integration runtime med egen värd kräver ett 64-bitars operativ system med .NET Framework 4.7.2 eller senare se [.NET Framework system krav](/dotnet/framework/get-started/system-requirements) för mer information.
+
+- Integration runtime med egen värd kräver ett 64-bitars operativ system med .NET Framework 4.7.2 eller senare. Mer information finns i [.NET Framework system krav](/dotnet/framework/get-started/system-requirements) .
 - Den rekommenderade minsta konfigurationen för den egen värdbaserade integration runtime-datorn är en 2 GHz-processor med 4 kärnor, 8 GB RAM-minne och 80 GB ledigt hårddisk utrymme. Mer information om system krav finns i [Hämta](https://www.microsoft.com/download/details.aspx?id=39717).
 - Om värd datorn försätts i vilo läge svarar inte den egen värdbaserade integrerings körningen med data begär Anden. Konfigurera ett lämpligt energi schema på datorn innan du installerar integration runtime med egen värd. Om datorn är konfigurerad att försättas i vilo läge visas ett meddelande om att installations programmet för egen värd för integration runtime körs.
 - Du måste vara administratör på datorn för att kunna installera och konfigurera integration runtime med egen värd.
 - Kopierings aktivitets körningar sker med en angiven frekvens. Processor-och RAM-användning på datorn följer samma mönster med hög belastnings tider. Resursanvändningen beror också mycket på mängden data som flyttas. När flera kopierings jobb pågår, ser du att resursanvändningen går upp under hög belastnings tider.
 - Aktiviteter kan Miss Miss kan uppstå under extrahering av data i Parquet-, ORC-eller Avro-format. Mer information om Parquet finns i [Parquet-format i Azure Data Factory](./format-parquet.md#using-self-hosted-integration-runtime). Skapandet av filen körs på den lokala integrations datorn. För att fungera som förväntat, kräver fil skapande följande krav:
-    - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Paket (x64)
-    - Java Runtime (JRE) version 8 från en JRE-Provider, till exempel [anta openjdk](https://adoptopenjdk.net/). Kontrol lera att `JAVA_HOME` miljövariabeln har angetts.
+  - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Paket (x64)
+  - Java Runtime (JRE) version 8 från en JRE-Provider, till exempel [anta openjdk](https://adoptopenjdk.net/). Se till att `JAVA_HOME` miljövariabeln är inställd på mappen JRE (och inte bara mappen JDK).
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>Konfigurera en integration runtime med egen värd
 
@@ -112,7 +109,7 @@ Använd följande steg för att skapa en IR med egen värd med hjälp av Azure D
 
    ![Skapa Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. På sidan **installation av integration runtime** väljer du **Azure, egen värd** och väljer sedan **Fortsätt**. 
+1. På sidan **installation av integration runtime** väljer du **Azure, egen värd** och väljer sedan **Fortsätt**.
 
 1. På följande sida väljer du **egen värd** för att skapa en Self-Hosted IR och väljer sedan **Fortsätt**.
    ![Skapa en selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
@@ -128,7 +125,7 @@ Använd följande steg för att skapa en IR med egen värd med hjälp av Azure D
     1. Ladda ned Integration Runtime med egen värd på en lokal Windows-dator. Kör installationsprogrammet.
 
     1. Klistra in den nyckel som du sparade tidigare på sidan **registrera integration Runtime (lokal installation)** och välj **Registrera**.
-    
+
        ![Registrera Integration Runtime](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
     1. På sidan **ny integration Runtime (lokal installation) nod** väljer du **Slutför**.
@@ -155,7 +152,7 @@ dmgcmd ACTION args...
 
 Här följer information om programmets åtgärder och argument: 
 
-|TGÄRD|args|Description|
+|TGÄRD|args|Beskrivning|
 |------|----|-----------|
 |`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel och nodnamn.|
 |`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst på den aktuella noden för att konfigurera ett kluster med hög tillgänglighet. Eller aktivera inställning av autentiseringsuppgifter direkt mot IR med egen värd utan att gå via Azure Data Factory. Du gör det senare med hjälp av cmdleten **New-AzDataFactoryV2LinkedServiceEncryptedCredential** från en fjärrdator i samma nätverk.|
@@ -172,7 +169,6 @@ Här följer information om programmets åtgärder och argument:
 |`-tonau`,<br/>`-TurnOnAutoUpdate`||Aktivera automatisk uppdatering av integrerings körningen med egen värd.|
 |`-toffau`,<br/>`-TurnOffAutoUpdate`||Inaktivera automatisk uppdatering av integrerings körningen med egen värd.|
 |`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|Ange dia Host service som ska köras som ett nytt konto. Använd det tomma lösen ordet "" för system konton och virtuella konton.|
-
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Installera och registrera en egen värd-IR från Microsoft Download Center
 
@@ -199,6 +195,7 @@ Här följer information om programmets åtgärder och argument:
     3. Välj **Register** (Registrera).
 
 ## <a name="service-account-for-self-hosted-integration-runtime"></a>Tjänst konto för integration runtime med egen värd
+
 Standard inloggnings tjänst kontot för integration runtime med egen värd är **NT SERVICE\DIAHostService**. Du kan se den i **tjänster – > integration runtime tjänst-> egenskaper-> inloggning**.
 
 ![Tjänst konto för integration runtime med egen värd](media/create-self-hosted-integration-runtime/shir-service-account.png)
@@ -209,21 +206,18 @@ Kontrol lera att kontot har behörighet att logga in som en tjänst. Det går in
 
 ![Skärm bild av inloggning som tilldelning av användar rättigheter för tjänst](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
-
 ## <a name="notification-area-icons-and-notifications"></a>Ikoner och meddelanden i meddelande fältet
 
 Om du flyttar markören över ikonen eller meddelandet i meddelande fältet kan du se information om status för den lokala integrerings körningen.
 
 ![Meddelanden i meddelande fältet](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
-
-
 ## <a name="high-availability-and-scalability"></a>Hög tillgänglighet och skalbarhet
 
 Du kan associera en egen värd integrerings körning med flera lokala datorer eller virtuella datorer i Azure. De här datorerna kallas noder. Du kan ha upp till fyra noder som är kopplade till en egen värd integrerings körning. Fördelarna med att ha flera noder på lokala datorer som har en gateway installerad för en logisk Gateway är:
 
-* Högre tillgänglighet för integration runtime med egen värd så att den inte längre är en enskild felpunkt i din Big data-lösning eller integrering av moln data med Data Factory. Denna tillgänglighet säkerställer kontinuitet när du använder upp till fyra noder.
-* Bättre prestanda och data flöde vid data förflyttning mellan lokala och molnbaserade data lager. Få mer information om [prestanda jämförelser](copy-activity-performance.md).
+- Högre tillgänglighet för integration runtime med egen värd så att den inte längre är en enskild felpunkt i din Big data-lösning eller integrering av moln data med Data Factory. Denna tillgänglighet säkerställer kontinuitet när du använder upp till fyra noder.
+- Bättre prestanda och data flöde vid data förflyttning mellan lokala och molnbaserade data lager. Få mer information om [prestanda jämförelser](copy-activity-performance.md).
 
 Du kan associera flera noder genom att installera program varan för egen värd integrerings körning från [Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Registrera sedan den med hjälp av någon av de autentiseringsinställningar som hämtades från cmdleten **New-AzDataFactoryV2IntegrationRuntimeKey** , enligt beskrivningen i [självstudien](tutorial-hybrid-copy-powershell.md).
 
@@ -265,7 +259,6 @@ Här följer kraven för TLS/SSL-certifikatet som du använder för att skydda k
 > Vi rekommenderar att du använder det här certifikatet om din privata nätverks miljö inte är säker eller om du vill skydda kommunikationen mellan noderna i ditt privata nätverk.
 >
 > Data förflyttning under överföring från en egen värd-IR till andra data lager sker alltid i en krypterad kanal, oavsett om det här certifikatet har angetts eller inte.
-
 
 ## <a name="proxy-server-considerations"></a>Överväganden för proxyserver
 
@@ -313,6 +306,7 @@ Om du väljer alternativet **Använd systemproxy** för HTTP-proxyn använder de
         <defaultProxy useDefaultCredentials="true" />
     </system.net>
     ```
+
     Du kan sedan lägga till information om proxyservern som visas i följande exempel:
 
     ```xml
@@ -328,6 +322,7 @@ Om du väljer alternativet **Använd systemproxy** för HTTP-proxyn använder de
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
+
 1. Spara konfigurations filen på den ursprungliga platsen. Starta sedan om värd tjänsten för integration runtime med egen värd, som hämtar ändringarna.
 
    Om du vill starta om tjänsten använder du tjänst-appleten från kontroll panelen. Eller från Integration Runtime Configuration Manager, Välj knappen **stoppa tjänst** och välj sedan **Starta tjänst**.
@@ -343,13 +338,13 @@ Du måste också se till att Microsoft Azure finns i företagets lista över til
 
 Om du ser fel meddelanden som följande, är den troligaste orsaken felaktig konfiguration av brand väggen eller proxyservern. Sådan konfiguration förhindrar att integrerings körningen med egen värd ansluter till Data Factory att autentisera sig själv. Se föregående avsnitt för att kontrol lera att din brand vägg och proxyserver är korrekt konfigurerade.
 
-* När du försöker registrera den egna värdbaserade integrerings körningen visas följande fel meddelande: "Det gick inte att registrera den här Integration Runtime noden! Bekräfta att autentiseringsnyckel är giltig och att värd tjänsten för integrations tjänsten körs på den här datorn. "
-* När du öppnar Integration Runtime Configuration Manager visas statusen **frånkopplad** eller **ansluten**. När du visar händelse loggar för Windows, under **Loggboken**  >  **program-och tjänst loggar**  >  **Microsoft integration runtime**, visas fel meddelanden som detta:
+- När du försöker registrera den egna värdbaserade integrerings körningen visas följande fel meddelande: "Det gick inte att registrera den här Integration Runtime noden! Bekräfta att autentiseringsnyckel är giltig och att värd tjänsten för integrations tjänsten körs på den här datorn. "
+- När du öppnar Integration Runtime Configuration Manager visas statusen **frånkopplad** eller **ansluten**. När du visar händelse loggar för Windows, under **Loggboken**  >  **program-och tjänst loggar**  >  **Microsoft integration runtime**, visas fel meddelanden som detta:
 
-    ```
-    Unable to connect to the remote server
-    A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
-    ```
+  ```output
+  Unable to connect to the remote server
+  A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
+  ```
 
 ### <a name="enable-remote-access-from-an-intranet"></a>Aktivera fjärråtkomst från ett intranät
 
@@ -361,12 +356,11 @@ När du kör installations programmet för den lokala integrerings körnings ver
 
 När du använder en brand vägg från en partner eller andra kan du manuellt öppna port 8060 eller porten som är konfigurerad för användaren. Om du har problem med brand väggen när du konfigurerar den egna värdbaserade integrerings körningen använder du följande kommando för att installera integration runtime med egen värd utan att konfigurera brand väggen:
 
-```
+```cmd
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 
 Om du väljer att inte öppna port 8060 på den lokala integration runtime-datorn använder du andra metoder än inställningen ange autentiseringsuppgifter för att konfigurera autentiseringsuppgifter för data lagring. Du kan till exempel använda PowerShell-cmdleten **New-AzDataFactoryV2LinkedServiceEncryptCredential** .
-
 
 ## <a name="ports-and-firewalls"></a>Portar och brand väggar
 
@@ -381,7 +375,6 @@ På företags brand Väggs nivå måste du konfigurera följande domäner och ut
 
 [!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-internal.md)]
 
-
 På Windows brand Väggs nivå eller på dator nivå är dessa utgående portar normalt aktiverade. Om de inte är det kan du konfigurera domäner och portar på en egen värd för integration runtime-datorn.
 
 > [!NOTE]
@@ -395,12 +388,14 @@ Utifrån din källa och dina mottagare kan du behöva tillåta ytterligare domä
 För vissa moln databaser, till exempel Azure SQL Database och Azure Data Lake, kan du behöva tillåta IP-adresser för datorer med egen värd integrerings körning i brand Väggs konfigurationen.
 
 ### <a name="get-url-of-azure-relay"></a>Hämta URL för Azure Relay
-En nödvändig domän och port som måste placeras i listan över tillåtna i brand väggen är att kommunikationen ska kunna Azure Relay. Integration runtime med egen värd använder den för interaktiv redigering, till exempel test anslutning, bläddra i Mapplista och tabell lista, Hämta schema och förhandsgranska data. Om du inte vill tillåta **. ServiceBus.Windows.net** och vill ha mer information om URL: er kan du hämta alla FQDN: er som krävs av din integration runtime med egen värd från ADF-portalen.
+
+En nödvändig domän och port som måste placeras i listan över tillåtna i brand väggen är att kommunikationen ska kunna Azure Relay. Den egna värdbaserade integrerings körningen använder den för interaktiv redigering, till exempel test anslutning, bläddra i Mapplista och tabell lista, Hämta schema och förhandsgranska data. Om du inte vill tillåta **. ServiceBus.Windows.net** och vill ha mer information om URL: er kan du se alla FQDN: er som krävs av din integration runtime med egen värd från ADF-portalen. Följ de här stegen:
+
 1. Gå till ADF-portalen och välj din integration runtime med egen värd.
 2. I redigerings sidan väljer du **noder**.
-3. Klicka på **Visa tjänst-URL: er** för att hämta alla FQDN.
+3. Välj **Visa tjänst-URL: er** för att hämta alla fullständigt kvalificerade domän namn.
 
-![Azure Relay webb adresser](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
+   ![Azure Relay webb adresser](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
 
 4. Du kan lägga till dessa FQDN i listan över tillåtna brand Väggs regler.
 
@@ -416,16 +411,13 @@ Gör så här om du till exempel vill kopiera från ett lokalt data lager till e
 > [!NOTE]
 > Om brand väggen inte tillåter utgående port 1433, kan inte den egen värdbaserade integrerings körningen komma åt SQL Database direkt. I det här fallet kan du använda en [mellanlagrad kopia](copy-activity-performance.md) för att SQL Database och Azure Synapse Analytics. I det här scenariot behöver du bara HTTPS (port 443) för data flytten.
 
-
 ## <a name="installation-best-practices"></a>Metodtips för installation
 
 Du kan installera integration runtime med egen värd genom att hämta ett installations paket för en hanterad identitet från [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Se artikeln [Flytta data mellan lokalt och i molnet](tutorial-hybrid-copy-powershell.md) för stegvisa instruktioner.
 
 - Konfigurera ett energi schema på värddatorn för den lokala integrerings körningen så att datorn inte försätts i vilo läge. Om värddatorn försätts i vilo läge är den egna värdbaserade integrerings körningen offline.
 - Säkerhetskopiera regelbundet de autentiseringsuppgifter som är associerade med den egen värdbaserade integrerings körningen.
-- Information om hur du automatiserar åtgärder för IR-installation med egen värd finns i [Konfigurera en befintlig egen värd för IR via PowerShell](#setting-up-a-self-hosted-integration-runtime).  
-
-
+- Information om hur du automatiserar åtgärder för IR-installation med egen värd finns i [Konfigurera en befintlig egen värd för IR via PowerShell](#setting-up-a-self-hosted-integration-runtime).
 
 ## <a name="next-steps"></a>Nästa steg
 

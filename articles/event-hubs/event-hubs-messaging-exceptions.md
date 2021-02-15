@@ -2,13 +2,13 @@
 title: Azure Event Hubs – undantag (bakåtkompatibelt)
 description: Den här artikeln innehåller en lista över undantag och föreslagna åtgärder för Azure Event Hubs Messaging.
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340975"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390903"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs meddelande undantag – .NET (bakåtkompatibelt)
 I det här avsnittet listas de .NET-undantag som genereras av .NET Framework API: er. 
@@ -125,14 +125,14 @@ Felet kan bero på en av följande orsaker:
 
     Om du ser värden som är högre än antalet antal * gränser (1 MB per sekund för ingångs-eller 1000-begäranden för ingångar/sekund, 2 MB per sekund för utgående trafik) ökar du antalet antal genom att använda **skalan** (på den vänstra menyn) i ett Event Hubs namn område för att skala högre eller använda funktionen för [automatisk](event-hubs-auto-inflate.md) ökning i Event Hubs. Observera att automatisk ökning bara kan öka upp till 20 antal. Skicka en [supportbegäran](../azure-portal/supportability/how-to-create-azure-support-request.md)för att öka den till exakt 40 antal.
 
-### <a name="error-code-50001"></a>Felkod 50001
+### <a name="error-code-50008"></a>Felkod 50008
 
 Det här felet bör sällan uppstå. Det inträffar när behållaren som kör kod för namn området har ont om CPU – inte mer än några sekunder innan den Event Hubs belastningsutjämnaren börjar.
 
-**Lösning**: begränsa anrop till GetRuntimeInformation-metoden. Azure Event Hubs stöder upp till 50 anrop per sekund till GetRuntimeInfo per sekund. Du kan få ett undantag som liknar följande när gränsen nås:
+**Lösning**: begränsa anrop till GetRuntimeInformation-metoden. Azure Event Hubs stöder upp till 50 anrop per sekund per konsument grupp till GetRuntimeInfo per sekund. Du kan få ett undantag som liknar följande när gränsen nås:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 
@@ -141,5 +141,5 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 
 * [Översikt över Event Hubs](./event-hubs-about.md)
-* [Skapa en Händelsehubben](event-hubs-create.md)
+* [Skapa en händelsehubb](event-hubs-create.md)
 * [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)

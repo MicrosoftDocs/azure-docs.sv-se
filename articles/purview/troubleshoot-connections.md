@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554421"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391600"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Felsöka dina anslutningar i Azure avdelningens kontroll
 
@@ -53,7 +53,7 @@ Kontrol lera att rätt behörigheter har kon figurer ATS för den avdelningens k
 Verifiera detta genom att utföra följande steg:
 
 1. Navigera till ditt nyckel valv och till avsnittet **åtkomst principer**
-1. Kontrol lera att din avdelningens kontroll-hanterade identitet visas under avsnittet *aktuella åtkomst principer* med behörighet att **Hämta** behörigheter för hemligheter minst
+1. Kontrol lera att din avdelningens kontroll-hanterade identitet visas under avsnittet *aktuella åtkomst principer* med behörigheterna **Hämta** och **lista** på hemligheter minst
 
 Om du inte ser din avdelningens kontroll-hanterade identitet visas följer du stegen i [skapa och hantera autentiseringsuppgifter för genomsökningar](manage-credentials.md) för att lägga till den. 
 

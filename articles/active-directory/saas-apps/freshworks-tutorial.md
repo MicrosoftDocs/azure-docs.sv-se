@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 0070a91706fc7efe81a7679801e8c10ea9a05242
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 07466d6917c184d8fcbb604312f42ef775d9fc08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382148"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Freshworks
 
@@ -40,7 +40,7 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Freshworks stöder **SP** -INITIERAd SSO
+* Freshworks stöder **SP-och IDP** -INITIERAd SSO
 
 ## <a name="add-freshworks-from-the-gallery"></a>Lägg till Freshworks från galleriet
 
@@ -76,14 +76,18 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
-1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
+1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.freshworks.com/login`
+    a. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
-    b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/CUSTOM_URL`
+
+1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
+
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SUBDOMAIN>.freshworks.com/login`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [Freshworks client support team](mailto:support@freshworks.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL. Kontakta [Freshworks client support team](mailto:support@freshworks.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
@@ -111,7 +115,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -157,11 +161,18 @@ I det här avsnittet skapar du en användare som heter B. Simon i Freshworks. Ar
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Freshworks-inloggnings-URL där du kan starta inloggnings flödet. 
+#### <a name="sp-initiated"></a>SP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Freshworks-inloggnings-URL där du kan starta inloggnings flödet.  
 
 * Gå till Freshworks-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Freshworks i Mina appar, bör du loggas in automatiskt på den Freshworks som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+#### <a name="idp-initiated"></a>IDP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den Freshworks som du har konfigurerat SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen Freshworks i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på Freshworks som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Nästa steg
 

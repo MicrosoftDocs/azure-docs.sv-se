@@ -1,23 +1,18 @@
 ---
 title: Data Management Gateway för Data Factory
 description: Använd Data Management Gateway i Azure Data Factory för att flytta dina data.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450610"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375212"
 ---
 # <a name="data-management-gateway"></a>Gateway för datahantering
 > [!NOTE]
@@ -140,7 +135,7 @@ Det finns två brand väggar som du måste tänka på: **företags brand väggen
 
 På företags brand Väggs nivå måste du konfigurera följande domäner och utgående portar:
 
-| Domännamn | Portar | Description |
+| Domännamn | Portar | Beskrivning |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Används för kommunikation med Server dels tjänst för data flyttning |
 | *.core.windows.net |443 |Används för mellanlagrad kopia med Azure Blob (om det kon figurer ATS)|
@@ -366,7 +361,7 @@ Följande tabell innehåller beskrivningar av kolumner i listan **Gateway-noder*
 
 Övervaknings egenskap | Beskrivning
 :------------------ | :----------
-Name | Namnet på den logiska gatewayen och noder som är associerade med gatewayen. Node är en lokal Windows-dator där gatewayen är installerad. Information om hur du har fler än en nod (upp till fyra noder) i en enda logisk Gateway finns i [Data Management Gateway-hög tillgänglighet och skalbarhet](data-factory-data-management-gateway-high-availability-scalability.md).
+Namn | Namnet på den logiska gatewayen och noder som är associerade med gatewayen. Node är en lokal Windows-dator där gatewayen är installerad. Information om hur du har fler än en nod (upp till fyra noder) i en enda logisk Gateway finns i [Data Management Gateway-hög tillgänglighet och skalbarhet](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Status för den logiska gatewayen och gateway-noderna. Exempel: online/offline/begränsat/osv. Information om dessa statusar finns i avsnittet om [Gateway-status](#gateway-status) .
 Version | Visar versionen för den logiska gatewayen och varje gateway-nod. Versionen av den logiska gatewayen fastställs baserat på den version av majoriteten av noderna i gruppen. Om det finns noder med olika versioner i installations programmet för den logiska gatewayen fungerar bara noderna med samma versions nummer som den logiska gatewayen. Andra är i begränsat läge och måste uppdateras manuellt (endast om automatisk uppdatering Miss lyckas).
 Tillgängligt minne | Tillgängligt minne på en gateway-nod. Det här värdet är en nära real tids ögonblicks bild.
@@ -380,11 +375,11 @@ På den här sidan kan du se vissa inställningar som är mer begripliga när de
 ### <a name="gateway-status"></a>Gateway-status
 Följande tabell innehåller möjliga status värden för en **Gateway-nod**:
 
-Status  | Kommentarer/scenarier
+Status    | Kommentarer/scenarier
 :------- | :------------------
 Online | Noden är ansluten till Data Factory tjänsten.
 Offline | Noden är offline.
-Fortsätter | Noden uppdateras automatiskt.
+Uppgradera | Noden uppdateras automatiskt.
 Begränsad | På grund av anslutnings problem. Kan bero på problem med HTTP-port 8050, problem med Service Bus-anslutning eller utfärdande av autentiseringsuppgifter.
 Inaktiv | Noden har en annan konfiguration än konfigurationen av andra majoritets noder.<br/><br/> En nod kan vara inaktiv när den inte kan ansluta till andra noder.
 

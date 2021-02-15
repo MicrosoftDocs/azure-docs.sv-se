@@ -1,20 +1,20 @@
 ---
 title: Skapa en skalnings uppsättning som använder virtuella Azure-datorer
 description: Lär dig hur du skapar skalnings uppsättningar för virtuella Azure-datorer som använder virtuella datorer för att spara pengar.
-author: cynthn
-ms.author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
-ms.reviewer: jagaveer
+ms.reviewer: cynthn
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03bf5e0ef7e6268e68139b6d73685f67d88f6231
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729023"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385939"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuella Azure-datorer för skalnings uppsättningar för virtuella datorer 
 
@@ -30,6 +30,24 @@ Priser för punkt instanser är varierande, baserat på region och SKU. Mer info
 
 Med varierande priser har du möjlighet att ange ett högsta pris i USD (USD) med upp till 5 decimaler. Värdet skulle till exempel `0.98765` vara ett max pris på $0,98765 USD per timme. Om du anger det högsta priset så `-1` kommer instansen inte att avlägsnas baserat på priset. Priset för instansen är det aktuella priset för dekor eller priset för en standard instans, vilket någonsin är mindre, så länge det finns kapacitet och tillgänglig kvot.
 
+
+## <a name="limitations"></a>Begränsningar
+
+Följande storlekar stöds inte för Azure-platsen:
+ - B-serien
+ - Kampanj versioner av valfri storlek (t. ex. dv2, NV, NC, H kampanj storlek)
+
+Azure-platsen kan distribueras till vilken region som helst, förutom Microsoft Azure Kina.
+
+<a name="channel"></a>
+
+Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer-details/) stöds för närvarande:
+
+-   Enterprise-avtal
+-   Erbjudande för betala per användning-kod 003P
+-   Sponsrat
+- För Cloud Service Provider (CSP) kontaktar du din partner
+
 ## <a name="eviction-policy"></a>Avlägsnandeprincip
 
 När du skapar dekor skalnings uppsättningar kan du ställa in principen för att *frigöra* (standard) eller *ta bort*. 
@@ -41,7 +59,7 @@ Om du vill att dina instanser i din dekor Skale uppsättning ska tas bort när d
 Användare kan välja att ta emot meddelanden i den virtuella datorn via [Azure schemalagda händelser](../virtual-machines/linux/scheduled-events.md). Detta meddelar dig om dina virtuella datorer avlägsnas och du har 30 sekunder på dig att slutföra jobben och utföra avstängnings uppgifter innan avlägsnandet. 
 
 ## <a name="placement-groups"></a>Placerings grupper
-Placerings gruppen är en konstruktion som liknar en Azures tillgänglighets uppsättning, med egna fel domäner och uppgraderings domäner. Som standard består en skalningsuppsättning av en enda placeringsgrupp med maximalt 100 virtuella datorer. Om den skalnings uppsättnings egenskap som kallas `singlePlacementGroup` är *false*kan skalnings uppsättningen bestå av flera placerings grupper och ha ett intervall på 0 till 1 000 virtuella datorer. 
+Placerings gruppen är en konstruktion som liknar en Azures tillgänglighets uppsättning, med egna fel domäner och uppgraderings domäner. Som standard består en skalningsuppsättning av en enda placeringsgrupp med maximalt 100 virtuella datorer. Om den skalnings uppsättnings egenskap som kallas `singlePlacementGroup` är *false* kan skalnings uppsättningen bestå av flera placerings grupper och ha ett intervall på 0 till 1 000 virtuella datorer. 
 
 > [!IMPORTANT]
 > Om du inte använder InfiniBand med HPC rekommenderar vi starkt att du ställer in egenskapen skalnings uppsättning `singlePlacementGroup` på *falskt* för att aktivera flera placerings grupper för bättre skalning i regionen eller zonen. 
@@ -49,7 +67,7 @@ Placerings gruppen är en konstruktion som liknar en Azures tillgänglighets upp
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Distribuera virtuella datorer i skalnings uppsättningar
 
 Om du vill distribuera virtuella datorer på skalnings uppsättningar kan du ställa in den nya *prioritets* flaggan på *plats*. Alla virtuella datorer i din skalnings uppsättning anges till dekor. Använd någon av följande metoder för att skapa en skalnings uppsättning med virtuella datorer:
-- [Azure Portal](#portal)
+- [Azure-portalen](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-mallar](#resource-manager-templates)
@@ -119,7 +137,7 @@ Lägg till `priority` - `evictionPolicy` och- `billingProfile` egenskaperna i `"
 
 Ändra parametern till om du vill ta bort instansen när den har avlägsnats `evictionPolicy` `Delete` .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **F:** När det har skapats är en punkt instans samma som standard instans?
 
@@ -163,22 +181,7 @@ Lägg till `priority` - `evictionPolicy` och- `billingProfile` egenskaperna i `"
 
 **F:**  Kan autoskalning användas med både borttagnings principer (frigör och ta bort)?
 
-**A:** Ja, men vi rekommenderar att du anger en princip för att ta bort när du använder autoskalning. Detta beror på att friallokerade instanser räknas mot ditt kapacitets antal i skalnings uppsättningen. När du använder autoskalning når du förmodligen antalet mål instanser snabbt på grund av de frikopplade, avlägsnade instanserna. Dessutom kan skalnings åtgärderna påverkas av punkt avvisningar. VMSS-instanser kan till exempel falla under angivet minsta antal på grund av flera borttagningar av punkter under skalnings åtgärder. 
-
-**F:** Vilka kanaler stöder virtuella datorer?
-
-**A:** Se tabellen nedan för tillgänglighet för dekor datorer.
-
-<a name="channel"></a>
-
-| Azure-kanaler               | Tillgänglighet för Azure-VM-VM       |
-|------------------------------|-----------------------------------|
-| Enterprise-avtal         | Ja                               |
-| Betala per användning                | Ja                               |
-| Cloud Service Provider (CSP) | [Kontakta din partner](/partner-center/azure-plan-get-started) |
-| Fördelar                     | Inte tillgängligt                     |
-| Sponsrat                    | Ja                               |
-| Kostnadsfri utvärdering                   | Inte tillgängligt                     |
+**A:** Ja, men vi rekommenderar att du anger en princip för att ta bort när du använder autoskalning. Detta beror på att friallokerade instanser räknas mot ditt kapacitets antal i skalnings uppsättningen. När du använder autoskalning når du förmodligen antalet mål instanser snabbt på grund av de frikopplade, avlägsnade instanserna. Dessutom kan skalnings åtgärderna påverkas av punkt avvisningar. Till exempel kan virtuella datorers skalnings uppsättnings instanser falla under angivet minsta antal på grund av flera borttagningar av punkter under skalnings åtgärder. 
 
 
 **F:** Var kan jag skicka frågor?

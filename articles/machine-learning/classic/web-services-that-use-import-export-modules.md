@@ -4,23 +4,22 @@ description: Lär dig hur du använder modulerna importera data och exportera da
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308474"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520569"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Distribuera Azure Machine Learning Studio (klassiska) webb tjänster som använder moduler för data import och data export
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 När du skapar ett förutsägelse experiment lägger du vanligt vis till en webb tjänst indata och utdata. När du distribuerar experimentet kan konsumenter skicka och ta emot data från webb tjänsten via indata och utdata. För vissa program kan en konsument data vara tillgängliga från en datafeed eller finnas redan i en extern data källa, till exempel Azure Blob Storage. I dessa fall behöver de inte läsa och skriva data med hjälp av webb tjänst indata och utdata. De kan i stället använda BES (batch execution service) för att läsa data från data källan med hjälp av en modul för att importera data och skriva poängsättnings resultatet till en annan data plats med hjälp av en export data-modul.
@@ -41,7 +40,7 @@ Så här läser du data från Azure SQL-tabellen:
 3. Lägg till en modul för att *Importera data* till arbets ytan för experimentet i resultat listan.
 4. Anslut utdata från modulen *Importera data* indata för modulen *Rensa data som saknas* .
 5. I fönstret Egenskaper väljer du **Azure SQL Database** i list rutan **data källa** .
-6. I fälten **databas server namn** , **databas namn** , **användar namn** och **lösen ord** anger du lämplig information för databasen.
+6. I fälten **databas server namn**, **databas namn**, **användar namn** och **lösen ord** anger du lämplig information för databasen.
 7. Ange följande fråga i fältet databas fråga.
 
     ```tsql
@@ -73,7 +72,7 @@ Härnäst ställer du in det förutsägelse experiment som du använder för att
 4. Lägg till en modul för att *Exportera data* till experimentets arbets yta i resultat listan.
 5. Anslut utdata från modulen *Poäng modell* indata för modulen *Exportera data* .
 6. I fönstret Egenskaper väljer du **Azure SQL Database** i list rutan data mål.
-7. I fälten **databas server namn** , **databas namn** , **serverns användar konto namn** och **lösen ord för serverns användar konto** anger du lämplig information för databasen.
+7. I fälten **databas server namn**, **databas namn**, **serverns användar konto namn** och **lösen ord för serverns användar konto** anger du lämplig information för databasen.
 8. Skriv betygs etiketter i den **kommaavgränsade listan över kolumner som ska sparas** .
 9. I **fältet data tabell namn** skriver du dbo. ScoredLabels. Om tabellen inte finns skapas den när experimentet körs eller så anropas webb tjänsten.
 10. I fältet **kommaavgränsad lista över DataTable-kolumner** skriver du ScoredLabels.

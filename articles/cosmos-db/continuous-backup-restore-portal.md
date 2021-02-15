@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381876"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurera och hantera kontinuerlig säkerhets kopiering och tidpunkts återställning (för hands version) – med Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Om du till exempel vill återställa till punkten innan en viss behållare har t
 Du kan använda Azure Portal för att helt återställa ett borttaget konto inom 30 dagar från borttagningen. Använd följande steg för att återställa ett borttaget konto:
 
 1. Logga in på [Azure Portal](https://portal.azure.com/)
-1. Sök efter "Azure Cosmos DB" resurser i det globala Sök fältet. Den visar alla dina befintliga konton.
+1. Sök efter *Azure Cosmos DB* resurser i det globala Sök fältet. Den visar alla dina befintliga konton.
 1. Välj sedan knappen **Återställ** . I rutan Återställ visas en lista över borttagna konton som kan återställas inom kvarhållningsperioden, som är 30 dagar från borttagnings tiden.
 1. Välj det konto som du vill återställa.
 
@@ -95,7 +95,7 @@ Du kan använda Azure Portal för att helt återställa ett borttaget konto inom
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>Spåra status för återställnings åtgärden
 
-När du har initierat en återställnings åtgärd väljer du klock ikonen för **aviseringar** i det övre högra hörnet av portalen. Den ger en länk som visar status för det konto som återställs. När återställningen pågår, ändras kontots status till "online" när återställningen är slutförd.
+När du har initierat en återställnings åtgärd väljer du klock ikonen för **aviseringar** i det övre högra hörnet av portalen. Den ger en länk som visar status för det konto som återställs. När återställningen pågår kommer kontots status att *skapas*, när återställningen har slutförts, ändras kontots status till *online*.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="Statusen för återställda konto ändringar från att skapas till online när åtgärden har slutförts." border="true":::
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538837"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393062"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Hantera behörigheter för att återställa ett Azure Cosmos DB konto
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ Omfattning är en uppsättning resurser som har åtkomst, Läs mer om omfattning
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>Tilldela roller för återställning med hjälp av Azure Portal
 
-För att utföra en återställning behöver en användare eller ett huvud konto behörighet att återställa (det vill säga "Restore/Action"-behörighet) och behörighet att etablera ett nytt konto (som är "Skriv"-behörighet).  För att bevilja dessa behörigheter kan ägaren tilldela rollen "CosmosRestoreOperator" och "Cosmos DB operatör" som är inbyggd i roller till ett huvud konto.
+För att utföra en återställning behöver en användare eller ett huvud konto behörighet att återställa (som är *återställnings-/åtgärds* behörighet) och behörighet att etablera ett nytt konto (som är av *Skriv* behörighet).  För att bevilja dessa behörigheter kan ägaren tilldela de `CosmosRestoreOperator` och `Cosmos DB Operator` inbyggda rollerna till ett huvud konto.
 
 1. Logga in på [Azure Portal](https://portal.azure.com/)
 
@@ -40,7 +40,7 @@ För att utföra en återställning behöver en användare eller ett huvud konto
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="Tilldela CosmosRestoreOperator-och Cosmos DB-operatörs roller." border="true":::
 
-1. Välj **Spara** för att ge behörigheten "återställning/åtgärd".
+1. Välj **Spara** för att ge behörigheten *restore/Action* .
 
 1. Upprepa steg 3 med rollen **Cosmos DB operatör** för att bevilja Skriv behörigheten. När du tilldelar den här rollen från Azure Portal, beviljas återställnings behörigheten till hela prenumerationen.
 
@@ -52,7 +52,7 @@ För att utföra en återställning behöver en användare eller ett huvud konto
 |Resursgrupp | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |Resurs för CosmosDB återställas-konto | /Subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/västra USA/restorableDatabaseAccounts/23e99a35-CD36-4df4-9614-f767a03b9995|
 
-Återställas-konto resursen kan extraheras från utdata från `az cosmosdb restorable-database-account list --name <accountname>` kommandot i CLI eller `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` cmdlet i PowerShell. Namnattributet i utdata representerar "instanceID" för återställas-kontot. Mer information finns i [PowerShell](continuous-backup-restore-powershell.md) -eller [CLI](continuous-backup-restore-command-line.md) -artikeln.
+Återställas-konto resursen kan extraheras från utdata från `az cosmosdb restorable-database-account list --name <accountname>` kommandot i CLI eller `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` cmdlet i PowerShell. Namnattributet i utdata representerar `instanceID` återställas-kontot. Mer information finns i [PowerShell](continuous-backup-restore-powershell.md) -eller [CLI](continuous-backup-restore-command-line.md) -artikeln.
 
 ## <a name="permissions"></a>Behörigheter
 
@@ -60,11 +60,11 @@ Följande behörigheter krävs för att utföra de olika aktiviteterna som är k
 
 |Behörighet  |Påverkan  |Minsta omfång  |Maximalt omfång  |
 |---------|---------|---------|---------|
-|Microsoft. Resources/Deployments/validate/Action, Microsoft. Resources/Deployments/Write | De här behörigheterna krävs för distribution av ARM-mallen för att skapa det återställda kontot. Se exempel behörighets [RestorableAction]() nedan för hur du ställer in den här rollen. | Inte tillämpligt | Inte tillämpligt  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | De här behörigheterna krävs för distribution av ARM-mallen för att skapa det återställda kontot. Se exempel behörighets [RestorableAction](#custom-restorable-action) nedan för hur du ställer in den här rollen. | Inte tillämpligt | Inte tillämpligt  |
 |Microsoft.DocumentDB/databaseAccounts/Write | Den här behörigheten krävs för att återställa ett konto till en resurs grupp | Resurs grupp som det återställda kontot skapas under. | Den prenumeration som det återställda kontot skapas under |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/Restore/Action |Den här behörigheten krävs för käll återställas databas konto omfång för att tillåta att återställnings åtgärder utförs på den.  | Resursen "RestorableDatabaseAccount" som tillhör det käll konto som återställs. Det här värdet anges också av egenskapen "ID" för databas konto resursen återställas. Ett exempel på ett återställas-konto är `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>` | Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/Read |Den här behörigheten krävs för käll återställas databas konto omfång för att lista de databas konton som kan återställas.  | Resursen "RestorableDatabaseAccount" som tillhör det käll konto som återställs. Det här värdet anges också av egenskapen "ID" för databas konto resursen återställas. Ett exempel på ett återställas-konto är `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
-|Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/Read | Den här behörigheten krävs för käll återställas för att tillåta läsning av återställas-resurser, till exempel en lista över databaser och behållare för ett återställas-konto.  | Resursen "RestorableDatabaseAccount" som tillhör det käll konto som återställs. Det här värdet anges också av egenskapen "ID" för databas konto resursen återställas. Ett exempel på ett återställas-konto är `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Den här behörigheten krävs för käll återställas databas konto omfång för att tillåta att återställnings åtgärder utförs på den.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>* | Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Den här behörigheten krävs för käll återställas databas konto omfång för att lista de databas konton som kan återställas.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Den här behörigheten krävs för käll återställas för att tillåta läsning av återställas-resurser, till exempel en lista över databaser och behållare för ett återställas-konto.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Roll tilldelnings scenarier i Azure CLI för återställning i olika omfång
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * Tilldela en användar Skriv åtgärd för den angivna resurs gruppen. Den här åtgärden krävs för att skapa ett nytt konto i resurs gruppen.
 
-* Tilldela den inbyggda rollen "CosmosRestoreOperator" till det angivna återställas Database-kontot som behöver återställas. I följande kommando hämtas omfånget för "RestorableDatabaseAccount" från egenskapen "ID" i utdatan `az cosmosdb restorable-database-account` (om du använder CLI) eller  `Get-AzCosmosDBRestorableDatabaseAccount` (om du använder PowerShell).
+* Tilldela den inbyggda rollen *CosmosRestoreOperator* till det angivna återställas Database-kontot som behöver återställas. I följande kommando hämtas omfånget för *RestorableDatabaseAccount* från `ID` egenskapen i utdata från `az cosmosdb restorable-database-account` (om du använder CLI) eller  `Get-AzCosmosDBRestorableDatabaseAccount` (om du använder PowerShell).
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>Tilldela möjlighet att återställa från alla käll konton i en resurs grupp.
 Den här åtgärden stöds inte för närvarande.
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>Skapa anpassad roll för återställnings åtgärden med CLI
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>Skapa anpassad roll för återställnings åtgärden med CLI
 
-Prenumerationens ägare kan ge behörighet att återställa till en annan Azure AD-identitet. Återställnings behörigheten baseras på åtgärden: "Microsoft.DocumentDB/locations/restorableDatabaseAccounts/Restore/Action", och den bör tas med i deras återställnings behörighet. Det finns en inbyggd roll med namnet "CosmosRestoreOperator" som har den här rollen inkluderad. Du kan antingen tilldela behörigheten med den här inbyggda rollen eller skapa en anpassad roll.
+Prenumerationens ägare kan ge behörighet att återställa till en annan Azure AD-identitet. Återställnings behörigheten baseras på åtgärden: `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` , och den bör tas med i deras återställnings behörighet. Det finns en inbyggd roll med namnet *CosmosRestoreOperator* som har den här rollen inkluderad. Du kan antingen tilldela behörigheten med den här inbyggda rollen eller skapa en anpassad roll.
 
-RestorableAction nedan representerar en anpassad roll. Du måste skapa den här rollen explicit. Följande JSON-mall skapar en anpassad roll, "RestorableAction" med återställnings behörighet:
+RestorableAction nedan representerar en anpassad roll. Du måste skapa den här rollen explicit. Följande JSON-mall skapar en anpassad roll- *RestorableAction* med behörigheten Återställ:
 
 ```json
 {

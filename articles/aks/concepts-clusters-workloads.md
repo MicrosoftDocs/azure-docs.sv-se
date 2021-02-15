@@ -3,13 +3,13 @@ title: Koncept – grundläggande information om Kubernetes för Azure Kubernete
 description: Lär dig mer om de grundläggande kluster-och arbets belastnings komponenterna i Kubernetes och hur de relaterar till funktioner i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674934"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373240"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes Core-koncept för Azure Kubernetes service (AKS)
 
@@ -31,8 +31,8 @@ Azure Kubernetes service (AKS) tillhandahåller en hanterad Kubernetes-tjänst s
 
 Ett Kubernetes-kluster är uppdelat i två komponenter:
 
-- *Control plan* -noder tillhandahåller de viktigaste Kubernetes-tjänsterna och dirigeringen av program arbets belastningar.
-- *Noderna* kör dina program arbets belastningar.
+- *Kontroll planet* tillhandahåller kärn Kubernetes-tjänster och dirigering av program arbets belastningar.
+- *Noder* som kör dina program arbets belastningar.
 
 ![Kubernetes kontroll plan och nod komponenter](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 

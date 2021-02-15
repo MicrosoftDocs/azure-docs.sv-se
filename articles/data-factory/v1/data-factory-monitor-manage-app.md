@@ -1,23 +1,18 @@
 ---
 title: Övervaka och hantera data pipelines – Azure
 description: Lär dig hur du använder appen för övervakning och hantering för att övervaka och hantera Azure-datafabriker och pipeliner.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495709"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380380"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Övervaka och hantera Azure Data Factory pipelines med hjälp av appen övervakning och hantering
 > [!div class="op_single_selector"]
@@ -159,7 +154,7 @@ Aktivitets fönster kan ha någon av följande statusar:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beskrivning</th>
 </tr>
 <tr>
     <td rowspan="8">Väntar</td><td>ScheduleTime</td><td>Det går inte att köra tids perioden för aktivitets fönstret.</td>
@@ -286,7 +281,7 @@ Du kan använda samma popup-fönster för att rensa filter. Om du vill rensa all
 
 ## <a name="perform-batch-actions"></a>Utföra batch-åtgärder
 ### <a name="rerun-selected-activity-windows"></a>Kör om valt aktivitets fönster
-Välj ett aktivitets fönster, klicka på nedpilen för det första kommando fältet och välj Kör om **Rerun**  /  **Kör igen med Uppström i pipeline**. När du väljer alternativet **Kör om med uppströms i pipeline, kör** den även om alla överordnade aktivitets fönster.
+Välj ett aktivitets fönster, klicka på nedpilen för det första kommando fältet och välj Kör om   /  **Kör igen med Uppström i pipeline**. När du väljer alternativet **Kör om med uppströms i pipeline, kör** den även om alla överordnade aktivitets fönster.
     ![Kör ett aktivitets fönster igen](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 Du kan också välja flera aktivitets fönster i listan och köra om dem på samma tidpunkt. Du kanske vill filtrera aktivitets fönster baserat på status (till exempel: **misslyckades**)--och sedan köra Fönstren för misslyckad aktivitet igen efter att ha åtgärdat problemet som gör att aktivitets Fönstren Miss lyckas. I följande avsnitt finns information om filtrering av aktivitets fönster i listan.  

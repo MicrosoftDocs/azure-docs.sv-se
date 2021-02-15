@@ -1,22 +1,17 @@
 ---
 title: Sök aktivitet i Azure Data Factory
 description: Lär dig hur du använder lookup-aktivitet för att leta upp ett värde från en extern källa. Det går att referera till utdata ytterligare genom att utföra aktiviteter.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006838"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385480"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Sök aktivitet i Azure Data Factory
 
@@ -56,10 +51,10 @@ Sök aktiviteten kan returnera upp till 5000 rader. om resultat uppsättningen i
 
 ## <a name="type-properties"></a>Typ egenskaper
 
-Name | Beskrivning | Typ | Obligatoriskt?
+Namn | Beskrivning | Typ | Obligatoriskt?
 ---- | ----------- | ---- | --------
-data uppsättning | Tillhandahåller data uppsättnings referensen för sökningen. Hämta information från avsnittet **Egenskaper för data mängd** i varje motsvarande kopplings artikel. | Nyckel/värde-par | Yes
-källa | Innehåller data uppsättnings bara käll egenskaper, samma som för kopierings aktivitets källan. Hämta information från avsnittet **Kopiera aktivitets egenskaper** i varje motsvarande kopplings artikel. | Nyckel/värde-par | Yes
+data uppsättning | Tillhandahåller data uppsättnings referensen för sökningen. Hämta information från avsnittet **Egenskaper för data mängd** i varje motsvarande kopplings artikel. | Nyckel/värde-par | Ja
+källa | Innehåller data uppsättnings bara käll egenskaper, samma som för kopierings aktivitets källan. Hämta information från avsnittet **Kopiera aktivitets egenskaper** i varje motsvarande kopplings artikel. | Nyckel/värde-par | Ja
 firstRowOnly | Anger om bara den första raden eller alla rader ska returneras. | Boolesk | Nej. Standardvärdet är `true`.
 
 > [!NOTE]
