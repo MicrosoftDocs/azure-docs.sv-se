@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e59d4ecd238879eddb9d842245395d58aff28385
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576421"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519430"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Använda program ändrings analys (för hands version) i Azure Monitor
 
@@ -37,12 +37,12 @@ Tjänsten för program ändrings analys stöder ändringar i resurs egenskaps ni
 - App Service
 - Azure Kubernetes-tjänst
 - Azure-funktion
-- Nätverks resurser: t. ex. nätverks säkerhets grupp, Virtual Network, Application Gateway osv.
+- Nätverks resurser: nätverks säkerhets grupp, Virtual Network, Application Gateway osv.
 - Data tjänster: lagring, SQL, Redis Cache, Cosmos DB osv.
 
 ## <a name="data-sources"></a>Datakällor
 
-Frågor om program ändrings analys för Azure Resource Manager spårade egenskaper, proxy-konfigurationer och webbappar i gäst ändringar. Dessutom spårar tjänsten resurs beroende ändringar för att diagnostisera och övervaka ett program från slut punkt till slut punkt.
+Frågor om program ändrings analys för Azure Resource Manager spårade egenskaper, proxy-konfigurationer och webb program i gäst ändringar. Dessutom spårar tjänsten resurs beroende ändringar för att diagnostisera och övervaka ett program från slut punkt till slut punkt.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Ändringar i Azure Resource Manager spårade egenskaper
 
@@ -60,106 +60,33 @@ Med ändrings analys samlas distributions-och konfigurations status för ett pro
 
 ### <a name="dependency-changes"></a>Beroende ändringar
 
-Ändringar i resurs beroenden kan också orsaka problem i en resurs. Om en webbapp till exempel anropar en Redis cache kan Redis cache-SKU: n påverka webbappens prestanda. Ett annat exempel är om Port 22 stängdes i en virtuell dators nätverks säkerhets grupp, vilket leder till anslutnings fel. 
+Ändringar i resurs beroenden kan också orsaka problem i en resurs. Om en webbapp till exempel anropar en Redis cache kan Redis cache-SKU: n påverka webbappens prestanda. Ett annat exempel är om Port 22 stängdes i en virtuell dators nätverks säkerhets grupp, vilket leder till anslutnings fel.
 
 #### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Webbappen diagnostisera och lösa problem navigering (för hands version)
+
 Om du vill identifiera ändringar i beroenden kontrollerar ändrings analysen webbappens DNS-post. På så sätt identifieras ändringar i alla app-komponenter som kan orsaka problem.
 För närvarande stöds följande beroenden i **webbappen diagnostisera och lösa problem | Navigator (för hands version)**:
+
 - Web Apps
 - Azure Storage
 - Azure SQL
 
 #### <a name="related-resources"></a>Relaterade resurser
-Program ändrings analysen identifierar relaterade resurser. Vanliga exempel är nätverks säkerhets grupp, Virtual Network, Application Gateway och Load Balancer som är relaterade till en virtuell dator. Nätverks resurserna tillhandahålls vanligt vis automatiskt i samma resurs grupp som de resurser som använder den, så filtrering av ändringarna per resurs grupp visar alla ändringar för den virtuella datorn och relaterade nätverks resurser.
+
+Program ändrings analysen identifierar relaterade resurser. Vanliga exempel är nätverks säkerhets grupp, Virtual Network, Application Gateway och Load Balancer som är relaterade till en virtuell dator.
+Nätverks resurserna tillhandahålls vanligt vis automatiskt i samma resurs grupp som de resurser som använder den, så filtrering av ändringarna per resurs grupp visar alla ändringar för den virtuella datorn och relaterade nätverks resurser.
 
 ![Skärm bild av nätverks ändringar](./media/change-analysis/network-changes.png)
 
 ## <a name="application-change-analysis-service-enablement"></a>Aktivering av program ändrings analys tjänsten
 
 Beräknings-och agg regeringar för program ändrings analys gör ändrings data från de data källor som anges ovan. Den innehåller en uppsättning analyser för användare som enkelt kan navigera bland alla resurs ändringar och identifiera vilken ändring som är relevant i fel söknings-eller övervaknings kontexten.
-Resurs leverantören Microsoft. ChangeAnalysis måste registreras med en prenumeration för Azure Resource Manager spårade egenskaper och proxy-inställningar ändra att data ska vara tillgängliga. När du anger ett verktyg för att diagnostisera och lösa problem, eller ta fram fliken för att skapa ändrings analyser, registreras denna resurs leverantör automatiskt. För att webbappen ska ändras i gästen krävs separat aktivering för att genomsöka filer i en webbapp. Mer information finns i avsnittet om att [ändra analyser i verktyget diagnostisera och lösa problem](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) längre fram i den här artikeln.
+Resurs leverantören Microsoft. ChangeAnalysis måste registreras med en prenumeration för Azure Resource Manager spårade egenskaper och proxy-inställningar ändra att data ska vara tillgängliga. När du anger ett verktyg för att diagnostisera och lösa problem, eller ta fram fliken för att skapa ändrings analyser, registreras denna resurs leverantör automatiskt.
+För att webbappen ska ändras i gästen krävs separat aktivering för att genomsöka filer i en webbapp. Mer information finns i avsnittet om att [ändra analyser i verktyget diagnostisera och lösa problem](change-analysis-visualizations.md#application-change-analysis-in-the-diagnose-and-solve-problems-tool) längre fram i den här artikeln.
 
 ## <a name="cost"></a>Cost
+
 Program ändrings analys är en kostnads fri tjänst – det kostar ingen fakturerings kostnad för prenumerationer med den aktiverade. Tjänsten har inte heller några prestanda effekter för att skanna ändringar i Azure-resursens egenskaper. När du aktiverar ändrings analys för webb program ändringar i gäst filen (eller aktiverar verktyget diagnostisera och lösa problem) har den försumbar prestanda påverkan i webbappen och ingen fakturerings kostnad.
-
-## <a name="visualizations-for-application-change-analysis"></a>Visualiseringar för program ändrings analys
-
-### <a name="standalone-ui"></a>Fristående gränssnitt
-
-I Azure Monitor finns det ett fristående fönster för ändrings analys som visar alla ändringar med insikter i program beroenden och resurser.
-
-Sök efter ändrings analys i Sök fältet på Azure Portal för att starta upplevelsen.
-
-![Skärm bild av sökning av ändrings analys i Azure Portal](./media/change-analysis/search-change-analysis.png)
-
-Alla resurser under en vald prenumeration visas med ändringar från de senaste 24 timmarna. För att optimera prestanda för sid inläsning visar tjänsten 10 resurser i taget. Klicka på nästa sidor om du vill visa fler resurser. Vi arbetar med att ta bort den här begränsningen.
-
-![Skärm bild av bladet för ändrings analys i Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
-
-Visa alla ändringar genom att klicka på en resurs. Vid behov kan du öka detalj nivån i en ändring om du vill visa JSON-formaterad ändrings information och insikter.
-
-![Skärm bild av ändrings information](./media/change-analysis/change-details.png)
-
-Använd knappen Skicka feedback i bladet eller e-postmeddelandet för all feedback changeanalysisteam@microsoft.com .
-
-![Skärm bild av knappen feedback i bladet ändra analys](./media/change-analysis/change-analysis-feedback.png)
-
-#### <a name="multiple-subscription-support"></a>Stöd för flera prenumerationer
-Användar gränssnittet har stöd för att välja flera prenumerationer för att Visa resurs ändringar. Använd prenumerations filtret:
-
-![Skärm bild av prenumerations filter som stöder val av flera prenumerationer](./media/change-analysis/multiple-subscriptions-support.png)
-
-### <a name="web-app-diagnose-and-solve-problems"></a>Webbappen diagnostisera och lösa problem
-
-I Azure Monitor är även ändrings analys inbyggd i självbetjänings **diagnos och lösa problem** . Få åtkomst till den här upplevelsen från sidan **Översikt** i ditt App Service-program.
-
-![Skärm bild av knappen "Översikt" och "diagnosticera och lösa problem"](./media/change-analysis/change-analysis.png)
-
-### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Program ändrings analys i verktyget diagnostisera och lösa problem
-
-Program ändrings analys är en fristående detektor i webbappen diagnostisera och lösa problem verktyg. Den sammanställs också i **program krascher** och i **webb program**. När du anger verktyget diagnostisera och lösa problem registreras **Microsoft. ChangeAnalysis** Resource Provider automatiskt. Följ de här instruktionerna för att aktivera webb program i gäst ändrings spårning.
-
-1. Välj **tillgänglighet och prestanda**.
-
-    ![Skärm bild av fel söknings alternativen "tillgänglighet och prestanda"](./media/change-analysis/availability-and-performance.png)
-
-2. Välj **program ändringar**. Funktionen är också tillgänglig i **program krascher**.
-
-   ![Skärm bild av knappen "program krascher"](./media/change-analysis/application-changes.png)
-
-3. Länken leder till program ändring Aalysis-gränssnittet som är begränsat till webbappen. Om webb program i gäst ändrings spårning inte är aktive rad, följer du banderollen för att hämta ändringar av fil-och app-inställningar.
-
-   ![Skärm bild av alternativen för "program krascher"](./media/change-analysis/enable-changeanalysis.png)
-
-4. Aktivera **ändrings analys** och välj **Spara**. Verktyget visar alla webbappar under en App Service plan. Du kan använda plan nivå växeln för att aktivera ändrings analyser för alla webbappar under en plan.
-
-    ![Skärm bild av användar gränssnittet "Aktivera ändrings analys"](./media/change-analysis/change-analysis-on.png)
-
-5. Ändrings data finns också i Välj identifierings program för **webbappar ned** och **programkrascher** . Du ser en graf som sammanfattar typen av ändringar över tid tillsammans med information om dessa ändringar. Som standard visas ändringar under de senaste 24 timmarna för att hjälpa till med omedelbara problem.
-
-     ![Skärm bild av vyn ändra diff](./media/change-analysis/change-view.png)
-
-
-
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostisera och lösa problem med den virtuella datorn
-
-Gå till diagnostisera och lösa problem verktyg för en virtuell dator.  Gå till **fel söknings verktyg**, bläddra nedåt på sidan och välj **analysera nya ändringar** för att visa ändringar på den virtuella datorn.
-
-![Skärm bild av den virtuella datorn diagnostisera och lösa problem](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![Ändrings analys i fel söknings verktyg](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="activity-log-change-history"></a>Ändrings historik för aktivitets logg
-Funktionen [Visa ändrings historik](../platform/activity-log.md#view-change-history) i aktivitets loggen anropar program ändrings analys tjänstens Server del för att få ändringar som är associerade med en åtgärd. **Ändrings historik** som används för att anropa [Azures resurs diagram](../../governance/resource-graph/overview.md) direkt, men utbytt Server delen för att anropa program ändrings analys så att ändringar som returneras inkluderar resurs nivå ändringar från [Azure Resource graph](../../governance/resource-graph/overview.md), resurs egenskaper från [Azure Resource Manager](../../azure-resource-manager/management/overview.md)och ändringar i gästen från PaaS-tjänster som app Services webbappen. För att program ändrings analys tjänsten ska kunna söka efter ändringar i användarnas prenumerationer måste du registrera en resurs leverantör. Första gången du öppnar fliken **ändrings historik** börjar verktyget automatiskt att registrera **Microsoft. ChangeAnalysis** Resource Provider. Efter registreringen kommer ändringar från **Azure Resource Graph** att bli tillgängliga omedelbart och de senaste 14 dagarna. Ändringar från andra källor blir tillgängliga efter ~ 4 timmar efter det att prenumerationen har publicerats.
-
-![Integration av aktivitets loggens ändrings historik](./media/change-analysis/activity-log-change-history.png)
-
-### <a name="vm-insights-integration"></a>Integrering av VM Insights
-Användare med aktiverade [VM-insikter](../insights/vminsights-overview.md) kan se vad som har ändrats på sina virtuella datorer, vilket kan orsaka eventuella toppar i ett mått diagram, till exempel CPU eller minne, och undrar vad som orsakade det. Ändrings data integreras i navigerings fältet för VM Insights-sidan. Användaren kan visa om några ändringar har gjorts i den virtuella datorn och klicka på **Undersök ändringar** för att Visa ändrings information i det fristående användar gränssnittet för program ändrings analys.
-
-[![Integrering av VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
-
-
 
 ## <a name="enable-change-analysis-at-scale"></a>Aktivera ändrings analys i skala
 
@@ -195,57 +122,9 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-## <a name="troubleshoot"></a>Felsöka
-
-### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Om du har problem med att registrera Microsoft. ändra Analysis Resource provider från fliken ändrings historik
-Om det är första gången du visar ändrings historik efter dess integrering med program ändrings analys, kommer den automatiskt att registrera en resurs leverantör **Microsoft. ChangeAnalysis**. I sällsynta fall kan det Miss kan inträffa av följande orsaker:
-
-- **Du har inte tillräcklig behörighet för att registrera Microsoft. ChangeAnalysis Resource Provider**. Det här fel meddelandet innebär att din roll i den aktuella prenumerationen inte har det definitions område för **Microsoft. support/register/åtgärd** som är associerat med den. Detta kan inträffa om du inte är ägare till en prenumeration och har delade åtkomst behörigheter via en medarbetare. t. ex. Visa åtkomst till en resurs grupp. Du kan åtgärda detta genom att kontakta Prenumerationens ägare för att registrera **Microsoft. ChangeAnalysis** -resurs leverantören. Detta kan göras i Azure Portal via **prenumerationer | Resurs leverantörer** och Sök efter ```Microsoft.ChangeAnalysis``` och registrera i användar gränssnittet, eller via Azure PowerShell eller Azure CLI.
-
-    Registrera resurs leverantör via PowerShell: 
-    ```PowerShell
-    # Register resource provider
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-    ```
-
-- **Det gick inte att registrera Microsoft. ChangeAnalysis Resource Provider**. Det här meddelandet innebär att något Miss lyckas omedelbart som UI skickat begäran om att registrera resurs leverantören, och det är inte relaterat till behörighets problem. Det kan förmodligen vara ett tillfälligt problem med Internet anslutningen. Försök att uppdatera sidan och kontrol lera din Internet anslutning. Om felet kvarstår kan du kontakta changeanalysishelp@microsoft.com
-
-- **Det tar längre tid än förväntat**. Det här meddelandet innebär att registreringen tar längre tid än två minuter. Detta är ovanligt, men det innebär inte nödvändigt vis något att något har gått fel. Du kan gå till **prenumerationer | Resurs leverantör** för att kontrol lera registrerings statusen för **Microsoft. ChangeAnalysis** Resource Provider. Du kan prova att använda användar gränssnittet för att avregistrera, registrera om eller uppdatera för att se om det hjälper. Kontakta supporten om problemet kvarstår changeanalysishelp@microsoft.com .
-    ![Felsök RP-registreringen tar för lång tid](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
-
-![Skärm bild av verktyget diagnostisera och lösa problem för en virtuell dator med fel söknings verktyg valt.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![Skärm bild av panelen för att analysera nya ändringar av fel söknings verktyget för en virtuell dator.](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse-prenumeration stöds inte
-
-- **Det gick inte att fråga Microsoft. ChangeAnalysis Resource Provider** med meddelande *Azure Lighthouse-prenumerationen stöds inte. ändringarna är bara tillgängliga i prenumerationens hem klient organisation*. Det finns en begränsning just nu för att kunna registrera Analysis Resource Provider via Azure Lighthouse-prenumerationen för användare som inte finns i hem klient organisationen. Vi förväntar sig att den här begränsningen ska åtgärdas inom en snar framtid. Om detta är ett blockerings problem finns det en lösning som inbegriper att skapa ett huvud namn för tjänsten och uttryckligen tilldela rollen för att tillåta åtkomst.  Kontakta changeanalysishelp@microsoft.com om du vill veta mer om det.
-
-### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Ett fel uppstod vid hämtning av ändringar. Uppdatera den här sidan eller kom tillbaka senare om du vill visa ändringar
-
-Detta är det allmänna fel meddelandet som presenteras av program ändrings analys tjänsten när det inte gick att läsa in ändringar. Några kända orsaker är:
-- Internet anslutnings fel från klient enheten
-- Change Analysis Service är tillfälligt otillgängligt om du uppdaterar sidan efter några minuter åtgärdar det här problemet vanligt vis. Om felet kvarstår kan du kontakta changeanalysishelp@micorosoft.com
-
-### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Du har inte tillräcklig behörighet för att visa vissa ändringar. Kontakta administratören för Azure-prenumerationen
-
-Detta är det allmänna obehöriga fel meddelandet, som förklarar att den aktuella användaren inte har tillräcklig behörighet för att visa ändringen. Åtkomst till minst läsare krävs för resursen för att Visa infrastruktur ändringar som returneras av Azure Resource Graph och Azure Resource Manager. För webb program ändringar i gäst filen och konfigurations ändringar krävs minst deltagar roll.
-
-### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Det gick inte att registrera Microsoft. ChangeAnalysis Resource Provider
-Det här meddelandet innebär att något Miss lyckas omedelbart som UI skickat begäran om att registrera resurs leverantören, och det är inte relaterat till behörighets problem. Det kan förmodligen vara ett tillfälligt problem med Internet anslutningen. Försök att uppdatera sidan och kontrol lera din Internet anslutning. Om felet kvarstår kan du kontakta changeanalysishelp@microsoft.com
- 
-### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>Du har inte tillräcklig behörighet för att registrera Microsoft. ChangeAnalysis Resource Provider. Kontakta administratören för Azure-prenumerationen.
-Det här fel meddelandet innebär att din roll i den aktuella prenumerationen inte har det definitions område för **Microsoft. support/register/åtgärd** som är associerat med den. Detta kan inträffa om du inte är ägare till en prenumeration och har delade åtkomst behörigheter via en medarbetare. t. ex. Visa åtkomst till en resurs grupp. Du kan åtgärda detta genom att kontakta Prenumerationens ägare för att registrera **Microsoft. ChangeAnalysis** -resurs leverantören. Detta kan göras i Azure Portal via **prenumerationer | Resurs leverantörer** och Sök efter ```Microsoft.ChangeAnalysis``` och registrera i användar gränssnittet, eller via Azure PowerShell eller Azure CLI.
-
-Registrera resurs leverantör via PowerShell: 
-
-```PowerShell
-# Register resource provider
-Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
-```
-
 ## <a name="next-steps"></a>Nästa steg
 
+- Lär dig mer om [visualiseringar i ändrings analys](change-analysis-visualizations.md)
+- Lär dig hur du [felsöker problem i ändrings analys](change-analysis-troubleshoot.md)
 - Aktivera Application Insights för [Azure App Services-appar](azure-web-apps.md).
 - Aktivera Application Insights för [virtuella Azure-datorer och skalnings uppsättningar för IIS-värdbaserade appar i Azure](azure-vm-vmss-apps.md).
-- Lär dig mer om [Azure Resource Graph](../../governance/resource-graph/overview.md), som hjälper dig att analysera energi ändringar.

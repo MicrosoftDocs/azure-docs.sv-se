@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 21b9d73da0df5ada626500a706a19d1025de1dcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186005"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391974"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app
 Den här artikeln beskriver en metod för att använda [Azure Logic Apps](../../logic-apps/index.yml) för att fråga efter data från en Log Analytics arbets yta i Azure Monitor och skicka till Azure Storage. Använd den här processen när du behöver exportera Azure Monitor loggdata för scenarier för granskning och efterlevnad, eller om du vill tillåta en annan tjänst att hämta dessa data.  
@@ -69,7 +69,7 @@ Gå till **Logic Apps** i Azure Portal och klicka på **Lägg till**. Välj en *
 Klicka på **Granska + skapa** och sedan på **skapa**. När distributionen är klar klickar du på **gå till resurs** för att öppna **Logic Apps designer**.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Skapa en utlösare för Logic app
-Under **börja med en gemensam utlösare** väljer du **upprepning**. Detta skapar en logisk app som körs automatiskt med jämna mellanrum. I rutan **frekvens** för åtgärden väljer du **timme** och i rutan **intervall** anger du **1** för att köra arbets flödet en gång per dag.
+Under **börja med en gemensam utlösare** väljer du **upprepning**. Detta skapar en logisk app som körs automatiskt med jämna mellanrum. I rutan **frekvens** för åtgärden väljer du **dag** och i rutan **intervall** anger du **1** för att köra arbets flödet en gång per dag.
 
 ![Upprepnings åtgärd](media/logs-export-logicapp/recurrence-action.png)
 

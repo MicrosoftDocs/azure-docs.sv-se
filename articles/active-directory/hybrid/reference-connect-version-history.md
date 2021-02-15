@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636885"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376368"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Versionshistorik för Azure AD Connect
 Gruppen Azure Active Directory (Azure AD) uppdaterar regelbundet Azure AD Connect med nya funktioner. Alla tillägg gäller inte för alla mål grupper.
@@ -45,17 +45,17 @@ Men om du vill ha alla de senaste funktionerna och uppdateringarna är det bäst
 Använd den här länken för att läsa mer om [automatisk uppgradering](how-to-connect-install-automatic-upgrade.md)
 
 >[!IMPORTANT]
-> Från och med den 1 november 2020 börjar vi implementera en utfasnings process där versioner av Azure AD Connect som gavs ut mer än 18 månader sedan blir föråldrade. Vid den tiden kommer vi att påbörja den här processen genom att alla versioner av Azure AD Connect med version 1.3.20.0 (som släpptes den 4/24/2019) och äldre versioner utvärderas, och vi fortsätter att utvärdera utfasningen av äldre versioner av Azure AD Connect varje gång en ny version släpps.
+> Från och med den 1 april 2024 kommer vi att dra tillbaka versioner av Azure AD Connect som släpptes före den 1 maj 2018-version 1.1.751.0 och äldre. 
 >
 > Du måste kontrol lera att du kör en ny version av Azure AD Connect för att få en optimal support upplevelse. 
 >
->Om du kör en inaktuell version av Azure AD Connect kanske du inte har de senaste säkerhets korrigeringarna, prestanda förbättringar, fel sökning och diagnostiska verktyg och förbättringar av tjänsten, och om du behöver support kanske vi inte kan tillhandahålla den nivå av tjänst som din organisation behöver.
+>Om du kör en äldre version av Azure AD Connect kanske du inte har de senaste säkerhets korrigeringarna, prestanda förbättringar, fel sökning och diagnostiska verktyg och förbättringar av tjänster, och om du behöver support kanske vi inte kan tillhandahålla den nivå av tjänst som din organisation behöver.
 >
->Om du har aktiverat Azure AD Connect för synkronisering börjar du snart att automatiskt få hälso aviseringar som varnar dig om kommande inläsningar när du kör någon av de äldre versionerna.
+
 >
 >Mer information om hur du uppgraderar Azure AD Connect till den senaste versionen finns i [den här artikeln](./how-to-upgrade-previous-version.md) .
 >
->Information om versions historiken för inaktuella versioner finns i [Azure AD Connect versions historik Arkiv](reference-connect-version-history-archive.md)
+>Information om versions historiken på återkallade versioner finns i [Azure AD Connect versions historik Arkiv](reference-connect-version-history-archive.md)
 
 ## <a name="15450"></a>1.5.45.0
 

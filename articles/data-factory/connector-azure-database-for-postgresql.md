@@ -1,22 +1,18 @@
 ---
 title: Kopiera och transformera data i Azure Database for PostgreSQL
 description: Lär dig hur du kopierar och transformerar data i Azure Database for PostgreSQL med hjälp av Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223106"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381332"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Database for PostgreSQL med Azure Data Factory
 
@@ -73,7 +69,7 @@ En typisk anslutnings sträng är `Server=<server>.postgres.database.azure.com;D
 
 **Exempel**:
 
-**_Lagra lösen ord i Azure Key Vault_* _
+***Lagra lösen ord i Azure Key Vault***
 
 ```json
 {
@@ -99,7 +95,7 @@ En typisk anslutnings sträng är `Server=<server>.postgres.database.azure.com;D
 
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns [i data uppsättningar i Azure Data Factory](concepts-datasets-linked-services.md). Det här avsnittet innehåller en lista över egenskaper som Azure Database for PostgreSQL stöder i data uppsättningar.
 
-Om du vill kopiera data från Azure Database for PostgreSQL anger du egenskapen type för data uppsättningen till _ * AzurePostgreSqlTable * *. Följande egenskaper stöds:
+Om du vill kopiera data från Azure Database for PostgreSQL anger du egenskapen type för data uppsättningen till **AzurePostgreSqlTable**. Följande egenskaper stöds:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
@@ -221,7 +217,7 @@ När du transformerar data i mappnings data flödet kan du läsa och skriva till
 
 I tabellen nedan visas de egenskaper som stöds av Azure Database for PostgreSQL källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabell | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i data uppsättningen. | Inga | - |*(endast för infogad data uppsättning)*<br>tableName |
 | Söka i data | Om du väljer fråga som indata anger du en SQL-fråga för att hämta data från källan, vilket åsidosätter alla tabeller som du anger i data uppsättningen. Att använda frågor är ett bra sätt att minska rader för testning eller sökning.<br><br>**Order by** -satsen stöds inte, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell som du kan använda i data flödet.<br>Exempel på frågor: `select * from mytable where customerId > 1000 and customerId < 2000` eller `select * from "MyTable"` . Observera i PostgreSQL behandlas enhets namnet som Skift läges okänsligt om det inte anges i citat tecken.| Inga | Sträng | DocumentDB |
@@ -244,7 +240,7 @@ source(allowSchemaDrift: true,
 
 I tabellen nedan visas de egenskaper som stöds av Azure Database for PostgreSQL Sink. Du kan redigera dessa egenskaper på fliken **mottagar alternativ** .
 
-| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Uppdaterings metod | Ange vilka åtgärder som tillåts på databas målet. Standardvärdet är att endast tillåta infogningar.<br>Om du vill uppdatera, upsert eller ta bort rader krävs en [Alter Row-omvandling](data-flow-alter-row.md) för att tagga rader för dessa åtgärder. | Ja | `true` eller `false` | bort <br/>infognings bara <br/>uppdaterings bara <br/>upsertable |
 | Nyckel kolumner | För uppdateringar, upsertar och borttagningar måste nyckel kolumnerna anges för att avgöra vilken rad som ska ändras.<br>Kolumn namnet som du väljer som nyckel kommer att användas som en del av den efterföljande uppdateringen, upsert, Delete. Därför måste du välja en kolumn som finns i Sink-mappningen. | Inga | Matris | keys |

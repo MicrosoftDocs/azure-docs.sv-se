@@ -5,21 +5,22 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 02/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba62bf6b926ded5f3d976f096cee44c7341b4e50
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 057fc654597360a4666342f7de10bf908224f1de
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98053004"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100521356"
 ---
 SMB Multichannel för Azure-filresurser är för närvarande bara tillgänglig i följande regioner:
 
 | Geografisk region | Azure-region |
 |-------------|-------------------|
-| Australien | Australien, östra |
+| Asien och stillahavsområdet | Asien, östra, Sydostasien|
+| Australien | Östra Australien, sydöstra Australien |
 | Brasilien | Brasilien, södra |
 | Kanada | Kanada, centrala, Östra Kanada |
 | Frankrike | Frankrike, centrala |
@@ -27,6 +28,7 @@ SMB Multichannel för Azure-filresurser är för närvarande bara tillgänglig i
 | Indien | Centrala Indien, västra Indien |
 | Japan | Östra Japan, västra Japan |
 | Korea | Korea, centrala, västra Korea |
+| Schweiz | Schweiz, norra |
 | Förenade Arabemiraten | Förenade Arabemiraten, norra |
 | Storbritannien | Storbritannien, södra Storbritannien, västra |
-| USA | Norra centrala USA, södra centrala USA, västra centrala USA |
+| USA | Centrala USA, östra USA, norra centrala USA, södra centrala USA, västra centrala USA |

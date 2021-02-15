@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742938"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380312"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratörs roller efter administratörs uppgift i Azure Active Directory
 
@@ -109,7 +109,7 @@ Visa mått och aviseringar för synkroniseringstjänst | Läsare ([Se dokumentat
 
 Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------
-Hantera domäner | Global administratör | 
+Hantera domäner | Domän namns administratör | 
 Läs all konfiguration | Katalog läsare | Standard användar roll ([se dokumentation](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Domain Services
@@ -216,9 +216,9 @@ Läs inloggnings loggar | Rapport läsare | Säkerhets läsare, säkerhets admin
 Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------
 Ta bort alla befintliga applösenord som har genererats av de valda användarna | Global administratör | 
-Inaktivera MFA | Global administratör | 
-Aktivera MFA | Global administratör | 
-Hantera inställningar för MFA-tjänsten | Global administratör | 
+Inaktivera MFA | Administratör för autentisering (via PowerShell) | Administratör för privilegie rad autentisering (via PowerShell)
+Aktivera MFA | Administratör för autentisering (via PowerShell) | Administratör för privilegie rad autentisering (via PowerShell) 
+Hantera inställningar för MFA-tjänsten | Administratör för autentiseringsprincip | 
 Kräv att valda användare ska tillhandahålla kontakt metoder igen | Administratör för autentisering | 
 Återställa Multi-Factor Authentication på alla sparade enheter  | Administratör för autentisering | 
 
@@ -226,15 +226,15 @@ Kräv att valda användare ska tillhandahålla kontakt metoder igen | Administra
 
 Uppgift | Minst privilegie rad roll | Ytterligare roller
 ---- | --------------------- | ----------------
-Blockera/avblockera användare | Global administratör | 
-Konfigurera konto utelåsning | Global administratör | 
-Konfigurera regler för cachelagring | Global administratör | 
-Konfigurera bedrägeri avisering | Global administratör
-Konfigurera meddelanden | Global administratör | 
-Konfigurera en kringgåd körning | Global administratör | 
-Konfigurera inställningar för telefonsamtal | Global administratör | 
-Konfigurera providers | Global administratör | 
-Konfigurera Server inställningar | Global administratör | 
+Blockera/avblockera användare | Administratör för autentiseringsprincip | 
+Konfigurera konto utelåsning | Administratör för autentiseringsprincip | 
+Konfigurera regler för cachelagring | Administratör för autentiseringsprincip | 
+Konfigurera bedrägeri avisering | Administratör för autentiseringsprincip
+Konfigurera meddelanden | Administratör för autentiseringsprincip | 
+Konfigurera en kringgåd körning | Administratör för autentiseringsprincip | 
+Konfigurera inställningar för telefonsamtal | Administratör för autentiseringsprincip | 
+Konfigurera providers | Administratör för autentiseringsprincip | 
+Konfigurera Server inställningar | Administratör för autentiseringsprincip | 
 Läs aktivitets rapport | Global läsare | 
 Läs all konfiguration | Global läsare | 
 Läs Server status | Global läsare |  

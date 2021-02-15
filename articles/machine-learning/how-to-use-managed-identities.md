@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683348"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388081"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Använda hanterade identiteter med Azure Machine Learning (förhands granskning)
 
@@ -29,6 +29,7 @@ I den här artikeln får du lära dig hur du använder hanterade identiteter fö
 
  * Konfigurera och Använd ACR för din Azure Machine Learning-arbetsyta utan att behöva aktivera administratörs användarens åtkomst till ACR.
  * Få åtkomst till en privat ACR extern till din arbets yta, för att hämta bas avbildningar för utbildning eller härledning.
+ * Skapa en arbets yta med användardefinierad hanterad identitet för att få åtkomst till associerade resurser.
 
 > [!IMPORTANT]
 > Att använda hanterade identiteter för att kontrol lera åtkomst till resurser med Azure Machine Learning för närvarande finns som för hands version. Förhands gransknings funktionerna tillhandahålls "i befintligt skick", utan garanti av support eller service nivå avtal. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
@@ -102,7 +103,7 @@ Om du inte tar med din egen ACR skapar Azure Machine Learning tjänsten en åt d
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>Skapa beräkning med hanterad identitet för att komma åt Docker-avbildningar för utbildning
 
-För att få åtkomst till arbets ytans ACR skapar du beräknings kluster för maskin inlärning med systemtilldelad hanterad identitet aktive rad. Du kan aktivera identiteten från Azure Portal eller Studio när du skapar beräkning eller från Azure CLI med hjälp av
+För att få åtkomst till arbets ytans ACR skapar du beräknings kluster för maskin inlärning med systemtilldelad hanterad identitet aktive rad. Du kan aktivera identiteten från Azure Portal eller Studio när du skapar beräkning eller från Azure CLI med hjälp av nedan. Mer information finns i [använda hanterad identitet med beräknings kluster](how-to-create-attach-compute-cluster.md#managed-identity).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -171,7 +172,7 @@ env.python.user_managed_dependencies = True
 
 ### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>Bygg Azure Machine Learning hanterad miljö till bas avbildning från privat ACR för utbildning eller härledning
 
-I det här scenariot skapar Azure Machine Learning-tjänsten utbildnings-eller miljö utbyggnads miljön ovanpå en bas avbildning som du levererar från en privat ACR. Eftersom avbildnings Bygg aktiviteten sker på arbets ytan ACR med ACR-uppgifter måste du utföra ytterligare åtgärder för att tillåta åtkomst.
+I det här scenariot skapar Azure Machine Learning-tjänsten utbildnings-eller miljö utbyggnads miljön ovanpå en bas avbildning som du levererar från en privat ACR. Eftersom image bygge-aktiviteten sker på arbets ytan ACR med ACR-uppgifter, måste du utföra fler steg för att tillåta åtkomst.
 
 1. Skapa __användardefinierad hanterad identitet__ och ge identiteten ACRPull åtkomst till den __privata ACR__.  
 1. Ge rollen __systemtilldelad hanterad__ identitet en hanterad identitets operatörs roll på den __användare som tilldelats den hanterade identiteten__ från föregående steg. Med den här rollen kan arbets ytan tilldela den användarspecifika hanterade identiteten till ACR-aktiviteten för att skapa den hanterade miljön. 
@@ -228,6 +229,41 @@ När du har konfigurerat ACR utan Administratörs användare som tidigare beskri
 
 > [!NOTE]
 > Om du använder ett eget AKS-kluster måste tjänstens huvud namn vara aktiverat i stället för hanterad identitet.
+
+## <a name="create-workspace-with-user-assigned-managed-identity"></a>Skapa arbets yta med användardefinierad hanterad identitet
+
+När du skapar en arbets yta kan du ange en användardefinierad hanterad identitet som ska användas för att komma åt de associerade resurserna: ACR, nyckel valv, lagring och App Insights.
+
+[Skapa först en användardefinierad hanterad identitet](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])och anteckna arm-resurs-ID: t för den hanterade identiteten.
+
+Använd sedan Azure CLI eller python SDK för att skapa arbets ytan. När du använder CLI anger du ID: t med hjälp av `--primary-user-assigned-identity` parametern. Använd för att använda SDK `primary_user_assigned_identity` . Följande är exempel på hur du använder Azure CLI och python för att skapa en ny arbets yta med följande parametrar:
+
+__Azure CLI__
+
+```azurecli-interactive
+az ml workspace create -w <workspace name> -g <resource group> --primary-user-assigned-identity <managed identity ARM ID>
+```
+
+__Python__
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.create(name="workspace name", 
+    subscription_id="subscription id", 
+    resource_group="resource group name",
+    primary_user_assigned_identity="managed identity ARM ID")
+```
+
+Du kan också använda [en arm-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) för att skapa en arbets yta med användardefinierad hanterad identitet.
+
+> [!IMPORTANT]
+> Om du tar med dina egna resurser i stället för att låta Azure Machine Learning-tjänsten skapa dem måste du bevilja de här resurserna hanterade identitets roller. Använd [Roll tilldelnings arm-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) för att göra tilldelningarna.
+
+För en arbets yta med (Kundhanterade nycklar för kryptering) [ https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ], kan du skicka en användardefinierad hanterad identitet för att autentisera från lagring till Key Vault. Använd argumentet __User-Assigned-Identity-for-CMK-Encryption__ (CLI) eller __user_assigned_identity_for_cmk_encryption__ (SDK) för att skicka in den hanterade identiteten. Den här hanterade identiteten kan vara samma eller samma som den primära användarens primära användare som tilldelats den hanterade identiteten.
+
+Om du har en befintlig arbets yta kan du uppdatera den från systemtilldelad hanterad identitet med hjälp av ```az ml workspace update``` CLI-kommandot eller ```Workspace.update``` python SDK-metoden.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

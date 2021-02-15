@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633255"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380142"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportera flöden från Power Automate och distribuera till Azure Logic Apps
 
@@ -24,7 +24,7 @@ Om du vill utöka och utöka ditt flödes funktioner kan du migrera flödet frå
 >
 > * Om du vill ta reda på vilka PowerPivot-kopplingar som inte har Logic Apps motsvarigheter, se Power automater- [kopplingar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 >
-> * Om du vill ta reda på vilka Logic Apps kopplingar inte har Energis par motsvarigheter, se [Logic Apps kopplingar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Om du vill ta reda på vilka Logic Apps kopplingar inte har Energis par motsvarigheter, se [Logic Apps kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -78,7 +78,7 @@ Mer information finns i [öka upp till Azure Logic Apps](https://flow.microsoft.
       | <*anslutnings namn*> | Ett eller flera namn för alla tidigare skapade anslutningar som Logic-appen kan återanvända <p><p>**Obs**: om den här Logic-appen är din första skapas alla anslutningar som nya, så att du kan acceptera standard namnen. Annars kan du ange namnen på tidigare skapade anslutningar, som du kan använda i flera Logic Apps. |
       |||
 
-      Till exempel:
+      Exempel:
 
       ![Ange indataparametrar för mall](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -158,7 +158,7 @@ Om du har konfigurerat Visual Studio med [förutsättningarna](../logic-apps/qui
 
    ![Redigera distributions parametrar](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   När distributionen startar visas appens distributionsstatus i Visual Studios **utdatafönster**. Om statusen inte visas ska du öppna listan **Show output from** (Visa utdata från) och välja Azure-resursgruppen. Till exempel:
+   När distributionen startar visas appens distributionsstatus i Visual Studios **utdatafönster**. Om statusen inte visas ska du öppna listan **Show output from** (Visa utdata från) och välja Azure-resursgruppen. Exempel:
 
    ![Utdatafönster](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

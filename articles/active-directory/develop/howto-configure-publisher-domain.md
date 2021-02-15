@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013642"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104186"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gör så här: Konfigurera ett programs utgivares domän
 
@@ -48,18 +48,12 @@ Om din app registrerades före den 21 maj 2019 visas inte appens **medgivande om
 
 Följ de här stegen om du vill ställa in din apps publicerings domän.
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-
-1. Om ditt konto finns i fler än en Azure AD-klient:
-   1. Välj din profil på menyn i det övre högra hörnet på sidan och **Växla sedan katalog**.
-   1. Ändra sessionen till Azure AD-klienten där du vill skapa ditt program.
-
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: på den översta menyn för att välja den klient som appen är registrerad i.
 1. Navigera till [Azure Active Directory > Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) för att söka efter och välja den app som du vill konfigurera.
 
    När du har valt appen ser du appens **översikts** sida.
-
-1. Välj avsnittet **anpassning** på appens **översikts** sida.
-
+1. Under **Hantera** väljer du **anpassning**.
 1. Hitta fältet för **utgivarens domän** och välj ett av följande alternativ:
 
    - Välj **Konfigurera en domän** om du inte redan har konfigurerat en domän.

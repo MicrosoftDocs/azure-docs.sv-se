@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746721"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104628"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Vanliga frågor och svar om Azure API för FHIR
 
@@ -115,6 +115,9 @@ Du kan se mer information i det här [Community-inlägget](https://chat.fhir.org
 ### <a name="how-does-export-work"></a>Hur fungerar $export?
 
 $export är en del av FHIR-specifikationen: https://hl7.org/fhir/uv/bulkdata/export/index.html . Om FHIR-tjänsten har kon figurer ATS med en hanterad identitet och ett lagrings konto, och om den hanterade identiteten har åtkomst till det lagrings kontot, kan du bara anropa $export i FHIR-API: et och alla FHIR-resurser kommer att exporteras till lagrings kontot. Mer information finns [i vår artikel om $export](./export-data.md).
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>Är de avidentifierade exporterna tillgängliga på patient-och grupp nivå också?
+Anonymiserats-export stöds för närvarande endast på en fullständig system export (/$export) och inte för export av patienter (/patient/$export). Vi arbetar på att göra det även tillgängligt på patient nivå.
 
 ## <a name="using-azure-api-for-fhir"></a>Använda Azure API för FHIR
 

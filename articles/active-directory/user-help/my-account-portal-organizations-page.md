@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 09/10/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ef2e79f8c8e7964d04db0dd1a3f9988599fcb130
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370346"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094125"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>Hantera organisationer som du har åtkomst till i mitt konto Portal
 
@@ -30,21 +30,26 @@ Sidan **organisationer** i portalen **My-Account** hjälper dig att hantera orga
 - **Andra organisationer.** De andra organisationerna är alla grupper som du har loggat in på tidigare med ditt arbets-eller skol konto. Du kan när som helst lämna någon av dessa organisationer.
 
 >[!Important]
->Den här artikeln är avsedd för användare som försöker uppdatera organisations informationen som används av ett arbets-eller skol konto. Om du är administratör för att söka efter information om grupp-och användar hantering för dina anställda och andra användnings områden, se [dokumentationen för Enterprise User Management](../enterprise-users/index.yml).
+>Den här artikeln är avsedd för användare som försöker uppdatera organisations informationen som används av ett arbets-eller skol konto. Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller klient organisations **-ID: t** för din organisation från administratören i någon av följande URL: er:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Om du är administratör för att söka efter information om grupp-och användar hantering för dina anställda och andra användnings områden, se [dokumentationen för Enterprise User Management](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>Visa dina organisationer
 
-1. Logga in på ditt arbets-eller skol konto och gå sedan till **mitt konto** ( https://myaccount.microsoft.com/) sidan.
+1. Logga in på ditt arbets-eller skol konto och gå sedan till **mitt konto** ( https://myaccount.microsoft.com/) sidan. 
 
-2. Välj **organisationer** i det vänstra navigerings fönstret eller Välj länken **Hantera organisationer** från **organisationer** -blocket.
+1. Välj **organisationer** i det vänstra navigerings fönstret eller Välj länken **Hantera organisationer** från **organisationer** -blocket.
 
     ![Sidan mitt konto, som visar markerade organisations länkar](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Granska informationen för din **hem organisation**.
+1. Granska informationen för din **hem organisation**.
 
     ![Sidan organisationer](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Granska dina andra organisationer och se till att du känner igen alla organisationer som du har åtkomst till.
+1. Granska dina andra organisationer och se till att du känner igen alla organisationer som du har åtkomst till.
 
 ## <a name="leave-an-organization"></a>Lämna en organisation
 

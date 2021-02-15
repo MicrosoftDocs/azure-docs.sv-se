@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102112"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384460"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Förstå de roller som krävs för att utföra vanliga uppgifter i Synapse
 
@@ -87,7 +87,7 @@ Visa loggfilerna för Notebook och jobb körning |Synapse Compute-operator|
 Avbryt alla Notebook-eller Spark-jobb som körs på en Apache Spark pool|Synapse Compute-operator i Apache Spark-poolen.|bigDataPools/useCompute
 Skapa en antecknings bok eller en jobb definition|Synapse-användare eller </br>Azure-ägare, deltagare eller läsare på arbets ytan</br> *Ytterligare behörigheter krävs för att köra, publicera eller bekräfta ändringar*|läsa</br></br></br></br></br> 
 Visa och öppna en publicerad antecknings bok eller jobb definition, inklusive Granska sparade utdata|Synapse artefakt användare, Synapse artefakt utgivare, Synapse Contributor på arbets ytan|artefakter/läsningar
-Kör en bärbar dator och granska dess utdata|Synapse Apache Spark-administratör, Synapse Compute-operator på den valda Apache Spark poolen|bigDataPools/useCompute 
+Kör en bärbar dator och granska dess utdata, eller skicka ett Spark-jobb|Synapse Apache Spark-administratör, Synapse Compute-operator på den valda Apache Spark poolen|bigDataPools/useCompute 
 Publicera eller ta bort en antecknings bok eller jobb definition (inklusive utdata) till tjänsten|Artefakt utgivare på arbets ytan, Synapse Apache Spark administratör|antecknings böcker/skriva, ta bort
 Genomför ändringar i en bärbar dator eller jobb definition på git-lagrings platsen|Git-behörigheter|inget
 PIPELINES, INTEGRERINGS KÖRNINGAR, DATA FLÖDEN, DATA UPPSÄTTNINGAR & UTLÖSARE|

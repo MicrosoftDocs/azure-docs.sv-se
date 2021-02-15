@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525576"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392807"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -66,7 +66,7 @@ Där `--enable-private-cluster` är en obligatorisk flagga för ett privat klust
 > [!NOTE]
 > Om Docker-bryggan Address CIDR (172.17.0.1/16) står i konflikt med under nätets CIDR, ändra Docker-bryggans adress på lämpligt sätt.
 
-## <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon
+## <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon 
 
 Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
 
@@ -79,7 +79,7 @@ Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
 * AKS Preview version 0.4.71 eller senare
 * API-version 2020-11-01 eller senare
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Skapa ett privat AKS-kluster med Privat DNS zon
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Skapa ett privat AKS-kluster med Privat DNS zon (för hands version)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]

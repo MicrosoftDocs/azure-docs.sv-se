@@ -7,14 +7,14 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f325a43895e1e9d73b11c06662851d7654d31ddb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331829"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518427"
 ---
-# <a name="azure-database-for-postgresql-versioning-policy"></a>Princip för Azure Database for PostgreSQL versions hantering
+# <a name="azure-database-for-postgresql-versioning-policy"></a>Versionspolicy för Azure Database for PostgreSQL
 
 Den här sidan beskriver principen för Azure Database for PostgreSQL versions hantering och gäller för distributions lägena Azure Database for PostgreSQL-enskild server och Azure Database for PostgreSQL-flexibel Server (för hands version).
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL stöder följande databas versioner.
 | PostgreSQL 11 | X | X |
 | PostgreSQL 10 | X |  |
 | PostgreSQL 9,6 | X |  |
-| PostgreSQL 9,5 | X |  |
+| *PostgreSQL 9,5 (dras tillbaka)* | X |  |
 
 ## <a name="major-version-support"></a>Huvud versions stöd
 Varje större version av PostgreSQL kommer att stödjas av Azure Database for PostgreSQL från och med det datum då Azure börjar stödja versionen tills versionen har dragits tillbaka av PostgreSQL-communityn, enligt vad som anges i [postgresql community-versions princip](https://www.postgresql.org/support/versioning/).
@@ -41,7 +41,7 @@ I tabellen nedan visas information om pensionering för PostgreSQL-huvud version
 
 | Version | Nyheter | Start datum för Azure-support | Datum för indragning|
 | ----- | ----- | ------ | ----- |
-| PostgreSQL 9,5| [Funktioner](https://www.postgresql.org/docs/9.5/release-9-5.html)  | Den 18 april 2018    | 11 februari 2021
+| [PostgreSQL 9,5 (dras tillbaka)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/)| [Funktioner](https://www.postgresql.org/docs/9.5/release-9-5.html)  | Den 18 april 2018   | 11 februari 2021
 | [PostgreSQL 9,6](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Funktioner](https://wiki.postgresql.org/wiki/NewIn96) | Den 18 april 2018  | 11 november 2021
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Funktioner](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4 juni 2018  | 10 november 2022
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Funktioner](https://www.postgresql.org/docs/11/release-11.html) | 24 juli 2019  | 9 november 2023
@@ -49,7 +49,7 @@ I tabellen nedan visas information om pensionering för PostgreSQL-huvud version
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>PostgreSQL motor versioner som inte stöds i Azure Database for PostgreSQL
 
-Tänk på följande begränsningar när du fortsätter att köra den nedsänkta versionen av varje PostgreSQL-databas version:
+Du kan fortsätta att köra den återkallade versionen i Azure Database for PostgreSQL. Observera dock följande begränsningar efter indragnings datumet för varje PostgreSQL-databas version:
 - Eftersom communityn inte kommer att släppa några ytterligare fel korrigeringar eller säkerhets korrigeringar, kommer Azure Database for PostgreSQL inte att uppdatera den indragna databas motorn för några buggar eller säkerhets problem eller på annat sätt vidta säkerhets åtgärder avseende den indragna databas motorn. Du kan råka ut för säkerhets risker eller andra problem. Men Azure fortsätter att utföra periodiskt underhåll och korrigering för värden, operativ systemet, behållare och andra service komponenter.
 - Om något av de support ärenden som du kan stöta på rör PostgreSQL-databasen kanske vi inte kan ge support. I sådana fall måste du uppgradera databasen för att vi ska kunna ge dig all support.
 - Du kommer inte att kunna skapa nya databas servrar för den tillbakadragna versionen. Du kommer dock att kunna utföra återställningar av tidpunkter och skapa Läs repliker för dina befintliga servrar.

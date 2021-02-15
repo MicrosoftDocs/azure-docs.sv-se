@@ -13,6 +13,8 @@
   items:
     - name: Konfigurera din miljö
       items:
+        - name: Hitta ditt klient-ID
+          href: how-to-set-azure-tenant.md
         - name: Hitta din Azure-prenumeration
           href: how-to-set-azure-subscription.md
         - name: Skapa ett Media Services-konto
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: Aktivera betrodd lagring
+          href: tutorial-trusted-storage-rest.md
         - name: Koda och strömma en fjärrfil – REST
           href: stream-files-tutorial-with-rest.md
         - name: Kundhanterade nycklar med REST API
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: Anvisningar
   items:
+    - name: Hitta din klient och prenumeration
+      items:
+        - name: Hitta ditt klient-ID
+          href: how-to-set-azure-tenant.md
+        - name: Hitta ditt prenumerations-ID
+          href: how-to-set-azure-subscription.md
     - name: Skapa tillgångar och ladda upp media
       items:
         - name: Skapa en tillgång

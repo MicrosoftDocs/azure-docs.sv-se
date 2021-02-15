@@ -2,14 +2,14 @@
 title: Konfigurera tjänst slut punkter för virtuella nätverk för Azure Service Bus
 description: Den här artikeln innehåller information om hur du lägger till en tjänst slut punkt för Microsoft. Service Bus i ett virtuellt nätverk.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 02/12/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8005a2c43d42908a9ad6ebea10b6a13ef381084c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 6b168bbdc69f2d18a724084d9de694fa83d23dda
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427657"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516149"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Tillåt åtkomst till Azure Service Bus namnrymd från vissa virtuella nätverk
 Integreringen av Service Bus med [tjänst slut punkter för virtuella datorer med Virtual Network (VNet)][vnet-sep] ger säker åtkomst till meddelande funktioner från arbets belastningar som virtuella datorer som är kopplade till virtuella nätverk, med den nätverks trafik väg som skyddas i båda ändar.
@@ -57,7 +57,8 @@ Det här avsnittet visar hur du använder Azure Portal för att lägga till en t
     > [!NOTE]
     > Fliken **nätverk** visas endast för **Premium** -namnområden.  
     
-    Som standard är alternativet **valda nätverk** markerat. Om du inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
+    >[!WARNING]
+    > Om du väljer alternativet **valda nätverk** och inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan, kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Sidan nätverk – standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -88,26 +89,11 @@ Det här avsnittet visar hur du använder Azure Portal för att lägga till en t
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Använda Resource Manager-mallar
-Följande Resource Manager-mall gör det möjligt att lägga till en virtuell nätverks regel i ett befintligt Service Bus-namnområde.
+Följande exempel på en Resource Manager-mall lägger till en virtuell nätverks regel i ett befintligt Service Bus-namnområde. För nätverks regeln anger det ID: t för ett undernät i ett virtuellt nätverk. 
 
-Mallparametrar:
+ID är en fullständigt kvalificerad Resource Manager-sökväg för det virtuella nätverkets undernät. Till exempel `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` för standard under nätet för ett virtuellt nätverk.
 
-* **namespaceName** : Service Bus namnrymd.
-* **virtualNetworkingSubnetId** : fullständigt kvalificerad Resource Manager-sökväg för det virtuella nätverkets undernät; till exempel `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` för standard under nätet för ett virtuellt nätverk.
-
-> [!NOTE]
-> Även om det inte finns några tillåtna nekade regler, har Azure Resource Manager mal len standard åtgärden inställd på **Tillåt** , vilket inte begränsar anslutningar.
-> När du skapar Virtual Network-eller brand Väggs regler måste vi ändra **_"defaultAction"_**
-> 
-> Från
-> ```json
-> "defaultAction": "Allow"
-> ```
-> på
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+När du lägger till regler för virtuella nätverk eller brand väggar ställer du in värdet `defaultAction` till `Deny` .
 
 Mall:
 
@@ -211,6 +197,9 @@ Mall:
 ```
 
 Följ anvisningarna för [Azure Resource Manager][lnk-deploy]om du vill distribuera mallen.
+
+> [!IMPORTANT]
+> Om det inte finns några IP-och virtuella nätverks regler, flödar all trafik till namn området även om du ställer in `defaultAction` till `deny` .  Namn området kan nås via det offentliga Internet (med hjälp av åtkomst nyckeln). Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk.  
 
 ## <a name="next-steps"></a>Nästa steg
 

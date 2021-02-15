@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359395"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096437"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurera en belastningsutjämnare för en SQL Server Always on-tillgänglighetsgrupper i Azure Virtual Machines
 
@@ -76,7 +76,7 @@ Skapa först belastningsutjämnaren.
    | **Virtuellt nätverk** |Välj det virtuella nätverk som SQL Servers instanserna finns i. |
    | **Undernät** |Välj det undernät som de SQL Server instanserna finns i. |
    | **Tilldelning av IP-adress** |**Statiskt** |
-   | **Privat IP-adress** |Ange en tillgänglig IP-adress från under nätet. Använd den här IP-adressen när du skapar en lyssnare i klustret. I ett PowerShell-skript längre fram i den här artikeln använder du den här adressen för `$ILBIP` variabeln. |
+   | **Privat IP-adress** |Ange en tillgänglig IP-adress från under nätet. Använd den här IP-adressen när du skapar en lyssnare i klustret. I ett PowerShell-skript längre fram i den här artikeln använder du den här adressen för `$ListenerILBIP` variabeln. |
    | **Prenumeration** |Om du har flera prenumerationer kan det här fältet visas. Välj den prenumeration som du vill koppla till den här resursen. Det är normalt samma prenumeration som alla resurser för tillgänglighets gruppen. |
    | **Resursgrupp** |Välj den resurs grupp som SQL Server instanserna finns i. |
    | **Plats** |Välj den Azure-plats som SQL Server instanserna finns i. |
@@ -258,7 +258,7 @@ Gör så här om du vill lägga till en IP-adress till en belastningsutjämnare 
     |**Serverdelsport** |Använd samma värde som **port**.
     |**Serverdelspool** |Poolen som innehåller de virtuella datorerna med SQL Server instanser. 
     |**Hälsoavsökning** |Välj den avsökning som du har skapat.
-    |**Sessionspermanens** |Inga
+    |**Sessionspermanens** |Inget
     |**Tids gräns för inaktivitet (minuter)** |Standard (4)
     |**Flytande IP (direkt Server retur)** | Enabled
 
@@ -307,7 +307,7 @@ Om en tillgänglighets grupp deltar i en distribuerad tillgänglighets grupp beh
    |**Serverdelsport** | 5022 – Använd samma värde som **port**.
    |**Serverdelspool** |Poolen som innehåller de virtuella datorerna med SQL Server instanser. 
    |**Hälsoavsökning** |Välj den avsökning som du har skapat.
-   |**Sessionspermanens** |Inga
+   |**Sessionspermanens** |Inget
    |**Tids gräns för inaktivitet (minuter)** |Standard (4)
    |**Flytande IP (direkt Server retur)** | Enabled
 

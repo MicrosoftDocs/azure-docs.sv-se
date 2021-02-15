@@ -1,22 +1,19 @@
 ---
 title: Aktivera AAD för Azure SSIS Integration Runtime
 description: I den här artikeln beskrivs hur du aktiverar Azure Active Directory-autentisering med den hanterade identiteten för Azure Data Factory för att skapa Azure-SSIS Integration Runtime.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637810"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392739"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Aktivera Azure Active Directory-autentisering för Azure-SSIS Integration Runtime
 
@@ -86,9 +83,9 @@ Du kan [Konfigurera och hantera Azure AD-autentisering med SQL](../azure-sql/dat
 
 2.  Välj din server i SQL Database som ska konfigureras med Azure AD-autentisering.
 
-3.  I avsnittet **Inställningar** på bladet väljer du **Active Directory admin** .
+3.  I avsnittet **Inställningar** på bladet väljer du **Active Directory admin**.
 
-4.  I kommando fältet väljer du **Ange administratör** .
+4.  I kommando fältet väljer du **Ange administratör**.
 
 5.  Välj ett Azure AD-användarkonto som ska bli administratör för servern och välj sedan **Välj.**
 
@@ -108,9 +105,9 @@ I nästa steg behöver du [Microsoft SQL Server Management Studio](/sql/ssms/dow
 
 5. Välj **Anslut** och slutför inloggnings processen.
 
-6. Expandera mappen **Object Explorer** **databaser**  ->  **system databaser** i Object Explorer.
+6. Expandera mappen  **databaser**  ->  **system databaser** i Object Explorer.
 
-7. Högerklicka på **huvud** databasen och välj **ny fråga** .
+7. Högerklicka på **huvud** databasen och välj **ny fråga**.
 
 8. I frågefönstret anger du följande T-SQL-kommando och väljer **Kör** i verktygsfältet.
 
@@ -128,7 +125,7 @@ I nästa steg behöver du [Microsoft SQL Server Management Studio](/sql/ssms/dow
 
    Kommandot ska slutföras, vilket ger den inneslutna användaren möjlighet att skapa en databas (SSISDB).
 
-10. Om din SSISDB har skapats med SQL-autentisering och du vill växla till att använda Azure AD-autentisering för din Azure-SSIS IR för att få åtkomst till den, kontrollerar du först att stegen för att bevilja behörighet till **huvud** databasen har slutförts. Högerklicka sedan på **SSISDB** -databasen och välj **ny fråga** .
+10. Om din SSISDB har skapats med SQL-autentisering och du vill växla till att använda Azure AD-autentisering för din Azure-SSIS IR för att få åtkomst till den, kontrollerar du först att stegen för att bevilja behörighet till **huvud** databasen har slutförts. Högerklicka sedan på **SSISDB** -databasen och välj **ny fråga**.
 
 11. I frågefönstret anger du följande T-SQL-kommando och väljer **Kör** i verktygsfältet.
 
@@ -160,11 +157,11 @@ I nästa steg behöver du [Microsoft SQL Server Management Studio](/sql/ssms/dow
 
 1.  Starta SSMS.
 
-2.  Anslut till SQL-hanterad instans med ett SQL Server konto som är en **sysadmin** . Detta är en tillfällig begränsning som tas bort när Azure AD server-Huvudkonton (inloggningar) för Azure SQL-hanterad instans blir GA. Följande fel visas om du försöker använda ett Azure AD-administratörskonto för att skapa inloggningen: MSG 15247, nivå 16, State 1, rad 1 användaren har inte behörighet att utföra den här åtgärden.
+2.  Anslut till SQL-hanterad instans med ett SQL Server konto som är en **sysadmin**. Detta är en tillfällig begränsning som tas bort när Azure AD server-Huvudkonton (inloggningar) för Azure SQL-hanterad instans blir GA. Följande fel visas om du försöker använda ett Azure AD-administratörskonto för att skapa inloggningen: MSG 15247, nivå 16, State 1, rad 1 användaren har inte behörighet att utföra den här åtgärden.
 
-3.  Expandera mappen **Object Explorer** **databaser**  ->  **system databaser** i Object Explorer.
+3.  Expandera mappen  **databaser**  ->  **system databaser** i Object Explorer.
 
-4.  Högerklicka på **huvud** databasen och välj **ny fråga** .
+4.  Högerklicka på **huvud** databasen och välj **ny fråga**.
 
 5.  I frågefönstret kör du följande T-SQL-skript för att lägga till den hanterade identiteten för din ADF som en användare
 
@@ -176,7 +173,7 @@ I nästa steg behöver du [Microsoft SQL Server Management Studio](/sql/ssms/dow
     
     Kommandot bör slutföras, vilket ger den hanterade identiteten för din ADF möjlighet att skapa en databas (SSISDB).
 
-6.  Om din SSISDB har skapats med SQL-autentisering och du vill växla till att använda Azure AD-autentisering för din Azure-SSIS IR för att få åtkomst till den, kontrollerar du först att stegen för att bevilja behörighet till **huvud** databasen har slutförts. Högerklicka sedan på **SSISDB** -databasen och välj **ny fråga** .
+6.  Om din SSISDB har skapats med SQL-autentisering och du vill växla till att använda Azure AD-autentisering för din Azure-SSIS IR för att få åtkomst till den, kontrollerar du först att stegen för att bevilja behörighet till **huvud** databasen har slutförts. Högerklicka sedan på **SSISDB** -databasen och välj **ny fråga**.
 
 7.  I frågefönstret anger du följande T-SQL-kommando och väljer **Kör** i verktygsfältet.
 

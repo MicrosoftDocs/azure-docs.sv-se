@@ -2,13 +2,13 @@
 title: Isolera Azure Service Bus program mot avbrott och haverier
 description: De här artiklarna innehåller tekniker för att skydda program mot ett möjligt Azure Service Bus avbrott.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065632"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374600"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Metodtips för isolering av program mot Service Bus-avbrott och katastrofer
 
@@ -23,11 +23,13 @@ Koncepten för hög tillgänglighet och haveri beredskap är inbyggda i Azure Se
 
 ### <a name="geo-disaster-recovery"></a>Geo-Disaster återställning
 
-Service Bus Premium stöder geo-katastrof återställning på namn områdes nivå. Mer information finns i [Azure Service Bus geo-Disaster Recovery](service-bus-geo-dr.md). Funktionen för haveri beredskap, som endast är tillgänglig för [Premium SKU: n](service-bus-premium-messaging.md) , implementerar haveri beredskap för metadata och förlitar sig på de primära och sekundära katastrof återställnings namn områdena.
+Service Bus Premium stöder geo-katastrof återställning på namn områdes nivå. Mer information finns i [Azure Service Bus geo-Disaster Recovery](service-bus-geo-dr.md). Funktionen för haveri beredskap, som endast är tillgänglig för [Premium SKU: n](service-bus-premium-messaging.md) , implementerar haveri beredskap för metadata och förlitar sig på de primära och sekundära katastrof återställnings namn områdena. Med Geo-Disaster återställning replikeras endast metadata för entiteter mellan primär och sekundär namnrymd.  
 
 ### <a name="availability-zones"></a>Tillgänglighetszoner
 
 Service Bus Premium-SKU: n stöder [Tillgänglighetszoner](../availability-zones/az-overview.md), vilket ger felisolerade platser inom samma Azure-region. Service Bus hanterar tre kopior av meddelande arkivet (1 primär och 2 sekundär). Service Bus behåller alla tre kopior som synkroniseras för data-och hanterings åtgärder. Om den primära kopian Miss lyckas höjs en av de sekundära kopiorna till primär utan uppfattande stillestånds tid. Om programmen ser tillfälliga Service Bus från kopplingar kommer logiken för återförsök automatiskt att återansluta till Service Bus. 
+
+När du använder tillgänglighets zoner replikeras både metadata och data (meddelanden) över data Center i tillgänglighets zonen. 
 
 > [!NOTE]
 > Tillgänglighetszoner stöd för Azure Service Bus Premium är bara tillgängligt i [Azure-regioner](../availability-zones/az-region.md) där tillgänglighets zoner finns.

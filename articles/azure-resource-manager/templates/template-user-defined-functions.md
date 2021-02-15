@@ -2,13 +2,13 @@
 title: Användardefinierade funktioner i mallar
 description: Beskriver hur du definierar och använder användardefinierade funktioner i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934687"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379632"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Användardefinierade funktioner i ARM-mallen
 
@@ -44,7 +44,7 @@ Dina funktioner kräver ett namn områdes värde för att undvika namngivnings k
 
 ## <a name="use-the-function"></a>Använd funktionen
 
-I följande exempel visas en mall som innehåller en användardefinierad funktion. Funktionen används för att hämta ett unikt namn för ett lagrings konto. Mallen har en parameter som heter `storageNamePrefix` att den skickas som en parameter till funktionen.
+I följande exempel visas en mall som innehåller en användardefinierad funktion för att få ett unikt namn för ett lagrings konto. Mallen har en parameter med namnet `storageNamePrefix` som skickas som en parameter till funktionen.
 
 ```json
 {
@@ -92,6 +92,12 @@ I följande exempel visas en mall som innehåller en användardefinierad funktio
  ]
 }
 ```
+
+Under distributionen `storageNamePrefix` skickas parametern till funktionen:
+
+* Mallen definierar en parameter med namnet `storageNamePrefix` .
+* Funktionen används `namePrefix` eftersom du bara kan använda parametrar som definierats i funktionen. Mer information finns i [begränsningar](#limitations).
+* I mallens `resources` avsnitt `name` använder elementet funktionen och skickar `storageNamePrefix` värdet till funktionen `namePrefix` .
 
 ## <a name="limitations"></a>Begränsningar
 

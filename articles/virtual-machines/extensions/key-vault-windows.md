@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820729"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093632"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault tillägg för virtuell dator för Windows
 
@@ -35,25 +35,31 @@ Key Vault VM-tillägget stöds också på den anpassade lokala virtuella datorn 
 - PKCS-#12
 - PEM
 
-## <a name="prerequisities"></a>Prerequisities
+## <a name="prerequisites"></a>Förutsättningar
+
   - Key Vault instans med certifikat. Se [skapa en Key Vault](../../key-vault/general/quick-create-portal.md)
   - Den virtuella datorn måste ha tilldelats en [hanterad identitet](../../active-directory/managed-identities-azure-resources/overview.md)
   - Åtkomst principen för Key Vault måste anges med hemligheter `get` och `list` behörighet för VM/VMSS-hanterad identitet för att hämta en hemlig del av certifikatet. Se [hur du autentiserar till Key Vault](../../key-vault/general/authentication.md) och [tilldelar en Key Vault åtkomst princip](../../key-vault/general/assign-access-policy-cli.md).
-  -  VMSS ska ha följande identitets inställning: ` 
+  -  Virtual Machine Scale Sets bör ha följande identitets inställning:
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- AKV-tillägget ska ha den här inställningen: `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - AKV-tillägget ska ha den här inställningen:
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>Tilläggsschema
 
 Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver inte skyddade inställningar. alla dess inställningar betraktas som offentlig information. Tillägget kräver en lista över övervakade certifikat, avsöknings frekvens och mål certifikat arkivet. Specifikt:  
@@ -102,7 +108,7 @@ Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver in
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Name | Värde/exempel | Datatyp |
+| Namn | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | utgivare | Microsoft.Azure.KeyVault | sträng |
@@ -164,7 +170,9 @@ Aktivera detta genom att göra följande:
     ...
 }
 ```
-> Lägg Att använda den här funktionen är inte kompatibel med en ARM-mall som skapar en systemtilldelad identitet och uppdaterar en Key Vault åtkomst princip med den identiteten. Detta leder till ett död läge eftersom valv åtkomst principen inte kan uppdateras förrän alla tillägg har startats. I stället bör du använda en *enda användare som tilldelats MSI-identitet* och för hands ACL dina valv med den identiteten innan du distribuerar.
+
+> [!Note] 
+> Att använda den här funktionen är inte kompatibel med en ARM-mall som skapar en systemtilldelad identitet och uppdaterar en Key Vault åtkomst princip med den identiteten. Detta leder till ett död läge eftersom valv åtkomst principen inte kan uppdateras förrän alla tillägg har startats. I stället bör du använda en *enda användare som tilldelats MSI-identitet* och för hands ACL dina valv med den identiteten innan du distribuerar.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell distribution
 > [!WARNING]
@@ -222,9 +230,9 @@ Azure CLI kan användas för att distribuera Key Vault VM-tillägget till en bef
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Azure CLI kan användas för att distribuera Key Vault VM-tillägget till en bef
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

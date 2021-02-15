@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2af63997f9ea74dfce184639d2fedb42d354fb39
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d61c2a1a0f5d7b26809621af6dfa88cf5080320
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077583"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518189"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Ansluta med SSH till en virtuell Linux-dator med Azure skydds
 
@@ -35,9 +35,9 @@ När du använder skydds för att ansluta antar det att du använder RDP för at
 
 Följande roller krävs för att upprätta en anslutning:
 
-* Rollen läsare på den virtuella datorn
-* Rollen läsare på NÄTVERKSKORTet med den virtuella datorns privata IP-adress
-* Läsar roll på Azure skydds-resursen
+* Läsarroll på den virtuella datorn
+* Läsarroll på nätverkskortet med den virtuella datorns privata IP-adress
+* Läsarroll på Azure Bastion-resursen
 
 ### <a name="ports"></a>Portar
 
@@ -49,37 +49,57 @@ För att kunna ansluta till den virtuella Linux-datorn via SSH måste du ha föl
 
 1. Öppna [Azure-portalen](https://portal.azure.com). Navigera till den virtuella dator som du vill ansluta till och klicka sedan på **Anslut** och välj **skydds** i list rutan.
 
-   ![Skärm bild som visar en översikt över en virtuell dator i Azure Portal med Anslut valt.](./media/bastion-connect-vm-ssh/connect.png)
-1. När du klickar på skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="Skärm bild som visar en översikt över en virtuell dator i Azure Portal med Anslut valt":::
+1. När du har valt skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
 
-   ![Skärm bild som visar dialog rutan Anslut till virtuell dator med skydds valt.](./media/bastion-connect-vm-ssh/bastion.png)
+   :::image type="content" source="./media/bastion-connect-vm-ssh/bastion.png" alt-text="Skärm bild som visar dialog rutan Anslut till virtuell dator med skydds valt":::
 1. Ange användar namn och lösen ord för SSH till den virtuella datorn.
-1. Klicka på knappen **Anslut** när du har angett nyckeln.
+1. Välj **Connect** -knapp när du har angett nyckeln.
 
 ## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Anslut: Ange en privat nyckel manuellt
 
 1. Öppna [Azure-portalen](https://portal.azure.com). Navigera till den virtuella dator som du vill ansluta till och klicka sedan på **Anslut** och välj **skydds** i list rutan.
 
-   ![Skärm bild som visar en översikt över en virtuell dator i Azure Portal med Anslut valt.](./media/bastion-connect-vm-ssh/connect.png)
-1. När du klickar på skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="Skärm bild som visar en översikt över en virtuell dator i Azure Portal med Anslut valt":::
+1. När du har valt skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
 
-   ![Skärm bild som visar dialog rutan Anslut till virtuell dator med skydds valt.](./media/bastion-connect-vm-ssh/bastion.png)
+   :::image type="content" source="./media/bastion-connect-vm-ssh/bastion.png" alt-text="Dialog rutan Anslut till virtuell dator med skydds valt.":::
 1. Ange användar namnet och välj **privat SSH-nyckel**.
 1. Ange din privata nyckel i text ytans **privata SSH-nyckel** (eller klistra in den direkt).
-1. Klicka på knappen **Anslut** när du har angett nyckeln.
+1. Välj **Connect** -knapp när du har angett nyckeln.
 
 ## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Anslut: använder en privat nyckel fil
 
 1. Öppna [Azure-portalen](https://portal.azure.com). Navigera till den virtuella dator som du vill ansluta till och klicka sedan på **Anslut** och välj **skydds** i list rutan.
 
-   ![Skärm bild som visar en översikt över en virtuell dator i Azure Portal med Anslut valt.](./media/bastion-connect-vm-ssh/connect.png)
-1. När du klickar på skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
+   :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="Anslut vald":::
+1. När du har valt skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](./tutorial-create-host-portal.md).
 
-   ![Skärm bild som visar dialog rutan Anslut till virtuell dator med skydds valt.](./media/bastion-connect-vm-ssh/bastion.png)
+   :::image type="content" source="./media/bastion-connect-vm-ssh/bastion.png" alt-text="SKYDDS har valts.":::
 1. Ange användar namnet och välj **SSH privat nyckel från lokal fil**.
-1. Klicka på knappen **Bläddra** (mappikonen i den lokala filen).
-1. Bläddra efter filen och klicka sedan på **Öppna**.
-1. Klicka på **Anslut** för att ansluta till den virtuella datorn. När du klickar på Anslut öppnas SSH till den virtuella datorn direkt i Azure Portal. Den här anslutningen är över HTML5 med port 443 på skydds-tjänsten via den privata IP-adressen för den virtuella datorn.
+1. Välj **bläddringsknappen** (mappikonen i den lokala filen).
+1. Bläddra efter filen och välj sedan **Öppna**.
+1. Välj **Anslut** för att ansluta till den virtuella datorn. När du klickar på Anslut öppnas SSH till den virtuella datorn direkt i Azure Portal. Den här anslutningen är över HTML5 med port 443 på skydds-tjänsten via den privata IP-adressen för den virtuella datorn.
+
+## <a name="connect-using-a-private-key-stored-in-azure-key-vault"></a><a name="akv"></a>Anslut: använder en privat nyckel som lagras i Azure Key Vault
+
+>[!NOTE]
+>Portal uppdateringen för den här funktionen håller på att distribueras till regioner.
+>
+
+1. Öppna [Azure-portalen](https://portal.azure.com). Navigera till den virtuella dator som du vill ansluta till och klicka sedan på **Anslut** och välj **skydds** i list rutan.
+1. När du har valt skydds visas ett sido fält med tre flikar – RDP, SSH och skydds. Om skydds etablerades för det virtuella nätverket är fliken skydds aktiv som standard. Om du inte etablerar skydds för det virtuella nätverket, se [Konfigurera skydds](bastion-create-host-portal.md).
+
+   :::image type="content" source="./media/bastion-connect-vm-ssh/bastion.png" alt-text="Fliken skydds":::
+1. Ange användar namnet och välj den **privata SSH-nyckeln från Azure Key Vault**.
+1. Välj List rutan **Azure Key Vault** och välj den resurs där du sparade din privata SSH-nyckel. Om du inte har konfigurerat en Azure Key Vault-resurs kan du läsa [skapa ett nyckel valv](../key-vault/general/quick-create-portal.md) och lagra din privata SSH-nyckel som ett nytt Key Vault hemligt värde.
+
+   :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure Key Vault":::
+
+Kontrol lera att du har en **lista** och **får** åtkomst till hemligheterna som lagras i Key Vault resursen. Om du vill tilldela och ändra åtkomst principer för din Key Vault-resurs, se [tilldela en Key Vault åtkomst princip](../key-vault/general/assign-access-policy-portal.md).
+
+1. Välj List rutan **Azure Key Vault hemlighet** och välj den Key Vault hemlighet som innehåller värdet för den privata SSH-nyckeln.
+1. Välj **Anslut** för att ansluta till den virtuella datorn. När du klickar på Anslut öppnas SSH till den virtuella datorn direkt i Azure Portal. Den här anslutningen är över HTML5 med port 443 på skydds-tjänsten via den privata IP-adressen för den virtuella datorn.
 
 ## <a name="next-steps"></a>Nästa steg
 
