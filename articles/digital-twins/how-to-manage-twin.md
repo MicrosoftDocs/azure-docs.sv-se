@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600503"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530441"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -72,7 +72,7 @@ Med hjälp klassen i `BasicDigitalTwin` kan du lagra egenskaps fält i ett "" ""
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
-> `BasicDigitalTwin` objekt levereras med ett `Id` fält. Du kan lämna fältet tomt, men om du lägger till ett ID-värde måste det matcha ID-parametern som skickas till `CreateOrReplaceDigitalTwinAsync()` anropet. Till exempel:
+> `BasicDigitalTwin` objekt levereras med ett `Id` fält. Du kan lämna fältet tomt, men om du lägger till ett ID-värde måste det matcha ID-parametern som skickas till `CreateOrReplaceDigitalTwinAsync()` anropet. Exempel:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -86,7 +86,7 @@ Du kan komma åt information om alla digitala dubbla genom att anropa- `GetDigit
 
 Det här anropet returnerar dubbla data som en starkt skriven objekt typ, t `BasicDigitalTwin` . ex.. `BasicDigitalTwin` är en hjälp klass för serialisering som ingår i SDK, vilket returnerar de dubbla metadata och egenskaperna i förparsat formulär. Här är ett exempel på hur du kan använda den för att Visa dubbel information:
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 Endast egenskaper som har angetts minst en gång returneras när du hämtar en delad med- `GetDigitalTwin()` metoden.
 
@@ -208,9 +208,9 @@ De två anropen som ändrar *Twin1* körs en efter en annan och ändrings meddel
 
 Du kan ta bort dubbla med- `DeleteDigitalTwin()` metoden. Men du kan bara ta bort en dubbel när den inte har fler relationer. Så ta bort de dubbla inkommande och utgående relationerna först.
 
-Här är ett exempel på koden för att ta bort dubbla och deras relationer:
+Här är ett exempel på koden för att ta bort dubbla och deras relationer. `DeleteDigitalTwin`SDK-anropet är markerat för att klargöra var det hamnar i den bredare exempel kontexten.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>Ta bort alla digitala dubbla
 

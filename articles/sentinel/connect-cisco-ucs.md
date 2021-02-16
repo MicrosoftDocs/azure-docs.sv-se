@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: caa83b9149f39f69d0cbf44a2d6cb01fdaf29721
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 15e31b8dc5ac6db5861e3ea0fb5390ddf0a8c945
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567981"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530679"
 ---
 # <a name="connect-your-cisco-unified-computing-system-ucs-to-azure-sentinel"></a>Anslut ditt Cisco Unified Computing System (UCS) till Azure Sentinel
 
@@ -31,7 +31,7 @@ Den här artikeln beskriver hur du ansluter UCS-installationen (Cisco Unified Co
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
@@ -53,7 +53,7 @@ Konfigurera Cisco UCS för att vidarebefordra syslog-meddelanden till din Azure 
 
     1. Konfigurera loggarna som ska samlas in
 
-        - Välj funktionerna och allvarlighets graderna i konfigurationen för avancerade inställningar för arbets ytan
+        - Välj funktionerna och allvarlighets graderna i konfigurationen för arbets ytans agenter.
 
     1. Konfigurera och Anslut Cisco UCS
 

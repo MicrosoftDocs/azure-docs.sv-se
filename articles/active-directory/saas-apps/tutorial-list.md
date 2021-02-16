@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 154b9f526dd4df6aabaaf24687a534a28ed1a3a3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f231b50651764408a516f8e8e3275ea3c86bd388
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99253194"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530711"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Självstudier för att integrera SaaS-appar med Azure Active Directory
 
@@ -105,6 +105,7 @@ Använd innehålls förteckningen till vänster om du vill ha fler självstudier
 | ![logo typ – OneDesk](./media/tutorial-list/active-directory-saas-onedesk-tutorial.png)| [OneDesk](onedesk-tutorial.md)|
 | ![logo typ – OpsGenie](./media/tutorial-list/active-directory-saas-opsgenie-tutorial.png)| [OpsGenie](opsgenie-tutorial.md)|
 | ![logo typ – personer](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [People](people-tutorial.md)|
+| ![logo typ-perimeter 81](./media/tutorial-list/active-directory-saas-perimeter-81-tutorial.png)| [Perimeter 81](perimeter-81-tutorial.md)|
 | ![logo typ – productboard](./media/tutorial-list/active-directory-saas-productboard-tutorial.png)| [productboard](productboard-tutorial.md)|
 | ![logo typ – PurelyHR](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
 | ![logo typ – RingCentral](./media/tutorial-list/active-directory-saas-ringcentral-tutorial.png)| [RingCentral](ringcentral-tutorial.md)|

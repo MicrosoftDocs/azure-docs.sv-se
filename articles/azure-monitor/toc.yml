@@ -584,6 +584,8 @@
                   href: platform/itsmc-dashboard-errors.md
                 - name: Synka ITSM-anslutning
                   href: platform/itsmc-resync-servicenow.md
+                - name: Borttagning av koppling
+                  href: platform/itsmc-connector-deletion.md
             - name: Integrera med Secure Export
               items:
                 - name: Översikt

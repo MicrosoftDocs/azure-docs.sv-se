@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831574"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530747"
 ---
 # <a name="examine-the-video-indexer-output"></a>Granska Video Indexer utdata
 
@@ -104,7 +104,7 @@ I det här avsnittet visas en sammanfattning av insikterna.
 |ansikten/animatedCharacters|Kan innehålla noll eller flera ansikten. Mer detaljerad information finns i [ansikten/animatedCharacters](#facesanimatedcharacters).|
 |nyckelord|Kan innehålla noll eller flera nyckelord. Mer detaljerad information finns i [nyckelord](#keywords).|
 |sentiment|Kan innehålla noll eller flera sentiment. Mer detaljerad information finns i [sentiment](#sentiments).|
-|audioEffects| Kan innehålla noll eller flera audioEffects. Mer detaljerad information finns i [audioEffects](#audioeffects).|
+|audioEffects| Kan innehålla noll eller flera audioEffects. Mer detaljerad information finns i [audioEffects](#audioeffects-public-preview).|
 |Etiketter| Får innehålla noll eller flera etiketter. Mer information finns i [Etiketter](#labels).|
 |varumärken| Kan innehålla noll eller flera varumärken. Mer detaljerad information finns i [varumärken](#brands).|
 |uppgifterna | Mer detaljerad information finns i [statistik](#statistics).|
@@ -181,7 +181,7 @@ En ansikte kan ha ett ID, ett namn, en miniatyr bild, andra metadata och en list
 |Etiketter|[Etiketterna](#labels) insikter.|
 |bilder|[Bilderna](#shots) insikter.|
 |varumärken|Insikter om [varumärken](#brands) .|
-|audioEffects|[AudioEffects](#audioeffects) Insight.|
+|audioEffects|[AudioEffects](#audioeffects-public-preview) Insight.|
 |sentiment|[Sentiment](#sentiments) Insight.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) Insight.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) Insight.|
@@ -590,26 +590,28 @@ Företags-och produkt märkes namn identifieras i tal till text avskrift och/ell
 |SpeakerLongestMonolog|Föredragets längsta monolog. Om högtalaren har tystnad i monolog är den inkluderad. Tystnad i början och slutet av monolog tas bort.| 
 |SpeakerTalkToListenRatio|Beräkningen baseras på den tid som ägnats åt högtalar monolog (utan tystnad mellan) dividerat med videons totala tid. Tiden avrundas till det tredje decimal tecknet.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (offentlig för hands version)
 
-|Namn|Beskrivning|
+|Namn|Beskrivning
 |---|---|
-|id|Ljudets effekter-ID.|
-|typ|Ljud påverkans typen (till exempel Clapping, tal, tystnad).|
-|pipe|En lista med tidsintervaller där den här ljud påverkan visades.|
+|id|Ljudets effekter-ID|
+|typ|Typ av ljud påverkan|
+|pipe|En lista med tidsintervaller där den här ljud påverkan visades. Varje instans har ett konfidens fält.|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]

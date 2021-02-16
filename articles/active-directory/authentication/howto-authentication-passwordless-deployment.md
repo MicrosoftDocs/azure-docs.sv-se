@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a786907c5c954aa45de266b6d92dd47867a8445d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743623"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530356"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planera distribution av lösenordsskyddad autentisering i Azure Active Directory
 
@@ -150,7 +150,7 @@ Det finns tre typer av lösen ords skydds bara inloggnings distributioner som ä
 -    Azure Active Directory Web Apps i en webbläsare som stöds
 -    Azure Active Directory anslutna Windows 10-enheter
 -    Hybrid Azure Active Directory anslutna Windows 10-enheter (för hands version)
-     -    Ger åtkomst till både molnbaserade och lokala resurser. Mer information om åtkomst till lokala resurser finns i [SSO till lokala resurser med hjälp av FIDOP2-nycklar](./howto-authentication-passwordless-security-key-on-premises.md)
+     -    Ger åtkomst till både molnbaserade och lokala resurser. Mer information om åtkomst till lokala resurser finns i [SSO till lokala resurser med hjälp av FIDO2-nycklar](./howto-authentication-passwordless-security-key-on-premises.md)
 
 Du måste aktivera **kompatibla FIDO2 säkerhets nycklar**. Microsoft har lanserat [viktiga partnerskap med FIDO2 Key-leverantörer](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
 
@@ -292,11 +292,11 @@ Följ stegen som är anpassade till den valda metoden nedan.
 
 ### <a name="required-administrative-roles"></a>Administrativa roller som krävs
 
-| Azure AD-roll | Description |
+| Azure AD-roll | Beskrivning |
 | --- | --- |
 | Global administratör|Minst privilegie rad roll kan implementera kombinerad registrerings upplevelse. |
 | Administratör för autentisering | Minst privilegie rad roll kan implementera och hantera autentiseringsmetoder. |
-| Användare | Minst privilegie rad roll för att konfigurera Authenticator-appen på enheten eller för att registrera säkerhets nyckel enhet för webb-eller Windows 10-inloggning. |
+| User | Minst privilegie rad roll för att konfigurera Authenticator-appen på enheten eller för att registrera säkerhets nyckel enhet för webb-eller Windows 10-inloggning. |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Distribuera telefonin loggning med Microsoft Authenticator-appen
 

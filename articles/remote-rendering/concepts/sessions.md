@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79f3f93338d15562dcc37857d63bc8b2d7e96b05
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593713"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530560"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessioner
 
@@ -39,9 +39,9 @@ Varje session genomgår flera faser.
 
 ### <a name="session-startup"></a>Starta session
 
-När du ställer in ARR för att [skapa en ny session](../how-tos/session-rest-api.md#create-a-session)är det första alternativet att returnera ett [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)för session. Detta UUID gör att du kan fråga efter information om sessionen. UUID och grundläggande information om sessionen är bestående i 30 dagar, så du kan fråga informationen även efter att sessionen har stoppats. I det här läget rapporteras **sessionstillståndet** som att **Starta**.
+När du ställer in ARR för att [skapa en ny session](../how-tos/session-rest-api.md)är det första alternativet att returnera ett [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)för session. Detta UUID gör att du kan fråga efter information om sessionen. UUID och grundläggande information om sessionen är bestående i 30 dagar, så du kan fråga informationen även efter att sessionen har stoppats. I det här läget rapporteras **sessionstillståndet** som att **Starta**.
 
-Sedan försöker Azure Remote rendering hitta en server som kan vara värd för din session. Det finns två parametrar för den här sökningen. Först kommer den bara att reservera servrar i din [region](../reference/regions.md). Det beror på att nätverks fördröjningen i flera regioner kan vara för hög för att garantera en vettigt upplevelse. Den andra faktorn är den önskade *storlek* som du har angett. I varje region finns ett begränsat antal servrar som kan uppfylla [*standard*](../reference/vm-sizes.md) -eller [*Premium*](../reference/vm-sizes.md) storleks förfrågan. Om alla servrar med den begärda storleken för närvarande används i din region kommer det därför inte att skapas någon session. Orsaken till att ett problem [kan frågas](../how-tos/session-rest-api.md#get-sessions-properties).
+Sedan försöker Azure Remote rendering hitta en server som kan vara värd för din session. Det finns två parametrar för den här sökningen. Först kommer den bara att reservera servrar i din [region](../reference/regions.md). Det beror på att nätverks fördröjningen i flera regioner kan vara för hög för att garantera en vettigt upplevelse. Den andra faktorn är den önskade *storlek* som du har angett. I varje region finns ett begränsat antal servrar som kan uppfylla [*standard*](../reference/vm-sizes.md) -eller [*Premium*](../reference/vm-sizes.md) storleks förfrågan. Om alla servrar med den begärda storleken för närvarande används i din region kommer det därför inte att skapas någon session. Orsaken till att ett problem [kan frågas](../how-tos/session-rest-api.md).
 
 > [!IMPORTANT]
 > Om du begär en *standard* Server storlek och begäran Miss lyckas på grund av hög efter frågan, vilket inte innebär att det inte går att begära en *Premium* -Server. Så om det är ett alternativ åt dig kan du prova att gå tillbaka till en *Premium* Server-storlek.
@@ -77,7 +77,7 @@ I samtliga fall faktureras du inte ytterligare när en session har stoppats.
 
 #### <a name="extend-a-sessions-lease-time"></a>Utöka en sessions låne tid
 
-Du kan [utöka låne tiden](../how-tos/session-rest-api.md#modify-and-query-session-properties) för en aktiv session, om den visar att du behöver den längre.
+Du kan [utöka låne tiden](../how-tos/session-rest-api.md) för en aktiv session, om den visar att du behöver den längre.
 
 ## <a name="example-code"></a>Exempelkod
 

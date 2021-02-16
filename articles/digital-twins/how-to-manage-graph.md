@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526791"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530458"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
@@ -49,11 +49,11 @@ Om du vill skapa en relation måste du ange:
 Relations-ID: t måste vara unikt inom den aktuella källan. Det behöver inte vara globalt unikt.
 Till exempel måste varje ID för en speciell relation vara unikt för den dubbla *foo*. En annan rad dubbla *staplar* kan dock ha en utgående relation som matchar samma ID för en *foo* -relation.
 
-Följande kod exempel illustrerar hur du skapar en relation i din Azure Digital-instansen.
+Följande kod exempel illustrerar hur du skapar en relation i din Azure Digital-instansen. SDK-anropet (markerat) används i en anpassad metod som kan visas i ett större programs kontext.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-I din huvud metod kan du nu anropa den anpassade funktionen för att skapa en _contains_ -relation så här: 
+Den här anpassade funktionen kan nu anropas för att skapa en _contains_ -relation så här: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,9 +82,9 @@ Om du vill få åtkomst till listan över **utgående** relationer för en speci
 
 Detta returnerar en `Azure.Pageable<T>` eller `Azure.AsyncPageable<T>` , beroende på om du använder en synkron eller asynkron version av anropet.
 
-Här är ett exempel som hämtar en lista med relationer:
+Här är ett exempel som hämtar en lista med relationer. SDK-anropet (markerat) används i en anpassad metod som kan visas i ett större programs kontext.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
 Nu kan du anropa den här anpassade metoden för att se de utgående relationerna för de dubblarna så här:
 
@@ -96,11 +96,12 @@ Du kan använda de hämtade relationerna för att navigera till andra dubbla i g
 
 Azure Digitals dubbla är också ett API för att hitta alla **inkommande** relationer till en specifik kontakt. Detta är ofta användbart för omvänd navigering, eller när du tar bort en dubbel.
 
-Föregående kod exempel fokuserade på att hitta utgående relationer från en dubbel. Följande exempel är strukturerat på samma sätt, men hittar *inkommande* relationer till den dubbla i stället.
+>[!NOTE]
+> `IncomingRelationship` anrop returnerar inte hela bröd texten i relationen. Mer information om `IncomingRelationship` klassen finns i [referens dokumentationen](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true).
 
-Observera att `IncomingRelationship` anropen inte returnerar hela bröd texten i relationen.
+Kod exemplet i föregående avsnitt fokuserade på att söka efter utgående relationer från en dubbel. Följande exempel är strukturerat på samma sätt, men hittar *inkommande* relationer till den dubbla i stället. I det här exemplet används även SDK-anropet (markerat) i en anpassad metod som kan visas i ett större programs kontext.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
 Nu kan du anropa den här anpassade metoden för att se de ingående relationerna för de dubblarna så här:
 
@@ -108,11 +109,11 @@ Nu kan du anropa den här anpassade metoden för att se de ingående relationern
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Lista alla dubbla egenskaper och relationer
 
-Med hjälp av ovanstående metoder för att visa utgående och inkommande relationer till en dubbel, kan du skapa en metod som skriver ut fullständig dubbel information, inklusive de dubbla egenskaperna och båda typerna av dess relationer. Här är ett exempel på en anpassad metod som visar hur du gör detta.
+Med hjälp av ovanstående metoder för att visa utgående och inkommande relationer till en dubbel, kan du skapa en metod som skriver ut fullständig dubbel information, inklusive de dubbla egenskaperna och båda typerna av dess relationer. Här är ett exempel på en anpassad metod som visar hur du kombinerar ovanstående metoder för det här ändamålet.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Nu kan du anropa den här anpassade funktionen i huvud metoden, så här: 
+Nu kan du anropa den här anpassade funktionen så här: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -125,7 +126,9 @@ Relationerna uppdateras med hjälp av- `UpdateRelationship` metoden.
 
 De parametrar som krävs för klient anropet är ID: t för den dubbla källan (den dubbla där relationen härstammar), ID: t för den relation som ska uppdateras och ett [JSON-patch](http://jsonpatch.com/) -dokument som innehåller de egenskaper och nya värden som du vill uppdatera.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+Här är exempel kod som visar hur du använder den här metoden. I det här exemplet används SDK-anropet (markerat) i en anpassad metod som kan visas i ett större programs kontext.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
 Här är ett exempel på ett anrop till den här anpassade metoden, genom att skicka ett JSON-dokument med information för att uppdatera en egenskap.
 
@@ -135,7 +138,9 @@ Här är ett exempel på ett anrop till den här anpassade metoden, genom att sk
 
 Den första parametern anger den dubbla källan (den dubbla där relationen kommer). Den andra parametern är relations-ID. Du behöver både det dubbla ID: t och relations-ID: t eftersom relations-ID: n endast är unika inom omfånget för en dubbel.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+Här är exempel kod som visar hur du använder den här metoden. I det här exemplet används SDK-anropet (markerat) i en anpassad metod som kan visas i ett större programs kontext.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
 
 Nu kan du anropa den här anpassade metoden för att ta bort en relation så här:
 

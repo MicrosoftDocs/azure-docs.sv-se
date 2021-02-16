@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0583846fcd847e92a6f001dae828d31d9d11cb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567984"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530645"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>Anslut din Juniper SRX-brandvägg till Azure Sentinel
 
@@ -31,7 +31,7 @@ Den här artikeln förklarar hur du ansluter din Juniper SRX-brandvägg till Azu
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
@@ -53,7 +53,7 @@ Konfigurera Juniper-SRX för att vidarebefordra syslog-meddelanden till din Azur
 
     1. Konfigurera loggarna som ska samlas in
 
-        - Välj funktionerna och allvarlighets graderna i konfigurationen för avancerade inställningar för arbets ytan
+        - Välj funktionerna och allvarlighets graderna i konfigurationen för arbets ytans agenter.
 
     1. Konfigurera och Anslut Juniper-SRX
 

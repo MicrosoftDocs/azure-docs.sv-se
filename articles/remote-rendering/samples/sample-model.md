@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6817601659c841ca98031f4e3e1590743bbed171
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507543"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530543"
 ---
 # <a name="sample-models"></a>Exempelmodeller
 
@@ -24,9 +24,9 @@ Vi tillhandahåller en inbyggd exempel modell som alltid kan läsas in med URL- 
 
 Modell statistik:
 
-| Name | Värde |
+| Namn | Värde |
 |-----------|:-----------|
-| [Nödvändig Server storlek](../how-tos/session-rest-api.md#create-a-session) | standard |
+| [Nödvändig Server storlek](../reference/vm-sizes.md) | standard |
 | Antal trianglar | 18 700 000 |
 | Antal rörliga delar | 2073 |
 | Antal material | 94 |
@@ -40,4 +40,4 @@ Khronos-gruppen har en uppsättning glTF-exempel modeller för testning. ARR st�
 ## <a name="next-steps"></a>Nästa steg
 
 * [Snabb start: rendera en modell med Unity](../quickstarts/render-model.md)
-* [Snabb start: konvertera en modell för åter givning](../quickstarts/convert-model.md)
+* [Snabbstart: Konvertera en modell för rendering](../quickstarts/convert-model.md)

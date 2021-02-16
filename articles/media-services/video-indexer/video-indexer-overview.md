@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 02/05/2021
 ms.author: juliako
-ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98783809"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530237"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Vad är Azure Media Services Video Indexer?
 
@@ -84,7 +84,7 @@ I följande lista visas de insikter som du kan hämta från dina videor med Vide
 * **Uppräkning av högtalare**: Maps och förstår vilken talare som är eker för ord och när. Sexton högtalare kan identifieras i en enda ljudfil.
 * **Högtalar statistik**: tillhandahåller statistik för talares tal förhållande.
 * **Moderering av textinnehåll**: Identifierar stötande text i ljudavskriften.
-* **Ljud effekter**: identifierar ljud effekter som hand claps, tal och tystnad.
+* **Ljud effekter** (offentlig för hands version): identifierar följande ljud effekter i de icke-tal segmenten i innehållet: Gunshot, glas splittra, alarm, siren, explosion, hund bark, stycke, Laughter, överlappande reaktioner (glädje, Clapping och booing) och tystnad. OBS! den fullständiga uppsättningen händelser är bara tillgänglig när du väljer avancerad ljud analys i uppladdnings förvalet, annars blir endast "tystnad" och "full reaktion" tillgängliga.
 * **Känslo-identifiering**: identifierar känslor baserat på tal (vad som sägs) och röst ton (hur det är det). Känslo kan vara glädje, ledsenhet, ilska eller frukt.
 * **Översättning**: Skapar översättningar av ljudavskriften till 54 olika språk.
 

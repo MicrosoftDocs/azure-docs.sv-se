@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103131"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530509"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>Ansluta CyberArk Enterprise Password Vault (EPV) till Azure Sentinel
 
@@ -36,9 +36,9 @@ Med CyberArk syslog-anslutningsprogrammet kan du enkelt ansluta alla dina CyberA
 
 CyberArk EPV-loggar skickas från valvet till en Linux-baserad logg vidarebefordrande server (som kör rsyslog eller syslog-ng) med Log Analytics-agenten installerad, som exporterar loggarna till Azure Sentinel. Om du inte har en sådan logg vidarebefordrande server kan du läsa [de här anvisningarna](connect-cef-agent.md) för att skapa en igång.
 
-1. I Azure Sentinel-portalen klickar du på **data kopplingar** , väljer **CyberArk Enterprise Password Vault (EPV) Events (för hands version)** och **öppnar sedan kopplings sidan** .
+1. I Azure Sentinel-portalen klickar du på **data kopplingar**, väljer **CyberArk Enterprise Password Vault (EPV) Events (för hands version)** och **öppnar sedan kopplings sidan**.
 
-1. Följ CyberArk EPV-instruktionerna för att konfigurera att skicka syslog-data till servern för logg vidarebefordran.
+1. Följ [CYBERARK EPV-instruktionerna](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm) för att konfigurera att skicka syslog-data till servern för logg vidarebefordran.
 
 1. Verifiera anslutningen och kontrol lera data inmatningen med hjälp av [de här anvisningarna](connect-cef-verify.md). Det kan ta upp till 20 minuter innan loggarna börjar visas i Log Analytics.
 

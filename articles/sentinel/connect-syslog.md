@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807911"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530526"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Samla in data från Linux-baserade källor med syslog
 
@@ -67,17 +67,17 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurera Log Analytics agent
 
-1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfiguration av avancerade inställningar >på arbets ytan** .
+1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfigurationen för arbets ytans agenter >** .
 
-1. På bladet **Avancerade inställningar** väljer du **data**  >  **syslog**. Lägg sedan till de anläggningar som ska samlas in av kopplingen.
+1. På bladet **agent konfiguration** väljer du fliken **syslog** . Lägg sedan till de anläggningar som ska samlas in av kopplingen. Välj **Lägg till anläggning** och välj i den nedrullningsbara listan över anläggningar.
     
     - Lägg till de anläggningar som syslog-apparaten innehåller i sina logg rubriker. 
     
     - Om du vill använda avvikande identifiering av SSH-inloggning med de data som du samlar in lägger du till **auth** och **authpriv**. Mer information finns i [följande avsnitt](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) .
 
-1. När du har lagt till alla funktioner som du vill övervaka och justerat eventuella allvarlighets grad alternativ för var och en, markerar du kryss rutan **Använd konfigurationen nedan för mina datorer**.
+1. När du har lagt till alla anläggningar som du vill övervaka kontrollerar du att kryss rutorna för alla önskade allvarlighets grader är markerade.
 
-1. Välj **Spara**. 
+1. Välj **Använd**. 
 
 1. Kontrol lera att du skickar de anläggningar som du har angett på din virtuella dator eller enhet.
 
@@ -88,7 +88,6 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 > [!NOTE]
 > **Använda samma dator för att vidarebefordra både vanliga syslog- *och* CEF-meddelanden**
 >
->
 > Du kan använda din befintliga [CEF log forwarder-dator](connect-cef-agent.md) för att samla in och vidarebefordra loggar från även vanliga syslog-källor. Du måste dock utföra följande steg för att undvika att skicka händelser i båda formaten till Azure Sentinel, eftersom det leder till duplicering av händelser.
 >
 >    Har redan konfigurerat [data insamling från dina CEF-källor](connect-common-event-format.md)och har konfigurerat Log Analytics-agenten enligt ovan:
@@ -97,7 +96,6 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 >
 > 1. Du måste köra följande kommando på de datorerna för att inaktivera synkroniseringen av agenten med syslog-konfigurationen i Azure Sentinel. Detta säkerställer att konfigurations ändringen du gjorde i föregående steg inte blir överskriven.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
-
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>Konfigurera syslog-anslutningen för identifiering av avvikande SSH-inloggning
 
@@ -113,10 +111,7 @@ Azure Sentinel kan använda Machine Learning (ML) till syslog-data för att iden
  
 Den här identifieringen kräver en speciell konfiguration av syslog-datakopplingen: 
 
-1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Exempel:
-    
-    > [!div class="mx-imgBorder"]
-    > ![Anläggningar som krävs för identifiering av avvikande SSH-inloggning](./media/connect-syslog/facilities-ssh-detection.png)
+1. För steg 2 under [konfigurera Log Analytics agenten](#configure-the-log-analytics-agent) ovan, se till att både **auth** -och **authpriv** är markerade som anläggningar för övervakning och att alla allvarlighets grader är markerade. 
 
 2. Tillåt att syslog-informationen samlas in tillräckligt med tid. Gå sedan till **Azure Sentinel-logs** och kopiera och klistra in följande fråga:
     
