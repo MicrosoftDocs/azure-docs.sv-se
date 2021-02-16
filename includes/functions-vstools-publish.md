@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e4231f5c4e947f29a72e581cf461ff737c1a0c82
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956569"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529723"
 ---
-1. I **Solution Explorer** högerklickar du på projektet och väljer **Publicera**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **publicera** och i **mål** väljer du **Azure** och sedan **Nästa**.
 
-1. I **mål** väljer du **Azure** :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-1.png" alt-text="Välj Azure-mål":::
+1. För det **specifika målet** väljer du **Azure Funktionsapp (Windows)**, som skapar en Function-app som körs i Windows.
 
-1. I ett **särskilt mål** väljer du **Azure Funktionsapp (Windows)**
+1. I **funktions instans** väljer du **skapa en ny Azure-funktion...** 
 
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-2.png" alt-text="Välj Azure-Funktionsapp":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-new-resource.png" alt-text="Skapa en ny function-serverinstans":::
 
-1. I **funktions instans** väljer du **skapa en ny Azure function...** och använder sedan de värden som anges i följande tabell:
+1. Skapa en ny instans med de värden som anges i följande tabell:
 
     | Inställning      | Värde  | Beskrivning                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,8 +36,9 @@ ms.locfileid: "97956569"
 
     ![Dialogrutan Skapa App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-1. Välj **skapa** för att skapa en Function-app och dess relaterade resurser i Azure. 
-1. I **Functions-instansen** kontrollerar du att **Kör från paket filen** är markerat. Din Function-app distribueras med hjälp av [zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) med läget [Kör-från-Package](../articles/azure-functions/run-functions-from-deployment-package.md) aktiverat. Detta är den rekommenderade distributions metoden för ditt Functions-projekt, eftersom den resulterar i bättre prestanda. 
+1. Välj **skapa** för att skapa en Function-app och dess relaterade resurser i Azure. Status för att skapa resurser visas längst ned till vänster i fönstret. 
+
+1. Tillbaka i **Functions-instansen**, kontrol lera att **Kör från paket filen** är markerat. Din Function-app distribueras med hjälp av [zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) med läget [Kör-från-Package](../articles/azure-functions/run-functions-from-deployment-package.md) aktiverat. Detta är den rekommenderade distributions metoden för ditt Functions-projekt, eftersom den resulterar i bättre prestanda. 
 
     :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Slutför skapande av profil":::
 

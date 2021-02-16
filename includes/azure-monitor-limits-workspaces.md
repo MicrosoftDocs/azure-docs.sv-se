@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1f461c4870b398a49387472c49d45b90929405c7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356218"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100529719"
 ---
 **Data insamlings volym och kvarhållning** 
 
@@ -56,13 +56,19 @@ ms.locfileid: "96356218"
 | Maximal kör tid för fråga | 10 minuter | Se [timeout](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) för mer information.  |
 | Högsta begär ande frekvens | 200 förfrågningar per 30 sekunder per Azure AD-användare eller klient-IP-adress | Mer information finns i avsnittet om [hastighets begränsningar](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
+**Anslutningsprogram för Azure Monitor-loggar**
+| Kategori | Gräns | Kommentarer |
+|:---|:---|:---|
+| Högsta antal poster | 500 000 | |
+| Maximal tids gräns för fråga | 110 sekund | |
+| Diagram | | Visualiseringen på sidan loggar och kopplingen använder olika diagram bibliotek och vissa funktioner är inte tillgängliga i anslutningen för tillfället. |
+
 **Gränser för allmän arbets yta**
 
 | Kategori | Gräns | Kommentarer |
 |:---|:---|:---|
 | Maximalt antal kolumner i en tabell         | 500 | |
 | Maximalt antal tecken för kolumn namn | 500 | |
-| Dataexport | Inte tillgänglig för närvarande | Använd Azure Function eller Logic app för att aggregera och exportera data. | 
 
 **<a name="data-ingestion-volume-rate">Volym pris för data inmatning</a>**
 
