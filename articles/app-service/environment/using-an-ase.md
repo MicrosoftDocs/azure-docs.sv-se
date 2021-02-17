@@ -4,15 +4,15 @@ description: Lär dig hur du skapar, publicerar och skalar appar i en App Servic
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 5/10/2020
+ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4653419d974db2e597111487c64682c75ffc40b
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: e8cc42500b9d8bfc507683b5cc96c7b12f95909b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826005"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548462"
 ---
 # <a name="use-an-app-service-environment"></a>Använd App Service Environment
 
@@ -161,7 +161,7 @@ Utan ytterligare ändringar fungerar inte Internet-baserade CI-system som GitHub
 
 Publiceringsslutpunkterna för appar i en ILB ASE använder domänen som ILB ASE skapades med. Du kan se den i appens publicerings profil och i appens Portal fönster (i **översikts** information  >   och i **Egenskaper**).
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 
 En ASE har 1 TB lagrings utrymme för alla appar i ASE. En App Service plan i den isolerade pris-SKU: n har en gräns på 250 GB. I en ASE läggs 250 GB lagrings utrymme per App Service plan upp till 1 TB-gränsen. Du kan ha fler App Services planer än bara fyra, men det finns ingen mer lagrings utrymme utöver gränsen på 1 TB.
 

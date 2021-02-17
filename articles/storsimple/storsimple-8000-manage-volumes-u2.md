@@ -4,14 +4,14 @@ description: Förklarar hur du lägger till, ändrar, övervakar och tar bort St
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 12/08/2017
+ms.date: 12/09/2017
 ms.author: alkohli
-ms.openlocfilehash: a8fcadb8bdd4862dd95625228e3c190e5fe19a9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961688"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547638"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Använda tjänsten StorSimple Enhetshanteraren för att hantera volymer (uppdatering 3 eller senare)
 
@@ -57,14 +57,14 @@ Se följande tabell för den högsta etablerade kapaciteten för varje enhet och
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuella enheter** | | |
-| 8010 |30 TB |Saknas |
-| 8020 |64 TB |Saknas |
+| 8010 |30 TB |Ej tillämpligt |
+| 8020 |64 TB |Ej tillämpligt |
 
 ## <a name="the-volumes-blade"></a>Bladet volymer
 
 Med bladet **volymer** kan du hantera lagrings volymer som är etablerade på Microsoft Azure StorSimple enhet för dina initierare (servrar). Den visar listan över volymer på de StorSimple-enheter som är anslutna till din tjänst.
 
- ![Sidan volymer](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
+ ![Sidan volymer](./media/storsimple-8000-manage-volumes-u2/volumes-list.png)
 
 En volym består av en serie attribut:
 
@@ -90,7 +90,7 @@ Du har [skapat en volym](storsimple-8000-deployment-walkthrough-u2.md#step-6-cre
 
 1. Välj din enhet i tabellistan med enheter på bladet **Enheter**. Klicka på **+ Lägg till volymen**.
 
-    ![Lägg till en ny volym](./media/storsimple-8000-manage-volumes-u2/step5createvol1.png)
+    ![Lägg till en ny volym](./media/storsimple-8000-manage-volumes-u2/add-volume-01.png)
 
 2. På bladet **Lägg till en volym**:
    
@@ -112,11 +112,13 @@ Du har [skapat en volym](storsimple-8000-deployment-walkthrough-u2.md#step-6-cre
       
        Om du etablerar en lokalt fäst volym på 8,5 TB (största tillåtna storleken) på din 8100-enhet har du använt upp allt lokalt tillgängligt utrymme för enheten. I så fall kan du inte skapa fler nivåindelade volymer eftersom det inte finns något lokalt utrymme ledigt på enheten för att lagra arbetsuppsättningen för den nivåindelade volymen. Befintliga nivåindelade volymer påverkar också tillgängligt utrymme. Om du exempelvis har en 8100-enhet som redan har nivåindelade volymer på 106 TB finns det bara 4 TB utrymme tillgängligt för lokalt fästa volymer.
 
-    6. Klicka på pilen i fältet **Anslutna värdar**. På bladet **anslutna värdar** väljer du en befintlig ACR eller lägger till en ny ACR. Om du väljer en ny ACR anger du ett **namn** för din ACR, anger iSCSI- **kvalificerat namn** (IQN) för Windows-värden. Om du inte har en IQN, går du till Hämta IQN för en Windows Server-värd. Klicka på **Skapa**. En volym skapas med de angivna inställningarna.
+    6. I fältet **anslutna värdar** klickar du på pilen och väljer sedan de ACR som du vill ansluta. På bladet **anslutna värdar** väljer du en befintlig ACR eller lägger till en ny ACR. Om du väljer en ny ACR anger du ett **namn** för din ACR, anger iSCSI- **kvalificerat namn** (IQN) för Windows-värden. Om du inte har en IQN, går du till Hämta IQN för en Windows Server-värd.<!--Please verify: Is new ACR capability still available? Are the labels and controls the same?--> 
 
-        ![Klicka på Skapa](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
+        ![Lägg till en ansluten värd](./media/storsimple-8000-manage-volumes-u2/add-volume-02.png)<!--New graphic. Source: add-volume-connected host-->
 
-Din nya volym är nu redo att användas.
+   7. När du är klar med inställningarna klickar du på **skapa**. 
+
+      En volym skapas med de angivna inställningarna. Din nya volym är redo att användas.
 
 > [!NOTE]
 > Om du skapar en lokalt fixerad volym och sedan skapar en ny lokalt fixerad volym omedelbart, körs volymens skapande jobb i tur och ordning. Det första jobbet för att skapa volymen måste slutföras innan nästa volym skapande jobb kan påbörjas.
@@ -133,19 +135,19 @@ Din nya volym är nu redo att användas.
 
 1. Gå till StorSimple Device Manager-tjänsten och klicka sedan på **Enheter**. Välj den enhet som har den volym som du vill ändra i list rutan för enheterna. Klicka på **inställningar > volymer**.
 
-    ![Gå till bladet volymer](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Gå till bladet volymer](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
 2. Välj volymen i tabell listan över volymer och högerklicka för att anropa snabb menyn. Välj **ta offline** för att ta den volym som du vill ändra offline.
 
-    ![Välj och koppla från volymen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Välj och koppla från volymen](./media/storsimple-8000-manage-volumes-u2/modify-volume-04.png)
 
 3. I bladet **ta offline** granskar du effekten av att ta volymen offline och markera motsvarande kryss ruta. Se till att motsvarande volym på värden är offline först. Information om hur du kopplar från en volym på värd servern som är ansluten till StorSimple finns i avsnittet om vilka operativ system som är detaljerade. Klicka på **Koppla från**.
 
-    ![Granska effekten av att ta volymen offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Granska effekten av att ta volymen offline](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)
 
 4. När volymen är offline (som visas i volym status) markerar du volymen och högerklickar för att anropa snabb menyn. Välj **ändra volym**.
 
-    ![Välj Ändra volym](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![Välj Ändra volym](./media/storsimple-8000-manage-volumes-u2/modify-volume-09.png)
 
 
 5. På bladet **ändra volym** kan du göra följande ändringar:
@@ -153,13 +155,13 @@ Din nya volym är nu redo att användas.
    1. Det går inte att redigera volym **namnet** .
    2. Konvertera **typen** från lokalt fäst till skiktad eller från nivå till lokalt fast (se [ändra volym typ](#change-the-volume-type) för mer information).
    3. Öka den **tillhandahållna kapaciteten**. Den **tillhandahållna kapaciteten** kan bara ökas. Det går inte att krympa en volym när den har skapats.
-   4. Under **anslutna värdar**kan du ändra ACR. Om du vill ändra en ACR måste volymen vara offline.
+   4. Under **anslutna värdar** kan du ändra ACR. Om du vill ändra en ACR måste volymen vara offline.
 
-       ![Granska effekten av att ta volymen offline 2](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Granska effekten av att ta volymen offline 2](./media/storsimple-8000-manage-volumes-u2/modify-volume-11.png)<!--Legacy screen doesn't match step. New graphic needed?-->
 
-5. Klicka på **Spara** för att spara dina ändringar. Klicka på **Ja** när du uppmanas att bekräfta åtgärden. I Azure Portal visas ett uppdaterings volym meddelande. Ett meddelande visas när volymen har uppdaterats.
+6. Klicka på **Spara** för att spara dina ändringar. Klicka på **Ja** när du uppmanas att bekräfta åtgärden. I Azure Portal visas ett uppdaterings volym meddelande. Ett meddelande visas när volymen har uppdaterats.
 
-    ![Granska effekten av att ta volymen offline 3](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Granska effekten av att ta volymen offline 3](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)<!--Updated graphic. Source: modify-volume-save-->
 
 7. Om du expanderar en volym utför du följande steg på Windows-värddatorn:
    
@@ -215,27 +217,27 @@ Du kanske vill ändra en lokalt fäst volym till en nivå volym om du behöver y
 
 1. Gå till StorSimple Device Manager-tjänsten och klicka sedan på **Enheter**. Välj den enhet som har den volym som du vill ändra i list rutan för enheterna. Klicka på **inställningar > volymer**.
 
-    ![Gå till volymer blad 2](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Gå till volymer blad 2](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
 3. Välj volymen i tabell listan över volymer och högerklicka för att anropa snabb menyn. Välj **ändra**.
 
-    ![Välj Ändra från snabb menyn](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![Välj Ändra från snabb menyn](./media/storsimple-8000-manage-volumes-u2/change-volume-type-02.png)
 
 4. På bladet **ändra volym** ändrar du volym typen genom att välja den nya typen i list rutan **typ** .
    
-   * Om du ändrar typen till **lokalt fäst**kommer StorSimple att kontrol lera om det finns tillräckligt med kapacitet.
+   * Om du ändrar typen till **lokalt fäst** kommer StorSimple att kontrol lera om det finns tillräckligt med kapacitet.
    * Om du ändrar typen till **skiktad** och volymen kommer att användas för arkivering av data, markerar du kryss rutan **Använd den här volymen för lagrings data som används mindre ofta** .
-   * Om du konfigurerar en lokalt fixerad volym som en nivå eller _vice versa_visas följande meddelande.
+   * Om du konfigurerar en lokalt fixerad volym som en nivå eller _vice versa_ visas följande meddelande.
    
-     ![Ändra volym typ meddelande](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Ändra volym typ meddelande](./media/storsimple-8000-manage-volumes-u2/change-volume-type-03.png)
 
 7. Klicka på **Spara** för att spara ändringarna. När du uppmanas att bekräfta klickar du på **Ja** för att starta konverterings processen. 
 
-    ![Spara och bekräfta](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+    ![Spara och bekräfta](./media/storsimple-8000-manage-volumes-u2/modify-volume-11.png)
 
 8. I Azure Portal visas ett meddelande om hur jobbet skapas som uppdaterar volymen. Klicka på meddelandet för att övervaka status för volym konverterings jobbet.
 
-    ![Jobb för volym konvertering](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Jobb för volym konvertering](./media/storsimple-8000-manage-volumes-u2/change-volume-type-05.png)
 
 ## <a name="take-a-volume-offline"></a>Koppla från en volym
 
@@ -249,15 +251,15 @@ Du kan behöva koppla från en volym när du planerar att ändra eller ta bort v
    
     1. Gå till StorSimple Device Manager-tjänsten och klicka sedan på **Enheter**. Välj den enhet som har den volym som du vill ändra i list rutan för enheterna. Klicka på **inställningar > volymer**.
 
-        ![Gå till volymer blad 3](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+        ![Gå till volymer blad 3](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
     2. Välj volymen i tabell listan över volymer och högerklicka för att anropa snabb menyn. Välj **ta offline** för att ta den volym som du vill ändra offline.
 
-        ![Välj och koppla från volymen](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Välj och koppla från volymen](./media/storsimple-8000-manage-volumes-u2/modify-volume-04.png)
 
 3. I bladet **ta offline** granskar du effekten av att ta volymen offline och markera motsvarande kryss ruta. Klicka på **Koppla från**. 
 
-    ![Granska effekten av att ta volymen offline 4](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Granska effekten av att ta volymen offline 4](./media/storsimple-8000-manage-volumes-u2/modify-volume-05.png)
       
       Du får ett meddelande när volymen är offline. Volym statusen uppdateras också till offline.
       
@@ -277,20 +279,20 @@ Utför följande steg för att ta bort en volym.
 
 1. Gå till StorSimple Device Manager-tjänsten och klicka sedan på **Enheter**. Välj den enhet som har den volym som du vill ändra i list rutan för enheterna. Klicka på **inställningar > volymer**.
 
-    ![Gå till volym blad 4](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
+    ![Gå till volym blad 4](./media/storsimple-8000-manage-volumes-u2/modify-volume-02.png)
 
 3. Kontrol lera status för den volym som du vill ta bort. Om volymen som du vill ta bort inte är offline tar du den offline först. Följ stegen i koppla från [en volym](#take-a-volume-offline).
 4. När volymen är offline väljer du volymen, högerklickar för att anropa snabb menyn och väljer sedan **ta bort**.
 
-    ![Välj Ta bort från snabb menyn](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Välj Ta bort från snabb menyn](./media/storsimple-8000-manage-volumes-u2/delete-volume-01.png)
 
 5. I bladet **ta bort** granskar och markerar du kryss rutan mot effekten av att ta bort en volym. När du tar bort en volym försvinner alla data som finns på volymen. 
 
-    ![Spara och bekräfta ändringar](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
+    ![Spara och bekräfta ändringar](./media/storsimple-8000-manage-volumes-u2/delete-volume-02.png)
 
 6. När volymen har tagits bort, uppdateras tabell listan över volymer för att indikera borttagningen.
 
-    ![Uppdaterad volym lista](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
+    ![Uppdaterad volym lista](./media/storsimple-8000-manage-volumes-u2/delete-volume-03.png)
    
    > [!NOTE]
    > Om du tar bort en lokalt fäst volym kanske det tillgängliga utrymmet för nya volymer inte uppdateras omedelbart. StorSimple-Enhetshanteraren tjänsten uppdaterar det lokala utrymmet som är tillgängligt regelbundet. Vi rekommenderar att du väntar några minuter innan du försöker skapa den nya volymen.
@@ -313,7 +315,7 @@ Utför följande steg för att aktivera eller inaktivera övervakning av en voly
 2. Välj volymen i tabell listan över volymer och högerklicka för att anropa snabb menyn. Välj **ändra**.
 3. I bladet **ändra volym** för **övervakning** väljer du **Aktivera** eller **inaktivera** för att aktivera eller inaktivera övervakning.
 
-    ![Inaktivera övervakning](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
+    ! [Inaktivera övervakning] (./Media/StorSimple-8000-Manage-Volumes-U2/Monitor-Volume-0 1.png) 
 
 4. Klicka på **Spara** och bekräfta genom att klicka på **Ja**. I Azure Portal visas ett meddelande om att uppdatera volymen och sedan ett meddelande om att det lyckades efter att volymen har uppdaterats.
 

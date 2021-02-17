@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 54aca389ea56594b004212c1479d5cc2568a2527
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327339"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560891"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Självstudie: Konfigurera skydds och ansluta till en virtuell Windows-dator via en webbläsare
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett virtuellt nätverk.
 * En virtuell Windows-dator i det virtuella nätverket.
@@ -47,7 +47,7 @@ Logga in på [Azure-portalen](https://portal.azure.com).
 Det här avsnittet hjälper dig att skapa skydds-objektet i ditt VNet. Detta krävs för att skapa en säker anslutning till en virtuell dator i det virtuella nätverket.
 
 1. På **Start** sidan väljer du **+ skapa en resurs**.
-1. På sidan **ny** i rutan Sök skriver du **skydds**och väljer sedan **RETUR** för att komma till Sök resultaten. På resultatet för **skydds**kontrollerar du att utgivaren är Microsoft.
+1. På sidan **ny** i rutan Sök skriver du **skydds** och väljer sedan **RETUR** för att komma till Sök resultaten. På resultatet för **skydds** kontrollerar du att utgivaren är Microsoft.
 1. Välj **Skapa**.
 1. På sidan **skapa en skydds** konfigurerar du en ny skydds-resurs.
 
@@ -64,7 +64,7 @@ Det här avsnittet hjälper dig att skapa skydds-objektet i ditt VNet. Detta kr�
          * Under nätet måste vara minst/27 eller större.
 
       Du behöver inte fylla i ytterligare fält. Välj **OK** och välj sedan **skapa en skydds** längst upp på sidan och gå tillbaka till konfigurations sidan för skydds.
-    * **Offentlig IP-adress**: den offentliga IP-adressen för den skydds-resurs som RDP/SSH kommer att få åtkomst till (via port 443). Skapa en ny offentlig IP-adress. Den offentliga IP-adressen måste finnas i samma region som den skydds-resurs som du skapar. Det här är en IP-adress som inte har något att göra med någon av de virtuella datorer som du vill ansluta till. Det är den offentliga IP-adressen för skydds-värd resursen.
+    * **Offentlig IP-adress**: den offentliga IP-adressen för den skydds-resurs som RDP/SSH kommer att få åtkomst till (via port 443). Skapa en ny offentlig IP-adress. Den offentliga IP-adressen måste finnas i samma region som den skydds-resurs som du skapar. Den här IP-adressen har inte något att göra med någon av de virtuella datorer som du vill ansluta till. Det är den offentliga IP-adressen för skydds-värd resursen.
     * **Namn på offentlig IP-adress**: namnet på den offentliga IP-adressresursen. I den här självstudien kan du lämna standardvärdet.
     * **SKU för offentlig IP-adress**: den här inställningen fylls i automatiskt **som standard.** Azure skydds använder/stöder bara standard-offentliga IP SKU.
     * **Tilldelning**: den här inställningen är förifylld som standard som **statisk**.
@@ -73,7 +73,7 @@ Det här avsnittet hjälper dig att skapa skydds-objektet i ditt VNet. Detta kr�
 1. Välj **Skapa**.
 1. Ett meddelande visas där du vet att distributionen pågår. Statusen visas på den här sidan när resurserna skapas. Det tar ungefär 5 minuter för skydds-resursen att skapas och distribueras.
 
-## <a name="connect-to-a-vm"></a>Ansluta till en virtuell dator
+## <a name="connect-to-a-vm"></a>Anslut till en virtuell dator
 
 [!INCLUDE [Connect to a Windows VM](../../includes/bastion-vm-rdp.md)]
 

@@ -1,14 +1,14 @@
 ---
 title: Uppdatera en delegering
 description: Lär dig hur du uppdaterar en delegering för en kund som tidigare har publicerats till Azure-Lighthouse.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791347"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555762"
 ---
 # <a name="update-a-delegation"></a>Uppdatera en delegering
 
@@ -48,7 +48,7 @@ Om du uppdaterar erbjudandet för att endast justera auktoriseringar och behåll
 Att ta bort åtkomst till delegeringen kan göras av alla användare i den hanterande klient organisationen som har beviljats [borttagnings rollen för hanterade tjänster](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) för den ursprungliga delegeringen. Om ingen användare i hanterings klienten har den här rollen kan du be kunden att [ta bort åtkomst till erbjudandet i Azure Portal](view-manage-service-providers.md#add-or-remove-service-provider-offers).
 
 > [!TIP]
-> Om du har tagit bort den tidigare delegeringen enligt stegen ovan och fortfarande inte kan distribuera den nya ARM-mallen kan du behöva [ta bort registrerings definitionen helt och hållet](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Detta kan göras av alla användare med ägar rollen i kund klienten.  
+> Om du har tagit bort den tidigare delegeringen enligt stegen ovan och fortfarande inte kan distribuera den nya ARM-mallen kan du behöva [ta bort registrerings definitionen helt och hållet](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition). Detta kan göras av alla användare med en roll som har `Microsoft.Authorization/roleAssignments/write` behörigheten, till exempel [ägare](../../role-based-access-control/built-in-roles.md#owner), i kund innehavaren.  
 
 ## <a name="deploy-the-arm-template"></a>Distribuera ARM-mallen
 

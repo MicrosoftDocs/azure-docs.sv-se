@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 01/08/2021
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: d14ddd55b705572727b6fdc255471b710cfe8247
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 7cb0a2d3cf6f0ebd80cdde3d356d6bc5a5faef28
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117579"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555296"
 ---
-Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
+Om du vill tilldela Azure-roller måste du ha:
 
-- `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](../../articles/role-based-access-control/built-in-roles.md#user-access-administrator) eller [ägare](../../articles/role-based-access-control/built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` behörigheter, till exempel [administratör för användar åtkomst](../../articles/role-based-access-control/built-in-roles.md#user-access-administrator) eller [ägare](../../articles/role-based-access-control/built-in-roles.md#owner)

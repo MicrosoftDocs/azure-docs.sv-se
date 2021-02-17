@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583933"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546354"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrera program till MSAL.NET
 
@@ -59,7 +59,7 @@ Det går också att komma åt v 1.0-resurser med MSAL.NET. Se information i [omf
 
 - ADAL.NET använder [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) som representation av anslutningen till säkerhetstokentjänst (STS) eller auktoriseringsservern via en utfärdare. I motsats är MSAL.NET utformad runt [klient program](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Den innehåller två separata klasser: `PublicClientApplication` och `ConfidentialClientApplication`
 
-- Hämtar token: ADAL.NET och MSAL.NET har samma autentiserings anrop ( `AcquireTokenAsync` och  `AcquireTokenSilentAsync` för ADAL.net, och `AcquireTokenInteractive` och `AcquireTokenSilent` i MSAL.net), men med olika parametrar krävs. En skillnad är att i MSAL.NET behöver du inte längre skicka in `ClientID` programmet i varje AcquireTokenXX-anrop. Faktiskt `ClientID` anges bara en gång när du skapar ( `IPublicClientApplication` eller `IConfidentialClientApplication` ).
+- Hämtar token: ADAL.NET och MSAL.NET har samma autentiserings anrop ( `AcquireTokenAsync` och `AcquireTokenSilentAsync` för ADAL.net, och `AcquireTokenInteractive` och `AcquireTokenSilent` i MSAL.net), men med olika parametrar krävs. En skillnad är att i MSAL.NET behöver du inte längre skicka in `ClientID` programmet i varje AcquireTokenXX-anrop. Faktiskt `ClientID` anges bara en gång när du skapar ( `IPublicClientApplication` eller `IConfidentialClientApplication` ).
 
 ### <a name="iaccount-not-iuser"></a>IAccount inte IUser
 
@@ -170,7 +170,7 @@ Om du vill hämta token för ett program som accepterar v 1.0-token (till exempe
 Om du till exempel vill komma åt namnet på användaren a v 1.0 webb-API som app-ID URI är `ResourceId` , vill du använda:
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Om du vill läsa och skriva med MSAL.NET Azure Active Directory med hjälp av Microsoft Graph API ( https://graph.microsoft.com/) , skapar du en lista över omfattningar som i följande kodfragment:
@@ -205,7 +205,7 @@ Om du till exempel vill hämta en token för alla statiska omfånget för ett v 
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>Omfattningar som ska begäras i händelse av Flow/daemon-app för klientens autentiseringsuppgifter

@@ -2,52 +2,32 @@
 title: Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 02/15/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Använd GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
-ms.openlocfilehash: 072bfc8c243eb9b69e06366961019b88b67e0941
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392246"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560168"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
+# <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med GitOps på ett Arc-aktiverat Kubernetes-kluster (för hands version)
 
-I förhållande till Kubernetes är GitOps en metod för att deklarera det önskade läget för Kubernetes (distributioner, namnrymder osv.) på en git-lagringsplats. Denna deklaration följs av en avsöknings-och pull-baserad distribution av dessa klusterkonfigurationer med hjälp av en operatör. 
-
-Den här artikeln beskriver installationen av GitOps-arbetsflöden i Azure Arc-aktiverade Kubernetes-kluster.
-
-Anslutningen mellan klustret och git-lagringsplatsen skapas som en `Microsoft.KubernetesConfiguration/sourceControlConfigurations` tilläggs resurs i Azure Resource Manager. `sourceControlConfiguration`Resurs egenskaperna representerar var och hur Kubernetes resurser ska flöda från git till klustret. `sourceControlConfiguration`Data lagras krypterade, i vila i en Azure Cosmos DB databas för att säkerställa data sekretessen.
-
-Den som `config-agent` körs i klustret ansvarar för:
-* Spåra nya eller uppdaterade `sourceControlConfiguration` tilläggs resurser på den Azure Arc-aktiverade Kubernetes-resursen.
-* Distribuera en flödes operatör för att se git-lagringsplatsen för var och en `sourceControlConfiguration` .
-* Tillämpar alla uppdateringar som görs i någon `sourceControlConfiguration` . 
-
-Du kan skapa flera `sourceControlConfiguration` resurser på samma Azure Arc-Kubernetes-kluster för att uppnå flera innehavare. Begränsa distributioner inom respektive namnrum genom att skapa var `sourceControlConfiguration` och en med olika `namespace` omfång.
-
-Git-lagringsplatsen kan innehålla:
-* YAML-format manifest som beskriver eventuella giltiga Kubernetes-resurser, inklusive namnrymder, ConfigMaps, distributioner, DaemonSets osv. 
-* Helm-diagram för att distribuera program. 
-
-En vanlig uppsättning scenarier är att definiera en bas linje konfiguration för din organisation, t. ex. vanliga Azure-roller och bindningar, övervakning eller loggnings agenter eller kluster för många tjänster.
-
-Samma mönster kan användas för att hantera en större samling kluster, som kan distribueras i heterogena miljöer. Du kan till exempel ha en lagrings plats som definierar bas linje konfigurationen för din organisation, som gäller för flera Kubernetes-kluster samtidigt. [Azure policy kan automatisera](use-azure-policy.md) skapandet av en `sourceControlConfiguration` med en speciell uppsättning parametrar på alla Azure Arc-aktiverade Kubernetes-resurser inom ett omfång (prenumeration eller resurs grupp).
-
-Gå igenom följande steg för att lära dig hur du använder en uppsättning konfigurationer med `cluster-admin` omfång.
+Den här artikeln visar hur du använder konfigurationer i ett Azure Arc-aktiverat Kubernetes-kluster. En konceptuell översikt över samma finns [här](./conceptual-configurations.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Kontrol lera att du har ett befintligt Azure-Arc aktiverat Kubernetes-kopplat kluster. Om du behöver ett anslutet kluster kan du läsa snabb starten för att [ansluta en Azure-båge med aktiverat Kubernetes-kluster](./connect-cluster.md).
+* Kontrol lera att du har ett befintligt Azure-Arc aktiverat Kubernetes-kopplat kluster. Om du behöver ett anslutet kluster kan du läsa snabb starten för att [ansluta en Azure-båge med aktiverat Kubernetes-kluster](./connect-cluster.md).
+
+* Granska [konfigurations-och GitOps med ARC för Kubernetes-artikeln](./conceptual-configurations.md) för att förstå fördelarna och arkitekturen i den här funktionen.
 
 ## <a name="create-a-configuration"></a>Skapa en konfiguration
 
 [Exempel lagrings platsen](https://github.com/Azure/arc-k8s-demo) som används i den här artikeln är strukturerad runt personen som är medlem av en kluster operatör som vill etablera några få namn rymder, distribuera en gemensam arbets belastning och ange en team-speciell konfiguration. När du använder den här databasen skapas följande resurser i klustret:
-
 
 * **Namn områden:** `cluster-config` , `team-a` , `team-b`
 * **Distribution:**`cluster-config/azure-vote`
@@ -249,7 +229,7 @@ När en `sourceControlConfiguration` har skapats eller uppdaterats händer någr
 
 När etablerings processen utförs går det `sourceControlConfiguration` igenom några tillstånds ändringar. Övervaka förloppet med `az k8sconfiguration show ...` kommandot ovan:
 
-| Fas ändring | Beskrivning |
+| Fas ändring | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | Representerar inledande och pågående tillstånd. |
 | `complianceStatus` -> `Installed`  | `config-agent` har kunnat konfigurera klustret och distribuera `flux` utan fel. |

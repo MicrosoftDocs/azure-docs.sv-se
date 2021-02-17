@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537787"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559471"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -94,6 +94,8 @@ Det här avsnittet innehåller referenser till SAP på Azure-lösningar.
 * [Azure NetApp Files – SAP HANA avlasta säkerhets kopiering med molnbaserad synkronisering](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Påskynda dina SAP HANA system kopior med Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Moln volymer ONTAP och Azure NetApp Files: SAP HANA systemmigrering enkelt](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [Arkitektur beslut för att maximera ANF-investeringar i HANA N + M Scale-Out Architecture-del 1 – Microsoft Tech community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [Arkitektur beslut för att maximera ANF-investeringar i HANA N + M Scale-Out Architecture-del 2 – Microsoft Tech community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware-lösningar
 
@@ -146,6 +148,7 @@ Det här avsnittet innehåller lösningar för Azures plattforms tjänster.
 
 * [Integrera Azure NetApp Files med Azure Kubernetes-tjänsten](../aks/azure-netapp-files.md)
 * [Kubernetes prestanda som inte är i kraft i Azure med Azure NetApp Files](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp Files + Trident = Dynamic och persistent Storage för Kubernetes](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident – Storage Orchestrator för behållare](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Magento för e-handel i Azure Kubernetes service (AKS)](/azure/architecture/example-scenario/magento/magento-azure)
 

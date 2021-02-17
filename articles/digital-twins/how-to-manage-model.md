@@ -1,5 +1,5 @@
 ---
-title: Hantera anpassade modeller
+title: Hantera DTDL-modeller
 titleSuffix: Azure Digital Twins
 description: Se hur du skapar, redigerar och tar bort en modell i Azures digitala dubbla.
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c193565035435b29f77177086c535fae0903ccd4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: be8f4ba8552521d25992d7c3a405dc2628fbbb85
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737786"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560812"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Hantera Azure Digitals dubbla modeller
 
@@ -20,7 +20,7 @@ Du kan hantera de [modeller](concepts-models.md) som Azure Digitals-instansen ä
 
 Hanterings åtgärder omfattar överföring, validering, hämtning och borttagning av modeller. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -61,7 +61,7 @@ Observera att `CreateModels` metoden accepterar flera filer i en enda transaktio
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Model-filer kan innehålla mer än en enskild modell. I det här fallet måste modellerna placeras i en JSON-matris. Ett exempel:
+Model-filer kan innehålla mer än en enskild modell. I det här fallet måste modellerna placeras i en JSON-matris. Exempel:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

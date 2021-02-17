@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427674"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560507"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -67,7 +67,7 @@ Du kommer att kunna registrera dig och logga in med någon av följande provider
 > [!NOTE]
 > De Video Indexer konton som är anslutna till LinkedIn och Facebook kommer inte att vara tillgängliga efter den 1 mars 2021. 
 > 
-> Du bör [bjuda in](invite-users.md) ett Azure AD-, Microsoft-eller Google-e-postmeddelande som du äger till video Indexer kontot så att du fortfarande har åtkomst.<br/>
+> Du bör [bjuda in](invite-users.md) ett Azure AD-, Microsoft-eller Google-e-postmeddelande som du äger till video Indexer kontot så att du fortfarande har åtkomst. Du kan lägga till ytterligare ägare av leverantörer som stöds, enligt beskrivningen i [inbjudan](invite-users.md). <br/>
 > Du kan också skapa ett betalt konto och migrera data.
 
 ## <a name="august-2020"></a>Augusti 2020

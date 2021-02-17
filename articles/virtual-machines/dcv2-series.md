@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: fecd707d96b03eef4f093c0b256e32f11bb8a3f7
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095864"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557902"
 ---
 # <a name="dcsv2-series"></a>DCsv2-serien
 
@@ -21,15 +21,15 @@ DCsv2-serien kan hjälpa till att skydda konfidentialiteten och integriteten hos
 
 Exempel på användnings områden är: konfidentiell data delning för multidelar, bedrägeri identifiering, tvättning av pengar, blockchain, konfidentiell användnings analys, informations analys och konfidentiell maskin inlärning.
 
-[Premium Storage](premium-storage-performance.md): stöds *<br>
-[Premium Storage caching](premium-storage-performance.md): stöds<br>
-[Direktmigrering](maintenance-and-updates.md): stöds inte<br>
-[Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
-[Stöd för VM-generering](generation-2.md): generation 2<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Premium Storage](premium-storage-performance.md): stödda *<br> 
+ [Premium Storage cachelagring](premium-storage-performance.md): stöds Direktmigrering: stöds inte för konserverings uppdateringar som stöds: stöds inte för virtuella datorer för att skapa <br> 
+ [](maintenance-and-updates.md) <br> 
+ [](maintenance-and-updates.md) <br> 
+ [virtuella datorer](generation-2.md): generation 2 <br> 
+ [accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds (* minst 4 vCPU * krävs) <br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 
-* Förutom Standard_DC8_v2
+* Förutom Standard_DC8_v2 <br>
 
 | Storlek             | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Maximalt genomflöde för cachelagring och temporär lagring: IOPS / Mbit/s (cachestorlek i GiB) | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) | EPC-minne (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

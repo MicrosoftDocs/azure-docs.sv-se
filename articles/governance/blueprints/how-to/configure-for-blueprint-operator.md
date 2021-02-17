@@ -3,12 +3,12 @@ title: Konfigurera din miljö för skiss operatör
 description: Lär dig hur du konfigurerar din Azure-miljö för användning med skiss operatörens inbyggda roll.
 ms.date: 02/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 0e0f6680ab39481a480919af10fadc0f7103a1fb
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b43a33f4bac92903bd07454041d11850f217d480
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591609"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558731"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurera din miljö för en skissoperatör
 
@@ -22,7 +22,7 @@ Det första steget är att ge **skiss operatörs** rollen till kontot eller säk
 
 1. Rekommenderas [Skapa en säkerhets grupp och Lägg till medlemmar](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Lägg till en roll tilldelning](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) av **skiss operatör** till kontot eller säkerhets gruppen
+1. [Tilldela](../../../role-based-access-control/role-assignments-portal.md) kontot eller säkerhets gruppen rollen som ansvarar för rollen **skiss**
 
 ## <a name="user-assign-managed-identity"></a>Användare – tilldela hanterad identitet
 
@@ -32,7 +32,7 @@ En skiss definition kan använda antingen systemtilldelade eller användarspecif
 
 1. Bevilja den användare som tilldelats hanterad identitet alla roller eller behörigheter som krävs av skiss definitionen för det avsedda omfånget.
 
-1. [Lägg till en roll tilldelning](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) av **hanterad identitets operatör** till kontot eller säkerhets gruppen. Omfattningen av roll tilldelningen till den nya användarspecifika hanterade identiteten.
+1. [Tilldela](../../../role-based-access-control/role-assignments-portal.md) kontot eller säkerhets gruppen rollen **hanterad identitets operatör med rollen hanterad identitet** . Omfattningen av roll tilldelningen till den nya användarspecifika hanterade identiteten.
 
 1. Som **skiss operatör** tilldelar du [en skiss](../create-blueprint-portal.md#assign-a-blueprint) som använder den nya användarspecifika hanterade identiteten.
 

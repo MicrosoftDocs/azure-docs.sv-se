@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 410f8ab4de0d93262647cbc07e0792cd39f7a844
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559438"
 ---
-# <a name="call-flows"></a>Samtalsflöden
+# <a name="call-flow-basics"></a>Grundläggande samtals flöde
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -76,6 +76,14 @@ Om klient biblioteket inte kan använda UDP för media på grund av brand Väggs
 
 :::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="Diagram över TCP-medie process flöde inom kommunikations tjänsterna.":::
 
+### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Fall 5: klient bibliotek för kommunikations tjänster och Microsoft Teams i ett möte med schemalagda team
+
+Signalerar flöden genom signal styrenheten. Mediet flödar genom medie processorn. Signal styrenheten och medie processorn delas mellan kommunikations tjänster och Microsoft Teams. 
+
+:::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagram som visar klient bibliotek för kommunikations tjänster och team-klienten i ett schemalagt team möte.":::
+
+
+
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
@@ -85,3 +93,4 @@ Följande dokument kan vara intressanta för dig:
 
 - Läs mer om [samtals typer](../concepts/voice-video-calling/about-call-types.md)
 - Lär dig mer om [klient-server arkitektur](./client-and-server-architecture.md)
+- Lär dig mer om [topologier för anrops flöden](./detailed-call-flows.md)
