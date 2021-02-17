@@ -9,18 +9,41 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: f416fe8ef4f6e89d07e6065d4c9435642d9bacb9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef9cb083c9bbe6eae5c34cd3799debde771231b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179647"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558218"
 ---
-# <a name="correct-misspelled-words-with-bing-search-resource"></a>Korrigera felstavade ord med Bing-sökning resurs
+# <a name="correct-misspelled-words-with-bing-resource"></a>Korrigera felstavade ord med Bing-resurs
 
-Du kan integrera din LUIS-app med [Bing-sökning](https://ms.portal.azure.com/#create/Microsoft.BingSearch) för att korrigera felstavade ord i yttranden innan Luis förutsäger poängen och enheterna i uttryck.
+V3-förutsägelse API har nu stöd för [Bing API för stavnings](https://docs.microsoft.com/bing/search-apis/bing-spell-check/overview)kontroll. Lägg till stavnings kontroll i programmet genom att inkludera nyckeln till din Bing search-resurs i rubriken för dina begär Anden. Du kan använda en befintlig Bing-resurs om du redan äger en, eller [skapa en ny](https://portal.azure.com/#create/Microsoft.BingSearch) för att använda den här funktionen. 
 
-## <a name="create-endpoint-key"></a>Skapa slut punkts nyckel
+Exempel på förutsägelse av utdata för en felstavad fråga:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
+
+Korrigeringar av stavning görs före LUIS User uttryck förutsägelse. Du kan se ändringar i den ursprungliga uttryck, inklusive stavning, i svaret.
+
+## <a name="create-bing-search-resource"></a>Skapa Bing-sökning resurs
 
 Följ dessa instruktioner om du vill skapa en Bing-sökning resurs i Azure Portal:
 
@@ -32,7 +55,8 @@ Följ dessa instruktioner om du vill skapa en Bing-sökning resurs i Azure Porta
 
 4. En informations panel visas till höger som innehåller information, inklusive juridiskt meddelande. Välj **skapa** för att starta processen för att skapa prenumerationer.
 
-    :::image type="content" source="./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png" alt-text="API för stavningskontroll i Bing v7-resurs":::
+> [!div class="mx-imgBorder"]
+> ![API för stavningskontroll i Bing v7-resurs](./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png)
 
 5. I nästa panel anger du dina tjänst inställningar. Vänta tills processen har skapats.
 
@@ -40,15 +64,23 @@ Följ dessa instruktioner om du vill skapa en Bing-sökning resurs i Azure Porta
 
 7. Kopiera en av nycklarna som ska läggas till i rubriken för din förutsägelse förfrågan. Du behöver bara en av de två nycklarna.
 
-8. Lägg till nyckeln `mkt-bing-spell-check-key` i i huvudet för förutsägelse begär Ande.
-
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
+## <a name="enable-spell-check-from-ui"></a>Aktivera stavnings kontroll från användar gränssnittet 
+Du kan aktivera stavnings kontroll för din exempel fråga med hjälp av [Luis-portalen](https://www.luis.ai). Välj **Hantera** överst på skärmen och **Azure-resurser** i det vänstra navigerings fältet. När du har kopplat en förutsägelse resurs till ditt program kan du välja **ändra** frågeparametrar längst ned på sidan och klistra in resurs nyckeln i fältet **Aktivera stavnings kontroll** .
+    
+   > [!div class="mx-imgBorder"]
+   > ![Aktivera stavnings kontroll](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
+
+
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Lägger till nyckeln i slut punkts-URL: en
 För varje fråga som du vill tillämpa stavnings korrigering på måste slut punkts frågan ha en resurs nyckel för Bing-stavnings kontroll som skickas i frågesträngparametern. Du kan ha en chattrobot som anropar LUIS eller så kan du anropa LUIS slut punkts-API: n direkt. Oavsett hur slut punkten anropas måste varje anrop innehålla den information som krävs i huvudets begäran om att stavnings korrigeringar ska fungera korrekt. Du måste ange värdet med **mkt-Bing-stavning-check-Key** till Key-värdet.
 
+|Rubrik nyckel|Huvud värde|
+|--|--|
+|`mkt-bing-spell-check-key`|Nycklar hittades i bladet **nycklar och slut punkter** i din resurs|
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Skicka felstavade uttryck till LUIS
 1. Lägg till en felstavad uttryck i förutsägelse frågan som du kommer att skicka som "hur långt är mountainn?". I engelska `mountain` är det med en `n` korrekt stavning.

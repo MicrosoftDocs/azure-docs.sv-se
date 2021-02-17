@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934547"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547170"
 ---
 # <a name="secure-azure-digital-twins"></a>Skydda digitala Azure-dubbla
 
@@ -53,11 +53,6 @@ Azure tillhandahåller **två inbyggda Azure-roller** för att auktorisera åtko
 | --- | --- | --- |
 | Azure Digitals sammanflätade data ägare | Ger fullständig åtkomst till resurser med Azure Digitals dubbla resurser | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure Digitals sammanflätade data läsare | Ger skrivskyddad åtkomst till Azure Digitals dubbla resurser | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
-
->[!NOTE]
-> De här rollerna har nyligen bytt namn från sina tidigare namn i för hands versionen:
-> * Azure *Digitals dubbla data ägare* hade tidigare *Azure Digitals-ägare (för hands version)*.
-> * *Azure Digitals data läsare* tidigare var *Azure Digitals-läsare (för hands version)*.
 
 Du kan tilldela roller på två sätt:
 * via fönstret åtkomst kontroll (IAM) för Azure Digitals dubbla i Azure Portal (se [*lägga till eller ta bort Azure roll tilldelningar med hjälp av Azure Portal*](../role-based-access-control/role-assignments-portal.md))
@@ -132,7 +127,7 @@ Nedan visas information om **AzureDigitalTwins** -tjänst tag gen.
 
 | Tagg | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
 | --- | --- | --- | --- | --- |
-| AzureDigitalTwins | Azure Digital Twins<br>OBS! den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att begränsa åtkomsten till slut punkter som kon figurer ATS för [händelse vägar](concepts-route-events.md). | Inkommande | Inga | Ja |
+| AzureDigitalTwins | Azure Digital Twins<br>OBS! den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att begränsa åtkomsten till slut punkter som kon figurer ATS för [händelse vägar](concepts-route-events.md). | Inkommande | Nej | Ja |
 
 ### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Använda service märken för att komma åt händelse vägens slut punkter 
 

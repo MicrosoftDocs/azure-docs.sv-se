@@ -8,12 +8,12 @@ ms.author: apistrak
 ms.date: 01/15/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 1985ae92b68c16798fc26d7517520c0a70a2ad28
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 3c1b56f81e5164bbdfa94fdaeca5f5f1f55b3b51
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628361"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551301"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -90,15 +90,15 @@ namespace SignHmacTutorial
 ```
 ## <a name="create-a-request-message"></a>Skapa ett begär ande meddelande
 
-I det här exemplet ska vi signera en begäran om att skapa en ny identitet med hjälp av kommunikations tjänsternas API för autentisering (version `2020-07-20-preview2` )
+I det här exemplet ska vi signera en begäran om att skapa en ny identitet med hjälp av kommunikations tjänsternas API för autentisering (version `2021-03-07` )
 
 Lägg till följande kod i- `Main` metoden:
 
 ```csharp
 string resourceEndpoint = "resourceEndpoint";
 //Create an uri you are going to call
-var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2020-07-20-preview2");
-//Endpoint identities?api-version=2020-07-20-preview2 accepts list of scopes as a body
+var requestUri = new Uri($"{resourceEndpoint}/identities?api-version=2021-03-07");
+//Endpoint identities?api-version=2021-03-07 accepts list of scopes as a body
 var body = new[] { "chat" }; 
 var serializedBody = JsonConvert.SerializeObject(body);
 var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri)

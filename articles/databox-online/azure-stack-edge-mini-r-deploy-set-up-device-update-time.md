@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: ee3805d128a7b6d122f93e692291db1a387cfcf5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9f4d4f4ad27081bb105cdb1698438837fc2fe02
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468877"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546677"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-mini-r"></a>Självstudie: Konfigurera enhets inställningarna för Azure Stack Edge Mini R
 
@@ -85,7 +85,7 @@ Följ dessa steg om du vill konfigurera inställningar för enheten:
         ![Lokalt webb gränssnitt "uppdaterings Server" på sidan 2](./media/azure-stack-edge-mini-r-deploy-set-up-device-update-time/update-server-2.png)
 
         > [!NOTE] 
-        > Om en separat Windows Update Server har kon figurer ATS och du väljer att ansluta över *https* (i stället för *http*) behövs signerings kedjan som krävs för att ansluta till uppdaterings servern. Information om hur du skapar och laddar upp certifikat finns i [Hantera certifikat](azure-stack-edge-j-series-manage-certificates.md). För att arbeta i frånkopplat läge, till exempel din Azure Stack gräns för enhets nivå till modulärt Data Center, aktiverar du alternativet WSUS. Vid aktiveringen söker enheten efter uppdateringar och om servern inte har kon figurer ATS kommer aktiveringen att Miss förväntas. 
+        > Om en separat Windows Update Server har kon figurer ATS och du väljer att ansluta över *https* (i stället för *http*) behövs signerings kedjan som krävs för att ansluta till uppdaterings servern. Information om hur du skapar och laddar upp certifikat finns i [Hantera certifikat](azure-stack-edge-gpu-manage-certificates.md). För att arbeta i frånkopplat läge, till exempel din Azure Stack gräns för enhets nivå till modulärt Data Center, aktiverar du alternativet WSUS. Vid aktiveringen söker enheten efter uppdateringar och om servern inte har kon figurer ATS kommer aktiveringen att Miss förväntas. 
 
 2. Välj **Använd**.
 3. När uppdaterings servern har kon figurer ATS väljer du **Nästa: tid**.

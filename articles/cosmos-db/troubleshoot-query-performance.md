@@ -4,16 +4,16 @@ description: Lär dig att identifiera, diagnostisera och felsöka Azure Cosmos D
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/02/2021
+ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524337"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559986"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Felsöka problem med frågor när du använder Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -213,6 +213,12 @@ Nedan följer några vanliga system funktioner som inte använder indexet och m�
 | Övre/nedre                         | I stället för att använda systemfunktionen för att normalisera data för jämförelser normaliserar du höljet vid infogning. En fråga som ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` blir ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Beräkna den aktuella tiden innan frågekörningen körs och Använd det sträng värdet i- `WHERE` satsen. |
 | Matematiska funktioner (icke-mängder) | Om du behöver beräkna ett värde ofta i din fråga bör du lagra värdet som en egenskap i JSON-dokumentet. |
+
+Dessa system funktioner kan använda index, förutom när de används i frågor med agg regeringar:
+
+| **System funktion**                     | **Idéer för optimering**             |
+| --------------------------------------- |------------------------------------------------------------ |
+| Funktioner i spatial system                        | Lagra frågeresultatet i en förmaterialiserad vy i real tid |
 
 När det används i `SELECT` -satsen påverkar ineffektiva system funktioner inte hur frågor kan använda index.
 

@@ -14,8 +14,10 @@
 - name: Självstudier
   expanded: true
   items:
-    - name: Skapa ditt första åtkomstpaket
+    - name: Hantera åtkomst till resurser – Azure Portal
       href: entitlement-management-access-package-first.md
+    - name: Hantera åtkomst till resurser – Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: Begrepp
   expanded: true
   items:

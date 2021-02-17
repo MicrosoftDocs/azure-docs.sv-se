@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460998"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558122"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Roller och krav för Azure Data Share 
 
@@ -63,7 +63,7 @@ Följ stegen nedan om du vill skapa en roll tilldelning för data resurs resurse
 1. Under *Välj* anger du namnet på din Azure Data Resource-resurs.
 1. Klicka på *Spara*.
 
-Mer information om roll tilldelning finns i [lägga till eller ta bort Azure Role-tilldelningar med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Om du delar data med hjälp av REST API: er kan du skapa roll tilldelning med hjälp av API genom [att referera till Lägg till eller ta bort roll tilldelningar i Azure med hjälp av REST API](../role-based-access-control/role-assignments-rest.md). 
+Mer information om roll tilldelning finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md). Om du delar data med hjälp av REST API: er kan du skapa roll tilldelning med hjälp av API genom att referera till [tilldela Azure-roller med hjälp av REST API](../role-based-access-control/role-assignments-rest.md). 
 
 För SQL-baserade källor måste en SQL-användare skapas från en extern provider i SQL Database med samma namn som Azure Data Resource-resursen vid anslutning till SQL Database med Azure Active Directory autentisering. Den här användaren måste beviljas *db_datareader* -behörighet. Ett exempel skript tillsammans med andra krav för SQL-baserad delning finns i själv studie kursen för att [Dela från Azure SQL Database eller Azure Synapse Analytics](how-to-share-from-sql.md) . 
 
@@ -83,7 +83,7 @@ Följ stegen nedan om du vill skapa en roll tilldelning för data resurs resurse
 1. Under *Välj* anger du namnet på din Azure Data Resource-resurs.
 1. Klicka på *Spara*.
 
-Mer information om roll tilldelning finns i [lägga till eller ta bort Azure Role-tilldelningar med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Om du tar emot data med hjälp av REST API: er kan du skapa roll tilldelning med API genom [att referera till Lägg till eller ta bort roll tilldelningar i Azure med hjälp av REST API](../role-based-access-control/role-assignments-rest.md). 
+Mer information om roll tilldelning finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md). Om du tar emot data med hjälp av REST API: er kan du skapa roll tilldelning med hjälp av API genom att referera till [tilldela Azure-roller med hjälp av REST API](../role-based-access-control/role-assignments-rest.md). 
 
 För SQL-baserat mål måste en SQL-användare skapas från en extern provider i SQL Database med samma namn som Azure Data Resource-resursen vid anslutning till SQL Database med Azure Active Directory autentisering. Den här användaren måste beviljas *db_datareader db_datawriter db_ddladmin* behörighet. Ett exempel skript tillsammans med andra krav för SQL-baserad delning finns i själv studie kursen för att [Dela från Azure SQL Database eller Azure Synapse Analytics](how-to-share-from-sql.md) . 
 
@@ -107,4 +107,4 @@ Mer information om Resource Provider finns i [Azure Resource providers och-typer
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om roller i Azure – [förstå roll definitioner](../role-based-access-control/role-definitions.md)
+- Lär dig mer om roller i Azure – [förstå Azures roll definitioner](../role-based-access-control/role-definitions.md)

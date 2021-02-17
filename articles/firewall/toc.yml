@@ -32,6 +32,12 @@
   items:
     - name: Azure Firewall-funktioner
       href: features.md
+    - name: Azure Firewall Premium-funktioner
+      href: premium-features.md
+    - name: Azure Firewall Premium i portalen
+      href: premium-portal.md
+    - name: Azure Firewall Premium-certifikat
+      href: premium-certificates.md
     - name: FQDN-taggar
       href: fqdn-tags.md
     - name: Infrastruktur-FQDN
@@ -91,6 +97,10 @@
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
     - name: Arbetsbok för Azure Firewall
       href: firewall-workbook.md
+    - name: Distribuera och konfigurera brand Väggs Premium
+      href: premium-deploy.md
+    - name: Migrera till Azure Firewall Premium
+      href: premium-migrate.md
 - name: Referens
   items:
     - name: Azure CLI

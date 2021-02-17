@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: Begrepp
   items:
-    - name: Anpassade modeller
+    - name: DTDL-modeller
       href: concepts-models.md
+    - name: Ontologies
+      items:
+        - name: Vad är en Ontology?
+          href: concepts-ontologies.md
+        - name: Införa bransch standard Ontologies
+          href: concepts-ontologies-adopt.md
+        - name: Konverterar Ontologies
+          href: concepts-ontologies-convert.md
+        - name: Utöka Ontologies
+          href: concepts-ontologies-extend.md
     - name: Digitala tvillingenheter och tvillingdiagrammet
       href: concepts-twins-graph.md
     - name: Frågespråk
@@ -65,10 +75,8 @@
           href: how-to-move-regions.md
     - name: Utforma modeller
       items:
-        - name: Hantera anpassade modeller
+        - name: Hantera DTDL-modeller
           href: how-to-manage-model.md
-        - name: Integrera branschstandardmodeller
-          href: how-to-integrate-models.md
         - name: Parsa och verifiera modeller
           href: how-to-parse-models.md
         - name: Lägga till taggar
@@ -249,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL-verifierare (exempel)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: Modell överföring (exempel)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: Modell visualiserare (exempel)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL-konverterare
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: Integreringsexempel för DPS och IoT Hub
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: Integreringsexempel för SignalR

@@ -4,6 +4,14 @@
   items:
     - name: Om Arc-aktiverat Kubernetes
       href: overview.md
+- name: Begrepp
+  items:
+    - name: Agent arkitektur
+      href: conceptual-agent-architecture.md
+    - name: Konfigurationer och GitOps
+      href: conceptual-configurations.md
+    - name: Vanliga frågor och svar
+      href: faq.md
 - name: Anvisningar
   items:
     - name: Ansluta till Azure Arc
@@ -12,7 +20,7 @@
           href: connect-cluster.md
         - name: Huvudnamn för registreringstjänst
           href: create-onboarding-service-principal.md
-    - name: Hantera
+    - name: Scenarier
       items:
         - name: Distribuera konfigurationer med GitOps
           href: use-gitops-connected-cluster.md

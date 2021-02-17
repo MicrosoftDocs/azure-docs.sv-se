@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
-ms.openlocfilehash: b15238a4308fe055f914d1a684b79b38a2c64870
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122508"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556832"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Tilldela en användare administratörsbehörighet för en Azure-prenumeration
 
@@ -89,6 +89,6 @@ Om du vill göra en användare till en administratör för en Azure-prenumeratio
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md)
 - [Visa en lista med Azures roll tilldelningar med hjälp av Azure Portal](role-assignments-list-portal.md)
 - [Ordna resurser med hanteringsgrupper i Azure](../governance/management-groups/overview.md)

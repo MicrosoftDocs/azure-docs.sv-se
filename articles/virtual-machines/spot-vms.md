@@ -1,6 +1,6 @@
 ---
-title: Använda virtuella Azure-datorer
-description: Lär dig hur du använder virtuella Azure-datorer för att spara pengar.
+title: Använd Virtual Machines för Azure-plats
+description: Lär dig hur du använder Azures Virtual Machines för att spara pengar.
 author: JagVeerappan
 ms.author: jagaveer
 ms.service: virtual-machines
@@ -8,23 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 1e82da3bc45bc8fb88b3955bd59091372f56d292
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 460529ab6e3227a998ac04c4819171274307ff9e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375467"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557818"
 ---
-# <a name="use-spot-vms-in-azure"></a>Använda virtuella datorer i Azure
+# <a name="use-azure-spot-virtual-machines"></a>Använd Virtual Machines för Azure-plats 
 
-Med hjälp av virtuella datorer kan du dra nytta av vår outnyttjade kapacitet till betydande besparingar. Vid alla tidpunkter när Azure behöver kapaciteten tillbaka, tar Azure-infrastrukturen bort virtuella datorer. De virtuella datorerna är därför fantastiska för arbets belastningar som kan hantera avbrott som bearbetnings jobb, utvecklings-/test miljöer, stora beräknings arbets belastningar med mera.
+Med hjälp av Azure-Virtual Machines kan du dra nytta av vår outnyttjade kapacitet till betydande kostnads besparingar. Vid alla tidpunkter då Azure behöver kapaciteten, tar Azure-infrastrukturen bort Azure-Virtual Machines. Därför är Azures Virtual Machines bra för arbets belastningar som kan hantera avbrott som bearbetnings jobb, utvecklings-/test miljöer, stora beräknings arbets belastningar med mera.
 
-Mängden tillgänglig kapacitet kan variera beroende på storlek, region, tid och dag. När du distribuerar virtuella datorer, allokerar Azure de virtuella datorerna om det finns tillgänglig kapacitet, men det finns inget service avtal för dessa virtuella datorer. En VM-VM ger inga garantier för hög tillgänglighet. Vid alla tidpunkter när Azure behöver kapaciteten tillbaka, tar Azure-infrastrukturen bort virtuella platser med 30 sekunders varsel. 
+Mängden tillgänglig kapacitet kan variera beroende på storlek, region, tid och dag. När du distribuerar Azure-Virtual Machines allokerar Azure de virtuella datorerna om det finns tillgänglig kapacitet, men det finns inget service avtal för dessa virtuella datorer. En virtuell Azure-dator ger inga garantier för hög tillgänglighet. Vid alla tidpunkter då Azure behöver kapaciteten, tar Azure-infrastrukturen bort Azures Virtual Machines med 30 sekunders varsel. 
 
 
 ## <a name="eviction-policy"></a>Avlägsnandeprincip
 
-Virtuella datorer kan avlägsnas baserat på kapacitet eller det högsta pris som du har angett. När du skapar en virtuell dator för virtuella datorer kan du ange att principen ska *avallokeras* eller *tas bort*. 
+Virtuella datorer kan avlägsnas baserat på kapacitet eller det högsta pris som du har angett. När du skapar en virtuell Azure-dator kan du ange att borttagnings principen ska *frigöra* (standard) eller *ta bort*. 
 
 Principen *frigör* flyttar den virtuella datorn till statusen stoppad-frigjord, så att du kan distribuera den igen senare. Det finns dock ingen garanti för att allokeringen ska lyckas. De friallokerade virtuella datorerna räknas av mot kvoten och du debiteras lagrings kostnaderna för de underliggande diskarna. 
 
@@ -47,11 +47,11 @@ Du kan välja att ta emot meddelanden i virtuella datorer via [Azure schemalagda
 
 ## <a name="limitations"></a>Begränsningar
 
-Följande VM-storlekar stöds inte för virtuella datorer på platsen:
+Följande VM-storlekar stöds inte för Azure-Virtual Machines:
  - B-serien
  - Kampanj versioner av valfri storlek (t. ex. dv2, NV, NC, H kampanj storlek)
 
-Virtuella datorer kan distribueras till vilken region som helst, förutom Microsoft Azure Kina 21Vianet.
+Azure-Virtual Machines kan distribueras till vilken region som helst, förutom Microsoft Azure Kinas 21Vianet.
 
 <a name="channel"></a>
 
@@ -65,7 +65,7 @@ Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer
 
 ## <a name="pricing"></a>Prissättning
 
-Priser för virtuella datorer i virtuella datorer är varierande, baserat på region och SKU. Mer information finns i prissättning för virtuella datorer för [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) och [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Priser för Azure-Virtual Machines är varierande, baserat på region och SKU. Mer information finns i prissättning för virtuella datorer för [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) och [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
 Du kan också fråga pris information med [Azures API för åter försäljning](/rest/api/cost-management/retail-prices/azure-retail-prices) för att fråga efter information om prissättning. `meterName`Och `skuName` kommer båda att innehålla `Spot` .
 
@@ -87,24 +87,24 @@ Du kan se historiska priser och avlägsna priser per storlek i en region i porta
 
 ##  <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-**F:** När den har skapats är en virtuell dator på samma sätt som vanlig standard-VM?
+**F:** När den har skapats är en virtuell Azure-dator samma som vanlig standard-VM?
 
-**A:** Ja, förutom att det inte finns något service avtal för virtuella datorer på plats och de kan avlägsnas när som helst.
+**A:** Ja, förutom att det inte finns något service avtal för Azure-Virtual Machines och de kan avlägsnas när som helst.
 
 
 **F:** Vad ska jag göra när du har avlägsnat, men behöver fortfarande kapacitet?
 
-**A:** Vi rekommenderar att du använder virtuella standard datorer i stället för virtuella datorer för virtuella datorer om du behöver kapacitet direkt.
+**A:** Vi rekommenderar att du använder standard-VM: ar i stället för Azure-Virtual Machines om du behöver kapacitet direkt.
 
 
-**F:** Hur hanteras kvoten för virtuella datorer med virtuella datorer?
+**F:** Hur hanteras kvoten för Azure-Virtual Machines?
 
-**A:** Virtuella datorer med virtuella datorer kommer att ha en separat kvotmall. Kvoten för kvoten kommer att delas mellan virtuella datorer och skalnings uppsättnings instanser. Läs mer i dokumentationen om [Azure-prenumeration och tjänstbegränsningar, kvoter och krav](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**A:** Virtual Machines för Azure-plats har en separat kvotmall. Kvoten för kvoten kommer att delas mellan virtuella datorer och skalnings uppsättnings instanser. Läs mer i dokumentationen om [Azure-prenumeration och tjänstbegränsningar, kvoter och krav](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
-**F:** Kan jag begära ytterligare kvot för platsen?
+**F:** Kan jag begära ytterligare kvot för Azure-Virtual Machines?
 
-**A:** Ja, du kommer att kunna skicka begäran om att öka din kvot för virtuella datorer med hjälp av [standard kvot processen](../azure-portal/supportability/per-vm-quota-requests.md).
+**A:** Ja, du kommer att kunna skicka begäran om att öka kvoten för Azure-Virtual Machines genom processen för [standard kvot förfrågan](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **F:** Var kan jag skicka frågor?
@@ -117,8 +117,8 @@ Du kan se historiska priser och avlägsna priser per storlek i en region i porta
 **A:** Innan du kan ändra det högsta priset måste du frigöra den virtuella datorn. Sedan kan du ändra det högsta priset i portalen, från **konfigurations** avsnittet för den virtuella datorn. 
 
 ## <a name="next-steps"></a>Nästa steg
-Använd [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [arm-mallen](./linux/spot-template.md)eller [PowerShell](./windows/spot-powershell.md) för att distribuera virtuella datorer.
+Använd [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [arm-mall](./linux/spot-template.md)eller [PowerShell](./windows/spot-powershell.md) för att distribuera Azure-Virtual Machines.
 
-Du kan också distribuera en [skalnings uppsättning med virtuella dator instanser](../virtual-machine-scale-sets/use-spot.md).
+Du kan även distribuera en [skalnings uppsättning med Azure-instanser av virtuella datorer](../virtual-machine-scale-sets/use-spot.md).
 
 Om du stöter på ett fel, se [felkoder](./error-codes-spot.md).

@@ -1,19 +1,19 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 06/08/2018
+ms.date: 02/09/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87103025"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545411"
 ---
 Om du vill ta bort en volym behållare måste du
  - ta bort volymer i volym containern. Om volym containern har associerade volymer ska du koppla från dessa volymer först. Följ stegen i koppla från [en volym](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). När volymerna är offline kan du ta bort dem. 
@@ -22,20 +22,19 @@ Om du vill ta bort en volym behållare måste du
 När volym containern inte har några associerade volymer, säkerhets kopierings principer och moln ögonblicks bilder kan du ta bort den. Utför följande procedur för att ta bort en volym behållare.
 
 #### <a name="to-delete-a-volume-container"></a>Ta bort en volym behållare
+
 1. Gå till StorSimple Device Manager-tjänsten och klicka på **Enheter**. Markera och klicka på enheten och gå sedan till **inställningar > hantera > volym behållare**.
 
-    ![Bladet volym behållare](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
+    ![Bladet volym behållare](./media/storsimple-8000-delete-volume-container/create-volume-container.png)
 
 2. Välj den volym behållare som du vill ta bort i tabell listan över volym behållare, högerklicka på **...** och välj sedan **ta bort**.
 
-    ![Ta bort volym behållare](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
+    ![Ta bort volym behållare](./media/storsimple-8000-delete-volume-container/delete-volume-container-01.png)
 
 3. Om en volym behållare saknar associerade volymer, säkerhets kopierings principer och moln ögonblicks bilder kan den tas bort. När du uppmanas att bekräfta, granskar och markerar du kryss rutan som visar effekten av att ta bort volym containern. Klicka på **ta bort** för att ta bort volym containern.
 
-    ![Bekräfta borttagning](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
+    ![Bekräfta borttagning](./media/storsimple-8000-delete-volume-container/delete-volume-container-02.png)
 
 Listan över volym behållare uppdateras för att avspegla den borttagna volym containern.
 
-![Skärm bild av sidan med volym behållare. Tabell listan över volym behållare innehåller inte längre den borttagna behållaren.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
-
-
+![Skärm bild av sidan med volym behållare. Tabell listan över volym behållare innehåller inte längre den borttagna behållaren.](./media/storsimple-8000-delete-volume-container/delete-volume-container-05.png)

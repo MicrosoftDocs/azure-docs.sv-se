@@ -262,7 +262,7 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
-    - name: Dekor Virtual Machines
+    - name: Virtual Machines för Azure-plats
       displayName: 'pre-empt, preempt, spot'
       items:
         - name: Översikt
@@ -1143,6 +1143,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: Säkerhet
   items:
+    - name: Översikt
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure Security Center
       href: ../security-center/security-center-introduction.md
     - name: Säkerhetsbaslinjer
