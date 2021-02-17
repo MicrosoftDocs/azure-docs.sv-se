@@ -1,35 +1,35 @@
 ---
-title: Lägga till eller ta bort Azure Role-tilldelningar för externa användare med hjälp av Azure Portal-Azure RBAC
+title: Tilldela Azure-roller till externa gäst användare med hjälp av Azure Portal – Azure RBAC
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare utanför en organisation med hjälp av Azure Portal och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
-editor: ''
-ms.assetid: ''
+manager: daveba
 ms.service: role-based-access-control
 ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117715"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556287"
 ---
-# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Lägg till eller ta bort Azure Role-tilldelningar för externa gäst användare med hjälp av Azure Portal
+# <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Tilldela Azure-roller till externa gäst användare med hjälp av Azure Portal
 
 [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](overview.md) ger bättre säkerhets hantering för stora organisationer och för små och medel stora företag som arbetar med externa medarbetare, leverantörer eller Freelancer som behöver åtkomst till vissa resurser i din miljö, men inte nödvändigt vis till hela infrastrukturen eller någon fakturerings knuten omfattning. Du kan använda funktionerna i [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md) för att samar beta med externa gäst användare och du kan använda Azure RBAC för att ge bara de behörigheter som gäst användare behöver i din miljö.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
+Om du vill tilldela Azure-roller eller ta bort roll tilldelningar måste du ha:
+
+- `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
+
 
 ## <a name="when-would-you-invite-guest-users"></a>När bjuder du in gäst användare?
 
@@ -65,9 +65,9 @@ För att gäst användaren ska kunna komma åt din katalog måste de slutföra I
 
 Mer information om Inbjudnings processen finns i [Azure Active Directory B2B-samverkan med inbjudan](../active-directory/external-identities/redemption-experience.md).
 
-## <a name="add-a-role-assignment-for-a-guest-user"></a>Lägg till en roll tilldelning för en gäst användare
+## <a name="assign-a-role-to-a-guest-user"></a>Tilldela en roll till en gäst användare
 
-I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll. Om du vill lägga till en roll tilldelning för en gäst användare följer du [samma steg](role-assignments-portal.md#add-a-role-assignment) som för en medlems användare, grupp, tjänstens huvud namn eller hanterad identitet. Följ dessa steg för att lägga till en roll tilldelning för en gäst användare i olika omfång.
+I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll. Om du vill tilldela en roll till en gäst användare följer du [samma steg](role-assignments-portal.md) som för en medlems användare, grupp, tjänstens huvud namn eller hanterad identitet. Följ de här stegen för att tilldela en roll till en gäst användare i olika scope.
 
 1. Klicka på **Alla tjänster** i Azure-portalen.
 
@@ -101,9 +101,9 @@ I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll. Om du vill lägga
 
     ![Roll tilldelning för virtuell dator deltagare](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Lägg till en roll tilldelning för en gäst användare som ännu inte är i din katalog
+## <a name="assign-a-role-to-a-guest-user-not-yet-in-your-directory"></a>Tilldela en roll till en gäst användare som ännu inte är i din katalog
 
-Om du vill lägga till en roll tilldelning för en gäst användare följer du [samma steg](role-assignments-portal.md#add-a-role-assignment) som för en medlems användare, grupp, tjänstens huvud namn eller hanterad identitet.
+Om du vill tilldela en roll till en gäst användare följer du [samma steg](role-assignments-portal.md) som för en medlems användare, grupp, tjänstens huvud namn eller hanterad identitet.
 
 Om gäst användaren inte finns i din katalog än kan du bjuda in användaren direkt från fönstret Lägg till roll tilldelning.
 
@@ -173,7 +173,7 @@ Innan du tar bort en gäst användare från en katalog bör du först ta bort al
 
 1. Klicka på **Ja** i det borttagnings meddelande som visas.
 
-## <a name="troubleshoot"></a>Felsök
+## <a name="troubleshoot"></a>Felsöka
 
 ### <a name="guest-user-cannot-browse-the-directory"></a>Gäst användare kan inte bläddra i katalogen
 
@@ -187,7 +187,7 @@ Om en gäst användare behöver ytterligare behörighet i katalogen kan du tilld
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gäst användare kan inte bläddra användare, grupper eller tjänstens huvud namn för att tilldela roller
 
-Gäst användare har begränsad katalog behörighet. Även om en gäst användare är en [ägare](built-in-roles.md#owner) vid ett omfång, och de försöker lägga till en roll tilldelning för att ge någon annan åtkomst, kan de inte bläddra i listan över användare, grupper eller tjänstens huvud namn.
+Gäst användare har begränsad katalog behörighet. Även om en gäst användare är en [ägare](built-in-roles.md#owner) vid ett omfång, och de försöker tilldela en roll för att ge någon annan åtkomst, kan de inte bläddra i listan över användare, grupper eller tjänstens huvud namn.
 
 ![Gäst användare kan inte bläddra i säkerhets objekt för att tilldela roller](./media/role-assignments-external-users/directory-no-browse.png)
 

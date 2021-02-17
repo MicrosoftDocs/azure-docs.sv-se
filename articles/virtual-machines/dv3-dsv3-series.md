@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 215f907edb01cc35ffa4e9bb683964f8eda11d94
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8faf86037bc5c2be4ab83adcbcd7e992840d329a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557772"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- och Dsv3-serien
 
@@ -34,7 +34,7 @@ Virtuella datorer i dv3-serien Intel® Hyper-Threading-teknik.
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds (*minst 4 vCPU krävs*)<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
@@ -60,7 +60,7 @@ Virtuella datorer i Dsv3-serien Intel® Hyper-Threading-teknik.
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds (*minst 4 vCPU krävs*)<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br>
 

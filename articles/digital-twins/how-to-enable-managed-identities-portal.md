@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d54ecdac739bbc5a072426f5bf73f71ab394159
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418124"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545927"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Aktivera en hanterad identitet för routning av Azure Digitals sammanflätade händelser (för hands version): Azure Portal
 
@@ -101,9 +101,10 @@ Om du vill tilldela en roll till identiteten börjar du med att öppna [Azure Po
     :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="Skärm bild av Azure Portal som visar IAM-sidan (Access Control) för en Event Hub. Knappen + Lägg till är markerad." lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
 
 1. På följande sida för **Lägg till roll tilldelning** fyller du i värdena:
-    * **Roll**: Välj önskad roll i list menyn
-    * **Tilldela åtkomst till**: Välj **användare, grupp eller tjänstens huvud namn**
-    * **Välj**: här väljer du den hanterade identiteten för din Azure Digital-instans som tilldelas rollen. Namnet på den hanterade identiteten matchar namnet på instansen, så Sök efter namnet på din Azure Digital-instansen. När du väljer resultatet visas identiteten för instansen i avsnittet **valda medlemmar** .
+    * **Roll**: Välj önskad roll i list menyn.
+    * **Tilldela åtkomst till**: Välj **digitala garn** under **systemtilldelad hanterad identitet**.
+    * **Prenumeration**: Välj din prenumeration. Då visas alla Azure Digital-hanterade identiteter i den valda prenumerationen.
+    * **Välj**: här väljer du den hanterade identiteten för din Azure Digital-instans som tilldelas rollen. Namnet på den hanterade identiteten matchar namnet på instansen. Välj sedan namnet på din Azure Digital-instansen. När du väljer den, visas identiteten för instansen i avsnittet **markerade medlemmar** längst ned i fönstret.
 
     :::row:::
         :::column:::

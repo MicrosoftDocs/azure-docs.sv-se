@@ -22,7 +22,7 @@
           href: character-counts.md
     - name: Anvisningar
       items:
-        - name: Registrera dig för Translator
+        - name: Skapa en översättare-resurs
           href: ./translator-how-to-signup.md
         - name: Migrera till V3 Text API
           href: migrate-to-v3.md

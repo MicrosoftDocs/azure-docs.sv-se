@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/01/2021
+ms.date: 02/15/2021
 ms.custom: generated
-ms.openlocfilehash: 384d00ee41f2b6bfc2e91815bfcf54819c7d9ab2
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d9a2667907108cfb4c8d7a2a2c9b1558e02a9110
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809391"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535135"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
@@ -176,15 +176,15 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [Azure Sentinel-deltagare](#azure-sentinel-contributor) | Azure Sentinel-deltagare | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel-läsare](#azure-sentinel-reader) | Azure Sentinel-läsare | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel-svarare](#azure-sentinel-responder) | Azure Sentinel-svarare | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
-> | [Key Vault administratör (förhands granskning)](#key-vault-administrator-preview) | Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera Key Vault-resurser eller hantera roll tilldelningar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault certifikat ansvarig (förhands granskning)](#key-vault-certificates-officer-preview) | Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault administratör](#key-vault-administrator) | Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera Key Vault-resurser eller hantera roll tilldelningar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+> | [Key Vault certifikats ansvarig](#key-vault-certificates-officer) | Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault deltagare](#key-vault-contributor) | Hantera nyckel valv, men tillåt inte att du tilldelar roller i Azure RBAC och ger dig inte åtkomst till hemligheter, nycklar eller certifikat. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault kryptografi utanordnare (förhands granskning)](#key-vault-crypto-officer-preview) | Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault krypterings användare för krypterings tjänsten (för hands version)](#key-vault-crypto-service-encryption-user-preview) | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault krypto-användare (förhands granskning)](#key-vault-crypto-user-preview) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault läsare (förhands granskning)](#key-vault-reader-preview) | Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [Key Vault hemligheter (förhands granskning)](#key-vault-secrets-officer-preview) | Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-> | [Key Vault hemligheter, användare (förhands granskning)](#key-vault-secrets-user-preview) | Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 4633458b-17de-408a-b874-0445c86b69e6 |
+> | [Key Vault kryptografi utanordnare](#key-vault-crypto-officer) | Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Krypterings användare för Key Vault krypterings tjänsten](#key-vault-crypto-service-encryption-user) | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault krypto-användare](#key-vault-crypto-user) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault läsare](#key-vault-reader) | Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault hemligheter](#key-vault-secrets-officer) | Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Användare med Key Vault hemligheter](#key-vault-secrets-user) | Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 4633458b-17de-408a-b874-0445c86b69e6 |
 > | [Hanterad HSM-deltagare](#managed-hsm-contributor) | Låter dig hantera hanterade HSM-pooler, men inte åtkomst till dem. | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [Säkerhetsadministratör](#security-admin) | Visa och uppdatera behörigheter för Security Center. Samma behörigheter som säkerhets läsar rollen och kan också uppdatera säkerhets principen och ignorera aviseringar och rekommendationer. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Säkerhets utvärderings deltagare](#security-assessment-contributor) | Gör att du kan skicka utvärderingar till Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -2175,8 +2175,9 @@ Läsa, skriva och ta bort Azure Storage behållare och blobbar. Information om v
 > | **DataActions** |  |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Delete | Ta bort en blob. |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Read | Returnera en BLOB eller en lista över blobbar. |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Move/Action | Flyttar blobben från en sökväg till en annan |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Write | Skriv till en blob. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Move/Action | Flyttar blobben från en sökväg till en annan |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)-/storageAccounts/blobServices/containers/blobs/Add/Action | Returnerar resultatet av att lägga till BLOB-innehåll |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -2200,8 +2201,9 @@ Läsa, skriva och ta bort Azure Storage behållare och blobbar. Information om v
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
-        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
       ],
       "notDataActions": []
     }
@@ -4399,6 +4401,8 @@ Gör att du kan hantera säkerhetsrelaterade principer för SQL-servrar och data
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/managedInstances/Read | Returnera listan över hanterade instanser eller hämtar egenskaperna för den angivna hanterade instansen. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)-/sqlVulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/managedInstances/administrators/Read | Hämtar en lista över hanterade instans administratörer. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/servers/administrators/Read | Hämtar ett enskilt Azure Active Directory administratörs objekt |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -4461,7 +4465,9 @@ Gör att du kan hantera säkerhetsrelaterade principer för SQL-servrar och data
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
         "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
-        "Microsoft.Security/sqlVulnerabilityAssessments/*"
+        "Microsoft.Security/sqlVulnerabilityAssessments/*",
+        "Microsoft.Sql/managedInstances/administrators/read",
+        "Microsoft.Sql/servers/administrators/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7562,7 +7568,7 @@ Azure Sentinel-svarare [Lär dig mer](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-administrator-preview"></a>Key Vault administratör (förhands granskning)
+### <a name="key-vault-administrator"></a>Key Vault administratör
 
 Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera Key Vault-resurser eller hantera roll tilldelningar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7615,13 +7621,13 @@ Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Administrator (preview)",
+  "roleName": "Key Vault Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-certificates-officer-preview"></a>Key Vault certifikat ansvarig (förhands granskning)
+### <a name="key-vault-certificates-officer"></a>Key Vault certifikats ansvarig
 
 Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7676,7 +7682,7 @@ Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Certificates Officer (preview)",
+  "roleName": "Key Vault Certificates Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7737,7 +7743,7 @@ Hantera nyckel valv, men tillåt inte att du tilldelar roller i Azure RBAC och g
 }
 ```
 
-### <a name="key-vault-crypto-officer-preview"></a>Key Vault kryptografi utanordnare (förhands granskning)
+### <a name="key-vault-crypto-officer"></a>Key Vault kryptografi utanordnare
 
 Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7790,13 +7796,13 @@ Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behö
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Officer (preview)",
+  "roleName": "Key Vault Crypto Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault krypterings användare för krypterings tjänsten (för hands version)
+### <a name="key-vault-crypto-service-encryption-user"></a>Krypterings användare för Key Vault krypterings tjänsten
 
 Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7839,13 +7845,13 @@ Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bar
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption User (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-crypto-user-preview"></a>Key Vault krypto-användare (förhands granskning)
+### <a name="key-vault-crypto-user"></a>Key Vault krypto-användare
 
 Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7894,13 +7900,13 @@ Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyck
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto User (preview)",
+  "roleName": "Key Vault Crypto User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-reader-preview"></a>Key Vault läsare (förhands granskning)
+### <a name="key-vault-reader"></a>Key Vault läsare
 
 Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7955,13 +7961,13 @@ Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Reader (preview)",
+  "roleName": "Key Vault Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-officer-preview"></a>Key Vault hemligheter (förhands granskning)
+### <a name="key-vault-secrets-officer"></a>Key Vault hemligheter
 
 Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -8014,13 +8020,13 @@ Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera beh�
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets Officer (preview)",
+  "roleName": "Key Vault Secrets Officer",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="key-vault-secrets-user-preview"></a>Key Vault hemligheter, användare (förhands granskning)
+### <a name="key-vault-secrets-user"></a>Användare med Key Vault hemligheter
 
 Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -8055,7 +8061,7 @@ Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighe
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Secrets User (preview)",
+  "roleName": "Key Vault Secrets User",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

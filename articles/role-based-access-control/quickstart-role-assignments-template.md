@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: lägga till en Azure-roll tilldelning med en Azure Resource Manager-mall – Azure RBAC'
+title: 'Snabb start: tilldela en Azure-roll med hjälp av en Azure Resource Manager-mall – Azure RBAC'
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för en användare i resurs grupp omfånget med hjälp av Azure Resource Manager mallar och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559268"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Snabb start: lägga till en Azure-roll tilldelning med en ARM-mall
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Snabb start: tilldela en Azure-roll med en ARM-mall
 
 [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](overview.md) är hur du hanterar åtkomst till Azure-resurser. I den här snabb starten skapar du en resurs grupp och ger användaren åtkomst till att skapa och hantera virtuella datorer i resurs gruppen. I den här snabb starten används en Azure Resource Manager-mall (ARM-mall) för att ge åtkomst.
 
@@ -29,11 +29,11 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill lägga till roll tilldelningar måste du ha:
+Om du vill tilldela Azure-roller och ta bort roll tilldelningar måste du ha:
 
 - Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
-- Om du vill lägga till en roll tilldelning måste du ange tre element: säkerhets objekt, roll definition och omfång. I den här snabb starten är säkerhets objekt en annan användare i din katalog, roll definitionen är [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor)och omfånget är en resurs grupp som du anger.
+- Om du vill tilldela en roll måste du ange tre element: säkerhets objekt, roll definition och omfång. I den här snabb starten är säkerhets objekt en annan användare i din katalog, roll definitionen är [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor)och omfånget är en resurs grupp som du anger.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -47,7 +47,7 @@ Den resurs som definierats i mallen är:
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Ta reda på vilken e-postadress som är kopplad till din Azure-prenumeration. Eller bestäm e-postadressen till en annan användare i din katalog.
 

@@ -1,27 +1,27 @@
 ---
-title: Lägga till en roll tilldelning för en hanterad identitet (för hands version) – Azure RBAC
-description: Lär dig hur du lägger till en roll tilldelning genom att börja med den hanterade identiteten och sedan välja omfattning och roll med hjälp av Azure Portal och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
+title: Tilldela Azure-roller till en hanterad identitet (för hands version) – Azure RBAC
+description: Lär dig hur du tilldelar Azure-roller genom att börja med den hanterade identiteten och sedan välja omfattning och roll med hjälp av Azure Portal och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: a01246c0cf35653f4d13262183cf9df28b056c69
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122495"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556849"
 ---
-# <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Lägg till en roll tilldelning för en hanterad identitet (förhands granskning)
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>Tilldela Azure-roller till en hanterad identitet (förhands granskning)
 
-Du kan lägga till roll tilldelningar för en hanterad identitet med hjälp av sidan **åtkomst kontroll (IAM)** enligt beskrivningen i [Lägg till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal](role-assignments-portal.md). När du använder sidan åtkomst kontroll (IAM) börjar du med omfånget och väljer sedan den hanterade identiteten och rollen. I den här artikeln beskrivs ett alternativt sätt att lägga till roll tilldelningar för en hanterad identitet. Med de här stegen börjar du med den hanterade identiteten och väljer sedan omfattning och roll.
+Du kan tilldela en roll till en hanterad identitet med hjälp av sidan **åtkomst kontroll (IAM)** enligt beskrivningen i [tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md). När du använder sidan åtkomst kontroll (IAM) börjar du med omfånget och väljer sedan den hanterade identiteten och rollen. I den här artikeln beskrivs ett alternativt sätt att tilldela roller för en hanterad identitet. Med de här stegen börjar du med den hanterade identiteten och väljer sedan omfattning och roll.
 
 > [!IMPORTANT]
-> Att lägga till en roll tilldelning för en hanterad identitet med de här alternativa stegen är för närvarande en för hands version.
+> Tilldela en roll till en hanterad identitet med de här alternativa stegen är för närvarande en för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -92,5 +92,5 @@ Följ dessa steg om du vill tilldela en roll till en användardefinierad hantera
 ## <a name="next-steps"></a>Nästa steg
 
 - [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md)
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md)
 - [Visa en lista med Azures roll tilldelningar med hjälp av Azure Portal](role-assignments-list-portal.md)

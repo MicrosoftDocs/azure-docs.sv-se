@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
-ms.translationtype: HT
+ms.openlocfilehash: d234227de98beeed6898697fb6ed8e0865546e16
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372297"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555858"
 ---
 # <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Överföra prenumerationer i en Azure-plan från en partner till en annan (förhandsversion)
 
@@ -22,7 +22,7 @@ I den här artikeln får du lära dig det du behöver veta före och efter över
 
 Åtkomst till befintliga användare, grupper eller tjänsthuvudnamn som tilldelades med hjälp av rollbaserad åtkomst i Azure (Azure RBAC) påverkas inte under övergången. [Azure RBAC](../../role-based-access-control/overview.md) hjälper till vid hantering av vem som ska ha åtkomst till Azure-resurser, vad de ska kunna göra med resurserna och till vilka områden de ska ha åtkomst. Din nya partner får ingen Azure RBAC-åtkomst till dina resurser i och med prenumerationsöverföringen. Din tidigare partner behåller sin Azure RBAC-åtkomst.
 
-Det är därför viktigt att du tar bort Azure RBAC-åtkomst för den gamla partnern och lägger till åtkomst för den nya partnern. Mer information om hur du ger din nya partner åtkomst finns i [Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?](../../role-based-access-control/overview.md) Mer information om hur du tar bort din tidigare partners Azure RBAC-åtkomst finns i [Ta bort en rolltilldelning](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment).
+Det är därför viktigt att du tar bort Azure RBAC-åtkomst för den gamla partnern och lägger till åtkomst för den nya partnern. Mer information om hur du ger din nya partner åtkomst finns i [Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?](../../role-based-access-control/overview.md) Mer information om hur du tar bort din tidigare partners Azure RBAC-åtkomst finns i [ta bort Azure-roll tilldelningar](../../role-based-access-control/role-assignments-remove.md).
 
 Din nya partner får inte heller automatiskt [AOBO-åtkomst](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) (Admin on Behalf Of, administratör på uppdrag av) till dina prenumerationer. AOBO krävs för att din partner ska kunna hantera Azure-prenumerationer åt dig. Mer information om Azure-behörigheter finns [Få behörighet att hantera en kunds tjänst eller prenumeration](/partner-center/customers-revoke-admin-privileges).
 

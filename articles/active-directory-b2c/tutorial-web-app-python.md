@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953031"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555680"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Självstudie: aktivera autentisering i ett python-webbprogram med Azure AD B2C
 
@@ -32,7 +32,7 @@ I de här självstudierna har du
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande Azure AD B2C resurser på plats innan du fortsätter med stegen i den här självstudien:
 
@@ -185,4 +185,4 @@ I den här självstudien har du konfigurerat ett python-webbprogram så att det 
 Nu ska du lära dig hur du anpassar användar flödes sidor som visas för dina användare genom att Azure AD B2C:
 
 > [!div class="nextstepaction"]
-> [Självstudie: anpassa gränssnittet för användar upplevelser i Azure AD B2C >](tutorial-customize-ui.md)
+> [Anpassa gränssnittet för användar upplevelser i Azure AD B2C >](customize-ui.md)

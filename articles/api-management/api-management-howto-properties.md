@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491028"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545844"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Använd namngivna värden i Azure API Management-principer
 
@@ -25,7 +25,7 @@ ms.locfileid: "99491028"
 
 ## <a name="value-types"></a>Värde typer
 
-|Typ  |Beskrivning  |
+|Typ  |Description  |
 |---------|---------|
 |Administrera     |  Literal sträng eller princip uttryck     |
 |Hemlighet     |   Litteral sträng eller ett princip uttryck som är krypterat med API Management      |
@@ -86,6 +86,8 @@ Se [krav för Key Vault-integrering](#prerequisites-for-key-vault-integration).
 
 ### <a name="add-a-plain-or-secret-value"></a>Lägg till ett oformaterat eller hemligt värde
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. I [Azure Portal](https://portal.azure.com)navigerar du till API Management-instansen.
 1. Under **API: er** väljer du **namngivna värden**  >  **+ Lägg till**.
 1. Ange en **namn** identifierare och ange ett **visnings namn** som används för att referera till egenskapen i principer.
@@ -95,6 +97,50 @@ Se [krav för Key Vault-integrering](#prerequisites-for-key-vault-integration).
 1. Välj **Skapa**.
 
 När det namngivna värdet har skapats kan du redigera det genom att välja namnet. Om du ändrar visnings namnet, uppdateras alla principer som refererar till det namngivna värdet automatiskt för att använda det nya visnings namnet.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Börja använda Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Om du vill lägga till ett namngivet värde använder du kommandot [AZ APIM NV Create](/cli/azure/apim/nv#az_apim_nv_create) :
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+När du har skapat ett namngivet värde kan du uppdatera det med hjälp av kommandot [AZ APIM NV Update](/cli/azure/apim/nv#az_apim_nv_update) . Om du vill se alla dina namngivna värden kör du kommandot [AZ APIM NV List](/cli/azure/apim/nv#az_apim_nv_list) :
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+Om du vill se information om det namngivna värdet som du skapade i det här exemplet kör du kommandot [AZ APIM NV show](/cli/azure/apim/nv#az_apim_nv_show) :
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Det här exemplet är ett hemligt värde. Föregående kommando returnerar inte värdet. Om du vill se värdet kör du kommandot [AZ APIM NV show-Secret](/cli/azure/apim/nv#az_apim_nv_show_secret) :
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+Om du vill ta bort ett namngivet värde använder du kommandot [AZ APIM NV Delete](/cli/azure/apim/nv#az_apim_nv_delete) :
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>Använd ett namngivet värde
 

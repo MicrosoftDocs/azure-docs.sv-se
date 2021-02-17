@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652882"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548734"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Använda Twilio för röst-och SMS-funktioner i Java
 Den här guiden visar hur du utför vanliga programmerings åtgärder med Twilio API-tjänsten på Azure. Scenarierna som ingår är att ringa ett telefonsamtal och skicka ett SMS-meddelande (Short Message Service). Mer information om Twilio och hur du använder röst-och SMS i dina program finns i avsnittet [Nästa steg](#NextSteps) .
@@ -76,7 +76,7 @@ När du registrerar dig för ett Twilio-konto får du ett konto-ID och en autent
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Skapa ett Java-program
 1. Hämta Twilio-JAR och Lägg till den i din Java-build-sökväg och din WAR-distributions sammansättning. I [https://github.com/twilio/twilio-java][twilio_java] kan du ladda ned GitHub-källorna och skapa en egen jar-fil eller ladda ned en förbyggd jar-fil (med eller utan beroenden).
-2. Se till att ditt JDK- **cacerts** innehåller Equifax säkra certifikat utfärdarens certifikat med MD5 finger avtryck 67: CB: 9d: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: EG: D4 (serie numret är 35: de: F4: CF och det SHA1-finger avtryck är D2:32:09: AD: 23: D3:14:23:21:74: E4:14.4:7f: 9d: 62:13:97:86:63:3a). Detta är certifikat utfärdarens certifikat (CA) för [https://api.twilio.com][twilio_api_service] tjänsten, som anropas när du använder Twilio-API: er. Information om hur du garanterar att JDK- **cacerts** innehåller rätt CA-certifikat finns i [lägga till ett certifikat i certifikat arkivet för Java-ca][add_ca_cert].
+2. Se till att ditt JDK- **cacerts** innehåller Equifax säkra certifikat utfärdarens certifikat med MD5 finger avtryck 67: CB: 9d: C0:13:24:8a: 82:9b: B2:17:1e: D1:1b: EG: D4 (serie numret är 35: de: F4: CF och det SHA1-finger avtryck är D2:32:09: AD: 23: D3:14:23:21:74: E4:14.4:7f: 9d: 62:13:97:86:63:3a). Detta är certifikat utfärdarens certifikat (CA) för [https://api.twilio.com][twilio_api_service] tjänsten, som anropas när du använder Twilio-API: er.
 
 Detaljerade instruktioner för att använda Twilio-klient biblioteket för Java finns i [så här ringer du upp ett telefonsamtal med Twilio i ett Java-program på Azure][howto_phonecall_java].
 
@@ -217,7 +217,6 @@ Nu när du har lärt dig grunderna i Twilio-tjänsten kan du följa dessa länka
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
 [misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message

@@ -4,12 +4,12 @@ description: Övervakning av program prestanda för Azure App Services. Diagramm
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 55682215a990643111d5813db437b1f1e4612868
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365233"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547261"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Övervaka Azure App Service-prestanda
 
@@ -65,7 +65,7 @@ Det finns två sätt att aktivera program övervakning för Azure App Services-v
 | Samlar in användningstrender och aktiverar korrelation från tillgänglighetsresultat till transaktioner | Ja |Ja |
 | Samlar in undantag som hanteras av värdprocessen | Ja |Ja |
 | Förbättrar precisionen för APM-mått under belastning när sampling används | Ja |Ja |
-| Korrelerar mikrotjänster över begärande-/beroendegränser | Inga (endast Single-Instance APM-funktioner) |Ja |
+| Korrelerar mikrotjänster över begärande-/beroendegränser | Inga (endast Single-Instance APM-funktioner) |Yes |
 
 3. Om du vill konfigurera inställningar som sampling, som du tidigare kan kontrol lera via applicationinsights.config-filen kan du nu interagera med samma inställningar via program inställningar med ett motsvarande prefix. 
 
@@ -76,7 +76,7 @@ Det finns två sätt att aktivera program övervakning för Azure App Services-v
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1, 3,1 och 5,0. Versionerna 2,0, 2,2 och 3,0 har dragits tillbaka och stöds inte längre. Uppgradera till en version av .NET Core som [stöds](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) för automatisk Instrumentation att fungera.
+> Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1 och 3,1. Versionerna 2,0, 2,2 och 3,0 har dragits tillbaka och stöds inte längre. Uppgradera till en version av .NET Core som [stöds](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) för automatisk Instrumentation att fungera.
 
 Det finns för närvarande **inte stöd** för att rikta in hela framework från ASP.net Core, fristående distribution och Linux-baserade program med hjälp av agent/tillägg-baserad övervakning. ([Manuell instrumentering](./asp-net-core.md) via kod fungerar i alla tidigare scenarier.)
 

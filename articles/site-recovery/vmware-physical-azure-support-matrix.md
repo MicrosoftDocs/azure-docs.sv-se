@@ -3,12 +3,12 @@ title: Support mat ris för VMware/fysisk haveri beredskap i Azure Site Recovery
 description: Sammanfattar stöd för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med hjälp av Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f684f57ed1acb5c48694196b4e19de809c98dc9f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102265"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534692"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure
 
@@ -203,44 +203,44 @@ Gäst-/Server nätverk flera nätverkskort | Ja.
 
 **Komponent** | **Stöds**
 --- | ---
-Azure ExpressRoute | Ja
-ILB | Ja
-ELB | Ja
-Azure Traffic Manager | Ja
-Multi-NIC | Ja
-Reserverad IP adress | Ja
-IPv4 | Ja
-Behåll Källans IP-adress | Ja
-Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Ja
-Snabbare nätverk | Inga
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Multi-NIC | Yes
+Reserverad IP adress | Yes
+IPv4 | Yes
+Behåll Källans IP-adress | Yes
+Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Yes
+Snabbare nätverk | No
 
 ## <a name="storage"></a>Storage
 **Komponent** | **Stöds**
 --- | ---
 Dynamisk disk | OS-disken måste vara en standard disk. <br/><br/>Data diskar kan vara dynamiska diskar
-Konfiguration av Docker-disk | Inga
+Konfiguration av Docker-disk | No
 Värd-NFS | Ja för VMware<br/><br/> Nej för fysiska servrar
-Värd-SAN (iSCSI/FC) | Ja
+Värd-SAN (iSCSI/FC) | Yes
 Värd virtuellt San | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
 Värd-multisökväg (MPIO) | Ja, testad med Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM för CLARiiON
 Virtuella värd volymer (VVols) | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
-Gäst/Server VMDK | Ja
-Gäst-/Server delad kluster disk | Inga
-Gäst/Server-krypterad disk | Inga
-Gäst-/Server-NFS | Inga
+Gäst/Server VMDK | Yes
+Gäst-/Server delad kluster disk | No
+Gäst/Server-krypterad disk | No
+Gäst-/Server-NFS | No
 Gäst-/Server-iSCSI | För migrering – Ja<br/>Vid haveri beredskap – nej kommer iSCSI att återställas efter fel som en ansluten disk till den virtuella datorn
-Gäst/Server SMB 3,0 | Inga
-Gäst/Server-RDM | Ja<br/><br/> Ej tillämpligt för fysiska servrar
+Gäst/Server SMB 3,0 | No
+Gäst/Server-RDM | Yes<br/><br/> Ej tillämpligt för fysiska servrar
 Gäst-/Server disk > 1 TB | Ja, disken måste vara större än 1024 MB<br/><br/>Upp till 8 192 GB vid replikering till hanterade diskar (9,26-version och senare)<br></br> Upp till 4 095 GB vid replikering till lagrings konton
-Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | Inga
-Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | Inga
-Gäst-/Server volym med Striped disk >4 TB | Ja
+Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | No
+Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | No
+Gäst-/Server volym med Striped disk >4 TB | Yes
 Hantering av logiska volymer (LVM)| Tjocka etablering – Ja <br></br> Tunn allokering – nej
-Gäst/Server – lagrings utrymmen | Inga
-Gäst/Server-NVMe-gränssnitt | Inga
-Gäst/Server Hot Lägg till/ta bort disk | Inga
-Gäst/Server – exkludera disk | Ja
-Multisökväg för gäst/Server (MPIO) | Inga
+Gäst/Server – lagrings utrymmen | No
+Gäst/Server-NVMe-gränssnitt | No
+Gäst/Server Hot Lägg till/ta bort disk | No
+Gäst/Server – exkludera disk | Yes
+Multisökväg för gäst/Server (MPIO) | No
 GPT-partitioner för gäst/Server | Det finns stöd för fem partitioner från samlad [uppdatering 37](https://support.microsoft.com/help/4508614/) (version 9,25 av mobilitets tjänsten) och senare. Tidigare fyra stöddes.
 ReFS | Elastiskt fil system stöds med mobilitets tjänst version 9,23 eller senare
 Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) med Site Recovery Mobility agent version 9,30 och senare. <br/> -Start typen för säker UEFI stöds inte. [Läs mer.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
@@ -249,26 +249,26 @@ Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Az
 
 |**Typ av replikering**   |**Stöds**  |
 |---------|---------|
-|Avlästa data överföringar (ODX)    |       Inga  |
-|Seeding offline        |   Inga      |
-| Azure Data Box | Inga
+|Avlästa data överföringar (ODX)    |       No  |
+|Seeding offline        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure-lagring
 
 **Komponent** | **Stöds**
 --- | ---
-Lokalt redundant lagring | Ja
-Geo-redundant lagring | Ja
-Geo-redundant lagring med läsbehörighet (RA-GRS) | Ja
-Cool Storage | Inga
-Frekvent lagring| Inga
-Blockblobar | Inga
-Kryptering vid vila (SSE)| Ja
+Lokalt redundant lagring | Yes
+Geo-redundant lagring | Yes
+Geo-redundant lagring med läsbehörighet (RA-GRS) | Yes
+Cool Storage | No
+Frekvent lagring| No
+Blockblobar | No
+Kryptering vid vila (SSE)| Yes
 Kryptering vid vila (CMK)| Ja (via PowerShell AZ 3.3.0-modul och senare)
 Dubbel kryptering i vila | Ja (via PowerShell AZ 3.3.0-modul och senare). Läs mer om regioner som stöds för [Windows](../virtual-machines/disk-encryption.md) och [Linux](../virtual-machines/disk-encryption.md).
-Premium Storage | Ja
-Alternativ för säker överföring | Ja
-Import/export-tjänst | Inga
+Premium Storage | Yes
+Alternativ för säker överföring | Yes
+Import/export-tjänst | No
 Azure Storage brand väggar för virtuella nätverk | Ja.<br/> Konfigurerat på mål lagring/cache lagrings konto (används för att lagra replikeringsdata).
 Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (transaktions kostnader är betydligt högre för v2 jämfört med v1)
 
@@ -276,10 +276,10 @@ Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (
 
 **Funktion** | **Stöds**
 --- | ---
-Tillgänglighetsuppsättningar | Ja
-Tillgänglighetszoner | Inga
-) | Ja
-Hanterade diskar | Ja
+Tillgänglighetsuppsättningar | Yes
+Tillgänglighetszoner | No
+) | Yes
+Hanterade diskar | Yes
 
 ## <a name="azure-vm-requirements"></a>Virtuella Azure VMware-datorer
 
@@ -329,14 +329,25 @@ Maximal dataomsättning per dag som stöds av en processerver | 2 TB
 - Site Recovery kan hantera högre dataflöden med annan överlappning, större skrivningsstorlek och verkligt I/O-beteende under arbetsbelastningen.
 - Dessa tal förutsätter en typisk efter släpning på ungefär fem minuter. Det vill säga, när data har överförts bearbetas de och en återställningspunkt skapas inom fem minuter.
 
+## <a name="storage-account-limits"></a>Lagrings konto gränser
+
+Vartefter den genomsnittliga omsättningen på diskarna ökar är antalet diskar som ett lagrings konto har stöd för. Tabellen nedan kan användas som vägledning för att fatta beslut om antalet lagrings konton som måste tillhandahållas.
+ 
+**Typ av lagrings konto**    |    **Omsättning = 4 Mbit/s per disk**    |    **Omsättning = 8 Mbit/s per disk**
+---    |    ---    |    ---
+V1 lagrings konto    |    600 diskar    |    300 diskar
+V2-lagrings konto    |    1500 diskar    |    750 diskar
+
+Observera att gränserna ovan gäller endast för Hybrid DR-scenarier.
+
 ## <a name="vault-tasks"></a>Valv aktiviteter
 
 **Åtgärd** | **Stöds**
 --- | ---
-Flytta valv över resurs grupper | Inga
-Flytta valvet inom och över prenumerationer | Inga
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | Inga
-Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | Inga
+Flytta valv över resurs grupper | No
+Flytta valvet inom och över prenumerationer | No
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | No
+Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | No
 
 
 ## <a name="obtain-latest-components"></a>Hämta de senaste komponenterna

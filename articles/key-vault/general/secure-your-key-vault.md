@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526263"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100534710"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Säker åtkomst till ett nyckelvalv
 
@@ -182,13 +182,13 @@ Vi måste auktorisera följande åtgärder för våra roller:
 
 I följande tabell sammanfattas åtkomst behörigheterna för våra roller och program.
 
-| Roll | Behörigheter på hanteringsplanet | Data Plans behörigheter – valv åtkomst principer | Data Plans behörigheter – Azure RBAC (för hands version)  |
+| Roll | Behörigheter på hanteringsplanet | Data Plans behörigheter – valv åtkomst principer | Data Plans behörigheter – Azure RBAC  |
 | --- | --- | --- | --- |
-| Säkerhetsteamet | [Key Vault deltagare](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikat: alla åtgärder <br> Nycklar: alla åtgärder <br> Hemligheter: alla åtgärder | [Key Vault administratör (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
+| Säkerhetsteamet | [Key Vault deltagare](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikat: alla åtgärder <br> Nycklar: alla åtgärder <br> Hemligheter: alla åtgärder | [Key Vault administratör](../../role-based-access-control/built-in-roles.md#key-vault-administrator) |
 | Utvecklare och &nbsp; operatörer | Key Vault distributions behörighet<br><br> **Obs!** den här behörigheten gör att distribuerade virtuella datorer kan hämta hemligheter från ett nyckel valv. | Inga | Inga |
-| Granskare | Inget | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-konto | Inget | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Program | Inget | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) [Key Vault hemlig användare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Granskare | Inget | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
+| Azure Storage-konto | Inget | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
+| Program | Inget | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault hemlig användare](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) [Key Vault läsaren](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
 
 De tre team rollerna behöver åtkomst till andra resurser tillsammans med Key Vault behörigheter. Utvecklare och operatörer behöver distribuera åtkomst för att distribuera virtuella datorer (eller Web Apps-funktionen i Azure App Service). Granskare behöver Läs behörighet till lagrings kontot där Key Vaults loggarna lagras.
 

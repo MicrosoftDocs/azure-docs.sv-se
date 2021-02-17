@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913742"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535288"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Snabbstart: Skapa en VM-skalningsuppsättning med Azure Portal
 
@@ -39,7 +39,7 @@ Börja med att skapa en offentlig Standard Load Balancer med hjälp av portalen.
     | ---| ---|
     | Prenumeration  | Välj din prenumeration.    |    
     | Resursgrupp | Välj **Skapa ny** och skriv *myVMSSResourceGroup* i text rutan.|
-    | Namn           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Region         | Välj **USA, östra**.       |
     | Typ          | Välj **Offentlig**.       |
     | SKU           | Välj **standard**.       |
@@ -57,7 +57,7 @@ Börja med att skapa en offentlig Standard Load Balancer med hjälp av portalen.
 Du kan distribuera en skalningsuppsättning som anges med en Windows Server-avbildning eller en Linux-avbildningen som RHEL, CentOS, Ubuntu eller SLES.
 
 1. Skriv **skalnings uppsättning** i sökrutan. I resultaten, under **Marketplace**, väljer du **skalnings uppsättningar för virtuella datorer**. Välj **skapa** på sidan **skalnings uppsättningar för virtuell dator** , som öppnar sidan **skapa en skalnings uppsättning för virtuell dator** . 
-1. På fliken **Grundläggande inställningar** går du till **Projektinformation**, kontrollerar att korrekt prenumeration har valts och väljer sedan **Skapa ny** för resursgruppen. Skriv *myVMSSResourceGroup* som namn och välj sedan **OK** . 
+1. På fliken **grundläggande** , under **projekt information**, se till att rätt prenumeration är markerad och välj *myVMSSResourceGroup* i resurs grupps listan. 
 1. Skriv *myScaleSet* som namn på din skalnings uppsättning.
 1. I **region** väljer du en region som ligger nära ditt område.
 1. Välj en Marketplace-avbildning för **avbildningen**. I det här exemplet har vi valt *Ubuntu Server 18,04 LTS*.
