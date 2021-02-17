@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cb979491e247a4d44b9ae9ae27c433fb3f436d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530040"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579227"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Självstudie: skicka push-meddelanden till vissa iOS-enheter med Azure Notification Hubs
 
@@ -125,8 +125,6 @@ Det första steget är att lägga till GRÄNSSNITTs elementen i din befintliga s
 
     - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
     {
-        //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
-
         NSString* templateBodyAPNS = @"{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
         [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
@@ -341,7 +339,7 @@ Vanliga aviseringar skickas av en server dels tjänst men du kan skicka meddelan
 
     ![Exempel meddelande på iOS][1]
 
-    När du väljer **Prenumerera**konverterar appen de valda kategorierna till taggar och begär en ny enhets registrering för de valda taggarna från Notification Hub.
+    När du väljer **Prenumerera** konverterar appen de valda kategorierna till taggar och begär en ny enhets registrering för de valda taggarna från Notification Hub.
 
 2. Ange ett meddelande som ska skickas som avbryter nyheter och tryck sedan på knappen **Skicka meddelande** . Du kan också köra .NET-konsol programmet för att generera meddelanden.
 
@@ -369,4 +367,4 @@ I den här självstudien skickade du broadcast-meddelanden till vissa iOS-enhete
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/dn530749(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [get-started]: ios-sdk-get-started.md
-[Azure Portal]: https://portal.azure.com
+[Azure-portalen]: https://portal.azure.com

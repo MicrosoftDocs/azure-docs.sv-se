@@ -3,23 +3,23 @@ title: Rapporter i Azure Monitor för behållare
 description: Beskriver tillgängliga rapporter för att analysera data som samlas in av Azure Monitor för behållare.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 3cc2f8fb9bfaa278ce06b4a8cd6d379397b7129a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907605"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582319"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>Rapporter i Azure Monitor för behållare
-Rapporter i Azure Monitor för behållare rekommenderas färdiga [Azure-arbetsböcker](../platform/workbooks-overview.md). I den här artikeln beskrivs de olika rapporter som är tillgängliga och hur du kommer åt dem.
+Rapporter i Azure Monitor för behållare rekommenderas färdiga [Azure-arbetsböcker](../visualize/workbooks-overview.md). I den här artikeln beskrivs de olika rapporter som är tillgängliga och hur du kommer åt dem.
 
 ## <a name="viewing-reports"></a>Visa rapporter
 Från **Azure Monitor** -menyn i Azure Portal väljer du **behållare**. Välj **insikter** i avsnittet **övervakning** , Välj ett visst kluster och välj sedan sidan **rapporter (förhands granskning)** . 
 
 [![Sidan rapporter](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 
-## <a name="create-a-custom-workbook"></a>Skapa en anpassad arbets bok
-Om du vill skapa en anpassad arbets bok baserat på någon av dessa arbets böcker markerar du List rutan **Visa arbets böcker** och **går sedan till AKS-galleriet** längst ned i list rutan. Se [Azure Monitor-arbetsböcker](../platform/workbooks-overview.md) för mer information om arbets böcker och använda mallar för arbets böcker.
+## <a name="create-a-custom-workbook"></a>Skapa en anpassad arbetsbok
+Om du vill skapa en anpassad arbets bok baserat på någon av dessa arbets böcker markerar du List rutan **Visa arbets böcker** och **går sedan till AKS-galleriet** längst ned i list rutan. Se [Azure Monitor-arbetsböcker](../visualize/workbooks-overview.md) för mer information om arbets böcker och använda mallar för arbets böcker.
 
 [![Galleri för AKS](media/container-insights-reports/aks-gallery.png)](media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -78,4 +78,4 @@ Om du vill skapa en anpassad arbets bok baserat på någon av dessa arbets böck
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se [Azure Monitor-arbetsböcker](../platform/workbooks-overview.md) för information om arbets böcker i Azure Monitor.
+- Se [Azure Monitor-arbetsböcker](../visualize/workbooks-overview.md) för information om arbets böcker i Azure Monitor.

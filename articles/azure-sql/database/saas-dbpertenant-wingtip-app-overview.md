@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447082"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588725"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Introduktion till en SaaS-app med flera innehavare som använder mönstret för databas per klient organisation med Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ När du går igenom självstudierna och arbetar med appen kan du fokusera på Sa
 När du har distribuerat appen kan du utforska följande självstudier som bygger på den första distributionen. De här självstudierna visar vanliga SaaS-mönster som utnyttjar inbyggda funktioner i SQL Database, Azure Synapse Analytics och andra Azure-tjänster. Självstudier innehåller PowerShell-skript med detaljerade förklaringar. Förklaringarna fören klar förståelse och implementering av samma SaaS hanterings mönster i dina program.
 
 
-| Självstudier | Description |
+| Självstudie | Description |
 |:--|:--|
 | [Vägledning och tips för SQL Database SaaS-exempel för flera klient organisationer](saas-tenancy-wingtip-app-guidance-tips.md) | Hämta och kör PowerShell-skript för att förbereda delar av programmet. |
 |[Distribuera och utforska Wingtip SaaS-programmet](./saas-dbpertenant-get-started-deploy.md)|  Distribuera och utforska Wingtip SaaS-programmet med din Azure-prenumeration. |
 |[Etablera och katalogisera klienter](./saas-dbpertenant-provision-and-catalog.md)| Lär dig hur programmet ansluter till klienter med hjälp av en katalog databas och hur katalogen mappar klienter till sina data. |
 |[Övervaka och hantera prestanda](./saas-dbpertenant-performance-monitoring.md)| Lär dig hur du använder övervaknings funktioner i SQL Database och ställer in aviseringar när tröskelvärden för prestanda överskrids. |
-|[Övervaka med Azure Monitor-loggar](./saas-dbpertenant-log-analytics.md) | Lär dig hur du använder [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md) för att övervaka stora mängder resurser över flera pooler. |
+|[Övervaka med Azure Monitor-loggar](./saas-dbpertenant-log-analytics.md) | Lär dig hur du använder [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md) för att övervaka stora mängder resurser över flera pooler. |
 |[Återställa en enskild klientorganisation](./saas-dbpertenant-restore-single-tenant.md)| Lär dig hur du återställer en klient databas till en tidigare tidpunkt. Lär dig också hur du återställer till en parallell databas som lämnar den befintliga klient databasen online. |
 |[Hantera klient organisationens databas schema](saas-tenancy-schema-management.md)| Lär dig hur du uppdaterar schema och uppdaterar referens data över alla klient databaser. |
 |[Kör distribuerade frågor mellan klienter](saas-tenancy-cross-tenant-reporting.md) | Skapa en ad hoc Analytics-databas och kör distribuerade frågor i real tid över alla klienter.  |

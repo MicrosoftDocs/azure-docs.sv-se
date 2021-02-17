@@ -47,8 +47,8 @@
       items:
         - name: Information om transparens
           items:
-            - name: Introduktion till rumslig analys
-              href: intro-to-spatial-analysis-public-preview.md
+            - name: Användnings fall för rums analys
+              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: Egenskaper och begränsningar
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
         - name: Integrering och ansvarsfull användning
@@ -82,6 +82,8 @@
           displayName: 'container instances, container, containers, images'
     - name: Container för rumslig analys
       items:
+        - name: Översikt över rums analys
+          href: intro-to-spatial-analysis-public-preview.md
         - name: Konfigurera värddatorn och kör containern
           href: spatial-analysis-container.md
         - name: Konfigurera åtgärder

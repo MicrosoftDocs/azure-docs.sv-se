@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046047"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581114"
 ---
 # <a name="management-of-azure-automation-data"></a>Hantera Azure Automation-data
 
@@ -28,7 +28,7 @@ För att säkerställa säkerheten för data som överförs till Azure Automatio
 
 Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Vi rekommenderar att du inte uttryckligen anger att agenten ska använda TLS 1,2 om det inte är absolut nödvändigt, eftersom det kan bryta säkerhets funktioner på plattforms nivå som gör att du automatiskt kan identifiera och dra nytta av nyare säkra protokoll när de blir tillgängliga, t. ex. TLS 1,3.
 
-Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Linux, vilket är ett beroende för Hybrid Runbook Worker-rollen finns i [Log Analytics agent översikt – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
+Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Linux, vilket är ett beroende för Hybrid Runbook Worker-rollen finns i [Log Analytics agent översikt – TLS 1,2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Plattformsspecifik vägledning
 
@@ -45,7 +45,7 @@ När du tar bort en resurs i Azure Automation sparas den i ett antal dagar för 
 
 I följande tabell sammanfattas bevarande principen för olika resurser.
 
-| Data | Princip |
+| Data | Policy |
 |:--- |:--- |
 | Konton |Ett konto tas bort permanent 30 dagar efter att användaren tagit bort det. |
 | Tillgångar |En till gång tas bort permanent 30 dagar efter att användaren tagit bort den, eller 30 dagar efter att en användare har tagit bort ett konto som innehåller till gången. Till gångar innehåller variabler, scheman, autentiseringsuppgifter, certifikat, python 2-paket och anslutningar. |

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570220"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Övervaka behållare med Azure Monitor loggar
  
@@ -46,7 +46,7 @@ Agenten aktiverar insamling av flera behållar-/regionsspecifika loggar som kan 
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om [behållar lösningen för Azure Monitor loggar](../azure-monitor/insights/containers.md).
+* Läs mer om [behållar lösningen för Azure Monitor loggar](../azure-monitor/containers/containers.md).
 * Läs mer om behållar dirigering på Service Fabric- [Service Fabric och behållare](service-fabric-containers-overview.md)
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
-* Konfigurera Azure Monitor loggar för att ställa in [automatiserade varnings](../azure-monitor/platform/alerts-overview.md) regler som hjälper till att upptäcka och diagnostik
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
+* Konfigurera Azure Monitor loggar för att ställa in [automatiserade varnings](../azure-monitor/alerts/alerts-overview.md) regler som hjälper till att upptäcka och diagnostik

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954537"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571859"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Självstudie: lagra Azure Media Services händelser i Azure Log Analytics
 
@@ -42,11 +42,11 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 > * En [Azure-prenumeration](how-to-set-azure-subscription.md)
 > * Ett [Media Services](create-account-howto.md) konto och en resurs grupp.
 > * En installation av [ffmpeg](https://ffmpeg.org/download.html) för ditt operativ system.
-> * En [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) arbets yta
+> * En [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) arbets yta
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Prenumerera på en Media Services-händelse med Logic app
 
-1. I Azure Portal, om du inte redan har gjort det, skapar du en [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) arbets yta. Du behöver arbetsyte-ID: t och en av nycklarna, så se till att webbläsarfönstret är öppet. Öppna sedan portalen på en annan flik eller i ett fönster.
+1. I Azure Portal, om du inte redan har gjort det, skapar du en [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) arbets yta. Du behöver arbetsyte-ID: t och en av nycklarna, så se till att webbläsarfönstret är öppet. Öppna sedan portalen på en annan flik eller i ett fönster.
 
 1. Navigera till ditt Azure Media Services konto och välj **händelser**. Då visas alla metoder för att prenumerera på Azure Media Services händelser.
     > [!div class="mx-imgBorder"]
@@ -230,4 +230,4 @@ Om du inte vill fortsätta att använda de resurser som du skapade under den hä
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan skapa olika frågor och spara dem. Dessa kan läggas till på [Azure-instrumentpanelen](../../azure-monitor/learn/tutorial-logs-dashboards.md).
+Du kan skapa olika frågor och spara dem. Dessa kan läggas till på [Azure-instrumentpanelen](../../azure-monitor/visualize/tutorial-logs-dashboards.md).

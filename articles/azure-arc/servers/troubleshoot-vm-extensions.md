@@ -3,12 +3,12 @@ title: Felsök problem med VM-tillägg för Azure Arc-aktiverade servrar
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure VM-tillägg som uppstår med Azure Arc-aktiverade servrar.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584674"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Felsök problem med ARC-aktiverade VM-tillägg
 
@@ -36,9 +36,9 @@ Följande fel söknings steg gäller för alla VM-tillägg.
 
 ### <a name="log-analytics-agent-for-linux"></a>Log Analytics agent för Linux
 
-- 1.13.9-agentens versions nummer (motsvarande tilläggs version är 1.13.15) har inte korrekt märkning av överförda data med resurs-ID för den Azure Arc-aktiverade servern. Log Analytics Även om loggar skickas till tjänsten och du försöker visa data från den valda aktiverade servern efter att ha valt **loggar** eller **insikter**returneras inga data. Du kan visa dess data genom att köra frågor från Azure Monitor loggar eller från Azure Monitor for VMs, som är begränsade till arbets ytan.
+- 1.13.9-agentens versions nummer (motsvarande tilläggs version är 1.13.15) har inte korrekt märkning av överförda data med resurs-ID för den Azure Arc-aktiverade servern. Log Analytics Även om loggar skickas till tjänsten och du försöker visa data från den valda aktiverade servern efter att ha valt **loggar** eller **insikter** returneras inga data. Du kan visa dess data genom att köra frågor från Azure Monitor loggar eller från Azure Monitor for VMs, som är begränsade till arbets ytan.
 
-- Vissa distributioner stöds för närvarande inte av Log Analytics agent för Linux. Agenten kräver att ytterligare beroenden installeras, inklusive python 2. Granska support mat ris och nödvändiga komponenter [här](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
+- Vissa distributioner stöds för närvarande inte av Log Analytics agent för Linux. Agenten kräver att ytterligare beroenden installeras, inklusive python 2. Granska support mat ris och nödvändiga komponenter [här](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 - Felkod 52 i status meddelandet indikerar ett saknas beroende. Se utdata och loggfiler för mer information om vilket beroende som saknas.
 

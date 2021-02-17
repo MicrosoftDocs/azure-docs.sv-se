@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258657"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570345"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Konfigurera Azure Monitor loggar för ett kluster
 
@@ -47,13 +47,13 @@ Om du använder Windows fortsätter du med följande steg för att ansluta Azure
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Anslut Log Analytics arbets ytan till klustret 
 
-1. Arbets ytan måste vara ansluten till de diagnostikdata som kommer från klustret. Gå till resurs gruppen där du skapade Service Fabric-analys-lösningen. Välj **ServiceFabric \<nameOfWorkspace\> ** och gå till sidan Översikt. Därifrån kan du ändra lösnings inställningar, inställningar för arbets ytan och komma åt Log Analytics-arbetsytan.
+1. Arbets ytan måste vara ansluten till de diagnostikdata som kommer från klustret. Gå till resurs gruppen där du skapade Service Fabric-analys-lösningen. Välj **ServiceFabric \<nameOfWorkspace\>** och gå till sidan Översikt. Därifrån kan du ändra lösnings inställningar, inställningar för arbets ytan och komma åt Log Analytics-arbetsytan.
 
-2. På den vänstra navigerings menyn går du till **data källor för arbets ytan**och väljer **lagrings konto loggar**.
+2. På den vänstra navigerings menyn går du till **data källor för arbets ytan** och väljer **lagrings konto loggar**.
 
 3. På sidan **lagrings konto loggar** väljer du **Lägg till** överst för att lägga till klustrets loggar i arbets ytan.
 
-4. Välj **lagrings konto** för att lägga till rätt konto som skapats i klustret. Om du använde standard namnet är lagrings kontot **sfdg \<resourceGroupName\> **. Du kan också bekräfta detta med Azure Resource Manager-mallen som används för att distribuera klustret, genom att kontrol lera värdet som används för **applicationDiagnosticsStorageAccountName**. Om namnet inte visas rullar du ned och väljer **Läs in mer**. Välj lagrings kontots namn.
+4. Välj **lagrings konto** för att lägga till rätt konto som skapats i klustret. Om du använde standard namnet är lagrings kontot **sfdg \<resourceGroupName\>**. Du kan också bekräfta detta med Azure Resource Manager-mallen som används för att distribuera klustret, genom att kontrol lera värdet som används för **applicationDiagnosticsStorageAccountName**. Om namnet inte visas rullar du ned och väljer **Läs in mer**. Välj lagrings kontots namn.
 
 5. Ange data typen. Ange det som **Service Fabric händelser**.
 
@@ -119,9 +119,9 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 När du är klar följer du stegen i föregående avsnitt för att ansluta Azure Monitor loggar till lämpligt lagrings konto.
 
-Du kan också lägga till andra lösningar eller göra andra ändringar i Log Analytics arbets ytan med hjälp av PowerShell. Läs mer i [hantera Azure Monitor loggar med hjälp av PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+Du kan också lägga till andra lösningar eller göra andra ändringar i Log Analytics arbets ytan med hjälp av PowerShell. Läs mer i [hantera Azure Monitor loggar med hjälp av PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Nästa steg
 * [Distribuera Log Analytics agenten](service-fabric-diagnostics-oms-agent.md) på noderna för att samla in prestanda räknare och samla Docker statistik och loggar för dina behållare
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
-* [Använd Visa designer för att skapa anpassade vyer i Azure Monitor loggar](../azure-monitor/platform/view-designer.md)
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
+* [Använd Visa designer för att skapa anpassade vyer i Azure Monitor loggar](../azure-monitor/visualize/view-designer.md)

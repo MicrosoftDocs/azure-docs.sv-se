@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 89b33a697e818539ab6666be33fc1542c5bdcc51
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e7d93d7a1d0e804f340a7ce785ccc1165e93ee5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736600"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570102"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Självstudie: övervaka en virtuell Windows-dator i Azure
 
@@ -86,18 +86,18 @@ Så här aktiverar du övervakning av den virtuella Azure-datorn med Azure Monit
 
 3. Välj **Testa nu** på sidan **Insights (för hands version)** .
 
-    ![Aktivera Azure Monitor for VMs för en virtuell dator](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Aktivera Azure Monitor for VMs för en virtuell dator](../../azure-monitor/vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
 4. Om du har en befintlig Log Analytics arbets yta i samma prenumeration på sidan **Azure Monitor Insights-onboarding** väljer du den i list rutan.  
 
     I listan förväljs standard arbets ytan och den plats där den virtuella datorn distribueras i prenumerationen. 
 
     >[!NOTE]
-    >Om du vill skapa en ny Log Analytics-arbetsyta för att lagra övervaknings data från den virtuella datorn, se [skapa en Log Analytics arbets yta](../../azure-monitor/learn/quick-create-workspace.md). Arbets ytan måste tillhöra en av de [regioner som stöds](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+    >Om du vill skapa en ny Log Analytics-arbetsyta för att lagra övervaknings data från den virtuella datorn, se [skapa en Log Analytics arbets yta](../../azure-monitor/logs/quick-create-workspace.md). Arbets ytan måste tillhöra en av de [regioner som stöds](../../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).
 
 När du har aktiverat övervakning kan du behöva vänta flera minuter innan du kan visa prestanda måtten för den virtuella datorn.
 
-![Aktivera Azure Monitor for VMs övervakning av distributions bearbetning](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Aktivera Azure Monitor for VMs övervakning av distributions bearbetning](../../azure-monitor/vm/media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Visa prestanda mått för virtuella datorer
 

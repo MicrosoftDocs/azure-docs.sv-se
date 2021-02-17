@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 79262b85e9591ae4b41e8467abdcbccb3804d4ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549957"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590351"
 ---
 # <a name="azure-threat-protection"></a>Azure Threat Protection
 
@@ -89,7 +89,7 @@ Förutom att tillhandahålla värdefulla tjänster på egen hand kan Azure Monit
 Azure Monitor loggar hjälper dig att snabbt och enkelt förstå den övergripande säkerhets position i alla miljöer, allt inom ramen för IT-åtgärder, inklusive utvärdering av program uppdateringar, utvärdering av program mot skadlig kod och konfigurations bas linjer. Säkerhets logg data är lätt att komma åt för att effektivisera gransknings processerna för säkerhet och efterlevnad.
 
 ### <a name="insight-and-analytics"></a>Insight and Analytics
-I mitten av [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md) är lagrings platsen som finns i Azure.
+I mitten av [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md) är lagrings platsen som finns i Azure.
 
 ![Diagram över insikter och analys](./media/threat-detection/azure-threat-detection-fig4.png)
 
@@ -98,8 +98,8 @@ Du samlar in data i databasen från anslutna källor genom att konfigurera data 
 Data källor och lösningar varje skapa separata post typer med en egen uppsättning egenskaper, men du kan fortfarande analysera dem tillsammans i frågor till lagrings platsen. Du kan använda samma verktyg och metoder för att arbeta med en mängd data som samlas in av olika källor.
 
 De flesta av dina interaktioner med Azure Monitor loggar sker via Azure Portal, som körs i alla webbläsare och ger åtkomst till konfigurations inställningar och flera verktyg för att analysera och agera på insamlade data. Från portalen kan du använda:
-* [Loggs ökningar](../../azure-monitor/log-query/log-query-overview.md) där du skapar frågor för att analysera insamlade data.
-* [Instrument paneler](../../azure-monitor/learn/tutorial-logs-dashboards.md), som du kan anpassa med grafiska vyer över dina mest värdefulla sökningar.
+* [Loggs ökningar](../../azure-monitor/logs/log-query-overview.md) där du skapar frågor för att analysera insamlade data.
+* [Instrument paneler](../../azure-monitor/visualize/tutorial-logs-dashboards.md), som du kan anpassa med grafiska vyer över dina mest värdefulla sökningar.
 * [Lösningar](../../azure-monitor/insights/solutions.md)som ger ytterligare funktioner och analys verktyg.
 
 Lösningar lägger till funktioner i Azure Monitor loggar. De körs främst i molnet och tillhandahåller analys av data som samlas in i Log Analytics-lagringsplatsen. Lösningar kan också definiera nya post typer som ska samlas in som kan analyseras med loggs ökningar eller med hjälp av ett ytterligare användar gränssnitt som lösningen tillhandahåller i Log Analytics-instrumentpanelen.

@@ -3,12 +3,12 @@ title: Publicera Azure Arc-aktiverad server till Azure Sentinel
 description: Lär dig hur du lägger till dina Azure Arc-aktiverade servrar i Azure Sentinel och övervaka deras säkerhets status proaktivt.
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60018e710613a27bcb5c00f38ee90be6ff46c61d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94811110"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584745"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Publicera Azure Arc-aktiverade servrar till Azure Sentinel
 
@@ -18,7 +18,7 @@ Den här artikeln är avsedd att hjälpa dig att publicera din Azure Arc-aktiver
 
 Innan du börjar kontrollerar du att du uppfyller följande krav:
 
-- En [Log Analytics-arbetsyta](../../azure-monitor/platform/data-platform-logs.md). Mer information om Log Analytics-arbetsytor finns i [utforma distributioner av Azure Monitors loggar](../../azure-monitor/platform/design-logs-deployment.md).
+- En [Log Analytics-arbetsyta](../../azure-monitor/logs/data-platform-logs.md). Mer information om Log Analytics-arbetsytor finns i [utforma distributioner av Azure Monitors loggar](../../azure-monitor/logs/design-logs-deployment.md).
 
 - Azure Sentinel [aktiverat i din prenumeration](../../sentinel/quickstart-onboard.md).
 

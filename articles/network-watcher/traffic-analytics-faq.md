@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579246"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Vanliga frågor och svar om Trafikanalys
 
@@ -75,7 +75,7 @@ Du kan använda Traffic Analytics för NSG: er i någon av följande regioner:
 - USA, västra 2
 - Frankrike, centrala
 - Europa, västra
-- Norra Europa
+- Europa, norra
 - Brasilien, södra
 - Storbritannien, västra
 - Storbritannien, södra
@@ -103,7 +103,7 @@ Arbets ytan Log Analytics måste finnas i följande regioner:
 - USA, västra 2
 - Frankrike, centrala
 - Europa, västra
-- Norra Europa
+- Europa, norra
 - Storbritannien, västra
 - Storbritannien, södra
 - Australien, östra
@@ -126,7 +126,7 @@ Ja.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Kan jag använda en befintlig arbets yta?
 
-Ja. Om du väljer en befintlig arbets yta ser du till att den har migrerats till det nya frågespråket. Om du inte vill uppgradera arbets ytan måste du skapa en ny. Mer information om det nya frågespråket finns [Azure Monitor loggar uppgradera till ny loggs ökning](../azure-monitor/log-query/log-query-overview.md).
+Ja. Om du väljer en befintlig arbets yta ser du till att den har migrerats till det nya frågespråket. Om du inte vill uppgradera arbets ytan måste du skapa en ny. Mer information om det nya frågespråket finns [Azure Monitor loggar uppgradera till ny loggs ökning](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Kan mitt Azure Storage konto finnas i en prenumeration och min Log Analytics arbets yta är i en annan prenumeration?
 
@@ -262,7 +262,7 @@ Trafikanalys har inte inbyggt stöd för aviseringar. Men eftersom Trafikanalys 
 - Du kan använda kortlänk för Log Analytics i Trafikanalys. 
 - Använd [schemat som beskrivs här](traffic-analytics-schema.md) för att skriva dina frågor 
 - Klicka på ny varnings regel för att skapa aviseringen
-- Använd [logg aviserings dokumentationen](../azure-monitor/platform/alerts-log.md) för att skapa aviseringen
+- Använd [logg aviserings dokumentationen](../azure-monitor/alerts/alerts-log.md) för att skapa aviseringen
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hur gör jag för att kontrol lera vilka virtuella datorer som tar emot den mesta lokala trafiken?
 
@@ -403,4 +403,4 @@ Sidan topologier för virtuella under nätverk innehåller två huvud avsnitt:
 - Vid val av sådana noder kan du gå till alla dess anslutningar, en i taget, genom att trycka på `Shift+Left arrow` nyckel. Fokus flyttas till **rutan informations verktyg** i anslutningen. I någon punkt kan fokus flyttas tillbaka till noden genom att trycka på `Shift+Right arrow` igen.
 
 ## <a name="are-classic-nsgs-supported"></a>Stöds klassiska NSG: er?
-Nej, Trafikanalys stöder inte klassisk NSG. Vi rekommenderar att du migrerar IaaS-resurser från klassisk till Azure Resource Manager eftersom de klassiska resurserna är [inaktuella](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation). Läs den här artikeln för att förstå [hur du migrerar](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview).
+Nej, Trafikanalys stöder inte klassisk NSG. Vi rekommenderar att du migrerar IaaS-resurser från klassisk till Azure Resource Manager eftersom de klassiska resurserna är [inaktuella](../virtual-machines/classic-vm-deprecation.md). Läs den här artikeln för att förstå [hur du migrerar](../virtual-machines/migration-classic-resource-manager-overview.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607151"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582395"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Samla in insikter om din DNS-infrastruktur med DNS-analys för hands versions lösning
 
@@ -35,10 +35,10 @@ I följande tabell beskrivs de anslutna källor som stöds av den här lösninge
 
 | **Ansluten källa** | **Support** | **Beskrivning** |
 | --- | --- | --- |
-| [Windows-agenter](../platform/agent-windows.md) | Yes | Lösningen samlar in DNS-information från Windows-agenter. |
-| [Linux-agenter](../learn/quick-collect-linux-computer.md) | No | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
-| [System Center Operations Manager-hanteringsgrupp](../platform/om-agents.md) | Yes | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
-| [Azure Storage-konto](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage används inte av lösningen. |
+| [Windows-agenter](../agents/agent-windows.md) | Yes | Lösningen samlar in DNS-information från Windows-agenter. |
+| [Linux-agenter](../vm/quick-collect-linux-computer.md) | No | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
+| [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md) | Yes | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage används inte av lösningen. |
 
 ### <a name="data-collection-details"></a>Information om data insamling
 
@@ -48,7 +48,7 @@ Lösningen samlar in DNS-inventering och DNS-säkerhetsrelaterade data från DNS
 
 Använd följande information för att konfigurera lösningen:
 
-- Du måste ha en [Windows](../platform/agent-windows.md) -eller [Operations Manager](../platform/om-agents.md) -agent på varje DNS-server som du vill övervaka.
+- Du måste ha en [Windows](../agents/agent-windows.md) -eller [Operations Manager](../agents/om-agents.md) -agent på varje DNS-server som du vill övervaka.
 - Du kan lägga till DNS-analys-lösningen till din Log Analytics-arbetsyta från [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Du kan också använda processen som beskrivs i [Lägg till Azure Monitor lösningar från Lösningsgalleriet](solutions.md).
 
 Lösningen börjar samla in data utan att behöva ytterligare konfiguration. Du kan dock använda följande konfiguration för att anpassa data insamling.
@@ -76,7 +76,7 @@ Om din Operations Manager hanterings grupp är ansluten till arbets ytan Log Ana
 - Microsoft DNS data Collector Intelligence Pack (Microsoft. IntelligencePacks. DNS)
 - Konfiguration av Microsoft System Center Advisor DNS-analys (Microsoft.IntelligencePack.Dns.Configuration)
 
-Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](../platform/om-agents.md).
+Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](../agents/om-agents.md).
 
 ## <a name="use-the-dns-analytics-solution"></a>Använd DNS-analys-lösningen
 
@@ -185,4 +185,4 @@ Om du vill ge feedback kan du gå till [sidan Log Analytics UserVoice](https://a
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Fråga loggar](../log-query/log-query-overview.md) om du vill visa detaljerade DNS-loggfiler.
+[Fråga loggar](../logs/log-query-overview.md) om du vill visa detaljerade DNS-loggfiler.

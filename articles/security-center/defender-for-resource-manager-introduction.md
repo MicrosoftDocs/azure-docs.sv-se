@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9591dae058a19cea73d88513b7c4ff4ab8f88045
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590465"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Introduktion till Azure Defender för Resource Manager
 
@@ -28,7 +28,7 @@ Azure Defender för Resource Manager övervakar automatiskt resurs hanterings å
 |----|:----|
 |Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Priset|**Azure Defender för Resource Manager** faktureras enligt [pris sidan](security-center-pricing.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Vilka är fördelarna med Azure Defender för Resource Manager?
@@ -48,7 +48,7 @@ En fullständig lista över de aviseringar som tillhandahålls av Azure Defender
 
 Säkerhets aviseringar från Azure Defender för Resource Manager baseras på hot som upptäckts av övervaknings Azure Resource Manager åtgärder. Azure Defender använder interna logg källor för Azure Resource Manager och Azure aktivitets logg, en plattforms logg i Azure som ger inblick i händelser på prenumerations nivå.
 
-Läs mer om [Azure aktivitets logg](../azure-monitor/platform/activity-log.md).
+Läs mer om [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md).
 
 Så här undersöker du säkerhets aviseringar från Azure Defender för Resource Manager:
 

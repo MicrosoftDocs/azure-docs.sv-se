@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388013"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580996"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Felsöka problem med Hybrid Runbook Worker
 
@@ -128,7 +128,7 @@ Följande problem är möjliga orsaker:
 #### <a name="resolution"></a>Lösning
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Felangett arbetsyte-ID eller nyckel
-För att kontrol lera att agentens arbetsyte-ID eller arbets ytans nyckel skrevs in, se [lägga till eller ta bort en arbets yta – Windows-agent](../../azure-monitor/platform/agent-manage.md#windows-agent) för Windows-agenten eller [lägga till eller ta bort en arbets yta – Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) för Linux-agenten Se till att välja hela strängen från Azure Portal och kopiera och klistra in den noggrant.
+För att kontrol lera att agentens arbetsyte-ID eller arbets ytans nyckel skrevs in, se [lägga till eller ta bort en arbets yta – Windows-agent](../../azure-monitor/agents/agent-manage.md#windows-agent) för Windows-agenten eller [lägga till eller ta bort en arbets yta – Linux-Agent](../../azure-monitor/agents/agent-manage.md#linux-agent) för Linux-agenten Se till att välja hela strängen från Azure Portal och kopiera och klistra in den noggrant.
 
 ##### <a name="configuration-not-downloaded"></a>Konfigurationen laddas inte ned
 
@@ -169,7 +169,7 @@ Placera filen i samma mapp som den körbara filen `OrchestratorSandbox.exe` . Ex
 
 ## <a name="linux"></a>Linux
 
-Linux-Hybrid Runbook Worker är beroende av [Log Analytics-agenten för Linux](../../azure-monitor/platform/log-analytics-agent.md) för att kunna kommunicera med ditt Automation-konto för att registrera arbetaren, ta emot Runbook-jobb och rapportera status. Om registreringen av arbets processen Miss lyckas kan det hända att det finns några möjliga orsaker till felet.
+Linux-Hybrid Runbook Worker är beroende av [Log Analytics-agenten för Linux](../../azure-monitor/agents/log-analytics-agent.md) för att kunna kommunicera med ditt Automation-konto för att registrera arbetaren, ta emot Runbook-jobb och rapportera status. Om registreringen av arbets processen Miss lyckas kan det hända att det finns några möjliga orsaker till felet.
 
 ### <a name="scenario-linux-hybrid-runbook-worker-receives-prompt-for-a-password-when-signing-a-runbook"></a><a name="prompt-for-password"></a>Scenario: Linux Hybrid Runbook Worker tar emot ett lösen ord när en Runbook signeras
 
@@ -225,7 +225,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 ## <a name="windows"></a>Windows
 
-Windows Hybrid Runbook Worker är beroende av [Log Analytics-agenten för att Windows](../../azure-monitor/platform/log-analytics-agent.md) ska kunna kommunicera med ditt Automation-konto för att registrera arbetaren, ta emot Runbook-jobb och rapportera status. Om det inte går att registrera arbets tagaren, innehåller det här avsnittet några möjliga orsaker.
+Windows Hybrid Runbook Worker är beroende av [Log Analytics-agenten för att Windows](../../azure-monitor/agents/log-analytics-agent.md) ska kunna kommunicera med ditt Automation-konto för att registrera arbetaren, ta emot Runbook-jobb och rapportera status. Om det inte går att registrera arbets tagaren, innehåller det här avsnittet några möjliga orsaker.
 
 ### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Scenario: Log Analytics agenten för Windows körs inte
 
@@ -253,7 +253,7 @@ Det här problemet kan bero på att proxyn eller nätverks brand väggen blocker
 
 #### <a name="resolution"></a>Lösning
 
-Loggar lagras lokalt på varje hybrid Worker på C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Du kan kontrol lera om det finns några varnings-eller fel händelser i händelse loggarna **program och tjänster Logs\Microsoft-SMA\Operations** och **program-och tjänst loggar \ Operations Manager** . Dessa loggar indikerar en anslutning eller någon annan typ av problem som påverkar aktivering av rollen för att Azure Automation, eller ett problem som påträffas under normala åtgärder. Mer hjälp fel söknings problem med Log Analytics agent finns i [Felsöka problem med Log Analytics Windows-agenten](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Loggar lagras lokalt på varje hybrid Worker på C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Du kan kontrol lera om det finns några varnings-eller fel händelser i händelse loggarna **program och tjänster Logs\Microsoft-SMA\Operations** och **program-och tjänst loggar \ Operations Manager** . Dessa loggar indikerar en anslutning eller någon annan typ av problem som påverkar aktivering av rollen för att Azure Automation, eller ett problem som påträffas under normala åtgärder. Mer hjälp fel söknings problem med Log Analytics agent finns i [Felsöka problem med Log Analytics Windows-agenten](../../azure-monitor/agents/agent-windows-troubleshoot.md).
 
 Hybrid Worker skickar [Runbook-utdata och meddelanden](../automation-runbook-output-and-messages.md) till Azure Automation på samma sätt som Runbook-jobb som körs i molnet skickar utdata och meddelanden. Du kan aktivera utförlig och förlopps strömmar precis som du gör för Runbooks.
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543025"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579197"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Långsamma Query-loggar i Azure Database for MySQL flexibel Server (förhands granskning)
 
@@ -27,10 +27,10 @@ Som standard är den långsamma fråge loggen inaktive rad. Om du vill aktivera 
 
 Andra parametrar du kan ändra för att kontrol lera hur långsamma frågor fungerar är:
 
-- **long_query_time** : logga en fråga om den tar längre tid än `long_query_time` (i sekunder) att slutföras. Standardvärdet är 10 sekunder.
-- **log_slow_admin_statements** : bestämmer om administrativa uppgifter (t. ex. `ALTER_TABLE`, `ANALYZE_TABLE` ) loggas.
-- **log_queries_not_using_indexes** : anger om frågor som inte använder index ska loggas.
-- **log_throttle_queries_not_using_indexes** : begränsar antalet icke-indexerade frågor som kan skrivas till den långsamma fråge loggen. Den här parametern börjar gälla när `log_queries_not_using_indexes` har angetts till *på*
+- **long_query_time**: logga en fråga om den tar längre tid än `long_query_time` (i sekunder) att slutföras. Standardvärdet är 10 sekunder.
+- **log_slow_admin_statements**: bestämmer om administrativa uppgifter (t. ex. `ALTER_TABLE`, `ANALYZE_TABLE` ) loggas.
+- **log_queries_not_using_indexes**: anger om frågor som inte använder index ska loggas.
+- **log_throttle_queries_not_using_indexes**: begränsar antalet icke-indexerade frågor som kan skrivas till den långsamma fråge loggen. Den här parametern börjar gälla när `log_queries_not_using_indexes` har angetts till *på*
 
 > [!IMPORTANT]
 > Om dina tabeller inte är indexerade kan inställning av `log_queries_not_using_indexes` `log_throttle_queries_not_using_indexes` parametrarna och **på on** påverka MySQL-prestanda eftersom alla frågor som körs mot dessa icke-indexerade tabeller skrivs till den långsamma frågans logg.
@@ -39,7 +39,7 @@ Se [logg dokumentationen för en långsam fråga](https://dev.mysql.com/doc/refm
 
 ## <a name="access-slow-query-logs"></a>Komma åt långsamma Query-loggar
 
-Långsamma frågeuttryck är integrerade med Azure Monitor diagnostikinställningar. När du har aktiverat långsamma Query-loggar på din MySQL-flexibla Server kan du generera dem till Azure Monitor loggar, Event Hubs eller Azure Storage. Mer information om diagnostiska inställningar finns i [dokumentationen för diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md). Mer information om hur du aktiverar diagnostikinställningar i Azure Portal finns i [artikeln om långsam fråga i logg portalen](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+Långsamma frågeuttryck är integrerade med Azure Monitor diagnostikinställningar. När du har aktiverat långsamma Query-loggar på din MySQL-flexibla Server kan du generera dem till Azure Monitor loggar, Event Hubs eller Azure Storage. Mer information om diagnostiska inställningar finns i [dokumentationen för diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md). Mer information om hur du aktiverar diagnostikinställningar i Azure Portal finns i [artikeln om långsam fråga i logg portalen](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
 
 I följande tabell beskrivs utdata från den långsamma fråge loggen. Beroende på utmatnings metoden kan de fält som ingår och i vilken ordning de visas variera.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99592544d97793f82db36e1d2cb33ba8c6af1c9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586966"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor namngivnings-och terminologi ändringar
 Betydande ändringar har gjorts i Azure Monitor nyligen, med olika tjänster som sammanställs för att förenkla övervakningen av Azure-kunder. I den här artikeln beskrivs nya namn-och terminologi ändringar i Azure Monitor-dokumentationen.
@@ -23,12 +23,12 @@ Betydande ändringar har gjorts i Azure Monitor nyligen, med olika tjänster som
 Efter konsolideringen av olika tjänster under Azure Monitor tar vi nästa steg genom att ändra terminologin i vår dokumentation för att bättre beskriva Azure Monitor tjänsten och dess olika komponenter. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras av samma Log Analytics tjänst, men vi ändrar termen _Log Analytics_ på många platser till _Azure Monitor loggar_. Den här termen bättre återspeglar dess roll i Azure Monitor och ger bättre konsekvens med [Mät värden i Azure Monitor](platform/data-platform-metrics.md).
+Azure Monitor loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras av samma Log Analytics tjänst, men vi ändrar termen _Log Analytics_ på många platser till _Azure Monitor loggar_. Den här termen bättre återspeglar dess roll i Azure Monitor och ger bättre konsekvens med [Mät värden i Azure Monitor](essentials/data-platform-metrics.md).
 
-Term _logg analys_ gäller nu främst för sidan i Azure Portal som används för att skriva och köra frågor och analysera loggdata. Det är den funktionella motsvarigheten till [Metrics Explorer](platform/metrics-charts.md), som är sidan i Azure Portal som används för att analysera mått data.
+Term _logg analys_ gäller nu främst för sidan i Azure Portal som används för att skriva och köra frågor och analysera loggdata. Det är den funktionella motsvarigheten till [Metrics Explorer](essentials/metrics-charts.md), som är sidan i Azure Portal som används för att analysera mått data.
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics-arbetsytor
-[Arbets ytor](platform/manage-access.md) som innehåller loggdata i Azure Monitor kallas fortfarande för Log Analytics arbets ytor. **Log Analytics** -menyn i Azure Portal har bytt namn till **Log Analytics arbets ytor** och är där du [skapar nya arbets ytor](learn/quick-create-workspace.md) och konfigurerar data källor. Analysera dina loggar och andra övervaknings data i **Azure Monitor** och konfigurera arbets ytan i **Log Analytics arbets ytor**.
+[Arbets ytor](logs/manage-access.md) som innehåller loggdata i Azure Monitor kallas fortfarande för Log Analytics arbets ytor. **Log Analytics** -menyn i Azure Portal har bytt namn till **Log Analytics arbets ytor** och är där du [skapar nya arbets ytor](logs/quick-create-workspace.md) och konfigurerar data källor. Analysera dina loggar och andra övervaknings data i **Azure Monitor** och konfigurera arbets ytan i **Log Analytics arbets ytor**.
 
 ### <a name="management-solutions"></a>Hanteringslösningar
 [Hanterings lösningar](insights/solutions.md) har bytt namn till _övervaknings lösningar_, vilket bättre beskriver deras funktioner.
@@ -59,4 +59,4 @@ Operations Management Suite (OMS) var ett sammanslag av följande Azure-hanterin
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs en [Översikt över Azure Monitor](overview.md) som beskriver de olika komponenterna och funktionerna.
-- Lär dig mer om [över gången av OMS-portalen](./platform/oms-portal-transition.md).
+- Lär dig mer om [över gången av OMS-portalen](./logs/oms-portal-transition.md).

@@ -3,12 +3,12 @@ title: Skapa en ny Azure Monitor Application Insights arbets ytans baserade resu
 description: Lär dig mer om de steg som krävs för att aktivera de nya Azure Monitor Application Insights arbets ytans baserade resurser.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063374"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578348"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbets yta-baserade Application Insights resurser
 
@@ -23,10 +23,10 @@ Detta möjliggör även vanlig rollbaserad åtkomst kontroll i Azure (Azure RBAC
 
 Med arbets ytans baserade Application Insights kan du dra nytta av de senaste funktionerna i Azure Monitor och Log Analytics inklusive:
 
-* [Kundhanterade nycklar (CMK)](../platform/customer-managed-keys.md) tillhandahåller kryptering i vila för dina data med krypterings nycklar som bara du har åtkomst till.
-* Med [Azures privata länk](../platform/private-link-security.md) kan du på ett säkert sätt länka Azure PaaS-tjänster till ditt virtuella nätverk med hjälp av privata slut punkter.
+* [Kundhanterade nycklar (CMK)](../logs/customer-managed-keys.md) tillhandahåller kryptering i vila för dina data med krypterings nycklar som bara du har åtkomst till.
+* Med [Azures privata länk](../logs/private-link-security.md) kan du på ett säkert sätt länka Azure PaaS-tjänster till ditt virtuella nätverk med hjälp av privata slut punkter.
 * [Ta med din egen lagring (BYOS) för profiler och Snapshot debugger](./profiler-bring-your-own-storage.md) ger dig fullständig kontroll över principen för kryptering vid vila, livs längds hanterings principen och nätverks åtkomst för alla data som är kopplade till Application Insights Profiler och Snapshot debugger. 
-* Med [kapacitet reservations nivåer](../platform/manage-cost-storage.md#pricing-model) kan du spara så mycket som 25% jämfört med priset betala per användning. 
+* Med [kapacitet reservations nivåer](../logs/manage-cost-storage.md#pricing-model) kan du spara så mycket som 25% jämfört med priset betala per användning. 
 * Snabbare data inmatning via Log Analytics strömning.
 
 ## <a name="create-workspace-based-resource"></a>Skapa arbets yta-baserad resurs
@@ -36,7 +36,7 @@ Logga in på [Azure Portal](https://portal.azure.com)och skapa en Application In
 > [!div class="mx-imgBorder"]
 > ![Arbets yta-baserad Application Insights resurs](./media/create-workspace-resource/create-workspace-based.png)
 
-Om du inte redan har en befintlig Log Analytics arbets yta kan du [läsa dokumentationen för att skapa Log Analytics arbets ytor](../learn/quick-create-workspace.md).
+Om du inte redan har en befintlig Log Analytics arbets yta kan du [läsa dokumentationen för att skapa Log Analytics arbets ytor](../logs/quick-create-workspace.md).
 
 **Arbets ytans baserade resurser är för närvarande tillgängliga i alla kommersiella regioner och Azure Government**
 
@@ -212,5 +212,5 @@ I fönstret Application Insights resurs väljer du **Egenskaper**  >  **ändra a
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Utforska mått](../platform/metrics-charts.md)
-* [Skriv analysfrågor](../log-query/log-query-overview.md)
+* [Utforska mått](../essentials/metrics-charts.md)
+* [Skriv analysfrågor](../logs/log-query-overview.md)

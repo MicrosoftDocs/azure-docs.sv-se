@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e7063cd1ae560fa077bd0b1b1279e4515e70464
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707854"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579027"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Övervaka mått på Azure Database for PostgreSQL-flexibel Server
 
@@ -21,13 +21,13 @@ ms.locfileid: "91707854"
 Genom att övervaka data om dina servrar kan du felsöka och optimera för din arbets belastning. Azure Database for PostgreSQL innehåller olika övervaknings alternativ för att ge inblick i serverns beteende.
 
 ## <a name="metrics"></a>Mått
-Azure Database for PostgreSQL tillhandahåller olika mått som ger inblick i funktionerna i resurserna som stöder PostgreSQL-servern. Varje mått genereras med en minuters frekvens och har upp till [93 dagars historik](../../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics). Du kan konfigurera aviseringar för måtten. Andra alternativ är att ställa in automatiserade åtgärder, utföra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../../azure-monitor/platform/data-platform-metrics.md).
+Azure Database for PostgreSQL tillhandahåller olika mått som ger inblick i funktionerna i resurserna som stöder PostgreSQL-servern. Varje mått genereras med en minuters frekvens och har upp till [93 dagars historik](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). Du kan konfigurera aviseringar för måtten. Andra alternativ är att ställa in automatiserade åtgärder, utföra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../../azure-monitor/essentials/data-platform-metrics.md).
 
 ### <a name="list-of-metrics"></a>Lista över mått
 Följande mått är tillgängliga för PostgreSQL-flexibla Server:
 
 
-|Mått|Mått visnings namn|Enhet|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Description|
 |---|---|---|---|
 | active_connections | Aktiva anslutningar | Antal | Antalet anslutningar till servern. | 
 | backup_storage_used | Lagring av säkerhets kopior som används | Byte | Mängden lagring av säkerhets kopior som används. Det här måttet representerar summan av lagrings utrymme som förbrukas av alla fullständiga säkerhets kopior av databasen, differentiella säkerhets kopior och logg säkerhets kopior som bevaras baserat på den kvarhållna säkerhets kopie perioden som angetts för servern. Säkerhets kopierings frekvensen är hanterad av tjänsten. För Geo-redundant lagring är lagrings utrymmet för säkerhets kopiering två gånger för det lokalt redundanta lagrings utrymmet. |
@@ -45,7 +45,7 @@ Följande mått är tillgängliga för PostgreSQL-flexibla Server:
 | read_iops | Läs IOPS | Antal | Antal Läs åtgärder för data diskar I/O per sekund. |
 | read_throughput | Läs data flöde | Byte | Lästa byte per sekund från disk. |
 | storage_free | Ledigt lagrings utrymme | Byte | Mängden tillgängligt lagrings utrymme. |
-| storage_percent | Lagrings procent | Procentandel | Procent av använt lagrings utrymme. Lagrings utrymmet som används av tjänsten kan omfatta databasfilerna, transaktions loggarna och Server loggarna.|
+| storage_percent | Lagrings procent | Procent | Procent av använt lagrings utrymme. Lagrings utrymmet som används av tjänsten kan omfatta databasfilerna, transaktions loggarna och Server loggarna.|
 | storage_used | Använt lagrings utrymme | Byte | Procent av använt lagrings utrymme. Lagrings utrymmet som används av tjänsten kan omfatta databasfilerna, transaktions loggarna och Server loggarna. |
 | txlogs_storage_used | Transaktions logg lagring används | Byte | Mängden lagrings utrymme som används av transaktions loggarna. | 
 | write_throughput | Skriv data flöde | Byte | Skrivna byte per sekund till disk. |

@@ -3,12 +3,12 @@ title: Ansluta hybrid datorer till Azure med hjälp av PowerShell
 description: I den här artikeln får du lära dig hur du installerar agenten och ansluter en dator till Azure med hjälp av Azure Arc-aktiverade servrar. Du kan göra detta med PowerShell.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492949"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584939"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Ansluta hybrid datorer till Azure med hjälp av PowerShell
 
@@ -103,6 +103,6 @@ När du har installerat och konfigurerat agenten för att registrera dig för Az
 
 * Om det behövs kan du läsa [fel söknings guiden för anslutna dator agenter](troubleshoot-agent-onboard.md).
 
-* Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md). Du kan använda [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)för virtuella datorer, kontrol lera att datorn rapporterar till den förväntade Log Analytics arbets ytan och aktiverar övervakning med [Azure monitor med virtuella datorer](../../azure-monitor/insights/vminsights-enable-policy.md).
+* Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md). Du kan använda [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)för virtuella datorer, kontrol lera att datorn rapporterar till den förväntade Log Analytics arbets ytan och aktiverar övervakning med [Azure monitor med virtuella datorer](../../azure-monitor/vm/vminsights-enable-policy.md).
 
-* Läs mer om den [Log Analytics agenten](../../azure-monitor/platform/log-analytics-agent.md). Log Analytics agent för Windows och Linux krävs när du vill samla in operativ system och data för övervakning av arbets belastning, eller hantera dem med hjälp av Azure Automation runbooks eller funktioner som Uppdateringshantering. Den här agenten måste också använda andra Azure-tjänster, t. ex. [Azure Security Center](../../security-center/security-center-introduction.md).
+* Läs mer om den [Log Analytics agenten](../../azure-monitor/agents/log-analytics-agent.md). Log Analytics agent för Windows och Linux krävs när du vill samla in operativ system och data för övervakning av arbets belastning, eller hantera dem med hjälp av Azure Automation runbooks eller funktioner som Uppdateringshantering. Den här agenten måste också använda andra Azure-tjänster, t. ex. [Azure Security Center](../../security-center/security-center-introduction.md).

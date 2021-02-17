@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373291"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571688"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeta med den tidigare versionen av Azure Migrate
 
@@ -210,14 +210,14 @@ Om du vill använda beroende visualisering associerar du en Log Analytics arbets
 1. Om du vill bifoga en Log Analytics arbets yta till ett projekt i **översikt**> **Essentials** klickar du på **kräver konfiguration**.
 2. Du kan skapa en ny arbets yta eller bifoga en befintlig:
   - Ange ett namn för att skapa en ny arbets yta. Arbets ytan skapas i en region i samma Azure- [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) som migreringsjobbet.
-  - När du ansluter en befintlig arbets yta kan du välja mellan alla tillgängliga arbets ytor i samma prenumeration som migreringsjobbet. Endast de arbets ytor som har skapats i en [tjänstkarta region som stöds](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions). Se till att du har "läsare"-åtkomst till arbets ytan för att koppla en arbets yta.
+  - När du ansluter en befintlig arbets yta kan du välja mellan alla tillgängliga arbets ytor i samma prenumeration som migreringsjobbet. Endast de arbets ytor som har skapats i en [tjänstkarta region som stöds](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions). Se till att du har "läsare"-åtkomst till arbets ytan för att koppla en arbets yta.
 
 > [!NOTE]
 > Du kan inte ändra arbets ytan som är associerad med ett migreringsjobb.
 
 ### <a name="download-and-install-vm-agents"></a>Hämta och installera VM-agenter
 
-När du har konfigurerat en arbets yta laddar du ned och installerar agenter på varje lokal dator som du vill utvärdera. Om du dessutom har datorer som saknar Internet anslutning måste du ladda ned och installera [Log Analytics Gateway](../azure-monitor/platform/gateway.md) på dem.
+När du har konfigurerat en arbets yta laddar du ned och installerar agenter på varje lokal dator som du vill utvärdera. Om du dessutom har datorer som saknar Internet anslutning måste du ladda ned och installera [Log Analytics Gateway](../azure-monitor/agents/gateway.md) på dem.
 
 1. I **Översikt** klickar du på **Hantera**  >  **datorer** och väljer den dator som krävs.
 2. I kolumnen **beroenden** klickar du på **installera agenter**.
@@ -238,7 +238,7 @@ Så här installerar du agenten på en Windows-dator:
 4. I **installations alternativ för agent** väljer du **Azure Log Analytics**  >  **Nästa**.
 5. Klicka på **Lägg** till för att lägga till en ny Log Analytics-arbetsyta. Klistra in det arbetsyte-ID och den nyckel som du kopierade från portalen. Klicka på **Nästa**.
 
-Du kan installera agenten från kommando raden eller med en automatiserad metod som Configuration Manager. [Lär dig mer](../azure-monitor/platform/log-analytics-agent.md#installation-options) om att använda dessa metoder för att installera MMA-agenten.
+Du kan installera agenten från kommando raden eller med en automatiserad metod som Configuration Manager. [Lär dig mer](../azure-monitor/agents/log-analytics-agent.md#installation-options) om att använda dessa metoder för att installera MMA-agenten.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Installera MMA-agenten på en Linux-dator
 
@@ -249,11 +249,11 @@ Så här installerar du agenten på en Linux-dator:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Läs mer](../azure-monitor/platform/agents-overview.md#supported-operating-systems) om listan med stöd för Linux-operativsystem i MMA.
+[Läs mer](../azure-monitor/agents/agents-overview.md#supported-operating-systems) om listan med stöd för Linux-operativsystem i MMA.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Installera MMA-agenten på en dator som övervakas av Operations Manager
 
-För datorer som övervakas med System Center Operations Manager 2012 R2 eller senare behöver du inte installera MMA-agenten. Tjänstkarta integreras med Operations Manager-MMA för att samla in nödvändiga beroende data. [Läs mer](../azure-monitor/insights/service-map-scom.md#prerequisites). Beroende agenten måste vara installerad.
+För datorer som övervakas med System Center Operations Manager 2012 R2 eller senare behöver du inte installera MMA-agenten. Tjänstkarta integreras med Operations Manager-MMA för att samla in nödvändiga beroende data. [Läs mer](../azure-monitor/vm/service-map-scom.md#prerequisites). Beroende agenten måste vara installerad.
 
 ### <a name="install-the-dependency-agent"></a>Installera beroendeagenten
 
@@ -262,8 +262,8 @@ För datorer som övervakas med System Center Operations Manager 2012 R2 eller s
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Läs mer om [stöd för beroende agent](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) för operativ systemen Windows och Linux.
-- [Läs mer](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) om hur du kan använda skript för att installera beroende agenten.
+- Läs mer om [stöd för beroende agent](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) för operativ systemen Windows och Linux.
+- [Läs mer](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent) om hur du kan använda skript för att installera beroende agenten.
 
 >[!NOTE]
 > Azure Monitor for VMs artikel som refereras till för att ge en översikt över system kraven och metoderna för att distribuera beroende agenten gäller även för Tjänstkarta-lösningen.
@@ -298,7 +298,7 @@ När gruppen har skapats bör du installera agenter på alla datorer i gruppen o
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Fråga beroende data från Azure Monitor loggar
 
-Beroende data som samlas in av Tjänstkarta är tillgängliga för frågor i arbets ytan Log Analytics som är associerad med ditt Azure Migrate-projekt. [Läs mer](../azure-monitor/insights/service-map.md#log-analytics-records) om tjänstkarta data tabeller att fråga i Azure Monitor loggar. 
+Beroende data som samlas in av Tjänstkarta är tillgängliga för frågor i arbets ytan Log Analytics som är associerad med ditt Azure Migrate-projekt. [Läs mer](../azure-monitor/vm/service-map.md#log-analytics-records) om tjänstkarta data tabeller att fråga i Azure Monitor loggar. 
 
 Så här kör du Kusto-frågorna:
 
@@ -308,15 +308,15 @@ Så här kör du Kusto-frågorna:
 4. Skriv din fråga för att samla in beroende data med Azure Monitor loggar. Sök efter exempel frågor i nästa avsnitt.
 5. Kör frågan genom att klicka på Kör. 
 
-[Läs mer](../azure-monitor/log-query/log-analytics-tutorial.md) om hur du skriver Kusto-frågor. 
+[Läs mer](../azure-monitor/logs/log-analytics-tutorial.md) om hur du skriver Kusto-frågor. 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Exempel på Azure Monitor loggar frågor
 
-Följande är exempel frågor som du kan använda för att extrahera beroende data. Du kan ändra frågorna för att extrahera önskade data punkter. En fullständig lista över fälten i beroende data poster finns [här](../azure-monitor/insights/service-map.md#log-analytics-records). Sök efter fler exempel frågor [här](../azure-monitor/insights/service-map.md#sample-log-searches).
+Följande är exempel frågor som du kan använda för att extrahera beroende data. Du kan ändra frågorna för att extrahera önskade data punkter. En fullständig lista över fälten i beroende data poster finns [här](../azure-monitor/vm/service-map.md#log-analytics-records). Sök efter fler exempel frågor [här](../azure-monitor/vm/service-map.md#sample-log-searches).
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Sammanfatta inkommande anslutningar på en uppsättning datorer
 
-Posterna i tabellen för anslutnings mått, VMConnection, representerar inte enskilda fysiska nätverks anslutningar. Flera fysiska nätverks anslutningar är grupperade i en logisk anslutning. [Läs mer](../azure-monitor/insights/service-map.md#connections) om hur data för fysiska nätverks anslutningar sammanställs i en enda logisk post i VMConnection. 
+Posterna i tabellen för anslutnings mått, VMConnection, representerar inte enskilda fysiska nätverks anslutningar. Flera fysiska nätverks anslutningar är grupperade i en logisk anslutning. [Läs mer](../azure-monitor/vm/service-map.md#connections) om hur data för fysiska nätverks anslutningar sammanställs i en enda logisk post i VMConnection. 
 
 ```
 // the machines of interest

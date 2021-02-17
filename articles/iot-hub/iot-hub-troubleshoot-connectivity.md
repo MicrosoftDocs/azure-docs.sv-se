@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446403"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579261"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Övervaka, diagnostisera och Felsök från koppling med Azure IoT Hub
 
@@ -82,7 +82,7 @@ Måttet [*anslutna enheter (förhands granskning)*](monitor-iot-hub-reference.md
 
 Du kan använda Mät regler för mått för att övervaka enheter från kopplings avvikelser i skala. Det vill säga när ett stort antal enheter från en oväntad anslutning bryts. När en sådan förekomst identifieras kan du titta på loggarna för att felsöka problemet. För att övervaka att varje enhet kopplas från och kopplas från för kritiska enheter. Du måste dock använda Event Grid. Event Grid ger också en mer real tids upplevelse än Azures mått.
 
-Mer information om aviseringar med IoT Hub finns [i aviseringar i övervaka IoT Hub](monitor-iot-hub.md#alerts). En genom gång av hur du skapar aviseringar i IoT Hub finns i [själv studie kursen använda mått och loggar](tutorial-use-metrics-and-diags.md). En mer detaljerad översikt över aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../azure-monitor/platform/alerts-overview.md) i Azure Monitor-dokumentationen.
+Mer information om aviseringar med IoT Hub finns [i aviseringar i övervaka IoT Hub](monitor-iot-hub.md#alerts). En genom gång av hur du skapar aviseringar i IoT Hub finns i [själv studie kursen använda mått och loggar](tutorial-use-metrics-and-diags.md). En mer detaljerad översikt över aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../azure-monitor/alerts/alerts-overview.md) i Azure Monitor-dokumentationen.
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor: Använd loggar för att lösa anslutnings fel
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574601"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurera utgående nätverks trafik för Azure HDInsight-kluster med hjälp av brand vägg
 
@@ -165,7 +165,7 @@ När du har slutfört loggnings konfigurationen, om du använder Log Analytics, 
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Att integrera Azure-brandväggen med Azure Monitor loggar är användbart när du först får ett program att fungera. Särskilt när du inte känner till alla program beroenden. Du kan lära dig mer om Azure Monitor loggar från [analysera loggdata i Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+Att integrera Azure-brandväggen med Azure Monitor loggar är användbart när du först får ett program att fungera. Särskilt när du inte känner till alla program beroenden. Du kan lära dig mer om Azure Monitor loggar från [analysera loggdata i Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 
 Mer information om skalnings gränserna för Azure-brandväggen och begär Anden ökar finns i [det här](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) dokumentet eller [vanliga frågor och svar](../firewall/firewall-faq.yml).
 

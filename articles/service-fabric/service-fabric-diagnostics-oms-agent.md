@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258685"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570153"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestanda övervakning med Azure Monitor loggar
 
@@ -67,15 +67,15 @@ Du kan hämta och ändra den här mallen för att distribuera ett kluster som pa
 
 Nu när du har lagt till Log Analytics-agenten går du till Log Analytics Portal och väljer vilka prestanda räknare som du vill samla in.
 
-1. I Azure Portal går du till resurs gruppen där du skapade Service Fabric-analys-lösningen. Välj **ServiceFabric \<nameOfLog AnalyticsWorkspace\> **.
+1. I Azure Portal går du till resurs gruppen där du skapade Service Fabric-analys-lösningen. Välj **ServiceFabric \<nameOfLog AnalyticsWorkspace\>**.
 
 2. Klicka på **Log Analytics**.
 
 3. Klicka på **Avancerade inställningar**.
 
-4. Klicka på **data**och sedan på **Windows-eller Linux-prestandaräknare**. Det finns en lista med standard räknare som du kan välja att aktivera och du kan ange intervallet för samling. Du kan också lägga till [ytterligare prestanda räknare](service-fabric-diagnostics-event-generation-perf.md) som ska samlas in. Rätt format refereras till i den här [artikeln](/windows/win32/perfctrs/specifying-a-counter-path).
+4. Klicka på **data** och sedan på **Windows-eller Linux-prestandaräknare**. Det finns en lista med standard räknare som du kan välja att aktivera och du kan ange intervallet för samling. Du kan också lägga till [ytterligare prestanda räknare](service-fabric-diagnostics-event-generation-perf.md) som ska samlas in. Rätt format refereras till i den här [artikeln](/windows/win32/perfctrs/specifying-a-counter-path).
 
-5. Klicka på **Spara**och sedan på **OK**.
+5. Klicka på **Spara** och sedan på **OK**.
 
 6. Stäng bladet avancerade inställningar.
 
@@ -91,6 +91,6 @@ Nu när du har lagt till Log Analytics-agenten går du till Log Analytics Portal
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Samla in relevanta [prestanda räknare](service-fabric-diagnostics-event-generation-perf.md). Om du vill konfigurera Log Analytics agenten för att samla in vissa prestanda räknare granskar du [konfigurationen av data källor](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Konfigurera Azure Monitor loggar för att ställa in [automatiserad avisering](../azure-monitor/platform/alerts-overview.md) till hjälp vid identifiering och diagnostik
+* Samla in relevanta [prestanda räknare](service-fabric-diagnostics-event-generation-perf.md). Om du vill konfigurera Log Analytics agenten för att samla in vissa prestanda räknare granskar du [konfigurationen av data källor](../azure-monitor/agents/agent-data-sources.md#configuring-data-sources).
+* Konfigurera Azure Monitor loggar för att ställa in [automatiserad avisering](../azure-monitor/alerts/alerts-overview.md) till hjälp vid identifiering och diagnostik
 * Alternativt kan du samla in prestanda räknare via [Azure-diagnostik tillägget och skicka dem till Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

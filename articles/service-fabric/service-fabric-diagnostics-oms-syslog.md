@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258632"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570195"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric Linux-kluster händelser i syslog
 
@@ -87,7 +87,7 @@ Här är ändringarna för att anropa
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Monitor loggar integrering
-Du kan läsa dessa Syslog-händelser i ett övervaknings verktyg, till exempel Azure Monitor loggar. Du kan skapa en Log Analytics-arbetsyta med hjälp av Azure Marketplace med hjälp av dessa [instruktioner]. (.. /Azure-Monitor/Learn/Quick-Create-Workspace.MD) du måste också lägga till Log Analytics agenten till klustret för att samla in och skicka dessa data till arbets ytan. Det här är samma agent som används för att samla in prestanda räknare. 
+Du kan läsa dessa Syslog-händelser i ett övervaknings verktyg, till exempel Azure Monitor loggar. Du kan skapa en Log Analytics-arbetsyta med hjälp av Azure Marketplace med hjälp av dessa [instruktioner]. (.. /Azure-Monitor/logs/Quick-Create-Workspace.MD) du måste också lägga till Log Analytics agenten till klustret för att samla in och skicka dessa data till arbets ytan. Det här är samma agent som används för att samla in prestanda räknare. 
 
 1. Navigera till `Advanced Settings` bladet
 
@@ -113,6 +113,6 @@ Exemplet ovan är en NodeDown-händelse. Du kan visa en fullständig lista över
 
 ## <a name="next-steps"></a>Nästa steg
 * [Distribuera Log Analytics agenten](service-fabric-diagnostics-oms-agent.md) på noderna för att samla in prestanda räknare och samla Docker statistik och loggar för dina behållare
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
-* [Använd Visa designer för att skapa anpassade vyer i Azure Monitor loggar](../azure-monitor/platform/view-designer.md)
-* Referens för hur du [Azure Monitor loggar integrering med syslog](../azure-monitor/platform/data-sources-syslog.md).
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
+* [Använd Visa designer för att skapa anpassade vyer i Azure Monitor loggar](../azure-monitor/visualize/view-designer.md)
+* Referens för hur du [Azure Monitor loggar integrering med syslog](../azure-monitor/agents/data-sources-syslog.md).

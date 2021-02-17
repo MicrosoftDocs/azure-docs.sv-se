@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf91c0a6e533acb326fe815c3e3c1088c959a603
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576721"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Azures säkerhets bas linje för Site Recovery
 
@@ -66,9 +66,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: övervaka alla ändringar av konfigurationer för nätverks resurser som är relaterade till den Site Recovery tjänsten med hjälp av Azure aktivitets loggar. Skapa aviseringar i Azure Monitor för att meddela dig när kritiska Site Recovery nätverks resurser ändras.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -86,7 +86,7 @@ Använd Azures aktivitets logg data för att fastställa "vad, vem och när" fö
 
 Mata in Site Recovery loggar i Azure Monitor för att aggregera genererade säkerhets data. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda lagrings konton för långsiktig lagring eller lagring. Du kan också aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM-lösning (security incident and Event Management) från tredje part.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Övervaka Site Recovery med Azure Monitor-loggar](monitor-log-analytics.md)
 
@@ -104,7 +104,7 @@ Använd Azures aktivitets logg data för att fastställa "vad, vem och när" fö
 
 Mata in Site Recovery loggar med Azure Monitor för att aggregera genererade säkerhets data. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser, och Använd lagrings konton för långsiktig/arkivera lagring. Aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM-lösning (security incident and Event Management) från tredje part.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Övervaka Site Recovery med Azure Monitor-loggar](monitor-log-analytics.md)
 
@@ -118,7 +118,7 @@ Mata in Site Recovery loggar med Azure Monitor för att aggregera genererade sä
 
 **Vägledning**: Ange logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure Recovery Services-valv med Azure Monitor enligt organisationens regler för efterlevnad. 
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -132,9 +132,9 @@ Kör frågor i Log Analytics för att söka efter termer, identifiera trender, a
 
 - [Övervaka Site Recovery](site-recovery-monitor-and-troubleshoot.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -150,7 +150,7 @@ Visualisera och fråga logg resultat och konfigurera aviseringar för att vidta 
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -413,7 +413,7 @@ Endast kunden har åtkomst till krypterings nyckeln när ett Recovery Services v
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets loggar för att skapa aviseringar när ändringar sker i kritiska resurser. Dessa resurser kan omfatta produktions instanser av Recovery Services valv, resurser för Site Recovery tjänst och relaterade resurser.
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
