@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: d37b39f596a9986f001663847e0b8e6ae8adb987
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535220"
+ms.locfileid: "100545521"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -24,7 +24,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 |Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
 |------------------------------|---------------|---------------|
 | [Återställ dokument (förhands granskning)](search-howto-run-reset-indexers.md) |  Ombearbetar individuellt valda Sök dokument i Indexer-arbetsbelastningar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/index-preview) |
-| [Tillgänglighetszoner](search-performance-optimization.md#availability-zones)| Sök tjänster med två eller fler repliker i vissa regioner, enligt vad som anges i [den här artikeln](search-performance-optimization.md#availability-zones), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i dokumentet om prestanda justering. |
+| [Tillgänglighetszoner](search-performance-optimization.md#availability-zones)| Sök tjänster med två eller fler repliker i vissa regioner, som listas i [skala för prestanda](search-performance-optimization.md#availability-zones), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i artikeln om skalning för prestanda. |
 
 ## <a name="january-2021"></a>Januari 2021
 

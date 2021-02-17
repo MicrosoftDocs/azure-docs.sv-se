@@ -3,17 +3,17 @@ title: Skapa en privat slut punkt för en säker anslutning
 titleSuffix: Azure Cognitive Search
 description: Konfigurera en privat slut punkt i ett virtuellt nätverk för en säker anslutning till en Azure Kognitiv sökning-tjänst.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: markheff
+ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 02/16/2021
+ms.openlocfilehash: 7445ac5d750ac29d3e6ce466a48e82efd1bcde40
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779948"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545538"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Skapa en privat slut punkt för en säker anslutning till Azure Kognitiv sökning
 
@@ -21,8 +21,10 @@ I den här artikeln använder du Azure Portal för att skapa en ny Azure Kogniti
 
 Privata slut punkter tillhandahålls av en [privat Azure-länk](../private-link/private-link-overview.md), som en separat tjänst. Mer information om kostnader finns på sidan med [priser](https://azure.microsoft.com/pricing/details/private-link/).
 
-> [!Important]
-> Stöd för privata slut punkter för Azure Kognitiv sökning kan konfigureras med hjälp av Azure Portal eller [hanterings REST API version 2020-03-13](/rest/api/searchmanagement/). När tjänstens slut punkt är privat är vissa Portal funktioner inaktiverade. Du kan visa och hantera information om service nivå, men Portal åtkomst till index data och de olika komponenterna i tjänsten, till exempel index, indexerare och färdigheter definitioner, är begränsad av säkerhets skäl. Som ett alternativ till portalen kan du använda [vs Code-tillägget](https://aka.ms/vscode-search) för att interagera med de olika komponenterna i tjänsten.
+Du kan skapa en privat slut punkt i Azure Portal, enligt beskrivningen i den här artikeln. Du kan också använda [hanterings REST API version 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)eller [Azure CLI](/cli/azure/search).
+
+> [!NOTE]
+> När tjänstens slut punkt är privat är vissa Portal funktioner inaktiverade. Du kan visa och hantera information om service nivå, men index, indexerare och färdigheter-information är dold av säkerhets skäl. Som ett alternativ till portalen kan du använda [vs Code-tillägget](https://aka.ms/vscode-search) för att interagera med de olika komponenterna i tjänsten.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Varför ska jag använda en privat slut punkt för säker åtkomst?
 
@@ -46,7 +48,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät som �
     | ------- | ----- |
     | Prenumeration | Välj din prenumeration|
     | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj sedan **OK** |
-    | Namn | Ange *MyVirtualNetwork* |
+    | Name | Ange *MyVirtualNetwork* |
     | Region | Välj önskad region |
     |||
 
@@ -67,7 +69,7 @@ I det här avsnittet ska du skapa en ny Azure Kognitiv sökning-tjänst med en p
     | Resursgrupp | Välj **myResourceGroup**. Du skapade det i föregående avsnitt.|
     | **INSTANS INFORMATION** |  |
     | URL | Ange ett unikt namn. |
-    | Plats | Välj önskad region. |
+    | Location | Välj önskad region. |
     | Prisnivå | Välj **pris nivå för ändring** och välj önskad tjänst nivå. (Stöds inte på den **kostnads fria** nivån. Måste vara **Basic** eller högre.) |
     |||
   
@@ -85,7 +87,7 @@ I det här avsnittet ska du skapa en ny Azure Kognitiv sökning-tjänst med en p
     | ------- | ----- |
     | Prenumeration | Välj din prenumeration. |
     | Resursgrupp | Välj **myResourceGroup**. Du skapade det i föregående avsnitt.|
-    | Plats | Välj **USA, västra**.|
+    | Location | Välj **USA, västra**.|
     | Name | Ange *myPrivateEndpoint*.  |
     | Målunderresurs | Lämna standard **searchService**. |
     | **NÄTVERK** |  |
@@ -123,7 +125,7 @@ I det här avsnittet ska du skapa en ny Azure Kognitiv sökning-tjänst med en p
     | Namn på virtuell dator | Ange *myVm*. |
     | Region | Välj **USA, västra** eller vilken region du använder. |
     | Alternativ för tillgänglighet | Lämna standard **ingen redundans för infrastruktur krävs**. |
-    | Avbildning | Välj **Windows Server 2019 Data Center**. |
+    | Bild | Välj **Windows Server 2019 Data Center**. |
     | Storlek | Lämna standard **ds1 v2** som standard. |
     | **ADMINISTRATÖRSKONTO** |  |
     | Användarnamn | Ange ett användar namn som du väljer. |
@@ -218,7 +220,7 @@ När Sök tjänstens slut punkt är privat är vissa Portal funktioner inaktiver
 
 ## <a name="clean-up-resources"></a>Rensa resurser 
 När du är klar med den privata slut punkten, Sök tjänsten och den virtuella datorn tar du bort resurs gruppen och alla resurser den innehåller:
-1. Skriv  *myResourceGroup*   i sökrutan längst upp i portalen och välj **Search**  *myResourceGroup*   från Sök resultaten. 
+1. Skriv *myResourceGroup*   i sökrutan längst upp i portalen och välj   *myResourceGroup*   från Sök resultaten. 
 1. Välj **Ta bort resursgrupp**. 
 1. Ange  *myResourceGroup*   för **Skriv resurs gruppens namn** och välj **ta bort**.
 

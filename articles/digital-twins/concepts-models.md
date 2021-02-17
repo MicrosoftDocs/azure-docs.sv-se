@@ -1,22 +1,22 @@
 ---
-title: Anpassade modeller
+title: DTDL-modeller
 titleSuffix: Azure Digital Twins
-description: Förstå hur Azure Digital-enheter använder användardefinierade modeller för att beskriva entiteter i din miljö.
+description: Förstå hur Azure Digital-enheter använder anpassade modeller för att beskriva entiteter i din miljö.
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131397"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558147"
 ---
-# <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå dubbla modeller i Azure Digitals flätas
+# <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå tvillingmodeller i Azure Digital Twins
 
-En viktig egenskap för Azure Digitals dubbla är möjligheten att definiera en egen vokabulär och skapa ett dubbel diagram i de självdefinierade villkoren i din verksamhet. Den här funktionen tillhandahålls genom användardefinierade **modeller**. Du kan tänka på modeller som Substantiv i en beskrivning av din värld. 
+En viktig egenskap för Azure Digitals dubbla är möjligheten att definiera en egen vokabulär och skapa ett dubbel diagram i de självdefinierade villkoren i din verksamhet. Den här funktionen tillhandahålls via användardefinierade **modeller**. Du kan tänka på modeller som Substantiv i en beskrivning av din värld. 
 
 En modell liknar en **klass** i ett objektorienterad programmeringsspråk som definierar en data form för ett visst koncept i din verkliga arbets miljö. Modeller har namn (t. ex. *rum* eller *TemperatureSensor*) och innehåller element som egenskaper, telemetri/händelser och kommandon som beskriver vad den här typen av entitet i din miljö kan göra. Senare kommer du att använda dessa modeller för att skapa [**digitala**](concepts-twins-graph.md) delar som representerar vissa entiteter som uppfyller den här typen beskrivning.
 
@@ -24,7 +24,7 @@ Azure Digitals-modeller visas i det JSON-LD-baserade **digitala DTDL-språket (d
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Digitalt DTDL (Digital Definition Language) för modeller
 
-Modeller för digitala Azure-dubbla grupper definieras med hjälp av DTDL (Digital enforming Definition Language). DTDL baseras på JSON-LD och är programmerings språk oberoende. DTDL är inte exklusiv för Azure Digitals, men används också för att representera enhets data i andra IoT-tjänster som [iot plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
+Modeller för Azure Digital Twins definieras med Digital Twins Definition Language (DTDL). DTDL är baserat på JSON-LD och är programmeringsspråksoberoende. DTDL är inte exklusiv för Azure Digitals, men används också för att representera enhets data i andra IoT-tjänster som [iot plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
 
 Azure Digitals flätar använder **DTDL _version 2_**. Mer information om den här versionen av DTDL finns i Specifikations dokumentationen för GitHub: [*digital, Definition Language (DTDL)-version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Användning av DTDL _version 1_ med Azure Digitals dubbla är nu föråldrad.
 
@@ -35,7 +35,7 @@ Azure Digitals flätar använder **DTDL _version 2_**. Mer information om den h�
 
 ## <a name="elements-of-a-model"></a>Element i en modell
 
-I en modell definition är kod elementet på den översta nivån ett **gränssnitt**. Detta kapslar in hela modellen och resten av modellen definieras i gränssnittet. 
+I en modell definition är kod elementet på den översta nivån ett **gränssnitt**. Det kapslar in hela modellen, och resten av modellen definieras i gränssnittet. 
 
 Ett DTDL modell gränssnitt kan innehålla noll, ett eller flera av följande fält:
 * **Egenskap** – egenskaper är data fält som representerar statusen för en entitet (som egenskaper i många objektorienterade programmeringsspråk). Egenskaperna har lagrings utrymme och kan läsas när som helst.
@@ -136,23 +136,31 @@ När modeller konstrueras för att återspegla entiteterna i din miljö kan det 
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>Integrera med bransch standard modeller
+## <a name="tools-for-models"></a>Verktyg för modeller 
 
-Med hjälp av modeller som baseras på bransch standarder eller använder standard Ontology-representation, t. ex. RDF eller OWL, får du en rik start punkt när du utformar dina Azures digitala dubbla modeller. Genom att använda bransch modeller kan du också hjälpa till med standardisering och informations delning.
+Det finns flera tillgängliga exempel för att göra det ännu enklare att hantera modeller och Ontologies. De finns på den här lagrings platsen: [verktyg för Digitals definitions språk (DTDL)](https://github.com/Azure/opendigitaltwins-tools).
 
-För att kunna användas med digitala Azure-datorer måste en modell representeras i DTDL (JSON-LD-based [**digital)**](concepts-models.md). För att använda en modell som är bransch standard måste du därför först konvertera den till DTDL så att Azure Digital-enheter kan använda den. DTDL-modellen fungerar sedan som källan till sanningen för modellen i Azure Digitals-modeller.
+I det här avsnittet beskrivs den aktuella uppsättningen exempel i detalj.
 
-Det finns två huvudsakliga sökvägar som integrerar bransch standard modeller med DTDL, beroende på din situation:
-* Om du ännu inte har skapat dina modeller kan du utforma dem runt **befintliga startDTDL-Ontologies** som innehåller språk som är specifika för din bransch.
-* Om du redan har befintliga modeller som baseras på en bransch standard måste du **konvertera dem till DTDL** för att kunna ta dem till Azure Digital-dubbla.
+### <a name="model-uploader"></a>Överföra modeller 
 
-Mer information om båda dessa processer finns i [*How-to: integrera bransch standard modeller*](how-to-integrate-models.md).
+_**För att överföra modeller till Azure Digitals dubbla**_
+
+När du har skapat, utökar eller valt dina modeller kan du överföra dem till din Azure Digital-instansen så att de blir tillgängliga för användning i din lösning. Detta görs med hjälp av [Azure Digitals dubbla API: er](how-to-use-apis-sdks.md), enligt beskrivningen i [*instruktion: hantera DTDL-modeller*](how-to-manage-model.md#upload-models).
+
+Men om du har många modeller som ska överföras – eller om de har många beroenden som skulle göra att enskilda uppladdningar är komplicerade, kan du använda det här exemplet för att ladda upp flera modeller på en gång: [**Azure Digitals**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)sammanställnings modell. Följ instruktionerna som medföljer exemplet för att konfigurera och använda det här projektet för att överföra modeller till din egen instans.
+
+### <a name="model-visualizer"></a>Modell visualiserare 
+
+_**För visualisering av modeller**_
+
+När du har överfört modeller till din Azure Digitals-instans kan du Visa modellerna i din Azure Digital-instansen, inklusive eventuella arv och modell relationer, med [**ADT modell-visualiseraren**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Det här exemplet är för närvarande i ett utkast tillstånd. Vi rekommenderar att du utvecklar communityn för Digitals utvecklings utveckling för att utöka och bidra till exemplet. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se Hantera modeller med DigitalTwinModels-API: er:
-* [*Anvisningar: Hantera anpassade modeller*](how-to-manage-model.md)
+* Lär dig mer om att skapa modeller baserat på bransch standard Ontologies: [ *begrepp: Vad är en Ontology?*](concepts-ontologies.md)
 
-Du kan också läsa mer om hur digitala dubbla modeller skapas baserat på modeller:
-* [*Koncept: digitala och dubbla grafer*](concepts-twins-graph.md)
+* Lär dig mer om att hantera modeller med API-åtgärder: [ *instruktion: hantera DTDL-modeller*](how-to-manage-model.md)
+
+* Lär dig mer om hur modeller används för att skapa digitala dubbla: [ *begrepp: digitala dubbla och dubbla diagram*](concepts-twins-graph.md)
 

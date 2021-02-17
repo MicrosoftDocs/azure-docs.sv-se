@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788238"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544841"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-funktioner
 
@@ -22,24 +22,25 @@ ms.locfileid: "98788238"
 
 Azure-brandväggen innehåller följande funktioner:
 
-- [Inbyggd hög tillgänglighet](#built-in-high-availability)
-- [Tillgänglighetszoner](#availability-zones)
-- [Obegränsad moln skalbarhet](#unrestricted-cloud-scalability)
-- [Programmets FQDN-filtreringsregler](#application-fqdn-filtering-rules)
-- [Regler för filtrering av nätverkstrafik](#network-traffic-filtering-rules)
-- [FQDN-taggar](#fqdn-tags)
-- [Tjänsttaggar](#service-tags)
-- [Hot information](#threat-intelligence)
-- [Stöd för utgående SNAT](#outbound-snat-support)
-- [Stöd för inkommande DNAT](#inbound-dnat-support)
-- [Flera offentliga IP-adresser](#multiple-public-ip-addresses)
-- [Azure Monitor loggning](#azure-monitor-logging)
-- [Tvingad tunneltrafik](#forced-tunneling)
-- [Certifieringar](#certifications)
+- Inbyggd hög tillgänglighet
+- Tillgänglighetszoner
+- Obegränsad molnskalbarhet
+- Programmets FQDN-filtreringsregler
+- Regler för filtrering av nätverkstrafik
+- FQDN-taggar
+- Tjänsttaggar
+- Hotinformation
+- Stöd för utgående SNAT
+- Stöd för inkommande DNAT
+- Flera offentliga IP-adresser
+- Azure Monitor-loggning
+- Tvingad tunneltrafik
+- Webb kategorier (förhands granskning)
+- Certifieringar
 
 ## <a name="built-in-high-availability"></a>Inbyggd hög tillgänglighet
 
-Hög tillgänglighet är inbyggt, så inga ytterligare belastnings utjämning krävs och det finns inget behov av att konfigurera.
+Hög tillgänglighet är inbyggt, så inga extra belastningsutjämnare krävs och det finns inget behov av att konfigurera.
 
 ## <a name="availability-zones"></a>Tillgänglighetszoner
 
@@ -47,7 +48,7 @@ Azure-brandväggen kan konfigureras under distributionen för att omfatta flera 
 
 Du kan också associera Azure-brandväggen till en speciell zon, precis för närhets skäl, med service standard service avtalet för 99,95%.
 
-Det kostar inget extra att distribuera en brand vägg i en tillgänglighets zon. Det finns dock ytterligare kostnader för inkommande och utgående data överföringar som är kopplade till Tillgänglighetszoner. Mer information finns i [pris information om bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/).
+Det kostar inget extra att distribuera en brand vägg i en tillgänglighets zon. Det finns dock ytterligare kostnader för inkommande och utgående data överföringar som är associerade med Tillgänglighetszoner. Mer information finns i [pris information om bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Azure Firewall-Tillgänglighetszoner är tillgängliga i regioner som stöder Tillgänglighetszoner. Mer information finns i [regioner som stöder Tillgänglighetszoner i Azure](../availability-zones/az-region.md)
 
@@ -97,7 +98,7 @@ Du kan associera [flera offentliga IP-adresser](deploy-multi-public-ip-powershel
 Detta möjliggör följande scenarier:
 
 - **DNAt** – du kan översätta flera standard port instanser till backend-servrarna. Om du till exempel har två offentliga IP-adresser kan du översätta TCP-port 3389 (RDP) för båda IP-adresserna.
-- **SNAT** -ytterligare portar är tillgängliga för utgående SNAT-anslutningar, vilket minskar risken för SNAT-port överbelastning. För tillfället väljer Azure Firewall slumpmässigt den offentliga IP-adress som ska användas för en anslutning. Om du har filtrering nedströms i nätverket måste du tillåta alla offentliga IP-adresser som är associerade med brandväggen. Överväg att använda ett [offentligt IP](../virtual-network/public-ip-address-prefix.md) -adressprefix för att förenkla den här konfigurationen.
+- **SNAT** -fler portar är tillgängliga för utgående SNAT-anslutningar, vilket minskar risken för SNAT-port överbelastning. För tillfället väljer Azure Firewall slumpmässigt den offentliga IP-adress som ska användas för en anslutning. Om du har filtrering nedströms i nätverket måste du tillåta alla offentliga IP-adresser som är associerade med brandväggen. Överväg att använda ett [offentligt IP](../virtual-network/public-ip-address-prefix.md) -adressprefix för att förenkla den här konfigurationen.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-loggning
 
@@ -110,6 +111,24 @@ Azure Firewall-arbetsboken innehåller en flexibel arbets yta för analys av Azu
 ## <a name="forced-tunneling"></a>Tvingad tunneltrafik
 
 Du kan konfigurera Azure-brandväggen för att dirigera all Internet-baserad trafik till en utsedd nästa hopp i stället för att gå direkt till Internet. Du kan till exempel ha en lokal gräns brand vägg eller en annan virtuell nätverks installation (NVA) för att bearbeta nätverks trafik innan den skickas till Internet. Mer information finns i [Tvingad tunnel trafik i Azure Firewall](forced-tunneling.md).
+
+## <a name="web-categories-preview"></a>Webb kategorier (förhands granskning)
+
+Med webb kategorier kan administratörer tillåta eller neka användar åtkomst till webbplats kategorier som spel webbplatser, webbplatser för sociala medier och andra. Webb kategorier ingår i Azure Firewall standard, men det är mer finjusterat i Azure Firewall Premium Preview. Till skillnad från webb kategori funktionen i standard-SKU: n som matchar kategorin baserat på ett FQDN, matchar Premium-SKU: n kategorin enligt hela URL: en för både HTTP-och HTTPS-trafik. Mer information om för hands versionen av Azure Firewall Premium finns i för [hands versions funktioner för Azure Firewall Premium](premium-features.md).
+
+Om till exempel Azure-brandväggen fångar upp en HTTPS-begäran för `www.google.com/news` förväntas följande kategorisering: 
+
+- Brand Väggs standard – endast FQDN-delen kommer att undersökas, så `www.google.com` kommer att kategoriseras som *sökmotor*. 
+
+- Brand Väggs Premium – hela URL: en kommer att undersökas, så `www.google.com/news` kommer att kategoriseras som *Nyheter*.
+
+Kategorierna organiseras baserat på allvarlighets grad under **ansvar**, **hög bandbredd**, **företags användning**, **produktivitets förlust**, **allmän surfning** och **Okategoriserade**.
+
+### <a name="category-exceptions"></a>Kategori undantag
+
+Du kan skapa undantag för dina webb kategori regler. Skapa en separat regel samling för Tillåt eller neka med en högre prioritet inom regel samlings gruppen. Du kan till exempel konfigurera en regel samling som tillåter `www.linkedin.com` med prioritet 100 med en regel samling som nekar **sociala nätverk** med prioritet 200. Detta skapar undantaget för den fördefinierade webb kategorin för **sociala nätverk** .
+
+
 
 ## <a name="certifications"></a>Certifieringar
 

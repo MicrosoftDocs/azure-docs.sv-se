@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/12/2020
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526744"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546269"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Skydda dina Kubernetes-arbetsbelastningar
 
@@ -39,7 +39,7 @@ Security Center innehåller fler säkerhets funktioner för behållare om du akt
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|**Ägare** eller **säkerhets administratör** för att redigera en tilldelning<br>**Läsare** för att Visa rekommendationerna|
 |Miljö krav:|Kubernetes v-1.14 (eller högre) krävs<br>Ingen PodSecurityPolicy-resurs (gammal PSP-modell) i klustren<br>Windows-noder stöds inte|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 

@@ -8,14 +8,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 3804bfb2a269c431b1a00947f5c7613566a78f49
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377513"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546643"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>Självstudie: Använd revisioner för att göra icke-brytande API-ändringar på ett säkert sätt
 När ditt API är klart och börjar användas av utvecklare, måste du så småningom göra ändringar för det API:et och samtidigt se till att du inte stör anropen till API:et. Det är också bra att informera utvecklarna om de ändringar du gjort. 
@@ -51,10 +51,10 @@ I den här guiden får du lära dig att:
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-01-add-new-revision.png" alt-text="Lägga till API-granskning":::
 
     > [!TIP]
-    > Du kan också välja **Lägg till revision** i snabb menyn ( **...** ) för API: et.
+    > Du kan också välja **Lägg till revision** i snabb menyn (**...**) för API: et.
 
 5. Ange en beskrivning för din nya revision så att du kommer ihåg vad den ska användas för.
-6. Välj **skapa** ,
+6. Välj **skapa**,
 7. Nu skapas en ny version.
 
     > [!NOTE]
@@ -69,7 +69,7 @@ I den här guiden får du lära dig att:
     > [!TIP]
     > Använd revisionsväljaren för att växla mellan de revisioner du vill arbeta med.
 1. Välj **+ Lägg till åtgärd**.
-1. Ange att den nya åtgärden ska vara **POST** , och ange Name (namn), Display Name (visningsnamn) och URL för åtgärden som **test**.
+1. Ange att den nya åtgärden ska vara **POST**, och ange Name (namn), Display Name (visningsnamn) och URL för åtgärden som **test**.
 1. **Spara** den nya åtgärden.
 
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-02-make-changes.png" alt-text="Ändra granskning":::
@@ -78,14 +78,71 @@ I den här guiden får du lära dig att:
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Aktualisera dina revisioner och lägga till en ändringsloggpost
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. Välj fliken **Revisioner** från menyn upptill på sidan.
-1. Öppna snabbmenyn ( **...** ) för **revision 2**.
+1. Öppna snabbmenyn (**...**) för **revision 2**.
 1. Välj **gör aktuell**.
 1. Markera kryss rutan **publicera i offentlig ändrings logg för den här API: n** om du vill skicka anteckningar om den här ändringen. Ange en beskrivning av din ändring som utvecklarna ser, till exempel: **testa revisioner. Ny "test"-åtgärd har lagts till.**
 1. Nu är **Revision 2** aktuell.
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="Revisions meny i fönstret revisioner":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Börja använda Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Använd den här proceduren för att skapa och uppdatera en version.
+
+1. Kör kommandot [AZ APIM API List](/cli/azure/apim/api#az_apim_api_list) för att se API-id: n:
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   API-ID: t som ska användas i nästa kommando är `Name` värdet. API-revision är i `ApiRevision` kolumnen.
+
+1. Om du vill skapa en version med en versions anteckning kör du kommandot [AZ APIM API release Create](/cli/azure/apim/api/release#az_apim_api_release_create) :
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   Den revidering som du släpper blir den aktuella revisionen.
+
+1. Om du vill se dina versioner använder du kommandot [AZ APIM API release List](/cli/azure/apim/api/release#az_apim_api_release_list) :
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   De anteckningar du anger visas i ändringsloggen. Du kan se dem i utdata från föregående kommando.
+
+1. När du skapar en version `--notes` är parametern valfri. Du kan lägga till eller ändra anteckningar senare med hjälp av kommandot [AZ APIM API release Update](/cli/azure/apim/api/release#az_apim_api_release_update) :
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   Använd värdet i `Name` kolumnen för versions-ID.
+
+Du kan ta bort alla versioner genom att köra kommandot [AZ APIM API release Delete ](/cli/azure/apim/api/release#az_apim_api_release_delete) :
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Gå till utvecklarportalen för att se dina ändringar och ändringsloggen
 
