@@ -1,42 +1,42 @@
 ---
-title: Lägga till eller ta bort Azure Role-tilldelningar med Azure PowerShell-Azure RBAC
+title: Tilldela Azure-roller med Azure PowerShell-Azure RBAC
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvud namn eller hanterade identiteter med hjälp av Azure PowerShell och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 3bb09133ba6991554072b4bf68b5306c78f868a7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 00f663b90f34f3b557329692f844bbbc1bf3207d
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964294"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556806"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure PowerShell
+# <a name="assign-azure-roles-using-azure-powershell"></a>Tilldela Azure-roller med hjälp av Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] I den här artikeln beskrivs hur du tilldelar roller med hjälp av Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
+Om du vill tilldela roller måste du ha:
 
-- `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
 - [PowerShell i Azure Cloud Shell](../cloud-shell/overview.md) eller [Azure PowerShell](/powershell/azure/install-az-ps)
 - Det konto som du använder för att köra PowerShell-kommandot måste ha Microsoft Graph- `Directory.Read.All` behörighet.
 
-## <a name="steps-to-add-a-role-assignment"></a>Steg för tillägg av en rolltilldelning
+## <a name="steps-to-assign-an-azure-role"></a>Steg för att tilldela en Azure-roll
 
-I Azure RBAC för att bevilja åtkomst lägger du till en roll tilldelning. En rolltilldelning består av tre delar: säkerhetsobjekt, rolldefinition och omfång. Följ dessa steg om du vill lägga till en roll tilldelning.
+För att tilldela en roll består av tre element: säkerhets objekt, roll definition och omfattning.
 
 ### <a name="step-1-determine-who-needs-access"></a>Steg 1: Bestäm vem som behöver åtkomst
 
-Du kan tilldela en roll till en användare, grupp, tjänstens huvud namn eller en hanterad identitet. Om du vill lägga till en roll tilldelning kan du behöva ange det unika ID: t för objektet. ID: t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID: t med hjälp av Azure Portal eller Azure PowerShell.
+Du kan tilldela en roll till en användare, grupp, tjänstens huvud namn eller en hanterad identitet. Om du vill tilldela en roll kan du behöva ange det unika ID: t för objektet. ID: t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID: t med hjälp av Azure Portal eller Azure PowerShell.
 
 **Användare**
 
@@ -74,7 +74,7 @@ Get-AzADServicePrincipal -SearchString <principalName>
 (Get-AzADServicePrincipal -DisplayName <principalName>).id
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Steg 2: hitta rätt roll
+### <a name="step-2-select-the-appropriate-role"></a>Steg 2: Välj lämplig roll
 
 Behörigheter grupperas tillsammans i roller. Du kan välja från en lista över flera [inbyggda Azure-roller](built-in-roles.md) eller så kan du använda dina egna anpassade roller. Vi rekommenderar att du beviljar åtkomst med den minsta behörighet som krävs, så undvik att tilldela en bredare roll.
 
@@ -128,9 +128,9 @@ För hanterings gruppens omfattning behöver du hanterings gruppens namn. Du hit
 Get-AzManagementGroup
 ```
     
-### <a name="step-4-add-role-assignment"></a>Steg 4: Lägg till roll tilldelning
+### <a name="step-4-assign-role"></a>Steg 4: tilldela roll
 
-Om du vill lägga till en roll tilldelning använder du kommandot [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) . Beroende på omfattningen har kommandot vanligt vis något av följande format.
+Om du vill tilldela en roll använder du kommandot [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) . Beroende på omfattningen har kommandot vanligt vis något av följande format.
 
 **Resursomfång**
 
@@ -190,9 +190,9 @@ New-AzRoleAssignment -ObjectId <objectId> `
 -Scope /providers/Microsoft.Management/managementGroups/<groupName>
 ``` 
     
-## <a name="add-role-assignment-examples"></a>Lägg till Roll tilldelnings exempel
+## <a name="assign-role-examples"></a>Tilldela roll exempel
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Lägg till roll tilldelning för alla BLOB-behållare i ett lagrings konto resurs omfång
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Tilldela en roll för alla BLOB-behållare i ett lagrings konto resurs omfång
 
 Tilldelar rollen [Storage BLOB data Contributor](built-in-roles.md#storage-blob-data-contributor) till ett huvud namn för tjänsten med objekt-ID *55555555-5555-5555-5555-555555555555* i en resurs omfattning för ett lagrings konto med namnet *storage12345*.
 
@@ -212,7 +212,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Lägg till roll tilldelning för en angiven resurs omfattning för BLOB container
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Tilldela en roll för en angiven resurs omfattning för BLOB container
 
 Tilldelar rollen [Storage BLOB data Contributor](built-in-roles.md#storage-blob-data-contributor) till ett huvud namn för tjänsten med objekt-ID *55555555-5555-5555-5555-555555555555* i en resurs omfattning för en BLOB-behållare med namnet *BLOB-container-01*.
 
@@ -233,7 +233,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Lägg till roll tilldelning för en grupp i ett angivet virtuellt nätverks resurs omfång
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Tilldela en roll för en grupp i ett angivet virtuellt nätverks resurs omfång
 
 Tilldelar rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) till gruppen *Pharma Sales admins* med ID aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa vid en resurs omfattning för ett virtuellt nätverk med namnet *Pharma-Sales-Project-Network*.
 
@@ -258,7 +258,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-#### <a name="add-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Lägg till en roll tilldelning för en användare i ett resurs grupps omfång
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Tilldela en roll för en användare i ett resurs grupps omfång
 
 Tilldelar rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) till *patlong \@ contoso.com* -användare i resurs grupps omfånget *Pharma-Sales* .
 
@@ -297,7 +297,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Lägg till roll tilldelning för en användare med hjälp av det unika roll-ID: t i en resurs grupp omfånget
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Tilldela en roll för en användare med hjälp av det unika roll-ID: t i en resurs grupp omfånget
 
 Det finns ett par gånger när ett roll namn kan ändras, till exempel:
 
@@ -324,7 +324,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Lägg till roll tilldelning för ett program i en resurs grupp omfånget
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Tilldela en roll för ett program i ett resurs grupps omfång
 
 Tilldelar rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) till ett program med tjänstens huvud OBJEKTS-ID 77777777-7777-7777-7777-777777777777 i resurs grupps omfånget *Pharma-Sales* .
 
@@ -344,7 +344,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Lägg till roll tilldelning för en användare med ett prenumerations omfång
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Tilldela en roll för en användare med ett prenumerations omfång
 
 Tilldelar [läsaren](built-in-roles.md#reader) rollen till *annm \@ example.com* -användaren i ett prenumerations omfång.
 
@@ -364,7 +364,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Lägg till roll tilldelning för en användare i en hanterings grupps omfattning
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Tilldela en roll för en användare i ett hanterings grupps omfång
 
 Tilldelar rollen för [fakturerings läsare](built-in-roles.md#billing-reader) till *Alain \@ example.com* -användaren i ett hanterings grupps omfång.
 
@@ -383,36 +383,6 @@ ObjectId           : 44444444-4444-4444-4444-444444444444
 ObjectType         : User
 CanDelegate        : False
 ```
-
-## <a name="remove-a-role-assignment"></a>Ta bort en rolltilldelning
-
-I Azure RBAC tar du bort en roll tilldelning genom att använda [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)för att ta bort åtkomst.
-
-I följande exempel tas roll tilldelningen för [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) bort från *patlong \@ contoso.com* -användaren på resurs gruppen *Pharma-Sales* :
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName patlong@contoso.com `
--RoleDefinitionName "Virtual Machine Contributor" `
--ResourceGroupName pharma-sales
-```
-
-Tar bort rollen [läsare](built-in-roles.md#reader) från *Ann Mack team* Group med ID 22222222-2222-2222-2222-222222222222 i ett prenumerations omfång.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -ObjectId 22222222-2222-2222-2222-222222222222 `
--RoleDefinitionName "Reader" `
--Scope "/subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-Tar bort rollen för [fakturerings läsare](built-in-roles.md#billing-reader) från *Alain \@ example.com* -användaren i hanterings gruppens omfång.
-
-```azurepowershell
-PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com `
--RoleDefinitionName "Billing Reader" `
--Scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-Om du får fel meddelandet "den tillhandahållna informationen inte mappas till en roll tilldelning", se till att du även anger `-Scope` `-ResourceGroupName` parametrarna eller. Mer information finns i [Felsöka Azure RBAC](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>Nästa steg
 

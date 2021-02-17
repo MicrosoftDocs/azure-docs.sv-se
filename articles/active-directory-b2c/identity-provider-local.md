@@ -12,12 +12,12 @@ ms.date: 01/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e6b520a32755379fce5326e25b90f135b0d67755
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: b2baff33d9e91e1b5259d79eca0a22535c00f419
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98574419"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555238"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>Konfigurera den lokala konto identitets leverantören
 
@@ -150,5 +150,5 @@ När du har hämtat start paketet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lägg till externa identitets leverantörer](tutorial-add-identity-providers.md)
+- [Lägg till externa identitets leverantörer](add-identity-provider.md)
 - [Skapa ett användarflöde](tutorial-create-user-flows.md)

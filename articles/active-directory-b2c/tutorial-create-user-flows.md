@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614276"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557141"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Självstudie: skapa användar flöden i Azure Active Directory B2C
 
@@ -33,9 +33,9 @@ Den här självstudien visar hur du skapar vissa rekommenderade användar flöde
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!IMPORTANT]
-> Vi har ändrat hur vi refererar till användar flödes versioner. Tidigare erbjöd vi v1 (produktions klara) versioner och V 1.1 och v2 (för hands version). Nu har vi konsoliderat användar flöden till **Rekommenderad** (nästa generations för hands version) och **standard** versioner (allmänt tillgängliga). Alla tidigare förhands gransknings användar flöden för V 1.1 och v2 finns på en sökväg till utfasningen den **1 augusti 2021**. Mer information finns [i användar flödes versioner i Azure AD B2C](user-flow-versions.md).
+> Vi har ändrat hur vi refererar till användarflödesversioner. Tidigare erbjöd vi V1-versioner (produktionsklara), V1.1 och V2 (förhandsversion). Nu har vi konsoliderat användar flöden till **Rekommenderad** (nästa generations för hands version) och **standard** versioner (allmänt tillgängliga). Alla tidigare förhands gransknings användar flöden för V 1.1 och v2 finns på en sökväg till utfasningen den **1 augusti 2021**. Mer information finns [i användar flödes versioner i Azure AD B2C](user-flow-versions.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [Registrera dina program](tutorial-register-applications.md) som är en del av de användar flöden som du vill skapa.
 
@@ -133,7 +133,7 @@ I den här artikeln lärde du dig att:
 > * Skapa ett användarflöde för profilredigering
 > * Skapa ett användarflöde för återställning av lösenord
 
-Nu kan du läsa mer om att lägga till identitets leverantörer i dina program för att möjliggöra användar inloggning med leverantörer som Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft eller Twitter.
+Nu ska du lära dig hur du använder Azure AD B2C för att logga in och registrera användare i ett program. Följ ASP.NET-webbprogrammet som är länkat nedan eller navigera till ett annat program i innehålls förteckningen under **autentisera användare**.
 
 > [!div class="nextstepaction"]
-> [Lägg till identitets leverantörer i dina program >](tutorial-add-identity-providers.md)
+> [Självstudie: aktivera autentisering i ett webb program med hjälp av Azure AD B2C >](tutorial-web-app-dotnet.md)

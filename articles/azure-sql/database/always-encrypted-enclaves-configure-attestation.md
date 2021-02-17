@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733831"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555666"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurera Azure-attestering för din logiska Azure SQL-Server
 
@@ -114,7 +114,7 @@ Under arbets flödet för attestering anropar den logiska Azure SQL-servern som 
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Använd Azure Portal för att tilldela behörighet
 
-Om du vill tilldela identiteten för en Azure SQL-Server till rollen attesterings läsare för en attesterings leverantör följer du de allmänna anvisningarna i [Lägg till eller ta bort Azure-roll tilldelningar med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md). När du är i fönstret **Lägg till roll tilldelning** :
+Om du vill tilldela identiteten för en Azure SQL-Server till rollen attesterings läsare för en attesterings leverantör följer du de allmänna anvisningarna i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md). När du är i fönstret **Lägg till roll tilldelning** :
 
 1. I list rutan **roll** väljer du rollen **attesterings läsare** .
 1. I fältet **Välj** anger du namnet på din Azure SQL-Server för att söka efter den.
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Mer information finns i [lägga till eller ta bort Azure Role-tilldelningar med Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
+Mer information finns i [tilldela Azure-roller med hjälp av Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples).
 
 ## <a name="next-steps"></a>Nästa steg
 

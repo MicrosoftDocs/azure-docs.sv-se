@@ -1,14 +1,14 @@
 ---
 title: Ta bort åtkomst till en delegering
 description: Lär dig hur du tar bort åtkomst till resurser som har delegerats till en tjänst leverantör för Azure Lighthouse.
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555786"
 ---
 # <a name="remove-access-to-a-delegation"></a>Ta bort åtkomst till en delegering
 
@@ -21,7 +21,7 @@ Att ta bort en delegering kan göras av en användare i antingen kund-eller tjä
 
 ## <a name="customers"></a>Kunder
 
-Användare i kundens klient organisation som har den [inbyggda rollen ägare](../../role-based-access-control/built-in-roles.md#owner) för en prenumeration kan ta bort tjänst leverantörens åtkomst till prenumerationen (eller resurs grupper i den prenumerationen). För att göra det kan en användare i kundens klient organisation gå till [sidan tjänst leverantörer](view-manage-service-providers.md#add-or-remove-service-provider-offers) i Azure Portal, hitta erbjudandet på sidan med **tjänst leverantörs erbjudanden** och välj pappers korgs ikonen på raden för det erbjudandet.
+Användare i kundens klient organisation som har en roll med `Microsoft.Authorization/roleAssignments/write` behörigheten, till exempel [ägare](../../role-based-access-control/built-in-roles.md#owner), kan ta bort tjänst leverantörs åtkomst till den prenumerationen (eller till resurs grupper i den prenumerationen). Användaren kan göra detta genom att gå till [sidan tjänst leverantörer](view-manage-service-providers.md#add-or-remove-service-provider-offers) i Azure Portal, leta upp erbjudandet på sidan med **tjänst leverantörs erbjudanden** och välja pappers korgs ikonen på raden för det erbjudandet.
 
 När du har bekräftat borttagningen kommer inga användare i tjänste leverantörens klient att kunna komma åt de resurser som tidigare har delegerats.
 

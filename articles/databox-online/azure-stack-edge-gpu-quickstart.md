@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953945"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546796"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Snabb start: kom igång med Azure Stack Edge Pro med GPU 
 
@@ -64,7 +64,7 @@ Kontrol lera att följande krav är uppfyllda innan du distribuerar:
 10. **Konfigurera certifikat**: om du har ändrat enhets namn och/eller DNS-domän måste du generera certifikat eller lägga till certifikat för att aktivera enheten. 
 
     - Använd alternativet för att [Skapa certifikat](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)om du vill testa arbets belastningar som inte är produktion. 
-    - Om du tar med dina egna certifikat, inklusive signerings kedjan, [lägger du till certifikat](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) i lämpligt format. Se till att ladda upp signerings kedjan först. Se [Skapa certifikat](azure-stack-edge-j-series-create-certificates-tool.md) och [Ladda upp certifikat via det lokala användar gränssnittet](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
+    - Om du tar med dina egna certifikat, inklusive signerings kedjan, [lägger du till certifikat](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates) i lämpligt format. Se till att ladda upp signerings kedjan först. Se [Skapa certifikat](azure-stack-edge-gpu-create-certificates-tool.md) och [Ladda upp certifikat via det lokala användar gränssnittet](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).
 
 11. **Aktivera**: för att hämta aktiverings nyckeln 
 
@@ -73,7 +73,7 @@ Kontrol lera att följande krav är uppfyllda innan du distribuerar:
 
 12. **Konfigurera beräkning**: gå till **Översikt > enheten** i Azure Portal. Kontrol lera att enheten är **online**. I den vänstra rutan går du till **Edge compute > kom igång > konfigurera Edge compute > Compute**. Ange en befintlig eller ny IoT Hub-tjänst och vänta i ungefär 20 minuter innan beräkningen har kon figurer ATS. Se mer information om [självstudie: Konfigurera Compute på Azure Stack Edge Pro GPU-enhet](azure-stack-edge-gpu-deploy-configure-compute.md)
 
-Du är redo att distribuera beräknings arbets belastningar på enheten [via IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [via `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) eller [via Azure Arc-aktiverad Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)! Om du får problem under installationen går du till [Felsöka enhets problem](), [beställnings problem](azure-stack-edge-gpu-troubleshoot.md), [certifikat problem](azure-stack-edge-j-series-certificate-troubleshooting.md)eller Kubernetes problem. 
+Du är redo att distribuera beräknings arbets belastningar på enheten [via IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [via `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) eller [via Azure Arc-aktiverad Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)! Om du får problem under installationen går du till [Felsöka enhets problem](), [beställnings problem](azure-stack-edge-gpu-troubleshoot.md), [certifikat problem](azure-stack-edge-gpu-certificate-troubleshooting.md)eller Kubernetes problem. 
 
 ## <a name="next-steps"></a>Nästa steg
 

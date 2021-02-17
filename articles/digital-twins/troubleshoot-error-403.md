@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049821"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545708"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Tjänstbegäran misslyckades. Status: 403 (ej tillåtet)
 
@@ -26,8 +26,6 @@ Det här felet kan inträffa på många typer av tjänst begär Anden som kräve
 ### <a name="cause-1"></a>Orsak #1
 
 Oftast indikerar det här felet att din Azure-rollbaserade åtkomst kontroll (Azure RBAC)-behörigheter för tjänsten inte har ställts in korrekt. Många åtgärder för en digital Azure Digitals-instans kräver att du har rollen *Azure Digitals dubbla data ägare* **på den instans som du försöker hantera**. 
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Orsak #2
 

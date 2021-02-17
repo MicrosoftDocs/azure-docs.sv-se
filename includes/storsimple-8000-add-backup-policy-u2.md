@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 02/09/2021
 ms.author: alkohli
-ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 23ce17844a0113f63931c6ece7d36bfefedc2de5
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375885"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552207"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Så här lägger du till en StorSimple-säkerhetskopieringsprincip
 
@@ -17,21 +17,21 @@ ms.locfileid: "93375885"
 
 2. Klicka på **+ Lägg till princip** i kommandofältet på bladet **Säkerhetskopieringspolicy**.
    
-    ![Lägga till en säkerhetskopieringspolicy](./media/storsimple-8000-add-backup-policy-u2/addbupol1.png)
+    ![Lägga till en säkerhetskopieringspolicy](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-01.png)
 
-3. Utför följande steg på bladet **Skapa säkerhetskopieringspolicy** :
+3. Utför följande steg på bladet **Skapa säkerhetskopieringspolicy**:
    
    1. **Välj enhet** fylls i automatiskt baserat på den enhet du valt.
    
-   2. Ange ett **namn på** säkerhets kopierings principen som innehåller mellan 3 och 150 tecken. När principen har skapats kan du inte byta namn på den.
+   2. Ange ett namn på säkerhets kopierings **principen** som innehåller mellan 3 och 150 tecken. När principen har skapats kan du inte byta namn på den.
        
    3. Du kan tilldela volymer till säkerhetskopieringspolicyn genom att välja **Lägg till volymer** och sedan klicka på kryssrutan eller kryssrutorna i tabellistan över volymer för att koppla en eller flera volymer till säkerhetskopieringspolicyn.
 
-       ![Lägga till en princip för säkerhetskopiering 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Lägga till en princip för säkerhetskopiering 2](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-02.png)<!--Replacement screen source: create-backup-policy-addvolumes.png-->
 
-   4. Du kan definiera ett schema för säkerhetskopieringspolicyn genom att klicka på **Första schemat** och sedan ändra följande parametrar:
+   4. Du kan definiera ett schema för säkerhetskopieringspolicyn genom att klicka på **Första schemat** och sedan ändra följande parametrar:<!--Do the substeps remain the same? Can they follow without a screenshot?-->
 
-       ![Lägg till en princip för säkerhets kopiering 3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Lägg till en princip för säkerhets kopiering 3](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-03.png)<!--Replacement screen source: create-backup-policy-first-schedule.png-->
 
        1. För **Typ av ögonblicksbild** väljer du **Moln** eller **Lokal**.
 
@@ -44,10 +44,7 @@ ms.locfileid: "93375885"
        5. Klicka på **OK** för att definiera schemat.
 
    5. Klicka på **Skapa** för att skapa en säkerhetskopieringspolicy.
-
-       ![Lägg till en säkerhets kopierings princip 4](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. Du meddelas när säkerhetskopieringspolicyn har skapats. Den nya principen visas i tabellvyn på bladet **Säkerhetskopieringspolicy**.
 
-       ![Lägg till en säkerhets kopierings princip 5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
-
+       ![Lägg till en säkerhets kopierings princip 5](./media/storsimple-8000-add-backup-policy-u2/add-backup-policy-07.png)

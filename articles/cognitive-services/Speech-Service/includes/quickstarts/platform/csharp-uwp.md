@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 67e08abc9d66d69628e923cdb6b39073a0705b2f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a54a09bd1fb6393098064906fc9c746d3e00b0a2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188361"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551640"
 ---
 Den här guiden visar hur du installerar [talet SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) för C# universell Windows-plattform (UWP). Om du bara vill att paket namnet ska komma igång med ditt eget kör `Install-Package Microsoft.CognitiveServices.Speech` du i NuGet-konsolen.
 
@@ -28,6 +28,7 @@ Den här guiden visar hur du installerar [talet SDK](~/articles/cognitive-servic
 
 För den här snabbstarten krävs:
 
+* I Windows behöver du [Microsoft Visual C++ Redistributable för Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) för din plattform. Det kan krävas en omstart för att installera det första gången.
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (vilken utgåva som helst)
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Skapa ett Visual Studio-projekt och installera talet SDK

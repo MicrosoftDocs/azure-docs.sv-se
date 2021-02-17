@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951551"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545842"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Weibo-konto med hjälp av Azure Active Directory B2C
 
@@ -32,19 +32,19 @@ ms.locfileid: "98951551"
 
 ## <a name="create-a-weibo-application"></a>Skapa ett Weibo-program
 
-Om du vill aktivera inloggning för användare med ett Weibo-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i [Weibo Developer-portalen](https://open.weibo.com/). Om du inte redan har ett Weibo-konto kan du registrera dig på [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
+Om du vill aktivera inloggning för användare med ett Weibo-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i Weibo Developer-portalen. Om du inte redan har ett Weibo-konto kan du registrera dig på [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
-1. Logga in på [Weibo Developer-portalen](https://open.weibo.com/) med dina Weibo-kontoautentiseringsuppgifter.
+1. Logga in på Weibo Developer-portalen med dina Weibo-kontoautentiseringsuppgifter.
 1. När du har loggat in väljer du ditt visnings namn i det övre högra hörnet.
 1. I list rutan väljer du **编辑开发者信息** (redigera information om utvecklare).
 1. Ange den information som krävs och välj **提交** (skicka).
 1. Slutför verifierings processen för e-post.
-1. Gå till [sidan med identitets verifiering](https://open.weibo.com/developers/identity/edit).
+1. Gå till sidan med identitets verifiering.
 1. Ange den information som krävs och välj **提交** (skicka).
 
 ### <a name="register-a-weibo-application"></a>Registrera ett Weibo-program
 
-1. Gå till den [nya Weibo app Registration-sidan](https://open.weibo.com/apps/new).
+1. Gå till den nya Weibo app Registration-sidan.
 1. Ange nödvändig programinformation.
 1. Välj **创建** (skapa).
 1. Kopiera värdena för **app Key** och **app Secret**. Du behöver båda dessa för att lägga till identitets leverantören till din klient.
@@ -92,7 +92,7 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Manual` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `WeiboSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `WeiboSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.

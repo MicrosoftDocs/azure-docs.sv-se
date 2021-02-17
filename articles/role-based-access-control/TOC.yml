@@ -55,13 +55,13 @@
           href: role-assignments-list-cli.md
         - name: REST-API
           href: role-assignments-list-rest.md
-    - name: Lägg till eller ta bort rolltilldelningar
+    - name: Tilldela roller
       items:
-        - name: Steg för tillägg av en rolltilldelning
+        - name: Steg för att tilldela en roll
           href: role-assignments-steps.md
         - name: Portalen
           items:
-            - name: Lägg till eller ta bort rolltilldelningar
+            - name: Tilldela roller
               href: role-assignments-portal.md
             - name: Prenumerationsadministratör
               href: role-assignments-portal-subscription-admin.md
@@ -78,6 +78,8 @@
         - name: ARM-mall
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: Ta bort rolltilldelningar
+      href: role-assignments-remove.md
     - name: Visa lista över nekade tilldelningar
       items:
         - name: Översikt

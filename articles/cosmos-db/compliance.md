@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 512accd274da35c1f747f2ef185f0b3eefa4756d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ce68b9e42ca1e34c8ea493b67e123a86139134bf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636800"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555596"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Efterlevnad i Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,37 +33,7 @@ För att hjälpa kunder att uppfylla sina egna krav på efterlevnad för reglera
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB certifieringar  
 
-Azure Cosmos DB utökar kontinuerligt dess certifieringstäckning. Azure Cosmos DB certifieras för närvarande med följande certifikat:
-
-| **Globalt tillämpligt** | **AMERIKANSKA myndigheter** | **Bransch Specific** | **Region eller land, Specific** |
-| --- | --- | --- | --- |
-| CSA STAR-certifiering | DoD SRG nivå 2 | HIPAA BAA | Australien, IRAP |
-| CSA-stjärn attestering | FedRAMP Moderate | HITRUST | Tyskland C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR, del 11) | PCI DSS | Singapore MTCS nivå 3 |
-| ISO 22301:2012 | | | Spanien ENS hög|
-| ISO 27001:2013| | | |
-| ISO 27017:2015 | | | |
-| ISO 27018:2014 | | | |
-| ISO 9001:2015 | | | |
-| ISO 27701:2019| | | |
-| SOC 1, 2, 3 | | | |
-
-Om du vill lära dig mer om var och en av dessa erbjudanden för efterlevnad och hur de förmånen ger dig, se [Microsoft Azure erbjudanden för regelefterlevnad](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), bilaga A & B.
-
-I följande tabell visas de certifieringar som stöds av Azure Cosmos DB i Azure Government:
-
-| **Globalt tillämpligt** | **AMERIKANSKA myndigheter** | **Bransch Specific** | 
-| --- | --- | --- |
-| CSA STAR-certifiering | CJIS| HIPAA BAA | 
-| CSA-stjärn attestering| DoD SRG nivå 2| HITRUST  | 
-| ISO 20000-1:2011 | DoD SRG nivå 4 | PCI DSS | 
-| ISO 9001:2012 | DoD SRG nivå 5 | | 
-| ISO 27001:2013 | FedRAMP High | |
-| ISO 9001:2015 | IRS 1075|  |
-| ISO 27017:2014 | NIST CSF | |
-| ISO 27018:2015 | NIST SP 800-171 | |
-| SOC 1, 2, 3 | | |
-
+Om du vill ta reda på de senaste certifierings certifieringarna för Azure Cosmos DB, se [Microsoft Azure erbjudanden för regelefterlevnad](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), bilaga A & B.  
 
 ## <a name="next-steps"></a>Nästa steg
 

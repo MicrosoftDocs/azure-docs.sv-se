@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 3112c93e0877a8441875e3c7627c2a7b84ac8ab1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8ba24d5a59beade1429b9d86ed549f1dae3c2f1f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808513"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551376"
 ---
 > [!NOTE]
 > Den här guiden använder sväng för att köra REST API-anrop. Det finns även [exempel kod på GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) som illustrerar hur du ANROPAr REST-API: er med python.
@@ -85,9 +85,14 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 Du får ett `200 (success)` svar med JSON-innehåll.
 
-Se följande faktura bild och dess motsvarande JSON-utdata. Utdatan har kort ATS för enkelhetens skull. `"readResults"`Noden innehåller alla text rader med dess respektive placering på sidan. `"selectionMarks"`Noden (i för hands versionen av v 2.1) visar varje markerings märke (kryss markering) och om dess status är "markerad" eller "omarkerad". I `"pageResults"` avsnittet visas de tabeller som har extraherats. För varje tabell extraheras text-, rad-och kolumn index, rad-och kolumn omfång, avgränsnings ruta och fler.
+Se följande faktura bild och dess motsvarande JSON-utdata.
+* `"readResults"`Noden innehåller alla text rader med dess respektive placering på sidan. 
+* `"selectionMarks"`Noden (i för hands versionen av v 2.1) visar varje markerings märke (kryss markering) och om dess status är "markerad" eller "omarkerad". 
+* I `"pageResults"` avsnittet visas de tabeller som har extraherats. För varje tabell extraheras text-, rad-och kolumn index, rad-och kolumn omfång, avgränsnings ruta och fler.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Contoso Project Statement-dokument med en tabell.":::
+
+Den här utmatningen har kortas ned för enkelhetens skull. Se den [fullständiga exempel utmatningen på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout-output.json).
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```json
@@ -355,11 +360,16 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoic
 
 ### <a name="examine-the-response"></a>Granska svaret
 
-Du får ett `200 (Success)` svar med JSON-utdata. `"readResults"`Fältet innehåller alla rader med text som har extraherats från fakturan, `"pageResults"` inklusive de tabeller och markerings märken som extraheras från fakturan och `"documentResults"` fältet innehåller nyckel/värde-information för de mest relevanta delarna av fakturan.
+Du får ett `200 (Success)` svar med JSON-utdata. 
+* `"readResults"`Fältet innehåller alla rader med text som har extraherats från fakturan.
+* `"pageResults"`Inkluderar de tabeller och markerings märken som extraheras från fakturan.
+* `"documentResults"`Fältet innehåller nyckel/värde-information för de mest relevanta delarna av fakturan.
 
-Se följande faktura dokument och dess motsvarande JSON-utdata. JSON-innehållet har förkort ATS för läsbarhet.
+Se följande faktura dokument och dess motsvarande JSON-utdata. 
 
 * [Exempel faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+Det här JSON-innehållet har kortas ned för läsbarhet. Se den [fullständiga exempel utmatningen på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-invoice-output.json).
 
 ```json
 {
@@ -716,7 +726,7 @@ Du får ett `200 (Success)` svar med en JSON-text i följande format. Utdatan ha
 
 I anpassade modeller som har tränats utan etiketter finns nyckel/värde-paret associationer och tabeller i `"pageResults"` noden i JSON-utdata. I anpassade modeller som har tränats med etiketter finns nyckel-och värdepars kopplingarna i `"documentResults"` noden. Om du även har angett oformaterad text extrahering genom *includeTextDetails* URL-parameter, `"readResults"` visar noden innehållet och positionerna för all text i dokumentet.
 
-Det här exemplet på JSON-utdata har kortas ned för enkelhetens skull.
+Det här exemplet på JSON-utdata har kortas ned för enkelhetens skull. Se den [fullständiga exempel utmatningen på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json).
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 ```JSON
@@ -1041,13 +1051,15 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 
 ### <a name="examine-the-response"></a>Granska svaret
 
-Du får ett `200 (Success)` svar med JSON-utdata. Det första fältet, `"status"` anger status för åtgärden. Om åtgärden har slutförts `"readResults"` innehåller fältet alla rader med text som har extraherats från inleveransen och `"documentResults"` fältet innehåller nyckel/värde-information för de mest relevanta delarna av kvittot. Om åtgärden inte är slutförd kommer värdet för `"status"` att vara `"running"` eller `"notStarted"` , och du bör anropa API: et igen, antingen manuellt eller genom ett skript. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
+Du får ett `200 (Success)` svar med JSON-utdata. Det första fältet, `"status"` anger status för åtgärden. Om åtgärden inte är slutförd kommer värdet för `"status"` att vara `"running"` eller `"notStarted"` , och du bör anropa API: et igen, antingen manuellt eller genom ett skript. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
 
-Se följande kvitto avbildning och dess motsvarande JSON-utdata. Utdatan har kort ATS för läsbarhet.
+`"readResults"`Noden innehåller all den identifierade texten (om du anger den valfria *includeTextDetails* -parametern till `true` ). Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. `"documentResults"`Noden innehåller de indatavärden som modellen identifierade. Här hittar du användbara nyckel/värde-par som skatt, totalt, handels adress och så vidare.
+
+Se följande kvitto avbildning och dess motsvarande JSON-utdata.
 
 ![Ett kvitto från contoso Store](../../media/contoso-allinone.jpg)
 
-`"readResults"`Noden innehåller all den identifierade texten (om du anger den valfria *includeTextDetails* -parametern till `true` ). Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. `"documentResults"`Noden innehåller de indatavärden som modellen identifierade. Här hittar du användbara nyckel/värde-par som skatt, totalt, handels adress och så vidare.
+Den här utmatningen har trunkerats för läsbarhet. Se den [fullständiga exempel utmatningen på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json).
 
 ```json
 {
@@ -1386,11 +1398,11 @@ Se följande kvitto avbildning och dess motsvarande JSON-utdata. Utdatan har kor
 Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md). Om du vill börja analysera ett visitkort anropar du **[visitkorts](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** -API: et med kommandot vändning nedan. Innan du kör kommandot gör du följande ändringar:
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
-1. Ersätt `{your receipt URL}` med URL-adressen för en kvitto avbildning.
+1. Ersätt `{your business card URL}` med URL-adressen för en kvitto avbildning.
 1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
 ```
 
 Du får ett `202 (Success)` svar som innehåller rubriken för **åtgärden location** . Värdet för den här rubriken innehåller ett åtgärds-ID som du kan använda för att fråga efter statusen för den asynkrona åtgärden och hämta resultatet.
@@ -1414,11 +1426,13 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ### <a name="examine-the-response"></a>Granska svaret
 
-Du får ett `200 (Success)` svar med JSON-utdata. `"readResults"`Noden innehåller all den identifierade texten. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. `"documentResults"`Noden innehåller de företagsspecifika värden som modellen identifierade. Här hittar du användbar kontakt information, till exempel företagets namn, förnamn, efter namn, telefonnummer och så vidare.
+Du får ett `200 (Success)` svar med JSON-utdata. 
+
+`"readResults"`Noden innehåller all den identifierade texten. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. `"documentResults"`Noden innehåller de företagsspecifika värden som modellen identifierade. Här hittar du användbar kontakt information, till exempel företagets namn, förnamn, efter namn, telefonnummer och så vidare.
 
 ![Ett visitkort från contoso Company](../../media/business-card-english.jpg)
 
-Det här exemplet illustrerar JSON-utdata som returneras av formulär tolken. Den har trunkerats för läsbarhet.
+Det här exemplet på JSON-utdata har kort ATS för läsbarhet. Se den [fullständiga exempel utmatningen på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json).
 
 ```json
 {

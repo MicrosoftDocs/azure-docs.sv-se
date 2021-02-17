@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: b8ce745a0a0db96e7f6b9e3a0140d46364246e4a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fd7f663ee5b6ceb49e6f1a393fc30919d5b245e9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379615"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547833"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivera antecknings böcker för Azure Cosmos DB-konton (förhands granskning)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,9 +95,9 @@ Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgäng
 - Tyskland, västra centrala
 - Japan, västra
 - Sydkorea, södra
-- Norra centrala USA
+- USA, norra centrala
 - Europa, norra
-- Södra centrala USA
+- USA, södra centrala
 - Sydostasien
 - Schweiz, norra
 - Förenade Arabemiraten Central

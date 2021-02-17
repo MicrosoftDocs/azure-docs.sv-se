@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843391"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558179"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurera kryptering med kundhanterade nycklar som lagras i Azure Key Vault
 
@@ -175,10 +175,11 @@ Azure Storage kan automatiskt uppdatera den Kundhanterade nyckel som används f�
 Följ dessa steg om du vill konfigurera Kundhanterade nycklar med automatisk uppdatering av nyckel versionen i Azure Portal:
 
 1. Navigera till ditt lagringskonto.
-1. På bladet **Inställningar** för lagrings kontot klickar du på **kryptering**. Välj alternativet **Kundhanterade nycklar** , som du ser i följande bild.
+1. På bladet **Inställningar** för lagrings kontot klickar du på **kryptering**. Som standard är nyckel hantering inställd på **Microsoft-hanterade nycklar**, som du ser i följande bild.
 
     ![Portal skärm bild som visar krypterings alternativ](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. Välj alternativet **kundens hanterade nycklar** .
 1. Välj alternativet **Välj från Key Vault** .
 1. Välj **Välj ett nyckel valv och nyckel**.
 1. Välj det nyckel valv som innehåller den nyckel som du vill använda.

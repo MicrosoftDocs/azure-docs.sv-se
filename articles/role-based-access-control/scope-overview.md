@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856166"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555926"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Förstå omfattning för Azure RBAC
 
@@ -32,7 +32,7 @@ Hanterings grupper är en nivå av omfånget över prenumerationer, men hanterin
 
 ## <a name="scope-format"></a>Omfattnings format
 
-Om du lägger till roll tilldelningar med hjälp av kommando raden måste du ange omfånget. För kommando rads verktyg är omfånget en potentiellt lång sträng som identifierar roll tilldelningens exakta omfång. I Azure Portal visas det här omfånget vanligt vis som *resurs-ID*.
+Om du tilldelar roller med hjälp av kommando raden måste du ange omfånget. För kommando rads verktyg är omfånget en potentiellt lång sträng som identifierar roll tilldelningens exakta omfång. I Azure Portal visas det här omfånget vanligt vis som *resurs-ID*.
 
 Omfattningen består av en serie identifierare avgränsade med snedstreck (/). Du kan tänka på den här strängen som att uttrycka följande hierarki, där text utan plats hållare ( `{}` ) är fasta identifierare:
 
@@ -122,6 +122,6 @@ Det är ganska enkelt att fastställa omfattningen för en hanterings grupp, en 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Steg för tillägg av en rolltilldelning](role-assignments-steps.md)
+- [Steg för att tilldela en Azure-roll](role-assignments-steps.md)
 - [Resursleverantörer för Azure-tjänster](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Vad är hanteringsgrupper i Azure?](../governance/management-groups/overview.md)

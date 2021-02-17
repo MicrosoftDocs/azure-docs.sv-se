@@ -1,5 +1,5 @@
 ---
-title: Lägga till eller ta bort Azure Role-tilldelningar med Azure CLI – Azure RBAC
+title: Tilldela Azure-roller med Azure CLI – Azure RBAC
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvud namn eller hanterade identiteter med Azure CLI och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 author: rolyon
@@ -10,31 +10,31 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: ee356f32b6799c6182ec1c9e061a35271a4bbc23
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556968"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure CLI
+# <a name="assign-azure-roles-using-azure-cli"></a>Tilldela Azure-roller med Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Den här artikeln beskriver hur du tilldelar roller med hjälp av Azure CLI.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
+Om du vill tilldela roller måste du ha:
 
-- `Microsoft.Authorization/roleAssignments/write` och `Microsoft.Authorization/roleAssignments/delete` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` behörigheter, till exempel [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) eller [ägare](built-in-roles.md#owner)
 - [Bash i Azure Cloud Shell](../cloud-shell/overview.md) eller [Azure CLI](/cli/azure)
 
-## <a name="steps-to-add-a-role-assignment"></a>Steg för tillägg av en rolltilldelning
+## <a name="steps-to-assign-an-azure-role"></a>Steg för att tilldela en Azure-roll
 
-I Azure RBAC för att bevilja åtkomst lägger du till en roll tilldelning. En rolltilldelning består av tre delar: säkerhetsobjekt, rolldefinition och omfång. Följ dessa steg om du vill lägga till en roll tilldelning.
+För att tilldela en roll består av tre element: säkerhets objekt, roll definition och omfattning.
 
 ### <a name="step-1-determine-who-needs-access"></a>Steg 1: Bestäm vem som behöver åtkomst
 
-Du kan tilldela en roll till en användare, grupp, tjänstens huvud namn eller en hanterad identitet. Om du vill lägga till en roll tilldelning kan du behöva ange det unika ID: t för objektet. ID: t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID: t med hjälp av Azure Portal eller Azure CLI.
+Du kan tilldela en roll till en användare, grupp, tjänstens huvud namn eller en hanterad identitet. Om du vill tilldela en roll kan du behöva ange det unika ID: t för objektet. ID: t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID: t med hjälp av Azure Portal eller Azure CLI.
 
 **Användare**
 
@@ -75,7 +75,7 @@ Om du bara vill visa användarspecifika hanterade identiteter kan du använda [A
 az identity list
 ```
     
-### <a name="step-2-find-the-appropriate-role"></a>Steg 2: hitta rätt roll
+### <a name="step-2-select-the-appropriate-role"></a>Steg 2: Välj lämplig roll
 
 Behörigheter grupperas tillsammans i roller. Du kan välja från en lista över flera [inbyggda Azure-roller](built-in-roles.md) eller så kan du använda dina egna anpassade roller. Vi rekommenderar att du beviljar åtkomst med den minsta behörighet som krävs, så undvik att tilldela en bredare roll.
 
@@ -129,9 +129,9 @@ För hanterings gruppens omfattning behöver du hanterings gruppens namn. Du hit
 az account management-group list --query "[].{name:name, id:id}" --output tsv
 ```
     
-### <a name="step-4-add-role-assignment"></a>Steg 4: Lägg till roll tilldelning
+### <a name="step-4-assign-role"></a>Steg 4: tilldela roll
 
-Om du vill lägga till en roll tilldelning använder du kommandot [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) . Beroende på omfattningen har kommandot vanligt vis något av följande format.
+Om du vill tilldela en roll använder du kommandot [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) . Beroende på omfattningen har kommandot vanligt vis något av följande format.
 
 **Resursomfång**
 
@@ -181,9 +181,9 @@ Följande visar ett exempel på utdata när du tilldelar rollen [virtuell dator 
 }
 ```
     
-## <a name="add-role-assignment-examples"></a>Lägg till Roll tilldelnings exempel
+## <a name="assign-role-examples"></a>Tilldela roll exempel
 
-#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Lägg till roll tilldelning för alla BLOB-behållare i ett lagrings konto resurs omfång
+#### <a name="assign-a-role-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Tilldela en roll för alla BLOB-behållare i ett lagrings konto resurs omfång
 
 Tilldelar rollen [Storage BLOB data Contributor](built-in-roles.md#storage-blob-data-contributor) till ett huvud namn för tjänsten med objekt-ID *55555555-5555-5555-5555-555555555555* i en resurs omfattning för ett lagrings konto med namnet *storage12345*.
 
@@ -193,7 +193,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Lägg till roll tilldelning för en angiven resurs omfattning för BLOB container
+#### <a name="assign-a-role-for-a-specific-blob-container-resource-scope"></a>Tilldela en roll för en angiven resurs omfattning för BLOB container
 
 Tilldelar rollen [Storage BLOB data Contributor](built-in-roles.md#storage-blob-data-contributor) till ett huvud namn för tjänsten med objekt-ID *55555555-5555-5555-5555-555555555555* i en resurs omfattning för en BLOB-behållare med namnet *BLOB-container-01*.
 
@@ -203,7 +203,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
 ```
 
-#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Lägg till roll tilldelning för en grupp i ett angivet virtuellt nätverks resurs omfång
+#### <a name="assign-a-role-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Tilldela en roll för en grupp i ett angivet virtuellt nätverks resurs omfång
 
 Tilldelar rollen för [Virtual Machine Contributor](built-in-roles.md#virtual-machine-contributor) till den *Ann Mack* -gruppgruppen med ID 22222222-2222-2222-2222-222222222222 vid en resurs omfattning för ett virtuellt nätverk med namnet *Pharma-Sales-Project-Network*.
 
@@ -213,7 +213,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>Lägg till roll tilldelning för en användare i ett resurs grupps omfång
+#### <a name="assign-a-role-for-a-user-at-a-resource-group-scope"></a>Tilldela en roll för en användare i ett resurs grupps omfång
 
 Tilldelar rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) till *patlong \@ contoso.com* -användare i resurs grupps omfånget *Pharma-Sales* .
 
@@ -223,7 +223,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Lägg till roll tilldelning för en användare med hjälp av det unika roll-ID: t i en resurs grupp omfånget
+#### <a name="assign-a-role-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Tilldela en roll för en användare med hjälp av det unika roll-ID: t i en resurs grupp omfånget
 
 Det finns ett par gånger när ett roll namn kan ändras, till exempel:
 
@@ -240,7 +240,7 @@ az role assignment create --assignee "patlong@contoso.com" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>Lägg till roll tilldelning för alla BLOB-behållare i ett resurs grupps omfång
+#### <a name="assign-a-role-for-all-blob-containers-at-a-resource-group-scope"></a>Tilldela en roll för alla BLOB-behållare i ett resurs grupps omfång
 
 Tilldelar rollen [Storage BLOB data Contributor](built-in-roles.md#storage-blob-data-contributor) till ett huvud namn för tjänsten med objekt-ID *55555555-5555-5555-5555-555555555555* i resurs grupps omfånget *exempel-Storage-RG* .
 
@@ -258,7 +258,7 @@ az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Lägg till roll tilldelning för ett program i en resurs grupp omfånget
+#### <a name="assign-a-role-for-an-application-at-a-resource-group-scope"></a>Tilldela en roll för ett program i ett resurs grupps omfång
 
 Tilldelar rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) till ett program med tjänstens huvud OBJEKTS-ID 44444444-4444-4444-4444-444444444444 i resurs grupps omfånget *Pharma-Sales* .
 
@@ -268,11 +268,11 @@ az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>Lägg till roll tilldelning för ett nytt huvud namn för tjänsten i ett resurs grupps omfång
+#### <a name="assign-a-role-for-a-new-service-principal-at-a-resource-group-scope"></a>Tilldela en roll för ett nytt huvud namn för tjänsten i ett resurs grupps omfång
 
 Om du skapar ett nytt huvud namn för tjänsten och sedan omedelbart försöker tilldela en roll till tjänstens huvud namn kan roll tilldelningen inte utföras i vissa fall. Om du till exempel använder ett skript för att skapa en ny hanterad identitet och sedan försöker tilldela en roll till tjänstens huvud namn, kan roll tilldelningen Miss förvänta. Orsaken till det här felet är förmodligen en fördröjning i replikeringen. Tjänstens huvud namn skapas i en region. roll tilldelningen kan dock inträffa i en annan region som ännu inte har replikerat tjänstens huvud namn. För att åtgärda det här scenariot bör du ange typ av huvud konto när du skapar roll tilldelningen.
 
-Om du vill lägga till en roll tilldelning använder du [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create), anger ett värde för `--assignee-object-id` och anger sedan `--assignee-principal-type` till `ServicePrincipal` .
+Om du vill tilldela en roll använder du [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create), anger ett värde för `--assignee-object-id` och anger sedan `--assignee-principal-type` till `ServicePrincipal` .
 
 ```azurecli
 az role assignment create --assignee-object-id "{assigneeObjectId}" \
@@ -291,7 +291,7 @@ az role assignment create --assignee-object-id "33333333-3333-3333-3333-33333333
 --resource-group "pharma-sales"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Lägg till roll tilldelning för en användare med ett prenumerations omfång
+#### <a name="assign-a-role-for-a-user-at-a-subscription-scope"></a>Tilldela en roll för en användare med ett prenumerations omfång
 
 Tilldelar [läsaren](built-in-roles.md#reader) rollen till *annm \@ example.com* -användaren i ett prenumerations omfång.
 
@@ -301,7 +301,7 @@ az role assignment create --assignee "annm@example.com" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>Lägg till roll tilldelning för en grupp i ett prenumerations omfång
+#### <a name="assign-a-role-for-a-group-at-a-subscription-scope"></a>Tilldela en roll för en grupp i ett prenumerations omfång
 
 Tilldelar [läsaren](built-in-roles.md#reader) rollen till den *Ann Mack team* gruppen med ID 22222222-2222-2222-2222-222222222222 i ett prenumerations omfång.
 
@@ -311,7 +311,7 @@ az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
 --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>Lägg till roll tilldelning för alla BLOB-behållare i ett prenumerations omfång
+#### <a name="assign-a-role-for-all-blob-containers-at-a-subscription-scope"></a>Tilldela en roll för alla BLOB-behållare i ett prenumerations omfång
 
 Tilldelar rollen [Storage BLOB data Reader](built-in-roles.md#storage-blob-data-reader) till *Alain \@ example.com* -användaren i ett prenumerations omfång.
 
@@ -321,40 +321,12 @@ az role assignment create --assignee "alain@example.com" \
 --scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Lägg till roll tilldelning för en användare i en hanterings grupps omfattning
+#### <a name="assign-a-role-for-a-user-at-a-management-group-scope"></a>Tilldela en roll för en användare i ett hanterings grupps omfång
 
 Tilldelar rollen för [fakturerings läsare](built-in-roles.md#billing-reader) till *Alain \@ example.com* -användaren i ett hanterings grupps omfång.
 
 ```azurecli
 az role assignment create --assignee "alain@example.com" \
---role "Billing Reader" \
---scope "/providers/Microsoft.Management/managementGroups/marketing-group"
-```
-
-## <a name="remove-a-role-assignment"></a>Ta bort en rolltilldelning
-
-För att ta bort åtkomst i Azure RBAC tar du bort en roll tilldelning genom att använda [AZ roll tilldelning ta bort](/cli/azure/role/assignment#az_role_assignment_delete).
-
-I följande exempel tas roll tilldelningen för [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) bort från *patlong \@ contoso.com* -användaren på resurs gruppen *Pharma-Sales* :
-
-```azurecli
-az role assignment delete --assignee "patlong@contoso.com" \
---role "Virtual Machine Contributor" \
---resource-group "pharma-sales"
-```
-
-Tar bort rollen [läsare](built-in-roles.md#reader) från *Ann Mack team* Group med ID 22222222-2222-2222-2222-222222222222 i ett prenumerations omfång.
-
-```azurecli
-az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
---role "Reader" \
---subscription "00000000-0000-0000-0000-000000000000"
-```
-
-Tar bort rollen för [fakturerings läsare](built-in-roles.md#billing-reader) från *Alain \@ example.com* -användaren i hanterings gruppens omfång.
-
-```azurecli
-az role assignment delete --assignee "alain@example.com" \
 --role "Billing Reader" \
 --scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```

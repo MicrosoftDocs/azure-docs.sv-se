@@ -27,8 +27,10 @@
     - name: 1 – Importera ditt första API
       href: import-and-publish.md
     - name: 2 – Skapa och publicera en produkt
+      displayName: 'Azure CLI, az apim product'
       href: api-management-howto-add-products.md
     - name: 3 – Simulera API-svar
+      displayName: 'Azure CLI, az apim api operation'
       href: mock-api-responses.md
     - name: 4 – Skydda ditt API
       href: transform-api.md
@@ -37,8 +39,10 @@
     - name: '6 – Felsök dina API:er'
       href: api-management-howto-api-inspector.md
     - name: 7 – Lägg till revideringar
+      displayName: 'Azure CLI, az apim api release'
       href: api-management-get-started-revise-api.md
     - name: 8 – Lägg till flera versioner
+      displayName: 'Azure CLI, az apim api versionset'
       href: api-management-get-started-publish-versions.md
     - name: 9 – Anpassa utvecklarportalen
       href: api-management-howto-developer-portal-customize.md
@@ -225,6 +229,7 @@
         - name: Använda externa tjänster
           href: api-management-sample-send-request.md
         - name: Hantera hemligheter med hjälp av namngivna värden
+          displayName: 'Azure CLI, az apim nv'
           href: api-management-howto-properties.md
         - name: Principer för begränsning av åtkomst
           href: api-management-access-restriction-policies.md

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 2b6685952aee1c8600321070794f001e0881604b
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104611"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535220"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -77,7 +77,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 |November | [Text översättnings kunskap](cognitive-search-skill-text-translation.md) | En kognitiv kunskap som används vid indexering som utvärderar och översätter text. Allmänt tillgänglig.|
 |November | [Power BI mallar](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | Mall för visualisering av innehåll i kunskaps lager |
 |November | [Azure Data Lake Storage Gen2 (för hands version)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin-API (för hands version)](search-howto-index-cosmosdb.md)och [Cosmos DB API för Cassandra (förhands granskning)](search-howto-index-cosmosdb.md) | Nya indexerare data källor i offentlig för hands version. |
-|Juli | [Azure Government Cloud Support](../azure-government/compare-azure-government-global-azure.md#azure-cognitive-search) | Allmänt tillgänglig.|
+|Juli | [Azure Government Cloud Support](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | Allmänt tillgänglig.|
 
 <a name="new-service-name"></a>
 

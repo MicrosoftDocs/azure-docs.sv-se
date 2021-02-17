@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 30c7e6b1412373cf3bfe1c511206aa4b916bf1ee
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091671"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557506"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Utöka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper
 
@@ -41,7 +41,7 @@ Du bör ta bort den här utökade åtkomsten när du har gjort ändringarna som 
 
 ![Upphöj åtkomst](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure-portalen
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
 
@@ -80,7 +80,7 @@ Följ de här stegen för att öka åtkomsten för en global administratör med 
 
 1. Gör de ändringar du behöver för att få utökad åtkomst.
 
-    Information om hur du tilldelar roller finns i [lägga till eller ta bort Azure roll tilldelningar med hjälp av Azure Portal](role-assignments-portal.md). Om du använder Privileged Identity Management går du [till identifiera Azure-resurser för att hantera](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) eller [tilldela Azure-resurs roller](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md). Om du använder Privileged Identity Management går du [till identifiera Azure-resurser för att hantera](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) eller [tilldela Azure-resurs roller](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 1. Utför stegen i följande avsnitt för att ta bort den utökade åtkomsten.
 
@@ -149,7 +149,7 @@ Följ dessa steg om du vill ta bort roll tilldelningen administratör för anvä
 
 Använd följande grundläggande steg för att öka åtkomsten för en global administratör med hjälp av Azure CLI.
 
-1. Använd kommandot [AZ rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) för att anropa `elevateAccess` slut punkten, som ger dig rollen som administratör för användar åtkomst i rot omfånget ( `/` ).
+1. Använd kommandot [AZ rest](/cli/azure/reference-index#az_rest) för att anropa `elevateAccess` slut punkten, som ger dig rollen som administratör för användar åtkomst i rot omfånget ( `/` ).
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Använd följande grundläggande steg för att öka åtkomsten för en global ad
 
 1. Gör de ändringar du behöver för att få utökad åtkomst.
 
-    Information om hur du tilldelar roller finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure CLI](role-assignments-cli.md).
+    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av Azure CLI](role-assignments-cli.md).
 
 1. Utför stegen i ett senare avsnitt om du vill ta bort den utökade åtkomsten.
 
@@ -199,7 +199,7 @@ Följ dessa steg om du vill ta bort roll tilldelningen administratör för anvä
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
 
@@ -213,7 +213,7 @@ Använd följande grundläggande steg för att öka åtkomsten för en global ad
 
 1. Gör de ändringar du behöver för att få utökad åtkomst.
 
-    Information om hur du tilldelar roller finns i [lägga till eller ta bort Azure roll tilldelningar med hjälp av REST API](role-assignments-rest.md).
+    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av REST API](role-assignments-rest.md).
 
 1. Utför stegen i ett senare avsnitt om du vill ta bort den utökade åtkomsten.
 
@@ -330,4 +330,4 @@ När du anropar `elevateAccess` skapar du en roll tilldelning för dig själv, s
 ## <a name="next-steps"></a>Nästa steg
 
 - [Förstå de olika rollerna](rbac-and-directory-admin-roles.md)
-- [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av REST API](role-assignments-rest.md)
+- [Tilldela Azure-roller med hjälp av REST API](role-assignments-rest.md)

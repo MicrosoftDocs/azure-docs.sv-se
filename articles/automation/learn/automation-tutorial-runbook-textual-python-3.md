@@ -3,14 +3,14 @@ title: Skapa en python 3-Runbook (för hands version) i Azure Automation
 description: I den här artikeln lär du dig att skapa, testa och publicera en enkel python 3-Runbook (för hands version).
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
-ms.openlocfilehash: e03eba29d634fafa9302441b17ca3a6bf6598556
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: c19f7e177d51a3de75e7d7ae2b83442e23efd243
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104985"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546150"
 ---
 # <a name="tutorial-create-a-python-3-runbook-preview"></a>Självstudie: skapa en python 3-Runbook (för hands version)
 
@@ -39,7 +39,7 @@ För att göra den här självstudien behöver du följande:
    * Om du har både python 2 och python 3 installerade och vill köra båda typerna av Runbooks måste du konfigurera följande miljövariabler:
 
      * Python 2 – Skapa en ny miljö variabel `PYTHON_2_PATH` som kallas och ange installationsmappen. Om installationsmappen till exempel är `C:\Python27` , måste den här sökvägen läggas till i variabeln.
-     
+
      * Python 3 – skapa en ny miljö variabel `PYTHON_3_PATH` som kallas och ange installationsmappen. Om installationsmappen till exempel är `C:\Python3` , måste den här sökvägen läggas till i variabeln.
 
 ## <a name="create-a-new-runbook"></a>Skapa en ny Runbook
@@ -128,23 +128,17 @@ För att göra detta måste skriptet autentisera med hjälp av autentiseringsupp
 
 2. Lägg till följande kod för att autentisera till Azure:
 
-   ```python
-   import os
-   from azure.mgmt.compute import ComputeManagementClient
-   import azure.mgmt.resource 
-   import automationassets 
-   
-   def get_automation_runas_credential(runas_connection): 
+    ```python
     from OpenSSL import crypto 
     import binascii 
     from msrestazure import azure_active_directory 
     import adal 
-    
+
     # Get the Azure Automation RunAs service principal certificate 
     cert = automationassets.get_automation_certificate("AzureRunAsCertificate") 
     pks12_cert = crypto.load_pkcs12(cert) 
     pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey()) 
-
+    
     # Get run as connection information for the Azure Automation service principal 
     application_id = runas_connection["ApplicationId"] 
     thumbprint = runas_connection["CertificateThumbprint"] 
@@ -155,17 +149,13 @@ För att göra detta måste skriptet autentisera med hjälp av autentiseringsupp
     authority_url = ("https://login.microsoftonline.com/"+tenant_id) 
     context = adal.AuthenticationContext(authority_url) 
     return azure_active_directory.AdalAuthentication( 
-        lambda: context.acquire_token_with_client_certificate( 
-                resource, 
-                application_id, 
-                pem_pkey, 
-                thumbprint) 
+      lambda: context.acquire_token_with_client_certificate( 
+          resource, 
+          application_id, 
+          pem_pkey, 
+          thumbprint) 
     ) 
-    
-   # Authenticate to Azure using the Azure Automation RunAs service principal 
-   runas_connection = automationassets.get_automation_connection("AzureRunAsConnection") 
-   azure_credential = get_automation_runas_credential(runas_connection) 
-   ```
+    ```
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Lägg till kod för att skapa python Compute Client och starta den virtuella datorn
 

@@ -4,14 +4,14 @@ description: Utlös e-post, meddelanden, anropa webb adresser för webbplatser (
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 5/31/2019
+ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 0f81dd14988b069931bddf5f5636cb1bab426641
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857434"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544877"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Logg aviseringar i Azure Monitor
 
@@ -51,7 +51,7 @@ Den [Log Analytics](../log-query/log-analytics-tutorial.md) -fråga som används
 - Flera resurser som använder [frågor över flera resurser](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
  
 > [!IMPORTANT]
-> Aviserings frågor har begränsningar för att säkerställa optimala prestanda och relevansen för resultaten. [Läs mer här](./alerts-log-query.md).
+> Aviserings frågor har begränsningar för att säkerställa optimala prestanda och relevansen för resultaten. [Mer information finns här](./alerts-log-query.md).
 
 > [!IMPORTANT]
 > Resurs oberoende och [kors resurs fråga](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) stöds bara med den aktuella scheduledQueryRules-API: et. Om du använder det äldre [Log Analytics varnings-API: et](api-alerts.md)måste du växla. [Läs mer om att växla](./alerts-log-api-switch.md)

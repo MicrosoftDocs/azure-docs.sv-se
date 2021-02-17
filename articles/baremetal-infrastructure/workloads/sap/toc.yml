@@ -9,6 +9,7 @@
 - name: Anvisningar
   items:
     - name: Hantera instansenheter för BareMetal i Azure
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: Referens
   items:

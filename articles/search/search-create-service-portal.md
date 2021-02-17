@@ -7,23 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/15/2021
+ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746704"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535356"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
 [Azure kognitiv sökning](search-what-is-azure-search.md) är en Azure-resurs som används för att lägga till en fullständig texts ökning i anpassade appar. Du kan enkelt integrera det med andra Azure-tjänster som tillhandahåller data eller ytterligare bearbetning, med appar på nätverks servrar eller med program vara som körs på andra moln plattformar.
 
-I den här artikeln lär du dig hur du skapar en Sök tjänst i [Azure Portal](https://portal.azure.com/).
+Du kan skapa Sök tjänsten med hjälp av [Azure Portal](https://portal.azure.com/), som beskrivs i den här artikeln. Du kan också använda [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search)eller en [mall för Azure Resource Manager-tjänst](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
 [![Animerad GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-Föredrar du PowerShell? Använd [tjänstmallen](https://azure.microsoft.com/resources/templates/101-azure-search-create/) för Azure Resource Manager. Hjälp med att komma igång finns i [Hantera Azure kognitiv sökning med PowerShell](search-manage-powershell.md).
 
 ## <a name="before-you-start"></a>Innan du börjar
 
@@ -136,9 +134,9 @@ Det behövs ingen slutpunkt eller nyckel för portalbaserade uppgifter. Portalen
 
 När tjänsten har etablerats kan du skala den så att den passar dina behov. Om du väljer standard nivån för din Azure Kognitiv sökning-tjänst kan du skala din tjänst i två dimensioner: repliker och partitioner. Om du hade valt Basic-nivån hade du bara kunnat lägga till repliker. Skalning är inte tillgängligt om du etablerar tjänsten utan kostnad.
 
-**_Partitioner_* _ gör att din tjänst kan lagra och söka igenom fler dokument.
+Med ***Partitioner*** kan tjänsten lagra och söka igenom fler dokument.
 
-_*_Repliker_*_ låter tjänsten hantera en högre belastning av Sök frågor.
+Med ***Repliker*** kan tjänsten hantera en högre belastning av sökfrågor.
 
 Om du lägger till resurser blir din månatliga faktura större. [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) kan hjälpa dig att förstå hur fakturering påverkas när du lägger till resurser. Kom ihåg att du kan ändra resurser baserat på belastning. Du kan till exempel öka resurserna för att skapa den fullständiga initiala indexeringen och sedan minska resurserna till en nivå som är mer lämplig för inkrementell indexering.
 
@@ -146,7 +144,7 @@ Om du lägger till resurser blir din månatliga faktura större. [Priskalkylator
 > En tjänst måste ha [2 repliker för skrivskyddad SLA och 3 repliker för läs-/skriv-SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Gå till söktjänstsidan i Azure-portalen.
-2. I det vänstra navigerings fönstret väljer du _ *Inställningar** > **skala**.
+2. I det vänstra navigerings fönstret väljer du **Inställningar**  >  **skala**.
 3. Använd reglaget om du vill lägga till resurser av endera typ.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Lägg till kapacitet via repliker och partitioner" border="false":::
