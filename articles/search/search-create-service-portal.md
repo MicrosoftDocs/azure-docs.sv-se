@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 3be043af7b057c47f360ce36db6bb7c3afd80638
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535356"
+ms.locfileid: "100547765"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
@@ -83,22 +83,19 @@ Kraven för tjänstnamn:
 
 ## <a name="choose-a-location"></a>Välj en plats
 
-Azure Kognitiv sökning är tillgängligt i de flesta regioner. Du hittar en lista över regioner som stöds på [sidan med priser](https://azure.microsoft.com/pricing/details/search/).
+Azure Kognitiv sökning är tillgängligt i de flesta regioner, enligt beskrivningen på [sidan med priser](https://azure.microsoft.com/pricing/details/search/).
 
-> [!Note]
-> Centrala Indien och Förenade Arabemiraten Nord är för närvarande inte tillgängliga för nya tjänster. För tjänster som redan finns i dessa regioner kan du skala upp utan begränsningar och tjänsten stöds fullt ut i den regionen. Begränsningarna är temporära och begränsade till endast nya tjänster. Vi tar bort den här anteckningen när begränsningarna inte längre gäller.
->
-> Double Encryption är bara tillgängligt i vissa regioner. Mer information finns i [Double Encryption](search-security-overview.md#double-encryption).
+Om du använder flera Azure-tjänster väljer du i allmänhet en region som också är värd för dina data eller program tjänster. Detta minimerar eller avvärderar bandbredds avgifter för utgående data (det kostar inget att debitera utgående data när tjänsterna är i samma region).
 
-### <a name="requirements"></a>Krav
+Kunder med krav på affärs kontinuitet och haveri beredskap (BCDR) bör skapa sina tjänster i [regionala par](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om du till exempel arbetar i Nordamerika kan du välja östra USA och västra USA, norra centrala USA och södra Central oss, för varje tjänst.
 
- Om du använder AI-anrikning skapar du din Sök tjänst i samma region som Cognitive Services. *Samplacering av Azure kognitiv sökning och Cognitive Services i samma region är ett krav för AI-berikning*.
+Följande funktioner är bara tillgängliga i vissa regioner:
 
- Kunder med krav på affärs kontinuitet och haveri beredskap (BCDR) bör skapa sina tjänster i [regionala par](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om du till exempel arbetar i Nordamerika kan du välja östra USA och västra USA, norra centrala USA och södra Central oss, för varje tjänst.
+* AI-anrikning kräver Cognitive Services vara i samma region som Azure Kognitiv sökning. Välj [region för Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) först (listan är mindre) och välj sedan samma region för Sök tjänsten.
 
-### <a name="recommendations"></a>Rekommendationer
+* Double Encryption är bara tillgängligt i vissa regioner. Mer information finns i [Double Encryption](search-security-overview.md#double-encryption)
 
-Om du använder flera Azure-tjänster väljer du en region som också är värd för dina data eller program tjänster. Detta minimerar eller avvärderar bandbredds avgifter för utgående data (det kostar inget att debitera utgående data när tjänsterna är i samma region).
+* Support för tillgänglighets zonen erbjuds i vissa regioner på tjänster som skapats efter angivna datum. Mer information finns [i "Tillgänglighetszoner" i skalning för prestanda](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Välj en pris nivå
 

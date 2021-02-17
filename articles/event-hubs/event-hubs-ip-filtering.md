@@ -3,12 +3,12 @@ title: Regler för Azure Event Hubs-brandvägg | Microsoft Docs
 description: Använd brand Väggs regler för att tillåta anslutningar från vissa IP-adresser till Azure Event Hubs.
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517203"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560853"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder från vissa IP-adresser eller intervall
 Som standard är Event Hubs-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -17,6 +17,10 @@ Den här funktionen är användbar i scenarier där Azure Event Hubs bör endast
 
 >[!WARNING]
 > Genom att aktivera brand Väggs regler för Event Hubs namn området blockeras inkommande begär Anden som standard, om inte begär Anden härstammar från en tjänst som körs från tillåtna offentliga IP-adresser. Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare. Som ett undantag kan du tillåta åtkomst till Event Hubs resurser från vissa betrodda tjänster även när IP-filtrering är aktive rad. En lista över betrodda tjänster finns i [betrodda Microsoft-tjänster](#trusted-microsoft-services).
+
+> [!IMPORTANT]
+> Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
+
 
 ## <a name="ip-firewall-rules"></a>Regler för IP-brandvägg
 IP-brandväggens regler tillämpas på Event Hubs namn områdes nivå. Reglerna gäller därför för alla anslutningar från klienter som använder ett protokoll som stöds. Alla anslutnings försök från en IP-adress som inte matchar en tillåten IP-regel på Event Hubs namn området nekas som obehörig. Svaret nämns inte IP-regeln. IP filter regler tillämpas i ordning och den första regeln som matchar IP-adressen avgör vilken åtgärd som godkänns eller nekas.
@@ -38,7 +42,10 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
 1. Om du vill begränsa åtkomsten till vissa IP-adresser kontrollerar du att alternativet **valda nätverk** är markerat. I avsnittet **brand vägg** följer du dessa steg:
     1. Välj alternativet **Lägg till klientens IP-adress** för att ge din aktuella klient-IP åtkomst till namn området. 
     2. För **adress intervall** anger du en angiven IPv4-adress eller ett intervall med IPv4-adresser i CIDR-notering. 
-3. Ange om du vill **tillåta att betrodda Microsoft-tjänster kringgår den här brand väggen**. Se [betrodda Microsoft-tjänster](#trusted-microsoft-services) för mer information. 
+
+    >[!WARNING]
+    > Om du väljer alternativet **valda nätverk** och inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan, kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
+1. Ange om du vill **tillåta att betrodda Microsoft-tjänster kringgår den här brand väggen**. Se [betrodda Microsoft-tjänster](#trusted-microsoft-services) för mer information. 
 
       ![Brand vägg – alternativet alla nätverk är valt](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Spara inställningarna genom att välja **Spara** i verktygsfältet. Vänta några minuter tills bekräftelsen visas på Portal meddelandena.

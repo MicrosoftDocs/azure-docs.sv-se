@@ -5,14 +5,14 @@ author: vladvino
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679086"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546660"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Självstudie: publicera flera versioner av ditt API 
 
@@ -20,7 +20,7 @@ Det finns tillfällen när det är opraktiskt att ha alla anropare till din API-
 
 För bakgrunden, se [versioner & revisioner](https://azure.microsoft.com/blog/versions-revisions/).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Lägga till en ny version till ett befintligt API
@@ -60,7 +60,7 @@ Ange värdena från följande tabell. Välj **skapa** för att skapa din version
 
 
 
-|Inställningen   |Värde  |Beskrivning  |
+|Inställning   |Värde  |Beskrivning  |
 |---------|---------|---------|
 |**Namn**     |  *demo – konferens-API-v1*       |  Unikt namn i API Management-instansen.<br/><br/>Eftersom en version i själva verket är ett nytt API som baseras på en API- [revision](api-management-get-started-revise-api.md)är den här inställningen det nya API: ns namn.   |
 |**Versions schema**     |  **Sökväg**       |  Hur anropare anger API-versionen.     |
@@ -87,6 +87,32 @@ Till exempel för att lägga till versionen till den **obegränsade** produkten:
 1. Klicka på **Välj**.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Lägg till version i produkt":::
+
+## <a name="use-version-sets"></a>Använda versions uppsättningar
+
+När du skapar flera versioner skapar Azure Portal en *versions uppsättning* som representerar en uppsättning versioner för ett enda logiskt API. Välj namnet på ett API som har flera versioner. Den Azure Portal visar **versions uppsättningen**. Du kan anpassa **namn** och **Beskrivning** för en virtuell uppsättning.
+
+Du kan interagera direkt med versions uppsättningar med hjälp av Azure CLI:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Om du vill se alla versions uppsättningar kör du kommandot [AZ APIM API versionset List](/cli/azure/apim/api/versionset#az_apim_api_versionset_list) :
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+När Azure Portal skapar en versions uppsättning för dig tilldelar den ett alfanumeriskt namn, som visas i kolumnen **namn** i listan. Använd det här namnet i andra Azure CLI-kommandon.
+
+Om du vill se information om en versions uppsättning kör du kommandot [AZ APIM API versionset show](/api/versionset#az_apim_api_versionset_show) :
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+Mer information om versions uppsättningar finns [i versioner i Azure API Management](api-management-versions.md#how-versions-are-represented).
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Gå till utvecklarportalen för att se versionen
 

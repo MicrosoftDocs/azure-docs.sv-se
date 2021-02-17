@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: d4736515d8e011ce1e72c51ecb3ce1cfd2e1e1cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5c8bd335832a950385f88f13dc31eb7f6159f831
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978534"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548139"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Ett internt fel inträffar när du försöker ansluta till en virtuell Azure-dator via Fjärrskrivbord
 
@@ -120,8 +120,8 @@ Börja genom att ansluta till [serie konsolen och öppna en PowerShell-instans](
 2. Om du inte kan förnya certifikatet med den här metoden kan du försöka förnya RDP-självsignerat certifikat via fjärr anslutning:
 
     1. Från en fungerande virtuell dator som har anslutning till den virtuella datorn som har problem, skriver du **MMC** i rutan **Kör** för att öppna Microsoft Management Console.
-    2. I menyn **Arkiv** väljer du **Lägg till/ta bort snapin-modul**, väljer **certifikat**och väljer sedan **Lägg till**.
-    3. Välj **dator konton**, Välj **en annan dator**och Lägg sedan till IP-adressen för den virtuella problemet.
+    2. I menyn **Arkiv** väljer du **Lägg till/ta bort snapin-modul**, väljer **certifikat** och väljer sedan **Lägg till**.
+    3. Välj **dator konton**, Välj **en annan dator** och Lägg sedan till IP-adressen för den virtuella problemet.
     4. Gå till mappen **fjärr Desktop\Certificates** , högerklicka på certifikatet och välj sedan **ta bort**.
     5. I en PowerShell-instans från serie konsolen startar du om tjänsten fjärr skrivbords konfiguration:
 
@@ -134,7 +134,7 @@ Börja genom att ansluta till [serie konsolen och öppna en PowerShell-instans](
 3. Återställ behörigheten för MachineKeys-mappen.
 
     ```powershell
-    remove-module psreadline icacls
+    remove-module psreadline 
 
     md c:\temp
 

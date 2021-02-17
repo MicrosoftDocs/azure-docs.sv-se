@@ -3,28 +3,25 @@ title: Skapa en CI/CD-pipeline för en PWA med GatsbyJS och Azure DevOps starter
 description: Lär dig hur du skapar en NodeJS progressiv webbapp (PWA) med GatsbyJS och den förenklade funktionen för att skapa starter i Azure DevOps.
 ms.prod: devops
 ms.technology: devops-cicd
-services: vsts
 documentationcenter: vs-devops-build
-author: arob98
-manager: angrobe
+author: mijacobs
+ms.author: mijacobs
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
-ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6d8a10dffa3801fe343b3b479265fac5612b021
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856219"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556572"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Skapa en CI/CD-pipeline i Azure-pipelines för Node.js med Azure DevOps starter
 
 I den här snabb starten skapar du en NodeJS progressiv webbapp (PWA) med [GatsbyJS](https://www.gatsbyjs.org/) och den förenklade skapande upplevelsen för Azure DevOps starter. När du är färdig har du en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din PWA i Azure-pipelines. Azure DevOps starter ställer upp vad du behöver för att utveckla, distribuera och övervaka.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - En [Azure DevOps](https://azure.microsoft.com/services/devops/) -organisation.
@@ -33,11 +30,11 @@ I den här snabb starten skapar du en NodeJS progressiv webbapp (PWA) med [Gatsb
 
 DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Azure DevOps-organisation eller använda en befintlig organisation. DevOps starter skapar också Azure-resurser i den Azure-prenumeration du väljer.
 
-1. Logga in på [Azure Portal](https://portal.azure.com)och välj **skapa en resurs**i den vänstra rutan. 
+1. Logga in på [Azure Portal](https://portal.azure.com)och välj **skapa en resurs** i den vänstra rutan. 
 
    ![Skapa en Azure-resurs i Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -73,7 +70,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
     ![Azure DevOps-instrumentpanel](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Från ditt Azure DevOps-projekt kan du bjuda in team medlemmar att samar beta och upprätta en Kanban-tavla för att börja spåra ditt arbete. Mer information finns [här](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+1. Från ditt Azure DevOps-projekt kan du bjuda in team medlemmar att samar beta och upprätta en Kanban-tavla för att börja spåra ditt arbete. Mer information finns [här](/azure/devops/user-guide/what-is-azure-devops).
 
 ![Översikt över Azure DevOps](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,4 +192,4 @@ Du kan ta bort Azure App Service och andra relaterade resurser som du har skapat
 När du konfigurerar din CI/CD-process skapas automatiskt build-och release-pipeliner. Du kan ändra de här bygg-och release-pipelinen för att uppfylla ditt teams behov. Mer information om CI/CD-pipelinen finns i:
 
 > [!div class="nextstepaction"]
-> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Anpassa CD-process](/azure/devops/pipelines/release/define-multistage-release-process)

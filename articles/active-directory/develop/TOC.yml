@@ -62,12 +62,16 @@
           href: quickstart-v2-uwp.md
         - name: .NET för Windows-skrivbordet
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js Electron
+          href: quickstart-v2-nodejs-desktop.md
     - name: Daemon eller backend-tjänst
       items:
         - name: .NET Core-konsolen (daemon)
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konsolen (daemon)
           href: quickstart-v2-python-daemon.md
+        - name: Node.js konsol daemon
+          href: quickstart-v2-nodejs-console.md
         - name: Java-konsolens daemon
           href: quickstart-v2-java-daemon.md
 - name: Självstudier
@@ -88,6 +92,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
+        - name: Själv studie kurs om Node.js Web Apps
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobilt och stationärt
       items:
         - name: Android
@@ -101,10 +107,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: Använda läge för delad enhet i Android-appen
           href: tutorial-v2-shared-device-mode.md
+        - name: Electron Desktop-app
+          href: tutorial-v2-nodejs-desktop.md
     - name: Daemon eller backend-tjänst
       items:
         - name: ASP.NET-daemon-webbapp
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js konsol daemon
+          href: tutorial-v2-nodejs-console.md
 - name: Exempel
   href: sample-v2-code.md
 - name: Begrepp

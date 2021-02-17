@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: cad25990d0ba7e27f4a90adc587f0c8a0a2c551a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fdaa2eeef58599cbff8dbf7daa34f9a30f31b9cb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521078"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548768"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Ringa ett telefonsamtal med Twilio i ett Java-program på Azure
 I följande exempel visas hur du kan använda Twilio för att ringa ett samtal från en webb sida som finns i Azure. Det resulterande programmet kommer att uppmana användaren att ange Telefonsamtals värden, som du ser i följande skärm bild.
@@ -32,7 +32,7 @@ Du måste göra följande för att använda koden i det här avsnittet:
    Koden i det här avsnittet skrevs med hjälp av den färdiga TwilioJava-3.3.8.
 3. Lägg till JAR i din Java-build-sökväg.
 4. Om du använder Sol förmörkelse för att skapa Java-programmet inkluderar du Twilio JAR i program distributions filen (WAR) med hjälp av funktionen distributions sammansättning i Sol förmörkelse. Om du inte använder Sol förmörkelse för att skapa Java-programmet ser du till att Twilio JAR ingår i samma Azure-roll som Java-programmet och läggs till i programmets klass Sök väg.
-5. Se till att ditt cacerts-Equifax innehåller certifikat utfärdarens säkra certifikat utfärdare med MD5 finger avtryck 67: CB: 9D: C0:13:24:8A: 82:9B: B2:17:1E: D1:1B: EG: D4 (serie numret är 35: DE: F4: CF och det SHA1-finger avtryck är D2:32:09: AD: 23: D3:14:23:21:74: E4:14.4:7F: 9D: 62:13:97:86:63:3A). Detta är certifikat utfärdarens certifikat (CA) för [https://api.twilio.com][twilio_api_service] tjänsten, som anropas när du använder Twilio-API: er. Information om hur du lägger till det här CA-certifikatet i din JDK CAcert-butik finns i [lägga till ett certifikat i certifikat arkivet för Java-ca][add_ca_cert].
+5. Se till att ditt cacerts-Equifax innehåller certifikat utfärdarens säkra certifikat utfärdare med MD5 finger avtryck 67: CB: 9D: C0:13:24:8A: 82:9B: B2:17:1E: D1:1B: EG: D4 (serie numret är 35: DE: F4: CF och det SHA1-finger avtryck är D2:32:09: AD: 23: D3:14:23:21:74: E4:14.4:7F: 9D: 62:13:97:86:63:3A). Detta är certifikat utfärdarens certifikat (CA) för [https://api.twilio.com][twilio_api_service] tjänsten, som anropas när du använder Twilio-API: er.
 
 Dessutom rekommenderar vi att du [skapar ett Hello World program med hjälp av Azure Toolkit for Eclipse][azure_java_eclipse_hello_world]eller med andra metoder för att vara värd för Java-program i Azure om du inte använder Sol förmörkelse.
 
@@ -193,7 +193,6 @@ Mer information om Twilio finns i [https://www.twilio.com/docs][twilio_docs] .
 
 ## <a name="see-also"></a>Se även
 * [Använda Twilio för röst-och SMS-funktioner i Java][howto_twilio_voice_sms_java]
-* [Lägga till ett certifikat i certifikat arkivet för Java-CA][add_ca_cert]
 
 [twilio_pricing]: https://www.twilio.com/pricing
 [try_twilio]: https://www.twilio.com/try-twilio
@@ -203,7 +202,6 @@ Mer information om Twilio finns i [https://www.twilio.com/docs][twilio_docs] .
 [twimlet_message_url]: https://twimlets.com/message
 [twiml]: https://www.twilio.com/docs/api/twiml
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [azure_java_eclipse_hello_world]: /java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app
 [howto_twilio_voice_sms_java]: partner-twilio-java-how-to-use-voice-sms.md
 [howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/

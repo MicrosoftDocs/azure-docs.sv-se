@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 9d476b1db645ed1f91b62fcf11464f7077a8fb3c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491434"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546456"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push-meddelanden med Azure Notification Hubs: vanliga frågor och svar
 
@@ -34,16 +34,16 @@ Azure Notification Hubs har två resurs nivåer: hubbar och namn områden. En hu
 
 Du hittar den senaste pris informationen på sidan [Notification Hubs prissättning] . Notification Hubs faktureras på namn områdes nivå. (Information om definitionen av ett namn område finns i "Vad är resurs strukturen för Notification Hubs?") Notification Hubs har tre nivåer:
 
-* **Kostnads fri** : den här nivån är en lämplig utgångs punkt för att utforska push-funktionerna. Det rekommenderas inte för produktions program. Du får 500 enheter och 1 000 000 push-meddelanden per namnrymd per månad, utan garanti för service nivå avtal (SLA).
-* **Basic** : den här nivån (eller standard nivån) rekommenderas för mindre produktions program. Du får 200 000 enheter och 10 000 000 push-meddelanden per namnrymd per månad som en bas linje.
-* **Standard** : den här nivån rekommenderas för medel stora och stora produktions program. Du får 10 000 000 enheter och 10 000 000 push-meddelanden per namnrymd per månad som en bas linje. Innehåller omfattande telemetri (ytterligare information om push-status har angetts).
+* **Kostnads fri**: den här nivån är en lämplig utgångs punkt för att utforska push-funktionerna. Det rekommenderas inte för produktions program. Du får 500 enheter och 1 000 000 push-meddelanden per namnrymd per månad, utan garanti för service nivå avtal (SLA).
+* **Basic**: den här nivån (eller standard nivån) rekommenderas för mindre produktions program. Du får 200 000 enheter och 10 000 000 push-meddelanden per namnrymd per månad som en bas linje.
+* **Standard**: den här nivån rekommenderas för medel stora och stora produktions program. Du får 10 000 000 enheter och 10 000 000 push-meddelanden per namnrymd per månad som en bas linje. Innehåller omfattande telemetri (ytterligare information om push-status har angetts).
 
 Standard-nivå funktioner:
 
-* **Avancerad telemetri** : du kan använda Notification Hubs per meddelande-telemetri för att spåra eventuella push-begäranden och plattformsspecifikt meddelandesystem feedback för fel sökning.
-* **Flera innehavare** : du kan arbeta med plattformsspecifikt meddelandesystem autentiseringsuppgifter på en namn områdes nivå. Med det här alternativet kan du enkelt dela klienter i hubbar inom samma namnrymd.
-* **Schemalagd push** : du kan schemalägga meddelanden så att de skickas när som helst.
-* **Mass åtgärder** : aktiverar registreringar av export/import-funktioner som beskrivs i dokument för [export/import av registrering] .
+* **Avancerad telemetri**: du kan använda Notification Hubs per meddelande-telemetri för att spåra eventuella push-begäranden och plattformsspecifikt meddelandesystem feedback för fel sökning.
+* **Flera innehavare**: du kan arbeta med plattformsspecifikt meddelandesystem autentiseringsuppgifter på en namn områdes nivå. Med det här alternativet kan du enkelt dela klienter i hubbar inom samma namnrymd.
+* **Schemalagd push**: du kan schemalägga meddelanden så att de skickas när som helst.
+* **Mass åtgärder**: aktiverar registreringar av export/import-funktioner som beskrivs i dokument för [export/import av registrering] .
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Vad är service avtal för Notification Hubs?
 
@@ -103,6 +103,10 @@ PNS garanterar inte några service avtal för att leverera meddelanden. De flest
 
 På grund av typen av push-meddelanden (de levereras av en extern, plattformsspecifik PNS) finns det ingen latens garanti. Oftast levereras merparten av push-meddelanden inom några minuter.
 
+### <a name="where-does-azure-notification-hubs-store-data"></a>Var lagrar Azure Notification Hubs data?
+
+Azure Notification Hubs lagrar kund registrerings data i den region som valts av kunden. Notification Hubs ger katastrof återställnings täckning för metadata (Notification Hubs namn, anslutnings sträng och annan viktig information). För alla regioner förutom Brasilien, södra och Sydostasien, finns säkerhets kopian av säkerhets kopian i en annan region (vanligt vis i den Azure-kopplade regionen). För södra Brasilien och Sydostasien regioner lagras säkerhets kopior i samma region för att tillgodose placering-krav för dessa regioner.
+
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>Vad måste jag tänka på när jag skapar en lösning med namn områden och Notification Hub?
 
 #### <a name="mobile-appenvironment"></a>Mobilapp/miljö
@@ -151,7 +155,7 @@ Alla anslutningar, från avsändaren till Azure-Notification Hubs till PNS, anv�
 
 Om du vill skicka känsliga nytto laster rekommenderar vi att du använder ett säkert push-mönster. Avsändaren skickar ett ping-meddelande med en meddelande identifierare till enheten utan den känsliga nytto lasten. När appen på enheten tar emot nytto lasten anropar appen ett säkert API direkt för att hämta information om meddelandet. En guide om hur du implementerar det här mönstret finns på sidan [Notification Hubs säker push-självstudie] .
 
-## <a name="operations"></a>Åtgärder
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Vilken support tillhandahålls för haveri beredskap?
 

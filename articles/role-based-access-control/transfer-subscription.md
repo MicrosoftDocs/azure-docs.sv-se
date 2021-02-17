@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185894"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555897"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Överföra en Azure-prenumeration till en annan Azure AD-katalog
 
@@ -88,7 +88,7 @@ Flera Azure-resurser är beroende av en prenumeration eller en katalog. Beroende
 > [!WARNING]
 > Om du använder kryptering i vila för en resurs, till exempel ett lagrings konto eller en SQL-databas, som har ett beroende av ett nyckel valv som **inte** finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckel valv eller tillfälligt inaktivera Kundhanterade nycklar för att undvika det här oåterkalleliga scenariot.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att slutföra de här stegen:
 
@@ -307,9 +307,9 @@ I det här steget överför du prenumerationen från käll katalogen till mål k
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>Skapa rolltilldelningar
+### <a name="assign-roles"></a>Tilldela roller
 
-- Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att skapa roll tilldelningar för användare, grupper och tjänstens huvud namn. Mer information finns i [lägga till eller ta bort roll tilldelningar med hjälp av Azure RBAC och Azure CLI](role-assignments-cli.md).
+- Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till användare, grupper och tjänstens huvud namn. Mer information finns i [tilldela Azure-roller med Azure CLI](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ I det här steget överför du prenumerationen från käll katalogen till mål k
     | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en skalnings uppsättning för virtuella datorer med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Övriga tjänster | [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att skapa roll tilldelningar för systemtilldelade hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till systemtilldelade hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ I det här steget överför du prenumerationen från käll katalogen till mål k
     | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en skalnings uppsättning för virtuella datorer med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Övriga tjänster | [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Skapa, Visa eller ta bort en användardefinierad hanterad identitet med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att skapa roll tilldelningar för användarspecifika hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till användare tilldelade hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -361,7 +361,7 @@ I det här avsnittet beskrivs de grundläggande stegen för att uppdatera nyckel
 
 1. Om du använder Azure Data Lake Storage Gen1 tilldelar du lämpliga ACL: er. Mer information finns i [skydda data som lagras i Azure Data Lake Storage gen1](../data-lake-store/data-lake-store-secure-data.md).
 
-1. Om du använder Azure Data Lake Storage Gen2 tilldelar du lämpliga ACL: er. Mer information finns i [åtkomst kontroll i Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+1. Om du använder Azure Data Lake Storage Gen2 tilldelar du lämpliga ACL: er. Mer information finns i [Åtkomstkontroll i Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
 1. Om du använder Azure Files tilldelar du lämpliga ACL: er.
 
@@ -369,9 +369,9 @@ I det här avsnittet beskrivs de grundläggande stegen för att uppdatera nyckel
 
 Även om roll tilldelningar tas bort under överföringen kan användare i det ursprungliga ägar kontot fortsätta att ha åtkomst till prenumerationen via andra säkerhets metoder, inklusive:
 
-- Åtkomstnycklar för tjänster som Storage.
+- Åtkomstnycklar för tjänster såsom Storage.
 - [Hanterings certifikat](../cloud-services/cloud-services-certs-create.md) som ger användare administratörs åtkomst till prenumerations resurser.
-- Autentiseringsuppgifter för fjärråtkomst för tjänster som Azure Virtual Machines.
+- Autentiseringsuppgifter för fjärråtkomst för tjänster såsom Azure Virtual Machines.
 
 Om avsikten är att ta bort åtkomst från användare i käll katalogen så att de inte har åtkomst till mål katalogen, bör du överväga att rotera eventuella autentiseringsuppgifter. Användarna fortsätter att ha åtkomst efter överföringen tills autentiseringsuppgifterna har uppdaterats.
 

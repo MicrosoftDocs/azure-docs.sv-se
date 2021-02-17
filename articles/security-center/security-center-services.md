@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2021
+ms.date: 02/16/2021
 ms.author: memildin
-ms.openlocfilehash: 7034d1b5f06fcbcead79d85df10042eee3581b0b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0e1f669b6955d5c5b70f2f29ff39ba5aef0a9a56
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369364"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100544824"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktions täckning för datorer
 
@@ -30,24 +30,24 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 
 |**Funktion**|**Azure Virtual Machines**|**Skalningsuppsättningar för virtuella Azure-datorer**|**Azure Arc-aktiverade datorer**|**Azure Defender krävs**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender för slut punkts integrering](security-center-wdatp.md)|✔</br>(i versioner som stöds)|✔</br>(i versioner som stöds)|✔|Ja|
-|[Beteende analys av virtuella datorer (och säkerhets aviseringar)](alerts-reference.md)|✔|✔|✔|Ja|
-|[Filbaserad säkerhets aviseringar](alerts-reference.md#alerts-windows)|✔|✔|✔|Ja|
-|[Nätverksbaserade säkerhets aviseringar](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
-|[Just-in-time-åtkomst till virtuella datorer](security-center-just-in-time.md)|✔|-|-|Ja|
-|[Ursprunglig sårbarhets bedömning](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ja|
-|[Övervakning av filintegritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
-|[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Ja|
-|[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
-|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
-|[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
-|Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|-|-|-|Ja|
+|[Microsoft Defender för slut punkts integrering](security-center-wdatp.md)|✔</br>(i versioner som stöds)|✔</br>(i versioner som stöds)|✔|Yes|
+|[Beteende analys av virtuella datorer (och säkerhets aviseringar)](alerts-reference.md)|✔|✔|✔|Yes|
+|[Filbaserad säkerhets aviseringar](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
+|[Nätverksbaserade säkerhets aviseringar](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Just-in-time-åtkomst till virtuella datorer](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Ursprunglig sårbarhets bedömning](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
+|[Övervakning av filintegritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|-|-|-|Yes|
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
-|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Inga|
-|Sårbarhets bedömning från tredje part|✔|-|✔|Inga|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Inga|
+|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Sårbarhets bedömning från tredje part|✔|-|✔|No|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Linux-datorer**](#tab/features-linux)
@@ -55,23 +55,23 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 |**Funktion**|**Azure Virtual Machines**|**Skalningsuppsättningar för virtuella Azure-datorer**|**Azure Arc-aktiverade datorer**|**Azure Defender krävs**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender för slut punkts integrering](security-center-wdatp.md)|-|-|-|-|
-|[Beteende analys av virtuella datorer (och säkerhets aviseringar)](./azure-defender.md)|✔</br>(i versioner som stöds)|✔</br>(i versioner som stöds)|✔|Ja|
-|[Filbaserad säkerhets aviseringar](alerts-reference.md#alerts-windows)|-|-|-|Ja|
-|[Nätverksbaserade säkerhets aviseringar](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
-|[Just-in-time-åtkomst till virtuella datorer](security-center-just-in-time.md)|✔|-|-|Ja|
-|[Ursprunglig sårbarhets bedömning](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ja|
-|[Övervakning av filintegritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
-|[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Ja|
-|[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
-|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
-|[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
-|Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|✔|✔|✔|Ja|
+|[Beteende analys av virtuella datorer (och säkerhets aviseringar)](./azure-defender.md)|✔</br>(i versioner som stöds)|✔</br>(i versioner som stöds)|✔|Yes|
+|[Filbaserad säkerhets aviseringar](alerts-reference.md#alerts-windows)|-|-|-|Yes|
+|[Nätverksbaserade säkerhets aviseringar](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Just-in-time-åtkomst till virtuella datorer](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Ursprunglig sårbarhets bedömning](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
+|[Övervakning av filintegritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|✔|✔|✔|Yes|
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
-|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Inga|
-|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Inga|
-|Sårbarhets bedömning från tredje part|✔|-|✔|Inga|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Inga|
+|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Sårbarhets bedömning från tredje part|✔|-|✔|No|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 
@@ -91,13 +91,13 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 
 | Slutpunktsskydd| Plattformar | Installation av Security Center | Security Center Discovery |
 |------|------|-----|-----|
-| Microsoft Defender Antivirus| Windows Server 2016 eller senare| Nej, inbyggd i OS| Ja |
-| System Center Endpoint Protection (Microsoft-programvara mot skadlig kod) | Windows Server 2012 R2, 2012, 2008 R2 (se anmärkning nedan) | Via tillägg | Ja |
-| Trend Micro – djup säkerhet | Windows Server-familjen  | Inga | Ja |
-| Symantec v12.1.1100+| Windows Server-familjen  | Inga | Ja |
-| McAfee v10 + | Windows Server-familjen  | Inga | Ja |
-| McAfee v10 + | Linux Server-serien  | Inga | Ja |
-| Sophos v9 +| Linux Server-serien  | Inga | Ja |
+| Microsoft Defender Antivirus| Windows Server 2016 eller senare| Nej, inbyggd i OS| Yes |
+| System Center Endpoint Protection (Microsoft-programvara mot skadlig kod) | Windows Server 2012 R2, 2012, 2008 R2 (se anmärkning nedan) | Via tillägg | Yes |
+| Trend Micro – djup säkerhet | Windows Server-familjen  | Nej | Ja |
+| Symantec v12.1.1100+| Windows Server-familjen  | Nej | Ja |
+| McAfee v10 + | Windows Server-familjen  | Nej | Ja |
+| McAfee v10 + | Linux Server-serien  | Nej | Ja |
+| Sophos v9 +| Linux Server-serien  | Nej | Ja |
 
 > [!NOTE]
 > Identifiering av System Center Endpoint Protection (SCEP) på en virtuell dator med Windows Server 2008 R2 kräver SCEP för att installeras efter PowerShell (v 3.0 eller senare).
@@ -131,7 +131,7 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 |[Azure Defender för DNS](defender-for-dns-introduction.md)|-|-|
 |[Azure Defender för containerregister](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
 |[Azure Defender för Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
-|[Kubernetes arbets belastnings skydd](kubernetes-workload-protections.md)|-|-|
+|[Kubernetes arbets belastnings skydd](kubernetes-workload-protections.md)|✔|✔|
 |||
 
 (1) kräver **Azure Defender för servrar**

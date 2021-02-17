@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e808f6f56041e6cdc577164140910af8d6c42731
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 9372da349d0ea9169bb59570b7e6dd0e597d1cdf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004406"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558238"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,7 +56,7 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>Kommentarer
 
-Den här systemfunktionen kommer att ha nytta av ett [geospatialt index](index-policy.md#spatial-indexes).
+Den här systemfunktionen kommer att ha nytta av ett [geospatialt index](index-policy.md#spatial-indexes) , förutom i frågor med agg regeringar.
 
 ## <a name="next-steps"></a>Nästa steg
 

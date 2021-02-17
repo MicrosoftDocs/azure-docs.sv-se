@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: c2543f74b90205a36d3f5b4481beca35c779f77e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585100"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546031"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Fördefinierad visitkorts modell för formulär igenkänning 
 
@@ -76,7 +76,11 @@ När fältet **status** har värdet **lyckades** , inkluderar JSON-svaret affär
 
 ### <a name="sample-json-output"></a>Exempel på JSON-utdata
 
-Se följande exempel på ett lyckat JSON-svar: noden "readResults" innehåller all den identifierade texten. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. Noden "documentResults" innehåller de affärskort-specifika värden som modellen identifierade. Här hittar du användbar kontakt information, t. ex. förnamn, efter namn, företags namn med mera.
+Svaret på affärs kortets resultat åtgärd för att analysera visitkort är strukturerad representation av visitkortet med all information som extraheras.  Se här för exempel på en [visitkorts fil](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg) och dess strukturerade utdata [exempel visitkorts kort](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json).
+
+Se följande exempel på ett lyckat JSON-svar:
+* `"readResults"`Noden innehåller all den identifierade texten. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. 
+* `"documentResults"`Noden innehåller de företagsspecifika värden som modellen identifierade. Här hittar du användbar kontakt information, t. ex. förnamn, efter namn, företags namn med mera.
 
 ```json
 {
