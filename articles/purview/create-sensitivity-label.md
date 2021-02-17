@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 70aaa528fc86c9e543267b68b5b4cf157ec2dc65
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630284"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535271"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -41,17 +41,17 @@ Känslighets etiketter i Azure avdelningens kontroll kan användas för att auto
 Mer information finns i:
 
 - [Lär dig mer om känslighets etiketter](/microsoft-365/compliance/sensitivity-labels) i Microsoft 365-dokumentationen
-- [Vad är etiketterade regler?](#what-are-autolabeling-rules)
+- [Vad är etiketterade regler automatiskt?](#what-are-auto-labeling-rules)
 - [Data typer som stöds för känslighets etiketter i Azure avdelningens kontroll](#supported-data-types-for-sensitivity-labels-in-azure-purview)
 - [Etiketter för SQL Database-kolumner](#labeling-for-sql-database-columns)
 
-#### <a name="what-are-autolabeling-rules"></a>Vad är etiketterade regler?
+#### <a name="what-are-auto-labeling-rules"></a>Vad är etiketterade regler automatiskt?
 
 Dina data växer ständigt och förändras. Att spåra data som för närvarande inte är märkta och som vidtar åtgärder för att manuellt tillämpa etiketter är inte bara besvärliga, men det är också onödigt att gå vidare. 
 
-Regler för automärkning är villkor som du anger, och anger när en viss etikett ska användas. När dessa villkor är uppfyllda, tilldelas etiketten automatiskt data, vilket behåller konsekventa känslighets etiketter för dina data, i skala.
+Automatiskt märkta regler är villkor som du anger, och anger när en viss etikett ska användas. När dessa villkor är uppfyllda, tilldelas etiketten automatiskt data, vilket behåller konsekventa känslighets etiketter för dina data, i skala.
 
-När du skapar etiketter ska du se till att definiera regler för automatisk etikett för både [filer](#define-autolabeling-rules-for-files) och [databas kolumner](#define-autolabeling-rules-for-database-columns) för att automatiskt tillämpa dina etiketter med varje data genomsökning. 
+När du skapar etiketter ska du se till att definiera regler för automatisk etikett för både [filer](#define-auto-labeling-rules-for-files) och [databas kolumner](#define-auto-labeling-rules-for-database-columns) för att automatiskt tillämpa dina etiketter med varje data genomsökning. 
 
 När du har skannat dina data i avdelningens kontroll kan du visa etiketterna som används automatiskt i avdelningens kontroll-katalogen och Insight-rapporter.
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Data typer som stöds för känslighets etiketter i Azure avdelningens kontroll
@@ -104,7 +104,7 @@ Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan
 
 I Microsoft 365 går du till **Information Protection** sidan. I rutan **utöka etiketter till till gångar i Azure avdelningens kontroll** väljer du knappen **slå på** och väljer sedan **Ja** i den bekräftelse dialog ruta som visas.
 
-Till exempel:
+Exempel:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Välj * * Aktivera * * för att utöka känslighets etiketter till avdelningens kontroll" lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -123,10 +123,10 @@ När du har utökat etiketter till till gångar i Azure avdelningens kontroll ka
 
 1. Följ resten av anvisningarna i guiden för dina etikett inställningar. 
 
-    Definiera särskilt regler för automärkning för filer och databas kolumner:
+    Definiera särskilt regler för automatisk etikett för filer och databas kolumner:
 
-    - [Definiera regler för automärkning för filer](#define-autolabeling-rules-for-files)
-    - [Definiera regler för automärkning för databas kolumner](#define-autolabeling-rules-for-database-columns)
+    - [Definiera regler för automatisk etikett för filer](#define-auto-labeling-rules-for-files)
+    - [Definiera regler för automatisk etikett för databas kolumner](#define-auto-labeling-rules-for-database-columns)
 
     Mer information om alternativ i guiden finns i [vilka känslighets etiketter som kan](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) användas i Microsoft 365-dokumentationen.
 
@@ -156,21 +156,21 @@ Fortsätt genom [att genomsöka dina data för att tillämpa etiketter automatis
 - [Visa etiketter på till gångar](#view-labels-on-assets)
 - [Visa Insight-rapporter för klassificeringar och känslighets etiketter](#view-insight-reports-for-the-classifications-and-sensitivity-labels)
 
-#### <a name="define-autolabeling-rules-for-files"></a>Definiera regler för automärkning för filer
+#### <a name="define-auto-labeling-rules-for-files"></a>Definiera regler för automatisk etikett för filer
 
-Definiera regler för automärkning av filer i guiden när du skapar eller redigerar din etikett. 
+Definiera regler för automatisk etikettering för filer i guiden när du skapar eller redigerar din etikett. 
 
 På sidan **Auto-Labeling för Office-appar** aktiverar du **Automatisk etikettering för Office-appar** och definierar sedan de villkor där du vill att etiketten automatiskt ska tillämpas på dina data.
 
-Till exempel:
+Exempel:
 
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definiera regler för automärkning för filer i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Definiera regler för automatisk etikett för filer i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
 Mer information finns i [använda en känslighets etikett för data automatiskt](/microsoft-365/compliance/apply-sensitivity-label-automatically#how-to-configure-auto-labeling-for-office-apps) i Microsoft 365-dokumentationen. 
 
-#### <a name="define-autolabeling-rules-for-database-columns"></a>Definiera regler för automärkning för databas kolumner
+#### <a name="define-auto-labeling-rules-for-database-columns"></a>Definiera regler för automatisk etikett för databas kolumner
 
-Definiera regler för automärkning för databas kolumner i guiden när du skapar eller redigerar din etikett. 
+Definiera regler för automatisk etikettering för databas kolumner i guiden när du skapar eller redigerar din etikett. 
 
 Under alternativet **Azure avdelningens kontroll-tillgångar (för hands version)** :
 
@@ -178,13 +178,13 @@ Under alternativet **Azure avdelningens kontroll-tillgångar (för hands version
 
 1. Välj **kontrol lera känsliga informations typer** för att välja de känsliga informations typer som du vill använda för din etikett.
 
-Till exempel:
+Exempel:
         
-:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definiera regler för automärkning för SQL-kolumner i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
+:::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Definiera regler för automatisk etikett för SQL-kolumner i Microsoft 365 Security and Compliance Center" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
 ## <a name="scan-your-data-to-apply-labels-automatically"></a>Sök igenom dina data för att tillämpa etiketter automatiskt
 
-Sök igenom dina data i Azure-avdelningens kontroll för att automatiskt tillämpa de etiketter som du har skapat, baserat på de autoetikettering-regler som du har definierat. 
+Sök igenom dina data i Azure avdelningens kontroll för att automatiskt tillämpa de etiketter som du har skapat, baserat på de regler för automatisk etikett som du har definierat. 
 
 Mer information om hur du konfigurerar genomsökningar på olika till gångar i Azure avdelningens kontroll finns i:
 
@@ -201,11 +201,11 @@ När du har definierat regler för automatisk etikett för dina etiketter i Micr
 
 **Så här visar du etiketter som används för dina till gångar i Azure avdelningens kontroll-katalogen:**
 
-I Azure avdelningens kontroll-katalogen använder du **etikett** filtrerings alternativ för att endast visa filer med vissa etiketter. Till exempel: 
+I Azure avdelningens kontroll-katalogen använder du **etikett** filtrerings alternativ för att endast visa filer med vissa etiketter. Exempel: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Sök efter till gångar efter etikett" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Till exempel:
+Exempel:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Visa en känslighets etikett för en fil i din Azure-Blob Storage" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

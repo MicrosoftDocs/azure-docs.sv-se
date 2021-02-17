@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555823"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrera till detaljerad rollbaserad åtkomst för klusterkonfigurationer
 
@@ -182,7 +182,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
-Du kan också använda Azure Portal för att lägga till roll tilldelningen HDInsight-kluster för en användare. Se dokumentationen, [Lägg till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal – Lägg till en roll tilldelning](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment).
+Du kan också använda Azure Portal för att lägga till roll tilldelningen HDInsight-kluster för en användare. Se dokumentationen och [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="faq"></a>Vanliga frågor
 

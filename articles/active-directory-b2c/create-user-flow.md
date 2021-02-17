@@ -10,24 +10,24 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109020"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556499"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Skapa ett användar flöde i Azure Active Directory B2C
 
 Du kan skapa [användar flöden](user-flow-overview.md) av olika typer i din Azure Active Directory B2C-klient (Azure AD B2C) och använda dem i dina program efter behov. Användar flöden kan återanvändas i olika program.
 
 > [!IMPORTANT]
-> Vi har ändrat hur vi refererar till användar flödes versioner. Tidigare erbjöd vi v1 (produktions klara) versioner och V 1.1 och v2 (för hands version). Nu har vi konsoliderat användar flöden till **Rekommenderad** (nästa generations för hands version) och **standard** versioner (allmänt tillgängliga). Alla tidigare förhands gransknings användar flöden för V 1.1 och v2 finns på en sökväg till utfasningen den **1 augusti 2021**. Mer information finns [i användar flödes versioner i Azure AD B2C](user-flow-versions.md).
+> Vi har ändrat hur vi refererar till användarflödesversioner. Tidigare erbjöd vi V1-versioner (produktionsklara), V1.1 och V2 (förhandsversion). Nu har vi konsoliderat användar flöden till **Rekommenderad** (nästa generations för hands version) och **standard** versioner (allmänt tillgängliga). Alla tidigare förhands gransknings användar flöden för V 1.1 och v2 finns på en sökväg till utfasningen den **1 augusti 2021**. Mer information finns [i användar flödes versioner i Azure AD B2C](user-flow-versions.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 - **Registrera det program** som du vill använda för att testa det nya användar flödet. Ett exempel finns i [självstudien: registrera ett webb program i Azure AD B2C](tutorial-register-applications.md).
-- **Lägg till externa identitets leverantörer** om du vill aktivera användar inloggning med leverantörer som Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft eller Twitter. Ett exempel finns i [Självstudier: Lägg till identitets leverantörer till dina program i Azure AD B2C](tutorial-add-identity-providers.md).
+- **Lägg till externa identitets leverantörer** om du vill aktivera användar inloggning med leverantörer som Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft eller Twitter. Se [lägga till identitets leverantörer i dina program i Azure AD B2C](add-identity-provider.md).
 - **Konfigurera den lokala konto identitets leverantören** för att ange de identitets typer (e-post, användar namn, telefonnummer) som du vill stödja för lokala konton i din klient organisation. Sedan kan du välja bland dessa identitets typer som stöds när du skapar enskilda användar flöden. När en användare slutför användar flödet skapas ett lokalt konto i din Azure AD B2C katalog och din **lokala konto** identitets leverantör autentiserar användarens information. Konfigurera klient organisationens lokala konto identitets leverantör med följande steg:
 
    1. Logga in på [Azure-portalen](https://portal.azure.com/). 
@@ -66,7 +66,7 @@ Du kan skapa [användar flöden](user-flow-overview.md) av olika typer i din Azu
 
    - **Lokalt konto**. Om du vill tillåta att användare skapar lokala konton i Azure AD B2C klient organisationen väljer du den typ av identifierare som du vill att de ska använda (till exempel e-post, användar-ID eller telefon). Endast de identitets typer som har kon figurer ATS i inställningarna för den [lokala kontots identitetsprovider](#before-you-begin) visas.
 
-   - **Leverantörer av sociala identiteter**. Om du vill tillåta användar inloggning med [sociala identitets leverantörer som du har lagt till](tutorial-add-identity-providers.md), t. ex. Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft eller Twitter, väljer du leverantörer i listan.
+   - **Leverantörer av sociala identiteter**. Om du vill tillåta användar inloggning med [sociala identitets leverantörer som du har lagt till](add-identity-provider.md), t. ex. Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft eller Twitter, väljer du leverantörer i listan.
 
 9. För användarattribut **och anspråk** väljer du de anspråk och attribut som du vill samla in och skicka från användaren under registreringen. Välj **Visa fler**. Välj attribut och anspråk och välj sedan **OK**.
 

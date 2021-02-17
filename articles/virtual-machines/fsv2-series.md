@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7071675d4573ebee297217fe216552482cb76406
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e738a3e18d4ee16b2bbfd7edb6cc32152bb82b48
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557803"
 ---
 # <a name="fsv2-series"></a>Fsv2-serien
 
@@ -26,7 +26,7 @@ Virtuella datorer i Fsv2-serien Intel® Hyper-Threading-teknik.
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds (*minst 4 vCPU krävs*)<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br>
 

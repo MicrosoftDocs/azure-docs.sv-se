@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446314"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546983"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Självstudie: Konfigurera certifikat för Azure Stack Edge Pro med GPU
 
@@ -26,19 +26,19 @@ I den här självstudien lär du dig:
 
 > [!div class="checklist"]
 >
-> * Krav
+> * Förutsättningar
 > * Konfigurera certifikat för den fysiska enheten
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du konfigurerar och konfigurerar din Azure Stack Edge Pro-enhet med GPU måste du kontrol lera att:
 
 * Du har installerat den fysiska enheten enligt beskrivningen i [installera Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md).
 * Om du planerar att ta med dina egna certifikat:
-    - Du bör ha dina certifikat klara i rätt format, inklusive signerings kedjans certifikat. Mer information om certifikat finns i [Hantera certifikat](azure-stack-edge-j-series-manage-certificates.md)
+    - Du bör ha dina certifikat klara i rätt format, inklusive signerings kedjans certifikat. Mer information om certifikat finns i [Hantera certifikat](azure-stack-edge-gpu-manage-certificates.md)
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>Konfigurera certifikat för enheten
@@ -78,7 +78,7 @@ Använd de här stegen för att återskapa och hämta Azure Stack Edge Pro-enhet
 
     ![Generera och hämta certifikat 1](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-3.png)
 
-2. I **generera enhets certifikat**väljer du **generera**. 
+2. I **generera enhets certifikat** väljer du **generera**. 
 
     ![Generera och hämta certifikat 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-4.png)
 
@@ -120,13 +120,13 @@ Använd de här stegen för att återskapa och hämta Azure Stack Edge Pro-enhet
 
 Du måste installera dessa certifikat på klient systemet som du använder för att få åtkomst till slut punkterna på ASE-enheten. Dessa certifikat etablerar förtroende mellan klienten och enheten.
 
-Om du vill importera och installera certifikaten på klienten som du använder för att komma åt enheten följer du stegen i [Importera certifikat på klienterna som har åtkomst till din Azure Stack Edge Pro-enhet](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
+Om du vill importera och installera certifikaten på klienten som du använder för att komma åt enheten följer du stegen i [Importera certifikat på klienterna som har åtkomst till din Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device). 
 
 Om du använder Azure Storage Explorer måste du installera certifikat på klienten i PEM-format och du måste konvertera enheten genererade certifikat till PEM-format. 
 
 > [!IMPORTANT]
 > - Nedladdnings länken är bara tillgänglig för enhets genererade certifikat och inte om du använder dina egna certifikat.
-> - Du kan välja att ha en blandning av enhets genererade certifikat och ta med dina egna certifikat så länge andra certifikat krav uppfylls. Mer information finns i [certifikat krav](azure-stack-edge-j-series-certificate-requirements.md).
+> - Du kan välja att ha en blandning av enhets genererade certifikat och ta med dina egna certifikat så länge andra certifikat krav uppfylls. Mer information finns i [certifikat krav](azure-stack-edge-gpu-certificate-requirements.md).
     
 
 ### <a name="bring-your-own-certificates"></a>Ta med dina egna certifikat
@@ -174,7 +174,7 @@ I den här självstudien lär du dig:
 
 > [!div class="checklist"]
 >
-> * Krav
+> * Förutsättningar
 > * Konfigurera certifikat för den fysiska enheten
 
 Information om hur du aktiverar din Azure Stack Edge Pro-enhet finns i:

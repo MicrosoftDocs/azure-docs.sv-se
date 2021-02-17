@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355774"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557845"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Objekt för program och tjänstens huvudnamn i Azure Active Directory
 
@@ -27,9 +27,9 @@ Den här artikeln beskriver program registrering, program objekt och tjänst huv
 ## <a name="application-registration"></a>Programregistrering
 För att kunna delegera identitets-och åtkomst hanterings funktioner till Azure AD måste ett program registreras med en Azure AD- [klient](developer-glossary.md#tenant). När du registrerar ditt program med Azure AD skapar du en identitets konfiguration för ditt program som gör det möjligt att integrera med Azure AD. När du registrerar en app i [Azure Portal][AZURE-Portal]väljer du om det är en enskild klient (endast tillgänglig i din klient) eller flera innehavare (tillgänglig i andra klienter) och om du vill kan du ange en omdirigerings-URI (där åtkomsttoken skickas till).
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Skärm bild av Azure Portal registrera ett programfönster":::
+Steg-för-steg-instruktioner om hur du registrerar en app finns i snabb starten för [app Registration](quickstart-register-app.md).
 
-När du har slutfört registreringen av appen har du en globalt unik instans av appen (programobjektet) som finns i din hem klient eller katalog.  Du har också ett globalt unikt ID för din app (appen eller klient-ID: t).  I portalen kan du sedan lägga till hemligheter eller certifikat och omfattningar för att din app ska fungera, anpassa appens anpassning i dialog rutan för inloggning med mera.
+När du har slutfört registreringen av appen har du en globalt unik instans av appen ( [programobjektet](#application-object)) som finns i din hem klient eller katalog.  Du har också ett globalt unikt ID för din app (appen eller klient-ID: t).  I portalen kan du sedan lägga till hemligheter eller certifikat och omfattningar för att din app ska fungera, anpassa appens anpassning i dialog rutan för inloggning med mera.
 
 Om du registrerar ett program i portalen skapas ett program objekt och ett huvud namn för tjänsten automatiskt i din hem klient.  Om du registrerar/skapar ett program med hjälp av Microsoft Graph-API: erna, är det ett separat steg att skapa tjänstens huvud namns objekt.
 

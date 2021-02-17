@@ -3,17 +3,17 @@ title: 'Diagnostisera och Felsök tillgängligheten för Azure Cosmos SDK: er i 
 description: Lär dig allt om tillgänglighets beteendet i Azure Cosmos SDK när du arbetar i flera regionala miljöer.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559692"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostisera och Felsök tillgängligheten för Azure Cosmos SDK: er i multiregionala miljöer
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,11 +47,11 @@ Om du **inte anger någon önskad region** använder SDK-klienten som standard d
 
 Under normala omständigheter ansluter SDK-klienten till den önskade regionen (om en regional inställning har angetts) eller till den primära regionen (om ingen inställning har angetts) och åtgärderna kommer att begränsas till den regionen, om inte något av nedanstående scenarier inträffar.
 
-I dessa fall exponerar klienten som använder Azure Cosmos SDK loggar och innehåller information om återförsöket som en del av **åtgärdens diagnostiska information** :
+I dessa fall exponerar klienten som använder Azure Cosmos SDK loggar och innehåller information om återförsöket som en del av **åtgärdens diagnostiska information**:
 
 * Egenskapen *RequestDiagnosticsString* i svar i .NET v2 SDK.
 * Egenskapen *diagnostik* för svar och undantag i .net v3 SDK.
-* Metoden *getDiagnostics ()* i svar och undantag i Java v4 SDK.
+* Metoden *getDiagnostics()* i svar och undantag i Java v4 SDK.
 
 När du bestämmer nästa region i prioritetsordning använder SDK-klienten listan konto region för att prioritera önskade regioner (om det finns några).
 
@@ -83,9 +83,9 @@ När du använder konsekvens kontroll av [sessioner](consistency-levels.md#guara
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Tillfälliga anslutnings problem i TCP-protokollet
 
-I scenarier där Azure Cosmos SDK-klienten är konfigurerad för att använda TCP-protokollet för en viss begäran, kan det finnas situationer där nätverks förhållandena tillfälligt påverkar kommunikationen med en viss slut punkt. Dessa tillfälliga nätverks villkor kan vara en yta som TCP-tidsgräns. Klienten gör om begäran lokalt på samma slut punkt under några sekunder.
+I scenarier där Azure Cosmos SDK-klienten är konfigurerad för att använda TCP-protokollet för en viss begäran, kan det finnas situationer där nätverks förhållandena tillfälligt påverkar kommunikationen med en viss slut punkt. Dessa tillfälliga nätverks villkor kan vara en yta som TCP-tidsgräns och tjänsten inte är tillgänglig (HTTP 503)-fel. Klienten gör om begäran lokalt på samma slut punkt i några sekunder innan felet Visa.
 
-Om användaren har konfigurerat en lista över önskade regioner med mer än en region och Azure Cosmos-kontot är flera Skriv regioner eller en enskild Skriv region och åtgärden är en Read-begäran, försöker klienten igen med en enda åtgärd i nästa region från listan över inställningar.
+Om användaren har konfigurerat en lista över önskade regioner med mer än en region och Azure Cosmos-kontot är flera Skriv regioner eller en enskild Skriv region och åtgärden är en Read-begäran, identifierar klienten det lokala fel och försöker igen med en enda åtgärd i nästa region från listan över inställningar.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372032"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546065"
 ---
 # <a name="machine-learning-features"></a>Funktioner för maskin inlärning
 
@@ -29,7 +29,7 @@ Funktioner är en nödvändig del av schema designen. LUIS stöder både fras li
 
 ## <a name="find-features-in-your-example-utterances"></a>Hitta funktioner i ditt exempel yttranden
 
-Eftersom LUIS är ett språk baserat program, är funktionerna textbaserade. Välj text som anger den trait som du vill särskilja. Den minsta enheten är *token*för Luis. För det engelska språket är en token ett sammanhängande intervall med bokstäver och siffror som inte innehåller blank steg eller skiljetecken.
+Eftersom LUIS är ett språk baserat program, är funktionerna textbaserade. Välj text som anger den trait som du vill särskilja. Den minsta enheten är *token* för Luis. För det engelska språket är en token ett sammanhängande intervall med bokstäver och siffror som inte innehåller blank steg eller skiljetecken.
 
 Eftersom blank steg och skiljetecken inte är tokens, fokuserar du på de text LED trådar som du kan använda som funktioner. Kom ihåg att inkludera variationer av ord, till exempel:
 
@@ -160,11 +160,9 @@ Leverans adress (enheten har lärts)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Nödvändig funktion med fördefinierade entiteter
 
-Ort, delstat och land/region är vanligt vis en stängd uppsättning listor, vilket innebär att de inte ändras mycket över tid. Dessa entiteter kan ha relevanta rekommenderade funktioner och dessa funktioner kan markeras som obligatoriska. Det innebär att hela leverans adressen inte returneras om entiteterna som saknar nödvändiga funktioner inte hittas.
+Färdiga entiteter som stad, delstat och land/region är vanligt vis en stängd uppsättning listor, vilket innebär att de inte ändras mycket över tid. Dessa entiteter kan ha relevanta rekommenderade funktioner och dessa funktioner kan markeras som obligatoriska. `isRequired`Flaggan är dock bara relaterad till den entitet som den är tilldelad till och påverkar inte hierarkin. Om den fördefinierade underentiteten inte hittas påverkar detta inte identifieringen och återlämningen av den överordnade entiteten.
 
-Vad händer om ort, delstat eller land/region finns i uttryck, men de finns på en plats eller är slang som LUIS inte förväntar sig? Om du vill ge en del post bearbetning för att hjälpa till att lösa entiteten, på grund av en låg exakthet från LUIS, ska du inte markera funktionen som krävs.
-
-Ett annat exempel på en nödvändig funktion för leverans adressen är att skapa ett obligatoriskt, [fördefinierat](luis-reference-prebuilt-entities.md) nummer för gatu numret. Detta gör att användaren kan ange "1 Microsoft Way" eller "One Microsoft Way". Båda matchar siffran "1" för underentiteten gata nummer.
+Som ett exempel på en nödvändig funktion ska du överväga att identifiera adresser. Du kan överväga att göra ett gatu nummer till ett krav. Detta gör att en användare kan ange "1 Microsoft Way" eller "One Microsoft Way", och båda skulle matcha siffran "1" för den underordnade entiteten. Mer information finns i artikeln om [fördefinierad entitet ](luis-reference-prebuilt-entities.md) .
 
 ### <a name="required-feature-using-list-entities"></a>Nödvändig funktion med hjälp av list-entiteter
 
@@ -201,13 +199,13 @@ Du kan använda mer än en funktion för att beskriva en trait eller ett begrepp
 
 ### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Exempel: enhets funktioner för biljett bokning för en rese app  
 
-Som ett grundläggande exempel bör du överväga en app för att boka en flygning med ett flyg boknings _syfte_ och en _entitet_för biljett bokning. Entiteten biljett bokning samlar in information för att boka en flyg Plans biljett i ett boknings system. 
+Som ett grundläggande exempel bör du överväga en app för att boka en flygning med ett flyg boknings _syfte_ och en _entitet_ för biljett bokning. Entiteten biljett bokning samlar in information för att boka en flyg Plans biljett i ett boknings system. 
 
 Machine Learning-entiteten för biljett bok har två underentiteter som du kan använda för att avbilda ursprung och mål. Funktionerna måste läggas till i varje underentitet, inte entiteten på den översta nivån.
 
 :::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking entitets schema":::
 
-Entiteten för biljett bokning är en enhet för maskin inlärning med underentiteter, inklusive _ursprung_ och _mål_. Dessa underentiteter indikerar en geografisk plats. För att hjälpa till att extrahera platserna och skilja mellan _ursprung_ och _mål_bör varje underentitet ha funktioner.
+Entiteten för biljett bokning är en enhet för maskin inlärning med underentiteter, inklusive _ursprung_ och _mål_. Dessa underentiteter indikerar en geografisk plats. För att hjälpa till att extrahera platserna och skilja mellan _ursprung_ och _mål_ bör varje underentitet ha funktioner.
 
 |Typ|Underentitet för ursprung |Underentitet för mål|
 |--|--|--|
@@ -226,7 +224,7 @@ När du har skapat enheten för maskin inlärning måste du lägga till exempel 
 
 I exempel på biljett boknings exempel kan du namnge exemplet yttranden i avsikt med `TicketBooking` entiteten och eventuella underentiteter i texten.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Ticketbooking entitets schema":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Etikett exempel yttranden":::
 
 ### <a name="example-pizza-ordering-app"></a>Exempel: pizza order app
 
@@ -234,13 +232,13 @@ I ett andra exempel bör du överväga en app för en pizza restaurang, som tar 
 
 Enheten för maskin inlärning i det här exemplet är mer komplex med kapslade underentiteter, fras listor, fördefinierade entiteter och anpassade entiteter.
 
-:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Ticketbooking entitets schema":::
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Pizza ordning för enhets schema":::
 
 I det här exemplet används funktioner på underenhets nivå och underordnad för underentitets nivå. Vilken nivå får vilken typ av fras lista eller modell som en funktion är en viktig del av din enhets design.
 
 Även om underentiteter kan ha många fras listor som funktioner som hjälper till att identifiera entiteten har varje underentitet bara en modell som funktion. I den här [pizza-appen](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)är dessa modeller främst listor.
 
-:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Ticketbooking entitets schema":::
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza order avsikt med etiketterat exempel yttranden":::
 
 Det märkta exemplet yttranden visas på ett sätt för att visa hur entiteterna är kapslade. 
 

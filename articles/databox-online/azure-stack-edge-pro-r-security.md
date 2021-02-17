@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 891885dce52ee57fa163bb71b427591156091651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362868"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548649"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Säkerhet och data skydd för Azure Stack Edge Pro R och Azure Stack Edge Mini R
 
@@ -77,7 +77,7 @@ Du kan:
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>Upprätta förtroende med enheten via certifikat
 
-Med Azure Stack Edge robust enhet kan du ta med dina egna certifikat och installera dem som ska användas för alla offentliga slut punkter. Mer information finns i [Ladda upp ditt certifikat](azure-stack-edge-j-series-manage-certificates.md#upload-certificates). En lista över alla certifikat som kan installeras på enheten finns i [Hantera certifikat på enheten](azure-stack-edge-j-series-manage-certificates.md).
+Med Azure Stack Edge robust enhet kan du ta med dina egna certifikat och installera dem som ska användas för alla offentliga slut punkter. Mer information finns i [Ladda upp ditt certifikat](azure-stack-edge-gpu-manage-certificates.md#upload-certificates). En lista över alla certifikat som kan installeras på enheten finns i [Hantera certifikat på enheten](azure-stack-edge-gpu-manage-certificates.md).
 
 - När du konfigurerar Compute på enheten skapas en IoT-enhet och en IoT Edge enhet. De här enheterna tilldelas automatiskt symmetriska åtkomst nycklar. Som en säkerhets åtgärd roteras dessa nycklar regelbundet via IoT Hub tjänsten.
 

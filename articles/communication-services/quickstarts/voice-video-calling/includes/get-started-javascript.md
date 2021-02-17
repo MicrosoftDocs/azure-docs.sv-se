@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024382"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548513"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Java Script.
 
@@ -60,7 +60,7 @@ Skapa en fil i projektets rot Katalog som kallas **client.js** som innehåller p
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
@@ -73,21 +73,21 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Namn                             | Beskrivning                                                                                                                                 |
+| Name                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.                                                                       |
 | CallAgent                        | CallAgent används för att starta och hantera samtal.                                                                                            |
-| AzureCommunicationUserCredential | AzureCommunicationUserCredential-klassen implementerar CommunicationUserCredential-gränssnittet som används för att instansiera CallAgent. |
+| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential-klassen implementerar CommunicationTokenCredential-gränssnittet som används för att instansiera CallAgent. |
 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Du måste ersätta `<USER_ACCESS_TOKEN>` med en giltig åtkomsttoken för din resurs. Se dokumentationen för [användar åtkomst-token](../../access-tokens.md) om du inte redan har en tillgänglig token. Med hjälp av `CallClient` initierar du en `CallAgent` instans med en som gör det `CommunicationUserCredential` möjligt för oss att ringa och ta emot samtal. Lägg till följande kod i **client.js**:
+Du måste ersätta `<USER_ACCESS_TOKEN>` med en giltig åtkomsttoken för din resurs. Se dokumentationen för [användar åtkomst-token](../../access-tokens.md) om du inte redan har en tillgänglig token. Med hjälp av `CallClient` initierar du en `CallAgent` instans med en som gör det `CommunicationTokenCredential` möjligt för oss att ringa och ta emot samtal. Lägg till följande kod i **client.js**:
 
 ```javascript
 async function init() {
     const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
     callAgent = await callClient.createCallAgent(tokenCredential);
     callButton.disabled = false;
 }

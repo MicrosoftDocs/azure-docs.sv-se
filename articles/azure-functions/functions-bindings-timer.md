@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 0d9852659801040d64fe4143f024fd52ffec16ee
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874091"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547850"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer-utlösare för Azure Functions
 
@@ -256,7 +256,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `TimerTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på "timerTrigger". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position** | saknas | Måste vara inställt på "in". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -336,7 +336,7 @@ Talen i ett CRON-uttryck refererar till en tid och ett datum, inte ett tidsinter
 
 Till skillnad från ett CRON-uttryck `TimeSpan` anger ett värde tidsintervall mellan varje funktions anrop. När en funktion slutförs efter att ha kört längre än det angivna intervallet anropar timern omedelbart funktionen igen.
 
-Anges som en sträng `TimeSpan` är formatet när det `hh:mm:ss` `hh` är mindre än 24. När de två första siffrorna är 24 eller större är formatet `dd:hh:mm` . Här följer några exempel:
+Anges som en sträng `TimeSpan` är formatet när det `hh:mm:ss` `hh` är mindre än 24. När de två första siffrorna är 24 eller större är formatet `dd:hh:mm` . Här är några exempel:
 
 | Exempel      | Utlöses av |
 |--------------|----------------|
@@ -347,7 +347,7 @@ Anges som en sträng `TimeSpan` är formatet när det `hh:mm:ss` `hh` är mindre
 
 ## <a name="scale-out"></a>Utskalning
 
-Om en Function-app skalar ut till flera instanser, körs bara en instans av en timer-utlöst funktion över alla instanser.
+Om en Function-app skalar ut till flera instanser, körs bara en instans av en timer-utlöst funktion över alla instanser. Den utlöses inte igen om ett väntande anrop fortfarande körs.
 
 ## <a name="function-apps-sharing-storage"></a>Function Apps delning lagring
 

@@ -2,19 +2,19 @@
 title: Översikt över Azure Arc-aktiverade Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/15/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
 description: Den här artikeln innehåller en översikt över Azure Arc-aktiverade Kubernetes.
 keywords: Kubernetes, båge, Azure, behållare
 ms.custom: references_regions
-ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 54b439d73ed5dfb0709d33dea1f588b8bdf4489f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371315"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560276"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Vad är Azure Arc-aktiverat Kubernetes (förhandsversion)?
 
@@ -60,22 +60,6 @@ Azure Arc-aktiverade Kubernetes stöds för närvarande i följande regioner:
 
 * East US 
 * Europa, västra
-
-## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
-
-* Vad är skillnaden mellan Azure Arc-aktiverade Kubernetes och Azure Kubernetes service (AKS)?
-
-    Azure Kubernetes service (AKS) är det hanterade Kubernetes-erbjudandet av Azure. AKS gör det enkelt att distribuera ett hanterat Kubernetes-kluster i Azure. AKS minskar komplexiteten och arbetet med att hantera Kubernetes genom att avlasta en stor del av det ansvaret till Azure. Kubernetes-huvudservrar hanteras av Azure. Du kan endast hantera och underhålla agentnoderna.
-
-    Med Azure Arc-aktiverade Kubernetes kan du ansluta Kubernetes-kluster till Azure för att utöka Azures hanterings funktioner som Azure Monitor och Azure Policy. Underhåll av det underliggande Kubernetes-klustret görs av dig.
-
-* Måste jag ansluta mina kluster för Azure Kubernetes-tjänsten som körs på Azure till Azure-bågen?
-
-    Nej. Alla funktioner i Azure Arc Enabled Kubernetes, t. ex. Azure Monitor, Azure Policy (Gatekeeper) är internt tillgängliga med AKS, som redan har en resurs representation i Azure.
-    
-* Bör jag ansluta mitt AKS-kluster på Azure Stack HCI till Azure-bågen? Vad händer om Kubernetes-kluster som körs på Azure Stack hubb eller Azure Stack Edge?
-
-    Ja, det finns fördelar med att ansluta dessa kluster till Azure-bågen. Det ger en resurs representation för dessa Kubernetes-kluster i Azure Resource Manager. Med den här resurs representationen kan funktioner som kluster konfiguration, Azure Monitor Azure Policy (Gatekeeper) utökas till dessa Kubernetes-kluster
 
 ## <a name="next-steps"></a>Nästa steg
 

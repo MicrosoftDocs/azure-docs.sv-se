@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd4078d414048d858c46f6757daa0a87a698eaab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ceaa16ee2a54886cde45f37ea90ed617abafffc1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976087"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546915"
 ---
 # <a name="tutorial-configure-the-device-settings-for-azure-stack-edge-pro-with-gpu"></a>Självstudie: Konfigurera enhets inställningarna för Azure Stack Edge Pro med GPU
 
@@ -82,9 +82,9 @@ Följ dessa steg om du vill konfigurera inställningar för enheten:
         ![Lokalt webb gränssnitt "uppdaterings Server" på sidan 2](./media/azure-stack-edge-gpu-deploy-set-up-device-update-time/update-3.png)
 
         > [!NOTE] 
-        > Om en separat Windows Update Server har kon figurer ATS och du väljer att ansluta över *https* (i stället för *http*) behövs signerings kedjan som krävs för att ansluta till uppdaterings servern. Information om hur du skapar och laddar upp certifikat finns i [Hantera certifikat](azure-stack-edge-j-series-manage-certificates.md). 
+        > Om en separat Windows Update Server har kon figurer ATS och du väljer att ansluta över *https* (i stället för *http*) behövs signerings kedjan som krävs för att ansluta till uppdaterings servern. Information om hur du skapar och laddar upp certifikat finns i [Hantera certifikat](azure-stack-edge-gpu-manage-certificates.md). 
 
-2. Välj **Tillämpa**.
+2. Välj **Använd**.
 3. När uppdaterings servern har kon figurer ATS väljer du **Nästa: tid**.
     
 

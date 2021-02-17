@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575813"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545946"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -124,8 +124,6 @@ Gå tillbaka till Visual Studio-fönstret där _**AdtE2ESample**_ -projektet är
 ### <a name="assign-permissions-to-the-function-app"></a>Tilldela behörigheter till Function-appen
 
 Om du vill göra det möjligt för Function-appen att komma åt Azure Digitals, är nästa steg att konfigurera en app-inställning, tilldela appen en Systemhanterad Azure AD-identitet och ge den identiteten *Azure Digitals data ägar* roll i Azure Digital-instansen. Den här rollen krävs för alla användare eller funktioner som vill utföra många data Plans aktiviteter på instansen. Du kan läsa mer om säkerhets-och roll tilldelningar i [*begrepp: säkerhet för Azure Digitals dubbla lösningar*](concepts-security.md).
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 I Azure Cloud Shell använder du följande kommando för att ange en program inställning som din Function-app ska använda för att referera till din Azure Digital-instansen. Fyll i plats hållarna med information om dina resurser (kom ihåg att URL: en för Azure Digital-instansen är värd namnet föregånget av *https://*).
 

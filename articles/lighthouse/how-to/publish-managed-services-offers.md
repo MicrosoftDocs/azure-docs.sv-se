@@ -1,14 +1,14 @@
 ---
 title: Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 description: Lär dig hur du publicerar ett hanterat tjänst erbjudande som integrerar kunder i Azure Lighthouse.
-ms.date: 02/10/2021
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 9abac28d982e5b33bc4952f73336810abcb44e45
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372068"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555802"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 
@@ -26,13 +26,13 @@ Följande tabell kan hjälpa dig att avgöra om du ska publicera kunder genom at
 
 |**Att tänka på**  |**Erbjudande för hanterad tjänst**  |**ARM-mallar**  |
 |---------|---------|---------|
-|Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Inga        |
-|Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Inga         |
-|Tillgängligt för nya kunder via Azure Marketplace     |Ja     |Inga       |
-|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Ja         |
-|Kräver kund godkännande i Azure Portal     |Ja     |Inga   |
-|Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Inga     |Ja    |
-|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Ja         |
+|Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nej        |
+|Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nej         |
+|Tillgängligt för nya kunder via Azure Marketplace     |Ja     |Nej       |
+|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Yes         |
+|Kräver kund godkännande i Azure Portal     |Ja     |Nej   |
+|Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Nej     |Ja    |
+|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Yes         |
 
 ## <a name="create-your-offer"></a>Skapa ditt erbjudande
 
@@ -56,7 +56,7 @@ Du kan när som helst [publicera en uppdaterad version av erbjudandet](../..//ma
 När en kund lägger till ditt erbjudande kan de [delegera en eller flera specifika prenumerationer eller resurs grupper](view-manage-service-providers.md#delegate-resources)som sedan kommer att publiceras i Azure-Lighthouse. Om en kund har accepterat ett erbjudande men ännu inte har delegerat några resurser visas en anteckning längst upp i avsnittet **leverantörs erbjudanden** på sidan [**tjänst leverantörer**](view-manage-service-providers.md) i Azure Portal.
 
 > [!IMPORTANT]
-> Delegeringen måste utföras av ett konto som inte är gäst i kundens klient organisation som har den [inbyggda rollen ägare](../../role-based-access-control/built-in-roles.md#owner) för den prenumeration som registreras (eller som innehåller de resurs grupper som har registrerats). Om du vill se alla användare som kan delegera prenumerationen kan en användare i kundens klient välja prenumerationen i Azure Portal, öppna **åtkomst kontroll (IAM)** och [Visa alla användare med ägar rollen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Delegering måste göras av ett konto som inte är gäst i kundens klient organisation som har en roll med `Microsoft.Authorization/roleAssignments/write` behörigheten, t. ex. [ägare](../../role-based-access-control/built-in-roles.md#owner), för den prenumeration som registreras (eller som innehåller de resurs grupper som har publicerats). För att hitta användare som kan delegera prenumerationen kan en användare i kundens klient organisation välja prenumerationen i Azure Portal, öppna **åtkomst kontroll (IAM)** och [Visa alla användare med ägar rollen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 När kunden delegerar en prenumeration (eller en eller flera resurs grupper inom en prenumeration) registreras **Microsoft. ManagedServices** Resource Provider för den prenumerationen och användare i din klient organisation kan komma åt de delegerade resurserna enligt auktoriseringarna i ditt erbjudande.
 

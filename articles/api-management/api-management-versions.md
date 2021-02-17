@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87099848"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547204"
 ---
 # <a name="versions-in-azure-api-management"></a>Versioner i Azure API Management
 
@@ -64,9 +64,13 @@ Om du lägger till en version i ett icke-versions-API `Original` skapas en versi
 
 ## <a name="how-versions-are-represented"></a>Hur versioner visas
 
-Azure API Management hanterar en resurs som kallas *versions uppsättning*, som representerar en uppsättning versioner för ett enda logiskt API. När du använder Azure Portal för att hantera versioner som du inte ser, men om du interagerar med din API Management-tjänst med PowerShell, Resource Manager-mallar eller Azure Resource Manager API, kan du direkt Visa och hantera versions uppsättningar. En versions uppsättning innehåller visnings namnet för det versions bara API: t, samt det [versions schema som används](#versioning-schemes) för att dirigera begär anden till angivna versioner.
+Azure API Management hanterar en resurs som kallas *versions uppsättning*, som representerar en uppsättning versioner för ett enda logiskt API. En versions uppsättning innehåller visnings namnet för det versions bara API och [versions schema som används](#versioning-schemes) för att dirigera begär anden till angivna versioner.
 
-Varje version av ett API underhålls som sin egen API-resurs, som sedan associeras med en versions uppsättning. En versions uppsättning kan innehålla API: er med mycket olika åtgärder eller principer, vilket återspeglar det faktum att du kan göra betydande ändringar mellan versioner av ditt API.
+Varje version av ett API underhålls som sin egen API-resurs, som sedan associeras med en versions uppsättning. En versions uppsättning kan innehålla API: er med olika åtgärder eller principer. Du kan göra betydande ändringar mellan versioner i en mängd.
+
+Azure Portal skapar versions uppsättningar åt dig. Du kan ändra namnet och beskrivningen för en version som angetts i Azure Portal.
+
+Du kan visa och hantera versions uppsättningar direkt med hjälp av [Azure CLI](/cli/azure/apim/api/versionset), [Azure PowerShell](/powershell/module/az.apimanagement/#api-management), [Resource Manager-mallar](/azure/templates/microsoft.apimanagement/service/apiversionsets)eller [Azure Resource Manager-API](/rest/api/apimanagement/2020-06-01-preview/apiversionset).
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>Migrera ett API som inte är versions hantering till ett API som har versions hantering
 

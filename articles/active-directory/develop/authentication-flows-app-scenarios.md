@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: ffa52805a5e2680d534b2b24a210465cb3fc7cac
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582187"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557881"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Autentiserings flöden och program scenarier
 
@@ -109,7 +109,7 @@ Hjälpa till att skydda en webbapp som loggar in en användare:
 
 - Om du utvecklar i .NET använder du ASP.NET eller ASP.NET Core med ASP.NET OpenID Connect mellan. Att skydda en resurs innebär att verifiera säkerhetstoken, som görs av IdentityModel- [tilläggen för .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) och inte MSAL-bibliotek.
 
-- Om du utvecklar i Node.js använder du [Passport.js](https://github.com/AzureAD/passport-azure-ad).
+- Om du utvecklar i Node.js använder du [noden MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) eller [Passport.js](https://github.com/AzureAD/passport-azure-ad).
 
 Mer information finns i [webbapp som loggar in användare](scenario-web-app-sign-user-overview.md).
 
@@ -279,17 +279,18 @@ Scenarier som innefattar att förvärva token mappas också till OAuth 2,0-auten
 
 Microsoft Authentication libraries stöder flera plattformar:
 
-- JavaScript
-- .NET Framework
 - .NET Core
+- .NET Framework
+- Java
+- JavaScript
+- macOS
+- Ursprunglig Android
+- Inbyggd iOS
+- Node.js
+- Python
 - Windows 10/UWP
 - Xamarin.iOS
 - Xamarin.Android
-- Inbyggd iOS
-- macOS
-- Ursprunglig Android
-- Java
-- Python
 
 Du kan också använda olika språk för att bygga dina program.
 
@@ -302,12 +303,12 @@ I Windows-kolumnen i följande tabell beskrivs varje tid av .NET Core .NET Frame
 |--|--|--|--|--|--|--|
 | [Ensidesapp](scenario-spa-overview.md) <br/>[![App-autentisering med en sida](media/scenarios/spa-app-auth.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Ensidesapp](scenario-spa-overview.md) <br/>[![En app med en enda sida implicit](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
-| [Webbapp som loggar in användare](scenario-web-app-sign-user-overview.md) <br/>[![Webbapp som loggar in användare](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
-| [Webbapp som anropar webb-API:er](scenario-web-app-call-api-overview.md) <br/> <br/>[![Webbapp som anropar webb-API:er](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python
-| [Datorprogram som anropar webb-API:er](scenario-desktop-overview.md) <br/> <br/>[ ![ Stationär app som anropar webb-API: er](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![ Enhets kod flöde](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python <br/> ![iOS/mål C eller Swift](media/sample-v2-code/small_logo_iOS.png) MSAL. objc |
+| [Webbapp som loggar in användare](scenario-web-app-sign-user-overview.md) <br/>[![Webbapp som loggar in användare](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>
+| [Webbapp som anropar webb-API:er](scenario-web-app-call-api-overview.md) <br/> <br/>[![Webbapp som anropar webb-API:er](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>Kolv + MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>
+| [Datorprogram som anropar webb-API:er](scenario-desktop-overview.md) <br/> <br/>[ ![ Stationär app som anropar webb-API: er](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![ Enhets kod flöde](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python <br/> ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/> ![iOS/mål C eller Swift](media/sample-v2-code/small_logo_iOS.png) MSAL. objc |
 | [Mobilapp att anropar webb-API:er](scenario-mobile-overview.md) <br/> [![Mobilapp att anropar webb-API:er](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/mål C eller Swift](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Android
-| [Daemon-app](scenario-daemon-overview.md) <br/> [![Daemon-app](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
-| [Webb-API som anropar webb-API:er](scenario-web-api-call-api-overview.md) <br/><br/> [![Webb-API som anropar webb-API:er](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
+| [Daemon-app](scenario-daemon-overview.md) <br/> [![Daemon-app](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>
+| [Webb-API som anropar webb-API:er](scenario-web-api-call-api-overview.md) <br/><br/> [![Webb-API som anropar webb-API:er](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python ![MSAL-nod](media/sample-v2-code/small-logo-nodejs.png) <br/>MSAL-nod<br/>
 
 Mer information finns i [Microsoft Identity Platform Authentication libraries](reference-v2-libraries.md).
 

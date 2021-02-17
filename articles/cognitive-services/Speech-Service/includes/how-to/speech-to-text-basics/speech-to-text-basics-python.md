@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 891d86f9429031be48ed17f83a3a5005cadb1ec1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8f84de2454baf0689f95422a95f9dda84a01b8b2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947119"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552903"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -122,7 +122,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 I de föregående exemplen används ett enda bilds igenkännings läge, som identifierar en enda uttryck. Slutet på en enskild uttryck bestäms genom att lyssna efter tystnad i slutet eller tills maximalt 15 sekunders ljud bearbetas.
 
-Kontinuerlig igenkänning används däremot när du vill **styra** när du vill sluta identifiera. Det kräver att du ansluter till `EventSignal` för att få igenkännings resultaten, och om du vill stoppa igenkänningen måste du anropa [stop_continuous_recognition ()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition--) eller [stop_continuous_recognition ()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition-async--). Här är ett exempel på hur kontinuerlig igenkänning utförs på en inspelnings fil.
+Kontinuerlig igenkänning används däremot när du vill **styra** när du vill sluta identifiera. Du måste ansluta till `EventSignal` för att få igenkännings resultaten och för att stoppa igenkänning måste du anropa [stop_continuous_recognition ()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition--) eller [stop_continuous_recognition ()](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer#stop-continuous-recognition-async--). Här är ett exempel på hur kontinuerlig igenkänning utförs på en inspelnings fil.
 
 Vi börjar med att definiera indatamängden och initiera en [`SpeechRecognizer`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer) :
 

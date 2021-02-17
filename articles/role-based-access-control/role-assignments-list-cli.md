@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964396"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556922"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Visa en lista med Azures roll tilldelningar med Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "97964396"
 > [!NOTE]
 > Om din organisation har funktioner som har hanterats av en tjänst leverantör som använder [Azure-delegerad resurs hantering](../lighthouse/concepts/azure-delegated-resource-management.md), visas inte roll tilldelningar som har auktoriserats av tjänste leverantören här.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [Bash i Azure Cloud Shell](../cloud-shell/overview.md) eller [Azure CLI](/cli/azure)
 
@@ -187,4 +187,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure CLI](role-assignments-cli.md)
+- [Tilldela Azure-roller med Azure CLI](role-assignments-cli.md)
