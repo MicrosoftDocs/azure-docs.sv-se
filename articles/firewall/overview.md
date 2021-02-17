@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5f12eae9345cbb1daa4097305bb85b8ceaf0b439
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681470"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548004"
 ---
 # <a name="what-is-azure-firewall"></a>Vad är Azure Firewall?
 
@@ -26,9 +26,17 @@ Azure Firewall är en hanterad, molnbaserad tjänst för nätverkssäkerhet som 
 
 Du kan centralt skapa, framtvinga och logga principer för tillämpning och nätverksanslutning över prenumerationer och virtuella nätverk. Azure Firewall använder en statisk offentlig IP-adress för din virtuella nätverksresurser som tillåter att externa brandväggar identifierar trafik som kommer från ditt virtuella nätverk.  Tjänsten är helt integrerad med Azure Monitor för loggning och analys.
 
-## <a name="features"></a>Funktioner
-
 Information om Azure Firewall-funktioner finns i [Azure Firewall-funktioner](features.md).
+
+## <a name="azure-firewall-premium-preview"></a>För hands version av Azure Firewall Premium
+
+Azure Firewall Premium Preview är en nästa generations brand vägg med funktioner som krävs för mycket känsliga och reglerade miljöer. Dessa funktioner omfattar TLS-inspektion, IDP: er, URL-filtrering och webb kategorier.
+
+Information om för hands versions funktionerna i Azure Firewall Premium finns i för [hands versionen av Azure Firewall Premium](premium-features.md).
+
+
+För att se hur för hands versionen av brand väggen är konfigurerad i Azure Portal, se [Azure Firewall Premium Preview i Azure Portal](premium-portal.md).
+
 
 ## <a name="pricing-and-sla"></a>Priser och service nivå avtal
 
@@ -61,14 +69,14 @@ Nätverksfiltreringsregler för icke-TCP-/UDP-protokoll (till exempel ICMP) fung
 |Mått för SNAT-port användning visar 0%|Måttet för Azure Firewall SNAT-port användning kan visa 0% användning även när SNAT-portar används. I det här fallet är det ett felaktigt resultat om du använder måttet som en del av hälso måttet för brand väggen.|Det här problemet har åtgärd ATS och distributionen till produktion är avsedd för maj 2020. I vissa fall löser brand Väggs distributionen problemet, men det är inte konsekvent. Som en mellanliggande lösning använder du endast brand väggens hälso tillstånd för att söka efter *status = degraderad*, inte för *status = ej felfri*. Port överbelastning visas som *degraderad*. *Inte felfri* är reserverad för framtida användning när är fler mått för att påverka brand väggens hälsa.
 |DNAT stöds inte med Tvingad tunnel trafik aktive rad|Brand väggar som distribueras med Tvingad tunnel trafik aktive rad kan inte stödja inkommande åtkomst från Internet på grund av asymmetrisk routning.|Detta är avsiktligt på grund av asymmetrisk routning. Retur Sök vägen för inkommande anslutningar skickas via den lokala brand väggen, vilket inte visade anslutningen.
 |Utgående passiv FTP kanske inte fungerar för brand väggar med flera offentliga IP-adresser, beroende på din FTP-serverkonfiguration.|Passiv FTP upprättar olika anslutningar för kontroll-och data kanaler. När en brand vägg med flera offentliga IP-adresser skickar data utgående väljer den slumpmässigt en av dess offentliga IP-adresser för käll-IP-adressen. FTP kan Miss lyckas när data-och kontroll kanaler använder olika käll-IP-adresser, beroende på din FTP-serverkonfiguration.|En explicit SNAT-konfiguration planeras. Under tiden kan du Konfigurera FTP-servern så att den accepterar data-och kontroll kanaler från olika käll-IP-adresser (se [ett exempel för IIS](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Du kan också överväga att använda en enda IP-adress i den här situationen.|
-|Inkommande passiv FTP kanske inte fungerar beroende på din FTP-serverkonfiguration |Passiv FTP upprättar olika anslutningar för kontroll-och data kanaler. Inkommande anslutningar i Azure Firewall är SNATed till en brand Väggs privata IP-adress för att säkerställa symmetrisk routning. FTP kan Miss lyckas när data-och kontroll kanaler använder olika käll-IP-adresser, beroende på din FTP-serverkonfiguration.|Att bevara den ursprungliga käll-IP-adressen unders öks. Under tiden kan du Konfigurera FTP-servern så att den accepterar data-och kontroll kanaler från olika käll-IP-adresser.|
+|Inkommande passiv FTP kanske inte fungerar beroende på din FTP-serverkonfiguration |Passiv FTP upprättar olika anslutningar för kontroll-och data kanaler. Inkommande anslutningar i Azure Firewall är SNATed till en brand Väggs privata IP-adresser för att säkerställa symmetrisk routning. FTP kan Miss lyckas när data-och kontroll kanaler använder olika käll-IP-adresser, beroende på din FTP-serverkonfiguration.|Att bevara den ursprungliga käll-IP-adressen unders öks. Under tiden kan du Konfigurera FTP-servern så att den accepterar data-och kontroll kanaler från olika käll-IP-adresser.|
 |NetworkRuleHit-måttet saknar en protokoll dimension|ApplicationRuleHit-måttet tillåter filtrering baserat protokoll, men den här funktionen saknas i motsvarande NetworkRuleHit-mått.|En korrigering undersökas.|
 |NAT-regler med portar mellan 64000 och 65535 stöds inte|Azure-brandväggen tillåter alla portar i 1-65535-intervallet i nätverks-och program regler, men NAT-regler stöder bara portar i 1-63999-intervallet.|Detta är en aktuell begränsning.
 |Konfigurations uppdateringar kan ta fem minuter i genomsnitt|En konfigurations uppdatering för Azure Firewall kan ta tre till fem minuter i genomsnitt, och parallella uppdateringar stöds inte.|En korrigering undersökas.|
 |Azure-brandväggen använder SNI TLS-huvuden för att filtrera HTTPS-och MSSQL-trafik|Om webb läsar-eller Server program inte stöder tillägget server namns indikator (SNI) kan du inte ansluta via Azure-brandväggen.|Om webb läsar-eller Server program inte har stöd för SNI kan du kontrol lera anslutningen med en nätverks regel i stället för en program regel. Se [servernamnindikator](https://wikipedia.org/wiki/Server_Name_Indication) för program vara som stöder SNI.|
 |Anpassad DNS fungerar inte med Tvingad tunnel trafik|Om Tvingad tunnel trafik är aktive rad fungerar inte anpassad DNS.|En korrigering undersökas.|
 |Starta/stoppa fungerar inte med en brand vägg som kon figurer ATS i Tvingad tunnel läge|Starta/stoppa fungerar inte med Azure-brandväggen konfigurerad i Tvingad tunnel läge. Försök att starta Azure-brandväggen med Tvingad tunnel trafik har kon figurer ATS i följande fel:<br><br>*Set-AzFirewall: AzureFirewall VB-XX Management IP-konfiguration kan inte läggas till i en befintlig brand vägg. Distribuera om med en hanterings-IP-konfiguration om du vill använda Tvingad tunnel trafik. <br> StatusCode: 400 <br> ReasonPhrase: felaktig begäran*|Under undersökning.<br><br>Som en lösning kan du ta bort den befintliga brand väggen och skapa en ny med samma parametrar.|
-|Det går inte att lägga till brand Väggs princip Taggar med portalen|Azure Firewall-principen har en begränsning för korrigerings stöd som förhindrar att du lägger till en tagg med hjälp av Azure Portal. Följande fel genereras: *Det gick inte att spara taggarna för resursen*.|En korrigering undersökas. Du kan också använda Azure PowerShell-cmdlet `Set-AzFirewallPolicy` : en för att uppdatera taggar.|
+|Det går inte att lägga till brand Väggs princip Taggar med portalen|Azure Firewall-principen har en begränsning för korrigerings stöd som förhindrar att du lägger till en tagg med hjälp av Azure Portal. Följande fel genereras: *Det gick inte att spara taggarna för resursen*.|En korrigering undersökas. Du kan också använda Azure PowerShell-cmdlet: en `Set-AzFirewallPolicy` för att uppdatera taggar.|
 |IPv6 stöds ännu inte|Om du lägger till en IPv6-adress i en regel, Miss lyckas brand väggen.|Använd endast IPv4-adresser. IPv6-stöd är under undersökning.|
 
 

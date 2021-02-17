@@ -1,14 +1,14 @@
 ---
 title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 02/03/2021
+ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626316"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558505"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -32,6 +32,30 @@ Azure Connected Machine agent-paketet innehåller flera logiska komponenter, som
     * Tilldelningar tas bort efter 14 dagar och omtilldelas inte till datorn efter 14-dagars perioden.
 
 * Tilläggs agenten hanterar VM-tillägg, inklusive installation, avinstallation och uppgradering. Tillägg laddas ned från Azure och kopieras till `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` mappen i Windows och för Linux till `/opt/GC_Ext/downloads` . I Windows installeras tillägget på följande sökväg `%SystemDrive%\Packages\Plugins\<extension>` och i Linux installeras tillägget på `/var/lib/waagent/<extension>` .
+
+## <a name="instance-metadata"></a>Metadata för instans
+
+Metadatainformation om den anslutna datorn samlas in efter att den anslutna dator agenten registreras med ARC-aktiverade servrar. Specifikt:
+
+* Namn, typ och version för operativ system
+* Datornamn
+* Fullständigt kvalificerat domän namn (FQDN)
+* Version av ansluten dator agent
+* Active Directory och fullständigt DNS-kvalificerat domän namn (FQDN)
+* UUID (BIOS-ID)
+* Dator agentens pulsslag har anslutits
+* Version av ansluten dator agent
+* Offentlig nyckel för hanterad identitet
+* Status och information om efterlevnadsprinciper (om du använder Azure Policy principer för gäst konfiguration)
+
+Följande metadatainformation krävs av agenten från Azure:
+
+* Resurs plats (region)
+* ID för virtuell dator
+* Taggar
+* Azure Active Directory hanterat identitets certifikat
+* Princip tilldelningar för gäst konfiguration
+* Tilläggs begär Anden – installera, uppdatera och ta bort.
 
 ## <a name="download-agents"></a>Ladda ned agenter
 

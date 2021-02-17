@@ -7,19 +7,19 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 13eb84e91e1809012a2ae1ad01397b20cb322f16
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: d983369db3fbd03c41c248439a5c1aabec14ea55
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104458"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535373"
 ---
 # <a name="defender-for-iot-glossary"></a>Defender för IoT-ordlista
 
 Den här ord listan innehåller en kort beskrivning av viktiga termer och begrepp för Azure Defender för IoT-plattformen. Välj länken **Läs mer** om du vill gå till närliggande termer i ord listan. Detta hjälper dig att snabbt lära dig och använda produkt verktyg.
 
 > [!Note]
-> Varje term med en `(AL)` listad i namnet, är en agent-baserad Device Builder-term. 
+> Varje term med en `(DB)` listad i namnet, är en agent-baserad Device Builder-term. 
 
 <a name="glossary-a"></a>
 
@@ -61,7 +61,7 @@ Den här ord listan innehåller en kort beskrivning av viktiga termer och begrep
 | **Enhets inventering-sensor** | Enhets inventeringen visar ett stort antal enhets attribut som identifieras av Defender för IoT. Alternativen är tillgängliga för att:<br /><br />– Filtrera visad information.<br /><br />– Exportera den här informationen till en CSV-fil.<br /><br />– Importera information om Windows-registret. | **[Group](#g)** <br /><br />**[Enhets inventering – lokal hanterings konsol](#d)** |
 | **Enhets inventering – lokal hanterings konsol** | Enhets information från anslutna sensorer kan visas från den lokala hanterings konsolen i enhets inventeringen. Detta ger användare av den lokala hanterings konsolen en omfattande vy över all nätverksinformation. | **[Enhets inventering-sensor](#d) <br /> <br /> [Enhets inventering-Data Integrator](#d)** |
 | **Enhets inventering-Data Integrator** | Med data integrerings funktionerna i den lokala hanterings konsolen kan du förbättra data i enhets inventeringen med information från andra företags resurser. Exempel på resurser är CMDBs, DNS, brand väggar och webb-API: er. | **[Enhets inventering – lokal hanterings konsol](#d)** |
-| **Enhets dubbla**`(AL)` | Enhets dubbla är JSON-dokument som lagrar information om enhets tillstånd, inklusive metadata, konfigurationer och villkor. | [Modul, delad](#m) <br /> <br />[Säkerhetsmodul, dubbel](#s) |
+| **Enhets dubbla**`(DB)` | Enhets dubbla är JSON-dokument som lagrar information om enhets tillstånd, inklusive metadata, konfigurationer och villkor. | [Modul, delad](#m) <br /> <br />[Säkerhetsmodul, dubbel](#s) |
 
 ## <a name="e"></a>E
 
@@ -94,7 +94,7 @@ Den här ord listan innehåller en kort beskrivning av viktiga termer och begrep
 
 | Period | Beskrivning | Läs mer |
 |--|--|--|
-| **IoT Hub** `(AL)` | Hanterad tjänst, som finns i molnet, som fungerar som en central meddelande hubb för dubbelriktad kommunikation mellan IoT-programmet och de enheter som hanteras av.  |   |
+| **IoT Hub** `(DB)` | Hanterad tjänst, som finns i molnet, som fungerar som en central meddelande hubb för dubbelriktad kommunikation mellan IoT-programmet och de enheter som hanteras av.  |   |
 | **Integreringar** | Expandera Defender för IoT-funktioner genom att dela enhets information med partner system. Organisationer kan överbrygga tidigare silod säkerhet, NAC, incident hantering och enhets hanterings lösningar för att påskynda systemomfattande svar och snabbare minska riskerna. | **[Vidarebefordrings regel](#f)** |
 | **Internt undernät** | Under näts konfigurationerna som definieras av Defender för IoT. I vissa fall, till exempel miljöer som använder offentliga intervall som interna intervall, kan du instruera Defender för IoT att lösa alla undernät som interna undernät. Undernät visas i kartan och i olika Defender för IoT-rapporter. | **[Undernät](#s)** |
 
@@ -108,10 +108,11 @@ Den här ord listan innehåller en kort beskrivning av viktiga termer och begrep
 
 ## <a name="m"></a>M
 
+
 | Period | Beskrivning | Läs mer |
 |--|--|--|
-| **Micro agent**`(AL)` | Tillhandahåller funktioner för djup säkerhet för IoT-enheter, inklusive säkerhet position och hot identifiering.  |    |
-| **Modul, delad**`(AL)` | Modultvillingar är JSON-dokument som lagrar information om modultillstånd, som metadata, konfigurationer och villkor. | [Enhetstvilling](#d) <br /> <br />[Säkerhetsmodul, dubbel](#s) |
+| **Micro agent**`(DB)` | Tillhandahåller funktioner för djup säkerhet för IoT-enheter, inklusive säkerhet position och hot identifiering. | |
+| **Modul, delad**`(DB)` | Modultvillingar är JSON-dokument som lagrar information om modultillstånd, som metadata, konfigurationer och villkor. | [Enhetstvilling](#d) <br /> <br />[Säkerhetsmodul, dubbel](#s) |
 | **Inaktivera varnings händelse** | Instruera Defender for IoT att kontinuerligt ignorera aktivitet med identiska enheter och jämförbar trafik. | **[](#glossary-a) <br /> Avisering <br /> [Exkluderings regel](#e) <br /> <br /> [Bekräfta aviserings händelse](#glossary-a) <br /> <br /> [Lär dig aviserings händelse](#l)** |
 
 ## <a name="n"></a>N
@@ -147,7 +148,7 @@ Den här ord listan innehåller en kort beskrivning av viktiga termer och begrep
 | Period | Beskrivning | Läs mer |
 |--|--|--|
 | **Säkerhets avisering** | Aviseringar som hanterar säkerhets problem, till exempel överdriven SMB-inloggnings försök eller identifieringar av skadlig kod. | **[](#glossary-a) <br /> Avisering <br /> [Drift avisering](#o)** |
-| **Säkerhetsmodul, dubbel**`(AL)` | Säkerhetsmodulen är dubbelt innehåller all information som är relevant för enhets säkerhet, för varje enskild enhet i din lösning. | [Enhetstvilling](#d) <br /> <br />[Modul, delad](#m)  |
+| **Säkerhetsmodul, dubbel**`(DB)` | Säkerhetsmodulen är dubbelt innehåller all information som är relevant för enhets säkerhet, för varje enskild enhet i din lösning. | [Enhetstvilling](#d) <br /> <br />[Modul, delad](#m)  |
 | **Selektiv avsökning** | Defender för IoT tar passivt in den och avviker från trafik och identifierar relevant information om enheter, deras attribut, deras beteende och annat. I vissa fall kanske viss information inte syns i passiva nätverks analyser.<br /><br />I så fall kan du använda de säkra, detaljerade sökverktygen i Defender för IoT för att identifiera viktig information om tidigare enheter som inte kan kommas åt. | - |
 | **Mäta** | Den fysiska eller virtuella dator där Defender for IoT-plattformen är installerad. | **[Lokal hanterings konsol](#o)** |
 | **Webbplats** | En plats som en fabrik eller en annan enhet. Platsen ska innehålla en zon eller flera zoner där en sensor är installerad. | **[Zon](#z)** |

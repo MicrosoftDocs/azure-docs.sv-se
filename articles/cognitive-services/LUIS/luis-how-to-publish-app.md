@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180038"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558929"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publicera din aktiva, utbildade app till en mellanlagrings-eller produktions slut punkt
 
@@ -57,7 +57,6 @@ Till exempel, för en app som skapas på [www.Luis.AI](https://www.luis.ai), om 
 När du har valt plats, konfigurerar du publicerings inställningarna för:
 
 * Attitydanalys
-* [Stavnings korrigering](luis-tutorial-bing-spellcheck.md)
 * Tal Prima
 
 När du har publicerat är de här inställningarna tillgängliga för granskning på sidan hantera **publicerings inställningar** i avsnittet **Hantera** . Du kan ändra inställningarna med varje publicering. Om du avbryter en publicering avbryts även eventuella ändringar som du har gjort under publiceringen.
@@ -79,37 +78,6 @@ Du behöver inte ange en Textanalys nyckel och det finns ingen fakturerings avgi
 Sentiment-data är ett resultat mellan 1 och 0 som anger positiv (närmare 1) eller negativ (närmare 0) sentiment av data. Sentiment-etiketten för `positive` , `neutral` , och `negative` är per kultur som stöds. För närvarande stöder endast engelska sentiment-etiketter.
 
 Mer information om JSON-slutpunktens svar med sentiment-analys finns i [sentiment-analys](luis-reference-prebuilt-sentiment.md)
-
-## <a name="spelling-correction"></a>Stavnings korrigering
-
-V3-förutsägelse API har nu stöd för Bing API för stavnings kontroll. Du kan lägga till stavnings kontroll i programmet genom att inkludera nyckeln till din Bing search-resurs i rubriken för dina begär Anden. Du kan använda en befintlig Bing-resurs om du redan äger en, eller [skapa en ny](https://portal.azure.com/#create/Microsoft.BingSearch) för att använda den här funktionen. 
-
-|Rubrik nyckel|Huvud värde|
-|--|--|
-|`mkt-bing-spell-check-key`|Nycklar hittades i bladet **nycklar och slut punkter** i din resurs|
-
-Exempel på förutsägelse av utdata för en felstavad fråga:
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-Korrigeringar av stavning görs före LUIS User uttryck förutsägelse. Du kan se ändringar i den ursprungliga uttryck, inklusive stavning, i svaret.
 
 ## <a name="speech-priming"></a>Tal Prima
 

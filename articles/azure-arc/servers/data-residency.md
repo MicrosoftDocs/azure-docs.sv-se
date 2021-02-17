@@ -2,14 +2,14 @@
 title: Dataplacering
 description: Data placering och information om Azure Arc-aktiverade servrar.
 ms.topic: reference
-ms.date: 10/08/2020
+ms.date: 02/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: c5ece96acc3ee07ba2896279888363c7d52d737e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4764772473bbf2e5aafe2607a9462c9a6a15203
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559506"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc-aktiverade servrar: data placering
 
@@ -23,10 +23,16 @@ Azure Arc-aktiverade servrar lagrar konfigurations inställningar för [Azure VM
 
 Information om metadata om den anslutna datorn samlas också in. Specifikt:
 
-* Namn och version för operativ system
+* Namn, typ och version för operativ system
 * Datornamn
 * Fullständigt kvalificerat domän namn (FQDN)
 * Version av ansluten dator agent
+* Active Directory och fullständigt DNS-kvalificerat domän namn (FQDN)
+* UUID (BIOS-ID)
+* Dator agentens pulsslag har anslutits
+* Version av ansluten dator agent
+* Offentlig nyckel för hanterad identitet
+* Status och information om efterlevnadsprinciper (om du använder Azure Policy principer för gäst konfiguration)
 
 Med ARC-aktiverade servrar kan du ange den region där dina data ska lagras. Microsoft kan replikeras till andra regioner för data återhämtning, men Microsoft replikerar eller flyttar inte data utanför geografien. Dessa data lagras i den region där Azure Arc-datorns resurs har kon figurer ATS. Om datorn till exempel är registrerad med ARC i regionen USA, östra, lagras dessa data i regionen USA.
 

@@ -2,28 +2,26 @@
 title: Konfigurera autentiseringsuppgifter för distribution
 description: Lär dig vilka typer av autentiseringsuppgifter för distributionen som finns Azure App Service och hur du konfigurerar och använder dem.
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560427"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurera autentiseringsuppgifter för distribution för Azure App Service
-[Azure App Service](./overview.md) stöder två typer av autentiseringsuppgifter för [lokal Git-distribution](deploy-local-git.md) och [FTP/S-distribution](deploy-ftp.md). Autentiseringsuppgifterna är inte desamma som dina autentiseringsuppgifter för Azure-prenumerationen.
+För att skydda program distribution från en lokal dator stöder [Azure App Service](./overview.md) två typer av autentiseringsuppgifter för [lokal Git-distribution](deploy-local-git.md) och [FTP/S-distribution](deploy-ftp.md). Autentiseringsuppgifterna är inte desamma som dina autentiseringsuppgifter för Azure-prenumerationen.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
-## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Konfigurera autentiseringsuppgifter på användar nivå
+## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>Konfigurera autentiseringsuppgifter för användar omfång
 
-Du kan konfigurera dina autentiseringsuppgifter på användar nivå på alla appars [resurs sidor](../azure-resource-manager/management/manage-resources-portal.md#manage-resources). Oavsett vilken app du konfigurerar autentiseringsuppgifterna för, gäller den för alla appar och för alla prenumerationer i ditt Azure-konto. 
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-### <a name="in-the-cloud-shell"></a>I Cloud Shell
-
-Om du vill konfigurera distributions användaren i [Cloud Shell](https://shell.azure.com)kör du kommandot [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Ersätt \<username> och \<password> med ett användar namn och lösen ord för distributions användare. 
+Kör kommandot [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Ersätt \<username> och \<password> med ett användar namn och lösen ord för distributions användare. 
 
 - Användar namnet måste vara unikt inom Azure, och för lokala git-push-meddelanden får inte innehålla symbolen @. 
 - Lösen ordet måste innehålla minst åtta tecken, med två av följande tre element: bokstäver, siffror och symboler. 
@@ -32,21 +30,23 @@ Om du vill konfigurera distributions användaren i [Cloud Shell](https://shell.a
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-JSON-utdata visar lösen ordet som `null` . Om du ser felet `'Conflict'. Details: 409` ska du byta användarnamn. Om du ser felet `'Bad Request'. Details: 400` ska du använda ett starkare lösenord. 
+JSON-utdata visar lösen ordet som `null` .
 
-### <a name="in-the-portal"></a>I portalen
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-I Azure Portal måste du ha minst en app innan du kan komma åt sidan autentiseringsuppgifter för distribution. Så här konfigurerar du dina autentiseringsuppgifter på användar nivå:
+Du kan inte konfigurera autentiseringsuppgifterna för användar området med Azure PowerShell. Använd en annan metod eller Överväg att [använda autentiseringsuppgifter för program-scope](#appscope). 
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  **\<any_app>**  >  **distributions Center**  >  **FTP-**  >  **instrumentpanel** på menyn till vänster.
+# <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
+
+Du kan konfigurera dina autentiseringsuppgifter för användar omfång på alla appars [resurs sidor](../azure-resource-manager/management/manage-resources-portal.md#manage-resources). Oavsett vilken app du konfigurerar autentiseringsuppgifterna för, gäller den för alla appar för alla prenumerationer i ditt Azure-konto. 
+
+I [Azure Portal](https://portal.azure.com)måste du ha minst en app innan du kan komma åt sidan autentiseringsuppgifter för distribution. Så här konfigurerar du dina autentiseringsuppgifter för användar omfång:
+
+1. I appens vänstra meny väljer du > **distributions Center**  >  **FTPS autentiseringsuppgifter** eller **lokala git/FTPS-autentiseringsuppgifter**.
 
     ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Eller, om du redan har konfigurerat Git-distribution väljer du **app Services**  >  **&lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter**.
-
-    ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services för din konfigurerade Git-distribution.](./media/app-service-deployment-credentials/access-with-git.png)
-
-2. Välj **användarautentiseringsuppgifter, konfigurera användar namn** och lösen ord och välj sedan **Spara autentiseringsuppgifter**.
+2. Rulla ned till **användar omfång**, konfigurera **användar namn** och **lösen ord** och välj sedan **Spara**.
 
 När du har angett dina autentiseringsuppgifter för distribution kan du hitta användar namnet för *git* -distributionen på appens **översikts** sida.
 
@@ -55,24 +55,79 @@ När du har angett dina autentiseringsuppgifter för distribution kan du hitta a
 Om Git-distribution har kon figurer ATS visar sidan ett **användar namn för Git/distribution**; annars är ett **FTP-/distributions användar namn**.
 
 > [!NOTE]
-> Azure visar inte lösen ordet för distribution på användar nivå. Om du glömmer bort lösen ordet kan du återställa dina autentiseringsuppgifter genom att följa stegen i det här avsnittet.
+> Azure visar inte lösen ordet för distribution av användar omfång. Om du glömmer bort lösen ordet kan du återställa dina autentiseringsuppgifter genom att följa stegen i det här avsnittet.
 >
 > 
 
-## <a name="use-user-level-credentials-with-ftpftps"></a>Använd autentiseringsuppgifter på användar nivå med FTP/FTPS
+-----
 
-Autentisering till en FTP/FTPS-slutpunkt med autentiseringsuppgifter på användar nivå kräver ett användar namn i följande format: `<app-name>\<user-name>`
+## <a name="use-user-scope-credentials-with-ftpftps"></a>Använd autentiseringsuppgifter för användar område med FTP/FTPS
 
-Eftersom autentiseringsuppgifter på användar nivå är länkade till användaren och inte en speciell resurs, måste användar namnet vara i det här formatet för att dirigera inloggnings åtgärden till rätt app-slutpunkt.
+Autentisering till en FTP/FTPS-slutpunkt som använder autentiseringsuppgifter för användar omfång kräver ett användar namn i följande format: `<app-name>\<user-name>`
 
-## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Hämta och Återställ autentiseringsuppgifter på program nivå
-Hämta autentiseringsuppgifter för program nivå:
+Eftersom autentiseringsuppgifter för användar omfång är länkade till användaren och inte en speciell resurs, måste användar namnet vara i det här formatet för att dirigera inloggnings åtgärden till rätt app-slutpunkt.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  **&lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter** på menyn till vänster.
+## <a name="get-application-scope-credentials"></a><a name="appscope"></a>Hämta autentiseringsuppgifter för program omfång
 
-2. Välj **autentiseringsuppgifter för appen** och kopiera sedan användar namnet eller lösen ordet genom att välja **Kopiera** länk.
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Om du vill återställa autentiseringsuppgifter för program nivå väljer du **Återställ autentiseringsuppgifter** i samma dialog ruta.
+Hämta programmets autentiseringsuppgifter med hjälp av [AZ webapp Deployment List-Publishing-profils-](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) kommandot. Exempel:
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --resource-group <group-name> --name <app-name>
+```
+
+För [lokal Git-distribution](deploy-local-git.md)kan du också använda [AZ webapp Deployment List-Publishing-credentials](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_credentials) för att hämta en git-fjärruri för din app, med autentiseringsuppgifterna för programomfång redan inbäddad. Exempel:
+
+```azurecli-interactive
+az webapp deployment list-publishing-credentials --resource-group <group-name> --name <app-name> --query scmUri
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Hämta programmets autentiseringsuppgifter med kommandot [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) . Exempel:
+
+```azurepowershell-interactive
+Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
+```
+
+# <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
+
+1. I appens vänstra meny väljer du **distributions Center**  >  **FTPS autentiseringsuppgifter** eller **lokala git/FTPS-autentiseringsuppgifter**.
+
+    ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. I avsnittet **programområde** väljer du **kopierings** länken för att kopiera användar namnet eller lösen ordet.
+
+-----
+
+## <a name="reset-application-scope-credentials"></a>Återställ programautentiseringsuppgifter för program
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+Återställ programmets autentiseringsuppgifter med hjälp av kommandot [AZ Resource Invoke-Action](/cli/azure/resource#az_resource_invoke_action) :
+
+```azurecli-interactive
+az resource invoke-action --action newpassword --resource-group <group-name> --name <app-name> --resource-type Microsoft.Web/sites
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Återställ programmets autentiseringsuppgifter med [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) -kommandot:
+
+```azurepowershell-interactive
+Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action newpassword
+```
+
+# <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
+
+1. I appens vänstra meny väljer du **distributions Center**  >  **FTPS autentiseringsuppgifter** eller **lokala git/FTPS-autentiseringsuppgifter**.
+
+    ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
+
+2. I avsnittet **program omfattning** väljer du **Återställ**.
+
+-----
 
 ## <a name="disable-basic-authentication"></a>Inaktivera grundläggande autentisering
 
@@ -82,7 +137,7 @@ Vissa organisationer behöver uppfylla säkerhets kraven och ska i stället inak
 
 Om du vill inaktivera FTP-åtkomst till platsen kör du följande CLI-kommando. Ersätt plats hållarna med din resurs grupp och plats namn. 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
@@ -92,7 +147,7 @@ För att bekräfta att FTP-åtkomst är blockerad kan du försöka autentisera m
 
 Kör följande CLI-kommando om du vill inaktivera åtkomst till grundläggande autentisering till WebDeploy-porten och SCM-platsen. Ersätt plats hållarna med din resurs grupp och plats namn. 
 
-```bash
+```azurecli-interactive
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 

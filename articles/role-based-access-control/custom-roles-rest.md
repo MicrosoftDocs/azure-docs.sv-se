@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790198"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557517"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Skapa eller uppdatera anpassade Azure-roller med hjälp av REST API
 
@@ -44,7 +44,7 @@ Om du vill visa en lista med alla anpassade roller i en katalog använder du RES
 1. Ersätt *{filter}* med roll typen.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Beskrivning |
+    > | Filtrera | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrera baserat på typen av CustomRole |
 
@@ -71,7 +71,7 @@ Om du vill visa en lista med anpassade roller i ett omfång använder du [roll d
 1. Ersätt *{filter}* med roll typen.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Beskrivning |
+    > | Filtrera | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrera baserat på typen av CustomRole |
 
@@ -98,7 +98,7 @@ Om du vill hämta information om en anpassad roll med dess visnings namn använd
 1. Ersätt *{filter}* med rollens visnings namn.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Beskrivning |
+    > | Filtrera | Description |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Använd URL-kodad form med det exakta visnings namnet för rollen. Till exempel, `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
@@ -341,5 +341,5 @@ Om du vill ta bort en anpassad roll använder du [roll definitionerna-ta bort](/
 ## <a name="next-steps"></a>Nästa steg
 
 - [Anpassade roller i Azure](custom-roles.md)
-- [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av REST API](role-assignments-rest.md)
+- [Tilldela Azure-roller med hjälp av REST API](role-assignments-rest.md)
 - [Azure REST API-referens](/rest/api/azure/)

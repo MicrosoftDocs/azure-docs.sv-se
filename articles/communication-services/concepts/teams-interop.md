@@ -9,38 +9,41 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 894f8b17c3c5e9e3147b66854a5809bf82351fb9
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 34d2a18d2e556b7eb9916d058c4d80fe0956ba55
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012411"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554741"
 ---
 # <a name="teams-interoperability"></a>Samverkan mellan team
 
 [!INCLUDE [Private Preview Notice](../includes/private-preview-include.md)]
 
-Azure Communication Services kan användas för att bygga anpassade Mötes upplevelser som interagerar med Microsoft Teams. Användare av kommunikations tjänst lösningen (er) kan interagera med team deltagare via röst-, video-och skärm delning.
+Azure Communication Services kan användas för att bygga anpassade Mötes upplevelser som interagerar med Microsoft Teams. Användare av kommunikations tjänst lösningen (er) kan interagera med team deltagare via röst-, video-, Chat-och skärm delning.
 
-Med den här samverkan kan du skapa anpassade Azure-program som ansluter användare till Team-möten. Användare av anpassade program behöver inte ha Azure Active Directory identiteter eller team licenser för att uppleva den här funktionen. Detta är perfekt för att föra medarbetare (som kanske är bekanta med grupper) och externa användare (med hjälp av en anpassad program upplevelse) i en sömlös Mötes upplevelse. På så sätt kan du bygga upplevelser som liknar följande:
+Med team samverkan kan du skapa anpassade program som ansluter användare till Team-möten. Användare av anpassade program behöver inte ha Azure Active Directory identiteter eller team licenser för att uppleva den här funktionen. Detta är perfekt för att föra medarbetare (som kanske är bekanta med grupper) och externa användare (med hjälp av en anpassad program upplevelse) i en sömlös Mötes upplevelse. Exempel:
 
-1. Anställda använder team för att schemalägga ett möte
-2. Ditt anpassade kommunikations tjänst program använder Microsoft Graph-API: er för att få åtkomst till Mötes information
-3. Mötes information delas med externa användare via ditt anpassade program
-4. Externa användare använder ditt anpassade program för att ansluta till Team-mötet (via kommunikations tjänsterna som anropar klient biblioteket)
+1. Anställda använder team för att schemalägga ett möte 
+1. Mötes information delas med externa användare via ditt anpassade program.
+   * **Använda Graph API** Ditt program för anpassade kommunikations tjänster använder Microsoft Graph-API: er för att komma åt Mötes information som ska delas. 
+   * **Använda andra alternativ** Till exempel kan din Mötes länk kopieras från din kalender i Microsoft Teams.
+1. Externa användare använder ditt anpassade program för att ansluta till Team-mötet (via kommunikations tjänsterna som anropar och chattar klient bibliotek)
 
 Hög nivå arkitekturen för det här användnings fallet ser ut så här: 
 
 ![Arkitektur för lag/interop](./media/call-flows/teams-interop.png)
 
-Även om vissa Teams Mötes funktioner, till exempel upphöjt, interaktivt läge, och grupp-rummen bara är tillgängliga för team användare, kommer ditt anpassade program ha åtkomst till programmets kärn funktioner för ljud-, video-och skärm delning.
+Även om vissa Teams Mötes funktioner, till exempel upphöjt, interaktivt läge, och grupp-rummen bara är tillgängliga för team användare, kommer ditt anpassade program ha åtkomst till programmets kärn funktioner för ljud, video, chatt och skärm delning.
 
-När en kommunikations tjänst användare ansluter till Teams mötet, visas det visnings namn som angavs via det anropande klient biblioteket för team användare. Kommunikation Services-användaren behandlas annars som en anonym användare i team. Ditt anpassade program bör överväga användarautentisering och andra säkerhets åtgärder för att skydda team möten. Var mindful av säkerheten för att göra det möjligt för anonyma användare att ansluta till möten och använda [teamets säkerhets guide](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) för att konfigurera funktioner som är tillgängliga för anonyma användare.
+När en kommunikations tjänst användare ansluter till Teams mötet, visas det visnings namn som angavs via det anropande klient biblioteket för team användare. Kommunikation Services-användaren behandlas annars som en anonym användare i team.  Ditt anpassade program bör överväga användarautentisering och andra säkerhets åtgärder för att skydda team möten. Var mindful av säkerheten för att göra det möjligt för anonyma användare att ansluta till möten och använda [teamets säkerhets guide](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) för att konfigurera funktioner som är tillgängliga för anonyma användare.
+
+Service Teams lag för kommunikations tjänster är för närvarande i privat för hands version. När det är allmänt tillgängligt behandlas kommunikations tjänst användare som "externa åtkomst användare". Lär dig mer om extern åtkomst i [samtal, chatta och samar beta med personer utanför organisationen i Microsoft Teams](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations).
 
 Kommunikations tjänst användare kan ansluta till schemalagda team möten så länge anonyma kopplingar är aktiverade i [Mötes inställningarna](/microsoftteams/meeting-settings-in-teams).
 
 ## <a name="teams-in-government-clouds-gcc"></a>Team i offentliga moln (GCC)
-Samverkan med Azure Communication Services tillåts inte för team distributioner med hjälp av [Microsoft 365 myndigheter (GCC)](/MicrosoftTeams/plan-for-government-gcc) för tillfället. 
+Samverkan med Azure Communication Services är inte kompatibelt med team distributioner med hjälp av [Microsoft 365 offentliga moln (GCC)](/MicrosoftTeams/plan-for-government-gcc) för tillfället. 
 
 ## <a name="next-steps"></a>Nästa steg
 

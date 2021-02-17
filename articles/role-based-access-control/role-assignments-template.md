@@ -1,25 +1,29 @@
 ---
-title: Lägg till Azure-roll tilldelningar med hjälp av Azure Resource Manager mallar – Azure RBAC
+title: Tilldela Azure-roller med hjälp av Azure Resource Manager mallar – Azure RBAC
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvud namn eller hanterade identiteter med hjälp av Azure Resource Manager mallar och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 023aa086cdafc3ab1459c2f748b2181575c14191
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675344"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556016"
 ---
-# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Lägg till Azure-roll tilldelningar med Azure Resource Manager mallar
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Tilldela Azure-roller med hjälp av Azure Resource Manager mallar
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Förutom att använda Azure PowerShell eller Azure CLI kan du tilldela roller med [Azure Resource Manager-mallar](../azure-resource-manager/templates/template-syntax.md). Mallar kan vara användbara om du behöver distribuera resurser konsekvent och upprepade gånger. I den här artikeln beskrivs hur du tilldelar roller med hjälp av mallar.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="get-object-ids"></a>Hämta objekt-ID: n
 
@@ -37,7 +41,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Grupp
+### <a name="group"></a>Group
 
 Om du vill hämta ID för en grupp kan du använda kommandona [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) eller [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
 
@@ -73,13 +77,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Lägg till en rolltilldelning
+## <a name="assign-an-azure-role"></a>Tilldela en Azure-roll
 
-I Azure RBAC för att bevilja åtkomst lägger du till en roll tilldelning.
+I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll.
 
 ### <a name="resource-group-scope-without-parameters"></a>Resurs grupps omfång (utan parametrar)
 
-Följande mall visar ett enkelt sätt att lägga till en roll tilldelning. Vissa värden anges i mallen. Följande mall visar:
+Följande mall visar ett enkelt sätt att tilldela en roll. Vissa värden anges i mallen. Följande mall visar:
 
 -  Tilldela rollen [läsare](built-in-roles.md#reader) till en användare, grupp eller ett program i ett resurs grupps omfång
 
@@ -206,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>Resursomfång
 
-Om du behöver lägga till en roll tilldelning på nivån för en resurs anger du `scope` egenskapen för roll tilldelningen till namnet på resursen.
+Om du behöver tilldela en roll på nivån för en resurs anger du `scope` egenskapen för roll tilldelningen till namnet på resursen.
 
 Följande mall visar:
 
@@ -369,15 +373,6 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 Följande visar ett exempel på roll tilldelningen deltagare till ett nytt hanterat identitets tjänst huvud objekt när du har distribuerat mallen.
 
 ![Roll tilldelning för en ny hanterad identitets tjänstens huvud namn](./media/role-assignments-template/role-assignment-template-msi.png)
-
-## <a name="remove-a-role-assignment"></a>Ta bort en rolltilldelning
-
-Ta bort roll tilldelningen i Azure RBAC för att ta bort åtkomst till en Azure-resurs. Det finns inget sätt att ta bort en roll tilldelning med hjälp av en mall. Om du vill ta bort en roll tilldelning måste du använda andra verktyg som till exempel:
-
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
-- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
-- [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nästa steg
 

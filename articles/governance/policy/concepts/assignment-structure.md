@@ -3,12 +3,12 @@ title: Information om princip tilldelnings strukturen
 description: Beskriver den princip tilldelnings definition som används av Azure Policy för att relatera princip definitioner och parametrar till resurser för utvärdering.
 ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1151c931863e1139b76c34ced12c4e2842f83cc6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219574"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558455"
 ---
 # <a name="azure-policy-assignment-structure"></a>Tilldelningsstruktur i Azure Policy
 
@@ -70,7 +70,7 @@ Den här egenskapen har följande värden:
 |Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Description |
 |-|-|-|-|-|-|
 |Enabled |Standardvärde |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
-|Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
+|Inaktiverad |DoNotEnforce |sträng |Ja |Nej | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
 
 Om **enforcementMode** inte anges i en princip eller initiativ definition används värdet _default_ . [Reparations uppgifter](../how-to/remediate-resources.md) kan startas för [deployIfNotExists](./effects.md#deployifnotexists) -principer, även när **enforcementMode** har angetts till _DoNotEnforce_.
 
@@ -98,7 +98,7 @@ Ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel
 ]
 ```
 
-Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för varje princip definition i initiativet. Meddelandena använder det `policyDefinitionReferenceId` värde som kon figurer ATS i initiativ definitionen. Mer information finns i [Egenskaper för egenskaps definitioner](./initiative-definition-structure.md#policy-definition-properties).
+Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för varje princip definition i initiativet. Meddelandena använder det `policyDefinitionReferenceId` värde som kon figurer ATS i initiativ definitionen. Mer information finns i [Egenskaper för princip definitioner](./initiative-definition-structure.md#policy-definition-properties).
 
 ```json
 "nonComplianceMessages": [

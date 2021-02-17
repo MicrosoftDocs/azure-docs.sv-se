@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184271"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555892"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Felsöka Azure RBAC
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problem med Azure Role-tilldelningar
 
-- Om du inte kan lägga till en roll tilldelning i Azure Portal på **åtkomst kontroll (IAM)** eftersom alternativet **Lägg** till  >  **roll tilldelning** är inaktiverat eller om du får behörighets felet "klienten med objekt-ID har inte behörighet att utföra åtgärden", kontrol lera att du är inloggad med en användare som har `Microsoft.Authorization/roleAssignments/write` behörighet som [ägare](built-in-roles.md#owner) eller [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) i den omfattning som du försöker tilldela rollen.
+- Om du inte kan tilldela en roll i Azure Portal på **åtkomst kontroll (IAM)** eftersom alternativet Lägg till   >  **roll tilldelning för tilldelning** är inaktiverat eller om du får behörighets felet "klienten med objekt-ID har inte behörighet att utföra åtgärden", kontrol lera att du är inloggad med en användare som har `Microsoft.Authorization/roleAssignments/write` behörighet som [ägare](built-in-roles.md#owner) eller [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) i den omfattning som du försöker tilldela rollen.
 - Om du använder ett huvud namn för tjänsten för att tilldela roller kan du få fel meddelandet "otillräcklig behörighet för att slutföra åtgärden". Anta till exempel att du har ett huvud namn för tjänsten som har tilldelats ägar rollen och du försöker skapa följande roll tilldelning som tjänstens huvud namn med Azure CLI:
 
     ```azurecli
@@ -63,7 +63,7 @@ $ras.Count
 
     Det finns två sätt att eventuellt lösa det här felet. Det första sättet är att tilldela [katalog läsar](../active-directory/roles/permissions-reference.md#directory-readers) rollen till tjänstens huvud namn, så att den kan läsa data i katalogen.
 
-    Det andra sättet att lösa det här felet är att skapa roll tilldelningen med hjälp av- `--assignee-object-id` parametern i stället för `--assignee` . Genom `--assignee-object-id` att använda, hoppar Azure CLI över Azure AD-sökningen. Du måste hämta objekt-ID: t för den användare, grupp eller det program som du vill tilldela rollen till. Mer information finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
+    Det andra sättet att lösa det här felet är att skapa roll tilldelningen med hjälp av- `--assignee-object-id` parametern i stället för `--assignee` . Genom `--assignee-object-id` att använda, hoppar Azure CLI över Azure AD-sökningen. Du måste hämta objekt-ID: t för den användare, grupp eller det program som du vill tilldela rollen till. Mer information finns i [tilldela Azure-roller med Azure CLI](role-assignments-cli.md#assign-a-role-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -151,7 +151,7 @@ På samma sätt kan det hända att du ser en tom lista om du anger den här roll
 }
 ```
 
-Det är inte ett problem att lämna roll tilldelningarna där säkerhets objekt har tagits bort. Om du vill kan du ta bort roll tilldelningarna med hjälp av steg som liknar andra roll tilldelningar. Information om hur du tar bort roll tilldelningar finns i [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)eller [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+Det är inte ett problem att lämna roll tilldelningarna där säkerhets objekt har tagits bort. Om du vill kan du ta bort roll tilldelningarna med hjälp av steg som liknar andra roll tilldelningar. Information om hur du tar bort roll tilldelningar finns i [ta bort roll tilldelningar i Azure](role-assignments-remove.md).
 
 Om du försöker ta bort roll tilldelningarna med objekt-ID: t och roll definitions namnet i PowerShell och fler än en roll tilldelning matchar dina parametrar visas följande fel meddelande: "den angivna informationen mappas inte till en roll tilldelning". Följande utdata visar ett exempel på fel meddelandet:
 
@@ -174,7 +174,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 ## <a name="role-assignment-changes-are-not-being-detected"></a>Roll tilldelnings ändringar identifieras inte
 
-Azure Resource Manager cachelagrar ibland konfigurationer och data för att förbättra prestanda. När du lägger till eller tar bort roll tilldelningar kan det ta upp till 30 minuter innan ändringarna börjar gälla. Om du använder Azure Portal, Azure PowerShell eller Azure CLI kan du framtvinga en uppdatering av roll tilldelnings ändringarna genom att logga ut och logga in. Om du gör roll tilldelnings ändringar med REST API-anrop kan du framtvinga en uppdatering genom att uppdatera åtkomst-token.
+Azure Resource Manager cachelagrar ibland konfigurationer och data för att förbättra prestanda. När du tilldelar roller eller tar bort roll tilldelningar kan det ta upp till 30 minuter innan ändringarna börjar gälla. Om du använder Azure Portal, Azure PowerShell eller Azure CLI kan du framtvinga en uppdatering av roll tilldelnings ändringarna genom att logga ut och logga in. Om du gör roll tilldelnings ändringar med REST API-anrop kan du framtvinga en uppdatering genom att uppdatera åtkomst-token.
 
 Om du lägger till eller tar bort en roll tilldelning i hanterings gruppens omfång och rollen har `DataActions` , kanske inte åtkomsten till data planet uppdateras under flera timmar. Detta gäller endast för hanterings gruppens omfattning och data planet.
 
@@ -249,5 +249,5 @@ En läsare kan klicka på fliken **plattforms funktioner** och sedan klicka på 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Felsöka för gäst användare](role-assignments-external-users.md#troubleshoot)
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md)
 - [Visa aktivitets loggar för Azure RBAC-ändringar](change-history-report.md)

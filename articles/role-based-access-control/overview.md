@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559335"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?
 
@@ -38,7 +38,7 @@ Här följer några exempel på vad du kan göra med Azure RBAC:
 
 ## <a name="how-azure-rbac-works"></a>Så här fungerar Azure RBAC
 
-Hur du styr åtkomsten till resurser med hjälp av Azure RBAC är att skapa roll tilldelningar. Det här är ett viktigt begrepp att förstå – det är hur behörigheter tillämpas. En rolltilldelning består av tre delar: säkerhetsobjekt, rolldefinition och omfång.
+Hur du styr åtkomsten till resurser med hjälp av Azure RBAC är att tilldela Azure-roller. Det här är ett viktigt begrepp att förstå – det är hur behörigheter tillämpas. En rolltilldelning består av tre delar: säkerhetsobjekt, rolldefinition och omfång.
 
 ### <a name="security-principal"></a>Säkerhetsobjekt
 
@@ -80,9 +80,9 @@ Följande diagram visar ett exempel på en rolltilldelning. I det här exemplet 
 
 ![Rolltilldelning för att kontrollera åtkomst](./media/overview/rbac-overview.png)
 
-Du kan skapa rolltilldelningar med hjälp av Azure-portalen, Azure CLI, Azure PowerShell, Azure-SDK:er eller REST-API:er.
+Du kan tilldela roller med hjälp av Azure Portal, Azure CLI, Azure PowerShell, Azure SDK: er eller REST-API: er.
 
-Mer information finns i [steg för att lägga till en roll tilldelning](role-assignments-steps.md).
+Mer information finns i [steg för att tilldela en Azure-roll](role-assignments-steps.md).
 
 ## <a name="multiple-role-assignments"></a>Flera rolltilldelningar
 
@@ -122,6 +122,6 @@ Följande är de övergripande steg som Azure RBAC använder för att avgöra om
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md)
 - [Förstå de olika rollerna](rbac-and-directory-admin-roles.md)
 - [Ramverk för moln införande: resurs åtkomst hantering i Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

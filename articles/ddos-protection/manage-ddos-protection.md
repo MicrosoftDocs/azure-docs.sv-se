@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819851"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535249"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard
 
@@ -88,6 +88,11 @@ Börja med att kontrol lera informationen om din DDoS-skydds plan:
 3. Välj din DDoS-skydds plan från listan.
 
 Det virtuella _MyVnet_ -nätverket ska visas. 
+
+### <a name="view-protected-resources"></a>Visa skyddade resurser
+Under **skyddade resurser** kan du Visa dina skyddade virtuella nätverk och offentliga IP-adresser eller lägga till fler virtuella nätverk i DDoS-skydds planen:
+
+![Visa skyddade resurser](./media/manage-ddos-protection/ddos-protected-resources.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -8,10 +8,12 @@
       href: whats-new.md
 - name: Snabbstarter
   items:
-    - name: Skapa och fråga kunskaps bas på QnA Maker Portal
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: Skapa och fråga kunskaps bas med hjälp av klient bibliotek eller REST API
-      href: Quickstarts/quickstart-sdk.md
+    - name: Skapa och fråga kunskaps databas
+      items:
+        - name: QnA Maker-portalen
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: Klient bibliotek eller REST API
+          href: Quickstarts/quickstart-sdk.md
     - name: 'Fråga en kunskaps bas med REST API: er'
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: Självstudier

@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e2bf4e451ebc3c9ebba2c01dae6703fc79aa606
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d1a0bf437df6bc0b68474e092ca23985493b24
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324139"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559598"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Ändra e-postavisering om Smart identifiering
 
@@ -19,7 +19,7 @@ Baserat på kundfeedback, den 1 april 2019, ändrar vi standard rollerna som tar
 
 ## <a name="what-is-changing"></a>Vad ändras?
 
-För närvarande skickas e-postaviseringar för smart identifiering som standard till rollerna _prenumerations ägare_, _prenumerations deltagare_och _prenumerations läsare_ . Dessa roller omfattar ofta användare som inte är aktivt inblandad i övervakning, vilket gör att många av dessa användare kan ta emot meddelanden i onödan. För att förbättra den här upplevelsen gör vi en ändring så att e-postaviseringar endast går till rollerna [övervaknings läsare](../../role-based-access-control/built-in-roles.md#monitoring-reader) och [övervakning deltagare](../../role-based-access-control/built-in-roles.md#monitoring-contributor) som standard.
+För närvarande skickas e-postaviseringar för smart identifiering som standard till rollerna _prenumerations ägare_, _prenumerations deltagare_ och _prenumerations läsare_ . Dessa roller omfattar ofta användare som inte är aktivt inblandad i övervakning, vilket gör att många av dessa användare kan ta emot meddelanden i onödan. För att förbättra den här upplevelsen gör vi en ändring så att e-postaviseringar endast går till rollerna [övervaknings läsare](../../role-based-access-control/built-in-roles.md#monitoring-reader) och [övervakning deltagare](../../role-based-access-control/built-in-roles.md#monitoring-contributor) som standard.
 
 ## <a name="scope-of-this-change"></a>Omfånget för den här ändringen
 
@@ -33,7 +33,7 @@ Den här ändringen kommer att påverka alla regler för smart identifiering, f�
 
 För att säkerställa att e-postmeddelanden från Smart identifiering skickas till relevanta användare måste användarna tilldelas [övervaknings läsaren](../../role-based-access-control/built-in-roles.md#monitoring-reader) eller [övervaknings deltagar](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rollerna för prenumerationen.
 
-Om du vill tilldela användare till övervaknings läsaren eller övervaknings deltagar roller via Azure Portal följer du stegen som beskrivs i artikeln [Lägg till en roll tilldelning](../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) . Se till att välja _övervaknings läsare_ eller _övervaknings deltagare_ som den roll som användare tilldelas till.
+Om du vill tilldela användare till övervaknings läsaren eller övervaknings deltagar roller via Azure Portal följer du stegen som beskrivs i artikeln [tilldela Azure-roller](../../role-based-access-control/role-assignments-portal.md) . Se till att välja _övervaknings läsare_ eller _övervaknings deltagare_ som den roll som användare tilldelas till.
 
 > [!NOTE]
 > Vissa mottagare av meddelanden om Smart identifiering, som kon figurer ATS med alternativet _ytterligare e-postmottagare_ i regel inställningarna, påverkas inte av den här ändringen. Dessa mottagare fortsätter att ta emot e-postaviseringar.

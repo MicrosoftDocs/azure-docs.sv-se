@@ -7,20 +7,19 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.date: 02/16/2021
+ms.openlocfilehash: 98a516e76d5e4f5c225873b934949759d7fcba8d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573253"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535339"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurera IP-brandvägg för Azure Kognitiv sökning
 
 Azure Kognitiv sökning stöder IP-regler för inkommande brand Väggs stöd. Den här modellen ger ett extra säkerhets lager för din Sök tjänst som liknar de IP-regler som du hittar i en virtuell Azure-nätverks säkerhets grupp. Med dessa IP-regler kan du konfigurera Sök tjänsten så att den bara kan nås från en godkänd uppsättning datorer och/eller moln tjänster. Åtkomst till data som lagras i Sök tjänsten från dessa godkända uppsättningar av datorer och tjänster kräver fortfarande att anroparen visar en giltig autentiseringstoken.
 
-> [!Important]
-> IP-regler på din Azure Kognitiv sökning-tjänst kan konfigureras med hjälp av Azure Portal eller [hanterings REST API version 2020-03-13](/rest/api/searchmanagement/).
+Du kan ange IP-regler i Azure Portal, enligt beskrivningen i den här artikeln. Du kan också använda [hanterings REST API version 2020-03-13](/rest/api/searchmanagement/), [Azure POWERSHELL](/powershell/module/az.search)eller [Azure CLI](/cli/azure/search).
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurera en IP-brandvägg med hjälp av Azure Portal
 

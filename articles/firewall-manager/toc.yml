@@ -10,6 +10,9 @@
     - name: Säker virtuell hubb – ARM-mall
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: Distribuera brand väggen med princip ARM-mall
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: Självstudier
   items:
     - name: Skydda din virtuella hubb – portalen

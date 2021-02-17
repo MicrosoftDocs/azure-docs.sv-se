@@ -1,22 +1,23 @@
 ---
-title: Lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal – Azure RBAC
+title: Tilldela Azure-roller med hjälp av Azure Portal – Azure RBAC
 description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvud namn eller hanterade identiteter med hjälp av Azure Portal och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: active-directory
 author: rolyon
-manager: mtillman
+manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: f1753e7bc50fa9ff2c5512696a37dae7578f23b4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555294"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen
+# <a name="assign-azure-roles-using-the-azure-portal"></a>Tilldela Azure-roller med hjälp av Azure Portal
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] I den här artikeln beskrivs hur du tilldelar roller med hjälp av Azure Portal.
 
@@ -26,11 +27,7 @@ Om du behöver tilldela administratörs roller i Azure Active Directory, se [Vis
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
-## <a name="add-a-role-assignment"></a>Lägg till en rolltilldelning
-
-Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till en Azure-resurs. Följ dessa steg om du vill tilldela en roll. En övergripande översikt över steg finns i [steg för att lägga till en roll tilldelning](role-assignments-steps.md).
-
-### <a name="step-1-identify-the-needed-scope"></a>Steg 1: identifiera omfattningen som krävs
+## <a name="step-1-identify-the-needed-scope"></a>Steg 1: identifiera omfattningen som krävs
 
 [!INCLUDE [Scope for Azure RBAC introduction](../../includes/role-based-access-control/scope-intro.md)]
 
@@ -50,7 +47,7 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
     ![Översikt över resurs grupp](./media/shared/rg-overview.png)
 
-### <a name="step-2-open-the-add-role-assignment-pane"></a>Steg 2: öppna fönstret Lägg till roll tilldelning
+## <a name="step-2-open-the-add-role-assignment-pane"></a>Steg 2: öppna fönstret Lägg till roll tilldelning
 
 **Åtkomst kontroll (IAM)** är den sida som du vanligt vis använder för att tilldela roller för att bevilja åtkomst till Azure-resurser. Det kallas även identitets-och åtkomst hantering (IAM) och visas på flera platser i Azure Portal.
 
@@ -71,7 +68,7 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
    ![Fönsterrutan Lägg till rolltilldelning](./media/shared/add-role-assignment.png)
 
-### <a name="step-3-select-the-appropriate-role"></a>Steg 3: Välj lämplig roll
+## <a name="step-3-select-the-appropriate-role"></a>Steg 3: Välj lämplig roll
 
 1. I listan **roll** söker du efter eller bläddrar för att hitta den roll som du vill tilldela.
 
@@ -81,7 +78,7 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
 1. Klicka för att välja rollen.
 
-### <a name="step-4-select-who-needs-access"></a>Steg 4: Välj vem som behöver åtkomst
+## <a name="step-4-select-who-needs-access"></a>Steg 4: Välj vem som behöver åtkomst
 
 1. I listan **tilldela åtkomst till** väljer du vilken typ av säkerhets objekt som ska tilldelas åtkomst.
 
@@ -101,7 +98,7 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
 1. När du har hittat säkerhets objektets säkerhets objekt klickar du på den.
 
-### <a name="step-5-assign-role"></a>Steg 5: tilldela roll
+## <a name="step-5-assign-role"></a>Steg 5: tilldela roll
 
 1. Om du vill tilldela rollen klickar du på **Spara**.
 
@@ -111,30 +108,8 @@ Du lägger till en roll tilldelning i Azure RBAC för att bevilja åtkomst till 
 
     ![Lägg till roll tilldelning Sparad](./media/role-assignments-portal/rg-role-assignments.png)
 
-## <a name="remove-a-role-assignment"></a>Ta bort en rolltilldelning
-
-I Azure RBAC tar du bort åtkomsten från en Azure-resurs genom att ta bort en roll tilldelning. Följ dessa steg om du vill ta bort en roll tilldelning.
-
-1. Öppna **åtkomst kontroll (IAM)** i ett omfång, till exempel hanterings grupp, prenumeration, resurs grupp eller resurs, där du vill ta bort åtkomsten.
-
-1. Klicka på fliken **roll tilldelningar** för att visa alla roll tilldelningar i det här omfånget.
-
-1. Lägg till en bock intill säkerhetsobjektet med rolltilldelningen som du vil ta bort i listan med rolltilldelningar.
-
-   ![Roll tilldelningen har marker ATS för borttagning](./media/role-assignments-portal/rg-role-assignments-select.png)
-
-1. Klicka på **Ta bort**.
-
-   ![Ta bort rolltilldelningsmeddelande](./media/role-assignments-portal/remove-role-assignment.png)
-
-1. I meddelandet om att ta bort rolltilldelningen klickar du på **Ja**.
-
-    Om du ser ett meddelande om att ärvda roll tilldelningar inte kan tas bort försöker du ta bort en roll tilldelning i ett underordnat omfång. Du bör öppna åtkomst kontroll (IAM) i omfånget där rollen har tilldelats och försöka igen. Ett snabbt sätt att öppna åtkomst kontroll (IAM) i rätt omfång är att titta i kolumnen **omfattning** och klicka på länken bredvid **(ärvd)**.
-
-   ![Ta bort roll tilldelnings meddelande för ärvda roll tilldelningar](./media/role-assignments-portal/remove-role-assignment-inherited.png)
-
 ## <a name="next-steps"></a>Nästa steg
 
 - [Tilldela en användare administratörsbehörighet för en Azure-prenumeration](role-assignments-portal-subscription-admin.md)
-- [Lägg till en roll tilldelning för en hanterad identitet](role-assignments-portal-managed-identity.md)
+- [Ta bort roll tilldelningar i Azure](role-assignments-remove.md)
 - [Felsöka Azure RBAC](troubleshooting.md)

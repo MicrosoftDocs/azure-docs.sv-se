@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805804"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546813"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Anslut till Azure Resource Manager på din Azure Stack Edge Pro-enhet
 
@@ -93,9 +93,9 @@ Om du vill ansluta till Azure Resource Manager måste du skapa eller hämta sign
 
 I test-och utvecklings syfte kan du använda Windows PowerShell för att skapa certifikat i det lokala systemet. Följ dessa rikt linjer när du skapar certifikat för klienten:
 
-1. Du måste först skapa ett rot certifikat för signerings kedjan. Mer information finns i steg för att [skapa signerings kedjans certifikat](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate).
+1. Du måste först skapa ett rot certifikat för signerings kedjan. Mer information finns i steg för att [skapa signerings kedjans certifikat](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate).
 
-2. Du kan sedan skapa slut punkts certifikat för blobben och Azure Resource Manager. Du kan hämta dessa slut punkter från **enhets** sidan i det lokala webb gränssnittet. Se stegen för att [skapa slut punkts certifikat](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates).
+2. Du kan sedan skapa slut punkts certifikat för blobben och Azure Resource Manager. Du kan hämta dessa slut punkter från **enhets** sidan i det lokala webb gränssnittet. Se stegen för att [skapa slut punkts certifikat](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates).
 
 3. För alla dessa certifikat ser du till att ämnes namnet och det alternativa ämnes namnet överensstämmer med följande rikt linjer:
 
@@ -105,26 +105,26 @@ I test-och utvecklings syfte kan du använda Windows PowerShell för att skapa c
     |Blob Storage|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |Flera SAN-certifikat för båda slut punkterna|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-Mer information om certifikat finns i [Hantera certifikat](azure-stack-edge-j-series-manage-certificates.md).
+Mer information om certifikat finns i [Hantera certifikat](azure-stack-edge-gpu-manage-certificates.md).
 
 ### <a name="upload-certificates-on-the-device"></a>Ladda upp certifikat på enheten
 
 De certifikat som du skapade i föregående steg kommer att finnas i det personliga arkivet på klienten. Dessa certifikat måste exporteras till klienten i lämpliga format filer som sedan kan överföras till din enhet.
 
-1. Rot certifikatet måste exporteras som en fil med fil namns tillägget *. cer* . Detaljerade anvisningar finns i [Exportera certifikat som en CER-fil](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format).
+1. Rot certifikatet måste exporteras som en fil med fil namns tillägget *. cer* . Detaljerade anvisningar finns i [Exportera certifikat som en CER-fil](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format).
 
-2. Slut punkts certifikaten måste exporteras som *PFX* -filer med privata nycklar. Detaljerade anvisningar finns i [Exportera certifikat som. pfx-fil med privata nycklar](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
+2. Slut punkts certifikaten måste exporteras som *PFX* -filer med privata nycklar. Detaljerade anvisningar finns i [Exportera certifikat som. pfx-fil med privata nycklar](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-3. Rot-och slut punkts certifikaten laddas sedan upp på enheten med alternativet **+ Lägg till certifikat** på sidan **certifikat** i det lokala webb gränssnittet. Följ stegen i [Ladda upp certifikat](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)för att ladda upp certifikaten.
+3. Rot-och slut punkts certifikaten laddas sedan upp på enheten med alternativet **+ Lägg till certifikat** på sidan **certifikat** i det lokala webb gränssnittet. Följ stegen i [Ladda upp certifikat](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)för att ladda upp certifikaten.
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Importera certifikat på klienten som kör Azure PowerShell
 
 Windows-klienten där du ska anropa Azure Resource Manager API: er måste upprätta förtroende med enheten. Därför måste de certifikat som du skapade i föregående steg importeras på Windows-klienten till lämpligt certifikat arkiv.
 
-1. Rot certifikatet som du exporterade som DER-format med *. cer* -tillägget bör nu importeras till certifikat utfärdare för betrodda rot certifikat i klient systemet. Detaljerade anvisningar finns i [Importera certifikat till arkivet Betrodda rot certifikat utfärdare.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. Rot certifikatet som du exporterade som DER-format med *. cer* -tillägget bör nu importeras till certifikat utfärdare för betrodda rot certifikat i klient systemet. Detaljerade anvisningar finns i [Importera certifikat till arkivet Betrodda rot certifikat utfärdare.](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. Slut punkts certifikaten som du exporterade som *. pfx* måste exporteras som *. cer*. Den här *. cer* -filen importeras sedan i det **personliga** certifikat arkivet på datorn. Detaljerade anvisningar finns i [Importera certifikat till det personliga arkivet](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. Slut punkts certifikaten som du exporterade som *. pfx* måste exporteras som *. cer*. Den här *. cer* -filen importeras sedan i det **personliga** certifikat arkivet på datorn. Detaljerade anvisningar finns i [Importera certifikat till det personliga arkivet](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>Steg 3: installera PowerShell på klienten 
 

@@ -9,106 +9,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ce3f6bd1cf7f5ab30b85cb2273932e1523cd87b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7c53c87f890693998f2533b1e877c27fdbd1e2de
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521806"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Självstudie: Azure Active Directory integrering med en enhetlig
 
-I den här självstudien får du lära dig hur du integrerar UNIFI med Azure Active Directory (AD Azure).
-Integreringen av UNIFI med Azure AD medför följande fördelar:
+I den här självstudien får du lära dig hur du integrerar en ENHETLIGhet med Azure Active Directory (Azure AD). När du integrerar en enhetlig integrering med Azure AD kan du:
 
-* Du kan styra vem som har åtkomst till UNIFI från Azure AD.
-* Du kan konfigurera inställningar så att dina användare automatiskt loggas in i UNIFI (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
-
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+* Kontroll i Azure AD som har till gång till en ENHETLIGhet.
+* Gör det möjligt för användarna att bli inloggade automatiskt för att kunna använda sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att konfigurera Azure AD-integrering med UNIFI behöver du följande:
+För att komma igång behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* En UNIFI-prenumeration med enkel inloggning aktiverat
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* FÖRENAR enkel inloggning (SSO)-prenumeration.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* UNIFI stöder **SP- och IDP**-initierad enkel inloggning
-* UNIFI stöder **automatisk användaretablering**
+* En ENHETLIGhet stöder **SP-och IDP** -initierad SSO.
+* En enhetlig användar etablering har stöd för **Automatisk** användar etablering.
 
-## <a name="adding-unifi-from-the-gallery"></a>Lägga till UNIFI från galleriet
+## <a name="add-unifi-from-the-gallery"></a>Lägg till en enhetlig från galleriet
 
 För att konfigurera integreringen av UNIFI med Azure AD måste du lägga till UNIFI från galleriet i din lista över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till UNIFI från galleriet:**
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
+1. Navigera till **företags program** och välj sedan **alla program**.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
+1. I avsnittet **Lägg till från galleriet** **skriver du** i rutan Sök.
+1. Välj **alternativet för att** skapa en resultat panel och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
+## <a name="configure-and-test-azure-ad-sso-for-unifi"></a>Konfigurera och testa Azure AD SSO för att bli mer enhetlig
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+Konfigurera och testa Azure AD SSO med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i funktionen.
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
+Utför följande steg för att konfigurera och testa Azure AD SSO med hjälp av funktionen:
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
+1. **[Konfigurera](#configure-unifi-sso)** interaktivt läge för enkel inloggning – för att konfigurera inställningar för enkel inloggning på program sidan.
+    1. **[Skapa en enhetlig test användare](#create-unifi-test-user)** – för att få en motsvarighet till B. Simon i en samman koppling som är länkad till Azure AD-representation av användare.
+1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-    ![Knappen Nytt program](common/add-new-app.png)
+Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-4. I sökrutan skriver du **UNIFI**, väljer **UNIFI** från resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
+1. I Azure Portal går du till sidan **för integrering av program integration** och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-     ![UNIFI i resultatlistan](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med UNIFI baserat på en testanvändare med namnet **Britta Simon**.
-För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i UNIFI upprättas.
-
-För att konfigurera och testa enkel inloggning i Azure AD med UNIFI måste du utföra följande uppgifter:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera enkel inloggning för UNIFI](#configure-unifi-single-sign-on)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa UNIFI-testanvändare](#create-unifi-test-user)** – för att skapa en motsvarighet till Britta Simon i UNIFI som är länkad till Azure AD-representationen av användaren.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning i Azure AD med UNIFI:
-
-1. Välj **Enkel inloggning** på sidan för programintegrering av **UNIFI** på [Azure-portalen](https://portal.azure.com/).
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
-
-    ![Information om enkel inloggning med UNIFI-domäner och -URL:er](common/idp-identifier.png)
 
     Skriv webb adressen i text rutan **identifierare** : `INVIEWlabs`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    Skriv en URL i text rutan **inloggnings-URL** :  `https://app.discoverunifi.com/login`
-
-    ![image](common/both-preintegrated-signon.png)
+    I rutan **Inloggnings-URL** anger du följande URL: `https://app.discoverunifi.com/login`
 
 6. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -118,27 +90,45 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med UNIFI
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
-    b. Azure AD-identifierare
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-    c. Utloggnings-URL
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
-### <a name="configure-unifi-single-sign-on"></a>Konfigurera enkel inloggning för UNIFI
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
+
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att ge åtkomst till att gå till varandra.
+
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. Välj **UNIFI** i programlistan.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+
+## <a name="configure-unifi-sso"></a>Konfigurera en enkel inloggning
 
 1. Öppna ett nytt webbläsarfönster och logga in på din **UNIFI**-företagswebbplats som administratör.
 
 2. Klicka på **Användare**.
 
-    ![Skärm bild som visar användare som valts från webbplatsen för att gå vidare.](./media/unifi-tutorial/app1.png)
+    ![Skärm bild som visar användare som valts från webbplatsen för att gå vidare.](./media/unifi-tutorial/app-1.png)
 
 3. Klicka på **Lägg till ny identitetsprovider**.
 
-    ![Skärm bild som visar att AD New Identity Provider har valts.](./media/unifi-tutorial/app2.png)
+    ![Skärm bild som visar att AD New Identity Provider har valts.](./media/unifi-tutorial/app-2.png)
 
 4. Utför följande steg i avsnittet **Lägg till identitetsprovider**:
 
-    ![Skärm bild som visar Lägg till identitets leverantör där du kan ange de värden som beskrivs.](./media/unifi-tutorial/app3.png) 
+    ![Skärm bild som visar Lägg till identitets leverantör där du kan ange de värden som beskrivs.](./media/unifi-tutorial/app-3.png) 
 
     a. Skriv namnet på identitetsprovidern i textrutan **Providernamn**.
 
@@ -148,71 +138,26 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med UNIFI
 
     d. Markera kryssrutan **Är standardprovider**.
 
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
-
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
-
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
-
-I det här avsnittet ska du göra det möjligt för Britta Simon att använda enkel inloggning med Azure genom att ge åtkomst till UNIFI.
-
-1. På Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **UNIFI**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. Välj **UNIFI** i programlistan.
-
-    ![UNIFI-länken i listan med program](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
-
 ### <a name="create-unifi-test-user"></a>Skapa UNIFI-testanvändare
 
 I det här avsnittet ska du skapa en användare med namnet Britta Simon. **UNIFI** har stöd för automatisk användaretablering, vilket betyder att inga manuella steg krävs. Användare skapas automatiskt efter en lyckad autentisering från Azure AD.
 
-### <a name="test-single-sign-on"></a>Testa enkel inloggning
+## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på UNIFI-panelen på åtkomstpanelen bör du automatiskt loggas in i UNIFI-programmet som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till en enhetlig inloggnings-URL där du kan initiera inloggnings flödet.  
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Gå till direkt inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt till den uppslags nivå som du konfigurerade SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen för att anpassa i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du logga in automatiskt på den server som du konfigurerar SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat en genom gång kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594458"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546779"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Självstudie: Konfigurera nätverk för Azure Stack Edge Mini R
 
@@ -50,7 +50,7 @@ Följ dessa steg om du vill konfigurera nätverket för enheten.
 
 2. Om det krävs en uppdatering på noll dagar kan du göra det här genom att konfigurera en dataport med en tråd bunden anslutning. Mer information om hur du konfigurerar en kabelansluten anslutning för den här enheten finns i [enhetens kabel](azure-stack-edge-mini-r-deploy-install.md#cable-the-device). När uppdateringen är klar kan du ta bort den kabelanslutna anslutningen.
 
-3. Skapa certifikat för Wi-Fi och signerings kedja. Både signerings kedjan och Wi-Fi certifikat måste vara DER-format med fil namns tillägget *. cer* . Instruktioner finns i [Skapa certifikat](azure-stack-edge-j-series-manage-certificates.md).
+3. Skapa certifikat för Wi-Fi och signerings kedja. Både signerings kedjan och Wi-Fi certifikat måste vara DER-format med fil namns tillägget *. cer* . Instruktioner finns i [Skapa certifikat](azure-stack-edge-gpu-manage-certificates.md).
 
 4. I det lokala webb gränssnittet går du till **Kom igång**. Välj **certifikat** på **säkerhets** panelen och välj sedan **Konfigurera**. 
 
