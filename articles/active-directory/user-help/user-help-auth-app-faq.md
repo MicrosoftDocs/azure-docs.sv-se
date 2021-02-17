@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226530"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547867"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -94,6 +94,7 @@ S **: det** kan hända att du ser en 30-sekunds uppräknings intervall bredvid d
 ### <a name="device-registration"></a>Enhetsregistrering
 
 **F**: Vad är enhets registrering?
+
 **A**: din organisation kan kräva att du registrerar enheten för att spåra åtkomsten till skyddade resurser, t. ex. filer och appar. De kan också aktivera villkorlig åtkomst för att minska risken för oönskad åtkomst till dessa resurser. Du kan avregistrera enheten i **Inställningar**, men du kan förlora åtkomsten till e-postmeddelanden i Outlook, filer i OneDrive och du förlorar möjligheten att använda telefonin loggning.
 
 ### <a name="verification-codes-when-connected"></a>Verifierings koder vid anslutning

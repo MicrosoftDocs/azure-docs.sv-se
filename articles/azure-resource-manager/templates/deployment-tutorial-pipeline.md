@@ -1,15 +1,15 @@
 ---
 title: Kontinuerlig integrering med Azure Pipelines
 description: Lär dig hur du kontinuerligt skapar, testar och distribuerar Azure Resource Manager mallar (ARM-mallar).
-ms.date: 08/24/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701719"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560907"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Självstudie: kontinuerlig integrering av ARM-mallar med Azure-pipelines
 
@@ -33,7 +33,7 @@ Den här självstudien omfattar följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 
@@ -83,8 +83,8 @@ Mappen _CreateWebApp_ är den mapp där mallen lagras. `pwd`Kommandot visar mapp
 
 I stället för att skapa mallarna kan du hämta mallarna och spara dem i mappen _CreateWebApp_ .
 
-* Huvud mal len: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* Den länkade mallen: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* Huvud mal len: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
+* Den länkade mallen: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
 
 Både mappnamnet och fil namnen används som de är i pipelinen. Om du ändrar namnen måste du uppdatera namnen som används i pipelinen.
 
@@ -105,7 +105,7 @@ _azuredeploy.jspå_ har lagts till i den lokala lagrings platsen. Sedan laddar d
 
     Du kan få en varning om LF. Du kan ignorera varningen. **main** är huvud grenen.  Du skapar vanligt vis en gren för varje uppdatering. För att förenkla självstudien använder du huvud grenen direkt.
 
-1. Bläddra till GitHub-lagringsplatsen från en webbläsare. URL: en är `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Du ser mappen _CreateWebApp_ och de tre filerna i mappen.
+1. Bläddra till GitHub-lagringsplatsen från en webbläsare. URL: en är `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Du ser mappen _CreateWebApp_ och de två filerna i mappen.
 1. Välj _linkedStorageAccount.jspå_ för att öppna mallen.
 1. Välj **RAW** -knappen. URL: en börjar med `https://raw.githubusercontent.com` .
 1. Skapa en kopia av URL:en. Du måste ange det här värdet när du konfigurerar pipelinen senare i självstudien.
@@ -134,7 +134,7 @@ Skapa en tjänst anslutning som används för att distribuera projekt till Azure
 
 1. Välj **projekt inställningar** längst ned på den vänstra menyn.
 1. Välj **tjänst anslutningar** under **pipeliner**.
-1. Välj **ny tjänst anslutning**, Välj **Azure Resource Manager** och välj sedan **Nästa**.
+1. Välj **skapa tjänst anslutning**, Välj **Azure Resource Manager** och välj sedan **Nästa**.
 1. Välj **tjänstens huvud namn** och välj sedan **Nästa**.
 1. Ange följande värden:
 
@@ -155,7 +155,7 @@ Tills nu har du slutfört följande uppgifter.  Om du hoppar över föregående 
 Så här skapar du en pipeline med ett steg för att distribuera en mall:
 
 1. Välj **pipeliner** på den vänstra menyn.
-1. Välj **ny pipeline**.
+1. Välj **skapa pipeline**.
 1. Välj **GitHub** på fliken **Connect** (Anslut). Om du uppmanas anger du dina GitHub-autentiseringsuppgifter och följer sedan anvisningarna. Om du ser följande skärm väljer du **endast Välj databaser** och kontrollerar att lagrings platsen finns i listan innan du väljer **Godkänn & installera**.
 
     ![Azure Resource Manager Azure DevOps Azure-pipeliner Välj bara databaser](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
