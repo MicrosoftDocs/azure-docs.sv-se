@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e898c6401ff9959298e5e435d68b4c4a452c4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186872"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587294"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Övervaknings lösningar i Azure Monitor
 
@@ -29,7 +29,7 @@ Använd List rutorna längst upp på skärmen för att ändra arbets ytan eller 
 
 [![Skärm bild som visar Azure Portal menyn med lösningar som har valts och lösningar som visas i fönstret lösningar.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-Övervaknings lösningar kan innehålla flera typer av Azure-resurser och du kan visa alla resurser som ingår i en lösning precis som andra resurser. Alla logg frågor som ingår i lösningen visas till exempel under **lösnings frågor** i [query Explorer](../log-query/log-analytics-tutorial.md). Du kan använda dessa frågor när du utför ad hoc-analys med [logg frågor](../log-query/log-query-overview.md).
+Övervaknings lösningar kan innehålla flera typer av Azure-resurser och du kan visa alla resurser som ingår i en lösning precis som andra resurser. Alla logg frågor som ingår i lösningen visas till exempel under **lösnings frågor** i [query Explorer](../logs/log-analytics-tutorial.md). Du kan använda dessa frågor när du utför ad hoc-analys med [logg frågor](../logs/log-query-overview.md).
 
 ## <a name="list-installed-monitoring-solutions"></a>Lista installerade övervaknings lösningar
 
@@ -83,7 +83,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-Övervaknings lösningar från Microsoft och partner är tillgängliga från [Azure Marketplace](https://azuremarketplace.microsoft.com). Du kan söka efter tillgängliga lösningar och installera dem på följande sätt. När du installerar en lösning måste du välja en [Log Analytics arbets yta](../platform/manage-access.md) där lösningen ska installeras och var data ska samlas in.
+Övervaknings lösningar från Microsoft och partner är tillgängliga från [Azure Marketplace](https://azuremarketplace.microsoft.com). Du kan söka efter tillgängliga lösningar och installera dem på följande sätt. När du installerar en lösning måste du välja en [Log Analytics arbets yta](../logs/manage-access.md) där lösningen ska installeras och var data ska samlas in.
 
 1. I [listan med lösningar för din prenumeration](#list-installed-monitoring-solutions)klickar du på **Lägg till**.
 1. Bläddra eller Sök efter en lösning. Du kan också bläddra bland lösningar från [den här Sök länken](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions).
@@ -141,7 +141,7 @@ Medlemmar i communityn kan skicka in hanterings lösningar till Azures snabb sta
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Installera en lösning med Azure CLI
 
-När du installerar en lösning måste du välja en [Log Analytics arbets yta](../platform/manage-access.md) där lösningen ska installeras och var data ska samlas in.  Med Azure CLI kan du hantera arbets ytor med hjälp av referens kommandon för [arbets ytan AZ Monitor Log-Analytics](/cli/azure/monitor/log-analytics/workspace) .  Följ processen som beskrivs i [Log Analytics arbets yta och Automation-konto](#log-analytics-workspace-and-automation-account) för att länka en arbets yta och ett konto.
+När du installerar en lösning måste du välja en [Log Analytics arbets yta](../logs/manage-access.md) där lösningen ska installeras och var data ska samlas in.  Med Azure CLI kan du hantera arbets ytor med hjälp av referens kommandon för [arbets ytan AZ Monitor Log-Analytics](/cli/azure/monitor/log-analytics/workspace) .  Följ processen som beskrivs i [Log Analytics arbets yta och Automation-konto](#log-analytics-workspace-and-automation-account) för att länka en arbets yta och ett konto.
 
 Använd [AZ Monitors Log-Analytics-lösning skapa](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) för att installera en övervaknings lösning.  Parametrar i hakparenteser är valfria.
 
@@ -180,7 +180,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
    - Välj knappen **Cloud Shell** på Meny raden i det övre högra hörnet i [Azure Portal](https://portal.azure.com)
 
    > [!IMPORTANT]
-   > Även om **AZ. MonitoringSolutions** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När den här PowerShell-modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av AZ PowerShell-modulen och är tillgängliga som standard i Azure Cloud Shell.
+   > Även om **AZ. MonitoringSolutions** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
    ```azurepowershell-interactive
    Install-Module -Name Az.MonitoringSolutions
@@ -196,7 +196,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ### <a name="install-a-solution-with-azure-powershell"></a>Installera en lösning med Azure PowerShell
 
-När du installerar en lösning måste du välja en [Log Analytics arbets yta](../platform/manage-access.md) där lösningen ska installeras och var data ska samlas in. Med Azure PowerShell hanterar du arbets ytor med hjälp av cmdletarna i PowerShell-modulen [AZ. MonitoringSolutions](/powershell/module/az.monitoringsolutions) . Följ processen som beskrivs i [Log Analytics arbets yta och Automation-konto](#log-analytics-workspace-and-automation-account) för att länka en arbets yta och ett konto.
+När du installerar en lösning måste du välja en [Log Analytics arbets yta](../logs/manage-access.md) där lösningen ska installeras och var data ska samlas in. Med Azure PowerShell hanterar du arbets ytor med hjälp av cmdletarna i PowerShell-modulen [AZ. MonitoringSolutions](/powershell/module/az.monitoringsolutions) . Följ processen som beskrivs i [Log Analytics arbets yta och Automation-konto](#log-analytics-workspace-and-automation-account) för att länka en arbets yta och ett konto.
 
 Använd cmdleten [New-AzMonitorLogAnalyticsSolution](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) för att installera en övervaknings lösning. Parametrar i hakparenteser är valfria.
 
@@ -219,7 +219,7 @@ New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResource
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics arbets yta och Automation-konto
 
-Alla övervaknings lösningar kräver en [Log Analytics arbets yta](../platform/manage-access.md) för att lagra data som samlas in av lösningen och vara värd för loggs ökningar och vyer. Vissa lösningar kräver också ett [Automation-konto](../../automation/automation-security-overview.md) för att innehålla Runbooks och relaterade resurser. Arbets ytan och kontot måste uppfylla följande krav.
+Alla övervaknings lösningar kräver en [Log Analytics arbets yta](../logs/manage-access.md) för att lagra data som samlas in av lösningen och vara värd för loggs ökningar och vyer. Vissa lösningar kräver också ett [Automation-konto](../../automation/automation-security-overview.md) för att innehålla Runbooks och relaterade resurser. Arbets ytan och kontot måste uppfylla följande krav.
 
 * Varje installation av en lösning kan bara använda en Log Analytics arbets yta och ett Automation-konto. Du kan installera lösningen separat i flera arbets ytor.
 * Om en lösning kräver ett Automation-konto måste Log Analytics arbets yta och Automation-konto länkas till varandra. En Log Analytics-arbetsyta kan bara länkas till ett Automation-konto och ett Automation-konto kan bara länkas till en Log Analytics arbets yta.
@@ -264,5 +264,5 @@ Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name W
 ## <a name="next-steps"></a>Nästa steg
 
 * Hämta en [lista över övervaknings lösningar från Microsoft](../monitor-reference.md).
-* Lär dig hur du [skapar frågor](../log-query/log-query-overview.md) för att analysera data som samlas in av övervaknings lösningar.
+* Lär dig hur du [skapar frågor](../logs/log-query-overview.md) för att analysera data som samlas in av övervaknings lösningar.
 * Se alla [Azure CLI-kommandon för Azure Monitor](/cli/azure/azure-cli-reference-for-monitor).

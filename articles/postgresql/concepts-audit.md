@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488052"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596304"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Gransknings loggning i Azure Database for PostgreSQL-enskild server
 
@@ -21,7 +21,7 @@ Gransknings loggning av databas aktiviteter i Azure Database for PostgreSQL – 
 > pgAudit är en för hands version av Azure Database for PostgreSQL.
 > Tillägget kan bara aktive ras på Generell användning och minnesoptimerade servrar.
 
-Om du vill ha Azures resurs nivå loggar för åtgärder som beräkning och lagrings skalning, se [Azure aktivitets logg](../azure-monitor/platform/platform-logs-overview.md).
+Om du vill ha Azures resurs nivå loggar för åtgärder som beräkning och lagrings skalning, se [Azure aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Användnings överväganden
 Som standard genereras pgAudit-logginstruktioner tillsammans med dina vanliga logginstruktioner med hjälp av standardfunktionen för loggning i Postgres. I Azure Database for PostgreSQL kan dessa .log-filer laddas ned via Azure-portalen eller CLI. Det maximala lagrings utrymmet för samling av filer är 1 GB och varje fil är tillgänglig i högst sju dagar (Standardvärdet är tre dagar). Den här tjänsten är ett alternativ för kortsiktig lagring.
@@ -42,7 +42,7 @@ Om du vill installera pgAudit måste du ta med den i serverns delade preload-bib
 Använda [Azure Portal](https://portal.azure.com):
 
    1. Välj din Azure Database for PostgreSQL-server.
-   2. Välj **Server parametrar**på sid panelen.
+   2. Välj **Server parametrar** på sid panelen.
    3. Sök efter `shared_preload_libraries` parametern.
    4. Välj **pgaudit**.
    5. Starta om servern för att tillämpa ändringen.
@@ -88,9 +88,9 @@ För att snabbt komma igång, ange `pgaudit.log` till `WRITE` och öppna dina lo
 ## <a name="viewing-audit-logs"></a>Visa gransknings loggar
 Om du använder. log-filer tas gransknings loggarna med i samma fil som fel loggarna för PostgreSQL. Du kan ladda ned loggfiler från Azure- [portalen](howto-configure-server-logs-in-portal.md) eller [CLI](howto-configure-server-logs-using-cli.md). 
 
-Om du använder Azures resurs loggning beror det på hur du kommer åt loggarna på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
+Om du använder Azures resurs loggning beror det på hur du kommer åt loggarna på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) .
 
-För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../azure-monitor/log-query/log-query-overview.md) .
+För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../azure-monitor/logs/log-query-overview.md) .
 
 Du kan använda den här frågan för att komma igång. Du kan konfigurera aviseringar baserat på frågor.
 

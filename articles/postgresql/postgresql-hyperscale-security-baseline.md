@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ead666cecbc3208fe103aa740578ca36339c3e30
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804979"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588293"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azures säkerhets bas linje för Azure Database for PostgreSQL-storskalig (citus)
 
@@ -60,7 +60,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som genererats av storskalig (citus). Använd Log Analytics arbets ytor i Azure Monitor för att fråga och utföra analyser och Använd lagrings konton för långsiktig/lagring. Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM). 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Mått i storskalig (citus)](./concepts-hyperscale-monitoring.md)
 
@@ -80,7 +80,7 @@ Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som 
 
 - [Mått i storskalig (citus)](./concepts-hyperscale-monitoring.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -92,9 +92,9 @@ Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som 
 
 **Vägledning**: i Azure Monitor, för arbets ytan Log Analytics som används för att lagra dina citus-loggar, anger du kvarhållningsperioden enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -106,9 +106,9 @@ Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som 
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Mer information om Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Mer information om Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -122,7 +122,7 @@ Publicera din Log Analytics-arbetsyta till Azure-kontroll när den tillhandahål
 
 - [Mått i storskalig (citus)](./howto-hyperscale-alert-on-metric.md)
 
-- [Konfigurera diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Konfigurera diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -379,7 +379,7 @@ Minst en gång per dag tar Azure Database for PostgreSQL storskalig (citus) ögo
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av storskaliga (citus) och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

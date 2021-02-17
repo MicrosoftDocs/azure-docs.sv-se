@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089986"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596137"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Självstudie: så här övervakar du våren Cloud-resurser med hjälp av aviseringar och åtgärds grupper
 
@@ -36,7 +36,7 @@ Navigera från en resurs grupp till vår moln instans. Välj **aviseringar** i d
 
 ## <a name="set-up-action-group"></a>Ställ in åtgärds grupp
 
-Starta proceduren för att initiera en ny **Åtgärds grupp**genom att välja **+ Lägg till åtgärds grupp**.
+Starta proceduren för att initiera en ny **Åtgärds grupp** genom att välja **+ Lägg till åtgärds grupp**.
 
 ![Skärm bilds portalen Lägg till åtgärds grupp](media/alerts-action-groups/action-1.png)
 
@@ -88,7 +88,7 @@ Föregående steg skapade en **Åtgärds grupp** som använder e-post. Du kan oc
 
    Mer information om de villkor som är tillgängliga för övervakning finns i [alternativ för användar Portal mått](spring-cloud-concept-metrics.md#user-metrics-options).
 
-1. Under **åtgärder**klickar du på **Välj åtgärds grupp**. I fönstret **åtgärder** väljer du den tidigare definierade **Åtgärds gruppen**.
+1. Under **åtgärder** klickar du på **Välj åtgärds grupp**. I fönstret **åtgärder** väljer du den tidigare definierade **Åtgärds gruppen**.
 
    ![Skärm bilds portalen ny varnings regel 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -113,7 +113,7 @@ Du kan också skapa en regel med hjälp av sidan **mått** :
 I den här självstudien har du lärt dig hur du konfigurerar aviseringar och åtgärds grupper för ett Azure våren Cloud-program. Mer information om åtgärds grupper finns i:
 
 > [!div class="nextstepaction"]
-> [Skapa och hantera åtgärdsgrupper i Azure-portalen](../azure-monitor/platform/action-groups.md)
+> [Skapa och hantera åtgärdsgrupper i Azure-portalen](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [Aviserings beteende i SMS i åtgärds grupper](../azure-monitor/platform/alerts-sms-behavior.md)
+> [Aviserings beteende i SMS i åtgärds grupper](../azure-monitor/alerts/alerts-sms-behavior.md)

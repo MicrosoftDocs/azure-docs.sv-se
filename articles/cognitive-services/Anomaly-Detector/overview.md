@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: avvikelse identifiering, maskin inlärning, algoritmer
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572079"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Vad är API:et för avvikelseidentifiering?
 
@@ -53,13 +53,13 @@ Om du vill veta hur du anropar API: t för avvikelse detektor kan du prova den h
 Utför följande steg för att köra antecknings boken:
 
 1. Hämta en giltig API-prenumerations nyckel för avvikelse detektor och en API-slutpunkt. Avsnittet nedan innehåller anvisningar för att registrera dig.
-1. Logga in och klicka på klona i det övre högra hörnet.
+1. Logga in och välj klona i det övre högra hörnet.
 1. Avmarkera alternativet "offentlig" i dialog rutan innan du slutför klonings åtgärden, annars är din bärbara dator, inklusive eventuella prenumerations nycklar, offentlig.
-1. Klicka på **Kör vid kostnads fri beräkning**
+1. Välj **Kör vid kostnads fri beräkning**
 1. Välj en av antecknings böckerna.
 1. Lägg till din giltiga API-prenumerations nyckel för avvikelse detektor i `subscription_key` variabeln.
 1. Ändra `endpoint` variabeln till din slut punkt. Exempelvis: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. Klicka på **cell** och **Kör alla** på den översta meny raden.
+1. I det övre meny fältet väljer du **cell** och **kör sedan alla**.
 
 ## <a name="workflow"></a>Arbetsflöde
 

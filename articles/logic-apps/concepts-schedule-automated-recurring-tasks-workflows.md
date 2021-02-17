@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/16/2021
+ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018800"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581805"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Schemalägg och kör återkommande automatiserade uppgifter, processer och arbetsflöden med Azure Logic Apps
 
@@ -90,8 +90,8 @@ Här följer några mönster som visar hur du kan styra upprepningen av start da
 | Starttid | Upprepning utan schema | Upprepning med schema (endast upprepnings utlösare) |
 |------------|-----------------------------|----------------------------------------------------|
 | alternativet | Kör den första arbets belastningen direkt. <p>Kör framtida arbets belastningar baserat på den senaste körnings tiden. | Kör den första arbets belastningen direkt. <p>Kör framtida arbets belastningar baserat på det angivna schemat. |
-| Start tid tidigare | **Upprepnings** utlösare: beräknar körnings tider baserat på den angivna start tiden och tar bort de senaste körnings tiderna. Kör den första arbets belastningen vid nästa framtida körnings tillfälle. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. <p><p>Utlösare för **glidning** : beräknar körnings tider baserat på den angivna start tiden och följer de senaste körnings tiderna. <p>Kör framtida arbets belastningar baserat på beräkningar från den angivna start tiden. <p><p>Mer förklaringar finns i exemplet som följer efter den här tabellen. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
-| Start tid nu eller i framtiden | Kör den första arbets belastningen vid den angivna start tiden. <p>Kör framtida arbets belastningar baserat på beräkningar från den senaste körnings tiden. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
+| Start tid tidigare | **Upprepnings** utlösare: beräknar körnings tider baserat på den angivna start tiden och tar bort de senaste körnings tiderna. <p><p>Kör den första arbets belastningen vid nästa framtida körnings tillfälle. <p><p>Kör framtida arbets belastningar baserat på den senaste körnings tiden. <p><p>Utlösare för **glidning** : beräknar körnings tider baserat på den angivna start tiden och följer de senaste körnings tiderna. <p><p>Kör framtida arbets belastningar baserat på den angivna start tiden. <p><p>Mer förklaringar finns i exemplet som följer efter den här tabellen. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p><p>Kör framtida arbets belastningar baserat på det angivna schemat. <p><p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
+| Start tid nu eller i framtiden | Kör den första arbets belastningen vid den angivna start tiden. <p><p>**Upprepnings** utlösare: kör framtida arbets belastningar baserat på den senaste körnings tiden. <p><p>Utlösare för **glidande fönster** : kör framtida arbets belastningar baserat på den angivna start tiden. | Kör den första arbets belastningen *tidigare* än start tiden, baserat på schemat som beräknas från start tiden. <p><p>Kör framtida arbets belastningar baserat på det angivna schemat. <p>**Obs:** Om du anger en upprepning med ett schema, men inte anger timmar eller minuter för schemat, Logic Apps beräknar framtida körnings tider med hjälp av timmarna eller minuterna från den första körnings tiden. |
 ||||
 
 *Exempel på tidigare start tid och upprepning, men inget schema*
@@ -206,7 +206,7 @@ Eller, om du kan starta din Logi Kap par med **när en http-begäran tas emot �
 
 Här är olika exempel upprepningar som du kan ställa in för utlösare som stöder alternativen:
 
-| Utlösare | Upprepning | Intervall | Frequency | Starttid | Dessa dagar | Vid dessa timmar | Vid dessa minuter | Anteckning |
+| Utlösare | Upprepning | Intervall | Frekvens | Starttid | Dessa dagar | Vid dessa timmar | Vid dessa minuter | Anteckning |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Mönster <br>Skjutfönster | Kör var 15: e minut (inget start datum och-tid) | 15 | Minut | alternativet | otillgänglig | alternativet | alternativet | Schemat startar omedelbart och beräknar sedan framtida upprepningar baserat på den senaste körnings tiden. |
 | Mönster <br>Skjutfönster | Kör var 15: e minut (med start datum och-tid) | 15 | Minut | *StartDate* T *StartTime* Z | otillgänglig | alternativet | alternativet | Det här schemat startar inte *tidigare* än angivet start datum och-tid och beräknar sedan framtida upprepningar baserat på den senaste körnings tiden. |

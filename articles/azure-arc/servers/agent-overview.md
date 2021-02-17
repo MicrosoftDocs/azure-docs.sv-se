@@ -3,12 +3,12 @@ title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
 ms.date: 02/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558505"
+ms.locfileid: "100580874"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -110,7 +110,7 @@ För att säkerställa säkerheten för data som överförs till Azure rekommend
 Den anslutna dator agenten för Linux och Windows kommunicerar på ett säkert sätt till Azure-bågen via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för kommunikation via Internet kan du läsa följande för att förstå kraven på nätverks konfigurationen.
 
 > [!NOTE]
-> Arc-aktiverade servrar stöder inte användning av en [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) som proxy för den anslutna dator agenten.
+> Arc-aktiverade servrar stöder inte användning av en [Log Analytics Gateway](../../azure-monitor/agents/gateway.md) som proxy för den anslutna dator agenten.
 >
 
 Om den utgående anslutningen begränsas av din brand vägg eller proxyserver kontrollerar du att URL: erna i listan nedan inte är blockerade. Om du bara tillåter de IP-adressintervall eller domän namn som krävs för att agenten ska kunna kommunicera med tjänsten, måste du tillåta åtkomst till följande service märken och URL: er.

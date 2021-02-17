@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498686"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587231"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Mål för övervaknings lösningar i Azure Monitor (för hands version)
 När du lägger till en övervaknings lösning i din prenumeration distribueras den automatiskt som standard till alla Windows-och Linux-agenter som är anslutna till din Log Analytics-arbetsyta.  Du kanske vill hantera dina kostnader och begränsa mängden data som samlas in för en lösning genom att begränsa den till en viss uppsättning agenter.  Den här artikeln beskriver hur du använder **lösnings mål** som är en funktion som gör att du kan använda ett omfång för dina lösningar.
@@ -23,7 +23,7 @@ Det finns tre steg för att rikta en lösning enligt beskrivningen i följande a
 
 
 ### <a name="1-create-a-computer-group"></a>1. skapa en dator grupp
-Du anger de datorer som du vill ska ingå i ett omfång genom att skapa en [dator grupp](../platform/computer-groups.md) i Azure Monitor.  Dator gruppen kan baseras på en logg fråga eller importeras från andra källor, till exempel Active Directory eller WSUS-grupper. Som [beskrivs nedan](#solutions-and-agents-that-cant-be-targeted)kommer endast datorer som är direkt anslutna till Azure monitor att ingå i omfånget.
+Du anger de datorer som du vill ska ingå i ett omfång genom att skapa en [dator grupp](../logs/computer-groups.md) i Azure Monitor.  Dator gruppen kan baseras på en logg fråga eller importeras från andra källor, till exempel Active Directory eller WSUS-grupper. Som [beskrivs nedan](#solutions-and-agents-that-cant-be-targeted)kommer endast datorer som är direkt anslutna till Azure monitor att ingå i omfånget.
 
 När du har skapat dator gruppen i din arbets yta inkluderar du den i en omfattnings konfiguration som kan tillämpas på en eller flera lösningar.
  
@@ -69,4 +69,4 @@ Lösnings mål kan inte användas med följande lösningar även om de uppfyller
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig mer om övervaknings lösningar inklusive de lösningar som är tillgängliga för installation i din miljö genom [att lägga till Azure Log Analytics Monitoring-lösningar på din arbets yta](solutions.md).
-- Lär dig mer om att skapa dator grupper [i dator grupper i Azure Monitor logg frågor](../platform/computer-groups.md).
+- Lär dig mer om att skapa dator grupper [i dator grupper i Azure Monitor logg frågor](../logs/computer-groups.md).

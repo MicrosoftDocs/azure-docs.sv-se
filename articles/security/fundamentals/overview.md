@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693740"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580472"
 ---
 # <a name="introduction-to-azure-security"></a>Introduktion till Azure-säkerhet
 ## <a name="overview"></a>Översikt
@@ -81,12 +81,12 @@ Application Insights skapar diagram och tabeller som visar dig, till exempel vil
 Om det uppstår krascher, fel eller prestanda problem kan du söka igenom telemetridata i detalj för att diagnosticera orsaken. Tjänsten skickar dig e-postmeddelanden om det finns några ändringar i appens tillgänglighet och prestanda. Program insikter blir därmed ett värdefullt säkerhets verktyg eftersom det hjälper till med tillgänglighet i säkerhets Triad sekretess, integritet och tillgänglighet.
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](/azure/monitoring-and-diagnostics/) erbjuder visualisering, frågor, routning, avisering, automatisk skalning och automatisering av data både från Azure-infrastrukturen ([aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md)) och varje enskild Azure-resurs ([diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md)). Du kan använda Azure Monitor för att varna dig om säkerhetsrelaterade händelser som genereras i Azure-loggar.
+[Azure Monitor](/azure/monitoring-and-diagnostics/) erbjuder visualisering, frågor, routning, avisering, automatisk skalning och automatisering av data både från Azure-infrastrukturen ([aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md)) och varje enskild Azure-resurs ([diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md)). Du kan använda Azure Monitor för att varna dig om säkerhetsrelaterade händelser som genereras i Azure-loggar.
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-loggar
 [Azure Monitor loggar](https://azure.microsoft.com/documentation/services/log-analytics/) – tillhandahåller en IT-hanterings lösning för både lokal infrastruktur baserad på plats och från tredje part (till exempel AWS), utöver Azure-resurser. Data från Azure Monitor kan dirigeras direkt till Azure Monitor loggar så att du kan se mått och loggar för hela miljön på ett och samma ställe.
 
-Azure Monitor-loggar kan vara ett användbart verktyg i kriminal tekniska och andra säkerhets analyser, eftersom verktyget gör det möjligt att snabbt söka igenom stora mängder säkerhetsrelaterade poster med en flexibel fråge metod. Dessutom [kan lokala brand väggar och proxy-loggar exporteras till Azure och göras tillgängliga för analys med hjälp av Azure Monitor loggar.](../../azure-monitor/platform/agent-windows.md)
+Azure Monitor-loggar kan vara ett användbart verktyg i kriminal tekniska och andra säkerhets analyser, eftersom verktyget gör det möjligt att snabbt söka igenom stora mängder säkerhetsrelaterade poster med en flexibel fråge metod. Dessutom [kan lokala brand väggar och proxy-loggar exporteras till Azure och göras tillgängliga för analys med hjälp av Azure Monitor loggar.](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](../../advisor/index.yml) är en anpassad moln konsult som hjälper dig att optimera dina Azure-distributioner. Den analyserar din resurskonfiguration och användningstelemetri. Det rekommenderar sedan lösningar för att förbättra [prestanda](../../advisor/advisor-performance-recommendations.md), [säkerhet](../../advisor/advisor-security-recommendations.md)och [hög tillgänglighet](../../advisor/advisor-high-availability-recommendations.md) för dina resurser samtidigt som du letar efter möjligheter att [minska dina totala Azure-utgifter](../../advisor/advisor-cost-recommendations.md). Azure Advisor ger säkerhets rekommendationer, vilket avsevärt kan förbättra den övergripande säkerhets position för lösningar som du distribuerar i Azure. Dessa rekommendationer hämtas från säkerhets analys som utförs av [Azure Security Center.](../../security-center/security-center-introduction.md)
@@ -101,7 +101,7 @@ Avsnittet innehåller ytterligare information om viktiga funktioner i program s�
 ### <a name="web-application-vulnerability-scanning"></a>Genomsökning av webb program sårbarhet
 Ett av de enklaste sätten att komma igång med att testa om säkerhets risker i [App Service-appen](../../app-service/overview.md) är att använda [integrering med TINFOIL-säkerhet](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) för att utföra en sårbarhets sökning i ett enda klick i din app. Du kan visa test resultaten i en lättanvänd rapport och lära dig hur du åtgärdar varje sårbarhet med stegvisa instruktioner.
 
-### <a name="penetration-testing"></a>Testning av inträngning
+### <a name="penetration-testing"></a>Intrångstester
 Om du föredrar att utföra dina egna inläsnings test eller om du vill använda ett annat skanner paket eller en annan leverantör måste du följa [godkännande processen för Azure-inträngning](./pen-testing.md) och få ett tidigare godkännande för att kunna utföra önskade inläsnings test.
 
 ### <a name="web-application-firewall"></a>Brand vägg för webbaserade program
@@ -200,7 +200,7 @@ Tvingad tunnel trafik används ofta för att tvinga utgående trafik till Intern
 #### <a name="virtual-network-security-appliances"></a>Virtual Network säkerhets anordningar
 Även om nätverks säkerhets grupper, User-Defined vägar och Tvingad tunnel trafik tillhandahåller en säkerhets nivå för nätverks-och transport skikt i OSI- [modellen](https://en.wikipedia.org/wiki/OSI_model), kan det finnas tillfällen när du vill aktivera säkerhet på högre nivåer i stacken. Du kan komma åt dessa utökade nätverks säkerhetsfunktioner med hjälp av en Azure-partner nätverks säkerhetsenhets lösning. Du hittar de mest aktuella Azure Partner Network Security-lösningarna genom att gå till [Azure Marketplace](https://azure.microsoft.com/marketplace/) och söka efter "säkerhet" och "nätverks säkerhet".
 
-### <a name="azure-virtual-network"></a>Virtuellt Azure-nätverk
+### <a name="azure-virtual-network"></a>Azure Virtual Network
 Ett Azure-virtuellt nätverk (VNet) är en representation av ditt eget nätverk i molnet. Det är en logisk isolering av Azure Network Fabric som är dedikerad för din prenumeration. Du kan helt styra IP-adressblocken, DNS-inställningarna, säkerhetsprinciperna och routingtabellerna inom det här nätverket. Du kan segmentera ditt VNet i undernät och placera virtuella Azure IaaS-datorer (VM) och/eller [moln tjänster (PaaS roll instanser)](../../cloud-services/cloud-services-choose-me.md) i virtuella Azure-nätverk.
 
 Du kan dessutom ansluta det virtuella nätverket till ditt lokala nätverk med ett av [anslutningsalternativen](../../vpn-gateway/index.yml) som finns i Azure. I princip kan du expandera ditt nätverk till Azure, med fullständig kontroll över IP-adressblock och de fördelar som Azure på företagsnivå erbjuder.

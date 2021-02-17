@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007745"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587872"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -30,7 +30,7 @@ Innan du distribuerar Uppdateringshantering och aktiverar dina datorer för hant
 
 Datorer som hanteras av Uppdateringshantering förlitar sig på följande för att utföra utvärderingen och distribuera uppdateringar:
 
-* [Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) för Windows eller Linux
+* [Log Analytics agent](../../azure-monitor/agents/log-analytics-agent.md) för Windows eller Linux
 * Önskad PowerShell-tillståndskonfiguration (DSC) för Linux
 * Automation-Hybrid Runbook Worker (installeras automatiskt när du aktiverar Uppdateringshantering på datorn)
 * Microsoft Update eller [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) för Windows-datorer
@@ -53,7 +53,7 @@ Uppdateringshantering rapporterar hur upp datorn är baserad på vilken källa d
 
 Du kan distribuera och installera program uppdateringar på datorer som kräver uppdateringarna genom att skapa en schemalagd distribution. Uppdateringar som klassificeras som valfria ingår inte i distributions omfånget för Windows-datorer. Endast nödvändiga uppdateringar ingår i distributions omfånget.
 
-Den schemalagda distributionen definierar vilka mål datorer som får tillämpliga uppdateringar. Det gör det antingen genom att uttryckligen ange vissa datorer eller genom att välja en [dator grupp](../../azure-monitor/platform/computer-groups.md) som baseras på loggs ökningar av en viss uppsättning datorer (eller på en [Azure-fråga](query-logs.md) som dynamiskt väljer virtuella Azure-datorer baserat på angivna kriterier). Dessa grupper skiljer sig från [omfattnings konfigurationen](../../azure-monitor/insights/solution-targeting.md), som används för att styra målet för datorer som tar emot konfigurationen för att aktivera uppdateringshantering. Detta förhindrar att de utför och rapporterar uppdaterings efterlevnad och installerar godkända uppdateringar som krävs.
+Den schemalagda distributionen definierar vilka mål datorer som får tillämpliga uppdateringar. Det gör det antingen genom att uttryckligen ange vissa datorer eller genom att välja en [dator grupp](../../azure-monitor/logs/computer-groups.md) som baseras på loggs ökningar av en viss uppsättning datorer (eller på en [Azure-fråga](query-logs.md) som dynamiskt väljer virtuella Azure-datorer baserat på angivna kriterier). Dessa grupper skiljer sig från [omfattnings konfigurationen](../../azure-monitor/insights/solution-targeting.md), som används för att styra målet för datorer som tar emot konfigurationen för att aktivera uppdateringshantering. Detta förhindrar att de utför och rapporterar uppdaterings efterlevnad och installerar godkända uppdateringar som krävs.
 
 När du definierar en distribution anger du även ett schema för att godkänna och ange en tids period under vilken uppdateringar kan installeras. Den här perioden kallas underhålls perioden. En 20 minuters period i underhålls perioden är reserverad för omstarter, förutsatt att en krävs och du har valt lämpligt alternativ för omstart. Om korrigeringen tar längre tid än förväntat och det finns mindre än 20 minuter i underhålls perioden görs ingen omstart.
 
@@ -82,7 +82,7 @@ I följande tabell visas de operativ system som stöds för uppdaterings bedömn
 |Ubuntu 14,04 LTS, 16,04 LTS och 18,04 LTS (x64)      |Linux-agenter kräver åtkomst till ett uppdaterings lager.         |
 
 > [!NOTE]
-> Skalnings uppsättningar för virtuella Azure-datorer kan hanteras via Uppdateringshantering. Uppdateringshantering fungerar på själva instanserna och inte på bas avbildningen. Du måste schemalägga uppdateringarna på ett stegvist sätt så att alla VM-instanser inte uppdateras samtidigt. Du kan lägga till noder för skalnings uppsättningar för virtuella datorer genom att följa stegen under [Lägg till en icke-Azure-dator i ändringsspårning och inventering](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
+> Uppdateringshantering stöder inte säker automatisering av uppdaterings hantering över alla instanser i en skalnings uppsättning för virtuella Azure-datorer. [Automatiska uppgraderingar av OS-avbildningar](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) är den rekommenderade metoden för att hantera operativ Systems avbildnings uppgraderingar på din skalnings uppsättning.
 
 ### <a name="unsupported-operating-systems"></a>Operativsystem som inte stöds
 
@@ -107,7 +107,7 @@ Program varu krav:
 
 Windows-agenter måste konfigureras för att kommunicera med en WSUS-server, eller de kräver åtkomst till Microsoft Update. För Hybrid datorer rekommenderar vi att du installerar Log Analytics agent för Windows genom att först ansluta datorn till [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md)och sedan använda Azure policy för att tilldela den inbyggda principen [distribuera Log Analytics agent till Windows Azure Arc-datorer](../../governance/policy/samples/built-in-policies.md#monitoring) . Alternativt, om du planerar att övervaka datorerna med Azure Monitor for VMs, använder du i stället [aktivera Azure Monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) initiativ.
 
-Du kan använda Uppdateringshantering med Microsoft Endpoint Configuration Manager. Mer information om integrations scenarier finns i [integrera uppdateringshantering med Windows-slutpunkt Configuration Manager](mecmintegration.md). [Log Analytics agent för Windows](../../azure-monitor/platform/agent-windows.md) krävs för Windows-servrar som hanteras av-platser i din Configuration Manager-miljö.
+Du kan använda Uppdateringshantering med Microsoft Endpoint Configuration Manager. Mer information om integrations scenarier finns i [integrera uppdateringshantering med Windows-slutpunkt Configuration Manager](mecmintegration.md). [Log Analytics agent för Windows](../../azure-monitor/agents/agent-windows.md) krävs för Windows-servrar som hanteras av-platser i din Configuration Manager-miljö.
 
 Som standard är virtuella Windows-datorer som distribueras från Azure Marketplace inställda på att ta emot automatiska uppdateringar från Windows Update-tjänsten. Det här beteendet ändras inte när du lägger till virtuella Windows-datorer i din arbets yta. Om du inte aktivt hanterar uppdateringar med hjälp av Uppdateringshantering gäller standard beteendet (för att tillämpa uppdateringar automatiskt).
 
@@ -147,7 +147,7 @@ Du kan lägga till Windows-datorn till en användare Hybrid Runbook Workers grup
 
 ### <a name="management-packs"></a>Hanteringspaket
 
-Om din Operations Manager hanterings grupp är [ansluten till en Log Analytics arbets yta](../../azure-monitor/platform/om-agents.md)installeras följande hanterings paket i Operations Manager. Dessa hanterings paket installeras också för Uppdateringshantering på direkt anslutna Windows-datorer. Du behöver inte konfigurera eller hantera dessa hanteringspaket.
+Om din Operations Manager hanterings grupp är [ansluten till en Log Analytics arbets yta](../../azure-monitor/agents/om-agents.md)installeras följande hanterings paket i Operations Manager. Dessa hanterings paket installeras också för Uppdateringshantering på direkt anslutna Windows-datorer. Du behöver inte konfigurera eller hantera dessa hanteringspaket.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -156,7 +156,7 @@ Om din Operations Manager hanterings grupp är [ansluten till en Log Analytics a
 > [!NOTE]
 > Om du har en Operations Manager 1807-eller 2019-hanteringsserver ansluten till en Log Analytics arbets yta med agenter som kon figurer ATS i hanterings gruppen för att samla in loggdata måste du åsidosätta parametern `IsAutoRegistrationEnabled` och ange den som sann i **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** -regeln.
 
-Mer information om uppdateringar av hanterings paket finns i [anslut Operations Manager till Azure Monitor loggar](../../azure-monitor/platform/om-agents.md).
+Mer information om uppdateringar av hanterings paket finns i [anslut Operations Manager till Azure Monitor loggar](../../azure-monitor/agents/om-agents.md).
 
 > [!NOTE]
 > För att Uppdateringshantering helt hantera datorer med Log Analytics-agenten måste du uppdatera till Log Analytics agent för Windows eller Log Analytics agent för Linux. Information om hur du uppdaterar agenten finns i [så här uppgraderar du en Operations Manager-agent](/system-center/scom/deploy-upgrade-agents). I miljöer som använder Operations Manager måste du köra System Center Operations Manager 2012 R2 UR 14 eller senare.
@@ -169,9 +169,9 @@ I följande tabell beskrivs de anslutna källor som Uppdateringshantering stöde
 
 | Ansluten källa | Stöds | Description |
 | --- | --- | --- |
-| Windows-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
-| Linux-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
-| Operations Manager-hanteringsgrupp |Ja |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| Windows-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
+| Linux-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
+| Operations Manager-hanteringsgrupp |Yes |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
 
 ### <a name="collection-frequency"></a>Insamlingsfrekvens
 
@@ -181,7 +181,7 @@ Uppdateringshantering söker igenom hanterade datorer efter data med hjälp av f
 
 * Varje Linux-dator – Uppdateringshantering genomsöks varje timme.
 
-Den genomsnittliga data användningen per Azure Monitor loggar för en dator som använder Uppdateringshantering är cirka 25 MB per månad. Det här värdet är bara en uppskattning och kan komma att ändras, beroende på din miljö. Vi rekommenderar att du övervakar din miljö för att hålla koll på din exakta användning. Mer information om hur du analyserar Azure Monitor loggar data användning finns i [Hantera användning och kostnad](../../azure-monitor/platform/manage-cost-storage.md).
+Den genomsnittliga data användningen per Azure Monitor loggar för en dator som använder Uppdateringshantering är cirka 25 MB per månad. Det här värdet är bara en uppskattning och kan komma att ändras, beroende på din miljö. Vi rekommenderar att du övervakar din miljö för att hålla koll på din exakta användning. Mer information om hur du analyserar Azure Monitor loggar data användning finns i [Hantera användning och kostnad](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="network-planning"></a><a name="ports"></a>Planera för nätverk
 
@@ -193,7 +193,7 @@ För Red Hat Linux-datorer, se [IP-adresser för RHUI Content Delivery servers](
 
 Mer information om vilka portar som krävs för Hybrid Runbook Worker finns i [uppdateringshantering adresser för Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker).
 
-Om dina IT-säkerhetsprinciper inte tillåter datorer i nätverket att ansluta till Internet, kan du konfigurera en [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) och sedan konfigurera datorn att ansluta via gatewayen för att Azure Automation och Azure Monitor.
+Om dina IT-säkerhetsprinciper inte tillåter datorer i nätverket att ansluta till Internet, kan du konfigurera en [Log Analytics Gateway](../../azure-monitor/agents/gateway.md) och sedan konfigurera datorn att ansluta via gatewayen för att Azure Automation och Azure Monitor.
 
 ## <a name="update-classifications"></a>Klassificering av uppdateringar
 

@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 389c0b1fd5a2fde33c2bf19ac2807cca45691523
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373155"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586857"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Övervaka och varna Data Factory med Azure Monitor
 
@@ -76,7 +76,7 @@ Skapa eller Lägg till diagnostikinställningar för din data fabrik.
    ![Namnge dina inställningar och välj en arbets yta för Log Analytics](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [Log Analytics kända begränsningar](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [Log Analytics kända begränsningar](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Välj **Spara**.
 
@@ -151,7 +151,7 @@ Här följer några av de mått som har spridits av Azure Data Factory version 2
 | SSISPackageExecutionFailed           | Det gick inte att köra Mät värden för SSIS-paket    | Antal    | Totalt                | Totalt antal körningar av SSIS-paket som misslyckades inom en minuts period. |
 | SSISPackageExecutionSucceeded        | SSIS-paketets körnings mått har slutförts | Antal    | Totalt                | Det totala antalet körningar av SSIS-paketet som lyckades inom en minut period. |
 
-Följ anvisningarna i [Azure Monitor data plattform](../azure-monitor/platform/data-platform.md)för att få åtkomst till måtten.
+Följ anvisningarna i [Azure Monitor data plattform](../azure-monitor/data-platform.md)för att få åtkomst till måtten.
 
 > [!NOTE]
 > Endast händelser från slutförd, utlöst aktivitet och pipeline-körningar genereras. Pågår och fel söknings körningar genereras **inte** . Å andra sidan genereras händelser från **alla** SSIS-paket, inklusive de som slutförs och pågår, oavsett deras anrops metoder. Du kan till exempel aktivera paket körningar på Azure-aktiverade SQL Server Data Tools (SSDT), via T-SQL på SSMS, SQL Server Agent eller andra angivna verktyg och som Utlös ande eller fel söknings körning av kör SSIS-paket aktiviteter i ADF-pipeliner.
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 | --- | --- | --- |
 | **storageAccountId** |Sträng | Resurs-ID för det lagrings konto som du vill skicka diagnostikloggar till. |
 | **serviceBusRuleId** |Sträng | Service Bus-regelns ID för det namn område för Service Bus som du vill ha Event Hubs skapat för för strömning av diagnostikloggar. Regel-ID: t har formatet `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -848,7 +848,7 @@ Om du vill lyfta & flytta dina SSIS-arbetsbelastningar kan du [etablera SSIS IR 
 
 När du har allokerat kan du [kontrol lera SSIS IR-drift status med Azure PowerShell eller på **Monitor** Hub på ADF-portalen](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Med projekt distributions modell lagras SSIS-paket körnings loggar i SSISDB interna tabeller eller vyer, så att du kan fråga, analysera och visuellt presentera dem med hjälp av angivna verktyg som SSMS. Med paket distributions modell kan SSIS-paketets körnings loggar lagras i fil systemet eller Azure Files som CSV-filer som du fortfarande behöver parsa och bearbeta med andra angivna verktyg innan du kan fråga, analysera och visuellt presentera dem.
 
-Nu med [Azure Monitor](../azure-monitor/platform/data-platform.md) -integrering kan du fråga, analysera och visuellt presentera alla mått och loggar som genereras från SSIS IR-åtgärder och SSIS-paket körningar på Azure Portal. Dessutom kan du också generera aviseringar på dem.
+Nu med [Azure Monitor](../azure-monitor/data-platform.md) -integrering kan du fråga, analysera och visuellt presentera alla mått och loggar som genereras från SSIS IR-åtgärder och SSIS-paket körningar på Azure Portal. Dessutom kan du också generera aviseringar på dem.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurera diagnostikinställningar och arbets yta för SSIS-åtgärder
 
@@ -856,9 +856,9 @@ Om du vill skicka alla mått och loggar som genereras från SSIS IR-åtgärder o
 
 ### <a name="ssis-operational-metrics"></a>SSIS drifts mått
 
-SSIS drifts [mått](../azure-monitor/platform/data-platform-metrics.md) är prestanda räknare eller numeriska värden som beskriver STATUSEN för IR-start och stopp åtgärder i SSIS, samt SSIS-programpaket vid en viss tidpunkt. De är en del av [ADF-mått i Azure Monitor](#data-factory-metrics).
+SSIS drifts [mått](../azure-monitor/essentials/data-platform-metrics.md) är prestanda räknare eller numeriska värden som beskriver STATUSEN för IR-start och stopp åtgärder i SSIS, samt SSIS-programpaket vid en viss tidpunkt. De är en del av [ADF-mått i Azure Monitor](#data-factory-metrics).
 
-När du konfigurerar diagnostikinställningar och arbets yta för din ADF på Azure Monitor, kan du markera kryss rutan _AllMetrics_ om du vill att SSIS operativa måtten ska vara tillgängliga för [interaktiv analys med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md), [presentation på Azure Dashboard](../azure-monitor/learn/tutorial-app-dashboards.md)och [nästan real tids aviseringar](../azure-monitor/platform/alerts-metric.md).
+När du konfigurerar diagnostikinställningar och arbets yta för din ADF på Azure Monitor, kan du markera kryss rutan _AllMetrics_ om du vill att SSIS operativa måtten ska vara tillgängliga för [interaktiv analys med Azure Metrics Explorer](../azure-monitor/essentials/metrics-getting-started.md), [presentation på Azure Dashboard](../azure-monitor/app/tutorial-app-dashboards.md)och [nästan real tids aviseringar](../azure-monitor/alerts/alerts-metric.md).
 
 ![Namnge dina inställningar och välj en arbets yta för Log Analytics](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -874,9 +874,9 @@ Om du vill generera aviseringar för SSIS-operativa mått från Azure Portal, [v
 
 ### <a name="ssis-operational-logs"></a>SSIS operativa loggar
 
-SSIS operativa [loggar](../azure-monitor/platform/data-platform-logs.md) är händelser som genereras av SSIS IR-åtgärder och körningar av SSIS-paket som ger tillräckligt med kontext på identifierade problem och är användbara för rotor Saks analys. 
+SSIS operativa [loggar](../azure-monitor/logs/data-platform-logs.md) är händelser som genereras av SSIS IR-åtgärder och körningar av SSIS-paket som ger tillräckligt med kontext på identifierade problem och är användbara för rotor Saks analys. 
 
-När du konfigurerar diagnostikinställningar och arbets yta för din ADF på Azure Monitor, kan du välja relevanta SSIS-operativa loggar och skicka dem till Log Analytics som baseras på Azure Datautforskaren. I där kommer de att göras tillgängliga för [analys med hjälp av omfattande frågespråk](../azure-monitor/log-query/log-query-overview.md), [presentation på Azure-instrumentpanelen och i](../azure-monitor/learn/tutorial-app-dashboards.md) [nära real tid](../azure-monitor/platform/alerts-log.md).
+När du konfigurerar diagnostikinställningar och arbets yta för din ADF på Azure Monitor, kan du välja relevanta SSIS-operativa loggar och skicka dem till Log Analytics som baseras på Azure Datautforskaren. I där kommer de att göras tillgängliga för [analys med hjälp av omfattande frågespråk](../azure-monitor/logs/log-query-overview.md), [presentation på Azure-instrumentpanelen och i](../azure-monitor/app/tutorial-app-dashboards.md) [nära real tid](../azure-monitor/alerts/alerts-log.md).
 
 ![Namnge dina inställningar och välj en arbets yta för Log Analytics](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

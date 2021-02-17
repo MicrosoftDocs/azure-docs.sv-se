@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499313"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587913"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrera dina IaaS-resurser till Azure Resource Manager den 1 mars 2023 
 
@@ -30,7 +30,7 @@ Virtuella datorer som skapats med den klassiska distributions modellen följer d
 - Den 1 mars 2023 kommer prenumerationer som inte har migrerats till Azure Resource Manager att informeras om tids linjer för borttagning av återstående virtuella datorer (klassisk).  
 
 Den här indragningen påverkar *inte* följande Azure-tjänster och-funktioner: 
-- Azure Cloud Services 
+- [Azure Cloud Services (klassisk)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
 - Lagrings konton som *inte* används av virtuella datorer (klassisk) 
 - Virtuella nätverk som *inte* används av virtuella datorer (klassisk) 
 - Andra klassiska resurser
@@ -49,9 +49,9 @@ Börja planera migreringen till Azure Resource Manager, idag.
 
 1. Vi rekommenderar att du startar planeringen genom att använda [verktyget Platform support migration](./migration-classic-resource-manager-overview.md) för att migrera dina befintliga virtuella datorer med tre enkla steg: validera, Förbered och genomför. Verktyget är utformat för att migrera dina virtuella datorer inom minimalt till ingen stillestånds tid. 
 
-   1. Det första steget, validera, har ingen inverkan på din befintliga distribution och innehåller en lista över alla scenarier som inte stöds för migrering. 
-   1. Gå igenom [listan med lösningar](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) för att åtgärda distributionen och gör den redo för migrering. 
-   1. Helst när alla verifierings fel har åtgärd ATS bör du inte stöta på några problem under förbereda och genomföra. När genomförandet har genomförts migreras distributionen till Azure Resource Manager och kan sedan hanteras via nya API: er som exponeras av Azure Resource Manager. 
+   - Det första steget, validera, har ingen inverkan på din befintliga distribution och innehåller en lista över alla scenarier som inte stöds för migrering. 
+   - Gå igenom [listan med lösningar](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) för att åtgärda distributionen och gör den redo för migrering. 
+   - Helst när alla verifierings fel har åtgärd ATS bör du inte stöta på några problem under förbereda och genomföra. När genomförandet har genomförts migreras distributionen till Azure Resource Manager och kan sedan hanteras via nya API: er som exponeras av Azure Resource Manager. 
 
    Om migreringen inte är lämplig för migreringen kan du utforska [andra beräknings erbjudanden](/azure/architecture/guide/technology-choices/compute-decision-tree) för migreringen. Eftersom det finns många Azure Compute-erbjudanden, och de skiljer sig från varandra, kan vi inte tillhandahålla en sökväg för migrering till plattformar som stöds.  
 
@@ -65,6 +65,6 @@ Börja planera migreringen till Azure Resource Manager, idag.
 
 - [Stöd för Azure migration](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): dedikerat support team för teknisk hjälp under migreringen.
 
-- [Microsoft fast track](https://www.microsoft.com/fasttrack): snabb spårning kan hjälpa kunder att planera & utföra migreringen. [Nominera själv](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0).  
+- [Microsoft fast track](https://www.microsoft.com/fasttrack): snabb spårning kan hjälpa kunder att planera & utföra migreringen. [Nominera dig själv](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) för programmet för DC-migrering.  
 
 - Om företaget/organisationen har samarbetat med Microsoft eller fungerar med Microsoft-representanter (t. ex. Cloud Solution Architects (CSAs) eller tekniska konto hanterare (TAMs)), kan du arbeta med dem för ytterligare resurser för migrering.

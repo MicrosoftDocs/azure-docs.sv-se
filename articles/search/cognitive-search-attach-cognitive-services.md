@@ -1,29 +1,35 @@
 ---
 title: Bifoga Cognitive Services till en färdigheter
 titleSuffix: Azure Cognitive Search
-description: Instruktioner för att bifoga en Cognitive Services allt-i-ett-prenumeration till en AI-pipeline i Azure Kognitiv sökning.
-manager: nitinme
+description: Lär dig hur du kopplar en Cognitive Services allt-i-ett-prenumeration till en AI-pipeline i Azure Kognitiv sökning.
 author: LuisCabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: c9f6a5ebc4f3242181196bd40b62f7522d025b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/16/2021
+ms.openlocfilehash: 77735166fafe9d39dff483baa89a4b31db31275d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924985"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577927"
 ---
-# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Bifoga en Cognitive Services resurs till en färdigheter i Azure Kognitiv sökning 
+# <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Bifoga en Cognitive Services resurs till en färdigheter i Azure Kognitiv sökning
 
-När du konfigurerar en pipeline för anrikning i Azure Kognitiv sökning kan du utöka ett begränsat antal dokument kostnads fritt. För större och mer frekventa arbets belastningar bör du koppla en fakturerbar Cognitive Services-resurs.
+När du konfigurerar en [pipeline för AI-anrikning](cognitive-search-concept-intro.md) i Azure kognitiv sökning kan du utöka ett begränsat antal dokument kostnads fritt. För större och mer frekventa arbets belastningar bör du koppla en fakturerbar "allt-i-ett"-Cognitive Services-resurs. En "allt-i-ett"-prenumeration hänvisar till Cognitive Services "som ett erbjudande, i stället för enskilda tjänster, med åtkomst som beviljats via en enda API-nyckel.
 
-I den här artikeln får du lära dig hur du kopplar en resurs genom att tilldela en nyckel till en färdigheter som definierar en pipeline.
+En "allt-i-ett"-Cognitive Services resurs har de [fördefinierade kunskaper](cognitive-search-predefined-skills.md) som du kan ta med i en färdigheter:
 
-## <a name="resources-used-during-enrichment"></a>Resurser som används under anrikning
++ [Visuellt innehåll](https://azure.microsoft.com/services/cognitive-services/computer-vision/) för bild analys och optisk tecken läsning (OCR)
++ [Textanalys](https://azure.microsoft.com/services/cognitive-services/text-analytics/) för språk identifiering, entitets igenkänning, sentiment analys och extrahering av nyckel fraser
++ [Textöversättning](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-Azure Kognitiv sökning har ett beroende på Cognitive Services, inklusive [visuellt innehåll](https://azure.microsoft.com/services/cognitive-services/computer-vision/) för bild analys och optisk tecken IGENKÄNNING (OCR), [textanalys](https://azure.microsoft.com/services/cognitive-services/text-analytics/) för bearbetning av naturligt språk och andra berikare som [text översättning](https://azure.microsoft.com/services/cognitive-services/translator-text-api/). I samband med berikning i Azure Kognitiv sökning omsluts dessa AI-algoritmer inuti en *färdighet*, placeras i en *färdigheter*och refereras till av en *indexerare* under indexeringen.
+En "allt-i-ett"-Cognitive Services-nyckel är valfri i en färdigheter-definition. När antalet dagliga transaktioner som är mindre än 20 per dag, absorberas kostnaden. Men om transaktionerna överskrider den siffran krävs en giltig resurs nyckel för bearbetningen för att fortsätta.
+
+Alla resurs nycklar för "allt-i-ett" är giltiga. Internt använder en Sök tjänst den resurs som är samordnad i samma fysiska region, även om nyckeln "allt-i-ett" är för en resurs i en annan region. Sidan [produkt tillgänglighet](https://azure.microsoft.com/global-infrastructure/services/?products=search) visar regional tillgänglighet sida vid sida.
+
+> [!NOTE]
+> Om du utelämnar fördefinierade kunskaper i en färdigheter går det inte att komma åt Cognitive Services och du debiteras inte, även om färdigheter anger en nyckel.
 
 ## <a name="how-billing-works"></a>Så fungerar debiteringen
 
@@ -37,9 +43,9 @@ Azure Kognitiv sökning har ett beroende på Cognitive Services, inklusive [visu
 
 ## <a name="same-region-requirement"></a>Krav för samma region
 
-Vi kräver att Azure Kognitiv sökning och Azure Cognitive Services finns inom samma region. Annars får du det här meddelandet vid körning: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Både Kognitiv sökning och Cognitive Services måste finnas i samma fysiska region, enligt vad som anges på sidan [produkt tillgänglighet](https://azure.microsoft.com/global-infrastructure/services/?products=search) . De flesta regioner som erbjuder Kognitiv sökning erbjuder även Cognitive Services.
 
-Det finns inget sätt att flytta en tjänst mellan regioner. Om du får det här felet bör du skapa en ny Cognitive Services-resurs i samma region som Azure Kognitiv sökning.
+Om du försöker AI-berikning i region som inte har båda tjänsterna visas följande meddelande: "den angivna nyckeln är inte en giltig CognitiveServices för den region där Sök tjänsten finns."
 
 > [!NOTE]
 > Vissa inbyggda kunskaper baseras på icke-regionala Cognitive Services (till exempel [kunskap om text översättning](cognitive-search-skill-text-translation.md)). Om du använder en icke-regional färdighet innebär det att din begäran kan servas i en annan region än Azure Kognitiv sökning region. Mer information icke-regionala tjänster finns på sidan [Cognitive Services produkt per region](https://aka.ms/allinoneregioninfo) .
@@ -48,19 +54,11 @@ Det finns inget sätt att flytta en tjänst mellan regioner. Om du får det här
 
 Du kan använda ett begränsat alternativ för fri bearbetning för att slutföra självstudierna om AI-anrikning och snabb starts övningar.
 
-Kostnads fria (begränsade berikade) resurser är begränsade till 20 dokument per dag, per indexerare. Du kan ta bort och återskapa indexeraren för att återställa räknaren.
+Kostnads fria (begränsade berikade) resurser är begränsade till 20 dokument per dag, per indexerare. Du kan [återställa indexeraren](search-howto-run-reset-indexers.md) för att återställa räknaren.
 
-1. Öppna guiden Importera data:
+Om du använder guiden **Importera data** för AI-berikning hittar du alternativen "bifoga Cognitive Services" på sidan **Lägg till AI-anrikning (valfritt)** .
 
-   ![Öppna guiden Importera data](media/search-get-started-portal/import-data-cmd.png "Öppna guiden Importera data")
-
-1. Välj en data källa och fortsätt att **lägga till AI-anrikning (valfritt)**. En stegvis genom gång av den här guiden finns i [skapa ett index i Azure Portal](search-get-started-portal.md).
-
-1. Expandera **bifoga Cognitive Services** och välj sedan **ledigt (begränsade anrikninger)**:
-
-   ![Utöka Cognitive Services avsnittet](./media/cognitive-search-attach-cognitive-services/attach1.png "Utöka Cognitive Services avsnittet")
-
-1. Nu kan du fortsätta till nästa steg, inklusive **lägga till kognitiva kunskaper**.
+![Utöka Cognitive Services avsnittet](./media/cognitive-search-attach-cognitive-services/attach1.png "Utöka Cognitive Services avsnittet")
 
 ## <a name="use-billable-resources"></a>Använd fakturerbara resurser
 
@@ -68,13 +66,13 @@ För arbets belastningar som skapar fler än 20 berikningar per dag, se till att
 
 Du debiteras bara för färdigheter som anropar API:er för Cognitive Services. Du debiteras inte för [anpassade kunskaper](cognitive-search-create-custom-skill-example.md)eller kunskaper som [text sammanslagning](cognitive-search-skill-textmerger.md), [text delning](cognitive-search-skill-textsplit.md)och [formaren](cognitive-search-skill-shaper.md), som inte är API-baserade.
 
-1. Öppna guiden Importera data, Välj en data källa och fortsätt att **lägga till AI-anrikning (valfritt)**.
+Om du använder guiden **Importera data** kan du konfigurera en fakturerbar resurs från sidan **Lägg till AI-anrikning (valfritt)** .
 
 1. Expandera **bifoga Cognitive Services** och välj sedan **Skapa ny Cognitive Services resurs**. En ny flik öppnas så att du kan skapa resursen:
 
    ![Skapa en -resurs för Cognitive Services](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Skapa en -resurs för Cognitive Services")
 
-1. I listan **plats** väljer du den region där din Azure kognitiv sökning-tjänst finns. Se till att använda den här regionen av prestanda skäl. Om du använder den här regionen annulleras även utgående bandbredds avgifter mellan regioner.
+1. I listan **plats** väljer du den region där Sök tjänsten finns.
 
 1. I listan **pris nivå** väljer du **S0** för att hämta en allt-i-ett-samling med Cognitive Services funktioner, inklusive funktioner för vision och språk som backar upp de inbyggda kunskaper som tillhandahålls av Azure kognitiv sökning.
 
@@ -86,7 +84,7 @@ Du debiteras bara för färdigheter som anropar API:er för Cognitive Services. 
 
 1. Välj **skapa** för att etablera den nya Cognitive Services resursen.
 
-1. Gå tillbaka till föregående flik, som innehåller guiden Importera data. Välj **Uppdatera** för att Visa Cognitive Services resursen och välj sedan resursen:
+1. Gå tillbaka till föregående flik. Välj **Uppdatera** för att Visa Cognitive Services resursen och välj sedan resursen:
 
    ![Välj den Cognitive Services resursen](./media/cognitive-search-attach-cognitive-services/attach2.png "Välj den Cognitive Services resursen")
 
@@ -96,7 +94,7 @@ Du debiteras bara för färdigheter som anropar API:er för Cognitive Services. 
 
 Om du har en befintlig färdigheter kan du koppla den till en ny eller annan Cognitive Services resurs.
 
-1. På sidan **tjänst översikt** väljer du **färdighetsuppsättningar**:
+1. På sidan Search Service-översikt väljer du **färdighetsuppsättningar**:
 
    ![Fliken färdighetsuppsättningar](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "Fliken färdighetsuppsättningar")
 
@@ -116,8 +114,6 @@ I följande exempel visas det här mönstret. Lägg märke till `cognitiveServic
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
-```
-```json
 {
     "name": "skillset name",
     "skills": 
@@ -168,6 +164,7 @@ Priserna som visas i den här artikeln är hypotetiska. De används för att ill
 Genom att sätta ihop allt, betalar du om $57,00 för att mata in 1 000 PDF-dokument av den här typen med den beskrivna färdigheter.
 
 ## <a name="next-steps"></a>Nästa steg
+
 + [Sidan prissättning för Azure Kognitiv sökning](https://azure.microsoft.com/pricing/details/search/)
 + [Så här definierar du en färdigheter](cognitive-search-defining-skillset.md)
 + [Skapa färdigheter (REST)](/rest/api/searchservice/create-skillset)

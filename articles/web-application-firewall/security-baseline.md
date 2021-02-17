@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581248"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azures säkerhets bas linje för Azure Web Application-brandvägg
 
@@ -111,9 +111,9 @@ Välj Azure PowerShell eller Azure CLI för att söka efter eller utföra åtgä
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks inställningar och resurser som är relaterade till dina Azure Web Application FIREWALL (WAF)-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks inställningar eller resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -153,9 +153,9 @@ Azure Sentinel har en inbyggd Azure WAF-arbetsbok som ger en översikt över sä
 
 - [Loggnings översikt](ag/ag-overview.md#logging)
 
-- [Översikt över Azure Monitor logg fråga](../azure-monitor/log-query/log-query-overview.md)
+- [Översikt över Azure Monitor logg fråga](../azure-monitor/logs/log-query-overview.md)
 
-- [Översikt över Azures plattforms loggar](../azure-monitor/platform/platform-logs-overview.md)
+- [Översikt över Azures plattforms loggar](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -192,9 +192,9 @@ Azure Sentinel har en inbyggd arbets WAF för brand Väggs händelser, som ger e
 
 **Vägledning**: Aktivera diagnostikinställningar för Azure aktivitets logg, samt diagnostikinställningar för Azure-WAF, och skicka loggarna till en Log Analytics-arbetsyta. Utför frågor i Log Analytics för att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på insamlade data. Skapa aviseringar för avvikande aktivitet baserat på WAF mått. Till exempel, om blockerat antal begär Anden som överstiger "X", "Y".
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Så här skapar du aviseringar i Azure](../azure-monitor/learn/tutorial-response.md)
+- [Så här skapar du aviseringar i Azure](../azure-monitor/alerts/tutorial-response.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

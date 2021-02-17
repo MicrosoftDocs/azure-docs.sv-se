@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318988"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587368"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights agent (tidigare namngiven Statusövervakare v2): detaljerade anvisningar
 
@@ -160,7 +160,7 @@ Om du av någon anledning inte kan ansluta till PowerShell-modulen kan du hämta
 
 1. Gå till https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 2. Välj den senaste versionen av filen i tabellen **versions historik** .
-3. Under **installations alternativ**väljer du **manuell nedladdning**.
+3. Under **installations alternativ** väljer du **manuell nedladdning**.
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>Alternativ 1: installera i en katalog med PowerShell-moduler
 Installera den manuellt hämtade PowerShell-modulen i en PowerShell-katalog så att den kan identifieras av PowerShell-sessioner.
@@ -231,9 +231,9 @@ En detaljerad beskrivning av hur du använder den här cmdleten finns i [API-ref
 
  Visa telemetrin:
 
-- [Utforska mått](../platform/metrics-charts.md) för att övervaka prestanda och användning.
+- [Utforska mått](../essentials/metrics-charts.md) för att övervaka prestanda och användning.
 - [Sök efter händelser och loggar](./diagnostic-search.md) för att diagnostisera problem.
-- [Använd Analytics](../log-query/log-query-overview.md) för mer avancerade frågor.
+- [Använd Analytics](../logs/log-query-overview.md) för mer avancerade frågor.
 - [Skapa instrument paneler](./overview-dashboard.md).
 
  Lägg till mer telemetri:

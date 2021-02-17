@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c1c247d8fb248c5e6d548dd04af1c3d08a4e76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86219971"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588328"
 ---
 # <a name="notification-hubs-templates"></a>Notification Hubs mallar
 
@@ -108,7 +108,6 @@ Mallen för en dags prognos med Celsius-temperaturer är följande:
 
 Meddelandet som skickas till Notification Hub innehåller alla följande egenskaper:
 
-```html
 <table border="1">
 
 <tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
@@ -117,7 +116,6 @@ Meddelandet som skickas till Notification Hub innehåller alla följande egenska
 
 <tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
-```
 
 Genom att använda det här mönstret skickar Server delen bara ett enda meddelande utan att behöva lagra vissa anpassnings alternativ för användarna i appen. Följande bild illustrerar det här scenariot:
 
@@ -145,7 +143,7 @@ Följande tabell visar det språk som tillåts i mallar:
 
 Uttrycken kan vara något av de föregående formulären.
 
-När du använder sammanfogning måste hela uttrycket omges av `{}` . Exempelvis `{$(prop) + ‘ - ’ + $(prop2)}`.
+När du använder sammanfogning måste hela uttrycket omges av `{}` . Till exempel `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Följande mall är till exempel inte en giltig XML-mall:
 

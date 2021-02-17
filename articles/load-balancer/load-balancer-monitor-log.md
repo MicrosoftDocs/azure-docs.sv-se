@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785828"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596800"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor loggar för Azure Standard Load Balancer
 
@@ -63,7 +63,7 @@ Aktivitetsloggning är automatiskt aktiverad för alla Resource Manager-resurser
      5. I list rutan **Välj princip namn för händelse hubb** väljer du namnet.
      6. Välj **OK**.
 
-   * **Skicka till Log Analytics**. Du behöver redan ha en Log Analytics-arbetsyta skapad och konfigurerad för den här processen. Om du vill skapa en Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+   * **Skicka till Log Analytics**. Du behöver redan ha en Log Analytics-arbetsyta skapad och konfigurerad för den här processen. Om du vill skapa en Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
      1. Markera kryssrutan **Skicka till Log Analytics**.
      2. I list rutan **prenumeration** väljer du den prenumeration där Log Analytics arbets ytan är.
      3. I list rutan **Log Analytics arbets yta** väljer du arbets ytan.
@@ -100,10 +100,10 @@ Om du exporterar till Storage ansluter du till ditt lagrings konto och hämtar J
 > Om du är bekant med Visual Studio och grundläggande begrepp för att ändra värden för konstanter och variabler i C#, kan du använda [verktygen för logg konverterare](https://github.com/Azure-Samples/networking-dotnet-log-converter) som är tillgängliga från GitHub.
 
 ## <a name="stream-to-an-event-hub"></a>Strömma till en händelsehubb
-När diagnostikinformation strömmas till en Event Hub kan du använda den för centraliserad logg analys i ett partner SIEM-verktyg med Azure Monitor-integrering. Mer information finns i [Stream Azure Monitoring data to Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
+När diagnostikinformation strömmas till en Event Hub kan du använda den för centraliserad logg analys i ett partner SIEM-verktyg med Azure Monitor-integrering. Mer information finns i [Stream Azure Monitoring data to Event Hub](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration).
 
 ## <a name="send-to-log-analytics"></a>Skicka till Log Analytics
-Du kan skicka diagnostisk information för resurser i Azure direkt till en Log Analytics-arbetsyta. På arbets ytan kan du köra komplexa frågor mot informationen för fel sökning och analys. Mer information finns i [samla in Azures resurs loggar i en Log Analytics arbets yta i Azure Monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Du kan skicka diagnostisk information för resurser i Azure direkt till en Log Analytics-arbetsyta. På arbets ytan kan du köra komplexa frågor mot informationen för fel sökning och analys. Mer information finns i [samla in Azures resurs loggar i en Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ## <a name="limitations"></a>Begränsningar
 Export funktionen mått till-loggar för Azure Load Balancer har följande begränsningar:

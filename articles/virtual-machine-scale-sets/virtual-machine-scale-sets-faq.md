@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016717"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587951"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Vanliga frågor och svar om Virtual Machine Scale Sets
 
@@ -71,15 +71,15 @@ Ja! Mer information finns i avsnittet om [skalnings uppsättnings zon](./virtual
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Vad är bästa praxis för Azure autoskalning?
 
-För bästa praxis för automatisk skalning, se [metod tips för automatisk skalning av virtuella datorer](../azure-monitor/platform/autoscale-best-practices.md).
+För bästa praxis för automatisk skalning, se [metod tips för automatisk skalning av virtuella datorer](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Var hittar jag mått namn för automatisk skalning som använder värdbaserade mått?
 
-För mått namn för automatisk skalning som använder värdbaserade mått, se [mått som stöds med Azure Monitor](../azure-monitor/platform/metrics-supported.md).
+För mått namn för automatisk skalning som använder värdbaserade mått, se [mått som stöds med Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Finns det några exempel på autoskalning baserat på ett Azure Service Bus ämne och Kölängd?
 
-Ja. Exempel på automatisk skalning baserat på ett Azure Service Bus ämne och Kölängd finns i [Azure Monitor autoskalning av vanliga mått](../azure-monitor/platform/autoscale-common-metrics.md).
+Ja. Exempel på automatisk skalning baserat på ett Azure Service Bus ämne och Kölängd finns i [Azure Monitor autoskalning av vanliga mått](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 För en Service Bus kö använder du följande JSON:
 
@@ -104,9 +104,9 @@ Ersätt exempel värden med dina resurs-URI: er (Uniform Resource Identifier).
 
 Du kan skapa en inställning för autoskalning på en virtuell dator för att använda mått på värdnivå eller gästbaserade mått.
 
-En lista över mått som stöds finns i [Azure Monitor autoskalning av vanliga mått](../azure-monitor/platform/autoscale-common-metrics.md).
+En lista över mått som stöds finns i [Azure Monitor autoskalning av vanliga mått](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
-Ett fullständigt exempel för skalnings uppsättningar för virtuella datorer finns i [Avancerad konfiguration av automatisk skalning med hjälp av Resource Manager-mallar för skalnings uppsättningar för virtuella datorer](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
+Ett fullständigt exempel för skalnings uppsättningar för virtuella datorer finns i [Avancerad konfiguration av automatisk skalning med hjälp av Resource Manager-mallar för skalnings uppsättningar för virtuella datorer](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md).
 
 Exemplet använder CPU-mått på värdnivå och måttet för antalet meddelanden.
 
@@ -114,13 +114,13 @@ Exemplet använder CPU-mått på värdnivå och måttet för antalet meddelanden
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Hur gör jag för att ange varnings regler för en skalnings uppsättning för virtuella datorer?
 
-Du kan skapa aviseringar för mått för skalnings uppsättningar för virtuella datorer via PowerShell eller Azure CLI. Mer information finns i [Azure Monitor PowerShell snabb starts exempel](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) och [Azure Monitor cross-platform CLI snabb starts exempel](../azure-monitor/samples/cli-samples.md#work-with-alerts).
+Du kan skapa aviseringar för mått för skalnings uppsättningar för virtuella datorer via PowerShell eller Azure CLI. Mer information finns i [Azure Monitor PowerShell snabb starts exempel](../azure-monitor/powershell-samples.md#create-metric-alerts) och [Azure Monitor cross-platform CLI snabb starts exempel](../azure-monitor/cli-samples.md#work-with-alerts).
 
 TargetResourceId för den virtuella datorns skalnings uppsättning ser ut så här:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Du kan välja en prestanda räknare för virtuella datorer som måttet för att ange en avisering för. Mer information finns i [gäst operativ systemets mått för Resource Manager-baserade virtuella Windows-datorer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) och [gäst operativ system mått för virtuella Linux-datorer](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) i artikeln [Azure Monitor autoskalning av vanliga mått](../azure-monitor/platform/autoscale-common-metrics.md) .
+Du kan välja en prestanda räknare för virtuella datorer som måttet för att ange en avisering för. Mer information finns i [gäst operativ systemets mått för Resource Manager-baserade virtuella Windows-datorer](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) och [gäst operativ system mått för virtuella Linux-datorer](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms) i artikeln [Azure Monitor autoskalning av vanliga mått](../azure-monitor/autoscale/autoscale-common-metrics.md) .
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hur gör jag för att konfigurera autoskalning på en skalnings uppsättning för virtuella datorer med hjälp av PowerShell?
 

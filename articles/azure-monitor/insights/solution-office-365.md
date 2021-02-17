@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807758"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587310"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-hanterings lösning i Azure (för hands version)
 
@@ -118,7 +118,7 @@ Med hanterings lösningen för Office 365 kan du övervaka din Office 365-miljö
 - Övervaka administratörs aktiviteter för att spåra konfigurations ändringar eller åtgärder med hög behörighet.
 - Identifiera och undersök oönskade användar beteenden, som kan anpassas efter organisationens behov.
 - Demonstrera granskning och efterlevnad. Du kan till exempel övervaka fil åtkomst åtgärder på konfidentiella filer, vilket kan hjälpa dig med gransknings-och efterlevnads processen.
-- Utför drift fel sökning genom att använda [logg frågor](../log-query/log-query-overview.md) ovanpå Office 365-aktivitets data i din organisation.
+- Utför drift fel sökning genom att använda [logg frågor](../logs/log-query-overview.md) ovanpå Office 365-aktivitets data i din organisation.
 
 
 ## <a name="uninstall"></a>Avinstallera
@@ -473,6 +473,6 @@ Följande tabell innehåller exempel på logg frågor för uppdaterings poster s
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Använd [logg frågor i Azure Monitor](../log-query/log-query-overview.md) om du vill visa detaljerade uppdaterings data.
-* [Skapa dina egna instrument paneler](../learn/tutorial-logs-dashboards.md) för att visa dina favorit Sök frågor för Office 365.
-* [Skapa aviseringar](../platform/alerts-overview.md) för att proaktivt meddela viktiga Office 365-aktiviteter.  
+* Använd [logg frågor i Azure Monitor](../logs/log-query-overview.md) om du vill visa detaljerade uppdaterings data.
+* [Skapa dina egna instrument paneler](../visualize/tutorial-logs-dashboards.md) för att visa dina favorit Sök frågor för Office 365.
+* [Skapa aviseringar](../alerts/alerts-overview.md) för att proaktivt meddela viktiga Office 365-aktiviteter.  

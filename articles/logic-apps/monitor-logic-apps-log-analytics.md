@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
-ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d72e3ffc8698d9f3a2df170bd87f2969475ca9ed
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333961"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580689"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Konfigurera Azure Monitor loggar och samla in diagnostikdata för Azure Logic Apps
 
-För att få bättre fel söknings information om dina Logi Kap par under körningen kan du konfigurera och använda [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md) för att registrera och lagra information om körnings data och händelser, till exempel utlösa händelser, köra händelser och åtgärds händelser i en [Log Analytics arbets yta](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). [Azure Monitor](../azure-monitor/overview.md) hjälper dig att övervaka molnet och lokala miljöer så att du enklare kan underhålla deras tillgänglighet och prestanda. Genom att använda Azure Monitor loggar kan du skapa [logg frågor](../azure-monitor/log-query/log-query-overview.md) som hjälper dig att samla in och granska den här informationen. Du kan också [använda dessa diagnostikdata med andra Azure-tjänster](#extend-data), till exempel Azure Storage och Azure Event Hubs.
+För att få bättre fel söknings information om dina Logi Kap par under körningen kan du konfigurera och använda [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md) för att registrera och lagra information om körnings data och händelser, till exempel utlösa händelser, köra händelser och åtgärds händelser i en [Log Analytics arbets yta](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). [Azure Monitor](../azure-monitor/overview.md) hjälper dig att övervaka molnet och lokala miljöer så att du enklare kan underhålla deras tillgänglighet och prestanda. Genom att använda Azure Monitor loggar kan du skapa [logg frågor](../azure-monitor/logs/log-query-overview.md) som hjälper dig att samla in och granska den här informationen. Du kan också [använda dessa diagnostikdata med andra Azure-tjänster](#extend-data), till exempel Azure Storage och Azure Event Hubs.
 
 Om du vill konfigurera loggning för din Logi Kap par kan du [aktivera Log Analytics när du skapar din Logic app](#logging-for-new-logic-apps), eller så kan du [Installera Logic Apps hanterings lösningen](#install-management-solution) i din Log Analytics arbets yta för befintliga Logi Kap par. Den här lösningen ger aggregerad information för din Logi Kap par och innehåller information som status, körnings tid, status för återsändning och korrelations-ID. Om du vill aktivera loggning och skapa frågor för den här informationen [konfigurerar du Azure Monitor loggar](#set-up-resource-logs).
 
@@ -23,7 +23,7 @@ Den här artikeln visar hur du aktiverar Log Analytics på nya Logi Kap par och 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du börjar måste du ha en [Log Analytics-arbetsyta](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Om du inte har en arbets yta, lär du dig [hur du skapar en arbets yta för Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+Innan du börjar måste du ha en [Log Analytics-arbetsyta](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Om du inte har en arbets yta, lär du dig [hur du skapar en arbets yta för Log Analytics](../azure-monitor/logs/quick-create-workspace.md).
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -33,7 +33,7 @@ Du kan aktivera Log Analytics när du skapar din Logic app.
 
 1. I [Azure Portal](https://portal.azure.com), i fönstret där du anger informationen för att skapa din Logi Kap par, följer du dessa steg:
 
-   1. Under **Log Analytics**väljer du **på**.
+   1. Under **Log Analytics** väljer du **på**.
 
    1. I listan **Log Analytics arbets yta** väljer du den arbets yta där du vill skicka data från din Logic app-körningar.
 
@@ -55,7 +55,7 @@ Om du har aktiverat Log Analytics när du skapade din Logic app, hoppar du över
 
    ![Välj Log Analytics arbets ytor](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
-1. Under **Log Analytics arbets ytor**väljer du din arbets yta.
+1. Under **Log Analytics arbets ytor** väljer du din arbets yta.
 
    ![Välj din Log Analytics arbets yta](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
@@ -63,7 +63,7 @@ Om du har aktiverat Log Analytics när du skapade din Logic app, hoppar du över
 
    ![I översikts fönstret väljer du "Visa lösningar"](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
-1. Under **Översikt**väljer du **Lägg till**.
+1. Under **Översikt** väljer du **Lägg till**.
 
    ![Lägg till ny lösning i översikts fönstret](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
@@ -87,7 +87,7 @@ Om du har aktiverat Log Analytics när du skapade din Logic app, hoppar du över
 
 ## <a name="set-up-azure-monitor-logs"></a>Konfigurera Azure Monitor loggar
 
-När du lagrar information om körnings händelser och data i [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md)kan du skapa [logg frågor](../azure-monitor/log-query/log-query-overview.md) som hjälper dig att hitta och granska den här informationen.
+När du lagrar information om körnings händelser och data i [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md)kan du skapa [logg frågor](../azure-monitor/logs/log-query-overview.md) som hjälper dig att hitta och granska den här informationen.
 
 > [!NOTE]
 > När du har aktiverat diagnostikinställningar kanske inte diagnostikdata flödar upp till 30 minuter till loggarna på det angivna målet, till exempel Log Analytics, händelsehubben eller lagrings konto. Den här fördröjningen innebär att diagnostikdata från den här tids perioden kanske inte finns för dig att granska. Slutförda händelser och [spårade egenskaper](#extend-data) kanske inte visas i Log Analytics arbets ytan i 10-15 minuter.
@@ -104,13 +104,13 @@ När du lagrar information om körnings händelser och data i [Azure Monitor log
 
    1. Välj **Skicka till Log Analytics**.
 
-   1. För **prenumeration**väljer du den Azure-prenumeration som är kopplad till din Log Analytics-arbetsyta.
+   1. För **prenumeration** väljer du den Azure-prenumeration som är kopplad till din Log Analytics-arbetsyta.
 
-   1. För **Log Analytics arbets yta**väljer du den arbets yta som du vill använda.
+   1. För **Log Analytics arbets yta** väljer du den arbets yta som du vill använda.
 
-   1. Under **logg**väljer du kategorin **WorkflowRuntime** , som anger den händelse kategori som du vill spela in.
+   1. Under **logg** väljer du kategorin **WorkflowRuntime** , som anger den händelse kategori som du vill spela in.
 
-   1. Om du vill välja alla mått under **mått**väljer du **AllMetrics**.
+   1. Om du vill välja alla mått under **mått** väljer du **AllMetrics**.
 
    1. När du är klar väljer du **Spara**.
 
@@ -178,10 +178,10 @@ När din Logic app har körts kan du visa data om de som körs i din Log Analyti
 
 Tillsammans med Azure Monitor loggar kan du utöka hur du använder dina Logic Apps diagnostikdata med andra Azure-tjänster, till exempel:
 
-* [Arkivera Azures resurs loggar till lagrings kontot](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-* [Strömma Azure-plattforms loggar till Azure Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
+* [Arkivera Azures resurs loggar till lagrings kontot](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+* [Strömma Azure-plattforms loggar till Azure Event Hubs](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
 
-Du kan sedan få real tids övervakning genom att använda telemetri och analys från andra tjänster, t. ex. [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) och [Power BI](../azure-monitor/platform/powerbi.md). Exempel:
+Du kan sedan få real tids övervakning genom att använda telemetri och analys från andra tjänster, t. ex. [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) och [Power BI](../azure-monitor/visualize/powerbi.md). Exempel:
 
 * [Strömma data från Event Hubs till Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysera strömmande data med Stream Analytics och skapa en instrument panel för real tids analys i Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -194,7 +194,7 @@ Se till att du först [skapar ett Azure Storage-konto](../storage/common/storage
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor Diagnostics-händelser
 
-Varje diagnostisk händelse innehåller information om din Logic app och händelsen, till exempel status, start tid, slut tid och så vidare. Om du vill konfigurera övervakning, spårning och loggning program mässigt kan du använda den här informationen med [REST API för Azure Logic Apps](/rest/api/logic) och [REST API för Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). Du kan också använda `clientTrackingId` -och `trackedProperties` -egenskaperna, som visas i 
+Varje diagnostisk händelse innehåller information om din Logic app och händelsen, till exempel status, start tid, slut tid och så vidare. Om du vill konfigurera övervakning, spårning och loggning program mässigt kan du använda den här informationen med [REST API för Azure Logic Apps](/rest/api/logic) och [REST API för Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftlogicworkflows). Du kan också använda `clientTrackingId` -och `trackedProperties` -egenskaperna, som visas i 
 
 * `clientTrackingId`: Om inget annat anges genererar Azure automatiskt detta ID och korrelerar händelser i en Logic app-körning, inklusive eventuella kapslade arbets flöden som anropas från Logic app. Du kan manuellt ange detta ID i en utlösare genom att skicka ett `x-ms-client-tracking-id` huvud med ditt eget ID-värde i trigger-begäran. Du kan använda en begär ande utlösare, HTTP-utlösare eller webhook-utlösare.
 

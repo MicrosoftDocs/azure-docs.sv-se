@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cba362004e764ffbbc734fb06c8898f380ffdf88
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596496"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azures säkerhets bas linje för offentlig Azure-IP
 
@@ -52,7 +52,7 @@ Offentlig IP innehåller verktyg för att övervaka, diagnostisera, Visa mått o
 
 Du kan i stället aktivera och använda data till Azure Sentinel eller en SIEM från tredje part.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -64,7 +64,7 @@ Du kan i stället aktivera och använda data till Azure Sentinel eller en SIEM f
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera ändringar för dina offentliga IP-instanser. Förutom kontroll planet (till exempel Azure Portal) genererar själva offentliga IP inte gransknings loggar. Offentlig IP innehåller verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -74,7 +74,7 @@ Du kan i stället aktivera och använda data till Azure Sentinel eller en SIEM f
 
 **Vägledning**: Använd Azure Monitor för att ställa in logg kvarhållningsperiod för de Log Analytics arbets ytorna som är kopplade till offentliga IP-instanser enligt organisationens krav på efterlevnad.
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -88,7 +88,7 @@ Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera
 
 Offentliga IP-adresser genererar inte loggar som rör annan nätverks trafik än vid kontroll planet (till exempel Azure Portal).
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

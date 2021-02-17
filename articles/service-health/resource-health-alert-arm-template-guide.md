@@ -3,18 +3,18 @@ title: Mall för att skapa Resource Health aviseringar
 description: Skapa aviseringar program mässigt som meddelar dig när dina Azure-resurser blir otillgängliga.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537437"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588199"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurera resurshälsoaviseringar med Resource Manager-mallar
 
 I den här artikeln får du lära dig hur du skapar Resource Health aktivitets logg aviseringar via programmering med hjälp av Azure Resource Manager mallar och Azure PowerShell.
 
-Azure Resource Health håller dig informerad om aktuella och historiska hälso status för dina Azure-resurser. Azure Resource Health aviseringar kan meddela dig nästan i real tid när resurserna har en ändring i deras hälso status. Skapa Resource Health aviseringar program mässigt tillåta att användare skapar och anpassar aviseringar i flera.
+Azure Resource Health håller dig informerad om aktuella och historiska hälso status för dina Azure-resurser. Azure Resource Health-avisering kan meddela dig i nästan realtid när dessa resurser har en ändring i sin hälsostatus. Skapa Resource Health aviseringar program mässigt tillåta att användare skapar och anpassar aviseringar i flera.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -23,7 +23,7 @@ Azure Resource Health håller dig informerad om aktuella och historiska hälso s
 Om du vill följa instruktionerna på den här sidan måste du konfigurera några saker i förväg:
 
 1. Du måste installera Azure PowerShell- [modulen](/powershell/azure/install-az-ps)
-2. Du måste [skapa eller återanvända en åtgärds grupp](../azure-monitor/platform/action-groups.md) som kon figurer ATS för att meddela dig
+2. Du måste [skapa eller återanvända en åtgärds grupp](../azure-monitor/alerts/action-groups.md) som kon figurer ATS för att meddela dig
 
 ## <a name="instructions"></a>Instruktioner
 1. Använd PowerShell för att logga in på Azure med ditt konto och välj den prenumeration som du vill interagera med
@@ -452,4 +452,4 @@ Läs mer om Resource Health:
 
 Skapa Service Health aviseringar:
 -  [Konfigurera aviseringar för Service Health](./alerts-activity-log-service-notifications-portal.md) 
--  [Händelse schema för Azure aktivitets logg](../azure-monitor/platform/activity-log-schema.md)
+-  [Händelse schema för Azure aktivitets logg](../azure-monitor/essentials/activity-log-schema.md)
