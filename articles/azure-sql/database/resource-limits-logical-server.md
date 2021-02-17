@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492407"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588755"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resurs gränser för Azure SQL Database-och Azure Synapse Analytics-servrar
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -97,7 +97,7 @@ När du ska räkna ut minnes fel visas följande alternativ för minskning:
 - Öka tjänst nivån eller beräknings storleken för databasen eller den elastiska poolen. Se [skala resurser för enkel databas](single-database-scale.md) och [skala elastiska pooler](elastic-pool-scale.md).
 - Optimera frågor och konfiguration för att minska minnes användningen. Vanliga lösningar beskrivs i följande tabell.
 
-|Lösning|Beskrivning|
+|Lösning|Description|
 | :----- | :----- |
 |Minska storleken på minnes bidrag|Mer information om minnes bidrag finns i blogg inlägget om att [förstå SQL Server minnes tilldelning](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . En vanlig lösning för att undvika alltför stora minnes bidrag håller [statistiken](/sql/relational-databases/statistics/statistics) uppdaterad. Detta resulterar i mer exakta uppskattningar av minnes förbrukning av frågemotor, vilket undviker onödigt stora minnes bidrag.</br></br>I databaser som använder kompatibilitetsnivå 140 och senare, kan databas motorn automatiskt justera minnes tilldelningens storlek med hjälp av [återkoppling i batch-läge](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). I databaser som använder kompatibilitetsnivå 150 och senare, använder databas motorn samma [återkoppling i rad läge](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)för att ge fler vanliga frågor om rad läge. Den här inbyggda funktionen hjälper till att undvika minnes brists fel på grund av onödigt stora minnes bidrag.|
 |Minska storleken på cachen för frågeplan|Databas motorn cachelagrar fråge planer i minnet för att undvika att kompilera en frågeplan för varje frågekörningen. För att undvika överdriven storlek av frågor som orsakas av programplaner som bara används en gång, aktiverar du den OPTIMIZE_FOR_AD_HOC_WORKLOADS [databas-omfångs konfigurationen](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|
@@ -106,11 +106,11 @@ När du ska räkna ut minnes fel visas följande alternativ för minskning:
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Resursförbrukning efter användar arbets belastningar och interna processer
 
-PROCESSOR-och minnes förbrukning av användar arbets belastningar i varje databas rapporteras i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer, i `avg_cpu_percent` och `avg_memory_usage_percent` kolumner. För elastiska pooler rapporteras resursförbrukning på resurs nivå i vyn [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . CPU-förbrukningen för användar arbets belastningen rapporteras också via `cpu_percent` Azure Monitors mått, för [enskilda databaser](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) och [elastiska pooler](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) på Poolnivå.
+PROCESSOR-och minnes förbrukning av användar arbets belastningar i varje databas rapporteras i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer, i `avg_cpu_percent` och `avg_memory_usage_percent` kolumner. För elastiska pooler rapporteras resursförbrukning på resurs nivå i vyn [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . CPU-förbrukningen för användar arbets belastningen rapporteras också via `cpu_percent` Azure Monitors mått, för [enskilda databaser](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) och [elastiska pooler](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) på Poolnivå.
 
 Azure SQL Database kräver beräknings resurser för att implementera grundläggande tjänst funktioner, till exempel hög tillgänglighet och haveri beredskap, säkerhets kopiering och återställning av databasen, övervakning, Frågearkivet, automatisk justering osv. Systemet tar undan en viss begränsad del av de övergripande resurserna för dessa interna processer med hjälp av [resurs styrnings](#resource-governance) metoder, vilket gör resten av resurser tillgängliga för användar arbets belastningar. Vid tillfällen då interna processer inte använder beräknings resurser gör systemet dem tillgängliga för användar arbets belastningar.
 
-Total processor-och minnes förbrukning för användar arbets belastningar och interna processer rapporteras i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer, i `avg_instance_cpu_percent` och `avg_instance_memory_percent` kolumner. Dessa data rapporteras även via `sqlserver_process_core_percent` och `sqlserver_process_memory_percent` Azure Monitor mått för [enskilda databaser](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases) och [elastiska pooler](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools) på Poolnivå.
+Total processor-och minnes förbrukning för användar arbets belastningar och interna processer rapporteras i [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) och [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vyer, i `avg_instance_cpu_percent` och `avg_instance_memory_percent` kolumner. Dessa data rapporteras även via `sqlserver_process_core_percent` och `sqlserver_process_memory_percent` Azure Monitor mått för [enskilda databaser](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases) och [elastiska pooler](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) på Poolnivå.
 
 En mer detaljerad analys av den senaste resurs förbrukningen för användar arbets belastningar och interna processer rapporteras i [sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) och [sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) vyer. Mer information om resurspooler och arbets belastnings grupper som refereras till i dessa vyer finns i [resurs styrning](#resource-governance). De här vyerna rapporterar om resursutnyttjande av användar arbets belastningar och speciella interna processer i de associerade resurspooler och arbets belastnings grupper.
 

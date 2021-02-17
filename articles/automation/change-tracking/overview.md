@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572618"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Översikt över Ändringsspårning och inventering
 
@@ -34,9 +34,9 @@ I den här artikeln beskrivs hur du Ändringsspårning och inventering i Azure A
 
 Att aktivera alla funktioner som ingår i Ändringsspårning och inventering kan orsaka ytterligare kostnader. Läs igenom [priserna för automatisering](https://azure.microsoft.com/pricing/details/automation/) och [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/)innan du fortsätter.
 
-Ändringsspårning och lagret vidarebefordrar data till Azure Monitor loggar och dessa insamlade data lagras i en Log Analytics arbets yta. FIM-funktionen (File Integrity Monitoring) är bara tillgänglig när **Azure Defender för-servrar** har Aktiver ATS. Mer information finns i Azure Security Center [prissättning](../../security-center/security-center-pricing.md) . FIM överför data till samma Log Analytics-arbetsyta som den som skapades för att lagra data från Ändringsspårning och inventering. Vi rekommenderar att du övervakar den länkade Log Analytics arbets ytan för att hålla reda på din exakta användning. Mer information om hur du analyserar Azure Monitor loggar data användning finns i [Hantera användning och kostnad](../../azure-monitor/platform/manage-cost-storage.md).
+Ändringsspårning och lagret vidarebefordrar data till Azure Monitor loggar och dessa insamlade data lagras i en Log Analytics arbets yta. FIM-funktionen (File Integrity Monitoring) är bara tillgänglig när **Azure Defender för-servrar** har Aktiver ATS. Mer information finns i Azure Security Center [prissättning](../../security-center/security-center-pricing.md) . FIM överför data till samma Log Analytics-arbetsyta som den som skapades för att lagra data från Ändringsspårning och inventering. Vi rekommenderar att du övervakar den länkade Log Analytics arbets ytan för att hålla reda på din exakta användning. Mer information om hur du analyserar Azure Monitor loggar data användning finns i [Hantera användning och kostnad](../../azure-monitor/logs/manage-cost-storage.md).
 
-Datorer som är anslutna till Log Analytics arbets ytan använder [Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) för att samla in data om ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar. När data är tillgängliga skickar agenten den till Azure Monitor loggar för bearbetning. Azure Monitor loggar använder logik till mottagna data, registrerar dem och gör dem tillgängliga för analys.
+Datorer som är anslutna till Log Analytics arbets ytan använder [Log Analytics agent](../../azure-monitor/agents/log-analytics-agent.md) för att samla in data om ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar. När data är tillgängliga skickar agenten den till Azure Monitor loggar för bearbetning. Azure Monitor loggar använder logik till mottagna data, registrerar dem och gör dem tillgängliga för analys.
 
 > [!NOTE]
 > Ändringsspårning och inventeringen kräver att en Log Analytics arbets yta länkas till ditt Automation-konto. En slutgiltig lista över regioner som stöds finns i [mappningar för Azure-arbetsytor](../how-to/region-mappings.md). Region mappningarna påverkar inte möjligheten att hantera virtuella datorer i en separat region från ditt Automation-konto.
@@ -48,7 +48,7 @@ Datorer som är anslutna till Log Analytics arbets ytan använder [Log Analytics
 - Rekursion för spårning av Windows-register
 - Nätverks fil system
 - Olika installations metoder
-- **_. exe_* -filer som lagras i Windows
+- ***. exe** -filer som lagras i Windows
 - Kolumnen **maximal fil storlek** och värden används inte i den aktuella implementeringen.
 - Om du försöker samla in fler än 2500 filer på en 30-minuters samlings cykel kan Ändringsspårning och inventerings prestanda försämras.
 - Om nätverks trafiken är hög kan ändrings poster ta upp till sex timmar innan de visas.
@@ -58,7 +58,7 @@ Datorer som är anslutna till Log Analytics arbets ytan använder [Log Analytics
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
-Ändringsspårning och inventering stöds på alla operativ system som uppfyller Log Analytics agent krav. Se [operativ system som stöds](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) för en lista över Windows-och Linux-operativsystem som för närvarande stöds av den Log Analytics agenten.
+Ändringsspårning och inventering stöds på alla operativ system som uppfyller Log Analytics agent krav. Se [operativ system som stöds](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) för en lista över Windows-och Linux-operativsystem som för närvarande stöds av den Log Analytics agenten.
 
 Information om klient kraven för TLS 1,2 finns i [TLS 1,2 Enforcement för Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -159,7 +159,7 @@ I följande tabell visas gränserna för spårade objekt per dator för Ändring
 |Tjänster|250|
 |Daemons|250|
 
-Genomsnitts Log Analytics data användningen för en dator som använder Ändringsspårning och inventering är cirka 40 MB per månad, beroende på din miljö. Med funktionen användning och uppskattade kostnader i arbets ytan Log Analytics kan du visa data som matas in av Ändringsspårning och inventering i ett användnings diagram. Använd den här datavyn för att utvärdera din data användning och ta reda på hur den påverkar din faktura. Se [förstå användningen och beräkna kostnaderna](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
+Genomsnitts Log Analytics data användningen för en dator som använder Ändringsspårning och inventering är cirka 40 MB per månad, beroende på din miljö. Med funktionen användning och uppskattade kostnader i arbets ytan Log Analytics kan du visa data som matas in av Ändringsspårning och inventering i ett användnings diagram. Använd den här datavyn för att utvärdera din data användning och ta reda på hur den påverkar din faktura. Se [förstå användningen och beräkna kostnaderna](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft-tjänstedata
 

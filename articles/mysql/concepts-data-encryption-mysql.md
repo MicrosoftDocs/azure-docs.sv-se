@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518812"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596326"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL data kryptering med en kundhanterad nyckel
 
@@ -118,7 +118,7 @@ Konfigurera följande Azure-funktioner för att övervaka databasens tillstånd 
 * [Azure Resource Health](../service-health/resource-health-overview.md): en oåtkomlig databas som har förlorat åtkomst till kund nyckeln visas som "oåtkomlig" när den första anslutningen till databasen har nekats.
 * [Aktivitets logg](../service-health/alerts-activity-log-service-notifications-portal.md): när åtkomst till kund nyckeln i den kundhanterade Key Vault Miss lyckas, läggs poster till i aktivitets loggen. Du kan återställa åtkomst så snart som möjligt, om du skapar aviseringar för dessa händelser.
 
-* [Åtgärds grupper](../azure-monitor/platform/action-groups.md): definiera de här grupperna för att skicka aviseringar och aviseringar baserat på dina inställningar.
+* [Åtgärds grupper](../azure-monitor/alerts/action-groups.md): definiera de här grupperna för att skicka aviseringar och aviseringar baserat på dina inställningar.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Återställa och replikera med en kunds hanterade nyckel i Key Vault
 

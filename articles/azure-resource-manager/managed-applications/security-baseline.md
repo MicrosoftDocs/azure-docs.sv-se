@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1bcde3f2b1f61fd241143e308a508d5f19e7b0c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090578"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588608"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azures säkerhets bas linje för Azure Managed Applications
 
@@ -415,9 +415,9 @@ Azure Security Center kan också avisera om vissa misstänkta aktiviteter, till 
 
 **Vägledning**: aktivitets loggar, som är automatiskt tillgängliga, innehåller alla Skriv åtgärder (placera, skicka, ta bort) för dina hanterade program resurser förutom Läs åtgärder (get). Aktivitets loggar kan användas för att hitta ett fel när du felsöker eller övervakar hur en användare i organisationen ändrade en resurs.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -432,7 +432,7 @@ Du kan också aktivera och publicera data till Azure Sentinel eller en SIEM frå
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -445,7 +445,7 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 **Vägledning**: kontrol lera att lagrings konton eller Log Analytics arbets ytor som används för att lagra loggar som skapats av dina hanterade program resurser har den logg kvarhållningsperiod som anges enligt organisationens regler för efterlevnad.
 I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage-, Data Lake-eller Log Analytics arbets ytans konton för långsiktig lagring och arkivering.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../../azure-monitor/platform/manage-cost-storage.md)
+- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../../azure-monitor/logs/manage-cost-storage.md)
 
 - [Lagra resurs loggar i ett Azure Storage konto](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

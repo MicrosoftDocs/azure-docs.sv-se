@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201339"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572057"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azures säkerhets bas linje för Azure Cloud Services
 
@@ -175,9 +175,9 @@ Samla in insikter från aktivitets loggen, en plattforms logg i Azure, i händel
 
 Skapa en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor, Azure Event Hubs att vidarebefordra utanför Azure eller till Azure Storage för arkivering. Konfigurera Azure Monitor för aviserings aviseringar när kritiska resurser i Azure-Cloud Services ändras. 
 
-- [Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager övervakning](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Azure Cloud Services kan övervakas av Application Insights för tillgänglighet
 
 - [Aktivera diagnostik i Visual Studio innan du distribuerar](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [Visa ändrings historik](../azure-monitor/platform/activity-log.md#view-change-history)
+- [Visa ändrings historik](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Application Insights för Azure Cloud Service (klassisk)](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Program data som lagras på temporära diskar är inte krypterade. Kunden ansvar
 
 Dessutom kan Application Insights övervaka Azure Cloud Services-appar för tillgänglighet, prestanda, haverier och användning. Detta använder kombinerade data från Application Insights SDK: er med Azure-diagnostik data från Azure-Cloud Services.
 
-- [Skapa, Visa och hantera klassiska mått varningar med Azure Monitor](../azure-monitor/platform/alerts-classic-portal.md)
+- [Skapa, Visa och hantera klassiska mått varningar med Azure Monitor](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [Översikt över mått varningar](../azure-monitor/platform/alerts-metric-overview.md) 
+- [Översikt över mått varningar](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Application Insights för Azure Cloud Service (klassisk)](../azure-monitor/app/cloudservices.md)
 

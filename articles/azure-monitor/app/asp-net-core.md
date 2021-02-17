@@ -4,12 +4,12 @@ description: Övervaka ASP.NET Core webb program för tillgänglighet, prestanda
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249116"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589907"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights för ASP.NET Core program
 
@@ -29,7 +29,10 @@ Exemplet som vi ska använda här är ett [MVC-program](/aspnet/core/tutorials/f
 * **IDE**: Visual Studio, vs Code eller kommando rad.
 
 > [!NOTE]
-> ASP.NET Core 3. X kräver [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) eller senare.
+> ASP.NET Core 3,1 kräver [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) eller senare.
+
+> [!IMPORTANT]
+> Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1 och 3,1. Versionerna 2,0, 2,2 och 3,0 har dragits tillbaka och stöds inte längre.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -110,7 +113,7 @@ För Visual Studio för Mac använder du den [manuella vägledningen](#enable-ap
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Här är några exempel:
+    Exempel:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -125,7 +128,7 @@ För Visual Studio för Mac använder du den [manuella vägledningen](#enable-ap
 
 ### <a name="user-secrets-and-other-configuration-providers"></a>Användar hemligheter och andra konfigurations leverantörer
 
-Om du vill lagra Instrumentation-nyckeln i ASP.NET Core användar hemligheter eller hämta den från en annan Konfigurationsprovider, kan du använda överlagringen med en `Microsoft.Extensions.Configuration.IConfiguration` parameter. Ett exempel är `services.AddApplicationInsightsTelemetry(Configuration);`.
+Om du vill lagra Instrumentation-nyckeln i ASP.NET Core användar hemligheter eller hämta den från en annan Konfigurationsprovider, kan du använda överlagringen med en `Microsoft.Extensions.Configuration.IConfiguration` parameter. Till exempel `services.AddApplicationInsightsTelemetry(Configuration);`.
 Från och med Microsoft. ApplicationInsights. AspNetCore version [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore), `services.AddApplicationInsightsTelemetry()` kommer anrop automatiskt att läsa Instrumentation-nyckeln från `Microsoft.Extensions.Configuration.IConfiguration` programmet. Du behöver inte uttryckligen ange `IConfiguration` .
 
 ## <a name="run-your-application"></a>Köra ditt program

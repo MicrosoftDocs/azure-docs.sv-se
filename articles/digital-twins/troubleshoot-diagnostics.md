@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d988617fcaf7479c7bb3356e6ef6f87824ed23a7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588590"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Felsöka Azure Digitals sammanflätade: diagnostikloggning
 
@@ -35,8 +35,8 @@ Aktivera diagnostikinställningar för att börja samla in loggar på din Azure 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Skärm bild som visar sidan diagnostikinställningar och knappen som ska läggas till" lightbox="media/troubleshoot-diagnostics/diagnostic-settings.png":::
 
 3. Fyll i följande värden på sidan som följer:
-     * **Namn på diagnos inställning** : ge diagnostikinställningar ett namn.
-     * **Kategori information** : Välj vilka åtgärder som du vill övervaka och markera kryss rutorna för att aktivera diagnostik för dessa åtgärder. De åtgärder som diagnostikinställningar kan rapportera om är:
+     * **Namn på diagnos inställning**: ge diagnostikinställningar ett namn.
+     * **Kategori information**: Välj vilka åtgärder som du vill övervaka och markera kryss rutorna för att aktivera diagnostik för dessa åtgärder. De åtgärder som diagnostikinställningar kan rapportera om är:
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -44,7 +44,7 @@ Aktivera diagnostikinställningar för att börja samla in loggar på din Azure 
         - AllMetrics
         
         Mer information om dessa kategorier och den information som de innehåller finns i avsnittet [*logg kategorier*](#log-categories) nedan.
-     * **Mål information** : Välj var du vill skicka loggarna. Du kan välja en valfri kombination av de tre alternativen:
+     * **Mål information**: Välj var du vill skicka loggarna. Du kan välja en valfri kombination av de tre alternativen:
         - Skicka till Log Analytics
         - Arkivera till ett lagringskonto
         - Strömma till en händelsehubb
@@ -57,13 +57,13 @@ Aktivera diagnostikinställningar för att börja samla in loggar på din Azure 
 
 Nya inställningar börjar gälla om 10 minuter. Därefter visas loggar i det konfigurerade målet tillbaka på sidan **diagnostikinställningar** för din instans. 
 
-Mer detaljerad information om diagnostikinställningar och deras installations alternativ finns i [*skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål*](../azure-monitor/platform/diagnostic-settings.md).
+Mer detaljerad information om diagnostikinställningar och deras installations alternativ finns i [*skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål*](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="log-categories"></a>Logg kategorier
 
 Här är mer information om de kategorier av loggar som Azure Digitals samlar in.
 
-| Loggkategori | Beskrivning |
+| Loggkategori | Description |
 | --- | --- |
 | ADTModelsOperation | Logga alla API-anrop som rör modeller |
 | ADTQueryOperation | Logga alla API-anrop som rör frågor |
@@ -77,7 +77,7 @@ Varje logg kategori består av åtgärder av Skriv-, Läs-, borttagnings-och åt
 | Skriva | PLACERING och korrigering |
 | Läs | GET |
 | Ta bort | DELETE |
-| Åtgärd | POST |
+| Action | POST |
 
 Här är en omfattande lista över åtgärderna och motsvarande [Azure Digital-meddelanden REST API samtal](/rest/api/azure-digitaltwins/) som loggas i varje kategori. 
 
@@ -255,10 +255,10 @@ Så här frågar du loggarna efter din instans.
     - Fliken *frågor* innehåller exempel frågor som du kan läsa in i redigeraren.
     - På fliken *filter* kan du anpassa en filtrerad vy av de data som frågan returnerar.
 
-Mer detaljerad information om logg frågor och hur du skriver dem finns [*i Översikt över logg frågor i Azure Monitor*](../azure-monitor/log-query/log-query-overview.md).
+Mer detaljerad information om logg frågor och hur du skriver dem finns [*i Översikt över logg frågor i Azure Monitor*](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du konfigurerar diagnostik finns i [*samla in och använda loggdata från dina Azure-resurser*](../azure-monitor/platform/platform-logs-overview.md).
+* Mer information om hur du konfigurerar diagnostik finns i [*samla in och använda loggdata från dina Azure-resurser*](../azure-monitor/essentials/platform-logs-overview.md).
 * Information om Azure Digitals dubbla mått finns i [*fel sökning: Visa mått med Azure Monitor*](troubleshoot-metrics.md).
 * Information om hur du aktiverar aviseringar för dina mått finns i [*fel sökning: Konfigurera aviseringar*](troubleshoot-alerts.md).

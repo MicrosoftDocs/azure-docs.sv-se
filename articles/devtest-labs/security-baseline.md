@@ -3,12 +3,12 @@ title: Azures säkerhets bas linje för Azure DevTest Labs
 description: Azures säkerhets bas linje för Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789912"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582028"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azures säkerhets bas linje för Azure DevTest Labs
 
@@ -34,7 +34,7 @@ I följande artikel finns information om hur du konfigurerar tidssynkronisering 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurera central hantering av säkerhets loggar
 **Vägledning:** Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure DevTest Labs instanser på hanterings Plans nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på hanterings Plans nivå för dina DevTest Labs-instanser.
 
-Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/platform/diagnostic-settings.md).
+Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center övervakning:** Inte tillgänglig för närvarande
 
@@ -43,7 +43,7 @@ Mer information finns i [skapa diagnostikinställningar för att skicka plattfor
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
 **Vägledning:** Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure DevTest Labs instanser på hanterings Plans nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på hanterings Plans nivå för dina DevTest Labs-instanser.
 
-Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/platform/diagnostic-settings.md).
+Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center övervakning:** Inte tillgänglig för närvarande
 
@@ -54,7 +54,7 @@ Mer information finns i [skapa diagnostikinställningar för att skicka plattfor
 
 Mer information finns i följande artiklar: 
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Förstå Azure Security Center insamling av data](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center övervakning:** Ja
@@ -62,9 +62,9 @@ Mer information finns i följande artiklar:
 **Ansvar:** Kund
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
-**_Vägledning:_* I Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure DevTest Labs instanser enligt organisationens regler för efterlevnad.
+***Vägledning:** I Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure DevTest Labs instanser enligt organisationens regler för efterlevnad.
 
-Mer information finns i följande artikel: [så här anger du parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+Mer information finns i följande artikel: [så här anger du parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center övervakning:** Ej tillämpligt
 
@@ -75,8 +75,8 @@ Mer information finns i följande artikel: [så här anger du parametrar för lo
 
 Mer information finns i följande artiklar:
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/diagnostic-settings.md)
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/diagnostic-settings.md)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center övervakning:** Ej tillämpligt
 
@@ -85,7 +85,7 @@ Mer information finns i följande artiklar:
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: aktivera aviseringar för avvikande aktivitet
 **Vägledning:** Använd Azure Log Analytics-arbetsytan för att övervaka och Avisera om avvikande aktiviteter i säkerhets loggar och händelser relaterade till din Azure DevTest Labs.
 
-Mer information finns i följande artikel: så här [aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+Mer information finns i följande artikel: så här [aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center övervakning:** Inte tillgänglig för närvarande
 
@@ -109,8 +109,8 @@ Mer information finns i följande artikel: så här [aviserar du om Log Analytic
 **Vägledning:** Azure DevTest Labs skapar Azure Compute-datorer som ägs och hanteras av kunden. Använd Microsoft Monitoring Agent på alla virtuella Azure Windows-datorer som stöds för att logga skapande händelsen för processen och `CommandLine` fältet. För virtuella Azure Linux-datorer som stöds kan du manuellt konfigurera konsol loggning per nod och använda syslog för att lagra data. Använd också Azure Monitor Log Analytics arbets ytan för att granska loggar och köra frågor om loggade data från virtuella Azure-datorer.
 
 - [Datainsamling i Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Så här kör du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-- [Syslog-datakällor i Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+- [Så här kör du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+- [Syslog-datakällor i Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center övervakning:** Ja
 
@@ -175,9 +175,9 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 - [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Azure Security Center övervakning:** _ Ja
+**Azure Security Center övervakning:*** Ja
 
-_ *Ansvar:** kund
+**Ansvar:** Kund
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
@@ -353,7 +353,7 @@ Som standard krypteras alla labb operativ system och data diskar med en plattfor
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
 **Vägledning:** Använd Azure Monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i DevTest Labs-instanser och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 - [Skapa aviseringar för DevTest Labs aktivitets logg händelser](create-alerts.md)
 
 **Azure Security Center övervakning:** Ej tillämpligt
@@ -387,7 +387,7 @@ Microsoft utför sårbarhets hantering på de underliggande resurser som har st�
 **Ansvar:** Kund
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: Distribuera automatisk hanterings lösning för program uppdatering från tredje part
-**_Vägledning:_* _ som labb administratör kan du använda [DevTest Labs-artefakter](add-artifact-vm.md) för att automatisera uppdateringar av anpassade labb bilder, inklusive säkerhets korrigeringar och andra uppdateringar. 
+***Vägledning:*** Som labb administratör kan du använda [DevTest Labs-artefakter](add-artifact-vm.md) för att automatisera uppdateringar av anpassade labb bilder, inklusive säkerhets korrigeringar och andra uppdateringar. 
 
 Lär dig mer om [DevTest Labs image Factory](image-factory-create.md), som är en konfigurations-som-kod-lösning som skapar och distribuerar bilder automatiskt regelbundet med alla önskade konfigurationer. 
 
@@ -396,7 +396,7 @@ Som prenumerations administratör kan du också använda Azure Uppdateringshante
 - [Uppdateringshantering lösning i Azure](../automation/update-management/overview.md)
 - [Hantera uppdateringar och korrigeringar för dina virtuella datorer](../automation/update-management/overview.md)
 
-_ *Azure Security Center övervakning:** ej tillämpligt
+**Azure Security Center övervakning:** Ej tillämpligt
 
 **Ansvar:** Kund
 

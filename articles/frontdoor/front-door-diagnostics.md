@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: cd99be40700ab1c34176f2bf7497e4debf5cd424
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483805"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575248"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Övervaka mått och loggar i Azures front dörr
 
@@ -29,7 +29,7 @@ Genom att använda Azures front dörr kan du övervaka resurser på följande s�
 
 Mått är en funktion för vissa Azure-resurser som gör att du kan visa prestanda räknare i portalen. Följande är tillgängliga mått på front dörren:
 
-| Mått | Mått visnings namn | Enhet | Dimensioner | Description |
+| Metric | Mått visnings namn | Enhet | Dimensioner | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Antal begäranden | Antal | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet klient förfrågningar som hanteras av frontend-dörren.  |
 | RequestSize | Begär ande storlek | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet byte som har skickats som begär Anden från klienter till front dörren. |
@@ -38,7 +38,7 @@ Mått är en funktion för vissa Azure-resurser som gör att du kan visa prestan
 | BackendRequestCount | Antal Server dels begär Anden | Antal | HttpStatus</br>HttpStatusGroup</br>Serverdel | Antalet förfrågningar som skickats från Front dörren till Server delar. |
 | BackendRequestLatency | Svars tid för Server del | Millisekunder | Serverdel | Tiden räknat från när begäran skickades av frontend till Server delen tills front dörren fick den senaste svars byten från Server delen. |
 | BackendHealthPercentage | Server delens hälso procent | Procent | Serverdel</br>BackendPool | Procent andelen lyckade hälso avsökningar från Front dörren till Server delar. |
-| WebApplicationFirewallRequestCount | Antal begär Anden om webb programs brand vägg | Antal | PolicyName</br>RuleName</br>Åtgärd | Antalet klient begär Anden som bearbetats av program nivå säkerheten för front dörren. |
+| WebApplicationFirewallRequestCount | Antal begär Anden om webb programs brand vägg | Antal | PolicyName</br>RuleName</br>Action | Antalet klient begär Anden som bearbetats av program nivå säkerheten för front dörren. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Aktivitets loggar
 
@@ -59,7 +59,7 @@ Få åtkomst till aktivitets loggar i din front dörr eller alla loggar för din
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostikloggar
 Diagnostikloggar ger omfattande information om åtgärder och fel som är viktiga för granskning och fel sökning. Diagnostikloggar skiljer sig från aktivitets loggar.
 
-Aktivitets loggar ger insikter om de åtgärder som utförs på Azure-resurser. Diagnostikloggar ger insikter om åtgärder som din resurs har utfört. Mer information finns i [Azure Monitor diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md).
+Aktivitets loggar ger insikter om de åtgärder som utförs på Azure-resurser. Diagnostikloggar ger insikter om åtgärder som din resurs har utfört. Mer information finns i [Azure Monitor diagnostikloggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 :::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Diagnostikloggar":::
 

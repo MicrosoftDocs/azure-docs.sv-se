@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 9561f96dafd936244831cff2ed05cda4d915d27d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 990bd7c21bec0f42034a0044b58d1589665700ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955981"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580153"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Använd PowerShell för att aktivera Azure-diagnostik på en virtuell dator som kör Windows
 
@@ -213,4 +213,4 @@ Konfigurationen måste uppdateras för att inkludera följande:
 
 ## <a name="next-steps"></a>Nästa steg
 * Mer information om hur du använder Azure-diagnostik funktioner och andra tekniker för att felsöka problem finns i [Aktivera diagnostik i Azure Cloud Services och Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Schemat för diagnostikdata](../../azure-monitor/platform/diagnostics-extension-versions.md) förklarar de olika alternativen för XML-konfigurationer för tillägget Diagnostics.
+* [Schemat för diagnostikdata](../../azure-monitor/agents/diagnostics-extension-versions.md) förklarar de olika alternativen för XML-konfigurationer för tillägget Diagnostics.

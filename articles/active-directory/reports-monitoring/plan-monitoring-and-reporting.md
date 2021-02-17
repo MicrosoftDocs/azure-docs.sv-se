@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362407"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577769"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planera en Azure Active Directory rapportering och övervakning av distribution
 
@@ -47,7 +47,7 @@ Med Azure AD-övervakning kan du dirigera loggar till:
 * en Azure-händelsehubben där du kan integrera med dina befintliga SIEM-verktyg som Splunk, SumoLogic eller QRadar.
 
 > [!NOTE]
-Vi började nyligen använda term Azure Monitors loggar i stället för Log Analytics. Loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras fortfarande av samma Log Analytics-tjänst. Vi uppdaterar terminologin för att bättre avspegla rollen för [loggar i Azure Monitor](../../azure-monitor/platform/data-platform.md). Se [Azure Monitor terminologis ändringar](../../azure-monitor/terminology.md) för mer information.
+Vi började nyligen använda term Azure Monitors loggar i stället för Log Analytics. Loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras fortfarande av samma Log Analytics-tjänst. Vi uppdaterar terminologin för att bättre avspegla rollen för [loggar i Azure Monitor](../../azure-monitor/data-platform.md). Se [Azure Monitor terminologis ändringar](../../azure-monitor/terminology.md) för mer information.
 
 [Läs mer om rapport bevarande principer](./reference-reports-data-retention.md).
 
@@ -97,12 +97,12 @@ Rapportering och övervakning används för att uppfylla dina affärs behov, få
 
 * Krävs för att lösningen ska uppfylla affärs behoven
 * Bra att uppfylla affärs behoven
-* Ej tillämpligt
+* Inte tillämpligt
 
 |Område |Beskrivning |
 |-|-|
 |Kvarhållning| **Logg kvarhållning på mer än 30 dagar**. På grund av juridiska krav eller affärs krav krävs det att lagra gransknings loggar och logga in loggar för Azure AD längre än 30 dagar. |
-|Analytics| **Loggarna måste vara**sökbara. De lagrade loggarna måste vara sökbara med analys verktyg. |
+|Analys| **Loggarna måste vara** sökbara. De lagrade loggarna måste vara sökbara med analys verktyg. |
 | Operational Insights| **Insikter för olika team**. Behovet av att ge åtkomst till olika användare för att få Operational Insights, till exempel program användning, inloggnings fel, självbetjänings användning, trender osv. |
 | Säkerhets insikter| **Insikter för olika team**. Behovet av att ge åtkomst till olika användare för att få Operational Insights, till exempel program användning, inloggnings fel, självbetjänings användning, trender osv. |
 | Integrering i SIEM-system      | **Siem-integrering**. Behovet av att integrera och strömma Azure AD-inloggnings loggar och gransknings loggar till befintliga SIEM-system. |
@@ -121,7 +121,7 @@ Lär dig hur du [dirigerar data till ditt lagringskonto](./quickstart-azure-moni
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Skicka loggar till Azure Monitor-loggar
 
-[Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md) konsoliderar övervaknings data från olika källor. Det innehåller också ett frågespråk och analys motor som ger dig insikter om hur dina program och resurser används. Genom att skicka Azure AD-aktivitets loggar till Azure Monitor loggar kan du snabbt hämta, övervaka och varna på insamlade data. Använd den här metoden om du inte har en befintlig SIEM-lösning som du vill skicka dina data till direkt, men vill ha frågor och analyser. När dina data finns i Azure Monitor loggar kan du skicka dem till händelsehubben och därifrån till en SIEM om du vill.
+[Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md) konsoliderar övervaknings data från olika källor. Det innehåller också ett frågespråk och analys motor som ger dig insikter om hur dina program och resurser används. Genom att skicka Azure AD-aktivitets loggar till Azure Monitor loggar kan du snabbt hämta, övervaka och varna på insamlade data. Använd den här metoden om du inte har en befintlig SIEM-lösning som du vill skicka dina data till direkt, men vill ha frågor och analyser. När dina data finns i Azure Monitor loggar kan du skicka dem till händelsehubben och därifrån till en SIEM om du vill.
 
 Lär dig att [skicka data till Azure Monitor-loggar](./howto-integrate-activity-logs-with-log-analytics.md).
 

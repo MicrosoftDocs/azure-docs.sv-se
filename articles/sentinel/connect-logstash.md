@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578917"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Använd Logstash för att ansluta data källor till Azure Sentinel
 
@@ -49,7 +49,7 @@ Logstash-motorn består av tre komponenter:
 Plugin-programmet för Azure Sentinel-utdata för Logstash skickar JSON-formaterade data till din Log Analytics-arbetsyta med Log Analytics http-insamlaren REST API. Data matas in i anpassade loggar.
 
 - Läs mer om [Log Analytics REST API](/rest/api/loganalytics/create-request).
-- Läs mer om [anpassade loggar](../azure-monitor/platform/data-sources-custom-logs.md).
+- Läs mer om [anpassade loggar](../azure-monitor/agents/data-sources-custom-logs.md).
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Distribuera plugin-programmet för Azure Sentinel-utdata i Logstash
 
@@ -57,7 +57,7 @@ Plugin-programmet för Azure Sentinel-utdata för Logstash skickar JSON-formater
 
 Plugin-programmet för Azure Sentinel-utdata är tillgängligt i Logstash-samlingen.
 
-- Följ instruktionerna i Logstash [work with plugin](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokument för att installera **_[Microsoft-Logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _-plugin-programmet.
+- Följ instruktionerna i Logstash [work with plugin](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokument för att installera plugin-programmet ***[Microsoft-Logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)*** .
    
 - Om ditt Logstash-system inte har Internet åtkomst följer du anvisningarna i dokumentet Logstash [Offline-plugin-hantering](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) för att förbereda och använda ett offline-plugin-paket. (Detta kräver att du skapar ett annat Logstash-system med Internet åtkomst.)
 
@@ -65,9 +65,9 @@ Plugin-programmet för Azure Sentinel-utdata är tillgängligt i Logstash-samlin
 
 Använd informationen i Logstash- [strukturen i ett konfigurations fil](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) dokument och Lägg till plugin-programmet för Azure Sentinel-utdata i konfigurationen med följande nycklar och värden. (Rätt syntax för config-filen visas efter tabellen.)
 
-| Fältnamn | Datatyp | Beskrivning |
+| Fältnamn | Datatyp | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | sträng | Ange arbets ytans ID-GUID. _ |
+| `workspace_id` | sträng | Ange arbets ytans ID-GUID. * |
 | `workspace_key` | sträng | Ange arbets ytans primära nyckel-GUID. * |
 | `custom_log_table_name` | sträng | Ange namnet på den tabell där loggarna ska matas in. Det går bara att konfigurera ett tabell namn per utdatafil-plugin-program. Tabellen logg visas i Azure Sentinel under **loggar** i **tabeller** i kategorin **anpassade loggar** med ett `_CL` suffix. |
 | `endpoint` | sträng | Valfritt fält. Som standard är detta Log Analytics slut punkten. Använd det här fältet om du vill ange en alternativ slut punkt. |

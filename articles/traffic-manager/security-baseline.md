@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13515f2428b1fc95c31b04c984dd77dd316a4315
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202206"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580360"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azures säkerhets bas linje för Azure Traffic Manager
 
@@ -32,7 +32,7 @@ Mata in loggar via Azure Monitor för att samla in säkerhets data som genererat
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -48,9 +48,9 @@ Aktivera diagnostikinställningar i Azure Monitor för åtkomst till gransknings
 
 - [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -60,7 +60,7 @@ Aktivera diagnostikinställningar i Azure Monitor för åtkomst till gransknings
 
 **Vägledning**: i Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig lagring och arkivering.
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -76,9 +76,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Log Analytics frågor](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -96,7 +96,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel.
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -288,7 +288,7 @@ Azure Traffic Manager har en fördefinierad Azure-roll med namnet "Traffic Manag
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Traffic Manager samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

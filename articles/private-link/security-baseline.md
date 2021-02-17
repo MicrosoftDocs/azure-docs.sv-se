@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 692b52e8ea6a88a119ca98985864cb9e1daa14c3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595759"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azures säkerhets bas linje för privat Azure-länk
 
@@ -28,9 +28,9 @@ Den här säkerhets bas linjen använder vägledning från [Azures säkerhets be
 
 Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -50,7 +50,7 @@ Du kan också aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Loggning och övervakning för privat länk](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ Du kan också aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM
 
 **Vägledning**: Aktivera Azure Monitor aktivitets loggar, som loggar åtgärder som utförs på privata länk resurser, t. ex. vem som startade åtgärden, när åtgärden utfördes, status för åtgärden och annan användbar gransknings information. 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Loggning och övervakning för privat länk](private-link-overview.md#logging-and-monitoring)
 
@@ -80,7 +80,7 @@ Du kan också aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM
 
 **Vägledning**: för loggar som är relaterade till en privat länk ställer du in Log Analytics kvarhållningsperiod för arbets ytor enligt organisationens regler för efterlevnad i Azure Monitor. Använd Azure Storage konton för långsiktig lagring av loggar.
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Ett annat alternativ är att aktivera och fordonsbaserad data till Azure Sentine
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Förstå Log Analytics arbets yta](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -114,7 +114,7 @@ Aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM utifrån orga
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -192,7 +192,7 @@ Du kan också aktivera just-in-Time/just-Access genom att använda Azure Active 
 
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Konfigurera åtgärds grupper för anpassad avisering och avisering](../azure-monitor/platform/action-groups.md)
+- [Konfigurera åtgärds grupper för anpassad avisering och avisering](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -318,7 +318,7 @@ Gör din tjänst privat för användning från dina andra virtuella nätverk (en
 
 - [Diagnostisk loggning för en nätverks säkerhets grupp](private-link-overview.md#logging-and-monitoring)
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

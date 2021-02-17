@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8221e814b4555a75d596cec3ab00aa3b63e41a14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: caff705a03f7c4645eedc9423f6a9f9649c1167e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197412"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571280"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Azures säkerhets bas linje för VPN Gateway
 
@@ -78,9 +78,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka datorkonfigurationer och identifiera ändringar i dina virtuella nätverks resurser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska resurser som är relaterade till din VPN-gateway sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -100,7 +100,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 **Vägledning**: Aktivera diagnostikinställningar på VPN gateway resurser för åtkomst till gransknings-, säkerhets-och diagnostikloggar. Aktivitets loggar, som är automatiskt tillgängliga, innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element. 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -124,7 +124,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 **Vägledning**: i Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig lagring och arkivering. 
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -140,9 +140,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller från tredj
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Komma igång med Log Analytics frågor](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -158,7 +158,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel.
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -382,7 +382,7 @@ Följ Azure Security Center rekommendationer för kryptering i vila och krypteri
 
 - [Konfigurera aviseringar för diagnostiska logg händelser från VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

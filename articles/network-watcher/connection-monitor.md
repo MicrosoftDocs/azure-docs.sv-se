@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834093"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570842"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Självstudie: Övervaka nätverkskommunikationen mellan två virtuella datorer i Azure Portal
 
@@ -81,7 +81,7 @@ Utför stegen i [Skapa den första virtuella datorn](#create-the-first-vm) igen 
 |Steg|Inställning|Värde|
 |---|---|---|
 | 1 | Välj en version av **Ubuntu Server** |                                                                         |
-| 3 | Namn                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Autentiseringstyp                   | Klistra in den offentliga SSH-nyckeln eller välj **Lösenord** och ange ett lösenord. |
 | 3 | Resursgrupp                        | Välj **Använd befintlig** och sedan **myResourceGroup**.                 |
 | 6 | Tillägg                            | **Network Watcher agent för Linux**                                             |
@@ -137,7 +137,7 @@ Aviseringar skapas av aviseringsregler i Azure Monitor och kan automatiskt köra
 2. Klicka på **Välj mål** och välj sedan de resurser som du vill ha som mål. Välj **Prenumeration** och ange **Resurstyp** till att filtrera ned till den anslutningsövervakare som du vill använda.
 
     ![aviseringsskärm med mål som valts](./media/connection-monitor/set-alert-rule.png)
-1. När du har valt en resurs som ska vara mål väljer du **Lägg till villkor**. Network Watcher har [mått som du kan skapa aviseringar om](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Ange **Tillgängliga signaler** till måtten ProbesFailedPercent och AverageRoundtripMs:
+1. När du har valt en resurs som ska vara mål väljer du **Lägg till villkor**. Network Watcher har [mått som du kan skapa aviseringar om](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Ange **Tillgängliga signaler** till måtten ProbesFailedPercent och AverageRoundtripMs:
 
     ![aviseringssida med signaler som valts](./media/connection-monitor/set-alert-signals.png)
 1. Fyll i information om aviseringar såsom namn på aviseringsregel, beskrivning och allvarlighetsgrad. Du kan även lägga till en åtgärdsgrupp till aviseringen för att automatisera och anpassa aviseringssvaret.

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027167"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589730"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Loggbaserade och föraggregerade mått i Application Insights
 
@@ -30,12 +30,12 @@ Samtidigt kan det vara opraktiskt att samla in en fullständig uppsättning hän
 
 ## <a name="pre-aggregated-metrics"></a>Föraggregerade mått
 
-Utöver loggbaserade mått, i slutet av 2018, levererade Application Insights-teamet en offentlig för hands version av mått som lagras i en specialiserad databas som är optimerad för Time Series. De nya måtten behålls inte längre som enskilda händelser med massor av egenskaper. De lagras i stället som församlad tids serie och bara med viktiga dimensioner. Detta gör de nya måtten överlägsna vid tidpunkten för frågan: hämtning av data sker mycket snabbare och kräver mindre beräknings kraft. Detta möjliggör också nya scenarier, till exempel [nära aviseringar i real tid i mått på mått](../platform/alerts-metric-near-real-time.md), mer svars [instrument paneler](./overview-dashboard.md)med mera.
+Utöver loggbaserade mått, i slutet av 2018, levererade Application Insights-teamet en offentlig för hands version av mått som lagras i en specialiserad databas som är optimerad för Time Series. De nya måtten behålls inte längre som enskilda händelser med massor av egenskaper. De lagras i stället som församlad tids serie och bara med viktiga dimensioner. Detta gör de nya måtten överlägsna vid tidpunkten för frågan: hämtning av data sker mycket snabbare och kräver mindre beräknings kraft. Detta möjliggör också nya scenarier, till exempel [nära aviseringar i real tid i mått på mått](../alerts/alerts-metric-near-real-time.md), mer svars [instrument paneler](./overview-dashboard.md)med mera.
 
 > [!IMPORTANT]
 > Både log-baserade och föraggregerade mått finns i Application Insights. För att skilja de två, i Application Insights UX, kallas de föraggregerade måtten nu "standard mått (förhands granskning)", medan traditionella mått från händelserna har bytt namn till "Loggbaserade mått".
 
-De nyare SDK: erna ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK eller senare för .net) församlade mått under samlingen. Detta gäller  [standard mått som skickas som standard](../platform/metrics-supported.md#microsoftinsightscomponents) så att noggrannheten inte påverkas av sampling eller filtrering. Den gäller också för anpassade mått som skickas med [GetMetric](./api-custom-events-metrics.md#getmetric) , vilket resulterar i mindre data inmatning och lägre kostnader.
+De nyare SDK: erna ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK eller senare för .net) församlade mått under samlingen. Detta gäller  [standard mått som skickas som standard](../essentials/metrics-supported.md#microsoftinsightscomponents) så att noggrannheten inte påverkas av sampling eller filtrering. Den gäller också för anpassade mått som skickas med [GetMetric](./api-custom-events-metrics.md#getmetric) , vilket resulterar i mindre data inmatning och lägre kostnader.
 
 För SDK: er som inte implementerar för insamlingen (dvs. äldre versioner av Application Insights-SDK: er eller för webb läsar Instrumentation), fyller Application Insights-servern fortfarande de nya måtten genom att aggregera de händelser som tas emot av slut punkten för den Application Insights händelse samlingen. Det innebär att när du inte drar nytta av den minskade mängden data som överförs via kabeln, kan du fortfarande använda församlade mått och få bättre prestanda och stöd för den nära dimensions aviseringen i real tid med SDK: er som inte föraggregerar mått under samlingen.
 
@@ -81,7 +81,7 @@ Insamlingen av anpassade mått dimensioner är inaktive rad som standard efterso
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Skapa diagram och utforska loggbaserade och föraggregerade standard mått
 
-Använd [Azure Monitor Metrics Explorer](../platform/metrics-getting-started.md) för att rita diagram från föraggregerade och loggbaserade mått och för att skapa instrument paneler med diagram. När du har valt önskad Application Insights resurs använder du namn områdes väljaren för att växla mellan standard (för hands version) och loggbaserade mått, eller så väljer du ett anpassat mått namn område:
+Använd [Azure Monitor Metrics Explorer](../essentials/metrics-getting-started.md) för att rita diagram från föraggregerade och loggbaserade mått och för att skapa instrument paneler med diagram. När du har valt önskad Application Insights resurs använder du namn områdes väljaren för att växla mellan standard (för hands version) och loggbaserade mått, eller så väljer du ett anpassat mått namn område:
 
 ![Mått namn område](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,5 +93,5 @@ Om du väljer alternativet [aktivera aviseringar för anpassade mått dimensione
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Aviseringar i nära real tid](../platform/alerts-metric-near-real-time.md)
+* [Aviseringar i nära real tid](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric och TrackValue](./api-custom-events-metrics.md#getmetric)

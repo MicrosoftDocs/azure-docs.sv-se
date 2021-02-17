@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018298"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576149"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Använd Log Analytics för funktionen diagnostik
 
@@ -39,23 +39,23 @@ Anslutningar som inte når Windows Virtual Desktop visas inte i diagnostiska res
 Med Azure Monitor kan du analysera Windows-data för virtuella skriv bord och granska prestanda räknare för virtuella datorer (VM), allt inom samma verktyg. I den här artikeln får du lära dig mer om hur du aktiverar diagnostik för din Windows Virtual Desktop-miljö.
 
 >[!NOTE]
->Information om hur du övervakar dina virtuella datorer i Azure finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md). Se även till att [Granska tröskelvärdena för prestanda räknaren](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) för att få en bättre förståelse för användar upplevelsen på sessionen.
+>Information om hur du övervakar dina virtuella datorer i Azure finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md). Se även till att [Granska tröskelvärdena för prestanda räknaren](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) för att få en bättre förståelse för användar upplevelsen på sessionen.
 
 ## <a name="before-you-get-started"></a>Innan du börjar
 
 Innan du kan använda Log Analytics måste du skapa en arbets yta. Det gör du genom att följa anvisningarna i någon av följande två artiklar:
 
-- Om du föredrar att använda Azure Portal, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Om du föredrar PowerShell, se [skapa en Log Analytics arbets yta med PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+- Om du föredrar att använda Azure Portal, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Om du föredrar PowerShell, se [skapa en Log Analytics arbets yta med PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
-När du har skapat arbets ytan följer du anvisningarna i [Anslut Windows-datorer till Azure Monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) för att få följande information:
+När du har skapat arbets ytan följer du anvisningarna i [Anslut Windows-datorer till Azure Monitor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) för att få följande information:
 
 - Arbetsyte-ID
 - Den primära nyckeln för din arbets yta
 
 Du behöver den här informationen senare i installations processen.
 
-Se till att granska behörighets hantering för Azure Monitor för att aktivera data åtkomst för de som övervakar och underhåller din Windows-miljö för virtuella skriv bord. Mer information finns i [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../azure-monitor/platform/roles-permissions-security.md).
+Se till att granska behörighets hantering för Azure Monitor för att aktivera data åtkomst för de som övervakar och underhåller din Windows-miljö för virtuella skriv bord. Mer information finns i [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../azure-monitor/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Skicka diagnostikdata till din arbets yta
 
@@ -73,7 +73,7 @@ Så här konfigurerar du Log Analytics för ett nytt objekt:
 
     Vilka alternativ som visas på sidan diagnostikinställningar varierar beroende på vilken typ av objekt du redigerar.
 
-    När du till exempel aktiverar diagnostik för en app-grupp visas alternativ för att konfigurera kontroll punkter, fel och hantering. För arbets ytor konfigurerar de här kategorierna en feed som spårar när användarna prenumererar på listan över appar. Mer information om diagnostikinställningar finns i [skapa diagnostisk inställning för att samla in resurs loggar och mått i Azure](../azure-monitor/platform/diagnostic-settings.md).
+    När du till exempel aktiverar diagnostik för en app-grupp visas alternativ för att konfigurera kontroll punkter, fel och hantering. För arbets ytor konfigurerar de här kategorierna en feed som spårar när användarna prenumererar på listan över appar. Mer information om diagnostikinställningar finns i [skapa diagnostisk inställning för att samla in resurs loggar och mått i Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
      >[!IMPORTANT]
      >Kom ihåg att aktivera diagnostik för varje Azure Resource Manager objekt som du vill övervaka. Data blir tillgängliga för aktiviteter efter att diagnostik har Aktiver ATS. Det kan ta några timmar efter första insamlingen.
@@ -83,7 +83,7 @@ Så här konfigurerar du Log Analytics för ett nytt objekt:
 6. Välj **Spara**.
 
 >[!NOTE]
->Log Analytics ger dig möjlighet att strömma data till [Event Hubs](../event-hubs/event-hubs-about.md) eller arkivera dem i ett lagrings konto. Mer information om den här funktionen finns i [Stream Azure Monitoring data to a Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) och [arkivera Azure-resurs loggar till lagrings kontot](../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+>Log Analytics ger dig möjlighet att strömma data till [Event Hubs](../event-hubs/event-hubs-about.md) eller arkivera dem i ett lagrings konto. Mer information om den här funktionen finns i [Stream Azure Monitoring data to a Event Hub](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md) och [arkivera Azure-resurs loggar till lagrings kontot](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 ## <a name="how-to-access-log-analytics"></a>Så här kommer du åt Log Analytics
 
@@ -134,9 +134,9 @@ Till exempel frågor via Azure Monitor Log Analytics användar gränssnitt:
 1. Välj **virtuellt Windows-skrivbord** för att granska tillgängliga frågor.
 1. Välj **Kör** för att köra den valda frågan.
 
-Läs mer om exempel fråga-gränssnittet i [sparade frågor i Azure Monitor Log Analytics](../azure-monitor/log-query/example-queries.md).
+Läs mer om exempel fråga-gränssnittet i [sparade frågor i Azure Monitor Log Analytics](../azure-monitor/logs/example-queries.md).
 
-I följande lista med frågor kan du granska anslutnings information eller problem för en enskild användare. Du kan köra dessa frågor i [Log Analytics Frågeredigeraren](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query). Ersätt `userupn` med UPN för den användare som du vill söka efter varje fråga.
+I följande lista med frågor kan du granska anslutnings information eller problem för en enskild användare. Du kan köra dessa frågor i [Log Analytics Frågeredigeraren](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query). Ersätt `userupn` med UPN för den användare som du vill söka efter varje fråga.
 
 
 Så här söker du efter alla anslutningar för en enskild användare:

@@ -4,18 +4,18 @@ description: Vanliga frågor och svar om Service Fabric hanterade kluster, inklu
 ms.topic: troubleshooting
 ms.author: pepogors
 author: peterpogorski
-ms.date: 09/28/2020
+ms.date: 02/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: aa77896ba88d0ffd0a6f94a84603b5f4a1803357
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319832"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633095"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Vanliga frågor och svar om Service Fabric hanterade kluster
 
-Det finns många vanliga frågor om vad Service Fabric hanterade kluster (för hands version) kan göra och hur de ska användas. Det här dokumentet beskriver många av dessa vanliga frågor och svar.
+Här följer några vanliga frågor och svar om Service Fabric hanterade kluster (för hands version).
 
 ## <a name="general"></a>Allmänt
 
@@ -29,11 +29,11 @@ Regioner som stöds för förhands granskningen Service Fabric hanterade kluster
 
 ### <a name="can-i-do-an-in-place-migration-of-my-existing-service-fabric-cluster-to-a-managed-cluster-resource"></a>Kan jag göra en migrering på plats av mitt befintliga Service Fabric-kluster till en hanterad kluster resurs?
 
-Vid detta tillfälle måste du skapa en ny Service Fabric kluster resurs för att använda den nya Service Fabric hanterade kluster resurs typen.
+Nej. Vid detta tillfälle måste du skapa en ny Service Fabric kluster resurs för att använda den nya Service Fabric hanterade kluster resurs typen.
 
 ### <a name="is-there-an-additional-cost-for-service-fabric-managed-clusters"></a>Finns det ytterligare kostnader för Service Fabric hanterade kluster?
 
-Nej, det finns ingen ytterligare kostnad kopplad till ett Service Fabric hanterat kluster utöver kostnaden för underliggande beräknings-, lagrings-och nätverks resurser som krävs för klustret.
+Nej. Det finns ingen ytterligare kostnad kopplad till ett Service Fabric hanterat kluster utöver kostnaden för underliggande beräknings-, lagrings-och nätverks resurser som krävs för klustret.
 
 ### <a name="is-there-a-new-sla-introduced-by-the-service-fabric-managed-cluster-resource"></a>Introduceras ett nytt service avtal för den Service Fabric hanterade kluster resursen?
 
@@ -41,33 +41,36 @@ SLA ändras inte från den aktuella Service Fabric resurs modellen.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Vad är skillnaden mellan ett Basic-och standard-SKU-kluster?
 
-Ett Basic SKU-kluster innebär att de flesta konfigurationer tillhandahålls av Service Fabric Resource Provider. Basic SKU-kluster är avsedda att användas för testning och för produktions miljöer. Med ett standard-SKU-kluster kan användare konfigurera klustret så att det uppfyller deras behov. Mer information finns i [Service Fabric hanterade kluster SKU: er](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) .
+Ett Basic SKU-kluster innebär att de flesta konfigurationer tillhandahålls av Service Fabric Resource Provider. Basic SKU-kluster är avsedda att användas för testning och för produktions miljöer. Med ett standard-SKU-kluster kan användare konfigurera klustret så att det uppfyller deras behov. Mer information finns i [Service Fabric hanterade kluster SKU: er](./overview-managed-cluster.md#service-fabric-managed-cluster-skus).
 
 ## <a name="cluster-deployment-and-management"></a>Kluster distribution och hantering
 
 ### <a name="i-run-custom-script-extensions-on-my-virtual-machine-scale-set-can-i-continue-to-do-that-with-a-managed-service-fabric-resource"></a>Jag kör anpassade skript tillägg på den virtuella datorns skalnings uppsättning, kan jag fortsätta med en hanterad Service Fabric-resurs?
 
-Ja du kan fortfarande ange VM-tillägg för en nodtyp. Mer information finns i exempel på Node Type Extension-exemplet.
+Ja, du kan ange VM-tillägg på hanterade typer av klusternoder. Mer information finns i [Lägg till ett skalnings uppsättnings tillägg till en Service Fabric hanterad cluster node-typ](how-to-managed-cluster-vmss-extension.md).
 
 ### <a name="i-want-to-have-an-internal-only-load-balancer-is-that-possible"></a>Jag vill ha en intern belastningsutjämnare, är det möjligt?
 
-Det går för närvarande inte att ha en intern belastningsutjämnare. Vi rekommenderar att du låser reglerna för nätverks säkerhets grupper för att blockera all oönskad inkommande/utgående trafik.
+Nej. Det går för närvarande inte att ha en intern belastningsutjämnare. Vi rekommenderar att du låser reglerna för nätverks säkerhets gruppen (NSG) för att blockera all oönskad inkommande/utgående trafik.
 
-### <a name="can-i-autoscale-my-cluster"></a>Kan jag Autoskala mitt kluster? 
+### <a name="can-i-autoscale-my-cluster"></a>Kan jag Autoskala mitt kluster?
+
 Autoskalning är för närvarande inte tillgängligt i förhands granskningen.
 
-### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>Kan jag distribuera mitt kluster mellan tillgänglighets zoner? 
+### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>Kan jag distribuera mitt kluster mellan tillgänglighets zoner?
+
 Kluster för kors tillgänglighets zoner är för närvarande inte tillgängliga i förhands granskningen.
 
-### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>Kan jag välja mellan automatiska och manuella uppgraderingar för min kluster körning? 
+### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>Kan jag välja mellan automatiska och manuella uppgraderingar för min kluster körning?
+
 I för hands versionen slutförs alla uppgraderingar av uppgraderings tiden automatiskt.
 
 ## <a name="applications"></a>Program
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Finns det en lokal utvecklings miljö för Service Fabric hanterade kluster?
 
-Den lokala utvecklings miljön är oförändrad från befintliga Service Fabric-kluster. Mer information finns i [skapa ett .NET-program](./service-fabric-quickstart-dotnet.md) för mer information om den lokala utvecklings miljön.
+Den lokala utvecklings miljön är oförändrad från befintliga Service Fabric-kluster. Mer information finns i [Konfigurera din utvecklings miljö](./service-fabric-get-started.md) för mer information om den lokala utvecklings miljön.
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Kan jag distribuera mina program som en Azure Resource Manager-resurs?
 
-I förhands granskningen kan du inte distribuera program som en Azure Resource Manager-resurs. Program måste distribueras genom att ansluta direkt till klustret, antingen via PowerShell eller CLI. Den här funktionen kommer att läggas till innan hanterade Service Fabric kluster anger allmän tillgänglighet.
+Ja. Stöd har lagts till för att distribuera program som en Azure Resource Manager resurs (förutom distribution med PowerShell och CLI). Information om hur du kommer igång finns i [distribuera ett Service Fabric hanterat kluster program med arm-mall](how-to-managed-cluster-app-deployment-template.md).

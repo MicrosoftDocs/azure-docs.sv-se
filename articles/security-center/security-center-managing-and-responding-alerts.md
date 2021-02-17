@@ -11,21 +11,16 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a47ece762f2df3fa18cf2b79d338c28d4069c4ad
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563355"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633490"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Hantera och svara på säkerhets aviseringar i Azure Security Center
-
-> [!TIP]
-> Informationen på den här sidan avser den nya (för hands version) aviserings upplevelsen som är tillgänglig från banderollen högst upp på sidan säkerhets aviseringar. 
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
 
 Det här avsnittet visar hur du visar och bearbetar Security Centers aviseringar och skyddar dina resurser.
 

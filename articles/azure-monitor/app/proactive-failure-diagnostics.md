@@ -4,12 +4,12 @@ description: Varnar dig om ovanliga ändringar av antalet misslyckade förfrågn
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 978b63d74e6be4104ff53eef66e9633c78b90eb8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f4de3aaba4acf86df37048134089326196e87ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587539"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart identifiering – fel avvikelser
 [Application Insights](./app-insights-overview.md) automatiskt varna dig i nära real tid om din webbapp upplever en onormal ökning av antalet misslyckade förfrågningar. Den identifierar en ovanlig ökning i frekvensen av HTTP-begäranden eller beroende anrop som rapporteras som misslyckade. För förfrågningar har misslyckade förfrågningar vanligt vis svars koder på 400 eller högre. För att hjälpa dig att prioritering och diagnostisera problemet finns en analys av egenskaperna för fel och relaterade program data i aviserings informationen. Det finns också länkar till Application Insights Portal för ytterligare diagnos. Funktionen behöver inte konfigureras eller konfigureras eftersom den använder Machine Learning-algoritmer för att förutsäga den normala felfrekvensen.
@@ -31,7 +31,7 @@ Aviserings informationen meddelar dig:
 * Länkar direkt till relevanta sökningar efter data i Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Förmåner för smart identifiering
-Vanliga [mått aviseringar](../platform/alerts-log.md) visar att det kan finnas ett problem. Men smart identifiering startar diagnostiskt arbete åt dig, så att du kan utföra mycket analys som du annars skulle behöva göra själv. Du får de resultat som du kan paketera, vilket hjälper dig att snabbt komma till orsaken till problemet.
+Vanliga [mått aviseringar](../alerts/alerts-log.md) visar att det kan finnas ett problem. Men smart identifiering startar diagnostiskt arbete åt dig, så att du kan utföra mycket analys som du annars skulle behöva göra själv. Du får de resultat som du kan paketera, vilket hjälper dig att snabbt komma till orsaken till problemet.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 Smart identifiering övervakar de data som tas emot från din app och särskilt fel frekvensen. Den här regeln räknar antalet begär Anden som `Successful request` egenskapen är falsk till och antalet beroende anrop för vilka `Successful call` egenskapen är falsk. Som standard för förfrågningar `Successful request == (resultCode < 400)` (om du inte har skrivit anpassad kod för att [filtrera](./api-filtering-sampling.md#filtering) eller generera dina egna [TrackRequest](./api-custom-events-metrics.md#trackrequest) -anrop). 
@@ -48,7 +48,7 @@ När din tjänst instrumenteras med dessa anrop, söker Analyzer efter ett undan
 
 Den resulterande analysen skickas till dig som avisering, om du inte har konfigurerat den inte till.
 
-Precis som [aviseringarna som du anger manuellt](../platform/alerts-log.md)kan du kontrol lera statusen för den utlöst aviseringen, som kan lösas om problemet är löst. Konfigurera varnings reglerna på sidan aviseringar i din Application Insights-resurs. Men till skillnad från andra aviseringar behöver du inte konfigurera eller konfigurera Smart identifiering. Om du vill kan du inaktivera den eller ändra dess mål-e-postadresser.
+Precis som [aviseringarna som du anger manuellt](../alerts/alerts-log.md)kan du kontrol lera statusen för den utlöst aviseringen, som kan lösas om problemet är löst. Konfigurera varnings reglerna på sidan aviseringar i din Application Insights-resurs. Men till skillnad från andra aviseringar behöver du inte konfigurera eller konfigurera Smart identifiering. Om du vill kan du inaktivera den eller ändra dess mål-e-postadresser.
 
 ### <a name="alert-logic-details"></a>Information om aviserings logik
 
@@ -64,11 +64,11 @@ Aviseringarna utlöses av vår leverantörsspecifika Machine Learning-algoritm s
 
 Du kan inaktivera aviserings regeln för smart identifiering från portalen eller använda Azure Resource Manager ([se mall exempel](./proactive-arm-config.md)).
 
-Den här varnings regeln skapas med en associerad [Åtgärds grupp](../platform/action-groups.md) med namnet "Application Insights Smart identifiering" som innehåller e-post-och webhook-åtgärder och kan utökas för att utlösa ytterligare åtgärder när aviseringen utlöses.
+Den här varnings regeln skapas med en associerad [Åtgärds grupp](../alerts/action-groups.md) med namnet "Application Insights Smart identifiering" som innehåller e-post-och webhook-åtgärder och kan utökas för att utlösa ytterligare åtgärder när aviseringen utlöses.
 
 > [!NOTE]
 > E-postmeddelanden som skickas från den här varnings regeln skickas nu som standard till användare som är associerade med prenumerationens roll för övervakning och övervakning av deltagare. Mer [information finns här.](./proactive-email-notification.md)
-> Meddelanden som skickas från den här aviserings regeln följer det [vanliga aviserings schemat](../platform/alerts-common-schema.md).
+> Meddelanden som skickas från den här aviserings regeln följer det [vanliga aviserings schemat](../alerts/alerts-common-schema.md).
 >
 
 Öppna sidan aviseringar. Aviserings regler för fel avvikelser inkluderas tillsammans med eventuella aviseringar som du har angett manuellt, och du kan se om det är i aviserings tillstånd.
@@ -410,7 +410,7 @@ Klicka på **aviseringar** på sidan Application Insights resurs för att få de
 ## <a name="whats-the-difference-"></a>Vad är skillnaden...
 Smart identifiering av fel avvikelser kompletterar andra liknande, men distinkta funktioner i Application Insights.
 
-* [mått varningar](../platform/alerts-log.md) anges av dig och kan övervaka en mängd olika mått, till exempel processor användning, begär ande frekvens, sid inläsnings tider och så vidare. Du kan använda dem för att varna dig, till exempel om du behöver lägga till fler resurser. Som kontrast täcker Smart identifiering av fel avvikelser ett litet antal kritiska mått (för närvarande endast misslyckade begär Anden), utformade för att meddela dig i nära real tid när webbappens misslyckade begär ande frekvens ökar jämfört med webbappens normala beteende. Till skillnad från mått aviseringar ställer Smart identifiering automatiskt in och uppdaterar tröskelvärden vid svars ändringar i beteendet. Smart identifiering startar också det diagnostiska arbetet åt dig, vilket sparar tid för att lösa problem.
+* [mått varningar](../alerts/alerts-log.md) anges av dig och kan övervaka en mängd olika mått, till exempel processor användning, begär ande frekvens, sid inläsnings tider och så vidare. Du kan använda dem för att varna dig, till exempel om du behöver lägga till fler resurser. Som kontrast täcker Smart identifiering av fel avvikelser ett litet antal kritiska mått (för närvarande endast misslyckade begär Anden), utformade för att meddela dig i nära real tid när webbappens misslyckade begär ande frekvens ökar jämfört med webbappens normala beteende. Till skillnad från mått aviseringar ställer Smart identifiering automatiskt in och uppdaterar tröskelvärden vid svars ändringar i beteendet. Smart identifiering startar också det diagnostiska arbetet åt dig, vilket sparar tid för att lösa problem.
 
 * [Smart identifiering av prestanda avvikelser](proactive-performance-diagnostics.md) använder också Machine Intelligence för att identifiera ovanliga mönster i dina mått och ingen konfiguration krävs av dig. Men till skillnad från Smart identifiering av fel avvikelser är syftet med Smart identifiering av prestanda avvikelser att hitta segment i användnings grenen som kan vara dåligt Betjänad, till exempel genom vissa sidor i en speciell typ av webbläsare. Analysen utförs dagligen och om ett resultat hittas är det troligt vis mycket mindre brådskande än en avisering. I motsats sker analysen av fel avvikelser kontinuerligt på inkommande program data och du får ett meddelande inom några minuter om Server fel hastigheterna är större än förväntat.
 
@@ -441,16 +441,16 @@ Smart identifiering av fel avvikelser kompletterar andra liknande, men distinkta
 
 *Några av aviseringarna är om kända problem och jag vill inte ta emot dem.*
 
-* Du kan använda [varnings åtgärds funktionen regler](../platform/alerts-action-rules.md) för att ignorera.
+* Du kan använda [varnings åtgärds funktionen regler](../alerts/alerts-action-rules.md) för att ignorera.
 
 ## <a name="next-steps"></a>Nästa steg
 De här diagnostikverktygen hjälper dig att inspektera data från din app:
 
-* [Metric Explorer](../platform/metrics-charts.md)
+* [Metric Explorer](../essentials/metrics-charts.md)
 * [Sök Utforskaren](./diagnostic-search.md)
-* [Analys-kraftfullt frågespråk](../log-query/log-analytics-tutorial.md)
+* [Analys-kraftfullt frågespråk](../logs/log-analytics-tutorial.md)
 
 Smart identifiering är automatiskt. Men kanske vill du konfigurera ytterligare aviseringar?
 
-* [Manuellt konfigurerade mått varningar](../platform/alerts-log.md)
+* [Manuellt konfigurerade mått varningar](../alerts/alerts-log.md)
 * [Webbtester för tillgänglighet](./monitor-web-app-availability.md)

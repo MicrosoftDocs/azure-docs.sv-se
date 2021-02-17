@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452387"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581991"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Spåra Azure IoT-meddelanden från enhet till moln med distribuerad spårning (för hands version)
 
@@ -39,7 +39,7 @@ I den här artikeln använder du [Azure IoT-enhetens SDK för C](iot-hub-device-
 
 - För hands versionen av Distributed tracing stöds för närvarande bara för IoT-hubbar som skapats i följande regioner:
 
-  - **Norra Europa**
+  - **Europa, norra**
   - **Sydostasien**
   - **USA, västra 2**
 
@@ -260,7 +260,7 @@ Om du vill se alla spår som loggats av en IoT Hub frågar du logg lagret som du
 
 ### <a name="query-using-log-analytics"></a>Fråga med Log Analytics
 
-Om du har konfigurerat [Log Analytics med resurs loggar](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)kan du fråga genom att leta efter loggar i `DistributedTracing` kategorin. Den här frågan visar till exempel alla spår som loggats:
+Om du har konfigurerat [Log Analytics med resurs loggar](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)kan du fråga genom att leta efter loggar i `DistributedTracing` kategorin. Den här frågan visar till exempel alla spår som loggats:
 
 ```Kusto
 // All distributed traces 

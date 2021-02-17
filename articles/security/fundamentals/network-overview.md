@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874391"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578931"
 ---
 # <a name="azure-network-security-overview"></a>Översikt över nätverkssäkerhet i Azure
 
@@ -395,7 +395,7 @@ Läs mer:
 
 Loggning på en nätverks nivå är en nyckel funktion för alla nätverks säkerhets scenarier. I Azure kan du logga information som hämtats för NSG: er för att hämta information om loggning på nätverks nivå. Med NSG-loggning får du information från:
 
-* [Aktivitets loggar](../../azure-monitor/platform/platform-logs-overview.md). Använd dessa loggar om du vill visa alla åtgärder som skickats till dina Azure-prenumerationer. Loggarna är aktiverade som standard och kan användas i Azure Portal. De kallades tidigare för gransknings-eller drift loggar.
+* [Aktivitets loggar](../../azure-monitor/essentials/platform-logs-overview.md). Använd dessa loggar om du vill visa alla åtgärder som skickats till dina Azure-prenumerationer. Loggarna är aktiverade som standard och kan användas i Azure Portal. De kallades tidigare för gransknings-eller drift loggar.
 * Händelse loggar. Dessa loggar innehåller information om vilka NSG-regler som tillämpades.
 * Räknar loggar. Med dessa loggar kan du se hur många gånger varje regel för NSG har tillämpats för att neka eller tillåta trafik.
 
