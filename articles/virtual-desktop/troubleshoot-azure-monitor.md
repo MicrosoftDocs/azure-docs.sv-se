@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1818dc558ba45e318b71e1443556cc48feaede8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367681"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571352"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Felsöka Azure Monitor för Windows Virtual Desktop (för hands version)
 
@@ -26,9 +26,9 @@ Om konfigurations arbets boken inte fungerar korrekt för att automatisera insta
 
 - Om du vill aktivera diagnostik manuellt eller komma åt Log Analytics-arbetsytan läser du [Skicka diagnostik för virtuella Windows-datorer till Log Analytics](diagnostics-log-analytics.md).
 - Om du vill installera Log Analytics-tillägget på en värd manuellt, se [Log Analytics tillägg för virtuell dator för Windows](../virtual-machines/extensions/oms-windows.md).
-- Om du vill konfigurera en ny Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Information om hur du lägger till eller tar bort prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/platform/data-sources-performance-counters.md).
-- Information om hur du konfigurerar händelser för en Log Analytics arbets yta finns i [samla in Windows händelse logg data källor med Log Analytics-agenten](../azure-monitor/platform/data-sources-windows-events.md).
+- Om du vill konfigurera en ny Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
+- Information om hur du lägger till eller tar bort prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md).
+- Information om hur du konfigurerar händelser för en Log Analytics arbets yta finns i [samla in Windows händelse logg data källor med Log Analytics-agenten](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="my-data-isnt-displaying-properly"></a>Mina data visas inte korrekt
 
@@ -44,7 +44,7 @@ Om dina data inte visas korrekt kontrollerar du konfigurationen, behörigheterna
 
 - Du kan behöva öppna utgående portar i serverns brand vägg för att tillåta Azure Monitor att skicka data till portalen, se [utgående portar](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
 
-- Ser du inte data från senaste aktivitet? Du kanske vill vänta i 15 minuter och uppdatera flödet. Azure Monitor har en svars tid på 15 minuter för att fylla logg data. Läs mer i logg data Inhämtnings [tid i Azure Monitor](../azure-monitor/platform/data-ingestion-time.md).
+- Ser du inte data från senaste aktivitet? Du kanske vill vänta i 15 minuter och uppdatera flödet. Azure Monitor har en svars tid på 15 minuter för att fylla logg data. Läs mer i logg data Inhämtnings [tid i Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
 Om du inte saknar någon information men dina data fortfarande inte visas korrekt, kan det finnas ett problem i frågan eller data källorna. Granska våra kända problem och begränsningar. 
 
@@ -52,7 +52,7 @@ Om du inte saknar någon information men dina data fortfarande inte visas korrek
 
 Azure Monitor för virtuella Windows-datorer använder Azure Monitor-arbetsböcker. Med arbets böcker kan du spara en kopia av mallen för Windows Virtual Desktop-arbetsböcker och göra egna anpassningar.
 
-Anpassade mallar för arbets böcker kommer inte automatiskt att införa uppdateringar från gruppen produkter. Mer information finns i [Felsöka arbets boksbaserade insikter](../azure-monitor/insights/troubleshoot-workbooks.md) och [Översikt över arbets böcker](../azure-monitor/platform/workbooks-overview.md).
+Anpassade mallar för arbets böcker kommer inte automatiskt att införa uppdateringar från gruppen produkter. Mer information finns i [Felsöka arbets boksbaserade insikter](../azure-monitor/insights/troubleshoot-workbooks.md) och [Översikt över arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
 
 ## <a name="i-cant-interpret-the-data"></a>Jag kan inte tolka data
 

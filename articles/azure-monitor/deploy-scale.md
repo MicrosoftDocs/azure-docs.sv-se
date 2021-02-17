@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f2f2272363cbc26895b061fe7b6263ed2a29fbab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993249"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573611"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Distribuera Azure Monitor i skala med Azure Policy
 Vissa Azure Monitor funktioner konfigureras en gång eller ett begränsat antal gånger, men andra måste upprepas för varje resurs som du vill övervaka. I den här artikeln beskrivs metoder för att använda Azure Policy för att implementera Azure Monitor i skala för att säkerställa att övervakningen är konsekvent och korrekt konfigurerad för alla dina Azure-resurser.
@@ -33,19 +33,19 @@ Azure Policy består av objekten i följande tabell. Se [Azure policy objekt](..
 | Tilldelning | En princip definition eller ett initiativ börjar inte gälla förrän det har tilldelats en omfattning. Du kan till exempel tilldela en princip till en resurs grupp för att tillämpa den på alla resurser som skapats i den resursen, eller tillämpa den på en prenumeration för att tillämpa den på alla resurser i den prenumerationen.  Mer information finns i [Azure policy tilldelnings struktur](../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Inbyggda princip definitioner för Azure Monitor
-Azure Policy innehåller flera fördefinierade definitioner relaterade till Azure Monitor. Du kan tilldela dessa princip definitioner till din befintliga prenumeration eller använda dem som grund för att skapa dina egna anpassade definitioner. En fullständig lista över de inbyggda politiken i kategorin **övervakning** finns i [Azure policy inbyggda princip definitioner för Azure Monitor](./samples/policy-reference.md).
+Azure Policy innehåller flera fördefinierade definitioner relaterade till Azure Monitor. Du kan tilldela dessa princip definitioner till din befintliga prenumeration eller använda dem som grund för att skapa dina egna anpassade definitioner. En fullständig lista över de inbyggda politiken i kategorin **övervakning** finns i [Azure policy inbyggda princip definitioner för Azure Monitor](.//policy-reference.md).
 
 Om du vill visa de inbyggda princip definitionerna som är relaterade till övervakning gör du följande:
 
 1. Gå till **Azure policy** i Azure Portal.
 2. Välj **definitioner**.
-3. I **typ**väljer du *inbyggd* och för **kategori**och väljer *övervakning*.
+3. I **typ** väljer du *inbyggd* och för **kategori** och väljer *övervakning*.
 
   ![Skärm bild av sidan Azure Policy definitioner i Azure Portal visar en lista över princip definitioner för övervaknings kategorin och den inbyggda typen.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Diagnostikinställningar
-[Diagnostikinställningar](platform/diagnostic-settings.md) samlar in resurs loggar och mått från Azure-resurser till flera platser, vanligt vis till en Log Analytics arbets yta som gör det möjligt att analysera data med [logg frågor](log-query/log-query-overview.md) och [logg aviseringar](platform/alerts-log.md). Använd principen för att automatiskt skapa en diagnostisk inställning varje gången du skapar en resurs.
+[Diagnostikinställningar](essentials/diagnostic-settings.md) samlar in resurs loggar och mått från Azure-resurser till flera platser, vanligt vis till en Log Analytics arbets yta som gör det möjligt att analysera data med [logg frågor](logs/log-query-overview.md) och [logg aviseringar](alerts/alerts-log.md). Använd principen för att automatiskt skapa en diagnostisk inställning varje gången du skapar en resurs.
 
 Varje Azure-resurs har en unik uppsättning kategorier som måste visas i den diagnostiska inställningen. Därför kräver varje resurs typ en separat princip definition. Vissa resurs typer har inbyggda princip definitioner som du kan tilldela utan ändringar. För andra resurs typer måste du skapa en anpassad definition.
 
@@ -122,7 +122,7 @@ Initiativet kommer att gälla för varje virtuell dator när den skapas. En [rep
 
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor för virtuella datorer
-[Azure Monitor for VMS](insights/vminsights-overview.md) är det primära verktyget i Azure Monitor för övervakning av virtuella datorer. Om du aktiverar Azure Monitor for VMs installeras både Log Analytics-agenten och beroende agenten. Använd Azure Policy för att se till att varje virtuell dator har kon figurer ATS som du skapar i stället för att utföra dessa uppgifter manuellt.
+[Azure Monitor for VMS](vm/vminsights-overview.md) är det primära verktyget i Azure Monitor för övervakning av virtuella datorer. Om du aktiverar Azure Monitor for VMs installeras både Log Analytics-agenten och beroende agenten. Använd Azure Policy för att se till att varje virtuell dator har kon figurer ATS som du skapar i stället för att utföra dessa uppgifter manuellt.
 
 > [!NOTE]
 > Azure Monitor for VMs innehåller en funktion som kallas **Azure Monitor for VMS princip täckning** som gör att du kan identifiera och reparera icke-kompatibla virtuella datorer i din miljö. Du kan använda den här funktionen i stället för att arbeta direkt med Azure Policy för virtuella Azure-datorer och för virtuella hybrid datorer som är anslutna till Azure Arc. För skalnings uppsättningar för virtuella Azure-datorer måste du skapa tilldelningen med hjälp av Azure Policy.
@@ -139,7 +139,7 @@ Azure Monitor for VMs innehåller följande inbyggda initiativ som installerar b
 ### <a name="virtual-machines"></a>Virtuella datorer
 I stället för att skapa tilldelningar för de här initiativen med hjälp av Azure Policy-gränssnittet innehåller Azure Monitor for VMs en funktion som gör att du kan kontrol lera antalet virtuella datorer i varje omfattning för att avgöra om initiativet har tillämpats. Du kan sedan konfigurera arbets ytan och skapa obligatoriska tilldelningar med det gränssnittet.
 
-Mer information om den här processen finns i [aktivera Azure Monitor for VMS med hjälp av Azure policy](./insights/vminsights-enable-policy.md).
+Mer information om den här processen finns i [aktivera Azure Monitor for VMS med hjälp av Azure policy](./vm/vminsights-enable-policy.md).
 
 ![Azure Monitor for VMs princip](media/deploy-scale/vminsights-policy.png)
 
@@ -148,7 +148,7 @@ Om du vill använda Azure Policy för att aktivera övervakning av skalnings upp
 
 ![Skärm bild av sidan tilldela initiativ i Azure Portal. Initiativ definitionen är inställd på att aktivera Azure Monitor för skalnings uppsättningar för virtuella datorer.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Välj arbets ytan som data ska skickas till. Den här arbets ytan måste ha *VMInsights* -lösningen installerad enligt beskrivningen i []() .
+Välj arbets ytan som data ska skickas till. Den här arbets ytan måste ha *VMInsights* -lösningen installerad enligt beskrivningen i [Konfigurera Log Analytics arbets yta för Azure Monitor for VMS](vm/vminsights-configure-workspace.md).
 
 ![Välj arbetsyta](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -181,4 +181,4 @@ Du kan ha scenarier där du vill installera Log Analytics agenten men inte beroe
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Azure policy](../governance/policy/overview.md).
-- Läs mer om [diagnostikinställningar](platform/diagnostic-settings.md).
+- Läs mer om [diagnostikinställningar](essentials/diagnostic-settings.md).

@@ -1,19 +1,19 @@
 ---
-title: Kapacitets planering och skalning för Azure Service Fabric
+title: Kapacitetsplanering och skalning för Azure Service Fabric
 description: Metod tips för planering och skalning Service Fabric kluster och program.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d9ed8fa695c636e7aaf36fd034babb4de012d9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 32a9c26bb9e89cf4057cc753b02ad3c006d0bae6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595070"
 ---
-# <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitets planering och skalning för Azure Service Fabric
+# <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitetsplanering och skalning för Azure Service Fabric
 
 Innan du skapar ett Azure Service Fabric-kluster eller skalar beräknings resurser som är värdar för klustret är det viktigt att planera för kapacitet. Mer information om att planera för kapacitet finns i [planera Service Fabric kluster kapacitet](./service-fabric-cluster-capacity.md). För ytterligare vägledning för kluster skalbarhet, se [Service Fabric skalbarhets överväganden](/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations).
 
@@ -26,7 +26,7 @@ Om du använder automatisk skalning via skalnings uppsättningar för virtuella 
 
 * Att distribuera dina Resource Manager-mallar med lämplig kapacitet som har deklarerats stöder inte ditt användnings fall.
      
-   Förutom manuell skalning kan du konfigurera en [kontinuerlig integrering och leverans pipeline i Azure DevOps Services med hjälp av distributions projekt för Azure Resource Group](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Den här pipelinen utlöses ofta av en Logic app som använder prestanda mått för virtuella datorer som frågas från [Azure Monitor REST API](../azure-monitor/platform/rest-api-walkthrough.md). Pipelinen skalas effektivt baserat på de mått som du vill ha, medan du optimerar för Resource Manager-mallar.
+   Förutom manuell skalning kan du konfigurera en [kontinuerlig integrering och leverans pipeline i Azure DevOps Services med hjälp av distributions projekt för Azure Resource Group](../azure-resource-manager/templates/add-template-to-azure-pipelines.md). Den här pipelinen utlöses ofta av en Logic app som använder prestanda mått för virtuella datorer som frågas från [Azure Monitor REST API](../azure-monitor/essentials/rest-api-walkthrough.md). Pipelinen skalas effektivt baserat på de mått som du vill ha, medan du optimerar för Resource Manager-mallar.
 * Du behöver bara skala en nod för skalnings uppsättning för virtuella datorer i taget.
    
    För att skala ut med tre eller fler noder i taget bör du [skala ut ett Service Fabric kluster genom att lägga till en skalnings uppsättning för virtuella datorer](virtual-machine-scale-set-scale-node-type-scale-out.md). Det är säkert att skala in och skala ut skalnings uppsättningar för virtuella datorer vågrätt, en nod i taget.
@@ -42,7 +42,7 @@ Om du använder automatisk skalning via skalnings uppsättningar för virtuella 
 
 ## <a name="vertical-scaling-considerations"></a>Överväganden vid vertikal skalning
 
-[Lodrät skalning](./virtual-machine-scale-set-scale-node-type-scale-out.md) en nodtyp i Azure Service Fabric kräver ett antal steg och överväganden. Ett exempel:
+[Lodrät skalning](./virtual-machine-scale-set-scale-node-type-scale-out.md) en nodtyp i Azure Service Fabric kräver ett antal steg och överväganden. Exempel:
 
 * Klustret måste vara felfritt innan skalningen. Annars kommer du att göra klustret ytterligare.
 * Silver hållbarhets nivån eller större krävs för alla Service Fabric klusternoder som är värdar för tillstånds känsliga tjänster.
@@ -117,7 +117,7 @@ Om du vill skala i manuellt uppdaterar du kapaciteten i SKU-egenskapen för öns
 }
 ```
 
-Du måste förbereda noden för avstängning för skalning i program mässigt. Hitta noden som ska tas bort (den högsta instans-noden). Ett exempel:
+Du måste förbereda noden för avstängning för skalning i program mässigt. Hitta noden som ska tas bort (den högsta instans-noden). Exempel:
 
 ```csharp
 using (var client = new FabricClient())

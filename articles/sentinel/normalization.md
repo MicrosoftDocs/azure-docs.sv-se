@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 35b3f4fe5703e9ce902553f992dfa44cea7db78f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390818"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570459"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalisering i Azure Sentinel
 
@@ -147,7 +147,7 @@ När funktionen har ändrats klickar du på Spara igen och använder samma namn,
 
 JSON, XML och CSV är särskilt praktiska för parsning vid tidpunkt. Azure Sentinel har inbyggda analys funktioner för JSON, XML och CSV, samt ett JSON-parsningsfel.  Mer information finns i [använda JSON-fält i Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blogg). 
 
-Läs mer om [sparade frågor](../azure-monitor/log-query/example-queries.md) (implementeringen av fråge tids parser) i Log Analytics.
+Läs mer om [sparade frågor](../azure-monitor/logs/example-queries.md) (implementeringen av fråge tids parser) i Log Analytics.
 
 
 ## <a name="next-steps"></a>Nästa steg

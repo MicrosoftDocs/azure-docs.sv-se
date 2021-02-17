@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5ad3e1a5a4ff47fe3d5fee8b8bc79235838995b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660461"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593623"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK
 
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Ta en titt på [GitHub-lagringsplatsen](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) och [NPM-paketet](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) för plugin-programmet för automatisk insamling av en analys.
 - Använd [händelse analys i användnings miljö](usage-segmentation.md) för att analysera de bästa klicken och segmentera med tillgängliga dimensioner.
-- Hitta Klicka på data under innehålls fält i customDimensions-attributet i CustomEvents-tabellen i [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query). Ytterligare vägledning finns i [exempel appen](https://go.microsoft.com/fwlink/?linkid=2152871) .
-- Skapa en [arbets bok](../platform/workbooks-overview.md) för att skapa anpassade visualiseringar av Klicka på data.
+- Hitta Klicka på data under innehålls fält i customDimensions-attributet i CustomEvents-tabellen i [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query). Ytterligare vägledning finns i [exempel appen](https://go.microsoft.com/fwlink/?linkid=2152871) .
+- Skapa en [arbets bok](../visualize/workbooks-overview.md) för att skapa anpassade visualiseringar av Klicka på data.

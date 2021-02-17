@@ -16,16 +16,16 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515656"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577844"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegering och roller i hantering av Azure AD-rättigheter
 
-Globala administratörer och användar administratörer kan som standard skapa och hantera alla aspekter av hantering av Azure AD-rättigheter. Användare i dessa roller kan dock inte känna till alla situationer där åtkomst paket krävs. Vanligt vis är det användare inom respektive avdelningar, team eller projekt som vet vilka de samarbetar med, med hjälp av vilka resurser och hur länge. I stället för att ge användarna obegränsad behörighet till icke-administratörer, kan du ge användarna minst de behörigheter de behöver för att utföra sitt jobb och undvika att skapa motstridiga eller olämpliga åtkomst rättigheter.
+Globala administratörer och användar administratörer kan som standard skapa och hantera alla aspekter av hantering av Azure AD-rättigheter. Användare i dessa roller kan dock inte känna till alla situationer där åtkomst paket krävs. Vanligt vis är det användare inom respektive avdelning, team eller projekt som vet vilka de samarbetar med, med hjälp av vilka resurser och hur länge. I stället för att ge användarna obegränsad behörighet till icke-administratörer kan du ge användarna de minst behörigheter de behöver för att utföra sitt jobb och undvika att skapa motstridiga eller olämpliga åtkomst rättigheter.
 
 Den här videon ger en översikt över hur du delegerar åtkomst styrning från IT-administratören till användare som inte är administratörer.
 
@@ -39,7 +39,7 @@ För att förstå hur du kan delegera åtkomst styrning i hantering av rättighe
 
 Som IT-administratör har Hana kontakter på varje avdelning – Mamta i marknadsföring, mark i ekonomi och Joe i juridisk person som ansvarar för deras avdelnings resurser och affärs kritiskt innehåll.
 
-Med rättighets hantering kan du delegera åtkomst styrning till dessa icke-administratörer eftersom de är de som vet vilka användare som behöver åtkomst, för hur lång tid och vilka resurser. Detta säkerställer att rätt personer hanterar åtkomst för sina avdelningar.
+Med rättighets hantering kan du delegera åtkomst styrning till dessa icke-administratörer eftersom de är de som vet vilka användare som behöver åtkomst, för hur lång tid och vilka resurser. Att delegera till icke-administratörer garanterar att rätt personer hanterar åtkomst för sina avdelningar.
 
 Här är ett sätt som Hana kan delegera åtkomst styrning till marknadsförings-, ekonomi-och juridiska avdelningar.
 
@@ -47,15 +47,13 @@ Här är ett sätt som Hana kan delegera åtkomst styrning till marknadsförings
 
 1. Hana lägger till den gruppen i katalogens skapare roll.
 
-    Mamta, mark och Johan kan nu skapa kataloger för sina avdelningar, lägga till resurser som deras avdelningar behöver och göra ytterligare delegering i katalogen.
-
-    Observera att Mamta, mark och Johan inte kan se var and Johan kataloger.
+    Mamta, mark och Johan kan nu skapa kataloger för sina avdelningar, lägga till resurser som deras avdelningar behöver och göra ytterligare delegering i katalogen. De kan inte se var and s kataloger.
 
 1. Mamta skapar en **marknadsförings** katalog som är en behållare med resurser.
 
 1. Mamta lägger till de resurser som marknadsförings avdelningen äger till den här katalogen.
 
-1. Mamta kan lägga till fler personer från hennes avdelning som katalog ägare för den här katalogen. Detta hjälper dig att dela ansvars områden för katalog hantering.
+1. Mamta kan lägga till andra personer från hennes avdelning som katalog ägare för den här katalogen, som hjälper till att dela katalog hanterings ansvars områden.
 
 1. Mamta kan ytterligare delegera skapande och hantering av åtkomst paket i marknadsförings katalogen till projekt chefer på marknadsförings avdelningen. Hon kan göra detta genom att tilldela dem till Access Package Manager-rollen. En Access Package Manager kan skapa och hantera åtkomst paket. 
 
@@ -76,18 +74,18 @@ Efter delegeringen kan marknadsförings avdelningen ha roller som liknar följan
 
 Rättighets hantering har följande roller som är speciella för rättighets hantering.
 
-| Rättighets hanterings roll | Beskrivning |
+| Rättighets hanterings roll | Description |
 | --- | --- |
-| Katalog skapare | Skapa och hantera kataloger. Vanligt vis en IT-administratör som inte är en global administratör eller en resurs ägare för en samling resurser. Personen som skapar en katalog blir automatiskt katalogens första katalog ägare och kan lägga till ytterligare katalog ägare. En katalog skapare kan inte hantera eller se kataloger som de inte äger och kan inte lägga till resurser som de inte äger i en katalog. Om katalog skaparen behöver hantera en annan katalog eller lägga till resurser som de inte äger, kan de begära att bli medägare till katalogen eller resursen. |
-| Katalog ägare | Redigera och hantera befintliga kataloger. Vanligt vis en IT-administratör eller resurs ägare, eller en användare som har tilldelats katalog ägaren. |
+| Katalog skapare | Skapa och hantera kataloger. Vanligt vis en IT-administratör som inte är en global administratör eller resurs ägare för en samling resurser. Personen som skapar en katalog blir automatiskt katalogens första katalog ägare och kan lägga till fler katalog ägare. En katalog skapare kan inte hantera eller se kataloger som de inte äger och kan inte lägga till resurser som de inte äger i en katalog. Om katalog skaparen behöver hantera en annan katalog eller lägga till resurser som de inte äger, kan de begära att bli medägare till katalogen eller resursen. |
+| Katalog ägare | Redigera och hantera befintliga kataloger. Vanligt vis en IT-administratör eller resurs ägare, eller en användare som katalog ägaren har valt. |
 | Åtkomst till paket hanteraren | Redigera och hantera alla befintliga åtkomst paket i en katalog. |
 | Åtkomst till paket tilldelnings hanteraren | Redigera och hantera alla befintliga åtkomst paket tilldelningar. |
 
-Dessutom har en utsedd god kännare och en beställare av ett Access-paket även rättigheter, även om de inte är roller.
+Dessutom har den valda god kännaren och en beställare av ett Access-paket behörighet, även om de inte är roller.
 
-| Höger | Beskrivning |
+| Höger | Description |
 | --- | --- |
-| Godkännare | Auktoriserad av en princip för att godkänna eller neka begär Anden om åtkomst till paket, även om de inte kan ändra definitioner för åtkomst paket. |
+| Godkännare | Auktoriserad av en princip för att godkänna eller neka begär Anden om åtkomst till paket, men de kan inte ändra definitioner för åtkomst paket. |
 | Requestor | Auktoriserad av en princip för ett Access-paket för att begära det Access-paketet. |
 
 I följande tabell visas de aktiviteter som rättighets hanterings rollerna kan utföra.
@@ -118,7 +116,7 @@ I följande tabell visas de aktiviteter som rättighets hanterings rollerna kan 
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Nödvändiga roller för att lägga till resurser i en katalog
 
-En global administratör kan lägga till eller ta bort alla grupper (molnbaserade säkerhets grupper eller molnbaserade Microsoft 365 grupper), program eller SharePoint Online-platser i en katalog. En användar administratör kan lägga till eller ta bort alla grupper eller program i en katalog, förutom en grupp som kon figurer ATS som tilldelnings bara till en katalog roll. Observera att en användar administratör kan hantera åtkomst paket i en katalog som innehåller grupper som kon figurer ATS som tilldelnings bara till en katalog roll.
+En global administratör kan lägga till eller ta bort alla grupper (molnbaserade säkerhets grupper eller molnbaserade Microsoft 365 grupper), program eller SharePoint Online-platser i en katalog. En användar administratör kan lägga till eller ta bort alla grupper eller program i en katalog, förutom en grupp som kon figurer ATS som tilldelnings bara till en katalog roll. Observera att en användar administratör kan hantera åtkomst paket i en katalog som innehåller grupper som kon figurer ATS som tilldelnings bara till en katalog roll.  Om du vill ha mer information om roll tilldelnings bara grupper [skapar du en roll tilldelnings grupp i Azure Active Directory](../roles/groups-create-eligible.md).
 
 För en användare som inte är en global administratör eller en användar administratör, för att lägga till grupper, program eller SharePoint Online-webbplatser till en katalog, måste användaren ha *både* den nödvändiga Azure AD-katalog rollen och katalog ägaren rättighets hanterings roll. I följande tabell visas de roll kombinationer som krävs för att lägga till resurser i en katalog. Om du vill ta bort resurser från en katalog måste du ha samma roller.
 

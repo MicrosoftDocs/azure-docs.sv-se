@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 202cdc341ce31c2347552e6fbc430c679ef28d7f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202189"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580092"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-tillägg för virtuella datorer för Linux
 
@@ -37,7 +37,7 @@ Azure Monitor-loggar tillhandahåller funktioner för övervakning, avisering oc
 
 ### <a name="operating-system"></a>Operativsystem
 
-Mer information om Linux-distributioner som stöds finns i artikeln [Översikt över Azure Monitors agenter](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+Mer information om Linux-distributioner som stöds finns i artikeln [Översikt över Azure Monitors agenter](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Version för agent och VM-tillägg
 Följande tabell innehåller en mappning av versionen av Log Analytics VM-tillägget och Log Analytics agent-paketet för varje version. En länk till versions informationen för Log Analytics agents paketets version ingår. Versions information innehåller information om fel korrigeringar och nya funktioner som är tillgängliga för en specifik agent version.  
@@ -76,7 +76,7 @@ Log Analytics agent-tillägget för Linux kräver att den virtuella mål datorn 
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
-Följande JSON visar schemat för Log Analytics agent-tillägget. Tillägget kräver arbetsyte-ID och arbets ytans nyckel från mål Log Analytics arbets ytan. dessa värden [finns i arbets ytan Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) i Azure Portal. Eftersom arbets ytans nyckel ska behandlas som känsliga data, bör den lagras i en konfiguration med skyddad konfiguration. Skyddade inställnings data för Azure VM-tillägg krypteras och endast dekrypteras på den virtuella mål datorn. Observera att **workspaceId** och **workspaceKey** är Skift läges känsliga.
+Följande JSON visar schemat för Log Analytics agent-tillägget. Tillägget kräver arbetsyte-ID och arbets ytans nyckel från mål Log Analytics arbets ytan. dessa värden [finns i arbets ytan Log Analytics](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) i Azure Portal. Eftersom arbets ytans nyckel ska behandlas som känsliga data, bör den lagras i en konfiguration med skyddad konfiguration. Skyddade inställnings data för Azure VM-tillägg krypteras och endast dekrypteras på den virtuella mål datorn. Observera att **workspaceId** och **workspaceKey** är Skift läges känsliga.
 
 ```json
 {
@@ -221,7 +221,7 @@ Utökning av utdata loggas i följande fil:
 | 53 | Tillägget misslyckades på grund av saknade eller felaktiga konfigurations parametrar | Se utdata och loggfiler för mer information om vad som gick fel. Kontrol lera också att arbetsyte-ID: t är korrekt och att datorn är ansluten till Internet. |
 | 55 | Det går inte att ansluta till Azure Monitor tjänsten eller nödvändiga paket saknas eller så är dpkg Package Manager låst| Kontrol lera att datorn har Internet åtkomst eller att en giltig HTTP-proxy har angetts. Kontrol lera också att arbetsyte-ID: t är korrekt och att du har installerat de olika verktygen. |
 
-Ytterligare felsöknings information finns i [fel söknings guiden Log Analytics-agent-för-Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
+Ytterligare felsöknings information finns i [fel söknings guiden Log Analytics-agent-för-Linux](../../azure-monitor/visualize/vmext-troubleshoot.md).
 
 ### <a name="support"></a>Support
 

@@ -4,12 +4,12 @@ description: Hämta sid visning och antal sessioner, webb klient data, enstaka s
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 317050abd0aa77649800493c36b03b298f256096
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234366"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573798"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights för webbsidor
 
@@ -107,7 +107,7 @@ Varje konfigurations alternativ visas på en ny rad, om du inte vill åsidosätt
 
 De tillgängliga konfigurations alternativen är
 
-| Namn | Typ | Beskrivning
+| Namn | Typ | Description
 |------|------|----------------
 | src | sträng **[obligatoriskt]** | Den fullständiga URL: en för varifrån SDK: n ska läsas in. Det här värdet används för attributet src för ett dynamiskt tillagd &lt; skript/ &gt; tagg. Du kan använda den offentliga CDN-platsen eller en privat värd som är värd för en.
 | name | sträng *[valfritt]* | Det globala namnet för den initierade SDK: n som standard `appInsights` . Det ```window.appInsights``` kommer att vara en referens till den initierade instansen. Obs! Om du anger ett namn värde eller om en föregående instans ska tilldelas (via det globala namnet appInsightsSDK), kommer detta namn värde också att definieras i det globala namn området som ```window.appInsightsSDK=<name value>``` , detta krävs av SDK-initierings koden för att säkerställa att den initierar och uppdaterar rätt kodfragments Skeleton och proxyservrar.
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 De flesta konfigurations fälten får ett namn som är förfalskade som standard. Alla fält är valfria förutom för `instrumentationKey` .
 
-| Namn | Standardvärde | Beskrivning |
+| Name | Standardvärde | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Obligatoriskt**<br>Instrumentation-nyckel som du fick från Azure Portal. |
 | accountId | null | Ett valfritt konto-ID, om din app grupperar användare till konton. Inga blank steg, kommatecken, semikolon, likheter eller lodräta staplar |
@@ -180,8 +180,8 @@ De flesta konfigurations fälten får ett namn som är förfalskade som standard
 | maxBatchInterval | 15 000 | Hur lång tid det tar att gruppera telemetri innan det skickas (millisekunder) |
 | disableExceptionTracking | falskt | Om det här värdet är sant samlas undantag inte in igen. Standardvärdet är false. |
 | disableTelemetry | falskt | Om det här värdet är sant samlas ingen telemetri in eller skickas. Standardvärdet är false. |
-| enableDebug | falskt | Om det här värdet är sant genereras **interna** fel söknings data som ett undantag **i stället** för att loggas, oavsett inställningarna för SDK-loggning. Standardvärdet är false. <br>**_Obs!_* _ om den här inställningen aktive ras, leder det till att telemetri tas bort när ett internt fel inträffar. Detta kan vara användbart för att snabbt identifiera problem med konfigurationen eller användningen av SDK. Om du inte vill förlora telemetri vid fel sökning kan du överväga att använda `consoleLoggingLevel` eller `telemetryLoggingLevel` i stället för `enableDebug` . |
-| loggingLevelConsole | 0 | Loggar _ *interna** Application Insights fel till konsolen. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) |
+| enableDebug | falskt | Om det här värdet är sant genereras **interna** fel söknings data som ett undantag **i stället** för att loggas, oavsett inställningarna för SDK-loggning. Standardvärdet är false. <br>**_Obs:_** Om du aktiverar den här inställningen tas all telemetri bort när ett internt fel inträffar. Detta kan vara användbart för att snabbt identifiera problem med konfigurationen eller användningen av SDK. Om du inte vill förlora telemetri vid fel sökning kan du överväga att använda `consoleLoggingLevel` eller `telemetryLoggingLevel` i stället för `enableDebug` . |
+| loggingLevelConsole | 0 | Loggar **interna** Application Insights fel i konsolen. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) |
 | loggingLevelTelemetry | 1 | Skickar **interna** Application Insights fel som telemetri. <br>0: av, <br>1: endast kritiska fel, <br>2: allt (fel & varningar) |
 | diagnosticLogInterval | 10000 | inhemska Avsöknings intervall (i MS) för intern loggnings kön |
 | samplingPercentage | 100 | Procent andel av händelser som ska skickas. Standardvärdet är 100, vilket innebär att alla händelser skickas. Ange detta om du vill bevara din data Kap för storskaliga program. |
@@ -219,7 +219,7 @@ De flesta konfigurations fälten får ett namn som är förfalskade som standard
 
 ## <a name="enable-time-on-page-tracking"></a>Aktivera tids spårning på sidan
 
-Genom att ställa in `autoTrackPageVisitTime: true` den tid som en användare lägger på varje sida spåras. På varje ny sid visningar skickas varaktigheten som användaren har använt på *föregående* sida som ett [anpassat mått](../platform/metrics-custom-overview.md) med namnet `PageVisitTime` . Det här anpassade måttet visas i [Metrics Explorer](../platform/metrics-getting-started.md) som ett "log-baserat mått".
+Genom att ställa in `autoTrackPageVisitTime: true` den tid som en användare lägger på varje sida spåras. På varje ny sid visningar skickas varaktigheten som användaren har använt på *föregående* sida som ett [anpassat mått](../essentials/metrics-custom-overview.md) med namnet `PageVisitTime` . Det här anpassade måttet visas i [Metrics Explorer](../essentials/metrics-getting-started.md) som ett "log-baserat mått".
 
 ## <a name="enable-correlation"></a>Aktivera korrelation
 
@@ -289,7 +289,7 @@ Välj **webbläsare** och välj sedan **haverier** eller **prestanda**.
 
 ![Skärm bild av sidan prestanda i Application Insights visar bild visning av beroende mått för ett webb program.](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>Analys
 
 Om du vill fråga din telemetri som samlas in av JavaScript SDK väljer du knappen **Visa i loggar (analys)** . Genom att lägga till en `where` -sats i visas `client_Type == "Browser"` endast data från Java Script SDK och all telemetri på Server sidan som samlas in av andra SDK: er.
  

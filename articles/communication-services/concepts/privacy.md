@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888648"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572028"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
 
@@ -73,7 +73,7 @@ Ljud-och videokommunikation är ephemerally som bearbetas av tjänsten och inga 
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor och Log Analytics
 
-Azure Communication Services kommer att mata in Azure Monitor loggnings information för att förstå drifts hälsan och användningen av tjänsten. Några av dessa loggar är identiteter och telefonnummer för kommunikations tjänsten som fält data. För att ta bort potentiellt personliga data [använder du dessa procedurer för Azure Monitor](../../azure-monitor/platform/personal-data-mgmt.md). Du kanske också vill konfigurera [standard kvarhållningsperioden för Azure Monitor](../../azure-monitor/platform/manage-cost-storage.md).
+Azure Communication Services kommer att mata in Azure Monitor loggnings information för att förstå drifts hälsan och användningen av tjänsten. Några av dessa loggar är identiteter och telefonnummer för kommunikations tjänsten som fält data. För att ta bort potentiellt personliga data [använder du dessa procedurer för Azure Monitor](../../azure-monitor/logs/personal-data-mgmt.md). Du kanske också vill konfigurera [standard kvarhållningsperioden för Azure Monitor](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

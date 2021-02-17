@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4716679de08bbae137e42f91db5b6f93c0c96e22
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093973"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593368"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azures säkerhets bas linje för Azure SignalR service
 
@@ -481,9 +481,9 @@ Azure SignalR service loggar dock nätverks trafik som den bearbetar för kund �
 
 Aktivera Azures resurs loggar för Azure SignalR-tjänsten. Du kan använda Azure Security Center och Azure Policy för att aktivera resurs loggar och insamling av logg data. Dessa loggar kan vara kritiska för senare utredning av säkerhets incidenter och utföra kriminal tekniska övningar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Resurs loggar för Azure SignalR service](signalr-howto-diagnostic-logs.md)
 
@@ -503,7 +503,7 @@ Du kan också aktivera och publicera data till Azure Sentinel eller ett SIEM-sys
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 

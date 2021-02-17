@@ -3,12 +3,12 @@ title: Hur gör jag för att... i Azure Application Insights | Microsoft Docs
 description: Vanliga frågor och svar i Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 134089f4df8f80147182835ca8746322c1de7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319260"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584164"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hur kan jag ... i Application Insights?
 ## <a name="get-an-email-when-"></a>Få ett e-postmeddelande när...
@@ -16,20 +16,20 @@ ms.locfileid: "87319260"
 Ange ett [webb test för tillgänglighet](./monitor-web-app-availability.md).
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-posta om min webbplats är överbelastad
-Ange en [avisering](../platform/alerts-log.md) på **Server svars tiden**. Ett tröskelvärde mellan 1 och 2 sekunder bör fungera.
+Ange en [avisering](../alerts/alerts-log.md) på **Server svars tiden**. Ett tröskelvärde mellan 1 och 2 sekunder bör fungera.
 
 ![Skärm bild som visar hur du ställer in en avisering på Server svars tiden.](./media/how-do-i/030-server.png)
 
 Din app kan också visa tecken på stammar genom att returnera felkoder. Ange en avisering om **misslyckade förfrågningar**.
 
-Om du vill ställa in en avisering på **Server undantag**kan du behöva göra [ytterligare inställningar](./asp-net-exceptions.md) för att kunna se data.
+Om du vill ställa in en avisering på **Server undantag** kan du behöva göra [ytterligare inställningar](./asp-net-exceptions.md) för att kunna se data.
 
 ### <a name="email-on-exceptions"></a>E-post vid undantag
 1. [Konfigurera undantags övervakning](./asp-net-exceptions.md)
-2. [Ange en avisering](../platform/alerts-log.md) för måttet för antalet undantag
+2. [Ange en avisering](../alerts/alerts-log.md) för måttet för antalet undantag
 
 ### <a name="email-on-an-event-in-my-app"></a>Skicka ett e-postmeddelande till en händelse i min app
-Låt oss anta att du vill få ett e-postmeddelande när en enskild händelse inträffar. Application Insights tillhandahåller inte den här funktionen direkt, men den kan [skicka en avisering när ett mått överskrider ett tröskelvärde](../platform/alerts-log.md).
+Låt oss anta att du vill få ett e-postmeddelande när en enskild händelse inträffar. Application Insights tillhandahåller inte den här funktionen direkt, men den kan [skicka en avisering när ett mått överskrider ett tröskelvärde](../alerts/alerts-log.md).
 
 Aviseringar kan anges för [anpassade mått](./api-custom-events-metrics.md#trackmetric), även om inte anpassade händelser. Skriv kod för att öka ett mått när händelsen inträffar:
 
@@ -51,7 +51,7 @@ Eftersom aviseringar har två tillstånd måste du skicka ett lågt värde när 
 telemetry.TrackMetric("Alarm", 0.5);
 ```
 
-Skapa ett diagram i [Metric Explorer](../platform/metrics-charts.md) för att se ditt larm:
+Skapa ett diagram i [Metric Explorer](../essentials/metrics-charts.md) för att se ditt larm:
 
 ![Skärm bild som visar hur du skapar ett diagram i Metric Explorer för att se ditt larm.](./media/how-do-i/010-alarm.png)
 
@@ -71,11 +71,11 @@ Några saker att tänka på:
 * Eftersom e-postmeddelanden skickas både på "varning" och "felfri", kanske du vill överväga att fundera på att titta på en händelse i två tillstånd. I stället för händelsen "jobbet har slutförts" har du till exempel ett villkor för "pågående jobb" där du får e-postmeddelanden i början och slutet av ett jobb.
 
 ### <a name="set-up-alerts-automatically"></a>Konfigurera aviseringar automatiskt
-[Använd PowerShell för att skapa nya aviseringar](../platform/alerts-log.md)
+[Använd PowerShell för att skapa nya aviseringar](../alerts/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Använd PowerShell för att hantera Application Insights
 * [Skapa nya resurser](./create-new-resource.md#creating-a-resource-automatically)
-* [Skapa nya aviseringar](../platform/alerts-log.md)
+* [Skapa nya aviseringar](../alerts/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Separera telemetri från olika versioner
 
@@ -88,7 +88,7 @@ Några saker att tänka på:
 
 ## <a name="visualize-data"></a>Visualisera data
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Instrument panel med mått från flera appar
-* I [Metric Explorer](../platform/metrics-charts.md)anpassar du ditt diagram och sparar det som en favorit. Fäst den på Azure-instrumentpanelen.
+* I [Metric Explorer](../essentials/metrics-charts.md)anpassar du ditt diagram och sparar det som en favorit. Fäst den på Azure-instrumentpanelen.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Instrument panel med data från andra källor och Application Insights
 * [Exportera telemetri till Power BI](./export-power-bi.md).
@@ -165,6 +165,6 @@ Bland de mått som du kan visa i mått Utforskaren finns en uppsättning system 
 * **UNIX-server**  -  [Installera insamlad](./java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Visa fler prestanda räknare
-* Lägg först [till ett nytt diagram](../platform/metrics-charts.md) och se om räknaren finns i den grundläggande uppsättning som vi erbjuder.
+* Lägg först [till ett nytt diagram](../essentials/metrics-charts.md) och se om räknaren finns i den grundläggande uppsättning som vi erbjuder.
 * Om inte, [lägger du till räknaren i uppsättningen som samlas in av modulen prestanda räknare](./performance-counters.md).
 

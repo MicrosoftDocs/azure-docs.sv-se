@@ -3,16 +3,16 @@ title: Ställa in Application Insights i en Azure med hjälp av PowerShell | Mic
 description: Automatisera konfiguration av Azure-diagnostik för att skicka pipe-data till Application Insights.
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699737"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583841"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Konfigurera Application Insights för Azure-Cloud Services med hjälp av PowerShell
 
-[Microsoft Azure](https://azure.com) kan [konfigureras att skicka Azure Diagnostics-data](../platform/diagnostics-extension-to-application-insights.md) till [Azure Application Insights](./app-insights-overview.md). Diagnostiken gäller Azure Cloud Services och virtuella datorer i Azure. De kompletterar telemetrin som du skickar inifrån appen med hjälp av Application Insights SDK. Som en del av automatiseringen av processen för att skapa nya resurser i Azure kan du konfigurera diagnostik med hjälp av PowerShell.
+[Microsoft Azure](https://azure.com) kan [konfigureras att skicka Azure Diagnostics-data](../agents/diagnostics-extension-to-application-insights.md) till [Azure Application Insights](./app-insights-overview.md). Diagnostiken gäller Azure Cloud Services och virtuella datorer i Azure. De kompletterar telemetrin som du skickar inifrån appen med hjälp av Application Insights SDK. Som en del av automatiseringen av processen för att skapa nya resurser i Azure kan du konfigurera diagnostik med hjälp av PowerShell.
 
 ## <a name="azure-template"></a>Azure-mall
 Om webbappen finns i Azure och du skapar dina resurser med hjälp av en Azure Resource Manager-mall kan du konfigurera Application Insights genom att lägga till följande till resursnoden:
@@ -125,6 +125,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="see-also"></a>Se även
 * [Övervaka Azure Cloud Services-appar med Application Insights](./cloudservices.md)
-* [Skicka Azure Diagnostics-data till Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [Skicka Azure Diagnostics-data till Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 
 

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920755"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577945"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hantera fel och undantag i Azure Logic Apps
 
@@ -27,9 +27,9 @@ För flest grundläggande undantag och fel hantering kan du använda en *princip
 
 Här är princip typerna för återförsök:
 
-| Typ | Beskrivning |
+| Typ | Description |
 |------|-------------|
-| **Objekt** | Den här principen skickar upp till fyra återförsök med *exponentiellt ökande* intervall, som skalas med 7,5 sekunder, men är ett tak mellan 5 och 45 sekunder. |
+| **Standardvärde** | Den här principen skickar upp till fyra återförsök med *exponentiellt ökande* intervall, som skalas med 7,5 sekunder, men är ett tak mellan 5 och 45 sekunder. |
 | **Exponentiellt intervall**  | Den här principen väntar ett slumpmässigt intervall som väljs från ett exponentiellt växande intervall innan nästa förfrågan skickas. |
 | **Fast intervall**  | Den här principen väntar det angivna intervallet innan nästa förfrågan skickas. |
 | **Ingen**  | Skicka inte begäran igen. |
@@ -69,7 +69,7 @@ Eller så kan du manuellt ange principen för återförsök i `inputs` avsnittet
 
 *Obligatoriskt*
 
-| Värde | Typ | Beskrivning |
+| Värde | Typ | Description |
 |-------|------|-------------|
 | <*återförsök-princip-typ*> | Sträng | Den princip typ för återförsök som du vill använda: `default` , `none` , `fixed` eller `exponential` |
 | <*retry-intervall*> | Sträng | Återförsöksintervall där värdet måste använda [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Standardvärdet för minimi intervallet är `PT5S` och det maximala intervallet är `PT1D` . När du använder exponentiell intervall princip kan du ange olika minimi-och max värden. |
@@ -78,7 +78,7 @@ Eller så kan du manuellt ange principen för återförsök i `inputs` avsnittet
 
 *Valfritt*
 
-| Värde | Typ | Beskrivning |
+| Värde | Typ | Description |
 |-------|------|-------------|
 | <*lägsta-intervall*> | Sträng | För principen för exponentiella intervall, det minsta intervallet för det slumpmässigt valda intervallet i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*högsta-intervall*> | Sträng | För principen för exponentiella intervall är det största intervallet för det slumpmässigt valda intervallet i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -112,7 +112,7 @@ Om du inte anger en princip för återförsök använder åtgärden standard pri
 }
 ```
 
-### <a name="none"></a>Ingen
+### <a name="none"></a>Inget
 
 Om du vill ange att åtgärden eller utlösaren inte ska försöka utföra misslyckade förfrågningar igen, anger du <*återförsök-princip-typ*> till `none` .
 
@@ -362,7 +362,7 @@ Om du vill utföra olika mönster för undantags hantering kan du använda de ut
 
 ## <a name="set-up-azure-monitor-logs"></a>Konfigurera Azure Monitor loggar
 
-De tidigare mönstren är ett bra sätt att hantera fel och undantag i en körning, men du kan också identifiera och svara på fel oberoende av själva körningen. [Azure Monitor](../azure-monitor/overview.md) är ett enkelt sätt att skicka alla arbets flödes händelser, inklusive körnings-och åtgärds status, till en [Log Analytics arbets yta](../azure-monitor/platform/data-platform-logs.md), [Azure Storage-konto](../storage/blobs/storage-blobs-overview.md)eller [Azure-Event Hubs](../event-hubs/event-hubs-about.md).
+De tidigare mönstren är ett bra sätt att hantera fel och undantag i en körning, men du kan också identifiera och svara på fel oberoende av själva körningen. [Azure Monitor](../azure-monitor/overview.md) är ett enkelt sätt att skicka alla arbets flödes händelser, inklusive körnings-och åtgärds status, till en [Log Analytics arbets yta](../azure-monitor/logs/data-platform-logs.md), [Azure Storage-konto](../storage/blobs/storage-blobs-overview.md)eller [Azure-Event Hubs](../event-hubs/event-hubs-about.md).
 
 Om du vill utvärdera körnings status kan du övervaka loggarna och måtten eller publicera dem i alla övervaknings verktyg som du föredrar. Ett möjligt alternativ är att strömma alla händelser genom att Event Hubs i [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). I Stream Analytics kan du skriva Live-frågor baserat på eventuella avvikelser, genomsnitt eller fel från diagnostikloggar. Du kan använda Stream Analytics för att skicka information till andra data källor, till exempel köer, ämnen, SQL, Azure Cosmos DB eller Power BI.
 

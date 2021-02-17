@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029288"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594502"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Lodrät autoskalning med skalnings uppsättningar för virtuella datorer
 
@@ -118,7 +118,7 @@ När du har importerat Runbooks lägger du till en webhook i runbooken så att d
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Lägg till en avisering i skalnings uppsättningen för den virtuella datorn
 
-Nedan visas ett PowerShell-skript som visar hur du lägger till en avisering till en skalnings uppsättning för virtuella datorer. Läs följande artikel för att hämta namnet på måttet för att utlösa aviseringen på: [Azure Monitor autoskalning av vanliga mått](../azure-monitor/platform/autoscale-common-metrics.md).
+Nedan visas ett PowerShell-skript som visar hur du lägger till en avisering till en skalnings uppsättning för virtuella datorer. Läs följande artikel för att hämta namnet på måttet för att utlösa aviseringen på: [Azure Monitor autoskalning av vanliga mått](../azure-monitor/autoscale/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Mer information om hur du skapar aviseringar finns i följande artiklar:
 
-* [Azure Monitor PowerShell-exempel](../azure-monitor/samples/powershell-samples.md)
-* [Azure Monitor cross-platform CLI-exempel](../azure-monitor/samples/cli-samples.md)
+* [Azure Monitor PowerShell-exempel](../azure-monitor/powershell-samples.md)
+* [Azure Monitor cross-platform CLI-exempel](../azure-monitor/cli-samples.md)
 
 ## <a name="summary"></a>Sammanfattning
 

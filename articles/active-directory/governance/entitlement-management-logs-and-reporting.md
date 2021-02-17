@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577856"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Arkivera loggar och rapportera om hantering av Azure AD-berättigande i Azure Monitor
 
@@ -59,7 +59,7 @@ Att arkivera Azure AD audit-loggar kräver att du har Azure Monitor i en Azure-p
 
 ## <a name="view-events-for-an-access-package"></a>Visa händelser för ett Access-paket  
 
-Om du vill visa händelser för ett Access-paket måste du ha åtkomst till den underliggande Azure Monitor-arbetsytan (se [Hantera åtkomst till loggdata och arbets ytor i Azure Monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) för information) och i någon av följande roller: 
+Om du vill visa händelser för ett Access-paket måste du ha åtkomst till den underliggande Azure Monitor-arbetsytan (se [Hantera åtkomst till loggdata och arbets ytor i Azure Monitor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) för information) och i någon av följande roller: 
 
 - Global administratör  
 - Säkerhetsadministratör  
@@ -128,7 +128,7 @@ Gör så här för att ange roll tilldelningen och skapa en fråga:
 
     ![Lägg till en rolltilldelning](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Installera Azure PowerShell-modul
+### <a name="install-azure-powershell-module"></a>Installera Azure PowerShell modul
 
 När du har en lämplig roll tilldelning startar du PowerShell och [installerar Azure PowerShell-modulen](/powershell/azure/install-az-ps?view=azps-3.3.0) (om du inte redan har gjort det) genom att skriva:
 
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Nästa steg:
-- [Skapa interaktiva rapporter med Azure Monitor arbets böcker](../../azure-monitor/platform/workbooks-overview.md)
+- [Skapa interaktiva rapporter med Azure Monitor arbets böcker](../../azure-monitor/visualize/workbooks-overview.md)

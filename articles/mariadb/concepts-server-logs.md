@@ -3,15 +3,15 @@ title: Långsamma Query-loggar – Azure Database for MariaDB
 description: Beskriver de loggar som är tillgängliga i Azure Database for MariaDB och de tillgängliga parametrarna för att aktivera olika loggnings nivåer.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664171"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570806"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Långsamma Query-loggar i Azure Database for MariaDB
 I Azure Database for MariaDB är den långsamma fråge loggen tillgänglig för användare. Åtkomst till transaktions loggen stöds inte. Den långsamma frågans logg kan användas för att identifiera Flask halsar i prestanda för fel sökning.
@@ -53,7 +53,7 @@ Loggarna roteras var 24: e timme eller 7 GB, beroende på vilket som kommer för
 > Logg kvarhållning ovan gäller inte för loggar som är skickas med Azure Monitor diagnostikloggar. Du kan ändra kvarhållningsperioden för data mottagare som skickas till (t. ex. Azure Storage).
 
 ## <a name="diagnostic-logs"></a>Diagnostikloggar
-Azure Database for MariaDB är integrerat med Azure Monitor diagnostikloggar. När du har aktiverat långsamma Query-loggar på MariaDB-servern kan du välja att de ska skickas till Azure Monitor loggar, Event Hubs eller Azure Storage. Om du vill veta mer om hur du aktiverar diagnostikloggar kan du läsa avsnittet så här i [dokumentationen för diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md).
+Azure Database for MariaDB är integrerat med Azure Monitor diagnostikloggar. När du har aktiverat långsamma Query-loggar på MariaDB-servern kan du välja att de ska skickas till Azure Monitor loggar, Event Hubs eller Azure Storage. Om du vill veta mer om hur du aktiverar diagnostikloggar kan du läsa avsnittet så här i [dokumentationen för diagnostikloggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 I följande tabell beskrivs vad som finns i varje logg. Beroende på utmatnings metoden kan de fält som ingår och i vilken ordning de visas variera.
 

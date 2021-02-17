@@ -3,12 +3,12 @@ title: IP-adresser som används av Azure Monitor
 description: Undantag för Server brand väggen krävs av Application Insights
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220810"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584151"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>IP-adresser som används av Azure Monitor
 [Azure Monitor](../overview.md) använder ett antal IP-adresser. Azure Monitor består av kärn plattforms statistik och loggar förutom Log Analytics och Application Insights. Du kan behöva känna till dessa adresser om appen eller infrastrukturen som du övervakar ligger bakom en brand vägg.
@@ -254,21 +254,21 @@ Det kan ta lång tid att hantera ändringar av käll-IP-adresser. Om du använde
    1. Lägg till resurs gruppens namn och ange sedan *instans information*.
    1. Klicka på **Granska + skapa** och klicka sedan på *skapa*.
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="Exempel på hur du skapar en nätverks säkerhets grupp."border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="Exempel på hur du skapar en nätverks säkerhets grupp."border="true":::
 
 3. Gå till resurs grupp och klicka sedan på *nätverks säkerhets grupp* som du har skapat.
 
     1. Välj *inkommande säkerhets regler*.
     1. Klicka på **Lägg till**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="Exempel på hur du lägger till en service tag-kod."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Exempel på hur du lägger till en service tag-kod."border="true":::
 
 4. Ett nytt fönster öppnas i det högra fönstret.
     1.  Välj källa: **service tag**
     1.  Käll tjänst tag gen: **ActionGroup**
     1.  Klicka på **Lägg till**.
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="Exempel på hur du lägger till service tag-koden."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Exempel på hur du lägger till service tag-koden."border="true":::
 
 
 ## <a name="profiler"></a>Profilerare

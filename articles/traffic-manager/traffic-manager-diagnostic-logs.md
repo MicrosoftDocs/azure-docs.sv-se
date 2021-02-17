@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577880"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Aktivera resurs loggning i Azure Traffic Manager
 
@@ -64,7 +64,7 @@ Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.co
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager logg schema
 
-Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser. Schema för resurs loggar på högsta nivån finns i [tjänster, scheman och kategorier som stöds för Azure-resurs loggar](../azure-monitor/platform/resource-logs-schema.md).
+Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser. Schema för resurs loggar på högsta nivån finns i [tjänster, scheman och kategorier som stöds för Azure-resurs loggar](../azure-monitor/essentials/resource-logs-schema.md).
 
 Följande tabell innehåller loggar schema som är speciellt för Azure Traffic Manager Profile-resursen.
 

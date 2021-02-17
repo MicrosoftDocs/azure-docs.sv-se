@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498803"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585413"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Säkerhets tjänster och tekniker som är tillgängliga i Azure
 
@@ -35,7 +35,7 @@ Med tiden kommer den här listan att ändras och växa, precis som Azure gör. S
 |--------|--------|
 |[Azure &nbsp; Security &nbsp; Center](../../security-center/security-center-introduction.md)| En skydds lösning för moln skydd som tillhandahåller säkerhets hantering och Avancerat skydd för arbets belastningar i hybrid moln.|
 |[Azure Key Vault](../../key-vault/general/overview.md)| En säker hemligheter för lösen ord, anslutnings strängar och annan information som du behöver för att hålla dina appar igång. |
-|[Azure Monitor-loggar](../../azure-monitor/log-query/log-query-overview.md)|En övervaknings tjänst som samlar in telemetri och andra data och tillhandahåller ett frågespråk och analys motor för att leverera Operational Insights för dina appar och resurser. Kan användas separat eller med andra tjänster som Security Center. |
+|[Azure Monitor-loggar](../../azure-monitor/logs/log-query-overview.md)|En övervaknings tjänst som samlar in telemetri och andra data och tillhandahåller ett frågespråk och analys motor för att leverera Operational Insights för dina appar och resurser. Kan användas separat eller med andra tjänster som Security Center. |
 |[Azure dev/test Labs](../../devtest-labs/devtest-lab-overview.md)|En tjänst som hjälper utvecklare och testare att snabbt skapa miljöer i Azure och minimera spill och kontrol lera kostnader.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

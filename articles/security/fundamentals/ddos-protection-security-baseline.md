@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873968"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575063"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azures säkerhets bas linje för Azure DDoS Protection standard
 
@@ -26,7 +26,7 @@ Den här säkerhets linjen använder vägledning från [Azures säkerhets benchm
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på dina Azure DDoS Protection planer på kontroll planet nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, posta och ta bort) som utförs på kontroll Plans nivån för dina Azure DDoS Protection-instanser.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -40,7 +40,7 @@ Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna
 
 - [Visa och konfigurera diagnostisk loggning för DDoS-skydd](../../ddos-protection/diagnostic-logging.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -50,7 +50,7 @@ Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure DDoS Protection planer enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -62,9 +62,9 @@ Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna
 
 - [Information om hur du kommer åt telemetri, loggar och angrepps analys för DDoS Protection standard tjänst](../../ddos-protection/telemetry.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/essentials/activity-log.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../../azure-monitor/platform/activity-log.md)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -80,7 +80,7 @@ Publicera en Log Analytics arbets yta till Azure Sentinel eftersom den tillhanda
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../../azure-monitor/platform/alerts-log.md)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../../azure-monitor/alerts/alerts-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -276,7 +276,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure DDoS Protection-planer och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

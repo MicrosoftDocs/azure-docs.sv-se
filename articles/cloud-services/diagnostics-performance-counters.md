@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739844"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585500"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Samla in prestanda räknare för Azure Cloud Service (klassisk)
 
@@ -124,7 +124,7 @@ Med Azure-diagnostik tillägget för Cloud Services kan du ange vilka prestanda 
 
 De prestanda räknare som du vill samla in definieras i filen **Diagnostics. wadcfgx** . Öppna den här filen (den definieras per roll) i Visual Studio och hitta **DiagnosticsConfiguration**  >  **PublicConfig**  >  **WadCfg**  >  **DiagnosticMonitorConfiguration**  >  **PerformanceCounters** -elementet. Lägg till ett nytt **PerformanceCounterConfiguration** -element som underordnat. Det här elementet har två attribut: `counterSpecifier` och `sampleRate` . `counterSpecifier`Attributet definierar vilken system prestanda räknare som angetts (beskrivs i föregående avsnitt) för att samla in. `sampleRate`Värdet anger hur ofta det värdet ska avsökas. Som helhet överförs alla prestanda räknare till Azure enligt det överordnade `PerformanceCounters` elementets `scheduledTransferPeriod` attributvärde.
 
-Mer information om `PerformanceCounters` schema elementet finns i [Azure-diagnostik schemat](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element).
+Mer information om `PerformanceCounters` schema elementet finns i [Azure-diagnostik schemat](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element).
 
 Den period som definieras av `sampleRate` attributet använder data typen XML-varaktighet för att ange hur ofta prestanda räknaren ska avsökas. I exemplet nedan är frekvensen inställd på `PT3M` , vilket innebär att `[P]eriod[T]ime[3][M]inutes` : var tredje minut.
 
@@ -294,4 +294,4 @@ Som tidigare angavs definieras de prestanda räknare som du vill samla in i file
 - [Application Insights för Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [System prestanda räknare i Application Insights](../azure-monitor/app/performance-counters.md)
 - [Ange en räknar Sök väg](/windows/win32/perfctrs/specifying-a-counter-path)
-- [Azure-diagnostik schema – prestanda räknare](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+- [Azure-diagnostik schema – prestanda räknare](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

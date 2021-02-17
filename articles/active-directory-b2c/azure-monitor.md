@@ -11,21 +11,21 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219238"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573001"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Övervaka Azure AD B2C med Azure Monitor
 
-Använd Azure Monitor för att dirigera Azure Active Directory B2C (Azure AD B2C) inloggnings-och [gransknings](view-audit-logs.md) loggar till olika övervaknings lösningar. Du kan behålla loggarna för långsiktig användning eller integrera med SIEM-verktyg från tredje part för att få insikter om din miljö.
+Använd Azure Monitor för att dirigera Azure Active Directory B2C (Azure AD B2C) inloggnings-och [gransknings](view-audit-logs.md) loggar till olika övervaknings lösningar. Du kan behålla loggarna för långvarig användning eller integrera dem med SIEM-verktyg (säkerhetsinformation och händelsehantering) för att få insikter om din miljö.
 
 Du kan dirigera logg händelser till:
 
 * Ett Azure [Storage-konto](../storage/blobs/storage-blobs-introduction.md).
-* En [Log Analytics arbets yta](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (för att analysera data, skapa instrument paneler och avisering om vissa händelser).
+* En [Log Analytics arbets yta](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (för att analysera data, skapa instrument paneler och avisering om vissa händelser).
 * En Azure [Event Hub](../event-hubs/event-hubs-about.md) (och integrera med dina Splunk-och Sumo Logic-instanser).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -38,7 +38,7 @@ I den här artikeln får du lära dig hur du överför loggarna till en Azure Lo
 
 ## <a name="deployment-overview"></a>Distributionsöversikt
 
-Azure AD B2C utnyttjar [Azure Active Directory övervakning](../active-directory/reports-monitoring/overview-monitoring.md). Om du vill aktivera *diagnostikinställningar* i Azure Active Directory inom din Azure AD B2C-klient använder du [Azure-Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) för att [delegera en resurs](../lighthouse/concepts/azure-delegated-resource-management.md), vilket gör att din Azure AD B2C ( **tjänst leverantören**) kan hantera en Azure AD-resurs ( **kund**). När du har slutfört stegen i den här artikeln har du åtkomst till resurs gruppen *Azure-AD-B2C-Monitor* som innehåller [arbets ytan Log Analytics](../azure-monitor/learn/quick-create-workspace.md) i **Azure AD B2C** portalen. Du kommer också att kunna överföra loggarna från Azure AD B2C till arbets ytan Log Analytics.
+Azure AD B2C utnyttjar [Azure Active Directory övervakning](../active-directory/reports-monitoring/overview-monitoring.md). Om du vill aktivera *diagnostikinställningar* i Azure Active Directory inom din Azure AD B2C-klient använder du [Azure-Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) för att [delegera en resurs](../lighthouse/concepts/azure-delegated-resource-management.md), vilket gör att din Azure AD B2C ( **tjänst leverantören**) kan hantera en Azure AD-resurs ( **kund**). När du har slutfört stegen i den här artikeln har du åtkomst till resurs gruppen *Azure-AD-B2C-Monitor* som innehåller [arbets ytan Log Analytics](../azure-monitor/logs/quick-create-workspace.md) i **Azure AD B2C** portalen. Du kommer också att kunna överföra loggarna från Azure AD B2C till arbets ytan Log Analytics.
 
 Under den här distributionen får du behörighet för en användare eller grupp i Azure AD B2C katalogen för att konfigurera Log Analytics arbets ytans instans i klienten som innehåller din Azure-prenumeration. För att skapa auktoriseringen distribuerar du en [Azure Resource Manager](../azure-resource-manager/index.yml) -mall till Azure AD-klienten som innehåller prenumerationen.
 
@@ -62,7 +62,7 @@ En **Log Analytics-arbetsyta** är en unik miljö för Azure Monitor loggdata. D
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller din **Azure AD-klient**.
-1. [Skapa en Log Analytics-arbetsyta](../azure-monitor/learn/quick-create-workspace.md). I det här exemplet används en Log Analytics arbets yta med namnet *AzureAdB2C* i en resurs grupp med namnet *Azure-AD-B2C-Monitor*.
+1. [Skapa en Log Analytics-arbetsyta](../azure-monitor/logs/quick-create-workspace.md). I det här exemplet används en Log Analytics arbets yta med namnet *AzureAdB2C* i en resurs grupp med namnet *Azure-AD-B2C-Monitor*.
 
 ## <a name="3-delegate-resource-management"></a>3. delegera resurs hantering
 
@@ -144,9 +144,9 @@ När du har distribuerat mallen och väntat några minuter tills resurs projekti
 
 Diagnostiska inställningar definierar var loggar och mått för en resurs ska skickas. Möjliga destinationer är:
 
-- [Azure Storage-konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-- Lösningar för [Event Hub](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
-- [Log Analytics arbets yta](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
+- [Azure Storage-konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- Lösningar för [Event Hub](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)
+- [Log Analytics arbets yta](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)
 
 I det här exemplet använder vi Log Analytics arbets ytan för att skapa en instrument panel.
 
@@ -171,7 +171,7 @@ Konfigurera övervaknings inställningar för Azure AD B2C aktivitets loggar:
 1. Välj **Spara**.
 
 > [!NOTE]
-> Det kan ta upp till 15 minuter efter att en händelse har spridits för att den ska [visas i en Log Analytics-arbetsyta](../azure-monitor/platform/data-ingestion-time.md). Lär dig också mer om [Active Directory rapporterings fördröjning](../active-directory/reports-monitoring/reference-reports-latencies.md), vilket kan påverka inaktuella data och spela en viktig roll i rapportering.
+> Det kan ta upp till 15 minuter efter att en händelse har spridits för att den ska [visas i en Log Analytics-arbetsyta](../azure-monitor/logs/data-ingestion-time.md). Lär dig också mer om [Active Directory rapporterings fördröjning](../active-directory/reports-monitoring/reference-reports-latencies.md), vilket kan påverka inaktuella data och spela en viktig roll i rapportering.
 
 Om du ser fel meddelandet "om du vill konfigurera diagnostikinställningar för att använda Azure Monitor för din Azure AD B2C katalog måste du konfigurera en delegerad resurs hantering," kontrol lera att du loggar in med en användare som är medlem i [säkerhets gruppen](#32-select-a-security-group) och [väljer din prenumeration](#4-select-your-subscription).
 
@@ -181,7 +181,7 @@ Nu kan du konfigurera din Log Analytics arbets yta för att visualisera dina dat
 
 ### <a name="61-create-a-query"></a>6,1 Skapa en fråga
 
-Med logg frågor kan du utnyttja värdet för de data som samlas in i Azure Monitor loggar. Ett kraftfullt frågespråk gör att du kan koppla data från flera tabeller, aggregera stora mängder data och utföra komplexa åtgärder med minimal kod. I stort sett kan alla frågor besvaras och analyseras så länge som stödjande data har samlats in och du förstår hur du skapar rätt fråga. Mer information finns i [Kom igång med logg frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md).
+Med logg frågor kan du utnyttja värdet för de data som samlas in i Azure Monitor loggar. Ett kraftfullt frågespråk gör att du kan koppla data från flera tabeller, aggregera stora mängder data och utföra komplexa åtgärder med minimal kod. I stort sett kan alla frågor besvaras och analyseras så länge som stödjande data har samlats in och du förstår hur du skapar rätt fråga. Mer information finns i [Kom igång med logg frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
 1. Från **Log Analytics arbets yta** väljer du **loggar**
 1. I Frågeredigeraren klistrar du in följande fråga för [Kusto-fråga](/azure/data-explorer/kusto/query/) . Den här frågan visar princip användning per åtgärd under de senaste x dagarna. Standard varaktigheten anges till 90 dagar (90d). Observera att frågan bara fokuserar på den åtgärd där en token/kod utfärdas av en princip.
@@ -228,7 +228,7 @@ Fler exempel finns i Azure AD B2C [Siem GitHub lagrings platsen](https://aka.ms/
 
 ### <a name="62-create-a-workbook"></a>6,2 Skapa en arbets bok
 
-Arbetsböcker ger en flexibel arbetsyta för dataanalys och skapandet av gedigna visuella rapporter i Azure-portalen. De gör att du kan trycka på flera data källor i Azure och kombinera dem till enhetliga interaktiva upplevelser. Mer information finns i [Azure Monitor arbets böcker](../azure-monitor/platform/workbooks-overview.md).
+Arbetsböcker ger en flexibel arbetsyta för dataanalys och skapandet av gedigna visuella rapporter i Azure-portalen. De gör att du kan trycka på flera data källor i Azure och kombinera dem till enhetliga interaktiva upplevelser. Mer information finns i [Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
 
 Följ anvisningarna nedan om du vill skapa en ny arbets bok med en mall för JSON-Galleri. Den här arbets boken innehåller en instrument panel för **användar insikter** och **autentisering** för Azure AD B2C-klient.
 
@@ -259,10 +259,10 @@ Arbets boken visar rapporter i form av en instrument panel.
 
 ## <a name="create-alerts"></a>Skapa aviseringar
 
-Aviseringar skapas av aviseringsregler i Azure Monitor och kan automatiskt köra sparade frågor eller anpassade loggsökningar med jämna mellanrum. Du kan skapa aviseringar baserat på specifika prestandamått, när vissa händelser skapas, om en händelse saknas, eller om flera händelser skapas inom ett visst tidsintervall. Aviseringar kan till exempel användas för att meddela dig när det genomsnittliga antalet inloggningar överstiger ett visst tröskelvärde. Mer information finns i [skapa aviseringar](../azure-monitor/learn/tutorial-response.md).
+Aviseringar skapas av aviseringsregler i Azure Monitor och kan automatiskt köra sparade frågor eller anpassade loggsökningar med jämna mellanrum. Du kan skapa aviseringar baserat på specifika prestandamått, när vissa händelser skapas, om en händelse saknas, eller om flera händelser skapas inom ett visst tidsintervall. Aviseringar kan till exempel användas för att meddela dig när det genomsnittliga antalet inloggningar överstiger ett visst tröskelvärde. Mer information finns i [skapa aviseringar](../azure-monitor/alerts/tutorial-response.md).
 
 
-Följ anvisningarna nedan om du vill skapa en ny Azure-avisering, som skickar ett [e-postmeddelande](../azure-monitor/platform/action-groups.md#configure-notifications) när det finns 25% Drop i de **totala förfrågningarna** jämför med föregående period. Aviseringen kommer att köras var 5: e minut och leta efter släpp inom de senaste 24 timmarna i Windows. Aviseringarna skapas med Kusto-frågespråk.
+Följ anvisningarna nedan om du vill skapa en ny Azure-avisering, som skickar ett [e-postmeddelande](../azure-monitor/alerts/action-groups.md#configure-notifications) när det finns 25% Drop i de **totala förfrågningarna** jämför med föregående period. Aviseringen kommer att köras var 5: e minut och leta efter släpp inom de senaste 24 timmarna i Windows. Aviseringarna skapas med Kusto-frågespråk.
 
 
 1. Välj **loggar** från **Log Analytics arbets yta**. 
@@ -296,7 +296,7 @@ När aviseringen har skapats går du till **Log Analytics arbets yta** och välj
 
 ### <a name="configure-action-groups"></a>Konfigurera åtgärds grupper
 
-Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Du kan inkludera att skicka ett röst samtal, SMS, e-post; eller utlöser olika typer av automatiserade åtgärder. Följ anvisningarna [skapa och hantera åtgärds grupper i Azure Portal](../azure-monitor/platform/action-groups.md)
+Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Du kan inkludera att skicka ett röst samtal, SMS, e-post; eller utlöser olika typer av automatiserade åtgärder. Följ anvisningarna [skapa och hantera åtgärds grupper i Azure Portal](../azure-monitor/alerts/action-groups.md)
 
 Här är ett exempel på en e-postavisering om aviseringar. 
 
@@ -306,7 +306,7 @@ Här är ett exempel på en e-postavisering om aviseringar.
 
 Om du vill publicera flera Azure AD B2C klient loggar till samma Log Analytics arbets yta (eller Azure Storage-konto eller händelsehubben) måste du ha separata distributioner med olika **namn** värden för MSP-erbjudandet. Se till att din Log Analytics arbets yta finns i samma resurs grupp som den som du konfigurerade i [skapa eller Välj resurs grupp](#1-create-or-choose-resource-group).
 
-När du arbetar med flera Log Analytics arbets ytor använder du frågor för flera [arbets ytor](../azure-monitor/log-query/cross-workspace-query.md) för att skapa frågor som fungerar över flera arbets ytor. Följande fråga utför exempelvis en koppling av två gransknings loggar från olika klienter baserat på samma kategori (till exempel autentisering):
+När du arbetar med flera Log Analytics arbets ytor använder du frågor för flera [arbets ytor](../azure-monitor/logs/cross-workspace-query.md) för att skapa frågor som fungerar över flera arbets ytor. Följande fråga utför exempelvis en koppling av två gransknings loggar från olika klienter baserat på samma kategori (till exempel autentisering):
 
 ```kusto
 workspace("AD-B2C-TENANT1").AuditLogs
@@ -316,12 +316,12 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 ## <a name="change-the-data-retention-period"></a>Ändra kvarhållningsperioden för data
 
-Azure Monitors loggar har utformats för att skala och stödja insamling, indexering och lagring av stora mängder data per dag från vilken källa som helst i företaget eller som distribueras i Azure. Som standard behålls loggar i 30 dagar, men Retentions tiden kan ökas till upp till två år. Lär dig hur du [hanterar användning och kostnader med Azure Monitor loggar](../azure-monitor/platform/manage-cost-storage.md). När du har valt pris nivån kan du [ändra data lagrings perioden](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period).
+Azure Monitors loggar har utformats för att skala och stödja insamling, indexering och lagring av stora mängder data per dag från vilken källa som helst i företaget eller som distribueras i Azure. Som standard behålls loggar i 30 dagar, men Retentions tiden kan ökas till upp till två år. Lär dig hur du [hanterar användning och kostnader med Azure Monitor loggar](../azure-monitor/logs/manage-cost-storage.md). När du har valt pris nivån kan du [ändra data lagrings perioden](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Hitta fler exempel i [galleriet](https://aka.ms/b2csiem)för Azure AD B2C Siem. 
 
-* Mer information om hur du lägger till och konfigurerar diagnostikinställningar i Azure Monitor finns i [Självstudier: samla in och analysera resurs loggar från en Azure-resurs](../azure-monitor/insights/monitor-azure-resource.md).
+* Mer information om hur du lägger till och konfigurerar diagnostikinställningar i Azure Monitor finns i [Självstudier: samla in och analysera resurs loggar från en Azure-resurs](../azure-monitor/essentials/monitor-azure-resource.md).
 
 * Information om hur du strömmar Azure AD-loggar till en Event Hub finns i [självstudie: strömma Azure Active Directory loggar till en Azure Event Hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

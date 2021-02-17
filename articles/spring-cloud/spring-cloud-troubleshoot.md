@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498616"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571603"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Felsök vanliga problem med Azure våren Cloud
 
@@ -66,7 +66,7 @@ När du felsöker program krascher startar du genom att kontrol lera programmets
 
 
 
-Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>Mitt program använder stora mängder CPU- eller minnesresurser
 
@@ -88,7 +88,7 @@ Mer information finns i [mått för Azure våren Cloud](spring-cloud-concept-met
 
 Om alla instanser är igång går du till Azure Log Analytics för att skicka frågor till program loggarna och granska din kod logik. Detta hjälper dig att se om någon av dem kan påverka skalningen av skala. Mer information finns i [Analysera loggar och mått med diagnostikinställningar](diagnostic-services.md).
 
-Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md). Fråga loggarna genom att använda [Kusto-frågespråket](/azure/kusto/query/).
+Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md). Fråga loggarna genom att använda [Kusto-frågespråket](/azure/kusto/query/).
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Check lista för att distribuera ditt våren-program till Azure våren Cloud
 
@@ -163,7 +163,7 @@ Om du migrerar en befintlig molnbaserade lösning till Azure måste du se till a
 
 Du kan också kontrol lera klient loggarna för _tjänst registret_ i Azure Log Analytics. Mer information finns i [Analysera loggar och mått med diagnostikinställningar](diagnostic-services.md)
 
-Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md). Fråga loggarna genom att använda [Kusto-frågespråket](/azure/kusto/query/).
+Mer information om Azure Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md). Fråga loggarna genom att använda [Kusto-frågespråket](/azure/kusto/query/).
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Jag vill kontrol lera miljö variabler för mitt program
 
@@ -223,7 +223,7 @@ Kontrol lera om `spring-boot-actuator` beroendet är aktiverat i ditt programpak
 </dependency>
 ```
 
-Om dina program loggar kan arkiveras till ett lagrings konto men inte skickas till Azure Log Analytics, kontrollerar du om du [har konfigurerat arbets ytan på rätt sätt](../azure-monitor/learn/quick-create-workspace.md). Om du använder en kostnads fri nivå av Azure Log Analytics, Observera att [den kostnads fria nivån inte tillhandahåller något service nivå avtal (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
+Om dina program loggar kan arkiveras till ett lagrings konto men inte skickas till Azure Log Analytics, kontrollerar du om du [har konfigurerat arbets ytan på rätt sätt](../azure-monitor/logs/quick-create-workspace.md). Om du använder en kostnads fri nivå av Azure Log Analytics, Observera att [den kostnads fria nivån inte tillhandahåller något service nivå avtal (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/).
 
 ## <a name="next-steps"></a>Nästa steg
 

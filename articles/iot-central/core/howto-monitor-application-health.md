@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577055"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Övervaka den övergripande hälsan för ett IoT Central program
 
@@ -23,7 +23,7 @@ ms.locfileid: "100515877"
 
 I den här artikeln får du lära dig hur du använder den uppsättning mått som tillhandahålls av IoT Central för att utvärdera hälso tillståndet för enheter som är anslutna till ditt IoT Central program och hälsan för dina data exporter som körs.
 
-Mått är aktiverade som standard för ditt IoT Central program och du kommer åt dem från [Azure Portal](https://portal.azure.com/). [Azure Monitor data plattformen visar dessa mått](../../azure-monitor/platform/data-platform-metrics.md) och ger dig flera olika sätt att interagera med dem. Du kan till exempel använda diagram i Azure Portal, en REST API eller frågor i PowerShell eller Azure CLI.
+Mått är aktiverade som standard för ditt IoT Central program och du kommer åt dem från [Azure Portal](https://portal.azure.com/). [Azure Monitor data plattformen visar dessa mått](../../azure-monitor/essentials/data-platform-metrics.md) och ger dig flera olika sätt att interagera med dem. Du kan till exempel använda diagram i Azure Portal, en REST API eller frågor i PowerShell eller Azure CLI.
 
 ### <a name="trial-applications"></a>Utvärderings program
 
@@ -46,7 +46,7 @@ Visa IoT Central mått i portalen:
 
 ## <a name="iot-central-metrics"></a>IoT Central mått
 
-En lista över de mått som för närvarande är tillgängliga för IoT Central finns i mått som [stöds med Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftiotcentraliotapps).
+En lista över de mått som för närvarande är tillgängliga för IoT Central finns i mått som [stöds med Azure Monitor](../../azure-monitor/essentials/metrics-supported.md#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Mått och fakturor
 
