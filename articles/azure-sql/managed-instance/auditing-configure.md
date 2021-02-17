@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 31a1169ca6c2194b8d5564e5d0df50116dd25084
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505673"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575461"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Kom igång med granskning av Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ I följande avsnitt beskrivs konfigurationen av granskning på din hanterade ins
 
       ![Ikon för att skapa BLOB-behållare](./media/auditing-configure/2_create_container_button.png)
 
-   1. Ange ett behållar **namn** , ange **offentlig åtkomst nivå** till **privat** och klicka sedan på **OK**.
+   1. Ange ett behållar **namn**, ange **offentlig åtkomst nivå** till **privat** och klicka sedan på **OK**.
 
       ![Skapa konfiguration av BLOB-behållare](./media/auditing-configure/3_create_container_config.png)
 
@@ -79,11 +79,11 @@ I följande avsnitt beskrivs konfigurationen av granskning på din hanterade ins
 
         - Konfigurera SAS på följande sätt:
 
-          - **Tillåtna tjänster** : BLOB
+          - **Tillåtna tjänster**: BLOB
 
-          - **Start datum** : Använd igår datum för att undvika problem med tids zoner
+          - **Start datum**: Använd igår datum för att undvika problem med tids zoner
 
-          - **Slutdatum** : Välj det datum då SAS-token upphör att gälla
+          - **Slutdatum**: Välj det datum då SAS-token upphör att gälla
 
             > [!NOTE]
             > Förnya token när den upphör att gälla för att undvika gransknings problem.
@@ -126,11 +126,11 @@ I följande avsnitt beskrivs konfigurationen av granskning på din hanterade ins
 
      1. Expandera rot anteckningen för Object Explorer.
 
-     1. Expandera noden **säkerhet** , högerklicka på noden **granskningar** och klicka på **ny granskning** :
+     1. Expandera noden **säkerhet** , högerklicka på noden **granskningar** och klicka på **ny granskning**:
 
         ![Expandera noden säkerhet och granskning](./media/auditing-configure/10_mi_SSMS_new_audit.png)
 
-     1. Kontrol lera att **URL** är markerat i **Granska mål** och klicka på **Bläddra** :
+     1. Kontrol lera att **URL** är markerat i **Granska mål** och klicka på **Bläddra**:
 
         ![Bläddra Azure Storage](./media/auditing-configure/11_mi_SSMS_audit_browse.png)
 
@@ -138,7 +138,7 @@ I följande avsnitt beskrivs konfigurationen av granskning på din hanterade ins
 
         ![Logga in på Azure](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Välj en prenumeration, ett lagrings konto och en BLOB-behållare i list rutorna eller skapa en egen behållare genom att klicka på **skapa**. När du är färdig klickar du på **OK** :
+     1. Välj en prenumeration, ett lagrings konto och en BLOB-behållare i list rutorna eller skapa en egen behållare genom att klicka på **skapa**. När du är färdig klickar du på **OK**:
 
         ![Välj Azure-prenumeration, lagrings konto och blob-behållare](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -223,7 +223,7 @@ Om du vill använda gransknings loggar från Event Hubs måste du konfigurera en
 
 Om gransknings loggar skrivs till Azure Monitor loggar, är de tillgängliga i arbets ytan Log Analytics där du kan köra avancerade sökningar på gransknings data. Som start punkt navigerar du till arbets ytan Log Analytics. Under avsnittet **Allmänt** klickar du på **loggar** och anger en enkel fråga, till exempel: `search "SQLSecurityAuditEvents"` för att Visa gransknings loggarna.  
 
-Med Azure Monitor loggar får du operativa insikter i real tid med integrerad sökning och anpassade instrument paneler för att enkelt analysera miljon tals poster över alla dina arbets belastningar och servrar. Mer värdefull information om Azure Monitor loggar Sök språk och-kommandon finns i [Sök referens för Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md).
+Med Azure Monitor loggar får du operativa insikter i real tid med integrerad sökning och anpassade instrument paneler för att enkelt analysera miljon tals poster över alla dina arbets belastningar och servrar. Mer värdefull information om Azure Monitor loggar Sök språk och-kommandon finns i [Sök referens för Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 

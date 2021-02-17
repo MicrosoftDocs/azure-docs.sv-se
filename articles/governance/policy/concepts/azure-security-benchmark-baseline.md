@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201458"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573072"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy säkerhets bas linje för Azures säkerhets prestanda
 
@@ -31,9 +31,9 @@ Azure Policy använder _ägarskapet_ på ansvar i stället för _ansvar_. Mer in
 
 **Vägledning**: Azure policy använder aktivitets loggar som aktive ras automatiskt för att inkludera händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
 
-* [Samla in plattforms loggar och mått med Azure Monitor](../../../azure-monitor/platform/diagnostic-settings.md)
+* [Samla in plattforms loggar och mått med Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Förstå loggning och olika logg typer i Azure](../../../azure-monitor/platform/platform-logs-overview.md)
+* [Förstå loggning och olika logg typer i Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
@@ -89,7 +89,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst-lösning med h
 
 **Vägledning**: Använd Azure monitor med aktivitets loggar för att skapa aviseringar för när ändringar sker i Azure policy.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället

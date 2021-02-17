@@ -3,12 +3,12 @@ title: Samla in & analysera resurs loggar
 description: Lär dig hur du skickar resurs loggar och händelse data från behållar grupper i Azure Container Instances till Azure Monitor loggar
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: b110ba46bdcf2741e5f16845f28fe8305bcee1a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579333"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Behållar grupp och instans loggning med Azure Monitor loggar
 
@@ -27,7 +27,7 @@ I följande avsnitt beskrivs hur du skapar en loggnings aktive rad behållar gru
 
 Om du vill aktivera loggning i dina containerinstanser, behöver du följande:
 
-* [Log Analytics arbets yta](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics arbets yta](../azure-monitor/logs/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (eller [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Hämta Log Analytics-autentiseringsuppgifter
@@ -37,7 +37,7 @@ Azure Container Instances behöver behörighet för att skicka data till din Log
 Gör följande för att hämta ID och den primära nyckeln för Log Analytics-arbetsytan:
 
 1. Navigera till Log Analytics-arbetsytan i Azure-portalen
-1. Under **Inställningar**väljer du **agent hantering**
+1. Under **Inställningar** väljer du **agent hantering**
 1. Anteckna:
    * **Arbetsyte-ID**
    * **Primär nyckel**
@@ -105,7 +105,7 @@ När du har distribuerat containergruppen, kan det ta flera minuter (upp till 10
 Så här visar du behållar gruppens loggar i `ContainerInstanceLog_CL` tabellen:
 
 1. Navigera till Log Analytics-arbetsytan i Azure-portalen
-1. Under **Allmänt**väljer du **loggar**  
+1. Under **Allmänt** väljer du **loggar**  
 1. Skriv följande fråga: `ContainerInstanceLog_CL | limit 50`
 1. Välj **Kör**
 
@@ -118,7 +118,7 @@ Du bör se flera resultat som visas av frågan. Om du inte ser några resultat i
 Du kan också visa händelser för behållar instanser i Azure Portal. Händelser inkluderar tiden då instansen skapas och när den startas. Så här visar du händelse data i `ContainerEvent_CL` tabellen:
 
 1. Navigera till Log Analytics-arbetsytan i Azure-portalen
-1. Under **Allmänt**väljer du **loggar**  
+1. Under **Allmänt** väljer du **loggar**  
 1. Skriv följande fråga: `ContainerEvent_CL | limit 50`
 1. Välj **Kör**
 
@@ -153,8 +153,8 @@ ContainerInstanceLog_CL
 
 Mer information om att köra frågor mot loggar och konfigurera aviseringar i Azure Monitor-loggar finns i:
 
-* [Förstå loggs ökningar i Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md)
-* [Enhetliga aviseringar i Azure Monitor](../azure-monitor/platform/alerts-overview.md)
+* [Förstå loggs ökningar i Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md)
+* [Enhetliga aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Övervaka containerns CPU och minne

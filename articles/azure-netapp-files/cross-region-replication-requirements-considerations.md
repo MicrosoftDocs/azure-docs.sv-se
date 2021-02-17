@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: ed03e20f7a1a24d1a38e023b958959fdc6fdc326
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632681"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579337"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Krav och överväganden för att använda replikering över flera regioner 
 
@@ -29,7 +29,7 @@ Observera följande krav och överväganden om hur [du använder replikeringen �
 
 * Funktionen för replikering över flera regioner finns för närvarande i offentlig för hands version. Du måste skicka in en Waitlist-begäran för att få åtkomst till funktionen via [Azure NetApp Files över flera regioner Waitlist sändnings sida](https://aka.ms/anfcrrpreviewsignup). Vänta tills en officiell bekräftelse skickas från Azure NetApp Files-teamet innan du använder funktionen för replikering över flera regioner.
 * Azure NetApp Files replikering är endast tillgänglig i vissa fasta region par. Se de [region par som stöds](cross-region-replication-introduction.md#supported-region-pairs). 
-* SMB-volymer stöds tillsammans med NFS-volymer. Replikering av SMB-volymer kräver en Active Directory anslutning i käll-och mål NetApp-kontona. Målets AD-anslutning måste ha åtkomst till DNS-servrarna eller lägga till domänkontrollanter som kan nås från det delegerade under nätet i mål regionen. Mer information finns i [krav för Active Directory anslutningar](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* SMB-volymer stöds tillsammans med NFS-volymer. Replikering av SMB-volymer kräver en Active Directory anslutning i käll-och mål NetApp-kontona. Målets AD-anslutning måste ha åtkomst till DNS-servrarna eller lägga till domänkontrollanter som kan nås från det delegerade under nätet i mål regionen. Mer information finns i [krav för Active Directory anslutningar](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Mål kontot måste finnas i en annan region än käll volymens region. Du kan också välja ett befintligt NetApp-konto i en annan region.  
 * Mål volymen för replikeringen är skrivskyddad tills du [växlar över till mål regionen](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) för att aktivera mål volymen för läsning och skrivning. 
 * Azure NetApp Files replikering har för närvarande inte stöd för flera prenumerationer. alla replikeringar måste utföras under en enda prenumeration.

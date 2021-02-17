@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6f82114874c9e85e44df6684d0b0cf624903a50f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258565"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582524"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azures säkerhets bas linje för API Management
 
@@ -210,9 +210,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar av nätverks resurser som är associerade med dina Azure API Management-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -238,7 +238,7 @@ Förutom Azure Monitor kan Azure API Management integreras med en eller flera Az
 
 Du kan också aktivera och inaktivera data till Azure Sentinel eller en säkerhets incident och händelse hantering (SIEM) från tredje part.
 
-* [Konfigurera diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
+* [Konfigurera diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 * [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -258,7 +258,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en säkerhe
 
 För gransknings loggning av data planet ger diagnostikloggar omfattande information om åtgärder och fel som är viktiga för granskning och fel söknings syfte. Diagnostikloggar skiljer sig från aktivitetsloggar. Aktivitetsloggar ger insikt i de åtgärder som vidtogs för dina Azure-resurser. Diagnostikloggar ger information om åtgärder som din resurs har vidtagit.
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -278,9 +278,9 @@ För gransknings loggning av data planet ger diagnostikloggar omfattande informa
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Så här arkiverar du loggar till ett Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Så här arkiverar du loggar till ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -294,9 +294,9 @@ Du kan också integrera API Management med Azure Application insikter och använ
 
 * [Så här övervakar och granskar du loggar för Azure API Management](./api-management-howto-use-azure-monitor.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
-* [Förstå Log Analytics arbets yta](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Integrera med Azure Application Insights](./api-management-howto-app-insights.md)
 
@@ -314,7 +314,7 @@ Du kan också integrera API Management med Azure Application insikter och använ
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part.
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
@@ -669,7 +669,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure API Management o
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions Azure Functions appar samt andra kritiska eller relaterade resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Använda Azure Monitor och Azure aktivitets logg i Azure API Management](./api-management-howto-use-azure-monitor.md)
 

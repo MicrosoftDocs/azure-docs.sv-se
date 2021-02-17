@@ -344,7 +344,7 @@
               href: ../virtual-machines/windows/dedicated-hosts-powershell.md
             - name: Portalen
               href: ../virtual-machines/dedicated-hosts-portal.md
-        - name: Använda Spot-instans
+        - name: Virtual Machines för Azure-plats
           href: use-spot.md
     - name: Hantera
       items:

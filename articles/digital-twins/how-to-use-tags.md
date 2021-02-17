@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045418"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555157"
 ---
 # <a name="add-tags-to-digital-twins"></a>Lägg till taggar till digitala dubbla 
 
@@ -91,7 +91,7 @@ Här är en fråga för att hämta alla entiteter som är små (värde tag gen) 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs mer om att utforma och hantera digitala dubbla modeller:
-* [*Anvisningar: Hantera anpassade modeller*](how-to-manage-model.md)
+* [*Anvisningar: hantera DTDL-modeller*](how-to-manage-model.md)
 
 Läs mer om att skicka frågor till den dubbla grafen:
 * [*Anvisningar: fråga det dubbla diagrammet*](how-to-query-graph.md)

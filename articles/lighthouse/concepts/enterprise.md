@@ -3,12 +3,12 @@ title: Azure Lighthouse i företagsscenarier
 description: Funktionerna i Azure Lighthouse kan användas för att förenkla hanteringen av flera innehavare i ett företag som använder flera Azure AD-klienter.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004253"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573025"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse i företagsscenarier
 
@@ -38,7 +38,7 @@ Något av följande sätt måste du [följa principen om minsta behörighet när
 
 Azure Lighthouse tillhandahåller endast logiska länkar mellan en hanterande klient organisation och hanterade klienter i stället för att fysiskt flytta data eller resurser. Dessutom går åtkomsten alltid i en riktning, från hanterings klienten till de hanterade klient organisationerna.  Användare och grupper i hanterings klienten bör fortsätta att använda Multi-Factor Authentication när de utför hanterings åtgärder på hanterade klient resurser.
 
-Företag med interna eller externa styrnings-och guardrails kan använda [Azures aktivitets loggar](../../azure-monitor/platform/platform-logs-overview.md) för att uppfylla sina genomskinlighets krav. När företags klienter har upprättat hantera och hanterade klient relationer, kan användare i varje klient Visa loggad aktivitet för att se åtgärder som vidtagits av användarna i hanterings klienten.
+Företag med interna eller externa styrnings-och guardrails kan använda [Azures aktivitets loggar](../../azure-monitor/essentials/platform-logs-overview.md) för att uppfylla sina genomskinlighets krav. När företags klienter har upprättat hantera och hanterade klient relationer, kan användare i varje klient Visa loggad aktivitet för att se åtgärder som vidtagits av användarna i hanterings klienten.
 
 ## <a name="onboarding-considerations"></a>Onboarding-överväganden
 

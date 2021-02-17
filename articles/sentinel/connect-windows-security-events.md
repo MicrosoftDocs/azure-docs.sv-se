@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: bc75ee64174957ad6486146b4da6f8a66a2120e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632054"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570550"
 ---
 # <a name="connect-windows-security-events"></a>Ansluta till Windows säkerhetshändelser 
 
@@ -56,7 +56,7 @@ Samla in säkerhets händelser i Windows i Azure Sentinel:
 
 1. Kontrol lera att du har rätt behörigheter enligt beskrivningen i avsnittet **krav** på kopplings sidan.
 
-1. Ladda ned och installera [Log Analytics-agenten](../azure-monitor/platform/log-analytics-agent.md) (kallas även Microsoft Monitoring Agent eller MMA) på de datorer som du vill strömma säkerhets händelser till i Azure Sentinel.
+1. Ladda ned och installera [Log Analytics-agenten](../azure-monitor/agents/log-analytics-agent.md) (kallas även Microsoft Monitoring Agent eller MMA) på de datorer som du vill strömma säkerhets händelser till i Azure Sentinel.
 
     För Azure-Virtual Machines:
     
@@ -73,9 +73,9 @@ Samla in säkerhets händelser i Windows i Azure Sentinel:
     >
     > Om du vill tillåta att Windows-system utan nödvändig Internet anslutning ändå strömma händelser till Azure Sentinel, laddar du ned och installerar **OMS-gatewayen** på en annan dator med hjälp av länken längst ned till höger, för att fungera som en proxy.  Du måste fortfarande installera Log Analytics-agenten på varje Windows-system vars händelser du vill samla in.
     >
-    > Mer information om det här scenariot finns i [dokumentationen för **Log Analytics Gateway**](../azure-monitor/platform/gateway.md).
+    > Mer information om det här scenariot finns i [dokumentationen för **Log Analytics Gateway**](../azure-monitor/agents/gateway.md).
 
-    Ytterligare information om installation och ytterligare information finns i dokumentationen till [ **Log Analytics agent**](../azure-monitor/platform/agent-windows.md).
+    Ytterligare information om installation och ytterligare information finns i dokumentationen till [ **Log Analytics agent**](../azure-monitor/agents/agent-windows.md).
 
 1. Välj vilken händelse uppsättning ([alla, vanliga eller minimala](#event-sets)) som du vill strömma.
 

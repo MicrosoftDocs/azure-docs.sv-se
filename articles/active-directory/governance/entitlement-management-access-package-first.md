@@ -1,6 +1,6 @@
 ---
-title: Självstudie – Skapa åtkomst paket – hantering av Azure AD-berättigande
-description: Stegvis själv studie kurs om hur du skapar ditt första Access-paket i Azure Active Directory hantering av rättigheter.
+title: Självstudie – hantera åtkomst till resurser i hantering av Azure AD-berättigande
+description: Stegvis själv studie kurs om hur du skapar ditt första Access-paket med hjälp av Azure Portal i Azure Active Directory hantering av rättigheter.
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937894"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547408"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Självstudie: skapa ditt första Access-paket i Azure AD-hantering av rättigheter
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Självstudie: hantera åtkomst till resurser i hantering av Azure AD-berättigande
 
 Att hantera åtkomst till alla resurser som krävs av de anställda, till exempel grupper, program och platser, är en viktig funktion för organisationer. Du vill ge anställda den rätta åtkomst nivån som de behöver för att vara produktiv och ta bort deras åtkomst när den inte längre behövs.
 
@@ -41,8 +41,6 @@ I den här guiden får du lära dig att:
 En steg-för-steg-demonstration av processen att distribuera Azure Active Directory hantering av rättigheter, inklusive att skapa ditt första Access-paket, finns i följande videoklipp:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Du kan också skapa ett Access-paket program mässigt med hjälp av Microsoft Graph. En själv studie kurs som visar hur du skapar ett Access-paket program mässigt finns i [API för hantering av rättigheter](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

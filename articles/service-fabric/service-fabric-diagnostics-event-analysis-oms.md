@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329567"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581545"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Händelse analys och visualisering med Azure Monitor loggar
  Azure Monitor loggar samlar in och analyserar telemetri från program och tjänster som finns i molnet och tillhandahåller analys verktyg som hjälper dig att maximera deras tillgänglighet och prestanda. Den här artikeln beskriver hur du kör frågor i Azure Monitor loggar för att få insikter och felsöka vad som händer i klustret. Följande vanliga frågor behandlas:
@@ -34,7 +34,7 @@ När data har tagits emot av Azure Monitor loggar har Azure flera *övervaknings
 
 I [Azure Portal](https://portal.azure.com)går du till den resurs grupp där du skapade Service Fabric-analys-lösningen.
 
-Välj resursen **ServiceFabric \<nameOfOMSWorkspace\> **.
+Välj resursen **ServiceFabric \<nameOfOMSWorkspace\>**.
 
 I visas `Summary` paneler i form av en graf för var och en av de lösningar som är aktiverade, inklusive en för Service Fabric. Fortsätt till Service Fabric-analys-lösningen genom att klicka på **Service Fabric** graf.
 
@@ -103,7 +103,7 @@ Frågespråket för Kusto är kraftfullt. En annan värdefull fråga som du kan 
 ## <a name="next-steps"></a>Nästa steg
 
 * Om du vill aktivera övervakning av infrastrukturen, t. ex. prestanda räknare, överhuvud till att [lägga till Log Analytics agenten](service-fabric-diagnostics-oms-agent.md). Agenten samlar in prestanda räknare och lägger till dem i din befintliga arbets yta.
-* För lokala kluster erbjuder Azure Monitor-loggar en gateway (HTTP Forward proxy) som kan användas för att skicka data till Azure Monitor loggar. Läs mer om det i [ansluta datorer utan Internet åtkomst till Azure Monitor loggar med hjälp av Log Analytics Gateway](../azure-monitor/platform/gateway.md).
-* Konfigurera  [automatiserad avisering](../azure-monitor/platform/alerts-overview.md) till stöd för identifiering och diagnostik.
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar.
+* För lokala kluster erbjuder Azure Monitor-loggar en gateway (HTTP Forward proxy) som kan användas för att skicka data till Azure Monitor loggar. Läs mer om det i [ansluta datorer utan Internet åtkomst till Azure Monitor loggar med hjälp av Log Analytics Gateway](../azure-monitor/agents/gateway.md).
+* Konfigurera  [automatiserad avisering](../azure-monitor/alerts/alerts-overview.md) till stöd för identifiering och diagnostik.
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar.
 * Få en mer detaljerad översikt över Azure Monitor loggar och vad den erbjuder, Läs [Vad är Azure Monitor loggar?](../azure-monitor/overview.md).

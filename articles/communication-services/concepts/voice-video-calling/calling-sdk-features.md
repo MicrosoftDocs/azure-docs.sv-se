@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492118"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100554723"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -96,9 +96,10 @@ Kommunikations tjänsterna som anropar klient biblioteket stöder följande str�
 
 |           |Webb | Android/iOS|
 |-----------|----|------------|
-|**Antal utgående strömmar som kan skickas samtidigt** |1 video och en skärm delning | 1 video |
-|**Antal inkommande strömmar som kan renderas samtidigt** |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
+|**Antal utgående strömmar som kan skickas samtidigt** |1 ljud/video-eller 1-ljud-/skärm delning | 1 ljud/video | 
+|**Antal inkommande strömmar som kan renderas samtidigt** |1 ljud/video-eller 1-ljud-/skärm delning| 6 ljud/video eller 1 skärm delning |
 
+Observera att i grupp scenarier används en blandad ljud ström som stöd för alla ljud deltagare.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -106,6 +107,6 @@ Kommunikations tjänsterna som anropar klient biblioteket stöder följande str�
 > [Kom igång med att anropa](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Mer information finns i följande artiklar:
-- Bekanta dig med allmänna [samtals flöden](../call-flows.md)
+- Bekanta dig med allmänna [samtals flöden](../call-flows.md) 
 - Läs mer om [samtals typer](../voice-video-calling/about-call-types.md)
 - [Planera din PSTN-lösning](../telephony-sms/plan-solution.md)

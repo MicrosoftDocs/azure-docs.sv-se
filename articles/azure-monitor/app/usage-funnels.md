@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323731"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583467"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Upptäck hur kunder använder ditt program med Application Insights-trattar
 
@@ -24,7 +24,7 @@ Här följer de steg som du vidtar för att skapa en tratt.
 
 1. I verktyget Application Insights trattar väljer du **nytt**.
 1. I den nedrullningsbara menyn **tidsintervall** väljer du de **senaste 90 dagarna**. Välj antingen **Mina trattar** eller **delade trattar**.
-1. Välj **index**i list rutan **steg 1** . 
+1. Välj **index** i list rutan **steg 1** . 
 1. I listan **steg 2** väljer du **kund**.
 1. I listan **steg 3** väljer du **skapa**.
 1. Lägg till ett namn i tratten och välj **Spara**.
@@ -46,7 +46,7 @@ Föregående skärm bild innehåller fem markerade områden. Dessa är funktione
   * [Översikt över användning](usage-overview.md)
   * [Användare, sessioner och händelser](usage-segmentation.md)
   * [Kvarhållning](usage-retention.md)
-  * [Arbetsböcker](../platform/workbooks-overview.md)
+  * [Arbetsböcker](../visualize/workbooks-overview.md)
   * [Lägg till användar kontext](usage-send-user-context.md)
   * [Exportera till Power BI](./export-power-bi.md)
 

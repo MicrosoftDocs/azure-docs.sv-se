@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562624"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581398"
 ---
-# <a name="security-best-practices"></a>Metodtips för säkerhet
+# <a name="security-best-practices"></a>Rekommenderade säkerhetsmetoder
 
 Windows Virtual Desktop är en hanterad virtuell Skriv bords tjänst som innehåller många säkerhetsfunktioner för att hålla organisationen säker. I en distribution av virtuella Windows-datorer hanterar Microsoft delar av tjänsterna för kundens räkning. Tjänsten har många inbyggda avancerade säkerhetsfunktioner, till exempel omvänd anslutning, vilket minskar risken för att fjärrskrivbord är åtkomligt från var som helst.
 
@@ -80,10 +80,10 @@ Genom att aktivera [villkorlig åtkomst](../active-directory/conditional-access/
 
 Genom att aktivera Gransknings logg samling kan du Visa användar-och administratörs aktivitet som är relaterad till Windows Virtual Desktop. Några exempel på nyckel gransknings loggar är:
 
--   [Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+-   [Azure-aktivitetslogg](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory aktivitets logg](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [Värdar för sessioner](../azure-monitor/platform/agent-windows.md)
+-   [Värdar för sessioner](../azure-monitor/agents/agent-windows.md)
 -   [Windows Virtual Desktop Diagnostic-logg](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault loggar](../key-vault/general/logging.md)
 

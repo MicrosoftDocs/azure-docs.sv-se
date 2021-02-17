@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: 54228ac0aa582d15509fbf967728364841e52453
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558590"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Lägga till, ändra eller ta bort ett virtuellt nätverksundernät
 
@@ -81,7 +81,7 @@ Det konto som du loggar in på, eller ansluter till Azure med, måste tilldelas 
     | Inställning | Beskrivning |
     | --- | --- |
     | **Adressintervall** | Om inga resurser har distribuerats i under nätet kan du ändra adress intervallet. Om det finns några resurser i under nätet måste du antingen flytta resurserna till ett annat undernät eller ta bort dem från under nätet först. De steg du tar för att flytta eller ta bort en resurs varierar beroende på resursen. Läs dokumentationen för var och en av dessa resurs typer för att lära dig hur du flyttar eller tar bort resurser i undernät. Se begränsningarna för **adress intervall** i steg 4 i [Lägg till ett undernät](#add-a-subnet). |
-    | **Användare** | Du kan styra åtkomsten till under nätet genom att använda inbyggda roller eller dina egna anpassade roller. Mer information om hur du tilldelar roller och användare åtkomst till under nätet finns i [lägga till en roll tilldelning](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment). |
+    | **Användare** | Du kan styra åtkomsten till under nätet genom att använda inbyggda roller eller dina egna anpassade roller. Mer information om hur du tilldelar roller och användare åtkomst till under nätet finns i [tilldela Azure-roller](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). |
     | **Nätverkssäkerhetsgrupp** och **Routningstabell** | Se steg 4 i [Lägg till ett undernät](#add-a-subnet). |
     | **Tjänstslutpunkter** | <p>Se tjänst slut punkter i steg 4 i [Lägg till ett undernät](#add-a-subnet). När du aktiverar en tjänst slut punkt för ett befintligt undernät kontrollerar du att inga kritiska aktiviteter körs på någon resurs i under nätet. Tjänst slut punkter växlar vägar på varje nätverks gränssnitt i under nätet. Tjänst slut punkterna går från att använda standard vägen med adressprefixet *0.0.0.0/0* och nästa hopp typ av *Internet*, för att använda en ny väg med adressprefix för tjänsten och en nästa hopp typ för *VirtualNetworkServiceEndpoint*.</p><p>Under växeln kan alla öppna TCP-anslutningar avslutas. Tjänstens slut punkt aktive ras inte förrän trafik flöden till tjänsten för alla nätverks gränssnitt har uppdaterats med den nya vägen. Mer information om routning finns i [trafik dirigering i virtuella nätverk](virtual-networks-udr-overview.md).</p> |
     | **Delegering av undernät** | Se tjänst slut punkter i steg 4 i [Lägg till ett undernät](#add-a-subnet). Under näts delegering kan ändras till noll eller flera delegeringar som är aktiverade för den. Om en resurs för en tjänst redan har distribuerats i under nätet går det inte att lägga till eller ta bort under nät delegering förrän alla resurser för tjänsten tas bort. Om du vill delegera för en annan tjänst väljer du den tjänst som du vill delegera till från listan **tjänster** . |

@@ -3,12 +3,12 @@ title: Skapa en ny Azure Application Insights-resurs | Microsoft Docs
 description: Konfigurera Application Insights övervakning manuellt för ett nytt Live-program.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575617"
 ---
 # <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
@@ -35,7 +35,7 @@ Logga in på [Azure Portal](https://portal.azure.com)och skapa en Application In
    | **Resurs läge** | `Classic` eller `Workspace-based` | Arbets ytans baserade resurser finns för närvarande i en offentlig för hands version och gör att du kan skicka Application Insights telemetri till en gemensam Log Analytics arbets yta. Mer information finns i [artikeln om arbets ytor-baserade resurser](create-workspace-resource.md).
 
 > [!NOTE]
-> Även om du kan använda samma resurs namn i olika resurs grupper kan det vara bra att använda ett globalt unikt namn. Detta kan vara användbart om du planerar att [utföra kors resurs frågor](../log-query/cross-workspace-query.md#identifying-an-application) eftersom det underlättar den nödvändiga syntaxen.
+> Även om du kan använda samma resurs namn i olika resurs grupper kan det vara bra att använda ett globalt unikt namn. Detta kan vara användbart om du planerar att [utföra kors resurs frågor](../logs/cross-workspace-query.md#identifying-an-application) eftersom det underlättar den nödvändiga syntaxen.
 
 Ange lämpliga värden i de obligatoriska fälten och välj sedan **Granska + skapa**.
 
@@ -159,13 +159,13 @@ Den fullständiga Azure CLI-dokumentationen för det här kommandot och lär dig
 
 ## <a name="next-steps"></a>Nästa steg
 * [Diagnostisk sökning](./diagnostic-search.md)
-* [Utforska mått](../platform/metrics-charts.md)
-* [Skriv analysfrågor](../log-query/log-query-overview.md)
+* [Utforska mått](../essentials/metrics-charts.md)
+* [Skriv analysfrågor](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 

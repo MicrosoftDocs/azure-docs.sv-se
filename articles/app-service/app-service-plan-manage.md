@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb0765a1d7934d60f787ed277dd3bd1f9bc1359b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582528"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Hantera ett App Service plan i Azure
 
@@ -38,7 +38,7 @@ Du kan skapa en tom App Service plan, eller så kan du skapa en plan som en del 
 
    ![Skapa en App Service plan.][createASP] 
 
-4. När du skapar en plan kan du välja pris nivån för den nya planen. I **SKU och storlek**väljer du **ändra storlek** för att ändra pris nivån. 
+4. När du skapar en plan kan du välja pris nivån för den nya planen. I **SKU och storlek** väljer du **ändra storlek** för att ändra pris nivån. 
 
 <a name="move"></a>
 
@@ -54,11 +54,11 @@ Du kan flytta en app till en annan App Service plan, så länge käll planen och
 
 1. Sök efter och välj **app Services** i [Azure Portal](https://portal.azure.com)och välj den app som du vill flytta.
 
-2. Välj **ändra App Service plan**på menyn till vänster.
+2. Välj **ändra App Service plan** på menyn till vänster.
 
 3. I list rutan **App Service plan** väljer du en befintlig plan att flytta appen till. List rutan visar bara de planer som finns i samma resurs grupp och geografiska region som den aktuella App Service plan. Om det inte finns någon sådan plan kan du skapa en plan som standard. Du kan också skapa en ny plan manuellt genom att välja **Skapa ny**.
 
-4. Om du skapar en plan kan du välja pris nivån för den nya planen. På **pris nivå**väljer du den befintliga nivån för att ändra den. 
+4. Om du skapar en plan kan du välja pris nivån för den nya planen. På **pris nivå** väljer du den befintliga nivån för att ändra den. 
    
    > [!IMPORTANT]
    > Om du flyttar en app från en högre nivå plan till en plan med lägre nivåer, till exempel från **D1** till **F1**, kan appen förlora vissa funktioner i mål planen. Om din app exempelvis använder TLS/SSL-certifikat kan du se det här fel meddelandet:
@@ -82,7 +82,7 @@ Du hittar **klonings app** i avsnittet **utvecklingsverktyg** i menyn.
 
 Om du vill skala upp en App Service plans pris nivå går du till [skala upp en app i Azure](manage-scale-up.md).
 
-Information om hur du skalar ut antalet instanser för en app finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/platform/autoscale-get-started.md).
+Information om hur du skalar ut antalet instanser för en app finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="delete"></a>
 

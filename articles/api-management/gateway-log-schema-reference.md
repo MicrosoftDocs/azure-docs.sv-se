@@ -8,16 +8,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 064ac21e01239f7be3ddca9e48089ce880c6af58
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380484"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582503"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>Referens: API Management resurs logg schema
 
-Den här artikeln innehåller en schema referens för resurs loggen för Azure API Management GatewayLogs. Logg poster innehåller också fält i det [gemensamma schemat på den översta nivån](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema).
+Den här artikeln innehåller en schema referens för resurs loggen för Azure API Management GatewayLogs. Logg poster innehåller också fält i det [gemensamma schemat på den översta nivån](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema).
 
 Information om hur du aktiverar insamling av resurs loggen i API Management finns i [övervaka publicerade API: er](api-management-howto-use-azure-monitor.md#resource-logs).
 
@@ -49,5 +49,5 @@ Följande egenskaper loggas för varje API-begäran.
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om övervakning av API: er i API Management finns i [övervaka publicerade API: er](api-management-howto-use-azure-monitor.md)
-* Lär dig mer om [vanliga och tjänstspecifika scheman för Azures resurs loggar](../azure-monitor/platform/resource-logs-schema.md)
+* Lär dig mer om [vanliga och tjänstspecifika scheman för Azures resurs loggar](../azure-monitor/essentials/resource-logs-schema.md)
 

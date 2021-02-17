@@ -4,12 +4,12 @@ description: Rekommendationer för att skydda bilder och hemligheter för Azure 
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148668"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579270"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Säkerhets överväganden för Azure Container Instances
 
@@ -115,9 +115,9 @@ Till exempel tillhandahåller partner verktyget [turkos](https://azuremarketplac
 
 Precis som med en IT-miljö bör du konsekvent övervaka aktivitet och användares åtkomst till ditt container eko system för att snabbt identifiera misstänkt eller skadlig aktivitet. Azure tillhandahåller övervaknings lösningar för behållare, inklusive:
 
-* [Azure Monitor for containers](../azure-monitor/insights/container-insights-overview.md) övervakar arbets Belastningens prestanda som distribueras till Kubernetes-miljöer som finns i Azure Kubernetes service (AKS). Azure Monitor för behållare ger dig prestanda synlighet genom att samla in minnes-och processor mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. 
+* [Azure Monitor for containers](../azure-monitor/containers/container-insights-overview.md) övervakar arbets Belastningens prestanda som distribueras till Kubernetes-miljöer som finns i Azure Kubernetes service (AKS). Azure Monitor för behållare ger dig prestanda synlighet genom att samla in minnes-och processor mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. 
 
-* [Azure Container Monitoring-lösningen](../azure-monitor/insights/containers.md) hjälper dig att visa och hantera andra Docker-och Windows container-värdar på en enda plats. Exempel:
+* [Azure Container Monitoring-lösningen](../azure-monitor/containers/containers.md) hjälper dig att visa och hantera andra Docker-och Windows container-värdar på en enda plats. Exempel:
 
   * Visa detaljerad gransknings information som visar kommandon som används med behållare. 
   * Felsök behållare genom att visa och söka i centraliserade loggar utan att behöva fjärrans luta till Docker eller Windows-värdar.  
@@ -139,7 +139,7 @@ Precis som med en IT-miljö bör du konsekvent övervaka aktivitet och användar
 Upprätthålla en korrekt gransknings historik för administrativ åtkomst till ditt container eko system, inklusive ditt Kubernetes-kluster, behållar register och behållar avbildningar. Dessa loggar kan vara nödvändiga för gransknings syfte och kommer att vara användbara som kriminal tekniska-bevis efter eventuella säkerhets incidenter. Azure-lösningar är:
 
 * [Integrering av Azure Kubernetes-tjänsten med Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) för att övervaka säkerhets konfigurationen för kluster miljön och skapa säkerhets rekommendationer
-* [Azure Container Monitor-lösning](../azure-monitor/insights/containers.md)
+* [Azure Container Monitor-lösning](../azure-monitor/containers/containers.md)
 * Resurs loggar för [Azure Container instances](container-instances-log-analytics.md) och [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Nästa steg

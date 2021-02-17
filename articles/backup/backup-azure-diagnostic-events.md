@@ -3,12 +3,12 @@ title: Använda diagnostikinställningar för Recovery Services valv
 description: Den här artikeln beskriver hur du använder de gamla och nya diagnostiska händelserna för Azure Backup.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2130f06e17dd2b5cf8461d4e58342ee41c14f96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002893"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575420"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Använda diagnostikinställningar för Recovery Services valv
 
@@ -37,7 +37,7 @@ Data för de här händelserna kan skickas till ett lagrings konto, en Log Analy
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Använd diagnostikinställningar med Log Analytics
 
-Du kan nu använda Azure Backup för att skicka valvets diagnostikdata till dedikerade Log Analytics tabeller för säkerhets kopiering. Dessa tabeller kallas [resursbaserade tabeller](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Du kan nu använda Azure Backup för att skicka valvets diagnostikdata till dedikerade Log Analytics tabeller för säkerhets kopiering. Dessa tabeller kallas [resursbaserade tabeller](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 Så här skickar du dina valv diagnostikdata till Log Analytics:
 

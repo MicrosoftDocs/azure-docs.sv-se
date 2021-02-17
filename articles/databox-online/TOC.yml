@@ -239,13 +239,13 @@
         - name: Hantera certifikat
           items:
             - name: Krav
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: Bring your own
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: Skapa via Azure Stack-verktyg för beredskapskontroll
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: Felsöka certifikatfel
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Hantera databehandling på gränsenheter
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Hantera Edge-containerregister

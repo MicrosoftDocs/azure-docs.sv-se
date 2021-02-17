@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579310"
 ---
 # <a name="azure-signalr-service-faq"></a>Vanliga frågor och svar Azure SignalR Service
 
@@ -54,7 +54,7 @@ Du kan konfigurera transporter på klient sidan som dokumenterade i [ASP.net Cor
 
 Du hittar information om hur vi beräknar dessa mått i [meddelanden och anslutningar i Azure SignalR-tjänsten](signalr-concept-messages-and-connections.md).
 
-I översikts fönstret för Azure SignalR service-resurser har vi redan valt rätt agg regerings typ åt dig. Om du går till fönstret mått kan du ta sammansättnings typen till [meddelanden och anslutningar i Azure SignalR-tjänsten](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) som en referens.
+I översikts fönstret för Azure SignalR service-resurser har vi redan valt rätt agg regerings typ åt dig. Om du går till fönstret mått kan du ta sammansättnings typen till [meddelanden och anslutningar i Azure SignalR-tjänsten](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr) som en referens.
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>Vad är syftet med `Default` `Serverless` `Classic` tjänst lägena, och. Hur kan jag välja?
 

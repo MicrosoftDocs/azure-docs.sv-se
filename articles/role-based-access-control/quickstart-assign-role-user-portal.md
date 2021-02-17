@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcba9cad208c2ac170f91cc06a6db22e271f2a70
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85362030"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559321"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Självstudie: ge en användare åtkomst till Azure-resurser med hjälp av Azure Portal
 
@@ -58,7 +58,7 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 ## <a name="grant-access"></a>Bevilja åtkomst
 
-I Azure RBAC för att bevilja åtkomst skapar du en roll tilldelning.
+Du tilldelar en Azure-roll i Azure RBAC för att bevilja åtkomst.
 
 1. I listan över **Resursgrupper** klicka du på den nya resursgruppen **rbac-resource-group**.
 
@@ -82,7 +82,7 @@ I Azure RBAC för att bevilja åtkomst skapar du en roll tilldelning.
 
 1. I listan **Välj** väljer du själv eller någon annan användare.
 
-1. Klicka på **Spara** för att skapa rolltilldelningen.
+1. Klicka på **Spara** för att tilldela rollen.
 
    Efter en liten stund tilldelas användaren rollen Virtuell datordeltagare för resursgruppsomfånget rbac-resource-group.
 
@@ -90,7 +90,7 @@ I Azure RBAC för att bevilja åtkomst skapar du en roll tilldelning.
 
 ## <a name="remove-access"></a>Ta bort åtkomst
 
-För att ta bort åtkomst i Azure RBAC tar du bort en roll tilldelning.
+I Azure RBAC tar du bort en rolltilldelning för att ta bort åtkomst.
 
 1. I listan över rolltilldelningar lägger du till en bockmarkering intill användaren med rollen Virtuell datordeltagare.
 

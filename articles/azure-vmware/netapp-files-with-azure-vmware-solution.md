@@ -3,12 +3,12 @@ title: Azure NetApp Files med Azure VMware-lösning
 description: Använd Azure NetApp Files med virtuella Azure VMware-lösningar för att migrera och synkronisera data mellan lokala servrar, virtuella Azure VMware-lösningar och moln infrastrukturer.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371574"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575441"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files med Azure VMware-lösning
 
@@ -21,7 +21,7 @@ I den här artikeln går vi igenom stegen för att integrera Azure NetApp Files 
 ### <a name="features"></a>Funktioner
 (Tjänster där Azure NetApp Files används.)
 
-- **Active Directory anslutningar**: Azure NetApp Files stöder [Active Directory Domain Services och Azure Active Directory Domain Services](../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#decide-which-domain-services-to-use).
+- **Active Directory anslutningar**: Azure NetApp Files stöder [Active Directory Domain Services och Azure Active Directory Domain Services](../azure-netapp-files/create-active-directory-connections.md#decide-which-domain-services-to-use).
 
 - **Dela protokoll**: Azure NETAPP Files stöder SMB-(Server Message Block) och NFS-protokoll (Network File System). Det här stödet innebär att volymerna kan monteras på Linux-klienten och kan mappas på Windows-klienten.
 

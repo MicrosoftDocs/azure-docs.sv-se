@@ -3,12 +3,12 @@ title: Introduktion
 description: Lär dig om funktionerna och fördelarna med Azure VMware-lösningen för att distribuera och hantera VMware-baserade arbets belastningar i Azure.
 ms.topic: overview
 ms.date: 11/11/2020
-ms.openlocfilehash: 57edfc5786dfc95070b66eb9c8e2e038bafdcd35
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534661"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579289"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Vad är Azure VMware Solution?
 
@@ -48,12 +48,12 @@ När Azure VMware-lösningen har distribuerats i din prenumeration genereras [Az
 
 I ditt privata moln kan du:
 - Samla in loggar på var och en av dina virtuella datorer.
-- [Hämta och installera MMA-agenten](../azure-monitor/platform/log-analytics-agent.md#installation-options) på virtuella Linux-och Windows-datorer.
-- Aktivera [Azure Diagnostics-tillägget](../azure-monitor/platform/diagnostics-extension-overview.md).
-- [Skapa och kör nya frågor](../azure-monitor/platform/data-platform-logs.md#log-queries).
+- [Hämta och installera MMA-agenten](../azure-monitor/agents/log-analytics-agent.md#installation-options) på virtuella Linux-och Windows-datorer.
+- Aktivera [Azure Diagnostics-tillägget](../azure-monitor/agents/diagnostics-extension-overview.md).
+- [Skapa och kör nya frågor](../azure-monitor/logs/data-platform-logs.md#log-queries).
 - Kör samma frågor som du brukar köra på dina virtuella datorer.
 
-Övervaknings mönster i Azure VMware-lösningen liknar virtuella Azure-datorer i IaaS-plattformen. Mer information och instruktioner finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md).
+Övervaknings mönster i Azure VMware-lösningen liknar virtuella Azure-datorer i IaaS-plattformen. Mer information och instruktioner finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234009"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574782"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Vanliga frågor och svar om konfiguration och hantering för Web Apps i Azure
 
@@ -224,7 +224,7 @@ Lös detta genom att kontrol lera att inget av följande villkor är uppfyllda:
 * En felaktig nätverks säkerhets grupp förhindrar nätverks anslutnings kraven för en App Service-miljön.
 * Tvingad tunnel trafik är aktive rad.
 
-Mer information finns i [vanliga frågor när du distribuerar (skapar) en ny Azure App Service-miljön](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
+Mer information finns i [vanliga frågor när du distribuerar (skapar) en ny Azure App Service Environment](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Varför kan jag inte ta bort mina App Service plan?
 
@@ -292,7 +292,7 @@ Det snabbaste sättet att hitta den version av Microsoft .NET som är installera
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Varför fungerar inte autoskalning som förväntat?
 
-Om den automatiska skalningen i Azure inte har skalats in eller skalas ut från webb program instansen som du förväntade, kan du köra i ett scenario där vi avsiktligt väljer att inte skala för att undvika en oändlig loop på grund av "växlar". Detta inträffar vanligt vis när det inte finns en lämplig marginal mellan tröskelvärdena för skalning och skalning. Information om hur du undviker "växlar" och hur du kan läsa mer om hur du använder bästa metoder för autoskalning finns i [metod tips för autoskalning](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
+Om den automatiska skalningen i Azure inte har skalats in eller skalas ut från webb program instansen som du förväntade, kan du köra i ett scenario där vi avsiktligt väljer att inte skala för att undvika en oändlig loop på grund av "växlar". Detta inträffar vanligt vis när det inte finns en lämplig marginal mellan tröskelvärdena för skalning och skalning. Information om hur du undviker "växlar" och hur du kan läsa mer om hur du använder bästa metoder för autoskalning finns i [metod tips för autoskalning](../azure-monitor/autoscale/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Varför skalar autoskalning ibland bara delvis?
 

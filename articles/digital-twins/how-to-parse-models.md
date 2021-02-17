@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 44cee2b47ae8f96e2852dfdb5aefe73a7af67ed6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 155566a125485fda326f9f5e02d4aead0ffe30e3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731342"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560743"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Parsa och validera modeller med DTDL parser-biblioteket
 
@@ -87,4 +87,4 @@ Följande kod visar ett exempel på hur du använder parser-biblioteket för att
 ## <a name="next-steps"></a>Nästa steg
 
 När du är klar med att skriva dina modeller kan du läsa så här laddar du upp dem (och utför andra hanterings åtgärder) med DigitalTwinsModels-API: erna:
-* [*Anvisningar: Hantera anpassade modeller*](how-to-manage-model.md)
+* [*Anvisningar: hantera DTDL-modeller*](how-to-manage-model.md)

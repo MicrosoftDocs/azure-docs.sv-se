@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 9654ff6eab53acfe3e656afdcacd758c548232ba
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979149"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581437"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Lagra affärskritiska blobdata med oföränderlig lagring
 
@@ -46,7 +46,7 @@ Oföränderlig lagring stöder följande funktioner:
 
 - **Konfiguration av container nivå**: användare kan konfigurera tidsbaserade bevarande principer och juridiska undantags taggar på behållar nivån. Användare kan bland annat skapa och låsa tidsbaserade kvarhållningspolicyer, utöka kvarhållningsintervaller, ställa in och ta bort kvarhållning via enkla inställningar på containernivå. De här policyerna gälle för alla blobar i containern, både befintliga och nya.
 
-- **Stöd för gransknings loggning**: varje behållare innehåller en princip Gransknings logg. Det visar upp till sju tidsbaserade kvarhållning-kommandon för låsta tidsbaserade bevarande principer och innehåller användar-ID, kommando typ, tidsstämplar och kvarhållningsintervall. För kvarhållning av juridiska skäl innehåller loggen användar-ID, typ av kommando, tidsstämplar och etiketter för kvarhållningen av juridiska skäl. Den här loggen behålls för principens livs längd i enlighet med rikt linjerna för s 17a-4 (f). [Azure aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md) visar en mer omfattande logg över alla kontroll Plans aktiviteter. När du aktiverar [Azures resurs loggar](../../azure-monitor/platform/platform-logs-overview.md) behålls och visas data Plans åtgärder. Det är användarens ansvar att lagra de här loggarna beständigt såsom krävs enligt regelverk eller andra ändamål.
+- **Stöd för gransknings loggning**: varje behållare innehåller en princip Gransknings logg. Det visar upp till sju tidsbaserade kvarhållning-kommandon för låsta tidsbaserade bevarande principer och innehåller användar-ID, kommando typ, tidsstämplar och kvarhållningsintervall. För kvarhållning av juridiska skäl innehåller loggen användar-ID, typ av kommando, tidsstämplar och etiketter för kvarhållningen av juridiska skäl. Den här loggen behålls för principens livs längd i enlighet med rikt linjerna för s 17a-4 (f). [Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) visar en mer omfattande logg över alla kontroll Plans aktiviteter. När du aktiverar [Azures resurs loggar](../../azure-monitor/essentials/platform-logs-overview.md) behålls och visas data Plans åtgärder. Det är användarens ansvar att lagra de här loggarna beständigt såsom krävs enligt regelverk eller andra ändamål.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
