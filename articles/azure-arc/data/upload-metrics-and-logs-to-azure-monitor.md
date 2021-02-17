@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac9c8efbe29bf1420a94d486b650758cc22bec2f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183438"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575751"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Ladda upp användnings data, mått och loggar till Azure Monitor
 
@@ -42,18 +42,18 @@ Se [installations verktyg](./install-client-tools.md).
 
 ## <a name="register-the-resource-provider"></a>Registrera resursprovidern
 
-Innan du laddar upp mått eller användar data till Azure måste du se till att din Azure-prenumeration har `Microsoft.AzureData` resurs leverantören registrerad.
+Innan du laddar upp mått eller användar data till Azure måste du se till att din Azure-prenumeration har `Microsoft.AzureArcData` resurs leverantören registrerad.
 
 Verifiera resurs leverantören genom att köra följande kommando:
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 Om resurs leverantören för närvarande inte är registrerad i din prenumeration kan du registrera den. Registrera den genom att köra följande kommando.  Det kan ta ett par minuter innan kommandot har slutförts.
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>Skapa tjänstens huvudnamn
@@ -193,7 +193,7 @@ De olika stegen för att ladda upp loggar, statistik eller användar data varier
 
 Under för hands versionen sker den här processen natt. Den allmänna vägledningen är att bara överföra användningen en gång per dag. När användnings informationen exporteras och överförs flera gånger under samma 24-timmarsperiod, uppdateras bara resurs lagret i Azure Portal, men inte resursanvändningen.
 
-För att ladda upp mått accepterar Azure Monitor bara de senaste 30 minuterna data ([Läs mer](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Rikt linjerna för att ladda upp mått är att överföra måtten direkt efter att du har skapat export filen så att du kan visa hela data uppsättningen i Azure Portal. Om du till exempel exporterade måtten till 2:00 PM och körde kommandot upload på 2:50 PM. Eftersom Azure Monitor bara accepterar data under de senaste 30 minuterna, kanske du inte ser några data i portalen. 
+För att ladda upp mått accepterar Azure Monitor bara de senaste 30 minuterna data ([Läs mer](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Rikt linjerna för att ladda upp mått är att överföra måtten direkt efter att du har skapat export filen så att du kan visa hela data uppsättningen i Azure Portal. Om du till exempel exporterade måtten till 2:00 PM och körde kommandot upload på 2:50 PM. Eftersom Azure Monitor bara accepterar data under de senaste 30 minuterna, kanske du inte ser några data i portalen. 
 
 ## <a name="next-steps"></a>Nästa steg
 

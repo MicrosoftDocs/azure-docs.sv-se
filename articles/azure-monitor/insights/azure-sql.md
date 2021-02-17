@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe506dc3f5738f0ef639695ded980a24536993e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577466"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Övervaka Azure SQL Database att använda Azure SQL-analys (förhands granskning)
 
@@ -31,26 +31,26 @@ En praktisk översikt över hur du använder Azure SQL-analys lösning och för 
 
 Azure SQL-analys är en övervaknings lösning för endast moln som stöder strömning av diagnostisk telemetri för alla dina Azure SQL-databaser. Eftersom Azure SQL-analys inte använder agenter för att ansluta till Azure Monitor, stöder den inte övervakning av SQL Server som finns lokalt eller i virtuella datorer.
 
-| Ansluten källa | Stöds | Beskrivning |
+| Ansluten källa | Stöds | Description |
 | --- | --- | --- |
-| [Diagnostikinställningar](../platform/diagnostic-settings.md) | **Ja** | Azure Metric-och loggdata skickas till Azure Monitor loggar direkt av Azure. |
-| [Azure Storage-konto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Inga | Azure Monitor läser inte data från ett lagrings konto. |
-| [Windows-agenter](../platform/agent-windows.md) | Inga | Direkta Windows-agenter används inte av Azure SQL-analys. |
-| [Linux-agenter](../learn/quick-collect-linux-computer.md) | Inga | Direct Linux-agenter används inte av Azure SQL-analys. |
-| [System Center Operations Manager-hanteringsgrupp](../platform/om-agents.md) | Inga | En direkt anslutning från Operations Manager agent till Azure Monitor används inte av Azure SQL-analys. |
+| [Diagnostikinställningar](../essentials/diagnostic-settings.md) | **Ja** | Azure Metric-och loggdata skickas till Azure Monitor loggar direkt av Azure. |
+| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor läser inte data från ett lagrings konto. |
+| [Windows-agenter](../agents/agent-windows.md) | No | Direkta Windows-agenter används inte av Azure SQL-analys. |
+| [Linux-agenter](../vm/quick-collect-linux-computer.md) | No | Direct Linux-agenter används inte av Azure SQL-analys. |
+| [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md) | No | En direkt anslutning från Operations Manager agent till Azure Monitor används inte av Azure SQL-analys. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-analys alternativ
 
 I tabellen nedan visas vilka alternativ som stöds för två versioner av Azure SQL-analys instrument panelen, en för Azure SQL Database och den andra för Azure SQL-hanterade instans databaser.
 
-| Azure SQL-analys alternativ | Beskrivning | SQL Database support | Stöd för SQL Managed Instance |
+| Azure SQL-analys alternativ | Description | SQL Database support | Stöd för SQL Managed Instance |
 | --- | ------- | ----- | ----- |
 | Resurs efter typ | Perspektiv som räknar alla övervakade resurser. | Ja | Ja |
 | Insikter | Tillhandahåller hierarkisk visning av Intelligent Insights i prestanda. | Ja | Ja |
 | Fel | Tillhandahåller hierarkisk visning av SQL-fel som har inträffat i databaserna. | Ja | Ja |
-| Timeouter | Tillhandahåller hierarkisk visning av SQL-tidsgräns som har inträffat i databaserna. | Ja | Inga |
-| Blockning | Tillhandahåller hierarkisk visning av SQL-block som har inträffat i databaserna. | Ja | Inga |
-| Databasen väntar | Ger hierarkisk visning av SQL wait-statistik på databas nivå. Innehåller sammanfattningar av den totala vänte tiden och vänte tiden per wait-typ. |Ja | Inga |
+| Timeouter | Tillhandahåller hierarkisk visning av SQL-tidsgräns som har inträffat i databaserna. | Ja | Nej |
+| Blockning | Tillhandahåller hierarkisk visning av SQL-block som har inträffat i databaserna. | Ja | Nej |
+| Databasen väntar | Ger hierarkisk visning av SQL wait-statistik på databas nivå. Innehåller sammanfattningar av den totala vänte tiden och vänte tiden per wait-typ. |Ja | Nej |
 | Frågans varaktighet | Tillhandahåller hierarkisk visning av statistik för frågekörning, till exempel fråge varaktighet, CPU-användning, data-i/o-användning, logg-i/o-användning. | Ja | Ja |
 | Fråga väntar | Tillhandahåller hierarkisk visning i frågan vänta i statistiken efter kategorin vänta. | Ja | Ja |
 
@@ -170,13 +170,13 @@ När den nya rollen har skapats tilldelar du rollen till varje användare som du
 
 ## <a name="analyze-data-and-create-alerts"></a>Analysera data och skapa aviseringar
 
-Data analys i Azure SQL-analys baseras på [Log Analytics språk](../log-query/get-started-queries.md) för din anpassade fråga och rapportering. Hitta en beskrivning av tillgängliga data som samlats in från databas resursen för anpassade frågor i [mått och loggar tillgängliga](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
+Data analys i Azure SQL-analys baseras på [Log Analytics språk](../logs/get-started-queries.md) för din anpassade fråga och rapportering. Hitta en beskrivning av tillgängliga data som samlats in från databas resursen för anpassade frågor i [mått och loggar tillgängliga](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
 
 Automatiserad avisering i Azure SQL-analys baseras på att skriva en Log Analytics fråga som utlöser en avisering när ett villkor uppfylls. Det finns flera exempel på hur du Log Analytics frågor om vilka aviseringar som kan konfigureras i Azure SQL-analys.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Skapa aviseringar för Azure SQL Database
 
-Du kan enkelt [skapa aviseringar](../platform/alerts-metric.md) med de data som kommer från Azure SQL Database-resurser. Här följer några användbara [logg frågor](../log-query/log-query-overview.md) som du kan använda med en logg avisering:
+Du kan enkelt [skapa aviseringar](../alerts/alerts-metric.md) med de data som kommer från Azure SQL Database-resurser. Här följer några användbara [logg frågor](../logs/log-query-overview.md) som du kan använda med en logg avisering:
 
 #### <a name="high-cpu"></a>Hög CPU
 
@@ -297,7 +297,7 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Använd [logg frågor](../log-query/log-query-overview.md) i Azure Monitor om du vill visa detaljerade Azure SQL-data.
-- [Skapa egna instrument paneler](../learn/tutorial-logs-dashboards.md) som visar Azure SQL-data.
-- [Skapa aviseringar](../platform/alerts-overview.md) när vissa Azure SQL-händelser inträffar.
+- Använd [logg frågor](../logs/log-query-overview.md) i Azure Monitor om du vill visa detaljerade Azure SQL-data.
+- [Skapa egna instrument paneler](../visualize/tutorial-logs-dashboards.md) som visar Azure SQL-data.
+- [Skapa aviseringar](../alerts/alerts-overview.md) när vissa Azure SQL-händelser inträffar.
 

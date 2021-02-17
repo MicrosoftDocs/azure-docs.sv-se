@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 34bbf34d53c44dcef7b8e128a93ee64201423c3e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0afe349473bcddcbf1ac35136f2991ffe82670c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897045"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576069"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrera med Azure Monitor loggar
 
@@ -36,7 +36,7 @@ För att kunna börja skicka konfigurations rapporter för automatiserings tills
 
 - Utgåvan 2016 eller senare av [Azure PowerShell](/powershell/azure/) (v-2.3.0).
 - Ett Azure Automation-konto. Mer information finns i [Introduktion till Azure Automation](automation-intro.md).
-- En Log Analytics arbets yta med ett tjänst erbjudande för Automation &-kontroll. Mer information finns i [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+- En Log Analytics arbets yta med ett tjänst erbjudande för Automation &-kontroll. Mer information finns i [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 - Minst en nod för Azure Automation tillstånds konfiguration. Mer information finns i [onboarding Machines for Management by Azure Automation State Configuration](automation-dsc-onboarding.md).
 - [XDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) -modulen, version 2.7.0.0 eller senare. Installations anvisningar finns i [felsöka Azure Automation önskad tillstånds konfiguration](./troubleshoot/desired-state-configuration.md).
 
@@ -91,7 +91,7 @@ Filtrerings information:
 * Filtrera på för `DscResourceStatusData` att returnera åtgärder för varje DSC-resurs som kallas i nodens konfiguration som tillämpas på resursen. 
 * Filtrera på för `DscResourceStatusData` att returnera fel information för alla DSC-resurser som inte fungerar.
 
-Mer information om hur du skapar logg frågor för att hitta data finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Mer information om hur du skapar logg frågor för att hitta data finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Skicka ett e-postmeddelande när kompatibilitetskontroll för tillstånds konfiguration Miss lyckas
 
@@ -105,7 +105,7 @@ Om du vill skapa en varnings regel börjar du med att skapa en loggs ökning fö
    Om du har konfigurerat loggar från fler än ett Automation-konto eller en prenumeration på din arbets yta, kan du gruppera dina aviseringar efter prenumeration och Automation-konto. Härled namnet på Automation-kontot från `Resource` fältet i Sök efter `DscNodeStatusData` poster.
 1. Öppna skärmen **Skapa regel** genom att klicka på **ny varnings regel** överst på sidan. 
 
-Mer information om alternativen för att konfigurera aviseringen finns i [skapa en varnings regel](../azure-monitor/platform/alerts-metric.md).
+Mer information om alternativen för att konfigurera aviseringen finns i [skapa en varnings regel](../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Hitta felande DSC-resurser över alla noder
 
@@ -199,5 +199,5 @@ Azure Automation diagnostik skapar du två kategorier med poster i Azure Monitor
 - En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).
 - Pris information finns i pris information för [Azure Automation State Configuration](https://azure.microsoft.com/pricing/details/automation/).
 - Om du vill se ett exempel på hur du använder Azure Automation tillstånds konfiguration i en pipeline för kontinuerlig distribution, se [Konfigurera kontinuerlig distribution med choklad](automation-dsc-cd-chocolatey.md).
-- Mer information om hur du skapar olika Sök frågor och granskar konfigurations loggarna för Automation-tillstånd med Azure Monitor loggar finns [i loggs ökningar i Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md).
-- Mer information om Azure Monitor loggar och data insamlings källor finns i [samla in Azure Storage-data i Azure Monitor loggar översikt](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+- Mer information om hur du skapar olika Sök frågor och granskar konfigurations loggarna för Automation-tillstånd med Azure Monitor loggar finns [i loggs ökningar i Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md).
+- Mer information om Azure Monitor loggar och data insamlings källor finns i [samla in Azure Storage-data i Azure Monitor loggar översikt](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).

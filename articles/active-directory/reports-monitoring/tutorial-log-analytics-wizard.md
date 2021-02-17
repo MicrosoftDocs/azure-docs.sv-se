@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bdf3a763dc71eb842496775b6cc91b8ca39b4b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343849"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574382"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Självstudie: Konfigurera Log Analytics-guiden
 
@@ -41,7 +41,7 @@ I den här guiden får du lära dig att:
 
 Bekanta dig med de här artiklarna:
 
-- [Självstudie: samla in och analysera resurs loggar från en Azure-resurs](../../azure-monitor/learn/tutorial-resource-logs.md)
+- [Självstudie: samla in och analysera resurs loggar från en Azure-resurs](../../azure-monitor/essentials/tutorial-resource-logs.md)
 
 - [Så här integrerar du aktivitets loggar med Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -49,7 +49,7 @@ Bekanta dig med de här artiklarna:
 
 - [Snabbreferens för KQL](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor arbets böcker](../../azure-monitor/platform/workbooks-overview.md)
+- [Azure Monitor arbets böcker](../../azure-monitor/visualize/workbooks-overview.md)
 
 
 
@@ -290,7 +290,7 @@ Den här proceduren visar hur du skickar aviseringar när BreakGlass-kontot anv�
 17. Klicka på **Skapa aviseringsregel**.   
 
 
-## <a name="create-a-custom-workbook"></a>Skapa en anpassad arbets bok
+## <a name="create-a-custom-workbook"></a>Skapa en anpassad arbetsbok
 
 Den här proceduren visar hur du skapar en ny arbets bok med hjälp av snabb starts mal len.
 

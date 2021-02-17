@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2364eae0d04da8f8e6fe38ae80db7adb8666ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049425"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574173"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Villkorlig åtkomst insikter och rapportering
 
@@ -43,7 +43,7 @@ Användare behöver också en av följande Log Analytics arbets ytans roller:
 
 Om du inte har integrerat Azure AD-loggar med Azure Monitor loggar måste du utföra följande steg innan arbets boken kommer att läsas in:  
 
-1. [Skapa en Log Analytics arbets yta i Azure Monitor](../../azure-monitor/learn/quick-create-workspace.md).
+1. [Skapa en Log Analytics arbets yta i Azure Monitor](../../azure-monitor/logs/quick-create-workspace.md).
 1. [Integrera Azure AD-loggar med Azure Monitor loggar](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 ## <a name="how-it-works"></a>Så här fungerar det 
@@ -51,7 +51,7 @@ Om du inte har integrerat Azure AD-loggar med Azure Monitor loggar måste du utf
 För att komma åt arbets boken insikter och rapportering:  
 
 1. Logga in på **Azure-portalen**.
-1. Bläddra till **Azure Active Directory**  >  **säkerhet**för  >  **villkorlig åtkomst**  >  **och rapportering**.
+1. Bläddra till **Azure Active Directory**  >  **säkerhet** för  >  **villkorlig åtkomst**  >  **och rapportering**.
 
 ### <a name="get-started-select-parameters"></a>Kom igång: Välj parametrar 
 

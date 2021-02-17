@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 219efe05b399677c60922542f3d7acd76ca37d26
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575880"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Aktivera Uppdateringshantering från en runbook
 
@@ -29,7 +29,7 @@ Den här metoden använder två Runbooks:
 
 * En Azure-prenumeration. Om du inte redan har ett konto kan du [aktivera dina MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-konto](../automation-security-overview.md) för att hantera datorer.
-* [Log Analytics arbets yta](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics arbets yta](../../azure-monitor/logs/design-logs-deployment.md)
 * En [virtuell dator](../../virtual-machines/windows/quick-create-portal.md).
 * Två Automation-tillgångar som används av **Enable-AutomationSolution-** runbooken. Denna Runbook, om den inte redan finns i ditt Automation-konto, importeras automatiskt av **Enable-MultipleSolution-** runbooken under den första körningen.
     * *LASolutionSubscriptionId*: PRENUMERATIONS-ID för den plats där Log Analytics arbets ytan finns.

@@ -4,12 +4,12 @@ description: Application Performance Management och användningsspårning av dit
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac6b6f2b47df0bce9ae164c83df54adfdf00b184
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91371392"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575707"
 ---
 # <a name="what-is-application-insights"></a>Vad är Application Insights?
 Application Insights är en funktion i [Azure Monitor](../overview.md), är en utöknings bar APM-tjänst (Application Performance Management) för utvecklare och DevOps-proffs. Använd den för att övervaka dina Live-program. Prestanda avvikelser identifieras automatiskt och det finns kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå vad användare faktiskt gör med din app.  Den hjälper dig att kontinuerligt förbättra prestanda och användbarhet. Det fungerar för appar på en mängd olika plattformar, inklusive .NET, Node.js, Java och python lokalt, hybrid eller något offentligt moln. Den integrerar med din DevOps-process och kan användas med en rad olika utvecklingsverktyg. Den kan övervaka och analysera telemetri från mobilappar genom integrering med Visual Studio App Center.
@@ -23,7 +23,7 @@ Förutom att instrumentera webbtjänstprogrammet kan du även instrumentera bakg
 
 Du kan också hämta telemetri från värdmiljöerna, t.ex. prestandaräknare, Azure Diagnostics eller Docker-loggar. Du kan även konfigurera webbtester som regelbundet skickar syntetiska begäranden till din webbtjänst.
 
-Alla dessa telemetri strömmar är integrerade i Azure Monitor. I Azure Portal kan du använda kraftfulla analys-och sökverktyg för rå data.
+Alla dessa telemetriströmmar är integrerade i Azure Monitor. På Azure-portalen kan du använda kraftfulla analys- och sökverktyg med rådata.
 
 ### <a name="whats-the-overhead"></a>Hur påverkas prestanda?
 Påverkan på appens prestanda är liten. Anropsspårning är icke-blockerande, och grupperas och skickas i en separat tråd.
@@ -49,15 +49,15 @@ Du kan utforska dina data på många sätt. Läs dessa artiklar:
 
 |  |  |
 | --- | --- |
-| [**Smart identifiering och manuella aviseringar**](./proactive-diagnostics.md)<br/>Konfigurera automatiska aviseringar som anpassas efter appens normala mönster för telemetri och utlöses när det finns något utanför det vanliga mönstret. Du kan också [ställa in aviseringar](../platform/alerts-log.md) på särskilda nivåer av anpassade eller standard mått. |![Aviseringsexempel](./media/app-insights-overview/alerts-tn.png) |
+| [**Smart identifiering och manuella aviseringar**](./proactive-diagnostics.md)<br/>Konfigurera automatiska aviseringar som anpassas efter appens normala mönster för telemetri och utlöses när det finns något utanför det vanliga mönstret. Du kan också [ställa in aviseringar](../alerts/alerts-log.md) på särskilda nivåer av anpassade eller standard mått. |![Aviseringsexempel](./media/app-insights-overview/alerts-tn.png) |
 | [**Program karta**](./app-map.md)<br/>Utforska komponenterna i appen med viktiga mått och aviseringar. |![Programkarta](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profilerare**](./profiler.md)<br/>Granska körningsprofilerna för exempelbegäranden. |![Skärm dum par visar körnings profiler för exempel begär Anden.](./media/app-insights-overview/profiler.png) |
 | [**Användnings analys**](./usage-overview.md)<br/>Analysera användarsegment och kvarhållning.|![Kvarhållningsverktyg](./media/app-insights-overview/retention.png) |
 | [**Diagnostiksökning efter instansdata**](./diagnostic-search.md)<br/>Sök efter och filtrera händelser, till exempel begäranden, undantag, beroendeanrop, loggspårningar och sidvyer.  |![Telemetrisökning](./media/app-insights-overview/search-tn.png) |
-| [**Metrics Explorer för aggregerade data**](../platform/metrics-charts.md)<br/>Utforska, filtrera och segmentera aggregerade data, till exempel begärande-, fel- och undantagsfrekvens, svarstider och sidinläsningstider. |![Mått](./media/app-insights-overview/metrics-tn.png) |
+| [**Metrics Explorer för aggregerade data**](../essentials/metrics-charts.md)<br/>Utforska, filtrera och segmentera aggregerade data, till exempel begärande-, fel- och undantagsfrekvens, svarstider och sidinläsningstider. |![Mått](./media/app-insights-overview/metrics-tn.png) |
 | [**Instrumentpaneler**](./overview-dashboard.md)<br/>Kombinera data från flera resurser och dela med andra. Perfekt för program med flera komponenter och för kontinuerlig visning i teamutrymmet. |![Exempel på instrumentpaneler](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live-ström med mätvärden**](./live-stream.md)<br/>När du distribuerar en ny version kan du titta på dessa prestandaindikatorer som visas i realtid för att kontrollera att allt fungerar som förväntat. |![Exempel på live-mätvärden](./media/app-insights-overview/live-metrics-tn.png) |
-| [**Analytics**](../log-query/log-query-overview.md)<br/>Besvara svåra frågor om appens prestanda och användning med hjälp av det här kraftfulla frågespråket. |![Analytics-exempel](./media/app-insights-overview/analytics-tn.png) |
+| [**Analys**](../logs/log-query-overview.md)<br/>Besvara svåra frågor om appens prestanda och användning med hjälp av det här kraftfulla frågespråket. |![Analytics-exempel](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](./visual-studio.md)<br/>Visa prestandadata i koden. Gå till kod från stackspårningar.|![Skärm bilden visar undantags information i Visual Studio och ett exempel på att gå till kod från stack spår.](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Fel sökning av ögonblicks bild**](./snapshot-debugger.md)<br/>Felsök ögonblicksbilder från program som körs med parametervärden.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](./export-power-bi.md)<br/>Integrera användningsmätvärden med annan Business Intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
@@ -66,7 +66,7 @@ Du kan utforska dina data på många sätt. Läs dessa artiklar:
 
 ## <a name="how-do-i-use-application-insights"></a>Hur använder jag Application Insights?
 
-### <a name="monitor"></a>Övervaka
+### <a name="monitor"></a>Monitor
 Installera Application Insights i din app, konfigurera [webbtester för tillgänglighet](./monitor-web-app-availability.md) och:
 
 * Kolla in standard [instrument panelen](./overview-dashboard.md) för ditt teamrum för att hålla ett öga på belastning, svars tider och prestanda för dina beroenden, sid inläsningar och AJAX-anrop.
@@ -105,7 +105,7 @@ Det finns flera sätt att komma igång. Börja på det sätt som passar dig bäs
   * [Python](./opencensus-python.md)
   * [Andra plattformar](./platforms.md)
 * **[Instrumentera dina webbplatser](./javascript.md)** för sidvisning, AJAX och annan telemetri på klientsidan.
-* **[Analysera mobilappsanvändning](../learn/mobile-center-quickstart.md)** genom integrering med Visual Studio App Center.
+* **[Analysera mobilappsanvändning](../app/mobile-center-quickstart.md)** genom integrering med Visual Studio App Center.
 * **[Tillgänglighetstester](./monitor-web-app-availability.md)** –pinga din webbplats regelbundet från våra servrar.
 
 ## <a name="next-steps"></a>Nästa steg
@@ -137,12 +137,12 @@ Kom igång under utvecklingsfasen med:
 
 <!--Link references-->
 
-[android]: ../learn/mobile-center-quickstart.md
+[android]: ../app/mobile-center-quickstart.md
 [azure]: ../../insights-perf-analytics.md
 [client]: ./javascript.md
 [desktop]: ./windows-desktop.md
 [greenbrown]: ./asp-net.md
-[ios]: ../learn/mobile-center-quickstart.md
+[ios]: ../app/mobile-center-quickstart.md
 [java]: ./java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: ./platforms.md

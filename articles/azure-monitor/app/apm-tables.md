@@ -3,22 +3,22 @@ title: Azure Monitor Application Insights arbets yta-baserat resurs schema
 description: Lär dig mer om den nya tabell strukturen och schemat för Azure Monitor Application Insights arbets ytans baserade resurser.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385973"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575606"
 ---
 # <a name="workspace-based-resource-changes"></a>Arbets ytans-baserade resurs ändringar
 
-Innan du inför införandet av [arbets ytans baserade Application Insights resurser](create-workspace-resource.md), lagrades Application Insights data separat från andra loggdata i Azure Monitor. Båda baseras på Azure Datautforskaren och använder samma KQL (Kusto Query Language). Detta beskrivs i [loggarna i Azure Monitor](../platform/data-platform-logs.md).
+Innan du inför införandet av [arbets ytans baserade Application Insights resurser](create-workspace-resource.md), lagrades Application Insights data separat från andra loggdata i Azure Monitor. Båda baseras på Azure Datautforskaren och använder samma KQL (Kusto Query Language). Detta beskrivs i [loggarna i Azure Monitor](../logs/data-platform-logs.md).
 
 Med arbets ytans baserade Application Insights resurs data lagras i en Log Analytics arbets yta med andra övervaknings data och program data. Detta fören klar konfigurationen genom att göra det enklare att analysera data över flera lösningar och utnyttja funktionerna i arbets ytor.
 
 ## <a name="table-structure"></a>Tabellstruktur
 
-| Äldre tabell namn | Nytt tabellnamn | Beskrivning |
+| Äldre tabell namn | Nytt tabellnamn | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Sammanfattnings data från tillgänglighets test.|
 | browserTimings | AppBrowserTimings | Data om klient prestanda, till exempel hur lång tid det tar att bearbeta inkommande data.|
@@ -66,7 +66,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemType|sträng|Typ|Sträng|
 |location|sträng|Location|sträng|
 |meddelande|sträng|Meddelande|sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -106,7 +106,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|sträng|
-|name|sträng|Namn|datetime|
+|name|sträng|Name|datetime|
 |networkDuration|real|NetworkDurationMs|real|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
@@ -153,7 +153,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|Sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -195,7 +195,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -230,7 +230,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |iKey|sträng|IKey|sträng|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -275,7 +275,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|Sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -315,7 +315,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |session|sträng|Instans|sträng|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|sträng|
-|name|sträng|Namn|sträng|
+|name|sträng|Name|sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -355,7 +355,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|Sträng|
-|name|sträng|Namn|Sträng|
+|name|sträng|Name|Sträng|
 |operation_Id|sträng|OperationId|sträng|
 |operation_Name|sträng|OperationName|sträng|
 |operation_ParentId|sträng|OperationParentId|sträng|
@@ -464,6 +464,6 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Utforska mått](../platform/metrics-charts.md)
-* [Skriv analysfrågor](../log-query/log-query-overview.md)
+* [Utforska mått](../essentials/metrics-charts.md)
+* [Skriv analysfrågor](../logs/log-query-overview.md)
 

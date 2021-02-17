@@ -3,12 +3,12 @@ title: Användnings analys med Azure Application Insights | Microsoft-dokument
 description: Förstå dina användare och vad de gör med din app.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0888b6743a10c9934ab85a6f2b3b637b857f643a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583401"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Användningsanalys med Application Insights
 
@@ -38,7 +38,7 @@ Den bästa upplevelsen erhålls genom att installera Application Insights både 
 
     Mer avancerade konfigurationer för övervakning av webbplatser finns i [referens artikeln för Java Script SDK](./javascript.md).
 
-3. **Kod för mobilapp:** Använd App Center SDK för att samla in händelser från din app och skicka sedan kopior av dessa händelser till Application Insights för analys genom att [följa den här hand boken](../learn/mobile-center-quickstart.md).
+3. **Kod för mobilapp:** Använd App Center SDK för att samla in händelser från din app och skicka sedan kopior av dessa händelser till Application Insights för analys genom att [följa den här hand boken](../app/mobile-center-quickstart.md).
 
 4. **Hämta telemetri:** Kör ditt projekt i fel söknings läge under några minuter och leta sedan efter resultat på bladet översikt i Application Insights.
 
@@ -179,6 +179,6 @@ Alla nya TelemetryClients lägger automatiskt till det egenskaps värde som du a
    - [Trattar](usage-funnels.md)
    - [Kvarhållning](usage-retention.md)
    - [Användarflöden](usage-flows.md)
-   - [Arbetsböcker](../platform/workbooks-overview.md)
+   - [Arbetsböcker](../visualize/workbooks-overview.md)
    - [Lägg till användar kontext](usage-send-user-context.md)
 

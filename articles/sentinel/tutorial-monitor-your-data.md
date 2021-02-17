@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586723"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Självstudie: Visualisera och övervaka dina data
 
 
 
-När du har [anslutit dina data källor](quickstart-onboard.md)   till Azure Sentinel kan du visualisera och övervaka data med hjälp av Azure Sentinel-införandet av Azure Monitor arbets böcker, vilket ger mångsidighet i att skapa anpassade instrument paneler. Även om arbets böckerna visas på olika sätt i Azure Sentinel, kan det vara praktiskt att se hur du [skapar interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/platform/workbooks-overview.md). Med Azure Sentinel kan du skapa anpassade arbets böcker i dina data och även med inbyggda mallar för arbets böcker så att du snabbt kan få insikter om dina data så snart du ansluter en data källa.
+När du har [anslutit dina data källor](quickstart-onboard.md) till Azure Sentinel kan du visualisera och övervaka data med hjälp av Azure Sentinel-införandet av Azure Monitor arbets böcker, vilket ger mångsidighet i att skapa anpassade instrument paneler. Även om arbets böckerna visas på olika sätt i Azure Sentinel, kan det vara praktiskt att se hur du [skapar interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md). Med Azure Sentinel kan du skapa anpassade arbets böcker i dina data och även med inbyggda mallar för arbets böcker så att du snabbt kan få insikter om dina data så snart du ansluter en data källa.
 
 
 Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
@@ -46,13 +46,13 @@ Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
   ![Gå till arbets böcker](./media/tutorial-monitor-data/access-workbooks.png)
 1. Klicka på **Visa mall** för att se mallen som är ifylld med dina data.
   
-1. Om du vill redigera arbets boken väljer du **Spara**och väljer sedan den plats där du vill spara JSON-filen för mallen. 
+1. Om du vill redigera arbets boken väljer du **Spara** och väljer sedan den plats där du vill spara JSON-filen för mallen. 
 
    > [!NOTE]
    > Detta skapar en Azure-resurs som baseras på den relevanta mallen och sparar JSON-filen för arbets boken och inte data.
 
 
-1. Välj **Visa Sparad arbets bok**. Klicka sedan på knappen **Redigera** högst upp. Nu kan du redigera arbets boken och anpassa den efter dina behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/platform/workbooks-overview.md).
+1. Välj **Visa Sparad arbets bok**. Klicka sedan på knappen **Redigera** högst upp. Nu kan du redigera arbetsboken och anpassa den efter dina behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
 ![Visa arbets böcker](./media/tutorial-monitor-data/workbook-graph.png)
 1. När du har gjort ändringarna kan du spara arbets boken. 
 
@@ -64,13 +64,13 @@ Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
 1. Gå till **arbets böcker** och välj sedan **Lägg till arbets bok** för att skapa en ny arbets bok från grunden.
   ![Skärm bild som visar sidan ny arbets bok.](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Om du vill redigera arbets boken väljer du **Redigera**och lägger sedan till text, frågor och parametrar vid behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/platform/workbooks-overview.md). 
+1. Om du vill redigera arbets boken väljer du **Redigera** och lägger sedan till text, frågor och parametrar vid behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md). 
 
-1. När du skapar en fråga kontrollerar du att **data källan** har angetts till **loggar** och att **resurs typen** har angetts till **Log Analytics**och väljer sedan de relevanta arbets ytorna. 
+1. När du skapar en fråga kontrollerar du att **data källan** har angetts till **loggar** och att **resurs typen** har angetts till **Log Analytics** och väljer sedan de relevanta arbets ytorna. 
 
 1. När du har skapat din arbets bok sparar du arbets boken och kontrollerar att du sparar den under prenumerationen och resurs gruppen för din Azure Sentinel-arbetsyta.
 
-1. Om du vill låta andra i organisationen använda arbets boken går du till Välj **delade rapporter**under **Spara** . Om du vill att den här arbets boken bara ska vara tillgänglig för dig väljer du **Mina rapporter**.
+1. Om du vill låta andra i organisationen använda arbets boken går du till Välj **delade rapporter** under **Spara** . Om du vill att den här arbets boken bara ska vara tillgänglig för dig väljer du **Mina rapporter**.
 
 1. Om du vill växla mellan arbets böcker i din arbets yta kan du välja **Öppna** ![ ikon för att öppna en arbets bok. ](./media/tutorial-monitor-data/switch.png) i den övre rutan i en arbets bok. Växla mellan arbets böcker i fönstret som öppnas till höger.
 

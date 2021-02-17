@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021c76bcd03bbe35eabec5611fe0cc1e2c7c4427
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583337"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Skicka användar kontext-ID: n för att aktivera användnings upplevelser i Azure Application Insights
 
@@ -22,7 +22,7 @@ Med Application Insights kan du övervaka och spåra dina användare via en upps
 - [Användare, sessioner, händelser](./usage-segmentation.md)
 - [Trattar](./usage-funnels.md)
 - [Kvarhållning](./usage-retention.md) Kohorter
-- [Arbetsböcker](../platform/workbooks-overview.md)
+- [Arbetsböcker](../visualize/workbooks-overview.md)
 
 För att kunna spåra vad en användare använder med tiden behöver Application Insights ett ID för varje användare eller session. Inkludera följande ID: n i varje anpassad händelse-eller sid visning.
 
@@ -30,7 +30,7 @@ För att kunna spåra vad en användare använder med tiden behöver Application
 - Sessioner: ta med sessions-ID.
 
 > [!NOTE]
-> Det här är en avancerad artikel som beskriver de manuella stegen för att spåra användar aktivitet med Application Insights. Med många webb program behöver **de här stegen inte utföras**eftersom standard-SDK: er för Server sidan tillsammans med [klient-och webb läsar sidans JavaScript SDK](./website-monitoring.md)är ofta tillräckliga för att automatiskt spåra användar aktivitet. Om du inte har konfigurerat [övervakning på klient sidan](./website-monitoring.md) utöver SDK för Server sidan, gör du det först och testar för att se om verktygen för användar beteende analys fungerar som förväntat.
+> Det här är en avancerad artikel som beskriver de manuella stegen för att spåra användar aktivitet med Application Insights. Med många webb program behöver **de här stegen inte utföras** eftersom standard-SDK: er för Server sidan tillsammans med [klient-och webb läsar sidans JavaScript SDK](./website-monitoring.md)är ofta tillräckliga för att automatiskt spåra användar aktivitet. Om du inte har konfigurerat [övervakning på klient sidan](./website-monitoring.md) utöver SDK för Server sidan, gör du det först och testar för att se om verktygen för användar beteende analys fungerar som förväntat.
 
 ## <a name="choosing-user-ids"></a>Välja användar-ID
 
@@ -134,5 +134,5 @@ namespace MvcWebRole.Telemetry
     - [Användare, sessioner och händelser](usage-segmentation.md)
     - [Trattar](usage-funnels.md)
     - [Kvarhållning](usage-retention.md)
-    - [Arbetsböcker](../platform/workbooks-overview.md)
+    - [Arbetsböcker](../visualize/workbooks-overview.md)
 

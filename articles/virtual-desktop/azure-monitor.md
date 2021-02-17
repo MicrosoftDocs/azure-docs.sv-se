@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467725"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594458"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Använd Azure Monitor för virtuella Windows-datorer för att övervaka distributionen (för hands version)
 
@@ -98,7 +98,7 @@ Du kan lära dig mer om hur du aktiverar diagnostik på alla objekt i Windows-mi
 
 ## <a name="configure-log-analytics"></a>Konfigurera Log Analytics
 
-Om du vill börja använda Azure Monitor för virtuella Windows-datorer måste du också ha minst en Log Analytics arbets yta för att samla in data från miljön som du planerar att övervaka och tillhandahålla den i arbets boken. Om du redan har en konfiguration kan du gå vidare till [Konfigurera prestanda räknare](#set-up-performance-counters). Om du vill skapa en ny Log Analytics arbets yta för Azure-prenumerationen som innehåller din Windows Virtual Desktop-miljö, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Om du vill börja använda Azure Monitor för virtuella Windows-datorer måste du också ha minst en Log Analytics arbets yta för att samla in data från miljön som du planerar att övervaka och tillhandahålla den i arbets boken. Om du redan har en konfiguration kan du gå vidare till [Konfigurera prestanda räknare](#set-up-performance-counters). Om du vill skapa en ny Log Analytics arbets yta för Azure-prenumerationen som innehåller din Windows Virtual Desktop-miljö, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 >[!NOTE]
 >Standard avgifter för data lagring för Log Analytics kommer att gälla. För att starta rekommenderar vi att du väljer modellen betala per användning och justerar när du skalar distributionen och tar med mer data. Mer information finns i [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/).
@@ -107,7 +107,7 @@ Om du vill börja använda Azure Monitor för virtuella Windows-datorer måste d
 
 Du måste aktivera vissa prestanda räknare för insamling i motsvarande exempel intervall i Log Analytics-arbetsytan. Dessa prestanda räknare är de enda räknare du behöver för att övervaka virtuella Windows-datorer. Du kan inaktivera alla andra för att spara kostnader.
 
-Om du redan har aktiverat prestanda räknare och vill ta bort dem, följer du anvisningarna i [Konfigurera prestanda räknare](../azure-monitor/platform/data-sources-performance-counters.md) för att konfigurera om prestanda räknarna. Även om artikeln beskriver hur du lägger till räknare kan du ta bort dem på samma plats.
+Om du redan har aktiverat prestanda räknare och vill ta bort dem, följer du anvisningarna i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md) för att konfigurera om prestanda räknarna. Även om artikeln beskriver hur du lägger till räknare kan du ta bort dem på samma plats.
 
 Om du inte redan har konfigurerat prestanda räknare kan du konfigurera dem för Azure Monitor för virtuella Windows-datorer:
 
@@ -128,7 +128,7 @@ Du kan också lägga till nya prestanda räknare efter den inledande konfigurati
 >[!NOTE]
 >Prestanda räknare för ineffekts fördröjning är bara kompatibla med Windows 10 RS5 och senare eller Windows Server 2019 och senare.
 
-Mer information om hur du manuellt lägger till prestanda räknare som inte redan är aktiverade för insamling finns i [Konfigurera prestanda räknare](../azure-monitor/platform/data-sources-performance-counters.md).
+Mer information om hur du manuellt lägger till prestanda räknare som inte redan är aktiverade för insamling finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md).
 
 ### <a name="set-up-windows-events"></a>Konfigurera Windows-händelser
 
@@ -171,7 +171,7 @@ Så här installerar du Log Analytics agent:
 
 ## <a name="optional-configure-alerts"></a>Valfritt: Konfigurera aviseringar
 
-Du kan konfigurera Azure Monitor för virtuella Windows-datorer för att meddela dig om några allvarliga Azure Monitor aviseringar sker i den valda prenumerationen. Det gör du genom att följa anvisningarna i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/learn/tutorial-response.md).
+Du kan konfigurera Azure Monitor för virtuella Windows-datorer för att meddela dig om några allvarliga Azure Monitor aviseringar sker i den valda prenumerationen. Det gör du genom att följa anvisningarna i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostik-och användnings data
 

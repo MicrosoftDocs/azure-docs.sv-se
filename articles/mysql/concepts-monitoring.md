@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 5b818068c2aab045b46b34d408a93b7cb3df15c7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8d6aa4de7c3b75747c6e2f103e66e39dfa288ba7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537704"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576248"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Övervakning i Azure Database for MySQL
 Genom att övervaka data om dina servrar kan du felsöka och optimera för din arbets belastning. Azure Database for MySQL tillhandahåller olika mått som ger inblick i serverns beteende.
 
 ## <a name="metrics"></a>Mått
-Alla Azure-mått har en frekvens på en minut och varje mått ger 30 dagars historik. Du kan konfigurera aviseringar för måtten. Steg för steg-anvisningar finns i [så här konfigurerar du aviseringar](howto-alert-on-metric.md). Andra uppgifter är att ställa in automatiserade åtgärder, utföra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../azure-monitor/platform/data-platform.md).
+Alla Azure-mått har en frekvens på en minut och varje mått ger 30 dagars historik. Du kan konfigurera aviseringar för måtten. Steg för steg-anvisningar finns i [så här konfigurerar du aviseringar](howto-alert-on-metric.md). Andra uppgifter är att ställa in automatiserade åtgärder, utföra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../azure-monitor/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Lista över mått
 De här måtten är tillgängliga för Azure Database for MySQL:
 
-|Mått|Mått visnings namn|Enhet|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Description|
 |---|---|---|---|
 |cpu_percent|CPU-procent|Procent|Procent andelen CPU som används.|
 |memory_percent|Minnes procent|Procent|Procent andelen minne som används.|
@@ -61,6 +61,6 @@ Lär dig mer om hur du konfigurerar aviseringar i dokumentet om [planerade under
 
 ## <a name="next-steps"></a>Nästa steg
 - Se [hur du ställer in aviseringar](howto-alert-on-metric.md) för vägledning om hur du skapar en avisering på ett mått.
-- Mer information om hur du får åtkomst till och exporterar mått med hjälp av Azure Portal, REST API eller CLI finns i [Översikt över Azure Metrics](../azure-monitor/platform/data-platform.md).
+- Mer information om hur du får åtkomst till och exporterar mått med hjälp av Azure Portal, REST API eller CLI finns i [Översikt över Azure Metrics](../azure-monitor/data-platform.md).
 - Läs vår blogg om [bästa praxis för att övervaka servern](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/).
 - Lär dig mer om [planerade underhålls meddelanden](./concepts-planned-maintenance-notification.md) i Azure Database for MySQL-enskild server

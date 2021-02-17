@@ -4,12 +4,12 @@ description: I den här snabb starten får du lära dig hur du konfigurerar öve
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a30fb12e93058690fbd7611ae64fc0a7dd96f64
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88611338"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583438"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Snabb start: börja övervaka din webbplats med Azure Monitor Application Insights
 
@@ -26,7 +26,7 @@ Med Azure Monitor Application Insights kan du enkelt övervaka din webbplats med
 
 Application Insights kan samla in telemetridata från alla Internet-anslutna program som körs lokalt eller i molnet. Använd följande steg för att visa dessa data:
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Välj **skapa ett resurs**  >  **hanterings verktyg**  >  **Application Insights**.
 
    > [!NOTE]
@@ -60,7 +60,7 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
 
 ## <a name="configure-application-insights-sdk"></a>Konfigurera Application Insights SDK
 
-1. Välj **Översikt**  >  **Essentials**och kopiera sedan programmets **Instrumentation-nyckel**.
+1. Välj **Översikt**  >  **Essentials** och kopiera sedan programmets **Instrumentation-nyckel**.
 
    ![Nytt Application Insights-resursformulär](media/website-monitoring/instrumentation-key-001.png)
 
@@ -110,7 +110,7 @@ Application Insights kan samla in telemetridata från alla Internet-anslutna pro
 
    ![analysdiagram över användarbegäranden under en viss tidsperiod](./media/website-monitoring/analytics-query.png)
 
-1. Gå tillbaka till sidan **Översikt**. Under **Undersök** rubriken väljer du **webbläsare**och sedan **prestanda**.  Mått som rör webbplatsens prestanda visas. Det finns en motsvarande vy för att analysera fel och undantag på din webbplats. Du kan välja **exempel** för att få åtkomst till [slut punkt till slut punkts transaktions information](./transaction-diagnostics.md).
+1. Gå tillbaka till sidan **Översikt**. Under **Undersök** rubriken väljer du **webbläsare** och sedan **prestanda**.  Mått som rör webbplatsens prestanda visas. Det finns en motsvarande vy för att analysera fel och undantag på din webbplats. Du kan välja **exempel** för att få åtkomst till [slut punkt till slut punkts transaktions information](./transaction-diagnostics.md).
 
    ![Diagram för servermått](./media/website-monitoring/browser-performance.png)
 
@@ -131,11 +131,11 @@ Om du planerar att fortsätta arbeta med ytterligare snabb starter eller självs
 > [!NOTE]
 > Om du använde en befintlig resurs grupp fungerar inte följande instruktioner. I stället kan du bara ta bort den enskilda Application Insights resursen. Tänk på att när du tar bort en resurs grupp tas alla underyling-resurser som är medlemmar i gruppen också bort.
 
-1. Välj **resurs grupper**på den vänstra menyn på Azure Portal och välj sedan **myResourceGroup** eller namnet på den tillfälliga resurs gruppen.
+1. Välj **resurs grupper** på den vänstra menyn på Azure Portal och välj sedan **myResourceGroup** eller namnet på den tillfälliga resurs gruppen.
 1. På sidan resurs grupp väljer du **ta bort**, anger **myResourceGroup** i text rutan och väljer sedan **ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Hitta och diagnostisera prestandaproblem](../log-query/log-query-overview.md)
+> [Hitta och diagnostisera prestandaproblem](../logs/log-query-overview.md)
 

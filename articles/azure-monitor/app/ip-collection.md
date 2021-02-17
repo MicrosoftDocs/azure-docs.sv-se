@@ -4,12 +4,12 @@ description: Förstå hur IP-adresser och geolokalisering hanteras med Azure App
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521925"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584072"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Hantering av geolokalisering och IP-adresser
 
@@ -30,7 +30,7 @@ Det här beteendet är avsiktligt för att undvika onödig insamling av personli
 
 Standardvärdet är att inte samla in IP-adresser. Vi erbjuder fortfarande flexibiliteten att åsidosätta det här beteendet. Vi rekommenderar dock att du verifierar att samlingen inte bryter mot krav på efterlevnad eller lokala föreskrifter. 
 
-Mer information om personlig data hantering i Application Insights finns i [rikt linjerna för person uppgifter](../platform/personal-data-mgmt.md).
+Mer information om personlig data hantering i Application Insights finns i [rikt linjerna för person uppgifter](../logs/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>Lagra IP-Datadata
 
@@ -245,6 +245,6 @@ Om du testar från localhost och värdet för `customDimensions_client-ip` är `
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om [insamling av personliga data](../platform/personal-data-mgmt.md) i Application Insights.
+* Lär dig mer om [insamling av personliga data](../logs/personal-data-mgmt.md) i Application Insights.
 
 * Lär dig mer om hur [IP-webbplatssamling](https://apmtips.com/posts/2016-07-05-client-ip-address/) i Application Insights fungerar. (Den här artikeln är ett äldre externt blogg inlägg som skrivits av någon av våra tekniker. Detta fördaterar det aktuella standard beteendet där IP-adressen registreras som `0.0.0.0` , men den ökar djupet på Mechanics för det inbyggda `ClientIpHeaderTelemetryInitializer` .)

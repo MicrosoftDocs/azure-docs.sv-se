@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a5e280fb562bf9bb36d0d729e5f494bd23776ec7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702278"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570123"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Övervaka schemalagda händelser för dina virtuella Azure-datorer
 
@@ -25,17 +25,17 @@ I den här artikeln visar vi hur du kan använda schemalagda händelser för att
 
 Schemalagda händelser är tillgängligt som en del av [Azure-instance metadata service](instance-metadata-service.md), som finns på alla virtuella Azure-datorer. Kunder kan skriva automatisering för att fråga slut punkten för deras virtuella datorer för att hitta schemalagda underhålls aviseringar och utföra åtgärder, t. ex. att spara statusen och ta den virtuella datorn ur rotationen. Vi rekommenderar att du skapar automatisering för att registrera Schemalagda händelser så att du kan ha en Gransknings logg för Azures underhålls händelser. 
 
-I den här artikeln får du lära dig hur du samlar in underhålls Schemalagda händelser till Log Analytics. Sedan kommer vi att utlösa vissa grundläggande meddelande åtgärder, t. ex. att skicka ett e-postmeddelande till ditt team och få en historisk vy över alla händelser som påverkar dina virtuella datorer. För händelse agg regering och automation kommer vi att använda [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md), men du kan använda valfri övervaknings lösning för att samla in dessa loggar och utlösa automatisering.
+I den här artikeln får du lära dig hur du samlar in underhålls Schemalagda händelser till Log Analytics. Sedan kommer vi att utlösa vissa grundläggande meddelande åtgärder, t. ex. att skicka ett e-postmeddelande till ditt team och få en historisk vy över alla händelser som påverkar dina virtuella datorer. För händelse agg regering och automation kommer vi att använda [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md), men du kan använda valfri övervaknings lösning för att samla in dessa loggar och utlösa automatisering.
 
 ![Diagram över händelsens livs cykel](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I det här exemplet måste du skapa en [virtuell Windows-dator i en tillgänglighets uppsättning](tutorial-availability-sets.md). Schemalagda händelser ange meddelanden om ändringar som kan påverka någon av de virtuella datorerna i din tillgänglighets uppsättning, moln tjänst, skalnings uppsättning för virtuell dator eller fristående virtuella datorer. Vi kommer att köra en [tjänst](https://github.com/microsoft/AzureScheduledEventsService) som avsöker efter schemalagda händelser på en av de virtuella datorer som fungerar som en insamlare, för att hämta händelser för alla andra virtuella datorer i tillgänglighets uppsättningen.    
 
 Ta inte bort grupp resurs gruppen i slutet av självstudien.
 
-Du måste också [skapa en Log Analytics arbets yta](../../azure-monitor/learn/quick-create-workspace.md) som vi ska använda för att samla in information från de virtuella datorerna i tillgänglighets uppsättningen.
+Du måste också [skapa en Log Analytics arbets yta](../../azure-monitor/logs/quick-create-workspace.md) som vi ska använda för att samla in information från de virtuella datorerna i tillgänglighets uppsättningen.
 
 ## <a name="set-up-the-environment"></a>Konfigurera miljön
 
@@ -132,7 +132,7 @@ Då installeras [Microsoft Monitoring Agent](../extensions/oms-windows.md) på d
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Skapa en varnings regel med Azure Monitor 
 
 
-När händelserna flyttas till Log Analytics kan du köra följande [fråga](../../azure-monitor/log-query/log-analytics-tutorial.md) för att söka efter schema händelser.
+När händelserna flyttas till Log Analytics kan du köra följande [fråga](../../azure-monitor/logs/log-analytics-tutorial.md) för att söka efter schema händelser.
 
 1. Längst upp på sidan väljer du **loggar** och klistrar in följande i text rutan:
 

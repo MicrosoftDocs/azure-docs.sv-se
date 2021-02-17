@@ -3,12 +3,12 @@ title: Utvärdera effekten av en ny Azure Policy-definition
 description: Förstå den process som ska följas när du introducerar en ny princip definition i din Azure-miljö.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873876"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590804"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Utvärdera effekten av en ny Azure Policy-definition
 
@@ -63,7 +63,7 @@ Om det finns resurser som ska undantas från din nya princip definition under di
 
 ## <a name="monitor-your-policy-and-compliance"></a>Övervaka din princip och efterlevnad
 
-Att implementera och tilldela en princip definition är inte det sista steget. Övervaka kontinuerligt [efterlevnaden](../how-to/get-compliance-data.md) av resurser till din nya princip definition och lämpliga [Azure Monitor aviseringar och aviseringar](../../../azure-monitor/platform/alerts-overview.md) för när icke-kompatibla enheter identifieras. Vi rekommenderar också att du utvärderar princip definitionen och de relaterade tilldelningarna enligt schemat för att verifiera att princip definitionen uppfyller behoven för affärs principer och efterlevnad. Principer bör tas bort om de inte längre behövs. Principer behöver också uppdateras från tid till att de underliggande Azure-resurserna utvecklas och lägger till nya egenskaper och funktioner.
+Att implementera och tilldela en princip definition är inte det sista steget. Övervaka kontinuerligt [efterlevnaden](../how-to/get-compliance-data.md) av resurser till din nya princip definition och lämpliga [Azure Monitor aviseringar och aviseringar](../../../azure-monitor/alerts/alerts-overview.md) för när icke-kompatibla enheter identifieras. Vi rekommenderar också att du utvärderar princip definitionen och de relaterade tilldelningarna enligt schemat för att verifiera att princip definitionen uppfyller behoven för affärs principer och efterlevnad. Principer bör tas bort om de inte längre behövs. Principer behöver också uppdateras från tid till att de underliggande Azure-resurserna utvecklas och lägger till nya egenskaper och funktioner.
 
 ## <a name="next-steps"></a>Nästa steg
 

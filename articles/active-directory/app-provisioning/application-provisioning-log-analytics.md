@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256889"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574186"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Förstå hur etablering integreras med Azure Monitor loggar
 
@@ -24,7 +24,7 @@ Etableringen integreras med Azure Monitor loggar och Log Analytics. Med Azure-ö
 
 ## <a name="enabling-provisioning-logs"></a>Aktivera etablerings loggar
 
-Du bör redan vara bekant med Azure-övervakning och Log Analytics. Om inte, hoppa över för att lära dig mer om dem och gå sedan tillbaka till Lär dig mer om program etablerings loggar. Läs mer om Azure-övervakning i [Azure Monitor översikt](../../azure-monitor/overview.md). Mer information om Azure Monitor loggar och Log Analytics finns i [Översikt över logg frågor i Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Du bör redan vara bekant med Azure-övervakning och Log Analytics. Om inte, hoppa över för att lära dig mer om dem och gå sedan tillbaka till Lär dig mer om program etablerings loggar. Läs mer om Azure-övervakning i [Azure Monitor översikt](../../azure-monitor/overview.md). Mer information om Azure Monitor loggar och Log Analytics finns i [Översikt över logg frågor i Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
 
 När du har konfigurerat Azure-övervakning kan du aktivera loggar för program etablering. Alternativet finns på sidan **diagnostikinställningar** .
 
@@ -47,7 +47,7 @@ Den underliggande data strömmen som etableringen skickar loggar till är nästa
 
 ## <a name="azure-monitor-workbooks"></a>Azure Monitor-arbetsböcker
 
-Azure Monitor arbets böcker ger en flexibel arbets yta för data analys. De innehåller också information om hur du skapar omfattande visuella rapporter i Azure Portal. Mer information finns i [Översikt över Azure Monitor-arbetsböcker](../../azure-monitor/platform/workbooks-overview.md).
+Azure Monitor arbets böcker ger en flexibel arbets yta för data analys. De innehåller också information om hur du skapar omfattande visuella rapporter i Azure Portal. Mer information finns i [Översikt över Azure Monitor-arbetsböcker](../../azure-monitor/visualize/workbooks-overview.md).
 
 Program etableringen levereras med en uppsättning färdiga arbets böcker. Du hittar dem på sidan arbets böcker. Om du vill visa data måste du se till att alla filter (timeRange, jobID, appName) är ifyllda. Du måste också kontrol lera att du har skapat en app, annars finns det inga data i loggarna.
 
@@ -57,7 +57,7 @@ Program etableringen levereras med en uppsättning färdiga arbets böcker. Du h
 
 ## <a name="custom-queries"></a>Anpassade frågor
 
-Du kan skapa anpassade frågor och visa data på Azure-instrumentpaneler. Mer information finns i [skapa och dela instrument paneler för Log Analytics data](../../azure-monitor/log-query/get-started-queries.md). Ta också en titt på [Översikt över logg frågor i Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+Du kan skapa anpassade frågor och visa data på Azure-instrumentpaneler. Mer information finns i [skapa och dela instrument paneler för Log Analytics data](../../azure-monitor/logs/get-started-queries.md). Ta också en titt på [Översikt över logg frågor i Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
 
 Här följer några exempel på hur du kommer igång med program etablering.
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Med Azure Monitor kan du konfigurera anpassade aviseringar så att du får meddelanden om viktiga händelser som rör etablering. Till exempel kanske du vill få en avisering om toppar i fel. Eller så kanske toppar i inaktive ras eller tas bort. Ett annat exempel på var du kanske vill bli aviserad är brist på någon etablering, vilket tyder på att något är fel.
 
-Mer information om aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../../azure-monitor/learn/tutorial-response.md).
+Mer information om aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../../azure-monitor/alerts/tutorial-response.md).
 
 Avisera när det finns en ökning av felen. Ersätt jobID med jobID för ditt program.
 
@@ -118,7 +118,7 @@ Vi tar en öppen källkod och community-baserad metod för program etablerings f
 ## <a name="next-steps"></a>Nästa steg
 
 - [Log Analytics](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Kom igång med frågor i Azure Monitor loggar](../../azure-monitor/log-query/get-started-queries.md)
-- [Skapa och hantera aviserings grupper i Azure Portal](../../azure-monitor/platform/action-groups.md)
+- [Kom igång med frågor i Azure Monitor loggar](../../azure-monitor/logs/get-started-queries.md)
+- [Skapa och hantera aviserings grupper i Azure Portal](../../azure-monitor/alerts/action-groups.md)
 - [Installera och Använd Log Analytics-vyerna för Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [API för etablerings loggar](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

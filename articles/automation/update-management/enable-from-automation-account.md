@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 089d5d70d8ad8060455e5c1bee45e0bee4a12fae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575842"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Aktivera Uppdateringshantering från ett Automation-konto
 
@@ -24,7 +24,8 @@ Den här artikeln beskriver hur du kan använda ditt Automation-konto för att a
 
 * En Azure-prenumeration. Om du inte redan har ett konto kan du [aktivera dina MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-konto](../automation-security-overview.md) för att hantera datorer.
-* En [virtuell Azure-dator](../../virtual-machines/windows/quick-create-portal.md)eller virtuell dator eller Server registrerad med ARC-aktiverade servrar. Icke-virtuella datorer eller servrar i Azure måste ha [Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) för Windows eller Linux installerat och rapportering till arbets ytan som är länkad till Automation-kontot uppdateringshantering är aktive rad i. Vi rekommenderar att du installerar Log Analytics agent för Windows eller Linux genom att först ansluta datorn till [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md)och sedan använda Azure policy för att tilldela den inbyggda principen [distribuera Log Analytics agent till *Linux* -eller *Windows* Azure Arc-datorer](../../governance/policy/samples/built-in-policies.md#monitoring) . Alternativt, om du planerar att övervaka datorerna med Azure Monitor for VMs, använder du i stället [aktivera Azure Monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) initiativ.
+* En [virtuell Azure-dator](../../virtual-machines/windows/quick-create-portal.md)eller virtuell dator eller Server registrerad med ARC-aktiverade servrar. Icke-virtuella datorer eller servrar i Azure måste ha [Log Analytics agent](../../azure-monitor/agents/log-analytics-agent.md) för Windows eller Linux installerat och rapportering till arbets ytan som är länkad till Automation-kontot uppdateringshantering är aktive rad i. Vi rekommenderar att du installerar Log Analytics agent för Windows eller Linux genom att först ansluta datorn till [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md)och sedan använda Azure policy för att tilldela den inbyggda principen [distribuera Log Analytics agent till *Linux* -eller *Windows* Azure Arc-datorer](../../governance/policy/samples/built-in-policies.md#monitoring) . Alternativt, om du planerar att övervaka datorerna med Azure Monitor for VMs, använder du i stället [aktivera Azure Monitor for VMS](../../governance/policy/samples/built-in-initiatives.md#monitoring) initiativ.
+
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -54,7 +55,7 @@ För datorer eller servrar som ligger utanför Azure, inklusive de som har regis
 
 1. Från ditt Automation-konto väljer du **uppdaterings hantering** under **uppdaterings hantering**.
 
-2. Välj **Lägg till icke-Azure-dator**. Den här åtgärden öppnar ett nytt webbläsarfönster med [instruktioner för att installera och konfigurera Log Analytics agent för Windows](../../azure-monitor/platform/log-analytics-agent.md) så att datorn kan börja rapportera till uppdateringshantering. Om du aktiverar en dator som för närvarande hanteras av Operations Manager krävs ingen ny agent. Informationen om arbets ytan läggs till i agent konfigurationen.
+2. Välj **Lägg till icke-Azure-dator**. Den här åtgärden öppnar ett nytt webbläsarfönster med [instruktioner för att installera och konfigurera Log Analytics agent för Windows](../../azure-monitor/agents/log-analytics-agent.md) så att datorn kan börja rapportera till uppdateringshantering. Om du aktiverar en dator som för närvarande hanteras av Operations Manager krävs ingen ny agent. Informationen om arbets ytan läggs till i agent konfigurationen.
 
 ## <a name="enable-machines-in-the-workspace"></a>Aktivera datorer i arbets ytan
 

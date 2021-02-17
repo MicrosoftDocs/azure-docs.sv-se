@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542090"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576268"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Använd Azure Portal för att konfigurera aviseringar för mått för Azure Database for MySQL 
 
@@ -25,11 +25,11 @@ Du kan konfigurera en avisering för att utföra följande åtgärder när den u
 * Anropa en webbhook
 
 Du kan konfigurera och hämta information om aviserings regler med hjälp av:
-* [Azure-portalen](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure-portalen](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [REST-API:et för Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Skapa en varnings regel för ett mått från Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Skapa en aviseringsregel för ett mått från Azure-portalen
 1. I [Azure Portal](https://portal.azure.com/)väljer du den Azure Database for MySQLs server som du vill övervaka.
 
 2. Under avsnittet **övervakning** på sid panelen väljer du **aviseringar** som visas:
@@ -85,5 +85,5 @@ När du har skapat en avisering kan du välja den och utföra följande åtgärd
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om hur du [konfigurerar Webhooks i aviseringar](../azure-monitor/platform/alerts-webhooks.md).
-* Få en [Översikt över mått samlingen](../azure-monitor/platform/data-platform.md) för att se till att tjänsten är tillgänglig och svarar.
+* Läs mer om hur du [konfigurerar Webhooks i aviseringar](../azure-monitor/alerts/alerts-webhooks.md).
+* Få en [Översikt över mått samlingen](../azure-monitor/data-platform.md) för att se till att tjänsten är tillgänglig och svarar.

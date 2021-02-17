@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069f70d27bd7e721be2bf82f6ef64ce9c531ab8e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577564"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimera din Active Directory-miljö med Active Directory-hälsokontrollösningen i Azure Monitor
 
@@ -46,9 +46,9 @@ När du har lagt till lösningen och en kontroll har slutförts visas sammanfatt
 
 För att utföra hälso kontrollen mot domän kontrol Lanterna som är medlemmar i domänen som ska utvärderas måste varje domänkontrollant i domänen ha en agent och anslutning för att kunna Azure Monitor med någon av följande metoder som stöds:
 
-1. Installera [Log Analytics agent för Windows](../platform/agent-windows.md) om domänkontrollanten inte redan övervakas av System Center 2016-Operations Manager eller Operations Manager 2012 R2.
+1. Installera [Log Analytics agent för Windows](../agents/agent-windows.md) om domänkontrollanten inte redan övervakas av System Center 2016-Operations Manager eller Operations Manager 2012 R2.
 2. Om den övervakas med System Center 2016-Operations Manager eller Operations Manager 2012 R2 och hanterings gruppen inte är integrerad med Azure Monitor, kan domänkontrollanten köras i flera hem med Azure Monitor för att samla in data och vidarebefordra till tjänsten och fortfarande övervakas av Operations Manager.  
-3. Annars, om din Operations Manager hanterings grupp är integrerad med tjänsten, måste du lägga till domän kontrol Lanterna för data insamling av tjänsten genom att följa stegen under [Lägg till agenter-hanterade datorer](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) när du har aktiverat lösningen i din arbets yta.  
+3. Annars, om din Operations Manager hanterings grupp är integrerad med tjänsten, måste du lägga till domän kontrol Lanterna för data insamling av tjänsten genom att följa stegen under [Lägg till agenter-hanterade datorer](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor) när du har aktiverat lösningen i din arbets yta.  
 
 Agenten på domänkontrollanten som rapporterar till en Operations Manager hanterings grupp samlar in data, vidarebefordrar till den tilldelade hanterings servern och sedan skickas direkt från en hanterings server till Azure Monitor.  Data skrivs inte till Operations Manager-databaser.  
 
@@ -215,5 +215,5 @@ Resultaten kan sedan exporteras till Excel för ytterligare granskning.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Använd [Azure Monitor logg frågor](../log-query/log-query-overview.md) för att lära dig hur du analyserar detaljerade hälso kontroll data och rekommendationer för AD.
+Använd [Azure Monitor logg frågor](../logs/log-query-overview.md) för att lära dig hur du analyserar detaljerade hälso kontroll data och rekommendationer för AD.
 

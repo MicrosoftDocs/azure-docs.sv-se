@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cd8c6ca67a1e475279cba8ccc3f4cb8cc7412d66
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954994"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590775"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Övervaka Media Servicess statistik och diagnostiska loggar med Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina appar presterar. Alla data som samlas in av Azure Monitor tillhör en av två grundläggande typer: mått och loggar. Du kan övervaka Media Services diagnostikloggar och skapa aviseringar och aviseringar för insamlade mått och loggar. Du kan visualisera och analysera mått data med hjälp av [Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). Du kan skicka loggar till [Azure Storage](https://azure.microsoft.com/services/storage/), strömma dem till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), exportera dem till [Log Analytics](https://azure.microsoft.com/services/log-analytics/)eller använda tjänster från tredje part.
+Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina appar presterar. Alla data som samlas in av Azure Monitor tillhör en av två grundläggande typer: mått och loggar. Du kan övervaka Media Services diagnostikloggar och skapa aviseringar och aviseringar för insamlade mått och loggar. Du kan visualisera och analysera mått data med hjälp av [Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md). Du kan skicka loggar till [Azure Storage](https://azure.microsoft.com/services/storage/), strömma dem till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), exportera dem till [Log Analytics](https://azure.microsoft.com/services/log-analytics/)eller använda tjänster från tredje part.
 
-En detaljerad översikt finns i [Azure Monitor mått](../../azure-monitor/platform/data-platform.md) och [Azure Monitor diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md).
+En detaljerad översikt finns i [Azure Monitor mått](../../azure-monitor/data-platform.md) och [Azure Monitor diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md).
 
 I det här avsnittet beskrivs [Media Services mått](#media-services-metrics) som stöds och [Media Services diagnostikloggar](#media-services-diagnostic-logs).
 
 ## <a name="media-services-metrics"></a>Media Services mått
 
-Mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta, och en avisering kan utlösas snabbt med relativt enkel logik. Information om hur du skapar mått aviseringar finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta, och en avisering kan utlösas snabbt med relativt enkel logik. Information om hur du skapar mått aviseringar finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 Media Services stöder övervaknings mått för följande resurser:
 
@@ -89,7 +89,7 @@ Se [övervaka Media Services mått](media-services-metrics-howto.md).
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services diagnostikloggar
 
-Diagnostikloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i [så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/platform/platform-logs-overview.md).
+Diagnostikloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i [så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/essentials/platform-logs-overview.md).
 
 Media Services stöder följande diagnostikloggar:
 
@@ -116,7 +116,7 @@ Se [så här övervakar du loggar för media service-diagnostik](media-services-
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/platform/platform-logs-overview.md)
-* [Skapa, visa och hantera måttaviseringar med Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
+* [Så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Skapa, visa och hantera måttaviseringar med Azure Monitor](../../azure-monitor/alerts/alerts-metric.md)
 * [Övervaka Media Services mått](media-services-metrics-howto.md)
 * [Övervaka loggar för media service-diagnostik](media-services-diagnostic-logs-howto.md)

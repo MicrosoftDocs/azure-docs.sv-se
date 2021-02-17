@@ -4,12 +4,12 @@ description: Läs om hanteringsgrupperna, hur behörigheterna fungerar och hur d
 ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 547f26717bfb516bbcf531af1418c812e4cbc63b
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560202"
+ms.locfileid: "100590840"
 ---
 # <a name="what-are-azure-management-groups"></a>Vad är hanteringsgrupper i Azure?
 
@@ -196,7 +196,7 @@ Om ägar rollen för prenumerationen ärvs från den aktuella hanterings gruppen
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Granska hanteringsgrupper med hjälp av aktivitetsloggar
 
-Hanteringsgrupper kan användas i [Azure-aktivitetsloggar](../../azure-monitor/platform/platform-logs-overview.md). Du kan söka efter alla händelser i en hanteringsgrupp från samma centrala plats som andra Azure-resurser. Du kan till exempel se alla ändringar för rolltilldelningar eller principtilldelningar som gjorts i en viss hanteringsgrupp.
+Hanteringsgrupper kan användas i [Azure-aktivitetsloggar](../../azure-monitor/essentials/platform-logs-overview.md). Du kan söka efter alla händelser i en hanteringsgrupp från samma centrala plats som andra Azure-resurser. Du kan till exempel se alla ändringar för rolltilldelningar eller principtilldelningar som gjorts i en viss hanteringsgrupp.
 
 :::image type="content" source="./media/al-mg.png" alt-text="Skärm bild av aktivitets loggar och åtgärder relaterade till den valda hanterings gruppen." border="false":::
 

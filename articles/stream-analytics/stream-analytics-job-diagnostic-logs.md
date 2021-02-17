@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 93d881419c4854b8e46608e150b55072267e0347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011126"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574415"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Felsöka Azure Stream Analytics med hjälp av resurs loggar
 
@@ -24,9 +24,9 @@ Vi rekommenderar starkt att du aktiverar resurs loggar för alla jobb eftersom d
 
 Stream Analytics erbjuder två typer av loggar:
 
-* [Aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md) (alltid på), vilket ger insikter om åtgärder som utförs på jobb.
+* [Aktivitets loggar](../azure-monitor/essentials/platform-logs-overview.md) (alltid på), vilket ger insikter om åtgärder som utförs på jobb.
 
-* [Resurs loggar](../azure-monitor/platform/platform-logs-overview.md) (kan konfigureras), vilket ger bättre insikter om allt som händer med ett jobb. Resurs loggar startar när jobbet skapas och avslutas när jobbet tas bort. De behandlar händelser när jobbet uppdateras och när det körs.
+* [Resurs loggar](../azure-monitor/essentials/platform-logs-overview.md) (kan konfigureras), vilket ger bättre insikter om allt som händer med ett jobb. Resurs loggar startar när jobbet skapas och avslutas när jobbet tas bort. De behandlar händelser när jobbet uppdateras och när det körs.
 
 > [!NOTE]
 > Du kan använda tjänster som Azure Storage, Azure Event Hubs och Azure Monitor loggar för att analysera data som inte överensstämmer. Du debiteras enligt pris sättnings modellen för dessa tjänster.
@@ -94,7 +94,7 @@ Azure Stream Analytics fångar två kategorier av resurs loggar:
 
 Alla loggar lagras i JSON-format. Varje post har följande gemensamma sträng fält:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 time | Tidsstämpel (i UTC) för loggen.
 resourceId | ID för den resurs som åtgärden ägde rum i, i versaler. Den innehåller prenumerations-ID, resurs grupp och jobb namn. Till exempel **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
@@ -112,7 +112,7 @@ Körnings loggarna innehåller information om händelser som har inträffat unde
 
 Eventuella fel som inträffar när jobbet bearbetar data finns i den här kategorin av loggar. Loggarna skapas oftast när data läses, serialiseras och skrivs. Dessa loggar innehåller inte anslutnings fel. Anslutnings fel behandlas som allmänna händelser. Du kan lära dig mer om orsaken till olika [fel i indata och utdata](./data-errors.md).
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 Källa | Namnet på det indata eller utdata där felet uppstod.
 Meddelande | Meddelande som är kopplat till felet.
@@ -133,7 +133,7 @@ I väntan på värdet **operationName** har data fel följande schema:
 
 Allmänna händelser behandlar allt annat.
 
-Namn | Beskrivning
+Name | Beskrivning
 -------- | --------
 Fel | valfritt Fel information. Detta är vanligt vis undantags information om det är tillgängligt.
 Meddelande| Logg meddelande.

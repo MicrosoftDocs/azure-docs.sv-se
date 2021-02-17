@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583361"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Användare, sessioner och händelse analys i Application Insights
 
@@ -41,10 +41,10 @@ Utforska olika användar grupper genom att justera frågealternativen överst i 
 * Används: Välj anpassade händelser och sid visningar.
 * Under: Välj ett tidsintervall.
 * Av: Välj hur data ska buckas, antingen en viss tids period eller en annan egenskap, till exempel webbläsare eller stad.
-* Dela efter: Välj en egenskap som du vill dela eller segmentera data med. 
-* Lägg till filter: begränsa frågan till vissa användare, sessioner eller händelser baserat på deras egenskaper, t. ex. webbläsare eller stad. 
- 
-## <a name="saving-and-sharing-reports"></a>Spara och dela rapporter 
+* Dela efter: Välj en egenskap som du vill dela eller segmentera data med. 
+* Lägg till filter: begränsa frågan till vissa användare, sessioner eller händelser baserat på deras egenskaper, t. ex. webbläsare eller stad. 
+ 
+## <a name="saving-and-sharing-reports"></a>Spara och dela rapporter 
 Du kan spara användar rapporter, antingen privat precis i avsnittet Mina rapporter eller delas med alla andra med åtkomst till den här Application Insights resursen i avsnittet delade rapporter.
 
 Dela en länk till en användare, session eller händelse rapport; Klicka på **dela** i verktygsfältet och kopiera sedan länken.
@@ -62,6 +62,6 @@ Avsnittet om att **möta dina användare** visar information om fem exempel anv�
     - [Trattar](usage-funnels.md)
     - [Kvarhållning](usage-retention.md)
     - [Användarflöden](usage-flows.md)
-    - [Arbetsböcker](../platform/workbooks-overview.md)
+    - [Arbetsböcker](../visualize/workbooks-overview.md)
     - [Lägg till användar kontext](usage-send-user-context.md)
 

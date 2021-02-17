@@ -4,12 +4,12 @@ description: Övervaka system och anpassade .NET/.NET Core-EventCounters i Appli
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579523"
 ---
 # <a name="eventcounters-introduction"></a>Introduktion till EventCounters
 
@@ -88,14 +88,14 @@ En liknande metod kan även användas för WorkerService SDK, men namn området 
 
 ## <a name="event-counters-in-metric-explorer"></a>Händelse räknare i Metric Explorer
 
-Om du vill visa EventCounter-mått i [Metric Explorer](../platform/metrics-charts.md)väljer du Application Insights resurs och väljer loggbaserade mått som mått namn område. Sedan visas EventCounter mått under anpassad kategori.
+Om du vill visa EventCounter-mått i [Metric Explorer](../essentials/metrics-charts.md)väljer du Application Insights resurs och väljer loggbaserade mått som mått namn område. Sedan visas EventCounter mått under anpassad kategori.
 
 > [!div class="mx-imgBorder"]
 > ![Händelse räknare som rapporter ATS i Application Insights Metric Explorer](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Händelse räknare i Analytics
 
-Du kan också söka efter och Visa rapporter för händelse räknare i [Analytics](../log-query/log-query-overview.md)i **customMetrics** -tabellen.
+Du kan också söka efter och Visa rapporter för händelse räknare i [Analytics](../logs/log-query-overview.md)i **customMetrics** -tabellen.
 
 Kör till exempel följande fråga för att se vilka räknare som samlas in och är tillgängliga för fråga:
 
@@ -121,7 +121,7 @@ customMetrics
 Precis som andra telemetri innehåller **customMetrics** också en kolumn `cloud_RoleInstance` som anger identiteten för den värd Server instans där appen körs. Frågan ovan visar räknar värdet per instans och kan användas för att jämföra prestanda för olika Server instanser.
 
 ## <a name="alerts"></a>Aviseringar
-Precis som med andra mått kan du [Ange en avisering](../platform/alerts-log.md) som varnar dig om en händelse räknare går utanför en gräns som du anger. Öppna fönstret aviseringar och klicka på Lägg till avisering.
+Precis som med andra mått kan du [Ange en avisering](../alerts/alerts-log.md) som varnar dig om en händelse räknare går utanför en gräns som du anger. Öppna fönstret aviseringar och klicka på Lägg till avisering.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

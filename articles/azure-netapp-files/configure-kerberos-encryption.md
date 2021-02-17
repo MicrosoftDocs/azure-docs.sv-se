@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935231"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571094"
 ---
-# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurera NFSv 4.1 Kerberos-kryptering för Azure NetApp Files
+# <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurera NFSv4.1 Kerberos-kryptering för Azure NetApp Files
 
 Azure NetApp Files stöder NFS-klient kryptering i Kerberos-lägen (krb5, krb5i och krb5p) med AES-256-kryptering. I den här artikeln beskrivs de konfigurationer som krävs för att använda en NFSv 4.1-volym med Kerberos-kryptering.
 
@@ -57,7 +57,7 @@ Följande krav gäller för NFSv 4.1-klient kryptering:
 
 ## <a name="configure-the-azure-portal"></a>Konfigurera Azure Portal 
 
-1.  Följ anvisningarna i [skapa en Active Directory-anslutning](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection).  
+1.  Följ anvisningarna i [skapa en Active Directory-anslutning](create-active-directory-connections.md).  
 
     Kerberos kräver att du skapar minst ett dator konto i Active Directory. Den konto information som du anger används för att skapa konton för både SMB- *och* Nfsv 4.1 Kerberos-volymer. Den här datorn skapas automatiskt när volymen skapas.
 
@@ -89,7 +89,7 @@ Följ anvisningarna i [Konfigurera en NFS-klient för att Azure NetApp Files](co
 
 2. Välj **monterings instruktioner** från volymen för att Visa anvisningarna.
 
-    Ett exempel: 
+    Exempel: 
 
     ![Monterings instruktioner för Kerberos-volymer](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 
@@ -175,5 +175,5 @@ Prestanda påverkan för krb5p:
 * [Felsök problem med NFSv 4.1 Kerberos-volymer](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Vanliga frågor och svar om Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Skapa en NFS-volym för Azure NetApp Files](azure-netapp-files-create-volumes.md)
-* [Skapa en Active Directory anslutning](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)
+* [Skapa en Active Directory anslutning](create-active-directory-connections.md)
 * [Konfigurera en NFS-klient för Azure NetApp Files](configure-nfs-clients.md) 

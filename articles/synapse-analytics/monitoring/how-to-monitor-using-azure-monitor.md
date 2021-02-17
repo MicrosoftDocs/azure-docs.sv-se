@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: eb74137e515bff7a432367e75b4208490b1243c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681395"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574296"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Använda Azure Monitor med din Azure Synapse Analytics-arbetsyta
 
@@ -28,7 +28,7 @@ Mer information finns i [Översikt av Azure Monitor](../../azure-monitor/overvie
 
 Med övervakaren kan du få insyn i prestanda och hälsa för dina Azure-arbetsbelastningar. Den viktigaste typen av övervaknings data är måttet, som även kallas för prestanda räknaren. Måtten genereras av de flesta Azure-resurser. Övervakaren tillhandahåller flera olika sätt att konfigurera och använda dessa mått för övervakning och fel sökning.
 
-Följ anvisningarna i [Azure Monitor data plattform](../../azure-monitor/platform/data-platform.md)för att få åtkomst till dessa mått.
+Följ anvisningarna i [Azure Monitor data plattform](../../azure-monitor/data-platform.md)för att få åtkomst till dessa mått.
 
 ### <a name="workspace-level-metrics"></a>Mått på arbets ytans nivå
 
@@ -171,7 +171,7 @@ Skapa eller Lägg till diagnostikinställningar för din arbets yta, dedikerad S
 1. Ange ett namn, Välj **Skicka till Log Analytics** och välj sedan en arbets yta från **Log Analytics arbets yta**.
 
     > [!NOTE]
-    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [Log Analytics kända begränsningar](../../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Eftersom en Azure-loggfil inte kan ha fler än 500 kolumner rekommenderar vi **starkt** att du väljer _resurs-/regionsspecifika läge_. Mer information finns i [Log Analytics kända begränsningar](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Välj **Spara**.
 

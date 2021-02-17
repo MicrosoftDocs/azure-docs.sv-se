@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953962"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576319"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Övervaka Media Services diagnostikloggar
 
@@ -183,9 +183,9 @@ Du kan behöva vänta upp till fem minuter innan händelsen visas på lagringsko
 
 ## <a name="see-also"></a>Se även
 
-* [Azure Monitor-statistik](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md)
-* [Så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor-statistik](../../azure-monitor/data-platform.md)
+* [Azure Monitor diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Så här samlar du in och använder loggdata från dina Azure-resurser](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

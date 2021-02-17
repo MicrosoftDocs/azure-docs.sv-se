@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c420c62e6f8f09a2b29398590cdb4ad410e5d296
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254542"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574063"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurera moln mått och loggar för Azure API Management egen värd-Gateway
 
@@ -30,7 +30,7 @@ Som standard avger gatewayen för egen värd ett antal mått genom [Azure Monito
 
 Funktionen kan aktive ras eller inaktive ras med `telemetry.metrics.cloud` nyckeln i ConfigMap för gateway-distributionen. Nedan visas en uppdelning av de tillgängliga konfigurationerna:
 
-| Field  | Default | Beskrivning |
+| Fält  | Standardvärde | Description |
 | ------------- | ------------- | ------------- |
 | telemetri. Metrics. Cloud  | `true` | Aktiverar loggning via Azure Monitor. Värdet kan vara `true` , `false` . |
 
@@ -49,7 +49,7 @@ Här är en exempel konfiguration:
 
 Den egen värdbaserade gatewayen avger för närvarande följande mått genom Azure Monitor:
 
-| Mått  | Beskrivning |
+| Metric  | Beskrivning |
 | ------------- | ------------- |
 | Begäranden  | Antal API-begäranden under perioden |
 | Varaktighet för gateway-begäranden | Antalet millisekunder från att gatewayen fick begäran till då svaret har skickats fullständigt |
@@ -59,7 +59,7 @@ Den egen värdbaserade gatewayen avger för närvarande följande mått genom Az
 
 Den egen värdbaserade gatewayen skickar för närvarande inte [diagnostikloggar](./api-management-howto-use-azure-monitor.md#activity-logs) till molnet. Det är dock möjligt att [Konfigurera och Spara loggar lokalt](how-to-configure-local-metrics-logs.md) där gatewayen för egen värd distribueras. 
 
-Om en gateway distribueras i [Azure Kubernetes-tjänsten](https://azure.microsoft.com/services/kubernetes-service/)kan du aktivera [Azure Monitor för behållare](../azure-monitor/insights/container-insights-overview.md) för att samla in loggar från dina behållare och visa dem i Log Analytics. 
+Om en gateway distribueras i [Azure Kubernetes-tjänsten](https://azure.microsoft.com/services/kubernetes-service/)kan du aktivera [Azure Monitor för behållare](../azure-monitor/containers/container-insights-overview.md) för att samla in loggar från dina behållare och visa dem i Log Analytics. 
 
 
 ## <a name="next-steps"></a>Nästa steg

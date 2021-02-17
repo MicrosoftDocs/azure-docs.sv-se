@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945637"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590820"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Använda Azure Monitor-loggar för att övervaka HDInsight-kluster
 
 Lär dig hur du aktiverar Azure Monitor loggar för att övervaka Hadoop-kluster åtgärder i HDInsight. Och hur du lägger till en HDInsight-övervaknings lösning.
 
-[Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) är en Azure Monitor tjänst som övervakar molnet och lokala miljöer. Övervakningen är att upprätthålla deras tillgänglighet och prestanda. Den samlar in data som genererats av resurser i molnet, i lokala miljöer och från andra övervaknings verktyg. Data används för att tillhandahålla analyser över flera källor.
+[Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) är en Azure Monitor tjänst som övervakar molnet och lokala miljöer. Övervakningen är att upprätthålla deras tillgänglighet och prestanda. Den samlar in data som genererats av resurser i molnet, i lokala miljöer och från andra övervaknings verktyg. Data används för att tillhandahålla analyser över flera källor.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -24,7 +24,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Log Analytics-arbetsyta. Du kan tänka på den här arbets ytan som en unik Azure Monitor loggar miljö med ett eget data lager, data källor och lösningar. Anvisningar finns i [skapa en Log Analytics-arbetsyta](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* En Log Analytics-arbetsyta. Du kan tänka på den här arbets ytan som en unik Azure Monitor loggar miljö med ett eget data lager, data källor och lösningar. Anvisningar finns i [skapa en Log Analytics-arbetsyta](../azure-monitor/vm/quick-collect-azurevm.md#create-a-workspace).
 
 * Ett Azure HDInsight-kluster. För närvarande kan du använda Azure Monitor loggar med följande HDInsight-kluster typer:
 
@@ -144,7 +144,7 @@ Eftersom klustret är ett helt nytt kluster visas inga aktiviteter i rapporten.
 
 ## <a name="configuring-performance-counters"></a>Konfigurera prestanda räknare
 
-Azure Monitor stöder insamling och analys av prestanda mått för noderna i klustret. Mer information finns i [data källor för Linux-prestanda i Azure Monitor](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters).
+Azure Monitor stöder insamling och analys av prestanda mått för noderna i klustret. Mer information finns i [data källor för Linux-prestanda i Azure Monitor](../azure-monitor/agents/data-sources-performance-counters.md#linux-performance-counters).
 
 ## <a name="cluster-auditing"></a>Kluster granskning
 

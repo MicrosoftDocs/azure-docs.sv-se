@@ -3,18 +3,18 @@ title: Använda search i Azure Application Insights | Microsoft Docs
 description: Sök och filtrera RAW-telemetri som skickas av din webbapp.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f7c2229a2e497fb052db79d61fcfeff140897798
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187025"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579545"
 ---
 # <a name="using-search-in-application-insights"></a>Använda Sök i Application Insights
 
 Sök är en funktion i [Application Insights](./app-insights-overview.md) som du använder för att söka efter och utforska enskilda telemetri objekt, till exempel sidvyer, undantag eller webb förfrågningar. Du kan också Visa logg spårningar och händelser som du har kodat.
 
-(Om du vill ha mer komplexa frågor över dina data använder du [Analytics](../log-query/log-analytics-tutorial.md).)
+(Om du vill ha mer komplexa frågor över dina data använder du [Analytics](../logs/log-analytics-tutorial.md).)
 
 ## <a name="where-do-you-see-search"></a>Var ser du sökningen?
 
@@ -81,7 +81,7 @@ Om du vill hitta alla objekt med samma egenskaps värde kan du antingen skriva d
 ## <a name="search-the-data"></a>Sök i data
 
 > [!NOTE]
-> Om du vill skriva mer komplexa frågor öppnar du [**loggar (analys)**](../log-query/log-analytics-tutorial.md) från början av bladet Sök.
+> Om du vill skriva mer komplexa frågor öppnar du [**loggar (analys)**](../logs/log-analytics-tutorial.md) från början av bladet Sök.
 >
 
 Du kan söka efter villkor i alla egenskaps värden. Detta är användbart om du har skrivit [anpassade händelser](./api-custom-events-metrics.md) med egenskaps värden.
@@ -145,7 +145,7 @@ Vi loggar inte in POST-data automatiskt, men du kan använda [TrackTrace-eller l
 
 ## <a name="next-steps"></a><a name="add"></a>Nästa steg
 
-* [Skriv komplexa frågor i analys](../log-query/log-analytics-tutorial.md)
+* [Skriv komplexa frågor i analys](../logs/log-analytics-tutorial.md)
 * [Skicka loggar och anpassad telemetri till Application Insights](./asp-net-trace-logs.md)
 * [Ställ in tillgänglighets-och svars tider](./monitor-web-app-availability.md)
 * [Felsökning](../faq.md)

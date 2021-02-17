@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183608"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576028"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrera Azure Monitor loggar uppdaterings distributioner till Azure Portal
 
-Hanterings portalen för Operations Management Suite (OMS) är [inaktuell](../azure-monitor/platform/oms-portal-transition.md). Alla funktioner som var tillgängliga i OMS-portalen för Uppdateringshantering finns i Azure Portal, via Azure Monitor loggar. Den här artikeln innehåller den information du behöver för att migrera till Azure Portal.
+Hanterings portalen för Operations Management Suite (OMS) är [inaktuell](../azure-monitor/logs/oms-portal-transition.md). Alla funktioner som var tillgängliga i OMS-portalen för Uppdateringshantering finns i Azure Portal, via Azure Monitor loggar. Den här artikeln innehåller den information du behöver för att migrera till Azure Portal.
 
 ## <a name="key-information"></a>Viktig information
 
@@ -41,7 +41,7 @@ Hanterings portalen för Operations Management Suite (OMS) är [inaktuell](../az
 
 ## <a name="recreate-existing-deployments"></a>Återskapa befintliga distributioner
 
-Alla uppdaterings distributioner som skapas i OMS-portalen har en [Sparad sökning](../azure-monitor/platform/computer-groups.md) som också kallas en dator grupp, med samma namn som den uppdaterings distribution som finns. Den sparade sökningen innehåller en lista över datorer som har schemalagts i uppdaterings distributionen.
+Alla uppdaterings distributioner som skapas i OMS-portalen har en [Sparad sökning](../azure-monitor/logs/computer-groups.md) som också kallas en dator grupp, med samma namn som den uppdaterings distribution som finns. Den sparade sökningen innehåller en lista över datorer som har schemalagts i uppdaterings distributionen.
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Skärm bild av sidan med uppdaterings distributioner med fälten namn och servrar markerade.":::
 
@@ -57,12 +57,12 @@ Följ dessa steg om du vill använda den befintliga sparade sökningen:
 
     | Egenskap | Beskrivning |
     | --- | --- |
-    |Namn |Unikt namn som identifierar uppdateringsdistributionen. |
+    |Name |Unikt namn som identifierar uppdateringsdistributionen. |
     |Operativsystem| Välj **Linux** eller **Windows**.|
-    |Datorer som ska uppdateras |Välj en sparad sökning, importerad grupp eller Välj dator i list rutan och välj enskilda datorer. Om du väljer **Datorer** visas beredskapen för datorn i kolumnen **Uppdatera agentberedskap**.</br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../azure-monitor/platform/computer-groups.md) |
+    |Datorer som ska uppdateras |Välj en sparad sökning, importerad grupp eller Välj dator i list rutan och välj enskilda datorer. Om du väljer **Datorer** visas beredskapen för datorn i kolumnen **Uppdatera agentberedskap**.</br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../azure-monitor/logs/computer-groups.md) |
     |Klassificering av uppdateringar|Välj alla uppdaterings klassificeringar som du behöver. CentOS stöder inte detta.|
     |Uppdateringar som ska undantas|Ange de uppdateringar som ska undantas. För Windows anger du KB-artikeln utan **KB** -prefixet. För Linux anger du paket namnet eller använder ett jokertecken.  |
-    |Schema inställningar|Välj tid för start och välj sedan **en gång** eller **återkommande** för upprepningen. | 
+    |Schemainställningar|Välj tid för start och välj sedan **en gång** eller **återkommande** för upprepningen. | 
     | Underhålls period |Antal minuter som har angetts för uppdateringar. Värdet kan inte vara mindre än 30 minuter eller mer än 6 timmar. |
     | Starta om kontroll| Fastställer hur omstarter ska hanteras.</br>De tillgängliga alternativen är:</br>Starta om vid behov (standard)</br>Starta alltid om</br>Starta aldrig om</br>Endast omstart – uppdateringar installeras inte|
 

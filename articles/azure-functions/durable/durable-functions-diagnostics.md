@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 62cc5e1762a2a54b26cbebae5aa7cfbf64204ba5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168149"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584617"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostik i Durable Functions i Azure
 
@@ -20,7 +20,7 @@ Det finns flera alternativ för att diagnosticera problem med [Durable Functions
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) är det rekommenderade sättet att utföra diagnostik och övervakning i Azure Functions. Samma sak gäller för Durable Functions. En översikt över hur du utnyttjar Application Insights i din Function-app finns i [övervaka Azure Functions](../functions-monitoring.md).
 
-Med Azure Functions tåligt tillägg kan du också spåra *händelser* som gör att du kan spåra slut punkt till slut punkt för ett dirigering. Dessa spårnings händelser kan hittas och frågas med hjälp av [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) -verktyget i Azure Portal.
+Med Azure Functions tåligt tillägg kan du också spåra *händelser* som gör att du kan spåra slut punkt till slut punkt för ett dirigering. Dessa spårnings händelser kan hittas och frågas med hjälp av [Application Insights Analytics](../../azure-monitor/logs/log-query-overview.md) -verktyget i Azure Portal.
 
 ### <a name="tracking-data"></a>Spårnings data
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: cdb43bd8b91881905b1734d0c0b36c33fb27d232
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707698"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577502"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Lösningar för övervakning av Azure-nätverk i Azure Monitor
 
@@ -113,11 +113,11 @@ Med arbets boken för nätverks insikter kan du dra nytta av de senaste funktion
 
 * Central konsol för övervakning och fel sökning med både [Mät](../insights/network-insights-overview.md#resource-health-and-metrics) data och loggdata.
 
-* Flexibel arbets yta för att stödja skapandet av anpassade RTF- [visualiseringar](../platform/workbooks-overview.md#visualizations).
+* Flexibel arbets yta för att stödja skapandet av anpassade RTF- [visualiseringar](../visualize/workbooks-overview.md#visualizations).
 
-* Möjlighet att använda och [dela mallar för arbets böcker](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) med bredare community.
+* Möjlighet att använda och [dela mallar för arbets böcker](../visualize/workbooks-overview.md#workbooks-versus-workbook-templates) med bredare community.
 
-Om du vill ha mer information om funktionerna i den nya arbets boks lösningen checka ut [arbets böcker – översikt](../platform/workbooks-overview.md)
+Om du vill ha mer information om funktionerna i den nya arbets boks lösningen checka ut [arbets böcker – översikt](../visualize/workbooks-overview.md)
 
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrera från Azure Gateway Analytics-lösningen till Azure Monitor-arbetsböcker
 
@@ -129,7 +129,7 @@ Om du vill ha mer information om funktionerna i den nya arbets boks lösningen c
 > [!NOTE]
 > Alla tidigare data är redan tillgängliga i arbets boken från punktens diagnostiska inställningar aktiverades ursprungligen. Ingen data överföring krävs.
 
-2. Öppna [arbets boken med standard insikter](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) för din Application Gateway-resurs. Alla befintliga insikter som stöds av Application Gateway Analytics-lösningen finns redan i arbets boken. Du kan utöka detta genom att lägga till anpassade [visualiseringar](../platform/workbooks-overview.md#visualizations) baserat på mått & loggdata.
+2. Öppna [arbets boken med standard insikter](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) för din Application Gateway-resurs. Alla befintliga insikter som stöds av Application Gateway Analytics-lösningen finns redan i arbets boken. Du kan utöka detta genom att lägga till anpassade [visualiseringar](../visualize/workbooks-overview.md#visualizations) baserat på mått & loggdata.
 
 3. När du kan se alla dina mått och logga insikter för att rensa Azure Gateway Analytics-lösningen från din arbets yta kan du ta bort lösningen från lösnings resurs sidan.
 
@@ -232,5 +232,5 @@ Data som samlas in innan ändringen visas inte i den nya lösningen. Du kan fort
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [logg frågor i Azure Monitor](../log-query/log-query-overview.md) om du vill visa detaljerade Azure Diagnostics-data.
+* Använd [logg frågor i Azure Monitor](../logs/log-query-overview.md) om du vill visa detaljerade Azure Diagnostics-data.
 

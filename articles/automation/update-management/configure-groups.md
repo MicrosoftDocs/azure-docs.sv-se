@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: a2df2489e4b216b4b33524e35691bf93468edda0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222414"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575921"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Använd dynamiska grupper med Uppdateringshantering
 
@@ -37,13 +37,13 @@ När du definierar en dynamisk grupp fråga för Azure-datorer kan du använda f
 
 ![Välj grupper](./media/configure-groups/select-groups.png)
 
-Klicka på **Förhandsgranska**om du vill förhandsgranska resultatet av din dynamiska grupp fråga. För hands versionen visar grupp medlemskapet vid aktuell tidpunkt. I exemplet ska vi söka efter datorer som har taggen `Role` för gruppen **BackendServer**. Om fler datorer har lagt till den här taggen läggs de till i alla framtida distributioner för den gruppen.
+Klicka på **Förhandsgranska** om du vill förhandsgranska resultatet av din dynamiska grupp fråga. För hands versionen visar grupp medlemskapet vid aktuell tidpunkt. I exemplet ska vi söka efter datorer som har taggen `Role` för gruppen **BackendServer**. Om fler datorer har lagt till den här taggen läggs de till i alla framtida distributioner för den gruppen.
 
 ![för hands versions grupper](./media/configure-groups/preview-groups.png)
 
 ## <a name="define-dynamic-groups-for-non-azure-machines"></a>Definiera dynamiska grupper för datorer som inte är Azure-datorer
 
-En dynamisk grupp för datorer som inte är Azure-datorer använder sparade sökningar, även kallade dator grupper. Information om hur du skapar en sparad sökning finns i [skapa en dator grupp](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group). När din sparade sökning har skapats kan du välja den i listan över sparade sökningar i **uppdaterings hantering** i Azure Portal. Klicka på **Förhandsgranska** för att förhandsgranska datorerna i den sparade sökningen.
+En dynamisk grupp för datorer som inte är Azure-datorer använder sparade sökningar, även kallade dator grupper. Information om hur du skapar en sparad sökning finns i [skapa en dator grupp](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group). När din sparade sökning har skapats kan du välja den i listan över sparade sökningar i **uppdaterings hantering** i Azure Portal. Klicka på **Förhandsgranska** för att förhandsgranska datorerna i den sparade sökningen.
 
 ![Skärm bild som visar sidan Välj grupper för icke-Azure (för hands version) och förhands gransknings fönstret på höger sida.](./media/configure-groups/select-groups-2.png)
 

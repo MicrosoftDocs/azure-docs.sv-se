@@ -3,12 +3,12 @@ title: Skicka Azure Service Health-aviseringar med PagerDuty
 description: Få personligt anpassade meddelanden om service Health-händelser till din PagerDuty-instans.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ae5141f33ebf4ec6e32029625af3a199a04d67b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091546"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594528"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Skicka Azure Service Health-aviseringar med PagerDuty med webhookar
 
@@ -23,7 +23,7 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar via
 
 1.  Välj **Lägg till ny tjänst** eller öppna en befintlig tjänst som du har konfigurerat.
 
-1.  I **integrations inställningarna**väljer du följande:
+1.  I **integrations inställningarna** väljer du följande:
 
     a. **Integrations typ**: Microsoft Azure
 
@@ -69,7 +69,7 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar via
 1. Välj **Spara** när du är färdig om du vill uppdatera åtgärds gruppen.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testa din webhook-integrering via en HTTP POST-begäran
-1. Skapa den tjänst hälso nytto last som du vill skicka. Du hittar ett exempel på en service Health webhook-nyttolast vid [Webhooks för Azure aktivitets logg aviseringar](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Skapa den tjänst hälso nytto last som du vill skicka. Du hittar ett exempel på en service Health webhook-nyttolast vid [Webhooks för Azure aktivitets logg aviseringar](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Skapa en HTTP POST-begäran på följande sätt:
 
@@ -86,6 +86,6 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar via
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig hur du [konfigurerar webhook-meddelanden för befintliga problem hanterings system](service-health-alert-webhook-guide.md).
-- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Läs mer om [meddelanden om tjänst hälsa](./service-notifications.md).
-- Läs mer om [Åtgärds grupper](../azure-monitor/platform/action-groups.md).
+- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).

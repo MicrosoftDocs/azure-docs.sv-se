@@ -3,20 +3,20 @@ title: Skapa Resource Health aviseringar med hjälp av Azure Portal
 description: Skapa en avisering med Azure Portal som meddelar dig när dina Azure-resurser blir otillgängliga.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e48c400e5be3516b08496db7a4cb6a19e45d6c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594624"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurera resurshälsoaviseringar med Azure-portalen
 
 Den här artikeln visar hur du ställer in aktivitets logg aviseringar för resurs hälso meddelanden med hjälp av Azure Portal.
 
-Azure Resource Health håller dig informerad om aktuella och historiska hälso status för dina Azure-resurser. Azure Resource Health aviseringar kan meddela dig nästan i real tid när resurserna har en ändring i deras hälso status. Skapa Resource Health aviseringar program mässigt tillåta att användare skapar och anpassar aviseringar i flera.
+Azure Resource Health håller dig informerad om aktuella och historiska hälso status för dina Azure-resurser. Azure Resource Health-avisering kan meddela dig i nästan realtid när dessa resurser har en ändring i sin hälsostatus. Skapa Resource Health aviseringar program mässigt tillåta att användare skapar och anpassar aviseringar i flera.
 
-Resurs hälso meddelanden lagras i [Azure aktivitets loggen](../azure-monitor/platform/platform-logs-overview.md) med den stora mängden information som lagras i aktivitets loggen. det finns ett separat användar gränssnitt som gör det enklare att visa och konfigurera aviseringar om resurs hälso meddelanden.
+Resurs hälso meddelanden lagras i [Azure aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md) med den stora mängden information som lagras i aktivitets loggen. det finns ett separat användar gränssnitt som gör det enklare att visa och konfigurera aviseringar om resurs hälso meddelanden.
 Du kan få en avisering när Azure-resursen skickar resurs hälso meddelanden till din Azure-prenumeration. Du kan konfigurera aviseringen baserat på:
 
 * Prenumerationen som påverkas.
@@ -32,7 +32,7 @@ Du kan också konfigurera vem aviseringen ska skickas till:
 * Välj en befintlig åtgärds grupp.
 * Skapa en ny åtgärds grupp (som kan användas för framtida aviseringar).
 
-Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/platform/action-groups.md).
+Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
 
 Information om hur du konfigurerar aviserings aviseringar för resurs hälsa med hjälp av Azure Resource Manager mallar finns i [Resource Manager-mallar](./resource-health-alert-arm-template-guide.md).
 Resource Health avisering med Azure Portal
@@ -56,12 +56,12 @@ Resource Health avisering med Azure Portal
     1. **Namn på varnings regel**: namnet på den nya varnings regeln.
     2. **Beskrivning**: beskrivningen av den nya varnings regeln.
     3. **Spara avisering till resurs grupp**: Välj den resurs grupp där du vill spara den nya regeln.
-7. Under **Åtgärds grupp**i den nedrullningsbara menyn anger du den åtgärds grupp som du vill tilldela till den nya varnings regeln. Du kan också [skapa en ny åtgärds grupp](../azure-monitor/platform/action-groups.md) och tilldela den till den nya regeln. Om du vill skapa en ny grupp väljer du + **ny grupp**.
+7. Under **Åtgärds grupp** i den nedrullningsbara menyn anger du den åtgärds grupp som du vill tilldela till den nya varnings regeln. Du kan också [skapa en ny åtgärds grupp](../azure-monitor/alerts/action-groups.md) och tilldela den till den nya regeln. Om du vill skapa en ny grupp väljer du + **ny grupp**.
 8. Om du vill aktivera reglerna efter att du har skapat dem väljer du **Ja** för alternativet **Aktivera regel vid skapande** .
-9. Välj **Skapa aviseringsregel**.
+9. Välj **Skapa varningsregel**.
 
 Den nya varnings regeln för aktivitets loggen skapas och ett bekräftelse meddelande visas i det övre högra hörnet i fönstret.
-Du kan aktivera, inaktivera, redigera eller ta bort en regel. Läs mer om [hur du hanterar aktivitets logg regler](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
+Du kan aktivera, inaktivera, redigera eller ta bort en regel. Läs mer om [hur du hanterar aktivitets logg regler](../azure-monitor/alerts/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -73,5 +73,5 @@ Läs mer om Resource Health:
 Skapa Service Health aviseringar:
 
 * [Konfigurera aviseringar för Service Health](./alerts-activity-log-service-notifications-portal.md) 
-* [Händelse schema för Azure aktivitets logg](../azure-monitor/platform/activity-log-schema.md)
+* [Händelse schema för Azure aktivitets logg](../azure-monitor/essentials/activity-log-schema.md)
 * [Konfigurera resurshälsoaviseringar med Resource Manager-mallar](./resource-health-alert-arm-template-guide.md)

@@ -3,12 +3,12 @@ title: Skicka Azure Service Health-aviseringar med OpsGenie med webhookar
 description: Få personligt anpassade meddelanden om service Health-händelser till din OpsGenie-instans.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529105"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594593"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Skicka Azure Service Health-aviseringar med OpsGenie med webhookar
 
@@ -27,7 +27,7 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar med
 
 1.  **Ge** aviseringen ett namn och ange fältet **tilldelad till Team** .
 
-1.  Fyll i de andra fälten, t. ex. **mottagare**, **aktiverade**och **Ignorera meddelanden**.
+1.  Fyll i de andra fälten, t. ex. **mottagare**, **aktiverade** och **Ignorera meddelanden**.
 
 1.  Kopiera och spara **integrations-URL**: en, som redan ska innehålla din `apiKey` bifogad fil till slutet.
 
@@ -67,7 +67,7 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar med
 1. Välj **Spara** när du är färdig om du vill uppdatera åtgärds gruppen.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testa din webhook-integrering via en HTTP POST-begäran
-1. Skapa den tjänst hälso nytto last som du vill skicka. Du hittar ett exempel på en service Health webhook-nyttolast vid [Webhooks för Azure aktivitets logg aviseringar](../azure-monitor/platform/activity-log-alerts-webhook.md).
+1. Skapa den tjänst hälso nytto last som du vill skicka. Du hittar ett exempel på en service Health webhook-nyttolast vid [Webhooks för Azure aktivitets logg aviseringar](../azure-monitor/alerts/activity-log-alerts-webhook.md).
 
 1. Skapa en HTTP POST-begäran på följande sätt:
 
@@ -84,6 +84,6 @@ Den här artikeln visar hur du konfigurerar Azure Service Health-aviseringar med
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig hur du [konfigurerar webhook-meddelanden för befintliga problem hanterings system](service-health-alert-webhook-guide.md).
-- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md). 
+- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/alerts/activity-log-alerts-webhook.md). 
 - Läs mer om [meddelanden om tjänst hälsa](./service-notifications.md).
-- Läs mer om [Åtgärds grupper](../azure-monitor/platform/action-groups.md).
+- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).

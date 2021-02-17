@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574161"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Hantera administrativa enheter i Azure Active Directory
 
@@ -38,7 +38,7 @@ För mer detaljerad administrativ kontroll i Azure Active Directory (Azure AD) k
     ![Skärm bild som visar länken bevilja administrativt medgivande för Graph Explorer.](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Använd för hands versionen av Azure AD PowerShell.
+1. Använd [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="add-an-administrative-unit"></a>Lägg till en administrativ enhet
 
@@ -58,7 +58,7 @@ Du kan lägga till en administrativ enhet genom att använda antingen Azure Port
 
 ### <a name="use-powershell"></a>Använd PowerShell
 
-Installera Azure AD PowerShell (för hands version) innan du försöker köra följande kommandon:
+Installera [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) innan du försöker köra följande kommandon:
 
 ```powershell
 Connect-AzureAD
@@ -100,7 +100,7 @@ Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 
 Du kan ändra de värden som omges av citat tecken, vilket krävs för den aktuella miljön.
 
-### <a name="use-the-graph-api"></a>Använd Graph API
+### <a name="use-the-graph-api"></a>Använda Graph API
 
 ```http
 HTTP request

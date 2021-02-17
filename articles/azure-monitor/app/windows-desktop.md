@@ -4,16 +4,16 @@ description: Analysera användning och prestanda för Windows-program med Applic
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15331494b40021f10c162fba75abf6fe88d2d419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583326"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Övervaka användning och prestanda för klassiska Windows-appar
 
-Program som finns lokalt, i Azure och i andra moln kan dra nytta av Application Insights. Den enda begränsningen är behovet av att [tillåta kommunikation](./ip-addresses.md) till Application Insights-tjänsten. För övervakning av UWP-program (Universell Windows-plattform) rekommenderar vi [Visual Studio App Center](../learn/mobile-center-quickstart.md).
+Program som finns lokalt, i Azure och i andra moln kan dra nytta av Application Insights. Den enda begränsningen är behovet av att [tillåta kommunikation](./ip-addresses.md) till Application Insights-tjänsten. För övervakning av UWP-program (Universell Windows-plattform) rekommenderar vi [Visual Studio App Center](../app/mobile-center-quickstart.md).
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Så här skickar du telemetri till Application Insights från ett klassiskt Windows-program
 1. [Skapa en Application Insights-resurs](./create-new-resource.md) på [Azure Portal](https://portal.azure.com). 
@@ -177,6 +177,6 @@ namespace WindowsFormsApp2
 ## <a name="next-steps"></a>Nästa steg
 * [Skapa en instrumentpanel](./overview-dashboard.md)
 * [Diagnostisk sökning](./diagnostic-search.md)
-* [Utforska mått](../platform/metrics-charts.md)
-* [Skriv analysfrågor](../log-query/log-query-overview.md)
+* [Utforska mått](../essentials/metrics-charts.md)
+* [Skriv analysfrågor](../logs/log-query-overview.md)
 

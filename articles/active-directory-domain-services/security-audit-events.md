@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 13bdc8797af8facaa73d3e43ecfbe504a6bd1dc2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618883"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574135"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivera säkerhets granskningar för Azure Active Directory Domain Services
 
@@ -40,7 +40,7 @@ I följande tabell beskrivs scenarier för varje mål resurs typ.
 |:---|:---|
 |Azure Storage| Det här målet ska användas när det primära behovet är att lagra säkerhets gransknings händelser för arkivering. Andra mål kan användas i arkiverings syfte, men dessa mål tillhandahåller funktioner utöver det primära behovet av arkivering. <br /><br />Innan du aktiverar säkerhets gransknings händelser i Azure AD DS måste du först [skapa ett Azure Storage-konto](../storage/common/storage-account-create.md).|
 |Azure Event Hubs| Det här målet ska användas när det primära behovet är att dela säkerhets gransknings händelser med ytterligare program vara, till exempel data analys program eller SIEM-programvara (Security information & Event Management).<br /><br />Innan du aktiverar säkerhets gransknings händelser i Azure AD DS [skapar du en Event Hub med hjälp av Azure Portal](../event-hubs/event-hubs-create.md)|
-|Azure Log Analytics-arbetsyta| Det här målet ska användas när det primära behovet är att analysera och granska säkra granskningar från Azure Portal direkt.<br /><br />Innan du aktiverar säkerhets gransknings händelser i Azure AD DS [skapar du en Log Analytics arbets yta i Azure Portal.](../azure-monitor/learn/quick-create-workspace.md)|
+|Azure Log Analytics-arbetsyta| Det här målet ska användas när det primära behovet är att analysera och granska säkra granskningar från Azure Portal direkt.<br /><br />Innan du aktiverar säkerhets gransknings händelser i Azure AD DS [skapar du en Log Analytics arbets yta i Azure Portal.](../azure-monitor/logs/quick-create-workspace.md)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Aktivera säkerhets gransknings händelser med hjälp av Azure Portal
 
@@ -100,7 +100,7 @@ Slutför följande steg för att aktivera Azure AD DS-säkerhetsgransknings hän
         > [!IMPORTANT]
         > Se till att du anger auktoriseringsregeln för Event Hub-namnområdet och inte själva händelsehubben.
 
-    * **Azure logg analys arbets ytor**  -  [Skapa en Log Analytics arbets yta med Azure PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md).
+    * **Azure logg analys arbets ytor**  -  [Skapa en Log Analytics arbets yta med Azure PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md).
 
 1. Hämta resurs-ID för din Azure AD DS-hanterade domän med hjälp av cmdleten [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) . Skapa en variabel med namnet *$aadds. ResourceId* för att lagra värdet:
 
@@ -141,9 +141,9 @@ Slutför följande steg för att aktivera Azure AD DS-säkerhetsgransknings hän
 Med logg analys arbets ytor kan du Visa och analysera säkerhets gransknings händelser med hjälp av Azure Monitor och Kusto-frågespråket. Det här frågespråket är utformat för skrivskyddad användning som har funktioner för Power-analys med en lättläst syntax. Mer information om hur du kommer igång med Kusto finns i följande artiklar:
 
 * [Dokumentation för Azure Monitor](../azure-monitor/index.yml)
-* [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
-* [Kom igång med loggfrågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Skapa och dela instrumentpaneler för Log Analytics-data](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
+* [Kom igång med loggfrågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+* [Skapa och dela instrumentpaneler för Log Analytics-data](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 Följande exempel frågor kan användas för att börja analysera säkerhets gransknings händelser från Azure AD DS.
 

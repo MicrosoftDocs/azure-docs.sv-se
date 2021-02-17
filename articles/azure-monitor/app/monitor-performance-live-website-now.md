@@ -4,12 +4,12 @@ description: Övervaka prestanda för en webbplats utan att distribuera den igen
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 79e14c171adde89c43c5ea82a60db39133157293
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186311"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576440"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrument-webbappar vid körning med Application Insights kod koppling
 
@@ -41,7 +41,7 @@ Här är en sammanfattning av vad du får med respektive väg:
 |  | Byggtid | Körtid |
 | --- | --- | --- |
 | **Begär & undantag** |Ja |Ja |
-| **[Mer detaljerade undantag](./asp-net-exceptions.md)** | |Ja |
+| **[Mer detaljerade undantag](./asp-net-exceptions.md)** | |Yes |
 | **[Beroendediagnostik](./asp-net-dependencies.md)** |I .NET 4.6+, men färre detaljer |Ja, fullständiga detaljer: resultatkoder, SQL-kommandotext, HTTP verb|
 | **[Systemprestandaräknare](./performance-counters.md)** |Ja |Ja |
 | **[API för anpassad telemetri][api]** |Ja |Nej |
@@ -93,7 +93,7 @@ Dessa är några steg som du kan utföra för att bekräfta att installationen l
 
 - Bekräfta att applicationInsights.config-filen finns i mål app-katalogen och innehåller din iKey.
 
-- Om du misstänker att data saknas kan du köra en fråga i [Analytics](../log-query/log-analytics-tutorial.md) för att visa en lista över alla moln roller som för närvarande skickar telemetri.
+- Om du misstänker att data saknas kan du köra en fråga i [Analytics](../logs/log-analytics-tutorial.md) för att visa en lista över alla moln roller som för närvarande skickar telemetri.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -320,9 +320,9 @@ För program som redan har instrumenterats vid kompilering:
 
 Visa telemetrin:
 
-* [Utforska mått](../platform/metrics-charts.md) för att övervaka prestanda och användning
+* [Utforska mått](../essentials/metrics-charts.md) för att övervaka prestanda och användning
 * [Sök efter händelser och loggar][diagnostic] för att diagnostisera problem
-* [Analys](../log-query/log-query-overview.md) för mer avancerade frågor
+* [Analys](../logs/log-query-overview.md) för mer avancerade frågor
 
 Lägg till mer telemetri:
 

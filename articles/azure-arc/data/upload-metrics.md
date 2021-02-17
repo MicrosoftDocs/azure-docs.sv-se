@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356556"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575683"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Ladda upp mått till Azure Monitor
 
@@ -126,7 +126,7 @@ Om du vill överföra mått för Azure Arc-aktiverade SQL-hanterade instanser oc
    >[!NOTE]
    >Vänta minst 30 minuter efter att de Azure Arc-aktiverade data instanserna har skapats för den första överföringen.
    >
-   >Se till att `upload` måtten omedelbart efter `export` Azure Monitor bara accepterar mått under de senaste 30 minuterna. [Läs mer](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting).
+   >Se till att `upload` måtten omedelbart efter `export` Azure Monitor bara accepterar mått under de senaste 30 minuterna. [Läs mer](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Om du ser några fel som indikerar att "det inte går att hämta mått" under exporten, kontrollerar du om data insamling har angetts till `true` genom att köra följande kommando:
@@ -199,7 +199,7 @@ Du kan också använda en jobbschemaläggaren som cron eller Schemaläggaren fö
 
 Under för hands versionen sker den här processen natt. Den allmänna vägledningen är att bara överföra användningen en gång per dag. När användnings informationen exporteras och överförs flera gånger under samma 24-timmarsperiod, uppdateras bara resurs lagret i Azure Portal, men inte resursanvändningen.
 
-För att ladda upp mått accepterar Azure Monitor bara de senaste 30 minuterna data ([Läs mer](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Rikt linjerna för att ladda upp mått är att överföra måtten direkt efter att du har skapat export filen så att du kan visa hela data uppsättningen i Azure Portal. Om du till exempel exporterade måtten till 2:00 PM och körde kommandot upload på 2:50 PM. Eftersom Azure Monitor bara accepterar data under de senaste 30 minuterna, kanske du inte ser några data i portalen. 
+För att ladda upp mått accepterar Azure Monitor bara de senaste 30 minuterna data ([Läs mer](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Rikt linjerna för att ladda upp mått är att överföra måtten direkt efter att du har skapat export filen så att du kan visa hela data uppsättningen i Azure Portal. Om du till exempel exporterade måtten till 2:00 PM och körde kommandot upload på 2:50 PM. Eftersom Azure Monitor bara accepterar data under de senaste 30 minuterna, kanske du inte ser några data i portalen. 
 
 ## <a name="next-steps"></a>Nästa steg
 

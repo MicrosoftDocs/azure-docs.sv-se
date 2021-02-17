@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389713"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584631"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Övervaka Azure cache för Redis
 
@@ -52,13 +52,13 @@ Om du vill visa Redis-mått och skapa anpassade diagram med Azure Monitor klicka
 
 ![I det vänstra navigerings fönstret i contoso55 är måtten ett alternativ under övervakning och är markerat. På mått finns det en lista över mått. Cacheträffar och Cachemissar har valts.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Mer information om hur du arbetar med mått med Azure Monitor finns i [Översikt över mått i Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Mer information om hur du arbetar med mått med Azure Monitor finns i [Översikt över mått i Microsoft Azure](../azure-monitor/data-platform.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportera cache-mått
 
-Som standard lagras cache-mått i Azure Monitor i [30 dagar](../azure-monitor/platform/data-platform-metrics.md) och tas sedan bort. Om du vill spara dina cache-mått i mer än 30 dagar kan du ange [ett lagrings konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) och ange en princip för **bevarande (dagar)** för dina cache-mått. 
+Som standard lagras cache-mått i Azure Monitor i [30 dagar](../azure-monitor/essentials/data-platform-metrics.md) och tas sedan bort. Om du vill spara dina cache-mått i mer än 30 dagar kan du ange [ett lagrings konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) och ange en princip för **bevarande (dagar)** för dina cache-mått. 
 
 Så här konfigurerar du ett lagrings konto för dina cache-mått:
 
@@ -74,10 +74,10 @@ Så här konfigurerar du ett lagrings konto för dina cache-mått:
 ![Redis-diagnostik](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Förutom att arkivera dina cache-mått till lagring kan du också [strömma dem till en händelsehubben eller skicka dem till Azure Monitor loggar](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>Förutom att arkivera dina cache-mått till lagring kan du också [strömma dem till en händelsehubben eller skicka dem till Azure Monitor loggar](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-values).
 >
 
-Du kan få åtkomst till dina mått genom att visa dem i Azure Portal som tidigare beskrivits i den här artikeln och du kan också komma åt dem med hjälp av [Azure Monitor mått REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Du kan få åtkomst till dina mått genom att visa dem i Azure Portal som tidigare beskrivits i den här artikeln och du kan också komma åt dem med hjälp av [Azure Monitor mått REST API](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 > [!NOTE]
 > Om du ändrar lagrings konton är data i det tidigare konfigurerade lagrings kontot fortfarande tillgängliga för nedladdning, men det visas inte i Azure Portal.  
@@ -129,7 +129,7 @@ Om du vill konfigurera aviserings regler för din cache klickar du på **varning
 
 ![Övervakning](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Mer information om hur du konfigurerar och använder aviseringar finns i [Översikt över aviseringar](../azure-monitor/platform/alerts-classic-portal.md).
+Mer information om hur du konfigurerar och använder aviseringar finns i [Översikt över aviseringar](../azure-monitor/alerts/alerts-classic-portal.md).
 
 ## <a name="activity-logs"></a>Aktivitetsloggar
 Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure-cachen för Redis-instanser. Det kallades tidigare för "gransknings loggar" eller "drift loggar". Med aktivitets loggar kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, posta och ta bort) som utförs på Azure-cachen för Redis-instanser. 
@@ -140,4 +140,4 @@ Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure-cachen för
 
 Om du vill visa aktivitets loggar för cacheminnet klickar du på **aktivitets loggar** på **resurs menyn**.
 
-Mer information om aktivitets loggar finns i [Översikt över Azure aktivitets loggen](../azure-monitor/platform/platform-logs-overview.md).
+Mer information om aktivitets loggar finns i [Översikt över Azure aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md).

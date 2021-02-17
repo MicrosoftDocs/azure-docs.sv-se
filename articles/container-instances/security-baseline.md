@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f4e855c52488652b88a3b14e9817f1755167b67
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 107380dabc9c163aab6d0347f6e6cc2c1a718c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806129"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576371"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azures säkerhets bas linje för Container Instances
 
@@ -192,9 +192,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina behållar instanser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -251,7 +251,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -263,9 +263,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 * [Behållar grupp och instans loggning med Azure Monitor loggar](./container-instances-log-analytics.md)
 
-* [Förstå Log Analytics arbets yta](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -277,7 +277,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 * [Behållar grupp och instans loggning med Azure Monitor loggar](./container-instances-log-analytics.md)
 
-* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -596,7 +596,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i behållar grupperna och behållar instanser. 
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
@@ -750,9 +750,9 @@ Implementera lösningar för att skanna behållar avbildningar i ett privat regi
 
 * [Behållar grupp och instans loggning med Azure Monitor loggar](./container-instances-log-analytics.md)
 
-* [Förstå Log Analytics arbets yta](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Förstå Log Analytics arbets yta](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 * [Säkerhets överväganden för Azure Container Instances](./container-instances-image-security.md)
 * [Azure Container Registry integration med Security Center](../security-center/defender-for-container-registries-introduction.md)

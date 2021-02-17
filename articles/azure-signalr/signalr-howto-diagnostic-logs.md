@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183982"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572250"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Resurs loggar för Azure SignalR service
 
@@ -20,8 +20,8 @@ I den här självstudien beskrivs vad resurs loggar för Azure SignalR-tjänsten
 ## <a name="prerequisites"></a>Förutsättningar
 Om du vill aktivera resurs loggar måste du lagra dina loggdata någonstans. I den här självstudien används Azure Storage och Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – behåller resurs loggar för princip granskning, statisk analys eller säkerhets kopiering.
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – ett flexibelt loggs öknings-och analys verktyg som möjliggör analys av obehandlade loggar som genereras av en Azure-resurs.
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) – behåller resurs loggar för princip granskning, statisk analys eller säkerhets kopiering.
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) – ett flexibelt loggs öknings-och analys verktyg som möjliggör analys av obehandlade loggar som genereras av en Azure-resurs.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Konfigurera resurs loggar för en Azure SignalR-tjänst
 
@@ -50,7 +50,7 @@ Resurs loggar är inaktiverade som standard. Följ dessa steg om du vill aktiver
 
 Nya inställningar börjar gälla om 10 minuter. Därefter visas loggar i det konfigurerade lagrings målet i fönstret **diagnostikloggar** .
 
-Mer information om hur du konfigurerar diagnostik finns i [översikten över Azures resurs loggar](../azure-monitor/platform/platform-logs-overview.md).
+Mer information om hur du konfigurerar diagnostik finns i [översikten över Azures resurs loggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="resource-logs-categories"></a>Resurs loggs kategorier
 
@@ -68,7 +68,7 @@ Arkiv loggens JSON-strängar innehåller element som anges i följande tabeller:
 
 **Format**
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 time | Händelse tid för logg
 nivå | Logga händelse nivå
@@ -81,7 +81,7 @@ properties | Detaljerade egenskaper relaterade till den här logg händelsen. Me
 
 **Egenskaps tabell**
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | -------
 typ | Typ av logg händelse. För närvarande ger vi information om anslutningen till Azure SignalR-tjänsten. Endast `ConnectivityLogs` typen är tillgänglig
 samling | Samling av logg händelsen. Tillåtna värden är: `Connection` `Authorization` och `Throttling`
@@ -122,13 +122,13 @@ Följ dessa steg om du vill visa resurs loggar:
 
     ![Meny alternativ för Log Analytics](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Ange `SignalRServiceDiagnosticLogs` och välj tidsintervall för att fråga resurs loggar. För avancerade frågor, se [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. Ange `SignalRServiceDiagnosticLogs` och välj tidsintervall för att fråga resurs loggar. För avancerade frågor, se [Kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![Fråga logg i Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
 Arkivera logg kolumner innehåller element som anges i följande tabell:
 
-Namn | Beskrivning
+Name | Beskrivning
 ------- | ------- 
 TimeGenerated | Händelse tid för logg
 Samling | Samling av logg händelsen. Tillåtna värden är: `Connection` `Authorization` och `Throttling`
@@ -162,7 +162,7 @@ Skillnaden mellan `ConnectionAborted` och `ConnectionEnded` är `ConnectionEnded
 
 Avbrotts orsakerna visas i följande tabell:
 
-Orsak | Beskrivning
+Anledning | Description
 ------- | ------- 
 Antalet anslutningar når gränsen | Antalet anslutningar når gränsen för den aktuella pris nivån. Överväg att skala upp tjänst enhet
 Program servern stängde anslutningen | App Server utlöser avbrottet. Det kan betraktas som ett förväntat avbrott

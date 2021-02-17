@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183727"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575989"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>DNS-poster för Azure-regioner som används av Azure Automation
 
@@ -21,7 +21,7 @@ Tjänsten [Azure Automation](../automation-intro.md) använder ett antal DNS-pos
 * Webhooks
 
 >[!NOTE]
->Linux Hybrid Runbook Worker registreringen Miss kommer med de nya posterna om den inte är version 1.6.10.2 eller högre. Du måste uppgradera till en nyare version av [Log Analytics-agenten för Linux](../../azure-monitor/platform/agent-linux.md) för att datorn ska kunna ta emot en uppdaterad version av arbets rollen och använda dessa nya poster. Befintliga datorer fortsätter att fungera utan problem.  
+>Linux Hybrid Runbook Worker registreringen Miss kommer med de nya posterna om den inte är version 1.6.10.2 eller högre. Du måste uppgradera till en nyare version av [Log Analytics-agenten för Linux](../../azure-monitor/agents/agent-linux.md) för att datorn ska kunna ta emot en uppdaterad version av arbets rollen och använda dessa nya poster. Befintliga datorer fortsätter att fungera utan problem.  
 
 ## <a name="dns-records-per-region"></a>DNS-poster per region
 
@@ -39,7 +39,7 @@ Följande tabell innehåller DNS-posten för varje region.
 | Indien, centrala |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | USA, östra 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Japan, östra |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Norra Europa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
+| Europa, norra |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | USA, södra centrala |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | Sydostasien |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Storbritannien, södra | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
@@ -64,7 +64,7 @@ För att stödja [privat länk](../../private-link/private-link-overview.md) i A
 | USA, östra 2 |`https://<accountId>.webhook.eus2.azure-automation.net`<br>`https://<accountId>.agentsvc.eus2.azure-automation.net`<br>`https://<accountId>.jrds.eus2.azure-automation.net` |
 | Kanada, centrala |`https://<accountId>.webhook.cc.azure-automation.net`<br>`https://<accountId>.agentsvc.cc.azure-automation.net`<br>`https://<accountId>.jrds.cc.azure-automation.net` |
 | Europa, västra |`https://<accountId>.webhook.we.azure-automation.net`<br>`https://<accountId>.agentsvc.we.azure-automation.net`<br>`https://<accountId>.jrds.we.azure-automation.net` |
-| Norra Europa |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
+| Europa, norra |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
 | Sydostasien |`https://<accountId>.webhook.sea.azure-automation.net`<br>`https://<accountId>.agentsvc.sea.azure-automation.net`<br>`https://<accountId>.jrds.sea.azure-automation.net` |
 | Asien, östra |`https://<accountId>.webhook.ea.azure-automation.net`<br>`https://<accountId>.agentsvc.ea.azure-automation.net`<br>`https://<accountId>.jrds.ea.azure-automation.net` |
 | Indien, centrala |`https://<accountId>.webhook.cid.azure-automation.net`<br>`https://<accountId>.agentsvc.cid.azure-automation.net`<br>`https://<accountId>.jrds.cid.azure-automation.net` |

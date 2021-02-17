@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380414"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576383"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Övervaka och hantera Azure Data Factory pipelines med hjälp av Azure Portal och PowerShell
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Den här artikeln beskriver hur du övervakar, hanterar och felsöker dina pipel
 > Hanterings programmet för övervakning & ger bättre stöd för övervakning och hantering av datapipeliner och fel sökning av eventuella problem. Mer information om hur du använder programmet finns i [övervaka och hantera data Factory pipelines med hjälp av appen övervakning och hantering](data-factory-monitor-manage-app.md). 
 
 > [!IMPORTANT]
-> Azure Data Factory version 1 använder nu den nya [Azure Monitor aviserings infrastrukturen](../../azure-monitor/platform/alerts-metric.md). Den gamla aviserings infrastrukturen är föråldrad. Därför fungerar inte dina befintliga aviseringar som kon figurer ATS för data fabriker av version 1. Dina befintliga aviseringar för v1-datafabriker migreras inte automatiskt. Du måste återskapa de här aviseringarna på den nya aviserings infrastrukturen. Logga in på Azure Portal och välj **övervaka** för att skapa nya aviseringar för mått (till exempel misslyckade körningar eller lyckade körningar) för dina data fabriker för version 1.
+> Azure Data Factory version 1 använder nu den nya [Azure Monitor aviserings infrastrukturen](../../azure-monitor/alerts/alerts-metric.md). Den gamla aviserings infrastrukturen är föråldrad. Därför fungerar inte dina befintliga aviseringar som kon figurer ATS för data fabriker av version 1. Dina befintliga aviseringar för v1-datafabriker migreras inte automatiskt. Du måste återskapa de här aviseringarna på den nya aviserings infrastrukturen. Logga in på Azure Portal och välj **övervaka** för att skapa nya aviseringar för mått (till exempel misslyckade körningar eller lyckade körningar) för dina data fabriker för version 1.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ Data uppsättnings sektorerna i data fabriken kan ha en av följande status:
 
 <table>
 <tr>
-    <th align="left">Stat</th><th align="left">Delstat</th><th align="left">Beskrivning</th>
+    <th align="left">Stat</th><th align="left">Delstat</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Väntar</td><td>ScheduleTime</td><td>Tiden har inte kommit för att sektorn ska kunna köras.</td>

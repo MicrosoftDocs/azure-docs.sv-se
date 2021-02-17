@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 1e6376cd8389a4f1f0defebce0a2c7b6d0f9deed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323273"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584038"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Konfigurera Azure Monitor för ditt python-program
 
@@ -33,7 +33,7 @@ python -m pip install opencensus-ext-azure
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure`Kommandot förutsätter att du har en `PATH` miljö variabel uppsättning för python-installationen. Om du inte har konfigurerat den här variabeln måste du ge fullständig katalog Sök väg till den plats där din python-körbara fil finns. Resultatet är ett kommando som detta: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-SDK använder tre Azure Monitor exportörer för att skicka olika typer av telemetri till Azure Monitor. De är spårning, mått och loggar. Mer information om dessa typer av telemetri finns i [Översikt över data plattformen](../platform/data-platform.md). Använd följande instruktioner för att skicka dessa typer av telemetri via de tre exportörerna.
+SDK använder tre Azure Monitor exportörer för att skicka olika typer av telemetri till Azure Monitor. De är spårning, mått och loggar. Mer information om dessa typer av telemetri finns i [Översikt över data plattformen](../data-platform.md). Använd följande instruktioner för att skicka dessa typer av telemetri via de tre exportörerna.
 
 ## <a name="telemetry-type-mappings"></a>Typ mappningar för telemetri
 
@@ -438,7 +438,7 @@ Som det visas finns det tre olika Azure Monitor exportörer som stöder openräk
 Varje exportör accepterar samma argument för konfiguration, som skickas genom konstruktörerna. Du kan se information om var och en:
 
 - `connection_string`: Anslutnings strängen som används för att ansluta till din Azure Monitor-resurs. Prioriteras `instrumentation_key` .
-- `enable_standard_metrics`: Används för `AzureMetricsExporter` . Signalerar export verktyget att skicka [prestanda räknar](../platform/app-insights-metrics.md#performance-counters) mått automatiskt till Azure Monitor. Standardvärdet är `True` .
+- `enable_standard_metrics`: Används för `AzureMetricsExporter` . Signalerar export verktyget att skicka [prestanda räknar](../essentials/app-insights-metrics.md#performance-counters) mått automatiskt till Azure Monitor. Standardvärdet är `True` .
 - `export_interval`: Används för att ange frekvensen i sekunder för exporten.
 - `instrumentation_key`: Instrumentation-nyckeln som används för att ansluta till din Azure Monitor-resurs.
 - `logging_sampling_rate`: Används för `AzureLogHandler` . Innehåller en samplings frekvens [0, 1.0] för att exportera loggar. Standardvärdet är 1,0.
@@ -458,7 +458,7 @@ I listan under **Active**:
 - För telemetri som skickas med Azure Monitor Metrics-exporten visas de skickade måtten under `customMetrics` .
 - För telemetri som skickas med Azure Monitor loggar exportör visas loggar under `traces` . Undantag visas under `exceptions` .
 
-Mer detaljerad information om hur du använder frågor och loggar finns [i loggar i Azure Monitor](../platform/data-platform-logs.md).
+Mer detaljerad information om hur du använder frågor och loggar finns [i loggar i Azure Monitor](../logs/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Läs mer om openräkning för python
 
@@ -473,11 +473,11 @@ Mer detaljerad information om hur du använder frågor och loggar finns [i logga
 * [Spåra inkommande begär Anden](./opencensus-python-dependency.md)
 * [Spåra pågående förfrågningar](./opencensus-python-request.md)
 * [Program karta](./app-map.md)
-* [Prestanda övervakning från slut punkt till slut punkt](../learn/tutorial-performance.md)
+* [Prestanda övervakning från slut punkt till slut punkt](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>Aviseringar
 
 * [Tillgänglighetstester](./monitor-web-app-availability.md): Skapa tester som kan användas för att kontrollera att webbplatsen visas på webben.
 * [Smart diagnostik](./proactive-diagnostics.md): De här testerna körs automatiskt, så du behöver inte göra något för att konfigurera dem. De berättar om din app har ett ovanligt antal misslyckade begäranden.
-* [Mått aviseringar](../platform/alerts-log.md): Ställ in aviseringar för att varna dig om ett mått överskrider ett tröskelvärde. Du kan ställa in dem för anpassade mätningar som du kodar i din app.
+* [Mått aviseringar](../alerts/alerts-log.md): Ställ in aviseringar för att varna dig om ett mått överskrider ett tröskelvärde. Du kan ställa in dem för anpassade mätningar som du kodar i din app.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632469"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575888"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Så här distribuerar du uppdateringar och granskar resultat
 
@@ -59,7 +59,7 @@ Utför följande steg för att schemalägga en ny uppdaterings distribution. Ber
     > [!NOTE]
     > Det här alternativet är inte tillgängligt om du har valt en virtuell Azure-dator eller en ARC-aktiverad server. Datorn är automatiskt avsedd för den schemalagda distributionen.
 
-6. I området **datorer att uppdatera** väljer du en sparad sökning, en importerad grupp eller väljer **datorer** från List menyn och väljer enskilda datorer. Med det här alternativet kan du se beredskap för Log Analytics agenten för varje dator. Om du vill veta mer om olika metoder för att skapa dator grupper i Azure Monitor loggar, se [dator grupper i Azure Monitor loggar](../../azure-monitor/platform/computer-groups.md). Du kan inkludera upp till högst 1000 datorer i en schemalagd uppdaterings distribution.
+6. I området **datorer att uppdatera** väljer du en sparad sökning, en importerad grupp eller väljer **datorer** från List menyn och väljer enskilda datorer. Med det här alternativet kan du se beredskap för Log Analytics agenten för varje dator. Om du vill veta mer om olika metoder för att skapa dator grupper i Azure Monitor loggar, se [dator grupper i Azure Monitor loggar](../../azure-monitor/logs/computer-groups.md). Du kan inkludera upp till högst 1000 datorer i en schemalagd uppdaterings distribution.
 
     > [!NOTE]
     > Det här alternativet är inte tillgängligt om du har valt en virtuell Azure-dator eller en ARC-aktiverad server. Datorn är automatiskt avsedd för den schemalagda distributionen.
