@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076144"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588380"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Händelse agg regering och insamling med Windows Azure-diagnostik
 > [!div class="op_single_selector"]
@@ -346,7 +346,7 @@ I "WadCfg" i Resource Manager-mallen lägger du till en "mottagare" genom att in
 
 I båda föregående kodfragment användes namnet "applicationInsights" för att beskriva mottagaren. Detta är inte ett krav och så länge namnet på mottagaren ingår i "Sinks", kan du ange namnet på valfri sträng.
 
-För närvarande visas loggar från klustret som **spårningar** i Application Insights logg visaren. Eftersom de flesta spårningar som kommer från plattformen är av nivå "information" kan du också överväga att ändra Sink-konfigurationen till att endast skicka loggar av typen "varning" eller "Error". Detta kan göras genom att lägga till "kanaler" i din mottagare, som visas i [den här artikeln](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+För närvarande visas loggar från klustret som **spårningar** i Application Insights logg visaren. Eftersom de flesta spårningar som kommer från plattformen är av nivå "information" kan du också överväga att ändra Sink-konfigurationen till att endast skicka loggar av typen "varning" eller "Error". Detta kan göras genom att lägga till "kanaler" i din mottagare, som visas i [den här artikeln](../azure-monitor/agents/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
 >Om du använder en felaktig Application Insights nyckel antingen i portalen eller i din Resource Manager-mall måste du manuellt ändra nyckeln och uppdatera klustret/omdistribuera det.

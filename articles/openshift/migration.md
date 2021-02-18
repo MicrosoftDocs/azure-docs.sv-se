@@ -3,16 +3,16 @@ title: Migrera från Azure Red Hat OpenShift 3.11 till Azure Red Hat OpenShift 4
 description: Migrera från Azure Red Hat OpenShift 3.11 till Azure Red Hat OpenShift 4
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migrering, Aro, OpenShift, Red Hat
-ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071043"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653286"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrera från Azure Red Hat OpenShift 3,11 till Azure Red Hat OpenShift 4
 
@@ -100,13 +100,13 @@ Information om hur du konfigurerar dessa lagrings typer finns i [Konfigurera bes
 
 Azure Red Hat OpenShift 4 kan bygga avbildningar från din käll kod, distribuera dem och hantera deras livs cykel. För att möjliggöra detta ger Azure Red Hat OpenShift 4 ett [internt, integrerat behållar avbildnings register](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) som kan distribueras i din Azure Red Hat OpenShift-miljö för att hantera avbildningar lokalt.
 
-Om du använder externa register som [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)-register eller ett [inaktiverat Red Hat-register](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), följer du stegen för att ange autentiseringsuppgifter för klustret så att klustret får åtkomst till databaserna.
+Om du använder externa register som [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)-register eller ett [inaktiverat Red Hat-register](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), följer du stegen för att ange autentiseringsuppgifter för klustret så att klustret får åtkomst till databaserna.
 
 ### <a name="monitoring"></a>Övervakning
 
 Azure Red Hat OpenShift innehåller en förkonfigurerad, förinstallerad och självuppdaterande övervaknings stack som baseras på Prometheus-projektet med öppen källkod och det större eko systemet. Den ger övervakning av kluster komponenter och innehåller en uppsättning aviseringar som omedelbart meddelar kluster administratören om eventuella problem och en uppsättning Grafana-instrumentpaneler. Kluster övervaknings stacken stöds bara för övervakning av Azure Red Hat OpenShift-kluster. Mer information finns i [kluster övervakning för Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
-Om du har använt [Azure Monitor för behållare för Azure Red Hat OpenShift 3,11](../azure-monitor/insights/container-insights-azure-redhat-setup.md)kan du också aktivera Azure Monitor för behållare för [Azure Red Hat OpenShift 4-kluster](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) och fortsätta använda samma Log Analytics-arbetsyta.
+Om du har använt [Azure Monitor för behållare för Azure Red Hat OpenShift 3,11](../azure-monitor/containers/container-insights-azure-redhat-setup.md)kan du också aktivera Azure Monitor för behållare för [Azure Red Hat OpenShift 4-kluster](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) och fortsätta använda samma Log Analytics-arbetsyta.
 
 ## <a name="move-your-dns-or-load-balancer-configuration-to-the-new-cluster"></a>Flytta din DNS-eller belastnings Utjämnings konfiguration till det nya klustret
 

@@ -3,12 +3,12 @@ title: Uppgradera Azure Service Fabric Cluster-versionen
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549076"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652062"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Uppgradera Azure Service Fabric Cluster-versionen
 
@@ -130,6 +130,7 @@ I följande tabell visas de versioner av Service Fabric och deras support slutda
 | 7.2.433.* | 7.0.470.* |Mindre än eller lika med version 4,2 |Aktuell version, så inget slutdatum |
 | 7.2.445.* | 7.0.470.* |Mindre än eller lika med version 4,2 |Aktuell version, så inget slutdatum |
 | 7.2.452.* | 7.0.470.* |Mindre än eller lika med version 4,2 |Aktuell version, så inget slutdatum |
+| 7.2.457.* | 7.0.470.* |Mindre än eller lika med version 4,2 |Aktuell version, så inget slutdatum |
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
@@ -209,6 +210,7 @@ I följande tabell visas versions namnen för Service Fabric och deras motsvaran
 | 7,1 CU10 | 7.1.510.9590 | NA |
 | 7,2 RTO | 7.2.413.9590 | NA |
 | 7,2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7,2 CU3 | 7.2.433.9590 | Inte tillämpligt|
+| 7,2 CU3 | 7.2.433.9590 | NA |
 | 7,2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7,2 CU5 | 7.2.452.9590 | 7.2.454.1 |
+| 7,2 CU6 | 7.2.457.9590 | 7.2.456.1 |

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445242"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653908"
 ---
 # <a name="managed-hsm-access-control"></a>Åtkomstkontroll i Managed HSM
 
@@ -60,10 +60,10 @@ Säkerhets objekt får åtkomst till planen genom slut punkter. Åtkomst kontrol
 
 I följande tabell visas slut punkterna för hanterings-och data planen.
 
-| Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Åtgärder | Åtkomstkontrollmekanismer |
+| Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Operations | Åtkomstkontrollmekanismer |
 | --- | --- | --- | --- |
 | Hanteringsplanet | **EAN**<br> management.azure.com:443<br> | Skapa, läsa, uppdatera, ta bort och flytta hanterade HSM: er<br>Ange hanterade HSM-Taggar | Azure RBAC |
-| Dataplanet | **EAN**<br> &lt;HSM-name &gt; . Vault.Azure.net:443<br> | **Nycklar** : dekryptera, kryptera,<br> Packa upp, radbryta, verifiera, signera, Hämta, lista, uppdatera, skapa, importera, ta bort, säkerhetskopiera, återställa, rensa<br/><br/> **Data Plans roll – hantering (hanterad HSM lokal RBAC)**_: lista roll definitioner, tilldela roller, ta bort roll tilldelningar <br/> <br/> , definiera anpassade roller_ * säkerhets kopiering/återställning **: säkerhets kopiering, återställning, <br/> <br/> kontrol lera status säkerhets kopiering/återställning drift** säkerhets domän * *: Hämta och ladda upp säkerhets domän | Hanterad HSM lokal RBAC |
+| Dataplanet | **EAN**<br> &lt;HSM-name &gt; . managedhsm.Azure.net:443<br> | **Nycklar**: dekryptera, kryptera,<br> Packa upp, radbryta, verifiera, signera, Hämta, lista, uppdatera, skapa, importera, ta bort, säkerhetskopiera, återställa, rensa<br/><br/> **Data Plans roll – hantering (hanterad HSM lokal RBAC)**_: lista roll definitioner, tilldela roller, ta bort roll tilldelningar <br/> <br/> , definiera anpassade roller_* säkerhets kopiering/återställning **: säkerhets kopiering, återställning, <br/> <br/> kontrol lera status säkerhets kopiering/återställning drift** säkerhets domän * *: Hämta och ladda upp säkerhets domän | Hanterad HSM lokal RBAC |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Hanterings plan och Azure RBAC
 
@@ -71,10 +71,10 @@ I hanterings planet använder du Azure RBAC för att auktorisera de åtgärder s
 
 Du skapar ett nyckel valv i en resurs grupp och hanterar åtkomst med hjälp av Azure Active Directory. Du beviljar användare eller grupper möjligheten att hantera nyckel valv i en resurs grupp. Du beviljar åtkomst på en bestämd omfattnings nivå genom att tilldela lämpliga Azure-roller. Om du vill bevilja åtkomst till en användare för att hantera nyckel valv tilldelar du en fördefinierad `key vault Contributor` roll till användaren vid en bestämd omfattning. Följande omfattnings nivåer kan tilldelas en Azure-roll:
 
-- **Hanterings grupp** : en Azure-roll som tilldelas på prenumerations nivån gäller för alla prenumerationer i hanterings gruppen.
-- **Prenumeration** : en Azure-roll som tilldelas på prenumerations nivån gäller för alla resurs grupper och resurser i prenumerationen.
-- **Resurs grupp** : en Azure-roll som tilldelas på resurs grupps nivå gäller för alla resurser i den resurs gruppen.
-- **Resurs** : en Azure-roll som är tilldelad en angiven resurs gäller resursen. I det här fallet är resursen ett särskilt nyckel valv.
+- **Hanterings grupp**: en Azure-roll som tilldelas på prenumerations nivån gäller för alla prenumerationer i hanterings gruppen.
+- **Prenumeration**: en Azure-roll som tilldelas på prenumerations nivån gäller för alla resurs grupper och resurser i prenumerationen.
+- **Resurs grupp**: en Azure-roll som tilldelas på resurs grupps nivå gäller för alla resurser i den resurs gruppen.
+- **Resurs**: en Azure-roll som är tilldelad en angiven resurs gäller resursen. I det här fallet är resursen ett särskilt nyckel valv.
 
 Det finns flera fördefinierade roller. Om en fördefinierad roll inte passar dina behov kan du definiera en egen roll. Mer information finns i [Azure RBAC: inbyggda roller](../../role-based-access-control/built-in-roles.md).
 
@@ -82,8 +82,8 @@ Det finns flera fördefinierade roller. Om en fördefinierad roll inte passar di
 
 Du beviljar en säkerhets objekts åtkomst för att köra särskilda nyckel åtgärder genom att tilldela en roll. För varje roll tilldelning måste du ange en roll och omfattning som tilldelningen gäller för. För hanterade HSM-lokala RBAC är två omfattningar tillgängliga.
 
-- **"/" eller "/Keys"** : område för HSM-nivå. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i rollen för alla objekt (nycklar) i den hanterade HSM.
-- **"/Keys/ &lt; Key-name &gt; "** : Key Level-omfattning. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i den här rollen för alla versioner av den angivna nyckeln.
+- **"/" eller "/Keys"**: område för HSM-nivå. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i rollen för alla objekt (nycklar) i den hanterade HSM.
+- **"/Keys/ &lt; Key-name &gt; "**: Key Level-omfattning. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i den här rollen för alla versioner av den angivna nyckeln.
 
 ## <a name="next-steps"></a>Nästa steg
 

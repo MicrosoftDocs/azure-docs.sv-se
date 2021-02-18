@@ -1,14 +1,14 @@
 ---
 title: Azure Service Bus Messaging – köer, ämnen och prenumerationer
 description: Den här artikeln innehåller en översikt över Azure Service Bus meddelande enheter (kö, ämnen och prenumerationer).
-ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.topic: conceptual
+ms.date: 02/16/2021
+ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791611"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652827"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-köer, -ämnen och -prenumerationer
 Azure Service Bus har stöd för en uppsättning molnbaserade, objektorienterade mellanprogram teknologier, inklusive Reliable Message Queuing och varaktiga meddelanden för publicering/prenumeration. Dessa Brokered Messaging-funktioner kan ses som fristående meddelande funktioner som stöder publicerings prenumeration, temporala kopplingar och belastnings Utjämnings scenarier med hjälp av Service Bus meddelande arbets belastning. Frikopplad kommunikation har många fördelar. Till exempel kan klienter och servrar ansluta efter behov och utföra sina åtgärder på ett asynkront sätt.
@@ -26,19 +26,16 @@ Att använda köer på mellan meddelande producenter och konsumenter är en lös
 Du kan skapa köer med hjälp av mallarna [Azure Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [CLI](service-bus-quickstart-cli.md)eller [Resource Manager](service-bus-resource-manager-namespace-queue.md). Skicka och ta emot meddelanden med hjälp av klienter skrivna i [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [python](service-bus-python-how-to-use-queues.md), [Java Script](service-bus-nodejs-how-to-use-queues.md), [php](service-bus-php-how-to-use-queues.md)och [ruby](service-bus-ruby-how-to-use-queues.md). 
 
 ### <a name="receive-modes"></a>Mottagnings lägen
-Du kan ange två olika lägen för Service Bus tar emot meddelanden: **ReceiveAndDelete** eller **PeekLock**. När Service Bus tar emot begäran från konsumenten i [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) -läge, markeras meddelandet som förbrukat och returneras till klient programmet. Det här läget är den enklaste modellen. Det fungerar bäst för scenarier där programmet kan tolerera att inte bearbeta ett meddelande om ett fel uppstår. För att förstå det här scenariot bör du överväga ett scenario där klienten utfärdar Receive-begäran och sedan kraschar innan den bearbetas. När Service Bus markerar meddelandet som förbrukat börjar programmet förbruka meddelanden vid omstart. Det kommer att sakna det meddelande som förbrukades före kraschen.
+Du kan ange två olika lägen för Service Bus ta emot meddelanden.
 
-I [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) -läget blir Receive-åtgärden två steg, vilket gör det möjligt att stödja program som inte kan tolerera meddelanden som saknas. När Service Bus tar emot begäran görs följande åtgärder:
+- **Ta emot och ta bort**. I det här läget, när Service Bus tar emot begäran från konsumenten, markerar det meddelandet som förbrukat och returnerar det till klient programmet. Det här läget är den enklaste modellen. Det fungerar bäst för scenarier där programmet kan tolerera att inte bearbeta ett meddelande om ett fel uppstår. För att förstå det här scenariot bör du överväga ett scenario där klienten utfärdar Receive-begäran och sedan kraschar innan den bearbetas. När Service Bus markerar meddelandet som förbrukat börjar programmet förbruka meddelanden vid omstart. Det kommer att sakna det meddelande som förbrukades före kraschen.
+- **Spetsigt lås**. I det här läget blir Receive-åtgärden två steg, vilket gör det möjligt att stödja program som inte kan tolerera meddelanden som saknas. 
+    1. Söker efter nästa meddelande som ska förbrukas, **låser** det för att hindra andra användare från att ta emot det och sedan returnera meddelandet till programmet. 
+    1. När programmet har slutfört bearbetningen av meddelandet begär det att Service Bus tjänsten slutför det andra steget i mottagnings processen. Sedan **markerar tjänsten meddelandet som förbrukat**. 
 
-1. Söker efter nästa meddelande som ska förbrukas.
-1. Låser den för att hindra andra användare från att ta emot den.
-1. Returnera sedan meddelandet till programmet. 
+        Om programmet inte kan bearbeta meddelandet av någon anledning kan det begära att Service Buss tjänsten ska **överge** meddelandet. Service Bus **låser upp** meddelandet och gör det tillgängligt att tas emot igen, antingen av samma konsument eller av en annan konkurrerande konsument. För det andra är det en **tids gräns** som är kopplad till låset. Om programmet inte kan bearbeta meddelandet innan tids gränsen för låsning går ut, kan Service Bus låsa upp meddelandet och göra det tillgängligt för att tas emot igen.
 
-När programmet har slutfört bearbetningen av meddelandet eller lagrar det tillförlitligt för framtida bearbetning slutförs det andra steget i Receive-processen genom att anropar [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) meddelandet. När Service Bus tar emot **CompleteAsync** -begäran markeras meddelandet som förbrukat.
-
-Om programmet inte kan bearbeta meddelandet av någon anledning kan det anropa [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) metoden i meddelandet (i stället för [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) ). Med den här metoden kan Service Bus låsa upp meddelandet och göra det tillgängligt att tas emot igen, antingen av samma konsument eller av en annan konkurrerande konsument. För det andra är det en tids gräns som är kopplad till låset. Om programmet inte kan bearbeta meddelandet innan tids gränsen för låsning går ut, kan Service Bus låsa upp meddelandet och göra det tillgängligt för att tas emot igen.
-
-Om programmet kraschar efter det att meddelandet har bearbetats, men innan det anropas [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) , skickar Service Bus meddelandet till programmet när det startas om. Den här processen kallas ofta minst **en gång för** bearbetning. Det vill säga varje meddelande bearbetas minst en gång. Men i vissa situationer kan samma meddelande levereras igen. Om ditt scenario inte kan tolerera dubbel bearbetning, lägger du till ytterligare logik i programmet för att identifiera dubbletter. Du kan åstadkomma det genom att använda meddelandets [meddelande egenskap,](/dotnet/api/microsoft.azure.servicebus.message.messageid) som är konstant över leverans försök. Den här funktionen kallas **exakt** för bearbetning.
+        Om programmet kraschar efter det att meddelandet har bearbetats, men innan det begär Service Buss tjänsten för att slutföra meddelandet, kan Service Bus leverera meddelandet till programmet när det startas om. Den här processen kallas ofta minst **en gång för** bearbetning. Det vill säga varje meddelande bearbetas minst en gång. Men i vissa situationer kan samma meddelande levereras igen. Om ditt scenario inte kan tolerera dubbel bearbetning, lägger du till ytterligare logik i programmet för att identifiera dubbletter. Mer information finns i [dubblettidentifiering](duplicate-detection.md). Den här funktionen kallas **exakt** för bearbetning.
 
 ## <a name="topics-and-subscriptions"></a>Ämnen och prenumerationer
 En kö tillåter bearbetning av ett meddelande av en enskild konsument. Ämnen och prenumerationer är i motsats till köer och innehåller en en-till-många-form av kommunikation i ett mönster för **publicering och prenumeration** . Det är användbart för att skala till ett stort antal mottagare. Varje publicerat meddelande görs tillgängligt för varje prenumeration som registrerats i ämnet. Publisher skickar ett meddelande till ett ämne och en eller flera prenumeranter får en kopia av meddelandet, beroende på filter regler som angetts för dessa prenumerationer. Prenumerationerna kan använda ytterligare filter för att begränsa vilka meddelanden som ska tas emot. Utgivare skickar meddelanden till ett ämne på samma sätt som de skickar meddelanden till en kö. Men konsumenterna tar inte emot meddelanden direkt från ämnet. Konsumenterna tar i stället emot meddelanden från prenumerationer av ämnet. En ämnes prenumeration liknar en virtuell kö som tar emot kopior av meddelanden som skickas till ämnet. Konsumenter tar emot meddelanden från en prenumeration på samma sätt som de tar emot meddelanden från en kö.
@@ -55,7 +52,7 @@ Ett fullständigt arbets exempel finns i TopicSubscriptionWithRuleOperationsSamp
 
 Mer information om möjliga filter värden finns i dokumentationen för klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) och [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) .
 
-## <a name="java-message-service-jms-20-entities-preview"></a>JMS (Java Message Service) 2,0 entiteter (för hands version)
+## <a name="java-message-service-jms-20-entities"></a>JMS-enheter (Java Message Service) 2,0
 Följande entiteter är tillgängliga via JMS (Java Message Service) 2,0 API.
 
   * Tillfälliga köer

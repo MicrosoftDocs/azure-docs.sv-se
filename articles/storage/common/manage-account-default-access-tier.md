@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166501"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653840"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Hantera standard åtkomst nivån för ett Azure Storage konto
 
-Varje Azure Storage konto har en standard åtkomst nivå, antingen frekvent, låg frekvent eller arkiverad. Du tilldelar åtkomst nivån när du skapar ett lagrings konto. Standard åtkomst nivån är aktiv.
+Varje Azure Storage konto har en standard åtkomst nivå, antingen frekvent eller låg frekvent. Du tilldelar åtkomst nivån när du skapar ett lagrings konto. Standard åtkomst nivån är aktiv.
 
 Du kan ändra standard konto nivån genom att ange attributet **åtkomst nivå** för lagrings kontot. Ändring av konto nivån gäller för alla objekt som lagras i kontot som inte har någon explicit nivå uppsättning. När konto nivån växlas från frekvent till låg frekvent tillkommer Skriv åtgärder (per 10 000) för alla blobbar utan en uppsättnings nivå i GPv2-konton och växling från låg frekvent till frekventt medför både Läs åtgärder (per 10 000) och data hämtning (per GB) avgifter för alla blobbar i Blob Storage-och GPv2-konton.
 

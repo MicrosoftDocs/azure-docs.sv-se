@@ -8,27 +8,27 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157695"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585479"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Gruppera flera åtgärder för att köra från en eller flera regler
 
 *Den här artikeln gäller för byggare och administratörer.*
 
-I Azure IoT Central skapar du regler för att köra åtgärder när ett villkor uppfylls. Regler baseras på telemetri eller händelser på enheten. Du kan till exempel meddela en operatör när temperaturen på en enhet överskrider ett tröskelvärde. Den här artikeln beskriver hur du använder [Azure Monitor](../../azure-monitor/overview.md) *Åtgärds grupper* för att koppla flera åtgärder till en IoT Central-regel. Du kan koppla en åtgärds grupp till flera regler. En [Åtgärds grupp](../../azure-monitor/platform/action-groups.md) är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration.
+I Azure IoT Central skapar du regler för att köra åtgärder när ett villkor uppfylls. Regler baseras på telemetri eller händelser på enheten. Du kan till exempel meddela en operatör när temperaturen på en enhet överskrider ett tröskelvärde. Den här artikeln beskriver hur du använder [Azure Monitor](../../azure-monitor/overview.md) *Åtgärds grupper* för att koppla flera åtgärder till en IoT Central-regel. Du kan koppla en åtgärds grupp till flera regler. En [Åtgärds grupp](../../azure-monitor/alerts/action-groups.md) är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett program som skapats med en standard pris plan
 - Ett Azure-konto och-prenumeration för att skapa och hantera Azure Monitor åtgärds grupper
 
 ## <a name="create-action-groups"></a>Skapa åtgärdsgrupper
 
-Du kan [skapa och hantera åtgärds grupper i Azure Portal](../../azure-monitor/platform/action-groups.md) eller med en [Azure Resource Manager mall](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Du kan [skapa och hantera åtgärds grupper i Azure Portal](../../azure-monitor/alerts/action-groups.md) eller med en [Azure Resource Manager mall](../../azure-monitor/alerts/action-groups-create-resource-manager-template.md).
 
 En åtgärds grupp kan:
 

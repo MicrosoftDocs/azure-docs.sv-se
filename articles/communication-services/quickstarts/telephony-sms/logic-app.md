@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801674"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652725"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Snabb start: skicka SMS-meddelanden i Azure Logic Apps med Azure Communication Services
 
-Genom att använda SMS-anslutaren för [Azure Communication Services](../../overview.md) och [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md)kan du skapa automatiserade arbets flöden eller *Logic Apps*som kan skicka SMS-meddelanden. Den här snabb starten visar hur du automatiskt skickar SMS som svar på en Utlös ande händelse, vilket är det första steget i ett Logic app-arbetsflöde. En Utlös ande händelse kan vara ett inkommande e-postmeddelande, ett upprepnings schema, ett [Azure Event Grid](../../../event-grid/overview.md) resurs händelse eller andra [utlösare som stöds av Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
+Genom att använda SMS-anslutaren för [Azure Communication Services](../../overview.md) och [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md)kan du skapa automatiserade arbets flöden eller *Logic Apps* som kan skicka SMS-meddelanden. Den här snabb starten visar hur du automatiskt skickar SMS som svar på en Utlös ande händelse, vilket är det första steget i ett Logic app-arbetsflöde. En Utlös ande händelse kan vara ett inkommande e-postmeddelande, ett upprepnings schema, ett [Azure Event Grid](../../../event-grid/overview.md) resurs händelse eller andra [utlösare som stöds av Azure Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 :::image type="content" source="./media/logic-app/azure-communication-services-connector.png" alt-text="Skärm bild som visar Azure Portal, som är öppen för Logic App Designer, och innehåller en exempel på en Logic-app som använder åtgärden skicka SMS för Azure Communication Services-anslutaren.":::
 
@@ -27,7 +27,7 @@ Genom att använda SMS-anslutaren för [Azure Communication Services](../../over
 > [!NOTE]
 > Att slutföra den här snabb starten innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration eller [skapa ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -39,15 +39,17 @@ Genom att använda SMS-anslutaren för [Azure Communication Services](../../over
 
 - Ett SMS-aktiverat telefonnummer eller [Skaffa ett telefonnummer](./get-phone-number.md).
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>Lägg till en SMS-åtgärd
 
 Om du vill lägga till åtgärden **skicka SMS** som ett nytt steg i arbets flödet med hjälp av SMS-anslutaren för Azure Communication Services, följer du dessa steg i [Azure Portal](https://portal.azure.com) med ditt Logic app-arbetsflöde öppet i Logic App Designer:
 
 1. I designern, under steget där du vill lägga till den nya åtgärden, väljer du **nytt steg**. Du kan också lägga till den nya åtgärden mellan stegen genom att flytta pekaren över pilen mellan dessa steg, välja plus tecknet ( **+** ) och välja **Lägg till en åtgärd**.
 
-1. I sökrutan **Välj en åtgärd** anger du `Azure Communication Services` . Välj **skicka SMS**i listan åtgärder.
+1. I sökrutan **Välj en åtgärd** anger du `Azure Communication Services` . Välj **skicka SMS** i listan åtgärder.
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Skärm bild som visar Azure Portal, som är öppen för Logic App Designer, och innehåller en exempel på en Logic-app som använder åtgärden skicka SMS för Azure Communication Services-anslutaren.":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Skärm bild som visar Logic App Designer och Azure Communication Services-anslutningen med åtgärden skicka SMS vald.":::
 
 1. Skapa nu en anslutning till kommunikations tjänst resursen.
 
@@ -57,7 +59,7 @@ Om du vill lägga till åtgärden **skicka SMS** som ett nytt steg i arbets flö
 
    1. Välj **Skapa**.
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Skärm bild som visar Azure Portal, som är öppen för Logic App Designer, och innehåller en exempel på en Logic-app som använder åtgärden skicka SMS för Azure Communication Services-anslutaren.":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Skärm bild som visar konfigurationen skicka SMS-åtgärd med exempel information.":::
 
 1. Ange följande information i åtgärden **skicka SMS** : 
 
@@ -67,9 +69,9 @@ Om du vill lägga till åtgärden **skicka SMS** som ett nytt steg i arbets flö
 
    Här är en **skicka SMS** -åtgärd med exempel information:
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Skärm bild som visar Azure Portal, som är öppen för Logic App Designer, och innehåller en exempel på en Logic-app som använder åtgärden skicka SMS för Azure Communication Services-anslutaren.":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Skärm bild som visar åtgärden skicka SMS med exempel information.":::
 
-1. När du är klar väljer du **Spara**i verktygsfältet designer.
+1. När du är klar väljer du **Spara** i verktygsfältet designer.
 
 Kör sedan din Logic app för testning.
 
@@ -93,5 +95,5 @@ I den här snabb starten har du lärt dig hur du skickar SMS-meddelanden med hj�
 Mer information om SMS i Azure Communication Services finns i följande artiklar:
 
 - [SMS-begrepp](../../concepts/telephony-sms/concepts.md)
-- [Planera din telefoni- och SMS-lösning](../../concepts/telephony-sms/plan-solution.md)
+- [Telefonnummer typer](../../concepts/telephony-sms/plan-solution.md)
 - [SMS SDK](../../concepts/telephony-sms/sdk-features.md)

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573050"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651994"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
 [Azure kognitiv sökning](search-what-is-azure-search.md) är en Azure-resurs som används för att lägga till en fullständig texts ökning i anpassade appar. Du kan enkelt integrera det med andra Azure-tjänster som tillhandahåller data eller ytterligare bearbetning, med appar på nätverks servrar eller med program vara som körs på andra moln plattformar.
 
-Du kan skapa Sök tjänsten med hjälp av [Azure Portal](https://portal.azure.com/), som beskrivs i den här artikeln. Du kan också använda [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search)eller en [mall för Azure Resource Manager-tjänst](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
+Du kan skapa Sök tjänsten med hjälp av [Azure Portal](https://portal.azure.com/), som beskrivs i den här artikeln. Du kan också använda [Azure PowerShell](search-manage-powershell.md), [Azure CLI](/cli/azure/search), [hanterings REST API](/rest/api/searchmanagement/)eller en [Azure Resource Manager tjänstmall](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
 [![Animerad GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -85,7 +85,7 @@ Kraven för tjänstnamn:
 
 Azure Kognitiv sökning är tillgängligt i de flesta regioner, enligt beskrivningen i de [produkter som är tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?products=search). Om du använder flera Azure-tjänster väljer du i allmänhet en region som också är värd för dina data eller program tjänster. Detta minimerar eller avvärderar bandbredds avgifter för utgående data (det kostar inget att debitera utgående data när tjänsterna är i samma region).
 
-+ [AI-anrikning](cognitive-search-concept-intro.md) kräver Cognitive Services vara i samma fysiska region som Azure kognitiv sökning. Det innebär att några regioner inte tillhandahåller båda funktionerna. Sidan [produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikerar dubbel tillgänglighet genom att visa två staplade kryss rutor. En otillgänglig kombination saknar en bock markering:
++ [AI-anrikning](cognitive-search-concept-intro.md) kräver Cognitive Services vara i samma fysiska region som Azure kognitiv sökning. Det finns bara några regioner som inte tillhandahåller båda. Sidan [produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikerar dubbel tillgänglighet genom att visa två staplade kryss rutor. En otillgänglig kombination saknar en bock markering:
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regional tillgänglighet" border="true":::
 

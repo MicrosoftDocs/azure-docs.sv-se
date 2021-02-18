@@ -3,12 +3,12 @@ title: Skapa och kör anpassade tillgänglighets test med Azure Functions
 description: Det här dokumentet beskriver hur du skapar en Azure-funktion med TrackAvailability () som körs regelbundet enligt konfigurationen i funktionen TimerTrigger. Resultatet av det här testet skickas till din Application Insights-resurs, där du kan fråga efter och Avisera om tillgänglighets resultat data. Med anpassade tester kan du skriva mer komplexa tillgänglighets test än vad som är möjligt med hjälp av Portal gränssnittet, övervaka en app inuti ditt Azure VNET, ändra slut punkts adressen eller skapa ett tillgänglighets test om det inte är tillgängligt i din region.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945659"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589943"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Skapa och kör anpassade tillgänglighets test med Azure Functions
 
@@ -175,7 +175,7 @@ Om du körde allting som det är (utan att lägga till affärs logik) ser du att
 
 ## <a name="query-in-logs-analytics"></a>Fråga i loggar (analys)
 
-Du kan använda loggar (analys) om du vill visa tillgänglighets resultat, beroenden och mer. Mer information om loggar finns i [Översikt över logg frågor](../log-query/log-query-overview.md).
+Du kan använda loggar (analys) om du vill visa tillgänglighets resultat, beroenden och mer. Mer information om loggar finns i [Översikt över logg frågor](../logs/log-query-overview.md).
 
 >[!div class="mx-imgBorder"]
 >![Tillgänglighets resultat](media/availability-azure-functions/availabilityresults.png)

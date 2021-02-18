@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488001"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580585"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Övervaka och finjustera Azure Database for PostgreSQL-storskalig (citus)
 
@@ -22,13 +22,13 @@ Genom att övervaka data om dina servrar kan du felsöka och optimera för din a
 
 Citus (storskalig) tillhandahåller mått för varje nod i en Server grupp. Måtten ger inblick i beteendet för stöd resurser. Varje mått genereras med en minuters frekvens och har upp till 30 dagars historik.
 
-Förutom att visa diagram över måtten kan du konfigurera aviseringar. Steg för steg-anvisningar finns i [så här konfigurerar du aviseringar](howto-hyperscale-alert-on-metric.md).  Andra uppgifter är att ställa in automatiserade åtgärder, köra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../azure-monitor/platform/data-platform.md).
+Förutom att visa diagram över måtten kan du konfigurera aviseringar. Steg för steg-anvisningar finns i [så här konfigurerar du aviseringar](howto-hyperscale-alert-on-metric.md).  Andra uppgifter är att ställa in automatiserade åtgärder, köra avancerad analys och lagrings historik. Mer information finns i [Översikt över Azure Metrics](../azure-monitor/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Lista över mått
 
 De här måtten är tillgängliga för citus-noder (storskalig):
 
-|Mått|Mått visnings namn|Enhet|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Description|
 |---|---|---|---|
 |active_connections|Aktiva anslutningar|Antal|Antalet aktiva anslutningar till servern.|
 |cpu_percent|CPU-procent|Procent|Procent andelen CPU som används.|

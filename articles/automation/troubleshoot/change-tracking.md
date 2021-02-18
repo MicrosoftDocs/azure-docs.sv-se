@@ -3,18 +3,63 @@ title: Felsöka Azure Automation Ändringsspårning-och inventerings problem
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure Automation Ändringsspårning-och inventerings funktionen.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c9f70d837b32c88d3c7a501bcb1a62aa006ebe41
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572469"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651173"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Felsöka problem med Ändringsspårning och inventering
 
 Den här artikeln beskriver hur du felsöker och löser Azure Automation Ändringsspårning-och inventerings problem. Allmän information om Ändringsspårning och inventering finns i [ändringsspårning och inventerings översikt](../change-tracking/overview.md).
+
+## <a name="general-errors"></a>Allmänna fel
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Scenario: datorn har redan registrerats till ett annat konto
+
+### <a name="issue"></a>Problem
+
+Du får följande fel meddelande:
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>Orsak
+
+Datorn har redan distribuerats till en annan arbets yta för Ändringsspårning.
+
+### <a name="resolution"></a>Lösning
+
+1. Kontrol lera att datorn rapporterar till rätt arbets yta. Information om hur du kontrollerar detta finns i [Verifiera agent anslutning till Azure Monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Kontrol lera också att arbets ytan är länkad till ditt Azure Automation-konto. Bekräfta genom att gå till ditt Automation-konto och välja **länkad arbets yta** under **relaterade resurser**.
+
+1. Se till att datorerna visas i Log Analytics arbets ytan som är länkad till ditt Automation-konto. Kör följande fråga i arbets ytan Log Analytics.
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   Om du inte ser datorn i frågeresultatet har den inte checkats in nyligen. Det finns förmodligen ett lokalt konfigurations problem. Du bör installera om Log Analytics-agenten.
+
+   Om din dator visas i frågeresultatet kontrollerar du under egenskapen Solutions att **changeTracking** visas. Detta verifierar att det är registrerat med Ändringsspårning och inventering. Om det inte är det kontrollerar du om det finns problem med omfattnings konfigurationen. Omfattnings konfigurationen avgör vilka datorer som har kon figurer ATS för Ändringsspårning och inventering. Information om hur du konfigurerar omfattnings konfigurationen för mål datorn finns i [aktivera ändringsspårning och inventering från ett Automation-konto](../change-tracking/enable-from-automation-account.md).
+
+   Kör den här frågan i din arbets yta.
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. Om du får ett ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota``` resultat har den kvot som definierats på din arbets yta nåtts, vilket har stoppat data från att sparas. På arbets ytan går du till **användning och beräknade kostnader**. Välj antingen en ny **pris nivå** som gör det möjligt att använda mer data, eller klicka på **dagligt tak** och ta bort höljet.
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="Användning och uppskattade kostnader." lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+Om problemet fortfarande är olöst följer du stegen i [distribuera en Windows-hybrid Runbook Worker](../automation-windows-hrw-install.md) för att installera om hybrid Worker för Windows. För Linux följer du stegen i  [distribuera ett Linux-hybrid Runbook Worker](../automation-linux-hrw-install.md).
 
 ## <a name="windows"></a>Windows
 
