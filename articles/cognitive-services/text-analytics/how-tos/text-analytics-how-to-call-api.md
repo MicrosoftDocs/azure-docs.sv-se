@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092136"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650736"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -37,7 +37,7 @@ Innan du använder API för textanalys måste du skapa en Azure-resurs med en ny
 
 ## <a name="change-your-pricing-tier"></a>Ändra din pris nivå 
 
-Om du har en befintlig Textanalys resurs med hjälp av pris nivån S0 till S4, kan du uppdatera den så att den använder standard [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)(S):
+Om du har en befintlig Textanalys resurs med hjälp av pris nivån S0 till S4, bör du uppdatera den för att använda [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)standard (S). Pris nivåerna S0 till S4 kommer att dras tillbaka. Så här uppdaterar du din resurs priser:
 
 1. Navigera till din Textanalys-resurs i [Azure Portal](https://portal.azure.com/).
 2. Välj **pris nivå** i den vänstra navigerings menyn. Den kommer att vara under **resurs hantering**. 

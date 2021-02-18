@@ -3,18 +3,18 @@ title: Förstå Azure Cost Management-data
 description: Den här artikeln hjälper dig att bättre förstå data som ingår i Azure Cost Management samt hur ofta de bearbetas, samlas in, visas och stängs.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
-ms.translationtype: HT
+ms.openlocfilehash: ad099fc7dfcee168186ef5229785933f4b1c5a90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964158"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650889"
 ---
 # <a name="understand-cost-management-data"></a>Förstå Cost Management-data
 
@@ -31,6 +31,7 @@ Följande information visar de [Microsoft Azure-erbjudanden](https://azure.micro
 | **Kategori**  | **Erbjudandets namn** | **Kvot-ID** | **Erbjudandets nummer** | **Data tillgängliga från** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Maj 2014<sup>1</sup> |
+| **Azure Government** | Azure Government – Betala per användning | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2 oktober 2018<sup>2</sup> |
 | **Enterprise-avtal (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Maj 2014<sup>1</sup> |
 | **Enterprise-avtal (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Maj 2014<sup>1</sup> |
 | **Microsoft-kundavtal** | Microsoft Azure Plan | EnterpriseAgreement_2014-09-01 | Ej tillämpligt | Mars 2019<sup>3</sup> |
@@ -51,7 +52,7 @@ Följande information visar de [Microsoft Azure-erbjudanden](https://azure.micro
 
 _<sup>**1**</sup> Data före maj 2014 finns i [Azure Enterprise-portalen](https://ea.azure.com)._
 
-_<sup>**2**</sup> Data före 2 oktober 2018 finns i [Azure-kontocenter](https://account.azure.com/subscriptions)._
+_<sup>**2**</sup> för data före den 2 oktober 2018 går du till [Azure-kontocenter](https://account.azure.com/subscriptions) för globala konton och [Azure-kontocenter gov](https://account.windowsazure.us/subscriptions) för Azures myndighets konton._
 
 _<sup>**3**</sup> Microsoft-kundavtal som påbörjades i mars 2019 och inte har historiska data före det._
 
@@ -62,7 +63,6 @@ Följande erbjudanden stöds inte ännu:
 | Kategori  | **Erbjudandets namn** | **Kvot-ID** | **Erbjudandets nummer** |
 | --- | --- | --- | --- |
 | **Azure Tyskland** | Azure Tyskland – Betala per användning | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Azure Government – Betala per användning | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Leverantör av molnlösningar (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Leverantör av molnlösningar (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Leverantör av molnlösningar (CSP)** | Azure Tyskland i CSP för Microsoft Cloud Tyskland   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -161,7 +161,7 @@ När kostnader och användningsdata blir tillgängliga i Cost Management + Billi
 
 ### <a name="rerated-data"></a>Omklassificerade data
 
-Oavsett om du använder Cost Management-API:er, Power BI eller Azure-portalen för att hämta data bör du förvänta dig att den aktuella faktureringsperiodens avgifter omklassificeras och därför ändras fram till att fakturan stängs.
+Oavsett om du använder Cost Management-API: er, Power BI eller Azure Portal för att hämta data, förväntas den aktuella fakturerings periodens kostnader för att få en omklassificering. Avgifterna kan ändras tills fakturan stängs.
 
 ## <a name="cost-rounding"></a>Kostnadsavrundning
 
@@ -175,7 +175,7 @@ Kostnaderna som visas i Cost Management avrundas. Kostnaderna som returneras av 
 
 ## <a name="historical-data-might-not-match-invoice"></a>Historiska data överensstämmer kanske inte med fakturan
 
-Historiska data för kreditbaserade och förbetalda erbjudanden överensstämmer kanske inte med din faktura. Vissa erbjudanden för Azure Betala per användning, MSDN och Visual Studio kan ha Azure-krediter och förskottsbetalningar som tillämpas på fakturan. Men historiska data som visas i Cost Management baseras endast på dina beräknade förbrukningsavgifter. Historiska data i Cost Management inkluderar inte betalningar och krediter. Därmed överensstämmer kanske inte historiska data som visas för följande erbjudanden exakt med din faktura.
+Historiska data för kreditbaserade och förbetalda erbjudanden överensstämmer kanske inte med din faktura. Vissa erbjudanden för Azure Betala per användning, MSDN och Visual Studio kan ha Azure-krediter och förskottsbetalningar som tillämpas på fakturan. Historiska data som visas i Cost Management baseras bara på dina beräknade förbruknings avgifter. Historiska data i Cost Management inkluderar inte betalningar och krediter. Historiska data som visas för följande erbjudanden överensstämmer kanske inte exakt med din faktura.
 
 - Azure for Students (MS-AZR-0170P)
 - Azure i Open (MS-AZR-0111P)

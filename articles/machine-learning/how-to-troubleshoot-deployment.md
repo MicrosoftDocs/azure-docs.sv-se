@@ -10,16 +10,24 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071671"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651688"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Felsöka distribution av fjärrmodell 
 
 Lär dig att felsöka och lösa eller kringgå vanliga fel som kan uppstå när du distribuerar en modell till Azure Container Instances (ACI) och Azure Kubernetes service (AKS) med Azure Machine Learning.
+
+> [!NOTE]
+> Om du distribuerar en modell till Azure Kubernetes service (AKS) rekommenderar vi att du aktiverar [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) för klustret. Detta hjälper dig att förstå övergripande kluster hälsa och Resursanvändning. Du kan också hitta följande resurser:
+>
+> * [Sök efter Resource Health händelser som påverkar ditt AKS-kluster](https://docs.microsoft.com/azure/aks/aks-resource-health)
+> * [Diagnostik för Azure Kubernetes service](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+>
+> Om du försöker distribuera en modell till ett ohälsosamt eller överbelastat kluster förväntas det uppstå problem. Kontakta AKS-supporten om du behöver hjälp med att felsöka problem med AKS-kluster.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -106,7 +114,7 @@ Om du ställer in loggnings nivån på fel sökning kan det leda till att ytterl
 
 ## <a name="function-fails-runinput_data"></a>Funktionen misslyckades: kör (input_data)
 
-Om tjänsten har distribuerats, men den kraschar när du skickar data till bedömnings slut punkten, kan du lägga till fel som fångar upp instruktionen i `run(input_data)` funktionen så att den returnerar ett detaljerat fel meddelande i stället. Till exempel:
+Om tjänsten har distribuerats, men den kraschar när du skickar data till bedömnings slut punkten, kan du lägga till fel som fångar upp instruktionen i `run(input_data)` funktionen så att den returnerar ett detaljerat fel meddelande i stället. Exempel:
 
 ```python
 def run(input_data):

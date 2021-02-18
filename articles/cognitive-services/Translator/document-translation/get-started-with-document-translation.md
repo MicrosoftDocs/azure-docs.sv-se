@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f6b68ea756253a30f006983c214e287c75637278
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650787"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
 
@@ -98,7 +98,7 @@ Du måste  [**skapa behållare**](/azure/storage/blobs/storage-quickstart-blobs-
 
 * Skapa ett nytt Node.js-projekt.
 * Installera Axios-biblioteket med `npm i axios` .
-* Kopiera klistrade in koden nedan i projektet.
+* Kopiera klistra in koden nedan i projektet.
 * Ange slut punkt, prenumerations nyckel och URL-värden för container.
 * Kör programmet.
 
@@ -108,7 +108,7 @@ Du måste  [**skapa behållare**](/azure/storage/blobs/storage-quickstart-blobs-
 * Kopiera och klistra in koden från ett av exemplen i ditt projekt.
 * Ange slut punkt, prenumerations nyckel och URL-värden för container.
 * Kör programmet. Exempel: `python translate.py`.
-  
+
 ### <a name="java"></a>[Java](#tab/java)
 
 * Skapa en arbets katalog för projektet. Exempel:
@@ -127,7 +127,7 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-* Java-källfiler (t _. ex. Sample. java_) Live i src/main/**Java**.
+**Obs**: java-källfiler (t _. ex. Sample. java_) Live i src/main/**Java**.
 
 * I rot katalogen (till exempel *exempel projekt*) initierar du ditt projekt med Gradle:
 
@@ -136,6 +136,7 @@ gradle init --type basic
 ```
 
 * Välj en **DSL** när du uppmanas till det och välj **Kotlin**.
+
 * Uppdatera `build.gradle.kts`  filen. Tänk på att du måste uppdatera `mainClassName` beroende på exemplet:
 
   ```java
@@ -155,7 +156,8 @@ gradle init --type basic
   ```
 
 * Skapa en Java-fil i **Java** -katalogen och kopiera/klistra in koden från det angivna exemplet. Glöm inte att lägga till din prenumerations nyckel och slut punkt.
-**Skapa och kör exemplet från rot katalogen**:
+
+* **Skapa och kör exemplet från rot katalogen**:
 
 ```powershell
 gradle build
@@ -172,7 +174,7 @@ gradle run
 * Bygg filen, till exempel: "gå till build-kod. go".
 * Kör filen, till exempel: "exempel kod".
 
----
+ ---
 
 ## <a name="make-document-translation-requests"></a>Gör dokument översättnings begär Anden
 

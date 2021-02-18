@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 98c1ce9367e9bf2aa1a381a772b3cbc73f96b519
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028768"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650957"
 ---
 # <a name="voice-and-video-concepts"></a>Begrepp inom röst- och videosamtal
 
@@ -59,5 +59,5 @@ Under förhands granskningen kan du använda grupp-ID: t för att ansluta till s
 
 Mer information finns i följande artiklar:
 - Bekanta dig med allmänna [samtals flöden](../call-flows.md)
-- [Planera din PSTN-lösning](../telephony-sms/plan-solution.md)
+- [Telefonnummer typer](../telephony-sms/plan-solution.md)
 - Lär dig mer om funktioner för att [anropa klient bibliotek](../voice-video-calling/calling-sdk-features.md)

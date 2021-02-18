@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: a22b253081a6695758a737a506620f2f56e90227
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 28dea7c28f47a9850486877571672cbd717e9f1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519702"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596778"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Data Science Virtual Machine-baserad team Analytics och AI-miljö 
 [Data science Virtual Machine](overview.md) (DSVM) innehåller en omfattande miljö på Azure-plattformen, med fördefinierad program vara för artificiell intelligens (AI) och data analys.
@@ -37,7 +37,7 @@ Viktiga Bygg stenar i en Enterprise team Analytics-miljö är:
 Den här serien ger vägledning och pekare för vart och ett av föregående avsnitt. Det beskriver inte alla överväganden och krav för att distribuera Dsvm i stora företags konfigurationer. Här följer några andra Azure-resurser som du kan använda när du implementerar DSVM-instanser i företaget:
 
 * [Nätverkssäkerhet](../../security/fundamentals/network-overview.md)
-* [Övervakning](../../azure-monitor/insights/monitor-vm-azure.md) och [hantering](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Övervakning](../../azure-monitor/vm/monitor-vm-azure.md) och [hantering](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Loggning och granskning](../../security/fundamentals/log-audit.md)
 * [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/overview.md)
 * [Princip inställning och tillämpning](../../governance/policy/overview.md)
