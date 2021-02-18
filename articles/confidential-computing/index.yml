@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: 4e35449f5dd34d366d0d6095830002690940e6ae
-  ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 02/08/2021
-  ms.locfileid: "99831475"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652640"
 landingContent:
 - title: Om konfidentiell databehandling i Azure
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Noder för konfidentiell databehandling i Azure Kubernetes Service (förhandsversion)
+    - text: Konfidentiella data behandlings noder på AKS (Azure Kubernetes-tjänsten)
       url: confidential-nodes-aks-overview.md
   - linkListType: concept
     links:
@@ -83,7 +83,7 @@ landingContent:
       url: confidential-nodes-aks-get-started.md
   - linkListType: sample
     links:
-    - text: Exempel på konfidentiella containrar (ej modifierade containrar i SGX)
+    - text: Exempel på konfidentiella behållare (ej modifierade behållare på SGX)
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: Exempel på enklavmedvetna containrar
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
@@ -105,7 +105,7 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Demo om konfidentiell sjukvård i AKS
+    - text: Konfidentiell sjukvårds demo på AKS
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: Attesterad ömsesidig TLS med Open Enclave i AKS
       url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md

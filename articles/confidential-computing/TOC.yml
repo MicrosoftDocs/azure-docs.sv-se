@@ -38,7 +38,7 @@
     - name: Containerberäkning
       expanded: true
       items:
-        - name: Konfidentiella containrar (lift & shift)
+        - name: Konfidentiella containrar
           items:
             - name: Komma igång
               href: confidential-containers.md
@@ -58,7 +58,7 @@
       href: how-to-fortanix-enclave-manager.md
 - name: Referenser
   items:
-    - name: Hjälpfunktionen SGX Quote
+    - name: Hjälp funktion för SGX-offerter
       href: confidential-nodes-out-of-proc-attestation.md
 - name: Resurser
   items:

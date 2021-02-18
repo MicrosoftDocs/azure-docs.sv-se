@@ -1,32 +1,39 @@
 ---
-title: Stöd för out-of-proc-attestering med Intel SGX offerter-hjälp DaemonSet på Azure
+title: Stöd för out-of-proc-attestering med Intel SGX offerter-hjälp Daemonset på Azure (för hands version)
 description: DaemonSet för att skapa offerten utanför SGX-programprocessen. I den här artikeln förklaras hur funktionen out-of-proc attestering tillhandahålls för konfidentiella arbets belastningar som körs i en behållare.
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89890740b06a399bad4678ff6ddd9be09c1cda0e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564165"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653337"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>Plattforms oberoende program varu hantering med SGX-offerter hjälp programmet
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Plattforms oberoende program varu hantering med SGX-offerter Helper daemon set (för hands version)
 
 [Enklaven-program](confidential-computing-enclaves.md) som utför fjärrattestering kräver en genererad offert. Den här OFFERTen innehåller kryptografiskt bevis på identiteten och programmets tillstånd, samt vilken miljö som enklaven körs på. För att skapa OFFERTen krävs betrodda program komponenter som ingår i Intels plattforms program varu komponenter (PSW).
 
 ## <a name="overview"></a>Översikt
  
 Intel stöder två attesterings lägen för att köra offert genereringen:
-- **i-proc** : är värd för de betrodda program varu komponenterna i enklaven program process
+- **i-proc**: är värd för de betrodda program varu komponenterna i enklaven program process
 
-- **utanför processen** : är värd för de betrodda program varu komponenterna utanför enklaven-programmet.
+- **utanför processen**: är värd för de betrodda program varu komponenterna utanför enklaven-programmet.
  
 SGX-program som skapats med Open enklaven SDK används som standard i proc-hälsoläge. SGX-baserade program tillåter process brist och kräver extra värd och visar de nödvändiga komponenterna, till exempel arkitektoniska enklaven Service Manager (AESM), utanför programmet.
 
-Användning av den här funktionen **rekommenderas** , eftersom den förbättrar drift tiden för dina enklaven-appar under Intel Platform updates eller DCAP driv rutins uppdateringar.
+Användning av den här funktionen **rekommenderas**, eftersom den förbättrar drift tiden för dina enklaven-appar under Intel Platform updates eller DCAP driv rutins uppdateringar.
+
+Om du vill aktivera den här funktionen i AKS-kluster ändrar du kommandot Add--Enable-sgxquotehelper till CLI när du aktiverar det konfidentiella beräknings tillägget. Detaljerade CLI-instruktioner finns [här](confidential-nodes-aks-get-started.md): 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Varför och vilka är fördelarna med out-of-proc?
 

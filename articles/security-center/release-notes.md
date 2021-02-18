@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379050"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634268"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -35,11 +35,29 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 Uppdateringar i februari inkluderar:
 
+- [Sidan nya säkerhets aviseringar i Azure Portal som publiceras för allmän tillgänglighet (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Direkt länk till princip från rekommendations informations sida](#direct-link-to-policy-from-recommendation-details-page)
 - [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 - [Förbättringar av till gångs inventerings Sidan](#asset-inventory-page-enhancements)
+
+
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Sidan nya säkerhets aviseringar i Azure Portal som publiceras för allmän tillgänglighet (GA)
+
+Azure Security Center sidan säkerhets aviseringar har design ATS om för att tillhandahålla:
+
+- **Förbättrad prioritering-upplevelse för aviseringar** – hjälper till att minska aviserings utmattningen och fokusera på de mest relevanta hoten. listan innehåller anpassningsbara filter och grupperingsalternativ.
+- **Mer information i aviserings listan** – till exempel MITRE att&ack taktiker.
+- **Knapp för att skapa exempel aviseringar** – för att utvärdera Azure Defender-funktioner och testa dina aviseringar. konfiguration (för SIEM-integrering, e-postaviseringar och automatisering av arbets flöden) kan du skapa exempel aviseringar från alla Azure Defender-planer.
+- **Anpassning med Azure Sentinel-incidenten** – för kunder som använder båda produkterna är det nu en enklare upplevelse och det är enkelt att lära sig något från den andra.
+- **Bättre prestanda** för listor med stora aviseringar.
+- **Tangent bords navigering** via aviserings listan.
+- **Aviseringar från Azure Resource Graph** – du kan fråga aviseringar i Azure Resource Graph, KUSTO-API för alla dina resurser. Detta är också användbart om du skapar dina egna aviserings instrument paneler. [Lär dig mer om Azure Resource Graph](../governance/resource-graph/index.yml).
+- **Funktionen Skapa exempel aviseringar** – för att skapa exempel aviseringar från den nya aviserings upplevelsen, se [generera exempel på Azure Defender-aviseringar](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center säkerhets aviserings listan":::
+
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)
 

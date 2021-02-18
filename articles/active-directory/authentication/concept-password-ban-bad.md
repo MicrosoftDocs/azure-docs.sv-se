@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743895"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652028"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminera Felaktiga lösen ord med Azure Active Directory lösen ords skydd
 
@@ -174,7 +174,7 @@ Se följande exempel:
 Nästa steg är att identifiera alla instanser av förbjudna lösen ord i användarens normaliserade nya lösen ord. Poäng tilldelas baserat på följande kriterier:
 
 1. Alla förbjudna lösen ord som hittas i en användares lösen ord får en punkt.
-1. Varje återstående unikt tecken får en punkt.
+1. Varje återstående tecken som inte ingår i ett förbjudet lösen ord får en punkt.
 1. Ett lösen ord måste vara minst fem (5) punkter som ska godkännas.
 
 I följande två exempel scenarier använder contoso Azure AD Password Protection och har "contoso" i sin egen lista över blockerade lösen ord. Vi antar också att "tomt" finns på den globala listan.

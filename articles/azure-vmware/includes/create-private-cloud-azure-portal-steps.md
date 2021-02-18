@@ -1,14 +1,14 @@
 ---
-title: Distribuera Azure VMware Solution
-description: Steg för att distribuera en Azure VMware-lösning med hjälp av Azure Portal.
+title: Skapa ett privat moln för Azure VMware-lösningen
+description: Steg för att skapa ett privat moln för Azure VMware-lösningar med hjälp av Azure Portal.
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578331"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653148"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -18,7 +18,7 @@ ms.locfileid: "91578331"
 
 1. Ange värden för fälten på fliken **grundläggande** . I följande tabell visas egenskaperna för fälten.
 
-   | Field   | Värde  |
+   | Fält   | Värde  |
    | ---| --- |
    | **Prenumeration** | Prenumerationen som du planerar att använda för distributionen.|
    | **Resursgrupp** | Resurs gruppen för dina privata moln resurser. |
@@ -40,4 +40,4 @@ ms.locfileid: "91578331"
 
 1. Kontrol lera att distributionen har slutförts. Navigera till resurs gruppen som du skapade och välj ditt privata moln.  Du ser statusen **slutförd** när distributionen har slutförts. 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Ange värden för fälten på fliken grundläggande." border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Kontrol lera att distributionen har slutförts." border="true":::

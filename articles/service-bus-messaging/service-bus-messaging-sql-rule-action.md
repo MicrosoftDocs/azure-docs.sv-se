@@ -3,12 +3,12 @@ title: Syntax för SQL-åtgärd för Azure Service Bus prenumerations regel | Mi
 description: Den här artikeln innehåller en referens för syntax för SQL-regel åtgärder. Åtgärderna skrivs i SQL-språkbaserad syntax som utförs mot ett meddelande.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742697"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652844"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Action-syntax för prenumerations regel
 
@@ -185,7 +185,7 @@ Booleska konstanter representeras av nyckelorden `TRUE` eller `FALSE` . Värdena
   
 Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unicode-tecken. Ett enkelt citat tecken som är inbäddat i en strängkonstant representeras som två enkla citat tecken.  
   
-## <a name="function"></a>funktioner  
+## <a name="function"></a>-funktion  
   
 ```  
 <function> :=  
@@ -199,7 +199,8 @@ Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unic
   
 `property(name)`Funktionen returnerar värdet för den egenskap som refereras till av `name` . `name`Värdet kan vara ett giltigt uttryck som returnerar ett sträng värde.  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Exempel
+Exempel finns i [Service Bus filter exempel](service-bus-filter-examples.md).
   
 ## <a name="considerations"></a>Överväganden
 

@@ -74,7 +74,7 @@
           href: concepts/telephony-sms/concepts.md
         - name: Telefoni koncept
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Telefonnummer typer i Azure Communication Services
+        - name: Telefonnummer typer
           href: concepts/telephony-sms/plan-solution.md
         - name: Infrastruktur krav för SIP-gränssnitt
           href: concepts/telephony-sms/sip-interface-infrastructure.md

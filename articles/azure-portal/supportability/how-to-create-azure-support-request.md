@@ -4,16 +4,16 @@ description: Kunder som behöver hjälp kan använda Azure Portal för att hitta
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745595"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652402"
 ---
 # <a name="create-an-azure-support-request"></a>Skapa en Azure-supportbegäran
 
-Med Azure kan du skapa och hantera support förfrågningar, även kallade support biljetter. Du kan skapa och hantera begär anden i [Azure Portal](https://portal.azure.com), som beskrivs i den här artikeln. Du kan också skapa och hantera förfrågningar program mässigt med hjälp av [Azures support biljett REST API](/rest/api/support).
+Med Azure kan du skapa och hantera support förfrågningar, även kallade support biljetter. Du kan skapa och hantera begär anden i [Azure Portal](https://portal.azure.com), som beskrivs i den här artikeln. Du kan också skapa och hantera begär Anden via programmering, med hjälp av [Azures support biljett REST API](/rest/api/support)eller med hjälp av [Azure CLI](/cli/azure/azure-cli-support-request).
 
 > [!NOTE]
 > Azure Portal-URL: en är unik för det Azure-moln där din organisation har distribuerats.
@@ -30,7 +30,7 @@ Support ärendets upplevelse fokuserar på tre huvudsakliga mål:
 
 Azure ger obegränsad support för prenumerations hantering, bland annat fakturering, kvot justeringar och konto överföringar. För teknisk support behöver du en Support plan. Mer information finns i [Jämföra supportplaner](https://azure.microsoft.com/support/plans).
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 Du kan få **Hjälp + Support** i Azure Portal. Den finns på Azure Portal-menyn, i den globala rubriken eller på resurs-menyn för en tjänst. Innan du kan skicka en förfrågan till en supportbegäran måste du ha rätt behörighet.
 
@@ -64,7 +64,7 @@ För att starta en support förfrågan i kontexten för resursen arbetar du för
 
 Vi vägleder dig genom några steg för att samla in information om ditt problem och hjälpa dig att lösa det. Varje steg beskrivs i följande avsnitt.
 
-### <a name="basics"></a>Grundläggande inställningar
+### <a name="basics"></a>Grunder
 
 Det första steget i support förfrågnings processen samlar in grundläggande information om ditt problem och ditt support avtal.
 

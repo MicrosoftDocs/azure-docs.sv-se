@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a28c47493f0f775c9e489daf3232371a65d4a7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016071"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581454"
 ---
 # <a name="post-deployment-tasks"></a>Uppgifter efter distribution
 
@@ -160,7 +160,7 @@ Det finns tre sätt att lägga till Log Analytics agent i OpenShift.
 - Aktivera Azure Monitor VM-tillägg på varje OpenShift-nod
 - Installera Log Analytics agenten som OpenShift daemon-uppsättning
 
-Läs fullständiga [instruktioner](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) om du vill ha mer information.
+Läs fullständiga [instruktioner](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) om du vill ha mer information.
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurera mått och loggning
 

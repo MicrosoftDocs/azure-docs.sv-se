@@ -2,22 +2,22 @@
 title: Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Använd GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
-ms.openlocfilehash: 3cadcdf80abd997ec10aeb9521680944d455898f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b30ecde0e128a955967638828dcb7bec008205ea
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560168"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652487"
 ---
 # <a name="deploy-configurations-using-gitops-on-an-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med GitOps på ett Arc-aktiverat Kubernetes-kluster (för hands version)
 
-Den här artikeln visar hur du använder konfigurationer i ett Azure Arc-aktiverat Kubernetes-kluster. En konceptuell översikt över samma finns [här](./conceptual-configurations.md).
+Den här artikeln visar hur du använder konfigurationer i ett Azure Arc-aktiverat Kubernetes-kluster. Ett begrepp som tar hänsyn till den här processen finns i [artikeln konfigurationer och GitOps-Azure Arc-aktiverade Kubernetes](./conceptual-configurations.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -85,22 +85,22 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
   ```
 
-#### <a name="use-a-public-git-repo"></a>Använda en offentlig git-lagrings platsen
+#### <a name="use-a-public-git-repository"></a>Använd en offentlig git-lagringsplats
 
 | Parameter | Format |
 | ------------- | ------------- |
 | `--repository-url` | http [s]://Server/repo [. git] eller git://Server/repo [. git]
 
-#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Använd en privat git-lagrings platsen med SSH-och flöden skapade nycklar
+#### <a name="use-a-private-git-repository-with-ssh-and-flux-created-keys"></a>Använd en privat git-lagringsplats med SSH-och flöden-skapade nycklar
 
 | Parameter | Format | Kommentarer
 | ------------- | ------------- | ------------- |
 | `--repository-url` | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@`
 
 > [!NOTE]
-> Den offentliga nyckeln som genereras av flödes gruppen måste läggas till i användar kontot i git-tjänstprovidern. Om nyckeln läggs till i lagrings platsen i stället för användar kontot använder du `git@` i stället för `user@` i URL: en. Gå till avsnittet [tillämpa konfiguration från en privat git-lagringsplats](#apply-configuration-from-a-private-git-repository) för mer information.
+> Den offentliga nyckeln som genereras av flödes gruppen måste läggas till i användar kontot i git-tjänstprovidern. Om nyckeln läggs till i lagrings platsen i stället för användar kontot använder `git@` du i stället för `user@` i URL: en. Gå till avsnittet [tillämpa konfiguration från en privat git-lagringsplats](#apply-configuration-from-a-private-git-repository) för mer information.
 
-#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Använd en privat git-lagrings platsen med SSH-och användarspecifika nycklar
+#### <a name="use-a-private-git-repository-with-ssh-and-user-provided-keys"></a>Använd en privat git-lagringsplats med SSH-och användarspecifika nycklar
 
 | Parameter | Format | Kommentarer |
 | ------------- | ------------- | ------------- |
@@ -120,9 +120,9 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | `--ssh-known-hosts-file` | fullständig sökväg till lokal fil | Tillhandahålla kända värdar innehåll i en lokal fil |
 
 > [!NOTE]
-> För att kunna autentisera git-lagrings platsen innan du upprättar SSH-anslutningen, har flödes operatorn en lista över vanliga git-värdar i den kända värd filen. Om du använder en ovanlig git-lagrings platsen eller en egen git-värd kan du behöva ange värd nyckeln för att se till att flödet kan identifiera din lagrings platsen. Du kan ange known_hosts innehåll direkt eller i en fil. Använd [specifikationerna för known_hosts innehålls format](https://aka.ms/KnownHostsFormat) tillsammans med ett av de scenarier för SSH-nyckeln som beskrivs ovan när du tillhandahåller ditt eget innehåll.
+> För att kunna autentisera git-lagringsplatsen innan du upprättar SSH-anslutningen, har flödes operatorn en lista över vanliga git-värdar i den kända värd filen. Om du använder en ovanlig git-lagringsplats eller en egen git-värd kan du behöva ange värd nyckeln för att se till att flödet kan identifiera din lagrings platsen. Du kan ange known_hosts innehåll direkt eller i en fil. Använd [specifikationerna för known_hosts innehålls format](https://aka.ms/KnownHostsFormat) tillsammans med ett av de scenarier för SSH-nyckeln som beskrivs ovan när du tillhandahåller ditt eget innehåll.
 
-#### <a name="use-a-private-git-repo-with-https"></a>Använda en privat git-lagrings platsen med HTTPS
+#### <a name="use-a-private-git-repository-with-https"></a>Använd en privat git-lagringsplats med HTTPS
 
 | Parameter | Format | Kommentarer |
 | ------------- | ------------- | ------------- |
@@ -133,7 +133,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > HTTPS Helm release Private auth stöds bara med Helm-operatörs diagram version 1.2.0 + (standard).
 > HTTPS Helm release Private auth stöds inte för närvarande för Azure Kubernetes Services-hanterade kluster.
-> Om du behöver flöden för att komma åt git-lagrings platsen via din proxy måste du uppdatera Azure Arc-agenterna med proxyinställningarna. Mer information finns i [ansluta med en utgående proxyserver](./connect-cluster.md#connect-using-an-outbound-proxy-server).
+> Om du behöver flöden för att få åtkomst till git-lagringsplatsen via proxyservern måste du uppdatera Azure Arc-agenterna med proxyinställningarna. Mer information finns i [ansluta med en utgående proxyserver](./connect-cluster.md#connect-using-an-outbound-proxy-server).
 
 #### <a name="additional-parameters"></a>Ytterligare parametrar
 
@@ -151,17 +151,17 @@ Anpassa konfigurationen med följande valfria parametrar:
 
 | Alternativ | Beskrivning |
 | ------------- | ------------- |
-| `--git-branch`  | Gren av Git-lagrings platsen som ska användas för Kubernetes-manifest. Standardvärdet är Master. Nyare databaser har rot grenen med namnet `main` , i vilket fall måste du ange `--git-branch=main` . |
-| `--git-path`  | Relativ sökväg i git-lagrings platsen för flöde för att hitta Kubernetes-manifest. |
-| `--git-readonly` | Git-lagrings platsen anses vara skrivskyddad; Flödet försöker inte skriva till den. |
+| `--git-branch`  | Gren av Git-lagringsplatsen som ska användas för Kubernetes-manifest. Standardvärdet är Master. Nyare databaser har rot grenen med namnet `main` , i vilket fall måste du ange `--git-branch=main` . |
+| `--git-path`  | Relativ sökväg i git-lagringsplatsen för flöde för att hitta Kubernetes-manifest. |
+| `--git-readonly` | Git-lagringsplatsen kommer att anses vara skrivskyddad; Flödet försöker inte skriva till den. |
 | `--manifest-generation`  | Om aktive rad kommer flödet att leta efter. flöde. yaml och köra Kustomize eller andra manifest generatorer. |
-| `--git-poll-interval`  | Den period då git-lagrings platsen ska avsökas för nya incheckningar. Standardvärdet är `5m` (5 minuter). |
+| `--git-poll-interval`  | Den period då git-lagringsplatsen ska avsökas för nya incheckningar. Standardvärdet är `5m` (5 minuter). |
 | `--sync-garbage-collection`  | Om det här alternativet är aktiverat tas resurser som den skapade bort, men de finns inte längre i git. |
 | `--git-label`  | Etikett för att hålla koll på synkroniseringens förlopp. Används för att tagga git-grenen.  Standardvärdet är `flux-sync`. |
 | `--git-user`  | Användar namn för git-incheckning. |
 | `--git-email`  | E-postmeddelande som ska användas för git-incheckning. 
 
-Om du inte vill att flödet ska skriva till lagrings platsen och `--git-user` `--git-email` inte har angetts, `--git-readonly` ställs det in automatiskt.
+Om du inte vill att flödet ska skrivas till lagrings platsen `--git-user` `--git-email` , eller inte har angetts, `--git-readonly` anges automatiskt.
 
 Mer information finns i [flödes dokumentationen](https://aka.ms/FluxcdReadme).
 
@@ -237,7 +237,7 @@ När etablerings processen utförs går det `sourceControlConfiguration` igenom 
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Tillämpa konfigurationen från en privat git-lagringsplats
 
-Om du använder en privat git-lagrings platsen måste du konfigurera den offentliga SSH-nyckeln i din lagrings platsen. Den offentliga SSH-nyckeln är antingen den som det flödet genererar eller den som du anger. Du kan konfigurera den offentliga nyckeln antingen på den angivna git-lagrings platsen eller på git-användaren som har åtkomst till lagrings platsen. 
+Om du använder en privat git-lagringsplats måste du konfigurera den offentliga SSH-nyckeln i din lagrings plats. Den offentliga SSH-nyckeln är antingen den som det flödet genererar eller den som du anger. Du kan konfigurera den offentliga nyckeln antingen på den angivna git-lagringsplatsen eller på git-användaren som har åtkomst till lagrings platsen. 
 
 ### <a name="get-your-own-public-key"></a>Hämta din egen offentliga nyckel
 
@@ -266,7 +266,7 @@ Följande är användbart om flödet genererar nycklarna.
 
 Välj ett av följande alternativ:
 
-* Alternativ 1: Lägg till den offentliga nyckeln till ditt användar konto (gäller för alla databaser i ditt konto):  
+* Alternativ 1: Lägg till den offentliga nyckeln till ditt användar konto (gäller alla databaser i ditt konto):  
     1. Öppna GitHub och klicka på din profil ikon i det övre högra hörnet på sidan.
     2. Klicka på **Inställningar**.
     3. Klicka på **SSH-och GPG-nycklar**.
@@ -275,8 +275,8 @@ Välj ett av följande alternativ:
     6. Klistra in den offentliga nyckeln utan omgivande citat tecken.
     7. Klicka på **Lägg till SSH-nyckel**.
 
-* Alternativ 2: Lägg till den offentliga nyckeln som en distributions nyckel till git-lagrings platsen (gäller endast denna lagrings platsen):  
-    1. Öppna GitHub och navigera till din lagrings platsen.
+* Alternativ 2: Lägg till den offentliga nyckeln som en distributions nyckel till git-lagringsplatsen (gäller endast den här lagrings platsen):  
+    1. Öppna GitHub och navigera till din lagrings plats.
     1. Klicka på **Inställningar**.
     1. Klicka på **distribuera nycklar**.
     1. Klicka på **Lägg till distributions nyckel**.
@@ -349,7 +349,7 @@ Ta bort en `sourceControlConfiguration` med hjälp av Azure CLI eller Azure Port
 
 > [!NOTE]
 > När en `sourceControlConfiguration` with `namespace` -omfattning har skapats kan användare med `edit` roll bindning i namn området distribuera arbets belastningar i namn området. När detta `sourceControlConfiguration` med namn områdes omfånget tas bort lämnas namn området kvar och tas inte bort för att undvika att de andra arbets belastningarna bryts. Om det behövs kan du ta bort det här namn området manuellt med `kubectl` .  
-> Eventuella ändringar i klustret som resulterade i distributioner från det spårade git-lagrings platsen tas inte bort när tas `sourceControlConfiguration` bort.
+> Eventuella ändringar i klustret som resulterade i distributioner från den spårade git-lagringsplatsen tas inte bort när tas `sourceControlConfiguration` bort.
 
 ```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters

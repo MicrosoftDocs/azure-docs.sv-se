@@ -5,22 +5,22 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706799"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652963"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Använd Azure import/export-tjänsten för att importera data till Azure Blob Storage
 
 Den här artikeln innehåller stegvisa instruktioner för hur du använder Azure import/export-tjänsten för att importera stora mängder data på ett säkert sätt till Azure Blob Storage. För att kunna importera data till Azure-blobbar kräver tjänsten att du levererar krypterade disk enheter som innehåller dina data till ett Azure-datacenter.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du skapar ett import jobb för att överföra data till Azure Blob Storage bör du noggrant granska och slutföra följande lista över nödvändiga komponenter för den här tjänsten.
 Du måste:
@@ -34,7 +34,7 @@ Du måste:
 * Aktivera BitLocker på Windows-systemet. Se [hur du aktiverar BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 * [Ladda ned den senaste WAImportExport-versionen 1](https://www.microsoft.com/download/details.aspx?id=42659) på Windows-systemet. Den senaste versionen av verktyget har säkerhets uppdateringar för att tillåta en extern skydds funktion för BitLocker-nyckeln och den uppdaterade funktionen för upplåsnings läge.
 
-  * Zippa upp till standardmappen `waimportexportv1` . Ett exempel är `C:\WaImportExportV1`.
+  * Zippa upp till standardmappen `waimportexportv1` . Till exempel `C:\WaImportExportV1`.
 * Ha ett FedEx-/DHL-konto. Om du vill använda en annan operatör än FedEx/DHL kontaktar du Azure Data Box drifts team på `adbops@microsoft.com` .
   * Kontot måste vara giltigt, måste ha ett saldo och måste ha funktioner för retur leverans.
   * Generera ett spårnings nummer för export jobbet.
@@ -84,7 +84,7 @@ Utför följande steg för att förbereda enheterna.
     |/ID     |Sessions-ID. Använd ett unikt sessions nummer för varje instans av kommandot.      |
     |/t:     |Enhets beteckningen för den disk som ska levereras. Till exempel enhet `D` .         |
     |/bk:     |Enhetens BitLocker-nyckel. Det numeriska lösen ordet från utdata från `manage-bde -protectors -get D:`      |
-    |/srcdir:     |Enhets beteckningen för den disk som ska levereras följt av `:\` . Ett exempel är `D:\`.         |
+    |/srcdir:     |Enhets beteckningen för den disk som ska levereras följt av `:\` . Till exempel `D:\`.         |
     |/dstdir:     |Namnet på mål behållaren i Azure Storage.         |
     |/blobtype:     |Det här alternativet anger vilken typ av blobbar som du vill importera data till. För block-blobbar är detta `BlockBlob` och för sid blobbar `PageBlob` .         |
     |/skipwrite:     |Alternativet som anger att det inte finns några nya data som behöver kopieras och befintliga data på disken måste förberedas.          |
@@ -101,13 +101,13 @@ Utför följande steg för att förbereda enheterna.
 Utför följande steg för att skapa ett import jobb i Azure Portal.
 
 1. Logga in på https://portal.azure.com/ .
-2. Gå till **alla tjänster > lagring > import/export-jobb**.
+2. Sök efter **import/export-jobb**.
 
-    ![Gå till import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Sök på import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klicka på **skapa import/export-jobb**.
+3. Välj **+ Ny**.
 
-    ![Klicka på Skapa import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Välj nytt om du vill skapa en ny ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gör så här i **Grundläggande**:
 
@@ -118,7 +118,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
    * Välj en prenumeration.
    * Ange eller Välj en resurs grupp.
 
-     ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 5. I **jobb information**:
 
@@ -126,7 +126,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
    * Välj det mål lagrings konto där data ska finnas.
    * DropOff-platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
 
-   ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 6. I **information om retur leverans**:
 
@@ -137,14 +137,14 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
        > [!TIP]
        > Ange en grupp-e-postadress i stället för att ange en e-postadress för en enskild användare. Detta säkerställer att du får meddelanden även om en administratör lämnar.
 
-     ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 7. I **sammanfattningen**:
 
    * Granska jobb informationen som visas i sammanfattningen. Anteckna jobb namnet och leverans adressen till Azure-datacenter för att leverera diskar tillbaka till Azure. Den här informationen används senare på frakt etiketten.
    * Skapa import jobbet genom att klicka på **OK** .
 
-     ![Skapa import jobb – steg 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Skapa import jobb – steg 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

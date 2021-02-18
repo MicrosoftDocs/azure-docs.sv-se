@@ -1,37 +1,91 @@
 ---
 title: Utdata i mallar
-description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager-mall (ARM-mall).
+description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/17/2021
+ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964022"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653806"
 ---
 # <a name="outputs-in-arm-templates"></a>Utdata i ARM-mallar
 
-I den här artikeln beskrivs hur du definierar utdataparametrar i Azure Resource Manager mall (ARM-mall). Du använder `outputs` när du behöver returnera värden från de distribuerade resurserna.
+I den här artikeln beskrivs hur du definierar utdataparametrar i din Azure Resource Manager-mall (ARM-mall) och bicep-fil. Du använder utdata när du behöver returnera värden från de distribuerade resurserna.
 
 Formatet för varje utmatnings värde måste matcha en av [data typerna](template-syntax.md#data-types).
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-output-values"></a>Definiera värden för utdata
 
-I följande exempel visas hur du returnerar resurs-ID för en offentlig IP-adress:
+I följande exempel visas hur du returnerar en egenskap från en distribuerad resurs.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+För JSON lägger du till `outputs` avsnittet i mallen. Värdet för utdata hämtar det fullständigt kvalificerade domän namnet för en offentlig IP-adress.
 
 ```json
 "outputs": {
-  "resourceID": {
-    "type": "string",
-    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-  }
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
 }
 ```
 
+Om du behöver mata ut en egenskap som har ett bindestreck i namnet använder du hakparenteser runt namnet i stället för punkt notation. Använd till exempel  `['property-name']` i stället för `.property-name` .
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "user": {
+            "user-name": "Test Person"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "nameResult": {
+            "type": "string",
+            "value": "[variables('user')['user-name']]"
+        }
+    }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+För bicep använder du `output` nyckelordet.
+
+I följande exempel `publicIP` är det symboliska namnet för en offentlig IP-adress som distribuerats i bicep-filen. Värdet för utdata hämtar det fullständigt kvalificerade domän namnet för den offentliga IP-adressen.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+Om du behöver mata ut en egenskap som har ett bindestreck i namnet använder du hakparenteser runt namnet i stället för punkt notation. Använd till exempel  `['property-name']` i stället för `.property-name` .
+
+```bicep
+var user = {
+  'user-name': 'Test Person'
+}
+
+output stringOutput string = user['user-name']
+```
+
+---
+
 ## <a name="conditional-output"></a>Villkorliga utdata
 
-I `outputs` avsnittet kan du villkorligt returnera ett värde. Normalt använder du `condition` i `outputs` när du har [villkorligt distribuerat](conditional-resource-deployment.md) en resurs. I följande exempel visas hur du villkorligt returnerar resurs-ID: t för en offentlig IP-adress baserat på om en ny har distribuerats:
+Du kan villkorligt returnera ett värde. Normalt använder du villkorliga utdata när du har [villkorligt distribuerat](conditional-resource-deployment.md) en resurs. I följande exempel visas hur du villkorligt returnerar resurs-ID: t för en offentlig IP-adress baserat på om en ny har distribuerats:
+
+# <a name="json"></a>[JSON](#tab/json)
+
+I JSON lägger du till `condition` elementet för att definiera om utdata returneras.
 
 ```json
 "outputs": {
@@ -43,11 +97,44 @@ I `outputs` avsnittet kan du villkorligt returnera ett värde. Normalt använder
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Villkorliga utdata är för närvarande inte tillgängliga för bicep.
+
+Du kan dock använda `?` operatorn för att returnera ett av två värden beroende på ett villkor.
+
+```bicep
+param deployStorage bool = true
+param storageName string
+param location string = resourceGroup().location
+
+resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (deployStorage) {
+  name: storageName
+  location: location
+  kind: 'StorageV2'
+  sku:{
+    name:'Standard_LRS'
+    tier: 'Standard'
+  }
+  properties: {
+    accessTier: 'Hot'
+  }
+}
+
+output endpoint string = deployStorage ? sa.properties.primaryEndpoints.blob : ''
+```
+
+---
+
 Ett enkelt exempel på villkorliga utdata finns i [mallen för villkorsstyrda utdata](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamiskt antal utdata
 
-I vissa fall vet du inte hur många instanser av ett värde du behöver returnera när du skapar mallen. Du kan returnera ett variabelt antal värden med hjälp av- `copy` elementet.
+I vissa fall vet du inte hur många instanser av ett värde du behöver returnera när du skapar mallen. Du kan returnera ett variabelt antal värden med iterativa utdata.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+I JSON lägger du till `copy` elementet för att iterera utdata.
 
 ```json
 "outputs": {
@@ -61,17 +148,21 @@ I vissa fall vet du inte hur många instanser av ett värde du behöver returner
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Iterativa utdata är för närvarande inte tillgängliga för bicep.
+
+---
+
 Mer information finns i [utdata iteration i arm-mallar](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Länkade mallar
 
-Om du vill hämta värdet för utdata från en länkad mall använder du funktionen [Reference](template-functions-resource.md#reference) i den överordnade mallen. Syntaxen i den överordnade mallen är:
+I JSON-mallar kan du distribuera relaterade mallar med hjälp av [länkade mallar](linked-templates.md). Om du vill hämta värdet för utdata från en länkad mall använder du funktionen [Reference](template-functions-resource.md#reference) i den överordnade mallen. Syntaxen i den överordnade mallen är:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
-
-När du hämtar en output-egenskap från en länkad mall får egenskaps namnet inte innehålla något bindestreck.
 
 I följande exempel visas hur du ställer in IP-adressen på en belastningsutjämnare genom att hämta ett värde från en länkad mall.
 
@@ -81,7 +172,49 @@ I följande exempel visas hur du ställer in IP-adressen på en belastningsutjä
 }
 ```
 
+Om egenskaps namnet har ett bindestreck, använder du hakparenteser runt namnet i stället för punkt notation.
+
+```json
+"publicIPAddress": {
+  "id": "[reference('linkedTemplate').outputs['resource-ID'].value]"
+}
+```
+
 Du kan inte använda `reference` funktionen i avsnittet utdata i en [kapslad mall](linked-templates.md#nested-template). Om du vill returnera värdena för en distribuerad resurs i en kapslad mall konverterar du den kapslade mallen till en länkad mall.
+
+Den [offentliga IP-adress mal len](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) skapar en offentlig IP-adress och matar ut resurs-ID: t. [Belastnings Utjämnings mal len](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) länkar till föregående mall. Den använder resurs-ID i utdata när du skapar belastningsutjämnaren.
+
+## <a name="modules"></a>Moduler
+
+I bicep-filer kan du distribuera relaterade mallar med hjälp av moduler. Använd följande syntax för att hämta ett utdata-värde från en modul:
+
+```bicep
+<module-name>.outputs.<property-name>
+```
+
+I följande exempel visas hur du ställer in IP-adressen på en belastningsutjämnare genom att hämta ett värde från en modul. Namnet på modulen är `publicIP` .
+
+```bicep
+publicIPAddress: {
+  id: publicIP.outputs.resourceID
+}
+```
+
+## <a name="example-template"></a>Exempel mal len
+
+Följande mall distribuerar inga resurser. Det visar några sätt att returnera utdata av olika typer.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/outputs.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep stöder för närvarande inte slingor.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/outputs.bicep":::
+
+---
 
 ## <a name="get-output-values"></a>Hämta utgående värden
 
@@ -107,16 +240,6 @@ az deployment group show \
 ```
 
 ---
-
-## <a name="example-templates"></a>Exempel på mallar
-
-Följande exempel visar scenarier för att använda utdata.
-
-|Mall  |Beskrivning  |
-|---------|---------|
-|[Kopiera variabler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Skapar komplexa variabler och matar ut dessa värden. Distribuerar inte några resurser. |
-|[Offentlig IP-adress](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Skapar en offentlig IP-adress och matar ut resurs-ID: t. |
-|[Belastningsutjämnare](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Länkar till föregående mall. Använder resurs-ID i utdata när du skapar belastningsutjämnaren. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,18 +1,18 @@
 ---
-title: Självstudie – distribuera vSphere-kluster i Azure
-description: Lär dig hur du distribuerar ett vSphere-kluster i Azure med hjälp av Azure VMware-lösningen
+title: Självstudie – Skapa och distribuera ett privat moln i Azure VMware-lösningen
+description: Lär dig hur du skapar och distribuerar ett privat moln i Azure VMware-lösningen
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8383e987e13e43ea9bc9ba5be196538a259aa8c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093955"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653145"
 ---
-# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Självstudie: Distribuera ett privat moln för Azure VMware-lösningar i Azure
+# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Självstudie: skapa ett privat moln för Azure VMware-lösningen
 
-Med Azure VMware-lösningen kan du distribuera ett vSphere-kluster i Azure. Den minsta första distributionen är tre värdar. Ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster. 
+I den här självstudien får du lära dig hur du skapar och distribuerar ett privat moln i Azure VMware-lösningen. Den minsta inledande distributionen av värdar är tre. Ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster. 
 
 Eftersom Azure VMware-lösningen inte tillåter att du hanterar ditt privata moln med din lokala vCenter vid lanseringen krävs ytterligare konfiguration. Dessa procedurer och relaterade krav beskrivs i den här självstudien.
 
@@ -25,13 +25,10 @@ I den här självstudien får du lära dig att:
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Lämpliga administrativa rättigheter och behörigheter för att skapa ett privat moln.
+- Lämpliga administrativa rättigheter och behörigheter för att skapa ett privat moln. Du måste vara minst deltagar nivå i prenumerationen.
+- Följ den information som du samlade in i [planerings](production-ready-deployment-steps.md) artikeln för att distribuera Azure VMware-lösningen.
 - Se till att du har rätt nätverks konfiguration enligt beskrivningen i [Självstudier: check lista för nätverk](tutorial-network-checklist.md).
-
-## <a name="register-the-resource-provider"></a>Registrera resursprovidern
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
-
+- Värdarna har etablerats och Microsoft. AVS-resurshanteraren har registrerats enligt beskrivningen i [begär ande värdar och aktiverar Microsoft. AVS-Resurshanterarens resurs leverantör](enable-azure-vmware-solution.md).
 
 ## <a name="create-a-private-cloud"></a>Skapa ett privat moln
 

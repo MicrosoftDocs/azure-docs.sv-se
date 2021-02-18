@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: fced0cfb1836be0f90c606b9a9753dad4200670d
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 8de819fc5444146f40a6a052cd51e6164cdfb230
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635633"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653065"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Support policy för Azure Red Hat OpenShift
 
@@ -23,7 +23,7 @@ Vissa konfigurationer för Azure Red Hat OpenShift 4-kluster kan påverka klustr
 ## <a name="cluster-configuration-requirements"></a>Krav för kluster konfiguration
 
 * Alla kluster operatörer för OpenShift måste vara i ett hanterat tillstånd. Listan över kluster operatörer kan returneras genom att köra `oc get clusteroperators` .
-* Klustret måste ha minst två arbetsnoder. Skala inte kluster arbetarna till noll eller försök med en korrekt kluster avstängning.
+* Klustret måste ha minst två arbetsnoder. Har inte några utsmaker som förhindrar att OpenShift-komponenter schemaläggs. Skala inte kluster arbetarna till noll eller försök med en korrekt kluster avstängning.
 * Ta inte bort eller ändra klustrets Prometheus-och Alertmanager-tjänster.
 * Ta inte bort Alertmanager-regler för tjänsten.
 * Ta inte bort eller ändra nätverks säkerhets grupper.

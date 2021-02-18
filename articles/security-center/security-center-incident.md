@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341354"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652114"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Hantera säkerhets incidenter i Azure Security Center
 
@@ -29,11 +29,19 @@ I Security Center är en säkerhetsincident en sammanställning av alla aviserin
 
 ## <a name="managing-security-incidents"></a>Hantera säkerhetsincidenter
 
-1. På sidan Security Center översikt väljer du panelen **säkerhets aviseringar** . Incidenter och aviseringar visas. Observera att säkerhets incidenter har en annan ikon för säkerhets aviseringar.
+1. På sidan aviseringar för Security Center använder du knappen **Lägg till filter** för att filtrera efter aviserings namn till aviserings namn **säkerhets incidenten har identifierats på flera resurser**. 
 
-    ![Visa säkerhets incidenter](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Hitta incidenter på sidan aviseringar i Azure Security Center":::
 
-1. Om du vill visa information väljer du en incident. Sidan **säkerhets incident** visar mer information. 
+    Listan är nu filtrerad så att endast incidenter visas. Observera att säkerhets incidenter har en annan ikon för säkerhets aviseringar.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Lista över incidenter på sidan aviseringar i Azure Security Center":::
+
+1. Om du vill visa information om en incident väljer du en i listan. En sido ruta visas med mer information om incidenten.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="I sidofönstret visas information om incidenten":::
+
+1. Om du vill visa mer information väljer du **Visa fullständig information**.
 
     [![Svara på säkerhets incidenter i Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

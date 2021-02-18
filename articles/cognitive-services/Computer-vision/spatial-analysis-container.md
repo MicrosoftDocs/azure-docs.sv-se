@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737344"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653626"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
 Med behållaren för rums analys kan du analysera direktuppspelad video i real tid för att förstå spatiala relationer mellan människor, deras rörelse och interaktioner med objekt i fysiska miljöer. Containrar är bra för specifika säkerhets- och datastyrningskrav.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för Standard nivån S1 i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Konfigurera Azure IoT Edge på värddatorn
 
-Om du vill distribuera behållaren för rums analys på värddatorn skapar du en instans av en [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) -tjänst som använder standard pris nivån (S1) eller kostnads fri (F0). Om värddatorn är en Azure Stack Edge använder du samma prenumeration och resurs grupp som används av Azure Stack Edge-resursen.
+Om du vill distribuera behållaren för rums analys på värddatorn skapar du en instans av en [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) -tjänst som använder standard pris nivån (S1) eller kostnads fri (F0). 
 
 Använd Azure CLI för att skapa en instans av Azure IoT Hub. Ersätt parametrarna där det är lämpligt. Du kan också skapa Azure-IoT Hub på [Azure Portal](https://portal.azure.com/).
 
@@ -264,7 +264,7 @@ sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test
 sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Om värddatorn inte är en Azure Stack Edge-enhet måste du installera [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) version 1.0.9. Följ de här stegen för att ladda ned rätt version:
+Du måste installera [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) version 1.0.9. Följ de här stegen för att ladda ned rätt version:
 
 Ubuntu Server 18,04:
 ```bash
@@ -396,7 +396,73 @@ sudo apt-get install -y docker-ce nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Nu när du har konfigurerat och konfigurerat den virtuella datorn följer du stegen nedan för att distribuera behållaren för rums analys. 
+Nu när du har konfigurerat och konfigurerat den virtuella datorn följer du stegen nedan för att konfigurera Azure IoT Edge. 
+
+## <a name="configure-azure-iot-edge-on-the-vm"></a>Konfigurera Azure IoT Edge på den virtuella datorn
+
+Om du vill distribuera behållaren för rums analys på den virtuella datorn skapar du en instans av en [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) -tjänst som använder standard pris nivån (S1) eller kostnads fri (F0).
+
+Använd Azure CLI för att skapa en instans av Azure IoT Hub. Ersätt parametrarna där det är lämpligt. Du kan också skapa Azure-IoT Hub på [Azure Portal](https://portal.azure.com/).
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
+
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+
+Du måste installera [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) version 1.0.9. Följ de här stegen för att ladda ned rätt version:
+
+Ubuntu Server 18,04:
+```bash
+curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+```
+
+Kopiera den genererade listan.
+```bash
+sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+```
+
+Installera den offentliga nyckeln för Microsoft GPG.
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+```
+
+Uppdatera paket listorna på enheten.
+
+```bash
+sudo apt-get update
+```
+
+Installera 1.0.9-versionen:
+
+```bash
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
+```
+
+Registrera sedan den virtuella datorn som en IoT Edge enhet i IoT Hub-instansen med hjälp av en [anslutnings sträng](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06).
+
+Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
+
+```bash
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+```
+
+Öppna den virtuella datorn  `/etc/iotedge/config.yaml` för redigering. Ersätt `ADD DEVICE CONNECTION STRING HERE` med anslutnings strängen. Spara och stäng filen. Kör det här kommandot för att starta om IoT Edge tjänsten på den virtuella datorn.
+
+```bash
+sudo systemctl restart iotedge
+```
+
+Distribuera behållaren för rums analys som en IoT-modul på den virtuella datorn, antingen från [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) eller [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows). Om du använder portalen ställer du in bild-URI: en till platsen för Azure Container Registry. 
+
+Använd stegen nedan för att distribuera behållaren med hjälp av Azure CLI.
 
 ---
 

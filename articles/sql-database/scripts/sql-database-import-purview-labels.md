@@ -9,13 +9,13 @@ ms.topic: sample
 author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/16/2021
-ms.openlocfilehash: 71444efa606e15ac744b323aa8826828454f8149
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.date: 02/17/2021
+ms.openlocfilehash: d202a931e7af1dc212e3ab688580fd38c64dbdcb
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100643621"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653755"
 ---
 # <a name="classify-your-azure-sql-data-using-azure-purview-labels"></a>Klassificera dina Azure SQL-data med hjälp av Azure avdelningens kontroll-etiketter
 [!INCLUDE[appliesto-sqldb-asa](../../azure-sql/includes/appliesto-sqldb-asa.md)]
@@ -90,7 +90,7 @@ $cmdletParameters = @{
   Headers = @{
     "Content-Type" = 'application/x-www-form-urlencoded'
   }
-  Body    = "client_id=$ClientID&client_secret=$SecretID&resource=https://projectbabylon.azure.net&grant_type=client_credentials"
+  Body    = "client_id=$ClientID&client_secret=$SecretID&resource=https://purview.azure.net&grant_type=client_credentials"
 }
 
 $invokeResult = Invoke-RestMethod @cmdletParameters;
@@ -178,7 +178,7 @@ $cmdletParameters = @{
   Headers = @{
     "Content-Type" = 'application/x-www-form-urlencoded'
   }
-  Body    = "client_id=$ClientID&client_secret=$SecretID&resource=https://projectbabylon.azure.net&grant_type=client_credentials"
+  Body    = "client_id=$ClientID&client_secret=$SecretID&resource=https://purview.azure.net&grant_type=client_credentials"
 }
 
 $invokeResult = Invoke-RestMethod @cmdletParameters;

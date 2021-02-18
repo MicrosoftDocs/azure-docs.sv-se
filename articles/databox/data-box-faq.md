@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655483"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652793"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Vanliga frågor och svar
 
@@ -68,6 +68,10 @@ I import scenariot, om du till exempel hade de källdata i Kanada som du ville f
 2. När lokal data kopiering till Data Box-enhet görs, returnerar du enheten till Azure-datacentret i Kanada. De data som finns på Data Box-enhet laddas sedan upp till mål lagrings kontot i den Azure-region som du valde när du skapade ordern.
 
 3. Du kan sedan använda ett verktyg som AzCopy för att kopiera data till ett lagrings konto i USA, västra. I det här steget debiteras standard [avgifterna](https://azure.microsoft.com/pricing/details/bandwidth/) för [lagring](https://azure.microsoft.com/pricing/details/storage/) och bandbredd som inte ingår i data Box-enhet fakturering.
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>F. Hur kan jag återställa mina data om en hel region Miss lyckas?
+
+A. I extrema fall där en region förloras på grund av en betydande katastrof kan Microsoft initiera en regional redundansväxling. Ingen åtgärd för din del krävs i det här fallet. Din beställning kommer att uppfyllas genom redundansväxlingen om den ligger inom samma land eller handels gränser. Vissa Azure-regioner har dock inte någon kopplad region i samma geografiska område eller handels gränser. Om det finns en katastrof i någon av dessa regioner måste du skapa Data Box-enhets ordningen igen från en annan region som är tillgänglig och kopiera data till Azure i den nya regionen. Mer information finns i [Affärskontinuitet och haveriberedskap (BCDR): Länkade Azure-regioner](../best-practices-availability-paired-regions.md).
 
 ### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>F. Vem ska jag kontakta om jag stöter på problem med Data Box-enhet?
 A. [Kontakta Microsoft Support](data-box-disk-contact-microsoft-support.md)om du stöter på problem med data Box-enhet.
@@ -201,7 +205,7 @@ A.  Påskynda kopieringsprocessen:
 - Använd flera dataströmmar. Med `Robocopy` kan du till exempel använda det multitrådade alternativet. Mer information om de exakta kommandon som används finns i [Självstudie: Kopiera data till Azure Data Box och verifiera](data-box-deploy-copy-data.md).
 - Använda flera sessioner.
 - I stället för att kopiera över en nätverks resurs (där nätverks hastigheter kan begränsa kopierings hastigheten) lagrar du data lokalt på den dator som Data Box-enhet är ansluten till.
-- Analysera prestanda för den dator som används för att kopiera data. Hämta och Använd [ `Bluestop` FIO-verktyget](https://ci.appveyor.com/project/axboe/fio) för att mäta server maskin varans prestanda. Välj den senaste x86-eller x64-versionen, Välj fliken **artefakter** och ladda ned MSI.
+- Analysera prestanda för den dator som används för att kopiera data. Hämta och Använd [ `Bluestop` `FIO` verktyget](https://ci.appveyor.com/project/axboe/fio) för att mäta server maskin varans prestanda. Välj den senaste x86-eller x64-versionen, Välj fliken **artefakter** och ladda ned MSI.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:

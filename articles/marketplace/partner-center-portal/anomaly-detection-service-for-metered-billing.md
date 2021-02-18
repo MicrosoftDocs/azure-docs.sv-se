@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280534"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653082"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Tjänst för att identifiera avvikelser vid förbrukningsbaserad fakturering
 
@@ -50,32 +50,37 @@ Modellen fungerar genom att skapa retroaktiva konfidens intervall. Tids serie pr
 
 ## <a name="anomaly-detection-notification"></a>Meddelande om avvikelse identifiering
 
-Vi skickar meddelanden om avvikelse identifieringar varje vecka. Den innehåller alla avvikelser som identifierats för alla mätare och kunder. Det här e-postmeddelandet skickas till **teknik** -och **support** kontakter som tillhandahålls när du skapade erbjudandet.
+Du kan utvärdera, hantera och bekräfta avvikelser i Partner Center. Mer information finns i [avvikelse identifiering för avgiftsbelagd fakturering](../anomaly-detection.md).
 
-Du förväntas undersöka om identifierade avvikelser är verkliga problem och kontakta Microsoft för att rapportera felaktig användning (se avsnittet support nedan).
+För att säkerställa att dina kunder inte överbelastas för mätnings användning bör du undersöka om identifierade avvikelser är verkliga problem. I så fall kan du godkänna felaktig användning i Partner Center.
 
-Om du bekräftar att identifierade avvikelser är normal användning krävs ingen ytterligare åtgärd från dig. Men om en avvikelse representerar potentiellt hög ekonomisk risk kan vi kontakta dig för att bekräfta användningen.  
+Vi rekommenderar att du bekräftar om identifierade avvikelser är normal användning. På så sätt kan du förbättra de avvikelser som vi tillhandahåller. Om en avvikelse representerar en potentiellt hög ekonomisk risk kan vi kontakta dig för att bekräfta användningen.
 
 ## <a name="when-and-how-to-get-support"></a>När och hur man får support
 
-Om du har skickat den felaktiga användningen till Microsoft och detta gjorde, eller kommer att bli underdebiterad till kunden, kommer Microsoft inte att initiera någon faktura till kunden under rapporterad användning eller betala dig för den användningen. Du får själv stå för kostnaderna som beror på underrapporteringen.
+Om du har skickat oss en felaktig mätnings användning som gjorde eller leder till en underkostnad till kunden, kommer vi inte att initiera någon faktura till kunden om du har rapporterat användningen eller betalar dig för den användningen. Du får själv stå för kostnaderna som beror på underrapporteringen.
 
-Om något av följande fall gäller kan du öppna ett supportärende och begära återbetalning eller fakturajustering för dina kunder:
+Om något av följande fall gäller kan du justera användnings beloppet i Partner Center, vilket leder till en åter betalning eller fakturerings justering för dina kunder:
 
-- Du bekräftade att ett av de avvikelser som vi hittade är ett verkligt problem och att den felaktiga användningen skulle leda till **överkostnad** av kunden.
-- Du upptäcker att du har skickat felaktig användning till oss och att den felaktiga användningen skulle leda till **överkostnad** av kunden.
-- Du vill begära en åter betalning för avgiften för kundens avgiftsbelagda fakturerings användning.
+- Du bekräftade att ett av de avvikelser som vi påträffade är ett verkligt problem och att den felaktiga användningen skulle leda till att kunden överbelastas.
+- Du upptäcker att du har skickat felaktig användning till oss och att den felaktiga användningen skulle leda till att kunden överbelastas.
 
-Så här skickar du en biljett:
+Så här skickar du ett support ärende som rör avgiftsbelagda fakturerings avvikelser:
 
-1. Gå till support sidan. Skriv "felaktig användning" i **rutan berätta om ditt ärende**.
-2. I avsnittet support, i list rutan med Sök resultat, väljer du något av följande:
-    - **Kommersiell marknads**  >  plats **Avgiftsbelagd fakturering**  >  **Fel användning har skickats för Azure-program**, eller
-    - **Kommersiell marknads**  >  plats **Avgiftsbelagd fakturering**  >  **Fel användning har skickats för SaaS-erbjudandet**
-3. Under **Nästa steg**väljer du knappen **Granska lösningar** för att logga in på Partner Center för att skicka in ett support ärende.
+1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) med ditt arbets konto.
+1. Välj ikonen **support** på menyn längst upp till höger på sidan. Rutan **Hjälp och support** visas till höger på sidan.
+1. Om du behöver hjälp med den kommersiella Marketplace väljer du **kommersiell marknads** plats.
+   ![Visar fönstret support.](../media/support/commercial-marketplace-support-pane.png)
+1. I rutan **problem Sammanfattning** anger du > för försäljnings **marknads plats avgiftsbelagd fakturering**.
+1. I rutan **problem typ** väljer du något av följande:
+    - **Marknads plats > avgiftsbelagd fakturerings > fel användning har skickats för Azure-program**
+    - **Marknads plats > avgiftsbelagd fakturerings > fel användning har skickats för SaaS-erbjudandet**
+1. Under **Nästa steg** väljer du **Granska lösningar**.
+1. Granska de rekommenderade dokumenten, om det finns några eller Välj **ge ärende information** för att skicka in ett support ärende.
 
 Fler support alternativ för utgivare finns i [Support för programmet för kommersiella marknads platser i Partner Center](../support.md).
 
-## <a name="next-step"></a>Nästa steg
+## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [API för avläsning av marknads](marketplace-metering-service-apis.md)plats.
+- [Avvikelse identifiering för avlästa fakturor](../anomaly-detection.md)

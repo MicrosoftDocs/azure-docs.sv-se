@@ -6,16 +6,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 00c28a9ede01a74f4ae64109d277276050047461
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361901"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653772"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Lagra autentiseringsuppgifter i Azure Key Vault
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Du kan lagra autentiseringsuppgifter för data lager och beräkningar i en [Azure Key Vault](../key-vault/general/overview.md). Azure Data Factory hämtar autentiseringsuppgifterna när en aktivitet som använder data lagret/data bearbetningen körs.
 
@@ -40,8 +40,8 @@ Följande egenskaper stöds för Azure Key Vault länkade tjänsten:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **AzureKeyVault**. | Ja |
-| baseUrl | Ange Azure Key Vault-URL. | Ja |
+| typ | Egenskapen Type måste anges till: **AzureKeyVault**. | Yes |
+| baseUrl | Ange Azure Key Vault-URL. | Yes |
 
 **Använda redigerings gränssnittet:**
 
@@ -73,10 +73,10 @@ Följande egenskaper stöds när du konfigurerar ett fält i en länkad tjänst 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type för fältet måste anges till: **AzureKeyVaultSecret**. | Ja |
-| secretName | Namnet på hemligheten i Azure Key Vault. | Ja |
-| secretVersion | Den hemliga versionen i Azure Key Vault.<br/>Om detta inte anges används alltid den senaste versionen av hemligheten.<br/>Om detta anges, kommer det att göras till den angivna versionen.| Inga |
-| butik | Refererar till en Azure Key Vault länkad tjänst som du använder för att lagra autentiseringsuppgifterna. | Ja |
+| typ | Egenskapen Type för fältet måste anges till: **AzureKeyVaultSecret**. | Yes |
+| secretName | Namnet på hemligheten i Azure Key Vault. | Yes |
+| secretVersion | Den hemliga versionen i Azure Key Vault.<br/>Om detta inte anges används alltid den senaste versionen av hemligheten.<br/>Om detta anges, kommer det att göras till den angivna versionen.| No |
+| butik | Refererar till en Azure Key Vault länkad tjänst som du använder för att lagra autentiseringsuppgifterna. | Yes |
 
 **Använda redigerings gränssnittet:**
 

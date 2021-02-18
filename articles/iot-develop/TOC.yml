@@ -1,0 +1,113 @@
+- name: IoT-enhet och program utveckling
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är IoT-enheter och program utveckling?
+      href: about-iot-develop.md
+    - name: Vilken SDK ska jag använda?
+      href: about-iot-sdks.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Kom igång med utveckling av enhets program
+      items:
+        - name: Skicka telemetri till IoT Central (python)
+          href: quickstart-send-telemetry-python.md
+        - name: Skicka telemetri till IoT Hub (python)
+          href: quickstart-send-telemetry-cli-python.md
+        - name: Skicka telemetri till IoT Hub (Node)
+          href: quickstart-send-telemetry-cli-node.md
+    - name: Kom igång med inbäddad utveckling
+      href: quickstart-device-development.md
+- name: Självstudier
+  items:
+    - name: Ansluta IoT-enheter på ett säkert sätt till molnet
+      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+- name: Begrepp
+  items:
+    - name: Anslutnings alternativ för enhets utvecklare
+      href: concepts-overview-connection-options.md
+    - name: Översikt över enhets typer
+      href: concepts-iot-device-types.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Azure PowerShell
+      href: /powershell/module/az.iothub#iothub
+    - name: C (enhet)
+      href: /azure/iot-hub/iot-c-sdk-ref/
+    - name: Embedded C (enhet)
+      href: 'https://azure.github.io/azure-sdk-for-c/'
+    - name: Azure återställnings tider mellan (enhet)
+      href: /azure/rtos/threadx
+    - name: .NET (enhet)
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: .NET (tjänst)
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (hantering)
+      href: /dotnet/api/overview/azure/iot/management
+    - name: Java (enhet)
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java (tjänst)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Node.js (enhet)
+      href: /javascript/api/azure-iot-device/
+    - name: Node.js (tjänst)
+      href: /javascript/api/azure-iothub/
+    - name: Node.js (hantering)
+      href: /javascript/api/overview/azure/iothub/management
+    - name: Python (enhet)
+      href: /python/api/azure-iot-device
+    - name: Python (tjänst)
+      href: /python/api/azure-iot-hub
+    - name: Python (hantering)
+      href: /python/api/azure-mgmt-iothub
+    - name: REST (enhet)
+      href: /rest/api/iothub/device
+    - name: REST (tjänst)
+      href: /rest/api/iothub/service/configuration
+    - name: REST (IoT Hub-resurs)
+      href: /rest/api/iothub/iothubresource
+    - name: REST (certifikat)
+      href: /rest/api/iothub/certificates
+    - name: Resource Manager-mall
+      href: /azure/templates/microsoft.devices/iothub-allversions
+- name: Resurser
+  items:
+    - name: Alternativ för support och hjälp
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-exempel
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS-plattform
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure Certified for IoT-enhetskatalog
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT Developer Center
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT-verktyg
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Verktyget Azure IoT Explorer
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics tool
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Tekniska fallstudier
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videoklipp
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

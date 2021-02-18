@@ -5,16 +5,16 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504822"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653857"
 ---
 # <a name="manage-an-azure-support-request"></a>Hantera en Azure-supportbegäran
 
-När du har [skapat en support förfrågan för Azure](how-to-create-azure-support-request.md)kan du hantera den i [Azure Portal](https://portal.azure.com), som beskrivs i den här artikeln. Du kan också skapa och hantera förfrågningar program mässigt med hjälp av [Azures support biljett REST API](/rest/api/support).
+När du har [skapat en support förfrågan för Azure](how-to-create-azure-support-request.md)kan du hantera den i [Azure Portal](https://portal.azure.com), som beskrivs i den här artikeln. Du kan också skapa och hantera begär Anden via programmering, med hjälp av [Azures support biljett REST API](/rest/api/support)eller med hjälp av [Azure CLI](/cli/azure/azure-cli-support-request).
 
 ## <a name="view-support-requests"></a>Visa supportförfrågningar
 
@@ -76,7 +76,7 @@ Du kan använda fil överförings alternativet för att ladda upp diagnostikfile
 
 1. På sidan **supportbegäran** bläddrar du för att hitta filen och väljer sedan **Ladda upp**. Upprepa processen om du har flera filer.
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Ladda upp filen":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="Ladda upp fil":::
 
 ### <a name="file-upload-guidelines"></a>Rikt linjer för fil uppladdning
 
@@ -127,7 +127,7 @@ Om du behöver stänga en support förfrågan, [Skicka ett meddelande](#send-a-m
 
 Om du behöver öppna en stängd supportbegäran igen, skapar du ett [nytt meddelande](#send-a-message)som automatiskt öppnar begäran på nytt.
 
-## <a name="cancel-a-support-plan"></a>Avbryta en Support plan
+## <a name="cancel-a-support-plan"></a>Avsluta ett supportavtal
 
 Om du behöver avbryta ett support avtal kan du läsa mer i [avbryta en Support plan](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 

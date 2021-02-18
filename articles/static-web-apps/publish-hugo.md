@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900784"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652363"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Självstudie: publicera en Hugo-webbplats till Azures statiska Web Apps för hands version
 
 Den här artikeln visar hur du skapar och distribuerar ett [Hugo](https://gohugo.io/) -webbprogram till [Azure static Web Apps](overview.md). Det slutliga resultatet är en ny Azure-statisk webbapp med associerade GitHub-åtgärder som ger dig kontroll över hur appen byggs och publiceras.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -88,7 +88,7 @@ Du behöver en lagrings plats på GitHub för att ansluta till Azures statiska W
 1. Skicka din lokala lagrings platsen upp till GitHub.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Distribuera din webbapp
@@ -123,7 +123,7 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Välj den **Hugo-statiska-appen** som _lagrings plats_ .
 
-1. För _grenen_ Välj **huvud**.
+1. För _grenen_ Select **main**.
 
    :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Slutförd GitHub-information":::
 
