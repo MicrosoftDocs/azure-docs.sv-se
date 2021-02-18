@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006691"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585287"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Utöka Azure Sentinel för arbetsytor och klientorganisationer
 
@@ -35,7 +35,7 @@ Du kan få den fullständiga fördelen av Azure Sentinel-upplevelsen när du anv
 | Dataägarskap | Gränserna för data ägarskap, till exempel av dotter bolag eller dotter bolag, är bättre avgränsade med separata arbets ytor. |  |
 | Flera Azure-klienter | Azure Sentinel stöder data insamling från Microsoft-och Azure SaaS-resurser inom en egen Azure Active Directory (Azure AD)-klient gränsen. Därför kräver varje Azure AD-klientorganisation en separat arbetsyta. |  |
 | Detaljerad åtkomstkontroll för data | En organisation kan behöva tillåta olika grupper i eller utanför organisationen för att få åtkomst till vissa av de data som samlas in av Azure Sentinel. Exempel:<br><ul><li>Resurs ägarens åtkomst till data som rör sina resurser</li><li>Regional eller dotter SOCs ' till gång till data som är relevanta för deras delar av organisationen</li></ul> | Använd [resurs Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) eller [tabell nivå Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
-| Detaljerade inställningar för kvarhållning | Tidigare var flera arbets ytor det enda sättet att ange olika bevarande perioder för olika data typer. Detta behövs inte längre i många fall, tack vare införandet av inställningar för kvarhållning av tabell nivå. | Använd [Inställningar för kvarhållning av tabell nivå](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) eller automatisera [borttagning av data](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
+| Detaljerade inställningar för kvarhållning | Tidigare var flera arbets ytor det enda sättet att ange olika bevarande perioder för olika data typer. Detta behövs inte längre i många fall, tack vare införandet av inställningar för kvarhållning av tabell nivå. | Använd [Inställningar för kvarhållning av tabell nivå](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) eller automatisera [borttagning av data](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
 | Dela fakturering | Genom att placera arbets ytor i separata prenumerationer kan de faktureras till olika parter. | Användningsrapportering och korsdebitering |
 | Äldre arkitektur | Användningen av flera arbets ytor kan leda till en historisk design som har tagit hänsyn till begränsningar eller bästa praxis som inte är längre än sant. Det kan även vara ett godtyckligt designval som kan ändras för att bättre tillgodose Azure Sentinel.<br><br>Exempel:<br><ul><li>Använda en standard arbets yta per prenumeration när du distribuerar Azure Security Center</li><li>Behovet av detaljerad åtkomst kontroll eller inställningar för kvarhållning, vilka lösningar som är relativt nya</li></ul> | Omarbeta arkitekturen för arbetsytor |
 
@@ -81,12 +81,12 @@ Azure Sentinel stöder en [incident vy för flera arbets ytor](./multiple-worksp
 
 ### <a name="cross-workspace-querying"></a>Fråga om kors arbets ytor
 
-Azure Sentinel stöder frågor till [flera arbets ytor i en enda fråga](../azure-monitor/log-query/cross-workspace-query.md), så att du kan söka efter och korrelera data från flera arbets ytor i en enda fråga. 
+Azure Sentinel stöder frågor till [flera arbets ytor i en enda fråga](../azure-monitor/logs/cross-workspace-query.md), så att du kan söka efter och korrelera data från flera arbets ytor i en enda fråga. 
 
-- Använd [uttrycket arbets yta ()](../azure-monitor/log-query/workspace-expression.md) för att referera till en tabell i en annan arbets yta. 
+- Använd [uttrycket arbets yta ()](../azure-monitor/logs/workspace-expression.md) för att referera till en tabell i en annan arbets yta. 
 - Använd [union-operatorn](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) tillsammans med arbets ytan ()-uttrycket för att tillämpa en fråga över tabeller i flera arbets ytor.
 
-Du kan använda sparade [funktioner](../azure-monitor/log-query/functions.md) för att förenkla frågor över arbets ytor. Om en referens till en arbets yta till exempel är lång, kanske du vill spara uttrycket `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` som en funktion som kallas `SecurityEventCustomerA` . Du kan sedan skriva frågor som `SecurityEventCustomerA | where ...` .
+Du kan använda sparade [funktioner](../azure-monitor/logs/functions.md) för att förenkla frågor över arbets ytor. Om en referens till en arbets yta till exempel är lång, kanske du vill spara uttrycket `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` som en funktion som kallas `SecurityEventCustomerA` . Du kan sedan skriva frågor som `SecurityEventCustomerA | where ...` .
 
 En funktion kan också förenkla en union som används ofta. Du kan till exempel Spara följande uttryck som en funktion som kallas `unionSecurityEvent` :
 

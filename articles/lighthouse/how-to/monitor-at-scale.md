@@ -3,21 +3,21 @@ title: Övervaka delegerade resurser i stor skala
 description: Lär dig hur du effektivt använder Azure Monitor loggar på ett skalbart sätt över de kund innehavare som du hanterar.
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aadd14bb3e4aad61fb2afc0735b5714deedfe301
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379241"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593110"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Övervaka delegerade resurser i stor skala
 
 Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Lighthouse](../overview.md). Med Azure Lighthouse kan tjänst leverantörer utföra åtgärder i skala över flera klienter samtidigt, vilket gör hanterings uppgifter mer effektiva.
 
-Det här avsnittet visar hur du använder [Azure Monitor loggar](../../azure-monitor/platform/data-platform-logs.md) på ett skalbart sätt över de kund innehavare som du hanterar. Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet gäller den här vägledningen även för [företag som använder Azure-Lighthouse för att hantera flera klienter](../concepts/enterprise.md).
+Det här avsnittet visar hur du använder [Azure Monitor loggar](../../azure-monitor/logs/data-platform-logs.md) på ett skalbart sätt över de kund innehavare som du hanterar. Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet gäller den här vägledningen även för [företag som använder Azure-Lighthouse för att hantera flera klienter](../concepts/enterprise.md).
 
 > [!NOTE]
-> Se till att användarna i hanterings klienter har beviljats de [nödvändiga rollerna för att hantera Log Analytics arbets ytor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) på dina delegerade kund prenumerationer.
+> Se till att användarna i hanterings klienter har beviljats de [nödvändiga rollerna för att hantera Log Analytics arbets ytor](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions) på dina delegerade kund prenumerationer.
 
 ## <a name="create-log-analytics-workspaces"></a>Skapa Log Analytics arbets ytor
 
@@ -28,7 +28,7 @@ Vi rekommenderar att du skapar dessa arbets ytor direkt i kundens klienter. På 
 > [!TIP]
 > Alla Automation-konton som används för att komma åt data från en Log Analytics-arbetsyta måste skapas i samma klient organisation som arbets ytan.
 
-Du kan skapa en Log Analytics arbets yta genom att använda [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), med hjälp av [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)eller genom att använda [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md).
+Du kan skapa en Log Analytics arbets yta genom att använda [Azure Portal](../../azure-monitor/logs/quick-create-workspace.md), med hjälp av [Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md)eller genom att använda [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md).
 
 > [!IMPORTANT]
 > Även om alla arbets ytor skapas i kund klienten, måste Microsoft. Insights Resource Provider också registreras på en prenumeration i hanterings klienten.
@@ -43,11 +43,11 @@ När du har bestämt vilka principer som ska distribueras kan du [distribuera de
 
 ## <a name="analyze-the-gathered-data"></a>Analysera insamlade data
 
-När du har distribuerat dina principer kommer data att loggas i Log Analytics arbets ytor som du har skapat i varje kund klient organisation. För att få insikter över alla hanterade kunder kan du använda verktyg som [Azure Monitor arbets böcker](../../azure-monitor/platform/workbooks-overview.md) för att samla in och analysera information från flera data källor.
+När du har distribuerat dina principer kommer data att loggas i Log Analytics arbets ytor som du har skapat i varje kund klient organisation. För att få insikter över alla hanterade kunder kan du använda verktyg som [Azure Monitor arbets böcker](../../azure-monitor/visualize/workbooks-overview.md) för att samla in och analysera information från flera data källor.
 
 ## <a name="view-alerts-across-customers"></a>Visa aviseringar över kunder
 
-Du kan visa [aviseringar](../../azure-monitor/platform/alerts-overview.md) för de delegerade prenumerationerna på kund klienter som din hantering.
+Du kan visa [aviseringar](../../azure-monitor/alerts/alerts-overview.md) för de delegerade prenumerationerna på kund klienter som din hantering.
 
 Du kan [skapa, Visa och hantera aktivitets logg aviseringar](../../azure-monitor/platform/alerts-activity-log.md) i Azure Portal eller via API: er och hanterings verktyg från din hanterings klient.
 

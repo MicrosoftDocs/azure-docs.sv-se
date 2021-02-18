@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 7701fc6d90fd9ebc7ec29f0ffdd7d050c58c036c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655671"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590226"
 ---
 # <a name="connect-your-domain-name-server"></a>Anslut din domän namns Server
 
@@ -43,10 +43,10 @@ I följande tabell beskrivs de anslutna källor som stöds av den här lösninge
 
 | **Ansluten källa** | **Support** | **Beskrivning** |
 | --- | --- | --- |
-| [Windows-agenter](../azure-monitor/platform/agent-windows.md) | Yes | Lösningen samlar in DNS-information från Windows-agenter. |
-| [Linux-agenter](../azure-monitor/learn/quick-collect-linux-computer.md) | No | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
-| [System Center Operations Manager-hanteringsgrupp](../azure-monitor/platform/om-agents.md) | Yes | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
-| [Azure Storage-konto](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage används inte av lösningen. |
+| [Windows-agenter](../azure-monitor/agents/agent-windows.md) | Yes | Lösningen samlar in DNS-information från Windows-agenter. |
+| [Linux-agenter](../azure-monitor/vm/quick-collect-linux-computer.md) | No | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
+| [System Center Operations Manager-hanteringsgrupp](../azure-monitor/agents/om-agents.md) | Yes | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| [Azure Storage-konto](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage används inte av lösningen. |
 
 ### <a name="data-collection-details"></a>Information om data insamling
 

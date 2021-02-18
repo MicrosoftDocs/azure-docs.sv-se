@@ -66,12 +66,12 @@
         - name: Händelse agg regering (för hands version)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
-        - name: Säkerhetsaviseringar
+        - name: Inbyggda aviseringar för IoT Hub
           displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
-        - name: Anpassade säkerhets aviseringar
+        - name: Anpassade säkerhets aviseringar för IoT Hub
           href: concept-customizable-security-alerts.md
-        - name: Säkerhetsrekommendationer
+        - name: Säkerhets rekommendationer för IoT Hub
           href: concept-recommendations.md
         - name: Klassisk
           items:
@@ -94,6 +94,12 @@
             - name: Klassisk händelse agg regering för säkerhetsmodulen
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
+            - name: Agentbaserade säkerhets aviseringar
+              href: agent-based-security-alerts.md
+            - name: Anpassade aviseringar för agentbaserade säkerhet
+              href: agent-based-security-custom-alerts.md
+            - name: Agentbaserade rekommendationer
+              href: agent-based-recommendations.md
 - name: Anvisningar
   items:
     - name: Lösning utan agent för organisationer

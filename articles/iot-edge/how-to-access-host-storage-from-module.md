@@ -8,12 +8,12 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24fd42f866cd15f84688318050bc07d5ad235e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 53d1504b03e3dbe99cbdeac23df2623a5390b3d9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384664"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635429"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Ge moduler åtkomst till en enhets lokala lagring
 
@@ -85,7 +85,7 @@ Du hittar mer information om att skapa alternativ från [Docker-dokument](https:
 
 ## <a name="encrypted-data-in-module-storage"></a>Krypterade data i modul Storage
 
-När moduler anropar IoT Edge daemonens arbets belastnings-API för att kryptera data, härleds Krypterings nyckeln med hjälp av modul-ID och modulens generations-ID. Ett generations-ID används för att skydda hemligheter om en modul tas bort från distributionen och en annan modul med samma modul-ID senare distribueras till samma enhet. Du kan visa en moduls generations-ID med hjälp av Azure CLI-kommandot [AZ IoT Hub module-identitet show](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show).
+När moduler anropar IoT Edge daemonens arbets belastnings-API för att kryptera data, härleds Krypterings nyckeln med hjälp av modul-ID och modulens generations-ID. Ett generations-ID används för att skydda hemligheter om en modul tas bort från distributionen och en annan modul med samma modul-ID senare distribueras till samma enhet. Du kan visa en moduls generations-ID med hjälp av Azure CLI-kommandot [AZ IoT Hub module-identitet show](/cli/azure/ext/azure-iot/iot/hub/module-identity).
 
 Om du vill dela filer mellan moduler i flera generationer får de inte innehålla några hemligheter, eller så kommer de inte att kunna dekrypteras.
 

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027850"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593646"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Reagera på plugin-programmet för Application Insights JavaScript SDK
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Konfiguration
 
-| Namn    | Standard | Beskrivning                                                                                                    |
+| Name    | Standardvärde | Description                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | historik | null    | Reagerar på routerkonfiguration. Mer information finns i [paket dokumentationen för reakta router](https://reactrouter.com/web/api/history). Information om hur du kommer åt historik-objektet utanför komponenterna finns i [vanliga frågor och svar om att reagera på routern](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -226,4 +226,4 @@ Kolla in [Application Insights reagera på demo](https://github.com/Azure-Sample
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om Java Script SDK i [Application Insights JavaScript SDK-dokumentationen](javascript.md).
-- Information om Kusto-frågespråket och frågor om data i Log Analytics finns i [Översikt över logg frågor](../../azure-monitor/log-query/log-query-overview.md).
+- Information om Kusto-frågespråket och frågor om data i Log Analytics finns i [Översikt över logg frågor](../../azure-monitor/logs/log-query-overview.md).

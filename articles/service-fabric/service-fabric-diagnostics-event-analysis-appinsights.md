@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f4d77cc3b2f2182b02d47f047070b819daa5f3c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329584"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589025"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Händelse analys och visualisering med Application Insights
 
@@ -48,7 +48,7 @@ Om du använder EventFlow för att aggregera händelser måste du först importe
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
     }
 ]
 ```
@@ -65,13 +65,13 @@ Om du utvecklar i .NET och kommer att använda några av Service Fabrics program
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigera Application Insights resursen i Azure Portal
 
-När du har konfigurerat Application Insights som utdata för dina händelser och loggar, ska information börja visas i din Application Insights-resurs om några minuter. Navigera till Application Insights resurs, som tar dig till Application Insights resurs instrument panel. Välj _*Sök** i Application Insights aktivitets fältet för att se de senaste spårningarna som har tagits emot och för att kunna filtrera genom dem.
+När du har konfigurerat Application Insights som utdata för dina händelser och loggar, ska information börja visas i din Application Insights-resurs om några minuter. Navigera till Application Insights resurs, som tar dig till Application Insights resurs instrument panel. Välj **Sök** i Application Insights aktivitets fältet för att se de senaste spårningarna som har tagits emot och för att kunna filtrera genom dem.
 
-*Metrics Explorer* är ett användbart verktyg för att skapa anpassade instrument paneler baserat på mått som dina program, tjänster och kluster kan rapportera. Se [utforska mått i Application Insights](../azure-monitor/platform/metrics-charts.md) för att skapa några diagram för dig själv baserat på de data som du samlar in.
+*Metrics Explorer* är ett användbart verktyg för att skapa anpassade instrument paneler baserat på mått som dina program, tjänster och kluster kan rapportera. Se [utforska mått i Application Insights](../azure-monitor/essentials/metrics-charts.md) för att skapa några diagram för dig själv baserat på de data som du samlar in.
 
-Genom att klicka på **analys** går du till Application Insights Analytics-portalen där du kan fråga händelser och spår med bättre omfattning och frivillighet. Läs mer om det här i [analys i Application Insights](../azure-monitor/log-query/log-query-overview.md).
+Genom att klicka på **analys** går du till Application Insights Analytics-portalen där du kan fråga händelser och spår med bättre omfattning och frivillighet. Läs mer om det här i [analys i Application Insights](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Konfigurera aviseringar i AI](../azure-monitor/platform/alerts-log.md) för att få meddelanden om förändringar i prestanda eller användning
+* [Konfigurera aviseringar i AI](../azure-monitor/alerts/alerts-log.md) för att få meddelanden om förändringar i prestanda eller användning
 * [Smart identifiering i Application Insights](../azure-monitor/app/proactive-diagnostics.md) utför en proaktiv analys av telemetri som skickas till Application Insights för att varna dig om potentiella prestanda problem

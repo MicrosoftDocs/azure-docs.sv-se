@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210383"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573459"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Utforska Azure Monitor för Azure cache för Redis
 
@@ -186,6 +186,6 @@ Information om fel sökning finns i [artikeln](troubleshoot-workbooks.md)om att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Konfigurera [mått aviseringar](../platform/alerts-metric.md) och [meddelanden om tjänst hälsa](../../service-health/alerts-activity-log-service-notifications-portal.md) för att konfigurera automatiserade aviseringar som hjälper till att identifiera problem.
+* Konfigurera [mått aviseringar](../alerts/alerts-metric.md) och [meddelanden om tjänst hälsa](../../service-health/alerts-activity-log-service-notifications-portal.md) för att konfigurera automatiserade aviseringar som hjälper till att identifiera problem.
 
-* Lär dig mer om scenarier som arbets böcker stöder, hur du skapar och anpassar rapporter med mera genom att granska [skapa interaktiva rapporter med Azure Monitor arbets böcker](../platform/workbooks-overview.md).
+* Lär dig mer om scenarier som arbets böcker stöder, hur du skapar och anpassar rapporter med mera genom att granska [skapa interaktiva rapporter med Azure Monitor arbets böcker](../visualize/workbooks-overview.md).

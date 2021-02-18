@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233873"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576162"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Nätverksbandbredd för virtuell dator
 
@@ -55,12 +55,12 @@ Data överföring mellan slut punkter kräver att flera flöden skapas förutom 
 ## <a name="flow-limits-and-active-connections-recommendations"></a>Rekommendationer för flödes gränser och aktiva anslutningar
 
 Idag stöder Azure Networking stack totalt 1 miljon totalt antal flöden (500 000 inkommande och 500 000 utgående) för en virtuell dator. Det totala antalet aktiva anslutningar som kan hanteras av en virtuell dator i olika scenarier är följande.
-- Virtuella datorer som tillhör VNET kan hantera 500 000 **_aktiva anslutningar_* _ för alla VM-storlekar med 500 000 _*_aktiva flöden i varje riktning_*_.  
-- Virtuella datorer med virtuella nätverks installationer (NVA) som gateway, proxy, brand vägg kan hantera 250 000 _*_aktiva anslutningar_*_ med 500 000 _ *_aktiva flöden i varje riktning_** på grund av vidarebefordran och ytterligare ny flödes skapande i den nya anslutnings konfigurationen till nästa hopp som visas i diagrammet ovan. 
+- Virtuella datorer som tillhör VNET kan hantera 500 000 ***aktiva anslutningar** _ för alla VM-storlekar med 500 000 _ *_aktiva flöden i varje riktning_* *.  
+- Virtuella datorer med virtuella nätverks installationer (NVA) som gateway, proxy, brand vägg kan hantera 250 000 ***aktiva anslutningar** _ med 500 000 _ *_aktiva flöden i varje riktning_** på grund av vidarebefordran och ytterligare ny flödes skapande i den nya anslutnings konfigurationen till nästa hopp som visas i diagrammet ovan. 
 
 När den här gränsen har nåtts tas ytterligare anslutningar bort. Etablerings takten och termins taxan för anslutning kan också påverka nätverks prestanda som upprättande av anslutningar och avsluta delar CPU med paket bearbetnings rutiner. Vi rekommenderar att du benchmark-arbetsbelastningar mot förväntade trafik mönster och skalar ut arbets belastningar på lämpligt sätt för att matcha dina prestanda behov.
 
-Mått är tillgängliga i [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) för att spåra antalet nätverks flöden och takten för skapande av flödet på den virtuella datorn eller VMSS-instanser.
+Mått är tillgängliga i [Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) för att spåra antalet nätverks flöden och takten för skapande av flödet på den virtuella datorn eller VMSS-instanser.
 
 ![Skärm bild som visar sidan mått för Azure Monitor med ett linje diagram och summor för inkommande och utgående flöden.](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 

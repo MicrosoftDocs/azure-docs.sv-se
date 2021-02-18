@@ -4,12 +4,12 @@ description: Lär dig att visa och fråga efter Azure Functions telemetridata so
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56af6af6f4204a819c06fd97cda357dca20a19b0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549566"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591188"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysera Azure Functions telemetri i Application Insights 
 
@@ -65,12 +65,12 @@ Följande områden i Application Insights kan vara användbara när du ska utvä
 | ---- | ----------- |
 | **[Fel](../azure-monitor/app/asp-net-exceptions.md)** |  Skapa diagram och aviseringar baserat på funktions fel och Server undantag. **Åtgärds namnet** är funktions namnet. Felen i beroenden visas inte om du inte implementerar anpassad telemetri för beroenden. |
 | **[Prestanda](../azure-monitor/app/performance-counters.md)** | Analysera prestanda problem genom att Visa resursutnyttjande och data flöde per **moln roll instanser**. Dessa prestanda data kan vara användbara för fel sökning av scenarier där funktioner bogging de underliggande resurserna. |
-| **[Mått](../azure-monitor/platform/metrics-charts.md)** | Skapa diagram och aviseringar som baseras på mått. Mått inkluderar antalet funktions anrop, körnings tid och lyckade kostnader. |
+| **[Mått](../azure-monitor/essentials/metrics-charts.md)** | Skapa diagram och aviseringar som baseras på mått. Mått inkluderar antalet funktions anrop, körnings tid och lyckade kostnader. |
 | **[Live-mått](../azure-monitor/app/live-stream.md)** | Visa mått data när de skapas i nära real tid. |
 
 ## <a name="query-telemetry-data"></a>Fråga telemetri-data
 
-[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) ger dig åtkomst till alla telemetridata i form av tabeller i en databas. Analytics innehåller ett frågespråk för extrahering, manipulering och visualisering av data. 
+[Application Insights Analytics](../azure-monitor/logs/log-query-overview.md) ger dig åtkomst till alla telemetridata i form av tabeller i en databas. Analytics innehåller ett frågespråk för extrahering, manipulering och visualisering av data. 
 
 Välj **loggar** för att utforska eller fråga efter loggade händelser.
 

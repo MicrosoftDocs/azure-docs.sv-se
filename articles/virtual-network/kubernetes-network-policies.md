@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222657"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594972"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Översikt över Azure Kubernetes Network policies
 
@@ -130,7 +130,7 @@ Det finns också ett mått för "exec_time_count" och "exec_time_sum" för varje
 Måtten kan kasseras genom Azure Monitor för behållare eller via Prometheus.
 
 ### <a name="setup-for-azure-monitor"></a>Installations program för Azure Monitor
-Det första steget är att aktivera Azure Monitor för behållare för ditt Kubernetes-kluster. Du hittar stegen i [Azure Monitor for containers Overview](../azure-monitor/insights/container-insights-overview.md). När du har Azure Monitor för behållare aktiverade konfigurerar du [Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) för att aktivera NPM-integrering och insamling av Prometheus NPM-mått. Azure Monitor for containers ConfigMap har ett ```integrations``` avsnitt med inställningar för att samla in NPM-mått. De här inställningarna är inaktiverade som standard i ConfigMap. När du aktiverar den grundläggande inställningen ```collect_basic_metrics = true``` samlas Basic NPM-mått in. Om du aktiverar avancerad inställning ```collect_advanced_metrics = true``` samlas avancerade mått utöver de grundläggande måtten. 
+Det första steget är att aktivera Azure Monitor för behållare för ditt Kubernetes-kluster. Du hittar stegen i [Azure Monitor for containers Overview](../azure-monitor/containers/container-insights-overview.md). När du har Azure Monitor för behållare aktiverade konfigurerar du [Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) för att aktivera NPM-integrering och insamling av Prometheus NPM-mått. Azure Monitor for containers ConfigMap har ett ```integrations``` avsnitt med inställningar för att samla in NPM-mått. De här inställningarna är inaktiverade som standard i ConfigMap. När du aktiverar den grundläggande inställningen ```collect_basic_metrics = true``` samlas Basic NPM-mått in. Om du aktiverar avancerad inställning ```collect_advanced_metrics = true``` samlas avancerade mått utöver de grundläggande måtten. 
 
 När du har redigerat ConfigMap sparar du det lokalt och tillämpar ConfigMap på klustret på följande sätt.
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Avancerade mått är valfria och när du aktiverar dem aktive ras automatiskt grundläggande mått samling. Avancerade mått omfattar för närvarande endast `npm_ipset_counts`
 
-Läs mer om [Azure Monitor för inställningar för behållare samling i config Map](../azure-monitor/insights/container-insights-agent-config.md)
+Läs mer om [Azure Monitor för inställningar för behållare samling i config Map](../azure-monitor/containers/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Visualiserings alternativ för Azure Monitor
 När NPM mått samling har Aktiver ATS kan du visa måtten i Azure Portal med hjälp av container Insights eller i Grafana.
@@ -154,7 +154,7 @@ När NPM mått samling har Aktiver ATS kan du visa måtten i Azure Portal med hj
 Förutom att Visa arbets boken (bilder nedan), kan du också direkt fråga Prometheus-måtten i "logs" i avsnittet insikter. Den här frågan returnerar till exempel alla mått som samlas in.
 | där TimeGenerated > sedan (5H) | där namnet innehåller "npm_"
 
-Du kan också fråga Log Analytics direkt för måtten. Lär dig mer om det med [komma igång med Log Analytics frågor](../azure-monitor/insights/container-insights-log-search.md) 
+Du kan också fråga Log Analytics direkt för måtten. Lär dig mer om det med [komma igång med Log Analytics frågor](../azure-monitor/containers/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Visa på Grafana-instrumentpanelen
 Konfigurera din Grafana-Server och konfigurera en Log Analytics data källa enligt beskrivningen [här](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource). Importera sedan [Grafana-instrumentpanelen med en Log Analytics Server](https://grafana.com/grafana/dashboards/10956) del till dina Grafana-labb.

@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573372"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593992"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Planera och hantera kostnader för Azure App Service
 
@@ -38,7 +38,7 @@ Beroende på vilken funktion du använder i App Service kan följande kostnads u
 - **App Service plan**  Krävs för att vara värd för en App Service app.
 - **Isolerad nivå**  En [Virtual Network](../virtual-network/index.yml) krävs för en app service miljö.
 - **Säkerhetskopiera**  Det krävs ett [lagrings konto](../storage/index.yml) för att göra säkerhets kopior.
-- **Diagnostikloggar**  Du kan välja [lagrings konto](../storage/index.yml) som loggnings alternativ eller integrera med [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md).
+- **Diagnostikloggar**  Du kan välja [lagrings konto](../storage/index.yml) som loggnings alternativ eller integrera med [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md).
 - **App service certifikat**  Certifikat som du köper i Azure måste behållas i [Azure Key Vault](../key-vault/index.yml).
 
 Andra kostnads resurser för App Service är (se [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/) för mer information):
@@ -114,7 +114,7 @@ Produktions arbets belastningar levereras med rekommendationen för den dedikera
 > [!NOTE]
 > **Premium v3** stöder både Windows-behållare och Linux-behållare. 
 
-När du har valt den pris nivå du vill ha bör du minimera inaktiva instanser. I en skalbar distribution kan du slösa pengar på underutnyttjade beräknings instanser. Du bör [Konfigurera automatisk skalning](../azure-monitor/platform/autoscale-get-started.md), tillgängligt på **standard** -nivån och över. Genom att skapa skalbara scheman, samt regler för måttbaserade skalbarhet, betalar du bara för de instanser som du verkligen behöver vid en specifik tidpunkt.
+När du har valt den pris nivå du vill ha bör du minimera inaktiva instanser. I en skalbar distribution kan du slösa pengar på underutnyttjade beräknings instanser. Du bör [Konfigurera automatisk skalning](../azure-monitor/autoscale/autoscale-get-started.md), tillgängligt på **standard** -nivån och över. Genom att skapa skalbara scheman, samt regler för måttbaserade skalbarhet, betalar du bara för de instanser som du verkligen behöver vid en specifik tidpunkt.
 
 ### <a name="azure-reservations"></a>Azure-reservationer
 

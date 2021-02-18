@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2f68452bed69e4e174f126d259e8df6d2283e6cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787968"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585227"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Övervaka, diagnostisera och felsök Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -69,7 +69,7 @@ För att kunna hantera sådana program kan du övervaka dem proaktivt och först
   * [Bilaga 4: använda Excel för att visa mått och logg data]
   * [Bilaga 5: övervakning med Application Insights för Azure-DevOps]
 
-## <a name="introduction"></a><a name="introduction"></a>Insättning
+## <a name="introduction"></a><a name="introduction"></a>Introduktion
 Den här guiden visar hur du använder funktioner som Azure-lagringsanalys, loggning på klient sidan i Azure Storage klient bibliotek och andra verktyg från tredje part för att identifiera, diagnostisera och felsöka Azure Storage relaterade problem.
 
 ![Diagram som visar flödet av information mellan klient program och Azure Storage-tjänster.][1]
@@ -94,7 +94,7 @@ Avsnittet "[fel söknings vägledning]" innehåller fel söknings vägledning f�
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Övervaka lagrings tjänsten
 Om du är bekant med Windows prestanda övervakning kan du tänka på lagrings mått som Azure Storage motsvarande räknare i Windows prestanda övervakaren. I lagrings mått får du en omfattande uppsättning mått (räknare i Windows prestanda övervaknings terminologi) som till exempel tjänst tillgänglighet, totalt antal begär Anden att betjäna eller procent lyckade förfrågningar till tjänst. En fullständig lista över tillgängliga mått finns i [Lagringsanalys Metrics Table schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema). Du kan ange om du vill att lagrings tjänsten ska samla in och aggregera mått varje timme eller varje minut. Mer information om hur du aktiverar mått och övervakar dina lagrings konton finns i [Aktivera lagrings mått och visa mått data](../blobs/monitor-blob-storage.md).
 
-Du kan välja vilka Tim mått som du vill visa i [Azure Portal](https://portal.azure.com) och konfigurera regler som meddelar administratörer via e-post när ett Tim mått överskrider ett visst tröskelvärde. Mer information finns i [ta emot aviseringar](../../azure-monitor/platform/alerts-overview.md).
+Du kan välja vilka Tim mått som du vill visa i [Azure Portal](https://portal.azure.com) och konfigurera regler som meddelar administratörer via e-post när ett Tim mått överskrider ett visst tröskelvärde. Mer information finns i [ta emot aviseringar](../../azure-monitor/alerts/alerts-overview.md).
 
 Vi rekommenderar att du läser [Azure Monitor för lagring](../../azure-monitor/insights/storage-insights-overview.md) (för hands version). Det är en funktion i Azure Monitor som erbjuder omfattande övervakning av dina Azure Storage-konton genom att leverera en enhetlig vy över dina Azure Storage tjänsters prestanda, kapacitet och tillgänglighet. Du behöver inte aktivera eller konfigurera något, och du kan direkt Visa dessa mått från de fördefinierade interaktiva diagrammen och andra visualiseringar som ingår.
 

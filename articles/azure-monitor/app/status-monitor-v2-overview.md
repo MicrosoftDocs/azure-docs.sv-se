@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186226"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583809"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Distribuera Azure Monitor Application Insights agent för lokala servrar
 
@@ -67,7 +67,7 @@ Vart och ett av dessa alternativ beskrivs i de [detaljerade anvisningarna](statu
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) -cmdlet: en kan användas för att kontrol lera att aktiveringen har slutförts.
   - Vi rekommenderar att du använder [Live-mått](./live-stream.md) för att snabbt avgöra om din app skickar telemetri.
 
-  - Du kan också använda [Log Analytics](../log-query/log-analytics-tutorial.md) för att visa en lista över alla moln roller som för närvarande skickar telemetri:
+  - Du kan också använda [Log Analytics](../logs/log-analytics-tutorial.md) för att visa en lista över alla moln roller som för närvarande skickar telemetri:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Vart och ett av dessa alternativ beskrivs i de [detaljerade anvisningarna](statu
 
 Visa telemetrin:
 
-* [Utforska mått](../platform/metrics-charts.md) för att övervaka prestanda och användning.
+* [Utforska mått](../essentials/metrics-charts.md) för att övervaka prestanda och användning.
 * [Sök efter händelser och loggar](./diagnostic-search.md) för att diagnostisera problem.
-* [Använd Analytics](../log-query/log-query-overview.md) för mer avancerade frågor.
+* [Använd Analytics](../logs/log-query-overview.md) för mer avancerade frågor.
 * [Skapa instrument paneler](./overview-dashboard.md).
 
 Lägg till mer telemetri:

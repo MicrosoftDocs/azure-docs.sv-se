@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 02/14/2021
 ms.author: danis
-ms.openlocfilehash: 87cb4a233470fadc9cde616790aff0d5cd7b151b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4fc51c8bb8a07f768da16224b9258bbdbf6d9b4
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096665"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100632942"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-Init-stöd för virtuella datorer i Azure
 Den här artikeln beskriver det stöd som finns för [Cloud-Init](https://cloudinit.readthedocs.io) för att konfigurera en virtuell dator (VM) eller skalnings uppsättningar för virtuella datorer vid etablerings tiden i Azure. Dessa Cloud-Init-konfigurationer körs vid första start när resurserna har etablerats av Azure.  
@@ -46,7 +46,7 @@ Det finns två steg för att göra Cloud-Init tillgängligt för de påtecknade 
 | Utgivare/version | Erbjudande | SKU | Version | avbildnings moln – init Ready | stöd för Cloud-Init-paket i Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja-support från paket version: *18.2-1.el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Obs! det här är en förhands gransknings bild och **får** inte användas längre. Detta kommer att tas bort 1 september 2020) | Saknas |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Obs! det här är en förhands gransknings bild och **får** inte användas längre. Detta kommer att tas bort 1 september 2020) | Ej tillämpligt |
 |RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | ja | Ja-support från paket version: *18.5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | ja | Ja-support från paket version: *18.5 -6. el7*|
 |RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | ja | Ja-support från paket version: *18.5 -6. el7*|
@@ -61,7 +61,7 @@ Det finns två steg för att göra Cloud-Init tillgängligt för de påtecknade 
 
 | Utgivare/version | Erbjudande | SKU | Version | avbildnings moln – init Ready | stöd för Cloud-Init-paket i Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Obs! det här är en förhands gransknings bild och **får** inte användas längre. Detta kommer att tas bort 1 september 2020) | Saknas |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Obs! det här är en förhands gransknings bild och **får** inte användas längre. Detta kommer att tas bort 1 september 2020) | Ej tillämpligt |
 |OpenLogic 7,7 |CentOS | 7,7 |7.7.2020062400 |ja | Ja-support från paket version: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |ja | Ja-support från paket version: `18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS – HPC | 7,7 |7.6.2020062600 |ja | Ja-support från paket version: `18.5-6.el7.centos.5`|
@@ -135,6 +135,10 @@ package_upgrade: true
 packages:
   - httpd
 ```
+> [!NOTE]
+> Cloud-Init har flera [indatatyper](https://cloudinit.readthedocs.io/en/latest/topics/format.html), Cloud-Init kommer att använda den första raden i CustomData/UserData för att indikera hur den ska bearbeta InInformationen, till exempel `#cloud-config` anger att innehållet ska bearbetas som en Cloud-Init-konfiguration.
+
+
 Tryck på `ctrl-X` för att stänga filen, Skriv `y` för att spara filen och klicka `enter` för att bekräfta fil namnet vid avslut.
 
 Det sista steget är att skapa en virtuell dator med kommandot [AZ VM Create](/cli/azure/vm) . 

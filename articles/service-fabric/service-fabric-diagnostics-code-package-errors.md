@@ -5,12 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400651b240f0518a85b9deb7a7293a77a88b0861
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256500"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591702"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostisera vanliga kod paket fel med hjälp av Service Fabric
 
@@ -41,7 +41,7 @@ Service Fabric kan vara ansvarig för att avsluta ditt kod paket av olika orsake
 >[!NOTE]
 > Om din process eller behållare slutar med en annan slutkod än koden i följande tabell, är Service Fabric inte ansvarig för att avsluta den.
 
-Slutkod | Beskrivning
+Slutkod | Description
 --------- | -----------
 7147 | Indikerar att Service Fabric stänga av processen eller behållaren korrekt genom att skicka en CTRL + C-signal.
 7148 | Anger att Service Fabric avslutade processen eller containern. Den här felkoden indikerar ibland att processen eller containern inte svarade i tid efter att ha skickat en CTRL + C-signal och måste avslutas.
@@ -52,11 +52,11 @@ Slutkod | Beskrivning
 Slutkod | HEXADECIMALT värde | Kort beskrivning | Rotorsak | Möjlig åtgärd
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Det här felet innebär ibland att datorn har slut på heap-utrymmet på Skriv bordet. Den här orsaken är särskilt sannolik om du har flera processer som hör till ditt program som körs på noden. | Om programmet inte har skapats för att svara på CTRL + C-signaler kan du aktivera inställningen **EnableActivateNoWindow** i kluster manifestet. Att aktivera den här inställningen innebär att kod paketet körs utan ett GUI-fönster och inte får CTRL + C-signaler. Den här åtgärden minskar också mängden Skriv bords utrymme som varje process förbrukar. Om ditt kod paket måste ta emot CTRL + C-signaler kan du öka storleken på nodens Skriv bords heap.
-3762504530 | 0xe0434352 | E.t. | Det här värdet representerar felkoden för ett ohanterat undantag från hanterad kod (det vill säga .NET). | Den här avslutnings koden visar att ditt program utlöste ett undantag som inte hanteras och som avbröt processen. I det första steget när du avgör vad som utlöste det här felet kan du felsöka programmets loggar och dumpfiler.
+3762504530 | 0xe0434352 | Ej tillämpligt | Det här värdet representerar felkoden för ett ohanterat undantag från hanterad kod (det vill säga .NET). | Den här avslutnings koden visar att ditt program utlöste ett undantag som inte hanteras och som avbröt processen. I det första steget när du avgör vad som utlöste det här felet kan du felsöka programmets loggar och dumpfiler.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om att [diagnostisera andra vanliga scenarier](service-fabric-diagnostics-common-scenarios.md).
 * Få en mer detaljerad översikt över Azure Monitor loggar och vad de erbjuder genom att läsa [Azure Monitor översikt](../azure-monitor/overview.md).
-* Lär dig mer om Azure Monitor loggar [varningar](../azure-monitor/platform/alerts-overview.md) för hjälp vid identifiering och diagnostik.
-* Bekanta dig med [loggs ökningen och fråge](../azure-monitor/log-query/log-query-overview.md) funktionerna som ingår i Azure Monitor loggar.
+* Lär dig mer om Azure Monitor loggar [varningar](../azure-monitor/alerts/alerts-overview.md) för hjälp vid identifiering och diagnostik.
+* Bekanta dig med [loggs ökningen och fråge](../azure-monitor/logs/log-query-overview.md) funktionerna som ingår i Azure Monitor loggar.
