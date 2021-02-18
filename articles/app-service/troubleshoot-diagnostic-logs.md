@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 8f3fb0be08bb806d74c689a7656c1c55019eb105
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980617"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586273"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivera diagnostikloggning för appar i Azure App Service
 ## <a name="overview"></a>Översikt
@@ -189,7 +189,7 @@ I följande tabell visas de logg typer och beskrivningar som stöds:
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE & Tomcat | Ja | Ja | Ja | Standardutdata och standard fel |
 | AppServiceHTTPLogs | Ja | Ja | Ja | Ja | Webb server loggar |
-| AppServiceEnvironmentPlatformLogs | Ja | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
+| AppServiceEnvironmentPlatformLogs | Yes | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
 | AppServiceAuditLogs | Ja | Ja | Ja | Ja | Inloggnings aktivitet via FTP och kudu |
 | AppServiceFileAuditLogs | Ja | Ja | TBA | TBA | Fil ändringar som har gjorts i webbplatsens innehåll. **endast tillgängligt för Premium-nivån och över** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Program loggar |
@@ -200,7 +200,7 @@ I följande tabell visas de logg typer och beskrivningar som stöds:
 <sup>1</sup> för Java se appar lägger du till "$Website _AZMON_PREVIEW_ENABLED" i appinställningar och anger den till 1 eller True.
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nästa steg
-* [Fråga efter loggar med Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Fråga efter loggar med Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Övervaka Azure App Service](web-sites-monitor.md)
 * [Felsöka Azure App Service i Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analysera app-loggar i HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

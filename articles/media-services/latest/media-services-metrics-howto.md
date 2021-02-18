@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590756"
 ---
 # <a name="monitor-media-services-metrics"></a>Övervaka Media Services-mått
 
@@ -29,7 +29,7 @@ Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och 
 
 Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av Azure CLI. Den här artikeln visar hur du övervakar mått med Azure Portal-diagram och Azure CLI.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [Skapa ett Media Services-konto](./create-account-howto.md)
 - Granska  [övervaknings Media Services mått och diagnostikloggar](media-services-metrics-diagnostic-logs.md)
@@ -69,8 +69,8 @@ Om du vill ha andra mått ersätter du "utgående" för det mått namn som du ä
 
 ## <a name="see-also"></a>Se även
 
-- [Azure Monitor-statistik](../../azure-monitor/platform/data-platform.md)
-- [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+- [Azure Monitor-statistik](../../azure-monitor/data-platform.md)
+- [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d7753de473d90c45fecb20403352a594ef52dafe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807860"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586296"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azures säkerhets bas linje för App Service
 
@@ -241,9 +241,9 @@ Granska detaljerade säkerhets aviseringar och rekommendationer i Security Cente
 
 Vi rekommenderar att du skapar en process med automatiserade verktyg för att övervaka konfigurationer för nätverks resurser och snabbt identifierar ändringar.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Exportera säkerhetsaviseringar och rekommendationer](../security-center/continuous-export.md)
 
@@ -280,7 +280,7 @@ Använd Microsoft Azure Sentinel, en skalbar, molnbaserad, SIEM (Security inform
 
 Dessutom tillhandahåller Azure Key Vault centraliserad hemlig hantering med åtkomst principer och gransknings historik. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -293,7 +293,7 @@ Dessutom tillhandahåller Azure Key Vault centraliserad hemlig hantering med åt
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för de Log Analytics arbets ytor som är kopplade till dina App Service resurser enligt organisationens regler för efterlevnad.
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -309,7 +309,7 @@ Om du har distribuerat en brand vägg för webbaserade program (WAF) kan du öve
 
 Använd Azure Sentinel, en skalbar och Cloud-ursprunglig säkerhets informations händelse hantering (SIEM) för att integrera med olika data källor och anslutningar, enligt krav. Alternativt kan du aktivera och fordonsbaserad data till en lösning för händelse hantering för säkerhets information från tredje part på Azure Marketplace.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -640,7 +640,7 @@ Observera att även om lokalt anslutna diskar kan användas av webbplatser som t
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar vid ändringar i produktions App Service appar och andra viktiga eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

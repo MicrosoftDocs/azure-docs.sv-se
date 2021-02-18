@@ -3,12 +3,12 @@ title: FedRAMP, måttliga skiss exempel kontroller
 description: Kontroll mappning av exemplet på FedRAMP-måttlig skiss. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 30fd8030150613e6e429501ec27d5cad5cbe2a45
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7a78ebf631d2c7eb21fea64b0b6aa307bb500e0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034806"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594700"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Kontroll mappning för exemplet på FedRAMP-måttlig skiss
 
@@ -284,7 +284,7 @@ Nu när du har granskat kontroll mappningen av FedRAMP måttlig skiss kan du gå
 
 > [!div class="nextstepaction"]
 > [FedRAMP måttlig skiss – översikt](./index.md) 
->  [FodRAMP måttlig skiss – distribuera steg](./deploy.md)
+>  [FedRAMP måttlig skiss – distribuera steg](./deploy.md)
 
 Ytterligare artiklar om skisser och hur de används:
 

@@ -3,17 +3,17 @@ title: Data modell för Azure Application Insights | Microsoft Docs
 description: Beskriver egenskaper som exporteras från löpande export i JSON och som används som filter.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324394"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584214"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights exportera data modell
 Den här tabellen innehåller egenskaperna för telemetri som skickas från [Application Insights](./app-insights-overview.md) SDK: er till portalen.
 Du ser dessa egenskaper i data utdata från [kontinuerlig export](export-telemetry.md).
-De visas också i egenskaps filter i [Metric Explorer](../platform/metrics-charts.md) och [diagnostisk sökning](./diagnostic-search.md).
+De visas också i egenskaps filter i [Metric Explorer](../essentials/metrics-charts.md) och [diagnostisk sökning](./diagnostic-search.md).
 
 Poäng till Anmärkning:
 
@@ -107,13 +107,13 @@ Poäng till Anmärkning:
 ## <a name="context"></a>Kontext
 Alla typer av telemetri åtföljs av ett kontext avsnitt. Alla dessa fält överförs inte med varje data punkt.
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | Context. Custom. dimensions [0] |objekt [] |Nyckel/värde-värdepar som anges av parametern anpassade egenskaper. Nyckelns max längd 100, värdenas max längd 1024. Om det finns fler än 100 unika värden kan egenskapen sökas, men kan inte användas för segmentering. Högst 200 nycklar per iKey. |
 | Context. Custom. Metrics [0] |objekt [] |Nyckel/värde-par som anges av anpassade mått parametrar och av TrackMetrics. Nyckelns max längd 100, värdena kan vara numeriska. |
 | Context. data. eventTime |sträng |UTC |
 | Context. data. isSynthetic |boolean |Förfrågan verkar komma från ett robot-eller webbtest. |
-| Context. data. samplingRate |nummer |Procent andel telemetri som genererats av SDK som skickas till portalen. Intervallet 0,0-100,0. |
+| Context. data. samplingRate |antal |Procent andel telemetri som genererats av SDK som skickas till portalen. Intervallet 0,0-100,0. |
 | Context. Device |objekt |Klienten het |
 | kontext. Device. browser |sträng |IE, Chrome,... |
 | Context. Device. browserVersion |sträng |Chrome 48,0,... |
@@ -154,7 +154,7 @@ Alla typer av telemetri åtföljs av ett kontext avsnitt. Alla dessa fält över
 ## <a name="events"></a>Händelser
 Anpassade händelser som genererats av [TrackEvent ()](./api-custom-events-metrics.md#trackevent).
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | antal händelser [0] |heltal |100/([samplings](./sampling.md) frekvens). Till exempel 4 = &gt; 25%. |
 | namn på händelse [0] |sträng |Händelse namn.  Maxlängd 250. |
@@ -165,7 +165,7 @@ Anpassade händelser som genererats av [TrackEvent ()](./api-custom-events-metri
 ## <a name="exceptions"></a>Undantag
 Rapporterar [undantag](./asp-net-exceptions.md) på servern och i webbläsaren.
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | basicException [0]-sammansättning |sträng | |
 | antal basicException [0] |heltal |100/([samplings](./sampling.md) frekvens). Till exempel 4 = &gt; 25%. |
@@ -194,7 +194,7 @@ Rapporterar [undantag](./asp-net-exceptions.md) på servern och i webbläsaren.
 ## <a name="trace-messages"></a>Spåra meddelanden
 Skickas av [TrackTrace](./api-custom-events-metrics.md#tracktrace)och av [loggnings korten](./asp-net-trace-logs.md).
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | meddelande [0] loggerName |sträng | |
 | meddelande [0] parametrar |sträng | |
@@ -204,14 +204,14 @@ Skickas av [TrackTrace](./api-custom-events-metrics.md#tracktrace)och av [loggni
 ## <a name="remote-dependency"></a>Fjärrberoende
 Skickat av TrackDependency. Används för att rapportera prestanda och användning av [anrop till beroenden](./asp-net-dependencies.md) i servern och AJAX-anrop i webbläsaren.
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | remoteDependency [0] asynkron |boolean | |
 | remoteDependency [0] baseName |sträng | |
 | remoteDependency [0] commandName |sträng |Till exempel "Start/index" |
 | antal remoteDependency [0] |heltal |100/([samplings](./sampling.md) frekvens). Till exempel 4 = &gt; 25%. |
 | remoteDependency [0] dependencyTypeName |sträng |HTTP, SQL,... |
-| remoteDependency [0] durationMetric. Value |nummer |Tid från anrop till slut för ande av svar genom beroende |
+| remoteDependency [0] durationMetric. Value |antal |Tid från anrop till slut för ande av svar genom beroende |
 | remoteDependency [0] `id` |sträng | |
 | remoteDependency [0] namn |sträng |Adresser. Maxlängd 250. |
 | remoteDependency [0] resultCode |sträng |från HTTP-beroende |
@@ -225,10 +225,10 @@ Skickat av TrackDependency. Används för att rapportera prestanda och användni
 ## <a name="requests"></a>Begäranden
 Skickat av [TrackRequest](./api-custom-events-metrics.md#trackrequest). Standardmodulerna använder detta för att rapportera Server svars tid, mätt på servern.
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | antal begär Anden [0] |heltal |100/([samplings](./sampling.md) frekvens). Till exempel: 4 = &gt; 25%. |
-| begäran [0] durationMetric. Value |nummer |Tid från begäran som kommer till svar. 1e7 = = 1s |
+| begäran [0] durationMetric. Value |antal |Tid från begäran som kommer till svar. 1e7 = = 1s |
 | begäran [0] `id` |sträng |`Operation id` |
 | begär ande [0] namn |sträng |Hämta/publicera + URL-bas.  Maxlängd 250 |
 | begäran [0] responseCode |heltal |HTTP-svar som skickats till klienten |
@@ -243,7 +243,7 @@ Skickas av webbläsaren. Mäter tiden för bearbetning av en sida, från använd
 
 Kontext värden visar klientens OS och webbläsarens version.
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess. Value |heltal |Tid från slutet av mottagning av HTML till visning av sidan. |
 | clientPerformance [0] namn |sträng | |
@@ -260,7 +260,7 @@ Kontext värden visar klientens OS och webbläsarens version.
 ## <a name="page-views"></a>Sidvisningar
 Skickat av trackPageView () eller [stopTrackPage](./api-custom-events-metrics.md#page-views)
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | Visa [0] antal |heltal |100/([samplings](./sampling.md) frekvens). Till exempel 4 = &gt; 25%. |
 | Visa [0] durationMetric. Value |heltal |Värdet kan anges i trackPageView () eller av startTrackPage ()-stopTrackPage (). Inte samma som clientPerformance-värden. |
@@ -273,15 +273,15 @@ Skickat av trackPageView () eller [stopTrackPage](./api-custom-events-metrics.md
 ## <a name="availability"></a>Tillgänglighet
 Reports för [webb test för tillgänglighet](./monitor-web-app-availability.md).
 
-| Sökväg | Typ | Obs! |
+| Sökväg | Typ | Kommentarer |
 | --- | --- | --- |
 | tillgänglighet [0] availabilityMetric.name |sträng |availability |
-| tillgänglighet [0] availabilityMetric. Value |nummer |1,0 eller 0,0 |
+| tillgänglighet [0] availabilityMetric. Value |antal |1,0 eller 0,0 |
 | antal tillgänglighets [0] |heltal |100/([samplings](./sampling.md) frekvens). Till exempel 4 = &gt; 25%. |
 | tillgänglighet [0] dataSizeMetric.name |sträng | |
 | tillgänglighet [0] dataSizeMetric. Value |heltal | |
 | tillgänglighet [0] durationMetric.name |sträng | |
-| tillgänglighet [0] durationMetric. Value |nummer |Testets varaktighet. 1e7 = = 1s |
+| tillgänglighet [0] durationMetric. Value |antal |Testets varaktighet. 1e7 = = 1s |
 | tillgänglighets meddelande [0] |sträng |Fel diagnostik |
 | tillgänglighet [0] resultat |sträng |Godkänn/Underkänn |
 | tillgänglighet [0] runLocation |sträng |Geo-källa för http-REQ |

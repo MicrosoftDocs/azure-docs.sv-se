@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd54459cef3d6f20180b4c7c41eefbdd42c6980c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807928"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595607"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Azures säkerhets bas linje för Customer Lockbox för Microsoft Azure
 
@@ -164,7 +164,7 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till din Customer lockbox enligt organisationens regler för efterlevnad.
 
-* [Ange parametrar för logg bevarande](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ange parametrar för logg bevarande](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -186,7 +186,7 @@ Publicera aktivitets loggarna som genererats av Customer Lockbox till Azure Sent
 
 * [Gransknings loggar i Customer Lockbox](./customer-lockbox-overview.md#auditing-logs)
 
-* [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/learn/tutorial-response.md)
+* [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -461,9 +461,9 @@ Du kan effektivisera processen genom att skapa diagnostikinställningar för Azu
 
 * [Så här aktiverar du granskning i Customer Lockbox](./customer-lockbox-overview.md)
 
-* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

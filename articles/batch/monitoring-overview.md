@@ -3,12 +3,12 @@ title: Övervaka Azure Batch
 description: Lär dig mer om Azures övervaknings tjänster, statistik, diagnostikloggar och andra övervakningsfunktioner för Azure Batch.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b926f9c6d173cd0b8d886047eae490e4a151988f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144938"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595425"
 ---
 # <a name="monitor-batch-solutions"></a>Övervaka Batch-lösningar
 
@@ -18,15 +18,15 @@ En översikt över de Azure-komponenter och-tjänster som är tillgängliga för
 
 ## <a name="subscription-level-monitoring"></a>Övervakning på prenumerations nivå
 
-På prenumerations nivå, som innehåller batch-konton, samlar [Azure aktivitets loggen](../azure-monitor/platform/platform-logs-overview.md) in drifts händelse data i [flera kategorier](../azure-monitor/platform/activity-log.md#view-the-activity-log).
+På prenumerations nivå, som innehåller batch-konton, samlar [Azure aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md) in drifts händelse data i [flera kategorier](../azure-monitor/essentials/activity-log.md#view-the-activity-log).
 
 För batch-konton är det specifikt att samla in händelser som rör skapande och borttagning av konton och nyckel hantering i aktivitets loggen.
 
-Ett sätt att hämta händelser från aktivitets loggen är att använda Azure Portal. Klicka på **alla tjänster**  >  **aktivitets logg**. Du kan också fråga efter händelser med hjälp av Azure CLI, PowerShell-cmdletar eller Azure Monitor REST API. Du kan också exportera aktivitets loggen eller konfigurera [aktivitets logg aviseringar](../azure-monitor/platform/alerts-activity-log.md).
+Ett sätt att hämta händelser från aktivitets loggen är att använda Azure Portal. Klicka på **alla tjänster**  >  **aktivitets logg**. Du kan också fråga efter händelser med hjälp av Azure CLI, PowerShell-cmdletar eller Azure Monitor REST API. Du kan också exportera aktivitets loggen eller konfigurera [aktivitets logg aviseringar](../azure-monitor/alerts/alerts-activity-log.md).
 
 ## <a name="batch-account-level-monitoring"></a>Övervakning av batch-konto-nivå
 
-Övervaka varje batch-konto med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [Mät värden](../azure-monitor/platform/data-platform-metrics.md) och eventuella [diagnostiska loggar](../azure-monitor/platform/platform-logs-overview.md) för resurser som omfattas på samma nivå som ett batch-konto, till exempel pooler, jobb och uppgifter. Samla in och Använd dessa data manuellt eller program mässigt för att övervaka aktiviteter i ditt batch-konto och för att diagnosticera problem. Mer information finns i [batch-mått, aviseringar och loggar för diagnostisk utvärdering och övervakning](batch-diagnostics.md).
+Övervaka varje batch-konto med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [Mät värden](../azure-monitor/essentials/data-platform-metrics.md) och eventuella [diagnostiska loggar](../azure-monitor/essentials/platform-logs-overview.md) för resurser som omfattas på samma nivå som ett batch-konto, till exempel pooler, jobb och uppgifter. Samla in och Använd dessa data manuellt eller program mässigt för att övervaka aktiviteter i ditt batch-konto och för att diagnosticera problem. Mer information finns i [batch-mått, aviseringar och loggar för diagnostisk utvärdering och övervakning](batch-diagnostics.md).
  
 > [!NOTE]
 > Mått är tillgängliga som standard i batch-kontot utan ytterligare konfiguration, och de har en historik på 30 dagar. Du måste aktivera diagnostikloggning för ett batch-konto och du kan debiteras ytterligare kostnader för att lagra eller bearbeta diagnostikdata. 

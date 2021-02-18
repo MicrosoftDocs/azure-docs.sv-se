@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36f885416c5e9cb656d01a65b9c503f8897d2f9f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83743763"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593905"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Aktivera Starta/stoppa virtuella datorer när de inte används
 
@@ -50,7 +50,7 @@ När resursen har skapats visas sidan Lägg till lösning. Du uppmanas att konfi
 
    - Ange ett namn för den nya Log Analytics-arbetsytan, till exempel **ContosoLAWorkspace**.
    - Välj en **prenumeration** som du vill länka till genom att välja i list rutan, om det valda standardvärdet inte är tillämpligt.
-   - För **resurs grupp**kan du skapa en ny resurs grupp eller välja en befintlig.
+   - För **resurs grupp** kan du skapa en ny resurs grupp eller välja en befintlig.
    - Välj en **plats**.
    - Välj en **pris nivå**. Välj alternativet **per GB (fristående)** . Azure Monitors loggar har uppdaterat [priser](https://azure.microsoft.com/pricing/details/log-analytics/) och nivån per GB är det enda alternativet.
 
@@ -61,11 +61,11 @@ När resursen har skapats visas sidan Lägg till lösning. Du uppmanas att konfi
 
 ## <a name="add-automation-account"></a>Lägg till Automation-konto
 
-Öppna sidan Lägg till lösning igen och välj **Automation-konto**. Du kan välja ett befintligt Automation-konto som inte redan är kopplat till en Log Analytics-arbetsyta. Om du skapar en ny Log Analytics arbets yta kan du skapa ett nytt Automation-konto som du vill koppla till det. Välj ett befintligt Automation-konto eller klicka på **skapa ett Automation-konto**och ange namnet på Automation-kontot i fältet **namn** på sidan Lägg till Automation-konto.
+Öppna sidan Lägg till lösning igen och välj **Automation-konto**. Du kan välja ett befintligt Automation-konto som inte redan är kopplat till en Log Analytics-arbetsyta. Om du skapar en ny Log Analytics arbets yta kan du skapa ett nytt Automation-konto som du vill koppla till det. Välj ett befintligt Automation-konto eller klicka på **skapa ett Automation-konto** och ange namnet på Automation-kontot i fältet **namn** på sidan Lägg till Automation-konto.
 
 Alla andra alternativ fylls i automatiskt baserat på den Log Analytics arbets ytan som valts. Du kan inte ändra de här alternativen. Ett Kör som-konto i Azure är standard metoden för autentisering för Runbooks som ingår i funktionen. 
 
-När du klickar på **OK**verifieras konfigurations alternativen och automation-kontot skapas. Du kan spåra förloppet under **Meddelanden** på menyn.
+När du klickar på **OK** verifieras konfigurations alternativen och automation-kontot skapas. Du kan spåra förloppet under **Meddelanden** på menyn.
 
 ## <a name="define-feature-parameters"></a>Definiera funktions parametrar
 
@@ -82,7 +82,7 @@ När du klickar på **OK**verifieras konfigurations alternativen och automation-
   
 4. Använd fältet **schema** för att välja ett schema för hantering av virtuella datorer med funktionen. Välj start datum och-tid för ditt schema för att skapa ett återkommande dagligt schema med början vid den valda tiden. Det går inte att välja en annan region. Information om hur du konfigurerar schemat till din speciella tidszon när du har konfigurerat funktionen finns i [ändra scheman för start och avstängning](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules).
 
-5. Om du vill ta emot e-postaviseringar från en [Åtgärds grupp](../azure-monitor/platform/action-groups.md)accepterar du standardvärdet **Ja** i fältet  **e-postaviseringar** och anger en giltig e-postadress. Om du väljer **Nej** men väljer ett senare datum som du vill ta emot e-postaviseringar kan du uppdatera åtgärds gruppen som skapas med giltiga e-postadresser avgränsade med kommatecken. 
+5. Om du vill ta emot e-postaviseringar från en [Åtgärds grupp](../azure-monitor/alerts/action-groups.md)accepterar du standardvärdet **Ja** i fältet  **e-postaviseringar** och anger en giltig e-postadress. Om du väljer **Nej** men väljer ett senare datum som du vill ta emot e-postaviseringar kan du uppdatera åtgärds gruppen som skapas med giltiga e-postadresser avgränsade med kommatecken. 
 
 6. Aktivera följande aviserings regler:
 
@@ -92,7 +92,7 @@ När du klickar på **OK**verifieras konfigurations alternativen och automation-
 
 ## <a name="create-alerts"></a>Skapa aviseringar
 
-Starta/stoppa virtuella datorer när de inte används innehåller inte en fördefinierad uppsättning aviseringar. Granska [Skapa logg aviseringar med Azure Monitor](../azure-monitor/platform/alerts-log.md) för att lära dig hur du skapar jobb misslyckade aviseringar som stöder dina DevOps eller operativa processer och procedurer.
+Starta/stoppa virtuella datorer när de inte används innehåller inte en fördefinierad uppsättning aviseringar. Granska [Skapa logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md) för att lära dig hur du skapar jobb misslyckade aviseringar som stöder dina DevOps eller operativa processer och procedurer.
 
 ## <a name="deploy-the-feature"></a>Distribuera funktionen
 

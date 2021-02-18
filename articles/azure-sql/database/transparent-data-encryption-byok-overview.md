@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223448"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582822"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent datakryptering i Azure SQL med kundhanterad nyckel
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -164,7 +164,7 @@ Konfigurera följande Azure-funktioner för att övervaka databas tillstånd och
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md). En oåtkomlig databas som har förlorat åtkomst till TDE-skyddet visas som "ej tillgänglig" efter att den första anslutningen till databasen har nekats.
 - [Aktivitets logg](../../service-health/alerts-activity-log-service-notifications-portal.md) när åtkomst till TDE-skydd i det Kundhanterade nyckel valvet Miss lyckas, läggs poster till i aktivitets loggen.  Genom att skapa aviseringar för dessa händelser kan du återställa åtkomst så snart som möjligt.
-- [Åtgärds grupper](../../azure-monitor/platform/action-groups.md) kan definieras för att skicka aviseringar och aviseringar baserat på dina inställningar, t. ex. e-post/SMS/push/röst, Logic app, webhook, ITSM eller Automation Runbook.
+- [Åtgärds grupper](../../azure-monitor/alerts/action-groups.md) kan definieras för att skicka aviseringar och aviseringar baserat på dina inställningar, t. ex. e-post/SMS/push/röst, Logic app, webhook, ITSM eller Automation Runbook.
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Säkerhets kopiering och återställning av databasen med Kundhanterade TDE
 

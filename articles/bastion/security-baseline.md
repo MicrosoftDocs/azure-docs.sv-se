@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b8f0cfdf3ca6e3b0bb0b455a5690d6a2727786ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392382"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586765"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azures säkerhets bas linje för Azure skydds
 
@@ -376,9 +376,9 @@ Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG) och 
 
 **Vägledning**: aktivitets loggar, som är automatiskt tillgängliga, innehåller alla Skriv åtgärder (placera, skicka, ta bort) för dina Azure skydds-resurser förutom Läs åtgärder (get). Aktivitets loggar kan användas för att hitta ett fel när du felsöker eller övervakar hur en användare i organisationen ändrade en resurs.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Aktivera Azures resurs loggar för Azure skydds](diagnostic-logs.md)
 
@@ -396,7 +396,7 @@ Du kan också aktivera och publicera data till Azure Sentinel eller en SIEM frå
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -410,9 +410,9 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/platform/manage-cost-storage.md)
+- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 - [Aktivera och arbeta med Azure topologier-loggar](diagnostic-logs.md)
 

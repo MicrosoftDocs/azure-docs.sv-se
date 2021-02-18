@@ -4,22 +4,22 @@ description: Registrera och analysera diagnostiska logg händelser för Azure Ba
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994119"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592679"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-mått, aviseringar och loggar för diagnostisk utvärdering och övervakning
 
-Den här artikeln förklarar hur du övervakar ett batch-konto med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [Mät värden](../azure-monitor/platform/data-platform-metrics.md) och [diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md) för resurser i batch-kontot. Samla in och Använd dessa data på flera olika sätt för att övervaka ditt batch-konto och diagnostisera problem. Du kan också konfigurera [mått varningar](../azure-monitor/platform/alerts-overview.md) så att du får meddelanden när ett mått når ett angivet värde.
+Den här artikeln förklarar hur du övervakar ett batch-konto med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [Mät värden](../azure-monitor/essentials/data-platform-metrics.md) och [diagnostikloggar](../azure-monitor/essentials/platform-logs-overview.md) för resurser i batch-kontot. Samla in och Använd dessa data på flera olika sätt för att övervaka ditt batch-konto och diagnostisera problem. Du kan också konfigurera [mått varningar](../azure-monitor/alerts/alerts-overview.md) så att du får meddelanden när ett mått når ett angivet värde.
 
 ## <a name="batch-metrics"></a>Batch-mått
 
 Mått är Azure-telemetridata (kallas även prestanda räknare) som genereras av dina Azure-resurser och som används av tjänsten Azure Monitor. Exempel på mått i ett batch-konto är pool för att skapa händelser, Low-Priority antal noder och aktivitetens kompletta händelser.
 
-Se [listan över de batch-mått som stöds](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
+Se [listan över de batch-mått som stöds](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts).
 
 Mått är:
 
@@ -68,9 +68,9 @@ Så här konfigurerar du en mått avisering i Azure Portal:
 5. I avsnittet **aviserings regel information** anger du ett namn och en **Beskrivning** för **varnings regeln** och väljer **allvarlighets grad**
 6. Välj **Skapa varningsregel**.
 
-Mer information om hur du skapar mått aviseringar finns i [förstå hur mått varningar fungerar i Azure Monitor](../azure-monitor/platform/alerts-metric-overview.md) och [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-metric.md).
+Mer information om hur du skapar mått aviseringar finns i [förstå hur mått varningar fungerar i Azure Monitor](../azure-monitor/alerts/alerts-metric-overview.md) och [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 
-Du kan också konfigurera en nästan real tids avisering med hjälp av Azure Monitor [REST API](/rest/api/monitor/). Mer information finns i [Översikt över aviseringar i Microsoft Azure](../azure-monitor/platform/alerts-overview.md). Om du vill inkludera jobb, uppgift eller leverantörsspecifik information i dina aviseringar kan du läsa informationen om Sök frågor i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/learn/tutorial-response.md).
+Du kan också konfigurera en nästan real tids avisering med hjälp av Azure Monitor [REST API](/rest/api/monitor/). Mer information finns i [Översikt över aviseringar i Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Om du vill inkludera jobb, uppgift eller leverantörsspecifik information i dina aviseringar kan du läsa informationen om Sök frågor i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Batch-diagnostik
 
@@ -88,7 +88,7 @@ Ett vanligt scenario är att välja ett Azure Storage konto som mål för loggen
 Alternativt kan du:
 
 - Strömma logg händelser för batch-diagnostikloggar till en [Azure Event Hub](../event-hubs/event-hubs-about.md). Event Hubs kan mata in miljon tals händelser per sekund, som du sedan kan omvandla och lagra med valfri analys-Provider i real tid.
-- Skicka diagnostikloggar till [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md)där du kan analysera dem eller exportera dem för analys i Power BI eller Excel.
+- Skicka diagnostikloggar till [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md)där du kan analysera dem eller exportera dem för analys i Power BI eller Excel.
 
 > [!NOTE]
 > Du kan debiteras ytterligare kostnader för att lagra eller bearbeta diagnostikdata med Azure-tjänster.
@@ -105,7 +105,7 @@ Följ stegen nedan om du vill skapa en ny diagnostisk inställning i Azure Porta
 6. Välj **ServiceLog**, **AllMetrics** eller båda.
 7. Välj **Spara** för att skapa den diagnostiska inställningen.
 
-Du kan också [Aktivera samling genom Azure Monitor i Azure Portal](../azure-monitor/platform/diagnostic-settings.md) för att konfigurera diagnostikinställningar, med hjälp av en [Resource Manager-mall](../azure-monitor/samples/resource-manager-diagnostic-settings.md)eller med Azure PowerShell eller Azure CLI. Mer information finns i [Översikt över Azures plattforms loggar](../azure-monitor/platform/platform-logs-overview.md).
+Du kan också [Aktivera samling genom Azure Monitor i Azure Portal](../azure-monitor/essentials/diagnostic-settings.md) för att konfigurera diagnostikinställningar, med hjälp av en [Resource Manager-mall](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)eller med Azure PowerShell eller Azure CLI. Mer information finns i [Översikt över Azures plattforms loggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Åtkomst till diagnostikloggar i Storage
 
@@ -135,7 +135,7 @@ Nedan visas ett exempel på en `PoolResizeCompleteEvent` post i en `PT1H.json` l
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Mer information om schemat för diagnostikloggar i lagrings kontot finns i [arkivera Azures resurs loggar till lagrings kontot](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Använd Storage-API: er för att komma åt loggarna i ditt lagrings konto program mässigt.
+Mer information om schemat för diagnostikloggar i lagrings kontot finns i [arkivera Azures resurs loggar till lagrings kontot](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Använd Storage-API: er för att komma åt loggarna i ditt lagrings konto program mässigt.
 
 ### <a name="service-log-events"></a>Tjänst logg händelser
 

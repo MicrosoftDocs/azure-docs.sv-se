@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 44d071c635967e4ce3078be8419414bc9ff0c653
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016462"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580147"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Tillägg och funktioner för virtuella datorer för Windows
 
@@ -36,7 +36,7 @@ Den här artikeln innehåller en översikt över VM-tillägg, krav för att anv�
 Flera olika Azure VM-tillägg är tillgängliga, var och en med ett särskilt användnings fall. Några exempel är:
 
 - Använd PowerShell Desired State Configurations på en virtuell dator med DSC-tillägget för Windows. Mer information finns i [tillägget Azure Desired State Configuration](dsc-overview.md).
-- Konfigurera övervakning av en virtuell dator med det virtuella Log Analytics agent-tillägget. Mer information finns i [ansluta virtuella Azure-datorer till Azure Monitor loggar](../../azure-monitor/learn/quick-collect-azurevm.md).
+- Konfigurera övervakning av en virtuell dator med det virtuella Log Analytics agent-tillägget. Mer information finns i [ansluta virtuella Azure-datorer till Azure Monitor loggar](../../azure-monitor/vm/quick-collect-azurevm.md).
 - Konfigurera en virtuell Azure-dator med hjälp av chef. Mer information finns i [Automatisera distribution av virtuella Azure-datorer med chef](/azure/developer/chef/windows-vm-configure).
 - Konfigurera övervakning av din Azure-infrastruktur med Datadog-tillägget. Mer information finns i Datadog- [bloggen](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 

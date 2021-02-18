@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0f3b36729fb07c6f5ae03a46e199e4cadb44a25e
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635599"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Översikt över Red Hat Enterprise Linux avbildningar
 
@@ -65,6 +65,9 @@ Denna bild versions jämförelse görs genom att jämföra värdena som ett [ver
 
 ## <a name="rhel-6-image-types"></a>RHEL 6-avbildnings typer
 
+>[!NOTE]
+> Från och med december 30 2020 har RHEL 6,10 infört livs längd (EOL). För fortsatt support aktiverar du ELS som en del av den utökade support fasen för livs cykeln, se [dokumentationen för Red Hat Els](./redhat-extended-lifecycle-support.md).
+
 För RHEL 6. x-bilder visas bild typerna i följande tabell.
 
 |Publisher | Erbjudande | SKU-värde | Version | Information
@@ -106,7 +109,15 @@ Information om typer av RHEL 8-avbildningar finns nedan.
 |Redhat | RHEL | 8 | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.0.20191023) | De här avbildningarna är RHEL 8 LVM-partitionerade avbildningar anslutna till Red Hat-standarddatabaser.
 |Redhat | RHEL | 8-Gen2 | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.0.20191024) | De här avbildningarna är Hyper-V generation 2 RHEL 8 LVM-partitionerade avbildningar anslutna till Red Hat-standarddatabaser. Mer information om virtuella datorer i generation 2 i Azure finns i [stöd för virtuella datorer i generation 2 i Azure](../../generation-2.md).
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL har längre stöd för tillägg
+## <a name="rhel-extended-support-add-ons"></a>RHEL Extended support-tillägg
+
+### <a name="extended-life-cycle-support"></a>Stöd för utökad livs cykel
+
+Det utökade ELS-tillägget (Life-Cycle support) är en valfri prenumeration som möjliggör viktiga och viktiga säkerhets korrigeringar för versioner som har nått livs längd (EOL). Mer information om RHEL-EUS finns i [Red Hat-dokumentationen](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support).
+
+ELS är för närvarande endast tillgängligt för RHEL 6,10. För "betala per användning"-avbildningar kan ELS aktive ras genom att följa stegen i [Red Hat Els-dokumentationen](./redhat-extended-lifecycle-support.md).
+
+Om du kör på en äldre version krävs en uppgradering till RHEL 6,10 innan du kan aktivera ELS.
 
 ### <a name="extended-update-support"></a>Stöd för utökad uppdatering
 

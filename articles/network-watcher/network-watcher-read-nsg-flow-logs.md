@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 27f94c43266fe324016a73e2e6d31e8488457416
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898104"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593052"
 ---
 # <a name="read-nsg-flow-logs"></a>Läs NSG-flödesloggar
 
@@ -189,6 +189,6 @@ Det här scenariot är ett exempel på hur du kan läsa poster i NSG Flow-loggar
 
 Besök [Använd elastisk stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Använd Grafana](network-watcher-nsg-grafana.md)och [Använd Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) för att lära dig mer om hur du kan visa NSG flödes loggar. En Azure-funktion med öppen källkod som använder blobarna direkt och skickas till olika Log Analytics-konsumenter kan hittas här: [Azure Network WATCHER NSG Flow logs Connector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Du kan använda [Azure trafikanalys](./traffic-analytics.md) för att få insikter om dina trafikflöde. Trafikanalys använder [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) för att kunna köra ditt trafikflöde.
+Du kan använda [Azure trafikanalys](./traffic-analytics.md) för att få insikter om dina trafikflöde. Trafikanalys använder [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) för att kunna köra ditt trafikflöde.
 
 Läs mer om Storage blobbar på: [Azure Functions Blob Storage-bindningar](../azure-functions/functions-bindings-storage-blob.md)

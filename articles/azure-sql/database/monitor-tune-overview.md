@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 3d28cf1a89ff455cfbed26aad234607ec8cd7e63
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490575"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592700"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Övervakning och prestandajustering för Azure SQL Database och Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -99,11 +99,11 @@ Du konfigurerar diagnostikinställningar till att strömma kategorier av mått o
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics arbets yta i Azure Monitor
 
-Du kan strömma mått och resurs loggar till en [Log Analytics arbets yta i Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Data som strömmas här kan användas av [SQL Analytics](../../azure-monitor/insights/azure-sql.md), som är en övervaknings lösning för endast molnet som ger intelligent övervakning av dina databaser som innehåller prestanda rapporter, aviseringar och rekommendationer. Data som strömmas till en Log Analytics arbets yta kan analyseras med andra övervaknings data som samlas in och du kan också använda andra Azure Monitor funktioner, till exempel aviseringar och visualiseringar.
+Du kan strömma mått och resurs loggar till en [Log Analytics arbets yta i Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace). Data som strömmas här kan användas av [SQL Analytics](../../azure-monitor/insights/azure-sql.md), som är en övervaknings lösning för endast molnet som ger intelligent övervakning av dina databaser som innehåller prestanda rapporter, aviseringar och rekommendationer. Data som strömmas till en Log Analytics arbets yta kan analyseras med andra övervaknings data som samlas in och du kan också använda andra Azure Monitor funktioner, till exempel aviseringar och visualiseringar.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-Du kan strömma mått och resurs loggar till [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs). Att strömma Diagnostic-telemetri till Event Hubs för att tillhandahålla följande funktioner:
+Du kan strömma mått och resurs loggar till [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs). Att strömma Diagnostic-telemetri till Event Hubs för att tillhandahålla följande funktioner:
 
 - **Strömma loggar till tredjepartssystem för loggning och telemetri**
 
@@ -117,7 +117,7 @@ Du kan strömma mått och resurs loggar till [Azure Event Hubs](../../azure-moni
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Strömma mått och resurs loggar till [Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Använd Azure Storage för att arkivera stora mängder diagnostiska telemetri för en bråkdel av kostnaden för de föregående två strömnings alternativen.
+Strömma mått och resurs loggar till [Azure Storage](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). Använd Azure Storage för att arkivera stora mängder diagnostiska telemetri för en bråkdel av kostnaden för de föregående två strömnings alternativen.
 
 ## <a name="use-extended-events"></a>Använda utökade händelser 
 

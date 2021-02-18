@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657030"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581557"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Övervaka prestanda med Query Store
 
@@ -88,7 +88,7 @@ När Query Store har Aktiver ATS sparas data i 15-minuters agg regerings fönste
 
 Följande alternativ är tillgängliga för att konfigurera parametrar för Frågearkivet.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall**|
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall**|
 |---|---|---|---|
 | pg_qs pg_qs.query_capture_mode | Anger vilka instruktioner som spåras. | inget | ingen, Top, alla |
 | pg_qs pg_qs.max_query_text_length | Anger den maximala fråge längden som kan sparas. Längre frågor kommer att trunkeras. | 6000 | 100 – 10 000 |
@@ -97,7 +97,7 @@ Följande alternativ är tillgängliga för att konfigurera parametrar för Frå
 
 Följande alternativ gäller specifikt för väntande statistik.
 
-| **Parameter** | **Beskrivning** | **Objekt** | **Intervall**|
+| **Parameter** | **Beskrivning** | **Standardvärde** | **Intervall**|
 |---|---|---|---|
 | pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Anger vilka instruktioner som spåras för väntande statistik. | inget | ingen, alla|
 | Pgms_wait_sampling Pgms_wait_sampling.history_period | Ange frekvensen, i millisekunder, vid sampling av väntande händelser. | 100 | 1-600000 |
@@ -178,7 +178,7 @@ Query_store Query_store.staging_data_reset () returnerar void
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL är integrerat med [Azure Monitor diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md). Med diagnostikinställningar kan du skicka postgres-loggar i JSON-format till [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) för analys och aviseringar, Event Hubs för strömning och Azure Storage för arkivering.
+Azure Database for PostgreSQL är integrerat med [Azure Monitor diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md). Med diagnostikinställningar kan du skicka postgres-loggar i JSON-format till [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) för analys och aviseringar, Event Hubs för strömning och Azure Storage för arkivering.
 
 >[!IMPORTANT]
 > Den här Diagnostic-funktionen för är bara tillgänglig i Generell användning och minnesoptimerade pris nivåer.
@@ -195,7 +195,7 @@ Så här aktiverar du resurs loggar med hjälp av Azure Portal:
 5. Välj logg typerna **QueryStoreRuntimeStatistics** och **QueryStoreWaitStatistics**.
 6. Spara inställningen.
 
-Om du vill aktivera den här inställningen med PowerShell, CLI eller REST API går du till [artikeln diagnostiska inställningar](../azure-monitor/platform/diagnostic-settings.md).
+Om du vill aktivera den här inställningen med PowerShell, CLI eller REST API går du till [artikeln diagnostiska inställningar](../azure-monitor/essentials/diagnostic-settings.md).
 
 ### <a name="json-log-format"></a>JSON-logg format
 I följande tabeller beskrivs fälten för de två logg typerna. Beroende på vilken slut punkt för utdata du väljer kan de fält som ingår och i vilken ordning de visas variera.

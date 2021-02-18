@@ -1,19 +1,19 @@
 ---
 title: Azure Red Hat OpenShift som kör OpenShift 4 – Konfigurera Azure Active Directory autentisering med hjälp av Azure Portal och webb konsolen OpenShift
 description: Lär dig hur du konfigurerar Azure Active Directory-autentisering för ett Azure Red Hat OpenShift-kluster som kör OpenShift 4 med hjälp av Azure Portal och webb konsolen OpenShift
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, AZ Aro, Red Hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7f01404f63a32e3a23413b8eaca64f679f7036d8
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748064"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635170"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Konfigurera Azure Active Directory autentisering för ett Azure Red Hat OpenShift 4-kluster (portal)
 
@@ -36,7 +36,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 Logga in på Azure Portal och navigera till [bladet Appregistreringar](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)och klicka sedan på **ny registrering** för att skapa ett nytt program.
 
-Ange ett namn för programmet, till exempel **Aro-azuread-auth** , och fyll i **omdirigerings-URI: n** med värdet för den OAuth-callback-URL som du hämtade tidigare.
+Ange ett namn för programmet, till exempel **Aro-azuread-auth**, och fyll i **omdirigerings-URI: n** med värdet för den OAuth-callback-URL som du hämtade tidigare.
 
 ![Ny programregistrering](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ Navigera till **certifikat & hemligheter** och klicka på **ny klient hemlighet*
 
 ![Skapa en hemlighet](media/aro4-ad-clientsecret.png)
 
-Gå till **översikten** och anteckna **program** -ID: t och katalog (klient) **-ID: t** . Du behöver dem i ett senare skede.
+Gå till **översikten** och anteckna **program** -ID: t och katalog (klient) **-ID: t**. Du behöver dem i ett senare skede.
 
 ![Hämta program (klient) och katalog (klient) ID: n](media/aro4-ad-ids.png)
 
@@ -60,7 +60,7 @@ Du kan använda valfria anspråk för att:
 
 Vi konfigurerar OpenShift för att använda `email` anspråket och återgår till `upn` att ange önskat användar namn genom att lägga till `upn` som en del av den ID-token som returneras av Azure Active Directory.
 
-Navigera till **token-konfiguration (för hands version)** och klicka på **Lägg till valfritt anspråk** . Välj **ID** och kontrol lera **e-postmeddelandena** och **UPN** -anspråk.
+Navigera till **token-konfiguration (för hands version)** och klicka på **Lägg till valfritt anspråk**. Välj **ID** och kontrol lera **e-postmeddelandena** och **UPN** -anspråk.
 
 ![Skärm bild som visar e-postmeddelandena och UPN-anspråk som har lagts till.](media/aro4-ad-tokens.png)
 
@@ -100,12 +100,12 @@ Du kan hitta kluster konsolens URL genom att köra följande kommando, som ser u
 
 Starta konsol-URL: en i en webbläsare och logga in med `kubeadmin` autentiseringsuppgifterna.
 
-Navigera till **Administration** , klicka på **kluster inställningar** och välj sedan fliken **global konfiguration** . Bläddra för att välja **OAuth** .
+Navigera till **Administration**, klicka på **kluster inställningar** och välj sedan fliken **global konfiguration** . Bläddra för att välja **OAuth**.
 
-Rulla ned till Välj **Lägg till** under **identitets leverantörer** och välj **OpenID Anslut** .
+Rulla ned till Välj **Lägg till** under **identitets leverantörer** och välj **OpenID Anslut**.
 ![Välj OpenID Anslut från List rutan identitets leverantörer](media/aro4-oauth-idpdrop.png)
 
-Fyll i namnet som **AAD** , **klient-ID** : t som **program-ID** och **klient hemlighet** . **Utfärdar-URL: en** är formaterad som sådan: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Ersätt plats hållaren med klient-ID: t som du hämtade tidigare.
+Fyll i namnet som **AAD**, **klient-ID** : t som **program-ID** och **klient hemlighet**. **Utfärdar-URL: en** är formaterad som sådan: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Ersätt plats hållaren med klient-ID: t som du hämtade tidigare.
 
 ![Fyll i OAuth-information](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ Rulla ned till avsnittet **anspråk** och uppdatera det **önskade användar nam
 
 ## <a name="verify-login-through-azure-active-directory"></a>Verifiera inloggning via Azure Active Directory
 
-Om du nu loggar ut från OpenShift-webbkonsolen och försöker logga in igen visas ett nytt alternativ för inloggning med **AAD** . Du kan behöva vänta några minuter.
+Om du nu loggar ut från OpenShift-webbkonsolen och försöker logga in igen visas ett nytt alternativ för inloggning med **AAD**. Du kan behöva vänta några minuter.
 
 ![Inloggnings skärmen med Azure Active Directory alternativ](media/aro4-login-2.png)

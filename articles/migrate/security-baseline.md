@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83ffab432be038a2fbec8672e5e0de8f5c902654
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2d0fef2f2c9832b27b11552bc343a0b76068ff95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880886"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581764"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>Azures säkerhets bas linje för Azure Migrate
 
@@ -335,9 +335,9 @@ Azure Security Center kan också avisera om vissa misstänkta aktiviteter, till 
 
 Aktivitets loggar, som är automatiskt tillgängliga, innehåller alla Skriv åtgärder (placera, skicka, ta bort) för Azure Migrate resurser förutom Läs åtgärder (GET). Aktivitets loggar kan användas för att hitta ett fel när du felsöker eller övervakar hur en användare i organisationen ändrade en resurs.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -353,7 +353,7 @@ Du kan också aktivera och publicera data till Azure Sentinel eller en SIEM frå
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 

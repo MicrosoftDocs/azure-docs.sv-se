@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055169"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585890"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Aktivera Ändringsspårning och inventering från ett Automation-konto
 
@@ -53,7 +53,7 @@ Datorer som inte i Azure måste läggas till manuellt. Vi rekommenderar att du i
 
 1. Från ditt Automation-konto väljer du **inventering** eller **ändrings spårning** under **konfigurations hantering**.
 
-2. Klicka på **Lägg till icke-Azure-dator**. Den här åtgärden öppnar ett nytt webbläsarfönster med [instruktioner för att installera och konfigurera Log Analytics agent för Windows](../../azure-monitor/platform/log-analytics-agent.md) så att datorn kan börja rapportera ändringsspårning-och inventerings åtgärder. Om du aktiverar en dator som för närvarande hanteras av Operations Manager krävs inte en ny agent och informationen i arbets ytan anges i den befintliga agenten.
+2. Klicka på **Lägg till icke-Azure-dator**. Den här åtgärden öppnar ett nytt webbläsarfönster med [instruktioner för att installera och konfigurera Log Analytics agent för Windows](../../azure-monitor/agents/log-analytics-agent.md) så att datorn kan börja rapportera ändringsspårning-och inventerings åtgärder. Om du aktiverar en dator som för närvarande hanteras av Operations Manager krävs inte en ny agent och informationen i arbets ytan anges i den befintliga agenten.
 
 ## <a name="enable-machines-in-the-workspace"></a>Aktivera datorer i arbets ytan
 

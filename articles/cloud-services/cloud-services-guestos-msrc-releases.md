@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 2/9/2021
-ms.author: yohaddad
-ms.openlocfilehash: bd295a753447771654522b3aef938b9a32c468c5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.author: gunnarcms
+ms.openlocfilehash: 63aa13c178acd0b560c2bbd9cbc8873464062488
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105138"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580659"
 ---
 # <a name="azure-guest-os"></a>Azure gäst operativ system
 Följande tabeller visar de uppdateringar av Microsoft Security Response Center (MSRC) som tillämpas på Azures gäst operativ system. Sök i den här artikeln för att avgöra om en viss uppdatering gäller det gäst operativ system som du använder. Uppdateringar överför alltid den specifika [familj][family-explain] som de introducerades i.

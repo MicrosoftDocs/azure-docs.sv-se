@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 226ca943554ca24f3332f24f5a9baf571b432917
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916799"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590626"
 ---
 # <a name="continuously-export-security-center-data"></a>Exportera Security Center data kontinuerligt
 
@@ -44,7 +44,7 @@ Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Ana
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|<ul><li>**Säkerhets administratör** eller **ägare** av resurs gruppen</li><li>Skriv behörigheter för mål resursen</li><li>Om du använder Azure Policy "DeployIfNotExist"-principer som beskrivs nedan måste du också ha behörighet för att tilldela principer</li></ul>|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, annan gov<br>![Ja](./media/icons/yes-icon.png) Kina, gov (till Event Hub)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov, annan gov<br>![Yes](./media/icons/yes-icon.png) Kina, gov (till Event Hub)|
 |||
 
 
@@ -185,7 +185,7 @@ Om du vill visa händelse scheman för de exporterade data typerna går du till 
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Visa exporterade aviseringar och rekommendationer i Azure Monitor
 
-Du kan också välja att Visa exporterade säkerhets aviseringar och/eller rekommendationer i [Azure Monitor](../azure-monitor/platform/alerts-overview.md). 
+Du kan också välja att Visa exporterade säkerhets aviseringar och/eller rekommendationer i [Azure Monitor](../azure-monitor/alerts/alerts-overview.md). 
 
 Azure Monitor ger en enhetlig aviserings upplevelse för en rad olika Azure-aviseringar, inklusive diagnostisk logg, mått aviseringar och anpassade aviseringar baserat på frågor från Log Analytics-arbetsyta.
 
@@ -195,13 +195,13 @@ Om du vill visa aviseringar och rekommendationer från Security Center i Azure M
 
     ![Azure Monitor sidan aviseringar](./media/continuous-export/azure-monitor-alerts.png)
 
-1. På sidan Skapa regel konfigurerar du din nya regel (på samma sätt som du konfigurerar en [logg varnings regel i Azure Monitor](../azure-monitor/platform/alerts-unified-log.md)):
+1. På sidan Skapa regel konfigurerar du din nya regel (på samma sätt som du konfigurerar en [logg varnings regel i Azure Monitor](../azure-monitor/alerts/alerts-unified-log.md)):
 
     * För **resurs** väljer du den Log Analytics arbets yta som du exporterade säkerhets aviseringar och rekommendationer till.
 
     * För **villkor** väljer du **anpassad loggs ökning**. På sidan som visas konfigurerar du frågan, lookback perioden och frekvens perioden. I Sök frågan kan du skriva *SecurityAlert* eller *SecurityRecommendation* för att fråga data typerna som Security Center kontinuerligt exportera till när du aktiverar funktionen för kontinuerlig export till Log Analytics. 
     
-    * Du kan också konfigurera den [Åtgärds grupp](../azure-monitor/platform/action-groups.md) som du vill utlösa. Åtgärds grupper kan utlösa e-post som skickas, ITSM biljetter, Webhooks och mycket annat.
+    * Du kan också konfigurera den [Åtgärds grupp](../azure-monitor/alerts/action-groups.md) som du vill utlösa. Åtgärds grupper kan utlösa e-post som skickas, ITSM biljetter, Webhooks och mycket annat.
     ![Azure Monitor varnings regel](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Nu visas nya Azure Security Center aviseringar eller rekommendationer (beroende på dina konfigurerade regler för kontinuerlig export och det villkor som du har definierat i Azure Monitor varnings regel) i Azure Monitor aviseringar, med automatisk utlösning av en åtgärds grupp (om det finns).

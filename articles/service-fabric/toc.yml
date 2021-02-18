@@ -406,6 +406,54 @@
           href: service-fabric-get-started-mac.md
         - name: Konfigurera Service Fabric CLI
           href: service-fabric-cli.md
+        - name: Arbeta i IDE
+          items:
+            - name: Arbeta i en Windows/VS-utvecklarmiljö
+              items:
+                - name: Hantera program i Visual Studio
+                  href: service-fabric-manage-application-in-visual-studio.md
+                - name: Konfigurera säkra anslutningar i Visual Studio
+                  href: service-fabric-visualstudio-configure-secure-connections.md
+                - name: Felsöka en .NET-tjänst i VS
+                  href: service-fabric-debugging-your-application.md
+                - name: Felsöka Windows-containrar med Service Fabric och VS
+                  href: service-fabric-how-to-debug-windows-containers.md
+                - name: Vanliga fel och undantag
+                  href: service-fabric-errors-and-exceptions.md
+                - name: Övervaka och diagnostisera lokalt
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+                - name: Konfigurera ett Linux-kluster på Windows
+                  href: service-fabric-local-linux-cluster-windows.md
+                - name: Distribuera en .NET Core-app i ett fjärranslutet Linux-kluster från VS
+                  href: service-fabric-how-to-publish-linux-app-vs.md
+            - name: Arbeta i en Linux/Eclipse-utvecklarmiljö
+              items:
+                - name: Komma igång med Eclipse-plugin för utveckling med Java
+                  href: service-fabric-get-started-eclipse.md
+                - name: Felsök en Java-tjänst i Eclipse
+                  href: service-fabric-debugging-your-application-java.md
+                - name: Övervaka och diagnostisera lokalt
+                  href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+            - name: Arbeta i en VS Code-miljö
+              items:
+                - name: Kom igång med VS Code
+                  href: service-fabric-get-started-vs-code.md
+                - name: Utveckla C# Service Fabric-program med VS Code
+                  href: service-fabric-develop-csharp-applications-with-vs-code.md
+                - name: Utveckla Java Service Fabric-program med VS Code
+                  href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Använda Service Fabric hanterade kluster
+      items:
+        - name: Lägga till ett tillägg för VM-skalningsuppsättningar till en hanterad klusternod
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: Konfigurera ditt hanterade kluster
+          href: how-to-managed-cluster-configuration.md
+        - name: Distribuera hanterade kluster program med ARM-mall
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: Konfigurera ett hanterat kluster med hanterad identitet
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
+        - name: Aktivera disk kryptering för hanterade klusternoder
+          href: how-to-enable-managed-cluster-disk-encryption.md
     - name: Planera och förbereda
       items:
         - name: Planera klusterkapacitet
@@ -416,6 +464,142 @@
           href: service-fabric-disaster-recovery.md
         - name: Planera programkapacitet
           href: service-fabric-capacity-planning.md
+    - name: Skapa och hantera kluster
+      items:
+        - name: Kluster i Azure
+          items:
+            - name: Skapa
+              items:
+                - name: Planera för distribution av kluster
+                  href: service-fabric-cluster-azure-deployment-preparation.md
+                - name: Skapa i Azure-portalen
+                  href: service-fabric-cluster-creation-via-portal.md
+                - name: Distribuera ett Azure Service Fabric-kluster mellan tillgänglighetszoner
+                  href: service-fabric-cross-availability-zones.md
+                - name: Distribuera ett Azure Service Fabric-kluster med tillståndslösa nodtyper
+                  href: service-fabric-stateless-node-types.md
+                - name: Konfigurera Azure Active Directory-autentisering
+                  href: service-fabric-cluster-creation-setup-aad.md
+                - name: Skapa en anpassad klustermall
+                  href: service-fabric-cluster-creation-create-template.md
+                - name: Skapa med hjälp av resurshanteraren
+                  href: service-fabric-cluster-creation-via-arm.md
+                - name: Skapa med hjälp av eget namn för certifikat
+                  href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Skapa ett Linux-kluster
+                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
+            - name: Skala
+              items:
+                - name: Skala ut manuellt
+                  href: service-fabric-cluster-scale-in-out.md
+                - name: Skala ut programmässigt
+                  href: service-fabric-cluster-programmatic-scaling.md
+                - name: Skala upp primär nodtyp
+                  href: service-fabric-scale-up-primary-node-type.md
+                - name: Lägg till en nodtyp
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
+                - name: Ta bort en nodtyp
+                  href: service-fabric-how-to-remove-node-type.md
+            - name: Uppgradera
+              items:
+                - name: Uppgradera Service Fabric-versionen
+                  href: service-fabric-cluster-upgrade-version-azure.md
+                - name: Uppgradera klusterkonfigurationen
+                  href: service-fabric-cluster-config-upgrade-azure.md
+                - name: Korrigera klusternoder (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+                - name: Aktivera diskkryptering (Windows)
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Aktivera diskkryptering (Linux)
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
+                - name: Ange åtkomstkontroll
+                  href: service-fabric-cluster-security-roles.md
+                - name: Öppna en port i lastbalanseraren
+                  href: create-load-balancer-rule.md
+                - name: Ändra klustercertifikat till unika namn
+                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+                - name: Förnya klustercertifikat manuellt
+                  href: service-fabric-cluster-rollover-cert-cn.md
+                - name: Hantera klustercertifikat
+                  href: service-fabric-cluster-security-update-certs-azure.md
+                - name: Fjärransluta till klusternod för virtuell dator
+                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        - name: Fristående kluster
+          items:
+            - name: Skapa
+              items:
+                - name: Skapa lokalt
+                  href: service-fabric-cluster-creation-for-windows-server.md
+                - name: Skydda med hjälp av certifikat
+                  href: service-fabric-windows-cluster-x509-security.md
+                - name: Skydda med hjälp av Windows-säkerhet
+                  href: service-fabric-windows-cluster-windows-security.md
+                - name: Innehåll i det fristående paketet
+                  href: service-fabric-cluster-standalone-package-contents.md
+            - name: Skala
+              href: service-fabric-cluster-windows-server-add-remove-nodes.md
+            - name: Uppgradera
+              items:
+                - name: Uppgradera Service Fabric-versionen
+                  href: service-fabric-cluster-upgrade-windows-server.md
+                - name: Uppgradera klusterkonfigurationen
+                  href: service-fabric-cluster-config-upgrade-windows-server.md
+                - name: Konfigurationsinställningar
+                  href: service-fabric-cluster-manifest.md
+                - name: Ange åtkomstkontroll
+                  href: service-fabric-cluster-security-roles.md
+                - name: Korrigera klusternoder (Windows)
+                  href: service-fabric-patch-orchestration-application.md
+        - name: Visualisera med hjälp av Service Fabric Explorer
+          href: service-fabric-visualizing-your-cluster.md
+        - name: Ansluta till ett säkert kluster
+          href: service-fabric-connect-to-secure-cluster.md
+    - name: Övervaka och diagnostisera
+      items:
+        - name: Diagnosticera vanliga scenarier
+          href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnostisera fel i kodpaket
+          href: service-fabric-diagnostics-code-package-errors.md
+        - name: Övervakning av program
+          items:
+            - name: Lägg till loggning i programmet
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Analysera med Application Insights
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Aggregera loggar med EventFlow
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
+            - name: Övervaka containrar
+              href: service-fabric-diagnostics-oms-containers.md
+        - name: Övervaka kluster
+          items:
+            - name: Konfigurera Azure Monitor-loggar för att samla in klusterhändelser
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Övervaka ditt kluster med Azure Monitor-loggar
+              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: 'Fråga EventStore-API:er'
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Diagnostik av Windows-kluster
+              href: service-fabric-diagnostics-event-aggregation-wad.md
+            - name: Diagnostik av Linux-kluster
+              href: service-fabric-diagnostics-oms-syslog.md
+        - name: Övervaka infrastruktur
+          items:
+            - name: Samla in prestandaräknare med Log Analytics-agenten
+              href: service-fabric-diagnostics-oms-agent.md
+            - name: Samla in prestandaräknare med WAD
+              href: service-fabric-diagnostics-perf-wad.md
+        - name: Övervaka hälsa
+          items:
+            - name: Rapportera och kontrollera hälsa
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Felsök med systemhälsorapporter
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Visa hälsorapporter
+              href: service-fabric-view-entities-aggregated-health.md
+        - name: Diagnostisera omvända proxy-händelser
+          href: service-fabric-reverse-proxy-diagnostics.md
+        - name: Felsök ditt lokala kluster
+          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Skapa det första...
       items:
         - name: Windows-containerprogrammet
@@ -434,7 +618,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Körbara gästprogrammet på Windows
           href: quickstart-guest-app.md
-    - name: Skapa ett program
+    - name: Bygg program
       items:
         - name: Skapa en körbar gästtjänst
           items:
@@ -547,52 +731,6 @@
           href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Migrera gamla Java-program som stöder Maven
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
-    - name: Arbeta i IDE
-      items:
-        - name: Arbeta i en Windows/VS-utvecklarmiljö
-          items:
-            - name: Hantera program i Visual Studio
-              href: service-fabric-manage-application-in-visual-studio.md
-            - name: Konfigurera säkra anslutningar i Visual Studio
-              href: service-fabric-visualstudio-configure-secure-connections.md
-            - name: Felsöka en .NET-tjänst i VS
-              href: service-fabric-debugging-your-application.md
-            - name: Felsöka Windows-containrar med Service Fabric och VS
-              href: service-fabric-how-to-debug-windows-containers.md
-            - name: Vanliga fel och undantag
-              href: service-fabric-errors-and-exceptions.md
-            - name: Övervaka och diagnostisera lokalt
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-            - name: Konfigurera ett Linux-kluster på Windows
-              href: service-fabric-local-linux-cluster-windows.md
-            - name: Distribuera en .NET Core-app i ett fjärranslutet Linux-kluster från VS
-              href: service-fabric-how-to-publish-linux-app-vs.md
-        - name: Arbeta i en Linux/Eclipse-utvecklarmiljö
-          items:
-            - name: Komma igång med Eclipse-plugin för utveckling med Java
-              href: service-fabric-get-started-eclipse.md
-            - name: Felsök en Java-tjänst i Eclipse
-              href: service-fabric-debugging-your-application-java.md
-            - name: Övervaka och diagnostisera lokalt
-              href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-        - name: Arbeta i en VS Code-miljö
-          items:
-            - name: Kom igång med VS Code
-              href: service-fabric-get-started-vs-code.md
-            - name: Utveckla C# Service Fabric-program med VS Code
-              href: service-fabric-develop-csharp-applications-with-vs-code.md
-            - name: Utveckla Java Service Fabric-program med VS Code
-              href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Migrera från Cloud Services
-      items:
-        - name: Jämför Cloud Services med Service Fabric
-          href: service-fabric-cloud-services-migration-differences.md
-        - name: Migrera till Service Fabric
-          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
-        - name: Rekommenderade metoder
-          href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Modernisera din app
-          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Hantera programlivscykel
       items:
         - name: Paketera ett program
@@ -651,144 +789,6 @@
           href: service-fabric-reverseproxy-setup.md
         - name: Konfigurera omvänd proxy för säker kommunikation
           href: service-fabric-reverseproxy-configure-secure-communication.md
-    - name: Skapa och hantera kluster
-      items:
-        - name: Kluster i Azure
-          items:
-            - name: Skapa
-              items:
-                - name: Planera för distribution av kluster
-                  href: service-fabric-cluster-azure-deployment-preparation.md
-                - name: Skapa i Azure-portalen
-                  href: service-fabric-cluster-creation-via-portal.md
-                - name: Distribuera ett Azure Service Fabric-kluster mellan tillgänglighetszoner
-                  href: service-fabric-cross-availability-zones.md
-                - name: Distribuera ett Azure Service Fabric-kluster med tillståndslösa nodtyper
-                  href: service-fabric-stateless-node-types.md
-                - name: Konfigurera Azure Active Directory-autentisering
-                  href: service-fabric-cluster-creation-setup-aad.md
-                - name: Skapa en anpassad klustermall
-                  href: service-fabric-cluster-creation-create-template.md
-                - name: Skapa med hjälp av resurshanteraren
-                  href: service-fabric-cluster-creation-via-arm.md
-                - name: Skapa med hjälp av eget namn för certifikat
-                  href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Skapa ett Linux-kluster
-                  href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
-            - name: Skala
-              items:
-                - name: Skala ut manuellt
-                  href: service-fabric-cluster-scale-in-out.md
-                - name: Skala ut programmässigt
-                  href: service-fabric-cluster-programmatic-scaling.md
-                - name: Skala upp primär nodtyp
-                  href: service-fabric-scale-up-primary-node-type.md
-                - name: Lägg till en nodtyp
-                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
-                - name: Ta bort en nodtyp
-                  href: service-fabric-how-to-remove-node-type.md
-            - name: Uppgradera
-              items:
-                - name: Lägga till ett tillägg för VM-skalningsuppsättningar till en hanterad klusternod
-                  href: how-to-managed-cluster-vmss-extension.md
-                - name: Uppgradera Service Fabric-versionen
-                  href: service-fabric-cluster-upgrade-version-azure.md
-                - name: Uppgradera klusterkonfigurationen
-                  href: service-fabric-cluster-config-upgrade-azure.md
-                - name: Korrigera klusternoder (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-                - name: Aktivera diskkryptering (Windows)
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Aktivera diskkryptering (Linux)
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
-                - name: Ange åtkomstkontroll
-                  href: service-fabric-cluster-security-roles.md
-                - name: Öppna en port i lastbalanseraren
-                  href: create-load-balancer-rule.md
-                - name: Ändra klustercertifikat till unika namn
-                  href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-                - name: Förnya klustercertifikat manuellt
-                  href: service-fabric-cluster-rollover-cert-cn.md
-                - name: Hantera klustercertifikat
-                  href: service-fabric-cluster-security-update-certs-azure.md
-                - name: Fjärransluta till klusternod för virtuell dator
-                  href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-        - name: Fristående kluster
-          items:
-            - name: Skapa
-              items:
-                - name: Skapa lokalt
-                  href: service-fabric-cluster-creation-for-windows-server.md
-                - name: Skydda med hjälp av certifikat
-                  href: service-fabric-windows-cluster-x509-security.md
-                - name: Skydda med hjälp av Windows-säkerhet
-                  href: service-fabric-windows-cluster-windows-security.md
-                - name: Innehåll i det fristående paketet
-                  href: service-fabric-cluster-standalone-package-contents.md
-            - name: Skala
-              href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Uppgradera
-              items:
-                - name: Uppgradera Service Fabric-versionen
-                  href: service-fabric-cluster-upgrade-windows-server.md
-                - name: Uppgradera klusterkonfigurationen
-                  href: service-fabric-cluster-config-upgrade-windows-server.md
-                - name: Konfigurationsinställningar
-                  href: service-fabric-cluster-manifest.md
-                - name: Ange åtkomstkontroll
-                  href: service-fabric-cluster-security-roles.md
-                - name: Korrigera klusternoder (Windows)
-                  href: service-fabric-patch-orchestration-application.md
-        - name: Visualisera med hjälp av Service Fabric Explorer
-          href: service-fabric-visualizing-your-cluster.md
-        - name: Ansluta till ett säkert kluster
-          href: service-fabric-connect-to-secure-cluster.md
-    - name: Övervaka och diagnostisera
-      items:
-        - name: Diagnosticera vanliga scenarier
-          href: service-fabric-diagnostics-common-scenarios.md
-        - name: Diagnostisera fel i kodpaket
-          href: service-fabric-diagnostics-code-package-errors.md
-        - name: Övervakning av program
-          items:
-            - name: Lägg till loggning i programmet
-              href: service-fabric-how-to-diagnostics-log.md
-            - name: Analysera med Application Insights
-              href: service-fabric-diagnostics-event-analysis-appinsights.md
-            - name: Aggregera loggar med EventFlow
-              href: service-fabric-diagnostics-event-aggregation-eventflow.md
-            - name: Övervaka containrar
-              href: service-fabric-diagnostics-oms-containers.md
-        - name: Övervaka kluster
-          items:
-            - name: Konfigurera Azure Monitor-loggar för att samla in klusterhändelser
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Övervaka ditt kluster med Azure Monitor-loggar
-              href: service-fabric-diagnostics-event-analysis-oms.md
-            - name: 'Fråga EventStore-API:er'
-              href: service-fabric-diagnostics-eventstore-query.md
-            - name: Diagnostik av Windows-kluster
-              href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Diagnostik av Linux-kluster
-              href: service-fabric-diagnostics-oms-syslog.md
-        - name: Övervaka infrastruktur
-          items:
-            - name: Samla in prestandaräknare med Log Analytics-agenten
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: Samla in prestandaräknare med WAD
-              href: service-fabric-diagnostics-perf-wad.md
-        - name: Övervaka hälsa
-          items:
-            - name: Rapportera och kontrollera hälsa
-              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-            - name: Felsök med systemhälsorapporter
-              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-            - name: Visa hälsorapporter
-              href: service-fabric-view-entities-aggregated-health.md
-        - name: Diagnostisera omvända proxy-händelser
-          href: service-fabric-reverse-proxy-diagnostics.md
-        - name: Felsök ditt lokala kluster
-          href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Använda hanterad identitet för Service Fabric-appar
       items:
         - name: Klusterinstallation
@@ -797,8 +797,6 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Konfigurera ett nytt Azure Service Fabric-kluster med hanterad identitet
               href: configure-new-azure-service-fabric-enable-managed-identity.md
-            - name: Konfigurera ett Service Fabric-hanterat kluster med hanterad identitet
-              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Programkonfiguration
           items:
             - name: Så här distribuerar du program med hanterad identitet
@@ -811,12 +809,22 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: Bevilja åtkomst till andra Azure-resurser
           href: how-to-grant-access-other-resources.md
+    - name: Migrera från Cloud Services
+      items:
+        - name: Jämför Cloud Services med Service Fabric
+          href: service-fabric-cloud-services-migration-differences.md
+        - name: Migrera till Service Fabric
+          href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
+        - name: Rekommenderade metoder
+          href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Modernisera din app
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
 - name: Referens
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
     - name: PowerShell
-      href: /powershell/module/ServiceFabric/New-ServiceFabricService?view=azureservicefabricps
+      href: /powershell/module/servicefabric/?view=azureservicefabricps
     - name: Azure CLI (az sf)
       href: /cli/azure/sf
     - name: Service Fabric CLI (sfctl)

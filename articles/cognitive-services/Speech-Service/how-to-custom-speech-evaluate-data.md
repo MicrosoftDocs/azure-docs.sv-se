@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 3f0d191157fbabeab2b6f08a9d0a9b3bf1a35250
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b7e4ea586098ea3eb0dfd684650f798d7988e18b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591889"
+ms.locfileid: "100634591"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Utvärdera och förbättra noggrannhet i Custom Speech
 
@@ -119,7 +119,7 @@ Ljud med medmärkta avskrifter ger störst precisions förbättringar om ljudet 
 * Det kan ta flera dagar för en utbildnings åtgärd att slutföras. För att förbättra utbildningens hastighet måste du skapa en prenumeration på din röst tjänst i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 
 > [!NOTE]
-> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.
+> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data. Även om en bas modell stöder utbildning med ljuddata, kan tjänsten endast använda en del av ljudet. Fortfarande kommer den att använda alla avskrifter.
 
 > [!NOTE]
 > I fall när du ändrar bas modellen som används för utbildning och du har ljud i träning-datauppsättningen, kontrollerar du *alltid* om den nya valda bas modellen [stöder utbildning med ljuddata](language-support.md#speech-to-text). Om den tidigare använda bas modellen inte har stöd för utbildning med ljuddata, och hierarkin data uppsättning innehåller ljud, ökar inlärnings tiden med den nya bas modellen **drastiskt** , och det kan enkelt gå från flera timmar till flera dagar. Detta gäller särskilt om din röst tjänst prenumeration **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.

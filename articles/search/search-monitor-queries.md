@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935083"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592386"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Övervaka fråge förfrågningar i Azure Kognitiv sökning
 
@@ -36,13 +36,13 @@ Volymen mäts som **Sök frågor per sekund** (frågor per sekund), ett inbyggt 
 
 Det är vanligt att frågor körs i millisekunder, så endast frågor som mäter hur många sekunder visas i mått.
 
-| Sammansättningstyp | Beskrivning |
+| Sammansättningstyp | Description |
 |------------------|-------------|
 | Genomsnitt | Genomsnittligt antal sekunder inom en minut under vilken frågekörningen genomfördes.|
 | Antal | Antalet mått som har spridits till loggen inom en minuters intervall. |
 | Maximal | Det högsta antalet Sök frågor per sekund som registrerats under en minut. |
 | Minimum | Det lägsta antalet Sök frågor per sekund som registrerats under en minut.  |
-| Summa | Summan av alla frågor som körs inom minuten.  |
+| Sum | Summan av alla frågor som körs inom minuten.  |
 
 Inom en minut kan du till exempel ha ett mönster som liknar detta: en sekund med hög belastning som är max för SearchQueriesPerSecond, följt av 58 sekunders genomsnittlig belastning och slutligen en sekund med bara en fråga, vilket är minimivärdet.
 
@@ -100,7 +100,7 @@ I följande skärm bild är det första talet antalet (eller antalet mått som s
 
 För en snabb titt på aktuella siffror visar fliken **övervakning** på sidan för tjänst översikt tre mått (**Sök svars tid**, **Sök frågor per sekund (per söknings enhet)**, **begränsade Sök frågor i procent**) över fasta intervall mätt i timmar, dagar och veckor, med alternativet att ändra agg regerings typen.
 
-Öppna Metrics Explorer från **övervaknings** menyn för djupare utforskning, så att du kan skikta, zooma in och visualisera data för att utforska trender eller avvikelser. Lär dig mer om Metrics Explorer genom att slutföra den här [självstudien om hur du skapar ett mått diagram](../azure-monitor/learn/tutorial-metrics-explorer.md).
+Öppna Metrics Explorer från **övervaknings** menyn för djupare utforskning, så att du kan skikta, zooma in och visualisera data för att utforska trender eller avvikelser. Lär dig mer om Metrics Explorer genom att slutföra den här [självstudien om hur du skapar ett mått diagram](../azure-monitor/essentials/tutorial-metrics-explorer.md).
 
 1. Under avsnittet övervakning väljer du **mått** för att öppna mått Utforskaren med omfånget som angetts till din Sök tjänst.
 
@@ -165,7 +165,7 @@ När du överför gränserna för en viss konfiguration av replik-partitionen, �
 
 1. Under avsnittet övervakning väljer du **aviseringar** och klickar sedan på **+ ny varnings regel**. Se till att Sök tjänsten är vald som resurs.
 
-1. Klicka på **Lägg till**under villkor.
+1. Klicka på **Lägg till** under villkor.
 
 1. Konfigurera signal logik. Välj **mått** i signal typ och välj sedan signalen.
 
@@ -179,7 +179,7 @@ När du överför gränserna för en viss konfiguration av replik-partitionen, �
 
 1. Sista, ange aviserings information. Namnge och beskriv aviseringen, tilldela ett allvarlighets värde och ange om regeln ska skapas i ett aktiverat eller inaktiverat tillstånd.
 
-   ![Aviseringsinformation](./media/search-monitor-usage/alert-details.png "Aviseringsinformation")
+   ![Aviserings information](./media/search-monitor-usage/alert-details.png "Aviseringsinformation")
 
 Om du har angett ett e-postmeddelande får du ett e-postmeddelande från "Microsoft Azure" med ämnes raden "Azure: activated allvarlighets grad: 3 `<your rule name>` ".
 

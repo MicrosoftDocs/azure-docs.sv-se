@@ -3,12 +3,12 @@ title: Tagga stöd för resurser
 description: Visar vilka typer av Azure-resurs typer som stöder taggar. Innehåller information om alla Azure-tjänster.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 73f58dbda0e7c073cf4a8d2e846132a102192e93
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656979"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635922"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagga stöd för Azure-resurser
 I den här artikeln beskrivs om en resurs typ stöder [taggar](tag-resources.md). Den kolumn som har etiketten **stöder Taggar** anger om resurs typen har en egenskap för taggen. Kolumnen med etiketten **tagg i Cost** visar om den resurs typen skickar taggen till kostnads rapporten. Du kan visa kostnader efter taggar i [Cost Management kostnads analys](../../cost-management-billing/costs/group-filter.md) och Azure- [faktura och användnings data per dag](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -1565,6 +1565,9 @@ Hoppa till ett namn område för en resurs leverantör:
 > | arbets ytor/modeller/versioner | Nej | Nej |
 > | arbets ytor/onlineEndpoints | Ja | Ja |
 > | arbets ytor/onlineEndpoints/distributioner | Ja | Ja |
+ 
+> [!NOTE]
+> Taggar för arbets ytor sprids inte till beräknings kluster och beräknings instanser. 
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
@@ -1765,7 +1768,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | expressRouteServiceProviders | Nej | Nej |
 > | firewallPolicies | Ja | Ja |
 > | frontdoors | Ja, men begränsat (se [Obs! nedan](#frontdoor)) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, men begränsat (se [Obs! nedan](#frontdoor)) | Nej |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Ja, men begränsat (se [Obs! nedan](#frontdoor)) | No |
 > | frontdoorWebApplicationFirewallPolicies | Ja, men begränsat (se [Obs! nedan](#frontdoor)) | Yes |
 > | getDnsResourceReference | Nej | Nej |
 > | internalNotify | Nej | Nej |

@@ -2,13 +2,13 @@
 title: Avbilda strömmande händelser – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller en översikt över insamlings funktionen som gör att du kan avbilda händelser som strömmas via Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 02/16/2021
+ms.openlocfilehash: 9f0ec1223c06b908a9aa9f3ac5c5b19ead2fe962
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912624"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595957"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Avbilda händelser via Azure Event Hubs i Azure Blob Storage eller Azure Data Lake Storage
 Med Azure Event Hubs kan du automatiskt samla in strömmande data i Event Hubs i [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) eller [Azure Data Lake Storage gen 1-eller gen 2](https://azure.microsoft.com/services/data-lake-store/) -konto, med den extra flexibiliteten att ange en tid eller ett storleks intervall. Att konfigurera avbildningen är snabbt, det finns inga administrativa kostnader att köra den och skalar automatiskt med Event Hubs [data flödes enheter](event-hubs-scalability.md#throughput-units). Event Hubs Capture är det enklaste sättet att läsa in strömmande data i Azure och du kan fokusera på data bearbetning i stället för på data fångst.
@@ -79,13 +79,7 @@ Ett inbyggt stöd för Azure Blob Storage är tillgängligt, vilket gör det enk
 
 [Apache-granskning: Azure Blob Storage-plugin-programmet][Apache Drill: Azure Blob Storage Plugin]
 
-För att enkelt fråga insamlade filer kan du skapa och köra en virtuell dator med Apache-granskning aktiverat via en behållare för att få åtkomst till Azure Blob Storage:
-
-https://github.com/yorek/apache-drill-azure-blob
-
-Ett fullständigt exempel på slut punkt till slut punkt är tillgängligt i strömningen vid skalnings lagring:
-
-[Strömning i skala: Event Hubs avbildning]
+För att enkelt fråga insamlade filer kan du skapa och köra en virtuell dator med Apache-granskning aktiverat via en behållare för att få åtkomst till Azure Blob Storage. Se följande exempel: [strömning i skala med Event Hubs Capture](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture).
 
 ### <a name="use-apache-spark"></a>Använd Apache Spark
 
@@ -160,4 +154,4 @@ Lär dig hur du aktiverar den här funktionen med hjälp av Azure Portal och Azu
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Strömning i skala: Event Hubs avbildning]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming at Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

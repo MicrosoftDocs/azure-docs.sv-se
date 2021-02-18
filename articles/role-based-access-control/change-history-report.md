@@ -15,16 +15,16 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492326"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595833"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Visa aktivitets loggar för Azure RBAC-ändringar
 
-Ibland behöver du information om ändringar i Azure rollbaserad åtkomst kontroll (Azure RBAC), till exempel för gransknings-eller fel söknings syfte. När en användare gör ändringar i roll tilldelningarna eller roll definitionerna i dina prenumerationer registreras ändringarna i [Azures aktivitets logg](../azure-monitor/platform/platform-logs-overview.md). Du kan visa aktivitets loggarna för att se alla Azure RBAC-ändringar för de senaste 90 dagarna.
+Ibland behöver du information om ändringar i Azure rollbaserad åtkomst kontroll (Azure RBAC), till exempel för gransknings-eller fel söknings syfte. När en användare gör ändringar i roll tilldelningarna eller roll definitionerna i dina prenumerationer registreras ändringarna i [Azures aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md). Du kan visa aktivitets loggarna för att se alla Azure RBAC-ändringar för de senaste 90 dagarna.
 
 ## <a name="operations-that-are-logged"></a>Åtgärder som loggas
 
@@ -122,7 +122,7 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-loggar
 
-[Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) är ett annat verktyg som du kan använda för att samla in och analysera Azure RBAC-ändringar för alla dina Azure-resurser. Azure Monitors loggar har följande fördelar:
+[Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) är ett annat verktyg som du kan använda för att samla in och analysera Azure RBAC-ändringar för alla dina Azure-resurser. Azure Monitors loggar har följande fördelar:
 
 - Skriv komplexa frågor och logik
 - Integrera med aviseringar, Power BI och andra verktyg
@@ -131,15 +131,15 @@ az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 
 
 Här är de grundläggande stegen för att komma igång:
 
-1. [Skapa en Log Analytics-arbetsyta](../azure-monitor/learn/quick-create-workspace.md).
+1. [Skapa en Log Analytics-arbetsyta](../azure-monitor/logs/quick-create-workspace.md).
 
-1. [Konfigurera Aktivitetslogganalys-lösningen](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution) för din arbets yta.
+1. [Konfigurera Aktivitetslogganalys-lösningen](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution) för din arbets yta.
 
-1. [Visa aktivitets loggarna](../azure-monitor/platform/activity-log.md#activity-log-analytics-monitoring-solution). Ett snabbt sätt att navigera till sidan med översikt över Aktivitetslogganalys lösning är att klicka på alternativet **loggar** .
+1. [Visa aktivitets loggarna](../azure-monitor/essentials/activity-log.md#activity-log-analytics-monitoring-solution). Ett snabbt sätt att navigera till sidan med översikt över Aktivitetslogganalys lösning är att klicka på alternativet **loggar** .
 
    ![Alternativ för Azure Monitor-loggar i portalen](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Du kan också använda [Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) för att fråga och visa loggarna. Mer information finns i [Kom igång med Azure Monitor logg frågor](../azure-monitor/log-query/get-started-queries.md).
+1. Du kan också använda [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) för att fråga och visa loggarna. Mer information finns i [Kom igång med Azure Monitor logg frågor](../azure-monitor/logs/get-started-queries.md).
 
 Här är en fråga som returnerar nya roll tilldelningar organiserade efter mål resurs leverantör:
 
@@ -163,4 +163,4 @@ AzureActivity
 
 ## <a name="next-steps"></a>Nästa steg
 * [Visa händelser i aktivitetsloggen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Övervaka prenumerationsaktivitet med Azure-aktivitetsloggen](../azure-monitor/platform/platform-logs-overview.md)
+* [Övervaka prenumerationsaktivitet med Azure-aktivitetsloggen](../azure-monitor/essentials/platform-logs-overview.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cd43b6c7b11cde17bc9f9923374baf3416e5b370
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 449fc686fb30cde0d15759036b58fea3bcfc6723
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791870"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596895"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azures säkerhets bas linje för Azure Lighthouse
 
@@ -360,9 +360,9 @@ Med Azure Lighthouse kan du använda Azure Monitor loggar på ett skalbart sätt
 
 Kunder som har delegerade prenumerationer för Azure Lighthouse kan visa Azures aktivitets logg data för att se alla åtgärder som vidtagits. Detta ger kunderna full insyn i åtgärder som tjänst leverantörer utför, tillsammans med åtgärder som utförs av användare i kundens egna Azure Active Directory (Azure AD)-klient.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Övervaka delegerade resurser i stor skala](how-to/monitor-at-scale.md)
 
@@ -386,7 +386,7 @@ Kunder som har delegerade prenumerationer för Azure Lighthouse kan visa Azures 
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Övervaka delegerade resurser i stor skala](how-to/monitor-at-scale.md)
 
@@ -404,7 +404,7 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage-, Data Lake-eller Log Analytics arbets ytans konton för långsiktig lagring och arkivering.
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 

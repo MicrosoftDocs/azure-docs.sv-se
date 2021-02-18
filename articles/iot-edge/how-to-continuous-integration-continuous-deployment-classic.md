@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9b842b94d66cf91ad836b8ae61df1b3d3f34293
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: e38b3c617ded9c0001b01e481d4d3c1120be62ef
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435951"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634761"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Kontinuerlig integrering och kontinuerlig distribution till Azure IoT Edge enheter (klassisk redigerare)
 
@@ -103,7 +103,7 @@ I det här avsnittet skapar du en ny versions pipeline. Du konfigurerar pipeline
     | Parameter | Beskrivning |
     | --- | --- |
     | Visningsnamn | Visnings namnet uppdateras automatiskt när åtgärds fältet ändras. |
-    | Åtgärd | Välj **build module-avbildningar**. |
+    | Action | Välj **build module-avbildningar**. |
     | .template.jspå fil | Välj ellipsen (**...**) och navigera till **deployment.template.jspå** filen i lagrings platsen som innehåller din IoT Edge-lösning. |
     | Standard plattform | Välj lämpligt operativ system för dina moduler baserat på din riktade IoT Edge-enhet. |
     | Variabler för utdata | Ange ett referens namn som ska associeras med den fil Sök väg som deployment.jspå filen genererar, till exempel **Edge**. |
@@ -119,7 +119,7 @@ I det här avsnittet skapar du en ny versions pipeline. Du konfigurerar pipeline
     | Parameter | Beskrivning |
     | --- | --- |
     | Visningsnamn | Visnings namnet uppdateras automatiskt när åtgärds fältet ändras. |
-    | Åtgärd | Välj **push module-avbildningar**. |
+    | Action | Välj **push module-avbildningar**. |
     | Behållarens register typ | Använd standard typen: `Azure Container Registry` . |
     | Azure-prenumeration | Välj din prenumeration. |
     | Azure Container Registry | Välj den typ av behållar register som du använder för att lagra dina modulblad. Formuläret ändras beroende på vilken register typ du väljer. Om du väljer **Azure Container Registry** använder du List rutan för att välja Azure-prenumerationen och namnet på behållar registret. Om du väljer **allmän container Registry** väljer du **ny** för att skapa en anslutning till en register tjänst. |
@@ -160,7 +160,7 @@ Den här pipelinen har nu kon figurer ATS för att köras automatiskt när du pu
 >[!NOTE]
 >Om du vill använda **lager distributioner** i pipelinen stöds inte lager distributioner ännu i Azure IoT Edge uppgifter i Azure dataDevOpss.
 >
->Du kan dock använda en [Azure CLI-uppgift i Azure DevOps](/azure/devops/pipelines/tasks/deploy/azure-cli) för att skapa distributionen som en lager distribution. För det **infogade skript** svärdet kan du använda [kommandot AZ IoT Edge Deployment Create](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment):
+>Du kan dock använda en [Azure CLI-uppgift i Azure DevOps](/azure/devops/pipelines/tasks/deploy/azure-cli) för att skapa distributionen som en lager distribution. För det **infogade skript** svärdet kan du använda [kommandot AZ IoT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment):
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

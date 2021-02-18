@@ -3,18 +3,18 @@ title: Övervaka Delegerings ändringar i hanterings klienten
 description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089431"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593131"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
 
 Som tjänst leverantör kanske du vill vara medveten om att kund prenumerationer eller resurs grupper delegeras till din klient organisation via [Azure Lighthouse](../overview.md)eller när tidigare delegerade resurser tas bort.
 
-I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från alla kund klienter.
+I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från alla kund klienter.
 
 I det här avsnittet beskrivs de behörigheter som krävs för att övervaka Delegerings aktivitet till din klient (i alla dina kunder). Det innehåller också ett exempel skript som visar en metod för att fråga och rapportera om dessa data.
 
@@ -104,7 +104,7 @@ Tänk på följande när du frågar efter dessa data:
 - Om flera resurs grupper delegeras i en enda distribution returneras separata poster för varje resurs grupp.
 - Ändringar som görs i en tidigare delegering (till exempel uppdatering av behörighets strukturen) kommer att loggas som en tillagd delegering.
 - Som nämnts ovan måste ett konto ha den inbyggda rollen för övervaknings läsaren i rot omfånget (/) för att få åtkomst till dessa data på klient nivå.
-- Du kan använda dessa data i dina egna arbets flöden och rapporter. Du kan till exempel använda [http data Collector-API: t (offentlig för hands version)](../../azure-monitor/platform/data-collector-api.md) för att logga Data till Azure Monitor från en REST API-klient och sedan använda [Åtgärds grupper](../../azure-monitor/platform/action-groups.md) för att skapa meddelanden eller aviseringar.
+- Du kan använda dessa data i dina egna arbets flöden och rapporter. Du kan till exempel använda [http data Collector-API: t (offentlig för hands version)](../../azure-monitor/logs/data-collector-api.md) för att logga Data till Azure Monitor från en REST API-klient och sedan använda [Åtgärds grupper](../../azure-monitor/alerts/action-groups.md) för att skapa meddelanden eller aviseringar.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du kan publicera kunder till [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
-- Läs mer om [Azure Monitor](../../azure-monitor/index.yml) och [Azure aktivitets logg](../../azure-monitor/platform/platform-logs-overview.md).
+- Läs mer om [Azure Monitor](../../azure-monitor/index.yml) och [Azure aktivitets logg](../../azure-monitor/essentials/platform-logs-overview.md).
 - Granska [aktivitets loggarna efter domän](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) exempel arbets bok för att lära dig hur du visar Azure-aktivitets loggar över prenumerationer med ett alternativ för att filtrera dem efter domän namn.

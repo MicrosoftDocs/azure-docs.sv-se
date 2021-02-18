@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/30/2020
+ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 0c491275f793ce2cd5e830ca6a3014dc45d6d509
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594543"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593036"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Uppdatera eller ta bort en belastningsutjämnare som används av skalnings uppsättningar för virtuella datorer
 
@@ -83,14 +83,15 @@ az network lb inbound-nat-pool update
 
 ## <a name="delete-inbound-nat-rules"></a>Ta bort inkommande NAT-regler
 
-Enskilda inkommande NAT-regler kan inte tas bort, men du kan ta bort hela uppsättningen inkommande NAT-regler.
+Enskilda inkommande NAT-regler kan inte tas bort, men du kan ta bort hela uppsättningen inkommande NAT-regler genom att ta bort den inkommande NAT-poolen.
 
-Om du vill ta bort hela uppsättningen inkommande NAT-regler som används av skalnings uppsättningen tar du först bort NAT-poolen från skalnings uppsättningen. Ett fullständigt exempel som använder CLI visas här:
-    
+Ta bort NAT-poolen genom att först ta bort den från skalnings uppsättningen. Ett fullständigt exempel som använder CLI visas här:
+
 ```azurecli-interactive
     az vmss update
        --resource-group MyResourceGroup
        --name MyVMSS
+       --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
      az vmss update-instances 
        --instance-ids "*" 
        --resource-group MyResourceGroup

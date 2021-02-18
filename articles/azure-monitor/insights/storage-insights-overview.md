@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 47799898251923b327954c764dcccb8157ba5119
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 13c884d9f140fbd962bfa32ef2d853339aec325a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587356"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Övervaka lagrings tjänsten med Azure Monitor för lagring
 
@@ -266,8 +266,8 @@ Varje arbets bok sparas i det lagrings konto som du sparade det i. Försök att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Konfigurera [mått aviseringar](../platform/alerts-metric.md) och [meddelanden om tjänst hälsa](../../service-health/alerts-activity-log-service-notifications-portal.md) för att ställa in automatiserad avisering som hjälper till att identifiera problem.
+* Konfigurera [mått aviseringar](../alerts/alerts-metric.md) och [meddelanden om tjänst hälsa](../../service-health/alerts-activity-log-service-notifications-portal.md) för att ställa in automatiserad avisering som hjälper till att identifiera problem.
 
-* Lär dig mer om arbets böckerna i scenarier är utformade för att stödja, hur du skapar nya och anpassar befintliga rapporter och mer genom att granska [skapa interaktiva rapporter med Azure Monitor arbets böcker](../platform/workbooks-overview.md).
+* Lär dig mer om arbets böckerna i scenarier är utformade för att stödja, hur du skapar nya och anpassar befintliga rapporter och mer genom att granska [skapa interaktiva rapporter med Azure Monitor arbets böcker](../visualize/workbooks-overview.md).
 
 * En djupgående guide om hur du använder Lagringsanalys och andra verktyg för att identifiera, diagnostisera och felsöka Azure Storage-relaterade problem finns i [övervaka, diagnostisera och felsöka Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).

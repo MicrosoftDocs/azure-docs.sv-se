@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936438"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594022"
 ---
 # <a name="azure-app-service-plan-overview"></a>Översikt över Azure App Service-plan
 
@@ -57,7 +57,7 @@ När du skapar en app i App Service placeras den i ett App Service plan. När ap
 
 På det här sättet är App Service plan skalnings enhet för App Service appar. Om planen har kon figurer ATS för att köra fem VM-instanser körs alla appar i planen på alla fem instanser. Om planen har kon figurer ATS för automatisk skalning skalas alla appar i planen ut tillsammans baserat på inställningarna för automatisk skalning.
 
-Information om hur du skalar ut en app finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/platform/autoscale-get-started.md).
+Information om hur du skalar ut en app finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/autoscale/autoscale-get-started.md).
 
 <a name="cost"></a>
 
