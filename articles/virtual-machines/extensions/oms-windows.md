@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046829"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580071"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-tillägg för virtuella datorer för Windows
 
@@ -30,7 +30,7 @@ Azure Monitor-loggar innehåller övervaknings funktioner över molnbaserade och
 
 ### <a name="operating-system"></a>Operativsystem
 
-Mer information om de Windows-operativsystem som stöds finns i artikeln [Översikt över Azure Monitors agenter](../../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
+Mer information om de Windows-operativsystem som stöds finns i artikeln [Översikt över Azure Monitors agenter](../../azure-monitor/agents/agents-overview.md#supported-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Version för agent och VM-tillägg
 Följande tabell innehåller en mappning av versionen av Windows Log Analytics VM-tillägget och Log Analytics agent-paketet för varje version. 
@@ -89,26 +89,26 @@ Följande JSON visar schemat för Log Analytics agent-tillägget. Tillägget kr�
 ```
 ### <a name="property-values"></a>Egenskaps värden
 
-| Namn | Värde/exempel |
+| Name | Värde/exempel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | utgivare | Microsoft. EnterpriseCloud. Monitoring |
 | typ | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1,0 |
+| typeHandlerVersion | 1.0 |
 | workspaceId (t) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (t. ex.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 \* WorkspaceId kallas för consumerId i Log Analytics-API: et.
 
 > [!NOTE]
-> För ytterligare egenskaper, se Azure [Connect Windows-datorer för att Azure Monitor](../../azure-monitor/platform/agent-windows.md).
+> För ytterligare egenskaper, se Azure [Connect Windows-datorer för att Azure Monitor](../../azure-monitor/agents/agent-windows.md).
 
 ## <a name="template-deployment"></a>Malldistribution
 
 Azure VM-tillägg kan distribueras med Azure Resource Manager mallar. JSON-schemat som beskrivs i föregående avsnitt kan användas i en Azure Resource Manager-mall för att köra Log Analytics agent-tillägget under en distribution av Azure Resource Manager mallar. En exempel mall som innehåller Log Analytics agentens VM-tillägg finns i [Azure snabb starts galleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 >[!NOTE]
->Mallen har inte stöd för att ange mer än ett arbetsyte-ID och en arbetsyte nyckel när du vill konfigurera agenten att rapportera till flera arbets ytor. Om du vill konfigurera agenten att rapportera till flera arbets ytor, se [lägga till eller ta bort en arbets yta](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
+>Mallen har inte stöd för att ange mer än ett arbetsyte-ID och en arbetsyte nyckel när du vill konfigurera agenten att rapportera till flera arbets ytor. Om du vill konfigurera agenten att rapportera till flera arbets ytor, se [lägga till eller ta bort en arbets yta](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace).  
 
 JSON för ett tillägg för virtuell dator kan kapslas i den virtuella dator resursen eller placeras på rot-eller toppnivå i en Resource Manager JSON-mall. Placeringen av JSON påverkar värdet för resurs namn och typ. Mer information finns i [Ange namn och typ för underordnade resurser](../../azure-resource-manager/templates/child-resource-name-type.md). 
 

@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347636"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579809"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Använd Azures privata länk för att på ett säkert sätt ansluta nätverk till Azure Automation
 
@@ -34,7 +34,7 @@ Med privat länk kan du:
 - Anslut privat till Azure Monitor Log Analytics arbets yta utan att öppna någon offentlig nätverks åtkomst.
 
     >[!NOTE]
-    >En separat privat slut punkt för din Log Analytics-arbetsyta krävs om ditt Automation-konto är länkat till en Log Analytics arbets yta för att vidarebefordra jobb data och när du har aktiverat funktioner som Uppdateringshantering, Ändringsspårning och inventering, tillstånds konfiguration eller Starta/stoppa virtuella datorer när de inte används. Mer information om privat länk för Azure Monitor finns i [Använd Azure Private Link för att ansluta nätverk på ett säkert sätt till Azure Monitor](../../azure-monitor/platform/private-link-security.md).
+    >En separat privat slut punkt för din Log Analytics-arbetsyta krävs om ditt Automation-konto är länkat till en Log Analytics arbets yta för att vidarebefordra jobb data och när du har aktiverat funktioner som Uppdateringshantering, Ändringsspårning och inventering, tillstånds konfiguration eller Starta/stoppa virtuella datorer när de inte används. Mer information om privat länk för Azure Monitor finns i [Använd Azure Private Link för att ansluta nätverk på ett säkert sätt till Azure Monitor](../../azure-monitor/logs/private-link-security.md).
 
 - Se till att dina Automation-data endast nås via auktoriserade privata nätverk.
 - Förhindra data exfiltrering från dina privata nätverk genom att definiera din Azure Automation-resurs som ansluter via din privata slut punkt.
@@ -46,8 +46,8 @@ Mer information finns i  [viktiga fördelar med privat länk](../../private-link
 ## <a name="limitations"></a>Begränsningar
 
 - I den aktuella implementeringen av privat länk går det inte att komma åt Azure-resurser som skyddas med privat slut punkt i moln jobb för Automation-kontot. Till exempel Azure Key Vault, Azure SQL, Azure Storage-konto osv. Använd en [hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) i stället för att undvika detta.
-- Du måste använda den senaste versionen av [Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) för Windows eller Linux.
-- [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) stöder inte privat länk.
+- Du måste använda den senaste versionen av [Log Analytics agent](../../azure-monitor/agents/log-analytics-agent.md) för Windows eller Linux.
+- [Log Analytics Gateway](../../azure-monitor/agents/gateway.md) stöder inte privat länk.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
@@ -76,7 +76,7 @@ För att förstå & konfigurera Uppdateringshantering granskning av [uppdatering
 
 Om du vill att dina datorer ska konfigureras för uppdaterings hantering för att ansluta till Automation & Log Analytics arbets yta på ett säkert sätt via en privat länk kanal, måste du aktivera privat länk för Log Analytics arbets ytan som är länkad till Automation-kontot som kon figurer ATS med privat länk.
 
-Du kan styra hur en Log Analytics arbets yta kan nås utanför de privata länk omfattningarna genom att följa stegen som beskrivs i [konfigurera Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics). Om du ställer in **Tillåt offentligt nätverks åtkomst för** inmatning till **Nej** kan inte datorer utanför de anslutna omfattningarna Ladda upp data till den här arbets ytan. Om du ställer in **Tillåt offentlig nätverks åtkomst för frågor** till **Nej**, kan datorer utanför omfattningarna inte komma åt data på den här arbets ytan.
+Du kan styra hur en Log Analytics arbets yta kan nås utanför de privata länk omfattningarna genom att följa stegen som beskrivs i [konfigurera Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics). Om du ställer in **Tillåt offentligt nätverks åtkomst för** inmatning till **Nej** kan inte datorer utanför de anslutna omfattningarna Ladda upp data till den här arbets ytan. Om du ställer in **Tillåt offentlig nätverks åtkomst för frågor** till **Nej**, kan datorer utanför omfattningarna inte komma åt data på den här arbets ytan.
 
 Använd **DSCAndHybridWorker** Target-underresurs för att aktivera privat länk för användare & system hybrid Worker.
 
@@ -113,7 +113,7 @@ I det här avsnittet ska du skapa en privat slut punkt för ditt Automation-kont
     | Prenumeration | Välj din prenumeration. |
     | Resursgrupp | Välj **myResourceGroup**. Du skapade det i föregående avsnitt.  |
     | **INSTANS INFORMATION** |  |
-    | Namn | Ange din *PrivateEndpoint*. |
+    | Name | Ange din *PrivateEndpoint*. |
     | Region | Välj **YourRegion**. |
     |||
 

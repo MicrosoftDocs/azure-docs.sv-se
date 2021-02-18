@@ -1,34 +1,37 @@
 ---
-title: 'Använd Azure CLI för filer & ACL: er i Azure Data Lake Storage Gen2'
-description: Använd Azure CLI för att hantera kataloger och åtkomst kontrol listor för kataloger och kataloger (ACL) i lagrings konton som har ett hierarkiskt namn område.
+title: Använd Azure CLI för att hantera data (Azure Data Lake Storage Gen2)
+description: Använd Azure CLI för att hantera kataloger och filer i lagrings konton som har ett hierarkiskt namn område.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913614"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650362"
 ---
-# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Använd Azure CLI för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2
+# <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Använd Azure CLI för att hantera kataloger och filer i Azure Data Lake Storage Gen2
 
-Den här artikeln visar hur du använder [CLI (Azure Command-Line Interface)](/cli/azure/) för att skapa och hantera kataloger, filer och behörigheter i lagrings konton som har ett hierarkiskt namn område. 
+Den här artikeln visar hur du använder [CLI (Azure Command-Line Interface)](/cli/azure/) för att skapa och hantera kataloger och filer i lagrings konton som har ett hierarkiskt namn område.
+
+Information om hur du hämtar, anger och uppdaterar åtkomst kontrol listorna (ACL) för kataloger och filer finns i [använda Azure CLI för att hantera ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md).
 
 [Exempel](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Ge feedback](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-> [!div class="checklist"]
-> * En Azure-prenumeration. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
-> * Ett lagrings konto med hierarkiskt namn område (HNS) aktiverat. Följ [de här](../common/storage-account-create.md) anvisningarna för att skapa en.
-> * Azure CLI-version `2.6.0` eller högre.
+- En Azure-prenumeration. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
+
+- Ett lagrings konto med hierarkiskt namn område aktiverat. Följ [de här](create-data-lake-storage-account.md) anvisningarna för att skapa en.
+
+- Azure CLI-version `2.6.0` eller högre.
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Kontrol lera att du har rätt version av Azure CLI installerad
 
@@ -39,6 +42,7 @@ Den här artikeln visar hur du använder [CLI (Azure Command-Line Interface)](/c
    ```azurecli
     az --version
    ```
+
    Om din version av Azure CLI är lägre än `2.6.0` kan du installera en senare version. Se [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Anslut till kontot
@@ -64,7 +68,7 @@ Den här artikeln visar hur du använder [CLI (Azure Command-Line Interface)](/c
    Ersätt `<subscription-id>` placeholder-värdet med ID: t för din prenumeration.
 
 > [!NOTE]
-> Exemplet som presenteras i den här artikeln visar Azure Active Directory (AD) auktorisering. Mer information om autentiseringsmetoder finns i [bevilja åtkomst till BLOB-eller Queue-data med Azure CLI](./authorize-data-operations-cli.md).
+> Exemplet som presenteras i den här artikeln visar Azure Active Directory (Azure AD)-auktorisering. Mer information om autentiseringsmetoder finns i [bevilja åtkomst till BLOB-eller Queue-data med Azure CLI](./authorize-data-operations-cli.md).
 
 ## <a name="create-a-container"></a>Skapa en container
 
@@ -216,106 +220,9 @@ Det här exemplet tar bort en fil med namnet `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-access-control-lists-acls"></a>Hantera åtkomst kontrol listor (ACL: er)
-
-Du kan hämta, ange och uppdatera åtkomst behörigheter för kataloger och filer.
-
-> [!NOTE]
-> Om du använder Azure Active Directory (Azure AD) för att auktorisera kommandon kontrollerar du att ditt säkerhets objekt har tilldelats rollen som ägare av [lagrings-BLOB-data](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner). Mer information om hur ACL-behörigheter tillämpas och effekterna av att ändra dem finns i  [åtkomst kontroll i Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-### <a name="get-an-acl"></a>Hämta en ACL
-
-Hämta ACL för en **katalog** med hjälp av `az storage fs access show` kommandot.
-
-Det här exemplet hämtar ACL: en för en katalog och skriver sedan ut ACL: en till-konsolen.
-
-```azurecli
-az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Hämta åtkomst behörigheterna för en **fil** med hjälp av `az storage fs access show` kommandot. 
-
-Det här exemplet hämtar ACL: en för en fil och skriver sedan ut ACL: en till-konsolen.
-
-```azurecli
-az storage fs access show -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Följande bild visar utdata när du har hämtat ACL för en katalog.
-
-![Hämta ACL-utdata](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
-
-I det här exemplet har ägande användaren Läs-, skriv-och körnings behörighet. Den ägande gruppen har bara Läs-och körnings behörighet. Mer information om åtkomst kontrol listor finns i [åtkomst kontroll i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-
-### <a name="set-an-acl"></a>Ange en ACL
-
-Använd `az storage fs access set` kommandot för att ange ACL för en **katalog**. 
-
-I det här exemplet anges ACL: en för en katalog för ägande användare, ägande grupp eller andra användare, och sedan skrivs ACL: en ut till-konsolen.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-I det här exemplet anges *standard* -ACL: en för en katalog för ägande användare, ägande grupp eller andra användare, och sedan skrivs ACL: en ut till-konsolen.
-
-```azurecli
-az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Använd `az storage fs access set` kommandot för att ange ACL för en **fil**. 
-
-I det här exemplet anges ACL: en för en fil för ägande användare, ägande grupp eller andra användare, och sedan skrivs ACL: en ut till-konsolen.
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Följande bild visar utdata när du har angett ACL för en fil.
-
-![Hämta ACL-utdata 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
-
-I det här exemplet har ägande användare och ägande grupp bara Läs-och Skriv behörighet. Alla andra användare har Skriv-och körnings behörighet. Mer information om åtkomst kontrol listor finns i [åtkomst kontroll i Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-
-### <a name="update-an-acl"></a>Uppdatera en ACL
-
-Ett annat sätt att ange den här behörigheten är att använda `az storage fs access set` kommandot. 
-
-Uppdatera ACL: en för en katalog eller fil genom `-permissions` att ange parametern till kort form för en ACL.
-
-I det här exemplet uppdateras ACL: en för en **katalog**.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-I det här exemplet uppdateras ACL: en för en **fil**.
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Du kan också uppdatera den ägande användaren och gruppen av en katalog eller fil genom att ange `--owner` parametrarna eller i `group` enhets-ID: t eller användarens huvud namn (UPN) för en användare. 
-
-I det här exemplet ändras ägaren till en katalog. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-Det här exemplet ändrar ägaren till en fil. 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-
-```
-
-### <a name="set-an-acl-recursively"></a>Ange en ACL rekursivt
-
-Du kan lägga till, uppdatera och ta bort ACL rekursivt på befintliga underordnade objekt i en överordnad katalog utan att behöva göra dessa ändringar individuellt för varje underordnat objekt. Mer information finns i [ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2](recursive-access-control-lists.md).
-
 ## <a name="see-also"></a>Se även
 
-* [Exempel](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-* [Lämna feedback](https://github.com/Azure/azure-cli-extensions/issues)
-* [Kända problem](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Exempel](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+- [Lämna feedback](https://github.com/Azure/azure-cli-extensions/issues)
+- [Kända problem](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Använd Azure CLI för att hantera ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)

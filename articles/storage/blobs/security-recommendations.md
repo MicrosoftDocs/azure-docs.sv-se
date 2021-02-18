@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 05fdf681b7cdc3b8145a30041e261eece420e560
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878095"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592360"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Säkerhets rekommendationer för Blob Storage
 
@@ -71,7 +71,7 @@ Azure Security Center analyserar regelbundet säkerhets status för dina Azure-r
 | Rekommendation | Kommentarer | Security Center |
 |-|----|--|
 | Spåra hur begär Anden auktoriseras | Aktivera Azure Storage loggning för att spåra hur varje begäran som görs mot Azure Storage auktoriserades. Loggarna anger om en begäran har gjorts anonymt, genom att använda en OAuth 2,0-token med hjälp av delad nyckel eller genom att använda en signatur för delad åtkomst (SAS). Mer information finns i [övervaka Azure Blob Storage med Azure Monitor](monitor-blob-storage.md) eller [Azure Storage Analytics-loggning med klassisk övervakning](../common/storage-analytics-logging.md). | - |
-| Konfigurera aviseringar i Azure Monitor | Konfigurera logg aviseringar för att utvärdera resurs loggar med en angiven frekvens och utlösa en avisering baserat på resultaten. Mer information finns i [logg aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-unified-log.md). | - |
+| Konfigurera aviseringar i Azure Monitor | Konfigurera logg aviseringar för att utvärdera resurs loggar med en angiven frekvens och utlösa en avisering baserat på resultaten. Mer information finns i [logg aviseringar i Azure Monitor](../../azure-monitor/alerts/alerts-unified-log.md). | - |
 
 ## <a name="next-steps"></a>Nästa steg
 

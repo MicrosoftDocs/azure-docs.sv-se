@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231103"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592287"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Tolka schemat för gransknings loggar för Azure AD i Azure Monitor (för hands version)
 
@@ -147,7 +147,7 @@ Den här artikeln beskriver Gransknings logg schema för Azure Active Directory 
 
 ## <a name="field-and-property-descriptions"></a>Fält-och egenskaps beskrivningar
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 |------------|-------------|
 | time       | Datum och tid (UTC). |
 | operationName | Åtgärdens namn. |
@@ -167,11 +167,11 @@ Den här artikeln beskriver Gransknings logg schema för Azure Active Directory 
 
 <br>
 
-| Egenskapsnamn | Beskrivning |
+| Egenskapsnamn | Description |
 |---------------|-------------|
-| AuditEventCategory | Typ av gransknings händelse. Det kan vara *användar hantering*, *program hantering*eller någon annan typ.|
+| AuditEventCategory | Typ av gransknings händelse. Det kan vara *användar hantering*, *program hantering* eller någon annan typ.|
 | Identitets typ | Typen kan vara *program* eller *användare*. |
-| Åtgärds typ | Typen kan vara *Lägg till*, *Uppdatera*och *ta bort*. eller *annat*. |
+| Åtgärdstyp | Typen kan vara *Lägg till*, *Uppdatera* och *ta bort*. eller *annat*. |
 | Mål resurs typ | Anger den mål resurs typ som åtgärden utfördes på. Typen kan vara *program*, *användare*, *roll*, *princip* | 
 | Mål resurs namn | Namnet på mål resursen. Det kan vara ett program namn, ett rollnamn, ett User Principal Name eller ett huvud namn för tjänsten. |
 | additionalTargets | Visar alla ytterligare egenskaper för vissa åtgärder. För en uppdaterings åtgärd visas till exempel de gamla värdena och de nya värdena under *targetUpdatedProperties*. | 
@@ -179,5 +179,5 @@ Den här artikeln beskriver Gransknings logg schema för Azure Active Directory 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Tolka schema för inloggningsloggar i Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure Diagnostics-loggar](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Diagnostics-loggar](../../azure-monitor/essentials/platform-logs-overview.md)
 * [Vanliga frågor och kända problem](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

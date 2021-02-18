@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fce67c0ffe1951b0bfc325603b6d8f985dd804d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592207"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planera kapaciteten för virtuella Hyper-V-datorer med Kapacitet och prestanda-lösningen (inaktuell)
 
@@ -39,12 +39,12 @@ Lösningen:
 
 I följande tabell beskrivs de anslutna källor som stöds av den här lösningen.
 
-| Ansluten källa | Support | Beskrivning |
+| Ansluten källa | Support | Description |
 |---|---|---|
-| [Windows-agenter](../platform/agent-windows.md) | Ja | Lösningen samlar in information om kapacitet och prestanda data från Windows-agenter. |
-| [Linux-agenter](../learn/quick-collect-linux-computer.md) | Inga | Lösningen samlar inte in information om kapacitet och prestanda data från Direct Linux-agenter.|
-| [SCOM-hanterings grupp](../platform/om-agents.md) | Ja |Lösningen samlar in kapacitets-och prestanda data från agenter i en ansluten SCOM-hanterings grupp. Det krävs ingen direkt anslutning från SCOM agent till Log Analytics.|
-| [Azure Storage-konto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Inga | Azure Storage omfattar inte kapacitets-och prestanda data.|
+| [Windows-agenter](../agents/agent-windows.md) | Yes | Lösningen samlar in information om kapacitet och prestanda data från Windows-agenter. |
+| [Linux-agenter](../vm/quick-collect-linux-computer.md) | No    | Lösningen samlar inte in information om kapacitet och prestanda data från Direct Linux-agenter.|
+| [SCOM-hanterings grupp](../agents/om-agents.md) | Yes |Lösningen samlar in kapacitets-och prestanda data från agenter i en ansluten SCOM-hanterings grupp. Det krävs ingen direkt anslutning från SCOM agent till Log Analytics.|
+| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage omfattar inte kapacitets-och prestanda data.|
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -72,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 När Kapacitet och prestandas lösningen uppdateras, kommer versions numret att ändras.
 
-Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](../platform/om-agents.md).
+Mer information om hur lösningens hanteringspaket uppdateras finns i [Anslut Operations Manager till Log Analytics](../agents/om-agents.md).
 
 ## <a name="using-the-solution"></a>Använda lösningen
 
@@ -117,7 +117,7 @@ För att sammanfatta samlar lösningen in kapacitets-och prestanda data från en
 Följande tabell innehåller exempel på loggs ökningar för kapacitets-och prestanda data som samlas in och beräknas av den här lösningen.
 
 
-| Söka i data | Beskrivning |
+| Söka i data | Description |
 |:--- |:--- |
 | Alla konfigurationer av värd minne | Perf &#124; WHERE ObjectName = = "Kapacitet och prestanda" och CounterName = = "Host Assigned Memory MB" &#124; sammanfatta MB = AVG (CounterValue) efter InstanceName |
 | Alla konfigurationer för virtuella datorer | Perf &#124; WHERE ObjectName = = "Kapacitet och prestanda" och CounterName = = "VM Assigned Memory MB" &#124; sammanfatta MB = AVG (CounterValue) efter InstanceName |
@@ -129,5 +129,5 @@ Följande tabell innehåller exempel på loggs ökningar för kapacitets-och pre
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [loggs ökningar i Log Analytics](../log-query/log-query-overview.md) om du vill visa detaljerade kapacitet och prestanda data.
+* Använd [loggs ökningar i Log Analytics](../logs/log-query-overview.md) om du vill visa detaljerade kapacitet och prestanda data.
 

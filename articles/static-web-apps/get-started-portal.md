@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030373"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650578"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Snabb start: skapa din första statiska plats i Azure Portal
 
@@ -55,7 +55,7 @@ När du har loggat in med GitHub anger du lagrings plats informationen.
 
 1. Välj önskad _organisation_
 1. Välj **min-första-webb-statisk-app** från List rutan _databas_
-1. Välj **original** i list rutan _gren_
+1. Välj **huvud** från List rutan _gren_
 
 > [!NOTE]
 > Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps** och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.

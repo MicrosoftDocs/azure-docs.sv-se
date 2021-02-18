@@ -7,12 +7,12 @@ ms.topic: reference
 ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
-ms.openlocfilehash: f198b59f106b7d2a29e35d77b54274328be6fa93
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581609"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570964"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Övervakning av Azure IoT Hub data-referens
 
@@ -24,25 +24,48 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått för Azur
 
 Följande underavsnitt visar måtten för IoT Hub Platform-mått enligt kategorin Allmänt och listar dem efter det visnings namn som de visas i Azure Portal med. Information anges också relevant för de mått som visas i varje underavsnitt.
 
-Du kan också hitta en enskild tabell som visar alla IoT Hub plattforms mått efter Metric-namn under [Microsoft. Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) i dokumentationen för Azure Monitor. Tänk på att den här tabellen inte innehåller någon information, t. ex. [agg regeringar som stöds](#supported-aggregations) för vissa mått, som finns i den här artikeln.
+Du kan också hitta en enskild tabell som visar alla IoT Hub plattforms mått efter Metric-namn under [Microsoft. Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs) i dokumentationen för Azure Monitor. Tänk på att den här tabellen inte innehåller någon information, t. ex. [agg regeringar som stöds](#supported-aggregations) för vissa mått, som finns i den här artikeln.
 
-Mer information om mått som stöds av andra Azure-tjänster finns i [mått som stöds med Azure Monitor](../azure-monitor/platform/metrics-supported.md).
+Mer information om mått som stöds av andra Azure-tjänster finns i [mått som stöds med Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 
 **Ämnen i det här avsnittet**
 
-- [Agg regeringar som stöds](#supported-aggregations)
-- [Kommando mått för moln till enhet](#cloud-to-device-command-metrics)
-- [Mått för moln till enhetens direkta metoder](#cloud-to-device-direct-methods-metrics)
-- [Moln till enhet, dubbla drifts mått](#cloud-to-device-twin-operations-metrics)
-- [Konfigurations mått](#configurations-metrics)
-- [Dagliga kvot mått](#daily-quota-metrics)
-- [Enhets mått](#device-metrics)
-- [Mått för enhets telemetri](#device-telemetry-metrics)
-- [Enhet till molnet med dubbla drifts mått](#device-to-cloud-twin-operations-metrics)
-- [Event Grid-mått](#event-grid-metrics)
-- [Jobb mått](#jobs-metrics)
-- [Routnings mått](#routing-metrics)
-- [Dubbla fråge mått](#twin-query-metrics)
+- [Övervakning av Azure IoT Hub data-referens](#monitoring-azure-iot-hub-data-reference)
+  - [Mått](#metrics)
+    - [Agg regeringar som stöds](#supported-aggregations)
+    - [Kommando mått för moln till enhet](#cloud-to-device-command-metrics)
+    - [Mått för moln till enhetens direkta metoder](#cloud-to-device-direct-methods-metrics)
+    - [Moln till enhet, dubbla drifts mått](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurations mått](#configurations-metrics)
+    - [Dagliga kvot mått](#daily-quota-metrics)
+    - [Enhets mått](#device-metrics)
+    - [Mått för enhets telemetri](#device-telemetry-metrics)
+    - [Enhet till molnet med dubbla drifts mått](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid-mått](#event-grid-metrics)
+    - [Jobb mått](#jobs-metrics)
+    - [Routnings mått](#routing-metrics)
+    - [Dubbla fråge mått](#twin-query-metrics)
+  - [Mått dimensioner](#metric-dimensions)
+  - [Resursloggar](#resource-logs)
+    - [Anslutningar](#connections)
+    - [Telemetri för enhet](#device-telemetry)
+    - [Moln till enhet-kommandon](#cloud-to-device-commands)
+    - [Enhets identitets åtgärder](#device-identity-operations)
+    - [Filöverföringsåtgärder](#file-upload-operations)
+    - [Vägar](#routes)
+    - [Dubbla åtgärder från enhet till moln](#device-to-cloud-twin-operations)
+    - [Dubbla åtgärder från moln till enhet](#cloud-to-device-twin-operations)
+    - [Dubbla frågor](#twin-queries)
+    - [Jobbåtgärder](#jobs-operations)
+    - [Direkta metoder](#direct-methods)
+    - [Distribuerad spårning (för hands version)](#distributed-tracing-preview)
+      - [IoT Hub D2C-loggar (från enhet till moln)](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub ingress-loggar](#iot-hub-ingress-logs)
+      - [IoT Hub utgående loggar](#iot-hub-egress-logs)
+    - [Konfigurationer](#configurations)
+    - [Enhets strömmar (förhands granskning)](#device-streams-preview)
+  - [Azure Monitor loggar tabeller](#azure-monitor-logs-tables)
+  - [Se även](#see-also)
 
 ### <a name="supported-aggregations"></a>Agg regeringar som stöds
 
@@ -226,31 +249,50 @@ Azure IoT Hub har följande dimensioner kopplade till några av måtten för Rou
 |**Resultat**| Antingen **lyckades** eller **misslyckades**.|
 |**RoutingSource**| Enhets meddelanden<br>Dubbla ändrings händelser<br>Livs cykel händelser för enhet|
 
-Mer information om mått dimensioner finns i [flerdimensionella mått](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Mer information om mått dimensioner finns i [flerdimensionella mått](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Resursloggar
 
-I det här avsnittet visas alla kategori typer och scheman för resurs logg som samlats in för Azure IoT Hub. Resurs leverantören och typen för alla IoT Hub loggar är [Microsoft. Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
+I det här avsnittet visas alla kategori typer och scheman för resurs logg som samlats in för Azure IoT Hub. Resurs leverantören och typen för alla IoT Hub loggar är [Microsoft. Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **Ämnen i det här avsnittet**
 
-- [Anslutningar](#connections)
-- [Telemetri för enhet](#device-telemetry)
-- [Moln till enhet-kommandon](#cloud-to-device-commands)
-- [Enhets identitets åtgärder](#device-identity-operations)
-- [Filöverföringsåtgärder](#file-upload-operations)
-- [Vägar](#routes)
-- [Dubbla åtgärder från enhet till moln](#device-to-cloud-twin-operations)
-- [Dubbla åtgärder från moln till enhet](#cloud-to-device-twin-operations)
-- [Dubbla frågor](#twin-queries)
-- [Jobbåtgärder](#jobs-operations)
-- [Direkta metoder](#direct-methods)
-- [Distribuerad spårning (för hands version)](#distributed-tracing-preview)
-  - [IoT Hub D2C-loggar (från enhet till moln)](#iot-hub-d2c-device-to-cloud-logs)
-  - [IoT Hub ingress-loggar](#iot-hub-ingress-logs)
-  - [IoT Hub utgående loggar](#iot-hub-egress-logs)
-- [Konfigurationer](#configurations)
-- [Enhets strömmar (förhands granskning)](#device-streams-preview)
+- [Övervakning av Azure IoT Hub data-referens](#monitoring-azure-iot-hub-data-reference)
+  - [Mått](#metrics)
+    - [Agg regeringar som stöds](#supported-aggregations)
+    - [Kommando mått för moln till enhet](#cloud-to-device-command-metrics)
+    - [Mått för moln till enhetens direkta metoder](#cloud-to-device-direct-methods-metrics)
+    - [Moln till enhet, dubbla drifts mått](#cloud-to-device-twin-operations-metrics)
+    - [Konfigurations mått](#configurations-metrics)
+    - [Dagliga kvot mått](#daily-quota-metrics)
+    - [Enhets mått](#device-metrics)
+    - [Mått för enhets telemetri](#device-telemetry-metrics)
+    - [Enhet till molnet med dubbla drifts mått](#device-to-cloud-twin-operations-metrics)
+    - [Event Grid-mått](#event-grid-metrics)
+    - [Jobb mått](#jobs-metrics)
+    - [Routnings mått](#routing-metrics)
+    - [Dubbla fråge mått](#twin-query-metrics)
+  - [Mått dimensioner](#metric-dimensions)
+  - [Resursloggar](#resource-logs)
+    - [Anslutningar](#connections)
+    - [Telemetri för enhet](#device-telemetry)
+    - [Moln till enhet-kommandon](#cloud-to-device-commands)
+    - [Enhets identitets åtgärder](#device-identity-operations)
+    - [Filöverföringsåtgärder](#file-upload-operations)
+    - [Vägar](#routes)
+    - [Dubbla åtgärder från enhet till moln](#device-to-cloud-twin-operations)
+    - [Dubbla åtgärder från moln till enhet](#cloud-to-device-twin-operations)
+    - [Dubbla frågor](#twin-queries)
+    - [Jobbåtgärder](#jobs-operations)
+    - [Direkta metoder](#direct-methods)
+    - [Distribuerad spårning (för hands version)](#distributed-tracing-preview)
+      - [IoT Hub D2C-loggar (från enhet till moln)](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT Hub ingress-loggar](#iot-hub-ingress-logs)
+      - [IoT Hub utgående loggar](#iot-hub-egress-logs)
+    - [Konfigurationer](#configurations)
+    - [Enhets strömmar (förhands granskning)](#device-streams-preview)
+  - [Azure Monitor loggar tabeller](#azure-monitor-logs-tables)
+  - [Se även](#see-also)
 
 ### <a name="connections"></a>Anslutningar
 
@@ -690,4 +732,4 @@ En referens för alla Azure Monitor loggar/Log Analytics tabeller finns i [Azure
 ## <a name="see-also"></a>Se även
 
 * Se [övervaka Azure-IoT Hub](monitor-iot-hub.md) för en beskrivning av övervakning av azure-IoT Hub.
-* Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+* Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

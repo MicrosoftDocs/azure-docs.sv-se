@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 411a95154c9ca36595dff4472e9ab8e1ae8a767e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693832"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571376"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor för SAP-lösningar (för hands version)
 
@@ -35,7 +35,7 @@ Databaser som stöds:
 - SAP HANA-databas
 - Microsoft SQL Server
 
-Azure Monitor for SAP-lösningar använder kraften i befintliga [Azure Monitor](../../../azure-monitor/overview.md) funktioner som Log Analytics och [arbets böcker](../../../azure-monitor/platform/workbooks-overview.md) för att ge fler övervaknings funktioner. Kunder kan skapa [anpassade visualiseringar](../../../azure-monitor/platform/workbooks-overview.md#getting-started) genom att redigera standard arbets böckerna som tillhandahålls av Azure Monitor för SAP-lösningar, skriva [anpassade frågor](../../../azure-monitor/log-query/log-analytics-tutorial.md) och skapa [anpassade aviseringar](../../../azure-monitor/learn/tutorial-response.md) med hjälp av Azure Log Analytics-arbetsytan, dra nytta av den [flexibla kvarhållningsperioden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) och ansluta övervaknings data med sitt biljett system.
+Azure Monitor for SAP-lösningar använder kraften i befintliga [Azure Monitor](../../../azure-monitor/overview.md) funktioner som Log Analytics och [arbets böcker](../../../azure-monitor/visualize/workbooks-overview.md) för att ge fler övervaknings funktioner. Kunder kan skapa [anpassade visualiseringar](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) genom att redigera standard arbets böckerna som tillhandahålls av Azure Monitor för SAP-lösningar, skriva [anpassade frågor](../../../azure-monitor/logs/log-analytics-tutorial.md) och skapa [anpassade aviseringar](../../../azure-monitor/alerts/tutorial-response.md) med hjälp av Azure Log Analytics-arbetsytan, dra nytta av den [flexibla kvarhållningsperioden](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) och ansluta övervaknings data med sitt biljett system.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Vilka data Azure Monitor för att samla in SAP-lösningar?
 
@@ -91,9 +91,9 @@ Huvud komponenterna i arkitekturen är:
    - Virtuell Azure-dator: kallas även för *insamlad virtuell* dator. Detta är en Standard_B2ms virtuell dator. Huvud syftet med den här virtuella datorn är att vara värd för *övervaknings nytto lasten*. Övervaknings nytto Last syftar på logiken för insamling av telemetri från käll systemen och överföring av insamlade data till övervaknings ramverket. I diagrammet ovan innehåller övervaknings nytto lasten logiken för att ansluta till SAP HANA Database över SQL-porten.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): den här resursen distribueras för att lagra autentiseringsuppgifter på SAP HANA-databasen på ett säkert sätt och för att lagra information om [leverantörer](./azure-monitor-providers.md).
    - Log Analytics arbets yta: målet där telemetri-data finns.
-      - Visualisering bygger på telemetri i Log Analytics att använda Azure- [arbetsböcker](../../../azure-monitor/platform/workbooks-overview.md). Kunder kan anpassa visualiseringar. Kunder kan också fästa sina arbets böcker eller en speciell visualisering i arbets böcker till Azure-instrumentpanelen för uppdaterings möjligheter med den lägsta precisionen på 30 minuter.
+      - Visualisering bygger på telemetri i Log Analytics att använda Azure- [arbetsböcker](../../../azure-monitor/visualize/workbooks-overview.md). Kunder kan anpassa visualiseringar. Kunder kan också fästa sina arbets böcker eller en speciell visualisering i arbets böcker till Azure-instrumentpanelen för uppdaterings möjligheter med den lägsta precisionen på 30 minuter.
       - Kunder kan använda sina befintliga arbets ytor i samma prenumeration som SAP Monitor-resursen genom att välja det här alternativet vid tidpunkten för distributionen.
-      - Kunder kan använda KQL (Kusto Query Language) för att köra [frågor](../../../azure-monitor/log-query/log-query-overview.md) mot obearbetade tabeller i Log Analytics arbets ytan. Titta på *anpassade loggar*.
+      - Kunder kan använda KQL (Kusto Query Language) för att köra [frågor](../../../azure-monitor/logs/log-query-overview.md) mot obearbetade tabeller i Log Analytics arbets ytan. Titta på *anpassade loggar*.
 
 > [!Note]
 > Kunderna ansvarar för att korrigera och underhålla den virtuella datorn, som distribueras i den hanterade resurs gruppen.

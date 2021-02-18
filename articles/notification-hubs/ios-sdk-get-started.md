@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c18814230eda6624e8ab1040797c66108f630e30
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001328"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581748"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Självstudie: skicka push-meddelanden till iOS-appar med hjälp av Azure Notification Hubs
 
@@ -309,4 +309,4 @@ Du har nu konfigurerat din Notification Hub med APN. Du har också de anslutning
 
 I den här självstudien har du skapat och konfigurerat en Notification Hub i Azure och konfigurerat det så att meddelanden kan skickas till ditt program via Apple Push Notification Service (APN). Härnäst ska vi skapa ett exempel på iOS-program och integrera Azure Notifications Hub SDK så att det kan ta emot push-meddelanden som skickas via Azure Portal. Gå vidare till följande självstudie baserat på ditt val av språk:
 
-- [Självstudie: skicka push-meddelanden till iOS-appar med hjälp av Azure Notification Hubs](ios-sdk-300.md)
+- [Självstudie: skicka push-meddelanden till iOS-appar med hjälp av Azure Notification Hubs](ios-sdk-current.md)

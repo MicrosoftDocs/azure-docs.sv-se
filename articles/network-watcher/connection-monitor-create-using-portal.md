@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: bd13712d137ec5a1fdfa6dec8e6f6d1e0a7432cb
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833175"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570895"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Skapa en övervakare i anslutnings övervakaren med hjälp av Azure Portal
 
@@ -186,7 +186,7 @@ I Azure Portal för att skapa aviseringar för en anslutnings övervakare anger 
 
 - **Villkors namn**: aviseringen skapas på `Test Result(preview)` måttet. När resultatet av anslutnings övervaknings testet är ett misslyckat resultat, utlöses varnings regeln. 
 
-- **Namn på åtgärds grupp**: du kan ange din e-postadress direkt eller så kan du skapa aviseringar via åtgärds grupper. Om du anger din e-postadress direkt skapas en åtgärds grupp med namnet **NPM e-ActionGroup** . E-post-ID: t läggs till i den åtgärds gruppen. Om du väljer att använda åtgärds grupper måste du välja en tidigare skapad åtgärds grupp. Information om hur du skapar en åtgärds grupp finns [i skapa åtgärds grupper i Azure Portal](../azure-monitor/platform/action-groups.md). När aviseringen har skapats kan du [Hantera dina aviseringar](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
+- **Namn på åtgärds grupp**: du kan ange din e-postadress direkt eller så kan du skapa aviseringar via åtgärds grupper. Om du anger din e-postadress direkt skapas en åtgärds grupp med namnet **NPM e-ActionGroup** . E-post-ID: t läggs till i den åtgärds gruppen. Om du väljer att använda åtgärds grupper måste du välja en tidigare skapad åtgärds grupp. Information om hur du skapar en åtgärds grupp finns [i skapa åtgärds grupper i Azure Portal](../azure-monitor/alerts/action-groups.md). När aviseringen har skapats kan du [Hantera dina aviseringar](../azure-monitor/alerts/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Varnings regel namn**: namnet på anslutnings övervakaren.
 

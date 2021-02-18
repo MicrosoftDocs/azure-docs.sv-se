@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986047"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571042"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurera övervakare av nätverksprestanda för ExpressRoute
 
@@ -54,7 +54,7 @@ Skapa en arbets yta i prenumerationen som har virtuella nätverk-länken till Ex
 1. I [Azure Portal](https://portal.azure.com)väljer du den prenumeration som har virtuella nätverk som peer-kopplats till din ExpressRoute-krets. Sök sedan efter "Övervakare av nätverksprestanda" i listan över tjänster i **Marketplace** . Klicka för att öppna sidan **övervakare av nätverksprestanda** i retur.
 
    >[!NOTE]
-   >Du kan skapa en ny arbets yta eller använda en befintlig arbets yta. Om du vill använda en befintlig arbets yta måste du se till att arbets ytan har migrerats till det nya frågespråket. [Mer information...](../azure-monitor/log-query/log-query-overview.md)
+   >Du kan skapa en ny arbets yta eller använda en befintlig arbets yta. Om du vill använda en befintlig arbets yta måste du se till att arbets ytan har migrerats till det nya frågespråket. [Mer information...](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![portal](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ Vi rekommenderar att du installerar minst två agenter på varje sida av Express
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: Konfigurera proxyinställningar (valfritt)
 
-Om du använder en webbproxy för att få åtkomst till Internet använder du följande steg för att konfigurera proxyinställningar för Microsoft Monitoring Agent. Utför de här stegen för varje server. Om du har många servrar att konfigurera är det kanske enklare att använda ett skript för att automatisera processen. I så fall, se [Konfigurera proxyinställningar för Microsoft Monitoring Agent med hjälp av ett skript](../azure-monitor/platform/agent-windows.md).
+Om du använder en webbproxy för att få åtkomst till Internet använder du följande steg för att konfigurera proxyinställningar för Microsoft Monitoring Agent. Utför de här stegen för varje server. Om du har många servrar att konfigurera är det kanske enklare att använda ett skript för att automatisera processen. I så fall, se [Konfigurera proxyinställningar för Microsoft Monitoring Agent med hjälp av ett skript](../azure-monitor/agents/agent-windows.md).
 
 Konfigurera proxyinställningar för Microsoft Monitoring Agent med hjälp av kontroll panelen:
 

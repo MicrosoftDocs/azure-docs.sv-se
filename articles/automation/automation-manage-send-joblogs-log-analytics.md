@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182877"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581211"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Vidarebefordra jobbdata från Azure Automation till Azure Monitor-loggar
 
@@ -72,7 +72,7 @@ Inställningarna för Automation-diagnostik stöder vidarebefordran av följande
 * DSCNodeStatus
 * Mått-totalt antal jobb, den totala uppdaterings distributions datorn körs, den totala uppdaterings distributionen körs
 
-Om du vill börja skicka dina Automation-loggar till Azure Monitor loggar kan du läsa [skapa diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md) för att förstå funktionen och metoderna som är tillgängliga för att konfigurera diagnostikinställningar för att skicka plattforms loggar.
+Om du vill börja skicka dina Automation-loggar till Azure Monitor loggar kan du läsa [skapa diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md) för att förstå funktionen och metoderna som är tillgängliga för att konfigurera diagnostikinställningar för att skicka plattforms loggar.
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor logg poster
 
@@ -140,7 +140,7 @@ Om du vill skapa en varnings regel börjar du med att skapa en loggs ökning fö
 
    Om du ställer in loggar från fler än ett Automation-konto eller en prenumeration på din arbets yta, kan du gruppera dina aviseringar efter prenumeration och Automation-konto. Du hittar namnet på Automation-kontot i `Resource` fältet i sökningen `JobLogs` .
 
-3. Öppna skärmen **Skapa regel** genom att klicka på **ny varnings regel** överst på sidan. Mer information om alternativen för att konfigurera aviseringen finns i [logg aviseringar i Azure](../azure-monitor/platform/alerts-unified-log.md).
+3. Öppna skärmen **Skapa regel** genom att klicka på **ny varnings regel** överst på sidan. Mer information om alternativen för att konfigurera aviseringen finns i [logg aviseringar i Azure](../azure-monitor/alerts/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Hitta alla jobb som har slutförts med fel
 
@@ -192,8 +192,8 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du skapar Sök frågor och granskar automatiserings jobb loggar med Azure Monitor loggar finns i [loggs ökningar i Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md).
+* Information om hur du skapar Sök frågor och granskar automatiserings jobb loggar med Azure Monitor loggar finns i [loggs ökningar i Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md).
 * Information om hur du skapar och hämtar utdata och fel meddelanden från Runbooks finns i [övervaka Runbook-utdata](automation-runbook-output-and-messages.md).
 * Mer information om Runbook-körning, hur du övervakar Runbook-jobb och annan teknisk information finns [i Runbook-körning i Azure Automation](automation-runbook-execution.md).
-* Mer information om Azure Monitor loggar och data insamlings källor finns i [samla in Azure Storage-data i Azure Monitor loggar översikt](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
-* Information om hur du felsöker Log Analytics finns i [fel sökning varför Log Analytics inte längre samlar in data](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
+* Mer information om Azure Monitor loggar och data insamlings källor finns i [samla in Azure Storage-data i Azure Monitor loggar översikt](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
+* Information om hur du felsöker Log Analytics finns i [fel sökning varför Log Analytics inte längre samlar in data](../azure-monitor/logs/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
-ms.openlocfilehash: dc8528c40fe7e3b32e2f38152afc8abb0ae18ba5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945981"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582761"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK för Go (för hands version)
 
@@ -362,7 +362,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>Aktivera OMS-övervakning
 
 > [!NOTE]  
-> Om du vill aktivera OMS-övervakning måste du ha en befintlig Log Analytics-arbetsyta. Om du inte redan har skapat en, kan du lära dig hur du gör det här: [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+> Om du vill aktivera OMS-övervakning måste du ha en befintlig Log Analytics-arbetsyta. Om du inte redan har skapat en, kan du lära dig hur du gör det här: [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 Aktivera OMS-övervakning i klustret:
 

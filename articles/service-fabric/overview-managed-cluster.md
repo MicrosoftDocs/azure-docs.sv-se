@@ -2,13 +2,13 @@
 title: Service Fabric hanterade kluster (förhands granskning)
 description: Service Fabric hanterade kluster är en utveckling av resurs modellen för Azure Service Fabric-kluster som effektiviserar distribution och kluster hantering.
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410497"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635153"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric hanterade kluster (förhands granskning)
 
@@ -62,21 +62,26 @@ Service Fabric hanterade kluster finns i både Basic-och standard-SKU: er.
 | Lägga till/ta bort nodtyper | Nej | Ja |
 | Zonredundans | Nej | Ja |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Översikt över Service Fabric hanterade kluster funktioner
-Eftersom det här är en tidig för hands version av Service Fabric hanterade kluster finns det några luckor att tänka på. Dessa funktioner kommer att bli tillgängliga i framtida versioner. 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Vad är nytt för Service Fabric hanterade kluster
 
-* Publicera program till kluster direkt från Visual Studio
-* Hanterade identiteter 
-* ARM-programdistributioner 
-* Tillgänglighetszoner 
-* Omvänd proxy 
-* Automatisk skalning 
-* Uppdaterar NSG-regler 
-* Automatiska operativ system uppgraderingar
+De senaste funktionerna för för hands versionen av Service Fabric hanterade kluster inkluderar stöd för:
+
+* [Distribuera program med ARM-mallar](how-to-managed-cluster-app-deployment-template.md)
+* [Automatiska uppgraderingar av operativsystem](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [Disk kryptering](how-to-enable-managed-cluster-disk-encryption.md)
+* [Tillämpa NSG-regler](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+
+Funktioner som ska läggas till i kommande versioner är:
+
+* Distribuera program med Visual Studio
+* Stöd för hanterade identiteter
+* Tillgänglighetszoner
+* Omvänd proxy
+* Automatisk skalning
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kom igång med Service Fabric hanterade kluster genom att prova snabb starten:
+Kom igång med Service Fabric hanterade kluster genom att försöka med snabb starten:
 
 > [!div class="nextstepaction"]
 > [Skapa ett Service Fabric hanterat kluster (förhands granskning)](quickstart-managed-cluster-template.md)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880767"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592520"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Samla in loggfiler för Machine Learning-pipeline i Application Insights för aviseringar och fel sökning
 
@@ -164,6 +164,6 @@ Några av frågorna nedan använder "customDimensions. level". Dessa allvarlighe
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har loggat in Application Insights-instansen kan de användas för att ange [Azure Monitor aviseringar](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) baserat på frågeresultat.
+När du har loggat in Application Insights-instansen kan de användas för att ange [Azure Monitor aviseringar](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on) baserat på frågeresultat.
 
-Du kan också lägga till resultat från frågor till en [Azure-instrumentpanel](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) för ytterligare insikter.
+Du kan också lägga till resultat från frågor till en [Azure-instrumentpanel](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query) för ytterligare insikter.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693620"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595496"
 ---
 # <a name="azure-operational-security-overview"></a>Översikt över Azures drift säkerhet
 
@@ -68,7 +68,7 @@ Azure AD innehåller också en fullständig uppsättning [funktioner för identi
 - [Lösenordshantering via självbetjäning](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Grupp hantering via självbetjäning](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)
 - [Hantering av privilegierade konton](../../active-directory/privileged-identity-management/pim-configure.md)
-- [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md)
+- [Azure RBAC (rollbaserad åtkomstkontroll)](../../role-based-access-control/overview.md)
 - [Övervakning av program användning](../../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Omfattande granskning](../../active-directory/reports-monitoring/concept-audit-logs.md)
 - [Säkerhetsövervakning och aviseringar](../../security-center/security-center-managing-and-responding-alerts.md)
@@ -94,7 +94,7 @@ Security Center bedömer konfigurationen av dina resurser för att identifiera s
 >[!Note]
 >Mer information om roller och tillåtna åtgärder i Security Center finns i [behörigheter i Azure Security Center](../../security-center/security-center-permissions.md).
 
-Security Center använder Microsoft Monitoring Agent. Detta är samma agent som den Azure Monitor tjänsten använder. Data som samlas in från den här agenten lagras antingen i en befintlig Log Analytics [arbets yta](../../azure-monitor/platform/manage-access.md) som är kopplad till din Azure-prenumeration eller en ny arbets yta, med hänsyn till den virtuella datorns plats.
+Security Center använder Microsoft Monitoring Agent. Detta är samma agent som den Azure Monitor tjänsten använder. Data som samlas in från den här agenten lagras antingen i en befintlig Log Analytics [arbets yta](../../azure-monitor/logs/manage-access.md) som är kopplad till din Azure-prenumeration eller en ny arbets yta, med hänsyn till den virtuella datorns plats.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor innehåller följande komponenter.
 
 ### <a name="azure-activity-log"></a>Azure-aktivitetslogg
 
-[Azure aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md) ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Det kallades tidigare "Gransknings logg" eller "drift logg", eftersom den rapporterar kontroll Plans händelser för dina prenumerationer.
+[Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Det kallades tidigare "Gransknings logg" eller "drift logg", eftersom den rapporterar kontroll Plans händelser för dina prenumerationer.
 
 ### <a name="azure-diagnostic-logs"></a>Azure diagnostikloggar
 
-[Azure Diagnostic-loggar](../../azure-monitor/platform/platform-logs-overview.md) genereras av en resurs och ger omfattande, frekventa data om driften av resursen. Innehållet i dessa loggar varierar beroende på resurs typ.
+[Azure Diagnostic-loggar](../../azure-monitor/essentials/platform-logs-overview.md) genereras av en resurs och ger omfattande, frekventa data om driften av resursen. Innehållet i dessa loggar varierar beroende på resurs typ.
 
 Windows Event System-loggar är en kategori av diagnostikloggar för virtuella datorer. BLOB-, tabell-och Queue-loggar är kategorier av diagnostikloggar för lagrings konton.
 
-Diagnostikloggar skiljer sig från [aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md). Aktivitets loggen ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Diagnostikloggar ger insikter om åtgärder som din resurs utfört själv.
+Diagnostikloggar skiljer sig från [aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md). Aktivitets loggen ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Diagnostikloggar ger insikter om åtgärder som din resurs utfört själv.
 
 ### <a name="metrics"></a>Mått
 
-Azure Monitor tillhandahåller telemetri som ger dig insyn i prestanda och hälsa för dina arbets belastningar i Azure. Den viktigaste typen av Azure-telemetridata är [måtten](../../azure-monitor/platform/data-platform.md) (kallas även prestanda räknare) som har genererats av de flesta Azure-resurser. Azure Monitor tillhandahåller flera olika sätt att konfigurera och använda dessa mått för övervakning och fel sökning.
+Azure Monitor tillhandahåller telemetri som ger dig insyn i prestanda och hälsa för dina arbets belastningar i Azure. Den viktigaste typen av Azure-telemetridata är [måtten](../../azure-monitor/data-platform.md) (kallas även prestanda räknare) som har genererats av de flesta Azure-resurser. Azure Monitor tillhandahåller flera olika sätt att konfigurera och använda dessa mått för övervakning och fel sökning.
 
 ### <a name="azure-diagnostics"></a>Microsoft Azure Diagnostics
 
-Azure-diagnostik aktiverar insamling av diagnostikdata i ett distribuerat program. Du kan använda diagnostik-tillägget från olika källor. För närvarande finns stöd för [Azure Cloud Service-roller](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure virtuella datorer](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) som kör Microsoft Windows och [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md).
+Azure-diagnostik aktiverar insamling av diagnostikdata i ett distribuerat program. Du kan använda diagnostik-tillägget från olika källor. För närvarande finns stöd för [Azure Cloud Service-roller](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure virtuella datorer](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service) som kör Microsoft Windows och [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md).
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 

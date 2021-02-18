@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439555"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634712"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Jämföra baslinjer med hjälp av övervakning av filintegritet (FIM)
 
@@ -62,23 +62,22 @@ FIM-slutpunkter börjar genom att identifiera egenskaper för ett tillförlitlig
 > [!NOTE]
 > Mer information om register inställningar som stöds av olika operativ system versioner finns i [kalkyl bladet grupprincip inställningar referens](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
-*Konfigurera FIM för att övervaka register bas linjer:*
+Konfigurera FIM för att övervaka register bas linjer:
 
-1. I fönstret **Lägg till Windows-register för ändringsspårning** i text rutan **register nyckel för Windows** anger du register nyckeln.
+1. I fönstret **Lägg till Windows-register för ändringsspårning** i text rutan **register nyckel för Windows** anger du följande register nyckel:
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![Aktivera FIM i ett register](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="Aktivera FIM i ett register":::
 
 ## <a name="track-changes-to-windows-files"></a>Spåra ändringar i Windows-filer
 
 1. I text rutan **Ange sökväg** i fönstret **Lägg till Windows-fil för ändringsspårning** anger du den mapp som innehåller de filer som du vill spåra. I exemplet i följande figur finns **contoso-webbappen** i D:\ enhet i mappstrukturen för **ContosWebApp** .  
 1. Skapa en anpassad Windows-filpost genom att ange ett namn på inställnings klassen, aktivera rekursion och ange den översta mappen med ett jokertecken (*).
 
-    ![Aktivera FIM på en fil](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="Aktivera FIM på en fil":::
 
 ## <a name="retrieve-change-data"></a>Hämta ändrings data
 

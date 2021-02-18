@@ -24,9 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Skicka push-meddelanden till alla registreringar (SDK version 1.0.0-preview1)
+            - name: Skicka push-meddelanden till alla registreringar (aktuellt SDK)
               href: android-sdk.md
-            - name: Skicka push-meddelanden till alla registreringar (SDK version 0.6)
+            - name: Skicka push-meddelanden till alla registreringar (äldre SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Skicka push-meddelanden till specifika enheter
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -50,10 +50,10 @@
           items:
             - name: Förutsättningar för iOS-självstudier
               href: ios-sdk-get-started.md
-            - name: Objective-C (version 3.0.0-preview1)
-              href: ios-sdk-300.md
-            - name: Objective-C (version 2.0.4)
-              href: ios-sdk-204.md
+            - name: Mål-C (aktuell SDK)
+              href: ios-sdk-current.md
+            - name: Mål-C (äldre SDK)
+              href: ios-sdk-legacy.md
         - name: Skicka push-meddelanden till specifika enheter
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: Skicka push-meddelanden till specifika användare

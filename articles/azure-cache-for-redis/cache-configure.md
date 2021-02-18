@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831781"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581071"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Så här konfigurerar du Azure cache för Redis
 I det här avsnittet beskrivs de konfigurationer som är tillgängliga för Azure-cachen för Redis-instanser. Det här avsnittet beskriver också standard konfigurationen för Redis-servern för Azure cache för Redis-instanser.
@@ -341,10 +341,10 @@ Klicka på **aviserings regler** om du vill konfigurera aviseringar baserat på 
 
 ### <a name="diagnostics"></a>Diagnostik
 
-Som standard lagras cache-mått i Azure Monitor i [30 dagar](../azure-monitor/platform/data-platform-metrics.md) och tas sedan bort. Om du vill spara dina cache-mått i mer än 30 dagar klickar du på **diagnostik** för att [Konfigurera det lagrings konto](cache-how-to-monitor.md#export-cache-metrics) som används för att lagra cache-diagnostik.
+Som standard lagras cache-mått i Azure Monitor i [30 dagar](../azure-monitor/essentials/data-platform-metrics.md) och tas sedan bort. Om du vill spara dina cache-mått i mer än 30 dagar klickar du på **diagnostik** för att [Konfigurera det lagrings konto](cache-how-to-monitor.md#export-cache-metrics) som används för att lagra cache-diagnostik.
 
 >[!NOTE]
->Förutom att arkivera dina cache-mått till lagring kan du också [strömma dem till en händelsehubben eller skicka dem till Azure Monitor loggar](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+>Förutom att arkivera dina cache-mått till lagring kan du också [strömma dem till en händelsehubben eller skicka dem till Azure Monitor loggar](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 >
 >
 

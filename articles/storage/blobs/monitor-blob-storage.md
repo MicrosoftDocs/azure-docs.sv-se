@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4ca74070c1b0d2cd4a5cf4225443465e080b518d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5337372b5e996798a5000e1c32ea8e372aa63ed4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591775"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Övervaka Azure-Blob Storage
 
@@ -30,7 +30,7 @@ När du har viktiga program och affärs processer som förlitar sig på Azure-re
 ## <a name="what-is-azure-monitor"></a>Vad är Azure Monitor?
 Azure Blob Storage skapar övervaknings data med hjälp av [Azure Monitor](../../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure. Azure Monitor innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser och resurser i andra moln och lokalt. 
 
-Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) som beskriver följande:
+Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) som beskriver följande:
 
 - Vad är Azure Monitor?
 - Kostnader för övervakning
@@ -42,7 +42,7 @@ Följande avsnitt bygger på den här artikeln genom att beskriva de specifika d
 
 ## <a name="monitoring-data"></a>Övervaka data
 
-Azure Blob Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaka data från Azure-resurser](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Blob Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaka data från Azure-resurser](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
 
 Se [data referens för Azure Blob Storage övervakning](monitor-blob-storage-reference.md) för detaljerad information om mått och loggar mått som skapats av Azure Blob Storage.
 
@@ -69,7 +69,7 @@ Om du vill samla in resurs loggar måste du skapa en diagnostisk inställning. N
 
 Du kan skapa en diagnostisk inställning med hjälp av Azure Portal, PowerShell, Azure CLI eller en Azure Resource Manager mall. 
 
-Allmän vägledning finns i [skapa diagnostisk inställning för att samla in plattforms loggar och mått i Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Allmän vägledning finns i [skapa diagnostisk inställning för att samla in plattforms loggar och mått i Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 > [!NOTE]
 > Azure Storage loggar i Azure Monitor finns i offentlig för hands version och är tillgänglig för för hands testning i alla offentliga moln regioner. Den här för hands versionen aktiverar loggar för blobbar (som innehåller Azure Data Lake Storage Gen2), filer, köer och tabeller. Den här funktionen är tillgänglig för alla lagrings konton som skapas med Azure Resource Manager distributions modell. Se [Översikt över lagrings konto](../common/storage-account-overview.md).
@@ -111,7 +111,7 @@ Om du väljer att arkivera loggarna på ett lagrings konto betalar du för den v
 2. I list rutan **lagrings konto** väljer du det lagrings konto som du vill arkivera loggarna till, klickar på **OK** -knappen och klickar sedan på knappen **Spara** .
 
    > [!NOTE]
-   > Innan du väljer ett lagrings konto som export mål, se [arkivera Azures resurs loggar](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) för att förstå krav på lagrings kontot.
+   > Innan du väljer ett lagrings konto som export mål, se [arkivera Azures resurs loggar](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) för att förstå krav på lagrings kontot.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Strömma loggar till Azure Event Hubs
 
@@ -165,7 +165,7 @@ Här är ett exempel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-En beskrivning av varje parameter finns i [arkivera Azures resurs loggar via Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+En beskrivning av varje parameter finns i [arkivera Azures resurs loggar via Azure PowerShell](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Strömma loggar till en händelsehubb
 
@@ -181,7 +181,7 @@ Här är ett exempel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-En beskrivning av varje parameter finns i [strömma data till Event Hubs via PowerShell-cmdletar](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+En beskrivning av varje parameter finns i [strömma data till Event Hubs via PowerShell-cmdletar](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Skicka loggar till Log Analytics
 
@@ -195,7 +195,7 @@ Här är ett exempel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets ytan i Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets ytan i Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -227,7 +227,7 @@ Här är ett exempel:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-En beskrivning av varje parameter finns i [arkivera resurs loggar via Azure CLI](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+En beskrivning av varje parameter finns i [arkivera resurs loggar via Azure CLI](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Strömma loggar till en händelsehubb
 
@@ -243,7 +243,7 @@ Här är ett exempel:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-En beskrivning av varje parameter finns i [strömma data till Event Hubs via Azure CLI](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+En beskrivning av varje parameter finns i [strömma data till Event Hubs via Azure CLI](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Skicka loggar till Log Analytics
 
@@ -257,17 +257,17 @@ Här är ett exempel:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets ytan i Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+ Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets ytan i Azure Monitor](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Mall](#tab/template)
 
-Om du vill visa en Azure Resource Manager mall som skapar en diagnostisk inställning, se [diagnostisk inställning för Azure Storage](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
+Om du vill visa en Azure Resource Manager mall som skapar en diagnostisk inställning, se [diagnostisk inställning för Azure Storage](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage).
 
 ---
 
 ## <a name="analyzing-metrics"></a>Analyserar mått
 
-Du kan analysera mått för Azure Storage med mått från andra Azure-tjänster med hjälp av Metrics Explorer. Öppna Metrics Explorer genom att välja **mått** på **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). 
+Du kan analysera mått för Azure Storage med mått från andra Azure-tjänster med hjälp av Metrics Explorer. Öppna Metrics Explorer genom att välja **mått** på **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md). 
 
 Det här exemplet visar hur du visar **transaktioner** på konto nivå.
 
@@ -284,7 +284,7 @@ Mått för Azure Blob Storage finns i följande namnrymder:
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/blobServices
 
-En lista över alla Azure Monitor support mått, som innehåller Azure Blob Storage, finns i [Azure Monitor mått som stöds](../../azure-monitor/platform/metrics-supported.md).
+En lista över alla Azure Monitor support mått, som innehåller Azure Blob Storage, finns i [Azure Monitor mått som stöds](../../azure-monitor/essentials/metrics-supported.md).
 
 
 ### <a name="accessing-metrics"></a>Åtkomst till mått
@@ -528,22 +528,22 @@ Loggar som skickas till en Event Hub lagras inte som en fil, men du kan kontrol 
 
 ![Granskningsloggar](media/monitor-blob-storage/event-hub-log.png)
 
-Du kan komma åt och läsa loggdata som skickas till händelsehubben med hjälp av säkerhets information och verktyg för händelse hantering och övervakning. Mer information finns i [vad kan jag göra med övervaknings data som skickas till min Event Hub?](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Du kan komma åt och läsa loggdata som skickas till händelsehubben med hjälp av säkerhets information och verktyg för händelse hantering och övervakning. Mer information finns i [vad kan jag göra med övervaknings data som skickas till min Event Hub?](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Komma åt loggar i en Log Analytics-arbetsyta
 
 Du kan komma åt loggar som skickas till en Log Analytics arbets yta genom att använda Azure Monitor logg frågor.
 
-Mer information finns i [Kom igång med Log Analytics i Azure Monitor](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Mer information finns i [Kom igång med Log Analytics i Azure Monitor](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 Data lagras i tabellen **StorageBlobLog** . Loggar för Data Lake Storage Gen2 visas inte i en dedikerad tabell. Det beror på att Data Lake Storage Gen2 inte är tjänst. Det är en uppsättning funktioner som du kan aktivera i ditt lagrings konto. Om du har aktiverat dessa funktioner kommer loggar att fortsätta visas i StorageBlobLogs-tabellen. 
 
 #### <a name="sample-kusto-queries"></a>Exempel på Kusto-frågor
 
-Här följer några frågor som du kan ange i **logg Sök** fältet för att hjälpa dig att övervaka Blob Storage. Dessa frågor fungerar med det [nya språket](../../azure-monitor/log-query/log-query-overview.md).
+Här följer några frågor som du kan ange i **logg Sök** fältet för att hjälpa dig att övervaka Blob Storage. Dessa frågor fungerar med det [nya språket](../../azure-monitor/logs/log-query-overview.md).
 
 > [!IMPORTANT]
-> När du väljer **loggar** från menyn resurs grupp för lagrings konto öppnas Log Analytics med fråge omfånget som är inställt på den aktuella resurs gruppen. Det innebär att logg frågor bara innehåller data från den resurs gruppen. Om du vill köra en fråga som innehåller data från andra resurser eller data från andra Azure-tjänster väljer du **loggar** på **Azure Monitor** -menyn. Mer information finns i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](../../azure-monitor/log-query/scope.md) .
+> När du väljer **loggar** från menyn resurs grupp för lagrings konto öppnas Log Analytics med fråge omfånget som är inställt på den aktuella resurs gruppen. Det innebär att logg frågor bara innehåller data från den resurs gruppen. Om du vill köra en fråga som innehåller data från andra resurser eller data från andra Azure-tjänster väljer du **loggar** på **Azure Monitor** -menyn. Mer information finns i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](../../azure-monitor/logs/scope.md) .
 
 Använd de här frågorna för att hjälpa dig att övervaka dina Azure Storage-konton:
 
@@ -602,5 +602,5 @@ Nej. Azure Compute stöder mått på diskar. Mer information finns i [per disk m
 ## <a name="next-steps"></a>Nästa steg
 
 - En referens för loggar och mått som skapats av Azure Blob Storage finns i referens för [Azure Blob Storage övervaknings data](monitor-blob-storage-reference.md).
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md).
 - Mer information om hur du migrerar mått finns i [Azure Storage metriska migreringar](../common/storage-metrics-migration.md).

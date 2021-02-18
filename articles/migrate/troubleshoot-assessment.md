@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: cefcd4ce287eecfe2c764d88d5d2233cc8ac0a5c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753453"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581800"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Felsöka utvärdering/beroendevisualisering
 
@@ -22,7 +22,7 @@ Den här artikeln hjälper dig att felsöka problem med utvärderings-och beroen
 
 Åtgärda problem med utvärderings beredskap enligt följande:
 
-**Problem** | **Åtgärda**
+**Ge** | **Åtgärda**
 --- | ---
 Start typen stöds inte | Azure har inte stöd för virtuella datorer med en EFI-starttyp. Vi rekommenderar att du konverterar start typen till BIOS innan du kör en migrering. <br/><br/>Du kan använda migrering av Azure Migrate Server för att hantera migrering av sådana virtuella datorer. Den kommer att konvertera start typen för den virtuella datorn till BIOS under migreringen.
 Villkorligt Windows-operativsystem som stöds | Operativ systemet har passerat sitt slutdatum och måste ha ett anpassat support avtal (CSA) för [support i Azure](/troubleshoot/azure/virtual-machines/server-software-support). Överväg att uppgradera innan du migrerar till Azure. [Läs]() informationen om hur du [förbereder datorer som kör Windows Server 2003](prepare-windows-server-2003-migration.md) för migrering till Azure.
@@ -75,7 +75,7 @@ Azure Migrate Server utvärderingen kan rekommendera Azure VM SKU: er med fler k
 
 - Den virtuella datorns SKU-rekommendation beror på utvärderings egenskaperna.
 - Detta påverkas av den typ av utvärdering som du utför i Server utvärderingen: *prestanda-baserad* eller *lokalt*.
-- För prestandabaserade utvärderingar beaktar Server utvärderingen användnings data för de lokala virtuella datorerna (CPU, minne, disk och nätverks användning) för att fastställa rätt mål-SKU för virtuella datorer för dina lokala virtuella datorer. Även en komfortfaktor läggs till när du fastställer effektiv användning.
+- I prestandabaserade utvärderingar tar Server Assessment hänsyn till användningsdata för lokala virtuella datorer (processor-, minne-, disk- och nätverksanvändning) för att fastställa rätt mål-SKU för dina lokala virtuella datorer. Även en komfortfaktor läggs till när du fastställer effektiv användning.
 - För lokal storleks sortering beaktas inte prestanda data och SKU: n rekommenderas för lokal allokering.
 
 För att visa hur detta kan påverka rekommendationerna, tar vi ett exempel:
@@ -160,12 +160,12 @@ För virtuella Windows-datorer:
 
     ![Status för MMA](./media/troubleshoot-assessment/mma-properties.png)
 
-För virtuella Linux-datorer måste du kontrol lera att installations kommandona för MMA och beroende agenten lyckades. Läs mer om fel söknings vägledning [här](../azure-monitor/insights/service-map.md#post-installation-issues).
+För virtuella Linux-datorer måste du kontrol lera att installations kommandona för MMA och beroende agenten lyckades. Läs mer om fel söknings vägledning [här](../azure-monitor/vm/service-map.md#post-installation-issues).
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
-- **MMS-agent**: granska de [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)-och [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) -operativsystem som stöds.
-- **Beroende agent**: de Windows- [och Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) -operativsystem som stöds.
+- **MMS-agent**: granska de [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)-och [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) -operativsystem som stöds.
+- **Beroende agent**: de Windows- [och Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) -operativsystem som stöds.
 
 ## <a name="visualize-dependencies-for--hour"></a>Visualisera beroenden för > timme
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185911"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650379"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2
 
@@ -28,18 +28,20 @@ Du kan associera ett [säkerhets objekt](../../role-based-access-control/overvie
 > [!NOTE]
 > ACL: er gäller endast för säkerhets objekt i samma klient organisation, och de gäller inte för användare som använder delad nyckel eller autentisering med signatur för delad åtkomst (SAS). Det beror på att ingen identitet är kopplad till anroparen och därför inte behörigheten för säkerhets objekts behörighet kan inte utföras.  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>Ange ACL: er
 
 Om du vill ange behörigheter för fil-och katalog nivå kan du läsa följande artiklar:
 
 | Miljö | Artikel |
 |--------|-----------|
-|Azure Storage Explorer |[Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
-|.NET |[Använd .NET för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[Använd Java för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[Använd python för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[Använd PowerShell för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[Använd Azure CLI för att hantera kataloger, filer och ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure Storage Explorer |[Använd Azure Storage Explorer för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-explorer-acl.md)|
+|.NET |[Använd .NET för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-dotnet.md)|
+|Java|[Använd Java för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md)|
+|Python|[Använd python för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-python.md)|
+|PowerShell|[Använd PowerShell för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[Använd Azure CLI för att ange ACL: er i Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)|
 |REST-API |[Sökväg – uppdatera](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -200,7 +202,7 @@ Som illustreras i algoritmen för åtkomst kontroll begränsar masken åtkomsten
 
 För en ny Data Lake Storage Gen2-behållare är masken för åtkomst-ACL: en för rot katalogen ("/") standardvärdet **750** för kataloger och **640** för filer. I följande tabell visas den symboliska notationen för dessa behörighets nivåer.
 
-|Entitet|Kataloger|Files|
+|Entitet|Kataloger|Filer|
 |--|--|--|
 |Ägande användare|`rwx`|`r-w`|
 |Ägande grupp|`r-x`|`r--`|
@@ -255,7 +257,7 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Måste jag aktivera stöd för ACL:er?
 
@@ -273,7 +275,7 @@ Om du vill veta hur systemet utvärderar Azure RBAC och ACL: er tillsammans för
 
 ### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Vilka är gränserna för roll tilldelningar i Azure och ACL-poster?
 
-Följande tabell innehåller en sammanfattning av gränserna för att överväga när du använder Azure RBAC för att hantera "avkorniga" behörigheter (behörigheter som gäller för lagrings konton eller behållare) och använder ACL: er för att hantera "detaljerade" behörigheter (behörigheter som gäller för filer och kataloger). Använd säkerhets grupper för ACL-tilldelningar. Genom att använda grupper kan du minska det högsta antalet roll tilldelningar per prenumeration och maximalt antal ACl-poster per fil eller katalog. 
+Följande tabell innehåller en sammanfattning av gränserna för att överväga när du använder Azure RBAC för att hantera "avkorniga" behörigheter (behörigheter som gäller för lagrings konton eller behållare) och använder ACL: er för att hantera "detaljerade" behörigheter (behörigheter som gäller för filer och kataloger). Använd säkerhets grupper för ACL-tilldelningar. Genom att använda grupper kan du minska det högsta antalet roll tilldelningar per prenumeration och maximalt antal ACL-poster per fil eller katalog. 
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
 

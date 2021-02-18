@@ -3,12 +3,12 @@ title: Distribuera SWIFT-CSCF v2020 skiss-exempel
 description: Distribuera steg för CSCF v2020 skiss-exempel, inklusive information om skiss artefakt parameter.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: c3672dabb7f4c0a977b8140f470ddfc9fcea9c6d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 8f28bae58128306776fa18a6b383e324482bb03f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048767"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582006"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>Distribuera det SWIFT-CSCF v2020-skiss exemplet
 
@@ -93,7 +93,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 
 |Artefaktnamn|Artefakttyp|Parameternamn|Beskrivning|
 |-|-|-|-|
-|\[För hands version \] : granska Swift CSP-CSCF v2020-kontroller och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type).|
+|\[För hands version \] : granska Swift CSP-CSCF v2020-kontroller och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type).|
 |\[För hands version \] : granska Swift CSP-CSCF v2020-kontroller och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|ID för anslutna arbets ytor|En semikolonavgränsad lista med de arbetsyte-ID: n som Log Analytics agenten ska vara ansluten till|
 |\[För hands version \] : granska Swift CSP-CSCF v2020-kontroller och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över användare som ska ingå i administratörs gruppen för en virtuell Windows-dator|En semikolonavgränsad lista med medlemmar som ska ingå i den lokala gruppen Administratörer. T. ex. administratör; Mina Användare1; myUser2|
 |\[För hands version \] : granska Swift CSP-CSCF v2020-kontroller och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Domän namn (FQDN)|Det fullständigt kvalificerade domän namnet (FQDN) som de virtuella Windows-datorerna ska anslutas till|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b57de23bf59f1b9c84674fe95495f980c4594e2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198563"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587617"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azures säkerhets bas linje för Azure Functions
 
@@ -59,7 +59,7 @@ Om du använder nätverks säkerhets grupper (NSG: er) med Azure Functions imple
 **Vägledning**: om du vill skydda dina Azure Functions-slutpunkter i produktion bör du överväga att implementera en av följande funktioner på App-nivå:
 - Aktivera App Service autentisering/auktorisering för din Function-app
 - Använd Azure API Management (APIM) för att autentisera begär Anden eller
-- Distribuera din Function-app till en Azure App Service-miljön.
+- Distribuera din Function-app till en Azure App Service Environment.
 
 Se också till att fjärrfelsökning har inaktiverats för produktions Azure Functions. Dessutom bör resurs delning mellan ursprung (CORS) inte tillåta alla domäner att komma åt din Function-app i Azure. Tillåt endast domäner som krävs för att interagera med din Function-app.
 
@@ -207,9 +207,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks inställningar och resurser som är relaterade till dina Azure Functions-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks inställningar eller resurser äger rum. 
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -237,7 +237,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här konfigurerar du Azure Functions med Azure Application Insights](./functions-monitoring.md)
 
@@ -255,7 +255,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app aktiverar du diagnostikinställningar "FunctionAppLogs" och skickar loggarna till en Log Analytics arbets yta, Azure Event Hub eller Azure Storage-konto för arkivering. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar (användarspecifika loggar) för Azure Functions](./functions-monitor-log-analytics.md)
 
@@ -275,7 +275,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är associerade med dina funktions program enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -291,7 +291,7 @@ Om du har inbyggd anpassad säkerhets-/gransknings loggning i din Function-app a
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Functions](./functions-monitor-log-analytics.md)
 
@@ -311,13 +311,13 @@ Aktivera Application Insights för dina funktions program för att samla in logg
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part. 
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure Functions](./functions-monitor-log-analytics.md)
 
 - [Så här aktiverar du Application Insights för Azure Functions](./configure-monitoring.md#enable-application-insights-integration)
 
-- [Så här skapar du aviseringar i Azure](../azure-monitor/learn/tutorial-response.md)
+- [Så här skapar du aviseringar i Azure](../azure-monitor/alerts/tutorial-response.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -631,7 +631,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Functions och ha
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets loggen för att skapa aviseringar för när ändringar sker i appar för produktions funktioner samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: a85bf6510163c47fa39bdb28debff806e1812f58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d37465223000399aa42895626c48426ddadc0c72
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499279"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592717"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Skapa aviseringar för Azure SQL Managed Instance i Azure-portalen
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Du kan konfigurera en avisering för att göra följande när den utlöser:
 * Anropa Azure Runbook
 * Anropa en extern biljett ITSM-kompatibel system
 
-Du kan konfigurera och få information om aviserings regler med hjälp av [Azure Portal, PowerShell eller Azure CLI](../../azure-monitor/platform/alerts-classic-portal.md) eller [Azure Monitor REST API](/rest/api/monitor/alertrules). 
+Du kan konfigurera och få information om aviserings regler med hjälp av [Azure Portal, PowerShell eller Azure CLI](../../azure-monitor/alerts/alerts-classic-portal.md) eller [Azure Monitor REST API](/rest/api/monitor/alertrules). 
 
 ## <a name="alerting-metrics-available-for-managed-instance"></a>Aviserings mått som är tillgängliga för hanterade instanser
 
@@ -50,7 +50,7 @@ Du kan konfigurera och få information om aviserings regler med hjälp av [Azure
 
 Följande mått för hanterade instanser är tillgängliga för aviserings konfiguration:
 
-| Mått | Beskrivning | Mått enhet \ möjliga värden |
+| Metric | Beskrivning | Mått enhet \ möjliga värden |
 | :--------- | --------------------- | ----------- |
 | Genomsnittlig CPU-procent | Genomsnittlig procent andel CPU-användning under den valda tids perioden. | 0-100 (procent) |
 | Lästa IO-byte | IO-lästa byte i den valda tids perioden. | Byte |
@@ -113,7 +113,7 @@ Den nya varnings regeln aktive ras inom några minuter och utlöses utifrån din
 ## <a name="verifying-alerts"></a>Verifierar aviseringar
 
 > [!NOTE]
-> Information om hur du Dölj brus aviseringar finns i [utelämningsintervallet-aviseringar med åtgärds regler](../../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+> Information om hur du Dölj brus aviseringar finns i [utelämningsintervallet-aviseringar med åtgärds regler](../../azure-monitor/alerts/alerts-action-rules.md#suppression-of-alerts).
 
 När du ställer in en varnings regel kontrollerar du att du är nöjd med aviserings utlösaren och dess frekvens. I exemplet som visas på den här sidan för att ställa in en varning om lagrings utrymme som används, om aviserings alternativet var e-post, kan du få e-post, som visas nedan.
 
@@ -142,8 +142,8 @@ Visa, inaktivera, aktivera, ändra och ta bort befintliga aviseringar:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om Azure Monitor varnings systemet, se [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/platform/alerts-overview.md)
-* Lär dig mer om mått varningar, se [förstå hur mått varningar fungerar i Azure Monitor](../../azure-monitor/platform/alerts-metric-overview.md)
-* Läs om hur du konfigurerar en webhook i aviseringar i [anropa en webhook med en klassisk måtta avisering](../../azure-monitor/platform/alerts-webhooks.md)
+* Läs mer om Azure Monitor varnings systemet, se [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md)
+* Lär dig mer om mått varningar, se [förstå hur mått varningar fungerar i Azure Monitor](../../azure-monitor/alerts/alerts-metric-overview.md)
+* Läs om hur du konfigurerar en webhook i aviseringar i [anropa en webhook med en klassisk måtta avisering](../../azure-monitor/alerts/alerts-webhooks.md)
 * Läs om hur du konfigurerar och hanterar aviseringar med hjälp av PowerShell, se [Åtgärds regler](/powershell/module/az.monitor/add-azmetricalertrulev2)
 * Läs mer om hur du konfigurerar och hanterar aviseringar med hjälp av API, se [Azure Monitor REST API referens](/rest/api/monitor/)
