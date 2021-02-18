@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2d27c4eb1ea4586e0f2eac48930d86217052b2d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950694"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585446"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Fel sökning med Azure IoT Hub Device Provisioning Service
 
@@ -32,7 +32,7 @@ Följande procedur beskriver hur du visar och ställer in aviseringar för IoT H
 4. Välj önskat mått. 
    <br />För närvarande finns det tre mått för DPS:
 
-    | Måttnamn | Beskrivning |
+    | Måttnamn | Description |
     |-------|------------|
     | Attesterings försök | Antal enheter som försökte autentisera med enhets etablerings tjänsten|
     | Registrerings försök | Antal enheter som försökte registrera sig för IoT Hub efter en lyckad autentisering|
@@ -44,7 +44,7 @@ Följande procedur beskriver hur du visar och ställer in aviseringar för IoT H
 
 7. Välj **Lägg till villkor** och välj sedan önskat mått och tröskelvärde genom att följa instruktionerna nedan.
 
-Mer information finns [i vad är klassiska varningar i Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)
+Mer information finns [i vad är klassiska varningar i Microsoft Azure?](../azure-monitor/alerts/alerts-overview.md)
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Använda logg analys för att visa och lösa fel
 
@@ -58,7 +58,7 @@ Mer information finns [i vad är klassiska varningar i Microsoft Azure?](../azur
 
 5. Aktivera önskade loggar som ska samlas in.
 
-    | Loggnamn | Beskrivning |
+    | Loggnamn | Description |
     |-------|------------|
     | DeviceOperations | Loggar relaterade till anslutnings händelser för enheter |
     | ServiceOperations | Händelse loggar som är relaterade till användningen av service SDK (t. ex. för att skapa eller uppdatera registrerings grupper)|
@@ -75,7 +75,7 @@ Mer information finns [i vad är klassiska varningar i Microsoft Azure?](../azur
 ## <a name="common-error-codes"></a>Vanliga felkoder
 Använd den här tabellen för att förstå och lösa vanliga fel.
 
-| Felkod| Beskrivning | HTTP-statuskod |
+| Felkod| Description | HTTP-statuskod |
 |-------|------------|------------|
 | 400 | Bröd texten i begäran är inte giltig. Det går till exempel inte att parsa den, eller så går det inte att verifiera objektet.| 400 felaktigt format |
 | 401 | Det går inte att verifiera autentiseringstoken. till exempel har den upphört att gälla eller gäller inte för frågans URI. Den här felkoden returneras även till enheter som en del av flödet för TPM-attestering. | 401 – Ej behörig|

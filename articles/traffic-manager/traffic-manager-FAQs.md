@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184585"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576668"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Traffic Manager
 
@@ -347,7 +347,7 @@ Azure Resource Manager kräver att alla resurs grupper anger en plats, vilket av
 
 Den aktuella övervaknings statusen för varje slut punkt, utöver den övergripande profilen, visas i Azure Portal. Den här informationen är också tillgänglig via trafik övervaknings [REST API](/rest/api/trafficmanager/), [PowerShell-cmdletar](/powershell/module/az.trafficmanager)och plattforms [oberoende Azure CLI](/cli/azure/install-classic-cli).
 
-Du kan också använda Azure Monitor för att spåra hälso tillståndet för dina slut punkter och se en visuell representation av dem. Mer information om hur du använder Azure Monitor finns i [dokumentationen för Azure-övervakning](../azure-monitor/platform/data-platform.md).
+Du kan också använda Azure Monitor för att spåra hälso tillståndet för dina slut punkter och se en visuell representation av dem. Mer information om hur du använder Azure Monitor finns i [dokumentationen för Azure-övervakning](../azure-monitor/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kan jag övervaka HTTPS-slutpunkter?
 
@@ -458,7 +458,7 @@ Antalet Traffic Manager hälso kontroller som når slut punkten beror på följa
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hur kan jag få ett meddelande om en av mina slut punkter upphör?
 
-Ett av måtten som tillhandahålls av Traffic Manager är hälso status för slut punkter i en profil. Du kan se detta som en mängd av alla slut punkter i en profil (till exempel 75% av dina slut punkter är felfria) eller, på en nivå per slut punkt. Traffic Manager Mät värden exponeras genom Azure Monitor och du kan använda [aviserings funktionerna](../azure-monitor/platform/alerts-metric.md) för att få meddelanden när slut punktens hälso status ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
+Ett av måtten som tillhandahålls av Traffic Manager är hälso status för slut punkter i en profil. Du kan se detta som en mängd av alla slut punkter i en profil (till exempel 75% av dina slut punkter är felfria) eller, på en nivå per slut punkt. Traffic Manager Mät värden exponeras genom Azure Monitor och du kan använda [aviserings funktionerna](../azure-monitor/alerts/alerts-metric.md) för att få meddelanden när slut punktens hälso status ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager kapslade profiler
 

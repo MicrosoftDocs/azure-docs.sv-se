@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31a411cbcecab8192643f86b6b54d09ac03e7f45
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017261"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581720"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Självstudie: skicka push-meddelanden till Android-enheter med Firebase SDK-version 1.0.0-preview1
 
@@ -37,7 +37,7 @@ Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du in
 Du behöver också följande objekt:
 
 - Den senaste versionen av [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797) rekommenderas.
-- Lägsta support är API-nivå 16.
+- Lägsta support är API-nivå 19.
 
 ## <a name="create-an-android-studio-project"></a>Skapa ett Android Studio-projekt
 
@@ -162,12 +162,8 @@ Notification Hub har nu kon figurer ATS för att fungera med Firebase Cloud Mess
 1. I filen **build. gradle** för appen lägger du till följande rader i avsnittet beroenden:
 
    ```gradle
-   implementation 'com.microsoft.azure:notification-hubs-android-sdk:1.0.0-preview1@aar'
+   implementation 'com.microsoft.azure:notification-hubs-android-sdk-fcm:1.1.4'
    implementation 'androidx.appcompat:appcompat:1.0.0'
-
-   implementation 'com.google.firebase:firebase-messaging:20.1.5'
-
-   implementation 'com.android.volley:volley:1.1.1'
    ```
 
 2. Lägg till följande lagrings plats efter avsnittet beroenden:
@@ -198,18 +194,23 @@ Notification Hub har nu kon figurer ATS för att fungera med Firebase Cloud Mess
    public class CustomNotificationListener implements NotificationHubListener {
 
       @override
+      public void onNotificationReceived(Context context, RemoteMessage message) {
+    
+         /* The following notification properties are available. */
+         Notification notification = message.getNotification();
+         String title = notification.getTitle();
+         String body = notification.getBody();
+         Map<String, String> data = message.getData();
+    
+         if (message != null) {
+            Log.d(TAG, "Message Notification Title: " + title);
+            Log.d(TAG, "Message Notification Body: " + message);
+         }
 
-      public void onNotificationReceived(Context context, NotificationMessage message) {
-
-      /* The following notification properties are available. */
-
-      String title = message.getTitle();
-      String message = message.getMessage();
-      Map<String, String> data = message.getData();
-
-      if (message != null) {
-         Log.d(TAG, "Message Notification Title: " + title);
-         Log.d(TAG, "Message Notification Body: " + message);
+         if (data != null) {
+             for (Map.Entry<String, String> entry : data.entrySet()) {
+                 Log.d(TAG, "key, " + entry.getKey() + " value " + entry.getValue());
+             }
          }
       }
    }

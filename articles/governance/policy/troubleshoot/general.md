@@ -3,12 +3,12 @@ title: Felsöka vanliga fel
 description: 'Lär dig hur du felsöker problem med att skapa princip definitioner, de olika SDK: erna och tillägget för Kubernetes.'
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917751"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592606"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Felsöka fel med hjälp av Azure Policy
 
@@ -87,7 +87,7 @@ Om du fortfarande har problem med en duplicerad och anpassad inbyggd princip def
 
 #### <a name="issue"></a>Problem
 
-En resurs som du förväntar dig Azure Policy att agera på är inte igång och det finns ingen post i [Azures aktivitets logg](../../../azure-monitor/platform/platform-logs-overview.md).
+En resurs som du förväntar dig Azure Policy att agera på är inte igång och det finns ingen post i [Azures aktivitets logg](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 #### <a name="cause"></a>Orsak
 
@@ -123,7 +123,7 @@ En princip tilldelning till omfånget för din nya eller uppdaterade resurs uppf
 
 #### <a name="resolution"></a>Lösning
 
-Fel meddelandet från en princip tilldelning neka inkluderar princip definitionen och princip tilldelnings-ID: n. Om fel informationen i meddelandet saknas är det också tillgängligt i [aktivitets loggen](../../../azure-monitor/platform/activity-log.md#view-the-activity-log). Använd den här informationen om du vill ha mer information för att förstå resurs begränsningarna och justera resurs egenskaperna i din begäran om du vill matcha tillåtna värden.
+Fel meddelandet från en princip tilldelning neka inkluderar princip definitionen och princip tilldelnings-ID: n. Om fel informationen i meddelandet saknas är det också tillgängligt i [aktivitets loggen](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Använd den här informationen om du vill ha mer information för att förstå resurs begränsningarna och justera resurs egenskaperna i din begäran om du vill matcha tillåtna värden.
 
 ## <a name="template-errors"></a>Fel i mall
 

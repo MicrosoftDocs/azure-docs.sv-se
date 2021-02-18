@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202036"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578545"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azures säkerhets bas linje för Azure Kubernetes-tjänsten
 
@@ -196,9 +196,9 @@ Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritisk
 
 Använd Azure Monitor loggar för att aktivera och skicka frågor till loggarna från AKS huvud komponenter, Kube-apiserver och Kube-Controller Manager. Skapa och hantera noderna som kör kubelet med container Runtime och distribuera sina program via den hanterade Kubernetes API-servern. 
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Aktivera och granska Kubernetes huvudnodloggar i Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -240,9 +240,9 @@ Aktivera och inaktivera dessa data till Azure Sentinel eller en SIEM utifrån or
 
 - [Granska logg schemat inklusive logg roller här](view-master-logs.md)
 
-- [Förstå Azure Monitor för behållare](../azure-monitor/insights/container-insights-overview.md)
+- [Förstå Azure Monitor för behållare](../azure-monitor/containers/container-insights-overview.md)
 
-- [Aktivera Azure Monitor för behållare](../azure-monitor/insights/container-insights-onboard.md)
+- [Aktivera Azure Monitor för behållare](../azure-monitor/containers/container-insights-onboard.md)
 
 - [Aktivera och granska Kubernetes huvudnodloggar i Azure Kubernetes Service (AKS)](view-master-logs.md)
 
@@ -294,7 +294,7 @@ Data insamling krävs för att ge insyn i uppdateringar som saknas, felkonfigure
 
 **Vägledning**: publicera dina Azure Kubernetes service-instanser (AKS) för att Azure Monitor och ange motsvarande lagrings period för Azure Log Analytics-arbetsytan enligt organisationens krav på efterlevnad. 
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -312,7 +312,7 @@ Se de loggar som genereras av AKS Master Components (Kube-apiserver och Kube-con
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -422,7 +422,7 @@ Skapa principer och procedurer kring användningen av dedikerade administrativa 
 
 **Vägledning**: Använd enkel inloggning för Azure Kubernetes service (AKS) med Azure Active Directory (Azure AD) integrerad autentisering för ett AKS-kluster.
 
-- [Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid](../azure-monitor/insights/container-insights-livedata-overview.md)
+- [Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid](../azure-monitor/containers/container-insights-livedata-overview.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -518,7 +518,7 @@ Tänk på vilka roller som används för support eller fel söknings syfte. Till
 **Vägledning**: integrera användarautentisering för Azure Kubernetes service (AKS) med Azure Active Directory (Azure AD). Skapa diagnostiska inställningar för Azure AD och skicka gransknings-och inloggnings loggarna till en Azure Log Analytics-arbetsyta. Konfigurera önskade aviseringar (till exempel när ett inaktiverat konto försöker logga in) i en Azure Log Analytics-arbetsyta.
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -673,11 +673,11 @@ Konfigurera aviseringar för proaktiv avisering eller logg skapande när process
 
 Använd Azure aktivitets logg för att övervaka AKS-kluster och relaterade resurser på en hög nivå. Integrera med Prometheus för att visa program-och arbets belastnings mått som samlas in från noder och Kubernetes med hjälp av frågor för att skapa anpassade aviseringar, instrument paneler och detaljerad analys.
 
-- [Förstå Azure Monitor för behållare](../azure-monitor/insights/container-insights-overview.md)
+- [Förstå Azure Monitor för behållare](../azure-monitor/containers/container-insights-overview.md)
 
-- [Aktivera Azure Monitor för behållare](../azure-monitor/insights/container-insights-onboard.md)
+- [Aktivera Azure Monitor för behållare](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-övervakning**: Ja
 

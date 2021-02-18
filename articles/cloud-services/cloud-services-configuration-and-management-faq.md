@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742598"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578216"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Konfigurations-och hanterings problem för Azure Cloud Services (klassisk): vanliga frågor och svar
 
@@ -240,9 +240,9 @@ Automatisk skalning baserat på minnes mått för en Cloud Services stöds inte 
 
 Du kan lösa problemet genom att använda Application Insights. Autoskalning stöder Application Insights som en mått källa och kan skala roll instans antalet baserat på gäst måttet, till exempel "minne".  Du måste konfigurera Application Insights i din moln tjänst projekt paket fil (*. cspkg) och aktivera Azure-diagnostik-tillägget på tjänsten för att implementera den här Feat.
 
-Mer information om hur du använder ett anpassat mått via Application Insights för att konfigurera automatisk skalning på Cloud Services finns i [Kom igång med automatisk skalning efter anpassad mått i Azure](../azure-monitor/platform/autoscale-custom-metric.md)
+Mer information om hur du använder ett anpassat mått via Application Insights för att konfigurera automatisk skalning på Cloud Services finns i [Kom igång med automatisk skalning efter anpassad mått i Azure](../azure-monitor/autoscale/autoscale-custom-metric.md)
 
-Mer information om hur du integrerar Azure-diagnostik med Application Insights för Cloud Services finns i [Skicka moln tjänst, virtuell dator eller Service Fabric diagnostikdata till Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+Mer information om hur du integrerar Azure-diagnostik med Application Insights för Cloud Services finns i [Skicka moln tjänst, virtuell dator eller Service Fabric diagnostikdata till Application Insights](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)
 
 Mer information om hur du aktiverar Application Insights för Cloud Services finns i [Application Insights för Azure Cloud Services](../azure-monitor/app/cloudservices.md)
 

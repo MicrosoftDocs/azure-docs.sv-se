@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM-och VBS-attesterings protokoll
       href: virtualization-based-security-protocol.md
+    - name: Inbyggda Azure Policy-program
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

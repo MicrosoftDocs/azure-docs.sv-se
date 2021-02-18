@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555919"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590264"
 ---
 # <a name="connect-data-sources"></a>Ansluta till datakällor
 
@@ -151,7 +151,7 @@ Alternativt kan du distribuera agenten manuellt på en befintlig virtuell Azure-
 | **Datatyp** | **Så här ansluter du** | **Data koppling?** | **Kommentarer** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [Ansluta AWS](connect-aws.md) | &#10003; | |
-| AzureActivity | Översikt över [Anslut Azure-aktivitet](connect-azure-activity.md) och [aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | Översikt över [Anslut Azure-aktivitet](connect-azure-activity.md) och [aktivitets loggar](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Ansluta till Azure Active Directory](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Ansluta till Azure Active Directory](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Microsoft Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -164,9 +164,9 @@ Alternativt kan du distribuera agenten manuellt på en befintlig virtuell Azure-
 | Microsoft-brand vägg för webbaserade program (WAF) – (AzureDiagnostics) |[Anslut brand väggen för Microsoft-webbprogram](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Anslut Symantec](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [Ansluta till hotinformation](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor tjänst karta](../azure-monitor/insights/service-map.md)<br>[Azure Monitor VM Insights onboarding](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Aktivera Azure Monitor VM-insikter](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Använda en enda virtuell dator](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [Använda fordonsbaserad via princip](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | Arbets bok för VM Insights  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor tjänst karta](../azure-monitor/vm/service-map.md)<br>[Azure Monitor VM Insights onboarding](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Aktivera Azure Monitor VM-insikter](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Använda en enda virtuell dator](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [Använda fordonsbaserad via princip](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | Arbets bok för VM Insights  |
 | DnsEvents | [Anslut DNS](connect-dns.md) | &#10003; | |
-| W3CIISLog | [Anslut IIS-loggar](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [Anslut IIS-loggar](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [Anslut tråd data](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Anslut Windows-brandväggen](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Ansluta Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -174,7 +174,7 @@ Alternativt kan du distribuera agenten manuellt på en befintlig virtuell Azure-
 | ASC-SecurityAlert  | [Ansluta Azure Defender-aviseringar](connect-azure-security-center.md) från Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Anslut Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (händelse) | [Anslut Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Anslut Windows-händelser](../azure-monitor/platform/data-sources-windows-events.md) <br> [Hämta Sysmon-parsern](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon-samlingen installeras inte som standard på virtuella datorer. Mer information om hur du installerar Sysmon-agenten finns i [Sysmon](/sysinternals/downloads/sysmon). |
+| Sysmon (händelse) | [Anslut Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Anslut Windows-händelser](../azure-monitor/agents/data-sources-windows-events.md) <br> [Hämta Sysmon-parsern](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon-samlingen installeras inte som standard på virtuella datorer. Mer information om hur du installerar Sysmon-agenten finns i [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatisera VM-inventering](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [Automatisera spårning av virtuella datorer](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Ansluta F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

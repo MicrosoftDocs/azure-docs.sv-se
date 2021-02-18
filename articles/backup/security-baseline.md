@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 77af95f2decbfb81ed930591b03f71fb71780def
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805256"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572183"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azures säkerhets bas linje för säkerhets kopiering
 
@@ -116,9 +116,9 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: om du använder mars-agenten på en virtuell Azure-dator som skyddas av en NSG eller Azure-brandvägg använder du Azure aktivitets logg för att övervaka konfigurationen av NSG eller brand väggen. Du kan skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av dessa resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -142,7 +142,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som genereras av Azure Backup. Använd Log Analytics arbets ytor i Azure Monitor för att fråga och utföra analyser och Använd lagrings konton för långsiktig/lagring. Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM).
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Använda diagnostikinställningar till för Recovery Services valv](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ Dessutom skickas loggar via Azure Monitor för att samla in säkerhets data som 
 
 Dessutom skickar Azure Backup diagnostiska händelser som kan samlas in och användas i syfte att analysera, Avisera och rapportera. Du kan konfigurera diagnostikinställningar för ett Recovery Services valv via Azure Portal. Du kan skicka en eller flera diagnostiska händelser till ett lagrings konto, en Event Hub-eller en Log Analytics-arbetsyta.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 - [Använda diagnostikinställningar till för Recovery Services valv](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ Dessutom skickar Azure Backup diagnostiska händelser som kan samlas in och anv�
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure Recovery Services-valv enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -192,9 +192,9 @@ Aktivera diagnostiska inställningar för Azure aktivitets logg och skicka logga
 
 - [Övervaka Azure Backup arbets belastningar](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -212,7 +212,7 @@ Du kan också publicera en Log Analytics arbets yta till Azure Sentinel eftersom
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -518,7 +518,7 @@ När du säkerhetskopierar med MARS-agenten eller använder ett Recovery Service
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktion av Azure Recovery Services-valv samt andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

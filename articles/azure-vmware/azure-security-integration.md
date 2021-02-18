@@ -3,12 +3,12 @@ title: Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Secur
 description: Skydda dina virtuella datorer med Azure VMware-lösningen med Azures inbyggda säkerhets verktyg från Azure Security Center instrument panelen.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578263"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 
@@ -50,7 +50,7 @@ Du kan konfigurera arbets ytan Log Analytics med Azure Sentinel för aviserings 
 
 ## <a name="create-a-log-analytics-workspace"></a>Skapa en Log Analytics-arbetsyta
 
-Du behöver en Log Analytics arbets yta för att samla in data från olika källor. Mer information finns i [skapa en Log Analytics arbets yta från Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Du behöver en Log Analytics arbets yta för att samla in data från olika källor. Mer information finns i [skapa en Log Analytics arbets yta från Azure Portal](../azure-monitor/logs/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Distribuera Security Center och konfigurera virtuella datorer med Azure VMware-lösningen
 
@@ -159,7 +159,7 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
 
 4. Ange den information som krävs på fliken **Allmänt** .
 
-    - Namn
+    - Name
     - Beskrivning
     - Taktiker
     - Allvarlighetsgrad
@@ -230,7 +230,7 @@ Du kan skapa frågor eller använda den tillgängliga fördefinierade frågan i 
 
 2. Fyll i följande information för att skapa en anpassad fråga.
 
-    - Namn
+    - Name
     - Beskrivning
     - Anpassad fråga
     - Ange mappning
@@ -243,5 +243,5 @@ Du kan skapa frågor eller använda den tillgängliga fördefinierade frågan i 
 Nu när du har gått igenom hur du skyddar dina virtuella datorer i Azure VMware-lösningen, kanske du vill lära dig mer om:
 
 - Använda [Azure Defender-instrumentpanelen](../security-center/azure-defender-dashboard.md).
-- [Avancerad attack identifiering i Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+- [Avancerad attack identifiering i Azure Sentinel](../azure-monitor/logs/quick-create-workspace.md).
 - [Livs cykel hantering av virtuella datorer i Azure VMware-lösningen](lifecycle-management-of-azure-vmware-solution-vms.md).

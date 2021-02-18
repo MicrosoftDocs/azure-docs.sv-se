@@ -3,12 +3,12 @@ title: Hämta resursändringar
 description: Lär dig hur du hittar när en resurs har ändrats, hämta en lista över de egenskaper som har ändrats och utvärdera differenserna.
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917430"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594654"
 ---
 # <a name="get-resource-changes"></a>Hämta resursändringar
 
@@ -25,7 +25,7 @@ Resurser ändras genom daglig användning, omkonfiguration och till och med omdi
 - Upprätthålla en databas för konfigurations hantering, som kallas en CMDB, uppdaterad. I stället för att uppdatera alla resurser och deras fullständiga egenskaps uppsättningar enligt en schemalagd frekvens får du bara det som ändrades.
 - Förstå vilka andra egenskaper som kan ha ändrats när en resurs ändrade kompatibilitetstillstånd. Utvärdering av dessa ytterligare egenskaper kan ge insikter om andra egenskaper som kan behöva hanteras via en Azure Policy-definition.
 
-Den här artikeln visar hur du samlar in den här informationen via resurs Diagramets SDK. Information om hur du kan se den här informationen i Azure Portal finns i Azure Policys [ändrings historik](../../policy/how-to/determine-non-compliance.md#change-history) eller [ändrings historik](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)för Azure aktivitets loggen. Mer information om ändringar i dina program från infrastruktur skiktet hela vägen till program distribution finns i [använda program ändrings analys (för hands version)](../../../azure-monitor/app/change-analysis.md) i Azure Monitor.
+Den här artikeln visar hur du samlar in den här informationen via resurs Diagramets SDK. Information om hur du kan se den här informationen i Azure Portal finns i Azure Policys [ändrings historik](../../policy/how-to/determine-non-compliance.md#change-history) eller [ändrings historik](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)för Azure aktivitets loggen. Mer information om ändringar i dina program från infrastruktur skiktet hela vägen till program distribution finns i [använda program ändrings analys (för hands version)](../../../azure-monitor/app/change-analysis.md) i Azure Monitor.
 
 > [!NOTE]
 > Ändrings informationen i resurs diagrammet är för Resource Manager-egenskaper. Information om hur du spårar ändringar i en virtuell dator finns i Azure Automation [ändrings spårning](../../../automation/change-tracking/overview.md) eller Azure policys [gäst konfiguration för virtuella datorer](../../policy/concepts/guest-configuration.md).

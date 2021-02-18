@@ -3,12 +3,12 @@ title: Förbättra prestanda för Azure Apps med Advisor
 description: Använd prestanda rekommendationer i Azure Advisor för att förbättra hastighet och svars tider för affärs kritiska program.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735536"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579927"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Förbättra prestanda för Azure-program med hjälp av Azure Advisor
 
@@ -88,7 +88,7 @@ Migrera lagrings kontots distributions modell till Azure Resource Manager för a
 Advisor identifierar alla fristående lagrings konton som använder den klassiska distributions modellen och rekommenderar att du migrerar till distributions modellen för Resource Manager.
 
 > [!NOTE]
-> Klassiska varningar i Azure Monitor drogs tillbaka i augusti 2019. Vi rekommenderar att du uppgraderar det klassiska lagrings kontot så att du kan använda Resource Manager för att behålla aviserings funktionen med den nya plattformen. Mer information finns i [indragningen av klassiska aviseringar](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
+> Klassiska varningar i Azure Monitor drogs tillbaka i augusti 2019. Vi rekommenderar att du uppgraderar det klassiska lagrings kontot så att du kan använda Resource Manager för att behålla aviserings funktionen med den nya plattformen. Mer information finns i [indragningen av klassiska aviseringar](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Utforma dina lagrings konton för att förhindra att den maximala prenumerations gränsen uppnås
 

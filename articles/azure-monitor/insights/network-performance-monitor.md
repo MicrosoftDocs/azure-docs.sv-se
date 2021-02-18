@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 4ae0a85c8608ff96777bc6b952554f1ccd917306
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573428"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Övervakare av nätverksprestanda lösning i Azure
 
@@ -76,7 +76,7 @@ Listan över regioner som stöds för ExpressRoute-övervakaren finns i [dokumen
 
 ### <a name="install-and-configure-agents"></a>Installera och konfigurera agenter 
 
-Använd de grundläggande processerna för att installera agenter på [Anslut Windows-datorer till Azure Monitor](../platform/agent-windows.md), [ansluta Linux-datorer till Azure Monitor (för hands version)](../../virtual-machines/extensions/oms-linux.md) och [ansluta Operations Manager till Azure Monitor](../platform/om-agents.md).
+Använd de grundläggande processerna för att installera agenter på [Anslut Windows-datorer till Azure Monitor](../agents/agent-windows.md), [ansluta Linux-datorer till Azure Monitor (för hands version)](../../virtual-machines/extensions/oms-linux.md) och [ansluta Operations Manager till Azure Monitor](../agents/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Var agenter ska installeras 
 
@@ -266,13 +266,13 @@ Topologin som visas i kartan är Layer 3-topologi och innehåller inte Layer 2-e
 
 ## <a name="log-queries-in-azure-monitor"></a>Logg frågor i Azure Monitor
 
-Alla data som visas grafiskt via Övervakare av nätverksprestanda instrument panelen och detalj nivå sidorna är också tillgängliga i [logg frågor](../log-query/log-query-overview.md). Du kan utföra interaktiv analys av data i lagrings platsen och korrelera data från olika källor. Du kan också skapa anpassade aviseringar och vyer och exportera data till Excel, Power BI eller en delnings bar länk. Områdena **vanliga frågor** på instrument panelen har några användbara frågor som du kan använda som start punkt för att skapa egna frågor och rapporter. 
+Alla data som visas grafiskt via Övervakare av nätverksprestanda instrument panelen och detalj nivå sidorna är också tillgängliga i [logg frågor](../logs/log-query-overview.md). Du kan utföra interaktiv analys av data i lagrings platsen och korrelera data från olika källor. Du kan också skapa anpassade aviseringar och vyer och exportera data till Excel, Power BI eller en delnings bar länk. Områdena **vanliga frågor** på instrument panelen har några användbara frågor som du kan använda som start punkt för att skapa egna frågor och rapporter. 
 
 ## <a name="alerts"></a>Aviseringar
 
-Övervakare av nätverksprestanda använder aviserings funktionerna i [Azure Monitor](../platform/alerts-overview.md).
+Övervakare av nätverksprestanda använder aviserings funktionerna i [Azure Monitor](../alerts/alerts-overview.md).
 
-Det innebär att alla meddelanden hanteras med hjälp av [Åtgärds grupper](../platform/action-groups.md).  
+Det innebär att alla meddelanden hanteras med hjälp av [Åtgärds grupper](../alerts/action-groups.md).  
 
 Om du är en NPM-användare som skapar en avisering via Log Analytics: 
 1. Du ser en länk som kommer att omdirigera dig till Azure Portal. Klicka på den för att få åtkomst till portalen.
@@ -283,7 +283,7 @@ Om du är en NPM-användare som skapar en avisering via Log Analytics:
 Om du är en NPM-användare som skapar en avisering via Azure Portal:  
 1. Du kan välja att ange din e-postadress direkt eller så kan du välja att skapa aviseringar via åtgärds grupper.
 2. Om du väljer att ange din e-postadress direkt skapas en åtgärds grupp med namnet **NPM e-ActionGroup** och e-post-ID: t läggs till i den åtgärds gruppen.
-3. Om du väljer att använda åtgärds grupper måste du välja en tidigare skapad åtgärds grupp. Du kan lära dig hur du skapar en åtgärds grupp [här.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
+3. Om du väljer att använda åtgärds grupper måste du välja en tidigare skapad åtgärds grupp. Du kan lära dig hur du skapar en åtgärds grupp [här.](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. När aviseringen har skapats kan du använda länken Hantera aviseringar för att hantera dina aviseringar. 
 
 Varje gång du skapar en avisering skapar NPM en fråga baserad logg aviserings regel i Azure Monitor. Den här frågan utlöses var 5: e minut som standard. Azure Monitor debiterar inte för de första 250 logg aviserings reglerna som skapats, och eventuella varnings regler ovanför gränsen på 250 logg aviserings regler debiteras enligt [priserna för varningar på sidan Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/).

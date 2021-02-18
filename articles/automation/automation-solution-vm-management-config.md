@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b52b51133f059f028baf470515e886d17077af6a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751299"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593940"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurera Starta/stoppa virtuella datorer när de inte används
 
@@ -145,7 +145,7 @@ Om du vill ändra e-postaviseringar när Starta/stoppa virtuella datorer när de
 
     :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Skärm bild av sidan e-post/SMS/push/Voice som visar ett exempel på en e-postadress som uppdaterats.":::
 
-    Alternativt kan du lägga till ytterligare åtgärder i åtgärds gruppen och läsa mer om åtgärds grupper i [Åtgärds grupper](../azure-monitor/platform/action-groups.md)
+    Alternativt kan du lägga till ytterligare åtgärder i åtgärds gruppen och läsa mer om åtgärds grupper i [Åtgärds grupper](../azure-monitor/alerts/action-groups.md)
 
 Följande är ett exempel på ett e-postmeddelande som skickas när funktionen stänger av virtuella datorer.
 

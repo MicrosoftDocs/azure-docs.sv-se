@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736675"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594307"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Självstudie: övervaka ändringar och uppdatera en virtuell Windows-dator i Azure
 
@@ -76,7 +76,7 @@ Så här aktiverar du Uppdateringshantering för din virtuella dator:
 
 Verifiering görs för att avgöra om Uppdateringshantering har Aktiver ATS för den här virtuella datorn. Verifieringen innehåller kontroller för en Log Analytics arbets yta, för ett länkat Automation-konto och för om lösningen finns i arbets ytan.
 
-Du använder en [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) arbets yta för att samla in data som genereras av funktioner och tjänster, till exempel uppdateringshantering. Arbetsytan tillhandahåller en enda plats för att granska och analysera data från flera källor.
+Du använder en [Log Analytics](../../azure-monitor/logs/log-query-overview.md) arbets yta för att samla in data som genereras av funktioner och tjänster, till exempel uppdateringshantering. Arbetsytan tillhandahåller en enda plats för att granska och analysera data från flera källor.
 
 Om du vill utföra ytterligare åtgärder på virtuella datorer som kräver uppdateringar kan du använda Azure Automation för att köra Runbooks mot virtuella datorer. Sådana åtgärder omfattar att ladda ned eller tillämpa uppdateringar.
 
@@ -86,7 +86,7 @@ I fönstret **aktivera uppdateringshantering** väljer du Log Analytics arbets y
 
 Alla följande krav som saknas vid onboarding läggs till automatiskt:
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) arbets yta
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) arbets yta
 * [Automation](../../automation/index.yml)
 * En [hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md), som är aktiverat på den virtuella datorn
 
@@ -113,7 +113,7 @@ Om du vill schemalägga en ny uppdaterings distribution för den virtuella dator
 | **Namn** |Ange ett unikt namn som identifierar uppdaterings distributionen. |
 |**Operativsystem**| Välj antingen **Linux** eller **Windows**.|
 | **Grupper att uppdatera** |Definiera en fråga baserat på en kombination av prenumeration, resurs grupper, platser och taggar för virtuella datorer som finns på Azure. Den här frågan skapar en dynamisk grupp med virtuella datorer i Azure som ska ingå i distributionen. </br></br>Välj en befintlig sparad sökning för virtuella datorer som inte finns på Azure. Med den här sökningen kan du välja en grupp med de virtuella datorerna som ska ingå i distributionen. </br></br> Mer information finns i [dynamiska grupper](../../automation/update-management/configure-groups.md).|
-| **Datorer som ska uppdateras** |Välj **Sparad sökning**, **importerad grupp** eller **datorer**.<br/><br/>Om du väljer **datorer** kan du välja enskilda datorer i den nedrullningsbara listan. Beredskapen för varje dator visas i kolumnen **Uppdatera agent beredskap** i tabellen.</br></br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../../azure-monitor/platform/computer-groups.md) |
+| **Datorer som ska uppdateras** |Välj **Sparad sökning**, **importerad grupp** eller **datorer**.<br/><br/>Om du väljer **datorer** kan du välja enskilda datorer i den nedrullningsbara listan. Beredskapen för varje dator visas i kolumnen **Uppdatera agent beredskap** i tabellen.</br></br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../../azure-monitor/logs/computer-groups.md) |
 |**Klassificering av uppdateringar**|Välj alla nödvändiga uppdaterings klassificeringar.|
 |**Inkludera/exkludera uppdateringar**|Välj det här alternativet för att öppna fönstret **Inkludera/exkludera** . Uppdateringar som ska tas med och de som ska undantas finns på separata flikar. Mer information om hur inkludering hanteras finns i [Schemalägga en uppdaterings distribution](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Schemainställningar**|Välj tid för start och välj antingen **en gång** eller **återkommande**.|

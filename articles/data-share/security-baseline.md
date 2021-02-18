@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937170"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582033"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azures säkerhets bas linje för Azure Data Share
 
@@ -34,7 +34,7 @@ Du kan också aktivera och inaktivera dessa data till Azure Sentinel eller en SI
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ Du kan också aktivera och inaktivera dessa data till Azure Sentinel eller en SI
 
 Aktivera diagnostikloggar för Azure Data Share, särskilt diagnostikloggar för MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Med dessa loggar kan du samla in viktig information som synkroniseringens start tid, slut tid, status och annan information. Dessa loggar kan vara kritiska för senare utredning av säkerhets incidenter och utföra kriminal tekniska övningar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Konfigurera diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+- [Konfigurera diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -62,9 +62,9 @@ Aktivera diagnostikloggar för Azure Data Share, särskilt diagnostikloggar för
 
 **Vägledning**: se till att alla lagrings konton eller Log Analytics arbets ytor som används för lagring av Azure Data Share-loggar har den logg kvarhållningsperiod som anges enligt organisationens regler för efterlevnad.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/platform/manage-cost-storage.md)
+- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -78,9 +78,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Komma igång med Log Analytics frågor](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md) 
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md) 
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -94,7 +94,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md) 
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md) 
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -209,7 +209,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa Azure Monitor aviseringar för när ändringar sker i kritiska Azure-resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md) 
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure Security Center-övervakning**: Ja
 

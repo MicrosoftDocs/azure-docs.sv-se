@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a76c6467dac69fd3d21aa659c52227046c166938
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645514"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -46,21 +46,21 @@ dotnet build
 Installera klient biblioteket för Azure Communication Chat för .NET
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
 ``` 
 
 ## <a name="object-model"></a>Objekt modell
 
 Följande klasser hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för C#.
 
-| Namn                                  | Beskrivning                                                  |
+| Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
-| ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton. |
+| ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/Hämta deltagare, skicka Skriv meddelanden och läsa kvitton. |
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som genererades som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient. Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
+Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient. Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 
 ```csharp
 using Azure.Communication.Identity;
@@ -69,24 +69,25 @@ using Azure.Communication.Chat;
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
 
-CommunicationUserCredential communicationUserCredential = new CommunicationUserCredential(<Access_Token>);
-ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential);
+CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
+ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 ```
 
 ## <a name="start-a-chat-thread"></a>Starta en chatt-tråd
 
-Använd `createChatThread` metoden för att skapa en chatt-tråd.
-- Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
-- Använd `members` egenskap för att skicka en lista med `ChatThreadMember` objekt som ska läggas till i chatt-tråden. `ChatThreadMember`Objektet initieras med ett `CommunicationUser` objekt. Om du vill hämta ett `CommunicationUser` objekt måste du skicka ett åtkomst-ID som du skapade genom att följa anvisningarna för att [skapa en användare](../../access-tokens.md#create-an-identity)
+Använd `createChatThread` metoden på chatClient för att skapa en chatt-tråd
+- Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateTopic` funktionen.
+- Använd `participants` egenskap för att skicka en lista med `ChatParticipant` objekt som ska läggas till i chatt-tråden. `ChatParticipant`Objektet initieras med ett `CommunicationIdentifier` objekt. `CommunicationIdentifier` kan vara av typen `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` eller `PhoneNumberIdentifier` . Om du till exempel vill hämta ett `CommunicationIdentifier` objekt måste du skicka ett åtkomst-ID som du skapade genom att följa anvisningarna för att [skapa en användare](../../access-tokens.md#create-an-identity)
 
-Svaret `chatThreadClient` används för att utföra åtgärder på den skapade chatt-tråden: lägga till medlemmar i chatten, skicka ett meddelande, ta bort ett meddelande, osv. Den innehåller det `Id` attribut som är det unika ID: t för chatt-tråden. 
+Objektet Response från createChatThread-metoden innehåller chatThread-informationen. För att interagera med chatt-åtgärder, till exempel att lägga till deltagare, skicka ett meddelande, ta bort ett meddelande osv., måste en chatThreadClient-klient instans instansieras med GetChatThreadClient-metoden på ChatClient-klienten. 
 
 ```csharp
-var chatThreadMember = new ChatThreadMember(new CommunicationUser("<Access_ID>"))
+var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
-ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync(topic: "Chat Thread topic C# sdk", members: new[] { chatThreadMember });
+CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -100,21 +101,24 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
 
-Använd `SendMessage` metoden för att skicka ett meddelande till en tråd som identifieras av threadId.
+Används `SendMessage` för att skicka ett meddelande till en tråd.
 
-- Används `content` för att tillhandahålla chatt-meddelandets innehåll, det krävs.
-- Används `priority` för att ange meddelandets prioritets nivå, till exempel normal eller hög, om den inte anges används "normal".
-- Används `senderDisplayName` för att ange visnings namnet på avsändaren, om inget anges, används inget tomt namn.
-
-`SendChatMessageResult` är svaret som returnerades från att skicka ett meddelande, det innehåller ett ID, som är det unika ID: t för meddelandet.
+- Används `content` för att ange innehållet för meddelandet, det krävs.
+- Används `type` för meddelandets innehålls typ, till exempel text eller HTML. Om det inte anges så anges text.
+- Används `senderDisplayName` för att ange avsändarens visnings namn. Om inget anges anges en tom sträng.
 
 ```csharp
-var content = "hello world";
-var priority = ChatMessagePriority.Normal;
-var senderDisplayName = "sender name";
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+```
+## <a name="get-a-message"></a>Hämta ett meddelande
 
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content, priority, senderDisplayName);
-string messageId = sendChatMessageResult.Id;
+Används `GetMessage` för att hämta ett meddelande från tjänsten.
+`messageId` är det unika ID: t för meddelandet.
+
+`ChatMessage` är svaret som returnerades från att hämta ett meddelande, det innehåller ett ID, som är den unika identifieraren för meddelandet, bland andra fält. Se Azure. Communication. chat. ChatMessage
+
+```csharp
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Ta emot Chat-meddelanden från en chatt-tråd
@@ -137,11 +141,13 @@ await foreach (ChatMessage message in allMessages)
 
 - `Text`: Vanligt chatt-meddelande som skickas av en tråd medlem.
 
-- `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats.
+- `Html`: Ett formaterat textmeddelande. Observera att kommunikations tjänst användare för närvarande inte kan skicka RichText-meddelanden. Den här meddelande typen stöds av meddelanden som skickas från Team användare till kommunikations tjänster användare i team interop-scenarier.
 
-- `ThreadActivity/AddMember`: System meddelande som anger att en eller flera medlemmar har lagts till i chatt-tråden.
+- `TopicUpdated`: System meddelande som anger att ämnet har uppdaterats. ReadOnly
 
-- `ThreadActivity/DeleteMember`: System meddelande som anger att en medlem har tagits bort från chatt-tråden.
+- `ParticipantAdded`: System meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden. ReadOnly
+
+- `ParticipantRemoved`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden.
 
 Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
@@ -164,31 +170,77 @@ string id = "id-of-message-to-delete";
 await chatThreadClient.DeleteMessageAsync(id);
 ```
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Lägg till en användare som medlem i Chat-tråden
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
-När en tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att kunna skicka meddelanden till tråden och lägga till/ta bort andra medlemmar. Innan du anropar `AddMembers` bör du se till att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
+När en tråd har skapats kan du lägga till och ta bort användare från den. Genom att lägga till användare ger du dem åtkomst till att kunna skicka meddelanden till tråden och lägga till/ta bort andra deltagare. Innan du anropar `AddParticipants` bör du se till att du har skaffat en ny åtkomsttoken och identitet för användaren. Användaren måste ha denna åtkomsttoken för att kunna initiera sin Chat-klient.
 
-Använd `AddMembers` metoden för att lägga till tråd medlemmar i den tråd som identifieras av threadId.
-
- - Används `members` för att visa en lista över medlemmar som ska läggas till i chatten.
- - `User`, krävs, är den identitet som du får för den nya användaren.
- - `DisplayName`, valfritt är visnings namnet för tråd medlemmen.
- - `ShareHistoryTime`, valfri tid från vilken chatt-historiken delas med medlemmen. Om du vill dela historiken efter början av chatt-tråden ställer du in den på DateTime. MinValue. Om du inte vill dela någon historik tidigare än när medlemmen lades till, ställer du in den på den aktuella tiden. Om du vill dela partiell historik ställer du in den på en tidpunkt mellan tråd skapande och aktuell tid.
+Används `AddParticipants` för att lägga till en eller flera deltagare i chatt-tråden. Följande är de attribut som stöds för varje tråd deltagare:
+- `communicationUser`, krävs, är tråd deltagarens identitet.
+- `displayName`, valfritt är visnings namnet för tråd deltagaren.
+- `shareHistoryTime`, valfri tid från vilken chatt-historiken delas med deltagaren.
 
 ```csharp
-ChatThreadMember member = new ChatThreadMember(communicationUser);
-member.DisplayName = "display name member 1";
-member.ShareHistoryTime = DateTime.MinValue; // share all history
-await chatThreadClient.AddMembersAsync(members: new[] {member});
+var josh = new CommunicationUserIdentifier(id: "<Access_ID_For_Josh>");
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+var amy = new CommunicationUserIdentifier(id: "<Access_ID_For_Amy>");
+
+var participants = new[]
+{
+    new ChatParticipant(josh) { DisplayName = "Josh" },
+    new ChatParticipant(gloria) { DisplayName = "Gloria" },
+    new ChatParticipant(amy) { DisplayName = "Amy" }
+};
+
+await chatThreadClient.AddParticipantsAsync(participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Ta bort användare från en chatt-tråd
 
-På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra identiteten (CommunicationUser) för de medlemmar som du har lagt till.
+På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra identiteten `CommunicationUser` för den deltagare som du har lagt till.
 
 ```csharp
-await chatThreadClient.RemoveMemberAsync(communicationUser);
+var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
+await chatThreadClient.RemoveParticipantAsync(gloria);
 ```
 
+## <a name="get-thread-participants"></a>Få tråd deltagare
+
+Används `GetParticipants` för att hämta deltagarna i chatt-tråden.
+
+```csharp
+AsyncPageable<ChatParticipant> allParticipants = chatThreadClient.GetParticipantsAsync();
+await foreach (ChatParticipant participant in allParticipants)
+{
+    Console.WriteLine($"{((CommunicationUserIdentifier)participant.User).Id}:{participant.DisplayName}:{participant.ShareHistoryTime}");
+}
+```
+
+## <a name="send-typing-notification"></a>Skicka meddelande vid inmatning
+
+Används `SendTypingNotification` för att ange att användaren skriver ett svar i tråden.
+
+```csharp
+await chatThreadClient.SendTypingNotificationAsync();
+```
+
+## <a name="send-read-receipt"></a>Skicka Läs kvitto
+
+Används `SendReadReceipt` för att meddela andra deltagare att meddelandet har lästs av användaren.
+
+```csharp
+await chatThreadClient.SendReadReceiptAsync(messageId);
+```
+
+## <a name="get-read-receipts"></a>Hämta Läs kvitton
+
+Använd `GetReadReceipts` för att kontrol lera status för meddelanden för att se vilka som har lästs av andra deltagare i en chatt-tråd.
+
+```csharp
+AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
+await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
+{
+    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
+}
+```
 ## <a name="run-the-code"></a>Kör koden
 
 Kör programmet från program katalogen med `dotnet run` kommandot.

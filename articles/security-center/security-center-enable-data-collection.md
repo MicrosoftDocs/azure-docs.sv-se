@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596158"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatiska etablerings agenter och tillägg från Azure Security Center
 
@@ -38,8 +38,8 @@ Data samlas in med:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:          | **Funktion**: automatisk etablering är allmänt tillgänglig (ga)<br>**Agent och tillägg**: Log Analytics agent för virtuella Azure-datorer är ga, Microsoft Dependency agent är i för hands version, princip tillägg för KUBERNETES är ga                |
 | Priset                | Kostnadsfri                                                                                                                                                                                                                         |
-| Destinationer som stöds: | ![Ja](./media/icons/yes-icon.png) Azure-datorer<br>![Nej](./media/icons/no-icon.png) Azure Arc-datorer<br>![Nej](./media/icons/no-icon.png) Kubernetes-noder<br>![Nej](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Moln                 | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
+| Destinationer som stöds: | ![Yes](./media/icons/yes-icon.png) Azure-datorer<br>![No](./media/icons/no-icon.png) Azure Arc-datorer<br>![No](./media/icons/no-icon.png) Kubernetes-noder<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Moln                 | ![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -83,7 +83,7 @@ Så här aktiverar du automatisk etablering av Log Analytics agent:
 
     - **Ansluta virtuella Azure-datorer till en annan arbets yta** – i list rutan väljer du den arbets yta där insamlade data ska lagras. List rutan innehåller alla arbets ytor i alla dina prenumerationer. Du kan använda det här alternativet om du vill samla in data från virtuella datorer som körs i olika prenumerationer och lagra dem på den valda arbets ytan.  
 
-        Om du redan har en befintlig Log Analytics arbets yta kan du vilja använda samma arbets yta (kräver Läs-och Skriv behörighet på arbets ytan). Det här alternativet är användbart om du använder en central arbets yta i din organisation och vill använda den för säkerhets data insamling. Läs mer i [Hantera åtkomst till logg data och arbets ytor i Azure Monitor](../azure-monitor/platform/manage-access.md).
+        Om du redan har en befintlig Log Analytics arbets yta kan du vilja använda samma arbets yta (kräver Läs-och Skriv behörighet på arbets ytan). Det här alternativet är användbart om du använder en central arbets yta i din organisation och vill använda den för säkerhets data insamling. Läs mer i [Hantera åtkomst till logg data och arbets ytor i Azure Monitor](../azure-monitor/logs/manage-access.md).
 
         Om den valda arbets ytan redan har en säkerhets-eller SecurityCenterFree-lösning aktive rad, anges prissättningen automatiskt. Om inte, installerar du en Security Center-lösning på arbets ytan:
 
@@ -131,7 +131,7 @@ Aktivera automatisk etablering av ett tillägg som inte är Log Analytics-agente
 
 1. Välj **Spara**. Azure-principen är tilldelad och en reparations uppgift skapas.
 
-    |Anknytning  |Princip  |
+    |Anknytning  |Policy  |
     |---------|---------|
     |Princip tillägg för Kubernetes|[Distribuera Azure Policy-tillägg till Azure Kubernetes service-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
     |Microsoft-beroende agent (för hands version) (Windows VM)|[Distribuera beroende agent för virtuella Windows-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
@@ -218,7 +218,7 @@ Så här installerar du Log Analytics agenten manuellt:
    - [Installera Log Analytics agent för Windows](../virtual-machines/extensions/oms-windows.md)
    - [Installera Log Analytics agent för Linux](../virtual-machines/extensions/oms-linux.md)
 
-1. Om du vill distribuera agenter på dina befintliga virtuella datorer följer du anvisningarna i [samla in data om Azure Virtual Machines](../azure-monitor/learn/quick-collect-azurevm.md) (avsnittet **samla in händelse-och prestanda data** är valfria).
+1. Om du vill distribuera agenter på dina befintliga virtuella datorer följer du anvisningarna i [samla in data om Azure Virtual Machines](../azure-monitor/vm/quick-collect-azurevm.md) (avsnittet **samla in händelse-och prestanda data** är valfria).
 
 1. Om du vill använda PowerShell för att distribuera agenterna kan du använda anvisningarna från Virtual Machines-dokumentationen:
 

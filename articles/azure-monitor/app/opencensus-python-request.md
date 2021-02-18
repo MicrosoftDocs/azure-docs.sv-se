@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 3b029a9cb14a81c80072847dc17d6b71f480743f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746585"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585667"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Spåra inkommande begär Anden med openräkningar python
 
@@ -177,6 +177,6 @@ Openräkning har inget tillägg för FastAPI. Gör så här om du vill skriva eg
 * [Programkarta](./app-map.md)
 * [Tillgänglighet](./monitor-web-app-availability.md)
 * [Sök](./diagnostic-search.md)
-* [Logg (analys) fråga](../log-query/log-query-overview.md)
+* [Logg (analys) fråga](../logs/log-query-overview.md)
 * [Transaktionsdiagnostik](./transaction-diagnostics.md)
 

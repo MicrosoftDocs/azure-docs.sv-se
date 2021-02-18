@@ -7,29 +7,33 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523149"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636568"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Arbeta med Defender for IoT-CLI-kommandon
 
-I den här artikeln beskrivs CLI-kommandon för sensorer och lokala hanterings konsoler. Kommandona är tillgängliga för administratörer, Cyberx-användare och support användare.
+I den här artikeln beskrivs CLI-kommandon för sensorer och lokala hanterings konsoler. Kommandona är tillgängliga för följande användare:
 
-Definiera undantags regler när du planerar underhålls aktiviteter eller en aktivitet som inte kräver en avisering.
+- Administratör
+- CyberX 
+- Support
+
+Om du vill börja arbeta i CLI ansluter du med en Terminal. Till exempel Terminal name `Putty` och `Support` User. 
 
 ## <a name="create-local-alert-exclusion-rules"></a>Skapa undantags regler för lokal varning
 
-Du kan skapa en undantags regel genom att ange följande kommando i CLI:
+Du kan skapa en regel för lokal varnings undantag genom att ange följande kommando i CLI:
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-De attribut som du kan definiera i undantags reglerna för varningar är följande:
+Följande attribut kan användas med undantags reglerna för varningar:
 
 | Attribut | Beskrivning |
 |--|--|
@@ -42,18 +46,18 @@ De attribut som du kan definiera i undantags reglerna för varningar är följan
 
 ## <a name="append-local-alert-exclusion-rules"></a>Lägg till undantags regler för lokal varning
 
-Du kan lägga till nya regler i de aktuella varnings exkluderings reglerna genom att ange följande kommando i CLI:
+Du kan lägga till undantags regler för lokala varningar genom att ange följande kommando i CLI:
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Attributen som används här liknar attribut som beskrivs när du skapar undantags regler för lokala varningar. I användningen här tillämpas attributen på befintliga regler.
+Attributen som används här är desamma som de som beskrivs i avsnittet Skapa undantags regler för lokala varningar. Skillnaden i användningen är att attributen tillämpas på befintliga regler.
 
 ## <a name="show-local-alert-exclusion-rules"></a>Visa undantags regler för lokala varningar
 
-Ange följande kommando för att visa alla befintliga undantags regler:
+Ange följande kommando för att presentera den befintliga listan över undantags regler:
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,7 +73,7 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Du kan använda följande attribut med undantags reglerna för varningar:
+Följande attribut kan användas med undantags reglerna för varningar:
 
 | Attribut | Beskrivning|
 | --------- | ---------------------------------- |
@@ -77,11 +81,11 @@ Du kan använda följande attribut med undantags reglerna för varningar:
 
 ## <a name="sync-time-from-the-ntp-server"></a>Synkroniseringstid från NTP-servern
 
-Du kan aktivera och inaktivera en tidssynkronisering från en NTP-server.
+Du kan aktivera eller inaktivera en tidssynkronisering från en angiven NTP-server.
 
 ### <a name="enable-ntp-sync"></a>Aktivera NTP-synkronisering
 
-Genom att ange följande kommando aktive ras en periodisk hämtning av den aktuella tiden från en angiven NTP-server:
+Ange följande kommando för att regelbundet hämta tiden från den angivna NTP-servern:
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +95,7 @@ Det attribut som du kan definiera i kommandot är NTP-serverns IP-adress.
 
 ### <a name="disable-ntp-sync"></a>Inaktivera NTP-synkronisering
 
-När du anger följande kommando inaktive ras tidssynkroniseringen med den angivna NTP-servern:
+Ange följande kommando för att inaktivera tidssynkroniseringen med den angivna NTP-servern:
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,15 +103,15 @@ ntp disable IP
 
 Det attribut som du kan definiera i kommandot är NTP-serverns IP-adress.
 
-## <a name="configure-the-network"></a>Konfigurera nätverket
+## <a name="network-configuration"></a>Konfiguration av nätverk
 
 I följande tabell beskrivs de kommandon som är tillgängliga för att konfigurera nätverks alternativ för Azure Defender för IoT:
 
-|Namn|Kommando|Beskrivning|
+|Name|Kommando|Beskrivning|
 |-----------|-------|-----------|
-|Pinga|`ping IP `| Pingar adresser utanför Defender för IoT-plattformen.|
-|Blink|`network blink`|Aktiverar ändring av parametrarna för nätverks konfigurationen.|
-|Konfigurera om nätverket |`network edit-settings`| Aktiverar ändring av parametrarna för nätverks konfigurationen. |
+|Pinga|`ping IP`| Pinga en adress utanför Defender för IoT-plattformen.|
+|Blink|`network blink`| Hitta en anslutning genom att orsaka att gränssnitts lamporna blinkar. |
+|Konfigurera om nätverket |`network edit-settings`| Aktivera en ändring i parametrarna för nätverks konfigurationen. |
 |Visa nätverks inställningar |`network list`|Visar parametrarna för nätverkskortet. |
 |Verifiera nätverks konfigurationen |`network validate` |Visar nätverks inställningarna för utdata. <br /> <br />Exempel: <br /> <br />Aktuella nätverks inställningar: <br /> gränssnitt: ETH0 <br /> IP: 10.100.100.1 <br />undernät: 255.255.255.0 <br />standardgateway: 10.100.100.254 <br />DNS: 10.100.100.254 <br />övervaka gränssnitt: eth1|
 |Importera ett certifikat |`certificate import FILE` |Importerar HTTPS-certifikatet. Du måste ange den fullständiga sökvägen, som leder till en \* . CRT-fil. |
@@ -115,7 +119,7 @@ I följande tabell beskrivs de kommandon som är tillgängliga för att konfigur
 
 ## <a name="filter-network-configurations"></a>Filtrera nätverkskonfigurationer
 
-Med `network capture-filter` kommandot kan administratörer eliminera nätverks trafik som inte behöver analyseras. Filtrera trafik med hjälp av en include-lista eller en exkluderings lista.
+Med `network capture-filter` kommandot kan administratörer eliminera nätverks trafik som inte behöver analyseras. Du kan filtrera trafik genom att använda en include-lista eller en exkluderings lista.
 
 ```azurecli-interactive
 network capture-filter
@@ -125,7 +129,7 @@ När du har angett kommandot uppmanas du att ange följande fråga:
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-Välj `Y` det här alternativet om du vill öppna en nano-fil där du kan lägga till enheter, kanaler, portar och del mängder enligt följande syntax:
+Välj `Y` det här alternativet om du vill öppna en nano-fil där du kan lägga till en enhet, kanal, port och delmängd enligt följande syntax:
 
 | Attribut | Beskrivning |
 |--|--|
@@ -137,11 +141,11 @@ Separera argument genom att släppa en rad.
 
 När du inkluderar en enhet, kanal eller undernät, bearbetar sensorn all giltig trafik för det argumentet, inklusive portar och trafik som vanligt vis inte bearbetas.
 
-Sedan uppmanas du att göra följande:
+Sedan uppmanas du att göra följande fråga:
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
-Välj `Y` det här alternativet om du vill öppna en nano-fil där du kan lägga till enheter, kanaler, portar och del mängder enligt följande syntax:
+Välj `Y` det här alternativet om du vill öppna en nano-fil där du kan lägga till en enhet, kanal, port och del mängder enligt följande syntax:
 
 | Attribut | Beskrivning |
 |--|--|
@@ -173,7 +177,7 @@ Ta med eller Uteslut UDP-och TCP-portar för all trafik.
 
 ### <a name="components"></a>Komponenter
 
-Du uppmanas följande:
+Du uppmanas följande fråga:
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +236,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>Definiera klient-och Server värdar
 
-Om inte Defender för IoT automatiskt identifierade klient-och Server värdar, anger du följande kommando för att ange klient-och Server värdarna:
+Om Defender för IoT inte identifierade klienten automatiskt, och Server värdar, anger du följande kommando för att ställa in klient-och Server värdarna:
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -254,8 +258,9 @@ Du kan använda följande attribut med `directions` kommandot:
 ## <a name="system-actions"></a>System åtgärder
 I följande tabell beskrivs de kommandon som är tillgängliga för att utföra olika system åtgärder i Defender för IoT:
 
-|Namn|Kod|Beskrivning|
+|Name|Kod|Description|
 |----|----|-----------|
+|Visa datum|`date`|Returnerar aktuellt datum på värden i GMT-format.|
 |Starta om värden|`system reboot`|Startar om värd enheten.|
 |Stäng av värden|`system shutdown`|Stänger av värden.|
 |Säkerhetskopiera systemet|`system backup`|Initierar en omedelbar säkerhets kopiering (en säkerhets kopia som inte har schemalagts).|
@@ -290,6 +295,6 @@ När du använder verktyget:
 
 - Bekräfta med IT-domänen (som den visas i certifikatet) med DNS-servern och motsvarande IP-adress. 
     
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [API: er för IoT API-sensor och hanterings konsol](references-work-with-defender-for-iot-apis.md)

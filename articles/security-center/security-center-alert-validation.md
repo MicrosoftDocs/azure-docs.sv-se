@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560109"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633605"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Aviserings validering i Azure Security Center
 I det här dokumentet får du hjälp med att verifiera systemet är rätt konfigurerat för aviseringar från Azure Security Center.
@@ -36,11 +36,6 @@ Använd exempel aviseringar för att:
 
 - utvärdera värdet och funktionerna i Azure Defender
 - verifiera eventuella konfigurationer som du har gjort för dina säkerhets aviseringar (till exempel SIEM-integreringar, automatisering av arbets flöden och e-postaviseringar)
-
-> [!NOTE]
-> Den här proceduren kräver att den nya (förhands granskning) aviseringen är tillgänglig från banderollen högst upp på sidan **säkerhets aviseringar** .
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
 
 Så här skapar du exempel aviseringar:
 

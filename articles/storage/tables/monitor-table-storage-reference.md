@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b9920956a8983a1c71c1f91cd1c19a6e84be6aee
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ad56b6af9a9071812ad6fa581954010df3b6b5d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780305"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574831"
 ---
 # <a name="azure-table-storage-monitoring-data-reference"></a>Övervaknings data referens för Azure Table Storage
 
@@ -36,9 +36,9 @@ Azure Storage tillhandahåller följande kapacitets mått i Azure Monitor.
 
 #### <a name="table-storage"></a>Table Storage
 
-I den här tabellen visas [mått för tabell lagring](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices).
+I den här tabellen visas [mått för tabell lagring](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountstableservices).
 
-| Mått | Beskrivning |
+| Metric | Beskrivning |
 | ------------------- | ----------------- |
 | TableCapacity | Mängden tabell lagring som används av lagrings kontot. <br/><br/> Enhet: byte <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
 | TableCount   | Antalet tabeller i lagrings kontot. <br/><br/> Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
@@ -80,4 +80,4 @@ I följande tabell visas egenskaperna för Azure Storage resurs loggar när de s
 ## <a name="see-also"></a>Se även
 
 - Se [övervakning av Azure Table Storage](monitor-table-storage.md) för en beskrivning av övervaknings Azure Storage.
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

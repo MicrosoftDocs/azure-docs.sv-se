@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813606"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577385"
 ---
 # <a name="communication-services-notifications"></a>Meddelanden om kommunikations tjänster
 
@@ -91,7 +91,7 @@ När du inte ser push-meddelanden på enheten finns det tre platser där aviseri
 
 Den första plats där ett meddelande kan släppas (Azure Notification Hubs inte accepterat meddelanden från Azure Communication Services). De andra två platserna finns i [diagnostisera avbrutna meddelanden i Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-fixer.md).
 
-Ett sätt att se om din kommunikations tjänst resurs skickar meddelanden till Azure Notification Hubs är genom att titta på `incoming messages` måttet från de länkade [Azure Notification Hub-måtten](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs).
+Ett sätt att se om din kommunikations tjänst resurs skickar meddelanden till Azure Notification Hubs är genom att titta på `incoming messages` måttet från de länkade [Azure Notification Hub-måtten](../../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs).
 
 Här följer några vanliga fel konfigurationer som kan vara orsaken till varför Azure Notification Hub inte accepterar meddelanden från kommunikations tjänst resursen.
 

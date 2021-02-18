@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8015f610dfd9404810a1fa19c951078ebb45ac4f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295435"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588500"
 ---
 # <a name="diagnostic-logs-schemas"></a>Scheman för diagnostikloggar
 
@@ -26,13 +26,13 @@ ms.locfileid: "89295435"
 
 Med [Azure Monitor](../../azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Du kan övervaka Media Services diagnostikloggar och skapa aviseringar och aviseringar för insamlade mått och loggar. Du kan skicka loggar till [Azure Storage](https://azure.microsoft.com/services/storage/), strömma dem till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)och exportera dem till [Log Analytics](https://azure.microsoft.com/services/log-analytics/)eller använda tjänster från tredje part.
 
-Detaljerad information finns i [Azure Monitor mått](../../azure-monitor/platform/data-platform.md) och [Azure Monitor diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md).
+Detaljerad information finns i [Azure Monitor mått](../../azure-monitor/data-platform.md) och [Azure Monitor diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md).
 
 I den här artikeln beskrivs scheman för Media Services diagnostiska loggar.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Schema för diagnostiska loggar på högsta nivån
 
-Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar finns i [tjänster, scheman och kategorier som stöds för Azure Diagnostic-loggar](../../azure-monitor/platform/resource-logs-schema.md).
+Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar finns i [tjänster, scheman och kategorier som stöds för Azure Diagnostic-loggar](../../azure-monitor/essentials/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Logg schema för nyckel leverans
 
@@ -40,7 +40,7 @@ Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar 
 
 De här egenskaperna är speciella för logg schema för nyckel leverans.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |keyId|ID för den begärda nyckeln.|
 |keyType|Kan vara något av följande värden: "Clear" (ingen kryptering), "FairPlay", "PlayReady" eller "Widevine".|

@@ -4,12 +4,12 @@ description: Få ett meddelande via SMS, e-post eller webhook när Azure-tjänst
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630227"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594951"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Snabb start: skapa aktivitets logg aviseringar för tjänst meddelanden med en ARM-mall
 
@@ -17,7 +17,7 @@ Den här artikeln visar hur du konfigurerar aktivitets logg aviseringar för med
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Meddelanden om tjänst hälsa lagras i [aktivitets loggen i Azure](../azure-monitor/platform/platform-logs-overview.md). Med tanke på den stora mängden information som lagras i aktivitets loggen, finns det ett separat användar gränssnitt för att göra det enklare att visa och konfigurera aviseringar om meddelanden om tjänstens hälsa.
+Meddelanden om tjänst hälsa lagras i [aktivitets loggen i Azure](../azure-monitor/essentials/platform-logs-overview.md). Med tanke på den stora mängden information som lagras i aktivitets loggen, finns det ett separat användar gränssnitt för att göra det enklare att visa och konfigurera aviseringar om meddelanden om tjänstens hälsa.
 
 Du kan få en avisering när Azure skickar meddelanden om tjänst hälsa till din Azure-prenumeration. Du kan konfigurera aviseringen baserat på:
 
@@ -34,7 +34,7 @@ Du kan också konfigurera vem aviseringen ska skickas till:
 - Välj en befintlig åtgärds grupp.
 - Skapa en ny åtgärds grupp (som kan användas för framtida aviseringar).
 
-Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/platform/action-groups.md).
+Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
 
 ## <a name="prerequisites"></a>Krav
 
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - Lär dig hur du [ställer in mobila push-meddelanden för Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Lär dig hur du [konfigurerar webhook-meddelanden för befintliga problem hanterings system](service-health-alert-webhook-guide.md).
 - Läs mer om [meddelanden om tjänst hälsa](service-notifications.md).
-- Lär dig mer om [begränsning av meddelande frekvens](../azure-monitor/platform/alerts-rate-limiting.md).
-- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/platform/alerts-overview.md)och lär dig hur du tar emot aviseringar.
-- Läs mer om [Åtgärds grupper](../azure-monitor/platform/action-groups.md).
+- Lär dig mer om [begränsning av meddelande frekvens](../azure-monitor/alerts/alerts-rate-limiting.md).
+- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/alerts/activity-log-alerts-webhook.md).
+- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
+- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).

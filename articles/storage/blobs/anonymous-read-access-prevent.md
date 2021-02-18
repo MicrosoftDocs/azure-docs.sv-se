@@ -10,12 +10,12 @@ ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0003384676f420c5ece043b1eb6120ed8ee2435
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937295"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574901"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Förhindra anonym offentlig Läs behörighet till behållare och blobbar
 
@@ -35,7 +35,7 @@ För att förstå hur otillåten offentlig åtkomst kan påverka klient program,
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Övervaka anonyma begär Anden med Metrics Explorer
 
-Om du vill spåra anonyma begär anden till ett lagrings konto använder du Azure Metrics Explorer i Azure Portal. Mer information om Metrics Explorer finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Om du vill spåra anonyma begär anden till ett lagrings konto använder du Azure Metrics Explorer i Azure Portal. Mer information om Metrics Explorer finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Följ dessa steg om du vill skapa ett mått som spårar anonyma begär Anden:
 
@@ -61,7 +61,7 @@ När du har konfigurerat måttet kommer anonyma begär Anden att visas i grafen.
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Skärm bild som visar sammanställda anonyma begär Anden mot Blob Storage":::
 
-Du kan också konfigurera en varnings regel för att meddela dig när ett visst antal anonyma begär Anden görs mot ditt lagrings konto. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Du kan också konfigurera en varnings regel för att meddela dig när ett visst antal anonyma begär Anden görs mot ditt lagrings konto. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>Analysera loggar för att identifiera behållare som tar emot anonyma begär Anden
 
@@ -69,7 +69,7 @@ Azure Storage loggar fångar information om begär Anden som gjorts mot lagrings
 
 Om du vill logga begär anden till ditt Azure Storage konto för att utvärdera anonyma begär Anden, kan du använda Azure Storage inloggning Azure Monitor (för hands version). Mer information finns i [övervaka Azure Storage](./monitor-blob-storage.md).
 
-Azure Storage loggning i Azure Monitor har stöd för att använda logg frågor för att analysera loggdata. Om du vill söka i loggar kan du använda en Azure Log Analytics-arbetsyta. Mer information om logg frågor finns i [Självstudier: komma igång med Log Analytics frågor](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Storage loggning i Azure Monitor har stöd för att använda logg frågor för att analysera loggdata. Om du vill söka i loggar kan du använda en Azure Log Analytics-arbetsyta. Mer information om logg frågor finns i [Självstudier: komma igång med Log Analytics frågor](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Förhands granskningen av Azure Storage loggning i Azure Monitor stöds bara i det offentliga Azure-molnet. Offentliga moln stöder inte loggning för Azure Storage med Azure Monitor.
@@ -79,7 +79,7 @@ Azure Storage loggning i Azure Monitor har stöd för att använda logg frågor 
 Om du vill logga Azure Storage data med Azure Monitor och analysera dem med Azure Log Analytics måste du först skapa en diagnostisk inställning som anger vilka typer av begär Anden och för vilka lagrings tjänster du vill logga data. Följ dessa steg om du vill skapa en diagnostisk inställning i Azure Portal:
 
 1. Registrera dig för för [hands versionen av Azure Storage i Azure Monitor](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Skapa en ny Log Analytics-arbetsyta i prenumerationen som innehåller ditt Azure Storage-konto. När du har konfigurerat loggning för ditt lagrings konto är loggarna tillgängliga i Log Analytics arbets ytan. Mer information finns i [skapa en Log Analytics arbets yta i Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Skapa en ny Log Analytics-arbetsyta i prenumerationen som innehåller ditt Azure Storage-konto. När du har konfigurerat loggning för ditt lagrings konto är loggarna tillgängliga i Log Analytics arbets ytan. Mer information finns i [skapa en Log Analytics arbets yta i Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Navigera till ditt lagringskonto i Azure-portalen.
 1. I avsnittet övervakning väljer du **diagnostikinställningar (för hands version)**.
 1. Välj **BLOB** för att logga förfrågningar som görs mot Blob Storage.
@@ -90,7 +90,7 @@ Om du vill logga Azure Storage data med Azure Monitor och analysera dem med Azur
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Skärm bild som visar hur du skapar en diagnostisk inställning för loggnings begär Anden":::
 
-Efter att du har skapat den diagnostiska inställningen loggas begär anden till lagrings kontot sedan i enlighet med den inställningen. Mer information finns i [skapa diagnostisk inställning för insamling av resurs loggar och mått i Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Efter att du har skapat den diagnostiska inställningen loggas begär anden till lagrings kontot sedan i enlighet med den inställningen. Mer information finns i [skapa diagnostisk inställning för insamling av resurs loggar och mått i Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 En referens för fält som är tillgängliga i Azure Storage loggar i Azure Monitor finns i [resurs loggar (för hands version)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -106,7 +106,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-Du kan också konfigurera en varnings regel baserat på den här frågan för att meddela dig om anonyma begär Anden. Mer information finns i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-log.md).
+Du kan också konfigurera en varnings regel baserat på den här frågan för att meddela dig om anonyma begär Anden. Mer information finns i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-anonymous-public-access"></a>Reparera anonym offentlig åtkomst
 
@@ -290,13 +290,13 @@ Följande bild visar det fel som uppstår om du försöker skapa ett lagrings ko
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Behörigheter för att tillåta eller neka offentlig åtkomst
 
-Om du vill ange egenskapen **AllowBlobPublicAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar åtgärden **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \** _. Inbyggda roller med den här åtgärden är:
+Om du vill ange egenskapen **AllowBlobPublicAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \*** action. Inbyggda roller med den här åtgärden är:
 
 - Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
 - Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
 - Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De inkluderar dock * Microsoft. Storage/storageAccounts/listnycklar/Action * *, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
+Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De innehåller dock **Microsoft. Storage/storageAccounts/listnycklar/Action**, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
 
 Roll tilldelningar måste begränsas till lagrings kontots nivå eller högre för att en användare ska kunna tillåta eller neka offentlig åtkomst för lagrings kontot. Mer information om roll omfattning finns i [förstå omfattning för Azure RBAC](../../role-based-access-control/scope-overview.md).
 

@@ -66,8 +66,8 @@
               href: build-enrollment-app.md
 - name: Referens
   items:
-    - name: REST-API
-      href: 'https://docs.microsoft.com/rest/api/face/'
+    - name: Ansikts-API
+      href: APIReference.md
     - name: 'SDK:er'
       items:
         - name: .NET

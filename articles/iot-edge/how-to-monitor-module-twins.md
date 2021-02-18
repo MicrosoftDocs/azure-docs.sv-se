@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876166"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633186"
 ---
 # <a name="monitor-module-twins"></a>Övervaka modultvillingar
 
@@ -200,7 +200,7 @@ Om du ser meddelandet "det finns ingen modul identitet för den här modulen", a
 Så här granskar och redigerar du en modul dubbla:
 
 1. Om du inte redan har installerat installerar du [tillägget Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) för Visual Studio Code.
-1. I **Utforskaren**expanderar du **Azure-IoT Hub**och expanderar sedan enheten med den modul som du vill övervaka.
+1. I **Utforskaren** expanderar du **Azure-IoT Hub** och expanderar sedan enheten med den modul som du vill övervaka.
 1. Högerklicka på modulen och välj **Redigera modul dubbla**. En temporär fil för modulen, som är dubbelt, hämtas till din dator och visas i Visual Studio Code.
 
   ![Hämta en modul med dubbla för att redigera i Visual Studio Code](./media/how-to-monitor-module-twins/edit-module-twin-vscode.png)
@@ -213,7 +213,7 @@ Om du gör ändringar väljer du **Uppdatera modul dubbla** ovanför koden i red
 
 Om du vill se om IoT Edge körs använder du [AZ IoT Hub Invoke-module-metoden](how-to-edgeagent-direct-method.md#ping) för att pinga IoT Edge-agenten.
 
-[AZ IoT Hub-modulen – den dubbla](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) strukturen innehåller följande kommandon:
+[AZ IoT Hub-modulen – den dubbla](/cli/azure/ext/azure-iot/iot/hub/module-twin) strukturen innehåller följande kommandon:
 
 * **AZ IoT Hub-modul – två show** – visar en modul med dubbla definitioner.
 * **AZ IoT Hub-modul-dubbel uppdatering** – uppdatera en modul med dubbla definitioner.

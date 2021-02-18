@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026462"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577089"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Använd Azure Portal för att ställa in aviseringar för mått för Azure Database for PostgreSQL-storskalig skalning (citus)
 
@@ -26,11 +26,11 @@ Du kan konfigurera en avisering för att utföra följande åtgärder när den u
 * Anropa en webhook.
 
 Du kan konfigurera och hämta information om aviserings regler med hjälp av:
-* [Azure-portalen](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure-portalen](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [REST-API:et för Azure Monitor](/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Skapa en varnings regel för ett mått från Azure Portal
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Skapa en aviseringsregel för ett mått från Azure-portalen
 1. I [Azure Portal](https://portal.azure.com/)väljer du den Azure Database for PostgreSQLs server som du vill övervaka.
 
 2. Under avsnittet **övervakning** på sid panelen väljer du **aviseringar** som visas:
@@ -109,5 +109,5 @@ När disken närmar sig utrymmes gränsen kan du prova dessa tekniker för att f
 Övervakning av processor användning är användbart för att upprätta en bas linje för prestanda. Du kanske till exempel märker att CPU-användningen vanligt vis är cirka 40-60%. Om CPU-användningen plötsligt börjar Hovra runt 95% kan du identifiera en avvikelse. CPU-användningen kan återspegla ekologisk tillväxt, men kan också visa en lösa fråga. När du skapar en CPU-avisering kan du ange en lång agg regerings kornig het för att fånga långvariga ökningar och ignorera tillfälliga toppar.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om hur du [konfigurerar Webhooks i aviseringar](../azure-monitor/platform/alerts-webhooks.md).
-* Få en [Översikt över mått samlingen](../azure-monitor/platform/data-platform.md) för att se till att tjänsten är tillgänglig och svarar.
+* Läs mer om hur du [konfigurerar Webhooks i aviseringar](../azure-monitor/alerts/alerts-webhooks.md).
+* Få en [Översikt över mått samlingen](../azure-monitor/data-platform.md) för att se till att tjänsten är tillgänglig och svarar.
