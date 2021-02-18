@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 58e31cfa42faabbfab217a451e14d33f2cf45863
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554817"
+ms.locfileid: "100591048"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript-guide för utvecklare
 
@@ -745,7 +745,7 @@ När du arbetar med JavaScript-funktioner bör du vara medveten om övervägande
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Välj en vCPU App Service planer
 
-När du skapar en Function-app som använder App Service plan rekommenderar vi att du väljer en plan med en vCPU i stället för en plan med flera virtuella processorer. Idag kör funktionerna JavaScript-funktioner på ett mer effektivt sätt på virtuella datorer med en vCPU och användningen av större virtuella datorer ger inte de förväntade prestanda förbättringarna. Vid behov kan du manuellt skala ut genom att lägga till fler VM-instanser med en vCPU, eller så kan du aktivera autoskalning. Mer information finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json).
+När du skapar en Function-app som använder App Service plan rekommenderar vi att du väljer en plan med en vCPU i stället för en plan med flera virtuella processorer. Idag kör funktionerna JavaScript-funktioner på ett mer effektivt sätt på virtuella datorer med en vCPU och användningen av större virtuella datorer ger inte de förväntade prestanda förbättringarna. Vid behov kan du manuellt skala ut genom att lägga till fler VM-instanser med en vCPU, eller så kan du aktivera autoskalning. Mer information finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/autoscale/autoscale-get-started.md?toc=/azure/app-service/toc.json).
 
 ### <a name="cold-start"></a>Kall start
 

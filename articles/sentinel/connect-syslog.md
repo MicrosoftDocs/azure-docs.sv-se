@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: f249a95551916311fab51ebef72b55d9a4343c0b
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530526"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595463"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Samla in data från Linux-baserade källor med syslog
 
@@ -34,7 +34,7 @@ Du kan strömma händelser från Linux-baserade, syslog-stödjande datorer eller
 
 **Syslog** är ett händelse loggnings protokoll som är gemensamt för Linux. När **Log Analytics agent för Linux** är installerad på din virtuella dator eller enhet konfigurerar installations rutinen lokalt syslog-daemon för att vidarebefordra meddelanden till agenten på TCP-port 25224. Agenten skickar sedan meddelandet till din Log Analytics-arbetsyta via HTTPS, där det parsas till en händelse logg post i syslog-tabellen i **Azure Sentinel >-loggar**.
 
-Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/platform/data-sources-syslog.md).
+Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/agents/data-sources-syslog.md).
 
 ## <a name="configure-syslog-collection"></a>Konfigurera syslog-samling
 
@@ -83,7 +83,7 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 
 1. Om du vill fråga syslog-loggdata i **loggar** skriver `Syslog` du i frågefönstret.
 
-1. Du kan använda frågeparametrar som beskrivs i [använda funktioner i Azure Monitor logg frågor](../azure-monitor/log-query/functions.md) för att parsa syslog-meddelanden. Du kan sedan spara frågan som en ny Log Analytics-funktion och använda den som en ny datatyp.
+1. Du kan använda frågeparametrar som beskrivs i [använda funktioner i Azure Monitor logg frågor](../azure-monitor/logs/functions.md) för att parsa syslog-meddelanden. Du kan sedan spara frågan som en ny Log Analytics-funktion och använda den som en ny datatyp.
 
 > [!NOTE]
 > **Använda samma dator för att vidarebefordra både vanliga syslog- *och* CEF-meddelanden**
@@ -92,7 +92,7 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 >
 >    Har redan konfigurerat [data insamling från dina CEF-källor](connect-common-event-format.md)och har konfigurerat Log Analytics-agenten enligt ovan:
 >
-> 1. På varje dator som skickar loggar i CEF-format måste du redigera syslog-konfigurationsfilen för att ta bort de anläggningar som används för att skicka CEF-meddelanden. På så sätt kommer inte de funktioner som skickas i CEF också att skickas i syslog. Mer information om hur du gör detta finns i [Konfigurera syslog på Linux-agenten](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) .
+> 1. På varje dator som skickar loggar i CEF-format måste du redigera syslog-konfigurationsfilen för att ta bort de anläggningar som används för att skicka CEF-meddelanden. På så sätt kommer inte de funktioner som skickas i CEF också att skickas i syslog. Mer information om hur du gör detta finns i [Konfigurera syslog på Linux-agenten](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent) .
 >
 > 1. Du måste köra följande kommando på de datorerna för att inaktivera synkroniseringen av agenten med syslog-konfigurationen i Azure Sentinel. Detta säkerställer att konfigurations ändringen du gjorde i föregående steg inte blir överskriven.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`

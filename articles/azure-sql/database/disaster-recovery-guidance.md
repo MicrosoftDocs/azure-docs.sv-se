@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6802829d230cebc460df1409b7655534a5b8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783002"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580758"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Återställa Azure SQL Database eller redundans till en sekundär
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,7 +62,7 @@ För att det ska gå att återställa till ett annat data område med hjälp av 
 
 Beroende på din program tolerans för stillestånds tid och eventuellt företags ansvar kan du tänka på följande återställnings alternativ.
 
-Använd Hämta återställnings [bara databaser](/previous-versions/azure/reference/dn800985(v=azure.100)) ( *LastAvailableBackupDate* ) för att hämta den senaste geo-replikerade återställnings punkten.
+Använd Hämta återställnings [bara databaser](/previous-versions/azure/reference/dn800985(v=azure.100)) (*LastAvailableBackupDate*) för att hämta den senaste geo-replikerade återställnings punkten.
 
 ## <a name="wait-for-service-recovery"></a>Vänta på tjänst återställning
 
@@ -109,7 +109,7 @@ Du måste se till att alla inloggningar som används av ditt program finns på d
 
 Du måste se till att dina befintliga inställningar för varnings regler uppdateras för att mappas till den återställda databasen och den andra servern.
 
-Mer information om databas varnings regler finns i [ta emot varnings meddelanden](../../azure-monitor/platform/alerts-overview.md) och [spåra service Health](../../service-health/service-notifications.md).
+Mer information om databas varnings regler finns i [ta emot varnings meddelanden](../../azure-monitor/alerts/alerts-overview.md) och [spåra service Health](../../service-health/service-notifications.md).
 
 ### <a name="enable-auditing"></a>Aktivera granskning
 

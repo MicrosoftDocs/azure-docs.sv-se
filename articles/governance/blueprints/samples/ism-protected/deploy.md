@@ -3,12 +3,12 @@ title: Distribuera exempel på skyddat av myndigheter i myndigheter
 description: Distribuera steg för det skyddade utkastet av myndigheter i myndigheters ISM, inklusive information om skiss artefakts parametrar.
 ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 354d010442f896728ef9af1e3f372c2abbc58ef3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 97dd983ef3188cad7d36459197e57e4e0f3c4e8f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682286"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577336"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Distribuera det insamlade utkastet av myndigheter som är skyddat av myndigheter
 
@@ -94,7 +94,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |Artefaktnamn|Artefakttyp|Parameternamn|Beskrivning|
 |-|-|-|-|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Log Analytics arbetsyte-ID som virtuella datorer ska konfigureras för|Detta är ID (GUID) för Log Analytics arbets ytan som de virtuella datorerna ska konfigureras för.|
-|\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type).|
+|\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över användare som ska undantas från gruppen Administratörer för virtuella Windows-datorer|En semikolonavgränsad lista med medlemmar som ska uteslutas i den lokala gruppen Administratörer. T. ex. administratör; Mina Användare1; myUser2|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över användare som ska ingå i administratörs gruppen för en virtuell Windows-dator|En semikolonavgränsad lista med medlemmar som ska ingå i den lokala gruppen Administratörer. T. ex. administratör; Mina Användare1; myUser2|
 |\[För hands version \] : distribuera Log Analytics agent för Linux VM Scale Sets (VMSS)|Principtilldelning|Log Analytics arbets yta för Linux VM Scale Sets (VMSS)|Om den här arbets ytan ligger utanför tilldelnings omfånget måste du manuellt bevilja behörigheten Log Analytics deltagare (eller liknande) till princip tilldelningens huvud-ID.|
@@ -158,7 +158,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Funktionsapp bör endast vara tillgängligt via HTTPS v2  |Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning  |Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Azure-prenumerationer ska ha en logg profil för aktivitets loggen  |Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
-|\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/platform/resource-logs-categories.md#supported-log-categories-per-resource-type).|
+|\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar acceptabla värden i [Azure Monitor resurs loggs kategorier](../../../../azure-monitor/essentials/resource-logs-categories.md#supported-log-categories-per-resource-type).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Systemuppdateringar ska ha installerats på dina datorer|Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Den senaste TLS-versionen ska användas för App Service|Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
 |\[För hands version \] : granska de skyddade kontrollerna i australisk myndigheter och distribuera särskilda VM-tillägg för att stödja gransknings krav|Principtilldelning|Multifaktorautentisering bör aktiveras på konton med skrivbehörighet för prenumerationen|Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|

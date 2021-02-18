@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855081"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589549"
 ---
 # <a name="sampling-in-application-insights"></a>Sampling i Application Insights
 
@@ -34,10 +34,10 @@ I följande tabell sammanfattas de samplings typer som är tillgängliga för va
 |-|-|-|-|
 | ASP.NET | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Endast om ingen annan sampling gäller |
 | ASP.NET Core | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Endast om ingen annan sampling gäller |
-| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | Nej | Endast om ingen annan sampling gäller |
-| Java | Nej | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
-| Node.JS | Nej | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
-| Python | Nej | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
+| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | No | Endast om ingen annan sampling gäller |
+| Java | No | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
+| Node.JS | No | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
+| Python | No | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
 | Alla andra | Nej | Nej | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
@@ -478,7 +478,7 @@ Om villkoren för att använda andra former av sampling inte gäller rekommender
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Kontrollera om sampling är aktiverat
 
-Om du vill identifiera den faktiska samplings frekvensen oavsett var den har använts använder du en [analys fråga](../log-query/log-query-overview.md) som detta:
+Om du vill identifiera den faktiska samplings frekvensen oavsett var den har använts använder du en [analys fråga](../logs/log-query-overview.md) som detta:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces

@@ -4,14 +4,14 @@ description: Lär dig hur du ansluter ett Microsoft Azure Red Hat OpenShift-klus
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: 132a9b7ad3eef17f4ca27fb76a0c05f94c82fd37
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31abf5008c082fbb54e873b0502876c2fce5d440
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428286"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635973"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: ansluta till ett Azure Red Hat OpenShift 4-kluster
 
@@ -63,7 +63,7 @@ Starta konsol-URL: en i en webbläsare och logga in med `kubeadmin` autentiserin
 
 När du är inloggad i OpenShift-webbkonsolen klickar du på **?** längst upp till höger och sedan på **kommando rads verktyg**. Ladda ned den version som är lämplig för din dator.
 
-![Skärm bild som visar alternativet kommando rads verktyg i listan när du väljer? ikon.](media/aro4-download-cli.png)
+![Skärm bild som visar alternativet kommando rads verktyg i listan när du väljer? i det vänstra fönstret.](media/aro4-download-cli.png)
 
 Du kan också hämta den senaste versionen av CLI-versionen som är lämplig för din dator från <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 

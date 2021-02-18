@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a0acbe84a98bc63e5806d25241811c0a7591b897
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6f487467b08332eea4ee19a7fb8836d843bd254f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582653"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Azures säkerhets bas linje för virtuellt WAN
 
@@ -349,9 +349,9 @@ En rad olika diagnostikloggar är också tillgängliga för virtuella WAN-nätve
 
 Aktivera Azures resurs loggar för virtuellt WAN-nätverk. Du kan använda Azure Security Center och Azure Policy för att aktivera resurs loggar och insamling av logg data. Dessa loggar kan vara kritiska för senare utredning av säkerhets incidenter och utföra kriminal tekniska övningar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Förstå Azure Security Center insamling av data](../security-center/security-center-enable-data-collection.md)
 
@@ -382,7 +382,7 @@ Azure Virtual WAN-säkerhet tillhandahålls via Azure-brandväggen.
 
 **Vägledning**: Konfigurera logg kvarhållning enligt dina krav på efterlevnad, reglering och affärs verksamhet. I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage-, Data Lake-eller Log Analytics arbets ytans konton för långsiktig lagring och arkivering.
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 

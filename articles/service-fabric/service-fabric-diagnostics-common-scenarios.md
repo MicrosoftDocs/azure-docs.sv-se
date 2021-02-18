@@ -3,12 +3,12 @@ title: Azure Service Fabric diagnostisera vanliga scenarier
 description: Lär dig mer om fel sökning av vanliga övervaknings-och diagnostiska scenarier i Azure Service Fabric-program.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3083348948ce97ae9d99098896878d79081a15f0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257741"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580484"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostisera vanliga scenarier med Service Fabric
 
@@ -133,9 +133,9 @@ Se dessa länkar för en fullständig lista över prestanda räknare för pålit
 ## <a name="next-steps"></a>Nästa steg
 
 * [Leta upp vanliga aktiverings fel för kod paket](./service-fabric-diagnostics-code-package-errors.md)
-* [Konfigurera aviseringar i AI](../azure-monitor/platform/alerts-log.md) för att få meddelanden om förändringar i prestanda eller användning
+* [Konfigurera aviseringar i AI](../azure-monitor/alerts/alerts-log.md) för att få meddelanden om förändringar i prestanda eller användning
 * [Smart identifiering i Application Insights](../azure-monitor/app/proactive-diagnostics.md) utför en proaktiv analys av telemetri som skickas till AI för att varna dig om potentiella prestanda problem
-* Läs mer om hur du Azure Monitor loggar [varningar](../azure-monitor/platform/alerts-overview.md) till hjälp vid identifiering och diagnostik.
-* För lokala kluster erbjuder Azure Monitor-loggar en gateway (HTTP Forward proxy) som kan användas för att skicka data till Azure Monitor loggar. Läs mer om det i [ansluta datorer utan Internet åtkomst till Azure Monitor loggar med hjälp av Log Analytics Gateway](../azure-monitor/platform/gateway.md)
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
+* Läs mer om hur du Azure Monitor loggar [varningar](../azure-monitor/alerts/alerts-overview.md) till hjälp vid identifiering och diagnostik.
+* För lokala kluster erbjuder Azure Monitor-loggar en gateway (HTTP Forward proxy) som kan användas för att skicka data till Azure Monitor loggar. Läs mer om det i [ansluta datorer utan Internet åtkomst till Azure Monitor loggar med hjälp av Log Analytics Gateway](../azure-monitor/agents/gateway.md)
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar
 * Få en mer detaljerad översikt över Azure Monitor loggar och vad den erbjuder, Läs [Vad är Azure Monitor loggar?](../azure-monitor/overview.md)

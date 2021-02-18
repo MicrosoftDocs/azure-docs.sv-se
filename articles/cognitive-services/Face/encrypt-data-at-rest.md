@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 8c6f4f7db312355b719deb434bf6a46fa55eec9d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a46253e586aaf90a85bc10e2c62ab6eb238f2ead
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524573"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650821"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Ansikts tjänst kryptering av vilande data
 

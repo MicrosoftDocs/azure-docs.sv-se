@@ -59,7 +59,7 @@
   items:
     - name: Utveckla
       items:
-        - name: Förbereda en Java Spring-app för distribution
+        - name: Förbereda en app för distribution
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Konfigurera en konfigurationsserver
           href: spring-cloud-tutorial-config-server.md

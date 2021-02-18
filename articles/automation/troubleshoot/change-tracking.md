@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/31/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c9f70d837b32c88d3c7a501bcb1a62aa006ebe41
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896553"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572469"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Felsöka problem med Ändringsspårning och inventering
 
@@ -96,11 +96,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Om du inte ser din dator i frågeresultat har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör installera om agenten. Information om installation och konfiguration finns i [samla in loggdata med Log Analytics agenten](../../azure-monitor/platform/log-analytics-agent.md).
+Om du inte ser din dator i frågeresultat har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör installera om agenten. Information om installation och konfiguration finns i [samla in loggdata med Log Analytics agenten](../../azure-monitor/agents/log-analytics-agent.md).
 
 Verifiera omfattnings konfigurationen om datorn visas i frågeresultatet. Se [mål övervaknings lösningar i Azure Monitor](../../azure-monitor/insights/solution-targeting.md).
 
-Mer fel sökning av det här problemet finns i [problem: du ser inga Linux-data](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
+Mer fel sökning av det här problemet finns i [problem: du ser inga Linux-data](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics agent för Linux är inte korrekt konfigurerad
 

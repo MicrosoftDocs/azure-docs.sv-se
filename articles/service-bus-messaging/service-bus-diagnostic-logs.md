@@ -3,12 +3,12 @@ title: Azure Service Bus diagnostikloggar | Microsoft Docs
 description: Den här artikeln innehåller en översikt över alla operativa och diagnostiska loggar som är tillgängliga för Azure Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064442"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585265"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Aktivera diagnostikloggar för Service Bus
 
@@ -25,7 +25,7 @@ Alla loggar lagras i JavaScript Object Notation (JSON)-format på följande två
 
 I drift loggens JSON-strängar ingår elementen som anges i följande tabell:
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | ------- | ------- |
 | ActivityId | Internt ID som används för att identifiera den angivna aktiviteten |
 | EventName | Åtgärdsnamn |
@@ -76,7 +76,7 @@ Följande hanterings åtgärder samlas in i drift loggar:
 
 Drift loggar är inaktiverade som standard. Så här aktiverar du diagnostikloggar:
 
-1. I [Azure Portal](https://portal.azure.com)går du till ditt Azure Service Bus-namnområde och väljer sedan **diagnostiska inställningar**under **övervakning**.
+1. I [Azure Portal](https://portal.azure.com)går du till ditt Azure Service Bus-namnområde och väljer sedan **diagnostiska inställningar** under **övervakning**.
 
    ![Länken "diagnostikinställningar"](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -89,9 +89,9 @@ Drift loggar är inaktiverade som standard. Så här aktiverar du diagnostiklogg
    a. I rutan **namn** anger du ett namn för diagnostikinställningar.  
 
    b. Välj någon av följande tre destinationer för dina diagnostikloggar:  
-   - Om du väljer **Arkiv till ett lagrings konto**måste du konfigurera lagrings kontot där diagnostikloggar ska lagras.  
-   - Om du väljer **Stream till en Event Hub**måste du konfigurera den händelsehubben som du vill strömma diagnostikloggar till.
-   - Om du väljer **Skicka till Log Analytics**måste du ange vilken instans av Log Analytics diagnostiken ska skickas till.  
+   - Om du väljer **Arkiv till ett lagrings konto** måste du konfigurera lagrings kontot där diagnostikloggar ska lagras.  
+   - Om du väljer **Stream till en Event Hub** måste du konfigurera den händelsehubben som du vill strömma diagnostikloggar till.
+   - Om du väljer **Skicka till Log Analytics** måste du ange vilken instans av Log Analytics diagnostiken ska skickas till.  
 
    c. Markera kryss rutan **OperationalLogs** .
 
@@ -101,7 +101,7 @@ Drift loggar är inaktiverade som standard. Så här aktiverar du diagnostiklogg
 
 De nya inställningarna börjar gälla om 10 minuter. Loggarna visas i det konfigurerade lagrings målet i fönstret **diagnostikloggar** .
 
-Mer information om hur du konfigurerar diagnostikinställningar finns i [översikten över Azure Diagnostics-loggar](../azure-monitor/platform/platform-logs-overview.md).
+Mer information om hur du konfigurerar diagnostikinställningar finns i [översikten över Azure Diagnostics-loggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

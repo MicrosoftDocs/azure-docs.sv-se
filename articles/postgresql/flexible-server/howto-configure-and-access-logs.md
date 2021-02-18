@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492360"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590592"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfigurera och få åtkomst till loggar i Azure Database for PostgreSQL-flexibel Server
 
@@ -40,13 +40,13 @@ Så här aktiverar du resurs loggar med hjälp av Azure Portal:
 
 7. Spara inställningen.
 
-Om du vill aktivera resurs loggar med PowerShell, CLI eller REST API går du till artikeln [diagnostiska inställningar](../../azure-monitor/platform/diagnostic-settings.md) .
+Om du vill aktivera resurs loggar med PowerShell, CLI eller REST API går du till artikeln [diagnostiska inställningar](../../azure-monitor/essentials/diagnostic-settings.md) .
 
 ### <a name="access-resource-logs"></a>Åtkomst till resurs loggar
 
-Hur du kommer åt loggarna beror på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
+Hur du kommer åt loggarna beror på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) .
 
-För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../../azure-monitor/log-query/log-query-overview.md) .
+För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../../azure-monitor/logs/log-query-overview.md) .
 
 Följande är frågor som du kan försöka komma igång med. Du kan konfigurera aviseringar baserat på frågor.
 
@@ -71,5 +71,5 @@ Frågan ovan visar resultaten under de senaste 6 timmarna för alla postgres Ser
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Kom igång med Log Analytics-frågor](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Kom igång med Log Analytics-frågor](../../azure-monitor/logs/log-analytics-tutorial.md)
 - Lär dig mer om [Azure Event Hub](../../event-hubs/event-hubs-about.md)

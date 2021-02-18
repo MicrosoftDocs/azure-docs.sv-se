@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84690384"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582672"
 ---
 # <a name="monitor-server-metrics"></a>Övervaka servermått
 
-Analysis Services tillhandahåller mått i Azure Metrics Explorer, ett kostnads fritt verktyg i portalen, som hjälper dig att övervaka servrarnas prestanda och hälsa. Du kan till exempel övervaka minne och CPU-användning, antal klient anslutningar och fråga resursförbrukning. Analysis Services använder samma övervaknings ramverk som de flesta andra Azure-tjänster. Mer information finns i [komma igång med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md).
+Analysis Services tillhandahåller mått i Azure Metrics Explorer, ett kostnads fritt verktyg i portalen, som hjälper dig att övervaka servrarnas prestanda och hälsa. Du kan till exempel övervaka minne och CPU-användning, antal klient anslutningar och fråga resursförbrukning. Analysis Services använder samma övervaknings ramverk som de flesta andra Azure-tjänster. Mer information finns i [komma igång med Azure Metrics Explorer](../azure-monitor/essentials/metrics-getting-started.md).
 
 Använd [Azure Monitor](../azure-monitor/overview.md)för att utföra mer djupgående diagnostik, spåra prestanda och identifiera trender för flera tjänst resurser i en resurs grupp eller prenumeration. Azure Monitor (tjänst) kan resultera i en fakturerings bar tjänst.
 
@@ -27,7 +27,7 @@ Använd [Azure Monitor](../azure-monitor/overview.md)för att utföra mer djupg�
 
     ![Övervaka i Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. I **mått**väljer du de mått som ska ingå i diagrammet. 
+2. I **mått** väljer du de mått som ska ingå i diagrammet. 
 
     ![Övervaka diagram](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -37,7 +37,7 @@ Använd [Azure Monitor](../azure-monitor/overview.md)för att utföra mer djupg�
 
 Använd den här tabellen för att avgöra vilka mått som passar bäst för ditt övervaknings scenario. Endast mått för samma enhet kan visas i samma diagram.
 
-|Mått|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Kölängd för kommando bassäng|Antal|Genomsnitt|Antal jobb i kön för kommando tråds poolen.|
 |CurrentConnections|Anslutning: aktuella anslutningar|Antal|Genomsnitt|Aktuellt antal upprättade klient anslutningar.|
@@ -89,5 +89,5 @@ Använd den här tabellen för att avgöra vilka mått som passar bäst för dit
 
 ## <a name="next-steps"></a>Nästa steg
 [Översikt över Azure Monitor](../azure-monitor/overview.md)      
-[Komma igång med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md)      
+[Komma igång med Azure Metrics Explorer](../azure-monitor/essentials/metrics-getting-started.md)      
 [Mått i Azure Monitor REST API](/rest/api/monitor/metrics)

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a8cb997337d26a166b4c73d33965820da5ae2a86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596321"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Säkerhetsaviseringar i Azure Security Center
 
@@ -98,4 +98,4 @@ Du har flera alternativ för att visa aviseringar utanför Security Center, inkl
 
 I den här artikeln har du lärt dig om de olika typerna av aviseringar som är tillgängliga i Security Center. Mer information finns i:
 
-- **Säkerhets aviseringar i Azure aktivitets logg** – förutom att vara tillgängliga i Azure Portal eller program mässigt, granskas säkerhets aviseringar och incidenter som händelser i [Azure aktivitets logg](../azure-monitor/platform/activity-log.md#view-the-activity-log). Mer information om händelse schemat finns i [säkerhets aviseringar i Azure aktivitets logg](https://go.microsoft.com/fwlink/?linkid=2114113)
+- **Säkerhets aviseringar i Azure aktivitets logg** – förutom att vara tillgängliga i Azure Portal eller program mässigt, granskas säkerhets aviseringar och incidenter som händelser i [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md#view-the-activity-log). Mer information om händelse schemat finns i [säkerhets aviseringar i Azure aktivitets logg](https://go.microsoft.com/fwlink/?linkid=2114113)

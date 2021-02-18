@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 184f42b6da0133068e0a0218353e49c37e3c8c47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0d98edb820e3a6d27f0a57bfde801f064a905a5b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730263"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575403"
 ---
 # <a name="azure-security-baseline-for-content-delivery-network"></a>Azures säkerhets bas linje för Content Delivery Network
 
@@ -182,9 +182,9 @@ Content Delivery Network loggar all nätverks trafik som den bearbetar för kund
 
 Aktivera Azures resurs loggar för CDN du kan använda Azure Security Center och Azure Policy för att aktivera resurs loggar och insamling av loggfiler. Dessa loggar kan vara kritiska för senare utredning av säkerhets incidenter och utföra kriminal tekniska övningar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md) 
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Förstå Azure Security Center insamling av data](../security-center/security-center-enable-data-collection.md)
 

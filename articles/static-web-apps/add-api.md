@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 53be2ee9b6b3ab46f081747aec58b9c99fc54f0d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349964"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650697"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Lägg till en API till för hands versionen av Azure statisk Web Apps med Azure Functions
 
@@ -61,7 +61,7 @@ Därefter skapar du ett Azure Functions-projekt som programmets API.
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Skärm bild som visar en P I-mapp och knappen Välj.":::
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
     - _Välj ett språk_: Välj **Java Script**
     - _Välj en mall för projektets första funktion_: Välj **http-utlösare**
@@ -234,7 +234,7 @@ Lägg sedan till de app-/regionsspecifika inställningarna.
 1. Klicka på knappen **Logga in med GitHub** och autentisera med GitHub
 1. Välj önskad _organisation_
 1. Välj **My-vanilj-API** från List rutan _databas_
-1. Välj **original** i list rutan _gren_
+1. Välj **huvud** från List rutan _gren_
 1. Välj det ramverk som du väljer för att bygga konfiguration från List rutan för att _bygga för inställningar_
 
  > De här fälten visar app-typens standard projekt struktur. Ändra värdena så att de passar din app.

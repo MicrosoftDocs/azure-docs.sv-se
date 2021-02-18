@@ -3,18 +3,18 @@ title: Automatisera Azure Application insikter med PowerShell | Microsoft Docs
 description: Automatisera att skapa och hantera resurser, aviseringar och tillgänglighets test i PowerShell med hjälp av en Azure Resource Manager mall.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186294"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589809"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Hantera Application Insights-resurser med hjälp av PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Den här artikeln visar hur du automatiserar skapandet och uppdateringen av [Application Insights](./app-insights-overview.md) resurser automatiskt med hjälp av Azure Resource Management. Du kan till exempel göra detta som en del av en build-process. Tillsammans med den grundläggande Application Insights-resursen kan du skapa [tillgänglighets webbtester](./monitor-web-app-availability.md), konfigurera [aviseringar](../platform/alerts-log.md), ange [pris schema](pricing.md)och skapa andra Azure-resurser.
+Den här artikeln visar hur du automatiserar skapandet och uppdateringen av [Application Insights](./app-insights-overview.md) resurser automatiskt med hjälp av Azure Resource Management. Du kan till exempel göra detta som en del av en build-process. Tillsammans med den grundläggande Application Insights-resursen kan du skapa [tillgänglighets webbtester](./monitor-web-app-availability.md), konfigurera [aviseringar](../alerts/alerts-log.md), ange [pris schema](pricing.md)och skapa andra Azure-resurser.
 
 Nyckeln för att skapa dessa resurser är JSON-mallar för [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). Den grundläggande proceduren är: Ladda ned JSON-definitionerna för befintliga resurser. Parameterisera vissa värden, t. ex. namn; och kör sedan mallen när du vill skapa en ny resurs. Du kan paketera flera resurser för att skapa dem i en enda Go-till exempel en app monitor med tillgänglighets test, aviseringar och lagring för kontinuerlig export. Det finns vissa nyanser till vissa av parameterizations, som vi förklarar här.
 
@@ -404,12 +404,12 @@ Detta anger den dagliga gränsen till 200 GB/dag, konfigurerar den dagliga åter
 
 ## <a name="add-a-metric-alert"></a>Lägg till en måtta avisering
 
-Information om hur du automatiserar skapandet av mått varningar finns i [artikeln om mall för mått varningar](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)
+Information om hur du automatiserar skapandet av mått varningar finns i [artikeln om mall för mått varningar](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>Lägg till ett tillgänglighets test
 
-Information om hur du automatiserar tillgänglighets test finns i [artikeln om mall för mått varningar](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
+Information om hur du automatiserar tillgänglighets test finns i [artikeln om mall för mått varningar](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert).
 
 ## <a name="add-more-resources"></a>Lägg till fler resurser
 
@@ -469,6 +469,6 @@ Azure bör konfigurera resurserna i strikt ordning. För att se till att en inst
 Andra automatiserings artiklar:
 
 * [Skapa en Application Insights resurs](./create-new-resource.md#creating-a-resource-automatically) – snabb metod utan att använda en mall.
-* [Skapa webbtester](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
+* [Skapa webbtester](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Skicka Azure Diagnostics-data till Application Insights](powershell-azure-diagnostics.md)
 * [Skapa versions anteckningar](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
