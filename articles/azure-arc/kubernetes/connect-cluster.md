@@ -2,23 +2,23 @@
 title: Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 02/17/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Anslut ett Azure Arc-aktiverat Kubernetes-kluster med Azure Arc
 keywords: Kubernetes, båge, Azure, K8s, behållare
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5e2058c5128075de4c37eb9768b204532cd09ffa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 876bc15a3f4db1d12afec37c69656c431e5e6773
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558550"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652521"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Ansluta ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 
-Den här artikeln innehåller en genom gång av hur du ansluter befintliga Kubernetes-kluster till Azure-bågen. En konceptuell översikt över samma finns [här](./conceptual-agent-architecture.md).
+Den här artikeln vägleder dig genom att ansluta ett befintligt Kubernetes-kluster till Azure-bågen. För ett koncept som tar på att ansluta kluster, se [artikeln Azure Arc Enabled Kubernetes agent Architecture](./conceptual-agent-architecture.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -28,12 +28,12 @@ Kontrol lera att du har för berett följande krav:
   * Skapa ett Kubernetes-kluster med [Kubernetes i Docker (Natura)](https://kind.sigs.k8s.io/).
   * Skapa ett Kubernetes-kluster med Docker för [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) eller [Windows](https://docs.docker.com/docker-for-windows/#kubernetes).
 * En kubeconfig-fil för att komma åt rollen kluster och kluster administratör i klustret för distribution av Arc-aktiverade Kubernetes-agenter.
-* Användaren eller tjänstens huvud namn som används med `az login` och- `az connectedk8s connect` kommandon måste ha behörigheterna Läs och skriv för resurs typen Microsoft. Kubernetes/connectedclusters. Rollen "Kubernetes kluster – Azure Arc onboarding" har dessa behörigheter och kan användas för roll tilldelningar för användarens eller tjänstens huvud namn.
+* Läs-och skriv behörigheter för användaren eller tjänstens huvud namn som används med `az login` och- `az connectedk8s connect` kommandon i `Microsoft.Kubernetes/connectedclusters` resurs typen. Rollen "Kubernetes kluster – Azure Arc onboarding" har dessa behörigheter och kan användas för roll tilldelningar för användarens eller tjänstens huvud namn.
 * Helm 3 för onboarding av klustret med hjälp av ett `connectedk8s` tillägg. [Installera den senaste versionen av Helm 3](https://helm.sh/docs/intro/install) för att uppfylla det här kravet.
 * Azure CLI-version 2.15 + för att installera Azure Arc-aktiverade Kubernetes CLI-tillägg. [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller uppdatera till den senaste versionen.
-* Installera Azure Arc-aktiverade Kubernetes CLI-tillägg:
+* Azure-bågen aktiverade Kubernetes CLI-tillägg:
   
-  * Installera `connectedk8s` tillägget, som hjälper dig att ansluta Kubernetes-kluster till Azure:
+  * Installera `connectedk8s` tillägget så att du kan ansluta Kubernetes-kluster till Azure:
   
   ```azurecli
   az extension add --name connectedk8s
@@ -70,7 +70,7 @@ Azure Arc-agenter kräver att följande protokoll/portar/utgående URL: er funge
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Data planens slut punkt för agenten för att push-överföra status och hämta konfigurations information.                                      |
 | `https://login.microsoftonline.com`                                                                            | Krävs för att hämta och uppdatera Azure Resource Manager tokens.                                                                                    |
 | `https://mcr.microsoft.com`                                                                            | Krävs för att hämta behållar avbildningar för Azure Arc-agenter.                                                                  |
-| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Krävs för att hämta system tilldelade hanterade identitets certifikat.                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Krävs för att hämta system tilldelade Hanterad tjänstidentitet-certifikat (MSI).                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registrera de två providers för Azure Arc-aktiverade Kubernetes
 
@@ -177,7 +177,9 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Du kan också visa den här resursen på [Azure Portal](https://portal.azure.com/). Öppna portalen i webbläsaren och navigera till resurs gruppen och den Azure Arc-aktiverade Kubernetes-resursen, baserat på de resurs namn och resurs grupp namn som användes tidigare i `az connectedk8s connect` kommandot.  
+Du kan också visa den här resursen på [Azure Portal](https://portal.azure.com/).
+1. Öppna portalen i webbläsaren.
+1. Navigera till resurs gruppen och den Azure Arc-aktiverade Kubernetes-resursen baserat på de resurs namn och resurs grupp namn som användes tidigare i `az connectedk8s connect` kommandot.  
 > [!NOTE]
 > När klustret har registrerats tar det cirka 5 till 10 minuter för klustrets metadata (kluster version, agent version, antal noder osv.) till yta på sidan Översikt i den Azure Arc-aktiverade Kubernetes-resursen i Azure Portal.
 
@@ -220,7 +222,7 @@ Om klustret ligger bakom en utgående proxyserver, måste Azure CLI och Azure-b�
 > [!NOTE]
 > * Att ange `excludedCIDR` under `--proxy-skip-range` är viktigt för att säkerställa att kommunikationen i klustret inte är bruten för agenterna.
 > * Medan `--proxy-http` , `--proxy-https` , och `--proxy-skip-range` förväntas för de flesta utgående proxyservrar, `--proxy-cert` krävs det bara om betrodda certifikat från proxyn måste matas in i det betrodda certifikat arkivet för agent poddar.
-> * Ovanstående proxy-specifikation används för närvarande endast för båg agenter och inte för flödes poddar som används i sourceControlConfiguration. Azure Arc-Kubernetes-teamet arbetar aktivt med den här funktionen och kommer snart att vara tillgänglig.
+> * Ovanstående proxy-specifikation används för närvarande endast för Azure-båg agenter och inte för flödes poddar som används i `sourceControlConfiguration` . Azure-Arc-aktiverad Kubernetes-teamet arbetar aktivt med den här funktionen.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Azure Arc-agenter för Kubernetes
 

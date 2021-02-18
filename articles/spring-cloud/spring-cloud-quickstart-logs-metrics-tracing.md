@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a935b34c4fcebe9128d8af0316658072e20ddfbe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746638"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596210"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Snabb start: övervaka Azure våren Cloud-appar med loggar, mått och spårning
 
@@ -69,7 +69,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
     
 1. Redigera frågan för att ta bort WHERE-satserna som begränsar visningen till varnings-och fel loggar.
 
-1. Välj sedan så visas `Run` loggar. I [Azure Log Analytics-dokument](../azure-monitor/log-query/get-started-queries.md) finns mer information om hur du skriver frågor.
+1. Välj sedan så visas `Run` loggar. I [Azure Log Analytics-dokument](../azure-monitor/logs/get-started-queries.md) finns mer information om hur du skriver frågor.
 
    [![Loggar Analytics-fråga – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
@@ -142,7 +142,7 @@ Loggarna ser ut så här:
 
 Hämta loggarna med Azure Toolkit for IntelliJ:
 
-1. Välj **Azure Explorer** och sedan **våren Cloud** .
+1. Välj **Azure Explorer** och sedan **våren Cloud**.
 
 1. Högerklicka på appen som körs.
 
@@ -150,7 +150,7 @@ Hämta loggarna med Azure Toolkit for IntelliJ:
 
    ![Välj strömmande loggar](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Välj **instans** .
+1. Välj **instans**.
 
    ![Välj instans](media/spring-cloud-intellij-howto/select-instance.png)
     
@@ -165,7 +165,7 @@ Hämta loggarna med Azure Toolkit for IntelliJ:
 
    [![Loggar Analytics-post ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Sedan visas filtrerade loggar. I [Azure Log Analytics-dokument](../azure-monitor/log-query/get-started-queries.md) finns mer information om hur du skriver frågor.
+1. Sedan visas filtrerade loggar. I [Azure Log Analytics-dokument](../azure-monitor/logs/get-started-queries.md) finns mer information om hur du skriver frågor.
 
    [![Loggar Analytics-fråga ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
@@ -226,4 +226,4 @@ Information om hur du utforskar fler övervaknings funktioner i Azure våren Clo
 >
 > [Distribuerad spårning](spring-cloud-tutorial-distributed-tracing.md)
 >
-> [Stream-loggar i real tid](spring-cloud-howto-log-streaming.md)
+> [Strömma loggar i realtid](spring-cloud-howto-log-streaming.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501643"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575445"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Real tids övervakning, Mät värden och åtkomst loggar för Azure CDN
 Med Azure CDN från Microsoft kan du övervaka resurser på följande sätt för att hjälpa dig att felsöka, spåra och felsöka problem. 
@@ -28,7 +28,7 @@ Med Azure CDN från Microsoft kan du övervaka resurser på följande sätt för
 > [!IMPORTANT]
 > Funktionen HTTP RAW-loggar är tillgänglig för Azure CDN från Microsoft.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar. 
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar. 
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -215,7 +215,7 @@ Måtten visas i diagram och kan nås via PowerShell, CLI och API. CDN-måtten ä
 
 Azure CDN från Microsoft-mått och skickar sina mått i intervall om 60 sekunder. Måtten kan ta upp till 3 minuter innan de visas i portalen. 
 
-Mer information finns i [Azure Monitor mått](../azure-monitor/platform/data-platform-metrics.md).
+Mer information finns i [Azure Monitor mått](../azure-monitor/essentials/data-platform-metrics.md).
 
 **Mått som stöds av Azure CDN från Microsoft**
 
@@ -226,7 +226,7 @@ Mer information finns i [Azure Monitor mått](../azure-monitor/platform/data-pla
 | ResponseSize | Antalet byte som har skickats som svar från CDN-Edge till klienter. |Slutpunkt </br> Klient land. </br> Klient region. </br> HTTP-status. </br> HTTP-status grupp. |
 | TotalLatency | Den totala tiden från klient förfrågan som mottagits av CDN **tills den sista svars bytet skickades från CDN till klienten**. |Slutpunkt </br> Klient land. </br> Klient region. </br> HTTP-status. </br> HTTP-status grupp. |
 
-**_Antal byte träff-portioner = (utgående från Edge-utgång från ursprung)/egress från gräns_*
+***Antal byte träff-portioner = (utgående från Edge-utgång från ursprung)/egress från gräns**
 
 Scenarier som exkluderas i beräkningen av byte-träffar:
 
@@ -265,7 +265,7 @@ Välj **ny varnings regel** för mått som anges i avsnittet mått:
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Konfigurera aviseringar för CDN-slutpunkten." border="true":::
 
-Aviseringen kommer att debiteras baserat på Azure Monitor. Mer information om aviseringar finns i [Azure Monitor aviseringar](../azure-monitor/platform/alerts-overview.md).
+Aviseringen kommer att debiteras baserat på Azure Monitor. Mer information om aviseringar finns i [Azure Monitor aviseringar](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="additional-metrics"></a>Ytterligare mått
 Du kan aktivera ytterligare mått med hjälp av Azure Log Analytics och råa loggar för ytterligare kostnader.
@@ -299,4 +299,4 @@ Mer information om Azure CDN och de andra Azure-tjänsterna som nämns i den hä
 
 * Läs mer om [Azure Monitor](../azure-monitor/overview.md).
 
-* Konfigurera [Log Analytics i Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
+* Konfigurera [Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).

@@ -3,12 +3,12 @@ title: Kontinuerlig export av telemetri från Application Insights | Microsoft D
 description: Exportera diagnostik-och användnings data till lagring i Microsoft Azure och ladda ned dem därifrån.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674145"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584238"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportera telemetri från Application Insights
 Vill du behålla din telemetri längre än standard kvarhållningsperioden? Eller bearbeta den på ett visst sätt? Kontinuerlig export är idealisk för detta. De händelser som visas i Application Insights-portalen kan exporteras till lagring i Microsoft Azure i JSON-format. Därifrån kan du hämta dina data och skriva vilken kod du behöver för att bearbeta den.  
@@ -21,7 +21,7 @@ Innan du konfigurerar kontinuerlig export finns det några alternativ som du kan
 
 * Med knappen Exportera högst upp på fliken mått eller Sök kan du överföra tabeller och diagram till ett Excel-kalkylblad.
 
-* [Analytics](../log-query/log-query-overview.md) har ett kraftfullt frågespråk för telemetri. Det kan också exportera resultat.
+* [Analytics](../logs/log-query-overview.md) har ett kraftfullt frågespråk för telemetri. Det kan också exportera resultat.
 * Om du vill [utforska dina data i Power BI](./export-power-bi.md)kan du göra det utan att använda kontinuerlig export.
 * Med [data åtkomst REST API](https://dev.applicationinsights.io/) kan du komma åt telemetri program mässigt.
 * Du kan också komma åt konfigurations [kontinuerlig export via PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
@@ -61,7 +61,7 @@ Det kan finnas en fördröjning på ungefär en timme innan data visas i lagring
 
 När den första exporten är klar hittar du en struktur som liknar följande i din Azure Blob Storage-behållare: (detta varierar beroende på vilka data som samlas in.)
 
-|Namn | Beskrivning |
+|Name | Beskrivning |
 |:----|:------|
 | [Tillgänglighet](export-data-model.md#availability) | Reports för [webb test för tillgänglighet](./monitor-web-app-availability.md).  |
 | [Händelse](export-data-model.md#events) | Anpassade händelser som genererats av [TrackEvent ()](./api-custom-events-metrics.md#trackevent). 

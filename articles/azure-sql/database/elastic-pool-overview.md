@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732702"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653643"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastiska pooler hjälper dig att hantera och skala flera databaser i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ För tjänst nivåer och resurs gränser i varje inköps modell, se den [DTU-bas
 Följande steg kan hjälpa dig att beräkna om en pool är mer kostnads effektiv än enkla databaser:
 
 1. Beräkna eDTU: er eller virtuella kärnor som krävs för poolen enligt följande:
-
-För DTU-baserad inköps modell:
-
-MAX (<det *totala antalet* DTU- *användning per DB* -> för databaser x, <*antalet samtidigt toppvärde databaser* X *högsta DTU-användning per DB*>)
-
-För vCore-baserad inköps modell:
-
-MAX (<*totala antalet databaser* x *genomsnittlig vCore användning per db*>, <*antal databaser* X *högsta högsta vCore belastning per DB*>)
-
+   - För den DTU-baserade inköps modellen:
+     - Max (<det *totala antalet* &times; *DTU-användning per DB* -> för databaser, <*antalet samtidigt databaser* &times; *högsta DTU-användning per DB*>)
+   - För den vCore-baserade inköps modellen:
+     - Max (<det *totala antalet databaser* &times; *genomsnittlig vCore användning per DB*>, <*antal databaser högsta högsta* &times; *vCore belastning per DB*>)
 2. Beräkna det totala lagrings utrymmet som krävs för poolen genom att lägga till den data storlek som behövs för alla databaser i poolen. För inköps modellen DTU tar du reda på storleken på eDTU-poolen som tillhandahåller den här mängden lagring.
 3. För den DTU-baserade inköps modellen tar du den större av eDTU-beräkningarna från steg 1 och steg 2. För den vCore-baserade inköps modellen ska du ta vCore uppskattningen från steg 1.
 4. Se [sidan SQL Database priser](https://azure.microsoft.com/pricing/details/sql-database/) och hitta den minsta pool storlek som är större än uppskattningen från steg 3.

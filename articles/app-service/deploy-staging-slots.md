@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150323"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594246"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurera mellanlagringsmiljöer i Azure App Service
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ Om du vill skala din app till en annan nivå ser du till att mål nivån stöder
 <a name="Add"></a>
 
 ## <a name="add-a-slot"></a>Lägga till ett fack
-Appen måste köras på nivån **standard**, **Premium**eller **isolerad** för att du ska kunna aktivera flera distributions platser.
+Appen måste köras på nivån **standard**, **Premium** eller **isolerad** för att du ska kunna aktivera flera distributions platser.
 
 
 1. i [Azure Portal](https://portal.azure.com/)söker du efter och väljer **app Services** och väljer din app. 
@@ -185,7 +185,7 @@ Så här konfigurerar du automatisk växling:
 
 1. Gå till appens resurs sida. Välj **distributions platser**  >  *\<desired source slot>*  >  **konfiguration**  >  **allmänna inställningar**.
    
-2. För **Automatisk växling aktive rad**väljer du **på**. Välj sedan önskad mål plats för **Automatisk växling distributions plats**och välj **Spara** i kommando fältet. 
+2. För **Automatisk växling aktive rad** väljer du **på**. Välj sedan önskad mål plats för **Automatisk växling distributions plats** och välj **Spara** i kommando fältet. 
    
     ![Alternativ för att konfigurera automatisk växling](./media/web-sites-staged-publishing/AutoSwap02.png)
 
@@ -222,9 +222,9 @@ Om du har problem kan du läsa [Felsöka växlingar](#troubleshoot-swaps).
 
 ## <a name="monitor-a-swap"></a>Övervaka en växling
 
-Om [växlings åtgärden](#AboutConfiguration) tar lång tid att slutföra kan du få information om växlings åtgärden i [aktivitets loggen](../azure-monitor/platform/platform-logs-overview.md).
+Om [växlings åtgärden](#AboutConfiguration) tar lång tid att slutföra kan du få information om växlings åtgärden i [aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md).
 
-På appens resurs sida i portalen väljer du **aktivitets logg**i det vänstra fönstret.
+På appens resurs sida i portalen väljer du **aktivitets logg** i det vänstra fönstret.
 
 En växlings åtgärd visas i logg frågan som `Swap Web App Slots` . Du kan expandera den och välja en av under åtgärder eller fel för att se information.
 

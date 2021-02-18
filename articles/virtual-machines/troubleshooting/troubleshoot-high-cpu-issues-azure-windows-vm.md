@@ -1,5 +1,5 @@
 ---
-title: Felsök frågor med höga processorer för virtuella Azure Windows-datorer
+title: Felsöka problem med hög CPU-användning för virtuella Azure Windows-datorer
 description: .
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/24/2020
 ms.author: mnanda
-ms.openlocfilehash: ffac5ac4d1a8143590e1d72aaafc8a02d6ab04ca
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 124650f4570608efabba3d8002c14ad06c4782ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977263"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571499"
 ---
-# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Felsök frågor med höga processorer för virtuella Azure Windows-datorer
+# <a name="troubleshoot-high-cpu-issues-for-azure-windows-virtual-machines"></a>Felsöka problem med hög CPU-användning för virtuella Azure Windows-datorer
 
 ## <a name="summary"></a>Sammanfattning
 
@@ -108,15 +108,15 @@ Bläddra för att **diagnostisera och lösa problem** på VM-bladet och leta eft
 
   ![Felsöka prestanda problem med virtuella datorer](./media/troubleshoot-high-cpu-issues-azure-windows-vm/2-troubleshoot-vm-performance-issues.png)
 
-Om du väljer **Felsök**laddas installations skärmen för PerfInsights.
+Om du väljer **Felsök** laddas installations skärmen för PerfInsights.
 
-Om du väljer **Installera**tillhandahåller installationen olika samlings alternativ.
+Om du väljer **Installera** tillhandahåller installationen olika samlings alternativ.
 
   ![Prestandaanalys](./media/troubleshoot-high-cpu-issues-azure-windows-vm/3-performance-analysis.png)
 
 De numrerade alternativen i skärm bilden är relaterade till följande kommentarer:
 
-1. För alternativet för **hög CPU**väljer du **prestanda analys** eller **Avancerat**.
+1. För alternativet för **hög CPU** väljer du **prestanda analys** eller **Avancerat**.
 
 2. När du lägger till symtom här läggs de till i rapporten, som hjälper dig att dela information med Azure-supporten.
 
@@ -225,9 +225,9 @@ Det finns inga standard rapporter för användar klara som är tillgängliga i p
 
 Starta genom att välja kategorin **Lägg till räknare** .
 
-1. Under **tillgängliga räknare**väljer du räknaren **% ProcessorTime** i kategorin **processor information** .
+1. Under **tillgängliga räknare** väljer du räknaren **% ProcessorTime** i kategorin **processor information** .
 
-1. Välj **_Total**som innehåller statistik över alla kombinerade kärnor.
+1. Välj **_Total** som innehåller statistik över alla kombinerade kärnor.
 
 1. Välj **Lägg till**. I fönstret visas **% ProcessorTime** under  **tillagda räknare**.
 
@@ -237,7 +237,7 @@ När räknarna har lästs in visas linje trend diagram i tids ramen för samling
 
   ![Inställningar för prestanda övervakaren](./media/troubleshoot-high-cpu-issues-azure-windows-vm/12-performance-monitor-1.png)
 
-Varje räknare har **medel**, **lägsta**och **högsta** värden. Fokusera på både **genomsnitts** -och **Max** värden, eftersom det genomsnittliga värdet kan variera beroende på data insamlingens varaktighet. Om aktiviteten med hög processor setts i 10 minuter medan den övergripande samlingen var 40 minuter, blir de genomsnittliga värdena mycket lägre.
+Varje räknare har **medel**, **lägsta** och **högsta** värden. Fokusera på både **genomsnitts** -och **Max** värden, eftersom det genomsnittliga värdet kan variera beroende på data insamlingens varaktighet. Om aktiviteten med hög processor setts i 10 minuter medan den övergripande samlingen var 40 minuter, blir de genomsnittliga värdena mycket lägre.
 
 I föregående trend diagram visas att den **totala processorn** var i intervallet 80 procent under cirka 15 minuter.
 
@@ -289,7 +289,7 @@ När inställningarna har Aktiver ATS kan du visa dessa **gäst** räknare i avs
 
   ![Mått namn område](./media/troubleshoot-high-cpu-issues-azure-windows-vm/19-metrics-namespace.png)
 
-Mer information om hur du använder Azure Monitor för att hantera virtuella Azure-datorer finns i [övervaka virtuella Azure-datorer med Azure Monitor](../../azure-monitor/insights/monitor-vm-azure.md).
+Mer information om hur du använder Azure Monitor för att hantera virtuella Azure-datorer finns i [övervaka virtuella Azure-datorer med Azure Monitor](../../azure-monitor/vm/monitor-vm-azure.md).
 
 ### <a name="reactive-troubleshooting"></a>Reaktiv fel sökning
 

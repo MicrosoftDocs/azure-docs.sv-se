@@ -281,6 +281,8 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: Självstudier
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: Diagnostisera problem i produktion
+          href: diagnose-solve-problems.md
 - name: Referens
   items:
     - name: Azure CLI

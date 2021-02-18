@@ -1,20 +1,20 @@
 ---
-title: Använda Azure Queue Storage från python – Azure Storage
+title: Använda Azure Queue Storage från python
 description: Lär dig att använda Azure Queue Storage från python för att skapa och ta bort köer och infoga, hämta och ta bort meddelanden.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 01/19/2021
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8c30d05cf49162155f84961e1fd8a32361444ba5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600794"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653269"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Använda Azure Queue Storage från python
 
@@ -22,9 +22,9 @@ ms.locfileid: "98600794"
 
 ## <a name="overview"></a>Översikt
 
-Den här artikeln visar vanliga scenarier med hjälp av Azure Queue Storage-tjänsten. Scenarierna som beskrivs är att infoga, granska, hämta och ta bort Kömeddelanden. Kod för att skapa och ta bort köer omfattas också.
+Den här artikeln visar vanliga scenarier med hjälp av Azure Queue Storage-tjänsten. De scenarier som beskrivs är att infoga, granska, hämta och ta bort Kömeddelanden. Kod för att skapa och ta bort köer omfattas också.
 
-Exemplen i den här artikeln är skrivna i python och använder [azures Queue Storage klient bibliotek för python](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue). Mer information om köer finns i avsnittet [Nästa steg](#next-steps) .
+Exemplen i den här artikeln är skrivna i python och använder [azures Queue Storage klient bibliotek för python](https://github.com/azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue). Mer information om köer finns i avsnittet [Nästa steg](#next-steps) .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -117,6 +117,26 @@ queue_service.create_queue(queue_name)
 
 ---
 
+Azure Queue-meddelanden lagras som text. Om du vill lagra binära data ställer du in base64-kodning och avkodnings funktioner innan du skickar ett meddelande i kön.
+
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Konfigurera base64-kodning och avkodning av funktioner när du skapar ett klient objekt.
+
+:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Konfigurera base64-kodning och avkodnings funktioner på Queue Storage-objekt.
+
+```python
+# Setup Base64 encoding and decoding functions
+queue_service.encode_function = QueueMessageFormat.binary_base64encode
+queue_service.decode_function = QueueMessageFormat.binary_base64decode
+```
+
+---
+
 ## <a name="insert-a-message-into-a-queue"></a>Infoga ett meddelande i en kö
 
 # <a name="python-v12"></a>[Python-V12](#tab/python)
@@ -133,26 +153,6 @@ Om du vill infoga ett meddelande i en kö använder du [`put_message`](/azure/de
 message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
-```
-
----
-
-Azure Queue-meddelanden lagras som text. Om du vill lagra binära data ställer du in base64-kodning och avkodnings funktioner innan du skickar ett meddelande i kön.
-
-# <a name="python-v12"></a>[Python-V12](#tab/python)
-
-Konfigurera base64-kodning och avkodning av funktioner i kö-klientens objekt.
-
-:::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_EncodeMessage":::
-
-# <a name="python-v2"></a>[Python v2](#tab/python2)
-
-Konfigurera base64-kodning och avkodnings funktioner på Queue Storage-objekt.
-
-```python
-# Setup Base64 encoding and decoding functions
-queue_service.encode_function = QueueMessageFormat.binary_base64encode
-queue_service.decode_function = QueueMessageFormat.binary_base64decode
 ```
 
 ---

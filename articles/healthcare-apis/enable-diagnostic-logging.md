@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575455"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581971"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivera diagnostisk loggning i Azure API för FHIR
 
-I den här artikeln får du lära dig hur du aktiverar diagnostisk loggning i Azure API för FHIR och kan granska några exempel frågor för dessa loggar. Åtkomst till diagnostikloggar är nödvändig för alla sjukvårds tjänster där efterlevnaden av myndighets krav (t. ex. HIPAA) är en måste. Funktionen i Azure API för FHIR som möjliggör diagnostikloggar är [**diagnostikinställningar**](../azure-monitor/platform/diagnostic-settings.md) i Azure Portal. 
+I den här artikeln får du lära dig hur du aktiverar diagnostisk loggning i Azure API för FHIR och kan granska några exempel frågor för dessa loggar. Åtkomst till diagnostikloggar är nödvändig för alla sjukvårds tjänster där efterlevnaden av myndighets krav (t. ex. HIPAA) är en måste. Funktionen i Azure API för FHIR som möjliggör diagnostikloggar är [**diagnostikinställningar**](../azure-monitor/essentials/diagnostic-settings.md) i Azure Portal. 
 
 ## <a name="enable-audit-logs"></a>Aktivera gransknings loggar
 1. Om du vill aktivera diagnostisk loggning i Azure API för FHIR, väljer du din Azure API för FHIR-tjänst i Azure Portal 
@@ -45,7 +45,7 @@ I den här artikeln får du lära dig hur du aktiverar diagnostisk loggning i Az
 > [!Note] 
 > Det kan ta upp till 15 minuter innan de första loggarna visas i Log Analytics.  
  
-Mer information om hur du arbetar med diagnostikloggar finns i [dokumentationen till Azure Resource log](../azure-monitor/platform/platform-logs-overview.md)
+Mer information om hur du arbetar med diagnostikloggar finns i [dokumentationen till Azure Resource log](../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="audit-log-details"></a>Gransknings logg information
 För närvarande returnerar Azure API för FHIR-tjänsten följande fält i gransknings loggen: 
@@ -68,7 +68,7 @@ För närvarande returnerar Azure API för FHIR-tjänsten följande fält i gran
 |TimeGenerated|DateTime|Datum och tid för händelsen|
 |Egenskaper|Sträng| Beskriver egenskaperna för fhirResourceType
 |SourceSystem|Sträng| Käll system (alltid i Azure i detta fall)
-|TenantId|Sträng|Klientorganisations-ID
+|TenantId|Sträng|Klient-ID:t
 |Typ|Sträng|Typ av logg (alltid MicrosoftHealthcareApisAuditLog i det här fallet)
 |_ResourceId|Sträng|Information om resursen
 

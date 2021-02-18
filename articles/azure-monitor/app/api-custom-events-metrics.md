@@ -4,12 +4,12 @@ description: Infoga några rader kod i din enhet eller Skriv bords app, webb sid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927825"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593754"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>API för Application Insights för anpassade händelser och mått
 
@@ -108,7 +108,7 @@ I Node.js-projekt kan du använda `new applicationInsights.TelemetryClient(instr
 
 ## <a name="trackevent"></a>TrackEvent
 
-I Application Insights är en *Anpassad händelse* en data punkt som du kan visa i [Metrics Explorer](../platform/metrics-charts.md) som ett sammanställt antal och i [diagnostisk sökning](./diagnostic-search.md) som enskilda förekomster. (Den är inte relaterad till MVC eller andra ramverk "händelser.")
+I Application Insights är en *Anpassad händelse* en data punkt som du kan visa i [Metrics Explorer](../essentials/metrics-charts.md) som ett sammanställt antal och i [diagnostisk sökning](./diagnostic-search.md) som enskilda förekomster. (Den är inte relaterad till MVC eller andra ramverk "händelser.")
 
 Infoga `TrackEvent` anrop i koden för att räkna olika händelser. Hur ofta användarna väljer en viss funktion, hur ofta de uppnår särskilda mål eller hur ofta de kan göra särskilda typer av misstag.
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Anpassade händelser i Analytics
 
-Telemetrin är tillgänglig i `customEvents` tabellen på [fliken Application Insights loggar](../log-query/log-query-overview.md) eller i [användnings upplevelsen](usage-overview.md). Händelser kan komma från `trackEvent(..)` eller [Klicka på plugin-programmet för automatisk insamling av analys](javascript-click-analytics-plugin.md).
+Telemetrin är tillgänglig i `customEvents` tabellen på [fliken Application Insights loggar](../logs/log-query-overview.md) eller i [användnings upplevelsen](usage-overview.md). Händelser kan komma från `trackEvent(..)` eller [Klicka på plugin-programmet för automatisk insamling av analys](javascript-click-analytics-plugin.md).
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Anpassade mått i Analytics
 
-Telemetrin är tillgänglig i `customMetrics` tabellen i [Application Insights Analytics](../log-query/log-query-overview.md). Varje rad representerar ett anrop till `trackMetric(..)` i din app.
+Telemetrin är tillgänglig i `customMetrics` tabellen i [Application Insights Analytics](../logs/log-query-overview.md). Varje rad representerar ett anrop till `trackMetric(..)` i din app.
 
 * `valueSum` – Det här är summan av måtten. Hämta medelvärdet genom att dividera med `valueCount` .
 * `valueCount` -Antalet mått som samlats in i det här `trackMetric(..)` anropet.
@@ -274,7 +274,7 @@ Den resulterande sid inläsningens varaktighet som visas i Metrics Explorer här
 
 ### <a name="page-telemetry-in-analytics"></a>Sid telemetri i analys
 
-I [Analytics](../log-query/log-query-overview.md) två tabeller visas data från webb läsar åtgärder:
+I [Analytics](../logs/log-query-overview.md) två tabeller visas data från webb läsar åtgärder:
 
 * `pageViews`Tabellen innehåller data om URL: en och sid rubriken
 * `browserTimings`Tabellen innehåller data om klient prestanda, till exempel hur lång tid det tar att bearbeta inkommande data
@@ -310,7 +310,7 @@ Det rekommenderade sättet att skicka telemetri för begäran är dock där beg�
 
 ## <a name="operation-context"></a>Åtgärds kontext
 
-Du kan korrelera telemetri-objekt tillsammans genom att associera dem med åtgärds kontext. Standardmodulen för fråge spårning gör detta för undantag och andra händelser som skickas medan en HTTP-begäran bearbetas. I [Sök](./diagnostic-search.md) och [analyser](../log-query/log-query-overview.md)kan du enkelt hitta händelser som är associerade med begäran med hjälp av dess åtgärds-ID.
+Du kan korrelera telemetri-objekt tillsammans genom att associera dem med åtgärds kontext. Standardmodulen för fråge spårning gör detta för undantag och andra händelser som skickas medan en HTTP-begäran bearbetas. I [Sök](./diagnostic-search.md) och [analyser](../logs/log-query-overview.md)kan du enkelt hitta händelser som är associerade med begäran med hjälp av dess åtgärds-ID.
 
 Se [telemetri-korrelation i Application Insights](./correlation.md) för mer information om korrelation.
 
@@ -348,7 +348,7 @@ Mer information om anpassad drift spårning finns i avsnittet [spåra anpassade 
 
 ### <a name="requests-in-analytics"></a>Förfrågningar i analys
 
-I [Application Insights Analytics](../log-query/log-query-overview.md)visas begär anden i `requests` tabellen.
+I [Application Insights Analytics](../logs/log-query-overview.md)visas begär anden i `requests` tabellen.
 
 Om [sampling](./sampling.md) är i drift visar egenskapen itemCount ett värde som är större än 1. Till exempel itemCount = = 10 betyder 10 anrop till trackRequest (), men samplings processen överför bara en av dem. Använd kod som till exempel för att få ett korrekt antal begär Anden och genomsnittlig varaktighet per beställnings namn:
 
@@ -361,7 +361,7 @@ requests
 
 Skicka undantag till Application Insights:
 
-* För att [räkna dem](../platform/metrics-charts.md), som en indikering av frekvensen för ett problem.
+* För att [räkna dem](../essentials/metrics-charts.md), som en indikering av frekvensen för ett problem.
 * För att [granska enskilda förekomster](./diagnostic-search.md).
 
 Rapporterna innehåller stack spåren.
@@ -430,7 +430,7 @@ SDK: erna fångar många undantag automatiskt, så du behöver inte alltid anrop
 
 ### <a name="exceptions-in-analytics"></a>Undantag i analys
 
-I [Application Insights Analytics](../log-query/log-query-overview.md)visas undantagen i `exceptions` tabellen.
+I [Application Insights Analytics](../logs/log-query-overview.md)visas undantagen i `exceptions` tabellen.
 
 Om [sampling](./sampling.md) är i drift `itemCount` Visar egenskapen ett värde som är större än 1. Till exempel itemCount = = 10 betyder 10 anrop till trackException (), men samplings processen överför bara en av dem. För att få rätt antal undantag segment av typen av undantag, Använd kod som:
 
@@ -525,7 +525,7 @@ I [sökningen](./diagnostic-search.md)kan du sedan enkelt filtrera ut alla medde
 
 ### <a name="traces-in-analytics"></a>Spår i analys
 
-I [Application Insights Analytics](../log-query/log-query-overview.md)visas anrop till TrackTrace i `traces` tabellen.
+I [Application Insights Analytics](../logs/log-query-overview.md)visas anrop till TrackTrace i `traces` tabellen.
 
 Om [sampling](./sampling.md) är i drift, Visar egenskapen itemCount ett värde som är större än 1. Till exempel itemCount = = 10 innebär att 10 anrop till `trackTrace()` , och att endast en av dem överförs av samplings processen. För att få ett korrekt antal spårnings anrop bör du använda kod som `traces | summarize sum(itemCount)` .
 
@@ -607,7 +607,7 @@ Om du vill stänga av standard modulen för beroende spårning i C# redigerar du
 
 ### <a name="dependencies-in-analytics"></a>Beroenden i analys
 
-I [Application Insights Analytics](../log-query/log-query-overview.md)visas trackDependency-anrop i `dependencies` tabellen.
+I [Application Insights Analytics](../logs/log-query-overview.md)visas trackDependency-anrop i `dependencies` tabellen.
 
 Om [sampling](./sampling.md) är i drift, Visar egenskapen itemCount ett värde som är större än 1. Till exempel itemCount = = 10 betyder 10 anrop till trackDependency (), men samplings processen överför bara en av dem. Använd kod som till exempel för att få rätt antal beroenden som segmenteras av mål komponenten:
 
@@ -695,7 +695,7 @@ Om din app grupperar användare till konton kan du också skicka en identifierar
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-I [Metrics Explorer](../platform/metrics-charts.md)kan du skapa ett diagram som räknar **användare, autentiserade** och **användar konton**.
+I [Metrics Explorer](../essentials/metrics-charts.md)kan du skapa ett diagram som räknar **användare, autentiserade** och **användar konton**.
 
 Du kan också [söka](./diagnostic-search.md) efter klient data punkter med vissa användar namn och konton.
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Anpassade mätningar och egenskaper i Analytics
 
-I [Analytics](../log-query/log-query-overview.md)visas anpassade mått och egenskaper i `customMeasurements` `customDimensions` attributen och för varje telemetri-post.
+I [Analytics](../logs/log-query-overview.md)visas anpassade mått och egenskaper i `customMeasurements` `customDimensions` attributen och för varje telemetri-post.
 
 Om du till exempel har lagt till en egenskap med namnet "Game" i din begäran om telemetri, räknar den här frågan förekomster av olika värden för "Game" och visar genomsnittet för det anpassade måttet "score":
 

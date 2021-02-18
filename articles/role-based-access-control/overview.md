@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559335"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650872"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?
 
@@ -86,7 +86,7 @@ Mer information finns i [steg för att tilldela en Azure-roll](role-assignments-
 
 ## <a name="multiple-role-assignments"></a>Flera rolltilldelningar
 
-Så vad händer om du har flera överlappande rolltilldelningar? Azure RBAC är en additiv modell, så dina effektiva behörigheter är summan av dina roll tilldelningar. Fundera på följande exempel där en användare beviljas deltagarrollen i prenumerationsomfånget och läsarrollen på en resursgrupp. Summan av deltagar behörigheterna och läsar behörigheten är effektivt i rollen deltagare för resurs gruppen. Därför har läsarrolltilldelningen ingen inverkan i det här fallet.
+Så vad händer om du har flera överlappande rolltilldelningar? Azure RBAC är en additiv modell, så dina effektiva behörigheter är summan av dina roll tilldelningar. Fundera på följande exempel där en användare beviljas deltagarrollen i prenumerationsomfånget och läsarrollen på en resursgrupp. Summan av deltagar behörigheterna och läsar behörigheterna är i praktiken rollen deltagare för prenumerationen. Därför har läsarrolltilldelningen ingen inverkan i det här fallet.
 
 ![Flera rolltilldelningar](./media/overview/rbac-multiple-roles.png)
 

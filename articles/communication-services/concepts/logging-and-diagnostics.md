@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1c803ed24542cbc4a2f0aaaee82ac0f57559cb9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591856"
 ---
 # <a name="communication-services-logs"></a>Kommunikations tjänst loggar
 
@@ -30,7 +30,7 @@ Nya inställningar börjar gälla om tio minuter. Loggarna kommer att visas i de
 
 :::image type="content" source="./media/diagnostic-settings.png" alt-text="Alternativ för ACS-diagnostiska inställningar.":::
 
-Mer information om hur du konfigurerar diagnostik finns i översikten över [Azures resurs loggar](../../azure-monitor/platform/platform-logs-overview.md).
+Mer information om hur du konfigurerar diagnostik finns i översikten över [Azures resurs loggar](../../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="resource-log-categories"></a>Resurs loggs kategorier
 

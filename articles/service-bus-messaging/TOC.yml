@@ -7,7 +7,7 @@
     - name: Jämföra meddelandetjänster
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Använda Service Bus med Java Message Service (JMS) 2.0 (förhandsversion)
+    - name: 'Använda Service Bus med Java Message Service (JMS) 2,0'
       href: how-to-use-java-message-service-20.md
 - name: Snabbstarter
   items:
@@ -90,6 +90,10 @@
       href: service-bus-samples.md
 - name: Begrepp
   items:
+    - name: 'Köer, ämnen och prenumerationer'
+      href: service-bus-queues-topics-subscriptions.md
+    - name: Ämnesfilter och åtgärder
+      href: topic-filters.md
     - name: Premium-meddelandetjänster
       href: service-bus-premium-messaging.md
     - name: Jämför Azure-köer och Service Bus-köer
@@ -158,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: Utveckla
       items:
+        - name: Ange prenumerations filter och åtgärder
+          href: service-bus-filter-examples.md
         - name: Meddelandehantering
           items:
             - name: 'Köer, ämnen och prenumerationer'
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java Message Service (JMS) 2.0-entiteter (förhandsversion)
+            - name: 'JMS-enheter (Java Message Service) 2,0'
               href: java-message-service-20-entities.md
+            - name: Guide.md för JMS-utvecklare (Java Message Service)
+              href: jms-developer-guide.md
             - name: 'Meddelanden, nyttolaster och serialisering'
               href: service-bus-messages-payloads.md
             - name: 'Överföringar av meddelanden, lås och uppgörelser'
@@ -172,8 +180,6 @@
               href: message-sequencing.md
             - name: Förfallodatum för meddelanden (Time to Live)
               href: message-expiration.md
-        - name: Ämnesfilter och åtgärder
-          href: topic-filters.md
         - name: Migrera från Standard- till Premium-namnområden
           href: service-bus-migrate-standard-premium.md
         - name: Partitionerade köer och ämnen

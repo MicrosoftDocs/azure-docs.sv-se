@@ -3,12 +3,12 @@ title: Vägledning och metodtips
 description: Upptäck de bästa metoderna och vägledningen för att säkerhetskopiera molnet och den lokala arbets belastningen till molnet
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593342"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Säkerhetskopiera molnet och lokala arbets belastningar till molnet
 
@@ -238,9 +238,9 @@ Som säkerhets kopierings användare eller administratör bör du kunna övervak
   * Identifiera viktiga trender på olika nivåer av granularitet.
 
 * Dessutom ger
-  * Du kan skicka data (till exempel jobb, principer och så vidare) till arbets ytan **Log Analytics** . Detta aktiverar funktionerna i Azure Monitor loggar för att möjliggöra korrelation av data med andra övervaknings data som samlas in av Azure Monitor, konsolidera logg poster från flera Azure-prenumerationer och-klienter till en enda plats för analys, använda logg frågor för att utföra komplexa analyser och få djupgående insikter om logg poster. [Mer information finns här](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Du kan skicka data till Händelsehubben för att skicka poster utanför Azure, till exempel en SIEM (säkerhets information och händelse hantering) eller en annan Log Analytics-lösning. [Mer information finns här](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
-  * Du kan skicka data till ett Azure Storage-konto om du vill behålla dina loggdata längre än 90 dagar för granskning, statisk analys eller säkerhets kopiering. Om du bara behöver behålla dina händelser i 90 dagar eller mindre, behöver du inte skapa arkiv till ett lagrings konto, eftersom aktivitets logg händelser lagras i Azure-plattformen i 90 dagar. [Läs mer](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
+  * Du kan skicka data (till exempel jobb, principer och så vidare) till arbets ytan **Log Analytics** . Detta aktiverar funktionerna i Azure Monitor loggar för att möjliggöra korrelation av data med andra övervaknings data som samlas in av Azure Monitor, konsolidera logg poster från flera Azure-prenumerationer och-klienter till en enda plats för analys, använda logg frågor för att utföra komplexa analyser och få djupgående insikter om logg poster. [Mer information finns här](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace).
+  * Du kan skicka data till Händelsehubben för att skicka poster utanför Azure, till exempel en SIEM (säkerhets information och händelse hantering) eller en annan Log Analytics-lösning. [Mer information finns här](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs).
+  * Du kan skicka data till ett Azure Storage-konto om du vill behålla dina loggdata längre än 90 dagar för granskning, statisk analys eller säkerhets kopiering. Om du bara behöver behålla dina händelser i 90 dagar eller mindre, behöver du inte skapa arkiv till ett lagrings konto, eftersom aktivitets logg händelser lagras i Azure-plattformen i 90 dagar. [Läs mer](../azure-monitor/essentials/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Aviseringar
 

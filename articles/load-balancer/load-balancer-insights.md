@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232768"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589109"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Använda insikter för att övervaka och konfigurera din Azure Load Balancer
 
@@ -40,7 +40,7 @@ För standardload-belastningsutjämnare, färgkodas dina resurser för backend-p
 
 ## <a name="metrics-dashboard"></a>Instrumentpanelen med mätvärden
 
-Från bladet Insights i Load Balancer kan du välja mer detaljerade mått för att visa en förkonfigurerad [Azure Monitor arbets bok](../azure-monitor/platform/workbooks-overview.md) som innehåller mått som är relevanta för särskilda aspekter av din Load Balancer. På den här instrument panelen visas Load Balancer status och länkar till relevant dokumentation överst på sidan.
+Från bladet Insights i Load Balancer kan du välja mer detaljerade mått för att visa en förkonfigurerad [Azure Monitor arbets bok](../azure-monitor/visualize/workbooks-overview.md) som innehåller mått som är relevanta för särskilda aspekter av din Load Balancer. På den här instrument panelen visas Load Balancer status och länkar till relevant dokumentation överst på sidan.
 
 Först visas fliken Översikt. Du kan navigera bland de tillgängliga flikarna som innehåller visuella objekt som är relevanta för en speciell aspekt av din Load Balancer. Uttrycklig vägledning för var och en finns på instrument panelen längst ned på varje flik.
 
@@ -80,4 +80,4 @@ Fliken mått definitioner innehåller all information som visas i artikeln om [f
 * Granska instrument panelen och ge feedback med hjälp av länken nedan om det finns något som kan förbättras
 * [Läs statistik dokumentationen för att se hur varje mått beräknas](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Skapa anslutnings Övervakare för din Load Balancer](../network-watcher/connection-monitor.md)
-* [Skapa egna arbets böcker](../azure-monitor/platform/workbooks-overview.md), du kan ta inspiration genom att klicka på knappen Redigera på instrument panelen för detaljerade mått
+* [Skapa egna arbets böcker](../azure-monitor/visualize/workbooks-overview.md), du kan ta inspiration genom att klicka på knappen Redigera på instrument panelen för detaljerade mått

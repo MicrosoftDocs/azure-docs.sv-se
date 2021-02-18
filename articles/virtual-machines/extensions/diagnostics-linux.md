@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580282"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Använd Linux Diagnostic Extension 4,0 för att övervaka mått och loggar
 
@@ -238,7 +238,7 @@ Den här uppsättningen konfigurations information innehåller känslig informat
 }
 ```
 
-Namn | Värde
+Name | Värde
 ---- | -----
 storageAccountName | Namnet på det lagrings konto där data skrivs av tillägget.
 storageAccountEndPoint | valfritt Slut punkten som identifierar molnet där lagrings kontot finns. Om den här inställningen saknas, LAD standardvärdet för det offentliga Azure-molnet `https://core.windows.net` . Om du vill använda ett lagrings konto i Azure Germany, Azure Government eller Azure Kina anger du detta värde i enlighet med detta.
@@ -827,6 +827,6 @@ Se relevant [EventHubs-dokumentation](../../event-hubs/event-hubs-about.md) för
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Skapa mått varningar i [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) för de mått som du samlar in.
-* Skapa [övervaknings diagram](../../azure-monitor/platform/data-platform.md) för dina mått.
+* Skapa mått varningar i [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) för de mått som du samlar in.
+* Skapa [övervaknings diagram](../../azure-monitor/data-platform.md) för dina mått.
 * Lär dig hur du [skapar en skalnings uppsättning för virtuella datorer](../linux/tutorial-create-vmss.md) med hjälp av dina mått för att styra autoskalning.

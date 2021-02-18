@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Dokumentation om IoT-enheter och program utveckling
+summary: Utforska Azure IoT-dokumentationen för att utveckla inbäddade enheter och skapa enhets aktiverade moln program.
+metadata:
+  title: IoT-enhet och program utveckling
+  description: Lär dig hur du använder Azure IoT för att göra inbäddade enhets utveckling och bygga enhets aktiverade moln program.
+  services: iot-develop
+  ms.service: iot-develop
+  ms.topic: landing-page
+  author: timlt
+  ms.author: timlt
+  ms.date: 01/11/2021
+  ms.openlocfilehash: 98d3a7f3eb51ce9c2fddfe5b3ac6730d8ef3b3eb
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100656246"
+landingContent:
+- title: Om IoT-enheter och program utveckling
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure IoT-enheter och program utveckling?
+      url: about-iot-develop.md
+    - text: Vilken SDK ska jag använda?
+      url: about-iot-sdks.md
+- title: Kom igång med utveckling av enhets program
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Skicka telemetri för enheten till IoT Central
+      url: quickstart-send-telemetry-python.md
+    - text: Skicka telemetri för enheten till IoT Hub
+      url: quickstart-send-telemetry-cli-python.md
+- title: Kom igång med inbäddad enhets utveckling
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kom igång med inbäddad enhets utveckling
+      url: quickstart-device-development.md

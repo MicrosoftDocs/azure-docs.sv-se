@@ -1,35 +1,27 @@
 ---
 title: Distribuera och konfigurera Azure VMware-lösning
-description: Lär dig hur du använder den information som samlas in i planerings fasen för att distribuera Azure VMware-lösningens privata moln.
+description: Lär dig hur du använder den information som samlas in i planerings fasen för att distribuera och konfigurera ett privat moln i Azure VMware-lösningen.
 ms.topic: tutorial
-ms.date: 12/24/2020
-ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382063"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652742"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Distribuera och konfigurera Azure VMware-lösning
 
-I den här artikeln ska du använda informationen från [planerings avsnittet](production-ready-deployment-steps.md) för att distribuera Azure VMware-lösningen. 
+I den här artikeln ska du använda informationen från [planerings avsnittet](production-ready-deployment-steps.md) för att distribuera och konfigurera Azure VMware-lösningen. 
 
 >[!IMPORTANT]
 >Om du inte har definierat informationen ännu går du tillbaka till [planerings avsnittet](production-ready-deployment-steps.md) innan du fortsätter.
 
-## <a name="register-the-resource-provider"></a>Registrera resursprovidern
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Skapa ett privat moln för Azure VMware-lösningen
 
-
-## <a name="deploy-azure-vmware-solution"></a>Distribuera Azure VMware Solution
-
-Använd den information som du samlade in i artikeln [Planera distribution av Azure VMware-lösningar](production-ready-deployment-steps.md) :
-
->[!NOTE]
->Om du vill distribuera en Azure VMware-lösning måste du vara minst deltagar nivå i prenumerationen.
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+Följ anvisningarna och stegen i självstudien [skapa ett privat moln i Azure VMware-lösning](tutorial-create-private-cloud.md) . Du kan skapa ett privat moln i Azure VMware-lösningen med hjälp av [Azure Portal](tutorial-create-private-cloud.md#azure-portal) eller med hjälp av [Azure CLI](tutorial-create-private-cloud.md#azure-cli).  
 
 >[!NOTE]
 >En översikt över slut punkt till slut punkt av det här steget finns i [Azure VMware-lösningen: distributions](https://www.youtube.com/embed/gng7JjxgayI) video.
@@ -60,7 +52,7 @@ Om du inte definierade ett virtuellt nätverk i distributions steget och avsikte
 
 Hopp rutan finns i det virtuella nätverk där Azure VMware-lösningen ansluter via sin ExpressRoute-krets.  I Azure går du till hopp rutans nätverks gränssnitt och [visar effektiva vägar](../virtual-network/manage-route-table.md#view-effective-routes).
 
-I listan gällande vägar bör du se de nätverk som skapats som en del av distributionen av Azure VMware-lösningen. Du ser flera nätverk som har härletts från [ `/22` nätverket som du definierade](production-ready-deployment-steps.md#ip-address-segment) under [distributions steget](#deploy-azure-vmware-solution) tidigare i den här artikeln.
+I listan gällande vägar bör du se de nätverk som skapats som en del av distributionen av Azure VMware-lösningen. Du ser flera nätverk som har härletts från [ `/22` nätverket som du definierade](production-ready-deployment-steps.md#ip-address-segment) när du [skapade ett privat moln](#create-an-azure-vmware-solution-private-cloud).  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Verifiera nätverks vägar som annonseras från Azure VMware-lösning till Azure Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

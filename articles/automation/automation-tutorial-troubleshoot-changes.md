@@ -7,12 +7,12 @@ keywords: ändring, spårning, ändrings spårning, inventering, automatisering
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 28c440f27dcbd4ac509adea83d5c3085488cb488
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204259"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587930"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Felsöka ändringar på en virtuell Azure-dator
 
@@ -28,7 +28,7 @@ I den här guiden får du lära du dig hur man:
 > * Aktivera aktivitetslogganslutning
 > * Utlösa en händelse
 > * Visa ändringar
-> * Konfigurera aviseringar
+> * Konfigurera varningar
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -54,7 +54,7 @@ Först måste du aktivera Ändringsspårning och inventering för den här själ
 
     ![Aktivera ändring](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. Välj arbets ytan [Log Analytics](../azure-monitor/log-query/log-query-overview.md) . Den här arbets ytan samlar in data som genereras av funktioner som Ändringsspårning och inventering. Arbetsytan tillhandahåller en enda plats för att granska och analysera data från flera källor.
+3. Välj arbets ytan [Log Analytics](../azure-monitor/logs/log-query-overview.md) . Den här arbets ytan samlar in data som genereras av funktioner som Ändringsspårning och inventering. Arbetsytan tillhandahåller en enda plats för att granska och analysera data från flera källor.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -80,7 +80,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Mer information om hur du kör och söker efter loggfiler i Azure Monitor-loggar finns i [Azure Monitor-loggar](../azure-monitor/log-query/log-query-overview.md).
+Mer information om hur du kör och söker efter loggfiler i Azure Monitor-loggar finns i [Azure Monitor-loggar](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurera spårning av ändringar
 
@@ -166,13 +166,13 @@ Med ändrings spårning väljer du de filer och register nycklar som ska samlas 
 
     ![Visa information om ändringar i portalen](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
-## <a name="configure-alerts"></a>Konfigurera aviseringar
+## <a name="configure-alerts"></a>Konfigurera varningar
 
 Det kan vara användbart att granska ändringar i Azure-portalen, men det är bättre att kunna få aviseringar när en ändring sker, till exempel en stoppad tjänst. Nu ska vi lägga till en avisering för en stoppad tjänst. 
 
 1. I Azure Portal går du till **övervaka**. 
 
-2. Välj **aviseringar** under **delade tjänster**och klicka på **+ ny varnings regel**.
+2. Välj **aviseringar** under **delade tjänster** och klicka på **+ ny varnings regel**.
 
 3. Klicka på **Markera** för att välja en anslutning. 
 
@@ -194,11 +194,11 @@ Det kan vara användbart att granska ändringar i Azure-portalen, men det är b�
 
     Den här frågan returnerar de datorer där W3SVC-tjänsten stoppades i det angivna tidsintervallet.
 
-9. Ange **0**för **tröskel** under **aviserings logik**. När du är klar klickar du på **klar**.
+9. Ange **0** för **tröskel** under **aviserings logik**. När du är klar klickar du på **klar**.
 
     ![Konfigurera signallogiken](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-10. Välj **Skapa ny** under **Åtgärds grupper**. En åtgärdsgrupp är en grupp av åtgärder som kan användas i flera aviseringar. Dessa åtgärder kan inkludera, men är inte begränsade till, e-postmeddelanden, runbooks, webhooks och mycket mer. Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/platform/action-groups.md).
+10. Välj **Skapa ny** under **Åtgärds grupper**. En åtgärdsgrupp är en grupp av åtgärder som kan användas i flera aviseringar. Dessa åtgärder kan inkludera, men är inte begränsade till, e-postmeddelanden, runbooks, webhooks och mycket mer. Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
 
 11. Under **Aviseringsinformation** anger du ett namn och en beskrivning för aviseringen. 
 
@@ -206,11 +206,11 @@ Det kan vara användbart att granska ändringar i Azure-portalen, men det är b�
 
 13. I rutan **Åtgärdsgruppnamn** anger du ett namn för aviseringen och ett kortnamn. Det korta namnet används i stället för ett fullständigt åtgärdsgruppnamn när meddelanden skickas med den här gruppen.
 
-14. För **åtgärder**anger du ett namn för åtgärden, t. ex. **e-postadministratörer**. 
+14. För **åtgärder** anger du ett namn för åtgärden, t. ex. **e-postadministratörer**. 
 
-15. För **Åtgärds typ**väljer du **e-post/SMS/push/röst**. 
+15. För **Åtgärds typ** väljer du **e-post/SMS/push/röst**. 
 
-16. Välj **Redigera information**om du vill ha mer **information**.
+16. Välj **Redigera information** om du vill ha mer **information**.
 
     ![Lägg till åtgärdsgrupp](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
@@ -218,7 +218,7 @@ Det kan vara användbart att granska ändringar i Azure-portalen, men det är b�
 
 18. Om du vill anpassa ämnet för aviserings meddelandet väljer du **Anpassa åtgärder**. 
 
-19. Välj **e-postämne**för **Skapa regel**och välj sedan **skapa aviserings regel**. Varningen berättar när en distribution lyckas och vilka datorer som var en del av denna uppdaterade distributionskörning. Följande bild är ett exempel på ett e-postmeddelande som tas emot när W3SVC-tjänsten stoppas.
+19. Välj **e-postämne** för **Skapa regel** och välj sedan **skapa aviserings regel**. Varningen berättar när en distribution lyckas och vilka datorer som var en del av denna uppdaterade distributionskörning. Följande bild är ett exempel på ett e-postmeddelande som tas emot när W3SVC-tjänsten stoppas.
 
     ![Skärm dum par visar ett e-postmeddelande som tas emot när d-tjänsterna på d-serien stoppas.](./media/automation-tutorial-troubleshoot-changes/email.png)
 
@@ -233,7 +233,7 @@ I den här självstudiekursen lärde du dig att:
 > * Aktivera aktivitets logg anslutning
 > * Utlösa en händelse
 > * Visa ändringar
-> * Konfigurera aviseringar
+> * Konfigurera varningar
 
 Fortsätt till översikten över funktionen Ändringsspårning och inventering för att lära dig mer om det.
 

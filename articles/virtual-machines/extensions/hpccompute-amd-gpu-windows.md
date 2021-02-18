@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: e0a5074061b190088441ed4f6787b112fb11fe5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aad28df218973cf07231262ccd8b9a07f263424f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966011"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652759"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Tillägg för AMD GPU-drivrutin för Windows
 
@@ -25,7 +25,7 @@ Den här artikeln innehåller en översikt över VM-tillägget för att distribu
 
 Anvisningar om manuell installation av driv rutinerna och de aktuella versioner som stöds finns [här](../windows/n-series-amd-driver-setup.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="operating-system"></a>Operativsystem
 
@@ -68,12 +68,12 @@ Följande JSON visar schemat för tillägget.
 
 ### <a name="properties"></a>Egenskaper
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft. HpcCompute | sträng |
 | typ | AmdGpuDriverWindows | sträng |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 
 
 ## <a name="deployment"></a>Distribution
@@ -151,7 +151,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 Utökning av utdata loggas i följande katalog:
 
 ```cmd
-C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
+C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.AmdGpuDriverMicrosoft\
 ```
 
 ### <a name="error-codes"></a>Felkoder

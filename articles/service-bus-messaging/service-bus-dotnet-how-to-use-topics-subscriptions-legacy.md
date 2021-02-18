@@ -1,16 +1,16 @@
 ---
 title: Kom igång med ämnen och prenumerationer i Azure Service Bus | Microsoft Docs
 description: Skriv ett C# .NET Core-konsolprogram som använder meddelandeämnen och prenumerationer i Service Bus.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85eb8e6cdaa8636215c5df9d81dbecdca97a2501
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819315"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652980"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Kom igång med Service Bus-ämnen
 Den här självstudien omfattar följande steg:
@@ -66,7 +66,7 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Core)**.
     static ITopicClient topicClient;
     ``` 
 
-3. Ersätt `Main()` metoden med följande async- **async** `Main` metod som skickar meddelanden asynkront med SendMessagesAsync-metoden som du ska lägga till i nästa steg. 
+3. Ersätt `Main()` metoden med följande async-  `Main` metod som skickar meddelanden asynkront med SendMessagesAsync-metoden som du ska lägga till i nästa steg. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -201,7 +201,7 @@ Om du vill ta emot meddelanden som du har skickat skapar du ett annat .NET Core-
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Ersätt `Main()` metoden med följande async- **async** `Main` metod. Den anropar den `RegisterOnMessageHandlerAndReceiveMessages()` metod som du ska lägga till i nästa steg. 
+3. Ersätt `Main()` metoden med följande async-  `Main` metod. Den anropar den `RegisterOnMessageHandlerAndReceiveMessages()` metod som du ska lägga till i nästa steg. 
 
     ```csharp
     public static async Task Main(string[] args)

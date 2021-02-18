@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054254"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586062"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Använda en avisering för att utlösa en Azure Automation Runbook
 
-Du kan använda [Azure Monitor](../azure-monitor/overview.md) för att övervaka mått och loggar på bas nivå för de flesta tjänster i Azure. Du kan anropa Azure Automation runbooks med hjälp av [Åtgärds grupper](../azure-monitor/platform/action-groups.md) eller genom att använda klassiska aviseringar för att automatisera uppgifter baserat på aviseringar. Den här artikeln visar hur du konfigurerar och kör en Runbook med hjälp av aviseringar.
+Du kan använda [Azure Monitor](../azure-monitor/overview.md) för att övervaka mått och loggar på bas nivå för de flesta tjänster i Azure. Du kan anropa Azure Automation runbooks med hjälp av [Åtgärds grupper](../azure-monitor/alerts/action-groups.md) eller genom att använda klassiska aviseringar för att automatisera uppgifter baserat på aviseringar. Den här artikeln visar hur du konfigurerar och kör en Runbook med hjälp av aviseringar.
 
 ## <a name="alert-types"></a>Aviseringstyper
 
@@ -25,15 +25,15 @@ Du kan använda Automation-runbooks med tre aviserings typer:
 * Nära real tids aviseringar
 
 > [!NOTE]
-> Det vanliga aviserings schemat standardiserar användnings upplevelsen för aviserings meddelanden i Azure idag. Tidigare var de tre aviserings typerna i Azure idag (Metric, loggen och aktivitets loggen) haft egna e-postmallar, webhook-scheman osv. Läs mer i [vanliga aviserings scheman](../azure-monitor/platform/alerts-common-schema.md)
+> Det vanliga aviserings schemat standardiserar användnings upplevelsen för aviserings meddelanden i Azure idag. Tidigare var de tre aviserings typerna i Azure idag (Metric, loggen och aktivitets loggen) haft egna e-postmallar, webhook-scheman osv. Läs mer i [vanliga aviserings scheman](../azure-monitor/alerts/alerts-common-schema.md)
 
 När en avisering anropar en Runbook, är det faktiska anropet en HTTP POST-begäran till webhooken. Bröd texten i POST-begäran innehåller ett JSON-formaterat objekt som har användbara egenskaper som är relaterade till aviseringen. I följande tabell visas länkar till nytto Last schema för varje aviserings typ:
 
 |Varning  |Description|Nytto Last schema  |
 |---------|---------|---------|
-|[Vanlig avisering](../azure-monitor/platform/alerts-common-schema.md)|Det vanliga aviserings schema som standardiserar användnings upplevelsen för aviserings meddelanden i Azure idag.|Vanligt schema för aviserings nytto Last|
-|[Aktivitets logg avisering](../azure-monitor/platform/activity-log-alerts.md)    |Skickar ett meddelande när en ny händelse i Azure aktivitets loggen matchar vissa villkor. Till exempel när en `Delete VM` åtgärd utförs i **myProductionResourceGroup** eller när en ny Azure Service Health-händelse med en aktiv status visas.| [Schema för aktivitets logg aviserings nytto Last](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Varning för nära real tids mått](../azure-monitor/platform/alerts-metric-near-real-time.md)    |Skickar ett meddelande snabbare än mått aviseringar när ett eller flera mått på plattforms nivå uppfyller angivna villkor. Till exempel när värdet för **CPU%** på en virtuell dator är större än 90 och värdet för **nätverk i** är större än 500 MB under de senaste 5 minuterna.| [Schema för nytto laster i real tids avisering](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[Vanlig avisering](../azure-monitor/alerts/alerts-common-schema.md)|Det vanliga aviserings schema som standardiserar användnings upplevelsen för aviserings meddelanden i Azure idag.|Vanligt schema för aviserings nytto Last|
+|[Aktivitets logg avisering](../azure-monitor/alerts/activity-log-alerts.md)    |Skickar ett meddelande när en ny händelse i Azure aktivitets loggen matchar vissa villkor. Till exempel när en `Delete VM` åtgärd utförs i **myProductionResourceGroup** eller när en ny Azure Service Health-händelse med en aktiv status visas.| [Schema för aktivitets logg aviserings nytto Last](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |
+|[Varning för nära real tids mått](../azure-monitor/alerts/alerts-metric-near-real-time.md)    |Skickar ett meddelande snabbare än mått aviseringar när ett eller flera mått på plattforms nivå uppfyller angivna villkor. Till exempel när värdet för **CPU%** på en virtuell dator är större än 90 och värdet för **nätverk i** är större än 500 MB under de senaste 5 minuterna.| [Schema för nytto laster i real tids avisering](../azure-monitor/alerts/alerts-webhooks.md#payload-schema)          |
 
 Eftersom de data som tillhandahålls av varje typ av avisering är olika, hanteras varje aviserings typ annorlunda. I nästa avsnitt får du lära dig hur du skapar en Runbook för att hantera olika typer av aviseringar.
 
@@ -185,7 +185,7 @@ Aviseringar använder åtgärds grupper, som är samlingar av åtgärder som utl
 
     ![Sidan Lägg till åtgärds grupp](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    Du kan använda den här åtgärds gruppen i [aktivitets logg aviseringar](../azure-monitor/platform/activity-log-alerts.md) och i [nära real tids aviseringar](../azure-monitor/platform/alerts-overview.md) som du skapar.
+    Du kan använda den här åtgärds gruppen i [aktivitets logg aviseringar](../azure-monitor/alerts/activity-log-alerts.md) och i [nära real tids aviseringar](../azure-monitor/alerts/alerts-overview.md) som du skapar.
 
 1. Under **aviserings information** lägger du till en varnings regel namn och beskrivning och klickar på **skapa aviserings regel**.
 
@@ -193,6 +193,6 @@ Aviseringar använder åtgärds grupper, som är samlingar av åtgärder som utl
 
 * Information om hur du startar en Runbook med en webhook finns i [starta en Runbook från en webhook](automation-webhooks.md).
 * Information om hur du startar en Runbook på olika sätt finns i [starta en Runbook](./start-runbooks.md).
-* Information om hur du skapar en aktivitets logg avisering finns i [skapa aktivitets logg aviseringar](../azure-monitor/platform/activity-log-alerts.md).
-* Information om hur du skapar en nästan real tids avisering finns [i skapa en varnings regel i Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Information om hur du skapar en aktivitets logg avisering finns i [skapa aktivitets logg aviseringar](../azure-monitor/alerts/activity-log-alerts.md).
+* Information om hur du skapar en nästan real tids avisering finns [i skapa en varnings regel i Azure Portal](../azure-monitor/alerts/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
 * En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).

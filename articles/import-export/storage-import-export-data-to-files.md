@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/16/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 44473efbfb1c07c628c939fd05805ed92e691736
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706869"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651871"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Importera data till Azure Files med Import/Export-tjänsten i Azure
 
@@ -22,7 +22,7 @@ Den här artikeln innehåller stegvisa instruktioner för hur du använder Azure
 
 Import/export-tjänsten stöder endast import av Azure Files till Azure Storage. Det finns inte stöd för att exportera Azure Files.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du skapar ett import jobb för att överföra data till Azure Files bör du noggrant granska och slutföra följande lista över krav. Du måste:
 
@@ -30,7 +30,7 @@ Innan du skapar ett import jobb för att överföra data till Azure Files bör d
 - Ha minst ett Azure Storage konto. Se listan över [lagrings konton och lagrings typer som stöds för import/export-tjänsten](storage-import-export-requirements.md). Information om hur du skapar ett nytt lagrings konto finns i [så här skapar du ett lagrings konto](../storage/common/storage-account-create.md).
 - Har tillräckligt många diskar av [typer som stöds](storage-import-export-requirements.md#supported-disks).
 - Ha ett Windows-system som kör en [operativ system version som stöds](storage-import-export-requirements.md#supported-operating-systems).
-- [Ladda ned WAImportExport version 2](https://aka.ms/waiev2) på Windows-systemet. Zippa upp till standardmappen `waimportexport` . Ett exempel är `C:\WaImportExport`.
+- [Ladda ned WAImportExport version 2](https://aka.ms/waiev2) på Windows-systemet. Zippa upp till standardmappen `waimportexport` . Till exempel `C:\WaImportExport`.
 - Ha ett FedEx-/DHL-konto. Om du vill använda en annan operatör än FedEx/DHL kontaktar du Azure Data Box drifts team på `adbops@microsoft.com` .
     - Kontot måste vara giltigt, måste ha ett saldo och måste ha funktioner för retur leverans.
     - Generera ett spårnings nummer för export jobbet.
@@ -119,13 +119,13 @@ Fler exempel finns i [exempel på Journal-filer](#samples-for-journal-files).
 
 Utför följande steg för att skapa ett import jobb i Azure Portal.
 1. Logga in på https://portal.azure.com/ .
-2. Gå till **alla tjänster > lagring > import/export-jobb**.
+2. Sök efter **import/export-jobb**.
 
-    ![Gå till import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Sök på import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klicka på **skapa import/export-jobb**.
+3. Välj **+ Ny**.
 
-    ![Klicka på import/export-jobb](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Välj nytt om du vill skapa en ny ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gör så här i **Grundläggande**:
 
@@ -136,7 +136,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
     - Välj en prenumeration.
     - Välj en resursgrupp.
 
-        ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Skapa import jobb – steg 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 3. I **jobb information**:
 
@@ -144,7 +144,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
     - Välj det lagrings konto som data ska importeras till.
     - DropOff-platsen fylls i automatiskt baserat på den region där det valda lagrings kontot finns.
 
-       ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Skapa import jobb – steg 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 4. I **information om retur leverans**:
 
@@ -155,7 +155,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
         > [!TIP]
         > Ange en grupp-e-postadress i stället för att ange en e-postadress för en enskild användare. Detta säkerställer att du får meddelanden även om en administratör lämnar.
 
-       ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+       ![Skapa import jobb – steg 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 
 5. I **sammanfattningen**:
@@ -163,7 +163,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
     - Ange leverans adressen till Azure-datacenter för att leverera diskar tillbaka till Azure. Se till att jobb namnet och den fullständiga adressen anges på frakt etiketten.
     - Slutför skapandet av jobb genom att klicka på **OK** .
 
-        ![Skapa import jobb – steg 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Skapa import jobb – steg 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

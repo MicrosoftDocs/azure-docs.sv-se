@@ -635,20 +635,16 @@
       items:
         - name: Introduktion till Data Lake Storage
           href: data-lake-storage-introduction.md
-    - name: Snabbstarter
-      items:
-        - name: Analysera data med Databricks
-          href: data-lake-storage-quickstart-create-databricks-account.md
     - name: Självstudier
       items:
-        - name: 'Extrahera, transformera och läsa in data med Azure Databricks'
-          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Få åtkomst till Data Lake Storage-data med Databricks med hjälp av Spark
+        - name: Använd med Databricks och Spark
           href: data-lake-storage-use-databricks-spark.md
-        - name: 'Extrahera, transformera och läsa in data med Apache Hive på Azure HDInsight'
+        - name: Använd med Apache Hive och HDInsight
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Infoga data i Databricks Delta-tabeller med hjälp av Event Grid
+        - name: Använd med Databricks delta och Event Grid
           href: data-lake-storage-events.md
+        - name: Använda med andra Azure-tjänster
+          href: data-lake-storage-integrate-with-services-tutorials.md
     - name: Begrepp
       items:
         - name: Bearbeta stordata
@@ -705,7 +701,7 @@
       items:
         - name: skapar ett lagringskonto
           href: create-data-lake-storage-account.md
-        - name: Migrera
+        - name: Migrera konton och data lager
           items:
             - name: Migrera från Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -713,31 +709,7 @@
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
             - name: Migrera ett Hadoop Distributed File System-lager online
               href: migrate-gen2-wandisco-live-data-platform.md
-        - name: Hantera
-          items:
-            - name: .NET
-              href: data-lake-storage-directory-file-acl-dotnet.md
-            - name: Java
-              href: data-lake-storage-directory-file-acl-java.md
-            - name: Python
-              href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
-              href: data-lake-storage-directory-file-acl-javascript.md
-            - name: PowerShell
-              href: data-lake-storage-directory-file-acl-powershell.md
-            - name: CLI
-              href: data-lake-storage-directory-file-acl-cli.md
-            - name: Storage Explorer
-              href: data-lake-storage-explorer.md
-            - name: CLI för Hadoop File System
-              href: data-lake-storage-use-hdfs-data-lake-storage.md
-            - name: 'Ange ACL:er rekursivt'
-              href: recursive-access-control-lists.md
-        - name: Söka i data
-          items:
-            - name: Filtrera data med frågeacceleration
-              href: data-lake-storage-query-acceleration-how-to.md
-        - name: Överföring
+        - name: Överföra data
           items:
             - name: AzCopy
               items:
@@ -761,9 +733,47 @@
               href: data-lake-storage-use-distcp.md
             - name: Överföra data med dataflyttbiblioteket
               href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Optimera
+        - name: Hantera åtkomstkontroll
           items:
-            - name: Optimera prestanda
+            - name: Storage Explorer
+              href: data-lake-storage-explorer-acl.md
+            - name: PowerShell
+              href: data-lake-storage-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-acl-java.md
+            - name: Python
+              href: data-lake-storage-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-acl-javascript.md
+        - name: Arbeta med data
+          items:
+            - name: Storage Explorer
+              href: data-lake-storage-explorer.md
+            - name: PowerShell
+              href: data-lake-storage-directory-file-acl-powershell.md
+            - name: CLI
+              href: data-lake-storage-directory-file-acl-cli.md
+            - name: .NET
+              href: data-lake-storage-directory-file-acl-dotnet.md
+            - name: Java
+              href: data-lake-storage-directory-file-acl-java.md
+            - name: Python
+              href: data-lake-storage-directory-file-acl-python.md
+            - name: JavaScript
+              href: data-lake-storage-directory-file-acl-javascript.md
+            - name: Frågeacceleration
+              href: data-lake-storage-query-acceleration-how-to.md
+            - name: CLI för Hadoop File System
+              href: data-lake-storage-use-hdfs-data-lake-storage.md
+        - name: Använd med Azure-tjänster
+          href: data-lake-storage-integrate-with-services-tutorials.md
+        - name: Optimera prestanda
+          items:
+            - name: Översikt över prestanda optimering
               href: data-lake-storage-performance-tuning-guidance.md
             - name: Optimera Spark på HDInsight
               href: data-lake-storage-performance-tuning-spark.md
