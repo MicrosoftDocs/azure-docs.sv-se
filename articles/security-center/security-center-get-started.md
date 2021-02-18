@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 5e39093e0472705111907e72b70446db53770012
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809555"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634501"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>Snabb start: Konfigurera Azure Security Center
 
@@ -88,7 +88,7 @@ Så här aktiverar du automatisk etablering av Log Analytics agent:
 
 1. Från Security Center menyn väljer du **pris & inställningar**.
 1. Välj relevant prenumeration.
-1. På sidan **data insamling** ställer du in **Automatisk etablering** till **på**.
+1. På sidan **Automatisk etablering** för **Log Analytics agent för virtuella Azure-datorer** anger du statusen till **på**.
 1. Välj **Spara**.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivera automatisk etablering av Log Analytics agenten":::

@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920451"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634178"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Ignorera aviseringar från Azure Defender
 
@@ -26,7 +26,7 @@ På den här sidan förklaras hur du kan använda undertrycks regler för varnin
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri<br>(De flesta säkerhets aviseringar är bara tillgängliga med Azure Defender)|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratör** och **ägare** kan skapa/ta bort regler.<br>**Säkerhets läsare** och **läsare** kan visa regler.|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -60,9 +60,7 @@ Så här skapar du en regel direkt i Azure Portal:
 
 1. Gå till sidan för säkerhetsvarningar i Security Center:
 
-    - Leta upp den avisering som du inte vill se längre och gå till menyn med tre punkter (...) för aviseringen och välj **skapa undertrycks regel**:
-
-        [![* * Skapa undertrycks regel * * alternativ](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - Välj den avisering som du inte vill se längre och välj **vidta åtgärd** i informations fönstret.
 
     - Eller Välj länken **undertrycks regler** överst på sidan och välj **Skapa ny undertrycks regel** på sidan undertrycks regler:
 
@@ -85,9 +83,9 @@ Så här skapar du en regel direkt i Azure Portal:
 1. Spara regeln. 
 
 
-## <a name="edit-a-suppression-rules"></a>Redigera en undertrycks regler
+## <a name="edit-a-suppression-rule"></a>Redigera en undertrycks regel
 
-Om du vill redigera regler som du har skapat använder du sidan undertrycks regler.
+Om du vill redigera en regel som du har skapat använder du sidan undertrycks regler.
 
 1. På sidan säkerhets aviseringar för Security Center väljer du länken **undertrycks regler** högst upp på sidan.
 1. Sidan undertrycks regler öppnas med alla regler för de valda prenumerationerna.
@@ -106,20 +104,6 @@ Om du vill ta bort en eller flera regler som du har skapat använder du sidan un
 1. Om du vill ta bort en enskild regel öppnar du menyn med tre punkter (...) för regeln och väljer **ta bort**.
 1. Markera kryss rutorna för de regler som ska tas bort och välj **ta bort** om du vill ta bort flera regler.
     ![Ta bort en eller flera undertrycks regler](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>Visa ignorerade aviseringar
-
-Aviseringar som matchar dina aktiverade undertrycks regler kommer fortfarande att genereras, men deras tillstånd ställs in **på stängs.** Du kan se statusen i Azure Portal eller så får du åtkomst till dina Security Center säkerhets aviseringar. 
-
-> [!TIP]
-> [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) skapar inte incidenter för ignorerade aviseringar. För andra Siem kan du filtrera ignorerade aviseringar med hjälp av aviserings status ("Avvisad").
-
-Använd Security Centers filter för att visa aviseringar som har avvisats av reglerna.
-
-* På sidan säkerhets aviseringar för Security Center öppnar du filter alternativen och väljer **avstängda**.  
-
-   [![Visa ignorerade aviseringar](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Skapa och hantera undertrycks regler med API: et
 

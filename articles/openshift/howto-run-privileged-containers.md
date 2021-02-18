@@ -3,16 +3,16 @@ title: Kör privilegierade behållare i ett kluster med OpenShift i Azure Red Ha
 description: Kör privilegierade behållare för att övervaka säkerhet och efterlevnad.
 author: makdaam
 ms.author: b-lejaku
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, OpenShift, aquasec, twistlock, Red Hat
-ms.openlocfilehash: 914b29410a0f30e5c3d3a893c2e278ecbb83b648
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 77e75232b7f9d23f1d07931cc7dc231174e1312d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218875"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633570"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Köra privilegierade containers i ett Azure Red Hat OpenShift-kluster
 

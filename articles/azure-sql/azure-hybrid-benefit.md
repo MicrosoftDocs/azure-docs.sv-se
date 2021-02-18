@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 11/13/2019
-ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/16/2021
+ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633826"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid-förmån-Azure SQL Database & SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -85,12 +85,12 @@ Azure Hybrid-förmån för SQL Server skiljer sig från licens mobilitet i två 
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Vilka är de speciella rättigheterna för Azure Hybrid-förmån för SQL Server?
 
-SQL Database kunder har följande rättigheter som är kopplade till Azure Hybrid-förmån för SQL Server:
+SQL Database-och SQL-hanterade instans kunder har följande rättigheter som är kopplade till Azure Hybrid-förmån för SQL Server:
 
 |Licens utrymme|Vad får Azure Hybrid-förmån för SQL Server dig?|
 |---|---|
 |SQL Server Enterprise Edition Core-kunder med SA|<li>Kan betala bas taxa för storskalig, Generell användning eller Affärskritisk SKU</li><br><li>1 kärna lokalt = 4 kärnor i storskalig SKU</li><br><li>1 kärna lokalt = 4 kärnor i Generell användning SKU</li><br><li>1 kärna lokalt = 1 kärna i Affärskritisk SKU</li>|
-|SQL Server Standard Edition Core-kunder med SA|<li>Kan betala bas taxa för storskalig och endast Generell användning SKU</li><br><li>1 kärna lokal = 1 kärna i storskalig SKU</li><br><li>1 kärna lokalt = 1 kärna i Generell användning SKU</li>|
+|SQL Server Standard Edition Core-kunder med SA|<li>Kan betala bas taxa för storskalig, Generell användning eller Affärskritisk SKU</li><br><li>1 kärna lokal = 1 kärna i storskalig SKU</li><br><li>1 kärna lokalt = 1 kärna i Generell användning SKU</li><br><li>4 kärnor lokalt = 1 kärna i Affärskritisk SKU</li>|
 |||
 
 
