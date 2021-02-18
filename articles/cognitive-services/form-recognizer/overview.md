@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95bbc33035ca99a64242274570be5c9263029aef
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584574"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094371"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
@@ -27,26 +27,27 @@ Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa a
 Formulär tolken består av anpassade dokument bearbetnings modeller, färdiga modeller för fakturor, kvitton och visitkort samt layout modellen. Du kan anropa formulär igenkännings modeller genom att använda ett REST API-eller klient biblioteks-SDK: er för att minska komplexiteten och integrera dem i arbets flödet eller programmet.
 
 Formulär tolken består av följande tjänster:
+
 * **[Layout-API](#layout-api)** – Extrahera text, markerings märken och tabeller strukturer, tillsammans med deras gränser för avgränsnings rutor från dokument.
 * **[Anpassade modeller](#custom-models)** – Extrahera text, nyckel/värde-par, markerings märken och tabell data från formulär. De här modellerna tränas med dina egna data, så de skräddarsys efter dina formulär.
 * **[Färdiga modeller](#prebuilt-models)** – extrahera data från unika formulär typer med hjälp av förinställda modeller. För närvarande finns följande färdiga modeller
-    * [Fakturor](./concept-invoices.md)
-    * [Försäljnings kvitton](./concept-receipts.md)
-    * [Visitkort](./concept-business-cards.md)
-
+  * [Fakturor](./concept-invoices.md)
+  * [Försäljnings kvitton](./concept-receipts.md)
+  * [Visitkort](./concept-business-cards.md)
 
 ## <a name="try-it-out"></a>Prova
 
 Om du vill prova formulär igenkännings tjänsten går du till verktyget online-exempel UI:
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Testa formulär tolken](https://fott.azurewebsites.net/)
-
+<!-- markdownlint-disable MD025 -->
 # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+
 > [!div class="nextstepaction"]
 > [Testa formulär tolken](https://fott-preview.azurewebsites.net/)
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Testa formulär tolken](https://fott.azurewebsites.net/)
 
 ---
 
@@ -137,12 +138,11 @@ Du använder följande API: er för att träna modeller och extrahera strukturer
 | **Analysera inleverans** | Analysera ett kvitto dokument för att extrahera viktig information och annan kvitto text.|
 | **Visitkort för analys** | Analysera ett visitkort för att extrahera viktig information och text.|
 
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+Mer information får du genom att utforska [REST API referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Om du är bekant med en tidigare version av API: n läser du artikeln [Nyheter](./whats-new.md) och lär dig mer om de senaste ändringarna.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 Mer information får du genom att utforska [REST API referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Om du är bekant med en tidigare version av API: n läser du artikeln [Nyheter](./whats-new.md) och lär dig mer om de senaste ändringarna.
-
-# <a name="v21"></a>[v2.1](#tab/v2-1)
-Mer information får du genom att utforska [REST API referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeWithCustomForm) . Om du är bekant med en tidigare version av API: n läser du artikeln [Nyheter](./whats-new.md) och lär dig mer om de senaste ändringarna.
 
 ---
 

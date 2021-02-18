@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602385"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092928"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Förbereda och anpassa en VHD-huvudavbildning
 
 Den här artikeln beskriver hur du förbereder en avbildning av en virtuell hård disk (VHD) för uppladdning till Azure, inklusive hur du skapar virtuella datorer (VM) och installerar program vara på dem. De här anvisningarna gäller för en Windows-konfiguration med en virtuell dator som kan användas med din organisations befintliga processer.
 
 >[!IMPORTANT]
->Vi rekommenderar att du använder en avbildning från Azures avbildnings Galleri. Men om du behöver använda en anpassad avbildning kontrollerar du att du inte redan har installerat WIndows Virtual Desktop-agenten på enheten. Om du använder en anpassad avbildning med Windows Virtual Desktop agent kan det uppstå problem med avbildningen.  
+>Vi rekommenderar att du använder en avbildning från Azures avbildnings Galleri. Men om du behöver använda en anpassad avbildning kontrollerar du att du inte redan har installerat Windows Virtual Desktop-agenten på den virtuella datorn. Om du använder en anpassad avbildning med Windows Virtual Desktop-agenten kan det orsaka problem med avbildningen, till exempel blockera registrering och förhindra anslutningar till användarsessionen.  
 
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
 
@@ -216,3 +216,5 @@ Nu när du har en avbildning kan du skapa eller uppdatera värdar för pooler. M
 - [Skapa en värdpool med PowerShell](create-host-pools-powershell.md)
 - [Skapa en profilcontainer för en värdpool med hjälp av en filresurs](create-host-pools-user-profile.md)
 - [Konfigurera metoden för belastningsutjämning för Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+
+Om du har påträffat ett anslutnings problem när du har för berett eller anpassat din VHD-avbildning kan du läsa mer i [fel söknings guiden](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) .

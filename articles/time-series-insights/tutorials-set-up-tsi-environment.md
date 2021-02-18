@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 56f4cb49f42936e7b9f64c2546b94c99d16bac79
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677061"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092096"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Självstudie: Konfigurera en Azure Time Series Insights Gen2-miljö
 
 Den här självstudien vägleder dig genom processen att skapa en *Azure Time Series Insights Gen2 PAYG-miljö* ().
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -38,7 +38,7 @@ Registrera dig för en [kostnads fri Azure-prenumeration](https://azure.microsof
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Du måste minst ha **deltagar** rollen för Azure-prenumerationen. Mer information finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Du måste minst ha **deltagar** rollen för Azure-prenumerationen. Mer information finns [i tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Skapa en enhetssimulering
 
@@ -91,8 +91,8 @@ I det här avsnittet beskrivs hur du skapar en Azure Time Series Insights Gen2-m
     | **Resursgrupp** | Välj en befintlig resurs grupp eller skapa en ny resurs grupp för resursen Azure Time Series Insights Gen2-miljö. En resursgrupp är en container för Azure-resurser. Ett bra tips är att använda samma resurs grupp som andra IoT-resurser som skapas av enhets simulatorn. |
     | **Plats** | Välj en data Center region för din Azure Time Series Insights Gen2-miljö. För att undvika ytterligare svars tid är det bäst att skapa din Azure Time Series Insights Gen2-miljö i samma region som din IoT-hubb som skapats av enhets simulatorn. |
     | **Nivå** |  Välj **Gen2 (L1)**. Detta är SKU: n för den Azure Time Series Insights Gen2-produkten. |
-    | **Egenskaps namn för Time Series ID** | Ange ett namn på en egenskap som innehåller värden som unikt identifierar tids serie instanserna. Det värde som du anger i rutan **egenskaps namn** som Time Series ID kan inte ändras senare. I den här självstudien anger du **_iothub-Connection-Device-ID_* _. Om du vill veta mer om Time Series ID inklusive sammansatt Time Series ID, Läs [metod tips för att välja ett Time Series-ID](./how-to-select-tsid.md). |
-    | _ *Lagrings konto namn** | Ange ett globalt unikt namn för ett nytt lagrings konto.|
+    | **Egenskaps namn för Time Series ID** | Ange ett namn på en egenskap som innehåller värden som unikt identifierar tids serie instanserna. Det värde som du anger i rutan **egenskaps namn** som Time Series ID kan inte ändras senare. I den här självstudien anger du **_iothub-Connection-Device-ID_**. Om du vill veta mer om Time Series ID inklusive sammansatt Time Series ID, Läs [metod tips för att välja ett Time Series-ID](./how-to-select-tsid.md). |
+    | **Namn på lagringskonto** | Ange ett globalt unikt namn för ett nytt lagrings konto.|
     | **Typ av lagrings konto** | Välj lagrings typ för ett nytt lagrings konto. Vi rekommenderar StorageV2|
     | **Replikering av lagrings konto** | Välj lagrings typ för ett nytt lagrings konto. Utifrån val av plats kan du välja mellan LRS, GRS och ZRS. I den här självstudien kan du välja LRS|
     | **Hierarkisk namnrymd** |Det här alternativet kan väljas när du har valt den lagrings typ som ska StorageV2. Som standard är den inaktive rad. I den här självstudien kan du lämna den i *inaktiverat* standard läge|
@@ -288,7 +288,7 @@ I det här avsnittet tillämpar du en modell för att strukturera data. För att
         | --- | --- |
         | **Hierarkier** | Välj **platshierarki** |
         | **Land** | Ange **USA** |
-        | **Fax** | Ange **Seattle** |
+        | **City** | Ange **Seattle** |
         | **Skapa** | Ange **områdes nål** |
 
     1. Välj **Spara**.
@@ -304,7 +304,7 @@ I det här avsnittet tillämpar du en modell för att strukturera data. För att
     | **Beskrivning** | Ange **instansen för hiss 2** |
     | **Hierarkier** | Välj **platshierarki** |
     | **Land** | Ange **USA** |
-    | **Fax** | Ange **Seattle** |
+    | **City** | Ange **Seattle** |
     | **Skapa** | Ange **Pacific Science Center** |
 
     **För hiss 3:**
@@ -316,7 +316,7 @@ I det här avsnittet tillämpar du en modell för att strukturera data. För att
     | **Beskrivning** | Ange **instansen för hiss 3** |
     | **Hierarkier** | Välj **platshierarki** |
     | **Land** | Ange **USA** |
-    | **Fax** | Ange **New York** |
+    | **City** | Ange **New York** |
     | **Skapa** | Ange **Empire-tillstånds byggnad** |
 
     [![Visa de uppdaterade instanserna.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)

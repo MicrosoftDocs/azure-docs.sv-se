@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099956"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094958"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -269,6 +269,7 @@ Om du inte kan hitta ditt problem i den här artikeln eller om instruktionerna i
 - Du ser inte att dina virtuella datorer visas i listan över sessions värdar
 - Du ser inte **Remote Desktop agent-inläsaren** i fönstret tjänster
 - Du ser inte **RdAgentBootLoader** -komponenten i aktivitets hanteraren
+- Du får en **anslutnings utjämning som inte kunde verifiera inställnings** fel på virtuella datorer med anpassade avbildningar
 - Det gick inte att lösa problemet med instruktionerna i den här artikeln
 
 ### <a name="step-1-uninstall-all-agent-boot-loader-and-stack-component-programs"></a>Steg 1: Avinstallera alla program för agenter, start program och stack-komponenter

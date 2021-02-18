@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 8b04119f4a9ff702356f942cec5bebed1e23926b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515945"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094308"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Hantera en webb tjänst med hjälp av webb tjänst portalen Azure Machine Learning Studio (klassisk)
 
@@ -44,7 +44,7 @@ Om användaren inte har rätt behörighet för att komma åt resurser i Azure Ma
 
 Mer information om hur du skapar en arbets yta finns i [skapa och dela en Azure Machine Learning Studio (klassisk)-arbets yta](create-workspace.md).
 
-Mer information om hur du ställer in åtkomst behörighet finns i [lägga till eller ta bort Azure-roll tilldelningar med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Mer information om hur du ställer in åtkomst behörighet finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 ## <a name="manage-new-web-services"></a>Hantera nya webb tjänster

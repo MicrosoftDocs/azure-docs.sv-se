@@ -3,12 +3,12 @@ title: Skapa Azure-instrumentpaneler program mässigt
 description: Använd en instrument panel i Azure Portal som en mall för att program mässigt skapa Azure-instrumentpaneler. Inkluderar JSON-referens.
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: e69d3f3cea0ff63f94e797047eb10b9583678b1b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745816"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095169"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Skapa Azure-instrumentpaneler program mässigt
 
@@ -46,7 +46,7 @@ När du har konfigurerat instrument panelen är nästa steg att publicera instru
 
 ![Dela en instrument panel](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Om du väljer **dela** blir du ombedd att välja vilken prenumeration och resurs grupp som ska publiceras. Du måste ha Skriv behörighet till den prenumeration och resurs grupp som du väljer. Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md).
+Om du väljer **dela** blir du ombedd att välja vilken prenumeration och resurs grupp som ska publiceras. Du måste ha Skriv behörighet till den prenumeration och resurs grupp som du väljer. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ![gör ändringar i delning och åtkomst](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

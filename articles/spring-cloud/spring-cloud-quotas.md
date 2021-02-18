@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 496f2e812a102e85fea92a535552daaaadf5f31e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 20ebeb23fe09ba4fd70a724828afadfaa3901abd
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093437"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095670"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvoter och service planer för Azure våren Cloud
 
@@ -22,13 +22,17 @@ Alla Azure-tjänster anger standard gränser och kvoter för resurser och funkti
 
 ## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Azure våren Cloud Service-nivåer och-gränser
 
-| Resurs | Basic | Standard
+| Resurs | Omfång | Basic | Standard
 ------- | ------- | -------
-Virtuell processor | 1 per tjänst instans | 4 per tjänst instans
-Minne | 2 GB per tjänst instans | 8 GB per tjänst instans
-Azure våren Cloud Service-instanser per region per prenumeration | 10 | 10
-Totalt antal App-instanser per Azure våren Cloud Service-instans | 25 | 500
-Beständiga volymer | 1 GB/app x 10-appar | 50 GB/app x 10-appar
+Virtuell processor | per app-instans | 1 | 4
+Minne | per app-instans | 2 GB | 8 GB
+Azure våren Cloud Service-instanser | per region per prenumeration | 10 | 10
+Totalt antal App-instanser | per Azure våren Cloud Service-instans | 25 | 500
+Anpassade domäner | per Azure våren Cloud Service-instans | 0 | 25 
+Beständiga volymer | per Azure våren Cloud Service-instans | 1 GB/app x 10-appar | 50 GB/app x 10-appar
+
+> [!TIP]
+> Priser som anges för totalt antal App-instanser per tjänst instans gäller för appar/distributioner i stoppat tillstånd. Ta bort appar/distributioner som inte används.
 
 ## <a name="next-steps"></a>Nästa steg
 

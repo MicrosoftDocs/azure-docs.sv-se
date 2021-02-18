@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 42536480a72e8d2160064a82eee7bac11c17746c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585513"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095366"
 ---
 # <a name="traffic-analytics"></a>Trafikanalys
 
@@ -71,33 +71,34 @@ Du kan använda Traffic Analytics för NSG: er i någon av följande regioner:
       Central US  
       Kina, östra 2  
       Kina, norra 2  
+      Asien, östra       
    :::column-end:::
    :::column span="":::
-      Asien, östra  
       East US  
       USA, östra 2  
       USA, östra 2 EUAP  
       Frankrike, centrala  
-      Japan, östra  
+      Tyskland, västra centrala Japan, öst  
       Japan, västra  
       Sydkorea, centrala  
       Sydkorea, södra  
       USA, norra centrala  
+      Europa, norra    
    :::column-end:::
    :::column span="":::
-      Europa, norra  
       Sydafrika, norra  
       USA, södra centrala  
       Indien, södra  
       Sydostasien  
       Schweiz, norra  
       Schweiz, västra  
+      Förenade Arabemiraten, norra  
       Storbritannien, södra  
-      Storbritannien, västra  
+      Storbritannien, västra   
       USGov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       USGov Virginia  
       USNat, öst  
       USNat väst  
@@ -143,14 +144,15 @@ Arbets ytan Log Analytics måste finnas i följande regioner:
       Schweiz, norra  
       Schweiz, västra  
       Förenade Arabemiraten Central  
+      Förenade Arabemiraten, norra  
       Storbritannien, södra  
-      Storbritannien, västra  
+      Storbritannien, västra   
       USGov Arizona  
       USGov Virginia  
-      USNat, öst  
-      USNat väst  
+      USNat, öst   
    :::column-end:::
    :::column span="":::
+      USNat väst   
       USSec, öst  
       USSec väst  
       USA, västra centrala  

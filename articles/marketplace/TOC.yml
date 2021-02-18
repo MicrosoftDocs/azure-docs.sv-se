@@ -299,7 +299,7 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Instrumentpanel för omdömen och recensioner
       href: partner-center-portal/ratings-reviews.md
-    - name: Avvikelse identifiering för avlästa fakturor
+    - name: Hantera avlästa fakturerings avvikelser
       href: anomaly-detection.md
     - name: Vanliga analysfrågor
       href: analytics-faq.md

@@ -2,22 +2,26 @@
 title: 'Snabb start: etikett formulär, träna en modell och analysera formulär med hjälp av verktyget exempel etikettering-formulär tolken'
 titleSuffix: Azure Cognitive Services
 description: I den här snabb starten använder du verktyget formulär igenkännings exempel etikettering för att manuellt etikettera formulär dokument. Sedan tränar du en anpassad dokument bearbetnings modell med de märkta dokumenten och använder modellen för att extrahera nyckel/värde-par.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokument bearbetning
-ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3814eb9d71f38406533d0bcecf594bbdcd42d5b7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364806"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095798"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter
 
 I den här snabb starten använder du formulär tolken REST API med verktyget för att träna en anpassad dokument bearbetnings modell med manuellt märkta data. Se avsnittet [träna med etiketter](../overview.md#train-with-labels) i översikten om du vill veta mer om övervakad inlärning med formulär igenkänning.
@@ -30,8 +34,8 @@ För att slutföra den här snabb starten måste du ha:
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+  * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
+  * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 * En uppsättning av minst sex formulär av samma typ. Du använder dessa data för att träna modellen och testa ett formulär. Du kan använda en [exempel data uppsättning](https://go.microsoft.com/fwlink/?linkid=2090451) (Hämta och extrahera *sample_data.zip*) för den här snabb starten. Ladda upp utbildnings-filerna till roten för en Blob Storage-behållare i ett Azure Storage konto med standard prestanda nivå.
 
 ## <a name="create-a-form-recognizer-resource"></a>Skapa en formulär igenkännings resurs
@@ -42,27 +46,28 @@ För att slutföra den här snabb starten måste du ha:
 
 Om du vill testa formulär tolkens exempel etikett verktyg online går du till FOTT- [webbplatsen](https://fott-preview.azurewebsites.net/).
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-> [!div class="nextstepaction"]
-> [Prova färdiga modeller](https://fott.azurewebsites.net/)
+### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 > [!div class="nextstepaction"]
 > [Prova färdiga modeller](https://fott-preview.azurewebsites.net/)
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+> [!div class="nextstepaction"]
+> [Prova färdiga modeller](https://fott.azurewebsites.net/)
+
 ---
 
-Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [formulär igenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär igenkännings tjänsten. 
-
+Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [formulär igenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär igenkännings tjänsten.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Konfigurera verktyget för samplings etiketter
 
 Du använder Docker-motorn för att köra verktyget för etikettering. Följ de här stegen för att konfigurera Docker-behållaren. En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).
 
 > [!TIP]
-> Etikett verktyget för OCR-form är också tillgängligt som ett projekt med öppen källkod på GitHub. Verktyget är ett TypeScript-webbprogram som skapats med hjälp av reagerar + Redux. Om du vill veta mer eller Contribute kan du läsa [OCR-verktyget etiketting Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) lagrings platsen. Om du vill prova verktyget online går du till [FOTT-webbplatsen](https://fott.azurewebsites.net/).   
+> Etikett verktyget för OCR-form är också tillgängligt som ett projekt med öppen källkod på GitHub. Verktyget är ett TypeScript-webbprogram som skapats med hjälp av reagerar + Redux. Om du vill veta mer eller Contribute kan du läsa [OCR-verktyget etiketting Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) lagrings platsen. Om du vill prova verktyget online går du till [FOTT-webbplatsen](https://fott.azurewebsites.net/).
 
-1. Börja med att installera Docker på en värddator. I den här guiden visas hur du använder en lokal dator som värd. Om du vill använda en Docker-värd tjänst i Azure kan du läsa mer i guiden [distribuera exempel etikett verktyg](../deploy-label-tool.md) . 
+1. Börja med att installera Docker på en värddator. I den här guiden visas hur du använder en lokal dator som värd. Om du vill använda en Docker-värd tjänst i Azure kan du läsa mer i guiden [distribuera exempel etikett verktyg](../deploy-label-tool.md) .
 
    Värddatorn måste uppfylla följande maskin varu krav:
 
@@ -70,38 +75,43 @@ Du använder Docker-motorn för att köra verktyget för etikettering. Följ de 
     |:--|:--|:--|
     |Exempel på etikett verktyg|2 kärnor, 4 GB minne|4 kärnor, 8 GB minne|
 
-   Installera Docker på datorn genom att följa lämpliga instruktioner för ditt operativ system: 
+   Installera Docker på datorn genom att följa lämpliga instruktioner för ditt operativ system:
+
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-
-
 1. Hämta exempel på etiketting Tool-behållaren med `docker pull` kommandot.
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
-    ```
-    # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-    ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
-    ```
+### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 
-    ---
+```console
+ docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
+```
 
-1. Nu är du redo att köra behållaren med `docker run` .
+### <a name="v20"></a>[v2.0](#tab/v2-0)
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
-    ```
-    # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-    ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
-    ```
+```console
+docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
+```
 
-    --- 
+---
+</br>
+  3. Nu är du redo att köra behållaren med `docker run` .
+
+### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+
+```console
+ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept
+```
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```console
+docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
+```
+
+---
 
    Det här kommandot gör verktyget för exempel etiketter tillgängligt via en webbläsare. Gå till `http://localhost:3000`.
 
@@ -116,10 +126,10 @@ Se först till att alla utbildnings dokument har samma format. Om du har formul�
 
 Aktivera CORS på ditt lagrings konto. Välj ditt lagrings konto i Azure Portal och klicka på fliken **CORS** i det vänstra fönstret. Fyll i följande värden på den nedersta raden. Klicka sedan på **Spara** högst upp.
 
-* Tillåtna ursprung = * 
+* Tillåtna ursprung = *
 * Tillåtna metoder = \[ Markera alla\]
 * Tillåtna huvuden = *
-* Exponerade rubriker = * 
+* Exponerade rubriker = *
 * Max ålder = 200
 
 > [!div class="mx-imgBorder"]
@@ -164,7 +174,7 @@ När du skapar eller öppnar ett projekt öppnas huvud tag gen redigerarens fön
 
 * Ett förhands gransknings fönster som innehåller en rullnings bar lista med formulär från käll anslutningen.
 * Huvud redigerings fönstret där du kan använda taggar.
-* Rutan kod redigerings fönster där användare kan ändra, låsa, ordna om och ta bort taggar. 
+* Rutan kod redigerings fönster där användare kan ändra, låsa, ordna om och ta bort taggar.
 
 ### <a name="identify-text-elements"></a>Identifiera text element
 
@@ -178,7 +188,29 @@ Då visas även vilka tabeller som har extraherats automatiskt. Klicka på ikone
 
 Därefter skapar du taggar (etiketter) och tillämpar dem på de text element som du vill att modellen ska analysera.
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
+### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+
+1. Använd först rutan Tags Editor för att skapa de taggar som du vill identifiera:
+   * Klicka **+** om du vill skapa en ny tagg.
+   * Ange namnet på taggen.
+   * Spara taggen genom att trycka på RETUR.
+1. Klicka i huvud redigeraren för att välja ord från de markerade text elementen. I för _hands versionen av v 2.1_ , kan du också klicka för att välja _markerings märken_ som alternativ knappar och kryss rutor som nyckel värdes par. Formulär tolken identifierar om markerings markeringen är "markerad" eller "omarkerad" som värde.
+1. Klicka på den tagg som du vill använda, eller tryck på motsvarande tangent bords nyckel. Siffer nycklarna tilldelas som kortkommandon för de första 10 taggarna. Du kan ändra ordning på taggarna med hjälp av upp-och nedpilens ikoner i rutan kod redigeraren.
+    > [!Tip]
+    > Tänk på följande när du har etiketter på formulären:
+    >
+    > * Du kan bara använda en tagg för varje markerat text element.
+    > * Varje tagg kan bara tillämpas en gång per sida. Om ett värde visas flera gånger i samma formulär skapar du olika taggar för varje instans. Till exempel: "faktura nummer 1", "faktura nummer 2" och så vidare.
+    > * Taggar kan inte sträcka sig över sidor.
+    > * Etikettera värden som de visas i formuläret. Försök inte att dela upp ett värde i två delar med två olika taggar. Ett adress fält ska till exempel märkas med en enda tagg även om det sträcker sig över flera rader.
+    > * Ta inte med nycklar i dina märkta fält &mdash; enbart värdena.
+    > * Tabell data ska identifieras automatiskt och är tillgängliga i den slutgiltiga JSON-filen för utdata. Men om modellen inte kan identifiera alla tabell data kan du tagga dessa fält manuellt. Tagga varje cell i tabellen med en annan etikett. Om dina formulär har tabeller med varierande antal rader, se till att du tagga minst ett formulär med största möjliga tabell.
+    > * Använd knapparna till höger om **+** för att söka, byta namn på, ändra ordningen och ta bort taggarna.
+    > * Om du vill ta bort en tillämpad tagg utan att ta bort själva taggen väljer du den taggade rektangeln i dokument visningen och trycker på Delete-tangenten.
+    >
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
 1. Använd först rutan Tags Editor för att skapa de taggar som du vill identifiera.
    1. Klicka **+** om du vill skapa en ny tagg.
    1. Ange namnet på taggen.
@@ -186,7 +218,8 @@ Därefter skapar du taggar (etiketter) och tillämpar dem på de text element so
 1. Klicka i huvud redigeraren för att välja ord från de markerade text elementen.
 1. Klicka på den tagg som du vill använda, eller tryck på motsvarande tangent bords nyckel. Siffer nycklarna tilldelas som kortkommandon för de första 10 taggarna. Du kan ändra ordning på taggarna med hjälp av upp-och nedpilens ikoner i rutan kod redigeraren.
     > [!Tip]
-    > Tänk på följande när du är etikett på formulären.
+    > Tänk på följande när du har etiketter på formulären:
+    >
     > * Du kan bara använda en tagg för varje markerat text element.
     > * Varje tagg kan bara tillämpas en gång per sida. Om ett värde visas flera gånger i samma formulär skapar du olika taggar för varje instans. Till exempel: "faktura nummer 1", "faktura nummer 2" och så vidare.
     > * Taggar kan inte sträcka sig över sidor.
@@ -195,31 +228,11 @@ Därefter skapar du taggar (etiketter) och tillämpar dem på de text element so
     > * Tabell data ska identifieras automatiskt och är tillgängliga i den slutgiltiga JSON-filen för utdata. Men om modellen inte kan identifiera alla tabell data kan du tagga dessa fält manuellt. Tagga varje cell i tabellen med en annan etikett. Om dina formulär har tabeller med varierande antal rader, se till att du tagga minst ett formulär med största möjliga tabell.
     > * Använd knapparna till höger om **+** för att söka, byta namn på, ändra ordningen och ta bort taggarna.
     > * Om du vill ta bort en tillämpad tagg utan att ta bort själva taggen väljer du den taggade rektangeln i dokument visningen och trycker på Delete-tangenten.
-
-
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1) 
-1. Använd först rutan Tags Editor för att skapa de taggar som du vill identifiera.
-   1. Klicka **+** om du vill skapa en ny tagg.
-   1. Ange namnet på taggen.
-   1. Spara taggen genom att trycka på RETUR.
-1. Klicka i huvud redigeraren för att välja ord från de markerade text elementen. I för _hands versionen av v 2.1_ , kan du också klicka för att välja _markerings märken_ som alternativ knappar och kryss rutor som nyckel värdes par. Formulär tolken identifierar om markerings markeringen är "markerad" eller "omarkerad" som värde.
-1. Klicka på den tagg som du vill använda, eller tryck på motsvarande tangent bords nyckel. Siffer nycklarna tilldelas som kortkommandon för de första 10 taggarna. Du kan ändra ordning på taggarna med hjälp av upp-och nedpilens ikoner i rutan kod redigeraren.
-    > [!Tip]
-    > Tänk på följande när du är etikett på formulären.
-    > * Du kan bara använda en tagg för varje markerat text element.
-    > * Varje tagg kan bara tillämpas en gång per sida. Om ett värde visas flera gånger i samma formulär skapar du olika taggar för varje instans. Till exempel: "faktura nummer 1", "faktura nummer 2" och så vidare.
-    > * Taggar kan inte sträcka sig över sidor.
-    > * Etikettera värden som de visas i formuläret. Försök inte att dela upp ett värde i två delar med två olika taggar. Ett adress fält ska till exempel märkas med en enda tagg även om det sträcker sig över flera rader.
-    > * Ta inte med nycklar i dina märkta fält &mdash; enbart värdena.
-    > * Tabell data ska identifieras automatiskt och är tillgängliga i den slutgiltiga JSON-filen för utdata. Men om modellen inte kan identifiera alla tabell data kan du tagga dessa fält manuellt. Tagga varje cell i tabellen med en annan etikett. Om dina formulär har tabeller med varierande antal rader, se till att du tagga minst ett formulär med största möjliga tabell.
-    > * Använd knapparna till höger om **+** för att söka, byta namn på, ändra ordningen och ta bort taggarna.
-    > * Om du vill ta bort en tillämpad tagg utan att ta bort själva taggen väljer du den taggade rektangeln i dokument visningen och trycker på Delete-tangenten.
-
+>
 
 ---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Huvud redigerings fönstret för exempel etikett verktyg.":::
-
 
 Följ stegen ovan för att etikettera minst fem av formulären.
 
@@ -231,35 +244,43 @@ Alternativt kan du ange den förväntade data typen för varje tagg. Öppna snab
 > ![Val av värde typ med exempel etikett verktyg](../media/whats-new/value-type.png)
 
 Följande värde typer och varianter stöds för närvarande:
+
 * `string`
-    * standard, `no-whitespaces``alphanumeric`
+  * standard, `no-whitespaces``alphanumeric`
+
 * `number`
-    * objekt `currency`
-* `date` 
-    * standard, `dmy` , `mdy` , `ymd`
+  * objekt `currency`
+
+* `date`
+  * standard, `dmy` , `mdy` , `ymd`
+
 * `time`
 * `integer`
 * `selectionMark` – _Nytt i v 2.1 – för hands version. 1!_
 
 > [!NOTE]
 > Se följande regler för datum format:
-> 
+>
 > Du måste ange ett format ( `dmy` , `mdy` , `ymd` ) för att datum formatet ska fungera.
 >
 > Följande tecken kan användas som datum avgränsare: `, - / . \` . Det går inte att använda blank steg som avgränsare. Exempel:
+>
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
 >
 > Dagen och månaden kan skrivas med en eller två siffror och året kan vara två eller fyra siffror:
+>
 > * 1-1-2020
 > * 1-01-20
 >
 > Om en datum sträng har åtta siffror är avgränsaren valfri:
+>
 > * 01012020
 > * 01 01 2020
 >
 > Månaden kan också skrivas som fullständigt eller kort namn. Om namnet används är avgränsnings tecken valfria. Det här formatet kan dock tolkas mindre precis som andra.
+>
 > * 01/jan/2020
 > * 01Jan2020
 > * 01 jan 2020
@@ -282,21 +303,22 @@ Efter att utbildningen har slutförts undersöker du det **genomsnittliga noggra
 
 ## <a name="compose-trained-models"></a>Skapa utbildade modeller
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)  
-
-Den här funktionen är för närvarande tillgänglig i v 2.1. förhandsgranskningsvyn. 
-
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1) 
+### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 
 Med Model Compose kan du ha upp till 100 modeller med ett enda modell-ID. När du anropar Analysera med detta modell-ID klassificerar Formigenkänning först formen du har skickat, matchar den mot den modell som stämmer in bäst och returnerar sedan resultat för den modellen. Detta är användbart när inkommande former kan tillhöra en av flera mallar.
 
-Om du vill skapa modeller i exempel etikett verktyget klickar du på ikonen skapa (sammanfoga pilen) till vänster. Till vänster väljer du de modeller som du vill skapa tillsammans. Modeller med ikonen pilar består redan av modeller. Klicka på knappen "skapa". I popup-fönstret namnger du din nya sammansatta modell och klickar på "skapa". När åtgärden har slutförts ska den nya, färdiga modellen visas i listan. 
+Om du vill skapa modeller i exempel etikett verktyget klickar du på ikonen skapa (sammanfoga pilen) till vänster. Till vänster väljer du de modeller som du vill skapa tillsammans. Modeller med ikonen pilar består redan av modeller.
+Klicka på knappen "skapa". I popup-fönstret namnger du din nya sammansatta modell och klickar på "skapa". När åtgärden har slutförts ska den nya, färdiga modellen visas i listan.
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Skapa UX-vy för modell.":::
 
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+Den här funktionen är för närvarande tillgänglig i v 2.1. förhandsgranskningsvyn.
+
 ---
 
-## <a name="analyze-a-form"></a>Analysera ett formulär 
+## <a name="analyze-a-form"></a>Analysera ett formulär
 
 Klicka på ikonen förutsägelse (ljus lampa) till vänster för att testa din modell. Ladda upp ett formulär dokument som du inte har använt i övnings processen. Klicka sedan på knappen **predict** till höger för att hämta nyckel/värde-förutsägelser för formuläret. Verktyget använder taggar i markerings rutor och rapporterar förtroendet för varje tagg.
 
@@ -311,13 +333,15 @@ Den rapporterade genomsnittliga noggrannheten, konfidens resultatet och faktisk 
 
 ## <a name="save-a-project-and-resume-later"></a>Spara ett projekt och återuppta senare
 
-Om du vill återuppta projektet vid en annan tidpunkt eller i en annan webbläsare måste du spara ditt projekts säkerhetstoken och ange det igen senare. 
+Om du vill återuppta projektet vid en annan tidpunkt eller i en annan webbläsare måste du spara ditt projekts säkerhetstoken och ange det igen senare.
 
 ### <a name="get-project-credentials"></a>Hämta autentiseringsuppgifter för projekt
+
 Gå till sidan projekt inställningar (skjutreglage) och Anteckna namnet på säkerhetstoken. Gå sedan till dina program inställningar (kugg hjuls ikon) som visar alla säkerhetstoken i den aktuella webb läsar instansen. Sök efter ditt projekts säkerhetstoken och kopiera dess namn och nyckel värde till en säker plats.
 
 ### <a name="restore-project-credentials"></a>Återställ autentiseringsuppgifter för projekt
-När du vill återuppta ditt projekt måste du först skapa en anslutning till samma Blob Storage-behållare. Upprepa stegen ovan för att göra detta. Gå sedan till sidan program inställningar (kugg hjuls ikon) och se om ditt projekts säkerhetstoken finns där. Om den inte är det lägger du till en ny säkerhetstoken och kopierar över ditt token-namn och nyckel från föregående steg. Klicka sedan på Spara inställningar. 
+
+När du vill återuppta ditt projekt måste du först skapa en anslutning till samma Blob Storage-behållare. Upprepa stegen ovan för att göra detta. Gå sedan till sidan program inställningar (kugg hjuls ikon) och se om ditt projekts säkerhetstoken finns där. Om den inte är det lägger du till en ny säkerhetstoken och kopierar över ditt token-namn och nyckel från föregående steg. Klicka sedan på Spara inställningar.
 
 ### <a name="resume-a-project"></a>Återuppta ett projekt
 

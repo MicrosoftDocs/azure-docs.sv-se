@@ -4,12 +4,12 @@ description: Använd Azure Resource Manager för att flytta resurser till en ny 
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319562"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093625"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
 
@@ -37,7 +37,7 @@ Några viktiga steg måste utföras innan en resurs flyttas. Du kan undvika fel 
 
 1. Om du flyttar en resurs som har en Azure-roll som tilldelats direkt till resursen (eller en underordnad resurs) flyttas inte roll tilldelningen och blir överbliven. När du har flyttat måste du återskapa roll tilldelningen. Slutligen tas den överblivna roll tilldelningen bort automatiskt, men det är en bra idé att ta bort roll tilldelningen innan du flyttar resursen.
 
-    Information om hur du hanterar roll tilldelningar finns i [lista Azure Role-tilldelningar](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) och [lägga till eller ta bort roll tilldelningar i Azure](../../role-based-access-control/role-assignments-portal.md).
+    Information om hur du hanterar roll tilldelningar finns i [lista Azure Role-tilldelningar](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) och [tilldela Azure-roller](../../role-based-access-control/role-assignments-portal.md).
 
 1. Käll-och mål prenumerationerna måste vara aktiva. Om du har problem med att aktivera ett konto som har inaktiverats [skapar du en support förfrågan för Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Välj **prenumerations hantering** för typ av problem.
 
@@ -178,11 +178,11 @@ När du visar resurs gruppen är alternativet flytta inaktiverat.
 
 Om du vill aktivera alternativet flytta väljer du de resurser som du vill flytta. Markera kryss rutan längst upp i listan om du vill välja alla resurser. Eller Välj resurser individuellt. När du har valt resurser är alternativet flytta aktiverat.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="flytt alternativet är inaktiverat":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="Välj resurser":::
 
 Välj knappen **Flytta** .
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="flytt alternativet är inaktiverat":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="flytta alternativ":::
 
 Med den här knappen kan du välja mellan tre alternativ:
 
@@ -194,11 +194,11 @@ Välj om du vill flytta resurserna till en ny resurs grupp eller till en ny pren
 
 Välj mål resurs grupp. Bekräfta att du behöver uppdatera skript för dessa resurser och välj **OK**. Om du har valt att flytta till en ny prenumeration måste du också välja mål prenumerationen.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="flytt alternativet är inaktiverat":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="Välj mål":::
 
 När du har verifierat att resurserna kan flyttas visas ett meddelande om att flytt åtgärden körs.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="flytt alternativet är inaktiverat":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="indikering":::
 
 När du är klar får du ett meddelande om resultatet.
 

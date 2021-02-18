@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: lajanuar
-ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0f5f0714235ee23624b3a199eac744155d2bbdd1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370070"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093383"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Distribuera exempeletikettverktyget
 
@@ -69,19 +69,8 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
    > ![Välj Docker](./media/quickstarts/select-docker.png)
 
 6. Nu ska vi konfigurera din Docker-behållare. Alla fält är obligatoriska om inget annat anges:
-
-    # <a name="v20"></a>[v2.0](#tab/v2-0)
-
-* Alternativ-Välj **en behållare**
-* Avbildnings källa – Välj **privat register** 
-* Server-URL – ange detta till `https://mcr.microsoft.com`
-* Användar namn (valfritt) – skapa ett användar namn. 
-* Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
-* Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-* Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
-* Start kommando – ange detta till `./run.sh eula=accept`
-
-    # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1) 
+<!-- markdownlint-disable MD025 -->
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
 
 * Alternativ-Välj **en behållare**
 * Avbildnings källa – Välj **privat register** 
@@ -92,7 +81,18 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
 * Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
 * Start kommando – ange detta till `./run.sh eula=accept`
 
-    ---
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+* Alternativ-Välj **en behållare**
+* Avbildnings källa – Välj **privat register** 
+* Server-URL – ange detta till `https://mcr.microsoft.com`
+* Användar namn (valfritt) – skapa ett användar namn. 
+* Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
+* Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
+* Start kommando – ange detta till `./run.sh eula=accept`
+
+ ---
 
    > [!div class="mx-imgBorder"]
    > ![Konfigurera Docker](./media/quickstarts/configure-docker.png)
@@ -104,7 +104,7 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
 
 > [!IMPORTANT]
 > Du kan behöva aktivera TLS för din webbapp för att kunna visa den på `https` adressen. Följ anvisningarna i [Aktivera en TLS-slutpunkt](../../container-instances/container-instances-container-group-ssl.md) för att konfigurera en sidvagn-behållare än aktiverar TLS/SSL för din webbapp.
-
+<!-- markdownlint-disable MD001 -->
 ### <a name="azure-cli"></a>Azure CLI
 
 Som ett alternativ till att använda Azure Portal kan du skapa en resurs med hjälp av Azure CLI. Innan du fortsätter måste du installera [Azure CLI](/cli/azure/install-azure-cli). Du kan hoppa över det här steget om du redan arbetar med Azure CLI. 
@@ -113,12 +113,32 @@ Det finns några saker du behöver veta om det här kommandot:
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM` genererar ett slumpmässigt DNS-namn. 
 * Det här exemplet förutsätter att du har en resurs grupp som du kan använda för att skapa en resurs. Ersätt `<resource_group_name>` med en giltig resurs grupp som är kopplad till din prenumeration. 
-* Du måste ange var du vill skapa resursen. Ersätt `<region name>` med din önskade region för webb programmet. 
+* Du måste ange var du vill skapa resursen. Ersätt `<region name>` med din önskade region för webb programmet.
 * Det här kommandot accepterar EULA automatiskt.
 
 Kör det här kommandot från Azure CLI för att skapa en Web App-resurs för verktyget för etikettering:
 
+<!-- markdownlint-disable MD024 -->
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
+
+```
+
 # <a name="v20"></a>[v2.0](#tab/v2-0)
+
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
@@ -133,24 +153,8 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-`
+``` 
 
-# [v2.1 preview](#tab/v2-1) 
-   
-```azurecli
-DNS_NAME_LABEL=aci-demo-$RANDOM
-
-az container create \
-  --resource-group <resource_group_name> \
-  --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
-  --ports 3000 \
-  --dns-name-label $DNS_NAME_LABEL \
-  --location <region name> \
-  --cpu 2 \
-  --memory 8 \
-  --command-line "./run.sh eula=accept"
-```
 
 ---
 

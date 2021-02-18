@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c8c9f1deb1b776a818269909b3feb19f00a2c356
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ba17346d5f064b57f98e7ad8745d9f80bdde5116
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954284"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092302"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Koda med en anpassad transformering – .NET
 
@@ -32,7 +32,7 @@ När du skapar anpassade för inställningar gäller följande aspekter:
 * Alla värden för höjd och bredd på AVC-innehåll måste vara en multipel av 4.
 * I Azure Media Services v3 är alla kodnings bit hastigheter i bitar per sekund. Detta skiljer sig från för inställningarna med våra v2-API: er, som använde kilobit/sekund som enhet. Om bit hastigheten i v2 exempelvis angavs som 128 (kilobit/sekund), skulle den vara inställd på 128000 (bitar/sekund) i v3.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
 [Skapa ett Media Services-konto](./create-account-howto.md)
 
@@ -46,7 +46,7 @@ Klona en GitHub-lagringsplats som innehåller det fullständiga .NET Core-exempl
  
 Det anpassade för inställnings exemplet finns i [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) -mappen.
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Skapa en transformering med en anpassad för inställning 
+## <a name="create-a-transform-with-a-custom-preset"></a>Skapa en transformering med en anpassad för inställning
 
 När du skapar en ny [transformering](/rest/api/media/transforms)måste du ange vad du vill att den ska producera som utdata. Den obligatoriska parametern är objektet [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) som visas i koden nedan. Varje **TransformOutput** innehåller en **Förinställning**. För **inställningen** beskrivs de stegvisa instruktionerna för video-och/eller ljud bearbetnings åtgärder som ska användas för att generera önskad **TransformOutput**. Följande **TransformOutput** skapar anpassade inställningar för codec-och lager-utdata.
 

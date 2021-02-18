@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: bd0abadb624bced7f603fcbd112f7c422e88fc0c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
-ms.translationtype: HT
+ms.openlocfilehash: d78621697d53f429624dc22a8e91ba4367dcfd18
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371855"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093973"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Felsöka vyer för företagskostnader
 
@@ -41,7 +41,7 @@ Om du får felmeddelandet **Den här tillgången är inte tillgänglig** när du
 
 ![Skärmbild som visar meddelandet ”Tillgången är inte tillgänglig”.](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-Be administratören för din Azure-prenumeration eller hanteringsgrupp om att få åtkomst. Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+Be administratören för din Azure-prenumeration eller hanteringsgrupp om att få åtkomst. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nästa steg
 - Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https://go.microsoft.com/fwlink/?linkid=2083458).

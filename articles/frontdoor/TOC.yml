@@ -36,6 +36,8 @@
       href: front-door-quickstart-template-samples.md
 - name: Begrepp
   items:
+    - name: Standard-/Premium-SKU
+      href: standard-premium/overview.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje

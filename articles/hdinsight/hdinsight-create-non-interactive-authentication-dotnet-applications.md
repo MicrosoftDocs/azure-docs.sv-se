@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0fffe763f77fffcec6010d43deb92ffea9ece15d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946086"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094914"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Skapa ett .NET HDInsight-program med icke-interaktiv autentisering
 
@@ -28,7 +28,7 @@ An-HDInsight kluster. Se [komma igång-kursen](hadoop/apache-hadoop-linux-tutori
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Tilldela en roll till Azure AD-programmet
 
-Tilldela Azure AD-programmet en [roll](../role-based-access-control/built-in-roles.md)för att ge IT-behörighet att utföra åtgärder. Du kan ange omfång på nivån för prenumerationen, resurs gruppen eller resursen. Behörigheterna ärvs till lägre omfattnings nivåer. Om du till exempel lägger till ett program till rollen läsare för en resurs grupp innebär det att programmet kan läsa resurs gruppen och alla resurser i den. I den här artikeln anger du omfånget på resurs grupps nivå. Mer information finns i [använda roll tilldelningar för att hantera åtkomst till dina Azure-prenumerations resurser](../role-based-access-control/role-assignments-portal.md).
+Tilldela Azure AD-programmet en [roll](../role-based-access-control/built-in-roles.md)för att ge IT-behörighet att utföra åtgärder. Du kan ange omfång på nivån för prenumerationen, resurs gruppen eller resursen. Behörigheterna ärvs till lägre omfattnings nivåer. Om du till exempel lägger till ett program till rollen läsare för en resurs grupp innebär det att programmet kan läsa resurs gruppen och alla resurser i den. I den här artikeln anger du omfånget på resurs grupps nivå. Mer information finns i [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../role-based-access-control/role-assignments-portal.md).
 
 **Lägga till ägar rollen i Azure AD-programmet**
 

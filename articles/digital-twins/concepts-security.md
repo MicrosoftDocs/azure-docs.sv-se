@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547170"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094563"
 ---
 # <a name="secure-azure-digital-twins"></a>Skydda digitala Azure-dubbla
 
@@ -55,7 +55,7 @@ Azure tillhandahåller **två inbyggda Azure-roller** för att auktorisera åtko
 | Azure Digitals sammanflätade data läsare | Ger skrivskyddad åtkomst till Azure Digitals dubbla resurser | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 Du kan tilldela roller på två sätt:
-* via fönstret åtkomst kontroll (IAM) för Azure Digitals dubbla i Azure Portal (se [*lägga till eller ta bort Azure roll tilldelningar med hjälp av Azure Portal*](../role-based-access-control/role-assignments-portal.md))
+* via fönstret åtkomst kontroll (IAM) för Azure Digitals dubbla i Azure Portal (se [*tilldela Azure-roller med hjälp av Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * via CLI-kommandon för att lägga till eller ta bort en roll
 
 Mer detaljerad information om hur du gör detta finns i självstudien om Azure Digitals dubbla steg [*: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md).

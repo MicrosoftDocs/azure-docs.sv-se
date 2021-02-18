@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684080"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092722"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Så här skyddar du ett enda sid program med icke-interaktiv inloggning
 
@@ -111,7 +111,7 @@ Du ger åtkomst till Azure-rollbaserad *åtkomst kontroll (Azure RBAC)* genom at
 
 2. På fliken **roll tilldelningar** under **roll** väljer du en inbyggd Azure Maps roll definition som **Azure Maps data läsare** eller **Azure Maps data deltagare**. Under **tilldela åtkomst till** väljer du **Funktionsapp**. Välj huvudobjektet efter namn. Välj sedan **Spara**.
 
-   * Se information om [Lägg till eller ta bort roll tilldelningar](../role-based-access-control/role-assignments-portal.md).
+   * Se information om att [tilldela Azure-roller](../role-based-access-control/role-assignments-portal.md).
 
 > [!WARNING]
 > Azure Maps inbyggda roll definitioner ger en mycket stor behörighet till många Azure Maps REST-API: er. För att begränsa API-åtkomsten till ett minimum, se [skapa en anpassad roll definition och tilldela den systemtilldelade identiteten](../role-based-access-control/custom-roles.md) till den anpassade roll definitionen. Detta gör att den minsta behörighet som krävs för att programmet ska kunna få åtkomst till Azure Maps.

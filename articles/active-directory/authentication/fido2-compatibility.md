@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e324ae0fc80bb5990f9cf15901080684086a549
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a8ed99338a10eb226823c4bd4857d812038ff632
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652249"
+ms.locfileid: "101094504"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>Webb läsar stöd för FIDO2-lösenordsbaserad autentisering
 
@@ -32,6 +32,17 @@ I den här tabellen visas stöd för att autentisera Azure Active Directory (Azu
 | **Windows**  | ![Chrome stöder USB på Windows för AAD-konton.][y] | ![Chrome stöder NFC på Windows för AAD-konton.][y] | ![Chrome stöder tabell i Windows för AAD-konton.][y] | ![Edge stöder USB på Windows för AAD-konton.][y] | ![Edge stöder NFC på Windows för AAD-konton.][y] | ![Edge stöder Bell på Windows för AAD-konton.][y] | ![Firefox stöder USB på Windows för AAD-konton.][y] | ![Firefox stöder NFC på Windows för AAD-konton.][y] | ![Firefox stöder Bell på Windows för AAD-konton.][y] |
 | **macOS**  | ![Chrome har stöd för USB på macOS för AAD-konton.][y] | ![Chrome stöder inte NFC på macOS för AAD-konton.][n] | ![Chrome stöder inte Bell på macOS för AAD-konton.][n] | ![Edge har stöd för USB på macOS för AAD-konton.][y] | ![Edge stöder inte NFC på macOS för AAD-konton.][n] | ![Edge stöder inte Bell på macOS för AAD-konton.][n] | ![Firefox stöder inte USB på macOS för AAD-konton.][n] | ![Firefox stöder inte NFC på macOS för AAD-konton.][n] | ![Firefox har inte stöd för Bell på macOS för AAD-konton.][n] |
 | **Linux**  | ![Chrome stöder USB på Linux för AAD-konton.][y] | ![Chrome stöder inte NFC på Linux för AAD-konton.][n] | ![Chrome stöder inte Bell på Linux för AAD-konton.][n] | ![Edge stöder inte USB på Linux för AAD-konton.][n] | ![Edge stöder inte NFC på Linux för AAD-konton.][n] | ![Edge stöder inte Bell på Linux för AAD-konton.][n] | ![Firefox stöder inte USB på Linux för AAD-konton.][n] | ![Firefox stöder inte NFC på Linux för AAD-konton.][n] | ![Firefox har inte stöd för Bell på Linux för AAD-konton.][n] |
+
+## <a name="unsupported-browsers"></a>Webbläsare som inte stöds
+
+Följande kombinationer av operativ system och webbläsare stöds inte, men framtida support och testning unders öks. Om du vill se ytterligare stöd för operativ system och webbläsare lämnar du feedback med verktyget produkt feedback längst ned på sidan.
+
+| Operativsystem | Webbläsare |
+| ---- | ---- |
+| iOS | Safari, Brave |
+| macOS | Safari |
+| Android | Chrome |
+| Chrome | Chrome |
 
 ## <a name="operating-system-versions-tested"></a>Testade operativ Systems versioner
 

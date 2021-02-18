@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696021"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095211"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurera en Node.js app för Azure App Service
 
@@ -342,6 +342,19 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>Övervaka med Application Insights
+
+Med Application Insights kan du övervaka programmets prestanda, undantag och användning utan att göra några kod ändringar. Om du vill koppla App Insights-agenten går du till webbappen i portalen och väljer **Application Insights** under **Inställningar** och väljer sedan **Aktivera Application Insights**. Välj sedan en befintlig App Insights-resurs eller skapa en ny. Välj slutligen **Använd** längst ned. Om du vill instrumentera din webbapp med hjälp av PowerShell kan du läsa [följande instruktioner](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)
+
+Den här agenten övervakar Node.js programmet på Server sidan. Om du vill övervaka Java Script på klient sidan [lägger du till Java Script SDK i projektet](../azure-monitor/app/javascript.md). 
+
+Mer information finns i [versions anteckningar för Application Insights Extension](../azure-monitor/app/web-app-extension-release-notes.md).
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>Felsökning
 
 Prova följande när en fungerande Node.js-app fungerar annorlunda i App Service eller innehåller fel:
@@ -370,4 +383,3 @@ Prova följande när en fungerande Node.js-app fungerar annorlunda i App Service
 > [Vanliga frågor och svar om App Service på Linux](faq-app-service-linux.md)
 
 ::: zone-end
-

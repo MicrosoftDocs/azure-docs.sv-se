@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 5ab57bcccb6f681f5c9282ef461181952ed5a679
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653082"
+ms.locfileid: "101092408"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Tjänst för att identifiera avvikelser vid förbrukningsbaserad fakturering
 
@@ -50,7 +50,7 @@ Modellen fungerar genom att skapa retroaktiva konfidens intervall. Tids serie pr
 
 ## <a name="anomaly-detection-notification"></a>Meddelande om avvikelse identifiering
 
-Du kan utvärdera, hantera och bekräfta avvikelser i Partner Center. Mer information finns i [avvikelse identifiering för avgiftsbelagd fakturering](../anomaly-detection.md).
+Du kan utvärdera, hantera och bekräfta avvikelser i Partner Center. Mer information finns i [Hantera avlästa fakturerings avvikelser i Partner Center](../anomaly-detection.md).
 
 För att säkerställa att dina kunder inte överbelastas för mätnings användning bör du undersöka om identifierade avvikelser är verkliga problem. I så fall kan du godkänna felaktig användning i Partner Center.
 
@@ -83,4 +83,4 @@ Fler support alternativ för utgivare finns i [Support för programmet för komm
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [API för avläsning av marknads](marketplace-metering-service-apis.md)plats.
-- [Avvikelse identifiering för avlästa fakturor](../anomaly-detection.md)
+- [Hantera avgiftsbelagda fakturerings avvikelser i Partner Center](../anomaly-detection.md)

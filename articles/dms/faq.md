@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134157"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091446"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Vanliga frågor om att använda Azure Database Migration Service
 
@@ -62,7 +62,7 @@ Det krävs flera krav för att säkerställa att Azure Database Migration Servic
 Azure Database Migration Service förutsättningar som är gemensamma för alla typer av migrering som stöds omfattar behovet av att:
 
 * Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager distributions modell, som tillhandahåller plats-till-plats-anslutning till dina lokala käll servrar genom att använda antingen [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-* Se till att de virtuella nätverkets säkerhets grupp regler inte blockerar följande kommunikations portar 443, 53, 5671-5672, 9350-9354, 445, 12000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Se till att de virtuella nätverkets säkerhets grupp regler inte blockerar port 443 för ServiceTags av Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.
 
 En lista över alla krav som krävs för att konkurrera särskilda migrerings scenarier med hjälp av Azure Database Migration Service finns i de relaterade självstudierna i Azure Database Migration Service- [dokumentationen](./dms-overview.md) på docs.Microsoft.com.

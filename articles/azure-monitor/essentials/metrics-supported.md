@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/06/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 51cd3bf3349e1880d4dc9f5d98d2d9b5dc5bb228
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f9ec395e8ccf6d5162717b2e38b0650ccc84812
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623261"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091789"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Mått som stöds med Azure Monitor
 
@@ -154,21 +154,21 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Description|Dimensioner|
 |---|---|---|---|---|---|---|
-|Antal aktiva timers|Yes|System. Runtime|Antal aktiva timers|Antal|Genomsnitt|Antal aktiva timers|Distribution, AppName, Pod|
-|tilldelnings pris|Yes|System. Runtime|tilldelnings pris|Byte|Genomsnitt|Antal byte som allokerats i den hanterade heapen|Distribution, AppName, Pod|
+|Antal aktiva timers|Yes|Antal aktiva timers|Antal|Genomsnitt|Antal aktiva timers|Distribution, AppName, Pod|
+|tilldelnings pris|Yes|tilldelnings pris|Byte|Genomsnitt|Antal byte som allokerats i den hanterade heapen|Distribution, AppName, Pod|
 |AppCpuUsage|Yes|CPU-användning för app (för hands version)|Procent|Genomsnitt|Den senaste CPU-användningen för appen|Distribution, AppName, Pod|
-|antal sammansättningar|Yes|System. Runtime|antal sammansättningar|Antal|Genomsnitt|Antal inlästa sammansättningar|Distribution, AppName, Pod|
-|CPU-användning|Yes|System. Runtime|CPU-användning|Procent|Genomsnitt|% tid som processen har använt processorn|Distribution, AppName, Pod|
-|aktuella begär Anden|Yes|Microsoft. AspNetCore. hosting|aktuella begär Anden|Antal|Genomsnitt|Totalt antal bearbetnings begär Anden under processens livs längd|Distribution, AppName, Pod|
-|undantag – antal|Yes|System. Runtime|undantag – antal|Antal|Totalt|Antal undantag|Distribution, AppName, Pod|
-|misslyckade-begär Anden|Yes|Microsoft. AspNetCore. hosting|misslyckade-begär Anden|Antal|Genomsnitt|Totalt antal misslyckade begär Anden under processens livs längd|Distribution, AppName, Pod|
-|GC – Heap-storlek|Yes|System. Runtime|GC – Heap-storlek|Antal|Genomsnitt|Total Heap-storlek som rapporteras av GC (MB)|Distribution, AppName, Pod|
-|gen-0-GC-Count|Yes|System. Runtime|gen-0-GC-Count|Antal|Genomsnitt|Antal GC generationer för generation 0|Distribution, AppName, Pod|
-|gen-0-storlek|Yes|System. Runtime|gen-0-storlek|Byte|Genomsnitt|Heap-storlek för generation 0|Distribution, AppName, Pod|
-|gen-1-GC-antal|Yes|System. Runtime|gen-1-GC-antal|Antal|Genomsnitt|System. Runtime|Antal GC generationer för gen 1|Distribution, AppName, Pod|
-|gen-1-storlek|Yes|System. Runtime|gen-1-storlek|Byte|Genomsnitt|Heap-storlek för generation 1|Distribution, AppName, Pod|
-|gen-2-GC – antal|Yes|System. Runtime|gen-2-GC – antal|Antal|Genomsnitt|Antal GC generationer för generation 2|Distribution, AppName, Pod|
-|gen-2-storlek|Yes|System. Runtime|gen-2-storlek|Byte|Genomsnitt|Heap-storlek för generation 2|Distribution, AppName, Pod|
+|antal sammansättningar|Yes|antal sammansättningar|Antal|Genomsnitt|Antal inlästa sammansättningar|Distribution, AppName, Pod|
+|CPU-användning|Yes|CPU-användning|Procent|Genomsnitt|% tid som processen har använt processorn|Distribution, AppName, Pod|
+|aktuella begär Anden|Yes|aktuella begär Anden|Antal|Genomsnitt|Totalt antal bearbetnings begär Anden under processens livs längd|Distribution, AppName, Pod|
+|undantag – antal|Yes|undantag – antal|Antal|Totalt|Antal undantag|Distribution, AppName, Pod|
+|misslyckade-begär Anden|Yes|misslyckade-begär Anden|Antal|Genomsnitt|Totalt antal misslyckade begär Anden under processens livs längd|Distribution, AppName, Pod|
+|GC – Heap-storlek|Yes|GC – Heap-storlek|Antal|Genomsnitt|Total Heap-storlek som rapporteras av GC (MB)|Distribution, AppName, Pod|
+|gen-0-GC-Count|Yes|gen-0-GC-Count|Antal|Genomsnitt|Antal GC generationer för generation 0|Distribution, AppName, Pod|
+|gen-0-storlek|Yes|gen-0-storlek|Byte|Genomsnitt|Heap-storlek för generation 0|Distribution, AppName, Pod|
+|gen-1-GC-antal|Yes|gen-1-GC-antal|Antal|Genomsnitt|Antal GC generationer för gen 1|Distribution, AppName, Pod|
+|gen-1-storlek|Yes|gen-1-storlek|Byte|Genomsnitt|Heap-storlek för generation 1|Distribution, AppName, Pod|
+|gen-2-GC – antal|Yes|gen-2-GC – antal|Antal|Genomsnitt|Antal GC generationer för generation 2|Distribution, AppName, Pod|
+|gen-2-storlek|Yes|gen-2-storlek|Byte|Genomsnitt|Heap-storlek för generation 2|Distribution, AppName, Pod|
 |JVM. gc. live. data. size|Yes|JVM. gc. live. data. size|Byte|Genomsnitt|Storlek på den gamla generationens lagringspool efter en fullständig GC|Distribution, AppName, Pod|
 |JVM. gc. max. data storlek|Yes|JVM. gc. max. data storlek|Byte|Genomsnitt|Max storlek på den gamla generationens minnesbuffert|Distribution, AppName, Pod|
 |JVM. gc. Memory. allokerat|Yes|JVM. gc. Memory. allokerat|Byte|Maximal|Ökas för en ökning av storleken på den unga generationens minnesbuffert efter en GC till före nästa|Distribution, AppName, Pod|
@@ -178,15 +178,15 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |JVM. Memory. dedikerat|Yes|JVM. Memory. dedikerat|Byte|Genomsnitt|Minne som tilldelats JVM i byte|Distribution, AppName, Pod|
 |JVM. Memory. Max|Yes|JVM. Memory. Max|Byte|Maximal|Maximal mängd minne i byte som kan användas för minnes hantering|Distribution, AppName, Pod|
 |JVM. Memory. används|Yes|JVM. Memory. används|Byte|Genomsnitt|App-minne som används i byte|Distribution, AppName, Pod|
-|Loh-storlek|Yes|System. Runtime|Loh-storlek|Byte|Genomsnitt|LOH Heap-storlek|Distribution, AppName, Pod|
-|övervaka-låser-Contents-Count|Yes|System. Runtime|övervaka-låser-Contents-Count|Antal|Genomsnitt|Antal gånger som det uppstod en konkurrens vid försök att ta övervaknings låset|Distribution, AppName, Pod|
+|Loh-storlek|Yes|Loh-storlek|Byte|Genomsnitt|LOH Heap-storlek|Distribution, AppName, Pod|
+|övervaka-låser-Contents-Count|Yes|övervaka-låser-Contents-Count|Antal|Genomsnitt|Antal gånger som det uppstod en konkurrens vid försök att ta övervaknings låset|Distribution, AppName, Pod|
 |process. CPU. Usage|Yes|process. CPU. Usage|Procent|Genomsnitt|Den senaste processor användningen för JVM-processen|Distribution, AppName, Pod|
-|begär Anden per sekund|Yes|Microsoft. AspNetCore. hosting|begär Anden-pris|Antal|Genomsnitt|Begär ande frekvens|Distribution, AppName, Pod|
+|begär Anden per sekund|Yes|begär Anden-pris|Antal|Genomsnitt|Begär ande frekvens|Distribution, AppName, Pod|
 |system. CPU. Usage|Yes|system. CPU. Usage|Procent|Genomsnitt|Senaste CPU-användning för hela systemet|Distribution, AppName, Pod|
-|trådpool-slutfört-objekt-antal|Yes|System. Runtime|trådpool-slutfört-objekt-antal|Antal|Genomsnitt|Antal slutförda arbets uppgifter i trådpool|Distribution, AppName, Pod|
-|trådpool-Kölängd|Yes|System. Runtime|trådpool-Kölängd|Antal|Genomsnitt|Kölängd för arbets objekt i trådpool|Distribution, AppName, Pod|
-|trådpool-tråd antal|Yes|System. Runtime|trådpool-tråd antal|Antal|Genomsnitt|Antal trådar i trådpool|Distribution, AppName, Pod|
-|tid-i-GC|Yes|System. Runtime|tid-i-GC|Procent|Genomsnitt|% Time i GC sedan den senaste GC|Distribution, AppName, Pod|
+|trådpool-slutfört-objekt-antal|Yes|trådpool-slutfört-objekt-antal|Antal|Genomsnitt|Antal slutförda arbets uppgifter i trådpool|Distribution, AppName, Pod|
+|trådpool-Kölängd|Yes|trådpool-Kölängd|Antal|Genomsnitt|Kölängd för arbets objekt i trådpool|Distribution, AppName, Pod|
+|trådpool-tråd antal|Yes|trådpool-tråd antal|Antal|Genomsnitt|Antal trådar i trådpool|Distribution, AppName, Pod|
+|tid-i-GC|Yes|tid-i-GC|Procent|Genomsnitt|% Time i GC sedan den senaste GC|Distribution, AppName, Pod|
 |tomcat. global. error|Yes|tomcat. global. error|Antal|Totalt|Tomcat globalt fel|Distribution, AppName, Pod|
 |tomcat. global. mottagen|Yes|tomcat. global. mottagen|Byte|Totalt|Totalt antal mottagna byte i Tomcat|Distribution, AppName, Pod|
 |tomcat. global. Request. Gmsn. Time|Yes|tomcat. global. Request. Gmsn. Time|Millisekunder|Genomsnitt|Genomsnittlig tid för Tomcat-begäran|Distribution, AppName, Pod|
@@ -202,8 +202,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |tomcat. sessions. avvisad|Yes|tomcat. sessions. avvisad|Antal|Totalt|Antal nekade Tomcat-sessioner|Distribution, AppName, Pod|
 |tomcat.threads.config. Max|Yes|tomcat.threads.config. Max|Antal|Totalt|Antal trådar för Tomcat-konfiguration|Distribution, AppName, Pod|
 |tomcat. threads. Current|Yes|tomcat. threads. Current|Antal|Totalt|Antal Tomcat aktuella trådar|Distribution, AppName, Pod|
-|Totalt-begär Anden|Yes|Microsoft. AspNetCore. hosting|Totalt-begär Anden|Antal|Genomsnitt|Totalt antal begär Anden under processens livs längd|Distribution, AppName, Pod|
-|arbets uppsättning|Yes|System. Runtime|arbets uppsättning|Antal|Genomsnitt|Mängden arbets minne som används av processen (MB)|Distribution, AppName, Pod|
+|Totalt-begär Anden|Yes|Totalt-begär Anden|Antal|Genomsnitt|Totalt antal begär Anden under processens livs längd|Distribution, AppName, Pod|
+|arbets uppsättning|Yes|arbets uppsättning|Antal|Genomsnitt|Mängden arbets minne som används av processen (MB)|Distribution, AppName, Pod|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts

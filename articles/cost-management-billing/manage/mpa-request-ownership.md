@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: HT
+ms.openlocfilehash: 0c5ecb61b5b34864aa89c1f0e760e96c383a269f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203270"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091476"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Få faktureringsägarskap för Azure-prenumerationer till ditt MPA-konto
 
@@ -21,7 +21,7 @@ En molnlösningsleverantör (CSP) kan ta över faktureringsägarskapet för Azur
 
 Den här funktionen är bara tillgänglig för CSP-direktfaktureringspartner certifierade som [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Den omfattas av Microsofts reglering och policyer och kan behöva godkännas för vissa kunder.
 
-Om du vill begära faktureringsägarskap måste du ha rollen som **global administratör** eller **administratörsrepresentant** . Läs mer i [Partner Center – Tilldela användarroller och behörigheter](/partner-center/permissions-overview).
+Om du vill begära faktureringsägarskap måste du ha rollen som **global administratör** eller **administratörsrepresentant**. Läs mer i [Partner Center – Tilldela användarroller och behörigheter](/partner-center/permissions-overview).
 
 Den här artikeln gäller faktureringskonton för Microsoft-partneravtal. Dessa konton skapas för att molnlösningsleverantörer (CSP:er) ska kunna hantera faktureringen för sina kunder i den nya e-handelsmiljön. Den nya miljön är bara tillgänglig för partner som har minst en kund som har accepterat ett Microsoft-kundavtal (MCA) och har ett Azure-prenumerationsavtal. [Kontrollera om du har åtkomst till ett Microsoft-partneravtal](#check-access-to-a-microsoft-partner-agreement).
 
@@ -34,18 +34,18 @@ Den här artikeln gäller faktureringskonton för Microsoft-partneravtal. Dessa 
 ## <a name="request-billing-ownership"></a>Begära faktureringsägarskap
 
 1. Logga in i [Azure-portalen](https://portal.azure.com) med CSP-administratörsrepresentantens inloggningsinformation i CSP-klientorganisationen.
-1. Sök efter **Kostnadshantering + fakturering** .  
+1. Sök efter **Kostnadshantering + fakturering**.  
     ![Skärmbild som visar en sökning i Azure-portalen efter kostnadshantering + fakturering för att begära faktureringsägarskap.](./media/mpa-request-ownership/search-cmb.png)
 1. Välj **Kunder** till vänster och sedan en kund i listan.  
     [![Skärmbild som visar val av kunder](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
-1. Välj **Överföringsbegäranden** nere till vänster och välj sedan **Lägg till en ny begäran** .  
+1. Välj **Överföringsbegäranden** nere till vänster och välj sedan **Lägg till en ny begäran**.  
     [![Skärmbild som visar val av överföringsbegäranden](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
-1. Ange e-postadressen till användaren i kundorganisationen som ska godkänna överföringsbegäran. Användaren måste vara kontoägare för ett Enterprise-avtal. Välj **Skicka överföringsbegäran** .  
+1. Ange e-postadressen till användaren i kundorganisationen som ska godkänna överföringsbegäran. Användaren måste vara kontoägare för ett Enterprise-avtal. Välj **Skicka överföringsbegäran**.  
     [![Skärmbild som visar sändning av en överföringsbegäran](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
 1. Användaren får ett e-postmeddelande med instruktioner för att granska din överföringsförfrågan.  
     ![Skärmbild som visar granskning av e-postmeddelande med överföringsbegäran](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
 1. För att godkänna överföringsbegäran väljer användaren länken i e-postmeddelandet och följer anvisningarna.  
-    [![Skärmbild som visar granskning av e-postmeddelande med överföringsbegäran](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Användaren kan välja det faktureringskonto de vill överföra Azure-produkter från. När det har valts visas valbara produkter som kan överföras. **Obs!** Inaktiverade prenumerationer kan inte överföras och visas i listan ”Ej överföringsbara Azure-produkter” om tillämpligt. När du har markerat de Azure-produkter som ska överföras väljer du **Validera** .
+    [![Skärmbild som visar granskning av e-postmeddelande med överföringsbegäran](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) Användaren kan välja det faktureringskonto de vill överföra Azure-produkter från. När det har valts visas valbara produkter som kan överföras. **Obs!** Inaktiverade prenumerationer kan inte överföras och visas i listan ”Ej överföringsbara Azure-produkter” om tillämpligt. När du har valt de Azure-produkter som ska överföras väljer du **Validera**.
 1. Området **Resultat av överföringvalidering** visar effekten på de Azure-produkter som ska överföras. Följande tillstånd är möjliga:
     * **Godkändes** – Valideringen för den här Azure-produkten har godkänts och kan överföras.
     * **Varning** – Det finns en varning för den markerade Azure-produkten. Produkten kan fortfarande överföras, men om det görs kan det ha en effekt som användaren behöver vara medveten om ifall användaren vill vidta åtgärder mot det. Till exempel kan Azure-prenumerationen som överförs dra fördel av en reserverad instans. Efter överföringen får prenumerationen inte längre den fördelen. Om du vill maximera besparingarna ser du till att den reserverade instansen associeras med en annan prenumeration som kan dra nytta av dess fördelar. Användaren kan också välja att gå tillbaka till sidan med prenumerationsval och avmarkera den här Azure-prenumerationen.
@@ -55,7 +55,7 @@ Den här artikeln gäller faktureringskonton för Microsoft-partneravtal. Dessa 
 ## <a name="check-the-transfer-request-status"></a>Kontrollera statusen för överföringsbegäran
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Sök efter **Kostnadshantering + fakturering** .  
+1. Sök efter **Kostnadshantering + fakturering**.  
     ![Skärmbild som visar en sökning i Azure-portalen efter kostnadshantering + fakturering för att begära överföringsstatus.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Välj **Kunder** till vänster.  
     [![Skärmbild som visar val av kunder](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
@@ -174,4 +174,4 @@ Om du behöver hjälp kan du [kontakta supporten](https://portal.azure.com/?#bla
 ## <a name="next-steps"></a>Nästa steg
 
 * Faktureringsägarskapet för Azure-prenumerationerna överförs till dig. Håll koll på avgifterna för dessa prenumerationer i [Azure-portalen](https://portal.azure.com).
-* Samarbeta med kunden om att få åtkomst till de överförda Azure-prenumerationerna. [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+* Samarbeta med kunden om att få åtkomst till de överförda Azure-prenumerationerna. [Tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).

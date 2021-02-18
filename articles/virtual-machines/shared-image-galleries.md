@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730330"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091891"
 ---
 # <a name="shared-image-galleries-overview"></a>Översikt över delade avbildnings gallerier
 
@@ -24,7 +24,7 @@ Shared Image Gallery är en tjänst som hjälper dig att skapa struktur och orga
 - Versions hantering och gruppering av avbildningar för enklare hantering.
 - Bilder med hög tillgänglighet med ZRS-konton (Zone redundant Storage) i regioner som stöder Tillgänglighetszoner. ZRS erbjuder bättre återhämtning mot zonindelade-problem.
 - Stöd för Premium Storage (Premium_LRS).
-- Dela över prenumerationer och till och med mellan Active Directory (AD)-klienter med RBAC.
+- Dela över prenumerationer och till och med mellan Active Directory (AD)-klienter med hjälp av Azure RBAC.
 - Skala dina distributioner med avbildnings repliker i varje region.
 
 Med hjälp av ett delat bild galleri kan du dela dina avbildningar till olika användare, tjänst huvud namn eller AD-grupper i din organisation. Delade avbildningar kan replikeras till flera regioner, för snabbare skalning av dina distributioner.
@@ -146,14 +146,14 @@ De regioner som en delad avbildnings version replikeras till kan uppdateras efte
 
 ## <a name="access"></a>Access
 
-När galleriet för delad avbildning, bild definition och avbildnings version är alla resurser kan de delas med de inbyggda inbyggda Azure RBAC-kontrollerna. Med RBAC kan du dela dessa resurser till andra användare, tjänstens huvud namn och grupper. Du kan även dela åtkomst till personer utanför den klient organisation de skapades i. När en användare har åtkomst till den delade avbildnings versionen kan de distribuera en virtuell dator eller en skalnings uppsättning för virtuella datorer.  Här är en delnings mat ris som hjälper dig att förstå vad användaren får åtkomst till:
+När galleriet för delad avbildning, bild definition och avbildnings version är alla resurser kan de delas med de inbyggda inbyggda Azure RBAC-kontrollerna. Med hjälp av Azure RBAC kan du dela dessa resurser till andra användare, tjänstens huvud namn och grupper. Du kan även dela åtkomst till personer utanför den klient organisation de skapades i. När en användare har åtkomst till den delade avbildnings versionen kan de distribuera en virtuell dator eller en skalnings uppsättning för virtuella datorer.  Här är en delnings mat ris som hjälper dig att förstå vad användaren får åtkomst till:
 
 | Delat med användare     | Delat bildgalleri | Bilddefinition | Avbildningsversion |
 |----------------------|----------------------|--------------|----------------------|
 | Delat bildgalleri | Ja                  | Ja          | Ja                  |
 | Bilddefinition     | Nej                   | Ja          | Ja                  |
 
-Vi rekommenderar att du delar på Galleri nivå för bästa möjliga upplevelse. Vi rekommenderar inte att du delar enskilda avbildnings versioner. Mer information om RBAC finns i [Hantera åtkomst till Azure-resurser med RBAC](../role-based-access-control/role-assignments-portal.md).
+Vi rekommenderar att du delar på Galleri nivå för bästa möjliga upplevelse. Vi rekommenderar inte att du delar enskilda avbildnings versioner. Mer information om Azure RBAC finns i [tilldela Azure-roller](../role-based-access-control/role-assignments-portal.md).
 
 Avbildningar kan också delas, i stor skala, även mellan klienter som använder en app-registrering för flera innehavare. Mer information om hur du delar avbildningar över klienter finns i "dela Galleri VM-avbildningar i Azure-klienter" med hjälp av [Azure CLI](./linux/share-images-across-tenants.md) eller [PowerShell](./windows/share-images-across-tenants.md).
 
@@ -170,12 +170,12 @@ Anta till exempel att du har en avbildning av en 127 GB OS-disk, som endast uppt
 När du har skapat kan du göra några ändringar i avbildnings Galleri resurserna. Dessa är begränsade till:
  
 Galleri för delad avbildning:
-- Beskrivning
+- Description
 
 Bild definition:
 - Rekommenderad virtuella processorer
 - Rekommenderat minne
-- Beskrivning
+- Description
 - Datum för slut på livs längd
 
 Avbildnings version:

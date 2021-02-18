@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bc121b3f5aadad1e68315acac5daade5337b701b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f8f9da1b9c0b2df4e353b90538d52d9cb9b9e241
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580360"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093917"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>Azures säkerhets bas linje för Azure Traffic Manager
 
@@ -114,7 +114,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel.
 
 I Resource Manager kan du lägga till slut punkter från vilken prenumeration som helst i Traffic Manager, så länge som den person som konfigurerar Traffic Managers profilen har Läs behörighet till slut punkten.
 
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
 - [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -272,7 +272,7 @@ I Resource Manager kan du lägga till slut punkter från vilken prenumeration so
 
 Azure Traffic Manager har en fördefinierad Azure-roll med namnet "Traffic Manager Contributor" som kan tilldelas till användare.
 
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
 - [Rollen Traffic Manager Contributor](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 

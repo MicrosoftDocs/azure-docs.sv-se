@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742988"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091786"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Ansluta med hanterad identitet till Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Lär dig att:
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](../../articles/active-directory/managed-identities-azure-resources/overview.md). Om du inte har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
-- För att kunna utföra den nödvändiga resurs skapande och roll hantering måste ditt konto ha behörigheten "ägare" i lämpligt omfång (din prenumeration eller resurs grupp). Om du behöver hjälp med roll tilldelning kan du läsa mer i [använda rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till dina Azure-prenumerations resurser](../../articles/role-based-access-control/role-assignments-portal.md).
+- För att kunna utföra den nödvändiga resurs skapande och roll hantering måste ditt konto ha behörigheten "ägare" i lämpligt omfång (din prenumeration eller resurs grupp). Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../articles/role-based-access-control/role-assignments-portal.md).
 - Du behöver en virtuell Azure-dator (till exempel köra Ubuntu Linux) som du vill använda för att komma åt din databas med hanterad identitet
 - Du behöver en Azure Database for MySQL databas server där [Azure AD-autentisering](howto-configure-sign-in-azure-ad-authentication.md) har kon figurer ATS
 - Om du vill följa C#-exemplet måste du först slutföra guiden så här [ansluter du med C#](connect-csharp.md)

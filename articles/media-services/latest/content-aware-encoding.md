@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954437"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095940"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Använd den innehålls medveten kodnings inställningen för att hitta det optimala värdet för bit hastighet för en specifik lösning
 
@@ -29,7 +29,7 @@ Du bör vara medveten om det innehåll som du bearbetar och anpassa/finjustera k
 
 Microsofts för hands inställning för [adaptiv strömning](autogen-bitrate-ladder.md) tar delvis itu över problemet med variabiliteten i käll videoklippets kvalitet och upplösning. Våra kunder har en varierande blandning av innehåll, en del på 1080p, andra vid 720p och några få vid SD och lägre upplösning. Dessutom är inte allt käll innehåll mezzanines av hög kvalitet från film-eller TV-Studios. För hands inställningen för anpassad direkt uppspelning åtgärdar problemen genom att se till att bit hastighets stegen aldrig överskrider upplösningen eller den genomsnittliga bit hastigheten för indata-mezzaninfil. Men den här för inställningen granskar inte andra käll egenskaper än upplösning och bit hastighet.
 
-## <a name="the-content-aware-encoding"></a>Innehålls medveten kodning 
+## <a name="the-content-aware-encoding"></a>Innehålls medveten kodning
 
 Den innehålls medveten kodnings inställningen utökar mekanismen "anpassningsbar bit hastighet" genom att inkludera anpassad logik som gör det möjligt för kodaren att söka efter optimalt bit hastighets värde för en specifik lösning, men utan att kräva omfattande beräknings analys. Den här för inställningen ger en uppsättning GOP hastigheter. Med allt indata-innehåll utför tjänsten en inledande förenklad analys av indata-innehållet och använder resultatet för att fastställa det optimala antalet lager, lämpliga bit hastighets-och upplösnings inställningar för leverans genom anpassad direkt uppspelning. Den här för inställningen är särskilt effektiv för små och medel stora komplexitets videoklipp, där utdatafilerna får lägre bit hastigheter än för hands versionen av den anpassningsbara strömningen, men i en kvalitet som fortfarande ger en bra upplevelse till tittare. Utdata kommer att innehålla MP4-filer med video och ljud som är överlagrat
 
@@ -57,7 +57,7 @@ Nedan visas resultatet för en annan kategori av käll innehåll, där kodaren k
 
 Du kan skapa transformeringar som använder den här för inställningen enligt följande. 
 
-I avsnittet [Nästa steg](#next-steps) hittar du självstudier som använder omvandla-utdata. Utmatnings till gången kan levereras från Media Services slut punkter för direkt uppspelning i protokoll som MPEG-streck och HLS (se självstudierna).
+I avsnittet [Nästa steg](#next-steps) hittar du självstudier som använder transformera utdata. Utmatnings till gången kan levereras från Media Services slut punkter för direkt uppspelning i protokoll som MPEG-streck och HLS (se självstudierna).
 
 > [!NOTE]
 > Se till att använda **ContentAwareEncoding** -förinställning som inte är ContentAwareEncodingExperimental.

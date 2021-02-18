@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42795e2dda6df24e656c9c06f6a9424bd9e4b5cb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575389"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092982"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azures säkerhets bas linje för Windows Virtual Desktop
 
@@ -328,7 +328,7 @@ Använd dessutom inbyggda roller för att allokera behörigheter och endast skap
 
 - [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)](../role-based-access-control/overview.md) 
 
-- [Så här konfigurerar du RBAC i Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 

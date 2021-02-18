@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 66958e275a6dee13244f0f283b1ee1dbb5d40470
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761009"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093452"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logga in på den virtuella Windows-datorn i Azure med Azure Active Directory autentisering (för hands version)
 
@@ -194,9 +194,9 @@ az role assignment create \
 
 Mer information om hur du använder Azure RBAC för att hantera åtkomst till dina Azure-prenumerations resurser finns i följande artiklar:
 
-- [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md)
-- [Lägg till eller ta bort Azure Role-tilldelningar med Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+- [Tilldela Azure-roller med Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="using-conditional-access"></a>Använda villkorlig åtkomst
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fde4f236a48e00b20817a812810fc3ad7d4b227f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521891"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091827"
 ---
 # <a name="change-iot-central-application-settings"></a>Ändra IoT Central program inställningar
 
@@ -39,7 +39,7 @@ Om administratören skapar ett anpassat tema för ditt program, innehåller den 
 Använd knappen **ta bort** för att ta bort ditt IoT Central program permanent. Den här åtgärden tar permanent bort alla data som är associerade med programmet.
 
 > [!Note]
-> Om du vill ta bort ett program måste du också ha behörighet att ta bort resurser i Azure-prenumerationen som du valde när du skapade programmet. Läs mer i [använda rollbaserad åtkomst kontroll för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
+> Om du vill ta bort ett program måste du också ha behörighet att ta bort resurser i Azure-prenumerationen som du valde när du skapade programmet. Mer information finns i [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="manage-programmatically"></a>Hantera programmässigt
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 176acea34dead929986acb807b465593f9ffda5a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622330"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095476"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Visa flera resurser i Azure Metrics Explorer
 
@@ -33,7 +33,7 @@ Vissa resurs typer kan fråga efter mått över flera resurser. Måtten måste v
 ![Skärm bild som visar en meny med resurser som är kompatibla med flera resurser.](./media/metrics-dynamic-scope/020.png)
 
 > [!WARNING] 
-> Du måste ha övervaknings läsar behörighet på prenumerations nivå för att visualisera mått över flera resurser, resurs grupper eller en prenumeration. Mer information finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+> Du måste ha övervaknings läsar behörighet på prenumerations nivå för att visualisera mått över flera resurser, resurs grupper eller en prenumeration. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Om du vill visualisera mått över flera resurser börjar du med att välja flera resurser i resurs omfattnings väljaren. 
 
@@ -81,7 +81,7 @@ I det här exemplet filtrerar vi efter TailspinToysDemo. Här tar filtret bort m
 
 ## <a name="pin-multiple-resource-charts"></a>Fäst flera resurs diagram 
 
-Diagram med flera resurser som visualiserar mått över resurs grupper och prenumerationer kräver att användaren har *övervaknings läsar* behörighet på prenumerations nivå. Se till att alla användare av instrument paneler till vilka du fäster flera resurs diagram har tillräckliga behörigheter. Mer information finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Diagram med flera resurser som visualiserar mått över resurs grupper och prenumerationer kräver att användaren har *övervaknings läsar* behörighet på prenumerations nivå. Se till att alla användare av instrument paneler till vilka du fäster flera resurs diagram har tillräckliga behörigheter. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Om du vill fästa ett diagram med flera resurser på en instrument panel, se [fästa på instrument paneler](../essentials/metrics-charts.md#pinning-to-dashboards). 
 

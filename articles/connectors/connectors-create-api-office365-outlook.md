@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 87a9c8a38ede7008d658068329c8c72e7e3c4117
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055084"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095465"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Hantera e-post, kontakter och kalendrar i Office 365 Outlook med hjälp av Azure Logic Apps
 
@@ -98,7 +98,7 @@ Om du försöker ansluta till Outlook genom att använda ett annat konto än det
 
   1. Välj **åtkomst kontroll (IAM)** på din Logic Apps resurs grupps meny. Konfigurera det andra kontot med **deltagar** rollen. 
   
-     Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md).
+     Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
   1. När du har konfigurerat den här rollen loggar du in på Azure Portal med kontot som har deltagar behörighet. Nu kan du använda det här kontot för att skapa anslutningen till Outlook.
 

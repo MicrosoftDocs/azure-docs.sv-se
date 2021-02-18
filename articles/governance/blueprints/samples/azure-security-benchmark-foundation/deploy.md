@@ -1,14 +1,14 @@
 ---
 title: Distribuera skiss exemplet för Azure Security benchmark Foundation
 description: Distribuera steg för utkastet till utkastet av Azure Security benchmark Foundation, inklusive information om skiss artefakts parametrar.
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633962"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095294"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Distribuera skiss exemplet för Azure Security benchmark Foundation
 
@@ -92,6 +92,9 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
      - **Network Watcher namn**: Network Watcher resursens namn
      - **Network Watcher resurs grupp namn**: namn på Network Watcher resurs grupp
      - **Aktivera DDoS-skydd**: Ange true eller false om du vill ange om DDoS Protection har Aktiver ATS i det virtuella nätverket
+     
+    > [!NOTE] 
+    > Om Network Watcher redan har Aktiver ATS rekommenderar vi att du använder den befintliga Network Watcher resurs gruppen. Du måste också ange platsen för den befintliga Network Watcher resurs gruppen för artefakt parametern **Network Watcher resurs gruppens plats**.
 
    - Artefaktparametrar
 
@@ -132,8 +135,14 @@ Följande tabell innehåller en lista över skiss parametrar:
 |Mall för Azure Virtual Network eker|Resource Manager-mall|Adress namn för undernät (valfritt)|Matris med under näts namn som ska distribueras till det virtuella eker-nätverket; till exempel "subnet1", "subnet2"|
 |Mall för Azure Virtual Network eker|Resource Manager-mall|Prefix för under näts adress (valfritt)|Matris med IP-adressprefix för valfria undernät för det virtuella eker-nätverket; till exempel "10.0.7.0/24", "10.0.8.0/24"|
 |Mall för Azure Virtual Network eker|Resource Manager-mall|Distribuera eker|Ange true eller false för att ange om tilldelningen distribuerar eker-komponenterna i arkitekturen|
-|Azure Network Watcher-mall|Resource Manager-mall|Network Watcher plats|Om Network Watcher redan har Aktiver ATS **måste** värdet för den här parametern matcha platsen för den befintliga Network Watcher resurs gruppen.|
+|Azure Network Watcher-mall|Resource Manager-mall|Network Watcher plats|Plats för Network Watcher resursen|
 |Azure Network Watcher-mall|Resource Manager-mall|Plats för Network Watcher resurs grupp|Om Network Watcher redan har Aktiver ATS **måste** värdet för den här parametern matcha namnet på den befintliga Network Watcher resurs gruppen.|
+
+## <a name="troubleshooting"></a>Felsökning
+
+Om felet uppstår kontrollerar du `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` att skiss parametern **Network Watcher resurs grupp namn** anger namnet på den befintliga Network Watcher resurs gruppen och att artefakt parametern **Network Watcher resurs gruppens plats** anger den befintliga Network Watcher resurs gruppens plats.
 
 ## <a name="next-steps"></a>Nästa steg
 

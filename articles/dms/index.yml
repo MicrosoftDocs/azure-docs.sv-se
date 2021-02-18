@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: c2461fa9eb2c326141d244fbc576355226f891dd
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-  ms.translationtype: HT
+  ms.openlocfilehash: 2703c34dc56303103c682bed740a34991a6471f6
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94962713"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101092166"
 landingContent:
 - title: Om Azure Database Migration Service
   linkLists:
@@ -57,29 +57,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Migrera till en enskild SQL DB-databas – online
-      url: tutorial-sql-server-azure-sql-online.md
-    - text: Migrera till en enskild SQL DB-databas – offline
+    - text: Migrera till Azure SQL Database
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Migrera till en hanterad SQL DB-instans – online
+    - text: Migrera till Azure SQL-hanterad instans (online)
       url: tutorial-sql-server-managed-instance-online.md
-    - text: Migrera till en hanterad SQL DB-instans – offline
+    - text: Migrera till SQL-hanterad instans (offline)
       url: tutorial-sql-server-to-managed-instance.md
-    - text: Migrera RDS SQL Server till SQL DB – enkel databas/hanterad instans – online
+    - text: Migrera fjärr skrivbords SQL Server till Azure SQL
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: reference
     links:
-    - text: Kända problem – Onlinemigrering till en enskild SQL DB-databas
+    - text: Kända problem – online-migrering till SQL Database
       url: known-issues-azure-sql-online.md
-    - text: Kända problem – Onlinemigrering till en hanterad SQL DB-instans
+    - text: Kända problem – online-migrering till SQL-hanterad instans
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: Nätverkstopologier för migrering av hanterade SQL DB-instanser
+    - text: Nätverkstopologier för migrering av SQL-hanterade instanser
       url: resource-network-topologies.md
-    - text: Anpassade roller för online-migreringar från SQL Server till en hanterad SQL DB-instans
+    - text: Anpassade roller för online-migrering från SQL Server till SQL-hanterad instans
       url: resource-custom-roles-sql-db-managed-instance.md
   - linkListType: video
     links:
-    - text: Migrera SQL Server 2008 till en hanterad SQL DB-instans
+    - text: Migrera SQL Server 2008 till SQL-hanterad instans
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
 - title: Migrera databaser med öppen källkod till Azure
   linkLists:

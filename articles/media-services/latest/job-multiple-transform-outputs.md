@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a40ce1fd7b3d9d946641c91f5876d8c73755b005
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954148"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092264"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Skapa ett jobb med flera transformera utdata
 
@@ -68,6 +68,7 @@ private static async Task<Transform> GetOrCreateTransformAsync(
     return transform;
 }
 ```
+
 ## <a name="submit-a-job"></a>Skicka ett jobb
 
 Skapa ett jobb med en HTTPS-URL-indata och med två jobb utdata.

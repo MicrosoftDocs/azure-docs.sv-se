@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576590"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095724"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Felsöka en app i Azure App Service med Visual Studio
 ## <a name="overview"></a>Översikt
@@ -28,7 +28,7 @@ Du får lära dig detta:
 
 Om du har Visual Studio Ultimate kan du också använda [IntelliTrace](/visualstudio/debugger/intellitrace) för fel sökning. IntelliTrace ingår inte i den här självstudien.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a><a name="prerequisites"></a>Förutsättningar
 Den här självstudien fungerar med utvecklings miljön, webb projekt och App Service app som du konfigurerar i [skapa en ASP.net-app i Azure App Service](quickstart-dotnet-framework.md). För WebJobs-avsnitten behöver du det program som du skapar i [Kom igång med Azure WEBJOBS SDK][GetStartedWJ].
 
 Kod exemplen som visas i den här självstudien gäller för ett C# MVC-webbprogram, men fel söknings procedurerna är desamma för Visual Basic-och webb formulär program.
@@ -49,7 +49,7 @@ Visual Studio ger åtkomst till en delmängd av program hanterings funktionerna 
    >
    >
 
-    Mer information om hur du ansluter till Azure-resurser från Visual Studio finns i [Hantera konton, prenumerationer och administrativa roller](../role-based-access-control/role-assignments-portal.md).
+    Mer information om hur du ansluter till Azure-resurser från Visual Studio finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. I **Server Explorer** expanderar du **Azure** och expanderar **App Service**.
 3. Expandera resurs gruppen som innehåller den app som du skapade i [skapa en ASP.net-app i Azure App Service](quickstart-dotnet-framework.md)och högerklicka sedan på noden app och klicka på **Visa inställningar**.
 

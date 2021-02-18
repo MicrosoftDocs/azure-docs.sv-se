@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aabaad54dce52d57aaa4689f591351e290b0f9a3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371260"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093696"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Hantera Azure Resource Manager resurs grupper med hjälp av Azure Portal
 
@@ -62,7 +62,7 @@ Resursgruppen lagrar metadata om resurserna. När du anger en plats för resursg
 ## <a name="open-resource-groups"></a>Öppna resurs grupper
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **resurs grupper**.
+2. Välj **Resursgrupper**.
 3. Välj den resurs grupp som du vill öppna.
 
 ## <a name="delete-resource-groups"></a>Ta bort resursgrupper
@@ -89,7 +89,7 @@ Låsning förhindrar att andra användare i organisationen oavsiktligt tar bort 
 1. Öppna den resurs grupp som du vill låsa.  Se [Öppna resurs grupper](#open-resource-groups).
 2. I det vänstra fönstret väljer du **Lås**.
 3. Om du vill lägga till ett lås i resurs gruppen väljer du **Lägg till**.
-4. Ange **Lås namn**, **Lås typ**och **anteckningar**. Lås typerna är **skrivskyddade**och **ta bort**.
+4. Ange **Lås namn**, **Lås typ** och **anteckningar**. Lås typerna är **skrivskyddade** och **ta bort**.
 
     ![Lås Azure-resurs grupp](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
@@ -105,7 +105,7 @@ Information om hur du exporterar mallar finns i [en och flera-resurs-export till
 
 ## <a name="manage-access-to-resource-groups"></a>Hantera åtkomst till resurs grupper
 
-[Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md) är hur du hanterar åtkomst till resurser i Azure. Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+[Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md) är hur du hanterar åtkomst till resurser i Azure. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

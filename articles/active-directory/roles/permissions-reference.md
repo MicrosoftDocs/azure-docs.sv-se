@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518835"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095865"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -85,9 +85,9 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
-| Administratör för autentiseringsprincip | Inga |Inga | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
+| Administratör för autentiseringsprincip | Nej |Nej | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -109,9 +109,9 @@ Administratörs rollerna för [autentisering administratör](#authentication-adm
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
-| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
+| Administratör för autentiseringsprincip | Nej | Nej | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Den här rollen kan för närvarande inte hantera MFA-inställningar i den äldre hanterings portalen för MFA.
@@ -391,9 +391,9 @@ Rollen som [administratör för autentisering](#authentication-administrator) ha
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
-| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
+| Administratör för autentiseringsprincip | Nej | Nej | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -2176,6 +2176,6 @@ Rapport läsare för användnings Sammanfattning | &nbsp; | :heavy_check_mark: |
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du tilldelar en användare som administratör för en Azure-prenumeration finns i [lägga till eller ta bort Azure Role-tilldelningar (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* Mer information om hur du tilldelar en användare som administratör för en Azure-prenumeration finns i [tilldela en användare som administratör för en Azure-prenumeration](../../role-based-access-control/role-assignments-portal-subscription-admin.md)
 * Mer information om hur resurs åtkomsten styrs i Microsoft Azure finns i [förstå de olika rollerna](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Mer information om relationen mellan prenumerationer och en Azure AD-klient, eller för instruktioner för att associera eller lägga till en prenumeration, finns i [associera eller lägga till en Azure-prenumeration i Azure Active Directory klient organisationen](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

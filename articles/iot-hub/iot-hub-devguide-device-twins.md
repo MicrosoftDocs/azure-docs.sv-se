@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400936"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093026"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Förstå och Använd enheten dubbla i IoT Hub
 
@@ -42,6 +42,8 @@ Använd enheten:
 Information om hur du använder rapporterade egenskaper, meddelanden från enhet till moln eller fil uppladdning finns i [rikt linjer för kommunikation mellan enheter och moln](iot-hub-devguide-d2c-guidance.md) .
 
 Information om hur du använder önskade egenskaper, direkta metoder eller meddelanden från moln till enhet finns i [rikt linjer för kommunikation från moln till enhet](iot-hub-devguide-c2d-guidance.md) .
+
+Information om hur enheten är kopplad till den enhets modell som används av en Azure IoT Plug and Play-enhet finns i [förstå IoT plug and Play digitala dubbla](../iot-pnp/concepts-digital-twin.md).
 
 ## <a name="device-twins"></a>Enhets dubbla
 
@@ -185,7 +187,7 @@ Lösningens Server del fungerar på enheten med dubbla med hjälp av följande a
 
   - Egenskaper
 
-    | Namn | Värde |
+    | Name | Värde |
     | --- | --- |
     $content-typ | application/json |
     $iothub-enqueuedtime |  Tid när meddelandet skickades |

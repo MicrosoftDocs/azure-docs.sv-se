@@ -1,14 +1,14 @@
 ---
 title: Erbjudanden om hanterade tjänster på Azure Marketplace
 description: Med hanterade tjänst erbjudanden kan du sälja resurs hanterings erbjudanden till kunder på Azure Marketplace.
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375552"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092992"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Erbjudanden om hanterade tjänster på Azure Marketplace
 
@@ -20,9 +20,12 @@ Hanterade tjänster gör det enklare att integrera kunder i Azure Lighthouse. N�
 
 Efter det kommer användare i din organisation att kunna arbeta med dessa resurser i hanteringen av [Azure-delegerad resurs hantering](azure-delegated-resource-management.md), enligt den åtkomst som du definierade när du skapade erbjudandet. Detta görs via ett manifest som anger de Azure Active Directory (Azure AD) användare, grupper och tjänstens huvud namn som kommer att ha åtkomst till kund resurser, tillsammans med [roller](tenants-users-roles.md) som definierar deras åtkomst nivå.
 
+> [!NOTE]
+> Hanterade tjänst erbjudanden kanske inte är tillgängliga i Azure Government och andra nationella moln.
+
 ## <a name="public-and-private-offers"></a>Offentliga och privata erbjudanden
 
-Varje hanterings tjänst erbjudande innehåller en eller flera planer. Planer kan vara antingen privata eller offentliga.
+Varje hanterat tjänst erbjudande innehåller en eller flera planer. Planer kan vara antingen privata eller offentliga.
 
 Om du vill begränsa ditt erbjudande till vissa kunder kan du publicera en privat plan. När du gör det kan planen bara köpas för de angivna prenumerations-ID: n som du anger. Mer information finns i [privata erbjudanden](../../marketplace/private-offers.md).
 
@@ -38,9 +41,9 @@ Om det behövs kan du inkludera både offentliga och privata planer i samma erbj
 
 ## <a name="publish-managed-service-offers"></a>Publicera hanterade tjänst erbjudanden
 
-Information om hur du publicerar ett erbjudande för hanterade tjänster finns i [publicera ett erbjudande för hanterade tjänster på Azure Marketplace](../how-to/publish-managed-services-offers.md).
+Information om hur du publicerar ett hanterat tjänst erbjudande finns i [publicera ett hanterat tjänst erbjudande på Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [Azure-delegerad resurs hantering](azure-delegated-resource-management.md) och [flera klient hanterings upplevelser](cross-tenant-management-experience.md).
-- [Publicera hanterade tjänster erbjuder](../how-to/publish-managed-services-offers.md) Azure Marketplace.
+- [Publicera Managed Service-erbjudanden](../how-to/publish-managed-services-offers.md) på Azure Marketplace.

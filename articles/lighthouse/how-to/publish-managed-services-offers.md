@@ -1,14 +1,14 @@
 ---
 title: Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 description: Lär dig hur du publicerar ett hanterat tjänst erbjudande som integrerar kunder i Azure Lighthouse.
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555802"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092141"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 
@@ -33,6 +33,9 @@ Följande tabell kan hjälpa dig att avgöra om du ska publicera kunder genom at
 |Kräver kund godkännande i Azure Portal     |Ja     |Nej   |
 |Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Nej     |Ja    |
 |Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Yes         |
+
+> [!NOTE]
+> Hanterade tjänst erbjudanden kanske inte är tillgängliga i Azure Government och andra nationella moln.
 
 ## <a name="create-your-offer"></a>Skapa ditt erbjudande
 

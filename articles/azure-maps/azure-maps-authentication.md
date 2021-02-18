@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905323"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094095"
 ---
 # <a name="authentication-with-azure-maps"></a>Autentisering med Azure Maps
 
@@ -84,13 +84,13 @@ Azure Maps stöder åtkomst till alla huvud typer för [rollbaserad åtkomst kon
 
 I nästa avsnitt beskrivs begrepp och komponenter i Azure Maps integrering med Azure RBAC. Som en del av processen för att konfigurera ditt Azure Maps-konto är en Azure AD-katalog kopplad till Azure-prenumerationen som Azure Maps-kontot finns i. 
 
-När du konfigurerar Azure RBAC väljer du ett säkerhets objekt och tillämpar det på en roll tilldelning. Information om hur du lägger till roll tilldelningar i Azure Portal finns i [lägga till eller ta bort roll tilldelningar i Azure](../role-based-access-control/role-assignments-portal.md).
+När du konfigurerar Azure RBAC väljer du ett säkerhets objekt och tillämpar det på en roll tilldelning. Information om hur du lägger till roll tilldelningar på Azure Portal finns i [tilldela Azure-roller](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="picking-a-role-definition"></a>Plocka en roll definition
 
 Följande roll definitions typer finns för att stödja program scenarier.
 
-| Definition av Azure-roll       | Beskrivning                                                                                              |
+| Definition av Azure-roll       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure Maps data läsare      | Ger åtkomst till oföränderliga Azure Maps REST-API: er.                                                       |
 | Azure Maps data deltagare | Ger åtkomst till föränderligt Azure Maps REST-API: er. Föränderlighet definieras av åtgärderna: Skriv och ta bort. |

@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565933"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095505"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Säkerhetskopiera konfigurations Arkiv för appar automatiskt
 
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> För att utföra den nödvändiga resurs skapande-och roll hanteringen måste ditt konto ha `Owner` behörighet i rätt omfång (din prenumeration eller resurs grupp). Om du behöver hjälp med roll tilldelning kan du läsa om [hur du lägger till eller tar bort roll tilldelningar i Azure med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
+> För att utföra den nödvändiga resurs skapande-och roll hanteringen måste ditt konto ha `Owner` behörighet i rätt omfång (din prenumeration eller resurs grupp). Om du behöver hjälp med roll tilldelning kan du läsa mer om [hur du tilldelar Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 Använd följande kommandon eller [Azure Portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) för att bevilja den hanterade identiteten för din Function app-åtkomst till dina app Configuration-butiker. Använd följande roller:
 - Tilldela `App Configuration Data Reader` rollen i konfigurations arkivet för den primära appen.

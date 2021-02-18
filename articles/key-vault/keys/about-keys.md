@@ -8,23 +8,23 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 2ae7b28d5e9e7a520ee8cbd090b6681d5ad7015a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422764"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095988"
 ---
 # <a name="about-keys"></a>Om nycklar
 
-Azure Key Vault tillhandahåller två typer av resurser för att lagra och hantera kryptografiska nycklar:
+Azure Key Vault tillhandahåller två typer av resurser för att lagra och hantera kryptografiska nycklar. Valv stöder Software-Protected-och HSM-skyddade nycklar (Hardware Security Module). Hanterade HSM: er stöder endast HSM-skyddade nycklar. 
 
 |Resurstyp|Nyckel skydds metoder|Bas-URL för data Plans slut punkt|
 |--|--|--|
 | **Valv** | Program vara-skyddad<br/><br/>och<br/><br/>HSM-skyddad (med Premium-SKU)</li></ul> | https://{valv-Name}. valv. Azure. net |
-| **Hanterade HSM-pooler** | HSM-skyddad | https://{HSM-Name}. managedhsm. Azure. net |
+| * * Hanterad HSM: er * * | HSM-skyddad | https://{HSM-Name}. managedhsm. Azure. net |
 ||||
 
 - **Valv** – valven ger dig en låg kostnad, enkel att distribuera, flera klient organisationer, zoner – flexibel (där det är tillgängligt), nyckel hanterings lösning med hög tillgänglighet som passar för de flesta vanliga moln program scenarier.
@@ -45,7 +45,7 @@ De grundläggande JWK/JWA-specifikationerna utökas också för att aktivera nyc
 HSM-skyddade nycklar (kallas även HSM-nycklar) bearbetas i en HSM-modul (Hardware Security Module) och bibehålls alltid HSM-skydds gränser. 
 
 - Valv använder **FIPS 140-2 nivå 2** -verifierade HSM: er för att skydda HSM-nycklar i delad HSM-Server infrastruktur. 
-- Hanterade HSM-pooler använder **FIPS 140-2 nivå 3** -VERIFIERAde HSM-moduler för att skydda dina nycklar. Varje HSM-pool är en isolerad instans av en enskild klient organisation med en egen [säkerhets domän](../managed-hsm/security-domain.md) som tillhandahåller fullständig kryptografisk isolering från alla andra HSM-pooler som delar samma maskin varu infrastruktur.
+- Hanterad HSM använder **FIPS 140-2 nivå 3** -VERIFIERAde HSM-moduler för att skydda dina nycklar. Varje HSM-pool är en isolerad instans av en enskild klient med en egen [säkerhets domän](../managed-hsm/security-domain.md) som tillhandahåller fullständig kryptografisk isolering från alla andra HSM: er som delar samma maskin varu infrastruktur.
 
 Dessa nycklar skyddas i HSM-pooler med en enda klient. Du kan importera en RSA-, EC-och symmetrisk nyckel, i mjuk form eller genom att exportera från en HSM-enhet som stöds. Du kan också generera nycklar i HSM-pooler. När du importerar HSM-nycklar med hjälp av metoden som beskrivs i [BYOK (ta med din egen nyckel)](../keys/byok-specification.md), aktive ras Secure transport Key material till HANTERAde HSM-pooler. 
 
@@ -53,24 +53,35 @@ Mer information om geografiska gränser finns [Microsoft Azure säkerhets Center
 
 ## <a name="key-types-and-protection-methods"></a>Nyckel typer och skydds metoder
 
-Key Vault stöder RSA, EC och symmetriska nycklar. 
+Key Vault stöder RSA-och EG-nycklar. Hanterad HSM stöder RSA, EC och symmetriska nycklar. 
 
 ### <a name="hsm-protected-keys"></a>HSM-skyddade nycklar
 
-|Nyckeltyp|Valv (endast Premium-SKU)|Hanterade HSM-pooler|
-|--|--|--|--|
-**EC-HSM** : Elliptic kurv nyckel|FIPS 140-2 nivå 2 HSM|FIPS 140-2 nivå 3 HSM
-**RSA-HSM** : RSA-nyckel|FIPS 140-2 nivå 2 HSM|FIPS 140-2 nivå 3 HSM
-**okt-HSM** : symmetrisk|Stöds inte|FIPS 140-2 nivå 3 HSM
-||||
+|Nyckeltyp|Valv (endast Premium-SKU)|Hanterade HSM: er|
+|--|--|--|
+|**EC-HSM**: Elliptic kurv nyckel | Stöds | Stöds|
+|**RSA-HSM**: RSA-nyckel|Stöds|Stöds|
+|**okt-HSM**: symmetrisk nyckel|Stöds inte|Stöds|
+|||
 
 ### <a name="software-protected-keys"></a>Program vara – skyddade nycklar
 
-|Nyckeltyp|Valv|Hanterade HSM-pooler|
-|--|--|--|--|
-**RSA** : "program vara-skyddad" RSA-nyckel|FIPS 140-2-nivå 1|Stöds inte
-**EG** : "Software-Protected" Elliptic Curve Key|FIPS 140-2-nivå 1|Stöds inte
-||||
+|Nyckeltyp|Valv|Hanterade HSM: er|
+|--|--|--|
+**RSA**: "program vara-skyddad" RSA-nyckel|Stöds|Stöds inte
+**EG**: "Software-Protected" Elliptic Curve Key|Stöds|Stöds inte
+|||
+
+### <a name="compliance"></a>Efterlevnad
+
+|Nyckel typ och mål|Efterlevnad|
+|---|---|
+|Program varu skyddade nycklar i valv (Premium & standard SKU: er) | FIPS 140-2-nivå 1|
+|HSM-skyddade nycklar i valv (Premium-SKU)| FIPS 140-2 nivå 2|
+|HSM-skyddade nycklar i hanterad HSM|FIPS 140-2-nivå 3|
+|||
+
+
 
 Se [nyckel typer, algoritmer och åtgärder](about-keys-details.md) för information om varje nyckel typ, algoritmer, åtgärder, attribut och taggar.
 

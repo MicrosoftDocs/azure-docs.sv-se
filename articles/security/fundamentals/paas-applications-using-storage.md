@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 082408f357e97a2ed2153d43dbea459ff09ba704
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 12cce0eac3827046ae9171f3dd5696ae5905c802
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693212"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093990"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Metod tips för att skydda PaaS-webb program och mobilappar med hjälp av Azure Storage
 I den här artikeln diskuterar vi en samling Azure Storage säkerhets metod tips för att skydda dina webb-och mobil program för PaaS-tjänster (Platform-as-a-Service). Dessa bästa metoder härleds från vår erfarenhet av Azure och våra kunders upplevelser som du själv har.
@@ -64,7 +64,7 @@ Organisationer som inte tillämpar data åtkomst kontroll genom att använda fun
 
 Om du vill veta mer om Azure RBAC ser du:
 
-- [Lägga till eller ta bort rolltilldelningar för Azure med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Inbyggda roller i Azure](../../role-based-access-control/built-in-roles.md)
 - [Säkerhetsguiden för Azure Storage](../../storage/blobs/security-recommendations.md) 
 

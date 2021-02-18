@@ -4,12 +4,12 @@ description: Lär dig hur du skyddar poddar med Azure Policy på Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 34f2bfe346d7163a254e2ccecd1d7ef63ddb4194
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348533"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092626"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Skydda poddar med Azure Policy
 
@@ -60,7 +60,7 @@ Följande allmänna begränsningar gäller för Azure Policy-tillägget för Kub
 Följande begränsningar gäller endast för Azure Policy-tillägget för AKS:
 
 - [AKS Pod-säkerhetsprincipen (för hands version)](use-pod-security-policies.md) och Azure policy-tillägget för AKS kan inte både aktive ras. 
-- Namn områden som undantas automatiskt av Azure Policy tillägg för utvärdering: _Kube-system_ , _Gatekeeper-system_ och _AKS-Periscope_.
+- Namn områden som undantas automatiskt av Azure Policy tillägg för utvärdering: _Kube-system_, _Gatekeeper-system_ och _AKS-Periscope_. Om du använder Calico nätverks princip med Kubernetes version 1,20 och senare utesluts 2 fler namn områden automatiskt, som är _Calico-system_ och _Tiger-operator_.
 
 ### <a name="recommendations"></a>Rekommendationer
 
@@ -107,8 +107,8 @@ Båda de inbyggda initiativen skapas från definitioner som används i [Pod säk
 |Begränsa användningen av värd fil systemet|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
 |Begränsa Linux-funktioner till [standard uppsättningen](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
 |Begränsa användningen av definierade volym typer|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja – tillåtna volym typer är `configMap` ,,, `emptyDir` `projected` `downwardAPI` , `persistentVolumeClaim`|
-|Eskalering av privilegier till rot|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Ja |
-|Begränsa behållarens användar-och grupp-ID|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja|
+|Eskalering av privilegier till rot|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
+|Begränsa behållarens användar-och grupp-ID|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
 |Begränsa tilldelningen av en FSGroup som äger Pod-volymer|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja – tillåtna regler är `runAsUser: mustRunAsNonRoot` , `supplementalGroup: mustRunAs 1:65536` , `fsGroup: mustRunAs 1:65535` , `runAsGroup: mustRunAs 1:65535` .  |
 |Kräver seccomp-profil|[Offentligt moln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ja, allowedProfiles är * `docker/default` eller `runtime/default` |
 
@@ -151,9 +151,9 @@ If the built-in initiatives to address pod security do not match your requiremen
 
 AKS kräver att system poddar körs på ett kluster för att tillhandahålla kritiska tjänster, till exempel DNS-matchning. Principer som begränsar Pod-funktioner kan påverka stabiliteten i systemet pod. Därför undantas följande namn rymder **från princip utvärderingen vid begäran om att skapa, uppdatera och granska principer**. Detta innebär att nya distributioner till dessa namn områden exkluderas från Azure-principer.
 
-1. Kube-system
+1. kube-system
 1. Gatekeeper-system
-1. Azure-båg
+1. azure-arc
 1. AKS – Periscope
 
 Ytterligare anpassade namn områden kan undantas från utvärdering vid skapande, uppdatering och granskning. Dessa undantag ska användas om du har specialiserade poddar som körs i ett sanktionerat namn område och vill undvika att utlösa gransknings överträdelser.

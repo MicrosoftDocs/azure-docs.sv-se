@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942833"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091440"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hantera Apache Hadoop kluster i HDInsight med hjälp av Azure Portal
 
@@ -54,7 +54,7 @@ Välj ditt kluster namn på sidan [**HDInsight-kluster**](#showClusters) .  Vyn 
     |---|---|
     |Översikt|Tillhandahåller allmän information om klustret.|
     |Aktivitetslogg|Visa och fråga aktivitets loggar.|
-    |Åtkomstkontroll (IAM)|Använd roll tilldelningar.  Se [använda roll tilldelningar för att hantera åtkomst till dina Azure-prenumerations resurser](../role-based-access-control/role-assignments-portal.md).|
+    |Åtkomstkontroll (IAM)|Använd roll tilldelningar.  Se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../role-based-access-control/role-assignments-portal.md).|
     |Taggar|Gör att du kan ange nyckel/värde-par för att definiera en anpassad taxonomi för moln tjänsterna. Du kan till exempel skapa en nyckel med namnet **Project** och sedan använda ett vanligt värde för alla tjänster som är associerade med ett särskilt projekt.|
     |Diagnostisera och lösa problem|Visa felsöknings information.|
     |Snabbstart|Visar information som hjälper dig att komma igång med HDInsight.|
