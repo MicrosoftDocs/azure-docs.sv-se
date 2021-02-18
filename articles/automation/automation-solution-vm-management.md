@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a521ca80039b68f93bf7c9d98e51d9846e96e985
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593836"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Översikt över Starta/stoppa virtuella datorer när de inte används
 
-Starta/stoppa virtuella datorer när de inte används funktionen startar eller stoppar aktiverade virtuella Azure-datorer. Den startar eller stoppar datorer enligt användardefinierade scheman, ger insikter via Azure Monitor loggar och skickar valfria e-postmeddelanden med hjälp av [Åtgärds grupper](../azure-monitor/platform/action-groups.md). Funktionen kan aktive ras på både Azure Resource Manager och klassiska virtuella datorer för de flesta scenarier.
+Starta/stoppa virtuella datorer när de inte används funktionen startar eller stoppar aktiverade virtuella Azure-datorer. Den startar eller stoppar datorer enligt användardefinierade scheman, ger insikter via Azure Monitor loggar och skickar valfria e-postmeddelanden med hjälp av [Åtgärds grupper](../azure-monitor/alerts/action-groups.md). Funktionen kan aktive ras på både Azure Resource Manager och klassiska virtuella datorer för de flesta scenarier. 
 
 Den här funktionen använder cmdleten [Start-AzVm](/powershell/module/az.compute/start-azvm) för att starta virtuella datorer. Den använder [Stop-AzVM](/powershell/module/az.compute/stop-azvm) för att stoppa virtuella datorer.
 

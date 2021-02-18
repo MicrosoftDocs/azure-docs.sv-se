@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: 6da9c6775a6d5c96bc52183fefc3e5330272e9ff
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585134"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575074"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Övervaka data referens för Azure Machine Learning
 
@@ -23,7 +23,7 @@ Lär dig mer om de data och resurser som samlats in av Azure Monitor från arbet
 
 ## <a name="metrics"></a>Mått
 
-I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Machine Learning. Resurs leverantören för dessa mått är [Microsoft. MachineLearningServices/arbets ytor](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
+I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Machine Learning. Resurs leverantören för dessa mått är [Microsoft. MachineLearningServices/arbets ytor](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Modell**
 
@@ -74,7 +74,7 @@ Information om utbildning körs.
 
 ## <a name="metric-dimensions"></a>Mått dimensioner
 
-Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
+Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
 
 Azure Machine Learning har följande dimensioner kopplade till sina mått.
 
@@ -117,7 +117,7 @@ I följande tabell visas de åtgärder som är relaterade till Azure Machine Lea
 
 I det här avsnittet visas de typer av resurs loggar som du kan samla in för Azure Machine Learning arbets ytan.
 
-Resource Provider och typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
+Resource Provider och typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategori | Visningsnamn |
 | ----- | ----- |
@@ -232,4 +232,4 @@ Följande scheman används i Azure Machine Learning
 ## <a name="see-also"></a>Se även
 
 - En beskrivning av övervaknings Azure Machine Learning finns i [övervaknings Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

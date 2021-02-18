@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879956"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588347"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure avdelningens kontroll-mått i Azure Monitor
 
@@ -24,7 +24,7 @@ Azure avdelningens kontroll-administratörer kan använda Azure Monitor för att
 
 ## <a name="aggregated-metrics"></a>Sammanställda mått
 
-Måtten kan nås från Azure Portal för ett avdelningens kontroll-konto. Åtkomst till måtten styrs av roll tilldelningen för avdelningens kontroll-kontot. Användarna måste vara en del av rollen "övervaknings läsare" i Azure avdelningens kontroll för att se måtten. Kolla in [övervaknings läsar roll behörigheter](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles) för att lära dig mer om åtkomst nivåerna för roller.
+Måtten kan nås från Azure Portal för ett avdelningens kontroll-konto. Åtkomst till måtten styrs av roll tilldelningen för avdelningens kontroll-kontot. Användarna måste vara en del av rollen "övervaknings läsare" i Azure avdelningens kontroll för att se måtten. Kolla in [övervaknings läsar roll behörigheter](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles) för att lära dig mer om åtkomst nivåerna för roller.
 
 Den person som skapade avdelningens kontroll-kontot får automatiskt behörighet att visa mått. Om någon annan vill se måtten lägger du till dem i **övervaknings läsar** rollen genom att följa dessa steg:
 
@@ -58,7 +58,7 @@ Azure avdelningens kontroll-användare kan också komma åt sidan mått direkt f
 
 ### <a name="available-metrics"></a>Tillgängliga mått
 
-För att bekanta dig med hur du använder mått avsnittet i Azure Portal för att läsa följande två dokument. [Komma igång med Metric Explorer](../azure-monitor/platform/metrics-getting-started.md) och [avancerade funktioner i Metric Explorer](../azure-monitor/platform/metrics-charts.md).
+För att bekanta dig med hur du använder mått avsnittet i Azure Portal för att läsa följande två dokument. [Komma igång med Metric Explorer](../azure-monitor/essentials/metrics-getting-started.md) och [avancerade funktioner i Metric Explorer](../azure-monitor/essentials/metrics-charts.md).
 
 Följande tabell innehåller en lista över mått som är tillgängliga för att utforska i Azure Portal:
 
@@ -75,7 +75,7 @@ Händelser för rå telemetri genereras till Azure Monitor. Händelser kan logga
 
 Följ stegen för att skapa en diagnostisk inställning för ditt Azure avdelningens kontroll-konto.
 
-1. Skapa en ny diagnostisk inställning för att samla in plattforms loggar och-mått genom att följa den här artikeln: [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/platform/diagnostic-settings.md). Välj endast målet som Azure Storage-konto.
+1. Skapa en ny diagnostisk inställning för att samla in plattforms loggar och-mått genom att följa den här artikeln: [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/essentials/diagnostic-settings.md). Välj endast målet som Azure Storage-konto.
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Skärm bild som visar hur du skapar en diagnostisk logg." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 

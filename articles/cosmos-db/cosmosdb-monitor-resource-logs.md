@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 561375eb41600ba1404bba2bcbf15b6cbfc61851
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684866"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595340"
 ---
-# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Övervaka Azure Cosmos DB data med hjälp av diagnostiska inställningar i Azure
+# <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Övervaka Azure Cosmos DB-data med hjälp av diagnostikinställningar i Azure
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Diagnostiska inställningar i Azure används för att samla in resurs loggar. Azures resurs loggar genereras av en resurs och ger omfattande, frekventa data om driften av resursen. Dessa loggar samlas in per begäran och kallas även för "data Plans loggar". Några exempel på data Plans åtgärderna är Delete-, INSERT-och readFeed. Innehållet i dessa loggar varierar beroende på resurs typ.
+Diagnostikinställningar i Azure används för att samla in resursloggar. Azures resurs loggar genereras av en resurs och ger omfattande, frekventa data om driften av resursen. Dessa loggar samlas in per begäran och kallas även för "data Plans loggar". Några exempel på data Plans åtgärderna är Delete-, INSERT-och readFeed. Innehållet i dessa loggar varierar beroende på resurs typ.
 
 Plattforms mått och aktivitets loggar samlas in automatiskt, medan du måste skapa en diagnostisk inställning för att samla in resurs loggar eller vidarebefordra dem utanför Azure Monitor. Du kan aktivera diagnostikinställningar för Azure Cosmos-konton med hjälp av följande steg:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Navigera till ditt Azure Cosmos-konto. Öppna fönstret **diagnostikinställningar** och välj sedan alternativet för att **lägga till diagnostiska** inställningar.
 
@@ -103,7 +103,7 @@ Plattforms mått och aktivitets loggar samlas in automatiskt, medan du måste sk
 
 * **Begär Anden**: Välj det här alternativet om du vill samla in mått data från Azure Cosmos dB till målen i den diagnostiska inställningen. Detta är samma data som samlas in automatiskt i Azure-mått. Samla in Mät data med resurs loggar för att analysera båda typerna av data och skicka mått data utanför Azure Monitor.
 
-Detaljerad information om hur du skapar en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell finns i [skapa diagnostisk inställning för att samla in plattforms loggar och statistik i Azure](../azure-monitor/platform/diagnostic-settings.md) -artikeln.
+Detaljerad information om hur du skapar en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell finns i [skapa diagnostisk inställning för att samla in plattforms loggar och statistik i Azure](../azure-monitor/essentials/diagnostic-settings.md) -artikeln.
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Felsöka problem med diagnostiska frågor

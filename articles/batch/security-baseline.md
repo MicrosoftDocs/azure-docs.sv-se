@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 96d1c4c0ad210352be94255609a3a373b408ed23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737243"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593299"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azures säkerhets bas linje för batch
 
@@ -142,7 +142,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 - [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -200,7 +200,7 @@ Om det behövs kan du ansluta till dina noder för enskilda pooler via SSH (Secu
 
 - [Så här konfigurerar du Azure Batch övervakning och loggning](monitoring-overview.md)
 
-- [Så här konfigurerar du lagrings perioden för Azure Log Analytics-arbetsytan](../azure-monitor/platform/manage-cost-storage.md)
+- [Så här konfigurerar du lagrings perioden för Azure Log Analytics-arbetsytan](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -514,7 +514,7 @@ Azure Disk Encryption kan användas för att skydda och skydda dina data så att
 
 Konfigurera diagnostikinställningar för lagrings konton som är kopplade till Azure Batch pool för att övervaka och logga alla CRUD-åtgärder mot data från poolen.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Så här aktiverar du ytterligare loggning/granskning för ett Azure Storage konto](../storage/common/storage-monitor-storage-account.md)
 

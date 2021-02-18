@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595764"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Vanliga frågor och svar om data insamling, agenter och arbets ytor
 
@@ -43,7 +43,7 @@ Mer information om priser finns i [Security Center prissättning](https://azure.
 
 ## <a name="what-is-the-log-analytics-agent"></a>Vad är Log Analytics agenten?
 
-För att övervaka säkerhets problem och hot, Azure Security Center är beroende av [Log Analytics agenten](../azure-monitor/platform/log-analytics-agent.md) – detta är samma agent som används av Azure Monitor tjänsten. 
+För att övervaka säkerhets problem och hot, Azure Security Center är beroende av [Log Analytics agenten](../azure-monitor/agents/log-analytics-agent.md) – detta är samma agent som används av Azure Monitor tjänsten. 
 
 Agenten kallas ibland Microsoft Monitoring Agent (eller "MMA"). 
 
@@ -51,9 +51,9 @@ Agenten samlar in olika säkerhetsrelaterade konfigurations detaljer och händel
 
 Se till att datorerna kör ett av de operativ system som stöds för agenten enligt beskrivningen på följande sidor:
 
-* [Log Analytics agent för operativ system som stöds av Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics agent för operativ system som stöds av Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Log Analytics agent för operativ system som stöds av Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Log Analytics agent för operativ system som stöds av Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 Läs mer om de [data som samlas in av Log Analytics agenten](security-center-enable-data-collection.md).
 
@@ -255,7 +255,7 @@ Du kan aktivera data insamling för din Azure-prenumeration i säkerhets princip
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Vad händer när data insamlingen är aktive rad?
 
-När automatisk etablering har Aktiver ATS etablerar Security Center Log Analytics agent på alla virtuella Azure-datorer som stöds och eventuella nya som skapas. Automatisk etablering rekommenderas, men det finns även manuell agent installation. [Lär dig hur du installerar Log Analytics agent-tillägget](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+När automatisk etablering har Aktiver ATS etablerar Security Center Log Analytics agent på alla virtuella Azure-datorer som stöds och eventuella nya som skapas. Automatisk etablering rekommenderas, men det finns även manuell agent installation. [Lär dig hur du installerar Log Analytics agent-tillägget](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
 Agenten gör det möjligt för processen att skapa händelse 4688 och fältet *kommandorad* i händelse 4688. Nya processer som skapas på den virtuella datorn registreras av EventLog och övervakas av Security Centers identifierings tjänster. Mer information om de uppgifter som registrerats för varje ny process finns [i beskrivnings fält i 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agenten samlar även in 4688-händelser som skapats på den virtuella datorn och lagrar dem i sökningen.
 
@@ -267,7 +267,7 @@ När Security Center identifierar misstänkt aktivitet på den virtuella datorn,
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Kommer Security Center fungera med en OMS-Gateway?
 
 Ja. Azure Security Center utnyttjar Azure Monitor för att samla in data från virtuella Azure-datorer och-servrar med hjälp av Log Analytics agenten.
-För att samla in data måste varje virtuell dator och Server ansluta till Internet via HTTPS. Anslutningen kan dirigeras via en proxy eller via [OMS-gatewayen](../azure-monitor/platform/gateway.md).
+För att samla in data måste varje virtuell dator och Server ansluta till Internet via HTTPS. Anslutningen kan dirigeras via en proxy eller via [OMS-gatewayen](../azure-monitor/agents/gateway.md).
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Påverkar övervaknings agenten prestanda för mina servrar?

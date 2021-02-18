@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393062"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100648611"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Hantera behörigheter för att återställa ett Azure Cosmos DB konto
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -61,7 +61,7 @@ Följande behörigheter krävs för att utföra de olika aktiviteterna som är k
 |Behörighet  |Påverkan  |Minsta omfång  |Maximalt omfång  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | De här behörigheterna krävs för distribution av ARM-mallen för att skapa det återställda kontot. Se exempel behörighets [RestorableAction](#custom-restorable-action) nedan för hur du ställer in den här rollen. | Inte tillämpligt | Inte tillämpligt  |
-|Microsoft.DocumentDB/databaseAccounts/Write | Den här behörigheten krävs för att återställa ett konto till en resurs grupp | Resurs grupp som det återställda kontot skapas under. | Den prenumeration som det återställda kontot skapas under |
+|`Microsoft.DocumentDB/databaseAccounts/write` | Den här behörigheten krävs för att återställa ett konto till en resurs grupp | Resurs grupp som det återställda kontot skapas under. | Den prenumeration som det återställda kontot skapas under |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Den här behörigheten krävs för käll återställas databas konto omfång för att tillåta att återställnings åtgärder utförs på den.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>* | Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Den här behörigheten krävs för käll återställas databas konto omfång för att lista de databas konton som kan återställas.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång.  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Den här behörigheten krävs för käll återställas för att tillåta läsning av återställas-resurser, till exempel en lista över databaser och behållare för ett återställas-konto.  | Den *RestorableDatabaseAccount* -resurs som tillhör det käll konto som återställs. Det här värdet anges också av `ID` egenskapen för databas konto resursen återställas. Ett exempel på återställas-konto är */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| Prenumerationen som innehåller återställas Database-kontot. Det går inte att välja resurs gruppen som omfång. |

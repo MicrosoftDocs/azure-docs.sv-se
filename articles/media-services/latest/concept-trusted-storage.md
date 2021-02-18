@@ -9,16 +9,19 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098086"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585403"
 ---
 # <a name="trusted-storage-for-media-services"></a>Betrodd lagring för Media Services
 
 När du skapar ett Media Services konto måste du associera det med ett lagrings konto. Media Services kan komma åt lagrings kontot med hjälp av systemautentisering eller hanterad identitets autentisering. Media Services verifierar att Media Services kontot och lagrings kontot finns i samma prenumeration och verifierar att användaren som lägger till associationen har åtkomst till lagrings kontot med Azure Resource Manager RBAC.
+
+>[!NOTE]
+>Betrodd lagring är endast tillgängligt i API och är för närvarande inte aktiverat i Azure Portal.
 
 ## <a name="trusted-storage-with-a-firewall"></a>Betrodd lagring med en brand vägg
 

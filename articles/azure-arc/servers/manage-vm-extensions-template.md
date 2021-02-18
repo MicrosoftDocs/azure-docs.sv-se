@@ -3,12 +3,12 @@ title: Aktivera VM-tillägg med Azure Resource Manager mall
 description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybrid moln miljöer med hjälp av en Azure Resource Manager-mall.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0115bda614133891275daff96c94dc4b1a680ccf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b84f9d4d13de3ce2d661e254528e1f0a304001f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555099"
+ms.locfileid: "100580927"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivera Azure VM-tillägg med ARM-mall
 
@@ -545,7 +545,7 @@ Om du vill använda PowerShell DSC-tillägget är följande exempel tillgänglig
 
 ## <a name="deploy-the-dependency-agent-extension"></a>Distribuera tillägget för beroende agent
 
-Om du vill använda tillägget Azure Monitor beroende agent, finns följande exempel på att köras på Windows och Linux. Om du inte är bekant med beroende agenten kan du läsa mer i [Översikt över Azure Monitor agenter](../../azure-monitor/platform/agents-overview.md#dependency-agent).
+Om du vill använda tillägget Azure Monitor beroende agent, finns följande exempel på att köras på Windows och Linux. Om du inte är bekant med beroende agenten kan du läsa mer i [Översikt över Azure Monitor agenter](../../azure-monitor/agents/agents-overview.md#dependency-agent).
 
 ### <a name="template-file-for-linux"></a>Mallfil för Linux
 

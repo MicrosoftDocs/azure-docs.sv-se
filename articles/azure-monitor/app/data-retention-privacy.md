@@ -4,12 +4,12 @@ description: Policy för kvarhållning och sekretess policy
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2205ab1115a66092ae6dd6d75ee7004ab281eec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579580"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datainsamling, kvarhållning och lagring i Application Insights
 
@@ -120,7 +120,7 @@ Ja, vissa telemetri-kanaler behåller data lokalt om det inte går att nå en sl
 
 Telemetri kanaler som använder lokala lagrings platser för att skapa temporära filer i katalogen TEMP eller APPDATA, som är begränsade till det specifika konto som kör programmet. Detta kan inträffa när en slut punkt tillfälligt var otillgänglig eller om du träffar begränsnings gränsen. När problemet har lösts fortsätter telemetri-kanalen att skicka alla nya och sparade data.
 
-Den här sparade informationen är inte krypterad lokalt. Om detta är ett problem, granskar du data och begränsar insamlingen av privata data. (Mer information finns i [Exportera och ta bort privata data](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
+Den här sparade informationen är inte krypterad lokalt. Om detta är ett problem, granskar du data och begränsar insamlingen av privata data. (Mer information finns i [Exportera och ta bort privata data](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data).)
 
 Om en kund behöver konfigurera den här katalogen med specifika säkerhets krav, kan den konfigureras per ramverk. Kontrol lera att processen som kör ditt program har Skriv behörighet till den här katalogen, men kontrol lera också att den här katalogen är skyddad för att undvika att telemetri läses av oönskade användare.
 
@@ -199,7 +199,7 @@ AzureLogHandler(
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hur gör jag för att skicka data till Application Insights med TLS 1,2?
 
-För att säkerställa säkerheten för data som överförs till Application Insights slut punkter rekommenderar vi att kunderna konfigurerar sina program att använda minst Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**och branschen flyttas snabbt till överge support för dessa äldre protokoll. 
+För att säkerställa säkerheten för data som överförs till Application Insights slut punkter rekommenderar vi att kunderna konfigurerar sina program att använda minst Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte** och branschen flyttas snabbt till överge support för dessa äldre protokoll. 
 
 [PCI Security Standards-rådet](https://www.pcisecuritystandards.org/) har angett en [tids gräns på 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) för att inaktivera äldre versioner av TLS/SSL och uppgradera till säkrare protokoll. När Azure har tagit över äldre support, om ditt program/klienter inte kan kommunicera via minst TLS 1,2 skulle du inte kunna skicka data till Application Insights. Den metod du behöver för att testa och verifiera att ditt programs TLS-stöd varierar beroende på operativ system/plattform och språk/ramverk som används i programmet.
 
@@ -220,7 +220,7 @@ Vi rekommenderar inte att du uttryckligen anger att ditt program ska använda TL
 | Windows Server 2012-2016 | Stöds och är aktiverat som standard. | Bekräfta att du fortfarande använder [standardinställningarna](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 och Windows Server 2008 R2 SP1 | Stöds, men är inte aktiverat som standard. | På sidan [Transport Layer Security (TLS) register inställningar](/windows-server/security/tls/tls-registry-settings) finns mer information om hur du aktiverar.  |
 | Windows Server 2008 SP2 | Stöd för TLS 1,2 kräver en uppdatering. | Se [Uppdatera för att lägga till stöd för TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) i Windows Server 2008 SP2. |
-|Windows Vista | Stöds inte. | E.t.
+|Windows Vista | Stöds inte. | Ej tillämpligt
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Kontrol lera vilken version av OpenSSL som din Linux-distribution körs på
 
@@ -240,7 +240,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Person uppgifter som lagras i Application Insights
 
-I [artikeln Application Insights personliga data](../platform/personal-data-mgmt.md) beskrivs det här problemet i djupet.
+I [artikeln Application Insights personliga data](../logs/personal-data-mgmt.md) beskrivs det här problemet i djupet.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kan mina användare stänga av Application Insights?
 Inte direkt. Vi tillhandahåller inte en växel som användarna kan använda för att stänga av Application Insights.
@@ -293,7 +293,7 @@ För [SDK: er för andra plattformar][platforms], se deras dokument.
 Du kan [stänga av vissa data genom att redigera ApplicationInsights.config][config]
 
 > [!NOTE]
-> Klientens IP-adress används för att härleda geografisk plats, men som standard är IP-data inte längre lagrade och alla nollor skrivs till det associerade fältet. Om du vill veta mer om personlig data hantering rekommenderar vi den här [artikeln](../platform/personal-data-mgmt.md#application-data). Om du behöver lagra IP-Datadata kommer vår [artikel för IP-adresser](./ip-collection.md) att vägleda dig genom dina alternativ.
+> Klientens IP-adress används för att härleda geografisk plats, men som standard är IP-data inte längre lagrade och alla nollor skrivs till det associerade fältet. Om du vill veta mer om personlig data hantering rekommenderar vi den här [artikeln](../logs/personal-data-mgmt.md#application-data). Om du behöver lagra IP-Datadata kommer vår [artikel för IP-adresser](./ip-collection.md) att vägleda dig genom dina alternativ.
 
 ## <a name="credits"></a>Krediter
 Den här produkten innehåller GeoLite2-data som skapats av MaxMind, som är tillgängliga från [https://www.maxmind.com](https://www.maxmind.com) .

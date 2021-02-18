@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 345d0d31528f7bdc40be4400e783ad5be45df72f
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930568"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584195"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Anpassad mått samling i .NET och .NET Core
 
@@ -109,7 +109,7 @@ Om vi tittar på vår Application Insights-resurs i loggar (analys) kan det här
 > [!NOTE]
 > Även om objektet för den obehandlade telemetri-posten inte innehöll en explicit sum-egenskap/ett fält när vi har infogat ett sådant. I det här fallet `value` representerar både `valueSum` egenskapen och samma sak.
 
-Du kan också få åtkomst till din anpassade metriska telemetri i avsnittet [_mått_](../platform/metrics-charts.md) i portalen. Både som en [logg-baserad och anpassad mått](pre-aggregated-metrics-log-metrics.md). (Skärm bilden nedan är ett exempel på en log-baserad.) ![Vyn mått Utforskaren](./media/get-metric/metrics-explorer.png)
+Du kan också få åtkomst till din anpassade metriska telemetri i avsnittet [_mått_](../essentials/metrics-charts.md) i portalen. Både som en [logg-baserad och anpassad mått](pre-aggregated-metrics-log-metrics.md). (Skärm bilden nedan är ett exempel på en log-baserad.) ![Vyn mått Utforskaren](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Cachelagra mått referens för användning med hög data flöde
 
@@ -302,6 +302,6 @@ SeverityLevel.Error);
 
 * [Lär dig mer ](./worker-service.md)om att övervaka Worker service-program.
 * För ytterligare information om [log-baserade och föraggregerade mått](./pre-aggregated-metrics-log-metrics.md).
-* [Metric Explorer](../platform/metrics-getting-started.md)
+* [Metric Explorer](../essentials/metrics-getting-started.md)
 * Så här aktiverar du Application Insights för [ASP.net Core program](asp-net-core.md)
 * Så här aktiverar du Application Insights för [ASP.NET-program](asp-net.md)

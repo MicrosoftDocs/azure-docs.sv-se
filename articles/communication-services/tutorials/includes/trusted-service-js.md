@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3bf0831084b9dd6f16d8208def87033fc0be2900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633321"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645321"
 ---
 ## <a name="download-code"></a>Hämta kod
 
@@ -74,13 +74,13 @@ Nu ska vi fortsätta att installera Azure Communication Services-biblioteken.
 
 ### <a name="install-communication-services-libraries"></a>Installera kommunikations tjänst bibliotek
 
-Vi använder `Administration` biblioteket för att skapa `User Access Tokens` .
+Vi använder `Identity` biblioteket för att skapa `User Access Tokens` .
 
 Använd `npm install` kommandot för att installera Azure Communication Services administrations klient bibliotek för Java Script.
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ I det här `--save` alternativet visas biblioteket som ett beroende i **package.
 `index.js`Importera gränssnittet för i filen överst i filen`CommunicationIdentityClient`
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>Generering av åtkomsttoken
@@ -136,7 +136,7 @@ Kör Azure-funktionen lokalt med `F5` . Detta initierar Azure-funktionen lokalt 
 
 Om du vill distribuera din Azure-funktion kan du följa [steg-för-steg-instruktioner](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)
 
-I allmänhet måste du:
+Sammanfattnings vis måste du:
 1. Logga in på Azure från Visual Studio
 2. Publicera ditt projekt på ditt Azure-konto. Här måste du välja en befintlig prenumeration.
 3. Skapa en ny Azure Function-resurs med hjälp av Visual Studio-guiden eller Använd en befintlig resurs. För en ny resurs måste du konfigurera den till önskad region, körning och unik identifierare.

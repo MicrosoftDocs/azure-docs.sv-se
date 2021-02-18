@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097698"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594395"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Storlekar för virtuella datorer i B-serien
 
@@ -109,7 +109,7 @@ S **: 135**% delas mellan de 8 vCPU som utgör storleken på den virtuella dator
 
 **A**: **kredit** måttet gör att du kan se hur många krediter din virtuella dator har varit bank och **ConsumedCredit** -måttet visar hur många CPU-krediter din virtuella dator har förbrukat från banken.    Du kan visa dessa mått från fönstret mått i portalen eller via programmering via Azure Monitor API: er.
 
-Mer information om hur du kommer åt mått data för Azure finns i [Översikt över mått i Microsoft Azure](../azure-monitor/platform/data-platform.md).
+Mer information om hur du kommer åt mått data för Azure finns i [Översikt över mått i Microsoft Azure](../azure-monitor/data-platform.md).
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>F: hur summeras och förbrukas krediter?
 

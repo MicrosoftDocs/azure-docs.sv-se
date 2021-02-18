@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ff4c3c5ae8629879fca6e9e683a9c77d0e2f144b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781931"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596117"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Över gång till mått i Azure Monitor
 
@@ -35,7 +35,7 @@ För att kunna övergå till mått i Azure Monitor rekommenderar vi följande me
    > [!NOTE]
    > Mått i Azure Monitor är aktiverade som standard, så det finns ingenting som du behöver göra för att börja samla in mått. Du måste dock skapa diagram eller instrument paneler för att visa dessa mått. 
  
-5. Om du har skapat varnings regler som baseras på klassiska lagrings mått ska du [skapa aviserings regler](../../azure-monitor/platform/alerts-overview.md) som baseras på mått i Azure Monitor. 
+5. Om du har skapat varnings regler som baseras på klassiska lagrings mått ska du [skapa aviserings regler](../../azure-monitor/alerts/alerts-overview.md) som baseras på mått i Azure Monitor. 
 
 6. När du har kunnat se alla dina mått i Azure Monitor kan du stänga av den klassiska loggningen. 
 
@@ -53,7 +53,7 @@ I mån av stöd för mått tillhandahåller klassiska mått endast **kapacitets*
 
 Om aktiviteten i ditt konto inte utlöser ett mått visar klassiska mått värdet noll (0) för det måttet. Mått i Azure Monitor kommer att utelämna data helt och hållet, vilket leder till renare rapporter. Till exempel med klassiska mått, om ingen server tids gräns har rapporter ATS, `ServerTimeoutError` anges värdet i mått tabellen till 0. Azure Monitor returnerar inga data när du frågar värdet för måttet `Transactions` med dimension som `ResponseType` är lika med `ServerTimeoutError` . 
 
-Mer information om mått i Azure Monitor finns i [mått i Azure Monitor](../../azure-monitor/platform/data-platform-metrics.md).
+Mer information om mått i Azure Monitor finns i [mått i Azure Monitor](../../azure-monitor/essentials/data-platform-metrics.md).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -61,7 +61,7 @@ Mer information om mått i Azure Monitor finns i [mått i Azure Monitor](../../a
 
  Använd de här tabellerna för att identifiera vilka mått i Azure Monitor ger samma data som de mått som du för närvarande använder. 
 
-**Kapacitets mått**
+**Kapacitetsmått**
 
 | Klassiskt mått | Mått i Azure Monitor |
 | ------------------- | ----------------- |
@@ -72,7 +72,7 @@ Mer information om mått i Azure Monitor finns i [mått i Azure Monitor](../../a
 > [!NOTE]
 > Det finns också flera nya kapacitets mått som inte är tillgängliga som klassiska mått. Om du vill visa den fullständiga listan, se [mått](../blobs/monitor-blob-storage-reference.md#metrics).
 
-**Transaktions mått**
+**Transaktionsmått**
 
 | Klassiskt mått | Mått i Azure Monitor |
 | ------------------- | ----------------- |

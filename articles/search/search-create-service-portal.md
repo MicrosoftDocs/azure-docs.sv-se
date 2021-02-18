@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 7149233782815deebebde53767a3c654ac2321bb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547765"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573050"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
 
@@ -27,9 +27,9 @@ Du kan skapa Sök tjänsten med hjälp av [Azure Portal](https://portal.azure.co
 
 Följande tjänst egenskaper har åtgärd ATS för livs längden för tjänsten – om du ändrar någon av dem krävs en ny tjänst. Eftersom de är fasta bör du tänka på användnings konsekvenserna när du fyller i varje egenskap:
 
-* Tjänst namnet blir en del av URL-slutpunkten ([gransknings tips](#name-the-service) för användbara tjänst namn).
-* [Tjänst nivån](search-sku-tier.md) påverkar faktureringen och ställer in en övre gräns för kapacitet. Vissa funktioner är inte tillgängliga på den kostnads fria nivån.
-* Tjänste region kan avgöra om vissa scenarier är tillgängliga. Om du behöver [hög säkerhetsfunktioner](search-security-overview.md) eller [AI-berikning](cognitive-search-concept-intro.md)måste du skapa Azure-kognitiv sökning i samma region som andra tjänster, eller i regioner som tillhandahåller funktionen i fråga. 
++ Tjänst namnet blir en del av URL-slutpunkten ([gransknings tips](#name-the-service) för användbara tjänst namn).
++ [Tjänst nivån](search-sku-tier.md) påverkar faktureringen och ställer in en övre gräns för kapacitet. Vissa funktioner är inte tillgängliga på den kostnads fria nivån.
++ Tjänste region kan avgöra om vissa scenarier är tillgängliga. Om du behöver [hög säkerhetsfunktioner](search-security-overview.md) eller [AI-berikning](cognitive-search-concept-intro.md)måste du skapa Azure-kognitiv sökning i samma region som andra tjänster, eller i regioner som tillhandahåller funktionen i fråga. 
 
 ## <a name="subscribe-free-or-paid"></a>Prenumerera (kostnadsfritt eller betalt)
 
@@ -72,30 +72,30 @@ I instans information anger du ett tjänst namn i **URL** -fältet. Namnet är e
 
 Kraven för tjänstnamn:
 
-* Det måste vara unikt inom namnområdet search.windows.net
-* Det måste vara mellan 2 och 60 tecken långt
-* Du måste använda små bokstäver, siffror eller bindestreck ("-")
-* Använd inte bindestreck ("-") i de första 2 tecknen eller som det sista enkla tecknet
-* Du får inte använda flera bindestreck ("--") var som helst
++ Det måste vara unikt inom namnområdet search.windows.net
++ Det måste vara mellan 2 och 60 tecken långt
++ Du måste använda små bokstäver, siffror eller bindestreck ("-")
++ Använd inte bindestreck ("-") i de första 2 tecknen eller som det sista enkla tecknet
++ Du får inte använda flera bindestreck ("--") var som helst
 
 > [!TIP]
 > Om du tror att du kommer att använda flera tjänster rekommenderar vi att du inkluderar regionen (eller platsen) i tjänst namnet som en namngivnings konvention. Tjänster inom samma region kan utbyta data utan kostnad, så om Azure Kognitiv sökning är i västra USA och du har andra tjänster även i västra USA `mysearchservice-westus` kan du spara en resa på sidan Egenskaper när du bestämmer hur du ska kombinera eller bifoga resurser.
 
 ## <a name="choose-a-location"></a>Välj en plats
 
-Azure Kognitiv sökning är tillgängligt i de flesta regioner, enligt beskrivningen på [sidan med priser](https://azure.microsoft.com/pricing/details/search/).
+Azure Kognitiv sökning är tillgängligt i de flesta regioner, enligt beskrivningen i de [produkter som är tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?products=search). Om du använder flera Azure-tjänster väljer du i allmänhet en region som också är värd för dina data eller program tjänster. Detta minimerar eller avvärderar bandbredds avgifter för utgående data (det kostar inget att debitera utgående data när tjänsterna är i samma region).
 
-Om du använder flera Azure-tjänster väljer du i allmänhet en region som också är värd för dina data eller program tjänster. Detta minimerar eller avvärderar bandbredds avgifter för utgående data (det kostar inget att debitera utgående data när tjänsterna är i samma region).
++ [AI-anrikning](cognitive-search-concept-intro.md) kräver Cognitive Services vara i samma fysiska region som Azure kognitiv sökning. Det innebär att några regioner inte tillhandahåller båda funktionerna. Sidan [produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=search) indikerar dubbel tillgänglighet genom att visa två staplade kryss rutor. En otillgänglig kombination saknar en bock markering:
 
-Kunder med krav på affärs kontinuitet och haveri beredskap (BCDR) bör skapa sina tjänster i [regionala par](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om du till exempel arbetar i Nordamerika kan du välja östra USA och västra USA, norra centrala USA och södra Central oss, för varje tjänst.
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regional tillgänglighet" border="true":::
 
-Följande funktioner är bara tillgängliga i vissa regioner:
++ Krav för affärs kontinuitet och haveri beredskap (BCDR) bör uppfyllas genom att flera Sök tjänster skapas i [regionala par](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om du till exempel arbetar i Nordamerika kan du välja östra USA och västra USA, norra centrala USA och södra Central oss, för varje Sök tjänst.
 
-* AI-anrikning kräver Cognitive Services vara i samma region som Azure Kognitiv sökning. Välj [region för Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) först (listan är mindre) och välj sedan samma region för Sök tjänsten.
+Några funktioner har begränsad tillgänglighet baserat på regioner. Begränsningar beskrivs i funktions dokumentationen:
 
-* Double Encryption är bara tillgängligt i vissa regioner. Mer information finns i [Double Encryption](search-security-overview.md#double-encryption)
++ [Dubbel kryptering](search-security-overview.md#double-encryption)
 
-* Support för tillgänglighets zonen erbjuds i vissa regioner på tjänster som skapats efter angivna datum. Mer information finns [i "Tillgänglighetszoner" i skalning för prestanda](search-performance-optimization.md#availability-zones).
++ ["Tillgänglighetszoner" i skalning för prestanda](search-performance-optimization.md#availability-zones).
 
 ## <a name="choose-a-pricing-tier"></a>Välj en pris nivå
 
@@ -121,7 +121,7 @@ Om du inte använder portalen kräver program mässig åtkomst till din nya tjä
 
 1. På sidan **Översikt** letar du upp och kopierar URL-slutpunkten på höger sida av sidan.
 
-2. På sidan **nycklar** kopierar du antingen en av administratörs nycklarna (de är likvärdiga). API-administratörsnycklarna krävs för att skapa, uppdatera och ta bort objekt i tjänsten. Som kontrast ger frågeinställningar Läs åtkomst till index innehåll.
+1. På sidan **nycklar** kopierar du antingen en av administratörs nycklarna (de är likvärdiga). API-administratörsnycklarna krävs för att skapa, uppdatera och ta bort objekt i tjänsten. Som kontrast ger frågeinställningar Läs åtkomst till index innehåll.
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Översikts sida för tjänsten med URL-slutpunkt" border="false":::
 
@@ -141,8 +141,8 @@ Om du lägger till resurser blir din månatliga faktura större. [Priskalkylator
 > En tjänst måste ha [2 repliker för skrivskyddad SLA och 3 repliker för läs-/skriv-SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Gå till söktjänstsidan i Azure-portalen.
-2. I det vänstra navigerings fönstret väljer du **Inställningar**  >  **skala**.
-3. Använd reglaget om du vill lägga till resurser av endera typ.
+1. I det vänstra navigerings fönstret väljer du **Inställningar**  >  **skala**.
+1. Använd reglaget om du vill lägga till resurser av endera typ.
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Lägg till kapacitet via repliker och partitioner" border="false":::
 

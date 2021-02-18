@@ -7,12 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620dadbaba049d6baea54b3b64c9e248fc48004a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87045776"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573446"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Övervaka resurs grupper med Azure Monitor (för hands version)
 
@@ -46,9 +46,9 @@ Sidan resurs grupp insikter innehåller flera andra verktyg som är begränsade 
 
    |         |          |
    | ---------------- |:-----|
-   | [**Aviseringar**](../platform/alerts-overview.md)      |  Visa, skapa och hantera dina aviseringar. |
-   | [**Mått**](../platform/data-platform.md) | Visualisera och utforska dina Metric-baserade data.    |
-   | [**Aktivitets loggar**](../platform/platform-logs-overview.md) | Händelser på prenumerations nivå som har inträffat i Azure.  |
+   | [**Aviseringar**](../alerts/alerts-overview.md)      |  Visa, skapa och hantera dina aviseringar. |
+   | [**Mått**](../data-platform.md) | Visualisera och utforska dina Metric-baserade data.    |
+   | [**Aktivitets loggar**](../essentials/platform-logs-overview.md) | Händelser på prenumerations nivå som har inträffat i Azure.  |
    | [**Program karta**](../app/app-map.md) | Navigera i den distribuerade appens topologi för att identifiera Flask halsar för prestanda eller felaktiga hotspots. |
 
 ## <a name="failures-and-performance"></a>Haverier och prestanda
@@ -113,10 +113,10 @@ Om du vill visa aviseringar i Azure Monitor för resurs grupper måste någon me
 
 Azure Monitor för resurs grupper förlitar sig på Azure Monitor aviserings hanterings system för att hämta aviserings status. Aviserings hantering har inte kon figurer ATS för varje resurs grupp och prenumeration som standard, och den kan bara aktive ras av någon med rollen ägare eller deltagare. Den kan aktive ras antingen av:
 * Öppnar Azure Monitor för resurs grupper för alla resurs grupper i prenumerationen.
-* Eller genom att gå till prenumerationen, klicka på **Resource providers**och sedan klicka på **Registrera för aviseringar. hantering**.
+* Eller genom att gå till prenumerationen, klicka på **Resource providers** och sedan klicka på **Registrera för aviseringar. hantering**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Monitor arbets böcker](../platform/workbooks-overview.md)
+- [Azure Monitor arbets böcker](../visualize/workbooks-overview.md)
 - [Azure Resource Health](../../service-health/resource-health-overview.md)
-- [Azure Monitor-aviseringar](../platform/alerts-overview.md)
+- [Azure Monitor-aviseringar](../alerts/alerts-overview.md)

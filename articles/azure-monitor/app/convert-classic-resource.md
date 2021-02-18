@@ -3,12 +3,12 @@ title: Migrera en Azure Monitor Application Insights klassisk resurs till en arb
 description: Lär dig mer om de steg som krävs för att uppgradera din Azure Monitor Application Insights Classic-resurs till den nya arbets ytans-baserade modellen.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945103"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584250"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrera till arbets ytans baserade Application Insights resurser
 
@@ -22,21 +22,21 @@ Arbets ytans resurser möjliggör gemensam Azure-rollbaserad åtkomst kontroll (
 
 Med arbets ytans baserade Application Insights kan du dra nytta av alla de senaste funktionerna i Azure Monitor och Log Analytics inklusive:
 
-* [Kundhanterade nycklar (CMK)](../platform/customer-managed-keys.md) tillhandahåller kryptering i vila för dina data med krypterings nycklar som bara du har åtkomst till.
-* Med [Azures privata länk](../platform/private-link-security.md) kan du på ett säkert sätt länka Azure PaaS-tjänster till ditt virtuella nätverk med hjälp av privata slut punkter.
+* [Kundhanterade nycklar (CMK)](../logs/customer-managed-keys.md) tillhandahåller kryptering i vila för dina data med krypterings nycklar som bara du har åtkomst till.
+* Med [Azures privata länk](../logs/private-link-security.md) kan du på ett säkert sätt länka Azure PaaS-tjänster till ditt virtuella nätverk med hjälp av privata slut punkter.
 * [Ta med din egen lagring (BYOS) för profiler och Snapshot debugger](./profiler-bring-your-own-storage.md) ger dig fullständig kontroll över principen för kryptering vid vila, livs längds hanterings principen och nätverks åtkomst för alla data som är kopplade till Application Insights Profiler och Snapshot debugger. 
-* Med [kapacitet reservations nivåer](../platform/manage-cost-storage.md#pricing-model) kan du spara så mycket som 25% jämfört med priset betala per användning. 
+* Med [kapacitet reservations nivåer](../logs/manage-cost-storage.md#pricing-model) kan du spara så mycket som 25% jämfört med priset betala per användning. 
 * Snabbare data inmatning via Log Analytics strömning.
 
 ## <a name="migration-process"></a>Migreringsprocessen
 
 När du migrerar till en arbets yta-baserad resurs överförs inga data från den klassiska resursens lagring till den nya arbets ytan-baserade lagringen. Om du väljer att migrera kommer i stället att ändra den plats där nya data skrivs till en Log Analytics-arbetsyta samtidigt som åtkomsten till dina klassiska resurs data bevaras. 
 
-Dina klassiska resurs data behålls och omfattas av inställningarna för kvarhållning på den klassiska Application Insights-resursen. Alla nya data inmatnings flyttning kommer att omfattas av [inställningarna för kvarhållning](../platform/manage-cost-storage.md#change-the-data-retention-period) av den associerade Log Analytics-arbetsytan, som också har stöd för [olika bevarande inställningar efter datatyp](../platform/manage-cost-storage.md#retention-by-data-type).
+Dina klassiska resurs data behålls och omfattas av inställningarna för kvarhållning på den klassiska Application Insights-resursen. Alla nya data inmatnings flyttning kommer att omfattas av [inställningarna för kvarhållning](../logs/manage-cost-storage.md#change-the-data-retention-period) av den associerade Log Analytics-arbetsytan, som också har stöd för [olika bevarande inställningar efter datatyp](../logs/manage-cost-storage.md#retention-by-data-type).
 Migreringsprocessen är **permanent och kan inte ångras**. När du migrerar en resurs till arbets ytans baserade Application Insights är det alltid en arbets ytans-baserade resurs. När du migrerar kan du dock ändra mål arbets ytan så ofta som det behövs. 
 
 > [!NOTE]
-> Data inmatning och kvarhållning för arbets ytans baserade Application Insights resurser [faktureras via arbets ytan Log Analytics](../platform/manage-cost-storage.md) där data finns. Om du har valt data kvarhållning som är större än 90 dagar på data som matas in i den klassiska Application Insights-resursen före migreringen, kommer datakvarhållning fortsätta att debiteras genom den Application Insights resursen. [Läs mer]( ./pricing.md#workspace-based-application-insights) om fakturering för arbets ytans baserade Application Insights-resurser.
+> Data inmatning och kvarhållning för arbets ytans baserade Application Insights resurser [faktureras via arbets ytan Log Analytics](../logs/manage-cost-storage.md) där data finns. Om du har valt data kvarhållning som är större än 90 dagar på data som matas in i den klassiska Application Insights-resursen före migreringen, kommer datakvarhållning fortsätta att debiteras genom den Application Insights resursen. [Läs mer]( ./pricing.md#workspace-based-application-insights) om fakturering för arbets ytans baserade Application Insights-resurser.
 
 Om du inte behöver migrera en befintlig resurs och istället vill skapa en ny arbets yta-baserad Application Insights resurs använder du [guiden skapa arbets yta](create-workspace-resource.md).
 
@@ -44,12 +44,12 @@ Om du inte behöver migrera en befintlig resurs och istället vill skapa en ny a
 
 - En Log Analytics-arbetsyta med åtkomst kontrol läget inställt på **`use resource or workspace permissions`** inställningen. 
 
-    - Arbets ytans baserade Application Insights resurser är inte kompatibla med arbets ytor som har angetts till den dedikerade **`workspace based permissions`** inställningen. Om du vill veta mer om åtkomst kontroll för Log Analytics arbets yta läser du avsnittet [Log Analytics konfigurera åtkomst kontroll läge](../platform/manage-access.md#configure-access-control-mode)
+    - Arbets ytans baserade Application Insights resurser är inte kompatibla med arbets ytor som har angetts till den dedikerade **`workspace based permissions`** inställningen. Om du vill veta mer om åtkomst kontroll för Log Analytics arbets yta läser du avsnittet [Log Analytics konfigurera åtkomst kontroll läge](../logs/manage-access.md#configure-access-control-mode)
 
-    - Om du inte redan har en befintlig Log Analytics arbets yta kan du [läsa dokumentationen för att skapa Log Analytics arbets ytor](../learn/quick-create-workspace.md).
+    - Om du inte redan har en befintlig Log Analytics arbets yta kan du [läsa dokumentationen för att skapa Log Analytics arbets ytor](../logs/quick-create-workspace.md).
     
 - Kontinuerlig export stöds inte för arbets ytans resurser och måste inaktive ras.
-När migreringen är klar kan du använda [diagnostikinställningar](../platform/diagnostic-settings.md) för att konfigurera data arkivering till ett lagrings konto eller strömma till Azure Event Hub.  
+När migreringen är klar kan du använda [diagnostikinställningar](../essentials/diagnostic-settings.md) för att konfigurera data arkivering till ett lagrings konto eller strömma till Azure Event Hub.  
 
 - Kontrol lera de aktuella inställningarna för kvarhållning under **allmän**  >  **användning och uppskattade kostnader**  >  **data lagring** för din Log Analytics-arbetsyta. Den här inställningen påverkar hur länge alla nya inmatade data lagras när du migrerar din Application Insights-resurs. Om du för närvarande lagrar Application Insights data som är längre än standardvärdet 90 dagar och vill behålla denna större kvarhållningsperiod, kan du behöva justera inställningarna för kvarhållning av arbets yta.
 
@@ -209,7 +209,7 @@ I fönstret Application Insights resurs väljer du **Egenskaper**  >  **ändra a
 
 **Fel meddelande:** *den valda arbets ytan har kon figurer ATS med arbets ytans-baserat åtkomst läge. Vissa APM-funktioner kan påverkas. Välj en annan arbets yta eller Tillåt resurs-baserad åtkomst i inställningar för arbets ytan. Du kan åsidosätta det här felet med CLI.* 
 
-För att din arbets yta-baserade Application Insights resurs ska fungera korrekt måste du ändra åtkomst kontrol läget för mål Log Analytics arbets ytan till inställningen **resurs eller arbets ytans behörigheter** . Den här inställningen finns i användar gränssnittet för Log Analytics arbets yta under **Egenskaper**  >  **åtkomst kontrol läge**. Detaljerade anvisningar finns i [Log Analytics konfigurera åtkomst kontroll läges guide](../platform/manage-access.md#configure-access-control-mode). Om ditt åtkomst kontroll läge är inställt på inställningen exklusiv **Kräv arbets ytans behörighet** , är migreringen via portalens migrering fortfarande blockerad.
+För att din arbets yta-baserade Application Insights resurs ska fungera korrekt måste du ändra åtkomst kontrol läget för mål Log Analytics arbets ytan till inställningen **resurs eller arbets ytans behörigheter** . Den här inställningen finns i användar gränssnittet för Log Analytics arbets yta under **Egenskaper**  >  **åtkomst kontrol läge**. Detaljerade anvisningar finns i [Log Analytics konfigurera åtkomst kontroll läges guide](../logs/manage-access.md#configure-access-control-mode). Om ditt åtkomst kontroll läge är inställt på inställningen exklusiv **Kräv arbets ytans behörighet** , är migreringen via portalens migrering fortfarande blockerad.
 
 Om du inte kan ändra åtkomst kontrol läget av säkerhets skäl för din aktuella mål arbets yta, rekommenderar vi att du skapar en ny Log Analytics arbets yta som ska användas för migreringen. 
 
@@ -229,7 +229,7 @@ Om du inte kan ändra åtkomst kontrol läget av säkerhets skäl för din aktue
 
 - När du har valt inaktivera kan du gå tillbaka till migreringens användar gränssnitt. Om sidan Redigera kontinuerlig export visar att dina inställningar inte sparas kan du välja OK för den här frågan eftersom den inte gäller för att inaktivera/aktivera kontinuerlig export.
 
-- När du har migrerat Application Insights-resursen till arbets ytans baserade, kan du använda diagnostikinställningar för att ersätta de funktioner som kontinuerliga exporter använder för att tillhandahålla. Välj **diagnostikinställningar**  >  **Lägg till diagnostisk inställning** inifrån din Application Insights-resurs. Du kan välja alla tabeller eller en delmängd av tabeller för att arkivera till ett lagrings konto eller strömma till en Azure Event Hub. Detaljerad vägledning om diagnostikinställningar finns i [vägledningen för Azure Monitor Diagnostic-inställningar](../platform/diagnostic-settings.md).
+- När du har migrerat Application Insights-resursen till arbets ytans baserade, kan du använda diagnostikinställningar för att ersätta de funktioner som kontinuerliga exporter använder för att tillhandahålla. Välj **diagnostikinställningar**  >  **Lägg till diagnostisk inställning** inifrån din Application Insights-resurs. Du kan välja alla tabeller eller en delmängd av tabeller för att arkivera till ett lagrings konto eller strömma till en Azure Event Hub. Detaljerad vägledning om diagnostikinställningar finns i [vägledningen för Azure Monitor Diagnostic-inställningar](../essentials/diagnostic-settings.md).
 
 ### <a name="retention-settings"></a>Inställningar för kvarhållning
 
@@ -241,5 +241,5 @@ Du kan kontrol lera de aktuella inställningarna för kvarhållning för Log Ana
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Utforska mått](../platform/metrics-charts.md)
-* [Skriv analysfrågor](../log-query/log-query-overview.md)
+* [Utforska mått](../essentials/metrics-charts.md)
+* [Skriv analysfrågor](../logs/log-query-overview.md)

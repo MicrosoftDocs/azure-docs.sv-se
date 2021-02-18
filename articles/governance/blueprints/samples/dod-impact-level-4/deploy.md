@@ -3,12 +3,12 @@ title: DoD effekt nivå 4 skiss exempel
 description: Distribuera steg för DoD-effekt på nivå 4, inklusive information om skiss artefakts parametrar.
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 40f45d1194ae089010edf308c3b110bc97591613
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033769"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594803"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>Distribuera DoD-effekt nivå 4-skiss exemplet
 
@@ -109,7 +109,7 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |Distribuera Log Analytics agent för virtuella Windows-datorer|Principtilldelning|Valfritt: lista över virtuella dator avbildningar som har stöd för Windows OS som ska läggas till i omfånget|En tom matris kan användas för att ange inga valfria parametrar: \[\]|
 |\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Medlemmar som ska ingå i den lokala gruppen Administratörer|En semikolonavgränsad lista med medlemmar som ska uteslutas i den lokala gruppen Administratörer. T. ex. administratör; Mina Användare1; myUser2|
 |\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Medlemmar som ska uteslutas i den lokala gruppen Administratörer|En semikolonavgränsad lista med medlemmar som ska ingå i den lokala gruppen Administratörer. T. ex. administratör; Mina Användare1; myUser2|
-|\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar giltiga värden i [Azure Monitor-diagnostiska loggar scheman](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
+|\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Lista över resurs typer som ska ha diagnostiska loggar aktiverade|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar giltiga värden i [Azure Monitor-diagnostiska loggar scheman](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas).|
 |\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Log Analytics arbetsyte-ID som virtuella datorer ska konfigureras för|Detta är ID (GUID) för Log Analytics arbets ytan som de virtuella datorerna ska konfigureras för.|
 |\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Långsiktig Geo-redundant säkerhets kopiering ska aktive ras för Azure SQL-databaser|Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|
 |\[För hands version \] : DoD-effekt nivå 4|Principtilldelning|Sårbarhets bedömning ska vara aktiverat på SQL-hanterade instanser|Information om princip effekter finns i [förstå Azure policys effekter](../../../policy/concepts/effects.md).|

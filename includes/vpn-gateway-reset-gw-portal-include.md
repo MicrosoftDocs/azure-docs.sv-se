@@ -5,18 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 02/16/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f80fe9865c551e41e061d53872afae14fc14e2ad
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 768112c5cd5ab39333a6d0df68b1c6223ad2c999
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645525"
 ---
-1. I portalen går du till den virtuella Nätverksgatewayen som du vill återställa.
+1. I portalen navigerar du till den virtuella nätverksgateway som du vill återställa.
 1. På sidan för den virtuella Nätverksgatewayen väljer du **Återställ**.
 
-   :::image type="content" source="./media/vpn-gateway-reset-gw-portal/reset.png" alt-text="Återställ Gateway":::
-1. På sidan **Återställ** väljer du **Återställ**. När kommandot har utfärdats startas den aktuella aktiva instansen av Azure VPN-gatewayen om omedelbart. Att återställa gatewayen kommer att orsaka en lucka i VPN-anslutningen och kan begränsa framtida rotor Saks analys av problemet.
+   :::image type="content" source="./media/vpn-gateway-reset-gw-portal/menu.png" alt-text="Meny-Återställ Gateway":::
+1. På sidan **Återställ** klickar du på **Återställ**. När kommandot ges startas den aktuella aktiva instansen av Azures VPN-gateway om omedelbart. Om du återställer gatewayen skapas en lucka i VPN-anslutningen, vilket kan begränsa framtida rotorsaksanalyser av problemet.
+
+   :::image type="content" source="./media/vpn-gateway-reset-gw-portal/reset.png" alt-text="Återställ Gateway" lightbox="./media/vpn-gateway-reset-gw-portal/reset.png":::
