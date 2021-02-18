@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677571"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591543"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Förhindra auktorisering av delad nyckel för ett Azure Storage konto (förhands granskning)
 
@@ -41,7 +41,7 @@ Mer information om hur du tolkar begär Anden som görs med en signatur för del
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>Övervaka hur många begär Anden som är auktoriserade med delad nyckel
 
-Om du vill spåra hur förfrågningar till ett lagrings konto auktoriseras använder du Azure Metrics Explorer i Azure Portal. Mer information om Metrics Explorer finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Om du vill spåra hur förfrågningar till ett lagrings konto auktoriseras använder du Azure Metrics Explorer i Azure Portal. Mer information om Metrics Explorer finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Följ dessa steg om du vill skapa ett mått som spårar begär Anden som görs med delad nyckel eller SAS:
 
@@ -67,7 +67,7 @@ När du har konfigurerat måttet kommer förfrågningar till ditt lagrings konto
 
 :::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Skärm bild som visar sammanställda begär Anden som har auktoriserats med delad nyckel":::
 
-Du kan också konfigurera en varnings regel för att meddela dig när ett visst antal begär Anden som är auktoriserade med delad nyckel görs mot ditt lagrings konto. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-metric.md).
+Du kan också konfigurera en varnings regel för att meddela dig när ett visst antal begär Anden som är auktoriserade med delad nyckel görs mot ditt lagrings konto. Mer information finns i [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-metric.md).
 
 ### <a name="analyze-logs-to-identify-clients-that-are-authorizing-requests-with-shared-key-or-sas"></a>Analysera loggar för att identifiera klienter som auktoriserar begär Anden med delad nyckel eller SAS
 
@@ -75,14 +75,14 @@ Azure Storage loggar fångar information om begär Anden som gjorts mot lagrings
 
 Om du vill logga förfrågningar till ditt Azure Storage-konto för att utvärdera hur de är auktoriserade kan du använda Azure Storage inloggning Azure Monitor (för hands version). Mer information finns i [övervaka Azure Storage](../blobs/monitor-blob-storage.md).
 
-Azure Storage loggning i Azure Monitor har stöd för att använda logg frågor för att analysera loggdata. Om du vill söka i loggar kan du använda en Azure Log Analytics-arbetsyta. Mer information om logg frågor finns i [Självstudier: komma igång med Log Analytics frågor](../../azure-monitor/log-query/log-analytics-tutorial.md).
+Azure Storage loggning i Azure Monitor har stöd för att använda logg frågor för att analysera loggdata. Om du vill söka i loggar kan du använda en Azure Log Analytics-arbetsyta. Mer information om logg frågor finns i [Självstudier: komma igång med Log Analytics frågor](../../azure-monitor/logs/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Skapa en diagnostisk inställning i Azure Portal
 
 Om du vill logga Azure Storage data med Azure Monitor och analysera dem med Azure Log Analytics måste du först skapa en diagnostisk inställning som anger vilka typer av begär Anden och för vilka lagrings tjänster du vill logga data. Följ dessa steg om du vill skapa en diagnostisk inställning i Azure Portal:
 
 1. Registrera dig för för [hands versionen av Azure Storage i Azure Monitor](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
-1. Skapa en ny Log Analytics-arbetsyta i prenumerationen som innehåller ditt Azure Storage-konto eller Använd en befintlig Log Analytics-arbetsyta. När du har konfigurerat loggning för ditt lagrings konto är loggarna tillgängliga i Log Analytics arbets ytan. Mer information finns i [skapa en Log Analytics arbets yta i Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+1. Skapa en ny Log Analytics-arbetsyta i prenumerationen som innehåller ditt Azure Storage-konto eller Använd en befintlig Log Analytics-arbetsyta. När du har konfigurerat loggning för ditt lagrings konto är loggarna tillgängliga i Log Analytics arbets ytan. Mer information finns i [skapa en Log Analytics arbets yta i Azure Portal](../../azure-monitor/logs/quick-create-workspace.md).
 1. Navigera till ditt lagringskonto i Azure-portalen.
 1. I avsnittet övervakning väljer du **diagnostikinställningar (för hands version)**.
 1. Välj den Azure Storage tjänst som du vill logga förfrågningar för. Välj till exempel **BLOB** för att logga förfrågningar till Blob Storage.
@@ -95,7 +95,7 @@ Om du vill logga Azure Storage data med Azure Monitor och analysera dem med Azur
 
 Du kan skapa en diagnostisk inställning för varje typ av Azure Storage resurs i ditt lagrings konto.
 
-Efter att du har skapat den diagnostiska inställningen loggas begär anden till lagrings kontot sedan i enlighet med den inställningen. Mer information finns i [skapa diagnostisk inställning för insamling av resurs loggar och mått i Azure](../../azure-monitor/platform/diagnostic-settings.md).
+Efter att du har skapat den diagnostiska inställningen loggas begär anden till lagrings kontot sedan i enlighet med den inställningen. Mer information finns i [skapa diagnostisk inställning för insamling av resurs loggar och mått i Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 En referens för fält som är tillgängliga i Azure Storage loggar i Azure Monitor finns i [resurs loggar (för hands version)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview).
 
@@ -110,7 +110,7 @@ StorageBlobLogs
 | top 10 by count_ desc
 ```
 
-Du kan också konfigurera en varnings regel baserat på den här frågan för att meddela dig om begär Anden som har behörighet med delad nyckel eller SAS. Mer information finns i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-log.md).
+Du kan också konfigurera en varnings regel baserat på den här frågan för att meddela dig om begär Anden som har behörighet med delad nyckel eller SAS. Mer information finns i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-log.md).
 
 ## <a name="remediate-authorization-via-shared-key"></a>Åtgärda auktorisering via delad nyckel
 
@@ -193,13 +193,13 @@ resources
 
 ## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>Behörigheter för att tillåta eller neka åtkomst till delad nyckel
 
-Om du vill ange egenskapen **AllowSharedKeyAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar åtgärden **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \** _. Inbyggda roller med den här åtgärden är:
+Om du vill ange egenskapen **AllowSharedKeyAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \*** action. Inbyggda roller med den här åtgärden är:
 
 - Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
 - Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
 - Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De inkluderar dock * Microsoft. Storage/storageAccounts/listnycklar/Action * *, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
+Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De innehåller dock **Microsoft. Storage/storageAccounts/listnycklar/Action**, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
 
 Roll tilldelningar måste begränsas till lagrings kontots nivå eller högre för att en användare ska kunna tillåta eller neka åtkomst till delad nyckel för lagrings kontot. Mer information om roll omfattning finns i [förstå omfattning för Azure RBAC](../../role-based-access-control/scope-overview.md).
 

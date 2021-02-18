@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: bfbd93cc3d4e67c8a96a1413221fdd7190c4f0b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060168"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572625"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Metod tips och fel söknings guide för Node-program i Azure App Service Windows
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Mitt Node-program förbrukar för mycket processor
 
-Du kan få rekommendationer från Azure App Service på portalen om hög CPU-förbrukning. Du kan också konfigurera Övervakare för att se vissa [mått](web-sites-monitor.md). När du kontrollerar CPU-användningen på [Azure Portal instrument panelen](../azure-monitor/platform/metrics-charts.md)kontrollerar du Max värdena för CPU så att du inte saknar högsta tillåtna värden.
+Du kan få rekommendationer från Azure App Service på portalen om hög CPU-förbrukning. Du kan också konfigurera Övervakare för att se vissa [mått](web-sites-monitor.md). När du kontrollerar CPU-användningen på [Azure Portal instrument panelen](../azure-monitor/essentials/metrics-charts.md)kontrollerar du Max värdena för CPU så att du inte saknar högsta tillåtna värden.
 Om du tror att ditt program förbrukar för mycket CPU och du inte kan förklara varför kan du profilera ditt Node-program för att ta reda på det.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilering av Node-programmet på Azure App Service med V8-Profiler
@@ -213,7 +213,7 @@ Du kan se att 95% av tiden har använts av funktionen WriteConsoleLog. Utdata vi
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Mitt Node-program förbrukar för mycket minne
 
-Om ditt program förbrukar för mycket minne visas ett meddelande från Azure App Service på portalen om hög minnes användning. Du kan ställa in Övervakare för att se vissa [mått](web-sites-monitor.md). När du kontrollerar minnes användningen på [Azure Portal-instrumentpanelen](../azure-monitor/platform/metrics-charts.md)måste du kontrol lera högsta tillåtna värden för minne så att du inte kan missa topp-värdena.
+Om ditt program förbrukar för mycket minne visas ett meddelande från Azure App Service på portalen om hög minnes användning. Du kan ställa in Övervakare för att se vissa [mått](web-sites-monitor.md). När du kontrollerar minnes användningen på [Azure Portal-instrumentpanelen](../azure-monitor/essentials/metrics-charts.md)måste du kontrol lera högsta tillåtna värden för minne så att du inte kan missa topp-värdena.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Läcka avkänning och heap-diff för node.js
 

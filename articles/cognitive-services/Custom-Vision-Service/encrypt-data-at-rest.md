@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 6c65f28c040b15aaa2ec8f3425209351e4b60486
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 822a4249b6ed054f36605d0367803da68bab090b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100524543"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652266"
 ---
 # <a name="custom-vision-encryption-of-data-at-rest"></a>Custom Vision kryptering av data i vila
 
@@ -24,15 +24,6 @@ Azure Custom Vision krypterar automatiskt dina data när de sparas i molnet. Cus
 
 > [!IMPORTANT]
 > Kundhanterade nycklar är bara tillgängliga resurser som skapats efter 11 maj 2020. Om du vill använda CMK med Custom Vision måste du skapa en ny Custom Vision resurs. När resursen har skapats kan du använda Azure Key Vault för att konfigurera din hanterade identitet.
-
-## <a name="regional-availability"></a>Regional tillgänglighet
-
-Kundhanterade nycklar är för närvarande tillgängliga i följande regioner:
-
-* USA, södra centrala
-* USA, västra 2
-* East US
-* US Gov, Virginia
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

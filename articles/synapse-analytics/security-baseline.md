@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5e2f6d8ca1f3911959f396eb1ed77ce8377c0e3c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807843"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585117"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azures säkerhets bas linje för Azure Synapse Analytics
 
@@ -167,9 +167,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till din DEDIKERADe SQL-pool. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -237,7 +237,7 @@ Granskning kan aktive ras både på databas-eller server nivå och rekommenderas
 
 * [Hantera Azure Blob Storage-livscykeln](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Så här ställer du in logg behållar parametrar i en Log Analytics-arbetsyta](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Så här ställer du in logg behållar parametrar i en Log Analytics-arbetsyta](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Avbilda strömmande händelser i Event Hubs](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Auktoriseringen styrs av ditt användar kontos databas roll medlemskap och behö
 
 Dessutom kan du ställa in aviseringar för databaser i SQL Synapse-poolen med hjälp av Azure Portal. Aviseringar kan skicka ett e-postmeddelande till dig eller anropa en webbhook när något mått (till exempel databas storlek eller CPU-användning) når tröskelvärdet.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Skapa aviseringar för Azure SQL-Synapse](../azure-sql/database/alerts-insights-configure-portal.md)
 

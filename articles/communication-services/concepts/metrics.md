@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251105"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572073"
 ---
 # <a name="metrics-overview"></a>Mått översikt
 
-Azure Communication Services tillhandahåller för närvarande mått för chatt och SMS. [Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md) kan användas för att rita egna diagram, undersöka avvikelser i dina mått värden och förstå din API-trafik genom att använda de mått data som chatt-och SMS-begäranden genererar.
+Azure Communication Services tillhandahåller för närvarande mått för chatt och SMS. [Azure Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md) kan användas för att rita egna diagram, undersöka avvikelser i dina mått värden och förstå din API-trafik genom att använda de mått data som chatt-och SMS-begäranden genererar.
 
 ## <a name="where-to-find-metrics"></a>Var du hittar mått
 
@@ -30,7 +30,7 @@ Det finns två typer av begär Anden som representeras i kommunikations tjänst 
 
 Både chatt-och SMS API-begäran mått innehåller tre dimensioner som du kan använda för att filtrera dina mått data. De här dimensionerna kan aggregeras tillsammans med `Count` agg regerings typen och har stöd för alla standard Azure agg regerings tids serier `Sum` , inklusive,, `Average` `Min` och `Max` .
 
-Mer information om sammansättnings typer och tids serie agg regeringar som stöds hittar du [i avancerade funktioner i Azure Metrics Explorer](../../azure-monitor/platform/metrics-charts.md#aggregation)
+Mer information om sammansättnings typer och tids serie agg regeringar som stöds hittar du [i avancerade funktioner i Azure Metrics Explorer](../../azure-monitor/essentials/metrics-charts.md#aggregation)
 
 - **Åtgärd** – alla åtgärder eller vägar som kan anropas på ACS Chat Gateway.
 - **Status kod** – status kod svaret som skickas efter begäran.
@@ -41,7 +41,7 @@ Mer information om sammansättnings typer och tids serie agg regeringar som stö
 
 Följande åtgärder är tillgängliga för API: er för API-begäran:
 
-| Åtgärd/väg    | Beskrivning                                                                                    |
+| Åtgärd/väg    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Hämtar ett meddelande med meddelande-ID. |
 | ListChatMessages     | Hämtar en lista över chatt meddelanden från en tråd. |
@@ -68,7 +68,7 @@ Om en begäran görs till en åtgärd som inte känns igen får du ett värde sv
 
 Följande åtgärder är tillgängliga på SMS API-begäran mått:
 
-| Åtgärd/väg    | Beskrivning                                                                                    |
+| Åtgärd/väg    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | Skickar ett SMS-meddelande. |
 | SMSDeliveryReportsReceived     | Hämtar rapporter om SMS-leverans |
@@ -81,7 +81,7 @@ Följande åtgärder är tillgängliga på SMS API-begäran mått:
 
 Följande åtgärder är tillgängliga i mått för autentiserings-API-begär Anden:
 
-| Åtgärd/väg    | Beskrivning                                                                                    |
+| Åtgärd/väg    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Skapar en identitet som representerar en enskild användare. |
 | DeleteIdentity       | Tar bort en identitet. |
@@ -90,4 +90,4 @@ Följande åtgärder är tillgängliga i mått för autentiserings-API-begär An
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [data plattforms mått](../../azure-monitor/platform/data-platform-metrics.md)
+- Lär dig mer om [data plattforms mått](../../azure-monitor/essentials/data-platform-metrics.md)
