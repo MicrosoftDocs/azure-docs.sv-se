@@ -3,15 +3,16 @@ title: Skapa Windows-miljö för virtuella Skriv bords miljö – Azure
 description: Så här felsöker och löser du problem med klient-och värd pooler under installationen av en Windows Virtual Desktop-miljö.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539635"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652453"
 ---
 # <a name="host-pool-creation"></a>Skapa värdpool
 
@@ -49,9 +50,21 @@ Om din åtgärd går över kvot gränsen kan du göra något av följande:
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>Fel: det går inte att se användar tilldelningar i app-grupper.
 
-Orsak: det här felet uppstår vanligt vis när du har flyttat prenumerationen från 1 Azure Active Directory (AD) klient till en annan. Om dina gamla tilldelningar fortfarande är knutna till den gamla Azure AD-klienten kommer Azure Portal att förlora dem.
+**Orsak**: det här felet uppstår vanligt vis när du har flyttat prenumerationen från 1 Azure Active Directory (AD) klient till en annan. Om dina gamla tilldelningar fortfarande är knutna till den gamla Azure AD-klienten kommer Azure Portal att förlora dem.
 
-KORRIGERA: du måste tilldela om användare till app-grupper.
+**Korrigera**: du måste tilldela om användare till app-grupper.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Jag ser bara oss när du anger platsen för mina tjänst objekt
+
+**Orsak**: Azure stöder för närvarande inte den regionen för Windows Virtual Desktop-tjänsten. Om du vill veta mer om vilka geografiska områden som vi stöder kan du läsa [data platser](data-locations.md). Om Windows Virtual Desktop stöder platsen men ändå inte visas när du försöker välja en plats, vilket innebär att din resurs leverantör inte har uppdaterats än.
+
+**Korrigera**: om du vill hämta den senaste listan över regioner registrerar du resurs leverantören igen:
+
+1. Gå till **prenumerationer** och välj den relevanta prenumerationen.
+2. Välj **resurs leverantör**.
+3. Välj **Microsoft. DesktopVirtualization** och välj sedan **registrera på nytt** från menyn åtgärd.
+
+När du registrerar om resurs leverantören visas inga speciella feedback om användar gränssnittet eller uppdaterings status. Omregistrerings processen stör inte heller dina befintliga miljöer.
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager mal linne fel
 

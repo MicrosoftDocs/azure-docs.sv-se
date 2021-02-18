@@ -3,12 +3,12 @@ title: Azure Service Bus SQL filter-syntax för prenumerations regel | Microsoft
 description: Den här artikeln innehåller information om grammatik i SQL-filter. Ett SQL-filter stöder en delmängd av SQL-92-standarden.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742989"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652949"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL filter-syntax för prenumerations regel
 
@@ -183,7 +183,7 @@ Booleska konstanter representeras av nyckelorden **True** eller **false**. Värd
 
 Sträng konstanter omges av enkla citat tecken och innehåller alla giltiga Unicode-tecken. Ett enkelt citat tecken som är inbäddat i en strängkonstant representeras som två enkla citat tecken.  
   
-## <a name="function"></a>funktioner  
+## <a name="function"></a>-funktion  
   
 ```  
 <function> :=  
@@ -269,8 +269,8 @@ Tänk på följande [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfi
   
 -   Aritmetiska operatorer som,,, `+` `-` `*` `/` och `%` följer samma semantik som operatorn C# i data typs kampanjer och implicita konverteringar.
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Exempel
+Exempel finns i [Service Bus filter exempel](service-bus-filter-examples.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -2,17 +2,17 @@
 title: Azure Service Bus ämnes filter | Microsoft Docs
 description: Den här artikeln förklarar hur prenumeranter kan definiera vilka meddelanden som ska tas emot från ett ämne genom att ange filter.
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.date: 02/17/2021
+ms.openlocfilehash: f28b26ee112b47b9782823f6c79670dee9a3f082
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742972"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651671"
 ---
 # <a name="topic-filters-and-actions"></a>Ämnesfilter och åtgärder
 
-Prenumeranter kan definiera vilka meddelanden som de vill ta emot från ett ämne. Dessa meddelanden anges i form av en eller flera namngivna prenumerationsregler. Varje regel består av ett **filter** villkor som väljer specifika meddelanden och som **kan** innehålla en **åtgärd** som kommenterar det valda meddelandet. 
+Prenumeranter kan definiera vilka meddelanden som de vill ta emot från ett ämne. Dessa meddelanden anges i form av en eller flera namngivna prenumerationsregler. Varje regel består av ett **filter villkor** som väljer specifika meddelanden och som **kan** innehålla en **åtgärd** som kommenterar det valda meddelandet. 
 
 Alla regler **utan åtgärder** kombineras med ett `OR` villkor och resulterar i ett **enda meddelande** i prenumerationen även om du har flera matchnings regler. 
 
@@ -32,9 +32,7 @@ Varje nyligen skapad ämnes prenumeration har en första standard prenumerations
 Service Bus stöder tre filter villkor:
 
 -   *SQL-filter* – en **SQLFILTER** innehåller ett SQL-liknande villkorligt uttryck som utvärderas i Service Broker mot de inkommande meddelanden som är användardefinierade egenskaper och system egenskaper. Alla system egenskaper måste föregås av `sys.` i villkors uttrycket. [SQL-språkets delmängd för filter villkor](service-bus-messaging-sql-filter.md) testar om det finns egenskaper ( `EXISTS` ), null-värden ( `IS NULL` ), logiska not/och/eller relationella operatorer, enkla numeriska aritmetiska och enkla text mönster matchning med `LIKE` .
-
 -   *Booleska filter* – **TrueFilter** och **FalseFilter** kan antingen orsaka att alla inkommande meddelanden (**True**) eller inget av de inkommande meddelandena (**falskt**) väljs för prenumerationen. Dessa två filter härleds från SQL-filtret. 
-
 -   *Korrelations filter* – en **CorrelationFilter** innehåller en uppsättning villkor som matchas mot ett eller flera av de inloggade meddelandets användar-och system egenskaper. En vanlig användning är att matcha mot egenskapen **correlationId** , men programmet kan också välja att matcha följande egenskaper:
 
     - **Innehålls**
@@ -66,7 +64,8 @@ Partitionering använder filter för att distribuera meddelanden över flera bef
 
 Routning använder filter för att distribuera meddelanden över ämnes prenumerationer på ett förutsägbart sätt, men inte nödvändigt vis exklusivt. I samband med funktionen för [automatisk vidarebefordring](service-bus-auto-forwarding.md) kan ämnes filter användas för att skapa komplexa vägvals diagram inom ett Service Bus namn område för meddelande distribution inom en Azure-region. Med Azure Functions eller Azure Logic Apps fungerar som en bro mellan Azure Service Bus namnrum kan du skapa komplexa globala topologier med direkt integrering i branschspecifika program.
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Exempel
+Exempel finns i [Service Bus filter exempel](service-bus-filter-examples.md).
 
 
 

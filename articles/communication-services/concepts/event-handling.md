@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888733"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653789"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Händelse hantering i Azure Communication Services
 
@@ -25,6 +25,9 @@ Azure Communication Services integreras med [Azure Event Grid](https://azure.mic
 Azure Event Grid är en helt hanterad tjänst för händelse dirigering som använder en publicerings prenumerations modell. Event Grid har inbyggt stöd för Azure-tjänster som [Azure Functions](../../azure-functions/functions-overview.md) och [Azure Logic Apps](../../azure-functions/functions-overview.md). Den kan leverera händelse aviseringar till icke-Azure-tjänster som använder Webhooks. En fullständig lista över de händelse hanterare som Event Grid stöder finns i [en introduktion till Azure Event Grid](../../event-grid/overview.md).
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Diagram som visar Azure Event Gridens händelse modell.":::
+
+> [!NOTE]
+> Mer information om hur data placering relaterar till händelse hantering finns i [dokumentationen för data placering konceptuell](./privacy.md)
 
 ## <a name="events-types"></a>Händelse typer
 

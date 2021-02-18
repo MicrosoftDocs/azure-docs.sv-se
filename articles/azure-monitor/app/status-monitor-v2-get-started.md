@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f340b4fdf7fef6daecf8801d16d19aee9b89e4d5
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587388"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Kom igång med Azure Monitor Application Insights agent för lokala servrar
 
@@ -79,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  Visa telemetrin:
 
-- [Utforska mått](../platform/metrics-charts.md) för att övervaka prestanda och användning.
+- [Utforska mått](../essentials/metrics-charts.md) för att övervaka prestanda och användning.
 - [Sök efter händelser och loggar](./diagnostic-search.md) för att diagnostisera problem.
-- [Använd Analytics](../log-query/log-query-overview.md) för mer avancerade frågor.
+- [Använd Analytics](../logs/log-query-overview.md) för mer avancerade frågor.
 - [Skapa instrument paneler](./overview-dashboard.md).
 
  Lägg till mer telemetri:

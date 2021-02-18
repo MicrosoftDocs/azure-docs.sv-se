@@ -3,12 +3,12 @@ title: Hantera och övervaka virtuella Azure-säkerhetskopieringar
 description: Lär dig att hantera och övervaka virtuella Azure-säkerhetskopieringar med hjälp av tjänsten Azure Backup.
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a56f13afa23a81b9cd2b34d34e1ca302c0c667f0
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96002925"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635085"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Hantera virtuella Azure-säkerhetskopieringar med Azure Backup tjänsten
 
@@ -97,7 +97,7 @@ Du kan köra en säkerhets kopiering på begäran av en virtuell dator efter att
 * Kvarhållningsintervallet för en säkerhets kopiering på begäran är det kvarhållningsintervall som du anger när du utlöser säkerhets kopieringen.
 
 > [!NOTE]
-> Azure Backups tjänsten har stöd för upp till nio säkerhets kopieringar på begäran per dag, men Microsoft rekommenderar högst fyra dagliga säkerhets kopieringar på begäran för att säkerställa bästa prestanda.
+> Tjänsten Azure Backup stöder upp till tre säkerhets kopieringar på begäran per dag och en ytterligare schemalagd säkerhets kopiering.
 
 Så här utlöser du en säkerhets kopiering på begäran:
 

@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a047761669920d6460c3d6fb6d74b970effa7846
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572028"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653473"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
 
@@ -23,7 +23,11 @@ Azure Communication Services värnar om att hjälpa våra kunder att uppfylla si
 
 ## <a name="data-residency"></a>Dataplacering
 
-När du skapar en kommunikations tjänst resurs kan du ange ett **geografiskt** objekt (inte ett Azure-datacenter). Alla data som lagras av kommunikations tjänster i vila kommer att behållas i det geografiet i ett Data Center som valts internt av kommunikations tjänsterna. Data kan dock transporteras eller bearbetas i andra geografiska områden. dessa globala slut punkter är nödvändiga för att tillhandahålla en högpresterande upplevelse med låg latens för slutanvändare oavsett var de befinner sig.
+När du skapar en kommunikations tjänst resurs kan du ange ett **geografiskt** objekt (inte ett Azure-datacenter). Alla data som lagras av kommunikations tjänster i vila kommer att behållas i det geografiet i ett Data Center som valts internt av kommunikations tjänsterna. Data kan transiteras eller bearbetas i andra geografiska områden. Dessa globala slut punkter är nödvändiga för att tillhandahålla en högpresterande, låg latens upplevelse för slutanvändare oavsett var de befinner sig.
+
+## <a name="data-residency-and-events"></a>Data placering och händelser
+
+Alla Event Grid system avsnitt som är konfigurerade med Azure Communication Services skapas på en global plats. För att stödja tillförlitlig leverans kan ett globalt Event Grid system-ämne lagra händelse data i alla Microsoft-datacenter. När du konfigurerar Event Grid med Azure Communication Services levererar du dina händelse data till Event Grid, vilket är en Azure-resurs under din kontroll. Även om Azure Communication Services kan konfigureras för att använda Azure Event Grid, ansvarar du för att hantera Event Grid-resursen och de data som lagras i den.
 
 ## <a name="relating-humans-to-azure-communication-services-identities"></a>Relaterad till människa till Azure Communication Services-identiteter
 

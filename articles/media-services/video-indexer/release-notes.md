@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560507"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653318"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -29,6 +29,33 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 * Kända problem
 * Felkorrigeringar
 * Föråldrade funktioner
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="multiple-account-owners"></a>Flera konto ägare 
+
+Konto ägarens roll har lagts till i Video Indexer. Du kan lägga till, ändra och ta bort användare. ändra sin roll. Mer information om hur du delar ett konto finns i [Bjud in användare](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Ljud händelse identifiering (offentlig för hands version)
+
+> [!NOTE]
+> Den här funktionen är endast tillgänglig i utvärderings konton. 
+
+Video Indexer identifierar nu följande ljud effekter i de icke-tal segmenten i innehållet: Gunshot, glas splittra, alarm, siren, explosion, hund bark, stycke, Laughter, överfull reaktion (glädje, Clapping och booing) och tystnad. 
+
+Funktionen nyligen tillagda ljud effekter är tillgänglig när du indexerar filen genom att välja **alternativet Avancerad**  ->  **ljud** för inställning (under video + ljud indexering). Standard indexering inkluderar bara **tystnads** -och **full reaktion**. 
+
+Händelse typen **Clapping** som ingick i föregående modell för ljud effekter, har nu extraherats till en del av händelse typen **full reaktion** .
+
+När du väljer att se **inplatsen** för videon på [video Indexer](https://www.videoindexer.ai/) webbplats visas ljud effekterna på sidan.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Ljud händelse identifiering":::
+
+### <a name="named-entities-enhancement"></a>Förbättring av namngivna enheter  
+
+Den extraherade listan över personer och platser har utökats och uppdaterats i allmänhet. 
+
+Dessutom innehåller modellen nu personer och platser som inte är berömda, t. ex. "Sam" eller "hem" i videon. 
 
 ## <a name="january-2021"></a>Januari 2021
 

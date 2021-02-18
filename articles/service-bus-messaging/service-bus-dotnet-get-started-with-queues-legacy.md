@@ -1,16 +1,16 @@
 ---
 title: Komma igång med Azure Service Bus-köer | Microsoft Docs
 description: I den här självstudien skapar du .NET Core-konsolprogram för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c862fda5ee2bb5b7418fda1b4e45cd06742cf95
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819318"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652997"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Komma igång med Service Bus-köer
 I den här självstudien skapar du .NET Core-konsolprogram för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
@@ -67,7 +67,7 @@ Starta Visual Studio och skapa ett nytt **konsol program (.net Core)-** projekt 
 
     Ange din anslutnings sträng för namn området som `ServiceBusConnectionString` variabel. Ange namnet på kön.
 
-1. Ersätt `Main()` metoden med följande async- **async** `Main` metod. Den anropar den `SendMessagesAsync()` metod som du ska lägga till i nästa steg för att skicka meddelanden till kön. 
+1. Ersätt `Main()` metoden med följande async-  `Main` metod. Den anropar den `SendMessagesAsync()` metod som du ska lägga till i nästa steg för att skicka meddelanden till kön. 
 
     ```csharp
     public static async Task Main(string[] args)

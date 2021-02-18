@@ -7,20 +7,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
-ms.date: 09/23/2020
+ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: c5db04a673c1cdc0c0f24e128f340f4ae55fea81
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825509"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652182"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänster med Triton-Härlednings Server (för hands version) 
 
-Lär dig hur du använder [NVIDIA Triton-härlednings Server](https://developer.nvidia.com/nvidia-triton-inference-server) för att förbättra prestanda för den webb tjänst som används för modellens härledning.
+Lär dig hur du använder [NVIDIA Triton-härlednings Server](https://aka.ms/nvidia-triton-docs) för att förbättra prestanda för den webb tjänst som används för modellens härledning.
 
 Ett sätt att distribuera en modell för härledning är som en webb tjänst. Till exempel en distribution till Azure Kubernetes-tjänsten eller Azure Container Instances. Som standard använder Azure Machine Learning en enkel tråds entråds webb ramverk för *generell användning* av webb tjänst distributioner.
 
@@ -30,7 +30,7 @@ Triton är ett ramverk som är *optimerat för en härledning*. Den ger bättre 
 > Att använda Triton för distribution från Azure Machine Learning är för närvarande en för __hands version__. Förhands gransknings funktioner kanske inte omfattas av kund support. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versionerna
 
 > [!TIP]
-> Kodfragmenten i det här dokumentet är i exempel syfte och kanske inte visar en komplett lösning. Information om hur du använder exempel kod finns i [Azure Machine Learning från slut punkt till slut punkt för Triton i](https://github.com/Azure/azureml-examples/tree/main/tutorials).
+> Kodfragmenten i det här dokumentet är i exempel syfte och kanske inte visar en komplett lösning. Information om hur du använder exempel kod finns i [Azure Machine Learning från slut punkt till slut punkt för Triton i](https://aka.ms/triton-aml-sample).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -47,48 +47,45 @@ Innan du försöker använda Triton för din egen modell är det viktigt att du 
 
 * Flera [Gunicorn](https://gunicorn.org/) -arbetskrafter börjar samtidigt hantera inkommande begär Anden.
 * Dessa arbetare hanterar för bearbetning, anropar modellen och efter bearbetning. 
-* Härlednings begär Anden använder __poängsättnings-URI__. Ett exempel är `https://myserevice.azureml.net/score`.
+* Klienter använder __Azure ml-bedömnings-URI__. Till exempel `https://myservice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normalt, icke-Triton, distributions arkitektur diagram":::
 
-### <a name="setting-the-number-of-workers"></a>Ange antalet arbetare
+**Distribuera med Triton direkt**
 
-Ställ in miljövariabeln för att ange antalet arbetare i distributionen `WORKER_COUNT` . Med tanke på att du har ett [miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) objekt `env` som kallas kan du göra följande:
+* Begär Anden går direkt till Triton-servern.
+* Triton bearbetar förfrågningar i batchar för att maximera GPU-användningen.
+* Klienten använder Triton- __URI: n__ för att göra förfrågningar. Till exempel `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
 
-```{py}
-env.environment_variables["WORKER_COUNT"] = "1"
-```
-
-På så sätt kan Azure ML öka antalet arbets tagare som du anger.
-
+:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig-distribution med enbart Triton och inga python-mellanprogram":::
 
 **Distribution av konfigurations härledning med Triton**
 
 * Flera [Gunicorn](https://gunicorn.org/) -arbetskrafter börjar samtidigt hantera inkommande begär Anden.
 * Begär Anden vidarebefordras till Triton- **servern**. 
 * Triton bearbetar förfrågningar i batchar för att maximera GPU-användningen.
-* Klienten använder bedömnings- __URI: n__ för att göra förfrågningar. Ett exempel är `https://myserevice.azureml.net/score`.
+* Klienten använder __Azure ml-bedömnings-URI: n__ för att göra förfrågningar. Till exempel `https://myservice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Inferenceconfig-distribution med Triton":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="Distribution med Triton och python mellanprogram":::
 
 Arbets flödet för att använda Triton för din modell distribution är:
 
-1. Kontrol lera att Triton kan hantera din modell.
+1. Hantera din modell med Triton direkt.
 1. Verifiera att du kan skicka förfrågningar till din Triton-distribuerade modell.
-1. Inkludera din Triton kod i din AML-distribution.
+1. Valfritt Skapa ett lager med python-mellanprogram för för-och efter bearbetning på Server Sidan
 
-## <a name="verify-that-triton-can-serve-your-model"></a>Kontrol lera att Triton kan hantera din modell
+## <a name="deploying-triton-without-python-pre--and-post-processing"></a>Distribuera Triton utan python för-och efter bearbetning
 
 Börja med att följa stegen nedan för att kontrol lera att Triton-servern kan hantera din modell.
 
 ### <a name="optional-define-a-model-config-file"></a>Valfritt Definiera en modell konfigurations fil
 
-Modell konfigurations filen anger Triton hur många indata som ska förväntas och vilka dimensioner dessa indata kommer att vara. Mer information om hur du skapar konfigurations filen finns i [modell konfiguration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html) i NVIDIA-dokumentationen.
+Modell konfigurations filen anger Triton hur många indata som ska förväntas och vilka dimensioner dessa indata kommer att vara. Mer information om hur du skapar konfigurations filen finns i [modell konfiguration](https://aka.ms/nvidia-triton-docs) i NVIDIA-dokumentationen.
 
 > [!TIP]
 > Vi använder `--strict-model-config=false` alternativet när du startar Triton-härlednings servern, vilket innebär att du inte behöver ange en `config.pbtxt` fil för ONNX-eller TensorFlow-modeller.
 > 
-> Mer information om det här alternativet finns i [genererad modell konfiguration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_configuration.html#generated-model-configuration) i NVIDIA-dokumentationen.
+> Mer information om det här alternativet finns i [genererad modell konfiguration](https://aka.ms/nvidia-triton-docs) i NVIDIA-dokumentationen.
 
 ### <a name="use-the-correct-directory-structure"></a>Använd rätt katalog struktur
 
@@ -106,92 +103,128 @@ models
 ```
 
 > [!IMPORTANT]
-> Den här katalog strukturen är en Triton modell databas som krävs för att din eller dina modeller ska fungera med Triton. Mer information finns i [Triton-modell Arkiv](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/model_repository.html) i NVIDIA-dokumentationen.
+> Den här katalog strukturen är en Triton modell databas som krävs för att din eller dina modeller ska fungera med Triton. Mer information finns i [Triton-modell Arkiv](https://aka.ms/nvidia-triton-docs) i NVIDIA-dokumentationen.
 
-### <a name="test-with-triton-and-docker"></a>Testa med Triton och Docker
+### <a name="register-your-triton-model"></a>Registrera din Triton-modell
 
-Om du vill testa din modell för att kontrol lera att den körs med Triton kan du använda Docker. Följande kommandon hämtar behållaren Triton till den lokala datorn och startar sedan Triton-servern:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-1. Använd följande kommando för att hämta avbildningen för Triton-servern till den lokala datorn:
+```azurecli-interactive
+az ml model register -n my_triton_model -p models --model-framework=Multi
+```
 
-    ```bash
-    docker pull nvcr.io/nvidia/tritonserver:20.09-py3
-    ```
+Mer information finns i `az ml model register` [referens dokumentationen](/cli/azure/ext/azure-cli-ml/ml/model).
 
-1. Starta Triton-servern genom att använda följande kommando. Ersätt `<path-to-models/triton>` med sökvägen till den Triton modell databas som innehåller dina modeller:
+# <a name="python"></a>[Python](#tab/python)
 
-    ```bash
-    docker run --rm -ti -v<path-to-models/triton>:/models nvcr.io/nvidia/tritonserver:20.09-py3 tritonserver --model-repository=/models --strict-model-config=false
-    ```
 
-    > [!IMPORTANT]
-    > Om du använder Windows kan du uppmanas att tillåta nätverks anslutningar till den här processen första gången du kör kommandot. I så fall väljer du för att aktivera åtkomst.
+```python
 
-    När den har startats loggas information som liknar följande text i kommando raden:
+from azureml.core.model import Model
 
-    ```bash
-    I0923 19:21:30.582866 1 http_server.cc:2705] Started HTTPService at 0.0.0.0:8000
-    I0923 19:21:30.626081 1 http_server.cc:2724] Started Metrics Service at 0.0.0.0:8002
-    ```
+model_path = "models"
 
-    Den första raden anger webb tjänstens adress. I det här fallet, `0.0.0.0:8000` som är samma som `localhost:8000` .
+model = Model.register(
+    model_path=model_path,
+    model_name="bidaf-9-tutorial",
+    tags={"area": "Natural language processing", "type": "Question-answering"},
+    description="Question answering from ONNX model zoo",
+    workspace=ws,
+    model_framework=Model.Framework.MULTI,  # This line tells us you are registering a Triton model
+)
 
-1. Använd ett verktyg som till exempel vändning för att komma åt hälso slut punkten.
+```
+Mer information finns i dokumentationen för [modell klassen](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
 
-    ```bash
-    curl -L -v -i localhost:8000/v2/health/ready
-    ```
+---
 
-    Det här kommandot returnerar information som liknar följande. Obs! `200 OK` denna status innebär att webb servern körs.
+### <a name="deploy-your-model"></a>Distribuera din modell
 
-    ```bash
-    *   Trying 127.0.0.1:8000...
-    * Connected to localhost (127.0.0.1) port 8000 (#0)
-    > GET /v2/health/ready HTTP/1.1
-    > Host: localhost:8000
-    > User-Agent: curl/7.71.1
-    > Accept: */*
-    >
-    * Mark bundle as not supporting multiuse
-    < HTTP/1.1 200 OK
-    HTTP/1.1 200 OK
-    ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-Utöver en grundläggande hälso kontroll kan du skapa en-klient för att skicka data till Triton för att få en härledning. Mer information om hur du skapar en klient finns i [klient exemplen](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/client_example.html) i NVIDIA-dokumentationen. Det finns också [python-exempel på Triton-GitHub](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples).
+Om du har ett GPU-aktiverat Azure Kubernetes service-kluster med namnet "AKS-GPU" som skapats via Azure Machine Learning kan du använda följande kommando för att distribuera din modell.
 
-Mer information om hur du kör Triton med Docker finns i [köra Triton på ett system med en GPU](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-with-a-gpu) och [köra Triton på ett system utan GPU](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/run.html#running-triton-on-a-system-without-a-gpu).
-
-### <a name="register-your-model"></a>Registrera din modell
-
-Nu när du har kontrollerat att modellen fungerar med Triton kan du registrera den med Azure Machine Learning. Modell registreringen lagrar dina modellvariabler i Azure Machine Learning-arbetsytan och används när du distribuerar med python SDK och Azure CLI.
-
-Följande exempel visar hur du registrerar en eller flera modeller:
+```azurecli
+az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.json --compute-target aks-gpu
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
-from azureml.core.model import Model
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import InferenceConfig
+from random import randint
 
-model = Model.register(
-    model_path=os.path.join("..", "triton"),
-    model_name="bidaf_onnx",
-    tags={'area': "Natural language processing", 'type': "Question answering"},
-    description="Question answering model from ONNX model zoo",
-    workspace=ws
-```
+service_name = "triton-webservice"
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+config = AksWebservice.deploy_configuration(
+    compute_target_name="aks-gpu",
+    gpu_cores=1,
+    cpu_cores=1,
+    memory_gb=4,
+    auth_enabled=True,
+)
 
-```azurecli
-az ml model register --model-path='triton' \
---name='bidaf_onnx' \
---workspace-name='<my_workspace>'
+service = Model.deploy(
+    workspace=ws,
+    name=service_name,
+    models=[model],
+    deployment_config=config,
+    overwrite=True,
+)
 ```
 ---
 
-<a id="processing"></a>
+I [den här dokumentationen finns mer information om hur du distribuerar modeller](how-to-deploy-and-where.md).
 
-## <a name="verify-you-can-call-into-your-model"></a>Verifiera att du kan anropa din modell
+### <a name="call-into-your-deployed-model"></a>Anropa din distribuerade modell
+
+Börja med att hämta din bedömnings-URI och Bearer-token.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+
+```azurecli
+az ml service show --name=triton-webservice
+```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import requests
+
+print(service.scoring_uri)
+print(service.get_keys())
+
+```
+
+---
+
+Kontrol lera sedan att tjänsten körs genom att göra följande: 
+
+```{bash}
+!curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
+```
+
+Det här kommandot returnerar information som liknar följande. Obs! `200 OK` denna status innebär att webb servern körs.
+
+```{bash}
+*   Trying 127.0.0.1:8000...
+* Connected to localhost (127.0.0.1) port 8000 (#0)
+> GET /v2/health/ready HTTP/1.1
+> Host: localhost:8000
+> User-Agent: curl/7.71.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+```
+
+När du har utfört en hälso kontroll kan du skapa en-klient för att skicka data till Triton för att få en härledning. Mer information om hur du skapar en klient finns i [klient exemplen](https://aka.ms/nvidia-client-examples) i NVIDIA-dokumentationen. Det finns också [python-exempel på Triton-GitHub](https://aka.ms/nvidia-triton-docs).
+
+Om du nu inte vill lägga till python för-och efter bearbetning i den distribuerade webb tjänsten kan du göra det. Läs vidare om du vill lägga till den här logiken för efter bearbetning.
+
+## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>Valfritt Distribuera igen med ett Python-skript för för-och efter bearbetning
 
 När du har verifierat att Triton kan hantera din modell kan du lägga till för-och efter bearbetnings kod genom att definiera ett _Entry-skript_. Den här filen heter `score.py` . Mer information om Entry-skript finns i [definiera ett post skript](how-to-deploy-and-where.md#define-an-entry-script).
 
@@ -236,7 +269,7 @@ res = triton_client.infer(model_name,
 
 <a id="redeploy"></a>
 
-## <a name="redeploy-with-an-inference-configuration"></a>Distribuera igen med en konfigurations konfiguration
+### <a name="redeploy-with-an-inference-configuration"></a>Distribuera igen med en konfigurations konfiguration
 
 Med en konfiguration för konfigurations störningar kan du använda ett Entry-skript och Azure Machine Learning distributions processen med python SDK eller Azure CLI.
 
@@ -244,6 +277,19 @@ Med en konfiguration för konfigurations störningar kan du använda ett Entry-s
 > Du måste ange den `AzureML-Triton` [granskade miljön](./resource-curated-environments.md).
 >
 > Python-kod exemplet klonas `AzureML-Triton` i en annan miljö som kallas `My-Triton` . Azure CLI-koden använder också den här miljön. Mer information om kloning av en miljö finns i referens för [Environment. clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) .
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+> [!TIP]
+> Mer information om hur du skapar en konfigurations konfiguration finns i [schemat för konfiguration av energischemat](./reference-azure-machine-learning-cli.md#inference-configuration-schema).
+
+```azurecli
+az ml model deploy -n triton-densenet-onnx \
+-m densenet_onnx:1 \
+--ic inference-config.json \
+-e My-Triton --dc deploymentconfig.json \
+--overwrite --compute-target=aks-gpu
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,48 +329,47 @@ print(local_service.state)
 print(local_service.scoring_uri)
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!TIP]
-> Mer information om hur du skapar en konfigurations konfiguration finns i [schemat för konfiguration av energischemat](./reference-azure-machine-learning-cli.md#inference-configuration-schema).
-
-```azurecli
-az ml model deploy -n triton-densenet-onnx \
--m densenet_onnx:1 \
---ic inference-config.json \
--e My-Triton --dc deploymentconfig.json \
---overwrite --compute-target=aks-gpu
-```
-
 ---
 
 När distributionen är klar visas bedömnings-URI: n. För den här lokala distributionen är det `http://localhost:6789/score` . Om du distribuerar till molnet kan du använda kommandot [AZ ml-tjänsten show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI för att hämta bedömnings-URI: n.
 
 Information om hur du skapar en klient som skickar en uppräknings förfrågan till bedömnings-URI finns i [använda en modell som distribueras som en webb tjänst](how-to-consume-web-service.md).
 
+### <a name="setting-the-number-of-workers"></a>Ange antalet arbetare
+
+Ställ in miljövariabeln för att ange antalet arbetare i distributionen `WORKER_COUNT` . Med tanke på att du har ett [miljö](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) objekt `env` som kallas kan du göra följande:
+
+```{py}
+env.environment_variables["WORKER_COUNT"] = "1"
+```
+
+På så sätt kan Azure ML öka antalet arbets tagare som du anger.
+
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 Använd något av följande alternativ om du planerar att fortsätta använda Azure Machine Learning arbets yta, men vill ta bort den distribuerade tjänsten:
 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az ml service delete -n triton-densenet-onnx
+```
 # <a name="python"></a>[Python](#tab/python)
 
 ```python
 local_service.delete()
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az ml service delete -n triton-densenet-onnx
-```
 
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Se exempel från slut punkt till slut punkt på Triton i Azure Machine Learning](https://aka.ms/aml-triton-sample)
-* Kolla [Triton client-exempel](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples)
-* Läs [dokumentationen om Triton-härlednings Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html)
+* Kolla [Triton client-exempel](https://aka.ms/nvidia-client-examples)
+* Läs [dokumentationen om Triton-härlednings Server](https://aka.ms/nvidia-triton-docs)
 * [Felsöka en misslyckad distribution](how-to-troubleshoot-deployment.md)
 * [Distribuera till Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Uppdatera webbtjänst](how-to-deploy-update-web-service.md)

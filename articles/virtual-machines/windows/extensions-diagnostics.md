@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c981214c69653b3a4a687a861cb348f3587def7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06c614d57002c7944d88df123d06ac63d04b288f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078766"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591141"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure-diagnostik tillägg för virtuella Windows-datorer
 
@@ -34,7 +34,7 @@ Azure-diagnostik-tillägget kräver att den virtuella mål datorn är ansluten t
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
-[Schemat för Azure-diagnostik-tillägg och egenskaps värden beskrivs i det här dokumentet.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[Schemat för Azure-diagnostik-tillägg och egenskaps värden beskrivs i det här dokumentet.](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Malldistribution
 
@@ -81,12 +81,12 @@ Data om tillstånd för tilläggs distributioner kan hämtas från Azure Portal 
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[I den här artikeln finns](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) en mer omfattande fel söknings guide för Azure-diagnostik-tillägget.
+[I den här artikeln finns](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md) en mer omfattande fel söknings guide för Azure-diagnostik-tillägget.
 
 ### <a name="support"></a>Support
 
 Om du behöver mer hjälp när som helst i den här artikeln kan du kontakta Azure-experterna i [MSDN Azure och Stack Overflow forum](https://azure.microsoft.com/support/forums/). Du kan också skriva en support incident för Azure. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/) och välj få support. Information om hur du använder Azure-support finns i [vanliga frågor och svar om Microsoft Azure support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Nästa steg
-* [Läs mer om Azure-diagnostik-tillägget](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Granska tilläggs schema och-versioner](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [Läs mer om Azure-diagnostik-tillägget](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [Granska tilläggs schema och-versioner](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)

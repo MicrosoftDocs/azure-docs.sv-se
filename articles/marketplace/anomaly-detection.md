@@ -4,31 +4,29 @@ description: Lär dig hur automatisk avvikelse identifiering för avgiftsbelagda
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/17/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 7f1bcac49ccb12ea1e0517aed5a139e549451ec0
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989529"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653014"
 ---
 # <a name="anomaly-detection-for-metered-billing"></a>Avvikelse identifiering för avlästa fakturor
 
-Den här artikeln innehåller information om Marketplace-mätnings tjänsten och den tillhör ande automatiska avvikelse identifierings funktionen som hjälper dig att fakturera kunder på rätt sätt för deras avgiftsbelagda användning. Det avgiftsbelagda fakturerings alternativet är för närvarande tillgängligt för SaaS-erbjudanden ( [Software as a service](plan-saas-offer.md) ) och [Azure-program](plan-azure-application-offer.md#types-of-plans) med en hanterad program plan. Med det här alternativet kan partners skapa erbjudanden i det kommersiella Marketplace-programmet som debiteras enligt andra enheter än standard enheter.
+Det anpassade fakturerings alternativet för avläsning är för närvarande tillgängligt för SaaS-erbjudanden ( [Software as a service](plan-saas-offer.md) ) och [Azure-program](plan-azure-application-offer.md#types-of-plans) med en hanterad program plan.
 
-Partner som har anpassade mätare som distribueras för SaaS och hanterade program kan se avvikelse från förväntat användnings beteende som avvikelser för överförbruknings _händelser_ för vissa _anpassade mätare_ i Partner Center. För att minska risken använder Partner Center en avvikelse identifierings tjänst som använder Machine Learning-algoritmer för att fastställa det normala fakturerings beteendet för mätning, analysera den avgiftsbelagda fakturerings användningen och upptäcka avvikelser med minimal inblandning av användaren. Med hjälp av _avvikelse identifierings modeller_ på data uppsättningar för mätning av data trafik, syftar Partner Center på att informera utgivaren när den rapporterade användningen överskrider den förväntade användningen.
+Om du använder det avgiftsbelagda fakturerings alternativet för att skapa erbjudanden i programmet för kommersiella marknads platser som gör det möjligt att ta betalt för användning baserat på enheter som inte är standard måste du känna till när kunden har använt mer av en tjänst än förväntat.
 
-## <a name="usability-experience"></a>Användbarhets upplevelse
+## <a name="use-the-anomaly-detection-feature"></a>Använd funktionen för avvikelse identifiering
 
-Microsoft förlitar sig på partnern för att rapportera kundens överförbrukning av sina SaaS eller Azure Managed Application-erbjudanden innan Microsoft fakturerar kunden. Om fel användning rapporteras kan kunden potentiellt få en felaktig faktura, undervinna både Microsofts och partnerns trovärdighet.
+Microsoft använder dig av dig, partnern, för att rapportera dina kunders överförbrukning av sina SaaS eller Azure Managed Application-erbjudanden innan Microsoft fakturerar kunden. Om fel användning rapporteras kan kunden potentiellt få en felaktig faktura, undervinna både Microsofts och partnerns trovärdighet.
 
-För att minimera detta finns en automatisk avvikelse identifierings funktion för både SaaS-appar och program som hanteras av Azure-program. Den här funktionen är en maskin inlärnings modell som proaktivt övervakar användningen mot avgiftsbelagd fakturering och förutsäger det förväntade användning svärdet inom det förväntade intervallet. Om användningen ligger utanför det förväntade intervallet behandlas det som en avvikelse och ett aviserings meddelande visas för partnern på sidan erbjudande översikt i programmet för kommersiell Marketplace i Partner Center.
+Du kan se till att dina kunder faktureras korrekt genom att använda funktionen för **avvikelse identifiering** för både SaaS-appar och hanterade program planer i Azure-program. Den här funktionen övervakar användningen mot avgiftsbelagd fakturering och förutsäger förväntat användnings värde inom det förväntade intervallet. Om användningen ligger utanför det förväntade intervallet behandlas det som oväntad, (en avvikelse) och du får ett varnings meddelande på sidan erbjudande översikt i programmet för kommersiell Marketplace i Partner Center. Du kan spåra kundernas användning dagligen för varje anpassad mätar dimension som du har angett.
 
-Machine Learning-modellen analyserar förbrukning per dag. Utgivaren kan se alla avvikelser som rapporter ATS mot sina kunders överförbruknings förbrukning för varje erbjudandes anpassade mätar dimensioner.
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>Visa och hantera avvikelser vid användning av mätare
+## <a name="view-and-manage-metered-usage-anomalies"></a>Visa och hantera avvikelser vid användning av mätare
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
 1. På den vänstra navigerings **menyn väljer du marknads plats**  >  **analys**.

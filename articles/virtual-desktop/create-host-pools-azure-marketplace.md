@@ -3,15 +3,16 @@ title: Windows-pool för virtuella skriv bord Azure Portal – Azure
 description: Så här skapar du en Windows-pool för virtuella skriv bord med hjälp av Azure Portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735188"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651467"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Självstudie: skapa en värdbaserad pool med Azure Portal
 
@@ -22,7 +23,7 @@ Lagringspooler är en samling av en eller flera identiska virtuella datorer (VM)
 
 Den här artikeln vägleder dig genom installations processen för att skapa en adresspool för en Windows Virtual Desktop-miljö via Azure Portal. Den här metoden ger ett webbläsarbaserat användar gränssnitt för att skapa en adresspool i Windows Virtual Desktop, skapa en resurs grupp med virtuella datorer i en Azure-prenumeration, ansluta de virtuella datorerna till den Azure Active Directory AD-domänen och registrera de virtuella datorerna med Windows Virtual Desktop.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du måste ange följande parametrar för att skapa en värdbaserad pool:
 
@@ -67,6 +68,9 @@ För att börja skapa den nya poolen:
 
      > [!div class="mx-imgBorder"]
      > ![En skärm bild av Azure Portal som visar fältet plats med platsen östra USA vald. Bredvid fältet är texten "metadata kommer att lagras i USA, östra".](media/portal-location-field.png)
+  
+   >[!NOTE]
+   > Om du vill skapa en adresspool i [en region som stöds](data-locations.md) utanför USA måste du registrera resurs leverantören igen. När du har registrerat igen bör du se de andra regionerna i list rutan för att välja plats. Lär dig hur du registrerar på nytt med hjälp av den här artikeln för att [skapa en Fakturapool](troubleshoot-set-up-issues.md#i-only-see-us-when-setting-the-location-for-my-service-objects) .
 
 8. Under typ av värdstat väljer du om din värddator ska vara **personlig** eller **pool**.
 

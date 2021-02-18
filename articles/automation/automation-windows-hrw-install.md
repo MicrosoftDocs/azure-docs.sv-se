@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006997"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651365"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Distribuera en Windows-Hybrid Runbook Worker
 
-Du kan använda funktionen för användar Hybrid Runbook Worker i Azure Automation för att köra Runbooks direkt på Azure-eller icke-Azure-datorer, inklusive servrar som är registrerade med [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md). Från datorn eller servern som är värd för rollen kan du köra Runbooks direkt och mot resurser i miljön för att hantera de lokala resurserna.
+Du kan använda användar Hybrid Runbook Worker funktionen i Azure Automation för att köra Runbooks direkt på en Azure-eller icke-Azure-dator, inklusive servrar som är registrerade med [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md). Från datorn eller servern som är värd för rollen kan du köra Runbooks direkt mot den och mot resurser i miljön för att hantera de lokala resurserna.
 
 Azure Automation lagrar och hanterar Runbooks och levererar dem sedan till en eller flera angivna datorer. I den här artikeln beskrivs hur du distribuerar en användare Hybrid Runbook Worker på en Windows-dator, hur du tar bort en arbets grupp och hur du tar bort en Hybrid Runbook Worker grupp.
 
@@ -26,13 +26,13 @@ Kontrol lera att du har följande innan du börjar.
 
 ### <a name="a-log-analytics-workspace"></a>En Log Analytics arbets yta
 
-Hybrid Runbook Worker-rollen beror på en Azure Monitor Log Analytics arbets yta för att installera och konfigurera rollen. Du kan skapa den genom [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), via [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)eller i [Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Hybrid Runbook Worker-rollen beror på en Azure Monitor Log Analytics arbets yta för att installera och konfigurera rollen. Du kan skapa den genom [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), via [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)eller i [Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Om du inte har en Azure Monitor Log Analytics arbets yta granskar du [rikt linjerna för Azure Monitor logg design](../azure-monitor/platform/design-logs-deployment.md) innan du skapar arbets ytan.
+Om du inte har en Azure Monitor Log Analytics arbets yta granskar du [rikt linjerna för Azure Monitor logg design](../azure-monitor/logs/design-logs-deployment.md) innan du skapar arbets ytan.
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
-Hybrid Runbook Worker-rollen kräver att [Log Analytics agenten](../azure-monitor/platform/log-analytics-agent.md) för det Windows-operativsystem som stöds. För servrar eller datorer som ligger utanför Azure kan du installera Log Analytics-agenten med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
+Hybrid Runbook Worker-rollen kräver att [Log Analytics agenten](../azure-monitor/agents/log-analytics-agent.md) för det Windows-operativsystem som stöds. För servrar eller datorer som ligger utanför Azure kan du installera Log Analytics-agenten med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
 
 ### <a name="supported-windows-operating-system"></a>Windows operativ system som stöds
 

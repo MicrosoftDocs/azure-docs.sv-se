@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8492e986b378ea19f8c3c4cb7f94fcb0f155b427
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfa2548abb28fa6f84178a1fb5716d0c03b163f1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487855"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570730"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Säkerhets kontroll: loggning och övervakning
 
@@ -42,9 +42,9 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -56,19 +56,19 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en
 
 Aktivera diagnostiska inställningar på Azure-resurser för åtkomst till gransknings-, säkerhets-och diagnostikloggar. Aktivitets loggar, som är automatiskt tillgängliga, innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2,4: samla in säkerhets loggar från operativ system
 
 | Azure-ID | CIS-ID: n | Ligger |
 |--|--|--|
-| 2,4 | 6,2, 6,3 | Kund |
+| 2.4 | 6,2, 6,3 | Kund |
 
 Om beräknings resursen ägs av Microsoft ansvarar Microsoft för att övervaka den. Om beräknings resursen ägs av din organisation är det ditt ansvar att övervaka den. Du kan använda Azure Security Center för att övervaka operativ systemet. Data som samlas in av Security Center från operativ systemet innehåller OS-typ och version, OS (Windows-händelseloggen), processer som körs, dator namn, IP-adresser och inloggad användare. Log Analytics agent samlar även in krasch dum par-filer.
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Förstå Azure Security Center insamling av data](../../security-center/security-center-enable-data-collection.md)
 
@@ -80,7 +80,7 @@ Om beräknings resursen ägs av Microsoft ansvarar Microsoft för att övervaka 
 
 I Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -96,9 +96,9 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-- [Förstå Log Analytics arbets yta](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Förstå Log Analytics arbets yta](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: aktivera aviseringar för avvikande aktiviteter
 
@@ -114,7 +114,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel.
 
 - [Hantera aviseringar i Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
 
@@ -148,9 +148,9 @@ Använd Microsoft Monitoring Agent på alla virtuella Azure Windows-datorer som 
 
 - [Datainsamling i Azure Security Center](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-- [Syslog-datakällor i Azure Monitor](../../azure-monitor/platform/data-sources-syslog.md)
+- [Syslog-datakällor i Azure Monitor](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

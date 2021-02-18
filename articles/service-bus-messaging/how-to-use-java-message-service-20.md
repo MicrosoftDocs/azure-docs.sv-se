@@ -4,26 +4,37 @@ description: Så här använder du JMS (Java Message Service) med Azure Service 
 ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7e4bf0ad69b6cd183296a7245ad3f720ced76c5
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87801650"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652621"
 ---
-# <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>Använd API för Java Message Service 2,0 med Azure Service Bus Premium (för hands version)
+# <a name="use-java-message-service-20-api-with-azure-service-bus-premium"></a>Använd API för Java Message Service 2,0 med Azure Service Bus Premium
 
 Den här artikeln beskriver hur du använder JMS-API: t **(populära Java Message Service) 2,0** för att interagera med Azure Service Bus över protokollet Advanced Message Queueing Protocol (AMQP 1,0).
 
 > [!NOTE]
-> Stöd för Java Message Service (JMS) 2,0 API är bara tillgängligt på **Azure Service Bus Premium-nivån** och är för närvarande en för **hands version**.
+> Stöd för Java Message Service (JMS) 2,0 API finns bara på **Azure Service Bus Premium-nivån**.
 >
 
-## <a name="get-started-with-service-bus"></a>Kom igång med Service Bus
+## <a name="pre-requisites"></a>Förutsättningar
+
+### <a name="get-started-with-service-bus"></a>Kom igång med Service Bus
 
 Den här guiden förutsätter att du redan har ett Service Bus-namnområde. Om du inte gör det kan du [skapa namn området och kön](service-bus-create-namespace-portal.md) med hjälp av [Azure Portal](https://portal.azure.com). 
 
 Mer information om hur du skapar Service Bus namnrymder och köer finns i [komma igång med Service Bus köer via Azure Portal](service-bus-quickstart-portal.md).
+
+### <a name="set-up-a-java-development-environment"></a>Konfigurera en Java-utvecklings miljö
+
+För att utveckla Java-program måste du konfigurera lämplig utvecklings miljö – 
+   * Antingen JDK (Java Development Kit) eller JRE (Java Runtime Environment) har installerats.
+   * JDK eller JRE läggs till i build-sökvägen och lämpliga systemvariabler.
+   * En Java IDE installeras för att använda JDK eller JRE. Till exempel Sol förmörkelse eller IntelliJ.
+
+Om du vill veta mer om hur du förbereder din utvecklings miljö för Java på Azure kan du använda [den här guiden](https://docs.microsoft.com/azure/developer/java/fundamentals/).
 
 ## <a name="what-jms-features-are-supported"></a>Vilka JMS-funktioner stöds?
 
@@ -72,11 +83,19 @@ Om du vill ansluta med Azure Service Bus med JMS-klienter behöver du **anslutni
     JMSContext jmsContext = factory.createContext();
     ```
 
+    >[!IMPORTANT]
+    > Även om det finns på samma sätt som Named, är JMS session och Service Bus session helt oberoende av varandra.
+    >
+    > I JMS 1,1 är session ett viktigt Bygg block av API: et som gör det möjligt att skapa MessageProducer, MessageConsumer och själva meddelandet. Mer information finns i [programmerings modellen för API för JMS](https://docs.oracle.com/javaee/6/tutorial/doc/bnceh.html)
+    >
+    > I Service Bus är [sessioner](message-sessions.md) tjänst-och klient sidans konstruktion för att aktivera FIFO-bearbetning på köer och prenumerationer.
+    >
+
 ### <a name="write-the-jms-application"></a>Skriv JMS-programmet
 
 När `Session` eller `JMSContext` har instansierats kan programmet använda välbekanta JMS-API: er för att utföra både hanterings-och data åtgärder.
 
-Se listan över [JMS funktioner som stöds](how-to-use-java-message-service-20.md#what-jms-features-are-supported) för att se vilka API: er som stöds som en del av den här för hands versionen.
+Se listan över [JMS funktioner som stöds](how-to-use-java-message-service-20.md#what-jms-features-are-supported) för att se vilka API: er som stöds.
 
 Nedan visas några exempel kod avsnitt som hjälper dig att komma igång med JMS-
 
@@ -134,7 +153,7 @@ Du kan också använda Service Bus AMQP 1,0 från andra språk, inklusive .NET, 
 
 Mer information om Azure Service Bus och information om JMS-enheter (Java Message Service) finns i länkarna nedan – 
 * [Service Bus-köer, ämnen och prenumerationer](service-bus-queues-topics-subscriptions.md)
-* [Service Bus-Java Message Service-entiteter](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities-preview)
+* [Service Bus-Java Message Service-entiteter](service-bus-queues-topics-subscriptions.md#java-message-service-jms-20-entities)
 * [AMQP 1,0-stöd i Azure Service Bus](service-bus-amqp-overview.md)
 * [Service Bus AMQP 1,0 Developer ' s guide](service-bus-amqp-dotnet.md)
 * [Komma igång med Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)

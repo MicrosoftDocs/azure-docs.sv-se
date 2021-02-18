@@ -4,14 +4,14 @@ description: Lär dig hur du skapar ett Microsoft Azure Red Hat OpenShift-kluste
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b690d3b3c29d2943e28a0992730d932b35c20734
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072243"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653048"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: skapa ett Azure Red Hat OpenShift 4-kluster
 
@@ -26,6 +26,8 @@ I den här självstudien, som är del ett av tre, förbereder du din miljö för
 Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 För att kunna skapa och köra ett OpenShift-kluster krävs minst 40 kärnor i Azure Red Hat OpenShift. Standard kvoten för Azure-resurser för en ny Azure-prenumeration uppfyller inte det här kravet. Om du vill begära en ökning av resurs gränsen, se [standard kvot: öka gränserna efter VM-serien](../azure-portal/supportability/per-vm-quota-requests.md).
+
+ARO pull-hemlighet ändrar inte kostnaden för den öppna ARO-licensen för.
 
 ### <a name="verify-your-permissions"></a>Verifiera dina behörigheter
 

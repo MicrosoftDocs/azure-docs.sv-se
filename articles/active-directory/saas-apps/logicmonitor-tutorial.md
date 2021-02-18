@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ab2aa1df0719b685800529f32e36674bf85e57ee
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c330ce9b9eec693d7dabda55ad65d297ca78ca01
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625321"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Självstudie: Azure Active Directory integrering med LogicMonitor
 
@@ -80,7 +80,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<companyname>.logicmonitor.com`
 
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<companyname>.logicmonitor.com`
-
+    
+    c. I text rutan **svars-URL (intygs mottagar tjänst)** anger du en URL med följande mönster: `https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+  
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [LogicMonitor client support team](https://www.logicmonitor.com/contact/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
@@ -101,7 +103,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

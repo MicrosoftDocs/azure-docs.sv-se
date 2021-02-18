@@ -52,7 +52,7 @@
       href: concepts-upgrades.md
 - name: Anvisningar
   items:
-    - name: Aktivera Azure VMware Solution
+    - name: Begär värd kvot och aktivera Azure VMware-lösning
       href: enable-azure-vmware-solution.md
     - name: Spara kostnader med en reserverad instans
       href: reserved-instance.md

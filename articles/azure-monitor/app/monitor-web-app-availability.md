@@ -4,12 +4,12 @@ description: Konfigurera webbtester i Application Insights. Få aviseringar om e
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937421"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585951"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
@@ -151,7 +151,7 @@ Klicka på raden undantag om du vill se information om det undantag på Server s
 
 ![Diagnostik på Server Sidan](./media/monitor-web-app-availability/open-instance-4.png)
 
-Förutom de råa resultaten kan du också visa två nyckel tillgänglighets mått i [Metrics Explorer](../platform/metrics-getting-started.md):
+Förutom de råa resultaten kan du också visa två nyckel tillgänglighets mått i [Metrics Explorer](../essentials/metrics-getting-started.md):
 
 1. Tillgänglighet: antal procent av testerna som lyckades av alla testkörningar.
 2. Testets varaktighet: genomsnittlig tid för alla testkörningar.
@@ -159,7 +159,7 @@ Förutom de råa resultaten kan du också visa två nyckel tillgänglighets måt
 ## <a name="automation"></a>Automation
 
 * [Konfigurera ett tillgänglighetstest automatiskt med hjälp av PowerShell-skript](./powershell.md#add-an-availability-test).
-* Konfigurera en [webhook](../platform/alerts-webhooks.md) som anropas när en avisering genereras.
+* Konfigurera en [webhook](../alerts/alerts-webhooks.md) som anropas när en avisering genereras.
 
 ## <a name="troubleshooting"></a>Felsökning
 

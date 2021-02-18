@@ -3,18 +3,18 @@ title: Skapa Azure Advisor aviseringar för nya rekommendationer med Azure Porta
 description: Skapa Azure Advisor aviseringar för ny rekommendation
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c51479821914ef34edcd13d8708344169f17aae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973652"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590106"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Skapa Azure Advisor aviseringar om nya rekommendationer med hjälp av Azure Portal 
 
 Den här artikeln visar hur du konfigurerar en avisering för nya rekommendationer från Azure Advisor med hjälp av Azure Portal. 
 
-När Azure Advisor identifierar en ny rekommendation för en av dina resurser lagras en händelse i [Azure aktivitets loggen](../azure-monitor/platform/platform-logs-overview.md). Du kan ställa in aviseringar för dessa händelser från Azure Advisor med hjälp av en rekommendation för att skapa aviseringar. Du kan välja en prenumeration och eventuellt en resurs grupp för att ange de resurser som du vill ta emot aviseringar på. 
+När Azure Advisor identifierar en ny rekommendation för en av dina resurser lagras en händelse i [Azure aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md). Du kan ställa in aviseringar för dessa händelser från Azure Advisor med hjälp av en rekommendation för att skapa aviseringar. Du kan välja en prenumeration och eventuellt en resurs grupp för att ange de resurser som du vill ta emot aviseringar på. 
 
 Du kan också bestämma rekommendationernas typer genom att använda följande egenskaper:
 
@@ -27,13 +27,13 @@ Du kan också konfigurera den åtgärd som ska vidtas när en avisering utlöses
 * Välja en befintlig åtgärds grupp
 * Skapa en ny åtgärds grupp
 
-Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/platform/action-groups.md).
+Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE] 
 > Advisor-aviseringar är för närvarande endast tillgängliga för hög tillgänglighet, prestanda och kostnads rekommendationer. Säkerhets rekommendationer stöds inte. 
 
 ## <a name="create-alert-rule"></a>Skapa aviseringsregel
-1. I **portalen**väljer du **Azure Advisor**.
+1. I **portalen** väljer du **Azure Advisor**.
 
     ![Azure Advisor i portalen](./media/advisor-alerts/create1.png)
 
@@ -57,7 +57,7 @@ Mer information om åtgärds grupper finns i [skapa och hantera åtgärds gruppe
 
     ![Rådgivarens aviserings åtgärds grupp](./media/advisor-alerts/create6.png)
 
-7. I avsnittet **Åtgärds grupper** väljer du **Lägg till befintligt** för att använda en åtgärds grupp som du redan har skapat eller väljer **Skapa ny** för att skapa en ny [Åtgärds grupp](../azure-monitor/platform/action-groups.md). 
+7. I avsnittet **Åtgärds grupper** väljer du **Lägg till befintligt** för att använda en åtgärds grupp som du redan har skapat eller väljer **Skapa ny** för att skapa en ny [Åtgärds grupp](../azure-monitor/alerts/action-groups.md). 
 
     ![Advisor-avisering Lägg till befintlig](./media/advisor-alerts/create7.png)
 
@@ -185,13 +185,13 @@ Några av de andra viktiga fälten som du kanske vill använda är:
 
 Från Azure Advisor kan du redigera, ta bort eller inaktivera och aktivera aviseringar från rekommendationer. 
 
-1. I **portalen**väljer du **Azure Advisor**.
+1. I **portalen** väljer du **Azure Advisor**.
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Skärm bild av avsnittet aviserings information.":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Skärm bild av menyn Azure Portal som visar Azure Advisor vald.":::
 
 2. I avsnittet **övervakning** på den vänstra menyn väljer du **aviseringar**.
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Skärm bild av avsnittet aviserings information.":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="Skärm bild av Azure Portal menyn som visar aviseringar valda.":::
 
 3. Om du vill redigera en avisering klickar du på aviseringens namn för att öppna aviseringen och redigera de fält som du vill redigera.
 
@@ -199,5 +199,5 @@ Från Azure Advisor kan du redigera, ta bort eller inaktivera och aktivera avise
  
 
 ## <a name="next-steps"></a>Nästa steg
-- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/platform/alerts-overview.md)och lär dig hur du tar emot aviseringar.
-- Läs mer om [Åtgärds grupper](../azure-monitor/platform/action-groups.md).
+- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
+- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).

@@ -4,12 +4,12 @@ description: Övervaka system-och anpassade .NET-prestanda räknare i Applicatio
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937384"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583890"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>System prestanda räknare i Application Insights
 
@@ -110,7 +110,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Prestanda räknare i Analytics
-Du kan söka efter och Visa prestanda räknar rapporter i [Analytics](../log-query/log-query-overview.md).
+Du kan söka efter och Visa prestanda räknar rapporter i [Analytics](../logs/log-query-overview.md).
 
 **PerformanceCounters** -schemat visar `category` , `counter` namn och `instance` namn för varje prestanda räknare.  I telemetri för varje program visas endast räknare för programmet. Till exempel för att se vilka räknare som är tillgängliga: 
 
@@ -148,7 +148,7 @@ Stöd för prestanda räknare i ASP.NET Core är begränsat:
 * SDK-versioner 2.8.0 och senare stöder CPU/minnes räknare i Linux. Ingen annan räknare stöds i Linux. Det rekommenderade sättet att hämta system räknare i Linux (och andra miljöer som inte kommer från Windows) är att använda [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>Aviseringar
-Precis som med andra mått kan du [Ange en avisering](../platform/alerts-log.md) som varnar dig om en prestanda räknare går utanför en gräns som du anger. Öppna fönstret aviseringar och klicka på Lägg till avisering.
+Precis som med andra mått kan du [Ange en avisering](../alerts/alerts-log.md) som varnar dig om en prestanda räknare går utanför en gräns som du anger. Öppna fönstret aviseringar och klicka på Lägg till avisering.
 
 ## <a name="next-steps"></a><a name="next"></a>Nästa steg
 

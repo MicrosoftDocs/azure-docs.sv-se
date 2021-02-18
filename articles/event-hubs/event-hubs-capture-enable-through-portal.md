@@ -1,14 +1,14 @@
 ---
 title: Event Hubs samla in strömmande händelser med Azure Portal
 description: Den här artikeln beskriver hur du aktiverar avbildning av händelser som strömmas via Azure Event Hubs med hjälp av Azure-portalen.
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613585"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653959"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Aktivera avbildning av händelser som strömmas via Azure Event Hubs
 

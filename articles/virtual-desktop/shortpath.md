@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876706"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571598"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>RDP-Shortpath för Windows Virtual Desktop (för hands version)
 
@@ -151,7 +151,8 @@ Om du vill tillåta åtkomst till RDP-Shortpath lyssnare över nätverks säkerh
 Följ [dokumentationen för nätverks säkerhets gruppen](../virtual-machines/windows/nsg-quickstart-portal.md) för att skapa en inkommande säkerhets regel som tillåter trafik med följande parametrar:
 
 * **Källa**  -  **Valfritt** eller IP-intervallet där klienterna är bosatta
-* **Käll ports intervall** -* *\** _ _ **mål**  -  **alla**
+* **Käll port intervall** - **\***
+* **Mål**  -  **Alla**
 * **Mål ports intervall**  -  **3390**
 * **Protokoll**  -  **UDP**
 * **Åtgärd**  -  **Tillåt**
@@ -188,7 +189,7 @@ Möjliga värden är:
 * **0** – användarens anslutning använder inte RDP-Shortpath
 * **1** – användarens anslutning använder RDP-Shortpath
   
-I följande lista med frågor kan du granska anslutnings information. Du kan köra den här frågan i [Log Analytics Frågeredigeraren](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query). Ersätt `userupn` med UPN för den användare som du vill söka efter varje fråga.
+I följande lista med frågor kan du granska anslutnings information. Du kan köra den här frågan i [Log Analytics Frågeredigeraren](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query). Ersätt `userupn` med UPN för den användare som du vill söka efter varje fråga.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

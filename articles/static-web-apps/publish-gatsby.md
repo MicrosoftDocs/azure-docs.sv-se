@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250172"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652383"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Självstudie: publicera en Gatsby-webbplats till Azures statiska Web Apps för hands version
 
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. Om du inte har någon kan du [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/).
 - Ett GitHub-konto. Om du inte har någon kan du [skapa ett konto kostnads fritt](https://github.com/join).
@@ -75,7 +75,7 @@ Du måste ha en lagrings plats på GitHub för att skapa en ny Azure static Web 
 1. Skicka din lokala lagrings plats upp till GitHub.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Distribuera din webbapp
@@ -94,15 +94,15 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Acceptera prenumerationen som visas i listan eller Välj en ny i list rutan för _prenumeration_.
 
-1. I _resurs grupp_väljer du **ny**. I _nytt resurs grupp namn_anger du **Gatsby-static-Web-App** och väljer **OK**.
+1. I _resurs grupp_ väljer du **ny**. I _nytt resurs grupp namn_ anger du **Gatsby-static-Web-App** och väljer **OK**.
 
 1. Sedan ett namn för din app i rutan **namn** . Giltiga tecken är `a-z` , `A-Z` `0-9` och `-` .
 
-1. För _region_väljer du en tillgänglig region nära dig.
+1. För _region_ väljer du en tillgänglig region nära dig.
 
-1. För _SKU_väljer du **kostnads fri**.
+1. För _SKU_ väljer du **kostnads fri**.
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Skapa en statisk Web Apps (för hands version) i portalen":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Information ifylld":::
 
 1. Klicka på knappen **Logga in med GitHub** .
 
@@ -110,9 +110,9 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Välj **Gatsby-static-Web-App** som _lagrings plats_ .
 
-1. För _grenen_ Välj **huvud**.
+1. För _grenen_ Select **main**.
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Skapa en statisk Web Apps (för hands version) i portalen":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Slutförd GitHub-information":::
 
 ### <a name="build"></a>Skapa
 
@@ -126,7 +126,7 @@ Lägg sedan till de konfigurations inställningar som bygg processen använder f
 
    Ett värde för _API-platsen_ är inte nödvändigt eftersom du inte distribuerar ett API för tillfället.
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Skapa en statisk Web Apps (för hands version) i portalen":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Build-inställningar":::
 
 ### <a name="review-and-create"></a>Granska och skapa
 
@@ -138,7 +138,7 @@ Lägg sedan till de konfigurations inställningar som bygg processen använder f
 
 1. Öppna det distribuerade programmet genom att klicka på _URL_ -länken på resurs skärmen. Du kan behöva vänta en minut eller två för att GitHub-åtgärden ska slutföras.
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Skapa en statisk Web Apps (för hands version) i portalen":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Distribuerat program":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -68,7 +68,7 @@
     - name: Mallar för Resurshanteraren
       items:
         - name: Översikt
-          href: /resource-manager-samples.md
+          href: resource-manager-samples.md
         - name: Agenter
           href: agents/resource-manager-agent.md
         - name: Aviseringar
@@ -102,9 +102,9 @@
         - name: Azure Monitor för virtuella datorer
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
-      href: /cli-samples.md
+      href: cli-samples.md
     - name: Azure PowerShell
-      href: /powershell-samples.md
+      href: powershell-samples.md
 - name: Begrepp
   items:
     - name: Vad kan du övervaka?
@@ -114,7 +114,7 @@
     - name: Datakällor
       href: agents/data-sources.md
     - name: Dataplattform
-      href: /data-platform.md
+      href: data-platform.md
     - name: Datasäkerhet
       items:
         - name: Loggdata
@@ -142,7 +142,7 @@
     - name: Visualisera data
       href: visualizations.md
     - name: Partnerintegrering
-      href: /partners.md
+      href: partners.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje
@@ -169,14 +169,14 @@
     - name: Hantera och konfigurera
       items:
         - name: Rollbehörigheter och säkerhet
-          href: /roles-permissions-security.md
+          href: roles-permissions-security.md
         - name: IP-adresser
           href: app/ip-addresses.md
           displayname: 'firewall, firewall exceptions, whitelist'
         - name: Användning och kostnad
           items:
             - name: Användning och uppskattade kostnader
-              href: /usage-estimated-costs.md
+              href: usage-estimated-costs.md
             - name: Programanvändning och -kostnader
               href: app/pricing.md
             - name: Logga dataanvändning och -kostnader
@@ -1399,7 +1399,7 @@
           href: /azure/templates/microsoft.operationalinsights/allversions
     - name: Inbyggda Azure Policy-program
       displayName: 'samples, policies, definitions'
-      href: /policy-reference.md
+      href: policy-reference.md
     - name: 'Tillbakadragning av funktioner och API:er'
       items:
         - name: OperationalInsights API

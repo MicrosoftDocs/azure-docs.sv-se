@@ -3,20 +3,20 @@ title: Azure Automation Runbook-typer
 description: I den här artikeln beskrivs de typer av Runbooks som du kan använda i Azure Automation och överväganden för att bestämma vilken typ som ska användas.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050977"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634897"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation Runbook-typer
 
 Funktionen Azure Automation process automatisering stöder flera typer av Runbooks som definieras i följande tabell. Mer information om process automatiserings miljön finns [i Runbook-körning i Azure Automation](automation-runbook-execution.md).
 
-| Typ | Beskrivning |
+| Typ | Description |
 |:--- |:--- |
 | [Grafisk](#graphical-runbooks)|Grafisk Runbook baserad på Windows PowerShell och skapas och redige ras helt i den grafiska redigeraren i Azure Portal. |
 | [Grafiskt PowerShell-arbetsflöde](#graphical-runbooks)|Grafisk Runbook baserad på Windows PowerShell-arbetsflöde och skapas och redige ras helt i den grafiska redigeraren i Azure Portal. |
@@ -101,6 +101,11 @@ PowerShell Workflow-Runbooks är text-Runbooks baserade på [Windows PowerShell-
 ## <a name="python-runbooks"></a>Python-Runbooks
 
 Python-Runbooks kompileras under python 2 och python 3. Python 3-Runbooks är för närvarande en för hands version. Du kan redigera koden för runbooken direkt med hjälp av text redigeraren i Azure Portal. Du kan också använda en text redigerare offline och [Importera runbooken](manage-runbooks.md) till Azure Automation.
+
+Python 3-Runbooks stöds i följande globala infrastruktur i Azure:
+
+* Azure Global
+* Azure Government
 
 ### <a name="advantages"></a>Fördelar
 

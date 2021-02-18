@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4d3781c7a3894429cb5daccb334655543e3eea01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551959"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653581"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -88,24 +88,7 @@ Skapa en fil i projektets rot Katalog som kallas **client.js** som innehåller p
 
 Om du vill skapa en chatt-klient i din webbapp använder du SIP- **slutpunkten** för kommunikation **och den åtkomsttoken** som genererades som en del av de nödvändiga stegen. 
 
-Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services.
-
-##### <a name="server-vs-client-side"></a>Server jämfört med klient Sidan
-
-Vi rekommenderar att du genererar åtkomsttoken med hjälp av en komponent på Server sidan som skickar dem till klient programmet. I det här scenariot är Server sidan ansvarig för att skapa och hantera användare och utfärda sina token. Klient sidan kan sedan ta emot åtkomsttoken från tjänsten och använda dem för att autentisera klient biblioteken för Azure Communication Services.
-
-Token kan också utfärdas på klient sidan med hjälp av Azure-kommunikations administrations biblioteket för Java Script. I det här scenariot måste klient sidan vara medveten om användarna för att kunna utfärda sina tokens.
-
-Se följande dokumentation för mer information om [klient-och server arkitektur](../../../concepts/client-and-server-architecture.md)
-
-I diagrammet nedanför klient sidans program får du en åtkomsttoken från en betrodd tjänst nivå. Programmet använder sedan token för att autentisera kommunikations tjänst biblioteken. När det har autentiserats kan programmet nu använda klient sidans bibliotek för kommunikations tjänster för att utföra åtgärder som att chatta med andra användare.
-
-:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="Diagram över arkitektur för användar åtkomst-token.":::
-
-##### <a name="instructions"></a>Instruktioner
-Den här demon omfattar inte att skapa en tjänst nivå för chatt-programmet. 
-
-Om du inte har genererat användare och deras tokens följer du anvisningarna här: [användar åtkomst-token](../../access-tokens.md). Kom ihåg att ange omfånget till "chatt" och inte "VoIP".
+Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera tokens för chatt-programmet. Se [chatt-koncept](../../../concepts/chat/concepts.md) för mer information om chatt-arkitektur och [åtkomsttoken för användar åtkomst](../../access-tokens.md) för mer information om åtkomsttoken.
 
 Inuti **client.js** använder du slut punkten och åtkomsttoken i koden nedan för att lägga till chatt-funktioner med hjälp av klient biblioteket för Azure Communication Chat för Java Script.
 
