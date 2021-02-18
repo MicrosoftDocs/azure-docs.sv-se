@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257656a29733972672570648d4317b7847fedff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578903"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Använd Log Analytics för funktionen diagnostik i Windows Virtual Desktop (klassisk)
 
@@ -32,9 +32,9 @@ Vi rekommenderar att du använder Log Analytics för att analysera diagnostikdat
 
 ## <a name="before-you-get-started"></a>Innan du börjar
 
-Innan du kan använda Log Analytics med funktionen diagnostik måste du [skapa en arbets yta](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
+Innan du kan använda Log Analytics med funktionen diagnostik måste du [skapa en arbets yta](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace).
 
-När du har skapat arbets ytan följer du anvisningarna i [Anslut Windows-datorer till Azure Monitor](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) för att få följande information:
+När du har skapat arbets ytan följer du anvisningarna i [Anslut Windows-datorer till Azure Monitor](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) för att få följande information:
 
 - Arbetsyte-ID
 - Den primära nyckeln för din arbets yta

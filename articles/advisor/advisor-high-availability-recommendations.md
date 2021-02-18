@@ -3,12 +3,12 @@ title: Förbättra tillförlitligheten för ditt program med Advisor
 description: Använd Azure Advisor för att säkerställa och förbättra tillförlitligheten i affärs kritiska Azure-distributioner.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 0ced690ae735a281fdf8b1c3a020ff8c63ce469b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078042"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579968"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Förbättra tillförlitligheten för ditt program genom att använda Azure Advisor
 
@@ -68,7 +68,7 @@ För att tillhandahålla redundans för ditt program rekommenderar vi att du gru
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Se till att fel tolerans för tillgänglighets uppsättning (tillfälligt inaktive rad)
 
-För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar tillgänglighets uppsättningar som innehåller en enda virtuell dator och rekommenderar att du lägger till en eller flera virtuella datorer i den.Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer.Du kan välja att skapa en virtuell dator eller lägga till en befintlig virtuell dator i tillgänglighets uppsättningen.  
+För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar tillgänglighets uppsättningar som innehåller en enda virtuell dator och rekommenderar att du lägger till en eller flera virtuella datorer i den. Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer. Du kan välja att skapa en virtuell dator eller lägga till en befintlig virtuell dator i tillgänglighets uppsättningen.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Använd Managed disks för att förbättra data tillförlitligheten (tillfälligt inaktive rad)
 
@@ -76,7 +76,7 @@ Virtuella datorer som finns i en tillgänglighets uppsättning med diskar som de
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparera ogiltiga logg aviserings regler
 
-Azure Advisor identifierar logg aviserings regler som har ogiltiga frågor angivna i villkors avsnittet. Azure Monitor logga varnings regler kör frågor med angiven frekvens och brand aviseringar baserat på resultaten. Frågor kan bli ogiltiga med tiden på grund av ändringar i de resurser, tabeller eller kommandon som refereras till. Advisor rekommenderar korrigeringar för aviserings frågor för att förhindra att reglerna inaktive ras automatiskt och för att övervaka täckning. Mer information finns i [Felsöka aviserings regler](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
+Azure Advisor identifierar logg aviserings regler som har ogiltiga frågor angivna i villkors avsnittet. Azure Monitor logga varnings regler kör frågor med angiven frekvens och brand aviseringar baserat på resultaten. Frågor kan bli ogiltiga med tiden på grund av ändringar i de resurser, tabeller eller kommandon som refereras till. Advisor rekommenderar korrigeringar för aviserings frågor för att förhindra att reglerna inaktive ras automatiskt och för att övervaka täckning. Mer information finns i [Felsöka aviserings regler](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Konfigurera konsekvent indexerings läge på din Azure Cosmos DB-samling
 

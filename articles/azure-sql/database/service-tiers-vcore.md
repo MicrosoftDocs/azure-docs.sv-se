@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c55e2d2d9eaeae441e8a7505d0f391ed0860cedf
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735519"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634217"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Översikt över vCore-modellen – Azure SQL Database och Azure SQL-hanterad instans 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ För att få åtkomst till DC-serien måste prenumerationen vara en betald erbju
 ### <a name="compute-and-memory-specifications"></a>Beräknings-och minnes specifikationer
 
 
-|Maskin varu generering  |Beräkning  |Minne  |
+|Maskin varu generering  |Compute  |Minne  |
 |:---------|:---------|:---------|
 |Gen4     |– Intel® E5-2673 v3 (Haswell) 2,4 GHz-processorer<br>-Etablera upp till 24 virtuella kärnor (1 vCore = 1 fysisk kärna)  |– 7 GB per vCore<br>-Etablera upp till 168 GB|
 |Gen5     |**Allokerad beräkning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* och intel® 8272CL (Cascade Lake) 2,5 GHz- \* processorer<br>-Etablera upp till 80 virtuella kärnor (1 vCore = 1 Hyper-Thread)<br><br>**Serverlös databearbetning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz och Intel® SP-8160 (Skylake) * processorer<br>-Skala upp till 40 virtuella kärnor (1 vCore = 1 Hyper-Thread) automatiskt|**Allokerad beräkning**<br>– 5,1 GB per vCore<br>-Etablera upp till 408 GB<br><br>**Serverlös databearbetning**<br>-Skala upp till 24 GB per vCore automatiskt<br>-Skala upp till 120 GB max|
@@ -204,7 +204,7 @@ Mer information finns i [AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update) -
 
 Gen4-maskinvaran [föråldras](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) och är inte längre tillgänglig för nya distributioner. Alla nya databaser måste distribueras på Gen5 maskin vara.
 
-Gen5 är tillgängligt i de flesta regioner i hela världen.
+Gen5 är tillgänglig i alla offentliga regioner över hela världen.
 
 #### <a name="fsv2-series"></a>Fsv2-serien
 
