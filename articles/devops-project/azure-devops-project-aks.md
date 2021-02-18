@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855460"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590857"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Distribuera ASP.NET Core-appar till Azure Kubernetes-tjänsten med Azure DevOps starter
 
@@ -24,7 +24,7 @@ DevOps Starter är också:
 * Skapar automatiskt Azure-resurser, till exempel Azure Kubernetes Service (AKS).
 * Skapar och konfigurerar en versionspipeline i Azure DevOps som konfigurerar en versionspipeline för CI/CD.
 * Skapar en Azure Application Insights-resurs för övervakning.
-* Gör så att [Azure Monitor för containrar](../azure-monitor/insights/container-insights-overview.md) kan övervaka prestanda för containerarbetsbelastningar på AKS-klustret
+* Gör så att [Azure Monitor för containrar](../azure-monitor/containers/container-insights-overview.md) kan övervaka prestanda för containerarbetsbelastningar på AKS-klustret
 
 I de här självstudierna får du:
 
@@ -47,13 +47,13 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. Välj **.NET** och sedan **Nästa**.
 
-1. Under **Välj ett program ramverk**väljer du **ASP.net Core** och väljer sedan **Nästa**.
+1. Under **Välj ett program ramverk** väljer du **ASP.net Core** och väljer sedan **Nästa**.
 
 1. Välj **Kubernetes Service**, och välj sedan **Nästa**. 
 
@@ -89,7 +89,7 @@ DevOps starter konfigurerar automatiskt en CI/CD-pipeline i Azure DevOps-organis
 
 1. Gå till DevOps starter-instrumentpanelen.
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen.  En webbläsarflik visar bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen.  En webbläsarflik visar bygg-pipelinen för det nya projektet.
 
 1. Peka på fältet **status** och välj ellipsen (...).  En meny visar flera alternativ, till exempel att köa en ny version, pausa en version och redigera build-pipeline.
 
@@ -134,7 +134,7 @@ DevOps starter skapar och konfigurerar automatiskt de nödvändiga stegen för a
 
 Nu är du redo att samarbeta med ett team på din app med en CI/CD-process som automatiskt distribuerar ditt senaste arbete till din webbplats. Varje ändring i Git-lagringsplatsen startar en version i Azure DevOps och en CD-pipeline för kör en distribution till Azure. Följ proceduren i det här avsnittet eller använd en annan metod för att checka in ändringarna till lagringsplatsen. Du kan till exempel klona Git-lagringsplatsen i ditt favoritverktyg eller IDE och sedan push-överföra ändringarna till den här lagringsplatsen.
 
-1. I menyn Azure-DevOps väljer du **koda**  >  **filer**och går sedan till din lagrings platsen.
+1. I menyn Azure-DevOps väljer du **koda**  >  **filer** och går sedan till din lagrings platsen.
 
 1. Gå till katalogen *Views\Home* och välj ellipsen (...) bredvid filen *Index.cshtml*. Välj sedan **Redigera**.
 

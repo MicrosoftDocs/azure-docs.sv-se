@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e6fcf5980cf64b5fc088dfa295ef6221ffda6de9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499942"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592470"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Samla in och analysera loggdata för Azure Kognitiv sökning
 
@@ -25,7 +25,7 @@ När du ställer in diagnostikloggning uppmanas du att ange en lagrings funktion
 
 | Resurs | Används för |
 |----------|----------|
-| [Skicka till Log Analytics-arbetsytan](../azure-monitor/learn/tutorial-resource-logs.md) | Händelser och mått skickas till en Log Analytics-arbetsyta, som kan frågas i portalen för att returnera detaljerad information. En introduktion finns i [Kom igång med Azure Monitor loggar](../azure-monitor/log-query/log-analytics-tutorial.md) |
+| [Skicka till Log Analytics-arbetsytan](../azure-monitor/essentials/tutorial-resource-logs.md) | Händelser och mått skickas till en Log Analytics-arbetsyta, som kan frågas i portalen för att returnera detaljerad information. En introduktion finns i [Kom igång med Azure Monitor loggar](../azure-monitor/logs/log-analytics-tutorial.md) |
 | [Arkivera med Blob Storage](../storage/blobs/storage-blobs-overview.md) | Händelser och mått arkiveras i en BLOB-behållare och lagras i JSON-filer. Loggarna kan vara ganska detaljerade (per timme/minut) som är användbara för att söka efter en speciell incident men inte för en öppen undersökning. Använd en JSON-redigerare för att visa en rå logg fil eller Power BI för att sammanställa och visualisera loggdata.|
 | [Strömma till Händelsehubben](../event-hubs/index.yml) | Händelser och mät värden strömmas till en Azure Event Hubs-tjänst. Välj det här som en alternativ data insamlings tjänst för mycket stora loggar. |
 
@@ -33,11 +33,11 @@ När du ställer in diagnostikloggning uppmanas du att ange en lagrings funktion
 
 Skapa resurser i förväg så att du kan välja en eller flera när du konfigurerar diagnostisk loggning.
 
-+ [Skapa en Log Analytics-arbetsyta](../azure-monitor/learn/quick-create-workspace.md)
++ [Skapa en Log Analytics-arbetsyta](../azure-monitor/logs/quick-create-workspace.md)
 
 + [Skapa ett lagringskonto](../storage/common/storage-account-create.md)
 
-+ [Skapa en Händelsehubben](../event-hubs/event-hubs-create.md)
++ [Skapa en händelsehubb](../event-hubs/event-hubs-create.md)
 
 ## <a name="enable-data-collection"></a>Aktivera datainsamling
 

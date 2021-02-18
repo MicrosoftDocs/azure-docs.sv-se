@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 3a3f4faf8278553153ae2186ea74d20702c603b3
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780934"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592323"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure Files övervaknings data referens
 
@@ -36,9 +36,9 @@ Azure Files tillhandahåller följande kapacitets mått i Azure Monitor.
 
 #### <a name="azure-files"></a>Azure Files
 
-I den här tabellen visas [Azure Files mått](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices).
+I den här tabellen visas [Azure Files mått](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsfileservices).
 
-| Mått | Beskrivning |
+| Metric | Beskrivning |
 | ------------------- | ----------------- |
 | FileCapacity | Mängden fil lagring som används av lagrings kontot. <br/><br/> Enhet: byte <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
 | FileCount   | Antalet filer i lagrings kontot. <br/><br/> Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
@@ -88,4 +88,4 @@ I följande tabell visas egenskaperna för Azure Storage resurs loggar när de s
 ## <a name="see-also"></a>Se även
 
 - En beskrivning av övervaknings Azure Storage finns i [övervaknings Azure Files](storage-files-monitoring-reference.md) .
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

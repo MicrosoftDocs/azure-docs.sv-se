@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698792"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590285"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Säkerhetsmetodtips för IaaS-arbetsbelastningar i Azure
 Den här artikeln beskriver rekommenderade säkerhets metoder för virtuella datorer och operativ system.
@@ -130,17 +130,17 @@ Använd [Azure Security Center](../../security-center/security-center-introducti
 
 Security Center kan aktivt övervaka för hot och potentiella hot exponeras i säkerhets aviseringar. Korrelerade hot sammanställs i en enda vy som kallas för en säkerhets incident.
 
-Security Center lagrar data i [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md). Azure Monitor loggar innehåller ett frågespråk och analys motor som ger dig insikter om hur dina program och resurser fungerar. Data samlas också in från [Azure Monitor](../../batch/monitoring-overview.md), hanterings lösningar och agenter som installerats på virtuella datorer i molnet eller lokalt. Denna delade funktion hjälper dig att få en komplett bild av din miljö.
+Security Center lagrar data i [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md). Azure Monitor loggar innehåller ett frågespråk och analys motor som ger dig insikter om hur dina program och resurser fungerar. Data samlas också in från [Azure Monitor](../../batch/monitoring-overview.md), hanterings lösningar och agenter som installerats på virtuella datorer i molnet eller lokalt. Denna delade funktion hjälper dig att få en komplett bild av din miljö.
 
 Organisationer som inte tillämpar stark säkerhet för sina virtuella datorer förblir medvetna om potentiella försök av obehöriga användare att kringgå säkerhets kontroller.
 
 ## <a name="monitor-vm-performance"></a>Övervaka VM-prestanda
 Resurs missbruk kan vara ett problem när de virtuella dator processerna förbrukar fler resurser än de borde. Prestanda problem med en virtuell dator kan leda till avbrott i tjänsten, vilket strider mot tillgänglighetens säkerhets princip. Detta är särskilt viktigt för virtuella datorer som är värdar för IIS eller andra webb servrar, eftersom hög processor-eller minnes användning kan tyda på en DOS-attack (Denial of Service). Det är absolut nödvändigt att övervaka VM-åtkomsten inte bara återaktivt under ett problem, men också proaktivt mot bas linje prestanda som mäts under normal drift.
 
-Vi rekommenderar att du använder [Azure Monitor](../../azure-monitor/platform/data-platform.md) för att få insyn i din resurs hälsa. Azure Monitor funktioner:
+Vi rekommenderar att du använder [Azure Monitor](../../azure-monitor/data-platform.md) för att få insyn i din resurs hälsa. Azure Monitor funktioner:
 
-- [Loggfiler för resurs diagnostik](../../azure-monitor/platform/platform-logs-overview.md): övervakar dina VM-resurser och identifierar potentiella problem som kan påverka prestanda och tillgänglighet.
-- [Azure-diagnostik-tillägg](../../azure-monitor/platform/diagnostics-extension-overview.md): tillhandahåller funktioner för övervakning och diagnostik på virtuella Windows-datorer. Du kan aktivera dessa funktioner genom att inkludera tillägget som en del av [Azure Resource Manager-mallen](../../virtual-machines/extensions/diagnostics-template.md).
+- [Loggfiler för resurs diagnostik](../../azure-monitor/essentials/platform-logs-overview.md): övervakar dina VM-resurser och identifierar potentiella problem som kan påverka prestanda och tillgänglighet.
+- [Azure-diagnostik-tillägg](../../azure-monitor/agents/diagnostics-extension-overview.md): tillhandahåller funktioner för övervakning och diagnostik på virtuella Windows-datorer. Du kan aktivera dessa funktioner genom att inkludera tillägget som en del av [Azure Resource Manager-mallen](../../virtual-machines/extensions/diagnostics-template.md).
 
 Organisationer som inte övervakar prestanda för virtuella datorer kan inte avgöra om vissa ändringar i prestanda mönster är normala eller onormala. En virtuell dator som använder fler resurser än normal kan tyda på ett angrepp från en extern resurs eller en komprometterad process som körs på den virtuella datorn.
 

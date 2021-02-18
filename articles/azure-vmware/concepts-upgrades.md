@@ -2,17 +2,17 @@
 title: Koncept – uppdateringar och uppgraderingar av privata moln
 description: Lär dig mer om de viktiga uppgraderings processerna och funktionerna i Azure VMware-lösningen.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006712"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635000"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Uppdateringar och uppgraderingar av privata moln i Azure VMware-lösningar
 
-En av de främsta fördelarna med privata moln för VMware-lösningar i Azure är att plattformen upprätthålls för dig. Plattforms underhåll innehåller automatiserade uppdateringar av en skyddad VMware-programpaket, vilket hjälper dig att se till att du använder den senaste versionen av det privata moln programmet för Azure VMware-lösningen.
+En fördel med privata moln i Azure VMware-lösningar är att plattformen upprätthålls för dig. Underhåll inkluderar automatiserade uppdateringar av en VMware-verifierad program varu samling för att se till att du använder den senaste versionen av Azure VMware-lösningen privat moln program vara.
 
 Mer specifikt innehåller ett privat moln i Azure VMware-lösningen:
 
@@ -22,7 +22,7 @@ Mer specifikt innehåller ett privat moln i Azure VMware-lösningen:
 - VMware virtuellt San data lager för vSphere arbets belastning VM  
 - VMware HCX för arbets belastnings mobilitet  
 
-Förutom dessa komponenter innehåller ett privat moln i Azure VMware-lösningen resurser i Azure-Underlay som krävs för anslutning och för att kunna använda det privata molnet. Azure VMware-lösningen övervakar kontinuerligt hälsan för både Underlay-och VMware-komponenterna. När Azure VMware-lösningen identifierar ett fel vidtar den åtgärder för att reparera de komponenter som misslyckades. 
+Ett privat moln i Azure VMware-lösningen innehåller också resurser i Azure-Underlay som krävs för anslutning och för att kunna använda det privata molnet. Azure VMware-lösningen övervakar kontinuerligt hälsan för både Underlay-och VMware-komponenterna. När Azure VMware-lösningen identifierar ett fel vidtar den åtgärder för att reparera de komponenter som misslyckades. 
 
 ## <a name="what-components-get-updated"></a>Vilka komponenter kommer att uppdateras?   
 
@@ -42,16 +42,16 @@ Azure VMware-lösningen använder följande typer av uppdateringar av VMware-kom
 - Uppdateringar: lägre versions uppdateringar av en eller flera VMware-komponenter. 
 - Uppgraderingar: högre versions uppdateringar av en eller flera VMware-komponenter.
 
-Du får ett meddelande innan och efter att korrigeringarna har tillämpats på dina privata moln. Vi kommer också att arbeta med dig för att schemalägga en underhålls period innan du tillämpar uppdateringar eller uppgraderingar i ditt privata moln. 
+Du får ett meddelande innan och efter att korrigeringsfiler har tillämpats på dina privata moln. Vi kommer också att arbeta med dig för att schemalägga en underhålls period innan du tillämpar uppdateringar eller uppgraderingar i ditt privata moln. 
 
 ## <a name="vmware-appliance-backup"></a>Säkerhets kopiering av VMware-apparat 
 
-Förutom att göra uppdateringar, tar Azure VMware-lösningen en konfigurations säkerhets kopia av dessa VMware-komponenter:
+Azure VMware-lösningen tar även en konfigurations säkerhets kopia av följande VMware-komponenter:
 
 - vCenter Server 
 - NSX-T-chef 
 
-Vid misslyckade försök kan Azure VMware-lösningen återställa dessa från konfigurations säkerhets kopian. 
+Vid misslyckade försök kan Azure VMware-lösningen återställa dessa komponenter från konfigurations säkerhets kopian. 
 
 Mer information om VMware-programversioner finns i [artikeln privata moln och kluster begrepp](concepts-private-clouds-clusters.md) och [vanliga frågor och svar](faq.yml).
 

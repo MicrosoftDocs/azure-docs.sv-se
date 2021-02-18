@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943737"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592655"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Självstudier: Skapa och hantera Azure-budgetar
 
@@ -140,7 +140,7 @@ Utvärderingar av budgetkostnader baseras på faktiska kostnader. De omfattar in
 
 ## <a name="trigger-an-action-group"></a>Utlös en åtgärdsgrupp
 
-När du skapar eller redigerar en budget för en prenumeration eller resursgruppsomfång kan du konfigurera den så att den anropar en åtgärdsgrupp. Åtgärdsgruppen kan utföra olika åtgärder när ditt budgettröskelvärde är uppfyllt. Åtgärdsgrupper stöds för närvarande endast för prenumerations- och resursgruppsomfång. Mer information om åtgärdsgrupper finns i [Create and manage action groups in the Azure portal](../../azure-monitor/platform/action-groups.md) (Skapa och hantera åtgärdsgrupper i Azure-portalen). Mer information om hur du använder budgetbaserad automatisering med åtgärdsgrupper finns i [Hantera kostnader med Azure Budgets](../manage/cost-management-budget-scenario.md).
+När du skapar eller redigerar en budget för en prenumeration eller resursgruppsomfång kan du konfigurera den så att den anropar en åtgärdsgrupp. Åtgärdsgruppen kan utföra olika åtgärder när ditt budgettröskelvärde är uppfyllt. Åtgärdsgrupper stöds för närvarande endast för prenumerations- och resursgruppsomfång. Mer information om åtgärdsgrupper finns i [Create and manage action groups in the Azure portal](../../azure-monitor/alerts/action-groups.md) (Skapa och hantera åtgärdsgrupper i Azure-portalen). Mer information om hur du använder budgetbaserad automatisering med åtgärdsgrupper finns i [Hantera kostnader med Azure Budgets](../manage/cost-management-budget-scenario.md).
 
 Om du vill skapa eller uppdatera åtgärdsgrupper väljer du **Hantera åtgärdsgrupper** när du skapar eller redigerar en budget.
 
@@ -160,7 +160,7 @@ Följande exempel visar budgettrösklar som är inställda på 50 %, 75 % och 
 
 ![Exempel som visar aviseringsvillkor som konfigurerats med olika åtgärdsgrupper och typ av åtgärder](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-Budgetintegrering med åtgärdsgrupper fungerar bara för åtgärdsgrupper som har det gemensamma aviseringsschemat inaktiverat. Mer information om hur du inaktiverar schemat finns i [How do I enable the common alert schema?](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) (Hur gör jag för att aktivera det vanliga aviseringsschemat?)
+Budgetintegrering med åtgärdsgrupper fungerar bara för åtgärdsgrupper som har det gemensamma aviseringsschemat inaktiverat. Mer information om hur du inaktiverar schemat finns i [How do I enable the common alert schema?](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) (Hur gör jag för att aktivera det vanliga aviseringsschemat?)
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>Skapa och redigera budgetar med PowerShell
 

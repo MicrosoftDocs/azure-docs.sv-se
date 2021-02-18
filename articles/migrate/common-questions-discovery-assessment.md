@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567403"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589068"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -150,9 +150,9 @@ Skillnaderna mellan agent utan visualisering och agentbaserade visualiseringar s
 **Krav** | **Utan agent** | **Agent-baserad**
 --- | --- | ---
 Support | Det här alternativet är för närvarande en för hands version och är bara tillgängligt för virtuella VMware-datorer. [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds. | Allmän tillgänglighet (GA).
-Agent | Du behöver inte installera agenter på datorer som du vill kryssa för. | Agenter som ska installeras på varje lokal dator som du vill analysera: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)och [beroende agenten](../azure-monitor/platform/agents-overview.md#dependency-agent). 
-Krav | [Granska](concepts-dependency-visualization.md#agentless-analysis) kraven och distributions kraven. | [Granska](concepts-dependency-visualization.md#agent-based-analysis) kraven och distributions kraven.
-Log Analytics | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/insights/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) för beroende visualisering. [Läs mer](concepts-dependency-visualization.md#agent-based-analysis).
+Agent | Du behöver inte installera agenter på datorer som du vill kryssa för. | Agenter som ska installeras på varje lokal dator som du vill analysera: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)och [beroende agenten](../azure-monitor/agents/agents-overview.md#dependency-agent). 
+Förutsättningar | [Granska](concepts-dependency-visualization.md#agentless-analysis) kraven och distributions kraven. | [Granska](concepts-dependency-visualization.md#agent-based-analysis) kraven och distributions kraven.
+Log Analytics | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/vm/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) för beroende visualisering. [Läs mer](concepts-dependency-visualization.md#agent-based-analysis).
 Så här fungerar det | Fångar upp TCP-anslutningsfel på datorer aktiverade för beroende visualisering. Efter identifieringen samlar den in data i intervall om fem minuter. | Tjänstkarta agenter som installerats på en dator samla in data om TCP-processer och inkommande/utgående anslutningar för varje process.
 Data | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port. | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port.<br/><br/> Antalet anslutningar, svars tid och data överförings information samlas in och är tillgängliga för Log Analytics frågor. 
 Visualisering | Beroende karta för enskild server kan visas över en varaktighet på en timme till 30 dagar. | Beroende karta för en enskild server.<br/><br/> Kartan kan endast visas över en timme.<br/><br/> Beroende karta för en grupp med servrar.<br/><br/> Lägga till och ta bort servrar i en grupp från MAP-vyn.
@@ -171,8 +171,8 @@ Nej. Läs mer om [Azure Migrate prissättning](https://azure.microsoft.com/prici
 
 Om du vill använda agentbaserade beroende visualisering, laddar du ned och installerar agenter på varje lokal dator som du vill utvärdera:
 
-- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
-- [Beroendeagent](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)
+- [Beroendeagent](../azure-monitor/agents/agents-overview.md#dependency-agent)
 - Om du har datorer som inte har Internet anslutning kan du hämta och installera Log Analytics gateway på dem.
 
 Du behöver bara dessa agenter om du använder en agent-baserad beroende visualisering.
@@ -189,14 +189,14 @@ Nej, det går inte att exportera den beroende visualiserings rapporten i agent-b
 
 För agent-baserad beroende visualisering:
 
-- Använd ett [skript för att installera beroende agenten](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent).
-- För MMA [använder du kommando raden eller Automation](../azure-monitor/platform/log-analytics-agent.md#installation-options)eller använder ett [skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+- Använd ett [skript för att installera beroende agenten](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent).
+- För MMA [använder du kommando raden eller Automation](../azure-monitor/agents/log-analytics-agent.md#installation-options)eller använder ett [skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - Förutom skript kan du använda distributions verktyg som Microsoft Endpoint Configuration Manager och [Intigua](https://www.intigua.com/intigua-for-azure-migration) för att distribuera agenterna.
 
 ## <a name="what-operating-systems-does-mma-support"></a>Vilka operativ system stöder MMA?
 
-- Visa listan över [Windows-operativsystem som stöds av MMA](../azure-monitor/platform/log-analytics-agent.md#installation-options).
-- Visa listan över [Linux-operativsystem som stöds av MMA](../azure-monitor/platform/log-analytics-agent.md#installation-options).
+- Visa listan över [Windows-operativsystem som stöds av MMA](../azure-monitor/agents/log-analytics-agent.md#installation-options).
+- Visa listan över [Linux-operativsystem som stöds av MMA](../azure-monitor/agents/log-analytics-agent.md#installation-options).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Kan jag visualisera beroenden i mer än en timme?
 

@@ -8,12 +8,12 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559692"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650991"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostisera och Felsök tillgängligheten för Azure Cosmos SDK: er i multiregionala miljöer
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ Om du **inte anger någon önskad region** använder SDK-klienten som standard d
 | Flera Skriv regioner | Primär region  | Primär region  |
 
 > [!NOTE]
-> Primär region syftar på den första regionen i [Azure Cosmos-kontots region lista](distribute-data-globally.md)
+> Primär region syftar på den första regionen i [listan med Azure Cosmos-kontots region](distribute-data-globally.md).
+> Om de värden som anges som nationella inställningar inte stämmer överens med några befintliga Azure-regioner kommer de att ignoreras. Om de matchar en befintlig region men kontot inte replikeras till det, kommer klienten att ansluta till nästa önskade region som matchar eller till den primära regionen.
+
+> [!WARNING]
+> Om du inaktiverar återställningen av slut punkten (som anger värdet till falskt) på klient konfigurationen inaktive ras all logik för växling vid fel och tillgänglighet som beskrivs i det här dokumentet.
+> Den här konfigurationen kan nås av följande parametrar i varje Azure Cosmos SDK:
+>
+> * Egenskapen [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) i .NET v2 SDK.
+> * Metoden [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) i Java v4 SDK.
+> * Parametern [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) i python SDK.
+> * Parametern [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) i JS SDK.
 
 Under normala omständigheter ansluter SDK-klienten till den önskade regionen (om en regional inställning har angetts) eller till den primära regionen (om ingen inställning har angetts) och åtgärderna kommer att begränsas till den regionen, om inte något av nedanstående scenarier inträffar.
 
@@ -59,7 +69,7 @@ För en omfattande information om SLA-garantier under dessa händelser, se [serv
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Ta bort en region från kontot
 
-När du tar bort en region från ett Azure Cosmos-konto kommer alla SDK-klienter som använder kontot att identifiera regions borttagningen via en server dels svars kod. Klienten markerar sedan den regionala slut punkten som otillgänglig. Klienten försöker utföra den aktuella åtgärden igen och alla framtida åtgärder dirigeras permanent till nästa region i prioritetsordning.
+När du tar bort en region från ett Azure Cosmos-konto kommer alla SDK-klienter som använder kontot att identifiera regions borttagningen via en server dels svars kod. Klienten markerar sedan den regionala slut punkten som otillgänglig. Klienten försöker utföra den aktuella åtgärden igen och alla framtida åtgärder dirigeras permanent till nästa region i prioritetsordning. Om inställnings listan bara hade en post (eller var tom) men det finns andra tillgängliga regioner för kontot kommer det att dirigeras till nästa region i konto listan.
 
 ## <a name="adding-a-region-to-an-account"></a>Lägga till en region i ett konto
 

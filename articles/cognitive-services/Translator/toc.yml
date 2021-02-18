@@ -86,6 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Efterlevnad
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: Dokument Översättning
+  items:
+    - name: Översikt
+      items:
+        - name: Vad är dokument Översättning?
+          href: document-translation/overview.md
+    - name: Anvisningar
+      items:
+        - name: Kom igång med dokument Översättning
+          href: document-translation/get-started-with-document-translation.md
+        - name: Skapa SAS-token
+          href: document-translation/create-sas-tokens.md
+    - name: Referens
+      items:
+        - name: API-referens för dokument Översättning
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
 - name: Custom Translator
   items:
     - name: Översikt

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 833e2f7808b4b8efa210bc6a903ed30fe9ac53e0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222570"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592870"
 ---
 # <a name="query-update-management-logs"></a>Fråga Uppdateringshanteringsloggar
 
@@ -120,7 +120,7 @@ En post med en typ av `UpdateRunProgress` skapas som tillhandahåller uppdaterin
 | Resurs | Namn på resursen. |
 | ResourceId | Unikt ID för den resurs som är associerad med posten. |
 | ResourceProvider | Resurs leverantören. |
-| ResourceType | Resurs typ. |
+| ResourceType | Resurstyp. |
 | SourceComputerId | Unik identifierare som representerar käll datorn. |
 | SourceSystem | Käll system för posten. Värdet är `OperationsManager`. |
 | StartTime | Tid när uppdateringen har schemalagts för installation. *Den här egenskapen används inte för närvarande. Se TimeGenerated.* |
@@ -152,7 +152,7 @@ En post med en typ av `UpdateSummary` skapas som tillhandahåller uppdaterings S
 | ResourceGroup | Namnet på den resurs grupp som innehåller resursen. |
 | ResourceId | Unikt ID för den resurs som är associerad med posten. |
 | ResourceProvider | Resurs leverantören. |
-| ResourceType | Resurs typ. |
+| ResourceType | Resurstyp. |
 | RestartPending | Sant om en omstart väntar eller annars FALSE. |
 | SecurityUpdatesMissing | Antal saknade säkerhets uppdateringar som är tillämpliga.|
 | SourceComputerId | Unik identifierare för den virtuella datorn. |
@@ -191,11 +191,11 @@ Heartbeat
 
 På en Windows-dator kan du granska följande information för att verifiera agent anslutningen med Azure Monitor loggar:
 
-1. Öppna **Microsoft Monitoring Agent**i kontroll panelen. På fliken **Azure-Log Analytics** visar agenten följande meddelande: **Microsoft Monitoring Agent har anslutit till Log Analytics**.
+1. Öppna **Microsoft Monitoring Agent** i kontroll panelen. På fliken **Azure-Log Analytics** visar agenten följande meddelande: **Microsoft Monitoring Agent har anslutit till Log Analytics**.
 
 1. Öppna händelse loggen i Windows. Gå till **program-och tjänst loggar \ Operations Manager** och Sök efter händelse-ID 3000 och händelse-ID 5002 från käll **tjänst anslutningen**. Dessa händelser anger att datorn har registrerats på Log Analytics-arbetsytan och tar emot konfigurationen.
 
-Om agenten inte kan kommunicera med Azure Monitor loggar och agenten är konfigurerad för att kommunicera med Internet via en brand vägg eller proxyserver, kontrollerar du att brand väggen eller proxyservern har kon figurer ATS korrekt. Information om hur du verifierar att brand väggen eller proxyservern har kon figurer ATS korrekt finns i [nätverks konfiguration för Windows-agent](../../azure-monitor/platform/agent-windows.md) eller [nätverks konfiguration för Linux-agenten](../../azure-monitor/learn/quick-collect-linux-computer.md).
+Om agenten inte kan kommunicera med Azure Monitor loggar och agenten är konfigurerad för att kommunicera med Internet via en brand vägg eller proxyserver, kontrollerar du att brand väggen eller proxyservern har kon figurer ATS korrekt. Information om hur du verifierar att brand väggen eller proxyservern har kon figurer ATS korrekt finns i [nätverks konfiguration för Windows-agent](../../azure-monitor/agents/agent-windows.md) eller [nätverks konfiguration för Linux-agenten](../../azure-monitor/vm/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Om Linux-systemen har kon figurer ATS för att kommunicera med en proxy eller Log Analytics gateway och du aktiverar Uppdateringshantering, uppdaterar du `proxy.conf` behörigheterna för att ge behörigheten omiuser Group Läs behörighet för filen genom att använda följande kommandon:
@@ -205,7 +205,7 @@ Om agenten inte kan kommunicera med Azure Monitor loggar och agenten är konfigu
 
 Nyligen tillagda Linux-agenter visar statusen **uppdaterad** när en utvärdering har utförts. Den här processen kan ta upp till 6 timmar.
 
-För att bekräfta att en Operations Manager hanterings grupp kommunicerar med Azure Monitor loggar, se [verifiera Operations Manager integrering med Azure Monitor loggar](../../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+För att bekräfta att en Operations Manager hanterings grupp kommunicerar med Azure Monitor loggar, se [verifiera Operations Manager integrering med Azure Monitor loggar](../../azure-monitor/agents/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>Enskilda utvärderings frågor för Azure VM (Windows)
 
@@ -410,5 +410,5 @@ Update
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om Azure Monitor-loggar finns i [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md).
+* Mer information om Azure Monitor-loggar finns i [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md).
 * Hjälp med aviseringar finns i [Konfigurera aviseringar](configure-alerts.md).

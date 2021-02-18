@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: b20da64c135f7e54a7f6bc74beea073140a1e0a9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101728"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590655"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Självstudie: Media Services betrodd lagring
 
@@ -23,6 +23,9 @@ I den här självstudiekursen lär du dig:
 > - Så här ger du Azure-tjänster åtkomst till ett lagrings konto när du använder nätverks åtkomst kontroll, till exempel en brand vägg eller VPN
 
 Med 2020-05-01-API: et kan du aktivera betrodd lagring genom att associera en hanterad identitet med ett Media Services konto.
+
+>[!NOTE]
+>Betrodd lagring är endast tillgängligt i API och är för närvarande inte aktiverat i Azure Portal.
 
 Media Services kan automatiskt komma åt ditt lagrings konto med systemautentisering. Media Services verifierar att Media Services-kontot och lagrings kontot finns i samma prenumeration. Det validerar också att användaren som lägger till associationen har åtkomst till lagrings kontot med Azure Resource Manager RBAC.
 

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 0b84e26962b00ee5b9d4c34cab7efbcc9aa0bf01
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745892"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582808"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Åtkomst till diagnostikloggar för Azure Data Lake Storage Gen1
 Lär dig att aktivera diagnostikloggning för ditt Azure Data Lake Storage Gen1-konto och hur du visar de loggar som samlats in för ditt konto.
 
 Organisationer kan aktivera diagnostikloggning för sitt Azure Data Lake Storage Gen1 konto för att samla in gransknings spårningar för data åtkomst som innehåller information, till exempel en lista över användare som har åtkomst till data, hur ofta data lagras, hur mycket data som lagras i kontot osv. När den är aktive rad loggas diagnostiken och/eller förfrågningarna på bästa möjliga villkor. Både förfrågningar och diagnostikloggar skapas endast om det finns begär Anden som görs mot tjänst slut punkten.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage gen1 konto**. Följ anvisningarna i [Kom igång med Azure Data Lake Storage gen1 med hjälp av Azure Portal](data-lake-store-get-started-portal.md).
 
@@ -46,7 +46,7 @@ Organisationer kan aktivera diagnostikloggning för sitt Azure Data Lake Storage
         
         * Välj alternativet att **strömma till en Event Hub** för att strömma loggdata till en Azure Event Hub. Förmodligen kommer du att använda det här alternativet om du har en efterföljande bearbetnings pipeline för att analysera inkommande loggar i real tid. Om du väljer det här alternativet måste du ange information om den Azure Event Hub som du vill använda.
 
-        * Välj alternativet att **Skicka till Log Analytics** för att analysera de genererade loggdata med hjälp av tjänsten Azure Monitor. Om du väljer det här alternativet måste du ange information om arbets ytan Log Analytics som du använder för att utföra logg analys. Se [Visa eller analysera data som samlats in med Azure Monitor loggar Sök](../azure-monitor/log-query/log-analytics-tutorial.md) för information om hur du använder Azure Monitor loggar.
+        * Välj alternativet att **Skicka till Log Analytics** för att analysera de genererade loggdata med hjälp av tjänsten Azure Monitor. Om du väljer det här alternativet måste du ange information om arbets ytan Log Analytics som du använder för att utföra logg analys. Se [Visa eller analysera data som samlats in med Azure Monitor loggar Sök](../azure-monitor/logs/log-analytics-tutorial.md) för information om hur du använder Azure Monitor loggar.
      
    * Ange om du vill hämta gransknings loggar eller begär ande loggar eller båda.
    * Ange hur många dagar data ska behållas. Kvarhållning är bara tillgängligt om du använder Azure Storage-kontot för att arkivera loggdata.
@@ -115,7 +115,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 ```
 
 #### <a name="request-log-schema"></a>Begär logg schema
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -128,7 +128,7 @@ Här är en exempel post i den JSON-formaterade begär ande loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="request-log-properties-schema"></a>Schema för begär ande logg egenskaper
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Sträng |HTTP-metoden som används för åtgärden. Till exempel GET. |
 | Sökväg |Sträng |Den sökväg som åtgärden utfördes på |
@@ -167,7 +167,7 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 ```
 
 #### <a name="audit-log-schema"></a>Schema för spårningslogg
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | time |Sträng |Tids stämplingen (i UTC) för loggen |
 | resourceId |Sträng |ID för den resurs som åtgärden ägde rum på |
@@ -180,12 +180,12 @@ Här är en exempel post i den JSON-formaterade gransknings loggen. Varje Blob h
 | properties |JSON |Se nedan för information |
 
 #### <a name="audit-log-properties-schema"></a>Schema för gransknings logg egenskaper
-| Namn | Typ | Beskrivning |
+| Namn | Typ | Description |
 | --- | --- | --- |
 | StreamName |Sträng |Den sökväg som åtgärden utfördes på |
 
 ## <a name="samples-to-process-the-log-data"></a>Exempel för bearbetning av loggdata
-När du skickar loggar från Azure Data Lake Storage Gen1 till Azure Monitor loggar (se [Visa eller analysera data som samlats in med Azure Monitor loggar](../azure-monitor/log-query/log-analytics-tutorial.md) för att läsa mer om hur du använder Azure Monitor loggar) returnerar följande fråga en tabell som innehåller en lista över användarens visnings namn, tidpunkten för händelserna och antalet händelser för tiden för händelsen tillsammans med ett visuellt diagram. Det kan enkelt ändras för att Visa användar-GUID eller andra attribut:
+När du skickar loggar från Azure Data Lake Storage Gen1 till Azure Monitor loggar (se [Visa eller analysera data som samlats in med Azure Monitor loggar](../azure-monitor/logs/log-analytics-tutorial.md) för att läsa mer om hur du använder Azure Monitor loggar) returnerar följande fråga en tabell som innehåller en lista över användarens visnings namn, tidpunkten för händelserna och antalet händelser för tiden för händelsen tillsammans med ett visuellt diagram. Det kan enkelt ändras för att Visa användar-GUID eller andra attribut:
 
 ```
 search *

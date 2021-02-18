@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220396"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589323"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Felsök prestanda problem med Azure SQL Database och Azure SQL-hanterade instanser med Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Den här sidan innehåller information om prestanda problem för Azure SQL Database och Azure SQL-hanterade instanser i [intelligent Insights](intelligent-insights-overview.md) resurs loggen. Mått och resurs loggar kan strömmas till [Azure Monitor loggar](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)eller en lösning från tredje part för anpassade DevOps-aviseringar och rapporterings funktioner.
+Den här sidan innehåller information om prestanda problem för Azure SQL Database och Azure SQL-hanterade instanser i [intelligent Insights](intelligent-insights-overview.md) resurs loggen. Mått och resurs loggar kan strömmas till [Azure Monitor loggar](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs), [Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)eller en lösning från tredje part för anpassade DevOps-aviseringar och rapporterings funktioner.
 
 > [!NOTE]
 > En snabb prestanda fel söknings guide med hjälp av Intelligent Insights finns i det [rekommenderade fel söknings flödet](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) i det här dokumentet.
@@ -335,4 +335,4 @@ Intelligent Insights behöver vanligt vis en timmes tid för att utföra rotor S
 - Lär dig [intelligent Insights](intelligent-insights-overview.md) begrepp.
 - Använd [loggen intelligent Insights prestanda diagnos](intelligent-insights-use-diagnostics-log.md).
 - Övervaka med hjälp av [Azure SQL-analys](../../azure-monitor/insights/azure-sql.md).
-- Lär dig att [samla in och använda loggdata från dina Azure-resurser](../../azure-monitor/platform/platform-logs-overview.md).
+- Lär dig att [samla in och använda loggdata från dina Azure-resurser](../../azure-monitor/essentials/platform-logs-overview.md).

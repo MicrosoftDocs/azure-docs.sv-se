@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f5304e7634cfb7b4d5c3c05036c0606ba03295ae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589053"
 ---
 # <a name="dependency-analysis"></a>Beroende analys
 
@@ -34,7 +34,7 @@ Det finns två alternativ för att distribuera beroende analyser
 **Alternativ** | **Information** | **Offentligt moln** | **Azure Government**
 ----  |---- | ---- 
 **Utan agent** | Avsöker data från virtuella VMware-datorer med vSphere-API: er.<br/><br/> Du behöver inte installera agenter på virtuella datorer.<br/><br/> Det här alternativet är för närvarande en för hands version, endast för virtuella VMware-datorer. | Stöds. | Stöds.
-**Agent-baserad analys** | Använder [tjänstkarta lösning](../azure-monitor/insights/service-map.md) i Azure Monitor för att aktivera beroende visualisering och analys.<br/><br/> Du måste installera agenter på varje lokal dator som du vill analysera. | Stöds | Stöds inte.
+**Agent-baserad analys** | Använder [tjänstkarta lösning](../azure-monitor/vm/service-map.md) i Azure Monitor för att aktivera beroende visualisering och analys.<br/><br/> Du måste installera agenter på varje lokal dator som du vill analysera. | Stöds | Stöds inte.
 
 
 ## <a name="agentless-analysis"></a>Analys utan agent
@@ -58,7 +58,7 @@ Efter identifieringen av beroende data börjar avsökningen:
 
 ## <a name="agent-based-analysis"></a>Agent-baserad analys
 
-Vid en agent-baserad analys använder Server utvärderingen [tjänstkarta](../azure-monitor/insights/service-map.md) lösning i Azure Monitor. Du installerar [Microsoft Monitoring Agent/Log Analytics-agenten](../azure-monitor/platform/agents-overview.md#log-analytics-agent) och [beroende agenten](../azure-monitor/platform/agents-overview.md#dependency-agent)på varje dator som du vill analysera.
+Vid en agent-baserad analys använder Server utvärderingen [tjänstkarta](../azure-monitor/vm/service-map.md) lösning i Azure Monitor. Du installerar [Microsoft Monitoring Agent/Log Analytics-agenten](../azure-monitor/agents/agents-overview.md#log-analytics-agent) och [beroende agenten](../azure-monitor/agents/agents-overview.md#dependency-agent)på varje dator som du vill analysera.
 
 ### <a name="dependency-data"></a>Beroende data
 
@@ -78,7 +78,7 @@ Skillnaderna mellan agent utan visualisering och agentbaserade visualiseringar s
 --- | --- | ---
 **Support** | I för hands version för virtuella VMware-datorer. [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds. | Allmän tillgänglighet (GA).
 **Gent** | Inga agenter behövs på de datorer som du vill analysera. | Agenter som krävs på varje lokal dator som du vill analysera.
-**Log Analytics** | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/insights/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) för beroende analys.<br/><br/> Du kopplar en Log Analytics arbets yta till ett Azure Migrate-projekt. Arbets ytan måste ligga i regionerna östra USA, Sydostasien eller Västeuropa. Arbets ytan måste vara i en region där [tjänstkarta stöds](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).
+**Log Analytics** | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/vm/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md) för beroende analys.<br/><br/> Du kopplar en Log Analytics arbets yta till ett Azure Migrate-projekt. Arbets ytan måste ligga i regionerna östra USA, Sydostasien eller Västeuropa. Arbets ytan måste vara i en region där [tjänstkarta stöds](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).
 **Process** | Fångar in TCP-anslutningsfel. Efter identifieringen samlar den in data i intervall om fem minuter. | Tjänstkarta agenter som installerats på en dator samla in data om TCP-processer och inkommande/utgående anslutningar för varje process.
 **Data** | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port. | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port.<br/><br/> Antalet anslutningar, svars tid och data överförings information samlas in och är tillgängliga för Log Analytics frågor. 
 **Visualisering** | Beroende karta för enskild server kan visas över en varaktighet på en timme till 30 dagar. | Beroende karta för en enskild server.<br/><br/> Beroende karta för en grupp med servrar.<br/><br/>  Kartan kan endast visas över en timme.<br/><br/> Lägga till och ta bort servrar i en grupp från MAP-vyn.

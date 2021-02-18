@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 07ad53191c8212ccde5633a4068f31aa00ab69b1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554723"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650945"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -109,4 +109,4 @@ Observera att i grupp scenarier används en blandad ljud ström som stöd för a
 Mer information finns i följande artiklar:
 - Bekanta dig med allmänna [samtals flöden](../call-flows.md) 
 - Läs mer om [samtals typer](../voice-video-calling/about-call-types.md)
-- [Planera din PSTN-lösning](../telephony-sms/plan-solution.md)
+- Lär dig mer om [telefonnummer typer](../telephony-sms/plan-solution.md)
