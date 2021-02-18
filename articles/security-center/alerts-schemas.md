@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789224"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590574"
 ---
 # <a name="security-alerts-schemas"></a>Säkerhets aviserings scheman
 
@@ -24,7 +24,7 @@ Om din prenumeration har aktiverat Azure Defender får du säkerhets aviseringar
 
 Du kan visa dessa säkerhets aviseringar i Azure Security Center s sidor för **skydd mot hot** , eller via externa verktyg som:
 
-- [Azure Sentinel](../sentinel/index.yml) – Microsofts moln-interna Siem. Indikatorn Connector hämtar varningar från Azure Security Center och skickar dem till [Log Analytics arbets ytan](../azure-monitor/learn/quick-create-workspace.md) för Azure Sentinel.
+- [Azure Sentinel](../sentinel/index.yml) – Microsofts moln-interna Siem. Indikatorn Connector hämtar varningar från Azure Security Center och skickar dem till [Log Analytics arbets ytan](../azure-monitor/logs/quick-create-workspace.md) för Azure Sentinel.
 - Siem från tredje part – skicka data till [Azure Event Hubs](../event-hubs/index.yml). Integrera sedan Event Hub-data med en SIEM från tredje part. Läs mer i [Stream-aviseringar till en Siem, Soar eller IT Service Management-lösning](export-to-siem.md).
 - [REST API](/rest/api/securitycenter/) – om du använder REST API för att få åtkomst till aviseringar kan du läsa mer i [API-dokumentationen för online-aviseringar](/rest/api/securitycenter/alerts).
 
@@ -187,4 +187,4 @@ Mer information om hur du kommer åt säkerhets aviseringar utanför Security Ce
 - [Azure Sentinel](../sentinel/index.yml) – Microsofts moln – inbyggd Siem
 - [Azure Event Hubs](../event-hubs/index.yml) – Microsofts fullständigt hanterade data inmatnings tjänst i real tid
 - [Exportera Security Center data kontinuerligt](continuous-export.md)
-- [Log Analytics arbets ytor](../azure-monitor/learn/quick-create-workspace.md) – Azure Monitor lagrar loggdata i en Log Analytics arbets yta, en behållare som innehåller data och konfigurations information
+- [Log Analytics arbets ytor](../azure-monitor/logs/quick-create-workspace.md) – Azure Monitor lagrar loggdata i en Log Analytics arbets yta, en behållare som innehåller data och konfigurations information

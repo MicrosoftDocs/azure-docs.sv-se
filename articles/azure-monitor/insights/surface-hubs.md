@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587219"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Övervaka Surface Hub med Azure Monitor för att spåra deras hälsa
 
@@ -26,7 +26,7 @@ Använd följande information för att installera och konfigurera lösningen. F�
 
 * En [Log Analytics prenumerations](https://azure.microsoft.com/pricing/details/log-analytics/) nivå som stöder antalet enheter som du vill övervaka. Log Analytics prissättningen varierar beroende på hur många enheter som har registrerats och hur mycket data de bearbetar. Du bör tänka på detta när du planerar distributionen av Surface Hub.
 
-Sedan kan du antingen lägga till en befintlig Log Analytics arbets yta eller skapa en ny. Detaljerade instruktioner för hur du använder någon av metoderna finns i [skapa en Log Analytics arbets yta i Azure Portal](../learn/quick-create-workspace.md). När Log Analytics arbets ytan har kon figurer ATS finns det två sätt att registrera dina Surface Hub enheter:
+Sedan kan du antingen lägga till en befintlig Log Analytics arbets yta eller skapa en ny. Detaljerade instruktioner för hur du använder någon av metoderna finns i [skapa en Log Analytics arbets yta i Azure Portal](../logs/quick-create-workspace.md). När Log Analytics arbets ytan har kon figurer ATS finns det två sätt att registrera dina Surface Hub enheter:
 
 * Automatiskt via Intune
 * Manuellt via **inställningarna** på Surface Hubs enheten.
@@ -55,9 +55,9 @@ Du behöver arbets ytans ID och arbets ytans nyckel för Log Analytics arbets yt
 
 Om du inte använder Intune för att hantera din miljö kan du registrera enheter manuellt via **Inställningar** på varje Surface Hub:
 
-1. Öppna **Inställningar**från Surface Hub.
+1. Öppna **Inställningar** från Surface Hub.
 2. Ange autentiseringsuppgifter för enhets administratören när du uppmanas till det.
-3. Klicka på **den här enheten**och klicka på **Konfigurera Log Analytics inställningar**under **övervakning**.
+3. Klicka på **den här enheten** och klicka på **Konfigurera Log Analytics inställningar** under **övervakning**.
 4. Välj **Aktivera övervakning**.
 5. I dialog rutan Log Analytics inställningar anger du Log Analytics **arbetsyte-ID** och anger **arbets ytans nyckel**.  
    ![Skärm bild som visar Microsoft Operations Manager Suite-inställningar med Aktivera övervakning valt och text rutor för arbetsyte-ID och arbets ytans nyckel.](./media/surface-hubs/settings.png)
@@ -74,8 +74,8 @@ När du klickar på panelen Surface Hub visas enhetens hälsa.
 
    ![Surface Hub instrument panel](./media/surface-hubs/surface-hub-dashboard.png)
 
-Du kan skapa [aviseringar](../platform/alerts-overview.md) baserat på befintliga eller anpassade loggs ökningar. Med hjälp av data Azure Monitor som samlas in från dina Surface Hub kan du söka efter problem och aviseringar om de villkor som du definierar för dina enheter.
+Du kan skapa [aviseringar](../alerts/alerts-overview.md) baserat på befintliga eller anpassade loggs ökningar. Med hjälp av data Azure Monitor som samlas in från dina Surface Hub kan du söka efter problem och aviseringar om de villkor som du definierar för dina enheter.
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [logg frågor i Azure Monitor](../log-query/log-query-overview.md) om du vill visa detaljerade Surface Hub data.
-* Skapa [aviseringar](../platform/alerts-overview.md) för att meddela dig när problem uppstår med Surface Hub.
+* Använd [logg frågor i Azure Monitor](../logs/log-query-overview.md) om du vill visa detaljerade Surface Hub data.
+* Skapa [aviseringar](../alerts/alerts-overview.md) för att meddela dig när problem uppstår med Surface Hub.

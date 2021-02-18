@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: cde84a018d307bada6a6b6f3b5467b8addd007b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573317"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571445"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Felsöka prestanda för virtuella Azure-datorer i Linux eller Windows
 
@@ -30,7 +30,7 @@ Den här artikeln går igenom hur du använder övervakning för att diagnostise
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Övervakning av virtuella Azure IAAS-datorer
 
-Om du vill övervaka den virtuella gäst datorn använder du övervakning av virtuella Azure-datorer, som varnar dig om vissa resurs villkor på hög nivå. Om du vill kontrol lera om VM-diagnostik är aktiverat, se [Översikt över Azure resurs loggar](../../azure-monitor/learn/tutorial-resource-logs.md). Om du ser följande har du förmodligen inte aktiverat diagnostiken:
+Om du vill övervaka den virtuella gäst datorn använder du övervakning av virtuella Azure-datorer, som varnar dig om vissa resurs villkor på hög nivå. Om du vill kontrol lera om VM-diagnostik är aktiverat, se [Översikt över Azure resurs loggar](../../azure-monitor/essentials/tutorial-resource-logs.md). Om du ser följande har du förmodligen inte aktiverat diagnostiken:
 
 ![Övervakning har inte Aktiver ATS](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -101,7 +101,7 @@ Granska dina data för att identifiera om du har några resurs Flask halsar. Om 
 
 ### <a name="cpu-observe-trends"></a>Trender för CPU-observation
 
-När du tittar på prestanda problem bör du vara medveten om trender och förstå om de påverkar dig. I nästa avsnitt ska vi använda övervaknings diagrammen från portalen för att visa trender. De kan också vara användbara för att referera till kors referenser till resurs beteenden i samma tids period. Om du vill anpassa graferna klickar du på [Azure Monitor data plattform](../../azure-monitor/platform/data-platform.md).
+När du tittar på prestanda problem bör du vara medveten om trender och förstå om de påverkar dig. I nästa avsnitt ska vi använda övervaknings diagrammen från portalen för att visa trender. De kan också vara användbara för att referera till kors referenser till resurs beteenden i samma tids period. Om du vill anpassa graferna klickar du på [Azure Monitor data plattform](../../azure-monitor/data-platform.md).
 
 Toppar – toppar kan relateras till en schemalagd aktivitet/känd händelse. Om du kan identifiera uppgiften bestämmer du om aktiviteten körs på den prestanda nivå som krävs. Om prestanda är acceptabel kanske du inte behöver öka resurserna.
 
