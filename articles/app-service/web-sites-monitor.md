@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: bf230032afe80680dc392c2a74da2a5aef381983
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509561"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586099"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Övervaka appar i Azure App Service
 [Azure App Service](./overview.md) innehåller inbyggda övervaknings funktioner för webbappar, mobil-och API-appar i [Azure Portal](https://portal.azure.com).
@@ -136,7 +136,7 @@ Det finns två mått som återspeglar CPU-användning:
 **Processor procent**: användbart för appar som finns i Basic-, standard-och Premium-planer, eftersom de kan skalas ut. CPU-procent är en korrekt indikation på den övergripande användningen för alla instanser.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mät precisions precision och bevarande princip
-Mått för en app-och App Service-plan loggas och sammanställs av tjänsten och [bevaras enligt dessa regler](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
+Mått för en app-och App Service-plan loggas och sammanställs av tjänsten och [bevaras enligt dessa regler](../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Övervaknings kvoter och mät värden i Azure Portal
 Om du vill granska statusen för de olika kvoter och mått som påverkar en app går du till [Azure Portal](https://portal.azure.com).
@@ -153,14 +153,14 @@ Välj **inställnings** kvoter för att hitta kvoter  >  . I diagrammet kan du g
 
 Om du klickar på någon av dessa diagram tas du till vyn mått där du kan skapa anpassade diagram, fråga olika mått och mycket mer. 
 
-Mer information om mått finns i [övervaka tjänst mått](../azure-monitor/platform/data-platform.md).
+Mer information om mått finns i [övervaka tjänst mått](../azure-monitor/data-platform.md).
 
 ## <a name="alerts-and-autoscale"></a>Aviseringar och autoskalning
-Mått för en app eller en App Service plan kan anslutas till aviseringar. Mer information om varningsaviseringar finns [här](../azure-monitor/platform/alerts-classic-portal.md).
+Mått för en app eller en App Service plan kan anslutas till aviseringar. Mer information om varningsaviseringar finns [här](../azure-monitor/alerts/alerts-classic-portal.md).
 
 App Service appar som finns i Basic eller högre App Service planer stöder autoskalning. Med autoskalning kan du konfigurera regler som övervakar App Service plans måtten. Regler kan öka eller minska antalet instanser, vilket kan ge ytterligare resurser efter behov. Regler kan också hjälpa dig att spara pengar när appen är överetablerad.
 
-Mer information om autoskalning finns i [skala](../azure-monitor/platform/autoscale-get-started.md) och [metod tips för Azure Monitor autoskalning](../azure-monitor/platform/autoscale-best-practices.md).
+Mer information om autoskalning finns i [skala](../azure-monitor/autoscale/autoscale-get-started.md) och [metod tips för Azure Monitor autoskalning](../azure-monitor/autoscale/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

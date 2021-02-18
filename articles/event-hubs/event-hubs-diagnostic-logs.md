@@ -3,21 +3,21 @@ title: Konfigurera diagnostikloggar – Azure Event Hub | Microsoft Docs
 description: Lär dig hur du konfigurerar aktivitets loggar och diagnostikloggar för Event Hub i Azure.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc5cbea31583a4e8126897b2dcda63b216438e1b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573178"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Konfigurera diagnostikloggar för en Azure-händelsehubb
 
 Du kan visa två typer av loggar för Azure Event Hubs:
 
-* **[Aktivitets loggar](../azure-monitor/platform/platform-logs-overview.md)**: loggarna innehåller information om åtgärder som utförs i ett jobb. Loggarna är alltid aktiverade. Du kan se aktivitets logg poster genom att välja **aktivitets logg** i det vänstra fönstret för ditt Event Hub-namnområde i Azure Portal. Exempel: "skapa eller uppdatera namn område", "skapa eller uppdatera Event Hub".
+* **[Aktivitets loggar](../azure-monitor/essentials/platform-logs-overview.md)**: loggarna innehåller information om åtgärder som utförs i ett jobb. Loggarna är alltid aktiverade. Du kan se aktivitets logg poster genom att välja **aktivitets logg** i det vänstra fönstret för ditt Event Hub-namnområde i Azure Portal. Exempel: "skapa eller uppdatera namn område", "skapa eller uppdatera Event Hub".
 
     ![Aktivitets logg för ett Event Hubs-namnområde](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnostikloggar](../azure-monitor/platform/platform-logs-overview.md)**: diagnostikloggar ger mer utförlig information om åtgärder och åtgärder som utförs mot ditt namn område med hjälp av API: et, eller via hanterings klienter på språk-SDK: n. 
+* **[Diagnostikloggar](../azure-monitor/essentials/platform-logs-overview.md)**: diagnostikloggar ger mer utförlig information om åtgärder och åtgärder som utförs mot ditt namn område med hjälp av API: et, eller via hanterings klienter på språk-SDK: n. 
     
     I följande avsnitt visas hur du aktiverar diagnostikloggar för ett Event Hubs namn område.
 
@@ -36,7 +36,7 @@ Diagnostikloggar är inaktiverade som standard. Följ dessa steg om du vill akti
 
     Nya inställningar börjar gälla om 10 minuter. Därefter visas loggar i det konfigurerade lagrings målet i fönstret **diagnostikloggar** .
 
-    Mer information om hur du konfigurerar diagnostik finns i [översikten över Azure Diagnostic-loggar](../azure-monitor/platform/platform-logs-overview.md).
+    Mer information om hur du konfigurerar diagnostik finns i [översikten över Azure Diagnostic-loggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnostiska loggnings kategorier
 
@@ -131,7 +131,7 @@ Händelse namnet är ifyllt som åtgärds typ + resurs typ från följande uppr�
 
 | Åtgärdstyp | Resurstyp | 
 | -------------- | ------------- | 
-| <ul><li>Skapa</li><li>Uppdatera</li><li>Ta bort</li><li>Hämta</li><li>Okänt</li></ul> | <ul><li>Namnområde</li><li>Kö</li><li>Ämne</li><li>Prenumeration</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Regel</li>ConsumerGroup</li> |
+| <ul><li>Skapa</li><li>Uppdatera</li><li>Ta bort</li><li>Hämta</li><li>Okänt</li></ul> | <ul><li>Namnområde</li><li>Kö</li><li>Avsnitt</li><li>Prenumeration</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Regel</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>Schema för autoskalning av loggar
 Autoskalning log JSON innehåller element som anges i följande tabell:

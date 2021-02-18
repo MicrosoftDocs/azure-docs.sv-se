@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b7dc7a9f93d6d70abec57632ffc95aea8a6bc699
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82e15712fe1e7a5791b1374e4aa4cd446f8f5e90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804996"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574437"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azures säkerhets bas linje för Network Watcher
 
@@ -118,9 +118,9 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka ändringar som gjorts i Azure Network Watcher. Du kan skapa aviseringar inom Azure Monitor som ska utlösas när ändringar sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -142,7 +142,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera ändringar för Azure Network Watcher-instanser. Förutom kontroll planet (t. ex. Azure Portal) genererar Network Watcher sig inte loggar som är relaterade till nätverks trafik. Network Watcher innehåller verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -154,7 +154,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera ändringar för Azure Network Watcher-instanser. Förutom kontroll planet (t. ex. Azure Portal) genererar Network Watcher sig själv inte gransknings loggar. Network Watcher innehåller verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -174,7 +174,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är associerade med Azure Network Watcher enligt organisationens regler för efterlevnad.
 
-* [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -184,7 +184,7 @@ Network Watcher ska vara aktiverat
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer och identifiera ändringar för Azure Network Watcher-instanser. Förutom kontroll planet (t. ex. Azure Portal) genererar Network Watcher sig inte loggar som är relaterade till nätverks trafik. Network Watcher innehåller verktyg för att övervaka, diagnostisera, Visa mått och aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Förstå Network Watcher](./network-watcher-monitoring-overview.md)
 
@@ -479,7 +479,7 @@ För att kunna använda Network Watcher-funktioner måste det konto som du logga
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Network Watcher och andra kritiska eller relaterade resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

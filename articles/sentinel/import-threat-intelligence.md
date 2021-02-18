@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 0b2a6088effc735076d56ba83dd85135392147b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807148"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574988"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Importera hotinformation till Azure Sentinel
 
@@ -419,7 +419,7 @@ Nu ska vi gå igenom hur du hittar en hot informations arbets bok som finns i Az
 
     :::image type="content" source="media/import-threat-intelligence/threat-intel-bar-chart.png" alt-text="Stapeldiagram":::
 
-Arbets böcker tillhandahåller kraftfulla interaktiva instrument paneler som ger dig insikter om alla aspekter av Azure Sentinel. Det finns ett helt parti som du kan göra med arbets böcker, medan de angivna mallarna är en bra start punkt vill du förmodligen gå in i och anpassa dessa mallar eller skapa nya instrument paneler som kombinerar många olika data källor så att du kan visualisera dina data på ett unikt sätt. Eftersom Azure Sentinel-arbetsböcker baseras på Azure Monitor arbets böcker finns det redan omfattande dokumentation tillgänglig och många fler mallar. En bra plats för att börja är den här artikeln om hur du [skapar interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/platform/workbooks-overview.md). 
+Arbets böcker tillhandahåller kraftfulla interaktiva instrument paneler som ger dig insikter om alla aspekter av Azure Sentinel. Det finns ett helt parti som du kan göra med arbets böcker, medan de angivna mallarna är en bra start punkt vill du förmodligen gå in i och anpassa dessa mallar eller skapa nya instrument paneler som kombinerar många olika data källor så att du kan visualisera dina data på ett unikt sätt. Eftersom Azure Sentinel-arbetsböcker baseras på Azure Monitor arbets böcker finns det redan omfattande dokumentation tillgänglig och många fler mallar. En bra plats för att börja är den här artikeln om hur du [skapar interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md). 
 
 Det finns också en omfattande community med [Azure Monitor arbets böcker på GitHub](https://github.com/microsoft/Application-Insights-Workbooks) där du kan hämta ytterligare mallar och bidra med dina egna mallar.
 

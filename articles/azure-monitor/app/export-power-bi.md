@@ -3,12 +3,12 @@ title: Exportera till Power BI från Azure Application Insights | Microsoft Docs
 description: Analys frågor kan visas i Power BI.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4bdae09d193d5ae9c59fe9352e07b8219a76841d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187008"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584315"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Flödes Power BI från Application Insights
 [Power BI](https://www.powerbi.com/) är en uppsättning affärs verktyg som hjälper dig att analysera data och dela insikter. Det finns omfattande instrument paneler på alla enheter. Du kan kombinera data från många källor, inklusive analys frågor från [Azure Application insikter](./app-insights-overview.md).
@@ -31,7 +31,7 @@ Om du vill importera din Application Insights fråga använder du Skriv bords ve
 Installera [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Exportera en Analytics-fråga
-1. [Öppna Analytics och skriv frågan](../log-query/log-analytics-tutorial.md).
+1. [Öppna Analytics och skriv frågan](../logs/log-analytics-tutorial.md).
 2. Testa och förfina frågan tills du är nöjd med resultatet. Kontrol lera att frågan körs korrekt i Analytics innan du exporterar den.
 3. På menyn **Exportera** väljer du **Power BI (M)**. Spara textfilen.
    
@@ -146,4 +146,4 @@ Efter den första importen fortsätter instrument panelen och rapporterna att up
 
 ## <a name="next-steps"></a>Nästa steg
 * [Power BI – lär dig](https://www.powerbi.com/learning/)
-* [Självstudie för analys](../log-query/log-analytics-tutorial.md)
+* [Självstudie för analys](../logs/log-analytics-tutorial.md)

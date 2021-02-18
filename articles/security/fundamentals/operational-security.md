@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f968267d4233c765bfd107d81957cf04edace923
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7380c0d9679fe74bc91eea269f53fea750922b79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575014"
 ---
 # <a name="azure-operational-security"></a>Drift säkerhet i Azure
 ## <a name="introduction"></a>Introduktion
@@ -108,7 +108,7 @@ Skyddade data i Azure Backup lagras i ett säkerhetskopieringsvalv som finns i e
 
 ![Hanteringslösningar](./media/operational-security/azure-operational-security-fig4.png)
 
-Ett exempel på en lösning som använder flera tjänster för att tillhandahålla ytterligare funktioner är den [uppdateringshantering lösningen](../../automation/update-management/overview.md). Den här lösningen använder [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md) -agenten för Windows och Linux för att samla in information om nödvändiga uppdateringar på varje agent. Den skriver dessa data till lagrings platsen för Azure Monitor loggar där du kan analysera den med en inkluderad instrument panel.
+Ett exempel på en lösning som använder flera tjänster för att tillhandahålla ytterligare funktioner är den [uppdateringshantering lösningen](../../automation/update-management/overview.md). Den här lösningen använder [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md) -agenten för Windows och Linux för att samla in information om nödvändiga uppdateringar på varje agent. Den skriver dessa data till lagrings platsen för Azure Monitor loggar där du kan analysera den med en inkluderad instrument panel.
 
 När du skapar en distribution används Runbooks i [Azure Automation](../../automation/automation-intro.md) för att installera nödvändiga uppdateringar. Du hanterar hela processen i portalen och du behöver inte tänka på de bakomliggande detaljerna.
 
@@ -148,19 +148,19 @@ Security Center samlar in data från dina virtuella datorer (VM) för att utvär
 
 Azure Security Center hjälper kunder att förhindra, upptäcka och svara på hot genom att samla in och bearbeta säkerhetsrelaterade data, inklusive konfigurationsinformation, metadata, händelseloggar, kraschdumpfiler och annat. Microsoft följer strikta riktlinjer för efterlevnad och säkerhet – från kodning till driften av en tjänst.
 
--   **Datauppdelning** : Data lagras logiskt och separat på varje komponent i tjänsten. Alla data taggas efter organisation. Den här taggningen finns kvar i informationens hela livscykel och används på varje lager i tjänsten.
+-   **Datauppdelning**: Data lagras logiskt och separat på varje komponent i tjänsten. Alla data taggas efter organisation. Den här taggningen finns kvar i informationens hela livscykel och används på varje lager i tjänsten.
 
--   **Data åtkomst** : för att ge säkerhets rekommendationer och undersöka möjliga säkerhetshot kan Microsofts personal komma åt information som samlas in eller analyseras av Azure-tjänster, inklusive krasch dum par, process skapande händelser, ögonblicks bilder av VM-diskar och artefakter, som oavsiktligt kan inkludera kunddata eller personliga data från dina virtuella datorer. Vi följer [villkoren för Microsoft Online Services och sekretess policyn](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), vilket innebär att Microsoft inte använder kunddata eller härleder information från dem för reklam eller liknande kommersiella ändamål.
+-   **Data åtkomst**: för att ge säkerhets rekommendationer och undersöka möjliga säkerhetshot kan Microsofts personal komma åt information som samlas in eller analyseras av Azure-tjänster, inklusive krasch dum par, process skapande händelser, ögonblicks bilder av VM-diskar och artefakter, som oavsiktligt kan inkludera kunddata eller personliga data från dina virtuella datorer. Vi följer [villkoren för Microsoft Online Services och sekretess policyn](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), vilket innebär att Microsoft inte använder kunddata eller härleder information från dem för reklam eller liknande kommersiella ändamål.
 
--   **Dataanvändning** : Microsoft använder mönster och hotinformation som identifieras från flera klientorganisationer i syfte att förbättra våra skydds- och identifieringsfunktioner. Vi gör detta i enlighet med våra sekretessåtaganden som beskrivs i [sekretesspolicyn](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
+-   **Dataanvändning**: Microsoft använder mönster och hotinformation som identifieras från flera klientorganisationer i syfte att förbättra våra skydds- och identifieringsfunktioner. Vi gör detta i enlighet med våra sekretessåtaganden som beskrivs i [sekretesspolicyn](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
 ### <a name="data-location"></a>Dataplats
 
 Azure Security Center samlar in tillfälliga kopior av dina kraschdumpfiler och analyserar dem efter tecken på kryphål och säkerhetsintrång. Azure Security Center utför den här analysen inom samma geografiska region som arbetsytan och tar bort de tillfälliga kopiorna när analysen är klar. Artefakter lagras centralt i samma region som den virtuella datorn.
 
--   **Dina lagrings konton** : ett lagrings konto anges för varje region där virtuella datorer körs. Det gör att du kan lagra data i samma region som den virtuella dator som data samlas in från.
+-   **Dina lagrings konton**: ett lagrings konto anges för varje region där virtuella datorer körs. Det gör att du kan lagra data i samma region som den virtuella dator som data samlas in från.
 
--   **Azure Security Center Storage** : Information om säkerhetsvarningar, inklusive partneraviseringar, rekommendationer och status för säkerhetstillstånd lagras centralt (för närvarande i USA). Den här informationen kan omfatta relaterad konfigurationsinformation och säkerhetshändelser som samlas in från dina virtuella datorer för att ge dig säkerhetsvarningar, rekommendationer eller säkerhetsrelaterad statusinformation.
+-   **Azure Security Center Storage**: Information om säkerhetsvarningar, inklusive partneraviseringar, rekommendationer och status för säkerhetstillstånd lagras centralt (för närvarande i USA). Den här informationen kan omfatta relaterad konfigurationsinformation och säkerhetshändelser som samlas in från dina virtuella datorer för att ge dig säkerhetsvarningar, rekommendationer eller säkerhetsrelaterad statusinformation.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -195,17 +195,17 @@ De här loggarna genereras av en resurs och ger omfattande och frekventa data om
 
 Windows Event System-loggar är till exempel en kategori av diagnostikloggar för virtuella datorer och blob-, tabell-och Queue-loggar är kategorier av diagnostikloggar för lagrings konton.
 
-Diagnostikloggar skiljer sig från [aktivitets loggen (tidigare känd som Gransknings logg eller drift logg)](../../azure-monitor/platform/platform-logs-overview.md). Aktivitets loggen ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Diagnostikloggar ger information om åtgärder som din resurs har vidtagit på egen hand.
+Diagnostikloggar skiljer sig från [aktivitets loggen (tidigare känd som Gransknings logg eller drift logg)](../../azure-monitor/essentials/platform-logs-overview.md). Aktivitets loggen ger inblick i de åtgärder som utfördes på resurser i din prenumeration. Diagnostikloggar ger information om åtgärder som din resurs har vidtagit på egen hand.
 
 ### <a name="metrics"></a>Mått
 
-Med Azure Monitor kan du använda telemetri för att få insyn i dina arbets belastningar prestanda och hälsa på Azure. Den viktigaste typen av Azure-telemetridata är måtten (kallas även prestanda räknare) som har genererats av de flesta Azure-resurser. Azure Monitor tillhandahåller flera olika sätt att konfigurera och använda dessa [mått](../../azure-monitor/platform/data-platform.md) för övervakning och fel sökning. Mått är en värdefull källa för telemetri och gör att du kan utföra följande uppgifter:
+Med Azure Monitor kan du använda telemetri för att få insyn i dina arbets belastningar prestanda och hälsa på Azure. Den viktigaste typen av Azure-telemetridata är måtten (kallas även prestanda räknare) som har genererats av de flesta Azure-resurser. Azure Monitor tillhandahåller flera olika sätt att konfigurera och använda dessa [mått](../../azure-monitor/data-platform.md) för övervakning och fel sökning. Mått är en värdefull källa för telemetri och gör att du kan utföra följande uppgifter:
 
 -   **Spåra** resursens prestanda (till exempel en virtuell dator, webbplats eller logisk app) genom att rita måtten på ett Portal diagram och fästa diagrammet på en instrument panel.
 
 -   **Få ett meddelande om ett problem** som påverkar resursens prestanda när ett mått överkorsar ett visst tröskelvärde.
 
--   **Konfigurera automatiska åtgärder** , till exempel automatisk skalning av en resurs eller utlöser en runbook när ett mått korsar ett visst tröskelvärde.
+-   **Konfigurera automatiska åtgärder**, till exempel automatisk skalning av en resurs eller utlöser en runbook när ett mått korsar ett visst tröskelvärde.
 
 -   **Utföra avancerad analys** eller rapportering om resursernas prestanda eller användnings trender.
 
@@ -213,7 +213,7 @@ Med Azure Monitor kan du använda telemetri för att få insyn i dina arbets bel
 
 ### <a name="azure-diagnostics"></a>Microsoft Azure Diagnostics
 
-Det är funktionen i Azure som möjliggör insamling av diagnostikdata i ett distribuerat program. Du kan använda det diagnostiska tillägget från olika källor. För närvarande finns stöd för [webb-och arbets roller i Azure Cloud Service](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) som kör Microsoft Windows och [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md). Andra Azure-tjänster har sin egen separata diagnostik.
+Det är funktionen i Azure som möjliggör insamling av diagnostikdata i ett distribuerat program. Du kan använda det diagnostiska tillägget från olika källor. För närvarande finns stöd för [webb-och arbets roller i Azure Cloud Service](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service), [Azure Virtual Machines](../../virtual-machines/windows/overview.md) som kör Microsoft Windows och [Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md). Andra Azure-tjänster har sin egen separata diagnostik.
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
@@ -225,7 +225,7 @@ Det är viktigt att granska nätverks säkerheten för att identifiera nätverks
 
 Network Watcher har för närvarande följande funktioner:
 
--   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Gransknings loggar</a>** – åtgärder som utförs som en del av konfigurationen av nätverk loggas. Dessa loggar kan visas i Azure Portal eller hämtas med hjälp av Microsoft-verktyg som Power BI eller verktyg från tredje part. Gransknings loggar är tillgängliga via portalen, PowerShell, CLI och REST API. Mer information om gransknings loggar finns i gransknings åtgärder med Resource Manager. Gransknings loggar är tillgängliga för åtgärder som utförs på alla nätverks resurser.
+-   **<a href="/azure/network-watcher/network-watcher-monitoring-overview">Gransknings loggar</a>**– åtgärder som utförs som en del av konfigurationen av nätverk loggas. Dessa loggar kan visas i Azure Portal eller hämtas med hjälp av Microsoft-verktyg som Power BI eller verktyg från tredje part. Gransknings loggar är tillgängliga via portalen, PowerShell, CLI och REST API. Mer information om gransknings loggar finns i gransknings åtgärder med Resource Manager. Gransknings loggar är tillgängliga för åtgärder som utförs på alla nätverks resurser.
 
 
 -   **<a href="/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-flödet verifieras</a>** – kontrollerar om ett paket tillåts eller nekas baserat på flödes information 5-tuple paket parametrar (mål-IP, käll-IP, målport, källport och protokoll). Om paketet nekas av en nätverks säkerhets grupp returneras regeln och nätverks säkerhets gruppen som nekade paketet.

@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787167"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635582"
 ---
-# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Självstudie: prioritering, undersöka och reagera på säkerhets aviseringar
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Självstudie: Sortera, undersöka och svara på säkerhetsaviseringar
 Security Center kontinuerligt analyserar dina hybrid moln arbets belastningar med avancerad analys och hot information för att varna dig om potentiellt skadliga aktiviteter i dina moln resurser. Du kan också integrera aviseringar från andra säkerhets produkter och tjänster i Security Center. När en avisering har Aktiver ATS krävs Swift-åtgärd för att undersöka och åtgärda potentiella säkerhets problem. 
 
 I den här självstudien får du lära dig hur man:
@@ -42,7 +42,7 @@ Security Center tillhandahåller en enhetlig vy över alla säkerhetsvarningar. 
 
 Prioritering aviseringar från sidan **säkerhets aviseringar** :
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Sidan säkerhets aviseringar" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center säkerhets aviserings listan":::
 
 Använd den här sidan om du vill granska aktiva säkerhets aviseringar i din miljö för att bestämma vilken avisering som ska undersökas först.
 
@@ -60,7 +60,7 @@ När du har bestämt vilken avisering som ska undersökas först:
 1. På sidan aviserings översikt väljer du den resurs som du vill undersöka först.
 1. Påbörja undersökningen från den vänstra rutan, som visar information på hög nivå om säkerhets aviseringen.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Sidan säkerhets aviseringar":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Den vänstra rutan på sidan med aviserings information som markerar information på hög nivå":::
 
     I den här rutan visas:
     - Allvarlighets grad, status och aktivitets tid för avisering
@@ -80,24 +80,24 @@ När du har undersökt en avisering och förstår dess omfattning kan du svara p
 
 1.  Öppna fliken **vidta åtgärder** för att se de rekommenderade svaren.
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Sidan säkerhets aviseringar" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Fliken Vidtag åtgärd i säkerhets aviseringar" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  Läs avsnittet **minimera hotet** för de manuella undersöknings stegen som krävs för att åtgärda problemet.
 1.  Åtgärda dina resurser och förhindra framtida attacker av den här typen genom att åtgärda säkerhets rekommendationerna i avsnittet **förhindra framtida attacker** .
 1.  Använd avsnittet **Utlös automatiserat svar** för att utlösa en Logic app med automatiserade svars steg.
 1.  Om den identifierade aktiviteten *inte är* skadlig kan du ignorera framtida aviseringar av den här typen med hjälp av avsnittet **utelämna liknande aviseringar** .
 
-1.  När du har slutfört undersökningen i aviseringen och svarat på lämpligt sätt ändrar du statusen till **avstängt** .
+1.  När du har slutfört undersökningen i aviseringen och svarat på lämpligt sätt ändrar du statusen till **avstängt**.
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Sidan säkerhets aviseringar":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Ange en aviserings status":::
 
     Aviseringen tas bort från huvud aviserings listan. Du kan använda filtret från sidan aviserings lista om du vill visa alla aviseringar **med statusen** avvisad.
 
 1.  Vi rekommenderar att du ger feedback om aviseringen till Microsoft:
-    1. Markera aviseringen som **användbar** eller **inte användbar** .
+    1. Markera aviseringen som **användbar** eller **inte användbar**.
     1. Välj en orsak och Lägg till en kommentar.
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Sidan säkerhets aviseringar":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Ge feedback till Microsoft om användbarheten hos en avisering":::
 
     > [!TIP]
     > Vi går igenom din feedback för att förbättra våra algoritmer och ger bättre säkerhets aviseringar.
@@ -108,11 +108,11 @@ De andra snabbstarterna och självstudierna i den här samlingen bygger på den 
 
 Om du inte planerar att fortsätta eller vill inaktivera någon av dessa funktioner:
 
-1. Gå tillbaka till Security Center huvud menyn och välj **priser och inställningar** .
+1. Gå tillbaka till Security Center huvud menyn och välj **priser och inställningar**.
 1. Välj relevant prenumeration.
-1. Om du vill nedgradera väljer du **Azure Defender av** .
-1. Om du vill inaktivera automatisk etablering öppnar du sidan **data insamling** och ställer in **Automatisk etablering** till **av** .
-4. Välj **Spara** .
+1. Om du vill nedgradera väljer du **Azure Defender av**.
+1. Om du vill inaktivera automatisk etablering öppnar du sidan **data insamling** och ställer in **Automatisk etablering** till **av**.
+4. Välj **Spara**.
 
 >[!NOTE]
 > Om du inaktiverar automatisk etablering tas inte Log Analytics agenten bort från virtuella Azure-datorer som redan har agenten. Inaktivering av automatisk etablering begränsar säkerhetsövervakningen för dina resurser.

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: e9845eaf6d84caad3ddb8c7e615cb72f71c91f3b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 80455b442bbfb9c8a7d40799b2ddd5fc25460578
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412841"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595578"
 ---
 # <a name="azure-database-security-checklist"></a>Check lista för Azure Database Security
 
 För att förbättra säkerheten innehåller Azure Database ett antal inbyggda säkerhets kontroller som du kan använda för att begränsa och kontrol lera åtkomst.
 
-Exempel på dessa är:
+Dessa omfattar:
 
 -    En brand vägg som gör att du kan skapa [brand Väggs regler](../../azure-sql/database/firewall-configure.md) som begränsar anslutningarna med IP-adress,
 -    Brand vägg för server nivå som är tillgänglig från Azure Portal
@@ -53,7 +53,7 @@ Vi rekommenderar att du läser artikeln [metod tips för Azure Database Security
 |<br> Åtkomst till databasen | <ul><li>[Autentisering](../../azure-sql/database/logins-create-manage.md) (Azure Active Directory autentisering) AD-autentisering använder identiteter som hanteras av Azure Active Directory.</li><li>[Auktorisera](../../azure-sql/database/logins-create-manage.md) användare de lägsta privilegier som krävs.</li></ul> |
 |<br>Program åtkomst| <ul><li>[Säkerhet på radnivå](/sql/relational-databases/security/row-level-security) (med hjälp av säkerhets principer, samtidigt som den begränsar åtkomsten på radnivå baserat på en användares identitet, roll eller körnings kontext).</li><li>[Dynamisk data maskning](../../azure-sql/database/dynamic-data-masking-overview.md) (med behörighet & principen begränsar känslig data exponering genom att maskera den till icke-privilegierade användare)</li></ul>|
 |**Proaktiv övervakning**||  
-| <br>Spåra & att identifiera| <ul><li>[Granskning](../../azure-sql/database/auditing-overview.md) spårar databas händelser och skriver dem till en Gransknings logg/aktivitets logg i ditt [Azure Storage konto](../../storage/common/storage-account-create.md).</li><li>Spåra Azures databas hälsa med [Azure Monitor aktivitets loggar](../../azure-monitor/platform/platform-logs-overview.md).</li><li>[Hot identifiering](../../azure-sql/database/threat-detection-configure.md) identifierar avvikande databas aktiviteter som indikerar potentiella säkerhetshot mot databasen. </li></ul> |
+| <br>Spåra & att identifiera| <ul><li>[Granskning](../../azure-sql/database/auditing-overview.md) spårar databas händelser och skriver dem till en Gransknings logg/aktivitets logg i ditt [Azure Storage konto](../../storage/common/storage-account-create.md).</li><li>Spåra Azures databas hälsa med [Azure Monitor aktivitets loggar](../../azure-monitor/essentials/platform-logs-overview.md).</li><li>[Hot identifiering](../../azure-sql/database/threat-detection-configure.md) identifierar avvikande databas aktiviteter som indikerar potentiella säkerhetshot mot databasen. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Data övervakning](../../security-center/security-center-remediate-recommendations.md) Använd Azure Security Center som en centraliserad lösning för säkerhets övervakning för SQL och andra Azure-tjänster.</li></ul>|        
 
 ## <a name="conclusion"></a>Slutsats

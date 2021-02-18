@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564777"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594446"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meddelanden för planerat underhåll för VM-skalningsuppsättningar
 
@@ -28,7 +28,7 @@ Azure utför regelbundet uppdateringar för att förbättra tillförlitligheten,
 
 Planerat underhåll som kräver en omstart är schemalagt i vågor. Varje våg har olika omfång (regioner):
 
-- En våg börjar med ett meddelande till kunderna. Som standard skickas ett meddelande till Prenumerationens ägare och medägare. Du kan lägga till mottagare och meddelande alternativ som e-post, SMS och Webhooks i meddelanden med hjälp av Azure [aktivitets logg aviseringar](../azure-monitor/platform/platform-logs-overview.md).  
+- En våg börjar med ett meddelande till kunderna. Som standard skickas ett meddelande till Prenumerationens ägare och medägare. Du kan lägga till mottagare och meddelande alternativ som e-post, SMS och Webhooks i meddelanden med hjälp av Azure [aktivitets logg aviseringar](../azure-monitor/essentials/platform-logs-overview.md).  
 - Med Notification görs ett *självbetjänings fönster* tillgängligt. Under det här fönstret som vanligt vis är 35 dagar kan du se vilka av dina virtuella datorer som ingår i vågen. Du kan aktivera underhåll proaktivt enligt dina egna schemaläggnings behov.
 - Efter självbetjänings fönstret startar en *schemalagd underhålls period* . Vid något tillfälle under det här fönstret schemalägger Azure och tillämpar det nödvändiga underhållet på den virtuella datorn. 
 
@@ -75,7 +75,7 @@ När du har schemalagt en planerad underhålls våg kan du Visa en lista över d
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **alla tjänster** på den vänstra menyn och välj sedan **Virtual Machine Scale Sets**.
 3. Under **skalnings uppsättningar för virtuella datorer** väljer du **Redigera kolumner** för att öppna listan över tillgängliga kolumner.
-4. I avsnittet **tillgängliga kolumner** väljer du **självbetjänings underhåll** och flyttar det sedan till listan över **valda kolumner** . Välj **Tillämpa**.  
+4. I avsnittet **tillgängliga kolumner** väljer du **självbetjänings underhåll** och flyttar det sedan till listan över **valda kolumner** . Välj **Använd**.  
 
     Om du vill göra det lättare att hitta **självbetjänings** objekt kan du ändra List alternativet i avsnittet **tillgängliga kolumner** från **alla** till- **Egenskaper**.
 
@@ -84,22 +84,22 @@ Kolumnen för självbetjänings **Underhåll** visas nu i listan över skalnings
 | Värde | Beskrivning |
 |-------|-------------|
 | Ja | Minst en virtuell dator i skalnings uppsättningen för den virtuella datorn är i ett självbetjänings fönster. Du kan starta underhåll när som helst under den här självbetjänings perioden. | 
-| Inga | Inga virtuella datorer är i ett självbetjänings fönster i den berörda skalnings uppsättningen för virtuella datorer. | 
+| No | Inga virtuella datorer är i ett självbetjänings fönster i den berörda skalnings uppsättningen för virtuella datorer. | 
 | - | Skalnings uppsättningar för virtuella datorer ingår inte i en planerad underhålls våg.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Aviseringar och aviseringar i portalen
 
-Azure kommunicerar ett schema för planerat underhåll genom att skicka ett e-postmeddelande till Prenumerationens ägare och gruppen med medägare. Du kan lägga till mottagare och kanaler i den här kommunikationen genom att skapa aktivitets logg aviseringar. Mer information finns i [övervaka prenumerations aktivitet med Azure aktivitets logg](../azure-monitor/platform/platform-logs-overview.md).
+Azure kommunicerar ett schema för planerat underhåll genom att skicka ett e-postmeddelande till Prenumerationens ägare och gruppen med medägare. Du kan lägga till mottagare och kanaler i den här kommunikationen genom att skapa aktivitets logg aviseringar. Mer information finns i [övervaka prenumerations aktivitet med Azure aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md).
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. På den vänstra menyn väljer du **övervaka**. 
 3. I fönstret **Övervaka – aviseringar (klassisk)** väljer du **+ Lägg till aktivitets logg avisering**.
-4. På sidan **Lägg till aktivitets logg avisering** väljer eller anger du den begärda informationen. I **villkor** , se till att du anger följande värden:
-   - **Händelse kategori** : Välj **service Health**.
-   - **Tjänster** : Välj **Virtual Machine Scale Sets och Virtual Machines**.
-   - **Typ** : Välj **planerat underhåll**. 
+4. På sidan **Lägg till aktivitets logg avisering** väljer eller anger du den begärda informationen. I **villkor**, se till att du anger följande värden:
+   - **Händelse kategori**: Välj **service Health**.
+   - **Tjänster**: Välj **Virtual Machine Scale Sets och Virtual Machines**.
+   - **Typ**: Välj **planerat underhåll**. 
     
-Mer information om hur du konfigurerar aktivitets logg aviseringar finns i [skapa aktivitets logg aviseringar](../azure-monitor/platform/activity-log-alerts.md)
+Mer information om hur du konfigurerar aktivitets logg aviseringar finns i [skapa aktivitets logg aviseringar](../azure-monitor/alerts/activity-log-alerts.md)
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Starta underhåll av den virtuella datorns skalnings uppsättning från portalen
@@ -120,7 +120,7 @@ Underhålls information returneras endast om underhållet är planerat. Om inget
 Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-Följande egenskaper returneras under **MaintenanceRedeployStatus** : 
+Följande egenskaper returneras under **MaintenanceRedeployStatus**: 
 
 | Värde | Beskrivning   |
 |-------|---------------|
@@ -165,13 +165,13 @@ Följande egenskaper returneras under **MaintenanceRedeployStatus** för varje V
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Starta underhåll på VM-instansen med hjälp av CLI
 
-Följande anrop initierar underhåll av en VM-instans om `IsCustomerInitiatedMaintenanceAllowed` har angetts till **True** :
+Följande anrop initierar underhåll av en VM-instans om `IsCustomerInitiatedMaintenanceAllowed` har angetts till **True**:
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **F: Varför måste du starta om mina virtuella datorer nu?**
 

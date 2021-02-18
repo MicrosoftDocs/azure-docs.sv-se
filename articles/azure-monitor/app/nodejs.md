@@ -4,12 +4,12 @@ description: Övervaka prestanda- och diagnostiseringsproblem i Node.js-tjänste
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611023"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585758"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Övervaka dina Node-js-tjänster och -appar med Application Insights
 
@@ -383,7 +383,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Du kan skapa flera Application Insights-resurser och skicka olika data till var och en genom att använda deras respektive instrument knappar ("iKey").
 
- Till exempel:
+ Exempel:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -425,7 +425,7 @@ De här egenskaperna är klient särskilda, så du kan konfigurera `appInsights.
 ## <a name="next-steps"></a>Nästa steg
 
 * [Övervaka din telemetri i portalen](./overview-dashboard.md)
-* [Skriv Analytics-frågor via din telemetri](../log-query/log-analytics-tutorial.md)
+* [Skriv Analytics-frågor via din telemetri](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3dac47aa7cf93ca882c4c1d0d191dabf0eb7178c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227438"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593591"
 ---
 # <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>Inbyggt reakta plugin-program för Application Insights JavaScript SDK
 
@@ -59,4 +59,4 @@ appInsights.loadAppInsights();
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om Java Script SDK i [Application Insights JavaScript SDK-dokumentationen](javascript.md).
-- Information om Kusto-frågespråket och frågor om data i Log Analytics finns i [Översikt över logg frågor](../../azure-monitor/log-query/log-query-overview.md).
+- Information om Kusto-frågespråket och frågor om data i Log Analytics finns i [Översikt över logg frågor](../../azure-monitor/logs/log-query-overview.md).

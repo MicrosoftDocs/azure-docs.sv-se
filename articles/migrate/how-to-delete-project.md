@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754257"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595141"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Ta bort ett Azure Migrate-projekt
 
@@ -27,7 +27,7 @@ Innan du tar bort ett projekt:
     - Arbets ytan tas inte bort automatiskt. Ta bort den manuellt.
     - Kontrol lera vilken arbets yta som används innan du tar bort den. Samma Log Analytics arbets yta kan användas för flera scenarier.
     - Innan du tar bort projektet hittar du en länk till arbets ytan i **Azure Migrate-servrar**  >  **Azure Migrate-Server-utvärdering**, under **OMS-arbetsyta**.
-    - Om du vill ta bort en arbets yta efter att du har tagit bort ett projekt söker du efter arbets ytan i relevant resurs grupp och följer [de här anvisningarna](../azure-monitor/platform/delete-workspace.md).
+    - Om du vill ta bort en arbets yta efter att du har tagit bort ett projekt söker du efter arbets ytan i relevant resurs grupp och följer [de här anvisningarna](../azure-monitor/logs/delete-workspace.md).
 
 
 ## <a name="delete-a-project"></a>Ta bort ett projekt

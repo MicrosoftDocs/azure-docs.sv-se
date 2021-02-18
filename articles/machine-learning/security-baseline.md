@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881324"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575087"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azures säkerhets bas linje för Azure Machine Learning
 
@@ -155,9 +155,9 @@ För en resurs i ditt Azure Machine Learning virtuella nätverk som har stöd f�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure Machine Learning. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center övervakning**: inte tillämpligt
 
@@ -193,9 +193,9 @@ För en resurs i ditt Azure Machine Learning virtuella nätverk som har stöd f�
 
 Du kan också korrelera Machine Learning tjänstens åtgärds loggar i syfte att övervaka säkerhet och efterlevnad.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Aktivera loggning i Azure Machine Learning](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Du kan också korrelera Machine Learning tjänstens åtgärds loggar i syfte att
 
 Azure Machine Learning har varierande stöd för olika beräknings resurser och till och med dina egna beräknings resurser. Använd Azure Security Center för att övervaka operativ systemet för alla beräknings resurser som ägs av din organisation. 
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Förstå Azure Security Center insamling av data](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ Azure Machine Learning har varierande stöd för olika beräknings resurser och 
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för Log Analytics arbets ytor som är kopplade till dina Azure Machine Learning instanser enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center övervakning**: inte tillämpligt
 
@@ -241,9 +241,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Log Analytics frågor](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center övervakning**: inte tillämpligt
 
@@ -257,7 +257,7 @@ Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel.
 
 - [Mer information om Azure Machine Learning-aviseringar](monitor-azure-machine-learning.md#alerts)
 
-- [Avisering om logg data för Log Analytics arbets ytor](../azure-monitor/learn/tutorial-response.md)
+- [Avisering om logg data för Log Analytics arbets ytor](../azure-monitor/alerts/tutorial-response.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -565,7 +565,7 @@ Microsoft hanterar den underliggande infrastrukturen för Machine Learning och h
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure Machine Learning och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center övervakning**: inte tillämpligt
 

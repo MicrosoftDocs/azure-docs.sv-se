@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592338"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586358"
 ---
 # <a name="app-service-overview"></a>Översikt över App Service
 
@@ -28,7 +28,7 @@ Här följer några funktioner i App Service:
 * **Hanterad produktions miljö** – App Service automatiskt [korrigering och underhåll av operativ system-och språk ramverk](overview-patch-os-runtime.md) . Ägna tid åt att skriva Fantastiska appar och låta Azure bekymra dig om plattformen.
 * **Skapa behållare och Docker** – hantera din app och vara värd för en anpassad Windows-eller Linux-behållare i App Service. Köra appar med flera behållare med Docker Compose. Migrera dina Docker-färdigheter direkt till App Service.
 * **DevOps-optimering** – Konfigurera [kontinuerlig integrering och distribution](deploy-continuous-deployment.md) med Azure DevOps, GitHub, BitBucket, Docker Hub eller Azure Container Registry. Flytta upp uppdateringar via [test- och mellanlagringsmiljöer](deploy-staging-slots.md). Hantera dina appar i App Service med [Azure PowerShell](/powershell/azure/) eller det [plattformsoberoende kommandoradsgränssnittet (CLI)](/cli/azure/install-azure-cli).
-* **Global skala med hög tillgänglighet** – skala [upp](manage-scale-up.md) och [ned](../azure-monitor/platform/autoscale-get-started.md) manuellt och automatiskt. Hantera appar var som helst i Microsofts globala datacenterinfrastruktur med hög tillgänglighet tack vare [serviceavtalet](https://azure.microsoft.com/support/legal/sla/app-service/) för App Service.
+* **Global skala med hög tillgänglighet** – skala [upp](manage-scale-up.md) och [ned](../azure-monitor/autoscale/autoscale-get-started.md) manuellt och automatiskt. Hantera appar var som helst i Microsofts globala datacenterinfrastruktur med hög tillgänglighet tack vare [serviceavtalet](https://azure.microsoft.com/support/legal/sla/app-service/) för App Service.
 * **Anslutningar till SaaS-plattformar och lokala data** – välj bland fler än 50 [anslutningsappar](../connectors/apis-list.md) för företagssystem (till exempel SAP), SaaS-tjänster (till exempel Salesforce) och internettjänster (till exempel Facebook). Åtkomst till lokala data via [hybridanslutningar ](app-service-hybrid-connections.md) och [Azure Virtual Networks](web-sites-integrate-with-vnet.md).
 * **Säkerhet och efterlevnad** – App Service [uppfyller ISO, SOC och PCI](https://www.microsoft.com/en-us/trustcenter). Autentisera användare med [Azure Active Directory](configure-authentication-provider-aad.md), [Google](configure-authentication-provider-google.md), [Facebook](configure-authentication-provider-facebook.md), [Twitter](configure-authentication-provider-twitter.md)eller [Microsoft-konto](configure-authentication-provider-microsoft.md). Skapa [IP-adressbegränsningar](app-service-ip-restrictions.md) och [hantera tjänstidentiteter](overview-managed-identity.md).
 * **Programmallar** – välj från en omfattande lista med programmallar i [Azure Marketplace](https://azure.microsoft.com/marketplace/), till exempel WordPress, Joomla och Drupal.

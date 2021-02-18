@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5ef40b048fbc50174afb662aecd3335d97eb0106
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 07a0aed7d1839c84ead0c3b2c5f8282a1dc228c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095980"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593215"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azures säkerhets bas linje för Azure Firewall Manager
 
@@ -403,9 +403,9 @@ För närvarande fungerar åtgärder som omgivande brand Väggs princip regel sa
 
 För närvarande fungerar åtgärder som omgivande brand Väggs princip regel samlings grupper inte stöds av aktivitets loggen, det här är ett känt problem och behandlas i framtida uppdateringar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -421,7 +421,7 @@ Du kan också aktivera och publicera dina loggdata till Azure Sentinel eller en 
 
 Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -435,7 +435,7 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage-, Data Lake-eller Log Analytics arbets ytans konton för långsiktig lagring och arkivering.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/platform/manage-cost-storage.md)
+- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
 - [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061103"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585105"
 ---
 ## <a name="common-scenarios"></a>Vanliga scenarier
 Följande scenarier kan dra nytta av burst-överföring:
@@ -37,6 +37,7 @@ Det finns tre tillstånd som din resurs kan vara aktive rad med burst-aktivering
 - **Konstant** – resursens trafik är exakt i prestanda målet.
 
 ## <a name="examples-of-bursting"></a>Exempel på bursting
+
 I följande exempel visas hur burst fungerar med olika kombinationer av virtuella datorer och diskar. För att göra exemplen lätta att följa, kommer vi att fokusera på MB/s, men samma logik tillämpas oberoende av IOPS.
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>Icke-burst-virtuell dator med burst-diskar
@@ -50,17 +51,17 @@ I följande exempel visas hur burst fungerar med olika kombinationer av virtuell
     - Etablerade MB/s: 100
     - Max burst MB/s: 170
 
- När den virtuella datorn startas hämtar den data från operativ system disken. Eftersom operativ system disken är en del av en virtuell dator som kommer att komma igång, är OS-disken full av de mellanliggande krediterna. Dessa krediter gör att OS-disken får en ny start på 170 MB/s sekund på det sätt som visas nedan:
+ När den virtuella datorn startar hämtas data från operativ system disken. Eftersom operativ system disken är en del av en virtuell dator som startas, är OS-disken full av de mellanliggande krediterna. Dessa krediter gör att OS-disken får en ny start på 170 MB/s sekund.
 
-![Start av icke-burst-disk för virtuell dator](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![VM skickar en begäran om 192 MB/s av data flödet till operativ system disken, OS-disken svarar med 170 MB/s-data.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-När starten är klar körs ett program på den virtuella datorn och har en icke-kritisk arbets belastning. Den här arbets belastningen kräver 15 MB/S som sprids jämnt över alla diskar:
+När starten är klar körs ett program på den virtuella datorn och har en icke-kritisk arbets belastning. Den här arbets belastningen kräver 15 MB/S som sprids jämnt över alla diskar.
 
-![Icke-burst-överföring av VM-disk inaktiv](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![Programmet skickar en begäran om 15 MB/s av genomflödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar var och en av diskarna en begäran om 5 MB/s. varje disk returnerar 5 MB/s, och virtuella datorer returnerar 15 MB/s till programmet.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-Programmet måste sedan bearbeta ett batch-jobb som kräver 192 MB/s. 2 MB/s används av OS-disken och resten delas jämnt mellan data diskarna:
+Programmet måste sedan bearbeta ett batch-jobb som kräver 192 MB/s. 2 MB/s används av OS-disken och resten delas jämnt mellan data diskarna.
 
-![Burst-överföring av icke-burst-disk för virtuell dator](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![Programmet skickar en begäran om 192 MB/s av data flödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar en begäran till data diskarna (95 MB/s varje) och 2 MB/s till OS-disken, data diskarna som är burst för att uppfylla efter frågan och alla diskar returnerar det begärda data flödet till den virtuella datorn, vilket returnerar det till programmet.](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>Burst-baserad virtuell dator med icke-burst-diskar
 **Kombination av virtuell dator och disk:** 
@@ -72,11 +73,12 @@ Programmet måste sedan bearbeta ett batch-jobb som kräver 192 MB/s. 2 MB/s anv
 - 2 P10 data diskar 
     - Etablerade MB/s: 250
 
- Efter den första starten körs ett program på den virtuella datorn och har en icke-kritisk arbets belastning. Den här arbets belastningen kräver 30 MB/s som sprids jämnt över alla diskar: ![ burst-överföring av icke-burst-disk för virtuella datorer](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ Efter den första starten körs ett program på den virtuella datorn och har en icke-kritisk arbets belastning. Den här arbets belastningen kräver 30 MB/s som sprids jämnt över alla diskar.
+![Programmet skickar en begäran om 30 MB/s av data flödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar var och en av diskarna en begäran om 10 MB/s, varje disk returnerar 10 MB/s. den virtuella datorn returnerar 30 MB/s till programmet.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
-Programmet måste sedan bearbeta ett batch-jobb som kräver 600 MB/s. Standard_L8s_v2-bursts för att uppfylla det här kravet och sedan begär att diskarna ska spridas jämnt ut till P50 diskar:
+Programmet måste sedan bearbeta ett batch-jobb som kräver 600 MB/s. Standard_L8s_v2-bursts för att uppfylla det här behovet och sedan begär att diskarna ska spridas jämnt ut till P50 diskar.
 
-![Burst-överföring av virtuell dator för icke-burst-överföring av diskar](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+![Programmet skickar en begäran om 600 MB/s av genomflödet till den virtuella datorn. den virtuella datorn tar emot burst-överföring för att ta begäran och skickar var och en av diskarna en begäran om 200 MB/s, varje disk returnerar 200 MB/s, VM-burst för att returnera 600 MB/s till programmet.](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
 ### <a name="burstable-virtual-machine-with-burstable-disks"></a>Burst-virtuell dator med burst-diskar
 **Kombination av virtuell dator och disk:** 
 - Standard_L8s_v2 
@@ -89,14 +91,14 @@ Programmet måste sedan bearbeta ett batch-jobb som kräver 600 MB/s. Standard_L
     - Etablerade MB/s: 25
     - Max burst MB/s: 170 
 
-När den virtuella datorn startas överförs burst-gränsen på 1 280 MB/s från operativ system disken och OS-disken svarar med sin burst-prestanda på 170 MB/s:
+När den virtuella datorn startar överförs den till en burst-gräns på 1 280 MB/s från operativ system disken och operativ system disken kommer att svara med sin burst-prestanda på 170 MB/s.
 
-![Burst-överföring av virtuell hård disk för virtuell dator](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![Vid start är den virtuella datorn burst för att skicka en begäran till 1 280 MB/s till operativ system disken, OS-diskens burst för att returnera 1 280 MB/s.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-När starten är klar körs ett program på den virtuella datorn. Programmet har en icke-kritisk arbets belastning som kräver 15 MB/s som sprids jämnt över alla diskar:
+Efter starten startar du ett program som har en icke-kritisk arbets belastning. Det här programmet kräver 15 MB/s som sprids jämnt över alla diskar.
 
-![Burst-överföring av VM-disk inaktiv](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Programmet skickar en begäran om 15 MB/s av genomflödet till den virtuella datorn, den virtuella datorn tar emot begäran och skickar var och en av diskarna en begäran om 5 MB/s. varje disk returnerar 5 MB/s, och virtuella datorer returnerar 15 MB/s till programmet.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-Programmet måste sedan bearbeta ett batch-jobb som kräver 360 MB/s. Standard_L8s_v2 bursts för att uppfylla det här behovet och begär sedan. Endast 20 MB/s krävs av OS-disken. De återstående 340 MB/s hanteras av data diskarna för burst-P4:  
+Programmet måste sedan bearbeta ett batch-jobb som kräver 360 MB/s. Standard_L8s_v2 bursts för att uppfylla det här behovet och begär sedan. Endast 20 MB/s krävs av OS-disken. De återstående 340 MB/s hanteras av data diskarna för burst-P4.
 
-![Burst-överföring av virtuella datorer med burst-överföring](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![Programmet skickar en begäran om 360 MB/s av data flödet till den virtuella datorn. den virtuella datorn tar över burst-överföring för att ta begäran och skickar var och en av dess data diskar en begäran om 170 MB/s och 20 MB/s från operativ system disken. varje disk returnerar de begärda MB/s, virtuella datorernas burst för att returnera 360 MB/s till program.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

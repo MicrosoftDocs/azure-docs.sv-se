@@ -2,13 +2,13 @@
 title: Azure Service Bus Premium-och standard-nivåer
 description: I den här artikeln beskrivs Azure Service Buss standard-och Premium-nivåer. Jämför dessa nivåer och ger tekniska skillnader.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 31c53a1375078cd5d185945cba55a6e5a6dd5ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: 0385526560e6aafaab66d9212ff54caff2362ebd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90966782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636517"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- och Standard-meddelandenivåer
 
@@ -23,12 +23,12 @@ En del övergripande skillnader visas i tabellen nedan.
 | Högt genomflöde |Variabelt genomflöde |
 | Förutsägbara prestanda |Variabel svarstid |
 | Fast prissättning |Variabla priser – betala per användning |
-| Möjlighet att skala arbetsbelastningen uppåt och nedåt |E.t. |
+| Möjlighet att skala arbetsbelastningen uppåt och nedåt |Ej tillämpligt |
 | Meddelande storlek upp till 1 MB. Den här gränsen kan höjas i framtiden. De senaste viktiga uppdateringarna för tjänsten finns i [meddelanden i Azure-bloggen](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog). |Meddelandestorlek upp till 256 kB |
 
 **Service Bus Premium-meddelanden** ger resursisolering på processor- och minnesnivån så att varje kunds arbetsbelastning körs i isolering. Den här resurs behållaren kallas för en *meddelande enhet*. Varje Premium-namnområde allokeras minst en meddelandefunktionsenhet. Du kan köpa 1, 2, 4 eller 8 meddelande enheter för varje Service Bus Premium-namnrymd. En enskild arbets belastning eller entitet kan sträcka sig över flera meddelande enheter och antalet meddelande enheter kan ändras. Resultatet är förutsägbara och repeterbara prestanda för Service Bus-lösningen.
 
-Prestanda är inte bara mer förutsägbara och tillgängliga, utan de är snabbare också. Service Bus Premium-meddelanden bygger på lagrings motorn som introducerades i [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Med Premium-meddelanden är topprestandan mycket snabbare än på standardnivån.
+Prestanda är inte bara mer förutsägbara och tillgängliga, utan de är snabbare också. Med Premium-meddelanden är topprestandan mycket snabbare än på standardnivån.
 
 ## <a name="premium-messaging-technical-differences"></a>Premium-meddelanden – tekniska skillnader
 
@@ -40,9 +40,7 @@ Partitionerade köer och ämnen stöds inte i Premium-meddelanden. Mer informati
 
 ### <a name="express-entities"></a>Expressenheter
 
-Eftersom Premium-meddelanden körs i en isolerad körnings miljö stöds inte Express-enheter i Premium-namnområden. Mer information om expressfunktionen finns i egenskapen [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress).
-
-Om du har kod som körs med meddelandehantering på standardnivå och vill portera den till premiumnivån kontrollerar du att egenskapen [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) har värdet **false** (standardvärdet).
+Eftersom Premium-meddelanden körs i en isolerad körnings miljö stöds inte Express-enheter i Premium-namnområden. En Express-entitet innehåller ett meddelande i minnet tillfälligt innan det skrivs till beständigt lagrings utrymme. Om du har kod som körs under standard meddelanden och vill Porta den till Premium nivån, kontrollerar du att funktionen Express entitet är inaktive rad.
 
 ## <a name="premium-messaging-resource-usage"></a>Användning av Premium-meddelande resurser
 I allmänhet kan alla åtgärder på en entitet orsaka CPU-och minnes användning. Här följer några av de här åtgärderna: 
@@ -69,8 +67,8 @@ Det finns ett antal faktorer att tänka på när du bestämmer antalet meddeland
 
 - Börja med ***1 eller 2 meddelande enheter*** som har tilldelats ditt namn område.
 - Studera processor användnings måtten i [användnings statistik för resursanvändningen](service-bus-metrics-azure-monitor.md#resource-usage-metrics) för ditt namn område.
-    - Om CPU-användningen är ***under 20%*** kanske du kan ***skala upp*** antalet meddelande enheter som allokerats till ditt namn område.
-    - Om CPU-användningen är ***över 70%*** kommer ditt program att ha nytta av att ***skala upp*** antalet meddelande enheter som allokerats till ditt namn område.
+    - Om CPU-användningen är ***under 20%** _ kan du kanske _ *_skala ned_** antalet meddelande enheter som har allokerats till ditt namn område.
+    - Om CPU-användningen är ***över 70%** _, kommer ditt program att få från _ *_skala upp_** antalet meddelande enheter som har allokerats till ditt namn område.
 
 Information om hur du konfigurerar ett Service Bus namn område för automatisk skalning (öka eller minska meddelande enheter) finns i [Uppdatera meddelande enheter automatiskt](automate-update-messaging-units.md).
 

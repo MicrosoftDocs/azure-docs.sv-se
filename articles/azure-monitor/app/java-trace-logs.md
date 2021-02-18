@@ -6,16 +6,18 @@ ms.date: 05/18/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: fb91662dfcdeb404f51f91c1fef893dc72dcac73
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4013b60a5718de6c196e806f894503f63ec9dafd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601058"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593680"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Utforska Java trace-loggar i Application Insights
 
 > [!IMPORTANT]
+> Den metod som beskrivs i det här dokumentet rekommenderas inte längre.
+>
 > Den rekommenderade metoden för att övervaka Java-program är att använda den automatiska Instrumentation utan att ändra koden. Följ rikt linjerna för [Application Insights Java 3,0-agenten](./java-in-process-agent.md).
 
 Om du använder logback eller Log4J (v 1.2 eller v 2.0) för spårning kan du låta spårnings loggarna skickas automatiskt till Application Insights där du kan utforska och söka efter dem.

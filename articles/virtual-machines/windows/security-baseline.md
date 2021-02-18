@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef5cddc131e25a1966ca86c3c8650452f73be69e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594272"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azures säkerhets bas linje för Virtuella Windows-datorer
 
@@ -174,9 +174,9 @@ Du kan använda Azure Security Center just-in-Time-åtkomst för att begränsa e
 
 Använd Azure Policy för att verifiera (och/eller åtgärda) konfigurationer för nätverks resurser som är relaterade till Virtuella Windows-datorer.
 
-* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -220,13 +220,13 @@ För avancerad insyn i de program och tjänster som stöds av dina virtuella dat
 
 Aktivera dessutom Azure Monitor för åtkomst till dina gransknings-och aktivitets loggar som innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
 
-* [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+* [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Översikt över Log Analytics-agenten](../../azure-monitor/platform/log-analytics-agent.md)
+* [Översikt över Log Analytics-agenten](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Logg analys tillägg för virtuell dator för Windows](../extensions/oms-windows.md)
 
-* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Översikt över Application Insights](../../azure-monitor/app/app-insights-overview.md)
 
@@ -242,7 +242,7 @@ Om din organisation vill behålla säkerhets händelse logg data från den virtu
 
 * [Datainsamling i Azure Security Center](../../security-center/security-center-enable-data-collection.md)
 
-* [Om du vill avbilda syslog-data för övervakning måste du aktivera Log Analytics-tillägget](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [Om du vill avbilda syslog-data för övervakning måste du aktivera Log Analytics-tillägget](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -252,9 +252,9 @@ Om din organisation vill behålla säkerhets händelse logg data från den virtu
 
 **Vägledning**: kontrol lera att alla lagrings konton eller Log Analytics arbets ytor som används för att lagra loggar för virtuella datorer har den logg kvarhållningsperiod som anges enligt organisationens regler för efterlevnad.
 
-* [Övervaka virtuella datorer i Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Övervaka virtuella datorer i Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../../azure-monitor/platform/manage-cost-storage.md)
+* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center övervakning**: inte tillgänglig
 
@@ -268,15 +268,15 @@ Analysera och övervaka loggar för avvikande beteende och granska resultaten re
 
 Du kan också aktivera och inaktivera data till Azure Sentinel eller från SIEM för att övervaka och granska dina loggar.
 
-* [Översikt över Log Analytics-agenten](../../azure-monitor/platform/log-analytics-agent.md)
+* [Översikt över Log Analytics-agenten](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Logg analys tillägg för virtuell dator för Windows](../extensions/oms-windows.md)
 
 * [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-* [Förstå Log Analytics arbets yta](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Förstå Log Analytics arbets yta](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center övervakning**: inte tillgänglig
 
@@ -292,7 +292,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 * [Hantera aviseringar i Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/learn/tutorial-response.md)
+* [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center övervakning**: inte tillgänglig
 
@@ -410,7 +410,7 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 * [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Konfigurera åtgärds grupper för anpassad avisering och avisering](../../azure-monitor/platform/action-groups.md)
+* [Konfigurera åtgärds grupper för anpassad avisering och avisering](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -452,13 +452,13 @@ Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel e
 
 **Vägledning**: Konfigurera diagnostikinställningar för Azure Active Directory att skicka gransknings loggar och inloggnings loggar till en Log Analytics arbets yta. Du kan också använda Azure Monitor för att granska loggar och köra frågor om loggdata från virtuella Azure-datorer.
 
-* [Förstå Log Analytics arbets yta](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Förstå Log Analytics arbets yta](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../../azure-monitor/logs/get-started-queries.md)
 
-* [Övervaka virtuella datorer i Azure](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Övervaka virtuella datorer i Azure](../../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center övervakning**: inte tillgänglig
 
@@ -592,9 +592,9 @@ Microsoft använder TLS-protokollet (Transport Layer Security) för att skydda d
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i virtuella datorer och relaterade resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Analysloggning i Azure Storage](../../storage/common/storage-analytics-logging.md)
 

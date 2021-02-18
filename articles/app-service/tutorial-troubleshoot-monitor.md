@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183208"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586281"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Självstudie: Felsöka en App Service-app med Azure Monitor
 
@@ -33,7 +33,7 @@ Du kan följa stegen i den här självstudien i macOS, Linux och Windows.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien behöver du:
 
@@ -78,7 +78,7 @@ Diagnostiska inställningar kan användas för att samla in mått för vissa Azu
 Du kör följande kommandon för att skapa diagnostiska inställningar för AppServiceConsoleLogs (standardutdata/fel) och AppServiceHTTPLogs (webb server loggar). Ersätt _\<app-name>_ och _\<workspace-name>_ med dina värden. 
 
 > [!NOTE]
-> De två första kommandona `resourceID` och `workspaceID` , är variabler som ska användas i `az monitor diagnostic-settings create` kommandot. Mer information om det här kommandot finns i [skapa diagnostiska inställningar med hjälp av Azure CLI](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli) .
+> De två första kommandona `resourceID` och `workspaceID` , är variabler som ska användas i `az monitor diagnostic-settings create` kommandot. Mer information om det här kommandot finns i [skapa diagnostiska inställningar med hjälp av Azure CLI](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli) .
 >
 
 ```bash
@@ -129,7 +129,7 @@ I Azure Portal väljer du Log Analytics arbets ytan.
 
 ### <a name="log-queries"></a>Loggfrågor
 
-Med logg frågor kan du utnyttja värdet för de data som samlas in i Azure Monitor loggar. Du använder logg frågor för att identifiera loggarna i både AppServiceHTTPLogs och AppServiceConsoleLogs. Mer information om logg frågor finns i [Översikt över logg](../azure-monitor/log-query/log-query-overview.md) frågor.
+Med logg frågor kan du utnyttja värdet för de data som samlas in i Azure Monitor loggar. Du använder logg frågor för att identifiera loggarna i både AppServiceHTTPLogs och AppServiceConsoleLogs. Mer information om logg frågor finns i [Översikt över logg](../azure-monitor/logs/log-query-overview.md) frågor.
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>Visa AppServiceHTTPLogs med logg fråga
 
@@ -269,6 +269,6 @@ Vad du lärt dig:
 > * Använda logg frågor för att identifiera och felsöka webb program fel
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> Nästa steg
-* [Fråga efter loggar med Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+* [Fråga efter loggar med Azure Monitor](../azure-monitor/logs/log-query-overview.md)
 * [Felsöka Azure App Service i Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analysera app-loggar i HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

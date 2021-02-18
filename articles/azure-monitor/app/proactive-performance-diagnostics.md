@@ -4,12 +4,12 @@ description: Application Insights utför Smart analys av din app-telemetri och v
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573729"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Smart identifiering-prestanda avvikelser
 
@@ -57,7 +57,7 @@ Meddelanden om Smart identifiering är aktiverade som standard och skickas till 
 
 E-postmeddelanden om Smart identifiering av prestanda avvikelser är begränsade till en e-postadress per dag per Application Insights resurs. E-postmeddelandet skickas endast om det finns minst ett nytt problem som har upptäckts den dagen. Du får inte upprepas upprepade meddelanden. 
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 * *Så kommer Microsoft-personal att titta på mina data?*
   * Nej. Tjänsten är helt automatisk. Endast du får meddelanden. Dina data är [privata](./data-retention-privacy.md).
@@ -70,12 +70,12 @@ E-postmeddelanden om Smart identifiering av prestanda avvikelser är begränsade
 * *Kan jag skapa egna regler för avvikelse identifiering eller anpassa befintliga regler?*
 
   * Ännu inte, men du kan:
-    * [Konfigurera aviseringar](../platform/alerts-log.md) som anger när ett mått korsar ett tröskelvärde.
+    * [Konfigurera aviseringar](../alerts/alerts-log.md) som anger när ett mått korsar ett tröskelvärde.
     * [Exportera telemetri](./export-telemetry.md) till en [databas](./code-sample-export-sql-stream-analytics.md) eller [till Power BI](./export-power-bi.md), där du kan analysera dem själv.
 * *Hur ofta utförs analysen?*
 
   * Vi kör analysen dagligen på Telemetrin från föregående dag (hela dagen i UTC-tidszonen).
-* *Detta ersätter [mått aviseringar](../platform/alerts-log.md)?*
+* *Detta ersätter [mått aviseringar](../alerts/alerts-log.md)?*
   * Nej.  Vi åtar mig inte att upptäcka varje beteende som du kan tänka på onormalt.
 
 
@@ -175,10 +175,10 @@ De här diagnostikverktygen hjälper dig att inspektera Telemetrin från din app
 
 * [Profilerare](profiler.md) 
 * [fel sökning av ögonblicks bild](./snapshot-debugger.md)
-* [Analys](../log-query/log-analytics-tutorial.md)
-* [Analytics-Smart diagnostik](../log-query/log-query-overview.md)
+* [Analys](../logs/log-analytics-tutorial.md)
+* [Analytics-Smart diagnostik](../logs/log-query-overview.md)
 
 Smart identifiering är helt automatisk. Men kanske vill du konfigurera ytterligare aviseringar?
 
-* [Manuellt konfigurerade mått varningar](../platform/alerts-log.md)
+* [Manuellt konfigurerade mått varningar](../alerts/alerts-log.md)
 * [Webbtester för tillgänglighet](./monitor-web-app-availability.md)
