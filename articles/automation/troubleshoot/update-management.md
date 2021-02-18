@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579734"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Felsöka problem med Uppdateringshantering
 
@@ -135,7 +135,7 @@ Det här problemet kan orsakas av lokala konfigurations problem eller av en fela
 
 1. Kör fel sökaren för [Windows](update-agent-issues.md#troubleshoot-offline) eller [Linux](update-agent-issues-linux.md#troubleshoot-offline), beroende på vilket operativ system du har.
 
-2. Kontrol lera att datorn rapporterar till rätt arbets yta. Anvisningar för hur du verifierar den här aspekten finns i [Verifiera agent anslutning till Azure Monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Kontrol lera också att arbets ytan är länkad till ditt Azure Automation-konto. Bekräfta genom att gå till ditt Automation-konto och välja **länkad arbets yta** under **relaterade resurser**.
+2. Kontrol lera att datorn rapporterar till rätt arbets yta. Anvisningar för hur du verifierar den här aspekten finns i [Verifiera agent anslutning till Azure Monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Kontrol lera också att arbets ytan är länkad till ditt Azure Automation-konto. Bekräfta genom att gå till ditt Automation-konto och välja **länkad arbets yta** under **relaterade resurser**.
 
 3. Se till att datorerna visas i Log Analytics arbets ytan som är länkad till ditt Automation-konto. Kör följande fråga i arbets ytan Log Analytics.
 
@@ -144,7 +144,7 @@ Det här problemet kan orsakas av lokala konfigurations problem eller av en fela
    | summarize by Computer, Solutions
    ```
 
-    Om du inte ser datorn i frågeresultatet har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör [installera om agenten](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Om du inte ser datorn i frågeresultatet har den nyligen checkats in. Det finns förmodligen ett lokalt konfigurations problem och du bör [installera om agenten](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
     Om din dator listas i frågeresultatet kontrollerar du under egenskapen **lösningar** som **uppdateras** . Detta verifierar att det är registrerat med Uppdateringshantering. Om det inte är det kontrollerar du om det finns problem med omfattnings konfigurationen. [Omfattnings konfigurationen](../update-management/scope-configuration.md) avgör vilka datorer som har kon figurer ats för uppdateringshantering. Information om hur du konfigurerar omfattnings konfigurationen för målet som datorn finns i [Aktivera datorer i arbets ytan](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 

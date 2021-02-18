@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e37171fce5dd7fe625550c5f554f211cf148ea07
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202733"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591434"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azures säkerhets bas linje för Stream Analytics
 
@@ -114,9 +114,9 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka datorkonfigurationer och identifiera ändringar för dina Stream Analytics-resurser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska resurser sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -138,7 +138,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 **Vägledning**: mata in loggar via Azure Monitor för att samla in säkerhets data som gransknings händelser och begär Anden. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda Azure Storage accountyfor långsiktig/lagrings lagring, om du vill ha säkerhetsfunktioner som oföränderlig lagring och framtvingade kvarhållning.
 
-* [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
+* [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -170,7 +170,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 * [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-* [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -182,9 +182,9 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 * [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Mer information om arbets ytan Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Mer information om arbets ytan Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -196,7 +196,7 @@ Mer information finns i [Översikt över Azure Security-bas linjer](../security/
 
 * [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 * [Azure Stream Analytics innehåller diagnostikloggar och aktivitets data för granskning](./stream-analytics-job-diagnostic-logs.md)
 
@@ -474,7 +474,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure Stream Analytics resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

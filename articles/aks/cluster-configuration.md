@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eaf512915532b482c25e830cd9f2e01d61aa4524
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519413"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572788"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurera ett AKS-kluster
 
@@ -100,9 +100,9 @@ Genom `containerd` att använda för AKS-noder förbättrar Pod-startsvars tiden
 * För `containerd` rekommenderar vi att du använder [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) som en ERSÄTTNINGS-cli i stället för Docker CLI för **fel sökning** av poddar, behållare och behållar avbildningar på Kubernetes-noder (till exempel `crictl ps` ). 
    * Den ger inte den fullständiga funktionen i Docker CLI. Den är endast avsedd för fel sökning.
    * `crictl` ger en mer Kubernetes vy över behållare, med begrepp som poddar osv.
-* `Containerd` ställer in loggning med hjälp av standardiserat `cri` loggnings format (vilket skiljer sig från vad du för närvarande får från Docker-JSON-drivrutinen). Din loggnings lösning måste ha stöd för `cri` loggnings formatet (t. ex. [Azure Monitor för behållare](../azure-monitor/insights/container-insights-enable-new-cluster.md))
+* `Containerd` ställer in loggning med hjälp av standardiserat `cri` loggnings format (vilket skiljer sig från vad du för närvarande får från Docker-JSON-drivrutinen). Din loggnings lösning måste ha stöd för `cri` loggnings formatet (t. ex. [Azure Monitor för behållare](../azure-monitor/containers/container-insights-enable-new-cluster.md))
 * Du kan inte längre komma åt Docker-motorn `/var/run/docker.sock` eller använda Docker-in-Docker (DinD).
-  * Om du för närvarande extraherar program loggar eller övervakar data från Docker-motorn, bör du använda något som [Azure Monitor för behållare](../azure-monitor/insights/container-insights-enable-new-cluster.md) i stället. Dessutom har AKS inte stöd för att köra out-of-band-kommandon på de agent-noder som kan orsaka instabilitet.
+  * Om du för närvarande extraherar program loggar eller övervakar data från Docker-motorn, bör du använda något som [Azure Monitor för behållare](../azure-monitor/containers/container-insights-enable-new-cluster.md) i stället. Dessutom har AKS inte stöd för att köra out-of-band-kommandon på de agent-noder som kan orsaka instabilitet.
   * Även om du använder Moby/Docker kan det vara starkt att skapa avbildningar och direkt dra nytta av Docker-motorn via metoderna ovan. Kubernetes är inte helt medvetna om dessa förbrukade resurser och dessa metoder visar flera problem som beskrivs [här](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) och [här](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), till exempel.
 * Skapa avbildningar – du kan fortsätta att använda ditt nuvarande Docker build-arbetsflöde som vanligt, om du inte skapar avbildningar i ditt AKS-kluster. I detta fall bör du överväga att växla till den rekommenderade metoden för att skapa bilder med hjälp av [ACR-uppgifter](../container-registry/container-registry-quickstart-task-cli.md)eller ett säkrare kluster alternativ som [Docker-buildx](https://github.com/docker/buildx).
 

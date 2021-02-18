@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 51301bd38bf0700ce42ef33a47b9e763da8d4ed6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932773"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595292"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysera loggar för Apache Kafka i HDInsight
 
@@ -34,7 +34,7 @@ Apache Kafka loggar i klustret finns på `/var/log/kafka` . Kafka-loggar sparas 
 
 Stegen för att aktivera Azure Monitor loggar för HDInsight är desamma för alla HDInsight-kluster. Använd följande länkar om du vill veta hur du skapar och konfigurerar nödvändiga tjänster:
 
-1. Skapa en Log Analytics-arbetsyta. Mer information finns i [loggarna i Azure Monitor](../../azure-monitor/platform/data-platform-logs.md) -dokument.
+1. Skapa en Log Analytics-arbetsyta. Mer information finns i [loggarna i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) -dokument.
 
 2. Skapa en Kafka på HDInsight-kluster. Mer information finns i dokumentet [starta med Apache Kafka på HDInsight](apache-kafka-get-started.md) .
 

@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881052"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596947"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurera, optimera och felsöka AzCopy
 
@@ -183,7 +183,7 @@ När du återupptar ett jobb tittar AzCopy på jobb Plans filen. Plan filen visa
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Ändra placeringen av plan-och loggfilerna
 
-Som standard finns plan-och loggfiler i `%USERPROFILE%\.azcopy` katalogen på Windows eller i `$HOME$\.azcopy` katalogen på Mac och Linux. Du kan ändra den här platsen.
+Som standard finns plan-och loggfiler i `%USERPROFILE%\.azcopy` katalogen på Windows eller i `$HOME/.azcopy` katalogen på Mac och Linux. Du kan ändra den här platsen.
 
 ### <a name="change-the-location-of-plan-files"></a>Ändra placeringen av plan filer
 

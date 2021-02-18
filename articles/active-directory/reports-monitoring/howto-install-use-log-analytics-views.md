@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc1592681429998f5082fbadcd45fa068f130e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 86ad698793d562f93f9972903ca21e50c209c79c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180480"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580006"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installera och Använd Log Analytics-vyerna för Azure Active Directory
 
@@ -35,7 +35,7 @@ I vyerna Azure Active Directory Log Analytics kan du analysera och söka i Azure
 
 Om du vill använda Log Analytics-vyerna behöver du:
 
-* En Log Analytics arbets yta i din Azure-prenumeration. Lär dig hur du [skapar en arbets yta för Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).
+* En Log Analytics arbets yta i din Azure-prenumeration. Lär dig hur du [skapar en arbets yta för Log Analytics](../../azure-monitor/logs/quick-create-workspace.md).
 * Slutför först stegen för att [dirigera Azure AD-aktivitets loggarna till din Log Analytics-arbetsyta](howto-integrate-activity-logs-with-log-analytics.md).
 * Ladda ned vyerna från [GitHub-lagringsplatsen](https://aka.ms/AADLogAnalyticsviews) till den lokala datorn.
 
@@ -67,11 +67,11 @@ Om du vill använda Log Analytics-vyerna behöver du:
 
     ![Skapa regel](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. Välj den åtgärds grupp som ska aviseras. I allmänhet kan detta vara antingen ett team som du vill meddela via e-post eller SMS, eller så kan det vara en automatiserad aktivitet med Webhooks, Runbooks, functions, Logic Apps eller externa ITSM-lösningar. Lär dig hur du [skapar och hanterar åtgärds grupper i Azure Portal](../../azure-monitor/platform/action-groups.md).
+6. Välj den åtgärds grupp som ska aviseras. I allmänhet kan detta vara antingen ett team som du vill meddela via e-post eller SMS, eller så kan det vara en automatiserad aktivitet med Webhooks, Runbooks, functions, Logic Apps eller externa ITSM-lösningar. Lär dig hur du [skapar och hanterar åtgärds grupper i Azure Portal](../../azure-monitor/alerts/action-groups.md).
 
 7. Välj **skapa aviserings regel** för att skapa aviseringen. Nu får du en avisering varje gång ett inloggnings fel uppstår.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Så här analyserar du aktivitets loggar med Azure Monitor loggar](howto-analyze-activity-logs-log-analytics.md)
-* [Kom igång med Azure Monitor loggar i Azure Portal](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Kom igång med Azure Monitor loggar i Azure Portal](../../azure-monitor/logs/log-analytics-tutorial.md)

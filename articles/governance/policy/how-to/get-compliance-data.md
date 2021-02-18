@@ -3,12 +3,12 @@ title: Hämta information om efterlevnadsprinciper
 description: Azure Policy utvärderingar och effekter avgör efterlevnad. Lär dig hur du hämtar information om kompatibiliteten för dina Azure-resurser.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 112badce00ec56df0f80c7b51bb4789a414cdcbd
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920244"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577112"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Hämta efterlevnads data för Azure-resurser
 
@@ -197,7 +197,7 @@ Utöver **kompatibla** och **icke-kompatibla** har principer och resurser fyra a
 
 Azure Policy använder fälten **typ**, **namn** eller **typ** i definitionen för att avgöra om en resurs är en matchning. När resursen matchar, betraktas den som tillämplig och har statusen antingen **kompatibel**, **icke-kompatibel** eller **undantagen**. Om antingen **typ**, **namn** eller **typ** är den enda egenskapen i definitionen anses alla inkluderade och icke-undantagna resurser vara tillämpliga och utvärderas.
 
-Procent andelen för efterlevnad bestäms genom att de **Exempt** resurser som **uppfyller** resurserna divideras med de _totala resurserna_. _Totalt antal resurser_ definieras som summan av de **kompatibla**, **icke-kompatibla**, **undantagna** och **motstridiga** resurserna. De övergripande kompatibilitets numren är summan av distinkta resurser som är **kompatibla** eller **undantagna** dividerade med summan av alla distinkta resurser. I bilden nedan finns det 20 distinkta resurser som är tillämpliga och endast en är **icke-kompatibel**.
+Procent andelen för efterlevnad bestäms genom att de  resurser som **uppfyller** resurserna divideras med de _totala resurserna_. _Totalt antal resurser_ definieras som summan av de **kompatibla**, **icke-kompatibla**, **undantagna** och **motstridiga** resurserna. De övergripande kompatibilitets numren är summan av distinkta resurser som är **kompatibla** eller **undantagna** dividerade med summan av alla distinkta resurser. I bilden nedan finns det 20 distinkta resurser som är tillämpliga och endast en är **icke-kompatibel**.
 Den övergripande resursens kompatibilitet är 95% (19 av 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Skärm bild av information om efterlevnadsprincip från sidan efterlevnad." border="false":::
@@ -683,7 +683,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-loggar
 
-Om du har en [Log Analytics-arbetsyta](../../../azure-monitor/log-query/log-query-overview.md) med `AzureActivity` från [Aktivitetslogganalys-lösningen](../../../azure-monitor/platform/activity-log.md) som är kopplad till din prenumeration kan du också Visa inkompatibla resultat från utvärderingen av nya och uppdaterade resurser med hjälp av enkla Kusto-frågor och `AzureActivity` tabellen. Med information i Azure Monitor loggar kan aviseringar konfigureras för att se om de inte uppfyller kraven.
+Om du har en [Log Analytics-arbetsyta](../../../azure-monitor/logs/log-query-overview.md) med `AzureActivity` från [Aktivitetslogganalys-lösningen](../../../azure-monitor/essentials/activity-log.md) som är kopplad till din prenumeration kan du också Visa inkompatibla resultat från utvärderingen av nya och uppdaterade resurser med hjälp av enkla Kusto-frågor och `AzureActivity` tabellen. Med information i Azure Monitor loggar kan aviseringar konfigureras för att se om de inte uppfyller kraven.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Skärm bild av Azure Monitor loggar som visar Azure Policy åtgärder i tabellen AzureActivity." border="false":::
 

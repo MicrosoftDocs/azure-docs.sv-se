@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 82b4c127f983f3133326bf7fb538e40713ef9655
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808510"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580393"
 ---
 ![Diagram som visar D s v v 3-specifikationer.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -117,57 +117,3 @@ I det här fallet gör programmet som körs på en Standard_D8s_v3 virtuell dato
 - Eftersom de tre diskarna som använder cachelagring av värden ligger inom de cachelagrade gränserna för 16 000 slutförs dessa förfrågningar. Ingen capping för lagrings prestanda inträffar.
 - Eftersom de två diskar som inte använder cachelagring av värden ligger inom de ej cachelagrade gränserna för 12 800 slutförs även dessa förfrågningar. Ingen capping inträffar.
 
-## <a name="disk-performance-metrics"></a>Mått för disk prestanda
-
-Vi har mått på Azure som ger insikt om hur dina virtuella datorer och diskar presterar. De här måtten kan visas via Azure Portal. De kan också hämtas via ett API-anrop. Måtten beräknas med en minuters intervall. Följande mått är tillgängliga för att få insikt om VM och disk-i/o och även på data flödes prestanda:
-
-- **Ködjup för OS-disk**: antalet aktuella utestående IO-begäranden som väntar på att läsas från eller skrivas till OS-disken.
-- **Lästa byte i OS-disk/SEK**: antalet byte som läses in en sekund från operativ system disken.
-- **Läs åtgärder för operativ system disk/SEK**: antalet åtgärder som har lästs in en sekund från OS-disken.
-- **Skrivna byte på OS-disk/SEK**: antalet byte som skrivs från en sekund från operativ system disken.
-- **Skriv åtgärder för operativ system disk/SEK**: antalet utgående åtgärder som skrivs från en sekund från operativ system disken.
-- **Data disk Queue djup**: antalet aktuella utestående IO-begäranden som väntar på att läsas från eller skrivas till data diskarna.
-- **Lästa byte på datadisk/SEK**: antalet byte som läses in en sekund från data diskarna.
-- **Läs åtgärder för data disk/SEK**: antalet indata-åtgärder som läses i en sekund från data diskar.
-- **Skrivna byte på datadisk/SEK**: antalet byte som skrivs i en sekund från data diskarna.
-- **Skriv åtgärder för data disk/SEK**: antalet utgående åtgärder som har skrivits i en sekund från data diskar.
-- **Disk-lästa byte/s**: det totala antalet byte som läses i en sekund från alla diskar som är kopplade till en virtuell dator.
-- **Disk Läs åtgärder/SEK**: antalet ingångs åtgärder som läses i en sekund från alla diskar som är kopplade till en virtuell dator.
-- **Disk-skrivna byte/s**: antalet byte som skrivs i en sekund från alla diskar som är kopplade till en virtuell dator.
-- **Disk skrivnings åtgärder/SEK**: antalet utgående åtgärder som skrivs i en sekund från alla diskar som är kopplade till en virtuell dator.
-
-## <a name="storage-io-utilization-metrics"></a>Mått för lagring i i/o-användning
-Följande mått hjälper till att diagnostisera Flask halsar i din virtuella dator och disk kombination. Dessa mått är bara tillgängliga när du använder Premium-aktiverad virtuell dator. De här måtten är tillgängliga för alla disk typer förutom Ultra. 
-
-Mått som hjälper till att diagnostisera disk-i/o-capping:
-
-- **Data disk IOPS förbrukad procent**: den procent andel som beräknas av den data disk IOPS som slutförts över den etablerade data disken IOPS. Om den här mängden är 100% är ditt program i/o-gränsen från data diskens IOPS-gräns.
-- **Förbrukad mängd data disk bandbredd**: den procent andel som beräknas av data disk flödet som slutförts via data flödet för den allokerade datadisken. Om den här mängden är på 100% är ditt program som körs i/o-gränser från data diskens bandbredds gräns.
-- **Förbrukad procent** andel av OS-disk: den procent andel som beräknats av OS-disken IOPS som har slutförts på den etablerade OS-disken IOPS. Om den här mängden är på 100% är ditt program som körs i/o-gränser från din OS-disks IOPS-gräns.
-- **Förbrukad procent andel OS disk bandbredd**: den procent andel som beräknats av OS-dataflödet som slutförts via det ALLOKERAde OS-disk flödet. Om den här mängden är på 100% är ditt program som körs i/o-gränser från din OS-disks bandbredds gräns.
-
-Mått som hjälper till att diagnostisera VM-IO-capping:
-
-- **VM cachelagrad IOPS förbrukad procent**: den procent andel som beräknats av den totala IOPS som slutförts via den maximala IOPS-gränsen för virtuella datorer. Om den här mängden är på 100% är ditt program som körs i/o-gränser från den virtuella datorns cachelagrade IOPS-gräns.
-- **VM cachelagrad bandbredd för förbrukad bandbredd**: procent andelen beräknad av det totala disk data flödet som slutförts via det maximala data flödet för cachelagrat virtuella datorer Om den här mängden är 100% är ditt program i/o-gräns från den virtuella datorns cachelagrade bandbredds gräns.
-- **VM Uncached IOPS förbrukad procent**: den procent andel som beräknats av det totala antalet IOPS på en virtuell dator som har slutförts via den maximala IOPS-gränsen på den virtuella datorn. Om den här mängden är 100% är ditt program i/o-gräns från den virtuella datorns ej cachelagrade IOPS-gräns.
-- **Virtuell dator i cacheminnet för förbrukad bandbredd**: den procent andel som beräknas av den totala disk data flödet på en virtuell dator som har slutförts via det högsta etablerade data flödet för den virtuella datorn. Om den här mängden är på 100% är ditt program i/o-gräns från den virtuella datorns ej cachelagrade bandbredds gräns.
-
-## <a name="storage-io-utilization-metrics-example"></a>Exempel på användnings mått för lagrings-i/o
-
-Nu ska vi köra ett exempel på hur du använder dessa nya mått för lagrings-i/o-användning för att hjälpa oss att felsöka där en Flask hals är i systemet. Systeminställningarna är desamma som i föregående exempel, förutom den här gången är den anslutna OS-disken *inte* cachelagrad.
-
-**Installationsfilerna**
-
-- Standard_D8s_v3
-  - Cachelagrad IOPS: 16 000
-  - Ej cachelagrad IOPS: 12 800
-- P30 OS-disk
-  - IOPS: 5 000
-  - Cachelagring av värd: **inaktiverat**
-- Två P30 data diskar × 2
-  - IOPS: 5 000
-  - Cachelagring av värd: **läsa/skriva**
-- Två P30 data diskar × 2
-  - IOPS: 5 000
-  - Cachelagring av värd: **inaktiverat**

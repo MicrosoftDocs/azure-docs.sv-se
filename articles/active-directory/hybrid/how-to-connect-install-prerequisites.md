@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 15e5aba2bad4cd7ae63ceb9c9f67f7e653a82a91
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368973"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650158"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Förhandskrav för Azure AD Connect
 I den här artikeln beskrivs kraven och maskin varu kraven för Azure Active Directory (Azure AD) Connect.
@@ -141,7 +141,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 Mer information finns i MSDN om [default proxy-elementet](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Mer information om problem med anslutningen finns i [Felsöka anslutnings problem](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Annat
+### <a name="other"></a>Övrigt
 Valfritt: Använd ett test användar konto för att verifiera synkroniseringen.
 
 ## <a name="component-prerequisites"></a>Komponent krav
@@ -167,6 +167,17 @@ Före version 1.1.614.0 använder Azure AD Connect som standard TLS 1,0 för kry
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. Om du även vill aktivera TLS 1,2 mellan Synkroniseringsmotorn och en fjärran sluten SQL Server kontrollerar du att du har de versioner som krävs installerade för [TLS 1,2-stöd för Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>DCOM-krav på synkroniseringstjänsten
+Under installationen av synkroniseringstjänsten Azure AD Connect söker efter följande register nyckel:
+
+- HKEY_LOCAL_MACHINE: Software\Microsoft\Ole
+
+Under den här register nyckeln kontrollerar Azure AD Connect om följande värden finns och är skadade: 
+
+- [MachineAccessRestriction](https://docs.microsoft.com/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](https://docs.microsoft.com/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](https://docs.microsoft.com/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Krav för Federations installation och konfiguration
 ### <a name="windows-remote-management"></a>Windows Remote Management

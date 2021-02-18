@@ -3,12 +3,12 @@ title: Smart identifiering i Azure Application Insights | Microsoft Docs
 description: Application Insights utför automatisk djup analys av din app-telemetri och varnar dig om potentiella problem.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186260"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585655"
 ---
 # <a name="smart-detection-in-application-insights"></a>Smart identifiering i Application Insights
  Smart identifiering varnar automatiskt om potentiella prestanda problem och fel avvikelser i ditt webb program. Den utför proaktiv analys av Telemetrin som din app skickar till [Application Insights](./app-insights-overview.md). Om det uppstår plötsliga ökningar i felfrekvenser eller onormala mönster i klient-eller server prestanda får du en avisering. Den här funktionen behöver ingen konfiguration. Det fungerar om ditt program skickar tillräckligt med telemetri.
@@ -53,11 +53,11 @@ Alternativt kan du ändra konfigurationen med Azure Resource Manager mallar. Mer
 ## <a name="next-steps"></a>Nästa steg
 De här diagnostikverktygen hjälper dig att inspektera Telemetrin från din app:
 
-* [Metric Explorer](../platform/metrics-charts.md)
+* [Metric Explorer](../essentials/metrics-charts.md)
 * [Sök Utforskaren](./diagnostic-search.md)
-* [Analys-kraftfullt frågespråk](../log-query/log-analytics-tutorial.md)
+* [Analys-kraftfullt frågespråk](../logs/log-analytics-tutorial.md)
 
 Smart identifiering är helt automatisk. Men kanske vill du konfigurera ytterligare aviseringar?
 
-* [Manuellt konfigurerade mått varningar](../platform/alerts-log.md)
+* [Manuellt konfigurerade mått varningar](../alerts/alerts-log.md)
 * [Webbtester för tillgänglighet](./monitor-web-app-availability.md)

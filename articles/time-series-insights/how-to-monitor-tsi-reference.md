@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632800"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591386"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Övervaknings Azure Time Series Insights data referens
 
@@ -23,12 +23,12 @@ Lär dig mer om data och resurser som samlats in av Azure Monitor från din Azur
 
 ## <a name="metrics"></a>Mått
 
-I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Time Series Insights. En lista över alla Azure Monitor support mått (inklusive Azure Time Series Insights) finns i [Azure Monitor mått som stöds](../azure-monitor/platform/metrics-supported.md). Resurs leverantören för dessa mått är [Microsoft. TimeSeriesInsights/miljö/eventsources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) och [Microsoft. TimeSeriesInsights/miljöer](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Time Series Insights. En lista över alla Azure Monitor support mått (inklusive Azure Time Series Insights) finns i [Azure Monitor mått som stöds](../azure-monitor/essentials/metrics-supported.md). Resurs leverantören för dessa mått är [Microsoft. TimeSeriesInsights/miljö/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) och [Microsoft. TimeSeriesInsights/miljöer](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Ingress
  
-|Mått|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Inkommande mottagna byte|Byte|Totalt|Antal byte som lästs från händelse källan|
 |IngressReceivedInvalidMessages|Inkommande mottagna ogiltiga meddelanden|Antal|Totalt|Antal ogiltiga meddelanden som lästs från händelse källan|
@@ -40,7 +40,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 ### <a name="storage"></a>Storage
 
-|Mått|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|Maximalt antal egenskaper för varmt lagring|Antal|Maximal|Maximalt antal egenskaper som används av miljön för S1/S2 SKU och maximalt antal egenskaper som tillåts av varmt Arkiv för PAYG SKU|
 |WarmStorageUsedProperties|Egenskaper för varm lagring som används |Antal|Maximal|Antalet egenskaper som används av miljön för S1/S2 SKU och antalet egenskaper som används av varmt Arkiv för PAYG SKU|
@@ -61,7 +61,7 @@ Följande scheman används i Azure Time Series Insights
 | Egenskap | Beskrivning |
 |----- |----- |
 | TimeGenerated | Tid (UTC) som den här händelsen skapas i. |
-| Plats | Platsen för resursen. |
+| Location | Platsen för resursen. |
 | Kategori | Kategori för logg händelsen. |
 | OperationName | Händelsens åtgärds namn. |
 | CorrelationId | Korrelations-ID för begäran. |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572641"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Hantera ändringsspårning och inventering
 
@@ -53,7 +53,7 @@ Använd följande steg för att konfigurera fil spårning på Windows-datorer:
     |---------|---------|
     |Enabled     | Sant om inställningen tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på filen som ska spåras.        |
-    |Grupp     | Ett grupp namn för logisk gruppering av filer.        |
+    |Group     | Ett grupp namn för logisk gruppering av filer.        |
     |Ange sökväg     | Sökvägen för att söka efter filen, till exempel **c:\Temp \\ \* . txt**. Du kan också använda miljövariabler, till exempel `%winDir%\System32\\\*.*` .       |
     |Sökvägstyp     | Typ av sökväg. Möjliga värden är File och Folder.        |    
     |Rekursion     | Sant om rekursion används vid sökning efter objektet som ska spåras och falskt annars.        |    
@@ -82,7 +82,7 @@ Använd följande steg för att konfigurera fil spårning på Linux-datorer:
     |---------|---------|
     |Enabled     | Sant om inställningen tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på filen som ska spåras.        |
-    |Grupp     | Ett grupp namn för logisk gruppering av filer.        |
+    |Group     | Ett grupp namn för logisk gruppering av filer.        |
     |Ange sökväg     | Sökvägen för att söka efter filen, till exempel **/etc/*. conf**.       |
     |Sökvägstyp     | Typ av sökväg. Möjliga värden är fil och katalog.        |
     |Rekursion     | Sant om rekursion används vid sökning efter objektet som ska spåras och falskt annars.        |
@@ -152,7 +152,7 @@ Använd följande steg för att konfigurera register nyckel spårning på Window
     |---------|---------|
     |Enabled     | Sant om en inställning tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på register nyckeln som ska spåras.        |
-    |Grupp     | Grupp namn för register nycklar för logisk gruppering.        |
+    |Group     | Grupp namn för register nycklar för logisk gruppering.        |
     |Windows-registernyckel   | Nyckel namn med sökväg, till exempel `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Sök efter loggar för ändrings poster
@@ -167,7 +167,7 @@ Du kan utföra olika sökningar mot Azure Monitor loggar för ändrings poster. 
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om scope-konfigurationer finns i [begränsa ändringsspårning och distributions omfång för lager](manage-scope-configurations.md).
-* Om du behöver söka i loggar som lagras i Azure Monitor loggar, se [loggs ökningar i Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md).
+* Om du behöver söka i loggar som lagras i Azure Monitor loggar, se [loggs ökningar i Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md).
 * Om du är färdig med distributioner kan du läsa [ta bort ändringsspårning och inventering](remove-feature.md).
 * Information om hur du tar bort virtuella datorer från Ändringsspårning och inventering finns i [ta bort virtuella datorer från ändringsspårning och inventering](remove-vms-from-change-tracking.md).
 * Information om hur du felsöker funktions fel finns i [felsöka ändringsspårning-och inventerings problem](../troubleshoot/change-tracking.md).

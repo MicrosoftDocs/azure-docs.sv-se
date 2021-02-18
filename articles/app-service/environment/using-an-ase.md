@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e8cc42500b9d8bfc507683b5cc96c7b12f95909b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548462"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594054"
 ---
 # <a name="use-an-app-service-environment"></a>Använd App Service Environment
 
@@ -196,7 +196,7 @@ Om du integrerar med Log Analytics kan du se loggarna genom att välja **loggar*
 
 **Skapa en avisering**
 
-Om du vill skapa en avisering mot loggarna följer du anvisningarna i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-log.md). I korthet:
+Om du vill skapa en avisering mot loggarna följer du anvisningarna i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-log.md). I korthet:
 
 * Öppna sidan aviseringar i ASE-portalen
 * Välj **ny aviserings regel**
@@ -303,4 +303,4 @@ For more specific examples, use: az find "az appservice ase"
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017720"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650396"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Åtkomst kontroll modell i Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Den här artikeln fokuserar på Azure RBAC och ACL: er och hur systemet utvärde
 
 Azure RBAC använder roll tilldelningar för att tillämpa uppsättningar av behörigheter för [säkerhets objekt](../../role-based-access-control/overview.md#security-principal). Ett säkerhets objekt är ett objekt som representerar en användare, grupp, tjänstens huvud namn eller en hanterad identitet som definieras i Azure Active Directory (AD). En behörighets uppsättning kan ge ett säkerhets objekt en "grov kornig" åtkomst nivå, till exempel Läs-eller skriv åtkomst till **alla** data i ett lagrings konto eller **alla** data i en behållare. 
 
-Följande roller tillåter ett säkerhets objekt att komma åt data i ett lagrings konto. 
+Följande roller tillåter ett säkerhets objekt att komma åt data i ett lagrings konto.
 
 |Roll|Beskrivning|
 |--|--|
@@ -71,7 +71,7 @@ Följande diagram visar behörighets flödet för tre vanliga åtgärder: Visa k
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>Behörighets tabell: kombinera Azure RBAC och ACL
 
-I följande tabell visas hur du kombinerar Azure-roller och ACL-poster så att ett säkerhets objekt kan utföra de åtgärder som anges i kolumnen **operation** . I den här tabellen visas en kolumn som representerar varje nivå i en fiktiv katalog-hierarki. Det finns en kolumn för behållarens rot Katalog ( `/` ), en under katalog med namnet " **Oregon** Göteborg", en under katalog till katalogen Göteborg, som heter **Göteborg** och en textfil i katalogen Göteborg med namnet **Data.txt**. De som visas i dessa kolumner är [korta formulär](data-lake-storage-access-control.md#short-forms-for-permissions) som representeras av ACL-posten som krävs för att bevilja behörigheter. **Ej** _tillämpligt (ej tillämpligt_) visas i kolumnen om det inte krävs någon ACL-post för att utföra åtgärden.
+I följande tabell visas hur du kombinerar Azure-roller och ACL-poster så att ett säkerhets objekt kan utföra de åtgärder som anges i kolumnen **operation** . I den här tabellen visas en kolumn som representerar varje nivå i en fiktiv katalog-hierarki. Det finns en kolumn för behållarens rot Katalog ( `/` ), en under katalog med namnet " Göteborg", en under katalog till katalogen Göteborg, som heter **Göteborg** och en textfil i katalogen Göteborg med namnet **Data.txt**. De som visas i dessa kolumner är [korta formulär](data-lake-storage-access-control.md#short-forms-for-permissions) som representeras av ACL-posten som krävs för att bevilja behörigheter. **Ej** _tillämpligt (ej tillämpligt_) visas i kolumnen om det inte krävs någon ACL-post för att utföra åtgärden.
 
 |    Åtgärd             | Tilldelad Azure-roll               |    /        | Oregon     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|

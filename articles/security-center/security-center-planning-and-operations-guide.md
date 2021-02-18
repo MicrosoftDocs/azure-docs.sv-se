@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f5db17549c2b95d5dd0dd2f866ca1d1c0e7d8aa
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965127"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576978"
 ---
 # <a name="planning-and-operations-guide"></a>Planerings- och drifthandbok
 Den här guiden är till för IT-experter, IT-arkitekter, informations säkerhets analytiker och moln administratörer som planerar att använda Azure Security Center.
@@ -135,7 +135,7 @@ Azure Security Center använder Log Analytics agent – det här är samma agent
 
 ### <a name="agent"></a>Agent
 
-När automatisk etablering är aktiverat i säkerhets principen installeras Log Analytics agent (för [Windows](../azure-monitor/platform/agent-windows.md) eller [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)) på alla virtuella Azure-datorer som stöds och eventuella nya som skapas. Om den virtuella datorn eller datorn redan har Log Analytics-agenten installerad använder Azure Security Center den aktuella installerade agenten. Agentens process är utformad för att vara icke-invasiv och har mycket minimal påverkan på VM-prestanda.
+När automatisk etablering är aktiverat i säkerhets principen installeras Log Analytics agent (för [Windows](../azure-monitor/agents/agent-windows.md) eller [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)) på alla virtuella Azure-datorer som stöds och eventuella nya som skapas. Om den virtuella datorn eller datorn redan har Log Analytics-agenten installerad använder Azure Security Center den aktuella installerade agenten. Agentens process är utformad för att vara icke-invasiv och har mycket minimal påverkan på VM-prestanda.
 
 Log Analytics agent för Windows kräver TCP-port 443. Se [Felsökningsartikeln](security-center-troubleshooting-guide.md) för ytterligare information.
 

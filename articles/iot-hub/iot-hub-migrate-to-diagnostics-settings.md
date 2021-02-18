@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461596"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591836"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>Migrera IoT Hub från Operations Monitor till Azure Monitor resurs loggar
 
-Kunder som använder [drift övervakning](iot-hub-operations-monitoring.md) för att spåra statusen för åtgärder i IoT Hub kan migrera det arbets flödet till [Azure Monitor resurs loggar](../azure-monitor/platform/platform-logs-overview.md), en funktion i Azure Monitor. Resurs loggar tillhandahåller diagnostisk information på resurs nivå för många Azure-tjänster.
+Kunder som använder [drift övervakning](iot-hub-operations-monitoring.md) för att spåra statusen för åtgärder i IoT Hub kan migrera det arbets flödet till [Azure Monitor resurs loggar](../azure-monitor/essentials/platform-logs-overview.md), en funktion i Azure Monitor. Resurs loggar tillhandahåller diagnostisk information på resurs nivå för många Azure-tjänster.
 
 **Funktionerna för drift övervakning av IoT Hub är inaktuella** och har tagits bort från portalen. Den här artikeln innehåller steg för steg hur du flyttar dina arbets belastningar från Operations Monitoring till Azure Monitor resurs loggar. Mer information om tids linjen för tids linjen finns i [övervaka dina Azure IoT-lösningar med Azure Monitor och Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/).
 
@@ -49,9 +49,9 @@ Om du vill uppdatera din IoT Hub i Azure Portal ska du först skapa en diagnosti
 
 1. Spara inställningarna genom att klicka på **Spara**.
 
-Nya inställningar börjar gälla om 10 minuter. Därefter visas loggar i det konfigurerade målet. Mer information om hur du konfigurerar diagnostik finns i [samla in och använda loggdata från dina Azure-resurser](../azure-monitor/platform/platform-logs-overview.md).
+Nya inställningar börjar gälla om 10 minuter. Därefter visas loggar i det konfigurerade målet. Mer information om hur du konfigurerar diagnostik finns i [samla in och använda loggdata från dina Azure-resurser](../azure-monitor/essentials/platform-logs-overview.md).
 
-Mer detaljerad information om hur du skapar diagnostikinställningar, inklusive med PowerShell och Azure CLI finns i [diagnostikinställningar](../azure-monitor/platform/diagnostic-settings.md) i Azure Monitor-dokumentationen.
+Mer detaljerad information om hur du skapar diagnostikinställningar, inklusive med PowerShell och Azure CLI finns i [diagnostikinställningar](../azure-monitor/essentials/diagnostic-settings.md) i Azure Monitor-dokumentationen.
 
 ### <a name="turn-off-operations-monitoring"></a>Inaktivera drift övervakning
 

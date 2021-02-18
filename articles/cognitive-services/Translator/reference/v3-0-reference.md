@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: bdfb1ac03ea6f896725d5c86cefe41021204359c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582203"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650770"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -35,7 +35,7 @@ Microsoft Translator hanteras av flera data Center platser. De finns för närva
 
 * **Amerika:** Östra USA, södra centrala USA, västra centrala USA och västra USA 2 
 * **Asien och Stillahavsområdet:** Södra Korea, Östra Japan, Sydostasien och östra Australien
-* **Europa:** Nord Europa och Västeuropa
+* **Europa:** Nord Europa, Västeuropa, Schweiz, norra <sup>1, 2</sup>och Schweiz, västra <sup>1, 2</sup>
 
 Begär anden till Microsoft Translator hanteras i de flesta fall av data centret som är närmast den plats där begäran kommer. Om ett Data Center haveri skulle Miss lyckas kan begäran dirigeras utanför Azure-geografien.
 
@@ -47,6 +47,17 @@ Om du vill tvinga begäran att hanteras av ett visst Azure-geografi ändrar du d
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asien och stillahavsområdet|    api-apc.cognitive.microsofttranslator.com|
+
+<sup>1</sup> kund med en resurs som finns i Schweiz, norra eller Schweiz, västra kan se till att deras text-API-begäranden hanteras i Schweiz. För att säkerställa att förfrågningar hanteras i Schweiz skapar du Translator-resursen i "resurs region" Schweiz, norra eller Schweiz, västra och använder sedan resursens anpassade slut punkt i API-begärandena. Exempel: om du skapar en översättare-resurs i Azure Portal med "resurs region" som "Schweiz, norra" och resurs namnet är "My-CH-n" är din anpassade slut punkt " https://my-ch-n.cognitiveservices.azure.com ". Och en exempel förfrågan att översätta är:
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> Anpassad översättare är för närvarande inte tillgänglig i Schweiz.
 
 ## <a name="authentication"></a>Autentisering
 

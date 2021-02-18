@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4f28665998dcac9f641d4142a0dea60707fb02e9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 579baa611db47215c8ada554328d254ce99f17cf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805368"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579751"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azures säkerhets bas linje för Azure Application Gateway
 
@@ -188,9 +188,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks inställningar och resurser som är relaterade till dina Azure Application Gateway-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks inställningar eller resurser äger rum.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -216,7 +216,7 @@ Förutom aktivitets loggar kan du konfigurera diagnostikinställningar för dina
 
 Azure Application Gateway erbjuder även inbyggd integrering med Azure Application insikter. Application Insights samlar in logg-, prestanda-och fel data. Application Insights identifierar automatiskt prestanda avvikelser och innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå hur dina webb program används. Du kan aktivera kontinuerlig export för att exportera telemetri från Application Insights till en central plats för att bevara data längre än standard kvarhållningsperioden.
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -236,7 +236,7 @@ Förutom aktivitets loggar kan du konfigurera diagnostikinställningar för dina
 
 Azure Application Gateway erbjuder även inbyggd integrering med Azure Application insikter. Application Insights samlar in logg-, prestanda-och fel data. Application Insights identifierar automatiskt prestanda avvikelser och innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå hur dina webb program används. Du kan aktivera kontinuerlig export för att exportera telemetri från Application Insights till en central plats för att bevara data längre än standard kvarhållningsperioden.
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -260,7 +260,7 @@ Azure Application Gateway erbjuder även inbyggd integrering med Azure Applicati
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -274,7 +274,7 @@ Använd Azure Monitor för nätverk för en omfattande vy av hälsa och mått f�
 
 Alternativt kan du aktivera och fordonsbaserad information till Azure Sentinel eller en SIEM från tredje part.
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](./application-gateway-diagnostics.md)
 
@@ -294,13 +294,13 @@ Använd Azure Monitor för nätverk för en omfattande vy av hälsa och mått f�
 
 * [Så här distribuerar du Azure-WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
+* [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
 
 * [Så här aktiverar du diagnostikinställningar för Azure Application Gateway](./application-gateway-diagnostics.md)
 
 * [Använda Azure Monitor för nätverk](../azure-monitor/insights/network-insights-overview.md)
 
-* [Så här skapar du aviseringar i Azure](../azure-monitor/learn/tutorial-response.md)
+* [Så här skapar du aviseringar i Azure](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -591,7 +591,7 @@ Microsoft hanterar den underliggande infrastrukturen för Azure Application Gate
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktion Azure Application Gateway-instanser samt andra kritiska eller relaterade resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 

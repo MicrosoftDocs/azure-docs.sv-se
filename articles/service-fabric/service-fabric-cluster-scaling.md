@@ -4,12 +4,12 @@ description: Lär dig mer om att skala Azure Service Fabric-kluster i eller ut o
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 126be55c63c625995ad52b84a51a8983e220652d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 610c43f64f9073aefe8008473209039122cf36d7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610208"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591799"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skala Azure Service Fabric-kluster
 Ett Service Fabric kluster är en nätverksansluten uppsättning virtuella eller fysiska datorer som dina mikrotjänster distribueras och hanteras i. En dator eller en virtuell dator som ingår i ett kluster kallas för en nod. Kluster kan innehålla potentiellt tusentals noder. När du har skapat ett Service Fabric-kluster kan du skala klustret vågrätt (ändra antalet noder) eller lodrätt (ändra resurserna för noderna).  Du kan skala klustret när som helst, även när arbets belastningar körs på klustret.  När klustret skalas, skalas programmen automatiskt.
@@ -40,7 +40,7 @@ I många fall kan du [skala upp ett kluster manuellt eller med regler för autom
 - Manuell skalning kräver att du loggar in och uttryckligen begär skalnings åtgärder. Om skalnings åtgärder krävs ofta eller på oväntade tider är det inte säkert att den här metoden är en felfri lösning.
 - När AutoScale-regler tar bort en instans från en skalnings uppsättning för virtuella datorer tar de inte automatiskt bort kunskapen från den noden från det associerade Service Fabric-klustret om nodtypen har en hållbarhets nivå på silver eller guld. Eftersom AutoScale-regler fungerar på skalnings uppsättnings nivå (i stället för på Service Fabric nivå), kan regler för automatisk skalning ta bort Service Fabric noder utan att stänga av dem på ett smidigt sätt. Den här oartig tar bort "Ghost" Service Fabric nodens tillstånd bakom efter skalnings åtgärder. En enskild person (eller tjänst) måste regelbundet rensa bort status för noden i Service Fabric klustret.
 - En nodtyp med en hållbarhets nivå på guld eller silver rensar automatiskt bort noder, så ingen ytterligare rensning krävs.
-- Även om det finns [många mått](../azure-monitor/platform/autoscale-common-metrics.md) som stöds av regler för automatisk skalning, är det fortfarande en begränsad mängd. Om scenariot kräver skalning baserat på ett mått som inte täcks i den uppsättningen, kan det hända att regler för automatisk skalning inte är ett lämpligt alternativ.
+- Även om det finns [många mått](../azure-monitor/autoscale/autoscale-common-metrics.md) som stöds av regler för automatisk skalning, är det fortfarande en begränsad mängd. Om scenariot kräver skalning baserat på ett mått som inte täcks i den uppsättningen, kan det hända att regler för automatisk skalning inte är ett lämpligt alternativ.
 
 Hur du bör använda Service Fabric skalning beror på ditt scenario. Om skalning är ovanligt räcker det förmodligen att lägga till eller ta bort noder manuellt. För mer komplexa scenarier visar autoskalning av regler och SDK: er möjlighet att skala programmatiskt erbjuda kraftfulla alternativ.
 

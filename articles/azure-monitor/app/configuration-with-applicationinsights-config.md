@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b15e39b55dfe49a3fb3c1e0e38798570efdf46bd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928678"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592763"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurera Application Insights SDK:n med ApplicationInsights.config eller .xml
 Application Insights .NET SDK består av ett antal NuGet-paket. [Kärn paketet](https://www.nuget.org/packages/Microsoft.ApplicationInsights) innehåller API: et för att skicka telemetri till Application Insights. [Ytterligare paket](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) tillhandahåller telemetri- *moduler* och *initierare* för automatisk spårning av telemetri från ditt program och dess kontext. Genom att justera konfigurations filen kan du aktivera eller inaktivera moduler för telemetri och initierare och ange parametrar för några av dem.
@@ -121,7 +121,7 @@ Standard initierarna anges antingen av webb-eller Windows Server NuGet-paket:
 * `OperationNameTelemetryInitializer` uppdaterar `Name` egenskapen för `RequestTelemetry` och `Name` egenskapen för `Operation` kontexten för alla telemetri-objekt baserat på http-metoden, samt namn på ASP.NET MVC-styrenhet och åtgärd som anropas för att bearbeta begäran.
 * `OperationIdTelemetryInitializer` eller `OperationCorrelationTelemetryInitializer` uppdaterar `Operation.Id` kontext egenskapen för alla telemetridata som spåras och hanterar en begäran med det automatiskt genererade objektet `RequestTelemetry.Id` .
 * `SessionTelemetryInitializer` uppdaterar `Id` egenskapen för `Session` kontexten för alla telemetri objekt med värdet som extraheras från `ai_session` cookien som genererats av ApplicationInsights JavaScript-Instrumentation-koden som körs i användarens webbläsare.
-* `SyntheticTelemetryInitializer` eller `SyntheticUserAgentTelemetryInitializer` uppdaterar `User` egenskaperna, `Session` , och `Operation` för alla telemetridata som spåras vid hantering av en begäran från en syntetisk källa, till exempel ett tillgänglighets test eller en sökmotor bot. Som standard visar [Metrics Explorer](../platform/metrics-charts.md) inte syntetisk telemetri.
+* `SyntheticTelemetryInitializer` eller `SyntheticUserAgentTelemetryInitializer` uppdaterar `User` egenskaperna, `Session` , och `Operation` för alla telemetridata som spåras vid hantering av en begäran från en syntetisk källa, till exempel ett tillgänglighets test eller en sökmotor bot. Som standard visar [Metrics Explorer](../essentials/metrics-charts.md) inte syntetisk telemetri.
 
     `<Filters>`Ange identifierings egenskaper för begär Anden.
 * `UserTelemetryInitializer` uppdaterar `Id` och `AcquisitionDate` Egenskaper för `User` kontexten för alla telemetridata med värden som extraheras från `ai_user` cookien som genererats av Application Insights JavaScript-Instrumentation-koden som körs i användarens webbläsare.

@@ -5,19 +5,19 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 5ccef241a37e63467b681d5fd12c65072cb92e58
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626495"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652283"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Använd Azure Storage Explorer för att hantera kataloger och filer i Azure Data Lake Storage Gen2
 
-Den här artikeln visar hur du använder [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att skapa och hantera kataloger, filer och åtkomst kontrol listor (ACL: er) i lagrings konton som har hierarkiskt namn område (HNS) aktiverat.
+Den här artikeln visar hur du använder [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att skapa och hantera kataloger och filer i lagrings konton med hierarkiskt namn område (HNS) aktiverat.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -26,6 +26,9 @@ Den här artikeln visar hur du använder [Azure Storage Explorer](https://azure.
 - Ett lagrings konto med hierarkiskt namn område (HNS) aktiverat. Följ [de här](../common/storage-account-create.md) anvisningarna för att skapa en.
 
 - Azure Storage Explorer installerat på den lokala datorn. Information om hur du installerar Azure Storage Explorer för Windows, Macintosh och Linux finns i [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+> [!NOTE]
+> Storage Explorer använder sig av båda [slut punkterna](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) BLOB (blob) & data Lake Storage Gen2 (DFS) när du arbetar med Azure Data Lake Storage Gen2. Om åtkomst till Azure Data Lake Storage Gen2 har kon figurer ATS med hjälp av privata slut punkter, se till att två privata slut punkter skapas för lagrings kontot: en med den underordnade underresursen `blob` och den andra med mål under resursen `dfs` .
 
 ## <a name="sign-in-to-storage-explorer"></a>Logga in på Storage Explorer
 
@@ -77,41 +80,9 @@ I programmet **Azure Storage Explorer** väljer du en katalog under ett lagrings
 
 Om du vill hämta filer med hjälp av **Azure Storage Explorer** väljer du **Ladda ned** från menyfliksområdet när en fil har valts. En fildialogruta öppnas och där du kan ange ett filnamn. Klicka på **Spara** för att starta nedladdningen av en fil till den lokala platsen.
 
-<a id="managing-access"></a>
-
-## <a name="manage-acls"></a>Hantera ACL: er
-
-Högerklicka på behållaren, en katalog eller en fil och klicka sedan på **hantera Access Control listor**.  Följande skärm bild visar menyn som den visas när du högerklickar på en katalog.
-
-> [!div class="mx-imgBorder"]
-> ![Högerklicka på en katalog i Azure Storage Explorer](./media/data-lake-storage-explorer/manage-access-control-list-option.png)
-
-I dialog rutan **Hantera åtkomst** kan du hantera behörigheter för ägare och gruppen ägare. Du kan även lägga till nya användare och grupper i åtkomstkontrollistan, som du sedan kan lägga till behörigheter för.
-
-> [!div class="mx-imgBorder"]
-> ![Dialog rutan Hantera åtkomst](./media/data-lake-storage-explorer/manage-access-dialog-box.png)
-
-Om du vill lägga till en ny användare eller grupp i åtkomst kontrol listan väljer du knappen **Lägg till** . Ange sedan motsvarande Azure Active Directory-post (AAD) som du vill lägga till i listan och välj sedan **Lägg till**.  Användaren eller gruppen visas nu i fältet **Användare och grupper:**, där du kan börja hantera deras behörigheter.
-
-> [!NOTE]
-> Vi rekommenderar bästa praxis att skapa en säkerhetsgrupp i AAD och hantera behörigheter för gruppen istället för enskilda användare. Mer information om den här rekommendationen och andra rekommenderade metoder finns i [åtkomst kontroll modell i Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md).
-
-Använd kryss rutorna för att ange åtkomst-och standard-ACL: er. Mer information om skillnaden mellan dessa typer av ACL: er finns i [typer av ACL: er](data-lake-storage-access-control.md#types-of-acls).
-
-<a id="apply-acls-recursively"></a>
-
-## <a name="apply-acls-recursively"></a>Använda ACL: er rekursivt
-
-Du kan använda ACL-poster rekursivt på befintliga underordnade objekt i en överordnad katalog utan att behöva göra dessa ändringar individuellt för varje underordnat objekt.
-
-Om du vill tillämpa ACL-poster rekursivt, högerklickar du på behållaren eller en katalog och klickar sedan på **sprida Access Control listor**.  Följande skärm bild visar menyn som den visas när du högerklickar på en katalog.
-
-> [!div class="mx-imgBorder"]
-> ![Högerklicka på en katalog och välja inställningen för att sprida åtkomst kontroll](./media/data-lake-storage-explorer/propagate-access-control-list-option.png)
-
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om åtkomst kontrol listor i Data Lake Storage Gen2.
+Lär dig hur du hanterar fil-och katalog behörigheter genom att ange åtkomst kontrol listor (ACL: er)
 
 > [!div class="nextstepaction"]
-> [Åtkomstkontroll i Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md)
+> [Använd Azure Storage Explorer för att hantera ACL: er i Azure Data Lake Storage Gen2](./data-lake-storage-explorer-acl.md)

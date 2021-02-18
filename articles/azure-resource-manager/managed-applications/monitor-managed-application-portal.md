@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02062edd1a940bcc6588ab53457e0af91fedd9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75651753"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578265"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Övervaka en distribuerad instans av ett hanterat program
 
@@ -44,7 +44,7 @@ När du har distribuerat ett hanterat program till din Azure-prenumeration kansk
 
    ![Skapa avisering](./media/monitor-managed-application-portal/create-new-alert.png)
 
-Du kan skapa aviseringar för din hanterade program instans eller resurserna i det hanterade programmet. Information om hur du skapar aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
+Du kan skapa aviseringar för din hanterade program instans eller resurserna i det hanterade programmet. Information om hur du skapar aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
