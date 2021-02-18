@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 04e658e3107ac0c9622ca1601eb93b01b9986fef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1db7eeb61bc4ded2d7015baecaacd974d7767812
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645514"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653557"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -60,7 +60,11 @@ Följande klasser hanterar några av de viktigaste funktionerna i Azure Communic
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient. Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
+Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
+
+Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
+
+Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera token för chatt-programmet, men det rekommenderas. Läs mer om [chatt-arkitekturen](../../../concepts/chat/concepts.md)
 
 ```csharp
 using Azure.Communication.Identity;

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 175c00440fe9723bbd389db39616f525c2b7f436
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805486"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582634"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azures säkerhets bas linje för Service Fabric
 
@@ -178,9 +178,9 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina Azure Service Fabric-distributioner. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -224,7 +224,7 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 * [Så här distribuerar du Log Analytics agent på noderna](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics loggs ökningar](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics loggs ökningar](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -240,7 +240,7 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 * [Så här distribuerar du Log Analytics agent på noderna](./service-fabric-diagnostics-oms-agent.md)
 
-* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/platform/manage-cost-storage.md)
+* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -256,7 +256,7 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 * [Så här distribuerar du Log Analytics agent på noderna](./service-fabric-diagnostics-oms-agent.md)
 
-* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/platform/manage-cost-storage.md)
+* [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -266,7 +266,7 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 **Vägledning**: använd Azure Log Analytics Workspace-frågor för att skicka frågor till Azure Service Fabric-loggar.
 
-* [Log Analytics loggs ökningar](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics loggs ökningar](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -278,7 +278,7 @@ Du kan använda Azure PowerShell eller Azure kommando rads gränssnitt (CLI) fö
 
 * [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+* [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -586,7 +586,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i kritiska Azure-resurser.
 
-* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+* [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

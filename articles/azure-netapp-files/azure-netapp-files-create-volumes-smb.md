@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 6bb787084d4396737d3002bb98fe50e283c5764a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582898"
+ms.locfileid: "100635497"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
 Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller Dual Protocol (NFSv3 och SMB). En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet. Den här artikeln visar hur du skapar en SMB3-volym.
 
 ## <a name="before-you-begin"></a>Innan du börjar 
-Du måste redan ha konfigurerat en kapacitetspool.   
-[Konfigurera en pool för kapacitet](azure-netapp-files-set-up-capacity-pool.md)   
-Ett undernät måste delegeras till Azure NetApp Files.  
-[Delegera ett undernät till Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+
+* Du måste redan ha konfigurerat en kapacitetspool. Se [Konfigurera en pool för kapacitet](azure-netapp-files-set-up-capacity-pool.md).     
+* Ett undernät måste delegeras till Azure NetApp Files. Se [delegera ett undernät till Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="configure-active-directory-connections"></a>Konfigurera Active Directory anslutningar 
 

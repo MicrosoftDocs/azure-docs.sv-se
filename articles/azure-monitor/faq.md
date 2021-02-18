@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008425"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577581"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -31,7 +31,7 @@ I september 2018 har Microsoft kombinerat Azure Monitor, Log Analytics och Appli
 Funktioner i Azure Monitor som aktive ras automatiskt, till exempel insamling av mått och aktivitets loggar får utan kostnad. Det finns en kostnad som är kopplad till andra funktioner som logg frågor och aviseringar. Se [sidan Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/) för detaljerad pris information.
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Hur gör jag för att aktivera Azure Monitor?
-Azure Monitor aktive ras så snart du skapar en ny Azure-prenumeration, och [aktivitets logg](./platform/platform-logs-overview.md) -och plattforms [mått](platform/data-platform-metrics.md) samlas in automatiskt. Skapa [diagnostikinställningar](platform/diagnostic-settings.md) för att samla in mer detaljerad information om driften av dina Azure-resurser och lägga till [övervaknings lösningar](insights/solutions.md) och [insikter](./monitor-reference.md) för att tillhandahålla ytterligare analys av insamlade data för specifika tjänster. 
+Azure Monitor aktive ras så snart du skapar en ny Azure-prenumeration, och [aktivitets logg](./essentials/platform-logs-overview.md) -och plattforms [mått](essentials/data-platform-metrics.md) samlas in automatiskt. Skapa [diagnostikinställningar](essentials/diagnostic-settings.md) för att samla in mer detaljerad information om driften av dina Azure-resurser och lägga till [övervaknings lösningar](insights/solutions.md) och [insikter](./monitor-reference.md) för att tillhandahålla ytterligare analys av insamlade data för specifika tjänster. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Hur gör jag för att åtkomst Azure Monitor?
 Få åtkomst till alla Azure Monitor funktioner och data från **Monitor** -menyn i Azure Portal. I avsnittet **övervakning** på menyn för olika Azure-tjänster får du till gång till samma verktyg med data som har filtrerats till en viss resurs. Azure Monitor data är också tillgängliga för en mängd olika scenarier med CLI, PowerShell och en REST API.
@@ -40,10 +40,10 @@ Få åtkomst till alla Azure Monitor funktioner och data från **Monitor** -meny
 Nej. Azure Monitor är en skalbar moln tjänst som bearbetar och lagrar stora mängder data, även om Azure Monitor kan övervaka resurser som är lokala och i andra moln.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Kan Azure Monitor övervaka lokala resurser?
-Ja, förutom att samla in övervaknings data från Azure-resurser kan Azure Monitor samla in data från virtuella datorer och program i andra moln och lokalt. Se [källor för övervaknings data för Azure Monitor](platform/data-sources.md).
+Ja, förutom att samla in övervaknings data från Azure-resurser kan Azure Monitor samla in data från virtuella datorer och program i andra moln och lokalt. Se [källor för övervaknings data för Azure Monitor](agents/data-sources.md).
 
 ### <a name="does-azure-monitor-integrate-with-system-center-operations-manager"></a>Är Azure Monitor integrera med System Center Operations Manager?
-Du kan ansluta din befintliga System Center Operations Manager hanterings grupp till Azure Monitor för att samla in data från agenter till Azure Monitor loggar. På så sätt kan du använda logg frågor och lösning för att analysera data som samlas in från agenter. Du kan också konfigurera befintliga System Center Operations Managers agenter att skicka data direkt till Azure Monitor. Se [ansluta Operations Manager till Azure Monitor](platform/om-agents.md).
+Du kan ansluta din befintliga System Center Operations Manager hanterings grupp till Azure Monitor för att samla in data från agenter till Azure Monitor loggar. På så sätt kan du använda logg frågor och lösning för att analysera data som samlas in från agenter. Du kan också konfigurera befintliga System Center Operations Managers agenter att skicka data direkt till Azure Monitor. Se [ansluta Operations Manager till Azure Monitor](agents/om-agents.md).
 
 ### <a name="what-ip-addresses-does-azure-monitor-use"></a>Vilka IP-adresser använder Azure Monitor?
 Se [IP-adresser som används av Application Insights och Log Analytics](app/ip-addresses.md) för en lista över IP-adresser och portar som krävs för agenter och andra externa resurser för att få åtkomst till Azure Monitor. 
@@ -51,16 +51,16 @@ Se [IP-adresser som används av Application Insights och Log Analytics](app/ip-a
 ## <a name="monitoring-data"></a>Övervaka data
 
 ### <a name="where-does-azure-monitor-get-its-data"></a>Var kan Azure Monitor hämta sina data?
-Azure Monitor samlar in data från en mängd olika källor, inklusive loggar och mått från Azure-plattform och resurser, anpassade program och agenter som körs på virtuella datorer. Andra tjänster som Azure Security Center och Network Watcher samla in data i en Log Analytics arbets yta så att den kan analyseras med Azure Monitor data. Du kan också skicka anpassade data till Azure Monitor med hjälp av REST API för loggar eller mått. Se [källor för övervaknings data för Azure Monitor](platform/data-sources.md).
+Azure Monitor samlar in data från en mängd olika källor, inklusive loggar och mått från Azure-plattform och resurser, anpassade program och agenter som körs på virtuella datorer. Andra tjänster som Azure Security Center och Network Watcher samla in data i en Log Analytics arbets yta så att den kan analyseras med Azure Monitor data. Du kan också skicka anpassade data till Azure Monitor med hjälp av REST API för loggar eller mått. Se [källor för övervaknings data för Azure Monitor](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Vilka data samlas in av Azure Monitor? 
-Azure Monitor samlar in data från en mängd olika källor i [loggar](platform/data-platform-logs.md) eller [mått](platform/data-platform-metrics.md). Varje typ av data har sina egna relativa fördelar och var och en har stöd för en viss uppsättning funktioner i Azure Monitor. Det finns en enda mått databas för varje Azure-prenumeration, medan du kan skapa flera Log Analytics arbets ytor för att samla in loggar beroende på dina behov. Se [Azure Monitor data plattform](platform/data-platform.md).
+Azure Monitor samlar in data från en mängd olika källor i [loggar](logs/data-platform-logs.md) eller [mått](essentials/data-platform-metrics.md). Varje typ av data har sina egna relativa fördelar och var och en har stöd för en viss uppsättning funktioner i Azure Monitor. Det finns en enda mått databas för varje Azure-prenumeration, medan du kan skapa flera Log Analytics arbets ytor för att samla in loggar beroende på dina behov. Se [Azure Monitor data plattform](/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Finns det en maximal mängd data som jag kan samla in i Azure Monitor?
-Det finns ingen gräns för mängden Mät data som du kan samla in, men dessa data lagras i högst 93 dagar. Se [kvarhållning av mått](platform/data-platform-metrics.md#retention-of-metrics). Det finns ingen gräns för mängden logg data som du kan samla in, men det kan påverkas av den pris nivå som du väljer för arbets ytan Log Analytics. Se [pris information](https://azure.microsoft.com/pricing/details/monitor/).
+Det finns ingen gräns för mängden Mät data som du kan samla in, men dessa data lagras i högst 93 dagar. Se [kvarhållning av mått](essentials/data-platform-metrics.md#retention-of-metrics). Det finns ingen gräns för mängden logg data som du kan samla in, men det kan påverkas av den pris nivå som du väljer för arbets ytan Log Analytics. Se [pris information](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Hur gör jag för att åtkomst till data som samlats in av Azure Monitor?
-Insikter och lösningar ger en anpassad upplevelse för att arbeta med data som lagras i Azure Monitor. Du kan arbeta direkt med loggdata med hjälp av en logg fråga som skrivits i KQL (Kusto Query Language). I Azure Portal kan du skriva och köra frågor och analysera data interaktivt med hjälp av Log Analytics. Analysera mått i Azure Portal med Metrics Explorer. Se [analysera loggdata i Azure Monitor](log-query/log-query-overview.md) och [komma igång med Azure Metrics Explorer](platform/metrics-getting-started.md).
+Insikter och lösningar ger en anpassad upplevelse för att arbeta med data som lagras i Azure Monitor. Du kan arbeta direkt med loggdata med hjälp av en logg fråga som skrivits i KQL (Kusto Query Language). I Azure Portal kan du skriva och köra frågor och analysera data interaktivt med hjälp av Log Analytics. Analysera mått i Azure Portal med Metrics Explorer. Se [analysera loggdata i Azure Monitor](logs/log-query-overview.md) och [komma igång med Azure Metrics Explorer](essentials/metrics-getting-started.md).
 
 ## <a name="solutions-and-insights"></a>Lösningar och insikter
 
@@ -80,23 +80,23 @@ Om du vill visa lösningar i Azure Portal klickar du på **mer** i avsnittet om 
 Azure Data Explorer är en snabb och mycket skalbar datautforskningstjänst för logg- och telemetridata. Azure Monitor-loggar bygger på Azure-Datautforskaren och använder samma KQL (Kusto Query Language) med vissa mindre skillnader. Se [skillnader i Azure Monitor loggs frågespråk](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hur gör jag för att hämta logg data?
-Alla data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som skrivits med hjälp av KQL (Kusto Query Language). Du kan skriva egna frågor eller använda lösningar och insikter som innehåller logg frågor för ett visst program eller en viss tjänst. Se [Översikt över logg frågor i Azure Monitor](log-query/log-query-overview.md).
-
+Alla data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som skrivits med hjälp av KQL (Kusto Query Language). Du kan skriva egna frågor eller använda lösningar och insikter som innehåller logg frågor för ett visst program eller en viss tjänst. Se [Översikt över logg frågor i Azure Monitor](logs/log-query-overview.md).
+P
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kan jag ta bort data från en Log Analytics arbets yta?
-Data tas bort från en arbets yta enligt kvarhållningsperioden [.](platform/manage-cost-storage.md#change-the-data-retention-period) Du kan ta bort vissa data för sekretess eller efterlevnad. Mer information finns i [Exportera och ta bort privata data](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
+Data tas bort från en arbets yta enligt kvarhållningsperioden [.](logs/manage-cost-storage.md#change-the-data-retention-period) Du kan ta bort vissa data för sekretess eller efterlevnad. Mer information finns i [Exportera och ta bort privata data](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
 ### <a name="is-log-analytics-storage-immutable"></a>Är Log Analytics lagring oföränderligt?
 Data i databas lagringen kan inte ändras när de har matats in men kan tas bort via [ *rensnings* -API-sökvägen för borttagning av privata data](platform/personal-data-mgmt.md#delete). Även om det inte går att ändra data, kräver vissa certifieringar att data förblir oföränderliga och inte kan ändras eller tas bort i lagrings utrymmet. Data oföränderlighets kan uppnås med hjälp av [data export](platform/logs-data-export.md) till ett lagrings konto som har kon figurer ATS som [oföränderligt lagrings utrymme](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Vad är en Log Analytics-arbetsyta?
-Alla loggdata som samlas in av Azure Monitor lagras i en Log Analytics arbets yta. En arbets yta är i grunden en behållare där loggdata samlas in från olika källor. Du kan ha en enda Log Analytics arbets yta för alla dina övervaknings data eller så kan det finnas krav för flera arbets ytor. Se [utforma distributioner av Azure Monitor loggar](platform/design-logs-deployment.md).
+Alla loggdata som samlas in av Azure Monitor lagras i en Log Analytics arbets yta. En arbets yta är i grunden en behållare där loggdata samlas in från olika källor. Du kan ha en enda Log Analytics arbets yta för alla dina övervaknings data eller så kan det finnas krav för flera arbets ytor. Se [utforma distributioner av Azure Monitor loggar](logs/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kan du flytta en befintlig Log Analytics arbets yta till en annan Azure-prenumeration?
-Du kan flytta en arbets yta mellan resurs grupper eller prenumerationer, men inte till en annan region. Se [flytta en Log Analytics arbets yta till en annan prenumeration eller resurs grupp](platform/move-workspace.md).
+Du kan flytta en arbets yta mellan resurs grupper eller prenumerationer, men inte till en annan region. Se [flytta en Log Analytics arbets yta till en annan prenumeration eller resurs grupp](logs/move-workspace.md).
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Varför kan jag inte se Query Explorer och spara knappar i Log Analytics?
 
-Knapparna i **query Explorer**, **Spara** och **ny varnings regel** är inte tillgängliga när [fråge omfånget](log-query/scope.md) är inställt på en enskild resurs. Om du vill skapa aviseringar, Spara eller läsa in en fråga måste Log Analytics begränsas till en arbets yta. Öppna Log Analytics i kontexten för arbets ytan genom att välja **loggar** på **Azure Monitor** menyn. Den senast använda arbets ytan har valts, men du kan välja en annan arbets yta. Se [omfång och tidsintervall för logg frågor i Azure Monitor Log Analytics](log-query/scope.md)
+Knapparna i **query Explorer**, **Spara** och **ny varnings regel** är inte tillgängliga när [fråge omfånget](logs/scope.md) är inställt på en enskild resurs. Om du vill skapa aviseringar, Spara eller läsa in en fråga måste Log Analytics begränsas till en arbets yta. Öppna Log Analytics i kontexten för arbets ytan genom att välja **loggar** på **Azure Monitor** menyn. Den senast använda arbets ytan har valts, men du kan välja en annan arbets yta. Se [omfång och tidsintervall för logg frågor i Azure Monitor Log Analytics](logs/scope.md)
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Varför visas följande fel meddelande: "Registrera Resource providern Microsoft. Insights för den här prenumerationen om du vill aktivera den här frågan" när du öppnar Log Analytics från en virtuell dator? 
 Många resurs leverantörer registreras automatiskt, men du kan behöva registrera vissa resurs leverantörer manuellt. Omfånget för registreringen är alltid prenumerationen. Mer information finns i [Resursproviders och resurstyper](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
@@ -107,7 +107,7 @@ Om du vill visa VM-loggar måste du beviljas med Läs behörighet till de arbets
 ## <a name="metrics"></a>Mått
 
 ### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Varför visas inte mått från gäst operativ systemet för min virtuella Azure-dator i Metrics Explorer?
-[Plattforms mått](insights/monitor-azure-resource.md#monitoring-data) samlas in automatiskt för Azure-resurser. Du måste utföra vissa konfigurationer om du vill samla in mått från gäst operativ systemet på en virtuell dator. För en virtuell Windows-dator installerar du diagnostiskt tillägg och konfigurerar Azure Monitor Sink enligt beskrivningen i [Installera och konfigurera Windows Azure Diagnostics Extension (wad)](platform/diagnostics-extension-windows-install.md). För Linux installerar du teleympkvistar-agenten enligt beskrivningen i [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](platform/collect-custom-metrics-linux-telegraf.md).
+[Plattforms mått](essentials/monitor-azure-resource.md#monitoring-data) samlas in automatiskt för Azure-resurser. Du måste utföra vissa konfigurationer om du vill samla in mått från gäst operativ systemet på en virtuell dator. För en virtuell Windows-dator installerar du diagnostiskt tillägg och konfigurerar Azure Monitor Sink enligt beskrivningen i [Installera och konfigurera Windows Azure Diagnostics Extension (wad)](agents/diagnostics-extension-windows-install.md). För Linux installerar du teleympkvistar-agenten enligt beskrivningen i [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](essentials/collect-custom-metrics-linux-telegraf.md).
 
 ## <a name="alerts"></a>Aviseringar
 
@@ -120,24 +120,24 @@ Aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervakning
 - Webb test – resultat av tillgänglighets test matchar definierade kriterier.
 
 
-Se [Översikt över aviseringar i Microsoft Azure](platform/alerts-overview.md).
+Se [Översikt över aviseringar i Microsoft Azure](alerts/alerts-overview.md).
 
 
 ### <a name="what-is-an-action-group"></a>Vad är en åtgärds grupp?
-En åtgärds grupp är en samling meddelanden och åtgärder som kan utlösas av en avisering. Flera aviseringar kan använda en enda åtgärds grupp så att du kan använda vanliga uppsättningar meddelanden och åtgärder. Se [skapa och hantera åtgärds grupper i Azure Portal](platform/action-groups.md).
+En åtgärds grupp är en samling meddelanden och åtgärder som kan utlösas av en avisering. Flera aviseringar kan använda en enda åtgärds grupp så att du kan använda vanliga uppsättningar meddelanden och åtgärder. Se [skapa och hantera åtgärds grupper i Azure Portal](alerts/action-groups.md).
 
 
 ### <a name="what-is-an-action-rule"></a>Vad är en åtgärds regel?
-Med en åtgärds regel kan du ändra beteendet för en uppsättning aviseringar som matchar ett visst villkor. På så sätt kan du utföra sådana krav som att inaktivera aviserings åtgärder under en underhålls period. Du kan också använda en åtgärds grupp till en uppsättning aviseringar i stället för att använda dem direkt i varnings reglerna. Se [Åtgärds regler](platform/alerts-action-rules.md).
+Med en åtgärds regel kan du ändra beteendet för en uppsättning aviseringar som matchar ett visst villkor. På så sätt kan du utföra sådana krav som att inaktivera aviserings åtgärder under en underhålls period. Du kan också använda en åtgärds grupp till en uppsättning aviseringar i stället för att använda dem direkt i varnings reglerna. Se [Åtgärds regler](alerts/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agenter
 
 ### <a name="does-azure-monitor-require-an-agent"></a>Kräver Azure Monitor en agent?
-En agent krävs bara för att samla in data från operativ systemet och arbets belastningarna på virtuella datorer. De virtuella datorerna kan finnas i Azure, en annan moln miljö eller lokalt. Se [Översikt över Azure Monitors agenter](platform/agents-overview.md).
+En agent krävs bara för att samla in data från operativ systemet och arbets belastningarna på virtuella datorer. De virtuella datorerna kan finnas i Azure, en annan moln miljö eller lokalt. Se [Översikt över Azure Monitors agenter](agents/agents-overview.md).
 
 
 ### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Vad är skillnaden mellan Azure Monitors agenter?
-Azure Diagnostic Extension är för Azure Virtual Machines och samlar in data för att Azure Monitor Mät värden, Azure Storage och Azure Event Hubs. Log Analytics agenten är för virtuella datorer i Azure, en annan moln miljö eller lokalt och samlar in data till Azure Monitor loggar. Beroende agenten kräver Log Analytics agent och insamlad process information och beroenden. Se [Översikt över Azure Monitors agenter](platform/agents-overview.md).
+Azure Diagnostic Extension är för Azure Virtual Machines och samlar in data för att Azure Monitor Mät värden, Azure Storage och Azure Event Hubs. Log Analytics agenten är för virtuella datorer i Azure, en annan moln miljö eller lokalt och samlar in data till Azure Monitor loggar. Beroende agenten kräver Log Analytics agent och insamlad process information och beroenden. Se [Översikt över Azure Monitors agenter](agents/agents-overview.md).
 
 
 ### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>Använder min agent trafik min ExpressRoute-anslutning?
@@ -156,7 +156,7 @@ Mängden data som skickas per agent beror på:
 * Antalet loggar och prestanda räknare som samlas in
 * Data mängden i loggarna
 
-Mer information finns i [Hantera användning och kostnader med Azure Monitor loggar](platform/manage-cost-storage.md) .
+Mer information finns i [Hantera användning och kostnader med Azure Monitor loggar](logs/manage-cost-storage.md) .
 
 För datorer som kan köra WireData-agenten använder du följande fråga för att se hur mycket data som skickas:
 
@@ -173,7 +173,7 @@ Bandbredd är en funktion för mängden data som skickas. Data komprimeras när 
 
 ### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>Hur kan jag få ett meddelande när data insamlingen från den Log Analytics agenten stoppas?
 
-Använd stegen som beskrivs i [skapa en ny logg avisering](platform/alerts-metric.md) som ska meddelas när data insamlingen stoppas. Använd följande inställningar för aviserings regeln:
+Använd stegen som beskrivs i [skapa en ny logg avisering](alerts/alerts-metric.md) som ska meddelas när data insamlingen stoppas. Använd följande inställningar för aviserings regeln:
 
 - **Definiera aviserings villkor**: Ange Log Analytics arbets ytan som resurs mål.
 - **Aviserings villkor** 
@@ -185,11 +185,11 @@ Använd stegen som beskrivs i [skapa en ny logg avisering](platform/alerts-metri
    - **Namn**: *data insamlingen stoppades*
    - **Allvarlighets grad**: *Varning*
 
-Ange en befintlig eller ny [Åtgärds grupp](platform/action-groups.md) så att du får ett meddelande om att ett pulsslag saknas under 15 minuter när logg aviseringen matchar kriterierna.
+Ange en befintlig eller ny [Åtgärds grupp](alerts/action-groups.md) så att du får ett meddelande om att ett pulsslag saknas under 15 minuter när logg aviseringen matchar kriterierna.
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Vilka är brand Väggs kraven för Azure Monitors agenter?
-Se [krav för nätverks brand väggen](platform/log-analytics-agent.md#network-requirements)för information om brand Väggs krav.
+Se [krav för nätverks brand väggen](agents/log-analytics-agent.md#network-requirements)för information om brand Väggs krav.
 
 
 ## <a name="visualizations"></a>Visualiseringar
@@ -205,7 +205,7 @@ View Designer är bara tillgängligt för användare som har tilldelats deltagar
 
 * [.NET-app](app/asp-net-troubleshoot-no-data.md)
 * [Övervaka en app som redan körs](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Azure Diagnostics](platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics](agents/diagnostics-extension-to-application-insights.md)
 * [Java-webbapp](app/java-troubleshoot.md)
 
 *Jag får inga data från min server:*
@@ -306,10 +306,10 @@ Från [klient webb sidor](app/javascript.md):
 
 Från andra källor, om du konfigurerar dem:
 
-* [Azure Diagnostics](platform/diagnostics-extension-to-application-insights.md)
-* [Importera till analys](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
-* [Logstash](platform/data-collector-api.md)
+* [Azure Diagnostics](agents/diagnostics-extension-to-application-insights.md)
+* [Importera till analys](logs/data-collector-api.md)
+* [Log Analytics](logs/data-collector-api.md)
+* [Logstash](logs/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kan jag filtrera ut eller ändra vissa telemetri?
 
@@ -451,7 +451,7 @@ Du kan inte konfigurera en Metric Explorer-rapport eller konfigurera löpande ex
 
 #### <a name="querying-the-telemetry"></a>Fråga telemetri
 
-Använd [REST API](https://dev.applicationinsights.io/) för att köra [analys](./log-query/log-query-overview.md) frågor.
+Använd [REST API](https://dev.applicationinsights.io/) för att köra [analys](./logs/log-query-overview.md) frågor.
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Hur kan jag ange en avisering för en händelse?
 
@@ -669,7 +669,7 @@ ContainerLog
 
 Återaktivera insamling för de här egenskaperna för varje behållar logg rad.
 
-Om det första alternativet inte är bekvämt på grund av ändringar i frågan, kan du återaktivera insamling av de här fälten genom att aktivera inställningen ```log_collection_settings.enrich_container_logs``` i agentens konfigurations mappning enligt beskrivningen i [konfigurations inställningarna för data insamling](insights/container-insights-agent-config.md).
+Om det första alternativet inte är bekvämt på grund av ändringar i frågan, kan du återaktivera insamling av de här fälten genom att aktivera inställningen ```log_collection_settings.enrich_container_logs``` i agentens konfigurations mappning enligt beskrivningen i [konfigurations inställningarna för data insamling](containers/container-insights-agent-config.md).
 
 > [!NOTE]
 > Det andra alternativet rekommenderas inte med stora kluster som har fler än 50 noder eftersom det genererar API-Server anrop från varje nod i klustret för att utföra denna anrikning. Det här alternativet ökar också data storleken för varje logg rad som samlas in.
@@ -684,7 +684,7 @@ Azure Monitor för behållare stöder övervakning av arbets belastningar som di
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Varför visas inte data i min Log Analytics-arbetsyta?
 
-Om du inte kan se några data i Log Analytics-arbetsytan vid en viss tidpunkt varje dag kan du ha nått upp till standardgränsen på 500 MB, eller den dagliga begränsningen för att reglera mängden data som samlas in dagligen. När gränsen för dagen är uppnådd stoppas datainsamlingen för att återupptas först nästa dag. Information om hur du granskar din data användning och uppdaterar till en annan pris nivå baserat på dina förväntade användnings mönster finns i [logga data användning och kostnad](platform/manage-cost-storage.md). 
+Om du inte kan se några data i Log Analytics-arbetsytan vid en viss tidpunkt varje dag kan du ha nått upp till standardgränsen på 500 MB, eller den dagliga begränsningen för att reglera mängden data som samlas in dagligen. När gränsen för dagen är uppnådd stoppas datainsamlingen för att återupptas först nästa dag. Information om hur du granskar din data användning och uppdaterar till en annan pris nivå baserat på dina förväntade användnings mönster finns i [logga data användning och kostnad](logs/manage-cost-storage.md). 
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>Vilka är behållar tillstånden angivna i ContainerInventory-tabellen?
 
@@ -704,7 +704,7 @@ Logg samlingen från behållare i Kube-systemets namnrymd är inaktive rad som s
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hur gör jag för att du uppdatera omsagent till den senaste versionen?
 
-Information om hur du uppgraderar agenten finns i [agent hantering](insights/container-insights-manage-agent.md).
+Information om hur du uppgraderar agenten finns i [agent hantering](containers/container-insights-manage-agent.md).
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Hur gör jag för att aktivera loggning på flera rader?
 
@@ -732,7 +732,7 @@ En detaljerad översikt över problemet finns i följande [GitHub-länk](https:/
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hur gör jag för att lösa Azure AD-fel när jag aktiverar Live-loggar? 
 
-Följande fel kan visas: svars-URL: en som **anges i begäran matchar inte de svars-URL: er som har kon figurer ATS \> för programmet: <program-ID**. Lösningen för att lösa problemet finns i artikeln [så här visar du behållar data i real tid med Azure Monitor för behållare](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Följande fel kan visas: svars-URL: en som **anges i begäran matchar inte de svars-URL: er som har kon figurer ATS \> för programmet: <program-ID**. Lösningen för att lösa problemet finns i artikeln [så här visar du behållar data i real tid med Azure Monitor för behållare](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Varför kan jag inte uppgradera klustret efter onboarding?
 
@@ -740,19 +740,19 @@ Om du när du har aktiverat Azure Monitor för behållare för ett AKS-kluster t
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Vilka portar och domäner behöver jag öppna/tillåta för agenten?
 
-Se [nätverks brand Väggs kraven](insights/container-insights-onboard.md#network-firewall-requirements) för proxy-och brand Väggs konfigurations information som krävs för behållarens agent med Azure, Azure amerikanska myndigheter och Azure Kina 21Vianet-moln.
+Se [nätverks brand Väggs kraven](containers/container-insights-onboard.md#network-firewall-requirements) för proxy-och brand Väggs konfigurations information som krävs för behållarens agent med Azure, Azure amerikanska myndigheter och Azure Kina 21Vianet-moln.
 
 
 ## <a name="azure-monitor-for-vms"></a>Azure Monitor för virtuella datorer
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan jag publicera till en befintlig arbets yta?
-Om dina virtuella datorer redan är anslutna till en Log Analytics arbets yta kan du fortsätta att använda arbets ytan vid registrering till Azure Monitor for VMs, förutsatt att den finns i någon av de [regioner som stöds](insights/vminsights-configure-workspace.md#supported-regions).
+Om dina virtuella datorer redan är anslutna till en Log Analytics arbets yta kan du fortsätta att använda arbets ytan vid registrering till Azure Monitor for VMs, förutsatt att den finns i någon av de [regioner som stöds](vm/vminsights-configure-workspace.md#supported-regions).
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kan jag publicera till en ny arbets yta? 
 Om dina virtuella datorer inte är anslutna till en befintlig Log Analytics arbets yta måste du skapa en ny arbets yta för att lagra dina data. Att skapa en ny standard arbets yta görs automatiskt om du konfigurerar en enskild virtuell Azure-dator för Azure Monitor for VMs via Azure Portal.
 
-Om du väljer att använda den skriptbaserade metoden beskrivs de här stegen i artikeln [aktivera Azure Monitor for VMS med hjälp av Azure PowerShell eller Resource Manager-mall](./insights/vminsights-enable-powershell.md) . 
+Om du väljer att använda den skriptbaserade metoden beskrivs de här stegen i artikeln [aktivera Azure Monitor for VMS med hjälp av Azure PowerShell eller Resource Manager-mall](./vm/vminsights-enable-powershell.md) . 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Vad gör jag om min virtuella dator redan rapporterar till en befintlig arbets yta?
 Om du redan samlar in data från dina virtuella datorer kanske du redan har konfigurerat den för att rapportera data till en befintlig Log Analytics-arbetsyta.  Så länge arbets ytan finns i en av våra regioner som stöds, kan du aktivera Azure Monitor for VMs till den befintliga arbets ytan.  Om den arbets yta som du redan använder inte finns i någon av våra regioner som stöds, kan du inte publicera till Azure Monitor for VMs för tillfället.  Vi arbetar aktivt med att stödja ytterligare regioner.
@@ -771,9 +771,9 @@ Om du har initierat onboarding och ser meddelanden som anger att den virtuella d
 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Jag ser inte några eller några data i prestanda diagrammen för min virtuella dator
-Våra prestanda diagram har uppdaterats för att använda data som lagras i *InsightsMetrics* -tabellen.  Om du vill se data i dessa diagram måste du uppgradera för att använda den nya lösningen för VM-insikter.  Mer information finns i [vanliga frågor och svar om ga](insights/vminsights-ga-release-faq.md) .
+Våra prestanda diagram har uppdaterats för att använda data som lagras i *InsightsMetrics* -tabellen.  Om du vill se data i dessa diagram måste du uppgradera för att använda den nya lösningen för VM-insikter.  Mer information finns i [vanliga frågor och svar om ga](vm/vminsights-ga-release-faq.md) .
 
-Om du inte ser prestanda data i disk tabellen eller i vissa prestanda diagram, kanske prestanda räknarna inte konfigureras på arbets ytan. Kör följande [PowerShell-skript](./insights/vminsights-enable-powershell.md)för att lösa problemet.
+Om du inte ser prestanda data i disk tabellen eller i vissa prestanda diagram, kanske prestanda räknarna inte konfigureras på arbets ytan. Kör följande [PowerShell-skript](./vm/vminsights-enable-powershell.md)för att lösa problemet.
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hur skiljer sig Azure Monitor for VMs Map-funktionen från Tjänstkarta?

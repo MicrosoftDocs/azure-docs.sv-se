@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593095"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Skapa logikappsarbetsflöden från fördefinierade mallar
 
@@ -21,7 +21,7 @@ För att komma igång med att skapa arbets flöden snabbare, innehåller Logic A
 
 Här följer några Mallkategorier:
 
-| Malltyp | Beskrivning | 
+| Malltyp | Description | 
 | ------------- | ----------- | 
 | Mallar för företags moln | För integrering av Azure Blob, Dynamics CRM, Salesforce, Box och innehåller andra anslutningar för företagets moln behov. Du kan till exempel använda dessa mallar för att organisera affärs leads eller säkerhetskopiera företagets fildata. | 
 | Personliga produktivitets mallar | Förbättra den personliga produktiviteten genom att ställa in dagliga påminnelser, omvandla viktiga arbets objekt till att göra-listor och automatisera långvariga uppgifter till ett enda användar godkännande steg. | 
@@ -36,7 +36,7 @@ Om du inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt A
 
 1. Om du inte redan har gjort det loggar du in på [Azure Portal](https://portal.azure.com "Azure Portal").
 
-2. Välj **skapa en resurs**  >  **Enterprise-integration**  >  **Logic app**på huvud menyn i Azure.
+2. Välj **skapa en resurs**  >  **Enterprise-integration**  >  **Logic app** på huvud menyn i Azure.
 
    ![Azure Portal, Ny, Enterprise-integration, Logikapp](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -44,13 +44,13 @@ Om du inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt A
 
    ![Tillhandahålla information om logikappar](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | Inställningen | Värde | Beskrivning | 
+   | Inställning | Värde | Beskrivning | 
    | ------- | ----- | ----------- | 
    | **Namn** | *logikappens-namn* | Ange ett unikt namn för logikappen. | 
    | **Prenumeration** | *namn-på-Azure-prenumerationen* | Välj den Azure-prenumeration som du vill använda. | 
    | **Resursgrupp** | *namn-på-Azure-resursgruppen* | Skapa eller Välj en [Azure-resurs grupp](../azure-resource-manager/management/overview.md) för den här Logic-appen och organisera alla resurser som är associerade med den här appen. | 
    | **Plats** | *din-Azure-datacenter-region* | Välj datacenterregion för att distribuera logikappen, till exempel USA, västra. | 
-   | **Log Analytics** | **Av** (standard) eller **på** | Konfigurera [diagnostikloggning](../logic-apps/monitor-logic-apps-log-analytics.md) för din Logic app med hjälp av [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md). Kräver att du redan har en Log Analytics-arbetsyta. | 
+   | **Log Analytics** | **Av** (standard) eller **på** | Konfigurera [diagnostikloggning](../logic-apps/monitor-logic-apps-log-analytics.md) för din Logic app med hjälp av [Azure Monitor loggar](../azure-monitor/logs/log-query-overview.md). Kräver att du redan har en Log Analytics-arbetsyta. | 
    |||| 
 
 4. När du är klar väljer du **Fäst på instrumentpanelen**. På så sätt visas logikappen automatiskt på din Azure-instrumentpanel och öppnas efter distributionen. Välj **Skapa**.
@@ -73,7 +73,7 @@ Om du inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt A
 
    ![Välj en fördefinierad mall](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-6. Välj **Använd den här mallen**om du vill fortsätta med den valda mallen. 
+6. Välj **Använd den här mallen** om du vill fortsätta med den valda mallen. 
 
 7. Baserat på kopplingarna i mallen uppmanas du att göra något av följande:
 
@@ -114,7 +114,7 @@ Om du inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt A
 
    ![Välj en fördefinierad mall](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
-4. Välj **Använd den här mallen**om du vill fortsätta med den valda mallen. 
+4. Välj **Använd den här mallen** om du vill fortsätta med den valda mallen. 
 
 5. Baserat på kopplingarna i mallen uppmanas du att göra något av följande:
 

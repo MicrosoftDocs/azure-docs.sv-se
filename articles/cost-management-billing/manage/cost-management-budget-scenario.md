@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131470"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593385"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Hantera kostnader med Azure Budgets
 
 Kostnadskontroll är en viktig komponent om du ska kunna få ut mesta möjliga av dina investeringar i molnet. Det finns flera scenarier där kostnadsinsyn, rapportering och kostnadsbaserad orkestrering är kritiska komponenter för affärsverksamheten. [Azure Cost Management-API:erna](/rest/api/consumption/) omfattar ett antal API:er som ger stöd för dessa scenarier. API:erna returnerar användningsdata så att du kan visa detaljerad kostnadsinformation på instansnivå.
 
-Budgetar används ofta som en del av kostnadsstyrningen. I Azure kan du begränsa budgetomfånget. Du kan till exempel begränsa budgetvyn baserat på prenumeration, resursgrupper eller en samling resurser. Budget-API:et kan avisera dig via e-post när en budgettröskel nås, men du kan också använda [Azure Monitor-åtgärdsgrupper](../../azure-monitor/platform/action-groups.md) för att utlösa orkestrerade åtgärder när en budgethändelse inträffar.
+Budgetar används ofta som en del av kostnadsstyrningen. I Azure kan du begränsa budgetomfånget. Du kan till exempel begränsa budgetvyn baserat på prenumeration, resursgrupper eller en samling resurser. Budget-API:et kan avisera dig via e-post när en budgettröskel nås, men du kan också använda [Azure Monitor-åtgärdsgrupper](../../azure-monitor/alerts/action-groups.md) för att utlösa orkestrerade åtgärder när en budgethändelse inträffar.
 
 Ett exempel på ett vanligt budgetscenario för en kund som kör icke-kritiska arbetsbelastningar är när kunden vill hantera kostnaderna mot en budget och få en förutsägbar kostnad på månadsfakturan. Det här scenariot kräver viss kostnadsbaserad orkestrering av resurser som ingår i Azure-miljön. I det här scenariot är den månatliga budgeten 1 000 USD för prenumerationen. Meddelandetrösklar konfigureras också, som utlöser en del orkestreringar. Det här scenariot börjar med en kostnadströskel på 80 %, som gör att alla virtuella datorer i resursgruppen **Optional** (Valfri) stoppas. Därefter stoppas samtliga VM-instanser vid 100 %-kostnadströskeln.
 

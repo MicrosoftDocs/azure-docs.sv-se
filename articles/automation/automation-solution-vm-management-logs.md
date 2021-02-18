@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83827564"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593847"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Frågeloggar från Starta/stoppa virtuella datorer när de inte används
 
-Azure Automation vidarebefordrar två typer av poster till den länkade Log Analytics arbets ytan: jobb loggar och jobb strömmar. Den här artikeln granskar de data som är tillgängliga för [fråga](../azure-monitor/log-query/log-query-overview.md) i Azure Monitor.
+Azure Automation vidarebefordrar två typer av poster till den länkade Log Analytics arbets ytan: jobb loggar och jobb strömmar. Den här artikeln granskar de data som är tillgängliga för [fråga](../azure-monitor/logs/log-query-overview.md) i Azure Monitor.
 
 ## <a name="job-logs"></a>Jobbloggar
 
@@ -56,13 +56,13 @@ Azure Automation vidarebefordrar två typer av poster till den länkade Log Anal
 |StreamType | Typ av jobbström. Möjliga värden:<br>– Förlopp<br>- Utdata<br>- Varning<br>- Fel<br>- Felsökning<br>- Verbose|
 |Tid | Datum och tid då runbook-jobbet körs.|
 
-När du utför en loggs ökning som returnerar kategori poster för **JobLogs** eller **JobStreams**kan du välja vyn **JobLogs** eller **JobStreams** , som visar en uppsättning paneler som sammanfattar de uppdateringar som returneras av sökningen.
+När du utför en loggs ökning som returnerar kategori poster för **JobLogs** eller **JobStreams** kan du välja vyn **JobLogs** eller **JobStreams** , som visar en uppsättning paneler som sammanfattar de uppdateringar som returneras av sökningen.
 
 ## <a name="sample-log-searches"></a>Exempel på loggsökningar
 
 Följande tabell innehåller exempel på loggs ökningar för jobb poster som samlas in av Starta/stoppa virtuella datorer när de inte används.
 
-|Söka i data | Beskrivning|
+|Söka i data | Description|
 |----------|----------|
 |Hitta jobb för Runbook ScheduledStartStop_Parent som har slutförts | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Hitta jobb för Runbook-ScheduledStartStop_Parent som inte har slutförts | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
@@ -72,5 +72,5 @@ Följande tabell innehåller exempel på loggs ökningar för jobb poster som sa
 ## <a name="next-steps"></a>Nästa steg
 
 * Om du vill ställa in funktionen läser du [Konfigurera stoppa/starta virtuella datorer under låg belastning](automation-solution-vm-management-config.md).
-* Information om logg aviseringar under funktions distributionen finns i [Skapa logg aviseringar med Azure Monitor](../azure-monitor/platform/alerts-log.md).
+* Information om logg aviseringar under funktions distributionen finns i [Skapa logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md).
 * Information om hur du löser funktions fel finns i [felsöka starta/stoppa virtuella datorer när de inte används problem](troubleshoot/start-stop-vm.md).

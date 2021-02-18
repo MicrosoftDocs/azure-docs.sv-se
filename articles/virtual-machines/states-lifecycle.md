@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963303"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594356"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Livscykler och tillstånd för Virtual Machines
 
@@ -31,7 +31,7 @@ Följande tabell innehåller en beskrivning av varje instans tillstånd och indi
 :::row:::
    :::column span="":::
 
-   **Tillstånd**
+   **Stat**
    
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Här följer över gångs åtgärds tillstånd efter att plattformen har accepte
 :::row:::
    :::column span="":::
 
-   **Tillstånd**
+   **Stat**
    
    :::column-end:::
    :::column span="2":::
@@ -428,4 +428,4 @@ Om du vill hämta energi läget för alla virtuella datorer i din prenumeration 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om övervakning av den virtuella datorn finns i [övervaka virtuella datorer i Azure](../azure-monitor/insights/monitor-vm-azure.md).
+Mer information om övervakning av den virtuella datorn finns i [övervaka virtuella datorer i Azure](../azure-monitor/vm/monitor-vm-azure.md).
