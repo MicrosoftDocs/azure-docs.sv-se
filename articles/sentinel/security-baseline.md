@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ba15deed98af16b9b501439082ee6c9237fe20b7
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d95a2318d94f52352c9546aedc24d0111c5ba0a4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807215"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571659"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azures säkerhets bas linje för Azure Sentinel
 
@@ -37,9 +37,9 @@ Den här säkerhets bas linjen använder vägledning från [Azures säkerhets be
 
 - [Så här aktiverar du granskning i Azure Sentinel](resources.md)
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -73,7 +73,7 @@ Den här säkerhets bas linjen använder vägledning från [Azures säkerhets be
 
 **Vägledning**: i Azure Monitor anger du logg kvarhållningsperiod för Log Analytics arbets ytor som är kopplade till dina Azure Sentinel-arbetsytor enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -341,7 +341,7 @@ Dessutom är varje kontroll arbets bok en Azure-resurs och du kan tilldela rolle
 
 **Vägledning**: Azure Sentinel och Azure Monitor Log Analytics arbets ytor använder för närvarande Microsoft-hanterade nycklar för att kryptera alla inneslutna data i vila. Möjligheten att ta med din egen nyckel stöds ännu inte fullt ut för Sentinel, utan kommer att ligga inom en snar framtid.
 
-- [Översikt över Azure Monitor kundhanterad nyckel](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
+- [Översikt över Azure Monitor kundhanterad nyckel](../azure-monitor/logs/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Förstå Kundhanterade nycklar i Azure Sentinel (för hands version)](customer-managed-keys.md)
 

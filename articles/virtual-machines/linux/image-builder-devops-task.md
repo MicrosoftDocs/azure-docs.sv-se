@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6090adffbab7c8c57837b62e190f90c8ffb18e3d
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807622"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636432"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder-DevOps uppgift
 
@@ -21,7 +21,7 @@ Den här artikeln visar hur du använder en Azure DevOps-uppgift för att mata i
 ## <a name="devops-task-versions"></a>DevOps uppgifts versioner
 Det finns två Azure VM Image Builder-DevOps (AIB):
 
-* ["Stabil" AIB-uppgift](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)gör det möjligt för oss att införa de senaste uppdateringarna och funktionerna, så att kunderna kan testa dem innan vi befordrar den till uppgiften "stabil", ungefär en vecka senare. 
+* ["Stabil" AIB-uppgift](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder), det här är den senaste säkra build-versionen som har testats och telemetri visar inga problem. 
 
 
 * ["Instabil" AIB-uppgift](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)gör det möjligt för oss att införa de senaste uppdateringarna och funktionerna, tillåta kunder att testa dem innan vi befordrar den till "stabil"-uppgiften. Om det inte finns några rapporterade problem, och vår telemetri visar att det inte finns några problem, ungefär en vecka senare, kommer vi att lansera uppgifts koden till "stabil". 

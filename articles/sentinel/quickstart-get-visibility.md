@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 384c6df86b4aadb117bb31b4604fa4c2ffcda09a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188589"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570582"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Snabbstart: Kom igång med Azure Sentinel
 
@@ -52,9 +52,9 @@ Huvud delen av översikts sidan ger en överblick över en överskådlig säkerh
 
 ## <a name="use-built-in-workbooks"></a>Använda inbyggda arbets böcker<a name="dashboards"></a>
 
-Inbyggda arbets böcker ger integrerade data från dina anslutna data källor så att du kan få en djup inblick i de händelser som genereras i dessa tjänster. De inbyggda arbets böckerna omfattar Azure AD, Azure Activity events och on-premises, som kan vara data från Windows-händelser från servrar, från första part-aviseringar från alla utomstående, inklusive brand Väggs trafik loggar, Office 365 och oskyddade protokoll baserade på Windows-händelser. Arbets böckerna baseras på Azure Monitor arbets böcker för att ge dig bättre anpassningsbarhet och flexibilitet i utformningen av din egen arbets bok. Mer information finns i [arbets böcker](../azure-monitor/platform/workbooks-overview.md).
+Inbyggda arbets böcker ger integrerade data från dina anslutna data källor så att du kan få en djup inblick i de händelser som genereras i dessa tjänster. De inbyggda arbets böckerna omfattar Azure AD, Azure Activity events och on-premises, som kan vara data från Windows-händelser från servrar, från första part-aviseringar från alla utomstående, inklusive brand Väggs trafik loggar, Office 365 och oskyddade protokoll baserade på Windows-händelser. Arbets böckerna baseras på Azure Monitor arbets böcker för att ge dig bättre anpassningsbarhet och flexibilitet i utformningen av din egen arbets bok. Mer information finns i [arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
 
-1. Under **Inställningar** väljer du **arbets böcker**. Under **installerad** kan du se all din installerade arbets bok. Under **alla** kan du se hela galleriet med inbyggda arbets böcker som är tillgängliga för installation. 
+1. Under **Inställningar** väljer du **arbets böcker**. Under **installerad** kan du se all din installerade arbets bok. Under **Alla** kan du se hela galleriet med inbyggda arbetsböcker som är tillgängliga för installation. 
 2. Sök efter en speciell arbets bok för att se hela listan och en beskrivning av vad varje erbjudande har. 
 3. Förutsatt att du använder Azure AD för att komma igång med Azure Sentinel rekommenderar vi att du installerar minst följande arbets böcker:
    - **Azure AD**: Använd antingen eller båda av följande:
@@ -66,14 +66,14 @@ Inbyggda arbets böcker ger integrerade data från dina anslutna data källor s�
       ![Palo-instrument panel](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Du kan anpassa arbets böckerna antingen genom att redigera huvud knappen fråga ![ ](./media/qs-get-visibility/edit-query-button.png) . Du kan klicka på knappen ![ Log Analytics ](./media/qs-get-visibility/go-to-la-button.png) för att gå till [Log Analytics för att redigera frågan där](../azure-monitor/log-query/log-analytics-tutorial.md), och du kan välja ellipsen (...) och välja **Anpassa panel data**, vilket gör att du kan redigera huvud tids filtret, eller ta bort de enskilda panelerna från arbets boken.
+Du kan anpassa arbets böckerna antingen genom att redigera huvud knappen fråga ![ ](./media/qs-get-visibility/edit-query-button.png) . Du kan klicka på knappen ![ Log Analytics ](./media/qs-get-visibility/go-to-la-button.png) för att gå till [Log Analytics för att redigera frågan där](../azure-monitor/logs/log-analytics-tutorial.md), och du kan välja ellipsen (...) och välja **Anpassa panel data**, vilket gör att du kan redigera huvud tids filtret, eller ta bort de enskilda panelerna från arbets boken.
 
-Mer information om hur du arbetar med frågor finns i [Självstudier: visuella data i Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+Mer information om hur du arbetar med frågor finns i [Självstudier: visuella data i Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Lägg till en ny panel
 
 Om du vill lägga till en ny panel kan du lägga till den i en befintlig arbets bok, antingen en som du skapar eller en inbyggd Azure Sentinel-arbetsbok. 
-1. I Log Analytics skapar du en panel med hjälp av anvisningarna i [Självstudier: visuella data i Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+1. I Log Analytics skapar du en panel med hjälp av anvisningarna i [Självstudier: visuella data i Log Analytics](../azure-monitor/visualize/tutorial-logs-dashboards.md). 
 2. När panelen har skapats väljer du den arbets bok som du vill att panelen ska visas under **PIN-kod**.
 
 ## <a name="create-new-workbooks"></a>Skapa nya arbets böcker

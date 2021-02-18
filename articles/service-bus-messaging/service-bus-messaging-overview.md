@@ -2,13 +2,13 @@
 title: Översikt över Azure Service Bus-meddelanden | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Service Bus, en fullständigt hanterad meddelande Broker för företags integrering.
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219170"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570475"
 ---
 # <a name="what-is-azure-service-bus"></a>Vad är Azure Service Bus?
 Microsoft Azure Service Bus är en fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och publicera prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra, vilket ger följande fördelar:
@@ -118,11 +118,10 @@ Med batching på klient sidan kan en kö-eller ämnes klient samla en uppsättni
 En transaktion grupper två eller flera åtgärder tillsammans i ett *körnings område*. Med Service Bus kan du gruppera åtgärder mot flera meddelande enheter inom omfånget för en enskild transaktion. En Message-entitet kan vara en kö, ett ämne eller en prenumeration. Mer information finns i [Översikt över Service Bus transaktions bearbetning](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Ta bort vid inaktivitet
-
-Vid borttagning vid inaktivitet kan du ange ett inaktivt intervall efter vilket en kö eller ämnes prenumeration tas bort automatiskt. Minimilängden är 5 minuter. Mer information finns i [egenskapen QueueDescription. AutoDeleteOnIdle](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Vid borttagning vid inaktivitet kan du ange ett inaktivt intervall efter vilket en kö eller ämnes prenumeration tas bort automatiskt. Minimilängden är 5 minuter. 
 
 ### <a name="duplicate-detection"></a>Dubblettidentifiering
-Funktionen för dubblettidentifiering gör att avsändaren kan skicka samma meddelande igen och för att koordinatorn ska kunna släppa en potentiell dubblett. Dubblettidentifiering baseras på spårning av `message-id` egenskapen för ett meddelande, vilket innebär att programmet måste ta hand om att använda samma värde när meddelandet skickas igen, vilket kan vara direkt härlett från vissa programspecifika sammanhang. Mer information finns i [dubblettidentifiering](duplicate-detection.md).
+Funktionen för dubblettidentifiering gör att avsändaren kan skicka samma meddelande igen och för att koordinatorn ska kunna släppa en potentiell dubblett. Mer information finns i [dubblettidentifiering](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Geohaveriberedskap
 

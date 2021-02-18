@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586558"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576773"
 ---
 # <a name="monitor-azure-file-sync"></a>Övervaka Azure File Sync
 
@@ -42,7 +42,7 @@ Mått för Azure File Sync är aktiverade som standard och skickas till Azure Mo
 
 Följande mått för Azure File Sync är tillgängliga i Azure Monitor:
 
-| Måttnamn | Beskrivning |
+| Måttnamn | Description |
 |-|-|
 | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning).<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Återkalla moln nivå | Storlek på data som har återkallats.<br><br>**Obs!** det här måttet tas bort i framtiden. Använd storleks måttet återkalla storlek på moln nivå för att övervaka storleken på data som återkallas.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn |
@@ -56,7 +56,7 @@ Följande mått för Azure File Sync är tillgängliga i Azure Monitor:
 
 ### <a name="alerts"></a>Aviseringar
 
-Aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. Mer information om hur du konfigurerar aviseringar i Azure Monitor finns i [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/platform/alerts-overview.md).
+Aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. Mer information om hur du konfigurerar aviseringar i Azure Monitor finns i [Översikt över aviseringar i Microsoft Azure](../../azure-monitor/alerts/alerts-overview.md).
 
 **Skapa aviseringar för Azure File Sync**
 
@@ -118,7 +118,7 @@ Om du vill visa hälso tillståndet för en **Server slut punkt** i portalen gå
 
 - Följande mått diagram visas i Storage Sync service portal:
 
-  | Måttnamn | Beskrivning | Blad namn |
+  | Måttnamn | Description | Blad namn |
   |-|-|-|
   | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning) | Synkronisera grupp, Server slut punkt |
   | Återkalla moln nivå | Storlek på data som återkallas | Registrerade servrar |
@@ -178,7 +178,7 @@ Använd Azure File Sync prestanda räknare på servern för att övervaka synkro
 
 Följande prestanda räknare för Azure File Sync är tillgängliga i prestanda övervakaren:
 
-| Object\Counter-namn för prestanda | Beskrivning |
+| Object\Counter-namn för prestanda | Description |
 |-|-|
 | AFS-byte Transferred\Downloaded byte/s | Antal hämtade byte per sekund. |
 | AFS-byte Transferred\Uploaded byte/s | Antal överförda byte per sekund. |

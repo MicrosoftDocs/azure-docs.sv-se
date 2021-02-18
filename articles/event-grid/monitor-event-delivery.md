@@ -3,12 +3,12 @@ title: Visa Azure Event Grid mått och ange aviseringar
 description: Den här artikeln beskriver hur du använder Azure Portal för att visa mått för Azure Event Grid ämnen och prenumerationer och skapa aviseringar på dem.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008964"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577408"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Övervaka Event Grid meddelande leverans 
 Den här artikeln beskriver hur du använder portalen för att se mått för Event Grid ämnen och prenumerationer och hur du skapar aviseringar. 
@@ -52,7 +52,7 @@ Du kan skapa diagram med mått som stöds med hjälp av fliken **mått** på sid
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Ämne – mått Sidan":::
 
-Mer information om mått finns [i mått i Azure Monitor](../azure-monitor/platform/data-platform-metrics.md)
+Mer information om mått finns [i mått i Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md)
 
 Se till exempel mått diagrammet för måttet **publicerade händelser** .
 
@@ -91,7 +91,7 @@ Du kan skapa diagram med mått som stöds med hjälp av fliken **mått** på sid
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="System ämne – mått Sidan":::
 
-Mer information om mått finns [i mått i Azure Monitor](../azure-monitor/platform/data-platform-metrics.md)
+Mer information om mått finns [i mått i Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

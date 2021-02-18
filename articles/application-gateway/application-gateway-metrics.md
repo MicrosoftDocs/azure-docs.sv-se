@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: surmb
-ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437073"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576120"
 ---
 # <a name="metrics-for-application-gateway"></a>Mått för Application Gateway
 
-Application Gateway publicerar data punkter, som kallas mått, för att [Azure Monitor](../azure-monitor/overview.md) för prestanda för dina Application Gateway-och Server dels instanser. Dessa mått är numeriska värden i en ordnad uppsättning av Time Series-data som beskriver någon aspekt av programgatewayen vid en viss tidpunkt. Om det finns begär Anden som flödar genom Application Gateway, mäter den och skickar sina mått i intervall om 60 sekunder. Om det inte finns några begär Anden som flödar genom Application Gateway eller inga data för ett mått, rapporteras inte måttet. Mer information finns i [Azure Monitor mått](../azure-monitor/platform/data-platform-metrics.md).
+Application Gateway publicerar data punkter, som kallas mått, för att [Azure Monitor](../azure-monitor/overview.md) för prestanda för dina Application Gateway-och Server dels instanser. Dessa mått är numeriska värden i en ordnad uppsättning av Time Series-data som beskriver någon aspekt av programgatewayen vid en viss tidpunkt. Om det finns begär Anden som flödar genom Application Gateway, mäter den och skickar sina mått i intervall om 60 sekunder. Om det inte finns några begär Anden som flödar genom Application Gateway eller inga data för ett mått, rapporteras inte måttet. Mer information finns i [Azure Monitor mått](../azure-monitor/essentials/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Mått som stöds av Application Gateway v2 SKU
 
@@ -200,7 +200,7 @@ I följande bild visas ett exempel med tre mått som visas under de senaste 30 m
 
 :::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="Metric-vy." lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-Om du vill se en aktuell lista över mått, se [mått som stöds med Azure Monitor](../azure-monitor/platform/metrics-supported.md).
+Om du vill se en aktuell lista över mått, se [mått som stöds med Azure Monitor](../azure-monitor/essentials/metrics-supported.md).
 
 ### <a name="alert-rules-on-metrics"></a>Aviserings regler för mått
 
@@ -230,9 +230,9 @@ En lista med aviseringar visas när du har skapat en mått-avisering. Den ger en
 
 ![Lista över aviseringar och regler][9]
 
-Mer information om aviserings aviseringar finns i [ta emot aviseringar](../azure-monitor/platform/alerts-overview.md).
+Mer information om aviserings aviseringar finns i [ta emot aviseringar](../azure-monitor/alerts/alerts-overview.md).
 
-Om du vill veta mer om webhookar och hur du kan använda dem med aviseringar kan du gå till [Konfigurera en webhook på en Azure Metric-avisering](../azure-monitor/platform/alerts-webhooks.md).
+Om du vill veta mer om webhookar och hur du kan använda dem med aviseringar kan du gå till [Konfigurera en webhook på en Azure Metric-avisering](../azure-monitor/alerts/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

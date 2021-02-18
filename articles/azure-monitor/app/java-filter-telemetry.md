@@ -6,16 +6,18 @@ ms.date: 3/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 71858be97404344bad88ea20e31b17fa44f669a2
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 35a95ac32fc4390e08d3c7fee2b9f9ff52202e4b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131193"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573823"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrera telemetri i din Java-webbapp
 
 > [!IMPORTANT]
+> Den metod som beskrivs i det här dokumentet rekommenderas inte längre.
+>
 > Den rekommenderade metoden för att övervaka Java-program är att använda den automatiska Instrumentation utan att ändra koden. Följ rikt linjerna för [Application Insights Java 3,0-agenten](./java-in-process-agent.md).
 
 Filter är ett sätt att välja telemetri som din [Java-webbapp skickar till Application Insights](java-get-started.md). Det finns några färdiga filter som du kan använda och du kan också skriva egna anpassade filter.

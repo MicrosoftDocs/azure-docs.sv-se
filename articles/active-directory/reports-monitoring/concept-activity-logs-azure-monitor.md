@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586201"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571266"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-aktivitetsloggar i Azure Monitor
 
@@ -103,7 +103,7 @@ Följande tabell innehåller uppskattade kostnader per månad för en grundlägg
 | Loggkategori | Antal användare | Händelser per sekund | Händelser per femminutsintervall | Volym per intervall | Meddelanden per intervall | Meddelanden per månad | Kostnad per månad (uppskattad) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Granska | 100 000 | 18 | 5 400 | 10,8 MB | 43 | 371 520 | 10,83 USD |
-| Granska | 1 000 | 0,1 | 52 | 104 KB | 1 | 8 640 | 10,80 USD |
+| Granska | 1 000 | 0.1 | 52 | 104 KB | 1 | 8 640 | 10,80 USD |
 | Inloggningar | 100 000 | 18000 | 5 400 000 | 10,8 GB | 42188 | 364 504 320 | $23,9 |  
 | Inloggningar | 1 000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
@@ -126,7 +126,7 @@ Följande tabell innehåller uppskattade kostnader per månad för en grundlägg
 
 
 
-Om du vill granska kostnader som rör hantering av Azure Monitor loggar, se [hantera kostnader genom att kontrol lera data volymer och kvarhållning i Azure Monitor loggar](../../azure-monitor/platform/manage-cost-storage.md).
+Om du vill granska kostnader som rör hantering av Azure Monitor loggar, se [hantera kostnader genom att kontrol lera data volymer och kvarhållning i Azure Monitor loggar](../../azure-monitor/logs/manage-cost-storage.md).
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
@@ -180,7 +180,7 @@ Det här avsnittet innehåller svar på vanliga frågor och beskriver kända pro
 
 **F: Vilka SIEM-verktyg stöds för närvarande?** 
 
-**A**: **a**: Azure Monitor stöds för närvarande av [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm och Logz.io. Mer information om hur anslutningsapparna fungerar finns på sidan om att [strömma Azure-övervakningsdata till en händelsehubb för användning av ett externt verktyg](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+**A**: **a**: Azure Monitor stöds för närvarande av [Splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [ArcSight](./howto-integrate-activity-logs-with-arcsight.md), LogRhythm och Logz.io. Mer information om hur anslutningsapparna fungerar finns på sidan om att [strömma Azure-övervakningsdata till en händelsehubb för användning av ett externt verktyg](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md).
 
 ---
 

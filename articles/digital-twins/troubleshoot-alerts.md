@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 057a1b08095a71e2fca6119f5b63bfdc787eea88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616610"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594876"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Felsöka Azure Digitals dubbla: aviseringar
 
 Azure Digitals flätar samlar in [Mät värden](troubleshoot-metrics.md) för din tjänst instans som ger information om statusen för dina resurser. Du kan använda dessa mått för att utvärdera den övergripande hälso statusen för Azure Digital-tjänster och de resurser som är anslutna till den.
 
-**Aviseringar** proaktivt meddela dig när viktiga villkor finns i dina Mät data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Du kan läsa mer om aviseringar i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+**Aviseringar** proaktivt meddela dig när viktiga villkor finns i dina Mät data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Du kan läsa mer om aviseringar i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="turn-on-alerts"></a>Aktivera aviseringar
 
@@ -38,7 +38,7 @@ Så här aktiverar du aviseringar för din Azure Digital-instansen:
 
 :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Skärm bild som visar sidan Skapa aviserings regel med avsnitt för omfattning, villkor, åtgärds grupp och aviserings regel information" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
-En guidad genom gång av hur du fyller i de här fälten finns i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/platform/alerts-overview.md). Nedan visas några exempel på hur stegen kommer att se ut för Azure Digital-dubbla.
+En guidad genom gång av hur du fyller i de här fälten finns i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md). Nedan visas några exempel på hur stegen kommer att se ut för Azure Digital-dubbla.
 
 ### <a name="select-conditions"></a>Välj villkor
 
@@ -58,6 +58,6 @@ När du har ställt in aviseringar visas de upp på *aviserings* sidan för din 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om aviseringar med Azure Monitor finns i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/platform/alerts-overview.md).
+* Mer information om aviseringar med Azure Monitor finns i [*Översikt över aviseringar i Microsoft Azure*](../azure-monitor/alerts/alerts-overview.md).
 * Information om Azure Digitals dubbla mått finns i [*fel sökning: Visa mått med Azure Monitor*](troubleshoot-metrics.md).
 * Information om hur du aktiverar diagnostikloggning för dina mått finns i [*fel sökning: Konfigurera diagnostik*](troubleshoot-diagnostics.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 2b66663c9ee8033bcb12bfac57964ea0eafecdac
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526678"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594174"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurera lokala mått och loggar för Azure API Management egen värd-Gateway
 
@@ -204,7 +204,7 @@ Den egen värdbaserade gatewayen matar ut loggar till `stdout` och `stderr` som 
 kubectl logs <pod-name>
 ```
 
-Om din egen värdbaserade Gateway distribueras i Azure Kubernetes-tjänsten kan du aktivera [Azure Monitor för behållare](../azure-monitor/insights/container-insights-overview.md) för att samla in `stdout` och `stderr` från dina arbets belastningar och visa loggarna i Log Analytics. 
+Om din egen värdbaserade Gateway distribueras i Azure Kubernetes-tjänsten kan du aktivera [Azure Monitor för behållare](../azure-monitor/containers/container-insights-overview.md) för att samla in `stdout` och `stderr` från dina arbets belastningar och visa loggarna i Log Analytics. 
 
 Den egna värdbaserade gatewayen stöder också ett antal protokoll `localsyslog` , inklusive, `rfc5424` och `journal` . I tabellen nedan sammanfattas alla alternativ som stöds. 
 

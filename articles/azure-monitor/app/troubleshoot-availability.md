@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546764"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583725"
 ---
 # <a name="troubleshooting"></a>Felsökning
 
@@ -62,7 +62,7 @@ Kontrol lera den klassiska aviserings konfigurationen för att bekräfta att dit
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Jag fick inte webhook-meddelandet?
 
-Kontrol lera att det program som tar emot webhook-meddelandet är tillgängligt och att webhook-begärandena bearbetas. Se [det här](../platform/alerts-log-webhook.md) för mer information.
+Kontrol lera att det program som tar emot webhook-meddelandet är tillgängligt och att webhook-begärandena bearbetas. Se [det här](../alerts/alerts-log-webhook.md) för mer information.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Jag får 403 förbjudna fel, vad innebär det?
 
@@ -113,7 +113,7 @@ Detta stöds inte för närvarande.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Vem får aviseringarna (klassisk)?
 
-Det här avsnittet gäller endast för klassiska varningar och hjälper dig att optimera dina aviserings aviseringar så att endast dina mottagare får aviseringar. Om du vill veta mer om skillnaden mellan [klassiska aviseringar](../platform/alerts-classic.overview.md)och den nya aviserings upplevelsen läser du [artikeln aviserings översikt](../platform/alerts-overview.md). Om du vill kontrol lera aviseringar i den nya aviserings upplevelsen använder du [Åtgärds grupper](../platform/action-groups.md).
+Det här avsnittet gäller endast för klassiska varningar och hjälper dig att optimera dina aviserings aviseringar så att endast dina mottagare får aviseringar. Om du vill veta mer om skillnaden mellan [klassiska aviseringar](../alerts/alerts-classic.overview.md)och den nya aviserings upplevelsen läser du [artikeln aviserings översikt](../alerts/alerts-overview.md). Om du vill kontrol lera aviseringar i den nya aviserings upplevelsen använder du [Åtgärds grupper](../alerts/action-groups.md).
 
 * Vi rekommenderar att du använder vissa mottagare för klassisk aviserings aviseringar.
 
@@ -124,7 +124,7 @@ Det här avsnittet gäller endast för klassiska varningar och hjälper dig att 
 > [!NOTE]
 > Om du för närvarande använder alternativet **Mass-/grupp** incheckning, och inaktiverar det, kommer du inte att kunna återställa ändringen.
 
-Använd aviseringarna nya aviseringar/nästan-real tid om du behöver meddela användarna baserat på deras roller. Med [Åtgärds grupper](../platform/action-groups.md)kan du konfigurera e-postaviseringar till användare med någon av rollerna deltagare/ägare/läsare (som inte kombineras tillsammans som ett enda alternativ).
+Använd aviseringarna nya aviseringar/nästan-real tid om du behöver meddela användarna baserat på deras roller. Med [Åtgärds grupper](../alerts/action-groups.md)kan du konfigurera e-postaviseringar till användare med någon av rollerna deltagare/ägare/läsare (som inte kombineras tillsammans som ett enda alternativ).
 
 ## <a name="next-steps"></a>Nästa steg
 

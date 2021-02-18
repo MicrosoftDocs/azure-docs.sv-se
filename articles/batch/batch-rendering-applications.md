@@ -3,12 +3,12 @@ title: Återge program
 description: Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
 ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362241"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635344"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Förinstallerade program på VM-avbildningar för batch-rendering
 
@@ -20,7 +20,7 @@ Vissa program stöder bara Windows, men de flesta stöds i både Windows och Lin
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Program på den senaste CentOS 7-åter givnings avbildningen
 
-Följande lista gäller CentOS rendering-avbildningen, version 1.1.7.
+Följande lista gäller CentOS rendering-avbildningen, version 1.2.0.
 
 * Autodesk Maya I/O 2020 uppdatering 4,6
 * Autodesk Arnold för Maya 2020 (Arnold version 6.2.0.0) MtoA-4.2.0-2020

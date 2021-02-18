@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570991"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB utan server (för hands version)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,7 +64,7 @@ När du bläddrar i fönstret **mått** i ditt konto hittar du ett diagram med n
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="Diagram över förbrukade begär ande enheter" border="false":::
 
-Du kan hitta samma diagram när du använder Azure Monitor, enligt beskrivningen [här](monitor-request-unit-usage.md). Observera att Azure Monitor låter dig konfigurera [aviseringar](../azure-monitor/platform/alerts-metric-overview.md), som kan användas för att meddela dig när den begärda enhets förbrukningen har passerat ett visst tröskelvärde.
+Du kan hitta samma diagram när du använder Azure Monitor, enligt beskrivningen [här](monitor-request-unit-usage.md). Observera att Azure Monitor låter dig konfigurera [aviseringar](../azure-monitor/alerts/alerts-metric-overview.md), som kan användas för att meddela dig när den begärda enhets förbrukningen har passerat ett visst tröskelvärde.
 
 ## <a name="performance"></a><a id="performance"></a>Prestanda
 

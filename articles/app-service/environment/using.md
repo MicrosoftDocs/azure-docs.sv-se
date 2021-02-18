@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209737"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586407"
 ---
 # <a name="using-an-app-service-environment"></a>Använda en App Service-miljön
 
@@ -143,7 +143,7 @@ Om du integrerar med Log Analytics kan du se loggarna genom att välja **loggar*
 
 **Skapa en avisering**
 
-Om du vill skapa en avisering mot loggarna följer du anvisningarna i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/platform/alerts-log.md). I korthet:
+Om du vill skapa en avisering mot loggarna följer du anvisningarna i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../../azure-monitor/alerts/alerts-log.md). I korthet:
 
 * Öppna sidan aviseringar i ASE-portalen
 * Välj **ny aviserings regel**
@@ -206,4 +206,4 @@ Så här tar du bort en ASE:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

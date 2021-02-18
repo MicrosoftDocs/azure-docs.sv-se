@@ -3,12 +3,12 @@ title: Livs cykel hantering av virtuella Azure VMware-lösningar
 description: Lär dig att hantera alla aspekter av livs cykeln för dina virtuella Azure VMware-lösningar med Microsoft Azure inbyggda verktyg.
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988536"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572209"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Livs cykel hantering av virtuella Azure VMware-lösningar
 
@@ -45,9 +45,9 @@ Följande diagram visar den integrerade övervaknings arkitekturen för virtuell
 Om du är nybörjare på Azure eller inte är bekant med någon av de tjänster som tidigare nämnts, kan du läsa följande artiklar:
 
 - [Översikt över autentisering av Automation-konto](../automation/automation-security-overview.md)
-- [Designa Azure Monitor loggar distribution](../azure-monitor/platform/design-logs-deployment.md) och [Azure Monitor](../azure-monitor/overview.md)
+- [Designa Azure Monitor loggar distribution](../azure-monitor/logs/design-logs-deployment.md) och [Azure Monitor](../azure-monitor/overview.md)
 - [Planerings](../security-center/security-center-planning-and-operations-guide.md) -och [plattformar som stöds](../security-center/security-center-os-coverage.md) för Azure Security Center
-- [Aktivera Azure Monitor for VMs översikt](../azure-monitor/insights/vminsights-enable-overview.md)
+- [Aktivera Azure Monitor for VMs översikt](../azure-monitor/vm/vminsights-enable-overview.md)
 - [Vad är Azure Arc-aktiverade servrar?](../azure-arc/servers/overview.md) och [Vad är Azure Arc aktiverat Kubernetes?](../azure-arc/kubernetes/overview.md)
 - [Översikt över Uppdateringshantering](../automation/update-management/overview.md)
 
@@ -59,7 +59,7 @@ Azure Uppdateringshantering i Azure Automation hanterar uppdateringar av operati
 
 1.  Innan du kan lägga till Log Analytics i Azure Uppdateringshantering måste du först [skapa ett Azure Automation-konto](../automation/automation-create-standalone-account.md). Om du föredrar att skapa ditt konto med hjälp av en mall kan du läsa [skapa ett Automation-konto med hjälp av en Azure Resource Manager-mall](../automation/quickstart-create-automation-account-template.md).
 
-2. **Log Analytics arbets ytan** möjliggör insamling av logg samling och prestanda räknare med hjälp av Log Analytics-agenten eller-tilläggen. Om du vill skapa din Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Om du vill kan du också skapa en arbets yta via [CLI](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)eller [Azure Resource Manager mall](../azure-monitor/samples/resource-manager-workspace.md).
+2. **Log Analytics arbets ytan** möjliggör insamling av logg samling och prestanda räknare med hjälp av Log Analytics-agenten eller-tilläggen. Om du vill skapa din Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md). Om du vill kan du också skapa en arbets yta via [CLI](../azure-monitor/logs/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)eller [Azure Resource Manager mall](../azure-monitor/logs/resource-manager-workspace.md).
 
 3. Om du vill aktivera Azure Uppdateringshantering för dina virtuella datorer, se [aktivera uppdateringshantering från ett Automation-konto](../automation/update-management/enable-from-automation-account.md). I processen länkar du Log Analytics arbets ytan till ditt Automation-konto. 
  
@@ -99,22 +99,14 @@ Virtuella Azure VMware-lösningar kan övervakas via Log Analytics agent (kallas
 
 Azure Monitor är en omfattande lösning för att samla in, analysera och agera på telemetri från molnet och lokala miljöer. Den kräver ingen distribution. Med Azure Monitor kan du övervaka gäst operativ systemets prestanda och identifiera och mappa program beroenden för Azure VMware-lösningar eller lokala virtuella datorer.
 
-- Med Azure Monitor kan du samla in data från olika källor för att övervaka och analysera. Mer information finns i [källor för övervaknings data för Azure Monitor](../azure-monitor/platform/data-sources.md).
+- Med Azure Monitor kan du samla in data från olika källor för att övervaka och analysera. Mer information finns i [källor för övervaknings data för Azure Monitor](../azure-monitor/agents/data-sources.md).
 
-- Samla in olika typer av data för analys, visualisering och aviseringar. Mer information finns i [Azure Monitor data plattform](../azure-monitor/platform/data-platform.md).
+- Samla in olika typer av data för analys, visualisering och aviseringar. Mer information finns i [Azure Monitor data plattform](../azure-monitor/data-platform.md).
 
-- Om du vill konfigurera Azure Monitor med din Log Analytics arbets yta, se [konfigurera Log Analytics arbets yta för Azure Monitor for VMS](../azure-monitor/insights/vminsights-configure-workspace.md).
+- Om du vill konfigurera Azure Monitor med din Log Analytics arbets yta, se [konfigurera Log Analytics arbets yta för Azure Monitor for VMS](../azure-monitor/vm/vminsights-configure-workspace.md).
 
 - Du kan skapa aviserings regler för att identifiera problem i miljön, t. ex. hög användning av resurser, saknade korrigeringar, ont om disk utrymme och pulsslag för dina virtuella datorer. Du kan också ställa in ett automatiserat svar på identifierade händelser genom att skicka en avisering till ITSM-verktyg (IT Service Management). Aviserings identifiering kan också skickas via e-post. Information om hur du skapar sådana regler finns i:
-    - [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-metric.md).
-    - [Skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-log.md).
-    - [Åtgärds regler](../azure-monitor/platform/alerts-action-rules.md) för att ange automatiserade åtgärder och meddelanden.
-    - [Anslut Azure till ITSM-verktyg med anslutningsprogram för hantering av IT-tjänster (ITSM)](../azure-monitor/platform/itsmc-overview.md).
-    
- ## <a name="next-steps"></a>Nästa steg
-
-Nu när du har använt Azures inbyggda verktyg för att hantera dina virtuella datorer i Azure VMware-lösningen under hela livs cykeln, kanske du vill lära dig mer om:
-
-- [Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center](azure-security-integration.md).
-- Konfigurera [Azure Backup Server för Azure VMware-lösning](set-up-backup-server-for-azure-vmware-solution.md).
-- [Integrera Azure VMware-lösningen i en hubb och eker-arkitektur](concepts-hub-and-spoke.md).
+    - [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
+    - [Skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-log.md).
+    - [Åtgärds regler](../azure-monitor/alerts/alerts-action-rules.md) för att ange automatiserade åtgärder och meddelanden.
+    - [Anslut Azure till ITSM-verktyg med anslutningsprogram för hantering av IT-tjänster (ITSM)](../azure-monitor/alerts/itsmc-overview.md).
