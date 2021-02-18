@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9f54a505d63660fb7c97b3226df4c232e48125e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527368"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093421"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Skapa filter med Media Services .NET SDK
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-När du levererar ditt innehåll till kunder (strömma live-händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Med Azure Media Services kan du definiera konto filter och till gångs filter för ditt innehåll. 
+När du levererar ditt innehåll till kunder (strömma live-händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Med Azure Media Services kan du definiera konto filter och till gångs filter för ditt innehåll.
 
 Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-overview.md) och [filter](filters-concept.md).
 

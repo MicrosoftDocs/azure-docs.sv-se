@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 320eaaf9e80fcbfc65aa311c983ecbc9beb31cd7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 66a2bf17ac7cb94dc8e1429d662d7bfe14aa196a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254214"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096306"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Självstudie: Migrera PostgreSQL till Azure DB för PostgreSQL online med DMS via Azure Portal
 
@@ -59,8 +59,8 @@ För att slutföra den här kursen behöver du:
     >
     > Den här konfigurationen är nödvändig eftersom Azure Database Migration Service saknar Internet anslutning.
 
-* Se till att reglerna för nätverks säkerhets gruppen (NSG) för ditt virtuella nätverk inte blockerar följande utgående kommunikations portar till Azure Database Migration Service: 443, 53, 9354, 445, 12000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* Konfigurera din [Windows-brandvägg för databasmotoråtkomst](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules).
+* Se till att reglerna för nätverks säkerhets gruppen (NSG) för ditt virtuella nätverk inte blockerar den utgående porten 443 för ServiceTag för Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Konfigurera din [Windows-brandvägg för databasmotoråtkomst](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öppna Windows-brandväggen för att tillåta Azure Database Migration Service att få åtkomst till PostgreSQL-servern, som standard är TCP-port 5432.
 * När du använder en brandväggsinstallation framför dina källdatabaser kanske du måste lägga till brandväggsregler för att tillåta Azure Database Migration Service att komma åt källdatabaserna för migrering.
 * Skapa en [brand Väggs regel](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules) på server nivå för Azure Database for PostgreSQL för att tillåta Azure Database migration service åtkomst till mål databaserna. Ange under nätets intervall för det virtuella nätverk som används för Azure Database Migration Service.

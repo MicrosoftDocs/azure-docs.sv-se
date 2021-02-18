@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897433"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096410"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Hantera åtkomst till faktureringsinformation för Azure
 
@@ -40,7 +40,7 @@ Kontoadministratören kan ge andra åtkomst till faktureringsinformationen i Azu
 
 Dessa roller har åtkomst till faktureringsinformation i [Azure-portalen](https://portal.azure.com/). Personer som har tilldelats dessa roller kan även använda [API:er för fakturering](consumption-api-overview.md#usage-details-api) för att programmatiskt hämta fakturor och användningsinformation.
 
-Information om tilldelning av roller finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ** Om du är EA-kund kan en kontoägare tilldela rollen ovan till andra användare i sitt team. Men för att dessa användare ska kunna visa faktureringsinformation måste företagsadministratören aktivera AO-visningsdebitering i Enterprise-portalen.
 
@@ -105,7 +105,7 @@ Funktionen Faktureringsläsare är i förhandsversion och har ännu inte stöd f
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Användare i andra roller, till exempel Ägare eller Deltagare, kan inte bara komma åt faktureringsinformation, utan även Azure-tjänster. Information om hantering av dessa roller finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+- Användare i andra roller, till exempel Ägare eller Deltagare, kan inte bara komma åt faktureringsinformation, utan även Azure-tjänster. Information om hur du hanterar dessa roller finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 - Mer information om roller finns i [Inbyggda roller i Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss.

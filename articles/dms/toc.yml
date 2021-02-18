@@ -37,10 +37,8 @@
   items:
     - name: Migrera SQL Server
       items:
-        - name: till Azure SQL Database (offline)
+        - name: för att Azure SQL Database
           href: tutorial-sql-server-to-azure-sql.md
-        - name: till Azure SQL Database (online)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: till Azure SQL-hanterad instans (offline)
           href: tutorial-sql-server-to-managed-instance.md
         - name: till Azure SQL-hanterad instans (online)

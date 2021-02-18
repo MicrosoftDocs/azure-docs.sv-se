@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc3417284137cdbc9f93ac02f825820bfe744843
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 04508f1aa8ee9d6b4f730f57c60d959fab209122
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107506"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093798"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Windows-dator för åtkomst till Azure Cosmos DB
 
@@ -38,7 +38,7 @@ I den här självstudien lär du dig att komma åt Cosmos DB med en systemtillde
 
 - Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
 - Om du inte har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
-- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Information om rolltilldelning finns i [Använda rollbaserad åtkomstkontroll för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md).
+- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
 - Installera den senaste versionen av [Azure PowerShell](/powershell/azure/install-az-ps)
 - Du behöver också en virtuell Windows-dator som har systemtilldelade hanterade identiteter aktiverade.
   - Om du behöver skapa en virtuell dator för den här självstudien kan du följa artikeln [skapa en virtuell dator med systemtilldelad identitet aktive rad](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)

@@ -14,33 +14,31 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 75df01ff65a0910dab140942b520978cd7728775
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897585"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093433"
 ---
 # <a name="creating-filters-with-cli"></a>Skapa filter med CLI
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-När du levererar ditt innehåll till kunder (strömma live-händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Med Azure Media Services kan du definiera konto filter och till gångs filter för ditt innehåll. 
+När du levererar ditt innehåll till kunder (strömma live-händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Med Azure Media Services kan du definiera konto filter och till gångs filter för ditt innehåll.
 
 Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-overview.md) och [filter](filters-concept.md).
 
-Det här avsnittet visar hur du konfigurerar ett filter för en video på begäran-till gång och använder CLI för Media Services v3 för att skapa [konto filter](/cli/azure/ams/account-filter?view=azure-cli-latest) och [filter för till gångar](/cli/azure/ams/asset-filter?view=azure-cli-latest). 
+Det här avsnittet visar hur du konfigurerar ett filter för en video på begäran-till gång och använder CLI för Media Services v3 för att skapa [konto filter](/cli/azure/ams/account-filter?view=azure-cli-latest) och [filter för till gångar](/cli/azure/ams/asset-filter?view=azure-cli-latest).
 
 > [!NOTE]
 > Se till att granska [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](./create-account-howto.md). Kom ihåg att komma ihåg resurs gruppens namn och namnet på Media Services kontot. 
+- [Skapa ett Media Services-konto](./create-account-howto.md). Kom ihåg att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
-
-## <a name="define-a-filter"></a>Definiera ett filter 
+## <a name="define-a-filter"></a>Definiera ett filter
 
 I följande exempel definieras villkoren för spåra val som läggs till i det slutliga manifestet. Det här filtret innehåller alla ljud spår som är EC-3 och alla video spår som har bit hastighet i intervallet 0-1000000.
 
@@ -82,7 +80,7 @@ I följande exempel definieras villkoren för spåra val som läggs till i det s
 
 ## <a name="create-account-filters"></a>Skapa konto filter
 
-Följande [AZ AMS Account-filter-](/cli/azure/ams/account-filter?view=azure-cli-latest) kommando skapar ett konto filter med val av filter spårning som [definierades tidigare](#define-a-filter). 
+Följande [AZ AMS Account-filter-](/cli/azure/ams/account-filter?view=azure-cli-latest) kommando skapar ett konto filter med val av filter spårning som [definierades tidigare](#define-a-filter).
 
 Med kommandot kan du skicka en valfri `--tracks` parameter som innehåller JSON som representerar spår valen.  Använd @ {File} för att läsa in JSON från en fil. Om du använder Azure CLI lokalt anger du hela fil Sök vägen:
 
@@ -130,7 +128,7 @@ I följande tabell visas några exempel på URL: er med filter:
 
 ## <a name="next-step"></a>Nästa steg
 
-[Strömma videor](stream-files-tutorial-with-api.md) 
+[Strömma videor](stream-files-tutorial-with-api.md)
 
 ## <a name="see-also"></a>Se även
 

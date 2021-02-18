@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: e4be3d4508d342c77507cf824fb036e32084b617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b4bda5a439b1e0b35dc6d3af99e0273e4987568
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329745"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091343"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Så här använder du Shaka Player med Azure Media Services
 
@@ -33,6 +33,7 @@ Vi rekommenderar att du använder [Mux.js](https://github.com/videojs/mux.js/) s
 Den officiella dokumentationen finns i dokumentationen för [Shaka Player](https://shaka-player-demo.appspot.com/docs/api/tutorial-welcome.html).
 
 ## <a name="sample-code"></a>Exempelkod
+
 Exempel kod för den här artikeln finns på [Azure-samples/Media-Services-3rdParty-Player-samples](https://github.com/Azure-Samples/media-services-3rdparty-player-samples).
 
 ## <a name="implementing-the-player"></a>Implementera spelaren

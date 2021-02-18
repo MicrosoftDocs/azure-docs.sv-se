@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: df789161bb9db8d49f069992600b5fcb4f78dd03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ab280bbab71926a6ffb70605fdbf463164469623
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006550"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096349"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Självstudie: Migrera Oracle till Azure Database for PostgreSQL online med DMS (för hands version)
 
 Du kan använda Azure Database Migration Service för att migrera databaserna från Oracle-databaser som finns lokalt eller på virtuella datorer för att [Azure Database for PostgreSQL](../postgresql/index.yml) med minimal stillestånds tid. Med andra ord kan du slutföra migreringen med minimal stillestånds tid för programmet. I den här självstudien migrerar du exempel databasen **HR** från en lokal eller virtuell dator instans av Oracle-11g till Azure Database for PostgreSQL med hjälp av aktiviteten online-migrering i Azure Database migration service.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 >
 > * Utvärdera migreringens ansträngning med ora2pg-verktyget.
@@ -63,7 +63,7 @@ För att slutföra den här kursen behöver du:
   >
   > Den här konfigurationen är nödvändig eftersom Azure Database Migration Service saknar Internet anslutning.
 
-* Se till att dina regler för nätverks säkerhets gruppen (NSG) för virtuella nätverk inte blockerar följande portar för inkommande kommunikation till Azure Database Migration Service: 443, 53, 9354, 445, 12000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Se till att dina regler för nätverks säkerhets gruppen (NSG) för virtuella nätverk inte blockerar den utgående porten 443 för ServiceTag för Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Konfigurera din [Windows-brandvägg för databasmotoråtkomst](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öppna Windows-brandväggen för att tillåta Azure Database Migration Service åtkomst till käll-Oracle-servern, som standard är TCP-port 1521.
 * När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.

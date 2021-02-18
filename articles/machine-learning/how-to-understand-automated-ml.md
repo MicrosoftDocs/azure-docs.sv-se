@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388217"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092908"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Utvärdera resultat från automatiska maskin inlärnings experiment
 
@@ -192,7 +192,7 @@ explained_variance|Förklarad varians mäter i vilken utsträckning ett modell k
 mean_absolute_error|Medelvärde för absolut fel är det förväntade värdet av absolut värde för skillnaden mellan målet och förutsägelsen.<br><br> **Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf) <br><br> Nodtyper <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`, mean_absolute_error dividerat med data intervallet. | [Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|Medelvärde för absolut procent fel (MAPE) är ett mått på den genomsnittliga skillnaden mellan ett förutsägande värde och det faktiska värdet.<br><br> **Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf) ||
 median_absolute_error|Median det absoluta felet är median värdet för alla absoluta skillnader mellan målet och förutsägelsen. Den här förlusten är robust för att kunna avvika.<br><br> **Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf)<br><br>Nodtyper <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error dividerat med data intervallet. |[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R ^ 2 är koefficienten för bestämningen eller procent minskningen i kvadrat-fel jämfört med en bas linje modell som matar ut medelvärdet. <br> <br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [-1, 1] <br><br> Obs! R ^ 2 har ofta intervallet (-inf, 1], men automatiskt ML klipps negativa värden för mycket dåliga modeller till-1.|[Beräkning](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (koefficienten för bestämning) mäter den proportionella minskningen i ett kvadratvärde i genomsnitt (MSE) i förhållande till den totala var Ian sen för observerade data. <br> <br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [-1, 1]<br><br>Obs: R<sup>2</sup> har ofta intervallet (-inf, 1]. MSE kan vara större än den observerade var Ians, så R<sup>2</sup> kan ha godtyckligt negativa negativa värden, beroende på data och modell förutsägelserna. Automatiska ML-klipp som rapporter ATS R<sup>2</sup> -resultat på-1, så värdet-1 för r<sup>2</sup> innebär förmodligen att den sanna r<sup>2</sup> -poängen är mindre än-1. Överväg de andra måtten och egenskaperna för data när du tolkar ett negativt R<sup>2</sup> -resultat.|[Beräkning](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Rot genomsnitts fel (RMSE) är kvadratroten ur den förväntade skillnaden i kvadraten mellan målet och förutsägelsen. RMSE är lika med standard avvikelsen för en icke-vägd uppskattning.<br> <br> **Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf)<br><br>Nodtyper<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error dividerat med data intervallet. |[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|Rot genomsnitts logg fel i kvadrat är kvadratroten ur det förväntade logaritmiska felet.<br><br>**Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf) <br> <br>Nodtyper <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: root_mean_squared_log_error dividerat med data intervallet.  |[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| Spearman-korrelationen är en parameter som inte är ett mått på monotonicity för relationen mellan två data uppsättningar. Till skillnad från Pearson-korrelationen förutsätter Spearman-korrelationen inte att båda data uppsättningarna vanligt vis distribueras. Precis som andra korrelations koefficienter varierar Spearman mellan-1 och 1 med 0, vilket innebär att ingen korrelation. Korrelationer på-1 eller 1 innebär en exakt enkel färgs relation. <br><br> Spearman är ett korrelations mått i ranknings ordning som ändras till förväntade eller faktiska värden inte ändrar Spearman-resultatet om de inte ändrar rangordnings ordningen för förväntade eller faktiska värden.<br> <br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [-1, 1]|[Beräkning](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501149"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095266"
 ---
 # <a name="what-is-azure-iot-hub"></a>Vad är Azure IoT Hub?
 
@@ -104,6 +104,8 @@ IoT Hub och enhets-SDK:erna stöder följande protokoll för att ansluta enheter
 * AMQP över WebSockets
 * MQTT
 * MQTT över WebSockets
+
+IoT Hub och enhets-SDK: er har stöd för [Azure IoT plug and Play](../iot-pnp/overview-iot-plug-and-play.md) -konventioner för att ansluta enheter. IoT Plug and Play-enheter använder en enhets modell för att annonsera sina funktioner till IoT Plug and Play-aktiverade program. Enhets modellen gör det möjligt för lösnings byggare att integrera smarta enheter med sina lösningar utan manuell konfiguration.
 
 Om lösningen inte kan använda enhetsbiblioteken kan enheterna använda MQTT v3.1.1-, HTTPS 1.1- eller AMQP 1.0-protokoll för att ansluta internt till hubben.
 

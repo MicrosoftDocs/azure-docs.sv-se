@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: c44d00a5b23bff5e00864b44a396bcedfe5ea668
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f16f034af18e0076da555aed0c7159de66da995b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391209"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094691"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopiera data från en SQL Server-databas till Azure Blob Storage
 
@@ -41,7 +41,7 @@ Om du inte redan har en Azure-prenumeration kan du [skapa ett kostnadsfritt kont
 ### <a name="azure-roles"></a>Azure-roller
 Om du vill skapa Data Factory-instanser måste det användar konto som du använder för att logga in på Azure vara tilldelat en *deltagar* -eller *ägar* roll eller måste vara *administratör* för Azure-prenumerationen.
 
-Gå till Azure Portal om du vill se vilka behörigheter du har i prenumerationen. Välj användarnamnet längst upp till höger och välj sedan **Behörigheter**. Om du har åtkomst till flera prenumerationer väljer du rätt prenumeration. Exempel instruktioner för hur du lägger till en användare till en roll finns i [lägga till eller ta bort Azure Role-tilldelningar med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
+Gå till Azure Portal om du vill se vilka behörigheter du har i prenumerationen. Välj användarnamnet längst upp till höger och välj sedan **Behörigheter**. Om du har åtkomst till flera prenumerationer väljer du rätt prenumeration. Exempel instruktioner om hur du lägger till en användare i en roll finns i [tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 och 2017
 I den här självstudien använder du en SQL Server-databas som *käll* data lager. Pipelinen i data fabriken som du skapar i den här självstudien kopierar data från den här SQL Server databasen (källa) till Blob Storage (mottagare). Skapa sedan en tabell med namnet **emp** i SQL Server-databasen och infoga ett par exempelposter i tabellen.

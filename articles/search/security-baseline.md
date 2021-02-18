@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8c32d06247516611fc79bd6f77b60fec6b73044d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0618e4445629893fbe623df4bc937698bd307c7c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591812"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096562"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azures säkerhets bas linje för Azure Kognitiv sökning
 
@@ -495,7 +495,7 @@ Microsoft hanterar den underliggande plattformen och hanterar allt kund innehål
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Använd Azure RBAC för att hantera åtkomst till resurser
 
 **Vägledning**: för tjänst administration använder du rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till nycklar och konfiguration. För innehålls åtgärder, till exempel indexering och frågor, använder Kognitiv sökning nycklar i stället för en identitets baserad åtkomst kontroll modell. Använd Azure RBAC för att kontrol lera åtkomst till nycklar.
-- [Så här konfigurerar du RBAC i Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [Så här använder du roller för administrativ åtkomst till Kognitiv sökning](./search-security-rbac.md)

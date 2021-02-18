@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9757a322922524f181b1fa3f48850efbb7a18dd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 43f926f400bf8ddd522bbb5f62509519fa09903d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546785"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096603"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Självstudie: Använd en användardefinierad hanterad identitet på en virtuell Windows-dator för att få åtkomst till Azure Resource Manager
 
@@ -37,7 +37,7 @@ Lär dig att:
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -45,7 +45,7 @@ Lär dig att:
 
 - [Skapa en virtuell Windows-dator](../../virtual-machines/windows/quick-create-portal.md)
 
-- Ditt konto måste ha behörigheten ”Ägare” och lämpligt omfång (din prenumeration eller resursgrupp) för att du ska kunna utföra stegen i den här självstudien som beskriver hur du skapar resurser och hanterar roller. Information om rolltilldelning finns i [Använda rollbaserad åtkomstkontroll för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md).
+- Ditt konto måste ha behörigheten ”Ägare” och lämpligt omfång (din prenumeration eller resursgrupp) för att du ska kunna utföra stegen i den här självstudien som beskriver hur du skapar resurser och hanterar roller. Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
 
 - Om du vill köra exempel skripten har du två alternativ:
     - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.

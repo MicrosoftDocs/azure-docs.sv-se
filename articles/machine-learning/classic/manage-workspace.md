@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 1996f4c6c73040fa16a1c5a0468ebcced3ab1641
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c41c5350e29555a11bb74eeca9af62a6b87cfced
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516489"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094267"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Hantera en Azure Machine Learning Studio (klassisk)-arbets yta
 
@@ -48,7 +48,7 @@ Om du vill hantera de webb tjänster som är associerade med den här Studio-arb
 > [!NOTE]
 > Om du vill distribuera eller hantera nya webb tjänster måste du tilldelas rollen deltagare eller administratör för den prenumeration som webb tjänsten har distribuerats till. Om du bjuder in en annan användare till en Machine Learning Studio-arbetsyta (klassisk) måste du tilldela dem till en deltagare eller administratörs roll i prenumerationen innan de kan distribuera eller hantera webb tjänster. 
 > 
->Mer information om hur du ställer in åtkomst behörighet finns i [lägga till eller ta bort Azure-roll tilldelningar med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+>Mer information om hur du ställer in åtkomst behörighet finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om att [distribuera Machine Learning med Azure Resource Manager mallar](deploy-with-resource-manager-template.md).

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 3e4211da59193d0c48398d9f2822fd12cc217d8b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390580"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095560"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ändra stöd för feed i Azure Blob Storage
 
@@ -268,7 +268,7 @@ En beskrivning av varje egenskap finns i [Azure Event Grid händelse schema för
 
 - Ändra händelse poster där `eventType` värdet för `Control` är interna system poster och inte återspeglar en ändring av objekt i ditt konto. Du kan ignorera dessa poster på ett säkert sätt.
 
-- Värdena i `storageDiagnonstics` egenskaps uppsättningen är enbart för internt bruk och är inte avsedda att användas av ditt program. Dina program ska inte ha något avtals beroende av dessa data. Du kan ignorera dessa egenskaper på ett säkert sätt.
+- Värdena i `storageDiagnostics` egenskaps uppsättningen är enbart för internt bruk och är inte avsedda att användas av ditt program. Dina program ska inte ha något avtals beroende av dessa data. Du kan ignorera dessa egenskaper på ett säkert sätt.
 
 - Tiden som segmentet representerar är **Ungefärlig** med gränser på 15 minuter. För att se till att förbrukningen av alla poster inom en angiven tid används, förbrukar du föregående och nästa Tim segment.
 

@@ -3,12 +3,12 @@ title: Azure Service Bus Messaging – köer, ämnen och prenumerationer
 description: Den här artikeln innehåller en översikt över Azure Service Bus meddelande enheter (kö, ämnen och prenumerationer).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: f647164ba18cb83e35b5bd174f09e07a4a9f9aa7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652827"
+ms.locfileid: "101096327"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-köer, -ämnen och -prenumerationer
 Azure Service Bus har stöd för en uppsättning molnbaserade, objektorienterade mellanprogram teknologier, inklusive Reliable Message Queuing och varaktiga meddelanden för publicering/prenumeration. Dessa Brokered Messaging-funktioner kan ses som fristående meddelande funktioner som stöder publicerings prenumeration, temporala kopplingar och belastnings Utjämnings scenarier med hjälp av Service Bus meddelande arbets belastning. Frikopplad kommunikation har många fördelar. Till exempel kan klienter och servrar ansluta efter behov och utföra sina åtgärder på ett asynkront sätt.
@@ -36,6 +36,9 @@ Du kan ange två olika lägen för Service Bus ta emot meddelanden.
         Om programmet inte kan bearbeta meddelandet av någon anledning kan det begära att Service Buss tjänsten ska **överge** meddelandet. Service Bus **låser upp** meddelandet och gör det tillgängligt att tas emot igen, antingen av samma konsument eller av en annan konkurrerande konsument. För det andra är det en **tids gräns** som är kopplad till låset. Om programmet inte kan bearbeta meddelandet innan tids gränsen för låsning går ut, kan Service Bus låsa upp meddelandet och göra det tillgängligt för att tas emot igen.
 
         Om programmet kraschar efter det att meddelandet har bearbetats, men innan det begär Service Buss tjänsten för att slutföra meddelandet, kan Service Bus leverera meddelandet till programmet när det startas om. Den här processen kallas ofta minst **en gång för** bearbetning. Det vill säga varje meddelande bearbetas minst en gång. Men i vissa situationer kan samma meddelande levereras igen. Om ditt scenario inte kan tolerera dubbel bearbetning, lägger du till ytterligare logik i programmet för att identifiera dubbletter. Mer information finns i [dubblettidentifiering](duplicate-detection.md). Den här funktionen kallas **exakt** för bearbetning.
+
+        > [!NOTE]
+        > Mer information om dessa två lägen finns i avsnittet om att [lösa mottagnings åtgärder](message-transfers-locks-settlement.md#settling-receive-operations).
 
 ## <a name="topics-and-subscriptions"></a>Ämnen och prenumerationer
 En kö tillåter bearbetning av ett meddelande av en enskild konsument. Ämnen och prenumerationer är i motsats till köer och innehåller en en-till-många-form av kommunikation i ett mönster för **publicering och prenumeration** . Det är användbart för att skala till ett stort antal mottagare. Varje publicerat meddelande görs tillgängligt för varje prenumeration som registrerats i ämnet. Publisher skickar ett meddelande till ett ämne och en eller flera prenumeranter får en kopia av meddelandet, beroende på filter regler som angetts för dessa prenumerationer. Prenumerationerna kan använda ytterligare filter för att begränsa vilka meddelanden som ska tas emot. Utgivare skickar meddelanden till ett ämne på samma sätt som de skickar meddelanden till en kö. Men konsumenterna tar inte emot meddelanden direkt från ämnet. Konsumenterna tar i stället emot meddelanden från prenumerationer av ämnet. En ämnes prenumeration liknar en virtuell kö som tar emot kopior av meddelanden som skickas till ämnet. Konsumenter tar emot meddelanden från en prenumeration på samma sätt som de tar emot meddelanden från en kö.

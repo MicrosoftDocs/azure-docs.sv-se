@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 58aabd52b8c5493671e0a76d0032a6d7c3081f40
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f28020ba431d3dfdc79c2d4a98b6e6138f563aeb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582033"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096482"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azures säkerhets bas linje för Azure Data Share
 
@@ -199,7 +199,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: Använd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till data och resurser som är relaterade till Azure Data Share-resurser. Använd annars tjänstspecifika åtkomst kontroll metoder.
 
-- [Så här konfigurerar du RBAC i Azure](../role-based-access-control/role-assignments-portal.md) 
+- [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md) 
 
 **Azure Security Center-övervakning**: Ja
 

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 64821819530e142eb207c001d3e3ccfe349cf917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547783"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096085"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter
 
@@ -24,7 +24,7 @@ ms.locfileid: "92547783"
 
 Med meddelanderoutning kan du skicka meddelanden från dina enheter till moln tjänster på ett automatiserat, skalbart och tillförlitligt sätt. Meddelanderoutning kan användas för: 
 
-* Att **skicka meddelanden om enhets telemetri och händelser** , t. ex. enhetens livs cykel händelser och enhetens dubbla ändrings händelser till den inbyggda slut punkten och anpassade slut punkter. Lär dig mer om [routning slut punkter](#routing-endpoints).
+* **Skicka meddelanden om telemetri och händelser** , t. ex. enhets livs cykel händelser, enhets dubbla ändrings händelser och digitala dubbla ändrings händelser till inbyggda slut punkter och anpassade slut punkter. Lär dig mer om [routning slut punkter](#routing-endpoints). Om du vill veta mer om de händelser som skickas från IoT Plug and Play-enheter kan du läsa [förstå IoT plug and Play digitala dubbla](../iot-pnp/concepts-digital-twin.md).
 
 * **Filtrering av data innan de dirigeras till olika slut punkter** genom att använda omfattande frågor. Med meddelanderoutning kan du fråga efter meddelande egenskaper och meddelande text samt enhetens dubbla Taggar och enhetens dubbla egenskaper. Läs mer om hur du använder [frågor i](iot-hub-devguide-routing-query-syntax.md)meddelanderoutning.
 
@@ -34,7 +34,7 @@ IoT Hub definierar ett [gemensamt format](iot-hub-devguide-messages-construct.md
 
 ## <a name="routing-endpoints"></a>Slutpunkter för routning
 
-En IoT-hubb har en inbyggd standard slut punkt ( **meddelanden/händelser** ) som är kompatibel med Event Hubs. Du kan skapa [anpassade slut punkter](iot-hub-devguide-endpoints.md#custom-endpoints) för att dirigera meddelanden till genom att länka andra tjänster i din prenumeration till IoT Hub. 
+En IoT-hubb har en inbyggd standard slut punkt (**meddelanden/händelser**) som är kompatibel med Event Hubs. Du kan skapa [anpassade slut punkter](iot-hub-devguide-endpoints.md#custom-endpoints) för att dirigera meddelanden till genom att länka andra tjänster i din prenumeration till IoT Hub. 
 
 Varje meddelande dirigeras till alla slut punkter vars vägvals frågor det matchar. Med andra ord kan ett meddelande dirigeras till flera slut punkter.
 
@@ -49,7 +49,7 @@ IoT Hub stöder för närvarande följande slut punkter:
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Inbyggd slut punkt som en cirkulations slut punkt
 
-Du kan använda standard [Event Hubs integration och SDK](iot-hub-devguide-messages-read-builtin.md) : er för att ta emot meddelanden från enheten till molnet från den inbyggda slut punkten ( **meddelanden/händelser** ). När en väg har skapats slutar data flöda till den inbyggda slut punkten om inte en väg skapas till den slut punkten.
+Du kan använda standard [Event Hubs integration och SDK](iot-hub-devguide-messages-read-builtin.md) : er för att ta emot meddelanden från enheten till molnet från den inbyggda slut punkten (**meddelanden/händelser**). När en väg har skapats slutar data flöda till den inbyggda slut punkten om inte en väg skapas till den slut punkten.
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage som en cirkulations slut punkt
 
@@ -120,13 +120,13 @@ Använd följande självstudier om du vill lära dig mer om att läsa meddelande
 
 ## <a name="fallback-route"></a>Reserv väg
 
-Reserv vägen skickar alla meddelanden som inte uppfyller frågevillkor på någon av de befintliga vägarna till de inbyggda Event Hubs ( **meddelanden/händelser** ) som är kompatibla med [Event Hubs](../event-hubs/index.yml). Om meddelanderoutning är aktiverat kan du aktivera reserv väg funktionen. När en väg har skapats slutar data flöda till den inbyggda slut punkten, om inte en väg skapas till den slut punkten. Om det inte finns några vägar till den inbyggda slut punkten och en återställnings väg är aktive rad skickas endast meddelanden som inte matchar några frågevillkor i vägar till den inbyggda slut punkten. Om alla befintliga vägar tas bort måste återställnings vägen vara aktive rad för att ta emot alla data vid den inbyggda slut punkten.
+Reserv vägen skickar alla meddelanden som inte uppfyller frågevillkor på någon av de befintliga vägarna till de inbyggda Event Hubs (**meddelanden/händelser**) som är kompatibla med [Event Hubs](../event-hubs/index.yml). Om meddelanderoutning är aktiverat kan du aktivera reserv väg funktionen. När en väg har skapats slutar data flöda till den inbyggda slut punkten, om inte en väg skapas till den slut punkten. Om det inte finns några vägar till den inbyggda slut punkten och en återställnings väg är aktive rad skickas endast meddelanden som inte matchar några frågevillkor i vägar till den inbyggda slut punkten. Om alla befintliga vägar tas bort måste återställnings vägen vara aktive rad för att ta emot alla data vid den inbyggda slut punkten.
 
 Du kan aktivera/inaktivera återställnings vägen på bladet Azure Portal->meddelande cirkulation. Du kan också använda Azure Resource Manager för [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) om du vill använda en anpassad slut punkt för återställnings väg.
 
 ## <a name="non-telemetry-events"></a>Händelser som inte är telemetri
 
-Förutom telemetri möjliggör meddelanderoutning även sändning av enhets dubbla ändrings händelser, livs cykel händelser för enheter och digitala dubbla ändrings händelser. Om en väg till exempel skapas med data källa inställt på **enhet dubbla ändrings händelser** skickar IoT Hub meddelanden till slut punkten som innehåller ändringen i enheten. På liknande sätt skickar IoT Hub ett meddelande som anger om enheten har tagits bort eller skapats, om en väg skapas med data källa inställt på **enhetens livs cykel händelser** . Som en del av IoT- [Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)kan en utvecklare skapa vägar med data källa inställt på **digitala dubbla ändrings händelser** och IoT Hub skickar meddelanden när en digital enhets [egenskap](../iot-pnp/iot-plug-and-play-glossary.md) har angetts eller ändrats, en [digital](../iot-pnp/iot-plug-and-play-glossary.md) enhet byts ut eller när en ändrings händelse inträffar för den underliggande enheten.
+Förutom telemetri möjliggör meddelanderoutning även sändning av enhets dubbla ändrings händelser, livs cykel händelser för enheter och digitala dubbla ändrings händelser. Om en väg till exempel skapas med data källa inställt på **enhet dubbla ändrings händelser** skickar IoT Hub meddelanden till slut punkten som innehåller ändringen i enheten. På liknande sätt skickar IoT Hub ett meddelande som anger om enheten har tagits bort eller skapats, om en väg skapas med data källa inställt på **enhetens livs cykel händelser**. Som en del av [Azure IoT plug and Play](../iot-pnp/overview-iot-plug-and-play.md)kan en utvecklare skapa vägar med data källa inställt på **digitala dubbla ändrings händelser** och IoT Hub skickar meddelanden när en digital enhets [egenskap](../iot-pnp/iot-plug-and-play-glossary.md) har angetts eller ändrats, en [digital](../iot-pnp/iot-plug-and-play-glossary.md) enhet byts ut eller när en ändrings händelse inträffar för den underliggande enheten.
 
 [IoT Hub integreras också med Azure Event Grid](iot-hub-event-grid.md) för att publicera enhets händelser som stöder real tids integrering och automatisering av arbets flöden baserat på dessa händelser. Se viktiga [skillnader mellan meddelanderoutning och event Grid](iot-hub-event-grid-routing-comparison.md) för att se vilka som fungerar bäst för ditt scenario.
 

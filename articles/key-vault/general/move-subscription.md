@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790299"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096071"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Flytta en Azure Key Vault-instans till en annan prenumeration
 
@@ -47,7 +47,7 @@ Mer information om Azure Key Vault och Azure Active Directory finns i
 
 Vissa tjänst huvud namn (användare och program) är kopplade till en viss klient. Om du flyttar nyckel valvet till en prenumeration i en annan klient, finns det en risk att du inte kan återställa åtkomsten till ett särskilt tjänst huvud namn. Kontrol lera att alla viktiga tjänst huvud namn finns i klient organisationen där du flyttar nyckel valvet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Deltagar](../../role-based-access-control/built-in-roles.md#contributor) nivå åtkomst eller högre till den aktuella prenumerationen där nyckel valvet finns. Du kan tilldela rollen med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 * [Deltagar](../../role-based-access-control/built-in-roles.md#contributor) nivå åtkomst eller högre till den prenumeration där du vill flytta nyckel valvet. Du kan tilldela rollen med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell](../../role-based-access-control/role-assignments-powershell.md).
@@ -106,9 +106,9 @@ Information om hur du tilldelar principer finns i:
 - [Tilldela en åtkomst princip med hjälp av PowerShell](assign-access-policy-powershell.md)
 
 Information om hur du lägger till roll tilldelningar finns i:
-- [Lägg till roll tilldelning med hjälp av portalen](../../role-based-access-control/role-assignments-portal.md)
-- [Lägg till roll tilldelning med Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-- [Lägg till roll tilldelning med PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Tilldela Azure-roller med Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Tilldela Azure-roller med hjälp av PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>Uppdatera hanterade identiteter

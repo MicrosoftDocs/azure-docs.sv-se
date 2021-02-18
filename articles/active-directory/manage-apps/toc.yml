@@ -212,8 +212,10 @@
               href: application-proxy-integrate-with-microsoft-cloud-application-security.md
             - name: Integrera med Fjärrskrivbord
               href: application-proxy-integrate-with-remote-desktop-services.md
-            - name: Integrera med SharePoint
+            - name: Integrera med SharePoint (Kerberos)
               href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integrera med SharePoint (SAML)
+              href: application-proxy-integrate-with-sharepoint-server-saml.md
             - name: Integrera med Teams
               href: application-proxy-integrate-with-teams.md
             - name: Integrera med Tableau

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 0f03cd536d329a94ec80ef884c380c79b5687289
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592270"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096618"
 ---
 # <a name="manage-qna-maker-resources"></a>Hantera QnA Maker resurser
 
@@ -111,6 +111,8 @@ Den här proceduren skapar de Azure-resurser som krävs för att hantera innehå
       * Hämta [IP-intervall för alla tjänst Taggar](https://www.microsoft.com/download/details.aspx?id=56519).
       * Välj IP-adresserna för "CognitiveServicesManagement".
       * Gå till avsnittet nätverk i App Service resursen och klicka på alternativet för att konfigurera åtkomst begränsning för att lägga till IP-adresser i en tillåten.
+
+    ![inkommande port undantag](../media/inbound-ports.png)    
 
     Vi har också ett automatiserat skript som gör samma sak för din App Service. Du kan hitta [PowerShell-skriptet för att konfigurera en tillåten](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) på GitHub. Du måste skriva in prenumerations-ID, resurs grupp och faktiskt App Service namn som skript parametrar. Om du kör skriptet läggs IP-adresserna automatiskt till App Service tillåten.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1ece1fbd75c975f549cb9096149c2a2d562dec6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b81f80af69b47152f7111066070e173bb1ede5f4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107574"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093946"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Cosmos DB 
 
@@ -40,7 +40,7 @@ I den här självstudien lär du dig hur du använder en systemtilldelad hantera
 
 - Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
 - Om du inte har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
-- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Information om rolltilldelning finns i [Använda rollbaserad åtkomstkontroll för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md).
+- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
 - Om du vill köra exempel skripten har du två alternativ:
     - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.
     - Kör skript lokalt genom att installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli)och logga sedan in på Azure med [AZ-inloggning](/cli/azure/reference-index#az-login). Använd ett konto som är kopplat till den Azure-prenumeration som du vill skapa resurser i.

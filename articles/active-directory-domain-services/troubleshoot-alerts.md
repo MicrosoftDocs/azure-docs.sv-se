@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618628"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092872"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Kända problem: vanliga aviseringar och lösningar i Azure Active Directory Domain Services
 
@@ -162,7 +162,7 @@ Det här felet kan inte återställas. Om du vill lösa aviseringen [tar du bort
 
 Vissa automatiskt genererade tjänstens huvud namn används för att hantera och skapa resurser för en hanterad domän. Om åtkomst behörigheterna för något av dessa tjänst huvud namn ändras kan inte domänen hantera resurser på rätt sätt. Följande steg visar hur du förstår och ger åtkomst behörighet till ett huvud namn för tjänsten:
 
-1. Läs om [rollbaserad åtkomst kontroll och hur du beviljar åtkomst till program i Azure Portal](../role-based-access-control/role-assignments-portal.md).
+1. Läs om [rollbaserad åtkomst kontroll i Azure och hur du beviljar åtkomst till program i Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Granska åtkomsten till tjänstens huvud namn med ID- *abba844e-bc0e-44b0-947a-dc74e5d09022* och bevilja åtkomst som nekades vid ett tidigare datum.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: inte tillräckligt med IP-adress i den hanterade domänen

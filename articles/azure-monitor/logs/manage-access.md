@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 184d5c98b2b434c87e112c569ff4e8ab347344c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621641"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091201"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Hantera åtkomst till loggdata och arbetsytor i Azure Monitor
 
@@ -120,7 +120,7 @@ Följande aktiviteter kräver även Azure-behörigheter:
 
 ## <a name="manage-access-using-azure-permissions"></a>Hantera åtkomst med Azure-behörigheter
 
-Om du vill bevilja åtkomst till Log Analytics-arbetsytan med Azure-behörigheter följer du stegen i [Använda rolltilldelningar för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md). Till exempel anpassade roller, se [exempel på anpassade roller](#custom-role-examples)
+Om du vill bevilja åtkomst till arbets ytan Log Analytics med Azure-behörigheter följer du stegen i [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md). Till exempel anpassade roller, se [exempel på anpassade roller](#custom-role-examples)
 
 Azure har två inbyggda användar roller för Log Analytics arbets ytor:
 

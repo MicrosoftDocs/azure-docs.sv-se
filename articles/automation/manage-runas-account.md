@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050947"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096468"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Hantera ett Kör som-konto för Azure Automation
 
@@ -64,10 +64,10 @@ Innan du beviljar behörigheter för kör som-kontot måste du först anteckna v
 
 Detaljerade anvisningar för hur du lägger till roll tilldelningar finns i följande artiklar, beroende på vilken metod du vill använda.
 
-* [Lägg till Azure-roll tilldelning från Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Lägg till Azure-roll tilldelning med Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-* [Lägg till roll tilldelning i Azure med hjälp av Azure CLI](../role-based-access-control/role-assignments-cli.md)
-* [Lägg till roll tilldelning i Azure med hjälp av REST API](..//role-based-access-control/role-assignments-rest.md)
+* [Tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Tilldela Azure-roller med hjälp av Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Tilldela Azure-roller med Azure CLI](../role-based-access-control/role-assignments-cli.md)
+* [Tilldela Azure-roller med hjälp av REST API](..//role-based-access-control/role-assignments-rest.md)
 
 När du har tilldelat kör som-kontot till rollen anger du i din Runbook `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` att prenumerations kontexten ska användas. Mer information finns i [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 

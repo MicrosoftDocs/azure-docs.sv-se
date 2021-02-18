@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 982ca04237d16979d65260a040f5aed783822ac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ea57a623546df99408d488da4522411f55ab0dd9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023232"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094353"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Självstudie: skapa en Azure Time Series Insights gen1-miljö
 
@@ -36,7 +36,7 @@ Den här självstudien vägleder dig genom processen att skapa en Azure Time Ser
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ditt Azure-inloggningsnamn måste också vara medlem i prenumerationens **ägar** roll. Mer information finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
+* Ditt Azure-inloggningsnamn måste också vara medlem i prenumerationens **ägar** roll. Mer information finns [i tilldela Azure-roller med hjälp av Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Granska video
 
@@ -164,7 +164,7 @@ I det här sista avsnittet verifierar du att telemetridata har genererats och la
 
 1. På sidan **Översikt över** Azure Time Series Insightss miljö väljer du **URL: en för Time Series Insights Explorer** för att öppna Azure Time Series Insights Explorer.
 
-   [![Azure Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
+   [![Azure Time Series Insights-utforskaren](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
 1. Azure Time Series Insights Explorer läser in och autentiserar med hjälp av ditt Azure Portal-konto. I början visas det diagram fält som Azure Time Series Insightss miljön fylldes med tillsammans med dess simulerade telemetridata. Om du vill filtrera en snävare tid väljer du List rutan i det övre vänstra hörnet. Ange ett tidsintervall som är tillräckligt stort för att omfatta varaktigheten för enhets simuleringen. Välj sedan förstorings glaset för sökning.
 

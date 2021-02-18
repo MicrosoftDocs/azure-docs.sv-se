@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Dokumentation om Azure front dörr standard/Premium (för hands version)
+summary: Azure front dörr standard/Premium (för hands version) är en modern säker program leverans nätverks plattform som tillhandahåller skalbart CDN-, DSA-GLB för dina globala webb program.
+metadata:
+  title: Dokumentation om Azures främre dörr standard/Premium
+  description: Azure front dörr standard/Premium (för hands version) ger en skalbar och säker start punkt för snabb leverans av dina globala webb program. Lär dig hur du använder Front Door med våra snabbstarter, självstudier och exempel.
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: b11cf6b0fe8c0f1cdf711ee3b9ef6c92e5bc71bb
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101100979"
+landingContent:
+- title: Lär dig mer om Azures främre dörr standard/Premium (för hands version)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azures främre dörr standard/Premium (för hands version)?
+      url: overview.md
+- title: Skapa en profil för en front dörr
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Skapa en standard-/Premium-profil för front dörren
+      url: create-front-door-portal.md
+- title: Konfigurera slut punkts hanteraren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Slut punkts hanterare
+      url: concept-endpoint-manager.md
+    - text: Väg
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera slut punkts hanteraren
+      url: how-to-configure-endpoint-manager.md
+- title: Lägg till anpassade domäner
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Lägga till en anpassad domän
+      url: how-to-add-custom-domain.md
+- title: Hantera dina ursprungs grupper
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Ursprung
+      url: concept-origin.md
+    - text: Hälsotillståndsavsökningar
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera en ursprungs grupp
+      url: how-to-create-origin.md
+- title: Konfigurera en regel uppsättning
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vad är regel uppsättning?
+      url: concept-rule-set.md
+    - text: Matchnings villkor för regel uppsättning
+      url: concept-rule-set-match-conditions.md
+    - text: Åtgärder för regel uppsättning
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera en regel uppsättning
+      url: how-to-configure-rule-set.md
+- title: Skydda ditt program
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Private Link
+      url: concept-private-link.md
+    - text: WAF på Azures främre dörr standard/Premium
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDoS-skydd
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivera privat länk
+      url: how-to-enable-private-link.md
+    - text: Konfigurera WAF-princip
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: Rapporter, mått och loggar
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rapporter
+      url: how-to-reports.md
+    - text: Övervaka mått och aviseringar
+      url: how-to-monitor-metrics.md
+    - text: Loggning
+      url: how-to-logs.md
+- title: Cachelagring och optimering
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Cachelagring
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rensning av cache
+      url: how-to-cache-purge.md
+    - text: Komprimering
+      url: how-to-compression.md
+- title: Felsöka Azure Front Door
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vanliga routningsproblem
+      url: troubleshoot-route-issues.md
+    - text: Tillåtna certifikatutfärdare
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Mer information om Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure Front Door?
+      url: ../front-door-overview.md

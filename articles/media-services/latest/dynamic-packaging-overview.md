@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897653"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092332"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamisk paketering i Media Services v3
 
@@ -57,7 +57,7 @@ Den strömmande klienten kan ange följande HLS-format:
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
 
 > [!NOTE]
-> Tidigare rikt linjer från Apple rekommenderar att återställningen för nätverk med liten bandbredd var att tillhandahålla en ljud ström.  Vid tillfället genererar Media Services-kodaren automatiskt ett ljud spår.  Apple-rikt linjer ger nu dig tillstånd att ljud spåret *inte* ska tas med, särskilt för Apples TV-distribution.  Vi rekommenderar att du använder taggen "endast ljudonly = false" i URL: en för att förhindra uppspelning av ljudrendering i HLS eller bara använda HLS-v3. Ett exempel är `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
+> Tidigare rikt linjer från Apple rekommenderar att återställningen för nätverk med liten bandbredd var att tillhandahålla en ljud ström.  Vid tillfället genererar Media Services-kodaren automatiskt ett ljud spår.  Apple-rikt linjer ger nu dig tillstånd att ljud spåret *inte* ska tas med, särskilt för Apples TV-distribution.  Vi rekommenderar att du använder taggen "endast ljudonly = false" i URL: en för att förhindra uppspelning av ljudrendering i HLS eller bara använda HLS-v3. Till exempel `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-streck-protokoll
 

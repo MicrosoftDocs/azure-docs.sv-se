@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1eb0bf2c0e214c3e076895903176d15ee792c70c
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895262"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093046"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Kom igång för Azure IT-operatörer
 
@@ -140,7 +140,7 @@ Azure är en global moln plattform som är allmänt tillgänglig i många region
 
 En av fördelarna med att använda Azure är att du kan distribuera dina program till olika data center runtom i världen. Den region du väljer kan påverka programmets prestanda. Det är bäst att välja en region som är närmare för de flesta kunder, för att minska svars tiden i nätverks förfrågningar. Du kan också välja en region för att uppfylla de juridiska kraven för att distribuera din app i vissa länder/regioner.
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Azure Portal är ett webbaserat program som kan användas för att skapa, hantera och ta bort Azure-resurser och-tjänster. Azure Portal finns på [Portal.Azure.com](https://portal.azure.com). Den innehåller en anpassningsbar instrument panel och verktyg för att hantera Azure-resurser. Den innehåller även information om fakturering och prenumerationer. Mer information finns i [Microsoft Azure-portalen översikt](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) och [Hantera Azure-resurser via portalen](../../azure-resource-manager/management/manage-resources-portal.md).
 
@@ -200,7 +200,7 @@ Om du överskrider kredit beloppet inaktive ras tjänsten tills nästa månad b�
 
 Azure RBAC har flera inbyggda roller som du kan använda för att tilldela behörigheter. Om du vill göra en användare till en administratör för en Azure-prenumeration tilldelar du den till [ägar](../../role-based-access-control/built-in-roles.md#owner) rollen i prenumerations omfånget. Rollen ägare ger fullständig åtkomst till alla resurser i prenumerationen, inklusive rätten att ge åtkomst till andra.
 
-Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Visa fakturerings information i Azure Portal
 
@@ -304,7 +304,7 @@ Här följer några exempel på [inbyggda roller i Azure](../../role-based-acces
 
 - **Lagrings konto deltagare**: en användare med den här rollen kan hantera lagrings konton, men kan inte hantera åtkomst till lagrings kontona.
 
-Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
+Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
