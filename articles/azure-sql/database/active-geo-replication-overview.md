@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985764"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634302"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Skapa och använda aktiv geo-replikering – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ Aktiv geo-replikering är en Azure SQL Database funktion som gör att du kan ska
 
 > [!NOTE]
 > Aktiv geo-replikering stöds inte av Azure SQL-hanterad instans. Använd [grupper för automatisk redundans](auto-failover-group-overview.md)för geografisk redundans för instanser av SQL-hanterad instans.
+
+> [!NOTE]
+> Information om hur du migrerar SQL-databaser från Azure Germany med hjälp av aktiv geo-replikering finns i [migrera SQL Database med hjälp av aktiv geo-replikering](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication).
 
 Aktiv geo-replikering är utformad som en verksamhets kontinuitets lösning som gör att programmet kan utföra snabb haveri beredskap för enskilda databaser i händelse av en regional katastrof eller ett storskaligt avbrott. Om geo-replikering är aktiverat kan programmet initiera redundansväxling till en sekundär databas i en annan Azure-region. Upp till fyra sekundära servrar stöds i samma eller olika regioner, och sekundärerna kan också användas för skrivskyddade åtkomst frågor. Redundansväxlingen måste initieras manuellt av programmet eller användaren. Efter redundansväxlingen har den nya primära servern en annan slut punkt för anslutningen.
 
@@ -292,6 +295,9 @@ Som tidigare nämnts kan aktiv geo-replikering även hanteras via programmering 
 | [Länkar för replikering – lista efter databas](/rest/api/sql/replicationlinks/listbydatabase) | Hämtar alla länkar för replikering för en specifik databas i en partnerskap med geo-replikering. Den hämtar informationen som visas i vyn sys.geo_replication_links katalog. |
 | [Ta bort replikeringslänk](/rest/api/sql/replicationlinks/delete) | Tar bort en länk till databasreplikering. Kan inte utföras under redundansväxling. |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

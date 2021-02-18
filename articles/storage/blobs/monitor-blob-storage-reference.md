@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584914"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571630"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Övervaknings data referens för Azure Blob Storage
 
@@ -36,7 +36,7 @@ Azure Storage tillhandahåller följande kapacitets mått i Azure Monitor.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Den här tabellen visar [Blob Storage-mått](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
+Den här tabellen visar [Blob Storage-mått](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices).
 
 | Metric | Beskrivning |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ I följande tabell visas egenskaperna för Azure Storage resurs loggar när de s
 ## <a name="see-also"></a>Se även
 
 - En beskrivning av övervaknings Azure Storage finns i [övervaknings Azure Storage](monitor-blob-storage.md) .
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) .
+- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .

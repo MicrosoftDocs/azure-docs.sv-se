@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779251"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572802"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Självstudie: övervaka publicerade API: er
 
@@ -39,7 +39,7 @@ Du kan också använda API Management inbyggda [analyser](howto-use-analytics.md
 
 ## <a name="view-metrics-of-your-apis"></a>Visa mått för dina API:er
 
-API Management utvärderar [måtten](../azure-monitor/platform/data-platform-metrics.md) varje minut, vilket ger dig nära insyn i real tid i dina API: er tillstånd och hälsa. Följande är de två oftast använda måtten. En lista över alla tillgängliga mått finns i mått som [stöds](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
+API Management utvärderar [måtten](../azure-monitor/essentials/data-platform-metrics.md) varje minut, vilket ger dig nära insyn i real tid i dina API: er tillstånd och hälsa. Följande är de två oftast använda måtten. En lista över alla tillgängliga mått finns i mått som [stöds](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice).
 
 * **Kapacitet** – hjälper dig att fatta beslut om att uppgradera/NEDGRADERA dina APIM-tjänster. Måttet genereras per minut och återspeglar gatewaykapaciteten vid tidpunkten för rapporten. Måtten sträcker sig från 0 till 100 och beräknas utifrån gatewayens resurser som CPU och minnesanvändning.
 * **Förfrågningar** – hjälper dig att analysera API-trafik som går via dina API Management-tjänster. Måttet genereras per minut och rapporterar antalet Gateway-begäranden med dimensioner, inklusive svars koder, plats, värdnamn och fel. 
@@ -62,7 +62,7 @@ Så här får du åtkomst till mått:
 
 ## <a name="set-up-an-alert-rule"></a>Konfigurera en varnings regel 
 
-Du kan få [aviseringar](../azure-monitor/platform/alerts-metric-overview.md) baserat på mått och aktivitets loggar. Med Azure Monitor kan du [Konfigurera en avisering](../azure-monitor/platform/alerts-metric.md) för att göra följande när den utlöser:
+Du kan få [aviseringar](../azure-monitor/alerts/alerts-metric-overview.md) baserat på mått och aktivitets loggar. Med Azure Monitor kan du [Konfigurera en avisering](../azure-monitor/alerts/alerts-metric.md) för att göra följande när den utlöser:
 
 * Skicka ett e-postmeddelande
 * Anropa en webbhook
@@ -140,7 +140,7 @@ Så här konfigurerar du resurs loggar:
 
    Du kan arkivera resurs loggar tillsammans med mått till ett lagrings konto, strömma dem till en Händelsehubben eller skicka dem till en Log Analytics-arbetsyta. 
 
-Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/platform/diagnostic-settings.md).
+Mer information finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../azure-monitor/essentials/diagnostic-settings.md).
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>Visa diagnostikdata i Azure Monitor
 
@@ -151,7 +151,7 @@ Om du aktiverar insamling av GatewayLogs eller mått i en Log Analytics arbets y
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Skärm bild av objektet loggar i menyn övervakning":::
 
-Kör frågor för att visa data. Det finns flera [exempel frågor](../azure-monitor/log-query/example-queries.md) eller så kör du egna. Följande fråga hämtar till exempel de senaste 24 timmarna av data från tabellen GatewayLogs:
+Kör frågor för att visa data. Det finns flera [exempel frågor](../azure-monitor/logs/example-queries.md) eller så kör du egna. Följande fråga hämtar till exempel de senaste 24 timmarna av data från tabellen GatewayLogs:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -160,9 +160,9 @@ ApiManagementGatewayLogs
 
 Mer information om hur du använder resurs loggar för API Management finns i:
 
-* [Kom igång med Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)eller testa [Log Analytics demo miljön](https://portal.loganalytics.io/demo).
+* [Kom igång med Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)eller testa [Log Analytics demo miljön](https://portal.loganalytics.io/demo).
 
-* [Översikt över logg frågor i Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+* [Översikt över logg frågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 Följande JSON visar en exempel post i GatewayLogs för en lyckad API-begäran. Mer information finns i [schema referensen](gateway-log-schema-reference.md). 
 

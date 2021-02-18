@@ -3,12 +3,12 @@ title: Azure Functions dedikerad värd
 description: Lär dig mer om fördelarna med att köra Azure Functions på en dedikerad App Service värd plan.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937699"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591068"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedikerade värd planer för Azure Functions
 
@@ -33,7 +33,7 @@ Om du kör på en App Service plan bör du aktivera inställningen **Always on**
 
 ## <a name="scaling"></a>Skalning
 
-Med hjälp av en App Service plan kan du manuellt skala ut genom att lägga till fler VM-instanser. Du kan också aktivera autoskalning, även om autoskalning är långsammare än Premium planens elastiska skala. Mer information finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Du kan också skala upp genom att välja en annan App Service plan. Mer information finns i [skala upp en app i Azure](../app-service/manage-scale-up.md). 
+Med hjälp av en App Service plan kan du manuellt skala ut genom att lägga till fler VM-instanser. Du kan också aktivera autoskalning, även om autoskalning är långsammare än Premium planens elastiska skala. Mer information finns i [skala antalet instanser manuellt eller automatiskt](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Du kan också skala upp genom att välja en annan App Service plan. Mer information finns i [skala upp en app i Azure](../app-service/manage-scale-up.md). 
 
 > [!NOTE] 
 > När du kör JavaScript-funktioner (Node.js) på en App Service plan bör du välja en plan som har färre virtuella processorer. Mer information finns i [välj App Service planer med en kärna](functions-reference-node.md#choose-single-vcpu-app-service-plans). 

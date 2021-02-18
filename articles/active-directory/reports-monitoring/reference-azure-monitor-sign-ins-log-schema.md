@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231120"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592298"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Tolka schemat för inloggnings loggar för Azure AD i Azure Monitor
 
@@ -143,13 +143,13 @@ I den här artikeln beskrivs inloggnings logg schema för Azure Active Directory
 
 ## <a name="field-descriptions"></a>Fältbeskrivningar
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 |------------|-------------|
 | Tid | Datumet och tiden, i UTC. |
 | ResourceId | Värdet är omappat och du kan bortse från det här fältet.  |
 | OperationName | För inloggningar är det här värdet alltid *inloggnings aktivitet*. |
 | OperationVersion | Den REST API version som begärs av klienten. |
-| Kategori | För inloggningar är det här värdet alltid *inloggnings*värde. | 
+| Kategori | För inloggningar är det här värdet alltid *inloggnings* värde. | 
 | TenantId | Klient-GUID som är associerat med loggarna. |
 | ResultType | Resultatet av inloggnings åtgärden kan lyckas *eller Miss* *lyckas* . | 
 | ResultSignature | Innehåller eventuell felkod för inloggnings åtgärden. |
@@ -164,10 +164,10 @@ I den här artikeln beskrivs inloggnings logg schema för Azure Active Directory
 | CorrelationId | Det valfria GUID som skickas av klienten. Det här värdet kan hjälpa till att korrelera åtgärder på klient sidan med åtgärder på Server sidan, och det är användbart när du spårar loggar som omfattar tjänster. |
 | Identitet | Identiteten från den token som angavs när du gjorde begäran. Det kan vara ett användar konto, ett system konto eller ett huvud namn för tjänsten. |
 | Nivå | Tillhandahåller meddelande typen. För granskning är det alltid *information*. |
-| Plats | Anger platsen för inloggnings aktiviteten. |
+| Location | Anger platsen för inloggnings aktiviteten. |
 | Egenskaper | Visar en lista över alla egenskaper som är associerade med inloggningar. Mer information finns i [Microsoft Graph API-referens](/graph/api/resources/signin?view=graph-rest-beta). Schemat använder samma attributnamn som inloggnings resursen för läsbarhet.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Tolka schemat för gransknings loggar i Azure Monitor](reference-azure-monitor-audit-log-schema.md)
-* [Läs mer om Azures plattforms loggar](../../azure-monitor/platform/platform-logs-overview.md)
+* [Läs mer om Azures plattforms loggar](../../azure-monitor/essentials/platform-logs-overview.md)

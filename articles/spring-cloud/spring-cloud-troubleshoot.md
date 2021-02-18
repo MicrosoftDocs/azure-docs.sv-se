@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9350b5dbcedd2773e94ef9d35cfe26f97fbd97bc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c4dbeae0cfb76063fdca70b3ad1d264b59f9ace
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571603"
+ms.locfileid: "100634251"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Felsök vanliga problem med Azure våren Cloud
 
@@ -212,7 +212,7 @@ Leta upp den underordnade noden med namnet `systemEnvironment` .  Den här noden
 
 Gå till **app Management** för att se till att programmets status _körs_ _och är igång._
 
-Kontrol lera att väder _JMX_ har Aktiver ATS i programpaketet. Den här funktionen kan aktive ras med konfigurations egenskapen `spring.jmx.enabled=true` .  
+Kontrol lera om _JMX_ har Aktiver ATS i programpaketet. Den här funktionen kan aktive ras med konfigurations egenskapen `spring.jmx.enabled=true` .  
 
 Kontrol lera om `spring-boot-actuator` beroendet är aktiverat i ditt programpaket och att det har startats.
 

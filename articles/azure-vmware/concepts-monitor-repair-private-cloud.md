@@ -3,13 +3,13 @@ title: Koncept – övervaka och reparera privata moln i Azure VMware-lösningen
 description: Lär dig hur Azure VMware-lösningen övervakar och reparerar VMware ESXi-servrar i ett privat moln i Azure VMware-lösningar.
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538966"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633146"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Övervaka och reparera privata moln i Azure VMware-lösningar
 
@@ -17,7 +17,7 @@ Azure VMware-lösningen övervakar kontinuerligt VMware ESXi-servrarna i ett pri
 
 ## <a name="what-azure-vmware-solution-monitors"></a>Vad Azure VMware-lösningar övervakar
 
-Azure VMware-lösningen övervakar följande för fel villkor på värden:  
+Azure VMware-lösningen övervakar följande villkor på värden:  
 
 - Processor status 
 - Minnes status 
@@ -37,9 +37,9 @@ Azure VMware-lösningen övervakar följande för fel villkor på värden:
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Azure VMware-lösning värd reparation  
 
-När Azure VMware-lösningen identifierar en försämring eller ett haveri på en Azure VMware-lösning på en innehavares privata moln, utlöses processen för värd reparation. Värd reparation innebär att ersätta den felaktiga noden med en ny felfria nod.  
+När Azure VMware-lösningen identifierar en försämring eller ett haveri på en Azure VMware-lösning, utlöses värd reparations processen. Värd reparation innebär att ersätta den felaktiga noden med en ny felfria nod.  
 
-Värd reparations processen startar genom att lägga till en ny felfria nod i klustret. När så är möjligt placeras den felande värden i VMware vSphere underhålls läge. VMware-vMotion används för att flytta de virtuella datorerna från den felaktiga värden till andra tillgängliga servrar i klustret, vilket möjliggör en direktmigrering av arbets belastningar utan avbrott. I scenarier där den felande värden inte kan placeras i underhålls läge tas värden bort från klustret.
+Värd reparation börjar genom att lägga till en ny felfria nod i klustret. När så är möjligt placeras den felande värden i VMware vSphere underhålls läge. VMware vMotion flyttar bort de virtuella datorerna från den felaktiga värden till andra tillgängliga servrar i klustret, vilket kan medföra noll stillestånd för direktmigrering av arbets belastningar. Om den felaktiga värden inte kan placeras i underhålls läge tas värden bort från klustret.
 
 ## <a name="next-steps"></a>Nästa steg
 

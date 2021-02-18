@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Översikt över hur du använder virtuell nod med Azure Kubernetes Services (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684782"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634455"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Skapa och konfigurera ett Azure Kubernetes Services-kluster (AKS) för att använda virtuella noder
 
@@ -45,7 +45,6 @@ Funktioner för virtuella noder är kraftigt beroende av ACI funktions uppsättn
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) kommer inte att distribuera poddar till de virtuella noderna
 * Virtuella noder stöder schemaläggning av Linux-poddar. Du kan manuellt installera den [virtuella KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -providern med öppen källkod för att schemalägga Windows Server-behållare till ACI.
 * Virtuella noder kräver AKS-kluster med Azure CNI-nätverk.
-* Virtuella noder med privata kluster.
 * Använda API-serverns auktoriserade IP-intervall för AKS.
 * Volym montering Azure Files dela stöd för [allmän användning v1](../storage/common/storage-account-overview.md#types-of-storage-accounts). Följ anvisningarna för att montera [en volym med Azure Files resurs](azure-files-volume.md)
 * Användning av IPv6 stöds inte.

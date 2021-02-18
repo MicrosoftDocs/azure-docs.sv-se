@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a42c1d06051c283f0e911c4cd166884ddd060f45
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633282"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -78,4 +78,4 @@ ms.locfileid: "85201233"
 
 - [Lokalisering](localization.md) – gör att du kan stödja flera språk. Lokaliserings stödet i principer gör att du kan ställa in listan över språk som stöds i en princip och välja ett standard språk. Språkspecifika strängar och samlingar stöds också.
 
-- [DisplayControls](display-controls.md) – definierar de kontroller som ska visas på en sida. Visa kontroller har särskilda funktioner och interagera med tekniska profiler för Server dels verifiering. Visa kontroller är för närvarande en för **hands version**.
+- [DisplayControls](display-controls.md) – definierar de kontroller som ska visas på en sida. Visa kontroller har särskilda funktioner och interagera med tekniska profiler för Server dels verifiering. 

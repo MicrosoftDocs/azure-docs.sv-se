@@ -3,12 +3,12 @@ title: Prestanda övervakning av webbapp – Azure Application insikter
 description: Hur Application Insights passar i devOps-cykeln
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324496"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579561"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Djup diagnostik för webbappar och tjänster med Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Varför behöver jag Application Insights?
@@ -110,7 +110,7 @@ Program kartan identifierar automatiskt programtopologin, vilket ger prestanda i
 ![Programkarta](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights analys
-Med [Analytics](../log-query/log-query-overview.md)kan du skriva godtyckliga frågor på ett kraftfullt SQL-liknande språk.  Att diagnostisera hela app-stacken är enkelt att ansluta till olika perspektiv och du kan ställa rätt frågor för att korrelera tjänst prestanda med affärs mått och kund upplevelse. 
+Med [Analytics](../logs/log-query-overview.md)kan du skriva godtyckliga frågor på ett kraftfullt SQL-liknande språk.  Att diagnostisera hela app-stacken är enkelt att ansluta till olika perspektiv och du kan ställa rätt frågor för att korrelera tjänst prestanda med affärs mått och kund upplevelse. 
 
 Du kan fråga alla din telemetri-instans och dina mått rå data som lagras i portalen. Språket innehåller filter, Join, aggregation och andra åtgärder. Du kan beräkna fält och utföra statistisk analys. Det finns både tabell-och grafiska visualiseringar.
 

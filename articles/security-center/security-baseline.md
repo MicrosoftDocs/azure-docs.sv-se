@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 195c264eca0c40712816495a09e1387fcaa2c910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202257"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572933"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azures säkerhets bas linje för Security Center
 
@@ -30,7 +30,7 @@ Den här säkerhets bas linjen använder vägledning från [Azures säkerhets be
 
 - [Filer som är nätverks trafik med en nätverks säkerhets grupp](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Förstå privat Azure-länk](../private-link/private-link-overview.md) 
 
@@ -46,7 +46,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 - [Datainsamling i Azure Security Center](security-center-enable-data-collection.md)
 
-- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -70,7 +70,7 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 - [Datainsamling i Azure Security Center](security-center-enable-data-collection.md)
 
-- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+- [Brand Väggs krav för att använda Log Analytics agent](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)
 
 - [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md) 
 
@@ -86,9 +86,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka datorkonfigurationer och identifiera ändringar för nätverks resurser som är relaterade till Azure Security Center. Skapa aviseringar i Azure Monitor för att meddela dig när ändringar av kritiska resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
+- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log) 
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -112,9 +112,9 @@ Du kan också skicka data som produceras av Security Center till Azure Sentinel 
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -126,11 +126,11 @@ Du kan också skicka data som produceras av Security Center till Azure Sentinel 
 
 **Vägledning**: Azure Monitor aktivitets loggar är automatiskt tillgängliga, och dessa loggar innehåller alla Skriv åtgärder för resursen, till exempel Azure Security Center, inklusive vilka åtgärder som utfördes, vem som startade åtgärden och när de ägde rum. Skicka dina Azure-aktivitets loggar till en Log Analytics-arbetsyta för logg konsolidering och ökad kvarhållning.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
+- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/platform/platform-logs-overview.md)
+- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Skicka aktivitets loggar till en Log Analytics-arbetsyta](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)
+- [Skicka aktivitets loggar till en Log Analytics-arbetsyta](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -140,7 +140,7 @@ Du kan också skicka data som produceras av Security Center till Azure Sentinel 
 
 **Vägledning**: i Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig lagring och arkivering. 
 
-- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Ändra data lagrings perioden i Log Analytics](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -156,9 +156,9 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Komma igång med Log Analytics frågor](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+- [Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -174,11 +174,11 @@ Du kan också aktivera och anställa data som rör och tillverkas av Azure Secur
 
 - [Hantera aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) 
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
 
 - [Konfigurera automatiska svar på hot i Azure Sentinel](../sentinel/tutorial-respond-threats-playbook.md)
 
-- [Logg aviseringar i Azure Monitor](../azure-monitor/platform/alerts-unified-log.md)
+- [Logg aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-unified-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -368,7 +368,7 @@ Som standard lagras Azure Security Center data i Security Center backend-tjänst
 
 Följ Azure Security Center rekommendationer för kryptering i vila och kryptering under överföring, i förekommande fall. 
 
-- [Skicka data säkert till Log Analytics](../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)
+- [Skicka data säkert till Log Analytics](../azure-monitor/logs/data-security.md#sending-data-securely-using-tls-12)
 
 - [Förstå kryptering i överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
@@ -394,7 +394,7 @@ Följ Azure Security Center rekommendationer för kryptering i vila och krypteri
 
 **Vägledning**: Azure Security Center använder en konfigurerad Log Analytics arbets yta för att lagra data, aviseringar och rekommendationer som genereras. Konfigurera en kundhanterad nyckel (CMK) för arbets ytan som du har konfigurerat för Security Center data insamling. CMK gör det möjligt att kryptera alla data som sparas eller skickas till arbets ytan med en Azure Key Vault nyckel som skapats och ägs av dig. 
 
-- [Kundhanterad nyckel i Azure Monitor](../azure-monitor/platform/customer-managed-keys.md)
+- [Kundhanterad nyckel i Azure Monitor](../azure-monitor/logs/customer-managed-keys.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -404,7 +404,7 @@ Följ Azure Security Center rekommendationer för kryptering i vila och krypteri
 
 **Vägledning**: Använd Azure Monitor för att skapa aviseringar när ändringar sker i kritiska Azure-resurser som är relaterade till Azure Security Center. Dessa ändringar kan omfatta alla åtgärder som ändrar konfigurationer som är relaterade till Security Center, t. ex. inaktive ring av aviseringar eller rekommendationer, eller uppdatering eller borttagning av data lager.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -596,7 +596,7 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 **Vägledning**: Azure Security Center använder en konfigurerad Log Analytics arbets yta för att lagra data, aviseringar och rekommendationer som genereras. Konfigurera en kundhanterad nyckel (CMK) för arbets ytan som du har konfigurerat för Security Center data insamling. CMK gör det möjligt att kryptera alla data som sparas eller skickas till arbets ytan med en Azure Key Vault nyckel som skapats och ägs av dig. 
 
-- [Kundhanterad nyckel i Azure Monitor](../azure-monitor/platform/customer-managed-keys.md)
+- [Kundhanterad nyckel i Azure Monitor](../azure-monitor/logs/customer-managed-keys.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -656,7 +656,7 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 **Vägledning**: Säkerställ att du regelbundet kan utföra återställning med Azure Resource Manager backade mallfiler. Testa återställning av säkerhetskopierade nycklar som hanteras av kunden.
 
-- [Hantera Log Analytics arbets yta med Azure Resource Manager-mallar](../azure-monitor/samples/resource-manager-workspace.md)
+- [Hantera Log Analytics arbets yta med Azure Resource Manager-mallar](../azure-monitor/logs/resource-manager-workspace.md)
 
 - [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 

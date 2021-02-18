@@ -3,16 +3,16 @@ title: Samla in & analysera resurs loggar
 description: Registrera och analysera resurs logg händelser för Azure Container Registry, till exempel autentisering, avbildnings-push och image pull.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348593"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572005"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry loggar för diagnostisk utvärdering och granskning
 
-Den här artikeln beskriver hur du samlar in loggdata för ett Azure Container Registry med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [resurs loggar](../azure-monitor/platform/platform-logs-overview.md) (tidigare kallade *diagnostikloggar*) för användar drivna händelser i registret. Samla in och använda dessa data för att möta behoven, till exempel:
+Den här artikeln beskriver hur du samlar in loggdata för ett Azure Container Registry med hjälp av funktioner i [Azure Monitor](../azure-monitor/overview.md). Azure Monitor samlar in [resurs loggar](../azure-monitor/essentials/platform-logs-overview.md) (tidigare kallade *diagnostikloggar*) för användar drivna händelser i registret. Samla in och använda dessa data för att möta behoven, till exempel:
 
 * Granska händelser för autentisering av registret för att säkerställa säkerhet och efterlevnad 
 
@@ -39,21 +39,21 @@ Resurs loggar innehåller information som genereras av Azure-resurser som beskri
 
 * **ContainerRegistryLoginEvents**  – händelser och status för klientautentisering, inklusive inkommande identitet och IP-adress
 * **ContainerRegistryRepositoryEvents** – åtgärder som push och pull för avbildningar och andra artefakter i register databaser
-* **AzureMetrics**  -  [Container Registry-mått](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) som aggregerade push-och pull-antal.
+* **AzureMetrics**  -  [Container Registry-mått](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries) som aggregerade push-och pull-antal.
 
 För åtgärder innehåller loggdata följande:
   * Status för lyckades eller misslyckades
   * Start-och slutdatum stämplar
 
-Förutom resurs loggar tillhandahåller Azure en [aktivitets logg](../azure-monitor/platform/platform-logs-overview.md), en enda post på prenumerations nivå med Azures hanterings händelser, till exempel när ett behållar register skapas eller tas bort.
+Förutom resurs loggar tillhandahåller Azure en [aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md), en enda post på prenumerations nivå med Azures hanterings händelser, till exempel när ett behållar register skapas eller tas bort.
 
 ## <a name="enable-collection-of-resource-logs"></a>Aktivera insamling av resurs loggar
 
-Insamling av resurs loggar för ett behållar register är inte aktiverat som standard. Aktivera diagnostiska inställningar uttryckligen för varje register som du vill övervaka. Alternativ för att aktivera diagnostikinställningar finns i [skapa diagnostisk inställning för att samla in plattforms loggar och mått i Azure](../azure-monitor/platform/diagnostic-settings.md).
+Insamling av resurs loggar för ett behållar register är inte aktiverat som standard. Aktivera diagnostiska inställningar uttryckligen för varje register som du vill övervaka. Alternativ för att aktivera diagnostikinställningar finns i [skapa diagnostisk inställning för att samla in plattforms loggar och mått i Azure](../azure-monitor/essentials/diagnostic-settings.md).
 
 Om du till exempel vill visa loggar och mått för ett behållar register i nära real tid i Azure Monitor, samla in resurs loggarna i en Log Analytics arbets yta. Om du vill aktivera den här diagnostikinställningar använder du Azure Portal:
 
-1. Om du inte redan har en arbets yta skapar du en arbets yta med hjälp av [Azure Portal](../azure-monitor/learn/quick-create-workspace.md). För att minimera svars tiden i data insamlingen kontrollerar du att arbets ytan finns i **samma region** som behållar registret.
+1. Om du inte redan har en arbets yta skapar du en arbets yta med hjälp av [Azure Portal](../azure-monitor/logs/quick-create-workspace.md). För att minimera svars tiden i data insamlingen kontrollerar du att arbets ytan finns i **samma region** som behållar registret.
 1. Välj registret i portalen och välj **övervakning > diagnostikinställningar > Lägg till diagnostisk inställning**.
 1. Ange ett namn för inställningen och välj **Skicka till Log Analytics**.
 1. Välj arbets ytan för registrets diagnostikloggar.
@@ -81,9 +81,9 @@ Följande bild visar exempel på utdata:
 
 ![Frågeloggdata](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-En själv studie kurs om hur du använder Log Analytics i Azure Portal finns i [Kom igång med Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)eller testa Log Analytics [demo miljö](https://portal.loganalytics.io/demo). 
+En själv studie kurs om hur du använder Log Analytics i Azure Portal finns i [Kom igång med Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)eller testa Log Analytics [demo miljö](https://portal.loganalytics.io/demo). 
 
-Mer information om logg frågor finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Mer information om logg frågor finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="query-examples"></a>Exempelfrågor
 
@@ -146,5 +146,5 @@ Du kan också strömma diagnostikloggar till en [Azure Event Hub](../event-hubs/
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om att använda [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) och skapa [logg frågor](../azure-monitor/log-query/get-started-queries.md).
-* Se [Översikt över Azures plattforms loggar](../azure-monitor/platform/platform-logs-overview.md) för att lära dig om plattforms loggar som är tillgängliga på olika lager i Azure.
+* Lär dig mer om att använda [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) och skapa [logg frågor](../azure-monitor/logs/get-started-queries.md).
+* Se [Översikt över Azures plattforms loggar](../azure-monitor/essentials/platform-logs-overview.md) för att lära dig om plattforms loggar som är tillgängliga på olika lager i Azure.

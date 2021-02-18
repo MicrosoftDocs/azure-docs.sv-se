@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571340"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Säkerhets rekommendationer för virtuella datorer i Azure
 
@@ -56,7 +56,7 @@ Allmän information om Azure Security Center finns i [Azure Security Center?](..
 
 | Rekommendation | Kommentarer | Security Center |
 |-|----|--|
-| Övervaka dina virtuella datorer. | Du kan använda [Azure Monitor for VMS](../azure-monitor/insights/vminsights-overview.md) för att övervaka statusen för dina virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer. Prestanda problem med en virtuell dator kan leda till avbrott i tjänsten, vilket strider mot tillgänglighetens säkerhets princip. | - |
+| Övervaka dina virtuella datorer. | Du kan använda [Azure Monitor for VMS](../azure-monitor/vm/vminsights-overview.md) för att övervaka statusen för dina virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer. Prestanda problem med en virtuell dator kan leda till avbrott i tjänsten, vilket strider mot tillgänglighetens säkerhets princip. | - |
 
 ## <a name="networking"></a>Nätverk
 

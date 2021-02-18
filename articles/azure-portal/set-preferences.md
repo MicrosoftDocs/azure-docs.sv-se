@@ -4,12 +4,12 @@ description: Du kan ändra Azure Portal standardinställningarna så att de pass
 keywords: inställningar, tids gräns, språk, regional
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094118"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588803"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Hantera dina inställningar i Microsoft Azure-portalen
 
@@ -71,7 +71,7 @@ Om du vill läsa alla meddelanden som tagits emot under den aktuella sessionen v
 
 ![Skärm bild som visar Azure Portal global rubrik med meddelanden markerade](./media/set-preferences/read-notifications.png)
 
-Om du vill läsa meddelanden från tidigare sessioner söker du efter händelser i aktivitets loggen. Mer information finns i [Visa aktivitets loggen](../azure-monitor/platform/activity-log.md#view-the-activity-log). 
+Om du vill läsa meddelanden från tidigare sessioner söker du efter händelser i aktivitets loggen. Mer information finns i [Visa aktivitets loggen](../azure-monitor/essentials/activity-log.md#view-the-activity-log). 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>Ändra inställningen för tids gräns för inaktivitet
 

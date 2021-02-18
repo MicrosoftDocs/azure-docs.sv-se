@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: dff83159511c6e8a08e8f212c01244e923ad1f5b
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4f741c1317f70079755b61f7ad94a415cd039865
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578884"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Vad är VM-skalningsuppsättningar?
 Med skalnings uppsättningar för virtuella Azure-datorer kan du skapa och hantera en grupp med belastningsutjämnade virtuella datorer. Antalet VM-instanser kan automatiskt öka eller minska som svar på efterfrågan eller ett definierat schema. Skalningsuppsättningar tillhandahåller hög tillgänglighet för dina program, och låter dig centralt hantera, konfigurera och uppdatera ett stort antal virtuella datorer. Med VM-skalningsuppsättningar kan du skapa storskaliga tjänster för områden som beräkning, stordata och arbetsbelastningar i containrar.
@@ -57,7 +57,7 @@ Det tillkommer ingen extra kostnad för skalningsuppsättningar. Du betalar bara
 
 ## <a name="how-to-monitor-your-scale-sets"></a>Så här övervakar du dina skalnings uppsättningar
 
-Använd [Azure Monitor for VMS](../azure-monitor/insights/vminsights-overview.md), som har en enkel onboarding-process och automatiserar samlingen av viktiga prestanda räknare för processor, minne, disk och nätverk från de virtuella datorerna i din skalnings uppsättning. Den innehåller också ytterligare övervakningsfunktioner och fördefinierade visualiseringar som hjälper dig att fokusera på tillgänglighet och prestanda för dina skalnings uppsättningar.
+Använd [Azure Monitor for VMS](../azure-monitor/vm/vminsights-overview.md), som har en enkel onboarding-process och automatiserar samlingen av viktiga prestanda räknare för processor, minne, disk och nätverk från de virtuella datorerna i din skalnings uppsättning. Den innehåller också ytterligare övervakningsfunktioner och fördefinierade visualiseringar som hjälper dig att fokusera på tillgänglighet och prestanda för dina skalnings uppsättningar.
 
 Aktivera övervakning av den [virtuella datorns skalnings uppsättnings program](../azure-monitor/app/azure-vm-vmss-apps.md) med Application Insights för att samla in detaljerad information om ditt program, till exempel sidvyer, program begär Anden och undantag. Kontrol lera att programmet är tillgängligt genom att konfigurera ett [tillgänglighets test](../azure-monitor/app/monitor-web-app-availability.md) för att simulera användar trafik.
 

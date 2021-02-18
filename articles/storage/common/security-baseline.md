@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195729"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591561"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azures säkerhets bas linje för Azure Storage
 
@@ -158,7 +158,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 - [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -180,7 +180,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: mata in loggar via Azure Monitor för att samla in säkerhets data som genereras av slut punkter, nätverks resurser och andra säkerhets system. I Azure Monitor använder du Log Analytics arbets ytor (er) för att fråga och utföra analyser och använda Azure Storage konton för långsiktig lagring eller lagrings utrymme, om du vill ha säkerhetsfunktioner som till exempel oföränderlig lagring och framtvingade kvarhållning.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -210,7 +210,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 - [Konfigurera bevarande princip för Azure Storage konto loggar](./storage-monitor-storage-account.md#configure-logging)
 
-- [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -238,7 +238,7 @@ Aktivera också Avancerat skydd för ditt Azure Storage-konto. Avancerat skydd f
 
 - [Hantera aviseringar i Azure Security Center](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/learn/tutorial-response.md)
+- [Så här aviserar du om Log Analytics-loggdata](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Analysloggning i Azure Storage](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 - [Förstå identifieringar av Azure AD-risker](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Konfigurera åtgärds grupper för anpassad avisering och avisering](../../azure-monitor/platform/action-groups.md)
+- [Konfigurera åtgärds grupper för anpassad avisering och avisering](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -572,7 +572,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i lagrings konto resurser. Du kan också aktivera Azure Storage loggning för att spåra hur varje begäran som görs mot Azure Storage auktoriserades. Loggarna anger om en begäran har gjorts anonymt, genom att använda en OAuth 2,0-token med hjälp av delad nyckel eller genom att använda en signatur för delad åtkomst (SAS). Använd dessutom Azure Monitor för att varna vid anonym åtkomst för lagrings konton med anonymt autentiserings villkor.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/platform/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Analysloggning i Azure Storage](./storage-analytics-logging.md)
 

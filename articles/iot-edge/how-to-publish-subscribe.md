@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621903"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633979"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Publicera och prenumerera med Azure IoT Edge
 
@@ -171,7 +171,7 @@ Några saker att tänka på när du skriver auktoriseringsprincipen:
     - `{{iot:identity}}` representerar identiteten för den för tillfället anslutna klienten. Till exempel en enhets identitet som `myDevice` eller en modul identitet som `myEdgeDevice/SampleModule` .
     - `{{iot:device_id}}` representerar identiteten för den anslutna enhet som är ansluten. Till exempel en enhets identitet som `myDevice` eller enhets identiteten där en modul körs `myEdgeDevice` .
     - `{{iot:module_id}}` representerar identiteten för den för tillfället anslutna modulen. Den här variabeln är tom för anslutna enheter eller en modul identitet som `SampleModule` .
-    - `{{iot:this_device_id}}` representerar identiteten för den IoT Edge enhet som kör auktoriseringsprincipen. Ett exempel är `myIoTEdgeDevice`.
+    - `{{iot:this_device_id}}` representerar identiteten för den IoT Edge enhet som kör auktoriseringsprincipen. Till exempel `myIoTEdgeDevice`.
 
 Auktoriseringar för avsnitt om IoT Hub hanteras något annorlunda än användardefinierade ämnen. Här är de viktiga punkter som du bör komma ihåg:
 
@@ -366,8 +366,8 @@ SDK: er för [Azure IoT-enheter](https://github.com/Azure/azure-iot-sdks) låter
 
 Att skicka telemetridata till IoT Hub liknar att publicera i ett användardefinierat ämne, men med hjälp av ett viss IoT Hub-ämne:
 
-- För en enhet skickas telemetri på följande avsnitt: `devices/<device_name>/messages/events`
-- För en modul skickas telemetri i avsnittet: `devices/<device_name>/<module_name>/messages/events`
+- För en enhet skickas telemetri på följande avsnitt: `devices/<device_name>/messages/events/`
+- För en modul skickas telemetri i avsnittet: `devices/<device_name>/<module_name>/messages/events/`
 
 Skapa dessutom en väg, till exempel `FROM /messages/* INTO $upstream` för att skicka telemetri från IoT Edge MQTT-Broker till IoT Hub. Mer information om routning finns i [deklarera vägar](module-composition.md#declare-routes).
 

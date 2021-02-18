@@ -4,12 +4,12 @@ description: Automatisera anpassade dagliga/veckovis/månads Visa rapporter med 
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680458"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590037"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisera anpassade rapporter med Azure Application Insights-data
 
@@ -31,7 +31,7 @@ Varje företag har sina unika rapporterings behov, till exempel:
 
 Du kan [köra program mässigt fråga Application Insights](https://dev.applicationinsights.io/) data för att skapa anpassade rapporter enligt ett schema. Följande alternativ kan hjälpa dig att komma igång snabbt:
 
-* [Automatisera rapporter med energi automatisering](../platform/logicapp-flow-connector.md)
+* [Automatisera rapporter med energi automatisering](../logs/logicapp-flow-connector.md)
 * [Automatisera rapporter med Logic Apps](automate-with-logic-apps.md)
 * Använd [Azure Function](../../azure-functions/functions-get-started.md) -mallen "Application Insights schemalagd Sammanfattning" i övervaknings scenariot. Den här funktionen använder SendGrid för att leverera e-postmeddelandet. 
 
@@ -150,7 +150,7 @@ De här stegen gäller endast om du inte redan har ett SendGrid-konto konfigurer
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om att skapa [analys frågor](../log-query/get-started-queries.md).
+* Lär dig mer om att skapa [analys frågor](../logs/get-started-queries.md).
 * Lär dig mer om att [fråga Application Insights data](https://dev.applicationinsights.io/) på ett program
 * Läs mer om [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Lär dig mer om [Microsoft Power automatisering](https://ms.flow.microsoft.com).

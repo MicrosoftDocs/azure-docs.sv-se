@@ -3,15 +3,15 @@ title: Azure Active Directory-integrering för Azure Red Hat OpenShift
 description: Lär dig hur du skapar en Azure AD-säkerhetsgrupp och användare för att testa appar i ditt Microsoft Azure Red Hat OpenShift-kluster.
 author: jimzim
 ms.author: jzim
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ee8613d0300a941f80577c98be106173d5d3ced1
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f0bf28d61d4c9ad95a485fb4b60e370c16ace16c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633333"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-integrering för Azure Red Hat OpenShift
 
@@ -29,14 +29,14 @@ Microsoft Azure Red Hat OpenShift måste ha behörighet att utföra åtgärder p
 
 I [Azure Portal](https://portal.azure.com)kontrollerar du att klienten visas under ditt användar namn längst upp till höger i portalen:
 
-![Skärm bild av portalen med klient organisation listad överst till höger ](./media/howto-create-tenant/tenant-callout.png) om fel klient visas, klicka på ditt användar namn längst upp till höger och klicka sedan på **Växla katalog**och välj rätt klient i listan **alla kataloger** .
+![Skärm bild av portalen med klient organisation listad överst till höger ](./media/howto-create-tenant/tenant-callout.png) om fel klient visas, klicka på ditt användar namn längst upp till höger och klicka sedan på **Växla katalog** och välj rätt klient i listan **alla kataloger** .
 
 Skapa en ny Azure Active Directory ägarens användare för att logga in i ditt Azure Red Hat OpenShift-kluster.
 
 1. Gå till bladet [användare – alla användare](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
 2. Klicka på **+ ny användare** för att öppna fönstret **användare** .
 3. Ange ett **namn** för den här användaren.
-4. Skapa ett **användar namn** baserat på namnet på den klient som du skapade, med  `.onmicrosoft.com` tillägg i slutet. Exempelvis `yourUserName@yourTenantName.onmicrosoft.com`. Skriv ned det här användar namnet. Du behöver den för att logga in på klustret.
+4. Skapa ett **användar namn** baserat på namnet på den klient som du skapade, med  `.onmicrosoft.com` tillägg i slutet. Till exempel `yourUserName@yourTenantName.onmicrosoft.com`. Skriv ned det här användar namnet. Du behöver den för att logga in på klustret.
 5. Klicka på **katalog roll** för att öppna fönstret katalog roll och välj **ägare** och klicka sedan på **OK** längst ned i fönstret.
 6. I fönstret **användare** klickar du på **Visa lösen ord** och registrerar det tillfälliga lösen ordet. När du har loggat in första gången uppmanas du att återställa den.
 7. Klicka på **skapa** längst ned i fönstret för att skapa användaren.
@@ -84,7 +84,7 @@ Om din organisation inte redan har en Azure Active Directory-app (Azure AD) som 
 Generera en klient hemlighet för autentisering av appen till Azure Active Directory.
 
 1. I avsnittet **Hantera** på sidan registrerings program klickar du på **certifikat & hemligheter**.
-2. Klicka på **+ ny klient hemlighet**i fönstret **certifikat & hemligheter** .  Fönstret **Lägg till en klient hemlighet** visas.
+2. Klicka på **+ ny klient hemlighet** i fönstret **certifikat & hemligheter** .  Fönstret **Lägg till en klient hemlighet** visas.
 3. Ange en **Beskrivning**.
 4. Ange **förfallo datum** för den varaktighet du föredrar, till exempel **på två år**.
 5. Klicka på **Lägg till** och nyckelvärdet visas i avsnittet **klient hemligheter** på sidan.
@@ -109,7 +109,7 @@ Mer information om hur du skapar ett nytt Azure AD-program finns i [Registrera e
 5. Expandera **katalogen** i listan nedan och aktivera **Directory. ReadAll**.
 6. Klicka på **Lägg till behörigheter** för att acceptera ändringarna.
 7. Panelen API-behörigheter bör nu visa både *User. Read* och *Directory. ReadAll*. Observera varningen i kolumnen **admin medgivande som krävs** bredvid *Directory. ReadAll*.
-8. Om du är *administratör för Azure-prenumeration*klickar du på **bevilja administratörs medgivande för *prenumerations namn* ** nedan. Om du inte är *administratör för Azure-prenumerationen*ber du ditt medgivande från administratören.
+8. Om du är *administratör för Azure-prenumeration* klickar du på **bevilja administratörs medgivande för *prenumerations namn*** nedan. Om du inte är *administratör för Azure-prenumerationen* ber du ditt medgivande från administratören.
 
 ![Skärm bild av panelen API-behörigheter. User. Read och Directory. ReadAll-behörigheter lades till, administratörs medgivande krävs för Directory. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 

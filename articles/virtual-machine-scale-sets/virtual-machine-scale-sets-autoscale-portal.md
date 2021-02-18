@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb4084a7ee0d9d719a88c077fa8c63803aa6934
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080598"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591374"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Skala automatiskt en skalnings uppsättning för virtuella datorer i Azure Portal
 När du skapar en skalningsuppsättning, definierar du antalet virtuella datorinstanser som du vill köra. När ditt program behöver ändras, kan du automatiskt öka eller minska antalet virtuella datorinstanser. Möjligheten att skala automatiskt låter dig hålla dig uppdaterad med kundernas behov eller svara på ändringar i programprestandan under hela livscykeln för din app.
@@ -35,7 +35,7 @@ Om dina programkrav ökar, ökar även belastningen på de virtuella datorinstan
 
     ![Aktivera autoskalning i Azure Portal](media/virtual-machine-scale-sets-autoscale-portal/enable-autoscale.png)
 
-4. Ange ett namn för inställningarna, till exempel *autoskalning*och välj sedan alternativet för att **lägga till en regel**.
+4. Ange ett namn för inställningarna, till exempel *autoskalning* och välj sedan alternativet för att **lägga till en regel**.
 
 5. Nu ska vi skapa en regel som ökar antalet virtuella dator instanser i en skalnings uppsättning när den genomsnittliga CPU-belastningen är större än 70% över en 10 minuters period. När regeln utlöses ökar antalet virtuella dator instanser med 20%. I skalnings uppsättningar med ett litet antal VM-instanser kan du ställa in **åtgärden** att *öka antalet med* och sedan ange *1* eller *2* för *antalet instanser*. I skalnings uppsättningar med ett stort antal VM-instanser kan en ökning på 10% eller 20% VM-instanser vara lämpligare.
 
@@ -83,7 +83,7 @@ Profilen för autoskalning måste definiera ett lägsta, högsta och standard an
 
 1. Ange följande gränser för instans:
 
-    | Minimum | Maximal | Default|
+    | Minimum | Maximal | Standardvärde|
     |---------|---------|--------|
     | 2       | 10      | 2      |
 
@@ -113,7 +113,7 @@ I föregående exempel skalades automatiskt en skalnings uppsättning in eller u
 6. Välj alla arbets dagar, måndag till fredag.
 7. Välj lämplig tidszon och ange sedan en **Start tid** på *09:00*.
 8. Välj att **lägga till ett skalnings villkor** igen. Upprepa processen för att skapa ett schema med namnet *Scale i under kväll* som skalas till *3* instanser, upprepas varje veckodag och börjar vid *18:00*.
-9. Välj **Spara**om du vill använda dina schemabaserade regler för autoskalning.
+9. Välj **Spara** om du vill använda dina schemabaserade regler för autoskalning.
 
     ![Skapa regler för autoskalning som skalas enligt ett schema](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
@@ -121,8 +121,8 @@ Om du vill se hur reglerna för automatisk skalning appliceras väljer du **Kör
 
 
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln har du lärt dig hur du använder regler för autoskalning för att skala vågrätt och öka eller minska *antalet* virtuella dator instanser i din skalnings uppsättning. Du kan också skala lodrätt för att öka eller minska *storleken*på den virtuella dator instansen. Mer information finns i [Lodrät autoskalning med skalnings uppsättningar för virtuella datorer](virtual-machine-scale-sets-vertical-scale-reprovision.md).
+I den här artikeln har du lärt dig hur du använder regler för autoskalning för att skala vågrätt och öka eller minska *antalet* virtuella dator instanser i din skalnings uppsättning. Du kan också skala lodrätt för att öka eller minska *storleken* på den virtuella dator instansen. Mer information finns i [Lodrät autoskalning med skalnings uppsättningar för virtuella datorer](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 Information om hur du hanterar dina VM-instanser finns i [Hantera skalnings uppsättningar för virtuella datorer med Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md).
 
-Information om hur du genererar aviseringar när reglerna för autoskalning utlöses finns i [använda åtgärder för autoskalning för att skicka aviseringar via e-post och webhook i Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md). Du kan också [använda gransknings loggar för att skicka aviseringar om e-post och webhook-aviseringar i Azure Monitor](../azure-monitor/platform/alerts-log-webhook.md).
+Information om hur du genererar aviseringar när reglerna för autoskalning utlöses finns i [använda åtgärder för autoskalning för att skicka aviseringar via e-post och webhook i Azure Monitor](../azure-monitor/autoscale/autoscale-webhook-email.md). Du kan också [använda gransknings loggar för att skicka aviseringar om e-post och webhook-aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-log-webhook.md).

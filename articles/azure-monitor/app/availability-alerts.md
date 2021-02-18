@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: cbafa7997d203cf06a3e91965355258f0088d77e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589882"
 ---
 # <a name="availability-alerts"></a>Tillgänglighetsaviseringar
 
@@ -24,7 +24,7 @@ Aviseringar är nu automatiskt aktiverade som standard, men för att helt kunna 
 ![Skapa upplevelse](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Med de [nya enhetliga aviseringarna](../platform/alerts-overview.md) **måste** aviserings regelns allvarlighets grad och meddelande inställningar med [Åtgärds grupper](../platform/action-groups.md) konfigureras i aviserings upplevelsen. Utan följande steg får du bara meddelanden i portalen.
+>  Med de [nya enhetliga aviseringarna](../alerts/alerts-overview.md) **måste** aviserings regelns allvarlighets grad och meddelande inställningar med [Åtgärds grupper](../alerts/action-groups.md) konfigureras i aviserings upplevelsen. Utan följande steg får du bara meddelanden i portalen.
 
 1. När du har sparat tillgänglighets testet går du till fliken information och klickar på ellipsen efter det test du nyss gjort. Klicka på "Redigera avisering".
 
@@ -39,7 +39,7 @@ Aviseringar är nu automatiskt aktiverade som standard, men för att helt kunna 
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Avisering på X av Y-platser som rapporterar problem
 
-Varnings regeln X out of Y locations är aktive rad som standard i den [nya enhetliga aviserings upplevelsen](../platform/alerts-overview.md)när du skapar ett nytt tillgänglighets test. Du kan avanmäla genom att välja alternativet "Klassiskt" eller välja att inaktivera varnings regeln.
+Varnings regeln X out of Y locations är aktive rad som standard i den [nya enhetliga aviserings upplevelsen](../alerts/alerts-overview.md)när du skapar ett nytt tillgänglighets test. Du kan avanmäla genom att välja alternativet "Klassiskt" eller välja att inaktivera varnings regeln.
 
 > [!NOTE]
 > Konfigurera de åtgärds grupper som ska få meddelanden när aviseringen utlöses genom att följa stegen ovan. Utan det här steget får du bara meddelanden i portalen när regeln utlöses.
@@ -47,7 +47,7 @@ Varnings regeln X out of Y locations är aktive rad som standard i den [nya enhe
 
 ### <a name="alert-on-availability-metrics"></a>Avisering om tillgänglighets mått
 
-Med hjälp av de [nya enhetliga aviseringarna](../platform/alerts-overview.md)kan du även varna för segmenterad mängd tillgänglighet och test varaktighets mått:
+Med hjälp av de [nya enhetliga aviseringarna](../alerts/alerts-overview.md)kan du även varna för segmenterad mängd tillgänglighet och test varaktighets mått:
 
 1. Välj en Application Insights resurs i mått upplevelsen och välj ett tillgänglighets mått:
 
@@ -57,7 +57,7 @@ Med hjälp av de [nya enhetliga aviseringarna](../platform/alerts-overview.md)ka
 
 ### <a name="alert-on-custom-analytics-queries"></a>Avisering om anpassade analys frågor
 
-Med hjälp av de [nya enhetliga aviseringarna](../platform/alerts-overview.md)kan du varna dig om [anpassade logg frågor](../platform/alerts-unified-log.md). Med anpassade frågor kan du varna dig om godtyckligt villkor som hjälper dig att få den mest pålitliga signalen av tillgänglighets problem. Detta gäller även om du skickar anpassade tillgänglighets resultat med hjälp av TrackAvailability SDK.
+Med hjälp av de [nya enhetliga aviseringarna](../alerts/alerts-overview.md)kan du varna dig om [anpassade logg frågor](../alerts/alerts-unified-log.md). Med anpassade frågor kan du varna dig om godtyckligt villkor som hjälper dig att få den mest pålitliga signalen av tillgänglighets problem. Detta gäller även om du skickar anpassade tillgänglighets resultat med hjälp av TrackAvailability SDK.
 
 > [!Tip]
 > Måtten för tillgänglighets data inkluderar eventuella anpassade tillgänglighets resultat som du kan skicka genom att anropa vår TrackAvailability SDK. Du kan använda aviseringar om mått för att få aviseringar om anpassade tillgänglighets resultat.
@@ -65,7 +65,7 @@ Med hjälp av de [nya enhetliga aviseringarna](../platform/alerts-overview.md)ka
 
 ## <a name="automate-alerts"></a>Automatisera aviseringar
 
-Information om hur du automatiserar den här processen med Azure Resource Manager mallar finns i [skapa en Metric-avisering med Resource Manager-mallens](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) dokumentation.
+Information om hur du automatiserar den här processen med Azure Resource Manager mallar finns i [skapa en Metric-avisering med Resource Manager-mallens](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) dokumentation.
 
 ## <a name="troubleshooting"></a>Felsökning
 

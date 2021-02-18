@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3f0d191157fbabeab2b6f08a9d0a9b3bf1a35250
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591889"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Utvärdera och förbättra noggrannhet i Custom Speech
 
@@ -109,12 +109,13 @@ Ljud med medmärkta avskrifter ger störst precisions förbättringar om ljudet 
 
 Överväg följande information:
 
-* Custom Speech kan bara avbilda ord kontext för att minska ersättnings fel, inte infognings-eller borttagnings fel.
+* Utbildning med ljud ger flest fördelar om ljudet också är svårt att förstå för människor. I de flesta fall bör du börja träna genom att bara använda relaterad text.
+* Om du använder ett av de mest använda språken, till exempel amerikansk engelska, så kan det vara en chans att det inte finns något behov av att träna med ljuddata. För sådana språk erbjuder bas modellerna redan bra igenkännings resultat i de flesta fall. Det är förmodligen tillräckligt för att träna med relaterad text.
+* Custom Speech kan bara avbilda ord kontext för att minska ersättnings fel, inte infoga eller ta bort fel.
 * Undvik exempel som innehåller avskrifts fel, men ta med en mångfald av ljud kvaliteten.
 * Undvik meningar som inte är relaterade till problem domänen. Orelaterade meningar kan skada din modell.
 * När kvaliteten på avskrifter varierar kan du duplicera undantagna meningar (t. ex. utmärkta avskrifter som innehåller viktiga fraser) för att öka deras vikt.
 * Tal tjänsten använder automatiskt avskrifterna för att förbättra erkännandet av domänanslutna ord och fraser som om de har lagts till som relaterad text.
-* Utbildning med ljud ger flest fördelar om ljudet också är svårt att förstå för människor. I de flesta fall bör du börja träna genom att bara använda relaterad text.
 * Det kan ta flera dagar för en utbildnings åtgärd att slutföras. För att förbättra utbildningens hastighet måste du skapa en prenumeration på din röst tjänst i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 
 > [!NOTE]

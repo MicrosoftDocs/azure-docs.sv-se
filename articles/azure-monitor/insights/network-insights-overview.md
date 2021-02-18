@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0616d14a890cfd5dd1a486dd21670c7c58dbeebc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734165"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573524"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor för nätverk
 
-Azure Monitor för nätverk ger en omfattande vy över [hälsa](../../service-health/resource-health-checks-resource-types.md) och [mått](../platform/metrics-supported.md) för alla distribuerade nätverks resurser, utan att kräva någon konfiguration. Den ger även till gång till funktioner för nätverks övervakning, t. ex. [anslutnings övervakaren](../../network-watcher/connection-monitor-overview.md), [flödes loggning för nätverks säkerhets grupper (nsg: er)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)och [trafikanalys](../../network-watcher/traffic-analytics.md). Och innehåller [andra funktioner för nätverksdiagnostik.](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)
+Azure Monitor för nätverk ger en omfattande vy över [hälsa](../../service-health/resource-health-checks-resource-types.md) och [mått](../essentials/metrics-supported.md) för alla distribuerade nätverks resurser, utan att kräva någon konfiguration. Den ger även till gång till funktioner för nätverks övervakning, t. ex. [anslutnings övervakaren](../../network-watcher/connection-monitor-overview.md), [flödes loggning för nätverks säkerhets grupper (nsg: er)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)och [trafikanalys](../../network-watcher/traffic-analytics.md). Och innehåller [andra funktioner för nätverksdiagnostik.](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)
 
 Azure Monitor för nätverk är strukturerad kring dessa viktiga komponenter i övervakningen:
 - [Nätverks hälsa och-mått](#networkhealth)
@@ -149,4 +149,4 @@ Du kan redigera arbets boken som du ser i valfri sida-eller detaljerad Metric-vy
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om nätverks övervakning: [Vad är Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md)
-- Lär dig mer om arbets böckerna i scenarier är utformade för att stödja, skapa rapporter och anpassa befintliga rapporter med mera: [skapa interaktiva rapporter med Azure Monitor arbets böcker](../platform/workbooks-overview.md)
+- Lär dig mer om arbets böckerna i scenarier är utformade för att stödja, skapa rapporter och anpassa befintliga rapporter med mera: [skapa interaktiva rapporter med Azure Monitor arbets böcker](../visualize/workbooks-overview.md)
