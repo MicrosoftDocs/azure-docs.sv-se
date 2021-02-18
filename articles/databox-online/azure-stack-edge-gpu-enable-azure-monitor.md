@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595968"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivera Azure Monitor på din Azure Stack Edge Pro GPU-enhet
 
@@ -49,7 +49,7 @@ Utför följande steg för att skapa en Log Analytics-arbetsyta. En Log Analytic
 
         ![Granska + skapa för Log Analytics arbets yta](media/azure-stack-edge-gpu-enable-azure-monitor/create-log-analytics-workspace-review-create-1.png)
 
-Mer information finns i de detaljerade stegen i [skapa en Log Analytics arbets yta via Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Mer information finns i de detaljerade stegen i [skapa en Log Analytics arbets yta via Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
 
 
@@ -57,7 +57,7 @@ Mer information finns i de detaljerade stegen i [skapa en Log Analytics arbets y
 
 Utför följande steg för att aktivera behållar insikter på din arbets yta. 
 
-1. Följ de detaljerade stegen i [så här lägger du till Azure Monitor containers-lösningen](../azure-monitor/insights/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution). Använd följande mallfil `containerSolution.json` :
+1. Följ de detaljerade stegen i [så här lägger du till Azure Monitor containers-lösningen](../azure-monitor/containers/container-insights-hybrid-setup.md#how-to-add-the-azure-monitor-containers-solution). Använd följande mallfil `containerSolution.json` :
 
     ```yml
     {

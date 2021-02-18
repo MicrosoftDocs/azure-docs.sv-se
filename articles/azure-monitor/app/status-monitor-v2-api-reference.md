@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319005"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587528"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent-API-referens
 
@@ -392,7 +392,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Du kan kontrol lera processen på den instrumenterade datorn för att se om alla DLL-filer har lästs in. Om övervakningen fungerar bör minst 12 DLL-filer läsas in.
 
-Kör kommandot `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
+Kör kommandot `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Nästa steg
 
   Visa telemetrin:
- - [Utforska mått](../platform/metrics-charts.md) för att övervaka prestanda och användning.
+ - [Utforska mått](../essentials/metrics-charts.md) för att övervaka prestanda och användning.
 - [Sök efter händelser och loggar](./diagnostic-search.md) för att diagnostisera problem.
-- Använd [Analytics](../log-query/log-query-overview.md) för mer avancerade frågor.
+- Använd [Analytics](../logs/log-query-overview.md) för mer avancerade frågor.
 - [Skapa instrument paneler](./overview-dashboard.md).
  
  Lägg till mer telemetri:

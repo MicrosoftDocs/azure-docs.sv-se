@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499823"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571674"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Övervaka Site Recovery med Azure Monitor-loggar
 
-Den här artikeln beskriver hur du övervakar datorer som replikeras av Azure [Site Recovery](site-recovery-overview.md), med hjälp av [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md)och [Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Den här artikeln beskriver hur du övervakar datorer som replikeras av Azure [Site Recovery](site-recovery-overview.md), med hjälp av [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md)och [Log Analytics](../azure-monitor/logs/log-query-overview.md).
 
 Azure Monitor loggar tillhandahåller en logg data plattform som samlar in aktivitets-och resurs loggar, tillsammans med andra övervaknings data. I Azure Monitor loggar använder du Log Analytics för att skriva och testa logg frågor och för att interaktivt analysera loggdata. Du kan visualisera och fråga logg resultat och konfigurera aviseringar för att vidta åtgärder baserat på övervakade data.
 
@@ -35,8 +35,8 @@ Användning av Azure Monitor-loggar med Site Recovery stöds för **Azure till A
 Du behöver det här:
 
 - Minst en dator som skyddas i ett Recovery Services-valv.
-- En Log Analytics arbets yta för att lagra Site Recovery loggar. [Lär dig mer om](../azure-monitor/learn/quick-create-workspace.md) att konfigurera en arbets yta.
-- En grundläggande förståelse för hur du skriver, kör och analyserar logg frågor i Log Analytics. [Läs mer](../azure-monitor/log-query/log-analytics-tutorial.md).
+- En Log Analytics arbets yta för att lagra Site Recovery loggar. [Lär dig mer om](../azure-monitor/logs/quick-create-workspace.md) att konfigurera en arbets yta.
+- En grundläggande förståelse för hur du skriver, kör och analyserar logg frågor i Log Analytics. [Läs mer](../azure-monitor/logs/log-analytics-tutorial.md).
 
 Vi rekommenderar att du läser igenom [vanliga övervaknings frågor](monitoring-common-questions.md) innan du börjar.
 
@@ -62,9 +62,9 @@ Du kan samla in information om data omsättnings taxa och information om överf�
 1. Gå till arbets ytan Log Analytics och klicka på **Avancerade inställningar**.
 2. Klicka på sidan **anslutna källor** och välj ytterligare **Windows-servrar**.
 3. Hämta Windows-agenten (64-bitars) på processervern. 
-4. [Hämta arbetsyte-ID och nyckel](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [Konfigurera agenten att använda TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. [Slutför Agent installationen](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard) genom att ange ID och nyckel för den hämtade arbets ytan.
+4. [Hämta arbetsyte-ID och nyckel](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [Konfigurera agenten att använda TLS 1,2](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Slutför Agent installationen](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard) genom att ange ID och nyckel för den hämtade arbets ytan.
 7. När installationen är klar går du till Log Analytics arbets yta och klickar på **Avancerade inställningar**. Gå till sidan **data** och klicka på Windows- **prestandaräknare**. 
 8. Klicka på **+** om du vill lägga till följande två räknare med exempel intervallet 300 sekunder:
 
@@ -76,7 +76,7 @@ Data omsättningen och överföringshastigheten börjar mata in på arbets ytan.
 
 ## <a name="query-the-logs---examples"></a>Skicka frågor till loggarna – exempel
 
-Du hämtar data från loggar med hjälp av logg frågor som skrivits med [Kusto-frågespråket](../azure-monitor/log-query/get-started-queries.md). Det här avsnittet innehåller några exempel på vanliga frågor som du kan använda för att Site Recovery övervakning.
+Du hämtar data från loggar med hjälp av logg frågor som skrivits med [Kusto-frågespråket](../azure-monitor/logs/get-started-queries.md). Det här avsnittet innehåller några exempel på vanliga frågor som du kan använda för att Site Recovery övervakning.
 
 > [!NOTE]
 > Några av exemplen använder **replicationProviderName_s** inställt på **A2A**. Detta hämtar virtuella Azure-datorer som replikeras till en sekundär Azure-region med hjälp av Site Recovery. I de här exemplen kan du ersätta **A2A** med **InMageAzureV2**, om du vill hämta lokala virtuella VMware-datorer eller fysiska servrar som replikeras till Azure med hjälp av Site Recovery.
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Konfigurera aviseringar – exempel
 
-Du kan ställa in Site Recovery aviseringar baserat på Azure Monitor data. [Läs mer](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) om hur du konfigurerar logg aviseringar. 
+Du kan ställa in Site Recovery aviseringar baserat på Azure Monitor data. [Läs mer](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) om hur du konfigurerar logg aviseringar. 
 
 > [!NOTE]
 > Några av exemplen använder **replicationProviderName_s** inställt på **A2A**. Detta ställer in aviseringar för virtuella Azure-datorer som replikeras till en sekundär Azure-region. I de här exemplen kan du ersätta **A2A** med **InMageAzureV2** om du vill ställa in aviseringar för lokala virtuella VMware-datorer eller fysiska servrar som replikeras till Azure.

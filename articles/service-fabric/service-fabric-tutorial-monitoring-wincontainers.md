@@ -4,12 +4,12 @@ description: I den här självstudien konfigurerar du Azure Monitor loggar för 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840684"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588234"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Självstudie: övervaka Windows-behållare på Service Fabric med hjälp av Azure Monitor loggar
 
@@ -24,7 +24,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar de här självstudierna bör du:
 
@@ -75,7 +75,7 @@ Gör följande ändringar i *template.json*:
     "omsSolution": "ServiceFabric"
     ```
 
-3. Lägg till Microsoft Monitoring Agent som ett tillägg för virtuella datorer. Hitta resurs för skalnings uppsättningar för virtuella datorer: *resurser*  >  *"API version": "[Variables (' vmssApiVersion ')]"*. Under *egenskaperna*  >  *virtualMachineProfile*  >  *extensionProfile*  >  *Extensions*lägger du till följande tilläggs Beskrivning under *ServiceFabricNode* -tillägget: 
+3. Lägg till Microsoft Monitoring Agent som ett tillägg för virtuella datorer. Hitta resurs för skalnings uppsättningar för virtuella datorer: *resurser*  >  *"API version": "[Variables (' vmssApiVersion ')]"*. Under *egenskaperna*  >  *virtualMachineProfile*  >  *extensionProfile*  >  *Extensions* lägger du till följande tilläggs Beskrivning under *ServiceFabricNode* -tillägget: 
     
     ```json
     {
@@ -185,7 +185,7 @@ När du vill konfigurera containerlösningen i arbetsytan söker du efter *Över
 
 ![Lägga till containerlösning](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-När du uppmanas till *arbets ytan Log Analytics*väljer du den arbets yta som skapades i resurs gruppen och väljer **skapa**. Detta lägger till en *lösning för övervakning av behållare* till din arbets yta, som initierar den Log Analytics agent som distribueras av mallen för att börja samla in Docker-loggar och statistik.
+När du uppmanas till *arbets ytan Log Analytics* väljer du den arbets yta som skapades i resurs gruppen och väljer **skapa**. Detta lägger till en *lösning för övervakning av behållare* till din arbets yta, som initierar den Log Analytics agent som distribueras av mallen för att börja samla in Docker-loggar och statistik.
 
 Navigera tillbaka till *resursgruppen*. Du bör nu se den nyligen tillagda övervakningslösningen. Om du väljer det ska landnings sidan Visa dig antalet behållar avbildningar som du har kört.
 
@@ -230,6 +230,6 @@ I den här självstudiekursen lärde du dig att:
 Nu när du har konfigurerat övervakning för ditt program i behållare, prova:
 
 * Konfigurera Azure Monitor loggar för ett Linux-kluster genom att följa liknande steg som den här självstudien. Referera till [den här mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) och gör ändringar i Resource Manager-mallen.
-* Konfigurera Azure Monitor loggar för att ställa in [automatiserad avisering](../azure-monitor/platform/alerts-overview.md) för identifiering och diagnostik.
+* Konfigurera Azure Monitor loggar för att ställa in [automatiserad avisering](../azure-monitor/alerts/alerts-overview.md) för identifiering och diagnostik.
 * Utforska Service Fabric-listan över [rekommenderade prestandaräknare](service-fabric-diagnostics-event-generation-perf.md) för att konfigurera klustren.
-* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/log-query/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar.
+* Bekanta dig med funktionerna för [loggs ökning och frågor](../azure-monitor/logs/log-query-overview.md) som erbjuds som en del av Azure Monitor loggar.

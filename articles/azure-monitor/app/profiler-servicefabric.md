@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 317c02fe03a56ea3cd3a98b00f8a0080b3917108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67e7765a1f46c2be5790c11687e06ea624702b9b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930289"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589563"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profilera Live Azure Service Fabric-program med Application Insights
 
@@ -29,7 +29,7 @@ Utför följande åtgärder för att konfigurera din miljö:
 
 1. Profiler stöder .NET Framework och .net Core. Om du använder .NET Framework kontrollerar du att du använder [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) eller senare. Det räcker att bekräfta att det distribuerade operativ systemet är `Windows Server 2012 R2` eller senare. Profiler stöder .NET Core 2,1 och nyare program.
 
-1. Sök efter [Azure-diagnostik](../platform/diagnostics-extension-overview.md) tillägget i distributions mal len fil.
+1. Sök efter [Azure-diagnostik](../agents/diagnostics-extension-overview.md) tillägget i distributions mal len fil.
 
 1. Lägg till följande `SinksConfig` avsnitt som underordnat element i `WadCfg` . Ersätt `ApplicationInsightsProfiler` egenskap svärdet med din egen Application Insights Instrumentation-nyckel:  
 

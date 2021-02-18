@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 5aab78ad99b80ff1d7be92bd36847b01dbc0e33b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d38a0ea7307584c25ddec9389feaef7518bcf925
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542226"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591765"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Spåra databas aktivitet med gransknings loggar i Azure Database for MySQL flexibel Server
 
@@ -50,7 +50,7 @@ Andra parametrar som du kan justera för att styra gransknings loggnings beteend
 
 ## <a name="access-audit-logs"></a>Åtkomst till granskningsloggar
 
-Gransknings loggar är integrerade med Azure Monitor diagnostikinställningar. När du har aktiverat gransknings loggar på din MySQL-flexibla Server kan du generera dem till Azure Monitor loggar, Event Hubs eller Azure Storage. Mer information om diagnostiska inställningar finns i [dokumentationen för diagnostikloggar](../../azure-monitor/platform/platform-logs-overview.md). Mer information om hur du aktiverar diagnostikinställningar i Azure Portal finns i [artikeln Gransknings logg Portal](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
+Gransknings loggar är integrerade med Azure Monitor diagnostikinställningar. När du har aktiverat gransknings loggar på din MySQL-flexibla Server kan du generera dem till Azure Monitor loggar, Event Hubs eller Azure Storage. Mer information om diagnostiska inställningar finns i [dokumentationen för diagnostikloggar](../../azure-monitor/essentials/platform-logs-overview.md). Mer information om hur du aktiverar diagnostikinställningar i Azure Portal finns i [artikeln Gransknings logg Portal](how-to-configure-audit-logs-portal.md#set-up-diagnostics).
 
 I följande avsnitt beskrivs utdata från de MySQL-gransknings loggar som baseras på händelse typen. Beroende på utmatnings metoden kan de fält som ingår och i vilken ordning de visas variera.
 

@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: e34fbdca51e7680a80c768e49bae891cb56dfa9d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591747"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push-meddelanden med Azure Notification Hubs: vanliga frågor och svar
 
@@ -196,7 +196,7 @@ Du kan också program mässigt komma åt Mät värden. Mer information finns i f
 
 - [Hämta Azure Monitor mått med .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). I det här exemplet används användar namn och lösen ord. Om du vill använda ett certifikat överbelastar du FromServicePrincipal-metoden för att tillhandahålla ett certifikat som visas i [det här exemplet](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Hämta mått och aktivitets loggar för en resurs](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Genomgång av REST-API:et för Azure Monitoring](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Genomgång av REST-API:et för Azure Monitoring](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Lyckade meddelanden innebär bara att push-meddelanden har levererats till den externa PNS (till exempel APN för iOS och macOS eller FCM för Android-enheter). Det åligger PNS att leverera meddelanden till mål enheter. Normalt visar PNS inte leverans måtten för tredje part.  
@@ -211,7 +211,7 @@ Du kan också program mässigt komma åt Mät värden. Mer information finns i f
 [Notification Hubs säkerhets modell]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Själv studie kurs om Notification Hubs säker push]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Notification Hubs fel sökning]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs mått]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs mått]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Export/import av registreringar]: ./export-modify-registrations-bulk.md
 [Azure-portalen]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

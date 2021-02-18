@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060752"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576123"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Vanliga frågor och svar om Application Gateway
 
@@ -333,7 +333,7 @@ Application Gateway stöder upp till 100 autentiserings-certifikat.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Integrerar Application Gateway internt med Azure Key Vault?
 
-Ja, Application Gateway v2-SKU: n stöder Key Vault. Mer information finns i [TLS-terminering med Key Vault certifikat](key-vault-certs.md).
+Ja, Application Gateway v2-SKU: n stöder Key Vault. Läs mer i [TLS-avslutning med Key Vault-certifikat](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hur gör jag för att konfigurera HTTPS-lyssnare för. com-och .net-platser? 
 
@@ -454,7 +454,7 @@ I portalen väljer du **aktivitets logg** för att få åtkomst till gransknings
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Kan jag ange aviseringar med Application Gateway?
 
-Ja. I Application Gateway konfigureras aviseringar för mått. Mer information finns i [Application Gateway mått](./application-gateway-metrics.md) och [ta emot aviseringar](../azure-monitor/platform/alerts-overview.md).
+Ja. I Application Gateway konfigureras aviseringar för mått. Mer information finns i [Application Gateway mått](./application-gateway-metrics.md) och [ta emot aviseringar](../azure-monitor/alerts/alerts-overview.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Hur gör jag för att analysera trafik statistik för Application Gateway?
 

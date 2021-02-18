@@ -3,12 +3,12 @@ title: Exportera till SQL från Azure Application Insights | Microsoft Docs
 description: Exportera Application Insights data kontinuerligt till SQL med Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25d28bb0fc35ef76231c085dc1d9d8a1234a264c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942418"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587758"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Genom gång: exportera till SQL från Application Insights med Stream Analytics
 Den här artikeln visar hur du flyttar dina telemetridata från [Azure Application Insights][start] till Azure SQL Database genom att använda [kontinuerlig export][export] och [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -61,7 +61,7 @@ Kontinuerlig export matar alltid ut data till ett Azure Storage-konto, så du m�
     ![Välj händelse typer](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Låt vissa data ackumuleras. Luta dig tillbaka och låt användarna använda programmet en stund. Telemetri kommer in och du ser statistik diagram i [Metric Explorer](../platform/metrics-charts.md) och enskilda händelser i [diagnostisk sökning](./diagnostic-search.md). 
+1. Låt vissa data ackumuleras. Luta dig tillbaka och låt användarna använda programmet en stund. Telemetri kommer in och du ser statistik diagram i [Metric Explorer](../essentials/metrics-charts.md) och enskilda händelser i [diagnostisk sökning](./diagnostic-search.md). 
    
     Informationen kommer också att exporteras till lagringen. 
 2. Granska exporterade data, antingen i portalen – Välj **Bläddra**, Välj ditt lagrings konto och sedan **behållare** – eller i Visual Studio. I Visual Studio väljer du **Visa/Cloud Explorer** och öppna Azure/Storage. (Om du inte har det här meny alternativet måste du installera Azure SDK: öppna dialog rutan nytt projekt och öppna Visual C#/Cloud/Get Microsoft Azure SDK för .NET.)
@@ -252,7 +252,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
 

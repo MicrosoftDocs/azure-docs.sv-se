@@ -3,12 +3,12 @@ title: Hantering av VM-tillägg med Azure Arc-aktiverade servrar
 description: Azure Arc-aktiverade servrar kan hantera distribution av virtuella dator tillägg som tillhandahåller konfiguration och automatiserings uppgifter efter distributionen med icke-virtuella datorer i Azure.
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020629"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580851"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantera VM-tillägg med Azure Arc-aktiverade servrar
 
@@ -27,9 +27,9 @@ Stöd för VM-tillägg för Azure Arc-aktiverade servrar ger följande viktiga f
 
 - Använd [Azure Automation tillstånds konfiguration](../../automation/automation-dsc-overview.md) för att centralt lagra konfigurationer och upprätthålla det önskade läget för Hybrid anslutna datorer som är aktiverade via DSC VM-tillägget.
 
-- Samla in loggdata för analys med [loggar i Azure Monitor](../../azure-monitor/platform/data-platform-logs.md) aktiverat via det virtuella Log Analytics agent-tillägget. Detta är användbart för att utföra komplex analys i data från olika typer av källor.
+- Samla in loggdata för analys med [loggar i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) aktiverat via det virtuella Log Analytics agent-tillägget. Detta är användbart för att utföra komplex analys i data från olika typer av källor.
 
-- Med [Azure Monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)analyseras prestandan för dina virtuella Windows-och Linux-datorer och övervaka deras processer och beroenden på andra resurser och externa processer. Detta uppnås genom att aktivera både VM-tillägg för Log Analytics agent och beroende agent.
+- Med [Azure Monitor for VMS](../../azure-monitor/vm/vminsights-overview.md)analyseras prestandan för dina virtuella Windows-och Linux-datorer och övervaka deras processer och beroenden på andra resurser och externa processer. Detta uppnås genom att aktivera både VM-tillägg för Log Analytics agent och beroende agent.
 
 - Ladda ned och kör skript på Hybrid anslutna datorer med tillägget för anpassat skript. Det här tillägget är användbart för konfiguration av distribution, program varu installation eller andra konfigurations-eller hanterings uppgifter.
 
@@ -55,7 +55,7 @@ Mer information om paketet för Azure Connected Machine agent och information om
 |Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Log Analytics VM-tillägg för Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Tillägg för virtuell dator för beroende agent för Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForWindows | [Key Vault tillägg för virtuell dator för Windows](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux-tillägg
 
@@ -67,7 +67,7 @@ Mer information om paketet för Azure Connected Machine agent och information om
 |Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Log Analytics VM-tillägg för Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Tillägg för virtuell dator för beroende agent för Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForLinux | [Key Vault tillägg för virtuell dator för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+|Azure Monitor-agent |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Installera Azure Monitor Agent (förhands granskning)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Förutsättningar
 

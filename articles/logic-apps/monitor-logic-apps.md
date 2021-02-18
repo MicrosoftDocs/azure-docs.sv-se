@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676052"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580662"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Övervaka körningsstatus, granska utlösarhistorik och konfigurera aviseringar för Azure Logic Apps
 
 När du har [skapat och kört en Logic-app](../logic-apps/quickstart-create-first-logic-app-workflow.md)kan du kontrol lera att appens körnings status, kör [Historik](#review-runs-history), [utlösnings historik](#review-trigger-history)och prestanda. Konfigurera [aviseringar](#add-azure-alerts)om du vill få meddelanden om fel eller andra möjliga problem. Du kan till exempel skapa en avisering som identifierar "när fler än fem körningar går sönder om en timme."
 
-För händelse övervakning i real tid och bättre fel sökning, ställer du in diagnostikloggning för din Logic app genom att använda [Azure Monitor loggar](../azure-monitor/overview.md). Med den här Azure-tjänsten kan du övervaka molnet och lokala miljöer så att du enklare kan underhålla deras tillgänglighet och prestanda. Du kan sedan söka efter och Visa händelser, t. ex. utlösa händelser, köra händelser och åtgärds händelser. Genom att lagra informationen i [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md)kan du skapa [logg frågor](../azure-monitor/log-query/log-query-overview.md) som hjälper dig att hitta och analysera den här informationen. Du kan också använda dessa diagnostikdata med andra Azure-tjänster, till exempel Azure Storage och Azure Event Hubs. Mer information finns i [övervaka Logic Apps med hjälp av Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
+För händelse övervakning i real tid och bättre fel sökning, ställer du in diagnostikloggning för din Logic app genom att använda [Azure Monitor loggar](../azure-monitor/overview.md). Med den här Azure-tjänsten kan du övervaka molnet och lokala miljöer så att du enklare kan underhålla deras tillgänglighet och prestanda. Du kan sedan söka efter och Visa händelser, t. ex. utlösa händelser, köra händelser och åtgärds händelser. Genom att lagra informationen i [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md)kan du skapa [logg frågor](../azure-monitor/logs/log-query-overview.md) som hjälper dig att hitta och analysera den här informationen. Du kan också använda dessa diagnostikdata med andra Azure-tjänster, till exempel Azure Storage och Azure Event Hubs. Mer information finns i [övervaka Logic Apps med hjälp av Azure Monitor](../logic-apps/monitor-logic-apps-log-analytics.md).
 
 > [!NOTE]
-> Om dina Logi Kap par körs i en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) som har skapats för att använda en [intern åtkomst slut punkt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access), kan du Visa och komma åt indata och utdata från Logic Apps körnings historik endast inifrån *det virtuella nätverket* . Kontrol lera att du har nätverks anslutning mellan de privata slut punkterna och den dator där du vill komma åt körnings historiken. Klient datorn kan till exempel finnas i ISE: s virtuella nätverk eller i ett virtuellt nätverk som är anslutet till ISE: s virtuella nätverk, till exempel via peering eller ett virtuellt privat nätverk. Mer information finns i [åtkomst till ISE-slutpunkt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
+> Om dina Logi Kap par körs i en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) som har skapats för att använda en [intern åtkomst slut punkt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access), kan du Visa och komma åt indata och utdata från Logic Apps körnings historik endast inifrån *det virtuella nätverket*. Kontrol lera att du har nätverks anslutning mellan de privata slut punkterna och den dator där du vill komma åt körnings historiken. Klient datorn kan till exempel finnas i ISE: s virtuella nätverk eller i ett virtuellt nätverk som är anslutet till ISE: s virtuella nätverk, till exempel via peering eller ett virtuellt privat nätverk. Mer information finns i [åtkomst till ISE-slutpunkt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
 <a name="review-runs-history"></a>
 
@@ -30,7 +30,7 @@ Varje gång utlösaren utlöses för ett objekt eller en händelse skapas och k�
 
 1. I [Azure Portal](https://portal.azure.com)kan du söka efter och öppna din Logic app i Logic App Designer.
 
-   Om du vill hitta din Logic app går du till rutan för Azure Search, anger `logic apps` och väljer **Logic Apps** .
+   Om du vill hitta din Logic app går du till rutan för Azure Search, anger `logic apps` och väljer **Logic Apps**.
 
    ![Sök efter och välj tjänsten Logic Apps](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -38,29 +38,29 @@ Varje gång utlösaren utlöses för ett objekt eller en händelse skapas och k�
 
    ![Visa Logic Apps som är associerade med prenumerationer](./media/monitor-logic-apps/logic-apps-list-in-subscription.png)
 
-1. Välj din Logic app och välj sedan **Översikt** .
+1. Välj din Logic app och välj sedan **Översikt**.
 
-   I översikts fönstret, under **körnings historik** , alla tidigare, aktuella och eventuella väntande körningar för din Logic-app visas. Om listan visar många körningar och du inte hittar den post som du vill använda kan du prova att filtrera listan.
+   I översikts fönstret, under **körnings historik**, alla tidigare, aktuella och eventuella väntande körningar för din Logic-app visas. Om listan visar många körningar och du inte hittar den post som du vill använda kan du prova att filtrera listan.
 
    > [!TIP]
-   > Om körnings statusen inte visas kan du försöka att uppdatera översikts sidan genom att välja **Uppdatera** . Ingen körning sker för en utlösare som hoppas över på grund av ouppfyllda-villkor eller inga data hittas.
+   > Om körnings statusen inte visas kan du försöka att uppdatera översikts sidan genom att välja **Uppdatera**. Ingen körning sker för en utlösare som hoppas över på grund av ouppfyllda-villkor eller inga data hittas.
 
    ![Översikt, körnings historik och annan information om Logic Apps](./media/monitor-logic-apps/overview-pane-logic-app-details-run-history.png)
 
    Här är möjliga körnings status:
 
-   | Körnings status | Beskrivning |
+   | Körnings status | Description |
    |------------|-------------|
    | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
    | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
-   | **Bröt** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
-   | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips** : om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
+   | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
+   | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips**: om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
    | **Brutit** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
-   | **Tids gränsen uppnåddes** | Tids gränsen för körningen uppnåddes eftersom den aktuella varaktigheten överskred tids gränsen för körning, vilket styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits). Körningens varaktighet beräknas med hjälp av körningens start tid och tids gräns för körning vid den Start tiden. <p><p>**Obs!** om Körningens varaktighet också överskrider den aktuella *gränsen för körnings historik* , som också styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits), rensas körningen från körnings historiken med ett dagligt rensnings jobb. Oavsett om tids gränsen för körningen är slut eller slutförd beräknas alltid kvarhållningsperioden med hjälp av start tiden och den *aktuella* kvarhållningsperioden. Så om du minskar tids gränsen för en pågående körnings tid för en flygning. Körningen är dock antingen kvar eller så tas den bort från körnings historiken, baserat på om Körningens varaktighet överskred gränsen för kvarhållning. |
+   | **Tids gränsen uppnåddes** | Tids gränsen för körningen uppnåddes eftersom den aktuella varaktigheten överskred tids gränsen för körning, vilket styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits). Körningens varaktighet beräknas med hjälp av körningens start tid och tids gräns för körning vid den Start tiden. <p><p>**Obs!** om Körningens varaktighet också överskrider den aktuella *gränsen för körnings historik*, som också styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits), rensas körningen från körnings historiken med ett dagligt rensnings jobb. Oavsett om tids gränsen för körningen är slut eller slutförd beräknas alltid kvarhållningsperioden med hjälp av start tiden och den *aktuella* kvarhållningsperioden. Så om du minskar tids gränsen för en pågående körnings tid för en flygning. Körningen är dock antingen kvar eller så tas den bort från körnings historiken, baserat på om Körningens varaktighet överskred gränsen för kvarhållning. |
    | **Väntar** | Körningen har inte startat eller pausats, till exempel på grund av en tidigare arbets flödes instans som fortfarande körs. |
    |||
 
-1. Om du vill granska stegen och annan information för en speciell körning väljer du den i kör **Historik** .
+1. Om du vill granska stegen och annan information för en speciell körning väljer du den i kör **Historik**.
 
    ![Välj en enskild körning som ska granskas](./media/monitor-logic-apps/select-specific-logic-app-run.png)
 
@@ -68,7 +68,7 @@ Varje gång utlösaren utlöses för ett objekt eller en händelse skapas och k�
 
    ![Varje åtgärd i den angivna körningen](./media/monitor-logic-apps/logic-app-run-pane.png)
 
-   Om du vill visa den här informationen i list formuläret går du till fliken **Logic app Run** och väljer **Kör information** .
+   Om du vill visa den här informationen i list formuläret går du till fliken **Logic app Run** och väljer **Kör information**.
 
    ![I verktygsfältet väljer du kör information](./media/monitor-logic-apps/select-run-details-on-toolbar.png)
 
@@ -101,7 +101,7 @@ Varje Logic app-körning börjar med en utlösare. I utlösarens historik visas 
 
 1. I [Azure Portal](https://portal.azure.com)kan du söka efter och öppna din Logic app i Logic App Designer.
 
-   Om du vill hitta din Logic app går du till rutan för Azure Search, anger `logic apps` och väljer **Logic Apps** .
+   Om du vill hitta din Logic app går du till rutan för Azure Search, anger `logic apps` och väljer **Logic Apps**.
 
    ![Sök efter och välj tjänsten Logic Apps](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -109,9 +109,9 @@ Varje Logic app-körning börjar med en utlösare. I utlösarens historik visas 
 
    ![Visa Logic Apps som är associerade med prenumerationer](./media/monitor-logic-apps/logic-apps-list-in-subscription.png)
 
-1. Välj din Logic app och välj sedan **Översikt** .
+1. Välj din Logic app och välj sedan **Översikt**.
 
-1. På din Logic Apps-meny väljer du **Översikt** . I avsnittet **Sammanfattning** under **utvärdering** väljer du **Se utlösarens historik** .
+1. På din Logic Apps-meny väljer du **Översikt**. I avsnittet **Sammanfattning** under **utvärdering** väljer du **Se utlösarens historik**.
 
    ![Visa utlösarens historik för din Logic app](./media/monitor-logic-apps/overview-pane-logic-app-details-trigger-history.png)
 
@@ -121,9 +121,9 @@ Varje Logic app-körning börjar med en utlösare. I utlösarens historik visas 
 
    Här följer de möjliga status för utlösarens försök:
 
-   | Utlösarstatus | Beskrivning |
+   | Utlösarstatus | Description |
    |----------------|-------------|
-   | **Bröt** | Ett fel inträffade. Om du vill granska eventuella genererade fel meddelanden för en misslyckad utlösare väljer du det Utlös ande försöket och väljer **utdata** . Du kan till exempel hitta indata som inte är giltiga. |
+   | **Misslyckades** | Ett fel inträffade. Om du vill granska eventuella genererade fel meddelanden för en misslyckad utlösare väljer du det Utlös ande försöket och väljer **utdata**. Du kan till exempel hitta indata som inte är giltiga. |
    | **Överhoppad** | Utlösaren kontrollerade slut punkten men hittade inga data som uppfyller de angivna kriterierna. |
    | **Brutit** | Utlösaren kontrollerade slut punkten och hittade tillgängliga data. Normalt visas en **utlöst** status tillsammans med denna status. Om inte, kan utlösarens definition ha ett villkor eller `SplitOn` kommando som inte uppfylldes. <p><p>Den här statusen kan gälla för en manuell utlösare, upprepnings utlösare eller avsöknings utlösare. En utlösare kan köras utan problem, men själva körningen kan fortfarande Miss lyckas när åtgärderna genererar ohanterade fel. |
    |||
@@ -141,11 +141,11 @@ Varje Logic app-körning börjar med en utlösare. I utlösarens historik visas 
 
 <a name="add-azure-alerts"></a>
 
-## <a name="set-up-monitoring-alerts"></a>Konfigurera övervaknings aviseringar
+## <a name="set-up-monitoring-alerts"></a>Konfigurera övervakningsaviseringar
 
-Om du vill få aviseringar baserat på vissa mått eller överskridna tröskelvärden för din Logic app, ställer du in [aviseringar i Azure Monitor](../azure-monitor/platform/alerts-overview.md). Lär dig mer om [mått i Azure](../azure-monitor/platform/data-platform.md). Följ dessa steg om du vill konfigurera aviseringar utan att använda [Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+Om du vill få aviseringar baserat på vissa mått eller överskridna tröskelvärden för din Logic app, ställer du in [aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-overview.md). Lär dig mer om [mått i Azure](../azure-monitor/data-platform.md). Följ dessa steg om du vill konfigurera aviseringar utan att använda [Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
-1. På din Logic app-meny, under **övervakning** , väljer du **aviseringar**  >  **ny aviserings regel** .
+1. På din Logic app-meny, under **övervakning**, väljer du **aviseringar**  >  **ny aviserings regel**.
 
    ![Lägg till en avisering för din Logic app](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -161,11 +161,11 @@ Om du vill få aviseringar baserat på vissa mått eller överskridna tröskelv�
 
       ![Välj signal för att skapa avisering](./media/monitor-logic-apps/find-and-select-signal.png)
 
-   1. I informations fönstret som öppnas för den valda signalen, under **aviserings logik** , ställer du in ditt villkor, till exempel:
+   1. I informations fönstret som öppnas för den valda signalen, under **aviserings logik**, ställer du in ditt villkor, till exempel:
 
    1. För **operatorn** väljer du **större än eller lika** med.
 
-   1. För **sammansättnings typ** väljer du **Count** .
+   1. För **sammansättnings typ** väljer du **Count**.
 
    1. Ange för **tröskel värde** `1` .
 
@@ -173,7 +173,7 @@ Om du vill få aviseringar baserat på vissa mått eller överskridna tröskelv�
 
    1. Under **utvärdera baserat på** ställer du in intervallet och frekvensen för körning av varnings regeln. För **agg regerings kornig het (period)** väljer du period för gruppering av data. För **utvärderings frekvens** väljer du hur ofta du vill kontrol lera villkoret.
 
-   1. När du är klar väljer du **klar** .
+   1. När du är klar väljer du **klar**.
 
    Här är det färdiga villkoret:
 
@@ -185,7 +185,7 @@ Om du vill få aviseringar baserat på vissa mått eller överskridna tröskelv�
 
 1. Ange ett namn, en valfri beskrivning och allvarlighets grad för aviseringen. Lämna antingen inställningen **Aktivera regel när en skapande** är aktive rad eller inaktivera tills du är redo att aktivera regeln.
 
-1. När du är klar väljer du **skapa aviserings regel** .
+1. När du är klar väljer du **skapa aviserings regel**.
 
 > [!TIP]
 > Om du vill köra en Logi Kap par från en avisering kan du ta med [utlösaren för begäran](../connectors/connectors-native-reqres.md) i ditt arbets flöde, där du kan utföra uppgifter som exempel:

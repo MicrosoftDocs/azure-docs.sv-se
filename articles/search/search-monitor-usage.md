@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935015"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592376"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Övervaka åtgärder och aktiviteter i Azure Kognitiv sökning
 
@@ -37,7 +37,7 @@ Azure Kognitiv sökning hanterar interna data på ett rullande 30-dagars schema 
 På följande skärm bild kan du hitta övervaknings information i portalen. Data blir tillgängliga så fort du börjar använda tjänsten. Portal sidor uppdateras en gång i minuten.
 
 * Fliken **övervakning** på sidan huvud översikt visar fråga volym, svars tid och om tjänsten är under tryck.
-* **Aktivitets loggen**i det vänstra navigerings fönstret är ansluten till Azure Resource Manager. Aktivitets logg rapporter om åtgärder som utförs av Resource Manager: tjänstens tillgänglighet och status, ändringar av kapacitet (repliker och partitioner) och API-relaterade aktiviteter.
+* **Aktivitets loggen** i det vänstra navigerings fönstret är ansluten till Azure Resource Manager. Aktivitets logg rapporter om åtgärder som utförs av Resource Manager: tjänstens tillgänglighet och status, ändringar av kapacitet (repliker och partitioner) och API-relaterade aktiviteter.
 * **Övervaknings** inställningar, mer om, innehåller konfigurerbara aviseringar, mått och diagnostikloggar. Skapa dem när du behöver dem. När data har samlats in och lagrats kan du fråga eller visualisera informationen för insikter.
 
 ![Azure Monitor integrering i en Sök tjänst](./media/search-monitor-usage/azure-monitor-search.png
@@ -59,7 +59,7 @@ Du kan använda följande API: er för att hämta samma information som finns p�
 
 ### <a name="activity-logs-and-service-health"></a>Aktivitets loggar och service hälsa
 
-På sidan [**aktivitets logg**](../azure-monitor/platform/activity-log.md#view-the-activity-log) i portalen samlas information från Azure Resource Manager och rapporter om ändringar av tjänstens hälsa. Du kan övervaka aktivitets loggen för kritiska, fel och varnings villkor relaterade till tjänstens hälsa.
+På sidan [**aktivitets logg**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) i portalen samlas information från Azure Resource Manager och rapporter om ändringar av tjänstens hälsa. Du kan övervaka aktivitets loggen för kritiska, fel och varnings villkor relaterade till tjänstens hälsa.
 
 Vanliga poster innehåller referenser till API-nycklar – allmänna informations meddelanden som *Hämta administratörs nyckel* och *Hämta frågeinställningar*. Dessa aktiviteter visar begär Anden som har gjorts med hjälp av administratörs nyckeln (skapa eller ta bort objekt) eller frågeinställningar, men som inte visar själva förfrågningen. För information om denna kornig het måste du konfigurera diagnostisk loggning.
 
@@ -90,7 +90,7 @@ Azure Monitor tillhandahåller flera lagrings alternativ och ditt val avgör hur
 * Välj Azure Blob Storage om du vill [visualisera loggdata](search-monitor-logs-powerbi.md) i en Power BI rapport.
 * Välj Log Analytics om du vill utforska data via Kusto-frågor.
 
-Azure Monitor har en egen fakturerings struktur och diagnostiska loggar som refereras i det här avsnittet har en associerad kostnad. Mer information finns [i användning och uppskattade kostnader i Azure Monitor](../azure-monitor/platform/usage-estimated-costs.md).
+Azure Monitor har en egen fakturerings struktur och diagnostiska loggar som refereras i det här avsnittet har en associerad kostnad. Mer information finns [i användning och uppskattade kostnader i Azure Monitor](../azure-monitor//usage-estimated-costs.md).
 
 ## <a name="monitor-user-access"></a>Övervaka användar åtkomst
 
@@ -107,4 +107,4 @@ Det finns inget sätt att logga den här informationen separat från frågesträ
 Fluency med Azure Monitor är viktigt för att kunna ta hänsyn till alla Azure-tjänster, inklusive resurser som Azure Kognitiv sökning. Om du inte är bekant med Azure Monitor tar du tid att granska artiklar som är relaterade till resurser. Förutom självstudierna är följande artikel en bra plats att börja med.
 
 > [!div class="nextstepaction"]
-> [Övervaka Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md)
+> [Övervaka Azure-resurser med Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md)

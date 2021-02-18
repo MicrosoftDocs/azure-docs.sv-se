@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: c58f94bcdb659eed67ebf023af473545d8cee1a7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833022"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587271"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Vanliga frågor om Övervakare av nätverksprestanda-lösning
 
@@ -43,7 +43,7 @@ Funktionen för att övervaka nätverk som använder Linux-baserade noder är nu
 För att köra NPM-lösningen på nod-VM: ar för att övervaka nätverk ska noderna ha minst 500 MB minne och en kärna. Du behöver inte använda separata noder för att köra NPM. Lösningen kan köras på noder som har andra arbets belastningar som körs på den. Lösningen har möjlighet att stoppa övervaknings processen om den använder mer än 5% processor.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Ska jag använda NPM för att ansluta mina noder som direkt agent eller via System Center Operations Manager?
-Både prestanda övervakaren och tjänsten för tjänst anslutnings övervakaren stöder noder [som är anslutna som direkta agenter](../platform/agent-windows.md) och [anslutna via Operations Manager](../platform/om-agents.md).
+Både prestanda övervakaren och tjänsten för tjänst anslutnings övervakaren stöder noder [som är anslutna som direkta agenter](../agents/agent-windows.md) och [anslutna via Operations Manager](../agents/om-agents.md).
 
 För ExpressRoute Monitor-kapacitet ska Azure-noderna endast anslutas som direkta agenter. Azure-noder som är anslutna via Operations Manager stöds inte. Noder som är anslutna som direkta agenter och via Operations Manager stöds för att övervaka en ExpressRoute-krets för lokala noder.
 
@@ -98,7 +98,7 @@ Om ett hopp är rött betyder det att det är en del av minst en felaktig sökv�
 I NPM används en Probabilistic-mekanism för att tilldela fel sannolikhet till varje nätverks Sök väg, nätverks segment och komponenternas nätverks hopp baserat på antalet felaktiga sökvägar som de är en del av. När nätverks segmenten och hoppen blir en del av fler felaktiga sökvägar ökar sannolikheten för att risken för fel. Den här algoritmen fungerar bäst om du har många noder med NPM-agenten ansluten till varandra eftersom detta ökar data punkterna för att beräkna fel sannolikheten.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hur kan jag skapa aviseringar i NPM?
-För närvarande går det inte att skapa aviseringar från NPM-gränssnittet på grund av ett känt problem. [Skapa aviseringar manuellt](../platform/alerts-log.md).
+För närvarande går det inte att skapa aviseringar från NPM-gränssnittet på grund av ett känt problem. [Skapa aviseringar manuellt](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Vad är standard Log Analytics frågor för aviseringar
 Fråga om prestanda övervakaren

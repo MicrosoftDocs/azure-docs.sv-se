@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: c95ccb5ea1a23e8173d58bd3a18490e9b8e630e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581264"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Översikt över Hybrid Runbook Worker
 
@@ -25,7 +25,7 @@ Det finns två typer av Runbook-arbetare – system och användare. I följande 
 |**System** |Stöder en uppsättning dolda Runbooks som används av Uppdateringshantering-funktionen som är utformad för att installera användardefinierade uppdateringar på Windows-och Linux-datorer.<br> Den här typen av Hybrid Runbook Worker är inte medlem i en Hybrid Runbook Worker grupp och kör därför inte Runbooks som är riktade till en Runbook Worker-grupp. |
 |**Användare** |Stöder användardefinierade Runbooks som är avsedda att köras direkt på den Windows-och Linux-dator som är medlemmar i en eller flera Runbook Worker-grupper. |
 
-En Hybrid Runbook Worker kan köras antingen på Windows eller Linux-operativsystemet, och den här rollen förlitar sig på den [Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) som rapporterar till en Azure Monitor [Log Analytics arbets yta](../azure-monitor/platform/design-logs-deployment.md). Arbets ytan kan inte bara övervaka datorn för det operativ system som stöds, utan även för att ladda ned de komponenter som krävs för att installera Hybrid Runbook Worker.
+En Hybrid Runbook Worker kan köras antingen på Windows eller Linux-operativsystemet, och den här rollen förlitar sig på den [Log Analytics agent](../azure-monitor/agents/log-analytics-agent.md) som rapporterar till en Azure Monitor [Log Analytics arbets yta](../azure-monitor/logs/design-logs-deployment.md). Arbets ytan kan inte bara övervaka datorn för det operativ system som stöds, utan även för att ladda ned de komponenter som krävs för att installera Hybrid Runbook Worker.
 
 När Azure Automation [uppdateringshantering](./update-management/overview.md) är aktive rad konfigureras alla datorer som är anslutna till din Log Analytics-arbetsyta automatiskt som en system hybrid Runbook Worker. Om du vill konfigurera den som en användares Windows-Hybrid Runbook Worker, se [distribuera en windows hybrid Runbook Worker](automation-windows-hrw-install.md) och för Linux, se [distribuera en Linux-hybrid Runbook Worker](automation-linux-hrw-install.md).
 
@@ -62,7 +62,7 @@ Om du använder en proxyserver för kommunikation mellan Azure Automation och da
 
 ### <a name="firewall-use"></a>Brand Väggs användning
 
-Om du använder en brand vägg för att begränsa åtkomsten till Internet, måste du konfigurera brand väggen för att tillåta åtkomst. Om du använder Log Analytics gateway som proxy kontrollerar du att den har kon figurer ATS för Hybrid Runbook Worker. Se [konfigurera Log Analytics Gateway för Automation hybrid Runbook Worker](../azure-monitor/platform/gateway.md).
+Om du använder en brand vägg för att begränsa åtkomsten till Internet, måste du konfigurera brand väggen för att tillåta åtkomst. Om du använder Log Analytics gateway som proxy kontrollerar du att den har kon figurer ATS för Hybrid Runbook Worker. Se [konfigurera Log Analytics Gateway för Automation hybrid Runbook Worker](../azure-monitor/agents/gateway.md).
 
 ### <a name="service-tags"></a>Tjänsttaggar
 

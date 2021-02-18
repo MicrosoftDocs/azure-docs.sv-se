@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965688"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570982"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Använda paket fångst för proaktiv nätverks övervakning med aviseringar och Azure Functions
 
@@ -35,7 +35,7 @@ Genom att använda Network Watcher, aviseringar och funktioner i Azure-eko syste
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Den senaste versionen av [Azure PowerShell](/powershell/azure/install-Az-ps).
 * En befintlig instans av Network Watcher. Om du inte redan har en, [skapar du en instans av Network Watcher](network-watcher-create.md).
@@ -74,20 +74,20 @@ Det första steget är att skapa en Azure-funktion för att bearbeta aviseringen
 
 2. Ange följande värden på bladet **Funktionsapp** och välj sedan **OK** för att skapa appen:
 
-    |**Inställning** | **Värde** | **Detaljer** |
+    |**Inställning** | **Värde** | **Information** |
     |---|---|---|
     |**Appens namn**|PacketCaptureExample|Namnet på Function-appen.|
     |**Prenumeration**|[Din prenumeration] Den prenumeration som du vill skapa Function-appen för.||
     |**Resursgrupp**|PacketCaptureRG|Resurs gruppen som innehåller Function-appen.|
     |**Värdplan**|Förbrukningsplan| Typ av plan som din Function-app använder. Alternativen är förbruknings-eller Azure App Services planer. |
     |**Plats**|Central US| Den region där du vill skapa Function-appen.|
-    |**Lagrings konto**|automatiskt skapade texter| Det lagrings konto som Azure Functions behöver för allmän lagring.|
+    |**Lagringskonto**|automatiskt skapade texter| Det lagrings konto som Azure Functions behöver för allmän lagring.|
 
 3. På bladet **PacketCaptureExample Function-appar** väljer **du**  >  **anpassad funktion**  > **+** .
 
 4. Välj **HttpTrigger-PowerShell** och ange sedan återstående information. Slutligen, för att skapa funktionen, väljer du **skapa**.
 
-    |**Inställning** | **Värde** | **Detaljer** |
+    |**Inställning** | **Värde** | **Information** |
     |---|---|---|
     |**Scenario**|Experimentell|Typ av scenario|
     |**Namnge din funktion**|AlertPacketCapturePowerShell|Namnet på funktionen|
@@ -332,7 +332,7 @@ Följande exempel är PowerShell-kod som kan användas i-funktionen. Det finns v
 
     ![Kopiera funktions webb adress][2]
 
-Om du behöver anpassade egenskaper i nytto lasten för webhook POST-begäran, se [Konfigurera en webhook på en Azure Metric-avisering](../azure-monitor/platform/alerts-webhooks.md).
+Om du behöver anpassade egenskaper i nytto lasten för webhook POST-begäran, se [Konfigurera en webhook på en Azure Metric-avisering](../azure-monitor/alerts/alerts-webhooks.md).
 
 ## <a name="configure-an-alert-on-a-vm"></a>Konfigurera en avisering på en virtuell dator
 
@@ -340,9 +340,9 @@ Aviseringar kan konfigureras för att meddela individer när ett speciellt mått
 
 ### <a name="create-the-alert-rule"></a>Skapa aviserings regeln
 
-Gå till en befintlig virtuell dator och Lägg sedan till en varnings regel. Mer detaljerad dokumentation om hur du konfigurerar aviseringar finns i [skapa aviseringar i Azure Monitor för Azure-tjänster – Azure Portal](../azure-monitor/platform/alerts-classic-portal.md). Ange följande värden på bladet **aviserings regel** och välj sedan **OK**.
+Gå till en befintlig virtuell dator och Lägg sedan till en varnings regel. Mer detaljerad dokumentation om hur du konfigurerar aviseringar finns i [skapa aviseringar i Azure Monitor för Azure-tjänster – Azure Portal](../azure-monitor/alerts/alerts-classic-portal.md). Ange följande värden på bladet **aviserings regel** och välj sedan **OK**.
 
-  |**Inställning** | **Värde** | **Detaljer** |
+  |**Inställning** | **Värde** | **Information** |
   |---|---|---|
   |**Namn**|TCP_Segments_Sent_Exceeded|Aviserings regelns namn.|
   |**Beskrivning**|TCP skickade segment överskred tröskeln|Beskrivning av varnings regeln.|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7cc1a25fbfc4d3f063c6fc6d225c3f5c7a4b5a3c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896604"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572553"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Starta en runbook i Azure Automation
 
@@ -22,7 +22,7 @@ I följande tabell får du hjälp att avgöra hur du ska starta en Runbook i Azu
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Anropa från kommando raden med Windows PowerShell-cmdletar.<br> <li>Kan inkluderas i automatiserad funktion med flera steg.<br> <li>Begäran autentiseras med certifikat eller användar huvud/tjänstens huvud namn för OAuth-användare.<br> <li>Ange enkla och komplexa parameter värden.<br> <li>Spåra jobb status.<br> <li>Klienten krävde för att stödja PowerShell-cmdletar. |
 | [Azure Automation-API](/rest/api/automation/) |<li>Den mest flexibla metoden, men även mest komplex.<br> <li>Anropa från en anpassad kod som kan göra HTTP-förfrågningar.<br> <li>Begäran autentiserad med certifikat eller användar huvud för OAuth/tjänstens huvud namn.<br> <li>Ange enkla och komplexa parameter värden. *Om du anropar en python-Runbook med API: t måste JSON-nyttolasten serialiseras.*<br> <li>Spåra jobb status. |
 | [Webhooks](automation-webhooks.md) |<li>Starta Runbook från en enskild HTTP-begäran.<br> <li>Autentiserad med säkerhetstoken i URL.<br> <li>Klienten kan inte åsidosätta parameter värden som anges när webhooken skapades. En Runbook kan definiera en enda parameter som är ifylld med HTTP-begärans information.<br> <li>Det går inte att spåra jobb status via webhook-URL. |
-| [Svara på Azure-avisering](../azure-monitor/platform/alerts-overview.md) |<li>Starta en Runbook som svar på Azure-aviseringen.<br> <li>Konfigurera webhook för Runbook och länka till avisering.<br> <li>Autentiserad med säkerhetstoken i URL. |
+| [Svara på Azure-avisering](../azure-monitor/alerts/alerts-overview.md) |<li>Starta en Runbook som svar på Azure-aviseringen.<br> <li>Konfigurera webhook för Runbook och länka till avisering.<br> <li>Autentiserad med säkerhetstoken i URL. |
 | [Schema](./shared-resources/schedules.md) |<li>Starta automatiskt Runbook på varje timme, varje dag, varje vecka eller månads schema.<br> <li>Manipulera schemat via Azure Portal, PowerShell-cmdletar eller Azure API.<br> <li>Ange parameter värden som ska användas med schemat. |
 | [Från en annan Runbook](automation-child-runbooks.md) |<li>Använd en Runbook som en aktivitet i en annan Runbook.<br> <li>Användbart för funktioner som används av flera Runbooks.<br> <li>Ange parameter värden för underordnad Runbook och Använd utdata i överordnad Runbook. |
 

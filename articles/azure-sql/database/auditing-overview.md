@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: e96aa32c6b67290fc4b4ee62ae98c4e72399fd4b
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509595"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572281"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Granskning för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -139,7 +139,7 @@ Om du vill konfigurera att skriva gransknings loggar till en Log Analytics arbet
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
-Mer information om Azure Monitor Log Analytics arbets ytan finns i [utforma distributioner av Azure Monitor loggar](../../azure-monitor/platform/design-logs-deployment.md)
+Mer information om Azure Monitor Log Analytics arbets ytan finns i [utforma distributioner av Azure Monitor loggar](../../azure-monitor/logs/design-logs-deployment.md)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Granska till Event Hub-målet
 
@@ -170,7 +170,7 @@ Om du väljer att skriva gransknings loggar till Azure Monitor loggar:
     ![Log Analytics säkerhets insikter](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - Du kan också få åtkomst till gransknings loggarna från Log Analytics bladet. Öppna arbets ytan Log Analytics och klicka på **loggar** under **Allmänt** . Du kan börja med en enkel fråga, till exempel: *Sök efter "SQLSecurityAuditEvents"* för att Visa gransknings loggarna.
-    Härifrån kan du också använda [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md)  för att köra avancerade sökningar på dina Gransknings logg data. Med Azure Monitor loggar får du operativa insikter i real tid med integrerad sökning och anpassade instrument paneler för att enkelt analysera miljon tals poster över alla dina arbets belastningar och servrar. Mer värdefull information om Azure Monitor loggar Sök språk och-kommandon finns i [Sök referens för Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md).
+    Härifrån kan du också använda [Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md)  för att köra avancerade sökningar på dina Gransknings logg data. Med Azure Monitor loggar får du operativa insikter i real tid med integrerad sökning och anpassade instrument paneler för att enkelt analysera miljon tals poster över alla dina arbets belastningar och servrar. Mer värdefull information om Azure Monitor loggar Sök språk och-kommandon finns i [Sök referens för Azure Monitor loggar](../../azure-monitor/logs/log-query-overview.md).
 
 Om du väljer att skriva gransknings loggar till Händelsehubben:
 

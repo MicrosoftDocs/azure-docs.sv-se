@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581194"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Distribuera ett Linux-Hybrid Runbook Worker
 
@@ -26,13 +26,13 @@ Kontrol lera att du har följande innan du börjar.
 
 ### <a name="a-log-analytics-workspace"></a>En Log Analytics arbets yta
 
-Hybrid Runbook Worker-rollen beror på en Azure Monitor Log Analytics arbets yta för att installera och konfigurera rollen. Du kan skapa den genom [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace), via [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)eller i [Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+Hybrid Runbook Worker-rollen beror på en Azure Monitor Log Analytics arbets yta för att installera och konfigurera rollen. Du kan skapa den genom [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace), via [PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)eller i [Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Om du inte har en Azure Monitor Log Analytics arbets yta granskar du [rikt linjerna för Azure Monitor logg design](../azure-monitor/platform/design-logs-deployment.md) innan du skapar arbets ytan.
+Om du inte har en Azure Monitor Log Analytics arbets yta granskar du [rikt linjerna för Azure Monitor logg design](../azure-monitor/logs/design-logs-deployment.md) innan du skapar arbets ytan.
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
-Hybrid Runbook Worker-rollen kräver [Log Analytics-agenten](../azure-monitor/platform/log-analytics-agent.md) för det Linux-operativsystem som stöds. För servrar eller datorer som ligger utanför Azure kan du installera Log Analytics-agenten med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
+Hybrid Runbook Worker-rollen kräver [Log Analytics-agenten](../azure-monitor/agents/log-analytics-agent.md) för det Linux-operativsystem som stöds. För servrar eller datorer som ligger utanför Azure kan du installera Log Analytics-agenten med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
 
 >[!NOTE]
 >När du har installerat Log Analytics agent för Linux bör du inte ändra behörigheterna för `sudoers.d` mappen eller dess ägarskap. Sudo-behörighet krävs för **nxautomation** -kontot, vilket är den användar kontext som hybrid Runbook Worker körs under. Behörigheterna bör inte tas bort. Att begränsa detta till vissa mappar eller kommandon kan resultera i en ändring.
@@ -87,11 +87,11 @@ Linux hybrid Runbook Worker stöder en begränsad uppsättning Runbook-typer i A
 
 |Typ av Runbook | Stöds |
 |-------------|-----------|
-|Python 2 |Ja |
+|Python 2 |Yes |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-arbetsflöde |Nej |
-|Grafisk |Nej |
-|Grafiskt PowerShell-arbetsflöde |Nej |
+|PowerShell-arbetsflöde |No |
+|Grafisk |No |
+|Grafiskt PowerShell-arbetsflöde |No |
 
 <sup>1</sup> PowerShell-Runbooks kräver att PowerShell Core installeras på Linux-datorn. Se [Installera PowerShell Core på Linux](/powershell/scripting/install/installing-powershell-core-on-linux) för att lära dig hur du installerar det.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 213f7d95916555ea32925a5b0af0865d900b0209
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257921"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580055"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planera en distribution av Azure AD-programproxy
 
@@ -302,7 +302,7 @@ Anslutningarna och tjänsten tar hand om alla uppgifter för hög tillgänglighe
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Händelse loggar och prestanda räknare i Windows
 
-Anslutningarna har både administratörs-och sessions loggar. Administratörs loggarna innehåller nyckel händelser och deras fel. Sessionens loggar innehåller alla transaktioner och deras bearbetnings information. Loggar och räknare finns i Windows-händelseloggen mer information finns i [förstå Azure AD-programproxy-kopplingar](./application-proxy-connectors.md#under-the-hood). Följ den här [självstudien för att konfigurera händelse logg data källor i Azure Monitor](../../azure-monitor/platform/data-sources-windows-events.md).
+Anslutningarna har både administratörs-och sessions loggar. Administratörs loggarna innehåller nyckel händelser och deras fel. Sessionens loggar innehåller alla transaktioner och deras bearbetnings information. Loggar och räknare finns i Windows-händelseloggen mer information finns i [förstå Azure AD-programproxy-kopplingar](./application-proxy-connectors.md#under-the-hood). Följ den här [självstudien för att konfigurera händelse logg data källor i Azure Monitor](../../azure-monitor/agents/data-sources-windows-events.md).
 
 ### <a name="troubleshooting-guide-and-steps"></a>Fel söknings guide och steg
 

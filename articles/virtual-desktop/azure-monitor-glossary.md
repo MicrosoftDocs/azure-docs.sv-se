@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467736"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576618"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Azure Monitor för ord listan för Windows Virtual Desktop (förhands granskning)
 
@@ -24,7 +24,7 @@ Den här artikeln innehåller en kort beskrivning av viktiga termer och begrepp 
 
 ## <a name="alerts"></a>Aviseringar
 
-Alla aktiva Azure Monitor aviseringar som du har konfigurerat för prenumerationen och klassificerats som [allvarlighets grad 1](#severity-1-alerts) visas på sidan Översikt. Information om hur du konfigurerar aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/learn/tutorial-response.md).
+Alla aktiva Azure Monitor aviseringar som du har konfigurerat för prenumerationen och klassificerats som [allvarlighets grad 1](#severity-1-alerts) visas på sidan Översikt. Information om hur du konfigurerar aviseringar finns i [svara på händelser med Azure Monitor aviseringar](../azure-monitor/alerts/tutorial-response.md).
 
 ## <a name="available-sessions"></a>Tillgängliga sessioner
 
@@ -128,7 +128,7 @@ I följande tabell visas de rekommenderade prestanda räknarna och de tidsinterv
 |RemoteFX Network ( \* ) \\ aktuell TCP-förval|30 sekunder|
 |RemoteFX-nätverk ( \* ) \\ aktuell UDP-bandbredd|30 sekunder|
 
-Mer information om hur du läser prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/platform/data-sources-performance-counters.md).
+Mer information om hur du läser prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md).
 
 Mer information om prestanda räknare för indata-fördröjning finns i [prestanda räknare](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)för användarindata.
 
@@ -186,7 +186,7 @@ I följande tabell visas de Windows-händelser som krävs för Azure Monitor fö
 | Microsoft-FSLogix – appar/drift|Fel, varning och information|
 |Microsoft-FSLogix-Apps/admin|Fel, varning och information|
 
-Mer information om Windows-händelser finns i [Egenskaper för Windows Event-poster](../azure-monitor/platform/data-sources-windows-events.md).
+Mer information om Windows-händelser finns i [Egenskaper för Windows Event-poster](../azure-monitor/agents/data-sources-windows-events.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

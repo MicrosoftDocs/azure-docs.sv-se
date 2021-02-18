@@ -3,19 +3,19 @@ title: Automatisera Azure Application insikter-processer med Logic Apps
 description: Lär dig hur du snabbt kan automatisera upprepade processer genom att lägga till Application Insights Connector i din Logic app.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970870"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589918"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisera Application Insights processer med Logic Apps
 
 Hittar du dig själv upprepade gånger med samma frågor på dina telemetridata för att kontrol lera om tjänsten fungerar korrekt? Vill du automatisera de här frågorna för att hitta trender och avvikelser och sedan bygga egna arbets flöden runt dem? Azure Application Insights-anslutaren för Logic Apps är rätt verktyg för det här ändamålet.
 
 > [!NOTE]
-> Azure Application Insights-anslutningen har ersatts med [Azure Monitor-anslutningen](../platform/logicapp-flow-connector.md) som är integrerad med Azure Active Directory i stället för att kräva en API-nyckel och du kan även hämta data från en Log Analytics arbets yta.
+> Azure Application Insights-anslutningen har ersatts med [Azure Monitor-anslutningen](../logs/logicapp-flow-connector.md) som är integrerad med Azure Active Directory i stället för att kräva en API-nyckel och du kan även hämta data från en Log Analytics arbets yta.
 
 Med den här integreringen kan du automatisera flera processer utan att behöva skriva en enda rad kod. Du kan skapa en Logic-app med Application Insights-anslutningen för att snabbt automatisera eventuella Application Insights processer. 
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig hur du skapar en Logic-app som använ
 
 ### <a name="step-1-create-a-logic-app"></a>Steg 1: skapa en Logic app
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Klicka på **skapa en resurs**, Välj **webb och mobilt**och välj sedan **Logic app**.
+1. Klicka på **skapa en resurs**, Välj **webb och mobilt** och välj sedan **Logic app**.
 
     ![Nytt Logic app-fönster](./media/automate-with-logic-apps/1createlogicapp.png)
 
@@ -45,7 +45,7 @@ I den här självstudien får du lära dig hur du skapar en Logic-app som använ
 
 1. I sökrutan **Välj en åtgärd** skriver du **Azure Application Insights**.
 
-1. Under **åtgärder**klickar du på **Azure Application Insights-visualisera analys fråga**.
+1. Under **åtgärder** klickar du på **Azure Application Insights-visualisera analys fråga**.
 
     ![Logic App Designer "Välj en åtgärd"-fönstret](./media/automate-with-logic-apps/4visualize.png)
 
@@ -87,7 +87,7 @@ När du skapar egna frågor måste du kontrol lera att de fungerar korrekt i Ana
 
 1. Klicka på **nytt steg**.
 
-1. Skriv **Office 365 Outlook**i rutan Sök.
+1. Skriv **Office 365 Outlook** i rutan Sök.
 
 1. Klicka på **Office 365 Outlook – skicka ett e-postmeddelande**.
 
@@ -99,7 +99,7 @@ När du skapar egna frågor måste du kontrol lera att de fungerar korrekt i Ana
 
    b. Ange ett ämne för e-postmeddelandet.
 
-   c. Klicka någonstans i **text** rutan och välj sedan **brödtext**på menyn för dynamiskt innehåll som öppnas till höger.
+   c. Klicka någonstans i **text** rutan och välj sedan **brödtext** på menyn för dynamiskt innehåll som öppnas till höger.
     
    d. Klicka på list rutan **Lägg till ny parameter** och välj bilagor och är HTML.
 
@@ -130,7 +130,7 @@ När din Logic App körs får mottagarna du angav i e-postlistan ett e-postmedde
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om att skapa [analys frågor](../log-query/get-started-queries.md).
+- Lär dig mer om att skapa [analys frågor](../logs/get-started-queries.md).
 - Läs mer om [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 
