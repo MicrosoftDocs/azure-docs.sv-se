@@ -11,20 +11,22 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9d665df8eacfa575cd8dc50251662730e58fa7b3
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659700"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653439"
 ---
 # <a name="quickstart-send-an-sms-message"></a>Snabb start: Skicka ett SMS-meddelande
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 
 > [!IMPORTANT]
 > SMS-meddelanden kan skickas till och tas emot från USA telefonnummer. Telefonnummer som finns i andra geografiska områden stöds ännu inte av kommunikations tjänsterna SMS.
-> Mer information finns i **[Planera din telefoni-och SMS-lösning](../../concepts/telephony-sms/plan-solution.md)**.
+> Mer information finns i **[telefonnummer typer](../../concepts/telephony-sms/plan-solution.md)**.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -58,7 +60,7 @@ I den här snabb starten har du lärt dig hur du skickar SMS-meddelanden med Azu
 > [Prenumerera på SMS-händelser](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
-> [Planera din PSTN-lösning](../../concepts/telephony-sms/plan-solution.md)
+> [Telefonnummer typer](../../concepts/telephony-sms/plan-solution.md)
 
 > [!div class="nextstepaction"]
 > [Läs mer om SMS](../../concepts/telephony-sms/concepts.md)

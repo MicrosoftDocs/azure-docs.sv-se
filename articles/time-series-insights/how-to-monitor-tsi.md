@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587979"
 ---
 # <a name="monitoring-time-series-insights"></a>Övervaknings Time Series Insights
 
@@ -29,7 +29,7 @@ På sidan **Översikt** i Azure Portal för varje Time Series Insights-miljö fi
 
 Time Series Insights skapar övervaknings data med [Azure Monitor](../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure som innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser, förutom resurser i andra moln och lokalt.
 
-Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md), vilket beskriver följande begrepp:
+Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md), vilket beskriver följande begrepp:
 
 - Vad är Azure Monitor?
 - Kostnader för övervakning
@@ -40,11 +40,11 @@ Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../azure-
 Följande avsnitt bygger på den här artikeln genom att beskriva specifika data som samlats in för Azure Time Series Insights. Dessa avsnitt innehåller också exempel på hur du konfigurerar data insamling och analyserar data med Azure-verktyg.
 
 > [!TIP]
-> För att förstå kostnader som är kopplade till Azure Monitor, se [användning och beräknade kostnader](../azure-monitor/platform/usage-estimated-costs.md). För att förstå hur lång tid det tar för dina data att visas i Azure Monitor, se [logg data](../azure-monitor/platform/data-ingestion-time.md)Inhämtnings tid.
+> För att förstå kostnader som är kopplade till Azure Monitor, se [användning och beräknade kostnader](../azure-monitor//usage-estimated-costs.md). För att förstå hur lång tid det tar för dina data att visas i Azure Monitor, se [logg data](../azure-monitor/logs/data-ingestion-time.md)Inhämtnings tid.
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Övervaknings data från Azure Time Series Insights
 
-Azure Time Series Insights samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Time Series Insights samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
 
 Se [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-reference.md) för en detaljerad referens för de loggar och mått som du kan samla in.
 
@@ -53,7 +53,7 @@ Se [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-r
 Plattforms mått samlas in och lagras automatiskt, men kan dirigeras till andra platser med hjälp av en diagnostisk inställning.
 
 Resurs loggar samlas inte in och lagras förrän du skapar en diagnostisk inställning och dirigerar dem till en eller flera platser.
-Mer information om hur du skapar en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell finns i [skapa diagnostisk inställning för att samla in plattforms loggar och statistik i Azure](../azure-monitor/platform/diagnostic-settings.md) . När du skapar en diagnostisk inställning anger du vilka kategorier av loggar som ska samlas in.
+Mer information om hur du skapar en diagnostisk inställning med hjälp av Azure Portal, CLI eller PowerShell finns i [skapa diagnostisk inställning för att samla in plattforms loggar och statistik i Azure](../azure-monitor/essentials/diagnostic-settings.md) . När du skapar en diagnostisk inställning anger du vilka kategorier av loggar som ska samlas in.
 
 Du kan samla in loggar från följande kategorier för Azure Time Series Insights:
 
@@ -80,7 +80,7 @@ Du kan komma åt resurs loggar antingen som en BLOB i ett lagrings konto, som h�
 
 Data i Azure Monitor loggar lagras i tabeller som varje tabell har en egen uppsättning unika egenskaper.
 
-Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). En lista över typer av resurs loggar som samlas in för Azure Time Series Insights finns i [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-reference.md#resource-logs).
+Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema). En lista över typer av resurs loggar som samlas in för Azure Time Series Insights finns i [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-reference.md#resource-logs).
 
 Azure Time Series Insights lagrar data i följande tabeller.
 
@@ -122,4 +122,4 @@ När du skapar en varnings regel baserat på plattforms mått bör du vara medve
 ## <a name="next-steps"></a>Nästa steg
 
 * Se [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-reference.md) för referenser till loggar och mått som skapats av Azure Time Series Insights.
-* Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md) .
+* Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md) .

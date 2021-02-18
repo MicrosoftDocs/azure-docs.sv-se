@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587967"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Distribuera diagnostikverktyget för Windows Virtual Desktop (klassiskt)
 
@@ -116,7 +116,7 @@ Så här konfigurerar du de rekommenderade prestanda räknarna manuellt:
     -   Processor information ( \* ) \\ processor tid
     -   Fördröjning för användarindata per session ( \* ) \\ Max fördröjning för indata
 
-Läs mer om prestanda räknare [i prestanda data källor för Windows och Linux i Azure Monitor](../../azure-monitor/platform/data-sources-performance-counters.md).
+Läs mer om prestanda räknare [i prestanda data källor för Windows och Linux i Azure Monitor](../../azure-monitor/agents/data-sources-performance-counters.md).
 
 >[!NOTE]
 >Eventuella ytterligare räknare som du konfigurerar visas inte i själva diagnostikverktyget. Om du vill att det ska visas i diagnostikverktyget måste du konfigurera verktygets konfigurations fil. Instruktioner för hur du gör detta med avancerad administration blir tillgängligt i GitHub vid ett senare tillfälle.
@@ -186,7 +186,7 @@ Ange omdirigerings-URI: n:
 4.  I den vänstra panelen under avsnittet hantera väljer du **autentisering**.
 5.  Ange önskad omdirigerings-URI i text rutan **omdirigerings-URI** och välj sedan **Spara** i det övre vänstra hörnet på menyn.
 6. Välj **webbplats** under typ på den nedrullningsbara menyn.
-7. Ange URL: en från sidan Översikt över appen och Lägg till **/Security/signin-callback** i slutet av den. Till exempel: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
+7. Ange URL: en från sidan Översikt över appen och Lägg till **/Security/signin-callback** i slutet av den. Exempel: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    > [!div class="mx-imgBorder"]
    > ![Sidan omdirigerings-URI](../media/redirect-uri-page.png)
@@ -199,7 +199,7 @@ Ange omdirigerings-URI: n:
 
 Innan du gör diagnostikverktyget tillgängligt för dina användare måste du kontrol lera att de har följande behörigheter:
 
-- Användare behöver Läs behörighet för Log Analytics. Mer information finns i [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../../azure-monitor/platform/roles-permissions-security.md).
+- Användare behöver Läs behörighet för Log Analytics. Mer information finns i [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../../azure-monitor/roles-permissions-security.md).
 -  Användare behöver också Läs behörighet för den virtuella Windows-klienten för fjärr skrivbord (RDS-läsar rollen). Mer information finns i [delegerad åtkomst i Windows Virtual Desktop](delegated-access-virtual-desktop-2019.md).
 
 Du måste också ge användarna följande information:

@@ -4,12 +4,12 @@ description: Ägare, deltagare och läsare av organisationens insikter.
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076692"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589593"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resurser, roller och åtkomst kontroll i Application Insights
 
@@ -76,7 +76,7 @@ Där så är tillämpligt länkar vi till den tillhör ande officiella referens 
 | [Läsare](../../role-based-access-control/built-in-roles.md#reader) |Kan visa men inte ändra något. |
 | [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Ger användaren behörighet att använda Application Insights Snapshot Debugger-funktioner. Observera att den här rollen ingår varken i rollen ägare eller deltagare. |
 | Azure Service Deploy Release Management Contributor | Deltagar rollen för tjänster som distribueras via Azure Service Deploy. |
-| [Data rensning](../../role-based-access-control/built-in-roles.md#data-purger) | Särskild roll för att rensa personliga data. Se vår [vägledning för person uppgifter](../platform/personal-data-mgmt.md) för mer information.   |
+| [Data rensning](../../role-based-access-control/built-in-roles.md#data-purger) | Särskild roll för att rensa personliga data. Se vår [vägledning för person uppgifter](../logs/personal-data-mgmt.md) för mer information.   |
 | ExpressRoute-administratör | Kan skapa ta bort och hantera Express vägar.|
 | [Log Analytics Contributor](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics deltagare kan läsa alla övervaknings data och redigera övervaknings inställningar. Genom att redigera övervaknings inställningarna lägger du till VM-tillägget till virtuella datorer. läsning av lagrings konto nycklar för att kunna konfigurera samling av loggar från Azure Storage. Skapa och konfigurera Automation-konton. lägga till lösningar. och konfigurera Azure Diagnostics på alla Azure-resurser.  |
 | [Log Analytics Reader](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics läsaren kan visa och söka i alla övervaknings data samt Visa övervaknings inställningar, inklusive Visa konfigurationen av Azure Diagnostics på alla Azure-resurser. |

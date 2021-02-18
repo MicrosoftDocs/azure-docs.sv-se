@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b04dacfdedded417e2557d1568e01bc9fa8f5745
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958956"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590120"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hög tillgänglighet för SAP NetWeaver på virtuella Azure-datorer i Windows med Azure NetApp Files (SMB) för SAP-program
 
@@ -81,7 +81,7 @@ Läs följande SAP-anteckningar och dokument först:
 * [Azure Virtual Machines hög tillgänglighets arkitektur och scenarier för SAP NetWeaver](./sap-high-availability-architecture-scenarios.md)
 * [Lägg till avsöknings port i ASCS kluster konfiguration](sap-high-availability-installation-wsfc-file-share.md)
 * [Installation av en (A) SCS-instans i ett redundanskluster](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Skapa en SMB-volym för Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)
+* [Skapa en SMB-volym för Azure NetApp Files](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp SAP-program på Microsoft Azure med Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Översikt
@@ -114,9 +114,9 @@ Utför följande steg, som förberedelse för användning av Azure NetApp Files.
 4. Azure NetApp Files-resurser måste finnas i delegerade undernät. Följ instruktionerna i [delegera ett undernät till Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) för att skapa delegerade undernät.  
 
    > [!IMPORTANT]
-   > Du måste skapa Active Directory anslutningar innan du skapar en SMB-volym. Granska [kraven för Active Directory anslutningar](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > Du måste skapa Active Directory anslutningar innan du skapar en SMB-volym. Granska [kraven för Active Directory anslutningar](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections).  
 
-5. Skapa Active Directory anslutning enligt beskrivningen i [skapa en Active Directory anslutning](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)  
+5. Skapa Active Directory anslutning enligt beskrivningen i [skapa en Active Directory anslutning](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)  
 6. Skapa SMB-Azure NetApp Files SMB-volym genom att följa anvisningarna i [lägga till en SMB-volym](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)  
 7. Montera SMB-volymen på den virtuella Windows-datorn.
 

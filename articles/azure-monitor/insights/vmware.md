@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dc31cd4f492a4e95ce8232a8df28f07206e23b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450406"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587168"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-övervakning (inaktuell) lösning i Azure Monitor
 
@@ -33,7 +33,7 @@ Använd följande information för att installera och konfigurera lösningen.
 vSphere ESXi Host 5,5, 6,0 och 6,5
 
 #### <a name="prepare-a-linux-server"></a>Förbered en Linux-Server
-Skapa en virtuell Linux-operativ system version för att ta emot alla syslog-data från ESXi-värdar. [Log Analytics Linux-agenten](../learn/quick-collect-linux-computer.md) är samlings platsen för alla ESXi-värden för syslog-data. Du kan använda flera ESXi-värdar för att vidarebefordra loggar till en enda Linux-server, som i följande exempel.
+Skapa en virtuell Linux-operativ system version för att ta emot alla syslog-data från ESXi-värdar. [Log Analytics Linux-agenten](../vm/quick-collect-linux-computer.md) är samlings platsen för alla ESXi-värden för syslog-data. Du kan använda flera ESXi-värdar för att vidarebefordra loggar till en enda Linux-server, som i följande exempel.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -81,7 +81,7 @@ I följande tabell visas metoder för data insamling och annan information om hu
 
 I följande tabell visas exempel på data fält som samlas in av VMware-övervakning-lösningen:
 
-| fält namn | description |
+| fält namn | beskrivning |
 | --- | --- |
 | Device_s |VMware Storage-enheter |
 | ESXIFailure_s |typer av problem |
@@ -122,7 +122,7 @@ I vyn **VMware** Dashboard organiseras blad efter:
 
 Klicka på ett blad för att öppna Log Analytics Sök fönster som visar detaljerad information om bladet.
 
-Härifrån kan du redigera logg frågan för att ändra den för något som är speciell. Mer information om hur du skapar logg frågor finns i [hitta data med hjälp av logg frågor i Azure Monitor](../log-query/log-query-overview.md).
+Härifrån kan du redigera logg frågan för att ändra den för något som är speciell. Mer information om hur du skapar logg frågor finns i [hitta data med hjälp av logg frågor i Azure Monitor](../logs/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Hitta ESXi Host-händelser
 En enskild ESXi-värd genererar flera loggar baserat på deras processer. VMware-övervaknings lösningen centraliserar dem och sammanfattar antalet händelser. Den här centraliserade vyn hjälper dig att förstå vilken ESXi-värd som har en stor mängd händelser och vilka händelser som förekommer oftast i din miljö.
@@ -151,12 +151,12 @@ Lösningen innehåller andra användbara frågor som kan hjälpa dig att hantera
 
 
 #### <a name="save-queries"></a>Spara frågor
-Att spara logg frågor är en standard funktion i Azure Monitor och kan hjälpa dig att hålla alla frågor som du har hittat användbara. När du har skapat en fråga som du tycker är användbar sparar du den genom att klicka på **Favoriter**. Med en sparad fråga kan du enkelt återanvända den senare från [min instrument panels](../learn/tutorial-logs-dashboards.md) sida där du kan skapa dina egna anpassade instrument paneler.
+Att spara logg frågor är en standard funktion i Azure Monitor och kan hjälpa dig att hålla alla frågor som du har hittat användbara. När du har skapat en fråga som du tycker är användbar sparar du den genom att klicka på **Favoriter**. Med en sparad fråga kan du enkelt återanvända den senare från [min instrument panels](../visualize/tutorial-logs-dashboards.md) sida där du kan skapa dina egna anpassade instrument paneler.
 
 ![Skärm bild som visar en del av en anpassad instrument panel med en loggs ökning med ikoner för att ångra, exportera, Avisera, spara, favoriter och historik.](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Skapa aviseringar från frågor
-När du har skapat dina frågor kanske du vill använda frågorna för att varna dig när vissa händelser inträffar. Information om hur du skapar aviseringar finns [i varningar i Log Analytics](../platform/alerts-overview.md) . Exempel på aviserings frågor och andra fråge exempel finns i [Övervaka VMware med Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) blogg inlägg.
+När du har skapat dina frågor kanske du vill använda frågorna för att varna dig när vissa händelser inträffar. Information om hur du skapar aviseringar finns [i varningar i Log Analytics](../alerts/alerts-overview.md) . Exempel på aviserings frågor och andra fråge exempel finns i [Övervaka VMware med Log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) blogg inlägg.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Vad måste jag göra på ESXi-värd inställningen? Vilken effekt kommer den att ha i min nuvarande miljö?
@@ -197,7 +197,7 @@ Det kan finnas flera skäl:
      d. Om filen inte finns, eller om användar-och grupp inställningen är fel, vidtar du åtgärder genom att [förbereda en Linux-server](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd [logg frågor](../log-query/log-query-overview.md) i Log Analytics om du vill visa detaljerade VMware-värdar.
-* [Skapa dina egna instrument paneler](../learn/tutorial-logs-dashboards.md) som visar VMware-värd data.
-* [Skapa aviseringar](../platform/alerts-overview.md) när vissa VMware-värd händelser inträffar.
+* Använd [logg frågor](../logs/log-query-overview.md) i Log Analytics om du vill visa detaljerade VMware-värdar.
+* [Skapa dina egna instrument paneler](../visualize/tutorial-logs-dashboards.md) som visar VMware-värd data.
+* [Skapa aviseringar](../alerts/alerts-overview.md) när vissa VMware-värd händelser inträffar.
 
