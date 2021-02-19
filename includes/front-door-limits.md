@@ -1,19 +1,19 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 361fb18574e90fc46e45bff8914c51ee1afa2f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89411650"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102945"
 ---
 | Resurs | Gräns |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "89411650"
 | Cookie-namn längd för webb program brand vägg | 256 |
 | Webb program brand vägg, HTTP-begärans text storlek har kontroller ATS | 128 kB |
 | Webb program brand väggens anpassade svars text längd | 2 KB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Tjänst begränsningar för Azure frontend standard/Premium (för hands version)
+
+*** *Högsta **500** totala standard-och Premium-profiler per prenumeration.*
+
+| Resurs | Standard-SKU-gräns | Premium SKU-gräns |
+| --- | --- | --- |
+| Maximal slut punkt per profil  | 10 | 25 |
+| Maximal anpassad domän per profil | 100 | 200 |
+| Högsta ursprungs grupp per profil | 100 | 200 |
+| Högsta antal hemligheter per profil | 100 | 200 |
+| Högsta säkerhets princip per profil | 100 | 200 |
+| Högsta regel uppsättning per profil | 100 | 200 |
+| Högsta antal regler per regel uppsättning | 100 | 100 |
+| Maximalt ursprung per ursprungs grupp | 50 | 50 |
+| Maximalt antal vägar per slut punkt | 100 | 200 |
+| Villkor för brand vägg för webbaserade programs matchning per anpassad regel | 10 | 10 |
+| Webb program brand vägg IP-adressintervall per matchnings villkor | 600 | 600 |
+| Webb programmets brand vägg sträng matchnings värden per matchnings villkor | 10 | 10 |
+| Webb programmets brand vägg sträng matchnings värde längd | 256 | 256 |
+| Brand vägg för webbaserade program POST, parameter namn längd | 256 | 256 |
+| Webb program brand väggens HTTP-huvud namn längd | 256 | 256 |
+| Cookie-namn längd för webb program brand vägg | 256 | 256|
+| Webb program brand vägg, HTTP-begärans text storlek har kontroller ATS | 128 kB | 128 kB |
+| Webb program brand väggens anpassade svars text längd | 2 KB | 2 KB |
 
 ### <a name="timeout-values"></a>Timeout-värden
 #### <a name="client-to-front-door"></a>Klient till front dörr

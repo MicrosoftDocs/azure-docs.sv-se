@@ -2,22 +2,27 @@
 title: 'Snabb start: formulär tolkens klient bibliotek för Java Script'
 description: Använd formulär tolkens klient bibliotek för Java Script för att skapa en app för formulär bearbetning som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: ebbf04db36b20420ae6de9d61837bcc4e664036e
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584674"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102911"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
 
 [Referens dokumentation](../../index.yml)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
@@ -28,8 +33,8 @@ ms.locfileid: "99584674"
 * Den aktuella versionen av [Node.js](https://nodejs.org/)
 * En Azure Storage-blob som innehåller en uppsättning tränings data. Se [skapa en tränings data uppsättning för en anpassad modell](../../build-training-data-set.md) för tips och alternativ för att sätta samman din tränings data uppsättning. I den här snabb starten kan du använda filerna under mappen **träna** i [exempel data uppsättningen](https://go.microsoft.com/fwlink/?linkid=2090451) (Hämta och extrahera *sample_data.zip*).
 * När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+  * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
+  * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
 ## <a name="setting-up"></a>Konfigurera
 
@@ -61,7 +66,6 @@ Skapa en fil med namnet `index.js` , öppna den och importera följande bibliote
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_imports)]
 
-
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js), som innehåller kod exemplen i den här snabb starten.
 
@@ -74,18 +78,20 @@ Skapa variabler för resursens Azure-slutpunkt och nyckel.
 >
 > Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Mer information finns i [säkerhets](../../../cognitive-services-security.md) artikeln Cognitive Services.
 
-## <a name="object-model"></a>Objekt modell 
+## <a name="object-model"></a>Objekt modell
 
 Med formulär tolken kan du skapa två olika klient typer. Det första `FormRecognizerClient` används för att fråga tjänsten om identifierade formulär fält och innehåll. Den andra används `FormTrainingClient` för att skapa och hantera anpassade modeller som du kan använda för att förbättra igenkänningen. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `FormRecognizerClient` tillhandahåller åtgärder för:
 
- * Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär. Dessa värden returneras i en `RecognizedForm` objekt samling.
- * Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell. Formulär innehåll returneras i en `FormPage` objekt samling.
- * Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten. De här fälten och meta-data returneras i en-samling `RecognizedReceipt` .
+* Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär. Dessa värden returneras i en `RecognizedForm` objekt samling.
+* Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell. Formulär innehåll returneras i en `FormPage` objekt samling.
+* Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten. De här fälten och meta-data returneras i en-samling `RecognizedReceipt` .
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
+
 `FormTrainingClient` tillhandahåller åtgärder för:
 
 * Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär. En `CustomFormModel` returneras som anger vilka formulär modeller som ska analyseras och vilka fält som ska extraheras för varje formulär typ. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
@@ -95,7 +101,6 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 > [!NOTE]
 > Modeller kan också tränas med hjälp av ett grafiskt användar gränssnitt, till exempel [etikett verktyget för formulär igenkänning](../../quickstarts/label-tool.md).
-
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -307,7 +312,7 @@ Använd-metoden för att analysera kvitton från en URI `beginRecognizeReceiptsF
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest&preserve-view=true ) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ### <a name="output"></a>Utdata
 
@@ -326,7 +331,7 @@ First receipt:
 
 ## <a name="manage-your-custom-models"></a>Hantera dina anpassade modeller
 
-Det här avsnittet visar hur du hanterar de anpassade modeller som lagras i ditt konto. Följande kod utför alla modell hanterings aktiviteter i en enda funktion, som exempel. 
+Det här avsnittet visar hur du hanterar de anpassade modeller som lagras i ditt konto. Följande kod utför alla modell hanterings aktiviteter i en enda funktion, som exempel.
 
 ### <a name="get-number-of-models"></a>Hämta antal modeller
 
@@ -334,13 +339,11 @@ Följande kodblock hämtar antalet modeller som för närvarande finns i ditt ko
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_count)]
 
-
 ### <a name="get-list-of-models-in-account"></a>Hämta lista över modeller i kontot
 
 Följande kodblock innehåller en fullständig lista över tillgängliga modeller i ditt konto, inklusive information om när modellen skapades och dess aktuella status.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
-
 
 ### <a name="output"></a>Utdata
 
@@ -381,7 +384,6 @@ Det här kod blocket innehåller en lista över modeller och modell-ID: n.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_listpages)]
 
-
 ### <a name="output"></a>Utdata
 
 ```console
@@ -396,13 +398,11 @@ Följande funktion tar ett modell-ID och hämtar det matchande Model-objektet. D
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_getmodel)]
 
-
 ### <a name="delete-a-model-from-the-resource-account"></a>Ta bort en modell från resurs kontot
 
 Du kan också ta bort en modell från ditt konto genom att referera till dess ID. Den här funktionen tar bort modellen med angivet ID. Den här funktionen anropas inte som standard.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_delete)]
-
 
 ### <a name="output"></a>Utdata
 
@@ -431,7 +431,7 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 
 Du kan ställa in följande miljö variabel för att se fel söknings loggar när du använder det här biblioteket.
 
-```
+```console
 export DEBUG=azure*
 ```
 

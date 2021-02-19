@@ -2,21 +2,26 @@
 title: 'Snabb start: formulär tolkens klient bibliotek för python'
 description: Använd formulär tolkens klient bibliotek för python för att skapa en app för bearbetning av formulär som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
-ms.openlocfilehash: d0c26a4b0cc860b959afc6703ee3e709c606f209
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: 5e7197208289e03502368c0988676bf3d2016070
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584617"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101102928"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
 
 [Referens dokumentation](/python/api/azure-ai-formrecognizer)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -27,8 +32,8 @@ ms.locfileid: "99584617"
 * [Python 3.x](https://www.python.org/)
 * En Azure Storage-blob som innehåller en uppsättning tränings data. Se [skapa en tränings data uppsättning för en anpassad modell](../../build-training-data-set.md) för tips och alternativ för att sätta samman din tränings data uppsättning. I den här snabb starten kan du använda filerna under mappen **träna** i [exempel data uppsättningen](https://go.microsoft.com/fwlink/?linkid=2090451) (Hämta och extrahera *sample_data.zip*).
 * När du har en Azure-prenumeration kan du <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" skapa en formulär igenkännings resurs "  target="_blank"> skapa en formulär igenkännings resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+  * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Forms igenkännings-API: et. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
+  * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
 
 ## <a name="setting-up"></a>Konfigurera
 
@@ -36,23 +41,23 @@ ms.locfileid: "99584617"
 
 När du har installerat python kan du installera den senaste versionen av formulär identifierarens klient bibliotek med:
 
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-> [!NOTE]
-> Den senaste formulär identifieraren visar API-version 2,0
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Preview](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Formulär tolken för hands version SDK visar API version 2,1 Preview
+> Formulär tolken 3.1.0 SDK visar API version 2,1 Preview
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+> [!NOTE]
+> Formulär tolken 3.0.0 SDK visar API v 2.0
 
 ---
 
@@ -65,24 +70,24 @@ Skapa ett nytt python-program i önskat redigerings program eller IDE. Importera
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py), som innehåller kod exemplen i den här snabb starten.
 
-
 Skapa variabler för resursens Azure-slutpunkt och nyckel. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
-
-## <a name="object-model"></a>Objekt modell 
+## <a name="object-model"></a>Objekt modell
 
 Med formulär tolken kan du skapa två olika klient typer. Det första `form_recognizer_client` används för att fråga tjänsten om identifierade formulär fält och innehåll. Den andra används `form_training_client` för att skapa och hantera anpassade modeller som du kan använda för att förbättra igenkänningen. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `form_recognizer_client` tillhandahåller åtgärder för:
 
- * Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär. 
- * Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell. 
- * Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten.
+* Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär.
+* Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell.
+* Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
+
 `form_training_client` tillhandahåller åtgärder för:
 
 * Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
@@ -96,23 +101,24 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `form_rec
 ## <a name="code-examples"></a>Kodexempel
 
 De här kodfragmenten visar hur du utför följande uppgifter med formulär tolkens klient bibliotek för python:
-
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-* [Autentisera klienten](#authenticate-the-client)
-* [Analysera layout](#analyze-layout)
-* [Analysera kvitton](#analyze-receipts)
-* [Träna en anpassad modell](#train-a-custom-model)
-* [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
-* [Hantera dina anpassade modeller](#manage-your-custom-models)
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v 2.1 Preview](#tab/preview)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Analysera layout](#analyze-layout)
 * [Analysera kvitton](#analyze-receipts)
 * [Analysera visitkort](#analyze-business-cards)
 * [Analysera fakturor](#analyze-invoices)
+* [Träna en anpassad modell](#train-a-custom-model)
+* [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
+* [Hantera dina anpassade modeller](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [Autentisera klienten](#authenticate-the-client)
+* [Analysera layout](#analyze-layout)
+* [Analysera kvitton](#analyze-receipts)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
@@ -125,10 +131,10 @@ Här ska du autentisera två klient objekt med de prenumerationsfiler som du def
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
 
-
 ## <a name="get-assets-for-testing"></a>Få till gångar för testning
 
 Du måste lägga till referenser till URL: erna för din utbildning och testa data.
+
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
@@ -171,22 +177,21 @@ Confidence score: 1.0
 
 ```
 
-
 ## <a name="analyze-invoices"></a>Analysera fakturor
 
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du analyserar och extraherar vanliga fält från försäljnings fakturor med hjälp av en förtränad modell. Mer information om faktura analys finns i [vägledningen för faktura](../../concept-invoices.md). Använd metoden för att analysera fakturor från en URL `begin_recognize_invoices_from_url` . 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
 
 ---
 
@@ -329,7 +334,7 @@ Det här avsnittet visar hur du analyserar och extraherar vanliga fält från am
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ### <a name="output"></a>Utdata
 
@@ -353,22 +358,21 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-
 ## <a name="analyze-business-cards"></a>Analysera visitkort
 
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+#### <a name="v21-preview"></a>[v 2.1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md). Använd-metoden för att analysera visitkort från en URL `begin_recognize_business_cards_from_url` . 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
 
 ---
 

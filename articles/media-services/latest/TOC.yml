@@ -327,6 +327,8 @@
           href: how-to-create-transform.md
         - name: Skapa en grundläggande ljudomvandling med REST
           href: how-to-create-basic-audio-transform.md
+        - name: Skapa miniatyr bilder
+          href: how-to-create-thumbnail-sprites.md
         - name: Skapa en copyAllBitrateNonInterleaved-transformering med REST
           href: how-to-create-copyallbitratenoninterleaved-transform.md
         - name: Kopiera videor utan kodning med REST
@@ -503,5 +505,3 @@
       href: azure-clouds-regions.md
     - name: Regionala kodnamn och slutpunkter
       href: azure-regions-code-names.md
-    - name: Dokumentationsuppdateringar
-      href: docs-release-notes.md
