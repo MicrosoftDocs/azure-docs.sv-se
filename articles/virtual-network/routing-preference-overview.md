@@ -11,22 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.custom: references_regions
+ms.openlocfilehash: b0235286260910a45523e3236e7ed3a114eaf57f
+ms.sourcegitcommit: 8c93b05c27c7e8a5ba62a4d6fc6fc4d0c3980a21
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539078"
+ms.lasthandoff: 02/26/2021
+ms.locfileid: "101601335"
 ---
-# <a name="what-is-routing-preference-preview"></a>Vad är cirkulations inställningar (för hands version)?
+# <a name="what-is-routing-preference"></a>Vad är routningsprioritet?
 
 Med Azure routing-inställningen kan du välja hur trafiken ska dirigeras mellan Azure och Internet. Du kan välja att dirigera trafik antingen via Microsoft-nätverket eller via Internet leverantörs nätverket (offentligt Internet). De här alternativen kallas även för *kall källroutning* och routning av *aktiva potatis* . Priset för utgående data överföring varierar beroende på valet av routning. Du kan välja alternativet routning när du skapar en offentlig IP-adress. Den offentliga IP-adressen kan associeras med resurser, till exempel virtuell dator, skalnings uppsättningar för virtuella datorer, belastnings utjämning på Internet, osv. Du kan också ange cirkulations inställningar för Azure Storage-resurser som blobbar, filer, webb och Azure-DataLake. Trafiken dirigeras som standard via Microsofts globala nätverk för alla Azure-tjänster.
-
-> [!IMPORTANT]
-> Dirigerings inställningen är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Routning via Microsoft globalt nätverk
 
@@ -70,13 +67,13 @@ För lagring använder primära slut punkter alltid **Microsofts globala nätver
 * Azure DataLake
 
 ## <a name="pricing"></a>Prissättning
-Pris skillnaden mellan båda alternativen återspeglas i priset för utgående data överföring i Internet. Routning via **Microsofts globala nätverks** data överförings pris är detsamma som aktuellt pris för utgående Internet. Besök [pris sidan för Azure bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/) för den senaste pris informationen. 
+Pris skillnaden mellan båda alternativen återspeglas i priset för utgående data överföring i Internet. Routning via **Microsofts globala nätverks** data överförings pris är detsamma som aktuellt pris för utgående Internet. Besök [pris sidan för Azure bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/) för den senaste pris informationen.
 
 ## <a name="limitations"></a>Begränsningar
 
+* Dirigerings preferenser stöds för närvarande inte i Australien, centrala Australien, Östra Kanada, södra Brasilien, centrala Korea, centrala Korea och södra Korea.
 * Dirigerings inställningar är bara kompatibla med zon-redundant standard-SKU för offentlig IP-adress. Grundläggande SKU för offentlig IP-adress stöds inte.
 * Inställningen routning stöder för närvarande endast IPv4 offentliga IP-adresser. Offentliga IPv6-IP-adresser stöds inte.
-* Virtuella datorer med flera nätverkskort kan bara ha en typ av cirkulations inställningar.
 
 
 ## <a name="next-steps"></a>Nästa steg
