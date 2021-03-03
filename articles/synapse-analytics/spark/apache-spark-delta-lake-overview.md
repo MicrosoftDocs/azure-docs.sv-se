@@ -11,12 +11,12 @@ ms.date: 07/28/2020
 ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d960b64d71861044aa1b0344ccbfdaf5e6328e6a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120333"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676301"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation delta Lake-översikt
 
@@ -296,7 +296,7 @@ Resultat i:
 |Leverantör                    |delta                                                                                                        |       |
 |Tabell egenskaper            |[transient_lastDdlTime = 1587774934]                                                                           |       |
 |Statistik                  |2407 byte                                                                                                   |       |
-|Plats                    |abfss://data @ <data lake> . DFS.Core.Windows.net/Synapse/workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
+|Location                    |abfss://data @ <data lake> . DFS.Core.Windows.net/Synapse/workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
 |Serde-bibliotek               |org. apache. Hadoop. Hive. serde2. Lazy. LazySimpleSerDe                                                           |       |
 |InputFormat                 |org. apache. Hadoop. mapred. SequenceFileInputFormat                                                             |       |
 |OutputFormat                |org. apache. Hadoop. Hive. QL. io. HiveSequenceFileOutputFormat                                                    |       |
@@ -342,7 +342,7 @@ Resultat i:
 |Typ                        |5,25                                                              |       |
 |Leverantör                    |DELTA                                                                 |       |
 |Tabell egenskaper            |[transient_lastDdlTime = 1587774938]                                    |       |
-|Plats                    |abfss://data @ <data lake> . DFS.Core.Windows.net/delta/delta-Table-587152|       |
+|Location                    |abfss://data @ <data lake> . DFS.Core.Windows.net/delta/delta-Table-587152|       |
 |Serde-bibliotek               |org. apache. Hadoop. Hive. serde2. Lazy. LazySimpleSerDe                    |       |
 |InputFormat                 |org. apache. Hadoop. mapred. SequenceFileInputFormat                      |       |
 |OutputFormat                |org. apache. Hadoop. Hive. QL. io. HiveSequenceFileOutputFormat             |       |
@@ -996,5 +996,5 @@ Mer information finns i [delta Lake Project](https://github.com/delta-io/delta).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Dokumentation om .NET för Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* [Dokumentation om .NET för Apache Spark](/dotnet/spark)
 * [Azure Synapse Analytics](../index.yml)

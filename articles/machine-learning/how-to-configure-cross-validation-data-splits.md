@@ -10,13 +10,13 @@ ms.custom: how-to, automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
-ms.date: 06/16/2020
-ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/23/2021
+ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599068"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661043"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurera datadelningar och korsvalidering vid automatiserad maskininlärning
 
@@ -26,7 +26,7 @@ När du använder automatisk ML för att skapa flera ML-modeller i Azure Machine
 
 Automatiserade ML-experiment utför automatisk modell validering. I följande avsnitt beskrivs hur du kan anpassa verifierings inställningarna ytterligare med [Azure Machine Learning python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py). 
 
-En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learning-experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md). 
+En låg kod eller ingen kod får [du i skapa dina automatiserade Machine Learning-experiment i Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
 
 > [!NOTE]
 > Studio stöder för närvarande utbildning och validering av data, samt alternativ för kors validering, men har inte stöd för att ange enskilda datafiler för verifierings uppsättningen. 
@@ -73,6 +73,9 @@ Om du inte uttryckligen anger antingen en `validation_data` -eller `n_cross_vali
 
 I det här fallet kan du antingen börja med en enda datafil och dela den i tränings data och verifierings data uppsättningar, eller så kan du ange en separat datafil för validerings uppsättningen. Oavsett hur tilldelar- `validation_data` parametern i `AutoMLConfig` objektet vilka data som ska användas som verifierings uppsättning. Den här parametern accepterar bara data mängder i form av en [Azure Machine Learning dataset](how-to-create-register-datasets.md) -eller Pandas-dataframe.   
 
+> [!NOTE]
+> `validation_size`Parametern stöds inte i prognos scenarier.
+
 Följande kod exempel definierar uttryckligen vilken del av de tillhandahållna data som `dataset` ska användas för utbildning och verifiering.
 
 ```python
@@ -93,7 +96,12 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Ange storlek för validerings uppsättning
 
-I det här fallet tillhandahålls endast en enda data uppsättning för experimentet. Det vill säga att `validation_data` parametern **inte** anges och att den angivna data uppsättningen tilldelas till  `training_data` parametern.  I ditt `AutoMLConfig` objekt kan du ange `validation_size` att parametern ska innehålla en del av tränings data för verifiering. Det innebär att verifierings uppsättningen delas av AutoML från den ursprungliga `training_data` som tillhandahålls. Värdet måste vara mellan 0,0 och 1,0 (till exempel 0,2 betyder att 20% av data hålls kvar för verifierings data).
+I det här fallet tillhandahålls endast en enda data uppsättning för experimentet. Det vill säga att `validation_data` parametern **inte** anges och att den angivna data uppsättningen tilldelas till  `training_data` parametern.  
+
+I ditt `AutoMLConfig` objekt kan du ange `validation_size` att parametern ska innehålla en del av tränings data för verifiering. Det innebär att verifierings uppsättningen kommer att delas upp med automatisk ML från den ursprungliga `training_data` . Värdet måste vara mellan 0,0 och 1,0 (till exempel 0,2 betyder att 20% av data hålls kvar för verifierings data).
+
+> [!NOTE]
+> `validation_size`Parametern stöds inte i prognos scenarier. 
 
 Se följande kod exempel:
 
@@ -111,10 +119,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-## <a name="set-the-number-of-cross-validations"></a>Ange antalet kors valideringar
+## <a name="k-fold-cross-validation"></a>K-vikning kors validering
 
-Om du vill utföra kors validering inkluderar du `n_cross_validations` parametern och anger den till ett värde. Den här parametern anger hur många kors valideringar som ska utföras baserat på samma antal vikningar.
+Om du vill utföra en mellanliggande kors validering inkluderar du `n_cross_validations` parametern och anger den till ett värde. Den här parametern anger hur många kors valideringar som ska utföras baserat på samma antal vikningar.
 
+> [!NOTE]
+> `n_cross_validations`Parametern stöds inte i klassificerings scenarier som använder djup neurala nätverk.
+ 
 I följande kod definieras fem vikningar för kors validering. Därför är fem olika utbildningar, varje utbildning som använder 4/5 av data och varje validering som använder 1/5 av data med en annan uttrycks vikning varje tillfälle.
 
 Resultatet blir att måtten beräknas med genomsnittet av de fem verifierings måtten.
@@ -129,6 +140,31 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                              primary_metric = 'AUC_weighted',
                              training_data = dataset,
                              n_cross_validations = 5
+                             label_column_name = 'Class'
+                            )
+```
+## <a name="monte-carlo-cross-validation"></a>Monte Carlo kors validering
+
+Om du vill utföra en kors validering av Monte Carlo inkluderar du både `validation_size` `n_cross_validations` parametrarna och i `AutoMLConfig` objektet. 
+
+För Monte Carlo kors validering tar automatiserade ML ur den del av tränings data som anges av `validation_size` parametern för verifiering och tilldelar sedan resten av data för utbildning. Den här processen upprepas sedan baserat på det värde som anges i `n_cross_validations` parametern, vilket genererar nya inlärnings-och validerings delningar, varje gång.
+
+> [!NOTE]
+> Carlo kors validering stöds inte i prognos scenarier.
+
+Följande kod definierar, 7 vikningar för kors validering och 20% av tränings data bör användas för verifiering. Därför använder 7 olika utbildningar 80% av data och varje validering använder 20% av data med en annan uttrycks vikning varje tillfälle.
+
+```python
+data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
+
+dataset = Dataset.Tabular.from_delimited_files(data)
+
+automl_config = AutoMLConfig(compute_target = aml_remote_compute,
+                             task = 'classification',
+                             primary_metric = 'AUC_weighted',
+                             training_data = dataset,
+                             n_cross_validations = 7
+                             validation_size = 0.2,
                              label_column_name = 'Class'
                             )
 ```

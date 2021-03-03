@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258905"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667600"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Ansluta till Synapse SQL med Azure Data Studio
 
@@ -26,7 +26,7 @@ ms.locfileid: "99258905"
 > * [SQLCMD](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Du kan använda [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
+Du kan använda [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
 
 ## <a name="connect"></a>Ansluta
 
@@ -73,7 +73,7 @@ Efter en lyckad inloggning bör du se en instrument panel så här: ![ instrumen
 
 ## <a name="query"></a>Söka i data
 
-När du har anslutit kan du fråga Synapse SQL med stöd för [Transact-SQL-uttryck (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) som stöds mot instansen. Kom igång genom att välja **ny fråga** från vyn instrument panel.
+När du har anslutit kan du fråga Synapse SQL med stöd för [Transact-SQL-uttryck (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) som stöds mot instansen. Kom igång genom att välja **ny fråga** från vyn instrument panel.
 
 ![Ny fråga](./media/get-started-azure-data-studio/5-new-query.png)
 

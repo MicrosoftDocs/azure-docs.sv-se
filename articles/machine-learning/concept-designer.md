@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322262"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661094"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Vad är Azure Machine Learning designer? 
+# <a name="what-is-azure-machine-learning-designer"></a>Vad är Azure Machine Learning Designer? 
 
 
 Med Azure Machine Learning Designer kan du visuellt ansluta [data uppsättningar](#datasets) och [moduler](#module) på en interaktiv arbets yta för att skapa maskin inlärnings modeller. Information om hur du kommer igång med design verktyget finns i [Självstudier: förutsäga Automobile-priset med designern](tutorial-designer-automobile-price-train-score.md)
@@ -81,7 +81,7 @@ En modul är en algoritm som du kan tillämpa på dina data. Designern har flera
 
 En modul kan ha en uppsättning parametrar som du kan använda för att konfigurera modulens interna algoritmer. När du väljer en modul på arbetsytan modulens visas modulens parametrar i fönstret Egenskaper på arbetsytans högra sida. Du kan ändra parametrarna i det här fönstret för att finjustera din modell. Du kan ställa in beräknings resurser för enskilda moduler i designern. 
 
-:::image type="content" source="./media/concept-designer/properties.png"alt-text="Egenskaper för modul":::
+:::image type="content" source="./media/concept-designer/properties.png" alt-text="Egenskaper för modul":::
 
 
 För viss hjälp att navigera genom biblioteket med Machine Learning-algoritmer tillgängliga, se [algoritmen & module Reference Overview](algorithm-module-reference/module-reference.md). Information om hur du väljer en algoritm finns i [lathund-bladet Azure Machine Learning algorithm](algorithm-cheat-sheet.md).

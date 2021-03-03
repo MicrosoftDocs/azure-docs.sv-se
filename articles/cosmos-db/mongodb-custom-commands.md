@@ -5,15 +5,15 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 03/02/2021
 ms.author: chrande
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fd2fa7620e57c58f72dad73c1012a19190e8fbc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: deba6696eb71287902fa3970ed2d83d0b09ac08d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359654"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658494"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Använd MongoDB-tilläggs kommandon för att hantera data som lagras i Azure Cosmos DB s API för MongoDB 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ Genom att använda Azure Cosmos DBs API för MongoDB kan du dra nytta av fördel
 
 ## <a name="mongodb-protocol-support"></a>Stöd för MongoDB-protokoll
 
-Azure Cosmos DBs API för MongoDB är kompatibelt med MongoDB Server version 3,2 och 3,6. Se [funktioner och syntax som stöds](mongodb-feature-support.md) för mer information. 
+Azure Cosmos DBs API för MongoDB är kompatibelt med MongoDB Server version 4,0, 3,6 och 3,2. Mer information finns i avsnittet om funktioner och syntax som stöds i [4,0](mongodb-feature-support-40.md), [3,6](mongodb-feature-support-36.md)och [3,2](mongodb-feature-support.md) artiklar. 
 
 Följande tilläggs kommandon ger möjlighet att skapa och ändra Azure Cosmos DB-/regionsspecifika resurser via databas begär Anden:
 
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughpu
 
 ## <a name="update-database"></a><a id="update-database"></a> Uppdatera databas
 
-Kommandot uppdatera databas tillägg uppdaterar de egenskaper som är associerade med den angivna databasen. I följande tabell beskrivs parametrarna i kommandot:
+Kommandot uppdatera databas tillägg uppdaterar de egenskaper som är associerade med den angivna databasen. Det går bara att ändra databasen från etablerade data flöden till autoskalning och vice versa i Azure-portalen. I följande tabell beskrivs parametrarna i kommandot:
 
 |**Fält**|**Typ** |**Beskrivning** |
 |---------|---------|---------|
@@ -206,8 +206,8 @@ Kommandot Skapa samlings tillägg skapar en ny MongoDB-samling. Databas namnet a
   customAction: "CreateCollection",
   collection: "<Collection Name>",
   shardKey: "<Shard key path>",
-  offerThroughput: (int), // Amount of throughput allocated to a specific collection
-
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" to use Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 
@@ -292,13 +292,14 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 
 ## <a name="update-collection"></a><a id="update-collection"></a> Uppdatera samling
 
-Kommandot för att uppdatera samlings tillägg uppdaterar egenskaperna som är associerade med den angivna samlingen.
+Kommandot för att uppdatera samlings tillägg uppdaterar egenskaperna som är associerade med den angivna samlingen. Det går bara att ändra samlingen från etablerade data flöden till autoskalning och vice versa i Azure-portalen.
 
 ```javascript
 {
   customAction: "UpdateCollection",
   collection: "<Name of the collection that you want to update>",
-  offerThroughput: (int) // New throughput that will be set to the collection
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure Portal.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 

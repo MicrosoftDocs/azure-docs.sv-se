@@ -1,0 +1,73 @@
+---
+title: Översikt över Azure percept-säkerhet
+description: Läs mer om Azure percept Security
+author: elqu20
+ms.author: v-elqu
+ms.service: azure-percept
+ms.topic: conceptual
+ms.date: 02/18/2021
+ms.custom: template-concept
+ms.openlocfilehash: b5a345139114842c83cb1f11792076efb1461870
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664103"
+---
+# <a name="azure-percept-security-overview"></a>Översikt över Azure percept-säkerhet
+
+Azure percept DK-enheter är utformade med en maskin varu rot med förtroende – inbyggd säkerhet på varje enhet. Det hjälper till att skydda integritets känsliga sensorer som kameror och mikrofoner, data härlednings data och autentisering av enheter och auktorisering för Azure percept Studio-tjänster.
+
+> [!NOTE]
+> Azure percept DK är avsett för användning i utvecklings-och test miljöer och för scenarier med koncept bevis.
+
+## <a name="devices"></a>Enheter
+
+### <a name="azure-percept-dk"></a>Azure percept DK
+
+Azure percept DK innehåller en Trusted Platform Module (TPM) version 2,0 som kan användas för att ansluta enheten säkert till Azure Device Provisioning-tjänster. TPM är en ISO-standard som är bransch standard från Trusted Computing Group och du kan läsa mer om TPM i den [fullständiga tpm 2,0-specifikationen](https://trustedcomputinggroup.org/resource/tpm-library-specification/) eller ISO/IEC 11889-specifikationen. Mer information om hur DPS kan etablera enheter på ett säkert sätt finns i [Azure-IoT Hub Device Provisioning service – TPM-attestering](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+
+### <a name="azure-percept-system-on-module-som"></a>Azure percept-system för modul (som)
+
+Azure percept DK vision-aktiverat system på modul (som) och ljud tillbehöret Azure percept som båda innehåller en Micro Controller-enhet (MCU) för att skydda åtkomsten till de inbäddade AI-sensorer. Vid varje start autentiserar den inbyggda program varan och godkänner AI-acceleratorn med Azure percept Studio-tjänster med hjälp av MCU-arkitekturen för enhets identifierare. TÄRNINGarna fungerar genom att dela upp start i lager och skapa hemligheter som är unika för varje lager och konfiguration baserat på en unik enhets hemlighet (UDS). Om en annan kod eller konfiguration startas, när som helst i kedjan, är hemligheterna annorlunda. Du kan läsa mer om TÄRNINGarna i [spec-arbetsgruppen](https://trustedcomputinggroup.org/work-groups/dice-architectures/). För att konfigurera åtkomst till Azure percept Studio och nödvändiga tjänster, se **Konfigurera brand väggar för Azure PERCEPT DK** nedan.
+
+Azure percept-enheter använder maskin varu rot förtroende för att skydda inbyggd program vara. Start-ROM säkerställer integriteten för den inbyggda program varan mellan ROM-och OS-inläsaren, vilket i sin tur säkerställer integriteten hos de andra program komponenterna som skapar en förtroende kedja.
+
+## <a name="services"></a>Tjänster
+
+### <a name="iot-edge"></a>IoT Edge
+
+Azure percept DK ansluter säkert till Azure percept Studio och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06).
+
+### <a name="device-update-for-iot-hub"></a>Enhets uppdatering för IoT Hub
+
+Enhets uppdatering för IoT Hub möjliggör säker, skalbar och pålitlig uppdatering via luften som ger förnybar säkerhet till Azure percept-enheter. Det ger omfattande hanterings kontroller och kompatibilitet med hjälp av insikter. Azure percept DK innehåller en förintegrerad enhets uppdaterings lösning som tillhandahåller elastisk uppdatering (A/B) från inbyggd program vara till OS-lager.
+
+<!---I think the below topics need to be somewhere else, (i.e. not on the main page)
+--->
+
+## <a name="configuring-firewalls-for-azure-percept-dk"></a>Konfigurera brand väggar för Azure percept DK
+
+Om nätverks konfigurationen kräver att du uttryckligen tillåter anslutningar från Azure percept DK-enheter kan du läsa igenom följande lista över komponenter.
+
+Den här check listan är en start punkt för brand Väggs regler:
+
+|URL (* = jokertecken) |Utgående TCP-portar|    Användning|
+|-------------------|------------------|---------|
+|*. auth.azureperceptdk.azure.net|   443|    Azure DK som autentisering och auktorisering|
+|*. auth.projectsantacruz.azure.net| 443|    Azure DK som autentisering och auktorisering|
+
+Granska dessutom listan över anslutningar som [används av Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices).
+
+## <a name="additional-recommendations-for-deployment-to-production"></a>Ytterligare rekommendationer för distribution till produktion
+
+Azure percept DK erbjuder ett stort utbud av säkerhetsfunktionerna i kartongen. Förutom de kraftfulla säkerhetsfunktioner som ingår i den aktuella versionen, rekommenderar Microsoft även följande rikt linjer när du överväger produktions distributioner:
+
+- Starkt fysiskt skydd av själva enheten
+- Säkerställa att data i rest-kryptering är aktiverade
+- Kontinuerligt övervaka enhetens position och snabbt svara på aviseringar
+- Begränsa antalet administratörer som har åtkomst till enheten
+
+## <a name="next-steps"></a>Nästa steg
+
+Lär dig mer om tillgängliga [Azure PERCEPT AI-modeller](./overview-ai-models.md).

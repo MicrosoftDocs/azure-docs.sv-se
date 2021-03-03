@@ -3,7 +3,7 @@ title: Skapa & hantera en katalog med resurser i hantering av rättigheter – A
 description: Lär dig hur du skapar en ny behållare med resurser och åtkomst paket i Azure Active Directory rättighets hantering.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: HANKI
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 8ae3ee8cb96453bae1ce581ea92bdb77854c02d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745971"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644154"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Skapa och hantera en katalog med resurser i hantering av Azure AD-rättigheter
 
@@ -80,6 +80,14 @@ Om du vill inkludera resurser i ett Access-paket måste resurserna finnas i en k
 1. Klicka på **Lägg till** när du är färdig.
 
     Dessa resurser kan nu inkluderas i åtkomst paket i katalogen.
+
+### <a name="add-a-multi-geo-sharepoint-site"></a>Lägg till en SharePoint-webbplats med flera geo-platser
+
+1. Om du har aktiverat [multi-geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) för SharePoint väljer du den miljö som du vill välja platser från.
+    
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint multi-geo-platser":::
+
+1. Välj sedan de platser som du vill lägga till i katalogen. 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Lägga till en resurs i en katalog program mässigt
 

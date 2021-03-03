@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: c55e2d2d9eaeae441e8a7505d0f391ed0860cedf
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 499e0aa1ee451969923dbdf5f84be1c844a9aab4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634217"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659349"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Översikt över vCore-modellen – Azure SQL Database och Azure SQL-hanterad instans 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ Tjänst nivå alternativ i vCore-modellen omfattar Generell användning, Affärs
 |Storage|Använder Fjärrlagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**Server lös beräkning**:<br/>5 GB-3 TB<br/>**SQL-hanterad instans**: 32 GB-8 TB |Använder lokal SSD-lagring.<br/>**SQL Database etablerings beräkning**:<br/>5 GB – 4 TB<br/>**SQL-hanterad instans**:<br/>32 GB – 4 TB |Flexibel automatisk storleks ökning av lagring vid behov. Har stöd för upp till 100 TB lagrings utrymme. Använder lokal SSD-lagring för lokal cache för buffring och lokal data lagring. Använder Azure Fjärrlagring som sista långsiktigt långsiktigt data lager. |
 |IOPS och data flöde (ungefärligt)|**SQL Database**: se resurs gränser för [enskilda databaser](resource-limits-vcore-single-databases.md) och [elastiska pooler](resource-limits-vcore-elastic-pools.md).<br/>**SQL-hanterad instans**: se [Översikt över gränser för Azure SQL Managed Instance-resurser](../managed-instance/resource-limits.md#service-tier-characteristics).|Se resurs gränser för [enskilda databaser](resource-limits-vcore-single-databases.md) och [elastiska pooler](resource-limits-vcore-elastic-pools.md).|Hög skalning är en arkitektur med flera nivåer med cachelagring på flera nivåer. Effektiv IOPS och data flöde beror på arbets belastningen.|
 |Tillgänglighet|1 replik, inga storskaliga repliker|3 repliker, 1 [storskalig replik](read-scale-out.md),<br/>zon-redundant hög tillgänglighet (HA)|1 Läs-och skriv replik, plus 0-4 storskalig [repliker](read-scale-out.md)|
-|Säkerhetskopior|[Geo-redundant lagring med Läs behörighet (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dagar (7 dagar som standard)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dagar (7 dagar som standard)|Ögonblicks bilds säkerhets kopieringar i Azure Remote Storage. Återställningar använder dessa ögonblicks bilder för snabb återställning. Säkerhets kopieringar är omedelbara och påverkar inte beräknings-I/O-prestanda. Återställningar är snabba och är inte en storleks data åtgärd (tar några minuter i stället för timmar eller dagar).|
+|Säkerhetskopior|[Geo-redundant lagring med Läs behörighet (RA-GRS)](../../storage/common/geo-redundant-design.md), 1-35 dagar (7 dagar som standard)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 1-35 dagar (7 dagar som standard)|Ögonblicks bilds säkerhets kopieringar i Azure Remote Storage. Återställningar använder dessa ögonblicks bilder för snabb återställning. Säkerhets kopieringar är omedelbara och påverkar inte beräknings-I/O-prestanda. Återställningar är snabba och är inte en storleks data åtgärd (tar några minuter i stället för timmar eller dagar).|
 |Minnesintern|Stöds inte|Stöds|Stöds inte|
 |||
 
@@ -119,7 +119,7 @@ För att få åtkomst till DC-serien måste prenumerationen vara en betald erbju
 ### <a name="compute-and-memory-specifications"></a>Beräknings-och minnes specifikationer
 
 
-|Maskin varu generering  |Compute  |Minne  |
+|Maskin varu generering  |Beräkning  |Minne  |
 |:---------|:---------|:---------|
 |Gen4     |– Intel® E5-2673 v3 (Haswell) 2,4 GHz-processorer<br>-Etablera upp till 24 virtuella kärnor (1 vCore = 1 fysisk kärna)  |– 7 GB per vCore<br>-Etablera upp till 168 GB|
 |Gen5     |**Allokerad beräkning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* och intel® 8272CL (Cascade Lake) 2,5 GHz- \* processorer<br>-Etablera upp till 80 virtuella kärnor (1 vCore = 1 Hyper-Thread)<br><br>**Serverlös databearbetning**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz och Intel® SP-8160 (Skylake) * processorer<br>-Skala upp till 40 virtuella kärnor (1 vCore = 1 Hyper-Thread) automatiskt|**Allokerad beräkning**<br>– 5,1 GB per vCore<br>-Etablera upp till 408 GB<br><br>**Serverlös databearbetning**<br>-Skala upp till 24 GB per vCore automatiskt<br>-Skala upp till 120 GB max|

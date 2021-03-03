@@ -2,18 +2,18 @@
 title: Azure Arc Enabled Kubernetes-agent arkitektur
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en arkitektur översikt över Azure Arc-aktiverade Kubernetes-agenter
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: 287ffdd40dc9ffdb91abb58b305d8b35b0bc3674
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652572"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650540"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc Enabled Kubernetes-agent arkitektur
 
@@ -42,7 +42,7 @@ De flesta lokal data Center tillämpar strikta nätverks regler som förhindrar 
 
         | Agent | Beskrivning |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Azure Arc-aktiverade Kubernetes stöder för närvarande endast [systemtilldelade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). `clusteridentityoperator` initierar den första utgående kommunikationen. Den här första kommunikationen hämtar det MSI-certifikat (Hanterad tjänstidentitet) som används av andra agenter för kommunikation med Azure. |
+        | `deployment.apps/clusteridentityoperator` | Azure Arc-aktiverade Kubernetes stöder för närvarande endast [systemtilldelade identiteter](../../active-directory/managed-identities-azure-resources/overview.md). `clusteridentityoperator` initierar den första utgående kommunikationen. Den här första kommunikationen hämtar det MSI-certifikat (Hanterad tjänstidentitet) som används av andra agenter för kommunikation med Azure. |
         | `deployment.apps/config-agent` | Bevakar det anslutna klustret för käll kontrollens konfigurations resurser som tillämpas på klustret. Uppdaterar kompatibilitetstillstånd. |
         | `deployment.apps/controller-manager` | Operatorer som dirigerar interaktioner mellan Azure båg-komponenter. |    
         | `deployment.apps/metrics-agent` | Samlar in Mät värden för andra Arc-agenter för att verifiera optimala prestanda. |
@@ -85,7 +85,7 @@ De flesta lokal data Center tillämpar strikta nätverks regler som förhindrar 
 
 ## <a name="understand-connectivity-modes"></a>Förstå anslutnings lägen
 
-| Anslutnings läge | Description |
+| Anslutnings läge | Beskrivning |
 | ----------------- | ----------- |
 | Fullständigt ansluten | Agenter kan kommunicera konsekvent med Azure med liten fördröjning i spridningen av GitOps-konfigurationer, tillämpa principer för Azure Policy och Gatekeeper och samla in arbets belastnings mått och loggar i Azure Monitor. |
 | Halv anslutning | MSI-certifikatet som hämtas av `clusteridentityoperator` är giltigt i upp till 90 dagar innan certifikatet upphör att gälla. Vid förfallo datum slutar Azure Arc-Kubernetes resursen att fungera. Om du vill återaktivera alla Azure ARC-funktioner i klustret tar du bort och återskapar den Azure Arc-aktiverade Kubernetes-resursen och agenterna. Under 90 dagar ansluter du klustret minst en gång var 30: e dag. |
@@ -93,5 +93,5 @@ De flesta lokal data Center tillämpar strikta nätverks regler som förhindrar 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./connect-cluster.md)
+* [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)
 * [Konceptuell översikt över konfigurationer](./conceptual-configurations.md)

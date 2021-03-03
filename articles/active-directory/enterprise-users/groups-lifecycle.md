@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1e40ad90910f7b2244401386fb01a4e4fefe03ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547482"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647412"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurera förfallo principen för Microsoft 365 grupper
 
@@ -42,7 +42,7 @@ Information om hur du hämtar och installerar Azure AD PowerShell-cmdlets finns 
 
 ## <a name="activity-based-automatic-renewal"></a>Aktivitet baserad på automatisk förnyelse
 
-Med Azure AD Intelligence förnyas nu grupper automatiskt utifrån om de har använts nyligen. Den här funktionen eliminerar behovet av manuell åtgärd av grupp ägare, eftersom den baseras på användar aktivitet i grupper mellan Microsoft 365 tjänster som Outlook, SharePoint eller teams. Om till exempel en ägare eller en grupp medlem gör något som t. ex. att ladda upp ett dokument i SharePoint kan du gå till en Team kanal eller skicka ett e-postmeddelande till gruppen i Outlook. gruppen förnyas automatiskt och ägaren får inga förnyelse meddelanden.
+Med Azure AD Intelligence förnyas nu grupper automatiskt utifrån om de har använts nyligen. Den här funktionen eliminerar behovet av manuell åtgärd av grupp ägare, eftersom den baseras på användar aktivitet i grupper mellan Microsoft 365 tjänster som Outlook, SharePoint eller teams. Om till exempel en ägare eller en grupp medlem gör något som t. ex. att ladda upp ett dokument i SharePoint kan du gå till en Team kanal eller skicka ett e-postmeddelande till gruppen i Outlook. gruppen förnyas automatiskt runt 35 dagar innan gruppen upphör att gälla och ägaren inte får några förnyelse meddelanden.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktiviteter som automatiskt förnyar grupp förfallo datum
 
@@ -65,7 +65,7 @@ Följande är roller som kan konfigurera och använda förfallo datum för Micro
 Roll | Behörigheter
 -------- | --------
 Global administratör, grupp administratör eller användar administratör | Kan skapa, läsa, uppdatera eller ta bort princip inställningarna för utgångna Microsoft 365 grupper<br>Kan förnya alla Microsoft 365s grupper
-Användare | Kan förnya en Microsoft 365 grupp som de äger<br>Kan återställa en Microsoft 365 grupp som de äger<br>Kan läsa princip inställningarna för förfallo datum
+User | Kan förnya en Microsoft 365 grupp som de äger<br>Kan återställa en Microsoft 365 grupp som de äger<br>Kan läsa princip inställningarna för förfallo datum
 
 Mer information om behörigheter för att återställa en borttagen grupp finns [i återställa en borttagen Microsoft 365 grupp i Azure Active Directory](groups-restore-deleted.md).
 

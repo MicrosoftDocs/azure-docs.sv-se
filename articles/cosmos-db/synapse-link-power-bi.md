@@ -6,22 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: a16d22a49e42408271c91d961bcdb004536e3980
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247020"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659757"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Använd Power BI och Server lös Synapse SQL-pool (för hands version) för att analysera Azure Cosmos DB data med Synapse-länk 
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Använd Power BI-och Server lös Synapse SQL-pool för att analysera Azure Cosmos DB data med Synapse-länk 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 I den här artikeln får du lära dig hur du skapar en server lös SQL-pool-databas och vyer över Synapse-länken för Azure Cosmos DB. Du kommer att fråga Azure Cosmos DB behållare och sedan bygga en modell med Power BI över dessa vyer för att återspegla den frågan.
 
 I det här scenariot ska du använda dummy-data om produkt försäljning i en partner butik. Du analyserar intäkterna per butik baserat på närhet till stora hushåll och effekten av annonsering under en viss vecka. I den här artikeln skapar du två vyer med namnet **RetailSales** och **StoreDemographics** och en fråga mellan dem. Du kan hämta exempel produkt data från den här [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) -lagrings platsen.
-
-> [!IMPORTANT]
-> Stöd för Synapse-server utan SQL-pool för Azure Synapse-länken för Azure Cosmos DB är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762259"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644790"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory sömlös enkel inloggning: snabb start
 
@@ -161,10 +161,10 @@ Det finns två sätt att ändra användares intranät zon inställningar:
     ![Skärm bild som visar "registret" markerat och "register objekt" valt.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Ange följande värden i lämpliga fält och klicka på **OK**.
-   - **Nyckel Sök väg**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
-   - _* Värde namn * *: **_https_*_
-   - _* Värdetyp * *: **_REG_DWORD_*_
-   - _* Värde data * *: **_00000001_*_
+   - **Nyckel Sök väg**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_**
+   - **Värde namn**: **_https_**
+   - **Värdetyp**: **_REG_DWORD_**
+   - **Värde data**: **_00000001_**
  
      ![Skärm bild som visar fönstret "nya register egenskaper".](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Det finns två sätt att ändra användares intranät zon inställningar:
 
 I Mozilla Firefox används inte Kerberos-autentisering automatiskt. Varje användare måste manuellt lägga till Azure AD-URL: en i sina Firefox-inställningar med hjälp av följande steg:
 1. Kör Firefox och ange `about:config` i adress fältet. Stäng alla meddelanden som visas.
-2. Sök efter inställningen _ *nätverk. Negotiate-auth. Trusted-URI** Preference. Den här inställningen listar Firefoxs betrodda platser för Kerberos-autentisering.
+2. Sök efter **nätverket. inställningar för Negotiate-auth. Trusted-URI: er** . Den här inställningen listar Firefoxs betrodda platser för Kerberos-autentisering.
 3. Högerklicka och välj **ändra**.
 4. Ange `https://autologon.microsoftazuread-sso.com` i fältet.
 5. Välj **OK** och öppna sedan webbläsaren igen.
@@ -205,7 +205,7 @@ Användning av Active Directory grupprincip tillägg från tredje part för att 
 
 #### <a name="known-browser-limitations"></a>Kända webb läsar begränsningar
 
-Sömlös SSO fungerar inte i privat bläddringsläge i Firefox och Microsoft Edge-webbläsare. Det fungerar inte heller i Internet Explorer om webbläsaren körs i utökat skyddat läge. För nästa version av Microsoft Edge baserat på krom fungerar den inte i InPrivate-och gäst läge genom design.
+Sömlös enkel inloggning fungerar inte i privat bläddringsläge i Firefox och Microsoft Edge (bakåtkompatibelt) webbläsare. Det fungerar inte heller i Internet Explorer om webbläsaren körs i utökat skyddat läge. Sömlös SSO stöder nästa version av Microsoft Edge baserat på krom och fungerar i InPrivate-och gäst läge genom design.
 
 ## <a name="step-4-test-the-feature"></a>Steg 4: testa funktionen
 
@@ -216,10 +216,10 @@ Kontrol lera att alla följande villkor är uppfyllda om du vill testa funktione
   - Du har [distribuerat funktionen](#step-3-roll-out-the-feature) till den här användaren via Grupprincip.
 
 Så här testar du scenariot där användaren bara anger användar namnet, men inte lösen ordet:
-   - Logga in på `https://myapps.microsoft.com/` i en ny privat webbläsarsession.
+   - Logga in på https://myapps.microsoft.com/ . Se till att antingen rensa webbläsarens cacheminne eller använda en ny privat webbläsarsession med någon av de webbläsare som stöds i privat läge.
 
 Använd något av följande steg för att testa scenariot där användaren inte behöver ange användar namnet eller lösen ordet: 
-   - Logga in på `https://myapps.microsoft.com/contoso.onmicrosoft.com` i en ny privat webbläsarsession. Ersätt *contoso* med klient organisationens namn.
+   - Logga in för att `https://myapps.microsoft.com/contoso.onmicrosoft.com` antingen rensa webbläsarens cacheminne eller Använd en ny privat webbläsarsession med någon av de webbläsare som stöds i privat läge. Ersätt *contoso* med klient organisationens namn.
    - Logga in på `https://myapps.microsoft.com/contoso.com` i en ny privat webbläsarsession. Ersätt *contoso.com* med en verifierad domän (inte en federerad domän) på din klient.
 
 ## <a name="step-5-roll-over-keys"></a>Steg 5: rulla över nycklar

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 06ae46eb96db39f44cd052e6e9b0d1a19f898007
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 18ccadcf43d41c677a665ed068d093f51389b576
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091576"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657340"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
@@ -190,10 +190,10 @@ Hitta information om dina beräknings instanser på **beräknings** sidan i [Stu
 
 * Om du inte kan ansluta till en bärbar dator kontrollerar du att WebSocket-kommunikation **inte** är inaktiverat. För att Compute instance Jupyter-funktionen ska fungera måste WebSocket-kommunikationen vara aktive rad. Kontrol lera att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
 
-* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås från det virtuella nätverket. Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för <instans-namn>. <region> . instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) artikeln.
+* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås från det virtuella nätverket. Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för <instans-namn>. <region> . instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
     
 ## <a name="next-steps"></a>Nästa steg
 
 * [Kör ditt första experiment](tutorial-1st-experiment-sdk-train.md)
 * [Säkerhetskopiera fil lagringen med ögonblicks bilder](../storage/files/storage-snapshots-files.md)
-* [Arbeta i säkra miljöer](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)
+* [Arbeta i säkra miljöer](./how-to-secure-training-vnet.md#compute-instance)

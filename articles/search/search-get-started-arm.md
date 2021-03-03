@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 11/17/2020
-ms.openlocfilehash: 12aa7f123ec5e417d710636f2afb4c60231cefc1
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 88a081f1ebbda52653302384c06403e223128c60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746558"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668392"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>Snabb start: Distribuera Kognitiv sökning med en ARM-mall
 
@@ -34,7 +34,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-azure-search-create/azuredeploy.json":::
 
 Den Azure-resurs som definierats i den här mallen:
 

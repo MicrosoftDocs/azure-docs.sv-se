@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3d4211acbf6b65ef8f04d00b3936d70bb930ed9e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562159"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645797"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>Självstudie: anropa Microsoft Graph API i en Node.js-konsol program
 
@@ -125,9 +125,9 @@ I mappen *bin* skapar du en annan fil med namnet *auth.js* och lägger till föl
 const msal = require('@azure/msal-node');
 
 /**
- * Configuration object to be passed to MSAL instance on creation. 
+ * Configuration object to be passed to MSAL instance on creation.
  * For a full list of MSAL Node configuration parameters, visit:
- * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md 
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md
  */
 const msalConfig = {
     auth: {
@@ -139,8 +139,8 @@ const msalConfig = {
 
 /**
  * With client credentials flows permissions need to be granted in the portal by a tenant administrator.
- * The scope is always in the format '<resource>/.default'. For more, visit: 
- * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow 
+ * The scope is always in the format '<resource>/.default'. For more, visit:
+ * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
     scopes: [process.env.GRAPH_ENDPOINT + '.default'],
@@ -158,7 +158,7 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 
 /**
  * Acquires token with client credentials.
- * @param {object} tokenRequest 
+ * @param {object} tokenRequest
  */
 async function getToken(tokenRequest) {
     return await cca.acquireTokenByClientCredential(tokenRequest);
@@ -212,8 +212,8 @@ const axios = require('axios');
 
 /**
  * Calls the endpoint with authorization bearer token.
- * @param {string} endpoint 
- * @param {string} accessToken 
+ * @param {string} endpoint
+ * @param {string} accessToken
  */
 async function callApi(endpoint, accessToken) {
 
@@ -239,7 +239,7 @@ module.exports = {
 };
 ```
 
-Här `callApi` används metoden för att göra en HTTP- `GET` begäran mot en skyddad resurs som kräver en åtkomsttoken. Begäran returnerar sedan innehållet till anroparen. Den här metoden lägger till den hämtade token i *http-Authorization-huvudet*. Den skyddade resursen här är Microsoft Graph-API [användarens slut punkt](https://docs.microsoft.com/graph/api/user-list) som visar användarna i klient organisationen där den här appen är registrerad.
+Här `callApi` används metoden för att göra en HTTP- `GET` begäran mot en skyddad resurs som kräver en åtkomsttoken. Begäran returnerar sedan innehållet till anroparen. Den här metoden lägger till den hämtade token i *http-Authorization-huvudet*. Den skyddade resursen här är Microsoft Graph-API [användarens slut punkt](/graph/api/user-list) som visar användarna i klient organisationen där den här appen är registrerad.
 
 ## <a name="test-the-app"></a>Testa appen
 
@@ -278,7 +278,7 @@ request made to web API at: Fri Jan 22 2021 09:31:52 GMT-0800 (Pacific Standard 
 
 ## <a name="how-the-application-works"></a>Så här fungerar programmet
 
-Det här programmet använder [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)-klientautentiseringsuppgifter. Den här beviljandetypen används ofta för server-till-server-interaktioner som måste köras i bakgrunden, utan direkt interaktion med en användare. Flöde för autentiseringsuppgifter som tillåter en webb tjänst (konfidentiell klient) att använda sina egna autentiseringsuppgifter, i stället för att personifiera en användare, för att autentisera vid anrop till en annan webb tjänst. Den typ av program som stöds med den här autentiseringsmetoden är vanligt vis **daemon** eller **tjänst konton**.
+Det här programmet använder [OAuth 2,0](./v2-oauth2-client-creds-grant-flow.md)-klientautentiseringsuppgifter. Den här beviljandetypen används ofta för server-till-server-interaktioner som måste köras i bakgrunden, utan direkt interaktion med en användare. Flöde för autentiseringsuppgifter som tillåter en webb tjänst (konfidentiell klient) att använda sina egna autentiseringsuppgifter, i stället för att personifiera en användare, för att autentisera vid anrop till en annan webb tjänst. Den typ av program som stöds med den här autentiseringsmetoden är vanligt vis **daemon** eller **tjänst konton**.
 
 Omfånget för att begära ett flöde för klientautentiseringsuppgifter är namnet på resursen följt av `/.default` . Den här texten talar om för Azure Active Directory (Azure AD) att använda behörigheter på program nivå som har deklarerats statiskt under program registrering. Dessa API-behörigheter måste också beviljas av en **innehavaradministratör**.
 

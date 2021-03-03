@@ -5,25 +5,25 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 03/02/2021
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 8d19a5dadffdfa26ccb2d84e6dab278ad272c7b0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060096"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658054"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Hantera indexering i Azure Cosmos DB-API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DBs API för MongoDB drar nytta av kärn funktionerna för hantering av Azure Cosmos DB. Den här artikeln fokuserar på hur du lägger till index med Azure Cosmos DB s API för MongoDB. Du kan också läsa en [Översikt över indexering i Azure Cosmos DB](index-overview.md) som är relevant för alla API: er.
 
-## <a name="indexing-for-mongodb-server-version-36"></a>Indexering för MongoDB-Server version 3,6
+## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>Indexering för MongoDB Server version 3,6 och högre
 
-Azure Cosmos DBs API för MongoDB-Server version 3,6 indexerar automatiskt `_id` fältet, som inte går att släppa. Det tillämpar automatiskt `_id` fältets unikhet per Shard-nyckel. I Azure Cosmos DB s API för MongoDB är horisontell partitionering och indexering separata begrepp. Du behöver inte indexera din Shard-nyckel. Men precis som med andra egenskaper i ditt dokument, rekommenderar vi att du indexerar Shard-nyckeln om den här egenskapen är ett gemensamt filter i dina frågor.
+Azure Cosmos DB s API för MongoDB Server version 3.6 + indexerar automatiskt `_id` fältet som inte går att släppa. Det tillämpar automatiskt `_id` fältets unikhet per Shard-nyckel. I Azure Cosmos DB s API för MongoDB är horisontell partitionering och indexering separata begrepp. Du behöver inte indexera din Shard-nyckel. Men precis som med andra egenskaper i ditt dokument, rekommenderar vi att du indexerar Shard-nyckeln om den här egenskapen är ett gemensamt filter i dina frågor.
 
 Om du vill indexera fler fält kan du använda MongoDB-kommandona för indexhantering. Precis som i MongoDB indexerar Azure Cosmos DBs-API för MongoDB automatiskt `_id` fältet. Den här indexeringspolicyn skiljer sig från Azure Cosmos DB SQL-API:et som standardmässigt indexerar alla fält.
 
@@ -53,9 +53,9 @@ Du kan skapa samma fält index `name` i Azure Portal:
 
 En fråga använder flera enstaka fält index där det är tillgängligt. Du kan skapa upp till 500 enstaka fält index per behållare.
 
-### <a name="compound-indexes-mongodb-server-version-36"></a>Sammansatta index (MongoDB Server version 3,6)
+### <a name="compound-indexes-mongodb-server-version-36"></a>Sammansatta index (MongoDB Server version 3.6 +)
 
-Azure Cosmos DBs API för MongoDB stöder sammansatta index för konton som använder version 3,6 Wire-protokollet. Du kan inkludera upp till åtta fält i ett sammansatt index. Till skillnad från MongoDB bör du endast skapa ett sammansatt index om frågan behöver sortera effektivt på flera fält samtidigt. För frågor med flera filter som inte behöver sorteras, skapar du flera fält index i stället för ett enda sammansatt index. 
+Azure Cosmos DBs API för MongoDB stöder sammansatta index för konton som använder sig av kabel protokollet version 3,6 och 4,0. Du kan inkludera upp till åtta fält i ett sammansatt index. Till skillnad från MongoDB bör du endast skapa ett sammansatt index om frågan behöver sortera effektivt på flera fält samtidigt. För frågor med flera filter som inte behöver sorteras, skapar du flera fält index i stället för ett enda sammansatt index. 
 
 > [!NOTE]
 > Du kan inte skapa sammansatta index för kapslade egenskaper eller matriser.
@@ -102,30 +102,31 @@ Du kan använda jokertecken för att stödja frågor mot okända fält. Anta att
 Här är en del av ett exempel dokument i samlingen:
 
 ```json
-  "children": [
-     {
-         "firstName": "Henriette Thaulow",
-         "grade": "5"
-     }
-  ]
+"children": [
+   {
+     "firstName": "Henriette Thaulow",
+     "grade": "5"
+   }
+]
 ```
 
 Här är ett annat exempel, den här gången med en något annorlunda uppsättning egenskaper i `children` :
 
 ```json
-  "children": [
-      {
-        "familyName": "Merriam",
-        "givenName": "Jesse",
-        "pets": [
-            { "givenName": "Goofy" },
-            { "givenName": "Shadow" }
-      },
-      {
-        "familyName": "Merriam",
-        "givenName": "John",
-      }
-  ]
+"children": [
+    {
+     "familyName": "Merriam",
+     "givenName": "Jesse",
+     "pets": [
+         { "givenName": "Goofy" },
+         { "givenName": "Shadow" }
+         ]
+   },
+   {
+     "familyName": "Merriam",
+     "givenName": "John",
+   }
+]
 ```
 
 I den här samlingen kan dokument ha många olika möjliga egenskaper. Om du vill indexera alla data i `children` matrisen har du två alternativ: skapa separata index för varje enskild egenskap eller skapa ett Wildcard-index för hela `children` matrisen.
@@ -140,8 +141,8 @@ Följande kommando skapar ett Wildcard-index för alla egenskaper i `children` :
 
 Du kan skapa följande index typer med syntaxen jokertecken:
 
-- Enskilt fält
-- Geospatial
+* Enskilt fält
+* Geospatial
 
 ### <a name="indexing-all-properties"></a>Indexera alla egenskaper
 
@@ -162,41 +163,45 @@ Dokument med många fält kan ha en RU-avgift (High Request Unit) för skrivning
 
 Jokertecken index stöder inte någon av följande index typer eller egenskaper:
 
-- Sammansättning
-- TTL
-- Unik
+* Sammansättning
+* TTL
+* Unik
 
 Till **skillnad från i MongoDB**, i Azure Cosmos DB s API för MongoDB, **kan du inte** använda jokertecken index för:
 
-- Skapa ett jokerteckenindex som inkluderar flera specifika fält
+* Skapa ett jokerteckenindex som inkluderar flera specifika fält
 
-`db.coll.createIndex(
-    { "$**" : 1 },
-    { "wildcardProjection " :
-        {
-           "children.givenName" : 1,
-           "children.grade" : 1
-        }
-    }
-)`
+  ```json
+  db.coll.createIndex(
+      { "$**" : 1 },
+      { "wildcardProjection " :
+          {
+             "children.givenName" : 1,
+             "children.grade" : 1
+          }
+      }
+  )
+  ```
 
-- Skapa ett jokerteckenindex som exkluderar flera specifika fält
+* Skapa ett jokerteckenindex som exkluderar flera specifika fält
 
-`db.coll.createIndex(
-    { "$**" : 1 },
-    { "wildcardProjection" :
-        {
-           "children.givenName" : 0,
-           "children.grade" : 0
-        }
-    }
-)`
+  ```json
+  db.coll.createIndex(
+      { "$**" : 1 },
+      { "wildcardProjection" :
+          {
+             "children.givenName" : 0,
+             "children.grade" : 0
+          }
+      }
+  )
+  ```
 
 Alternativt kan du skapa flera jokerteckenindex.
 
 ## <a name="index-properties"></a>Index egenskaper
 
-Följande åtgärder är vanliga för konton som hanterar Wire Protocol version 3,6 och konton som hanterar tidigare versioner. Du kan läsa mer om [index som stöds och indexerade egenskaper](mongodb-feature-support-36.md#indexes-and-index-properties).
+Följande åtgärder är vanliga för konton som hanterar Wire Protocol version 4,0 och konton som hanterar tidigare versioner. Du kan läsa mer om [index som stöds och indexerade egenskaper](mongodb-feature-support-40.md#indexes-and-index-properties).
 
 ### <a name="unique-indexes"></a>Unika index
 
@@ -210,11 +215,11 @@ Följande kommando skapar ett unikt index i fältet `student_id` :
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 4
 }
 ```
 
@@ -225,23 +230,23 @@ Följande kommandon skapar en shardade-samling ```coll``` (Shard-nyckeln är ```
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
 {
-        "_t" : "ShardCollectionResponse",
-        "ok" : 1,
-        "collectionsharded" : "test.coll"
+    "_t" : "ShardCollectionResponse",
+    "ok" : 1,
+    "collectionsharded" : "test.coll"
 }
 globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 3,
-        "numIndexesAfter" : 4
+    "_t" : "CreateIndexesResponse",
+    "ok" : 1,
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 3,
+    "numIndexesAfter" : 4
 }
 ```
 
 I föregående exempel ```"university":1``` returnerar-satsen ett fel med följande meddelande:
 
-```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
+*Det går inte att skapa ett unikt index över {student_id: 1,0} med Shard-nyckel mönster {University: 1,0}*
 
 ### <a name="ttl-indexes"></a>TTL-index
 
@@ -260,7 +265,7 @@ Föregående kommando tar bort alla dokument i ```db.coll``` samlingen som inte 
 
 ## <a name="track-index-progress"></a>Spåra index förlopp
 
-Version 3,6 av Azure Cosmos DB s API för MongoDB stöder `currentOp()` kommandot för att spåra index förloppet på en databas instans. Det här kommandot returnerar ett dokument som innehåller information om pågående åtgärder på en databas instans. Du kan använda `currentOp` kommandot för att spåra alla pågående åtgärder i interna MongoDB. I Azure Cosmos DB s API för MongoDB stöder det här kommandot endast spårning av index åtgärden.
+Version 3.6 + av Azure Cosmos DB s API för MongoDB stöder `currentOp()` kommandot för att spåra indexerings förloppet på en databas instans. Det här kommandot returnerar ett dokument som innehåller information om pågående åtgärder på en databas instans. Du kan använda `currentOp` kommandot för att spåra alla pågående åtgärder i interna MongoDB. I Azure Cosmos DB s API för MongoDB stöder det här kommandot endast spårning av index åtgärden.
 
 Här följer några exempel som visar hur du använder `currentOp` kommandot för att spåra indexerings förlopp:
 
@@ -286,7 +291,7 @@ Här följer några exempel som visar hur du använder `currentOp` kommandot fö
 
 Informationen om indexets förlopp visar procent andelen förloppet för den aktuella index åtgärden. Här är ett exempel som visar utdatafilens format för olika steg i index förloppet:
 
-- En index åtgärd för en "foo"-samling och "stapel"-databasen som är 60 procent slutförd kommer att ha följande utdata-dokument. I `Inprog[0].progress.total` fältet visas 100 som målets slut för ande procent.
+* En index åtgärd för en "foo"-samling och "stapel"-databasen som är 60 procent slutförd kommer att ha följande utdata-dokument. I `Inprog[0].progress.total` fältet visas 100 som målets slut för ande procent.
 
    ```json
    {
@@ -310,7 +315,7 @@ Informationen om indexets förlopp visar procent andelen förloppet för den akt
    }
    ```
 
-- Om en index åtgärd precis har startats i en "foo"-samling och "stapel"-databasen kan utmatnings dokumentet Visa 0 procents förlopp tills det når en mätbar nivå.
+* Om en index åtgärd precis har startats i en "foo"-samling och "stapel"-databasen kan utmatnings dokumentet Visa 0 procents förlopp tills det når en mätbar nivå.
 
    ```json
    {
@@ -334,7 +339,7 @@ Informationen om indexets förlopp visar procent andelen förloppet för den akt
    }
    ```
 
-- När den pågående index åtgärden har slutförts, visar utmatnings dokumentet tomma `inprog` åtgärder.
+* När den pågående index åtgärden har slutförts, visar utmatnings dokumentet tomma `inprog` åtgärder.
 
    ```json
    {
@@ -407,26 +412,26 @@ För närvarande kan du bara skapa unika index när samlingen inte innehåller n
 
 Tillgängliga indexerings funktioner och standardvärden skiljer sig åt för Azure Cosmos-konton som är kompatibla med version 3,2 av MongoDB-Wire-protokollet. Du kan [kontrol lera kontots version](mongodb-feature-support-36.md#protocol-support) och [uppgradera till version 3,6](mongodb-version-upgrade.md).
 
-Om du använder version 3,2 beskriver det här avsnittet viktiga skillnader med version 3,6.
+Om du använder version 3,2 beskriver det här avsnittet viktiga skillnader med version 3.6 +.
 
 ### <a name="dropping-default-indexes-version-32"></a>Släpper standard index (version 3,2)
 
-Till skillnad från 3,6-versionen av Azure Cosmos DB s API för MongoDB indexerar version 3,2 varje egenskap som standard. Du kan använda följande kommando för att ta bort dessa standard index för en samling ( ```coll``` ):
+Till skillnad från 3,6 +-versionerna av Azure Cosmos DBs API för MongoDB, är version 3,2 index för varje egenskap som standard. Du kan använda följande kommando för att ta bort dessa standard index för en samling ( ```coll``` ):
 
 ```JavaScript
 > db.coll.dropIndexes()
 { "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
 ```
 
-När du har släppt standard indexen kan du lägga till fler index som du skulle göra i version 3,6.
+När du har släppt standard indexen kan du lägga till fler index som du skulle göra i version 3.6 +.
 
 ### <a name="compound-indexes-version-32"></a>Sammansatta index (version 3,2)
 
-Sammansatta index innehåller referenser till flera fält i ett dokument. Om du vill skapa ett sammansatt index [uppgraderar du till version 3,6](mongodb-version-upgrade.md).
+Sammansatta index innehåller referenser till flera fält i ett dokument. Om du vill skapa ett sammansatt index [uppgraderar du till version 3,6 eller 4,0](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Jokertecken index (version 3,2)
 
-Om du vill skapa ett Wildcard-index [uppgraderar du till version 3,6](mongodb-version-upgrade.md).
+Om du vill skapa ett Wildcard-index [uppgraderar du till version 4,0 eller 3,6](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

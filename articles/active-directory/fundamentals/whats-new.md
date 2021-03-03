@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c835ddcee332499ef7853d0d2fa4fcdbcf8a1cf
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: c767d114ad6a1b5cb8b9c6bf4c0fe4f2ccd1dae6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988870"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650132"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -181,7 +181,7 @@ Mer information finns i [Vad är automatiserad SaaS app User-etablering i Azure 
 
 I januari 2021 har vi lagt till följande 29 nya program i vårt app-galleri med stöd för federation:
 
-[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [SOVELTO Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[Bienvenue-bildande](https://formation.bienvenue.pro/login), [Aida sjukvård SSO](https://aidaforparents.com/login/organizations), [International SOS Assistance Products](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO damm](../saas-apps/ephoto-dam-tutorial.md), [begrepp](../saas-apps/notion-tutorial.md), [Syndio](../saas-apps/syndio-tutorial.md) [, Yello, timeclock](../saas-apps/yello-enterprise-tutorial.md) [365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [Nalco E-data](https://www.ecolab.com/), [vakans filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerise AI-tillväxt eko system](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [Imperva data säkerhet](../saas-apps/imperva-data-security-tutorial.md), [Illusive nätverk](../saas-apps/illusive-networks-tutorial.md), profiler, [splan](../saas-apps/splan-visitor-tutorial.md) [, Aruba](../saas-apps/proware-tutorial.md) [, Contentsquare](../saas-apps/aruba-user-experience-insight-tutorial.md), burp [SSO](../saas-apps/contentsquare-sso-tutorial.md), [perimeter 81](../saas-apps/perimeter-81-tutorial.md), [Suite Enterprise Edition](https://docs.microsoft.com/azure/active-directory/saas-apps/burp-suite-enterprise-edition-tutorial)
+[mySCView](https://dev.myscview.com/), [Talentech](https://talentech.com/contact/), [Bipsync](https://www.bipsync.com/), [OroTimesheet](https://app.orotimesheet.com/login.php), [Mio](https://app.m.io/auth/install/microsoft?scopetype=hub), [SOVELTO Easy](https://login.soveltoeasy.fi/), [Supportbench](https://account.supportbench.net/agent/login/),[Bienvenue-bildande](https://formation.bienvenue.pro/login), [Aida sjukvård SSO](https://aidaforparents.com/login/organizations), [International SOS Assistance Products](../saas-apps/international-sos-assistance-products-tutorial.md), [NAVEX One](../saas-apps/navex-one-tutorial.md), [LabLog](../saas-apps/lablog-tutorial.md), [Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md), [EPHOTO damm](../saas-apps/ephoto-dam-tutorial.md), [begrepp](../saas-apps/notion-tutorial.md), [Syndio](../saas-apps/syndio-tutorial.md) [, Yello, timeclock](../saas-apps/yello-enterprise-tutorial.md) [365 SAML](../saas-apps/timeclock-365-saml-tutorial.md), [Nalco E-data](https://www.ecolab.com/), [vakans filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login), [Synerise AI-tillväxt eko system](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md), [Imperva data säkerhet](../saas-apps/imperva-data-security-tutorial.md), [Illusive nätverk](../saas-apps/illusive-networks-tutorial.md), profiler, [splan](../saas-apps/splan-visitor-tutorial.md) [, Aruba](../saas-apps/proware-tutorial.md) [, Contentsquare](../saas-apps/aruba-user-experience-insight-tutorial.md), burp [SSO](../saas-apps/contentsquare-sso-tutorial.md), [perimeter 81](../saas-apps/perimeter-81-tutorial.md), [Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
 
 Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial
 
@@ -806,11 +806,11 @@ Azure AD Connect moln etablering offentlig för hands version uppdatera funktion
 
 - Attribut mappnings upplevelsen genom Azure Portal
 
-    Med den här funktionen kan IT-administratörer mappa användar-, grupp-eller kontakt-attribut från AD till Azure AD med olika mappnings typer som finns idag. Attributmappning är en funktion som används för att standardisera värdena för attributen som flödar från Active Directory till Azure Active Directory. En kan bestämma om attributvärdet ska mappas direkt som det är från AD till Azure AD eller om du använder uttryck för att transformera attributvärdena när du konfigurerar användare. [Läs mer](../cloud-provisioning/how-to-attribute-mapping.md)
+    Med den här funktionen kan IT-administratörer mappa användar-, grupp-eller kontakt-attribut från AD till Azure AD med olika mappnings typer som finns idag. Attributmappning är en funktion som används för att standardisera värdena för attributen som flödar från Active Directory till Azure Active Directory. En kan bestämma om attributvärdet ska mappas direkt som det är från AD till Azure AD eller om du använder uttryck för att transformera attributvärdena när du konfigurerar användare. [Läs mer](../cloud-sync/how-to-attribute-mapping.md)
 
 - Etablering på begäran eller testa användar upplevelsen
 
-    När du har konfigurerat konfigurationen kanske du vill testa för att se om användar omvandlingen fungerar som förväntat innan den tillämpas på alla användare i omfånget. Med etablering på begäran kan IT-administratörer ange unikt namn för en AD-användare och se om de synkroniseras som förväntat. Etablering på begäran är ett bra sätt att se till att de mappningar för attribut som du tidigare fungerade som förväntat. [Läs mer](../cloud-provisioning/how-to-on-demand-provision.md)
+    När du har konfigurerat konfigurationen kanske du vill testa för att se om användar omvandlingen fungerar som förväntat innan den tillämpas på alla användare i omfånget. Med etablering på begäran kan IT-administratörer ange unikt namn för en AD-användare och se om de synkroniseras som förväntat. Etablering på begäran är ett bra sätt att se till att de mappningar för attribut som du tidigare fungerade som förväntat. [Läs mer](../cloud-sync/how-to-on-demand-provision.md)
  
 ---
 
@@ -1139,6 +1139,3 @@ Tidigare kunde endast den globala administratören hantera [tilläggs egenskapen
 Det finns ett [samlat snabb korrigerings paket (build 4.6.263.0)](https://support.microsoft.com/help/4576473/hotfix-rollup-package-build-4-6-263-0-is-available-for-microsoft-ident) för Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2). Det här samlade paketet innehåller uppdateringar för MIM CM, MIM Synchronization Manager och PAM-komponenter. Dessutom innehåller MIM Generic Connectors 1.1.1301.0 uppdateringar för graf Connector.
 
 ---
- 
-
-

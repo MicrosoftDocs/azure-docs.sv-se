@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461298"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670675"
 ---
 # <a name="azure-synapse-workspace-managed-identity"></a>Hanterad identitet för Azure Synapse-arbetsyta
 
@@ -23,7 +23,7 @@ I den här artikeln får du lära dig om hanterad identitet i Azure dataSynapses
 
 Hanterad identitet för Azure-resurser är en funktion i Azure Active Directory. Funktionen förser Azure-tjänster med en automatiskt hanterad identitet i Azure AD. Du kan använda funktionen för hanterad identitet för att autentisera till alla tjänster som stöder Azure AD-autentisering.
 
-Hanterade identiteter för Azure-resurser är det nya namnet på tjänsten som tidigare kallades Hanterad tjänstidentitet (MSI). Mer information finns i [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+Hanterade identiteter för Azure-resurser är det nya namnet på tjänsten som tidigare kallades Hanterad tjänstidentitet (MSI). Mer information finns i [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) .
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Hanterad identitet för Azure Synapse-arbetsyta
 

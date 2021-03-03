@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: a88c837c986db346bcb4fbb1b15ceab6a304347d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 16692ac75f0ab6df0c8ee1bebef393848ca066b8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806230"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676552"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Självstudie: Genomsök data med Azure avdelningens kontroll (för hands version)
 
@@ -55,7 +55,7 @@ I det här avsnittet kör du Starter Kit-skripten för att skapa en simulerad da
 
 Följ de här stegen för att konfigurera klient programmet för start paket på din Windows-dator:
 
-1. [Hämta start paketet](https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip)och extrahera innehållet till valfri plats.
+1. [Hämta start paketet](https://github.com/Azure/Purview-Samples/blob/master/PurviewStarterKitV4.zip)och extrahera innehållet till valfri plats.
 
 
 1. På datorn anger du **PowerShell** i rutan Sök i aktivitets fältet i Windows. I Sök listan högerklickar du på **Windows PowerShell** och väljer sedan **Kör som administratör**.

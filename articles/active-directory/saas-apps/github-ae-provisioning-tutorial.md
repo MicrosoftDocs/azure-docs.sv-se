@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178746"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651594"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Självstudie: Konfigurera GitHub AE för automatisk användar etablering
 
@@ -111,17 +111,27 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |namn. formaterad|Sträng|
    |displayName|Sträng|
 
-10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till GitHub AE**.
 
-11. Om du vill aktivera Azure AD Provisioning-tjänsten för GitHub AE ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
+11. Granska gruppattributen som synkroniseras från Azure AD till GitHub AE i avsnittet **attribut-mappning** . De attribut som väljs som **matchande** egenskaper används för att matcha grupperna i GitHub AE för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
+
+      |Attribut|Typ|
+      |---|---|
+      |displayName|Sträng|
+      |externalId|Sträng|
+      |medlemmar|Referens|
+
+12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Om du vill aktivera Azure AD Provisioning-tjänsten för GitHub AE ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
     ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
-12. Definiera de användare och/eller grupper som du vill etablera till GitHub AE genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+14. Definiera de användare och/eller grupper som du vill etablera till GitHub AE genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
     ![Etableringsomfång](common/provisioning-scope.png)
 
-13. När du är redo att etablera klickar du på **Spara**.
+15. När du är redo att etablera klickar du på **Spara**.
 
     ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
@@ -133,6 +143,10 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Ändringslogg
+
+* 02/18/2021 – stöd för etablering av grupper har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

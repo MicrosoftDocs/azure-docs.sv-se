@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 10e548eb87b7ac4254fa916f804a6710252be7fc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830727"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645475"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planera Azure Active Directory konfiguration av mina appar
 
@@ -143,7 +143,7 @@ Om du måste integrera dessa program bör du definiera en mekanism för att dist
 
 * [Användar driven nedladdning och konfiguration för Chrome, Firefox, Microsoft Edge eller IE](../user-help/my-apps-portal-end-user-access.md)
 
-* [Configuration Manager för Internet Explorer](https://docs.microsoft.com/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager för Internet Explorer](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 Tillägget gör att användarna kan starta vilken app som helst från Sök fältet, hitta åtkomst till nyligen använda program och ha en länk till sidan Mina appar.
 
@@ -271,4 +271,3 @@ Du kan använda [Privileged Identity Management](../privileged-identity-manageme
 
 [Planera en distribution av programproxy](application-proxy-deployment-plan.md)
 
- 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365454"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649326"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inlösen av inbjudan till Azure Active Directory B2B-samarbete
 
@@ -28,21 +28,19 @@ När du lägger till en gäst användare i din katalog har gäst användar konto
    > - Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
    > - **Från den 2021 oktober** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade Azure AD-konton och klienter för B2B-samarbets scenarier. Vi rekommenderar att kunderna väljer [autentisering med e-post med eng ång slö sen ord](one-time-passcode.md). Vi välkomnar din feedback om den här offentliga för hands versionen och är glada att skapa ännu fler sätt att samar beta.
 
-## <a name="redemption-through-the-invitation-email"></a>Inlösen via e-postinbjudan
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>Inlösen och inloggning via en gemensam slut punkt
 
-När du lägger till en gäst användare till din katalog med [hjälp av Azure Portal](./b2b-quickstart-add-guest-users-portal.md)skickas ett e-postmeddelande med inbjudan till gästen i processen. Du kan också välja att skicka e-postinbjudningar när du [använder PowerShell](./b2b-quickstart-invite-powershell.md) för att lägga till gäst användare i din katalog. Här är en beskrivning av gästens upplevelse när de löser in länken i e-postmeddelandet.
+Gäst användare kan nu logga in på dina appar för flera klienter eller från Microsoft från en gemensam slut punkt (URL) till exempel `https://myapps.microsoft.com` . Tidigare skulle en gemensam URL omdirigera en gäst användare till sin hem klient i stället för resurs klienten för autentisering, så att en innehavaradministratör krävs (till exempel `https://myapps.microsoft.com/?tenantid=<tenant id>` ). Nu kan gäst användaren gå till programmets vanliga URL, välja **inloggnings alternativ** och sedan logga in i **en organisation**. Användaren skriver sedan namnet på din organisation.
 
-1. Gästen får ett [e-postmeddelande om inbjudan](./invitation-email-elements.md) som skickas från **Microsofts inbjudningar**.
-2. Gästen väljer **acceptera inbjudan** i e-postmeddelandet.
-3. Gästen kommer att använda sina egna autentiseringsuppgifter för att logga in i din katalog. Om gästen inte har ett konto som kan sammanställas till din katalog och funktionen [eng ång slö sen](./one-time-passcode.md) ord för e-post inte är aktive rad. gästen uppmanas att skapa en personlig [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) eller ett självbetjänings [konto för Azure AD](../enterprise-users/directory-self-service-signup.md). Mer information finns i [inlösnings flödet för inbjudan](#invitation-redemption-flow) .
-4. Gästen vägleds genom den [godkännande upplevelse](#consent-experience-for-the-guest) som beskrivs nedan.
+![Vanlig slut punkts inloggning](media/redemption-experience/common-endpoint-flow-small.png)
 
+Användaren omdirigeras sedan till din klient slut punkt där de kan antingen logga in med sin e-postadress eller välja en identitetsprovider som du har konfigurerat.
 ## <a name="redemption-through-a-direct-link"></a>Inlösen via en direkt länk
 
-Som ett alternativ till e-postinbjudan kan du ge en gäst en direkt länk till din app eller Portal. Du måste först lägga till gäst användaren till din katalog via [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) eller [PowerShell](./b2b-quickstart-invite-powershell.md). Sedan kan du använda något av de [anpassningsbara sätten för att distribuera program till användare](../manage-apps/end-user-experiences.md), inklusive direkt inloggnings länkar. När en gäst använder en direkt länk i stället för e-postinbjudan, kommer de fortfarande att guidas genom den första gången.
+Som ett alternativ till e-postinbjudan eller ett programs gemensamma URL kan du ge en gäst en direkt länk till din app eller Portal. Du måste först lägga till gäst användaren till din katalog via [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) eller [PowerShell](./b2b-quickstart-invite-powershell.md). Sedan kan du använda något av de [anpassningsbara sätten för att distribuera program till användare](../manage-apps/end-user-experiences.md), inklusive direkt inloggnings länkar. När en gäst använder en direkt länk i stället för e-postinbjudan, kommer de fortfarande att guidas genom den första gången.
 
-> [!IMPORTANT]
-> Den direkta länken måste vara klient-/regionsspecifika. Med andra ord måste det innehålla ett klient-ID eller verifierad domän så att gästen kan autentiseras i din klient, där den delade appen finns. En vanlig URL som https://myapps.microsoft.com inte fungerar för en gäst, eftersom den kommer att omdirigeras till sin hem klient för autentisering. Här följer några exempel på direkta länkar med klient kontext:
+> [!NOTE]
+> En direkt länk är klient-/regionsspecifika. Med andra ord innehåller den ett klient-ID eller en verifierad domän så att gästen kan autentiseras i din klient, där den delade appen finns. Här följer några exempel på direkta länkar med klient kontext:
  > - Åtkomst panel för appar: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - Åtkomst panel för appar för en verifierad domän: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure-portalen: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ Det finns vissa fall där e-postinbjudan rekommenderas över en direkt länk. Om
  - Ibland kanske det inbjudna användarobjektet inte har en e-postadress på grund av en konflikt med ett kontakt objekt (till exempel ett Outlook-kontakt objekt). I det här fallet måste användaren klicka på inlösnings-URL: en i e-postinbjudan.
  - Användaren kan logga in med ett alias för den e-postadress som bjudits in. (Ett alias är en ytterligare e-postadress som associeras med ett e-postkonto.) I det här fallet måste användaren klicka på inlösnings-URL: en i e-postinbjudan.
 
+## <a name="redemption-through-the-invitation-email"></a>Inlösen via e-postinbjudan
+
+När du lägger till en gäst användare till din katalog med [hjälp av Azure Portal](./b2b-quickstart-add-guest-users-portal.md)skickas ett e-postmeddelande med inbjudan till gästen i processen. Du kan också välja att skicka e-postinbjudningar när du [använder PowerShell](./b2b-quickstart-invite-powershell.md) för att lägga till gäst användare i din katalog. Här är en beskrivning av gästens upplevelse när de löser in länken i e-postmeddelandet.
+
+1. Gästen får ett [e-postmeddelande om inbjudan](./invitation-email-elements.md) som skickas från **Microsofts inbjudningar**.
+2. Gästen väljer **acceptera inbjudan** i e-postmeddelandet.
+3. Gästen kommer att använda sina egna autentiseringsuppgifter för att logga in i din katalog. Om gästen inte har ett konto som kan sammanställas till din katalog och funktionen [eng ång slö sen](./one-time-passcode.md) ord för e-post inte är aktive rad. gästen uppmanas att skapa en personlig [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) eller ett självbetjänings [konto för Azure AD](../enterprise-users/directory-self-service-signup.md). Mer information finns i [inlösnings flödet för inbjudan](#invitation-redemption-flow) .
+4. Gästen vägleds genom den [godkännande upplevelse](#consent-experience-for-the-guest) som beskrivs nedan.
 ## <a name="invitation-redemption-flow"></a>Inlösnings flöde för inbjudan
 
 När en användare klickar på länken **acceptera inbjudan** i ett [e-postmeddelande](invitation-email-elements.md), löses Azure AD automatiskt om inbjudan utifrån inlösnings flödet enligt nedan:

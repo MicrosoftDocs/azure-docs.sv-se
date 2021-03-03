@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 33cd19f7bb1881b17f1ca9080a9634162014808a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574296"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672749"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Använda Azure Monitor med din Azure Synapse Analytics-arbetsyta
 
@@ -103,7 +103,7 @@ Logga in på Azure Portal och välj **övervaka**  >  **aviseringar** för att s
 
 Här följer de loggar som genereras av Azure Synapse Analytics-arbetsytor:
 
-| Log Analytics tabell namn | Logg kategori namn                 | Description |
+| Log Analytics tabell namn | Logg kategori namn                 | Beskrivning |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | API-begäranden för Azure Synapse Gateway. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse-rollbaserade åtkomst kontroll åtgärder (SRBAC). |
@@ -112,7 +112,7 @@ Här följer de loggar som genereras av Azure Synapse Analytics-arbetsytor:
 
 Här följer de loggar som genereras av dedikerade SQL-pooler:
 
-| Log Analytics tabell namn        | Logg kategori namn             | Description |
+| Log Analytics tabell namn        | Logg kategori namn             | Beskrivning |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Information om SQL-begäranden/-frågor i en dedikerad Azure Synapse-pool.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Information om anställda som slutför DMS-stegen i en dedikerad Azure Synapse-pool.
@@ -121,17 +121,17 @@ Här följer de loggar som genereras av dedikerade SQL-pooler:
 | SynapseSqlPoolWaits         | Väntar        | Information om vänte lägen som påträffades vid körning av en SQL-begäran/-fråga i en dedikerad Azure Synapse-pool, inklusive lås och väntar på överförings köer.
 
 Mer information om dessa loggar finns i följande information:
-- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Logg för Apache Spark bassäng
 
 Följande logg har avsänts av Apache Spark pooler:
 
-| Log Analytics tabell namn               | Logg kategori namn              | Description                 |
+| Log Analytics tabell namn               | Logg kategori namn              | Beskrivning                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | Information om avslutade Apache Spark program |
 

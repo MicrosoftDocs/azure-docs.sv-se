@@ -9,22 +9,20 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592797"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658105"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
 
-Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna som tillhandahålls av kommunikations tjänstens webb anrops klient bibliotek. 
+Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna som tillhandahålls av kommunikations tjänstens webb anrops klient bibliotek.
 
 Det här exemplet har skapats för utvecklare och gör det enkelt för dig att komma igång med kommunikations tjänster. Dess användar gränssnitt är indelat i flera avsnitt, med en knapp för att Visa kod som gör att du kan kopiera kod direkt från webbläsaren till ditt eget kommunikations tjänst program.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Det här exemplet finns på GitHub.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/).
@@ -36,7 +34,7 @@ När [webb anrops exemplet](https://github.com/Azure-Samples/communication-servi
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Webb samtals Guide 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-## <a name="user-provisioning-and-sdk-initialization"></a>Användar etablering och SDK-initiering 
+## <a name="user-provisioning-and-sdk-initialization"></a>Användar etablering och SDK-initiering
 
 Klicka på "etableringen user and Initialize SDK" för att initiera din SDK med hjälp av en token som tillhandahålls av backend-token för etablerings tjänsten. Den här server dels tjänsten är i `/project/webpack.config.js` .
 
@@ -52,7 +50,7 @@ Du är nu redo att börja placera samtal med kommunikations tjänst resursen!
 
 I kommunikations tjänsterna Web Call SDK kan du använda **1:1**, **1: N** och **grupp** anrop.
 
-För 1:1 eller 1: N utgående anrop kan du ange flera användar identiteter för kommunikations tjänster som anropar med kommaavgränsade värden. Du kan också ange traditionella (PSTN) telefonnummer som ska anropas med kommaavgränsade värden. 
+För 1:1 eller 1: N utgående anrop kan du ange flera användar identiteter för kommunikations tjänster som anropar med kommaavgränsade värden. Du kan också ange traditionella (PSTN) telefonnummer som ska anropas med kommaavgränsade värden.
 
 När du anropar PSTN-telefonnummer anger du ditt alternativa ID för anroparen. Klicka på knappen "placera samtal" för att placera ett utgående samtal:
 
@@ -80,7 +78,7 @@ Det här exemplet innehåller också kodfragment för följande funktioner:
 
 ## <a name="next-steps"></a>Nästa steg
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Hämta exemplet från GitHub](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
 
 Mer information finns i följande artiklar:

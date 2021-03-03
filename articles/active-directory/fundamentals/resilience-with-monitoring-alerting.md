@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724550"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648525"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Återhämtning genom övervakning och analys
 
@@ -49,7 +49,7 @@ Spåra till exempel följande mått, eftersom ett plötslig släpp i antingen le
 
    - **Föregående period**: skapa temporala diagram för att visa ändringar i totalt antal förfrågningar och lyckade kostnader (%) under en tidigare period, till exempel förra veckan.
 
-- **Varning**: använda Log Analytics definiera [aviseringar](../../azure-monitor/platform/alerts-log.md) som utlöses när det finns plötsliga ändringar i nyckel indikatorerna. Dessa ändringar kan påverka SLO: erna negativt. Aviseringar använder olika typer av meddelande metoder, t. ex. e-post, SMS och Webhooks. Börja med att definiera ett kriterium som fungerar som ett tröskelvärde mot vilket en avisering ska utlösas. Ett exempel:
+- **Varning**: använda Log Analytics definiera [aviseringar](../../azure-monitor/alerts/alerts-log.md) som utlöses när det finns plötsliga ändringar i nyckel indikatorerna. Dessa ändringar kan påverka SLO: erna negativt. Aviseringar använder olika typer av meddelande metoder, t. ex. e-post, SMS och Webhooks. Börja med att definiera ett kriterium som fungerar som ett tröskelvärde mot vilket en avisering ska utlösas. Exempel:
   - Varning mot en felsänkning i totalt antal begär Anden: utlöser en avisering när antalet totala förfrågningar som plötsligt släpps. Om det till exempel finns 25% Drop i det totala antalet begär Anden jämfört med föregående period, Utlös en avisering.  
   - Varning mot betydande minskning i lyckade frekvenser (%): utlöser en avisering när lyckade frekvenser av den valda principen sjunker.
   - När du får en avisering kan du felsöka problemet med hjälp av [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)och [VS Code-tillägg](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) för Azure AD B2C. När du har löst problemet och distribuerat ett uppdaterat program eller en uppdaterad princip fortsätter det att övervaka nyckel indikatorerna tills de återgår till normalt intervall.
@@ -57,7 +57,7 @@ Spåra till exempel följande mått, eftersom ett plötslig släpp i antingen le
 - **Tjänst aviseringar**: Använd [Azure AD B2C service nivå aviseringar](../../service-health/service-health-overview.md) för att få meddelanden om service problem, planerat underhåll, hälso rådgivning och säkerhets rådgivning.
 
 - **Rapportering**: med [hjälp av Log Analytics](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)kan du bygga rapporter som hjälper dig att få förståelse för användar insikter, tekniska utmaningar och tillväxt möjligheter.
-  - **Hälso instrument panel**: skapa [anpassade instrument paneler med hjälp av Azure Dashboard](../../azure-monitor/learn/tutorial-app-dashboards.md) -funktionen, som har stöd för att lägga till diagram med Log Analytics frågor. Identifiera exempelvis mönster för lyckade och misslyckade inloggningar, fel orsaker och telemetri om enheter som används för att göra förfrågningarna.
+  - **Hälso instrument panel**: skapa [anpassade instrument paneler med hjälp av Azure Dashboard](../../azure-monitor/app/tutorial-app-dashboards.md) -funktionen, som har stöd för att lägga till diagram med Log Analytics frågor. Identifiera exempelvis mönster för lyckade och misslyckade inloggningar, fel orsaker och telemetri om enheter som används för att göra förfrågningarna.
   - **Överge Azure AD B2C-transporter**: Använd [arbets boken](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys) för att spåra listan över avbrutna Azure AD B2C körningar där användaren startade inloggnings-eller registrerings resan men inte avslutade den. Den innehåller information om princip-ID och nedbrytning av steg som fattas av användaren innan resan överges.
   - **Azure AD B2C övervakning av arbets böcker**: Använd [arbets böckerna övervakning](https://github.com/azure-ad-b2c/siem), som innehåller Azure AD B2C instrument panel, Multi-Factor Authentication (MFA) åtgärder, villkorlig åtkomst rapport och Sök loggar per correlationId för att få bättre insikter om hälsan hos din Azure AD B2C miljö.
   

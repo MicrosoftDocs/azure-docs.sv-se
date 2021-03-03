@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de24975dadf27293f305611c6ba07522e8aa90
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a9024bc9fbd460f403db2da8a65af1e9bd2e771b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417965"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645624"
 ---
 # <a name="introduction-to-active-directory-service-accounts"></a>Introduktion till Active Directory tjänst konton
 
@@ -34,7 +34,7 @@ Baserat på ditt användnings fall kan du använda ett hanterat tjänst konto (M
 
 ### <a name="group-msa-accounts"></a>Gruppera MSA-konton
 
-Använd [grupphanterade tjänst konton](service-accounts-group-managed.md) (gMSAs) när det är möjligt för tjänster som körs i din lokala miljö. gMSAs tillhandahåller en enda identitets lösning för en tjänst som körs på en Server grupp eller bakom en utjämning av nätverks belastning. De kan också användas för en tjänst som körs på en enskild server. [gMSAs har särskilda krav som måste uppfyllas](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+Använd [grupphanterade tjänst konton](service-accounts-group-managed.md) (gMSAs) när det är möjligt för tjänster som körs i din lokala miljö. gMSAs tillhandahåller en enda identitets lösning för en tjänst som körs på en Server grupp eller bakom en utjämning av nätverks belastning. De kan också användas för en tjänst som körs på en enskild server. [gMSAs har särskilda krav som måste uppfyllas](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
 
 ### <a name="standalone-msa-accounts"></a>Fristående MSA-konton
 
@@ -138,4 +138,3 @@ Se följande artiklar om hur du skyddar tjänst konton
 
 * [Styr lokala tjänst konton](service-accounts-govern-on-premises.md)
 
- 

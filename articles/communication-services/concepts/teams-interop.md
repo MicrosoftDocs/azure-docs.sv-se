@@ -9,16 +9,17 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 34d2a18d2e556b7eb9916d058c4d80fe0956ba55
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d369e976ab1ba4e33f5eb21edb92054678f9040f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554741"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655742"
 ---
 # <a name="teams-interoperability"></a>Samverkan mellan team
 
-[!INCLUDE [Private Preview Notice](../includes/private-preview-include.md)]
+> [!IMPORTANT]
+> Fyll i [det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)om du vill aktivera/inaktivera [team innehavarens interoperabilitet](../concepts/teams-interop.md).
 
 Azure Communication Services kan användas för att bygga anpassade Mötes upplevelser som interagerar med Microsoft Teams. Användare av kommunikations tjänst lösningen (er) kan interagera med team deltagare via röst-, video-, Chat-och skärm delning.
 
@@ -34,11 +35,11 @@ Hög nivå arkitekturen för det här användnings fallet ser ut så här:
 
 ![Arkitektur för lag/interop](./media/call-flows/teams-interop.png)
 
-Även om vissa Teams Mötes funktioner, till exempel upphöjt, interaktivt läge, och grupp-rummen bara är tillgängliga för team användare, kommer ditt anpassade program ha åtkomst till programmets kärn funktioner för ljud, video, chatt och skärm delning.
+Även om vissa Teams Mötes funktioner, till exempel upphöjt, interaktivt läge, och grupp-rummen bara är tillgängliga för team användare, kommer ditt anpassade program ha åtkomst till programmets kärn funktioner för ljud, video, chatt och skärm delning. Mötes chatten kommer att vara tillgänglig för din anpassade program användare när de befinner sig i samtalet. De kommer inte att kunna skicka eller ta emot meddelanden före anslutning eller efter att ha lämnat samtalet. 
 
 När en kommunikations tjänst användare ansluter till Teams mötet, visas det visnings namn som angavs via det anropande klient biblioteket för team användare. Kommunikation Services-användaren behandlas annars som en anonym användare i team.  Ditt anpassade program bör överväga användarautentisering och andra säkerhets åtgärder för att skydda team möten. Var mindful av säkerheten för att göra det möjligt för anonyma användare att ansluta till möten och använda [teamets säkerhets guide](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) för att konfigurera funktioner som är tillgängliga för anonyma användare.
 
-Service Teams lag för kommunikations tjänster är för närvarande i privat för hands version. När det är allmänt tillgängligt behandlas kommunikations tjänst användare som "externa åtkomst användare". Lär dig mer om extern åtkomst i [samtal, chatta och samar beta med personer utanför organisationen i Microsoft Teams](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations).
+Service Teams lag för kommunikations tjänster är för närvarande i privat för hands version. När det är allmänt tillgängligt behandlas kommunikations tjänst användare som "externa åtkomst användare". Lär dig mer om extern åtkomst i [samtal, chatta och samar beta med personer utanför organisationen i Microsoft Teams](/microsoftteams/communicate-with-users-from-other-organizations).
 
 Kommunikations tjänst användare kan ansluta till schemalagda team möten så länge anonyma kopplingar är aktiverade i [Mötes inställningarna](/microsoftteams/meeting-settings-in-teams).
 

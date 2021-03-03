@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 7d391998e7f20cff0f77f6aab7938bc375f75c9e
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616425"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661571"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - En distribuerad kommunikations tjänst resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - A `User Access Token` för att aktivera anrops klienten. Mer information om [hur du hämtar en `User Access Token` ](../../access-tokens.md)
 - Valfritt: Slutför snabb starten för att [komma igång med att lägga till samtal till ditt program](../getting-started-with-calling.md)
@@ -22,17 +22,23 @@ ms.locfileid: "99616425"
 
 ### <a name="install-the-client-library"></a>Installera klient biblioteket
 
+> [!NOTE]
+> I det här dokumentet används version 1.0.0 – beta. 6 av det anropande klient biblioteket.
+
 Använd `npm install` kommandot för att installera Azure Communication Services-anrop och vanliga klient bibliotek för Java Script.
+Det här dokumentet refererar till typer i version 1.0.0 – beta. 5 av anrops bibliotek.
 
 ```console
+npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
+
 ```
 
 ## <a name="object-model"></a>Objekt modell
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Name                             | Beskrivning                                                                                                                                 |
+| Namn                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.                                                                       |
 | CallAgent                        | CallAgent används för att starta och hantera samtal.                                                                                            |
@@ -44,7 +50,7 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 Instansiera en ny `CallClient` instans. Du kan konfigurera den med anpassade alternativ som en loggad instans.
 När en `CallClient` instansieras kan du skapa en `CallAgent` instans genom att anropa `createCallAgent` metoden på `CallClient` instansen. Ett instans objekt returneras asynkront `CallAgent` .
-`createCallAgent`Metoden tar ett `CommunicationTokenCredential` som argument, som godkänner en åtkomsttoken för [användare](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
+`createCallAgent`Metoden tar ett `CommunicationTokenCredential` som argument, som godkänner en åtkomsttoken för [användare](../../access-tokens.md).
 För att få åtkomst till `DeviceManager` en callAgent-instans måste först skapas. Du kan sedan använda `getDeviceManager` metoden på `CallClient` instansen för att hämta devicemanager.
 
 ```js
@@ -57,27 +63,30 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Placera ett utgående samtal
 
-Om du vill skapa och starta ett samtal måste du använda ett av API: erna på CallAgent och tillhandahålla en användare som du har skapat via administrations klient biblioteket för kommunikations tjänster.
+Om du vill skapa och starta ett samtal måste du använda ett av API: erna på CallAgent och tillhandahålla en användare som du har skapat via klient biblioteket för kommunikations tjänstens identitet.
 
 Skapande av anrop och start är synkront. Med anrops instansen kan du prenumerera på samtals händelser.
 
 ## <a name="place-a-call"></a>Placera ett samtal
 
 ### <a name="place-a-11-call-to-a-user-or-pstn"></a>Placera ett 1:1-anrop till en användare eller PSTN
-Om du vill placera ett anrop till en annan kommunikations tjänst användare, så anropar du `call` metoden på `callAgent` och överför CommunicationUserIdentifier:
+Om du vill ringa till en annan kommunikations tjänst användare, anropar du `startCall` metoden på `callAgent` och skickar den CommunicationUserIdentifier som du har [skapat med administrations biblioteket för kommunikations tjänster](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
-const oneToOneCall = callAgent.call([userCallee]);
+const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-Om du vill placera ett anrop till en PSTN anropar du `call` metoden på `callAgent` och skickar PhoneNumberIdentifier för mottagaren.
+Om du vill placera ett anrop till en PSTN anropar du `startCall` metoden på `callAgent` och skickar PhoneNumberIdentifier för mottagaren.
 Resursen för kommunikations tjänster måste konfigureras för att tillåta PSTN-anrop.
-När du anropar ett PSTN-nummer måste du ange ditt alternativa ID för anroparen.
+När du anropar ett PSTN-nummer måste du ange ditt alternativa ID för anroparen. Ett alternativt nummer presentations-ID refererar till ett telefonnummer (baserat på E. 164-standarden) som identifierar anroparen i ett PSTN-anrop. När du till exempel anger ett alternativt ID för anroparen till PSTN-anropet, är det telefonnumret som visas för den anropande när anropet är inkommande.
+
+> [!WARNING]
+> PSTN-anrop är för närvarande i privat för hands version. För åtkomst, [gäller för tidigt tillämpnings program](https://aka.ms/ACS-EarlyAdopter).
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
+const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Placera ett 1: n-anrop med användare och PSTN
@@ -85,21 +94,23 @@ const oneToOneCall = callAgent.call([pstnCallee], {alternateCallerId});
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
-const groupCall = callAgent.call([userCallee, pstnCallee], {alternateCallerId});
+const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCallerId});
+
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>Placera ett 1:1-samtal med video kameran
 > [!WARNING]
 > Det kan för närvarande inte finnas fler än en utgående lokal video ström.
-Om du vill placera ett video samtal måste du räkna upp lokala kameror med deviceManager- `getCameraList` API: et.
-När du har valt den önskade kameran använder du den för att konstruera en `LocalVideoStream` instans och skicka den `videoOptions` som ett objekt i `localVideoStream` matrisen till- `call` metoden.
+Om du vill placera ett video samtal måste du räkna upp lokala kameror med deviceManager- `getCameras()` API: et.
+När du har valt den önskade kameran använder du den för att konstruera en `LocalVideoStream` instans och skicka den `videoOptions` som ett objekt i `localVideoStream` matrisen till- `startCall` metoden.
 När anropet ansluter börjar den automatiskt att skicka en video ström från den valda kameran till den eller de andra deltagarna. Detta gäller även video alternativen Call. Accept () och CallAgent. JOIN ().
 ```js
 const deviceManager = await callClient.getDeviceManager();
-const videoDeviceInfo = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+videoDeviceInfo = cameras[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callAgent.call(['acsUserId'], placeCallOptions);
+const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -134,6 +145,9 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
+    //Get information about caller
+    var callerInfo = incomingCall.callerInfo
+    
     //accept the call
     var call = await incomingCall.accept();
 
@@ -163,14 +177,12 @@ const callId: string = call.id;
 const remoteParticipants = call.remoteParticipants;
 ```
 
-* Anroparens identitet om samtalet är inkommande. Identiteten är en av `CommunicationIdentifier` typerna
+* Identifieraren för anroparen om samtalet är inkommande. Identifieraren är en av `CommunicationIdentifier` typerna
 ```js
 
-const callerIdentity = call.callerInfo.identity;
+const callerIdentity = call.callerInfo.identifier;
 
-```
-
-* Hämta status för anropet.
+* Get the state of the Call.
 ```js
 
 const callState = call.state;
@@ -183,7 +195,8 @@ Detta returnerar en sträng som representerar det aktuella status för ett anrop
 * ' Ringing ' – för ett utgående anrop – indikerar att samtal rings upp för fjärranslutna deltagare, det är "inkommande" på deras sida
 * ' EarlyMedia ' – anger ett tillstånd där ett meddelande spelas innan samtalet ansluts
 * Ansluten – anropet är anslutet
-* Hold '-anropet är spärrat, inget medium flödar mellan lokal slut punkt och fjärran sluten deltagare
+* "LocalHold"-anropet spärras av lokal deltagare, inget medium flödar mellan lokal slut punkt och fjärran sluten deltagare
+* ' RemoteHold ' – anropet spärras av en fjärran sluten part, inget medium flödar mellan lokal slut punkt och fjärran sluten deltagare
 * "Kopplar från"-över gångs läget innan anropet går till frånkopplat läge
 * Frånkopplat-avslutande anrops tillstånd
   * Om nätverks anslutningen förloras går tillstånd till "frånkopplad" efter ungefär 2 minuter.
@@ -241,10 +254,10 @@ Om du vill stänga av eller stänga av den lokala slut punkten kan du använda d
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -252,7 +265,7 @@ await call.unmute();
 ### <a name="start-and-stop-sending-local-video"></a>Starta och stoppa sändning av lokal video
 
 
-Om du vill starta en video måste du räkna upp kameror med hjälp av `getCameraList` metoden på `deviceManager` objektet. Skapa sedan en ny instans för `LocalVideoStream` att skicka den önskade kameran till- `startVideo` metoden som ett argument:
+Om du vill starta en video måste du räkna upp kameror med hjälp av `getCameras` metoden på `deviceManager` objektet. Skapa sedan en ny instans för `LocalVideoStream` att skicka den önskade kameran till- `startVideo` metoden som ett argument:
 
 
 ```js
@@ -280,8 +293,8 @@ await call.stopVideo(localVideoStream);
 Du kan växla till en annan kamera enhet medan video skickas genom att anropa `switchSource` en `localVideoStream` instans:
 
 ```js
-const source callClient.getDeviceManager().getCameraList()[1];
-localVideoStream.switchSource(source);
+const cameras = await callClient.getDeviceManager().getCameras();
+localVideoStream.switchSource(cameras[1]);
 
 ```
 
@@ -302,6 +315,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 Fjärran sluten part har en uppsättning egenskaper och samlingar som är associerade med den
 #### <a name="communicationidentifier"></a>CommunicationIdentifier
 Hämta ID: t för den här fjärran deltagaren.
+Identiteten är en av typerna ' CommunicationIdentifier ':
 ```js
 const identifier = remoteParticipant.identifier;
 ```
@@ -319,6 +333,7 @@ const state = remoteParticipant.state;
 Tillstånd kan vara en av
 * Passiv-initial status
 * ' Connect ' – över gångs tillstånd medan deltagare ansluter till anropet
+* ' Ringning ' – deltagare ringer
 * Ansluten – deltagaren är ansluten till anropet
 * Hold '-deltagare är stoppad
 * ' EarlyMedia ' – meddelandet spelas upp innan deltagaren ansluts till anropet
@@ -384,29 +399,31 @@ För att visa en lista över video strömmar och skärm delnings strömmar av fj
 
 ```js
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
-const streamType: MediaStreamType = remoteVideoStream.type;
+const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
+
 För att kunna återge en `RemoteVideoStream` måste du prenumerera på en `isAvailableChanged` händelse.
 Om `isAvailable` egenskapen ändras till `true` skickar en fjärran sluten deltagare en ström.
 När det händer skapar du en ny instans av `Renderer` och skapar sedan en ny `RendererView` instans med hjälp av den asynkrona `createView` metoden.  Du kan sedan koppla `view.target` till ett gränssnitts element.
 När tillgängligheten för en fjärrström ändras kan du välja att förstöra hela åter givningen, en speciell `RendererView` eller behålla dem, men det leder till att tomma video rutor visas.
 
 ```js
-let renderer: Renderer = new Renderer(remoteParticipantStream);
-const displayVideo = () => {
-    const view = await renderer.createView();
-    htmlElement.appendChild(view.target);
-}
-remoteParticipantStream.on('availabilityChanged', async () => {
-    if (remoteParticipantStream.isAvailable) {
-        displayVideo();
-    } else {
-        renderer.dispose();
+function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
+    let renderer: Renderer = new Renderer(remoteVideoStream);
+    const displayVideo = () => {
+        const view = await renderer.createView();
+        htmlElement.appendChild(view.target);
     }
-});
-if (remoteParticipantStream.isAvailable) {
-    displayVideo();
+    remoteVideoStream.on('availabilityChanged', async () => {
+        if (remoteVideoStream.isAvailable) {
+            displayVideo();
+        } else {
+            renderer.dispose();
+        }
+    });
+    if (remoteVideoStream.isAvailable) {
+        displayVideo();
+    }
 }
 ```
 
@@ -425,7 +442,7 @@ const size: {width: number; height: number} = remoteVideoStream.size;
 
 * `MediaStreamType` -kan vara video eller ScreenSharing
 ```js
-const type: MediaStreamType = remoteVideoStream.type;
+const type: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 * `isAvailable` -Anger om slut punkten för den fjärranslutna parten skickar ström
 ```js
@@ -446,11 +463,11 @@ renderer.dispose()
 
 
 ### <a name="rendererview-methods-and-properties"></a>Metoder och egenskaper för RendererView
-När du skapar en `RendererView` kan du ange `scalingMode` och `mirrored` Egenskaper.
-Skalnings läget kan vara "Sträck ut", "Beskär" eller "passa" om `Mirrored` har angetts, så vänds den återgivna strömmen till lodrätt.
+När du skapar en `RendererView` kan du ange `scalingMode` och `isMirrored` Egenskaper.
+Skalnings läget kan vara "Sträck ut", "Beskär" eller "passa" om `isMirrored` har angetts, så vänds den återgivna strömmen till lodrätt.
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, mirrored });
+const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
 ```
 En specifik `RendererView` instans har en `target` egenskap som representerar åter givnings ytan. Detta måste bifogas i programmets användar gränssnitt:
 ```js
@@ -478,18 +495,18 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="enumerate-local-devices"></a>Räkna upp lokala enheter
 
-Du kan använda uppräknings metoder på Enhetshanteraren för att komma åt lokala enheter. Uppräkning är en synkron åtgärd.
+Du kan använda uppräknings metoder på Enhetshanteraren för att komma åt lokala enheter. Uppräkning är en asynkron åtgärd.
 
 ```js
 
 //  Get a list of available video devices for use.
-const localCameras = deviceManager.getCameraList(); // [VideoDeviceInfo, VideoDeviceInfo...]
+const localCameras = await deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
 // Get a list of available microphone devices for use.
-const localMicrophones = deviceManager.getMicrophoneList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 // Get a list of available speaker devices for use.
-const localSpeakers = deviceManager.getSpeakerList(); // [AudioDeviceInfo, AudioDeviceInfo...]
+const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
 
 ```
 
@@ -501,16 +518,16 @@ Om klientens standardvärden inte har angetts, kommer kommunikations tjänsterna
 ```js
 
 // Get the microphone device that is being used.
-const defaultMicrophone = deviceManager.getMicrophone();
+const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.setMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(AudioDeviceInfo);
 
 // Get the speaker device that is being used.
-const defaultSpeaker = deviceManager.getSpeaker();
+const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.setSpeaker(AudioDeviceInfo);
+await deviceManager.selectSpeaker(AudioDeviceInfo);
 
 ```
 
@@ -519,7 +536,8 @@ await deviceManager.setSpeaker(AudioDeviceInfo);
 Du kan använda `DeviceManager` och `Renderer` för att börja rendera strömmar från den lokala kameran. Den här data strömmen skickas inte till andra deltagare. Det är en lokal förhands gransknings matning. Detta är en asynkron åtgärd.
 
 ```js
-const localVideoDevice = deviceManager.getCameraList()[0];
+const cameras = await deviceManager.getCameras();
+const localVideoDevice = cameras[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();
@@ -532,7 +550,7 @@ document.body.appendChild(view.target);
 Begär att en användare ska ge kamera-/mikrofon behörigheter med följande:
 
 ```js
-const result = await deviceManager.askDevicePermission(audio: true, video: true);
+const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
 Detta kommer att lösa asynkront med ett objekt som anger om `audio` och `video` behörigheter har beviljats:
 ```js
@@ -540,16 +558,6 @@ console.log(result.audio);
 console.log(result.video);
 ```
 
-Du kan kontrol lera det aktuella behörighets läget för en specifik typ genom att anropa `getPermissionState` :
-
-```js
-
-const result = deviceManager.getPermissionState('Microphone'); // for microphone permission state
-const result = deviceManager.getPermissionState('Camera'); // for camera permission state
-
-console.log(result); // 'Granted' | 'Denied' | 'Prompt' | 'Unknown';
-
-```
 
 ## <a name="call-recording-management"></a>Hantering av anrops registrering
 
@@ -573,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
 ## <a name="call-transfer-management"></a>Hantering av samtals överföring
@@ -638,41 +646,71 @@ callTransferApi.on('transferRequested', args => {
 ```
 
 ## <a name="eventing-model"></a>Händelse modell
-
-Du kan prenumerera på de flesta egenskaper och samlingar för att få ett meddelande när värdena ändras.
+Du måste kontrol lera aktuella värden och prenumerera på uppdaterings händelser för framtida värden.
 
 ### <a name="properties"></a>Egenskaper
-Så här prenumererar du på `property changed` händelser:
 
 ```js
+// Inspect current value
+console.log(object.property);
 
-const eventHandler = () => {
-    // check current value of a property, value is not passed to callback
-    console.log(object.property);
-};
-object.on('propertyNameChanged',eventHandler);
+// Subscribe to value updates
+object.on('propertyChanged', () => {
+    // Inspect new value
+    console.log(object.property)
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('propertyChanged', () => {});
 
-object.off('propertyNameChanged',eventHandler);
 
+
+// Example for inspecting call state
+console.log(call.state);
+call.on('stateChanged', () => {
+    console.log(call.state);
+});
+call.off('stateChanged', () => {});
 ```
 
 ### <a name="collections"></a>Samlingar
-Så här prenumererar du på `collection updated` händelser:
-
 ```js
+// Inspect current collection
+object.collection.forEach(v => {
+    console.log(v);
+});
 
-const eventHandler = (e) => {
-    // check added elements
-    console.log(e.added);
-    // check removed elements
-    console.log(e.removed);
-};
-object.on('collectionNameUpdated',eventHandler);
+// Subscribe to collection updates
+object.on('collectionUpdated', e => {
+    // Inspect new values added to the collection
+    e.added.forEach(v => {
+        console.log(v);
+    });
+    // Inspect values removed from the collection
+    e.removed.forEach(v => {
+        console.log(v);
+    });
+});
 
-// To unsubscribe:
+// Unsubscribe from updates:
+object.off('collectionUpdated', () => {});
 
-object.off('collectionNameUpdated',eventHandler);
 
+
+// Example for subscribing to remote participants and their video streams
+call.remoteParticipants.forEach(p => {
+    subscribeToRemoteParticipant(p);
+})
+
+call.on('remoteParticipantsUpdated', e => {
+    e.added.forEach(p => { subscribeToRemoteParticipant(p) })
+    e.removed.forEach(p => { unsubscribeFromRemoteParticipant(p) })
+});
+
+function subscribeToRemoteParticipant(p) {
+    console.log(p.state);
+    p.on('stateChanged', () => { console.log(p.state); });
+    p.videoStreams.forEach(v => { subscribeToRemoteVideoStream(v) });
+    p.on('videoStreamsUpdated', e => { e.added.forEach(v => { subscribeToRemoteVideoStream(v) }) })
+}
 ```

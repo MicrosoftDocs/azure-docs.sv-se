@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8f5b7f8b5cd563f8b265d7051a57b0ac22598d1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623681"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674980"
 ---
 # <a name="disk-performance-metrics"></a>Mått för disk prestanda
 Azure erbjuder mått i Azure Portal som ger insikt om hur dina virtuella datorer (VM) och diskar fungerar. Måtten kan också hämtas via ett API-anrop. Den här artikeln är uppdelad i tre underavsnitt:
@@ -129,6 +129,6 @@ Det här måttet talar om för oss att data diskarna som är anslutna på LUN 3 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Översikt över Azure Monitor mått](../azure-monitor/platform/data-platform-metrics.md)
-- [Förklaring av mått aggregation](../azure-monitor/platform/metrics-aggregation-explained.md)
-- [Skapa, visa och hantera måttaviseringar med Azure Monitor](../azure-monitor/platform/alerts-metric.md)
+- [Översikt över Azure Monitor mått](../azure-monitor/essentials/data-platform-metrics.md)
+- [Förklaring av mått aggregation](../azure-monitor/essentials/metrics-aggregation-explained.md)
+- [Skapa, visa och hantera måttaviseringar med Azure Monitor](../azure-monitor/alerts/alerts-metric.md)

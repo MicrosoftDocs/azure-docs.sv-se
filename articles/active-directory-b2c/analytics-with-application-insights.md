@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dfe53f67ee9c6645a6dadda58573b892b676b739
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651281"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645933"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Spåra användar beteende i Azure AD B2C med Application Insights
 
@@ -326,6 +326,6 @@ Om du vill inaktivera Application Insights loggar ändrar du `DisableTelemetry` 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [skapar anpassade KPI-instrumentpaneler med hjälp av Azure Application insikter](../azure-monitor/learn/tutorial-app-dashboards.md).
+Lär dig hur du [skapar anpassade KPI-instrumentpaneler med hjälp av Azure Application insikter](../azure-monitor/app/tutorial-app-dashboards.md).
 
 ::: zone-end

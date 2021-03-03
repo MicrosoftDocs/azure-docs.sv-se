@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: b13d03f05b7225a1c88f6b10b454749bd7b42477
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588347"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667739"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure avdelningens kontroll-mått i Azure Monitor
 
@@ -62,7 +62,7 @@ För att bekanta dig med hur du använder mått avsnittet i Azure Portal för at
 
 Följande tabell innehåller en lista över mått som är tillgängliga för att utforska i Azure Portal:
 
-| Måttnamn | Namnrymd för mått | Sammansättningstyp | Description |
+| Måttnamn | Namnrymd för mått | Sammansättningstyp | Beskrivning |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Skanningen avbröts | Automatiserad sökning | Sum <br> Antal | Sammanställ inläsningar av avbrutna data källor över tids period |
 | Sökningen är klar | Automatiserad sökning | Sum <br> Antal | Sammanställ slutförda data käll genomsökningar över en tids period |
@@ -83,7 +83,7 @@ Följ stegen för att skapa en diagnostisk inställning för ditt Azure avdelnin
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Skärm bild som visar tilldelning av lagrings konto för diagnostikloggar." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Låt upp till 15 minuter innan du börjar ta emot loggar i det nyligen skapade lagrings kontot. [Se data kvarhållning och schema för resurs loggar i Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). När diagnostikloggar har kon figurer ATS, kommer händelserna att flöda till lagrings kontot.
+Låt upp till 15 minuter innan du börjar ta emot loggar i det nyligen skapade lagrings kontot. [Se data kvarhållning och schema för resurs loggar i Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). När diagnostikloggar har kon figurer ATS, kommer händelserna att flöda till lagrings kontot.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

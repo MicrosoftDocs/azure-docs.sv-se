@@ -8,15 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.workload: identity
-ms.date: 01/12/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 1c11a5ecc2d1a9c2e83e9ebd7cc8aa85caa72b70
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3f1f26acbba0f5830421e760d6a68a11f618fa85
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562119"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648998"
 ---
 # <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Självstudie: inloggnings användare i en Node.js & Express-webbapp
 
@@ -65,9 +64,9 @@ Skapa en mapp som är värd för ditt program, till exempel *ExpressWebApp*.
 ```JavaScript
     const express = require("express");
     const msal = require('@azure/msal-node');
-    
+
     const SERVER_PORT = process.env.PORT || 3000;
-    
+
     // Create Express App and Routes
     const app = express();
 
@@ -95,7 +94,7 @@ Leta upp roten i projekt katalogen i en Terminal och installera MSAL Node-pakete
 Lägg till följande kod i *index.js* -filen som du skapade tidigare:
 
 ```JavaScript
-    // Before running the sample, you will need to replace the values in the config, 
+    // Before running the sample, you will need to replace the values in the config,
     // including the clientSecret
     const config = {
         auth: {
@@ -138,26 +137,26 @@ Lägg till följande kod i *index.js* -filen som du skapade tidigare:
 ```JavaScript
     // Create msal application object
     const cca = new msal.ConfidentialClientApplication(config);
-    
+
     app.get('/', (req, res) => {
         const authCodeUrlParameters = {
             scopes: ["user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         // get url to sign user in and consent to scopes needed for application
         cca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
             res.redirect(response);
         }).catch((error) => console.log(JSON.stringify(error)));
     });
-    
+
     app.get('/redirect', (req, res) => {
         const tokenRequest = {
             code: req.query.code,
             scopes: ["user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         cca.acquireTokenByCode(tokenRequest).then((response) => {
             console.log("\nResponse: \n:", response);
             res.sendStatus(200);
@@ -188,7 +187,7 @@ Du har slutfört skapandet av programmet och är nu redo att testa appens funkti
 
 ## <a name="how-the-application-works"></a>Så här fungerar programmet
 
-I den här självstudien initierade du en MSAL Node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) -objekt genom att skicka det till ett konfigurations objekt (*msalConfig*) som innehåller parametrar som hämtats från din Azure AD-app-registrering på Azure Portal. Webbappen som du skapade använder [OAuth 2,0-auktoriseringskod som ger](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) inloggnings användare och hämtar ID och åtkomsttoken.
+I den här självstudien initierade du en MSAL Node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) -objekt genom att skicka det till ett konfigurations objekt (*msalConfig*) som innehåller parametrar som hämtats från din Azure AD-app-registrering på Azure Portal. Webbappen som du skapade använder [OAuth 2,0-auktoriseringskod som ger](./v2-oauth2-auth-code-flow.md) inloggnings användare och hämtar ID och åtkomsttoken.
 
 ## <a name="next-steps"></a>Nästa steg
 

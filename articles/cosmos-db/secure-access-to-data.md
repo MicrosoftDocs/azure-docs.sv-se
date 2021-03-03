@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359616"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656405"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Säker åtkomst till data i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Den här artikeln ger en översikt över hur du skyddar åtkomsten till data som lagras i [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+Den här artikeln innehåller en översikt över data åtkomst kontroll i Azure Cosmos DB.
 
-Azure Cosmos DB använder två typer av nycklar för att autentisera användare och ge åtkomst till dess data och resurser. 
+Azure Cosmos DB tillhandahåller tre sätt att kontrol lera åtkomsten till dina data.
 
-|Nyckeltyp|Resources (Resurser)|
+| Åtkomst kontroll typ | Kännetecken  |
 |---|---|
-|[Primära nycklar](#primary-keys) |Används för administrativa resurser: databas konton, databaser, användare och behörigheter|
-|[Resurs-token](#resource-tokens)|Används för program resurser: behållare, dokument, bifogade filer, lagrade procedurer, utlösare och UDF: er|
+| [Primära nycklar](#primary-keys) | Delad hemlighet som tillåter hantering eller data åtgärder. Det kommer både i Skriv-och skrivskyddade varianter. |
+| [Rollbaserad åtkomst kontroll](#rbac) (för hands version) | Detaljerad, rollbaserad behörighets modell som använder Azure Active Directory-identiteter (AAD) för autentisering. |
+| [Resurs-token](#resource-tokens)| Detaljerad behörighets modell baserad på interna Azure Cosmos DB användare och behörigheter. |
 
-<a id="primary-keys"></a>
+## <a name="primary-keys"></a><a id="primary-keys"></a> Primära nycklar
 
-## <a name="primary-keys"></a>Primära nycklar
+Primära nycklar ger åtkomst till alla administrativa resurser för databas kontot. Varje konto består av två primär nycklar: en primär nyckel och en sekundär nyckel. Syftet med dubbla nycklar är att du ska kunna skapa om eller registrera nycklar, vilket ger kontinuerlig åtkomst till ditt konto och dina data. Läs mer om primär nycklar i artikeln [databas säkerhet](database-security.md#primary-keys) .
 
-Primära nycklar ger åtkomst till alla administrativa resurser för databas kontot. Varje konto består av två primär nycklar: en primär nyckel och en sekundär nyckel. Syftet med dubbla nycklar är att du kan skapa om eller registrera nycklar, vilket ger kontinuerlig åtkomst till ditt konto och dina data. Läs mer om primär nycklar i artikeln [databas säkerhet](database-security.md#primary-keys) .
-
-### <a name="key-rotation"></a>Nyckel rotation<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> Nyckel rotation
 
 Processen med att rotera primär nyckeln är enkel. 
 
@@ -64,7 +63,23 @@ Följande kod exempel illustrerar hur du använder Azure Cosmos DB konto slut pu
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>Resurs-token <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> Rollbaserad åtkomst kontroll (för hands version)
+
+Azure Cosmos DB visar ett inbyggt rollbaserad åtkomst kontroll system (RBAC) som gör att du kan:
+
+- Autentisera dina data begär Anden med en Azure Active Directory identitet (AAD).
+- Auktorisera dina data begär Anden med en detaljerad, rollbaserad behörighets modell.
+
+Azure Cosmos DB RBAC är den idealiska åtkomst kontroll metoden i situationer där:
+
+- Du vill inte använda en delad hemlighet som primär nyckel och föredrar att förlita dig på en token-baserad autentiseringsmekanism,
+- Du vill använda Azure AD-identiteter för att autentisera dina begär Anden
+- Du behöver en detaljerad behörighets modell för att begränsa vilka databas åtgärder som dina identiteter tillåts utföra,
+- Du vill materialisera dina principer för åtkomst kontroll som "roller" som du kan tilldela till flera identiteter.
+
+Mer information om Azure Cosmos DB RBAC finns i [Konfigurera rollbaserad åtkomst kontroll för ditt Azure Cosmos DB-konto](how-to-setup-rbac.md) .
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> Resurs-token
 
 Resurs-token ger åtkomst till program resurserna i en databas. Resurs-token:
 
@@ -97,7 +112,7 @@ Generering och hantering av resurs-token hanteras av de interna Cosmos DB klient
 
 Ett exempel på en tjänst mellan nivåer som används för att generera eller Broker-resursfiler finns i [ResourceTokenBroker-appen](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Användare<a id="users"></a>
+### <a name="users"></a>Användare<a id="users"></a>
 
 Azure Cosmos DB användare är associerade med en Cosmos-databas.  Varje databas kan innehålla noll eller flera Cosmos DB användare. Följande kod exempel visar hur du skapar en Cosmos DB användare med hjälp av [Azure Cosmos dB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Varje Cosmos DB användare har en ReadAsync ()-metod som kan användas för att hämta listan över [behörigheter](#permissions) som är associerade med användaren.
 
-## <a name="permissions"></a>Behörigheter<a id="permissions"></a>
+### <a name="permissions"></a>Behörigheter<a id="permissions"></a>
 
 En behörighets resurs är kopplad till en användare och tilldelad till behållaren samt partitionens nyckel nivå. Varje användare kan innehålla noll eller fler behörigheter. En behörighets resurs ger åtkomst till en säkerhetstoken som användaren behöver när de försöker komma åt en speciell behållare eller data i en angiven partitionsnyckel. Det finns två tillgängliga åtkomst nivåer som kan tillhandahållas av en behörighets resurs:
 
@@ -127,7 +142,7 @@ Om du aktiverar [diagnostikloggar för data Plans begär Anden](cosmosdb-monitor
 
 * **resourceTokenPermissionMode** – den här egenskapen anger det behörighets läge som du har angett när du skapar en resurs-token. Behörighets läget kan ha värden som "all" eller "Read".
 
-### <a name="code-sample-to-create-permission"></a>Kod exempel för att skapa behörighet
+#### <a name="code-sample-to-create-permission"></a>Kod exempel för att skapa behörighet
 
 Följande kod exempel visar hur du skapar en behörighets resurs, läser resurs-token för behörighets resursen och associerar behörigheterna med [användaren](#users) som skapades ovan.
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Kod exempel för Läs behörighet för användare
+#### <a name="code-sample-to-read-permission-for-user"></a>Kod exempel för Läs behörighet för användare
 
 Följande kodfragment visar hur du hämtar behörigheten som är kopplad till den användare som skapats ovan och instansierar en ny CosmosClient för användarens räkning, som är begränsad till en enda partitionsnyckel.
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>Skillnader mellan RBAC-och resurs-token
+
+| Ämne | RBAC | Resurs-token |
+|--|--|--|
+| Autentisering  | Med Azure Active Directory (Azure AD). | Baserat på de interna Azure Cosmos DB användare<br>Integrering av resurs-token med Azure AD kräver extra arbete för att överbrygga Azure AD-identiteter och Azure Cosmos DB användare. |
+| Auktorisering | Rollbaserad: mappa tillåtna åtgärder för roll definitioner och kan tilldelas flera identiteter. | Behörighets beroende: för varje Azure Cosmos DB användare måste du tilldela behörigheter för data åtkomst. |
+| Token-omfång | En AAD-token bär identiteten hos beställaren. Den här identiteten matchas mot alla tilldelade roll definitioner för att utföra auktorisering. | En resurs-token har behörigheten beviljad till en speciell Azure Cosmos DB användare på en speciell Azure Cosmos DB resurs. Autentiseringsbegäranden på olika resurser kan kräva olika tokens. |
+| Uppdatera token | AAD-token uppdateras automatiskt av Azure Cosmos DB SDK: er när den upphör att gälla. | Uppdatering av resurs-token stöds inte. När en resurs-token upphör att gälla måste en ny utfärdas. |
 
 ## <a name="add-users-and-assign-roles"></a>Lägg till användare och tilldela roller
 

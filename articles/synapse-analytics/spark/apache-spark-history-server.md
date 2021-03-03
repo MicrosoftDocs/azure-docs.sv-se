@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995394"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670703"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Använd utökad Apache Spark historik Server för att felsöka och diagnostisera Apache Spark program
 
@@ -22,7 +22,7 @@ Den här artikeln innehåller rikt linjer för hur du använder den utökade Apa
 
 Tillägget innehåller fliken data, fliken Graph och fliken diagnostik. Använd fliken **data** för att kontrol lera indata och utdata för Spark-jobbet. På fliken **Graph** visas data flödet och uppspelning av jobb diagrammet. På fliken **diagnos** visas  **data skevning**, **tids skevning** och **användnings analys av utförar**.
 
-## <a name="access-the-apache-spark-history-server"></a>Få åtkomst till Apache Spark historik Server
+## <a name="access-the-apache-spark-history-server"></a>Få åtkomst till Apache Spark-historikservern
 
 Apache Spark historik Server är webb användar gränssnittet för slutförd och körning av Spark-program. Du kan öppna webb gränssnittet för Apache Spark historik Server från Azure Synapse Analytics.
 
@@ -106,7 +106,7 @@ Du kan se en översikt över jobbet i diagrammet genererat jobb. Som standard vi
 
 ![Jobb-ID för Spark-program och jobb diagram](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
-### <a name="display"></a>Visning
+### <a name="display"></a>Skärm
 
 Som standard är visnings **förloppet** markerat. Du kan kontrol lera data flödet genom att välja **läsa** eller **skriva** i list rutan **Visa** .
 
@@ -120,13 +120,13 @@ Graf-noden visar de färger som visas i termisk karta-förklaringen.
 
 Om du vill spela upp jobbet väljer du **uppspelning**. Du kan välja **stoppa** när som helst för att stoppa. Aktivitets färgerna visar olika status vid uppspelning:
 
-|Color (Färg)|Innebörd|
+|Färg|Innebörd|
 |-|-|
 |Green|Lyckades: jobbet har slutförts.|
 |Orange|Nytt försök: instanser av aktiviteter som misslyckats men inte påverkar jobbets slut resultat. De här uppgifterna hade dubbla eller nya försök för instanser som kan lyckas senare.|
-|Blå|Körs: aktiviteten körs.|
+|Blue|Körs: aktiviteten körs.|
 |Vit|Väntar eller hoppas över: aktiviteten väntar på att köras eller så har fasen hoppats över.|
-|Röd|Misslyckades: aktiviteten har misslyckats.|
+|Red|Misslyckades: aktiviteten har misslyckats.|
 
 Följande bild visar status färgerna grön, orange och blå.
 
@@ -157,7 +157,7 @@ Hovra över diagram-noden för att se knapp beskrivningen när det inte finns n�
 
 På fliken jobb diagram har stadier en knapp beskrivning och en liten ikon som visas om de har aktiviteter som uppfyller följande villkor:
 
-|Condition (Väderförhållanden)|Description|
+|Villkor|Beskrivning|
 |-|-|
 |Data skevning|data Läs storlek > genomsnittlig läsnings storlek för alla aktiviteter i det här steget * 2 och dataens Läs storlek > 10 MB|
 |Tids skevning|körnings tid > genomsnittlig körnings tid för alla aktiviteter i det här steget * 2 och körnings tiden > 2 minuter|
@@ -239,5 +239,5 @@ Indata/utdata-data med elastiska distribuerade data uppsättningar (RDD) visas i
 ## <a name="next-steps"></a>Nästa steg
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Dokumentation om .NET för Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentation om .NET för Apache Spark](/dotnet/spark)
 

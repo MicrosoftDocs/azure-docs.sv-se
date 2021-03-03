@@ -7,20 +7,19 @@ author: msjuergent
 manager: juergent
 editor: ''
 keywords: 'HLI, HANA, SKU: er, S896, S224, S448, S672, Optane, SAP'
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 886cd57b59bd4103ced9d496021e54ab0bdc99ad
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 25a11bf96ba680608e5bb22835becf80fadee4f3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723294"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668924"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Tillgängliga SKU: er för stora instanser av HANA
 
@@ -38,7 +37,7 @@ SAP HANA på Azure-tjänsten (stora instanser) som baseras på revision 4-stämp
 
 BareMetal-infrastruktur (certifierad för SAP HANA arbets belastningar) som baseras på revision 4,2-stämplar. Den finns i flera konfigurationer i Azure-regionerna i:
 - Europa, västra
-- Norra Europa
+- Europa, norra
 - USA, östra 2
 - USA, södra centrala
 
@@ -52,7 +51,7 @@ Listan över tillgängliga Azure Large-instanser som erbjuds listor som följand
 
 
 
-| SAP HANA certifiering | Modell | Totalt minne | Minnes-DRAM | Optane för minne | Lagring | Tillgänglighet |
+| SAP HANA certifiering | Modell | Totalt minne | Minnes-DRAM | Optane för minne | Storage | Tillgänglighet |
 | --- | --- | --- | --- | --- | --- | --- |
 | JA <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA på Azure-S96<br /> – 2 x Intel® Xeon®-processor E7-8890 v4 <br /> 48 CPU-kärnor och 96 CPU-trådar |  768 GB | 768 GB | --- | 3,0 TB | Tillgänglig |
 | JA <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA på Azure-S224<br /> – 4 x Intel® Xeon® Platinum 8276-processor <br /> 112 CPU-kärnor och 224 CPU-trådar |  3,0 TB | 3,0 TB | --- | 6,3 TB | Tillgänglig |

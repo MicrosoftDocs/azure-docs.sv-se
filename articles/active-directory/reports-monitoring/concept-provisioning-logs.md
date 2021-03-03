@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091940"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651945"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Översikt över etablering av loggar i Azure Portal (för hands version)
 
@@ -60,8 +60,8 @@ För att du ska kunna visa etablerings aktivitets rapporten måste klienten ha e
 Kunder kan interagera med etablerings loggar på fyra sätt:
 
 - Åtkomst till loggarna från Azure Portal, enligt beskrivningen i nästa avsnitt.
-- Strömmar etablerings loggarna till [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics). Med den här metoden kan du utöka data kvarhållning och skapa anpassade instrument paneler, aviseringar och frågor.
-- Fråga Microsoft Graph- [API:](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) t för etablerings loggarna.
+- Strömmar etablerings loggarna till [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Med den här metoden kan du utöka data kvarhållning och skapa anpassade instrument paneler, aviseringar och frågor.
+- Fråga Microsoft Graph- [API:](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) t för etablerings loggarna.
 - Hämtar etablerings loggarna som en CSV-eller JSON-fil.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Komma åt loggarna från Azure Portal
@@ -207,7 +207,7 @@ JSON-filen laddas ned i minified-format för att minska storleken på nedladdnin
 
 Här följer några exempel kommandon för att arbeta med JSON-filen med hjälp av PowerShell. Du kan använda valfritt programmeringsspråk som du är van vid.  
 
-Börja med [att läsa JSON-filen](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) genom att köra det här kommandot:
+Börja med [att läsa JSON-filen](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) genom att köra det här kommandot:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -243,7 +243,7 @@ Här följer några tips och överväganden för etablering av rapporter:
 
 Använd följande tabell för att bättre förstå hur du löser fel som du hittar i etablerings loggarna. För felkoder som saknas ger du feedback genom att använda länken längst ned på den här sidan. 
 
-|Felkod|Description|
+|Felkod|Beskrivning|
 |---|---|
 |Konflikt, EntryConflict|Korrigera attributvärdena i konflikt i antingen Azure AD eller programmet. Du kan också granska konfigurationen av matchande attribut om det motstridiga användar kontot skulle matchas och tas över. Läs [dokumentationen](../app-provisioning/customize-application-attributes.md) för mer information om hur du konfigurerar matchande attribut.|
 |TooManyRequests|Mål appen avvisade det här försöket att uppdatera användaren eftersom den är överbelastad och tar emot för många begär Anden. Det finns inget att göra. Detta försök kommer automatiskt att dras tillbaka. Microsoft har också fått ett meddelande om det här problemet.|

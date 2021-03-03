@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168516"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643854"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>Vad är etablering mellan kataloger?
 
@@ -33,7 +33,7 @@ Azure AD stöder för närvarande tre metoder för att utföra etablering mellan
 
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) – Microsoft-verktyget har utformats för att möta och slutföra din hybrid identitet, inklusive etablering mellan kataloger från Active Directory till Azure AD.
 
-- [Azure AD Connect moln etablering](../cloud-provisioning/what-is-cloud-provisioning.md) – en ny Microsoft-Agent som utformats för att möta och uppnå dina hybrid identitets mål.  Det ger en låg vikt för etablering av mellan kataloger mellan Active Directory och Azure AD.
+- [Azure AD Connect moln etablering](../cloud-sync/what-is-cloud-sync.md) – en ny Microsoft-Agent som utformats för att möta och uppnå dina hybrid identitets mål.  Det ger en låg vikt för etablering av mellan kataloger mellan Active Directory och Azure AD.
 
 - [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) – Microsofts lokala identitets-och åtkomst hanterings lösning som hjälper dig att hantera användare, autentiseringsuppgifter, principer och åtkomst i din organisation. MIM tillhandahåller dessutom avancerad etablering mellan kataloger för att uppnå hybrid identitets miljöer för Active Directory, Azure AD och andra kataloger.
 

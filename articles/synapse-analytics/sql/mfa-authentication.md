@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 7b3b8aae1345339dc34137550f3fe4c5be915ae5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120384"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672717"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Använd Multi-Factor AAD-autentisering med Synapse SQL (SSMS-stöd för MFA)
 
@@ -23,7 +23,7 @@ Synapse SQL-support anslutningar från SQL Server Management Studio (SSMS) med *
 
 I den här artikeln beskrivs skillnaderna mellan olika autentiseringsalternativ och de begränsningar som är associerade med att använda Universal Authentication. 
 
-**Hämta den senaste SSMS** – på klient datorn laddar du ned den senaste versionen av SSMS, från [nedladdnings SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+**Hämta den senaste SSMS** – på klient datorn laddar du ned den senaste versionen av SSMS, från [nedladdnings SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=azure-sqldw-latest&preserve-view=true).
 
 För alla funktioner som beskrivs i den här artikeln använder du minst juli 2017, version 17,2.  Dialog rutan senaste anslutning bör se ut ungefär som på följande bild:
 
@@ -46,11 +46,11 @@ Den interaktiva metoden är att även har stöd för Azure AD Multi-Factor Authe
 
 Azure AD MFA bidrar till att skydda åtkomsten till data och program och tillgodoser samtidigt användarens önskemål om en enkel inloggningsprocess. Den ger stark autentisering med en rad enkla verifierings alternativ (telefonsamtal, textmeddelande, smartkort med PIN-kod eller meddelande för mobilapp), så att användarna kan välja den metod de föredrar. Interaktiv MFA med Azure AD kan resultera i en popup-dialogruta för verifiering.
 
-En beskrivning av Multi-Factor Authentication finns i [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+En beskrivning av Multi-Factor Authentication finns i [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-domän namn eller klient-ID-parameter
 
-Från och med [SSMS version 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kan användare som importeras till den aktuella Active Directory från andra Azure Active Directory som gäst användare ange Azure AD-domännamnet eller klient-ID när de ansluter. 
+Från och med [SSMS version 17](/sql/ssms/download-sql-server-management-studio-ssms?view=azure-sqldw-latest&preserve-view=true)kan användare som importeras till den aktuella Active Directory från andra Azure Active Directory som gäst användare ange Azure AD-domännamnet eller klient-ID när de ansluter. 
 
 Gäst användare inkluderar användare som har bjudits in från andra Azure-annonser, Microsoft-konton som outlook.com, hotmail.com, live.com eller andra konton som gmail.com. Den här informationen tillåter **Active Directory universell med MFA-autentisering** för att identifiera rätt autentiserings-utfärdare. Det här alternativet krävs också för att stödja Microsoft-konton (MSA) som outlook.com, hotmail.com, live.com eller icke-MSA konton. 
 

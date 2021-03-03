@@ -8,17 +8,16 @@ ms.date: 09/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 692e3a2e64c42702d46c38175a814819c8f539cf
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: d26c089376f5de1ad669ff95a0bf4e96cc8f4682
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762636"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660012"
 ---
 # <a name="quickstart-call-to-phone"></a>Snabb start: samtal till telefon
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar klient biblioteket för att lägga till PSTN-anrop till din app. 
+Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna som anropar klient biblioteket för att lägga till PSTN-anrop till din app.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]

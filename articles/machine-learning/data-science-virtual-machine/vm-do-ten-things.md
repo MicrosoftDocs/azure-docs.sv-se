@@ -3,19 +3,18 @@ title: Utforska data och modeller i Windows
 titleSuffix: Azure Data Science Virtual Machine
 description: Utföra data utforsknings-och modellerings uppgifter på Windows-Data Science Virtual Machine.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575014"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657408"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data vetenskap med en Windows-Data Science Virtual Machine
 
@@ -40,7 +39,7 @@ I den här artikeln får du lära dig hur du använder din DSVM för att utföra
 > 
 > 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Du behöver en Azure-prenumeration. Du kan [Registrera dig för en kostnads fri utvärderings version](https://azure.microsoft.com/free/).
 * Instruktioner för hur du konfigurerar en Data Science Virtual Machine på Azure Portal finns i [skapa en virtuell dator](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
@@ -77,7 +76,7 @@ För python kan du använda en IDE som Visual Studio Community Edition, som har 
 
 1. Skapa anpassade miljöer för varje version genom att gå till **verktyg**  >  **python-verktyg**  >  **python-miljöer** och sedan välja **+ anpassad** i Visual Studio Community Edition.
 1. Ange en beskrivning och ange sökvägen till miljöprefixet som **c:\anaconda\envs\python2** för anaconda python 2,7.
-1. Välj **Använd automatisk identifiering**  >  **Apply** för att spara miljön.
+1. Välj **Använd automatisk identifiering**  >   för att spara miljön.
 
 Mer information om hur du skapar python-miljöer finns i [PTVS-dokumentationen](/visualstudio/python/) .
 
@@ -156,7 +155,7 @@ Du hittar mer information om hur du använder Git för att arbeta med din GitHub
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage är en tillförlitlig, ekonomisk moln lagrings tjänst för data som är stora och små. I det här avsnittet beskrivs hur du kan flytta data till Blob Storage och komma åt data som lagras i en Azure-blob.
 
-#### <a name="prerequisites"></a>Krav
+#### <a name="prerequisites"></a>Förutsättningar
 
 * Skapa ditt Azure Blob Storage-konto från [Azure Portal](https://portal.azure.com).
 

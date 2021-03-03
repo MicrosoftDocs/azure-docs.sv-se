@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092674"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644739"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect vanliga frågor och svar
 
@@ -201,7 +201,7 @@ Beroende på miljöns storlek kan processen ta några timmar. Medan uppgradering
 **F: Jag fick ett e-postmeddelande som säger att min automatiska uppgradering inte längre fungerar och jag behöver installera en ny version. Varför måste jag göra detta?**  
 Förra året släppte vi en version av Azure AD Connect att, under vissa omständigheter, kan ha inaktiverat funktionen för automatisk uppgradering på servern. Vi har åtgärdat problemet i Azure AD Connect version 1.1.750.0. Om du har drabbats av problemet kan du minimera det genom att köra ett PowerShell-skript för att reparera det eller genom att uppgradera manuellt till den senaste versionen av Azure AD Connect. 
 
-Kör PowerShell-skriptet genom att [Ladda ned skriptet](https://aka.ms/repairaadconnect) och köra det på Azure AD Connect-servern i ett administrativt PowerShell-fönster. Om du vill lära dig hur du kör skriptet kan du [Visa den här korta videon](https://aka.ms/repairaadcau).
+Kör PowerShell-skriptet genom att [Ladda ned skriptet](/samples/browse/?redirectedfrom=TechNet-Gallery) och köra det på Azure AD Connect-servern i ett administrativt PowerShell-fönster. Om du vill lära dig hur du kör skriptet kan du [Visa den här korta videon](https://aka.ms/repairaadcau).
 
 Om du vill uppgradera manuellt måste du ladda ned och köra den senaste versionen av AADConnect.msi-filen.
  

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a919338789a02d50cbb6976ee50b214cb0d612
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d081754616b40a21b3b842758844eb13e2752569
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417959"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650965"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>Skydda fristående hanterade tjänst konton
 
@@ -44,7 +44,7 @@ sMSAs erbjuder större säkerhet än användar konton som används som tjänst k
 
    * DNS-namnet på värddatorn ändras.
 
-   * När du lägger till eller tar bort ytterligare en Sam-AccountName-eller DNS-hostname-parameter med [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)
+   * När du lägger till eller tar bort ytterligare en Sam-AccountName-eller DNS-hostname-parameter med [PowerShell](/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps)
 
 ## <a name="when-to-use-smsas"></a>När du ska använda sMSAs
 
@@ -53,7 +53,7 @@ sMSAs kan förenkla hanterings-och säkerhets uppgifter. Använd sMSAs när du h
 > [!NOTE] 
 > Även om du kan använda sMSAs för mer än en tjänst, rekommenderar vi att varje tjänst har sin egen identitet för gransknings syfte. 
 
-Om skaparen av program varan inte kan meddela dig om den kan använda en MSA måste du testa programmet. Det gör du genom att skapa en test miljö och se till att den har åtkomst till alla nödvändiga resurser. Se [skapa och installera en SMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) för steg-för-steg-anvisningar.
+Om skaparen av program varan inte kan meddela dig om den kan använda en MSA måste du testa programmet. Det gör du genom att skapa en test miljö och se till att den har åtkomst till alla nödvändiga resurser. Se [skapa och installera en SMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) för steg-för-steg-anvisningar.
 
 ### <a name="assess-security-posture-of-smsas"></a>Utvärdera säkerhets position för sMSAs
 
@@ -112,7 +112,7 @@ Du kan använda följande Active Directory PowerShell-cmdletar för att hantera 
 
 ## <a name="move-to-smsas"></a>Flytta till sMSAs
 
-Om en program tjänst stöder sMSA men inte gMSAs, och för närvarande använder ett användar konto eller ett dator konto för säkerhets kontexten, kan du [skapa och installera en SMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) på servern. 
+Om en program tjänst stöder sMSA men inte gMSAs, och för närvarande använder ett användar konto eller ett dator konto för säkerhets kontexten, kan du [skapa och installera en SMSA](/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting) på servern. 
 
 Vi rekommenderar att du flyttar resurser till Azure och använder Azure Managed Identities eller tjänstens huvud namn.
 
@@ -133,4 +133,3 @@ Se följande artiklar om hur du skyddar tjänst konton
 
 * [Styr lokala tjänst konton](service-accounts-govern-on-premises.md)
 
- 

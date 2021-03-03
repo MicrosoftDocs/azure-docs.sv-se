@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0211388f3b638080c79a58330ba1fff1989def7d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 41a63d7d0c5844e7837be44b359b6d04a9009eb4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095865"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651833"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -85,9 +85,9 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
-| Administratör för autentiseringsprincip | Nej |Nej | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga |Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -99,7 +99,7 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 >* Icke-administratörer som chefer, juridiska konsulter och personal anställda som kan ha till gång till känslig eller privat information.
 
 > [!IMPORTANT]
-> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) kommandot.
+> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](/powershell/module/msonline/set-msoluser) kommandot.
 
 ### <a name="authentication-policy-administrator"></a>[Administratör för autentiseringsprincip](#authentication-policy-administrator-permissions)
 
@@ -109,9 +109,9 @@ Administratörs rollerna för [autentisering administratör](#authentication-adm
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
-| Administratör för autentiseringsprincip | Nej | Nej | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Den här rollen kan för närvarande inte hantera MFA-inställningar i den äldre hanterings portalen för MFA.
@@ -391,9 +391,9 @@ Rollen som [administratör för autentisering](#authentication-administrator) ha
 
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
-| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Nej | Nej | Nej | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Nej | Nej | Nej | 
-| Administratör för autentiseringsprincip | Nej | Nej | Ja | Ja | Ja | 
+| Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -406,7 +406,7 @@ Rollen som [administratör för autentisering](#authentication-administrator) ha
 
 
 > [!IMPORTANT]
-> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) kommandot.
+> Den här rollen kan för närvarande inte hantera MFA per användare i den äldre hanterings portalen för MFA. Samma funktioner kan utföras med hjälp av Azure AD PowerShell [-modulen set-MsolUser](/powershell/module/msonline/set-msoluser) kommandot.
 
 ### <a name="privileged-role-administrator"></a>[Privilegie rad roll administratör](#privileged-role-administrator-permissions)
 

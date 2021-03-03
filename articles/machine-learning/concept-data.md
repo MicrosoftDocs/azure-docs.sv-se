@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872017"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659723"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Skydda data åtkomst i Azure Machine Learning
 
-Azure Machine Learning gör det enkelt att ansluta till dina data i molnet.  Det ger ett abstraktions lager över den underliggande lagrings tjänsten, så att du kan komma åt och arbeta med dina data på ett säkert sätt utan att behöva skriva kod som är unik för din lagrings typ. Azure Machine Learning tillhandahåller även följande data funktioner:
+Azure Machine Learning gör det enkelt att ansluta till dina data i molnet. Det ger ett abstraktions lager över den underliggande lagrings tjänsten, så att du kan komma åt och arbeta med dina data på ett säkert sätt utan att behöva skriva kod som är unik för din lagrings typ. Azure Machine Learning tillhandahåller även följande data funktioner:
 
 *    Samverkan med Pandas och Spark DataFrames
 *    Versions hantering och spårning av data härkomst
@@ -53,7 +53,7 @@ Följande diagram innehåller en visuell demonstration av detta rekommenderade a
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>Ansluta till lagring med data lager
 
-Azure Machine Learning data lager sparar säkert anslutnings informationen i Azure Storage, så du behöver inte koda den i dina skript. [Registrera och skapa ett data lager](how-to-access-data.md) för att enkelt ansluta till ditt lagrings konto och få åtkomst till data i din underliggande Azure Storage-tjänst. 
+Azure Machine Learning data lager sparar säkert anslutnings informationen i din data lagring på Azure, så du behöver inte koda den i dina skript. [Registrera och skapa ett data lager](how-to-access-data.md) för att enkelt ansluta till ditt lagrings konto och få åtkomst till data i den underliggande lagrings tjänsten. 
 
 Molnbaserade lagrings tjänster som stöds i Azure och som kan registreras som data lager:
 
@@ -65,6 +65,9 @@ Molnbaserade lagrings tjänster som stöds i Azure och som kan registreras som d
 + Azure Database for PostgreSQL
 + Databricks-filsystem
 + Azure Database for MySQL
+
+>[!TIP]
+> De allmänt tillgängliga funktionerna för att skapa data lager kräver autentisering baserad autentisering för åtkomst till lagrings tjänster, t. ex. tjänstens huvud namn eller SAS-token (signatur för delad åtkomst). De här autentiseringsuppgifterna kan användas av användare som har *Läs* behörighet till arbets ytan. <br><br>Om detta är ett problem kan du  [skapa ett data lager som använder identitetsbaserade data åtkomst till lagrings tjänster (för hands version)](how-to-identity-based-data-access.md). Den här funktionen är en [experimentell](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Referens data i lagring med data uppsättningar
@@ -100,7 +103,7 @@ Med data uppsättningar kan du utföra ett antal Machine Learning-uppgifter geno
 + Träna Machine Learning-modeller:
      + [automatiserade ML-experiment](how-to-use-automated-ml-for-ml-models.md)
      + [designern](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [antecknings böcker](how-to-train-with-datasets.md)
+     + [notebooks](how-to-train-with-datasets.md)
      + [Azure Machine Learning pipelines](./how-to-create-machine-learning-pipelines.md)
 + Få åtkomst till data uppsättningar för poängsättning med [batch-härledning](./tutorial-pipeline-batch-scoring-classification.md) i [Machine Learning-pipeliner](./how-to-create-machine-learning-pipelines.md).
 + Konfigurera en data uppsättnings Övervakare för [data](#drift) avkänning.

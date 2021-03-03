@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196545"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666513"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassificera insikter om dina data från Azure avdelningens kontroll
 
 Den här instruktions guiden beskriver hur du kommer åt, visar och filtrerar avdelningens kontroll klassificerings rapporter för dina data.
 
-Data källor som stöds är: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (tidigare SQL DW), Azure SQL Database, Azure SQL-hanterad instans, SQL Server
+Data källor som stöds är: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (tidigare SQL DW), Azure SQL Database, Azure SQL-hanterad instans, SQL Server, Amazon S3-buckets
 
 I den här instruktions guiden lär du dig att:
 
@@ -33,7 +33,7 @@ Innan du börjar med avdelningens kontroll Insights bör du kontrol lera att du 
 
 - Konfigurera dina Azure-resurser och fyll i relevanta konton med test data
 
-- Konfigurera och slutför en genomsökning av test data i varje data Källa
+- Konfigurera och slutför en genomsökning av test data i varje data källa. Mer information finns i [Hantera data källor i Azure avdelningens kontroll (för hands version)](manage-data-sources.md) och [skapa en skannings regel uppsättning](create-a-scan-rule-set.md).
 
 - Inloggad på avdelningens kontroll med konto med en [data läsare eller data curator-roll](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles).
 

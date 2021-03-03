@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484387"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671908"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Planerings- och implementeringsguide för SAP BusinessObjects BI-plattform i Azure
 
@@ -184,7 +183,7 @@ Azure SQL Database erbjuder följande tre inköps modeller:
 
 Azure Database for MySQL levereras med tre olika pris nivåer. De skiljer sig åt från beräknings mängden i virtuella kärnor, minne per vCore och lagrings teknik som används för att lagra datumet. Följande är en övergripande detalj information om alternativen och för mer information om olika attribut, se [pris nivån](../../../mysql/concepts-pricing-tiers.md) för Azure Database for MySQL.
 
-- Basic
+- Grundläggande
 
   Den används för de mål arbets belastningar som kräver ljus beräkning och I/O-prestanda.
 

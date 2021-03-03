@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 66a804f645ee56cce62053a51e6aa4fc25b3c1a9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511091"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671330"
 ---
 # <a name="introduction"></a>Introduktion
 
@@ -43,7 +43,7 @@ Därför behöver du inte skapa autentiseringsuppgifter eller ange dem i anslutn
 - Information om pySpark finns i avsnittet [använda python](#use-pyspark-with-the-connector) .
 - Den här anslutningen har inte stöd för frågor mot SQL-vyer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Måste vara medlem i **db_exporter** -rollen i den databas/SQL-pool som du vill överföra data till/från.
 - Måste vara medlem i rollen Storage BLOB data Contributor på standard lagrings kontot.
@@ -111,7 +111,7 @@ df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 Extern SQL-pool
 
-Om du vill skriva till en dedikerad extern SQL-pool måste det finnas en extern DATA källa och ett externt fil FORMAT på den dedikerade SQL-poolen.  Mer information finns i [skapa en extern data källa](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) och [externa fil format](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) i en dedikerad SQL-pool.  Nedan visas exempel på hur du skapar en extern data källa och externa fil format i en dedikerad SQL-pool.
+Om du vill skriva till en dedikerad extern SQL-pool måste det finnas en extern DATA källa och ett externt fil FORMAT på den dedikerade SQL-poolen.  Mer information finns i [skapa en extern data källa](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true) och [externa fil format](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true) i en dedikerad SQL-pool.  Nedan visas exempel på hur du skapar en extern data källa och externa fil format i en dedikerad SQL-pool.
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:

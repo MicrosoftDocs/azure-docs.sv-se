@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661093"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652138"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användar konton i Azure Active Directory B2C
 
@@ -80,8 +80,8 @@ Konsument användaren kan logga in på program som skyddas av Azure AD B2C, men 
 
 Du kan ange de data som samlas in när ett konsument användar konto skapas. Mer information finns i [lägga till användarattribut och anpassa användarindata](configure-user-input.md).
 
-Mer information om hur du hanterar konsument konton finns i [hantera Azure AD B2C användar konton med Microsoft Graph](manage-user-accounts-graph-api.md).
+Mer information om hur du hanterar konsument konton finns i [hantera Azure AD B2C användar konton med Microsoft Graph](./microsoft-graph-operations.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrera konsument användar konton
 
-Du kanske behöver migrera befintliga konsument användar konton från valfri identitetsprovider till Azure AD B2C. Mer information finns i [migrera användare till Azure AD B2C](user-migration.md).
+Du kanske behöver migrera befintliga konsument användar konton från valfri identitetsprovider till Azure AD B2C. Mer information finns i [Migrera användare till Azure AD B2C](user-migration.md).

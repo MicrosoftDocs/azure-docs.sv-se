@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fb45f222fcf5abd762d97d702925655db6cba60
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365777"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644926"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Självstudie: Konfigurera Azure Active Directory Join-hybrid för hanterade domäner
 
@@ -82,7 +82,7 @@ Om du inte använder WPAD kan du konfigurera inställningar för WinHTTP-proxy p
 
 Om din organisation kräver åtkomst till Internet via en autentiserad utgående proxy kontrollerar du att dina Windows 10-datorer kan autentiseras mot den utgående proxyn. Eftersom Windows 10-datorer kör enhets registrering med hjälp av dator kontext konfigurerar du utgående proxy-autentisering med hjälp av dator kontext. Kontrollera konfigurationskraven med leverantören av den utgående proxyn.
 
-Kontrol lera att enheten har åtkomst till ovanstående Microsoft-resurser under system kontot med hjälp av anslutnings skriptet för [test av enhets registrering](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
+Kontrol lera att enheten har åtkomst till ovanstående Microsoft-resurser under system kontot med hjälp av anslutnings skriptet för [test av enhets registrering](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurera Hybrid Azure Active Directory-anslutning
 

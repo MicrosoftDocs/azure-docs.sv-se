@@ -1,29 +1,26 @@
 ---
-title: Lösen ords lös säkerhets nyckel inloggning till lokala resurser (för hands version) – Azure Active Directory
-description: Lär dig hur du aktiverar lösen ords lös säkerhets nyckel inloggning till lokala resurser med hjälp av Azure Active Directory (för hands version)
+title: Lösen ords lös säkerhets nyckel logga in till lokala resurser – Azure Active Directory
+description: Lär dig hur du aktiverar lösen ords lös säkerhets nyckel inloggning till lokala resurser med hjälp av Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743487"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647480"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aktivera lösen ords lös säkerhets nyckel inloggning till lokala resurser med Azure Active Directory (för hands version)
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivera lösen ords lös säkerhets nyckel inloggning till lokala resurser med Azure Active Directory 
 
 Det här dokumentet fokuserar på att aktivera autentisering utan lösen ord till lokala resurser för miljöer med både **Azure AD-anslutna** och **hybrid Azure AD-anslutna** Windows 10-enheter. Den här funktionen ger sömlös enkel inloggning (SSO) till lokala resurser med hjälp av Microsoft-kompatibla säkerhets nycklar.
-
-> [!NOTE]
-> FIDO2 säkerhets nycklar är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>SSO till lokala resurser med hjälp av FIDO2-nycklar
 
@@ -42,7 +39,7 @@ Ett Azure AD Kerberos-serverobjektet skapas i din lokala Active Directory och pu
 
 ## <a name="requirements"></a>Krav
 
-Organisationer måste utföra stegen för att [Aktivera lösen ords lös säkerhets nyckel tecken till Windows 10-enheter (för hands version)](howto-authentication-passwordless-security-key.md) innan du slutför stegen i den här artikeln.
+Organisationer måste utföra stegen för att [Aktivera lösen ords lös säkerhets nyckel för att logga in på Windows 10-enheter](howto-authentication-passwordless-security-key.md) innan stegen i den här artikeln slutförs.
 
 Organisationer måste också uppfylla följande program varu krav.
 
@@ -156,13 +153,13 @@ Logga in med FIDO är blockerad om ditt lösen ord har upphört att gälla. För
 
 ## <a name="troubleshooting-and-feedback"></a>Felsökning och feedback
 
-Om du vill dela feedback eller om du har problem med att för hands Visa den här funktionen kan du dela via Windows Feedback Hub-appen med hjälp av följande steg:
+Om du vill dela feedback eller stöta på problem med den här funktionen kan du dela via Windows Feedback Hub-appen med hjälp av följande steg:
 
 1. Starta **feedback Hub** och se till att du är inloggad.
 1. Skicka feedback under följande kategorisering:
    - Kategori: säkerhet och sekretess
    - Under kategori: FIDO
-1. För att avbilda loggar använder du alternativet för att **återskapa mitt problem**
+1. Om du vill avbilda loggar använder du alternativet för att **återskapa problemet**.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

@@ -12,32 +12,28 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a6317b0cb59d656cdb2e402c5ade1b78ed60aa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258328"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643566"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bevilja administratörsmedgivande för hela klientorganisationen till ett program
 
-Lär dig hur du fören klar användar upplevelsen genom att bevilja en klients administratörs medgivande till ett program. Den här artikeln innehåller olika sätt att åstadkomma detta. Metoderna gäller för alla slutanvändare i din Azure Active Directory (Azure AD)-klient.
+  Lär dig hur du beviljar administratörs medgivande för hela klienten till ett program. Den här artikeln innehåller olika sätt att åstadkomma detta.
 
 Mer information om samtycker till program finns i [Azure Active Directory medgivande Framework](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att bevilja administratörs tillåtelse för hela klienten måste du logga in som [Global administratör](../roles/permissions-reference.md#global-administrator), en [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
-
-> [!IMPORTANT]
-> När ett program har beviljats administratörs medgivande kan alla användare logga in på appen om den inte har kon figurer ATS för att kräva användar tilldelning. För att begränsa vilka användare som kan logga in i ett program, kräver användar tilldelning och tilldelar sedan användare eller grupper till programmet. Mer information finns i [metoder för att tilldela användare och grupper](./assign-user-or-group-access-portal.md).
->
-> Rollen global administratör krävs för att ge administrativt tillstånd för program behörigheter till Microsoft Graph API.
+Om du beviljar administratörs medgivande för hela klienten måste du logga in som en användare som har behörighet att godkänna för organisationens räkning. Detta inkluderar [Global administratör](../roles/permissions-reference.md#global-administrator) och [administratör för privilegierade roller](../roles/permissions-reference.md#privileged-role-administrator)och, för vissa program, [program administratör](../roles/permissions-reference.md#application-administrator) och [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator). En användare kan också auktoriseras för att bevilja ett överordnat medgivande om de tilldelas en [anpassad katalog roll](../roles/custom-create.md) som innehåller [behörighet att bevilja program behörigheter](../roles/custom-consent-permissions.md).
 
 > [!WARNING]
 > Om du beviljar administratörs medgivande för klient organisationer till ett program får appen och appens utgivare åtkomst till din organisations data. Noggrant granska de behörigheter som programmet begär innan medgivande beviljas.
->
-> Rollen global administratör krävs för att ge administrativt tillstånd för program behörigheter till Microsoft Graph API.
+
+> [!IMPORTANT]
+> När ett program har beviljats administratörs medgivande kan alla användare logga in på appen om den inte har kon figurer ATS för att kräva användar tilldelning. För att begränsa vilka användare som kan logga in i ett program, kräver användar tilldelning och tilldelar sedan användare eller grupper till programmet. Mer information finns i [metoder för att tilldela användare och grupper](./assign-user-or-group-access-portal.md).
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Bevilja administratörs medgivande från Azure Portal
 
@@ -101,4 +97,4 @@ Som alltid bör du noga granska de behörigheter som ett program begär innan me
 
 [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
 
-[Azure AD på Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure AD på Microsoft Q&A](/answers/topics/azure-active-directory.html)

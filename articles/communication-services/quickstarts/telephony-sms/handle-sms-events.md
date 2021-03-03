@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936290"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660131"
 ---
 # <a name="quickstart-handle-sms-events"></a>Snabb start: Hantera SMS-händelser
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Kom igång med Azure Communication Services genom att använda Azure Event Grid för att hantera SMS-händelser för kommunikations tjänster. 
+Kom igång med Azure Communication Services genom att använda Azure Event Grid för att hantera SMS-händelser för kommunikations tjänster.
 
 ## <a name="about-azure-event-grid"></a>Om Azure Event Grid
 
 [Azure Event Grid](../../../event-grid/overview.md) är en molnbaserad händelse tjänst. I den här artikeln får du lära dig hur du prenumererar på händelser för [kommunikations tjänst händelser](../../concepts/event-handling.md)och utlöser en händelse för att visa resultatet. Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. I den här artikeln ska vi skicka händelserna till en webbapp som samlar in och visar meddelandena.
 
-## <a name="prerequisites"></a>Krav
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+## <a name="prerequisites"></a>Förutsättningar
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - En Azure Communication service-resurs. Mer information finns i snabb starten för att [skapa en Azure Communication-resurs](../create-communication-resource.md) .
 - Ett SMS-aktiverat telefonnummer. [Hämta ett telefonnummer](./get-phone-number.md).
 
@@ -44,13 +43,13 @@ I Azure-portalen:
 2. Välj den prenumeration som du använder för Event Grid.
 3. Välj **resurs leverantörer** på den vänstra menyn under **Inställningar**.
 4. Hitta **Microsoft.EventGrid**.
-5. Om du inte är registrerad väljer du **Registrera**. 
+5. Om du inte är registrerad väljer du **Registrera**.
 
 Det kan ta en stund att slutföra registreringen. Välj **Uppdatera** för att uppdatera statusen. När **Status** är **Registrerad** är du redo att fortsätta.
 
 ### <a name="event-grid-viewer-deployment"></a>Distribution av Event Grids hanterare
 
-I den här snabb starten ska vi använda [exemplet på Azure Event Grid Viewer](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) för att visa händelser i nära real tid. Detta ger användaren erfarenhet av en feed i real tid. Dessutom bör nytto lasten för varje händelse också vara tillgänglig för granskning.  
+I den här snabb starten ska vi använda [exemplet på Azure Event Grid Viewer](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) för att visa händelser i nära real tid. Detta ger användaren erfarenhet av en feed i real tid. Dessutom bör nytto lasten för varje händelse också vara tillgänglig för granskning.
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Prenumerera på SMS-händelser med hjälp av Webhooks
 
@@ -62,7 +61,7 @@ Tryck på **Lägg till händelse prenumeration** för att ange guiden skapa.
 
 På sidan **Skapa händelse prenumeration** anger du ett **namn** för händelse prenumerationen.
 
-Du kan prenumerera på vissa händelser för att berätta Event Grid vilka SMS-händelser du vill spåra och var de ska skickas. Välj de händelser som du vill prenumerera på på list menyn. För SMS har du möjlighet att välja `SMS Received` och `SMS Delivery Report Received` . 
+Du kan prenumerera på vissa händelser för att berätta Event Grid vilka SMS-händelser du vill spåra och var de ska skickas. Välj de händelser som du vill prenumerera på på list menyn. För SMS har du möjlighet att välja `SMS Received` och `SMS Delivery Report Received` .
 
 Om du uppmanas att ange ett **namn på ett system ämne** kan du ange en unik sträng. Det här fältet har ingen effekt på din upplevelse och används för interna telemetri.
 
@@ -70,7 +69,7 @@ Ta en titt på den fullständiga listan med [händelser som stöds av Azure Comm
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Skärm bild som visar mottagar rapporten mottagna och SMS-leverans mottagna händelse typer.":::
 
-Välj **Web Hook** för **slut punkts typ**. 
+Välj **Web Hook** för **slut punkts typ**.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Skärm bild som visar fältet typ av slut punkts typ som Web Hook.":::
 
@@ -111,7 +110,7 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 I den här snabb starten har du lärt dig hur du använder SMS-händelser. Du kan ta emot SMS-meddelanden genom att skapa en Event Grid-prenumeration.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Skicka SMS](../telephony-sms/send.md)
 
 Du kanske också vill:

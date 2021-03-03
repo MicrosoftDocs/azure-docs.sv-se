@@ -10,22 +10,22 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4901d73235778a3194fe75b95df9cb81aeeb093b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3839dd27d4ae380b268694a93e5910b323411847
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651688"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657289"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Felsöka distribution av fjärrmodell 
 
 Lär dig att felsöka och lösa eller kringgå vanliga fel som kan uppstå när du distribuerar en modell till Azure Container Instances (ACI) och Azure Kubernetes service (AKS) med Azure Machine Learning.
 
 > [!NOTE]
-> Om du distribuerar en modell till Azure Kubernetes service (AKS) rekommenderar vi att du aktiverar [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-existing-clusters) för klustret. Detta hjälper dig att förstå övergripande kluster hälsa och Resursanvändning. Du kan också hitta följande resurser:
+> Om du distribuerar en modell till Azure Kubernetes service (AKS) rekommenderar vi att du aktiverar [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) för klustret. Detta hjälper dig att förstå övergripande kluster hälsa och Resursanvändning. Du kan också hitta följande resurser:
 >
-> * [Sök efter Resource Health händelser som påverkar ditt AKS-kluster](https://docs.microsoft.com/azure/aks/aks-resource-health)
-> * [Diagnostik för Azure Kubernetes service](https://docs.microsoft.com/azure/aks/concepts-diagnostics)
+> * [Sök efter Resource Health händelser som påverkar ditt AKS-kluster](../aks/aks-resource-health.md)
+> * [Diagnostik för Azure Kubernetes service](../aks/concepts-diagnostics.md)
 >
 > Om du försöker distribuera en modell till ett ohälsosamt eller överbelastat kluster förväntas det uppstå problem. Kontakta AKS-supporten om du behöver hjälp med att felsöka problem med AKS-kluster.
 

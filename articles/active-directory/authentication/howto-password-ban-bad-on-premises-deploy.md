@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091048"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653821"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planera och distribuera lokala Azure Active Directory lösen ords skydd
 
@@ -48,7 +48,7 @@ Det är också möjligt att använda starkare lösen ords verifiering för att p
 * [Befordran av replik på domänkontrollant Miss lyckas på grund av ett svagt lösen ord för reparations läge för katalog tjänster](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Degradering av domänkontrollanten Miss lyckas på grund av ett svagt lokalt administratörs lösen ord](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-När funktionen har körts i gransknings läge under en rimlig period, kan du växla konfigurationen från *granskning* *till att kräva säkrare* lösen ord. Ytterligare övervakning under den här tiden är en bra idé.
+När funktionen har körts i gransknings läge under en rimlig period, kan du växla konfigurationen från *granskning* *till att kräva säkrare* lösen ord. Extra övervakning under den här tiden är en bra idé.
 
 Det är viktigt att Observera att Azure AD Password Protection bara kan verifiera lösen ord under ändring av lösen ord eller ange åtgärder. Lösen ord som har godkänts och lagrats i Active Directory före distributionen av Azure AD-lösenordet verifieras aldrig och fortsätter att fungera i befintligt skick. Med tiden kommer alla användare och konton att börja använda Azure AD Password Protection – verifierade lösen ord eftersom deras befintliga lösen ord upphör att gälla normalt. Konton som kon figurer ATS med "lösen ordet upphör aldrig att gälla" är undantagna från detta.
 
@@ -102,7 +102,8 @@ Följande krav gäller för Azure AD Password Protection DC-agenten:
 
 * Alla datorer där Azure AD Password Protection DC Agent-programvaran ska installeras måste köra Windows Server 2012 eller senare, inklusive Windows Server Core-versioner.
     * Active Directory domän eller skog behöver inte finnas på Windows Server 2012-domän funktions nivå (DFL) eller skogens funktions nivå (FFL). Som vi nämnt i [design principer](concept-password-ban-bad-on-premises.md#design-principles)finns det ingen minsta DFL eller FFL som krävs för att antingen DC-agenten eller proxy-programvaran ska kunna köras.
-* Alla datorer som kör Azure AD Password Protection DC-agenten måste ha .NET 4,5 installerat.
+* Alla datorer där Azure AD Password Protection-proxytjänsten ska installeras måste ha .NET-4.7.2 installerat.
+    * Om .NET-4.7.2 inte redan har installerats kan du hämta och köra installations programmet som finns på [.NET Framework 4.7.2 Offline Installer för Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
 * Alla Active Directory domäner som kör Azure AD Password Protection DC-agenttjänsten måste använda Distributed File System replikering (DFSR) för SYSVOL-replikering.
    * Om din domän inte redan använder DFSR måste du migrera innan du installerar lösen ords skyddet för Azure AD. Mer information finns i [migreringsguiden för SYSVOL-replikering: FRS till DFS Replication](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
@@ -122,8 +123,8 @@ Följande krav gäller för proxy för Azure AD Password Protection-proxy:
     > [!NOTE]
     > Distribution av Azure AD-tjänsten för lösen ords skydd är ett obligatoriskt krav för att distribuera Azure AD Password Protection även om domänkontrollanten kan ha utgående direkt Internet anslutning.
 
-* Alla datorer där Azure AD Password Protection-proxytjänsten ska installeras måste ha .NET 4,7 installerat.
-    * .NET 4,7 bör redan vara installerat på en helt uppdaterad Windows Server. Vid behov kan du hämta och köra installations programmet som finns i [.NET Framework 4,7 Offline Installer för Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+* Alla datorer där Azure AD Password Protection-proxytjänsten ska installeras måste ha .NET-4.7.2 installerat.
+    * Om .NET-4.7.2 inte redan har installerats kan du hämta och köra installations programmet som finns på [.NET Framework 4.7.2 Offline Installer för Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
 * Alla datorer som är värdar för tjänsten Azure AD Password Protection proxy måste konfigureras för att ge domän kontrol Lanterna möjlighet att logga in på proxy-tjänsten. Den här funktionen styrs via privilegie tilldelningen "åtkomst till den här datorn från nätverket".
 * Alla datorer som är värdar för tjänsten Azure AD Password Protection proxy måste konfigureras för att tillåta utgående TLS 1,2 HTTP-trafik.
 * Ett *globalt administratörs* konto eller *säkerhets administratörs* konto för att registrera Azure AD-proxy för lösen ords skydd och skogen med Azure AD.
@@ -157,7 +158,7 @@ I nästa avsnitt installerar du Azure AD Password Protection DC-agenter på dom�
 Välj en eller flera servrar som ska vara värdar för Azure AD Password Protection proxy-tjänsten. Följande överväganden gäller för Server (erna):
 
 * Varje sådan tjänst kan bara tillhandahålla lösen ords principer för en enda skog. Värddatorn måste vara ansluten till en domän i skogen.
-* Den har stöd för att installera proxy tjänsten i antingen rot-eller underordnade domäner, eller en kombination av dessa.
+* Du kan installera proxy-tjänsten i antingen rot-eller underordnade domäner eller en kombination av dessa.
 * Du behöver en nätverks anslutning mellan minst en DOMÄNKONTROLLANT i varje domän i skogen och en proxyserver för lösen ords skydd.
 * Du kan köra tjänsten Azure AD Password Protection proxy på en domänkontrollant för testning, men den domänkontrollanten kräver sedan Internet anslutning. Den här anslutningen kan vara en säkerhets risk. Vi rekommenderar den här konfigurationen endast för testning.
 * Vi rekommenderar minst två proxyservrar för Azure AD-lösenordsautentisering per skog för redundans, enligt vad som anges i föregående avsnitt om [överväganden för hög tillgänglighet](#high-availability-considerations).
@@ -200,7 +201,7 @@ Slutför följande steg för att installera proxy-tjänsten för lösen ords sky
 
     Denna cmdlet kräver antingen *Global administratörs* -eller *säkerhets administratörs* behörighet för din Azure-klient. Denna cmdlet måste också köras med ett konto med lokal administratörs behörighet.
 
-    När det här kommandot har slutförts en gång för en Azure AD-proxy för lösen ords skydd, lyckas ytterligare anrop till den, men är onödigt.
+    När det här kommandot har slutförts en gång kommer ytterligare anrop att lyckas, men är onödigt.
 
     `Register-AzureADPasswordProtectionProxy`Cmdleten stöder följande tre autentiseringsläge. De två första lägena har stöd för Azure AD Multi-Factor Authentication men det tredje läget.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 503d5c5c8d605e56ca510f12cd9c6f5a1f21c0bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 88fdfa1f449a0b65861ee09f2e78055a606c99d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417971"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649214"
 ---
 # <a name="governing-on-premises-service-accounts"></a>Styrande lokala tjänst konton
 
@@ -60,11 +60,11 @@ Använd följande kriterier när du skapar ett nytt tjänst konto.
 
 Använd följande inställningar med användar konton som används som tjänst konton:
 
-* [**Kontots förfallo datum**](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): ange att tjänst kontot automatiskt ska upphöra att gälla en angiven tid efter dess gransknings period, om det inte fastställs att det ska fortsätta
+* [**Kontots förfallo datum**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): ange att tjänst kontot automatiskt ska upphöra att gälla en angiven tid efter dess gransknings period, om det inte fastställs att det ska fortsätta
 
 *  **LogonWorkstations**: begränsa behörigheter för var tjänst kontot kan logga in. Om den körs lokalt på en dator och endast har åtkomst till resurser på datorn, begränsar du den från att logga in någon annan stans.
 
-* [**Det går inte att ändra lösen ord**](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps): förhindra att tjänst kontot ändrar sitt eget lösen ord genom att ange parametern till false.
+* [**Det går inte att ändra lösen ord**](/powershell/module/addsadministration/set-aduser?view=win10-ps): förhindra att tjänst kontot ändrar sitt eget lösen ord genom att ange parametern till false.
 
  
 ## <a name="build-a-lifecycle-management-process"></a>Bygg en process för livs cykel hantering
@@ -149,17 +149,17 @@ Riskbedömningen, när de har genomförts och dokumenterats, kan påverka:
 
 Skapa bara tjänst konto när relevant information dokumenteras i din CMDB och du utför en riskbedömning. Konto begränsningar bör justeras mot riskbedömning. Tänk på följande begränsningar när det gäller din bedömning.:
 
-* [Kontots förfallo datum](https://docs.microsoft.com/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [Kontots förfallo datum](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
 
-   * För alla användar konton som används som tjänst konton definierar du ett realistiskt och visst slutdatum för användning. Ange detta med flaggan "konto Expires". Mer information finns i[ set-ADAccountExpiration](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
+   * För alla användar konton som används som tjänst konton definierar du ett realistiskt och visst slutdatum för användning. Ange detta med flaggan "konto Expires". Mer information finns i[ set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration?view=win10-ps). 
 
-* Logga in på ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
+* Logga in på ([LogonWorkstation](/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* Krav för [lösen ords princip](https://docs.microsoft.com/azure/active-directory-domain-services/password-policy)
+* Krav för [lösen ords princip](../../active-directory-domain-services/password-policy.md)
 
-* Skapa på en [OU-plats](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) som endast garanterar hantering för privilegierade användare
+* Skapa på en [OU-plats](/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous) som endast garanterar hantering för privilegierade användare
 
-* Konfigurera och samla in granskning [som identifierar ändringar](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes) av tjänst kontot – och [tjänst kontot använder](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
+* Konfigurera och samla in granskning [som identifierar ändringar](/windows/security/threat-protection/auditing/audit-directory-service-changes) av tjänst kontot – och [tjänst kontot använder](https://www.manageengine.com/products/active-directory-audit/how-to/audit-kerberos-authentication-events.html).
 
 När du är redo att börja med produktion ger du åtkomst till tjänst kontot på ett säkert sätt. 
 
@@ -193,7 +193,7 @@ När du har tagit bort alla behörigheter använder du den här processen för a
 
 3. Ta bort tjänst kontot när den fortfarande inaktiverade principen är uppfylld. 
 
-   * För MSA: er kan du [avinstallera det](https://docs.microsoft.com/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) med PowerShell eller ta bort manuellt från den hanterade tjänst konto behållaren.
+   * För MSA: er kan du [avinstallera det](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps) med PowerShell eller ta bort manuellt från den hanterade tjänst konto behållaren.
 
    * För dator-eller användar konton kan du manuellt ta bort kontot från i Active Directory.
 

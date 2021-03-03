@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 083077b2b29bc415e83d6f5a76941fa83fa853e3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674148"
 ---
 # <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Lagrade procedurer med Synapse SQL i Azure Synapse Analytics
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 ```
 
 > [!NOTE]
-> Synapse SQL stöder för närvarande inte [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Du måste spåra kapslings nivån. Det är inte troligt att du överskrider gränsen på åtta kapslings nivåer, men om du gör det måste du återanvända koden för att passa de kapslade nivåerna inom den här gränsen.
+> Synapse SQL stöder för närvarande inte [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?view=azure-sqldw-latest&preserve-view=true). Du måste spåra kapslings nivån. Det är inte troligt att du överskrider gränsen på åtta kapslings nivåer, men om du gör det måste du återanvända koden för att passa de kapslade nivåerna inom den här gränsen.
 
 ## <a name="insertexecute"></a>INSERT..EXESÖTA
 
@@ -193,18 +193,18 @@ Det finns vissa aspekter av lagrade Transact-SQL-procedurer som inte implementer
 
 | Funktion/alternativ | Etablerad | Utan server |
 | --- | --- |
-| Temporärt lagrade procedurer | Nej | Ja |
-| Numrerade lagrade procedurer | Nej | Nej |
-| Utökade lagrade procedurer | Nej | Nej |
-| Lagrade CLR-procedurer | Nej | Nej |
-| Krypterings alternativ | Nej | Ja |
-| Replikeringsalternativ | Nej | Nej |
-| Tabellvärdesparametrar | Nej | Nej |
-| Skrivskyddade parametrar | Nej | Nej |
-| Standard parametrar | Nej | Ja |
-| Körnings kontexter | Nej | Nej |
-| Return-instruktion | Nej | Ja |
-| INFOGA I.. LEDN | Nej | Ja |
+| Temporärt lagrade procedurer | Inga | Ja |
+| Numrerade lagrade procedurer | Inga | Inga |
+| Utökade lagrade procedurer | Inga | Inga |
+| Lagrade CLR-procedurer | Inga | Inga |
+| Krypterings alternativ | Inga | Ja |
+| Replikeringsalternativ | Inga | Inga |
+| Tabellvärdesparametrar | Inga | Inga |
+| Skrivskyddade parametrar | Inga | Inga |
+| Standard parametrar | Inga | Ja |
+| Körnings kontexter | Inga | Inga |
+| Return-instruktion | Inga | Ja |
+| INFOGA I.. LEDN | Inga | Ja |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090374"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644263"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Keyless med Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ För att komma igång behöver du:
 
 - En Azure-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 
-- En [Azure AD B2C klient](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Klienten måste vara länkad till din Azure-prenumeration.
+- En [Azure AD B2C klient](./tutorial-create-tenant.md). Klienten måste vara länkad till din Azure-prenumeration.
 
 - En Keyless Cloud-klient, får du ett kostnads fritt [utvärderings konto](https://keyless.io/go).
 
@@ -50,7 +50,7 @@ I följande arkitektur diagram visas implementeringen.
 
 ![Bilden visar Keyless-arkitektur diagram](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Steg | Description |
+|Steg | Beskrivning |
 |:-----| :-----------|
 | 1. | Användaren kommer till inloggnings sidan. Användare väljer inloggning/registrera och anger användar namnet
 | 2. | Programmet skickar användarattribut till Azure AD B2C för identitets verifiering.
@@ -157,6 +157,6 @@ Nu bör du se Keyless som en ny OIDC som visas i dina B2C Identity providers.
 
 Mer information finns i följande artiklar:
 
-- [Anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

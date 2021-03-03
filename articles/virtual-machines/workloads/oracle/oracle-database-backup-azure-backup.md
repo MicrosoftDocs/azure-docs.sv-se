@@ -2,18 +2,19 @@
 title: Säkerhetskopiera och återställa en Oracle Database 19c-databas på en virtuell Azure Linux-dator med Azure Backup
 description: Lär dig hur du säkerhetskopierar och återställer en Oracle Database 19c-databas med hjälp av tjänsten Azure Backup.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806417"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673888"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Säkerhetskopiera och återställa en Oracle Database 19c-databas på en virtuell Azure Linux-dator med Azure Backup
 
@@ -199,13 +200,13 @@ Det här steget förutsätter att du har en Oracle-instans (*test*) som körs p�
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>Använda Azure Backup
+## <a name="using-azure-backup-preview"></a>Använda Azure Backup (för hands version)
 
 Azure Backup tillhandahåller enkla, säkra och kostnadseffektiva lösningar för att säkerhetskopiera dina data och återställa dem från Microsoft Azure-molnet. Med Azure Backup får du oberoende och isolerade säkerhetskopior, vilket skyddar originaldata från att förstöras oavsiktligt. Säkerhetskopior lagras i ett Recovery Services-valv med inbyggd hantering av återställningspunkter. Konfiguration och skalbarhet är enkla, säkerhets kopieringar optimeras och du kan enkelt återställa efter behov.
 
-Azure Backup-tjänsten tillhandahåller ett [ramverk](../../../backup/backup-azure-linux-app-consistent.md) för att uppnå program konsekvens under säkerhets kopiering av virtuella Windows-och Linux-datorer för olika program som Oracle, MySQL, Mongo DB, SAP HANA och PostGreSQL. Detta innebär att du anropar ett för skript (för att ta bort programmen) innan du tar en ögonblicks bild av diskarna och anropar efter skript (kommandon för att låsa upp programmen) när ögonblicks bilden har slutförts, för att returnera programmen till normalt läge. Exempel på för-skript och post-skript finns på GitHub, och det är ditt ansvar att skapa och underhålla dessa skript. 
+Azure Backup-tjänsten tillhandahåller ett [ramverk](../../../backup/backup-azure-linux-app-consistent.md) för att uppnå program konsekvens under säkerhets kopiering av virtuella Windows-och Linux-datorer för olika program som Oracle, MySQL, Mongo DB och PostGreSQL. Detta innebär att du anropar ett för skript (för att ta bort programmen) innan du tar en ögonblicks bild av diskarna och anropar efter skript (kommandon för att låsa upp programmen) när ögonblicks bilden har slutförts, för att returnera programmen till normalt läge. Exempel på för-skript och post-skript finns på GitHub, och det är ditt ansvar att skapa och underhålla dessa skript.
 
-Nu Azure Backup tillhandahålla ett förbättrat för skript och efter skript, där Azure Backups tjänsten tillhandahåller paketerade för-skript och post-skript för valda program. Azure Backup användare bara behöver ge programmet ett namn och sedan anropar Azure VM Backup automatiskt de relevanta för hands-och-post-skripten. Paketerade för-skript och post-skript kommer att behållas av Azure Backups teamet, så att användarna kan garantera support, ägarskap och giltighet för dessa skript. För närvarande är de program som stöds för det förbättrade ramverket *Oracle* och *MySQL*.
+Nu Azure Backup tillhandahållas ett förbättrat för skript och efter skript ramverk (**som för närvarande finns i för hands version**), där Azure backups tjänsten tillhandahåller paketerade för-skript och post-skript för valda program. Azure Backup användare bara behöver ge programmet ett namn och sedan anropar Azure VM Backup automatiskt de relevanta för hands-och-post-skripten. Paketerade för-skript och post-skript kommer att behållas av Azure Backups teamet, så att användarna kan garantera support, ägarskap och giltighet för dessa skript. För närvarande är de program som stöds för det förbättrade ramverket *Oracle* och *MySQL*.
 
 I det här avsnittet ska du använda Azure Backup Enhanced Framework för att ta programkonsekventa ögonblicks bilder av den virtuella datorn och Oracle-databasen som körs. Databasen kommer att placeras i säkerhets kopierings läge så att en transaktions konsekvent säkerhets kopiering kan ske medan Azure Backup tar en ögonblicks bild av de virtuella dator diskarna. Ögonblicks bilden är en fullständig kopia av lagringen och inte en stegvis eller kopia vid skrivning av ögonblicks bilder, så det är ett effektivt medium att återställa databasen från. Fördelen med att använda Azure Backup programkonsekventa ögonblicks bilder är att de är mycket snabba att ta oavsett hur stor databasen är och en ögonblicks bild kan användas för återställnings åtgärder så fort den tas, utan att behöva vänta på att den överförs till Recovery Services-valvet.
 
@@ -314,7 +315,7 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    sudo su -
    ```
 
-2. Skapa den programkonsekventa säkerhets kopierings arbets katalogen:
+2. Sök efter mappen "etc/Azure". Om detta inte finns skapar du den programkonsekventa säkerhets kopierings arbets katalogen:
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    fi
    ```
 
-3. Skapa en fil i */etc/Azure* -katalogen med namnet *arbets belastning. conf* med följande innehåll, som måste börja med `[workload]` . Följande kommando skapar filen och fyller i innehållet:
+3. Sök efter "arbets belastning. conf" i mappen. Om det inte finns skapar du en fil i */etc/Azure* -katalogen med namnet *arbets belastning. conf* med följande innehåll, som måste börja med `[workload]` . Om filen redan finns redigerar du bara fälten så att de matchar följande innehåll. Annars skapar följande kommando filen och fyller i innehållet:
 
    ```bash
    echo "[workload]
@@ -330,14 +331,6 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    command_path = /u01/app/oracle/product/19.0.0/dbhome_1/bin/
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
-   ```
-
-4. Hämta preOracleMaster. SQL-och postOracleMaster. SQL-skripten från [GitHub-lagringsplatsen](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) och kopiera dem till */etc/Azure* -katalogen.
-
-5. Ändra fil behörigheter
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Utlös en programkonsekvent säkerhets kopiering av den virtuella datorn
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [Självstudie: skapa virtuella datorer med hög tillgänglighet](../../linux/create-cli-complete.md)
 
-[Utforska Azure CLI-exempel för VM-distribution](../../linux/cli-samples.md)
+[Utforska Azure CLI-exempel för VM-distribution](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

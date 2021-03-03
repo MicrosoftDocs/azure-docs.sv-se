@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 72e89a67f2d767c8a104982dbe9eb9e47aec015a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574653"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656966"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Steg före migrering för datamigrering från MongoDB till Azure Cosmos DB s API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -80,7 +80,7 @@ På ett liknande sätt lägger partitionerings kapaciteten automatiskt till kapa
 
 ## <a name="index-your-data"></a><a id="indexing"></a>Indexera dina data
 
-Azure Cosmos DBens API för MongoDB Server version 3,6 indexerar automatiskt `_id` endast fältet. Det går inte att ta bort det här fältet. Det tillämpar automatiskt `_id` fältets unikhet per Shard-nyckel. Om du vill indexera fler fält kan du använda MongoDB-kommandona för indexhantering. Den här indexeringspolicyn skiljer sig från Azure Cosmos DB SQL-API:et som standardmässigt indexerar alla fält.
+Azure Cosmos DBens API för MongoDB Server version 3,6 och högre indexerar automatiskt `_id` fältet endast. Det går inte att ta bort det här fältet. Det tillämpar automatiskt `_id` fältets unikhet per Shard-nyckel. Om du vill indexera ytterligare fält tillämpar du [MongoDB index-Management-kommandon](mongodb-indexing.md). Den här indexeringspolicyn skiljer sig från Azure Cosmos DB SQL-API:et som standardmässigt indexerar alla fält.
 
 De indexerings funktioner som tillhandahålls av Azure Cosmos DB innefattar att lägga till sammansatta index, unika index och Time to Live (TTL) index. Index hanterings gränssnittet är mappat till `createIndex()` kommandot. Läs mer vid [indexering i Azure Cosmos DBS API för MongoDB](mongodb-indexing.md)-artikel.
 

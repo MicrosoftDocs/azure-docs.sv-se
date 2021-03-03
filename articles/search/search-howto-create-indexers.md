@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 596eca0d73ffc4a590fae9b346658a2c31a1d68c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100360966"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676484"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Skapa indexerare i Azure Kognitiv sökning
 
@@ -155,7 +155,7 @@ Hur en indexerare stöder ändrings identifiering varierar beroende på data Kä
 
 För stora indexerings inläsningar sparar en indexerare också det senaste dokumentet som bearbetas genom ett internt "högt vatten märke". Markören exponeras aldrig i API: et, men internt indexeraren håller reda på var den stoppades. När indexeringen återupptas, antingen via en schemalagd körning eller ett anrop på begäran, refererar indexeraren till det övre vatten märket så att det kan fortsätta där det slutade.
 
-Om du behöver ta bort det övre vatten märket för att indexera om fullständigt kan du använda [Återställ indexeraren](https://docs.microsoft.com/rest/api/searchservice/reset-indexer). Använd [Återställ kunskaper](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) eller [Återställ dokument](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)för mer selektiv Omindexering. Genom att återställa API: erna kan du rensa det interna läget och tömma cachen om du har aktiverat [stegvis berikning](search-howto-incremental-index.md). Mer bakgrund och jämförelse av varje återställnings alternativ finns i [köra eller återställa indexerare, kunskaper och dokument](search-howto-run-reset-indexers.md).
+Om du behöver ta bort det övre vatten märket för att indexera om fullständigt kan du använda [Återställ indexeraren](/rest/api/searchservice/reset-indexer). Använd [Återställ kunskaper](/rest/api/searchservice/preview-api/reset-skills) eller [Återställ dokument](/rest/api/searchservice/preview-api/reset-documents)för mer selektiv Omindexering. Genom att återställa API: erna kan du rensa det interna läget och tömma cachen om du har aktiverat [stegvis berikning](search-howto-incremental-index.md). Mer bakgrund och jämförelse av varje återställnings alternativ finns i [köra eller återställa indexerare, kunskaper och dokument](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Känna till dina data
 
@@ -165,7 +165,7 @@ Om du vill förenkla Relations data till en rad uppsättning bör du skapa en SQ
 
 Förutom förenklade data är det viktigt att bara hämta sökbara data. Sökbara data är alfanumeriska. Kognitiv sökning kan inte söka i binära data i något format, även om det kan extrahera och härleda text beskrivningar av bildfiler (se [AI-anrikning](cognitive-search-concept-intro.md)) för att skapa sökbart innehåll. På samma sätt kan en stor text analyseras av naturliga språk modeller för att hitta struktur eller relevant information, vilket genererar nytt innehåll som du kan lägga till i ett Sök dokument.
 
-Med tanke på att indexerarna inte åtgärdar data problem kan andra former av rengöring eller manipulering av data behövas. Mer information finns i produkt dokumentationen för din [Azure Database-produkt](/azure/?product=databases).
+Med tanke på att indexerarna inte åtgärdar data problem kan andra former av rengöring eller manipulering av data behövas. Mer information finns i produkt dokumentationen för din [Azure Database-produkt](../index.yml?product=databases).
 
 ## <a name="know-your-index"></a>Känna till ditt index
 

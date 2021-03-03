@@ -2,18 +2,18 @@
 title: Konfigurationer och GitOps – Azure Arc-aktiverad Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en översikt över GitOps-och konfigurations funktionerna i Azure Arc Enabled Kubernetes.
 keywords: Kubernetes, båge, Azure, behållare, konfiguration, GitOps
-ms.openlocfilehash: f8fe1522eee4cc855ae1f396d9c98323114a25ce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652555"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650381"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Konfigurationer och GitOps med Azure Arc-aktiverade Kubernetes
 
@@ -27,20 +27,20 @@ Flow, ett populärt verktyg med öppen källkod i GitOps- [utrymmet, kan](https:
 
 [![Arkitektur ](./media/conceptual-configurations.png) för konfigurationer](./media/conceptual-configurations.png#lightbox)
 
-Anslutningen mellan klustret och git-lagringsplatsen skapas som en `Microsoft.KubernetesConfiguration/sourceControlConfigurations` tilläggs resurs ovanpå den Azure Arc-aktiverade Kubernetes-resursen (representeras av `Microsoft.Kubernetes/connectedClusters` ) i Azure Resource Manager. 
+Anslutningen mellan klustret och git-lagringsplatsen skapas som en konfigurations resurs ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ) ovanpå den Azure Arc-aktiverade Kubernetes-resursen (representeras av `Microsoft.Kubernetes/connectedClusters` ) i Azure Resource Manager. 
 
-`sourceControlConfiguration`Resurs egenskaperna används för att distribuera flödes operatorn i klustret med lämpliga parametrar, till exempel den git-lagringsplats från vilken du vill hämta manifest och avsöknings intervall för att hämta dem. `sourceControlConfiguration`Data lagras krypterade och i vila i en Azure Cosmos DB Database för att säkerställa data sekretessen.
+Konfigurations resursens egenskaper används för att distribuera flödes operatorn i klustret med lämpliga parametrar, till exempel git-lagrings platsen som hämtar manifest och avsöknings intervall för att hämta dem. Konfigurations resurs data lagras krypterade i vila i en Azure Cosmos DB databas för att säkerställa data sekretess.
 
 Den som `config-agent` körs i klustret ansvarar för:
-* Spåra nya eller uppdaterade `sourceControlConfiguration` tilläggs resurser på den Azure Arc-aktiverade Kubernetes-resursen.
-* Distribuera en flödes operator för att se git-lagringsplatsen för var och en `sourceControlConfiguration` .
-* Tillämpar alla uppdateringar som görs i någon `sourceControlConfiguration` . 
+* Spåra nya eller uppdaterade konfigurations resurser på den Azure Arc-aktiverade Kubernetes-resursen.
+* Distribuera en flödes operatör för att se git-lagringsplatsen för varje konfigurations resurs.
+* Tillämpar alla uppdateringar som gjorts på alla konfigurations resurser. 
 
-Du kan skapa flera namn rymds `sourceControlConfiguration` resurser i samma Azure Arc-Kubernetes-kluster för att uppnå flera innehavare.
+Du kan skapa flera namn rymds konfigurations resurser i samma Azure Arc-Kubernetes-kluster för att uppnå flera innehavare.
 
 > [!NOTE]
-> * `config-agent` övervakar kontinuerligt för nya eller uppdaterade `sourceControlConfiguration` tilläggs resurser som är tillgängliga på den Azure Arc-aktiverade Kubernetes-resursen. Därför kräver agenter en konsekvent anslutning för att hämta önskade tillstånds egenskaper till klustret. Om agenter inte kan ansluta till Azure tillämpas det önskade läget inte i klustret.
-> * Känsliga kund uppgifter som privat nyckel, kända värdar innehåll, HTTPS-användarnamn och token eller lösen ord lagras i upp till 48 timmar i Azure Arc-aktiverade Kubernetes-tjänster. Om du använder känsliga indata för konfigurationer ska du ta klustret online så regelbundet som möjligt.
+> * `config-agent` Övervakare för nya eller uppdaterade konfigurations resurser som ska vara tillgängliga på den Arc-aktiverade Kubernetes-resursen. Därför kräver agenter anslutning för det önskade läget för att kunna hämtas till klustret. Om agenter inte kan ansluta till Azure finns det en fördröjning i att sprida det önskade läget till klustret.
+> * Känsliga kund uppgifter som privat nyckel, kända värdar innehåll, HTTPS-användarnamn och token/Password lagras inte i mer än 48 timmar i Azure Arc-aktiverade Kubernetes-tjänster. Om du använder känsliga indata för konfigurationer ska du ta klustret online så regelbundet som möjligt.
 
 ## <a name="apply-configurations-at-scale"></a>Använd konfigurationer i skala
 
@@ -50,6 +50,6 @@ Den här funktionen garanterar att en gemensam bas linje konfiguration (som inne
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./connect-cluster.md)
+* [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)
 * [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md)
 * [Använd Azure Policy för att tillämpa konfigurationer i skala](./use-azure-policy.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879738"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677731"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -149,9 +149,7 @@ Gör så här för att registrera en ny Azure SQL Database i din data katalog:
 Gör följande på skärmen **Registrera källor (Azure SQL Database)** :
 
 1. Ange ett **namn** som data källan ska visas med i katalogen.
-1. Välj hur du vill peka på önskat lagrings konto:
-   1. Välj **från Azure-prenumeration**, Välj lämplig prenumeration i list rutan **Azure-prenumeration** och lämplig server från List rutan **Server namn** .
-   1. Alternativt kan du välja **ange manuellt** och ange ett **Server namn**.
+1. Välj **från Azure-prenumeration**, Välj lämplig prenumeration i list rutan **Azure-prenumeration** och lämplig server från List rutan **Server namn** .
 1. **Slutför** för att registrera data källan.
 
 :::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="alternativ för registrering av källor" border="true":::

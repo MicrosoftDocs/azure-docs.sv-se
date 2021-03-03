@@ -8,17 +8,48 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 09/10/2020
-ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375569"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661111"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
+
+__RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopiera och klistra in följande webbadress i feed-läsaren: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-16"></a>2021-02-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Azure Machine Learning SDK för python v-1.23.0
++ **Nya funktioner**
+  + **azureml-core**
+    + [Experimentell funktion] Lägg till stöd för att länka Synapse-arbetsytan till AML som en länkad tjänst
+    + [Experimentell funktion] Lägg till stöd för att koppla Synapse Spark-poolen till AML som en beräkning
+    + [Experimentell funktion] Lägg till stöd för identitets baserad data åtkomst. Användare kan registrera data lager eller data uppsättningar utan att ange autentiseringsuppgifter. I sådana fall används användarens AAD-token eller hanterad identitet för Compute Target för autentisering. Läs mer [här](https://aka.ms/data-access).
+  + **azureml-pipeline-steps**
+    + [Experimentell funktion] Lägg till stöd för [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py)
+  + **azureml-synapse**
+    + [Experimentell funktion] Lägg till stöd för Spark Magic för att köra interaktiv session i Synapse Spark-poolen.
++ **Fel korrigeringar och förbättringar**
+  + **azureml-automl-runtime**
+    + I den här uppdateringen har vi lagt till Holt vinter till Exponentiell utjämning till Prognosticering Toolbox i AutoML SDK. Med en viss tids serie är den bästa modellen vald av [AICc (korrigerade Akaike)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) och returneras.
+    + AutoML kommer nu att generera två loggfiler i stället för en. Logg instruktioner skickas till en eller flera beroende på vilken process som logg satsen genererades i.
+    + Ta bort onödig förutsägelse i exempel under modell träning med kors valideringar. Detta kan minska modell inlärnings tiden i vissa fall, särskilt för tids serie prognos modeller.
+  + **azureml-contrib-fairness**
+    + Lägg till ett JSON-schema för dashboardDictionary-uppladdningar.
+  + **azureml-contrib-interpret**
+    + azureml-contrib-tolka README uppdateras för att avspegla att paketet tas bort i nästa uppdatering efter att ha varit inaktuellt sedan oktober använder du azureml-tolka paket i stället
+  + **azureml-core**
+    + Tidigare var det möjligt att skapa en etablerings konfiguration med minsta antal noder som är mindre än det maximala antalet noder. Detta har nu åtgärd ATS. Om du nu försöker skapa en etablerings konfiguration med `min_nodes < max_nodes` SDK: n kommer att generera en `ComputeTargetException` .
+    +  Korrigerar fel i wait_for_completion i AmlCompute som orsakade att funktionen returnerade kontroll flödet innan åtgärden slutfördes
+    + Run. Failed () är nu föråldrad, Använd Run. tag () för att markera kör som misslyckad eller Använd Run. Cancel () för att markera körningen som avbruten.
+    + Visa fel meddelandets "miljö namn förväntad Str {} ", hittades när det angivna miljö namnet inte är en sträng.
+  + **azureml-train-automl-client**
+    + En bugg har åtgärd ATS som hindrade AutoML-experiment som utfördes på Azure Databricks-kluster från att avbrytas.
 
 
 ## <a name="2021-02-09"></a>2021-02-09
@@ -54,11 +85,11 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Notebooks Experience (januari Update)
 + **Nya funktioner**
   + Inbyggd markdown-redigerare i AzureML. Användare kan nu återge och redigera markdown-filer internt i AzureML Studio.
-  + [Knappen Kör för skript (. py,. R och. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). Användarna kan nu enkelt köra python-, R-och bash-skript i AzureML
-  + [Variabel Utforskaren](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Utforska innehållet i variabler och data ramar i en popup-panel. Användare kan enkelt kontrol lera datatyp, storlek och innehåll.
-  + [Innehålls](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc)förteckning. Navigera till avsnitt i din antecknings bok, som anges av markdown-rubriker.
+  + [Knappen Kör för skript (. py,. R och. sh)](./how-to-run-jupyter-notebooks.md#run-a-notebook-or-python-script). Användarna kan nu enkelt köra python-, R-och bash-skript i AzureML
+  + [Variabel Utforskaren](./how-to-run-jupyter-notebooks.md#explore-variables-in-the-notebook). Utforska innehållet i variabler och data ramar i en popup-panel. Användare kan enkelt kontrol lera datatyp, storlek och innehåll.
+  + [Innehålls](./how-to-run-jupyter-notebooks.md#navigate-with-a-toc)förteckning. Navigera till avsnitt i din antecknings bok, som anges av markdown-rubriker.
   + Exportera din antecknings bok som latex/HTML/py. Skapa filer som är enkla att dela i anteckningsbok-format genom att exportera till LaTex, HTML eller. py
-  + Intellicode. Med de ML-baserade resultaten får du en förbättrad [intelligent autokomplettering](https://docs.microsoft.com/visualstudio/intellicode/overview).
+  + Intellicode. Med de ML-baserade resultaten får du en förbättrad [intelligent autokomplettering](/visualstudio/intellicode/overview).
 
 + **Fel korrigeringar och förbättringar**
   + Förbättrade sid inläsnings tider

@@ -1,35 +1,31 @@
 ---
-title: Fråga Azure Cosmos DB data med en server lös SQL-pool i för hands versionen av Azure Synapse Link
-description: I den här artikeln får du lära dig hur du frågar Azure Cosmos DB med hjälp av en server lös SQL-pool i för hands versionen av Azure Synapse Link.
+title: Fråga Azure Cosmos DB data med en server lös SQL-pool i Azure Synapse-länk
+description: I den här artikeln får du lära dig hur du frågar Azure Cosmos DB med hjälp av en server lös SQL-pool i Azure Synapse-länken.
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 12/04/2020
+ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4337d8935c10ce17ad5d3747468d55b2fe6daa21
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735441"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677533"
 ---
-# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i för hands versionen av Azure Synapse Link
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i Azure Synapse-länk
 
-> [!IMPORTANT]
-> Stöd för server utan SQL-pool för Azure Synapse-länken för Azure Cosmos DB är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
-
-
-Med en server lös SQL-pool kan du analysera data i Azure Cosmos DB behållare som är aktiverade med [Azure Synapse-länk](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) i nära real tid utan att påverka prestandan för dina transaktions arbets belastningar. Den erbjuder en välkänd T-SQL-syntax för att fråga data från [analys lagret](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) och integrerad anslutning till en mängd olika Business Intelligence (BI) och ad hoc-frågemeddelanden via T-SQL-gränssnittet.
+Med en server lös SQL-pool kan du analysera data i Azure Cosmos DB behållare som är aktiverade med [Azure Synapse-länk](../../cosmos-db/synapse-link.md) i nära real tid utan att påverka prestandan för dina transaktions arbets belastningar. Den erbjuder en välkänd T-SQL-syntax för att fråga data från [analys lagret](../../cosmos-db/analytical-store-introduction.md) och integrerad anslutning till en mängd olika Business Intelligence (BI) och ad hoc-frågemeddelanden via T-SQL-gränssnittet.
 
 För att skicka frågor till Azure Cosmos DB stöds det fullständiga [Select](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) -området via funktionen [OpenRowSet](develop-openrowset.md) , som innehåller merparten av [SQL Functions och operatorer](overview-features.md). Du kan också lagra resultat från frågan som läser data från Azure Cosmos DB tillsammans med data i Azure Blob Storage eller Azure Data Lake Storage genom att använda [skapa extern tabell som Select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS). För närvarande kan du inte lagra frågeresultat för SQL-pooler för server utan att Azure Cosmos DB med hjälp av CETAS.
 
 I den här artikeln får du lära dig hur du skriver en fråga med en server lös SQL-pool som kommer att fråga efter data från Azure Cosmos DB behållare som är aktiverade med Azure Synapse länk. Du kan sedan lära dig mer om hur du skapar SQL-pooler utan server över Azure Cosmos DB behållare och ansluter dem till Power BI modeller i [den här självstudien](./tutorial-data-analyst.md).
 
 > [!IMPORTANT]
-> I den här självstudien används en behållare med ett [väldefinierat schema för Azure Cosmos DB](../../cosmos-db/analytical-store-introduction.md#schema-representation). Frågan om att SQL-poolen utan server ger ett [Azure Cosmos DB full Fidelity schema](#full-fidelity-schema) är tillfälligt beteende som ändras baserat på förhands granskningen. Förlita dig inte på schemats resultat uppsättning `OPENROWSET` utan den `WITH` sats som läser data från en behållare med ett fullständigt åter användnings schema eftersom frågan kan justeras med och ändras baserat på det väldefinierade schemat. Du kan publicera din feedback i [Azure Synapse Analytics-forumet för feedback](https://feedback.azure.com/forums/307516-azure-synapse-analytics). Du kan också kontakta [produkt teamet för Azure Synapse Link](mailto:cosmosdbsynapselink@microsoft.com) för att ge feedback.
+> I den här självstudien används en behållare med ett [väldefinierat schema för Azure Cosmos DB](../../cosmos-db/analytical-store-introduction.md#schema-representation).  Förlita dig inte på schemats resultat uppsättning `OPENROWSET` utan den `WITH` sats som läser data från en behållare med ett fullständigt åter användnings schema eftersom frågan kan justeras med och ändras baserat på det väldefinierade schemat. Du kan publicera din feedback i [Azure Synapse Analytics-forumet för feedback](https://feedback.azure.com/forums/307516-azure-synapse-analytics). Du kan också kontakta [produkt teamet för Azure Synapse Link](mailto:cosmosdbsynapselink@microsoft.com) för att ge feedback.
 
 ## <a name="overview"></a>Översikt
 
@@ -377,11 +373,11 @@ Antalet ärenden är information som lagras som ett `int32` värde, men det finn
 > [!IMPORTANT]
 > `OPENROWSET`Funktionen utan en `WITH` sats visar båda värdena med förväntade typer och värden med felaktigt angivna typer. Den här funktionen är avsedd för data utforskning och inte för rapportering. Parsa inte JSON-värden som returneras från den här funktionen för att bygga rapporter. Använd en explicit [with-sats](#query-items-with-full-fidelity-schema) för att skapa dina rapporter. Du bör rensa värdena som har felaktiga typer i Azure Cosmos DB containern för att tillämpa korrigeringar i analys lagret med fullständig åter givning.
 
-Om du behöver fråga Azure Cosmos DB konton i Mongo DB API-typen, kan du lära dig mer om schemat för fullständig åter givning i analys lagret och de utökade egenskaps namnen som ska användas i [Vad är Azure Cosmos DB analytisk lagring (för hands version)?](../../cosmos-db/analytical-store-introduction.md#analytical-schema).
+Om du behöver fråga Azure Cosmos DB konton i Mongo DB API-typen, kan du lära dig mer om schemat för fullständig åter givning i analys lagringen och de utökade egenskaps namnen som ska användas i [Vad är Azure Cosmos DB analys lager?](../../cosmos-db/analytical-store-introduction.md#analytical-schema).
 
 ### <a name="query-items-with-full-fidelity-schema"></a>Fråga objekt med schemat med fullständig åter givning
 
-Vid frågor om schemat för fullständig åter givning måste du uttryckligen ange SQL-typ och den förväntade Azure Cosmos DB egenskaps typen i- `WITH` satsen. Använd inte `OPENROWSET` utan en `WITH` sats i rapporterna eftersom resultat uppsättningens format kan ändras i för hands versionen, baserat på feedback.
+Vid frågor om schemat för fullständig åter givning måste du uttryckligen ange SQL-typ och den förväntade Azure Cosmos DB egenskaps typen i- `WITH` satsen. Använd inte `OPENROWSET` utan en `WITH` sats i rapporterna eftersom resultat uppsättningens format kan ändras baserat på feedback.
 
 I följande exempel förutsätter vi att `string` är rätt typ för `geo_id` egenskapen och `int32` är rätt typ för `cases` egenskapen:
 
@@ -419,7 +415,7 @@ I det här exemplet lagras antalet fall som `int32` -, `int64` -eller- `float64`
 
 ## <a name="known-issues"></a>Kända problem
 
-- Frågan fungerar som en server lös SQL-pool för [Azure Cosmos DB full Fidelity schema](#full-fidelity-schema) är ett tillfälligt beteende som ändras baserat på förhands gransknings feedback. Förlita dig inte på schemat som `OPENROWSET` funktionen utan `WITH` -satsen tillhandahåller under den offentliga för hands versionen eftersom frågekörning kan justeras med väldefinierat schema baserat på kundfeedback. Kontakta [produkt teamet för Azure Synapse-länken](mailto:cosmosdbsynapselink@microsoft.com)om du vill ge feedback.
+- Förlita dig inte på schemat som `OPENROWSET` funktionen utan `WITH` -satsen ger, eftersom frågeresultaten kan vara justerade med väldefinierat schema baserat på kundfeedback. Kontakta [produkt teamet för Azure Synapse-länken](mailto:cosmosdbsynapselink@microsoft.com)om du vill ge feedback.
 - En server utan SQL-pool returnerar en kompileringsfel om `OPENROWSET` kolumn sorteringen inte har UTF-8-kodning. Du kan enkelt ändra standard sorteringen för alla `OPENROWSET` funktioner som körs i den aktuella databasen med hjälp av instruktionen T-SQL `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Möjliga fel och fel söknings åtgärder visas i följande tabell.

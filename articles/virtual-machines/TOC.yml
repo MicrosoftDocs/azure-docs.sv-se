@@ -104,7 +104,7 @@
     - name: Byta värd för stordator
       href: ./workloads/mainframe-rehosting/overview.md
     - name: SQL på Virtual Machines
-      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
+      href: ../azure-sql/virtual-machines/index.yml
     - name: Databehandling med höga prestanda (HPC)
       href: /azure/architecture/topics/high-performance-computing/
 - name: Instanser
@@ -164,6 +164,8 @@
               href: ev4-esv4-series.md
             - name: M-serien
               href: m-series.md
+            - name: Msv2 och Mdsv2 medels Tor minnes serie
+              href: msv2-mdsv2-series.md
             - name: Mv2-serien
               href: mv2-series.md
             - name: 'Begränsade vCPU:er'
@@ -255,7 +257,7 @@
     - name: Dedikerade värdar
       items:
         - name: Översikt
-          href: ./linux/dedicated-hosts.md
+          href: dedicated-hosts.md
         - name: CLI
           href: ./linux/dedicated-hosts-cli.md
         - name: Portalen
@@ -293,7 +295,7 @@
         - name: Reserverade instanser
           items:
             - name: Förskottsbetala för virtuella datorer
-              href: ./linux/prepay-reserved-vm-instances.md
+              href: ./prepay-reserved-vm-instances.md
             - name: Förskottsbetala för Dedicated Host
               href: prepay-dedicated-hosts-reserved-instances.md
             - name: Vad är Azure-reservationer?
@@ -363,7 +365,7 @@
         - name: Använda Java
           href: ./windows/java.md
         - name: Python
-          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/azure/virtual-machines/context/context'
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Använda ARM-mall
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -447,7 +449,7 @@
             - name: Azure Monitor-agent
               href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: Diagnostics-tillägg
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics
               items:
                 - name: Linux
@@ -642,7 +644,7 @@
     - name: Shared Image Galleries
       items:
         - name: Översikt
-          href: ./linux/shared-image-galleries.md
+          href: ./shared-image-galleries.md
         - name: CLI
           items:
             - name: Skapa ett galleri
@@ -786,13 +788,13 @@
     - name: Tillgänglighet
       href: availability.md
     - name: Samlokalisering
-      href: ./linux/co-location.md
+      href: co-location.md
     - name: Nätverksprestanda
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: Tillstånd och livscykel
       href: states-lifecycle.md
     - name: Automatisk skalning
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
     - name: Hög tillgänglighet
       href: manage-availability.md
     - name: Tillgänglighetsuppsättningar
@@ -822,6 +824,8 @@
       href: managed-disks-overview.md
     - name: Välja en disktyp för virtuella IaaS-datorer
       href: disks-types.md
+    - name: Alternativ för disk redundans
+      href: disks-redundancy.md
     - name: Delade diskar
       href: disks-shared.md
     - name: Aktivera delade diskar
@@ -878,7 +882,7 @@
                   href: ./linux/disk-encryption-powershell-quickstart.md
                 - name: Windows
                   href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portalen
+            - name: Portal
               items:
                 - name: Linux
                   href: ./linux/disk-encryption-portal-quickstart.md
@@ -952,15 +956,17 @@
           href: premium-storage-performance.md
         - name: Diskrelaterade mått
           href: disks-metrics.md
-        - name: Diskutvidgning
+        - name: Disk burst-modeller
           href: disk-bursting.md
+        - name: Aktivera burst-överföring på begäran
+          href: disks-enable-bursting.md
         - name: Prestandanivåer för disk
           href: disks-change-performance.md
         - name: Ändra disk prestanda nivå
           items:
             - name: CLI och PowerShell
               href: disks-performance-tiers.md
-            - name: Portalen
+            - name: Portal
               href: disks-performance-tiers-portal.md
         - name: Aktivera Write Accelerator
           href: how-to-enable-write-accelerator.md
@@ -1157,6 +1163,12 @@
           href: ./windows/security-baseline.md
     - name: Rekommendationer
       href: security-recommendations.md
+    - name: Betrodd start
+      items:
+        - name: Översikt
+          href: trusted-launch.md
+        - name: Distribuera med portalen
+          href: trusted-launch-portal.md
     - name: Just-in-time-åtkomst
       href: ../security-center/security-center-just-in-time.md
     - name: Policy
@@ -1181,7 +1193,7 @@
         - name: Skapa en Bastion-värd
           items:
             - name: Portalen
-              href: ../bastion/bastion-create-host-portal.md
+              href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
               href: ../bastion/bastion-create-host-powershell.md
             - name: CLI
@@ -1231,9 +1243,9 @@
     - name: Översikt
       href: maintenance-and-updates.md
     - name: Automatisk snabbkorrigering av VM-gäster (förhandsversion)
-      href: ./windows/automatic-vm-guest-patching.md
+      href: automatic-vm-guest-patching.md
     - name: Automatisk tilläggs uppgradering (förhands granskning)
-      href: ./automatic-extension-upgrade.md
+      href: automatic-extension-upgrade.md
     - name: Kontroll av underhåll
       items:
         - name: Meddelanden om underhåll
@@ -1281,7 +1293,7 @@
 - name: Övervakning
   items:
     - name: Översikt
-      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: Övervaka virtuella datorer
       items:
         - name: Windows
@@ -1295,7 +1307,7 @@
         - name: Azure Diagnostics-tillägg
           items:
             - name: Översikt
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Tillägg för Linux-diagnostik
               items:
                 - name: 'Version 4,0'
@@ -1303,16 +1315,16 @@
                 - name: 'Version 3,0'
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Samla in mått med Telegraf
-                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Log Analytics-agent
           items:
             - name: Översikt
-              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux-agenter
               href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics-gatewayen
-              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/gateway.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Agenthantering
               href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: Agenthälsa
@@ -1334,11 +1346,11 @@
                 - name: Anpassade loggar
                   href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: Anpassade fält
-                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Felsöka
           items:
             - name: Log Analytics-tillägg för virtuella datorer
-              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
               displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics-agent för Linux
               href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
@@ -1346,37 +1358,37 @@
         - name: Azure Monitor för virtuella datorer
           items:
             - name: Översikt
-              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Vanliga frågor och svar om allmän tillgänglighet
-              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: VANLIGA FRÅGOR OCH SVAR
               href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
             - name: Aktivera övervakning
               items:
                 - name: Aktivera övervakningsöversikt
-                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivera för enskild virtuell Azure-dator
-                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivera med hjälp av Azure Policy
-                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivera med hjälp av Azure PowerShell
-                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Aktivera för hybridmiljö
-                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Mappa beroenden
-              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Övervaka prestanda
-              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Analysera data med loggfrågor
-              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Visualisera data med arbetsböcker
-              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Skapa aviseringsregler
-              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Uppgradera Dependency Agent
-              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Inaktivera övervakning
-              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM-användning
       href: vm-usage.md
     - name: Tagga en virtuell dator
@@ -1422,7 +1434,7 @@
         - name: Säkerhetskopiera flera virtuella datorer
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Återställningsalternativ
-          href: /azure/backup/backup-azure-arm-restore-vms
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Stödmatris
           href: ../backup/backup-support-matrix-iaas.md
         - name: Prissättning
@@ -1479,15 +1491,15 @@
     - name: Anpassade data
       href: custom-data.md
     - name: Ansible
-      href: 'https://docs.microsoft.com/azure/developer/ansible/'
+      href: /azure/developer/ansible/
     - name: Terraform
-      href: 'https://docs.microsoft.com/azure/developer/terraform/'
+      href: /azure/developer/terraform/
     - name: Jenkins
-      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
+      href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Felsöka
-  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
+  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: Resurser
   items:
     - name: Ramverk för molnimplementering

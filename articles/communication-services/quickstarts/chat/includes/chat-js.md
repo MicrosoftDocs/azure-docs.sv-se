@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: af42b83fc005397d4564b7570eedaff0305a8bc8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653581"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661674"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
 
-- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Installera [Node.js](https://nodejs.org/en/download/) Active LTS och underhåll LTS-versioner (8.11.1 och 10.14.1 rekommenderas).
 - Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste **Registrera resurs slut punkten** för den här snabb starten.
 - Skapa *tre* ACS-användare och utfärda dem till användar åtkomst [token](../../access-tokens.md)för användar åtkomst. Var noga med att ange omfånget till **chatten** och **notera token-strängen och userId-strängen**. Den fullständiga demon skapar en tråd med två första deltagare och lägger sedan till en tredje deltagare i tråden.
@@ -34,7 +34,7 @@ Först öppnar du terminalen eller kommando fönstret för att skapa en ny katal
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 Kör `npm init -y` för att skapa en **package.jspå** en fil med standardinställningar.
 
 ```console
@@ -48,7 +48,7 @@ Använd `npm install` kommandot för att installera klient biblioteken nedan fö
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -86,7 +86,7 @@ Skapa en fil i projektets rot Katalog som kallas **client.js** som innehåller p
 
 ### <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient i din webbapp använder du SIP- **slutpunkten** för kommunikation **och den åtkomsttoken** som genererades som en del av de nödvändiga stegen. 
+Om du vill skapa en chatt-klient i din webbapp använder du SIP- **slutpunkten** för kommunikation **och den åtkomsttoken** som genererades som en del av de nödvändiga stegen.
 
 Med token för användar åtkomst kan du skapa klient program som direkt autentiserar till Azure Communication Services. Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera tokens för chatt-programmet. Se [chatt-koncept](../../../concepts/chat/concepts.md) för mer information om chatt-arkitektur och [åtkomsttoken för användar åtkomst](../../access-tokens.md) för mer information om åtkomsttoken.
 
@@ -122,10 +122,10 @@ I konsolen för utvecklarverktyg i webbläsaren bör du se följande:
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>Objekt modell 
+## <a name="object-model"></a>Objekt modell
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Name                                   | Beskrivning                                                                                                                                                                           |
+| Namn                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |
@@ -137,7 +137,7 @@ Använd `createThread` metoden för att skapa en chatt-tråd.
 
 `createThreadRequest` används för att beskriva tråd förfrågan:
 
-- Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen. 
+- Används `topic` för att ge ett ämne till den här chatten. Ämnen kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateThread` funktionen.
 - Används `participants` för att visa en lista över deltagare som ska läggas till i chatt-tråden.
 
 Vid åtgärdat `createChatThread` returnerar metoden en `CreateChatThreadResponse` . Den här modellen innehåller en `chatThread` egenskap där du kan komma åt den `id` nya tråd som skapats. Du kan sedan använda `id` för att hämta en instans av en `ChatThreadClient` . `ChatThreadClient`Kan sedan användas för att utföra åtgärder i tråden, t. ex. skicka meddelanden eller lista deltagare.
@@ -203,7 +203,7 @@ Använd `sendMessage` metoden för att skicka ett chatt meddelande till den trå
 
 `sendMessageOptions` beskriver valfria fält för begäran om chatt-meddelande:
 
-- Används `priority` för att ange prioritets nivå för chatt meddelande, till exempel "normal" eller "hög"; den här egenskapen kan användas för att Visa användar gränssnitts indikatorn för mottagaren i appen för att uppmärksamma meddelandet eller köra anpassad affärs logik.   
+- Används `priority` för att ange prioritets nivå för chatt meddelande, till exempel normal eller hög. Den här egenskapen kan användas för att visa en UI-indikator för mottagarens användare i din app för att uppmärksamma meddelandet eller köra anpassad affärs logik.
 - Används `senderDisplayName` för att ange visnings namnet på avsändaren.
 
 Svaret `sendChatMessageResult` innehåller ett ID, vilket är det unika ID: t för meddelandet.
@@ -246,7 +246,7 @@ chatClient.on("chatMessageReceived", (e) => {
 Lägg till den här koden i stället för `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` kommentaren i **client.js**.
 Uppdatera din webbläsare-flik visas i konsolen ett meddelande `Notification chatMessageReceived` .
 
-Du kan också hämta Chat-meddelanden genom att avsöka `listMessages` metoden vid angivna intervall. 
+Du kan också hämta Chat-meddelanden genom att avsöka `listMessages` metoden vid angivna intervall.
 
 ```JavaScript
 

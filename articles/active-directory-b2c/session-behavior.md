@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 85d00b393ad169764a2f26e324295308ef49d3ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584518"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646589"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurera sessionens beteende i Azure Active Directory B2C
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurera sessionsbeteende i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -29,7 +29,7 @@ Med enkel inloggning loggar användarna in en gång med ett enda konto och får 
 
 När användaren loggar in till ett program från början behåller Azure AD B2C en cookie-baserad session. Vid efterföljande autentiseringsbegäranden läser Azure AD B2C och verifierar den cookie-baserade sessionen och utfärdar en åtkomsttoken utan att användaren uppmanas att logga in igen. Om den cookie-baserade sessionen upphör att gälla eller blir ogiltig, uppmanas användaren att logga in igen.  
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -71,9 +71,9 @@ Programsessionen kan vara en cookie-baserad session som lagras under programmets
 
 Du kan konfigurera beteendet för Azure AD B2C session, inklusive:
 
-- **Web App-sessionens livs längd (minuter)** – hur lång tid som Azure AD B2C sessions-cookien lagras i användarens webbläsare efter autentiseringen. Du kan ställa in tiden för sessionens livs längd till ett värde mellan 15 och 720 minuter.
+- **Web App-sessionens livs längd (minuter)** – hur lång tid som Azure AD B2C sessions-cookien lagras i användarens webbläsare efter autentiseringen. Du kan ställa in sessionens livs längd till ett värde mellan 15 och 720 minuter.
 
-- **Sessions-timeout** för webbapp – visar hur en session utökas av tids inställningen för sessionens livs längd eller inställningen Håll mig inloggad.
+- **Timeout för webbapp** – visar hur en session utökas av inställningen för sessionens livs längd eller inställningen Behåll mig inloggad (KMSI avgör).
   - **Rullande** – anger att sessionen är utökad varje gång användaren utför en cookie-baserad autentisering (standard).
   - **Absolut** -visar att användaren tvingas att autentisera igen efter den angivna tids perioden.
 
@@ -82,9 +82,7 @@ Du kan konfigurera beteendet för Azure AD B2C session, inklusive:
   - **Program** – med den här inställningen kan du underhålla en användarsession exklusivt för ett program, oberoende av andra program. Du kan till exempel använda den här inställningen om du vill att användaren ska logga in på Contoso apotek oavsett om användaren redan har loggat in på Contosos inköp.
   - **Princip** – med den här inställningen kan du underhålla en användarsession exklusivt för ett användar flöde, oberoende av de program som använder den. Om användaren till exempel redan har loggat in och slutfört ett Multi-Factor Authentication (MFA)-steg, kan användaren få åtkomst till högre säkerhets delar av flera program, förutsatt att sessionen som är kopplad till användar flödet inte upphör att gälla.
   - **Disabled** – inställningen tvingar användaren att köra genom hela användar flödet vid varje körning av principen.
-::: zone pivot="b2c-custom-policy"
-- **Håll mig inloggad** – utökar sessionens livs längd genom att använda en beständig cookie. Sessionen förblir aktiv när användaren har stängt och öppnat webbläsaren igen. Sessionen återkallas bara när en användare loggar ut. Funktionen Håll mig inloggad gäller bara för inloggning med lokala konton. Funktionen Håll mig inloggad har företräde framför sessionens livs längd. Om funktionen Håll mig inloggad är aktive rad och användaren väljer den, avgör den här funktionen när sessionen upphör att gälla. 
-::: zone-end
+- **Håll mig inloggad (KMSI avgör)** – utökar sessionens livs längd genom att använda en beständig cookie. Om den här funktionen är aktive rad och användaren väljer den, förblir sessionen aktiv även när användaren har stängt och öppnat webbläsaren igen. Sessionen återkallas bara när användaren loggar ut. Funktionen KMSI avgör gäller bara för inloggning med lokala konton. KMSI avgör-funktionen har högre prioritet än sessionens livs längd.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ Om du vill ändra sessionens beteende och SSO-konfigurationer lägger du till et
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Aktivera Håll mig inloggad (KMSI avgör)
 
-Du kan aktivera Håll mig inloggad-funktion för användare av dina webb program och egna program som har lokala konton i din Azure Active Directory B2C-katalog (Azure AD B2C). Den här funktionen beviljar åtkomst till användare som återgår till programmet utan att be dem att ange sitt användar namn och lösen ord på annat sätt. Den här åtkomsten återkallas när en användare loggar ut.
+Du kan aktivera funktionen KMSI avgör för användare av dina webb program och interna program som har lokala konton i din Azure AD B2C katalog. När du aktiverar funktionen kan användarna välja att förbli inloggade så att sessionen förblir aktiv när de har stängt webbläsaren. Sedan kan de öppna webbläsaren igen utan att uppmanas att ange sitt användar namn och lösen ord igen. Den här åtkomsten återkallas när en användare loggar ut.
 
 ![Exempel på registrerings inloggnings sida med kryss rutan Håll mig inloggad](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+KMSI avgör kan konfigureras på den enskilda användar flödes nivån. Innan du aktiverar KMSI avgör för dina användar flöden bör du tänka på följande:
+
+- KMSI avgör stöds endast för de **rekommenderade** versionerna av registrering och inloggning (SUSI), inloggning och profil redigering av användar flöden. Om du för närvarande  har standard **-eller äldre** versioner av dessa användar flöden och vill aktivera KMSI avgör måste du skapa nya, **rekommenderade** versioner av dessa användar flöden.
+- KMSI avgör stöds inte med lösen ords återställning eller registrerings användar flöden.
+- Om du vill aktivera KMSI avgör för alla program i din klient organisation rekommenderar vi att du aktiverar KMSI avgör för alla användar flöden i din klient organisation. Eftersom en användare kan visas med flera principer under en session, är det möjligt att de kan upptäcka en som inte har KMSI avgör aktiverat, vilket skulle ta bort KMSI avgör-cookien från sessionen.
+- KMSI avgör bör inte aktive ras på offentliga datorer.
+
+### <a name="configure-kmsi-for-a-user-flow"></a>Konfigurera KMSI avgör för ett användar flöde
+
+Så här aktiverar du KMSI avgör för ditt användar flöde:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+2. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C-klient. Välj **katalog + prenumerations**   filter på den översta menyn och välj den katalog som innehåller Azure AD B2C klienten.
+3. Välj **alla tjänster**   i det övre vänstra hörnet av Azure Portal och Sök sedan efter och välj **Azure AD B2C**.
+4. Välj **användar flöden (principer)**.
+5. Öppna det användar flöde som du skapade tidigare.
+6. Välj **Egenskaper**.
+
+7. Under  **sessions beteende** väljer du **Aktivera Behåll mig inloggad session**. Bredvid **Håll mig inloggad session (dagar)** anger du ett värde mellan 1 och 90 för att ange antalet dagar som en session kan vara öppen.
+
+
+   ![Aktivera Behåll mig inloggad session](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Användarna bör inte aktivera det här alternativet på offentliga datorer.
 

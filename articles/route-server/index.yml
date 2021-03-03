@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Azure Route Server-dokumentation
+summary: Lär dig hur du använder Azure Route Server för att förenkla dynamisk routning mellan dina virtuella nätverks enheter och det virtuella nätverket.
+metadata:
+  title: Azure Route Server-dokumentation
+  description: Lär dig mer om Azure Route Server
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101680681"
+landingContent:
+- title: Om Azure Route Server (för hands version)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure Route Server (för hands version)?
+      url: overview.md
+- title: Kom igång
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Skapa och konfigurera en Route Server – PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: Skapa och konfigurera en Route Server – CLI
+      url: quickstart-configure-route-server-cli.md
+- title: Planering
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ExpressRoute och VPN Gateway support
+      url: expressroute-vpn-support.md
+    - text: Vanliga frågor om Route Server
+      url: route-server-faq.md

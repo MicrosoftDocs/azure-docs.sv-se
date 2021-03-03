@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 652be939136139620f6ec024fe98463113c6fb4a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028989"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657527"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB:s API för MongoDB (version 3.2): Funktioner och syntax som stöds
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB är Microsofts globalt distribuerade databastjänst för flera d
 Med hjälp av Azure Cosmos DB:s API för MongoDB kan du dra nytta av fördelarna med den MongoDB som du är van vid och alla de företagsfunktioner som Azure Cosmos DB erbjuder: [global distribution](distribute-data-globally.md), [automatisk horisontell positionering](partitioning-overview.md), garantier avseende tillgänglighet och svarstid, automatisk indexering av varje fält, kryptering i vila, säkerhetskopior och mycket mer.
 
 > [!NOTE]
-> Den här artikeln är för Azure Cosmos DB s API för MongoDB 3,2. MongoDB 3,6-versionen finns i [MongoDB 3,6 funktioner och syntax som stöds](mongodb-feature-support-36.md).
+> Den här artikeln är för Azure Cosmos DB s API för MongoDB 3,2. För MongoDB 3,6-och 4,0-versioner, se [MongoDB 3,6-stöd för funktioner och syntax](mongodb-feature-support-36.md) och [MongoDB 4,0 stöd för funktioner och syntax](mongodb-feature-support-40.md) -artiklar.
 
 ## <a name="protocol-support"></a>Protokollstöd
 
@@ -43,7 +43,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 
 ### <a name="query-and-write-operation-commands"></a>Fråga och skriv-åtgärdskommandon
 
-- ta bort
+- delete
 - find
 - findAndModify
 - getLastError
@@ -253,7 +253,7 @@ $type | `{ "Status": { $type: "string" } }`|  | -
 $mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
 $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
-### <a name="notes"></a>Anteckningar
+### <a name="notes"></a>Kommentarer
 
 I $regex-frågor, tillåter vänsterförankrade uttryck indexsökning. Om du använder modifierarna i (skiftlägesokänsligt) och m (flera rader) så får du dock samlingsskanningen i alla uttryck.
 När det finns ett behov att inkludera $ eller | så är det bäst att skapa två (eller flera) regex-frågor.
@@ -367,5 +367,3 @@ Azure Cosmos DB stöder automatisk, horisontell partitionering på serversidan. 
 - Lär dig hur du [använder Studio 3T](mongodb-mongochef.md) med Azure Cosmos DB:s API för MongoDB.
 - Lär dig hur du [använder Robo 3T](mongodb-robomongo.md) med Azure Cosmos DB:s API för MongoDB.
 - Utforska MongoDB-[exempel](mongodb-samples.md) med Azure Cosmos DB:s API för MongoDB.
-
-<sup>OBS! den här artikeln beskriver en funktion i Azure Cosmos DB som ger till gång till Wire Protocol-kompatibilitet med MongoDB-databaser. Microsoft kör inte MongoDB-databaser för att tillhandahålla den här tjänsten. Azure Cosmos DB är inte kopplad till MongoDB, Inc.</sup>

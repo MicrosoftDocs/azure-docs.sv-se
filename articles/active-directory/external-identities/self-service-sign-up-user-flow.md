@@ -5,22 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a08cc9f5b6bf7f02666406bcc541edb677196eeb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586031"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647344"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Lägga till ett användar flöde för självbetjänings registrering i en app (för hands version)
-> [!NOTE]
-> Självbetjänings registrering är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>Lägga till ett användar flöde för självbetjänings registrering i en app
 
 Du kan skapa användar flöden för appar som har skapats av din organisation. Genom att associera ditt användar flöde med ett program kan du aktivera registrering i appen. Du kan välja mer än ett program som ska associeras med användar flödet. När du associerar användar flödet med ett eller flera program kommer användare som besöker appen kunna registrera sig och få ett gäst konto med hjälp av de alternativ som kon figurer ATS i användar flödet.
 
@@ -36,9 +34,6 @@ Azure AD är standard identitets leverantören för självbetjänings registreri
 - [Lägg till Facebook i listan över sociala identitets leverantörer](facebook-federation.md)
 - [Lägg till Google i din lista över sociala identitets leverantörer](google-federation.md)
 
-> [!NOTE]
-> Om ett självbetjänings registrerings användar flöde är associerat med en app i den aktuella för hands versionen och du skickar en användare en inbjudan till appen, kommer användaren inte att kunna använda ett Gmail-konto för att lösa in inbjudan. Som en lösning kan användaren gå igenom registrerings processen för självbetjäning. Eller så kan de lösa in inbjudan genom att komma åt en annan app eller genom att använda deras mina apps-Portal på https://myapps.microsoft.com .
-
 ### <a name="define-custom-attributes-optional"></a>Definiera anpassade attribut (valfritt)
 
 Användarattribut är värden som samlas in från användaren under självbetjänings registrering. Azure AD levereras med en inbyggd uppsättning attribut, men du kan skapa anpassade attribut för användning i ditt användar flöde. Du kan också läsa och skriva attributen med hjälp av Microsoft Graph-API: et. Se [definiera anpassade attribut för användar flöden](user-flow-add-custom-attributes.md).
@@ -50,7 +45,7 @@ Innan du kan lägga till ett användar flöde för självbetjänings registrerin
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. Välj **användar inställningar** och välj **Hantera inställningar för externt samarbete** under **externa användare**.
-4. Ange alternativet för att aktivera självbetjäning för **gäst registrering via användar flöden (förhands granskning)** till **Ja**.
+4. Ange alternativet Aktivera självbetjänings **registrering via gäst via användar flöden** växla till **Ja**.
 
    ![Aktivera självbetjänings registrering för gäst](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. Välj **Spara**.
@@ -61,7 +56,7 @@ Därefter skapar du användar flödet för självbetjänings registrering och l�
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **användar flöden (förhands granskning)** och välj sedan **nytt användar flöde**.
+4. Välj **användar flöden** och välj sedan **nytt användar flöde**.
 
    ![Knappen Lägg till ett nytt användar flöde](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -75,14 +70,14 @@ Därefter skapar du användar flödet för självbetjänings registrering och l�
 > Du kan bara samla in attribut när en användare registrerar sig för första gången. När en användare registrerar sig kommer de inte längre uppmanas att samla in attributinformation, även om du ändrar användar flödet.
 
 8. Välj **Skapa**.
-9. Det nya användar flödet visas i listan **användar flöden (för hands version)** . Om det behövs uppdaterar du sidan.
+9. Det nya användar flödet visas i listan **användar flöden** . Om det behövs uppdaterar du sidan.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Välj layout för attributet samlings formulär
 
 Du kan välja i vilken ordning attributen ska visas på registrerings sidan. 
 
 1. Välj **Azure Active Directory** i [Azure-portalen](https://portal.azure.com).
-2. Välj **externa identiteter**, Välj **användar flöden (förhands granskning)**.
+2. Välj **externa identiteter**, Välj **användar flöden**.
 3. Välj användar flödet för självbetjänings registrering i listan.
 4. Under **Anpassa** väljer du **sidlayouter.**
 5. De attribut som du väljer att samla in visas. Om du vill ändra visnings ordningen väljer du ett attribut och väljer sedan **Flytta upp**, **Flytta ned**, **Flytta till början** eller **Flytta längst ned**.
@@ -95,7 +90,7 @@ Nu kan du koppla program till användar flödet.
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Under självbetjänings **registrering** väljer du **användar flöden (för hands version)**.
+4. Under självbetjänings **registrering** väljer du **användar flöden**.
 5. Välj användar flödet för självbetjänings registrering i listan.
 6. På den vänstra menyn väljer du **program** under **Använd**.
 7. Välj **Lägg till program**.

@@ -2,18 +2,17 @@
 title: Konfigurera IBM DB2-HADR på virtuella Azure-datorer (VM) | Microsoft Docs
 description: Upprätta hög tillgänglighet för IBM DB2-LUW på virtuella datorer i Azure.
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faafce32c3452a5c4ff08783ec2edd28f7f961e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621390"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671881"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hög tillgänglighet för IBM DB2-LUW på virtuella Azure-datorer på SUSE Linux Enterprise Server med pacemaker
 
@@ -30,7 +29,7 @@ De IBM DB2-versioner som stöds är 10,5 och senare, enligt beskrivningen i SAP 
 
 Innan du påbörjar en installation kan du läsa följande SAP-anteckningar och dokumentation:
 
-| SAP-anteckning | Description |
+| SAP-anteckning | Beskrivning |
 | --- | --- |
 | [1928533] | SAP-program på Azure: produkter och typer av virtuella Azure-datorer som stöds |
 | [2015553] | SAP på Azure: support krav |
@@ -96,7 +95,7 @@ Om du vill distribuera en IBM DB2-konfiguration måste du följa dessa steg:
 
 Slutför planerings processen innan du kör distributionen. Planering skapar grunden för att distribuera en konfiguration av DB2 med HADR i Azure. Viktiga element som måste vara en del av planeringen för IMB DB2-LUW (databas delen av SAP-miljön) visas i följande tabell:
 
-| Ämne | Kort beskrivning |
+| Avsnitt | Kort beskrivning |
 | --- | --- |
 | Definiera Azure-resurs grupper | Resurs grupper där du distribuerar VM, VNet, Azure Load Balancer och andra resurser. Kan vara befintlig eller ny. |
 | Definition av virtuellt nätverk/undernät | Där virtuella datorer för IBM DB2 och Azure Load Balancer distribueras. Kan vara befintlig eller nyligen skapad. |

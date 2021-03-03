@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103897"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645899"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Ta bort ett program som är registrerat med Microsoft Identity Platform
 
@@ -36,6 +36,9 @@ I följande avsnitt får du lära dig att:
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Ta bort ett program som skapats av dig eller din organisation
 
 Program som du eller din organisation har registrerat representeras av både ett programobjekt och ett tjänsthuvudnamnsobjekt i din klientorganisation. Mer information finns i [Programobjekt och tjänsthuvudnamnsobjekt](./app-objects-and-service-principals.md).
+
+> [!NOTE]
+> Om du tar bort ett program raderas även dess tjänst huvud objekt i programmets Hem Katalog. För program med flera klienter tas inte tjänstens huvud objekt i andra kataloger bort.
 
 Om du vill ta bort ett program ska du listas som ägare till programmet eller ha administratörs behörighet.
 

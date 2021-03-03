@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e878aa00261d446d049f5a7b3c68b14bc2fe8a4e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548513"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656624"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Java Script.
+Det här dokumentet refererar till typer i version 1.0.0 – beta. 5 av anrops bibliotek.
+
+> [!NOTE]
+> I det här dokumentet används version 1.0.0 – beta. 6 av det anropande klient biblioteket.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -73,7 +77,7 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Name                             | Beskrivning                                                                                                                                 |
+| Namn                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.                                                                       |
 | CallAgent                        | CallAgent används för att starta och hantera samtal.                                                                                            |
@@ -102,7 +106,7 @@ Lägga till en händelse hanterare för att initiera ett anrop när `callButton`
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

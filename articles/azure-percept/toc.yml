@@ -1,0 +1,110 @@
+- name: Dokumentation om Azure percept
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Azure percept-plattform
+      href: overview-azure-percept.md
+    - name: Azure percept Studio
+      href: overview-azure-percept-studio.md
+    - name: Azure percept DK
+      href: overview-azure-percept-dk.md
+    - name: Azure percept-ljud
+      href: overview-azure-percept-audio.md
+    - name: Azure percept AI-modeller
+      href: overview-ai-models.md
+    - name: Avancerad utveckling
+      href: overview-advanced-code.md
+    - name: Säkerhet för Azure percept
+      href: overview-percept-security.md
+    - name: 80/20-integrering
+      href: overview-8020-integration.md
+    - name: Uppdatera dina percept-enheter
+      href: overview-update-experience.md
+- name: Snabbstarter
+  items:
+    - name: Konfigurera dina Azure percept-enheter
+      items:
+        - name: Avpaketera och sätt samman din Azure percept DK
+          href: quickstart-percept-dk-unboxing.md
+        - name: Slutför installations upplevelsen för Azure percept DK
+          href: quickstart-percept-dk-set-up.md
+        - name: Installation av Azure percept-ljud
+          href: quickstart-percept-audio-setup.md
+- name: Självstudier
+  items:
+    - name: Starta prototyper med Azure percept
+      items:
+        - name: Utveckla och distribuera en lösning utan kod
+          href: tutorial-nocode-vision.md
+        - name: Bygg och distribuera en tal lösning utan kod
+          href: tutorial-no-code-speech.md
+    - name: Avancerad utveckling
+      items:
+        - name: Självstudie för avancerad utveckling (moln)
+          href: advanced-development-cloud.md
+        - name: Självstudie för avancerad utveckling (lokal)
+          href: advanced-development-local.md
+- name: Begrepp
+  items:
+    - name: Azure percept-ljud
+      items:
+        - name: LED-och knapp beteende
+          href: audio-button-led-behavior.md
+- name: Anvisningar
+  items:
+    - name: Utveckling av visioner med Azure percept DK
+      items:
+        - name: Visa din devkit video ström
+          href: how-to-view-video-stream.md
+        - name: Distribuera en AI-modell till din devkit
+          href: how-to-deploy-model.md
+        - name: Avbilda avbildningar för ett syn projekt
+          href: how-to-capture-images.md
+        - name: Visa din devkit-telemetri
+          href: how-to-view-telemetry.md
+    - name: Tal lösnings utveckling med Azure percept DK
+      items:
+        - name: Konfigurera din röst assistent i Azure percept Studio
+          href: how-to-configure-voice-assistant.md
+        - name: Konfigurera din röst assistent i IoT Hub
+          href: how-to-manage-voice-assistant.md
+    - name: Uppdatera dina Azure percept-enheter
+      items:
+        - name: Konfigurera över-Air-uppdateringar
+          href: how-to-set-up-over-the-air-updates.md
+        - name: Uppdatera din Azure percept DK-luft
+          href: how-to-update-over-the-air.md
+        - name: Uppdatera din Azure percept DK via USB
+          href: how-to-update-via-usb.md
+    - name: Ansluta till din Azure percept DK
+      items:
+        - name: Anslut via SSH
+          href: how-to-ssh-into-percept-dk.md
+        - name: Anslut via seriell
+          href: how-to-connect-to-percept-dk-over-serial.md
+    - name: Verktyg
+      items:
+        - name: Installations program för devtools Pack
+          href: dev-tools-installer.md
+    - name: Felsökning
+      items:
+        - name: Fel sökning av installations program
+          href: how-to-troubleshoot-setup.md
+        - name: Allmän fel sökning för Azure percept-DK
+          href: troubleshoot-dev-kit.md
+        - name: Fel sökning av visioner
+          href: vision-solution-troubleshooting.md
+        - name: Fel sökning av Azure percept-ljud
+          href: troubleshoot-audio-accessory-speech-module.md
+- name: Referens
+  items:
+    - name: Data blad för Azure percept-enheter
+      items:
+        - name: Azure percept DK-datablad
+          href: azure-percept-dk-datasheet.md
+        - name: Data blad för Azure percept vision
+          href: azure-percept-vision-datasheet.md
+        - name: Data blad för Azure percept-ljud
+          href: azure-percept-audio-datasheet.md
+- name: Resurser
+  items: null

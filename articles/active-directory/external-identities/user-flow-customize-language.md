@@ -7,21 +7,18 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cddb40a6a43c38079906699d9fa4865c4daf558
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837098"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653498"
 ---
-# <a name="language-customization-in-azure-active-directory-preview"></a>Språk anpassning i Azure Active Directory (för hands version)
-
-> [!NOTE]
-> Självbetjänings registrering är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+# <a name="language-customization-in-azure-active-directory"></a>Språk anpassning i Azure Active Directory
 
 Med språk anpassning i Azure Active Directory (Azure AD) kan ditt användar flöde hantera olika språk som passar dina användares behov. Microsoft tillhandahåller översättningarna för [36-språk](#supported-languages). Även om din upplevelse bara är avsedd för ett enda språk, kan du anpassa attributnamnet på sidan attribut samling.
 
@@ -39,7 +36,7 @@ Med språk anpassning kan du anpassa en sträng i ditt användar flöde.
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **användar flöden (förhands granskning)**.
+4. Välj **användar flöden**.
 3. Välj det användar flöde som du vill aktivera för översättningar.
 4. Välj **språk**.
 5. På sidan **språk** för användar flödet väljer du det språk som du vill anpassa.

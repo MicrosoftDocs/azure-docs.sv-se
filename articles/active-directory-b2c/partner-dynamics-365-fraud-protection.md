@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 629daa968d548c06d176e6349382ad51349a37a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417923"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646562"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Microsoft Dynamics 365 bedrägeri skydd med Azure Active Directory B2C
 
-I den här självstudien ger vi vägledning om hur du integrerar [Microsoft Dynamics 365 bedrägeri skydd](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) med Azure Active Directory (AD) B2C.
+I den här självstudien ger vi vägledning om hur du integrerar [Microsoft Dynamics 365 bedrägeri skydd](/dynamics365/fraud-protection/overview) (DFP) med Azure Active Directory (AD) B2C.
 
 Microsoft DFP ger klienter möjlighet att utvärdera om risken för försök att skapa nya konton och försöker logga in på klientens eko system är bedräglig. Microsoft DFP-utvärderingen kan användas av kunden för att blockera eller utmana misstänkta försök att skapa nya falska konton eller kompromettera befintliga konton. Konto skydd omfattar artificiell intelligens som har hälsostyrt enhets finger avtryck, API: er för riskbedömning, regel-och list erfarenhet i real tid för att optimera risk strategin enligt klientens affärs behov och ett styrkort för att övervaka bedrägerier och trender i klientens eko system.
 
@@ -32,7 +32,7 @@ För att komma igång behöver du:
 
 - En Azure-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 
-- En [Azure AD B2C klient](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Klienten är länkad till din Azure-prenumeration.
+- En [Azure AD B2C klient](./tutorial-create-tenant.md). Klienten är länkad till din Azure-prenumeration.
 
 - Skaffa en [prenumeration](https://dynamics.microsoft.com/pricing/#Sales)på Microsoft DFP. Du kan också konfigurera en [utvärderings klient version](https://dynamics.microsoft.com/ai/fraud-protection/signin/?RU=https%3A%2F%2Fdfp.microsoft.com%2Fsignin) .
 
@@ -67,36 +67,36 @@ I följande arkitektur diagram visas implementeringen.
 
 ## <a name="set-up-the-solution"></a>Konfigurera lösningen
 
-1. [Skapa ett Facebook-program](https://docs.microsoft.com/azure/active-directory-b2c/identity-provider-facebook#create-a-facebook-application) som är konfigurerat för att tillåta federation till Azure AD B2C.
-2. [Lägg till Facebook-hemligheten](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#create-the-facebook-key) som du skapade som en princip nyckel för identitets erfarenhets ramverk.
+1. [Skapa ett Facebook-program](./identity-provider-facebook.md#create-a-facebook-application) som är konfigurerat för att tillåta federation till Azure AD B2C.
+2. [Lägg till Facebook-hemligheten](./custom-policy-get-started.md#create-the-facebook-key) som du skapade som en princip nyckel för identitets erfarenhets ramverk.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Konfigurera ditt program under Microsoft DFP
 
-[Konfigurera din Azure AD-klient](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-real-time-api) så att den använder Microsoft DFP.
+[Konfigurera din Azure AD-klient](/dynamics365/fraud-protection/integrate-real-time-api) så att den använder Microsoft DFP.
 
 ## <a name="deploy-to-the-web-application"></a>Distribuera till webb programmet
 
 ### <a name="implement-microsoft-dfp-service-fingerprinting"></a>Implementera Microsoft DFP service-finger avtryck
 
-[Microsoft DFP-enhetens finger avtryck](https://docs.microsoft.com/dynamics365/fraud-protection/device-fingerprinting) är ett krav för Microsoft DFP Account Protection.
+[Microsoft DFP-enhetens finger avtryck](/dynamics365/fraud-protection/device-fingerprinting) är ett krav för Microsoft DFP Account Protection.
 
 >[!NOTE]
 >Förutom att Azure AD B2C UI-sidor kan kunden också implementera finger avtrycks tjänsten i app Code för mer omfattande enhets profilering. Finger avtrycks tjänsten i app Code ingår inte i det här exemplet.
 
 ### <a name="deploy-the-azure-ad-b2c-api-code"></a>Distribuera Azure AD B2C API-kod
 
-Distribuera den [tillhandahållna API-koden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) till en Azure-tjänst. Koden kan [publiceras från Visual Studio](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Distribuera den [tillhandahållna API-koden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API) till en Azure-tjänst. Koden kan [publiceras från Visual Studio](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 Set-CORS, Lägg till **tillåtet ursprung**`https://{your_tenant_name}.b2clogin.com`
 
 >[!NOTE]
 >Du behöver senare URL: en för den distribuerade tjänsten för att konfigurera Azure AD med nödvändiga inställningar.
 
-Mer information finns i [App Service-dokumentationen](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api) .
+Mer information finns i [App Service-dokumentationen](../app-service/app-service-web-tutorial-rest-api.md) .
 
 ### <a name="add-context-dependent-configuration-settings"></a>Lägg till Sammanhangs beroende konfigurations inställningar
 
-Konfigurera program inställningarna i [App Service i Azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Detta gör att inställningar kan konfigureras på ett säkert sätt utan att kontrol lera dem i en lagrings plats. REST-API: et behöver följande inställningar:
+Konfigurera program inställningarna i [App Service i Azure](../app-service/configure-common.md#configure-app-settings). Detta gör att inställningar kan konfigureras på ett säkert sätt utan att kontrol lera dem i en lagrings plats. REST-API: et behöver följande inställningar:
 
 | Programinställningar | Källa | Kommentarer |
 | :-------- | :------------| :-----------|
@@ -135,7 +135,7 @@ I de angivna [anpassade principerna](https://github.com/azure-ad-b2c/partner-int
 
 ### <a name="call-microsoft-dfp-label-api"></a>Anropa Microsoft DFP etikett-API
 
-Kunder måste [implementera etikett-API](https://docs.microsoft.com/dynamics365/fraud-protection/integrate-ap-api). Läs mer i [Microsoft DFP-API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
+Kunder måste [implementera etikett-API](/dynamics365/fraud-protection/integrate-ap-api). Läs mer i [Microsoft DFP-API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0) .
 
 `URI: < API Endpoint >/v1.0/label/account/create/<userId>`
 
@@ -148,7 +148,7 @@ Värdet för userID måste vara samma som det i motsvarande Azure AD B2C konfigu
 
 1. Gå till [Azure AD B2C principen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) i mappen principer.
 
-2. Följ det här [dokumentet](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. Följ det här [dokumentet](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. Konfigurera principen för Azure AD B2C klient.
 
@@ -174,7 +174,7 @@ Värdet för userID måste vara samma som det i motsvarande Azure AD B2C konfigu
 5. Microsoft DFP-tjänsten anropas under flödet efter att användarattribut har skapats. Om flödet är ofullständigt kontrollerar du att användaren inte har sparats i katalogen.
 
 >[!NOTE]
->Uppdatera regler direkt i Microsoft DFP-portalen om du använder [Microsoft DFP-regel motor](https://docs.microsoft.com/dynamics365/fraud-protection/rules).
+>Uppdatera regler direkt i Microsoft DFP-portalen om du använder [Microsoft DFP-regel motor](/dynamics365/fraud-protection/rules).
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -182,6 +182,6 @@ Mer information finns i följande artiklar:
 
 - [Microsoft DFP-exempel](https://github.com/Microsoft/Dynamics-365-Fraud-Protection-Samples)
 
-- [Anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

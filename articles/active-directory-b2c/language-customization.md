@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2aab537c2235fe3e008fa619c96a3098cfa7a27
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e29ef68bb6f02e329d0406cd80dceb25beab8932
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361221"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645916"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Språk anpassning i Azure Active Directory B2C
 
@@ -115,6 +115,7 @@ Om du vill ändra strängen för ett anpassat användarattribut, eller om du vil
       "Value": "<ExtensionAttributeValue>"
     }
     [...]
+  ]
 }
 ```
 
@@ -129,22 +130,24 @@ Om du vill ange en uppsättning värden för svar måste du skapa ett- `Localize
 ```json
 {
   "LocalizedStrings": [...],
-  "LocalizedCollections": [{
+  "LocalizedCollections": [
+    {
       "ElementType":"ClaimType",
       "ElementId":"<UserAttribute>",
       "TargetCollection":"Restriction",
       "Override": true,
       "Items":[
-           {
-                "Name":"<Response1>",
-                "Value":"<Value1>"
-           },
-           {
-                "Name":"<Response2>",
-                "Value":"<Value2>"
-           }
-     ]
-  }]
+        {
+          "Name":"<Response1>",
+          "Value":"<Value1>"
+        },
+        {
+          "Name":"<Response2>",
+          "Value":"<Value2>"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -181,7 +184,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Lägg till anpassade språk
 
-Du kan också lägga till språk som Microsoft för närvarande inte tillhandahåller översättningar för. Du måste ange översättningarna för alla strängar i användar flödet. Språk-och lands koder är begränsade till dem i ISO 639-1-standarden. Det nationella kod formatet ska vara "ISO_639-1_code"-"CountryCode" för t. ex. en-GB. Mer information om språkvariant-ID-format finns i https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+Du kan också lägga till språk som Microsoft för närvarande inte tillhandahåller översättningar för. Du måste ange översättningarna för alla strängar i användar flödet. Språk-och lands koder är begränsade till dem i ISO 639-1-standarden. Det nationella kod formatet ska vara "ISO_639-1_code"-"CountryCode", till exempel `en-GB` . Mer information om språkvariant-ID-format finns i https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
 
 1. Välj **användar flöden** i Azure AD B2C klient.
 2. Klicka på det användar flöde där du vill lägga till anpassade språk och klicka sedan på **språk**.

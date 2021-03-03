@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553954"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657374"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Köra batch-förutsägelser med Azure Machine Learning designer
 
@@ -144,6 +144,22 @@ När du publicerar en pipeline kan du välja att göra den till den nya standard
 Du kan också ange en ny standard-pipeline på fliken **publicerade pipelines** i slut punkten.
 
 ![Sidan Ange standard pipeline i publicerings pipelinen](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>Begränsningar
+
+Om du gör några ändringar i din utbildnings pipeline bör du skicka in utbildnings pipelinen igen, **Uppdatera**  härlednings pipelinen och köra härlednings pipelinen igen.
+
+Observera att endast modeller kommer att uppdateras i härlednings pipelinen, medan dataomvandlingen inte kommer att uppdateras.
+
+Om du vill använda den uppdaterade omvandlingen i en härlednings pipeline måste du registrera Transformations resultatet för Transformations modulen som data uppsättning.
+
+![Skärm bild som visar hur du registrerar omvandlings data uppsättning](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+Ersätt sedan den **TD-** modulen i härlednings pipelinen manuellt med den registrerade data uppsättningen.
+
+![Skärm bild som visar hur du ersätter omvandlings modulen](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+Sedan kan du skicka en härlednings pipeline till den uppdaterade modellen och omvandlingen och publicera.
 
 ## <a name="next-steps"></a>Nästa steg
 

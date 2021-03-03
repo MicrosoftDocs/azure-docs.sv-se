@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a3cca7740adb6fa44b162e8c8740d1be1c7aa6b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9e315812f7e281cf281cad9e052ab4546bde05f9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953894"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645858"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurera inloggning för en speciell Azure Active Directory organisation i Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Om du vill aktivera inloggning för användare med ett Azure AD-konto från en s
 1. Kontrol lera att du använder den katalog som innehåller din organisations Azure AD-klient (till exempel contoso.com). Välj **filtret katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din Azure AD-klient.
 1. Välj **alla tjänster** i det övre vänstra hörnet av Azure Portal och Sök sedan efter och välj **Appregistreringar**.
 1. Välj **ny registrering**.
-1. Ange ett **namn** för ditt program. Ett exempel är `Azure AD B2C App`.
+1. Ange ett **namn** för ditt program. Till exempel `Azure AD B2C App`.
 1. Godkänn standard valet av **konton endast i den här organisations katalogen** för det här programmet.
 1. För **omdirigerings-URI: n**, godkänn värdet för **webb** och ange följande URL i gemener, där `your-B2C-tenant-name` ersätts med namnet på din Azure AD B2C-klient.
 
@@ -52,7 +52,7 @@ Om du vill aktivera inloggning för användare med ett Azure AD-konto från en s
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Ett exempel är `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
+    Till exempel `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
 
 1. Välj **Register** (Registrera). Registrera **program-ID: t (Client)** för användning i ett senare steg.
 1. Välj **certifikat & hemligheter** och välj sedan **ny klient hemlighet**.
@@ -85,8 +85,8 @@ Om du vill hämta `family_name` och `given_name` anspråk från Azure AD kan du 
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Ett exempel är `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Ett exempel är `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
+    Till exempel `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
+    Till exempel `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
 
 1. För **klient-ID** anger du det program-ID som du tidigare har registrerat.
 1. För **klient hemlighet** anger du den klient hemlighet som du tidigare har registrerat.
@@ -126,7 +126,7 @@ Du måste lagra den program nyckel som du skapade i Azure AD B2C klient organisa
 1. Under **principer** väljer du **Identity Experience Framework**.
 1. Välj **princip nycklar** och välj sedan **Lägg till**.
 1. För **alternativ** väljer du `Manual` .
-1. Ange ett **namn** för princip nyckeln. Ett exempel är `ContosoAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_ContosoAppSecret*.
+1. Ange ett **namn** för princip nyckeln. Till exempel `ContosoAppSecret`.  Prefixet `B2C_1A_` läggs automatiskt till namnet på nyckeln när det skapas, så referensen i XML i följande avsnitt är att *B2C_1A_ContosoAppSecret*.
 1. I **hemlighet** anger du din klient hemlighet som du registrerade tidigare.
 1. För **nyckel användning** väljer du `Signature` .
 1. Välj **Skapa**.
@@ -195,7 +195,7 @@ Om du vill hämta en token från Azure AD-slutpunkten måste du definiera de pro
 1. Azure AD använder OpenID Connect-protokollet, så se till att värdet för **protokollet** är `OpenIdConnect` .
 1. Ange värdet för **metadata** till `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration` , där `tenant-name` är namnet på din Azure AD-klient. Till exempel `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. Ange **client_id** till program-ID: t från program registreringen.
-1. Under **CryptographicKeys** uppdaterar du värdet för **StorageReferenceId** till namnet på den princip nyckel som du skapade tidigare. Ett exempel är `B2C_1A_ContosoAppSecret`.
+1. Under **CryptographicKeys** uppdaterar du värdet för **StorageReferenceId** till namnet på den princip nyckel som du skapade tidigare. Till exempel `B2C_1A_ContosoAppSecret`.
 
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]

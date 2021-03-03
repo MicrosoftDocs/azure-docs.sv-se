@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879804"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660992"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Självstudie: Förutsäg ett bilpris med designern
 
@@ -176,7 +176,7 @@ Din data uppsättning har fortfarande värden som saknas efter att du tagit bort
 
     Din pipeline bör nu se ut ungefär så här:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-Column":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png" alt-text="Select-Column":::
 
 ## <a name="train-a-machine-learning-model"></a>Träna en maskininlärningsmodell
 
@@ -224,7 +224,7 @@ Träna modellen genom att ge den en data uppsättning som inkluderar priset. Alg
     > [!IMPORTANT]
     > Se till att de vänstra Utdataportarna för **delade data** ansluter till **träna modell**. Den vänstra porten innehåller inlärnings uppsättningen. Rätt port innehåller test uppsättningen.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Skärm bild som visar korrekt konfiguration av modulen träna modell. Modulen linjär regression ansluter till den vänstra porten för modulen träna modell och modulen dela data ansluts till rätt port för träna modell.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png" alt-text="Skärm bild som visar korrekt konfiguration av modulen träna modell. Modulen linjär regression ansluter till den vänstra porten för modulen träna modell och modulen dela data ansluts till rätt port för träna modell.":::
 
 1. Välj **träningsmodellmodulen**.
 
@@ -239,7 +239,7 @@ Träna modellen genom att ge den en data uppsättning som inkluderar priset. Alg
 
     Din pipeline bör se ut så här:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Skärm bild som visar korrekt konfiguration av pipelinen efter att du lagt till modulen träna modell.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png" alt-text="Skärm bild som visar korrekt konfiguration av pipelinen efter att du lagt till modulen träna modell.":::
 
 ### <a name="add-the-score-model-module"></a>Lägg till modulen Poäng modell
 
@@ -259,7 +259,7 @@ Använd modulen **utvärdera modell** för att utvärdera hur bra din modell bev
 
     Den sista pipelinen bör se ut ungefär så här:
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Skärm bild som visar korrekt konfiguration av pipelinen.":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png" alt-text="Skärm bild som visar korrekt konfiguration av pipelinen.":::
 
 ## <a name="submit-the-pipeline"></a>Skicka pipelinen
 
@@ -288,7 +288,7 @@ När körningen är klar kan du visa resultatet av pipeline-körningen. Börja m
 
     Här kan du se de förutsagda priser och de faktiska priserna från test data.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Skärm bild av utmatnings visualiseringen som markerar den markerade etikett kolumnen":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png" alt-text="Skärm bild av utmatnings visualiseringen som markerar den markerade etikett kolumnen":::
 
 ### <a name="evaluate-models"></a>Utvärdera modeller
 

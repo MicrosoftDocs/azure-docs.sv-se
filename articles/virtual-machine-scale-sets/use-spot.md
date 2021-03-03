@@ -6,15 +6,15 @@ ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
-ms.date: 03/25/2020
+ms.date: 02/26/2021
 ms.reviewer: cynthn
-ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 265f78970f17fe7321db8786c2fb8dd2304bb578
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558671"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675014"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Virtual Machines för skalnings uppsättningar för virtuella datorer 
 
@@ -46,19 +46,38 @@ Följande [typer av erbjudanden](https://azure.microsoft.com/support/legal/offer
 -   Enterprise-avtal
 -   Erbjudande för betala per användning-kod 003P
 -   Sponsrat
-- För Cloud Service Provider (CSP) kontaktar du din partner
+- För Cloud Service Provider (CSP), se [partner Center](https://docs.microsoft.com/partner-center/azure-plan-get-started) eller kontakta din partner direkt.
 
 ## <a name="eviction-policy"></a>Avlägsnandeprincip
 
-När du skapar skalnings uppsättningar för virtuella Azure-datorer kan du ange att principen ska *avallokeras* eller *tas bort*. 
+När du skapar en skalnings uppsättning med Azure-Virtual Machines kan du ange att *principen ska* frigöras eller *tas bort*. 
 
 Principen *frigör* flyttar de inaktuella instanserna till läget Stoppad-frigjord, så att du kan distribuera om avlägsnade instanser. Det finns dock ingen garanti för att allokeringen ska lyckas. De friallokerade virtuella datorerna räknas över till kvoten för din skalnings uppsättning och du debiteras för de underliggande diskarna. 
 
-Om du vill att dina instanser i din skalnings uppsättning för virtuella Azure-datorer ska tas bort när de avlägsnas, kan du ange vilken borttagnings princip som ska *tas bort*. När du har angett en princip för borttagning kan du skapa nya virtuella datorer genom att öka antalet skalnings uppsättnings instanser. De avlägsnade virtuella datorerna tas bort tillsammans med deras underliggande diskar och därför debiteras du inte för lagringen. Du kan också använda funktionen för automatisk skalning i skalnings uppsättningar för att automatiskt försöka och kompensera för avlägsnade virtuella datorer, men det finns ingen garanti för att allokeringen kommer att lyckas. Vi rekommenderar att du bara använder funktionen för autoskalning i skalnings uppsättningar för virtuella datorer i Azure-datorer när du anger att borttagnings principen ska tas bort för att undvika kostnaden för diskarna och vid kvot gränser. 
+Om du vill att dina instanser ska tas bort när de avlägsnas, kan du ange vilken borttagnings princip som ska *tas bort*. När du har angett en princip för borttagning kan du skapa nya virtuella datorer genom att öka antalet skalnings uppsättnings instanser. De avlägsnade virtuella datorerna tas bort tillsammans med deras underliggande diskar och därför debiteras du inte för lagringen. Du kan också använda funktionen för automatisk skalning i skalnings uppsättningar för att automatiskt försöka och kompensera för avlägsnade virtuella datorer, men det finns ingen garanti för att allokeringen kommer att lyckas. Vi rekommenderar att du bara använder funktionen för autoskalning i skalnings uppsättningar för virtuella datorer i Azure-datorer när du anger att borttagnings principen ska tas bort för att undvika kostnaden för diskarna och vid kvot gränser. 
 
 Användare kan välja att ta emot meddelanden i virtuella datorer via [Azure schemalagda händelser](../virtual-machines/linux/scheduled-events.md). Detta meddelar dig om dina virtuella datorer avlägsnas och du har 30 sekunder på dig att slutföra jobben och utföra avstängnings uppgifter innan avlägsnandet. 
 
+<a name="bkmk_try"></a>
+## <a name="try--restore-preview"></a>Försök & återställa (förhands granskning)
+
+Den här nya plattforms nivå funktionen kommer att använda AI för att automatiskt försöka återställa avstängda virtuella datorer i Azure-platsen i en skalnings uppsättning som upprätthåller antalet mål instanser. 
+
+> [!IMPORTANT]
+> Försök & Restore finns för närvarande i en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Försök & Restore Benefits:
+- Aktive rad som standard när du distribuerar en virtuell Azure-dator i en skalnings uppsättning.
+- Försök att återställa Azure-Virtual Machines avlägsnas på grund av kapacitet.
+- Återställda Azure-Virtual Machines förväntas köras under en längre tid med en lägre sannolikhet för en kapacitet som utlöses genom att avlägsnas.
+- Förbättrar livs längd för en virtuell Azure-dator, så att arbets belastningar körs under en längre tid.
+- Hjälper Virtual Machine Scale Sets att underhålla mål antalet för Azure-Virtual Machines, på samma sätt som att det redan finns en funktion som redan finns för virtuella datorer med betala per användning.
+
+Försök & Restore är inaktiverat i skalnings uppsättningar som använder [autoskalning](virtual-machine-scale-sets-autoscale-overview.md). Antalet virtuella datorer i skalnings uppsättningen styrs av reglerna för autoskalning.
+
 ## <a name="placement-groups"></a>Placerings grupper
+
 Placerings gruppen är en konstruktion som liknar en Azures tillgänglighets uppsättning, med egna fel domäner och uppgraderings domäner. Som standard består en skalningsuppsättning av en enda placeringsgrupp med maximalt 100 virtuella datorer. Om den skalnings uppsättnings egenskap som kallas `singlePlacementGroup` är *false* kan skalnings uppsättningen bestå av flera placerings grupper och ha ett intervall på 0 till 1 000 virtuella datorer. 
 
 > [!IMPORTANT]
@@ -72,7 +91,7 @@ Om du vill distribuera Azure-Virtual Machines på skalnings uppsättningar kan d
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-mallar](#resource-manager-templates)
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 Processen för att skapa en skalnings uppsättning som använder Azure-Virtual Machines är densamma som beskrivs i [artikeln komma igång](quick-create-portal.md). När du distribuerar en skalnings uppsättning kan du välja att ange en dekor flagga och avpolicyn för borttagning: ![ skapa en skalnings uppsättning med Azure-Virtual Machines](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
@@ -136,6 +155,24 @@ Lägg till `priority` - `evictionPolicy` och- `billingProfile` egenskaperna i `"
 ```
 
 Ändra parametern till om du vill ta bort instansen när den har avlägsnats `evictionPolicy` `Delete` .
+
+
+## <a name="simulate-an-eviction"></a>Simulera en avtagning
+
+Du kan [simulera en avlägsnande](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) av en virtuell Azure-dator för att testa hur bra ditt program kommer att reagera på en plötslig avlägsning. 
+
+Ersätt följande med din information: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+`Response Code: 204` innebär att den simulerade avtagningen lyckades. 
 
 ## <a name="faq"></a>Vanliga frågor
 

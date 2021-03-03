@@ -419,7 +419,7 @@
           items:
             - name: Skapa återställningspunkter
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: Återställa en Synapse SQL-pool
+            - name: Återställa en dedikerad SQL-pool
               href: ./backuprestore/restore-sql-pool.md
         - name: Hantera och övervaka
           items:

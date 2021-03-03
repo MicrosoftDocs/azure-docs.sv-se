@@ -5,14 +5,14 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 12/01/2020
+ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 6d9a74729768a326379b5efddb864a4fee02fa59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493232"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658579"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Felsök vanliga problem i Azure Cosmos DB API för Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -32,7 +32,7 @@ Några populära orsaker och lösningar är följande:
 Du kanske ser det här felet: `Cannot connect to any host, scheduling retry in 600000 milliseconds` . 
 
 ### <a name="solution"></a>Lösning
-Detta kan vara SNAT-belastning på klient sidan. Följ stegen i [SNAT för utgående anslutningar](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) för att ta bort det här problemet. Detta kan också vara ett problem med tids gräns för inaktivitet där Azure Load Balancer har 4 minuters inaktivitet som standard. Se dokumentationen vid [belastnings utjämning för inaktivitet](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Aktivera TCP-Keep Alive från driv rutins inställningarna (se [nedan](#enable-keep-alive-for-java-driver)) och ange `keepAlive` intervallet för operativ systemet till mindre än 4 minuter.
+Detta kan vara SNAT-belastning på klient sidan. Följ stegen i [SNAT för utgående anslutningar](../load-balancer/load-balancer-outbound-connections.md) för att ta bort det här problemet. Detta kan också vara ett problem med tids gräns för inaktivitet där Azure Load Balancer har 4 minuters inaktivitet som standard. Se dokumentationen vid [belastnings utjämning för inaktivitet](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). Aktivera TCP-Keep Alive från driv rutins inställningarna (se [nedan](#enable-keep-alive-for-java-driver)) och ange `keepAlive` intervallet för operativ systemet till mindre än 4 minuter.
 
  
 

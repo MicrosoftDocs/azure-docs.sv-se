@@ -6,20 +6,19 @@ documentationcenter: ''
 author: prtyag
 manager: hrushib
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a799242ecaae7b7152d79b7d341a9cb5cc18d7fe
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a9b3d534e74ccd44dfaa35ec5bf3b65f50641c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654480"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666657"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump för SAP HANA på stora Azure-instanser (HLI)
 
@@ -62,7 +61,7 @@ Det här dokumentet beskriver information om hur du aktiverar kdump-tjänsten p�
 |   Typ II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   Typ II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Kdump-tjänsten använder `/var/crash` katalogen för att skriva dum par, se till att partitionen motsvarar den här katalogen har tillräckligt med utrymme för att ta emot dumpar.
 

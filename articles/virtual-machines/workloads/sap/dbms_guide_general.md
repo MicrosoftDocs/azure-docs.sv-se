@@ -2,18 +2,17 @@
 title: Överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastning | Microsoft Docs
 description: Överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar
 author: msjuergent
-ms.service: virtual-machines
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 470b6b0c871d91a2a8a584a6efd04605e0afcf88
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "96484353"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666844"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -74,7 +73,7 @@ Det finns andra artiklar tillgängliga på SAP-arbetsbelastningar på Azure. Bö
 
 Följande SAP-anteckningar är relaterade till SAP på Azure i förhållande till det utrymme som beskrivs i det här dokumentet.
 
-| Antecknings nummer | Title |
+| Antecknings nummer | Rubrik |
 | --- | --- |
 | [1928533] |SAP-program på Azure: produkter och typer av virtuella Azure-datorer som stöds |
 | [2015553] |SAP på Microsoft Azure: stöd för krav |

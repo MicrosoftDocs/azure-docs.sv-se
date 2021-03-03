@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d9c8f5dd8b2647756087ce6f36ff3a25b2aaaadc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387979"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653855"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hög tillgänglighet för Azure cache för Redis
 
@@ -23,7 +23,7 @@ Azure cache för Redis implementerar hög tillgänglighet genom att använda fle
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Standardreplikering](#standard-replication)| Replikerad konfiguration med dubbla noder i ett enda data Center med automatisk redundans | 99,9 % |✔|✔|-|
 | [Zonredundans](#zone-redundancy) | Replikerad konfiguration med flera noder över AZs, med automatisk redundans | 99,95% (Premium-nivå), 99,99% (företags nivåer) |-|Förhandsgranskning|Förhandsgranskning|
-| [Geo-replikering](#geo-replication) | Länkade cache-instanser i två regioner med användarspecifik redundans | 99,9% (Premium-nivå, enskild region) |-|✔|-|
+| [Geo-replikering](#geo-replication) | Länkade cache-instanser i två regioner med användarspecifik redundans | 99,999% (företags nivå) |-|✔|-|
 
 ## <a name="standard-replication"></a>Standardreplikering
 
@@ -45,7 +45,7 @@ En primär nod kan gå ur drift som en del av en planerad underhålls aktivitet,
 >
 >
 
-Dessutom tillåter Azure cache för Redis ytterligare replik-noder på Premium-nivån. En [cachelagring med flera repliker](cache-how-to-multi-replicas.md) kan konfigureras med upp till tre noder i replikeringen. Att ha fler repliker förbättrar ofta återhämtnings förmågan på grund av de ytterligare noderna som säkerhetskopierar den primära. Även om du har fler repliker kan en Azure-cache för Redis-instans fortfarande påverkas allvarligt av ett Data Center eller AZ. Du kan öka cachens tillgänglighet genom att använda flera repliker tillsammans med [zon redundans](#zone-redundancy).
+Dessutom tillåter Azure cache för Redis ytterligare replik-noder på Premium-nivån. En [cachelagring med flera repliker](cache-how-to-multi-replicas.md) kan konfigureras med upp till tre noder i replikeringen. Att ha fler repliker förbättrar ofta återhämtnings förmågan på grund av de ytterligare noderna som säkerhetskopierar den primära. Även om du har fler repliker kan en Azure-cache för Redis-instans fortfarande påverkas allvarligt av ett Data Center-eller AZ-nivå avbrott. Du kan öka cachens tillgänglighet genom att använda flera repliker tillsammans med [zon redundans](#zone-redundancy).
 
 ## <a name="zone-redundancy"></a>Zonredundans
 
@@ -66,7 +66,7 @@ Azure cache för Redis distribuerar noder i en redundant cache för zonen i ett 
 
 En redundant cache i zonen ger automatisk redundans. När den aktuella primära noden inte är tillgänglig tas en av replikerna över. Programmet kan få högre svars tid för cachen om den nya primära noden finns i en annan AZ. AZs är geografiskt åtskilda. Om du växlar från en AZ till en annan ändras det fysiska avståndet mellan var programmet och cachen finns. Den här ändringen påverkar fördröjning av nätverks fördröjning från ditt program till cacheminnet. Den extra svars tiden förväntas ligga inom ett acceptabelt intervall för de flesta program. Vi rekommenderar att du testar ditt program för att säkerställa att det fungerar bra med en zon-redundant cache.
 
-### <a name="enterprise-and-enterprise-flash-tiers"></a>Enterprise-och Enterprise Flash-nivåer
+### <a name="enterprise-tiers"></a>Företagsnivåer
 
 En cache på företags nivå körs på ett Redis Enterprise-kluster. Det måste alltid finnas ett udda antal noder för att skapa ett kvorum. Som standard består den av tre noder, som var och en är värd för en dedikerad virtuell dator. En företags-cache har två *datanoder* med samma storlek och en mindre *nod*. En Enterprise Flash-cache har tre data noder med samma storlek. Företags klustret delar upp Redis-data i partitioner internt. Varje partition har en *primär* och minst en *replik*. Varje datanod innehåller en eller flera partitioner. Företags klustret säkerställer att den primära och repliken av en partition aldrig befinner sig på samma datanod. Partitioner replikerar data asynkront från presidentval till sina motsvarande repliker.
 
@@ -74,9 +74,27 @@ När en datanoden blir otillgänglig eller om en nätverks delning sker, sker en
 
 ## <a name="geo-replication"></a>Geo-replikering
 
-[Geo-replikering](cache-how-to-geo-replication.md) är en mekanism för att länka två Azure cache för Redis-instanser, som vanligt vis spänner över två Azure-regioner. Ett cacheminne har valts som primärt länkat cache och den andra som sekundär länkad cache. Endast den primära länkade cachen accepterar Läs-och skriv förfrågningar. Data som skrivs till den primära cachen replikeras till den sekundära länkade cachen. Den sekundära länkade cachen kan användas för att hantera Läs begär Anden. Data överföring mellan de primära och sekundära cache-instanserna skyddas av TLS.
+[Geo-replikering](cache-how-to-geo-replication.md) är en mekanism för att länka två eller flera Azure-cache-instanser för Redis-instanser, som vanligt vis spänner över två Azure-regioner. 
 
-Geo-replikering har utformats huvudsakligen för haveri beredskap. Det ger dig möjlighet att säkerhetskopiera dina cache-data till en annan region. Som standard skriver programmet till och läser från den primära regionen. Det kan också konfigureras för att läsa från den sekundära regionen. Geo-replikering ger inte automatisk redundans på grund av problem med extra nätverks fördröjning mellan regioner om resten av programmet finns kvar i den primära regionen. Du måste hantera och initiera redundansväxlingen genom att ta bort länken till det sekundära cacheminnet. Detta upphöjer den till den nya primära instansen.
+### <a name="premium-tier"></a>Premiumnivå
+
+>[!NOTE]
+>Geo-replikering på Premium-nivån har utformats huvudsakligen för haveri beredskap.
+>
+>
+
+Två cache-instanser på Premium-nivå kan anslutas via [geo-replikering](cache-how-to-geo-replication.md) så att du kan säkerhetskopiera dina cache-data till en annan region. När den väl har länkats, anges en instans som den primära länkade cachen och den andra som den sekundära länkade cachen. Endast den primära cachen accepterar Läs-och skriv förfrågningar. Data som skrivs till den primära cachen replikeras till den sekundära cachen. Ett program får åtkomst till cacheminnet via separata slut punkter för de primära och sekundära cacheminnena. Programmet måste skicka alla Skriv förfrågningar till det primära cacheminnet när det har distribuerats i flera Azure-regioner. Den kan läsa antingen från den primära eller sekundära cachen. I allmänhet vill du att programmets beräknings instanser ska läsa från de närmaste cacheminnen för att minska svars tiden. Data överföring mellan de två cache-instanserna skyddas av TLS.
+
+Geo-replikering ger inte automatisk redundans på grund av problem med den extra tiden för nätverks fördröjning mellan regioner om resten av programmet finns kvar i den primära regionen. Du måste hantera och initiera redundansväxlingen genom att ta bort länken till det sekundära cacheminnet. Detta upphöjer den till den nya primära instansen.
+
+### <a name="enterprise-tiers"></a>Företagsnivåer
+
+>[!NOTE]
+>Detta är tillgängligt som en för hands version.
+>
+>
+
+Företags nivåerna har stöd för en mer avancerad form av geo-replikering, som kallas [aktiv geo-replikering](cache-how-to-active-geo-replication.md). Genom att dra nytta av motstridiga replikerade data typer kan Redis Enterprise-programvaran skriva till flera cache-instanser och ta hand om sammanslagning av ändringar och lösa konflikter vid behov. Två eller flera cache-instanser på företags nivå i olika Azure-regioner kan kopplas till en aktiv geo-replikerad cache. Ett program som använder sådan cache kan läsa och skriva till de geo-distribuerade cache-instanserna via motsvarande slut punkter. Den bör använda vad som är närmast varje beräknings instans, vilket ger den lägsta svars tiden. Programmet måste också övervaka cache-instanserna och byta till en annan region om någon av instanserna blir otillgänglig. Mer information om hur aktiv geo-replikering fungerar finns i [Active-active Geo-Distriubtion (CRDTs-based)](https://redislabs.com/redis-enterprise/technology/active-active-geo-distribution/).
 
 ## <a name="next-steps"></a>Nästa steg
 

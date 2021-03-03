@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365556"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645831"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivera externt B2B-samarbete och hantera vilka som kan bjuda in gäster
 
@@ -78,11 +78,11 @@ Som standard kan alla användare, inklusive gäster, bjuda in gäst användare.
    >
    >![Aktivera e-post för eng ång slö sen ord](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. Under **Aktivera självbetjäning för gäst registrering via användar flöden (förhands granskning)** väljer du **Ja** om du vill kunna skapa användar flöden som gör det möjligt för användarna att registrera sig för appar. Mer information om den här inställningen finns i [lägga till ett självbetjänings registrerings användar flöde i en app (för hands version)](self-service-sign-up-user-flow.md).
+7. Under **Aktivera gäst självbetjänings registrering via användar flöden** väljer du **Ja** om du vill kunna skapa användar flöden som gör det möjligt för användarna att registrera sig för appar. Mer information om den här inställningen finns i [lägga till ett självbetjänings registrerings användar flöde i en app](self-service-sign-up-user-flow.md).
 
     ![Inställning för självbetjänings registrering via användar flöden](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. Under **samarbets begränsningar** väljer du om du vill tillåta eller neka inbjudningar till de domäner som du anger. Mer information finns i [tillåta eller blockera inbjudningar till B2B-användare från vissa organisationer](allow-deny-list.md).
+7. Under **samarbets begränsningar** kan du välja om du vill tillåta eller neka inbjudningar till de domäner du anger och ange vissa domän namn i text rutorna. För flera domäner anger du varje domän på en ny rad. Mer information finns i [tillåta eller blockera inbjudningar till B2B-användare från vissa organisationer](allow-deny-list.md).
 
     ![Inställningar för samarbets begränsningar](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Tilldela rollen för rollen gäst deltagare till en användare

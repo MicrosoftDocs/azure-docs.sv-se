@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3bd8851fe723461c618499e539c987d79c0d68
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80154907"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650149"
 ---
 # <a name="federation-metadata"></a>Federationsmetadata
 
@@ -96,7 +96,7 @@ I avsnittet WS-Federation-Specific skulle en WS-Federation metadata-läsare läs
 Följande metadata visar ett exempel `RoleDescriptor` element.
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 I det SAML-specificerade avsnittet skulle en WS-Federation metadata-läsare läsa certifikaten från ett- `IDPSSODescriptor` element.

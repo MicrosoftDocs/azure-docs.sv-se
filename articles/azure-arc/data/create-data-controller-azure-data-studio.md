@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2b35abf7f318d4db6166dd48c4f7bd35aaf4d98a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733248"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644416"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Skapa datakontrollant i Azure Data Studio
 
@@ -22,7 +22,7 @@ Du kan skapa en datakontrollant med Azure Data Studio via distributions guiden o
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du behöver åtkomst till ett Kubernetes-kluster och har kubeconfig-filen konfigurerad så att den pekar på det Kubernetes-kluster som du vill distribuera till.
 - Du måste [Installera klient verktygen](install-client-tools.md) , inklusive **Azure Data Studio** Azure Data Studio tillägg som kallas **Azure Arc** och **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
@@ -49,7 +49,7 @@ Följ dessa steg om du vill skapa en Azure Arc-dataenhet med hjälp av distribut
    
    Azure-platsen som väljs här är den plats i Azure där *metadata* om data styrenheten och databas instanserna som den hanterar kommer att lagras. Data styrenheten och databas instanserna kommer att faktiskt crewted i ditt Kubernetes-kluster, oavsett var de befinner sig.
 
-10. Välj lämpligt anslutnings läge. Läs mer om [anslutnings lägen](https://docs.microsoft.com/azure/azure-arc/data/connectivity). **Klicka på nästa**.
+10. Välj lämpligt anslutnings läge. Läs mer om [anslutnings lägen](./connectivity.md). **Klicka på nästa**.
 
     Om du väljer tjänstens huvud namn måste autentiseringsuppgifter för tjänsten för direkt anslutning anges enligt beskrivningen i [skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal).
 

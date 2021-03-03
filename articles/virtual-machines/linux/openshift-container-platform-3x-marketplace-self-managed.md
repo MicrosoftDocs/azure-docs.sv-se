@@ -3,19 +3,20 @@ title: Distribuera OpenShift container Platform 3,11 Self-Managed Marketplace-er
 description: Distribuera OpenShift container Platform 3,11 Self-Managed Marketplace-erbjudandet i Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374107"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670438"
 ---
 # <a name="configure-prerequisites"></a>Konfigurera krav
 
@@ -38,7 +39,7 @@ Det här alternativet är det enklaste, men det har också begränsade anpassnin
 - **Loggning**: EFK-loggning kan aktive ras.
 - **Azure Cloud Provider**: aktiverat som standard, kan inaktive ras.
 
-Klicka på **skapa en resurs**längst upp till vänster i Azure Portal, ange "OpenShift container Platform" i sökrutan och tryck på RETUR.
+Klicka på **skapa en resurs** längst upp till vänster i Azure Portal, ange "OpenShift container Platform" i sökrutan och tryck på RETUR.
 
    ![Ny resurs sökning](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
@@ -48,7 +49,7 @@ Sidan resultat öppnas med **Red Hat OpenShift container Platform 3,11 själv ha
    ![Nytt resurs Sök Resultat](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Klicka på erbjudandet om du vill visa information om erbjudandet. Klicka på **skapa**om du vill distribuera erbjudandet. Användar gränssnittet för att ange nödvändiga parametrar visas. Den första skärmen är bladet **grundläggande** .
+Klicka på erbjudandet om du vill visa information om erbjudandet. Klicka på **skapa** om du vill distribuera erbjudandet. Användar gränssnittet för att ange nödvändiga parametrar visas. Den första skärmen är bladet **grundläggande** .
 
    ![Rubrik sida för erbjudande](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
@@ -93,7 +94,7 @@ Ange värden för indataparametrarna och klicka på **OK**.
 
 **Ändra storlek**
 
-Om du vill välja en annan storlek på virtuell dator klickar du på ***ändra storlek***.  Fönstret för VM-val öppnas.  Välj den VM-storlek som du vill använda och klicka på **Välj**.
+Om du vill välja en annan storlek på virtuell dator klickar du på ***ändra storlek** _.  Fönstret för VM-val öppnas.  Välj den VM-storlek som du vill använda och klicka på _ * Välj * *.
 
    ![Välj storlek på virtuell dator](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>

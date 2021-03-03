@@ -860,6 +860,9 @@
           items:
             - name: Konfigurera resursdelning för korsande ursprung (CORS)
               href: how-to-configure-cross-origin-resource-sharing.md
+            - name: Konfigurera rollbaserad åtkomst kontroll
+              href: how-to-setup-rbac.md
+              displayName: 'aad, active directory, rbac'
             - name: Använda hanterade identiteter för att komma åt data
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
@@ -1068,7 +1071,7 @@
         - name: Node.js
           href: create-mongodb-nodejs.md
         - name: Python
-          href: create-mongodb-flask.md
+          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
@@ -1103,9 +1106,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: Begrepp
       items:
-        - name: Protokollstöd för Wire (3.6)
+        - name: 'API-version 4,0'
+          href: mongodb-feature-support-40.md
+        - name: 'API-version 3,6'
           href: mongodb-feature-support-36.md
-        - name: Protokollstöd för Wire (3.2)
+        - name: 'API-version 3,2'
           href: mongodb-feature-support.md
         - name: VANLIGA FRÅGOR OCH SVAR
           href: mongodb-api-faq.md
@@ -1125,7 +1130,7 @@
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Guide efter migrering
               href: mongodb-post-migration.md
-        - name: Uppgradera från MongoDB 3.2 till 3.6
+        - name: 'Uppgradera till API version 4,0 eller 3,6'
           href: mongodb-version-upgrade.md
         - name: Hämta anslutningssträngen
           href: connect-mongodb-account.md
@@ -1146,6 +1151,8 @@
           href: mongodb-change-streams.md
         - name: Hantera dataindexering
           href: mongodb-indexing.md
+        - name: Använd transaktioner med flera dokument
+          href: use-multi-document-transactions.md
         - name: Skapa en container – MongoDB API
           href: how-to-create-container-mongodb.md
         - name: Etablera dataflöde – MongoDB API
@@ -1374,6 +1381,8 @@
           href: configure-synapse-link.md
         - name: Anslut till Azure Synapse Link
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Analys lager och privata slut punkter
+          href: analytical-store-private-endpoints.md
         - name: Fråga med Azure Synapse Spark
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Fråga med serverlös SQL-pool

@@ -3,19 +3,20 @@ title: OpenShift container Platform 3,11 i Azure post-Deployment-uppgifter
 description: Ytterligare aktiviteter för efter ett OpenShift container Platform 3,11-kluster har distribuerats.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: 9a28c47493f0f775c9e489daf3232371a65d4a7e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c3f9aaa15a697202aa76c563ed62bf37443d69ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581454"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669395"
 ---
 # <a name="post-deployment-tasks"></a>Uppgifter efter distribution
 

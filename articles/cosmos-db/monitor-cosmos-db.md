@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 026724b6c9636a0c4b89ca8390a997d9640be6ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e23318684294a833c59fd5666db8c0a14efde890
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582230"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658511"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Övervaka Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -129,7 +129,7 @@ Data i Azure Monitor loggar lagras i tabeller som varje tabell har en egen upps�
 
 Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema). En lista över typer av resurs loggar som samlas in för Azure Cosmos DB finns i [övervaknings Azure Cosmos db data referens](monitor-cosmos-db-reference.md#resource-logs).
 
-[Aktivitets loggen](../azure-monitor/platform/activity-log.md) är en plattforms inloggning för Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.  
+[Aktivitets loggen](../azure-monitor/essentials/activity-log.md) är en plattforms inloggning för Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.  
 
 Azure Cosmos DB lagrar data i följande tabeller.
 
@@ -176,7 +176,7 @@ Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i din
 
 I följande tabell visas till exempel några aviserings regler för dina resurser. Du hittar en detaljerad lista över varnings regler från Azure Portal. Mer information finns i [så här konfigurerar du aviserings](create-alerts.md) artikeln.  
 
-| Aviseringstyp | Villkor | Description  |
+| Aviseringstyp | Villkor | Beskrivning  |
 |:---|:---|:---|
 |Hastighets begränsning på enheter för programbegäran (mått varning) |Dimensions namn: StatusCode, operator: lika med, dimensions värden: 429  | Varningar om behållaren eller en databas har överskridit gränsen för allokerat data flöde. |
 |Regionen har redundansväxlats |Operator: större än, sammansättnings typ: antal, tröskel värde: 1 | När en enskild region har redundansväxlats. Den här aviseringen är användbar om du inte har aktiverat automatisk redundans. |

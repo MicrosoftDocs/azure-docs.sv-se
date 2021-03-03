@@ -10,24 +10,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/01/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: cdd86984e5594d330f0080ee5f4cf0e9a8374652
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8ffa7ef7b3539e3cefc4e2f8621d7c67cd3b56b0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223551"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672963"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Konfigurera Dirigerings inställningar för en virtuell dator med hjälp av Azure PowerShell
 
 Den här artikeln visar hur du konfigurerar cirkulations inställningar för en virtuell dator. Internet bindnings trafik från den virtuella datorn kommer att dirigeras via Internet leverantörens nätverk när du väljer **Internet** som alternativ för routning av inställningar. Standardroutningen är via Microsofts globala nätverk.
 
 Den här artikeln visar hur du skapar en virtuell dator med en offentlig IP-adress som är inställd på att dirigera trafik via Internet leverantörs nätverket med hjälp av Azure PowerShell.
-
-> [!IMPORTANT]
-> Dirigerings inställningen är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 1. Om du använder Cloud Shell går du vidare till steg 2. Öppna en kommando-session och logga in på Azure med `Connect-AzAccount` .

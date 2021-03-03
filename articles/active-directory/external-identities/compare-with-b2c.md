@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 03/02/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173081"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644073"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Vad är externa identiteter i Azure Active Directory?
 
@@ -27,7 +27,7 @@ Med externa identiteter i Azure AD kan du ge personer utanför organisationen å
 
 Externa Azure AD-identiteter fokuserar mindre på användarens relation till din organisation och mer om hur användaren vill logga in på dina appar och resurser. I det här ramverket har Azure AD stöd för en mängd olika scenarier från Business-to-Business (B2B)-samarbete för att komma åt hantering för kunder/kund-eller program som riktas mot allmänheten (företags-till-kund eller B2C).
 
-- **Dela dina appar och resurser med externa användare (B2B-samarbete)**. Bjud in externa användare till din egen klient organisation som "gäst"-användare som du kan tilldela behörigheter till (för auktorisering) samtidigt som de låter dem använda sina befintliga autentiseringsuppgifter (för autentisering). Användarna loggar in på de delade resurserna med hjälp av en enkel Inbjudnings-och inlösnings process med sitt arbete, skola eller annat e-postkonto. Du kan också använda [hantering av Azure AD](../governance/entitlement-management-overview.md) -behörighet för att konfigurera principer som [hanterar åtkomst för externa användare](../governance/entitlement-management-external-users.md#how-access-works-for-external-users). Och nu med tillgänglighet för självbetjänings [registrering av användar flöden (för hands version)](self-service-sign-up-overview.md)kan du tillåta externa användare att registrera sig för själva program. Upplevelsen kan anpassas för att möjliggöra registrering med en arbets-, skol-eller social identitet (som Google eller Facebook). Du kan också samla in information om användaren under registrerings processen. Mer information finns i [Azure AD B2B-dokumentationen](index.yml).
+- **Dela dina appar och resurser med externa användare (B2B-samarbete)**. Bjud in externa användare till din egen klient organisation som "gäst"-användare som du kan tilldela behörigheter till (för auktorisering) samtidigt som de låter dem använda sina befintliga autentiseringsuppgifter (för autentisering). Användarna loggar in på de delade resurserna med hjälp av en enkel Inbjudnings-och inlösnings process med sitt arbete, skola eller annat e-postkonto. Du kan också använda [hantering av Azure AD](../governance/entitlement-management-overview.md) -behörighet för att konfigurera principer som [hanterar åtkomst för externa användare](../governance/entitlement-management-external-users.md#how-access-works-for-external-users). Och nu med tillgängligheten av [användar flöden för självbetjänings registrering](self-service-sign-up-overview.md)kan du tillåta externa användare att registrera sig för själva program. Upplevelsen kan anpassas för att möjliggöra registrering med en arbets-, skol-eller social identitet (som Google eller Facebook). Du kan också samla in information om användaren under registrerings processen. Mer information finns i [Azure AD B2B-dokumentationen](index.yml).
 
 - **Bygg användar resan med en lösning för identitets hantering med vit etikett för konsument-och kundriktade appar (Azure AD B2C)**. Om du är ett företag eller en utvecklare som skapar kundrelaterade appar kan du skala till miljon tals konsumenter, kunder eller medborgare med hjälp av Azure AD B2C. Utvecklare kan använda Azure AD som det fullständiga CIAM-systemet (Customer Identity and Access Management) för sina program. Kunder kan logga in med en identitet som de redan har upprättat (t. ex. Facebook eller Gmail). Med Azure AD B2C kan du helt anpassa och styra hur kunderna registrerar sig, loggar in och hanterar sina profiler när de använder dina program. Mer information finns i Azure AD B2C- [dokumentationen](../../active-directory-b2c/index.yml).
 

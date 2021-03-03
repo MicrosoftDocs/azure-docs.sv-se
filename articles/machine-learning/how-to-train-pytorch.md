@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216639"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661009"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Träna PyTorch-modeller i skala med Azure Machine Learning
 
@@ -285,35 +285,90 @@ En fullständig själv studie kurs om att köra distribuerade PyTorch med Horovo
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 Om du använder PyTorch inbyggda [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) -modulen som har skapats med hjälp av paketet **Torch. Distributed** i din utbildnings kod kan du också starta det distribuerade jobbet via Azure ml.
 
-För att kunna köra ett distribuerat PyTorch-jobb med DistributedDataParallel, anger du en [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) till- `distributed_job_config` parametern för ScriptRunConfig-konstruktorn. Om du vill använda NCCL-Server delen för Torch. Distributed anger `communication_backend='Nccl'` du i PyTorchConfiguration. I koden nedan kan du konfigurera ett distribuerat jobb med två noder. NCCL-Server delen är den rekommenderade Server delen för distribuerad GPU-utbildning i PyTorch.
+Om du vill starta ett distribuerat PyTorch-jobb i Azure ML har du två alternativ:
+1. Starta per process: Ange det totala antalet arbets processer som du vill köra och Azure ML kommer att hantera start av varje process.
+2. Start per nod med `torch.distributed.launch` : Ange det `torch.distributed.launch` kommando som du vill köra på varje nod. Torch-startverktyget hanterar start av arbets processer på varje nod.
 
-För distribuerade PyTorch-jobb som kon figurer ATS via PyTorchConfiguration kommer Azure ML att ange följande miljövariabler för nodernas beräknings mål:
+Det finns inga grundläggande skillnader mellan de här start alternativen. den är i stort sett upp till användarens preferens eller konventioner som bygger på vanilj PyTorch (till exempel blixt eller Hugging ansikte).
 
-* `AZ_BATCHAI_PYTORCH_INIT_METHOD`: URL för den delade fil system initieringen av process gruppen
-* `AZ_BATCHAI_TASK_INDEX`: arbets processens globala rangordning
+#### <a name="per-process-launch"></a>Starta per process
+Om du vill använda det här alternativet för att köra ett distribuerat PyTorch-jobb gör du följande:
+1. Ange utbildnings skript och-argument
+2. Skapa en [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) och ange `process_count` både och `node_count` . `process_count`Motsvarar det totala antalet processer som du vill köra för jobbet. Detta bör normalt vara lika med antalet GPU: er per nod multiplicerat med antalet noder. Om `process_count` inte anges startar Azure ml som standard en process per nod.
 
-Du kan ange de här miljövariablerna till motsvarande argument i övnings skriptet via `arguments` parametern ScriptRunConfig.
+Azure ML kommer att ange följande miljövariabler:
+* `MASTER_ADDR` -IP-adressen för den dator som ska vara värd för processen med rang 0.
+* `MASTER_PORT` – En kostnads fri port på den dator som ska vara värd för processen med rang 0.
+* `NODE_RANK` -Nodens rangordning för utbildning i flera noder. De möjliga värdena är 0 till (totalt antal noder-1).
+* `WORLD_SIZE` – Det totala antalet processer. Detta bör vara lika med det totala antalet enheter (GPU) som används för distribuerad utbildning.
+* `RANK` – Den aktuella processens rangordning (global). Möjliga värden är 0 till (världs storlek-1).
+* `LOCAL_RANK` – Den lokala (relativa) rangordningen för processen inom noden. De möjliga värdena är 0 till (antal processer på noden-1).
+
+Eftersom de nödvändiga miljövariablerna kommer att anges för dig av Azure ML, kan du använda [standard metod initierings metoden](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) för miljövariabler för att initiera process gruppen i din utbildnings kod.
+
+Följande kodfragment konfigurerar ett PyTorch-jobb med två noder, 2 processer per nod:
+```python
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import PyTorchConfiguration
+
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(process_count=4, node_count=2)
+
+src = ScriptRunConfig(
+  source_directory='./src',
+  script='train.py',
+  arguments=['--epochs', 25],
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
+```
+
+> [!WARNING]
+> För att kunna använda det här alternativet för utbildning med flera processer per nod måste du använda Azure ML python SDK >= 1.22.0, som `process_count` introducerades i 1.22.0.
+
+> [!TIP]
+> Om ditt utbildnings skript skickar information som en lokal rang eller rangordning som skript argument kan du referera till miljövariabeln (erna) i argumenten: `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` .
+
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>Start per nod med `torch.distributed.launch`
+PyTorch tillhandahåller ett start verktyg i [Torch. distributed. Launch](https://pytorch.org/docs/stable/distributed.html#launch-utility) som användarna kan använda för att starta flera processer per nod. `torch.distributed.launch`Modulen kommer att skapa flera utbildnings processer på varje nod.
+
+Följande steg visar hur du konfigurerar ett PyTorch-jobb med ett per-nod-start på Azure ML som kommer att uppnå motsvarigheten till att köra följande kommando:
+
+```shell
+python -m torch.distributed.launch --nproc_per_node <num processes per node> \
+  --nnodes <num nodes> --node_rank $NODE_RANK --master_addr $MASTER_ADDR \
+  --master_port $MASTER_PORT --use_env \
+  <your training script> <your script arguments>
+```
+
+1. Ange `torch.distributed.launch` kommandot för `command` `ScriptRunConfig` konstruktorns parameter. Azure ML kommer att köra det här kommandot på varje nod i utbildnings klustret. `--nproc_per_node` bör vara mindre än eller lika med antalet GPU: er som är tillgängliga på varje nod. `MASTER_ADDR`, `MASTER_PORT` och `NODE_RANK` alla anges av Azure ml, så att du bara kan referera till miljövariablerna i kommandot. Azure ML `MASTER_PORT` -uppsättningar till 6105, men du kan skicka ett annat värde till `--master_port` argument för `torch.distributed.launch` kommandot om du vill. (Start verktyget återställer miljövariablerna.)
+2. Skapa en `PyTorchConfiguration` och ange `node_count` . Du behöver inte ange `process_count` som Azure ml som standard för att starta en process per nod, vilket kommer att köra det kommando som du har angett.
 
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
 
-args = ['--dist-backend', 'nccl',
-        '--dist-url', '$AZ_BATCHAI_PYTORCH_INIT_METHOD',
-        '--rank', '$AZ_BATCHAI_TASK_INDEX',
-        '--world-size', 2]
+curated_env_name = 'AzureML-PyTorch-1.6-GPU'
+pytorch_env = Environment.get(workspace=ws, name=curated_env_name)
+distr_config = PyTorchConfiguration(node_count=2)
+launch_cmd = "python -m torch.distributed.launch --nproc_per_node 2 --nnodes 2 --node_rank $NODE_RANK --master_addr $MASTER_ADDR --master_port $MASTER_PORT --use_env train.py --epochs 50".split()
 
-src = ScriptRunConfig(source_directory=project_folder,
-                      script='pytorch_mnist.py',
-                      arguments=args,
-                      compute_target=compute_target,
-                      environment=pytorch_env,
-                      distributed_job_config=PyTorchConfiguration(communication_backend='Nccl', node_count=2))
+src = ScriptRunConfig(
+  source_directory='./src',
+  command=launch_cmd,
+  compute_target=compute_target,
+  environment=pytorch_env,
+  distributed_job_config=distr_config,
+)
+
+run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
-Om du i stället vill använda gloo-Server delen för distribuerad utbildning anger du `communication_backend='Gloo'` i stället. Gloo-Server delen rekommenderas för distribuerad CPU-utbildning.
-
-En fullständig själv studie kurs om att köra distribuerade PyTorch i Azure ML finns i [distribuerade PyTorch med DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo).
+En fullständig själv studie kurs om att köra distribuerade PyTorch i Azure ML finns i [distribuerade PyTorch med DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel).
 
 ### <a name="troubleshooting"></a>Felsökning
 

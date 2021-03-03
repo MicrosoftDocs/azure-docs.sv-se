@@ -1,7 +1,7 @@
 ---
 title: Snabb start – skapa och hantera åtkomsttoken
 titleSuffix: An Azure Communication Services quickstart
-description: Lär dig hur du hanterar identiteter och åtkomsttoken med hjälp av Azure Communication Services administrations klient bibliotek.
+description: Lär dig hur du hanterar identiteter och åtkomsttoken med hjälp av klient biblioteket för Azure Communication Services-identitets.
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,18 +10,16 @@ ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 246b8041e7e12ea1a1391cb4690d02892bc31b63
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8937210b366981d9768e5329989a8ad14f5e8f35
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325322"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657101"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>Snabb start: skapa och hantera åtkomsttoken
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-Kom igång med Azure Communication Services med hjälp av klient biblioteket för administration av kommunikations tjänster. Det gör att du kan skapa identiteter och hantera dina åtkomst-token. Identiteten representerar entiteten för ditt program i Azure Communication Service (till exempel användare eller enhet). Med åtkomst-token kan chatten och anropa klient biblioteken autentisera direkt mot Azure Communication Services. Vi rekommenderar att du genererar åtkomsttoken på en server-side-tjänst. Åtkomsttoken används sedan för att initiera klient biblioteken för kommunikations tjänster på klient enheter.
+Kom igång med Azure Communication Services med klient biblioteket för kommunikations tjänst identitet. Det gör att du kan skapa identiteter och hantera dina åtkomst-token. Identiteten representerar entiteten för ditt program i Azure Communication Service (till exempel användare eller enhet). Med åtkomst-token kan chatten och anropa klient biblioteken autentisera direkt mot Azure Communication Services. Vi rekommenderar att du genererar åtkomsttoken på en server-side-tjänst. Åtkomsttoken används sedan för att initiera klient biblioteken för kommunikations tjänster på klient enheter.
 
 Alla priser som visas i bilder i den här självstudien är endast i demonstrations syfte.
 
@@ -69,7 +67,7 @@ I den här snabbstarten har du lärt dig att:
 > [!div class="checklist"]
 > * Hantera identiteter
 > * Utfärda åtkomsttoken
-> * Använda klient biblioteket för administration av kommunikations tjänster
+> * Använd klient biblioteket för kommunikations tjänstens identitet
 
 
 > [!div class="nextstepaction"]
@@ -80,4 +78,3 @@ Du kanske också vill:
  - [Läs mer om autentisering](../concepts/authentication.md)
  - [Lägga till chatt i din app](./chat/get-started.md)
  - [Lär dig mer om klient-och server arkitektur](../concepts/client-and-server-architecture.md)
- 

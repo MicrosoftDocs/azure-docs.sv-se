@@ -2,18 +2,18 @@
 title: Arkitekturer för att distribuera Oracle-appar på Azure Virtual Machines | Microsoft Docs
 description: Program arkitekturer för att distribuera Oracle-appar, inklusive E-Business Suite, JD Edwards EnterpriseOne och östra på Microsoft Azure virtuella datorer med databaser i Azure eller i Oracle Cloud Infrastructure (OCI).
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965926"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669930"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Arkitekturer för att distribuera Oracle-program på Azure
 

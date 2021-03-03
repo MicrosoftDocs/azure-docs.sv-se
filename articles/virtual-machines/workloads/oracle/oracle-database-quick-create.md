@@ -2,18 +2,18 @@
 title: Skapa en Oracle-databas på en virtuell Azure-dator | Microsoft Docs
 description: Få snabbt en Oracle Database 12C-databas igång i Azure-miljön.
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ec6a8382e2c0ce2cb359a62dd3f80fc977c4b1c2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063070"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674653"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Skapa en Oracle Database på en virtuell Azure-dator
 
@@ -188,16 +188,16 @@ I den här uppgiften måste du konfigurera vissa externa slut punkter för datab
    echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
    ```
    
-10. Uppdatera ***/etc/hosts** _-filen med den offentliga IP-adressen och värd namnet.
+10. Uppdatera ***/etc/hosts*** -filen med den offentliga IP-adressen och värd namnet.
 
-    Ändra den _*_offentliga IP-adressen och VMName_*_ så att de motsvarar dina faktiska värden:
+    Ändra den ***offentliga IP-adressen och VMName*** så att de motsvarar dina faktiska värden:
   
     ```bash
     echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
     ```
 11. Uppdatera hostname-filen
     
-    Använd följande kommando för att lägga till domän namnet för den virtuella datorn i filen _ */etc/hostname**. Detta förutsätter att du har skapat en resurs grupp och en virtuell dator i regionen **östra** :
+    Använd följande kommando för att lägga till den virtuella datorns domän namn i **/etc/hostname** -filen. Detta förutsätter att du har skapat en resurs grupp och en virtuell dator i regionen **östra** :
     
     ```bash
     sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname

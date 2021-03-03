@@ -1,5 +1,5 @@
 ---
-title: Vanliga frågor och svar
+title: Vanliga frågor och svar (FAQ)
 description: I den här artikeln får du svar på vanliga frågor om Azure avdelningens kontroll.
 author: SunetraVirdi
 ms.author: suvirdi
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: eca0b9986c4da30adeeb02bc3d90d1e3d2892df7
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553876"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667814"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Vanliga frågor och svar om Azure avdelningens kontroll
 
@@ -33,10 +33,10 @@ I det här vanliga avsnittet besvaras vanliga frågor som kunder och fält grupp
 |Azure Blob Storage|Power BI|
 |Azure Synapse Analytics (SQL DW)|SQL Server |
 |Azure Cosmos DB|Teradata (tillgänglig i slutet av 2020)|
-|Hanterad Azure SQL-instans|SAP ECC (tillgängligt i slutet av 2020)|
+|Azure SQL Managed Instance|SAP ECC (tillgängligt i slutet av 2020)|
 |Azure-datautforskaren|SAP S/4 HANA (tillgänglig i slutet av 2020)|
 |Azure Data Lake Storage Gen1|Hive-Metaarkiv (tillgängligt i slutet av 2020)|
-|Azure Data Lake Storage Gen2|--|
+|Azure Data Lake Storage Gen2|Amazon S3|
 |Azure Files|--|
 |Azure SQL Database|--|
 

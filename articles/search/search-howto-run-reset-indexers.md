@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 06f9d336bb04aa26cea4ebcdae1cfd045e1c2a1b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361255"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667663"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>Köra eller återställa indexerare, kunskaper eller dokument
 
@@ -101,7 +101,7 @@ Om inga kunskaper har angetts körs hela färdigheter och om cachelagring har Ak
 > [!IMPORTANT] 
 > [Återställ dokument](/rest/api/searchservice/preview-api/reset-documents) finns i offentlig för hands version, endast tillgängligt via för hands versionen REST API. För hands versions funktionerna erbjuds i befintligt skick under [kompletterande användnings villkor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[API: et för återställda dokument](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents) accepterar en lista med dokument nycklar så att du kan uppdatera vissa dokument. Om det här alternativet anges blir återställnings parametrarna den enda Determinant av vad som bearbetas, oavsett andra ändringar i underliggande data. Om till exempel 20 blobbar har lagts till eller uppdaterats sedan den senaste indexeraren kördes, men du bara återställer ett dokument, så kommer bara det ett dokument att bearbetas.
+[API: et för återställda dokument](/rest/api/searchservice/preview-api/reset-documents) accepterar en lista med dokument nycklar så att du kan uppdatera vissa dokument. Om det här alternativet anges blir återställnings parametrarna den enda Determinant av vad som bearbetas, oavsett andra ändringar i underliggande data. Om till exempel 20 blobbar har lagts till eller uppdaterats sedan den senaste indexeraren kördes, men du bara återställer ett dokument, så kommer bara det ett dokument att bearbetas.
 
 På per dokument-basis uppdateras alla fält i Sök dokumentet med värden från data källan. Du kan inte välja och välja vilka fält som ska uppdateras. 
 

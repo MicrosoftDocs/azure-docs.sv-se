@@ -1,24 +1,24 @@
 ---
 title: Kända problem och fel sökning för Hybrid FIDO2 säkerhets nycklar – Azure Active Directory
-description: Lär dig mer om kända problem och hur du felsöker lösen ords lösa hybrid FIDO2 säkerhets nyckel inloggning med Azure Active Directory (för hands version)
+description: Lär dig mer om kända problem och hur du felsöker lösen ords lösa hybrid FIDO2 för säkerhets nycklar med hjälp av Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea034974e85febcffeb2494d87b666a39e524eb1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743283"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648788"
 ---
-# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Fel sökning för Hybrid distributioner av FIDO2-säkerhetsnycklar i Azure AD (för hands version)
+# <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Fel sökning för Hybrid distributioner av FIDO2-säkerhetsnycklar i Azure AD 
 
 Den här artikeln beskriver vanliga frågor om hybrid Azure AD-anslutna enheter och lösen ords lös inloggning till lokal resurser. Med den här funktionen för lösen ords skydd kan du aktivera Azure AD-autentisering på Windows 10-enheter för Hybrid Azure AD-anslutna enheter med hjälp av FIDO2-säkerhetsnycklar. Användare kan logga in på Windows på sina enheter med moderna autentiseringsuppgifter som FIDO2-nycklar och komma åt traditionella Active Directory Domain Services (AD DS) baserade resurser med en sömlös enkel inloggning (SSO) till sina lokal-resurser.
 
@@ -29,12 +29,9 @@ Följande scenarier för användare i en hybrid miljö stöds:
 
 Information om hur du kommer igång med FIDO2-säkerhetsnycklar och hybrid åtkomst till lokala resurser finns i följande artiklar:
 
-* [Lösen ords skydds nycklar](howto-authentication-passwordless-security-key.md)
+* [Lösenordsfria säkerhetsnycklar](howto-authentication-passwordless-security-key.md)
 * [Lösenordsfritt Windows 10](howto-authentication-passwordless-security-key-windows.md)
-* [Lokalt lösen ord](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 säkerhets nycklar är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+* [Lösenordsfritt lokalt](howto-authentication-passwordless-security-key-on-premises.md)
 
 ## <a name="known-issues"></a>Kända problem
 
@@ -62,7 +59,7 @@ Kontrol lera att tillräckligt många domänkontrollanter har korrigerats för a
 
 Om du kan se en DOMÄNKONTROLLANT med den här funktionen kan användarens lösen ord ha ändrats sedan de loggade in, eller så finns det ett annat problem. Samla in loggar enligt beskrivningen i följande avsnitt för Microsoft Support-teamet för fel sökning.
 
-## <a name="troubleshoot"></a>Felsök
+## <a name="troubleshoot"></a>Felsöka
 
 Det finns två områden för att felsöka [problem med Windows-klienter](#windows-client-issues)eller [distributions problem](#deployment-issues).
 

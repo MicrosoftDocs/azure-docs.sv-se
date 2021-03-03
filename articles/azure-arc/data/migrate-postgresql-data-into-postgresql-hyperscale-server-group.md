@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941764"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643583"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Migrera PostgreSQL Database till Azure Arc Enabled PostgreSQL för storskalig Server grupp
 
@@ -53,20 +53,20 @@ Vi illustrerar de här stegen med `pgAdmin` verktyget.
 
 - **Mål**  
     En postgres-server som körs i en Azure-båg miljö och med namnet postgres01. Det är av version 12. Den har ingen databas förutom standard postgres-databasen.  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="migrerings källa":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrera-mål":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>Gör en säkerhets kopia av käll databasen lokalt
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="migrerings källa":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrera-källa-säkerhets kopiering":::
 
 Konfigurera den:
 1. Ge den ett fil namn: **MySourceBackup**
 2. Ange formatet till **anpassad** 
- :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="migrerings källa":::
+ :::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="migrering-källa-säkerhetskopiera – konfigurera":::
 
 Säkerhets kopieringen har slutförts:  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="migrerings källa":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrera-källa-säkerhets kopiering slutförd":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Skapa en tom databas på mål systemet i din Azure Arc-aktiverad PostgreSQL-Server grupp
 
@@ -94,21 +94,23 @@ Returnerar utdata som:
 ]
 ```
 
-Nu ska vi namnge mål databasen **RESTORED_MyOnPremPostgresDB**  
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrera-mål-DB-skapa"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
+Nu ska vi namnge mål databasen **RESTORED_MyOnPremPostgresDB**.
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrera-mål-DB-skapa" lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>Återställa databasen i din ARC-konfiguration
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="migrerings källa":::
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-DB-Återställ":::
 
 Konfigurera återställningen:
 1. Peka på filen som innehåller säkerhets kopian som ska återställas: **MySourceBackup**
-2. Behåll formatet inställt på **anpassad eller tar**med 
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="migrerings källa":::
+2. Behåll formatet inställt på **anpassad eller tar** med 
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="migrera-DB-Restore-Configure":::
 
 3. Klicka på **Återställ**.  
 
    Återställningen har slutförts.  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="migrerings källa":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrera-DB-Återställning-slutförd":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Kontrol lera att databasen har återställts i Azure Arc-aktiverade PostgreSQL för storskalig Server grupp
 
@@ -118,7 +120,20 @@ Använd någon av följande metoder:
 
 Expandera postgres-instansen som finns i konfigurationen av Azure-bågen. Tabellen i databasen som du har återställt visas och när du väljer data som visas på samma rad som den har i den lokala instansen:
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="migrerings källa"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrera-DB-Restore-Verification":::
+
+**Inifrån `psql` Azure Arc-installationen:**  
+
+I din ARC-installation kan du använda `psql` för att ansluta till din postgres-instans, ange databasens kontext till `RESTORED_MyOnPremPostgresDB` och fråga data:
+
+1. Visa en lista över slut punkter som hjälper dig från `psql` anslutnings strängen:
+
+   ```console
+   azdata arc postgres endpoint list -n postgres01
+   [
+     {
+       "Description": "PostgreSQL Instance",
+       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
      },
      {
        "Description": "Log Search Dashboard",
@@ -179,6 +194,6 @@ Expandera postgres-instansen som finns i konfigurationen av Azure-bågen. Tabell
     * [Utforma en databas för flera innehavare](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [Utforma en instrument panel för real tids analys](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> * I de här dokumenten hoppar du över avsnitten logga in på **Azure Portal**och **skapar en Azure Database för postgres-storskalig (citus)**. Implementera de återstående stegen i din Azure Arc-distribution. Dessa avsnitt är speciella för Azure Database for PostgreSQL disscale (citus) som erbjuds som en PaaS-tjänst i Azure-molnet, men andra delar av dokumenten är direkt tillämpliga på den Azure Arc-aktiverade PostgreSQL-skalan.
+> * I de här dokumenten hoppar du över avsnitten logga in på **Azure Portal** och **skapar en Azure Database för postgres-storskalig (citus)**. Implementera de återstående stegen i din Azure Arc-distribution. Dessa avsnitt är speciella för Azure Database for PostgreSQL disscale (citus) som erbjuds som en PaaS-tjänst i Azure-molnet, men andra delar av dokumenten är direkt tillämpliga på den Azure Arc-aktiverade PostgreSQL-skalan.
 
 - [Skala ut din Azure Database for PostgreSQL Hyperscale-servergrupp](scale-out-postgresql-hyperscale-server-group.md)

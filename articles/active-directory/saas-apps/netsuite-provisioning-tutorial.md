@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696497"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648092"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Netsuite för automatisk användar etablering
 
 Syftet med den här självstudien är att visa de steg du behöver utföra i Netsuite-OneWorld och Azure AD för att automatiskt etablera och avetablera användar konton från Azure AD till Netsuite.
 
 > [!WARNING]
-> Den här etablerings integrationen upphör att fungera i februari 2020 på grund av en ändring i Netsuite-API: er som används av Microsoft för att etablera användare i Netsuite. Därför kommer etablerings funktionerna i Netsuite-programmet i Azure Active Directory Enterprise App Gallery att tas bort snart. Programmets SSO-funktioner är oförändrade. Microsoft arbetar med Netsuite för att bygga en ny modern etablerings integrering, men det finns för närvarande ingen ETA på när detta kommer att slutföras.
+> Den här etablerings integrationen upphör att fungera med lanseringen av NetSuites våren 2021-uppdatering på grund av en ändring i Netsuite-API: er som används av Microsoft för att etablera användare i Netsuite.  Den här uppdateringen når Netsuite-kunder mellan februari och april 2021. Därför kommer etablerings funktionerna i Netsuite-programmet i Azure Active Directory Enterprise App Gallery att tas bort snart. Programmets SSO-funktioner är oförändrade. Microsoft arbetar med Netsuite för att bygga en ny modern etablerings integrering, men det finns för närvarande ingen ETA på när detta kommer att slutföras.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

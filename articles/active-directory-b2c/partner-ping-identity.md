@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 430629f94695f0689422434c8d80fe4e1876e5dd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900271"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650234"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Självstudie: konfigurera ping identitet med Azure Active Directory B2C för säker hybrid åtkomst
 
@@ -80,7 +80,7 @@ För att komma igång behöver du:
 
 - En Azure-prenumeration. Om du inte har något kan du skaffa ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 
-- En [Azure AD B2C klient](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) som är länkad till din Azure-prenumeration.
+- En [Azure AD B2C klient](./tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.
 
 - PingAccess och PingFederate distribuerade i Docker-behållare eller direkt på virtuella Azure-datorer.
 
@@ -107,7 +107,7 @@ Om du vill följa den här konventionen uppdaterar du Azure AD B2C Issuer-uppdat
 
 ![bild visar inställningarna för token](./media/partner-ping/token-setting.png)
 
-I de avancerade principerna kan detta konfigureras med **IssuanceClaimPattern** -metadata-elementet till **AuthorityWithTfp** -värdet i den [tekniska profilen för JWT-token](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile).
+I de avancerade principerna kan detta konfigureras med **IssuanceClaimPattern** -metadata-elementet till **AuthorityWithTfp** -värdet i den [tekniska profilen för JWT-token](./jwt-issuer-technical-profile.md).
 
 ## <a name="configure-pingaccesspingfederate"></a>Konfigurera PingAccess/PingFederate
 
@@ -160,7 +160,7 @@ Följ de här stegen för att skapa en webbsession:
 
 7. I fältet **klient hemlighet** anger du den **nyckel** som du skapade för programmet i Azure AD.
 
-8. Valfritt – du kan skapa och använda anpassade anspråk med Microsoft Graph-API: et. Om du väljer att göra det väljer du **Avancerat** och avmarkerar alternativet **begär profil** och uppdaterar alternativ för **användarattribut** . Mer information om hur du använder anpassade anspråk finns i [Använd ett anpassat anspråk](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#optional---use-a-custom-claim).
+8. Valfritt – du kan skapa och använda anpassade anspråk med Microsoft Graph-API: et. Om du väljer att göra det väljer du **Avancerat** och avmarkerar alternativet **begär profil** och uppdaterar alternativ för **användarattribut** . Mer information om hur du använder anpassade anspråk finns i [Använd ett anpassat anspråk](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers.md).
 
 9. Välj **Spara**
 
@@ -265,6 +265,6 @@ Konfigurera PingFederate för att federera till flera IDP: er som tillhandahåll
 
 Mer information finns i följande artiklar
 
-- [Anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

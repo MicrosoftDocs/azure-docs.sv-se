@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory inloggning med lösen ord (för hands version)
+title: Azure Active Directory inloggning med lösen ord
 description: Läs om alternativ för lösen ords lös inloggning för att Azure Active Directory med hjälp av FIDO2-säkerhetsnycklar eller Microsoft Authenticator-appen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013013"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647565"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Lösen ords verifierings alternativ för Azure Active Directory
 
@@ -62,8 +62,6 @@ Du kan också låta din personals telefon bli en metod för lösen ords lös aut
 
 Authenticator-appen förvandlar en iOS-eller Android-telefon till en stark, lösen ords rik autentiseringsuppgift. Användare kan logga in på vilken plattform eller webbläsare som helst genom att få ett meddelande till sin telefon, matcha ett nummer som visas på skärmen till det som visas på telefonen och sedan använda sina bio mått (touch eller FACET) eller PIN-kod för att bekräfta. Se [Hämta och installera Microsoft Authenticator-appen](../user-help/user-help-auth-app-download-install.md) för installations information.
 
-Lösen ords lös inloggning med Microsoft Authenticator-appen till Azure AD är för närvarande en för hands version. Användning av Microsoft Authenticator-appen för sekundär autentisering för Azure AD Multi-Factor Authentication, självbetjäning för återställning av lösen ord (SSPR) eller OATH-programvaru-token är GA. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
-
 Lösenordsautentisering som använder Authenticator-appen följer samma grundläggande mönster som Windows Hello för företag. Det är lite mer komplicerat eftersom användaren måste identifieras så att Azure AD kan hitta den Microsoft Authenticator app-version som används:
 
 ![Diagram som beskriver de steg som ingår i användar inloggningen med Microsoft Authenticator-appen](./media/concept-authentication-passwordless/authenticator-app-flow.png)
@@ -91,8 +89,6 @@ FIDO2-säkerhetsnycklar är en unphishable standard-baserad autentiseringsmetod 
 Användare kan registrera sig och sedan välja en säkerhets nyckel för FIDO2 i inloggnings gränssnittet som deras huvudsakliga autentiserings sätt. Dessa säkerhets nycklar för FIDO2 är vanligt vis USB-enheter, men kan också använda Bluetooth eller NFC. Med en maskin varu enhet som hanterar autentiseringen ökar säkerheten för ett konto eftersom det inte finns något lösen ord som kan exponeras eller gissas.
 
 FIDO2-säkerhetsnycklar kan användas för att logga in på sina Azure AD-eller hybrid Azure AD-anslutna Windows 10-enheter och få enkel inloggning till deras moln resurser och lokala resurser. Användare kan också logga in i webbläsare som stöds. FIDO2-säkerhetsnycklar är ett bra alternativ för företag som är mycket känsliga eller har scenarier eller anställda som inte är villiga eller kan använda sin telefon som en andra faktor.
-
-Logga in med FIDO2 säkerhets nycklar till Azure AD finns för närvarande i för hands version. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 ![Logga in på Microsoft Edge med en säkerhets nyckel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -152,15 +148,15 @@ Kom igång med FIDO2-säkerhetsnycklar genom att utföra följande instruktioner
 > [!div class="nextstepaction"]
 > [Aktivera lösen ords skydd med FIDO2-säkerhetsnycklar](howto-authentication-passwordless-security-key.md)
 
-## <a name="what-scenarios-work-with-the-preview"></a>Vilka scenarier fungerar med för hands versionen?
+## <a name="supported-scenarios"></a>Scenarier som stöds
 
-Inloggnings funktionerna i Azure AD är för närvarande en för hands version. Följande gäller:
+Följande gäller:
 
 - Administratörer kan aktivera metoder för lösen ords kryptering för sina klienter
 - Administratörer kan rikta alla användare eller välja användare/grupper inom sin klient organisation för varje metod
 - Slutanvändare kan registrera och hantera dessa metoder för lösen ords kryptering i sin konto Portal
-- Slutanvändare kan logga in med dessa metoder för lösen ords kryptering
-   - Microsoft Authenticator app: fungerar i scenarier där Azure AD-autentisering används, inklusive i alla webbläsare, under installationen av OOBE-installationen (Windows 10 out of Box) och med integrerade mobilappar på alla operativ system.
+- Slutanvändare kan logga in med dessa metoder för lösen ords kryptering:
+   - Microsoft Authenticator app: fungerar i scenarier där Azure AD-autentisering används, inklusive i alla webbläsare, under installationen av Windows 10 och med integrerade mobilappar på alla operativ system.
    - Säkerhets nycklar: arbeta på Lås skärmen för Windows 10 och webben i webbläsare som stöds, t. ex. Microsoft Edge (både äldre och nya kanter).
 
 ## <a name="choose-a-passwordless-method"></a>Välj en metod för lösen ords avtryck

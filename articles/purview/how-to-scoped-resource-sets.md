@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 517b07eecdbc63754f46fcf1051bf5b987dbc20e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654610"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668443"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Skapa konfigurations regler för omfattnings resurs uppsättning
 
@@ -43,7 +43,7 @@ Följ stegen nedan för att skapa en ny konfiguration av en omfångs resurs upps
 
 När du skapar regler för omfattnings resurs uppsättning använder du följande syntax för att ange vilka till gångs regler som gäller för.
 
-### <a name="static-replacers-single-brackets"></a>Statiska ersättnings platser (enkla hakparenteser)
+### <a name="dynamic-replacers-single-brackets"></a>Dynamiska repositioner (enkla hakparenteser)
 
 Enkla hakparenteser används som **dynamiska återplacerare** i en regel för begränsad resurs uppsättning. Ange en dynamisk ersättnings plats i det kvalificerade namnet med hjälp av format `{<replacerName:<replacerType>}` . Om den matchas används dynamiska omplaceringar som ett grupperingsintervall som anger att till gångar ska visas som en resurs uppsättning. Om till gångarna grupperas i en resurs uppsättning skulle den kvalificerade sökvägen för resurs uppsättningen innehålla `{replacerName}` var den har angetts.
 
@@ -92,7 +92,7 @@ Nedan visas ordningen för åtgärder för att tillämpa regler för begränsad 
 
 SAP-dataextrahering i fullständig och delta belastning
 
-*Indata*
+#### <a name="inputs"></a>Indata
 
 Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
@@ -102,7 +102,7 @@ Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
 
-*Regel för begränsad resurs uppsättning*
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
 
 **Omfattning:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -112,7 +112,7 @@ Projektfiler
 
 **Resurs uppsättning:** True
 
-*Resultat*
+#### <a name="output"></a>Utdata 
 
 En resurs uppsättnings till gång
 
@@ -124,7 +124,7 @@ En resurs uppsättnings till gång
 
 IoT-data i Avro-format
 
-*Indata*
+#### <a name="inputs"></a>Indata 
 
 Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -132,7 +132,7 @@ Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Regler för begränsad resurs uppsättning*
+#### <a name="scoped-resource-set-rules"></a>Regler för begränsad resurs uppsättning 
 
 **Omfattning:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -150,9 +150,9 @@ Regel 2
 
 **Kvalificerat namn:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-**Resurs uppsättning: true**
+#### <a name="resource-set-true"></a>*Resurs uppsättning: true* 
 
-*Utdata*
+#### <a name="outputs"></a>Utdata 
 
 2 resurs uppsättningar 
 
@@ -172,7 +172,7 @@ Resurs uppsättning 2
 
 IoT-data i Avro-format
 
-*Indata*
+#### <a name="inputs"></a>Indata 
 
 Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -180,7 +180,7 @@ Projektfiler
 -   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Regel för begränsad resurs uppsättning*
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
 
 **Omfattning:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -190,7 +190,7 @@ Projektfiler
 
 **Resurs uppsättning:** True
 
-*Utdata*
+#### <a name="outputs"></a>Utdata 
 
 Resurs uppsättning 1
 
@@ -208,7 +208,7 @@ Resurs uppsättning 2
 
 Gruppera inte i resurs uppsättningar
 
-*Indata*
+#### <a name="inputs"></a>Indata 
 
 Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
@@ -216,7 +216,7 @@ Projektfiler
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
 -   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-*Regel för begränsad resurs uppsättning*
+#### <a name="scoped-resource-set-rule"></a>Regel för begränsad resurs uppsättning 
 
 **Omfattning:**https://myazureblob.blob.core.windows.net/bar/
 
@@ -226,7 +226,7 @@ Projektfiler
 
 **Resurs uppsättning:** falskt
 
-*Utdata*
+#### <a name="outputs"></a>Utdata 
 
 4 enskilda till gångar
 

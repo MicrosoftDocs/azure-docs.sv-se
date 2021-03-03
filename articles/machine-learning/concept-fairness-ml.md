@@ -10,18 +10,18 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871510"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659689"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Minimera eventuell rättvishet i Machine Learning-modeller (för hands version)
 
 Lär dig mer om skälighet i maskin inlärning och hur python-paketet [Fairlearn](https://fairlearn.github.io/) med öppen källkod kan hjälpa dig att undvika problem med att lösa problemen i Machine Learning-modeller. Om du inte gör en satsning på att förstå skälighet problem och utvärdera skälighet när du skapar maskin inlärnings modeller kan du skapa modeller som ger oskäliga resultat.
 
-Följande översikt över [användar handboken](https://fairlearn.github.io/master/user_guide/index.html) för Fairlearn-paketet med öppen källkod beskriver hur du använder det för att utvärdera skälighet för de AI-system som du skapar.  Fairlearn-paketet med öppen källkod kan också erbjuda alternativ som hjälper dig att minimera eller hjälpa till att minska eventuella skälighet problem.  Se [hur-till-och-](how-to-machine-learning-fairness-aml.md) [exempel antecknings böckerna](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) möjliggör SKÄLIGHET-utvärdering av AI-system under utbildning på Azure Machine Learning.
+Följande översikt över [användar handboken](https://fairlearn.github.io/main/user_guide/index.html) för Fairlearn-paketet med öppen källkod beskriver hur du använder det för att utvärdera skälighet för de AI-system som du skapar.  Fairlearn-paketet med öppen källkod kan också erbjuda alternativ som hjälper dig att minimera eller hjälpa till att minska eventuella skälighet problem.  Se [hur-till-och-](how-to-machine-learning-fairness-aml.md) [exempel antecknings böckerna](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) möjliggör SKÄLIGHET-utvärdering av AI-system under utbildning på Azure Machine Learning.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Vad är skälighet i Machine Learning-modeller?
@@ -100,7 +100,7 @@ Fairlearn-paketet med öppen källkod tillhandahåller postprocessing och minska
 - Minskning: dessa algoritmer tar en standard uppskattning för maskin inlärning i svart form (t. ex. en LightGBM modell) och genererar en uppsättning omarbetade modeller med hjälp av en sekvens med åter viktade inlärnings data uppsättningar. Till exempel kan sökande till en viss kön vara viktad eller nedviktad för att omträna modeller och minska olikheter i olika jämställdhets grupper. Användarna kan sedan välja en modell som ger bästa möjliga kompromisser mellan precisionen (eller andra prestanda mått) och olikheter, som vanligt vis skulle behöva baseras på affärs regler och kostnads beräkningar.  
 - Efter bearbetning: dessa algoritmer tar en befintlig klassificerare och den känsliga funktionen som indata. Sedan härleder de en transformering av klassificerarens förutsägelse för att genomdriva de angivna skälighet-begränsningarna. Den största fördelen med tröskelvärdes optimering är dess enkelhet och flexibilitet eftersom den inte behöver träna om modellen. 
 
-| Integritetsalgoritm | Description | Machine Learning-uppgift | Känsliga funktioner | Paritets begränsningar som stöds | Typ av algoritm |
+| Integritetsalgoritm | Beskrivning | Machine Learning-uppgift | Känsliga funktioner | Paritets begränsningar som stöds | Typ av algoritm |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | En svart ruta till god klassificering som beskrivs i [en minsknings metod för god klassificering](https://arxiv.org/abs/1803.02453) | Binära klassificering | Kategoriska | [Demografisk paritet](#parity-constraints), [desamma strider](#parity-constraints) | Minskning |
 | `GridSearch` | Svart ruta som beskrivs i [en minsknings metod för god klassificering](https://arxiv.org/abs/1803.02453)| Binära klassificering | Binär | [Demografisk paritet](#parity-constraints), [desamma strider](#parity-constraints) | Minskning |
@@ -109,6 +109,6 @@ Fairlearn-paketet med öppen källkod tillhandahåller postprocessing och minska
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du använder de olika komponenterna genom att kontrol lera Fairlearn- [GitHub](https://github.com/fairlearn/fairlearn/), [användar handboken](https://fairlearn.github.io/master/user_guide/index.html), [exempel](https://fairlearn.github.io/master/auto_examples/)och [exempel antecknings böcker](https://github.com/fairlearn/fairlearn/tree/master/notebooks).
+- Lär dig hur du använder de olika komponenterna genom att kontrol lera Fairlearn- [GitHub](https://github.com/fairlearn/fairlearn/), [användar handboken](https://fairlearn.github.io/main/user_guide/index.html), [exempel](https://fairlearn.github.io/main/auto_examples/index.html)och [exempel antecknings böcker](https://github.com/fairlearn/fairlearn/tree/master/notebooks).
 - Lär dig [hur du](how-to-machine-learning-fairness-aml.md) aktiverar skälighet-utvärdering av Machine Learning-modeller i Azure Machine Learning.
 - Se [exempel antecknings böcker](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) för ytterligare skälighet utvärderings scenarier i Azure Machine Learning. 

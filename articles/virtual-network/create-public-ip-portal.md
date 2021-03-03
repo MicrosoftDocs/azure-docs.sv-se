@@ -2,25 +2,26 @@
 title: Skapa en offentlig IP-Azure Portal
 description: Lär dig hur du skapar en offentlig IP-adress i Azure Portal
 services: virtual-network
-documentationcenter: na
-author: blehr
+author: asudbring
 ms.service: virtual-network
-ms.devlang: na
+ms.subservice: ip-services
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/28/2020
-ms.author: blehr
-ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/22/2021
+ms.author: allensu
+ms.openlocfilehash: 5c5650d896442f10846e16903a1231010d032a44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550243"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675213"
 ---
-# <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure Portal
+# <a name="create-a-public-ip-address-using-the-azure-portal"></a>Skapa en offentlig IP-adress med hjälp av Azure Portal
 
-Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure Portal. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](./public-ip-addresses.md).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](./ipv6-overview.md).
+Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure Portal. 
+
+Mer information om resurser som kan kopplas till den offentliga IP-adressen och skillnaden mellan Basic-och standard-SKU: er finns i [offentliga IP-adresser](./public-ip-addresses.md). 
+
+Den här artikeln fokuserar på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](./ipv6-overview.md).
 
 # <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-create-public-ip-standard-zones)
 
@@ -28,49 +29,60 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Välj **Skapa en resurs**. 
-3. I rutan Sök skriver du *offentlig IP-adress*.
-4. I Sök resultaten väljer du **offentlig IP-adress**. Sedan väljer du **skapa** på sidan **offentlig IP-adress** .
+3. I rutan Sök anger du **offentlig IP-adress**. Välj **offentlig IP-adress** i Sök resultaten.
+4. På sidan **offentlig IP-adress** väljer du **skapa**.
 5. På sidan **skapa offentlig IP-adress** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                       |
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **standard**         |
-    | Nivå (om den visas *)                  | Välj **region**         |
-    | Name                    | Ange *myStandardZRPublicIP*          |
-    | Tilldelning av IP-adress   | OBS! detta kommer att låsas som "statisk"                                        |
-    | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
-    | DNS-namnetikett          | Lämna värdet tomt    |
+    | Nivå                   | Välj **region**         |
+    | Namn                    | Ange **myStandardZRPublicIP**          |
+    | Tilldelning av IP-adress   | Observera att det här alternativet är låst som "statisk"                                        |
+    | Cirkulations inställningar      | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](./routing-preference-overview.md). |
+    | Tids gräns för inaktivitet (minuter)  | Lämna standardvärdet **4**.        |
+    | DNS-namnetikett          | Lämna värdet tomt.    |
     | Prenumeration            | Välj din prenumeration.   |
-    | Resursgrupp          | Välj **Skapa ny** , ange myResourceGroup och välj sedan **OK** |
+    | Resursgrupp          | Välj **Skapa ny**, ange **myResourceGroup**. </br> Välj **OK**. |
     | Location                | Välj **USA, östra 2**      |
     | Tillgänglighetszon       | Välj **zon – redundant**, ingen zon eller Välj en speciell zon (se anmärkning nedan) |
 
-Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)  Mer information om tillgänglighets zoner finns i [Översikt över tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview).
+:::image type="content" source="./media/create-public-ip-portal/create-standard-ip.png" alt-text="Skapa standard-IP-adress i Azure Portal" border="false":::
 
-\* =-Nivån relaterar till Load Balancer funktionerna i [flera regioner](../load-balancer/cross-region-overview.md) , för närvarande i för hands version.
+> [!NOTE]
+> De här valen är giltiga i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones). </br>
+Du kan välja en zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem. </br> Mer information om tillgänglighets zoner finns i [Översikt över tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview).
+
+\* =-Nivån relaterar till funktionen för [belastnings utjämning i flera regioner](../load-balancer/cross-region-overview.md) , för närvarande i för hands version.
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-create-public-ip-basic)
 
-Använd följande steg för att skapa en grundläggande statisk offentlig IP-adress med namnet **myBasicPublicIP**.  Grundläggande offentliga IP-adresser har inte konceptet tillgänglighets zoner.
+I det här avsnittet skapar du en grundläggande offentlig IP-adress med namnet **myBasicPublicIP**. 
+
+> [!NOTE]
+> Grundläggande offentliga IP-adresser har inte stöd för tillgänglighets zoner.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Välj **Skapa en resurs**. 
-3. I rutan Sök skriver du *offentlig IP-adress*.
-4. I Sök resultaten väljer du **offentlig IP-adress**. Sedan väljer du **skapa** på sidan **offentlig IP-adress** .
+3. I rutan Sök anger du **offentlig IP-adress**. Välj **offentlig IP-adress** i Sök resultaten.
+4. På sidan **offentlig IP-adress** väljer du **skapa**.
 5. På sidan **skapa offentlig IP-adress** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                       |
     | ---                     | ---                         |
     | IP-version              | Välj IPv4                 |    
-    | SKU                     | Välj **standard**         |
-    | Name                    | Ange *myBasicPublicIP*          |
+    | SKU                     | Välj **grundläggande**         |
+    | Namn                    | Ange *myBasicPublicIP*          |
+    | Cirkulations inställningar      | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](./routing-preference-overview.md). |
     | Tilldelning av IP-adress   | Välj **statisk** (se anmärkning nedan)                                     |
-    | Tids gräns för inaktivitet (minuter)  | Lämna värdet vid 4        |
+    | Tids gräns för inaktivitet (minuter)  | Lämna standardvärdet **4**.       |
     | DNS-namnetikett          | Lämna värdet tomt    |
     | Prenumeration            | Välj din prenumeration.   |
-    | Resursgrupp          | Välj **Skapa ny** , ange myResourceGroup och välj sedan **OK** |
+    | Resursgrupp          | Välj **Skapa ny**, ange **myResourceGroup**. </br> Välj **OK**. |
     | Location                | Välj **USA, östra 2**      |
+
+:::image type="content" source="./media/create-public-ip-portal/create-standard-ip.png" alt-text="Skapa standard-IP-adress i Azure Portal" border="false":::
 
 Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dynamisk** IP-tilldelning.
 
@@ -78,7 +90,7 @@ Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dyn
 
 ## <a name="additional-information"></a>Ytterligare information 
 
-Mer information om de enskilda fälten ovan finns i [hantera offentliga IP-adresser](./virtual-network-public-ip-address.md#create-a-public-ip-address).
+Mer information om de enskilda fälten som anges ovan finns i [hantera offentliga IP-adresser](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Nästa steg
 - Associera en [offentlig IP-adress till en virtuell dator](./associate-public-ip-address-vm.md#azure-portal)

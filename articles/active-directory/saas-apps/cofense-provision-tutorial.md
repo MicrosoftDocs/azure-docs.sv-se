@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 084592a8db47a94a0fcd683105f749f514c05ea3
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247581"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646052"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Cofense för automatisk användar etablering
 
@@ -117,11 +117,11 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |name.givenName|Sträng|
    |name.familyName|Sträng|
    |Name. honorificSuffix|Sträng|
-   |phoneNumbers [typ EQ "Work"]. värde|Sträng|
+   |phoneNumbers[type eq "work"].value|Sträng|
    |phoneNumbers [Skriv EQ "hem"]. värde|Sträng|
    |phoneNumbers [Type EQ "Övrigt"]. värde|Sträng|
    |phoneNumbers [Type EQ "pager"]. värde|Sträng|
-   |phoneNumbers [Type EQ "Mobile"]. värde|Sträng|
+   |phoneNumbers[type eq "mobile"].value|Sträng|
    |phoneNumbers [Type EQ "fax"]. värde|Sträng|
    |adresser [Type EQ "other"]. formaterad|Sträng|
    |adresser [Type EQ "Work"]. formaterad|Sträng|

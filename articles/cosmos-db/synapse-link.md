@@ -7,18 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ed909cf3feb17930b045dee1031ed5a6209b63d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 1b8c0c5bf533765e589e022233af14855b26d29c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029023"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656949"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Vad är Azure Synapse Link för Azure Cosmos DB?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Stöd för Synapse-server utan SQL-pool för Azure Synapse-länken för Azure Cosmos DB är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 Azure Synapse-länken för Azure Cosmos DB är en molnbaserad hybrid transaktions-och analys bearbetnings funktion (HTAP) som gör att du kan köra nära real tids analys över drifts data i Azure Cosmos DB. Azure Synapse-länken skapar en tätt sömlös integrering mellan Azure Cosmos DB och Azure Synapse Analytics.
 
@@ -101,6 +98,20 @@ Den här integrationen möjliggör följande HTAP-scenarier för olika användar
 
 Mer information om stöd för Azure Synapse Analytics runtime för Azure Cosmos DB finns i [Azure Synapse Analytics for Cosmos DB support](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md).
 
+## <a name="security"></a>Säkerhet
+
+Med Synapse-länken kan du köra nära real tids analys över dina verksamhets kritiska data i Azure Cosmos DB. Det är viktigt att se till att kritiska affärs data lagras säkert i både transaktions-och analys lager. Azure Synapse-länken för Azure Cosmos DB är utformad för att hjälpa till att uppfylla dessa säkerhets krav genom följande funktioner:
+
+* **Nätverks isolering med privata slut punkter** – du kan styra nätverks åtkomsten till data i transaktions-och analys butikerna oberoende av varandra. Nätverks isolering görs med hjälp av separata hanterade privata slut punkter för varje butik, inom hanterade virtuella nätverk i Azure Synapse-arbetsytor. Mer information finns i så här [konfigurerar du privata slut punkter för analys av](analytical-store-private-endpoints.md) artikel.
+
+* **Data kryptering med Kundhanterade nycklar** – du kan smidigt kryptera data i transaktions-och analys lager med samma Kundhanterade nycklar på ett automatiskt och transparent sätt. Mer information finns i artikeln så här [konfigurerar du kund hanterade nycklar](how-to-setup-cmk.md) .
+
+* **Säker nyckel hantering** – åtkomst till data i analys lager från Synapse Spark-och Synapse-server utan SQL-pooler kräver hantering av Azure Cosmos DB nycklar inom Synapse Analytics-arbetsytor. I stället för att använda Azure Cosmos DB konto nycklar infogade i Spark-jobb eller SQL-skript ger Azure Synapse-länken fler säkra funktioner.
+
+  * När du använder Synapse-server utan SQL-pooler kan du fråga Azure Cosmos DB Analytical Store genom att i förväg skapa SQL-autentiseringsuppgifter som lagrar konto nycklarna och refererar till dem i `OPENROWSET` funktionen. Mer information finns i [fråga med en server lös SQL-pool i Azure Synapse Link](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) -artikeln.
+
+  * När du använder Synapse Spark kan du lagra konto nycklarna i länkade tjänst objekt som pekar på en Azure Cosmos DB-databas och referera till detta i Spark-konfigurationen vid körning. Mer information finns i [Kopiera data till en dedikerad SQL-pool med hjälp av Apache Spark](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md) artikel.
+
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>När ska jag använda Azure Synapse-länken för Azure Cosmos DB?
 
 Synapse-länk rekommenderas i följande fall:
@@ -117,15 +128,13 @@ Synapse-länk rekommenderas inte om du söker efter traditionella informations l
 
 ## <a name="limitations"></a>Begränsningar
 
-* Azure Synapse-länk för Azure Cosmos DB stöds för SQL API och Azure Cosmos DB API för MongoDB. Det finns inte stöd för Gremlin-API, API för Cassandra och Tabell-API. 
+* Azure Synapse Link for Azure Cosmos DB stöds för SQL API och Azure Cosmos DB API for MongoDB. Det finns inte stöd för Gremlin-API, API för Cassandra och Tabell-API.
 
 * Analys lager kan bara aktive ras för nya behållare. Om du vill använda analytisk lagring för befintliga behållare migrerar du data från dina befintliga behållare till nya behållare med hjälp av [Azure Cosmos DB Migreringsverktyg](cosmosdb-migrationchoices.md). Du kan aktivera Synapse-länk på nya och befintliga Azure Cosmos DB-konton.
 
-* Automatisk säkerhets kopiering och återställning av dina data i det analytiska arkivet stöds inte för närvarande för behållarna med analytisk lagring aktiverat. När Synapse-länken är aktive rad på ett databas konto kommer Azure Cosmos DB fortsätta att automatiskt [ta säkerhets kopior](./online-backup-and-restore.md) av dina data i transaktions arkivet (endast) i behållare vid schemalagd säkerhets kopierings intervall, som alltid. Det är viktigt att Observera att när en behållare med ett analytiskt arkiv som är aktive rad återställs till ett nytt konto, kommer behållaren att återställas med enbart transaktions lagring och inget analytiskt Arkiv har Aktiver ATS. 
+* Automatisk säkerhets kopiering och återställning av dina data i det analytiska arkivet stöds inte för närvarande för behållarna med analytisk lagring aktiverat. När Synapse-länken är aktive rad på ett databas konto kommer Azure Cosmos DB fortsätta att automatiskt [ta säkerhets kopior](./online-backup-and-restore.md) av dina data i transaktions arkivet (endast) i behållare vid schemalagd säkerhets kopierings intervall, som alltid. Det är viktigt att Observera att när en behållare med ett analytiskt arkiv som är aktive rad återställs till ett nytt konto, kommer behållaren att återställas med enbart transaktions lagring och inget analytiskt Arkiv har Aktiver ATS.
 
 * Det går inte att komma åt Azure Cosmos DB Analytics Store med SQL-etableringen för Synapse.
-
-* Nätverks isolering för Azure Cosmso DB Analytical Store med hanterade privata slut punkter i Azure Synapse Analytics stöds inte för närvarande.
 
 ## <a name="pricing"></a>Prissättning
 
@@ -135,7 +144,7 @@ I fakturerings modellen för Azure Synapse-länken ingår kostnader som uppstår
 
 Mer information finns i följande dokument:
 
-* [Översikt över Azure Cosmos DB-analysarkiv](analytical-store-introduction.md)
+* [Översikt över Azure Cosmos DB analys lager](analytical-store-introduction.md)
 
 * [Kom igång med Azure Synapse Link för Azure Cosmos DB](configure-synapse-link.md)
  

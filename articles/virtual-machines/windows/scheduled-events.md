@@ -2,19 +2,21 @@
 title: Schemalagda händelser för virtuella Windows-datorer i Azure
 description: Schemalagda händelser som använder Azure-Metadata Service för dina virtuella Windows-datorer.
 author: EricRadzikowskiMSFT
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: scheduled-events
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4b5248ecb47c9456836aa9c4d7ebb2ad122c1dd
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0dcfdfbd480cdc708fced38d421b7588c5224a52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231879"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673317"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure-Metadata Service: Schemalagda händelser för virtuella Windows-datorer
 

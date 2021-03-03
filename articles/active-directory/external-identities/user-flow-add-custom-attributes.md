@@ -7,25 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e64ab70fed13d4ca907b2bfb3aa448acdedc39e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 46b498f8b8512d0202f47dd31ba25cc851ca71e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441461"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644110"
 ---
-# <a name="define-custom-attributes-for-user-flows-preview"></a>Definiera anpassade attribut för användar flöden (förhands granskning)
-
-> [!NOTE]
-> Funktionen för anpassade användarattribut är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+# <a name="define-custom-attributes-for-user-flows"></a>Definiera anpassade attribut för användarflöden
 
 För varje program kan du ha olika krav för den information som du vill samla in under registreringen. Azure AD levereras med en inbyggd uppsättning information som lagras i attribut, till exempel namn, efter namn, stad och post nummer. Med Azure AD kan du utöka uppsättningen med attribut som lagras på ett gäst konto när den externa användaren loggar in via ett användar flöde.
 
-Du kan skapa anpassade attribut i Azure Portal och använda dem i dina användar flöden för självbetjänings registrering. Du kan också läsa och skriva attributen med hjälp av [Microsoft Graph-API: et](../../active-directory-b2c/manage-user-accounts-graph-api.md). Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_<extensions-app-id>_attributename` . Exempel:
+Du kan skapa anpassade attribut i Azure Portal och använda dem i dina användar flöden för självbetjänings registrering. Du kan också läsa och skriva attributen med hjälp av [Microsoft Graph-API: et](../../active-directory-b2c/microsoft-graph-operations.md). Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_<extensions-app-id>_attributename` . Exempel:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -36,17 +33,17 @@ Du kan skapa anpassade attribut i Azure Portal och använda dem i dina användar
 ## <a name="create-a-custom-attribute"></a>Skapa ett anpassat attribut
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
-2. Under **Azure-tjänster**väljer du **Azure Active Directory**.
+2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **anpassade användarattribut (förhands granskning)**. De tillgängliga användarattribut visas.
+4. Välj **anpassade användarattribut**. De tillgängliga användarattribut visas.
 
    ![Välj användarattribut för registrering](media/user-flow-add-custom-attributes/user-attributes.png)
 
-5. Välj **Lägg**till om du vill lägga till ett attribut.
+5. Välj **Lägg** till om du vill lägga till ett attribut.
 6. Ange följande värden i fönstret **Lägg till ett attribut** :
 
    - **Namn** – ange ett namn för det anpassade attributet (till exempel "Shoesize").
-   - **Datatyp** – Välj en datatyp (**sträng**, **boolesk**eller **int**).
+   - **Datatyp** – Välj en datatyp (**sträng**, **boolesk** eller **int**).
    - **Beskrivning** – alternativt anger du en beskrivning av det anpassade attributet för intern användning. Den här beskrivningen visas inte för användaren.
 
    ![Lägg till ett attribut](media/user-flow-add-custom-attributes/add-an-attribute.png)

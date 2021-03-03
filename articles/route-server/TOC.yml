@@ -1,0 +1,45 @@
+- name: Route Server-dokumentation
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är Azure Route Server (för hands version)?
+      href: overview.md
+- name: Snabbstarter
+  items:
+    - name: Konfigurera en Route Server – PowerShell
+      href: quickstart-configure-route-server-powershell.md
+    - name: Konfigurera en Route Server – CLI
+      href: quickstart-configure-route-server-cli.md
+  expanded: true
+- name: Begrepp
+  items:
+    - name: Vanliga frågor om Route Server
+      href: route-server-faq.md
+    - name: ExpressRoute och Azure VPN-support
+      href: expressroute-vpn-support.md
+- name: Anvisningar
+  items:
+    - name: Felsök problem med routnings servern
+      href: troubleshoot-route-server.md
+- name: Referens
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/?view=azps-5.5.0#route
+    - name: Azure CLI
+      href: /cli/azure/network/routeserver?view=azure-cli-latest
+    - name: REST
+      href: /rest/api/virtualwan/virtualhubipconfiguration
+- name: Resurser
+  items:
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Nätverksblogg
+      href: 'https://azure.microsoft.com/blog/topics/networking/'
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/routeserver/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=routeserver'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'

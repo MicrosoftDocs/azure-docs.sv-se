@@ -3,16 +3,17 @@ title: Automatisk tilläggs uppgradering för virtuella datorer och skalnings up
 description: Lär dig hur du aktiverar den automatiska tilläggs uppgraderingen för dina virtuella datorer och skalnings uppsättningar för virtuella datorer i Azure.
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrades
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418010"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668341"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>För hands version: automatisk tilläggs uppgradering för virtuella datorer och skalnings uppsättningar i Azure
 
@@ -21,7 +22,7 @@ Automatisk tilläggs uppgradering är tillgänglig i för hands versionen för v
  Automatisk uppgradering av tillägg har följande funktioner:
 - Stöds för virtuella Azure-datorer och Azure-Virtual Machine Scale Sets. Service Fabric Virtual Machine Scale Sets stöds inte för närvarande.
 - Uppgraderingar tillämpas i en tillgänglighets-Första distributions modell (beskrivs nedan).
-- När detta tillämpas på en Virtual Machine Scale Sets, uppgraderas inte mer än 20% av de Virtual Machine Scale Sets virtuella datorerna i en enskild batch (med minst en virtuell dator per batch).
+- För en skalnings uppsättning för virtuella datorer uppgraderas inte mer än 20% av de virtuella datorerna för skalnings uppsättningen i en enda batch. Den minsta batchstorleken är en virtuell dator.
 - Fungerar för alla VM-storlekar och för både Windows-och Linux-tillägg.
 - Du kan när som helst välja att inte använda automatiska uppgraderingar.
 - Automatisk uppgradering av tillägg kan aktive ras i en Virtual Machine Scale Sets i valfri storlek.
@@ -36,24 +37,9 @@ Automatisk tilläggs uppgradering är tillgänglig i för hands versionen för v
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Hur fungerar automatisk uppgradering av tillägg?
-Uppgraderings processen för tillägget fungerar genom att ersätta den befintliga tilläggs versionen på en virtuell dator med den nya tilläggs versionen som publicerats av tilläggs utgivaren. Hälso tillståndet för den virtuella datorn övervakas när det nya tillägget har installerats. Om den virtuella datorn inte är i felfritt tillstånd inom 5 minuter efter uppgraderingen slutförs den nya tilläggs versionen tillbaka till den tidigare versionen.
+Uppgraderings processen för tillägg ersätter den befintliga tilläggs versionen på en virtuell dator med en ny version av samma tillägg när den publiceras av tilläggs utgivaren. Hälso tillståndet för den virtuella datorn övervakas när det nya tillägget har installerats. Om den virtuella datorn inte är i felfritt tillstånd inom 5 minuter efter uppgraderingen, återställs tilläggs versionen till den tidigare versionen.
 
 En misslyckad tilläggs uppdatering görs automatiskt. Ett nytt försök görs med några dagar automatiskt utan att användaren tillfrågas.
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Uppgraderings process för Virtual Machine Scale Sets
-1. Innan du påbörjar uppgraderings processen ser Orchestrator till att högst 20% av de virtuella datorerna i hela skalnings uppsättningen är felaktiga (oavsett orsak).
-
-2. Uppgraderings hanteraren identifierar batchen med de virtuella dator instanser som ska uppgraderas, med en batch som har högst 20% av det totala antalet virtuella datorer, beroende på en minsta batchstorlek för en virtuell dator.
-
-3. För skalnings uppsättningar med konfigurerade program hälso avsökningar eller program hälso tillägg, väntar uppgraderingen upp till 5 minuter (eller den definierade hälso avsöknings konfigurationen) för att den virtuella datorn ska bli felfri innan du fortsätter med att uppgradera nästa batch. Om en virtuell dator inte återställer sitt hälso tillstånd efter en uppgradering, installeras den tidigare tilläggs versionen för den virtuella datorn som standard.
-
-4. Uppgraderings hanteraren spårar även procent andelen virtuella datorer som blir skadade efter en uppgradering. Uppgraderingen stoppas om fler än 20% av de uppgraderade instanserna blir felaktiga under uppgraderings processen.
-
-Ovanstående process fortsätter tills alla instanser i skalnings uppsättningen har uppgraderats.
-
-Uppgraderings processen för skalnings uppsättningen kontrollerar den övergripande skalnings uppsättningens hälso tillstånd innan du uppgraderar varje batch. När du uppgraderar en batch kan det finnas andra samtidiga planerade eller oplanerade underhålls aktiviteter som kan påverka hälso tillståndet för dina virtuella datorer i skalnings uppsättningen. I sådana fall, om fler än 20% av skalnings uppsättningens instanser blir felaktiga, stoppas uppgraderingen av skalnings uppsättningen i slutet av den aktuella batchen.
-
 
 ### <a name="availability-first-updates"></a>Tillgänglighet – första uppdateringar
 Den tillgänglighets-första modellen för plattforms oberoende uppdateringar ser till att tillgänglighets konfigurationerna i Azure respekteras över flera tillgänglighets nivåer.
@@ -62,9 +48,9 @@ För en grupp virtuella datorer som genomgår en uppdatering kommer Azure-plattf
 
 **Mellan regioner:**
 - En uppdatering flyttas över Azure globalt i ett stegvist sätt för att förhindra distributions problem i hela Azure.
-- En "fas" kan utgöra en eller flera regioner, och en uppdatering flyttas över flera faser om kvalificerade virtuella datorer i en fas har uppdaterats.
+- En "fas" kan ha en eller flera regioner, och en uppdatering flyttas över flera faser om kvalificerade virtuella datorer i föregående fas uppdateras.
 - Geo-kopplade områden kommer inte att uppdateras samtidigt och får inte finnas i samma regionala fas.
-- Framgången av en uppdatering mäts genom att spåra hälsan för en VM post-uppdatering. VM-hälsan spåras via plattforms hälso indikatorer för den virtuella datorn. När det gäller Virtual Machine Scale Sets spåras VM-hälsan genom program hälso avsökningar eller program hälso tillägget, om det tillämpas på skalnings uppsättningen.
+- Framgången av en uppdatering mäts genom att spåra hälsan för en VM post-uppdatering. VM-hälsan spåras via plattforms hälso indikatorer för den virtuella datorn. För Virtual Machine Scale Sets spåras VM-hälsan genom program hälso avsökningar eller program hälso tillägget, om det tillämpas på skalnings uppsättningen.
 
 **Inom en region:**
 - Virtuella datorer i olika Tillgänglighetszoner uppdateras inte samtidigt.
@@ -75,6 +61,18 @@ För en grupp virtuella datorer som genomgår en uppdatering kommer Azure-plattf
 - Virtuella datorer i en gemensam tillgänglighets uppsättning uppdateras inom gränserna för uppdaterings domänen och virtuella datorer över flera uppdaterings domäner uppdateras inte samtidigt.  
 - Virtuella datorer i en gemensam skalnings uppsättning för virtuella datorer grupperas i batchar och uppdateras inom gränserna för uppdaterings domänen.
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Uppgraderings process för Virtual Machine Scale Sets
+1. Innan du påbörjar uppgraderings processen ser Orchestrator till att högst 20% av de virtuella datorerna i hela skalnings uppsättningen är felaktiga (oavsett orsak).
+
+2. Uppgraderings hanteraren identifierar batchen för de VM-instanser som ska uppgraderas. En uppgraderings grupp kan ha högst 20% av det totala antalet virtuella datorer, beroende på en minsta batchstorlek för en virtuell dator.
+
+3. För skalnings uppsättningar med konfigurerade program hälso avsökningar eller program hälso tillägg, väntar uppgraderingen upp till 5 minuter (eller den definierade hälso avsöknings konfigurationen) för att den virtuella datorn ska bli felfri innan nästa batch uppgraderas. Om en virtuell dator inte återställer sitt hälso tillstånd efter en uppgradering, installeras som standard den tidigare tilläggs versionen på den virtuella datorn.
+
+4. Uppgraderings hanteraren spårar även procent andelen virtuella datorer som blir skadade efter en uppgradering. Uppgraderingen stoppas om fler än 20% av de uppgraderade instanserna blir felaktiga under uppgraderings processen.
+
+Ovanstående process fortsätter tills alla instanser i skalnings uppsättningen har uppgraderats.
+
+Uppgraderings processen för skalnings uppsättningen kontrollerar den övergripande skalnings uppsättningens hälso tillstånd innan du uppgraderar varje batch. När du uppgraderar en batch kan det finnas andra samtidiga planerade eller oplanerade underhålls aktiviteter som kan påverka hälso tillståndet för dina virtuella datorer i skalnings uppsättningen. I sådana fall, om fler än 20% av skalnings uppsättningens instanser blir felaktiga, stoppas uppgraderingen av skalnings uppsättningen i slutet av den aktuella batchen.
 
 ## <a name="supported-extensions"></a>Tillägg som stöds
 För hands versionen av den automatiska tilläggs uppgraderingen stöder följande tillägg (och fler läggs till regelbundet):
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>Tilläggs uppgraderingar med flera tillägg
 
-En virtuell dator eller en skalnings uppsättning för virtuella datorer kan ha flera tillägg med automatisk tilläggs uppgradering aktive rad, förutom andra tillägg utan automatiska tillägg-uppgraderingar.  
+En virtuell dator eller en skalnings uppsättning för virtuella datorer kan ha flera tillägg med automatisk tilläggs uppgradering aktive rad. Samma virtuella dator eller skalnings uppsättning kan också ha andra tillägg utan automatisk tilläggs uppgradering aktive rad.  
 
-Om flera tillägg för tillägg är tillgängliga för en virtuell dator kan uppgraderingarna grupperas tillsammans. Varje tilläggs uppgradering tillämpas dock individuellt på en virtuell dator. Ett haveri i ett tillägg påverkar inte de andra tillägg som kan uppgraderas. Om till exempel två tillägg har schemalagts för en uppgradering och det första tillägget Miss lyckas, kommer det andra tillägget fortfarande att uppgraderas.
+Om flera tillägg för tillägg är tillgängliga för en virtuell dator, kan uppgraderingar skapas tillsammans, men varje tilläggs uppgradering tillämpas individuellt på en virtuell dator. Ett haveri i ett tillägg påverkar inte de andra tillägg som kan uppgraderas. Om till exempel två tillägg har schemalagts för en uppgradering och det första tillägget Miss lyckas, kommer det andra tillägget fortfarande att uppgraderas.
 
-Automatiska tilläggs uppgraderingar kan också tillämpas när en virtuell dator eller en skalnings uppsättning för virtuella datorer har flera tillägg som kon figurer ATS med [tilläggs-sekvenseringen](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). Det går att använda sekvenseringen för den första distributionen av den virtuella datorn och eventuella efterföljande tilläggs uppgraderingar i ett tillägg tillämpas oberoende av varandra.
+Automatiska tilläggs uppgraderingar kan också tillämpas när en virtuell dator eller en skalnings uppsättning för virtuella datorer har flera tillägg som kon figurer ATS med [tilläggs-sekvenseringen](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md). Det går att använda sekvenseringen för den första distributionen av den virtuella datorn och eventuella framtida tilläggs uppgraderingar i ett tillägg tillämpas oberoende av varandra.
 
 
 ## <a name="next-steps"></a>Nästa steg
 > [!div class="nextstepaction"]
-> [Läs mer om program hälso tillägget](./windows/automatic-vm-guest-patching.md)
+> [Läs mer om program hälso tillägget](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

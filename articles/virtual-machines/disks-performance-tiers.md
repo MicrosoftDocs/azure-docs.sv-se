@@ -4,16 +4,16 @@ description: Lär dig hur du ändrar prestanda nivåer för befintliga hanterade
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f67113b2e2afa16456321b0ee2a94ce80fab4d81
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900968"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674929"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändra prestanda nivån med hjälp av Azure PowerShell-modulen eller Azure CLI
 
@@ -114,6 +114,36 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
+
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Ändra prestanda nivån för en disk utan stillestånds tid (för hands version)
+
+Du kan också ändra prestanda nivån utan nedtid, så du behöver inte frigöra den virtuella datorn eller koppla från disken för att ändra nivån. Mer information och länken registrera dig för för hands versionen finns i avsnittet [ändra prestanda nivå utan stillestånds tid (för hands version)](#changing-performance-tier-without-downtime-preview) .
+
+
+Följande skript uppdaterar nivån på en disk som är högre än bas linje nivån med exempel mal len [CreateUpdateDataDiskWithTier.jspå](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json). Ersätt `<yourSubScriptionID>` ,,, `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` och `<yourDesiredPerformanceTier>` kör sedan skriptet:
+
+ ```cli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+diskName=<yourDiskName>
+diskSize=<yourDiskSize>
+performanceTier=<yourDesiredPerformanceTier>
+region=EastUS2EUAP
+
+ az login
+
+ az account set --subscription $subscriptionId
+
+ az group deployment create -g $resourceGroupName \
+--template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
+--parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
+```
+
+Det kan ta upp till 15 minuter att slutföra en ändring av prestanda nivån. Om du vill bekräfta att disken har ändrade nivåer, använder du följande kommando:
+
+```cli
+az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

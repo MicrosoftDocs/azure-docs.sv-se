@@ -6,15 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 813bb99be0d072ebc9b21dba07ed85671a925910
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526949"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659451"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Rollbaserad åtkomst kontroll i Azure i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Den här artikeln är en rollbaserad åtkomst kontroll för hanterings plan åtgärder i Azure Cosmos DB. Om du använder data Plans åtgärder, se [Azure Cosmos DB RBAC](how-to-setup-rbac.md) för rollbaserad åtkomst kontroll som används för dina data Plans åtgärder.
 
 Azure Cosmos DB tillhandahåller inbyggd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för vanliga hanterings scenarier i Azure Cosmos DB. En person som har en profil i Azure Active Directory kan tilldela dessa Azure-roller till användare, grupper, tjänstens huvud namn eller hanterade identiteter för att bevilja eller neka åtkomst till resurser och åtgärder på Azure Cosmos DB resurser. Roll tilldelningar är begränsade till kontroll – endast plan åtkomst, vilket omfattar åtkomst till Azure Cosmos-konton, databaser, behållare och erbjudanden (data flöde).
 
@@ -69,7 +72,7 @@ Den här inställningen förhindrar eventuella ändringar av Cosmos-resurser fr�
 
 - Ändra lagrade procedurer, utlösare eller användardefinierade funktioner.
 
-Om dina program (eller användare via Azure Portal) utför någon av dessa åtgärder måste de migreras för att köras via [arm-mallar](./manage-with-templates.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), rest eller [Azures hanterings bibliotek](https://github.com/Azure-Samples/cosmos-management-net). Observera att Azure-hantering är tillgängligt på [flera språk](/azure/?product=featured#languages-and-tools).
+Om dina program (eller användare via Azure Portal) utför någon av dessa åtgärder måste de migreras för att köras via [arm-mallar](./manage-with-templates.md), [POWERSHELL](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), rest eller [Azures hanterings bibliotek](https://github.com/Azure-Samples/cosmos-management-net). Observera att Azure-hantering är tillgängligt på [flera språk](../index.yml?product=featured#languages-and-tools).
 
 ### <a name="set-via-arm-template"></a>Ställ in via ARM-mall
 

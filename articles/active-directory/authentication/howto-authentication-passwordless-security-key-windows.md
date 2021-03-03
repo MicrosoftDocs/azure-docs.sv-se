@@ -1,36 +1,33 @@
 ---
 title: Lösen ords skydd med lösen ords skydd i Windows – Azure Active Directory
-description: Lär dig hur du aktiverar inloggning med lösen ords lös säkerhets nyckel till Azure Active Directory med hjälp av FIDO2-säkerhetsnycklar (för hands version)
+description: Lär dig hur du aktiverar inloggning med lösen ord med lösen ord för att Azure Active Directory med hjälp av FIDO2-säkerhetsnycklar
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743470"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653515"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aktivera inloggning med lösen ord utan lösen ord till Windows 10-enheter med Azure Active Directory (för hands version)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Aktivera inloggning med lösen ord utan lösen ord till Windows 10-enheter med Azure Active Directory 
 
 Det här dokumentet fokuserar på att aktivera FIDO2-säkerhetsnyckel baserad lösenordsautentisering med Windows 10-enheter. I slutet av den här artikeln kan du logga in på både Azure AD-och hybrid Azure AD-anslutna Windows 10-enheter med ditt Azure AD-konto med hjälp av en FIDO2 säkerhets nyckel.
-
-> [!NOTE]
-> FIDO2 säkerhets nycklar är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om förhandsversioner finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="requirements"></a>Krav
 
 | Enhetstyp | Azure AD-ansluten | Hybrid Azure AD-ansluten |
 | --- | --- | --- |
 | [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [Kombinerad för hands version av säkerhets informations registrering](concept-registration-mfa-sspr-combined.md) | X | X |
+| [Kombinerad säkerhets informations registrering](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatibla [säkerhets nycklar för FIDO2](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | Webauthn kräver Windows 10 version 1903 eller senare | X | X |
 | [Azure AD-anslutna enheter](../devices/concept-azure-ad-join.md) kräver Windows 10 version 1909 eller senare | X |   |
@@ -54,9 +51,9 @@ Följande scenarier stöds inte:
 - Logga in eller låsa upp en Windows 10-enhet med en säkerhets nyckel som innehåller flera Azure AD-konton. Det här scenariot använder det senaste kontot som har lagts till i säkerhets nyckeln. Med webauthn kan användarna välja det konto de vill använda.
 - Låsa upp en enhet som kör Windows 10 version 1809. Använd Windows 10 version 1903 eller senare för bästa möjliga upplevelse.
 
-## <a name="prepare-devices-for-preview"></a>Förbereda enheter för för hands version
+## <a name="prepare-devices"></a>Förbereda enheter
 
-Azure AD-anslutna enheter som du piloterar under för hands versionen av funktionen med måste köra Windows 10 version 1909 eller senare.
+Azure AD-anslutna enheter måste köra Windows 10 version 1909 eller senare.
 
 Hybrid Azure AD-anslutna enheter måste köra Windows 10 version 2004 eller senare.
 
@@ -79,7 +76,7 @@ Organisationer kan välja att använda en eller flera av följande metoder för 
 Utför följande steg för att aktivera användning av säkerhets nycklar med Intune:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Bläddra till **Microsoft Intune**  >  **enhets registrering**  >  **Windows-registrering**  >  **Egenskaper för Windows Hello för företag**  >  **Properties**.
+1. Bläddra till **Microsoft Intune**  >  **enhets registrering**  >  **Windows-registrering**  >  **Egenskaper för Windows Hello för företag**  >  .
 1. Under **Inställningar** anger du **Använd säkerhets nycklar för inloggning** till **aktive rad**.
 
 Konfiguration av säkerhets nycklar för inloggning är inte beroende av att konfigurera Windows Hello för företag.
@@ -145,18 +142,18 @@ I exemplet nedan har en användare med namnet Bala Sandhu redan etablerad sin FI
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Hantera säkerhets nyckel bio metrisk, PIN-kod eller återställning säkerhets nyckel
 
 * Windows 10 version 1903 eller senare
-   * Användare kan öppna **Windows-inställningar** på sina enheter **Accounts**>  >  **säkerhets nyckel** för konton
+   * Användare kan öppna **Windows-inställningar** på sina enheter >  >  **säkerhets nyckel** för konton
    * Användare kan ändra sin PIN-kod, uppdatera biometrik eller återställa sin säkerhets nyckel
 
 ## <a name="troubleshooting-and-feedback"></a>Felsökning och feedback
 
-Om du vill dela feedback eller om du har problem med att för hands Visa den här funktionen kan du dela via Windows Feedback Hub-appen med hjälp av följande steg:
+Om du vill dela feedback eller stöta på problem med den här funktionen kan du dela via Windows Feedback Hub-appen med hjälp av följande steg:
 
 1. Starta **feedback Hub** och se till att du är inloggad.
 1. Skicka feedback under följande kategorisering:
    - Kategori: säkerhet och sekretess
    - Under kategori: FIDO
-1. För att avbilda loggar använder du alternativet för att **återskapa mitt problem**
+1. Om du vill avbilda loggar använder du alternativet för att **återskapa problemet**.
 
 ## <a name="next-steps"></a>Nästa steg
 

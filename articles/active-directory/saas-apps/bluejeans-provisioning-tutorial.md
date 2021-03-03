@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053863"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646137"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Självstudie: Konfigurera BlueJeans för automatisk användar etablering
 
@@ -27,7 +27,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både BlueJeans 
 > * Skapa användare i BlueJeans
 > * Ta bort användare i BlueJeans när de inte behöver åtkomst längre
 > * Behåll användarattribut synkroniserade mellan Azure AD och BlueJeans
-> * [Enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) till BlueJeans (rekommenderas)
+> * [Enkel inloggning](./bluejeans-tutorial.md) till BlueJeans (rekommenderas)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -141,7 +141,7 @@ Den här åtgärden startar den första synkroniseringen av alla användare som 
 När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
 
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
-2. Kontrollera [förloppsindikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etableringscykeln och hur nära den är att slutföras
+2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Kopplings begränsningar

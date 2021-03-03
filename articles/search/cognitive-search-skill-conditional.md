@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72792050"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666356"
 ---
 # <a name="conditional-cognitive-skill"></a>Villkorlig kognitiva kunskaper
 
@@ -134,7 +134,7 @@ Följande utdata skapar en anteckning ("/document/languageWithDefault") som är 
 
 ### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Exempel på kunskaps definition 3: sammanfoga värden från två fält till ett
 
-I det här exemplet har vissa meningar en *frenchSentiment* -egenskap. När *frenchSentiment* -egenskapen är null vill vi använda *englishSentiment* -värdet. Vi tilldelar utdata till en medlem som heter *sentiment* ("/Document/sentiment/*/sentiment").
+I det här exemplet har vissa meningar en *frenchSentiment* -egenskap. När *frenchSentiment* -egenskapen är null vill vi använda *englishSentiment* -värdet. Vi tilldelar utdata till en medlem som heter *sentiment* ("/Document/sentences/*/sentiment").
 
 ```json
 {

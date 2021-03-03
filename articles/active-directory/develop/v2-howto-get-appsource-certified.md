@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d366664981894933f9afb177e9147ccae6695872
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222174"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647514"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Hämta AppSource Certified för Azure Active Directory
 
@@ -104,9 +104,9 @@ Mer information om utvärderings versionen av AppSource finns i [den här videon
 
 ## <a name="get-support"></a>Få support
 
-För Azure AD-integrering använder vi [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) med communityn för att få support.
+För Azure AD-integrering använder vi [Microsoft Q&A](/answers/topics/azure-active-directory.html) med communityn för att få support.
 
-Vi rekommenderar starkt att du ställer dina frågor på [Microsoft Q&en](https://docs.microsoft.com/answers/topics/azure-active-directory.html) första och söker efter befintliga ärenden för att se om någon har bett din fråga tidigare. Kontrol lera att dina frågor eller kommentarer är taggade med [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
+Vi rekommenderar starkt att du ställer dina frågor på [Microsoft Q&en](/answers/topics/azure-active-directory.html) första och söker efter befintliga ärenden för att se om någon har bett din fråga tidigare. Kontrol lera att dina frågor eller kommentarer är taggade med [`[azure-active-directory]`](/answers/topics/azure-active-directory.html) .
 
 Använd följande kommentarer-avsnitt för att ge feedback och hjälpa oss att förfina och forma vårt innehåll.
 

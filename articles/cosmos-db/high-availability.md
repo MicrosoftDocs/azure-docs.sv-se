@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627397"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656558"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hur ger Azure Cosmos DB hög tillgänglighet
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ I sällsynta fall av regionala avbrott ser Azure Cosmos DB till att databasen al
 
 * Under ett avbrott i läsnings området är Azure Cosmos-konton som använder en konsekvens nivå eller en stark konsekvens med tre eller flera Läs regioner fortfarande hög tillgängliga för läsning och skrivning.
 
-* Azure Cosmos-konton som använder stark konsekvens med tre eller färre totala regioner (en skrivning, två Läs) förlorar Skriv tillgänglighet under ett Läs regions avbrott. Kunder med fyra eller flera totala regioner kan dock välja att använda dynamiska Läs kvorum genom att skicka in ett support ärende. Konton som upprätthåller minst två Läs regioner i den här konfigurationen kommer att underhålla Skriv tillgängligheten.
+* Azure Cosmos-konton med stark konsekvens med tre regioner (en skrivning, två Läs) kommer att bibehålla Skriv tillgängligheten under ett Läs regions avbrott. För konton med två regioner och automatisk redundans aktive rad slutar kontot att acceptera skrivningar tills regionen markeras som misslyckad och automatisk redundans inträffar.
 
 * Den berörda regionen kopplas från automatiskt och kommer att markeras som offline. [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) : er omdirigerar Läs anrop till nästa tillgängliga region i listan över önskade regioner.
 
@@ -110,7 +110,7 @@ I följande tabell sammanfattas funktionen för hög tillgänglighet för olika 
 |SLA för Läs tillgänglighet  | 99,99 % | 99,995% | 99,995% | 99,999 % |
 |Zon haverier – data förlust | Dataförluster | Ingen data förlust | Ingen data förlust | Ingen data förlust |
 |Zon haverier – tillgänglighet | Tillgänglighets förlust | Ingen förlust av tillgänglighet | Ingen förlust av tillgänglighet | Ingen förlust av tillgänglighet |
-|Regionalt avbrott – data förlust | Dataförluster |  Dataförluster | Beroende av konsekvens nivå. Mer information finns i [konsekvens, tillgänglighet och prestanda kompromisser](consistency-levels-tradeoffs.md) . | Beroende av konsekvens nivå. Mer information finns i [konsekvens, tillgänglighet och prestanda kompromisser](consistency-levels-tradeoffs.md) .
+|Regionalt avbrott – data förlust | Dataförluster |  Dataförluster | Beroende av konsekvens nivå. Mer information finns i [konsekvens, tillgänglighet och prestanda kompromisser](./consistency-levels.md) . | Beroende av konsekvens nivå. Mer information finns i [konsekvens, tillgänglighet och prestanda kompromisser](./consistency-levels.md) .
 |Regionalt avbrott – tillgänglighet | Tillgänglighets förlust | Tillgänglighets förlust | Det gick inte att förlora tillgänglighet för Läs regions problem, temporärt för Skriv regions problem | Ingen förlust av tillgänglighet |
 |Pris (***1** _) | Ej tillämpligt | Etablerade RU/s x 1,25-hastighet | Etablerade RU/s x 1,25-pris (_ *_2_* *) | Skriv frekvens för flera regioner |
 

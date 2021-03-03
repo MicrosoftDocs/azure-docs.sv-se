@@ -2,18 +2,18 @@
 title: Azure Arc-aktiverade Kubernetes vanliga frågor och svar
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/17/2021
+ms.date: 02/19/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en lista med vanliga frågor om Azure Arc-aktiverade Kubernetes
 keywords: Kubernetes, båge, Azure, behållare, konfiguration, GitOps, vanliga frågor och svar
-ms.openlocfilehash: e0d7501dc1a82940571d0168222c396f61a70bce
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dc12294b5d53372be5f2e1dd71436973fefbb194
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652504"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647871"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Vanliga frågor och svar om Azure Arc-aktiverade Kubernetes
 
@@ -32,6 +32,8 @@ Nej. Alla Azure Arc-aktiverade Kubernetes-funktioner, inklusive Azure Monitor oc
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Bör jag ansluta mitt AKS-kluster och Kubernetes-kluster på Azure Stack hubben och Azure Stack Edge till Azure-bågen?
 
 Ja, om du ansluter ditt AKS-HCI-kluster eller Kubernetes-kluster på Azure Stack Edge eller Azure Stack Hub till Azure Arc tillhandahåller kluster med resurs representation i Azure Resource Manager. Den här resurs representationen utökar funktioner som kluster konfiguration, Azure Monitor och Azure Policy (Gatekeeper) till anslutna Kubernetes-kluster.
+
+Om Azure Arc-Kubernetes klustret är på Azure Stack Edge, AKS på Azure Stack HCI (>= 2021 uppdatering) eller AKS på Windows Server 2019 Data Center (>= april 2021 Update) ingår Kubernetes-konfigurationen utan kostnad.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Hur ska du adressera utgången Azure Arc-aktiverade Kubernetes-resurser?
 
@@ -70,6 +72,6 @@ Den här funktionen använder konfigurations bas linjer (t. ex. nätverks princi
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./connect-cluster.md)
+* [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)
 * [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md)
 * [Använd Azure Policy för att tillämpa konfigurationer i skala](./use-azure-policy.md)

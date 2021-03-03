@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 599cf17e1ab2b85aac77893e8b2d520d412e1cea
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418223"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674325"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Anslut till ett säkert Azure Storage-konto från din Synapse-arbetsyta
 
@@ -21,7 +21,7 @@ I den här artikeln får du lära dig hur du ansluter till ett säkert Azure Sto
 
 
 ## <a name="secured-azure-storage-accounts"></a>Skyddade Azure Storage-konton
-Azure Storage tillhandahåller en skiktad säkerhets modell som gör att du kan skydda och kontrol lera åtkomsten till dina lagrings konton. Du kan konfigurera IP-brandväggens regler för att bevilja trafik från valda offentliga IP-adressintervall åtkomst till ditt lagrings konto. Du kan också konfigurera nätverks regler för att bevilja trafik från valda virtuella nätverk åtkomst till ditt lagrings konto. Du kan kombinera IP brand Väggs regler som tillåter åtkomst från valda IP-adressintervall och nätverks regler som beviljar åtkomst från valda virtuella nätverk på samma lagrings konto. Dessa regler gäller för den offentliga slut punkten för ett lagrings konto. Du behöver inga åtkomst regler för att tillåta trafik från hanterade privata slut punkter som skapats i din arbets yta till ett lagrings konto. Lagrings brand Väggs regler kan användas för befintliga lagrings konton eller nya lagrings konton när du skapar dem. Du kan lära dig mer om hur du skyddar ditt lagrings konto [här](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Azure Storage tillhandahåller en skiktad säkerhets modell som gör att du kan skydda och kontrol lera åtkomsten till dina lagrings konton. Du kan konfigurera IP-brandväggens regler för att bevilja trafik från valda offentliga IP-adressintervall åtkomst till ditt lagrings konto. Du kan också konfigurera nätverks regler för att bevilja trafik från valda virtuella nätverk åtkomst till ditt lagrings konto. Du kan kombinera IP brand Väggs regler som tillåter åtkomst från valda IP-adressintervall och nätverks regler som beviljar åtkomst från valda virtuella nätverk på samma lagrings konto. Dessa regler gäller för den offentliga slut punkten för ett lagrings konto. Du behöver inga åtkomst regler för att tillåta trafik från hanterade privata slut punkter som skapats i din arbets yta till ett lagrings konto. Lagrings brand Väggs regler kan användas för befintliga lagrings konton eller nya lagrings konton när du skapar dem. Du kan lära dig mer om hur du skyddar ditt lagrings konto [här](../../storage/common/storage-network-security.md).
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Synapse-arbetsytor och virtuella nätverk
 När du skapar en Synapse-arbetsyta kan du välja att aktivera ett hanterat virtuellt nätverk som ska associeras med det. Om du inte aktiverar hanterat virtuellt nätverk för arbets ytan när du skapar den, finns din arbets yta i ett delat virtuellt nätverk, tillsammans med andra Synapse-arbetsytor som inte har ett hanterat virtuellt nätverk som är associerat med det. Om du har aktiverat hanterat virtuellt nätverk när du skapade arbets ytan, är din arbets yta kopplad till ett dedikerat virtuellt nätverk som hanteras av Azure Synapse. De här virtuella nätverken skapas inte i din kund prenumeration. Därför kan du inte bevilja trafik från dessa virtuella nätverk åtkomst till ditt skyddade lagrings konto med hjälp av nätverks regler som beskrivs ovan.  

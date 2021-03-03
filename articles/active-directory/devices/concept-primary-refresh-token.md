@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837271"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644943"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Vad är en primär uppdateringstoken?
 
@@ -103,7 +103,7 @@ En PRT skyddas genom att binda den till enheten som användaren har loggat in p�
 * **Vid första inloggningen**: under första inloggningen utfärdas en PRT av signerings begär Anden som använder enhets nyckeln kryptografiskt under enhets registreringen. På en enhet med en giltig och fungerande TPM skyddas enhets nyckeln av TPM: en vilket förhindrar skadlig åtkomst. En PRT utfärdas inte om motsvarande enhets nyckel signatur inte kan verifieras.
 * **Vid Tokenbegäran och förnyelse**: när en PRT utfärdas utfärdar Azure AD även en krypterad sessionsnyckel till enheten. Den krypteras med den offentliga transport nyckeln (tkpub) som genereras och skickas till Azure AD som en del av enhets registreringen. Den här sessionsnyckeln kan bara dekrypteras av den privata transport nyckeln (tkpriv) som skyddas av TPM: en. Sessionsnyckeln är den nyckel som används för att skicka förfrågningar till Azure AD.  Sessionsnyckeln skyddas också av TPM: en och inga andra OS-komponenter kan komma åt den. Tokenbegäran eller begär Anden om PRT-förnyelse signeras säkert av den här sessionsnyckeln via TPM och kan därför inte manipuleras. Azure AD kommer att ogiltig förklara eventuella förfrågningar från enheten som inte har signerats av motsvarande sessionsnyckel.
 
-Genom att skydda dessa nycklar med TPM: en kan skadliga aktörer inte stjäla nycklar eller spela upp PRT någon annan stans eftersom TPM är oåtkomlig även om en angripare har fysisk besittning av enheten.  Därför förbättrar användningen av en TPM säkerheten för Azure AD-anslutna, hybrid Azure AD-anslutna och Azure AD-registrerade enheter mot stöld av autentiseringsuppgifter. För prestanda och tillförlitlighet är TPM 2,0 den rekommenderade versionen för alla Azure AD Device Registration-scenarier i Windows 10.
+Genom att skydda dessa nycklar med TPM förbättrar vi säkerheten för PRT från skadliga aktörer som försöker stjäla nycklar eller spela upp PRT.  Med hjälp av TPM kan du i stor utsträckning förbättra säkerheten för Azure AD-anslutna, hybrid Azure AD-anslutna och registrerade Azure AD-enheter mot stöld av autentiseringsuppgifter. För prestanda och tillförlitlighet är TPM 2,0 den rekommenderade versionen för alla Azure AD Device Registration-scenarier i Windows 10. Från och med Windows 10, 1903 Update använder Azure AD inte TPM 1,2 för någon av ovanstående nycklar på grund av Tillförlitlighets problem. 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Hur skyddas app-token och webbläsarens cookies?
 
@@ -111,7 +111,7 @@ Genom att skydda dessa nycklar med TPM: en kan skadliga aktörer inte stjäla ny
 
 **Cookies i webbläsaren**: i Windows 10 stöder Azure AD webbläsare SSO i Internet Explorer och Microsoft Edge internt eller i Google Chrome via tillägget Windows 10-konton. Säkerheten skapas inte bara för att skydda cookies, utan även de slut punkter som cookies skickas till. Cookies i webbläsaren skyddas på samma sätt som en PRT, genom att använda sessionsnyckeln för att signera och skydda cookies.
 
-När en användare startar en webb läsar interaktion anropar webbläsaren (eller tillägget) en COM-intern klient värd. Den interna klient värden säkerställer att sidan kommer från en av de tillåtna domänerna. Webbläsaren kan skicka andra parametrar till den interna klient värden, inklusive en nonce, men den interna klient värden garanterar att värd namnet verifieras. Den interna klient värden begär en PRT-cookie från CloudAP-plugin-programmet, som skapar och signerar den med den TPM-skyddade sessionsnyckeln. Eftersom PRT-cookien är signerad av sessionsnyckeln, kan den inte manipuleras. Denna PRT-cookie ingår i begär ande huvudet för Azure AD för att verifiera den enhet som den härstammar från. Om du använder Chrome-webbläsaren, kan endast tillägget som uttryckligen definierats i den interna klient värdens manifest anropa det för att förhindra godtyckliga tillägg från att göra dessa förfrågningar. När Azure AD validerar PRT cookie, utfärdar den en sessions-cookie till webbläsaren. Cookien för den här sessionen innehåller också samma sessionsnyckel som utfärdats med en PRT. Under efterföljande förfrågningar verifieras sessionsnyckeln effektivt genom att binda cookien till enheten och förhindra uppspelning från andra platser.
+När en användare startar en webb läsar interaktion anropar webbläsaren (eller tillägget) en COM-intern klient värd. Den interna klient värden säkerställer att sidan kommer från en av de tillåtna domänerna. Webbläsaren kan skicka andra parametrar till den interna klient värden, inklusive en nonce, men den interna klient värden garanterar att värd namnet verifieras. Den interna klient värden begär en PRT-cookie från CloudAP-plugin-programmet, som skapar och signerar den med den TPM-skyddade sessionsnyckeln. Eftersom PRT-cookien signeras av sessionsnyckeln är det mycket svårt att manipulera. Denna PRT-cookie ingår i begär ande huvudet för Azure AD för att verifiera den enhet som den härstammar från. Om du använder Chrome-webbläsaren, kan endast tillägget som uttryckligen definierats i den interna klient värdens manifest anropa det för att förhindra godtyckliga tillägg från att göra dessa förfrågningar. När Azure AD validerar PRT cookie, utfärdar den en sessions-cookie till webbläsaren. Cookien för den här sessionen innehåller också samma sessionsnyckel som utfärdats med en PRT. Under efterföljande förfrågningar verifieras sessionsnyckeln effektivt genom att binda cookien till enheten och förhindra uppspelning från andra platser.
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>När får en PRT ett MFA-anspråk?
 
@@ -196,7 +196,7 @@ Följande diagram illustrerar underliggande information när du utfärdar, förn
 | A | Användaren loggar in i Windows med sina autentiseringsuppgifter för att få en PRT. När användaren öppnar webbläsaren läser webb adresserna från registret. |
 | B | När en användare öppnar en inloggnings-URL för Azure AD, verifierar webbläsaren eller tillägget URL: en med de som har hämtats från registret. Om de matchar, anropar webbläsaren den interna klient värden för att hämta en token. |
 | C | Den interna klient värden verifierar att URL: erna tillhör Microsoft Identity providers (Microsoft-konto eller Azure AD), extraherar en nonce som skickas från URL: en och anropar CloudAP-plugin-programmet för att hämta en PRT cookie. |
-| D | CloudAP-plugin-programmet skapar PRT cookie, loggar in med den TPM-kopplade sessionsnyckeln och skickar tillbaka den till den interna klient värden. Eftersom cookien signeras av sessionsnyckeln kan den inte manipuleras. |
+| D | CloudAP-plugin-programmet skapar PRT cookie, loggar in med den TPM-kopplade sessionsnyckeln och skickar tillbaka den till den interna klient värden. |
 | E | Den interna klient värden returnerar denna PRT-cookie till webbläsaren, som kommer att inkludera den som en del av begär ande huvudet som kallas x-MS-RefreshTokenCredential och begär token från Azure AD. |
 | F | Azure AD validerar signaturen i PRT cookie, validerar nonce, verifierar att enheten är giltig i klienten och utfärdar en ID-token för webb sidan och en krypterad sessions-cookie för webbläsaren. |
 

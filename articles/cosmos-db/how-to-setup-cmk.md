@@ -4,17 +4,20 @@ description: Lär dig hur du konfigurerar Kundhanterade nycklar för ditt Azure 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338290"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656524"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurera kundhanterade nycklar för ditt Azure Cosmos-konto med Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> Om du använder Kundhanterade nycklar med Azure Cosmos DB [analys lager](analytical-store-introduction.md) krävs ytterligare konfiguration på ditt konto. Kontakta [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) om du vill ha mer information.
 
 Data som lagras i ditt Azure Cosmos-konto är automatiskt och sömlöst krypterade med nycklar som hanteras av Microsoft (**tjänst hanterade nycklar**). Du kan också välja att lägga till ett andra lager av kryptering med nycklar som du hanterar (**Kundhanterade nycklar**).
 
@@ -291,6 +294,10 @@ Alla data som lagras i ditt Azure Cosmos-konto krypteras med kundens hanterade n
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Stöds kund hanterade nycklar för befintliga Azure Cosmos-konton?
 
 Den här funktionen är för närvarande endast tillgänglig för nya konton.
+
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Är det möjligt att använda Kundhanterade nycklar tillsammans med Azure Cosmos DB [Analytical Store](analytical-store-introduction.md)?
+
+Ja, men detta kräver för närvarande ytterligare konfiguration av ditt konto. Kontakta [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) om du vill ha mer information.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Finns det någon plan för att ge bättre granularitet än nycklar på konto nivå?
 

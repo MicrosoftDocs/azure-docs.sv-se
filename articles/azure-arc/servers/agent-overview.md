@@ -1,14 +1,14 @@
 ---
 title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8c06989d726a30e95f0b9c4dcc15a967d498f92a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580874"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651101"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -69,6 +69,10 @@ Azure Connected Machine agent för Windows och Linux kan uppgraderas till den se
 
 ## <a name="prerequisites"></a>Förutsättningar
 
+### <a name="supported-environments"></a>Miljöer som stöds
+
+Arc-aktiverade servrar har stöd för installation av den anslutna dator agenten på en fysisk server och en virtuell dator som finns *utanför* Azure. Detta inkluderar virtuella datorer som körs på plattformar som VMware, Azure Stack HCI och andra moln miljöer. Arc-aktiverade servrar stöder inte installation av agenten på virtuella datorer som körs i Azure, eller virtuella datorer som körs på Azure Stack hubb eller Azure Stack Edge eftersom de redan modelleras som virtuella Azure-datorer.
+
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
 Följande versioner av operativ systemet Windows och Linux stöds officiellt för den Azure-anslutna dator agenten:
@@ -124,7 +128,7 @@ Service märken:
 
 Er
 
-| Agentresurs | Description |
+| Agentresurs | Beskrivning |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -136,7 +140,7 @@ Er
 
 För hands versioner (version 0,11 och lägre) kräver också åtkomst till följande URL: er:
 
-| Agentresurs | Description |
+| Agentresurs | Beskrivning |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Gästkonfiguration|
 |`*-agentservice-prod-1.azure-automation.net`|Gästkonfiguration|
@@ -200,7 +204,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Description |
+    |Mapp |Beskrivning |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Standard installations Sök väg som innehåller agentens stödfiler.|
     |%ProgramData%\AzureConnectedMachineAgent |Innehåller konfigurationsfilerna för agenten.|
@@ -212,7 +216,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande Windows-tjänster skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Description |
+    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid-Instance Metadata Service |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |GCArcService |Arc-tjänst för gäst konfiguration |gc_service |Övervakar datorns önskade tillstånds konfiguration.|
@@ -220,14 +224,14 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande miljövariabler skapas under Agent installationen.
 
-    |Name |Standardvärde |Beskrivning |
+    |Namn |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Description |
+    |Loggas |Beskrivning |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -252,7 +256,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Description |
+    |Mapp |Beskrivning |
     |-------|------------|
     |/var/opt/azcmagent/ |Standard installations Sök väg som innehåller agentens stödfiler.|
     |/opt/azcmagent/ |
@@ -264,7 +268,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande daemonar skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Description |
+    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Connected Machine Agent-tjänsten |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |gcad.servce |Tjänsten GC båg |gc_linux_service |Övervakar datorns önskade tillstånds konfiguration. |
@@ -272,7 +276,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Description |
+    |Loggas |Beskrivning |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -283,7 +287,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande miljövariabler skapas under Agent installationen. Dessa variabler anges i `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Standardvärde |Beskrivning |
+    |Namn |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

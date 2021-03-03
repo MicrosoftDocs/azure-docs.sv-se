@@ -158,6 +158,8 @@
       href: howto-authentication-temporary-access-pass.md
     - name: Använd SMS-baserad autentisering
       href: howto-authentication-sms-signin.md
+    - name: Dubbelriktat SMS stöds inte
+      href: how-to-authentication-two-way-sms-unsupported.md
     - name: Använd e-postadress för inloggning
       href: howto-authentication-use-email-signin.md
     - name: Smart utlåsning i Azure AD
@@ -173,7 +175,7 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Rapportering
       items:
-        - name: Användning och insikter
+        - name: 'Autentiseringsmetod, aktivitet'
           href: howto-authentication-methods-usage-insights.md
         - name: SSPR-rapporter
           href: howto-sspr-reporting.md

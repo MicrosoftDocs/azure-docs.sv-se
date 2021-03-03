@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625119"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670058"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Så här distribuerar du Windows 10 på Azure med värd rättigheter för flera innehavare 
 För kunder med Windows 10 Enterprise E3/E5 per användare eller Windows anslutning för virtuella skriv bord per användare (användar prenumerations licenser eller användar prenumerations licenser), kan du använda värd rättigheterna för flera innehavare för Windows 10 för att ta med Windows 10-licenser till molnet och köra Windows 10 Virtual Machines på Azure utan att betala för en annan licens. Värd rättigheter för flera innehavare är endast tillgängliga för Windows 10 (version 1703 eller senare).
@@ -26,7 +26,7 @@ Mer information finns i [värd för flera innehavare för Windows 10](https://ww
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>Prenumerations licenser som är kvalificerade för värd rättigheter för flera innehavare
 
-Med hjälp av [Microsoft administrations Center](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)kan du bekräfta om en användare har tilldelats en licens som stöds av Windows 10.
+Med hjälp av [Microsoft administrations Center](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)kan du bekräfta om en användare har tilldelats en licens som stöds av Windows 10.
 
 > [!IMPORTANT]
 > Användare måste ha en av prenumerations licenserna nedan för att kunna använda Windows 10-avbildningar i Azure. Om du inte har någon av dessa prenumerations licenser kan de köpas via din [moln tjänst partner](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) eller direkt via [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1).

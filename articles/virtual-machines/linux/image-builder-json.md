@@ -3,17 +3,18 @@ title: Skapa en Azure Image Builder-mall (förhands granskning)
 description: Lär dig hur du skapar en mall som ska användas med Azure Image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 02/18/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678263"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670432"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>För hands version: skapa en Azure Image Builder-mall 
 
@@ -60,7 +61,7 @@ Detta är det grundläggande mallformat:
     "apiVersion": "2020-02-14",
 ```
 
-## <a name="location"></a>Plats
+## <a name="location"></a>Location
 
 Platsen är den region där den anpassade avbildningen kommer att skapas. För för hands versionen av Image Builder stöds följande regioner:
 
@@ -308,11 +309,28 @@ Anpassa egenskaper:
 - **sha256Checksum** -värdet för filens SHA256-kontrollsumma, du genererar det här lokalt och sedan kontrol leras kontroll summor och Image Builder.
     * Skapa sha256Checksum med hjälp av en terminal på Mac/Linux-körning: `sha256sum <fileName>`
 
-
-För kommandon som ska köras med superuser-privilegier måste de föregås av `sudo` .
-
 > [!NOTE]
 > Infogade kommandon lagras som en del av definitionen för avbildnings mal len. du kan se dessa när du dumpar avbildnings definitionen, och dessa visas också för Microsoft Support i händelse av ett support ärende i fel söknings syfte. Om du har känsliga kommandon eller värden rekommenderar vi att de flyttas till skript och använder en användar identitet för att autentisera till Azure Storage.
+
+#### <a name="super-user-privileges"></a>Behörigheter för superanvändare
+För kommandon som ska köras med superuser-privilegier måste de föregås av `sudo` , du kan lägga till dem i skript eller använda den infogade kommandona, till exempel:
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+Exempel på ett skript som använder sudo som du kan referera till med scriptUri:
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Starta om anpassning av Windows 
 Med alternativet starta om anpassning kan du starta om en virtuell Windows-dator och vänta tills den är online igen, så att du kan installera program vara som kräver en omstart.  
@@ -397,6 +415,10 @@ OS-support: Linux och Windows
 Fil anpassnings egenskaper:
 
 - **sourceUri** – en tillgänglig lagrings slut punkt kan vara GitHub eller Azure Storage. Du kan bara ladda ned en fil, inte en hel katalog. Om du behöver hämta en katalog använder du en komprimerad fil och expanderar den sedan med Shell-eller PowerShell-anpassningarna. 
+
+> [!NOTE]
+> Om sourceUri är ett Azure Storage konto, oavsett om blobben har marker ATS som offentlig, så kommer du att ge den hanterade användarens identitet behörighet att läsa åtkomst till bloben. Se det här [exemplet](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) för att ange lagrings behörigheter.
+
 - **destination** – detta är den fullständiga sökvägen till målet och fil namnet. Alla refererade sökvägar och under kataloger måste finnas, Använd Shell-eller PowerShell-anpassningarna för att ställa in dem på förhand. Du kan använda skript anpassningarna för att skapa sökvägen. 
 
 Detta stöds av Windows-kataloger och Linux-sökvägar, men det finns vissa skillnader: 
@@ -408,8 +430,6 @@ Om det uppstår ett fel vid försök att hämta filen, eller om den placeras i e
 
 > [!NOTE]
 > Fil anpassningen är bara lämplig för små fil hämtningar, < 20 MB. För större fil hämtningar används ett skript eller ett infogat kommando, koden används för att ladda ned filer, till exempel Linux `wget` eller `curl` Windows, `Invoke-WebRequest` .
-
-Filer i fil anpassningen kan laddas ned från Azure Storage med [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
 ### <a name="windows-update-customizer"></a>Windows Update anpassning
 Den här anpassningen bygger på [community Windows Update-etableringen](https://packer.io/docs/provisioners/community-supported.html) för Packer, som är ett projekt med öppen källkod som underhålls av communityn för programpaket. Microsoft testar och validerar etableringen med tjänsten Image Builder och har stöd för att undersöka problem med den, och det kan också fungera att lösa problem, men projektet med öppen källkod stöds inte av Microsoft. Detaljerad dokumentation om och hjälp med Windows Update etablerings tjänsten finns i projektets lagrings plats.

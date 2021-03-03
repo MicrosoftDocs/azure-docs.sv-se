@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13023ef93cabcf46924cc2cc76dc2d868c4a1ddd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87909986"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653576"
 ---
-# <a name="self-service-sign-up-preview"></a>Registrering via självbetjäning (förhandsversion)
-
-> [!NOTE]
-> Självbetjänings registrering är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+# <a name="self-service-sign-up"></a>Registrering av självbetjäning
 
 När du delar ett program med externa användare är det inte säkert att du alltid vet i förväg vilka som behöver åtkomst till programmet. Som ett alternativ till att skicka inbjudningar direkt till enskilda användare kan du tillåta att externa användare registrerar sig för enskilda program genom att aktivera självbetjänings registrering. Du kan skapa en personlig registrerings upplevelse genom att anpassa användar flödet för självbetjänings registrering. Du kan till exempel ange alternativ för att registrera dig för Azure AD eller sociala identitets leverantörer och samla in information om användaren under registrerings processen.
 

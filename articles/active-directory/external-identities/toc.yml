@@ -41,7 +41,7 @@
           href: b2b-fundamentals.md
         - name: Extern delning av B2B och Office 365
           href: o365-external-user.md
-        - name: Inlösning av inbjudan
+        - name: Inbjudan till inlösen och inloggning
           href: redemption-experience.md
         - name: E-postinbjudan
           href: invitation-email-elements.md
@@ -57,9 +57,9 @@
           href: hybrid-organizations.md
         - name: Identitetsprovidrar för externa identiteter
           href: identity-providers.md
-        - name: Användarflöden för registrering via självbetjäning (förhandsversion)
+        - name: Användar flöden för självbetjänings registrering
           href: self-service-sign-up-overview.md
-        - name: API-anslutningsprogram för registrering med självbetjäning (förhandsversion)
+        - name: Självbetjäning för registrering av API-kopplingar
           href: api-connectors-overview.md
         - name: Azure AD-berättigandehantering
           href: self-service-portal.md
@@ -68,23 +68,25 @@
     - name: Anvisningar
       expanded: true
       items:
-        - name: Konfigurera inställningar för externt samarbete
-          href: delegate-invitations.md
+        - name: Konfigurera B2B-samarbete
+          items:
+            - name: Konfigurera inställningar för externt samarbete
+              href: delegate-invitations.md
+            - name: Tillåt eller blockera domäner
+              href: allow-deny-list.md
         - name: Bjud in gästanvändare
           items:
-            - name: Administratörer som lägger till B2B-användare
+            - name: Lägg till och Bjud in gäst användare (för administratörer)
               href: add-users-administrator.md
-            - name: Informationsarbetare som lägger till B2B-användare
+            - name: Bjud in gäst användare till en app (för app-ägare)
               href: add-users-information-worker.md
             - name: Bjud in interna användare till B2B
               href: invite-internal-users.md
-            - name: Tillåta eller blockera inbjudningar
-              href: allow-deny-list.md
             - name: Lägga till B2B-användare utan inbjudan
               href: add-user-without-invite.md
-            - name: API för inbjudan och anpassning
+            - name: Anpassa inbjudningar med API
               href: customize-invitation-api.md
-        - name: Federera med identitetsprovidrar
+        - name: Federera med externa identitets leverantörer
           items:
             - name: Google-federation
               href: google-federation.md
@@ -94,9 +96,9 @@
               href: direct-federation.md
             - name: Exempel på direkt federation med AD FS
               href: direct-federation-adfs.md
-        - name: Autentisering med engångskoder
+        - name: Aktivera eng ång slö sen ord (eng ång slö sen ord)
           href: one-time-passcode.md
-        - name: Registrering via självbetjäning för gästanvändare (förhandsversion)
+        - name: Lägg till självbetjänings registrering för gäst användare
           items:
             - name: Lägga till ett användarflöde för registrering via självbetjäning
               href: self-service-sign-up-user-flow.md

@@ -1,21 +1,21 @@
 ---
-title: Distribuera Helm-diagram med GitOps on Arc Enabled Kubernetes Cluster (för hands version)
+title: Distribuera Helm-diagram med GitOps on Arc Enabled Kubernetes Cluster
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Använda GitOps med Helm för en Azure Arc-aktiverad kluster konfiguration (förhands granskning)
+description: Använda GitOps med Helm för en Azure Arc-aktiverad kluster konfiguration
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 2dfb516487d1064f29b4018cc8b322e8db44e53a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 117fc8dabdce2fdf23cbc2b9fe78137db1c656a5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558518"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647650"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera Helm-diagram med GitOps on Arc Enabled Kubernetes Cluster (för hands version)
+# <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Distribuera Helm-diagram med GitOps på ett Arc-aktiverat Kubernetes-kluster
 
 Helm är ett paketeringsverktyg med öppen källkod som hjälper dig att installera och hantera livscykeln för Kubernetes-program. På liknande sätt som med Linux-paket som APT och yum används Helm för att hantera Kubernetes-diagram, som är paket med förkonfigurerade Kubernetes-resurser.
 
@@ -23,7 +23,7 @@ Den här artikeln visar hur du konfigurerar och använder Helm med Azure Arc-akt
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Kontrol lera att du har ett befintligt Azure-Arc aktiverat Kubernetes-kopplat kluster. Om du behöver ett anslutet kluster kan du läsa snabb starten för att [ansluta en Azure-båge med aktiverat Kubernetes-kluster](./connect-cluster.md).
+Kontrol lera att du har ett befintligt Azure-Arc aktiverat Kubernetes-kopplat kluster. Om du behöver ett anslutet kluster kan du läsa snabb starten för att [ansluta en Azure-båge med aktiverat Kubernetes-kluster](./quickstart-connect-cluster.md).
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Översikt över användning av GitOps och Helm med Azure Arc Enabled Kubernetes
 
@@ -69,7 +69,7 @@ Helm-versions konfigurationen innehåller följande fält:
 | `metadata.name` | Obligatoriskt fält. Måste följa Kubernetes namngivnings konventioner. |
 | `metadata.namespace` | Valfritt fält. Anger var versionen skapas. |
 | `spec.releaseName` | Valfritt fält. Om det inte anges kommer versions namnet att vara `$namespace-$name` . |
-| `spec.chart.path` | Katalogen som innehåller diagrammet, angivet i förhållande till databas roten. |
+| `spec.chart.path` | Den katalog som innehåller diagrammet (i förhållande till databas roten). |
 | `spec.values` | Användar anpassningar av standard parameter värden från själva diagrammet. |
 
 Alternativen som anges i HelmRelease `spec.values` åsidosätter de alternativ som anges i `values.yaml` från diagrammets källa.
@@ -78,30 +78,27 @@ Du kan läsa mer om HelmRelease i den officiella [Helm operatörs dokumentatione
 
 ## <a name="create-a-configuration"></a>Skapa en konfiguration
 
-Använd Azure CLI-tillägget för `k8sconfiguration` och länka det anslutna klustret till exempel git-lagringsplatsen. Ge den här konfigurationen namnet `azure-arc-sample` och distribuera flödes operatorn i `arc-k8s-demo` namn området.
+Använd Azure CLI-tillägget för `k8s-configuration` och länka det anslutna klustret till exempel git-lagringsplatsen. Ge den här konfigurationen namnet `azure-arc-sample` och distribuera flödes operatorn i `arc-k8s-demo` namn området.
 
 ```console
-az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
+az k8s-configuration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='1.2.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Konfigurations parametrar
 
-Om du vill anpassa skapandet av konfigurationen kan [du läsa mer om ytterligare parametrar som du kan använda](./use-gitops-connected-cluster.md#additional-parameters).
+Om du vill anpassa skapandet av konfigurationen kan du [läsa mer om ytterligare parametrar](./tutorial-use-gitops-connected-cluster.md#additional-parameters).
 
 ## <a name="validate-the-configuration"></a>Verifiera konfigurationen
 
-Verifiera att du har skapat med hjälp av Azure CLI `sourceControlConfiguration` .
+Kontrol lera att konfigurationen har skapats med hjälp av Azure CLI.
 
 ```console
-az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
+az k8s-configuration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
-`sourceControlConfiguration`Resursen har uppdaterats med kompatibilitetsstatus, meddelanden och fel söknings information.
+Konfigurations resursen uppdateras med kompatibilitetsstatus, meddelanden och fel söknings information.
 
-**Utdataparametrar**
-
-```console
-Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
+```output
 {
   "complianceStatus": {
     "complianceState": "Installed",

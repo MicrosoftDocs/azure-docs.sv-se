@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 30cb023b8ca78f252dbf087a604a61b8aa5c6659
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577385"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660165"
 ---
 # <a name="communication-services-notifications"></a>Meddelanden om kommunikations tjänster
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services chatt och anropar klient bibliotek skapar en meddelande kanal i real tid som gör det möjligt att skicka meddelanden till anslutna klienter på ett effektivt och tillförlitligt sätt. På så sätt kan du bygga avancerade funktioner i real tid i dina program utan att behöva implementera logik för komplicerad HTTP-avsökning. Men i mobila program förblir den här signal kanalen bara ansluten när ditt program är aktivt i förgrunden. Om du vill att användarna ska kunna ta emot inkommande samtal eller chatta när ditt program är i bakgrunden, bör du använda push-meddelanden.
 
@@ -34,7 +32,7 @@ Lär dig mer om [händelse hantering i Azure Communication Services](./event-han
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Leverera push-meddelanden via Azure Notification Hubs
 
-Du kan ansluta en Azure Notification Hub till kommunikations tjänst resursen för att automatiskt skicka push-meddelanden till en användares mobila enhet när de får ett inkommande samtal. Du bör använda dessa push-meddelanden för att väcka ditt program från bakgrunden och visnings gränssnittet som låter användaren godkänna eller avböja anropet. 
+Du kan ansluta en Azure Notification Hub till kommunikations tjänst resursen för att automatiskt skicka push-meddelanden till en användares mobila enhet när de får ett inkommande samtal. Du bör använda dessa push-meddelanden för att väcka ditt program från bakgrunden och visnings gränssnittet som låter användaren godkänna eller avböja anropet.
 
 :::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram över hur kommunikations tjänster integreras med Azure Notification Hubs.":::
 
@@ -43,13 +41,13 @@ Kommunikations tjänster använder Azure Notification Hub som en direkt tjänst 
 > [!NOTE]
 > För närvarande stöds endast push-meddelanden.
 
-### <a name="notification-hub-provisioning"></a>Etablering av Notification Hub 
+### <a name="notification-hub-provisioning"></a>Etablering av Notification Hub
 
 Om du vill skicka push-meddelanden till klient enheter med hjälp av Notification Hubs [skapar du en Notification Hub](../../notification-hubs/create-notification-hub-portal.md) i samma prenumeration som kommunikations tjänst resursen. Du måste konfigurera Azure Notification Hub för Plattformsspecifikt meddelandesystem som du vill använda. Information om hur du hämtar push-meddelanden i din klient app från Notification Hubs finns i [komma igång med Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) och välj mål klient plattform i list rutan längst upp på sidan.
 
 > [!NOTE]
-> För närvarande stöds APN-och FCM-plattformarna.  
-APN-plattformen måste konfigureras med autentiseringsläge för token. Autentiseringsläget för certifikat stöds inte från och med nu. 
+> För närvarande stöds APN-och FCM-plattformarna.
+APN-plattformen måste konfigureras med autentiseringsläge för token. Autentiseringsläget för certifikat stöds inte från och med nu.
 
 När din Notification Hub har kon figurer ATS kan du associera den med din kommunikations tjänst resurs genom att tillhandahålla en anslutnings sträng för hubben med hjälp av Azure Resource Manager klienten eller via Azure Portal. Anslutnings strängen måste innehålla `Send` behörigheter. Vi rekommenderar att du skapar en annan åtkomst princip med `Send` enbart behörigheter som är specifika för din hubb. Läs mer om [Notification Hubs säkerhets-och åtkomst principer](../../notification-hubs/notification-hubs-push-notification-security.md)
 
@@ -74,10 +72,10 @@ I portalen navigerar du till din Azure Communication Services-resurs. I resursen
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Skärm bild som visar inställningarna för push-meddelanden inom Azure Portal.":::
 
 > [!NOTE]
-> Om Azure Notification Hub-anslutningssträngen har uppdaterats måste kommunikations tjänst resursen också uppdateras.  
+> Om Azure Notification Hub-anslutningssträngen har uppdaterats måste kommunikations tjänst resursen också uppdateras.
 Alla ändringar på hur hubben länkas visas i data planet (d.v.s. När du skickar ett meddelande) inom en period på högst ``10`` minuter. Detta gäller även när navet är länkat för första gången **om** det fanns meddelanden som skickats tidigare.
 
-### <a name="device-registration"></a>Enhetsregistrering 
+### <a name="device-registration"></a>Enhetsregistrering
 
 Se [röst samtals snabb start](../quickstarts/voice-video-calling/getting-started-with-calling.md) för att lära dig hur du registrerar din enhets hantering med kommunikations tjänster.
 

@@ -1,33 +1,33 @@
 ---
 title: Egenskaper för innehålls metadata
 titleSuffix: Azure Cognitive Search
-description: Metadata-egenskaper för blobbar kan ge innehåll till fält i ett sökindex eller information som informerar indexerings beteende vid körning. Den här artikeln innehåller metadata-egenskaper som stöds i Azure Kognitiv sökning.
+description: Metadata-egenskaper för dokument kan ge innehåll till fält i ett sökindex eller information som informerar indexerings beteende vid körning. Den här artikeln innehåller metadata-egenskaper som stöds i Azure Kognitiv sökning.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 79443785dbd8619e22358631c9c36a3da4ef2e84
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/22/2021
+ms.openlocfilehash: cbb35f596a1d32816d1a73b462bf590d9dde0d52
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99477310"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668426"
 ---
-# <a name="content-metadata-properties-used-in-blob-indexing-in-azure-cognitive-search"></a>Egenskaper för innehålls metadata som används i BLOB-indexering i Azure Kognitiv sökning
+# <a name="content-metadata-properties-used-in-azure-cognitive-search"></a>Egenskaper för innehålls metadata som används i Azure Kognitiv sökning
 
-Blobbar kan innehålla olika innehåll och många av dessa innehålls typer har metadata-egenskaper som kan vara användbara vid BLOB-indexering. Precis som du kan skapa sökfält för standard-BLOB-egenskaper som kan **`metadata_storage_name`** du skapa fält för metadataegenskaper som är relaterade till ett dokument format.
+SharePoint Online och Azure Blob Storage kan innehålla olika innehåll och många av dessa innehålls typer har metadata-egenskaper som kan vara användbara för index. Precis som du kan skapa sökfält för standard-BLOB-egenskaper som kan **`metadata_storage_name`** du skapa fält för metadataegenskaper som är relaterade till ett dokument format.
 
 ## <a name="supported-document-formats"></a>Dokumentformat som stöds
 
-Kognitiv sökning stöder BLOB-indexering för följande dokument format:
+Kognitiv sökning stöder BLOB-indexering och SharePoint Online-dokument indexering för följande dokument format:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="properties-by-document-format"></a>Egenskaper efter dokument format
 
-I följande tabell sammanfattas bearbetningen för varje dokument format och de metadata-egenskaper som extraheras av en BLOB-indexerare beskrivs.
+I följande tabell sammanfattas bearbetningen för varje dokument format och en beskrivning av egenskaperna för metadata som extraheras av en BLOB-indexerare och SharePoint Online-indexeraren.
 
 | Dokument format/innehålls typ | Extraherade metadata | Bearbetnings information |
 | --- | --- | --- |
@@ -62,3 +62,4 @@ I följande tabell sammanfattas bearbetningen för varje dokument format och de 
 * [Indexerare i Azure Cognitive Search](search-indexer-overview.md)
 * [Förstå blobbar med AI](search-blob-ai-integration.md)
 * [Översikt över BLOB-indexering](search-blob-storage-integration.md)
+* [SharePoint online-indexering](search-howto-index-sharepoint-online.md)

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40bfa27dba905cb2e9a363c7739f0a43e7c2afdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101375"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650999"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Övervaka programmets inloggnings hälsa för återhämtning
 
@@ -51,7 +51,7 @@ Den här artikeln beskriver hur du konfigurerar arbets boken för inloggnings h�
 
 * En Log Analytics arbets yta i din Azure-prenumeration för att skicka loggar till Azure Monitor loggar. 
 
-   * Lär dig hur du [skapar en arbets yta för Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+   * Lär dig hur du [skapar en arbets yta för Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)
 
 * Azure AD-loggar integrerade med Azure Monitor loggar
 
@@ -94,7 +94,7 @@ Använd följande instruktioner för att skapa e-postaviseringar baserat på de 
 
  Utför följande steg för att konfigurera den underliggande frågan och ange aviseringar. Du använder exempel frågan som grund för din konfiguration. En förklaring av frågans struktur visas i slutet av det här avsnittet.
 
-Mer information om hur du skapar, visar och hanterar logg aviseringar med Azure Monitor finns i [Hantera logg aviseringar](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Mer information om hur du skapar, visar och hanterar logg aviseringar med Azure Monitor finns i [Hantera logg aviseringar](../../azure-monitor/alerts/alerts-log.md).
 
  
 1. I arbets boken väljer du **Redigera** och väljer sedan **ikonen fråga** ovanför den högra sidan i grafen.   
@@ -280,10 +280,9 @@ När du har konfigurerat frågan och aviseringarna skapar du affärs processer f
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Läs mer om arbets böcker](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[Läs mer om arbets böcker](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631969"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653243"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Kom igång med API: et för Azure Active Directory rapportering
 
@@ -51,7 +51,7 @@ Microsoft Graph API-slutpunkten för gransknings loggar är `https://graph.micro
 
 Du kan använda [identitets skyddets identifierings-API](/graph/api/resources/identityriskevent?view=graph-rest-beta) för att få program mässig åtkomst till säkerhets identifieringar med hjälp av Microsoft Graph. Mer information finns i [Kom igång med Azure Active Directory Identity Protection och Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
-Du kan också använda [API: et för etablerings loggar](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) för att få programmatisk åtkomst till etablering av händelser i din klient organisation. 
+Du kan också använda [API: et för etablerings loggar](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) för att få programmatisk åtkomst till etablering av händelser i din klient organisation. 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>API: er med Microsoft Graph Explorer
 

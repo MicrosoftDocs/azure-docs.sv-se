@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063204"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676517"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Gör indexerare anslutningar via en privat slut punkt
 
@@ -47,7 +47,7 @@ I följande tabell visas Azure-resurser för vilka du kan skapa utgående privat
 
 Du kan också fråga de Azure-resurser för vilka utgående anslutningar för privata slut punkter stöds genom att använda [listan över API: er som stöds](/rest/api/searchmanagement/privatelinkresources/listsupported).
 
-I resten av den här artikeln är en blandning av [Azure CLI](https://docs.microsoft.com/cli/azure/) (eller [ARMClient](https://github.com/projectkudu/ARMClient) om du föredrar) och [Postman](https://www.postman.com/) (eller någon annan http-klient som [vändning](https://curl.se/) om du föredrar) som används för att demonstrera REST API samtal.
+I resten av den här artikeln är en blandning av [Azure CLI](/cli/azure/) (eller [ARMClient](https://github.com/projectkudu/ARMClient) om du föredrar) och [Postman](https://www.postman.com/) (eller någon annan http-klient som [vändning](https://curl.se/) om du föredrar) som används för att demonstrera REST API samtal.
 
 > [!NOTE]
 > Exemplen i den här artikeln baseras på följande antaganden:
@@ -69,7 +69,7 @@ Konfigurera lagrings kontot så att [endast åtkomst från vissa undernät till�
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Steg 1: skapa en delad privat länk resurs till lagrings kontot
 
-Om du vill begära Azure Kognitiv sökning att skapa en utgående privat slut punkts anslutning till lagrings kontot, gör du följande API-anrop, till exempel med [Azure CLI](https://docs.microsoft.com/cli/azure/): 
+Om du vill begära Azure Kognitiv sökning att skapa en utgående privat slut punkts anslutning till lagrings kontot, gör du följande API-anrop, till exempel med [Azure CLI](/cli/azure/): 
 
 `az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
 

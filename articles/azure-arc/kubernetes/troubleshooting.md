@@ -1,28 +1,29 @@
 ---
-title: Felsöka vanliga problem med Azure Arc-aktiverade Kubernetes (för hands version)
+title: Felsök vanliga problem med Azure Arc-aktiverade Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 03/02/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Felsöka vanliga problem med ARC-aktiverade Kubernetes-kluster.
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: 0827386eb6ec089cf7951e8fa513a77fc78aef22
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684097"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654008"
 ---
-# <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc Enabled Kubernetes Troubleshooting (för hands version)
+# <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure Arc-aktiverad Kubernetes-felsökning
 
-Det här dokumentet innehåller några vanliga fel söknings scenarier med anslutning, behörigheter och agenter.
+Det här dokumentet innehåller fel söknings guider för problem med anslutning, behörigheter och agenter.
 
 ## <a name="general-troubleshooting"></a>Allmän fel sökning
 
-### <a name="azure-cli-set-up"></a>Konfigurera Azure CLI
-Innan du använder AZ-connectedk8s eller AZ k8sconfiguration CLI-kommandon bör du se till att AZ är inställt på att fungera mot rätt Azure-prenumeration.
+### <a name="azure-cli"></a>Azure CLI
+
+Innan `az connectedk8s` du använder eller `az k8s-configuration` CLI-kommandon kontrollerar du att Azure CLI är inställt på att fungera mot rätt Azure-prenumeration.
 
 ```azurecli
 az account set --subscription 'subscriptionId'
@@ -30,7 +31,8 @@ az account show
 ```
 
 ### <a name="azure-arc-agents"></a>Azure-båg agenter
-Alla agenter för Azure Arc-aktiverade Kubernetes distribueras som poddar i `azure-arc` namn området. Under normala drifts åtgärder bör alla poddar köras och att deras hälso kontroller skickas.
+
+Alla agenter för Azure Arc-aktiverade Kubernetes distribueras som poddar i `azure-arc` namn området. Alla poddar bör köra och skicka sina hälso kontroller.
 
 Kontrol lera först Azure Arc Helm-versionen:
 
@@ -44,9 +46,9 @@ REVISION: 5
 TEST SUITE: None
 ```
 
-Om Helm-versionen inte hittas eller saknas kan du försöka att registrera klustret igen.
+Om Helm-versionen inte hittas eller saknas kan du försöka [ansluta klustret till Azure-bågen](./connect-cluster.md) igen.
 
-Om Helm-versionen finns och `STATUS: deployed` bestämmer status för agenterna med hjälp av `kubectl` :
+Om Helm-versionen finns med `STATUS: deployed` kontrollerar du statusen för agenterna med hjälp av `kubectl` :
 
 ```console
 $ kubectl -n azure-arc get deployments,pods
@@ -69,45 +71,42 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Alla poddar ska visas `STATUS` som `Running` och `READY` ska vara antingen `3/3` eller `2/2` . Hämta loggar och beskriv poddar som returnerar `Error` eller `CrashLoopBackOff` . Om något av dessa poddar har fastnat i `Pending` tillstånd kan det bero på otillräckliga resurser på klusternoderna. När du [skalar upp klustret](https://kubernetes.io/docs/tasks/administer-cluster/) får dessa poddar över gång till `Running` status.
+Alla poddar ska visas `STATUS` som `Running` med antingen `3/3` eller `2/2` under `READY` kolumnen. Hämta loggar och beskriv poddar returnerar en `Error` eller `CrashLoopBackOff` . Om några poddar har fastnat i `Pending` tillstånd kan det finnas otillräckliga resurser på klusternoderna. [Skala upp klustret](https://kubernetes.io/docs/tasks/administer-cluster/) kan få dessa poddar att övergå till `Running` tillstånd.
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Ansluta Kubernetes-kluster till Azure-bågen
 
-Att ansluta kluster till Azure kräver åtkomst till både en Azure-prenumeration och `cluster-admin` åtkomst till ett mål kluster. Om det inte går att nå klustret eller om det inte finns tillräckligt med onboarding-registrering kommer det att Miss Miss
+Att ansluta kluster till Azure kräver både åtkomst till en Azure-prenumeration och `cluster-admin` åtkomst till ett mål kluster. Om du inte kan komma åt klustret eller om du har otillräckliga behörigheter går det inte att ansluta klustret till Azure-bågen.
 
 ### <a name="insufficient-cluster-permissions"></a>Otillräckliga kluster behörigheter
 
-Om den angivna kubeconfig-filen inte har tillräcklig behörighet för att installera Azure Arc-agenterna returnerar Azure CLI-kommandot ett fel som försöker anropa Kubernetes-API: et.
+Om den angivna kubeconfig-filen inte har tillräcklig behörighet för att installera Azure Arc-agenterna returnerar Azure CLI-kommandot ett fel.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 
 Error: list: failed to list: secrets is forbidden: User "myuser" cannot list resource "secrets" in API group "" at the cluster scope
 ```
 
-Kluster ägaren bör använda en Kubernetes-användare med kluster administratörs behörighet.
+Användaren som ansluter klustret till Azure-bågen måste ha `cluster-admin` rollen tilldelad till klustret.
 
 ### <a name="installation-timeouts"></a>Tids gräns för installation
 
-Installationen av Azure Arc-agenten kräver att en uppsättning behållare körs på mål klustret. Om klustret körs över en långsam Internet anslutning kan behållar avbildningen ta längre tid än tids gränsen för Azure CLI.
+Att ansluta ett Kubernetes-kluster till Azure Arc Enabled Kubernetes kräver installation av Azure Arc-agenter i klustret. Om klustret körs över en långsam Internet anslutning kan behållar avbildningen Hämta för agenter ta längre tid än tids gränsen för Azure CLI.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
 
 ### <a name="helm-issue"></a>Helm-problem
 
-Helm- `v3.3.0-rc.1` versionen har ett [problem](https://github.com/helm/helm/pull/8527) där Helm install/Upgrade (som används under connectedk8s CLI-tillägget) leder till att alla hookar som leder till följande fel uppstår:
+Helm- `v3.3.0-rc.1` versionen har ett [problem](https://github.com/helm/helm/pull/8527) där Helm install/Upgrade (används av `connectedk8s` CLI-tillägget) leder till att alla hookar som leder till följande fel uppstår:
 
 ```console
 $ az connectedk8s connect -n shasbakstest -g shasbakstest
-Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -117,7 +116,7 @@ ValidationError: Unable to install helm release: Error: customresourcedefinition
 
 Följ dessa steg om du vill återställa problemet:
 
-1. Ta bort den Azure Arc-aktiverade Kubernetes-resursen som är av intresse i Azure Portal.
+1. Ta bort den Azure Arc-aktiverade Kubernetes-resursen i Azure Portal.
 2. Kör följande kommandon på datorn:
     
     ```console
@@ -132,15 +131,16 @@ Följ dessa steg om du vill återställa problemet:
 ## <a name="configuration-management"></a>Konfigurationshantering
 
 ### <a name="general"></a>Allmänt
-Du kan felsöka problem med käll kontroll konfigurationen genom att köra AZ-kommandon med--debug-växeln.
+Du kan felsöka problem med konfigurations resurser genom att köra AZ-kommandon med en `--debug` angiven parameter.
 
 ```console
 az provider show -n Microsoft.KubernetesConfiguration --debug
-az k8sconfiguration create <parameters> --debug
+az k8s-configuration create <parameters> --debug
 ```
 
-### <a name="create-source-control-configuration"></a>Skapa käll kontroll konfiguration
-Deltagar rollen på resursen Microsoft. Kubernetes/connectedCluster är nödvändig och tillräckligt för att skapa Microsoft. KubernetesConfiguration/sourceControlConfiguration-resursen.
+### <a name="create-configurations"></a>Skapa konfigurationer
+
+Skriv behörigheter för den Azure Arc-aktiverade Kubernetes-resursen ( `Microsoft.Kubernetes/connectedClusters/Write` ) är nödvändiga och tillräckliga för att skapa konfigurationer på klustret.
 
 ### <a name="configuration-remains-pending"></a>Konfigurationen är kvar `Pending`
 

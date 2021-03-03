@@ -2,21 +2,21 @@
 title: Azure PowerShell – aktivera Kundhanterade nycklar med SSE-hanterade diskar
 description: Aktivera kryptering på Server sidan med Kundhanterade nycklar på dina hanterade diskar med Azure PowerShell.
 author: roygara
-ms.date: 08/24/2020
+ms.date: 03/02/2021
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 2eed2ee11f3a90e81d9ee845af2aa28620567603
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a1accbfd6edbab7cb09bec4a8423a596a9d1fa9c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488330"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672244"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell – aktivera Kundhanterade nycklar med krypterings hanterade diskar på Server Sidan
 
-Med Azure-disklagring kan du hantera dina egna nycklar när du använder SSE (Server Side Encryption) för hanterade diskar, om du väljer. För konceptuell information om SSE med Kundhanterade nycklar, samt andra typer av hanterade disk krypterings typer, se avsnittet [Kundhanterade nycklar](../disk-encryption.md#customer-managed-keys) i artikeln om disk kryptering.
+Med Azure-disklagring kan du hantera dina egna nycklar när du använder SSE (Server Side Encryption) för hanterade diskar, om du väljer. Grundläggande information om SSE med Kundhanterade nycklar och andra typer av hanterade disk krypteringar finns i avsnittet [Kundhanterade nycklar](../disk-encryption.md#customer-managed-keys) i artikeln om disk kryptering.
 
 ## <a name="restrictions"></a>Begränsningar
 
@@ -26,11 +26,53 @@ För närvarande har Kundhanterade nycklar följande begränsningar:
     Om du behöver kringgå detta måste du [Kopiera alla data](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) till en helt annan hanterad disk som inte använder Kundhanterade nycklar.
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-your-azure-key-vault-and-diskencryptionset"></a>Konfigurera din Azure Key Vault och DiskEncryptionSet
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation"></a>Konfigurera en Azure Key Vault och DiskEncryptionSet utan automatisk nyckel rotation
 
 Om du vill använda Kundhanterade nycklar med SSE måste du konfigurera en Azure Key Vault och en DiskEncryptionSet-resurs.
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
+
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview"></a>Konfigurera en Azure Key Vault och DiskEncryptionSet med automatisk nyckel rotation (förhands granskning)
+
+1. Kontrol lera att du har installerat den senaste [versionen av Azure PowerShell](/powershell/azure/install-az-ps)och att du är inloggad på ett Azure-konto i med `Connect-AzAccount` .
+1. Skapa en instans av Azure Key Vault och krypterings nyckel.
+
+    När du skapar Key Vault-instansen måste du aktivera rensnings skyddet. Med rensnings skyddet går det inte att ta bort en borttagen nyckel förrän kvarhållningsperioden upphörde. Den här inställningen skyddar dig från att förlora data på grund av oavsiktlig borttagning och är obligatorisk för kryptering av hanterade diskar.
+    
+    ```powershell
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="westcentralus"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    ```
+
+1.  Skapa en DiskEncryptionSet med hjälp av API-versionen `2020-12-01` och ange egenskapen `rotationToLatestKeyVersionEnabled` till sant via Azure Resource Manager mal len [CreateDiskEncryptionSetWithAutoKeyRotation.jspå](https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json)
+    
+    ```powershell
+    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json" `
+    -diskEncryptionSetName $diskEncryptionSetName `
+    -keyVaultId $($keyVault.ResourceId) `
+    -keyVaultKeyUrl $($key.Key.Kid) `
+    -encryptionType "EncryptionAtRestWithCustomerKey" `
+    -region $LocationName
+    ```
+
+1.  Ge DiskEncryptionSet-resursen åtkomst till nyckel valvet.
+
+    > [!NOTE]
+    > Det kan ta några minuter för Azure att skapa identiteten för din DiskEncryptionSet i din Azure Active Directory. Om du får ett fel meddelande som "det går inte att hitta Active Directory-objektet" när du kör följande kommando, väntar du några minuter och försöker igen.
+
+    ```powershell
+    $des=Get-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+    ```
 
 ## <a name="examples"></a>Exempel
 

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 20a2639716048a8c549ec6d584e807cb209f83d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198976"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670953"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Så här installerar och konfigurerar du SAP HANA (stora instanser) i Azure
 
@@ -143,7 +142,7 @@ De höga storlekarna för de olika volymerna med de olika volymerna för HANA-st
 
 Namngivnings konventionerna för lagrings volymerna visas i följande tabell:
 
-| Lagrings användning | Monterings namn | Volym namn | 
+| Lagrings användning | Monterings namn | Volymnamn | 
 | --- | --- | ---|
 | HANA-data | /hana/data/SID/mnt0000\<m> | Lagrings-IP:/hana_data_SID_mnt00001_tenant_vol |
 | HANA-logg | /hana/log/SID/mnt0000\<m> | Lagrings-IP:/hana_log_SID_mnt00001_tenant_vol |

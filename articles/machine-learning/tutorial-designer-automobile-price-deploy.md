@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576065"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659519"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Självstudie: Distribuera en maskin inlärnings modell med designern
 
@@ -42,7 +42,7 @@ Om du vill distribuera din pipeline måste du först konvertera inlärnings pipe
 
 1. Ovanför pipeline-arbetsytan väljer du **skapa en härlednings** pipeline i  >  **real tid**.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Skärm bild som visar var du hittar knappen Skapa pipeline":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="Skärm bild som visar var du hittar knappen Skapa pipeline":::
 
     Din pipeline bör nu se ut så här: 
 
@@ -97,13 +97,13 @@ När din AKS-tjänst har slutfört etableringen återgår du till inferencing-pi
 
 1. Välj det AKS-kluster som du skapade.
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Skärm bild som visar hur du konfigurerar en ny slut punkt för Real tid":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="Skärm bild som visar hur du konfigurerar en ny slut punkt för Real tid":::
 
     Du kan också ändra den **avancerade** inställningen för slut punkten i real tid.
     
-    |Avancerad inställning|Description|
+    |Avancerad inställning|Beskrivning|
     |---|---|
-    |Aktivera Application Insights diagnostik och data insamling| Om Azure Application Ingishts ska kunna samla in data från de distribuerade slut punkterna. </br> Som standard: falskt |
+    |Aktivera Application Insights diagnostik och data insamling| Om Azure Application insikter ska aktive ras för insamling av data från de distribuerade slut punkterna. </br> Som standard: falskt |
     |Poängsättnings-timeout| En timeout i millisekunder för att tvinga fram Poäng anrop till webb tjänsten.</br>Som standard: 60000|
     |Automatisk skalning aktive rad|   Om autoskalning ska aktive ras för webb tjänsten.</br>Som standard: sant|
     |Minsta antal repliker| Det minsta antal behållare som ska användas när den här webb tjänsten autoskalas.</br>Som standard: 1|
@@ -137,6 +137,22 @@ När distributionen är klar kan du Visa real tids slut punkten genom att gå ti
 1. Testa slut punkten genom att gå till fliken **test** . Härifrån kan du ange test data och välja **testa** för att verifiera slut punktens utdata.
 
 Mer information om hur du konsumerar din webb tjänst finns i [använda en modell som distribueras som en webb tjänst](how-to-consume-web-service.md)
+
+## <a name="limitations"></a>Begränsningar
+
+Om du gör några ändringar i din utbildnings pipeline bör du skicka in utbildnings pipelinen igen, **Uppdatera** härlednings pipelinen och köra härlednings pipelinen igen.
+
+Observera att endast utbildade modeller kommer att uppdateras i härlednings pipelinen, medan Datatransformeringen inte kommer att uppdateras.
+
+Om du vill använda den uppdaterade omvandlingen i en härlednings pipeline måste du registrera Transformations resultatet för Transformations modulen som data uppsättning.
+
+![Skärm bild som visar hur du registrerar omvandlings data uppsättning](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+Ersätt sedan den **TD-** modulen i härlednings pipelinen manuellt med den registrerade data uppsättningen.
+
+![Skärm bild som visar hur du ersätter omvandlings modulen](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+Sedan kan du skicka en härlednings pipeline till den uppdaterade modellen och omvandlingen, och distribuera.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

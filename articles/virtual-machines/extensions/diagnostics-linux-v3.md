@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 88f8d62a6321deae8a46d32441625c5960547694
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 6b03d4fb51021019da4c7d31fccf28b0ee157f32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982123"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670543"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Använd Linux Diagnostic Extension 3,0 för att övervaka mått och loggar
 
@@ -825,6 +825,6 @@ Se relevant [EventHubs-dokumentation](../../event-hubs/event-hubs-about.md) för
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Skapa mått varningar i [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) för de mått som du samlar in.
-* Skapa [övervaknings diagram](../../azure-monitor/platform/data-platform.md) för dina mått.
+* Skapa mått varningar i [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) för de mått som du samlar in.
+* Skapa [övervaknings diagram](../../azure-monitor/data-platform.md) för dina mått.
 * Lär dig hur du [skapar en skalnings uppsättning för virtuella datorer](../linux/tutorial-create-vmss.md) med hjälp av dina mått för att styra autoskalning.

@@ -5,23 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53d2369e93052ef28191dd1862034c1aaa488add
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355604"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653330"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Lägg till Google som en identitets leverantör för B2B-gäst användare
 
-Genom att konfigurera Federation med Google kan du tillåta att inbjudna användare loggar in på dina delade appar och resurser med egna Gmail-konton, utan att behöva skapa Microsoft-konton. 
+Genom att konfigurera Federation med Google kan du tillåta att inbjudna användare loggar in på dina delade appar och resurser med egna Gmail-konton, utan att behöva skapa Microsoft-konton.
+
+När du har lagt till Google som ett av programmets inloggnings alternativ på **inloggnings** sidan kan en användare bara ange det e-postmeddelande som de använder för att logga in på Google, eller välja **inloggnings alternativ** och välja **Logga in med Google**. I båda fallen omdirigeras de till Google-inloggnings sidan för autentisering.
+
+![Inloggnings alternativ för Google-användare](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
 > Google Federation är särskilt utformat för Gmail-användare. Använd [direkt Federation](direct-federation.md)för att federera med G Suite-domäner.
@@ -30,13 +34,33 @@ Genom att konfigurera Federation med Google kan du tillåta att inbjudna använd
 > Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Vad är upplevelsen av Google User?
-När du skickar en inbjudan till Google Gmail-användare bör gäst användarna få åtkomst till dina delade appar eller resurser genom att använda en länk som innehåller klient kontexten. Deras upplevelse varierar beroende på om de redan är inloggade på Google:
-  - Gäst användare som inte är inloggade på Google uppmanas att göra det.
-  - Gäst användare som redan är inloggade på Google uppmanas att välja det konto de vill använda. De måste välja det konto som du använde för att bjuda in dem.
+
+När en Google-användare löser din inbjudan varierar deras upplevelse beroende på om de redan är inloggade på Google:
+
+- Gäst användare som inte är inloggade på Google uppmanas att göra det.
+- Gäst användare som redan är inloggade på Google uppmanas att välja det konto de vill använda. De måste välja det konto som du använde för att bjuda in dem.
 
 Gäst användare som ser ett "sidhuvud för lång"-fel kan ta bort sina cookies eller öppna ett privat eller Incognito-fönster och försöka logga in igen.
 
 ![Skärm bild som visar Google-inloggnings sidan.](media/google-federation/google-sign-in.png)
+
+## <a name="sign-in-endpoints"></a>Inloggnings slut punkter
+
+Google gäst användare kan nu logga in till din klient-eller Microsoft-appar från första part genom att använda en [gemensam slut punkt](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (med andra ord en allmän App-URL som inte innehåller din klient kontext). Följande är exempel på vanliga slut punkter:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Under inloggnings processen väljer gäst användaren **inloggnings alternativ** och väljer sedan logga in i **en organisation**. Användaren skriver sedan namnet på din organisation och fortsätter att logga in med sina Google-autentiseringsuppgifter.
+
+Google gäst användare kan också använda program slut punkter som innehåller din klient information, till exempel:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Du kan också ge Google gäst användare en direkt länk till ett program eller en resurs genom att inkludera din klient information, till exempel `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
 
 ## <a name="deprecation-of-webview-sign-in-support"></a>Utfasning av webbvyer-inloggnings stöd
 
@@ -66,23 +90,13 @@ Vi fortsätter att testa olika plattformar och scenarier och kommer att uppdater
    - Om din Windows-app använder inbäddad webbvy eller WebAccountManager (WAM) på en äldre version av Windows, uppdatera till den senaste versionen av Windows.
    - Ändra dina appar så att de använder systemets webbläsare för inloggning. Mer information finns i avsnittet [Embedded vs system Web UI](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui) i MSAL.net-dokumentationen.  
 
-## <a name="sign-in-endpoints"></a>Inloggnings slut punkter
 
-Team stöder fullständigt Google gäst användare på alla enheter. Google-användare kan logga in till Teams från en gemensam slut punkt som `https://teams.microsoft.com` .
-
-Vanliga slut punkter för andra program kanske inte stöder Google-användare. Google gäst användare måste logga in med en länk som innehåller din klient information. Följande är exempel:
-  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
-  * `https://portal.azure.com/<your tenant ID>`
-  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
-
-   Om Google gäst användare försöker använda en länk som `https://myapps.microsoft.com` eller `https://portal.azure.com` , får de ett fel meddelande.
-
-Du kan också ge Google gäst användare en direkt länk till ett program eller en resurs, så länge länken innehåller din klient information. Ett exempel är `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
 ## <a name="step-1-configure-a-google-developer-project"></a>Steg 1: Konfigurera ett Google Developer-projekt
 Börja med att skapa ett nytt projekt i Google Developer-konsolen för att hämta ett klient-ID och en klient hemlighet som du senare kan lägga till i Azure Active Directory (Azure AD). 
 1. Gå till Google-API: erna på https://console.developers.google.com och logga in med ditt Google-konto. Vi rekommenderar att du använder ett delat team Google-konto.
 2. Godkänn villkoren för tjänsten om du uppmanas att göra det.
-3. Skapa ett nytt projekt: Välj **skapa projekt** på instrument panelen, ge projektet ett namn (till exempel **Azure AD B2B**) och välj sedan **skapa**: 
+3. Skapa ett nytt projekt: Välj projekt listan i det övre vänstra hörnet på sidan och välj sedan **nytt projekt** på sidan **Välj ett projekt** .
+4. På sidan **nytt projekt** , ge projektet ett namn (till exempel **Azure AD B2B**) och välj sedan **skapa**: 
    
    ![Skärm bild som visar en ny projekt sida.](media/google-federation/google-new-project.png)
 
@@ -123,7 +137,7 @@ Börja med att skapa ett nytt projekt i Google Developer-konsolen för att hämt
 Du kommer nu att ange Google-klient-ID och klient hemlighet. Du kan använda Azure Portal eller PowerShell för att göra det. Se till att testa din Google Federation-konfiguration genom att bjuda in dig själv. Använd en Gmail-adress och försök att lösa in inbjudan med ditt inbjudna Google-konto. 
 
 **Konfigurera Google Federation i Azure Portal** 
-1. Öppna [Azure-portalen](https://portal.azure.com). I den vänstra rutan väljer du **Azure Active Directory**. 
+1. Gå till [Azure-portalen](https://portal.azure.com). I den vänstra rutan väljer du **Azure Active Directory**. 
 2. Välj **externa identiteter**.
 3. Välj **alla identitets leverantörer** och välj sedan **Google** -knappen.
 4. Ange klient-ID och klient hemlighet som du fick tidigare. Välj **Spara**: 
@@ -145,7 +159,7 @@ Du kommer nu att ange Google-klient-ID och klient hemlighet. Du kan använda Azu
 Du kan ta bort din Google Federation-installation. Om du gör det kommer Google gäst användare som redan har löst sin inbjudan att kunna logga in. Men du kan ge dem åtkomst till dina resurser igen genom att ta bort dem från katalogen och bjuda in dem igen. 
  
 **Ta bort Google Federation i Azure AD-portalen**
-1. Öppna [Azure-portalen](https://portal.azure.com). I den vänstra rutan väljer du **Azure Active Directory**. 
+1. Gå till [Azure-portalen](https://portal.azure.com). I den vänstra rutan väljer du **Azure Active Directory**. 
 2. Välj **externa identiteter**.
 3. Välj **alla identitets leverantörer**.
 4. På **Google** -raden väljer du knappen med tre punkter (**...**) och väljer sedan **ta bort**. 

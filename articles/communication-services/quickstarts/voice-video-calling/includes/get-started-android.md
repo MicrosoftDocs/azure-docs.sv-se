@@ -6,16 +6,19 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b4719fcf046ce7ef5d74ccf1863b0400c2c52845
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92438757"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656646"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar klient bibliotek för Android.
 
-## <a name="prerequisites"></a>Krav
+> [!NOTE]
+> Det här dokumentet använder version 1.0.0 – beta. 8 av det anropande klient biblioteket.
+
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)för att skapa ett Android-program.
@@ -28,17 +31,15 @@ I den här snabb starten får du lära dig hur du startar ett samtal med Azure C
 
 Från Android Studio väljer du starta ett nytt Android Studio-projekt.
 
-:::image type="content" source="../media/android/studio-new-project.png" alt-text="Skärm bild som visar knappen &quot;starta ett nytt Android Studio projekt&quot; markerad i Android Studio.&quot;:::
+:::image type="content" source="../media/android/studio-new-project.png" alt-text="Skärm bild som visar knappen &quot;starta ett nytt Android Studio projekt&quot; markerad i Android Studio.":::
 
-Välj projekt mal len &quot;Tom aktivitet" under "telefon och surfplatta".
+Välj projekt mal len "Tom aktivitet" under "telefon och surfplatta".
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Skärm bild som visar knappen &quot;starta ett nytt Android Studio projekt&quot; markerad i Android Studio.&quot;:::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat på skärmen för projekt mal len.":::
 
-Välj projekt mal len &quot;Tom aktivitet" eller större.
+Välj minsta klient bibliotek för "API 26: Android 8,0 (Oreo)" eller större.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Skärm bild som visar knappen &quot;starta ett nytt Android Studio projekt&quot; markerad i Android Studio.&quot;:::
-
-Välj projekt mal len &quot;Tom aktivitet":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Skärm bild som visar alternativet &quot;Tom aktivitet&quot; markerat i projekt mal len skärm 2.":::
 
 
 ### <a name="install-the-package"></a>Installera paketet
@@ -80,7 +81,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.8'
     ...
 }
 ```
@@ -182,8 +183,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azure.android.communication.common.CommunicationUser;
-import com.azure.android.communication.common.CommunicationUserCredential;
+import com.azure.android.communication.common.CommunicationUserIdentifier;
+import com.azure.android.communication.common.CommunicationTokenCredential;
 import com.azure.communication.calling.CallAgent;
 import com.azure.communication.calling.CallClient;
 import com.azure.communication.calling.StartCallOptions;
@@ -261,11 +262,12 @@ private void getAllPermissions() {
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar klient biblioteket:
 
-| Name                                  | Beskrivning                                                  |
+| Namn                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient är den huvudsakliga start punkten för det anropande klient biblioteket.|
 | CallAgent | CallAgent används för att starta och hantera samtal. |
 | CommunicationUserCredential | CommunicationUserCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.|
+| CommunicationIdentifier | CommunicationIdentifier används som en annan typ av deltagare som skulle kunna vara en del av ett samtal.|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Skapa en agent från åtkomsttoken för användare
 
@@ -280,7 +282,7 @@ private void createAgent() {
     String userToken = "<User_Access_Token>";
 
     try {
-        CommunicationUserCredential credential = new CommunicationUserCredential(userToken);
+        CommunicationTokenCredential credential = new CommunicationTokenCredential(userToken);
         callAgent = new CallClient().createCallAgent(getApplicationContext(), credential).get();
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to create call agent.", Toast.LENGTH_SHORT).show();
@@ -305,7 +307,7 @@ private void startCall() {
 
     callAgent.call(
         getApplicationContext(),
-        new CommunicationUser[] {new CommunicationUser(calleeId)},
+        new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);
 }
 ```
@@ -315,9 +317,7 @@ private void startCall() {
 
 Nu kan du starta appen med hjälp av knappen "kör app" i verktygsfältet (Shift + F10). Kontrol lera att du kan placera samtal genom att anropa `8:echo123` . Ett förregistrerat meddelande spelas upp och upprepar tillbaka ditt meddelande till dig.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Skärm bild som visar knappen &quot;starta ett nytt Android Studio projekt&quot; markerad i Android Studio.&quot;:::
-
-Välj projekt mal len &quot;Tom aktivitet":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Skärm bild som visar det färdiga programmet.":::
 
 ## <a name="sample-code"></a>Exempelkod
 

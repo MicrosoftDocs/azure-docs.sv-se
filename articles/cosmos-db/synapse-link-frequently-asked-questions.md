@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627790"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658477"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Vanliga frågor och svar om Azure Synapse Link för Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -67,6 +67,12 @@ Ja, analys lagret kan aktive ras på behållare med autoskalning av allokerat da
 ### <a name="is-there-any-effect-on-azure-cosmos-db-transactional-store-provisioned-rus"></a>Finns det någon inverkan på Azure Cosmos DB transaktions lager etablerade ru: er?
 
 Azure Cosmos DB garanterar prestanda isolering mellan transaktions-och analys arbets belastningar. Aktivering av analys lagret på en behållare påverkar inte RU/s-etableringen i Azure Cosmos DB transaktions lager. Transaktionerna (Läs & skrivning) och lagrings kostnader för analys lagret debiteras separat. Mer information finns i [prissättningen för Azure Cosmos DB Analytical Store](analytical-store-introduction.md#analytical-store-pricing) .
+
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Kan jag begränsa åtkomsten till Azure Cosmos DB analys lager?
+
+Ja du kan konfigurera en [hanterad privat slut punkt](analytical-store-private-endpoints.md) och begränsa nätverks åtkomsten till analytisk lagring till Azure Synapse-hanterade virtuella nätverk. Hanterade privata slut punkter upprättar en privat länk till analys lagret. Den privata slut punkten begränsar också skriv åtkomst till transaktions lagring, bland annat Azure-datatjänster.
+
+Du kan lägga till både transaktions lager och analys lager privata slut punkter till samma Azure Cosmos DB konto i en Azure Synapse Analytics-arbetsyta. Om du bara vill köra analytiska frågor kanske du bara vill mappa den analytiska privata slut punkten.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Avspeglas borttagnings-och uppdaterings åtgärder i transaktions arkivet i analys lagret?
 

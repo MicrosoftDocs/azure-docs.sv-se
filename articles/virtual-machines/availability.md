@@ -5,13 +5,13 @@ author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: a0ea9a0871dd57088473999b28553258ff210038
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/18/2021
+ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628772"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668307"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Tillgänglighetsalternativ för virtuella datorer i Azure
 
@@ -52,6 +52,10 @@ Med skalnings uppsättningar för virtuella Azure-datorer kan du skapa och hante
 **Fel domäner och uppdaterings domäner**
 
 Skalnings uppsättningar för virtuella datorer fören klar designen för hög tillgänglighet genom att justera fel domäner och uppdatera domäner. Du behöver bara definiera antalet fel domäner för skalnings uppsättningen. Antalet fel domäner som är tillgängliga för skalnings uppsättningarna kan variera beroende på region. Se [Hantera tillgängligheten för virtuella datorer i Azure](./manage-availability.md).
+
+**Orchestration-lägen för skalnings uppsättningar**
+
+I Orchestration-lägena för skalnings uppsättningar för virtuella datorer kan du få bättre kontroll över hur virtuella dator instanser hanteras av skalnings uppsättningen. Du kan aktivera ett enhetligt eller flexibelt Orchestration-läge på din skalnings uppsättning. Enhetlig dirigering är optimerad för storskaliga tillstånds lösa arbets belastningar med identiska instanser. Flexibel dirigering (för hands version) är avsedd för hög tillgänglighet i skala med identiska eller flera typer av virtuella datorer. Läs mer om de här [Dirigerings lägena](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) och hur du aktiverar dem.
 
 
 ## <a name="availability-sets"></a>Tillgänglighetsuppsättningar

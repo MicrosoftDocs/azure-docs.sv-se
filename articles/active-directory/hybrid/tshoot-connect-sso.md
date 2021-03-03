@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591182"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644654"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Felsöka Azure Active Directory sömlösa enkla Sign-On
 
@@ -32,6 +32,7 @@ Den här artikeln hjälper dig att hitta felsöknings information om vanliga pro
 - Microsoft 365 Win32-klienter (Outlook, Word, Excel och andra) med versioner 16.0.8730. xxxx och senare stöds med ett icke-interaktivt flöde. Andra versioner stöds inte. i dessa versioner anger användarna sina användar namn, men inte lösen ord, för inloggning. För OneDrive måste du aktivera [funktionen OneDrive-tyst konfiguration](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) för att få en tyst inloggning.
 - Sömlös SSO fungerar inte i privat bläddringsläge på Firefox.
 - Sömlös SSO fungerar inte i Internet Explorer när utökat skyddat läge är aktiverat.
+- Sömlös SSO fungerar inte i privat bläddringsläge på Microsoft Edge (bakåtkompatibelt).
 - Sömlös enkel inloggning fungerar inte i mobila webbläsare på iOS och Android.
 - Om en användare är en del av för många grupper i Active Directory kommer användarens Kerberos-biljett troligen att vara för stor för att kunna bearbetas, och detta leder till att sömlös SSO Miss fungerar. Azure AD HTTPS-begäranden kan ha huvuden med en maximal storlek på 50 KB; Kerberos-biljetter måste vara mindre än den gräns som krävs för att hantera andra Azure AD-artefakter (vanligt vis 2-5 KB) som cookies. Vi rekommenderar att du minskar användarens grupp medlemskap och försöker igen.
 - Om du synkroniserar 30 eller fler Active Directory skogar kan du inte aktivera sömlös SSO via Azure AD Connect. Som en lösning kan du [aktivera funktionen manuellt](#manual-reset-of-the-feature) på klienten.

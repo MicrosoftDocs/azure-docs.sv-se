@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307180"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677619"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Självstudie: skapa Apache Spark jobb definition i Synapse Studio
 
@@ -32,7 +32,7 @@ Den här självstudien omfattar följande uppgifter:
 
 Innan du börjar med den här självstudien måste du uppfylla följande krav:
 
-* En Azure Synapse Analytics-arbetsyta. Instruktioner finns i [skapa en Azure Synapse Analytics-arbetsyta](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
+* En Azure Synapse Analytics-arbetsyta. Instruktioner finns i [skapa en Azure Synapse Analytics-arbetsyta](../../machine-learning/how-to-manage-workspace.md).
 * En server lös Apache Spark pool.
 * Ett ADLS Gen2 lagrings konto. Du måste vara ägare till **Storage BLOB-data** för det ADLS Gen2-filsystem som du vill arbeta med. Om du inte gör det måste du lägga till behörigheten manuellt.
 * Om du inte vill använda arbets ytans standard lagring länkar du det obligatoriska ADLS Gen2 lagrings kontot i Synapse Studio. 
@@ -43,11 +43,11 @@ I det här avsnittet skapar du en Apache Spark jobb definition för PySpark (pyt
 
 1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
 
-2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) för att hämta **exempelfilerna för python.zip** , sedan packa upp det komprimerade paketet och extrahera **WORDCOUNT.py** -och **shakespeare.txt** -filerna. 
+2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) för att hämta **exempelfilerna för python.zip**, sedan packa upp det komprimerade paketet och extrahera **WORDCOUNT.py** -och **shakespeare.txt** -filerna. 
 
      ![Exempelfiler](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Välj **Data**  ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **WORDCOUNT.py** och **shakespeare.txt** i ADLS Gen2 fil systemet. 
+3. Välj   ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **WORDCOUNT.py** och **shakespeare.txt** i ADLS Gen2 fil systemet. 
 
      ![överför python-fil](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,11 +85,11 @@ I det här avsnittet skapar du en Apache Spark jobb definition för Apache Spark
 
  1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
 
- 2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) för att hämta **exempelfiler för scala.zip** , sedan packa upp det komprimerade paketet och extrahera filerna **WORDCOUNT. jar** och **shakespeare.txt** . 
+ 2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) för att hämta **exempelfiler för scala.zip**, sedan packa upp det komprimerade paketet och extrahera filerna **WORDCOUNT. jar** och **shakespeare.txt** . 
  
      ![Scala för exempel filer](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Välj **Data**  ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **WORDCOUNT. jar** och **shakespeare.txt** i ADLS Gen2 fil systemet.
+ 3. Välj   ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **WORDCOUNT. jar** och **shakespeare.txt** i ADLS Gen2 fil systemet.
  
      ![Förbered Scala-struktur](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
@@ -125,11 +125,11 @@ I det här avsnittet skapar du en Apache Spark jobb definition för Apache Spark
 I det här avsnittet skapar du en Apache Spark jobb definition för .NET Spark (C#/F #).
  1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
 
- 2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) för att hämta **exempelfilerna för dotnet.zip** , sedan packa upp det komprimerade paketet och extrahera **wordcount.zip** -och **shakespeare.txt** -filerna. 
+ 2. Du kan gå till [exempelfiler för att skapa Apache Spark jobb definitioner](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) för att hämta **exempelfilerna för dotnet.zip**, sedan packa upp det komprimerade paketet och extrahera **wordcount.zip** -och **shakespeare.txt** -filerna. 
 
      ![exempel på dotNet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Välj **Data**  ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **wordcount.zip** och **shakespeare.txt** i ADLS Gen2 fil systemet.
+ 3. Välj   ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** och ladda upp **wordcount.zip** och **shakespeare.txt** i ADLS Gen2 fil systemet.
  
      ![Förbered dotNet-struktur](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
@@ -187,7 +187,7 @@ När du har skapat en Apache Spark jobb definition kan du skicka den till en Apa
 
 ### <a name="scenario-3-check-output-file"></a>Scenario 3: kontrol lera utdatafilen
 
- 1. Välj **Data**  ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** (hozhaobdbj), öppna mappen **result** som du skapade tidigare. du kan gå till mappen result och kontrol lera om utdata har genererats.
+ 1. Välj   ->  **länkade** data  ->  **Azure Data Lake Storage Gen2** (hozhaobdbj), öppna mappen **result** som du skapade tidigare. du kan gå till mappen result och kontrol lera om utdata har genererats.
 
      ![Visa utdatafil](./media/apache-spark-job-definitions/view-output-file.png)
 

@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 472129be5baa865365b49894b705d84c23e9cd04
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b4a5dcbd6bc0a6468e8ac8cc7edc8589ea380b28
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657119"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -37,7 +37,7 @@ ms.locfileid: "97506311"
 
    ```python
    import os
-   from azure.communication.administration import CommunicationIdentityClient
+   from azure.communication.identity import CommunicationIdentityClient
 
    try:
       print('Azure Communication Services - Access Tokens Quickstart')
@@ -49,10 +49,10 @@ ms.locfileid: "97506311"
 
 ### <a name="install-the-package"></a>Installera paketet
 
-När du fortfarande är i program katalogen installerar du Azure Communication Services administrations klient bibliotek för python-paket med hjälp av `pip install` kommandot.
+När du fortfarande är i program katalogen ska du installera klient biblioteket för Azure Communication Services-Identitetsen för python-paketet med hjälp av `pip install` kommandot.
 
 ```console
-pip install azure-communication-administration
+pip install azure-communication-identity
 ```
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
@@ -70,6 +70,12 @@ connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
+Om du har konfigurerat identitets konfiguration kan du läsa mer i [använda hanterade identiteter](../managed-identity.md), men du kan också autentisera med hanterad identitet.
+```python
+const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
+var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+```
+
 ## <a name="create-an-identity"></a>Skapa en identitet
 
 Azure Communication Services upprätthåller en Lightweight Identity-katalog. Använd `create_user` metoden för att skapa en ny post i katalogen med en unik `Id` . Lagra mottagen identitet med mappning till programmets användare. Till exempel genom att lagra dem i program serverns databas. Identiteten krävs senare för att utfärda åtkomsttoken.
@@ -81,11 +87,11 @@ print("\nCreated an identity with ID: " + identity.identifier + ":")
 
 ## <a name="issue-access-tokens"></a>Utfärda åtkomsttoken
 
-Använd `issue_token` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `communicationUser` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
+Använd `get_token` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `CommunicationUserIdentifier` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
 
 ```python
 # Issue an access token with the "voip" scope for an identity
-token_result = client.issue_token(identity, ["voip"])
+token_result = client.get_token(identity, ["voip"])
 expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
@@ -95,19 +101,19 @@ print(token_result.token)
 
 ## <a name="refresh-access-tokens"></a>Uppdatera åtkomsttoken
 
-Om du vill uppdatera en åtkomsttoken använder du `CommunicationUser` objektet för att utfärda följande:
+Om du vill uppdatera en åtkomsttoken använder du `CommunicationUserIdentifier` objektet för att utfärda följande:
 
-```python  
+```python
 # Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identity = CommunicationUser(existingIdentity)
-token_result = client.issue_token( identity, ["voip"])
+identity = CommunicationUserIdentifier(existingIdentity)
+token_result = client.get_token( identity, ["voip"])
 ```
 
 ## <a name="revoke-access-tokens"></a>Återkalla åtkomsttoken
 
 I vissa fall kan du uttryckligen återkalla åtkomsttoken. Till exempel när ett programs användare ändrar lösen ordet som de använder för att autentisera till din tjänst. Metoden `revoke_tokens` ogiltig förklarade alla aktiva åtkomsttoken som utfärdats till identiteten.
 
-```python  
+```python
 client.revoke_tokens(identity)
 print("\nSuccessfully revoked all access tokens for identity with ID: " + identity.identifier)
 ```

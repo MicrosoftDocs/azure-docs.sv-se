@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898502"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671595"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio-anteckningsböcker i Azure Synapse Analytics
 
@@ -104,7 +104,7 @@ Du kan ställa in det primära språket för nya tillagda celler i list rutan i 
 
 Du kan använda flera språk i en bärbar dator genom att ange rätt språk-Magic-kommando i början av en cell. I följande tabell visas Magic-kommandon för att växla mellan cell språk.
 
-|Magiskt kommando |Språk | Description |  
+|Magiskt kommando |Språk | Beskrivning |  
 |---|------|-----|
 |%% pyspark| Python | Kör en **python** -fråga mot Spark-kontext.  |
 |%% Spark| Scala | Kör en **Scala** -fråga mot Spark-kontext.  |  
@@ -554,5 +554,5 @@ Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Synapse
 - [Snabb start: skapa en Apache Spark pool i Azure Synapse Analytics med hjälp av webb verktyg](../quickstart-apache-spark-notebook.md)
 - [Vad är Apache Spark i Azure Synapse Analytics](apache-spark-overview.md)
 - [Använda .NET för Apache Spark med Azure Synapse Analytics](spark-dotnet.md)
-- [Dokumentation om .NET för Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Dokumentation om .NET för Apache Spark](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

@@ -6,19 +6,18 @@ documentationcenter: ''
 author: rdeltcheva
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259210"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671570"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hög tillgänglighet för SAP HANA skala upp med Azure NetApp Files på Red Hat Enterprise Linux
 
@@ -91,7 +90,7 @@ Läs följande SAP-anteckningar och dokument först:
     - [Installera SAP HANA på Red Hat Enterprise Linux för användning i Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [Konfigurera SAP HANA pacemaker kluster när HANA-filsystemet finns på NFS-resurser](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-program på Microsoft Azure med Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
-- [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+- [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>Översikt
 
@@ -701,4 +700,4 @@ I det här avsnittet beskrivs hur du kan testa installationen.
 * [Azure Virtual Machines planera och implementera SAP][planning-guide]
 * [Azure Virtual Machines distribution för SAP][deployment-guide]
 * [Azure Virtual Machines DBMS-distribution för SAP][dbms-guide]
-* [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
+* [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)

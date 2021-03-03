@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: f9c09dbef072ff1d006603cbc3d0767fc530a99b
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9eeafaf0f5fbfaff9394ced0a0623f2fb462ed4d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647004"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, östra och JDE
 
@@ -148,8 +148,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Klicka på **testa det här programmet** i Azure Portal och du bör logga in automatiskt till SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE och som du ställer in SSO för. 
 
-Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE-panelen i Mina appar, om den har kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på SSOGEN-Azure AD SSO-Gateway för Oracle E-Business Suite-EBS , Den JDE som du konfigurerade SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE-panelen i Mina appar, om den har kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på SSOGEN-Azure AD SSO-Gateway för Oracle E-Business Suite-EBS , Den JDE som du konfigurerade SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE och kan du framtvinga kontroll, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE och kan du framtvinga kontroll, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

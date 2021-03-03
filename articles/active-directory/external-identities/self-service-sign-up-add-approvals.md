@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355247"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644875"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Lägg till ett anpassat godkännande arbets flöde till självbetjänings registrering
 
@@ -81,7 +81,7 @@ Nu ska du lägga till API-kopplingarna i ett användar flöde för självbetjän
 1. Logga in till [Azure-portalen](https://portal.azure.com/) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **användar flöden (förhands granskning)** och välj sedan det användar flöde som du vill aktivera API-kopplingen för.
+4. Välj **användar flöden** och välj sedan det användar flöde som du vill aktivera API-kopplingen för.
 5. Välj **API-kopplingar** och välj sedan de API-slutpunkter som du vill anropa i följande steg i användar flödet:
 
    - **När du har loggat in med en identitetsprovider**: Välj din godkännande status API-koppling, till exempel _kontrol lera godkännande status_.
@@ -328,8 +328,8 @@ Content-type: application/json
 | e-post                                                | Ja      | Motsvarar det `email` anspråk som skickas till API: et.                                                                                                               |
 | userType                                            | Ja      | Måste vara `Guest` . Utser den här användaren som gäst användare.                                                                                                                 |
 | identiteter                                          | Ja      | Federerad identitets information.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Nej       | Andra inbyggda attribut som `displayName` , `city` och andra. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Nej       | Anpassade attribut för användaren. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                                                            |
+| \<otherBuiltInAttribute>                            | Inga       | Andra inbyggda attribut som `displayName` , `city` och andra. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | Inga       | Anpassade attribut för användaren. Parameter namn är desamma som de parametrar som skickas av API-anslutningen.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>För en federerad Azure Active Directory användare
 
@@ -357,8 +357,8 @@ POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
-    "inviteRedirectUrl" : "https://myapp.com"
+    "invitedUserEmailAddress": "johnsmith@fabrikam.onmicrosoft.com",
+    "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
 
@@ -370,9 +370,9 @@ Content-type: application/json
 
 {
     ...
-    "invitedUser": {
-        "id": "<generated-user-guid>"
-    }
+    "invitedUser": {
+        "id": "<generated-user-guid>"
+    }
 }
 ```
 

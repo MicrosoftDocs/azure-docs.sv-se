@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599844"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667635"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Använda externa tabeller med Synapse SQL
 
@@ -29,7 +29,7 @@ I dedikerad SQL-pool kan du använda en extern tabell för att:
 - Fråga Azure Blob Storage och Azure Data Lake Gen2 med Transact-SQL-uttryck.
 - Importera och lagra data från Azure Blob Storage och Azure Data Lake Storage till dedikerad SQL-pool.
 
-När det används tillsammans med [CREATE TABLE som Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktion, importerar data till en tabell i SQL-poolen genom att välja från en extern tabell. Förutom [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)är externa tabeller användbara för att läsa in data. 
+När det används tillsammans med [CREATE TABLE som Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktion, importerar data till en tabell i SQL-poolen genom att välja från en extern tabell. Förutom [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)är externa tabeller användbara för att läsa in data. 
 
 En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
@@ -60,7 +60,7 @@ Extern tabell åtkomst till underliggande Azure-lagring med hjälp av databasen 
 
 ## <a name="create-external-data-source"></a>SKAPA EXTERN DATA KÄLLA
 
-Externa data källor används för att ansluta till lagrings konton. Den fullständiga dokumentationen beskrivs [här](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Externa data källor används för att ansluta till lagrings konton. Den fullständiga dokumentationen beskrivs [här](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="syntax-for-create-external-data-source"></a>Syntax för skapa extern DATA källa
 
@@ -95,7 +95,7 @@ data_source_name
 
 Anger det användardefinierade namnet för data källan. Namnet måste vara unikt i databasen.
 
-#### <a name="location"></a>Plats
+#### <a name="location"></a>Location
 LOCATION = `'<prefix>://<path>'`   -tillhandahåller anslutnings protokollet och sökvägen till den externa data källan. Följande mönster kan användas på platsen:
 
 | Extern data Källa        | Location-prefix | Sökväg till plats                                         |
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Skapar ett externt fil formats objekt som definierar externa data som lagras i Azure Blob Storage eller Azure Data Lake Storage. Att skapa ett externt fil format är ett krav för att skapa en extern tabell. Den fullständiga dokumentationen finns [här](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Skapar ett externt fil formats objekt som definierar externa data som lagras i Azure Blob Storage eller Azure Data Lake Storage. Att skapa ett externt fil format är ett krav för att skapa en extern tabell. Den fullständiga dokumentationen finns [här](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 Genom att skapa ett externt fil format anger du den faktiska layouten för de data som en extern tabell refererar till.
 
@@ -325,7 +325,7 @@ Namnet på en till tre delar av tabellen som ska skapas. För en extern tabell l
 
 <column_definition>,... *n* ]
 
-Skapa extern tabell stöder möjligheten att konfigurera kolumn namn, datatyp, null och sortering. Du kan inte använda standard BEGRÄNSNINGen på externa tabeller.
+Skapa extern tabell stöder möjligheten att konfigurera kolumn namn, data typ och sortering. Du kan inte använda standard BEGRÄNSNINGen på externa tabeller.
 
 >[!IMPORTANT]
 >Kolumndefinitionerna, inklusive datatyp och antalet kolumner, måste matcha data i de externa filerna. Vid felmatchning avvisas filraderna när du kör frågor mot faktiska data.
@@ -387,7 +387,7 @@ Med hjälp av Data Lake utforsknings funktioner kan du nu skapa och skicka fråg
 
 - Du måste ha åtkomst till arbets ytan med minst Storage BLOB data Contributor-åtkomst roll till ADLS Gen2 kontot
 
-- Du måste ha minst [behörighet för att skapa](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) och fråga externa tabeller i SQL-poolen eller SQL OD
+- Du måste ha minst [behörighet för att skapa](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) och fråga externa tabeller i SQL-poolen eller SQL OD
 
 I panelen data väljer du den fil som du vill skapa den externa tabellen från:
 > [!div class="mx-imgBorder"]

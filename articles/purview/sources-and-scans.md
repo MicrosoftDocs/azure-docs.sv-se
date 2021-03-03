@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383899"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677916"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Data källor och filtyper som stöds i Azure avdelningens kontroll
 
@@ -43,9 +43,12 @@ Azure avdelningens kontroll stöder följande källor:
 
 Följande filtyper stöds för genomsökning, för schema extrahering och klassificering i tillämpliga fall:
 
-- Strukturerade fil format som stöds av tillägget: AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML
+- Strukturerade fil format som stöds av tillägget: AVRO, ORC, PARQUET, CSV, JSON, PSV, SSV, TSV, TXT, XML, GZIP
 - Dokument fil format som stöds av tillägget: DOC, DOCM, DOCX, DOT, ODP, ODS, ODT, PDF, POT, PPS, PPSX, PPT, PPTM, PPTX, XLC, XLS, XLSB, XLSM, XLSX, XLT
 - Avdelningens kontroll stöder också anpassade fil namns tillägg och anpassade tolkare.
+ 
+> [!Note]
+> Varje gzip-fil måste mappas till en enda CSV-fil i. Gzip-filer omfattas av system-och anpassade klassificerings regler. Vi stöder för närvarande inte skanning av en GZIP-fil som är mappad till flera filer inom eller andra filtyper än CSV. 
 
 ## <a name="sampling-within-a-file"></a>Sampling i en fil
 

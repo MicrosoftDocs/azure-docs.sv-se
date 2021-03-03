@@ -1,40 +1,38 @@
 ---
-title: Använd Azure Policy till klusterkonfigurationer i stor skala (förhandsversion)
+title: Använd Azure Policy för att tillämpa klusterkonfigurationer i stor skala
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/02/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Använd Azure Policy för att tillämpa klusterkonfigurationer i stor skala
 keywords: Kubernetes, båge, Azure, K8s, behållare
-ms.openlocfilehash: 23cd42458c396afd31741c648d713934250a4112
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7f85050666c383ba49730bd88ce1f26d55607e7a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587790"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652155"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Använd Azure Policy till klusterkonfigurationer i stor skala (förhandsversion)
+# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>Använd Azure Policy för att tillämpa klusterkonfigurationer i stor skala
 
 ## <a name="overview"></a>Översikt
 
-Du kan använda Azure Policy för att genomdriva någon av följande resurser för att få en speciell `Microsoft.KubernetesConfiguration/sourceControlConfigurations` tillämpning:
-*  `Microsoft.Kubernetes/connectedclusters` klusterresursen.
-* GitOps-aktiverad `Microsoft.ContainerService/managedClusters` resurs. 
+Du kan använda Azure Policy för att tillämpa konfigurationer ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` resurs typ) i skala på Azure Arc-aktiverade Kubernetes-kluster ( `Microsoft.Kubernetes/connectedclusters` ).
 
 Om du vill använda Azure Policy väljer du en befintlig princip definition och skapar en princip tilldelning. När du skapar princip tilldelningen:
 1. Ange omfånget för tilldelningen.
     * Omfånget är en Azure-resurs grupp eller-prenumeration. 
-2. Ange parametrarna för `sourceControlConfiguration` som ska skapas. 
+2. Ange parametrarna för den konfiguration som ska skapas. 
 
-När tilldelningen har skapats identifierar Azure Policy-motorn alla `connectedCluster` eller `managedCluster` resurser som finns inom omfånget och tillämpar på `sourceControlConfiguration` var och en.
+När tilldelningen har skapats identifierar Azure Policy-motorn alla Azure Arc-aktiverade Kubernetes-kluster som finns inom omfånget och tillämpar konfigurationen på varje kluster.
 
-Du kan aktivera flera git-databaser som källor för sanningen för varje kluster genom att använda flera princip tilldelningar. Varje princip tilldelning konfigureras för att använda en annan git-lagrings platsen; till exempel en lagrings platsen för den centrala IT/kluster-operatören och andra databaser för program team.
+Du kan skapa flera konfigurationer, var och en som pekar på en annan git-lagrings platsen, med hjälp av flera princip tilldelningar. Till exempel en lagrings platsen för den centrala IT/kluster operatören och andra databaser för program team.
 
 ## <a name="prerequisite"></a>Förutsättning
 
-Kontrol lera att du har `Microsoft.Authorization/policyAssignments/write` behörighet för omfånget (prenumeration eller resurs grupp) där du vill skapa den här princip tilldelningen.
+Kontrol lera att du har `Microsoft.Authorization/policyAssignments/write` behörighet för omfånget (prenumeration eller resurs grupp) där du skapar den här princip tilldelningen.
 
 ## <a name="create-a-policy-assignment"></a>Skapa en principtilldelning
 
@@ -54,23 +52,20 @@ Kontrol lera att du har `Microsoft.Authorization/policyAssignments/write` behör
     * Mer information finns i guiden [skapa en princip tilldelning snabb start](../../governance/policy/assign-policy-portal.md) och [Reparera icke-kompatibla resurser med Azure policy artikeln](../../governance/policy/how-to/remediate-resources.md).
 1. Välj **Granska + skapa**.
 
-När du har skapat princip tilldelningen `sourceControlConfiguration` kommer att tillämpas för någon av följande resurser som finns inom tilldelnings omfånget:
-* Nya `connectedCluster` resurser.
-* Nya `managedCluster` resurser med GitOps-agenterna installerade. 
+När du har skapat princip tilldelningen tillämpas konfigurationen på nya Azure Arc-aktiverade Kubernetes-kluster som skapats inom omfånget för princip tilldelningen.
 
 För befintliga kluster måste du köra en reparations uppgift manuellt. Den här aktiviteten tar vanligt vis 10 till 20 minuter innan princip tilldelningen börjar gälla.
 
 ## <a name="verify-a-policy-assignment"></a>Verifiera en princip tilldelning
 
-1. I Azure Portal navigerar du till en av dina `connectedCluster` resurser.
+1. I Azure Portal navigerar du till ett av dina Azure Arc-aktiverade Kubernetes-kluster.
 1. I avsnittet **Inställningar** på sid panelen väljer du **principer**. 
-    * AKS-klustrets UX är inte implementerat ännu.
     * I listan principer ser du princip tilldelningen som du skapade tidigare med **kompatibilitetstillstånd** inställt som *kompatibelt*.
 1. I avsnittet **Inställningar** på sid panelen väljer du **konfigurationer**.
-    * I listan konfigurationer bör du se `sourceControlConfiguration` att princip tilldelningen har skapats.
+    * I listan konfigurationer bör du se konfigurationen som skapats av princip tilldelningen.
 1. Används `kubectl` för att göra en fråga till klustret. 
-    * Du bör se namn området och artefakterna som har skapats av `sourceControlConfiguration` .
-    * Inom 5 minuter bör du se i klustret de artefakter som beskrivs i manifesten i den konfigurerade git-lagrings platsen.
+    * Du bör se namn området och artefakterna som har skapats av konfigurations resurserna.
+    * Inom 5 minuter (förutsatt att klustret har nätverks anslutning till Azure) bör du se de objekt som beskrivs av manifesten i git-lagrings platsen, som skapas i klustret.
 
 ## <a name="next-steps"></a>Nästa steg
 

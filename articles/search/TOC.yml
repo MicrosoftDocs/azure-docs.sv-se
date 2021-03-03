@@ -96,6 +96,8 @@
   items:
     - name: Fulltextsökning
       href: search-lucene-query-architecture.md
+    - name: Semantisk sökning
+      href: semantic-search-overview.md
     - name: Relevanspoäng
       href: index-similarity-and-scoring.md
     - name: Indexerare
@@ -218,6 +220,8 @@
           href: search-howto-schedule-indexers.md
         - name: Definiera fält mappningar
           href: search-indexer-field-mappings.md
+        - name: Egenskaper för innehålls metadata
+          href: search-blob-metadata-properties.md
         - name: Ansluta med hanterade identiteter
           items:
             - name: Översikt över hanterade identiteter
@@ -228,6 +232,8 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
+        - name: sharepoint online
+          href: search-howto-index-sharepoint-online.md
         - name: Azure-blobar
           items:
             - name: Söka över blobar
@@ -248,8 +254,6 @@
               href: search-howto-index-json-blobs.md
             - name: Indexera krypterade blobar
               href: search-howto-index-encrypted-blobs.md
-            - name: Metadata-egenskaper för BLOB-innehåll
-              href: search-blob-metadata-properties.md
         - name: Azure-tabeller
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -306,6 +310,10 @@
       items:
         - name: Skapa en grundläggande fråga
           href: search-query-create.md
+        - name: Skapa en semantisk fråga
+          href: semantic-how-to-query-request.md
+        - name: Lägg till stavnings kontroll i frågor
+          href: speller-how-to-add.md
         - name: Frågetyper och sammansättning
           href: search-query-overview.md
         - name: Använd enkel syntax (exempel)
@@ -348,6 +356,8 @@
       items:
         - name: Arbeta med resultat
           href: search-pagination-page-layout.md
+        - name: Strukturera ett semantiskt svar
+          href: semantic-how-to-query-response.md
         - name: Poängprofiler
           href: index-add-scoring-profiles.md
         - name: Likhetsalgoritm
@@ -388,6 +398,8 @@
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
+        - name: Azure CLI
+          href: search-manage-azure-cli.md
         - name: Flytta en tjänst mellan regioner
           href: search-howto-move-across-regions.md
         - name: Rollbaserad administratörsåtkomst

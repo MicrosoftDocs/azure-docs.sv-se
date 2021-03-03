@@ -1,6 +1,6 @@
 ---
 title: Anslut med SQLCMD
-description: Använd kommando rads verktyget sqlcmd för att ansluta till och fråga en Synapse SQL-pool.
+description: Använd kommando rads verktyget sqlcmd för att ansluta till och fråga en dedikerad SQL-pool i Azure Synapse Analytics.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676244"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675724"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Ansluta till SQL-pool i Azure Synapse Analytics med SQLCMD
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Ansluta till en dedikerad SQL-pool i Azure Synapse Analytics med SQLCMD
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676244"
 > * [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Använd kommando rads verktyget [SQLCMD] [SQLCMD] för att ansluta till och fråga en SQL-pool.  
+Använd kommando rads verktyget [SQLCMD] [SQLCMD] för att ansluta till och fråga en dedikerad SQL-pool.  
 
 ## <a name="1-connect"></a>1. Anslut
 
-Kom igång med [SQLCMD] [SQLCMD] genom att öppna kommando tolken och ange **SQLCMD** följt av anslutnings STRÄNGEN för SQL-poolen. Anslutningssträngen kräver följande parametrar:
+Kom igång med [SQLCMD] [SQLCMD] genom att öppna kommando tolken och ange **SQLCMD** följt av anslutnings strängen för din DEDIKERADe SQL-pool. Anslutningssträngen kräver följande parametrar:
 
 * **Server (-S):** Server i formatet `<`servernamn`>`. database.windows.net
-* **Databas (-d):** Namn på SQL-pool.
-* **Aktivera citerade identifierare (-I):** Identifierare med citat tecken måste vara aktiverade för att ansluta till en instans i SQL-poolen.
+* **Databas (-d):** dedikerat namn på SQL-pool.
+* **Aktivera citerade identifierare (-I):** Identifierare med citat tecken måste vara aktiverade för att ansluta till en dedikerad instans av en SQL-pool.
 
 Om du vill använda SQL Server-autentisering måste du lägga till användarnamn/lösenordsparametrar:
 

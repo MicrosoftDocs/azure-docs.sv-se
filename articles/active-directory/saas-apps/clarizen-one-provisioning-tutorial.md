@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673672"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650849"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Clarizen en för automatisk användar etablering
 
@@ -35,7 +35,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Clarizen e
 > * Etablera grupper och grupp medlemskap i Clarizen One.
 > * [Enkel inloggning (SSO)](./clarizen-tutorial.md) till Clarizen rekommenderas.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

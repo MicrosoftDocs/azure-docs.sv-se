@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Lär dig hur du uppgraderar från CentOS och Ubuntu 16,04 till de senaste Ubuntu 18,04-Data Science Virtual Machine.
 keywords: djup inlärning, AI, data vetenskaps verktyg, virtuell data vetenskaps dator, team data science process
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320980"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659468"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Uppgradera din Data Science Virtual Machine till Ubuntu 18.04
 
@@ -38,7 +37,7 @@ I Azure Portal använder du Sök fältet för att hitta funktionerna för **ögo
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Skärm bild som visar Azure Portal och Sök fältet, med * * ögonblicks bilder * * markerat":::
 
-1. Välj **Lägg till** , vilket leder dig till sidan **skapa ögonblicks bild** . Välj den virtuella datorns prenumeration och resurs grupp. För **region** väljer du den region där mål lagringen finns. Välj DSVM lagrings disk och ytterligare alternativ för säkerhets kopiering. **Standard HDD** är en lämplig lagrings typ för det här säkerhets kopierings scenariot.
+1. Välj **Lägg till**, vilket leder dig till sidan **skapa ögonblicks bild** . Välj den virtuella datorns prenumeration och resurs grupp. För **region** väljer du den region där mål lagringen finns. Välj DSVM lagrings disk och ytterligare alternativ för säkerhets kopiering. **Standard HDD** är en lämplig lagrings typ för det här säkerhets kopierings scenariot.
 
 :::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Skärm bild som visar alternativ för att skapa ögonblicks bilder":::
 
@@ -103,11 +102,11 @@ Du kan välja att uppgradera operativ systemets delar av fil systemet och lämna
 
 Om du inte redan har skapat en ögonblicks bild av en virtuell dator enligt beskrivningen ovan, gör du det. 
 
-1. Sök efter **diskar** i Azure Portal och välj **Lägg till** , så öppnas sidan **disk** .
+1. Sök efter **diskar** i Azure Portal och välj **Lägg till**, så öppnas sidan **disk** .
 
 :::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Skärm bild av Azure Portal som visar sidan Sök efter diskar och knappen Lägg till":::
 
-2. Ange **prenumeration** , **resurs grupp** och **region** till värdena för ögonblicks bilden av den virtuella datorn. Välj ett **namn** för disken som ska skapas.
+2. Ange **prenumeration**, **resurs grupp** och **region** till värdena för ögonblicks bilden av den virtuella datorn. Välj ett **namn** för disken som ska skapas.
 
 3. Välj **Källtyp** som **ögonblicks** bild och välj den virtuella dator ögonblicks bilden som **käll ögonblicks bild**. Granska och skapa disken. 
 

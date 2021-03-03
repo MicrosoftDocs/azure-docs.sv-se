@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c67b0bab554f363b8389c5557eadeac6e4c577a2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f94134b2a06155b1b1f390175578e501a840038b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625239"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669417"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Själv hjälp för Server lös SQL-pool
 
@@ -30,7 +30,7 @@ Om Synapse Studio inte kan upprätta en anslutning till en server lös SQL-pool,
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Frågan Miss lyckas eftersom det inte går att öppna filen
 
 Om frågan Miss lyckas med felet "det går inte att öppna filen eftersom den inte finns, eller om den används av en annan process, och du är säker på att både filen finns och att den inte används av någon annan process, innebär det att det inte går att komma åt filen i SQL-poolen utan server. Det här problemet uppstår vanligt vis eftersom din Azure Active Directory identitet inte har behörighet att komma åt filen. Som standard försöker server lös SQL-poolen komma åt filen med din Azure Active Directory identitet. För att lösa det här problemet måste du ha rätt behörighet för att komma åt filen. Det enklaste sättet är att ge dig själv rollen ”Storage Blob Data Contributor” för det lagringskonto som du försöker köra frågan mot. 
-- [Mer information finns i den fullständiga guiden till åtkomstkontroll för lagring i Azure Active Directory](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+- [Mer information finns i den fullständiga guiden till åtkomstkontroll för lagring i Azure Active Directory](../../storage/common/storage-auth-aad-rbac-portal.md). 
 - [Besök kontrol lera lagrings konto åtkomst för SQL-pool utan server i Azure Synapse Analytics](develop-storage-files-storage-access-control.md)
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Frågan kan inte utföras eftersom den inte kan köras på grund av aktuella resurs begränsningar 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4206ba7617032e34310682d1468e6b1b661b8c8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725400"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648595"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Över gång till styrt samarbete med Azure Active Directory B2B-samarbete 
 
@@ -100,7 +100,7 @@ Ta reda på vem som kan bjuda in gäst användare att komma åt resurser.
 
 Om du använder hantering av Azure AD-rättigheter kan du konfigurera frågor för externa användare att besvara. Frågorna visas sedan för god kännare för att hjälpa dem att fatta ett beslut. Du kan konfigurera olika uppsättningar av frågor för varje [åtkomst paket princip](../governance/entitlement-management-access-package-approval-policy.md) så att god kännare kan ha relevant information för den åtkomst som de godkänner. Om till exempel ett åtkomst paket är avsett för åtkomst till leverantören, kan begär Anden efter frågas om leverantörs kontrakts nummer. Ett annat åtkomst paket som är avsett för leverantörer, kan begära sitt ursprungsland.
 
-Om du använder en självbetjänings Portal kan du använda [API-kopplingar](../external-identities/api-connectors-overview.md) för att samla in ytterligare attribut om användarna när de registrerar sig. Du kan sedan använda dessa attribut för att tilldela åtkomst. Om du till exempel registrerar dig för att registrera leverantörs-ID kan du använda attributet för att dynamiskt tilldela dem till en grupp eller ett åtkomst paket för den leverantören. Du kan skapa anpassade attribut i Azure Portal och använda dem i dina användar flöden för självbetjänings registrering. Du kan också läsa och skriva attributen med hjälp av [Microsoft Graph-API: et](../../active-directory-b2c/manage-user-accounts-graph-api.md). 
+Om du använder en självbetjänings Portal kan du använda [API-kopplingar](../external-identities/api-connectors-overview.md) för att samla in ytterligare attribut om användarna när de registrerar sig. Du kan sedan använda dessa attribut för att tilldela åtkomst. Om du till exempel registrerar dig för att registrera leverantörs-ID kan du använda attributet för att dynamiskt tilldela dem till en grupp eller ett åtkomst paket för den leverantören. Du kan skapa anpassade attribut i Azure Portal och använda dem i dina användar flöden för självbetjänings registrering. Du kan också läsa och skriva attributen med hjälp av [Microsoft Graph-API: et](../../active-directory-b2c/microsoft-graph-operations.md). 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Felsöka inbjudan till Azure AD-användare
 

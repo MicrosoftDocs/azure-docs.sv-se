@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806173"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671920"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Distributionsguide för SAP BusinessObjects BI-plattform för Linux i Azure
 
@@ -37,7 +36,7 @@ I det här exemplet används under produkt version och fil systemets layout
 - Azure Database for MySQL (version: 8.0.15)
 - MySQL C API-koppling – libmysqlclient (version: 6.1.11)
 
-| Filsystem        | Description                                                                                                               | Storlek (GB)             | Ägare  | Group  | Storage                    |
+| Filsystem        | Beskrivning                                                                                                               | Storlek (GB)             | Ägare  | Group  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Fil systemet för installation av SAP BOBI-instans, standard webb program för Tomcat och databas driv rutiner (om det behövs) | Rikt linjer för SAP-storlek | bl1adm | sapsys | Hanterad Premium disk – SSD |
 | /usr/sap/frsinput  | Monterings katalogen är för delade filer över alla BOBI-värdar som ska användas som indatafilens lagrings katalog  | Affärs behov         | bl1adm | sapsys | Azure NetApp Files         |

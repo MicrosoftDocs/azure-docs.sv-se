@@ -33,6 +33,16 @@
           href: database/features-comparison.md
         - name: Funktioner i flera modeller
           href: multi-model-features.md
+        - name: Schemalagt underhåll
+          items:
+            - name: Underhålls period
+              href: database/maintenance-window.md
+            - name: Konfigurera underhålls period
+              href: database/maintenance-window-configure.md
+            - name: Vanliga frågor och svar om underhålls fönstret
+              href: database/maintenance-window-faq.yml
+            - name: Avancerade aviseringar
+              href: database/advance-notifications.md
         - name: Minnesintern OLTP
           href: in-memory-oltp-overview.md
         - name: Temporala tabeller

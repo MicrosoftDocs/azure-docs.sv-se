@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 61ac4c979445ef48b5986ec3793a9880cedc837a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650260"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643498"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Ladda upp användnings data, mått och loggar till Azure Monitor
 
@@ -65,11 +65,11 @@ Följ dessa kommandon för att skapa mått för att ladda upp tjänstens huvud n
 > [!NOTE]
 > Att skapa ett huvud namn [för tjänsten kräver vissa behörigheter i Azure](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
-Uppdatera följande exempel om du vill skapa ett huvud namn för tjänsten. Ersätt `<ServicePrincipalName>` med namnet på tjänstens huvud namn och kör kommandot:
+Uppdatera följande exempel om du vill skapa ett huvud namn för tjänsten. Ersätt `<ServicePrincipalName>` `SubscriptionId` och `resourcegroup` med värdena och kör kommandot:
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+```
 
 Om du skapade tjänstens huvud namn tidigare och behöver bara hämta de aktuella autentiseringsuppgifterna, kör du följande kommando för att återställa autentiseringsuppgifterna.
 
@@ -79,8 +79,8 @@ az ad sp credential reset --name <ServicePrincipalName>
 
 Om du till exempel vill skapa ett huvud namn för tjänsten `azure-arc-metrics` kör du följande kommando
 
-```
-az ad sp create-for-rbac --name azure-arc-metrics
+```azurecli
+az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /subscriptions/a345c178a-845a-6a5g-56a9-ff1b456123z2/resourceGroups/myresourcegroup
 ```
 
 Exempel på utdata:
@@ -137,16 +137,15 @@ Kör det här kommandot för att tilldela tjänstens huvud namn till `Monitoring
 > Du måste använda dubbla citat tecken för roll namn när du kör från en Windows-miljö.
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+
 ```
 ::: zone-end
 
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -154,8 +153,7 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end

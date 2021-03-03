@@ -6,16 +6,16 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d41dcb939f981ce9cb6d3eae328cb2eb9adc20c2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654505"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652410"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Översikt över Azure API Management Diagnostics
 
-När du har skapat och hanterat ett API i Azure API Management vill du vara för beredd för eventuella problem som kan uppstå, från 404 inte hitta fel till 502 felaktigt Gateway-fel. API Management Diagnostics är en intelligent och interaktiv upplevelse som hjälper dig att felsöka ditt API publicerat i APIM utan att någon konfiguration krävs. När du stöter på problem med dina publicerade API: er kan API Management diagnostik ta reda på vad som är fel och vägleda dig till rätt information för att snabbt felsöka och lösa problemet.
+När du skapar och hanterar ett API i Azure API Management vill du vara för beredd för eventuella problem som kan uppstå, från 404 inte hitta fel till 502 felaktigt Gateway-fel. API Management Diagnostics är en intelligent och interaktiv upplevelse som hjälper dig att felsöka ditt API publicerat i APIM utan att någon konfiguration krävs. När du stöter på problem med dina publicerade API: er kan API Management diagnostik ta reda på vad som är fel och vägleda dig till rätt information för att snabbt felsöka och lösa problemet.
 
 Även om den här upplevelsen är mest användbar när du har problem med ditt API under de senaste 24 timmarna, är alla diagnostiska grafer alltid tillgängliga så att du kan analysera dem.
 

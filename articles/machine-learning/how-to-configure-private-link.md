@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7a6213528f204ac31fbcf8a29625787fc73d5153
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368021"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656813"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -172,7 +172,12 @@ Information om Azure Virtual Machines finns i Virtual Machines- [dokumentationen
 
 ## <a name="enable-public-access"></a>Aktivera offentlig åtkomst
 
-När du har konfigurerat en arbets yta med en privat slut punkt kan du välja att aktivera offentlig åtkomst till arbets ytan. Om du gör det tas inte den privata slut punkten bort. Den möjliggör offentlig åtkomst utöver den privata åtkomsten. Använd följande steg för att aktivera offentlig åtkomst till en privat länk aktive rad arbets yta:
+I vissa fall kanske du vill tillåta att någon ansluter till din säkrade arbets yta via en offentlig slut punkt, i stället för via VNet. När du har konfigurerat en arbets yta med en privat slut punkt kan du välja att aktivera offentlig åtkomst till arbets ytan. Om du gör det tas inte den privata slut punkten bort. All kommunikation mellan komponenter bakom VNet är fortfarande skyddad. Den möjliggör endast offentlig åtkomst till arbets ytan, förutom den privata åtkomsten via VNet.
+
+> [!WARNING]
+> När du ansluter över den offentliga slut punkten kommer vissa funktioner i Studio inte att kunna komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto.
+
+Använd följande steg för att aktivera offentlig åtkomst till en privat länk aktive rad arbets yta:
 
 # <a name="python"></a>[Python](#tab/python)
 

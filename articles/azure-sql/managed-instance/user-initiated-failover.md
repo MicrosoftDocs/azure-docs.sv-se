@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/17/2021
-ms.openlocfilehash: ecd97efbf12fb149037a94749bc899169f2c5a92
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.date: 02/23/2021
+ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096519"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660805"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierad manuell redundansväxling på SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Du kan överväga att köra en [manuell redundansväxling](../database/high-avai
 - I vissa fall av prestanda försämringar för frågor kan manuella redundans hjälpa till att minska prestanda problemet.
 
 > [!NOTE]
-> Att se till att dina program är redundanta innan du distribuerar till produktion bidrar till att minska risken för program fel i produktionen och kommer att bidra till programmets tillgänglighet för dina kunder.
+> Att se till att dina program är redundanta innan du distribuerar till produktion bidrar till att minska risken för program fel i produktionen och kommer att bidra till programmets tillgänglighet för dina kunder. Lär dig mer om hur du testar dina program för moln beredskap med att [testa appens moln beredskap för redundans med SQL-hanterad instans för](https://youtu.be/FACWYLgYDL8) video omkodning.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Initiera manuell redundans på SQL-hanterad instans
 
@@ -43,7 +43,7 @@ Du kan överväga att köra en [manuell redundansväxling](../database/high-avai
 Användaren som initierar en redundansväxling måste ha någon av följande Azure-roller:
 
 - Prenumerations ägarens roll eller
-- Rollen hanterad instans deltagare eller
+- Rollen [hanterad instans deltagare](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) eller
 - Anpassad roll med följande behörighet:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -153,6 +153,6 @@ Kort förlusten av anslutning från klienten under redundansväxlingen, som vanl
 > - Redundans är inte tillåtet förrän den första fullständiga säkerhets kopieringen för en ny databas har slutförts av automatiska säkerhets kopierings system.
 
 ## <a name="next-steps"></a>Nästa steg
-
+- Lär dig mer om hur du testar dina program för moln beredskap med att [testa appens moln beredskap för redundans med SQL-hanterad instans för](https://youtu.be/FACWYLgYDL8) video omkodning.
 - Lär dig mer om hög tillgänglighet för hanterad instans med [hög tillgänglighet för Azure SQL-hanterad instans](../database/high-availability-sla.md).
 - En översikt finns i [Vad är en Azure SQL-hanterad instans?](sql-managed-instance-paas-overview.md).

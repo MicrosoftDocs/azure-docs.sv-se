@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682978"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667508"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>SQL-pool utan server i Azure Synapse Analytics 
 
@@ -75,7 +75,7 @@ Säkerhet kan tillämpas med:
 
 T-SQL som stöds:
 
-- Det finns stöd för fullständig [Select](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -arean, inklusive en majoritet av SQL-funktioner
+- Det finns stöd för fullständig [Select](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) -arean, inklusive en majoritet av SQL-funktioner
 - CETAS – SKAPA EXTERN TABELL SOM VÄLJ
 - DDL-instruktioner relaterade till vyer och säkerhet
 
@@ -89,7 +89,7 @@ SQL-poolen utan server har ingen lokal lagring, endast metadata-objekt lagras i-
 
 ### <a name="extensions"></a>Tillägg
 
-För att möjliggöra smidig användning av frågor om data som finns i filer i data Lake, utökar SQL-poolen utan Server en befintlig [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -funktion genom att lägga till följande funktioner:
+För att möjliggöra smidig användning av frågor om data som finns i filer i data Lake, utökar SQL-poolen utan Server en befintlig [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) -funktion genom att lägga till följande funktioner:
 
 [Fråga efter flera filer eller mappar](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ SQL-poolen utan server erbjuder mekanismer för att skydda åtkomsten till dina 
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integrering och multifaktorautentisering
 
-Med Server lös SQL-pool kan du centralt hantera identiteter för databas användare och andra Microsoft-tjänster med [Azure Active Directory-integrering](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Den här funktionen förenklar hanteringen av behörighet och ger ökad säkerhet. Azure Active Directory (Azure AD) stöder [Multi-Factor Authentication](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) för att öka säkerheten för data och program med stöd för en enkel inloggnings process.
+Med Server lös SQL-pool kan du centralt hantera identiteter för databas användare och andra Microsoft-tjänster med [Azure Active Directory-integrering](../../azure-sql/database/authentication-aad-configure.md). Den här funktionen förenklar hanteringen av behörighet och ger ökad säkerhet. Azure Active Directory (Azure AD) stöder [Multi-Factor Authentication](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA) för att öka säkerheten för data och program med stöd för en enkel inloggnings process.
 
 #### <a name="authentication"></a>Autentisering
 
@@ -125,7 +125,7 @@ Autentisering utan SQL-pool avser hur användare bekräftar sin identitet när d
 
 - **Azure Active Directory autentisering**:
 
-  Den här autentiseringsmetoden använder identiteter som hanteras av Azure Active Directory. För Azure AD-användare kan Multi-Factor Authentication aktive ras. Använd Active Directory-autentisering (integrerad säkerhet) [närhelst det går](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+  Den här autentiseringsmetoden använder identiteter som hanteras av Azure Active Directory. För Azure AD-användare kan Multi-Factor Authentication aktive ras. Använd Active Directory-autentisering (integrerad säkerhet) [närhelst det går](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true).
 
 #### <a name="authorization"></a>Auktorisering
 

@@ -3,12 +3,12 @@ title: Så här migrerar du Azure Arc-aktiverade servrar över regioner
 description: Lär dig hur du migrerar en Azure Arc-aktiverad server från en region till en annan.
 ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4e0f1e41e928ab489f7c2c167eea31785d9bc21
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418207"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650183"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Så här migrerar du Azure Arc-aktiverade servrar över regioner
 
@@ -36,4 +36,4 @@ Om du vill migrera en Azure Arc-aktiverad server från en Azure-region till en a
 
 * Felsöknings information finns i [fel söknings guide för anslutna datorer](troubleshoot-agent-onboard.md).
 
-* Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md), till exempel för [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)av virtuella datorer, verifiera att datorn rapporterar till den förväntade Log Analytics arbets ytan, aktivera övervakning med [Azure monitor med VM](../../azure-monitor/insights/vminsights-enable-policy.md) -principen och mycket mer.
+* Lär dig hur du hanterar din dator med hjälp av [Azure policy](../../governance/policy/overview.md), till exempel för [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md)av virtuella datorer, verifiera att datorn rapporterar till den förväntade Log Analytics arbets ytan, aktivera övervakning med [Azure monitor med VM](../../azure-monitor/vm/vminsights-enable-policy.md) -principen och mycket mer.

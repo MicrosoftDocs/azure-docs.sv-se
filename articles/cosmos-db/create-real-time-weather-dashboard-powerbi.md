@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333604"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657544"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Skapa en instrument panel i real tid med hjälp av Azure Cosmos DB och Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ I den här artikeln beskrivs de steg som krävs för att skapa en Live väder in
 Det finns flera sätt att ställa in rapporterings instrument paneler på data som lagras i Azure Cosmos DB. Beroende på föråldrade krav och storleken på data, beskriver följande tabell rapporterings konfigurationen för varje scenario:
 
 
-|Scenario |Konfiguration |
+|Scenario |Installation |
 |---------|---------|
 |1. genererar ad hoc-rapporter (ingen uppdatering)    |  [Power BI Azure Cosmos DB anslutning med import läge](powerbi-visualize.md)       |
 |2. genererar ad hoc-rapporter med periodisk uppdatering   |  [Power BI Azure Cosmos DB anslutning med import läge (schemalagd Periodisk uppdatering)](powerbi-visualize.md)       |
@@ -48,7 +48,7 @@ Azure Analysis Services tillhandahåller en fullständigt hanterad plattform som
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Mata in väder data i Azure Cosmos DB
 
-Konfigurera en pipeline för inmatning för att läsa in [väder data](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) till Azure Cosmos dB. Du kan konfigurera ett [Azure Data Factory (ADF)-](../data-factory/connector-azure-cosmos-db.md) jobb för att regelbundet läsa in de senaste väder uppgifterna i Azure Cosmos dB med http-källan och Cosmos DB mottagare.
+Konfigurera en pipeline för inmatning för att läsa in [väder data](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) till Azure Cosmos dB. Du kan konfigurera ett [Azure Data Factory (ADF)-](../data-factory/connector-azure-cosmos-db.md) jobb för att regelbundet läsa in de senaste väder uppgifterna i Azure Cosmos dB med http-källan och Cosmos DB mottagare.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Anslut Power BI till Azure Cosmos DB
@@ -70,9 +70,9 @@ Konfigurera en pipeline för inmatning för att läsa in [väder data](https://c
    Beroende på vilken kolumn och datatyp som finns i käll data uppsättningen kan du ändra fälten rang Est art och RangeEnd enligt detta
 
    
-   |Egenskap  |Datatyp  |Filter  |
+   |Egenskap  |Datatyp  |Filtrera  |
    |---------|---------|---------|
-   |_ts     |   Numeriskt      |  [_ts] > varaktighet. TotalSeconds (rang-The-#datetime (1970, 1,0) och [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 0, 0)))       |
+   |_ts     |   Numerisk      |  [_ts] > varaktighet. TotalSeconds (rang-The-#datetime (1970, 1,0) och [_ts] < duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 0, 0)))       |
    |Datum (till exempel:-2019-08-19)     |   Sträng      | [Document. Date] > DateTime. ToText (rang, "åååå-MM-DD") och [Document. Date] < DateTime. ToText (RangeEnd, "åååå-MM-DD")        |
    |Datum (till exempel:-2019-08-11 12:00:00)   |  Sträng       |  [Document. Date] > DateTime. ToText (rang, "åååå-mm-dd HH: mm: SS") och [Document. Date] < DateTime. ToText (RangeEnd, "åååå-mm-dd HH: mm: SS")       |
 
@@ -94,7 +94,7 @@ Konfigurera en pipeline för inmatning för att läsa in [väder data](https://c
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Mata in väder data i Azure Cosmos DB 
 
-Konfigurera en pipeline för inmatning för att läsa in [väder data](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) till Azure Cosmos dB. Du kan konfigurera ett Azure Data Factory (ADF)-jobb för att regelbundet läsa in de senaste väder uppgifterna i Azure Cosmos DB med HTTP-källan och Cosmos DB mottagare.
+Konfigurera en pipeline för inmatning för att läsa in [väder data](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation) till Azure Cosmos dB. Du kan konfigurera ett Azure Data Factory (ADF)-jobb för att regelbundet läsa in de senaste väder uppgifterna i Azure Cosmos DB med HTTP-källan och Cosmos DB mottagare.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Anslut Azure Analysis Services till Azure Cosmos-konto
 
@@ -112,7 +112,7 @@ Konfigurera en pipeline för inmatning för att läsa in [väder data](https://c
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Lägg till Cosmos DB data Källa":::
 
-   Anslut till Azure Cosmos DB genom att ange **konto-URI** , **databas namn** och **behållar namn**. Nu kan du se data från Azure Cosmos-behållaren som importeras till Power BI.
+   Anslut till Azure Cosmos DB genom att ange **konto-URI**, **databas namn** och **behållar namn**. Nu kan du se data från Azure Cosmos-behållaren som importeras till Power BI.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Förhandsgranska Azure Cosmos DB data":::
 

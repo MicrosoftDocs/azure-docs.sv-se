@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: 5abece0e272d4b72ba6f787ad44b091df5d45226
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418001"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653260"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Stöd för lösenordsskyddad autentisering med FIDO2-nycklar i appar som du utvecklar
 
@@ -47,7 +47,7 @@ Den inloggnings metod som senast användes av en användare visas först. Detta 
 De rekommenderade alternativen för att implementera autentisering är i ordning:
 
 - .NET-dator program som använder Microsoft Authentication Library (MSAL) bör använda Windows Authentication Manager (WAM). Den här integrationen och dess fördelar [dokumenteras på GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/wam).
-- Använd [WebView2](https://docs.microsoft.com/microsoft-edge/webview2/) för att stödja FIDO2 i en inbäddad webbläsare.
+- Använd [WebView2](/microsoft-edge/webview2/) för att stödja FIDO2 i en inbäddad webbläsare.
 - Använd system webbläsare. MSAL-biblioteken för Station ära plattformar använder den här metoden som standard. Du kan se vår sida om FIDO2 browser-kompatibilitet för att säkerställa att den webbläsare du använder stöder FIDO2-autentisering.
 
 ### <a name="mobile"></a>Mobilt

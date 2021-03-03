@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b4e600581880ccca4f8716db02064e5bb353787c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653789"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657170"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Händelse hantering i Azure Communication Services
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services integreras med [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) för att leverera real tids händelse meddelanden på ett tillförlitligt, skalbart och säkert sätt. Syftet med den här artikeln är att hjälpa dig att konfigurera program att lyssna på kommunikations tjänst händelser. Du kanske till exempel vill uppdatera en databas, skapa ett arbets objekt och leverera ett push-meddelande när ett SMS-meddelande tas emot av ett telefonnummer som är kopplat till kommunikations tjänst resursen.
 
@@ -31,7 +29,7 @@ Azure Event Grid är en helt hanterad tjänst för händelse dirigering som anv�
 
 ## <a name="events-types"></a>Händelse typer
 
-Event Grid använder [händelse prenumerationer](../../event-grid/concepts.md#event-subscriptions) för att dirigera händelse meddelanden till prenumeranter. 
+Event Grid använder [händelse prenumerationer](../../event-grid/concepts.md#event-subscriptions) för att dirigera händelse meddelanden till prenumeranter.
 
 Azure Communication Services avger följande händelse typer:
 
@@ -207,7 +205,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser-händelse 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft. Communication. ChatThreadCreatedWithUser-händelse
 
 ```json
 [{
@@ -265,7 +263,7 @@ Det här avsnittet innehåller ett exempel på hur data ska se ut för varje hä
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser-händelse 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft. Communication. ChatThreadPropertiesUpdatedPerUser-händelse
 
 ```json
 [{

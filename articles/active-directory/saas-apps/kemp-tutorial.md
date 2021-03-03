@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 7ac50acbf9b1b4371ac17f997828f9b8818e53b0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459126"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648969"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Självstudie: Azure Active Directory SSO-integrering med Kemp: LoadMaster Azure AD-integrering
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig att integrera Kemp: LoadMaster Azure 
 * Kontroll i Azure AD som har åtkomst till Kemp: LoadMaster Azure AD-integrering.
 * Gör det möjligt för användarna att logga in automatiskt till Kemp: LoadMaster Azure AD-integration med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -40,16 +38,15 @@ För att komma igång behöver du följande objekt:
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
 * Kemp: LoadMaster Azure AD-integration stöder **IDP** INITIERAd SSO
-* När du har konfigurerat Kemp: LoadMaster Azure AD-integrering kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Lägga till Kemp: LoadMaster Azure AD-integrering från galleriet
+## <a name="add-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>Lägg till Kemp: LoadMaster Azure AD integration från galleriet
 
 Om du vill konfigurera integreringen av Kemp: LoadMaster Azure AD-integrering i Azure AD måste du lägga till Kemp: LoadMaster Azure AD integration från galleriet till listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **Kemp: LoadMaster Azure AD integration** i sökrutan.
 1. Välj **Kemp: LoadMaster Azure AD integration** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -57,7 +54,7 @@ Om du vill konfigurera integreringen av Kemp: LoadMaster Azure AD-integrering i 
 
 Konfigurera och testa Azure AD SSO med Kemp: LoadMaster Azure AD-integrering med en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i Kemp: LoadMaster Azure AD-integrering.
 
-Om du vill konfigurera och testa Azure AD SSO med Kemp: LoadMaster Azure AD-integrering slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Kemp: LoadMaster Azure AD-integrering:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -80,9 +77,9 @@ Om du vill konfigurera och testa Azure AD SSO med Kemp: LoadMaster Azure AD-inte
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan **Kemp: LoadMaster Azure AD integration** Application Integration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal på sidan **Kemp: LoadMaster Azure AD integration** Application Integration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -107,7 +104,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -119,18 +116,12 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Kemp: LoadMaster Azure AD-integrering.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Kemp: LoadMaster Azure AD integration**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-kemp-loadmaster-azure-ad-integration-sso"></a>Konfigurera Kemp: LoadMaster Azure AD integration SSO
@@ -254,7 +245,7 @@ Gå till hantera SSO under virtuella tjänster.
 
    ex. Välj mellanliggande certifikat från IdP-certifikat.
 
-   h. Ange det SP-enhets-ID som ska överensstämma med den identitet som skapades i Azure Portal 
+   h. Ange det SP-enhets-ID som ska överensstämma med den identitet som skapades i Azure Portal. 
 
    i. Klicka på Ange SP-enhets-ID.
 
@@ -376,20 +367,12 @@ I det här avsnittet skapar du en användare som heter B. Simon i Kemp: LoadMast
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-När du klickar på panelen Kemp: LoadMaster Azure AD-integration på åtkomst panelen, bör du loggas in automatiskt på den Kemp: LoadMaster Azure AD-integration som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på testa det här programmet i Azure Portal och du bör logga in automatiskt till den Kemp: LoadMaster Azure AD-integrering som du har konfigurerat SSO för.
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Kemp: LoadMaster Azure AD-integration i Mina appar, bör du loggas in automatiskt på den Kemp: LoadMaster Azure AD-integration som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova Kemp: LoadMaster Azure AD integration med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Skydda Kemp: LoadMaster Azure AD-integrering med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat Kemp: LoadMaster Azure AD-integrering kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

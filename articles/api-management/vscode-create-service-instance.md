@@ -7,20 +7,20 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3105b6f34d7ece81e8145fdd9e89568e66360ddb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400411"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649520"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Snabb start: skapa en ny Azure API Management-tjänstinstans med Visual Studio Code
 
 Azure API Management (APIM) hjälper organisationer att publicera API:er till externa partner och interna utvecklare så att de kan få ut maximalt av sina data och tjänster. API Management lägger grunden till ett effektivt API-program genom engagerade utvecklare, affärsinsikter, analyser, hög säkerhet och skydd. Med APIM kan du skapa och hantera moderna API-gatewayer för befintliga serverdeltjänster som ligger var som helst. Mer information finns i ämnet [Översikt](api-management-key-concepts.md).
 
-I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av *Azure API Management-tillägget för hands version* för Visual Studio Code. Du kan också använda tillägget för att utföra vanliga hanterings åtgärder på din API Management-instans.
+I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av *Azure API Management-tillägget* för Visual Studio Code. Du kan också använda tillägget för att utföra vanliga hanterings åtgärder på din API Management-instans.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Kontrol lera också att du har installerat följande:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Azure API Management-tillägg för Visual Studio Code (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- [Azure API Management-tillägg för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 

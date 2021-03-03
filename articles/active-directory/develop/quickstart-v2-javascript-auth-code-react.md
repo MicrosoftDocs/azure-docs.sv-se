@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: fe85fd314ba631a26ece4164e317b0977e7cf749
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: ae31265aee7b0919daf0fec9efbe4d5c6aa7cd91
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103676"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653464"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och få en åtkomsttoken i en reakta SPA med auth Code Flow
 
@@ -141,7 +141,7 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 >
 > Rulla ned i samma fil och uppdatera `graphMeEndpoint` . 
 > - Ersätt strängen `Enter_the_Graph_Endpoint_Herev1.0/me` med `https://graph.microsoft.com/v1.0/me`
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` är slut punkten som API-anrop görs mot. För Main (global) Microsoft Graph API-tjänsten anger `https://graph.microsoft.com/` du (ta med avslutande snedstreck). Mer information finns i [dokumentationen](https://docs.microsoft.com/graph/deployments).
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` är slut punkten som API-anrop görs mot. För Main (global) Microsoft Graph API-tjänsten anger `https://graph.microsoft.com/` du (ta med avslutande snedstreck). Mer information finns i [dokumentationen](/graph/deployments).
 >
 >
 >

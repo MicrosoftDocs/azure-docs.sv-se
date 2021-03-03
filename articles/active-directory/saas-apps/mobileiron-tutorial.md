@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625455"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Självstudie: Azure Active Directory integrering med MobileIron
 
@@ -28,16 +28,16 @@ ms.locfileid: "98625455"
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill konfigurera Azure AD-integrering med MobileIron behöver du följande:
+För att komma igång behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* MobileIron-prenumeration med enkel inloggning aktiverat
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* MobileIron för enkel inloggning (SSO) aktive rad.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* MobileIron har stöd för **SP- och IDP**-initierad enkel inloggning
+* MobileIron stöder **SP-och IDP** -initierad SSO.
 
 ## <a name="add-mobileiron-from-the-gallery"></a>Lägg till MobileIron från galleriet
 
@@ -98,7 +98,7 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan lösen ordet.
    1. Välj **Skapa**.
 
@@ -131,7 +131,7 @@ I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning me
     ![Konfigurera metadataknapp för enkel administratörsinloggning](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>Skapa MobileIron-testanvändare
+### <a name="create-mobileiron-test-user"></a>Skapa MobileIron-testanvändare
 
 Om du vill ge Azure AD-användare möjlighet att logga in på MobileIron måste de först etableras i MobileIron.  
 När det gäller MobileIron är etablering en manuell aktivitet.
@@ -157,15 +157,16 @@ När det gäller MobileIron är etablering en manuell aktivitet.
     d. Klicka på **Klar**.
 
 ## <a name="test-sso"></a>Testa SSO
+
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-## <a name="sp-initiated"></a>SP initierad:
+### <a name="sp-initiated"></a>SP initierad:
 
 * Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till MobileIron-inloggnings-URL där du kan starta inloggnings flödet.  
 
 * Gå till MobileIron-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-##  <a name="idp-initiated"></a>IDP initierad:
+### <a name="idp-initiated"></a>IDP initierad:
 
 * Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den MobileIron som du ställer in SSO för.
 

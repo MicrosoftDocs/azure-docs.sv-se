@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760798"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657034"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Kom igång med hjälte-exemplet för grupp Chat
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 <!----
 > [!WARNING]
@@ -36,13 +34,13 @@ I den här snabb starten ska vi lära dig hur exemplet fungerar innan vi kör ex
 
 ## <a name="overview"></a>Översikt
 
-Exemplet har både ett program på klient sidan och ett program på Server sidan. **Program på klient sidan** är ett Redux webb program som använder Microsofts Fluent UI-ramverk. Det här programmet skickar begär anden till ett ASP.NET Core **program på Server sidan** som hjälper programmet på klient sidan att ansluta till Azure. 
+Exemplet har både ett program på klient sidan och ett program på Server sidan. **Program på klient sidan** är ett Redux webb program som använder Microsofts Fluent UI-ramverk. Det här programmet skickar begär anden till ett ASP.NET Core **program på Server sidan** som hjälper programmet på klient sidan att ansluta till Azure.
 
 Exemplet ser ut så här:
 
 :::image type="content" source="./media/chat/landing-page.png" alt-text="Skärm bild som visar exempel programmets landnings sida.":::
 
-När du trycker på knappen "starta en chatt" hämtar webb programmet en åtkomsttoken för användare från program på Server sidan. Denna token används sedan för att ansluta klient appen till Azure Communication Services. När token har hämtats uppmanas du att ange ditt namn och din emoji som ska representera dig i chatten. 
+När du trycker på knappen "starta en chatt" hämtar webb programmet en åtkomsttoken för användare från program på Server sidan. Denna token används sedan för att ansluta klient appen till Azure Communication Services. När token har hämtats uppmanas du att ange ditt namn och din emoji som ska representera dig i chatten.
 
 :::image type="content" source="./media/chat/pre-chat.png" alt-text="Skärm bild som visar programmets pre-Chat-skärm.":::
 
@@ -54,11 +52,11 @@ Komponenter för den huvudsakliga Chat-skärmen:
 
 - **Huvud chatt-områden**: det här är den centrala chatten där användarna kan skicka och ta emot meddelanden. Om du vill skicka meddelanden kan du använda ingångs fältet och trycka på RETUR (eller använda knappen Skicka). Chat-meddelanden som tas emot kategoriseras av avsändaren med rätt namn och emoji. Du ser två typer av meddelanden i chattområdet: 1) om du skriver meddelanden när en användare skriver och 2) skickade och lästa meddelanden för meddelanden.
 - **Rubrik**: det är här som användaren ser titeln på chatt-tråden och kontrollerna för att växla mellan list rutorna för deltagare och inställningar, och en lämna-knapp för att avsluta chatt-sessionen.
-- **Sido fältet**: här visas deltagare och inställnings information när de växlas med hjälp av kontrollerna i sidhuvudet. Sido fältet deltagare innehåller en lista över deltagare i chatten och en länk för att bjuda in deltagare till chatten. I sid List rutan inställningar kan du konfigurera titeln för chatten. 
+- **Sido fältet**: här visas deltagare och inställnings information när de växlas med hjälp av kontrollerna i sidhuvudet. Sido fältet deltagare innehåller en lista över deltagare i chatten och en länk för att bjuda in deltagare till chatten. I sid List rutan inställningar kan du konfigurera titeln för chatten.
 
 Nedan hittar du mer information om förutsättningar och steg för att konfigurera exemplet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 och senare)](https://nodejs.org/en/download/)
@@ -104,7 +102,7 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 ## <a name="next-steps"></a>Nästa steg
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Hämta exemplet från GitHub](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 Mer information finns i följande artiklar:

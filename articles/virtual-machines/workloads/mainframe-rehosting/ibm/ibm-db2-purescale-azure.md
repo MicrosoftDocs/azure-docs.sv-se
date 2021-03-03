@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221738"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675674"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale på Azure
 
@@ -96,9 +96,9 @@ Ett stort DB2 pureScale-kluster kan kräva 200 terabyte (TB) eller mer av Premiu
 
 IBM rekommenderar InfiniBand-nätverk för alla medlemmar i ett DB2 pureScale-kluster. DB2-pureScale använder också RDMA (Remote Direct Memory Access), där det är tillgängligt, för CFs.
 
-Under installationen skapar du en Azure- [resurs grupp](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) som innehåller alla virtuella datorer. I allmänhet kan du gruppera resurser utifrån deras livstid och vem som ska hantera dem. De virtuella datorerna i den här arkitekturen kräver [accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Det är en Azure-funktion som ger en konsekvent, extremt låg nätverks fördröjning via en SR-IOV (Single-root I/O Virtualization) till en virtuell dator.
+Under installationen skapar du en Azure- [resurs grupp](../../../../azure-resource-manager/management/overview.md) som innehåller alla virtuella datorer. I allmänhet kan du gruppera resurser utifrån deras livstid och vem som ska hantera dem. De virtuella datorerna i den här arkitekturen kräver [accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Det är en Azure-funktion som ger en konsekvent, extremt låg nätverks fördröjning via en SR-IOV (Single-root I/O Virtualization) till en virtuell dator.
 
-Varje virtuell Azure-dator distribueras till ett virtuellt nätverk som har undernät: Main, Gluster FS front end (gfsfe), Gluster FS server del (bfsbe), DB2 pureScale (db2be) och DB2 pureScale front end (db2fe). Installations skriptet skapar även de primära [nätverkskorten](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) på de virtuella datorerna i huvud under nätet.
+Varje virtuell Azure-dator distribueras till ett virtuellt nätverk som har undernät: Main, Gluster FS front end (gfsfe), Gluster FS server del (bfsbe), DB2 pureScale (db2be) och DB2 pureScale front end (db2fe). Installations skriptet skapar även de primära [nätverkskorten](../../../windows/multiple-nics.md) på de virtuella datorerna i huvud under nätet.
 
 Använd [nätverks säkerhets grupper](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md) för att begränsa nätverks trafiken inom det virtuella nätverket och för att isolera under näten.
 

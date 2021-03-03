@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26403c20d7f3274e8f3f2dcae479f72e9a7e3354
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807028"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647395"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
@@ -30,7 +30,7 @@ Om du vill använda en [API-anslutning](api-connectors-overview.md)skapar du fö
 1. Logga in till [Azure-portalen](https://portal.azure.com/) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **alla API-kopplingar (förhands granskning)** och välj sedan **ny API-anslutning**.
+4. Välj **alla API-kopplingar** och välj sedan **ny API-anslutning**.
 
    ![Lägg till en ny API-anslutning](./media/self-service-sign-up-add-api-connector/api-connector-new.png)
 
@@ -97,7 +97,7 @@ Följ dessa steg om du vill lägga till en API-anslutning till ett självbetjän
 1. Logga in till [Azure-portalen](https://portal.azure.com/) som Azure AD-administratör.
 2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Välj **användar flöden (förhands granskning)** och välj sedan det användar flöde som du vill lägga till API-kopplingen till.
+4. Välj **användar flöden** och välj sedan det användar flöde som du vill lägga till API-kopplingen till.
 5. Välj **API-kopplingar** och välj sedan de API-slutpunkter som du vill anropa i följande steg i användar flödet:
 
    - **När du har loggat in med en identitets leverantör**
@@ -313,7 +313,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Använda Server lös moln funktioner
 Funktioner utan server, t. ex. HTTP-utlösare i Azure Functions, ger ett enkelt sätt att skapa API-slutpunkter att använda med API-anslutningen. Du kan använda funktionen för Server lös molnet till [exempel](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)utföra validerings logik och begränsa registreringen till vissa domäner. Moln funktionen utan server kan också anropa och anropa andra webb-API: er, användar lager och andra moln tjänster för mer komplexa scenarier.
 
-### <a name="best-practices"></a>Rekommenderade metoder
+### <a name="best-practices"></a>Bästa praxis
 Se till att:
 * Ditt API följer API-begäran och svars avtalen enligt beskrivningen ovan. 
 * **Slut punkts-URL: en** för API-anslutningen pekar på rätt API-slutpunkt.

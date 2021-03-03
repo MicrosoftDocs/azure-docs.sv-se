@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c73bcd8fb4c6b594633abd1ac268bd8dfd78202
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417968"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644835"
 ---
 # <a name="securing-group-managed-service-accounts"></a>Skydda grupphanterade tjänst konton
 
@@ -41,7 +41,7 @@ gMSAs erbjuder en enda identitets lösning med större säkerhet och minskar den
 Använd gMSAs som önskad kontotyp för lokala tjänster om inte en tjänst, till exempel redundanskluster, inte stöder den.
 
 > [!IMPORTANT]
-> Du måste testa tjänsten med gMSAs innan du distribuerar till produktion. Det gör du genom att konfigurera en test miljö och se till att programmet kan använda gMSA och få åtkomst till de resurser som krävs för åtkomst. Mer information finns i [stöd för grupphanterade tjänst konton](https://docs.microsoft.com/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
+> Du måste testa tjänsten med gMSAs innan du distribuerar till produktion. Det gör du genom att konfigurera en test miljö och se till att programmet kan använda gMSA och få åtkomst till de resurser som krävs för åtkomst. Mer information finns i [stöd för grupphanterade tjänst konton](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019).
 
 
 Om en tjänst inte stöder användningen av gMSAs är ditt nästa bästa alternativ att använda ett fristående hanterat tjänst konto (sMSA). sMSAs tillhandahåller samma funktioner som en gMSA, men är endast avsedda för distribution på en enda server.
@@ -108,18 +108,18 @@ Du kan använda följande Active Directory PowerShell-cmdletar för att hantera 
 `Uninstall-ADServiceAccount`
 
 > [!NOTE]
-> Från och med Windows Server 2012 fungerar *-ADServiceAccount-cmdlets med gMSAs som standard. Mer information om användningen av ovanstående cmdlets finns i [**komma igång med grupphanterade tjänst konton**](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
+> Från och med Windows Server 2012 fungerar *-ADServiceAccount-cmdlets med gMSAs som standard. Mer information om användningen av ovanstående cmdlets finns i [**komma igång med grupphanterade tjänst konton**](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
 
 ## <a name="move-to-a-gmsa"></a>Flytta till en gMSA
 gMSAs är den säkraste typen av tjänst konto för lokala behov. Om du kan gå över till en, bör du. Överväg också att flytta dina tjänster till Azure och dina tjänst konton till Azure Active Directory.
 
-1.  Se till att [rot nyckeln för KDs har distribuerats i skogen](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key). Åtgärden behöver bara genomföras en gång.
+1.  Se till att [rot nyckeln för KDs har distribuerats i skogen](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key). Åtgärden behöver bara genomföras en gång.
 
-2. [Skapa en ny gMSA](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
+2. [Skapa en ny gMSA](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts).
 
 3. Installera den nya gMSA på varje värd som kör tjänsten.
    > [!NOTE] 
-   > För ytterligare information om hur du skapar och installerar gMSA på en värd, innan du konfigurerar tjänsten att använda gMSA, se [komma igång med grupphanterade tjänst konton](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
+   > För ytterligare information om hur du skapar och installerar gMSA på en värd, innan du konfigurerar tjänsten att använda gMSA, se [komma igång med grupphanterade tjänst konton](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))
 
  
 4. Ändra din tjänst identitet till gMSA och ange ett tomt lösen ord.

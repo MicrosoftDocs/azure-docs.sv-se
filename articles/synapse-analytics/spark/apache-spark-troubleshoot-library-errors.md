@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 60ea97ea2df271f867febec3fa0f0826a18dbbbf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e812fa47d35889a9cf8c671a4df6034812272a6a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417950"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670628"
 ---
 # <a name="troubleshoot-library-installation-errors"></a>Felsöka biblioteks installations fel 
 Om du vill göra tredje part eller lokalt skapad kod tillgänglig för dina program, kan du installera ett bibliotek på någon av dina Server lös Apache Spark pooler. De paket som anges i requirements.txt-filen laddas ned från PyPi vid tidpunkten för poolen startades. Den här krav filen används varje gång en spark-instans skapas från den Spark-poolen. När ett bibliotek har installerats för en spark-pool är det tillgängligt för alla sessioner som använder samma pool. 
@@ -54,7 +54,7 @@ df = spark.createDataFrame(data=data2,schema=schema)
 df.write.csv("abfss://<<ENTER NAME OF FILE SYSTEM>>@<<ENTER NAME OF PRIMARY STORAGE ACCOUNT>>.dfs.core.windows.net/validate_permissions.csv")
 
 ```
-Om du får ett fel, saknar du förmodligen de behörigheter som krävs. Information om hur du hämtar de behörigheter som krävs finns i det här dokumentet: [tilldela Storage BLOB data-deltagare eller behörigheter för lagrings-BLOB-data](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-an-azure-built-in-role).
+Om du får ett fel, saknar du förmodligen de behörigheter som krävs. Information om hur du hämtar de behörigheter som krävs finns i det här dokumentet: [tilldela Storage BLOB data-deltagare eller behörigheter för lagrings-BLOB-data](../../storage/common/storage-auth-aad-rbac-portal.md#assign-an-azure-built-in-role).
 
 Dessutom, om du kör en pipeline, måste MSI-filen för arbets ytan ha behörigheten lagrings-BLOB-data ägare eller lagrings-BLOB-data deltagare. Om du vill veta hur du beviljar din arbets ytans identitet kan du gå [till: bevilja behörigheter till hanterad identitet för arbets ytan](../security/how-to-grant-workspace-managed-identity-permissions.md).
 
@@ -98,4 +98,3 @@ Så här återskapar du miljön och verifierar dina uppdateringar:
 
 ## <a name="next-steps"></a>Nästa steg
 - Visa standard biblioteken: [Apache Spark versions stöd](apache-spark-version-support.md)
-

@@ -8,20 +8,19 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b506ada0bc072a4174de6f884d1814a63f1f93ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6aedaf829df941a225cd0684318f28bb06ba89d8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012518"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674607"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hög tillgänglighet för SAP NetWeaver på virtuella Azure-datorer
 
@@ -702,7 +701,7 @@ _**Bild 11:** Ange Azure Resource Manager parametrar för hög tillgänglighet f
     * <*SAPSystemSID*>-NIC-ascs-<*Number*>
     * <*SAPSystemSID*>-NIC-db-<*Number*>
 
-  * **Azure Storage-konton**
+  * **Azure-lagringskonton**
 
   * **Tillgänglighets grupper** för:
     * Virtuella SAP-program Server-datorer: <*SAPSystemSID*>-avset-di
@@ -903,7 +902,7 @@ Du kan skapa de andra två virtuella värd namnen manuellt, **PR1-ASCs-SAP** och
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Ange statiska IP-adresser för virtuella SAP-datorer
 När du har distribuerat de virtuella datorerna som ska användas i klustret måste du ange statiska IP-adresser för alla virtuella datorer. Gör detta i Azure Virtual Network-konfigurationen och inte i gäst operativ systemet.
 
-1. I Azure Portal väljer du IP-adress för **resurs gruppens**  >  **nätverks kort**  >  **Inställningar**  >  **IP Address**.
+1. I Azure Portal väljer du IP-adress för **resurs gruppens**  >  **nätverks kort**  >  **Inställningar**  >  .
 2. Välj **statisk** i bladet **IP-adresser** under **tilldelning**. I rutan **IP-adress** anger du den IP-adress som du vill använda.
 
    > [!NOTE]
@@ -1017,7 +1016,7 @@ Om du vill använda olika nummer för SAP ASCS-eller SCS-instanserna måste du �
 1. I Azure Portal väljer du **< *sid*>-lb-ASCs** belastnings  >  **Utjämnings regler**.
 2. Ändra följande värden för alla belastnings Utjämnings regler som tillhör SAP ASCS-eller SCS-instansen:
 
-   * Name
+   * Namn
    * Port
    * Server dels port
 

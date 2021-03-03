@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223292"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644188"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändra resurs roller för ett Access-paket i hantering av Azure AD-rättigheter
 
@@ -144,13 +144,9 @@ Azure AD kan automatiskt tilldela användare åtkomst till en SharePoint Online-
 
 1. På sidan **Lägg till resurs roller att komma åt paket** klickar du på **SharePoint-webbplatser** för att öppna fönstret Välj SharePoint Online-webbplatser.
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint-webbplatser – Portal-vy":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint-webbplatser – Portal-vy":::
 
-1. Om du har aktiverat [multi-geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) för SharePoint väljer du den miljö som du vill välja platser från.
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint multi-geo-platser":::
-
-1. Om multi-geo inte är aktiverat, behöver du inte välja en miljö. Välj de SharePoint Online-webbplatser som du vill ta med i åtkomst paketet.
+1. Välj de SharePoint Online-webbplatser som du vill ta med i åtkomst paketet.
 
     ![Åtkomst paket – Lägg till resurs roller – Välj SharePoint Online-webbplatser](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

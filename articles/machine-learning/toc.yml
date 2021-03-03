@@ -321,11 +321,14 @@
             - name: Skapa datauppsättningar med etiketter
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Hämta data
+        - name: Hämta & förbereda data
           items:
             - name: Datainmatning med Azure Data Factory
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Förberedelse av data med Azure Synapse
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: DevOps för datainmatning
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -337,6 +340,9 @@
             - name: Ansluta till Azure Storage (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
+            - name: Identitets baserad data åtkomst till lagring
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
             - name: Hämta data från ett datalager (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
@@ -385,8 +391,8 @@
             - name: Aktivera loggar
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: Visa loggar
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: Visa loggar och mått för körningar
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: Visualisera körningar med TensorBoard
               displayName: 'log, monitor, metrics'
@@ -531,6 +537,8 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: Distribuera ML-pipelines (Python)
           href: how-to-deploy-pipelines.md
+        - name: Använda Azure Synapse Apache Spark-pooler i en ML pipeline (python)
+          href: how-to-use-synapsesparkstep.md
         - name: Utlösa en pipeline
           href: how-to-trigger-published-pipeline.md
         - name: Designern (dra och släpp)

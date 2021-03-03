@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: dcc599daaa8d124c7188165ff5e024767a5e3cd7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759746"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672642"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Stöd för virtuella datorer ur generation 2 i Azure
 
@@ -79,11 +79,13 @@ Azure stöder för närvarande inte några av de funktioner som lokala Hyper-V s
 
 | Generation 2-funktion                | Lokal Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| Säker start                         | :heavy_check_mark:  | röntgen   |
+| Säker start                         | :heavy_check_mark:  | Med betrodd start (för hands version)   |
 | Avskärmad virtuell dator                         | :heavy_check_mark:  | röntgen   |
-| vTPM                                | :heavy_check_mark:  | röntgen   |
-| Virtualiseringsbaserad säkerhet (VBS) | :heavy_check_mark:  | röntgen   |
+| vTPM                                | :heavy_check_mark:  | Med betrodd start (för hands version)  |
+| Virtualiseringsbaserad säkerhet (VBS) | :heavy_check_mark:  | Med betrodd start (för hands version)   |
 | VHDX-format                         | :heavy_check_mark:  | röntgen   |
+
+Mer information finns i [betrodd start (för hands version)](trusted-launch.md).
 
 ## <a name="features-and-capabilities"></a>Funktioner
 
@@ -105,7 +107,7 @@ Azure stöder för närvarande inte några av de funktioner som lokala Hyper-V s
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Säkerhetskopiera och återställa                    | :heavy_check_mark: | :heavy_check_mark: |
 | Galleri för delad avbildning              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | röntgen                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [Kryptering på serversidan](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>Skapar en virtuell dator i generation 2
@@ -206,7 +208,7 @@ Du kan också skapa virtuella datorer i generation 2 med hjälp av skalnings upp
     Ja. Mer information finns i [skapa en virtuell dator med accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md).
 
 * **Har generation 2-VM-datorer stöd för säker start eller vTPM i Azure?**
-    Både virtuella datorer i generation 1 och generation 2 i Azure stöder inte säker start eller vTPM. 
+    Både vTPM och säker start är funktioner för betrodd start (för hands version) för virtuella datorer i generation 2. Mer information finns i [betrodd start](trusted-launch.md).
     
 * **Stöds VHDX i generation 2?**  
     Nej, generation 2-VM: ar stöder bara VHD.
@@ -225,5 +227,7 @@ Du kan också skapa virtuella datorer i generation 2 med hjälp av skalnings upp
     1. Kontrol lera att du söker efter en [VM-storlek som har stöd för virtuella Gen2-datorer](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Nästa steg
+
+Läs mer om den [betrodda starten (för hands version)](trusted-launch-portal.md) med virtuella datorer i generation 2.
 
 Lär dig mer om [virtuella datorer i generation 2 i Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

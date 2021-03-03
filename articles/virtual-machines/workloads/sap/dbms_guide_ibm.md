@@ -6,20 +6,19 @@ author: msjuergent
 manager: bburns
 tags: azure-resource-manager
 keywords: Azure, DB2, SAP, IBM
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce8b878de1892162ddce7957befa41649014073
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959020"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675965"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-distribution för SAP-arbetsbelastning för IBM Db2 på virtuella Azure-datorer
 
@@ -85,7 +84,7 @@ IBM DB2 for SAP NetWeaver-program stöds på alla VM-typer som anges i SAP suppo
 Följande är en bas linje konfiguration för olika storlekar och användning av SAP på DB2-distributioner från små till stora. Listan baseras på Azure Premium Storage. Men Azure Ultra disk stöds fullt ut även av DB2 och kan även användas. Använd bara värdena för kapacitet, burst-genomflöde och burst-IOPS för att definiera Ultra disk-konfigurationen. Du kan begränsa IOPS för/DB2/ <SID> /log_dir vid cirka 5000 IOPS. 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Extra litet SAP-system: databas storlek 50-200 GB: exempel på lösnings hanteraren
-| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Caching |
+| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Cachelagring |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  ||  |
 |vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1 000  |200  |256  |7 000  |340  |256 kB |ReadOnly |
@@ -94,7 +93,7 @@ Följande är en bas linje konfiguration för olika storlekar och användning av
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3 500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Litet SAP-system: databas storlek 200-750 GB: Small Business Suite
-| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Caching |
+| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Cachelagring |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
 |vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4 400  |500  |1,024  |14 000  |680  |256 kB |ReadOnly |
@@ -103,7 +102,7 @@ Följande är en bas linje konfiguration för olika storlekar och användning av
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3 500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Medel SAP-system: databas storlek 500-1000 GB: Small Business Suite
-| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Caching |
+| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Cachelagring |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
 |vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10 000  |400  |2,048  |10 000  |400  |256 kB |ReadOnly |
@@ -112,7 +111,7 @@ Följande är en bas linje konfiguration för olika storlekar och användning av
 | |/DB2/ <SID> /offline_log_dir |P15 |1 |1 100  |125  |256  |3 500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Stort SAP-system: databas storlek 750-2000 GB: Business Suite
-| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Caching |
+| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Cachelagring |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3 500  |170  || |
 |vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20 000  |800  |4,096  |20 000  |800  |256 kB |ReadOnly |
@@ -121,7 +120,7 @@ Följande är en bas linje konfiguration för olika storlekar och användning av
 | |/DB2/ <SID> /offline_log_dir |P20 |1 |2 300  |150  |512  |3 500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>Stort SAP-system för flera terabyte: databas storlek 2 TB +: globalt Business Suite-system
-| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Caching |
+| VM-namn/storlek |DB2-monterings punkt |Azure Premium-disk |NR-diskar |IOPS |Data flöde [MB/s] |Storlek [GB] |Burst IOPS |Burst-Genoms [GB] | Rand storlek | Cachelagring |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3 500  |170  || |
 |vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30 000  |1,000  |8,192  |30 000  |1,000  |256 kB |ReadOnly |
@@ -178,7 +177,7 @@ För de diskar som innehåller lagrings Sök vägarna för DB2 för dina sapdata
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Annat
+### <a name="other"></a>Övrigt
 Alla andra allmänna områden som Azures tillgänglighets uppsättningar eller SAP-övervakning gäller enligt beskrivningen i dokumentet [överväganden för azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](dbms_guide_general.md) för distribution av virtuella datorer med IBM-databasen.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

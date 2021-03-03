@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340897"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659910"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Felsök problem med frågor när du använder Azure Cosmos DB API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Om du minskar avgiften för en fråga så minskar du normalt svars tiden.
 Den här artikeln innehåller exempel som du kan återskapa med hjälp av [närings data uppsättningen](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
 > [!NOTE] 
-> Den här artikeln förutsätter att du använder version 3,6 av Azure Cosmos DB s API för MongoDB. Vissa frågor som fungerar dåligt i version 3,2 har betydande förbättringar i version 3,6. Uppgradera till version 3,6 genom att skicka en [support förfrågan](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Den här artikeln förutsätter att du använder Azure Cosmos DBs API för MongoDB-konton med version 3,6 och högre. Vissa frågor som fungerar dåligt i version 3,2 har betydande förbättringar i versionerna 3.6 +. Uppgradera till version 3,6 genom att skicka en [support förfrågan](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="use-explain-command-to-get-metrics"></a>Använd $explain-kommandot för att hämta mått
 
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 `$explain`Kommandots utdata är långa och innehåller detaljerad information om frågekörningen. I allmänhet finns det några avsnitt där du bör fokusera på när du optimerar frågans prestanda:
 
-| Mått | Beskrivning | 
+| Metric | Beskrivning | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Svars tid för backend-fråga |
 | `pathsIndexed` | Visar index som används av frågan | 
@@ -348,4 +348,4 @@ Värdet `estimatedDelayFromRateLimitingInMilliseconds` ger en uppfattning om mö
 ## <a name="next-steps"></a>Nästa steg
 
 * [Felsöka frågans prestanda (SQL API)](troubleshoot-query-performance.md)
-* [Hantera indexering i Azure Cosmos DBs API för MongoDB](mongodb-indexing.md)
+* [Hantera indexering i Azure Cosmos DB-API för MongoDB](mongodb-indexing.md)

@@ -10,19 +10,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: d45535f11568fddd10130d506af3329dcdfb0484
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580282"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667317"
 ---
 # <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Använd Linux Diagnostic Extension 4,0 för att övervaka mått och loggar
 
 I det här dokumentet beskrivs version 4,0 och senare av Linux-diagnostik.
 
 > [!IMPORTANT]
-> Information om version 3. * finns i  [det här dokumentet](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3). Information om version 2,3 och äldre finns i [det här dokumentet](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> Information om version 3. * finns i  [det här dokumentet](./diagnostics-linux-v3.md). Information om version 2,3 och äldre finns i [det här dokumentet](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Introduktion
 
@@ -108,7 +108,7 @@ Den körbara filen python2 måste ha ett alias till *python*. Följande är en m
 Exempel konfigurationen som hämtas i de här exemplen samlar in en uppsättning standard data och skickar dem till Table Storage. URL: en för exempel konfigurationen och dess innehåll kan komma att ändras. I de flesta fall bör du ladda ned en kopia av JSON-filen med Portal inställningar och anpassa den efter dina behov. därefter har du alla mallar eller automatiseringar som du skapar med din egen version av konfigurations filen i stället för att hämta URL: en varje tillfälle.
 
 > [!NOTE]
-> För att aktivera den nya Azure Monitor-mottagaren måste de virtuella datorerna ha systemtilldelad identitet aktive rad för generering av MSI auth-token. Detta kan göras när du skapar en virtuell dator eller när den virtuella datorn har skapats. Steg för att aktivera systemtilldelad identitet via portal, CLI, PowerShell och Resource Manager.  visas i detalj [här](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm). 
+> För att aktivera den nya Azure Monitor-mottagaren måste de virtuella datorerna ha systemtilldelad identitet aktive rad för generering av MSI auth-token. Detta kan göras när du skapar en virtuell dator eller när den virtuella datorn har skapats. Steg för att aktivera systemtilldelad identitet via portal, CLI, PowerShell och Resource Manager.  visas i detalj [här](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md). 
 
 #### <a name="azure-cli-sample"></a>Azure CLI-exempel
 
@@ -238,7 +238,7 @@ Den här uppsättningen konfigurations information innehåller känslig informat
 }
 ```
 
-Name | Värde
+Namn | Värde
 ---- | -----
 storageAccountName | Namnet på det lagrings konto där data skrivs av tillägget.
 storageAccountEndPoint | valfritt Slut punkten som identifierar molnet där lagrings kontot finns. Om den här inställningen saknas, LAD standardvärdet för det offentliga Azure-molnet `https://core.windows.net` . Om du vill använda ett lagrings konto i Azure Germany, Azure Government eller Azure Kina anger du detta värde i enlighet med detta.
@@ -490,7 +490,7 @@ Exempel: `LinuxSyslog20170410` och `LinuxSyslog20170609` .
 Det här valfria avsnittet styr aktivering av mått till Azure Monitor-mottagare utöver lagrings kontot och standard måttet för gäst mått.
 
 > [!NOTE]
-> Detta kräver att systemtilldelad identitet aktive ras på de virtuella datorerna/VMSS. Detta kan göras via portal, CLI, PowerShell och Resource Manager. Stegen visas i detalj [här](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm). Stegen för att aktivera detta finns också i installations exemplen för AZ CLI, PowerShell osv. 
+> Detta kräver att systemtilldelad identitet aktive ras på de virtuella datorerna/VMSS. Detta kan göras via portal, CLI, PowerShell och Resource Manager. Stegen visas i detalj [här](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md). Stegen för att aktivera detta finns också i installations exemplen för AZ CLI, PowerShell osv. 
 
 ```json
   "sinksConfig": {

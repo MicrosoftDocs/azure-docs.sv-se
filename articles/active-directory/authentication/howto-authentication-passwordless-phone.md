@@ -1,6 +1,6 @@
 ---
 title: Lösen ords återsignering med Microsoft Authenticator app-Azure Active Directory
-description: Aktivera lösen ords lös inloggning till Azure AD med hjälp av Microsoft Authenticator-appen (förhands granskning)
+description: Aktivera lösen ords lös inloggning till Azure AD med hjälp av Microsoft Authenticator-appen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626163"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653481"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivera lösen ords utan lösen ord med Microsoft Authenticator-appen (förhands granskning)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Aktivera inloggning med lösen ord med Microsoft Authenticator-appen 
 
 Microsoft Authenticator-appen kan användas för att logga in på ett Azure AD-konto utan att använda ett lösen ord. Microsoft Authenticator använder nyckelbaserad autentisering för att aktivera en användares autentiseringsuppgifter som är knutna till en enhet, där enheten använder en PIN-kod eller bio metrisk. [Windows Hello för företag](/windows/security/identity-protection/hello-for-business/hello-identity-verification) använder en liknande teknik.
 
@@ -40,7 +40,7 @@ Om du vill använda lösen ords lös inloggning med Microsoft Authenticator-appe
 - Den senaste versionen av Microsoft Authenticator installerad på enheter som kör iOS 8,0 eller senare, eller Android 6,0 eller senare.
 
 > [!NOTE]
-> Om du har aktiverat för hands versionen av Microsoft Authenticator lösen ords löst inloggning med hjälp av Azure AD PowerShell var den aktive rad för hela katalogen. Om du aktiverar med den här nya metoden ersätter den PowerShell-principen. Vi rekommenderar att du aktiverar för alla användare i din klient via menyn nya *autentiseringsmetoder* , annars kommer användare som inte är i den nya principen inte längre att kunna logga in utan lösen ord.
+> Om du har aktiverat Microsoft Authenticator lösen ords löst inloggning med hjälp av Azure AD PowerShell var det aktiverat för hela katalogen. Om du aktiverar med den här nya metoden ersätter den PowerShell-principen. Vi rekommenderar att du aktiverar för alla användare i din klient via menyn nya *autentiseringsmetoder* , annars kommer användare som inte är i den nya principen inte längre att kunna logga in utan lösen ord.
 
 ## <a name="enable-passwordless-authentication-methods"></a>Aktivera metoder för lösen ords kryptering
 
@@ -58,7 +58,7 @@ Utför följande steg för att aktivera autentiseringsmetoden för inloggning me
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med ett *globalt administratörs* konto.
 1. Sök efter och välj *Azure Active Directory* och bläddra sedan till principer för **säkerhets**  >  **autentisering**  >  .
-1. Under **Microsoft Authenticator (för hands version)** väljer du följande alternativ:
+1. Under **Microsoft Authenticator** väljer du följande alternativ:
    1. **Aktivera** – Ja eller Nej
    1. **Mål** – alla användare eller Välj användare
 1. Varje tillagd grupp eller användare är aktive rad som standard för att använda Microsoft Authenticator i både lösen ords lös och push-meddelande läge ("valfritt"). För att ändra detta, för varje rad:
@@ -104,7 +104,7 @@ När användaren har använt inloggning med lösen ord fortsätter appen att vä
 
 ## <a name="known-issues"></a>Kända problem
 
-Följande kända problem finns i den aktuella för hands versionen.
+Följande kända problem finns.
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>Kan inte se alternativ för telefonin loggning för lösen ord
 

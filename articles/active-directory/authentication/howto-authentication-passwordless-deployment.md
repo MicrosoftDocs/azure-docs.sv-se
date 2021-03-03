@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/22/2021
 ms.author: baselden
 author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d04c148e8a96e3b1d72c5301f6226df6d9a569
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530356"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651135"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planera distribution av lösenordsskyddad autentisering i Azure Active Directory
 
@@ -149,7 +149,7 @@ Det finns tre typer av lösen ords skydds bara inloggnings distributioner som ä
 
 -    Azure Active Directory Web Apps i en webbläsare som stöds
 -    Azure Active Directory anslutna Windows 10-enheter
--    Hybrid Azure Active Directory anslutna Windows 10-enheter (för hands version)
+-    Hybrid Azure Active Directory anslutna Windows 10-enheter
      -    Ger åtkomst till både molnbaserade och lokala resurser. Mer information om åtkomst till lokala resurser finns i [SSO till lokala resurser med hjälp av FIDO2-nycklar](./howto-authentication-passwordless-security-key-on-premises.md)
 
 Du måste aktivera **kompatibla FIDO2 säkerhets nycklar**. Microsoft har lanserat [viktiga partnerskap med FIDO2 Key-leverantörer](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
@@ -193,7 +193,7 @@ Aktivering av Windows 10-inloggning med hjälp av säkerhets nycklar för FIDO2 
 
 #### <a name="enable-on-premises-integration"></a>Aktivera lokal integrering
 
-Om du vill aktivera åtkomst till lokala resurser följer du stegen för att [Aktivera lösen ords lös säkerhets nyckel logga in till lokala resurser (för hands version)](howto-authentication-passwordless-security-key-on-premises.md).
+Om du vill aktivera åtkomst till lokala resurser följer du stegen för att [Aktivera lösen ords lös säkerhets nyckel logga in till lokala resurser](howto-authentication-passwordless-security-key-on-premises.md).
 
 > [!IMPORTANT]
 > De här stegen måste också utföras för alla hybrid Azure AD-anslutna enheter för att använda FIDO2-säkerhetsnycklar för Windows 10-inloggning.

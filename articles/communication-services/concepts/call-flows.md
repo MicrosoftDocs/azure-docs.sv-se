@@ -9,26 +9,24 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 79382dde5780827d7b0393858fe8896c5da1b56d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5b1d24dc6056de0b8dd19d0d0e52c85055596a1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559438"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664140"
 ---
 # <a name="call-flow-basics"></a>Grundläggande samtals flöde
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Avsnittet nedan ger en översikt över samtals flödena i Azure Communication Services. Signalering och medie flöden beror på vilka typer av anrop som användarna gör. Exempel på samtals typer är ett-till-ett-VoIP, ett-till-ett-PSTN och grupp samtal som innehåller en kombination av VoIP-och PSTN-anslutna deltagare. Granska [samtals typer](./voice-video-calling/about-call-types.md).
 
 ## <a name="about-signaling-and-media-protocols"></a>Om signal-och medie protokoll
 
-När du etablerar ett peer-to-peer-eller grupp anrop används två protokoll i bakgrunden-HTTP (REST) för signalering och SRTP för media. 
+När du etablerar ett peer-to-peer-eller grupp anrop används två protokoll i bakgrunden-HTTP (REST) för signalering och SRTP för media.
 
-Signalering mellan klient biblioteken eller mellan klient bibliotek och kommunikations tjänst styrenheter hanteras med HTTP REST (TLS). För Real-Time Media trafik (RTP) rekommenderas UDP (User Datagram Protocol). Om användningen av UDP förhindras av brand väggen använder klient biblioteket Transmission Control Protocol (TCP) för media. 
+Signalering mellan klient biblioteken eller mellan klient bibliotek och kommunikations tjänst styrenheter hanteras med HTTP REST (TLS). För Real-Time Media trafik (RTP) rekommenderas UDP (User Datagram Protocol). Om användningen av UDP förhindras av brand väggen använder klient biblioteket Transmission Control Protocol (TCP) för media.
 
-Vi går igenom signal-och medie protokollen i olika scenarier. 
+Vi går igenom signal-och medie protokollen i olika scenarier.
 
 ## <a name="call-flow-cases"></a>Ärende om samtals flöde
 
@@ -40,7 +38,7 @@ I en-till-ett VoIP-eller video samtal föredrar trafiken den mest direkta sökv�
 
 ### <a name="case-2-voip-where-a-direct-connection-between-devices-is-not-possible-but-where-connection-between-nat-devices-is-possible"></a>Fall 2: VoIP där det inte går att ansluta mellan enheter, men där det går att ansluta mellan NAT-enheter
 
-Om två enheter finns i undernät som inte kan komma åt varandra (till exempel Alice arbetar från ett kafé och Bob arbetar från sitt hem kontor), men anslutningen mellan NAT-enheterna är möjlig, upprättar klient bibliotek på klient sidan anslutning via NAT-enheter. 
+Om två enheter finns i undernät som inte kan komma åt varandra (till exempel Alice arbetar från ett kafé och Bob arbetar från sitt hem kontor), men anslutningen mellan NAT-enheterna är möjlig, upprättar klient bibliotek på klient sidan anslutning via NAT-enheter.
 
 För Alice kommer det att vara NAT för kaféet och för Bob kommer det att bli NAT för hem kontoret. Alices enhet kommer att skicka den externa adressen till sin NAT och Bob gör samma sak. Klient biblioteken lär sig de externa adresserna från en STUN (sessions Traversal-verktyg för NAT) som Azure Communication Services erbjuder kostnads fritt. Den logik som hanterar hand skakningen mellan Alice och Robert är inbäddad i Azure Communication-tjänsterna angivna klient bibliotek. (Du behöver ingen ytterligare konfiguration)
 
@@ -51,7 +49,7 @@ För Alice kommer det att vara NAT för kaféet och för Bob kommer det att bli 
 Om en eller båda klient enheterna ligger bakom en symmetrisk NAT, krävs en separat moln tjänst för att vidarebefordra mediet mellan de två klient biblioteken. Den här tjänsten kallas TURN (Traversal med reläer runt NAT) och tillhandahålls också av kommunikations tjänsterna. Kommunikations tjänsterna som anropar klient biblioteket använder automatiskt TURN-tjänster baserat på identifierade nätverks förhållanden. Användningen av Microsofts tjänst för aktivering debiteras separat.
 
 :::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="Diagram som visar ett VOIP-anrop som använder en TURN-anslutning.":::
- 
+
 ### <a name="case-4-group-calls-with-pstn"></a>Fall 4: gruppera samtal med PSTN
 
 Både signal-och medie för PSTN-anrop använder telefoni resursen Azure Communication Services. Den här resursen är kopplad till andra operatörer.
@@ -78,7 +76,7 @@ Om klient biblioteket inte kan använda UDP för media på grund av brand Väggs
 
 ### <a name="case-5-communication-services-client-library-and-microsoft-teams-in-a-scheduled-teams-meeting"></a>Fall 5: klient bibliotek för kommunikations tjänster och Microsoft Teams i ett möte med schemalagda team
 
-Signalerar flöden genom signal styrenheten. Mediet flödar genom medie processorn. Signal styrenheten och medie processorn delas mellan kommunikations tjänster och Microsoft Teams. 
+Signalerar flöden genom signal styrenheten. Mediet flödar genom medie processorn. Signal styrenheten och medie processorn delas mellan kommunikations tjänster och Microsoft Teams.
 
 :::image type="content" source="./media/call-flows/teams-communication-services-meeting.png" alt-text="Diagram som visar klient bibliotek för kommunikations tjänster och team-klienten i ett schemalagt team möte.":::
 

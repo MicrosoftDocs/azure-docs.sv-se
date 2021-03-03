@@ -3,25 +3,26 @@ title: Distribuera OpenShift container Platform 4. x i Azure
 description: Distribuera OpenShift container Platform 4. x i Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f2fb1657c26fce3e1fdd67f36b0c6511b78dd216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8650802b4add9b33664205367bb3242b32b9754
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373546"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670387"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>Distribuera OpenShift container Platform 4. x i Azure
 
 Distribution av OpenShift container Platform (OCP) 4,2 stöds nu i Azure via modellen Installer-Provisioned Infrastructure (IPI).  Landnings sidan för att testa OpenShift 4 är [try.OpenShift.com](https://try.openshift.com/). Om du vill installera OCP 4,2 i Azure går du till sidan [Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) .  Det krävs autentiseringsuppgifter för Red Hat för att få åtkomst till den här webbplatsen.
 
 
-## <a name="notes"></a>Obs! 
+## <a name="notes"></a>Kommentarer 
 
  - Ett Azure Active Directory (AAD) tjänstens huvud namn (SP) krävs för att installera och köra OCP 4. x i Azure
      - SP måste beviljas API-behörighet för **Application. readwrite. OwnedBy** för Azure Active Directory Graph

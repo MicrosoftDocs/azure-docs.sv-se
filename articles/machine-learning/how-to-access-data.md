@@ -11,31 +11,33 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: bb63ac6de6c48bb3853bd235d908ee745ff5279d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032855"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659672"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Ansluta till lagrings tjänster på Azure
 
-I den här artikeln får du lära dig hur du **ansluter till lagrings tjänster på Azure via Azure Machine Learning data lager**. Data lagringen ansluter säkert till Azure Storage-tjänsten utan att dina autentiseringsuppgifter för autentisering och integritet för den ursprungliga data källan bevaras i risk zonen. De lagrar anslutnings information, t. ex. prenumerations-ID och token-auktorisering i [Key Vault](https://azure.microsoft.com/services/key-vault/) som är kopplade till arbets ytan, så att du kan komma åt lagringen på ett säkert sätt utan att behöva hårdkoda dem i dina skript. Du kan använda [Azure Machine Learning python SDK](#python) eller [Azure Machine Learning Studio](how-to-connect-data-ui.md) för att skapa och registrera data lager.
+I den här artikeln får du lära dig hur du ansluter till data lagrings tjänster på Azure med Azure Machine Learning data lager och [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-Om du föredrar att skapa och hantera data lager med hjälp av Azure Machine Learning VS Code-tillägget; Mer information finns i [vs Code Resource Management instruktions guide](how-to-manage-resources-vscode.md#datastores) .
-
-Du kan skapa data lager från [dessa Azure Storage-lösningar](#matrix). **För lagrings lösningar som inte stöds** och för att spara utgångs kostnad under ml experiment, [flytta dina data](#move) till en Azure Storage-lösning som stöds.  
+Data lagringen ansluter säkert till lagrings tjänsten på Azure utan att dina autentiseringsuppgifter för autentisering och integriteten för den ursprungliga data källan bevaras i risk zonen. De lagrar anslutnings information, t. ex. prenumerations-ID och token-auktorisering i dina [Key Vault](https://azure.microsoft.com/services/key-vault/) som är kopplade till arbets ytan, så att du säkert kan komma åt lagringen utan att behöva hårdkoda dem i dina skript. Du kan skapa data lager som ansluter till [de här Azure Storage-lösningarna](#matrix).
 
 Information om var data lagret får plats i Azure Machine Learning det totala arbets flödet för data åtkomst finns i artikeln [säker åtkomst till data](concept-data.md#data-workflow) .
 
+En låg kod upplevelse finns i så här använder du [Azure Machine Learning Studio för att skapa och registrera data lager](how-to-connect-data-ui.md#create-datastores).
+
+>[!TIP]
+> Den här artikeln förutsätter att du vill ansluta till lagrings tjänsten med autentiseringsuppgifter som är baserade på autentiseringsuppgifter, till exempel ett tjänst huvud namn eller en SAS-token (signatur för delad åtkomst). Tänk på att om autentiseringsuppgifter registreras med data lager, kan alla användare med rollen arbets yta *läsa* in dessa autentiseringsuppgifter. [Läs mer om rollen för arbets ytans *läsare* .](how-to-assign-roles.md#default-roles) <br><br>Om detta är ett problem, lär du dig hur du [ansluter till lagrings tjänster med Identity-baserad åtkomst](how-to-identity-based-data-access.md). <br><br>Den här funktionen är en [experimentell](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst. 
+
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du behöver:
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Ett Azure Storage-konto med en [lagrings typ som stöds](#matrix).
 
-- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)eller åtkomst till [Azure Machine Learning Studio](https://ml.azure.com/).
+- [Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 - En Azure Machine Learning-arbetsyta.
   
@@ -59,7 +61,10 @@ Du behöver:
 
 ## <a name="supported-data-storage-service-types"></a>Typer av data lagrings tjänster som stöds
 
-Data lager har för närvarande stöd för lagring av anslutnings information till de lagrings tjänster som anges i följande matris.
+Data lager har för närvarande stöd för lagring av anslutnings information till de lagrings tjänster som anges i följande matris. 
+
+> [!TIP]
+> **För lagrings lösningar som inte stöds** och för att spara utgångs kostnad under ml experiment, [flytta dina data](#move) till en Azure Storage-lösning som stöds. 
 
 | Lagrings &nbsp; typ | Autentiseringstyp &nbsp; | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; Machine &nbsp; Learning &nbsp; python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; Learning cli](reference-azure-machine-learning-cli.md) | [REST-API för Azure &nbsp; Machine &nbsp; Learning &nbsp;](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
@@ -88,7 +93,16 @@ För att säkerställa att du ansluter till Azure Storage-tjänsten på ett säk
 
 ### <a name="virtual-network"></a>Virtuellt nätverk 
 
-Om ditt data lagrings konto finns i ett **virtuellt nätverk** krävs ytterligare konfigurations steg för att säkerställa att Azure Machine Learning har åtkomst till dina data. Se [använda Azure Machine Learning Studio i ett virtuellt Azure-nätverk](how-to-enable-studio-virtual-network.md) för att se till att lämpliga konfigurations steg tillämpas när du skapar och registrerar ditt data lager.  
+Azure Machine Learning kan som standard inte kommunicera med ett lagrings konto som ligger bakom en brand vägg eller i ett virtuellt nätverk. Om ditt data lagrings konto finns i ett **virtuellt nätverk** krävs ytterligare konfigurations steg för att säkerställa att Azure Machine Learning har åtkomst till dina data. 
+
+> [!NOTE]
+> Den här vägledningen gäller även för [data lager som skapats med Identity-baserad data åtkomst (för hands version)](how-to-identity-based-data-access.md). 
+
+**För python SDK-användare** för att komma åt dina data via ditt utbildnings skript på ett beräknings mål måste Compute-målet finnas i samma virtuella nätverk och under nätet för lagringen.  
+
+**För Azure Machine Learning Studio-användare** är flera funktioner beroende av möjligheten att läsa data från en data uppsättning. till exempel för hands version av data uppsättningar, profiler och automatisk maskin inlärning. För att de här funktionerna ska fungera med lagring bakom virtuella nätverk använder du en [arbets yta hanterad identitet i Studio](how-to-enable-studio-virtual-network.md) för att tillåta Azure Machine Learning åtkomst till lagrings kontot utanför det virtuella nätverket. 
+
+Azure Machine Learning kan ta emot begär Anden från klienter utanför det virtuella nätverket. För att säkerställa att den enhet som begär data från tjänsten är säker [konfigurerar du Azures privata länk för din arbets yta](how-to-configure-private-link.md).
 
 ### <a name="access-validation"></a>Åtkomst verifiering
 
@@ -204,18 +218,27 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
-<a name="arm"></a>
 
-## <a name="create-datastores-using-azure-resource-manager"></a>Skapa data lager med hjälp av Azure Resource Manager
+
+## <a name="create-datastores-with-other-azure-tools"></a>Skapa data lager med andra Azure-verktyg
+Förutom att skapa data lager med python SDK och Studio kan du också använda Azure Resource Manager mallar eller Azure Machine Learning VS Code-tillägg. 
+
+<a name="arm"></a>
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 
 Det finns ett antal mallar i [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) som kan användas för att skapa data lager.
 
 Information om hur du använder dessa mallar finns i [använda en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning](how-to-create-workspace-template.md).
 
+### <a name="vs-code-extension"></a>VS Code-tillägg
+
+Om du föredrar att skapa och hantera data lager med hjälp av Azure Machine Learning VS Code-tillägget kan du läsa mer i [vs Code Resource Management instruktions guide](how-to-manage-resources-vscode.md#datastores) .
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>Använda data i dina data lager
 
-När du har skapat ett data lager [skapar du en Azure Machine Learning data uppsättning](how-to-create-register-datasets.md) för att interagera med dina data. Data uppsättningar paketerar dina data i ett Lazy utvärderat förbruknings Bart objekt för Machine Learning-uppgifter, till exempel träning. De ger också möjlighet att [Ladda ned eller montera](how-to-train-with-datasets.md#mount-vs-download) filer i alla format från Azure Storage-tjänster som Azure Blob Storage och ADLS gen 2. Du kan också använda dem för att läsa in tabell data i en Pandas-eller Spark-DataFrame.
+När du har skapat ett data lager [skapar du en Azure Machine Learning data uppsättning](how-to-create-register-datasets.md) för att interagera med dina data. Data uppsättningar paketerar dina data i ett Lazy utvärderat förbruknings Bart objekt för Machine Learning-uppgifter, till exempel träning. 
+
+Med data uppsättningar kan du [Hämta eller montera](how-to-train-with-datasets.md#mount-vs-download) filer i alla format från Azure Storage-tjänster för modell utbildning på ett beräknings mål. [Lär dig mer om hur du tränar ml-modeller med data uppsättningar](how-to-train-with-datasets.md).
 
 <a name="get"></a>
 
@@ -251,10 +274,10 @@ Du kan också ändra standard data lagret med följande kod. Den här funktionen
 
 Azure Machine Learning tillhandahåller flera olika sätt att använda dina modeller för att beräkna poäng. Några av dessa metoder ger inte åtkomst till data lager. Använd följande tabell för att förstå vilka metoder du kan använda för att komma åt data lager under poängsättningen:
 
-| Metod | Åtkomst till data lager | Description |
+| Metod | Åtkomst till data lager | Beskrivning |
 | ----- | :-----: | ----- |
 | [Batchförutsägelse](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | Göra förutsägelser kring stora mängder data asynkront. |
-| [Webb tjänst](how-to-deploy-and-where.md) | &nbsp; | Distribuera modeller som en webb tjänst. |
+| [Webbtjänst](how-to-deploy-and-where.md) | &nbsp; | Distribuera modeller som en webb tjänst. |
 | [Azure IoT Edge modul](how-to-deploy-and-where.md) | &nbsp; | Distribuera modeller till IoT Edge enheter. |
 
 I situationer där SDK inte ger åtkomst till data lager kan du kanske skapa anpassad kod med hjälp av relevanta Azure SDK för att få åtkomst till data. Till exempel är [Azure Storage SDK för python](https://github.com/Azure/azure-storage-python) ett klient bibliotek som du kan använda för att komma åt data som lagras i blobbar eller filer.

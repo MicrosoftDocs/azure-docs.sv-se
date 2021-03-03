@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: d36bcbd64c1169c923c6a1decdf907a8a9d6697b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9f2b5bf1195682b200b5840459194506e29bcdc6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255771"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645096"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planera en distribution med automatisk användaretablering
 
@@ -73,7 +73,7 @@ I den här artikeln används följande villkor:
 | Onlinekurser| SkillUp online:  [hantera identiteter](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Lär dig hur du integrerar Azure AD med många SaaS-program och skyddar användarnas åtkomst till dessa program. |
 | Böcker| [Modern autentisering med Azure Active Directory för webb program (referens för utvecklare) 1: a utgåvan](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Det här är en auktoritativ och djupgående guide för att skapa Active Directory-autentiseringsbegäranden för de här nya miljöerna. |
 | Självstudier| Se [listan med självstudier om hur du integrerar SaaS-appar med Azure AD](../saas-apps/tutorial-list.md). |
-| VANLIGA FRÅGOR OCH SVAR| [Vanliga frågor](../app-provisioning/user-provisioning.md) om automatisk användar etablering |
+| Vanliga frågor| [Vanliga frågor](../app-provisioning/user-provisioning.md) om automatisk användar etablering |
 
 ### <a name="solution-architectures"></a>Lösningsarkitekturer
 
@@ -322,7 +322,7 @@ Se följande länkar för att felsöka eventuella problem som kan uppstå under 
 
 * [Håll dig uppdaterad om vad som är nytt med Azure AD](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Microsoft Q&ett Azure AD-forum](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Q&ett Azure AD-forum](/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>Nästa steg
 * [Konfigurera automatisk användar etablering](../app-provisioning/configure-automatic-user-provisioning-portal.md)

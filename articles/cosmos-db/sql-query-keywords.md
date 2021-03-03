@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599352"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659842"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Nyckelord i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 Returnerar ett booleskt värde beroende på om en specifik tecken sträng matchar ett angivet mönster. Ett mönster kan innehålla vanliga tecken och jokertecken. Du kan skriva logiskt motsvarande frågor med hjälp av antingen `LIKE` nyckelordet eller funktionen [RegexMatch](sql-query-regexmatch.md) system. Du kommer att observera samma index användning oavsett vilken du väljer. Därför bör du använda `LIKE` om du föredrar syntaxen mer än reguljära uttryck.
 
 > [!NOTE]
-> Eftersom `LIKE` kan använda ett index, bör du [skapa ett intervall index](indexing-policy.md) för egenskaper som du jämför med `LIKE` .
+> Eftersom `LIKE` kan använda ett index, bör du [skapa ett intervall index](./index-policy.md) för egenskaper som du jämför med `LIKE` .
 
 Du kan använda följande jokertecken som:
 

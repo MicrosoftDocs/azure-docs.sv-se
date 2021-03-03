@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: b8e75b86d2cfd778aec44ea163a1bafda5ff6fba
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3021e9155e229fcaf52166fd0e9dc908f9b7cfb6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373682"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650081"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -176,7 +176,7 @@ Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner 
 
 Se följande lista för att konfigurera hanterad identitet för digitala Digital-ID: t (i regioner där det finns tillgängligt):
 
-- [Azure-portalen](~/articles/digital-twins/how-to-enable-managed-identities.md)
+- [Azure-portalen](../../digital-twins/how-to-enable-managed-identities-portal.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 

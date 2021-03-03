@@ -10,16 +10,16 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4c05b654b6714c5317e1334d3a3ea5c327a5ff18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 49c4179432c0b57dfe68de563621807b1141fc67
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770845"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657104"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Den senaste versionen av [klient biblioteket för .net Core](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
 - En aktiv kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../create-communication-resource.md).
 
@@ -42,10 +42,10 @@ dotnet build
 
 ### <a name="install-the-package"></a>Installera paketet
 
-När du fortfarande är i program katalogen installerar du Azure Communication Services administrations bibliotek för .NET-paketet med hjälp av `dotnet add package` kommandot.
+När du fortfarande är i program katalogen installerar du Azure Communication Services Identity Library för .NET-paketet med hjälp av `dotnet add package` kommandot.
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Identity --version 1.0.0
 ```
 
 ### <a name="set-up-the-app-framework"></a>Konfigurera app Framework
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 Från projekt katalogen:
 
 1. Öppna **program.cs** -filen i en text redigerare
-1. Lägg till ett `using` direktiv för att inkludera `Azure.Communication.Administration` namn området
+1. Lägg till ett `using` direktiv för att inkludera `Azure.Communication.Identity` namn området
 1. Uppdatera `Main` metod deklarationen för att stödja asynkron kod
 
 Använd följande kod för att börja:
@@ -61,7 +61,7 @@ Använd följande kod för att börja:
 ```csharp
 using System;
 using Azure.Communication;
-using Azure.Communication.Administration;
+using Azure.Communication.Identity;
 
 namespace AccessTokensQuickstart
 {
@@ -89,6 +89,21 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 var client = new CommunicationIdentityClient(connectionString);
 ```
 
+Du kan också separera slut punkten och åtkomst nyckeln.
+```csharp
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+string endpoint = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ENDPOINT");
+string accessKey = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_ACCESSKEY");
+var client = new CommunicationIdentityClient(new Uri(endpoint), new AzureKeyCredential(accessKey));
+```
+
+Om du har konfigurerat identiteter, se [Använd hanterade](../managed-identity.md)identiteter, kan du även autentisera med hanterad identitet.
+```csharp
+TokenCredential tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>Skapa en identitet
 
 Azure Communication Services upprätthåller en Lightweight Identity-katalog. Använd `createUser` metoden för att skapa en ny post i katalogen med en unik `Id` . Lagra mottagen identitet med mappning till programmets användare. Till exempel genom att lagra dem i program serverns databas. Identiteten krävs senare för att utfärda åtkomsttoken.
@@ -101,34 +116,34 @@ Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
 
 ## <a name="issue-identity-access-tokens"></a>Utfärda token för identitets åtkomst
 
-Använd `issueToken` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `communicationUser` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
+Använd `GetToken` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `communicationUser` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
 
 ```csharp
 // Issue an access token with the "voip" scope for an identity
-var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
+var tokenResponse = await client.GetTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 var token =  tokenResponse.Value.Token;
 var expiresOn = tokenResponse.Value.ExpiresOn;
 Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
 Console.WriteLine(token);
 ```
 
-Åtkomsttoken är korta autentiseringsuppgifter som måste återutfärdas. Om du inte gör det kan det orsaka störningar i programmets användar upplevelse. `expiresOn`Egenskapen svar anger livs längden för åtkomsttoken. 
+Åtkomsttoken är korta autentiseringsuppgifter som måste återutfärdas. Om du inte gör det kan det orsaka störningar i programmets användar upplevelse. `expiresOn`Egenskapen svar anger livs längden för åtkomsttoken.
 
 ## <a name="refresh-access-tokens"></a>Uppdatera åtkomsttoken
 
-Om du vill uppdatera en åtkomsttoken skickar du en instans av `CommunicationUser` objektet till `IssueTokenAsync` . Om du har lagrat detta `Id` och behöver skapa en ny kan `CommunicationUser` du göra det genom att skicka din lagrade `Id` till `CommunicationUser` konstruktorn enligt följande:
+Om du vill uppdatera en åtkomsttoken skickar du en instans av `CommunicationUserIdentifier` objektet till `GetTokenAsync` . Om du har lagrat detta `Id` och behöver skapa en ny kan `CommunicationUserIdentifier` du göra det genom att skicka din lagrade `Id` till `CommunicationUserIdentifier` konstruktorn enligt följande:
 
-```csharp  
+```csharp
 // In this example, userId is a string containing the Id property of a previously-created CommunicationUser
-identityToRefresh = new CommunicationUser(userId);
-tokenResponse = await client.IssueTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
+var identityToRefresh = new CommunicationUserIdentifier(userId);
+var tokenResponse = await client.GetTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
 ## <a name="revoke-access-tokens"></a>Återkalla åtkomsttoken
 
 I vissa fall kan du uttryckligen återkalla åtkomsttoken. Till exempel när ett programs användare ändrar lösen ordet som de använder för att autentisera till din tjänst. Metoden `RevokeTokensAsync` ogiltig förklarade alla aktiva åtkomsttoken som utfärdats till identiteten.
 
-```csharp  
+```csharp
 await client.RevokeTokensAsync(identity);
 Console.WriteLine($"\nSuccessfully revoked all access tokens for identity with ID: {identity.Id}");
 ```

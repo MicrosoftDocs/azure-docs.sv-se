@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667835"
 ---
 # <a name="virtual-network-service-tags"></a>Tjänst taggar för virtuellt nätverk
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Som standard återspeglar service märken intervallen för hela molnet. Vissa se
 | **AzureActiveDirectory** | Azure Active Directory. | Utgående | Inga | Ja |
 | **AzureActiveDirectoryDomainServices** | Hanterings trafik för distributioner avsedda för Azure Active Directory Domain Services. | Båda | Inga | Ja |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection. | Utgående | Inga | Inga |
+| **AzureAPIForFHIR** | Azure API för FHIR (resurser för snabb hälso samverkan).<br/><br/> *Obs: den här taggen kan för närvarande inte konfigureras via Azure Portal.*| Utgående | Inga | Inga |
 | **AzureArcInfrastructure** | Azure Arc-aktiverade servrar, Azure Arc-aktiverade Kubernetes och gäst konfigurations trafik.<br/><br/>*Obs:* Den här taggen har ett beroende av taggarna **AzureActiveDirectory**,**AzureTrafficManager** och **AzureResourceManager** . *Den här taggen kan för närvarande inte konfigureras via Azure Portal*.| Utgående | Inga | Ja |
 | **AzureBackup** |Azure Backup.<br/><br/>*Obs:* Den här taggen har ett beroende på **lagrings** -och **AzureActiveDirectory** -taggarna. | Utgående | Inga | Ja |
 | **AzureBotService** | Azure Bot Service. | Utgående | Inga | Inga |

@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68ff89191a4e9b11c2d84ec016090f76b8ea11b7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5b0542bbcc4d1acd37f7eeb333a53fb6826a4eea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258124"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643600"
 ---
 # <a name="manage-app-consent-policies"></a>Hantera principer för appmedgivande
 
@@ -152,4 +152,4 @@ Mer information:
 * [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
 
 För att få hjälp eller hitta svar på dina frågor:
-* [Azure AD på Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Azure AD på Microsoft Q&A](/answers/products/)

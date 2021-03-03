@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 39973fe8c15364dc214392985cecd8b8bc7834ed
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9a50d8402515cb7aafa9a1b02c8b8c18412f6618
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878213"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659400"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Skapa Azure Machine Learning-datamängder
 
@@ -82,7 +82,7 @@ Med TabularDatasets kan du ange en tidstämpel från en kolumn i data eller frå
 Skapa en TabularDataset med [python SDK](#create-a-tabulardataset) eller [Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets).
 
 >[!NOTE]
-> AutoML-arbetsflöden som genereras via Azure Machine Learning Studio stöder för närvarande endast TabularDatasets. 
+> [Automatiserade ml](concept-automated-ml.md) -arbetsflöden som skapats via Azure Machine Learning Studio stöder för närvarande endast TabularDatasets. 
 
 ## <a name="access-datasets-in-a-virtual-network"></a>Åtkomst till data uppsättningar i ett virtuellt nätverk
 
@@ -90,15 +90,20 @@ Om din arbets yta finns i ett virtuellt nätverk måste du konfigurera data upps
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets"></a>Skapa datauppsättningar
+## <a name="create-datasets-from-datastores"></a>Skapa data uppsättningar från data lager
 
-För att data ska kunna nås av Azure Machine Learning måste data uppsättningar skapas från sökvägar i [Azure-datalager](how-to-access-data.md) eller offentliga webb adresser. 
+För att data ska kunna nås av Azure Machine Learning måste data uppsättningar skapas från sökvägar i [Azure Machine Learning data lager](how-to-access-data.md) eller webb adresser. 
 
-Skapa data uppsättningar från ett [Azure-datalager](how-to-access-data.md) med python SDK:
+> [!TIP] 
+> Du kan skapa data uppsättningar direkt från lagrings-URL: er med Identity-baserad data åtkomst. Läs mer i [ansluta till lagring med Identity-baserad data åtkomst (för hands version)](how-to-identity-based-data-access.md)<br><br>
+Den här funktionen är en [experimentell](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) förhands gransknings funktion och kan ändras när som helst. 
 
-1. Kontrol lera att du har `contributor` eller `owner` åtkomst till registrerade Azure-datalager.
+ 
+Så här skapar du data uppsättningar från ett data lager med python SDK:
 
-2. Skapa data uppsättningen genom att referera till sökvägar i data lagret. Du kan skapa en data uppsättning från flera sökvägar i flera data lager. Det finns ingen hård gräns för antalet filer eller data storlekar som du kan skapa en data uppsättning från. 
+1. Kontrol lera att du har `contributor` eller `owner` åtkomst till den underliggande lagrings tjänsten för ditt registrerade Azure Machine Learning-datalager. [Kontrol lera lagrings kontots behörigheter i Azure Portal](../role-based-access-control/check-access.md).
+
+1. Skapa data uppsättningen genom att referera till sökvägar i data lagret. Du kan skapa en data uppsättning från flera sökvägar i flera data lager. Det finns ingen hård gräns för antalet filer eller data storlekar som du kan skapa en data uppsättning från. 
 
 > [!NOTE]
 > För varje data Sök väg skickas några begär anden till lagrings tjänsten för att kontrol lera om det pekar på en fil eller mapp. Den här omkostnaderna kan leda till försämrade prestanda eller problem. En data uppsättning som refererar till en mapp med 1000 filer inuti betraktas som en referens till en data Sök väg. Vi rekommenderar att du skapar en data uppsättning som refererar mindre än 100 sökvägar i data lager för optimala prestanda.
@@ -169,7 +174,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Tabbindex|PassengerId|Överlevt|Pclass|Name|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
+|Tabbindex|PassengerId|Överlevt|Pclass|Namn|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Falskt|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
 1|2|Sant|1|Cumings, fru. John Bradley (Florence Briggs to...|kvinna|38,0|1|0|PC 17599|71,2833|C85|C
@@ -203,7 +208,7 @@ För TabularDatasets använder du [`to_pandas_dataframe()`](/python/api/azureml-
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Tabbindex|PassengerId|Överlevt|Pclass|Name|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
+|Tabbindex|PassengerId|Överlevt|Pclass|Namn|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Falskt|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
 1|2|Sant|1|Cumings, fru. John Bradley (Florence Briggs to...|kvinna|38,0|1|0|PC 17599|71,2833|C85|C
@@ -261,7 +266,7 @@ Det finns ett antal mallar i [https://github.com/Azure/azure-quickstart-template
 Information om hur du använder dessa mallar finns i [använda en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning](how-to-create-workspace-template.md).
 
 
-## <a name="create-datasets-with-azure-open-datasets"></a>Skapa data uppsättningar med Azure Open-datauppsättningar
+## <a name="create-datasets-from-azure-open-datasets"></a>Skapa data uppsättningar från Azure Open data uppsättningar
 
 [Azure Open-datauppsättningar](https://azure.microsoft.com/services/open-datasets/) är granskade offentliga data uppsättningar som du kan använda för att lägga till scenario-/regionsspecifika funktioner till maskin inlärnings lösningar för mer exakta modeller. Data uppsättningar omfattar data från offentliga domäner för väder, räkning, helger, offentlig säkerhet och plats som hjälper dig att träna maskin inlärnings modeller och utöka förutsägelse lösningar. Öppna data uppsättningar finns i molnet på Microsoft Azure och ingår i både SDK och Studio.
 
@@ -269,7 +274,7 @@ Lär dig hur du skapar [Azure Machine Learning data uppsättningar från Azure O
 
 ## <a name="train-with-datasets"></a>Träna med datauppsättningar
 
-Använd dina data uppsättningar i Machine Learning-experiment för att träna ML-modeller. [Lär dig mer om hur du tränar med data uppsättningar](how-to-train-with-datasets.md)
+Använd dina data uppsättningar i Machine Learning-experiment för att träna ML-modeller. [Lär dig mer om hur du tränar med data uppsättningar](how-to-train-with-datasets.md).
 
 ## <a name="version-datasets"></a>Versions data uppsättningar
 

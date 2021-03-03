@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: e7968f4ab01706aa5f8d7d016d93a1b9de2e74b6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 6946f5fcf6da86c89c1863f2f180047abd765e1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657109"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -43,8 +43,8 @@ Du ser att aktiviteten "generera" skapade en katalog med samma namn som `artifac
 ```xml
 <dependency>
     <groupId>com.azure</groupId>
-    <artifactId>azure-communication-administration</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <artifactId>azure-communication-identity</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -60,7 +60,7 @@ Från projekt katalogen:
 Använd följande kod för att börja:
 
 ```java
-import com.azure.communication.administration.*;
+import com.azure.communication.identity.*;
 import com.azure.communication.common.*;
 import java.io.*;
 import java.util.*;
@@ -85,7 +85,7 @@ Instansiera en `CommunicationIdentityClient` med resursens åtkomst nyckel och s
 Lägg till följande kod i `main`-metoden:
 
 ```java
-// Your can find your endpoint and access key from your resource in the Azure Portal
+// Your can find your endpoint and access key from your resource in the Azure portal
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 String accessKey = "SECRET";
 
@@ -103,11 +103,30 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
     .buildClient();
 ```
 
+Om du har konfigurerat en hanterad identitet kan du läsa mer i [använda hanterade](../managed-identity.md)identiteter, som du kan använda för att initiera och autentisera med identitets tjänsten.
+```java
+// Your can find your endpoint from your resource in the Azure portal
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+
+// Create an HttpClient builder of your choice and customize it
+// Use com.azure.core.http.netty.NettyAsyncHttpClientBuilder if that suits your needs
+// -> Add "import com.azure.core.http.netty.*;"
+// -> Add azure-core-http-netty dependency to file pom.xml
+
+HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
+
+CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
+    .endpoint(endpoint)
+    .credential(new DefaultAzureCredentialBuilder().build())
+    .httpClient(httpClient)
+    .buildClient();
+```
+
 Du kan initiera klienten med valfri anpassad HTTP-klient som implementerar `com.azure.core.http.HttpClient` gränssnittet. Ovanstående kod visar användningen av [Azure Core nett-HTTP-klienten](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable) som tillhandahålls av `azure-core` .
 
-Du kan också ange hela anslutnings strängen med hjälp av funktionen connectionString () i stället för att tillhandahålla slut punkten och åtkomst nyckeln. 
+Du kan också ange hela anslutnings strängen med hjälp av `connectionString()` funktionen i stället för att tillhandahålla slut punkten och åtkomst nyckeln.
 ```java
-// Your can find your connection string from your resource in the Azure Portal
+// Your can find your connection string from your resource in the Azure portal
 String connectionString = "<connection_string>";
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .connectionString(connectionString)
@@ -120,42 +139,57 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
 Azure Communication Services upprätthåller en Lightweight Identity-katalog. Använd `createUser` metoden för att skapa en ny post i katalogen med en unik `Id` . Lagra mottagen identitet med mappning till programmets användare. Till exempel genom att lagra dem i program serverns databas. Identiteten krävs senare för att utfärda åtkomsttoken.
 
 ```java
-CommunicationUser identity = communicationIdentityClient.createUser();
-System.out.println("\nCreated an identity with ID: " + identity.getId());
+CommunicationUserIdentifier user = communicationIdentityClient.createUser();
+System.out.println("\nCreated an identity with ID: " + user.getId());
 ```
 
 ## <a name="issue-access-tokens"></a>Utfärda åtkomsttoken
 
-Använd `issueToken` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `user` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
+Använd `getToken` metoden för att utfärda en åtkomsttoken för redan befintlig kommunikations tjänst identitet. Parameter `scopes` definierar uppsättning primitiver som auktoriserar denna åtkomsttoken. Se [listan över åtgärder som stöds](../../concepts/authentication.md). En ny instans av parametern `user` kan konstrueras baserat på en sträng representation av Azure Communication Service-identiteten.
 
 ```java
-// Issue an access token with the "voip" scope for an identity
-List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
-CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
-OffsetDateTime expiresOn = response.getExpiresOn();
-String token = response.getToken();
-System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresOn + ": " + token);
+// Issue an access token with the "voip" scope for a user identity
+List<String> scopes = new ArrayList<>(Arrays.asList(CommunicationTokenScope.VOIP));
+AccessToken accessToken = communicationIdentityClient.getToken(user, scopes);
+OffsetDateTime expiresAt = accessToken.getExpiresAt();
+String token = accessToken.getToken();
+System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresAt + ": " + token);
 ```
 
-Åtkomsttoken är korta autentiseringsuppgifter som måste återutfärdas. Om du inte gör det kan det orsaka störningar i programmets användar upplevelse. `expiresAt`Egenskapen svar anger livs längden för åtkomsttoken.
+## <a name="create-an-identity-and-issue-token-in-one-call"></a>Skapa en token för identitet och utfärdare i ett anrop
+
+Du kan också använda metoden ' createUserWithToken ' för att skapa en ny post i katalogen med en unik `Id` och utfärda en åtkomsttoken.
+
+```java
+List<CommunicationTokenScope> scopes = Arrays.asList(CommunicationTokenScope.CHAT);
+CommunicationUserIdentifierWithTokenResult result = client.createUserWithToken(scopes);
+CommunicationUserIdentifier user = result.getUser();
+System.out.println("\nCreated a user identity with ID: " + user.getId());
+AccessToken accessToken = result.getUserToken();
+OffsetDateTime expiresAt = accessToken.getExpiresAt();
+String token = accessToken.getToken();
+System.out.println("\nIssued an access token with 'chat' scope that expires at: " + expiresAt + ": " + token);
+```
+
+Åtkomsttoken är korta autentiseringsuppgifter som måste återutfärdas. Om du inte gör det kan det orsaka störningar i programmets användar upplevelse. `expiresAt`Egenskapen anger livs längden för åtkomsttoken.
 
 ## <a name="refresh-access-tokens"></a>Uppdatera åtkomsttoken
 
-Om du vill uppdatera en åtkomsttoken använder du `CommunicationUser` objektet för att utfärda följande:
+Om du vill uppdatera en åtkomsttoken använder du `CommunicationUserIdentifier` objektet för att utfärda följande:
 
-```java  
+```java
 // Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-CommunicationUser identity = new CommunicationUser(existingIdentity);
-response = communicationIdentityClient.issueToken(identity, scopes);
+CommunicationUserIdentifier identity = new CommunicationUserIdentifier(existingIdentity);
+response = communicationIdentityClient.getToken(identity, scopes);
 ```
 
 ## <a name="revoke-access-tokens"></a>Återkalla åtkomsttoken
 
 I vissa fall kan du uttryckligen återkalla åtkomsttoken. Till exempel när ett programs användare ändrar lösen ordet som de använder för att autentisera till din tjänst. Metoden `revokeTokens` ogiltig förklarade alla aktiva åtkomsttoken som utfärdats till identiteten.
 
-```java  
-communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
-System.out.println("\nSuccessfully revoked all access tokens for identity with ID: " + identity.getId());
+```java
+communicationIdentityClient.revokeTokens(user);
+System.out.println("\nSuccessfully revoked all access tokens for user identity with ID: " + user.getId());
 ```
 
 ## <a name="delete-an-identity"></a>Ta bort en identitet
@@ -163,8 +197,8 @@ System.out.println("\nSuccessfully revoked all access tokens for identity with I
 Om du tar bort en identitet återkallar du alla aktiva åtkomsttoken och förhindrar att du utfärdar åtkomsttoken för identiteten. Det tar också bort allt beständigt innehåll som är associerat med identiteten.
 
 ```java
-communicationIdentityClient.deleteUser(identity);
-System.out.println("\nDeleted the identity with ID: " + identity.getId());
+communicationIdentityClient.deleteUser(user);
+System.out.println("\nDeleted the user identity with ID: " + user.getId());
 ```
 
 ## <a name="run-the-code"></a>Kör koden

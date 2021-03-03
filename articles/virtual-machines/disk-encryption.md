@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9ed811f96e08e8ebab2e6fd090a4322d9f7827fb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681744"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677444"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Kryptering på Server sidan av Azure-disklagring
 
@@ -51,6 +51,17 @@ För närvarande har Kundhanterade nycklar följande begränsningar:
 #### <a name="supported-regions"></a>Regioner som stöds
 
 Kundhanterade nycklar är tillgängliga i alla regioner som Managed disks är tillgängliga.
+
+Automatisk nyckel rotation är i för hands version och endast tillgängligt i följande regioner:
+
+- East US
+- USA, östra 2
+- USA, södra centrala
+- USA, västra
+- USA, västra 2
+- Europa, norra
+- Europa, västra
+- Frankrike, centrala
 
 > [!IMPORTANT]
 > Kundhanterade nycklar är beroende av hanterade identiteter för Azure-resurser, en funktion i Azure Active Directory (Azure AD). När du konfigurerar Kundhanterade nycklar, tilldelas en hanterad identitet automatiskt till dina resurser under försättsblad. Om du senare flyttar prenumerationen, resurs gruppen eller den hanterade disken från en Azure AD-katalog till en annan överförs inte den hanterade identitet som är kopplad till hanterade diskar till den nya klienten, så Kundhanterade nycklar kanske inte längre fungerar. Mer information finns i [överföra en prenumeration mellan Azure AD-kataloger](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).

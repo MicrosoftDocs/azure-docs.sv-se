@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 42ed42a1fc9a2750cc928b5fd03eb4b32f770276
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355519"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644093"
 ---
 # <a name="identity-providers-for-external-identities"></a>Identitets leverantörer för externa identiteter
 
@@ -27,9 +27,6 @@ Du kan dock göra det möjligt för användarna att logga in med olika identitet
 - **Google**: Google Federation låter externa användare lösa in inbjudningar från dig genom att logga in på dina appar med egna Gmail-konton. Google Federation kan också användas i dina självbetjänings registrerings användar flöden.
    > [!IMPORTANT]
    > Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
-
-   > [!NOTE]
-   > Om ett användar flöde är associerat med en app i den aktuella självbetjänings förhands granskningen och du skickar en användare en inbjudan till appen, kommer användaren inte att kunna använda ett Gmail-konto för att lösa in inbjudan. Som en lösning kan användaren gå igenom registrerings processen för självbetjäning. Eller så kan de lösa in inbjudan genom att komma åt en annan app eller genom att använda deras mina apps-Portal på https://myapps.microsoft.com .
 
 - **Facebook**: när du skapar en app kan du konfigurera registrering av självbetjäning och aktivera Facebook-Federation så att användarna kan registrera sig för din app med sina egna Facebook-konton. Facebook kan bara användas för självbetjänings registrering av användar flöden och är inte tillgängligt som ett inloggnings alternativ när användarna löser in inbjudningar från dig.
 

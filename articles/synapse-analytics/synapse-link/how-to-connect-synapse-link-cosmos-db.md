@@ -1,20 +1,20 @@
 ---
-title: Ansluta till Azure Synapse-länken (för hands version) för Azure Cosmos DB
+title: Ansluta till Azure Synapse Link för Azure Cosmos DB
 description: Lär dig hur du ansluter en Azure Cosmos DB-databas till en Azure dataSynapses-arbetsyta med Azure Synapse-länken.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119840"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667558"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Ansluta till Azure Synapse Link för Azure Cosmos DB
 
@@ -26,9 +26,6 @@ Innan du ansluter en Azure Cosmos DB databas till din arbets yta behöver du:
 
 * Befintliga Azure Cosmos DB databasen eller skapa ett nytt konto genom att följa stegen i [snabb start: hantera ett Azure Cosmos DB konto](../../cosmos-db/how-to-manage-database-account.md).
 * Befintlig Azure Synapse-arbetsyta eller skapa en ny arbets yta genom att följa stegen i [snabb start: skapa en Synapse-arbetsyta](../quickstart-create-workspace.md).
-
-> [!IMPORTANT]
-> Azure Synapse-länken för Azure Cosmos DB stöds för närvarande för arbets ytor som inte har något hanterat virtuellt nätverk aktiverat.
 
 ## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Aktivera Synapse-länk på ett Azure Cosmos DB databas konto
 
@@ -70,4 +67,5 @@ Genom att högerklicka på en behållare har du en lista med gester som utlöser
 ## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig vad som stöds mellan Azure Synapse och Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)
+* [Konfigurera privata slut punkter för Azure Cosmos DB analys lager](../cosmos-db/analytical-store-private-endpoints.md)
 * [Lär dig hur du frågar analys lagret med Spark](./how-to-query-analytical-store-spark.md)

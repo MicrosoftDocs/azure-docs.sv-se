@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545881"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654501"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-kodexempel
 
@@ -27,8 +27,8 @@ Följande tabeller innehåller länkar till exempel för program, inklusive iOS,
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Ett iOS-exempel i Swift som autentiserar Azure AD B2C-användare och anropar ett API med OAuth 2.0 |
 | [android-native-msal](https://github.com/Azure-Samples/ms-identity-android-java#b2cmodefragment-class) | En enkel Android-app som visar hur du använder MSAL för att autentisera användare via Azure Active Directory B2C och få åtkomst till ett webb-API med resulterande token. |
-| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ett exempel som visar hur du kan använda ett bibliotek från tredje part för att skapa ett iOS-program i Objective-C som autentiserar användare med Microsoft-identitet till vår Azure AD B2C-identitetstjänst. |
-| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ett exempel som visar hur du kan använda ett bibliotek från tredje part för att skapa en Android-app som autentiserar användare med Microsoft-identitet till vår B2C-identitetstjänst och anropar ett webb-API med OAuth 2.0-åtkomsttoken. |
+| [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Ett exempel som visar hur du kan använda ett bibliotek från tredje part för att bygga ett iOS-program i mål-C som autentiserar Microsoft Identity-användare till vår Azure AD B2C identitets tjänst. |
+| [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Ett exempel som visar hur du kan använda ett bibliotek från tredje part för att bygga ett Android-program som autentiserar Microsoft Identity-användare till vår B2C-identitets tjänst och anropar ett webb-API med OAuth 2,0-åtkomsttoken. |
 | [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Ett exempel som visar hur ett Windows Desktop .NET-program (WPF-program) kan logga in en användare som använder Azure AD B2C, få ett åtkomsttoken med hjälp av MSAL.NET och anropa ett API. |
 | [xamarin-intern](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | En enkel Xamarin Forms-app som visar hur du använder MSAL för att autentisera användare via Azure Active Directory B2C och få åtkomst till ett webb-API med resulterande token. |
 
@@ -47,8 +47,16 @@ Följande tabeller innehåller länkar till exempel för program, inklusive iOS,
 
 | Exempel | Beskrivning |
 |--------| ----------- |
-| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | En ensidesapplikation (SPA) som anropar ett webb-API. Autentisering görs med Azure AD B2C med hjälp av MSAL.js. I det här exemplet används Authorization Code Flow med PKCE. |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | En ensidesapplikation (SPA) som anropar ett webb-API. Autentisering görs med Azure AD B2C med hjälp av MSAL.js. I de här exemplen används det implicita flödet.|
+| [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Ett enda sid program (SPA) som anropar ett webb-API. Autentisering görs med Azure AD B2C med hjälp av MSAL.js. I det här exemplet används Authorization Code Flow med PKCE. |
+| [Java Script-NodeJS-Management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Ett enda sid program (SPA) som anropar Microsoft Graph för att hantera användare i en B2C-katalog. Autentisering görs med Azure AD B2C med hjälp av MSAL.js. I det här exemplet används Authorization Code Flow med PKCE.|
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Ett enda sid program (SPA) som anropar ett webb-API. Autentisering görs med Azure AD B2C med hjälp av MSAL.js. I det här exemplet används det implicita flödet.|
+
+## <a name="consoledaemon-apps"></a>Konsol/daemon-appar
+
+| Exempel | Beskrivning |
+|--------| ----------- |
+| [Java Script-NodeJS-Management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter2) | Ett Node.js-och Express Console daemon-program anropar Microsoft Graph med sin egen identitet för att hantera användare i en B2C-katalog. Autentisering görs med Azure AD B2C med hjälp av MSAL-noden. I det här exemplet används Authorization Code Flow.|
+| [dotnetcore-B2C-Account-Management](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) | Ett .NET Core-konsolprogram som anropar Microsoft Graph med sin egen identitet för att hantera användare i en B2C-katalog. Autentisering görs med Azure AD B2C med hjälp av MSAL.NET. I det här exemplet används Authorization Code Flow.|
 
 ## <a name="saml-test-application"></a>SAML-testprogram
 
@@ -73,7 +81,7 @@ Följande tabeller innehåller länkar till kod exempel för att använda webb-A
 | Exempel                                                                                                            | Beskrivning                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [Arkose Labs bedrägeri-och missbruks skydd](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | Det här exemplet visar hur du skyddar dina användar inloggningar med hjälp av Arkose Labs bedrägerier och missbruks skydds tjänst. |
-| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Det här exemplet visar hur du skyddar dina användar inloggningar med hjälp av en reCAPTCHA-utmaning för att förhindra automatiserat missbruk. |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Det här exemplet visar hur du skyddar användar inloggningen med en reCAPTCHA-utmaning för att förhindra automatiserat missbruk. |
 
 
 ### <a name="identity-verification"></a>Identitets verifiering

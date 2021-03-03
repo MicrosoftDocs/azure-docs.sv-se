@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 92658584030fa83da067eceab391d9bba2f034c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392307"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659230"
 ---
 # <a name="create-external-stream-transact-sql"></a>Skapa extern ström (Transact-SQL)
 
@@ -24,7 +24,7 @@ En extern data ström kan också anges och skapas som både utdata och indata f�
 
 Azure SQL Edge stöder för närvarande endast följande data källor som indata och utdata.
 
-| Typ av data Källa | Indata | Resultat | Description |
+| Typ av data Källa | Indata | Resultat | Beskrivning |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hubb | Y | Y | Data källa för att läsa och skriva strömmande data till en Azure IoT Edge hubb. Mer information finns i [IoT Edge Hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Database | N | Y | Anslutning till data källa för att skriva strömmande data till SQL Database. Databasen kan vara en lokal databas i Azure SQL Edge eller en fjärrdatabas i SQL Server eller Azure SQL Database.|
@@ -94,12 +94,12 @@ WITH  ( <with_options> )
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- **Plats** : anger namnet på faktiska data eller plats i data källan. 
+- **Plats**: anger namnet på faktiska data eller plats i data källan. 
    - För Edge Hub-eller Kafka Stream-objekt anger platsen namnet på det Edge Hub-eller Kafka-ämne som ska läsas från eller skrivas till.
    - För SQL Stream-objekt (SQL Server, Azure SQL Database eller Azure SQL Edge) anger du namnet på tabellen. Om data strömmen har skapats i samma databas och schema som mål tabellen, är det bara tabell namnet som är tillräckligt. Annars måste du fullständigt kvalificera (<database_name. schema_name. table_name) tabell namnet.
    - För objekt platsen Azure Blob Storage Stream refererar till det Sök vägs mönster som ska användas i BLOB-behållaren. Mer information om den här funktionen hittar du i (/articles/Stream-Analytics/Stream-Analytics-define-outputs.MD # Blob-Storage-and-Azure-Data-Lake-Gen2)
 
-- **INPUT_OPTIONS** : Ange alternativ som nyckel/värde-par för tjänster som Kafka, IoT Edge hubb som är indata till strömnings frågor
+- **INPUT_OPTIONS**: Ange alternativ som nyckel/värde-par för tjänster som Kafka, IoT Edge hubb som är indata till strömnings frågor
     - PARTITIONER: antalet partitioner som definierats för ett ämne. Det maximala antalet partitioner som kan användas är begränsat till 32.
       - Gäller för Kafka-indataströmmen
     - CONSUMER_GROUP: händelse-och IoT-hubbar begränsar antalet läsare i en konsument grupp (till 5). Om du lämnar det här fältet tomt används konsument gruppen $Default.
@@ -111,7 +111,7 @@ WITH  ( <with_options> )
     - OUT_OF_ORDER_EVENT_TOLERANCE: händelser kan tas ur ordning efter att de har gjort resan från indata till strömnings frågan. Dessa händelser kan godkännas som de är, eller så kan du välja att pausa under en angiven period för att ändra ordning på dem.
       - Reserverad för framtida användning. Gäller inte för Azure SQL Edge.
         
-- **OUTPUT_OPTIONS** : Ange alternativ som nyckel/värde-par för tjänster som stöds och som är utdata till strömmande frågor 
+- **OUTPUT_OPTIONS**: Ange alternativ som nyckel/värde-par för tjänster som stöds och som är utdata till strömmande frågor 
   - REJECT_POLICY: DROP | FÖRSÖK igen med de data fel som hanterar principer när data konverterings fel inträffar. 
     - Gäller alla utdata som stöds 
   - MINIMUM_ROWS:  
@@ -162,7 +162,7 @@ WITH
  
 CREATE EXTERNAL FILE FORMAT myFileFormat  
 WITH (  
-   FORMAT_TYPE = 'JSON', 
+   FORMAT_TYPE = JSON, 
 ); 
  
 CREATE EXTERNAL STREAM Stream_A  

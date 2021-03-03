@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a905dd61bcc267b47dcd075f54a0ed6563a3797
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 507dd224ddeb935cc8b3718bb2e2628be36066f4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879637"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676013"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Felsöka delade avbildnings gallerier i Azure
 
@@ -52,9 +52,13 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: du har försökt att ta bort ett galleri som innehåller minst en befintlig avbildnings definition. Ett galleri måste vara tomt innan det kan tas bort.  
 **Lösning**: ta bort alla bild definitioner i galleriet och fortsätt sedan att ta bort galleriet. Om avbildnings definitionen innehåller bild versioner måste du ta bort avbildnings versionerna innan du tar bort avbildnings definitionerna.
 
+*Galleri namnet <galleryName \> är inte unikt i prenumerationen <subscriptionId> . Välj ett annat namn på galleriet.*  
+**Orsak**: du har ett befintligt galleri med samma namn och har försökt att skapa ett annat galleri med samma namn.  
+**Lösning**: Välj ett annat namn för galleriet.
+
 *Resurs <s galleryName \> finns redan på platsen <region \_ 1 \> i resurs gruppen <resourceGroup \> . Det går inte att skapa en resurs med samma namn på platsen <region \_ 2 \> . Välj ett nytt resurs namn.*  
-**Orsak**: du har ett befintligt galleri i resurs gruppen med samma namn och har försökt att skapa ett annat galleri med samma namn, men i en annan region.  
-**Lösning**: Använd antingen ett annat galleri eller Använd en annan resurs grupp.
+**Orsak**: du har ett befintligt galleri med samma namn och har försökt att skapa ett annat galleri med samma namn.  
+**Lösning**: Välj ett annat namn för galleriet.
 
 ## <a name="creating-or-modifying-image-definitions"></a>Skapa eller ändra bild definitioner ##
 

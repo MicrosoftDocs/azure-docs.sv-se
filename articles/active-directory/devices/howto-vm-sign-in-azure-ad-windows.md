@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66958e275a6dee13244f0f283b1ee1dbb5d40470
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ee392666a6c6807497eeac2a2291dac915c4e136
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093452"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644314"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logga in på den virtuella Windows-datorn i Azure med Azure Active Directory autentisering (för hands version)
 
@@ -62,10 +62,10 @@ Följande Azure-regioner stöds för närvarande i för hands versionen av den h
 
 Om du vill aktivera Azure AD-autentisering för dina virtuella Windows-datorer i Azure måste du se till att nätverks konfigurationen för virtuella datorer tillåter utgående åtkomst till följande slut punkter via TCP-port 443:
 
-- https: \/ /enterpriseregistration.Windows.net
-- https:\//login.microsoftonline.com
-- https: \/ /Device.login.microsoftonline.com
-- https: \/ /Pas.Windows.net
+- `https://enterpriseregistration.windows.net`
+- `https://login.microsoftonline.com`
+- `https://device.login.microsoftonline.com`
+- `https://pas.windows.net`
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aktivera Azure AD-inloggning för virtuell Windows-dator i Azure
 
@@ -98,9 +98,9 @@ Så här skapar du en Windows Server 2019 datacenter-VM i Azure med Azure AD-inl
 
 Azure Cloud Shell är ett kostnadsfritt, interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Vanliga Azure-verktyg förinstalleras och konfigureras i Cloud Shell och kan användas med kontot. Välj knappen Kopiera för att kopiera koden, klistra in den i Cloud Shell och tryck på RETUR för att köra den. Det finns flera olika sätt att öppna Cloud Shell:
 
-Välj Prova i det övre högra hörnet av ett kodblock.
-Öppna Cloud Shell i din webbläsare.
-Välj knappen Cloud Shell på menyn längst upp till höger i [Azure Portal](https://portal.azure.com).
+- Välj **Prova** i det övre högra hörnet av ett kodblock.
+- Öppna Cloud Shell i din webbläsare.
+- Välj knappen Cloud Shell på menyn längst upp till höger i [Azure Portal](https://portal.azure.com).
 
 Om du väljer att installera och använda CLI lokalt kräver den här artikeln att du kör Azure CLI-version 2.0.31 eller senare. Kör az --version för att se versionen. Om du behöver installera eller uppgradera kan du läsa artikeln [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -127,7 +127,7 @@ az vm create \
 
 Det tar några minuter att skapa den virtuella datorn och stödresurser.
 
-Slutligen installerar du tillägget Azure AD login VM för att aktivera Azure AD-inloggning för Windows VM. VM-tillägg är små program som tillhandahåller konfigurations-och automatiserings åtgärder efter distributionen på virtuella Azure-datorer. Använd [AZ VM Extension](/cli/azure/vm/extension#az-vm-extension-set) set för att installera AADLoginForWindows-tillägget på den virtuella datorn med namnet MyVM i myResourceGroup-resurs gruppen:
+Slutligen installerar du tillägget Azure AD login VM för att aktivera Azure AD-inloggning för Windows VM. VM-tillägg är små program som tillhandahåller konfigurations-och automatiserings åtgärder efter distributionen på virtuella Azure-datorer. Använd [AZ VM Extension](/cli/azure/vm/extension#az-vm-extension-set) set för att installera AADLoginForWindows-tillägget på den virtuella datorn med namnet `myVM` i `myResourceGroup` resurs gruppen:
 
 > [!NOTE]
 > Du kan installera AADLoginForWindows-tillägget på en befintlig Windows Server 2019 eller Windows 10 1809 och senare VM för att aktivera det för Azure AD-autentisering. Ett exempel på AZ CLI visas nedan.
@@ -200,7 +200,7 @@ Mer information om hur du använder Azure RBAC för att hantera åtkomst till di
 
 ## <a name="using-conditional-access"></a>Använda villkorlig åtkomst
 
-Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor Authentication eller användar inloggnings risker innan du auktoriserar åtkomsten till virtuella Windows-datorer i Azure som är aktiverade med Azure AD-inloggning. Om du vill tillämpa principen för villkorlig åtkomst måste du välja "Azure Windows VM-inloggning" i appen molnappar eller åtgärder tilldelning och sedan använda inloggnings risker som ett villkor och/eller kräva multifaktorautentisering som en bevilja åtkomst kontroll. 
+Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor Authentication eller användar inloggnings risker innan du auktoriserar åtkomsten till virtuella Windows-datorer i Azure som är aktiverade med Azure AD-inloggning. Om du vill tillämpa en princip för villkorlig åtkomst måste du markera appen "Azure Windows VM-inloggning" från modulen molnappar eller åtgärder tilldelning och sedan använda inloggnings risker som ett villkor och/eller kräva multifaktorautentisering som en bevilja åtkomst kontroll. 
 
 > [!NOTE]
 > Om du använder "Kräv Multi-Factor Authentication" som en beviljande åtkomst kontroll för att begära åtkomst till appen "Azure Windows VM-inloggning" måste du ange Multi-Factor Authentication-anspråk som en del av klienten som initierar RDP-sessionen till den virtuella Windows-datorn i Azure. Det enda sättet att åstadkomma detta på en Windows 10-klient är att använda Windows Hello för företag-PIN-kod eller bio metrisk autentisering med RDP-klienten. Stöd för bio metrisk autentisering har lagts till i RDP-klienten i Windows 10 version 1809. Fjärr skrivbord med Windows Hello för företag-autentisering är bara tillgängligt för distributioner som använder certifikat förtroende modell och som för närvarande inte är tillgängligt för nyckel förtroende modell.
@@ -211,7 +211,7 @@ Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor A
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Logga in med autentiseringsuppgifter för Azure AD till en virtuell Windows-dator
 
 > [!IMPORTANT]
-> Fjärr anslutning till virtuella datorer som är anslutna till Azure AD tillåts endast från Windows 10-datorer som antingen är registrerade i Azure AD (minsta version som krävs är 20H1) eller Azure AD-ansluten eller hybrid Azure AD som är ansluten till **samma** katalog som den virtuella datorn. För RDP med Azure AD-autentiseringsuppgifter måste användaren dessutom tillhöra en av de två Azure-rollerna, logga in för virtuella datorer eller användar inloggning för virtuella datorer. Om du använder en Azure AD-registrerad Windows 10-dator måste du ange autentiseringsuppgifter i AzureAD\UPN-format (t. ex. AzureAD\john@contoso.com ). För närvarande går det inte att använda Azure-skydds för att logga in med hjälp av Azure Active Directory-autentisering med AADLoginForWindows-tillägget. endast direkt RDP stöds.
+> Fjärr anslutning till virtuella datorer som är anslutna till Azure AD tillåts endast från Windows 10-datorer som antingen är registrerade i Azure AD (minsta version som krävs är 20H1) eller Azure AD-ansluten eller hybrid Azure AD som är ansluten till **samma** katalog som den virtuella datorn. För RDP med Azure AD-autentiseringsuppgifter måste användaren dessutom tillhöra en av de två Azure-rollerna, logga in för virtuella datorer eller användar inloggning för virtuella datorer. Om du använder en Azure AD-registrerad Windows 10-dator måste du ange autentiseringsuppgifter i `AzureAD\UPN` formatet (till exempel `AzureAD\john@contoso.com` ). För närvarande går det inte att använda Azure-skydds för att logga in med hjälp av Azure Active Directory-autentisering med AADLoginForWindows-tillägget. endast direkt RDP stöds.
 
 Logga in på din virtuella Windows Server 2019-dator med hjälp av Azure AD: 
 
@@ -233,12 +233,12 @@ Du är nu inloggad på den virtuella Windows Server 2019 Azure-datorn med roll b
 
 AADLoginForWindows-tillägget måste kunna installeras för att den virtuella datorn ska kunna slutföra Azure AD Join-processen. Utför följande steg om det inte går att installera VM-tillägget korrekt.
 
-1. RDP till den virtuella datorn med det lokala administratörs kontot och granska CommandExecuti'n. log under  
+1. RDP till den virtuella datorn med det lokala administratörs kontot och undersök `CommandExecution.log` filen under:
    
-   C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
+   `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0.`
 
    > [!NOTE]
-   > Om tillägget startas om efter det första felet sparas loggen med distributions felet som CommandExecution_YYYYMMDDHHMMSSSSS. log. "
+   > Om tillägget startas om efter det första felet sparas loggen med distributions felet som `CommandExecution_YYYYMMDDHHMMSSSSS.log` . "
 1. Öppna en PowerShell-kommandotolk på den virtuella datorn och kontrol lera att dessa frågor mot den Instance Metadata Service-slutpunkt (IMDS) som körs på Azure-värden returnerar:
 
    | Kommando som ska köras | Förväntad utdata |
@@ -248,61 +248,61 @@ AADLoginForWindows-tillägget måste kunna installeras för att den virtuella da
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Giltig åtkomsttoken utfärdat av Azure Active Directory för den hanterade identitet som har tilldelats den här virtuella datorn |
 
    > [!NOTE]
-   > Åtkomsttoken kan avkodas med hjälp av ett verktyg som [http://calebb.net/](http://calebb.net/) . Verifiera att "AppID" i åtkomsttoken matchar den hanterade identitet som tilldelats den virtuella datorn.
+   > Åtkomsttoken kan avkodas med hjälp av ett verktyg som [calebb.net](http://calebb.net/). Verifiera att `appid` i åtkomsttoken matchar den hanterade identitet som tilldelats den virtuella datorn.
 
 1. Se till att de nödvändiga slut punkterna är tillgängliga från den virtuella datorn med hjälp av kommando raden:
    
-   - spiral-https: \/ /login.microsoftonline.com/-D –
-   - spiral-https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
+   - `curl https://login.microsoftonline.com/ -D -`
+   - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
 
    > [!NOTE]
    > Ersätt `<TenantID>` med det Azure AD-klient-ID som är associerat med Azure-prenumerationen.
 
-   - spiral-https: \/ /enterpriseregistration.Windows.net/-D-
-   - spiral-https: \/ /Device.login.microsoftonline.com/-D-
-   - spiral-https: \/ /Pas.Windows.net/-D-
+   - `curl https://enterpriseregistration.windows.net/ -D -`
+   - `curl https://device.login.microsoftonline.com/ -D -`
+   - `curl https://pas.windows.net/ -D -`
 
 1. Enhetens tillstånd kan visas genom att köra `dsregcmd /status` . Målet är för enhets tillstånd att visa som `AzureAdJoined : YES` .
 
    > [!NOTE]
-   > Azure AD Join-aktivitet samlas in i logg boken under användar enhetens Registration\Admin logg.
+   > Azure AD Join-aktivitet registreras i logg boken under `User Device Registration\Admin` loggen.
 
 Om AADLoginForWindows-tillägget Miss lyckas med en viss felkod kan du utföra följande steg:
 
 #### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>Problem 1: AADLoginForWindows-tillägget kan inte installeras med Terminal-felkoden "1007" och avslutnings kod:-2145648574.
 
-Den här avslutnings koden översätts till DSREG_E_MSI_TENANTID_UNAVAILABLE eftersom tillägget inte kan skicka frågor till information om Azure AD-klienten.
+Den här avslutnings koden översätts till `DSREG_E_MSI_TENANTID_UNAVAILABLE` eftersom tillägget inte kan skicka frågor till Azure AD-klientens information.
 
 1. Kontrol lera att den virtuella Azure-datorn kan hämta TenantID från Instance Metadata Service.
 
    - RDP till den virtuella datorn som lokal administratör och kontrol lera att slut punkten returnerar giltigt klient-ID genom att köra det här kommandot från en upphöjd kommando rad på den virtuella datorn:
       
-      - klammer – H metadata: true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - `curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01`
 
 1. Den virtuella dator administratören försöker installera AADLoginForWindows-tillägget, men en systemtilldelad hanterad identitet har inte aktiverat den virtuella datorn först. Gå till den virtuella datorns identitets blad. Från fliken systemtilldelad kontrollerar du att status är växlad till på.
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problem 2: AADLoginForWindows-tillägget kan inte installeras med avslutnings koden:-2145648607
 
-Den här avslutnings koden översätts till DSREG_AUTOJOIN_DISC_FAILED eftersom tillägget inte kan komma åt `https://enterpriseregistration.windows.net` slut punkten.
+Den här avslutnings koden översätts till `DSREG_AUTOJOIN_DISC_FAILED` eftersom tillägget inte kan komma åt `https://enterpriseregistration.windows.net` slut punkten.
 
 1. Verifiera att de nödvändiga slut punkterna är tillgängliga från den virtuella datorn med hjälp av kommando raden:
 
-   - spiral-https: \/ /login.microsoftonline.com/-D –
-   - spiral-https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
+   - `curl https://login.microsoftonline.com/ -D -`
+   - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
    
    > [!NOTE]
-   > Ersätt `<TenantID>` med det Azure AD-klient-ID som är associerat med Azure-prenumerationen. Om du behöver hitta klient-ID: t kan du hovra över ditt konto namn för att hämta katalog-ID eller välja Azure Active Directory > egenskaper > katalog-ID i Azure Portal.
+   > Ersätt `<TenantID>` med det Azure AD-klient-ID som är associerat med Azure-prenumerationen. Om du behöver hitta klient-ID: t kan du hovra över ditt konto namn för att hämta katalog-ID eller välja **Azure Active Directory > egenskaper > katalog-ID** i Azure Portal.
 
-   - spiral-https: \/ /enterpriseregistration.Windows.net/-D-
-   - spiral-https: \/ /Device.login.microsoftonline.com/-D-
-   - spiral-https: \/ /Pas.Windows.net/-D-
+   - `curl https://enterpriseregistration.windows.net/ -D -`
+   - `curl https://device.login.microsoftonline.com/ -D -`
+   - `curl https://pas.windows.net/ -D -`
 
 1. Om något av kommandona Miss lyckas med "Det gick inte att matcha värden `<URL>` ", kan du prova att köra det här kommandot för att avgöra vilken DNS-server som används av den virtuella datorn.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Ersätt `<URL>` med de fullständigt kvalificerade domän namnen som används av slut punkterna, till exempel "login.microsoftonline.com".
+   > Ersätt `<URL>` med de fullständigt kvalificerade domän namnen som används av slut punkterna, till exempel `login.microsoftonline.com` .
 
 1. Sedan kan du se om du anger en offentlig DNS-server så att kommandot kan utföras:
 
@@ -322,13 +322,13 @@ Några vanliga fel när du försöker använda RDP med Azure AD-autentiseringsup
 
 Du kan visa enhets-och SSO-status genom att köra `dsregcmd /status` . Målet är för enhets tillstånd att visa som `AzureAdJoined : YES` och `SSO State` att visa `AzureAdPrt : YES` .
 
-Dessutom registreras RDP-inloggning med Azure AD-konton i logg boken under händelse loggarna för AAD\Operational.
+Dessutom registreras RDP-inloggning med Azure AD-konton i logg boken under `AAD\Operational` händelse loggarna.
 
 #### <a name="azure-role-not-assigned"></a>Ingen Azure-roll har tilldelats
 
 Om du ser följande fel meddelande när du startar en fjärr skrivbords anslutning till den virtuella datorn: 
 
-- Ditt konto har kon figurer ATS för att förhindra att du använder den här enheten. Kontakta system administratören om du vill ha mer information
+- Ditt konto har kon figurer ATS för att förhindra att du använder den här enheten. Kontakta system administratören om du vill ha mer information.
 
 ![Ditt konto har kon figurer ATS för att förhindra att du använder den här enheten.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
@@ -341,18 +341,18 @@ Kontrol lera att du har [konfigurerat Azure RBAC-principer](../../virtual-machin
 
 Om du ser följande fel meddelande när du startar en fjärr skrivbords anslutning till den virtuella datorn: 
 
-- Autentiseringsuppgifterna fungerade inte
+- Autentiseringsuppgifterna fungerade inte.
 
 ![Autentiseringsuppgifterna fungerade inte](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
 Kontrol lera att den Windows 10-dator som du använder för att initiera fjärr skrivbords anslutningen är antingen en Azure AD-ansluten eller en hybrid Azure AD som är ansluten till samma Azure AD-katalog som den virtuella datorn är ansluten till. Mer information om enhets identitet finns i artikeln [Vad är en enhets identitet](./overview.md).
 
 > [!NOTE]
-> Windows 10 build-20H1 har lagt till stöd för en registrerad Azure AD-dator för att initiera RDP-anslutning till den virtuella datorn. När du använder en Azure AD-registrerad (inte Azure AD-ansluten eller hybrid Azure AD-ansluten) som RDP-klient för att initiera anslutningar till den virtuella datorn, måste du ange autentiseringsuppgifter i formatet AzureAD\UPn (t. ex. AzureAD\john@contoso.com ).
+> Windows 10 build-20H1 har lagt till stöd för en registrerad Azure AD-dator för att initiera RDP-anslutning till den virtuella datorn. När du använder en Azure AD-registrerad (inte Azure AD-ansluten eller hybrid Azure AD-ansluten) som RDP-klient för att initiera anslutningar till den virtuella datorn, måste du ange autentiseringsuppgifter i formatet `AzureAD\UPN` (till exempel `AzureAD\john@contoso.com` ).
 
 Kontrol lera att AADLoginForWindows-tillägget inte avinstallerades efter att Azure AD Join har slutförts.
 
-Kontrol lera också att säkerhets principen "nätverks säkerhet: Tillåt att PKU2U autentiseringsbegäranden till den här datorn använder" online-identiteter "är aktive rad på både servern *och* klienten.
+Kontrol lera också att säkerhets principen "nätverks säkerhet: Tillåt att PKU2U autentiseringsbegäranden till den här datorn använder" online-identiteter "är aktive rad på både servern **och** klienten.
  
 #### <a name="mfa-sign-in-method-required"></a>MFA-inloggnings metod krävs
 
@@ -375,4 +375,4 @@ Dela din feedback om den här för hands versions funktionen eller rapportera pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure Active Directory finns i [Vad är Azure Active Directory](../fundamentals/active-directory-whatis.md)
+Mer information om Azure Active Directory finns i [Vad är Azure Active Directory](../fundamentals/active-directory-whatis.md).

@@ -1,24 +1,24 @@
 ---
 title: Vanliga frågor och svar om distribution av hybrid FIDO2-säkerhets nycklar – Azure Active Directory
-description: Lär dig mer om vanliga frågor och svar om lösen ords skydd med hybrid FIDO2-inloggning med Azure Active Directory (för hands version)
+description: Lär dig mer om vanliga frågor och svar om lösen ords skydd med hybrid FIDO2-inloggning med Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/19/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743538"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646392"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Vanliga frågor och svar om distribution av hybrid FIDO2 säkerhets nycklar i Azure AD (för hands version)
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Vanliga frågor och svar om distribution av hybrid FIDO2 säkerhets nycklar i Azure AD 
 
 Den här artikeln beskriver vanliga frågor och svar om distribution av hybrid Azure AD-anslutna enheter och lösen ords lös inloggning till lokal resurser. Med den här funktionen för lösen ords skydd kan du aktivera Azure AD-autentisering på Windows 10-enheter för Hybrid Azure AD-anslutna enheter med hjälp av FIDO2-säkerhetsnycklar. Användare kan logga in på Windows på sina enheter med moderna autentiseringsuppgifter som FIDO2-nycklar och komma åt traditionella Active Directory Domain Services (AD DS) baserade resurser med en sömlös enkel inloggning (SSO) till sina lokal-resurser.
 
@@ -32,9 +32,6 @@ Information om hur du kommer igång med FIDO2-säkerhetsnycklar och hybrid åtko
 * [Lösenordsfria FIDO2-säkerhetsnycklar](howto-authentication-passwordless-security-key.md)
 * [Lösenordsfritt Windows 10](howto-authentication-passwordless-security-key-windows.md)
 * [Lösenordsfritt lokalt](howto-authentication-passwordless-security-key-on-premises.md)
-
-> [!NOTE]
-> FIDO2 säkerhets nycklar är en offentlig förhands gransknings funktion i Azure Active Directory. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
 ## <a name="security-keys"></a>Säkerhets nycklar
 
@@ -234,7 +231,7 @@ HTTP-begäran är en standard-PRT-begäran (Primary Refresh token). Denna PRT-be
 
 Azure AD kombinerar den krypterade klient nyckeln och meddelande bufferten till PRT-svaret som ytterligare egenskaper. Nytto lasten krypteras med Azure AD-enhetens sessionsnyckel.
 
-| Fält              | Typ   | Description  |
+| Fält              | Typ   | Beskrivning  |
 |--------------------|--------|--------------|
 | tgt_client_key     | sträng | Base64-kodad klient nyckel (hemlighet). Den här nyckeln är den klient hemlighet som används för att skydda TGT. I det här lösen ords scenariot genereras klient hemligheten av servern som en del av varje TGT-begäran och returneras sedan till klienten i svaret. |
 | tgt_key_type       | int    | Den lokala AD DS-nyckel typen som används för både klient nyckeln och Kerberos-sessionsnyckeln som ingår i KERB_MESSAGE_BUFFER. |

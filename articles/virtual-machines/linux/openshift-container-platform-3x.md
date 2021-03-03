@@ -3,18 +3,19 @@ title: Distribuera OpenShift container Platform 3,11 i Azure
 description: Distribuera OpenShift container Platform 3,11 i Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 054fb2ffc65b44d5436282eab5327f0facf39c06
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703746"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671185"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Distribuera OpenShift container Platform 3,11 i Azure
 
@@ -276,7 +277,7 @@ Olika versioner kan ha olika parametrar för att kontrol lera de nödvändiga pa
 | `keyVaultName` | Namnet på Key Vault som du har skapat |  |  |
 | `enableAzure` | Aktivera Azure Cloud Provider | true <br> falskt | true |
 | `aadClientId` | Azure Active Directory klient-ID även känt som program-ID för tjänstens huvud namn |  |  |
-| `domainName` | Namnet på det anpassade domän namn som ska användas (om tillämpligt). Ange till "ingen" om du inte distribuerar fullständigt privat kluster |  | ingen |
+| `domainName` | Namnet på det anpassade domän namn som ska användas (om tillämpligt). Ange till "ingen" om du inte distribuerar fullständigt privat kluster |  | inget |
 | `masterClusterDnsType` | Domän typ för webb konsolen OpenShift. default använder DNS-etiketten för den offentliga IP-adressen. med Custom kan du definiera ett eget namn | standard <br> anpassad | standard |
 | `masterClusterDns` | Det anpassade DNS-namn som ska användas för åtkomst till OpenShift-webbkonsolen om du har valt anpassad för `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | Om värdet är "Nipio" `routingSubDomain` används Nip.io.  Använd Custom om du har en egen domän som du vill använda för routning | nipio <br> anpassad | nipio |
@@ -295,9 +296,9 @@ Olika versioner kan ha olika parametrar för att kontrol lera de nödvändiga pa
 | `existingInfraSubnetReference` | Fullständig referens till befintligt undernät för infraröda noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
 | `existingCnsSubnetReference` | Fullständig referens till befintligt undernät för CNS-noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
 | `existingNodeSubnetReference` | Fullständig referens till befintligt undernät för Compute-noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
-| `masterClusterType` | Ange om klustret ska använda privata eller offentliga huvud noder. Om du väljer privat, kommer huvudnoderna inte att exponeras för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `masterPrivateClusterIp` | public <br> personligt | public |
+| `masterClusterType` | Ange om klustret ska använda privata eller offentliga huvud noder. Om du väljer privat, kommer huvudnoderna inte att exponeras för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `masterPrivateClusterIp` | folkhälsan <br> personligt | folkhälsan |
 | `masterPrivateClusterIp` | Om du väljer privata huvudnoder måste du ange en privat IP-adress som ska användas av den interna belastningsutjämnaren för huvudnoder. Den här statiska IP-adressen måste vara i CIDR-blocket för huvud under nätet och används inte redan. Om de offentliga huvudnoderna väljs, används inte det här värdet, men det måste fortfarande anges |  | 10.1.0.200 |
-| `routerClusterType` | Ange om klustret ska använda privata eller offentliga fjärrnoder. Om du väljer privat är de infraröda noderna inte tillgängliga för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `routerPrivateClusterIp` | public <br> personligt | public |
+| `routerClusterType` | Ange om klustret ska använda privata eller offentliga fjärrnoder. Om du väljer privat är de infraröda noderna inte tillgängliga för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `routerPrivateClusterIp` | folkhälsan <br> personligt | folkhälsan |
 | `routerPrivateClusterIp` | Om du väljer privata fjärrnoder måste du ange en privat IP-adress som ska användas av den interna belastningsutjämnaren för infraröda noder. Den här statiska IP-adressen måste vara i CIDR-blocket för det infraröda under nätet och den används inte redan. Om du väljer offentliga fjärrnoder används inte det här värdet, men det måste fortfarande anges |  | 10.2.0.200 |
 | `routingCertType` | Använd anpassat certifikat för routningsdomänen eller det självsignerade självsignerade certifikatet – Följ instruktionerna i avsnittet **anpassade certifikat** | selfsigned <br> anpassad | selfsigned |
 | `masterCertType` | Använd anpassat certifikat för huvud domän eller standard självsignerade certifikat – Följ instruktionerna i avsnittet **anpassade certifikat** | selfsigned <br> anpassad | selfsigned |

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097547"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656830"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -107,12 +107,9 @@ Om du planerar att lägga till nya avbildningar i data uppsättningen använder 
 
 Om du vill lägga till fler avbildningar i projektet använder [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att ladda upp till lämplig mapp i blob-lagringen. 
 
-Markera kryss rutan om du vill **Aktivera stegvis uppdatering** när du vill att projektet ska övervakas kontinuerligt för nya data i data lagret. Den här informationen kommer att hämtas till projektet en gång om dagen när den är aktive rad.
+Markera kryss rutan om du vill **Aktivera stegvis uppdatering** när du vill att projektet ska övervakas kontinuerligt för nya data i data lagret. Den här informationen kommer att hämtas till projektet en gång om dagen när den är aktive rad, så du måste vänta efter att du har lagt till nya data i data lagret innan det visas i projektet.  Du kan se en tidsstämpel för när data senast uppdaterades i avsnittet **stegvis uppdatering** på fliken **information** för ditt projekt.
 
 Avmarkera den här kryss rutan om du inte vill att nya avbildningar som visas i data lagret ska läggas till i projektet.
-
-Du kan hitta tidsstämpeln för den senaste uppdateringen i avsnittet **stegvis uppdatering** på fliken **information** för ditt projekt.
-
 
 ## <a name="specify-label-classes"></a>Ange etikett klasser
 

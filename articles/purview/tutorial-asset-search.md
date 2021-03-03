@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693346"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677839"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Självstudie: gå till start sidan för Azure-avdelningens kontroll (för hands version) och Sök efter en till gång
 
@@ -45,7 +45,7 @@ Följande steg beskriver hur du går igenom start sidan för Azure-avdelningens 
 
 1. Gå till Azure avdelningens kontroll-resursen i Azure Portal och välj **Öppna avdelningens kontroll Studio**. Du kommer automatiskt till avdelningens kontroll Studios start sida.
 
-   Den övre delen av start sidan visar namnet på din katalog och en uppsättning katalog analyser. Här ingår antalet användare, data till gångar och ord listans villkor. I sammanfattningen kan du se att det finns över 200-tillgångar i total-och 113 ord lista. Den här siffran uppdateras allteftersom organisationen skannar och lägger till fler villkor i Azure avdelningens kontroll.
+   Den övre delen av start sidan visar namnet på din katalog och en uppsättning katalog analyser. Här ingår antalet källor, data till gångar och ord listans villkor. I sammanfattningen kan du se att det finns över 200-tillgångar i total-och 113 ord lista. Den här siffran uppdateras allteftersom organisationen skannar och lägger till fler villkor i Azure avdelningens kontroll.
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Skärm bild som visar start sidan för Azure-avdelningens kontroll.":::
 

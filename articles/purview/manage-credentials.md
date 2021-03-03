@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526705"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673519"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll
 
@@ -85,8 +85,9 @@ Dessa autentiseringstyper stöds i avdelningens kontroll:
 - Tjänstens huvud namn: du lägger till **tjänstens huvud namn** som en hemlighet i Key Vault.
 - SQL-autentisering: du lägger till **lösen ordet** som en hemlighet i Key Vault.
 - Konto nyckel: du lägger till **konto nyckeln** som en hemlighet i Key Vault.
+- Roll ARN: för en Amazon S3-data Källa lägger du till din **roll ARN** i AWS. 
 
-Mer information finns i [lägga till en hemlighet till Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
+Mer information finns i [lägga till en hemlighet till Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) och [skapa en ny AWS-roll för avdelningens kontroll](register-scan-amazon-s3.md#create-a-new-aws-role-for-purview).
 
 När du har lagrat dina hemligheter i nyckel valvet:
 

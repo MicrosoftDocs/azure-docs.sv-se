@@ -6,12 +6,12 @@ author: curib
 ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 615f3b023ded6583dfedca99f561d09689b86b51
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0ab959d531ff1080e5e6a640410b4955e4cfeff7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055565"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652206"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Snabb start: dirigera Azure cache efter Redis-händelser till webb slut punkt med PowerShell
 
@@ -73,7 +73,7 @@ New-AzRedisCache
    [-Confirm]
    [<CommonParameters>]
 ```
-Mer information om hur du skapar en cache-instans i PowerShell finns i [referensen Azure PowerShell](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0). 
+Mer information om hur du skapar en cache-instans i PowerShell finns i [referensen Azure PowerShell](/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0). 
 
 ## <a name="create-a-message-endpoint"></a>Skapa en slutpunkt för meddelanden
 
@@ -132,7 +132,7 @@ Import-AzRedisCache
       [-Confirm]
       [<CommonParameters>]
 ```
-Mer information om hur du importerar i PowerShell finns [Azure PowerShell referens](https://docs.microsoft.com/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0). 
+Mer information om hur du importerar i PowerShell finns [Azure PowerShell referens](/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0). 
 
 Du har utlöst händelsen och Event Grid skickade meddelandet till den slutpunkt som du konfigurerade när du prenumererade. Visa din webbapp om du vill se händelsen som du har skickat.
 

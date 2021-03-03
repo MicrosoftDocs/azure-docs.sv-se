@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43f07bc26e75b440cde6d26db8ac8fb80aa3e39c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796917"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675767"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Snabb start: skapa en Azure datasynapses-arbetsyta med Azure PowerShell
 
@@ -27,7 +27,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Azure Data Lake Storage Gen2 lagrings konto](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 lagrings konto](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Azure Synapse-arbetsytan måste kunna läsa och skriva till det valda ADLS Gen2 kontot. För alla lagrings konton som du länkar som primärt lagrings konto måste du aktivera **hierarkiskt namn område** när lagrings kontot skapas enligt beskrivningen i [skapa ett lagrings konto](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account).
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Definiera nödvändiga miljövariabler för att skapa resurser för Azure dataSynapses-arbetsytan.
 
-   |        Variabelnamn        |                                                 Description                                                 |
+   |        Variabelnamn        |                                                 Beskrivning                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | StorageAccountName          | Namn på ditt befintliga ADLS Gen2 lagrings konto.                                                           |
    | StorageAccountResourceGroup | Namnet på din befintliga ADLS Gen2 lagrings konto resurs grupp.                                             |

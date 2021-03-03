@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258582"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647280"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
@@ -34,7 +34,7 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 - [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.md)
 - [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md)
-- [Utveckla branschspecifika appar för Azure Active Directory](developer-guidance-for-integrating-applications.md)
+- [Utveckla branschspecifika appar för Azure Active Directory](../develop/v2-overview.md)
 - [Förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md)
 - [Förstå länkad inloggning](configure-linked-sign-on.md)
 - [Förstå lösenordsbaserad enkel inloggning](configure-password-single-sign-on-non-gallery-applications.md)

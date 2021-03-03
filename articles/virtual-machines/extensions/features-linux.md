@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966079"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672612"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Tillägg och funktioner för virtuella datorer för Linux
 
@@ -33,12 +33,12 @@ Den här artikeln innehåller en översikt över VM-tillägg, krav för att anv�
 Flera olika Azure VM-tillägg är tillgängliga, var och en med ett särskilt användnings fall. Några exempel är:
 
 - Använd PowerShell Desired State Configurations på en virtuell dator med DSC-tillägget för Linux. Mer information finns i [tillägget Azure Desired State Configuration](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Konfigurera övervakning av en virtuell dator med det virtuella dator tillägget för Microsoft Monitoring Agent. Mer information finns i [så här övervakar du en virtuell Linux-dator](../linux/tutorial-monitor.md).
+- Konfigurera övervakning av en virtuell dator med det virtuella dator tillägget för Microsoft Monitoring Agent. Mer information finns i [så här övervakar du en virtuell Linux-dator](/previous-versions/azure/virtual-machines/linux/tutorial-monitor).
 - Konfigurera övervakning av din Azure-infrastruktur med chefs-eller Datadog-tillägget. Mer information finns i [chefs dokumenten](https://docs.chef.io/azure_portal.html) eller [Datadog-bloggen](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 Förutom process-/regionsspecifika tillägg är ett anpassat skript tillägg tillgängligt för virtuella Windows-och Linux-datorer. Med tillägget för anpassat skript för Linux kan alla bash-skript köras på en virtuell dator. Anpassade skript är användbara för att utforma Azure-distributioner som kräver konfiguration utöver vad interna Azure-verktyg kan tillhandahålla. Mer information finns i avsnittet om [anpassat skript tillägg för Linux-datorer](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill hantera tillägget på den virtuella datorn behöver du Azure Linux-agenten installerad. Vissa enskilda tillägg har krav, till exempel åtkomst till resurser eller beroenden.
 

@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Arc-aktiverade Kubernetes (förhandsversion)
+title: Azure Arc-aktiverade Kubernetes
 summary: Läs mer om hur du hanterar Kubernetes-kluster med Azure Arc
 metadata:
   title: Azure Arc-aktiverade Kubernetes
@@ -7,14 +7,14 @@ metadata:
   author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 02/15/2021
+  ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: 97343e8c23e202e70ec30bb0a522105889ea08b3
-  ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+  ms.openlocfilehash: f97b1560e062d1849f726baff8cd66d8e75f8b7f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100560233"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101647854"
 landingContent:
 - title: Anslut Kubernetes-kluster till Azure med Azure Arc
   linkLists:
@@ -22,6 +22,8 @@ landingContent:
     links:
     - text: Vad är Azure Arc-aktiverade Kubernetes?
       url: overview.md
+    - text: Azure Arc-validerings program
+      url: validation-program.md
   - linkListType: concept
     links:
     - text: Agent arkitektur
@@ -34,14 +36,18 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Anslut kluster
-      url: connect-cluster.md
+    - text: Ansluta ett kluster till Azure-bågen
+      url: quickstart-connect-cluster.md
+- title: Distribuera konfigurationer med GitOps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Distribuera konfigurationer med GitOps
+      url: tutorial-use-gitops-connected-cluster.md
 - title: Konfigurera, styra och övervaka kluster
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Distribuera konfigurationer med GitOps
-      url: use-gitops-connected-cluster.md
     - text: Distribuera Helm-diagram med GitOps
       url: use-gitops-with-helm.md
     - text: Framtvinga GitOps med hjälp av Azure Policy

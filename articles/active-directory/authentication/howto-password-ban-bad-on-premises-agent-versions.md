@@ -11,18 +11,37 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd9b07f1f7aed479e94e77a5641130cb784dd69e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648777"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versions historik för Azure AD Password Protection-Agent
 
+## <a name="121720"></a>1.2.172.0
+
+Utgivnings datum: februari 22 2021
+
+Det har varit nästan två år sedan GA-versionerna av de lokala Azure AD-lösen ords skydds agenterna släpptes ut. En ny uppdatering är nu tillgänglig – se ändrings beskrivningar nedan. Tack för alla som har gett oss feedback på produkten. 
+
+* DC-agenten och proxy agent-programvaran kräver nu att .NET-4.7.2 är installerat.
+  * Om .NET-4.7.2 inte redan har installerats kan du hämta och köra installations programmet som finns på [.NET Framework 4.7.2 Offline Installer för Windows](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
+* AzureADPasswordProtection PowerShell-modulen installeras nu också av DC-agentprogram varan.
+* Två nya hälso-relaterade PowerShell-cmdletar har lagts till: Test-AzureADPasswordProtectionDCAgent och test-AzureADPasswordProtectionProxy.
+* DLL-filen för AzureADPasswordProtection för DC-agent kommer nu att läsas in och köras på datorer där lsass.exe har kon figurer ATS för att köras i PPL-läge.
+* Fel korrigering av Lösenordssynkronisering som tillåter att förbjudna lösen ord är kortare än fem tecken och som är felaktigt godkända.
+  * Den här buggen kan bara användas om principen för minsta lösen ords längd för din lokala AD har kon figurer ATS för att tillåta färre än fem tecken lösen ord på den första platsen.
+* Andra mindre fel korrigeringar.
+
+De nya installations programmen kommer automatiskt att uppgradera äldre versioner av program varan. Om du har installerat både DC-agenten och proxy-programvaran på en enskild dator (rekommenderas endast för test miljöer) måste du uppgradera båda samtidigt.
+
+Det finns stöd för att köra äldre och nyare versioner av DC-agenten och proxy-programvaran i en domän eller skog, men vi rekommenderar att du uppgraderar alla agenter till den senaste versionen som bästa praxis. Varje beställning av agent uppgraderingar stöds – nya DC-agenter kan kommunicera via äldre proxyservrar, och äldre DC-agenter kan kommunicera via nyare proxy agenter.
+
 ## <a name="121250"></a>1.2.125.0
 
-Utgivnings datum: 3/22/2019
+Utgivnings datum: mars 22 2019
 
 * Åtgärda mindre skrivfel i händelse logg meddelanden
 * Uppdatera EULA-avtalet till slutlig allmän tillgänglighets version
@@ -38,9 +57,9 @@ Utgivnings datum: 3/13/2019
   * Program varu versionen och Azures klient data är bara tillgängliga för DC-agenter och proxyservrar som kör version 1.2.116.0 eller senare.
   * Azure-klientens data kan inte rapporteras förrän en omregistrering (eller förnyad) av proxyn eller skogen har inträffat.
 * Proxy-tjänsten kräver nu att .NET 4,7 har installerats.
-  * .NET 4,7 bör redan vara installerat på en helt uppdaterad Windows Server. Om detta inte är fallet kan du hämta och köra installations programmet som finns i [.NET Framework 4,7 Offline Installer för Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+  * Om .NET 4,7 inte redan är installerat laddar du ned och kör installations programmet som finns på [.NET Framework 4,7 Offline Installer för Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
   * På Server Core-system kan det vara nödvändigt att skicka flaggan/q till .NET 4,7-installations programmet för att det ska gå att slutföra.
-* Proxy-tjänsten stöder nu automatisk uppgradering. Vid automatisk uppgradering används tjänsten Microsoft Azure AD Connect agent Updateer som installeras sida vid sida med proxy-tjänsten. Automatisk uppgradering är aktiverat som standard.
+* Proxy-tjänsten stöder nu automatisk uppgradering. Vid automatisk uppgradering används tjänsten Microsoft Azure AD Connect agent Updateer, som installeras sida vid sida med proxy-tjänsten. Automatisk uppgradering är aktiverat som standard.
 * Automatisk uppgradering kan aktive ras eller inaktive ras med hjälp av Set-AzureADPasswordProtectionProxyConfiguration cmdlet. Den aktuella inställningen kan frågas med hjälp av Get-AzureADPasswordProtectionProxyConfiguration cmdlet.
 * Tjänstens binärfil för DC-agenttjänsten har döpts om till AzureADPasswordProtectionDCAgent.exe.
 * Tjänstens binärfil för proxy-tjänsten har döpts om till AzureADPasswordProtectionProxy.exe. Brand Väggs regler kan behöva ändras i enlighet med detta om en brand vägg från tredje part används.
@@ -50,14 +69,14 @@ Utgivnings datum: 3/13/2019
 
 ## <a name="12650"></a>1.2.65.0
 
-Utgivnings datum: 2/1/2019
+Utgivnings datum: 1 februari 2019
 
 Något
 
 * DC-agenten och proxy service stöds nu på Server Core. Mininimum OS-krav är oförändrade från före: Windows Server 2012 för DC-agenter och Windows Server 2012 R2 för proxyservrar.
 * Cmdletarna Register-AzureADPasswordProtectionProxy och Register-AzureADPasswordProtectionForest har nu stöd för enhets kodsbaserade Azure-autentiseringsläge.
-* Get-AzureADPasswordProtectionDCAgent cmdlet ignorerar Mangled och/eller ogiltiga tjänst anslutnings punkter. Detta åtgärdar felet där domänkontrollanter ibland skulle visas flera gånger i utdata.
-* Get-AzureADPasswordProtectionSummaryReport cmdlet ignorerar Mangled och/eller ogiltiga tjänst anslutnings punkter. Detta åtgärdar felet där domänkontrollanter ibland skulle visas flera gånger i utdata.
+* Get-AzureADPasswordProtectionDCAgent cmdlet ignorerar Mangled och/eller ogiltiga tjänst anslutnings punkter. Den här ändringen korrigerar felet där domänkontrollanter ibland skulle visas flera gånger i utdata.
+* Get-AzureADPasswordProtectionSummaryReport cmdlet ignorerar Mangled och/eller ogiltiga tjänst anslutnings punkter. Den här ändringen korrigerar felet där domänkontrollanter ibland skulle visas flera gånger i utdata.
 * Proxy PowerShell-modulen är nu registrerad från%ProgramFiles%\WindowsPowerShell\Modules. Datorns miljö variabel för PSModulePath ändras inte längre.
 * En ny Get-AzureADPasswordProtectionProxy-cmdlet har lagts till för att hjälpa till att identifiera registrerade proxyservrar i en skog eller domän.
 * DC-agenten använder en ny mapp i Sysvol-resursen för replikering av lösen ords principer och andra filer.
@@ -88,12 +107,12 @@ Något
 
 ## <a name="12250"></a>1.2.25.0
 
-Utgivnings datum: 11/01/2018
+Utgivnings datum: 1 november 2018
 
 Fixe
 
 * DC-agenten och proxy-tjänsten bör inte längre fungera på grund av misslyckade certifikat förtroenden.
-* DC-agenten och proxy-tjänsten har ytterligare korrigeringar för FIPS-kompatibla datorer.
+* DC-agenten och proxy-tjänsten har korrigeringar för FIPS-kompatibla datorer.
 * Proxy service fungerar nu som den ska i en nätverks miljö med endast TLS 1,2.
 * Mindre prestanda och robusta korrigeringar
 * Förbättrad loggning
@@ -102,11 +121,11 @@ Något
 
 * Minimi kraven på operativ system nivå för proxy-tjänsten är nu Windows Server 2012 R2. Minimi kraven på operativ system nivå för DC-agenttjänsten finns kvar på Windows Server 2012.
 * Proxy-tjänsten kräver nu .NET version 4.6.2.
-* Algoritmen för lösen ords verifiering använder en utökad Character normaliserings-tabell. Detta kan resultera i att lösen ord nekas som har godkänts i tidigare versioner.
+* Algoritmen för lösen ords verifiering använder en utökad Character normaliserings-tabell. Den här ändringen kan resultera i att lösen ord nekas som har godkänts i tidigare versioner.
 
 ## <a name="12100"></a>1.2.10.0
 
-Utgivnings datum: 8/17/2018
+Utgivnings datum: augusti 17 2018
 
 Fixe
 
@@ -130,7 +149,7 @@ Fixe
 
 ## <a name="11103"></a>1.1.10.3
 
-Utgivnings datum: 6/15/2018
+Utgivnings datum: 15 juni 2018
 
 Första offentliga för hands version
 

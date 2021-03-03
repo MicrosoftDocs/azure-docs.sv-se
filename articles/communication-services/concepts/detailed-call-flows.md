@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1333bd08f8a79969817bcb21aa4580d1994d09ce
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594778"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659315"
 ---
 # <a name="call-flow-topologies"></a>Topologier för anrops flöden
 Den här artikeln beskriver topologier för Azure Communication Services-anrops flöden. Det här är en bra artikel för att se om du är företags kund som integrerar kommunikations tjänster i ett nätverk som du hanterar. En introduktion till kommunikations tjänstens samtals flöden finns i [konceptuell dokumentation om samtals flöden](./call-flows.md).
@@ -26,7 +26,7 @@ Innan du granskar topologier för anrops flöden definierar vi några termer som
 
 Ett **kund nätverk** innehåller alla nätverks segment som du hanterar. Detta kan omfatta kabelanslutna och trådlösa nätverk på kontoret eller mellan kontor, data Center och Internet leverantörer.
 
-Ett kund nätverk har vanligt vis flera nätverks-perimeter med brand väggar och/eller proxyservrar som upprätthåller din organisations säkerhets principer. Vi rekommenderar att du utför en [omfattande nätverks utvärdering](https://docs.microsoft.com/microsoftteams/3-envision-evaluate-my-environment) för att säkerställa optimala prestanda och kvalitet på kommunikations lösningen.
+Ett kund nätverk har vanligt vis flera nätverks-perimeter med brand väggar och/eller proxyservrar som upprätthåller din organisations säkerhets principer. Vi rekommenderar att du utför en [omfattande nätverks utvärdering](/microsoftteams/3-envision-evaluate-my-environment) för att säkerställa optimala prestanda och kvalitet på kommunikations lösningen.
 
 **Kommunikations tjänst nätverket** är det nätverks segment som stöder Azure Communication Services. Det här nätverket hanteras av Microsoft och distribueras över hela världen med kanter nära de flesta kund nätverk. Det här nätverket ansvarar för transport relä, medie bearbetning för grupp anrop och andra komponenter som stöder omfattande real tids medie kommunikation.
 
@@ -199,4 +199,3 @@ Följande dokument kan vara intressanta för dig:
 
 - Läs mer om [samtals typer](../concepts/voice-video-calling/about-call-types.md)
 - Lär dig mer om [klient-server arkitektur](./client-and-server-architecture.md)
-

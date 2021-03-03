@@ -8,20 +8,19 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e15b592aaa780ea80b6931c6d44fbf99e2f3a730
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958973"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673057"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache och Content Server-distribution på virtuella Azure-datorer
 
@@ -349,7 +348,7 @@ I korthet måste du:
 ![Referens konfiguration för Azure IaaS VM för SAP MaxDB-DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Säkerhets kopiering och återställning
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Säkerhetskopiering och återställning
 När du distribuerar SAP MaxDB till Azure måste du granska din säkerhets kopierings metod. Även om systemet inte är ett produktivt system måste SAP-databasen som hanteras av SAP MaxDB säkerhets kopie ras regelbundet. Eftersom Azure Storage behåller tre avbildningar är en säkerhets kopia nu mindre viktig när det gäller att skydda systemet mot lagrings problem och viktigare drift-eller administrativa problem. Det främsta skälet till att underhålla en lämplig säkerhets kopierings-och återställnings plan är att du kan kompensera för logiska eller manuella fel genom att tillhandahålla funktioner för återställning av tidpunkter. Målet är att antingen använda säkerhets kopieringar för att återställa databasen till en viss tidpunkt eller för att använda säkerhets kopieringarna i Azure för att dirigera ett annat system genom att kopiera den befintliga databasen. 
 
 Att säkerhetskopiera och återställa en databas i Azure fungerar på samma sätt som för lokala system, så du kan använda standard verktyg för SAP MaxDB Backup/Restore, som beskrivs i något av SAP-MaxDB dokumentations dokument som anges i SAP anmärkning [767598]. 
@@ -468,7 +467,7 @@ Om du konfigurerar SAP Content Server för att lagra filer i SAP MaxDB-databasen
 
 Om du konfigurerar SAP Content Server för att lagra filer i fil systemet, är ett alternativ att köra manuell säkerhets kopiering/återställning av hela fil strukturen där dokumenten finns. Precis som med SAP MaxDB Backup/Restore, rekommenderar vi att du har en dedikerad disk volym för säkerhets kopiering. 
 
-#### <a name="other"></a>Annat
+#### <a name="other"></a>Övrigt
 Andra SAP Content Server-/regionsspecifika inställningar är transparenta för virtuella Azure-datorer och beskrivs i olika dokument och SAP-anteckningar:
 
 * <https://service.sap.com/contentserver> 

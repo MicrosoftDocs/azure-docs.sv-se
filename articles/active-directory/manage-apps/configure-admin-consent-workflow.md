@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38b8cf38d2d75493ef50c4f206758c6289be079
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259595"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643770"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurera arbets flödet för administratörs medgivande (för hands version)
 
@@ -127,7 +127,7 @@ I tabellen nedan beskrivs de scenarier och gransknings värden som är tillgäng
 |Granskare som godkänner en begäran om administrativt medgivande       |Åtkomstgranskningar           |UserManagement           |Godkänn alla förfrågningar i affärs flödet          |App-kontext            |För närvarande går det inte att hitta användar kontexten eller app-ID: t som har beviljats administrativt medgivande.           |
 |Granskare som nekar en begäran om administrativt medgivande       |Åtkomstgranskningar           |UserManagement           |Godkänn alla förfrågningar i affärs flödet          |App-kontext            | För närvarande går det inte att hitta användar kontexten för den aktör som nekade en administrativ begäran om godkännande          |
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR 
+## <a name="faq"></a>Vanliga frågor 
 
 **Jag aktiverade det här arbets flödet, men när du testar funktionen kan du inte se meddelandet "godkännande krävs", så att jag kan begära åtkomst?**
 
@@ -159,4 +159,4 @@ Mer information om samtycker till program finns i [Azure Active Directory medgiv
 
 [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
 
-[Azure AD på Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure AD på Microsoft Q&A](/answers/topics/azure-active-directory.html)

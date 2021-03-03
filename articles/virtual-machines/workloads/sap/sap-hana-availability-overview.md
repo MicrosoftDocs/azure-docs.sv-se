@@ -8,26 +8,25 @@ manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac74bb4b37535d0c0b095ea300afc15aa0978ed8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a440344a93f9dd610774a33b3960ab1a71f57c65
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950133"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671576"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hög tillgänglighet för virtuella Azure-datorer
 
 Du kan använda flera Azure-funktioner för att distribuera verksamhets kritiska databaser, t. ex. SAP HANA på virtuella Azure-datorer. Den här artikeln innehåller vägledning om hur du uppnår tillgänglighet för SAP HANA instanser som finns i virtuella Azure-datorer. I artikeln beskrivs flera scenarier som du kan implementera med hjälp av Azure-infrastrukturen för att öka tillgängligheten för SAP HANA i Azure. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du är bekant med IaaS-grunderna (Infrastructure as a Service) i Azure, inklusive: 
 

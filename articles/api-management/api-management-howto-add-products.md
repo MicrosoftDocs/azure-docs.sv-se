@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/02/2021
 ms.locfileid: "100545164"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Självstudie: skapa och publicera en produkt  
@@ -42,10 +42,10 @@ I den här guiden får du lära dig att:
 
     :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Lägg till produkt i portalen":::
 
-    | Name                     | Beskrivning                                                                                                                                                                                                                                                                                                             |
+    | Namn                     | Beskrivning                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Visningsnamn             | Namnet som du vill att det ska visas i [Developer-portalen](api-management-howto-developer-portal.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Description              | Ange information om produkten, till exempel dess syfte, de API: er som ger åtkomst till och annan information.                                                                                                                                               |
+    | Beskrivning              | Ange information om produkten, till exempel dess syfte, de API: er som ger åtkomst till och annan information.                                                                                                                                               |
     | Stat                    | Välj **publicerad** om du vill publicera produkten. Produkten måste vara publicerad innan API:er i en produkt kan anropa den. Som standard är nya produkter opublicerade och visas endast i gruppen  **Administratörer** .                                                                                      |
     | Prenumeration krävs    | Välj om en användare måste prenumerera för att använda produkten.                                                                                                                                                                                                                                   |
     | Godkännande krävs        | Välj om du vill att en administratör ska granska och godkänna eller avvisa prenumerations försök till den här produkten. Om du inte väljer det här godkänns prenumerations försök automatiskt.                                                                                                                         |

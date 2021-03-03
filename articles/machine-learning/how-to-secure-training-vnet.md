@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 6a89d225b747f116ed75bbe2e6928ec2a74f9c5e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515996"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655963"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -74,7 +74,7 @@ Om du vill använda en [hanterad Azure Machine Learning __beräknings mål__](co
 > * En belastningsutjämnare
 > 
 > I kluster är de här resurserna borttagna (och återskapas) varje gång klustret skalar ned till 0 noder, men för en instans är resurserna kvar på till instansen helt borttagna (stoppa tar inte bort resurserna). 
-> Dessa resurser begränsas av prenumerationens [resurskvoter](../azure-resource-manager/management/azure-subscription-service-limits.md). Om den virtuella nätverks resurs gruppen är låst går det inte att ta bort beräknings kluster/instanser. Det går inte att ta bort belastningsutjämnaren förrän beräknings klustret/instansen har tagits bort.
+> Dessa resurser begränsas av prenumerationens [resurskvoter](../azure-resource-manager/management/azure-subscription-service-limits.md). Om den virtuella nätverks resurs gruppen är låst går det inte att ta bort beräknings kluster/instanser. Det går inte att ta bort belastningsutjämnaren förrän beräknings klustret/instansen har tagits bort. Kontrol lera också att det inte finns någon Azure-princip som förhindrar skapande av nätverks säkerhets grupper.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Portar som krävs
@@ -83,7 +83,7 @@ Om du planerar att skydda det virtuella nätverket genom att begränsa nätverks
 
 Batch-tjänsten lägger till nätverks säkerhets grupper (NSG: er) på nivån nätverks gränssnitt (NIC) som är anslutna till virtuella datorer. De här NSG:erna konfigurerar automatiskt regler för inkommande och utgående trafik för att tillåta följande trafik:
 
-- Inkommande TCP-trafik på portarna 29876 och 29877 från en __service tag__ i __BatchNodeManagement__.
+- Inkommande TCP-trafik på portarna 29876 och 29877 från en __service tag__ i __BatchNodeManagement__. Trafik över dessa portar är krypterad och används av Azure Batch för kommunikation i Scheduler/Node.
 
     ![En regel för inkommande trafik som använder BatchNodeManagement-tjänst tag gen](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ Batch-tjänsten lägger till nätverks säkerhets grupper (NSG: er) på nivån n
 
 - Utgående trafik på vilken port som helst till Internet.
 
-- För Compute instance inkommande TCP-trafik på port 44224 från en __service tag__ i __AzureMachineLearning__.
+- För Compute instance inkommande TCP-trafik på port 44224 från en __service tag__ i __AzureMachineLearning__. Trafik över den här porten krypteras och används av Azure Machine Learning för kommunikation med program som körs på beräknings instanser.
 
 > [!IMPORTANT]
 > Var försiktig om du ändrar eller lägger till regler för inkommande eller utgående trafik i Batch-konfigurerade NSG:er. Om en NSG blockerar kommunikation till datornoderna, anger beräknings tjänsten status för datornoderna till oanvändbar.

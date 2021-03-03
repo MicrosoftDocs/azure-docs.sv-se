@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b258f2ef82e74073e3e4f1aa61b036d423c30300
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100422487"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659264"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Infrastruktur krav för SIP-gränssnitt 
 
@@ -31,7 +31,7 @@ Infrastruktur kraven för de SBCs-, domän-och nätverks anslutnings krav som st
 |Sessionens kant linje styrenhet (SBC)|En SBC som stöds. Mer information finns i [SBCs som stöds](#supported-session-border-controllers-sbcs).|
 |Telefoni trunkar anslutna till SBC|En eller flera telefoni trunkar anslutna till SBC. På ena sidan ansluter SBC till Azure Communication Service via SIP-gränssnittet. SBC kan också ansluta till en tredjeparts telefoni entitet, till exempel PBXs, analoga telefoni kort och så vidare. Alla alternativ för PSTN-anslutning som är anslutna till SBC fungerar. (För konfigurering av PSTN-trunkar till SBC, se SBC-leverantörer eller trunk-leverantörer.)|
 |Azure-prenumeration|En Azure-prenumeration som du använder för att skapa ACS-resurs och konfigurationen och anslutningen till SBC.|
-|Åtkomsttoken för kommunikations tjänster|För att ringa samtal behöver du en giltig åtkomsttoken med `voip` scope. Se [åtkomsttoken](https://docs.microsoft.com/azure/communication-services/concepts/identity-model#access-tokens)|
+|Åtkomsttoken för kommunikations tjänster|För att ringa samtal behöver du en giltig åtkomsttoken med `voip` scope. Se [åtkomsttoken](../identity-model.md#access-tokens)|
 |Offentlig IP-adress för SBC|En offentlig IP-adress som kan användas för att ansluta till SBC. Beroende på typen av SBC kan SBC använda NAT.|
 |Fullständigt kvalificerat domän namn (FQDN) för SBC|Ett fullständigt domän namn för SBC, där domän delen i FQDN inte matchar registrerade domäner i din Microsoft 365-eller Office 365-organisation. Mer information finns i [SBC domän namn](#sbc-domain-names).|
 |Offentlig DNS-post för SBC |En offentlig DNS-post som mappar SBC FQDN till den offentliga IP-adressen. |
@@ -187,7 +187,7 @@ I benet mellan moln medie processorn och ACS SDK-appen är SILKe eller G. 722 an
 
 ## <a name="supported-session-border-controllers-sbcs"></a>Gräns styrenheter för sessioner som stöds (SBCs)
 
-Certifiering pågår. Kunder kan använda [Teams kant linjer för certifierade sessioner](https://docs.microsoft.com/MicrosoftTeams/direct-routing-border-controllers). 
+Certifiering pågår. Kunder kan använda [Teams kant linjer för certifierade sessioner](/MicrosoftTeams/direct-routing-border-controllers). 
 
 ## <a name="next-steps"></a>Nästa steg
 

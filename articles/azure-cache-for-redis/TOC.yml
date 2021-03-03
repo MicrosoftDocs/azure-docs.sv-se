@@ -100,8 +100,10 @@
           href: cache-private-link.md
         - name: Aktivera zonredundans
           href: cache-how-to-zone-redundancy.md
-        - name: Konfigurera geo-replikering
+        - name: Konfigurera OSS geo-replikering
           href: cache-how-to-geo-replication.md
+        - name: Konfigurera aktiv geo-replikering för företag
+          href: cache-how-to-active-geo-replication.md
         - name: Spara pengar med reserverad kapacitet
           href: cache-reserved-pricing.md
         - name: Migrera till Azure Cache for Redis

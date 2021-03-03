@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741753"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648733"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Felsöka: lokalt Azure AD-lösenord
 
@@ -259,6 +259,146 @@ Om du bestämmer dig för att avinstallera Azure AD Password Protection-programv
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
    Den här sökvägen skiljer sig om Sysvol-resursen har kon figurer ATS på en annan plats än standard platsen.
+
+## <a name="health-testing-with-powershell-cmdlets"></a>Hälso testning med PowerShell-cmdletar
+
+AzureADPasswordProtection PowerShell-modulen innehåller två hälso-relaterade cmdlets som utför grundläggande verifiering av att program varan är installerad och fungerar. Det är en bra idé att köra dessa cmdlets när du har konfigurerat en ny distribution, regelbundet och när ett problem har undersökts.
+
+Varje enskilt hälso test returnerar ett Basic-resultat som skickats eller misslyckats, plus ett valfritt meddelande vid fel. I de fall då orsaken till ett fel inte är klar söker du efter fel händelse logg meddelanden som kan förklara felet. Det kan också vara användbart att aktivera text logg meddelanden. Mer information finns i [övervaka lösen ords skydd i Azure AD](howto-password-ban-bad-on-premises-monitor.md).
+
+## <a name="proxy-health-testing"></a>Hälso testning av proxy
+
+Test-AzureADPasswordProtectionProxyHealth-cmdleten stöder två hälsotester som kan köras individuellt. Ett tredje läge gör det möjligt att köra alla tester som inte kräver några parametrar.
+
+### <a name="proxy-registration-verification"></a>Verifiering av proxyserver registrering
+
+Det här testet kontrollerar att proxyagenten är korrekt registrerad i Azure och kan autentisera till Azure. En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+Om ett fel upptäcks returnerar testet ett misslyckat resultat och ett valfritt fel meddelande visas. Här är ett exempel på ett möjligt problem:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>Proxyautentisering för Azure-anslutning från slut punkt till slut punkt
+
+Det här testet är en supermängd av testet-VerifyProxyRegistration. Det kräver att proxyagenten har registrerats korrekt med Azure, kan autentiseras till Azure och slutligen lägga till en kontroll som innebär att ett meddelande kan skickas till Azure så att fullständig kommunikation från slut punkt till slut punkt fungerar.
+
+En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>Proxyautentisering för alla tester
+
+Det här läget tillåter Mass körning av alla tester som stöds av cmdleten och som inte kräver parameter ingångar. En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>Hälso test för DC-agent
+
+Test-AzureADPasswordProtectionDCAgentHealth cmdlet stöder flera hälso test som kan köras individuellt. Ett tredje läge gör det möjligt att köra alla tester som inte kräver några parametrar.
+
+### <a name="basic-dc-agent-health-tests"></a>Grundläggande hälso test för DC-agent
+
+Följande tester kan köras individuellt och accepteras inte. En kort beskrivning
+
+|Hälso test för DC-agent|Beskrivning|
+| --- | :---: |
+|-VerifyPasswordFilterDll|Verifierar att DLL-filen för lösen ords filter har lästs in och kan anropa DC-agenttjänsten|
+|-VerifyForestRegistration|Verifierar att skogen är registrerad för tillfället|
+|-VerifyEncryptionDecryption|Verifierar att grundläggande kryptering och dekryptering fungerar med Microsoft KDS-tjänsten|
+|-VerifyDomainIsUsingDFSR|Verifierar att den aktuella domänen använder DFSR för SYSVOL-replikering|
+|-VerifyAzureConnectivity|Verifierar slutpunkt-till-slutpunkt-kommunikation med Azure fungerar med hjälp av en tillgänglig proxy|
+
+Här är ett exempel på det-VerifyPasswordFilterDll testet Passing; de andra testerna ser ut ungefär så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>Kontroll av DC-agenten för alla tester
+
+Det här läget tillåter Mass körning av alla tester som stöds av cmdleten och som inte kräver parameter ingångar. En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>Anslutnings testning med hjälp av vissa proxyservrar
+
+Många fel söknings situationer innebär att du undersöker nätverks anslutningen mellan DC-agenter och-proxyservrar. Det finns två hälso test som kan fokusera på sådana problem särskilt. Dessa tester kräver att en viss proxyserver anges.
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>Verifiera anslutningen mellan en DC-agent och en speciell proxy
+
+Det här testet verifierar anslutningen via det första kommunikations benet från DC-agenten till proxyn. Den verifierar att proxyservern tar emot anropet, men ingen kommunikation med Azure är involverad. En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+Här är ett exempel på fel tillstånd där proxy-tjänsten som körs på mål servern har stoppats:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>Verifiera anslutningen mellan en DC-agent och Azure (med en speciell proxy)
+
+Det här testet verifierar fullständig anslutning från slut punkt till slut punkt mellan en DC-agent och Azure med hjälp av en speciell proxy. En lyckad körning ser ut så här:
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

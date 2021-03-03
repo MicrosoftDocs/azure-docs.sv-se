@@ -1,18 +1,18 @@
 ---
 title: Översikt över Azure Arc
 description: Lär dig mer om vad Azure-bågen är och hur den hjälper kunderna att aktivera hantering och styrning av sina hybrid resurser med andra Azure-tjänster och-funktioner.
-ms.date: 09/23/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 33c9d6ca87c3d8d2d8920ff429902f5876bbdc59
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672694"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650200"
 ---
 # <a name="azure-arc-overview"></a>Översikt över Azure Arc
 
-Idag är företag kämpar för att styra och styra en miljö som blir mer komplex. Dessa miljöer sträcker sig över data Center, flera moln och Edge. Varje miljö och moln har en egen uppsättning med verktyg för separat hantering som du behöver lära dig och använda.
+Idag har företag svårt att hantera och styra allt mer komplexa miljöer. Dessa miljöer sträcker sig över data Center, flera moln och Edge. Varje miljö och moln har en egen uppsättning med verktyg för separat hantering som du behöver lära dig och använda.
 
 I parallellt är nya DevOps-och ITOps-operativa modeller svåra att implementera, eftersom befintliga verktyg inte kan ge stöd för nya moln inbyggda mönster.
 
@@ -36,11 +36,11 @@ Viktiga funktioner i Azure Arc är:
 
 * Hantera och styr Kubernetes-kluster i stor skala.
 
-* Använd GitOps konfiguration som kod hantering för att distribuera program och konfiguration i ett eller flera kluster direkt från käll kontroll, till exempel GitHub.
+* Använd GitOps för att distribuera konfigurationen för ett eller flera kluster från git-lagringsplatser.
 
-* Ingen touch-kompatibilitet och konfiguration för dina Kubernetes-kluster med hjälp av Azure Policy.
+*  Zero-Touch-kompatibilitet och konfiguration för dina Kubernetes-kluster med hjälp av Azure Policy.
 
-* Kör Azure Data Services i valfri Kubernetes-miljö, särskilt Azure SQL-hanterad instans och Azure Database for PostgreSQL storskalig, med fördelar som uppgraderingar/uppdateringar, säkerhet och övervakning som om de körs i Azure. Använd elastisk skalning, tillämpa uppdateringar utan avbrott i programmet, även om det inte har en kontinuerlig anslutning till Azure.
+* Kör Azure Data Services i valfri Kubernetes-miljö som om den körs i Azure (särskilt Azure SQL-hanterad instans och Azure Database for PostgreSQL storskalig, med fördelar som uppgraderingar, uppdateringar, säkerhet och övervakning). Använd elastisk skalning och tillämpa uppdateringar utan avbrott i programmet, även utan kontinuerlig anslutning till Azure
 
 * En enhetlig upplevelse som visar dina Azure Arc-aktiverade resurser oavsett om du använder Azure Portal, Azure CLI, Azure PowerShell eller Azure REST API.
 
@@ -50,7 +50,7 @@ Följande är pris information för de funktioner som är tillgängliga idag med
 
 ### <a name="arc-enabled-servers"></a>Arc-aktiverade servrar
 
-Azure båg Control plan-funktioner erbjuds utan extra kostnad. Du måste bland annat:
+Följande kontroll Plans funktioner i Azure Arc erbjuds utan extra kostnad:
 
 * Resurs organisation via hanterings grupper och-taggar i Azure.
 
@@ -62,11 +62,11 @@ Azure båg Control plan-funktioner erbjuds utan extra kostnad. Du måste bland a
 
 * Hantering av uppdateringar
 
-Alla Azure-tjänster som används på Arc-aktiverade servrar, till exempel Azure Security Center eller Azure Monitor debiteras enligt prissättningen för den tjänsten. Mer information finns på [sidan med priser för Azure](https://azure.microsoft.com/pricing/).
+Alla Azure-tjänster som används på Arc-aktiverade servrar, till exempel Azure Security Center eller Azure Monitor debiteras enligt prissättningen för den tjänsten. Mer information finns på sidan med [priser för Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-aktiverade Kubernetes
 
-I den aktuella förhands gransknings fasen erbjuds Azure Arc-Kubernetes utan extra kostnad.
+Alla Azure-tjänster som används på Arc-aktiverade Kubernetes, till exempel Azure Security Center eller Azure Monitor debiteras enligt prissättningen för den tjänsten. Mer information om priser för konfigurationer ovanpå Azure Arc-aktiverade Kubernetes finns på sidan med [priser för Azure](https://azure.microsoft.com/pricing/).
 
 ### <a name="azure-arc-enabled-data-services"></a>Azure Arc-aktiverade datatjänster
 

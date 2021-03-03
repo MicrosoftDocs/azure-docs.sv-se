@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d97128c15d974bfb704fdd446dbd9c727d7fa469
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 411a8e46151a762bcd270fb676f78a91f760ac4f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614226"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653804"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect PowerShell-cmdletar för Cloud Provisioning-agenten gMSA
 
@@ -36,7 +36,7 @@ Följande förutsättningar måste vara uppfyllda för att dessa cmdletar ska ku
 2. Importera etablerings agentens PS-modul till en PowerShell-session. 
 
  ```PowerShell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
  ```
 3. Ta bort befintliga behörigheter.  Om du vill ta bort alla befintliga behörigheter för tjänst kontot, förutom själv användning: `Set-AADCloudSyncRestrictedPermission` .  
 
@@ -61,7 +61,7 @@ Följande förutsättningar måste vara uppfyllda för att dessa cmdletar ska ku
 ## <a name="using-set-aadcloudsyncpermissions"></a>Använda Set-AADCloudSyncPermissions 
 `Set-AADCloudSyncPermissions` stöder följande behörighets typer som är identiska med de behörigheter som används av Azure AD Connect. Följande behörighets typer stöds: 
 
-|Behörighets typ|Description|
+|Behörighets typ|Beskrivning|
 |-----|-----|
 |BasicRead| Se [BasicRead](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#configure-basic-read-only-permissions) -behörigheter för Azure AD Connect|
 |PasswordHashSync|Se [PasswordHashSync](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-hash-synchronization) -behörigheter för Azure AD Connect|

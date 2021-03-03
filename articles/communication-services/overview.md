@@ -8,22 +8,20 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d680df0ec5e18cca4d7a42edf45dbd6a50be1472
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 45ce295ceee9d5bd1c2393eaed854e8f2c5643ba
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888614"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659247"
 ---
 # <a name="what-is-azure-communication-services"></a>Vad är Azure Communication Services?
-
-[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Med Azure Communication Services kan du enkelt lägga till funktioner för multimedia, video och telefoni för kommunikation i real tid till dina program. Klient biblioteken för kommunikations tjänster låter dig också lägga till chatt-och SMS-funktioner i kommunikations lösningarna.
 
 <br>
 
-> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+> [!VIDEO https://www.youtube.com/embed/apBX7ASurgM]
 
 <br>
 <br>
@@ -43,6 +41,7 @@ Följande resurser är en bra plats för att börja om du är nybörjare på Azu
 
 | Resurs                               |Beskrivning                           |
 |---                                    |---                                   |
+|**[Anslut din samtalsapp till ett Teams-möte](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services kan användas för att bygga anpassade Mötes upplevelser som interagerar med Microsoft Teams. Användare av kommunikations tjänst lösningen (er) kan interagera med team deltagare via röst-, video-, Chat-och skärm delning.|
 |**[Skapa en Communication Services-resurs](./quickstarts/create-communication-resource.md)**|Du kan börja använda Azure Communication Services med hjälp av klient biblioteket Azure Portal eller kommunikations tjänst administration för att etablera din första kommunikations tjänst resurs. När du har resurs anslutnings strängen för kommunikations tjänster kan du etablera dina första åtkomsttoken för användare.|
 |**[Skapa din första åtkomsttoken för användare](./quickstarts/access-tokens.md)**|Token för användar åtkomst används för att autentisera dina tjänster mot Azure Communication Services-resursen. Dessa tokens tillhandahålls och återutfärdas med administrations klient biblioteket för kommunikations tjänster.|
 |**[Hämta ett telefonnummer](./quickstarts/telephony-sms/get-phone-number.md)**|Du kan använda Azure Communication Services för att etablera och frigöra telefonnummer. Dessa telefonnummer kan användas för att initiera utgående samtal och bygga SMS-kommunikations lösningar.|

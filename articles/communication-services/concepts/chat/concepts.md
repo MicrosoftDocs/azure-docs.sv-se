@@ -9,28 +9,26 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9b249bddc4cd269933a39b5baf77995aec1e82b3
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2360cc8d202ed29051551231d14bef69c0e66ce4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653942"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657816"
 ---
 # <a name="chat-concepts"></a>Chattbegrepp
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure Communication Services Chat-klient bibliotek kan användas för att lägga till text i real tid i dina program. Den här sidan sammanfattar viktiga chatt-koncept och-funktioner.
 
 Se [Översikt över kommunikations tjänstens klient bibliotek](./sdk-features.md) för att lära dig mer om aktuella klient biblioteks språk och-funktioner.
 
-## <a name="chat-overview"></a>Översikt över chatt 
+## <a name="chat-overview"></a>Översikt över chatt
 
-Chat-konversationer sker inom chatt-trådar. En chatt-tråd kan innehålla många meddelanden och många användare. Varje meddelande tillhör en enda tråd och en användare kan vara en del av en eller flera trådar. 
+Chat-konversationer sker inom chatt-trådar. En chatt-tråd kan innehålla många meddelanden och många användare. Varje meddelande tillhör en enda tråd och en användare kan vara en del av en eller flera trådar.
 
-Varje användare i chatten kallas för en medlem. Du kan ha upp till 250 medlemmar i en chatt-tråd. Endast tråd medlemmar kan skicka och ta emot meddelanden eller lägga till/ta bort medlemmar i en chatt-tråd. Den största tillåtna meddelande storleken är ungefär 28KB. Du kan hämta alla meddelanden i en chatt-tråd med hjälp av `List/Get Messages` åtgärden. Kommunikations tjänsterna lagrar chatten tills du kör en borttagnings åtgärd i chatten eller meddelandet, eller tills inga medlemmar återstår i chatt-tråden där det är överblivna och bearbetas för borttagning.   
+Varje användare i chatten kallas för en medlem. Du kan ha upp till 250 medlemmar i en chatt-tråd. Endast tråd medlemmar kan skicka och ta emot meddelanden eller lägga till/ta bort medlemmar i en chatt-tråd. Den största tillåtna meddelande storleken är ungefär 28KB. Du kan hämta alla meddelanden i en chatt-tråd med hjälp av `List/Get Messages` åtgärden. Kommunikations tjänsterna lagrar chatten tills du kör en borttagnings åtgärd i chatten eller meddelandet, eller tills inga medlemmar återstår i chatt-tråden där det är överblivna och bearbetas för borttagning.
 
-För chatt-trådar med fler än 20 medlemmar inaktive ras Läs kvitton och skriv indikator funktioner. 
+För chatt-trådar med fler än 20 medlemmar inaktive ras Läs kvitton och skriv indikator funktioner.
 
 ## <a name="chat-architecture"></a>Chatt-arkitektur
 
@@ -43,10 +41,10 @@ Det finns två kärn delar för att chatta arkitektur: 1) klient program för be
  - **Klient app:**  Klient programmet ansluter till din betrodda tjänst och tar emot åtkomsttoken som används för att ansluta direkt till kommunikations tjänsterna. När anslutningen har upprättats kan klient programmet skicka och ta emot meddelanden.
 
 Vi rekommenderar att du skapar åtkomsttoken med hjälp av den betrodda tjänst nivån. I det här scenariot är Server sidan ansvarig för att skapa och hantera användare och utfärda sina token.
-    
+
 ## <a name="message-types"></a>Meddelande typer
 
-Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemgenererade meddelanden som kallas **tråd aktiviteter**. Tråd aktiviteter skapas när en chatt-tråd uppdateras. När du anropar `List Messages` eller `Get Messages` på en chatt-tråd innehåller resultatet de användare-genererade textmeddelandena och system meddelandena i kronologisk ordning. Detta hjälper dig att identifiera när en medlem har lagts till eller tagits bort eller när chatt ämnet uppdaterades. Följande meddelande typer stöds:  
+Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemgenererade meddelanden som kallas **tråd aktiviteter**. Tråd aktiviteter skapas när en chatt-tråd uppdateras. När du anropar `List Messages` eller `Get Messages` på en chatt-tråd innehåller resultatet de användare-genererade textmeddelandena och system meddelandena i kronologisk ordning. Detta hjälper dig att identifiera när en medlem har lagts till eller tagits bort eller när chatt ämnet uppdaterades. Följande meddelande typer stöds:
 
  - `Text`: Ett oformaterat textmeddelande som består av och skickas av en användare som en del av en chat-konversation.
  - `RichText/HTML`: Ett formaterat textmeddelande. Observera att kommunikations tjänst användare för närvarande inte kan skicka RichText-meddelanden. Den här meddelande typen stöds av meddelanden som skickas från Team användare till kommunikations tjänster användare i team interop-scenarier.
@@ -116,17 +114,17 @@ Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemge
         }
 ```
 
-## <a name="real-time-signaling"></a>Real tids signalering 
+## <a name="real-time-signaling"></a>Real tids signalering
 
 Klient biblioteket för chat Java Script innehåller real tids signalering. Detta gör det möjligt för klienter att lyssna efter uppdateringar och inkommande meddelanden i real tid till en chatt-tråd utan att behöva avsöka API: erna. Tillgängliga händelser är:
 
- - `ChatMessageReceived` – När ett nytt meddelande skickas till en chatt-tråd som användaren är medlem i. Den här händelsen skickas inte för automatiskt genererade system meddelanden som vi beskrivit i föregående avsnitt.  
- - `ChatMessageEdited` – När ett meddelande redige ras i en chatt-tråd som användaren är medlem i. 
- - `ChatMessageDeleted` – När ett meddelande tas bort i en chatt-tråd som användaren är medlem i. 
- - `TypingIndicatorReceived` – När en annan medlem skriver ett meddelande i en chatt-tråd som användaren är medlem i. 
- - `ReadReceiptReceived` – När en annan medlem har läst meddelandet som användaren skickade i en chatt-tråd. 
+ - `ChatMessageReceived` – När ett nytt meddelande skickas till en chatt-tråd som användaren är medlem i. Den här händelsen skickas inte för automatiskt genererade system meddelanden som vi beskrivit i föregående avsnitt.
+ - `ChatMessageEdited` – När ett meddelande redige ras i en chatt-tråd som användaren är medlem i.
+ - `ChatMessageDeleted` – När ett meddelande tas bort i en chatt-tråd som användaren är medlem i.
+ - `TypingIndicatorReceived` – När en annan medlem skriver ett meddelande i en chatt-tråd som användaren är medlem i.
+ - `ReadReceiptReceived` – När en annan medlem har läst meddelandet som användaren skickade i en chatt-tråd.
 
-## <a name="chat-events"></a>Chatta händelser 
+## <a name="chat-events"></a>Chatta händelser
 
 Med real tids signaler kan användarna chatta i real tid. Dina tjänster kan använda Azure Event Grid för att prenumerera på chatt-relaterade händelser. Mer information finns i [begrepp för händelse hantering](../event-handling.md).
 
@@ -134,13 +132,13 @@ Med real tids signaler kan användarna chatta i real tid. Dina tjänster kan anv
 
 Du kan använda [Azure kognitiva API: er](../../../cognitive-services/index.yml) med klient biblioteket i Chat för att lägga till smarta funktioner i dina program. Du kan till exempel:
 
-- Gör det möjligt för användare att chatta med varandra på olika språk. 
+- Gör det möjligt för användare att chatta med varandra på olika språk.
 - Hjälp en support agent att prioritera biljetter genom att identifiera ett negativt sentiment av ett inkommande problem från en kund.
 - Analysera inkommande meddelanden för nyckel identifiering och entitets igenkänning och fråga relevant information till användaren i din app baserat på meddelandets innehåll.
 
-Ett sätt att uppnå detta är genom att låta din betrodda tjänst agera som medlem i en chatt. Anta att du vill aktivera översättning av språk. Den här tjänsten ansvarar för att lyssna på meddelanden som utbyts av andra medlemmar [1], anropar kognitiva API: er för att översätta innehållet till det önskade språket [2, 3] och skicka det översatta resultatet som ett meddelande i chatt-tråden [4]. 
+Ett sätt att uppnå detta är genom att låta din betrodda tjänst agera som medlem i en chatt. Anta att du vill aktivera översättning av språk. Den här tjänsten ansvarar för att lyssna på meddelanden som utbyts av andra medlemmar [1], anropar kognitiva API: er för att översätta innehållet till det önskade språket [2, 3] och skicka det översatta resultatet som ett meddelande i chatt-tråden [4].
 
-På så sätt kommer meddelande historiken innehålla både original meddelanden och översatta meddelanden. I klient programmet kan du lägga till logik för att visa det ursprungliga eller översatta meddelandet. I [den här snabb](../../../cognitive-services/translator/quickstart-translator.md) starten får du veta hur du använder kognitiva API: er för att översätta text till olika språk. 
+På så sätt kommer meddelande historiken innehålla både original meddelanden och översatta meddelanden. I klient programmet kan du lägga till logik för att visa det ursprungliga eller översatta meddelandet. I [den här snabb](../../../cognitive-services/translator/quickstart-translator.md) starten får du veta hur du använder kognitiva API: er för att översätta text till olika språk.
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram som visar Cognitive Services interagera med kommunikations tjänster.":::
 

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation om Azure Cosmos DB
-summary: Azure Cosmos DB – snabb NoSQL-databas med SLA-baserad hastighet och tillgänglighet, automatisk och omedelbar skalbarhet samt API:er med öppen källkod för MongoDB och Cassandra.
+summary: 'Azure Cosmos DB-fast NoSQL-databas med SLA-baserad hastighet och tillgänglighet, automatisk och omedelbar skalbarhet och API: er med öppen källkod för MongoDB och Cassandra.'
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB – snabb NoSQL-databas med SLA-baserad hastighet och tillgänglighet, automatisk och omedelbar skalbarhet samt API:er med öppen källkod för MongoDB och Cassandra.
+  description: 'Azure Cosmos DB-fast NoSQL-databas med SLA-baserad hastighet och tillgänglighet, automatisk och omedelbar skalbarhet och API: er med öppen källkod för MongoDB och Cassandra.'
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 7ee6db07facb1464428c6d1d8562fdd54216b883
-  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-  ms.translationtype: HT
+  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92485774"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101658020"
 landingContent:
 - title: Om Azure Cosmos DB
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Trådprotokollkompatibilitet för MongoDB
-      url: mongodb-feature-support-36.md
+      url: mongodb-feature-support-40.md
     - text: Kommandon för MongoDB-tillägg
       url: mongodb-custom-commands.md
     - text: Ändra dataströmmar

@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 666474b7c7b823114b6dee2925ed5f81973e212d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: ed56d0cf69710173d41c5262e7a3121a0cad1304
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660148"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Det finns två olika familjer av att anropa klient bibliotek för *klienter* och *tjänster.* För närvarande är tillgängliga klient bibliotek avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
 
@@ -28,35 +26,35 @@ Tjänst klient biblioteken är inte tillgängliga än och ger till gång till pl
 
 I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar klient bibliotek.
 
-| Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Kärn funktioner | Placera ett ett-till-ett-samtal mellan två användare                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Placera ett grupp samtal med fler än två användare (upp till 350 användare)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Marknadsför ett ett-till-ett-samtal med två användare i ett grupp samtal med fler än två användare                                 | ✔️   | ✔️            | ✔️ 
-|                   | Delta i ett grupp anrop efter att det har startat                                                                              | ✔️   | ✔️            | ✔️ 
+| Kärn funktioner | Placera ett ett-till-ett-samtal mellan två användare                                                                           | ✔️   | ✔️            | ✔️
+|                   | Placera ett grupp samtal med fler än två användare (upp till 350 användare)                                                       | ✔️   | ✔️            | ✔️
+|                   | Marknadsför ett ett-till-ett-samtal med två användare i ett grupp samtal med fler än två användare                                 | ✔️   | ✔️            | ✔️
+|                   | Delta i ett grupp anrop efter att det har startat                                                                              | ✔️   | ✔️            | ✔️
 |                   | Bjud in en annan VoIP-deltagare för att ansluta till ett pågående grupp anrop                                                       | ✔️   | ✔️            | ✔️
-|                   | Aktivera/inaktivera din video                                                         | ✔️   | ✔️            | ✔️ 
-|                   | Tyst/avljud av MIC                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Växla mellan kameror                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Lokalt undantag/ej Behåll                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktiv talare                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Välj högtalare för samtal                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Välj mikrofon för samtal                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Visa status för en deltagare<br/>*Inaktiv, tidig media, anslutning, ansluten, stoppad, i lobbyn, frånkopplat*         | ✔️   | ✔️            | ✔️           
-|                   | Visa status för ett samtal<br/>*Tidig media, inkommande, anslutning, ringa, ansluten, stoppa, koppla från, frånkopplad* | ✔️   | ✔️            | ✔️           
-|                   | Visa om en deltagare är avstängd                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Visa orsaken till att en deltagare lämnat ett samtal                                                                       | ✔️   | ✔️            | ✔️     
-| Skärm delning    | Dela hela skärmen inifrån programmet                                                                 | ✔️   | ❌            | ❌           
-|                   | Dela ett enskilt program (från listan över program som körs)                                                | ✔️   | ❌            | ❌           
-|                   | Dela en webbläsare-flik från listan med öppna flikar                                                                  | ✔️   | ❌            | ❌           
-|                   | Deltagare kan visa fjärrskärms resurs                                                                            | ✔️   | ✔️            | ✔️         
-| Tjänstgöring            | Lista deltagare                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Ta bort en deltagare                                                                                                | ✔️   | ✔️            | ✔️         
-| PSTN              | Placera ett ett-till-ett-samtal med en PSTN-deltagare                                                                     | ✔️   | ✔️            | ✔️   
+|                   | Aktivera/inaktivera din video                                                         | ✔️   | ✔️            | ✔️
+|                   | Tyst/avljud av MIC                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Växla mellan kameror                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Lokalt undantag/ej Behåll                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktiv talare                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Välj högtalare för samtal                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Välj mikrofon för samtal                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Visa status för en deltagare<br/>*Inaktiv, tidig media, anslutning, ansluten, stoppad, i lobbyn, frånkopplat*         | ✔️   | ✔️            | ✔️
+|                   | Visa status för ett samtal<br/>*Tidig media, inkommande, anslutning, ringa, ansluten, stoppa, koppla från, frånkopplad* | ✔️   | ✔️            | ✔️
+|                   | Visa om en deltagare är avstängd                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Visa orsaken till att en deltagare lämnat ett samtal                                                                       | ✔️   | ✔️            | ✔️
+| Skärm delning    | Dela hela skärmen inifrån programmet                                                                 | ✔️   | ❌            | ❌
+|                   | Dela ett enskilt program (från listan över program som körs)                                                | ✔️   | ❌            | ❌
+|                   | Dela en webbläsare-flik från listan med öppna flikar                                                                  | ✔️   | ❌            | ❌
+|                   | Deltagare kan visa fjärrskärms resurs                                                                            | ✔️   | ✔️            | ✔️
+| Tjänstgöring            | Lista deltagare                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Ta bort en deltagare                                                                                                | ✔️   | ✔️            | ✔️
+| PSTN              | Placera ett ett-till-ett-samtal med en PSTN-deltagare                                                                     | ✔️   | ✔️            | ✔️
 |                   | Placera ett grupp samtal med PSTN-deltagare                                                                           | ✔️   | ✔️            | ✔️
 |                   | Marknadsför ett ett-till-ett-samtal med en PSTN-deltagare i ett grupp anrop                                                 | ✔️   | ✔️            | ✔️
-|                   | Ringa ut från ett grupp anrop som en PSTN-deltagare                                                                    | ✔️   | ✔️            | ✔️   
-| Allmänt           | Testa din mikrofon, talare och kamera med en ljud test tjänst (tillgänglig genom att anropa 8: echo123)                   |  ✔️  | ✔️            | ✔️   
+|                   | Ringa ut från ett grupp anrop som en PSTN-deltagare                                                                    | ✔️   | ✔️            | ✔️
+| Allmänt           | Testa din mikrofon, talare och kamera med en ljud test tjänst (tillgänglig genom att anropa 8: echo123)                   |  ✔️  | ✔️            | ✔️
 
 ## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>Java script anropar klient biblioteks stöd av OS och webbläsare
 
@@ -96,7 +94,7 @@ Kommunikations tjänsterna som anropar klient biblioteket stöder följande str�
 
 |           |Webb | Android/iOS|
 |-----------|----|------------|
-|**Antal utgående strömmar som kan skickas samtidigt** |1 ljud/video-eller 1-ljud-/skärm delning | 1 ljud/video | 
+|**Antal utgående strömmar som kan skickas samtidigt** |1 ljud/video-eller 1-ljud-/skärm delning | 1 ljud/video |
 |**Antal inkommande strömmar som kan renderas samtidigt** |1 ljud/video-eller 1-ljud-/skärm delning| 6 ljud/video eller 1 skärm delning |
 
 Observera att i grupp scenarier används en blandad ljud ström som stöd för alla ljud deltagare.
@@ -107,6 +105,6 @@ Observera att i grupp scenarier används en blandad ljud ström som stöd för a
 > [Kom igång med att anropa](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Mer information finns i följande artiklar:
-- Bekanta dig med allmänna [samtals flöden](../call-flows.md) 
+- Bekanta dig med allmänna [samtals flöden](../call-flows.md)
 - Läs mer om [samtals typer](../voice-video-calling/about-call-types.md)
 - Lär dig mer om [telefonnummer typer](../telephony-sms/plan-solution.md)

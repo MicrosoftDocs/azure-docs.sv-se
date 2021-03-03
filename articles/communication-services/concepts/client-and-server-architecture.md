@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2cc7e1d0c108d45383a68258fb6f62fcab87d1f7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653823"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656235"
 ---
 # <a name="client-and-server-architecture"></a>Klient-och server arkitektur
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,7 +54,7 @@ Många scenarier hanteras bäst med inbyggda program. Azure Communication Servic
 Att kommunicera via telefon systemet kan dramatiskt öka räckvidden för ditt program. För att stödja PSTN-röst-och SMS-scenarier hjälper Azure Communication Services dig att [få telefonnummer](../quickstarts/telephony-sms/get-phone-number.md) direkt från Azure Portal eller med hjälp av REST-API: er och klient bibliotek. När telefonnumren har hämtats kan de användas för att uppnå kunder som använder både PSTN-samtal och SMS i både inkommande och utgående scenarier. Du hittar ett exempel på ett arkitektur flöde nedan:
 
 > [!Note]
-> Under en offentlig för hands version är etableringen av amerikanska telefonnummer tillgängliga för kunder med fakturerings adresser som finns i USA och Kanada. 
+> Under en offentlig för hands version är etableringen av amerikanska telefonnummer tillgängliga för kunder med fakturerings adresser som finns i USA och Kanada.
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram som visar PSTN-arkitektur för kommunikations tjänster.":::
 

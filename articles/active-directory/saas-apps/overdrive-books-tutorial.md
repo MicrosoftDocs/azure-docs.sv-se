@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625405"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Självstudie: Azure Active Directory integrering med överdrive
 
@@ -37,9 +37,9 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Överdrive stöder **SP** -INITIERAd SSO
+* Överdrive stöder **SP** -initierad SSO.
 
-* Överdrive stöder **just-in-Time** User-etablering
+* Överdrive stöder **just-in-Time** User-etablering.
 
 ## <a name="add-overdrive-from-the-gallery"></a>Lägg till överdrive från galleriet
 
@@ -65,7 +65,7 @@ Utför följande steg för att konfigurera och testa Azure AD SSO med överenhet
     1. **[Skapa överdrivet test användare](#create-overdrive-test-user)** – för att få en motsvarighet till B. Simon i överdriven som är länkad till Azure AD-representation av användare.
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
@@ -99,7 +99,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -121,7 +121,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="configure-overdrive-sso"></a>Konfigurera överdrivet SSO
+## <a name="configure-overdrive-sso"></a>Konfigurera överdrivet SSO
 
 Om du vill konfigurera enkel inloggning på **överenhets** sidan måste du skicka den hämtade **XML-metadata för federationsmetadata** och lämpliga kopierade url: er från Azure Portal till [överdrive support team](https://help.overdrive.com/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
@@ -133,7 +133,7 @@ I det här avsnittet skapas en användare som heter Britta Simon i överdriven. 
 >Du kan använda andra verktyg för att skapa överdrivet användar konton eller API: er som tillhandahålls av överdrivet för att etablera Azure AD-användarkonton.
 >
 
-### <a name="test-sso"></a>Testa SSO
+## <a name="test-sso"></a>Testa SSO
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
@@ -141,8 +141,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till överdriven inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på överenhets panelen i Mina appar omdirigeras den till överdriven inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Du kan använda Microsoft Mina appar. När du klickar på överenhets panelen i Mina appar omdirigeras den till överdriven inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat överdriven kan du framtvinga kontroll över sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat överdriven kan du framtvinga kontroll över sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 64fb37fb4a57b3ee397ffe8814c76c7dca2fb9b3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 85c0a113f15a1ce94ca1cccc605085dcd003dce4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334624"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661400"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrera data till Azure Cosmos DB API för Cassandra konto med Striims
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -30,13 +30,13 @@ Den här artikeln visar hur du använder Striims för att migrera data från en 
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Distribuera Striims Marketplace-lösningen
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Välj **skapa en resurs** och Sök efter **striims** på Azure Marketplace. Välj det första alternativet och **skapa**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Hitta Striims Marketplace-objekt":::
 
-1. Ange sedan konfigurations egenskaperna för Striims-instansen. Striims-miljön har distribuerats på en virtuell dator. I fönstret **grundläggande** anger du **användar namnet för den virtuella datorn** , **lösen ord för virtuell dator** (detta lösen ord används för att använda SSH i den virtuella datorn). Välj din **prenumeration** , **resurs grupp** och **plats information** där du vill distribuera striims. När du är klar väljer du **OK**.
+1. Ange sedan konfigurations egenskaperna för Striims-instansen. Striims-miljön har distribuerats på en virtuell dator. I fönstret **grundläggande** anger du **användar namnet för den virtuella datorn**, **lösen ord för virtuell dator** (detta lösen ord används för att använda SSH i den virtuella datorn). Välj din **prenumeration**, **resurs grupp** och **plats information** där du vill distribuera striims. När du är klar väljer du **OK**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Konfigurera grundläggande inställningar för Striims":::
 
@@ -51,7 +51,7 @@ Den här artikeln visar hur du använder Striims för att migrera data från en 
 
    När du har fyllt formuläret väljer du **OK** för att fortsätta.
 
-1. I fönstret **åtkomst inställningar för striims** konfigurerar du den **offentliga IP-adressen** (Välj standardvärden), **domän namn för striims** , **Administratörs lösen ord** som du vill använda för att logga in på striims-användargränssnittet. Konfigurera ett VNET och undernät (Välj standardvärden). När du har fyllt i informationen väljer du **OK** för att fortsätta.
+1. I fönstret **åtkomst inställningar för striims** konfigurerar du den **offentliga IP-adressen** (Välj standardvärden), **domän namn för striims**, **Administratörs lösen ord** som du vill använda för att logga in på striims-användargränssnittet. Konfigurera ett VNET och undernät (Välj standardvärden). När du har fyllt i informationen väljer du **OK** för att fortsätta.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Åtkomst inställningar för striims":::
 
@@ -71,7 +71,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB API för Cassandra-konto
 
 1. Skapa ett [Azure Cosmos DB API för Cassandra konto](create-cassandra-dotnet.md#create-a-database-account) med hjälp av Azure Portal.
 
-1. Navigera till fönstret **datautforskaren** i ditt Azure Cosmos-konto. Välj **ny tabell** för att skapa en ny behållare. Anta att du migrerar *produkter* och *ordnar* data från Oracle Database till Azure Cosmos dB. Skapa ett nytt disk utrymme med namnet **StriimDemo** med en container-behållare. Etablera behållaren med **1000 ru: er** (det här exemplet använder 1000 ru: er, men du bör använda data flödet som beräknas för din arbets belastning) och **/ORDER_ID** som primär nyckel. Dessa värden varierar beroende på dina källdata. 
+1. Navigera till fönstret **datautforskaren** i ditt Azure Cosmos-konto. Välj **ny tabell** för att skapa en ny behållare. Anta att du migrerar *produkter* och *ordnar* data från Oracle Database till Azure Cosmos dB. Skapa ett nytt disk utrymme med namnet **StriimDemo** med en container-behållare. Etablera behållaren med **1000 ru: er**(det här exemplet använder 1000 ru: er, men du bör använda data flödet som beräknas för din arbets belastning) och **/ORDER_ID** som primär nyckel. Dessa värden varierar beroende på dina källdata. 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Skapa API för Cassandra konto":::
 
@@ -131,7 +131,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB API för Cassandra-konto
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Logga in på Striims":::
 
-1. Nu kommer du till start sidan för Striims. Det finns tre olika fönster – **instrument paneler** , **appar** och **SourcePreview**. I fönstret instrument paneler kan du flytta data i real tid och visualisera dem. Fönstret appar innehåller pipelines för strömmande data eller data flöden. Till höger på sidan finns SourcePreview där du kan förhandsgranska dina data innan du flyttar dem.
+1. Nu kommer du till start sidan för Striims. Det finns tre olika fönster – **instrument paneler**, **appar** och **SourcePreview**. I fönstret instrument paneler kan du flytta data i real tid och visualisera dem. Fönstret appar innehåller pipelines för strömmande data eller data flöden. Till höger på sidan finns SourcePreview där du kan förhandsgranska dina data innan du flyttar dem.
 
 1. Välj fönstret **appar** , vi fokuserar på det här fönstret för tillfället. Det finns en mängd olika exempel på appar som du kan använda för att lära dig mer om Striims, men i den här artikeln skapar du vår egen. Välj knappen **Lägg till app** i det övre högra hörnet.
 
@@ -157,7 +157,7 @@ I det här avsnittet ska du konfigurera Azure Cosmos DB API för Cassandra-konto
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png" alt-text="Anslut till mål":::
 
-1. Innan du konfigurerar målet måste du kontrol lera att du har lagt till ett [Baltimore rot certifikat i Striims Java-miljö](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store).
+1. Innan du konfigurerar målet måste du kontrol lera att du har lagt till ett [Baltimore rot certifikat i Striims Java-miljö](/bingmaps/articles/ssl-certificate-validation-for-java-applications#configuring-root-certificates).
 
 1. Ange konfigurations egenskaperna för mål Azure Cosmos DBs instansen och välj **Spara** för att fortsätta. Följande är de viktigaste parametrarna för att Observera:
 

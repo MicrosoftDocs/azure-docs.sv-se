@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: 1bf7856e807b04e35d28a3e262ae89ea9c298f3c
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: b62ed4c0b661ebc725bd4cd3737249d91e48c43e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763599"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656847"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Identifiera data avvikelser (för hands version) på data uppsättningar
 
@@ -87,7 +87,7 @@ Data uppsättnings övervakare är beroende av följande Azure-tjänster.
 
 |Azure-tjänst  |Beskrivning  |
 |---------|---------|
-| *Datamängd* | Använd Machine Learning data uppsättningar för att hämta tränings data och jämföra data för modell träning.  Generering av data profiler används för att generera några av de rapporterade måtten, t. ex. minsta, högsta, distinkta värden, antal distinkta värden. |
+| *Data uppsättning* | Använd Machine Learning data uppsättningar för att hämta tränings data och jämföra data för modell träning.  Generering av data profiler används för att generera några av de rapporterade måtten, t. ex. minsta, högsta, distinkta värden, antal distinkta värden. |
 | *Azureml pipeline och Compute* | Jobbet för avvikelse beräkning finns i azureml-pipeline.  Jobbet utlöses på begäran eller enligt schema som ska köras vid en beräkning som kon figurer ATS vid skapande av körnings tid.
 | *Application Insights*| Avvikelser genererar mått till Application Insights som hör till Machine Learning-arbetsytan.
 | *Azure Blob Storage*| Avvikelser genererar mått i JSON-format till Azure Blob Storage.
@@ -234,12 +234,12 @@ monitor = monitor.enable_schedule()
 
     | Inställning | Beskrivning | Tips | Föränderlig | 
     | ------- | ----------- | ---- | ------- |
-    | Namn | Namnet på data uppsättnings övervakaren. | | Nej |
+    | Namn | Namnet på data uppsättnings övervakaren. | | Inga |
     | Funktioner | Lista över funktioner som kommer att analyseras för data drift över tid. | Ställ in till en modells utmatnings funktion (er) för att mäta begrepps avvikelsen. Inkludera inte funktioner som används naturligt över tid (månad, år, index osv.). Du kan fylla på och befintlig data riktnings övervakning när du har justerat listan med funktioner. | Ja | 
     | Beräkningsmål | Azure Machine Learning Compute Target för att köra data uppsättnings övervaknings jobben. | | Ja | 
     | Aktivera | Aktivera eller inaktivera schemat i pipelinen för data uppsättnings övervakaren | Inaktivera schemat för att analysera historiska data med den egna fyllnings inställningen. Den kan aktive ras när data uppsättnings övervakaren har skapats. | Ja | 
-    | Frekvens | Den frekvens som används för att schemalägga pipeline-jobbet och analysera historiska data om en hel fyllning körs. Alternativen omfattar varje dag, varje vecka eller varje månad. | Varje körning jämför data i mål data uppsättningen enligt frekvensen: <li>Varje dag: jämför senaste fullständiga dag i mål data uppsättningen med bas linje <li>Varje vecka: jämför den senaste fullständiga veckan (måndag – söndag) i mål data uppsättningen med bas linje <li>Varje månad: jämför den senaste fullständiga månaden i mål data uppsättningen med bas linje | Nej | 
-    | Svarstid | Tid i timmar tar det för data att komma in i data uppsättningen. Till exempel, om det tar tre dagar innan data tas emot i SQL DB-datauppsättningen inkapslade, ställer du in svars tiden på 72. | Kan inte ändras efter att data uppsättnings övervakaren har skapats | Nej | 
+    | Frekvens | Den frekvens som används för att schemalägga pipeline-jobbet och analysera historiska data om en hel fyllning körs. Alternativen omfattar varje dag, varje vecka eller varje månad. | Varje körning jämför data i mål data uppsättningen enligt frekvensen: <li>Varje dag: jämför senaste fullständiga dag i mål data uppsättningen med bas linje <li>Varje vecka: jämför den senaste fullständiga veckan (måndag – söndag) i mål data uppsättningen med bas linje <li>Varje månad: jämför den senaste fullständiga månaden i mål data uppsättningen med bas linje | Inga | 
+    | Svarstid | Tid i timmar tar det för data att komma in i data uppsättningen. Till exempel, om det tar tre dagar innan data tas emot i SQL DB-datauppsättningen inkapslade, ställer du in svars tiden på 72. | Kan inte ändras efter att data uppsättnings övervakaren har skapats | Inga | 
     | E-postadresser | E-postadresser för aviseringar baserat på överträdelse av tröskelvärdet för data avvikelse i procent. | E-postmeddelanden skickas via Azure Monitor. | Ja | 
     | Tröskelvärde | Tröskelvärde för data avvikelse i procent för e-postavisering. | Ytterligare aviseringar och händelser kan anges för många andra mått i arbets ytans associerade Application Insights-resurs. | Ja |
 
@@ -363,7 +363,7 @@ Begränsningar och kända problem för data avvikelse Övervakare:
           service_principal_id=app_id,
           service_principal_password=client_secret
           )
-   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group="xxx")
    compute = ws.compute_targets.get("xxx")
    ```
 

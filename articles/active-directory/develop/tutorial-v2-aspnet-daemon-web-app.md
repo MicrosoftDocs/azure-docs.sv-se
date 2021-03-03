@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4fccff70fd267aef84550b4e2f5d6f5f9422a341
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103030"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653770"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -237,8 +237,8 @@ Ta bort app-objektet som du skapade i steget [Registrera ditt program](#register
 
 ## <a name="get-help"></a>Få hjälp
 
-Använd [Microsoft Q&A](https://docs.microsoft.com/answers/products/) för att få support från communityn.
-Ställ dina frågor på [Microsoft Q&en](https://docs.microsoft.com/answers/products/) första och bläddra efter befintliga problem för att se om någon har bett din fråga tidigare.
+Använd [Microsoft Q&A](/answers/products/) för att få support från communityn.
+Ställ dina frågor på [Microsoft Q&en](/answers/products/) första och bläddra efter befintliga problem för att se om någon har bett din fråga tidigare.
 Se till att dina frågor eller kommentarer är taggade med "Azure-AD-ADAL-utfasning", "Azure-AD-msal" och "dotNet-standard".
 
 Om du hittar ett fel i exemplet kan du öka problemet med GitHub- [problem](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues).

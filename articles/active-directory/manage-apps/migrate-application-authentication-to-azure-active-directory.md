@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd33f9e0b249db6b7c6bd0a0a556d0bb4cf79312
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 0c1a0be0b7834632ba79af7dfe6c3a4fa25c0316
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101449"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645519"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrera programautentisering till Azure Active Directory
 
@@ -55,13 +55,13 @@ Dina program använder förmodligen följande typer av autentisering:
 
 **För att säkerställa att användarna enkelt och säkert kan komma åt program, är målet att ha en enda uppsättning åtkomst kontroller och principer i dina lokala miljöer och moln miljöer.**
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) erbjuder en Universal Identity-plattform som ger dina personer, partners och kunder en enda identitet för att komma åt de program som de vill ha och samar beta från vilken plattform och enhet som helst.
+[Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) erbjuder en Universal Identity-plattform som ger dina personer, partners och kunder en enda identitet för att komma åt de program som de vill ha och samar beta från vilken plattform och enhet som helst.
 
 ![Ett diagram över Azure Active Directory anslutning](media/migrating-application-authentication-to-azure-active-directory-1.jpg)
 
-Azure AD har en [fullständig uppsättning funktioner för identitets hantering](/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad). Genom att standardisera din app-autentisering och-auktorisering till Azure AD kan du få de fördelar som dessa funktioner ger.
+Azure AD har en [fullständig uppsättning funktioner för identitets hantering](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad). Genom att standardisera din app-autentisering och-auktorisering till Azure AD kan du få de fördelar som dessa funktioner ger.
 
-Se ytterligare migrerings resurser på [https://aka.ms/migrateapps](https://aka.ms/migrateapps)
+Se ytterligare migrerings resurser på [https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Fördelar med migrering av app-autentisering till Azure AD
 
@@ -71,9 +71,9 @@ Genom att flytta app-autentisering till Azure AD kan du hantera risker och kostn
 
 Att skydda dina appar kräver att du har en fullständig översikt över alla riskfaktorer. Att migrera dina appar till Azure AD konsoliderar dina säkerhetslösningar. Med den kan du:
 
-- Förbättra säker användar åtkomst till program och associerade företags data med hjälp av [principer för villkorlig åtkomst](/azure/active-directory/active-directory-conditional-access-azure-portal), [Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks)och skydds tekniker för Real tidsbaserade [identiteter](/azure/active-directory/active-directory-identityprotection) .
+- Förbättra säker användar åtkomst till program och associerade företags data med hjälp av [principer för villkorlig åtkomst](../conditional-access/overview.md), [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)och skydds tekniker för Real tidsbaserade [identiteter](../identity-protection/overview-identity-protection.md) .
 
-- Skydda privilegie rad användares åtkomst till din miljö med [just-in-Time](/azure/managed-applications/request-just-in-time-access) admin-åtkomst.
+- Skydda privilegie rad användares åtkomst till din miljö med [just-in-Time](../../azure-resource-manager/managed-applications/request-just-in-time-access.md) admin-åtkomst.
 
 - Använd den [geo-distribuerade och hög tillgänglighets designen för flera innehavare för Azure AD](https://cloudblogs.microsoft.com/enterprisemobility/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-distributed-cloud-directory/)för dina mest kritiska affärs behov.
 
@@ -85,30 +85,30 @@ Din organisation kan ha flera lösningar för identitets åtkomst hantering (IAM
 
 **Med Azure AD kan du minska infrastruktur kostnaderna genom att:**
 
-- Tillhandahålla säker fjärråtkomst till lokala appar med hjälp av [Azure AD-programproxy](/azure/active-directory/manage-apps/application-proxy).
+- Tillhandahålla säker fjärråtkomst till lokala appar med hjälp av [Azure AD-programproxy](./application-proxy.md).
 
-- Att koppla ifrån appar från den lokal Credential-metoden i din klient organisation genom att [Konfigurera Azure AD som den betrodda Universal Identity-providern](/azure/active-directory/hybrid/plan-connect-user-signin#choosing-the-user-sign-in-method-for-your-organization).
+- Att koppla ifrån appar från den lokal Credential-metoden i din klient organisation genom att [Konfigurera Azure AD som den betrodda Universal Identity-providern](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization).
 
 ### <a name="increase-productivity"></a>Öka produktiviteten
 
 Ekonomi och säkerhets förmåner bedriver organisationer för att kunna använda Azure AD, men det är mer sannolikt att alla användare får till gång till fullständigt införande och efterlevnad. Med Azure AD kan du:
 
-- Förbättra upplevelsen av [enkel Sign-On (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on) genom sömlös och säker åtkomst till alla program, från valfri enhet och valfri plats.
+- Förbättra upplevelsen av [enkel Sign-On (SSO)](./what-is-single-sign-on.md) genom sömlös och säker åtkomst till alla program, från valfri enhet och valfri plats.
 
-- Använd självbetjänings-IAM-funktioner, till exempel självbetjäning för [återställning av lösen ord](/azure/active-directory/authentication/concept-sspr-howitworks) och [självbetjänings grupp hantering](/azure/active-directory/users-groups-roles/groups-self-service-management).
+- Använd självbetjänings-IAM-funktioner, till exempel självbetjäning för [återställning av lösen ord](../authentication/concept-sspr-howitworks.md) och [självbetjänings grupp hantering](../enterprise-users/groups-self-service-management.md).
 
 - Minska administrationen genom att bara hantera en enda identitet för varje användare i molnet och i lokala miljöer:
 
-  - [Automatisera etablering](/azure/active-directory/active-directory-saas-app-provisioning) av användar konton (i [Azure AD-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)) baserat på Azure AD-identiteter
+  - [Automatisera etablering](../app-provisioning/user-provisioning.md) av användar konton (i [Azure AD-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)) baserat på Azure AD-identiteter
   - Gå till alla appar från panelen Mina appar i [Azure Portal ](https://portal.azure.com/)
 
-- Gör det möjligt för utvecklare att skydda åtkomsten till sina appar och förbättra slutanvändarens upplevelse genom att använda [Microsoft Identity Platform](/azure/active-directory/develop/about-microsoft-identity-platform) med Microsoft Authentication Library (MSAL).
+- Gör det möjligt för utvecklare att skydda åtkomsten till sina appar och förbättra slutanvändarens upplevelse genom att använda [Microsoft Identity Platform](../develop/v2-overview.md) med Microsoft Authentication Library (MSAL).
 
-- Ge dina partner åtkomst till moln resurser med [Azure AD B2B-samarbete](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Detta tar bort behovet av att konfigurera punkt-till-punkt-Federation med dina partner.
+- Ge dina partner åtkomst till moln resurser med [Azure AD B2B-samarbete](../external-identities/what-is-b2b.md). Detta tar bort behovet av att konfigurera punkt-till-punkt-Federation med dina partner.
 
 ### <a name="address-compliance-and-governance"></a>Hantera efterlevnad och styrning
 
-Se till att reglerna efterlevs genom att tvinga företags åtkomst principer och övervaka användar åtkomst till program och associerade data med hjälp av integrerade gransknings verktyg och API: er. Med Azure AD kan du övervaka program inloggningar via rapporter som utnyttjar [SIEM-verktyg (säkerhets incidenter och händelse övervakning)](/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting). Du kan komma åt rapporterna från portalen eller API: er och granska program mässigt som har åtkomst till dina program och ta bort åtkomsten till inaktiva användare via åtkomst granskningar.
+Se till att reglerna efterlevs genom att tvinga företags åtkomst principer och övervaka användar åtkomst till program och associerade data med hjälp av integrerade gransknings verktyg och API: er. Med Azure AD kan du övervaka program inloggningar via rapporter som utnyttjar [SIEM-verktyg (säkerhets incidenter och händelse övervakning)](../reports-monitoring/plan-monitoring-and-reporting.md). Du kan komma åt rapporterna från portalen eller API: er och granska program mässigt som har åtkomst till dina program och ta bort åtkomsten till inaktiva användare via åtkomst granskningar.
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>Planera dina migrerings faser och projekt strategi
 
@@ -214,11 +214,11 @@ Det första besluts punkten i en programmigrering är vilka appar som ska migrer
 
 **Använda Active Directory Federation Services (AD FS) (AD FS) för att samla in rätt app-inventering:**
 
-- **Använd Azure AD Connect Health.** Om du har en Azure AD Premium-licens rekommenderar vi att du distribuerar [Azure AD Connect Health](/azure/active-directory/hybrid/how-to-connect-health-adfs) för att analysera app-användningen i din lokala miljö. Du kan använda [ADFS-programrapporten](/azure/active-directory/manage-apps/migrate-adfs-application-activity) (för hands version) för att identifiera ADFS-program som kan migreras och utvärdera beredskap för det program som ska migreras. När du har slutfört migreringen distribuerar du [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) som gör att du kontinuerligt kan övervaka skugg it i din organisation när du befinner dig i molnet.
+- **Använd Azure AD Connect Health.** Om du har en Azure AD Premium-licens rekommenderar vi att du distribuerar [Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md) för att analysera app-användningen i din lokala miljö. Du kan använda [ADFS-programrapporten](./migrate-adfs-application-activity.md) (för hands version) för att identifiera ADFS-program som kan migreras och utvärdera beredskap för det program som ska migreras. När du har slutfört migreringen distribuerar du [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) som gör att du kontinuerligt kan övervaka skugg it i din organisation när du befinner dig i molnet.
 
-- **AD FS logg parsning**. Om du inte har Azure AD Premium licenser rekommenderar vi att du använder ADFS till Azure AD-Migreringsverktyg för app som baseras på [PowerShell.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration). Se [lösnings guide](https://aka.ms/migrateapps/adfssolutionguide):
+- **AD FS logg parsning**. Om du inte har Azure AD Premium licenser rekommenderar vi att du använder ADFS till Azure AD-Migreringsverktyg för app som baseras på [PowerShell.](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration). Se [lösnings guide](./migrate-adfs-apps-to-azure.md):
 
-[Migrera appar från Active Directory Federation Services (AD FS) (AD FS) till Azure AD.](https://aka.ms/migrateapps/adfssolutionguide)
+[Migrera appar från Active Directory Federation Services (AD FS) (AD FS) till Azure AD.](./migrate-adfs-apps-to-azure.md)
 
 ### <a name="using-other-identity-providers-idps"></a>Använda andra identitets leverantörer (IDP: er)
 
@@ -270,7 +270,7 @@ När du har hittat dina appar kommer du att identifiera dessa typer av appar i d
 
 De redan moderna apparna är mest sannolika att flyttas till Azure AD. Dessa appar använder redan moderna autentiseringsprotokoll (till exempel SAML eller OpenID Connect) och kan konfigureras om så att de autentiseras med Azure AD.
 
-Förutom valen i [Azure AD App-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) kan det bero på att det finns appar som redan finns i din organisation eller appar från tredje part från en leverantör som inte är en del av Azure AD-galleriet ([ej Galleri program)](/azure/active-directory/manage-apps/add-non-gallery-app).
+Förutom valen i [Azure AD App-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) kan det bero på att det finns appar som redan finns i din organisation eller appar från tredje part från en leverantör som inte är en del av Azure AD-galleriet ([ej Galleri program)](./add-application-portal.md).
 
 Äldre appar som du väljer att modernisera
 
@@ -288,13 +288,13 @@ För vissa appar som använder äldre autentiseringsprotokoll är det ibland int
 
 - Appar som har utvecklats med lokala autentiseringsmetoder som du inte har några planer att flytta
 
-Azure AD kan ge fantastiska förmåner till dessa äldre appar, eftersom du kan aktivera moderna funktioner för Azure AD-säkerhet och-styrning som [Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks), [villkorlig åtkomst](/azure/active-directory/conditional-access/overview), [identitets skydd](/azure/active-directory/identity-protection/), [delegerad program åtkomst](/azure/active-directory/manage-apps/access-panel-manage-self-service-access)och [åtkomst granskningar](https://docs.microsoft.com/azure/active-directory/governance/manage-user-access-with-access-reviews#create-and-perform-an-access-review) mot dessa appar utan att behöva röra appen alls!
+Azure AD kan ge fantastiska förmåner till dessa äldre appar, eftersom du kan aktivera moderna funktioner för Azure AD-säkerhet och-styrning som [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md), [villkorlig åtkomst](../conditional-access/overview.md), [identitets skydd](../identity-protection/index.yml), [delegerad program åtkomst](./access-panel-manage-self-service-access.md)och [åtkomst granskningar](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review) mot dessa appar utan att behöva röra appen alls!
 
-Börja med att **utöka de här apparna till molnet** med Azure AD [Application Proxy](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) med enkla autentiserings medel (t. ex. lösen ords valv) för att hjälpa dina användare att migreras snabbt, eller via våra [partner integrationer](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) med program leverans styrenheter som du kanske har distribuerat redan.
+Börja med att **utöka de här apparna till molnet** med Azure AD [Application Proxy](./application-proxy-configure-single-sign-on-password-vaulting.md) med enkla autentiserings medel (t. ex. lösen ords valv) för att hjälpa dina användare att migreras snabbt, eller via våra [partner integrationer](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/) med program leverans styrenheter som du kanske har distribuerat redan.
 
 ### <a name="new-line-of-business-lob-apps"></a>Nya LoB-appar (Line of Business)
 
-Du utvecklar vanligt vis LoB-appar för organisationens interna användning. Om du har nya appar i pipelinen rekommenderar vi att du använder [Microsoft Identity Platform](/azure/active-directory/develop/about-microsoft-identity-platform) för att implementera OpenID Connect.
+Du utvecklar vanligt vis LoB-appar för organisationens interna användning. Om du har nya appar i pipelinen rekommenderar vi att du använder [Microsoft Identity Platform](../develop/v2-overview.md) för att implementera OpenID Connect.
 
 ### <a name="apps-to-deprecate"></a>Appar som ska föråldras
 
@@ -316,10 +316,10 @@ Du har slutfört i den här fasen med:
 
   - Vilka system de apparna ansluter till o från var och på vilka enheter användarna kommer åt dem
 
-  - Om de ska migreras, föråldras eller anslutas till [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect).
+  - Om de ska migreras, föråldras eller anslutas till [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md).
 
 > [!NOTE]
-> Du kan hämta [program identifierings kalkyl bladet](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) för att registrera de program som du vill migrera till Azure AD-autentisering, och de som du vill lämna men hantera med hjälp av [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect).
+> Du kan hämta [program identifierings kalkyl bladet](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx) för att registrera de program som du vill migrera till Azure AD-autentisering, och de som du vill lämna men hantera med hjälp av [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md).
 
 ## <a name="phase-2-classify-apps-and-plan-pilot"></a>Fas 2: klassificera appar och planera pilot
 
@@ -351,7 +351,7 @@ Du kan välja att påbörja migreringen av appen med antingen de lägsta priorit
 
 I ett scenario där du kanske inte har erfarenhet av att använda Azure AD och identitets tjänster bör du överväga att flytta dina **lägsta prioritets program** till Azure AD först. Detta minimerar ditt företags påverkan och du kan bygga ett moment. När du har flyttat de här apparna och fått från intressenter förtroende kan du fortsätta att migrera de andra apparna.
 
-Om det inte finns någon tydlig prioritet bör du överväga att flytta apparna som finns i [Azure AD-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) först och stödja flera identitets leverantörer (ADFS eller okta) eftersom de är enklare att integrera. De här apparna är förmodligen de **mest prioriterade apparna** i din organisation. Vi har utvecklat en samling med [självstudier](/azure/active-directory/saas-apps/tutorial-list) som vägleder dig genom konfigurationen för att integrera dina SaaS-program med Azure AD.
+Om det inte finns någon tydlig prioritet bör du överväga att flytta apparna som finns i [Azure AD-galleriet](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) först och stödja flera identitets leverantörer (ADFS eller okta) eftersom de är enklare att integrera. De här apparna är förmodligen de **mest prioriterade apparna** i din organisation. Vi har utvecklat en samling med [självstudier](../saas-apps/tutorial-list.md) som vägleder dig genom konfigurationen för att integrera dina SaaS-program med Azure AD.
 
 När du har en tids gräns för att migrera apparna, tar de här Bucket för appar med högst prioritet den stora arbets belastningen. Du kan slutligen välja de lägre prioritets apparna eftersom de inte kommer att ändra kostnaden även om du har flyttat tids gränsen. Även om du måste förnya licensen, är det ett litet belopp.
 
@@ -399,7 +399,7 @@ När du har klassificerat ditt program och dokumenterat informationen, kan du se
 
 ### <a name="plan-a-pilot"></a>Planera en pilot
 
-Apparna som du väljer för piloten ska representera nyckel identiteten och säkerhets kraven för din organisation och du måste ha tydliga köp från program ägare. Piloterna körs vanligt vis i en separat test miljö. Se [metod tips för piloter](/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) på sidan distributions planer.
+Apparna som du väljer för piloten ska representera nyckel identiteten och säkerhets kraven för din organisation och du måste ha tydliga köp från program ägare. Piloterna körs vanligt vis i en separat test miljö. Se [metod tips för piloter](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) på sidan distributions planer.
 
 **Glöm inte om dina externa partner.** Se till att de deltar i migrerings scheman och testning. Se slutligen till att de har ett sätt att få åtkomst till supportavdelningen vid eventuella problem.
 
@@ -409,7 +409,7 @@ Apparna som du väljer för piloten ska representera nyckel identiteten och säk
 
 Många leverantörer av SaaS-appar debiteras för att ändra SSO-anslutningen. Kontrol lera med dem och planera för detta.
 
-Azure AD har också [tjänst begränsningar och begränsningar](/azure/active-directory/users-groups-roles/directory-service-limits-restrictions) som du bör känna till.
+Azure AD har också [tjänst begränsningar och begränsningar](../enterprise-users/directory-service-limits-restrictions.md) som du bör känna till.
 
 ### <a name="app-owner-sign-off"></a>Signering av app-ägare
 
@@ -421,9 +421,9 @@ Innan du påbörjar migreringsprocessen tar du tid till att fullständigt beakta
 
 ### <a name="identities-and-data"></a>Identiteter och data
 
-De flesta organisationer har särskilda krav på identiteter och data skydd som varierar beroende på bransch segment och jobb funktioner inom organisationer. Se [konfigurationer för identitets-och enhets åtkomst](/microsoft-365/enterprise/microsoft-365-policies-configurations) för våra rekommendationer, inklusive en före skriven uppsättning [principer för villkorlig åtkomst](/azure/active-directory/active-directory-conditional-access-azure-portal) och relaterade funktioner.
+De flesta organisationer har särskilda krav på identiteter och data skydd som varierar beroende på bransch segment och jobb funktioner inom organisationer. Se [konfigurationer för identitets-och enhets åtkomst](/microsoft-365/enterprise/microsoft-365-policies-configurations) för våra rekommendationer, inklusive en före skriven uppsättning [principer för villkorlig åtkomst](../conditional-access/overview.md) och relaterade funktioner.
 
-Du kan använda den här informationen för att skydda åtkomsten till alla tjänster som är integrerade med Azure AD. Dessa rekommendationer är justerade med Microsofts säkra poäng samt [identitets poängen i Azure AD](/azure/active-directory/fundamentals/identity-secure-score). Resultatet hjälper dig att:
+Du kan använda den här informationen för att skydda åtkomsten till alla tjänster som är integrerade med Azure AD. Dessa rekommendationer är justerade med Microsofts säkra poäng samt [identitets poängen i Azure AD](../fundamentals/identity-secure-score.md). Resultatet hjälper dig att:
 
 - Objektivt mäta din identitetssäkerhetsstatus
 
@@ -431,7 +431,7 @@ Du kan använda den här informationen för att skydda åtkomsten till alla tjä
 
 - Granska framgången för dina förbättringar
 
-Detta hjälper dig också att implementera de [fem stegen för att skydda din identitets infrastruktur](/azure/security/azure-ad-secure-steps). Använd vägledningen som utgångs punkt för din organisation och justera principerna för att uppfylla organisationens särskilda krav.
+Detta hjälper dig också att implementera de [fem stegen för att skydda din identitets infrastruktur](../../security/fundamentals/steps-secure-identity.md). Använd vägledningen som utgångs punkt för din organisation och justera principerna för att uppfylla organisationens särskilda krav.
 
 ### <a name="who-is-accessing-your-data"></a>Vem har åtkomst till dina data?
 
@@ -439,11 +439,11 @@ Det finns två huvudsakliga kategorier av användare av dina appar och resurser 
 
 - **Internt:** Anställda, entreprenörer och leverantörer som har konton inom din identitets leverantör. Detta kan kräva ytterligare pivotering med olika regler för chefer eller ledarskap jämfört med andra anställda.
 
-- **Externt:** Leverantörer, leverantörer, distributörer eller andra affärs partner som interagerar med din organisation i den ordinarie verksamheten med [Azure AD B2B-samarbete.](/azure/active-directory/b2b/what-is-b2b)
+- **Externt:** Leverantörer, leverantörer, distributörer eller andra affärs partner som interagerar med din organisation i den ordinarie verksamheten med [Azure AD B2B-samarbete.](../external-identities/what-is-b2b.md)
 
-Du kan definiera grupper för dessa användare och fylla i grupperna på olika sätt. Du kan välja att en administratör manuellt ska lägga till medlemmar i en grupp, eller så kan du aktivera självbetjänings grupp medlemskap. Regler kan upprättas som automatiskt lägger till medlemmar i grupper baserat på de angivna kriterierna med [dynamiska grupper](/azure/active-directory/users-groups-roles/groups-dynamic-membership).
+Du kan definiera grupper för dessa användare och fylla i grupperna på olika sätt. Du kan välja att en administratör manuellt ska lägga till medlemmar i en grupp, eller så kan du aktivera självbetjänings grupp medlemskap. Regler kan upprättas som automatiskt lägger till medlemmar i grupper baserat på de angivna kriterierna med [dynamiska grupper](../enterprise-users/groups-dynamic-membership.md).
 
-Externa användare kan också hänvisa till kunder som kräver särskild uppmärksamhet. [Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-overview)är en separat produkt som stöder kundautentisering. Det finns dock utanför det här dokumentets omfattning.
+Externa användare kan också hänvisa till kunder som kräver särskild uppmärksamhet. [Azure AD B2C](../../active-directory-b2c/overview.md)är en separat produkt som stöder kundautentisering. Det finns dock utanför det här dokumentets omfattning.
 
 ### <a name="devicelocation-used-to-access-data"></a>Enhet/plats som används för att komma åt data
 
@@ -451,7 +451,7 @@ Den enhet och plats som en användare använder för att få åtkomst till en ap
 
 ![Ett diagram som visar relationen mellan användar plats och data åtkomst](media/migrating-application-authentication-to-azure-active-directory-6.jpg)
 
-Med dessa aspekter av resurs, användare och enhet i åtanke kan du välja att använda funktioner för [villkorlig åtkomst i Azure AD](/azure/active-directory/active-directory-conditional-access-azure-portal) . Villkorlig åtkomst går utöver användar behörigheter: det baseras på en kombination av faktorer, till exempel identiteten för en användare eller grupp, nätverket som användaren är ansluten till, den enhet och det program som de använder och vilken typ av data som de försöker komma åt. Åtkomsten som beviljas användaren anpassas till den här bredare uppsättning villkor.
+Med dessa aspekter av resurs, användare och enhet i åtanke kan du välja att använda funktioner för [villkorlig åtkomst i Azure AD](../conditional-access/overview.md) . Villkorlig åtkomst går utöver användar behörigheter: det baseras på en kombination av faktorer, till exempel identiteten för en användare eller grupp, nätverket som användaren är ansluten till, den enhet och det program som de använder och vilken typ av data som de försöker komma åt. Åtkomsten som beviljas användaren anpassas till den här bredare uppsättning villkor.
 
 ### <a name="exit-criteria"></a>Avslutnings villkor
 
@@ -475,13 +475,13 @@ När du har fått företags köpet är nästa steg att börja migrera de här ap
 
 Använd verktygen och anvisningarna nedan för att följa de exakta steg som krävs för att migrera dina program till Azure AD:
 
-- **Allmän vägledning för migrering** – Använd formulären whitepaper, verktyg, e-postmallar och program i [Azure AD Apps Migration Toolkit](https://aka.ms/migrateapps) för att identifiera, klassificera och migrera dina appar.
+- **Allmän vägledning för migrering** – Använd formulären whitepaper, verktyg, e-postmallar och program i [Azure AD Apps Migration Toolkit](./migration-resources.md) för att identifiera, klassificera och migrera dina appar.
 
-- **SaaS-program** – se vår lista över [hundratals självstudier med SaaS-appar](/azure/active-directory/active-directory-saas-tutorial-list) och den fullständiga [DISTRIBUTIONS planen för Azure AD SSO](https://aka.ms/ssodeploymentplan) för att gå igenom processen från slut punkt till slut punkt.
+- **SaaS-program** – se vår lista över [hundratals självstudier med SaaS-appar](../saas-apps/tutorial-list.md) och den fullständiga [DISTRIBUTIONS planen för Azure AD SSO](https://aka.ms/ssodeploymentplan) för att gå igenom processen från slut punkt till slut punkt.
 
-- **Program som körs lokalt** – lär dig allt [om Azure AD-programproxy](/azure/active-directory/manage-apps/application-proxy) och Använd den fullständiga [distributions planen för Azure AD-programproxy](https://aka.ms/AppProxyDPDownload) för att komma igång snabbt.
+- **Program som körs lokalt** – lär dig allt [om Azure AD-programproxy](./application-proxy.md) och Använd den fullständiga [distributions planen för Azure AD-programproxy](https://aka.ms/AppProxyDPDownload) för att komma igång snabbt.
 
-- **Appar som du utvecklar** – Läs våra steg för steg-vägledning om [integrering](/azure/active-directory/develop/active-directory-integrating-applications) och [registrering](/azure/active-directory/develop/active-directory-v2-app-registration) .
+- **Appar som du utvecklar** – Läs våra steg för steg-vägledning om [integrering](../develop/quickstart-register-app.md) och [registrering](../develop/quickstart-register-app.md) .
 
 Efter migreringen kan du välja att skicka kommunikationen informerar användarna om distributionen och påminna dem om eventuella nya steg som de måste vidta.
 
@@ -489,7 +489,7 @@ Efter migreringen kan du välja att skicka kommunikationen informerar användarn
 
 Under migreringen kanske appen redan har en test miljö som används vid vanliga distributioner. Du kan fortsätta att använda den här miljön för migrations testning. Om en test miljö inte är tillgänglig för närvarande kan du konfigurera en med Azure App Service eller Azure Virtual Machines, beroende på programmets arkitektur. Du kan välja att konfigurera en separat test-Azure AD-klient som ska användas när du utvecklar dina AppData. Den här klienten startar i ett rent tillstånd och kommer inte att konfigureras för synkronisering med några system.
 
-Du kan testa varje app genom att logga in med en test användare och se till att alla funktioner är desamma som innan migreringen. Om du bestämmer under testningen att användarna måste uppdatera sina [MFA](/active-directory/authentication/howto-mfa-userstates) -eller [SSPR](/azure/active-directory/authentication/quickstart-sspr)-inställningar eller om du lägger till den här funktionen under migreringen ska du se till att lägga till den i kommunikations planen för slutanvändare. Se [MFA](https://aka.ms/mfatemplates) -och [SSPR](https://aka.ms/ssprtemplates) för slut användar kommunikation.
+Du kan testa varje app genom att logga in med en test användare och se till att alla funktioner är desamma som innan migreringen. Om du bestämmer under testningen att användarna måste uppdatera sina [MFA](/active-directory/authentication/howto-mfa-userstates) -eller [SSPR](../authentication/tutorial-enable-sspr.md)-inställningar eller om du lägger till den här funktionen under migreringen ska du se till att lägga till den i kommunikations planen för slutanvändare. Se [MFA](https://aka.ms/mfatemplates) -och [SSPR](https://aka.ms/ssprtemplates) för slut användar kommunikation.
 
 När du har migrerat apparna går du till [Azure-portalen](https://aad.portal.azure.com/) för att testa om migreringen lyckades. Följ anvisningarna nedan:
 
@@ -497,20 +497,21 @@ När du har migrerat apparna går du till [Azure-portalen](https://aad.portal.az
 
 - Välj **hantera &gt; användare och grupper** för att tilldela minst en användare eller grupp till appen.
 
-- Välj **hantera &gt; villkorlig åtkomst**. Granska listan med principer och se till att du inte blockerar åtkomsten till programmet med en [princip för villkorlig åtkomst](/azure/active-directory/active-directory-conditional-access-azure-portal).
+- Välj **hantera &gt; villkorlig åtkomst**. Granska listan med principer och se till att du inte blockerar åtkomsten till programmet med en [princip för villkorlig åtkomst](../conditional-access/overview.md).
 
 Beroende på hur du konfigurerar din app, kontrol lera att SSO fungerar korrekt.
 
 | Autentiseringstyp      | Testning                                             |
 | ------------------------ | --------------------------------------------------- |
 | **OAuth/OpenID Connect** | Välj **företags program &gt; behörigheter** och se till att du har samtyckt till programmet som ska användas i din organisation i användar inställningarna för din app. |
-| **SAML-baserad SSO** | Använd knappen [testa SAML-inställningar](/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) under **enkel inloggning.** |
-| **Lösenordsbaserad SSO** | Hämta och installera mina [appars säkra inloggnings tillägg](/azure/active-directory/user-help/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension). Med det här tillägget kan du starta valfri organisations molnappar som kräver att du använder en SSO-process. |
-| **[Programproxy](/azure/active-directory/manage-apps/application-proxy)** | Se till att din anslutning körs och är tilldelad till ditt program. Besök [fel söknings guiden för programproxy](/azure/active-directory/manage-apps/application-proxy-troubleshoot) för ytterligare hjälp. |
+| **SAML-baserad SSO** | Använd knappen [testa SAML-inställningar](./debug-saml-sso-issues.md) under **enkel inloggning.** |
+| **Lösenordsbaserad SSO** | Hämta och installera mina [appars säkra inloggnings tillägg](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Med det här tillägget kan du starta valfri organisations molnappar som kräver att du använder en SSO-process. |
+
+| **[Programproxy](./application-proxy.md)** | Se till att din anslutning körs och är tilldelad till ditt program. Besök [fel söknings guiden för programproxy](./application-proxy-troubleshoot.md) för ytterligare hjälp. |
 
 ### <a name="troubleshoot"></a>Felsöka
 
-Om du stöter på problem kan du gå till [fel söknings guiden för appar](https://aka.ms/troubleshoot-apps) för att få hjälp. Se även [problem med att logga in till ett anpassat, utvecklat program](/azure/active-directory/manage-apps/application-sign-in-problem-custom-dev).
+Om du stöter på problem kan du gå till [fel söknings guiden för appar](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) för att få hjälp. Se även [problem med att logga in till ett anpassat, utvecklat program](./application-sign-in-problem-federated-sso-gallery.md).
 
 ### <a name="plan-rollback"></a>Planera återställning
 
@@ -554,19 +555,21 @@ När du har migrerat apparna kan du förbättra användar upplevelsen på många
 
 **Gör det lättare att identifiera appar**
 
-**Peka användaren** på Portal upplevelsen för mina [appar](/azure/active-directory/user-help/my-apps-portal-end-user-access#my-apps-secure-sign-in-extension). Här har de åtkomst till alla molnbaserade appar, appar som du gör tillgängliga med hjälp av [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect)och appar som använder [programproxy](/azure/active-directory/manage-apps/application-proxy) , förutsatt att de har behörighet att komma åt dessa appar.
+**Peka användaren** på Portal upplevelsen för mina [appar](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension). Här har de åtkomst till alla molnbaserade appar, appar som du gör tillgängliga med hjälp av [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)och appar som använder [programproxy](./application-proxy.md) , förutsatt att de har behörighet att komma åt dessa appar.
+
 
 Du kan hjälpa dina användare att identifiera sina appar:
 
-- Använd den [befintliga funktionen för enkel inloggning](/azure/active-directory/active-directory-saas-custom-apps#existing-single-sign-on) för att **länka dina användare till valfri app**
+- Använd den [befintliga funktionen för enkel inloggning](./view-applications-portal.md) för att **länka dina användare till valfri app**
 
-- Aktivera självbetjäning för [program åtkomst](/azure/active-directory/application-access-self-service-how-to)till en app och **Låt användarna lägga till appar som du kan granska**
 
-- [Dölj program från slutanvändare](/azure/active-directory/manage-apps/hide-application-from-user-portal) (standardappar eller andra appar i Microsoft) så att **apparna behöver bli mer synliga**
+- Aktivera självbetjäning för [program åtkomst](./manage-self-service-access.md)till en app och **Låt användarna lägga till appar som du kan granska**
+
+- [Dölj program från slutanvändare](./hide-application-from-user-portal.md) (standardappar eller andra appar i Microsoft) så att **apparna behöver bli mer synliga**
 
 ### <a name="make-apps-accessible"></a>Gör appar tillgängliga
 
-**Låt användarna komma åt appar från sina mobila enheter**. Användare kan komma åt mina apps-portalen med Intune-hanterad webbläsare på sina [iOS](/azure/active-directory/manage-apps/hide-application-from-user-portal) 7,0-eller senare-eller [Android](/azure/active-directory/manage-apps/hide-application-from-user-portal) -enheter.
+**Låt användarna komma åt appar från sina mobila enheter**. Användare kan komma åt mina apps-portalen med Intune-hanterad webbläsare på sina [iOS](./hide-application-from-user-portal.md) 7,0-eller senare-eller [Android](./hide-application-from-user-portal.md) -enheter.
 
 Användare kan ladda ned en **Intune-hanterad webbläsare**:
 
@@ -580,7 +583,7 @@ Användare kan [Ladda ned säkra inloggnings tillägg](https://www.microsoft.com
 
 - **Sök efter sina appar och se till att de mest nyligen använda apparna visas**
 
-- **Konvertera automatiskt interna URL: er** som du har konfigurerat i [Application Proxy](/azure/active-directory/manage-apps/application-proxy) till lämpliga externa URL: er. Dina användare kan nu arbeta med de länkar som de är bekanta med oavsett var de befinner sig.
+- **Konvertera automatiskt interna URL: er** som du har konfigurerat i [Application Proxy](./application-proxy.md) till lämpliga externa URL: er. Dina användare kan nu arbeta med de länkar som de är bekanta med oavsett var de befinner sig.
 
 **Låt användarna öppna sina appar från Office.com.**
 
@@ -590,11 +593,11 @@ Användarna kan gå till [Office.com](https://www.office.com/) för att **söka 
 
 Azure AD tillhandahåller en central åtkomst plats för hantering av dina migrerade appar. Gå till [Azure Portal](https://portal.azure.com/) och aktivera följande funktioner:
 
-- **Skydda användarens åtkomst till appar.** Aktivera [principer för villkorlig åtkomst](/azure/active-directory/active-directory-conditional-access-azure-portal)eller [identifiera identitets skydd](/azure/active-directory/active-directory-identityprotection)för att skydda användarnas åtkomst till program baserat på enhetens tillstånd, plats med mera.
+- **Skydda användarens åtkomst till appar.** Aktivera [principer för villkorlig åtkomst](../conditional-access/overview.md)eller [identifiera identitets skydd](../identity-protection/overview-identity-protection.md)för att skydda användarnas åtkomst till program baserat på enhetens tillstånd, plats med mera.
 
-- **Automatisk etablering.** Konfigurera [Automatisk etablering av användare](/azure/active-directory/manage-apps/user-provisioning) med en mängd SaaS-appar från tredje part som användare behöver åtkomst till. Förutom att skapa användar identiteter, inkluderar den underhåll och borttagning av användar identiteter som status eller roller ändras.
+- **Automatisk etablering.** Konfigurera [Automatisk etablering av användare](../app-provisioning/user-provisioning.md) med en mängd SaaS-appar från tredje part som användare behöver åtkomst till. Förutom att skapa användar identiteter, inkluderar den underhåll och borttagning av användar identiteter som status eller roller ändras.
 
-- **Delegera** **hantering** av användar åtkomst. Om det behövs kan du aktivera självbetjänings program åtkomst till dina appar och *tilldela en affärs god kännare för att godkänna åtkomst till dessa appar*. Använd [grupp hantering](/azure/active-directory/users-groups-roles/groups-self-service-management)via självbetjäning för grupper som tilldelats samlingar av appar.
+- **Delegera** **hantering** av användar åtkomst. Om det behövs kan du aktivera självbetjänings program åtkomst till dina appar och *tilldela en affärs god kännare för att godkänna åtkomst till dessa appar*. Använd [grupp hantering](../enterprise-users/groups-self-service-management.md)via självbetjäning för grupper som tilldelats samlingar av appar.
 
 - **Delegera administratörs åtkomst.** använda **katalog rollen** för att tilldela en administratörs roll (till exempel program administratör, moln program administratör eller programutvecklare) till din användare.
 
@@ -602,13 +605,13 @@ Azure AD tillhandahåller en central åtkomst plats för hantering av dina migre
 
 Du kan också använda [Azure Portal](https://portal.azure.com/) för att granska alla dina appar från en central plats,
 
-- **Granska din app** med **företags program, granska** eller komma åt samma information från [Azure AD repor ting-API: n](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) för att integrera med dina favorit verktyg.
+- **Granska din app** med **företags program, granska** eller komma åt samma information från [Azure AD repor ting-API: n](../reports-monitoring/concept-reporting-api.md) för att integrera med dina favorit verktyg.
 
 - **Visa behörigheterna för en app** med **företags program, behörigheter** för appar med OAuth/OpenID Connect.
 
-- **Få inloggnings** information med hjälp av **företags program, inloggnings** program. Få åtkomst till samma information från [Azure AD repor ting-API: et.](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
+- **Få inloggnings** information med hjälp av **företags program, inloggnings** program. Få åtkomst till samma information från [Azure AD repor ting-API: et.](../reports-monitoring/concept-reporting-api.md)
 
-- **Visualisera appens användning** från [Azure AD PowerBI-innehålls paketet](/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- **Visualisera appens användning** från [Azure AD PowerBI-innehålls paketet](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ### <a name="exit-criteria"></a>Avslutnings villkor
 
@@ -622,7 +625,7 @@ Du är klar med den här fasen när du:
 
 Distributions planer vägleder dig genom affärs värde, planering, implementerings steg och hantering av Azure AD-lösningar, inklusive migrering av appar. De samlar allt du behöver för att börja distribuera och få ut värdet från Azure AD-funktioner. Distributions guiderna innehåller innehåll som Microsoft rekommenderar bästa praxis, slutanvändarens kommunikation, planerings guider, implementerings steg, test ärenden och mycket annat.
 
-Många [distributions planer](https://aka.ms/deploymentplans) är tillgängliga för din användning och vi har alltid mer!
+Många [distributions planer](../fundamentals/active-directory-deployment-plans.md) är tillgängliga för din användning och vi har alltid mer!
 
 ### <a name="contact-support"></a>Kontakta supporten
 

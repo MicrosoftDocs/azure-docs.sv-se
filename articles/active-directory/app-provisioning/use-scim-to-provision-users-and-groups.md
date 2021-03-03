@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989056"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652104"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
@@ -882,7 +882,7 @@ I exempel koden autentiseras begär Anden med hjälp av paketet Microsoft. AspNe
 
 En Bearer-token krävs också för att använda de tillhandahållna [Postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) och utföra lokal fel sökning med localhost. Exempel koden använder ASP.NET Core miljöer för att ändra autentiseringsinställningarna under utvecklings fasen och aktivera Använd en självsignerad token.
 
-Mer information om flera miljöer i ASP.NET Core finns i [använda flera miljöer i ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+Mer information om flera miljöer i ASP.NET Core finns i [använda flera miljöer i ASP.net Core](/aspnet/core/fundamentals/environments).
 
 Följande kod framtvingar att begär anden till någon av tjänstens slut punkter autentiseras med hjälp av en Bearer-token signerad med en anpassad nyckel:
 

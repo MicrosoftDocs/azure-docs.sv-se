@@ -6,20 +6,19 @@ documentationcenter: ''
 author: bentrin
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd1cfb0cc8e1868e78b4d284d1b1f4e7e85aa318
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967694"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677036"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA vid migrering av stora Azure-instanser till Azure Virtual Machines
 Den här artikeln beskriver möjliga scenarier för distribution av stora Azure-instanser och erbjuder planerings-och migrations metoder med minimerad över gångs drift
@@ -52,14 +51,14 @@ Vanliga distributions modeller med HLI-kunder sammanfattas i följande tabell.  
 | --- | --- | --- | --- |
 | 1 | [En nod med en SID](./hana-supported-scenario.md#single-node-with-one-sid) | Ja | - |
 | 2 | [En nod med MCOS](./hana-supported-scenario.md#single-node-mcos) | Ja | - |
-| 3 | [Enkel nod med DR med Storage Replication](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Nej | Storage Replication är inte tillgängligt med Azure Virtual Platform, ändra den aktuella DR-lösningen till antingen HSR eller säkerhets kopiering/återställning |
-| 4 | [Enkel nod med DR (flera syften) med Storage Replication](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Nej | Storage Replication är inte tillgängligt med Azure Virtual Platform, ändra den aktuella DR-lösningen till antingen HSR eller säkerhets kopiering/återställning |
+| 3 | [Enkel nod med DR med Storage Replication](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Inga | Storage Replication är inte tillgängligt med Azure Virtual Platform, ändra den aktuella DR-lösningen till antingen HSR eller säkerhets kopiering/återställning |
+| 4 | [Enkel nod med DR (flera syften) med Storage Replication](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Inga | Storage Replication är inte tillgängligt med Azure Virtual Platform, ändra den aktuella DR-lösningen till antingen HSR eller säkerhets kopiering/återställning |
 | 5 | [HSR med STONITH för hög tillgänglighet](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Ja | Inga förkonfigurerade SBD för virtuella mål datorer.  Välj och distribuera en STONITH-lösning.  Möjliga alternativ: Azure staket-agenten (stöds för både [RHEL](./high-availability-guide-rhel-pacemaker.md), [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
-| 6 | [HA med HSR, DR med Storage Replication](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Nej | Ersätt Storage Replication for DR-behoven med antingen HSR eller säkerhets kopiering/återställning |
+| 6 | [HA med HSR, DR med Storage Replication](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Inga | Ersätt Storage Replication for DR-behoven med antingen HSR eller säkerhets kopiering/återställning |
 | 7 | [Automatisk redundans för värd (1 + 1)](./hana-supported-scenario.md#host-auto-failover-11) | Ja | Använda ANF för delad lagring med virtuella Azure-datorer |
 | 8 | [Skala ut med vänte läge](./hana-supported-scenario.md#scale-out-with-standby) | Ja | BW/4HANA med M128s, M416s, M416ms virtuella datorer med ANF enbart för lagring |
 | 9 | [Skala ut utan vänte läge](./hana-supported-scenario.md#scale-out-without-standby) | Ja | BW/4HANA med M128s, M416s, M416ms VM (med eller utan användning av ANF för lagring) |
-| 10 | [Skala ut med DR med hjälp av Storage Replication](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | Nej | Ersätt Storage Replication for DR-behoven med antingen HSR eller säkerhets kopiering/återställning |
+| 10 | [Skala ut med DR med hjälp av Storage Replication](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | Inga | Ersätt Storage Replication for DR-behoven med antingen HSR eller säkerhets kopiering/återställning |
 | 11 | [Enkel nod med DR med HSR](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | Ja | - |
 | 12 | [Enkel nod HSR till DR (kostnads optimerad)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | Ja | - |
 | 13 | [HA och DR med HSR](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr) | Ja | - |

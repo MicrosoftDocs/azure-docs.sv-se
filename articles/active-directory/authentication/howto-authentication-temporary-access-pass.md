@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 02/19/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56d45119fa86ab47e6a625c628d8cb9763db83bd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: b0f49f39e6bc291c3242fe739866a015ac154a8b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521113"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651169"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurera tillfälligt åtkomst pass i Azure AD för att registrera metoder för lösen ords lös autentisering (för hands version)
 
@@ -75,6 +75,9 @@ För att skapa en tryckning:
 1. Under **Välj metod** klickar du på **tillfälligt åtkomst pass (för hands version)**.
 1. Definiera en anpassad aktiverings tid eller varaktighet och klicka på **Lägg till**.
 
+   >[!NOTE]
+   >En engångs tryckning används inte när jag låter mig vara inloggad (KMSI avgör) är aktive rad i klient organisationen. Om du skapar en engångs KNACKNING, se till att inaktivera KMSI avgör.
+
    ![Skärm bild av hur du skapar en KNACKNING](./media/how-to-authentication-temporary-access-pass/create.png)
 
 1. När du har lagt till det visas information om KNACKen. Anteckna det faktiska värdet för tryck. Du anger det här värdet för användaren. Du kan inte Visa det här värdet när du har klickat på **OK**.
@@ -125,6 +128,7 @@ Tänk på följande begränsningar:
 - Gäst användare kan inte logga in med en KNACKNING.
 - Användare i omfång för registrerings principen för självbetjänings återställning (SSPR) måste registrera en av SSPR-metoderna när de har loggat in med tryck. Om användaren bara kommer att använda FIDO2-nyckeln utesluter du dem från SSPR-principen eller inaktiverar registrerings principen för SSPR. 
 - Det går inte att använda Tryck på nätverks princip Server (NPS)-tillägget och Active Directory Federation Services (AD FS) (AD FS)-kortet.
+- En engångs tryckning används inte när KMSI avgör har Aktiver ATS för klienten.
 - När sömlös SSO är aktiverat på klient organisationen uppmanas användarna att ange ett lösen ord. Länken **Använd ditt tillfälliga åtkomst pass** är tillgänglig för användaren att logga in med tryck.
 
 ![Skärm bild av Använd en KNACKNING i stället](./media/how-to-authentication-temporary-access-pass/alternative.png)

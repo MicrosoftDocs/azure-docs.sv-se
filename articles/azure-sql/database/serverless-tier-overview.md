@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393249"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658596"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database utan Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,9 +103,9 @@ Observera att användningen av aktiva cacheminnen kan vara hög beroende på anv
 
 SQL-cachen växer när data hämtas från disk på samma sätt och med samma hastighet som för etablerade databaser. När databasen är upptagen får cachen öka obegränsad till högsta minnes gräns.
 
-## <a name="auto-pause-and-auto-resume"></a>Automatisk paus och automatisk återgång
+## <a name="auto-pausing-and-auto-resuming"></a>Automatisk paus och automatisk återställning
 
-### <a name="auto-pause"></a>Pausa automatiskt
+### <a name="auto-pausing"></a>Automatisk pausning
 
 Automatisk paus utlöses om samtliga följande villkor är uppfyllda under tiden för fördröjningen för automatisk paus:
 

@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 35fdd5032a6b666aaf8d0b29a83f0c83818ef230
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: beef869b891fe6e3f0ea2f667763cb310008b2fc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562217"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653277"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Snabb start: Hämta en åtkomsttoken och anropa Microsoft Graph-API: et från en Electron Desktop-app
 
@@ -29,11 +29,11 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 * [Visual Studio Code](https://code.visualstudio.com/download) eller en annan kod redigerare
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>Registrera och ladda ned snabbstartsprogrammet
-> 
+> ## <a name="register-and-download-the-sample-application"></a>Registrera och ladda ned exempel programmet
+>
 > Kom igång genom att följa stegen nedan.
-> 
-> #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
+>
+> #### <a name="step-1-register-the-application"></a>Steg 1: registrera programmet
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
 > 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
@@ -48,7 +48,7 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > 1. Välj **Konfigurera**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
 > För att kod exemplet för den här snabb starten ska fungera måste du lägga till en svars-URL som **msal://Redirect**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör den här ändringen åt mig]()
@@ -56,7 +56,7 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Redan konfigurerad](media/quickstart-v2-windows-desktop/green-check.png) Programmet konfigureras med de här attributen.
 
-#### <a name="step-2-download-your-electron-project"></a>Steg 2: Hämta ditt Electron-projekt
+#### <a name="step-2-download-the-electron-sample-project"></a>Steg 2: Hämta Electron-exempelprojektet
 
 > [!div renderon="docs"]
 > [Ladda ned kod exemplet](https://github.com/azure-samples/ms-identity-javascript-nodejs-desktop/archive/main.zip)
@@ -69,7 +69,7 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-electron-project"></a>Steg 3: Konfigurera ditt Electron-projekt
+> #### <a name="step-3-configure-the-electron-sample-project"></a>Steg 3: Konfigurera Electron-exempelprojektet
 >
 > 1. Extrahera zip-filen till en lokal mapp nära disk roten, till exempel *C:/Azure-samples*.
 > 1. Redigera *. kuvert* och ersätt värdena för fälten `TENANT_ID` och `CLIENT_ID` med följande kodfragment:
@@ -140,7 +140,7 @@ const MSAL_CONFIG = {
 const pca = new PublicClientApplication(MSAL_CONFIG);
 ```
 
-> | Plats: |Description |
+> | Plats: |Beskrivning |
 > |---------|---------|
 > | `clientId` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
 > | `authority`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}` för offentligt moln, där {klient} är namnet på klientorganisationen eller klient-ID:t.|
@@ -170,7 +170,7 @@ async function getTokenInteractive(authWindow, tokenRequest) {
 
     /**
      * Proof Key for Code Exchange (PKCE) Setup
-     * 
+     *
      * MSAL enables PKCE in the Authorization Code Grant Flow by including the codeChallenge and codeChallengeMethod
      * parameters in the request passed into getAuthCodeUrl() API, as well as the codeVerifier parameter in the
      * second leg (acquireTokenByCode() API).
@@ -181,11 +181,11 @@ async function getTokenInteractive(authWindow, tokenRequest) {
     pkceCodes.verifier = verifier;
     pkceCodes.challenge = challenge;
 
-    const authCodeUrlParams = { 
-        redirectUri: redirectUri 
+    const authCodeUrlParams = {
+        redirectUri: redirectUri
         scopes: tokenRequest.scopes,
         codeChallenge: pkceCodes.challenge, // PKCE Code Challenge
-        codeChallengeMethod: pkceCodes.challengeMethod // PKCE Code Challenge Method 
+        codeChallengeMethod: pkceCodes.challengeMethod // PKCE Code Challenge Method
     };
 
     const authCodeUrl = await pca.getAuthCodeUrl(authCodeUrlParams);
@@ -197,14 +197,14 @@ async function getTokenInteractive(authWindow, tokenRequest) {
     });
 
     const authCode = await listenForAuthCode(authCodeUrl, authWindow); // see below
-    
-    const authResponse = await pca.acquireTokenByCode({ 
-        redirectUri: redirectUri, 
-        scopes: tokenRequest.scopes, 
+
+    const authResponse = await pca.acquireTokenByCode({
+        redirectUri: redirectUri,
+        scopes: tokenRequest.scopes,
         code: authCode,
-        codeVerifier: pkceCodes.verifier // PKCE Code Verifier 
+        codeVerifier: pkceCodes.verifier // PKCE Code Verifier
     });
-    
+
     return authResponse;
 }
 
@@ -214,7 +214,7 @@ async function getTokenInteractive(authWindow, tokenRequest) {
  * @param {object} authWindow: Electron window object
  */
 async function listenForAuthCode(navigateUrl, authWindow) {
-    
+
     authWindow.loadURL(navigateUrl);
 
     return new Promise((resolve, reject) => {
@@ -231,7 +231,7 @@ async function listenForAuthCode(navigateUrl, authWindow) {
 }
 ```
 
-> |Plats:| Description |
+> |Plats:| Beskrivning |
 > |---------|---------|
 > | `authWindow` | Aktuellt Electron-fönster i processen. |
 > | `tokenRequest` | Innehåller de omfattningar som begärs, till exempel `"User.Read"` för Microsoft Graph eller `"api://<Application ID>/access_as_user"` för anpassade webb-API: er. |

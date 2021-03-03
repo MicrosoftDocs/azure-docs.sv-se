@@ -4,25 +4,35 @@ description: Så här uppgraderar du MongoDB Wire-Protocol-versionen för din be
 author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: guide
-ms.date: 09/22/2020
+ms.topic: how-to
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 9ce444e41d19ece984071d0f62e705a09d5f23c9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356475"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661179"
 ---
-# <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Uppgradera MongoDB Wire Protocol-versionen av din Azure Cosmos DBs API för MongoDB-konto
+# <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>Uppgradera API-versionen av din Azure Cosmos DB API för MongoDB-kontot
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-I den här artikeln beskrivs hur du uppgraderar överförings protokoll versionen av din Azure Cosmos DBs API för MongoDB-konto. När du har uppgraderat Wire Protocol-versionen kan du använda de senaste funktionerna i Azure Cosmos DBs API för MongoDB. Uppgraderings processen avbryter inte tillgängligheten för ditt konto och den förbrukar inte RU/s eller minskar kapaciteten för databasen när som helst. Inga befintliga data eller index påverkas av den här processen.
+I den här artikeln beskrivs hur du uppgraderar API-versionen av din Azure Cosmos DBs API för MongoDB-konto. När du har uppgraderat kan du använda de senaste funktionerna i Azure Cosmos DBs API för MongoDB. Uppgraderings processen avbryter inte tillgängligheten för ditt konto och den förbrukar inte RU/s eller minskar kapaciteten för databasen när som helst. Inga befintliga data eller index påverkas av den här processen. 
+
+När du uppgraderar till en ny API-version börjar du med utvecklings-och test arbets belastningar innan du uppgraderar produktions arbets belastningar. Det är viktigt att uppgradera klienterna till en version som är kompatibel med den API-version som du uppgraderar till innan du uppgraderar ditt Azure Cosmos DB-API för MongoDB-konto.
 
 >[!Note]
-> För närvarande kan endast kvalificerade konton som använder Server version 3,2 uppgraderas till version 3,6. Om ditt konto inte visar uppgraderings alternativet ska du skicka in [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> För närvarande kan endast kvalificerade konton som använder Server version 3,2 uppgraderas till version 3,6 eller 4,0. Om ditt konto inte visar uppgraderings alternativet ska du skicka in [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="upgrading-from-version-32-to-36"></a>Uppgradera från version 3,2 till 3,6
+## <a name="upgrading-to-40-or-36"></a>Uppgradera till 4,0 eller 3,6
+
+### <a name="benefits-of-upgrading-to-version-40"></a>Fördelar med att uppgradera till version 4,0
+
+Följande är de nya funktionerna som ingår i version 4,0:
+- Stöd för transaktioner med flera dokument i unsharded-samlingar.
+- Nya agg regerings operatorer
+- Förbättrad genomsöknings prestanda
+- Snabbare, effektivare lagring
 
 ### <a name="benefits-of-upgrading-to-version-36"></a>Fördelar med att uppgradera till version 3.6
 
@@ -30,34 +40,34 @@ Följande är de nya funktionerna som ingår i version 3,6:
 - Bättre prestanda och stabilitet
 - Stöd för nya databaskommandon
 - Stöd för sammansättningspipeline som standard samt nya aggregeringsfaser
-- Stöd för ändrings strömmar
+- Stöd för ändringsströmmar
 - Stöd för sammansatta index
-- Stöd för att korsa partitioner för följande åtgärder: uppdatera, ta bort, räkna och sortera
-- Bättre prestanda för följande mängd åtgärder: $count, $skip, $limit och $group
-- Indexering med jokertecken stöds nu
+- Stöd för följande åtgärder mellan olika partitioner: update, delete, count och sort
+- Bättre prestanda för följande aggregeringsåtgärder: $count, $skip, $limit och $group
+- Nu finns stöd för indexering med jokertecken
 
 ### <a name="changes-from-version-32"></a>Ändringar från version 3,2
 
-- **RequestRateIsLarge-fel har tagits bort**. Begär Anden från klient programmet kommer inte att returnera 16500-fel längre. I stället kommer förfrågningar att återupptas tills de har slutfört eller uppfyllt tids gränsen.
-- Tids gränsen för begäran har angetts till 60 sekunder.
-- MongoDB-samlingar som skapats i den nya versionen av överförings protokollet har `_id` som standard inte egenskapen indexerad.
+- Som standard är funktionen för [Server sidans nya försök (SSR)](prevent-rate-limiting-errors.md) aktive rad, så att begär Anden från klient programmet inte returnerar 16500-fel. Begär Anden återupptas tills de har slutförts eller nått tids gränsen på 60 sekunder.
+- Tidsgränsen för begäranden är inställd på 60 sekunder.
+- Endast `_id`-egenskapen indexeras som standard för MongoDB-samlingar som skapats på den nya trådprotokollversionen.
 
-### <a name="action-required"></a>Åtgärd som krävs
+### <a name="action-required-when-upgrading-from-32"></a>Åtgärd krävs vid uppgradering från 3,2
 
-För uppgraderingen till version 3,6 kommer databas kontots slut punkts suffix att uppdateras till följande format:
+När du uppgraderar från 3,2 uppdateras databas kontots slut punkts suffix till följande format:
 
 ```
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Du måste ersätta den befintliga slut punkten i dina program och driv rutiner som ansluter till det här databas kontot. **Endast anslutningar som använder den nya slut punkten får åtkomst till funktionerna i MongoDB version 3,6**. Den tidigare slut punkten ska ha suffixet `.documents.azure.com` .
+Om du uppgraderar från version 3,2 måste du ersätta den befintliga slut punkten i dina program och driv rutiner som är anslutna till det här databas kontot. **Endast anslutningar som använder den nya slut punkten kommer att ha åtkomst till funktionerna i den nya API-versionen**. Den tidigare 3,2-slutpunkten ska ha suffixet `.documents.azure.com` .
 
 >[!Note]
 > Den här slut punkten kan ha små skillnader om ditt konto har skapats i en suverän, myndighets eller begränsad Azure-moln.
 
-### <a name="how-to-upgrade"></a>Så här uppgraderar du
+## <a name="how-to-upgrade"></a>Så här uppgraderar du
 
-1. Först går du till Azure Portal och navigerar till bladet Azure Cosmos DB-API för MongoDB-konto. Kontrol lera att Server versionen är `3.2` . 
+1. Gå till Azure Portal och navigera till bladet för ditt Azure Cosmos DB-API för MongoDB-konto. Kontrol lera att den aktuella Server versionen är det du förväntar dig.
 
     :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="Översikt över Azure Portal med MongoDB-konto" border="false":::
 
@@ -65,11 +75,11 @@ Du måste ersätta den befintliga slut punkten i dina program och driv rutiner s
 
     :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal med MongoDB konto översikt med bladet funktioner markerat" border="false":::
 
-3. Klicka på `Upgrade to Mongo server version 3.6` raden. Om du inte ser det här alternativet kanske kontot inte är giltigt för den här uppgraderingen. Ange [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om så är fallet.
+3. Klicka på `Upgrade Mongo server version` raden. Om du inte ser det här alternativet kanske kontot inte är giltigt för den här uppgraderingen. Ange [ett support ärende](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om så är fallet.
 
     :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Funktions blad med alternativ." border="false":::
 
-4. Granska informationen som visas om den här uppgraderingen. Observera att uppgraderingen endast slutförs förrän dina program använder den uppdaterade slut punkten, som du ser i det här avsnittet. Klicka på `Enable` så snart du är redo att starta processen.
+4. Granska informationen som visas om uppgraderingen. Klicka på `Enable` så snart du är redo att starta processen.
 
     :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Utökad uppgraderings vägledning." border="false":::
 
@@ -81,11 +91,21 @@ Du måste ersätta den befintliga slut punkten i dina program och driv rutiner s
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Status för uppgraderat konto." border="false":::
 
-7. **Om du vill börja använda den uppgraderade versionen av ditt databas konto** går du tillbaka till `Overview` bladet och kopierar den nya anslutnings strängen som ska användas i ditt program. Programmen kommer att börja använda den uppgraderade versionen så fort de ansluter till den nya slut punkten. Befintliga anslutningar avbryts inte och kan uppdateras när du vill. För att säkerställa en konsekvent upplevelse måste alla program använda den nya slut punkten.
+7. 
+    1. Om du har uppgraderat från 3,2 går du tillbaka till `Overview` bladet och kopierar den nya anslutnings strängen som ska användas i ditt program. Den gamla anslutnings strängen som kör 3,2 avbryts inte. För att säkerställa en konsekvent upplevelse måste alla program använda den nya slut punkten.
+    2. Om du har uppgraderat från 3,6 uppgraderas den befintliga anslutnings strängen till den angivna versionen och fortsätter att användas.
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Bladet ny översikt." border="false":::
 
+
+## <a name="how-to-downgrade"></a>Nedgradera
+Du kan också nedgradera ditt konto från 4,0 till 3,6 via samma steg i avsnittet "så här uppgraderar". 
+
+Om du har uppgraderat från 3,2 till (4,0 eller 3,6) och vill nedgradera tillbaka till 3,2, kan du helt enkelt växla tillbaka till att använda din tidigare (3,2) anslutnings sträng med värden `accountname.documents.azure.com` som fortfarande är aktiv efter uppgradering som kör version 3,2.
+
+
 ## <a name="next-steps"></a>Nästa steg
 
+- Lär dig mer om funktionerna som stöds och som inte stöds [i MongoDB version 4,0](mongodb-feature-support-40.md).
 - Lär dig mer om funktionerna som stöds och som inte stöds [i MongoDB version 3,6](mongodb-feature-support-36.md).
 - Mer information finns i [Mongo 3,6 versions funktioner](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)

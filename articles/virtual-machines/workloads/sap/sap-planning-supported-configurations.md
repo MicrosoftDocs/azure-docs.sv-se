@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 54f3f0e1b57525a3bd425575ff03a9f3c91b0044
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951221"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670935"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-arbetsbelastning på en virtuell Azure-dator – scenarier som stöds
 Genom att utforma SAP NetWeaver, Business en `Hybris` eller S/4HANA Systems arkitektur i Azure öppnas många olika möjligheter för olika arkitekturer och verktyg som du kan använda för att komma till en skalbar, effektiv och hög tillgänglig distribution. Även om det är beroende av det operativ system eller DBMS som används, finns det några begränsningar. Dessutom stöds inte alla scenarier som stöds lokalt på samma sätt i Azure. Det här dokumentet leder till konfigurationer med stöd för icke-hög tillgänglighet och konfigurationer med hög tillgänglighet och arkitekturer med enbart virtuella Azure-datorer. För scenarier som stöds med [Hana-stora instanser](./hana-overview-architecture.md)kan du läsa artikeln [om vilka scenarier som stöds för Hana-stora instanser](./hana-supported-scenario.md). 
@@ -287,7 +286,7 @@ Det finns en lista över scenarion som inte stöds för SAP-arbetsbelastningar i
 
 Andra scenarier, som inte stöds är scenarier som:
 
-- Distributions scenarier som introducerar en större nätverks fördröjning mellan SAP-programnivån och SAP DBMS-nivån i SAP: S gemensamma arkitektur, som visas i NetWeaver, S/4HANA och t. ex. `Hybris` . Det här omfattar:
+- Distributions scenarier som introducerar en större nätverks fördröjning mellan SAP-programnivån och SAP DBMS-nivån i SAP: S gemensamma arkitektur, som visas i NetWeaver, S/4HANA och t. ex. `Hybris` . Du måste bland annat:
     - Att distribuera en av de olika nivåerna på plats medan den andra nivån distribueras i Azure
     - Distribuera SAP-programnivån för ett system i en annan Azure-region än DBMS-nivån
     - Distribuera en nivå i Data Center som är samplacerade i Azure och den andra nivån i Azure, förutom var sådana arkitektur mönster tillhandahålls av en inbyggd Azure-tjänst

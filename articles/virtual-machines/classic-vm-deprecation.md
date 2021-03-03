@@ -4,16 +4,17 @@ description: Den här artikeln innehåller en översikt över pensionering av vi
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
+ms.subservice: classic-to-arm-migration
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 004a84cd98381af027c554a7ef40e27e69ec6dbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2fb710bab03d595d6e54bc8dd8fbda38c57123e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587913"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668202"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrera dina IaaS-resurser till Azure Resource Manager den 1 mars 2023 
 
@@ -30,10 +31,20 @@ Virtuella datorer som skapats med den klassiska distributions modellen följer d
 - Den 1 mars 2023 kommer prenumerationer som inte har migrerats till Azure Resource Manager att informeras om tids linjer för borttagning av återstående virtuella datorer (klassisk).  
 
 Den här indragningen påverkar *inte* följande Azure-tjänster och-funktioner: 
-- [Azure Cloud Services (klassisk)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)
+- [Azure Cloud Services (klassisk)](../cloud-services/cloud-services-choose-me.md)
 - Lagrings konton som *inte* används av virtuella datorer (klassisk) 
 - Virtuella nätverk som *inte* används av virtuella datorer (klassisk) 
 - Andra klassiska resurser
+
+## <a name="what-resources-are-available-for-this-migration"></a>Vilka resurser är tillgängliga för den här migreringen?
+
+- [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html): Microsoft och community-support för migrering.
+
+- [Stöd för Azure migration](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): dedikerat support team för teknisk hjälp under migreringen. Kunder utan teknisk support kan använda [kostnads fri support](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/%7B%0A%20%20%20%20%22pesId%22%3A%20%22f3dc5421-79ef-1efa-41a5-42bf3cbb52c6%22%2C%0A%20%20%20%20%22supportTopicId%22%3A%20%22794bb734-af1b-e2d5-a757-dac7438009ab%22%2C%0A%20%20%20%20%22contextInfo%22%3A%20%22Migrate%20IAAS%20resources%20from%20Classic%20%28ASM%29%20to%20Azure%20Resource%20Manager%20%28ARM%29%22%2C%0A%20%20%20%20%22caller%22%3A%20%22NoSupportPlanASM2ARM%22%2C%0A%20%20%20%20%22severity%22%3A%20%222%22%0A%7D) som är specifikt för migreringen. 
+
+- [Microsoft fast track](https://www.microsoft.com/fasttrack): snabb spårning kan hjälpa kunder att planera & körning för migreringen. [Nominera dig själv](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) för programmet för DC-migrering.  
+
+- Om företaget/organisationen har samarbetat med Microsoft eller fungerar med Microsoft-representanter (t. ex. Cloud Solution Architects (CSAs) eller tekniska konto hanterare (TAMs)), kan du arbeta med dem för ytterligare resurser för migrering.
 
 ## <a name="what-actions-should-i-take"></a>Vilka åtgärder ska jag göra? 
 
@@ -43,7 +54,7 @@ Börja planera migreringen till Azure Resource Manager, idag.
 
    - De virtuella datorerna av typen **Virtual Machines (klassisk)** i [Azure portalens VM-fönster](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) är alla berörda virtuella datorer i prenumerationen. 
    - Du kan också fråga Azure Resource Graph genom att använda [portalen](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) eller [PowerShell](../governance/resource-graph/concepts/work-with-data.md) för att visa en lista över alla flaggade virtuella datorer (klassisk) och relaterad information för de valda prenumerationerna. 
-   - Den 8 februari och den 2 september 2020 skickade vi ut e-postmeddelanden till prenumerations ägare med en lista över alla prenumerationer som innehåller dessa virtuella datorer (klassisk). Använd dem för att bygga den här listan. 
+   - Den 8 februari och den 2 september 2020 skickade vi ut e-postmeddelanden med ämnet "börja planera din IaaS VM-migrering till Azure Resource Manager" till prenumerations ägare. E-postmeddelandet innehåller en lista över alla virtuella datorer och prenumerationer och virtuella datorer (klassiska). Använd dem för att bygga den här listan. 
 
 1. [Läs mer](./migration-classic-resource-manager-overview.md) om hur du migrerar dina virtuella [Linux](./migration-classic-resource-manager-plan.md) -och [Windows](./migration-classic-resource-manager-plan.md) -datorer (klassisk) till Azure Resource Manager. Mer information finns i [vanliga frågor och svar om klassisk att Azure Resource Manager migrering](./migration-classic-resource-manager-faq.md).
 
@@ -58,13 +69,3 @@ Börja planera migreringen till Azure Resource Manager, idag.
 1. [Kontakta supporten](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})för tekniska frågor, problem och hjälp med att lägga till prenumerationer i listan över tillåtna.
 
 1. Slutför migreringen så snart som möjligt för att förhindra företags påverkan och dra nytta av de förbättrade prestanda-, säkerhets-och nya funktionerna i Azure Resource Manager. 
-
-## <a name="what-resources-are-available-for-this-migration"></a>Vilka resurser är tillgängliga för den här migreringen?
-
-- [Microsoft Q&A](/answers/topics/azure-virtual-machines-migration.html): Microsoft och community-support för migrering.
-
-- [Stöd för Azure migration](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): dedikerat support team för teknisk hjälp under migreringen.
-
-- [Microsoft fast track](https://www.microsoft.com/fasttrack): snabb spårning kan hjälpa kunder att planera & utföra migreringen. [Nominera dig själv](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0) för programmet för DC-migrering.  
-
-- Om företaget/organisationen har samarbetat med Microsoft eller fungerar med Microsoft-representanter (t. ex. Cloud Solution Architects (CSAs) eller tekniska konto hanterare (TAMs)), kan du arbeta med dem för ytterligare resurser för migrering.

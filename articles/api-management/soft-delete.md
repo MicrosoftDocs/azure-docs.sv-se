@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092150"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652393"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management mjuk borttagning (förhands granskning)
 
 Med API Management mjuk borttagning (för hands version) kan du återställa och återställa nyligen borttagna API Management (APIM) instanser.
 
 > [!IMPORTANT]
-> Endast API Management instanser som tas bort med `2020-01-01-preview` och senare API-versioner kommer att tas bort och återskapas med hjälp av stegen som beskrivs i den här artikeln. APIM-instanser som tagits bort med hjälp av tidigare API-versioner fortsätter att vara hårt borttagna. Azure PowerShell och Azure CLI använder för närvarande inte `2020-06-01-preview` versionen och kommer också att leda till beteende för hårda rader.
+> Endast API Management instanser som tas bort med `2020-06-01-preview` och senare API-versioner kommer att tas bort och återskapas med hjälp av stegen som beskrivs i den här artikeln. APIM-instanser som tagits bort med hjälp av tidigare API-versioner fortsätter att vara hårt borttagna. Azure PowerShell och Azure CLI använder för närvarande inte `2020-06-01-preview` versionen och kommer också att leda till beteende för hårda rader.
 
 ## <a name="supporting-interfaces"></a>Stöd för gränssnitt
 
@@ -27,18 +27,18 @@ Funktionen mjuk borttagning är tillgänglig via [REST API](/rest/api/apimanagem
 > [!TIP]
 > Se [azure REST API Reference](/rest/api/azure/) för tips och verktyg för att anropa Azure REST-API: er.
 
-| Åtgärd | Description | API Management namnrymd | Lägsta API-version |
+| Åtgärd | Beskrivning | API Management namnrymd | Lägsta API-version |
 |--|--|--|--|
 | [Skapa eller uppdatera](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Skapar eller uppdaterar en API Management-tjänst.  | API Management tjänst | Valfri |
 | [Skapa eller uppdatera](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) med `restore` egenskap inställd på **True** | Tar bort API Management-tjänsten om den tidigare varit mjuk – borttagen. Om `restore` har angetts och angetts till `true` alla andra egenskaper kommer att ignoreras.  | API Management tjänst |  2020-06-01 – för hands version |
-| [Ta bort](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Tar bort en befintlig API Management-tjänst. | API Management tjänst | 2020-01-01 – för hands version|
+| [Ta bort](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Tar bort en befintlig API Management-tjänst. | API Management tjänst | 2020-06-01 – för hands version|
 | [Hämta efter namn](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Hämta mjuk-borttagen API Management-tjänst efter namn. | Borttagna tjänster | 2020-06-01 – för hands version |
 | [Lista efter prenumeration](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | Visar en lista över alla borttagnings bara tjänster som är tillgängliga för borttagning för den aktuella prenumerationen. | Borttagna tjänster | 2020-06-01 – för hands version
 | [Rensa](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | Rensar API Management tjänsten (tar bort den utan att välja att ångra borttagningen). | Borttagna tjänster | 2020-06-01 – för hands version
 
 ## <a name="soft-delete-behavior"></a>Beteende vid mjuk borttagning
 
-Du kan använda valfri API-version för att skapa din API Management-instans, men du måste använda `2020-01-01-preview` eller senare versioner för att kunna ta bort APIM-instansen (och välja att återställa den).
+Du kan använda valfri API-version för att skapa din API Management-instans, men du måste använda `2020-06-01-preview` eller senare versioner för att kunna ta bort APIM-instansen (och välja att återställa den).
 
 När du tar bort en API Management instans, kommer tjänsten att finnas i ett borttaget tillstånd, vilket gör den oåtkomlig för alla APIM-åtgärder. I det här läget kan APIM-instansen endast visas, återställas eller rensas (tas bort permanent).
 

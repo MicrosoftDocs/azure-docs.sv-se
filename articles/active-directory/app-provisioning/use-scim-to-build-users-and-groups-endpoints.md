@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9fac8db6747d1e081fa884ed794e55b98f44577f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652045"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650166"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Självstudie: utveckla en exempel SCIM-slutpunkt
 
@@ -33,7 +33,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>Distribuera din SCIM-slutpunkt i Azure
 
-Stegen här distribuerar SCIM-slutpunkten till en tjänst med hjälp av [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) och [Azure App Service](https://docs.microsoft.com/azure/app-service/). Referens koden för SCIM kan också köras lokalt, finnas på en lokal server eller distribueras till en annan extern tjänst.
+Stegen här distribuerar SCIM-slutpunkten till en tjänst med hjälp av [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) och [Azure App Service](../../app-service/index.yml). Referens koden för SCIM kan också köras lokalt, finnas på en lokal server eller distribueras till en annan extern tjänst.
 
 1. Gå till [referens koden](https://github.com/AzureAD/SCIMReferenceCode) från GitHub och välj **klona eller hämta**.
 

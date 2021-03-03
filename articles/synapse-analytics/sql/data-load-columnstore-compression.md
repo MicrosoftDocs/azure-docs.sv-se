@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 18350dc39fceaf6f4c50f8e1053a2972bbce7f44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120945"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676629"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximera radgrupps-kvalitet för columnstore-indexets prestanda
 
@@ -26,7 +26,7 @@ Radgrupps-kvaliteten bestäms av antalet rader i en radgrupps. Att öka det till
 
 Eftersom ett columnstore-index skannar en tabell genom att söka igenom kolumn segmenten i enskilda högkvalitativa, ökar antalet rader i varje radgrupps, vilket ökar frågans prestanda. När högkvalitativa har ett stort antal rader förbättrar data komprimeringen vilket innebär att det finns mindre data att läsa från disken.
 
-Mer information om högkvalitativa finns i [instruktions guide för columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Mer information om högkvalitativa finns i [instruktions guide för columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>Mål storlek för högkvalitativa
 
@@ -38,11 +38,11 @@ Det finns ibland inte tillräckligt med minne för att komprimera alla rader som
 
 Om det inte finns tillräckligt med minne för att komprimera minst 10 000 rader till varje radgrupps genereras ett fel.
 
-Mer information om Mass inläsning finns i [Mass inläsning till ett grupperat columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true ).
+Mer information om Mass inläsning finns i [Mass inläsning till ett grupperat columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?view=azure-sqldw-latest#bulk&preserve-view=true).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Så här övervakar du radgrupps-kvalitet
 
-DMV-sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) innehåller den visnings definition som matchar SQL DB) som visar användbar information, till exempel antalet rader i högkvalitativa och orsaken till trimningen om det har beskurits. Du kan skapa följande vy som ett praktiskt sätt att fråga denna DMV för att få information om radgrupps trimning.
+DMV-sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) innehåller den visnings definition som matchar SQL DB) som visar användbar information, till exempel antalet rader i högkvalitativa och orsaken till trimningen om det har beskurits. Du kan skapa följande vy som ett praktiskt sätt att fråga denna DMV för att få information om radgrupps trimning.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -142,5 +142,5 @@ DWU storlek och användar resurs klass avgör hur mycket minne som är tillgäng
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du kan förbättra prestanda i Synapse SQL finns i [prestanda översikten](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
+Mer information om hur du kan förbättra prestanda i Synapse SQL finns i [prestanda översikten](../overview-terminology.md).
 

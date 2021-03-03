@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5e8b873e0e4e89979769183cfbf0ad473069e897
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096427"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670716"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Skalbarhet för prestanda på Azure Kognitiv sökning
 
@@ -91,7 +91,7 @@ Eftersom repliker är kopior av dina data kan du med flera repliker tillåta Azu
 
 ### <a name="availability-zones"></a>Tillgänglighetszoner
 
-[Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview) dela upp en regions Data Center i distinkta fysiska plats grupper för att tillhandahålla hög tillgänglighet inom samma region. För Kognitiv sökning är enskilda repliker enheterna för zon tilldelning. En Sök tjänst körs inom en region. dess repliker körs i olika zoner.
+[Tillgänglighetszoner](../availability-zones/az-overview.md) dela upp en regions Data Center i distinkta fysiska plats grupper för att tillhandahålla hög tillgänglighet inom samma region. För Kognitiv sökning är enskilda repliker enheterna för zon tilldelning. En Sök tjänst körs inom en region. dess repliker körs i olika zoner.
 
 Du kan använda Tillgänglighetszoner med Azure Kognitiv sökning genom att lägga till två eller fler repliker till din Sök tjänst. Varje replik kommer att placeras i en annan tillgänglighets zon inom regionen. Om du har fler repliker än Tillgänglighetszoner kommer replikerna att fördelas på Tillgänglighetszoner så jämnt som möjligt.
 

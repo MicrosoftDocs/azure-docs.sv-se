@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370907"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651895"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Återställa en användares lösenord med hjälp av Azure Active Directory
 
@@ -50,6 +50,10 @@ Som administratör kan du återställa en användares lösen ord om lösen ordet
 
     >[!Note]
     >Det tillfälliga lösen ordet upphör aldrig att gälla. Nästa gången användaren loggar in, kommer lösen ordet fortfarande att fungera, oavsett hur lång tid det tar att använda sedan det tillfälliga lösen ordet genererades.
+
+> [!IMPORTANT]
+> Om en administratör inte kan återställa användarens lösen ord och i program händelse loggarna på Azure AD Connect-servern följande felkod: HR = 80231367, granska användarens attribut i Active Directory.  Om attributet **AdminCount** är inställt på 1, förhindrar detta en administratör från att återställa användarens lösen ord.  Attributet **AdminCount** måste anges till 0 för att administratörer ska kunna återställa användarens lösen ord.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

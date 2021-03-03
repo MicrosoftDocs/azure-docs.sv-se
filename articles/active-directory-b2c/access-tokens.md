@@ -11,12 +11,12 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631401"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654484"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Begära en åtkomsttoken i Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ Den här artikeln beskriver hur du begär en åtkomsttoken för en webbapp och e
 
 ## <a name="scopes"></a>Omfattningar
 
-Med hjälp av omfång kan du hantera behörigheter för skyddade resurser. När en åtkomsttoken begärs måste klientprogrammet ange önskade behörigheter i **scope** -parametern för begäran. Om du till exempel vill ange **omfångsvärdet** `read` för API:et med ett **app-ID med URI:n** `https://contoso.onmicrosoft.com/api`, är omfånget `https://contoso.onmicrosoft.com/api/read`.
+Med hjälp av omfång kan du hantera behörigheter för skyddade resurser. När en åtkomsttoken begärs måste klientprogrammet ange önskade behörigheter i **scope**-parametern för begäran. Om du till exempel vill ange **omfångsvärdet** `read` för API:et med ett **app-ID med URI:n** `https://contoso.onmicrosoft.com/api`, är omfånget `https://contoso.onmicrosoft.com/api/read`.
 
-Omfång används av webb-API för att implementera omfångsbaserad åtkomststyrning. Till exempel kan användare av webb-API:et ha både läs- och skrivbehörighet, eller så har användare av webb-API:et kanske bara läsbehörighet. Om du vill hämta flera behörigheter i samma begäran kan du lägga till flera poster i samma **scope** -parameter i begäran, avgränsade med blanksteg.
+Omfång används av webb-API för att implementera omfångsbaserad åtkomststyrning. Till exempel kan användare av webb-API:et ha både läs- och skrivbehörighet, eller så har användare av webb-API:et kanske bara läsbehörighet. Om du vill hämta flera behörigheter i samma begäran kan du lägga till flera poster i samma **scope**-parameter i begäran, avgränsade med blanksteg.
 
 I följande exempel visas omfång som är avkodade i en URL:
 
@@ -50,7 +50,7 @@ I följande exempel visas omfång som är kodade i en URL:
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-Om du begär fler omfång än vad ditt klientprogram beviljas, lyckas anropet om minst en behörighet beviljas. **SCP** -anspråket i den resulterande åtkomsttoken innehåller endast de behörigheter som beviljades. 
+Om du begär fler omfång än vad ditt klientprogram beviljas, lyckas anropet om minst en behörighet beviljas. **SCP**-anspråket i den resulterande åtkomsttoken innehåller endast de behörigheter som beviljades. 
 
 ### <a name="openid-connect-scopes"></a>OpenID Connect-omfång
 
@@ -60,7 +60,7 @@ OpenID Connect-standarden anger flera särskilda omfångsvärden. Följande omf�
 - **offline_access** – Begär en uppdateringstoken via [auktoriseringskodflöden](authorization-code-flow.md).
 - **00000000-0000-0000-0000-000000000000** – med hjälp av klient-ID som omfånget anger att appen behöver en åtkomsttoken som kan användas för din egen tjänst eller ditt webb-API som representeras av samma klient-ID.
 
-Om parametern **response_type** i en `/authorize`-begäran innehåller `token`, måste **scope** -parametern innehålla minst ett annat resursomfång än `openid` och `offline_access` som kommer att beviljas. Annars misslyckas `/authorize`-begäran.
+Om parametern **response_type** i en `/authorize`-begäran innehåller `token`, måste **scope**-parametern innehålla minst ett annat resursomfång än `openid` och `offline_access` som kommer att beviljas. Annars misslyckas `/authorize`-begäran.
 
 ## <a name="request-a-token"></a>Begära en token
 
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 När du har tagit emot auktoriseringskoden kan du använda den för att begära en åtkomsttoken:
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

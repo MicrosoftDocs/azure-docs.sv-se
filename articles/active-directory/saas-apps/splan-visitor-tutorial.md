@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.author: jeedes
-ms.openlocfilehash: ed136d06f18190124abe4598d580f40e41bf8592
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704227"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644705"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Självstudie: integrera Azure Active Directory enkel inloggning (SSO) med splan-besökare
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera splan-besökare med Azu
 * Gör det möjligt för användare att logga in automatiskt till splan-besökare med sina Azure AD-konton.
 * Hantera dina konton på en central plats, Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att komma igång:
 
@@ -120,8 +120,8 @@ Skapa en test användare med namnet **Britta Simon** på splan-besökare. Arbeta
 Testa konfigurationen för enkel inloggning med Azure AD med något av följande alternativ:
 
 * **Azure Portal**: Välj **testa det här programmet** för att automatiskt logga in på den splan-besökare som du ställer in SSO för.
-* **Microsoft My Apps-portalen**: Välj panelen **splan besökare** för att automatiskt logga in på den splan-besökare som du ställer in SSO för. Mer information om mina apps-portalen finns i [Logga in och starta appar från portalen Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* **Microsoft My Apps-portalen**: Välj panelen **splan besökare** för att automatiskt logga in på den splan-besökare som du ställer in SSO för. Mer information om mina apps-portalen finns i [Logga in och starta appar från portalen Mina appar](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat splan-besökare kan du [lära dig hur du tvingar fram sessionsbaserade i Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app). Med hjälp av sessions kontroller skyddas exfiltrering och intrånget av organisationens känsliga data i real tid. Sessions kontroller utökas från villkorlig åtkomst.
+När du har konfigurerat splan-besökare kan du [lära dig hur du tvingar fram sessionsbaserade i Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app). Med hjälp av sessions kontroller skyddas exfiltrering och intrånget av organisationens känsliga data i real tid. Sessions kontroller utökas från villkorlig åtkomst.

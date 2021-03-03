@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: b78c2d5c03c95249c7f708f2d660d32c834f123e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7d6675f9584f90b67d8520091dcd4b04dd89e462
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676103"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667587"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Ansluta till Synapse SQL med SQLCMD
 
@@ -25,10 +25,10 @@ ms.locfileid: "98676103"
 > * [SQLCMD](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Du kan använda kommando rads verktyget [SQLCMD](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Server lös SQL-pool och dedikerad SQL-pool i Synapse SQL.  
+Du kan använda kommando rads verktyget [SQLCMD](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Server lös SQL-pool och dedikerad SQL-pool i Synapse SQL.  
 
 ## <a name="1-connect"></a>1. Anslut
-Kom igång med [SQLCMD](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)genom att öppna kommando tolken och ange **SQLCMD** följt av anslutnings STRÄNGEN för din Synapse SQL-databas. Anslutningssträngen kräver följande parametrar:
+Kom igång med [SQLCMD](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)genom att öppna kommando tolken och ange **SQLCMD** följt av anslutnings STRÄNGEN för din Synapse SQL-databas. Anslutningssträngen kräver följande parametrar:
 
 * **Server (-S):** Server i formatet `<`servernamn`>`. database.windows.net
 * **Databas (-d):** Databas namn
@@ -78,7 +78,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ### <a name="use-dedicated-sql-pool"></a>Använd dedikerad SQL-pool
 
-Efter anslutningen kan du skicka alla [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -uttryck (T-SQL) som stöds mot instansen. I det här exemplet skickas frågor i interaktivt läge:
+Efter anslutningen kan du skicka alla [Transact-SQL](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) -uttryck (T-SQL) som stöds mot instansen. I det här exemplet skickas frågor i interaktivt läge:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -99,7 +99,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-serverless-sql-pool"></a>Använda en serverlös SQL-pool
 
-När du har anslutit kan du skicka alla [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) -uttryck (T-SQL) som stöds mot instansen.  I följande exempel skickas frågor i interaktivt läge:
+När du har anslutit kan du skicka alla [Transact-SQL](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) -uttryck (T-SQL) som stöds mot instansen.  I följande exempel skickas frågor i interaktivt läge:
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -120,4 +120,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om alternativ för SQLCMD finns i [SQLCMD-dokumentationen](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Mer information om alternativ för SQLCMD finns i [SQLCMD-dokumentationen](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true).

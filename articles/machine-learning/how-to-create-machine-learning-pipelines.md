@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 168e5340842dca3c26e4fa48d2f14b8ade529cd9
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 18d93a1a6ac9661b18054611015b02e41219bc14
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505755"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659655"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK
 
@@ -32,7 +32,7 @@ ML pipelines körs på beräknings mål (se [Vad är beräknings mål i Azure Ma
 
 Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Skapa en [Azure Machine Learning arbets yta](how-to-manage-workspace.md) för att lagra alla dina pipeline-resurser.
 
@@ -92,6 +92,7 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
+
 Mellanliggande data (eller utdata från ett steg) representeras av ett [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) -objekt. `output_data1` skapas som utdata från ett steg och används som indata för ett eller flera framtida steg. `PipelineData` introducerar ett data beroende mellan stegen och skapar en implicit körnings ordning i pipelinen. Det här objektet kommer att användas senare när du skapar pipeline-steg.
 
 ```python
@@ -108,7 +109,7 @@ output_data1 = PipelineData(
 > Det går också att bevara mellanliggande data mellan pipeline-steg med den offentliga för hands versions klassen [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Ett kod exempel som använder `OutputFileDatasetConfig` -klassen finns i så här [skapar du en pipeline för två steg ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 > [!TIP]
-> Ladda bara upp filer som är relevanta för jobbet i handen. Eventuella ändringar i filerna i data katalogen visas som en anledning till att köra om steget nästa gång pipelinen körs, även om åter användning har angetts. 
+> Ladda bara upp filer som är relevanta för det aktuella jobbet. Eventuella ändringar i filerna i data katalogen visas som en anledning till att köra om steget nästa gång pipelinen körs, även om åter användning har angetts. 
 
 ## <a name="set-up-a-compute-target"></a>Konfigurera ett beräknings mål
 
@@ -116,7 +117,7 @@ output_data1 = PipelineData(
 I Azure Machine Learning syftar termen __Compute__ (eller __Compute Target__) på de datorer eller kluster som utför beräknings stegen i din Machine Learning-pipeline.   Se [Compute-mål för modell utbildning](concept-compute-target.md#train) för en fullständig lista över beräknings mål och [skapa beräknings mål](how-to-create-attach-compute-studio.md) för att skapa och koppla dem till din arbets yta.   Processen för att skapa och eller koppla ett beräknings mål är detsamma oavsett om du tränar en modell eller kör ett pipeline-steg. När du har skapat och kopplat ditt beräknings mål använder du `ComputeTarget` objektet i ditt [pipeline-steg](#steps).
 
 > [!IMPORTANT]
-> Det finns inte stöd för att utföra hanterings åtgärder på beräknings mål inifrån Fjärrjobb. Eftersom Machine Learning-pipelines skickas som ett Fjärrjobb använder du inte hanterings åtgärder på beräknings mål inifrån pipelinen.
+> Du kan inte utföra hanteringsåtgärder på beräkningsmål inifrån fjärrjobb. Eftersom ML-pipelines skickas som ett fjärrjobb ska du inte använda hanterings åtgärder på beräkningsmål inifrån pipelinen.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 

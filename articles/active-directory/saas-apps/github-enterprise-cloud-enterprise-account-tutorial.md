@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 02/12/2021
 ms.author: jeedes
-ms.openlocfilehash: d88cbb79b42637721412dd0a35c231782a896721
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7360ad5abc7342043152c2da11038b624b0bfadc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029905"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650038"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med GitHub Enterprise Cloud-Enterprise-konto
 
@@ -24,29 +24,27 @@ I den här självstudien får du lära dig att integrera GitHub Enterprise Cloud
 
 * Kontroll i Azure AD som har åtkomst till ett GitHub Enterprise-konto och organisationer inom företags kontot.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
 * En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
-* Ett [GitHub Enterprise-konto](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
+* Ett [GitHub Enterprise-konto](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts).
 * Ett GitHub-användarkonto som är en företags konto ägare. 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* GitHub Enterprise Cloud-Enterprise-konto stöder **SP** -och **IDP** -initierad SSO
-* GitHub Enterprise Cloud – Enterprise-konto stöder **just-in-Time** User-etablering
-* När du har konfigurerat GitHub Enterprise Cloud-Enterprise-kontot kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* GitHub Enterprise Cloud-Enterprise-konto stöder **SP** -och **IDP** -initierad SSO.
+* GitHub Enterprise Cloud-Enterprise-konto stöder **just-in-Time** User-etablering.
 
 ## <a name="adding-github-enterprise-cloud---enterprise-account-from-the-gallery"></a>Lägga till GitHub Enterprise Cloud-Enterprise-konto från galleriet
 
 Om du vill konfigurera integrationen av GitHub Enterprise Cloud-Enterprise-kontot i Azure AD måste du lägga till GitHub Enterprise Cloud-Enterprise-konto från galleriet till din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
@@ -58,21 +56,21 @@ Om du vill konfigurera integrationen av GitHub Enterprise Cloud-Enterprise-konto
 
 Konfigurera och testa Azure AD SSO med GitHub Enterprise Cloud-Enterprise-konto med en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i GitHub Enterprise Cloud-Enterprise-konto.
 
-Om du vill konfigurera och testa Azure AD SSO med GitHub Enterprise Cloud-Enterprise-konto, fyller du i följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med GitHub Enterprise Cloud-Enterprise-konto:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
-    1. **[Tilldela din Azure AD-användare och test användar kontot till GitHub-appen](#assign-the-azure-ad-test-user)** – om du vill aktivera ditt användar konto och testa användare `B.Simon` för att använda enkel inloggning med Azure AD.
+    1. **[Tilldela din Azure AD-användare och test användar kontot till GitHub-appen](#assign-your-azure-ad-user-and-the-test-user-account-to-the-github-app)** – om du vill aktivera ditt användar konto och testa användare `B.Simon` för att använda enkel inloggning med Azure AD.
 1. **[Aktivera och testa SAML för företags kontot och dess organisationer](#enable-and-test-saml-for-the-enterprise-account-and-its-organizations)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    1. **[Testa SSO med en annan ägare till företags kontot eller ett organisations medlems konto](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
+    1. **[Testa SSO med en annan ägare till företags kontot eller ett organisations medlems konto](#test-sso-with-another-enterprise-account-owner-or-organization-member-account)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan **GitHub Enterprise Cloud-Enterprise konto** Application Integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal på sidan **GitHub Enterprise Cloud-Enterprise konto** Application Integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -105,7 +103,7 @@ I det här avsnittet ska du skapa en test användare i den Azure Portal som kall
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -118,15 +116,9 @@ I det här avsnittet ska du aktivera `B.Simon` och ditt användar konto för att
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **GitHub Enterprise Cloud-Enterprise Account**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** och ditt användar konto från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Aktivera och testa SAML för företags kontot och dess organisationer
@@ -156,16 +148,6 @@ Så här testar du GitHub organisations åtkomst under företags kontot med `B.S
 1. Logga in på Azure AD med hjälp av `B.Simon` användar kontot.
 1. Gå till GitHub-organisationen. Användaren ska uppmanas att autentisera via SAML. Efter lyckad SAML-autentisering `B.Simon` bör kunna få åtkomst till organisations resurser. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+## <a name="next-steps"></a>Nästa steg
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
-
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova GitHub Enterprise Cloud-Enterprise-konto med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Skydda GitHub Enterprise Cloud-Enterprise-konto med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat GitHub Enterprise Cloud-Enterprise-kontot kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

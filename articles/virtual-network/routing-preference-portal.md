@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217574"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672905"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurera cirkulations inställningar för en offentlig IP-adress med hjälp av Azure Portal
 
@@ -32,20 +32,26 @@ Den här artikeln visar hur du konfigurerar [Inställningar för routning](./rou
 
 Som standard är cirkulations inställningen för offentlig IP-adress inställd på Microsofts globala nätverk för alla Azure-tjänster och kan associeras med valfri Azure-tjänst.
 
-> [!IMPORTANT]
-> Dirigerings inställningen är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nu.
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Skapa en offentlig IP-adress med en cirkulations inställning
-1. Logga in på [Azure-portalen](https://preview.portal.azure.com/).
-2. Välj **Skapa en resurs**. 
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
+2. Välj **Skapa en resurs**.
 3. I rutan Sök skriver du *offentlig IP-adress*.
 3. I Sök resultaten väljer du **offentlig IP-adress**. Sedan väljer du **skapa** på sidan **offentlig IP-adress** .
-3. I **Inställningar för routning** väljer du **Internet**.
+1. För SKU väljer du **standard**.
+1. För **cirkulations inställningar** väljer du **Internet**.
 
-      ![Skapa en offentlig IP-adress](./media/routing-preference-portal/pip-new.png)
+      ![Skapa en offentlig IP-adress](./media/routing-preference-portal/public-ip-new.png)
+1. I avsnittet **IPv4 IP-adresskonfiguration** anger eller väljer du den här informationen:
+
+    | Inställning | Värde |
+    | ------- | ----- |
+    | Prenumeration | Välj din prenumeration.|
+    | Resursgrupp | Välj **Skapa ny**, ange *RoutingPreferenceResourceGroup* och välj sedan **OK**. |
+    | Location | Välj **USA, östra**.|
+    | Tillgänglighetszon | Behåll standardvärdet- **Zone-redundant**. |
+1. Välj **Skapa**.
 
     > [!NOTE]
     > Offentliga IP-adresser skapas med en IPv4- eller IPv6-adress. Men routnings inställningarna stöder för närvarande endast IPV4.

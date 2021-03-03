@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 08/25/2020
-ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333043"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664125"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planera för Azures underhålls händelser i Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ För varje databas upprätthåller Azure SQL Database och Azure SQL-hanterad ins
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Vad som ska förväntas under en planerad underhålls händelse
 
-Underhålls händelser kan producera enstaka eller flera redundans, beroende på Constellation för de primära och sekundära replikerna i början av underhålls händelsen. I genomsnitt sker 1,7 redundans per planerat underhålls evenemang. Omkonfigurationer/redundans slutförs vanligt vis inom 30 sekunder. Genomsnittet är 8 sekunder. Om det redan är anslutet måste ditt program återansluta till den nya primära repliken av databasen. Om en ny anslutning görs medan databasen genomgår en omkonfiguration innan den nya primära repliken är online får du fel 40613 (databasen är inte tillgänglig): *"databasen {databasename} på servern {servername} är inte tillgänglig för tillfället. Försök att ansluta igen senare. "* Om din databas har en tids krävande fråga avbryts den här frågan under en omkonfiguration och måste startas om.
+Underhålls händelser kan producera enstaka eller flera redundans, beroende på Constellation för de primära och sekundära replikerna i början av underhålls händelsen. I genomsnitt sker 1,7 redundans per planerat underhålls evenemang. Omkonfigurationer/redundans slutförs vanligt vis inom 30 sekunder. Genomsnittet är åtta sekunder. Om det redan är anslutet måste ditt program återansluta till den nya primära repliken av databasen. Om en ny anslutning görs medan databasen genomgår en omkonfiguration innan den nya primära repliken är online får du fel 40613 (databasen är inte tillgänglig): *"databasen {databasename} på servern {servername} är inte tillgänglig för tillfället. Försök att ansluta igen senare. "* Om din databas har en tids krävande fråga avbryts den här frågan under en omkonfiguration och måste startas om.
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Så här simulerar du ett planerat underhålls evenemang
 
@@ -45,7 +45,12 @@ Alla klient produktions program som ansluter till en moln databas tjänst bör i
 
 Om det uppstår inloggnings problem i databasen, kontrollerar du [Resource Health](../../service-health/resource-health-overview.md#get-started) -fönstret i [Azure Portal](https://portal.azure.com) för aktuell status. Avsnittet hälso historik innehåller avbrotts orsaken för varje händelse (om tillgänglig).
 
+## <a name="maintenance-window-feature"></a>Underhålls fönster funktion
+
+Med funktionen underhålls fönster kan du konfigurera scheman för förutsägbara underhålls perioder för berättigade Azure SQL-databaser och SQL-hanterade instanser. Mer information finns i [underhålls perioden](maintenance-window.md) .
+
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Resource Health](resource-health-to-troubleshoot-connectivity.md) för Azure SQL Database och Azure SQL-hanterad instans.
 - Mer information om logik för omprövning finns i avsnittet [om omprövnings logik för tillfälliga fel](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
+- Konfigurera scheman för underhålls fönster med funktionen [underhålls fönster](maintenance-window.md) .

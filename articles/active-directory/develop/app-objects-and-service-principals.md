@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 0345362e0e5bce9912a247fc90dee63943a1cb3b
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: f0a9298b6d8ee011052a20dc34d314adbc5a0b1e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557845"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646409"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Objekt för program och tjänstens huvudnamn i Azure Active Directory
 
@@ -65,10 +65,9 @@ Programobjektet fungerar som mallen som vanliga och standardinställda egenskape
 
 Ett huvud namn för tjänsten måste skapas i varje klient där programmet används, vilket gör det möjligt att upprätta en identitet för inloggning och/eller åtkomst till resurser som skyddas av klienten. Ett program för enskild klient har bara ett tjänsthuvudnamn (i dess startklientorganisation), som skapas och godkänns vid programregistrering. Ett webb program/API för flera innehavare har också ett tjänst huvud namn som skapats i varje klient organisation där en användare från den klienten har samtyckt till användningen.
 
-> [!NOTE]
-> Eventuella ändringar som du gör i program objekt avspeglas också i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
->
-> Observera också att interna program registreras som flera klienter som standard.
+Eventuella ändringar som du gör i program objekt, inklusive borttagning, avspeglas i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
+
+Interna program registreras som en multi-klient som standard.
 
 ## <a name="example"></a>Exempel
 

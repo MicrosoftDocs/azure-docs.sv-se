@@ -1,0 +1,117 @@
+### YamlMime:Landing
+title: Dokumentation om Azure percept
+summary: Azure percept är en komplett lösning för att skapa och distribuera uppfattning baserad AI på gränsen.
+metadata:
+  title: Dokumentation om Azure percept
+  description: Azure percept är en slut punkt till slut punkts AI-plattform.
+  services: azure-percept
+  ms.service: azure-percept
+  ms.topic: landing-page
+  author: elqu20
+  ms.author: v-elqu
+  ms.date: 02/11/2021
+  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101665771"
+landingContent:
+- title: Vad är Azure percept?
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Översikt över Azure percept
+      url: overview-azure-percept.md
+    - text: Översikt över Azure percept DK
+      url: overview-azure-percept-dk.md
+    - text: Översikt över Azure percept-ljud
+      url: overview-azure-percept-audio.md
+    - text: Översikt över Azure percept Studio
+      url: overview-azure-percept-studio.md
+    - text: Översikt över Azure percept-säkerhet
+      url: overview-percept-security.md
+- title: Kom igång med Azure percept DK
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Avpaketera och sätt samman din Azure percept DK
+      url: quickstart-percept-dk-unboxing.md
+    - text: Anslut Azure percept DK till Azure och distribuera en vision AI-modell
+      url: quickstart-percept-dk-set-up.md
+  - linkListType: reference
+    links:
+    - text: Azure percept DK-datablad
+      url: azure-percept-dk-datasheet.md
+    - text: Data blad för Azure percept vision
+      url: azure-percept-vision-datasheet.md
+    - text: Data blad för Azure percept-ljud
+      url: azure-percept-audio-datasheet.md
+- title: Skapa en AI-prototyp utan kod vision
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Skapa en lösning utan kod
+      url: tutorial-nocode-vision.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visa din devkit video ström
+      url: how-to-view-video-stream.md
+    - text: Distribuera en AI-modell till din devkit
+      url: how-to-deploy-model.md
+    - text: Avbilda avbildningar för ett syn projekt
+      url: how-to-capture-images.md
+    - text: Visa din devkit-telemetri
+      url: how-to-view-telemetry.md
+- title: Kom igång med Azure percept-ljud
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurera Azure percept-ljud
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
+    - text: Data blad för Azure percept-ljud
+      url: azure-percept-audio-datasheet.md
+    - text: Fel sökning av Azure percept-ljud
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Indikator för Azure percept-ljud
+      url: audio-button-led-behavior.md
+- title: Bygg en no-Code-lösning för röst assistent
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Skapa en röst assistent utan kod
+      url: tutorial-no-code-speech.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera din röst assistent
+      url: how-to-configure-voice-assistant.md
+    - text: Hantera din röst assistent
+      url: how-to-manage-voice-assistant.md
+- title: Avancerad utveckling med Azure percept
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Översikt över avancerad utveckling
+      url: overview-advanced-code.md
+  - linkListType: tutorial
+    links:
+    - text: Avancerad utveckling med moln tjänster
+      url: advanced-development-cloud.md
+    - text: Avancerad utveckling med hjälp av lokala verktyg
+      url: advanced-development-local.md
+- title: Håll din Azure percept-DK uppdaterad
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Översikt över Azure percept DK-uppdaterings upplevelse
+      url: overview-update-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera uppdateringar
+      url: how-to-set-up-over-the-air-updates.md
+    - text: Överliggande Air-uppdateringar
+      url: how-to-update-over-the-air.md
+    - text: Uppdatera via USB
+      url: how-to-update-via-usb.md

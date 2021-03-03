@@ -6,16 +6,16 @@ author: dlepow
 ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 6cf5c6f716912689b39264ed71f6a7c55f944ad2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439522"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649554"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Självstudie: Använd API Management-tillägget för Visual Studio Code för att importera och hantera API: er
 
-I den här självstudien får du lära dig att använda förhands granskningen API Management för tillägg för Visual Studio Code för vanliga åtgärder i API Management. Använd den välkända Visual Studio Code-miljön för att importera, uppdatera, testa och hantera API: er.
+I den här självstudien får du lära dig hur du använder API Management-tillägget för Visual Studio Code för vanliga åtgärder i API Management. Använd den välkända Visual Studio Code-miljön för att importera, uppdatera, testa och hantera API: er.
 
 Lär dig att:
 
@@ -30,9 +30,9 @@ Lär dig att:
 
 En introduktion till ytterligare API Management funktioner finns i självstudierna för API Management med hjälp av [Azure Portal](import-and-publish.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 - Förstå [Azure API Management terminologi](api-management-terminology.md)
-- Se till att du har installerat [Visual Studio Code](https://code.visualstudio.com/) och det senaste [Azure API Management-tillägget för Visual Studio Code (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- Se till att du har installerat [Visual Studio Code](https://code.visualstudio.com/) och det senaste [Azure API Management-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 - [Skapa en API Management-instans](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>Importera ett API

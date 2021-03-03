@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ffb3a0948267ea40a5d0511de63a80ad23584d1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 23b74c06ebd45092b9efe36a870eeac7f6fb828a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454669"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677568"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS med Synapse SQL
 
@@ -29,7 +29,7 @@ Du kan använda skapa extern tabell som SELECT (CETAS) i en dedikerad SQL-pool e
 
 ## <a name="cetas-in-dedicated-sql-pool"></a>CETAS i dedikerad SQL-pool
 
-För dedikerad SQL-pool, CETAS-användning och syntax, markerar du artikeln [skapa extern tabell som Välj](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Mer information om CTAS med hjälp av dedikerad SQL-pool finns i artikeln [CREATE TABLE som Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
+För dedikerad SQL-pool, CETAS-användning och syntax, markerar du artikeln [skapa extern tabell som Välj](/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) . Mer information om CTAS med hjälp av dedikerad SQL-pool finns i artikeln [CREATE TABLE som Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="cetas-in-serverless-sql-pool"></a>CETAS i SQL-pool utan Server
 
@@ -72,11 +72,11 @@ Anger namnet på det externa fil formats objekt som innehåller formatet för de
 
 MED *<common_table_expression>*
 
-Anger en tillfällig namngiven resultat uppsättning, kallat ett gemensamt tabell uttryck (common Table EXPRESSIONS). Mer information finns i [med common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Anger en tillfällig namngiven resultat uppsättning, kallat ett gemensamt tabell uttryck (common Table EXPRESSIONS). Mer information finns i [med common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 Välj <select_criteria>
 
-Fyller den nya tabellen med resultaten från en SELECT-instruktion. *select_criteria* är bröd texten i SELECT-instruktionen som avgör vilka data som ska kopieras till den nya tabellen. Information om SELECT-instruktioner finns i [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Fyller den nya tabellen med resultaten från en SELECT-instruktion. *select_criteria* är bröd texten i SELECT-instruktionen som avgör vilka data som ska kopieras till den nya tabellen. Information om SELECT-instruktioner finns i [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
 > [!NOTE]
 > ORDER BY-satsen i SELECT stöds inte för CETAS.

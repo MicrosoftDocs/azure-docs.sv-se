@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ea4e4fcce380a3bd9c30312639f7aa10bf0bb90
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653473"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656201"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionstillgänglighet och datahemvist
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services värnar om att hjälpa våra kunder att uppfylla sina sekretess-och personliga data krav. Som utvecklare som använder kommunikations tjänster med en direkt relation med människor som använder programmet, är det möjligt att du har en kontroll enhets data. Eftersom Azure Communication Services lagrar dessa data för din räkning är vi förmodligen en processor med dessa data. Den här sidan sammanfattar hur tjänsten behåller data och hur du kan identifiera, exportera och ta bort dessa data.
 
@@ -65,7 +63,7 @@ Chatt-trådar och meddelanden behålls tills de tas bort explicit. En helt inakt
 
 ### <a name="sms"></a>SMS
 
-Skickade och mottagna SMS-meddelanden bearbetas ephemerally av tjänsten och bevaras inte. 
+Skickade och mottagna SMS-meddelanden bearbetas ephemerally av tjänsten och bevaras inte.
 
 ### <a name="pstn-voice-calling"></a>PSTN röst samtal
 

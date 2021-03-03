@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428039"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649231"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
 
@@ -95,7 +95,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS50000 | TokenIssuanceError – det finns ett problem med inloggnings tjänsten. [Skapa ett supportärende](../fundamentals/active-directory-troubleshooting-support-howto.md) för att lösa problemet. |
 | AADSTS50001 | InvalidResource-resursen är inaktive rad eller finns inte. Kontrol lera appens kod för att se till att du har angett den exakta resurs-URL: en för resursen som du försöker få åtkomst till.  |
 | AADSTS50002 | NotAllowedTenant-inloggningen misslyckades på grund av en begränsad proxy-åtkomst på klienten. Om det är din egen klientprincip kan du åtgärda problemet genom att ändra inställningarna för den begränsade klientorganisationen. |
-| AADSTS500021 | Åtkomst till klienten ' {Tenant} ' nekas. AADSTS500021 anger att funktionen för klient begränsning har kon figurer ATS och att användaren försöker få åtkomst till en klient som inte finns i listan över tillåtna innehavare som anges i huvudet `Restrict-Access-To-Tenant` . Mer information finns i [använda klient begränsningar för att hantera åtkomst till SaaS Cloud-program](/azure/active-directory/manage-apps/tenant-restrictions).|
+| AADSTS500021 | Åtkomst till klienten ' {Tenant} ' nekas. AADSTS500021 anger att funktionen för klient begränsning har kon figurer ATS och att användaren försöker få åtkomst till en klient som inte finns i listan över tillåtna innehavare som anges i huvudet `Restrict-Access-To-Tenant` . Mer information finns i [använda klient begränsningar för att hantera åtkomst till SaaS Cloud-program](../manage-apps/tenant-restrictions.md).|
 | AADSTS50003 | MissingSigningKey-inloggningen misslyckades på grund av en saknad signerings nyckel eller certifikat. Det kan bero på att ingen signerings nyckel har kon figurer ATS i appen. Kolla in de lösningar som beskrivs på [... /Manage-Apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # certifikat-eller-Key-not-konfigurerat](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Kontakta appens ägare eller en app-administratör om problemen fortfarande visas. |
 | AADSTS50005 | DevicePolicyError – användaren försökte logga in på en enhet från en plattform som för närvarande inte stöds via principen för villkorlig åtkomst. |
 | AADSTS50006 | InvalidSignature-signaturverifieringen misslyckades på grund av en ogiltig signatur. |
@@ -168,6 +168,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired – klienten kan hämta en SSO-token via tillägg för Windows 10-konton, men det gick inte att hitta token i begäran eller så har den angivna token upphört att gälla. |
 | AADSTS50169 | InvalidRequestBadRealm-sfären är inte en konfigurerad sfär för den aktuella tjänstens namnrymd. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping-mappningen av externa kontroller saknas. |
+| AADSTS50173 | FreshTokenNeeded – den tillhandahållna tilldelningen har upphört att gälla på grund av att den har återkallats och en ny autentiseringstoken krävs. Antingen en administratör eller en användare återkallade tokens för den här användaren, vilket gör att efterföljande token uppdateras för att fungera och kräver omautentisering. Be användaren att logga in igen. |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers-extern utmaning stöds inte för passthrough-användare. |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers-session stöds inte för passthrough-användare. |
 | AADSTS50180 | WindowsIntegratedAuthMissing-integrerad Windows-autentisering krävs. Aktivera klientorganisationen för sömlös SSO. |

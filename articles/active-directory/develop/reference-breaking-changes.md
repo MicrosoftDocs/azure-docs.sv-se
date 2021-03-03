@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348729"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647429"
 ---
 # <a name="whats-new-for-authentication"></a>Vad är nytt för autentisering?
 
@@ -35,7 +35,28 @@ Autentiserings systemet ändrar och lägger till funktioner kontinuerligt för a
 
 ## <a name="upcoming-changes"></a>Kommande ändringar
 
-Inget schemalagt för tillfället.  Se nedan för de ändringar som finns i eller som kommer till produktion.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Villkorlig åtkomst utlöser endast för explicit begärda omfattningar
+
+**Effektivt datum**: mars 2021
+
+**Påverkade slut punkter**: v 2.0
+
+**Protokoll som påverkas**: alla flöden som använder [dynamiskt medgivande](v2-permissions-and-consent.md#requesting-individual-user-consent)
+
+Program som använder dynamiskt medgivande har idag fått alla behörigheter som de har godkänt för, även om de inte har begärts i `scope` parametern efter namn.  Detta kan orsaka att en app begär det `user.read` , men med medgivande till `files.read` , att tvingas att skicka den villkorliga åtkomst som tilldelats för `files.read` behörigheten. 
+
+För att minska antalet onödiga åtkomst-prompter, ändrar Azure AD det sätt på vilket de begärda omfången tillhandahålls till program, så att endast uttryckligen begärda omfattningar utlöser villkorlig åtkomst. Den här ändringen kan leda till att appar är beroende av Azure AD: s tidigare beteende (dvs. ger alla behörigheter även när de inte begärdes) att brytas, eftersom de token som de begär saknar behörighet.
+
+Appar får nu åtkomst-token med en blandning av behörigheter i detta, samt de som de har godkänt för och som inte kräver några begär Anden om villkorlig åtkomst.  Omfattningarna för åtkomsttoken avspeglas i token-svarets `scope` parameter. 
+
+**Exempel**
+
+En app har medgivande för `user.read` , `files.readwrite` och `tasks.read` . `files.readwrite` har principer för villkorlig åtkomst tillämpade på den, medan de andra två inte gör det. Om en app gör en Tokenbegäran för `scope=user.read` och den inloggade användaren inte har skickat några principer för villkorlig åtkomst, är den resulterande token för- `user.read` och- `tasks.read` behörigheterna. `tasks.read` ingår eftersom appen har ett godkännande för den, och det krävs ingen princip för villkorlig åtkomst för att tillämpas. 
+
+Om appen sedan begär `scope=files.readwrite` det kommer den villkorliga åtkomst som krävs av klienten att utlösas, vilket tvingar appen att visa en interaktiv auth-prompt där principen för villkorlig åtkomst kan uppfyllas.  Den returnerade token har alla tre omfånget. 
+
+Om appen sedan gör en sista begäran för något av de tre omfången (t. ex. `scope=tasks.read` ), kommer Azure AD se att användaren redan har slutfört de principer för villkorlig åtkomst som behövs för `files.readwrite` och sedan utfärdar en token med alla tre behörigheter i den. 
+
 
 ## <a name="may-2020"></a>Maj 2020
 

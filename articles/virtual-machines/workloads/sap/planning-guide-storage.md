@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6982b782fdd6b5b269c1562c54be3478c58bbce9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501005"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673738"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typer för SAP-arbetsbelastning
 Azure har flera olika lagrings typer som skiljer sig mycket i funktioner, data flöde, svars tid och priser. Några av lagrings typerna är inte eller av begränsad användning för SAP-scenarier. Flera typer av Azure-lagring är väl lämpade eller optimerade för vissa SAP-arbetsbelastnings scenarier. I synnerhet för SAP HANA fick vissa Azure Storage-typer certifierade för användning med SAP HANA. I det här dokumentet ska vi gå igenom de olika typerna av lagring och beskriva deras kapacitet och användbarhet med SAP-arbetsbelastningar och SAP-komponenter.
@@ -136,7 +135,7 @@ Den här typen av lagring är riktad mot DBMS-arbetsbelastningar, lagrings trafi
 
 Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 
-| Kapacitet| Kommentar| Anteckningar/länkar | 
+| Funktion| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | korrekt | alla system |
 | Datadisk | korrekt | alla system – [särskilt för SAP HANA](../../how-to-enable-write-accelerator.md) |
@@ -194,7 +193,7 @@ Kostnaden för en enskild disk bestäms av de tre dimensionerna som du kan defin
 
 Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 
-| Kapacitet| Kommentar| Anteckningar/länkar | 
+| Funktion| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | fungerar inte | - |
 | Datadisk | korrekt | alla system  |
@@ -249,7 +248,7 @@ Precis som med Azure Premium Storage kan en fast eller linjär data flödes stor
 
 Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 
-| Kapacitet| Kommentar| Anteckningar/länkar | 
+| Funktion| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | fungerar inte | - |
 | Datadisk | korrekt | Endast SAP HANA  |
@@ -282,7 +281,7 @@ Ytterligare inbyggda funktioner för ANF-lagring:
 ## <a name="azure-standard-ssd-storage"></a>Azure standard SSD-lagring
 Jämfört med Azure standard Storage-lagring ger Azure standard SSD-lagring bättre tillgänglighet, konsekvens, tillförlitlighet och latens. Den är optimerad för arbets belastningar som behöver konsekvent prestanda på lägre IOPS-nivåer. Det här lagrings utrymmet är det minsta lagrings utrymme som används för SAP-system med låg IOPS och data flödes krav. Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 
-| Kapacitet| Kommentar| Anteckningar/länkar | 
+| Funktion| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | begränsad lämplig | icke-produktionssystem |
 | Datadisk | begränsad lämplig | vissa icke-produktionssystem med låga IOPS-och latens krav |
@@ -309,7 +308,7 @@ Jämfört med Azure standard Storage-lagring ger Azure standard SSD-lagring bät
 ## <a name="azure-standard-hdd-storage"></a>Azure standard HDD-lagring
 Azure Standard HDD Storage var den enda lagrings typen när Azure-infrastrukturen fick certifiering för SAP NetWeaver-arbetsbelastning under året 2014. I år 2014 var Azure Virtual Machines liten och låg i lagrings data flödet. Den här lagrings typen kunde därför bara hålla sig uppdaterad med kraven. Lagringen är idealisk för försvars känsliga arbets belastningar som du inte upplever i SAP-utrymmet. Med det ökande genomflödet av virtuella Azure-datorer och den ökade arbets belastning som de virtuella datorerna producerar, betraktas inte den här lagrings typen för användning med SAP-scenarier längre. Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 
-| Kapacitet| Kommentar| Anteckningar/länkar | 
+| Funktion| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | inte lämplig | - |
 | Datadisk | inte lämplig | - |

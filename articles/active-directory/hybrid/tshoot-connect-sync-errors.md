@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092657"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643872"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Fel sökning av fel under synkronisering
 Fel kan uppstå när identitets data synkroniseras från Windows Server Active Directory (AD DS) till Azure Active Directory (Azure AD). Den här artikeln innehåller en översikt över olika typer av synkroniseringsfel, några möjliga scenarier som orsakar felen och potentiella sätt att åtgärda felen. Den här artikeln innehåller vanliga fel typer och kan inte omfatta alla möjliga fel.
@@ -41,7 +41,7 @@ Fel under export till Azure AD indikerar att åtgärden \( Lägg till, uppdatera
 
 ## <a name="data-mismatch-errors"></a>Fel vid data matchning
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beskrivning
 * När Azure AD Connect \( Sync-motorn \) instruerar Azure Active Directory att lägga till eller uppdatera objekt, matchar Azure AD det inkommande objektet med attributet **SourceAnchor** till attributet **IMMUTABLEID** för objekt i Azure AD. Den här matchningen kallas för en **hård matchning**.
 * När Azure AD inte **hittar** något objekt som matchar attributet **immutableId** med **sourceAnchor** -attributet för det inkommande objektet, går det tillbaka till att använda proxyAddresses-och userPrincipalName-attributen för att hitta en matchning. Den här matchningen kallas för en **mjuk matchning**. Den mjuka matchningen är utformad för att matcha objekt som redan finns i Azure AD (som har en källa i Azure AD) med de nya objekt som läggs till/uppdateras under synkroniseringen och som representerar samma entitet (användare, grupper) lokalt.
 * **InvalidSoftMatch** -fel uppstår när hård matchningen inte hittar något matchande objekt **och** en mjuk matchning söker efter ett matchande objekt, men objektet har ett annat värde än *immutableId* än det inkommande objektets *SourceAnchor*, vilket tyder på att det matchande objektet har synkroniserats med ett annat objekt från lokalt Active Directory.
@@ -109,7 +109,7 @@ Synkrona fel rapporter i Azure AD Connect Health för synkronisering uppdateras 
 * [Dubbletter eller ogiltiga attribut förhindrar katalog synkronisering i Microsoft 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beskrivning
 När Azure AD försöker använda mjuk matchning för två objekt, är det möjligt att två objekt av olika objekt typer (till exempel användare, grupp, kontakt osv.) har samma värden för attributen som används för att utföra den mjuka matchningen. Eftersom duplicering av dessa attribut inte är tillåtet i Azure AD, kan åtgärden leda till "ObjectTypeMismatch"-synkroniseringsfel.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Exempel scenarier för ObjectTypeMismatch-fel
@@ -130,7 +130,7 @@ Den vanligaste orsaken till ObjectTypeMismatch-felet är två objekt av annan ty
 
 ## <a name="duplicate-attributes"></a>Duplicera attribut
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beskrivning
 Azure Active Directory schema tillåter inte att två eller flera objekt har samma värde för följande attribut. Det innebär att varje objekt i Azure AD tvingas ha ett unikt värde för dessa attribut vid en specifik instans.
 
 * ProxyAddresses
@@ -168,7 +168,7 @@ Den vanligaste orsaken till att AttributeValueMustBeUnique-felet är två objekt
 
 ## <a name="data-validation-failures"></a>Data verifierings problem
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beskrivning
 Azure Active Directory tillämpar olika begränsningar för själva data innan de tillåter att data skrivs till katalogen. De här begränsningarna är att se till att slutanvändarna får bästa möjliga upplevelse när du använder de program som är beroende av dessa data.
 
 #### <a name="scenarios"></a>Scenarier
@@ -182,7 +182,7 @@ a. Se till att attributet userPrincipalName innehåller tecken som stöds och de
 * [Förbered för att etablera användare via katalog synkronisering till Microsoft 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beskrivning
 Det här fallet resulterar i ett **"FederatedDomainChangeError"** -synkroniseringsfel när suffixet för en användares userPrincipalName ändras från en federerad domän till en annan federerad domän.
 
 #### <a name="scenarios"></a>Scenarier
@@ -201,10 +201,10 @@ Om en användares UserPrincipalName-suffix har uppdaterats från bob@**contoso.c
 2. Tillåt nästa synkronisering att försöka synkronisera. Den här tidssynkroniseringen kommer att lyckas och den kommer att uppdatera UserPrincipalName till Bob bob@fabrikam.com som förväntat.
 
 #### <a name="related-articles"></a>Relaterade artiklar
-* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
+* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Description
+### <a name="description"></a>Beskrivning
 När ett attribut överskrider den tillåtna storleks gränsen, längd begränsningen eller antals gränsen som angetts av Azure Active Directory schema, resulterar synkroniseringsåtgärden i **LargeObject** -eller **ExceededAllowedLength** -synkroniseringsfel. Detta fel uppstår vanligt vis för följande attribut
 
 * userCertificate
@@ -223,7 +223,7 @@ När ett attribut överskrider den tillåtna storleks gränsen, längd begränsn
 
 ## <a name="existing-admin-role-conflict"></a>Konflikt vid befintlig administratörs roll
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beskrivning
 En **befintlig administratörs roll konflikt** inträffar på ett användar objekt under synkroniseringen när det användar objektet har:
 
 - administrativ behörighet och

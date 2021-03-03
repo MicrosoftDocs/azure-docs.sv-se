@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696184"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654025"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Vanliga frågor och svar om Azure automanage för virtuella datorer
 
@@ -27,7 +27,7 @@ Om ditt Azure-problem inte åtgärdas i den här artikeln kan du gå till Azure-
 **Vilka är alla krav som krävs för att aktivera Azure automanage?**
 
 Följande är förutsättningar för att aktivera Azure automanage:
-- Endast Windows Server-VM
+- [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions) och [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions) som stöds
 - Virtuella datorer måste finnas i en region som stöds
 - Användaren måste ha rätt behörighet
 - Endast icke-skala uppsättning virtuella datorer
@@ -42,12 +42,12 @@ Om du använder ett nytt automanage-konto när du aktiverar måste du antingen h
 
 **Vilka regioner stöds?**
 
-Virtuella datorer i följande regioner stöds: Västeuropa, östra; USA, västra 2, centrala Kanada, västra centrala USA, Östra Japan.
+En fullständig lista över regioner som stöds finns [här](./automanage-virtual-machines.md#supported-regions).
 
 
 **Vilka funktioner hanterar Azure automatiskt?**
 
-Hantera automatiskt registrering, konfiguration och övervakning under hela livs cykeln för den virtuella datorn de tjänster som listas [här](virtual-machines-best-practices.md).
+Hantera automatiskt registrering, konfiguration och övervakning under hela livs cykeln för den virtuella datorn de tjänster som listas [här](automanage-virtual-machines.md).
 
 **Fungerar Azure automanage med Azure Arc-aktiverade virtuella datorer?**
 
@@ -55,12 +55,12 @@ Autohantering stöder för närvarande inte Arc-aktiverade virtuella datorer.
 
 **Kan jag anpassa konfigurationer på Azure automanage?**
 
-Kunder kan anpassa inställningar för vissa tjänster, t. ex. Azure Backup kvarhållning, via konfigurations inställningar. En fullständig lista över inställningar som kan ändras finns i vår dokumentation [här](virtual-machines-best-practices.md).
+Kunder kan anpassa inställningar för vissa tjänster, t. ex. Azure Backup kvarhållning, via konfigurations inställningar. En fullständig lista över inställningar som kan ändras finns i vår dokumentation [här](automanage-virtual-machines.md#customizing-an-environment-using-preferences).
 
 
 **Fungerar Azure autohantering med både virtuella Linux-och Windows-datorer?**
 
-För närvarande stöder hantering av virtuella Windows Server Azure-datorer.
+Ja, se de [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions) och [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions)som stöds.
 
 
 **Kan jag selektivt tillämpa autohantering endast på en uppsättning virtuella datorer?**

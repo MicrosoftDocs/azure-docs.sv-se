@@ -6,22 +6,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6de91d51f3700c25ba1e0f361c948dc8ab338c43
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 606b102b1922d382f479235ffc4c61b68e7db766
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590558"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676394"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
-Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten. Läs för [hands versions funktions listan](search-api-preview.md) för att visa funktioner i offentlig för hands version.
+Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten. Kolla in [funktions listan för för hands versionen](search-api-preview.md) för att visa en omfattande lista över funktioner som ännu inte är allmänt tillgängliga.
+
+## <a name="march-2021"></a>Mars 2021
+
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
+|------------------------------|---------------|---------------|
+| [Semantisk sökning](semantic-search-overview.md) | En samling fråge relaterade funktioner som ändrar Sök Resultat för att skapa mer relevanta resultat. Med små ändringar i en Sök förfrågan kan du prova dessa funktioner på befintliga index.</br></br>[Semantisk fråga](semantic-how-to-query-request.md) är en ny frågetyp som utnyttjar framsteg i naturlig språk bearbetning för att förbättra rangordningen, samt för att förstå frågans avsikt att tillhandahålla svar, beskrivningar och semantiska högdagrar.</br></br>[Semantisk rangordning och svar (svar, under texter och högdagrar)](semantic-how-to-query-response.md) hänvisar till algoritmen som definierar en semantisk fråga och svarets struktur. | Offentlig för hands version ([efter begäran](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Använd [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) API-version = 2020-06 -30 – för hands version och [sök Utforskaren](search-explorer.md) i Azure Portal. </br></br>Begränsningar för region och nivå gäller. |
+| [Stavnings kontrol lera sökord](speller-how-to-add.md) | Innan du kan komma åt sökmotorn kan du välja att kontrol lera stavnings fel. `speller`Alternativet fungerar med valfri typ av fråga (enkel, fullständig eller semantisk). |  Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version|
+| [SharePoint Online-indexerare](search-howto-index-sharepoint-online.md) | Den här indexeraren ansluter dig till en SharePoint Online-webbplats så att du kan indexera innehåll från ett dokument bibliotek. | Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
 
 ## <a name="february-2021"></a>Februari 2021
 
-|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|---------------|---------------|
 | [Återställ dokument (förhands granskning)](search-howto-run-reset-indexers.md) |  Ombearbetar individuellt valda Sök dokument i Indexer-arbetsbelastningar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/index-preview) |
 | [Tillgänglighetszoner](search-performance-optimization.md#availability-zones)| Sök tjänster med två eller fler repliker i vissa regioner, som listas i [skala för prestanda](search-performance-optimization.md#availability-zones), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i artikeln om skalning för prestanda. |
@@ -29,7 +37,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 ## <a name="january-2021"></a>Januari 2021
 
-|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Beskrivning | Tillgänglighet  |
 |------------------------------|-------------|---------------|
 | [Solution Accelerator för Azure Kognitiv sökning och QnA Maker](https://github.com/Azure-Samples/search-qna-maker-accelerator) | Hämtar frågor och svar från dokumentet och föreslår de mest relevanta svaren. Du hittar en live demo-app på [https://aka.ms/qnaWithAzureSearchDemo](https://aka.ms/qnaWithAzureSearchDemo) .  | Projekt med öppen källkod (inget service avtal) |
 

@@ -3,17 +3,17 @@ title: 'Diagnostisera och Felsök tillgängligheten för Azure Cosmos SDK: er i 
 description: Lär dig allt om tillgänglighets beteendet i Azure Cosmos SDK när du arbetar i flera regionala miljöer.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 641b7d44407f8f3760c673f45d69dcfdc8b363b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650991"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661434"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostisera och Felsök tillgängligheten för Azure Cosmos SDK: er i multiregionala miljöer
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,13 +47,13 @@ Om du **inte anger någon önskad region** använder SDK-klienten som standard d
 > Om de värden som anges som nationella inställningar inte stämmer överens med några befintliga Azure-regioner kommer de att ignoreras. Om de matchar en befintlig region men kontot inte replikeras till det, kommer klienten att ansluta till nästa önskade region som matchar eller till den primära regionen.
 
 > [!WARNING]
-> Om du inaktiverar återställningen av slut punkten (som anger värdet till falskt) på klient konfigurationen inaktive ras all logik för växling vid fel och tillgänglighet som beskrivs i det här dokumentet.
-> Den här konfigurationen kan nås av följande parametrar i varje Azure Cosmos SDK:
+> Logiken för växling vid fel och tillgänglighet som beskrivs i det här dokumentet kan inaktive ras i klient konfigurationen, vilket inte rekommenderas om inte användar programmet kommer att hantera tillgänglighets fel. Detta kan uppnås genom att:
 >
-> * Egenskapen [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) i .NET v2 SDK.
-> * Metoden [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) i Java v4 SDK.
-> * Parametern [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) i python SDK.
-> * Parametern [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) i JS SDK.
+> * Ange egenskapen [ConnectionPolicy. EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) i .NET v2 SDK till false.
+> * Ange egenskapen [CosmosClientOptions. LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) i .net v3 SDK till true.
+> * Ställer in metoden [CosmosClientBuilder. endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) i Java v4 SDK till false.
+> * Om du anger parametern [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) i python SDK till false.
+> * Ange parametern [CosmosClientOptions. ConnectionPolicy. enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) i JS SDK till false.
 
 Under normala omständigheter ansluter SDK-klienten till den önskade regionen (om en regional inställning har angetts) eller till den primära regionen (om ingen inställning har angetts) och åtgärderna kommer att begränsas till den regionen, om inte något av nedanstående scenarier inträffar.
 

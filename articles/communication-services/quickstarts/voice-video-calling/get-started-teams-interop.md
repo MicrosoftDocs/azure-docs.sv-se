@@ -7,20 +7,32 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 48b9e1139ecae3deed513c954bf4faa7022a88a1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+zone_pivot_groups: acs-plat-web-ios-android
+ms.openlocfilehash: 6da700fdd8149a7fff92ed0edef2015e354eca05
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936693"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660084"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Snabb start: Anslut din anropande app till ett team möte
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+> [!IMPORTANT]
+> Fyll i [det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)om du vill aktivera/inaktivera [team innehavarens interoperabilitet](../concepts/teams-interop.md).
 
 Kom igång med Azure Communication Services genom att ansluta din anropande lösning till Microsoft Teams med hjälp av Java Script-klient biblioteket.
 
-[!INCLUDE [Join Teams meetings](./includes/teams-interop-javascript.md)]
+::: zone pivot="platform-web"
+[!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
+::: zone-end
+
+::: zone pivot="platform-android"
+[!INCLUDE [Calling with Android](./includes/teams-interop-android.md)]
+::: zone-end
+
+::: zone pivot="platform-ios"
+[!INCLUDE [Calling with iOS](./includes/teams-interop-ios.md)]
+::: zone-end
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

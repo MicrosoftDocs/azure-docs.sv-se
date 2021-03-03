@@ -4,15 +4,15 @@ description: Lär dig hur du konfigurerar en privat Azure-länk för att få åt
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 03/02/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: c684bd38f5e82cc53da002278495c2d4a859edc2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629654"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661298"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurera en privat Azure-länk för ett Azure Cosmos-konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,11 +22,11 @@ Med hjälp av en privat Azure-länk kan du ansluta till ett Azure Cosmos-konto v
 > [!NOTE]
 > Den privata länken förhindrar inte att dina Azure Cosmos-slutpunkter löses av en offentlig DNS. Filtrering av inkommande begär Anden sker på program nivå, inte på transport-eller nätverks nivå.
 
-Med privat länk kan användarna få åtkomst till ett Azure Cosmos-konto inifrån det virtuella nätverket eller från ett peer-kopplat virtuellt nätverk. Resurser som är mappade till privat länk är också tillgängliga lokalt via privat peering via VPN eller Azure ExpressRoute. 
+Med privat länk kan användarna få åtkomst till ett Azure Cosmos-konto inifrån det virtuella nätverket eller från ett peer-kopplat virtuellt nätverk. Resurser som är mappade till privat länk är också tillgängliga lokalt via privat peering via VPN eller Azure ExpressRoute.
 
-Du kan ansluta till ett Azure Cosmos-konto som kon figurer ATS med en privat länk med hjälp av metoden för automatisk eller manuell godkännande. Läs mer i avsnittet om [godkännande av arbets flöde](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) i dokumentationen för privat länk. 
+Du kan ansluta till ett Azure Cosmos-konto som kon figurer ATS med en privat länk med hjälp av metoden för automatisk eller manuell godkännande. Läs mer i avsnittet om [godkännande av arbets flöde](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) i dokumentationen för privat länk.
 
-I den här artikeln beskrivs hur du skapar en privat slutpunkt. Det förutsätter att du använder metoden för automatiskt godkännande.
+I den här artikeln beskrivs hur du konfigurerar privata slut punkter för Azure Cosmos DB transaktions lagring. Det förutsätter att du använder metoden för automatiskt godkännande. Om du använder analys lagret, se [privata slut punkter för artikeln analys lager](analytical-store-private-endpoints.md) .
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Skapa en privat slut punkt med hjälp av Azure Portal
 
@@ -671,7 +671,7 @@ Följande begränsningar gäller när du använder en privat länk med ett Azure
 
 * När du använder Azure Cosmos DB s API för MongoDB-konton stöds en privat slut punkt för konton på Server version 3,6 (det vill säga konton som använder slut punkten i formatet `*.mongo.cosmos.azure.com` ). Privat länk stöds inte för konton på Server version 3,2 (det vill säga konton som använder slut punkten i formatet `*.documents.azure.com` ). Om du vill använda en privat länk bör du migrera gamla konton till den nya versionen.
 
-* När du använder en Azure Cosmos DBs API för MongoDB-konto som har en privat länk, kanske vissa verktyg eller bibliotek inte fungerar eftersom de automatiskt utsträckar `appName` parametern från anslutnings strängen. Den här parametern krävs för att ansluta till kontot över en privat slut punkt. Vissa verktyg, t. ex. Visual Studio Code, tar inte bort den här parametern från anslutnings strängen och är därför kompatibel.
+* När du använder en Azure Cosmos DBs API för MongoDB-konto som har en privat länk, måste verktyg/bibliotek stödja identifiering av tjänst namn (SNI) eller skicka `appName` parametern från anslutnings strängen till korrekt anslutning. Vissa äldre verktyg/bibliotek kanske inte är kompatibla för att använda funktionen för privata länkar.
 
 * En nätverks administratör bör minst beviljas `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` behörigheten i Azure Cosmos-kontots omfång för att skapa automatiskt godkända privata slut punkter.
 

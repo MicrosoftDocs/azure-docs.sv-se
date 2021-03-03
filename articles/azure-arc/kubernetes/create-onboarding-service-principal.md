@@ -1,5 +1,5 @@
 ---
-title: Skapa en Azure Arc-aktiverad onboarding service-huvudobjekt (för hands version)
+title: Skapa ett onboarding service-huvud för Azure Arc-aktiverade Kubernetes
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/09/2021
@@ -8,20 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Skapa en Azure Arc-aktiverad onboarding-tjänstens huvud namn '
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390495"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650354"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Skapa en Azure Arc-aktiverad onboarding service-huvudobjekt (för hands version)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Skapa ett onboarding service-huvud för Azure Arc-aktiverade Kubernetes
 
 ## <a name="overview"></a>Översikt
 
-Du kan publicera Kubernetes-kluster till Azure-bågen med hjälp av tjänstens huvud namn med roll tilldelningar med begränsad behörighet. Den här funktionen är användbar i pipeline för kontinuerlig integrering och kontinuerlig distribution (CI/CD), till exempel Azure-pipelines och GitHub-åtgärder.
+Du kan ansluta Kubernetes-kluster till Azure-bågen med hjälp av tjänstens huvud namn med roll tilldelningar med begränsad behörighet. Den här funktionen är användbar i pipeline för kontinuerlig integrering och kontinuerlig distribution (CI/CD), till exempel Azure-pipelines och GitHub-åtgärder.
 
-Gå igenom följande steg för att lära dig hur du använder tjänstens huvud namn för att registrera Kubernetes-kluster i Azure-bågen.
+Gå igenom följande steg för att lära dig hur du använder tjänstens huvud namn för att ansluta Kubernetes-kluster till Azure-bågen.
 
 ## <a name="create-a-new-service-principal"></a>Skapa ett nytt huvud namn för tjänsten
 
@@ -49,11 +49,11 @@ Tilldela rollen "Kubernetes kluster – Azure Arc onboarding" till den nyligen s
 
 Med tanke på de begränsade förmågorna kan kunder enkelt använda den här huvudobjektet för att publicera flera kluster.
 
-Du kan begränsa behörigheterna ytterligare genom att skicka i lämpligt `--scope` argument när du tilldelar rollen. Detta gör det möjligt för kunderna att begränsa kluster registreringen. Följande scenarier stöds av olika `--scope` Parametrar:
+Du kan begränsa behörigheterna ytterligare genom att skicka i lämpligt `--scope` argument när du tilldelar rollen. Detta gör att administratörer kan begränsa kluster registreringen till prenumerations-eller resurs grupps omfånget. Följande scenarier stöds av olika `--scope` Parametrar:
 
 | Resurs  | `scope`-argument| Effekt |
 | ------------- | ------------- | ------------- |
-| Prenumeration | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Tjänstens huvud namn kan registrera alla kluster i en befintlig resurs grupp i den aktuella prenumerationen. |
+| Prenumeration | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Tjänstens huvud namn kan registrera kluster i alla resurs grupper under den prenumerationen. |
 | Resursgrupp | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Tjänstens huvud namn kan __bara__ registrera kluster i resurs gruppen `myGroup` . |
 
 ```console

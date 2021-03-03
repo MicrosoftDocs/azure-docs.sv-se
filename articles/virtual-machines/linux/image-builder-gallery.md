@@ -5,15 +5,16 @@ author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2019
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 0cf081fb7723972013d61f385c823a3b0c4d2aee
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 27635ef8b0ad1d8eeb6ee0105f911cd42d5592a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679525"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667281"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>För hands version: skapa en Linux-avbildning och distribuera den till ett delat avbildnings Galleri 
 
@@ -245,7 +246,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Ta bort behörigheter asssignments, roller och identitet
+Ta bort behörighets tilldelningar, roller och identitet
 ```azurecli-interactive
 az role assignment delete \
     --assignee $imgBuilderCliId \

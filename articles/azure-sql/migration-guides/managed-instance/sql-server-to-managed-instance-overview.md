@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 02/18/2020
+ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094017"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656286"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ I följande tabell visas rekommenderade Migreringsverktyg:
 |---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Azure-tjänsten från första part som stöder migrering i offline-läge för program som kan ge stillestånds tid under migreringsprocessen. Till skillnad från kontinuerlig migrering i onlineläge kör offline mode-migrering en eng ång slöation av en fullständig säkerhets kopia av databasen från källan till målet. | 
 |[Inbyggd säkerhets kopiering och återställning](../../managed-instance/restore-sample-database-quickstart.md) | SQL-hanterad instans har stöd för återställning av interna SQL Server databas säkerhets kopior (. bak-filer), vilket gör det till det enklaste alternativet för migrering för kunder som kan ge fullständig databas säkerhets kopiering till Azure Storage. Fullständiga och differentiella säkerhets kopieringar stöds också och dokumenteras i [avsnittet migrerings till gångar](#migration-assets) längre fram i den här artikeln.| 
+|[Logg uppspelnings tjänsten (LRS)](../../managed-instance/log-replay-service-migrate.md) | Det här är en moln tjänst som är aktive rad för hanterad instans baserat på SQL Server logg överförings teknik, vilket gör det till ett flyttnings alternativ för kunder som kan tillhandahålla fullständiga, differentiella och logga databas säkerhets kopior till Azure Storage. LRS används för att återställa säkerhetskopierade filer från Azure Blob Storage till SQL-hanterad instans.| 
 | | |
 
 ### <a name="alternative-tools"></a>Alternativa verktyg
@@ -116,6 +117,7 @@ I följande tabell jämförs rekommenderade migrerings alternativ:
 |---------|---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrera enskilda databaser eller flera databaser i stor skala. </br> – Kan hantera stillestånd under migreringsprocessen. </br> </br> Källor som stöds: </br> -SQL Server (2005-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM |  – Migreringar i skala kan automatiseras via [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md). </br> – Tiden för att slutföra migreringen är beroende av databasens storlek och påverkas av säkerhets kopierings-och återställnings tiden. </br> – Tillräckligt med stillestånd kan krävas. |
 |[Inbyggd säkerhets kopiering och återställning](../../managed-instance/restore-sample-database-quickstart.md) | – Migrera enskilda affärs program databaser (n).  </br> – Snabb och enkel migrering utan en separat migrerings tjänst eller verktyg.  </br> </br> Källor som stöds: </br> -SQL Server (2005-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM | -Säkerhets kopiering av databasen använder flera trådar för att optimera data överföring till Azure Blob Storage, men ISV-bandbredd och databas storlek kan påverka överföringshastigheten. </br> – Nedtid bör vara tillräckligt lång tid som krävs för att utföra en fullständig säkerhets kopiering och återställning (vilket är en storlek på data åtgärd).| 
+|[Logg uppspelnings tjänsten (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Migrera enskilda affärs program databaser (n).  </br> – Mer kontroll krävs för migrering av databasen.  </br> </br> Källor som stöds: </br> -SQL Server (2008-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM | – Migreringen gör fullständiga databas säkerhets kopieringar på SQL Server och kopierar säkerhetskopieringsfiler till Azure Blob Storage. LRS används för att återställa säkerhetskopierade filer från Azure Blob Storage till SQL-hanterad instans. </br> -Databaser som återställs under migreringsprocessen är i ett återställnings läge och kan inte användas för att läsa eller skriva till dess att processen har slutförts.| 
 | | | |
 
 ### <a name="alternative-options"></a>Alternativa alternativ
@@ -203,7 +205,7 @@ Vissa funktioner är bara tillgängliga när kompatibilitetsnivån för [databas
 
 Mer hjälp finns i följande resurser som har utvecklats för Real World migration-projekt.
 
-|Tillgång  |Description  |
+|Tillgång  |Beskrivning  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[DBLoader-verktyg](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader kan användas för att läsa in data från avgränsade textfiler till SQL Server. I det här Windows-konsol verktyget används SQL Server inbyggda klient Bulkload-gränssnittet, som fungerar på alla versioner av SQL Server, inklusive Azure SQL MI.|

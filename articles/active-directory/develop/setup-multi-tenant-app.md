@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9564727cfe59f243fd1096c93d7eadf1d830be9e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9c6272901600886958d4339d067ca75bb9a73793
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052557"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649129"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Så här konfigurerar du ett nytt program för flera innehavare
 
@@ -29,4 +29,4 @@ Här följer en lista över rekommenderade ämnen för att lära dig mer om prog
 - Om du vill ha mer djupgående information kan du läsa om [hur ett program för flera innehavare har kon figurer ATS och kodats från slut punkt till slut](./howto-convert-app-to-be-multi-tenant.md)punkt, inklusive hur du registrerar, använda slut punkten "common", implementera "användare" och "admin", hur du implementerar mer avancerade scenarier med flera nivåer
 
 ## <a name="next-steps"></a>Nästa steg
-[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

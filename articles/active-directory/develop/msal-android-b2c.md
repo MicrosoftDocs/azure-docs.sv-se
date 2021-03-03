@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 902159153bccbea851481e1f81d03e8e70495020
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680373"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644280"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Använda MSAL för Android med B2C
 
@@ -39,21 +39,23 @@ Konfigurations filen för appen deklarerar två `authorities` . En för varje pr
 >Obs: `account_mode` måste anges till **Multiple** för B2C-program. Läs dokumentationen om du vill ha mer information om [flera offentliga klient program för konton](./single-multi-account.md#multiple-account-public-client-application).
 
 ### `app/src/main/res/raw/msal_config.json`
+
 ```json
 {
-    "client_id": "<your_client_id_here>",
-    "redirect_uri": "<your_redirect_uri_here>",
-    "account_mode" : "MULTIPLE",
-    "authorities": [{
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
-            "default": true
-        },
-        {
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
-        }
-    ]
+  "client_id": "<your_client_id_here>",
+  "redirect_uri": "<your_redirect_uri_here>",
+  "account_mode" : "MULTIPLE",
+  "authorities": [
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
+      "default": true
+    },
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
+    }
+  ]
 }
 ```
 
@@ -118,7 +120,7 @@ pca.acquireToken(parameters);
 Om du vill hämta en token i bakgrunden med MSAL skapar du en `AcquireTokenSilentParameters` instans och anger den till- `acquireTokenSilentAsync` metoden. Till skillnad från `acquireToken` metoden `authority` måste måste anges för att hämta en token i bakgrunden.
 
 ```java
-IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
+IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
 AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Builder()
     .withScopes(Arrays.asList("https://contoso.onmicrosoft.com/contosob2c/read")) // Provide your registered scope here
     .forAccount(account)
@@ -142,7 +144,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Ange en princip
 
-Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Till exempel:
+Eftersom principerna i B2C representeras som separata myndigheter, så kan du anropa en annan princip än standardvärdet genom att ange en `fromAuthority` sats vid konstruktion `acquireToken` eller `acquireTokenSilent` parametrar.  Exempel:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

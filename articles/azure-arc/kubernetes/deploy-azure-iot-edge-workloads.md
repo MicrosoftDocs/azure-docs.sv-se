@@ -2,18 +2,18 @@
 title: Distribuera Azure IoT Edge-arbetsbelastningar (för hands version)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/10/2021
+ms.date: 02/19/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: Distribuera Azure IoT Edge-arbetsbelastningar
 keywords: Kubernetes, båge, Azure, K8s, behållare
-ms.openlocfilehash: f228b79f14ab24281415cd4bd5964fc86a095d3c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c352455b69360df0b26f5aac38fc40ccb30fb9de
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390444"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650421"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Distribuera Azure IoT Edge-arbetsbelastningar (för hands version)
 
@@ -43,7 +43,7 @@ Diagrammet nedan illustrerar Azure Arc och Azure IoT Edge relationen:
   $ kubectl create secret generic dcs --from-file=fully-qualified-path-to-values.yaml --namespace iotedge
   ```
 
-  Du kan också konfigurera fjärran sluten med hjälp av [kluster konfigurations exemplet](./use-gitops-connected-cluster.md).
+  Du kan också konfigurera fjärran sluten med hjälp av [kluster konfigurations exemplet](./tutorial-use-gitops-connected-cluster.md).
 
 ## <a name="connect-a-cluster"></a>Anslut ett kluster
 
@@ -57,10 +57,10 @@ Använd `az` Azure CLI- `connectedk8s` tillägget för att ansluta ett Kubernete
 
 [Git-lagrings platsen](https://github.com/veyalla/edgearc) pekar på IoT Edge Helm-diagrammet och refererar till hemligheten som skapats i avsnittet krav.
 
-Använd `az` Azure CLI- `k8sconfiguration` tillägget för att skapa en konfiguration som länkar det anslutna klustret till git-lagrings platsen:
+Använd `az` Azure CLI- `k8s-configuration` tillägget för att skapa en konfiguration som länkar det anslutna klustret till git-lagrings platsen:
 
   ```
-  az k8sconfiguration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
+  az k8s-configuration create --name iotedge --cluster-name AzureArcIotEdge --resource-group AzureArcTest --operator-instance-name iotedge --operator-namespace azure-arc-iot-edge --enable-helm-operator --helm-operator-chart-version 0.6.0 --helm-operator-chart-values "--set helm.versions=v3" --repository-url "git://github.com/veyalla/edgearc.git" --cluster-scoped
   ```
 
 Om några minuter bör du se de IoT Edge arbets belastnings moduler som distribuerats till klustrets `iotedge` namnrymd. 
@@ -72,7 +72,7 @@ Visa `SimulatedTemperatureSensor` Pod-loggarna i det namn området för att se d
 Ta bort konfigurationen med:
 
 ```
-az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
+az k8s-configuration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
 ## <a name="next-steps"></a>Nästa steg

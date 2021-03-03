@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d07aa283c40a54ba02faa13b07e466e519bd68ae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257193"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649430"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkt Federation med AD FS och tredje parts leverantörer för gäst användare (för hands version)
 
@@ -26,9 +26,7 @@ ms.locfileid: "99257193"
 
 Den här artikeln beskriver hur du konfigurerar direkt Federation med en annan organisation för B2B-samarbete. Du kan ställa in direkt Federation med en organisation vars identitetsprovider (IdP) stöder SAML 2,0 eller WS-Fed-protokollet.
 När du konfigurerar direkt Federation med en partners IdP kan nya gäst användare från domänen använda sitt eget IdP-hanterade organisations konto för att logga in på din Azure AD-klient och börja samar beta med dig. Gäst användaren behöver inte skapa ett separat Azure AD-konto.
-> [!NOTE]
-> Gäst användare i direkt federationen måste logga in med en länk som innehåller klient kontexten (till exempel `https://myapps.microsoft.com/?tenantid=<tenant id>` eller `https://portal.azure.com/<tenant id>` , eller, om det är en verifierad domän `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Direkt länkar till program och resurser fungerar även så länge de omfattar klient kontexten. Direkt Federations användare kan för närvarande inte logga in med vanliga slut punkter som inte har någon klient kontext. Om du till exempel använder `https://myapps.microsoft.com` , `https://portal.azure.com` eller `https://teams.microsoft.com` resulterar i ett fel.
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>När är en gäst användare autentiserad med direkt Federation?
 När du har konfigurerat direkt Federation med en organisation kommer alla nya gäst användare som du Bjud in att autentiseras med hjälp av direkt Federation. Det är viktigt att Observera att konfiguration av direkt Federation inte ändrar autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Här är några exempel:
  - Om gäst användare redan har löst in inbjudningar från dig och du sedan konfigurerar direkt Federation med sin organisation, fortsätter gäst användarna att använda samma autentiseringsmetod som de använde innan du konfigurerade direkt federationen.
@@ -42,10 +40,28 @@ Direkt federationen är knuten till domän namn rymder, till exempel contoso.com
 ## <a name="end-user-experience"></a>Slutanvändarens upplevelse 
 Med direkt Federation loggar gäst användare in på din Azure AD-klient med hjälp av sitt eget organisations konto. När de har åtkomst till delade resurser och uppmanas att logga in, omdirigeras direkt Federations användare till deras IdP. Efter lyckad inloggning returneras de till Azure AD för att få åtkomst till resurser. Direkta Federations användares uppdaterings-token är giltiga i 12 timmar, [Standard längden för passthrough-uppdateringstoken](../develop/active-directory-configurable-token-lifetimes.md#exceptions) i Azure AD. Om den federerade IdP har SSO aktive rad, kommer användaren att uppleva SSO och kommer inte att se några inloggnings meddelanden efter den första autentiseringen.
 
+## <a name="sign-in-endpoints"></a>Inloggnings slut punkter
+
+Direkt Federations gäst användare kan nu logga in till din klient-eller Microsoft-appar från första part med hjälp av en [gemensam slut punkt](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (med andra ord en allmän App-URL som inte innehåller din klient kontext). Följande är exempel på vanliga slut punkter:
+
+- `https://teams.microsoft.com`
+- `https://myapps.microsoft.com`
+- `https://portal.azure.com`
+
+Under inloggnings processen väljer gäst användaren **inloggnings alternativ** och väljer sedan logga in i **en organisation**. Användaren skriver sedan namnet på din organisation och fortsätter att logga in med sina egna autentiseringsuppgifter.
+
+Gäst användare i direkt federationen kan också använda program slut punkter som innehåller din klient information, till exempel:
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+Du kan också ge direkt Federations gäst användare en direkt länk till ett program eller en resurs genom att inkludera din klient information, till exempel `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` .
+
 ## <a name="limitations"></a>Begränsningar
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifierade domäner i Azure AD
-Den domän som du vill federera med måste varaav DNS-verifierad i Azure AD. Du kan konfigurera direkt Federation med ohanterad (e-postverifierad eller "viral") Azure AD-klienter eftersom de inte är DNS-verifierade.
+Den domän som du vill federera med får ***inte*** vara DNS-verifierad i Azure AD. Du kan konfigurera direkt Federation med ohanterad (e-postverifierad eller "viral") Azure AD-klienter eftersom de inte är DNS-verifierade.
 
 ### <a name="authentication-url"></a>URL för autentisering
 Direkt Federation tillåts bara för principer där autentiserings-URL: en domän matchar mål domänen, eller där autentiserings-URL: en är en av dessa tillåtna identitets leverantörer (den här listan kan ändras):
@@ -60,7 +76,7 @@ Direkt Federation tillåts bara för principer där autentiserings-URL: en domä
 -   federation.exostar.com
 -   federation.exostartest.com
 
-När du till exempel ställer in direkt Federation för _ * fabrikam. com * *, `https://fabrikam.com/adfs` godkänns verifierings-URL: en. En värd i samma domän kommer också att skickas till exempel `https://sts.fabrikam.com/adfs` . Men autentiserings-URL: en `https://fabrikamconglomerate.com/adfs` eller `https://fabrikam.com.uk/adfs` för samma domän godkänns inte.
+När du till exempel ställer in direkt Federation för **fabrikam.com**, kommer URL: en för autentisering att `https://fabrikam.com/adfs` klara verifieringen. En värd i samma domän kommer också att skickas till exempel `https://sts.fabrikam.com/adfs` . Men autentiserings-URL: en `https://fabrikamconglomerate.com/adfs` eller `https://fabrikam.com.uk/adfs` för samma domän godkänns inte.
 
 ### <a name="signing-certificate-renewal"></a>Förnyelse av signerings certifikat
 Om du anger URL: en för metadata i inställningarna för identitetsprovider förnyar Azure AD automatiskt signerings certifikatet när det upphör att gälla. Men om certifikatet roteras av någon anledning innan förfallo tiden, eller om du inte anger en URL för metadata, kan inte Azure AD förnya det. I så fall måste du uppdatera signerings certifikatet manuellt.
@@ -147,7 +163,7 @@ Sedan konfigurerar du federationen med den identitetsprovider som du konfigurera
 
 1. Gå till [Azure-portalen](https://portal.azure.com/). Välj **Azure Active Directory** i den vänstra rutan. 
 2. Välj **externa identiteter**  >  **alla identitets leverantörer**.
-3. Välj och välj sedan **ny SAML/WS-utfodras IDP**.
+3. Välj **ny SAML/WS-utfodras IDP**.
 
     ![Skärm bild som visar knapp för att lägga till en ny SAML-eller WS-Fed-IdP](media/direct-federation/new-saml-wsfed-idp.png)
 

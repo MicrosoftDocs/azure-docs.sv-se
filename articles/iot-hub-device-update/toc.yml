@@ -1,0 +1,94 @@
+- name: Enhets uppdatering för IoT Hub-dokumentation
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är enhets uppdatering för IoT Hub?
+      href: understand-device-update.md
+- name: Självstudier
+  items:
+    - name: Bild uppdatering på Raspberry Pi
+      href: device-update-raspberry-pi.md
+    - name: Använda enhets uppdatering på en simulator
+      href: device-update-simulator.md
+    - name: 'Paket uppdatering på Ubuntu Server 18,04 x64'
+      href: device-update-ubuntu-agent.md
+- name: Begrepp
+  items:
+    - name: Enhets uppdaterings konto och instans
+      href: device-update-resources.md
+    - name: Användar roller och åtkomst för enhets uppdatering
+      href: device-update-control-access.md
+    - name: Apt-manifest för enhets uppdatering
+      href: device-update-apt-manifest.md
+    - name: Kompatibilitet för enhets uppdatering
+      href: device-update-compliance.md
+    - name: Enhets uppdaterings grupper
+      href: device-update-groups.md
+    - name: Hur enhets uppdatering använder Plug and Play
+      href: device-update-plug-and-play.md
+    - name: Nätverks krav för enhets uppdatering
+      href: device-update-networking.md
+    - name: Enhets uppdaterings agent
+      href: device-update-agent-overview.md
+    - name: Konfigurations fil för enhets uppdatering
+      href: device-update-configuration-file.md
+    - name: Enhets uppdaterings manifest
+      href: update-manifest.md
+    - name: Hur enhets uppdatering skyddas
+      href: device-update-security.md
+    - name: Stöd för frånkopplade enheter
+      href: connected-cache-disconnected-device-update.md
+    - name: Konfigurera Microsoft Connected cache för enhets uppdatering för IoT Hub
+      href: connected-cache-configure.md
+- name: Anvisningar
+  items:
+    - name: Skapa ett konto för enhets uppdatering
+      href: create-device-update-account.md
+    - name: Etablering av enhets uppdaterings agent
+      href: device-update-agent-provisioning.md
+    - name: Importera en uppdatering
+      href: import-update.md
+    - name: Skapa en enhets uppdaterings grupp
+      href: create-update-group.md
+    - name: Distribuera en enhets uppdatering
+      href: deploy-update.md
+    - name: Distribuera en enhets uppdatering
+      href: deploy-update.md
+    - name: Microsoft-ansluten cache med en nivå
+      href: connected-cache-single-level.md
+    - name: Microsoft-ansluten cache med kapslad nivå
+      href: connected-cache-nested-level.md
+    - name: Microsoft Connected cache för industriella IoT (IIOT)
+      href: connected-cache-industrial-iot-nested.md
+    - name: Felsöka
+      items:
+        - name: Felsöka enhets uppdateringar
+          href: troubleshoot-device-update.md
+- name: Referens
+  items:
+    - name: Fel koder för enhets uppdaterings klient
+      href: device-update-error-codes.md
+- name: Resurser
+  items:
+    - name: Alternativ för support och hjälp
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-tjänster
+      items:
+        - name: IoT Hub
+          href: ./index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT-lösningsacceleratorer
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Leveransoptimering
+      href: 'https://github.com/microsoft/do-client'

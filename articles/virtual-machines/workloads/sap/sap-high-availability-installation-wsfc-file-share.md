@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7df3934862efa9798735d0c163f7fb1bac98423
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d5fa4cba67e279f66c090c8cb30eadf099f3c998
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951051"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673560"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installera SAP NetWeaver med hög tillgänglighet på ett Windows-redundanskluster och en fil resurs för SAP ASCS/SCS-instanser på Azure
 
@@ -200,7 +199,7 @@ ms.locfileid: "94951051"
 
 Den här artikeln beskriver hur du installerar och konfigurerar ett SAP-system med hög tillgänglighet på Azure, med Windows Server failover Cluster (WSFC) och Scale-Out fil server som ett alternativ för att klustra SAP ASCS/SCS-instanser.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Läs följande artiklar innan du påbörjar installationen:
 

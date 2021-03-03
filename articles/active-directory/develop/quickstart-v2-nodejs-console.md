@@ -1,21 +1,21 @@
 ---
 title: 'Snabb start: anropa Microsoft Graph från en Node.js-konsol-app | Azure'
 titleSuffix: Microsoft identity platform
-description: I den här snabb starten får du lära dig hur ett Node.js konsol program kan få en åtkomsttoken och anropa ett API som skyddas av en Microsoft Identity Platform-slutpunkt med appens egen identitet
+description: I den här snabb starten hämtar och kör du ett kod exempel som visar hur ett Node.js konsol program kan få en åtkomsttoken och anropa ett API som skyddas av en Microsoft Identity Platform-slutpunkt med appens egen identitet
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: c550cc8009f0138b9f1803399fbc592b34efbfab
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4360810d460c5fc8598ce302ad8b82f65d2d819e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562224"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653753"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Snabb start: Hämta en token och anropa Microsoft Graph API från en Node.js-konsolsession som använder appens identitet
 
@@ -29,12 +29,12 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 * [Visual Studio Code](https://code.visualstudio.com/download) eller en annan kod redigerare
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>Registrera och ladda ned snabbstartsprogrammet
+> ## <a name="register-and-download-the-sample-application"></a>Registrera och ladda ned exempel programmet
 >
 > Kom igång genom att följa stegen nedan.
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
+> #### <a name="step-1-register-the-application"></a>Steg 1: registrera programmet
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
 > 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
@@ -50,9 +50,9 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > 1. Under noden **användare** väljer du **User. Read. all** och väljer sedan **Lägg till behörigheter**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Hämta och konfigurera din app för Snabbstart
+> ### <a name="download-and-configure-the-sample-app"></a>Hämta och konfigurera exempel appen
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
 > För att kodexemplet för den här snabbstarten ska fungera måste du skapa en klienthemlighet och lägga till Graph-API:ts programbehörighet **User.Read.All**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
@@ -60,7 +60,7 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Redan konfigurerad](media/quickstart-v2-netcore-daemon/green-check.png) Programmet konfigureras med de här attributen.
 
-#### <a name="step-2-download-your-nodejs-project"></a>Steg 2: Ladda ned ditt Node.js-projekt
+#### <a name="step-2-download-the-nodejs-sample-project"></a>Steg 2: Ladda ned Node.js-exempelprojektet
 
 > [!div renderon="docs"]
 > [Ladda ned kod exemplet](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ I den här snabb starten används [Microsoft Authentication Library för Node.js
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>Steg 3: Konfigurera ditt Node.js-projekt
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>Steg 3: Konfigurera Node.js-exempelprojektet
 >
 > 1. Extrahera zip-filen till en lokal mapp nära disk roten, till exempel *C:/Azure-samples*.
 > 1. Redigera *. kuvert* och ersätt värdena för fälten `TENANT_ID` , `CLIENT_ID` och `CLIENT_SECRET` med följande kodfragment:
@@ -172,12 +172,12 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```
 
-> | Plats: |Description |
+> | Plats: |Beskrivning |
 > |---------|---------|
 > | `clientId` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
 > | `authority`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}` för offentligt moln, där {klient} är namnet på klientorganisationen eller klient-ID:t.|
@@ -197,7 +197,7 @@ const tokenRequest = {
 const tokenResponse = await cca.acquireTokenByClientCredential(tokenRequest);
 ```
 
-> |Plats:| Description |
+> |Plats:| Beskrivning |
 > |---------|---------|
 > | `tokenRequest` | Innehåller omfattningarna som begärdes. För konfidentiella klienter bör ett format som liknar `{Application ID URI}/.default` användas för att ange att omfattningarna som begärs är dem som statiskt definieras i appobjektet som anges i Azure-portalen (för Microsoft Graph, `{Application ID URI}` pekar på `https://graph.microsoft.com`). För anpassade webb-API: er `{Application ID URI}` definieras under **exponera ett API** -avsnitt i Azure-portalens program registrering. |
 > | `tokenResponse` | Svaret innehåller en åtkomsttoken för de begärda omfången. |

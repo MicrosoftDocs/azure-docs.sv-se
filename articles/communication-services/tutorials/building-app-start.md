@@ -8,16 +8,14 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4655a20ddd419993f5a73ec54420abec96d32a62
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d682524ae3ff5b82233a69959a309a7495e30bed
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546184"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658071"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Självstudie: förbereda en webbapp för Azure Communication Services (Node.js)
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Med Azure Communication Services kan du lägga till real tids kommunikation i dina program. I den här självstudien får du lära dig hur du konfigurerar ett webb program som stöder Azure Communication Services. Det här är en introduktions kurs som är avsedd för nya utvecklare som vill komma igång med real tids kommunikation.
 
@@ -38,12 +36,12 @@ I den här guiden får du lära dig att:
 - [Visual Studio Code](https://code.visualstudio.com/): vi använder detta för att redigera kod i din lokala utvecklings miljö.
 - [WebPack](https://webpack.js.org/): Detta används för att paketera och lokalt vara värd för din kod.
 - [Node.js](https://nodejs.org/en/): Detta används för att installera och hantera beroenden som klient bibliotek och WebPack för Azure Communication Services.
-- [NVM och NPM](https://docs.microsoft.com/windows/nodejs/setup-on-windows) för att hantera versions kontroll.
-- [Azure Storage-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) för Visual Studio Code. Det här tillägget krävs för att publicera ditt program i Azure Storage. [Läs mer om att vara värd för statiska webbplatser i Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)
+- [NVM och NPM](/windows/nodejs/setup-on-windows) för att hantera versions kontroll.
+- [Azure Storage-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) för Visual Studio Code. Det här tillägget krävs för att publicera ditt program i Azure Storage. [Läs mer om att vara värd för statiska webbplatser i Azure Storage](../../storage/blobs/storage-blob-static-website.md)
 - [Azure App Service-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Tillägget gör det möjligt att distribuera webbplatser (liknar föregående), men med alternativet att konfigurera den fullständigt hanterade kontinuerliga integrationen och den kontinuerliga leveransen (CI/CD).
 - [Azure Function-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) för att bygga egna program utan server. Du kan till exempel vara värd för ditt autentiseringscertifikat i Azure Functions.
 - En aktiv kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../quickstarts/create-communication-resource.md).
-- En åtkomsttoken för användare. Anvisningar finns i [själv studie kursen](https://docs.microsoft.com/azure/communication-services/tutorials/trusted-service-tutorial) om [åtkomst-token](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-javascript) eller den betrodda tjänsten.
+- En åtkomsttoken för användare. Anvisningar finns i [själv studie kursen](./trusted-service-tutorial.md) om [åtkomst-token](../quickstarts/access-tokens.md?pivots=programming-language-javascript) eller den betrodda tjänsten.
 
 
 ## <a name="configure-your-development-environment"></a>Konfigurera utvecklings miljön
@@ -57,7 +55,7 @@ Din lokala utvecklings miljö kommer att konfigureras så här:
 
 Vi använder Node.js för att hämta och installera olika beroenden som vi behöver för vårt program på klient sidan. Vi använder den för att generera statiska filer som vi sedan ska vara värd för i Azure, så du behöver inte oroa dig för att konfigurera den på servern.
 
-Windows-utvecklare kan följa [den här NodeJS-självstudien](https://docs.microsoft.com/windows/nodejs/setup-on-windows) för att konfigurera Node, NVM och NPM. 
+Windows-utvecklare kan följa [den här NodeJS-självstudien](/windows/nodejs/setup-on-windows) för att konfigurera Node, NVM och NPM.
 
 Vi har testat den här självstudien med LTS 12.20.0-versionen. När du har installerat NVM använder du följande PowerShell-kommando för att distribuera den version som du vill använda:
 
@@ -161,7 +159,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +216,7 @@ Filen bör nu se ut så här:
 }
 ```
 
-Du har lagt till kommandot som kan användas från NPM. 
+Du har lagt till kommandot som kan användas från NPM.
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="Ändra package.jspå":::
 
@@ -279,13 +277,13 @@ npm run build:dev
 I-konsolen visas var servern körs. Som standard är det `http://localhost:8080` . Kommandot build: dev är kommandot som vi lade till `package.json` tidigare.
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Starta en utvecklings Server":::
- 
+
  Navigera till adressen i webbläsaren så bör du se sidan och aviseringen som kon figurer ATS i föregående steg.
- 
+
   :::image type="content" source="./media/step-one-pic-17.png" alt-text="HTML-sida":::
-  
- 
-När servern körs kan du ändra koden, så kommer servern och HTML-sidan att läsas in automatiskt på nytt. 
+
+
+När servern körs kan du ändra koden, så kommer servern och HTML-sidan att läsas in automatiskt på nytt.
 
 Gå sedan till `app.js` filen i Visual Studio Code och Delete `alert('Hello world alert!');` . Spara filen och kontrol lera att aviseringen försvinner från webbläsaren.
 
@@ -323,11 +321,11 @@ const { merge } = require('webpack-merge');
  ```
 
 OBS! den här konfigurationen kommer att slås samman med webpack.common.js (där vi angav indatafilen och var resultatet ska lagras) och anger läget till "produktion".
- 
+
 I `package.json` lägger du till följande kod:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 Filen bör se ut så här:
@@ -341,14 +339,14 @@ Filen bör se ut så här:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -368,13 +366,13 @@ I terminalfönstret kör du:
 npm run build:prod
 ```
 
-Kommandot skapar en `dist` statisk fil för en mapp och en produktions miljö som är klar `app.js` . 
+Kommandot skapar en `dist` statisk fil för en mapp och en produktions miljö som är klar `app.js` .
 
  :::image type="content" source="./media/step-one-pic-21.png" alt-text="Produktions version":::
- 
- 
+
+
 ### <a name="deploy-your-app-to-azure-storage"></a>Distribuera din app till Azure Storage
- 
+
 Kopiera `index.html` och `app.css` till `dist` mappen.
 
 `dist`Skapa en ny fil i mappen och ge den namnet `404.html` . Kopiera följande markeringar till filen:
@@ -399,45 +397,45 @@ Spara filen (Ctrl + S).
 Högerklicka och välj Distribuera till statisk webbplats via Azure Storage.
 
 :::image type="content" source="./media/step-one-pic-22.png" alt-text="Börja distribuera till Azure":::
- 
+
 I `Select subscription` fältet väljer du "logga in på Azure (eller" skapa ett kostnads fritt Azure-konto "om du inte har skapat någon prenumeration tidigare)
- 
+
 :::image type="content" source="./media/step-one-pic-23.png" alt-text="Logga in på Azure":::
- 
+
 Välj `Create new Storage Account`  >  `Advanced` :
 
  :::image type="content" source="./media/step-one-pic-24.png" alt-text="Skapar lagrings konto gruppen":::
- 
+
  Ange namnet på lagrings gruppen:
- 
+
  :::image type="content" source="./media/step-one-pic-25.png" alt-text="Lägga till ett namn för kontot":::
- 
+
 Skapa en ny resurs grupp om det behövs:
- 
+
   :::image type="content" source="./media/step-one-pic-26.png" alt-text="Skapar ny grupp":::
-  
+
   Besvara "Ja" om du vill aktivera statisk webbplats värd? "
-  
+
   :::image type="content" source="./media/step-one-pic-27.png" alt-text="Välja alternativ för att aktivera statisk webbplats värd":::
-  
+
 Godkänn standard fil namnet i "Ange index dokument namnet" som vi skapade filen `index.html` .
 
-Skriv `404.html` "Ange sökvägen till fel dokumentet för 404".  
-  
-Välj platsen för programmet. Den plats du väljer definierar vilken Media processor som ska användas i ditt framtida anropande program i grupp anrop. 
+Skriv `404.html` "Ange sökvägen till fel dokumentet för 404".
+
+Välj platsen för programmet. Den plats du väljer definierar vilken Media processor som ska användas i ditt framtida anropande program i grupp anrop.
 
 Azure Communication Services väljer medie processor utifrån program platsen.
 
 :::image type="content" source="./media/step-one-pic-28.png" alt-text="Välj plats":::
-  
-Vänta tills resursen och webbplatsen har skapats. 
- 
+
+Vänta tills resursen och webbplatsen har skapats.
+
 Klicka på Bläddra till webbplats:
 
 :::image type="content" source="./media/step-one-pic-29.png" alt-text="Distributionen har slutförts":::
- 
+
 Från webbläsarens utvecklingsverktyg kan du kontrol lera källan och se vår fil, för beredd för produktion.
- 
+
 :::image type="content" source="./media/step-one-pic-30.png" alt-text="Webbplatsen":::
 
 Gå till [Azure Portal](https://portal.azure.com/#home), välj din resurs grupp, Välj det program som du skapade och gå till `Settings`  >  `Static website` . Du kan se att statiska webbplatser är aktiverade och noterar den primära slut punkten, index dokumentet och dokument filen med fel Sök vägar.
@@ -448,7 +446,7 @@ Under "Blob Service" väljer du "behållare" och du ser två behållare som skap
 
 :::image type="content" source="./media/step-one-pic-32.png" alt-text="Container konfiguration":::
 
-Om du går till `$web` ser du dina filer som du skapade i Visual Studio och distribuerade till Azure. 
+Om du går till `$web` ser du dina filer som du skapade i Visual Studio och distribuerade till Azure.
 
 :::image type="content" source="./media/step-one-pic-33.png" alt-text="Distribution":::
 

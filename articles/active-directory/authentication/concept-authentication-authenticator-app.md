@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7309d9d32eba5cae350bbe8a1df325dfb2ab0c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7fafeae02bce001d473b0ed916624046a559a795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744371"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648806"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Autentiseringsmetoder i Azure Active Directory-Microsoft Authenticator-appen
 
@@ -23,7 +23,7 @@ Microsoft Authenticator-appen ger dig ytterligare en säkerhets nivå för ditt 
 
 Användare kan få ett meddelande via mobilappen för att godkänna eller neka eller använda Authenticator-appen för att generera en OATH-verifierings kod som kan anges i ett inloggnings gränssnitt. Om du aktiverar både en meddelande-och verifierings kod kan användare som registrerar Authenticator-appen använda någon av metoderna för att verifiera sin identitet.
 
-Information om hur du använder Authenticator-appen i en inloggnings tolk i stället för en kombination av användar namn och lösen ord finns i [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen (för hands version)](howto-authentication-passwordless-phone.md).
+Om du vill använda Authenticator-appen i en inloggnings tolk i stället för en kombination av användar namn och lösen ord, se [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md).
 
 > [!NOTE]
 > Användarna har inte möjlighet att registrera sina mobilappar när de aktiverar SSPR. I stället kan användarna registrera sin mobilapp på [https://aka.ms/mfasetup](https://aka.ms/mfasetup) eller som en del av den kombinerade registreringen av säkerhets information på [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
@@ -34,7 +34,7 @@ I stället för att visa en uppfråga efter ett lösen ord när du har angett et
 
 ![Exempel på en webb läsar inloggning som ber användaren att godkänna inloggningen](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Den här autentiseringsmetoden ger en hög säkerhets nivå och tar bort behovet av att användaren anger ett lösen ord vid inloggning. Inloggning med lösen ord med hjälp av Microsoft Authenticator-appen är för närvarande en för hands version.
+Den här autentiseringsmetoden ger en hög säkerhets nivå och tar bort behovet av att användaren anger ett lösen ord vid inloggning. 
 
 Information om hur du kommer igång med lösen ords lös inloggning finns i [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md).
 

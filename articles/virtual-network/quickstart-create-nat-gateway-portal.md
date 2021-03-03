@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98989a38a0c1a7f57fc8eba70e064e5d6f2cce8f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012093"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671532"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Självstudie: skapa en NAT-gateway med hjälp av Azure Portal
 
@@ -43,9 +43,9 @@ I det här avsnittet måste du ersätta följande parametrar i stegen med inform
 | **\<resource-group-name>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | USA, östra 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 192.168.0.0 \ 24          |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -97,10 +97,10 @@ I det här avsnittet beskrivs hur du kan skapa och konfigurera följande kompone
     | ------- | ----- |
     | IP-version | Välj **IPv4**.
     | SKU | Välj **standard**.
-    | Name | Ange **myPublicIP**. |
+    | Namn | Ange **myPublicIP**. |
     | Prenumeration | Välj din prenumeration.|
     | Resursgrupp | Välj **myResourceGroupNAT**. |
-    | Plats | Välj **USA, östra 2**.|
+    | Location | Välj **USA, östra 2**.|
 
 3. Lämna resten av standardinställningarna och välj **Skapa**.
 

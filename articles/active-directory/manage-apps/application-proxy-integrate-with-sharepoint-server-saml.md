@@ -16,19 +16,19 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bca7331722640547218ecb6aff7c3c5651efdfd0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099336"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644528"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrera med SharePoint (SAML)
 
-I den här steg-för-steg-guiden beskrivs hur du skyddar åtkomsten till [Azure Active Directory integrerade lokala SharePoint (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) med Azure AD-programproxy, där användare i din organisation (Azure AD, B2B) ansluter till SharePoint via Internet.
+I den här steg-för-steg-guiden beskrivs hur du skyddar åtkomsten till [Azure Active Directory integrerade lokala SharePoint (SAML)](../saas-apps/sharepoint-on-premises-tutorial.md) med Azure AD-programproxy, där användare i din organisation (Azure AD, B2B) ansluter till SharePoint via Internet.
 
 > [!NOTE] 
-> Om du är nybörjare på Azure AD-programproxy och vill veta mer, se [fjärråtkomst till lokala program via Azure AD-programproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy).
+> Om du är nybörjare på Azure AD-programproxy och vill veta mer, se [fjärråtkomst till lokala program via Azure AD-programproxy](./application-proxy.md).
 
 Det finns tre huvudsakliga fördelar med den här konfigurationen:
 
@@ -41,18 +41,18 @@ Den här processen kräver två företags program. En är en lokal SharePoint-in
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här konfigurationen behöver du följande resurser:
- - En SharePoint 2013-Server grupp eller senare. SharePoint-servergruppen måste vara [integrerad med Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).
+ - En SharePoint 2013-Server grupp eller senare. SharePoint-servergruppen måste vara [integrerad med Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md).
  - En Azure AD-klient med en plan som inkluderar programproxy. Lär dig mer om [Azure AD-planer och priser](https://azure.microsoft.com/pricing/details/active-directory/).
- - En [anpassad, verifierad domän](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) i Azure AD-klienten. Den verifierade domänen måste matcha SharePoint-URL-suffixet.
- - Ett SSL-certifikat krävs. Se informationen i [anpassad domän publicering](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
- - Lokala Active Directory användare måste synkroniseras med Azure AD Connect och måste konfigureras för att logga in [på Azure](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin). 
- - För gäst användare med enbart moln och B2B måste du [bevilja åtkomst till ett gäst konto till SharePoint lokalt i Azure Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal).
+ - En [anpassad, verifierad domän](../fundamentals/add-custom-domain.md) i Azure AD-klienten. Den verifierade domänen måste matcha SharePoint-URL-suffixet.
+ - Ett SSL-certifikat krävs. Se informationen i [anpassad domän publicering](./application-proxy-configure-custom-domain.md).
+ - Lokala Active Directory användare måste synkroniseras med Azure AD Connect och måste konfigureras för att logga in [på Azure](../hybrid/plan-connect-user-signin.md). 
+ - För gäst användare med enbart moln och B2B måste du [bevilja åtkomst till ett gäst konto till SharePoint lokalt i Azure Portal](../saas-apps/sharepoint-on-premises-tutorial.md#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal).
  - En Application Proxy-koppling installeras och körs på en dator i företags domänen.
 
 
 ## <a name="step-1-integrate-sharepoint-on-premises-with-azure-ad"></a>Steg 1: integrera SharePoint lokalt med Azure AD 
 
-1. Konfigurera den lokala SharePoint-appen. Mer information finns i [Självstudier: Azure Active Directory integration med enkel inloggning med SharePoint lokalt](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial).
+1. Konfigurera den lokala SharePoint-appen. Mer information finns i [Självstudier: Azure Active Directory integration med enkel inloggning med SharePoint lokalt](../saas-apps/sharepoint-on-premises-tutorial.md).
 2. Verifiera konfigurationen innan du går vidare till nästa steg. Du kan kontrol lera det genom att försöka komma åt SharePoint lokalt från det interna nätverket och bekräfta att det är tillgängligt internt. 
 
 
@@ -66,7 +66,7 @@ I det här steget skapar du ett program i Azure AD-klienten som använder progra
    ![Skärm bild som visar värdet för inloggnings-URL.](./media/application-proxy-integrate-with-sharepoint-server/sso-url-saml.png)
 
 
- 1. Skapa ett nytt Azure AD-programproxy-program med en anpassad domän. Stegvisa instruktioner finns i [anpassade domäner i Azure AD-programproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
+ 1. Skapa ett nytt Azure AD-programproxy-program med en anpassad domän. Stegvisa instruktioner finns i [anpassade domäner i Azure AD-programproxy](./application-proxy-configure-custom-domain.md).
 
     - Intern URL: https://portal.contoso.com/
     - Extern URL: https://portal.contoso.com/
@@ -76,7 +76,7 @@ I det här steget skapar du ett program i Azure AD-klienten som använder progra
 
         ![Skärm bild som visar de alternativ som du använder för att skapa appen.](./media/application-proxy-integrate-with-sharepoint-server/create-application-azure-active-directory.png)
 
-2. Tilldela [samma grupper](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial#create-an-azure-ad-security-group-in-the-azure-portal) som du har tilldelat till det lokala SharePoint Gallery-programmet.
+2. Tilldela [samma grupper](../saas-apps/sharepoint-on-premises-tutorial.md#create-an-azure-ad-security-group-in-the-azure-portal) som du har tilldelat till det lokala SharePoint Gallery-programmet.
 
 3. Till sist går du till avsnittet **Egenskaper** och anger **Visible för användare?** till **Nej**. Med det här alternativet ser du till att endast ikonen för det första programmet visas på min Apps-portal ( https://myapplications.microsoft.com) .
 
@@ -85,4 +85,3 @@ I det här steget skapar du ett program i Azure AD-klienten som använder progra
 ## <a name="step-3-test-your-application"></a>Steg 3: testa programmet
 
 Använd en webbläsare från en dator i ett externt nätverk och navigera till URL: en ( https://portal.contoso.com/) som du konfigurerade under publicerings steget). Kontrol lera att du kan logga in med det test konto som du har konfigurerat.
-
