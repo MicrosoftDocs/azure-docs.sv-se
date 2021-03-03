@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593956"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682404"
 ---
 I det här steget skapar du en [logisk SQL-Server](../database/logical-servers.md) och en [enkel databas](../database/single-database-overview.md) som använder AdventureWorksLT exempel data. Du kan skapa databasen med hjälp av Azure Portal menyer och skärmar, eller genom att använda ett Azure CLI-eller PowerShell-skript i Azure Cloud Shell.
 
@@ -33,13 +33,13 @@ Så här skapar du en resurs grupp, server och en enskild databas i Azure Portal
    ![Skapa en enkel databas](./media/sql-database-create-single-database/create-single-database.png)
 
 1. På fliken **grundläggande** i formuläret **skapa SQL-databas** går du till **projekt information** och väljer rätt Azure- **prenumeration** om den inte redan är markerad.
-1. Under **resurs grupp** väljer du **Skapa ny** , anger *myResourceGroup* och väljer **OK**.
+1. Under **resurs grupp** väljer du **Skapa ny**, anger *myResourceGroup* och väljer **OK**.
 1. Under **databas information** anger du *mySampleDatabase* som **databas namn** .
 1. För **Server** väljer du **Skapa ny** och fyller i det **nya server** formuläret enligt följande:
-   - **Server namn** : ange *SQLServer* och några tecken för unikhet.
-   - **Inloggning för Server administratör** : ange *azureuser*.
-   - **Lösen ord** : Ange ett lösen ord som uppfyller kraven och ange det igen i fältet **Bekräfta lösen ord** .
-   - **Plats** : list rutan och välj en plats, t. ex. **(US) östra USA**.
+   - **Server namn**: ange *SQLServer* och några tecken för unikhet.
+   - **Inloggning för Server administratör**: ange *azureuser*.
+   - **Lösen ord**: Ange ett lösen ord som uppfyller kraven och ange det igen i fältet **Bekräfta lösen ord** .
+   - **Plats**: list rutan och välj en plats, t. ex. **(US) östra USA**.
 
    Välj **OK**.
 
@@ -47,7 +47,7 @@ Så här skapar du en resurs grupp, server och en enskild databas i Azure Portal
 
    Registrera inloggning och lösen ord för Server administratören så att du kan logga in på servern och databaserna. Om du glömmer ditt inloggnings namn eller lösen ord kan du hämta inloggnings namnet eller återställa lösen ordet på **SQL Server** -sidan när databasen har skapats. Öppna **SQL Server** -sidan genom att välja Server namnet på sidan databas **Översikt** .
 
-1. Under **Compute + Storage** , om du vill konfigurera om standardvärdena, väljer du **Konfigurera databas**.
+1. Under **Compute + Storage**, om du vill konfigurera om standardvärdena, väljer du **Konfigurera databas**.
 
    På sidan **Konfigurera** kan du välja att:
    - Ändra **beräknings nivån** från **etablerad** till **Server** lös.
@@ -68,7 +68,9 @@ Så här skapar du en resurs grupp, server och en enskild databas i Azure Portal
   
    Mer information om brand Väggs inställningar finns i [ge Azure-tjänster och-resurser åtkomst till den här servern](../database/network-access-controls-overview.md) och [lägga till en privat slut punkt](../database/private-endpoint-overview.md).
 
-1. På fliken **ytterligare inställningar** , i avsnittet **data källa** , för att **använda befintliga data** , väljer du **exempel**.
+1. På fliken **ytterligare inställningar** , i avsnittet **data källa** , för att **använda befintliga data**, väljer du **exempel**.
+1. Du kan också aktivera [Azure Defender för SQL](../database/azure-defender-for-sql.md).
+1. Du kan också ställa in [underhålls fönstret](../database/maintenance-window.md) så att planerat underhåll utförs på den bästa tiden för din databas.
 1. Välj **Granska + skapa** längst ned på sidan.
 
    ![Fliken Ytterligare inställningar](./media/sql-database-create-single-database/additional-settings.png)

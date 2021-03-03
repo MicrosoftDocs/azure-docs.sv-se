@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 618efc8d2c3784a487c302661f35d5a284c68178
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475695"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682394"
 ---
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -74,8 +74,8 @@ I demonstrations syfte använder det här exemplet en offentligt tillgänglig sl
 Med ytterligare konfiguration har det här exemplet stöd för anslutning till en skyddad **Azure Active Directory** -slutpunkt (Azure AD) så att användaren måste logga in för att appen ska kunna hämta en Azure Communication Services-token. Se stegen nedan:
 
 1. Aktivera Azure Active Directory autentisering i din app.  
-   - [Registrera din app under Azure Active Directory (med iOS/macOS-plattforms inställningar)](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-ios) 
-    - [Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+   - [Registrera din app under Azure Active Directory (med iOS/macOS-plattforms inställningar)](../../../active-directory/develop/tutorial-v2-ios.md) 
+    - [Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning](../../../app-service/configure-authentication-provider-aad.md)
 2. Gå till sidan registrerad app-översikt under Azure Active Directory app-registreringar. Anteckna `Application (client) ID` , `Directory (tenant) ID` , `Application ID URI`
 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure Active Directory konfiguration på Azure Portal.":::

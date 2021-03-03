@@ -10,15 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 61b3b3abace5c7a1cd846c1e3c1e7ac166efd5c7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: eb420a8d5242cb6a122e7f7062e457b64f1fb5db
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475700"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101682386"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 Azure Communication Services- **gruppen som anropar ett hjältes exempel** visar hur kommunikations tjänsterna som anropar webb klient biblioteket kan användas för att bygga en grupp anrops upplevelse.
 
 I den här snabb starten ska vi lära dig hur exemplet fungerar innan vi kör exemplet på den lokala datorn. Vi distribuerar sedan exemplet till Azure med dina egna Azure Communication Services-resurser.
@@ -29,7 +27,7 @@ Hitta den färdiga koden för den här snabb starten på [GitHub](https://github
 
 ## <a name="overview"></a>Översikt
 
-Exemplet har både ett program på klient sidan och ett program på Server sidan. **Program på klient sidan** är ett Redux webb program som använder Microsofts Fluent UI-ramverk. Det här programmet skickar begär anden till ett ASP.NET Core **program på Server sidan** som hjälper programmet på klient sidan att ansluta till Azure. 
+Exemplet har både ett program på klient sidan och ett program på Server sidan. **Program på klient sidan** är ett Redux webb program som använder Microsofts Fluent UI-ramverk. Det här programmet skickar begär anden till ett ASP.NET Core **program på Server sidan** som hjälper programmet på klient sidan att ansluta till Azure.
 
 Exemplet ser ut så här:
 
@@ -91,7 +89,7 @@ Om du vill rensa och ta bort en kommunikations tjänst prenumeration kan du ta b
 
 ## <a name="next-steps"></a>Nästa steg
 
->[!div class="nextstepaction"] 
+>[!div class="nextstepaction"]
 >[Hämta exemplet från GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 Mer information finns i följande artiklar:
