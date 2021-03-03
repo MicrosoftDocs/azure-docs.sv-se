@@ -4,15 +4,15 @@ description: Översikt över App Service-miljön
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663943"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735105"
 ---
 # <a name="app-service-environment-overview"></a>Översikt över App Service-miljön 
 
@@ -25,7 +25,7 @@ Azure App Service-miljön är en funktion i Azure App Service som ger en helt is
 - Windows-webbappar
 - Linux-webbappar
 - Docker-containrar
-- Funktioner
+- Functions
 
 App Service-miljöer (ASE) är lämpliga för programarbetsbelastningar som kräver:
 
@@ -53,7 +53,7 @@ App Service-miljön har många användnings fall, inklusive:
 Det finns ett antal nätverksfunktioner som gör det möjligt för appar i flera klient organisationer App Service att komma åt isolerade nätverks resurser eller bli isolerade i nätverket. Dessa funktioner är aktiverade på program nivå.  Med en ASE finns det ingen ytterligare konfiguration av apparna för dem i VNet. Apparna distribueras till en isolerad nätverks miljö som redan finns i ett VNet. På den ASE som är värd för isolerade isolerade appar är det också ett system med en enda klient. Det finns inga andra kunder som använder ASE. Om du verkligen behöver en fullständig isolerings berättelse kan du också få din ASE distribuerad till dedikerad maskin vara. Mellan isolerade nätverks program värd, enda innehav och möjlighet 
 
 ## <a name="dedicated-environment"></a>Dedikerad miljö
-En ASE är uteslutande avsedd för en enda prenumeration och kan vara värd för 200 App Service plan instanser. Omfånget kan sträcka sig över 100 instanser i en enda App Service-plan till 100 App Service-planer med varsin instans, och allt däremellan.
+En ASE är uteslutande avsedd för en enda prenumeration och kan vara värd för 200 total App Service plans instanser över flera App Services planer. Ordet "instance" refererar till App Service plan horisontell skalning. Varje instans motsvarar en arbets roll. En ASE kan ha 200 totalt antal instanser, men en enda isolerad v2-App Service plan kan innehålla 100-instanser. ASE kan innehålla två App Service planer med 100 instanser i varje, 200 instans App Services planer eller allt mellan.
 
 En ASE-miljö består av klientdelar och arbetare. Klientdelarna ansvarar för HTTP/HTTPS-avslutning och automatisk belastningsutjämning av appförfrågningar i en ASE-miljö. Klientdelarna läggs till automatiskt när App Service-planerna i ASE skalas ut.
 
@@ -77,7 +77,7 @@ Apparna måste ofta även komma åt företagsresurser, t.ex. interna databaser o
 ## <a name="preview"></a>Förhandsgranskning
 App Service-miljön v3 är i offentlig för hands version.  Vissa funktioner läggs till under för hands versions förloppet. De aktuella begränsningarna i ASEv3 är:
 
-- Det går inte att skala en App Service plan längre än fem instanser
+- Det går inte att skala en App Service plan bortom 50 instanser
 - Det går inte att hämta en behållare från ett privat register
 - Oförmåga för för tillfället App Service funktioner som inte stöds för att gå via kundens VNet
 - Ingen extern distributions modell med en tillgänglig slut punkt på Internet

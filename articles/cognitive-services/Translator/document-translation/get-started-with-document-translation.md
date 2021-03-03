@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 5508ffc758b08642b05b1f77b66c9f29be1c85a2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650787"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738165"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
 
@@ -26,6 +26,8 @@ För att komma igång behöver du:
 * En [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) -tjänst resurs (**inte** en Cognitive Services resurs). 
 
 * Ett [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). All åtkomst till Azure Storage sker via ett lagringskonto.
+
+* En slutförd [**dokument översättning (för hands version)**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) för att aktivera Azure-prenumerationen för att använda den nya dokument översättnings funktionen.
 
 > [!NOTE]
 > Dokument översättning stöds för närvarande bara i Translator-resursen (Single-service), **inte** Cognitive Services-resursen (Multi-service).
@@ -64,7 +66,7 @@ Begär anden till Translator-tjänsten kräver en skrivskyddad nyckel för att a
 
 ## <a name="create-your-azure-blob-storage-containers"></a>Skapa dina Azure Blob Storage-behållare
 
-Du måste  [**skapa behållare**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) i ditt [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) för käll-, mål-och valfria ord lista.
+Du måste  [**skapa behållare**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) i ditt [**Azure Blob Storage-konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) för käll-, mål-och valfria ord lista.
 
 * **Käll behållare**. I den här behållaren laddar du upp dina filer för översättning (krävs).
 * **Mål behållare**. Den här behållaren är den plats där de översatta filerna kommer att lagras (krävs).  
@@ -184,7 +186,7 @@ En begäran om översättning av batch-dokument skickas till Translator-tjänste
 
 Följande rubriker ingår i varje Document Translator API-begäran:
 
-|HTTP-huvud|Description|
+|HTTP-huvud|Beskrivning|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Obligatoriskt**: värdet är Azures prenumerations nyckel för din översättare eller Cognitive Services resurs.|
 |Content-Type|**Krävs**: anger nytto lastens innehålls typ. Godkända värden är Application/JSON eller charset = UTF-8.|
@@ -201,26 +203,7 @@ Följande rubriker ingår i varje Document Translator API-begäran:
 >[!NOTE]
 > Om en fil med samma namn redan finns i målet skrivs den över.
 
-### <a name="post-a-translation-request"></a>PUBLICERA en översättnings förfrågan
-
-> [!IMPORTANT]
->
-> * I kod exemplen nedan kan du behöva uppdatera följande fält, beroende på åtgärd:
-
->> [!div class="checklist"]
->>
->> * `endpoint`
->> * `subscriptionKey`
->> * `sourceURL`
->> * `targetURL`
->> * `glossaryURL`
->> * `id`  (jobb-ID)
->>
-> * Du hittar jobbet `id`  i URL-värdet för post-metodens svars huvud `Operation-Location`  . Den sista parametern i URL: en är åtgärdens jobb **`id`** .  
-> * Du kan också använda en begäran om att hämta jobb för att hämta jobbet `id`  för en dokument översättnings åtgärd.
-> * I exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  
->
-> Se [Azure Cognitive Services Security](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
+## <a name="post-a-translation-request"></a>PUBLICERA en översättnings förfrågan
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="post-request-body-without-optional-glossaryurl"></a>PUBLICERA begär ande text utan valfria glossaryURL
@@ -286,7 +269,26 @@ Följande rubriker ingår i varje Document Translator API-begäran:
 }
 ```
 
-## <a name="_post-document-translation_-request-code-samples"></a>Skicka kod exempel för begäran om _dokument översättning_
+> [!IMPORTANT]
+>
+> I kod exemplen nedan kan du behöva uppdatera följande fält, beroende på åtgärd:
+>>>
+>> * `endpoint`
+>> * `subscriptionKey`
+>> * `sourceURL`
+>> * `targetURL`
+>> * `glossaryURL`
+>> * `id`  (jobb-ID)
+>>
+> Var du hittar `id` värdet:
+> * Du hittar jobbet `id`  i URL-värdet för post-metodens svars huvud `Operation-Location`  . Den sista parametern i URL: en är åtgärdens jobb **`id`** .  
+> * Du kan också använda en begäran om att hämta jobb för att hämta jobbet `id`  för en dokument översättnings åtgärd.
+>
+> I kod exemplen nedan kommer du att hårdkoda din nyckel och slut punkt där det anges. Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt.  
+>
+> Se [Azure Cognitive Services Security](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) för att på ett säkert sätt lagra och komma åt dina autentiseringsuppgifter.
+
+## <a name="_post-document-translation_-request"></a>_Publicera begäran om dokument översättning_
 
 Skicka en begäran om översättning av batch-dokument till översättnings tjänsten.
 
@@ -519,7 +521,7 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_-code-samples"></a>Hämta kod exempel för _fil format_
+## <a name="_get-file-formats_"></a>_Hämta fil format_ 
 
 Hämta en lista över fil format som stöds. Om det lyckas returnerar den här metoden en `200 OK` svarskod.
 
@@ -696,7 +698,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_-code-samples"></a>_Hämta exempel på jobb status_ kod
+## <a name="_get-job-status_"></a>_Hämta jobb status_ 
 
 Hämta aktuell status för ett enskilt jobb och en sammanfattning av alla jobb i en begäran om dokument översättning. Om det lyckas returnerar den här metoden en `200 OK` svarskod.
 <!-- markdownlint-disable MD024 -->
@@ -875,7 +877,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_-code-samples"></a>Hämta kod exempel för _dokument status_
+## <a name="_get-document-status_"></a>_Hämta dokument status_
 
 ### <a name="brief-overview"></a>Kort översikt
 
@@ -1055,7 +1057,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_-code-samples"></a>_Ta bort jobb_ kod exempel
+## <a name="_delete-job_"></a>_TA bort jobb_ 
 
 ### <a name="brief-overview"></a>Kort översikt
 
@@ -1254,7 +1256,7 @@ I tabellen nedan visas gränserna för data som du skickar till dokument övers�
 
 * [Translator v3 API-referens](../reference/v3-0-reference.md)
 * [Stöd för språk](../language-support.md)
-* [Prenumerationer i Azure API Management](/azure/api-management/api-management-subscriptions).
+* [Prenumerationer i Azure API Management](../../../api-management/api-management-subscriptions.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

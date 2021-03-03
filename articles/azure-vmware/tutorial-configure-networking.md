@@ -2,13 +2,13 @@
 title: Självstudie – Konfigurera nätverk för ditt privata VMware-moln i Azure
 description: Lär dig att skapa och konfigurera de nätverk som behövs för att distribuera ditt privata moln i Azure
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/23/2021
+ms.openlocfilehash: b3afdffa127c23a3be3d247f12acc31604370ef6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578366"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738454"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Självstudie: Konfigurera nätverk för ditt privata VMware-moln i Azure
 
@@ -22,7 +22,7 @@ I den här guiden får du lära dig att:
 > * Anslut din ExpressRoute-krets till gatewayen
 > * Leta upp URL: erna för vCenter och NSX Manager
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 Ett virtuellt nätverk som du har skapat ett [privat moln för Azure VMware-lösningen](tutorial-create-private-cloud.md). 
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
@@ -37,14 +37,14 @@ Ett virtuellt nätverk som du har skapat ett [privat moln för Azure VMware-lös
 
 1. På sidan **skapa Virtual Network** anger du information om det virtuella nätverket.
 
-1. På fliken **grundläggande** anger du ett namn för det virtuella nätverket och väljer lämplig region och väljer **Nästa: IP-adresser**.
+1. På fliken **grundläggande** anger du ett namn för det virtuella nätverket, väljer lämplig region och väljer **Nästa: IP-adresser**.
 
 1. På fliken **IP-adresser** , under **IPv4-adress utrymme**, anger du det adress utrymme som du skapade i föregående självstudie.
 
    > [!IMPORTANT]
    > Du måste använda ett adress utrymme som **inte** överlappar adress utrymmet som du använde när du skapade ditt privata moln i föregående självstudie.
 
-1. Välj **+ Lägg till undernät**och ge under nätet ett namn och lämpligt adress intervall på sidan **Lägg till undernät** . Välj **Lägg till** när det är klart.
+1. Välj **+ Lägg till undernät** och ge under nätet ett namn och lämpligt adress intervall på sidan **Lägg till undernät** . Välj **Lägg till** när det är klart.
 
 1. Välj **Granska + skapa**.
 
@@ -64,7 +64,7 @@ Nu när du har skapat ett virtuellt nätverk skapar du en virtuell nätverksgate
 
 1. På fliken grundläggande på sidan **Skapa virtuell nätverksgateway** anger du värden för fälten och väljer sedan **Granska + skapa**. 
 
-   | Field | Värde |
+   | Fält | Värde |
    | --- | --- |
    | **Prenumeration** | Förifyllt värde med den prenumeration som resurs gruppen tillhör. |
    | **Resursgrupp** | Ifyllt värde för den aktuella resurs gruppen. Värdet ska vara den resurs grupp som du skapade i ett tidigare test. |
@@ -72,11 +72,11 @@ Nu när du har skapat ett virtuellt nätverk skapar du en virtuell nätverksgate
    | **Region** | Välj den geografiska platsen för den virtuella Nätverksgatewayen. |
    | **Typ av Gateway** | Välj **ExpressRoute**. |
    | **SKU** | Låt standardvärdet vara **standard:** |
-   | **Virtuellt nätverk** | Välj det virtuella nätverk som du skapade tidigare. Om du inte ser det virtuella nätverket kontrollerar du att regionen för gatewayen matchar regionen för det virtuella nätverket. |
+   | **Virtuellt nätverk** | Välj det virtuella nätverk som du skapade tidigare. Om du inte ser det virtuella nätverket kontrollerar du att gatewayens region stämmer överens med regionen för det virtuella nätverket. |
    | **Adress intervall för gateway-undernät** | Det här värdet fylls i när du väljer det virtuella nätverket. Ändra inte standardvärdet. |
    | **Offentlig IP-adress** | Välj **Skapa ny**. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Välj granska + skapa." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Ange värden för fälten och välj sedan granska + skapa." border="true":::
 
 1. Kontrol lera att informationen är korrekt och välj **skapa** för att starta distributionen av den virtuella Nätverksgatewayen. 
 1. När distributionen är klar går du vidare till nästa avsnitt för att ansluta din ExpressRoute-anslutning till den virtuella Nätverksgatewayen som innehåller ditt privata moln i Azure VMware-lösningen.
@@ -90,11 +90,11 @@ Nu när du har distribuerat en virtuell nätverksgateway lägger du till en ansl
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>Leta upp URL: erna för vCenter och NSX Manager
 
-För att logga in på vCenter och NSX Manager behöver du URL: erna till vCenter-webbklienten och NSX-T Manager-platsen. 
+Om du vill logga in på vCenter och NSX Manager behöver du URL: erna till vCenter-webbklienten och NSX-T Manager-platsen. 
 
 Navigera till Azure VMware-lösningen privat moln, under **Hantera**, Välj **identitet**, här hittar du den information som behövs.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Välj granska + skapa." border="true":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Skärm bild av autentiseringsuppgifterna vCenter och NSX-T och webb klientens URL: er." border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

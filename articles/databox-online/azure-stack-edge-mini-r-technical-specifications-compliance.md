@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467449"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727489"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Mini R
 
@@ -80,9 +80,9 @@ I följande tabell visas specifikationer för strömförsörjnings enhet:
 
 ## <a name="included-battery"></a>Inkluderat batteri
 
-Azure Stack Edge Mini R-enheten innehåller också ett onboard-batteri som debiteras av strömförsörjningen. 
+Azure Stack Edge Mini R-enheten innehåller också ett onboard-batteri som debiteras av strömförsörjningen.
 
-Ett ytterligare typ 2590-batteri kan användas tillsammans med det inbyggda batteriet för att utöka användningen av enheten mellan avgifterna. Batteriet bör vara kompatibelt med alla regler för säkerhet, transport och miljö som är tillämpliga i användnings landet.
+Ett ytterligare [typ 2590-batteri](https://www.bren-tronics.com/bt-70791ck.html) kan användas tillsammans med det inbyggda batteriet för att utöka användningen av enheten mellan avgifterna. Batteriet bör vara kompatibelt med alla regler för säkerhet, transport och miljö som är tillämpliga i användnings landet.
 
 
 | Specifikation           | Värde                      |
@@ -118,7 +118,7 @@ I följande tabell visas vikten för enheten, inklusive batteri.
 I det här avsnittet visas de specifikationer som är relaterade till inne slutnings miljön, till exempel temperatur, fuktighet och höjd.
 
 
-|     Specifikationer             |     Description                                                          |
+|     Specifikationer             |     Beskrivning                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
 |     Temperatur intervall          |     0 – 43 ° C (drift)                                              |
 |     Vibrationer                  |     MIL-STD-810-metod 514,7 *<br> Procedure I CAT 4, 20                  |

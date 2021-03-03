@@ -1,17 +1,16 @@
 ---
 title: Skicka data från Windows Azure Diagnostics-tillägget till Azure Event Hubs
 description: Konfigurera Diagnostics extension i Azure Monitor att skicka data till Azure Event Hub så att du kan vidarebefordra det till platser utanför Azure.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732045"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Skicka data från Windows Azure Diagnostics-tillägget till Azure Event Hubs
 Tillägget Azure Diagnostics är en agent i Azure Monitor som samlar in övervaknings data från gäst operativ systemet och arbets belastningar på virtuella Azure-datorer och andra beräknings resurser. Den här artikeln beskriver hur du skickar data från WAD (Windows Azure Diagnostic Extension) till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) så att du kan vidarebefordra till platser utanför Azure.
@@ -38,7 +37,7 @@ Azure-diagnostik skickar alltid loggar och mått till ett Azure Storage-konto. D
 
 | Egenskap | Beskrivning |
 |:---|:---|
-| Name | Beskrivande namn för mottagaren. Används i konfigurationen för att ange vilka data källor som ska skickas till mottagaren. |
+| Namn | Beskrivande namn för mottagaren. Används i konfigurationen för att ange vilka data källor som ska skickas till mottagaren. |
 | URL  | Webb adress för händelsehubben i formatet form \<event-hubs-namespace\> . ServiceBus.Windows.net/ \<event-hub-name\> .          |
 | SharedAccessKeyName | Namnet på en delad åtkomst princip för händelsehubben som har minst en **send** -auktoritet. |
 | SharedAccessKey     | Primär eller sekundär nyckel från den delade åtkomst principen för händelsehubben. |

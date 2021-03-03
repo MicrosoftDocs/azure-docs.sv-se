@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1caab392af1dab4f2e706d7372b0a1d9b5e62db6
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738947"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Utvecklarens startguide för Azure
 
@@ -63,7 +63,7 @@ Du kan migrera dina befintliga program till App Service med hjälp av [verktyget
 
 Som en IaaS-Provider (Infrastructure as a Service) kan du använda Azure för att distribuera till eller migrera ditt program till virtuella Windows-eller Linux-datorer. Tillsammans med Azure Virtual Network stöder Azure Virtual Machines distributionen av virtuella Windows-eller Linux-datorer till Azure. Med virtuella datorer har du total kontroll över datorns konfiguration. När du använder virtuella datorer ansvarar du för all serverprogram vara installation, konfiguration, underhåll och operativ system uppdateringar.
 
-På grund av den kontroll nivå som du har med virtuella datorer kan du köra ett brett utbud av Server arbets belastningar på Azure som inte passar in i en PaaS modell. Dessa arbets belastningar omfattar databas servrar, Windows Server Active Directory och Microsoft SharePoint. Mer information finns i Virtual Machines-dokumentationen för [Linux](../../virtual-machines/linux/index.yml) eller [Windows](../../virtual-machines/windows/index.yml).
+På grund av den kontroll nivå som du har med virtuella datorer kan du köra ett brett utbud av Server arbets belastningar på Azure som inte passar in i en PaaS modell. Dessa arbets belastningar omfattar databas servrar, Windows Server Active Directory och Microsoft SharePoint. Mer information finns i Virtual Machines-dokumentationen för [Linux](../../virtual-machines/index.yml) eller [Windows](../../virtual-machines/index.yml).
 
 > **När du ska använda**: Använd Virtual Machines när du vill ha fullständig kontroll över din program infrastruktur eller migrera lokala program arbets belastningar till Azure utan att behöva göra några ändringar.
 >

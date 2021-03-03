@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Lär dig mer om att tänka på när du använder Azure AD B2C med Microsoft Authentication Library för Android (MSAL. Android
 services: active-directory
-author: brianmel
+author: iambmelt
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,19 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 902159153bccbea851481e1f81d03e8e70495020
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688883"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Använda MSAL för Android med B2C
 
 Microsoft Authentication Library (MSAL) gör det möjligt för programutvecklare att autentisera användare med sociala och lokala identiteter genom att använda [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml). Azure AD B2C är en identitets hanterings tjänst. Använd den för att anpassa och styra hur kunderna registrerar sig, loggar in och hanterar sina profiler när de använder dina program.
+
+## <a name="choosing-a-compatible-authorization_user_agent"></a>Välja en kompatibel authorization_user_agent
+B2C Identity Management-systemet har stöd för autentisering med ett antal leverantörer av sociala medier som Google, Facebook, Twitter och Amazon. Om du planerar att stödja sådana typer av konton i din app, rekommenderar vi att du konfigurerar ditt MSAL offentliga klient program att använda antingen- `DEFAULT` eller- `BROWSER` värdet när du anger ditt manifest [`authorization_user_agent`](msal-configuration.md#authorization_user_agent) på grund av begränsningar som förhindrar användning av WebView-baserad autentisering med vissa externa identitets leverantörer.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Konfigurera kända utfärdade och omdirigerings-URI
 
@@ -45,6 +48,7 @@ Konfigurations filen för appen deklarerar två `authorities` . En för varje pr
   "client_id": "<your_client_id_here>",
   "redirect_uri": "<your_redirect_uri_here>",
   "account_mode" : "MULTIPLE",
+  "authorization_user_agent" : "DEFAULT",
   "authorities": [
     {
       "type": "B2C",

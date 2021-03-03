@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: dfb18281ad558832e4b06d1c0d24654d351ed01d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4209e609420e610b9f3456da26b0afe0bf839d43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Självstudie: Azure Active Directory integrering med Corptax
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Corptax i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Corptax** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Corptax** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select_sso.png)
 
@@ -129,8 +129,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
 
-    b. I fältet **användar namn** skriver du `brittasimon\@yourcompanydomain.extension`  
-    Till exempel BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du `brittasimon@<yourcompanydomain.extension>` . Exempel: `brittasimon@contoso.com`.
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -140,11 +139,11 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Corptax.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Corptax**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Corptax**.
 
     ![Bladet Företagsprogram](common/enterprise_applications.png)
 
-2. Skriv och välj **Corptax**i listan program.
+2. Skriv och välj **Corptax** i listan program.
 
     ![Corptax-länken i program listan](common/all_applications.png)
 

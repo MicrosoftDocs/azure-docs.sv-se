@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131249"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688424"
 ---
 # <a name="api-management-cross-domain-policies"></a>Korsdomänprinciper för API Management
 Det här avsnittet innehåller en referens för följande API Managements principer. Information om hur du lägger till och konfigurerar principer finns [i principer i API Management](./api-management-policies.md).
@@ -62,7 +62,10 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 - **Princip omfattningar:** alla omfattningar
 
 ## <a name="cors"></a><a name="CORS"></a> CORS
-`cors`Principen lägger till CORS-stöd (Cross-Origin Resource Sharing) till en åtgärd eller ett API för att tillåta kors domän anrop från webbläsarbaserade klienter.
+`cors`Principen lägger till CORS-stöd (Cross-Origin Resource Sharing) till en åtgärd eller ett API för att tillåta kors domän anrop från webbläsarbaserade klienter. 
+
+> [!NOTE]
+> Om begäran matchar en åtgärd med en alternativ metod som definierats i API: et, utförs inte bearbetnings logiken för för hands begäran som är associerad med CORS-principer. Därför kan sådana åtgärder användas för att implementera den anpassade bearbetnings logiken för för flygning.
 
 CORS gör det möjligt för en webbläsare och en server att samverka och avgöra om det ska gå att tillåta vissa cross-origin-begäranden (d.v.s. XMLHttpRequests-anrop som görs från Java Script på en webb sida till andra domäner). Detta ger större flexibilitet än att bara tillåta begär Anden om samma ursprung, men det är säkrare än att tillåta alla cross-origin-begäranden.
 
@@ -71,7 +74,7 @@ Du måste använda CORS-principen för att aktivera den interaktiva konsolen i D
 ### <a name="policy-statement"></a>Princip kommentar
 
 ```xml
-<cors allow-credentials="false|true">
+<cors allow-credentials="false|true" terminate-unmatched-request="true|false">
     <allowed-origins>
         <origin>origin uri</origin>
     </allowed-origins>
@@ -122,23 +125,24 @@ I det här exemplet visas hur du stöder för-flygnings begär Anden, t. ex. de 
 
 ### <a name="elements"></a>Element
 
-|Namn|Beskrivning|Krävs|Standard|
+|Namn|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|CORS|Rot element.|Ja|Saknas|
-|tillåtna-ursprung|Innehåller `origin` element som beskriver tillåtna ursprung för frågor mellan domäner. `allowed-origins` kan innehålla antingen ett enda `origin` element som anger `*` att alla ursprung eller ett eller flera `origin` element som innehåller en URI ska tillåtas.|Ja|Saknas|
+|CORS|Rot element.|Ja|Ej tillämpligt|
+|tillåtna-ursprung|Innehåller `origin` element som beskriver tillåtna ursprung för frågor mellan domäner. `allowed-origins` kan innehålla antingen ett enda `origin` element som anger `*` att alla ursprung eller ett eller flera `origin` element som innehåller en URI ska tillåtas.|Ja|Ej tillämpligt|
 |ursprung|Värdet kan antingen vara `*` att tillåta alla ursprung eller en URI som anger ett enda ursprung. URI: n måste innehålla ett schema, en värd och en port.|Ja|Om porten utelämnas i en URI används port 80 för HTTP och port 443 för HTTPS.|
-|tillåtna metoder|Det här elementet krävs om andra metoder än GET eller POST tillåts. Innehåller `method` element som anger de HTTP-verb som stöds. Värdet `*` anger alla metoder.|Nej|Om det här avsnittet inte finns stöds GET och POST.|
-|metod|Anger ett HTTP-verb.|Minst ett- `method` element krävs om `allowed-methods` avsnittet finns.|Saknas|
-|tillåtna – rubriker|Det här elementet innehåller `header` element som anger namn på de huvuden som kan tas med i begäran.|Nej|Saknas|
-|exponera – rubriker|Det här elementet innehåller `header` element som anger namn på de rubriker som ska vara tillgängliga för klienten.|Nej|Saknas|
-|sidhuvud|Anger ett rubrik namn.|Minst ett `header` element krävs i `allowed-headers` eller `expose-headers` om avsnittet är tillgängligt.|Saknas|
+|tillåtna metoder|Det här elementet krävs om andra metoder än GET eller POST tillåts. Innehåller `method` element som anger de HTTP-verb som stöds. Värdet `*` anger alla metoder.|Inga|Om det här avsnittet inte finns stöds GET och POST.|
+|metod|Anger ett HTTP-verb.|Minst ett- `method` element krävs om `allowed-methods` avsnittet finns.|Ej tillämpligt|
+|tillåtna – rubriker|Det här elementet innehåller `header` element som anger namn på de huvuden som kan tas med i begäran.|Inga|Ej tillämpligt|
+|exponera – rubriker|Det här elementet innehåller `header` element som anger namn på de rubriker som ska vara tillgängliga för klienten.|Inga|Saknas|
+|sidhuvud|Anger ett rubrik namn.|Minst ett `header` element krävs i `allowed-headers` eller `expose-headers` om avsnittet är tillgängligt.|Ej tillämpligt|
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Namn|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|Tillåt-autentiseringsuppgifter|`Access-Control-Allow-Credentials`Rubriken i preflight-svaret anges till värdet för det här attributet och påverkar klientens möjlighet att skicka autentiseringsuppgifter i kors domän begär Anden.|Nej|falskt|
-|preflight-resultat-max-ålder|`Access-Control-Max-Age`Rubriken i preflight-svaret ställs in på värdet för det här attributet och påverkar användar agentens möjlighet att cachelagra svar före flygning.|Nej|0|
+|Tillåt-autentiseringsuppgifter|`Access-Control-Allow-Credentials`Rubriken i preflight-svaret anges till värdet för det här attributet och påverkar klientens möjlighet att skicka autentiseringsuppgifter i kors domän begär Anden.|Inga|falskt|
+|avsluta-omatchad-begäran|Det här attributet styr bearbetningen av frågor över olika ursprung som inte matchar CORS-principinställningar. När OPTIONs-begäran bearbetas som en för hands begäran och inte matchar CORS-princip inställningarna: om attributet är inställt på `true` avslutar du omedelbart begäran med ett tomt 200 OK-svar. Om attributet är inställt på `false` kontrollerar du inkommande för andra WEBBPLATSOMFATTANDE CORS-principer som är direkt underordnade till det inkommande elementet och tillämpar dem.  Om inga CORS-principer hittas avslutar du begäran med ett tomt 200 OK-svar. När GET-eller HEAD-begäran innehåller ursprungs huvudet (och därför bearbetas som en begäran om cross-origin) och inte matchar CORS-princip inställningarna: om attributet är inställt på `true` , avslutar du omedelbart begäran med ett tomt 200-svar. Om attributet är inställt på `false` , tillåter du att begäran fortsätter normalt och lägger inte till CORS-huvuden i svaret.|Inga|true|
+|preflight-resultat-max-ålder|`Access-Control-Max-Age`Rubriken i preflight-svaret ställs in på värdet för det här attributet och påverkar användar agentens möjlighet att cachelagra svar före flygning.|Inga|0|
 
 ### <a name="usage"></a>Användning
 Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -173,9 +177,9 @@ Om du lägger till en callback `?cb=XXX` -parameter returnerar den ett JSONP-res
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Namn|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|motanrop-parameter-Name|JavaScript-funktionen för Cross-Domain anropas med det fullständigt kvalificerade domän namnet där funktionen finns.|Ja|Saknas|
+|motanrop-parameter-Name|JavaScript-funktionen för Cross-Domain anropas med det fullständigt kvalificerade domän namnet där funktionen finns.|Ja|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
 Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -190,4 +194,4 @@ Mer information om hur du arbetar med principer finns i:
 + [Principer i API Management](api-management-howto-policies.md)
 + [Transformera API: er](transform-api.md)
 + [Princip referens](./api-management-policies.md) för en fullständig lista över princip satser och deras inställningar
-+ [Princip exempel](./policy-reference.md)
++ [Principexempel](./policy-reference.md)

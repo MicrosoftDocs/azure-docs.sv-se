@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ebadfc889eb648b734747e5a2a45662e82aab643
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722100"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Anslut till Azure Resource Manager på din Azure Stack Edge Pro-enhet
 
@@ -130,7 +130,7 @@ Windows-klienten där du ska anropa Azure Resource Manager API: er måste upprä
 
 Windows-klienten måste uppfylla följande krav:
 
-1. Kör PowerShell version 5,0. Du måste ha PowerShell version 5,0 eller senare. Kör följande cmdlet för att kontrol lera versionen av PowerShell på systemet:
+1. Kör PowerShell version 5,0. Du måste ha PowerShell version 5,0. PowerShell Core stöds inte. Kör följande cmdlet för att kontrol lera versionen av PowerShell på systemet:
 
     ```powershell
     $PSVersionTable.PSVersion

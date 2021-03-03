@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735095"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715538"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Självstudie: skapa och ändra peering för en ExpressRoute-krets med CLI
 
@@ -29,7 +29,7 @@ Den här självstudien visar hur du skapar och hanterar konfiguration/peering av
 > * [PowerShell (klassisk)](expressroute-howto-routing-classic.md)
 > 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Konfigurera, uppdatera och ta bort Microsoft-peering för en krets
 > - Konfigurera, uppdatera och ta bort Azures privata peering för en krets
@@ -37,7 +37,7 @@ I de här självstudierna får du lära dig att
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Innan du börjar ska du installera den senaste versionen av CLI-kommandona (2.0 eller senare). Information om att installera CLI-kommandona finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
-* Kontrol lera att du har granskat [prerequisites](expressroute-prerequisites.md) [kraven, Dirigerings kraven](expressroute-routing.md)och [arbets flödes](expressroute-workflows.md) sidorna innan du påbörjar konfigurationen.
+* Kontrol lera att du har granskat [](expressroute-prerequisites.md) [kraven, Dirigerings kraven](expressroute-routing.md)och [arbets flödes](expressroute-workflows.md) sidorna innan du påbörjar konfigurationen.
 * Du måste ha en aktiv ExpressRoute-krets. Följ anvisningarna för att [skapa en ExpressRoute-krets](howto-circuit-cli.md) och se till att kretsen aktive ras av anslutnings leverantören innan du fortsätter. ExpressRoute-kretsen måste vara i ett tillhandahållet och aktiverat tillstånd för att du ska kunna köra kommandona i den här artikeln.
 
 Dessa anvisningar gäller endast för kretsar som skapats med tjänstleverantörer som erbjuder tjänster för Layer 2-anslutning. Om du använder en tjänst leverantör som erbjuder hanterade Layer 3-tjänster (vanligt vis en IPVPN, t. ex. MPLS), kommer anslutnings leverantören konfigurera och hantera routning åt dig.
@@ -243,8 +243,10 @@ Det här avsnittet hjälper dig att skapa, Hämta, uppdatera och ta bort Azures 
 
 1. Konfigurera Azures privata peering för kretsen. Kontrol lera att du har följande objekt innan du fortsätter med nästa steg:
 
-   * Ett /30 undernät för den primära länken. Under nätet får inte ingå i något adress utrymme som är reserverat för virtuella nätverk.
-   * Ett /30 undernät för den sekundära länken. Under nätet får inte ingå i något adress utrymme som är reserverat för virtuella nätverk.
+   * Ett par undernät som inte ingår i något adress utrymme som är reserverat för virtuella nätverk. Ett undernät kommer att användas för den primära länken, medan det andra används för den sekundära länken. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router. Det finns tre alternativ för det här paret undernät:
+       * IPv4: två/30 undernät.
+       * IPv6: två/126-undernät.
+       * Både: två/30 undernät och två/126-undernät.
    * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID.
    * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal. Du kan använda ett privat AS-tal för den här peeringen. Se till att du inte använder 65515.
    * **Valfritt-** En MD5-hash om du väljer att använda en.

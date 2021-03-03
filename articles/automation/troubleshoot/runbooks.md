@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723817"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Felsöka runbook-problem
 
@@ -160,7 +160,7 @@ Om du försöker komma åt resurser i en annan prenumeration följer du dessa st
 
 1. Kopiera namnet på prenumerationen.
 
-1. Du kan nu använda följande Runbook-kod för att testa behörigheterna från ditt Automation-konto till den andra prenumerationen. Ersätt `"\<CertificateThumbprint\>"` med värdet som kopieras i steg 1. Ersätt `"\<SubscriptionName\>"` med värdet som kopieras i steg 4.
+1. Du kan nu använda följande Runbook-kod för att testa behörigheterna från ditt Automation-konto till den andra prenumerationen. Ersätt `<CertificateThumbprint>` med värdet som kopieras i steg 1. Ersätt `"<SubscriptionName>"` med värdet som kopieras i steg 4.
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection

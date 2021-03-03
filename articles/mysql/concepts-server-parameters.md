@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539492"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720961"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parametrar i Azure Database for MySQL
 
@@ -21,7 +21,7 @@ Den här artikeln innehåller överväganden och rikt linjer för att konfigurer
 
 MySQL-motorn innehåller många olika servervariabler/parametrar som kan användas för att konfigurera och finjustera motor beteendet. Vissa parametrar kan ställas in dynamiskt under körning medan andra är "statiska", vilket kräver en server omstart för att kunna användas.
 
-Azure Database for MySQL visar möjligheten att ändra värdet för olika MySQL server-parametrar med hjälp av [Azure Portal](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md)och [PowerShell](./howto-configure-server-parameters-using-powershell.md) för att matcha din arbets belastnings behov.
+I Azure Database for MySQL kan du ändra värdet för olika MySQL-serverparametrar med hjälp av [Azure-portalen](./howto-server-parameters.md), [Azure CLI](./howto-configure-server-parameters-using-cli.md) och [PowerShell](./howto-configure-server-parameters-using-powershell.md) så att det passar dina arbetsbelastningsbehov.
 
 ## <a name="configurable-server-parameters"></a>Konfigurerbara Server parametrar
 
@@ -272,7 +272,7 @@ Det är också viktigt att Observera att förbättrad prestanda kommer till kost
 För att spara statusen för bufferten vid Server avstängnings inställning Server parametern `innodb_buffer_pool_dump_at_shutdown` till `ON` . På samma sätt anger du Server parametern `innodb_buffer_pool_load_at_startup` till `ON` för att återställa buffertens tillstånd vid Server start. Du kan styra påverkan på Starta/starta om genom att sänka och finjustera Värdet på Server parametern `innodb_buffer_pool_dump_pct` , som standard är den här parametern inställd på `25` .
 
 > [!Note]
-> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](./concepts-pricing-tiers.md#storage).
 
 ### <a name="time_zone"></a>time_zone
 

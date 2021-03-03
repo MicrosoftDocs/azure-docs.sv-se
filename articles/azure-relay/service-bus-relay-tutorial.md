@@ -4,12 +4,12 @@ description: I den här självstudien beskrivs hur du exponerar en lokal WCF RES
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935712"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710795"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Självstudie: exponera en lokal WCF REST-tjänst till extern klient med hjälp av Azure WCF Relay
 
@@ -33,7 +33,7 @@ Du utför följande uppgifter i den här självstudien:
 > * Implementera WCF-klienten.
 > * Kör programmen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien, finns följande förhandskrav:
 
@@ -55,12 +55,12 @@ Tjänste kontraktet anger vilka åtgärder tjänsten stöder. Åtgärder är web
 
 1. Starta Microsoft Visual Studio som administratör. Det gör du genom att högerklicka på program ikonen för Visual Studio och välja **Kör som administratör**.
 1. I Visual Studio väljer du **skapa ett nytt projekt**.
-1. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
+1. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
 1. Ge projektet namnet *EchoService* och välj **skapa**.
 
    ![Skapa en konsolapp][2]
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer **Hantera NuGet-paket**. I **NuGet Package Manager**väljer du **Bläddra**och söker efter och väljer **windowsazure. Service Bus**. Välj **Installera**och godkänn användnings villkoren.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **Hantera NuGet-paket**. I **NuGet Package Manager** väljer du **Bläddra** och söker efter och väljer **windowsazure. Service Bus**. Välj **Installera** och godkänn användnings villkoren.
 
     ![Service Bus-paket][3]
 
@@ -180,12 +180,12 @@ Om du skapar ett Azure-relä måste du först skapa kontraktet med ett gränssni
 
 Konfigurations filen liknar en WCF-konfigurationsfil. Den innehåller tjänst namnet, slut punkten och bindningen. Slut punkten är platsen Azure Relay visar för klienter och värdar för att kommunicera med varandra. Bindningen är den typ av protokoll som används för att kommunicera. Den största skillnaden är att den här konfigurerade tjänst slut punkten refererar till en [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) -bindning, som inte är en del av .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) är en av de bindningar som definierats av tjänsten.
 
-1. I **Solution Explorer**dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren.
+1. I **Solution Explorer** dubbelklickar du på **App.config** för att öppna filen i Visual Studio-redigeraren.
 1. I elementet `<appSettings>` ersätter du platshållarna med namnet på ditt namnområde för tjänsten och den SAS-nyckel som du kopierade i ett av de föregående stegen.
 1. Lägg till ett `<services>`-element inom taggarna `<system.serviceModel>`. Du kan definiera flera Relay-program i en enda konfigurations fil. I den här självstudiekursen definieras dock bara en.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -439,16 +439,16 @@ Nästa uppgift är att skapa ett klient program och definiera tjänst kontraktet
 
 1. Skapa ett nytt projekt i den aktuella Visual Studio-lösningen för klienten:
 
-   1. I **Solution Explorer**högerklickar du på den aktuella lösningen (inte projektet) och väljer **Lägg till**  >  **nytt projekt**.
-   1. I **Lägg till ett nytt projekt**väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
+   1. I **Solution Explorer** högerklickar du på den aktuella lösningen (inte projektet) och väljer **Lägg till**  >  **nytt projekt**.
+   1. I **Lägg till ett nytt projekt** väljer du **konsol program (.NET Framework)** för C# och väljer **sedan nästa**.
    1. Namnge Project *EchoClient* och välj **skapa**.
 
 1. I **Solution Explorer**, i **EchoClient** -projektet, dubbelklickar du på **program.cs** för att öppna filen i redigeraren, om den inte redan är öppen.
 1. Ändra namnet på namnområdet från standardnamnet `EchoClient` till `Microsoft.ServiceBus.Samples`.
 1. Installera [Service Bus NuGet-paketet](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
-   1. I **Solution Explorer**högerklickar du på **EchoClient** och väljer sedan **Hantera NuGet-paket**.
-   1. Välj **Bläddra**och Sök efter och välj **windowsazure. Service Bus**. Välj **Installera**och godkänn användnings villkoren.
+   1. I **Solution Explorer** högerklickar du på **EchoClient** och väljer sedan **Hantera NuGet-paket**.
+   1. Välj **Bläddra** och Sök efter och välj **windowsazure. Service Bus**. Välj **Installera** och godkänn användnings villkoren.
 
       ![Installera Service Bus-paket][4]
 
@@ -513,7 +513,7 @@ I det här steget skapar du en *App.config* -fil för ett grundläggande klient 
 1. I `system.serviceModel` elementet lägger du till ett- `<client>` element.
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>
@@ -724,13 +724,13 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="run-the-applications"></a>Köra programmen
 
 1. Välj Ctrl + Skift + B för att bygga lösningen. Den här åtgärden skapar både klient projektet och det tjänst projekt som du skapade i föregående steg.
-1. Du måste se till att tjänsteprogrammet körs innan du startar klientprogrammet. I **Solution Explorer**högerklickar du på lösningen **EchoService** och väljer sedan **Egenskaper**.
-1. På **egenskaps sidor**, **vanliga egenskaper**  >  **Start projekt**och välj sedan **flera start projekt**. Kontrollera att **EchoService** visas först i listan.
+1. Du måste se till att tjänsteprogrammet körs innan du startar klientprogrammet. I **Solution Explorer** högerklickar du på lösningen **EchoService** och väljer sedan **Egenskaper**.
+1. På **egenskaps sidor**, **vanliga egenskaper**  >  **Start projekt** och välj sedan **flera start projekt**. Kontrollera att **EchoService** visas först i listan.
 1. Ställ in rutan **Åtgärd** för både **EchoService**- och **EchoClient**-projektet på **Starta**.
 
     ![Egenskaps sidor för projekt][5]
 
-1. Välj **projekt beroenden**. I **Projects**väljer du **EchoClient**. För **är beroende av**kontrollerar du att **EchoService** har valts.
+1. Välj **projekt beroenden**. I **Projects** väljer du **EchoClient**. För **är beroende av** kontrollerar du att **EchoService** har valts.
 
     ![Projektberoenden][6]
 

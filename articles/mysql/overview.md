@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 51c194ca9b091bc685f293320750da55925ad49d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20b54afdfbb5641def921ffc17b3c38f6650acab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91565623"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736227"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Vad är Azure Database for MySQL?
 
@@ -50,7 +50,7 @@ Detaljerad översikt över distributions läget för en enskild server finns i [
 
 ### <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-flexibel Server (för hands version)
 
-Azure Database for MySQL flexibel Server är en fullständigt hanterad databas tjänst som är utformad för att ge mer detaljerad kontroll och flexibilitet för funktioner i databas hantering och konfigurations inställningar. I allmänhet tillhandahåller tjänsten mer flexibilitet och anpassningar baserat på användar kraven. Den flexibla Server arkitekturen gör det möjligt för användare att välja hög tillgänglighet i en zon för enskild tillgänglighet och över flera tillgänglighets zoner. Flexibla servrar ger bättre kostnads optimerings kontroller med möjligheten att stoppa/starta Server-och data bearbetnings nivåer, idealiska för arbets belastningar som inte behöver fullständig beräknings kapacitet kontinuerligt. Tjänsten stöder för närvarande community-versionen av MySQL 5,7 med planer för att lägga till nyare versioner snart. Tjänsten är för närvarande en offentlig för hands version som är tillgänglig idag i många olika [Azure-regioner](https://azure.microsoft.com/global-infrastructure/services/).
+Azure Database for MySQL flexibel Server är en fullständigt hanterad databas tjänst som är utformad för att ge mer detaljerad kontroll och flexibilitet för funktioner i databas hantering och konfigurations inställningar. I allmänhet tillhandahåller tjänsten mer flexibilitet och anpassningar baserat på användar kraven. Den flexibla Server arkitekturen gör det möjligt för användare att välja hög tillgänglighet i en zon för enskild tillgänglighet och över flera tillgänglighets zoner. Flexibla servrar ger bättre kostnads optimerings kontroller med möjligheten att stoppa/starta Server-och data bearbetnings nivåer, idealiska för arbets belastningar som inte behöver fullständig beräknings kapacitet kontinuerligt. Tjänsten stöder community-versionen av MySQL 5,7 och 8,0. Tjänsten är för närvarande en offentlig för hands version som är tillgänglig idag i många olika [Azure-regioner](https://azure.microsoft.com/global-infrastructure/services/).
 
 Flexibla servrar lämpar sig bäst för 
 - Program utveckling som kräver bättre kontroll och anpassningar.

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: c36cee8ce7076093499a76ec0952ad37bd7511a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43f9736ce902d4c195d6b07cfdf7011ba9ca0c2c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702750"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Skapa Apache Hadoop kluster i HDInsight med hjälp av Resource Manager-mallar
 
@@ -73,7 +73,7 @@ Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkr
 I den här artikeln har du lärt dig flera olika sätt att skapa ett HDInsight-kluster. Mer information finns i följande artiklar:
 
 * Fler HDInsight-relaterade mallar finns i [snabb starts mallar för Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight).
-* Ett exempel på hur du distribuerar resurser via .NET-klient biblioteket finns i [distribuera resurser med hjälp av .NET-bibliotek och en mall](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Ett exempel på hur du distribuerar resurser via .NET-klient biblioteket finns i [distribuera resurser med hjälp av .NET-bibliotek och en mall](/previous-versions/azure/virtual-machines/windows/csharp-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Ett djupgående exempel på hur du distribuerar ett program finns i [etablera och distribuera mikrotjänster förutsägbart i Azure](../app-service/deploy-complex-application-predictably.md).
 * Information om hur du distribuerar lösningen till olika miljöer finns i [Utvecklings- och testmiljöer i Microsoft Azure](../devtest-labs/devtest-lab-overview.md).
 * Mer information om avsnitten i Azure Resource Manager-mallen finns i [Redigera mallar](../azure-resource-manager/templates/template-syntax.md).

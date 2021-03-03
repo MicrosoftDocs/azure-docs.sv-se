@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217762"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727166"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Bästa praxis för optimala prestanda för din Azure Database for MySQL-enskild server
 
@@ -65,7 +65,7 @@ Vi rekommenderar att du testar och övervakar omstarts tiden för att säkerstä
 Ange server parametern till om du vill spara statusen för bufferten vid avstängning av `innodb_buffer_pool_dump_at_shutdown` servern `ON` . På samma sätt anger du Server parametern `innodb_buffer_pool_load_at_startup` till `ON` för att återställa buffertens tillstånd vid Server start. Du kan styra påverkan på Start-och återstarts tid genom att sänka och finjustera Värdet för Server parametern `innodb_buffer_pool_dump_pct` . Den här parametern är som standard inställd på `25` .
 
 > [!Note]
-> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](./concepts-pricing-tiers.md#storage).
 
 ## <a name="next-steps"></a>Nästa steg
 

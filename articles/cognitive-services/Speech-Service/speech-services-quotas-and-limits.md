@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754172"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699988"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvoter och gränser för Speech-tjänster
 
@@ -37,12 +37,12 @@ I tabellerna nedan, utan att raden "justerbar" **inte** är justerbar för alla 
 | Kvot | Kostnads fri (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
 | REST API gräns | Batch-avskrift är inte tillgängligt för F0 | 300 förfrågningar per minut |
-| Max fil storlek för ljud inspelning | Saknas | 1 GB |
-| Maximal BLOB-storlek för indata (kan innehålla fler än en fil, till exempel i ett zip-arkiv, se till att observera fil storleks begränsningen ovan) | Saknas | 2,5 GB |
-| Maximal storlek på BLOB-behållare | Saknas | 5 GB |
-| Högsta antal blobbar per behållare | Saknas | 10000 |
-| Maximalt antal filer per avskrifts förfrågan (när flera innehålls-URL: er används som inmatade) | Saknas | 1000  |
-| Maximalt antal jobb som körs samtidigt | Saknas | 2000  |
+| Max fil storlek för ljud inspelning | Ej tillämpligt | 1 GB |
+| Maximal BLOB-storlek för indata (kan innehålla fler än en fil, till exempel i ett zip-arkiv, se till att observera fil storleks begränsningen ovan) | Ej tillämpligt | 2,5 GB |
+| Maximal storlek på BLOB-behållare | Ej tillämpligt | 5 GB |
+| Högsta antal blobbar per behållare | Ej tillämpligt | 10000 |
+| Maximalt antal filer per avskrifts förfrågan (när flera innehålls-URL: er används som inmatade) | Ej tillämpligt | 1000  |
+| Maximalt antal jobb som körs samtidigt | Ej tillämpligt | 2000  |
 
 #### <a name="model-customization"></a>Modell anpassning
 | Kvot | Kostnads fri (F0)<sup>1</sup> | Standard (S0) |
@@ -104,7 +104,7 @@ Gränser för samtidiga förfrågningar för **bas** -och **anpassade** modeller
 Det befintliga värdet för begränsnings parametern för samtidiga förfrågningar är **inte** synligt via Azure Portal, Command-Line-verktyg eller API-begäranden. Du kan kontrol lera det befintliga värdet genom att skapa en support förfrågan för Azure.
 
 >[!NOTE]
->[Tal behållare](speech-container-howto.md) kräver ingen ökning av gränsen för samtidiga förfrågningar, eftersom behållare endast begränsas av CPU: er för den maskin vara som de är värd för. Tal behållare har dock sina egna kapacitets begränsningar som bör tas med i beräkningen. Se frågan *"kan hjälpa dig med kapacitets planering och kostnads uppskattning för lokal-behållare från tal till text?"* från [vanliga frågor och svar om tal behållare](speech-container-faq.md).
+>[Tal behållare](speech-container-howto.md) kräver ingen ökning av gränsen för samtidiga förfrågningar, eftersom behållare endast begränsas av CPU: er för den maskin vara som de är värd för. Tal behållare har dock sina egna kapacitets begränsningar som bör tas med i beräkningen. Se frågan *"kan hjälpa dig med kapacitets planering och kostnads uppskattning för lokal-behållare från tal till text?"* från [vanliga frågor och svar om tal behållare](./speech-container-howto.md).
 
 #### <a name="have-the-required-information-ready"></a>Ha nödvändig information som är klar:
 - För **bas modell**:
@@ -205,4 +205,3 @@ Påbörja ökningen av gränsen för samtidiga förfrågningar för din resurs e
   - Azure-resursinformation som du [samlat in tidigare](#prepare-the-required-information) 
   - Slutför att ange den information som krävs och klicka på knappen *skapa* på fliken *Granska + skapa*
   - Observera support ärende numret i Azure Portal-meddelanden. Du kommer att kontaktas inom kort för vidare bearbetning
-

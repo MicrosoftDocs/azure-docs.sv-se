@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: d064b69f25ada4edf478f9c8b70d7aaad83754a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 22078f242ddeb882b39b85769537b9a282741250
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725534"
 ---
 # <a name="workbook-text-parameters"></a>Text parametrar för arbets bok
 
@@ -85,5 +85,5 @@ Så här kommer arbets boken att se ut i Read-mode.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång](../platform/workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
-* [Kontrol lera](../platform/workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.
+* [Kom igång](./workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
+* [Kontrol lera](./workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.

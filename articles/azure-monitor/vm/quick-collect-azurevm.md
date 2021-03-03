@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e267682118c4ba6fe25c11a4ae5088916d0e6fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736992"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Samla in data från en virtuell Azure-dator med Azure Monitor
 
@@ -141,4 +141,4 @@ Nu när du kan samla in funktions- och prestandadata från dina virtuella Window
 Om du vill lära dig hur du visar och analyserar data kan du fortsätta till självstudiekursen.
 
 > [!div class="nextstepaction"]
-> [Visa eller analysera data i Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Visa eller analysera data i Log Analytics](../logs/log-analytics-tutorial.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 0af868f62f9bc62ee6b4b2a10d16f8eed632b6d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693653"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Skapa en semantisk fråga i Kognitiv sökning
 
@@ -82,7 +82,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>Formulera begäran
 
-1. Ange "queryType" till "semantisk" och "queryLanguage" till "en-US". Båda parametrarna måste anges.
+1. Ange **`"queryType"`** till "semantisk" och **`"queryLanguage"`** till "en-US". Båda parametrarna måste anges.
 
    QueryLanguage måste vara konsekvent med alla [språk analys](index-add-language-analyzers.md) verktyg som har tilldelats fält definitioner i index schemat. Om queryLanguage är "en-US" måste alla språk analyser också vara en engelsk variant ("en. Microsoft" eller "en. Lucene"). Alla språk oberoende analyser, till exempel nyckelord eller enkla, har ingen konflikt med queryLanguage-värden.
 
@@ -90,7 +90,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    Även om innehåll i ett Sök index kan bestå av flera språk, är frågans Indatatyp mest troligt i ett. Sökmotorn kontrollerar inte kompatibiliteten för queryLanguage, språk analys och det språk som innehållet består av, så se till att omfattnings frågorna inte genererar felaktiga resultat.
 
-1. Valfritt men rekommenderat, ange "searchFields".
+<a name="searchfields"></a>
+
+1. Ange **`"searchFields"`** (valfritt, men rekommenderas).
 
    I en semantisk fråga återspeglar ordningen på fälten i "searchFields" den prioritet eller relativa prioriteten för fältet i semantisk rangordning. Endast sträng fält på översta nivån (fristående eller i en samling) används. Eftersom searchFields har andra beteenden i enkla och fullständiga Lucene-frågor (där det inte finns någon underförstådd prioritetsordning), resulterar det inte i ett fel i alla icke-sträng fält och under fält, men de används inte heller i semantisk rangordning.
 
@@ -104,9 +106,9 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
    + Om det inte finns några fält angivna, kommer alla sökbara fält att beaktas för semantisk rangordning av dokument. Detta rekommenderas dock inte eftersom det kanske inte ger flest optimala resultat från Sök indexet.
 
-1. Ta bort orderBy-satser, om de finns i en befintlig begäran. Det semantiska resultatet används för att beställa resultat, och om du inkluderar explicit sorterings logik returneras ett HTTP 400-fel.
+1. Ta bort **`"orderBy"`** satser, om de finns i en befintlig begäran. Det semantiska resultatet används för att beställa resultat, och om du inkluderar explicit sorterings logik returneras ett HTTP 400-fel.
 
-1. Du kan också lägga till "svar" som är inställt på "extrahering" och ange antalet svar om du vill ha mer än 1.
+1. Du kan också lägga till **`"answers"`** set till "extraktion" och ange antalet svar om du vill ha mer än 1.
 
 1. Du kan också anpassa markerings formatet som tillämpas på under texter. Under texter används Markera formatering framför nyckel passager i det dokument som sammanfattar svaret. Standardvärdet är `<em>`. Om du vill ange typ av formatering (till exempel gul bakgrund) kan du ange highlightPreTag och highlightPostTag.
 

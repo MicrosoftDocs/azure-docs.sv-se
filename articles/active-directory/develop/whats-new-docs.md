@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225487"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687336"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform-dokument: Nyheter
 
 Välkommen till nyheter i dokumentationen för Microsoft Identity Platform. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna.
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Snabb start: Hämta en åtkomsttoken och anropa Microsoft Graph-API: et från en Electron Desktop-app](quickstart-v2-nodejs-desktop.md)
+- [Självstudie: Logga in användare och anropa Microsoft Graph API i en Electron Desktop-app](tutorial-v2-nodejs-desktop.md)
+- [Snabb start: Hämta en token och anropa Microsoft Graph API från en Node.js-konsolsession som använder appens identitet](quickstart-v2-nodejs-console.md)
+- [Självstudie: anropa Microsoft Graph API i en Node.js-konsol program](tutorial-v2-nodejs-console.md)
+- [Självstudie: inloggnings användare i en Node.js & Express-webbapp](tutorial-v2-nodejs-webapp-msal.md)
+- [Stöd för lösenordsskyddad autentisering med FIDO2-nycklar i appar som du utvecklar](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Vad är nytt för autentisering?](reference-breaking-changes.md)
+- [Använda MSAL.NET för att logga in användare med sociala identiteter](msal-net-aad-b2c-considerations.md)
+- [Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)](sample-v2-code.md)
+- [Videor från Microsofts identitetsplattform](identity-videos.md)
+- [Snabbstart: Konfigurera en klientorganisation](quickstart-create-new-tenant.md)
+- [Snabb start: registrera ett program med Microsoft Identity Platform](quickstart-register-app.md)
+- [Snabb start: Hämta en token och anropa Microsoft Graph API från en Java-konsol med appens identitet](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -66,17 +87,3 @@ Välkommen till nyheter i dokumentationen för Microsoft Identity Platform. Den 
 - [Åtkomsttoken för Microsoft Identity Platform](access-tokens.md)
 - [Ett webb-API som anropar webb-API: er: Hämta en token för appen](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>November 2020
-
-### <a name="new-articles"></a>Nya artiklar
-
-- [Så här använder du utvärderings funktioner för kontinuerlig åtkomst i dina program](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>Uppdaterade artiklar
-
-- [Åtkomsttoken för Microsoft Identity Platform](access-tokens.md)
-- [Konfigurations alternativ för program (MSAL)](msal-client-application-configuration.md)
-- [Gör så här: Ange valfria anspråk för din app](active-directory-optional-claims.md)
-- [Publicera din app i Azure AD App-galleriet](v2-howto-app-gallery-listing.md)
-- [Gör så här: Lägg till app-roller i programmet och ta emot dem i token](howto-add-app-roles-in-azure-ad-apps.md)

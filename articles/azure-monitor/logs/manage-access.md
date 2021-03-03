@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: f16e5363af7de2152a7fa73bb52219d87971a249
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bc03d8cdcaf0079ef15e648d16fd5656d9da368c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091201"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725687"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Hantera åtkomst till loggdata och arbetsytor i Azure Monitor
 
@@ -162,7 +162,7 @@ Medlemmar av *Log Analytics Contributor*-rollen kan:
 
 Rollen Log Analytics Contributor innehåller följande Azure-åtgärder:
 
-| Behörighet | Description |
+| Behörighet | Beskrivning |
 | ---------- | ----------- |
 | `*/read`     | Kan visa alla resurser och resurskonfigurationer. Detta omfattar visning av: <br> Status för tillägg för virtuell dator <br> Konfiguration av Azure Diagnostics för resurser <br> Alla egenskaper och inställningar för alla resurser. <br> För arbets ytor ger den fullständig obegränsad behörighet att läsa inställningen arbets yta och köra fråga på data. Se fler detaljerade alternativ ovan. |
 | `Microsoft.Automation/automationAccounts/*` | Kan skapa och konfigurera Azure Automation-konton, inklusive lägga till och redigera runbookflöden |
@@ -189,7 +189,7 @@ Vi rekommenderar att du utför tilldelningar på resurs nivå (arbets yta) för 
 
 När användarna frågar efter loggar från en arbets yta med resurs kontext åtkomst har de följande behörigheter för resursen:
 
-| Behörighet | Description |
+| Behörighet | Beskrivning |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Exempel:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Möjlighet att visa alla logg data för resursen.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Möjlighet att konfigurera diagnostikinställningar för att tillåta konfiguration av loggar för den här resursen. |
@@ -285,7 +285,7 @@ I exemplen ovan definieras en lista över tabeller som tillåts. I det här exem
 
 ### <a name="custom-logs"></a>Anpassade loggar
 
- Anpassade loggar skapas från data källor som anpassade loggar och API för HTTP-datainsamling. Det enklaste sättet att identifiera logg typen är genom att kontrol lera tabellerna som visas under [anpassade loggar i logg schemat](../log-query/log-analytics-tutorial.md#table-schema).
+ Anpassade loggar skapas från data källor som anpassade loggar och API för HTTP-datainsamling. Det enklaste sättet att identifiera logg typen är genom att kontrol lera tabellerna som visas under [anpassade loggar i logg schemat](./log-analytics-tutorial.md#table-schema).
 
  Du kan inte bevilja åtkomst till enskilda anpassade loggar, men du kan bevilja åtkomst till alla anpassade loggar. Skapa en roll med åtkomst till alla anpassade loggar genom att skapa en anpassad roll med följande åtgärder:
 
@@ -312,4 +312,4 @@ Ibland kommer anpassade loggar från källor som inte är direkt kopplade till e
 
 * Se [Översikt över Log Analytics-agenten](../agents/log-analytics-agent.md) för att samla in data från datorer i ditt data Center eller någon annan moln miljö.
 
-* Se [samla in data om virtuella Azure-datorer](../learn/quick-collect-azurevm.md) för att konfigurera data insamling från virtuella Azure-datorer.
+* Se [samla in data om virtuella Azure-datorer](../vm/quick-collect-azurevm.md) för att konfigurera data insamling från virtuella Azure-datorer.

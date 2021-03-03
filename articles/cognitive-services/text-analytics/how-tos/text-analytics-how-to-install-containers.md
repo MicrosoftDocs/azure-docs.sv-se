@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/10/2021
 ms.author: aahi
 keywords: lokal, Docker, container, sentiment analys, naturlig språk bearbetning
-ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e815ecafe5d00f92a5430fdb71bcf952bc8984c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736720"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installera och kör Textanalys-containrar
 
 > [!NOTE]
-> * Behållaren för Attitydanalys v3 är nu allmänt tillgänglig. Containrarna för extrahering av nyckelfraser och språkidentifiering är tillgängliga som obegränsad offentlig förhandsversion.
+> * Behållaren för Attitydanalys-och språk identifiering är nu allmänt tillgängliga. Extraherings behållaren för nyckel fraser är tillgänglig som en icke-grind offentlig för hands version.
 > * Enhets länkning och NER är för närvarande inte tillgängliga som en behållare.
 > * För att komma åt Textanalys för hälso container krävs ett [formulär för begäran](https://aka.ms/csgate). För närvarande debiteras du inte för dess användning.
 > * Platserna för behållar avbildningar kan ha ändrats nyligen. Läs den här artikeln om du vill se den uppdaterade platsen för den här behållaren.
@@ -42,11 +42,11 @@ Om du vill köra någon av de Textanalys behållarna måste du ha värd datorn o
 
 Du måste uppfylla följande krav innan du använder Textanalys behållare:
 
-|Obligatoriskt|Syfte|
+|Obligatorisk|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.| 
-|Textanalys resurs |För att du ska kunna använda behållaren måste du ha:<br><br>En Azure [textanalys-resurs](../../cognitive-services-apis-create-account.md) för att hämta tillhör ande API-nyckel och slut punkts-URI. Båda värdena är tillgängliga på Azure Portal Textanalys översikt och nycklar sidor och krävs för att starta behållaren.<br><br>**{Api_key}**: en av de två tillgängliga resurs nycklarna på sidan **nycklar**<br><br>**{ENDPOINT_URI}**: slut punkten enligt vad som anges på sidan **Översikt**|
+|Textanalys resurs |För att du ska kunna använda behållaren måste du ha:<br><br>En Azure [textanalys-resurs](../../cognitive-services-apis-create-account.md) med den kostnads fria (F0) eller standard [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Du måste hämta den associerade API-nyckeln och slut punkts-URI: n genom att gå till resursens **nyckel-och slut punkts** sida i Azure Portal. <br><br>**{Api_key}**: en av de två tillgängliga resurs nycklarna. <br><br>**{ENDPOINT_URI}**: slut punkten för din resurs. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -61,7 +61,7 @@ I följande tabell beskrivs de lägsta och rekommenderade specifikationerna för
 |  | Minimala specifikationer för värden | Specifikationer för rekommenderade värden | Minsta TPS | Maximalt TPS|
 |---|---------|-------------|--|--|
 | **Språk identifiering, extrahering av nyckel fraser**   | 1 kärna, 2 GB minne | 1 kärna, 4 GB minne |15 | 30|
-| **Attitydanalys v3**   | 1 kärna, 2 GB minne | 4 kärnor, 8 GB minne |15 | 30|
+| **Attitydanalys**   | 1 kärna, 2 GB minne | 4 kärnor, 8 GB minne |15 | 30|
 | **Textanalys för hälso-1 dokument/begäran**   |  4 kärnor, 10 GB minne | 6 kärnor, 12 GB minne |15 | 30|
 | **Textanalys för hälso tillstånd – 10 dokument/begäran**   |  6 kärnor, 16 GB minne | 8 kärnor, 20 GB minne |15 | 30|
 
@@ -73,7 +73,7 @@ PROCESSOR kärnor och minne motsvarar `--cpus` `--memory` inställningarna och s
 
 Behållar avbildningar för Textanalys finns tillgängliga på Microsoft Container Registry.
 
-# <a name="sentiment-analysis-v3"></a>[Attitydanalys v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Attitydanalys ](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -81,7 +81,7 @@ Behållar avbildningar för Textanalys finns tillgängliga på Microsoft Contain
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Språkidentifiering (för hands version)](#tab/language)
+# <a name="language-detection"></a>[Språkidentifiering](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
@@ -89,7 +89,7 @@ Behållar avbildningar för Textanalys finns tillgängliga på Microsoft Contain
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
-**_
+***
 
 ## <a name="how-to-use-the-container"></a>Använda behållaren
 
@@ -103,11 +103,11 @@ När behållaren är på [värddatorn](#the-host-computer)använder du följande
 Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) för att köra behållarna. Behållaren fortsätter att köras tills du stoppar den.
 
 > [!IMPORTANT]
-> _ Docker-kommandona i följande avsnitt använder omvänt snedstreck, `\` som ett fortsättnings streck. Ersätt eller ta bort detta baserat på värd operativ systemets krav. 
+> * Docker-kommandona i följande avsnitt använder omvänt snedstreck, `\` som ett fortsättnings streck. Ersätt eller ta bort detta baserat på värd operativ systemets krav. 
 > * `Eula`Alternativen, `Billing` och `ApiKey` måste anges för att köra behållaren, annars startar inte behållaren.  Mer information finns i [fakturering](#billing).
-> * Sentiment Analysis v3-behållaren är nu allmänt tillgänglig, vilket returnerar [sentiment-etiketter](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i svaret. Extraheringen av nyckel fraser och språk identifierings behållare använder v2 för API: et och finns som för hands version.
+> * Sentiment-analys och språk identifierings behållare är allmänt tillgängliga. Extraherings behållaren för nyckel fraser använder v2 för API: et och är en för hands version.
 
-# <a name="sentiment-analysis-v3"></a>[Attitydanalys v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Attitydanalys](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -115,7 +115,7 @@ Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[Språkidentifiering (för hands version)](#tab/language)
+# <a name="language-detection"></a>[Språkidentifiering](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
@@ -162,7 +162,7 @@ I den här artikeln har du lärt dig begrepp och arbets flöde för att ladda ne
 * Textanalys tillhandahåller tre Linux-behållare för Docker, som kapslar in olika funktioner:
    * *Attitydanalys*
    * *Extrahering av diskussionsämne (för hands version)* 
-   * *Språkidentifiering (för hands version)*
+   * *Språkidentifiering*
    * *Textanalys för hälsa (för hands version)*
 * Behållar avbildningar hämtas från Microsoft Container Registry (MCR) eller för hands versions lagrings plats.
 * Behållar avbildningar körs i Docker.

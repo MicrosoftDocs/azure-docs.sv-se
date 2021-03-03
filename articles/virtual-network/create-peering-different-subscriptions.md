@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223490"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694962"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Skapa ett virtuellt nätverk peering – Resource Manager, olika prenumerationer och Azure Active Directory klienter
 
@@ -55,7 +55,7 @@ Följande steg använder olika konton för varje prenumeration. Om du använder 
     - **Prenumeration**: Välj prenumeration A.
     - **Resurs grupp**: Välj **Skapa ny** och ange *myResourceGroupA*
     - **Plats**: *östra USA*
-4. I rutan **Sök resurser** överst i portalen skriver du *myVnetA*. Välj **myVnetA** när den visas i Sök resultaten. 
+4. I rutan **Sök resurser** överst i portalen skriver du *myVnetA*. Välj **myVnetA** när den visas i Sök resultaten.
 5. Välj **åtkomst kontroll (IAM)** i den lodräta listan med alternativ på vänster sida.
 6. Under **myVnetA-Access Control (IAM)** väljer du **+ Lägg till roll tilldelning**.
 7. Välj **nätverks deltagare** i rutan **roll** .
@@ -99,7 +99,7 @@ Följande steg använder olika konton för varje prenumeration. Om du använder 
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>Skapa peering – Azure CLI
 
-I den här självstudien används olika konton för varje prenumeration. Om du använder ett konto som har behörigheter till båda prenumerationerna kan du använda samma konto för alla steg, hoppa över stegen för att logga ut från Azure och ta bort de rader med skript som skapar användar roll tilldelningar. Ersätt UserA@azure.com och UserB@azure.com i alla följande skript med de användar namn som du använder för användare a och användare b. 
+I den här självstudien används olika konton för varje prenumeration. Om du använder ett konto som har behörigheter till båda prenumerationerna kan du använda samma konto för alla steg, hoppa över stegen för att logga ut från Azure och ta bort de rader med skript som skapar användar roll tilldelningar. Ersätt UserA@azure.com och UserB@azure.com i alla följande skript med de användar namn som du använder för användare a och användare b.
 
 Följande skript:
 
@@ -165,7 +165,7 @@ I stället för att installera CLI och dess beroenden kan du använda Azure Clou
 
 8. Logga ut användare a från Azure och logga in på Azure som användare b.
 9. Skapa peering från myVnetB till myVnetA. Kopiera skript innehållet i steg 6 till en text redigerare på din dator. Ersätt `<SubscriptionB-Id>` med ID för prenumerationen och ändra alla till B och alla BS till A. När du har gjort ändringarna kopierar du det ändrade skriptet, klistrar in det i CLI-sessionen och trycker på `Enter` .
-10. Visa peering-statusen för myVnetB. Kopiera skript innehållet i steg 7 till en text redigerare på din dator. Ändra A till B för resurs gruppen och virtuella nätverks namn, kopiera skriptet, klistra in det ändrade skriptet i till CLI-sessionen och tryck sedan på `Enter` . Peering-statusen är **ansluten**. Peering-statusen för myVnetA ändras till **ansluten** efter att du har skapat peer-kopplingen från MyVnetB till myVnetA. Du kan logga användare a tillbaka till Azure och slutföra steg 7 igen för att kontrol lera peering-statusen för myVnetA. 
+10. Visa peering-statusen för myVnetB. Kopiera skript innehållet i steg 7 till en text redigerare på din dator. Ändra A till B för resurs gruppen och virtuella nätverks namn, kopiera skriptet, klistra in det ändrade skriptet i till CLI-sessionen och tryck sedan på `Enter` . Peering-statusen är **ansluten**. Peering-statusen för myVnetA ändras till **ansluten** efter att du har skapat peer-kopplingen från MyVnetB till myVnetA. Du kan logga användare a tillbaka till Azure och slutföra steg 7 igen för att kontrol lera peering-statusen för myVnetA.
 
     > [!NOTE]
     > Peer kopplingen upprättas inte förrän peering-statusen är **ansluten** för båda virtuella nätverken.
@@ -181,7 +181,7 @@ Alla Azure-resurser som du skapar i ett virtuellt nätverk kan nu kommunicera me
 
 I den här självstudien används olika konton för varje prenumeration. Om du använder ett konto som har behörigheter till båda prenumerationerna kan du använda samma konto för alla steg, hoppa över stegen för att logga ut från Azure och ta bort de rader med skript som skapar användar roll tilldelningar. Ersätt UserA@azure.com och UserB@azure.com i alla följande skript med de användar namn som du använder för användare a och användare b.
 
-1. Bekräfta att du har Azure PowerShell version 1.0.0 eller senare. Du kan göra detta genom att köra `Get-Module -Name Az` vi rekommenderar att du installerar den senaste versionen av PowerShell [AZ-modulen](/powershell/azure/install-az-ps). Om du inte har använt Azure PowerShell kan du läsa [Översikt över Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+1. Bekräfta att du har Azure PowerShell version 1.0.0 eller senare. Du kan göra detta genom att köra `Get-Module -Name Az` vi rekommenderar att du installerar den senaste versionen av PowerShell [AZ-modulen](/powershell/azure/install-az-ps). Om du inte har använt Azure PowerShell kan du läsa [Översikt över Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Starta en PowerShell-session.
 3. I PowerShell loggar du in på Azure som användare a genom att ange `Connect-AzAccount` kommandot. Det konto som du loggar in med måste ha de behörigheter som krävs för att skapa en virtuell nätverks-peering. En lista över behörigheter finns i [behörigheter för virtuella nätverks-peering](virtual-network-manage-peering.md#permissions).
 4. Skapa en resurs grupp och ett virtuellt nätverk A. Kopiera följande skript till en text redigerare på din dator. Ersätt `<SubscriptionA-Id>` med ID: t för prenumerationen. Om du inte känner till ditt prenumerations-ID anger du `Get-AzSubscription` kommandot för att visa det. Värdet för **ID** i det returnerade resultatet är ditt PRENUMERATIONS-ID. Om du vill köra skriptet kopierar du det ändrade skriptet, klistrar in det i PowerShell och trycker sedan på `Enter` .
@@ -276,7 +276,7 @@ I den här självstudien används olika konton för varje prenumeration. Om du a
    }
    ```
 
-3. Logga in på Azure som användare a och distribuera mallen med hjälp av [portalen](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)eller [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Ange fil namnet som du sparade exempel-JSON-texten i steg 2 till.
+3. Logga in på Azure som användare a och distribuera mallen med hjälp av [portalen](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)eller [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file). Ange fil namnet som du sparade exempel-JSON-texten i steg 2 till.
 4. Kopiera exempel-JSON från steg 2 till en fil på datorn och ändra de rader som börjar med:
    - **namn**: ändra *myVnetA/myVnetAToMyVnetB* till *myVnetB/myVnetBToMyVnetA*.
    - **ID**: Ersätt `<subscription ID>` med användare B prenumerations-ID och ändra *myVnetB* till *myVnetA*.

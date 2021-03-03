@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724276"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage erbjudanden för regelefterlevnad
 
 För att hjälpa organisationer att uppfylla nationella, regionala och branschspecifika krav som reglerar insamling och användning av individers data Microsoft Azure & Azure Storage erbjuda den mest omfattande uppsättningen certifieringar och attesteringar för alla moln tjänst leverantörer.
 
-Du hittar nedanstående krav på efterlevnad på Azure Storage för att säkerställa att tjänsten regleras i använda Azure Storage-tjänsten. De är tillämpliga för följande Azure Storage erbjudanden: blobbar, filer, köer, tabeller, diskar, låg frekvent lagring och Premium Storage.
+Du hittar nedanstående krav på efterlevnad på Azure Storage för att säkerställa att tjänsten regleras i använda Azure Storage-tjänsten. De är tillämpliga för följande Azure Storage erbjudanden: blobbar (ADLS Gen2), filer, köer, tabeller, diskar, låg frekvent lagring och Premium Storage.
 
 ## <a name="global"></a>Global
 

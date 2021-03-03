@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/22/2021
+ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729716"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -29,6 +29,37 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 >
 > Du kan också delta! Delta i [Azure Sentinel Threat Hunters GitHub-communityn](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="february-2021"></a>Februari 2021
+
+- [UEBA insikter på sidan entitet](#ueba-insights-in-the-entity-page)
+- [Förbättrad incident sökning](#improved-incident-search)
+
+### <a name="ueba-insights-in-the-entity-page"></a>UEBA insikter på sidan entitet
+
+Informations sidorna för Azure Sentinel-entiteten innehåller ett [insikts fönster](identify-threats-with-entity-behavior-analytics.md#entity-insights)som visar insikter om entiteten och hjälper till att snabbt identifiera avvikelser och säkerhetshot.
+
+Om du har [aktiverat UEBA](ueba-enrichments.md)och har valt en tidsram på minst fyra dagar, kommer nu fönstret insikter även att innehålla följande nya avsnitt för UEBA Insights:
+
+|Avsnitt  |Beskrivning  |
+|---------|---------|
+|**UEBA Insights**     | Sammanfattar avvikande användar aktiviteter: <br>– Över geografiska platser, enheter och miljöer<br>– Över tid-och frekvens horisonter jämfört med användarens egna historik <br>– Jämfört med peer-beteende <br>– Jämfört med organisationens beteende     |
+|**Användar-peer-datorer baserade på säkerhets grupp medlemskap**     |   Visar en lista över användarens peer-datorer baserat på medlemskap i Azure AD-säkerhetsgrupper, som tillhandahåller säkerhets arbets grupper med en lista över andra användare som delar liknande behörigheter.  |
+|**Användar behörighet till Azure-prenumeration**     |     Visar användarens åtkomst behörigheter till de Azure-prenumerationer som är tillgängliga direkt, eller via Azure AD-grupper/tjänstens huvud namn.   |
+|**Hot indikatorer relaterade till användaren**     |  Visar en samling kända hot som rör IP-adresser som representeras i användarens aktiviteter. Hot visas efter hot typen och familjen och berikas av Microsofts tjänst för hot information.       |
+|     |         |
+
+### <a name="improved-incident-search"></a>Förbättrad incident sökning
+
+Vi har förbättrat Sök upplevelsen av Azure Sentinel-incidenter, så att du kan navigera snabbare genom incidenter när du undersöker ett speciellt hot.
+
+När du söker efter incidenter i Azure Sentinel kan du nu söka efter följande incident information:
+
+- ID
+- Rubrik
+- Produkt
+- Ägare
+- Tagg
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -47,7 +78,7 @@ Guiden regel för schemalagd analys i Azure Sentinel innehåller nu följande f�
 
 -   Ett expanderbart redigerings fönster som ger dig mer skärm utrymme för att visa din fråga.
 -   Ord markering för ord i din frågeparameter.
--   Utökat stöd för automatisk komplettering.
+-   Utökad stöd för automatisk komplettering.
 -   Valideringar av frågor i real tid. Fel i frågan visas nu som ett rött block i rullnings listen och som en röd prick på fliken **Ange regelns logiska** namn. Dessutom går det inte att spara en fråga med fel.
 
 Mer information finns i [Självstudier: identifiera hot direkt från rutan](tutorial-detect-threats-built-in.md).
@@ -57,7 +88,7 @@ Azure Sentinel stöder nu den nya [AZ. SecurityInsights](https://www.powershellg
 
 Modulen **AZ. SecurityInsights** har stöd för vanliga scenarier för Azure Sentinel-användning, som att interagera med incidenter för att ändra Statues, allvarlighets grad, ägare och så vidare, lägga till kommentarer och etiketter till incidenter och skapa bok märken.
 
-Även om vi rekommenderar att du använder [Azure Resource Manager-mallar (arm)](/azure/azure-resource-manager/templates/) för din CI/CD-pipeline, är modulen **AZ. SecurityInsights** användbar för åtgärder efter distributionen och är avsedd för SOC Automation.  Till exempel kan SOC Automation innehålla steg för att konfigurera data kopplingar, skapa analys regler eller lägga till automatiserings åtgärder i analys regler.
+Även om vi rekommenderar att du använder [Azure Resource Manager-mallar (arm)](../azure-resource-manager/templates/index.yml) för din CI/CD-pipeline, är modulen **AZ. SecurityInsights** användbar för åtgärder efter distributionen och är avsedd för SOC Automation.  Till exempel kan SOC Automation innehålla steg för att konfigurera data kopplingar, skapa analys regler eller lägga till automatiserings åtgärder i analys regler.
 
 Mer information, inklusive en fullständig lista och beskrivning av tillgängliga cmdlets, parameter beskrivningar och exempel finns i PowerShell-dokumentationen för [AZ. SecurityInsights](/powershell/module/az.securityinsights/).
 
@@ -85,7 +116,7 @@ Azure Sentinel stöder nu dedikerade Log Analytics kluster som ett distributions
 
 Med dedikerade kluster kan du använda funktioner som Kundhanterade nycklar, säker databas, dubbel kryptering och snabbare frågor över flera arbets ytor när du har flera arbets ytor i samma kluster.
 
-Mer information finns i [Azure Monitor loggar dedicerade kluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters).
+Mer information finns i [Azure Monitor loggar dedicerade kluster](../azure-monitor/logs/logs-dedicated-clusters.md).
 
 ### <a name="logic-apps-managed-identities"></a>Hanterade identiteter för Logic Apps
 
@@ -97,7 +128,7 @@ Azure Sentinel stöder nu hanterade identiteter för Azure Sentinel Logic Apps-a
 
 Mer information finns i:
 
-- [Autentisering med hanterad identitet i Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+- [Autentisering med hanterad identitet i Azure Logic Apps](../logic-apps/create-managed-service-identity.md)
 - [Dokumentation om Azure Sentinel Logic Apps Connector](/connectors/azuresentinel) 
 
 ### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>Förbättrad regel justering med analys regel för hands versions diagram (offentlig för hands version)
@@ -151,18 +182,18 @@ Azure Sentinel använder Log Analytics agent för att skicka händelser till din
 > Den Log Analytics agenten kallas ibland OMS-agenten eller Microsoft Monitoring Agent (MMA). 
 > 
 
-Mer information finns i Log Analytics- [dokumentationen](/azure/azure-monitor/platform/log-analytics-agent) och viktig information om [Log Analytics agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
+Mer information finns i Log Analytics- [dokumentationen](../azure-monitor/agents/log-analytics-agent.md) och viktig information om [Log Analytics agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>November 2020
 
 - [Övervaka din Logic Apps spel böcker i Azure Sentinel](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
 - [Microsoft 365 Defender-koppling (offentlig för hands version)](#microsoft-365-defender-connector-public-preview)
 ### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Övervaka din Logic Apps spel böcker i Azure Sentinel
 
-Azure Sentinel integreras nu med [Azure log Apps](/azure/logic-apps/), en moln tjänst som hjälper dig att schemalägga, automatisera och dirigera uppgifter, affärs processer och arbets flöden.
+Azure Sentinel integreras nu med [Azure log Apps](../logic-apps/index.yml), en moln tjänst som hjälper dig att schemalägga, automatisera och dirigera uppgifter, affärs processer och arbets flöden.
 
 Använd en Azure Logic-app i Azure Sentinel som en Spelbok, som kan anropas automatiskt när en incident skapas, eller när sorterar och arbetar med incidenter. 
 
-För att ge insikter om hälso tillståndet, prestandan och användningen av din spel böcker, inklusive de som du lägger till med Azure Logic Apps, har vi lagt till en [Azure-arbetsbok](/azure/azure-monitor/platform/workbooks-overview) med namnet **spel böcker Health Monitoring**. 
+För att ge insikter om hälso tillståndet, prestandan och användningen av din spel böcker, inklusive de som du lägger till med Azure Logic Apps, har vi lagt till en [Azure-arbetsbok](../azure-monitor/visualize/workbooks-overview.md) med namnet **spel böcker Health Monitoring**. 
 
 Använd arbets boken **spel böcker Health Monitoring** för att övervaka hälso tillståndet för din spel böcker eller leta efter avvikelser i mängden lyckade eller misslyckade körningar. 
 
@@ -172,9 +203,9 @@ Arbets boken **spel böcker Health Monitoring** är nu tillgänglig i galleriet 
 
 Mer information finns i:
 
-- [Logic Apps dokumentation](/azure/logic-apps/monitor-logic-apps-log-analytics#set-up-azure-monitor-logs)
+- [Logic Apps dokumentation](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
 
-- [Dokumentation för Azure Monitor](/azure/azure-monitor/platform/activity-log#send-to-log-analytics-workspace)
+- [Dokumentation för Azure Monitor](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
 
 ### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender-koppling (offentlig för hands version)
  

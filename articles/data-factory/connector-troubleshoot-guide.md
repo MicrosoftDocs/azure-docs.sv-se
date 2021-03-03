@@ -1,5 +1,5 @@
 ---
-title: Felsöka Azure Data Factory anslutningar
+title: Felsöka Azure Data Factory-anslutningsprogram
 description: Lär dig hur du felsöker anslutnings problem i Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63a690ffaaefc506de296d43e7de13020fbd584a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727829"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory anslutningar
+# <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory-anslutningsprogram
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -28,7 +28,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: ett problem med Blob Storage åtgärden.
 
-- **Rekommendation**: information om felet finns i [Blob Storage fel koder](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes). Kontakta Blob Storage-teamet om du behöver ytterligare hjälp.
+- **Rekommendation**: information om felet finns i [Blob Storage fel koder](/rest/api/storageservices/blob-service-error-codes). Kontakta Blob Storage-teamet om du behöver ytterligare hjälp.
 
 
 ### <a name="invalid-property-during-copy-activity"></a>Ogiltig egenskap vid kopierings aktivitet
@@ -164,7 +164,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
   | Orsaka analys                                               | Rekommendation                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | Om Azure Data Lake Storage Gen2 genererar fel som indikerar att en åtgärd misslyckades.| Kontrol lera det detaljerade fel meddelandet som har utlösts av Azure Data Lake Storage Gen2. Försök igen om felet är ett tillfälligt fel. Kontakta Azure Storage support för ytterligare hjälp och ange ID för begäran i fel meddelande. |
-  | Om fel meddelandet innehåller strängen "förbjuden" kanske tjänstens huvud namn eller hanterade identitet som du använder inte har tillräcklig behörighet för att komma åt Azure Data Lake Storage Gen2. | Information om hur du felsöker det här felet finns [i kopiera och transformera data i Azure Data Lake Storage Gen2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication). |
+  | Om fel meddelandet innehåller strängen "förbjuden" kanske tjänstens huvud namn eller hanterade identitet som du använder inte har tillräcklig behörighet för att komma åt Azure Data Lake Storage Gen2. | Information om hur du felsöker det här felet finns [i kopiera och transformera data i Azure Data Lake Storage Gen2 med hjälp av Azure Data Factory](./connector-azure-data-lake-storage.md#service-principal-authentication). |
   | Om fel meddelandet innehåller strängen "InternalServerError" returneras felet av Azure Data Lake Storage Gen2. | Felet kan ha orsakats av ett tillfälligt fel. Om den är det kan du försöka att utföra åtgärden igen. Kontakta Azure Storage-supporten och ange ID: t för begäran från fel meddelandet om problemet kvarstår. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Begäran om att Azure Data Lake Storage Gen2 kontot orsakade ett tids gräns fel
@@ -204,7 +204,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: ett problem med Azure Files lagrings åtgärden.
 
-- **Rekommendation**: information om felet finns i hjälpen för [Azure Files](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes). Kontakta Azure Files-teamet om du behöver ytterligare hjälp.
+- **Rekommendation**: information om felet finns i hjälpen för [Azure Files](/rest/api/storageservices/file-service-error-codes). Kontakta Azure Files-teamet om du behöver ytterligare hjälp.
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics, Azure SQL Database och SQL Server
@@ -216,12 +216,12 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
     | Orsaka analys                                               | Rekommendation                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | För Azure SQL, om fel meddelandet innehåller strängen "SqlErrorNumber = 47073", innebär det att offentlig nätverks åtkomst nekas i anslutnings inställningen. | I Azure SQL-brandväggen anger du alternativet **neka offentligt nätverks åtkomst** till *Nej*. Mer information finns i [Inställningar för Azure SQL-anslutning](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
-    | Om fel meddelandet innehåller en SQL-felkod som "SqlErrorNumber = [ErrorCode]" i Azure SQL kan du läsa mer i fel söknings guiden för Azure SQL. | En rekommendation finns i [Felsöka anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
-    | Kontrol lera om port 1433 finns i listan över tillåtna brand Väggs listor. | Mer information finns i [portar som används av SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
-    | Om fel meddelandet innehåller strängen "SqlException" SQL Database felet indikerar att en viss åtgärd misslyckades. | Om du vill ha mer information kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
-    | Om detta är ett tillfälligt problem (till exempel en instabil nätverks anslutning) lägger du till försök igen i aktivitets principen för att minimera. | Mer information finns i [pipelines och aktiviteter i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
-    | Om fel meddelandet innehåller strängen "client med IP-adress"... " är inte tillåten för att komma åt servern och du försöker ansluta till Azure SQL Database, felet orsakas vanligt vis av ett problem med Azure SQL Database brand väggen. | I Azure SQL Server Firewall-konfigurationen aktiverar du alternativet **Tillåt Azure-tjänster och-resurser för att komma åt den här servern** . Mer information finns i [Azure SQL Database och Azure SYNAPSE IP Firewall Rules](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    | För Azure SQL, om fel meddelandet innehåller strängen "SqlErrorNumber = 47073", innebär det att offentlig nätverks åtkomst nekas i anslutnings inställningen. | I Azure SQL-brandväggen anger du alternativet **neka offentligt nätverks åtkomst** till *Nej*. Mer information finns i [Inställningar för Azure SQL-anslutning](../azure-sql/database/connectivity-settings.md#deny-public-network-access). |
+    | Om fel meddelandet innehåller en SQL-felkod som "SqlErrorNumber = [ErrorCode]" i Azure SQL kan du läsa mer i fel söknings guiden för Azure SQL. | En rekommendation finns i [Felsöka anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans](../azure-sql/database/troubleshoot-common-errors-issues.md). |
+    | Kontrol lera om port 1433 finns i listan över tillåtna brand Väggs listor. | Mer information finns i [portar som används av SQL Server](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Om fel meddelandet innehåller strängen "SqlException" SQL Database felet indikerar att en viss åtgärd misslyckades. | Om du vill ha mer information kan du söka i SQL-felkoden i [databas motor fel](/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
+    | Om detta är ett tillfälligt problem (till exempel en instabil nätverks anslutning) lägger du till försök igen i aktivitets principen för att minimera. | Mer information finns i [pipelines och aktiviteter i Azure Data Factory](./concepts-pipelines-activities.md#activity-policy). |
+    | Om fel meddelandet innehåller strängen "client med IP-adress"... " är inte tillåten för att komma åt servern och du försöker ansluta till Azure SQL Database, felet orsakas vanligt vis av ett problem med Azure SQL Database brand väggen. | I Azure SQL Server Firewall-konfigurationen aktiverar du alternativet **Tillåt Azure-tjänster och-resurser för att komma åt den här servern** . Mer information finns i [Azure SQL Database och Azure SYNAPSE IP Firewall Rules](../azure-sql/database/firewall-configure.md). |
     
 ### <a name="error-code-sqloperationfailed"></a>Felkod: SqlOperationFailed
 
@@ -231,9 +231,9 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
     | Orsaka analys                                               | Rekommendation                                               |
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
-    | Om fel meddelandet innehåller strängen "SqlException", genererar SQL Database ett fel som indikerar att en viss åtgärd misslyckades. | Om SQL-felet inte är klart försöker du ändra databasen till den senaste kompatibilitetsnivån "150". Den kan resultera i den senaste versionen av SQL-fel. Mer information finns i [dokumentationen](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Om du vill ha mer information om fel sökning av SQL-problem kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
+    | Om fel meddelandet innehåller strängen "SqlException", genererar SQL Database ett fel som indikerar att en viss åtgärd misslyckades. | Om SQL-felet inte är klart försöker du ändra databasen till den senaste kompatibilitetsnivån "150". Den kan resultera i den senaste versionen av SQL-fel. Mer information finns i [dokumentationen](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Om du vill ha mer information om fel sökning av SQL-problem kan du söka i SQL-felkoden i [databas motor fel](/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
     | Om fel meddelandet innehåller strängen "PdwManagedToNativeInteropException", orsakas det vanligt vis av ett matchnings fel mellan kolumn storlekarna källa och mottagare. | Kontrol lera storleken på kolumnerna källa och mottagare. Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
-    | Om fel meddelandet innehåller strängen "InvalidOperationException", orsakas det vanligt vis av ogiltiga indata. | För att identifiera vilken rad som har påträffat problemet aktiverar du fel tolerans funktionen på kopierings aktiviteten, som kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance). |
+    | Om fel meddelandet innehåller strängen "InvalidOperationException", orsakas det vanligt vis av ogiltiga indata. | För att identifiera vilken rad som har påträffat problemet aktiverar du fel tolerans funktionen på kopierings aktiviteten, som kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](./copy-activity-fault-tolerance.md). |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>Felkod: SqlUnauthorizedAccess
@@ -331,7 +331,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: SQL Mass kopiering misslyckades eftersom den fick en ogiltig kolumn längd från BCP-klienten (Mass kopierings program).
 
-- **Rekommendation**: Aktivera fel tolerans funktionen på kopierings aktiviteten för att identifiera vilken rad som har påträffat problemet. Detta kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
+- **Rekommendation**: Aktivera fel tolerans funktionen på kopierings aktiviteten för att identifiera vilken rad som har påträffat problemet. Detta kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](./copy-activity-fault-tolerance.md).
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>Felkod: SqlConnectionIsClosed
@@ -470,7 +470,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Meddelande**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Orsak**: om fel meddelandet innehåller STRÄNGEN "SQLSTATE = 51002 SQLCODE =-805" följer du "Tip" i [Kopiera data från DB2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
+- **Orsak**: om fel meddelandet innehåller STRÄNGEN "SQLSTATE = 51002 SQLCODE =-805" följer du "Tip" i [Kopiera data från DB2 med hjälp av Azure Data Factory](./connector-db2.md#linked-service-properties).
 
 - **Rekommendation**: försök att ange "NULLID" i `packageCollection`  egenskapen.
 
@@ -647,7 +647,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: Parquet-formatet stöds inte i Azure Data Factory.
 
-- **Rekommendation**: dubbelt kontrol lera källdata genom att gå till [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Rekommendation**: dubbelt kontrol lera källdata genom att gå till [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Felkod: ParquetMissedDecimalPrecisionScale
@@ -683,7 +683,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: data kan inte konverteras till den typ som anges i mappningar. källa.
 
-- **Rekommendation**: dubbelklicka på källdata eller ange rätt datatyp för den här kolumnen i kolumn mappningen kopiera aktivitet. Mer information finns i [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
+- **Rekommendation**: dubbelklicka på källdata eller ange rätt datatyp för den här kolumnen i kolumn mappningen kopiera aktivitet. Mer information finns i [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](./supported-file-formats-and-compression-codecs.md).
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Felkod: ParquetDataCountNotMatchColumnCount
@@ -831,7 +831,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
     Om innehållet i den privata nyckeln kommer från ditt nyckel valv, kan den ursprungliga nyckel filen fungera om du laddar upp den direkt till den länkade SFTP-tjänsten.
 
-    Mer information finns i [Kopiera data från och till SFTP-servern med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication). Innehållet i den privata nyckeln är Base64-kodat innehåll för den privata SSH-nyckeln.
+    Mer information finns i [Kopiera data från och till SFTP-servern med hjälp av Azure Data Factory](./connector-sftp.md#using-ssh-public-key-authentication). Innehållet i den privata nyckeln är Base64-kodat innehåll för den privata SSH-nyckeln.
 
     Koda *hela* den ursprungliga privata nyckel filen med base64-kodning och lagra den kodade strängen i nyckel valvet. Den ursprungliga privata nyckel filen är den som kan arbeta med den länkade SFTP-tjänsten om du väljer **Ladda upp** från filen.
 
@@ -902,7 +902,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
     Om du vill befordra det låga data flödet kontaktar du din SFTP-administratör för att öka antalet samtidiga anslutningar, eller så kan du göra något av följande:
 
     * Om du använder IR med egen värd lägger du till IP-adressen för den egna IR-datorn i listan över tillåtna.
-    * Om du använder Azure IR lägger du till [Azure integration runtime IP-adresser](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses). Om du inte vill lägga till ett intervall med IP-adresser i listan över tillåtna IP-adresser använder du IR i stället.
+    * Om du använder Azure IR lägger du till [Azure integration runtime IP-adresser](./azure-integration-runtime-ip-addresses.md). Om du inte vill lägga till ett intervall med IP-adresser i listan över tillåtna IP-adresser använder du IR i stället.
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-lista
 
@@ -961,7 +961,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Orsak**: den egna VÄRDbaserade IR-filen kan inte hitta Java Runtime. Java Runtime krävs för att läsa vissa källor.
 
-- **Rekommendation**: kontrol lera din integration runtime-miljö, se [Använd integration runtime med egen värd](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime).
+- **Rekommendation**: kontrol lera din integration runtime-miljö, se [Använd integration runtime med egen värd](./format-parquet.md#using-self-hosted-integration-runtime).
 
 
 ### <a name="error-code-wildcardpathsinknotsupported"></a>Felkod: WildcardPathSinkNotSupported

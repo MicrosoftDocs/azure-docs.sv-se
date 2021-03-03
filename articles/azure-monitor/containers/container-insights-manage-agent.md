@@ -1,28 +1,28 @@
 ---
-title: Så här hanterar du Azure Monitor för behållare agent | Microsoft Docs
-description: Den här artikeln beskriver hur du hanterar de vanligaste underhålls aktiviteterna med den container Log Analytics-agent som används av Azure Monitor för behållare.
+title: Hantera container Insights-agenten | Microsoft Docs
+description: Den här artikeln beskriver hur du hanterar de vanligaste underhålls aktiviteterna med den container Log Analytics-agent som används av behållar insikter.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625277"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713804"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Så här hanterar du Azure Monitor för behållare agent
+# <a name="how-to-manage-the-container-insights-agent"></a>Hantera container Insights-agenten
 
-Azure Monitor för behållare använder en behållar version av Log Analytics agent för Linux. Efter den första distributionen finns det rutiner eller valfria uppgifter som du kan behöva utföra under dess livs cykel. Den här artikeln beskriver hur du uppgraderar agenten manuellt och inaktiverar samlingen av miljövariabler från en viss behållare. 
+Container Insights använder en behållar version av Log Analytics agent för Linux. Efter den första distributionen finns det rutiner eller valfria uppgifter som du kan behöva utföra under dess livs cykel. Den här artikeln beskriver hur du uppgraderar agenten manuellt och inaktiverar samlingen av miljövariabler från en viss behållare. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Så här uppgraderar du Azure Monitor för behållare agent
+## <a name="how-to-upgrade-the-container-insights-agent"></a>Uppgradera container Insights-agenten
 
-Azure Monitor för behållare använder en behållar version av Log Analytics agent för Linux. När en ny version av agenten släpps uppgraderas agenten automatiskt på de hanterade Kubernetes-kluster som finns i Azure Kubernetes service (AKS) och Azure Red Hat OpenShift version 3. x. För ett [hybrid Kubernetes-kluster](container-insights-hybrid-setup.md) och Azure Red Hat OpenShift version 4. x hanteras inte agenten och du måste uppgradera agenten manuellt.
+Container Insights använder en behållar version av Log Analytics agent för Linux. När en ny version av agenten släpps uppgraderas agenten automatiskt på de hanterade Kubernetes-kluster som finns i Azure Kubernetes service (AKS) och Azure Red Hat OpenShift version 3. x. För ett [hybrid Kubernetes-kluster](container-insights-hybrid-setup.md) och Azure Red Hat OpenShift version 4. x hanteras inte agenten och du måste uppgradera agenten manuellt.
 
 Om agent uppgraderingen Miss lyckas för ett kluster som finns på AKS eller Azure Red Hat OpenShift version 3. x, beskriver den här artikeln även processen för att uppgradera agenten manuellt. Information om hur du följer de versioner som lanseras finns i [agent release-meddelanden](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
 ### <a name="upgrade-agent-on-aks-cluster"></a>Uppgradera agenten på AKS-kluster
 
-Processen för att uppgradera agenten på AKS-kluster består av två enkla steg. Det första steget är att inaktivera övervakning med Azure Monitor för behållare med hjälp av Azure CLI. Följ stegen som beskrivs i artikeln [inaktivera övervakning](container-insights-optout.md?#azure-cli) . Med Azure CLI kan vi ta bort agenten från noderna i klustret utan att påverka lösningen och motsvarande data som lagras i arbets ytan. 
+Processen för att uppgradera agenten på AKS-kluster består av två enkla steg. Det första steget är att inaktivera övervakning med behållar insikter med hjälp av Azure CLI. Följ stegen som beskrivs i artikeln [inaktivera övervakning](container-insights-optout.md?#azure-cli) . Med Azure CLI kan vi ta bort agenten från noderna i klustret utan att påverka lösningen och motsvarande data som lagras i arbets ytan. 
 
 >[!NOTE]
 >När du utför den här underhålls aktiviteten vidarebefordrar inte noderna i klustret insamlade data, och prestanda vyer visar inte data mellan den tidpunkt då du tar bort agenten och installerar den nya versionen. 
@@ -97,7 +97,7 @@ Information om hur du använder ett huvud namn för tjänsten med det här komma
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Så här inaktiverar du miljö variabel samling på en behållare
 
-Azure Monitor för behållare samlar in miljövariabler från behållare som körs i en POD och visar dem i egenskaps rutan för den valda behållaren i vyn **behållare** . Du kan styra det här beteendet genom att inaktivera samling för en speciell behållare antingen under distributionen av Kubernetes-klustret, eller genom att ange miljövariabeln *AZMON_COLLECT_ENV*. Den här funktionen är tillgänglig från agent versionen – ciprod11292018 och högre.  
+Container Insights samlar in miljövariabler från behållarna som körs i en POD och visar dem i egenskaps rutan för den valda behållaren i vyn **behållare** . Du kan styra det här beteendet genom att inaktivera samling för en speciell behållare antingen under distributionen av Kubernetes-klustret, eller genom att ange miljövariabeln *AZMON_COLLECT_ENV*. Den här funktionen är tillgänglig från agent versionen – ciprod11292018 och högre.  
 
 Om du vill inaktivera insamling av miljövariabler på en ny eller befintlig behållare ställer du in variabeln **AZMON_COLLECT_ENV** med värdet **false** i yaml-konfigurationsfilen för Kubernetes-distributionen. 
 
@@ -114,7 +114,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 Detta öppnar standard text redigeraren. När du har angett variabeln sparar du filen i redigeraren.
 
-Kontrol lera att konfigurations ändringen har påverkats genom att välja en behållare i vyn **behållare** i Azure Monitor för behållare och expandera **miljövariabler** i egenskaps panelen.  Avsnittet ska endast visa variabeln som skapades tidigare- **AZMON_COLLECT_ENV = false**. För alla andra behållare ska avsnittet miljövariabler lista alla miljövariabler som identifierats.
+Kontrol lera att konfigurations ändringen har genomförts genom att välja en behållare i **behållare** -vyn i behållar insikter och expandera **miljövariabler** i egenskaps panelen.  Avsnittet ska endast visa variabeln som skapades tidigare- **AZMON_COLLECT_ENV = false**. För alla andra behållare ska avsnittet miljövariabler lista alla miljövariabler som identifierats.
 
 Om du vill återaktivera identifieringen av miljövariablerna använder du samma process tidigare och ändrar värdet från **falskt** till **Sant** och kör sedan `kubectl` kommandot för att uppdatera behållaren.  
 

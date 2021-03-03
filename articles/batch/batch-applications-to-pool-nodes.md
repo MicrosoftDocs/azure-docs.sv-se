@@ -2,13 +2,13 @@
 title: Kopiera program och data till pool-noder
 description: Lär dig hur du kopierar program och data till pool-noder.
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: a5933a1c52e2848b6b414f1750bb24515fb9f28a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378510"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703655"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Kopiera program och data till pool-noder
 
@@ -33,10 +33,6 @@ Om alla jobb som körs i poolen kör ett program (. exe) som först måste insta
 Överväg att använda [programpaket](batch-application-packages.md)för program eller data som måste installeras på varje nod i poolen. Det finns inget installations kommando som är associerat med ett programpaket, men du kan använda en start uppgift för att köra ett installations kommando. Om programmet inte kräver installation eller består av ett stort antal filer, kan du använda den här metoden.
 
 Programpaket är användbara när du har ett stort antal filer, eftersom de kan kombinera flera fil referenser till en liten nytto Last. Om du försöker att inkludera fler än 100 separata resursfiler i en aktivitet kan batch-tjänsten komma fram till interna system begränsningar för en enskild uppgift. Programpaket är också användbara när du har många olika versioner av samma program och behöver välja mellan dem.
-
-## <a name="extensions"></a>Tillägg
-
-[Tillägg](create-pool-extensions.md) är små program som underlättar etablering av konfiguration och konfiguration av batch-datornoder. När du skapar en pool kan du välja ett tillägg som stöds som ska installeras på Compute-noderna när de är etablerade. Därefter kan tillägget utföra den avsedda åtgärden.
 
 ## <a name="job-preparation-task-resource-files"></a>Resurs fil för jobb förberedelse aktivitet
 

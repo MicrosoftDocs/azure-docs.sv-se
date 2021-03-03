@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713600"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -40,9 +40,11 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 - Om data export regeln innehåller en tabell som inte stöds kommer åtgärden att lyckas, men inga data exporteras för tabellen förrän tabellen har stöd för. 
 - Om data export regeln innehåller en tabell som inte finns kommer den att Miss ändå med felet ```Table <tableName> does not exist in the workspace``` .
 - Din Log Analytics arbets yta kan finnas i vilken region som helst, förutom följande:
-  - Schweiz, norra
-  - Schweiz, västra
   - Azure Government-regioner
+  - Japan, västra
+  - Södra Brasilien, östra
+  - Östra Norge
+  - Förenade Arabemiraten, norra
 - Du kan skapa två export regler i en arbets yta – i kan vara en regel till händelsehubben och en regel för lagrings kontot.
 - Mål lagrings kontot eller händelsehubben måste finnas i samma region som Log Analytics-arbetsytan.
 - Namn på tabeller som ska exporteras får inte vara längre än 60 tecken för ett lagrings konto och högst 47 tecken till en Event Hub. Tabeller med längre namn exporteras inte.
@@ -72,6 +74,9 @@ Log Analytics data export kan skriva till att lägga till blobar till oförände
 
 ### <a name="event-hub"></a>Händelsehubb
 Data skickas till händelsehubben i nära real tid när den når Azure Monitor. En Event Hub skapas för varje datatyp som du exporterar med namnet *am –* följt av namnet på tabellen. Tabellen *SecurityEvent* skulle till exempel skickas till en Event Hub med namnet ' *am-SecurityEvent*'. Om du vill att exporterade data ska uppnå en viss händelsehubben, eller om du har en tabell med ett namn som överskrider tecken gränsen på 47, kan du ange ett eget namn på händelsehubben och exportera alla data för definierade tabeller till den.
+
+> [!IMPORTANT]
+> [Antalet Event Hub som stöds per namnrymd är 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). Om du exporterar fler än 10 tabeller anger du ett eget namn på händelsehubben för att exportera alla tabeller till den händelsehubben. 
 
 Överväganden:
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.

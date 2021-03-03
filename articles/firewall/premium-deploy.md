@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: ec8fc4473669b0c056d0b22ff44e5818b87ba3fa
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: fa106fac683619706f4be330ad1c4bff7b56f2dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549891"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721794"
 ---
 # <a name="deploy-and-configure-azure-firewall-premium-preview"></a>Distribuera och konfigurera Azure Firewall Premium Preview
 
@@ -34,7 +34,7 @@ Du använder en mall för att distribuera en test miljö som har ett centralt VN
 - ett Azure skydds-undernät (10.0.20.0/24)
 - ett brand Väggs undernät (10.0.100.0/24)
 
-Ett enda centralt VNet används i den här test miljön för enkelhetens skull. I produktions syfte är en [nav-och eker-topologi](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) med peer-virtuella nätverk vanligare.
+Ett enda centralt VNet används i den här test miljön för enkelhetens skull. I produktions syfte är en [nav-och eker-topologi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) med peer-virtuella nätverk vanligare.
 
 :::image type="content" source="media/premium-deploy/premium-topology.png" alt-text="Central VNet-topologi":::
 

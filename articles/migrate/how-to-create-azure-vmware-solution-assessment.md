@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: e386db1ee2042d75a31d4a9de2a5174e904c6b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732980"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Skapa en Azure VMware-lösning (AVS)-utvärdering
 
@@ -37,7 +37,7 @@ Det finns två typer av utvärderingar som du kan skapa med hjälp av Azure Migr
 **Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware Solution (AVS) med hjälp av den här utvärderingstypen.[Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
-> Azure VMware Solution (AVS)-utvärdering är för närvarande en för hands version och kan bara skapas för virtuella VMware-datorer.
+> Azure VMware Solution (AVS)-utvärdering kan bara skapas för virtuella VMware-datorer.
 
 
 Det finns två typer av storleks kriterier som du kan använda för att skapa Azure VMware-lösning (AVS)-utvärderingar:
@@ -50,37 +50,70 @@ Det finns två typer av storleks kriterier som du kan använda för att skapa Az
 
 ## <a name="run-an-azure-vmware-solution-avs-assessment"></a>Köra en Azure VMware-lösning (AVS)-utvärdering
 
-Kör en Azure VMware-lösning (AVS)-utvärdering enligt följande:
+1. På sidan **servrar** > **Windows-och Linux-servrar** klickar du på **utvärdera och migrera servrar**.
 
-1. Granska [metodtipsen](best-practices-assessment.md) för att skapa utvärderingar.
+   ![Knappen utvärdera och migrera servrar](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. Klicka på **utvärdera** i panelen **Azure Migrate: Server bedömning** på fliken **servrar** .
+1. Klicka på **utvärdera** i **Azure Migrate: Server bedömning**.
 
-    ![Skärm bild som visar Azure Migrate servrar med utvärdering valt under utvärderings verktyg.](./media/how-to-create-assessment/assess.png)
+1. I   >  **utvärderings typ av utvärderings** servrar väljer du **Azure VMware-lösning (AVS)**.
 
-3. I **utvärdera servrar** väljer du bedömnings typ som "Azure VMware-lösning (AVS)" och väljer identifierings källa.
+1. I **identifierings källa**:
 
-    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Grundläggande om tillägg av utvärdering":::
+    - Om du har identifierat datorer som använder-enheten väljer du **datorer som identifierats från Azure Migrate**-installationen.
+    - Om du har identifierat datorer som använder en importerad CSV-fil väljer du **importerade datorer**. 
+    
+1. Klicka på **Redigera** för att granska utvärderings egenskaperna.
 
-4. Klicka på **Redigera** för att granska utvärderings egenskaperna.
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Sida där du väljer bedömnings inställningar":::
+ 
 
-    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Plats för redigerings knappen för att granska utvärderings egenskaper":::
+1. I **Egenskaper för kontroll**  >  **mål**:
+
+    - Ange den Azure-region som du vill migrera till på **mål platsen**.
+       - Storleks-och kostnads rekommendationer baseras på den plats som du anger.
+   - **Lagrings typen** är standard för **virtuellt San**. Detta är standard lagrings typen för ett privat AVS-moln.
+   - **Reserverade instanser** stöds för närvarande inte för AVS-noder.
+1. I **VM-storlek**:
+    - **Nodtypen** är standard för **AV36**. Azure Migrate rekommenderar noden med noder som behövs för att migrera de virtuella datorerna till AVS.
+    - I **FTT-inställningen, RAID-nivå**, väljer du det går inte att TOLERERA och RAID-kombinationen.  Det valda alternativet FTT, kombinerat med kravet på lokal virtuell dator disk, bestämmer det totala virtuellt San-lagrings utrymmet som krävs i AVS.
+    - I **CPU-överprenumeration** anger du förhållandet mellan virtuella kärnor som är associerade med en fysisk kärna i AVS-noden. Överprenumeration på över 4:1 kan orsaka prestanda försämring, men kan användas för arbets belastningar för webb server typ.
+    - I **minnes överinchecknings faktor** anger du förhållandet mellan minne och incheckning i klustret. Värdet 1 representerar 100% minnes användning, 0,5 till exempel 50% och 2 använder 200% av tillgängligt minne. Du kan bara lägga till värden från 0,5 till 10 till en decimal.
+    - I **deduplicera och komprimerings faktor** anger du den förväntade deduplicerade och komprimerings faktorn för dina arbets belastningar. Det faktiska värdet kan hämtas från lokala virtuellt SAN eller Storage config och detta kan variera beroende på arbets belastning. Värdet 3 innebär tre gånger så att endast 100 GB lagrings utrymme används för 300 GB disk. Värdet 1 innebär ingen deduplicerad eller komprimering. Du kan bara lägga till värden från 1 till 10 upp till en decimal.
+1. I **Node-storlek**: 
+    - I **storleks kriterium** väljer du om du vill basera utvärderingen på statiska metadata eller på prestandabaserade data. Om du använder prestanda data:
+        - I **prestanda historik** anger du den data varaktighet som du vill basera utvärderingen på.
+        - I **percentils användning** anger du det percentilvärdet som du vill använda för prestanda exemplet. 
+    - I **komfort faktor** anger du den buffert som du vill använda under utvärderingen. Dessa konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning. Om du till exempel använder en bekvämlighets faktor på två:
+    
+        **Komponent** | **Effektiv användning** | **Lägg till bekvämlighets faktor (2,0)**
+        --- | --- | ---
+        Kärnor | 2  | 4
+        Minne | 8 GB | 16 GB  
+
+1. I **prissättning**:
+    - I **erbjudandet** är [Azure-erbjudandet](https://azure.microsoft.com/support/legal/offer-details/) som du har registrerat i visat att Server utvärderingen beräknar kostnaden för det erbjudandet.
+    - I **valuta** väljer du fakturerings valutan för ditt konto.
+    - I **rabatt (%)**, Lägg till eventuella prenumerations rabatter som du får ovanpå Azure-erbjudandet. Standardinställningen är 0%.
+
+1. Klicka på **Spara** om du gör ändringar.
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="Utvärderingsegenskaper":::
+
+1. I **utvärdera servrar** klickar du på **Nästa**.
 
 1. I **Välj datorer för att utvärdera**  >  **bedömnings namnet** > anger du ett namn för utvärderingen. 
  
-1. I **Välj eller skapa en grupp** > väljer du **Skapa ny** och anger ett grupp namn. En grupp samlar en eller flera virtuella datorer för utvärdering.
+1. I **Välj eller skapa en grupp** > väljer du **Skapa ny** och anger ett grupp namn. 
     
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Lägga till virtuella datorer i en grupp":::
+ 
+1. Välj enheten och välj de virtuella datorer som du vill lägga till i gruppen. Klicka på **Nästa**.
 
-1. I **Lägg till datorer i gruppen** väljer du de virtuella datorer som ska läggas till i gruppen.
+1. Granska utvärderings informationen i **Granska och skapa utvärdering** och klicka på **Skapa utvärdering** för att skapa gruppen och köra utvärderingen.
 
-1. Klicka på **Nästa** för att **Granska och skapa utvärdering** och granska utvärderingsinformationen.
-
-1. Klicka på **Skapa utvärdering** för att skapa gruppen och kör utvärderingen.
-
-1. När utvärderingen har skapats kan du se den i **Servrar** > **Azure Migrate: Serverutvärdering** > **Utvärderingar**.
-
-1. Klicka på **Exportera utvärdering** för att ladda ned den som en Excel-fil.
+    > [!NOTE]
+    > För prestandabaserade utvärderingar rekommenderar vi att du väntar minst en dag efter att du har startat identifieringen innan du skapar en utvärdering. Detta ger dig tid att samla in prestanda data med högre tillförlitlighet. Vi rekommenderar att du när du har startat identifieringen och väntar på varaktigheten för prestanda som du anger (dag/vecka/månad) för en bedömning med hög exakthet.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Granska en Azure VMware-lösning (AVS)-utvärdering
@@ -91,7 +124,6 @@ En Azure VMware Solution (AVS)-utvärdering beskriver:
 - **Antal AVS-noder**: uppskattat antal AVS-noder som krävs för att köra de virtuella datorerna.
 - **Användning över AVS-noder**: planerad processor, minne och lagrings belastning för alla noder.
     - Användningen omfattar upp till gångs faktor i följande omkostnader för kluster hantering, till exempel vCenter Server, NSX Manager (stor), NSX Edge, om HCX distribueras även HCX Manager och IX-apparaten som använder ~ 44vCPU (11 CPU), 75 GB av RAM-och 722GB för lagring före komprimering och deduplicering.
-    - Minne, deduplicera och komprimera är för närvarande inställt på 100%-användning för minne och 1,5 deduplicerar och komprimerat, vilket är en användardefinierad indata i andra versioner som gör det möjligt för användaren att finjustera storleken på den storlek som krävs.
 - **Månads kostnads uppskattning**: den uppskattade månads kostnaden för alla Azure VMware-lösningar (AVS)-noder som kör lokala virtuella datorer.
 
 
@@ -119,8 +151,6 @@ En Azure VMware Solution (AVS)-utvärdering beskriver:
 
 4. Klicka på en status för **AVS-beredskap** . Du kan visa information om VM-beredskap och öka detalj nivån för att se information om virtuella datorer, inklusive beräknings-, lagrings-och nätverks inställningar.
 
-
-
 ### <a name="review-cost-details"></a>Granska kostnadsinformation
 
 I den här vyn visas den uppskattade kostnaden för att köra virtuella datorer i Azure VMware-lösningen (AVS).
@@ -129,7 +159,7 @@ I den här vyn visas den uppskattade kostnaden för att köra virtuella datorer 
 
     - Kostnads uppskattningar baseras på antalet AVS-noder som krävs med hänsyn till resurs kraven för alla virtuella datorer totalt.
     - Eftersom priserna för Azure VMware-lösningen (AVS) är per nod, har den totala kostnaden ingen beräknings kostnad och distribution av lagrings kostnader.
-    - Kostnads uppskattningen är att köra lokala virtuella datorer i AVS. Azure Migrate Server-utvärderingen beaktar inte PaaS-eller SaaS-kostnader.
+    - Kostnads uppskattningen är att köra lokala virtuella datorer i AVS. I AVS-utvärderingen beaktas inte PaaS-eller SaaS-kostnader.
     
 2. Du kan granska månads beräkningarna för lagrings kostnader. Den här vyn visar aggregerade lagrings kostnader för den utvärderade gruppen och delas upp över olika typer av lagrings diskar.
 

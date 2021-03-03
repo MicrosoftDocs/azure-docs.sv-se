@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: ef6e31968f85407e8055315becdc1337b474ad70
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dbe51930ec92ec4f89738dc5d543003f45acebf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733830"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Snabb start: samla in data från en Linux-dator i en hybrid miljö med Azure Monitor
 
-[Azure Monitor](../overview.md) kan samla in data direkt från fysiska eller virtuella Linux-datorer i din miljö till en Log Analytics arbets yta för detaljerad analys och korrelation. Genom att installera [Log Analytics-agenten](../agents/log-analytics-agent.md) kan Azure Monitor samla in data från ett Data Center eller en annan moln miljö. Den här snabb starten visar hur du konfigurerar och samlar in data från Linux-servern med några enkla steg. Information om virtuella Azure Linux-datorer finns i [samla in data om Azure Virtual Machines](../learn/quick-collect-azurevm.md).  
+[Azure Monitor](../overview.md) kan samla in data direkt från fysiska eller virtuella Linux-datorer i din miljö till en Log Analytics arbets yta för detaljerad analys och korrelation. Genom att installera [Log Analytics-agenten](../agents/log-analytics-agent.md) kan Azure Monitor samla in data från ett Data Center eller en annan moln miljö. Den här snabb starten visar hur du konfigurerar och samlar in data från Linux-servern med några enkla steg. Information om virtuella Azure Linux-datorer finns i [samla in data om Azure Virtual Machines](./quick-collect-azurevm.md).  
 
 Information om vilka konfigurationer som stöds finns i konfiguration av [operativ system](../agents/agents-overview.md#supported-operating-systems) och [nätverks brand vägg](../agents/log-analytics-agent.md#network-requirements)som stöds.
  
@@ -166,4 +166,4 @@ Nu när du kan samla in funktions- och prestandadata från din lokala Linux-dato
 Om du vill lära dig hur du visar och analyserar data kan du fortsätta till självstudiekursen.
 
 > [!div class="nextstepaction"]
-> [Visa eller analysera data i Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Visa eller analysera data i Log Analytics](../logs/log-analytics-tutorial.md)

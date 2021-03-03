@@ -4,12 +4,12 @@ description: I den här självstudien använder du en AI-modell server som tillh
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702223"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Självstudie: analysera direktsänd video med hjälp av poly™ Model Server – AI-tillägg från Intel 
 
@@ -88,11 +88,11 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 
 1. Gå till mappen *src/Cloud-to-Device-console-app* . Här ser du *appsettings.jspå* filen och några andra filer:
 
-    * ***C2D-console-app. CSPROJ** _-projekt filen för Visual Studio Code.
-    _ ***operations.jspå** _ – en lista över de åtgärder som du vill att programmet ska köra.
-    _ ***Program.cs** _ – exempel koden. Den här koden:
+    * ***C2D-console-app. CSPROJ*** – projekt filen för Visual Studio Code.
+    * ***operations.js*** en lista över de åtgärder som du vill att programmet ska köra.
+    * ***Program.cs*** – exempel koden. Den här koden:
 
-        _ Läser in appinställningar.
+        * Läser in appinställningar.
         * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](direct-methods.md).
         * Pausar så att du kan granska programmets utdata i **terminalfönstret** och granska de händelser som har genererats av modulen i fönstret **utdata** .
         * Anropar direkta metoder för att rensa resurser.
@@ -117,7 +117,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 
     ![Generera IoT Edge distributions manifest](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    Filen *deployment.yolov3.amd64.jspå* manifest filen skapas i mappen *src/Edge/config* .
+    Filen *deployment.openvino.amd64.jspå* manifest filen skapas i mappen *src/Edge/config* .
 
 1. Hoppa över det här steget om du har slutfört snabb starten för att [identifiera rörelse och generera händelser](detect-motion-emit-events-quickstart.md) . 
 

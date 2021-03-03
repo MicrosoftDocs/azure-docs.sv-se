@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702869"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Felsöka kluster skapande fel med Azure HDInsight
 
@@ -65,7 +65,7 @@ Se till att det inte finns några [Lås på det virtuella nätverket och resurs 
 
 ## <a name="unsupported-component-versions"></a>Komponent versioner som inte stöds
 
-Se till att du använder en [version av Azure HDInsight](../hdinsight-component-versioning.md) och Apache Hadoop- [komponenter](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) som stöds i din lösning.  
+Se till att du använder en [version av Azure HDInsight och Apache Hadoop-komponenten som stöds](../hdinsight-component-versioning.md) i din lösning.  
 
 ## <a name="storage-account-name-restrictions"></a>Begränsningar för lagrings konto namn
 

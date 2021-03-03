@@ -818,6 +818,8 @@
               href: enable-notebooks.md
             - name: Importera anteckningsböcker från GitHub
               href: import-github-notebooks.md
+            - name: Publicera antecknings böcker i galleriet
+              href: publish-notebook-gallery.md
             - name: Använd inbyggda Python notebook-kommandon
               href: use-python-notebook-features-and-commands.md
             - name: Använda inbyggda C# notebook-kommandon

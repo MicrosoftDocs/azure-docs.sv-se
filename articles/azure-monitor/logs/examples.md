@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 213437e68efb27c483c8013d209261408ab9d4ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e2050784d03b1f01e743df9b00916ec286a3e7ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736958"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Exempel på Azure Monitor logg frågor
-Den här artikeln innehåller olika exempel på [frågor](../log-query/log-query-overview.md) som använder [Kusto-frågespråket](/azure/kusto/query/) för att hämta olika typer av loggdata från Azure Monitor. Olika metoder används för att konsolidera och analysera data, så att du kan använda dessa exempel för att identifiera olika strategier som du kan använda för dina egna krav.  
+Den här artikeln innehåller olika exempel på [frågor](./log-query-overview.md) som använder [Kusto-frågespråket](/azure/kusto/query/) för att hämta olika typer av loggdata från Azure Monitor. Olika metoder används för att konsolidera och analysera data, så att du kan använda dessa exempel för att identifiera olika strategier som du kan använda för dina egna krav.  
 
-Mer information om de olika nyckelord som används i de här exemplen finns i [språk referens för Kusto](/azure/kusto/query/) . Gå igenom en [lektion om hur du skapar frågor](../log-query/get-started-queries.md) om du är nybörjare på Azure Monitor.
+Mer information om de olika nyckelord som används i de här exemplen finns i [språk referens för Kusto](/azure/kusto/query/) . Gå igenom en [lektion om hur du skapar frågor](./get-started-queries.md) om du är nybörjare på Azure Monitor.
 
 ## <a name="events"></a>Händelser
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Användning
 
-`Usage`Data typen kan användas för att spåra den inmatade data volymen efter lösning eller datatyp. Det finns andra metoder för att undersöka inmatade data volymer av [dator](../platform/manage-cost-storage.md#data-volume-by-computer) eller [Azure-prenumeration, resurs grupp eller resurs](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription).
+`Usage`Data typen kan användas för att spåra den inmatade data volymen efter lösning eller datatyp. Det finns andra metoder för att undersöka inmatade data volymer av [dator](./manage-cost-storage.md#data-volume-by-computer) eller [Azure-prenumeration, resurs grupp eller resurs](./manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription).
 
 #### <a name="data-volume-by-solution"></a>Datavolym per lösning
 
@@ -438,4 +438,4 @@ Update
 ## <a name="next-steps"></a>Nästa steg
 
 - Mer information om språket finns i [språk referens för Kusto](/azure/kusto/query) .
-- Gå igenom en [lektion om hur du skriver logg frågor i Azure Monitor](../log-query/get-started-queries.md).
+- Gå igenom en [lektion om hur du skriver logg frågor i Azure Monitor](./get-started-queries.md).

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd521e9798b09f7930b43ab95c7cd7ef9e693d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91297240"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737927"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Snabb start: Konfigurera IoT Hub Device Provisioning Service med Azure Portal
 
@@ -25,11 +25,12 @@ I den här snabb starten får du lära dig hur du ställer in IoT Hub Device Pro
 * Använd Azure-portalen för att skapa en IoT Hub Device Provisioning-tjänst och hämta ID-omfånget
 * Länka IoT-hubben till Device Provisioning-tjänsten
 
+## <a name="prerequisites"></a>Förutsättningar
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Du behöver en Azure-prenumeration för att börja med den här artikeln. Du kan skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)om du inte redan har gjort det.
 
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -49,7 +50,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
       ![Ange grundläggande information om din enhets etablerings tjänst instans på Portal bladet](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Välj knappen meddelande för att övervaka skapandet av resurs instansen. När tjänsten har distribuerats väljer du **Fäst på instrument panelen**och **går sedan till resurs**.
+4. Välj knappen meddelande för att övervaka skapandet av resurs instansen. När tjänsten har distribuerats väljer du **Fäst på instrument panelen** och **går sedan till resurs**.
 
     ![Övervaka distributionsmeddelandet](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
@@ -78,8 +79,8 @@ I det här avsnittet ska du lägga till en konfiguration i enhets etablerings tj
 
 De andra snabbstarterna i den här samlingen bygger på den här snabbstarten. Om du planerar att fortsätta att arbeta med efterföljande snabbstarter eller med självstudierna ska du inte rensa resurserna som skapas i denna snabbstart. Om du inte planerar att fortsätta kan du använda stegen nedan för att ta bort alla resurser som har skapats i den här snabbstarten i Azure-portalen.
 
-1. Välj **alla resurser** på den vänstra menyn i Azure Portal och välj sedan enhets etablerings tjänsten. Välj **ta bort**överst i enhets informations fönstret.  
-2. Välj **alla resurser** på den vänstra menyn i Azure Portal och välj sedan din IoT Hub. Välj **ta bort**överst i informations fönstret hubb.  
+1. Välj **alla resurser** på den vänstra menyn i Azure Portal och välj sedan enhets etablerings tjänsten. Välj **ta bort** överst i enhets informations fönstret.  
+2. Välj **alla resurser** på den vänstra menyn i Azure Portal och välj sedan din IoT Hub. Välj **ta bort** överst i informations fönstret hubb.  
 
 ## <a name="next-steps"></a>Nästa steg
 

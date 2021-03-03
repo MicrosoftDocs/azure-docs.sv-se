@@ -1,17 +1,16 @@
 ---
 title: Översikt över Azure Diagnostics-tillägg
 description: Använd Azure Diagnostics för fel sökning, mäta prestanda, övervakning, trafik analys i moln tjänster, virtuella datorer och Service Fabric
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: f3cde32178449169b07f57d4abbc346d8ca89df4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623662"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726231"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Översikt över Azure Diagnostics-tillägg
 Azure-diagnostik tillägget är en [agent i Azure Monitor](../agents/agents-overview.md) som samlar in övervaknings data från gäst operativ systemet i Azure Compute-resurser, inklusive virtuella datorer. Den här artikeln innehåller en översikt över Azure-diagnostik-tillägget, inklusive de funktioner som stöds och alternativ för installation och konfiguration. 
@@ -33,8 +32,8 @@ Log Analytics agenten i Azure Monitor kan också användas för att samla in öv
 Viktiga skillnader att tänka på är:
 
 - Azure-diagnostik-tillägget kan bara användas med virtuella Azure-datorer. Log Analytics agenten kan användas med virtuella datorer i Azure, andra moln och lokalt.
-- Azure-diagnostik-tillägget skickar data till Azure Storage, [Azure Monitor mått](../platform/data-platform-metrics.md) (endast Windows) och Event Hubs. Log Analytics agent samlar in data till [Azure Monitor loggar](../platform/data-platform-logs.md).
-- Log Analytics agent krävs för [lösningar](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor for VMS](../insights/vminsights-overview.md)och andra tjänster som [Azure Security Center](../../security-center/index.yml).
+- Azure-diagnostik-tillägget skickar data till Azure Storage, [Azure Monitor mått](../essentials/data-platform-metrics.md) (endast Windows) och Event Hubs. Log Analytics agent samlar in data till [Azure Monitor loggar](../logs/data-platform-logs.md).
+- Log Analytics agent krävs för [lösningar](../monitor-reference.md#insights-and-core-solutions), VM- [insikter](../vm/vminsights-overview.md)och andra tjänster som [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Kostnader
 Det kostar inget för Azure Diagnostic-tillägget, men du kan debiteras avgifter för inmatade data. Kontrol lera [Azure Monitor prissättningen](https://azure.microsoft.com/pricing/details/monitor/) för målet där du samlar in data.
@@ -44,7 +43,7 @@ I följande tabeller visas de data som kan samlas in av tillägget Windows och L
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Diagnostics-tillägg (WAD)
 
-| Datakälla | Description |
+| Datakälla | Beskrivning |
 | --- | --- |
 | Händelse loggar i Windows   | Händelser från händelse loggen i Windows. |
 | Prestandaräknare | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
@@ -59,7 +58,7 @@ I följande tabeller visas de data som kan samlas in av tillägget Windows och L
 
 ### <a name="linux-diagnostics-extension-lad"></a>LAD (Linux Diagnostics Extension)
 
-| Datakälla | Description |
+| Datakälla | Beskrivning |
 | --- | --- |
 | Syslog | Händelser som skickas till Linux Event Logging-systemet.   |
 | Prestandaräknare  | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
@@ -72,9 +71,9 @@ Konfigurera en eller flera *data mottagare* för att skicka data till andra ytte
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Diagnostics-tillägg (WAD)
 
-| Mål | Description |
+| Mål | Beskrivning |
 |:---|:---|
-| Azure Monitor-statistik | Samla in prestanda data till Azure Monitor mått. Se [Skicka gäst operativ system mått till Azure Monitor Metric-databasen](../platform/collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure Monitor-statistik | Samla in prestanda data till Azure Monitor mått. Se [Skicka gäst operativ system mått till Azure Monitor Metric-databasen](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Händelsehubbar | Använd Azure Event Hubs för att skicka data utanför Azure. Se [strömmande Azure-diagnostik data till Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure Storage blobbar | Skriv till data till blobbar i Azure Storage förutom tabeller. |
 | Application Insights | Samla in data från program som körs i den virtuella datorn till Application Insights integrera med andra program övervakning. Se [Skicka diagnostikdata till Application Insights](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +84,11 @@ Du kan också samla in WAD-data från lagring till en Log Analytics arbets yta f
 ### <a name="linux-diagnostics-extension-lad"></a>LAD (Linux Diagnostics Extension)
 LAD skriver data till tabeller i Azure Storage. Det stöder sinkarna i följande tabell.
 
-| Mål | Description |
+| Mål | Beskrivning |
 |:---|:---|
 | Händelsehubbar | Använd Azure Event Hubs för att skicka data utanför Azure. |
 | Azure Storage blobbar | Skriv till data till blobbar i Azure Storage förutom tabeller. |
-| Azure Monitor-statistik | Installera teleympkvistar-agenten förutom LAD. Se [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](../platform/collect-custom-metrics-linux-telegraf.md).
+| Azure Monitor-statistik | Installera teleympkvistar-agenten förutom LAD. Se [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](../essentials/collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Installation och konfiguration

@@ -2,13 +2,13 @@
 title: Övervaka med webbtester med flera steg – Azure Application insikter
 description: Konfigurera webb program med flera steg för att övervaka dina webb program med Azure Application insikter
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/14/2021
+ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719856"
 ---
 # <a name="multi-step-web-tests"></a>Webbtester med flera steg
 
@@ -65,7 +65,6 @@ Vägledning om hur du skapar Visual Studio-webbtester finns i den [officiella Vi
 |Inställning| Förklaring
 |----|----|----|
 |**Nära real tid (för hands version)** | Vi rekommenderar att du använder aviseringar i nästan real tid. Konfigurationen av den här typen av avisering görs efter att ditt tillgänglighets test har skapats.  |
-|**Form** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
 |**Tröskelvärde för aviserings plats**|Vi rekommenderar minst 3/5 platser. Den optimala relationen mellan aviserings platsens tröskelvärde och antalet test platser är **tröskelvärdet för aviserings platsens tröskel**  =  **antal test platser – 2, med minst fem test platser.**|
 
 ## <a name="configuration"></a>Konfiguration
@@ -106,7 +105,7 @@ I samtliga fall bör du skapa ett konto i ditt program som endast används för 
 
 **SAML-autentisering**
 
-|Egenskapsnamn| Description|
+|Egenskapsnamn| Beskrivning|
 |----|-----|
 | Målgrupps-URI | Målgrupps-URI för SAML-token.  Detta är URI: n för Access Control Service (ACS) – inklusive ACS-namnrymd och värd namn. |
 | Certifikat lösen ord | Lösen ordet för klient certifikatet som ger åtkomst till den inbäddade privata nyckeln. |

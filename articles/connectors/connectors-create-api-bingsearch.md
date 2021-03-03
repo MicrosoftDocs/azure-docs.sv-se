@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 52bf42434640dc965999895549b4fa12a139dcce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 306298e4338665ef52add7f46d6da8675c97c3e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716558"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Hitta resultat i Bing-sökning med Azure Logic Apps
 
@@ -52,11 +52,11 @@ Eller, om anslutningen redan finns, anger du den information som krävs för utl
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | Sök fråga | Yes | <*Sök efter ord*> | Ange Sök nyckelorden som du vill använda. |
-   | Telefonförsäljning | Yes | <*språk*> | Sök språket. Standardvärdet är "en-US", men du kan välja ett annat värde. |
-   | Säker sökning | Yes | <*Sök nivå*> | Filter nivån för att utesluta vuxna innehåll. Standardvärdet är "måttlig", men du väljer en annan nivå. |
-   | Antal | No | <*resultat – antal*> | Returnera det angivna antalet resultat. Standardvärdet är 20, men du kan ange ett annat värde. Det faktiska antalet returnerade resultat kan vara mindre än det angivna antalet. |
-   | Offset | No | <*hoppa över-värde*> | Antal resultat som ska hoppas över innan resultat returneras |
+   | Sök fråga | Ja | <*Sök efter ord*> | Ange Sök nyckelorden som du vill använda. |
+   | Telefonförsäljning | Ja | <*språk*> | Sök språket. Standardvärdet är "en-US", men du kan välja ett annat värde. |
+   | Säker sökning | Ja | <*Sök nivå*> | Filter nivån för att utesluta vuxna innehåll. Standardvärdet är "måttlig", men du väljer en annan nivå. |
+   | Antal | Inga | <*resultat – antal*> | Returnera det angivna antalet resultat. Standardvärdet är 20, men du kan ange ett annat värde. Det faktiska antalet returnerade resultat kan vara mindre än det angivna antalet. |
+   | Offset | Inga | <*hoppa över-värde*> | Antal resultat som ska hoppas över innan resultat returneras |
    |||||
 
    Exempel:
@@ -103,11 +103,11 @@ Välj den åtgärd du vill använda i listan åtgärder.
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | Sök fråga | Yes | <*Sök-uttryck*> | Ange ett uttryck för att skicka frågor till utlösnings resultaten. Du kan välja bland fälten i listan med dynamiskt innehåll eller skapa ett uttryck med uttrycks verktyget. |
-   | Telefonförsäljning | Yes | <*språk*> | Sök språket. Standardvärdet är "en-US", men du kan välja ett annat värde. |
-   | Säker sökning | Yes | <*Sök nivå*> | Filter nivån för att utesluta vuxna innehåll. Standardvärdet är "måttlig", men du väljer en annan nivå. |
-   | Antal | No | <*resultat – antal*> | Returnera det angivna antalet resultat. Standardvärdet är 20, men du kan ange ett annat värde. Det faktiska antalet returnerade resultat kan vara mindre än det angivna antalet. |
-   | Offset | No | <*hoppa över-värde*> | Antal resultat som ska hoppas över innan resultat returneras |
+   | Sök fråga | Ja | <*Sök-uttryck*> | Ange ett uttryck för att skicka frågor till utlösnings resultaten. Du kan välja bland fälten i listan med dynamiskt innehåll eller skapa ett uttryck med uttrycks verktyget. |
+   | Telefonförsäljning | Ja | <*språk*> | Sök språket. Standardvärdet är "en-US", men du kan välja ett annat värde. |
+   | Säker sökning | Ja | <*Sök nivå*> | Filter nivån för att utesluta vuxna innehåll. Standardvärdet är "måttlig", men du väljer en annan nivå. |
+   | Antal | Inga | <*resultat – antal*> | Returnera det angivna antalet resultat. Standardvärdet är 20, men du kan ange ett annat värde. Det faktiska antalet returnerade resultat kan vara mindre än det angivna antalet. |
+   | Offset | Inga | <*hoppa över-värde*> | Antal resultat som ska hoppas över innan resultat returneras |
    |||||
 
    Anta till exempel att du vill ha dessa resultat vars kategori namn innehåller ordet "Tech".
@@ -150,9 +150,9 @@ Välj den åtgärd du vill använda i listan åtgärder.
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | Anslutningsnamn | Yes | <*anslutnings namn*> | Namnet som ska skapas för anslutningen |
-   | API-version | Yes | <*API-version*> | Som standard är Bing-sökning API-versionen inställd på den aktuella versionen. Du kan välja en tidigare version om det behövs. |
-   | API-nyckel | Yes | <*API-nyckel*> | Den Bing-sökning API-nyckel som du fick tidigare. Om du inte har någon nyckel kan du hämta din [API-nyckel nu](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Anslutningsnamn | Ja | <*anslutnings namn*> | Namnet som ska skapas för anslutningen |
+   | API-version | Ja | <*API-version*> | Som standard är Bing-sökning API-versionen inställd på den aktuella versionen. Du kan välja en tidigare version om det behövs. |
+   | API-nyckel | Ja | <*API-nyckel*> | Den Bing-sökning API-nyckel som du fick tidigare. Om du inte har någon nyckel kan du hämta din [API-nyckel nu](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Exempel:

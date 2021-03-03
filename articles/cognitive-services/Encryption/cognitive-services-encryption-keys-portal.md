@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: fca3fc80411432f2e82a68faa3b6f297b8ca5f9c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706851"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Konfigurera Kundhanterade nycklar med Azure Key Vault för Cognitive Services
 
@@ -21,8 +21,8 @@ Processen för att aktivera Customer-Managed nycklar med Azure Key Vault för Co
 
 ## <a name="vision"></a>Visuellt innehåll
 
-* [Custom Vision kryptering av data i vila](../Custom-Vision-Service/encrypt-data-at-rest.md)
-* [Kryptering av ansikts tjänster för vilande data](../Face/encrypt-data-at-rest.md)
+* [Custom Vision kryptering av data i vila](../custom-vision-service/encrypt-data-at-rest.md)
+* [Kryptering av ansikts tjänster för vilande data](../face/encrypt-data-at-rest.md)
 * [Formulär tolkens kryptering av data i vila](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Språk

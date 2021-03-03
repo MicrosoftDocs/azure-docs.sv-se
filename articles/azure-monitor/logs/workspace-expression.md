@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 9ce9957d348fc9d57ff688408d6aaade67e95465
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b1f850b262a0027d3a9cb2e926bcb2c8a49665
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624928"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710914"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>uttryck för arbets yta () i Azure Monitor logg fråga
 
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se [app-uttrycket](../log-query/app-expression.md) för att referera till en Application Insights-app.
-- Läs om hur [Azure Monitor data](../log-query/log-query-overview.md) lagras.
+- Se [app-uttrycket](./app-expression.md) för att referera till en Application Insights-app.
+- Läs om hur [Azure Monitor data](./log-query-overview.md) lagras.
 - Få fullständig dokumentation för [Kusto-frågespråket](/azure/kusto/query/).

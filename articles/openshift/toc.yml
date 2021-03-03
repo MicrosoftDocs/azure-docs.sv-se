@@ -55,7 +55,7 @@
             - name: Konfigurera Azure Monitor för containrar för ARO 4 (förhandsversion)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
             - name: Inaktivera Azure Monitor för containrar i ARO 4 (förhandsversion)
-              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+              href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Utveckla och köra program
       items:
         - name: Distribuera en Open Liberty-/WebSphere Liberty-app
@@ -80,10 +80,10 @@
             - name: Azure Monitor för containrar i Azure Red Hat OpenShift 3.11 (förhandsversion)
               items:
                 - name: Konfigurera Azure Monitor för containrar i Azure Red Hat OpenShift 3.11
-                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  href: ../azure-monitor/containers/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Inaktivera Azure Monitor för containrar i Azure Red Hat OpenShift 3.11
-                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
+                  href: ../azure-monitor/containers/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Köra privilegierade containrar i Azure Red Hat OpenShift 3.11
           href: howto-run-privileged-containers.md

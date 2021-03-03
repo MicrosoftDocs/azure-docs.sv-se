@@ -3,12 +3,12 @@ title: Använd Azure Service Bus Explorer för att utföra data åtgärder på S
 description: Den här artikeln innehåller information om hur du använder den portalbaserade Azure Service Bus Explorer för att få åtkomst till Azure Service Bus data.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738964"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Använd Service Bus Explorer för att utföra data åtgärder på Service Bus (förhands granskning)
 
@@ -25,7 +25,7 @@ Azure Service Bus Explorer utökar Portal funktionerna utöver hanterings åtgä
 > [!NOTE]
 > I den här artikeln beskrivs funktionerna i Azure Service Bus Explorer som finns på Azure Portal.
 >
-> Verktyget Azure Service Bus Explorer är ***inte** _ det community-verktyg som [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)-verktyget äger oss.
+> Verktyget Azure Service Bus Explorer är ***inte*** community-verktyget som ägs av oss [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 >
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -37,18 +37,18 @@ Om du vill använda verktyget Service Bus Explorer måste du utföra följande u
     - [Snabb start – skapa köer](service-bus-quickstart-portal.md)
     - [Snabb start – skapa ämnen](service-bus-quickstart-topics-subscriptions-portal.md)
 - Se till att du är medlem i någon av följande roller i namn området: 
-    - [Service Bus data ägare](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
-    - [Deltagare](/azure/role-based-access-control/built-in-roles#contributor) 
-    - [Ägare](/azure/role-based-access-control/built-in-roles#owner)
+    - [Service Bus data ägare](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Deltagare](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Ägare](../role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Använda Service Bus Explorer
 
 Om du vill använda Azure Service Bus Explorer måste du gå till det Service Bus namn område där du vill utföra sändnings-, gransknings-och mottagnings åtgärder.
 
-Om du vill utföra åtgärder mot en kö väljer du _ *' köer '** från navigerings menyn. Om du vill utföra åtgärder mot ett ämne (och dess relaterade prenumerationer), väljer du **ämnen**. 
+Om du vill utföra åtgärder mot en kö väljer du **köer** från navigerings menyn. Om du vill utföra åtgärder mot ett ämne (och dess relaterade prenumerationer), väljer du **ämnen**. 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Välj entitet":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="Välj entitet":::
 
 När du har valt **"köer"** eller **"ämnen"** väljer du den specifika kön eller ämnet.
 
@@ -58,11 +58,11 @@ Välj **Service Bus Explorer (för hands version)** på den vänstra navigerings
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Skicka ett meddelande till en kö eller ett ämne
 
-Om du vill skicka ett meddelande till en **kö** eller ett **ämne** klickar du på fliken **_Skicka_* _ i Service Bus Explorer.
+Om du vill skicka ett meddelande till en **kö** eller ett **ämne** klickar du på fliken **_Skicka_** i Service Bus Explorer.
 
 Så här skapar du ett meddelande 
 
-1. Välj _ *innehålls typ** som antingen text/plain, Application/XML eller Application/JSON.
+1. Välj **innehålls typen** som antingen text/plain, Application/XML eller Application/JSON.
 2. Lägg till meddelandets **innehåll**. Se till att den matchar den angivna **innehålls typen** tidigare.
 3. Ange **avancerade egenskaper** (valfritt) – dessa inkluderar KORRELATIONS-ID, meddelande-ID, etikett, ReplyTo, Time to Live (TTL) och tids period (för schemalagda meddelanden).
 4. Ange **anpassade egenskaper** – kan vara alla användar egenskaper som anges mot en ord lista.
@@ -86,23 +86,23 @@ När sändnings åtgärden har slutförts korrekt
 Funktionen Receive i Service Bus Explorer tillåter att ett enskilt meddelande tas emot i taget. Mottagnings åtgärden utförs med **ReceiveAndDelete** -läget.
 
 > [!IMPORTANT]
-> Observera att Receive-åtgärden som utförs av Service Bus Explorer är a **_destruktivt Receive_* _, d.v.s. att meddelandet tas bort från kön när det visas i Service Bus Explorer-verktyget.
+> Observera att mottagnings åtgärden som utförs av Service Bus Explorer är ett ***destruktivt mottagnings*** meddelande, d.v.s. att meddelandet tas bort från kön när det visas i Service Bus Explorer-verktyget.
 >
-> Om du vill bläddra i meddelanden utan att ta bort dem från kön kan du överväga att använda _*_gransknings_*_ funktionen.
+> Om du vill bläddra i meddelanden utan att ta bort dem från kön kan du överväga att använda ***gransknings*** funktionen.
 >
 
 Ta emot ett meddelande från en kö (eller dess obeställbara meddelanden kön-underkö) 
 
-1. Klicka på fliken _*_ta emot_*_ i Service Bus Explorer.
-2. Kontrol lera måtten för att se om det finns _ *aktiva meddelanden** eller **meddelanden om obeställbara** meddelanden som ska tas emot.
+1. Klicka på fliken ***ta emot*** i Service Bus Explorer.
+2. Kontrol lera måtten för att se om det finns **aktiva meddelanden** eller **meddelanden om obeställbara** meddelanden som ska tas emot.
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Välj mellan **_Queue_* _ eller _*_obeställbara meddelanden kön_*_ -underkön.
+3. Välj mellan underkön ***Queue** _ eller _ *_obeställbara meddelanden kön_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. Klicka på knappen _*_ta emot_*_ följt av _*_Ja_*_ för att bekräfta åtgärden ta emot och ta bort.
+4. Klicka på knappen ***ta emot** _ följt av _ *_Ja_** för att bekräfta åtgärden ta emot och ta bort.
 
 
 När mottagnings åtgärden lyckas visas meddelande informationen i rutnätet enligt nedan. Du kan välja meddelandet från rutnätet för att visa dess information.
@@ -114,19 +114,19 @@ När mottagnings åtgärden lyckas visas meddelande informationen i rutnätet en
 
 Med Peek-funktionen kan du använda Service Bus Explorer för att visa de översta 32 meddelandena i en kö eller i obeställbara meddelanden kön-kön.
 
-1. Granska meddelandet i en kö genom att klicka på fliken _*_Granska_*_ i Service Bus Explorer.
+1. Granska meddelandet i en kö genom att klicka på fliken ***Granska*** i Service Bus Explorer.
 
     :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-2. Kontrol lera måtten för att se om det finns _ *aktiva meddelanden** eller **meddelanden om obeställbara** meddelanden som ska granskas.
+2. Kontrol lera måtten för att se om det finns **aktiva meddelanden** eller **meddelanden med obeställbara** meddelanden som ska granskas.
 
     :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. Välj sedan mellan **_Queue_* _ eller _*_obeställbara meddelanden kön_*_ -underkön.
+3. Välj sedan mellan underkön ***kö** _ eller _ *_obeställbara meddelanden kön_**.
 
     :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. Klicka på knappen _*_Granska_*_ . 
+4. Klicka på knappen ***Granska*** . 
 
 När gransknings åtgärden har slutförts visas upp till 32 meddelanden i rutnätet enligt nedan. Om du vill visa information om ett visst meddelande väljer du det från rutnätet. 
 
@@ -134,28 +134,28 @@ När gransknings åtgärden har slutförts visas upp till 32 meddelanden i rutn�
 
 > [!NOTE]
 >
-> Eftersom Peek inte är en destruktiv åtgärd, kommer meddelandet _ *inte* att tas bort från kön.
+> Eftersom Peek inte är en destruktiv åtgärd tas **inte** meddelandet bort från kön.
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>Ta emot ett meddelande från en prenumeration
 
-Precis som med en kö kan **_Receive_* _-åtgärden utföras mot en prenumeration (eller dess obeställbara meddelanden kön-entitet). Men eftersom en prenumeration är i sammanhanget för ämnet utförs mottagnings åtgärden genom att gå till Service Bus Explorer för ett specifikt avsnitt.
+Precis som med en kö kan ***Receive*** -åtgärden utföras mot en prenumeration (eller dess obeställbara meddelanden kön entitet). Men eftersom en prenumeration är i sammanhanget för ämnet utförs mottagnings åtgärden genom att gå till Service Bus Explorer för ett specifikt avsnitt.
 
 > [!IMPORTANT]
-> Observera att mottagnings åtgärden som utförs av Service Bus Explorer är ett _*_destruktivt mottagnings_*_ meddelande, d.v.s. att meddelandet tas bort från kön när det visas i Service Bus Explorer-verktyget.
+> Observera att mottagnings åtgärden som utförs av Service Bus Explorer är ett ***destruktivt mottagnings*** meddelande, d.v.s. att meddelandet tas bort från kön när det visas i Service Bus Explorer-verktyget.
 >
-> Om du vill bläddra i meddelanden utan att ta bort dem från kön kan du överväga att använda _*_gransknings_*_ funktionen.
+> Om du vill bläddra i meddelanden utan att ta bort dem från kön kan du överväga att använda ***gransknings*** funktionen.
 >
 
-1. Klicka på fliken _*_ta emot_*_ och välj den aktuella _*_prenumerationen_*_ i list rutan.
+1. Klicka på fliken ***ta emot** _ och välj den aktuella _ *_prenumerationen_** i list rutan.
 
     :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. Välj mellan _*_prenumerationen_*_ eller underentiteten _*_obeställbara meddelanden kön_*_ .
+2. Välj mellan ***prenumerationen** _ eller _ *_obeställbara meddelanden kön_** underentiteten.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. Klicka på knappen _*_ta emot_*_ följt av _*_Ja_*_ för att bekräfta åtgärden ta emot och ta bort.
+3. Klicka på knappen ***ta emot** _ följt av _ *_Ja_** för att bekräfta åtgärden ta emot och ta bort.
 
 När Receive-åtgärden lyckas visas det mottagna meddelandet i rutnätet enligt nedan. Klicka på meddelandet för att visa information om meddelandet.
 
@@ -163,17 +163,17 @@ När Receive-åtgärden lyckas visas det mottagna meddelandet i rutnätet enligt
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Granska ett meddelande från en prenumeration
 
-Om du bara vill söka efter meddelanden på en prenumeration eller dess obeställbara meddelanden kön-underentitet, kan du även använda _*_Peek_*_ -funktionerna i prenumerationen.
+Om du bara vill söka efter meddelanden på en prenumeration eller dess obeställbara meddelanden kön-underentitet, kan du även använda ***Peek*** -funktionerna i prenumerationen.
 
-1. Klicka på fliken _*_Granska_*_ och välj den aktuella _*_prenumerationen_*_ i list rutan.
+1. Klicka på fliken ***granskning** _ och välj den aktuella _ *_prenumerationen_** i list rutan.
 
     :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. Välj mellan _*_prenumerationen_*_ eller underentiteten _*_obeställbara meddelanden kön_*_ .
+2. Välj mellan underentiteten ***Subscription** _ eller _ *_obeställbara meddelanden kön_**.
 
     :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. Klicka på knappen _*_Granska_*_ .
+3. Klicka på knappen ***Granska*** .
 
 När gransknings åtgärden har slutförts visas upp till 32 meddelanden i rutnätet enligt nedan. Om du vill visa information om ett visst meddelande väljer du det från rutnätet. 
 
@@ -181,7 +181,7 @@ När gransknings åtgärden har slutförts visas upp till 32 meddelanden i rutn�
 
 > [!NOTE]
 >
-> Eftersom Peek inte är en destruktiv åtgärd, kommer meddelandet _ *inte* att tas bort från kön.
+> Eftersom Peek inte är en destruktiv åtgärd tas **inte** meddelandet bort från kön.
 >
 
 ## <a name="next-steps"></a>Nästa steg

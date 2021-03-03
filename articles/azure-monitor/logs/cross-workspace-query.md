@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: f878d7cf5fdc2eb6538c1192319405dbde098ba6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a765525b12431c68aa0bba0c0f49c477defff0f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723222"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Utföra logg frågor i Azure Monitor som sträcker sig över arbets ytor och appar
 
@@ -19,7 +19,7 @@ Azure Monitor loggar stöder frågor över flera Log Analytics arbets ytor och A
 
 Det finns två metoder för att fråga data som lagras i flera arbets ytor och appar:
 1. Uttryckligen genom att ange information om arbets yta och appar. Den här tekniken beskrivs i den här artikeln.
-2. Implicit användning av [resurs kontext frågor](../platform/design-logs-deployment.md#access-mode). När du frågar i kontexten för en resurs, resurs grupp eller en prenumeration hämtas relevanta data från alla arbets ytor som innehåller data för dessa resurser. Application Insights data som lagras i appar kommer inte att hämtas.
+2. Implicit användning av [resurs kontext frågor](./design-logs-deployment.md#access-mode). När du frågar i kontexten för en resurs, resurs grupp eller en prenumeration hämtas relevanta data från alla arbets ytor som innehåller data för dessa resurser. Application Insights data som lagras i appar kommer inte att hämtas.
 
 > [!IMPORTANT]
 > Om du använder en [arbets yta som baseras på arbets ytans Application Insights resurs](../app/create-workspace-resource.md) telemetri lagras i en Log Analytics arbets yta med alla andra loggdata. Använd uttrycket arbets yta () för att skriva en fråga som inkluderar program i flera arbets ytor. För flera program i samma arbets yta behöver du inte en fråga om flera arbets ytor.
@@ -28,12 +28,12 @@ Det finns två metoder för att fråga data som lagras i flera arbets ytor och a
 ## <a name="cross-resource-query-limits"></a>Begränsningar för kors resurs frågor 
 
 * Antalet Application Insights-resurser och Log Analytics arbets ytor som du kan ta med i en enskild fråga är begränsade till 100.
-* Frågan över resurser stöds inte i View Designer. Du kan redigera en fråga i Log Analytics och fästa den på Azure-instrumentpanelen för att [visualisera en logg fråga](../learn/tutorial-logs-dashboards.md). 
+* Frågan över resurser stöds inte i View Designer. Du kan redigera en fråga i Log Analytics och fästa den på Azure-instrumentpanelen för att [visualisera en logg fråga](../visualize/tutorial-logs-dashboards.md). 
 * Frågor över resurser i logg aviseringar stöds bara i det aktuella [scheduledQueryRules-API: et](/rest/api/monitor/scheduledqueryrules). Om du använder äldre API för Log Analytics-varningar måste du [Växla till det aktuella API: et](../alerts/alerts-log-api-switch.md).
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Fråga i Log Analytics arbets ytor och från Application Insights
-Om du vill referera till en annan arbets yta i din fråga använder du ID för [*arbets ytan*](../logs/workspace-expression.md) och för en app från Application Insights använder du [*app*](../log-query/app-expression.md) -ID: t.  
+Om du vill referera till en annan arbets yta i din fråga använder du ID för [*arbets ytan*](../logs/workspace-expression.md) och för en app från Application Insights använder du [*app*](./app-expression.md) -ID: t.  
 
 ### <a name="identifying-workspace-resources"></a>Identifiera arbets ytans resurser
 Följande exempel visar frågor i Log Analytics arbets ytor för att returnera sammanfattade antal loggar från uppdaterings tabellen på en arbets yta med namnet *ContosoRetail*. 
@@ -107,9 +107,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Använda frågor över flera resurser för flera resurser
-När du använder frågor över flera resurser för att korrelera data från flera arbets ytor Log Analytics och Application Insights resurser, kan frågan bli komplex och svår att underhålla. Du bör använda [funktioner i Azure Monitor logg frågor](../log-query/functions.md) för att avgränsa fråge logiken från omfånget för frågans resurser, vilket fören klar fråge strukturen. I följande exempel visas hur du kan övervaka flera Application Insights resurser och visualisera antalet misslyckade förfrågningar efter program namn. 
+När du använder frågor över flera resurser för att korrelera data från flera arbets ytor Log Analytics och Application Insights resurser, kan frågan bli komplex och svår att underhålla. Du bör använda [funktioner i Azure Monitor logg frågor](./functions.md) för att avgränsa fråge logiken från omfånget för frågans resurser, vilket fören klar fråge strukturen. I följande exempel visas hur du kan övervaka flera Application Insights resurser och visualisera antalet misslyckade förfrågningar efter program namn. 
 
-Skapa en fråga som refererar till omfånget för Application Insights resurser. `withsource= SourceApp`Kommandot lägger till en kolumn som anger det program namn som skickade loggen. [Spara frågan som funktion](../log-query/functions.md#create-a-function) med aliaset _applicationsScoping_.
+Skapa en fråga som refererar till omfånget för Application Insights resurser. `withsource= SourceApp`Kommandot lägger till en kolumn som anger det program namn som skickade loggen. [Spara frågan som funktion](./functions.md#create-a-function) med aliaset _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -123,7 +123,7 @@ app('Contoso-app5').requests
 
 
 
-Du kan nu [använda den här funktionen](../log-query/functions.md#use-a-function) i en kors resurs fråga som liknar följande. Funktions Ali Aset _applicationsScoping_ returnerar unionen av begär ande tabellen från alla definierade program. Frågan filtrerar sedan efter misslyckade förfrågningar och visualiserar trender efter program. Operatorn _parse_ är valfri i det här exemplet. Den extraherar program namnet från egenskapen _SourceApp_ .
+Du kan nu [använda den här funktionen](./functions.md#use-a-function) i en kors resurs fråga som liknar följande. Funktions Ali Aset _applicationsScoping_ returnerar unionen av begär ande tabellen från alla definierade program. Frågan filtrerar sedan efter misslyckade förfrågningar och visualiserar trender efter program. Operatorn _parse_ är valfri i det här exemplet. Den extraherar program namnet från egenskapen _SourceApp_ .
 
 ```Kusto
 applicationsScoping 
@@ -142,5 +142,4 @@ applicationsScoping
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Granska [analysera loggdata i Azure Monitor](../log-query/log-query-overview.md) om du vill ha en översikt över logg frågor och hur Azure Monitor loggdata är strukturerade.
-
+- Granska [analysera loggdata i Azure Monitor](./log-query-overview.md) om du vill ha en översikt över logg frågor och hur Azure Monitor loggdata är strukturerade.

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acbe535d740eb527d165be1675f31e759851a987
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717833"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Loggbaserade och föraggregerade mått i Application Insights
 
@@ -48,8 +48,10 @@ Det är värt att nämna att samlings slut punkten föraggregerar händelser inn
 | .NET Core och .NET Framework | Stöds (V-2.13.1 +)| Stöds via [TrackMetric](api-custom-events-metrics.md#trackmetric)| Stöds (V-2.7.2 +) via [GetMetric](get-metric.md) |
 | Java                         | Stöds inte       | Stöds via [TrackMetric](api-custom-events-metrics.md#trackmetric)| Stöds inte                           |
 | Node.js                      | Stöds inte       | Stöds via  [TrackMetric](api-custom-events-metrics.md#trackmetric)| Stöds inte                           |
-| Python                       | Stöds inte       | Stöds                                 | Stöds via [openinventering. statistik](opencensus-python.md#metrics) |  
+| Python                       | Stöds inte       | Stöds                                 | Delvis stödd via [openinventering. statistik](opencensus-python.md#metrics) |  
 
+> [!NOTE]
+>  Måtten som implementeras för python med openräkning. stats skiljer sig från GetMetric. Mer information finns i [python-dokumentationen för mått](./opencensus-python.md#metrics).
 
 ### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Tabell med kod som stöds för föraggregerade mått
 

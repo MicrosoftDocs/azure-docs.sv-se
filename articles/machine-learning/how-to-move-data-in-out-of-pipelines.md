@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 5a83211654ad1abafff59d5968c191ec1fa63616
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692410"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Flytta data till och mellan olika steg i ML-pipelinen (Python)
-
 
 Den här artikeln innehåller kod för att importera, transformera och flytta data mellan stegen i en Azure Machine Learning pipeline. En översikt över hur data fungerar i Azure Machine Learning finns i [få åtkomst till data i Azure Storage-tjänster](how-to-access-data.md). För fördelarna och strukturen i Azure Machine Learning pipelines, se [Vad är Azure Machine Learning pipelines?](concept-ml-pipelines.md).
 
@@ -29,7 +28,7 @@ Den här artikeln visar hur du kan:
 - Dela upp `Dataset` data i del mängder, till exempel inlärnings-och validerings under uppsättningar
 - Skapa `OutputFileDatasetConfig` objekt för att överföra data till nästa pipeline-steg
 - Använd `OutputFileDatasetConfig` objekt som inmatade steg i pipeline-steg
-- Skapa nya `Dataset` objekt `OutputFileDatasetConfig` som du vill behålla
+- Skapa nya `Dataset` objekt från `OutputFileDatasetConfig` dig wisƒh till persist
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -64,10 +63,12 @@ Det finns många sätt att skapa och registrera `Dataset` objekt. Tabell data up
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 För fler alternativ för att skapa data uppsättningar med olika alternativ och från olika källor, registrera dem och granska dem i Azure Machine Learning användar gränssnitt, förstå hur data storleken interagerar med beräknings kapacitet och hur de versioner kan hanteras, se [skapa Azure Machine Learning data uppsättningar](how-to-create-register-datasets.md). 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 När det första pipeline-steget skriver vissa data till `OutputFileDatasetConfig` sökvägen och det blir utdata från det inledande steget, kan det användas som indata till ett senare steg. 
 
-I följande kod, 
+I följande kod: 
 
 * `step1_output_data` anger att utdatan från PythonScriptStep `step1` skrivs till ADLS gen 2-datalagret `my_adlsgen2` i överförings åtkomst läge. Läs mer om hur du [ställer in roll behörigheter](how-to-access-data.md#azure-data-lake-storage-generation-2) för att kunna skriva tillbaka data till ADLS gen 2-datalager. 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>Ta bort `OutputFileDatasetConfig` innehåll när de inte längre behövs
+
+Azure tar inte bort mellanliggande data som skrivs automatiskt med `OutputFileDatasetConfig` . För att undvika lagrings avgifter för stora mängder data som inte behövs bör du antingen:
+
+* Ta bort mellanliggande data program mässigt i slutet av en pipeline-körning när den inte längre behövs
+* Använd Blob Storage med en kortsiktig lagrings princip för mellanliggande data (se [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](../storage/blobs/storage/blobs/storage-lifecycle-management-concepts.md)) 
+* Regelbundet granska och ta bort data som inte längre behövs
+
+Mer information finns i [planera och hantera kostnader för Azure Machine Learning](concept-plan-manage-cost.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

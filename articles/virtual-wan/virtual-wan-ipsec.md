@@ -1,20 +1,21 @@
 ---
-title: IPsec-standardprinciper för virtuella Azure-nätverk | Microsoft Docs
+title: Virtuella WAN-principer för VPN för plats-till-plats
+titleSuffix: Azure Virtual WAN
 description: Lär dig mer om Azures principer för virtuella WAN-nätverk, inklusive standard principer för initierare och responder och anpassade princip kombinationer.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/24/2021
 ms.author: cherylmc
-ms.openlocfilehash: 30c58a26a326370a2566bc9ebbec33bfbd4b3173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726690"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Standard principer för virtuella WAN-nätverk för IPsec-anslutning
+# <a name="site-to-site-ipsec-policies"></a>IPsec-principer för plats-till-plats
 
 Den här artikeln visar de kombinationer av IPsec-principer som stöds.
 
@@ -29,4 +30,5 @@ Den här artikeln visar de kombinationer av IPsec-principer som stöds.
 ## <a name="next-steps"></a>Nästa steg
 
 Steg för att konfigurera en anpassad IPsec-princip finns i [Konfigurera en anpassad IPsec-princip för virtuellt WAN](virtual-wan-custom-ipsec-portal.md).
+
 Mer information om virtuellt WAN finns i [om Azure Virtual WAN](virtual-wan-about.md) och [vanliga frågor och svar om Azure Virtual WAN](virtual-wan-faq.md).

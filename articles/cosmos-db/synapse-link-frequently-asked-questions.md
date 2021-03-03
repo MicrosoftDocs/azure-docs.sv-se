@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692274"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Vanliga frågor och svar om Azure Synapse Link för Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -73,6 +73,10 @@ Azure Cosmos DB garanterar prestanda isolering mellan transaktions-och analys ar
 Ja du kan konfigurera en [hanterad privat slut punkt](analytical-store-private-endpoints.md) och begränsa nätverks åtkomsten till analytisk lagring till Azure Synapse-hanterade virtuella nätverk. Hanterade privata slut punkter upprättar en privat länk till analys lagret. Den privata slut punkten begränsar också skriv åtkomst till transaktions lagring, bland annat Azure-datatjänster.
 
 Du kan lägga till både transaktions lager och analys lager privata slut punkter till samma Azure Cosmos DB konto i en Azure Synapse Analytics-arbetsyta. Om du bara vill köra analytiska frågor kanske du bara vill mappa den analytiska privata slut punkten.
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Kan jag använda Kundhanterade nycklar med Azure Cosmos DB Analytical Store?
+
+Du kan enkelt kryptera data i transaktions-och analys lager med samma Kundhanterade nycklar på ett automatiskt och transparent sätt. Om du använder Kundhanterade nycklar med Azure Cosmos DB analys lager krävs ytterligare konfiguration på ditt konto. Kontakta Azure Cosmos DB- [teamet](mailto:azurecosmosdbcmk@service.microsoft.com)  om du vill ha mer information.
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>Avspeglas borttagnings-och uppdaterings åtgärder i transaktions arkivet i analys lagret?
 

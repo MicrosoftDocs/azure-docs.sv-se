@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/12/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: e3f92f445068b98c12069577ddf61a71568e403b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8b5e74d12af92b5d300e638bee27020a5af5383c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690387"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Vad är Azure Machine Learning pipelines?
 
@@ -95,22 +95,27 @@ experiment = Experiment(ws, 'MyExperiment')
 
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
+prepped_data_path = OutputFileDatasetConfig(name="output_path")
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
-    compute_target=cluster,
-    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
-    )
-output_data = OutputFileDatasetConfig()
-input_named = input_data.as_named_input('input')
-
-steps = [ PythonScriptStep(
-    script_name="train.py",
-    arguments=["--input", input_named.as_download(), "--output", output_data],
+    source_directory="prep_src",
     compute_target=compute_target,
-    source_directory="myfolder"
-) ]
+    arguments=["--prepped_data_path", prepped_data_path],
+    inputs=[input_dataset.as_named_input('raw_data').as_mount() ]
+    )
+
+prepped_data = prepped_data_path.read_delimited_files()
+
+train_step = PythonScriptStep(
+    name="train",
+    script_name="train.py",
+    compute_target=compute_target,
+    arguments=["--prepped_data", prepped_data],
+    source_directory="train_src"
+)
+steps = [ dataprep_step, train_step ]
 
 pipeline = Pipeline(workspace=ws, steps=steps)
 
@@ -118,9 +123,13 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Kodfragmentet börjar med vanliga Azure Machine Learning objekt, a `Workspace` , a `Datastore` , a, [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)och en `Experiment` . Sedan skapar koden de objekt som ska behållas `input_data` och `output_data` . `input_data`Är en instans av [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) och `output_data` är en instans av [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py). För `OutputFileDatasetConfig` standard beteendet är att kopiera utdata till `workspaceblobstore` data lagret under sökvägen `/dataset/{run-id}/{output-name}` , där `run-id` är körningens ID och `output-name` är ett automatiskt genererat värde om det inte anges av utvecklaren.
+Kodfragmentet börjar med vanliga Azure Machine Learning objekt, a `Workspace` , a `Datastore` , a, [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)och en `Experiment` . Sedan skapar koden de objekt som ska behållas `input_data` och `prepped_data_path` . `input_data`Är en instans av [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) och `prepped_data_path` är en instans av [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py). För `OutputFileDatasetConfig` standard beteendet är att kopiera utdata till `workspaceblobstore` data lagret under sökvägen `/dataset/{run-id}/{output-name}` , där `run-id` är körningens ID och `output-name` är ett automatiskt genererat värde om det inte anges av utvecklaren.
 
-Matrisen `steps` innehåller ett enda element, ett `PythonScriptStep` som kommer att använda data objekt och köras på `compute_target` . Sedan instansierar koden `Pipeline` själva objektet och skickar i matrisen för arbets ytor och steg. Anropet till `experiment.submit(pipeline)` startar körningen av Azure ml-pipeline. Anropet till `wait_for_completion()` block tills pipelinen är slutförd. 
+Data förberedelse koden (visas inte) skriver avgränsade filer till `prepped_data_path` . Dessa utdata från steget förberedelse av data skickas till `prepped_data` övnings steget. 
+
+Matrisen `steps` innehåller två `PythonScriptStep` s `dataprep_step` och `train_step` . Azure Machine Learning analyserar data beroendet av `prepped_data` och kör `dataprep_step` före `train_step` . 
+
+Sedan instansierar koden `Pipeline` själva objektet och skickar i matrisen för arbets ytor och steg. Anropet till `experiment.submit(pipeline)` startar körningen av Azure ml-pipeline. Anropet till `wait_for_completion()` block tills pipelinen är slutförd. 
 
 Om du vill veta mer om hur du ansluter din pipeline till dina data kan du läsa artikeln [data åtkomst i Azure Machine Learning](concept-data.md) och [Flytta data till och mellan ml steg för steg (python)](how-to-move-data-in-out-of-pipelines.md). 
 
@@ -136,7 +145,7 @@ När du visuellt utformar pipeliner visas indata och utdata för ett steg på et
 
 De främsta fördelarna med att använda pipeliner för dina Machine Learning-arbetsflöden är:
 
-|Nyckel förmån|Description|
+|Nyckel förmån|Beskrivning|
 |:-------:|-----------|
 |**Obevakade &nbsp; körningar**|Schemalägg steg som ska köras parallellt eller i följd på ett tillförlitligt och obevakat sätt. Förberedelse av data och modellering kan senaste dagar eller veckor, och pipelines gör att du kan fokusera på andra uppgifter medan processen körs. |
 |**Heterogena-beräkning**|Använd flera pipelines som är tillförlitligt koordinerade över heterogena och skalbara beräknings resurser och lagrings platser. Effektiv användning av tillgängliga beräknings resurser genom att köra enskilda pipeline-steg för olika beräknings mål, till exempel HDInsight, GPU: ar för data vetenskap och Databricks.|

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: cdc5de8153e8b2e0ea8bb8ea372fe8610ccb895b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680358"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694809"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Lägg till stavnings kontroll i frågor i Kognitiv sökning
 
@@ -36,7 +36,7 @@ Du kan förbättra återkallning genom att stavnings kontrol lera villkoren för
   QueryLanguage krävs för stavnings kontroll och för närvarande är "en-US" det enda giltiga värdet.
 
 > [!Note]
-> Stavnings parametern är tillgänglig på alla nivåer, i samma regioner som innehåller semantisk sökning. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
+> Stavnings parametern är tillgänglig på alla nivåer, i samma regioner som innehåller semantisk sökning. Du behöver inte registrera dig för att få åtkomst till den här för hands versions funktionen. Mer information finns i [tillgänglighet och priser](semantic-search-overview.md#availability-and-pricing).
 
 ## <a name="spell-correction-with-simple-search"></a>Stavnings korrigering med enkel sökning
 
@@ -94,7 +94,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="language-considerations"></a>Språk överväganden
 
-Den queryLanguage-parameter som krävs för stavnings kontroll måste vara konsekvent med alla [språk analys](index-add-language-analyzers.md) verktyg som har tilldelats fält definitionerna i index schemat. QueryLanguage anger vilka lexikon som används för stavnings kontroll och används även som inmatade i [algoritmen för semantisk rankning](semantic-how-to-query-response.md) om du använder den. Språk analys verktyg används vid indexering och vid hämtning av matchande dokument i Sök indexet. Om queryLanguage är "en-US" måste alla språk analys verktyg också vara en engelsk variant ("en. Microsoft" eller "en. Lucene"). 
+Den queryLanguage-parameter som krävs för stavnings kontroll måste vara konsekvent med alla [språk analys](index-add-language-analyzers.md) verktyg som har tilldelats fält definitionerna i index schemat. 
+
++ queryLanguage avgör vilka lexikon som används för stavnings kontroll och används också som inmatad till [algoritmen för semantisk rankning](semantic-how-to-query-response.md) om du använder "queryType = semantisk".
+
++ Språk analys verktyg används vid indexering och frågekörningen för att hitta matchande dokument i Sök indexet. Ett exempel på en fält definition som använder en språk analys är `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` .
+
+För bästa resultat när du använder stavnings kontroll, om queryLanguage är "en-US", måste alla språk analyser också vara en engelsk variant ("en. Microsoft" eller "en. Lucene").
 
 > [!NOTE]
 > Språk-oberoende analys verktyg (till exempel nyckelord, enkel, standard, stopp, blank steg eller `standardasciifolding.lucene` ) är inte i konflikt med queryLanguage-inställningar.

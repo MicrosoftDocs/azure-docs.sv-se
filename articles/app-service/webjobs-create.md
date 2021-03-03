@@ -8,12 +8,16 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./webjobs-create-ieux
+ms.openlocfilehash: 8afc8ca9b0dedb10ecdb30e8abb22a5d0986de5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723885"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Kör bakgrunds aktiviteter med WebJobs i Azure App Service
 
@@ -66,11 +70,11 @@ when making changes in one don't forget the other two.
 
 1. I [Azure Portal](https://portal.azure.com)går du till **App Service** sidan i din app service webbapp, API-app eller mobilapp.
 
-2. Välj **WebJobs** .
+2. Välj **WebJobs**.
 
    ![Välj webbjobb](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. På sidan **WebJobs** väljer du **Lägg till** .
+2. På sidan **WebJobs** väljer du **Lägg till**.
 
     ![Webb jobbs sida](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -85,13 +89,13 @@ when making changes in one don't forget the other two.
    | **Typ** | Kontinuerlig igenkänning | [Webb jobbs typerna](#webjob-types) beskrivs tidigare i den här artikeln. |
    | **Skalning** | Flera instanser | Endast tillgängligt för kontinuerliga WebJobs. Bestämmer om programmet eller skriptet körs på alla instanser eller bara en instans. Alternativet att köra på flera instanser gäller inte för [pris nivåerna](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)kostnads fri eller delad. | 
 
-4. Klicka på **OK** .
+4. Klicka på **OK**.
 
    Det nya webb jobbet visas på sidan **WebJobs** .
 
    ![Lista över WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-2. För att stoppa eller starta om ett kontinuerligt webbjobb, högerklickar du på webb jobbet i listan och klickar på **stoppa** eller **Starta** .
+2. För att stoppa eller starta om ett kontinuerligt webbjobb, högerklickar du på webb jobbet i listan och klickar på **stoppa** eller **Starta**.
 
     ![Stoppa ett kontinuerligt webbjobb](./media/web-sites-create-web-jobs/continuousstop.png)
 
@@ -104,11 +108,11 @@ when making changes in one don't forget the other two.
 
 1. I [Azure Portal](https://portal.azure.com)går du till **App Service** sidan i din app service webbapp, API-app eller mobilapp.
 
-2. Välj **WebJobs** .
+2. Välj **WebJobs**.
 
    ![Välj webbjobb](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. På sidan **WebJobs** väljer du **Lägg till** .
+2. På sidan **WebJobs** väljer du **Lägg till**.
 
     ![Webb jobbs sida](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -123,13 +127,13 @@ when making changes in one don't forget the other two.
    | **Typ** | Utlöses | [Webb jobbs typerna](#webjob-types) beskrivs tidigare i den här artikeln. |
    | **Utlösare** | Manuell | |
 
-4. Klicka på **OK** .
+4. Klicka på **OK**.
 
    Det nya webb jobbet visas på sidan **WebJobs** .
 
    ![Lista över WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. Om du vill köra webb jobbet högerklickar du på namnet i listan och klickar på **Kör** .
+7. Om du vill köra webb jobbet högerklickar du på namnet i listan och klickar på **Kör**.
    
     ![Kör webbjobb](./media/web-sites-create-web-jobs/runondemand.png)
 
@@ -142,11 +146,11 @@ when making changes in one don't forget the other two.
 
 1. I [Azure Portal](https://portal.azure.com)går du till **App Service** sidan i din app service webbapp, API-app eller mobilapp.
 
-2. Välj **WebJobs** .
+2. Välj **WebJobs**.
 
    ![Välj webbjobb](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. På sidan **WebJobs** väljer du **Lägg till** .
+2. På sidan **WebJobs** väljer du **Lägg till**.
 
    ![Webb jobbs sida](./media/web-sites-create-web-jobs/wjblade.png)
 
@@ -162,7 +166,7 @@ when making changes in one don't forget the other two.
    | **Utlösare** | Schemalagd | Aktivera funktionen Always on för att schemalägga arbetet på ett tillförlitligt sätt. Always On är bara tillgängligt på pris nivåerna Basic, standard och Premium.|
    | **CRON-uttryck** | 0 0/20 * * * * | [Cron-uttryck](#ncrontab-expressions) beskrivs i följande avsnitt. |
 
-4. Klicka på **OK** .
+4. Klicka på **OK**.
 
    Det nya webb jobbet visas på sidan **WebJobs** .
 
@@ -196,7 +200,7 @@ Mer information finns i [Schemalägga ett utlöst webb jobb](webjobs-dotnet-depl
    
     ![Körnings information för webb jobb](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   Om du vill visa utmatnings texten i ett separat webbläsarfönster väljer du **Hämta** . Om du vill ladda ned själva texten högerklickar du på **Ladda ned** och använder webbläsarens alternativ för att spara filens innehåll.
+   Om du vill visa utmatnings texten i ett separat webbläsarfönster väljer du **Hämta**. Om du vill ladda ned själva texten högerklickar du på **Ladda ned** och använder webbläsarens alternativ för att spara filens innehåll.
    
 5. Välj länken **WebJobs** -länk överst på sidan för att gå till en lista med WebJobs.
 

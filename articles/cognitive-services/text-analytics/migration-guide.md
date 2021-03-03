@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699903"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrera till version 3. x av API för textanalys
 
 Om du använder version 2,1 av API för textanalys kommer den här artikeln att hjälpa dig att uppgradera ditt program till att använda version 3. x. Version 3,0 är allmänt tillgänglig och introducerar nya funktioner, till exempel utökad [namngiven enhets igenkänning (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) och [modell version](concepts/model-versioning.md). En för hands version av v 3.1 (v 3.1 – för hands version. x) är också tillgänglig, som lägger till funktioner som till exempel utsvars [utvinning](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). De modeller som används i v2 kommer inte att ta emot framtida uppdateringar. 
 
-## <a name="sentiment-analysis"></a>[Sentiment-analys](#tab/sentiment-analysis)
+## <a name="sentiment-analysis"></a>[Attitydanalys](#tab/sentiment-analysis)
 
 ### <a name="feature-changes"></a>Funktions ändringar 
 
@@ -29,7 +29,7 @@ Attitydanalys i version 2,1 returnerar sentiment resultat mellan 0 och 1 för va
 
 ### <a name="steps-to-migrate"></a>Steg för att migrera
 
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>REST-API
 
 Om programmet använder REST API uppdaterar du slut punkten för begäran till v3-slutpunkten för sentiment-analys. Till exempel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` . Du måste också uppdatera programmet så att det använder sentiment-etiketter som returneras i [API: et svar](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results). 
 
@@ -50,7 +50,7 @@ I version 2,1 använder API för textanalys en slut punkt för namngiven entitet
 
 ### <a name="steps-to-migrate"></a>Steg för att migrera
 
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>REST-API
 
 Om programmet använder REST API uppdaterar du slut punkten för begäran till v3-slutpunkterna för NER och/eller enhets länkning.
 
@@ -104,11 +104,11 @@ I följande tabell visas enhets kategorierna som returneras för NER v 2.1.
 
 ### <a name="feature-changes"></a>Funktions ändringar 
 
-Funktionen för språk identifiering har inte ändrats i v3 utanför slut punkts versionen, men JSON-svaret kommer att innehålla `ConfidenceScore` i stället för `score` . V3 returnerar även ett enda språk i utdata. 
+Funktionen för språk identifiering har ändrats i v3. JSON-svaret kommer att innehålla `ConfidenceScore` i stället för `score` . V3 returnerar även ett språk i ett  `detectedLanguage` attribut för varje dokument.
 
 ### <a name="steps-to-migrate"></a>Steg för att migrera
 
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>REST-API
 
 Om programmet använder REST API uppdaterar du slut punkten för begäran till v3-slutpunkten för språk identifiering. Till exempel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` . Du måste också uppdatera det program som ska användas i `ConfidenceScore` stället för `score` i [API: et svar](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results). 
 
@@ -129,7 +129,7 @@ Extraherings funktionen för nyckel fraser har inte ändrats i v3 utanför slut 
 
 ### <a name="steps-to-migrate"></a>Steg för att migrera
 
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>REST-API
 
 Om programmet använder REST API uppdaterar du slut punkten för begäran till v3-slutpunkten för extrahering av nyckel fraser. Exempelvis: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 

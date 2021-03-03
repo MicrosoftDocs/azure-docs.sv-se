@@ -2,16 +2,20 @@
 title: Kontinuerlig export av telemetri från Application Insights | Microsoft Docs
 description: Exportera diagnostik-och användnings data till lagring i Microsoft Azure och ladda ned dem därifrån.
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584238"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737043"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportera telemetri från Application Insights
 Vill du behålla din telemetri längre än standard kvarhållningsperioden? Eller bearbeta den på ett visst sätt? Kontinuerlig export är idealisk för detta. De händelser som visas i Application Insights-portalen kan exporteras till lagring i Microsoft Azure i JSON-format. Därifrån kan du hämta dina data och skriva vilken kod du behöver för att bearbeta den.  
+
+> [!IMPORTANT]
+> Kontinuerlig export är föråldrad. [Migrera till en arbets yta-baserad Application Insights resurs](convert-classic-resource.md) om du vill använda [diagnostikinställningar](#diagnostic-settings-based-export) för att exportera telemetri.
 
 > [!NOTE]
 > Löpande export stöds bara för klassiska Application Insights-resurser. [Arbetsytebaserade Application Insights-resurser](./create-workspace-resource.md) måste använda [diagnostikinställningar](./create-workspace-resource.md#export-telemetry).
@@ -27,6 +31,44 @@ Innan du konfigurerar kontinuerlig export finns det några alternativ som du kan
 * Du kan också komma åt konfigurations [kontinuerlig export via PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 När kontinuerlig export kopierar dina data till lagrings utrymmet (där det kan fortsätta så länge som du vill), är det fortfarande tillgängligt i Application Insights för den normala [kvarhållningsperioden](./data-retention-privacy.md).
+
+## <a name="supported-regions"></a>Regioner som stöds
+
+Kontinuerlig export stöds i följande regioner:
+
+* Sydostasien
+* Kanada, centrala
+* Indien, centrala
+* Europa, norra
+* Storbritannien, södra
+* Australien, östra
+* Japan, östra
+* Sydkorea, centrala
+* Frankrike, centrala
+* Asien, östra
+* USA, västra
+* USA, centrala
+* USA, östra 2
+* USA, södra centrala
+* USA, västra 2
+* Sydafrika, norra
+* USA, norra centrala
+* Brasilien, södra
+* Schweiz, norra
+* Australien, sydöstra
+* Storbritannien, västra
+* Tyskland, västra centrala
+* Schweiz, västra
+* Australien, centrala 2
+* Förenade Arabemiraten Central
+* Brasilien, sydöstra
+* Australien, centrala
+* Förenade Arabemiraten, norra
+* Östra Norge
+* Japan, västra
+
+> [!NOTE]
+> Program som redan har kon figurer ATS i **Västeuropa** och **östra USA** stöds, men onboarding av nya program i dessa regioner stöds inte.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Kontinuerlig export, avancerad lagrings konfiguration
 
@@ -61,7 +103,7 @@ Det kan finnas en fördröjning på ungefär en timme innan data visas i lagring
 
 När den första exporten är klar hittar du en struktur som liknar följande i din Azure Blob Storage-behållare: (detta varierar beroende på vilka data som samlas in.)
 
-|Name | Beskrivning |
+|Namn | Beskrivning |
 |:----|:------|
 | [Tillgänglighet](export-data-model.md#availability) | Reports för [webb test för tillgänglighet](./monitor-web-app-availability.md).  |
 | [Händelse](export-data-model.md#events) | Anpassade händelser som genererats av [TrackEvent ()](./api-custom-events-metrics.md#trackevent). 

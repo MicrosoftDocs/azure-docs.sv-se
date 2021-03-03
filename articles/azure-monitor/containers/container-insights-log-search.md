@@ -1,22 +1,22 @@
 ---
-title: Så här frågar du efter loggar från Azure Monitor för behållare | Microsoft Docs
-description: Azure Monitor för behållare samlar in Mät värden och loggdata och den här artikeln beskriver posterna och innehåller exempel frågor.
+title: Så här frågar du efter loggar från container Insights | Microsoft Docs
+description: Behållar insikter samlar in statistik och loggdata och den här artikeln beskriver posterna och innehåller exempel frågor.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711118"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Så här frågar du efter loggar från Azure Monitor för behållare
+# <a name="how-to-query-logs-from-container-insights"></a>Så här frågar du efter loggar från behållar insikter
 
-Azure Monitor för behållare samlar in prestanda statistik, inventerings data och hälso tillstånds information från behållar värdar och behållare. Data samlas in var tredje minut och vidarebefordras till Log Analytics arbets ytan i Azure Monitor. Dessa data är tillgängliga för [fråga](../log-query/log-query-overview.md) i Azure Monitor. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
+Container Insights samlar in prestanda statistik, inventerings data och hälso tillstånds information från behållar värdar och behållare. Data samlas in var tredje minut och vidarebefordras till Log Analytics arbets ytan i Azure Monitor. Dessa data är tillgängliga för [fråga](../logs/log-query-overview.md) i Azure Monitor. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
 
 ## <a name="container-records"></a>Container poster
 
-I följande tabell finns information om poster som samlats in av Azure Monitor for containers. En lista över kolumn beskrivningar finns i referensen för tabellerna [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) och [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) .
+I följande tabell ges information om poster som samlas in av behållar insikter. En lista över kolumn beskrivningar finns i referensen för tabellerna [ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) och [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) .
 
 | Data | Datakälla | Datatyp | Fält |
 |------|-------------|-----------|--------|
@@ -47,7 +47,7 @@ Behållaren loggar utdata som vidarebefordras till din arbets yta är STDOUT och
 
 Det är ofta användbart att skapa frågor som börjar med ett exempel eller två och sedan ändra dem så att de passar dina behov. För att hjälpa till att bygga mer avancerade frågor kan du experimentera med följande exempel frågor:
 
-| Söka i data | Description | 
+| Söka i data | Beskrivning | 
 |-------|-------------|
 | ContainerInventory<br> &#124; projekt dator, namn, bild, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; återge tabell | Lista all information om livs cykeln för en behållare| 
 | KubeEvents_CL<br> &#124; där inte (IsEmpty (Namespace_s))<br> &#124; sortera efter TimeGenerated DESC<br> &#124; återge tabell | Kubernetes-händelser|
@@ -110,4 +110,4 @@ Resultatet visar resultat som liknar följande exempel:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Azure Monitor för behållare innehåller inte en fördefinierad uppsättning aviseringar. Mer information om hur du skapar rekommenderade aviseringar för hög processor-och minnes användning finns i avsnittet [skapa prestanda aviseringar med Azure Monitor för behållare](./container-insights-log-alerts.md) som stöder DevOps eller operativa processer och procedurer
+Behållar insikter innehåller inte en fördefinierad uppsättning aviseringar. Läs om hur du skapar rekommenderade aviseringar för hög processor-och minnes användning för att få stöd för DevOps eller operativa processer och procedurer i avsnittet [skapa prestanda aviseringar med behållar insikter](./container-insights-log-alerts.md) .

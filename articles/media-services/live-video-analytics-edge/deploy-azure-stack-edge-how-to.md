@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på Azure Stack Edge
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din Azure Stack Edge.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730277"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Distribuera video analys i real tid på Azure Stack Edge
 
@@ -42,7 +42,7 @@ Azure Stack Edge är en maskinvaru-som-tjänst-lösning och en AI-aktiverad Edge
 * [Azure Stack Edge/Data Box Gateway-resurs skapas](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Installera och konfigurera](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Anslutning och aktivering](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [Koppla en IoT Hub till Azure Stack kant](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [Koppla en IoT Hub till Azure Stack kant](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Aktivera beräknings krav i Azure Stack Edge Local UI
 
 Innan du fortsätter bör du kontrol lera att:
@@ -234,17 +234,22 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
     
 ## <a name="troubleshooting"></a>Felsökning
 
-* Kubernetes API-åtkomst (kubectl).
+* **Kubernetes API-åtkomst (kubectl)**
 
-    * Följ dokumentationen för att konfigurera datorn för [åtkomst till Kubernetes-klustret](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues).
-    * Alla distribuerade IoT Edge-moduler använder `iotedge` namn området. Se till att inkludera det när du använder kubectl.
-* Modul loggar
+    * Följ dokumentationen för att konfigurera datorn för [åtkomst till Kubernetes-klustret](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster).
+    * Alla distribuerade IoT Edge-moduler använder `iotedge` namn området. Se till att inkludera det när du använder kubectl.  
 
-    `iotedge`Verktyget kan inte användas för att hämta loggar. Du måste använda [kubectl-loggar](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  för att visa loggarna eller pipe till en fil. Exempel: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* Pod-och Node-mått
+* **Modul loggar**
 
-    Använd [kubectl överst](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  för att se Pod-och Node-mått. (Den här funktionen kommer att vara tillgänglig i nästa Azure Stack Edge-utgåva. >v2007)<br/>`kubectl top pods -n iotedge`
-* Modul nätverk för modul identifiering på Azure Stack Edge det krävs att modulen har värd port bindningen i createOptions. Modulen kommer sedan att adresseras över `moduleName:hostport` .
+    `iotedge`Verktyget kan inte användas för att hämta loggar. Du måste använda [kubectl-loggar](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)  för att visa loggarna eller pipe till en fil. Exempel: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **Pod-och Node-mått**
+
+    Använd [kubectl överst](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top)  för att se Pod-och Node-mått.
+    <br/>`kubectl top pods -n iotedge` 
+
+* **Modul nätverk**   
+För modul identifiering på Azure Stack Edge krävs det att modulen har värd port bindningen i createOptions. Modulen kommer sedan att adresseras över `moduleName:hostport` .
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
     }
     ```
     
-* Volym montering
+* **Volym montering**
 
     En modul kan inte startas om behållaren försöker montera en volym till en befintlig katalog som inte är tom.
-* Delat minne
+
+* **Delat minne när du använder gRPC**
 
     Delat minne på Azure Stack kant resurser stöds över poddar i alla namn områden med hjälp av värd-IPC.
     Konfigurera delat minne i en Edge-modul för distribution via IoT Hub.
@@ -272,7 +278,7 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
         ...
     ```
     
-* Erfar Pod Co-location
+* **Erfar Pod Co-location**
 
     När du använder K8s för att distribuera anpassade härlednings lösningar som kommunicerar med real tids analys via gRPC, måste du se till att poddar distribueras på samma noder som direktsända video analys moduler.
 
-    * Alternativ 1 – Använd Node Affinity och inbyggda Node-etiketter för samplacering.
+    * **Alternativ 1** – Använd Node Affinity och inbyggda Node-etiketter för samplacering.
 
     För närvarande går det inte att använda den anpassade konfigurationen för avvaler eftersom användarna inte har behörighet att ange etiketter på noderna. Beroende på kundens topologi och namn konventioner kanske de kan använda [inbyggda Node-etiketter](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels). Ett nodeAffinity-avsnitt som refererar Azure Stack Edge-resurser med Real Video Analytics kan läggas till i pod-manifestet för för att uppnå samplacering.
-    * Alternativ 2 – Använd Pod-tillhörighet för samplacering (rekommenderas).
+    * **Alternativ 2** – Använd Pod-tillhörighet för samplacering (rekommenderas).
 Kubernetes har stöd för [Pod-tillhörighet](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)  som kan schemalägga poddar på samma nod. Ett podAffinity-avsnitt som refererar till modulen för video analys i real tid kan läggas till i pod-manifestet för att uppnå samplacering.
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes har stöd för [Pod-tillhörighet](https://kubernetes.io/docs/concept
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **404-felkod vid användning av `rtspsim` modul**  
+Behållaren kommer att läsa videor från exakt en mapp i behållaren. Om du mappar/binder en extern mapp till den som redan finns i behållar avbildningen kommer Docker att dölja de filer som finns i behållar avbildningen.  
+ 
+    Till exempel, utan bindningar kan behållaren ha följande filer:  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    Och värden kan ha följande filer:
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    Men när följande bindning läggs till i distributions manifest filen kommer Docker att skriva över innehållet i/live/mediaServer/media för att matcha det som finns på värden.
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>Nästa steg

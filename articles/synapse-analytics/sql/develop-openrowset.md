@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9fd10d6a4fb748a61b5e1d9e27777c2fa1134039
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225621"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695710"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Använda OpenRowSet med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -97,6 +97,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
+[ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 ```
 
 ## <a name="arguments"></a>Argument
@@ -237,6 +238,10 @@ Anger om CSV-filen innehåller en rubrik rad. Standardvärdet är FALSe. Stöds 
 DATAFILETYPE = {' char ' | ' widechar '}
 
 Anger encoding: char används för UTF8, widechar används för UTF16-filer.
+
+CODEPAGE = {' ACP ' | ' OEM ' | ' RAW ' | ' code_page '}
+
+Anger tecken tabellen för data i data filen. Standardvärdet är 65001 (UTF-8-kodning). Se mer information om det här alternativet [här](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage).
 
 ## <a name="fast-delimited-text-parsing"></a>Snabb avgränsad text tolkning
 

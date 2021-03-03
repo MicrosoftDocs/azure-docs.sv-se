@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbullwin
-ms.openlocfilehash: d1f792859aa5407cfaceda0e3ed1b5c21ee160f0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ecbfb2d9acf6c62f95c264a14e306442db25e483
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043382"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703430"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>Anvisningar: diagnosticera en incident med hjälp av Metrics Advisor
 
@@ -37,17 +37,17 @@ Klicka på **incident Hub** i det vänstra navigerings fönstret för att se all
 
 Identifierade incidenter inom det valda måttet och tidsintervallet visas i listan **över incidenter**. Det finns alternativ för att filtrera och beställa incidenter. Till exempel efter allvarlighets grad. Klicka på en av incidenterna för att gå till sidan **incident** för ytterligare diagnostik.
 
-:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="Incident hubb" lightbox="../media/diagnostics/incident-list.png":::
+:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="Incident lista" lightbox="../media/diagnostics/incident-list.png":::
 
 I avsnittet **Diagnostic** kan du utföra djupgående analyser av en incident och verktyg för att identifiera rotor-orsaker.
 
-:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="Incident hubb" lightbox="../media/diagnostics/diagnose-incident.png" :::
+:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="Diagnostisera en incident" lightbox="../media/diagnostics/diagnose-incident.png" :::
 
 ## <a name="root-cause-advice"></a>Rotor sakens råd
 
 När en grupp med avvikelser upptäcks i ett mått och orsakar en incident försöker Metric Advisor analysera den bakomliggande orsaken till incidenten. **Rotor sakens råd** innehåller automatiska förslag för troliga orsaker till en incident. Den här funktionen är endast tillgänglig om det finns ett sammanställt värde i dimensionen. Om måttet inte har någon dimension blir rotor saken själva. Rotors Aker visas i höger panel och det kan finnas flera orsaker. Om det inte finns några data i tabellen innebär det att din dimension inte uppfyller kraven för att utföra analysen.
 
-:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="Incident hubb":::
+:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="Rotor sakens råd":::
 
 
 När måttet för rotor saken anges med vissa dimensioner kan du klicka på **gå till mått** om du vill visa mer information om måttet.
@@ -60,7 +60,7 @@ Trädet för snabb diagnoser är till för att diagnostisera en aktuell incident
 
 Med det interaktiva trädet kan du diagnostisera aktuella incidenter samt äldre incidenter, och de som är relaterade. När du använder det interaktiva trädet högerklickar du på en nod för att öppna en åtgärds meny där du kan välja en dimension för att öka detalj nivån i rotnoden och en dimension för att öka detalj nivån för varje nod. Genom att klicka på knappen Avbryt i dimensions listan längst upp kan du ta bort detalj nivån upp eller ned från den här dimensionen. Vänsterklicka på en nod för att välja den och visa dess serie tillsammans med den aktuella incident serien i diagrammet.
 
-:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="Incident hubb" lightbox="../media/diagnostics/incident-tree.png" :::
+:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="Incident träd" lightbox="../media/diagnostics/incident-tree.png" :::
 
 ## <a name="anomaly-drill-down"></a>Avvikelse detalj nivå nedåt
 
@@ -68,7 +68,7 @@ När du visar incident information kan du behöva få mer detaljerad information
 
 Om du vill använda funktionen detalj granskning klickar du på fliken **mått detalj** visning i **incident Hub**. 
 
-:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="Incident hubb":::
+:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="Mått borrning ":::
 
 **Dimensions** inställningen är en lista över dimensioner för en incident. du kan välja andra tillgängliga dimensions värden för var och en. När dimensions värden har ändrats. Med inställningen **tidsstämpel** kan du Visa den aktuella incidenten vid olika tidpunkter.
 
@@ -80,25 +80,25 @@ Det finns två typer av detalj nivå alternativ: **öka detalj nivån** och **v�
 > 1. Om du vill öka detalj nivån kan du utforska data från olika dimensions värden, förutom de närvarande valda dimensionerna. 
 > 2. För horisontell jämförelse kan du utforska data från olika dimensions värden, förutom alla-upp-dimensionerna.
 
-:::image type="content" source="../media/diagnostics/drill-down-dimension.png"  lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="Incident hubb":::
+:::image type="content" source="../media/diagnostics/drill-down-dimension.png" lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="Öka detalj nivån för dimension":::
 
 ### <a name="value-comparison-for-different-dimension-values"></a>Värde jämförelse för olika dimensions värden
 
 Den andra delen av fliken detaljgranska är en tabell med jämförelser för olika dimensions värden. Den innehåller värdet, bas linje värde, differens värde, delta värde och om det är en avvikelse.
  
-:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="Incident hubb" lightbox="../media/diagnostics/drill-down-comparison.png":::
+:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="Jämförelse av detalj nivå" lightbox="../media/diagnostics/drill-down-comparison.png":::
 
 
 ### <a name="value-and-expected-value-comparisons-for-different-dimension-value"></a>Värde och förväntade värde jämförelser för olika dimensions värden
 
 Det tredje avsnittet av fliken detaljgranska är ett histogram med värdena och de förväntade värdena för olika dimensions värden. Histogrammet sorteras efter skillnaden mellan värde och förväntat värde. Du kan hitta det oväntade värdet med den största effekten enkelt. I bilden ovan kan vi till exempel ta reda på att, förutom allt upp-värdet, **US7** bidrar mest till avvikelsen.
 
-:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="Incident hubb" lightbox="../media/diagnostics/drill-down-table.png":::
+:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="Detaljgranska tabell" lightbox="../media/diagnostics/drill-down-table.png":::
 
 ### <a name="raw-value-visualization"></a>Rå värde visualisering
 Den sista delen av fliken detalj granskning är ett linje diagram med RAW-värden. Med det här diagrammet behöver du inte gå till mått sidan för att visa information.
 
-:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="Incident hubb" lightbox="../media/diagnostics/drill-down-line-chart.png":::
+:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="Öka detalj nivån för linje diagram" lightbox="../media/diagnostics/drill-down-line-chart.png":::
 
 ## <a name="view-similar-anomalies-using-time-series-clustering"></a>Visa liknande avvikelser med klustring för tids serier
 
@@ -109,13 +109,13 @@ När du visar en incident kan du använda fliken **liknande tids serier – klus
 
 Tillgängliga dimensioner visas överst på fliken och du kan välja att ange serien.
 
-:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png"alt-text="Incident hubb":::
+:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png" alt-text="Serie grupp":::
 
 ## <a name="compare-time-series"></a>Jämför tids serier
 
 Ibland när en avvikelse identifieras i en viss tids serie är det bra att jämföra den med flera andra serier i samma visualisering. Klicka på fliken **Jämför verktyg** och klicka sedan på knappen blå **+ Lägg till** . 
 
-:::image type="content" source="../media/diagnostics/add-series.png" alt-text="Incident hubb" lightbox="../media/diagnostics/add-series.png":::
+:::image type="content" source="../media/diagnostics/add-series.png" alt-text="Lägg till serie som ska jämföras" lightbox="../media/diagnostics/add-series.png":::
 
 Välj en serie från datafeeden. Du kan välja samma granularitet eller en annan. Välj mål dimensionerna och Läs in serie trenden och klicka sedan på **OK** för att jämföra den med en tidigare serie. Serien placeras tillsammans i en visualisering. Du kan fortsätta att lägga till fler serier för jämförelse och få ytterligare insikter. Klicka på den nedrullningsbara menyn högst upp på fliken **Jämför verktyg** för att jämföra tids serie data över en tids period.  
 
@@ -133,7 +133,7 @@ När du har valt en tids Skift ande jämförelse kan du välja om du vill jämf�
 
 Ibland kan du behöva kontrol lera incidenter för olika mått samtidigt eller relaterade incidenter i andra mått. Du hittar en lista över relaterade incidenter i avsnittet **kors statistik analys** . 
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Incident hubb":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="relaterade incidenter över mått":::
 
 Innan du kan se relaterade incidenter för aktuella mått måste du lägga till en relation mellan måtten. Lägg till en relation genom att klicka på **mått diagram inställningar** . Endast mått med samma dimensions namn kan vara relaterade. Använd följande parametrar.
 

@@ -1,26 +1,23 @@
 ---
-title: Använda fjärr skrivbord till en virtuell Linux-dator i Azure
+title: Använda xrdp med Linux
 description: Lär dig hur du installerar och konfigurerar fjärr skrivbord (xrdp) för att ansluta till en virtuell Linux-dator i Azure med hjälp av grafiska verktyg
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196392"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695183"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installera och konfigurera fjärr skrivbord för att ansluta till en virtuell Linux-dator i Azure
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>Installera och konfigurera xrdp för att använda fjärr skrivbord med en virtuell Linux-dator
+
 Virtuella Linux-datorer (VM: ar) i Azure hanteras vanligt vis från kommando raden med hjälp av en SSH-anslutning (Secure Shell). När du har använt New to Linux eller för snabb fel söknings scenarier kan det vara enklare att använda fjärr skrivbord. Den här artikeln beskriver hur du installerar och konfigurerar en Skriv bords miljö ([xfce](https://www.xfce.org)) och fjärr skrivbord ([xrdp](http://xrdp.org)) för din virtuella Linux-dator med hjälp av distributions modellen för Resource Manager.
 
 
@@ -32,6 +29,7 @@ Den här artikeln kräver en befintlig Ubuntu 18,04 LTS-VM i Azure. Om du behöv
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Installera en Skriv bords miljö på din virtuella Linux-dator
+
 De flesta virtuella Linux-datorer i Azure har inte någon Skriv bords miljö installerad som standard. Virtuella Linux-datorer hanteras ofta med SSH-anslutningar i stället för en Skriv bords miljö. Det finns olika Skriv bords miljöer i Linux som du kan välja mellan. Beroende på ditt val av Skriv bords miljö kan det förbruka en till 2 GB disk utrymme och ta 5 till 10 minuter att installera och konfigurera alla paket som krävs.
 
 I följande exempel installeras den lätta [xfce4](https://www.xfce.org/) Desktop-miljön på en Ubuntu 18,04 LTS VM. Kommandon för andra distributioner varierar något (används `yum` för att installera på Red Hat Enterprise Linux och konfigurera lämpliga `selinux` regler, eller Använd `zypper` för att installera på SUSE, till exempel).
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Ansluta din virtuella Linux-dator till en fjärr skrivbords klient
-Öppna den lokala fjärr skrivbords klienten och Anslut till IP-adressen eller DNS-namnet för din virtuella Linux-dator. Ange användar kontot och lösen ordet för användar kontot på den virtuella datorn enligt följande:
 
-![Ansluta till xrdp med hjälp av fjärr skrivbords klienten](./media/use-remote-desktop/remote-desktop-client.png)
+Öppna den lokala fjärr skrivbords klienten och Anslut till IP-adressen eller DNS-namnet för din virtuella Linux-dator. 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="Skärm bild av fjärr skrivbords klienten.":::
+
+Ange användar kontot och lösen ordet för användar kontot på den virtuella datorn enligt följande:
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Skärm bild av xrdp-inloggnings skärmen.":::
 
 Efter autentiseringen kommer xfce desktop-miljön att läsas in och likna följande exempel:
 

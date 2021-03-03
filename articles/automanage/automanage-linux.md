@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: e36d170e1a7f918ff40c32f3225ce3a0ddbe260f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b4ca9a69ab56a81e192560a3a61ec90f82cbbe80
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663744"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688407"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Metod tips för Azure automanage för virtuella datorer – Linux
 
@@ -26,9 +26,9 @@ För alla dessa tjänster kommer vi att automatiskt registrera, konfigurera auto
 Automanage stöder följande Linux-distributioner och-versioner:
 
 - CentOS 7.3 +
-- RHEL 7.4-7,8
+- RHEL 7.4 +
 - Ubuntu 16,04 och 18,04
-- SLES 12 (alla Service Pack)
+- SLES 12 (SP3-SP5 endast)
 
 ## <a name="participating-services"></a>Deltagande tjänster
 

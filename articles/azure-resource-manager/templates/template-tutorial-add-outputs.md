@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7e022822f1306a5351cef43498f00a0ac0f2ef63
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707293"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Självstudie: Lägg till utdata i ARM-mallen
 
@@ -45,7 +45,7 @@ Det returnerade värdets typ är inställt på `object` , vilket innebär att de
 
 Funktionen [Reference](template-functions-resource.md#reference) används för att hämta lagrings kontots körnings tillstånd. Om du vill hämta körnings status för en resurs skickar du namnet eller ID: t för en resurs. I det här fallet använder du samma variabel som du använde för att skapa namnet på lagrings kontot.
 
-Slutligen returnerar den `primaryEndpoints` egenskapen från lagrings kontot
+Slutligen returnerar den `primaryEndpoints` egenskapen från lagrings kontot.
 
 ## <a name="deploy-template"></a>Distribuera mallen
 

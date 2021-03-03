@@ -3,12 +3,12 @@ title: Säkerhets kopierings lösningar för virtuella datorer i Azure VMware-l�
 description: Lär dig mer om ledande lösningar för säkerhets kopiering och återställning för dina virtuella Azure VMware-lösningar.
 ms.topic: how-to
 ms.date: 01/11/2021
-ms.openlocfilehash: 650272a28a7b7639941c30d8d81c6de5a13bcdb3
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6a404f6e57f6e278f60dd63df36a90bb5f6664f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738471"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Säkerhets kopierings lösningar för virtuella datorer med Azure VMware-lösningen (VM)
 
@@ -22,3 +22,4 @@ Du hittar mer information om dessa säkerhets kopierings lösningar här:
 - [CommVault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
 - [Veritas](https://vrt.as/nb4avs)
 - [Veeam](https://www.veeam.com/kb4012)
+- [Cohesity](https://www.cohesity.com/resource-assets/solution-brief/Cohesity-Azure-Solution-Brief.pdf)

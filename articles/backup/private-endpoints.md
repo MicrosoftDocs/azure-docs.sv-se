@@ -3,12 +3,12 @@ title: Privata slutpunkter
 description: Förstå processen med att skapa privata slut punkter för Azure Backup och scenarier där privata slut punkter används för att upprätthålla säkerheten för dina resurser.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362594"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728220"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privata slut punkter för Azure Backup
 
@@ -170,9 +170,9 @@ Om du använder dina anpassade DNS-servrar måste du skapa de DNS-zoner som krä
     > I ovanstående text `<geo>` avser region koden (till exempel *EUs* och *Ne* för USA, östra och Nord Europa). Se följande listor för regions koder:
     >
     > - [Alla offentliga moln](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
-    > - [Kina](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-    > - [Tyskland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-    > - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+    > - [Kina](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [Tyskland](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 1. Därefter måste vi lägga till de DNS-poster som krävs. Om du vill visa de poster som behöver läggas till i DNS-zonen för säkerhets kopiering navigerar du till den privata slut punkt som du skapade ovan och går till alternativet **DNS-konfiguration** i det vänstra navigerings fältet.
 

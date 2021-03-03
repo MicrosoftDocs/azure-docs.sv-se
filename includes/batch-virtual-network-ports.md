@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750876"
 ---
 ### <a name="general-requirements"></a>Allmänna krav
 
 * Det virtuella nätverket måste vara i samma prenumeration och region som det Batch-konto som du använder för att skapa din pool.
-
-* Den pool som använder det virtuella nätverket kan ha högst 4 096 noder.
 
 * Det undernät som anges för poolen måste ha tillräckliga otilldelade IP-adresser för det antal virtuella datorer som är mål för poolen. Summan av egenskaperna `targetDedicatedNodes` och `targetLowPriorityNodes` för poolen. Om undernätet inte har tillräckligt med lediga IP-adresser, allokerar poolen datornoderna partiellt och ett storleksändringsfel inträffar.
 
@@ -67,23 +65,29 @@ Du behöver inte ange NSG: er på under näts nivån för det virtuella nätverk
 
 Konfigurera inkommande trafik på port 3389 (Windows) eller 22 (Linux) endast om du behöver tillåta fjärråtkomst till Compute-noderna från externa källor. Du kan behöva aktivera port 22-regler på Linux om du behöver stöd för aktiviteter med flera instanser med vissa MPI-körningar. Att tillåta trafik på dessa portar är inte absolut nödvändigt för att datornoder ska kunna användas.
 
+> [!WARNING]
+> IP-adresser för batch-tjänsten kan ändras med tiden. Därför rekommenderar vi starkt att du använder `BatchNodeManagement` tjänst tag gen (eller en regional variant) för de NSG-regler som anges i följande tabeller. Undvik att fylla i NSG-regler med en speciell IP-adress för batch-tjänsten.
+
 **Säkerhetsregler för inkommande trafik**
 
 | Käll-IP-adresser | Käll tjänst tag gen | Källportar | Mål | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| Saknas | `BatchNodeManagement`[Service tag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (om du använder regional variant, i samma region som batch-kontot) | * | Valfri | 29876–29877 | TCP | Tillåt |
-| Användar Källans IP-adresser för fjärråtkomst fjärråtkomst till Compute-noder och/eller Compute Node-undernät för Linux-aktiviteter med flera instanser, om det behövs. | Saknas | * | Valfri | 3389 (Windows), 22 (Linux) | TCP | Tillåt |
-
-> [!WARNING]
-> IP-adresser för batch-tjänsten kan ändras med tiden. Därför rekommenderar vi starkt att du använder `BatchNodeManagement` tjänst tag gen (eller regional variant) för NSG-regler. Undvik att fylla i NSG-regler med en speciell IP-adress för batch-tjänsten.
+| Ej tillämpligt | `BatchNodeManagement`[service tag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (om du använder en regional variant, i samma region som batch-kontot) | * | Valfri | 29876–29877 | TCP | Tillåt |
+| Användar Källans IP-adresser för fjärråtkomst fjärråtkomst till Compute-noder och/eller Compute Node-undernät för Linux-aktiviteter med flera instanser, om det behövs. | Ej tillämpligt | * | Valfri | 3389 (Windows), 22 (Linux) | TCP | Tillåt |
 
 **Säkerhetsregler för utgående trafik**
 
 | Källa | Källportar | Mål | Måltjänsttagg | Målportar | Protokoll | Action |
 | --- | --- | --- | --- | --- | --- | --- |
 | Valfri | * | [Tjänsttagg](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (om du använder regional variant, i samma region som batch-kontot) | 443 | TCP | Tillåt |
+| Valfri | * | [Tjänsttagg](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (om du använder regional variant, i samma region som batch-kontot) | 443 | TCP | Tillåt |
+
+Utgående till `BatchNodeManagement` krävs för att kontakta batch-tjänsten från Compute-noderna, till exempel för Job Manager-uppgifter.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pooler i Cloud Services-konfigurationen
+
+> [!WARNING]
+> Konfigurations pooler för moln tjänster är inaktuella. Använd konfigurations pooler för virtuella datorer i stället.
 
 **Virtuella nätverk som stöds** – endast klassiska virtuella nätverk
 

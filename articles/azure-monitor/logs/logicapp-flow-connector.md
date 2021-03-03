@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d93e3ec08ff16a1fcca0c914b9e817d4ca89d60
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707956"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor loggar Connector för Logic Apps och energi automatisering
 Med [Azure Logic Apps](../../logic-apps/index.yml) och [energi spar läge](https://flow.microsoft.com) kan du skapa automatiserade arbets flöden med hundratals åtgärder för olika tjänster. Med anslutnings programmet för Azure Monitor loggar kan du bygga arbets flöden som hämtar data från en Log Analytics arbets yta eller ett Application Insights program i Azure Monitor. I den här artikeln beskrivs de åtgärder som ingår i kopplingen och en genom gång av hur du skapar ett arbets flöde med dessa data.
@@ -125,6 +125,6 @@ När Logic-appen har slutförts, kontrol lera e-postmeddelandets mottagare som d
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [logg frågor i Azure Monitor](../log-query/log-query-overview.md).
+- Lär dig mer om [logg frågor i Azure Monitor](./log-query-overview.md).
 - Läs mer om [Logic Apps](../../logic-apps/index.yml)
 - Lär dig mer om att [Automatisera energi](https://flow.microsoft.com).

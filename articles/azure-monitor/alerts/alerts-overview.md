@@ -1,15 +1,15 @@
 ---
 title: Översikt över aviseringar och meddelande övervakning i Azure
-description: Översikt över aviseringar i Azure. Aviseringar, klassiska aviseringar och aviserings gränssnittet.
+description: Översikt över aviseringar i Azure Monitor
 ms.subservice: alerts
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: e2d447b7407ed874d9c183c5cd2009882f1d6b3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622030"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723596"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Översikt över aviseringar i Microsoft Azure 
 
@@ -94,7 +94,7 @@ I stället kan du [program mässigt räkna upp de aviserings instanser som gener
 > [!NOTE]
    >  Du kan endast få åtkomst till aviseringar som genererats under de senaste 30 dagarna.
 
-Den visar eller spårar inte klassiska aviseringar. Du kan ändra prenumerationer eller filter parametrar för att uppdatera sidan. 
+Du kan ändra prenumerationer eller filter parametrar för att uppdatera sidan.
 
 ![Skärm bild av sidan aviseringar](media/alerts-overview/alerts-page.png)
 
@@ -167,7 +167,7 @@ När du väljer en avisering innehåller den här sidan information om avisering
 
 Sidan aviserings information innehåller följande avsnitt:
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 |:---|:---|
 | Sammanfattning | Visar egenskaper och annan viktig information om aviseringen. |
 | Historik | Visar en lista över varje åtgärd som vidtas av aviseringen och eventuella ändringar som gjorts i aviseringen. För närvarande begränsad till tillstånds ändringar. |

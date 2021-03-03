@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: e823e1efc66592e9f48b7ff5e53a176a4e8cb514
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549871"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715572"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -80,7 +80,20 @@ Kategorierna organiseras baserat på allvarlighets grad under **ansvar**, **hög
 
 #### <a name="category-exceptions"></a>Kategori undantag
 
-Du kan skapa undantag för dina webb kategori regler. Skapa en separat regel samling för Tillåt eller neka med en högre prioritet inom regel samlings gruppen. Du kan till exempel konfigurera en regel samling som tillåter `www.linkedin.com` med prioritet 100 med en regel samling som nekar **sociala nätverk** med prioritet 200. Detta skapar undantaget för den fördefinierade webb kategorin för **sociala nätverk** . 
+Du kan skapa undantag för dina webb kategori regler. Skapa en separat regel samling för Tillåt eller neka med en högre prioritet inom regel samlings gruppen. Du kan till exempel konfigurera en regel samling som tillåter `www.linkedin.com` med prioritet 100 med en regel samling som nekar **sociala nätverk** med prioritet 200. Detta skapar undantaget för den fördefinierade webb kategorin för **sociala nätverk** .
+
+#### <a name="categorization-change"></a>Ändring av kategorisering
+
+Du kan begära en kategoriserings ändring om du:
+
+ - Tänk på att en FQDN eller URL ska vara under en annan kategori 
+ 
+eller 
+
+- ha en föreslagen kategori för en Okategoriserade-FQDN eller URL
+
+Du är välkommen att skicka en begäran till [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
+ 
 
 ## <a name="known-issues"></a>Kända problem
 
@@ -98,6 +111,7 @@ Ej betrodda kund signerade certifikat|Kundens signerade certifikat är inte betr
 |Fel Källans IP-adress i aviseringar med IDP: er för HTTP (utan TLS-kontroll).|När oformaterad text-HTTP-trafik används och IDP: er utfärdar en ny avisering, och målet är en offentlig IP-adress, är den visade käll-IP-adressen fel (den interna IP-adressen visas i stället för den ursprungliga IP-adressen).|Åtgärd har schemalagts för GA.|
 |Certifikat spridning|När ett CA-certifikat används i brand väggen kan det ta mellan 5-10 minuter innan certifikatet börjar gälla.|Åtgärd har schemalagts för GA.|
 |Kringgå IDP: er|Kringgå IDP: er fungerar inte för utgående trafik i TLS, och käll-IP-adress och käll-IP-grupper stöds inte.|Åtgärd har schemalagts för GA.|
+|Stöd för TLS 1,3|TLS 1,3 stöds delvis. TLS-tunneln från klient till brand väggen baseras på TLS 1,2 och från brand väggen till den externa webb servern baseras på TLS 1,3.|Uppdateringar unders öks.|
 
 
 

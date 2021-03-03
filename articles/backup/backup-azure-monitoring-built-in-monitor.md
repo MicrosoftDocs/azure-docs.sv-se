@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig mer om övervaknings-och avis
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713379"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Övervaka Azure Backup arbets belastningar
 
@@ -119,6 +119,18 @@ Om frekvensen har angetts till en Tim sammandrag och en avisering har genererats
 Om du vill inaktivera/lösa en aktiv avisering kan du välja det List objekt som motsvarar den avisering som du vill inaktivera. Då öppnas en skärm som visar detaljerad information om aviseringen, med en **inaktive rad** knapp överst. Om du väljer den här knappen ändras aviseringens status till **inaktiv**. Du kan också inaktivera en avisering genom att högerklicka på listobjektet som motsvarar aviseringen och välja **inaktivera**.
 
 ![Inaktive ring av RS Vault-avisering](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
+
+## <a name="azure-monitor-alerts-for-azure-backup-preview"></a>Azure Monitor aviseringar för Azure Backup (förhands granskning)
+
+Azure Backup innehåller även aviseringar via Azure Monitor, så att användarna kan få en konsekvent upplevelse för aviserings hantering i olika Azure-tjänster, inklusive säkerhets kopiering. Med Azure Monitor aviseringar kan du skicka aviseringar till alla meddelande kanaler som stöds av Azure Backup till exempel e-post, ITSM, webhook, Logic app och så vidare.
+
+Den här funktionen är för närvarande tillgänglig för Azure-databaser för PostgreSQL-Server, Azure-blobbar och Azure Managed Disks. Aviseringar genereras för följande scenarier och kan nås genom att gå till ett säkerhets kopierings valv och klicka på meny alternativet **aviseringar** :
+
+- Ta bort säkerhets kopierings data
+- Säkerhets kopierings problem (för att få aviseringar om säkerhets kopierings problem, måste du registrera flaggan AFEC med namnet **EnableAzureBackupJobFailureAlertsToAzureMonitor** via Preview-portalen)
+- Återställnings problem (för att få aviseringar om återställnings problem måste du registrera flaggan AFEC med namnet **EnableAzureBackupJobFailureAlertsToAzureMonitor** via Preview Portal)
+
+Mer information om Azure Monitor aviseringar finns i [Översikt över aviseringar i Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
 
 ## <a name="next-steps"></a>Nästa steg
 

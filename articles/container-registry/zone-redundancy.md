@@ -2,13 +2,14 @@
 title: Zone-redundant register för hög tillgänglighet
 description: Läs om hur du aktiverar zon-redundans i Azure Container Registry. Skapa ett behållar register eller replikering i en tillgänglighets zon i Azure. Zon redundans är en funktion i Premium service-nivån.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 931adcf8258c48d7df42bd5927e8789d7cc871db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738114"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Aktivera zon redundans i Azure Container Registry för återhämtning och hög tillgänglighet
 
@@ -20,7 +21,7 @@ Zon redundans är en **förhands gransknings** funktion i tjänst nivån Premium
 
 ## <a name="preview-limitations"></a>Begränsningar för förhandsversion
 
-* Stöds för närvarande i följande regioner: östra USA, östra USA 2 och västra USA 2.
+* Stöds för närvarande i följande regioner: östra USA, östra USA 2, västra USA 2, norra Europa, västra Europa, Östra Japan.
 * Region konverteringar till tillgänglighets zoner stöds inte för närvarande. Om du vill aktivera stöd för tillgänglighets zoner i en region måste registret antingen skapas i önskad region, med stöd för tillgänglighets zon aktiverat, eller så måste en replikerad region läggas till med stöd för tillgänglighets zoner aktiverat.
 * Zon-redundans kan inte inaktive ras i en region.
 * [ACR-aktiviteter](container-registry-tasks-overview.md) har ännu inte stöd för tillgänglighets zoner.

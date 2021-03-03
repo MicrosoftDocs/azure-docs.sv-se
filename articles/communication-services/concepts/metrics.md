@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: edbf29b103a84240299f4a9f389a8c7a90012821
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0a80e289a6fbb8dfe9b725eaa1ef9e114d2896fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691390"
 ---
 # <a name="metrics-overview"></a>Mått översikt
 
@@ -41,7 +41,7 @@ Mer information om sammansättnings typer och tids serie agg regeringar som stö
 
 Följande åtgärder är tillgängliga för API: er för API-begäran:
 
-| Åtgärd/väg    | Description                                                                                    |
+| Åtgärd/väg    | Beskrivning                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Hämtar ett meddelande med meddelande-ID. |
 | ListChatMessages     | Hämtar en lista över chatt meddelanden från en tråd. |
@@ -68,7 +68,7 @@ Om en begäran görs till en åtgärd som inte känns igen får du ett värde sv
 
 Följande åtgärder är tillgängliga på SMS API-begäran mått:
 
-| Åtgärd/väg    | Description                                                                                    |
+| Åtgärd/väg    | Beskrivning                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | Skickar ett SMS-meddelande. |
 | SMSDeliveryReportsReceived     | Hämtar rapporter om SMS-leverans |
@@ -81,12 +81,14 @@ Följande åtgärder är tillgängliga på SMS API-begäran mått:
 
 Följande åtgärder är tillgängliga i mått för autentiserings-API-begär Anden:
 
-| Åtgärd/väg    | Description                                                                                    |
+| Åtgärd/väg    | Beskrivning                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Skapar en identitet som representerar en enskild användare. |
 | DeleteIdentity       | Tar bort en identitet. |
 | Skapatoken          | Skapar en åtkomsttoken. |
 | RevokeToken          | Återkallar alla åtkomsttoken som skapats för en identitet före angiven tid. |
+
+:::image type="content" source="./media/acs-auth-metrics.png" alt-text="Mått för autentiserings förfrågan.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

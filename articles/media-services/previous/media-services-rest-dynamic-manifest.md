@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 04a9776ca2686aebbb7668c86f5afcd61f5f9238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b0271edbbd119e1d60f30cc149ba7772fd0cfa9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730226"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Skapa filter med Azure Media Services REST API
 
@@ -32,7 +32,7 @@ ms.locfileid: "90530190"
 > 
 > 
 
-Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör det möjligt för kunderna att välja att göra saker som: endast uppspelning av en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar arkiveras via **dynamiskt manifest**s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
+Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör det möjligt för kunderna att välja att göra saker som: endast uppspelning av en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar arkiveras via **dynamiskt manifest** s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
 
 Mer detaljerad information om filter och dynamiskt manifest finns i [Översikt över dynamiska manifest](media-services-dynamic-manifest-overview.md).
 
@@ -174,7 +174,7 @@ HTTP/1.1 201 Created
 ```
 
 ## <a name="list-filters"></a>Lista filter
-### <a name="get-all-global-filters-in-the-ams-account"></a>Hämta alla globala **filter**i AMS-kontot
+### <a name="get-all-global-filters-in-the-ams-account"></a>Hämta alla globala **filter** i AMS-kontot
 Använd följande HTTP-förfrågningar för att lista filter: 
 
 #### <a name="http-request"></a>HTTP-begäran
@@ -190,7 +190,7 @@ x-ms-version: 2.19
 Host: media.windows.net 
 ```
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>Hämta **AssetFilter**s som är kopplade till en till gång
+### <a name="get-assetfilters-associated-with-an-asset"></a>Hämta **AssetFilter** s som är kopplade till en till gång
 #### <a name="http-request"></a>HTTP-begäran
 
 ```console
@@ -363,7 +363,7 @@ I följande exempel visas hur du lägger till filter till dina strömmande URL: 
 
 **Smooth Streaming**
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
     
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning

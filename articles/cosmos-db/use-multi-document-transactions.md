@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692478"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>Använd transaktioner med flera dokument i Azure Cosmos DB API för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ Transaktioner i flera dokument följer **sur** semantik:
 
 ## <a name="requirements"></a>Krav
 
-Transaktioner med flera dokument stöds i en unsharded-samling i version 4,0. Transaktioner med flera dokument stöds inte i samlingar eller i shardade-samlingar.
+Transaktioner med flera dokument stöds i en unsharded-samling i API-version 4,0. Transaktioner med flera dokument stöds inte i samlingar eller i shardade-samlingar i 4,0. Tids gränsen för transaktioner är en fast 5 sekunder.
 
 Alla driv rutiner som stöder Wire Protocol version 4,0 eller senare stöder Azure Cosmos DB-API för MongoDB transaktioner i flera dokument.
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>Köra transaktioner i flera dokument i MongoDB-gränssnittet
+> [!Note]
+> Det här exemplet fungerar inte i MongoSH beta (Shell) Embedded i MongoDB-kompassen.
 
 1. Öppna en kommando tolk, gå till katalogen där Mongo Shell version 4,0 och högre är installerad:
 

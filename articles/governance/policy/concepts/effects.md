@@ -1,14 +1,14 @@
 ---
 title: Förstå hur effekter fungerar
 description: Azure Policy definitioner har olika effekter som avgör hur efterlevnaden hanteras och rapporteras.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741828"
 ---
 # <a name="understand-azure-policy-effects"></a>Förstå Azure Policys effekter
 
@@ -19,7 +19,7 @@ Dessa effekter stöds för närvarande i en princip definition:
 - [Append](#append) (Lägg till)
 - [Audit](#audit) (Granska)
 - [AuditIfNotExists](#auditifnotexists)
-- [Deny](#deny) (Neka)
+- [Neka](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled) (Inaktiverat)
 - [Modify](#modify) (Ändra)
@@ -266,8 +266,7 @@ På samma sätt som med AuditIfNotExists kör en DeployIfNotExists princip defin
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists-utvärdering
 
-DeployIfNotExists körs ungefär 15 minuter efter att en resurs leverantör har hanterat en Create-eller Update-resurs-begäran och returnerat en status kod som lyckats. En mall distribution sker om det inte finns några relaterade resurser eller om resurserna som definieras av **ExistenceCondition** inte utvärderas till true.
-Distributionens varaktighet beror på hur komplexa resurser som ingår i mallen.
+DeployIfNotExists körs ungefär 15 minuter efter att en resurs leverantör har hanterat en skapa-eller uppdaterings prenumeration eller resurs förfrågan och returnerat en status kod som lyckats. En mall distribution sker om det inte finns några relaterade resurser eller om resurserna som definieras av **ExistenceCondition** inte utvärderas till true. Distributionens varaktighet beror på hur komplexa resurser som ingår i mallen.
 
 Under en utvärderings cykel markeras princip definitioner med en DeployIfNotExists-påverkan som matchar resurserna som icke-kompatibel, men ingen åtgärd utförs på den resursen. Befintliga icke-kompatibla resurser kan åtgärdas med en [reparations uppgift](../how-to/remediate-resources.md).
 
@@ -482,8 +481,7 @@ Exempel: Gatekeeper v2-åtkomstkontroll för att endast tillåta de angivna beh�
 
 ## <a name="modify"></a>Ändra
 
-Ändra används för att lägga till, uppdatera eller ta bort egenskaper eller taggar på en resurs under skapandet eller uppdateringen.
-Ett vanligt exempel är att uppdatera taggar på resurser som costCenter. Befintliga icke-kompatibla resurser kan åtgärdas med en [reparations uppgift](../how-to/remediate-resources.md). En enda ändra-regel kan ha valfritt antal åtgärder.
+Ändra används för att lägga till, uppdatera eller ta bort egenskaper eller taggar i en prenumeration eller resurs vid skapande eller uppdatering. Ett vanligt exempel är att uppdatera taggar på resurser som costCenter. Befintliga icke-kompatibla resurser kan åtgärdas med en [reparations uppgift](../how-to/remediate-resources.md). En enda ändra-regel kan ha valfritt antal åtgärder.
 
 Följande åtgärder stöds av modifiera:
 
@@ -571,7 +569,7 @@ Med egenskapen för **drifts** egenskaper kan du ändra flera taggar på olika s
 
 Egenskapen **operation** har följande alternativ:
 
-|Åtgärd |Description |
+|Åtgärd |Beskrivning |
 |-|-|
 |addOrReplace |Lägger till den definierade egenskapen eller taggen och värdet i resursen, även om egenskapen eller taggen redan finns med ett annat värde. |
 |Lägg till |Lägger till den definierade egenskapen eller taggen och värdet i resursen. |
@@ -648,7 +646,7 @@ Exempel 3: se till att ett lagrings konto inte tillåter offentlig BLOB-åtkomst
 
 ## <a name="layering-policy-definitions"></a>Skikt princip definitioner
 
-En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Till exempel:
+En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Exempel:
 
 - Princip 1
   - Begränsar resursens plats till "väst"

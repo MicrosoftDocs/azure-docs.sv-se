@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 1b65191e97402f2fb352c56664dad085c448242c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650642"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Självstudie: Azure Active Directory integrering med TalentLMS
 
@@ -170,11 +170,11 @@ Om du vill att Azure AD-användare ska kunna logga in på TalentLMS måste de ti
 
     ![Lägg till användare](./media/talentlms-tutorial/IC777299.png "Lägg till användare")  
 
-    a. I text rutan för det **första namnet** anger du det första namnet på användaren som **Britta**.
+    a. I text rutan för det **första namnet** anger du det första namnet på användaren `Britta` .
 
-    b. I textrutan **Efternamn** skriver du efternamnet på användaren: **Simon**.
+    b. I text rutan **efter namn** anger du det senaste namnet på användaren `Simon` .
  
-    c. I textrutan **E-postadress** skriver du e-postadressen för användaren: `brittasimon\@contoso.com`.
+    c. I textrutan **E-postadress** skriver du e-postadressen för användaren: `brittasimon@contoso.com`.
 
     d. Klicka på **Lägg till användare**.
 

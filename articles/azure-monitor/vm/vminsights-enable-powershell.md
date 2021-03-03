@@ -1,33 +1,33 @@
 ---
-title: Aktivera Azure Monitor for VMs med PowerShell
-description: Beskriver hur du aktiverar Azure Monitor for VMs för virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure PowerShell.
+title: Aktivera VM Insights med PowerShell
+description: Beskriver hur du aktiverar VM Insights för virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure PowerShell.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 83b17e021ce8003b5dbd279886edfdc199f58ce3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47ac71797684f82dfd94acff2d18bca11b2f50d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625127"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717085"
 ---
-# <a name="enable-azure-monitor-for-vms-using-powershell"></a>Aktivera Azure Monitor for VMs med PowerShell
-I den här artikeln beskrivs hur du aktiverar Azure Monitor for VMs på virtuella Azure-datorer med hjälp av PowerShell. Den här proceduren kan användas för följande:
+# <a name="enable-vm-insights-using-powershell"></a>Aktivera VM Insights med PowerShell
+I den här artikeln beskrivs hur du aktiverar VM Insights på virtuella Azure-datorer med hjälp av PowerShell. Den här proceduren kan användas för följande:
 
 - Virtuell Azure-dator
 - Skalnings uppsättning för virtuella Azure-datorer
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa och konfigurera en Log Analytics-arbetsyta](../insights/vminsights-configure-workspace.md).
-- Se [operativ system som stöds](../insights/vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
+- [Skapa och konfigurera en Log Analytics-arbetsyta](./vminsights-configure-workspace.md).
+- Se [operativ system som stöds](./vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
 
 
 ## <a name="powershell-script"></a>PowerShell-skript
 
-Om du vill aktivera Azure Monitor for VMs för flera virtuella datorer eller skalnings uppsättningar för virtuella datorer använder du PowerShell-skriptet [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights), som är tillgängligt i Azure PowerShell galleriet. Det här skriptet upprepas genom:
+Om du vill aktivera VM-insikter för flera virtuella datorer eller skalnings uppsättningar för virtuella datorer använder du PowerShell-skriptet [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights), som är tillgängligt från Azure PowerShell galleriet. Det här skriptet upprepas genom:
 
 - Varje skalnings uppsättning för virtuella datorer och virtuella datorer i din prenumeration.
 - Den omfångs resurs grupp som anges av *ResourceGroup*.
@@ -139,7 +139,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Följande exempel visar hur du använder PowerShell-kommandon i mappen för att aktivera Azure Monitor for VMs och förstå förväntade utdata:
+Följande exempel visar hur du använder PowerShell-kommandon i mappen för att aktivera VM-insikter och förstå förväntade utdata:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -190,5 +190,5 @@ Failed: (0)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Se [använda Azure Monitor for VMS kartan](vminsights-maps.md) för att Visa identifierade program beroenden. 
+* Se [använda VM Insights-mappning](vminsights-maps.md) för att Visa identifierade program beroenden. 
 * Se [Visa Azure VM-prestanda](vminsights-performance.md) för att identifiera Flask halsar, övergripande användning och den virtuella datorns prestanda.

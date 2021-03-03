@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/29/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691492"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Inställning av en modell med Azure Machine Learning
 
@@ -25,7 +25,7 @@ Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Lea
 1. Definiera parameter Sök utrymmet
 1. Ange ett primärt mått som ska optimeras  
 1. Ange tidig avslutnings princip för körningar med lågt utförande
-1. Allokera resurser
+1. Skapa och tilldela resurser
 1. Starta ett experiment med den definierade konfigurationen
 1. Visualisera inlärnings körningar
 1. Välj den bästa konfigurationen för din modell
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 [Rutnäts sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py) stöder diskreta egenskaper. Använd rutnäts sampling om du kan budgetera till en fullständig sökning över Sök utrymmet. Har stöd för tidig avslutning av låga prestanda körningar.
 
-Utför en enkel rutnäts sökning över alla möjliga värden. Det går bara att använda rutnäts sampling med `choice` disponeringsparametrarna. Följande utrymme har exempelvis sex exempel:
+Rutnäts sampling gör en enkel rutnäts sökning över alla möjliga värden. Det går bara att använda rutnäts sampling med `choice` disponeringsparametrarna. Följande utrymme har exempelvis sex exempel:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayesiansk sampling
 
-[Bayesian-sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) baseras på algoritmen för Bayesian-optimering. Det väljer exempel baserat på hur tidigare exempel som utförs, så att nya exempel förbättrar det primära måttet.
+[Bayesian-sampling](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py) baseras på algoritmen för Bayesian-optimering. Det väljer exempel baserat på hur tidigare exempel var, så att nya exempel förbättrar det primära måttet.
 
 Bayesian-sampling rekommenderas om du har tillräckligt med budget för att utforska området för den här parametern. För bästa resultat rekommenderar vi ett maximalt antal körningar som är större än eller lika med 20 gånger antalet egenskaper som är justerade. 
 
@@ -187,7 +187,7 @@ Mer information om loggnings värden i modell inlärnings körningar finns i [Ak
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Ange princip för tidig avslutning
 
-Avsluta automatiskt dåligt utförande-körningar med en tidig avslutnings princip. Tidig avslutning förbättrar beräknings effektiviteten.
+Avsluta dåligt utförande av onormala körningar med en tidig avslutnings princip. Tidig avslutning förbättrar beräknings effektiviteten.
 
 Du kan konfigurera följande parametrar som styr när en princip tillämpas:
 
@@ -203,7 +203,7 @@ Azure Machine Learning stöder följande tidiga avslutnings principer:
 
 ### <a name="bandit-policy"></a>Bandit-princip
 
-[Bandit-principen](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) baseras på slack-eller slack och utvärderings intervall. Bandit avbryter körningar där det primära måttet inte ligger inom den angivna slack-faktorn/slack svärdet jämfört med den bästa körningen.
+[Bandit-principen](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition) baseras på slack-eller slack och utvärderings intervall. Bandit slutar köras när det primära måttet inte ligger inom den angivna slack-faktorn/slack-mängden för den mest lyckade körningen.
 
 > [!NOTE]
 > Bayesian-sampling stöder inte tidig uppsägning. När du använder Bayesian-sampling anger du `early_termination_policy = None` .
@@ -226,7 +226,7 @@ I det här exemplet tillämpas principen för tidig avslutning vid varje interva
 
 ### <a name="median-stopping-policy"></a>Median stoppar princip
 
-[Median stopp](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) är en princip för tidig avslutning som baseras på löpande medelvärden av primära mått som rapporteras av körningarna. Den här principen beräknar löpande medelvärden för alla utbildnings körningar och avslutar körningar med primära Mät värden som är lägre än median genomsnittet.
+[Median stopp](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py) är en princip för tidig avslutning som baseras på löpande medelvärden av primära mått som rapporteras av körningarna. Den här principen beräknar löpande medelvärden för alla utbildnings körningar och stoppar körningar vars primära mått är sämre än median värdet i genomsnitt.
 
 Den här principen använder följande konfigurations parametrar:
 * `evaluation_interval`: frekvensen för att tillämpa principen (valfri parameter).
@@ -238,7 +238,7 @@ from azureml.train.hyperdrive import MedianStoppingPolicy
 early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_evaluation=5)
 ```
 
-I det här exemplet tillämpas principen för tidig avslutning vid varje intervall som börjar med utvärderings intervallet 5. En körning avslutas med intervallet 5 om det bästa primära måttet är sämre än median värdet för de löpande medelvärdena över intervall 1:5 för alla utbildnings körningar.
+I det här exemplet tillämpas principen för tidig avslutning vid varje intervall som börjar med utvärderings intervallet 5. En körning stoppas med intervall 5 om det bästa primära måttet är sämre än median värdet för de löpande medelvärdena över intervall 1:5 för alla utbildnings körningar.
 
 ### <a name="truncation-selection-policy"></a>Princip för att välja trunkering
 
@@ -271,7 +271,7 @@ policy=None
 * För en restriktiv princip som ger besparingar utan att avsluta löftes jobb, bör du överväga en princip för att stoppa en median med `evaluation_interval` 1 och `delay_evaluation` 5. Dessa är restriktiva inställningar som kan ge cirka 25%-35% besparingar utan förlust av primärt mått (baserat på våra utvärderings data).
 * Om du vill ha mer aggressiva besparingar använder du bandit-principen med en mindre tillåten slack eller trunkering princip med en större trunkning i procent.
 
-## <a name="allocate-resources"></a>Allokera resurser
+## <a name="create-and-assign-resources"></a>Skapa och tilldela resurser
 
 Kontrol lera resurs budgeten genom att ange det maximala antalet körningar.
 
@@ -302,18 +302,28 @@ Ange följande om du vill [Konfigurera ett experiment för inställning av en pa
 * Principen för tidig avslutning
 * Primärt mått
 * Resurs beläggnings inställningar
-* ScriptRunConfig `src`
+* ScriptRunConfig `script_run_config`
 
 ScriptRunConfig är det utbildnings skript som kommer att köras med exempel på sina grundparametrar. Den definierar resurserna per jobb (enstaka eller flera noder) och det beräknings mål som ska användas.
 
 > [!NOTE]
->Det beräknings mål som anges i `src` måste ha tillräckligt med resurser för att uppfylla samtidiga nivåer. Mer information om ScriptRunConfig finns i [Konfigurera inlärnings körningar](how-to-set-up-training-targets.md).
+>Det beräknings mål som används i `script_run_config` måste ha tillräckligt med resurser för att uppfylla samtidiga nivåer. Mer information om ScriptRunConfig finns i [Konfigurera inlärnings körningar](how-to-set-up-training-targets.md).
 
 Konfigurera ditt inställnings experiment för en parameter:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hd_config = HyperDriveConfig(run_config=src,
+from azureml.train.hyperdrive import RandomParameterSampling, BanditPolicy, uniform, PrimaryMetricGoal
+
+param_sampling = RandomParameterSampling( {
+        'learning_rate': uniform(0.0005, 0.005),
+        'momentum': uniform(0.9, 0.99)
+    }
+)
+
+early_termination_policy = BanditPolicy(slack_factor=0.15, evaluation_interval=1, delay_evaluation=10)
+
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              primary_metric_name="accuracy",
@@ -321,6 +331,36 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_total_runs=100,
                              max_concurrent_runs=4)
 ```
+
+`HyperDriveConfig`Anger de parametrar som skickas till `ScriptRunConfig script_run_config` . `script_run_config`I sin tur skickar parametrar till övnings skriptet. Kodfragmentet ovan hämtas från exempel på antecknings bok för bärbara datorer, för att [Justera och distribuera med PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). I det här exemplet är `learning_rate` `momentum` parametrarna och justerade. Tidig avstängning av körningar bestäms av ett `BanditPolicy` , vilket stoppar en körning vars primära mått ligger utanför `slack_factor` (se [BanditPolicy-klass referens](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+
+Följande kod från exemplet visar hur de injusterade värdena tas emot, parsas och skickas till övnings skriptets `fine_tune_model` funktion:
+
+```python
+# from pytorch_train.py
+def main():
+    print("Torch version:", torch.__version__)
+
+    # get command-line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_epochs', type=int, default=25,
+                        help='number of epochs to train')
+    parser.add_argument('--output_dir', type=str, help='output directory')
+    parser.add_argument('--learning_rate', type=float,
+                        default=0.001, help='learning rate')
+    parser.add_argument('--momentum', type=float, default=0.9, help='momentum')
+    args = parser.parse_args()
+
+    data_dir = download_data()
+    print("data directory is: " + data_dir)
+    model = fine_tune_model(args.num_epochs, data_dir,
+                            args.learning_rate, args.momentum)
+    os.makedirs(args.output_dir, exist_ok=True)
+    torch.save(model, os.path.join(args.output_dir, 'model.pt'))
+```
+
+> [!Important]
+> Varje enskild parameter körs startar om utbildningen från grunden, inklusive att bygga om modellen och _alla data inläsare_. Du kan minimera denna kostnad genom att använda en Azure Machine Learning pipeline eller manuell process för att göra så mycket data förberedelse som möjligt innan din utbildning körs. 
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>Skicka inställnings experiment för för-parameter
 
@@ -335,7 +375,6 @@ hyperdrive_run = experiment.submit(hd_config)
 ## <a name="warm-start-hyperparameter-tuning-optional"></a>Varm starts justering för den här parametern (valfritt)
 
 Att hitta bästa möjliga parameter värden för din modell kan vara en iterativ process. Du kan återanvända kunskap från de fem föregående körningarna för att påskynda justeringen av en parameter.
-
 
 Varm start hanteras på olika sätt beroende på samplings metoden:
 - **Bayesian-sampling**: försök från föregående körning används som tidigare kunskap för att välja nya prover och för att förbättra det primära måttet.
@@ -368,7 +407,7 @@ Du kan konfigurera ditt inställnings experiment för att komma igång med ett t
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hd_config = HyperDriveConfig(run_config=src,
+hd_config = HyperDriveConfig(run_config=script_run_config,
                              hyperparameter_sampling=param_sampling,
                              policy=early_termination_policy,
                              resume_from=warmstart_parents_to_resume_from,

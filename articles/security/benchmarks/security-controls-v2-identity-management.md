@@ -4,19 +4,21 @@ description: Identitets hantering för Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f76ebf8609b5f4ac587800359a5cbb0c6f967f3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698611"
 ---
 # <a name="security-control-v2-identity-management"></a>Säkerhets kontroll v2: identitets hantering
 
 Identitets hantering täcker kontroller för att upprätta en säker identitets-och åtkomst kontroll med hjälp av Azure Active Directory. Detta inkluderar användning av enkel inloggning, starka autentiseringar, hanterade identiteter (och tjänst principer) för program, villkorlig åtkomst och övervakning av konto avvikelser.
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: identitets hantering](../../governance/policy/samples/azure-security-benchmark#identity-management)
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisera Azure Active Directory som centralt system för identiteter och autentisering
 
@@ -24,12 +26,12 @@ Identitets hantering täcker kontroller för att upprätta en säker identitets-
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD) är Azures standard tjänst för identitets-och åtkomst hantering. Du bör standardisera Azure AD för att styra organisationens identitets- och åtkomsthantering i:
+Azure Active Directory (Azure AD) är Azures standard tjänst för identitets-och åtkomst hantering. Du bör standardisera Azure AD för att styra organisationens identitets-och åtkomst hantering i:
 - Microsoft Cloud-resurser, till exempel Azure Portal, Azure Storage, Azure Virtual Machines (Linux och Windows), Azure Key Vault, PaaS och SaaS-program.
 
 - Organisationens resurser, till exempel program i Azure eller företagets nätverksresurser.
 
-Att skydda Azure AD bör vara en hög prioritet i din organisations rutiner för molnsäkerhet. Azure AD tillhandahåller en identitetssäkerhetspoäng för att hjälpa dig att utvärdera din status i fråga om identitetssäkerhet i relation till Microsofts rekommendationer för bästa praxis. Använd poängen för att mäta hur nära konfigurationen matchar rekommendationerna för bästa praxis och för att göra förbättringar i din säkerhetsstatus.
+Att skydda Azure AD bör vara en hög prioritet i din organisations säkerhets praxis för molnet. Azure AD ger en identitets säker Poäng för att hjälpa dig att utvärdera din position för identiteter i relation till Microsofts rekommendationer för bästa praxis. Använd poängen för att mäta hur nära konfigurationen matchar rekommendationerna för bästa praxis och för att göra förbättringar i din säkerhetsstatus.
 
 Obs! Azure AD har stöd för externa identitetsleverantörer, vilket gör det möjligt för användare utan Microsoft-konto att logga in på sina program och resurser med sin externa identitet.
 
@@ -37,7 +39,7 @@ Obs! Azure AD har stöd för externa identitetsleverantörer, vilket gör det m�
 
 - [Så skapar och konfigurerar du en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Definiera Azure AD-klientorganisationer](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Definiera Azure AD-klientorganisationer](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [Använda externa identitetsprovidrar för ett program](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Obs! Azure AD har stöd för externa identitetsleverantörer, vilket gör det m�
 
 För icke-mänskliga konton som tjänster eller automatisering använder du Azure Managed Identities, i stället för att skapa ett mer kraftfullt humant konto för att få åtkomst till resurser eller köra kod. Azure Managed identiteter kan autentiseras för Azure-tjänster och-resurser som stöder Azure AD-autentisering. Autentisering aktive ras via fördefinierade regler för åtkomst beviljande, Undvik hårdkodade autentiseringsuppgifter i källkod eller konfigurationsfiler. 
 
-För tjänster som inte har stöd för hanterade identiteter använder du Azure AD för att skapa ett huvud namn för tjänsten med begränsade behörigheter på resurs nivå i stället.  Vi rekommenderar att du konfigurerar tjänstens huvud namn med autentiseringsuppgifter för certifikatet och att de ska återgå till klient hemligheter. I båda fallen kan Azure Key Vault användas tillsammans med Azure Managed identiteter, så att körnings miljön (till exempel en Azure-funktion) kan hämta autentiseringsuppgiften från nyckel valvet.
+För tjänster som inte har stöd för hanterade identiteter använder du Azure AD för att skapa ett huvud namn för tjänsten med begränsade behörigheter på resurs nivå i stället. Vi rekommenderar att du konfigurerar tjänstens huvud namn med autentiseringsuppgifter för certifikatet och att de ska återgå till klient hemligheter. I båda fallen kan Azure Key Vault användas tillsammans med Azure Managed identiteter, så att körnings miljön (till exempel en Azure-funktion) kan hämta autentiseringsuppgiften från nyckel valvet.
 
 - [Hanterade Azure-identiteter](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -111,16 +113,17 @@ Använd enkel inloggning för Azure AD för att hantera och skydda åtkomsten ti
 |--|--|--|--|
 | IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
-Azure AD stöder starka verifierings kontroller med Multi-Factor Authentication (MFA) och starka metoder för lösen ords kryptering.  
-- Multi-Factor Authentication: Aktivera Azure AD MFA och följ Azure Security Center rekommendationer för identitets-och åtkomst hantering för MFA-installationen. MFA kan tillämpas på alla användare, välja användare eller på nivån per användare baserat på inloggnings villkor och riskfaktorer. 
+Azure AD stöder starka verifierings kontroller med Multi-Factor Authentication (MFA) och starka metoder för lösen ords kryptering.
 
-- Lösen ords kryptering: tre alternativ för lösen ords kryptering är tillgängliga: Windows Hello för företag, Microsoft Authenticator app och lokala autentiseringsmetoder som smartkort. 
+- Multi-Factor Authentication: Aktivera Azure AD MFA och följ Azure Security Center rekommendationer för identitets-och åtkomst hantering för MFA-installationen. MFA kan tillämpas på alla användare, välja användare eller på nivån per användare baserat på inloggnings villkor och riskfaktorer.
+
+- Lösen ords kryptering: tre alternativ för lösen ords kryptering är tillgängliga: Windows Hello för företag, Microsoft Authenticator app och lokala autentiseringsmetoder som smartkort.
 
 För administratörer och privilegierade användare bör du se till att den högsta nivån för metoden stark autentisering används, följt av lämplig princip för stark autentisering för andra användare.
 
-Om äldre lösenordsbaserad autentisering fortfarande används för Azure AD-autentisering, bör du tänka på att endast moln konton (användar konton som skapats direkt i Azure) har en standard lösen ords princip för bas linjen. Och hybrid konton (användar konton som kommer från lokala Active Directory) följer de lokala lösen ords principerna. När du använder lösenordsbaserad autentisering ger Azure AD en funktion för lösen ords skydd som hindrar användare från att ange lösen ord som är lätta att gissa. Microsoft tillhandahåller en global lista över blockerade lösen ord som uppdateras utifrån telemetri, och kunderna kan förstärka listan utifrån deras behov (t. ex. varumärkes-, kultur referenser osv.). Detta lösen ords skydd kan endast användas för moln-och hybrid konton. 
+Om äldre lösenordsbaserad autentisering fortfarande används för Azure AD-autentisering, bör du tänka på att endast moln konton (användar konton som skapats direkt i Azure) har en standard lösen ords princip för bas linjen. Och hybrid konton (användar konton som kommer från lokala Active Directory) följer de lokala lösen ords principerna. När du använder lösenordsbaserad autentisering ger Azure AD en funktion för lösen ords skydd som hindrar användare från att ange lösen ord som är lätta att gissa. Microsoft tillhandahåller en global lista över blockerade lösen ord som uppdateras utifrån telemetri, och kunderna kan förstärka listan utifrån deras behov (till exempel varumärkes-, kultur referenser osv.). Detta lösen ords skydd kan endast användas för moln-och hybrid konton.
 
-Obs! autentisering baserat på enbart autentiseringsuppgifter för lösen ord är känsligt för populära angrepps metoder. För högre säkerhet använder du stark autentisering, till exempel MFA och en princip för starka lösen ord. För program från tredje part och Marketplace-tjänster som kan ha standard lösen ord bör du ändra dem under installationen av den inledande tjänsten. 
+Obs! autentisering baserat på enbart autentiseringsuppgifter för lösen ord är känsligt för populära angrepps metoder. För högre säkerhet använder du stark autentisering, till exempel MFA och en princip för starka lösen ord. För program från tredje part och Marketplace-tjänster som kan ha standard lösen ord bör du ändra dem under installationen av den inledande tjänsten.
 
 - [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -155,7 +158,7 @@ Azure AD tillhandahåller följande data Källor:
 
 -   Användare som har flaggats för risk – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats.
 
-Dessa datakällor kan integreras med Azure Monitor, Azure Sentinel eller SIEM-system från tredje part.
+Dessa data källor kan integreras med Azure Monitor, Azure Sentinel eller SIEM system från tredje part.
 
 Azure Security Center kan även Varna vid vissa misstänkta aktiviteter, till exempel ett högt antal misslyckade autentiseringsförsök och föråldrade konton i prenumerationen. 
 
@@ -175,7 +178,7 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 - [Anslut data från Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **Ansvar**: Kund
 
@@ -219,7 +222,7 @@ Använd villkorlig åtkomst i Azure AD för mer detaljerad åtkomst kontroll bas
 
 Implementera Azure DevOps Credential scanner för att identifiera autentiseringsuppgifter i koden. Med scannern för autentiseringsuppgifter kan du också flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
 
-För GitHub kan du använda funktionen för identifiering av interna hemligheter till att identifiera autentiseringsuppgifter och andra hemligheter i koden.
+För GitHub kan du använda den interna hemliga skannings funktionen för att identifiera autentiseringsuppgifter eller andra former av hemligheter i koden.
 
 - [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -241,9 +244,9 @@ För GitHub kan du använda funktionen för identifiering av interna hemligheter
 
 Se till att du har moderna åtkomst kontroller och övervakning av sessioner för äldre program och de data som de lagrar och bearbetar. Även om VPN används ofta för att komma åt äldre program, har de ofta bara grundläggande åtkomst kontroll och begränsad övervakning av sessionen.
 
-Med Azure AD-programproxy kan du publicera äldre lokala program till fjärranslutna användare med enkel inloggning (SSO) samtidigt som du explicit verifierar tillförlitligheten för både fjärranslutna användare och enheter med villkorlig åtkomst i Azure AD. 
+Med Azure AD-programproxy kan du publicera äldre lokala program till fjärranslutna användare med enkel inloggning (SSO) samtidigt som du explicit verifierar tillförlitligheten för både fjärranslutna användare och enheter med villkorlig åtkomst i Azure AD.
 
-Alternativt är Microsoft Cloud App Security en CASB-tjänst (Cloud Access Security Broker) som kan tillhandahålla kontroller för att övervaka en användares programsessioner och blockera åtgärder (för både äldre lokala program och SaaS-program (Cloud program vara som en tjänst). 
+Alternativt är Microsoft Cloud App Security en CASB-tjänst (Cloud Access Security Broker) som kan tillhandahålla kontroller för att övervaka en användares programsessioner och blockera åtgärder (för både äldre lokala program och SaaS-program (Cloud program vara som en tjänst).
 
 - [Azure-AD-programproxy](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

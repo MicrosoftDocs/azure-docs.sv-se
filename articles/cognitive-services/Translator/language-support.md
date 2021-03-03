@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738148"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
-Använd Translator för att översätta till och från något av 70 + text översättnings språk. Neurala Machine Translation (NMT) är den nya standarden för AI-drivna dator översättningar med hög kvalitet och är tillgänglig som standard med hjälp av v3 av Translator när ett neurala-system är tillgängligt.
+Använd Translator för att översätta till och från något av de 90 text översättnings språken och dialekterna. Neurala Machine Translation (NMT) är den nya standarden för AI-drivna dator översättningar med hög kvalitet och är tillgänglig som standard med hjälp av v3 av Translator när ett neurala-system är tillgängligt.
 
 Du kan också använda Translator tillsammans med anpassad översättare för att skapa neurala översättnings system som förstår terminologin som används i din verksamhet och bransch, och med Microsoft Speech service kan du lägga till tal översättning till din app.
 
@@ -37,8 +37,12 @@ Translator stöder följande språk för text översättning av text.
 | Språk | Språkkod |
 |:-|:-:|
 | Afrikaans | `af` |
+| Albanska | `sq` |
+| Amhariska | `am` |
 | Arabiska | `ar` |
+| Armeniska | `hy` |
 | Assamesiska | `as` |
+| Azerbajdzjanska | `az` |
 | Bangla | `bn` |
 | Bosniska (latinsk) | `bs` |
 | Bulgariska | `bg` |
@@ -74,11 +78,13 @@ Translator stöder följande språk för text översättning av text.
 | Japanska | `ja` |
 | Kannada | `kn` |
 | Kazakiska | `kk` |
+| Kambodjanska | `km` |
 | Klingon | `tlh-Latn` |
 | Klingon (plqaD) | `tlh-Piqd` |
 | Koreanska | `ko` |
 | Kurdiska (Central) | `ku` |
 | Kurdiska (norra) | `kmr` |
+| Laos | `lo` |
 | Lettiska | `lv` |
 | Litauiska | `lt` |
 | Madagaskisk | `mg` |
@@ -87,6 +93,8 @@ Translator stöder följande språk för text översättning av text.
 | Maltesiska | `mt` |
 | Maori | `mi` |
 | Marathi | `mr` |
+| Myanmar | `my` |
+| Nepal | `ne` |
 | Norska | `nb` |
 | Odia | `or` |
 | Afghanska | `ps` |
@@ -110,6 +118,7 @@ Translator stöder följande språk för text översättning av text.
 | Tamilska | `ta` |
 | Telugu | `te` |
 | Thailändska | `th` |
+| Tigrinja | `ti` |
 | Tonganska | `to` |
 | Turkiska | `tr` |
 | Ukrainska | `uk` |
@@ -130,6 +139,7 @@ Translator identifierar följande språk för översättning och transkriberings
 | Språk | Språkkod |
 |:-|:-:|
 | Afrikaans | `af` |
+| Albanska | `sq` |
 | Arabiska | `ar` |
 | Bulgariska | `bg` |
 | Katalanska | `ca` |
@@ -152,6 +162,7 @@ Translator identifierar följande språk för översättning och transkriberings
 | Ungerska | `hu` |
 | Isländska | `is` |
 | Indonesiska | `id` |
+| Inuktitut | `iu` |
 | Iriska | `ga` |
 | Italienska | `it` |
 | Japanska | `ja` |

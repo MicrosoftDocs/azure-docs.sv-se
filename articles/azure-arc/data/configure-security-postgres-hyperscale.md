@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687982"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Konfigurera säkerhet för din Azure-Arc-aktiverade PostgreSQL-hyperskala-servergrupp
 
@@ -23,6 +23,7 @@ I det här dokumentet beskrivs olika aspekter relaterade till säkerheten i Serv
 - Användarhantering
    - Allmänna perspektiv
    - Ändra lösen ordet för den administrativa användaren _postgres_
+- Granska
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -159,13 +160,14 @@ Det allmänna formatet för kommandot att ändra lösen ordet är:
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-Där--Admin-Password är ett booleskt värde som relaterar till förekomsten av ett värde i AZDATA_PASSWORD **sessionens**miljö variabel.
-Om den AZDATA_PASSWORD **sessionens**miljö variabel finns och har ett värde, kommer att köra kommandot ovan att ange lösen ordet för postgres-användaren till värdet för denna miljö variabel.
+Där `--admin-password` är ett booleskt värde som relaterar till förekomsten av ett värde i miljövariabeln AZDATA_PASSWORD **session** .
+Om variabeln AZDATA_PASSWORD **session** -miljön finns och har ett värde, anger du lösen ordet för postgres-användaren till värdet för den här miljövariabeln om du kör kommandot ovan.
 
-Om den AZDATA_PASSWORD **sessionens**miljö variabel finns men inte har något värde eller om den AZDATA_PASSWORD **sessionens**miljö variabel inte finns, så uppmanas användaren att ange ett lösen ord interaktivt med kommandot ovan.
+Om variabeln **AZDATA_PASSWORD-** miljövariabeln finns men inte har värdet eller om variabeln AZDATA_PASSWORD **session** Environment inte finns, uppmanas användaren att ange ett lösen ord interaktivt med kommandot ovan.
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Ändra lösen ordet för den administrativa postgres-användaren på ett interaktivt sätt:
-1. Ta bort den AZDATA_PASSWORD **sessionens**miljö variabel eller ta bort dess värde
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Ändra lösen ordet för den administrativa postgres-användaren på ett interaktivt sätt
+
+1. Ta bort variabeln AZDATA_PASSWORD **sessions** miljö eller ta bort dess värde
 2. Kör kommandot:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ Om den AZDATA_PASSWORD **sessionens**miljö variabel finns men inte har något v
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>Ändra lösen ordet för den administrativa postgres-användaren med hjälp av miljövariabeln AZDATA_PASSWORD **session**:
-1. Ange värdet för den AZDATA_PASSWORD **sessionens**miljö variabel som du vill att lösen ordet ska vara.
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>Ändra lösen ordet för den administrativa postgres-användaren med hjälp av variabeln AZDATA_PASSWORD **session** -miljö:
+1. Ange värdet för den AZDATA_PASSWORD **sessionens** miljö variabel som du vill att lösen ordet ska vara.
 2. Kör kommandot:
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ Om den AZDATA_PASSWORD **sessionens**miljö variabel finns men inte har något v
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Granska
+
+För gransknings scenarier konfigurerar du Server gruppen att använda `pgaudit` tilläggen för postgres. För mer information om `pgaudit` se [ `pgAudit` GitHub-projekt](https://github.com/pgaudit/pgaudit/blob/master/README.md). Om du vill aktivera `pgaudit` tillägget i Server gruppen läser du [Använd postgresql-tillägg](using-extensions-in-postgresql-hyperscale-server-group.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Läs mer om `pgcrypto` tillägget [här](https://www.postgresql.org/docs/current/pgcrypto.html).
-- Läs mer om hur du använder postgres-tillägg [här](using-extensions-in-postgresql-hyperscale-server-group.md).
+- Se [ `pgcrypto` tillägg](https://www.postgresql.org/docs/current/pgcrypto.html)
+- Se [använda postgresql-tillägg](using-extensions-in-postgresql-hyperscale-server-group.md)
 

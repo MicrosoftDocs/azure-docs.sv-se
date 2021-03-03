@@ -66,6 +66,8 @@
           href: create-profile-container-adds.md
         - name: Använda Azure Files och Active Directory Domain Services
           href: create-file-share.md
+        - name: Installera Office med FSLogix-program behållare
+          href: fslogix-office-app-rule-editor.md
     - name: Konfigurera inställningar för värdpool
       items:
         - name: RDP-egenskaper
@@ -104,6 +106,8 @@
           href: app-attach-image-prep.md
         - name: Konfigurera en filresurs
           href: app-attach-file-share.md
+        - name: Konfigurera verktyget MSIXMGR
+          href: app-attach-msixmgr.md
     - name: Använda Microsoft Teams
       href: teams-on-wvd.md
     - name: Konfigurera Azure AD-multifaktorautentisering

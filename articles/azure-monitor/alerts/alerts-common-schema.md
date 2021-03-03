@@ -4,12 +4,12 @@ description: Förstå det vanliga aviserings schemat, varför du bör använda d
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70e37f8f1c9391eee5901f611bae579efe1cd9b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737298"
 ---
 # <a name="common-alert-schema"></a>Vanligt aviseringsschema
 
@@ -52,7 +52,7 @@ Du kan välja att välja ett gemensamt aviserings schema via åtgärds grupper p
 > 1. Följande aviserings typer stöder gemensamt schema som standard (inte opt-in krävs):
 >     * Aviseringar för smart identifiering
 > 1. Följande aviserings typer stöder för närvarande inte det gemensamma schemat:
->     * Aviseringar som genererats av [Azure Monitor for VMS](../insights/vminsights-overview.md)
+>     * Aviseringar som genererats av [VM Insights](../vm/vminsights-overview.md)
 >     * Aviseringar som genererats av [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
 
 ### <a name="through-the-azure-portal"></a>Via Azure Portal

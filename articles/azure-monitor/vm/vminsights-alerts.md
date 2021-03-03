@@ -1,36 +1,36 @@
 ---
-title: Aviseringar från Azure Monitor for VMs
-description: Beskriver hur du skapar aviserings regler från prestanda data som samlas in av Azure Monitor for VMs.
+title: Aviseringar från VM Insights
+description: Beskriver hur du skapar aviserings regler från prestanda data som samlas in av VM-insikter.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 4ae5b12f22b0cbcef7577c2eb9d4f3e3ae737590
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624209"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704063"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Så här skapar du aviseringar från Azure Monitor for VMs
-[Aviseringar i Azure Monitor](../platform/alerts-overview.md) proaktivt meddela dig om intressanta data och mönster i dina övervaknings data. Azure Monitor for VMs innehåller inte förkonfigurerade aviserings regler, men du kan skapa egna baserat på de data som samlas in. Den här artikeln innehåller vägledning om hur du skapar aviserings regler, inklusive en uppsättning exempel frågor.
+# <a name="how-to-create-alerts-from-vm-insights"></a>Så här skapar du aviseringar från VM Insights
+[Aviseringar i Azure Monitor](../alerts/alerts-overview.md) proaktivt meddela dig om intressanta data och mönster i dina övervaknings data. VM Insights innehåller inte förkonfigurerade aviserings regler, men du kan skapa egna baserat på data som samlas in. Den här artikeln innehåller vägledning om hur du skapar aviserings regler, inklusive en uppsättning exempel frågor.
 
 > [!IMPORTANT]
-> De aviseringar som beskrivs i den här artikeln baseras på logg frågor från insamlade data Azure Monitor for VMs. Detta skiljer sig från de aviseringar som skapats av [Azure Monitor för gäst hälsa för virtuella datorer](vminsights-health-overview.md) som är en funktion som för närvarande finns i en offentlig för hands version När den här funktionen närmar sig allmän tillgänglighet konsol IDE ras vägledning för aviseringar.
+> De aviseringar som beskrivs i den här artikeln baseras på logg frågor från data insamlade VM-insikter. Detta skiljer sig från de aviseringar som skapats av [Azure Monitor för gäst hälsa för virtuella datorer](vminsights-health-overview.md) som är en funktion som för närvarande finns i en offentlig för hands version När den här funktionen närmar sig allmän tillgänglighet konsol IDE ras vägledning för aviseringar.
 
 
 ## <a name="alert-rule-types"></a>Typer av varnings regler
-Azure Monitor har [olika typer av varnings regler](../platform/alerts-overview.md#what-you-can-alert-on) baserat på de data som används för att skapa aviseringen. Alla data som samlas in av Azure Monitor for VMs lagras i Azure Monitor loggar som stöder [logg aviseringar](../alerts/alerts-log.md). Du kan för närvarande inte använda [mått aviseringar](../alerts/alerts-log.md) med prestanda data som samlats in från Azure Monitor for VMS eftersom data inte samlas in i Azure Monitor mått. Om du vill samla in data för mått aviseringar installerar du [tillägget Diagnostics](../agents/diagnostics-extension-overview.md) för virtuella Windows-datorer eller [teleympkvistar-agenten](../platform/collect-custom-metrics-linux-telegraf.md) för virtuella Linux-datorer för att samla in prestanda data i mått.
+Azure Monitor har [olika typer av varnings regler](../alerts/alerts-overview.md#what-you-can-alert-on) baserat på de data som används för att skapa aviseringen. Alla data som samlas in av VM-insikter lagras i Azure Monitor loggar som stöder [logg aviseringar](../alerts/alerts-log.md). Du kan för närvarande inte använda [mått aviseringar](../alerts/alerts-log.md) med prestanda data som samlats in från VM-insikter eftersom data inte samlas in i Azure Monitor Mät värden. Om du vill samla in data för mått aviseringar installerar du [tillägget Diagnostics](../agents/diagnostics-extension-overview.md) för virtuella Windows-datorer eller [teleympkvistar-agenten](../essentials/collect-custom-metrics-linux-telegraf.md) för virtuella Linux-datorer för att samla in prestanda data i mått.
 
 Det finns två typer av logg aviseringar i Azure Monitor:
 
 - [Antal resultat varningar](../alerts/alerts-unified-log.md#count-of-the-results-table-rows) skapar en enskild avisering när en fråga returnerar minst ett angivet antal poster. Dessa är idealiska för icke-numeriska data, t. ex. Windows-och Syslog-händelser som samlas in av [Log Analytics-agenten](../agents/log-analytics-agent.md) eller för att analysera prestanda trender på flera datorer.
-- [Mått mätnings aviseringar](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) skapar en separat avisering för varje post i en fråga som har ett värde som överskrider ett tröskelvärde som definierats i aviserings regeln. Dessa varnings regler är idealiska för prestanda data som samlas in av Azure Monitor for VMs eftersom de kan skapa enskilda aviseringar för varje dator.
+- [Mått mätnings aviseringar](../alerts/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) skapar en separat avisering för varje post i en fråga som har ett värde som överskrider ett tröskelvärde som definierats i aviserings regeln. Dessa varnings regler är idealiska för prestanda data som samlas in av VM-insikter eftersom de kan skapa enskilda aviseringar för varje dator.
 
 
 ## <a name="alert-rule-walkthrough"></a>Genom gång av varnings regel
-Det här avsnittet beskriver hur du skapar en mått mätnings aviserings regel med hjälp av prestanda data från Azure Monitor for VMs. Du kan använda den här grundläggande processen med en mängd olika logg frågor för att få aviseringar om olika prestanda räknare.
+Det här avsnittet beskriver hur du skapar en mått mätnings aviserings regel med hjälp av prestanda data från VM-insikter. Du kan använda den här grundläggande processen med en mängd olika logg frågor för att få aviseringar om olika prestanda räknare.
 
 Börja med att skapa en ny aviserings regel genom att följa stegen i [skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../alerts/alerts-log.md). För **resursen** väljer du Log Analytics arbets ytan som Azure Monitor virtuella datorer ska använda i din prenumeration. Eftersom mål resursen för logg aviserings regler alltid är en Log Analytics arbets yta måste logg frågan innehålla alla filter för specifika virtuella datorer eller skalnings uppsättningar för virtuella datorer. 
 
@@ -44,7 +44,7 @@ Avsnittet **utvärdera baserat på** definierar hur ofta frågan ska köras och 
 ![Varnings regel för mått mått](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>Exempel på aviserings frågor
-Följande frågor kan användas med en mått mätnings aviserings regel med hjälp av prestanda data som samlas in av Azure Monitor for VMs. Varje sammanfattar data efter dator så att en avisering skapas för varje dator med ett värde som överstiger tröskelvärdet.
+Följande frågor kan användas med en mått mätnings aviserings regel med hjälp av prestanda data som samlas in av VM Insights. Varje sammanfattar data efter dator så att en avisering skapas för varje dator med ett värde som överstiger tröskelvärdet.
 
 ### <a name="cpu-utilization"></a>CPU-användning
 
@@ -200,5 +200,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [aviseringar i Azure Monitor](../platform/alerts-overview.md).
-- Läs mer om [logg frågor som använder data från Azure Monitor for VMS](vminsights-log-search.md).
+- Lär dig mer om [aviseringar i Azure Monitor](../alerts/alerts-overview.md).
+- Lär dig mer om [logg frågor med hjälp av data från VM-insikter](vminsights-log-search.md).

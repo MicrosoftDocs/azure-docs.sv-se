@@ -3,12 +3,12 @@ title: 'Snabb start: QnA Maker klient bibliotek för .NET'
 description: Den här snabb starten visar hur du kommer igång med QnA Maker-klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.  Med QnA Maker kan du driva en tjänst för frågor och svar från halvstrukturerat innehåll som Vanliga frågor och svar-dokument, URL:er och produkthandböcker.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 18d8dbc59d1c43961cd665a3ea98d1041516afb7
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d14c137150b802c734a0386536fbe32a6917cd92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731009"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/version-1)
 
@@ -153,7 +153,7 @@ I program `Main` metoden lägger du till variabler och kod, som visas i följand
 > [!IMPORTANT]
 > Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**. 
 
-Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v1#keys-in-qna-maker).
+Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
 - Skapa miljövariabler med namnet QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT och QNA_MAKER_RUNTIME_ENDPOINT för att lagra dessa värden.
 - Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
@@ -167,7 +167,7 @@ Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om d
 > [!IMPORTANT]
 > Gå till Azure Portal och hitta nyckeln och slut punkten för den QnA Maker resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**. 
 
-Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v2#keys-in-qna-maker).
+Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om du vill ha mer information om redigerings nyckeln följer du [nycklar i QNA Maker](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
 - Skapa miljövariabler med namnet QNA_MAKER_SUBSCRIPTION_KEY och QNA_MAKER_ENDPOINT för att lagra dessa värden.
 - Värdet för QNA_MAKER_ENDPOINT har formatet `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
@@ -184,7 +184,7 @@ Vi använder prenumerations nyckeln och redigerings nyckeln interchangably. Om d
 
 [QNA Maker](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker) använder två olika objekt modeller:
 * **[QnAMakerClient](#qnamakerclient-object-model)** är objektet för att skapa, hantera, publicera och ladda ned kunskaps listan.
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** är objektet för att fråga kunskaps basen med GenerateAnswer-API: et och skicka nya föreslagna frågor med hjälp av träna API (som en del av den [aktiva inlärningen](../concepts/active-learning-suggestions.md)).
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** är objektet för att fråga kunskaps basen med GenerateAnswer-API: et och skicka nya föreslagna frågor med hjälp av träna API (som en del av den [aktiva inlärningen](../how-to/use-active-learning.md)).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/version-2)
 

@@ -4,12 +4,12 @@ description: 'Använd API: er för fel inmatning och kluster analys tjänst för
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ff3c88b7f86294badb76ec1e8dde0c34b942509
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588981"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720518"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Inducera kontrollerade kaos i Service Fabric kluster
 Storskaliga distribuerade system som moln infrastrukturer är mycket otillförlitliga. Med Azure Service Fabric kan utvecklare skriva pålitliga distribuerade tjänster ovanpå en otillförlitlig infrastruktur. För att kunna skriva robusta distribuerade tjänster ovanpå en otillförlitlig infrastruktur måste utvecklare kunna testa stabiliteten hos sina tjänster medan den underliggande otillförlitliga infrastrukturen går igenom komplicerade tillstånds över gångar på grund av fel.

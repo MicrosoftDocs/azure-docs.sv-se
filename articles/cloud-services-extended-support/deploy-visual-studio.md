@@ -9,12 +9,12 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722678"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Skapa och distribuera en Azure Cloud Service (utökad support) med Visual Studio
 
@@ -63,7 +63,7 @@ Visual Studio Azure-projektet innehåller associationer till roll projekten i l�
 - **Tjänst definitions fil** – definierar körnings inställningarna för programmet, inklusive vilka roller som krävs, slut punkter och storlek på virtuella datorer.
 - **Tjänst konfigurations fil** – konfigurerar hur många instanser av en roll som ska köras och värdena för inställningarna som definierats för en roll.
 
-Mer information om dessa filer finns i [Konfigurera roller för en Azure-moln tjänst med Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
+Mer information om dessa filer finns i [Konfigurera roller för en Azure-moln tjänst med Visual Studio](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service).
 
 ## <a name="publish-a-cloud-service"></a>Publicera en moln tjänst
 
@@ -75,7 +75,7 @@ Mer information om dessa filer finns i [Konfigurera roller för en Azure-moln tj
 
 1. **Konto** – Välj ett konto eller Välj **Lägg till ett konto** i list rutan konto.
 
-1. **Välj din prenumeration** – Välj den prenumeration som ska användas för din distribution. Den prenumeration som du använder för att distribuera Cloud Services (utökad support) måste ha ägar-eller deltagar roller tilldelade via rollbaserad åtkomst kontroll (RBAC). Om din prenumeration inte har någon av dessa roller, se [steg för att lägga till en roll tilldelning](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-steps) för att lägga till den innan du fortsätter.
+1. **Välj din prenumeration** – Välj den prenumeration som ska användas för din distribution. Den prenumeration som du använder för att distribuera Cloud Services (utökad support) måste ha ägar-eller deltagar roller tilldelade via rollbaserad åtkomst kontroll (RBAC). Om din prenumeration inte har någon av dessa roller, se [steg för att lägga till en roll tilldelning](../role-based-access-control/role-assignments-steps.md) för att lägga till den innan du fortsätter.
 
 1. Välj **Nästa** för att gå till sidan **Inställningar** .
 
@@ -105,7 +105,7 @@ Mer information om dessa filer finns i [Konfigurera roller för en Azure-moln tj
 
    ![Diagnostikinställningar](./media/diagnostics-settings.png)
 
-   Med diagnostik kan du Felsöka en Azure-moln tjänst (eller virtuell Azure-dator). Information om diagnostik finns i [Konfigurera diagnostik för Azure Cloud Services och Virtual Machines](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Information om Application Insights finns i [Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview).
+   Med diagnostik kan du Felsöka en Azure-moln tjänst (eller virtuell Azure-dator). Information om diagnostik finns i [Konfigurera diagnostik för Azure Cloud Services och Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines). Information om Application Insights finns i [Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 1. Välj **Nästa** för att gå till sidan **Sammanfattning** .
 
@@ -126,4 +126,4 @@ Om du vill rensa Azure-resurserna som du skapade genom att följa den här själ
 
 ## <a name="next-steps"></a>Nästa steg
 
-Konfigurera kontinuerlig integrering (CI) med knappen **Konfigurera** på **publicerings** skärmen. Mer information finns i [dokumentationen om Azure pipeline](https://docs.microsoft.com/azure/devops/pipelines).
+Konfigurera kontinuerlig integrering (CI) med knappen **Konfigurera** på **publicerings** skärmen. Mer information finns i [dokumentationen om Azure pipeline](/azure/devops/pipelines).

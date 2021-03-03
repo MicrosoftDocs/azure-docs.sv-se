@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832053"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721471"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Självstudie: ändra och bygga Live Video Analytics Gateway-moduler
 
@@ -25,11 +25,13 @@ De tidigare självstudierna använder färdiga avbildningar av modulerna.
 
 För att slutföra stegen i den här självstudien behöver du:
 
-* [Node.js](https://nodejs.org/en/download/) v10 eller senare
-* [Visual Studio Code](https://code.visualstudio.com/Download) med [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) -tillägget installerat
-* [Docker](https://www.docker.com/products/docker-desktop) -motor
-* En [Azure Container Registry](../../container-registry/index.yml) som är värd för dina versioner av modulerna.
-* Ett [Azure Media Services](../../media-services/index.yml) konto. Om du har slutfört de tidigare självstudierna kan du återanvända den som du skapade tidigare.
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) v10 eller senare
+> * [Visual Studio Code](https://code.visualstudio.com/Download) med [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) -tillägget installerat
+> * [Docker](https://www.docker.com/products/docker-desktop) -motor
+> * En [Azure Container Registry](../../container-registry/index.yml) som är värd för dina versioner av modulerna.
+> * Ett [Azure Media Services](../../media-services/index.yml) konto. Om du har slutfört de tidigare självstudierna kan du återanvända den som du skapade tidigare.
 
 ## <a name="clone-the-repository"></a>Klona lagringsplatsen
 

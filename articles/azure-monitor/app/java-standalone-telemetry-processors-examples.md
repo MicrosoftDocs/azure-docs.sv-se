@@ -1,35 +1,36 @@
 ---
-title: Exempel på telemetri processorer – Azure Monitor Application Insights för Java
-description: Exempel som illustrerar telemetri-processorer i Azure Monitor Application Insights för Java
+title: Telemetri processor exempel – Azure Monitor Application Insights för Java
+description: Utforska exempel som visar telemetri-processorer i Azure Monitor Application Insights för Java.
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696320"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734595"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Exempel på telemetri processorer – Azure Monitor Application Insights för Java
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Telemetri processor exempel – Azure Monitor Application Insights för Java
 
-## <a name="includeexclude-samples"></a>Inkludera/exkludera exempel
+Den här artikeln innehåller exempel på telemetri-processorer i Application Insights för Java. Du hittar exempel för att inkludera och exkludera konfigurationer. Du hittar också exempel för attribut processorer och intervall processorer.
+## <a name="include-and-exclude-samples"></a>Inkludera och exkludera exempel
 
-### <a name="1-include-spans"></a>1. inkludera spänner
+I det här avsnittet får du se hur du tar med och exkluderar omfång. Du kommer också att se hur du utesluter flera intervall och använder selektiv bearbetning.
+### <a name="include-spans"></a>Inkludera spänner
 
-I följande exempel visas intervallen för attributen processor. Alla andra intervall som inte matchar egenskaperna bearbetas inte av den här processorn.
+Det här avsnittet visar hur du inkluderar spanar för en attribut processor. Intervall som inte matchar egenskaperna bearbetas inte av processorn.
 
-Följande villkor uppfylls för en matchning:
-* Intervall namnet måste vara lika med "spana" eller "spanB" 
+En matchning kräver att intervall namnet är lika med `spanA` eller `spanB` . 
 
-Följande är en span som matchar inkluderings-egenskaperna och processor åtgärderna tillämpas.
+Dessa omfattar matchning av include-egenskaperna och processor åtgärderna tillämpas:
 * Span1 namn: ' spana ' attribut: {kuvert: dev, test_request: 123, credit_card: 1234}
 * Span2-namn: ' spanB ' attribut: {multimiljö: dev, test_request: false}
 * Span3 namn: ' spana ' attribut: {kuvert: 1, test_request: dev, credit_card: 1234}
 
-Följande omfång matchar inte de inkluderande egenskaperna och processor åtgärderna tillämpas inte.
+Det här intervallet matchar inte include-egenskaperna och processor åtgärderna tillämpas inte:
 * Span4-namn: ' spanC ' attribut: {multimiljö: dev, test_request: false}
 
 ```json
@@ -58,19 +59,18 @@ Följande omfång matchar inte de inkluderande egenskaperna och processor åtgä
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. exkludera spänner
+### <a name="exclude-spans"></a>Exkludera spänner
 
-Följande visar exkluderade intervall för den här attributens processor. Alla intervall som matchar egenskaperna bearbetas inte av den här processorn.
+Det här avsnittet visar hur du utesluter intervall för en attribut processor. Intervall som matchar egenskaperna bearbetas inte av den här processorn.
 
-Följande villkor uppfylls för en matchning:
-* Intervall namnet måste vara lika med "spana" eller "spanB" 
+En matchning kräver att intervall namnet är lika med `spanA` eller `spanB` .
 
-Följande är en span som matchar exkluderings egenskaperna och processor åtgärderna tillämpas inte.
+Följande spänner matchar exkluderings egenskaperna och processor åtgärderna tillämpas inte:
 * Span1 namn: ' spana ' attribut: {kuvert: dev, test_request: 123, credit_card: 1234}
 * Span2-namn: ' spanB ' attribut: {multimiljö: dev, test_request: false}
 * Span3 namn: ' spana ' attribut: {kuvert: 1, test_request: dev, credit_card: 1234}
 
-Följande omfång stämmer inte överens med exkluderings egenskaperna och processor åtgärderna tillämpas.
+Det här intervallet matchar inte exkluderings egenskaperna och processor åtgärderna tillämpas:
 * Span4-namn: ' spanC ' attribut: {multimiljö: dev, test_request: false}
 
 ```json
@@ -99,19 +99,19 @@ Följande omfång stämmer inte överens med exkluderings egenskaperna och proce
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. ExcludeMulti-intervall
+### <a name="exclude-spans-by-using-multiple-criteria"></a>Uteslut spanar genom att använda flera villkor
 
-Följande visar exkluderade intervall för den här attributens processor. Alla intervall som matchar egenskaperna bearbetas inte av den här processorn.
+Det här avsnittet visar hur du utesluter intervall för en attribut processor. Intervall som matchar egenskaperna bearbetas inte av den här processorn.
 
-Följande villkor uppfylls för en matchning:
-* Ett attribut ("kuvert", "dev") måste finnas i intervallet för en matchning.
-* Så länge det finns ett attribut med nyckeln test_request i intervallet finns det en matchning.
+En matchning kräver att följande villkor uppfylls:
+* Ett attribut (till exempel `env` eller `dev` ) måste finnas i intervallet.
+* Intervallet måste ha ett attribut som har en nyckel `test_request` .
 
-Följande är en span som matchar exkluderings egenskaperna och processor åtgärderna tillämpas inte.
+Följande spänner matchar exkluderings egenskaperna och processor åtgärderna tillämpas inte.
 * Span1 namn: spanB-attribut: {multi: dev, test_request: 123, credit_card: 1234}
 * Span2 namn: ' spana ' attribut: {kuvert: dev, test_request: false}
 
-Följande omfång stämmer inte överens med exkluderings egenskaperna och processor åtgärderna tillämpas.
+Följande omfång stämmer inte överens med exkluderings egenskaperna och processor åtgärderna tillämpas:
 * Span3 namn: ' spanB ' attribut: {kuvert: 1, test_request: dev, credit_card: 1234}
 * Span4-namn: ' spanC ' attribut: {multimiljö: dev, dev_request: false}
 
@@ -151,16 +151,16 @@ Följande omfång stämmer inte överens med exkluderings egenskaperna och proce
 }
 ```
 
-### <a name="4-selective-processing"></a>4. selektiv bearbetning
+### <a name="selective-processing"></a>Selektiv bearbetning
 
-Följande visar hur du anger en uppsättning span-egenskaper som anger vilka som omfattar den här processorn som ska tillämpas på. `include`Egenskaperna anger vilka som ska tas med och `exclude` egenskaperna filtrerar bort ytterligare över intervall som inte ska bearbetas.
+I det här avsnittet visas hur du anger den uppsättning span-egenskaper som anger vilka som omfattar den här processorn som ska tillämpas på. Include-egenskaperna anger vilka intervall som ska bearbetas. Exkluderings egenskaperna filtrerar ut intervall som inte ska bearbetas.
 
-Med konfigurationen nedan matchar följande intervall egenskaperna och processor åtgärderna tillämpas:
+I följande konfiguration sträcker sig dessa över egenskaperna och processor åtgärderna tillämpas:
 
 * Span1 namn: spanB-attribut: {multimiljö: produktion, test_request: 123, credit_card: 1234, redact_trace: "falskt"}
 * Span2 namn: ' spana ' attribut: {kuvert: mellanlagring, test_request: falskt, redact_trace: true}
 
-Följande sträcker matchar inte inkluderings-egenskaperna och processor åtgärderna tillämpas inte:
+Dessa sträcker matchar inte include-egenskaperna och processor åtgärderna används inte:
 * Span3 namn: spanB-attribut: {multimiljö: produktion, test_request: true, credit_card: 1234, redact_trace: falskt}
 * Span4-namn: ' spanC ' attribut: {multimiljö: dev, test_request: false}
 
@@ -206,7 +206,7 @@ Följande sträcker matchar inte inkluderings-egenskaperna och processor åtgär
 
 ### <a name="insert"></a>Infogning
 
-Följande infogar ett nytt attribut {"Attribute1": "attributeValue1"} som sträcker sig över var nyckeln "Attribute1" inte finns.
+Följande exempel infogar det nya attributet `{"attribute1": "attributeValue1"}` i intervall där nyckeln `attribute1` inte finns.
 
 ```json
 {
@@ -230,7 +230,7 @@ Följande infogar ett nytt attribut {"Attribute1": "attributeValue1"} som sträc
 
 ### <a name="insert-from-another-key"></a>Infoga från en annan nyckel
 
-Följande använder värdet från attributet "anotherkey" för att infoga ett nytt attribut {"newKey": "värde från attributet" anotherkey "} till intervall där nyckeln" newKey "inte finns. Om attributet anotherkey inte finns infogas inget nytt attribut i spans.
+I följande exempel används värdet från attributet `anotherkey` för att infoga det nya attributet `{"newKey": "<value from attribute anotherkey>"}` i intervall där nyckeln `newKey` inte finns. Om attributet `anotherkey` inte finns infogas inget nytt attribut i intervall.
 
 ```json
 {
@@ -254,7 +254,7 @@ Följande använder värdet från attributet "anotherkey" för att infoga ett ny
 
 ### <a name="update"></a>Uppdatera
 
-Följande uppdaterar attributet till {"DB. Secret": "förbortredigeringed"} och uppdaterar attributet artavbildningsfil med värdet från attributet foo. Sträcker sig över utan attributet "artavbildningsfil" ändras inte.
+I följande exempel uppdateras attributet till `{"db.secret": "redacted"}` . Attributet uppdateras `boo` med hjälp av attributet Value från `foo` . Sträcker sig över att attributet `boo` inte ändras.
 
 ```json
 {
@@ -283,7 +283,7 @@ Följande uppdaterar attributet till {"DB. Secret": "förbortredigeringed"} och 
 
 ### <a name="delete"></a>Ta bort
 
-Följande visar hur du tar bort attribut med nyckeln credit_card.
+I följande exempel visas hur du tar bort ett attribut som har nyckeln `credit_card` .
 
 ```json
 {
@@ -306,7 +306,7 @@ Följande visar hur du tar bort attribut med nyckeln credit_card.
 
 ### <a name="hash"></a>Hash
 
-Följande visar hash-värden för befintliga attribut.
+I följande exempel visas hur du hashar befintliga attributvärden.
 
 ```json
 {
@@ -329,13 +329,13 @@ Följande visar hash-värden för befintliga attribut.
 
 ### <a name="extract"></a>Extrahera
 
-I följande exempel demonstreras användningen av regex för att skapa nya attribut baserat på värdet för ett annat attribut.
-Till exempel får http. URL = ' http://example.com/path?queryParam1=value1 , queryParam2 = värde2 ' följande attribut infogas:
-* httpProtocol: http
-* httpDomain: example.com
-* httpPath: sökväg
-* httpQueryParams: queryParam1 = värde1, queryParam2 = värde2
-* värdet http. URL ändras inte.
+Följande exempel visar hur du använder ett reguljärt uttryck (regex) för att skapa nya attribut baserat på värdet för ett annat attribut.
+Till exempel anges `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` följande attribut:
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* httpPath: `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http. URL: *ingen* ändring
 
 ```json
 {
@@ -357,8 +357,8 @@ Till exempel får http. URL = ' http://example.com/path?queryParam1=value1 , que
 }
 ```
 
-I följande exempel visas hur du bearbetar intervall som har ett intervall namn som matchar regexp-mönster.
-Den här processorn tar bort attributet "token" och kommer att obfuscate "Password"-attributet i intervall där intervall namn matchar "auth \* ". och där intervall namnet inte matchar "login \* ".
+I följande exempel visas hur du bearbetar intervall som har ett intervall namn som matchar regex-mönster.
+Den här processorn tar bort `token` attributet. Det obfuscates `password` attributet i intervall där intervall namnet matchar `auth.*` och var intervall namnet inte matchar `login.*` .
 
 ```json
 {
@@ -401,7 +401,7 @@ Den här processorn tar bort attributet "token" och kommer att obfuscate "Passwo
 
 ### <a name="name-a-span"></a>Namnge ett intervall
 
-I följande exempel anges värdena för attributet "DB. svc", "operation" och "ID" för att skapa det nya namnet på intervallet, i den ordningen, åtskiljda med värdet "::".
+I följande exempel anges värdena för attribut `db.svc` , `operation` och `id` . Den bildar det nya namnet på intervallet genom att använda dessa attribut, i den ordningen, separerade med värdet `::` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ I följande exempel anges värdena för attributet "DB. svc", "operation" och "I
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahera attribut från intervall namn
+### <a name="extract-attributes-from-a-span-name"></a>Extrahera attribut från ett intervall namn
 
-Låt oss anta att namnet på det angivna omfånget är/API/v1/Document/12345678/Update. Genom att använda följande resultat i utmatnings intervallets namn/api/v1/document/{documentId}/update läggs ett nytt attribut "documentId" = "12345678" till intervallet.
+Låt oss anta att namnet på det angivna intervallet är `/api/v1/document/12345678/update` . Följande exempel resulterar i namnet på utmatnings intervallet `/api/v1/document/{documentId}/update` . Det lägger till det nya attributet `documentId=12345678` i intervallet.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ Låt oss anta att namnet på det angivna omfånget är/API/v1/Document/12345678/
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>Extrahera attribut från intervall namn med inkludera och exkludera
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>Extrahera attribut från ett intervall namn med hjälp av include och exclude
 
-Följande visar hur du byter namn på intervall namnet till {operation_website} och lägger till attributet {Key: operation_website, value: oldSpanName} när intervallet har följande egenskaper:
-- Intervall namnet innehåller/var som helst i strängen.
-- Intervall namnet är inte ' donot/Change '.
+I följande exempel visas hur du ändrar intervall namnet till `{operation_website}` . Det lägger till ett attribut med nyckel `operation_website` och värde `{oldSpanName}` när intervallet har följande egenskaper:
+- Intervall namnet innehåller `/` var som helst i strängen.
+- Intervall namnet är inte `donot/change` .
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

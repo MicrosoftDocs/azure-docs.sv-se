@@ -7,24 +7,19 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: e2fe475b171a99ec27ed162511db289891066e00
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6863c492059ccee152ecf3d03a09e61793576bcb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715606"
 ---
-# <a name="configure-a-rule-set"></a>Konfigurera en regel uppsättning
+# <a name="configure-a-rule-set-with-azure-front-door-standardpremium-preview"></a>Konfigurera en regel uppsättning med Azure frontend-standard/Premium (för hands version)
 
 > [!Note]
 > Den här dokumentationen gäller för Azure frontend-standard/Premium (för hands version). Letar du efter information om Azures frontend-dörr? Visa [här](../front-door-overview.md).
 
-I den här självstudien visas hur du skapar en regel uppsättning och din första regel uppsättning i Azure Portal. 
-
-I den här guiden får du lära dig att:
-> [!div class="checklist"]
-> - Konfigurera regel uppsättning med hjälp av portalen.
-> - Ta bort regel uppsättning från din AFD-profil med portalen
+Den här artikeln visar hur du skapar en regel uppsättning och din första regel uppsättning i Azure Portal. Du lär dig sedan att koppla regeln till en väg från sidan regel uppsättning eller från slut punkts hanteraren.
 
 > [!IMPORTANT]
 > Azure front dörr standard/Premium (för hands version) är för närvarande en offentlig för hands version.
@@ -33,7 +28,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Innan du kan slutföra stegen i den här självstudien måste du först skapa en Azure-dörr standard/Premium. Mer information finns i [snabb start: skapa en Azure front dörr standard/Premium-profil](create-front-door-portal.md).
+* Innan du kan konfigurera en regel uppsättning måste du först skapa en Azure-frontend-standard/Premium. Mer information finns i [snabb start: skapa en Azure front dörr standard/Premium-profil](create-front-door-portal.md).
 
 ## <a name="configure-rule-set-in-azure-portal"></a>Konfigurera regel uppsättning i Azure Portal
 
@@ -65,11 +60,11 @@ I den här guiden får du lära dig att:
     1. Välj den  olänkade länken.
      
 
-    1. Sedan väljer du den slut punkt och det flöde som du vill koppla till regel uppsättningen i bladet **associera ett flöde** . 
+    1. På sidan **koppla en väg** väljer du sedan den slut punkt och det flöde som du vill koppla till regel uppsättningen. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set.png" alt-text="Skärm bild av sidan Skapa en väg.":::    
         
-    1. Klicka på *Nästa* om du vill ändra regel uppsättnings ordningen om det finns flera regel uppsättningar under vald väg. Regel uppsättningen körs uppifrån och ned. Du kan ändra order genom att välja regel uppsättningen och flytta den uppåt eller nedåt. Välj sedan *associera*.
+    1. Välj *Nästa* för att ändra regel uppsättnings ordningar om det finns flera regel uppsättningar under den valda vägen. Regel uppsättningen körs uppifrån och ned. Du kan ändra order genom att välja regel uppsättningen och flytta den uppåt eller nedåt. Välj sedan *associera*.
     
         > [!Note]
         > Du kan bara associera en regel uppsättning med en enda väg på den här sidan. Om du vill associera en regel uppsättning med flera vägar använder du slut punkts hanteraren.
@@ -86,15 +81,15 @@ I den här guiden får du lära dig att:
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1.png" alt-text="Skärm bild av val av slut punkt i slut punkts hanteraren." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-1-expanded.png":::
 
-    1. Klicka på *Redigera slut punkt*  
+    1. Välj *Redigera slut punkt*.  
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2.png" alt-text="Skärm bild av val av redigera slut punkt i slut punkts hanteraren." lightbox="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-2-expanded.png":::
 
-    1. Klicka på vägen. 
+    1. Välj vägen. 
     
          :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-3.png" alt-text="Skärm bild av att välja en väg.":::
     
-    1. På bladet *Uppdatera väg* väljer du de regel uppsättningar som du vill koppla till vägen från List rutan i *regler*. Sedan kan du ändra ordningen genom att flytta regel inställningar upp och ned. 
+    1. På sidan *Uppdatera väg* väljer du de regel uppsättningar som du vill koppla till vägen från List rutan i *regler*. Sedan kan du ändra ordningen genom att flytta regel inställningar upp och ned. 
     
         :::image type="content" source="../media/how-to-configure-rule-set/front-door-associate-rule-set-endpoint-manager-4.png" alt-text="Skärm bild av sidan uppdatera en väg.":::
     
@@ -106,7 +101,7 @@ I föregående steg konfigurerade du och associerade en regel uppsättning till 
 
 1. Gå till **sidan regel uppsättning** under **Inställningar** för att ta bort kopplingen mellan regel uppsättningen och alla tillhör ande vägar.
 
-1. Expandera till vägen, klicka på de tre punkterna Välj *Redigera vägen*.
+1. Expandera vägen och markera de tre punkterna. Välj sedan *Redigera väg*.
 
    :::image type="content" source="../media/how-to-configure-rule-set/front-door-disassociate-rule-set-1.png" alt-text="Skärm bild av väg expanderad i regel uppsättning.":::
 
@@ -126,13 +121,4 @@ I föregående steg konfigurerade du och associerade en regel uppsättning till 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen lärde du dig att:
-
-* Skapa en regel uppsättning
-* Koppla en regel uppsättning till AFD-vägen.
-* Ta bort en regel uppsättning från din AFD-profil
-
-Fortsätt till nästa självstudie om du vill lära dig hur du lägger till säkerhets rubriker med regel uppsättning.
-
-> [!div class="nextstepaction"]
-> [Säkerhets rubriker med regel uppsättning]()
+Lär dig hur du lägger till [säkerhets rubriker med regel uppsättning](how-to-add-security-headers.md).

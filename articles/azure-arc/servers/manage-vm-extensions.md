@@ -1,14 +1,14 @@
 ---
 title: Hantering av VM-tillägg med Azure Arc-aktiverade servrar
 description: Azure Arc-aktiverade servrar kan hantera distribution av virtuella dator tillägg som tillhandahåller konfiguration och automatiserings uppgifter efter distributionen med icke-virtuella datorer i Azure.
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: b39149eb7ac572ac3bd50bb6303f28d2340f387d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687914"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantera VM-tillägg med Azure Arc-aktiverade servrar
 
@@ -25,9 +25,7 @@ Med Azure Arc-aktiverade servrar kan du distribuera virtuella Azure-tillägg til
 
 Stöd för VM-tillägg för Azure Arc-aktiverade servrar ger följande viktiga fördelar:
 
-- Använd [Azure Automation tillstånds konfiguration](../../automation/automation-dsc-overview.md) för att centralt lagra konfigurationer och upprätthålla det önskade läget för Hybrid anslutna datorer som är aktiverade via DSC VM-tillägget.
-
-- Samla in loggdata för analys med [loggar i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) aktiverat via det virtuella Log Analytics agent-tillägget. Detta är användbart för att utföra komplex analys i data från olika typer av källor.
+- Samla in loggdata för analys med [loggar i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) genom att aktivera det virtuella Log Analytics agent-tillägget. Detta är användbart för att utföra komplex analys i data från olika typer av källor.
 
 - Med [Azure Monitor for VMS](../../azure-monitor/vm/vminsights-overview.md)analyseras prestandan för dina virtuella Windows-och Linux-datorer och övervaka deras processer och beroenden på andra resurser och externa processer. Detta uppnås genom att aktivera både VM-tillägg för Log Analytics agent och beroende agent.
 
@@ -51,7 +49,6 @@ Mer information om paketet för Azure Connected Machine agent och information om
 |----------|----------|-----|-----------------------|
 |Azure Defender integrerad sårbarhets-skanner |Qualys |WindowsAgent.AzureSecurityCenter |[Azure Defenders integrerade lösning för sårbarhets bedömning för Azure och hybrid datorer](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Anpassat skripttillägg |Microsoft.Compute | CustomScriptExtension |[Anpassat skript tillägg för Windows](../../virtual-machines/extensions/custom-script-windows.md)|
-|PowerShell DSC |Microsoft. PowerShell |DSC |[Windows PowerShell DSC-tillägg](../../virtual-machines/extensions/dsc-windows.md)|
 |Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Log Analytics VM-tillägg för Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Tillägg för virtuell dator för beroende agent för Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForWindows | [Key Vault tillägg för virtuell dator för Windows](../../virtual-machines/extensions/key-vault-windows.md) |
@@ -63,7 +60,6 @@ Mer information om paketet för Azure Connected Machine agent och information om
 |----------|----------|-----|-----------------------|
 |Azure Defender integrerad sårbarhets-skanner |Qualys |LinuxAgent.AzureSecurityCenter |[Azure Defenders integrerade lösning för sårbarhets bedömning för Azure och hybrid datorer](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |Anpassat skripttillägg |Microsoft. Azure. Extensions |CustomScript |[Anpassat skript tillägg för Linux version 2](../../virtual-machines/extensions/custom-script-linux.md) |
-|PowerShell DSC |Microsoft. OSTCExtensions |DSCForLinux |[PowerShell DSC-tillägg för Linux](../../virtual-machines/extensions/dsc-linux.md) |
 |Log Analytics-agent |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Log Analytics VM-tillägg för Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (insikter) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Tillägg för virtuell dator för beroende agent för Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault synkronisering av certifikat | Microsoft. Azure. Key. Vault |KeyVaultForLinux | [Key Vault tillägg för virtuell dator för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
@@ -82,7 +78,7 @@ Se till att läsa dokumentationen för varje VM-tillägg som refereras till i f�
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM-tillägg
 
-Det virtuella dator tillägget för Log Analytics agent för Linux kräver python 2. x installerat på mål datorn. 
+Det virtuella dator tillägget för Log Analytics agent för Linux kräver python 2. x installerat på mål datorn.
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM-tillägg (för hands version)
 

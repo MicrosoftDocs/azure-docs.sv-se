@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fbed48dda3d6b022d30bb9fb0507c3f9f203771d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4274f976a04a9694c0429a2a4794d645304a9e97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728815"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar
 
@@ -25,7 +25,7 @@ Genom att använda Azure Monitor kan du samla in anpassade mått via din program
  ![Översikt över Telegraph-agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Anpassade mått stöds inte i alla regioner. De regioner som stöds visas [här](../platform/metrics-custom-overview.md#supported-regions)
+> Anpassade mått stöds inte i alla regioner. De regioner som stöds visas [här](./metrics-custom-overview.md#supported-regions)
 
 ## <a name="send-custom-metrics"></a>Skicka anpassade mått 
 
@@ -136,4 +136,4 @@ I den här genom gången använde du dessutom din teleympkvistar-agent för att 
 När de inte längre behövs kan du ta bort resurs gruppen, den virtuella datorn och alla relaterade resurser. Det gör du genom att välja resurs gruppen för den virtuella datorn och välja **ta bort**. Bekräfta sedan namnet på den resurs grupp som ska tas bort. 
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [anpassade mått](../platform/metrics-custom-overview.md).
+- Lär dig mer om [anpassade mått](./metrics-custom-overview.md).

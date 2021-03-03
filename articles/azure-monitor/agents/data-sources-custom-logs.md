@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 73496e350a5e40a3945343271b76c6d883991b62
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ea33c7dca55e22687bd1db873c281caa1a3c4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623452"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719941"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Samla in anpassade loggar med Log Analytics-agenten i Azure Monitor
 
 Data källan för anpassade loggar för Log Analytics agenten i Azure Monitor gör att du kan samla in händelser från textfiler på både Windows-och Linux-datorer. Många program loggar information till textfiler i stället för standard loggnings tjänster som Windows-händelseloggen eller syslog. När du har samlat in kan du antingen parsa data i enskilda fält i dina frågor eller extrahera data under samlingen till enskilda fält.
 
 > [!IMPORTANT]
-> Den här artikeln beskriver hur du samlar in anpassade loggar med [Log Analytics agent](../platform/log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
+> Den här artikeln beskriver hur du samlar in anpassade loggar med [Log Analytics agent](./log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
 
 ![Anpassad logg samling](media/data-sources-custom-logs/overview.png)
 
@@ -78,7 +78,7 @@ Ett program kan till exempel skapa en loggfil varje dag med datumet som ingår i
 
 Följande tabell innehåller exempel på giltiga mönster för att ange olika loggfiler.
 
-| Description | Sökväg |
+| Beskrivning | Sökväg |
 |:--- |:--- |
 | Alla filer i *: c:\Logs* med tillägget. txt i Windows-agenten |: C:\Logs \\ \* . txt |
 | Alla filer i *: c:\Logs* med ett namn som börjar med log och tillägget. txt i Windows-agenten |C:\Logs\log \* . txt |
@@ -105,7 +105,7 @@ När Azure Monitor börjar samla in från den anpassade loggen är dess poster t
 > Om egenskapen RawData saknas i frågan kan du behöva stänga och öppna webbläsaren igen.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Steg 6. Parsa de anpassade logg posterna
-Hela logg posten kommer att lagras i en enskild egenskap som kallas **RawData**.  Du kommer förmodligen att vilja separera de olika delarna av informationen i varje post i enskilda egenskaper för varje post. Se [parsa text data i Azure Monitor](../log-query/parse-text.md) för alternativ för att parsa **RawData** i flera egenskaper.
+Hela logg posten kommer att lagras i en enskild egenskap som kallas **RawData**.  Du kommer förmodligen att vilja separera de olika delarna av informationen i varje post i enskilda egenskaper för varje post. Se [parsa text data i Azure Monitor](../logs/parse-text.md) för alternativ för att parsa **RawData** i flera egenskaper.
 
 ## <a name="removing-a-custom-log"></a>Ta bort en anpassad logg
 Använd följande process i Azure Portal för att ta bort en anpassad logg som du tidigare har definierat.
@@ -116,7 +116,7 @@ Använd följande process i Azure Portal för att ta bort en anpassad logg som d
 ## <a name="data-collection"></a>Datainsamling
 Azure Monitor samlar in nya poster från varje anpassad logg ungefär var femte minut.  Agenten registrerar sitt ställe i varje loggfil som den samlar in från.  Om agenten går offline under en viss tids period, kommer Azure Monitor att samla in poster från var den senast slutade, även om dessa poster skapades medan agenten var offline.
 
-Hela innehållet i logg posten skrivs till en enskild egenskap med namnet **RawData**.  Se [parsa text data i Azure Monitor](../log-query/parse-text.md) för metoder för att parsa varje importerad loggpost till flera egenskaper.
+Hela innehållet i logg posten skrivs till en enskild egenskap med namnet **RawData**.  Se [parsa text data i Azure Monitor](../logs/parse-text.md) för metoder för att parsa varje importerad loggpost till flera egenskaper.
 
 ## <a name="custom-log-record-properties"></a>Egenskaper för anpassad logg post
 Anpassade logg poster har en typ med logg namnet som du anger och egenskaperna i följande tabell.
@@ -125,7 +125,7 @@ Anpassade logg poster har en typ med logg namnet som du anger och egenskaperna i
 |:--- |:--- |
 | TimeGenerated |Datum och tid då posten samlades in av Azure Monitor.  Om loggen använder en tidsbaserad avgränsare är detta den tid som samlas in från posten. |
 | SourceSystem |Typ av agent som posten samlades in från. <br> OpsManager – Windows-agent, antingen direkt anslutning eller System Center Operations Manager <br> Linux – alla Linux-agenter |
-| RawData |Fullständig text för den insamlade posten. Du kommer förmodligen att vilja [parsa dessa data till enskilda egenskaper](../log-query/parse-text.md). |
+| RawData |Fullständig text för den insamlade posten. Du kommer förmodligen att vilja [parsa dessa data till enskilda egenskaper](../logs/parse-text.md). |
 | ManagementGroupName |Namnet på hanterings gruppen för System Center-åtgärder hantera agenter.  För andra agenter är detta AOI-\<workspace ID\> |
 
 
@@ -171,8 +171,8 @@ Vi använder en enkel fråga för *MyApp_CL* för att returnera alla poster frå
 I de fall där dina data inte kan samlas in med anpassade loggar bör du överväga följande alternativ strategier:
 
 - Använd ett anpassat skript eller någon annan metod för att skriva data till [Windows-händelser](data-sources-windows-events.md) eller [syslog](data-sources-syslog.md) som samlas in av Azure Monitor. 
-- Skicka data direkt till Azure Monitor med [http-API för data insamling](../platform/data-collector-api.md). 
+- Skicka data direkt till Azure Monitor med [http-API för data insamling](../logs/data-collector-api.md). 
 
 ## <a name="next-steps"></a>Nästa steg
-* Se [parsa text data i Azure Monitor](../log-query/parse-text.md) för metoder för att parsa varje importerad loggpost till flera egenskaper.
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.
+* Se [parsa text data i Azure Monitor](../logs/parse-text.md) för metoder för att parsa varje importerad loggpost till flera egenskaper.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

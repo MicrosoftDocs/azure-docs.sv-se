@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: bda066dd50d2f95776981eafc01e3ddd04d33e54
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 606510940460db963a2aa63deb57b6dba77de3ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700141"
 ---
 # <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Arbets flöde för klassisk virtuell dator arkitektur i Windows Azure 
 
@@ -80,7 +80,7 @@ Följande diagram visar arkitekturen i Azure-resurser.
 5. WindowsAzureGuestAgent konfigurerar gäst operativ systemet (brand vägg, ACL: er, LocalStorage och så vidare), kopierar en ny XML-konfigurationsfil till c:\Config och startar sedan WaHostBootstrapper-processen.
 6. För fullständiga IIS-webbroller startar WaHostBootstrapper IISConfigurator och anger att den tar bort alla befintliga AppPools för webb rollen från IIS.
 7. WaHostBootstrapper läser **Start** åtgärderna från E:\RoleModel.xml och börjar köra start åtgärder. WaHostBootstrapper väntar tills alla enkla start aktiviteter har slutförts och returnerat meddelandet "lyckades".
-8. För fullständiga IIS-webbroller instruerar WaHostBootstrapper IISConfigurator att konfigurera IIS-AppPool och pekar på platsen `E:\Sitesroot\<index>` , där `<index>` är ett 0-baserat index för antalet `<Sites>` element som definierats för tjänsten.
+8. För fullständiga IIS-webbroller instruerar WaHostBootstrapper IISConfigurator att konfigurera IIS-AppPool och pekar på platsen `E:\Sitesroot\<index>` , där `<index>` är ett nollbaserat index i det antal element som `<Sites>` definierats för tjänsten.
 9. WaHostBootstrapper kommer att starta värd processen beroende på roll typen:
     1. **Arbets roll**: WaWorkerHost.exe startas. WaHostBootstrapper kör metoden OnStart (). När den har returnerat börjar WaHostBootstrapper att köra Run ()-metoden och markerar sedan rollen som klar och placerar den i belastnings Utjämnings rotationen (om InputEndpoints har definierats). WaHostBootsrapper hamnar sedan i en slinga för att kontrol lera rollens status.
     2. **Fullständig IIS-webbroll**: aIISHost har startats. WaHostBootstrapper kör metoden OnStart (). När den har returnerats börjar metoden Run () att köras. därefter märks rollen som färdig och den läggs till i belastningsutjämnaren för belastnings utjämning. WaHostBootsrapper hamnar sedan i en slinga för att kontrol lera rollens status.

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 02/26/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a4366bfee6b1d9c5f52d649910163269962684
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709265"
 ---
 # <a name="supported-authentication-methods"></a>Autentiseringsmetoder som stöds
 
@@ -21,14 +21,14 @@ I den här artikeln får du en kort översikt över vilka typer av autentisering
 
 ## <a name="session-host-authentication"></a>Autentisering av sessionsbiljett
 
-Windows Virtual Desktop stöder både NT LAN Manager (NTLM) och Kerberos för autentisering av session-värden. Om du däremot vill använda Kerberos måste klienten Hämta Kerberos-säkerhetsbiljetter från en Key Distribution Center-tjänst (KDC) som körs på en domänkontrollant. För att få biljetter måste klienten ha en direkt insikt för domänkontrollanten. Du kan få en direkt rad med detaljerad information genom att använda företags nätverket. Du kan också använda en VPN-anslutning till företagets nätverk.
+Windows Virtual Desktop stöder både NT LAN Manager (NTLM) och Kerberos för autentisering av session-värden. Om du däremot vill använda Kerberos måste klienten Hämta Kerberos-säkerhetsbiljetter från en Key Distribution Center-tjänst (KDC) som körs på en domänkontrollant. För att få biljetter måste klienten ha en direkt insikt för domänkontrollanten. Du kan få en direkt rad med detaljerad information genom att använda företags nätverket. Du kan också använda en VPN-anslutning till företagets nätverk eller konfigurera en [KDC-proxyserver](key-distribution-center-proxy.md).
 
 Det här är de inloggnings metoder som stöds för närvarande:
 
 - Klient för Windows-skrivbordet
     - Användarnamn och lösenord
     - Smartkortsinloggning
-    - Windows Hello
+    - Windows Hello för företag (endast certifikat förtroende)
 - Windows Store-klient
     - Användarnamn och lösenord
 - Webbklient
@@ -41,7 +41,7 @@ Det här är de inloggnings metoder som stöds för närvarande:
     - Användarnamn och lösenord
 
 >[!NOTE]
->Smartkort och Windows Hello kan bara använda Kerberos för att logga in. Att logga in med Kerberos kräver att en detaljerad information anges för domänkontrollanten.
+>Smartkort och Windows Hello för företag kan bara använda Kerberos för att logga in. Att logga in med Kerberos kräver att en detaljerad information anges för domänkontrollanten eller en [KDC-proxyserver](key-distribution-center-proxy.md).
 
 ## <a name="hybrid-identity"></a>Hybrididentitet
 

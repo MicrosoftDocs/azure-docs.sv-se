@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: db410133bab530db731eee58048d1f9d26a1a3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f18a21be48b6f78605b10950a2b38709b66f2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713668"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Skicka gäst operativ systemets mått till Azure Monitor Mät lagringen med hjälp av en Azure Resource Manager mall för en skalnings uppsättning för virtuella Windows-datorer
 
@@ -30,7 +30,7 @@ Om du är nybörjare på Resource Manager-mallar kan du läsa mer om [mall distr
 
 - Du måste ha [Azure PowerShell](/powershell/azure) installerat, eller så kan du använda [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-- Din VM-resurs måste finnas i en [region som stöder anpassade mått](../platform/metrics-custom-overview.md#supported-regions).
+- Din VM-resurs måste finnas i en [region som stöder anpassade mått](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurera Azure Monitor som en data mottagare 
 Azure-diagnostik-tillägget använder en funktion som kallas **data mottagare** för att dirigera mått och loggar till olika platser. Följande steg visar hur du använder en Resource Manager-mall och PowerShell för att distribuera en virtuell dator med hjälp av den nya Azure Monitor data mottagaren. 
@@ -252,7 +252,7 @@ Använd Azure PowerShell för att distribuera Resource Manager-mallen:
    ```
 
    > [!NOTE]  
-   > Kom ihåg att använda en Azure-region som är aktive rad för anpassade mått. Kom ihåg att använda en [Azure-region som är aktive rad för anpassade mått](../platform/metrics-custom-overview.md#supported-regions).
+   > Kom ihåg att använda en Azure-region som är aktive rad för anpassade mått. Kom ihåg att använda en [Azure-region som är aktive rad för anpassade mått](./metrics-custom-overview.md#supported-regions).
  
 1. Kör följande kommandon för att distribuera den virtuella datorn:  
 
@@ -292,4 +292,4 @@ Du kan också välja att använda dimensionerna för det här måttet för att s
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [anpassade mått](../platform/metrics-custom-overview.md).
+- Lär dig mer om [anpassade mått](./metrics-custom-overview.md).

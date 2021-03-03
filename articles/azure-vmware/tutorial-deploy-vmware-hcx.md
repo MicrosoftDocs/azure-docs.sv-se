@@ -3,12 +3,12 @@ title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e1df53a7aea0b7642828bba80cd7237e26a7182f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728237"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
@@ -76,12 +76,15 @@ Innan du distribuerar den virtuella installationen till din lokala vCenter måst
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="Skärm bild av VMware HCX-IP-adressen." lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. Välj **Hantera**  >  **identitet** och välj **vCenter admin-lösenord** för att identifiera lösen ordet.
+1. Välj **Hantera**  >  **identitet**. 
+
+   URL: er och användarautentiseringsuppgifter för privat moln vCenter och NSX-T Manager-visning.
 
    > [!TIP]
-   > VCenter-lösenordet definierades när du konfigurerade det privata molnet. Det är samma lösen ord som du använder för att logga in på Azure VMware Solution HCX Manager.
+   > VCenter-lösenordet definierades när du konfigurerade det privata molnet. Det är samma lösen ord som du använder för att logga in på Azure VMware Solution HCX Manager. Du kan välja **skapa ett nytt lösen ord** för att generera nya vCenter-och NSX-lösenord.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="Hitta HCX-lösenord." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true":::
+
 
 1. Öppna ett webbläsarfönster och logga in på Azure VMware Solution HCX Manager på `https://x.x.x.9` port 443 med **cloudadmin \@ vSphere.** autentiseringsuppgifter för lokal användare
 

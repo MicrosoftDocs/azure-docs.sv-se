@@ -6,18 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 25572a4cc342277289459891c9bee2fa7f1cccd7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0656a9eabb692453331c5c4b229ce26f41ecfdf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730209"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Skapa och hantera Azure Migrate-projekt
 
 Den här artikeln beskriver hur du skapar, hanterar och tar bort [Azure Migrate](migrate-services-overview.md) projekt. 
 
-Den klassiska Azure Migrate tas ur bruk i feb 2024. Efter feb 2024 kommer den klassiska versionen av Azure Migrate inte längre att stödjas och lager-metadata i det klassiska projektet tas bort. Om du använder klassiska Azure Migrate projekt tar du bort projekten och följer stegen för att skapa ett nytt Azure Migrate-projekt. Du kan inte uppgradera klassiska Azure Migrate projekt eller komponenter till Azure Migrate. Se [vanliga frågor och svar](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) innan du börjar skapa processen.
+Den klassiska Azure Migrate tas ur bruk i feb 2024. Efter feb 2024 kommer den klassiska versionen av Azure Migrate inte längre att stödjas och lager-metadata i det klassiska projektet tas bort. Om du använder klassiska Azure Migrate projekt tar du bort projekten och följer stegen för att skapa ett nytt Azure Migrate-projekt. Du kan inte uppgradera klassiska Azure Migrate projekt eller komponenter till Azure Migrate. Se [vanliga frågor och svar](./resources-faq.md#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) innan du börjar skapa processen.
 
 Ett Azure Migrate-projekt används för att lagra identifierings-, utvärderings-och migrerings-metadata som samlas in från den miljö som du bedömer eller migrerar. I ett projekt kan du spåra identifierade till gångar, skapa utvärderingar och dirigera migreringar till Azure.  
 

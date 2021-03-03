@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e4b5372a2b6e9b833f3a0213d69649b75ae2589b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703515"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Aktivera Azure-diagnostik i Azure Cloud Services (klassisk)
 
 > [!IMPORTANT]
 > [Azure Cloud Services (utökad support)](../cloud-services-extended-support/overview.md) är en ny Azure Resource Manager baserad distributions modell för Azure Cloud Services-produkten.Med den här ändringen har Azure Cloud Services som körs på Azure Service Manager-baserade distributions modellen bytt namn som Cloud Services (klassisk) och alla nya distributioner bör använda [Cloud Services (utökad support)](../cloud-services-extended-support/overview.md).
 
-Se [Azure-diagnostik översikt](../azure-diagnostics.md) för en bakgrund på Azure-diagnostik.
+Se [Azure-diagnostik översikt](../azure-monitor/agents/diagnostics-extension-overview.md) för en bakgrund på Azure-diagnostik.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Så här aktiverar du diagnostik i en arbets roll
 Den här genom gången beskriver hur du implementerar en Azure Worker-roll som utvärderar telemetridata med hjälp av .NET EventSource-klassen. Azure-diagnostik används för att samla in telemetri data och lagra dem i ett Azure Storage-konto. När du skapar en arbets roll aktiverar Visual Studio automatiskt diagnostik 1,0 som en del av lösningen i Azure SDK: er för .NET 2,4 och tidigare. Följande anvisningar beskriver processen för att skapa arbets rollen, inaktivera diagnostik 1,0 från lösningen och distribuera diagnostik 1,2 eller 1,3 till din arbets roll.

@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706001"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 
@@ -78,13 +78,32 @@ Azure Data Factory utvärderar resultatet av alla aktiviteter på lövnivå. Pip
 1. Implementera kontroller på aktivitets nivå genom [att följa hur du hanterar pipelines fel och fel](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 1. Använd Azure Logic Apps för att övervaka pipeliner med jämna mellanrum efter [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory).
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Övervaka pipeline-problem med jämna mellanrum
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Så här övervakar du fel i pipelinen med jämna mellanrum
 
 Du kan behöva övervaka misslyckade Data Factory pipeliner i intervall, på 5 minuter. Du kan fråga efter och filtrera pipelinen som körs från en data fabrik med hjälp av slut punkten. 
 
-Konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till vårt biljett system.
+**Lösning** Du kan konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till ditt biljett system.
 
 Mer information finns i [skicka meddelanden från Data Factory, del 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Graden av Parallel-ökning resulterar inte i högre data flöde
+
+**Orsak** 
+
+Graden av parallellitet *är i* själva verket den högsta graden av parallellitet. Vi kan inte garantera att ett angivet antal körningar sker samtidigt, men den här parametern garanterar att vi aldrig hamnar ovanför det angivna värdet. Du bör se detta som en gräns för att utnyttjas när du styr samtidig åtkomst till dina källor och mottagare.
+
+Kända *fakta om* Förkunskap
+ * I förvars egenskap kallas batch Count (n), där standardvärdet är 20 och Max värdet är 50.
+ * Batch Count, n, används för att konstruera n köer. Senare kommer vi att diskutera lite information om hur dessa köer skapas.
+ * Varje kö körs sekventiellt, men du kan ha flera köer som körs parallellt.
+ * Köerna skapas i förväg. Det innebär att det inte finns någon ombalansering av köerna under körningen.
+ * När som helst har du minst ett objekt som ska bearbetas per kö. Det innebär att de flesta n objekt bearbetas vid en bestämd tidpunkt.
+ * Den totala bearbetnings tiden motsvarar bearbetnings tiden för den längsta kön. Det innebär att den förgrunds aktiviteten är beroende av hur köerna konstrueras.
+ 
+**Lösning**
+
+ * Du bör inte använda *SetVariable* -aktivitet i *för varje* som körs parallellt.
+ * Med hänsyn till hur köerna är konstruerade kan kunden förbättra prestanda genom att ställa in flera *foreaches* där varje förvars bedömning kommer att ha objekt med liknande bearbetnings tid. Detta säkerställer att långvariga körningar bearbetas parallellt i stället i tur och ordning.
 
 ## <a name="next-steps"></a>Nästa steg
 

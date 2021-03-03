@@ -7,12 +7,12 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3f81ae72af48ec934d1c2c2567ebdd212d8e0499
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 735ad7ad9ded6baded59ab3f08e239d1c8376b74
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702733"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>Migrera ditt v2 IoT Central-program till v3
 
@@ -104,7 +104,7 @@ När flyttningen är klar startar du om alla enheter för att se till att de ans
 När du har verifierat att allt fungerar som förväntat i ditt nya v3-program, tar du bort ditt gamla v2-program. Det här steget ser till att du inte får faktureras för ett program som du inte längre använder.
 
 > [!Note]
-> Om du vill ta bort ett program måste du ha behörighet att ta bort resurser i den Azure-prenumeration som du valde när du skapade programmet. Läs mer i [använda rollbaserad åtkomst kontroll för att hantera åtkomst till dina Azure-prenumerations resurser](../../active-directory/role-based-access-control-configure.md).
+> Om du vill ta bort ett program måste du ha behörighet att ta bort resurser i den Azure-prenumeration som du valde när du skapade programmet. Läs mer i [använda rollbaserad åtkomst kontroll för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
 
 1. I ditt v2-program väljer du fliken **Administration** på menyn
 2. Välj **ta bort** för att ta bort ditt IoT Central program permanent. Med det här alternativet raderas alla data som är associerade med programmet permanent.

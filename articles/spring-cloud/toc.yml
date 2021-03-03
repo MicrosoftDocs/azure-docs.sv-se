@@ -188,3 +188,6 @@
     - name: Inbyggda Azure Policy-program
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Nyheter
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

@@ -1,0 +1,46 @@
+- name: Dokumentation om objekt ankare
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Om objekt ankare
+      href: overview.md
+    - name: Metodtips
+      href: best-practices.md
+- name: Begrepp
+  items:
+    - name: Översikt över Runtime SDK
+      href: concepts/sdk-overview.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: Skapa en modell
+      href: quickstarts/get-started-model-ingestion.md
+    - name: Skapa en Unity-app
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: HoloLens med MRTK
+          href: quickstarts/get-started-unity-hololens-mrtk.md
+    - name: Skapa HoloLens DirectX-app
+      href: quickstarts/get-started-hololens-directx.md
+- name: Exempel
+  items:
+    - name: Exempel för objekt ankare i Azure (GitHub)
+      href: 'https://github.com/Azure/azure-object-anchors'
+- name: Referenser
+  items:
+    - name: Runtime SDK för Unity
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+    - name: Runtime SDK för HoloLens C++/WinRT
+      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+- name: Resurser
+  items:
+    - name: Viktig information
+      href: 'https://github.com/Azure/azure-object-anchors/releases'
+    - name: REST API för resurshantering i Azure Mixed Reality
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: faq.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-object-anchors'

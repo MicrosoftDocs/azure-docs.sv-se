@@ -1,26 +1,26 @@
 ---
-title: Konfigurera inställningar för nätverks routning (för hands version)
+title: Inställningar för nätverks routning
 titleSuffix: Azure Storage
-description: Konfigurera inställningar för nätverks routning (för hands version) för ditt Azure Storage-konto för att ange hur nätverks trafik dirigeras till ditt konto från klienter via Internet.
+description: Med inställningar för nätverks routning kan du ange hur nätverks trafik dirigeras till ditt konto från klienter via Internet.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726945"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurera inställningar för nätverks routning för Azure Storage (för hands version)
+# <a name="network-routing-preference-for-azure-storage"></a>Inställningar för nätverks routning för Azure Storage
 
-Du kan konfigurera inställningar för nätverks [routning](../../virtual-network/routing-preference-overview.md) (för hands version) för ditt Azure Storage-konto för att ange hur nätverks trafik dirigeras till ditt konto från klienter via Internet. Som standard dirigeras trafik från Internet till den offentliga slut punkten för ditt lagrings konto över [Microsofts globala nätverk](../../networking/microsoft-global-network.md). Azure Storage innehåller fler alternativ för att konfigurera hur trafik dirigeras till ditt lagrings konto.
+Du kan konfigurera inställningar för nätverks [routning](../../virtual-network/routing-preference-overview.md) för ditt Azure Storage-konto om du vill ange hur nätverks trafik dirigeras till ditt konto från klienter via Internet. Som standard dirigeras trafik från Internet till den offentliga slut punkten för ditt lagrings konto över [Microsofts globala nätverk](../../networking/microsoft-global-network.md). Azure Storage innehåller fler alternativ för att konfigurera hur trafik dirigeras till ditt lagrings konto.
 
 Genom att konfigurera cirkulations inställningen får du flexibiliteten att optimera trafiken antingen för förstklassiga nätverks prestanda eller för kostnad. När du konfigurerar en cirkulations inställning anger du hur trafiken ska dirigeras till den offentliga slut punkten för ditt lagrings konto som standard. Du kan också publicera dirigerade slut punkter för ditt lagrings konto.
 
@@ -37,9 +37,11 @@ Följande diagram visar hur trafiken flödar mellan klienten och lagrings kontot
 
 ![Översikt över alternativ för routning för Azure Storage](media/network-routing-preference/routing-options-diagram.png)
 
-Mer information om routnings inställningar i Azure finns i [Vad är cirkulations inställningar (för hands version)?](../../virtual-network/routing-preference-overview.md).
+Mer information om routnings inställningar i Azure finns i [Vad är cirkulations inställningar?](../../virtual-network/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Konfiguration av Routning
+
+Steg-för-steg-anvisningar som visar hur du konfigurerar inställningar för Routning och dirigerade slut punkter finns i [Konfigurera inställningar för nätverks routning för Azure Storage](configure-network-routing-preference.md).
 
 Du kan välja mellan Microsofts globala nätverk och Internet routning som standardinställning för routning för den offentliga slut punkten för ditt lagrings konto. Inställningen standard routning gäller för all trafik från klienter utanför Azure och påverkar slut punkterna för Azure Data Lake Storage Gen2, Blob Storage, Azure Files och statiska webbplatser. Det går inte att konfigurera cirkulations inställningar för Azure-köer eller Azure-tabeller.
 
@@ -65,7 +67,7 @@ Om du har en Read-Access Geo-redundant lagring (RA-GRS) eller ett lagrings konto
 
 Anslutnings strängarna för de publicerade flödes bara slut punkterna kan kopieras via [Azure Portal](https://portal.azure.com). Dessa anslutnings strängar kan användas för auktorisering av delad nyckel med alla befintliga Azure Storage SDK: er och API: er.
 
-## <a name="about-the-preview"></a>Om för hands versionen
+## <a name="regional-availability"></a>Regional tillgänglighet
 
 Dirigerings inställningar för Azure Storage är tillgänglig i följande regioner:
 
@@ -100,16 +102,17 @@ Dirigerings inställningar för Azure Storage är tillgänglig i följande regio
 - Australien, östra 
 - Australien, sydöstra 
 
-Följande kända problem påverkar förhands granskningen av inställningarna för routning för Azure Storage:
+Följande kända problem påverkar Dirigerings inställningen för Azure Storage:
 
 - Åtkomst begär Anden för den dirigerade slut punkten för det globala Microsoft-nätverket fungerar inte med HTTP-fel 404 eller motsvarande. Routning över Microsofts globala nätverk fungerar som förväntat när det har angetts som standard cirkulations inställningar för den offentliga slut punkten.
 
 ## <a name="pricing-and-billing"></a>Priser och fakturering
 
-Information om priser och fakturering finns i avsnittet **prissättning** i [Vad är cirkulations inställningar (för hands version)?](../../virtual-network/routing-preference-overview.md#pricing).
+Information om priser och fakturering finns i avsnittet **prissättning** i [Vad är inställningen routning?](../../virtual-network/routing-preference-overview.md#pricing).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Vad är cirkulations inställningar (för hands version)?](../../virtual-network/routing-preference-overview.md)
+- [Vad är routningsprioritet?](../../virtual-network/routing-preference-overview.md)
+- [Konfigurera inställningar för nätverksroutning](configure-network-routing-preference.md)
 - [Konfigurera brandväggar och virtuella nätverk i Azure Storage](storage-network-security.md)
 - [Säkerhets rekommendationer för Blob Storage](../blobs/security-recommendations.md)

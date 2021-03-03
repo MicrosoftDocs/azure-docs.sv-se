@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 93af3183ae9e969d14a35ce4e365d48895ef4e79
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726520"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Skriv om HTTP-sidhuvuden och URL: en med Application Gateway
 
@@ -60,9 +60,9 @@ Information om hur du skriver om URL: en med Application Gateway med Azure Porta
 Du använder återskrivnings åtgärder för att ange den URL, de begärandehuvuden eller de svarshuvuden som du vill skriva om och det nya värdet som du vill skriva om dem till. Värdet för en URL eller en ny eller befintlig rubrik kan anges till följande typer av värden:
 
 * Text
-* Begär ande huvud. Om du vill ange ett rubrik för begäran måste du använda syntaxen {http_req_*huvud*}
-* Svarshuvud. Om du vill ange ett svars huvud måste du använda syntaxen {http_resp_*huvud*}
-* Server variabel. Om du vill ange en server variabel måste du använda syntaxen {var_*serverVariable*}. Se listan över servervariabler som stöds
+* Begär ande huvud. Om du vill ange ett rubrik för begäran måste du använda syntaxen {http_req_ *huvud*}
+* Svarshuvud. Om du vill ange ett svars huvud måste du använda syntaxen {http_resp_ *huvud*}
+* Server variabel. Om du vill ange en server variabel måste du använda syntaxen {var_ *serverVariable*}. Se listan över servervariabler som stöds
 * En kombination av text, ett begär ande huvud, ett svars huvud och en server variabel. 
 
 ## <a name="rewrite-conditions"></a>Skriv om villkor
@@ -100,7 +100,7 @@ Om du vill använda hela värdet ska du inte nämna numret. Använd bara formate
 
 ## <a name="server-variables"></a>Servervariabler
 
-Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran på anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsarens typ. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera Skriv villkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_*serverVariableName*}
+Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran på anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsarens typ. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera Skriv villkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_ *serverVariableName*}
 
 Application Gateway stöder följande servervariabler:
 
@@ -114,7 +114,7 @@ Application Gateway stöder följande servervariabler:
 | client_tcp_rtt            | Information om klientens TCP-anslutning. Tillgängligt på system som har stöd för alternativet TCP_INFO socket. |
 | client_user               | När HTTP-autentisering används anges användar namnet för autentisering. |
 | värd                      | I den här prioritetsordningen: värd namnet från begär ande raden, värd namnet från fältet värd begär ande huvud eller Server namnet som matchar en begäran. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` är värd värdet `contoso.com` |
-| cookie_*namn*             | Cookie- *namn* .                                           |
+| cookie_ *namn*             | Cookie- *namn* .                                           |
 | http_method               | Den metod som används för att göra URL-begäran. Till exempel GET eller POST. |
 | http_status               | Sessionens status. Till exempel 200, 400 eller 403.           |
 | http_version              | Protokollet för begäran. Vanligt vis HTTP/1.0, HTTP/1.1 eller HTTP/2.0. |
@@ -141,7 +141,7 @@ En regel uppsättning för omskrivning innehåller:
 
 * **Omskrivnings villkor**: det är en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret. Om du associerar fler än ett villkor med en åtgärd sker åtgärden endast när alla villkor är uppfyllda. Med andra ord är åtgärden ett logiskt och en åtgärd.
 
-* **Typ**av omskrivning: det finns tre typer av Skriv åtgärder tillgängliga:
+* **Typ** av omskrivning: det finns tre typer av Skriv åtgärder tillgängliga:
    * Omskrivning av begärandehuvuden 
    * Svarshuvuden skrivs om.
    * Skriver om URL: en omskrivnings-URL har 3 komponenter
@@ -164,7 +164,7 @@ När ett backend-program skickar ett svar på omdirigering kanske du vill omdiri
 
 Eftersom App Service är en tjänst för flera innehavare använder den värd rubriken i begäran för att dirigera begäran till rätt slut punkt. App Services har ett standard domän namn på *. azurewebsites.net (säg contoso.azurewebsites.net) som skiljer sig från programgatewayens domän namn (t. ex. contoso.com). Eftersom den ursprungliga begäran från klienten har Application gateways domän namn (contoso.com) som värdnamn, ändrar programgatewayen värd namnet till contoso.azurewebsites.net. Den här ändringen görs så att App Service kan dirigera begäran till rätt slut punkt.
 
-När App Service skickar ett svar för omdirigering använder den samma värdnamn i plats huvudet för sitt svar som det i den begäran som den tar emot från programgatewayen. Klienten kommer därför att göra begäran direkt till contoso.azurewebsites.net/path2 i stället för att gå igenom Application Gateway (contoso.com/path2). Att kringgå Application Gateway är inte önskvärt.
+När App Service skickar ett svar för omdirigering använder den samma värdnamn i plats huvudet för sitt svar som det i den begäran som den tar emot från programgatewayen. Klienten kommer därför att göra begäran direkt till `contoso.azurewebsites.net/path2` i stället för att gå igenom Application Gateway ( `contoso.com/path2` ). Att kringgå Application Gateway är inte önskvärt.
 
 Du kan lösa det här problemet genom att ange värd namnet i plats rubriken till Application gatewayens domän namn.
 
@@ -211,15 +211,15 @@ Om du vill göra scenarier där du vill välja backend-poolen baserat på värde
 
 * Den tredje regeln har ett villkor som kontrollerar *QUERY_STRING*  -variabeln för *Category = Accessories* och har en åtgärd som skriver om URL-sökvägen till/*listing3* och har **omutvärderat Sök vägs mappning** aktive rad
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-omskrivning scenario 1-2.":::
 
  
 
 **Steg 2 (b):** Associera denna omarbetnings uppsättning med standard Sök vägen för ovanstående Sök vägs regel
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-omskrivning scenario 1-3.":::
 
-Om användaren begär *contoso.com/Listing?Category=any*matchas den nu med standard Sök vägen eftersom inget av Sök vägs mönstren i Sök vägs kartan (/listing1,/listing2,/listing3) matchar. Eftersom du kopplade ovanstående omskrivnings uppsättning med den här sökvägen kommer den här omskrivnings uppsättningen att utvärderas. Eftersom frågesträngen inte matchar villkoret i någon av reglerna för 3-omskrivning i den här Skriv åtgärden kommer ingen omskrivning att ske, och därför kommer begäran att dirigeras oförändrad till Server delen som är kopplad till standard Sök vägen (som är *GenericList*).
+Om användaren begär *contoso.com/Listing?Category=any* matchas den nu med standard Sök vägen eftersom inget av Sök vägs mönstren i Sök vägs kartan (/listing1,/listing2,/listing3) matchar. Eftersom du kopplade ovanstående omskrivnings uppsättning med den här sökvägen kommer den här omskrivnings uppsättningen att utvärderas. Eftersom frågesträngen inte matchar villkoret i någon av reglerna för 3-omskrivning i den här Skriv åtgärden kommer ingen omskrivning att ske, och därför kommer begäran att dirigeras oförändrad till Server delen som är kopplad till standard Sök vägen (som är *GenericList*).
 
  Om användaren begär *contoso.com/Listing?Category=Shoes* så matchas standard Sök vägen igen. I det här fallet kommer dock villkoret i den första regeln att matchas och därför körs åtgärden som är associerad med villkoret, vilket kommer att skriva om URL-sökvägen till/*listing1*  och sedan utvärdera sökvägen till kartan igen. När sökvägen – kartan har utvärderats på nytt matchar begäran nu den sökväg som är kopplad till mönstret */listing1* och begäran dirigeras till Server delen som är kopplad till det här mönstret, som är ShoesListBackendPool
 
@@ -234,11 +234,11 @@ I så fall kan Application Gateway avbilda parametrar från URL: en och lägga t
 
 **Villkor** – om Server variabeln `uri_path` är lika med mönstret `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-omskrivning scenario 2-1.":::
 
 **Åtgärd** – ange URL-sökvägen till `buy.aspx` och frågesträng till `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-omskrivning scenario 2-2.":::
 
 En steg-för-steg-guide för att uppnå scenariot som beskrivs ovan finns i [omskrivnings-URL med Application Gateway med Azure Portal](rewrite-url-portal.md)
 
@@ -248,7 +248,7 @@ Om URL-omskrivning görs om, Application Gateway skriver om URL: en innan begär
 
 I händelse av URL-omdirigering skickar Application Gateway ett omdirigerings svar till klienten med den nya URL: en. Som i sin tur kräver att klienten skickar en begäran till den nya URL: en som finns i omdirigeringen. URL som användaren ser i webbläsaren kommer att uppdateras till den nya URL: en
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Skriv om vs Redirect.":::
 
 ## <a name="limitations"></a>Begränsningar
 

@@ -6,33 +6,33 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 88643663c2f14cb7d8883eb1210bdee07b00eece
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5e7909725f5e390f4e42a7d62e80f90f897c840f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714161"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Logg aviseringar i Azure Monitor
 
 ## <a name="overview"></a>Översikt
 
-Logg aviseringar är en av de aviserings typer som stöds i [Azure-aviseringar](../platform/alerts-overview.md). Logg aviseringar gör att användare kan använda en [Log Analytics](../log-query/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Regler kan utlösa en eller flera åtgärder med hjälp av [Åtgärds grupper](../platform/action-groups.md).
+Logg aviseringar är en av de aviserings typer som stöds i [Azure-aviseringar](./alerts-overview.md). Logg aviseringar gör att användare kan använda en [Log Analytics](../logs/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Regler kan utlösa en eller flera åtgärder med hjälp av [Åtgärds grupper](./action-groups.md).
 
 > [!NOTE]
-> Loggdata från en [Log Analytics arbets yta](../log-query/log-analytics-tutorial.md) kan skickas till Azure Monitor Metrics-lagret. Mått aviseringar har [olika beteende](alerts-metric-overview.md), vilket kan vara mer önskvärt beroende på vilka data du arbetar med. Information om vad och hur du kan skicka loggar till mått finns i [mått avisering för loggar](alerts-metric-logs.md).
+> Loggdata från en [Log Analytics arbets yta](../logs/log-analytics-tutorial.md) kan skickas till Azure Monitor Metrics-lagret. Mått aviseringar har [olika beteende](alerts-metric-overview.md), vilket kan vara mer önskvärt beroende på vilka data du arbetar med. Information om vad och hur du kan skicka loggar till mått finns i [mått avisering för loggar](alerts-metric-logs.md).
 
 > [!NOTE]
 > Det finns för närvarande inga ytterligare avgifter för API-versionen `2020-05-01-preview` och resursbaserade logg aviseringar.  Prissättningen för funktioner som finns i förhands granskning kommer att meddelas i framtiden och ett meddelande som visas innan faktureringen påbörjas. Om du väljer att fortsätta använda nya API-versioner och resursbaserade logg aviseringar efter meddelande perioden debiteras du enligt tillämplig taxa.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Logg aviseringar kör frågor om Log Analytics data. Först ska du börja [samla in loggdata](../platform/resource-logs.md) och skicka frågor till loggdata. Du kan använda [avsnittet exempel på aviserings frågor](../log-query/example-queries.md) i Log Analytics för att förstå vad du kan identifiera eller [komma igång med att skriva en egen fråga](../log-query/log-analytics-tutorial.md).
+Logg aviseringar kör frågor om Log Analytics data. Först ska du börja [samla in loggdata](../essentials/resource-logs.md) och skicka frågor till loggdata. Du kan använda [avsnittet exempel på aviserings frågor](../logs/example-queries.md) i Log Analytics för att förstå vad du kan identifiera eller [komma igång med att skriva en egen fråga](../logs/log-analytics-tutorial.md).
 
-[Azure Monitoring Contributor](../platform/roles-permissions-security.md) är en gemensam roll som behövs för att skapa, ändra och uppdatera logg aviseringar. Du måste också ha åtkomst till & frågans körnings rättigheter för resurs loggarna. Partiell åtkomst till resurs loggar kan inte utföra frågor eller returnera ofullständiga resultat. [Läs mer om hur du konfigurerar logg aviseringar i Azure](./alerts-log.md).
+[Azure Monitoring Contributor](../roles-permissions-security.md) är en gemensam roll som behövs för att skapa, ändra och uppdatera logg aviseringar. Du måste också ha åtkomst till & frågans körnings rättigheter för resurs loggarna. Partiell åtkomst till resurs loggar kan inte utföra frågor eller returnera ofullständiga resultat. [Läs mer om hur du konfigurerar logg aviseringar i Azure](./alerts-log.md).
 
 > [!NOTE]
-> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av den äldre [Log Analytics varnings-API: et](../platform/api-alerts.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md).
+> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av den äldre [Log Analytics varnings-API: et](./api-alerts.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md).
 
 ## <a name="query-evaluation-definition"></a>Utvärderings definition för fråga
 
@@ -44,17 +44,17 @@ Villkors definitionen för loggs öknings regler börjar från:
 I följande avsnitt beskrivs olika parametrar som du kan använda för att ställa in ovanstående logik.
 
 ### <a name="log-query"></a>Logg fråga
-Den [Log Analytics](../log-query/log-analytics-tutorial.md) -fråga som används för att utvärdera regeln. Resultaten som returneras av den här frågan används för att avgöra om en avisering ska utlösas. Frågan kan begränsas till:
+Den [Log Analytics](../logs/log-analytics-tutorial.md) -fråga som används för att utvärdera regeln. Resultaten som returneras av den här frågan används för att avgöra om en avisering ska utlösas. Frågan kan begränsas till:
 
 - En speciell resurs, till exempel en virtuell dator.
 - En resurs vid skalning, till exempel en prenumeration eller resurs grupp.
-- Flera resurser som använder [frågor över flera resurser](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
+- Flera resurser som använder [frågor över flera resurser](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights). 
  
 > [!IMPORTANT]
 > Aviserings frågor har begränsningar för att säkerställa optimala prestanda och relevansen för resultaten. [Mer information finns här](./alerts-log-query.md).
 
 > [!IMPORTANT]
-> Resurs oberoende och [kors resurs fråga](../log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) stöds bara med den aktuella scheduledQueryRules-API: et. Om du använder det äldre [Log Analytics varnings-API: et](../platform/api-alerts.md)måste du växla. [Läs mer om att växla](./alerts-log-api-switch.md)
+> Resurs oberoende och [kors resurs fråga](../logs/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) stöds bara med den aktuella scheduledQueryRules-API: et. Om du använder det äldre [Log Analytics varnings-API: et](./api-alerts.md)måste du växla. [Läs mer om att växla](./alerts-log-api-switch.md)
 
 #### <a name="query-time-range"></a>Tidsintervall för fråga
 
@@ -154,7 +154,7 @@ Du vill till exempel övervaka fel för flera virtuella datorer som kör webbpla
 Den här regeln övervakar om en virtuell dator har fel händelser under de senaste 15 minuterna. Varje virtuell dator övervakas separat och kommer att utlösa åtgärder individuellt.
 
 > [!NOTE]
-> Det finns endast en uppdelning av varnings dimensioner för det aktuella scheduledQueryRules-API: et. Om du använder det äldre [Log Analytics varnings-API: et](../platform/api-alerts.md)måste du växla. [Läs mer om att växla](./alerts-log-api-switch.md). Resurs-centrisk avisering i skala stöds bara i API-versionen `2020-05-01-preview` och senare.
+> Det finns endast en uppdelning av varnings dimensioner för det aktuella scheduledQueryRules-API: et. Om du använder det äldre [Log Analytics varnings-API: et](./api-alerts.md)måste du växla. [Läs mer om att växla](./alerts-log-api-switch.md). Resurs-centrisk avisering i skala stöds bara i API-versionen `2020-05-01-preview` och senare.
 
 ## <a name="alert-logic-definition"></a>Definition av aviserings logik
 
@@ -197,17 +197,17 @@ Pris information finns på [sidan Azure Monitor prissättning](https://azure.mic
 
 - Logga aviseringar på Application Insights visas med exakt resurs namn tillsammans med resurs grupps-och aviserings egenskaper.
 - Logga aviseringar på Log Analytics visas med exakt resurs namn tillsammans med resurs grupps-och aviserings egenskaper. När du skapar med [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules).
-- Logg aviseringar som skapats från [äldre Log Analytics API](../platform/api-alerts.md) spårar inte [Azure-resurser](../../azure-resource-manager/management/overview.md) och har inte tvingande unika resurs namn. De här aviseringarna skapas fortfarande på `microsoft.insights/scheduledqueryrules` som dolda resurser som har den här resurs namns strukturen `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Logg aviseringar på äldre API visas med ovanstående dolda resurs namn tillsammans med resurs grupps-och aviserings egenskaper.
+- Logg aviseringar som skapats från [äldre Log Analytics API](./api-alerts.md) spårar inte [Azure-resurser](../../azure-resource-manager/management/overview.md) och har inte tvingande unika resurs namn. De här aviseringarna skapas fortfarande på `microsoft.insights/scheduledqueryrules` som dolda resurser som har den här resurs namns strukturen `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Logg aviseringar på äldre API visas med ovanstående dolda resurs namn tillsammans med resurs grupps-och aviserings egenskaper.
 
 > [!NOTE]
 > Resurs tecken som inte stöds, som `<, >, %, &, \, ?, /` ersätts med `_` i dolda resurs namn och detta visas även i fakturerings informationen.
 
 > [!NOTE]
-> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av äldre [Log Analytics aviserings-API](../platform/api-alerts.md) och äldre mallar för [Log Analytics sparade sökningar och aviseringar](../insights/solutions.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md). En varnings regel hantering bör utföras med hjälp av [äldre Log Analytics-API](../platform/api-alerts.md) tills du bestämmer dig för att växla och du kan inte använda de dolda resurserna.
+> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av äldre [Log Analytics aviserings-API](./api-alerts.md) och äldre mallar för [Log Analytics sparade sökningar och aviseringar](../insights/solutions.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md). En varnings regel hantering bör utföras med hjälp av [äldre Log Analytics-API](./api-alerts.md) tills du bestämmer dig för att växla och du kan inte använda de dolda resurserna.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om att [skapa i logg aviseringar i Azure](./alerts-log.md).
 * Förstå [webhookar i logg aviseringar i Azure](../alerts/alerts-log-webhook.md).
-* Lär dig mer om [Azure-aviseringar](../platform/alerts-overview.md).
-* Läs mer om [Log Analytics](../log-query/log-query-overview.md).
+* Lär dig mer om [Azure-aviseringar](./alerts-overview.md).
+* Läs mer om [Log Analytics](../logs/log-query-overview.md).

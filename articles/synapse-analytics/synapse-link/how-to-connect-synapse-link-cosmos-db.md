@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5850644aac9c3324d9ffb17817195cbaaa6020ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a8626174e157e79d0250824e0a3cfa97141d50dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667558"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695047"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Ansluta till Azure Synapse Link för Azure Cosmos DB
 
@@ -67,5 +67,5 @@ Genom att högerklicka på en behållare har du en lista med gester som utlöser
 ## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig vad som stöds mellan Azure Synapse och Azure Cosmos DB](./concept-synapse-link-cosmos-db-support.md)
-* [Konfigurera privata slut punkter för Azure Cosmos DB analys lager](../cosmos-db/analytical-store-private-endpoints.md)
+* [Konfigurera privata slut punkter för Azure Cosmos DB analys lager](../../cosmos-db/analytical-store-private-endpoints.md)
 * [Lär dig hur du frågar analys lagret med Spark](./how-to-query-analytical-store-spark.md)

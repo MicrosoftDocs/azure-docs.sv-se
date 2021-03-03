@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 90646339ef41d0629a4d1ce8efed4b50427d3b2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724361"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Resurser för att skapa anpassade Azure Sentinel-anslutningar
 
@@ -55,9 +55,9 @@ I följande tabell jämförs viktig information om varje metod för att skapa an
 
 Om data källan levererar händelser i filer, rekommenderar vi att du använder Azure Monitor Log Analytics agent för att skapa din anpassade anslutning.
 
-- Mer information finns i [samla in anpassade loggar i Azure Monitor](/azure/azure-monitor/platform/data-sources-custom-logs).
+- Mer information finns i [samla in anpassade loggar i Azure Monitor](../azure-monitor/agents/data-sources-custom-logs.md).
 
-- Ett exempel på den här metoden finns i [samla in anpassade JSON-datakällor med Log Analytics-agenten för Linux i Azure Monitor](/azure/azure-monitor/platform/data-sources-json).
+- Ett exempel på den här metoden finns i [samla in anpassade JSON-datakällor med Log Analytics-agenten för Linux i Azure Monitor](../azure-monitor/agents/data-sources-json.md).
 
 ## <a name="connect-with-logstash"></a>Anslut med Logstash
 
@@ -83,7 +83,7 @@ Exempel på användbara Logstash-plugin-program finns i:
 
 ## <a name="connect-with-logic-apps"></a>Anslut till Logic Apps
 
-Använd en [Azure Logic-app](/azure/logic-apps/) för att skapa en server lös, anpassad anslutning för Azure Sentinel.
+Använd en [Azure Logic-app](../logic-apps/index.yml) för att skapa en server lös, anpassad anslutning för Azure Sentinel.
 
 > [!NOTE]
 > När du skapar Server lösa anslutningar med Logic Apps kan det vara praktiskt att använda Logic Apps för dina anslutningar kan vara kostsamt för stora mängder data.
@@ -95,9 +95,9 @@ Använd en [Azure Logic-app](/azure/logic-apps/) för att skapa en server lös, 
 
     |Utlösare  |Beskrivning  |
     |---------|---------|
-    |**En återkommande uppgift**     |   Du kan till exempel schemalägga din Logic app för att hämta data regelbundet från vissa filer, databaser eller externa API: er. <br>Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden i Azure Logic Apps](/azure/connectors/connectors-native-recurrence).      |
-    |**Utlösare på begäran**     | Kör din Logic app på begäran för manuell data insamling och testning. <br>Mer information finns i  [anropa, utlösa eller kapsla Logi Kap par med https-slutpunkter](/azure/logic-apps/logic-apps-http-endpoint).        |
-    |**HTTP/S-slutpunkt**     |  Rekommenderas för strömning och om käll systemet kan starta data överföringen. <br>Mer information finns i [anropa tjänst slut punkter via http eller https](/azure/connectors/connectors-native-http).       |
+    |**En återkommande uppgift**     |   Du kan till exempel schemalägga din Logic app för att hämta data regelbundet från vissa filer, databaser eller externa API: er. <br>Mer information finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden i Azure Logic Apps](../connectors/connectors-native-recurrence.md).      |
+    |**Utlösare på begäran**     | Kör din Logic app på begäran för manuell data insamling och testning. <br>Mer information finns i  [anropa, utlösa eller kapsla Logi Kap par med https-slutpunkter](../logic-apps/logic-apps-http-endpoint.md).        |
+    |**HTTP/S-slutpunkt**     |  Rekommenderas för strömning och om käll systemet kan starta data överföringen. <br>Mer information finns i [anropa tjänst slut punkter via http eller https](../connectors/connectors-native-http.md).       |
     |     |         |
 
 1. **Använd alla Logic app-kopplingar som läser information för att hämta dina händelser**. Exempel:
@@ -112,9 +112,9 @@ Använd en [Azure Logic-app](/azure/logic-apps/) för att skapa en server lös, 
 
 1. **Förbered den information som du vill hämta**.
 
-    Använd till exempel [åtgärden parsa JSON](/azure/logic-apps/logic-apps-perform-data-operations#parse-json-action) för att få åtkomst till egenskaper i JSON-innehåll, så att du kan välja dessa egenskaper från listan med dynamiskt innehåll när du anger indata för din Logic app.
+    Använd till exempel [åtgärden parsa JSON](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) för att få åtkomst till egenskaper i JSON-innehåll, så att du kan välja dessa egenskaper från listan med dynamiskt innehåll när du anger indata för din Logic app.
 
-    Mer information finns i [utföra data åtgärder i Azure Logic Apps](/azure/logic-apps/logic-apps-perform-data-operations).
+    Mer information finns i [utföra data åtgärder i Azure Logic Apps](../logic-apps/logic-apps-perform-data-operations.md).
 
 1. **Skriv data till Log Analytics**.
 
@@ -174,14 +174,14 @@ Du kan strömma händelser till Azure Sentinel genom att använda API: et Log An
 
 När du anropar en RESTful-slutpunkt krävs det också mer flexibilitet när du anropar en-slutpunkt direkt.
 
-Mer information finns i API för [Log Analytics data insamling](/azure/azure-monitor/platform/data-collector-api), särskilt i följande exempel:
+Mer information finns i API för [Log Analytics data insamling](../azure-monitor/logs/data-collector-api.md), särskilt i följande exempel:
 
-- [C#](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#c-sample)
-- [Python 2](https://docs.microsoft.com/azure/azure-monitor/platform/data-collector-api#python-2-sample)
+- [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
+- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
 
 ## <a name="connect-with-azure-functions"></a>Anslut till Azure Functions
 
-Använd Azure Functions tillsammans med ett RESTful-API och olika kodnings språk, till exempel [PowerShell](/azure/azure-functions/functions-reference-powershell), för att skapa en server lös anpassad anslutning.
+Använd Azure Functions tillsammans med ett RESTful-API och olika kodnings språk, till exempel [PowerShell](../azure-functions/functions-reference-powershell.md), för att skapa en server lös anpassad anslutning.
 
 Exempel på den här metoden finns i:
 
@@ -189,7 +189,7 @@ Exempel på den här metoden finns i:
 - [Anslut dina okta enkla Sign-On till Azure Sentinel med Azure Function](connect-okta-single-sign-on.md)
 - [Anslut din Proofpoint tryck till Azure Sentinel med Azure Function](connect-proofpoint-tap.md)
 - [Anslut din virtuella Qualys-dator till Azure Sentinel med Azure Function](connect-qualys-vm.md)
-- [Mata in XML, CSV eller andra data format](/azure/azure-monitor/platform/create-pipeline-datacollector-api#ingesting-xml-csv-or-other-formats-of-data)
+- [Mata in XML, CSV eller andra data format](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Övervaka zoom med Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (blogg)
 - [Distribuera en Funktionsapp för att hämta Office 365 Management API-data till Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure Sentinel GitHub community)
 

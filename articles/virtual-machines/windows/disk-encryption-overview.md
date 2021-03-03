@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27d962a2cf1a1c453d942d320d65b3e9b9a4b959
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357801"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694316"
 ---
-# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption för virtuella Windows-datorer 
+# <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption för virtuella Windows-datorer
 
-Azure Disk Encryption hjälper till att skydda dina data så att din verksamhet uppfyller både interna och externa krav och åtaganden. Den använder [BitLocker](https://en.wikipedia.org/wiki/BitLocker) -funktionen i Windows för att tillhandahålla volym kryptering för operativ system och data diskar för virtuella Azure-datorer (VM) och är integrerat med [Azure Key Vault](../../key-vault/index.yml) som hjälper dig att styra och hantera disk krypterings nycklar och hemligheter. 
+Azure Disk Encryption hjälper till att skydda dina data så att din verksamhet uppfyller både interna och externa krav och åtaganden. Den använder [BitLocker](https://en.wikipedia.org/wiki/BitLocker) -funktionen i Windows för att tillhandahålla volym kryptering för operativ system och data diskar för virtuella Azure-datorer (VM) och är integrerat med [Azure Key Vault](../../key-vault/index.yml) som hjälper dig att styra och hantera disk krypterings nycklar och hemligheter.
+
+Azure Disk Encryption är zon elastisk, på samma sätt som Virtual Machines. Mer information finns i [Azure-tjänster som stöder Tillgänglighetszoner](../../availability-zones/az-region.md).
 
 Om du använder [Azure Security Center](../../security-center/index.yml)får du en avisering om du har virtuella datorer som inte är krypterade. Aviseringarna visas med hög allvarlighets grad och rekommendationen är att kryptera de virtuella datorerna.
 
@@ -33,13 +35,9 @@ Du kan lära dig grunderna i Azure Disk Encryption för Windows på bara några 
 
 ### <a name="supported-vms"></a>Virtuella datorer som stöds
 
-Virtuella Windows-datorer är tillgängliga i [flera storlekar](../sizes-general.md). Azure Disk Encryption är inte tillgänglig på virtuella datorer med [Basic, A-serien](https://azure.microsoft.com/pricing/details/virtual-machines/series/)eller på virtuella datorer med mindre än 2 GB minne.
+Virtuella Windows-datorer är tillgängliga i [flera storlekar](../sizes-general.md). Azure Disk Encryption stöds på virtuella datorer i generation 1 och generation 2. Azure Disk Encryption är också tillgängligt för virtuella datorer med Premium Storage.
 
-Azure Disk Encryption är också tillgängligt för virtuella datorer med Premium Storage.
-
-Azure Disk Encryption är inte tillgänglig på [virtuella datorer i generation 2](../generation-2.md#generation-1-vs-generation-2-capabilities). Mer undantag finns i [Azure Disk Encryption: scenarier som inte stöds](disk-encryption-windows.md#unsupported-scenarios).
-
-Azure Disk Encryption är inte tillgängligt på VM-avbildningar utan temporära diskar (DV4, Dsv4, Ev4 och Esv4).  Se [storlekar för virtuella Azure-datorer utan lokal temporär disk](../azure-vms-no-temp-disk.md).
+Azure Disk Encryption är inte tillgänglig på virtuella datorer med [Basic, A-serien](https://azure.microsoft.com/pricing/details/virtual-machines/series/)eller på virtuella datorer med mindre än 2 GB minne.  Azure Disk Encryption är inte heller tillgängligt på VM-avbildningar utan temporära diskar (DV4, Dsv4, Ev4 och Esv4).  Se [storlekar för virtuella Azure-datorer utan lokal temporär disk](../azure-vms-no-temp-disk.md).  Mer undantag finns i [Azure Disk Encryption: scenarier som inte stöds](disk-encryption-windows.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
@@ -85,12 +83,11 @@ I följande tabell definieras några vanliga termer som används i dokumentation
 | Nyckel krypterings nyckel (KEK) | Den asymmetriska nyckeln (RSA 2048) som du kan använda för att skydda eller figursätta hemligheten. Du kan ange en HSM-skyddad nyckel eller en skyddad nyckel för program vara. Mer information finns i [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -dokumentationen och [skapa och konfigurera ett nyckel valv för Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-cmdletar | Mer information finns i [Azure PowerShell-cmdletar](/powershell/azure/). |
 
-
 ## <a name="next-steps"></a>Nästa steg
 
 - [Snabb start – skapa och kryptera en virtuell Windows-dator med Azure CLI ](disk-encryption-cli-quickstart.md)
 - [Snabb start – skapa och kryptera en virtuell Windows-dator med Azure PowerShell](disk-encryption-powershell-quickstart.md)
 - [Azure Disk Encryption-scenarier på virtuella Windows-datorer](disk-encryption-windows.md)
-- [Azure Disk Encryption nödvändiga CLI-skript](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure Disk Encryption nödvändiga CLI-skript](https://github.com/ejarvi/ade-cli-getting-started) 
 - [PowerShell-skript för Azure Disk Encryption krav](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Skapa och konfigurera ett nyckelvalv för Azure Disk Encryption](disk-encryption-key-vault.md)

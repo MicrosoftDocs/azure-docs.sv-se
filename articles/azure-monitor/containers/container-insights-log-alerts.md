@@ -1,18 +1,18 @@
 ---
-title: Logg aviseringar från Azure Monitor för behållare | Microsoft Docs
-description: Den här artikeln beskriver hur du skapar anpassade logg aviseringar för minnes-och processor användning från Azure Monitor för behållare.
+title: Logga aviseringar från container Insights | Microsoft Docs
+description: Den här artikeln beskriver hur du skapar anpassade logg aviseringar för minnes-och processor användning från behållar insikter.
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: 4239567c60afda6ca165e097562cb888c731f15a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64d499d69194ac338d367ae094e42f4c8af23bef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711203"
 ---
-# <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Skapa loggaviseringar från Azure Monitor for Containers
+# <a name="how-to-create-log-alerts-from-container-insights"></a>Så här skapar du logg aviseringar från behållar insikter
 
-Azure Monitor för behållare övervakar prestandan för behållar arbets belastningar som distribueras till hanterade eller självhanterade Kubernetes-kluster. För att varna om vad som är viktigt beskriver den här artikeln hur du skapar loggbaserade aviseringar i följande situationer med AKS-kluster:
+Behållar insikter övervakar prestanda för behållar arbets belastningar som distribueras till hanterade eller självhanterade Kubernetes-kluster. För att varna om vad som är viktigt beskriver den här artikeln hur du skapar loggbaserade aviseringar i följande situationer med AKS-kluster:
 
 - När processor-eller minnes användning på klusternoder överskrider ett tröskelvärde
 - När processor-eller minnes användning på en behållare inom en styrenhet överskrider ett tröskelvärde jämfört med en gräns som har angetts för motsvarande resurs
@@ -20,9 +20,9 @@ Azure Monitor för behållare övervakar prestandan för behållar arbets belast
 - *Misslyckades*, *väntar*, *okänd*, *körs* eller *lyckades* Pod-fas antal
 - När ledigt disk utrymme på klusternoder överskrider ett tröskelvärde
 
-Om du vill varna för hög processor-eller minnes användning eller ont om ledigt disk utrymme på klusternoder, använder du frågorna som finns för att skapa en måtta avisering eller en mått mätnings avisering. Medan mått aviseringar har kortare svars tider än logg aviseringar innehåller logg aviseringar avancerade frågor och fler riktigt ambitiös. Logg aviserings frågor jämför ett datum/tid-värde för närvarande genom att använda operatorn *nu* och gå tillbaka en timme. (Azure Monitor för behållare lagrar alla datum i UTC-format (Coordinated Universal Time).)
+Om du vill varna för hög processor-eller minnes användning eller ont om ledigt disk utrymme på klusternoder, använder du frågorna som finns för att skapa en måtta avisering eller en mått mätnings avisering. Medan mått aviseringar har kortare svars tider än logg aviseringar innehåller logg aviseringar avancerade frågor och fler riktigt ambitiös. Logg aviserings frågor jämför ett datum/tid-värde för närvarande genom att använda operatorn *nu* och gå tillbaka en timme. (Container Insights lagrar alla datum i UTC-format (Coordinated Universal Time).)
 
-Om du inte är bekant med Azure Monitor aviseringar, se [Översikt över aviseringar i Microsoft Azure](../platform/alerts-overview.md) innan du börjar. Om du vill veta mer om aviseringar som använder logg frågor, se [logg aviseringar i Azure Monitor](../alerts/alerts-unified-log.md). Mer information om mått aviseringar finns [i mått varningar i Azure Monitor](../alerts/alerts-metric-overview.md).
+Om du inte är bekant med Azure Monitor aviseringar, se [Översikt över aviseringar i Microsoft Azure](../alerts/alerts-overview.md) innan du börjar. Om du vill veta mer om aviseringar som använder logg frågor, se [logg aviseringar i Azure Monitor](../alerts/alerts-unified-log.md). Mer information om mått aviseringar finns [i mått varningar i Azure Monitor](../alerts/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Sök frågor för resurs användnings logg
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>Skapa en varningsregel
 
-Det här avsnittet beskriver hur du skapar en mått mätnings aviserings regel med hjälp av prestanda data från Azure Monitor för behållare. Du kan använda den här grundläggande processen med en mängd olika logg frågor för att få aviseringar om olika prestanda räknare. Använd en av logg Sök frågorna som tillhandahölls tidigare för att börja med. Information om hur du skapar med en ARM-mall finns i exempel på hur du skapar [logg aviseringar med hjälp av Azure Resource Template](../alerts/alerts-log-create-templates.md)
+Det här avsnittet beskriver hur du skapar en mått mätnings aviserings regel med hjälp av prestanda data från behållar insikter. Du kan använda den här grundläggande processen med en mängd olika logg frågor för att få aviseringar om olika prestanda räknare. Använd en av logg Sök frågorna som tillhandahölls tidigare för att börja med. Information om hur du skapar med en ARM-mall finns i exempel på hur du skapar [logg aviseringar med hjälp av Azure Resource Template](../alerts/alerts-log-create-templates.md)
 
 >[!NOTE]
 >Följande procedur för att skapa en aviserings regel för användning av container resurser kräver att du växlar till en ny logg aviserings-API enligt beskrivningen i [switch API-inställningar för logg aviseringar](../alerts/alerts-log-api-switch.md).
@@ -283,7 +283,7 @@ Det här avsnittet beskriver hur du skapar en mått mätnings aviserings regel m
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. I Azure Portal söker du efter och väljer **Log Analytics arbets ytor**.
-3. I listan med Log Analytics arbets ytor väljer du den arbets yta som stöder Azure Monitor för behållare. 
+3. I listan med Log Analytics arbets ytor väljer du den arbets yta som stöder behållar insikter. 
 4. I fönstret till vänster väljer du **loggar** för att öppna sidan Azure Monitor loggar. Du använder den här sidan för att skriva och köra Azures logg frågor.
 5. På sidan **loggar** klistrar du in en av [frågorna](#resource-utilization-log-search-queries) som tillhandahölls tidigare i fältet **Sök fråga** och väljer sedan **Kör** för att validera resultatet. Om du inte utför det här steget är alternativet **+ ny avisering** inte tillgängligt för att välja.
 6. Välj **+ ny avisering** om du vill skapa en logg avisering.

@@ -4,12 +4,12 @@ description: Innehåller en översikt över support inställningar och begränsn
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ed58bc9e2bf8757cad79c1043459ceb5b845be40
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710676"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Supportmatris för säkerhetskopiering av virtuella Azure-datorer
 
@@ -115,6 +115,7 @@ Högsta kvarhållningsperiod | Beror på säkerhetskopieringsfrekvensen.
 Återställa filer på virtuella datorer med Windows lagrings utrymmen | Återställning stöds inte på samma virtuella dator.<br/><br/> Återställ i stället filerna på en kompatibel virtuell dator.
 Återställa filer på den virtuella Linux-datorn med LVM/RAID-matriser | Återställning stöds inte på samma virtuella dator.<br/><br/> Återställa på en kompatibel virtuell dator.
 Återställa filer med särskilda nätverks inställningar | Återställning stöds inte på samma virtuella dator. <br/><br/> Återställa på en kompatibel virtuell dator.
+Återställa filer från en delad disk, temporär enhet, deduplicerad disk, Ultra disk och disk med Skriv Accelerator aktiverat | Återställning stöds inte, <br/><br/>Se [stöd för Azure VM-lagring](#vm-storage-support).
 
 ## <a name="support-for-vm-management"></a>Stöd för hantering av virtuella datorer
 
@@ -149,7 +150,7 @@ Säkerhetskopiera med [diagnostikinställningar](../azure-monitor/essentials/pla
 Virtuella Gen2-datorer | Stöds <br> Azure Backup stöder säkerhets kopiering och återställning av [virtuella Gen2-datorer](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). När de här virtuella datorerna återställs från återställnings punkten återställs de som [virtuella Gen2-datorer](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 Säkerhets kopiering av virtuella Azure-datorer med lås | Stöds inte för ohanterade virtuella datorer. <br><br> Stöds för hanterade virtuella datorer.
 [Virtuella Spot-datorer](../virtual-machines/spot-vms.md) | Som inte stöds. Azure Backup återställer virtuella datorer på plats som vanliga virtuella Azure-datorer.
-[Dedikerad Azure-värd](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Stöds
+[Dedikerad Azure-värd](../virtual-machines/dedicated-hosts.md) | Stöds
 Windows Storage Spaces-konfiguration för fristående virtuella Azure-datorer | Stöds
 
 ## <a name="vm-storage-support"></a>Stöd för VM-lagring
@@ -168,7 +169,7 @@ Lägg till disk i skyddad virtuell dator | Stöds.
 Delad lagring| Säkerhets kopiering av virtuella datorer med klusterdelad volym (CSV) eller Scale-Out fil Server stöds inte. CSV-skrivare fungerar sannolikt inte under säkerhets kopieringen. Vid återställning kanske diskar som innehåller CSV-volymer inte kommer att visas.
 [Delade diskar](../virtual-machines/disks-shared-enable.md) | Stöds inte.
 Ultra SSD diskar | Stöds inte. Mer information finns i de här [begränsningarna](selective-disk-backup-restore.md#limitations).
-[Temporära diskar](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Temporära diskar säkerhets kopie ras inte av Azure Backup.
+[Temporära diskar](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporära diskar säkerhets kopie ras inte av Azure Backup.
 
 ## <a name="vm-network-support"></a>Stöd för virtuella dator nätverk
 

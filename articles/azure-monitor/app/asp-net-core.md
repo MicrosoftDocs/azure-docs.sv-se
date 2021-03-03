@@ -4,12 +4,12 @@ description: Övervaka ASP.NET Core webb program för tillgänglighet, prestanda
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 93f72b7e2f709f32942564dc7322a4c5d1064cfc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589907"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711509"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights för ASP.NET Core program
 
@@ -30,9 +30,6 @@ Exemplet som vi ska använda här är ett [MVC-program](/aspnet/core/tutorials/f
 
 > [!NOTE]
 > ASP.NET Core 3,1 kräver [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) eller senare.
-
-> [!IMPORTANT]
-> Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1 och 3,1. Versionerna 2,0, 2,2 och 3,0 har dragits tillbaka och stöds inte längre.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

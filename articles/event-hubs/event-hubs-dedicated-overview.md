@@ -3,18 +3,18 @@ title: Översikt över dedikerade Event Hub – Azure Event Hubs | Microsoft Doc
 description: Den här artikeln innehåller en översikt över dedikerade Azure-Event Hubs, som erbjuder distributioner av enskilda innehavare av Event Hub.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 1a15206fc35f0d536c7105aa73dfdcfc9967124d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358872"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715623"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Översikt över Event Hubs Dedicated
 
 *Event Hubs kluster* erbjuder distributioner för enskilda klienter för kunder med de mest krävande strömnings behoven. Det här erbjudandet för en enda klient organisation har ett garanterat 99,99% SLA och är bara tillgängligt på vår dedikerade pris nivå. Ett Event Hubs kluster kan intränga miljon tals händelser per sekund med garanterad kapacitet och under sekund svars tid. Namn områden och händelse nav som skapats i det dedikerade klustret inkluderar alla funktioner i standard erbjudandet och mer, men utan några ingångs gränser. Den innehåller också den populära [Event Hubs Capture](event-hubs-capture-overview.md) -funktionen utan extra kostnad. Med den här funktionen kan du automatiskt köra och logga data strömmar för att Azure Storage eller Azure Data Lake. 
 
-Kluster etablerade och debiteras efter **kapacitets enheter (CUS)** , en förallokerad mängd processor-och minnes resurser. Du kan köpa 1, 2, 4, 8, 12, 16 eller 20 CUs för varje kluster. Hur mycket du kan mata in och strömma per CU beror på flera olika faktorer, till exempel följande: 
+Kluster etablerade och debiteras efter **kapacitets enheter (CUS)**, en förallokerad mängd processor-och minnes resurser. Du kan köpa 1, 2, 4, 8, 12, 16 eller 20 CUs för varje kluster. Hur mycket du kan mata in och strömma per CU beror på flera olika faktorer, till exempel följande: 
 
 - Antal producenter och konsumenter
 - Nytto Last form
@@ -52,7 +52,7 @@ Event Hubs Dedicated erbjudandet debiteras till ett fast månads pris, med minst
 | Partitioner | 32 per Event-hubb | 1024 per Event-hubb<br/>2000 per CU |
 | Konsumentgrupper | 20 per Event-hubb | Ingen gräns per CU, 1000 per Event-hubb |
 | Brokered Connections | 1 000 ingår, 5 000 max | 100 KB ingår och Max |
-| Kvarhållning av meddelanden | 7 dagar, 84 GB ingår per data flödes enheter | 90 dagar, 10 TB inkluderat per CU |
+| [Kvarhållning av händelser](event-hubs-features.md#event-retention) | 7 dagar, 84 GB ingår per data flödes enheter | 90 dagar, 10 TB inkluderat per CU |
 | Capture | Betala per timme | Ingår |
 
 Mer kvoter och begränsningar finns i [Event Hubs kvoter och begränsningar](event-hubs-quotas.md)

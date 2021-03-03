@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f0d062766f0a5d58fbcaaa32b1df5a5e40c783b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719958"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Installera Azure Monitor Agent (förhands granskning)
 Den här artikeln innehåller de olika alternativ som för närvarande är tillgängliga för att installera [Azure Monitor Agent](azure-monitor-agent-overview.md) på både virtuella Azure-datorer och Azure Arc-aktiverade servrar, samt alternativen för att skapa [associationer med data insamlings regler](data-collection-rule-azure-monitor-agent.md) som definierar vilka data som agenten ska samla in.
@@ -42,7 +42,7 @@ Du kan använda Resource Manager-mallar för att installera Azure Monitor Agent 
 Hämta exempel mallar för att installera agenten och skapa associationen från följande: 
 
 - [Mall för att installera Azure Monitor Agent (Azure och Azure-båge)](../agents/resource-manager-agent.md#azure-monitor-agent-preview) 
-- [Mall för att skapa Association med data insamlings regel](../samples/resource-manager-data-collection-rules.md)
+- [Mall för att skapa Association med data insamlings regel](./resource-manager-data-collection-rules.md)
 
 Installera mallarna med [valfri distributions metod för Resource Manager-mallar](../../azure-resource-manager/templates/deploy-powershell.md) , till exempel följande kommandon.
 

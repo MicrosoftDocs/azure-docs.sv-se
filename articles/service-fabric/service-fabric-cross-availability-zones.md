@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714960"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -345,7 +345,7 @@ Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer må
 
 * Det första värdet är egenskapen **zoner** , som anger Tillgänglighetszoner som finns i skalnings uppsättningen för den virtuella datorn.
 * Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True. **Skalnings uppsättningen som sträcker sig över 3 AZ kan skala upp till 300 virtuella datorer även med "singlePlacementGroup = true".**
-* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning om värdet är true. Vi rekommenderar att du anger detta till true för att undvika obalanserad distribution av virtuella datorer mellan zoner. Läs om [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning. Detta bör vara "sant" för att undvika obalanserad distribution av virtuella datorer mellan zoner. Ett kluster med obalanserad VM-distribution i zoner är mindre troligt för att överleva zonen nedåt scenatio. Läs om [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Åsidosättningar av Faulydomain och UpgradeDomain måste inte konfigureras.
 
 ```json
@@ -409,7 +409,7 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 > * Offentliga IP-adresser och Load Balancer resurser ska använda standard-SKU: n enligt beskrivningen ovan i artikeln.
 > * Egenskapen "multipleAvailabilityZones" på nodeType kan bara definieras vid skapande av nodeType och kan inte ändras senare. Därför kan inte befintliga nodeTypes konfigureras med den här egenskapen.
 > * När "sfZonalUpgradeMode" utelämnas eller anges till "hierarkisk" kommer kluster-och program distributionen att gå långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner.
-> * Vi rekommenderar att du ställer in Tillförlitlighets nivån för klustret på platina för att säkerställa att klustret finns kvar i scenariot med en zon.
+> * Ställ in klustret **reliabilityLevel = platina** för att se till att klustret överleva ett scenario med en zon.
 
 >[!NOTE]
 > För bästa praxis rekommenderar vi att sfZonalUpgradeMode anges till hierarkiskt eller utelämnas. Distributionen kommer att följa zonindelade-distributionen av virtuella datorer som påverkar en mindre mängd repliker och/eller instanser som gör dem säkrare.

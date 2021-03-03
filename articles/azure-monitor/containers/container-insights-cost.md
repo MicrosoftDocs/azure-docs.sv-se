@@ -1,22 +1,22 @@
 ---
-title: Övervaknings kostnad för Azure Monitor för behållare | Microsoft Docs
-description: I den här artikeln beskrivs övervaknings kostnaden för mått & inventerings data som samlas in av Azure Monitor för behållare för att hjälpa kunderna att hantera deras användning och tillhör ande kostnader.
+title: Övervaknings kostnad för container Insights | Microsoft Docs
+description: I den här artikeln beskrivs övervaknings kostnaden för mått & inventerings data som samlas in av behållar insikter för att hjälpa kunderna att hantera deras användning och tillhör ande kostnader.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 0a3118e1dd839eced5e1f15d28feff4bbb58014f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625312"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728917"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Förstå övervakningskostnader för containrar i Azure Monitor
+# <a name="understand-monitoring-costs-for-container-insights"></a>Förstå övervaknings kostnader för behållar insikter
 
-Den här artikeln innehåller pris vägledning för Azure Monitor för behållare som hjälper dig att förstå följande:
+Den här artikeln innehåller pris vägledning för behållar insikter som hjälper dig att förstå följande:
 
 * Så här beräknar du kostnader direkt innan du aktiverar den här insikten
 
-* Så här mäter du kostnader efter Azure Monitor för behållare har Aktiver ATS för behållare för en eller flera behållare
+* Så här mäter du kostnader efter att behållar insikter har Aktiver ATS för en eller flera behållare
 
 * Så här kontrollerar du insamling av data och gör kostnads minskningar
 
@@ -27,7 +27,7 @@ Azure Monitor prissättnings modell baseras främst på mängden data som matas 
 >[!NOTE]
 >Alla storlekar och priser är endast för prov uppskattning. På sidan med Azure Monitor [priser](https://azure.microsoft.com/pricing/details/monitor/) finns de senaste priserna baserat på din Azure Monitor Log Analytics prissättnings modell och Azure-region.
 
-Följande är en sammanfattning av vilka typer av data som samlas in från ett Kubernetes-kluster med Azure Monitor för behållare som påverkar kostnader och som kan anpassas baserat på din användning:
+Följande är en sammanfattning av vilka typer av data som samlas in från ett Kubernetes-kluster med behållar insikter som påverkar kostnader och som kan anpassas baserat på din användning:
 
 - STDOUT, stderr container loggar från varje övervakad behållare i varje Kubernetes-namnrymd i klustret
 
@@ -37,11 +37,11 @@ Följande är en sammanfattning av vilka typer av data som samlas in från ett K
 
 - Aktiv kasse ring av Prometheus-mått
 
-- [Diagnostisk logg samling](../../aks/view-master-logs.md) av Kubernetes i ditt AKS-kluster för att analysera loggdata som skapats av huvud komponenter som *Kube-apiserver* och *Kube-Controller Manager*.
+- [Diagnostisk logg samling](../../aks/view-control-plane-logs.md) av Kubernetes i ditt AKS-kluster för att analysera loggdata som skapats av huvud komponenter som *Kube-apiserver* och *Kube-Controller Manager*.
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Det som samlas in från Kubernetes-kluster
 
-Azure Monitor för behållare innehåller en fördefinierad uppsättning mått och inventerings objekt som skrivs som loggdata i Log Analytics-arbetsytan. Alla mått i listan nedan samlas in som standard en gång i minuten.
+Behållar insikter innehåller en fördefinierad uppsättning mått och insamlade inventerings objekt som skrivs som loggdata i Log Analytics-arbetsytan. Alla mått i listan nedan samlas in som standard en gång i minuten.
 
 ### <a name="node-metrics-collected"></a>Nodens mått samlas in
 
@@ -194,10 +194,10 @@ Om du använder [Prometheus](container-insights-prometheus-integration.md), se t
 
 - Se till att kasse rings frekvensen är optimal (Standardvärdet är 60 sekunder). Även om du kan öka frekvensen till 15 sekunder måste du se till att de mått som du kasserar publiceras med den frekvensen. Annars kommer det att finnas många duplicerade mått och skickas till din Log Analytics arbets yta med intervall som lägger till data inmatning och kostnader för kvarhållning, men som är mindre värde. 
 
-- Azure Monitor for containers stöder undantag & inkluderings listor efter Metric Name. Om du till exempel tar bort **kubedns** -mått i klustret, kan det finnas hundratals av dem som är inkasserade som standard, men du är mest intresse rad av en delmängd. Bekräfta att du har angett en lista över mått att kassera eller exkludera andra förutom några för att spara på data inmatnings volymen. Det är enkelt att aktivera kassation och inte använda många av dessa mått, som bara lägger till ytterligare avgifter till din Log Analytics faktura.
+- Behållar insikter stöder undantag & inkluderings listor efter Metric Name. Om du till exempel tar bort **kubedns** -mått i klustret, kan det finnas hundratals av dem som är inkasserade som standard, men du är mest intresse rad av en delmängd. Bekräfta att du har angett en lista över mått att kassera eller exkludera andra förutom några för att spara på data inmatnings volymen. Det är enkelt att aktivera kassation och inte använda många av dessa mått, som bara lägger till ytterligare avgifter till din Log Analytics faktura.
 
 - När du klipper igenom Pod anteckningar bör du kontrol lera att du filtrerar efter namn område så att du utesluter Pod mått från namn områden som du inte använder (till exempel **dev-test-** namnrymd).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du kan förstå hur kostnaderna kommer att baseras på de senaste användnings mönstren från data som samlas in med Azure Monitor för behållare finns i [Hantera din användning och beräkna kostnader](../platform/manage-cost-storage.md).
+Mer information om hur du kan förstå vad kostnaderna kommer att baseras på de senaste användnings mönstren från data som samlas in med container Insights finns i [Hantera din användning och beräkna kostnader](../logs/manage-cost-storage.md).

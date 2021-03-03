@@ -4,17 +4,17 @@ description: Den här självstudien visar hur du skapar en hierarkisk struktur m
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 11/10/2020
+ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f1b1a94dc1d96e625947eef5730c24f080fc155a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366400"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721420"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
 
@@ -35,15 +35,17 @@ För att uppnå det här målet vägleder dig genom den här självstudien genom
 > * Konfigurera IoT Edge runtime på enheterna i hierarkin.
 > * Installera konsekventa certifikat i din enhets hierarki.
 > * Lägg till arbets belastningar till enheterna i hierarkin.
-> * Använd en API-proxy för att på ett säkert sätt dirigera HTTP-trafik över en enskild port från de lägre lager enheterna.
+> * Använd [modulen IoT Edge-API-proxy](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview) för att på ett säkert sätt dirigera http-trafik över en enskild port från dina enheter med lägre lager.
 
 I den här självstudien definieras följande nätverks skikt:
 
 * **Översta lagret**: IoT Edge enheter i det här skiktet kan ansluta direkt till molnet.
 
-* **Lägre lager**: IoT Edge enheter i det här skiktet kan inte ansluta direkt till molnet. De måste gå igenom en eller flera mellanliggande IoT Edge enheter för att kunna skicka och ta emot data.
+* **Lägre lager**: IoT Edge enheter på lager under det översta lagret kan inte ansluta direkt till molnet. De måste gå igenom en eller flera mellanliggande IoT Edge enheter för att kunna skicka och ta emot data.
 
-I den här självstudien används en hierarki med två enheter för enkelhetens skull. En enhet, **topLayerDevice**, representerar en enhet i hierarkins övre skikt, som kan ansluta direkt till molnet. Enheten kommer även att kallas för den **överordnade enheten**. Den andra enheten, **lowerLayerDevice**, representerar en enhet i den nedre nivån i hierarkin, som inte kan ansluta direkt till molnet. Enheten kommer även att kallas för den **underordnade enheten**. Du kan lägga till ytterligare lägre lager enheter för att representera produktions miljön. Konfigurationen av ytterligare lägre lager enheter kommer att följa **lowerLayerDevice**-konfigurationen.
+I den här självstudien används två hierarkier för enkelhetens skull, som visas nedan. En enhet, den **översta lager enheten**, representerar en enhet i hierarkins övre skikt, som kan ansluta direkt till molnet. Enheten kommer även att kallas för den **överordnade enheten**. Den andra enheten, den **lägre lager enheten**, representerar en enhet i den nedre nivån i hierarkin, som inte kan ansluta direkt till molnet. Du kan lägga till ytterligare lägre lager enheter för att representera produktions miljön efter behov. Enheter på lägre lager kallas även **underordnade enheter**. Konfigurationen av ytterligare lägre lager enheter kommer att följa konfigurationen för den **lägre lager enheten**.
+
+![Strukturen för kursens hierarki, som innehåller två enheter: det översta lager enheten och den lägre lager enheten](./media/tutorial-nested-iot-edge/tutorial-hierarchy-diagram.png)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -53,7 +55,8 @@ Om du vill skapa en hierarki med IoT Edge enheter behöver du:
 * Ett Azure-konto med en giltig prenumeration. Om du inte har en [Azure-prenumeration](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 * En kostnads fri eller standard nivå [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) i Azure.
 * Azure CLI v 2.3.1 med Azure IoT-tillägget v 0.10.6 eller senare installerat. I den här självstudien används [Azure Cloud Shell](../cloud-shell/overview.md). Om du inte känner till Azure Cloud Shell kan du [titta på en snabb start för mer information](./quickstart-linux.md#prerequisites).
-* Två Linux-enheter kan konfigureras som IoT Edge enheter. Om du inte har tillgängliga enheter kan du skapa två virtuella Azure-datorer genom att ersätta platshållartexten i följande kommando och köra den två gånger:
+  * Om du vill se dina aktuella versioner av Azure CLI-moduler och-tillägg kör du [AZ-versionen](/cli/azure/reference-index?#az_version).
+* En Linux-enhet som ska konfigureras som en IoT Edge enhet för varje enhet i hierarkin. I den här självstudien används två enheter. Om du inte har tillgängliga enheter kan du skapa virtuella Azure-datorer för varje enhet i hierarkin genom att ersätta platshållartexten i följande kommando och köra den:
 
    ```azurecli-interactive
    az vm create \
@@ -71,13 +74,18 @@ Om du vill skapa en hierarki med IoT Edge enheter behöver du:
 
   Ner information finns i artikeln om [hur du öppnar portar för en virtuell dator med Azure Portal](../virtual-machines/windows/nsg-quickstart-portal.md).
 
-Du kan också testa det här scenariot genom att följa exemplet med skript [Azure IoT Edge för industriella IoT-exempel](https://aka.ms/iotedge-nested-sample), som distribuerar virtuella Azure-datorer som förkonfigurerade enheter för att simulera en fabriks miljö.
+>[!TIP]
+>Om du vill ha en automatisk titt på hur du konfigurerar en hierarki med IoT Edge enheter kan du följa exemplet med skript [Azure IoT Edge för industriella IoT-exempel](https://aka.ms/iotedge-nested-sample). Det här skript scenariot distribuerar virtuella Azure-datorer som förkonfigurerade enheter för att simulera en fabriks miljö.
+>
+>Om du vill fortsätta trots att du skapade övnings exemplet steg för steg, fortsätter du med själv studie stegen nedan.
 
 ## <a name="configure-your-iot-edge-device-hierarchy"></a>Konfigurera din IoT Edge enhets hierarki
 
 ### <a name="create-a-hierarchy-of-iot-edge-devices"></a>Skapa en hierarki med IoT Edge enheter
 
-Det första steget, som du skapar IoT Edge enheter, kan göras via Azure Portal eller Azure CLI. I den här självstudien får du skapa en hierarki med två IoT Edge enheter: **topLayerDevice** och dess underordnade **lowerLayerDevice**.
+IoT Edge enheter utgör lagren i hierarkin. I den här självstudien får du skapa en hierarki med två IoT Edge enheter: det **översta lager enheten** och dess underordnade, den **lägre lager enheten**. Du kan skapa ytterligare underordnade enheter efter behov.
+
+Du kan använda Azure Portal eller Azure CLI för att skapa dina IoT Edge enheter.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -87,7 +95,7 @@ Det första steget, som du skapar IoT Edge enheter, kan göras via Azure Portal 
 
 1. Välj **+ Lägg till en IoT Edge enhet**. Enheten kommer att bli den översta lager enheten, så ange ett lämpligt unikt enhets-ID. Välj **Spara**.
 
-1. Välj **+ Lägg till en IoT Edge enhet** igen. Enheten kommer att vara enhetens lägre lager enhet, så ange ett lämpligt unikt enhets-ID.
+1. Välj **+ Lägg till en IoT Edge enhet** igen. Enheten kommer att vara en enhet med lägre lager, så ange ett lämpligt unikt enhets-ID.
 
 1. Välj **Ange en överordnad enhet**, Välj ditt översta skikts enhet i listan över enheter och välj **OK**. Välj **Spara**.
 
@@ -101,15 +109,27 @@ Det första steget, som du skapar IoT Edge enheter, kan göras via Azure Portal 
    az iot hub device-identity create --device-id {top_layer_device_id} --edge-enabled --hub-name {hub_name}
    ```
 
-1. Ange följande kommando för att skapa en underordnad IoT Edge enhet och skapa en överordnad-underordnad-relation mellan enheter:
+   En lyckad enhets skapande kommer att mata ut enhetens JSON-konfiguration.
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --pd {top_layer_device_id} --hub-name {iothub_name}
-    ```
+   ![JSON-utdata för en lyckad enhets skapande](./media/tutorial-nested-iot-edge/json-success-output.png)
+
+1. Ange följande kommando för att skapa en lägre Layer IoT Edge-enhet. Du kan skapa mer än en enhet med lägre lager om du vill ha mer lager i hierarkin. Se till att tillhandahålla unika enhets identiteter.
+
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id {lower_layer_device_id} --edge-enabled --hub-name {hub_name}
+   ```
+
+1. Ange följande kommando för att definiera varje överordnad-underordnad-relation mellan den **översta lager enheten** och varje **enhet med lägre lager**. Se till att köra det här kommandot för varje enhet med lägre lager i hierarkin.
+
+   ```azurecli-interactive
+   az iot hub device-identity parent set --device-id {lower_layer_device_id} --parent-device-id {top_layer_device_id} --hub-name {hub_name}
+   ```
+
+   Det här kommandot har inga explicita utdata.
 
 ---
 
-Anteckna varje IoT Edge enhets anslutnings sträng. De kommer att användas senare.
+Anteckna sedan varje IoT Edge enhets anslutnings sträng. De kommer att användas senare.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -130,6 +150,48 @@ Anteckna varje IoT Edge enhets anslutnings sträng. De kommer att användas sena
    ```
 
 ---
+
+Om du har slutfört ovanstående steg korrekt kan du använda följande steg för att kontrol lera att de överordnade-underordnade relationerna är korrekta i Azure Portal eller Azure CLI.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. I [Azure Portal](https://ms.portal.azure.com/)navigerar du till avsnittet **IoT Edge** i IoT Hub.
+
+1. Klicka på enhets-ID: t för en enhet med ett **lägre lager** i listan över enheter.
+
+1. På enhetens informations sida bör du se ditt **högsta skikts enhets** identitet som anges bredvid fältet **överordnad enhet** .
+
+   [Överordnad enhet har godkänts av en underordnad enhet](./media/tutorial-nested-iot-edge/lower-layer-device-parent.png)
+
+Du kan också ha en underordnad hierarkins relation till din **översta lager enhet**.
+
+1. Klicka på enhets-ID: t för en **enhet på översta nivån** i listan över enheter.
+
+1. Välj fliken **Hantera underordnade enheter** överst.
+
+1. Under listan över enheter bör du se din **lägre lager enhet**.
+
+   [Underordnad enhet har godkänts av överordnad enhet](./media/tutorial-nested-iot-edge/top-layer-device-child.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. I [Azure Cloud Shell](https://shell.azure.com/) kan du kontrol lera att någon av dina underordnade enheter har upprättat relationen med den överordnade enheten genom att hämta identiteten för den underordnade enhetens bekräftade överordnade enhet. Detta kommer att generera den överordnade enhetens JSON-konfiguration, bildad ovan:
+
+   ```azurecli-interactive
+   az iot hub device-identity parent show --device-id {lower_layer_device_id} --hub-name {hub_name}
+   ```
+
+Du kan också underordna hierarkins Relations hip genom att fråga din **enhet på högsta nivån**.
+
+1. Lista de underordnade enheterna som den överordnade enheten känner till:
+
+    ```azurecli-interactive
+    az iot hub device-identity children list --device-id {top_layer_device_id} --hub-name {hub_name}
+    ```
+
+---
+
+När du är nöjd med att hierarkin är korrekt strukturerad är du redo att gå vidare.
 
 ### <a name="create-certificates"></a>Skapa certifikat
 
@@ -165,11 +227,11 @@ Om du vill skapa demo certifikat på en Linux-enhet måste du klona generationen
 1. Skapa två uppsättningar med IoT Edge enhets certifikat och privata nycklar med följande kommando: en uppsättning för det översta skiktets enhet och en uppsättning för den lägre lager enheten. Ange minnes namn för certifikat utfärdarna för att skilja dem från varandra.
 
    ```bash
-   ./certGen.sh create_edge_device_ca_certificate "top-layer-device"
-   ./certGen.sh create_edge_device_ca_certificate "lower-layer-device"
+   ./certGen.sh create_edge_device_ca_certificate "{top_layer_certificate_name}"
+   ./certGen.sh create_edge_device_ca_certificate "{lower_layer_certificate_name}"
    ```
 
-   Det här skript kommandot skapar flera certifikat och viktiga filer, men vi använder följande certifikat och nyckel par på varje IoT Edge enhet och refereras till i filen config. yaml:
+   Det här skript kommandot skapar flera certifikat och viktiga filer, men vi använder följande certifikat och nyckel par på varje IoT Edge enhet och refereras till i konfigurations filen:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
@@ -183,11 +245,35 @@ Varje enhet behöver en kopia av rot certifikat utfärdarens certifikat och en k
    sudo update-ca-certificates
    ```
 
-   Det här kommandot ska utdata som visar att ett certifikat har lagts till i/etc/ssl/certs.
+   Det här kommandot ska utdata som visar att ett certifikat har lagts till i `/etc/ssl/certs` .
+
+   [Installations meddelande för lyckad certifikat](./media/tutorial-nested-iot-edge/certificates-success-output.png)
+
+Om du har slutfört ovanstående steg korrekt kan du kontrol lera att dina certifikat är installerade i `/etc/ssl/certs` genom att gå till den katalogen och söka efter de installerade certifikaten.
+
+1. Gå till `/etc/ssl/certs` :
+
+   ```bash
+   cd /etc/ssl/certs
+   ```
+
+1. Lista de installerade certifikaten och `grep` för `azure` :
+
+   ```bash
+   ll | grep azure
+   ```
+
+   Du bör se en certifikat-hash som är länkad till ditt rot certifikat för certifikat utfärdare och ditt rotcertifikatutfärdarcertifikat som är länkat till kopian i din `usr/local/share` katalog.
+
+   [Sök Resultat för Azure-certifikat](./media/tutorial-nested-iot-edge/certificate-list-results.png)
+
+När du är nöjd med att dina certifikat är installerade på varje enhet är du redo att gå vidare.
 
 ### <a name="install-iot-edge-on-the-devices"></a>Installera IoT Edge på enheterna
 
-Installera IoT Edge genom att följa dessa steg på båda enheterna.
+Genom att installera IoT Edge version 1,2 Runtime-avbildningarna får dina enheter åtkomst till de funktioner som krävs för att kunna användas som en hierarki med enheter.
+
+Om du vill installera IoT Edge måste du installera lämplig lagrings plats konfiguration, installera nödvändiga komponenter och installera de nödvändiga versions resurserna.
 
 1. Installera den lagrings plats konfiguration som matchar enhetens operativ system.
 
@@ -215,7 +301,7 @@ Installera IoT Edge genom att följa dessa steg på båda enheterna.
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
-   
+
 1. Uppdatera paket listor på enheten.
 
    ```bash
@@ -228,111 +314,142 @@ Installera IoT Edge genom att följa dessa steg på båda enheterna.
    sudo apt-get install moby-engine
    ```
 
-1. Installera hsmlib och IoT Edge daemon. [Besök GitHub-versionen](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)om du vill se till gångarna för andra Linux-distributioner. <!-- Update with proper image links on release -->
+1. Installera IoT Edge och IoT Identity service.
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
-   sudo dpkg -i ./libiothsm-std.deb
-   sudo dpkg -i ./iotedge.deb
+   sudo apt-get install aziot-edge
    ```
+
+Om du har slutfört ovanstående steg korrekt såg du det Azure IoT Edge banner-meddelande som begär att du uppdaterar Azure IoT Edge konfigurations filen, `/etc/aziot/config.toml` på varje enhet i hierarkin. I så fall är du redo att fortsätta.
 
 ### <a name="configure-the-iot-edge-runtime"></a>Konfigurera IoT Edge-körningen
 
-Konfigurera IoT Edge runtime genom att följa dessa steg på båda enheterna. Att konfigurera IoT Edge runtime för dina enheter består av fyra steg, som du gör genom att redigera IoT Edge-konfigurations filen:
+Förutom att etablera dina enheter, etablerar konfigurations stegen betrodd kommunikation mellan enheterna i hierarkin med hjälp av de certifikat som du skapade tidigare. Stegen börjar också upprätta en nätverks struktur för hierarkin. Enheten på den översta nivån kommer att ha Internet anslutning, så att den kan hämta avbildningar för körning från molnet, medan lägre lager enheter dirigerar genom enheten på den översta nivån för att få åtkomst till de här avbildningarna.
 
-1. Etablera varje enhet manuellt genom att lägga till enhetens anslutnings sträng i konfigurations filen.
+Om du vill konfigurera IoT Edge runtime måste du ändra flera komponenter i konfigurations filen. Konfigurationen skiljer sig något från den **översta lager enheten** och en **enhet med lägre lager**, så det är mindful som du redigerar för varje steg. Att konfigurera IoT Edge runtime för dina enheter består av fyra steg, som du gör genom att redigera IoT Edge-konfigurations filen:
 
-1. Slutför konfigurationen av enhetens certifikat genom att peka konfigurations filen på enhetens CA-certifikat, privat nyckel för enhetens certifikat utfärdare och certifikat för rot certifikat utfärdare.
+* Etablera varje enhet manuellt genom att lägga till enhetens anslutnings sträng i konfigurations filen.
 
-1. Starta systemet med IoT Edge-agenten.
+* Slutför konfigurationen av enhetens certifikat genom att peka konfigurations filen på enhetens CA-certifikat, privat nyckel för enhetens certifikat utfärdare och certifikat för rot certifikat utfärdare.
 
-1. Uppdatera **hostname** -parametern för enheten på den **högsta nivån** och uppdatera både parametern **hostname** och **parent_hostname** parametern för de **lägre lager** enheterna.
+* Starta systemet med IoT Edge-agenten.
+
+* Uppdatera **hostname** -parametern för enheten på den **högsta nivån** och uppdatera både parametern **hostname** och **parent_hostname** parametern för de **lägre lager** enheterna.
 
 Slutför de här stegen och starta om tjänsten IoT Edge för att konfigurera dina enheter.
 
-1. På varje enhet öppnar du IoT Edge konfigurations filen.
+>[!TIP]
+>När du navigerar i konfigurations filen i nano kan du söka efter nyckelord i filen med **CTRL + W** .
+
+1. Skapa en konfigurations fil baserat på den inkluderade mallen på varje enhet.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+
+1. On each device, open the IoT Edge configuration file.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Hitta etablerings konfigurationerna för filen och ta bort kommentaren till den **manuella etablerings konfigurationen med hjälp av en anslutnings sträng** avsnitt.
+1. Hitta avsnittet **hostname** för din enhet på **högsta nivån** . Ta bort kommentaren till raden med `hostname` parametern och uppdatera värdet så att det är det fullständigt kvalificerade domän namnet (FQDN) eller IP-adressen för den IoT Edge enheten. Använd det värde du väljer konsekvent över enheterna i hierarkin.
 
-1. Uppdatera värdet för **device_connection_string** med anslutnings strängen från IoT Edge enheten. Se till att alla andra etablerings avsnitt är kommenterade. Se till att **etableringen:** raden inte har några föregående blank steg och att kapslade objekt är indragna med två blank steg.
-
-   ```yml
-   # Manual provisioning configuration using a connection string
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-     dynamic_reprovisioning: false
+   ```toml
+   hostname = "<device fqdn or IP>"
    ```
 
    >[!TIP]
    >Klistra in innehållet i Urklipp i nano `Shift+Right Click` eller tryck på `Shift+Insert` .
 
-1. Hitta avsnittet **certifikat** . Ta bort kommentaren och uppdatera de tre certifikat fälten så att de pekar på de certifikat som du skapade i föregående avsnitt och flyttade till IoT Edge enheten. Ange fil-URI-sökvägar som tar formatet `file:///<path>/<filename>` .
+1. För alla IoT Edge enheter i **lägre lager** hittar du avsnittet **överordnat värdnamn** . Ta bort kommentaren till raden med `parent_hostname` parametern och uppdatera värdet så att det pekar på det fullständiga domän namnet eller IP-adressen för den överordnade enheten. Använd det exakta värdet som du angav i den överordnade enhetens **värdnamn** -fält. Lämna den här parametern kommenterad för IoT Edge-enheten i det **översta lagret**.
 
-   ```yml
-   certificates:
-     device_ca_cert: "<File URI path to the device CA certificate unique to this device.>"
-     device_ca_pk: "<File URI path to the device CA private key unique to this device.>"
-     trusted_ca_certs: "<File URI path to the root CA certificate shared by all devices in the gateway hierarchy.>"
-   ```
-
-1. Hitta parametern **hostname** för ditt **högsta skikt** -enhet. Uppdatera värdet till det fullständigt kvalificerade domän namnet (FQDN) eller IP-adressen för den IoT Edge enheten. Använd det värde du väljer konsekvent över enheterna i hierarkin.
-
-   ```yml
-   hostname: <device fqdn or IP>
-   ```
-
-1. Uppdatera konfigurations filen så att den pekar på det fullständiga domän namnet eller IP-adressen för den överordnade enheten för IoT Edge enheter i **lägre lager** och matcha vad som finns i den överordnade enhetens **värdnamn** -fält. Lämna den här parametern kommenterad för IoT Edge enheter i det **översta lagret**.
-
-   ```yml
-   parent_hostname: <parent device fqdn or IP>
+   ```toml
+   parent_hostname = "<parent device fqdn or IP>"
    ```
 
    > [!NOTE]
    > För hierarkier med fler än ett lägre lager uppdaterar du *parent_hostname* fältet med FQDN för enheten i lagret direkt ovan.
 
-1. För enheten på den **översta nivån** hittar du avsnittet **agent** yaml och uppdaterar avbildning svärdet till rätt version av IoT Edge agenten. I det här fallet kommer vi att peka det översta lagrets IoT Edge agent på Azure Container Registry med den offentliga för hands versionen av IoT Edge agent avbildningen tillgänglig.
+1. Hitta avsnittet **TRUSTe Bundle-certifikat** i filen. Ta bort kommentaren till raden med `trust_bundle_cert` parametern och uppdatera värdet med fil-URI-sökvägen till rot certifikat utfärdarens certifikat som delas av alla enheter i Gateway-hierarkin.
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   trust_bundle_cert = "<root CA certificate>"
    ```
 
-1. För IoT Edge enheter i **lägre lager** uppdaterar du avbildningens värdes domän namn så att det pekar på den överordnade enhetens FQDN eller IP följt av API-proxy-port 8000. Du kommer att lägga till modulen API-proxy i nästa avsnitt.
+1. Hitta **etablerings** avsnittet i filen. Ta bort kommentarer till raderna för **manuell etablering med anslutnings strängen**. Uppdatera värdet för **connection_string** med anslutnings strängen från IoT Edge-enheten för varje enhet i hierarkin.
+
+   ```toml
+   # Manual provisioning with connection string
+   [provisioning]
+   source = "manual"
+   connection_string: "<Device connection string>"
+   ```
+
+1. Hitta standard sektionen för **Edge-agenten** .
+
+   * Uppdatera värdet för edgeAgent-avbildningen till den offentliga för hands versionen av modulen i Azure Container Registry för din enhet på **högsta nivån** .
+   
+     ```toml
+     [agent.config]
+     image = "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+   * Uppdatera edgeAgent-avbildningen för varje IoT Edge enhet i **lägre lager** så att den pekar på den överordnade enheten följt av porten som API-proxyn lyssnar på. Du kommer att distribuera API-proxy-modulen till den överordnade enheten i nästa avsnitt.
+   
+     ```toml
+     [agent.config]
+     image = "<parent hostname value>:8000/azureiotedge-agent:1.2.0-rc4"
+     ```
+
+1. Hitta avsnittet **Edge CA-certifikat** . Ta bort kommentarer till de tre första raderna i det här avsnittet. Sedan uppdaterar du de två parametrarna så att de pekar på enhetens CA-certifikat och privata nyckelfiler för enhets certifikat som du skapade i föregående avsnitt och flyttade till den IoT Edge enheten. Ange fil-URI-sökvägar, som tar formatet `file:///<path>/<filename>` , till exempel `file:///certs/iot-edge-device-ca-top-layer-device.key.pem` .
 
    ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   [edge_ca]
+   cert = "<File URI path to the device full chain CA certificate unique to this device.>"
+   pk = "<File URI path to the device CA private key unique to this device.>"
    ```
+
+   >[!NOTE]
+   >Se till att du använder den **fullständiga kedjans** certifikat och fil namn för att fylla i `device_ca_cert` fältet.
 
 1. Spara och stäng filen.
 
    `CTRL + X`, `Y`, `Enter`
 
-1. När du har angett etablerings informationen i konfigurations filen startar du om daemonen:
+1. När du har angett etablerings informationen i konfigurations filen ska du använda ändringarna:
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
+
+Innan du fortsätter kontrollerar du att du har uppdaterat konfigurations filen för varje enhet i hierarkin. Beroende på hierarkins struktur konfigurerade du en enhet på **översta nivån** och en eller flera **enheter med lägre lager**.
+
+Om du har slutfört ovanstående steg korrekt kan du kontrol lera att enheterna är korrekt konfigurerade.
+
+1. Kör konfigurations-och anslutnings kontrollerna på dina enheter:
+
+   ```bash
+   sudo iotedge check
+   ```
+
+På din **enhet på den översta nivån** förväntar du dig att se utdata med flera utvärderings resultat och minst en varning. Kontrollen för kommer att `latest security daemon` varna dig om att en annan IoT Edge version är den senaste stabila versionen eftersom IoT Edge version 1,2 finns i offentlig för hands version. Du kan se ytterligare varningar om loggar principer och, beroende på ditt nätverk, DNS-principer.
+
+På en **enhet med ett lägre lager** förväntar du dig att se utdata som liknar det översta skiktet, men med ytterligare en varning som anger att EdgeAgent-modulen inte kan hämtas från överordnad enhet. Detta är acceptabelt, eftersom modulen IoT Edge-API-proxy och Docker Container Registry modul, som gör att lägre lager enheter hämtar bilder genom, inte har distribuerats till enheten på den **översta nivån**.
+
+Ett exempel på utdata `iotedge check` visas nedan:
+
+[Exempel på konfiguration och anslutnings resultat](./media/tutorial-nested-iot-edge/configuration-and-connectivity-check-results.png)
+
+När du är nöjd med att dina konfigurationer är korrekta på varje enhet är du redo att gå vidare.
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>Distribuera moduler till enheten på den översta nivån
 
-De återstående stegen för att slutföra konfigurationen av IoT Edge Runtime och distribuera arbets belastningar görs från molnet via Azure Portal eller Azure CLI.
+Moduler för att slutföra distributionen och IoT Edge runtime till dina enheter och definiera en ytterligare struktur för hierarkin. Modulen IoT Edge-API-proxy säker routs HTTP-trafik över en enskild port från dina enheter med lägre lager. I Docker Registry-modulen får du en lagrings plats med Docker-avbildningar som de lägre lager enheterna kan komma åt genom att dirigera avbildningar till enheten på den översta nivån.
+
+Om du vill distribuera moduler till enheten på den översta nivån kan du använda Azure Portal eller Azure CLI.
+
+>[!NOTE]
+>De återstående stegen för att slutföra konfigurationen av IoT Edge Runtime och distribuera arbets belastningar görs inte på dina IoT Edge enheter.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -348,7 +465,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 1. Välj **körnings inställningar**, bredvid kugg hjuls ikonen.
 
-1. Skriv i fältet bild under **Edge Hub** `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Skriv i fältet bild under **Edge Hub** `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
    ![Redigera Edge Hub-bilden](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
@@ -361,7 +478,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
    ![Redigera kant hubbens miljövariabler](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Skriv i fältet bild under **Edge-agent** `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Välj **Spara**.
+1. Skriv i fältet bild under **Edge-agent** `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4` . Välj **Spara**.
 
 1. Lägg till Docker-Registry-modulen i enheten på den översta nivån. Välj **+ Lägg till** och välj **IoT Edge modul** i list rutan. Ange namnet `registry` på din Docker-register-modul och ange `registry:latest` för avbildnings-URI: n. Lägg sedan till miljövariabler och skapa alternativ för att peka din lokala register-modul i Microsoft container Registry för att hämta behållar avbildningar från och för att betjäna avbildningarna i registret: 5000.
 
@@ -456,14 +573,14 @@ I [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -504,9 +621,13 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 ---
 
+Om du har slutfört ovanstående steg korrekt bör **enheten i det högsta skiktet** rapportera de fyra modulerna: modulen IoT Edge-API-proxy, docker container Registry-modulen och systemmodulerna, som **anges i distributionen**. Det kan ta några minuter innan enheten tar emot sin nya distribution och startar modulerna. Uppdatera sidan tills du ser modulen temperatur sensor listad som **rapporteras av enheten**. När modulerna rapporter ATS av enheten är du redo att fortsätta.
+
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Distribuera moduler till den lägre lager enheten
 
-Du kan använda både Azure Portal och Azure CLI för att distribuera arbets belastningar från molnet till de **lägre lager** enheterna.
+Moduler fungerar också som arbets belastningar för de lägre lager enheterna. Modulen simulerad temperatur sensor skapar exempel på telemetridata för att tillhandahålla ett funktionellt data flöde genom din hierarki av enheter.
+
+Om du vill distribuera moduler till de lägre lager enheterna kan du använda Azure Portal eller Azure CLI.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -522,7 +643,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 1. Välj **körnings inställningar**, bredvid kugg hjuls ikonen.
 
-1. Skriv i fältet bild under **Edge Hub** `$upstream:8000/azureiotedge-hub:1.2.0-rc2` .
+1. Skriv i fältet bild under **Edge Hub** `$upstream:8000/azureiotedge-hub:1.2.0-rc4` .
 
 1. Lägg till följande miljövariabler i din Edge Hub-modul:
 
@@ -531,7 +652,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Skriv i fältet bild under **Edge-agent** `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Välj **Spara**.
+1. Skriv i fältet bild under **Edge-agent** `$upstream:8000/azureiotedge-agent:1.2.0-rc4` . Välj **Spara**.
 
 1. Lägg till modulen temperatur sensor. Välj **+ Lägg till** och välj **Marketplace-modul** i list rutan. Sök efter `Simulated Temperature Sensor` och välj modulen.
 
@@ -578,14 +699,14 @@ I [Azure Portal](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc4",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc4",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -627,9 +748,9 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 Notice that the image URI that we used for the simulated temperature sensor module pointed to `$upstream:8000` instead of to a container registry. We configured this device to not have direct connections to the cloud, because it's in a lower layer. To pull container images, this device requests the image from its parent device instead. At the top layer, the API proxy module routes this container request to the registry module, which handles the image pull.
 
-On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
+If you completed the above steps correctly, your **lower layer device** should report three modules: the temperature sensor module and the system modules, as **Specified in Deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by Device**. Once the modules are reported by the device, you are ready to continue.
 
-## IotEdge check
+## Troubleshooting
 
 Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
@@ -640,17 +761,17 @@ When you run `iotedge check` from the lower layer, the program tries to pull the
 In this tutorial, we use port 8000, so we need to specify it:
 
 ```bash
-sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc4
 ```
-   
+
 `azureiotedge-diagnostics`Värdet hämtas från behållar registret som är länkat till register-modulen. Den här självstudien har den angetts som standard till https://mcr.microsoft.com:
 
 | Namn | Värde |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
-Om du använder ett privat behållar register, se till att alla avbildningar (till exempel IoTEdgeAPIProxy, edgeAgent, edgeHub och diagnostik) finns i behållar registret.    
-    
+Om du använder ett privat behållar register, se till att alla avbildningar (till exempel IoTEdgeAPIProxy, edgeAgent, edgeHub och diagnostik) finns i behållar registret.
+
 ## <a name="view-generated-data"></a>Visa genererade data
 
 Modulen **simulerad temperatur sensor** som du har överfört genererar exempel miljö data. Den skickar meddelanden som innehåller omgivande temperatur och fukt, maskin temperatur och tryck och en tidsstämpel.

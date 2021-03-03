@@ -4,22 +4,22 @@ description: Lär dig hur du ändrar dina Webhooks, Logi Kap par och Runbooks f�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1d6fc8e4b9baecf02531fc1baa617b87a9d3255c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c88d0b8595434298eb564034a44665c5375457c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701050"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Förbered dina logikappar och runbooks för migrering av klassiska aviseringsregler
 
 > [!NOTE]
-> Som [tidigare](../platform/monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Datum för indragningen för dessa aviseringar har ännu förlängts. Ett nytt datum meddelas snart.
+> Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning till och med **31 maj 2021**. Klassiska aviseringar för Azure Government molnet och Azure Kina 21Vianet kommer att dra tillbaka den **29 februari 2024**.
 >
 
-Om du väljer att frivilligt migrera dina klassiska aviserings regler till nya varnings regler bör du vara medveten om att det finns några skillnader mellan de två systemen. I den här artikeln beskrivs skillnaderna och hur du kan förbereda dig för ändringen.
+Om du väljer att frivilligt migrera dina klassiska aviserings regler till nya varnings regler finns det några skillnader mellan de två systemen. I den här artikeln beskrivs skillnaderna och hur du kan förbereda dig för ändringen.
 
 ## <a name="api-changes"></a>API-ändringar
 
@@ -36,7 +36,7 @@ Följande tabell är en referens till programmerings gränssnitten för både de
 
 ## <a name="notification-payload-changes"></a>Ändringar i meddelande nytto Last
 
-Formatet för meddelande nytto Last skiljer sig något från de [klassiska aviserings reglerna](../platform/alerts-webhooks.md) och [nya mått varningar](alerts-metric-near-real-time.md#payload-schema). Om du har webhook-, Logic app-eller Runbook-åtgärder som utlöses av klassiska varnings regler måste du uppdatera meddelande slut punkterna för att godkänna nytto Last formatet för nya mått varningar.
+Formatet för meddelande nytto Last skiljer sig något från de [klassiska aviserings reglerna](alerts-webhooks.md) och [nya mått varningar](alerts-metric-near-real-time.md#payload-schema). Om du har klassiska varnings regler med webhook, Logi Kap par eller Runbook-åtgärder måste du uppdatera målen för att godkänna det nya nytto Last formatet.
 
 Använd följande tabell för att Mappa fälten för webhook-nyttolasten från det klassiska formatet till det nya formatet:
 
@@ -70,7 +70,7 @@ Nytto lasterna är liknande, som du ser. Följande avsnitt innehåller:
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>Ändra en Logi Kap par-app för att få ett mått på varnings meddelande
 
-Om du använder Logi Kap par med klassiska aviseringar måste du ändra logik-app-koden för att parsa de nya måtten för mått aviseringar. Följ de här stegen:
+Om du använder Logi Kap par med klassiska aviseringar måste du ändra logik-app-koden för att parsa de nya måtten för mått aviseringar. Gör så här:
 
 1. Skapa en ny Logic-app.
 
@@ -153,13 +153,13 @@ Ett fullständigt exempel på en Runbook som stoppar en virtuell dator när en a
 
 ## <a name="partner-integration-via-webhooks"></a>Partner integrering via Webhooks
 
-De flesta av [våra partner som integrerar med klassiska aviseringar har](../platform/partners.md) redan stöd för nya mått aviseringar via deras integreringar. Kända integreringar som redan fungerar med nya mått aviseringar är:
+De flesta av [våra partner som integrerar med klassiska aviseringar har](../partners.md) redan stöd för nya mått aviseringar via deras integreringar. Kända integreringar som redan fungerar med nya mått aviseringar är:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-Om du använder en partner integrering som inte listas här, bekräftar du med integrerings leverantören att integrationen fungerar med nya mått varningar.
+Om du använder en partner integrering som inte listas här, bekräftar du med den provider som de arbetar med nya mått aviseringar.
 
 ## <a name="next-steps"></a>Nästa steg
 

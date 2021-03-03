@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b484873f6c118c49712cbcd66eeb6a63d8aa05f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714722"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azures säkerhets bas linje för Azure Storage
 
@@ -190,7 +190,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: Azure-lagringsanalys innehåller loggar för blobbar, köer och tabeller. Du kan använda Azure Portal för att konfigurera vilka loggar som registreras för ditt konto. 
 
-- [Så här konfigurerar du övervakning för ditt Azure Storage-konto](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Så här konfigurerar du övervakning för ditt Azure Storage-konto](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -208,7 +208,7 @@ Du kan också använda inbyggda princip definitioner som är relaterade till lag
 
 **Vägledning**: när du lagrar säkerhets händelse loggar i Azure Storage konto eller Log Analytics arbets yta kan du ange bevarande principen enligt organisationens krav. 
 
-- [Konfigurera bevarande princip för Azure Storage konto loggar](./storage-monitor-storage-account.md#configure-logging)
+- [Konfigurera bevarande princip för Azure Storage konto loggar](./manage-storage-analytics-logs.md#configure-logging)
 
 - [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -414,7 +414,7 @@ Ett effektivt sätt att minska risken för obehörig åtkomst till användar kon
 
 - [Hantera anonym läsåtkomst till containrar och blob-objekt](../blobs/anonymous-read-access-configure.md)
 
-- [Övervaka ett lagringskonto i Azure-portalen](./storage-monitor-storage-account.md)
+- [Övervaka ett lagringskonto i Azure-portalen](./manage-storage-analytics-logs.md)
 
 - [Hantera åtkomst nycklar för lagrings konton](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Skapa diagnostikinställningar för Azure Active Directory användar konton, ski
 
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Konfigurera mått varningar för Azure Storage konton](./storage-monitor-storage-account.md)
+- [Konfigurera mått varningar för Azure Storage konton](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -576,7 +576,7 @@ Använd dessutom tjänst slut punkts principer för virtuella nätverk för att 
 
 - [Analysloggning i Azure Storage](./storage-analytics-logging.md)
 
-- [Konfigurera mått varningar för Azure Storage konton](./storage-monitor-storage-account.md)
+- [Konfigurera mått varningar för Azure Storage konton](./manage-storage-analytics-logs.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

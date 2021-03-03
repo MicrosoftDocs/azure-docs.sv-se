@@ -3,14 +3,14 @@ title: Distribuera ett Linux-Hybrid Runbook Worker i Azure Automation
 description: Den här artikeln beskriver hur du installerar en Azure Automation Hybrid Runbook Worker för att köra Runbooks på Linux-baserade datorer i ditt lokala data Center eller i moln miljön.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 02/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708925"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Distribuera ett Linux-Hybrid Runbook Worker
 
@@ -43,12 +43,15 @@ Hybrid Runbook Worker-rollen kräver [Log Analytics-agenten](../azure-monitor/ag
 Funktionen Hybrid Runbook Worker stöder följande distributioner. Alla operativ system antas vara x64. x86 stöds inte för något operativ system.
 
 * Amazon Linux 2012,09 till 2015,09
-* CentOS Linux 5, 6 och 7
+* CentOS Linux 5, 6, 7 och 8
 * Oracle Linux 5, 6 och 7
-* Red Hat Enterprise Linux Server 5, 6 och 7
+* Red Hat Enterprise Linux Server 5, 6, 7 och 8
 * Debian GNU/Linux 6, 7 och 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS och 18,04 LTS
-* SUSE Linux Enterprise Server 12
+* SUSE Linux Enterprise Server 12 och 15
+
+> [!IMPORTANT]
+> Innan du aktiverar funktionen Uppdateringshantering, som är beroende av system Hybrid Runbook Worker-rollen, bekräftar du de distributioner som den stöder [här](update-management/overview.md#supported-operating-systems).
 
 ### <a name="minimum-requirements"></a>Minimikrav
 
@@ -87,11 +90,11 @@ Linux hybrid Runbook Worker stöder en begränsad uppsättning Runbook-typer i A
 
 |Typ av Runbook | Stöds |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ja |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-arbetsflöde |No |
-|Grafisk |No |
-|Grafiskt PowerShell-arbetsflöde |No |
+|PowerShell-arbetsflöde |Inga |
+|Grafisk |Inga |
+|Grafiskt PowerShell-arbetsflöde |Inga |
 
 <sup>1</sup> PowerShell-Runbooks kräver att PowerShell Core installeras på Linux-datorn. Se [Installera PowerShell Core på Linux](/powershell/scripting/install/installing-powershell-core-on-linux) för att lära dig hur du installerar det.
 

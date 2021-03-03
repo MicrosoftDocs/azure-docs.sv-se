@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522673"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716201"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Visa och konfigurera telemetri för DDoS-skydd
 
-Azure DDoS Protection standard ger detaljerad information om angrepp och visualisering med DDoS-attack analys. Kunder som skyddar sina virtuella nätverk mot DDoS-attacker har detaljerad insyn i attack trafik och åtgärder som vidtas för att minska risken för angrepp med hjälp av angrepps minsknings rapporter & skydds flödes loggar. Avancerad telemetri exponeras via Azure Monitor inklusive detaljerade mått under ett DDoS-angrepp. Aviseringar kan konfigureras för alla Azure Monitor mått som visas av DDoS Protection. Loggning kan integreras ytterligare med [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
+Azure DDoS Protection standard ger detaljerad information om angrepp och visualisering med DDoS-attack analys. Kunder som skyddar sina virtuella nätverk mot DDoS-attacker har detaljerad insyn i attack trafik och åtgärder som vidtas för att minska risken för angrepp med hjälp av angrepps minsknings rapporter & skydds flödes loggar. Avancerad telemetri exponeras via Azure Monitor inklusive detaljerade mått under ett DDoS-angrepp. Aviseringar kan konfigureras för alla Azure Monitor-mått som visas av DDoS Protection. Loggning kan integreras ytterligare med [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
 
 I den här självstudien får du lära dig att:
 
@@ -34,7 +34,7 @@ I den här självstudien får du lära dig att:
 > [!NOTE]
 > När flera alternativ för **agg regering** visas på Azure Portal, stöds endast de agg regerings typer som anges i tabellen nedan för varje mått. Vi beklagar den här förvirringen och vi arbetar för att lösa problemet.
 
-Följande [mått](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses) är tillgängliga för Azure DDoS Protection standard. Dessa mått kan också exporteras via diagnostikinställningar (se [Visa och konfigurera DDoS diagnostisk loggning](diagnostic-logging.md)).
+Följande [mått](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) är tillgängliga för Azure DDoS Protection standard. Dessa mått kan också exporteras via diagnostikinställningar (se [Visa och konfigurera DDoS diagnostisk loggning](diagnostic-logging.md)).
 
 
 | Metric | Mått visnings namn | Enhet | Sammansättningstyp | Beskrivning |
@@ -70,11 +70,11 @@ Följande [mått](../azure-monitor/platform/metrics-supported.md#microsoftnetwor
 
 ## <a name="view-ddos-protection-telemetry"></a>Visa DDoS Protection-telemetri
 
-Telemetri för ett angrepp tillhandahålls via Azure Monitor i real tid. Telemetri är bara tillgängligt när en offentlig IP-adress har varit under minskning. 
+Telemetri för ett angrepp tillhandahålls i realtid via Azure Monitor. Telemetri är bara tillgängligt när en offentlig IP-adress har varit under minskning. 
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) och bläddra till din DDoS Protection-plan.
 2. Gå till **Övervakning** och välj **Mått**.
-3. Välj **omfång**. Välj den **prenumeration** som innehåller den offentliga IP-adress som du vill logga, Välj **offentlig IP-adress** för **resurs typ** och välj sedan den angivna offentliga IP-adress som du vill logga mått för och välj sedan **Använd**.
+3. Välj **Omfattning**. Välj den **prenumeration** som innehåller den offentliga IP-adress som du vill logga, Välj **offentlig IP-adress** för **resurs typ** och välj sedan den angivna offentliga IP-adress som du vill logga mått för och välj sedan **Använd**.
 4. Välj **agg regerings** typ som **Max**.
 
 Mått namnen visar olika paket typer och byte jämfört med paket, med en grundläggande konstruktion av taggnamn på varje mått enligt följande:

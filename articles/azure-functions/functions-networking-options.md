@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806987"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729240"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -87,7 +87,7 @@ Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtua
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk 
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring.  Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt.  Den här funktionen fungerar för närvarande bara med Windows Premium-planer.  Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring.  Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt.  Den här funktionen fungerar för närvarande endast för alla virtuella nätverk som stöds av virtuella nätverk som innehåller standard och Premium, förutom för på de Flex-stämplar där VNet endast är tillgängligt för Premium SKU. Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
 
 1. Skapa en funktion med ett lagrings konto där tjänstens slut punkter inte är aktiverade.
 1. Konfigurera funktionen för att ansluta till ditt virtuella nätverk.

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740672"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight – metod tips för infrastruktur
 
@@ -36,7 +36,7 @@ Mer information finns i artikeln [kapacitets planering för HDInsight-kluster](.
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>Använd Rekommenderad typ av virtuell dator för kluster
 
-Se [standard konfiguration av noder och virtuella dator storlekar för kluster](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) för rekommenderade typer av virtuella datorer för varje typ av HDInsight-kluster.
+Se [standard konfiguration av noder och virtuella dator storlekar för kluster](../hdinsight-supported-node-configuration.md) för rekommenderade typer av virtuella datorer för varje typ av HDInsight-kluster.
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Kontrol lera om Hadoop-komponenter är tillgängliga i HDInsight
 
@@ -73,7 +73,7 @@ Program eller komponenter som var tillgängliga i lokala kluster, men som inte i
 |Palantir|IaaS 
 |Sailpoint|IaaS 
 
-Mer information finns i artikeln Apache Hadoop- [komponenter som är tillgängliga med olika HDInsight-versioner](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
+Mer information finns i artikeln Apache Hadoop- [komponenter som är tillgängliga med olika HDInsight-versioner](../hdinsight-component-versioning.md)
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Anpassa HDInsight-kluster med skript åtgärder
 

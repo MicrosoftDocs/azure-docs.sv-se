@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: c911b3a2ef927bf000513665dfafd735e3bcf181
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719873"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Samla in data källor för Windows-händelseloggen med Log Analytics agent
 Windows-händelseloggar är en av de vanligaste [data källorna](../agents/agent-data-sources.md) för Log Analytics agenter på virtuella Windows-datorer eftersom många program skriver till händelse loggen i Windows.  Du kan samla in händelser från standard loggar som system och program, förutom att ange anpassade loggar som skapats av program som du behöver övervaka.
 
 > [!IMPORTANT]
-> Den här artikeln beskriver hur du samlar in Windows-händelser med [Log Analytics agent](../platform/log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
+> Den här artikeln beskriver hur du samlar in Windows-händelser med [Log Analytics agent](./log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
 
 ![Windows-händelser](media/data-sources-windows-events/overview.png)     
 
@@ -63,7 +63,7 @@ Händelse poster i Windows har en typ av **händelse** och har egenskaperna i f�
 ## <a name="log-queries-with-windows-events"></a>Logga frågor med Windows-händelser
 Följande tabell innehåller olika exempel på logg frågor som hämtar Windows-händelseloggar.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |:---|:---|
 | Händelse |Alla Windows-händelser. |
 | Händelse &#124; där EventLevelName = = "Error" |Alla Windows-händelser med allvarlighets graden fel. |
@@ -73,5 +73,5 @@ Följande tabell innehåller olika exempel på logg frågor som hämtar Windows-
 
 ## <a name="next-steps"></a>Nästa steg
 * Konfigurera Log Analytics för att samla in andra [data källor](../agents/agent-data-sources.md) för analys.
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.  
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.  
 * Konfigurera [insamling av prestanda räknare](data-sources-performance-counters.md) från dina Windows-agenter.

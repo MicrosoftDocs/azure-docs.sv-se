@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/05/2021
-ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: b80c5cb469f881ee0950d618c3bae5fa1fc1e026
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699053"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -139,7 +139,7 @@ Här är gränserna för en enda Logic app-definition:
 
 | Namn | Gräns | Kommentarer |
 | ---- | ----- | ----- |
-| Åtgärd: körningar per 5 minuter | 100 000 är standard gränsen, men 300 000 är max gränsen. | För att öka standard gränsen till maximalt för din Logic app, se [köra i högt data flödes läge](#run-high-throughput-mode), som finns i för hands version. Eller så kan du [distribuera arbets belastningen i mer än en Logic app](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) vid behov. |
+| Åtgärd: körningar per 5 minuters rullande intervall | – 100 000 körningar (standard) <p><p>-300 000 körningar (maximalt i läge med hög data flöde)  | För att öka standard gränsen till den maximala gränsen för din Logic app, se [köra i högt data flödes läge](#run-high-throughput-mode), som finns i för hands version. Eller så kan du [distribuera arbets belastningen i mer än en Logic app](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) vid behov. |
 | Åtgärd: utgående utgående samtal | ~ 2 500 | Du kan minska antalet samtidiga förfrågningar eller minska varaktigheten om det behövs. |
 | Runtime-slutpunkt: samtidiga inkommande samtal | ~ 1 000 | Du kan minska antalet samtidiga förfrågningar eller minska varaktigheten om det behövs. |
 | Runtime-slutpunkt: Läs anrop per 5 minuter  | 60 000 | Den här gränsen gäller för anrop som hämtar rå data och utdata från en Logic Apps körnings historik. Du kan distribuera arbets belastningen i mer än en app vid behov. |
@@ -151,7 +151,7 @@ Här är gränserna för en enda Logic app-definition:
 
 #### <a name="run-in-high-throughput-mode"></a>Kör i högt data flödes läge
 
-För en enda Logic app-definition har antalet åtgärder som körs var 5: e minut en [standard gräns](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Om du vill öka standard gränsen till maximalt för din Logic-app kan du aktivera läget för hög data flöde, som finns i för hands version. Eller så kan du [distribuera arbets belastningen i mer än en Logic app](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) vid behov.
+För en enda Logic app-definition har antalet åtgärder som körs var 5: e minut en [standard gräns](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). För att öka standard gränsen till den [maximala gränsen](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) för din Logic app, som är tre gånger som standard gräns, kan du aktivera läget för hög data flöde, som finns i för hands version. Eller så kan du [distribuera arbets belastningen i mer än en Logic app](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) vid behov.
 
 1. I Azure Portal väljer du **arbets flödes inställningar** under **Inställningar** på din Logic app-meny.
 

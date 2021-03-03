@@ -5,7 +5,7 @@
     - name: Om AKS
       href: intro-kubernetes.md
     - name: Lösningsarkitekturer
-      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: Snabbstarter
   expanded: true
   items:
@@ -294,14 +294,14 @@
     - name: Övervakning och loggning
       items:
         - name: Azure Monitor för containrar
-          href: ../azure-monitor/insights/container-insights-overview.md
+          href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: Visa kontroll Plans komponent loggar
           href: view-control-plane-logs.md
         - name: Visa kubelet-loggarna
           href: kubelet-logs.md
         - name: Visa containerdata i realtid
-          href: ../azure-monitor/insights/container-insights-livedata-overview.md
+          href: ../azure-monitor/containers/container-insights-livedata-overview.md
           maintainContext: true
     - name: Använda Windows Server-containrar
       items:

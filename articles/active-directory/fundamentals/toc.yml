@@ -51,6 +51,14 @@
               href: 9-secure-access-teams-sharepoint.md
         - name: Säkra tjänst konton
           items:
+            - name: Introduktion till Azures tjänst konton
+              href: service-accounts-introduction-azure.md
+            - name: Skydda hanterade identiteter
+              href: service-accounts-managed-identities.md
+            - name: Skydda tjänstens huvud namn
+              href: service-accounts-principal.md
+            - name: Styrande Azure-tjänstekonton
+              href: service-accounts-governing-azure.md
             - name: Introduktion till lokala tjänst konton
               href: service-accounts-on-premises.md
             - name: 'Skydda grupp MSA: er'

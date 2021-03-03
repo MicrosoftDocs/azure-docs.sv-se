@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735870"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -219,7 +219,7 @@ När du flyttar en dator från en grupp till en annan så ändras den program ko
 
 Använd vår REST API för att hantera dina anpassningsbara program kontroller program mässigt. 
 
-Den fullständiga API-dokumentationen finns [här](/rest/api/securitycenter/adaptiveapplicationcontrols).
+Relevant API-dokumentation finns i [avsnittet adaptiva program kontroller i Security Center s API](/rest/api/securitycenter/adaptiveapplicationcontrols)-dokumentation.
 
 Några av de funktioner som är tillgängliga från REST API:
 

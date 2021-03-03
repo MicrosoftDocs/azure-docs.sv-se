@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: 6564e7263639f0a78df6f2674ce7a4b610fb0fc1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 03e534564b4a32f112c2aaff44a187b10eb2a537
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723120"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Borttagning av OperationalInsights-API-version
 Microsoft tillhandahåller ett meddelande minst 12 månader i förväg för att dra tillbaka ett API för att utjämna över gången till en nyare/version som stöds. Vi har släppt en ny version (2020-08-01) för **OperationalInsights** Resource Provider-API: er och kommer att dra tillbaka alla tidigare API-versioner den 29 februari 2024.
 
-Vi rekommenderar att du börjar använda version 2020-08-01 nu för att få fördelarna med nya funktioner, till exempel [dedikerat kluster](../log-query/logs-dedicated-clusters.md), [Kundhanterade nycklar](../logs/customer-managed-keys.md), [privat länk](./private-link-security.md) och [data export](./logs-data-export.md). Nya funktioner och funktioner och optimeringar läggs också till i det aktuella API: t.
+Vi rekommenderar att du börjar använda version 2020-08-01 nu för att få fördelarna med nya funktioner, till exempel [dedikerat kluster](./logs-dedicated-clusters.md), [Kundhanterade nycklar](../logs/customer-managed-keys.md), [privat länk](./private-link-security.md) och [data export](./logs-data-export.md). Nya funktioner och funktioner och optimeringar läggs också till i det aktuella API: t.
 
 Efter den 29 februari 2024 kommer Azure Monitor inte längre att ha stöd för tidigare API-versioner än 2020-08-01. Om du föredrar att inte uppgradera fortsätter de begär Anden som skickas från tidigare versioner att betjänas av Azure Monitor tjänsten fram till den 29 februari 2024.
 

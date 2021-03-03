@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739342"
 ---
 # <a name="azure-data-factory-faq"></a>Vanliga frågor och svar om Azure Data Factory
 
@@ -48,7 +48,7 @@ Data Factory ger friheten att modellera alla flödes format som krävs för data
     - Upprepnings behållare:
         * Förgrunds aktiviteten itererar över en angiven samling aktiviteter i en slinga. 
 - Utlös ande flöden:
-    - Pipelines kan utlösas på begäran eller vid tid för vägg-klockan.
+    - Pipelines kan utlösas på begäran, efter Time-of-Time eller som svar på de drivna händelse rutnäts ämnena
 - Delta flöden:
     - Du kan använda parametrar för att definiera ett vatten märke för delta kopian samtidigt som du flyttar dimensions-eller referens tabeller från ett relationellt lager, antingen lokalt eller i molnet, för att läsa in data i sjön.
 

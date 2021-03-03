@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 33aa553e688b595551c20e8b1432163152865537
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694996"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Virtual Machines för skalnings uppsättningar för virtuella datorer 
 
@@ -68,13 +68,56 @@ Den här nya plattforms nivå funktionen kommer att använda AI för att automat
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Försök & Restore Benefits:
-- Aktive rad som standard när du distribuerar en virtuell Azure-dator i en skalnings uppsättning.
 - Försök att återställa Azure-Virtual Machines avlägsnas på grund av kapacitet.
 - Återställda Azure-Virtual Machines förväntas köras under en längre tid med en lägre sannolikhet för en kapacitet som utlöses genom att avlägsnas.
 - Förbättrar livs längd för en virtuell Azure-dator, så att arbets belastningar körs under en längre tid.
 - Hjälper Virtual Machine Scale Sets att underhålla mål antalet för Azure-Virtual Machines, på samma sätt som att det redan finns en funktion som redan finns för virtuella datorer med betala per användning.
 
 Försök & Restore är inaktiverat i skalnings uppsättningar som använder [autoskalning](virtual-machine-scale-sets-autoscale-overview.md). Antalet virtuella datorer i skalnings uppsättningen styrs av reglerna för autoskalning.
+
+### <a name="register-for-try--restore"></a>Registrera dig för försök & återställning
+
+Innan du kan använda funktionen försök & återställning måste du registrera din prenumeration för för hands versionen. Registreringen kan ta flera minuter att slutföra. Du kan slutföra funktions registreringen med Azure CLI eller PowerShell.
+
+
+**Använda CLI**
+
+Aktivera förhands granskningen för prenumerationen med hjälp av [AZ-funktionen registrera](/cli/azure/feature#az-feature-register) . 
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+Funktions registreringen kan ta upp till 15 minuter. Kontrol lera registrerings statusen: 
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name SpotTryRestore 
+```
+
+När funktionen har registrerats för din prenumeration slutför du opt-in-processen genom att sprida ändringen till beräknings resurs leverantören. 
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute 
+```
+**Använda PowerShell** 
+
+Använd cmdleten [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) för att aktivera för hands versionen av din prenumeration. 
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+Funktions registreringen kan ta upp till 15 minuter. Kontrol lera registrerings statusen: 
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName SpotTryRestore -ProviderNamespace Microsoft.Compute 
+```
+
+När funktionen har registrerats för din prenumeration slutför du opt-in-processen genom att sprida ändringen till beräknings resurs leverantören. 
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+```
 
 ## <a name="placement-groups"></a>Placerings grupper
 

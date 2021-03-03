@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 0fc57b87e5ec1d7f47d9f9d74698af56172246ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623752"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733983"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portalen flyttar till Azure
 
@@ -64,7 +64,7 @@ I båda fallen måste administratören manuellt tilldela dig rätt roll från f�
  
 
 ## <a name="new-workspaces"></a>Nya arbets ytor
-Du kan inte längre skapa nya arbets ytor med OMS-portalen. Följ anvisningarna i [skapa en Log Analytics arbets yta i Azure Portal](../learn/quick-create-workspace.md) för att skapa en ny arbets yta i Azure Portal.
+Du kan inte längre skapa nya arbets ytor med OMS-portalen. Följ anvisningarna i [skapa en Log Analytics arbets yta i Azure Portal](./quick-create-workspace.md) för att skapa en ny arbets yta i Azure Portal.
 
 ## <a name="changes-to-alerts"></a>Ändringar av aviseringar
 
@@ -73,9 +73,9 @@ Du kan inte längre skapa nya arbets ytor med OMS-portalen. Följ anvisningarna 
 Aviseringar har [utökats till Azure Portal](../alerts/alerts-unified-log.md) befintliga aviseringar visas fortfarande i OMS-portalen, men du kan bara hantera dem i Azure Portal. Om du får åtkomst till aviseringar via programmering med hjälp av Log Analytics varnings REST API eller Log Analytics aviserings resurs mal len, måste du använda åtgärds grupper i stället för åtgärder i API-anrop, Azure Resource Manager mallar och PowerShell-kommandon.
 
 ### <a name="alert-management-solution"></a>Lösning för aviserings hantering
-Som en ändring från ett tidigare meddelande fortsätter [aviserings hanterings lösningen](../platform/alert-management-solution.md) att vara tillgänglig och fullständigt stöd i Azure Portal. Du kan fortsätta att installera lösningen från Azure Marketplace.
+Som en ändring från ett tidigare meddelande fortsätter [aviserings hanterings lösningen](../insights/alert-management-solution.md) att vara tillgänglig och fullständigt stöd i Azure Portal. Du kan fortsätta att installera lösningen från Azure Marketplace.
 
-Även om aviserings hanterings lösningen fortfarande är tillgänglig, rekommenderar vi att du använder [Azure Monitors enhetliga aviserings gränssnitt](../platform/alerts-overview.md) för att visualisera och hantera alla aviseringar i Azure. Med den här nya upplevelsen samlas aviseringar internt in från flera källor i Azure, inklusive logg aviseringar från Log Analytics. Om du använder Azure Monitors enhetliga aviserings gränssnitt krävs endast aviserings hanterings lösningen för att aktivera integrering av aviseringar från System Center Operation Manager till Azure. I Azure Monitors enhetliga aviserings gränssnitt kan du se distributioner av aviseringar, dra nytta av automatiserad gruppering av relaterade aviseringar via smarta grupper och visa aviseringar över flera prenumerationer samtidigt som du använder omfattande filter. Framtida framsteg i aviserings hantering kommer främst att vara tillgängligt i den här nya miljön. 
+Även om aviserings hanterings lösningen fortfarande är tillgänglig, rekommenderar vi att du använder [Azure Monitors enhetliga aviserings gränssnitt](../alerts/alerts-overview.md) för att visualisera och hantera alla aviseringar i Azure. Med den här nya upplevelsen samlas aviseringar internt in från flera källor i Azure, inklusive logg aviseringar från Log Analytics. Om du använder Azure Monitors enhetliga aviserings gränssnitt krävs endast aviserings hanterings lösningen för att aktivera integrering av aviseringar från System Center Operation Manager till Azure. I Azure Monitors enhetliga aviserings gränssnitt kan du se distributioner av aviseringar, dra nytta av automatiserad gruppering av relaterade aviseringar via smarta grupper och visa aviseringar över flera prenumerationer samtidigt som du använder omfattande filter. Framtida framsteg i aviserings hantering kommer främst att vara tillgängligt i den här nya miljön. 
 
 Data som samlas in av aviserings hanterings lösningen (poster med en typ av varning) fortsätter att finnas i Log Analytics så länge lösningen har installerats för arbets ytan. 
 
@@ -83,7 +83,7 @@ Data som samlas in av aviserings hanterings lösningen (poster med en typ av var
 OMS-mobilappen kommer att sunsetted tillsammans med OMS-portalen. I stället för OMS-mobilappen kan du komma åt information om din IT-infrastruktur, instrument paneler och sparade frågor. du kan komma åt Azure Portal direkt från din webbläsare på din mobila enhet. För att få aviseringar bör du konfigurera [Azure-åtgärds grupper](../alerts/action-groups.md) för att ta emot meddelanden i form av SMS eller ett röst samtal
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-anslutningsprogram och lösning
-[Application Insights-anslutningsprogram](../logs/app-insights-connector.md) är ett sätt att ta med Application Insights data till en Log Analytics-arbetsyta. Den här datareplikeringen krävdes för att möjliggöra insyn i infrastruktur-och program data. Med Application Insights stöd för utökade datakvarhållning i mars, 2019 och möjligheten att utföra [kors resurs frågor](../logs/cross-workspace-query.md) , förutom att kunna [visa flera Azure Monitor Application Insights resurser](../log-query/unify-app-resource-data.md), behöver du inte duplicera data från dina Application Insights resurser och skicka dem till Log Analytics. Dessutom skickar kopplingen en delmängd av program egenskaperna till Log Analytics, medan frågor över flera resurser ger dig förbättrad flexibilitet.  
+[Application Insights-anslutningsprogram](../logs/app-insights-connector.md) är ett sätt att ta med Application Insights data till en Log Analytics-arbetsyta. Den här datareplikeringen krävdes för att möjliggöra insyn i infrastruktur-och program data. Med Application Insights stöd för utökade datakvarhållning i mars, 2019 och möjligheten att utföra [kors resurs frågor](../logs/cross-workspace-query.md) , förutom att kunna [visa flera Azure Monitor Application Insights resurser](./unify-app-resource-data.md), behöver du inte duplicera data från dina Application Insights resurser och skicka dem till Log Analytics. Dessutom skickar kopplingen en delmängd av program egenskaperna till Log Analytics, medan frågor över flera resurser ger dig förbättrad flexibilitet.  
 
 På så sätt har Application Insights-anslutningsprogram föråldrats och tagits bort från Azure Marketplace tillsammans med OMS-portalen föråldrad 30 mars 2019. Befintliga anslutningar fortsätter att fungera fram till den 30 juni 2019. Med OMS-portalen är det inte möjligt att konfigurera och ta bort befintliga anslutningar från portalen. Detta kommer att stödjas med REST API som kommer att göras tillgängligt i januari 2019 och ett meddelande publiceras på [Azure updates](https://azure.microsoft.com/updates/). 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2a5c31270f18c2e6149d93fa522818704b9747d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 42aea886e38622c773ac1ca0ea2533d8aa1c47bb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588608"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717034"
 ---
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>Azures säkerhets bas linje för Azure Managed Applications
 
@@ -447,7 +447,7 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 
 - [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../../azure-monitor/logs/manage-cost-storage.md)
 
-- [Lagra resurs loggar i ett Azure Storage konto](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Lagra resurs loggar i ett Azure Storage konto](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-övervakning**: Ja
 

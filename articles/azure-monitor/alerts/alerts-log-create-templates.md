@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b1403b12c05420c6296cbafd0d4ee0bc02f8dd4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 665137688a000433a9101a77342fa6f9350d7141
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624125"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714331"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Skapa en loggavisering med en Resource Manager-mall
 
-Logg aviseringar gör att användare kan använda en [Log Analytics](../log-query/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Reglerna kan utlösa körningen av en eller flera åtgärder med hjälp av [Åtgärds grupper](../platform/action-groups.md). [Lär dig mer om funktioner och terminologi för logg aviseringar](../platform/alerts-unified-log.md).
+Logg aviseringar gör att användare kan använda en [Log Analytics](../logs/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Reglerna kan utlösa körningen av en eller flera åtgärder med hjälp av [Åtgärds grupper](./action-groups.md). [Lär dig mer om funktioner och terminologi för logg aviseringar](./alerts-unified-log.md).
 
-Den här artikeln visar hur du kan använda en [Azure Resource Manager-mall](../../azure-resource-manager/templates/template-syntax.md) för att konfigurera [logg aviseringar](../platform/alerts-unified-log.md) i Azure Monitor. Med Resource Manager-mallar kan du konfigurera aviseringar via programmering på ett konsekvent och reproducerbart sätt i alla miljöer. Logg aviseringar skapas i `Microsoft.Insights/scheduledQueryRules` resurs leverantören. Se API-referens för [schemalagda FRÅGEREGLER API](/rest/api/monitor/scheduledqueryrules/).
+Den här artikeln visar hur du kan använda en [Azure Resource Manager-mall](../../azure-resource-manager/templates/template-syntax.md) för att konfigurera [logg aviseringar](./alerts-unified-log.md) i Azure Monitor. Med Resource Manager-mallar kan du konfigurera aviseringar via programmering på ett konsekvent och reproducerbart sätt i alla miljöer. Logg aviseringar skapas i `Microsoft.Insights/scheduledQueryRules` resurs leverantören. Se API-referens för [schemalagda FRÅGEREGLER API](/rest/api/monitor/scheduledqueryrules/).
 
 De grundläggande stegen är följande:
 
@@ -26,15 +26,15 @@ De grundläggande stegen är följande:
 4. Distribuera mallen med valfri distributions metod.
 
 > [!NOTE]
-> Loggdata från en [Log Analytics arbets yta](../log-query/log-analytics-tutorial.md) kan skickas till Azure Monitor Metrics-lagret. Mått aviseringar har [olika beteende](../platform/alerts-metric-overview.md), vilket kan vara mer önskvärt beroende på vilka data du arbetar med. Information om vad och hur du kan skicka loggar till mått finns i [mått avisering för loggar](../platform/alerts-metric-logs.md).
+> Loggdata från en [Log Analytics arbets yta](../logs/log-analytics-tutorial.md) kan skickas till Azure Monitor Metrics-lagret. Mått aviseringar har [olika beteende](./alerts-metric-overview.md), vilket kan vara mer önskvärt beroende på vilka data du arbetar med. Information om vad och hur du kan skicka loggar till mått finns i [mått avisering för loggar](./alerts-metric-logs.md).
 
 > [!NOTE]
-> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av äldre [Log Analytics aviserings-API](../platform/api-alerts.md) och äldre mallar för [Log Analytics sparade sökningar och aviseringar](../insights/solutions.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](alerts-log-api-switch.md).
+> Logg aviseringar för Log Analytics som används för att hanteras med hjälp av äldre [Log Analytics aviserings-API](./api-alerts.md) och äldre mallar för [Log Analytics sparade sökningar och aviseringar](../insights/solutions.md). [Läs mer om att växla till det aktuella ScheduledQueryRules-API: et](alerts-log-api-switch.md).
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>Enkel mall (upp till API-version 2018-04-16)
 
-Mall för att [skapa schemalagda Frågeregler](/rest/api/monitor/scheduledqueryrules/createorupdate) baserat på [antalet resultat logg aviseringar](../platform/alerts-unified-log.md#count-of-the-results-table-rows) (exempel data uppsättning som variabler):
+Mall för att [skapa schemalagda Frågeregler](/rest/api/monitor/scheduledqueryrules/createorupdate) baserat på [antalet resultat logg aviseringar](./alerts-unified-log.md#count-of-the-results-table-rows) (exempel data uppsättning som variabler):
 
 ```json
 {
@@ -109,7 +109,7 @@ Denna JSON kan sparas och distribueras med hjälp av [Azure Resource Manager i A
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>Mall med kors resurs fråga (upp till API-version 2018-04-16)
 
-Mall för att [skapa schemalagda Frågeregler](/rest/api/monitor/scheduledqueryrules/createorupdate) baserat på [mått måttet](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) som frågar [mellan resurser](../log-query/cross-workspace-query.md) (exempel data uppsättning som variabler):
+Mall för att [skapa schemalagda Frågeregler](/rest/api/monitor/scheduledqueryrules/createorupdate) baserat på [mått måttet](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) som frågar [mellan resurser](../logs/cross-workspace-query.md) (exempel data uppsättning som variabler):
 
 ```json
 {
@@ -432,7 +432,7 @@ Denna JSON kan sparas och distribueras med hjälp av [Azure Resource Manager i A
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om [logg aviseringar](../platform/alerts-unified-log.md)
-* Lär dig mer om att [Hantera logg aviseringar](../platform/alerts-log.md)
-* Förstå [webhook-åtgärder för logg aviseringar](../platform/alerts-log-webhook.md)
-* Läs mer om [logg frågor](../log-query/log-query-overview.md).
+* Lär dig mer om [logg aviseringar](./alerts-unified-log.md)
+* Lär dig mer om att [Hantera logg aviseringar](./alerts-log.md)
+* Förstå [webhook-åtgärder för logg aviseringar](./alerts-log-webhook.md)
+* Läs mer om [logg frågor](../logs/log-query-overview.md).

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688305"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Använd PostgreSQL-tillägg i Azure Arc-aktiverade PostgreSQL för storskalig Server grupp
 
@@ -24,40 +24,55 @@ PostgreSQL är på bästa sätt när du använder den med tillägg. I själva ve
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="list-of-extensions"></a>Lista över tillägg
-Förutom tilläggen i [`contrib`](https://www.postgresql.org/docs/12/contrib.html) är listan över tillägg som finns i behållarna för din Azure Arc-aktiverad postgresql-server grupp:
-- `citus`, v: 9,4
-- `pg_cron`, v: 1,2
-- `plpgsql`, v: 1,0
-- `postgis`, v: 3.0.2
-- `plv8`, v: 2.3.14
+## <a name="supported-extensions"></a>Tillägg som stöds
+Standard [`contrib`](https://www.postgresql.org/docs/12/contrib.html) tilläggen och följande tillägg har redan distribuerats i behållare för din Azure-Arc-aktiverad postgresql-server grupp:
+- [`citus`](https://github.com/citusdata/citus), v: 9,4. Citus-tillägget av [citus-data](https://www.citusdata.com/) läses in som standard eftersom den ger storskalig funktionalitet till postgresql-motorn. Det finns inte stöd för att släppa citus-tillägget från din Azure Arc PostgreSQL-skalnings Server grupp.
+- [`pg_cron`](https://github.com/citusdata/pg_cron), v: 1,2
+- [`pgaudit`](https://www.pgaudit.org/), v: 1,4
+- plpgsql, v: 1,0
+- [`postgis`](https://postgis.net), v: 3.0.2
+- [`plv8`](https://plv8.github.io/), v: 2.3.14
 
-Den här listan utvecklar övertid och uppdateringar publiceras i det här dokumentet. Det går ännu inte att lägga till tillägg utöver de som anges ovan.
+Uppdateringar av den här listan publiceras när de utvecklas över tid.
+
+> [!IMPORTANT]
+> Även om du kan ansluta till Server gruppen andra än de som anges ovan, i den här för hands versionen, kommer de inte att sparas i systemet. Det innebär att den inte kommer att vara tillgänglig efter omstart av systemet och du måste ta den igen.
 
 Den här guiden tar i ett scenario att använda två av dessa tillägg:
-- [PostGIS](https://postgis.net/)
+- [`PostGIS`](https://postgis.net/)
 - [`pg_cron`](https://github.com/citusdata/pg_cron)
 
+## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>Vilka tillägg måste läggas till i shared_preload_libraries och skapas?
 
-## <a name="manage-extensions"></a>Hantera tillägg
+|Tillägg   |Måste läggas till shared_preload_libraries  |Måste skapas |
+|-------------|--------------------------------------------------|---------------------- |
+|`pg_cron`      |Inga       |Ja        |
+|`pg_audit`     |Ja       |Ja        |
+|`plpgsql`      |Ja       |Ja        |
+|`postgis`      |Inga       |Ja        |
+|`plv8`      |Inga       |Ja        |
 
-### <a name="enable-extensions"></a>Aktivera tillägg
-Det här steget behövs inte för de tillägg som ingår i `contrib` .
-Det allmänna formatet för kommandot för att aktivera tillägg är:
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>Lägg till tillägg i shared_preload_libraries
+Mer information om shared_preload_libraries finns i PostgreSQL-dokumentationen [här](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES):
+- Det här steget behövs inte för de tillägg som ingår i `contrib`
+- Det här steget krävs inte för tillägg som inte krävs för inläsning av shared_preload_libraries. För dessa tillägg kan du gå vidare nästa stycke [skapa tillägg](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions).
 
-#### <a name="enable-an-extension-at-the-creation-time-of-a-server-group"></a>Aktivera ett tillägg när du skapar en Server grupp:
+### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Lägg till ett tillägg när du skapar en server grupps skapelse tid
 ```console
 azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
 ```
-#### <a name="enable-an-extension-on-an-instance-that-already-exists"></a>Aktivera ett tillägg på en instans som redan finns:
+### <a name="add-an-extension-to-an-instance-that-already-exists"></a>Lägg till ett tillägg till en instans som redan finns
 ```console
 azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
-#### <a name="get-the-list-of-extensions-enabled"></a>Hämta listan över aktiverade tillägg:
+
+
+
+## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>Visa listan över tillägg som lagts till shared_preload_libraries
 Kör något av följande kommando.
 
-##### <a name="with-azure-data-cli-azdata"></a>För [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+### <a name="with-an-azdata-cli-command"></a>Med ett azdata CLI-kommando
 ```console
 azdata arc postgres server show -n <server group name>
 ```
@@ -74,7 +89,7 @@ Bläddra i utdata och Lägg märke till engine\extensions-avsnitten i specifikat
       ]
     },
 ```
-##### <a name="with-kubectl"></a>Med kubectl
+### <a name="with-kubectl"></a>Med kubectl
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
@@ -87,59 +102,34 @@ Engine:
 ```
 
 
-### <a name="create-extensions"></a>Skapa tillägg:
+## <a name="create-extensions"></a>Skapa tillägg
 Anslut till din server grupp med det klient verktyg du väljer och kör standard frågan för PostgreSQL:
 ```console
 CREATE EXTENSION <extension name>;
 ```
 
-### <a name="get-the-list-of-extension-created-in-your-server-group"></a>Hämta listan över tillägg som skapats i Server gruppen:
+## <a name="show-the-list-of-extensions-created"></a>Visa listan över tillägg som skapats
 Anslut till din server grupp med det klient verktyg du väljer och kör standard frågan för PostgreSQL:
 ```console
 select * from pg_extension;
 ```
 
-### <a name="drop-an-extension-from-your-server-group"></a>Ta bort ett tillägg från Server gruppen:
+## <a name="drop-an-extension"></a>Släpp ett tillägg
 Anslut till din server grupp med det klient verktyg du väljer och kör standard frågan för PostgreSQL:
 ```console
 drop extension <extension name>;
 ```
 
-## <a name="use-the-postgis-and-the-pg_cron-extensions"></a>Använd PostGIS och Pg_cron tillägg
-
-### <a name="the-postgis-extension"></a>PostGIS-tillägget
-
-Vi kan antingen aktivera PostGIS-tillägget på en befintlig Server grupp eller skapa en ny med tillägget redan aktiverat:
-
-**Aktivera ett tillägg när du skapar en Server grupp:**
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server create -n pg2 -w 2 --extensions postgis
-```
-
-**Aktivera ett tillägg på en instans som redan finns:**
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server edit --extensions postgis -n pg2
-```
-
-Du kan kontrol lera vilka tillägg som är installerade genom att använda nedanstående standard PostgreSQL-kommando när du har anslutit till instansen med ditt favorit verktyg för PostgreSQL-klient som Azure Data Studio:
-```console
-select * from pg_extension;
-```
-
-För ett PostGIS-exempel kan du börja med att hämta [exempel data](http://duspviz.mit.edu/tutorials/intro-postgis/) från MIT-avdelningen i tätorts studier & planera. Du kan behöva köra `apt-get install unzip` för att installera zippa när du använder den virtuella datorn för testning.
+## <a name="the-postgis-extension"></a>`PostGIS`Tillägget
+Du behöver inte lägga till `PostGIS` tillägget i `shared_preload_libraries` .
+Hämta [exempel data](http://duspviz.mit.edu/tutorials/intro-postgis/) från MIT-avdelningen i tätorts studier & planera. Kör `apt-get install unzip` för att installera zippa efter behov.
 
 ```console
 wget http://duspviz.mit.edu/_assets/data/intro-postgis-datasets.zip
 unzip intro-postgis-datasets.zip
 ```
 
-Nu ska vi ansluta till vår databas och skapa PostGIS-tillägget:
+Nu ska vi ansluta till vår databas och skapa `PostGIS` tillägget:
 
 ```console
 CREATE EXTENSION postgis;
@@ -165,7 +155,7 @@ CREATE TABLE coffee_shops (
 CREATE INDEX coffee_shops_gist ON coffee_shops USING gist (geom);
 ```
 
-Nu kan vi kombinera PostGIS med funktionen skala ut genom att göra den coffee_shops tabellen distribuerad:
+Nu kan vi kombinera med funktionen för `PostGIS` skalbarhet, genom att göra den coffee_shops tabellen distribuerad:
 
 ```sql
 SELECT create_distributed_table('coffee_shops', 'id');
@@ -177,7 +167,7 @@ Vi läser in några data:
 \copy coffee_shops(id,name,address,city,state,zip,lat,lon) from cambridge_coffee_shops.csv CSV HEADER;
 ```
 
-Och fyll i `geom` fältet med korrekt kodad latitud och longitud i `geometry` data typen postgis:
+Och fyll i `geom` fältet med korrekt kodad latitud och longitud i `PostGIS` `geometry` data typen:
 
 ```sql
 UPDATE coffee_shops SET geom = ST_SetSRID(ST_MakePoint(lon,lat),4326);
@@ -190,15 +180,15 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 ```
 
 
-### <a name="the-pg_cron-extension"></a>Pg_cron-tillägget
+## <a name="the-pg_cron-extension"></a>`pg_cron`Tillägget
 
-Vi aktiverar `pg_cron` vår postgresql-server grupp, förutom postgis:
+Nu ska vi aktivera `pg_cron` vår postgresql-server grupp genom att lägga till den i shared_preload_libraries:
 
 ```console
-azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
+azdata postgres server update -n pg2 -ns arc --extensions pg_cron
 ```
 
-Observera att detta startar om noderna och installerar ytterligare tillägg, vilket kan ta 2-3 minuter.
+Server gruppen kommer att startas om och installationen av tilläggen slutförs. Det kan ta 2 till 3 minuter.
 
 Nu kan vi ansluta igen och skapa `pg_cron` tillägget:
 
@@ -206,7 +196,7 @@ Nu kan vi ansluta igen och skapa `pg_cron` tillägget:
 CREATE EXTENSION pg_cron;
 ```
 
-I test syfte kan du göra en tabell `the_best_coffee_shop` som tar ett slumpmässigt namn från vår tidigare `coffee_shops` tabell och anger tabellens innehåll:
+I test syfte kan du skapa en tabell `the_best_coffee_shop` som tar ett slumpmässigt namn från vår tidigare `coffee_shops` tabell och infogar tabell innehållet:
 
 ```sql
 CREATE TABLE the_best_coffee_shop(name text);
@@ -238,10 +228,8 @@ SELECT * FROM the_best_coffee_shop;
 
 Se [PG_CRON viktigt](https://github.com/citusdata/pg_cron) om du vill ha fullständig information om syntaxen.
 
->[!NOTE]
->Det går inte att släppa `citus` tillägget. `citus`Tillägget krävs för att tillhandahålla skalnings upplevelsen.
 
-## <a name="next-steps"></a>Nästa steg:
-- Läs dokumentationen om [plv8](https://plv8.github.io/)
-- Läs dokumentationen om [postgis](https://postgis.net/)
+## <a name="next-steps"></a>Nästa steg
+- Läs dokumentationen om [`plv8`](https://plv8.github.io/)
+- Läs dokumentationen om [`PostGIS`](https://postgis.net/)
 - Läs dokumentationen om [`pg_cron`](https://github.com/citusdata/pg_cron)

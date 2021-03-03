@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: cea87f23bcd9dc21ab9f594d6cb0d6008ef98f13
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca6ef57db062ff22b20a8e968eaac39388b9551f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661689"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750666"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
-- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/)
+- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Installera [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
 - Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste registrera resurs **slut punkten** för den här snabb starten.
 - En [åtkomsttoken för användare](../../access-tokens.md). Var noga med att ange omfånget till "chatt" och anteckna token-strängen och userId-strängen.
 
@@ -47,7 +47,7 @@ Installera klient biblioteket för Azure Communication Chat för .NET
 
 ```PowerShell
 dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-```
+``` 
 
 ## <a name="object-model"></a>Objekt modell
 
@@ -60,7 +60,7 @@ Följande klasser hanterar några av de viktigaste funktionerna i Azure Communic
 
 ## <a name="create-a-chat-client"></a>Skapa en Chat-klient
 
-Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från identitets klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
+Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut punkt och den åtkomsttoken som har genererats som en del av de nödvändiga stegen. Du måste använda- `CommunicationIdentityClient` klassen från `Administration` klient biblioteket för att skapa en användare och utfärda en token som skickas till din Chat-klient.
 
 Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 
@@ -69,6 +69,8 @@ Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera
 ```csharp
 using Azure.Communication.Identity;
 using Azure.Communication.Chat;
+using Azure;
+using Azure.Communication
 
 // Your unique Azure Communication service endpoint
 Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
@@ -83,7 +85,7 @@ Använd `createChatThread` metoden på chatClient för att skapa en chatt-tråd
 - Används `topic` för att ge ett ämne till den här chatten. Ämnet kan uppdateras när chatt-tråden har skapats med hjälp av `UpdateTopic` funktionen.
 - Använd `participants` egenskap för att skicka en lista med `ChatParticipant` objekt som ska läggas till i chatt-tråden. `ChatParticipant`Objektet initieras med ett `CommunicationIdentifier` objekt. `CommunicationIdentifier` kan vara av typen `CommunicationUserIdentifier` `MicrosoftTeamsUserIdentifier` eller `PhoneNumberIdentifier` . Om du till exempel vill hämta ett `CommunicationIdentifier` objekt måste du skicka ett åtkomst-ID som du skapade genom att följa anvisningarna för att [skapa en användare](../../access-tokens.md#create-an-identity)
 
-Objektet Response från `createChatThread` metoden innehåller `chatThread` information. För att interagera med chatt-åtgärder, till exempel att lägga till deltagare, skicka ett meddelande, ta bort ett meddelande osv., `chatThreadClient` måste en klient instans instansieras med hjälp av- `GetChatThreadClient` metoden på `ChatClient` klienten.
+Objektet Response från createChatThread-metoden innehåller chatThread-informationen. För att interagera med chatt-åtgärder, till exempel att lägga till deltagare, skicka ett meddelande, ta bort ett meddelande osv., måste en chatThreadClient-klient instans instansieras med GetChatThreadClient-metoden på ChatClient-klienten. 
 
 ```csharp
 var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
@@ -112,7 +114,7 @@ Används `SendMessage` för att skicka ett meddelande till en tråd.
 - Används `senderDisplayName` för att ange avsändarens visnings namn. Om inget anges anges en tom sträng.
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: );
+var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
 ```
 ## <a name="get-a-message"></a>Hämta ett meddelande
 
@@ -133,7 +135,7 @@ Du kan hämta Chat-meddelanden genom att avsöka `GetMessages` metoden på chatt
 AsyncPageable<ChatMessage> allMessages = chatThreadClient.GetMessagesAsync();
 await foreach (ChatMessage message in allMessages)
 {
-    Console.WriteLine($"{message.Id}:{message.Sender.Id}:{message.Content}");
+    Console.WriteLine($"{message.Id}:{message.Id}:{message.Content}");
 }
 ```
 

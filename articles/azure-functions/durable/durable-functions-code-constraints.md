@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726418"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Begränsningar för Orchestrator-funktions kod
 
@@ -28,10 +28,10 @@ Orchestrator-funktioner kan anropa alla API: er på deras mål språk. Det är d
 
 I följande tabell visas exempel på API: er som du bör undvika eftersom de *inte* är deterministiska. Dessa begränsningar gäller endast för Orchestrator-funktioner. Andra funktions typer har inte sådana begränsningar.
 
-| API-kategori | Orsak | Lösning |
+| API-kategori | Anledning | Lösning |
 | ------------ | ------ | ---------- |
 | Datum och tider  | API: er som returnerar aktuellt datum eller tid är icke-deterministiska eftersom det returnerade värdet är olika för varje omuppspelning. | Använd egenskapen [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) i .net, `currentUtcDateTime` API: et i Java Script eller `current_utc_datetime` API i python, som är säkert för uppspelning. |
-| GUID och UUID: er  | API: er som returnerar ett slumpmässigt GUID eller UUID är icke deterministiska eftersom det genererade värdet är olika för varje omuppspelning. | Använd [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) i .net eller `newGuid` i Java Script för att på ett säkert sätt generera slumpmässiga GUID. |
+| GUID och UUID: er  | API: er som returnerar ett slumpmässigt GUID eller UUID är icke deterministiska eftersom det genererade värdet är olika för varje omuppspelning. | Använd [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) i .net, `newGuid` i Java Script och `new_guid` i python för att på ett säkert sätt generera slumpmässiga GUID. |
 | Slumpmässiga siffror | API: er som returnerar slumpmässiga tal är icke-deterministiska eftersom det genererade värdet är olika för varje omuppspelning. | Använd en aktivitets funktion för att returnera slumptal till ett Orchestration-tal. De returnerade värdena för aktivitets funktioner är alltid säkra för uppspelning. |
 | Bindningar | Både indata och utdata-bindningar är I/O och är icke-deterministiska. En Orchestrator-funktion får inte använda direkt ens [Dirigerings klienten](durable-functions-bindings.md#orchestration-client) och [enhets klient](durable-functions-bindings.md#entity-client) bindningarna. | Använda indata och utgående bindningar i klient-eller aktivitets funktioner. |
 | Nätverk | Nätverks anrop omfattar externa system och är icke-deterministiska. | Använd aktivitets funktioner för att göra nätverks anrop. Om du behöver göra ett HTTP-anrop från din Orchestrator-funktion kan du också använda de [bestående HTTP-API: erna](durable-functions-http-features.md#consuming-http-apis). |

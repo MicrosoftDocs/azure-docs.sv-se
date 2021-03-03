@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 48c7323a630f5c79c7ecb16e26c9ec79ec2014a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0c97d128837e77325e68ae28161a98938510ff8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723290"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Skicka gäst operativ systemets mått till Azure Monitor Metrics-databasen för en virtuell Windows-dator (klassisk)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Med Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md) (kallas "wad" eller "diagnostik") kan du samla in mått och loggar från gäst operativ systemet (gäst operativ system) som körs som en del av en virtuell dator, moln tjänst eller Service Fabric kluster. Tillägget kan skicka telemetri till [flera olika platser.](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)
+Med Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md) (kallas "wad" eller "diagnostik") kan du samla in mått och loggar från gäst operativ systemet (gäst operativ system) som körs som en del av en virtuell dator, moln tjänst eller Service Fabric kluster. Tillägget kan skicka telemetri till [flera olika platser.](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 I den här artikeln beskrivs processen för att skicka gäst operativ systemets prestanda mått för en virtuell Windows-dator (klassisk) till Azure Monitor Metric-databasen. Från och med diagnostik version 1,11 kan du skriva mått direkt till lagrings platsen Azure Monitor mått, där standard plattforms mått redan har samlats in. 
 
@@ -34,7 +34,7 @@ Processen som beskrivs i den här artikeln fungerar bara på klassiska virtuella
 
 - Du måste antingen ha [Azure PowerShell](/powershell/azure) eller [Azure Cloud Shell](../../cloud-shell/overview.md) installerat.
 
-- Din VM-resurs måste finnas i en [region som stöder anpassade mått](../platform/metrics-custom-overview.md#supported-regions).
+- Din VM-resurs måste finnas i en [region som stöder anpassade mått](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Skapa en klassisk virtuell dator och ett lagrings konto
 
@@ -203,4 +203,4 @@ Ge den här appen "Monitoring Metrics Publisher" behörigheter till den resurs s
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [anpassade mått](../platform/metrics-custom-overview.md).
+- Lär dig mer om [anpassade mått](./metrics-custom-overview.md).

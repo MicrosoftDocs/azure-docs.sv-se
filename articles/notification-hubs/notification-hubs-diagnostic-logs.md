@@ -6,12 +6,12 @@ ms.author: brjones
 ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: b532dca6ceba44a32132bf64b322e1b4764fd5fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418143"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736244"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Aktivera diagnostikloggar för Notification Hubs
 
@@ -141,8 +141,7 @@ De nya inställningarna börjar gälla om 10 minuter. Loggarna visas i det konfi
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om hur du konfigurerar diagnostikinställningar finns i:
-* [Översikt över Azure Diagnostics-loggar](../azure-monitor/platform/platform-logs-overview.md).
+* [Översikt över Azure Diagnostics-loggar](../azure-monitor/essentials/platform-logs-overview.md).
 
 Mer information om Azure Notification Hubs finns i:
 * [Vad är Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
-

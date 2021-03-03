@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: aeb84fca47dbf2922f17a3e8931e3158f9ee2cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706783"
 ---
 # <a name="sign-in-to-luis-portal"></a>Logga in på LUIS-portalen
 
@@ -48,7 +48,7 @@ Använd den här artikeln för att komma igång med LUIS-portalen och skapa en r
     * **Namn på Azure-resurs grupp** – ett anpassat resurs grupps namn som du väljer i din prenumeration. Med resurs grupper kan du gruppera Azure-resurser för åtkomst och hantering. Om du för närvarande inte har en resurs grupp i din prenumeration kommer du inte att kunna skapa en i LUIS-portalen. Gå till [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) för att skapa en och gå sedan till Luis för att fortsätta inloggnings processen.
     * **Azure-resurs namn** – ett anpassat namn som du väljer, används som en del av URL: en för dina redigerings transaktioner. Resurs namnet får bara innehålla alfanumeriska tecken, `-` och får inte börja eller sluta med `-` . Om något annat kortnamn ingår i namnet kommer det inte att gå att skapa en resurs.
     * **Plats** – Välj att redigera dina program på någon av de [tre redigerings platser](./luis-reference-regions.md) som för närvarande stöds av Luis, inklusive: västra USA, Västeuropa och östra Australien
-    * **Pris nivå** – som standard är pris nivån för F0-redigering valt som rekommenderas. Skapa en [kundhanterad nyckel](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) från Azure Portal om du letar efter ett extra säkerhets lager.
+    * **Pris nivå** – som standard är pris nivån för F0-redigering valt som rekommenderas. Skapa en [kundhanterad nyckel](./encrypt-data-at-rest.md#customer-managed-keys-for-language-understanding) från Azure Portal om du letar efter ett extra säkerhets lager.
 8. Nu har du loggat in på LUIS. Nu kan du börja skapa program.
 
 ## <a name="troubleshooting"></a>Felsökning

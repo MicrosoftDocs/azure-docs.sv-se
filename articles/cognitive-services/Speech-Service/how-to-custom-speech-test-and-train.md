@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 2e6f79643493457a587f907f2649c7ab50b963f4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634744"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710506"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Förbereda data för Custom Speech
 
@@ -46,9 +46,9 @@ I den här tabellen listas godkända data typer, när varje datatyp ska använda
 
 | Datatyp | Används för testning | Rekommenderad kvantitet | Används för utbildning | Rekommenderad kvantitet |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ljud](#audio-data-for-testing) | Yes<br>Används för visuell granskning | 5 + ljudfiler | No | Ej tillämpligt |
-| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Yes | 1-20 timmars ljud |
-| [Relaterad text](#related-text-data-for-training) | No | Ej tillämpligt | Yes | 1-200 MB relaterad text |
+| [Ljud](#audio-data-for-testing) | Ja<br>Används för visuell granskning | 5 + ljudfiler | Inga | Ej tillämpligt |
+| [Ljud + medmärkta avskrifter](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Används för att utvärdera noggrannhet | 0,5 – 5 timmars ljud | Ja | 1-20 timmars ljud |
+| [Relaterad text](#related-text-data-for-training) | Inga | Ej tillämpligt | Ja | 1-200 MB relaterad text |
 
 När du tränar en ny modell börjar du med [relaterad text](#related-text-data-for-training). Dessa data kommer redan att förbättra igenkänningen av särskilda termer och fraser. Det går mycket snabbare att träna med text än att träna med ljud (minuter jämfört med dagar).
 
@@ -64,6 +64,8 @@ Filerna ska grupperas efter typ i en data uppsättning och laddas upp som en zip
 > I fall när du ändrar bas modellen som används för utbildning och du har ljud i träning-datauppsättningen, kontrollerar du *alltid* om den nya valda bas modellen [stöder utbildning med ljuddata](language-support.md#speech-to-text). Om den tidigare använda bas modellen inte har stöd för utbildning med ljuddata, och hierarkin data uppsättning innehåller ljud, ökar inlärnings tiden med den nya bas modellen **drastiskt** , och det kan enkelt gå från flera timmar till flera dagar. Detta gäller särskilt om din röst tjänst prenumeration **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 >
 > Om du möter problemet som beskrivs i stycket ovan kan du snabbt minska inlärnings tiden genom att minska mängden ljud i data uppsättningen eller ta bort det helt och hållet texten kvar. Det sistnämnda alternativet är starkt rekommenderat om din prenumeration på röst tjänsten **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+>
+> I regioner med dedikerad maskin vara för utbildning kommer tal tjänsten att använda upp till 20 timmars ljud för utbildning. I andra regioner kommer den bara att använda upp till 8 timmar ljud.
 
 ## <a name="upload-data"></a>Ladda upp data
 
@@ -101,7 +103,7 @@ Använd den här tabellen för att se till att ljudfilerna är korrekt formatera
 
 Använd <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span> </a> för att verifiera ljud egenskaperna eller konvertera det befintliga ljudet till rätt format. Nedan visas några exempel på hur var och en av dessa aktiviteter kan göras via SoX-kommando raden:
 
-| Aktivitet | Description | SoX-kommando |
+| Aktivitet | Beskrivning | SoX-kommando |
 |----------|-------------|-------------|
 | Kontrol lera ljud formatet | Använd det här kommandot för att kontrol lera<br>ljud fil formatet. | `sox --i <filename>` |
 | Konvertera ljud format | Använd det här kommandot för att konvertera<br>ljud filen till en kanal, 16-bitars 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -127,7 +129,7 @@ Ljudfiler kan ha tystnad i början och slutet av inspelningen. Om möjligt, inkl
 > [!NOTE]
 > När du överför utbildning och testar data får. zip-filens storlek inte överskrida 2 GB. Du kan bara testa från en *enda* data uppsättning, se till att hålla den inom lämplig fil storlek. Dessutom kan varje tränings fil inte överstiga 60 sekunder, annars kommer den att vara fel.
 
-För att lösa problem som Word-borttagning eller ersättning krävs en stor mängd data för att förbättra igenkänningen. Vanligt vis rekommenderar vi att du ger ord för ord-avskrifter i ungefär 10 till 20 timmars ljud. Transkriptioner för alla WAV-filer bör ingå i en enda fil med oformaterad text. Varje rad i transkriptionsfilen ska innehålla namnet på en av ljudfilerna följt av motsvarande transkription. Filnamnet och transkriptionen ska separeras med ett tabbtecken (\t).
+För att lösa problem som Word-borttagning eller ersättning krävs en stor mängd data för att förbättra igenkänningen. Vanligt vis rekommenderar vi att du ger ord för ord-avskrifter i 1 till 20 timmars ljud. Men även om det är ett litet antal minuter kan det hjälpa till att förbättra igenkännings resultatet. Transkriptioner för alla WAV-filer bör ingå i en enda fil med oformaterad text. Varje rad i transkriptionsfilen ska innehålla namnet på en av ljudfilerna följt av motsvarande transkription. Filnamnet och transkriptionen ska separeras med ett tabbtecken (\t).
 
 Exempel:
 

@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: a70f2cff1df5d0f5d1d4a36bbc2a440518ce5ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2cb284e1978ad6c890835318c51c6095891397cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622906"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723018"
 ---
 # <a name="interactive-workbooks"></a>Interaktiva arbetsböcker
 
@@ -188,5 +188,5 @@ Du kan lämna inställningen "fält för export" tom i export inställningarna. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång](../platform/workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
-* [Kontrol lera](../platform/workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.
+* [Kom igång](./workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
+* [Kontrol lera](./workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.

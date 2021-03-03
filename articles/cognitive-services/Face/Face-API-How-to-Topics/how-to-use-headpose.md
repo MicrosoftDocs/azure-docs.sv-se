@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 05/29/2019
+ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec466fc420e435159e2882d7b39ef6d03eeea7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928980"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733490"
 ---
 # <a name="use-the-headpose-attribute"></a>Använda attributet HeadPose
 
@@ -29,7 +29,7 @@ Exempel appen [Cognitive Services Face WPF](https://github.com/Azure-Samples/cog
 
 ### <a name="explore-the-sample-code"></a>Utforska exempelkoden
 
-Du kan rotera ansikts-rektangeln genom att använda attributet HeadPose. Om du anger det här attributet när du identifierar ansikten (se [hur du identifierar ansikten](HowtoDetectFacesinImage.md)) kommer du att kunna fråga det senare. Följande metod från [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) -appen tar en lista över **DetectedFace** -objekt och returnerar en lista över **[ansikts](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** objekt. **Face** här är en anpassad klass som lagrar ansikts data, inklusive de uppdaterade Rectangle-koordinaterna. Nya värden beräknas för **överkant**, **vänster**, **Bredd**och **höjd**, och ett nytt fält **FaceAngle** anger rotationen.
+Du kan rotera ansikts-rektangeln genom att använda attributet HeadPose. Om du anger det här attributet när du identifierar ansikten (se [hur du identifierar ansikten](HowtoDetectFacesinImage.md)) kommer du att kunna fråga det senare. Följande metod från [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) -appen tar en lista över **DetectedFace** -objekt och returnerar en lista över **[ansikts](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** objekt. **Face** här är en anpassad klass som lagrar ansikts data, inklusive de uppdaterade Rectangle-koordinaterna. Nya värden beräknas för **överkant**, **vänster**, **Bredd** och **höjd**, och ett nytt fält **FaceAngle** anger rotationen.
 
 ```csharp
 /// <summary>

@@ -4,14 +4,14 @@ description: Lär dig hur du skapar ett AKS-kluster med konfidentiella noder och
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 2/8/2020
+ms.date: 2/25/2020
 ms.author: amgowda
-ms.openlocfilehash: 866c8340cf9c16d768f4035326aa2ec52dbf1401
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 51b0813849236d9335d1482019f740fc8b23749f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653371"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703294"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med konfidentiella beräknings noder (DCsv2) med hjälp av Azure CLI
 
@@ -26,7 +26,7 @@ I den här snabb starten får du lära dig hur du distribuerar ett Azure Kuberne
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Funktioner för att beräkna konfidentiella noder (DC <x> s-v2)
 
-1. Linux Worker-noder som endast stöder Linux-behållare
+1. Linux Worker-noder som stöder Linux-behållare
 1. Generation 2 VM med Ubuntu 18,04 Virtual Machines-noder
 1. Intel SGX-baserad CPU med krypterad side cache-minne (EPC). Läs mer [här](./faq.md)
 1. Stöd för Kubernetes-version 1.16 +
@@ -37,41 +37,8 @@ I självstudien om distribution krävs följande:
 
 1. En aktiv Azure-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar
 1. Azure CLI version 2.0.64 eller senare installerat och konfigurerat på distributions datorn (kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)
-1. Azure [-AKS –](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) lägsta version för för hands versions tillägg 0.5.0
 1. Minst sex **DC <x> s-v2-** kärnor som är tillgängliga i din prenumeration för användning. Som standard används kvoten för VM-kärnor för konfidentiella data behandling per Azure-prenumeration 8 kärnor. Om du planerar att etablera ett kluster som kräver mer än 8 kärnor, följer du [dessa](../azure-portal/supportability/per-vm-quota-requests.md) anvisningar för att öka en kvots öknings biljett
 
-## <a name="cli-based-preparation-steps-required-for-add-on-in-preview---optional-but-recommended"></a>CLI-baserade förberedelse steg (krävs för tillägg i för hands version – valfritt men rekommenderas)
-Följ anvisningarna nedan för att aktivera konfidentiellt data behandlings tillägg på AKS.
-
-### <a name="step-1-installing-the-cli-prerequisites"></a>Steg 1: installera kraven för CLI
-
-Använd följande Azure CLI-kommandon för att installera AKS-Preview 0.5.0-tillägget eller senare:
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-För att uppdatera AKS-Preview CLI-tillägget använder du följande Azure CLI-kommandon:
-
-```azurecli-interactive
-az extension update --name aks-preview
-```
-### <a name="step-2-azure-confidential-computing-addon-feature-registration-on-azure"></a>Steg 2: Azure konfidentiella data behandlings tillägg för funktioner i Azure
-Registrera AKS-ConfidentialComputingAddon på Azure-prenumerationen. Den här funktionen lägger till plugin-daemonset för SGX-enhet enligt beskrivningen i informationen [här](./confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks):
-1. Plugin-program för SGX-drivrutiner
-```azurecli-interactive
-az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
-```
-Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
-```
-När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 ## <a name="creating-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>Skapa nytt AKS-kluster med konfidentiella databeräknings-noder och tillägg
 Följ anvisningarna nedan för att lägga till funktioner för konfidentiell data behandling med tillägg.
 

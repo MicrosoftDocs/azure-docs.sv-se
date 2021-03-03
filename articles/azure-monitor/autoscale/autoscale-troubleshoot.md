@@ -4,12 +4,12 @@ description: Spåra problem med automatisk skalning i Azure som används i Servi
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 8936d1b94082291f5c081c47f8331cc64042896b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0fed6c2d06edcb2c9eb8d715feb0ef6c6ade46f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711407"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Felsöka Azures autoskalning
  
@@ -24,14 +24,14 @@ Med tjänsten för autoskalning får du mått och loggar för att förstå vilka
   
 ## <a name="autoscale-metrics"></a>Autoskalning av mått
 
-Med autoskalning får du [fyra mått](../platform/metrics-supported.md#microsoftinsightsautoscalesettings) för att förstå driften. 
+Med autoskalning får du [fyra mått](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings) för att förstå driften. 
 
 - **Observerat mått värde** – värdet för det mått som du valde att vidta skalnings åtgärden på, som det visas eller beräknas av den automatiska skalnings motorn. Eftersom en enskild inställning för autoskalning kan ha flera regler och därför flera metriska källor, kan du filtrera med "mått källa" som en dimension.
 - **Mått tröskelvärde** – det tröskelvärde du ställer in för att utföra skalnings åtgärden. Eftersom en enskild inställning för autoskalning kan ha flera regler och därför flera metriska källor kan du filtrera med "mått regel" som en dimension.
 - **Observerad kapacitet** – det aktiva antalet instanser av mål resursen som visas av motorn för autoskalning.
 - **Skalningsåtgärder har initierats** – Antalet åtgärder för att skala ut och skala in som har initierats av autoskalningsmotorn. Du kan filtrera genom att skala ut eller skala ut i åtgärder.
 
-Du kan använda [Metrics Explorer](../platform/metrics-getting-started.md) för att rita ut ovanstående mått på samma ställe. Diagrammet ska visa:
+Du kan använda [Metrics Explorer](../essentials/metrics-getting-started.md) för att rita ut ovanstående mått på samma ställe. Diagrammet ska visa:
 
   - faktiskt mått
   - måttet som läst/beräknad av autoskalning-motorn
@@ -87,7 +87,7 @@ Diagrammet längst ned visar några värden.
  - Den **observerade kapaciteten** (lila) visar antalet instanser som visas för autoskalning-motorn. 
  - **Mått tröskelvärdet** (ljus grönt) är inställt på 10. 
 
-Om det finns flera skalnings åtgärds regler kan du använda dela upp eller **Lägg till filter** i diagrammet Metrics Explorer för att titta på mått med en bestämd källa eller regel. Mer information om hur du delar ett mått diagram finns i [avancerade funktioner i mått diagram – dela upp](../platform/metrics-charts.md#apply-splitting)
+Om det finns flera skalnings åtgärds regler kan du använda dela upp eller **Lägg till filter** i diagrammet Metrics Explorer för att titta på mått med en bestämd källa eller regel. Mer information om hur du delar ett mått diagram finns i [avancerade funktioner i mått diagram – dela upp](../essentials/metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Exempel 3 – förstå autoskalning-händelser
 
@@ -97,13 +97,13 @@ På skärmen Inställningar för autoskalning går du till fliken **körnings hi
 
 ## <a name="autoscale-resource-logs"></a>Autoskala resurs loggar
 
-På samma sätt som andra Azure-resurser innehåller AutoScale-tjänsten [resurs loggar](../platform/platform-logs-overview.md). Det finns två typer av loggar.
+På samma sätt som andra Azure-resurser innehåller AutoScale-tjänsten [resurs loggar](../essentials/platform-logs-overview.md). Det finns två typer av loggar.
 
 - **Autoskalning-utvärderingar** – den automatiska skalnings motorn registrerar logg poster för varje enskild villkors utvärdering varje gång en kontroll utförs.  Posten innehåller information om de observerade värdena för måtten, reglerna utvärderas och om utvärderingen resulterade i en skalnings åtgärd eller inte.
 
 - **Åtgärder för automatisk skalnings skalning** – motorn registrerar skalnings åtgärds händelser som initieras av tjänsten för automatisk skalning och resultatet av dessa skalnings åtgärder (lyckade, misslyckade och hur mycket skalning som har gjorts enligt autoskalning tjänsten).
 
-Precis som med alla Azure Monitor tjänster som stöds kan du använda [diagnostikinställningar](../platform/diagnostic-settings.md) för att dirigera dessa loggar:
+Precis som med alla Azure Monitor tjänster som stöds kan du använda [diagnostikinställningar](../essentials/diagnostic-settings.md) för att dirigera dessa loggar:
 
 - till din Log Analytics arbets yta för detaljerad analys
 - för att Event Hubs och sedan till icke-Azure-verktyg
@@ -206,4 +206,4 @@ Skapa aviserings regler för att få meddelanden om automatiska skalnings åtgä
 Mer information finns i [Autoskala resurs loggar](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>Nästa steg
-Läs information om [bästa metoder för autoskalning](autoscale-best-practices.md). 
+Läs information om [bästa metoder för autoskalning](autoscale-best-practices.md).

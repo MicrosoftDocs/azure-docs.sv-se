@@ -101,7 +101,7 @@
     - name: Referens
       items:
         - name: API-referens för dokument Översättning
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/translator/translation'
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: Översikt

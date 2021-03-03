@@ -2,17 +2,17 @@
 title: 'Azure VPN Gateway: Konfigurera paket fångst'
 description: Lär dig mer om paket insamlings funktioner som du kan använda på VPN-gatewayer för att begränsa orsaken till ett problem.
 services: vpn-gateway
-author: radwiv
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/2/2020
-ms.author: radwiv
-ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.date: 02/22/2021
+ms.author: alzam
+ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726622"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurera paket fångst för VPN-gatewayer
 
@@ -27,6 +27,7 @@ Du kan köra VPN Gateway paket avbildning på gatewayen eller en speciell anslut
 Det är praktiskt att använda ett filter med fem tupler (käll under nät, mål under nät, källport, målport, protokoll) och TCP-flaggor (SYN, ACK, FIN, URG, PSH och per användning) när du isolerar problem med hög volym trafik.
 
 Följande exempel på JSON och ett JSON-schema innehåller förklaringar av varje egenskap. Här följer några begränsningar som du bör tänka på när du kör paket fångster:
+
 - I det schema som visas här är filtret en matris, men för närvarande kan endast ett filter användas i taget.
 - Du kan inte köra flera paket avbildningar i hela gatewayen på samma gång.
 - Du kan inte köra flera paket avbildningar på samma gång. Du kan köra flera paket insamlingar på olika anslutningar samtidigt.
@@ -317,7 +318,13 @@ Följande exempel på JSON och ett JSON-schema innehåller förklaringar av varj
 }
 ```
 
-## <a name="set-up-packet-capture-by-using-powershell"></a>Konfigurera paket avbildning med hjälp av PowerShell
+## <a name="packet-capture---portal"></a>Paket insamling – Portal
+
+Du kan konfigurera paket fångst i Azure Portal.
+
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="Skärm bild av paket fångst i portalen." lightbox="./media/packet-capture/portal.jpg":::
+
+## <a name="packet-capture---powershell"></a>Paket insamling – PowerShell
 
 I följande exempel visas PowerShell-kommandon som startar och stoppar paket fångster. Mer information om parameter alternativ finns i [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 

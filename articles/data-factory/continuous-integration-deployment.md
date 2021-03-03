@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716538"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuerlig integrering och leverans i Azure Data Factory
 
@@ -199,7 +199,7 @@ Data Factory-teamet har angett ett [skript före och efter distribution](#script
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Använda anpassade parametrar med Resource Manager-mallen
 
-Om din utvecklings fabrik har en kopplad git-lagringsplats, kan du åsidosätta standardmallarna för Resource Manager för Resource Manager-mallen som genereras genom att publicera eller exportera mallen. Du kanske vill åsidosätta standard mal len för parameterisering i följande scenarier:
+Om din utvecklings fabrik har en kopplad git-lagringsplats, kan du åsidosätta standardmallarna för Resource Manager för Resource Manager-mallen som genereras genom att publicera eller exportera mallen. Du kanske vill åsidosätta standard parameter konfigurationen för Resource Manager i följande scenarier:
 
 * Du använder automatiserad CI/CD och du vill ändra vissa egenskaper under distributionen av Resource Manager, men egenskaperna är inte parameterstyrda som standard.
 * Fabriken är så stor att Resource Manager-standardmallen är ogiltig eftersom den har fler än det högsta tillåtna antalet parametrar (256).
@@ -210,11 +210,14 @@ Om din utvecklings fabrik har en kopplad git-lagringsplats, kan du åsidosätta 
     * Omfaktas logik i data flödet för att minska parametrar, till exempel har alla pipeline-parametrar samma värde. du kan bara använda globala parametrar i stället.
     * Dela en data fabrik i flera data flöden.
 
-Om du vill åsidosätta standard mal len Parameterisering går du till hanterings hubben och väljer **Parameterisering-mall** i avsnittet käll kontroll. Välj **Redigera mall** för att öppna kod redigeraren för parameterisering. 
+Om du vill åsidosätta standard parameter konfigurationen för Resource Manager går du till **Hantera** hubben och väljer **arm-mall** i avsnittet "käll kontroll". Under avsnittet **konfiguration av arm-parameter** klickar du på **Redigera** ikon i "redigera parameter konfiguration" för att öppna Resource Manager-parameterns konfigurations kod redigerare.
 
 ![Hantera anpassade parametrar](media/author-management-hub/management-hub-custom-parameters.png)
 
-När du skapar en anpassad Parameterisering-mall skapas en fil med namnet **arm-template-parameters-definition.js** i rotmappen i git-grenen. Du måste använda det exakta fil namnet.
+> [!NOTE]
+> **Konfiguration av arm-parameter** är bara aktiverat i git-läge. För närvarande är den inaktive rad i läget "Live mode" eller "Data Factory".
+
+När du skapar en anpassad Resource Manager-parameter konfigureras en fil med namnet **arm-template-parameters-definition.jspå** i rotmappen i git-grenen. Du måste använda det exakta fil namnet.
 
 ![Fil för anpassade parametrar](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ När du publicerar från samarbets grenen kommer Data Factory att läsa den här
 När du exporterar en Resource Manager-mall Data Factory läser filen från den gren som du för närvarande arbetar på, inte samarbets grenen. Du kan skapa eller redigera filen från en privat gren, där du kan testa dina ändringar genom att välja **Exportera arm-mall** i användar gränssnittet. Sedan kan du slå samman filen till samarbets grenen.
 
 > [!NOTE]
-> En anpassad Parameterisering-mall ändrar inte gränsen för ARM-mallparameter på 256. Du kan välja och minska antalet parameter egenskaper.
+> En anpassad Resource Manager-parameter har inte ändra parameterns gräns för ARM-mall på 256. Du kan välja och minska antalet parameter egenskaper.
 
 ### <a name="custom-parameter-syntax"></a>Anpassad parameter-syntax
 
@@ -244,7 +247,7 @@ Nedan följer några rikt linjer som du följer när du skapar den anpassade par
  
 ### <a name="sample-parameterization-template"></a>Exempel på Parameterisering-mall
 
-Här är ett exempel på hur en Parameterisering-mall kan se ut så här:
+Här är ett exempel på hur en resurs hanterings parameter konfiguration kan se ut så här:
 
 ```json
 {

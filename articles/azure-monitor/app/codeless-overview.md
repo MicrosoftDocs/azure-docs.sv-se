@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0dda015d820d81fdd13eced384f97362e2ee3339
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708500"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Vad är Auto-Instrumentation eller kod fast kopplings Azure Monitor Application Insights?
 
@@ -45,27 +45,27 @@ När vi lägger till ytterligare integreringar blir matrisen för automatiska in
 Program övervakning på Azure App Service i Windows är tillgängligt för [.NET-program](./azure-web-apps.md?tabs=net) .net och är aktiverat som standard.
 
 #### <a name="netcore"></a>. NETCore
-Övervakning för [. NetCore-program](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) kan aktive ras med ett klick.
+Övervakning för [. NetCore-program](./azure-web-apps.md?tabs=netcore) kan aktive ras med ett klick.
 
 #### <a name="java"></a>Java
-Portal integreringen för övervakning av Java-program på App Service på Windows är för närvarande inte tillgänglig, men du kan lägga till Application Insights [Java 3,0 fristående agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) i programmet utan några kod ändringar innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
+Portal integreringen för övervakning av Java-program på App Service på Windows är för närvarande inte tillgänglig, men du kan lägga till Application Insights [Java 3,0 fristående agent](./java-in-process-agent.md) i programmet utan några kod ändringar innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
 
 #### <a name="nodejs"></a>Node.js
-Övervakning av Node.js program i Windows kan för närvarande inte aktive ras från portalen. Använd [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)för att övervaka Node.js-program.
+Övervakning av Node.js program i Windows kan för närvarande inte aktive ras från portalen. Använd [SDK](./nodejs.md)för att övervaka Node.js-program.
 
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>. NETCore
-Att övervaka. NetCore-program som körs på Linux använder du [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+Att övervaka. NetCore-program som körs på Linux använder du [SDK](./asp-net-core.md).
 
 #### <a name="java"></a>Java 
-Att aktivera övervakning av Java-program för App Service på Linux från portalen är inte tillgängligt, men du kan lägga till [Application Insights Java 3,0-agenten](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) i din app innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
+Att aktivera övervakning av Java-program för App Service på Linux från portalen är inte tillgängligt, men du kan lägga till [Application Insights Java 3,0-agenten](./java-in-process-agent.md) i din app innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
 
 #### <a name="nodejs"></a>Node.js
-[Övervakning av Node.js program i App Service på Linux](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs) finns i en offentlig för hands version och kan aktive ras i Azure Portal, som är tillgängliga i alla regioner. 
+[Övervakning av Node.js program i App Service på Linux](./azure-web-apps.md?tabs=nodejs) finns i en offentlig för hands version och kan aktive ras i Azure Portal, som är tillgängliga i alla regioner. 
 
 #### <a name="python"></a>Python
-Använd SDK: n för att [övervaka din python-app](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
+Använd SDK: n för att [övervaka din python-app](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -77,7 +77,7 @@ Kodbaserade instrumentering av Azure Kubernetes-tjänsten är för närvarande t
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Virtuella Azure Windows-datorer och skalnings uppsättningar för virtuella datorer
 
-Automatisk instrumentering för virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer är tillgängligt för [.net](./azure-vm-vmss-apps.md) och [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).  
+Automatisk instrumentering för virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer är tillgängligt för [.net](./azure-vm-vmss-apps.md) och [Java](./java-in-process-agent.md).  
 
 ## <a name="on-premises-servers"></a>Lokala servrar
 Du kan enkelt aktivera övervakning för dina [lokala Windows-servrar för .NET-program](./status-monitor-v2-overview.md) och för [Java-appar](./java-in-process-agent.md).
@@ -90,4 +90,3 @@ Den mångsidiga, fristående Java-agenten fungerar i alla miljöer, men du behö
 * [Översikt över Application Insights](./app-insights-overview.md)
 * [Program karta](./app-map.md)
 * [Prestanda övervakning från slut punkt till slut punkt](../app/tutorial-performance.md)
-

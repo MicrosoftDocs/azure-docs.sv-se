@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5c216661e45e5ed34a95e8a56002f3ad175b089a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703101"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Aktivera en hanterad identitet för routning av Azure Digitals sammanflätade händelser (för hands version): Azure Portal
 
@@ -89,8 +89,7 @@ Mer information om slut punkter, vägar och typer av destinationer som stöds f�
 
 ### <a name="assign-the-role"></a>Tilldela rollen
 
->[!NOTE]
-> Det här avsnittet måste utföras av en Azure-användare med behörigheter för att hantera användar åtkomst till Azure-resurser (inklusive beviljande och delegering av behörigheter). Vanliga roller som uppfyller detta krav är *ägare*, *konto administratör* eller kombinationen av *användar åtkomst administratör* och *deltagare*. Mer information om behörighets kraven för Azure Digitals dubbla roller finns i [*How-to: set up instance and Authentication*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Om du vill tilldela en roll till identiteten börjar du med att öppna [Azure Portal](https://portal.azure.com).
 
@@ -116,7 +115,7 @@ Om du vill tilldela en roll till identiteten börjar du med att öppna [Azure Po
 
 När du är klar med att ange informationen väljer du **Spara**.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Skapa en slut punkt med Identity-baserad auktorisering
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Skapa en slut punkt med Identity-baserad autentisering
 
 När du har konfigurerat en Systemhanterad identitet för din Azure Digital-instansen och tilldelar den rätt roll (er) kan du skapa Azure Digital- [slut punkter](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) som kan använda identiteten för autentisering. Det här alternativet är endast tillgängligt för Event Hub-och Service Bus-typ slut punkter (det stöds inte för Event Grid).
 

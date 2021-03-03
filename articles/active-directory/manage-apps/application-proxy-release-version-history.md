@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258141"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686724"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-programproxy: versions historik
 Den här artikeln innehåller versioner och funktioner i Azure Active Directory (Azure AD) Application Proxy som har släppts. Azure AD-teamet uppdaterar regelbundet programproxy med nya funktioner och funktioner. Application Proxy-kopplingar uppdateras automatiskt när en ny version släpps. 
@@ -44,7 +44,7 @@ Den 22 juli 2020: lanserad för nedladdning den här versionen är bara tillgän
 
 ### <a name="fixed-issues"></a>Åtgärdade problem
 - Ett WebSocket-problem har åtgärd ATS som framtvingade gemener av strängar.
-- Ett problem har åtgärd ATS som gjorde att kopplingar inte svarade occassionally.
+- Ett problem har åtgärd ATS som orsakade att anslutningar ibland inte svarade.
 
 ## <a name="1516260"></a>1.5.1626.0
 
@@ -60,7 +60,7 @@ Den 22 juli 2020: lanserad för nedladdning den här versionen är bara tillgän
 
 ### <a name="release-status"></a>Versionsstatus
 
-07, 2020: släpps för hämtning
+07, 2020: lanserad för nedladdning den här versionen är bara tillgänglig för installation via nedladdnings sidan. En version av automatisk uppgradering av den här versionen kommer att frisläppas vid ett senare tillfälle.
 
 ### <a name="new-features-and-improvements"></a>Nya funktioner och förbättringar
 -   Kopplingar använder bara TLS 1,2 för alla anslutningar. Se [krav för anslutning](application-proxy-add-on-premises-application.md#prerequisites) för mer information.

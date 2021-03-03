@@ -3,17 +3,17 @@ title: Vad är nytt i det virtuella Windows-skrivbordet? – Azure
 description: Nya funktioner och produkt uppdateringar för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737502"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -39,6 +39,26 @@ Ta en titt på de här artiklarna om du vill veta mer om uppdateringar för vår
 ## <a name="fslogix-updates"></a>FSLogix uppdateringar
 
 Undrar du över de senaste uppdateringarna för FSLogix? Kolla [vad som är nytt på FSLogix](/fslogix/whats-new).
+
+## <a name="february-2021"></a>Februari 2021
+
+Det här är vad som har ändrats i februari 2021.
+
+### <a name="portal-experience"></a>Portalmiljö
+
+Vi har förbättrat Azure Portal upplevelsen på följande sätt:
+
+- Mass tömnings läge på värdar på fliken rutnät i sessions värd. 
+- MSIX app Attach är nu tillgängligt för offentlig för hands version.
+- Översikts information för den fasta poolen för värdar för mörkt läge.
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>EU metadata Storage nu i offentlig för hands version
+
+Vi är nu värd för en offentlig för hands version av Europe-geografin (EU) som ett lagrings alternativ för tjänstens metadata i det virtuella Windows-skrivbordet. Kunder kan välja mellan väst eller Nord Europa när de skapar sina tjänst objekt. Tjänst objekt och metadata för värdbaserade pooler kommer att lagras i den Azure-geografi som är kopplad till varje region. Läs det här blogg inlägget om du vill veta mer om [den offentliga för hands versionen](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939).
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Teams för uppdateringar av plugin-program för virtuella Windows-datorer
+
+Vi har förbättrat video samtals kvaliteten på Windows-plugin-programmet för virtuella skriv bord genom att hantera de vanligaste problemen, till exempel när skärmen plötsligt blir mörk eller om video och ljud desynkroniseras. Dessa förbättringar bör öka prestandan för en enskild video-vy med aktiv högtalar växling. Vi har också åtgärdat ett problem där maskin varu enheter med specialtecken inte var tillgängliga i team.
 
 ## <a name="january-2021"></a>Januari 2021
 

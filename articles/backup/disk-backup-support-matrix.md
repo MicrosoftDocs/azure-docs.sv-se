@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806112"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707225"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
 
@@ -58,7 +58,7 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 
 - För närvarande (under för hands versionen) stöds inte användning av PowerShell och Azure CLI för att konfigurera säkerhets kopiering och återställning av diskar.
 
-- När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
+- När du konfigurerar säkerhets kopiering måste disken som du har valt att säkerhets kopie ras och resurs gruppen för ögonblicks bilder där ögonblicks bilderna ska lagras vara en del av samma prenumeration. Du kan inte skapa en stegvis ögonblicks bild för en viss disk utanför diskens prenumeration. Läs mer om [stegvisa ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md#restrictions) för hanterad disk. Mer information om hur du väljer en resurs grupp för ögonblicks bilder finns i  [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup).
 
 - För lyckade säkerhets kopierings-och återställnings åtgärder krävs roll tilldelningar av säkerhets kopierings valvets hanterade identitet. Använd endast de roll definitioner som anges i dokumentationen. Det finns inte stöd för användning av andra roller som ägare, deltagare och så vidare. Du kan få problem med behörigheten om du börjar konfigurera säkerhets kopierings-eller återställnings åtgärder efter tilldelningen av roller. Detta beror på att roll tilldelningarna tar några minuter att börja gälla.
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: a98ab9ea347ba4d9ec53c80626f97b429e083cb1
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b6fd5b5f70eb813792be003836790752db1d071f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242389"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732827"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Neka offentlig nätverks åtkomst i Azure Database for MySQL att använda Azure Portal
 
@@ -21,7 +21,7 @@ I den här artikeln beskrivs hur du kan konfigurera en Azure Database for MySQL-
 
 För att slutföra den här instruktions guiden behöver du:
 
-* En [Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+* En [Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) med generell användning eller minnesoptimerade pris nivå
 
 ## <a name="set-deny-public-network-access"></a>Ange neka offentlig nätverks åtkomst
 
@@ -29,7 +29,7 @@ Följ dessa steg om du vill ställa in MySQL server neka offentlig nätverks åt
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du din befintliga Azure Database for MySQL-server.
 
-1. På sidan MySQL server, under **Inställningar** , klickar du på **anslutnings säkerhet** för att öppna sidan anslutnings säkerhets konfiguration.
+1. På sidan MySQL server, under **Inställningar**, klickar du på **anslutnings säkerhet** för att öppna sidan anslutnings säkerhets konfiguration.
 
 1. I **neka offentlig nätverks åtkomst** väljer du **Ja** för att aktivera neka offentlig åtkomst för MySQL-servern.
 

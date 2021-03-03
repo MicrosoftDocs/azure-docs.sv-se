@@ -7,26 +7,94 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/29/2020
+ms.date: 02/17/2021
 ms.author: aahi
-ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779515"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750584"
 ---
-Den här enhets kategorin innehåller finansiell information och officiella formulär för identifiering. Tillgängligt från och med modell version `2019-10-01` . Under typer visas nedan. 
-
 ### <a name="financial-account-identification"></a>Identifiering av finansiella konton
 
-| Under typs namn               | Beskrivning                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| ABA-nummer        | ABA-flöde (American Banks Association).                  |
-| SWIFT-kod                 | SWIFT-koder för information om betalnings instruktioner.                           |
-| Kreditkort                | Kreditkorts nummer.                                                       |
-| Internationellt bankkontonummer (IBAN)                  | IBAN-koder för information om betalnings instruktioner.                            |
+Den här enhets kategorin innehåller finansiell information och officiella formulär för identifiering.
 
+#### <a name="category-aba-routing-number"></a>Kategori: ABA-routing number
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        ABA-routing number
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        ABA-flöde (American Banks Association).
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-swift-code"></a>Kategori: SWIFT-kod
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        SWIFT-kod
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        SWIFT-koder för information om betalnings instruktioner.
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-credit-card"></a>Kategori: kredit kort
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Kreditkort
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Kreditkorts nummer. 
+      
+    :::column-end:::
+:::row-end:::
+
+#### <a name="category-international-banking-account-number-iban"></a>Kategori: internationellt bank konto nummer (IBAN) 
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Kreditkort
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        IBAN-koder för information om betalnings instruktioner.
+      
+    :::column-end:::
+:::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>Identifiering av myndigheter och land/region
 
@@ -37,249 +105,851 @@ Den här enhets kategorin innehåller finansiell information och officiella form
 
 Följande entiteter är grupperade och listade efter land:
 
-Argentina
-* DNI-nummer (Argentina National Identity)
+#### <a name="argentina"></a>Argentina
 
-Österrike
-* ID-kort för Österrike
-* Skatte identifierings nummer för Österrike
-* Österrike Value Added Tax (moms) nummer
+:::row:::
+    :::column span="":::
+        **Entitet**
 
-Australien
-* Bank konto nummer för Australien
-* Australiensiskt företags nummer
-* Australiensiskt företags nummer
-* Enhets licens nummer för Australien
-* Australien, medicin konto nummer
-* Australien Passport-nummer
-* Australien, skatte fil nummer
+        DNI-nummer (Argentina National Identity)
 
-Belgien
-* Belgien National Number
-* Tilläggs skatte nummer för Belgien
+    :::column-end:::
+:::row-end:::
 
-Brasilien 
-* Brasilien juridisk enhets nummer (CNPJ)
-* Brasilien CPF-nummer
-* Brasilien National ID-kort (RG)
 
-Bulgarien
-* Bulgarien, enhetligt civil nummer
+#### <a name="austria"></a>Österrike
 
-Kanada
-* Bank konto nummer för Kanada
-* Licens nummer för Kanadas driv rutin
-* Kanada Hälsotjänst nummer
-* Canada Passport-nummer
-* Canada personal Health Identification Number (PHIN)
-* Kanadas sociala försäkrings nummer
+:::row:::
+    :::column span="":::
+        **Entitet**
 
-Chile
-* Identitets korts nummer 
+        ID-kort för Österrike
 
-Kina
-* PRC-nummer (Folkrepubliken Kina)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Kroatien
-* Nummer för Kroatien identitets kort
-* Nationellt ID-kort nummer för Kroatien
-* OIB-nummer (Kroatien personal Identification)
+        Skatte identifierings nummer för Österrike
 
-Cypern
-* Kort nummer för Cypern identitet
-* Identifierings nummer för Cypern skatt
+    :::column-end:::
 
-Tjeckien
-* Tjeckiska personal Identity Number
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Danmark
-* Danmark personal identifikations nummer
+        Österrike Value Added Tax (moms) nummer
 
-Estland
-* Estland personal identifikations kod
+    :::column-end:::
+:::row-end:::
 
-Europeiska unionen (EU)
-* EU betalkort nummer
-* Licens nummer för EU-drivrutin
-* EU: s nationella identifierings nummer
-* EU Passport-nummer
-* EU: s socialförsäkrings nummer (SSN) eller motsvarande ID
-* EU: s skatte identifierings nummer (TIN)
 
-Finland
-* Europeiskt hälso försäkrings nummer för Finland
-* Nationella ID för Finland
-* Nummer för Finland Passport
 
-Frankrike
-* Fransk driv Rutins licens nummer
-* Franskt hälso försäkrings nummer
-* Franskt nationellt ID-kort (CNI)
-* Franskt Passport-nummer
-* Frankrike, socialförsäkrings nummer (INSEE)
-* Frankrikes skatte identifierings nummer (Numéro SPI)
-* Frankrike mervärdes skatte nummer
+#### <a name="australia"></a>Australien
 
-Tyskland
-* Tysk kör korts nummer
-* Kort nummer för Tyskland-identitet
-* Tyskt Passport-nummer
-* Skatte identifikations nummer för Tyskland
-* Mervärdes skatte nummer för Tyskland
+:::row:::
+    :::column span="":::
+        **Entitet**
 
-Grekland 
-* Kort nummer för nationella Grekland-ID
-* Skatte identifikations nummer för Grekland
+        Bank konto nummer för Australien
 
-Hongkong
-* HKID-nummer (Hong Kong Identity Card)
+    :::column-end:::
 
-Ungern
-* Ungern National Identification Number
-* Ungern skatte identifierings nummer
-* Ungern mervärdes skatte nummer
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Indien
-* Permanent konto nummer för Indien (PAN)
-* Aadhaar-nummer (Indien Unique Identification)
+        Australiensiskt företags nummer
 
-Indonesien
-* KTP-nummer (Indonesien Identity Card)
+    :::column-end:::
 
-Irland
-* Irland personal public service (PPS)-nummer
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Israel
-* Israel National ID
-* Israel bank konto nummer
+        Australien, företags nummer
 
-Italien
-* Italien-driv Rutinens licens-ID
-* Italiensk räkenskaps kod
-* Italienskt mervärdes skatte nummer
+    :::column-end:::
 
-Japan
-* Japanskt bank konto nummer
-* Japansk driv Rutins licens nummer
-* Japanska mina siffror, personliga
-* Japanskt mitt nummer företag
-* Japan, inhemskt registrerings nummer
-* Japanskt boende korts nummer
-* Japan, sociala försäkrings nummer (SIN)
-* Japanskt Passport-nummer
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Lettland
-* Personlig kod för Lettland
+        Enhets licens för Australien  
 
-Litauen
-* Information om Litauen-personliga kod
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Luxemburg
-* Luxemburg National Identification Number (fysiska personer)
-* Luxemburg National Identification Number (icke-fysiska personer)
+        Australien, medicin konto nummer
 
-Malaysia
-* Kort nummer för Malaysia-ID
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Malta
-* Nummer för Malta-identitets kort
-* Nummer på Malta skatte identifikation
+        Australien Passport-nummer
 
-Nederländerna
-* Nederländskt BSN-nummer (Nederländernas unionsmedborgare)
-* Nederländernas skatte identifierings nummer
-* Nederländernas mervärdes skatte nummer
+    :::column-end:::
 
-Nya Zeeland
-* Nya Zeeland bank konto nummer
-* Ny Zeelands driv Rutins licens nummer
-* Nya Zeeland, inre intäkts nummer
-* New Zeelands ministeriet för hälso tillstånd
-* Nya Zeeland, sociala välfärd-nummer
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Norge
-* ID-nummer för Norge
+        Australien Passport-nummer
 
-Filippinerna
-* Filippinerna-enhetligt ID-nummer för flera syften
+    :::column-end:::
 
-Polen
-* Kort för Polen-identitet
-* Polen National ID (PESEL)
-* Polen Passport-nummer
-* Polen REGON-nummer
-* Skatte identifierings nummer för Polen
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Portugal 
-* Kort nummer för Portugal, unionsmedborgare
-* Skatte identifikations nummer för Portugal
+        Australien, skatte fil nummer
 
-Rumänien
-* Rumänien, personlig numerisk kod (CNP)
+    :::column-end:::
 
-Ryssland
-* Ryskt Passport-nummer (inhemskt)
-* Ryskt Passport-nummer (internationellt)
+:::row-end:::
 
-Saudiarabien
-* Nationellt ID för Saudiarabien
 
-Singapore
-* NRIC-nummer (National registration ID Card) i Singapore
+#### <a name="belgium"></a>Belgien
 
-Slovakien 
-* Privat Slovakien-nummer
+:::row:::
+    :::column span="":::
+        **Entitet**
 
-Slovenien
-* Skatte identifierings nummer för Slovenien
-* Slovenien Unique Master medborgarnas nummer
+        Belgien National Number
 
-Sydafrika
-* FN-nummer för Sydafrika
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Sydkorea
-* Sydkorea, inhemskt registrerings nummer
+        Belgiskt mervärdes skatt (moms) nummer
 
-Spanien 
-* Spansk DNI
-* Spaniens person nummer (SSN)
-* Spaniens skatte identifierings nummer
+    :::column-end:::
 
-Sverige
-* National Sverige-ID
-* Sverige Passport-nummer
-* Svensk skatte identifierings nummer
+:::row-end:::
 
-Schweiz
-* Schweiziska socialförsäkrings nummer AHV
 
-Taiwan 
-* Nationella ID för Taiwan
-* Inhemskt Taiwan-certifikat (ARC/TARC)
-* Taiwanesiskt Passport-nummer
+#### <a name="brazil"></a>Brasilien 
 
-Thailand
-* Identifierings kod för Thai-population
+:::row:::
+    :::column span="":::
+        **Entitet**
 
-Turkiet
-* Turkisk National Identification Number
+        Brasilien juridisk enhets nummer (CNPJ)
 
-Ukraina
-* Ukraina Passport-nummer (inhemsk)
-* Ukraina Passport-nummer (internationell)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
 
-Storbritannien
-* engelska Kör korts nummer
-* engelska Nummer för val av rulle
-* engelska NHS-nummer (National Hälsotjänst)
-* engelska Nationellt försäkrings nummer (NINO)
-* engelska Passport-nummer
-* engelska Unikt Taxpayer Reference Number
+        Brasilien CPF-nummer
 
-USA
-* Amerikanskt socialförsäkrings nummer (SSN)
-* Amerikansk kör korts nummer
-* Amerikanskt Passport-nummer
-* Amerikanskt individuellt Taxpayer Identification Number (ITIN)
-* Nummer för USA: s narkotika verk ställande byrå (DIETANOLAMIN)
-* Konto nummer för amerikansk bank
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Brasilien National ID-kort (RG)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="canada"></a>Kanada
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Bank konto nummer för Kanada
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Licens nummer för Kanadas driv rutin
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Hälso tjänst nummer för Kanada
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Canada Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Canada personal Health Identification Number (PHIN)
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kanadas sociala försäkrings nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="chile"></a>Chile 
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Nummer på Chile-identitets kort
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="china"></a>Kina
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        PRC-nummer (Folkrepubliken Kina)
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="european-union-eu"></a>Europeiska unionen (EU)
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        EU betalkort nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Licens nummer för EU-drivrutin
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU: s nationella identifierings nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU: s socialförsäkrings nummer (SSN) eller motsvarande ID
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU: s skatte identifierings nummer (TIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        EU GPS-koordinater
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="france"></a>Frankrike
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Fransk driv rutins licens nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Franskt hälso försäkrings nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Franskt nationellt ID-kort (CNI)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Franskt Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Frankrike, socialförsäkrings nummer (INSEE)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Frankrikes skatte identifierings nummer (Numéro SPI)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Franskt mervärdes skatt (moms) nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="germany"></a>Tyskland
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Tysk kör korts nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Kort nummer för Tyskland-identitet
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Tysklands Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Skatte identifikations nummer för Tyskland
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Mervärdes skatte nummer för Tyskland
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hong-kong"></a>Hongkong
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        HKID-nummer (Hong Kong Identity Card)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="hungary"></a>Ungern
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Ungern personal Identification Number
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Ungern skatte identifierings nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Ungern mervärdes skatte nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="india"></a>Indien
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Permanent konto nummer för Indien (PAN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Aadhaar-nummer (Indien Unique Identification)
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="indonesia"></a>Indonesien
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        KTP-nummer (Indonesien Identity Card)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="ireland"></a>Irland
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Irland personal public service (PPS)-nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="israel"></a>Israel
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Israel National ID
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Israel bank konto nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="italy"></a>Italien
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Italien-driv Rutinens licens-ID
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Italiensk räkenskaps kod
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Italienskt mervärdes skatte nummer
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="japan"></a>Japan
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Japanskt bank konto nummer
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japansk driv Rutins licens nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japan "mina siffror" (personliga)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japan "mitt nummer" (företag)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japan, inhemskt registrerings nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japanskt kort nummer för Japan
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japan, sociala försäkrings nummer (SIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Japanskt Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="luxembourg"></a>Luxemburg
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Luxemburgsk nationella identifierings nummer (fysiska personer)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Luxemburgsk nationella identifierings nummer (icke-fysiska personer)
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="malta"></a>Malta
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Nummer för Malta-identitets kort
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Nummer på Malta skatte identifikation
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="new-zealand"></a>Nya Zeeland
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Nya Zeeland bank konto nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Ny Zeelands driv Rutins licens nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Nya Zeeland, inre intäkts nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        New Zeelands ministeriet för hälso tillstånd
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Nya Zeeland, sociala välfärd-nummer
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="philippines"></a>Filippinerna
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Filippinerna-enhetligt ID-nummer för flera syften
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="portugal"></a>Portugal 
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Kort nummer för Portugal, unionsmedborgare
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Skatte identifikations nummer för Portugal
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="singapore"></a>Singapore
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        NRIC-nummer (National registration ID Card) i Singapore
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-africa"></a>Sydafrika
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        FN-nummer för Sydafrika
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="south-korea"></a>Sydkorea
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Sydkorea, inhemskt registrerings nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="spain"></a>Spanien
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Spansk DNI
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Spaniens person nummer (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Spaniens skatte identifierings nummer
+
+    :::column-end:::
+:::row-end:::
+ 
+#### <a name="switzerland"></a>Schweiz
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Schweiziska socialförsäkrings nummer AHV
+
+    :::column-end:::
+:::row-end:::
+
+
+#### <a name="taiwan"></a>Taiwan 
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Nationella ID för Taiwan
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Inhemskt Taiwan-certifikat (ARC/TARC)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Taiwanesiskt Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+
+#### <a name="united-kingdom"></a>Storbritannien
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        engelska Kör korts nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       engelska Nummer för val av rulle
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       engelska NHS-nummer (National Hälsotjänst)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       engelska Nationellt försäkrings nummer (NINO)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       engelska eller amerikanskt Passport-nummer
+
+    :::column-end:::
+
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       engelska Unikt Taxpayer Reference Number
+
+    :::column-end:::
+
+:::row-end:::
+
+
+#### <a name="united-states"></a>USA
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Amerikanskt socialförsäkrings nummer (SSN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Amerikansk kör korts nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       USA eller Storbritannien Passport-nummer
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Amerikanskt individuellt Taxpayer Identification Number (ITIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Nummer för USA: s narkotika verk ställande byrå (DIETANOLAMIN)
+
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+       Konto nummer för amerikansk bank
+
+    :::column-end:::
+:::row-end:::

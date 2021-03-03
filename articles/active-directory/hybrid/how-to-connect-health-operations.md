@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016974"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686469"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health åtgärder
 I det här avsnittet beskrivs de olika åtgärder som du kan utföra med hjälp av Azure Active Directory (Azure AD) Connect Health.
@@ -46,8 +46,6 @@ Du kan konfigurera Azure AD Connect Health tjänsten att skicka e-postaviseringa
 > När det finns problem med att bearbeta synkroniseringsproblem i vår server dels tjänst skickar den här tjänsten ett e-postmeddelande med information om felet till den administrativa kontaktens e-postadress (er) för din klient. Vi har hört feedback från kunder som i vissa fall är volymen av dessa meddelanden prohibitively stor så vi ändrar hur vi skickar dessa meddelanden. 
 >
 > I stället för att skicka ett meddelande för varje synkroniseringsfel varje gång kommer vi att skicka en daglig sammanfattning av alla fel som backend-tjänsten har returnerat. Detta gör det möjligt för kunderna att bearbeta felen på ett mer effektivt sätt och minska antalet dubbletter av fel meddelanden.
->
-> Vi planerar för att den här ändringen ska implementeras den 15 januari 2020.
 
 ## <a name="delete-a-server-or-service-instance"></a>Ta bort en server eller tjänst instans
 

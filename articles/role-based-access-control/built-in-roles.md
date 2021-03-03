@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/15/2021
+ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1cd86ac2b9500c15bc32445e1866a40ca1c6b409
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577004"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724514"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
@@ -116,7 +116,7 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [Azure Event Hubs data mottagare](#azure-event-hubs-data-receiver) | Tillåter åtkomst till Azure Event Hubs-resurser. | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure Event Hubs data avsändare](#azure-event-hubs-data-sender) | Tillåter skicka åtkomst till Azure Event Hubs-resurser. | 2b629674-e913-4c01-ae53-ef4638d8f975 |
 > | [Data Factory deltagare](#data-factory-contributor) | Skapa och hantera data fabriker, samt underordnade resurser i dem. | 673868aa-7521-48a0-acc6-0f60742d39f5 |
-> | [Data rensning](#data-purger) | Kan rensa analys data | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | [Data rensning](#data-purger) | Ta bort privata data från en Log Analytics-arbetsyta. | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | [HDInsight-kluster operator](#hdinsight-cluster-operator) | Gör att du kan läsa och ändra HDInsight-klusterkonfigurationer. | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight Domain Services-deltagare](#hdinsight-domain-services-contributor) | Kan läsa, skapa, ändra och ta bort åtgärder för domän tjänster som krävs för HDInsight-Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics deltagare kan läsa alla övervaknings data och redigera övervaknings inställningar. Genom att redigera övervaknings inställningarna lägger du till VM-tillägget till virtuella datorer. läsning av lagrings konto nycklar för att kunna konfigurera samling av loggar från Azure Storage. Skapa och konfigurera Automation-konton. lägga till lösningar. och konfigurera Azure Diagnostics på alla Azure-resurser. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
@@ -426,7 +426,7 @@ Gör att du kan hantera användar åtkomst till Azure-resurser. [Läs mer](rbac-
 }
 ```
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Beräkning
 
 
 ### <a name="classic-virtual-machine-contributor"></a>Klassisk virtuell dator deltagare
@@ -3944,6 +3944,10 @@ Låter dig hantera Azure Cosmos DB konton, men inte komma åt data i dem. Förhi
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/regenerateKey/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listKeys/* |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleDefinitions/Write | Skapa eller uppdatera en SQL-roll definition |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleDefinitions/Delete | Ta bort en SQL-roll definition |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleAssignments/Write | Skapa eller uppdatera en SQL-roll tilldelning |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/sqlRoleAssignments/Delete | Ta bort en SQL-roll tilldelning |
 > | **DataActions** |  |
 > | *inget* |  |
 > | **NotDataActions** |  |
@@ -3973,7 +3977,11 @@ Låter dig hantera Azure Cosmos DB konton, men inte komma åt data i dem. Förhi
         "Microsoft.DocumentDB/databaseAccounts/readonlyKeys/*",
         "Microsoft.DocumentDB/databaseAccounts/regenerateKey/*",
         "Microsoft.DocumentDB/databaseAccounts/listKeys/*",
-        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*"
+        "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/delete",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write",
+        "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/delete"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4774,7 +4782,7 @@ Skapa och hantera data fabriker, samt underordnade resurser i dem. [Läs mer](..
 
 ### <a name="data-purger"></a>Data rensning
 
-Kan rensa analys data [Läs mer](../azure-monitor/logs/personal-data-mgmt.md)
+Ta bort privata data från en Log Analytics-arbetsyta. [Läs mer](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |

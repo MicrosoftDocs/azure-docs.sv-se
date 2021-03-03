@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 3f8e23fdeb0a05d2c19f131cf79a079426a9b494
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548789"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726503"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Använda moduler i Azure Automation
 
@@ -89,7 +89,7 @@ Azure Automation stöder den interna `Orchestrator.AssetManagement.Cmdlets` modu
 >[!NOTE]
 >De interna cmdletarna är bara tillgängliga när du kör Runbooks i sandbox-miljön i Azure eller på en Windows Hybrid Runbook Worker. 
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -142,6 +142,7 @@ Om du importerar en AZ-modul till ditt Automation-konto importeras modulen inte 
 
 * När en Runbook anropar en cmdlet från en modul.
 * När en Runbook importerar modulen explicit med cmdleten [import-module](/powershell/module/microsoft.powershell.core/import-module) .
+* När en Runbook importerar modulen uttryckligen med instruktionen [using-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using?view=powershell-7.1#module-syntax) . Using-instruktionen stöds från och med Windows PowerShell 5,0 och stöder import av klasser och Enum-typ.
 * När en Runbook importerar en annan beroende modul.
 
 Du kan importera AZ-modulerna i Azure Portal. Kom ihåg att endast importera de AZ-moduler som du behöver, inte hela AZ. Automation-modulen. Eftersom [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) är ett beroende för de andra AZ-modulerna måste du importera den här modulen innan andra.

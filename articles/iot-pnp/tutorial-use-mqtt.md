@@ -7,18 +7,25 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e56142dfc68767945cd0d08c87f14e19551a156e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741471"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Självstudie – använda MQTT för att utveckla en IoT Plug and Play enhets klient
 
 Du bör använda en av Azure IoT-enhetens SDK: er för att bygga IoT-Plug and Play enhets klienter om det är möjligt. I scenarier som att använda en minnes begränsad enhet kan du dock behöva använda ett MQTT-bibliotek för att kommunicera med IoT-hubben.
 
 Exemplet i den här självstudien använder [Mosquitto](http://mosquitto.org/) MQTT-biblioteket och Visual Studio. Stegen i den här självstudien förutsätter att du använder Windows på din utvecklings dator.
+
+I den här guiden får du lära dig att:
+
+> [!div class="checklist"]
+> * Hämta och bygg Mosquitto-biblioteket för Sol förmörkelse.
+> * Ändra den C-baserade MQTT-exempel koden för att göra enheten till en IoT Plug and Play-enhet.
+> * Identifiera de MQTT-ämnen som en IoT Plug and Play-enhet använder.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

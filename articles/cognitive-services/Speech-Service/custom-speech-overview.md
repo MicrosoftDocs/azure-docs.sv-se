@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388659"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716575"
 ---
 # <a name="what-is-custom-speech"></a>Vad är Custom Speech?
 
@@ -45,7 +45,9 @@ Det här diagrammet visar de delar som utgör [Custom speechs delen av tal Studi
 Du måste ha ett Azure-konto och en röst tjänst prenumeration innan du kan använda [tal Studio](https://speech.microsoft.com/customspeech) för att skapa en anpassad modell. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](overview.md#try-the-speech-service-for-free).
 
 > [!NOTE]
-> Om du planerar att träna en anpassad modell med **ljuddata** väljer du någon av följande regioner som har dedikerad maskin vara tillgänglig för utbildning. Detta minskar den tid det tar att träna en modell.
+> Kom ihåg att skapa en standard prenumeration (S0). Kostnads fria (F0) prenumerationer stöds inte.
+
+Om du planerar att träna en anpassad modell med **ljuddata** väljer du någon av följande regioner som har dedikerad maskin vara tillgänglig för utbildning. Detta minskar den tid det tar att träna en modell och låter dig använda mer ljud för utbildning. I dessa regioner kommer tal tjänsten att använda upp till 20 timmars ljud för utbildning. i andra regioner är det bara att använda upp till åtta timmar.
 
 * Australien, östra
 * Kanada, centrala
@@ -61,9 +63,6 @@ Du måste ha ett Azure-konto och en röst tjänst prenumeration innan du kan anv
 * US Gov, Virginia
 * Europa, västra
 * USA, västra 2
-
-> [!NOTE]
-> Kom ihåg att skapa en standard prenumeration (S0). Kostnads fria (F0) prenumerationer stöds inte.
 
 När du har skapat ett Azure-konto och en röst tjänst prenumeration måste du logga in på [tal Studio](https://speech.microsoft.com/customspeech) och ansluta din prenumeration.
 

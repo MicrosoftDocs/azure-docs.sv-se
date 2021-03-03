@@ -10,17 +10,17 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: deec1dabe405d13d6009311c8b2d68a930e7aa29
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0225c948fddf65b9312c689144ecc567a70aa27e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750382"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
 
-- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Installera [python](https://www.python.org/downloads/)
 - Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste registrera resurs **slut punkten** för den här snabb starten
 - En [åtkomsttoken för användare](../../access-tokens.md). Var noga med att ange omfånget till "chatt" och anteckna token-strängen och userId-strängen.
@@ -42,6 +42,7 @@ import os
 # Add required client library components from quickstart here
 
 try:
+    print('Azure Communication Services - Chat Quickstart')
     # Quickstart code goes here
 except Exception as ex:
     print('Exception:')
@@ -72,7 +73,7 @@ Om du vill skapa en chatt-klient använder du kommunikations tjänstens slut pun
 Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera token för chatt-programmet, men det rekommenderas. Se följande dokumentation för mer information om [Chat-arkitekturen](../../../concepts/chat/concepts.md)
 
 ```console
-pip install azure-communication-identity
+pip install azure-communication-administration
 ```
 
 ```python
@@ -125,11 +126,11 @@ chat_thread_client = chat_client.create_chat_thread(topic, participants, repeata
 ```
 
 ## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
-`get_chat_thread`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. thread_id är det unika ID: t för den befintliga chatt tråden.
+`get_chat_thread_client`Metoden returnerar en tråd klient för en tråd som redan finns. Den kan användas för att utföra åtgärder på den skapade tråden: Lägg till deltagare, skicka meddelande, osv. thread_id är det unika ID: t för den befintliga chatt tråden.
 
 ```python
-thread_id = 'id'
-chat_thread = chat_client.get_chat_thread(thread_id)
+thread_id = chat_thread_client.thread_id
+chat_thread_client = chat_client.get_chat_thread_client(thread_id)
 ```
 
 ## <a name="list-all-chat-threads"></a>Lista alla chatt trådar
@@ -140,14 +141,16 @@ chat_thread = chat_client.get_chat_thread(thread_id)
 
 ```python
 from datetime import datetime, timedelta
+import pytz
 
 start_time = datetime.utcnow() - timedelta(days=2)
 start_time = start_time.replace(tzinfo=pytz.utc)
 chat_thread_infos = chat_client.list_chat_threads(results_per_page=5, start_time=start_time)
 
-for info in chat_thread_infos:
-    # Iterate over all chat threads
-    print("thread id:", info.id)
+for chat_thread_info_page in chat_thread_infos.by_page():
+    for chat_thread_info in chat_thread_info_page:
+        # Iterate over all chat threads
+        print("thread id:", chat_thread_info.id)
 ```
 
 ## <a name="delete-a-chat-thread"></a>Ta bort en chatt-tråd
@@ -156,7 +159,7 @@ for info in chat_thread_infos:
 - Används `thread_id` för att ange thread_id för en befintlig chatt-tråd som måste tas bort
 
 ```python
-thread_id='id'
+thread_id = chat_thread_client.thread_id
 chat_client.delete_chat_thread(thread_id)
 ```
 
@@ -172,6 +175,7 @@ Svaret är ett "ID" av typen `str` , vilket är det unika ID: t för meddelandet
 
 #### <a name="message-type-not-specified"></a>Meddelande typ har inte angetts
 ```python
+chat_thread_client = chat_client.create_chat_thread(topic, participants)
 
 content='hello world'
 sender_display_name='sender name'
@@ -196,12 +200,12 @@ send_message_result_id_w_str = chat_thread_client.send_message(content=content, 
 ## <a name="get-a-specific-chat-message-from-a-chat-thread"></a>Hämta ett enskilt chatt-meddelande från en chatt
 `get_message`Funktionen kan användas för att hämta ett speciellt meddelande som identifieras av en message_id
 
-- Används `message_id` för att ange meddelande-ID
+- Används `message_id` för att ange meddelande-ID.
 
 Svaret av typen `ChatMessage` innehåller all information som är relaterad till det enskilda meddelandet.
 
 ```python
-message_id = 'message_id'
+message_id = send_message_result_id
 chat_message = chat_thread_client.get_message(message_id)
 ```
 
@@ -214,6 +218,10 @@ Du kan hämta chatt meddelanden genom att avsöka `list_messages` metoden vid an
 
 ```python
 chat_messages = chat_thread_client.list_messages(results_per_page=1, start_time=start_time)
+for chat_message_page in chat_messages.by_page():
+    for chat_message in chat_message_page:
+        print('ChatMessage: ', chat_message)
+        print('ChatMessage: ', chat_message.content.message)
 ```
 
 `list_messages` Returnerar den senaste versionen av meddelandet, inklusive eventuella ändringar eller borttagningar som hände i meddelandet med hjälp av `update_message` och `delete_message` . För borttagna meddelanden `ChatMessage.deleted_on` returnerar ett datetime-värde som anger när meddelandet togs bort. För redigerade meddelanden `ChatMessage.edited_on` returnerar en datetime som anger när meddelandet redigerades. Det går att få åtkomst till den ursprungliga tiden för att skapa meddelanden med `ChatMessage.created_on` som kan användas för att ordna meddelandena.
@@ -238,6 +246,8 @@ Du kan uppdatera ämnet i en chatt-tråd med hjälp av `update_topic` metoden
 ```python
 topic = "updated thread topic"
 chat_thread_client.update_topic(topic=topic)
+updated_topic = chat_client.get_chat_thread(chat_thread_client.thread_id).topic
+print('Updated topic: ', updated_topic)
 ```
 
 ## <a name="update-a-message"></a>Uppdatera ett meddelande
@@ -247,18 +257,23 @@ Du kan uppdatera innehållet i ett befintligt meddelande med hjälp av `update_m
 - Använd `content` för att ange det nya innehållet i meddelandet
 
 ```python
-message_id='id'
-content = 'updated content'
-chat_thread_client.update_message(message_id=message_id, content=content)
+content = 'Hello world!'
+send_message_result_id = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name)
+
+content = 'Hello! I am updated content'
+chat_thread_client.update_message(message_id=send_message_result_id, content=content)
+
+chat_message = chat_thread_client.get_message(send_message_result_id)
+print('Updated message content: ', chat_message.content.message)
 ```
 
 ## <a name="send-read-receipt-for-a-message"></a>Skicka Läs kvitto för ett meddelande
 `send_read_receipt`Metoden kan användas för att bokföra en Läs kvitto-händelse till en tråd, å en användares vägnar.
 
-- Används `message_id` för att ange ID: t för det senaste meddelandet som lästs av den aktuella användaren
+- Används `message_id` för att ange ID: t för det senaste meddelandet som lästs av den aktuella användaren.
 
 ```python
-message_id='id'
+message_id=send_message_result_id
 chat_thread_client.send_read_receipt(message_id=message_id)
 ```
 
@@ -271,9 +286,9 @@ chat_thread_client.send_read_receipt(message_id=message_id)
 ```python
 read_receipts = chat_thread_client.list_read_receipts(results_per_page=2, skip=0)
 
-for page in read_receipts.by_page():
-    for item in page:
-        print(item)
+for read_receipt_page in read_receipts.by_page():
+    for read_receipt in read_receipt_page:
+        print('ChatMessageReadReceipt: ', read_receipt)
 ```
 
 ## <a name="send-typing-notification"></a>Skicka meddelande vid inmatning
@@ -289,7 +304,7 @@ chat_thread_client.send_typing_notification()
 - Använd `message_id` för att ange message_id
 
 ```python
-message_id='id'
+message_id=send_message_result_id
 chat_thread_client.delete_message(message_id=message_id)
 ```
 
@@ -341,7 +356,7 @@ Använd `remove_participant` metoden för att ta bort tråd deltagare från den 
 - `user` är den `CommunicationUserIdentifier` som ska tas bort från tråden.
 
 ```python
-chat_thread_client.remove_participant(user)
+chat_thread_client.remove_participant(new_user)
 ```
 
 ## <a name="run-the-code"></a>Kör koden

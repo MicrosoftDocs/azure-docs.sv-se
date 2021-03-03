@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
-ms.openlocfilehash: 089c0739ff091d49734cad048c2bfb10d857617c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623393"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732062"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Samla in IIS-loggar med Log Analytics agent i Azure Monitor
-Internet Information Services (IIS) lagrar användar aktivitet i loggfiler som kan samlas in av Log Analytics-agenten och lagras i [Azure Monitor loggar](../platform/data-platform.md).
+Internet Information Services (IIS) lagrar användar aktivitet i loggfiler som kan samlas in av Log Analytics-agenten och lagras i [Azure Monitor loggar](../data-platform.md).
 
 > [!IMPORTANT]
-> Den här artikeln beskriver hur du samlar in IIS-loggar med [Log Analytics agent](../platform/log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
+> Den här artikeln beskriver hur du samlar in IIS-loggar med [Log Analytics agent](./log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
 
 ![IIS-loggar](media/data-sources-iis-logs/overview.png)
 
@@ -65,7 +65,7 @@ Poster i IIS-loggen har en typ av **W3CIISLog** och har egenskaperna i följande
 ## <a name="log-queries-with-iis-logs"></a>Logga frågor med IIS-loggar
 Följande tabell innehåller olika exempel på logg frågor som hämtar poster i IIS-loggen.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |:--- |:--- |
 | W3CIISLog |Alla logg poster i IIS. |
 | W3CIISLog &#124; där scStatus = = 500 |Alla poster i IIS-loggen med retur status 500. |
@@ -75,4 +75,4 @@ Följande tabell innehåller olika exempel på logg frågor som hämtar poster i
 
 ## <a name="next-steps"></a>Nästa steg
 * Konfigurera Azure Monitor för att samla in andra [data källor](../agents/agent-data-sources.md) för analys.
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

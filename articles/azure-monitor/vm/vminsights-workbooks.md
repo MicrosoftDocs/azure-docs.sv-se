@@ -1,19 +1,19 @@
 ---
-title: Skapa interaktiva rapporter i Azure Monitor for VMs med arbetsböcker
-description: Förenkla komplex rapportering med fördefinierade och anpassade parameterstyrda arbets böcker för Azure Monitor for VMs.
+title: Skapa interaktiva rapporter VM Insights med arbets böcker
+description: Förenkla komplex rapportering med fördefinierade och anpassade parameterstyrda arbets böcker för VM-insikter.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1e2f6c7a6b4a36eb1aa4230f62ee4b0c2a1c57c3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731297"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Skapa interaktiva rapporter i Azure Monitor for VMs med arbetsböcker
+# <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Skapa interaktiva rapporter VM Insights med arbets böcker
 
 Arbets böcker kombinerar text, [logg frågor](/azure/data-explorer/kusto/query/), mått och parametrar till omfattande interaktiva rapporter. Arbetsböcker kan redigeras av andra teammedlemmar som har åtkomst till samma Azure-resurser.
 
@@ -24,9 +24,9 @@ Arbets böcker är användbara för scenarier som:
 * Dela resultatet av ett experiment med att ändra storlek på den virtuella datorn med andra medlemmar i din grupp. Du kan förklara målen för experimentet med text, och sedan Visa alla användnings mått och analys frågor som används för att utvärdera experimentet, tillsammans med tydliga anrop för anrop för om varje mått var över eller under mål.
 * Rapporterar effekten av ett avbrott i användningen av din virtuella dator, kombinera data, text förklaring och en beskrivning av nästa steg för att förhindra avbrott i framtiden.
 
-I följande tabell sammanfattas de arbets böcker som Azure Monitor for VMs innehåller för att komma igång.
+I följande tabell sammanfattas de arbets böcker som ingår i VM-insikter för att komma igång.
 
-| Arbetsbok | Description | Omfång |
+| Arbetsbok | Beskrivning | Omfång |
 |----------|-------------|-------|
 | Prestanda | Innehåller en anpassningsbar version av vår översta N-lista och diagram-vy i en enda arbets bok som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat.| I skala |
 | Prestandaräknare | En översta N-diagramvy över en stor uppsättning prestanda räknare. | I skala |
@@ -96,7 +96,7 @@ Fråge avsnitt är mycket flexibla och kan användas för att besvara frågor so
 
 Du är inte bara begränsad till att fråga från kontexten för den virtuella dator som du startade arbets boken från. Du kan fråga över flera virtuella datorer, samt Log Analytics arbets ytor, så länge du har åtkomst behörighet till dessa resurser.
 
-Ta med data från andra Log Analytics arbets ytor eller från en speciell Application Insights-app med hjälp av **arbetsyte** -ID. Mer information om frågor över flera resurser finns i den [officiella vägledningen](../log-query/cross-workspace-query.md).
+Ta med data från andra Log Analytics arbets ytor eller från en speciell Application Insights-app med hjälp av **arbetsyte** -ID. Mer information om frågor över flera resurser finns i den [officiella vägledningen](../logs/cross-workspace-query.md).
 
 ### <a name="advanced-analytic-query-settings"></a>Avancerade inställningar för analys fråga
 
@@ -137,7 +137,7 @@ VMConnection
 
 ## <a name="adding-metrics-sections"></a>Lägga till måttavsnitt
 
-Mått avsnitt ger dig fullständig åtkomst till att införliva Azure Monitor Mät data i dina interaktiva rapporter. I Azure Monitor for VMs innehåller de färdiga arbets böckerna vanligt vis analytiska frågedata i stället för Mät data.  Du kan välja att skapa arbets böcker med mät data, så att du kan dra full nytta av det bästa av båda funktionerna på ett och samma ställe. Du kan också hämta mått data från resurser i någon av de prenumerationer som du har åtkomst till.
+Mått avsnitt ger dig fullständig åtkomst till att införliva Azure Monitor Mät data i dina interaktiva rapporter. I VM Insights innehåller de färdiga arbets böckerna vanligt vis analytiska frågedata i stället för Mät data.  Du kan välja att skapa arbets böcker med mät data, så att du kan dra full nytta av det bästa av båda funktionerna på ett och samma ställe. Du kan också hämta mått data från resurser i någon av de prenumerationer som du har åtkomst till.
 
 Här är ett exempel på data för virtuella datorer som hämtas till en arbets bok för att tillhandahålla en rutnäts visualisering av processor prestanda:
 
@@ -244,4 +244,4 @@ Fästa en länk till en arbets bok på en Azure-instrumentpanel:
 
 - Information om hur du identifierar begränsningar och övergripande prestanda för virtuella datorer finns i [Visa prestanda](vminsights-performance.md)för virtuella Azure-datorer.
 
-- Information om identifierade program beroenden finns i [visa Azure Monitor for VMS karta](vminsights-maps.md).
+- Information om identifierade program beroenden finns i [Visa översikt över VM-insikter](vminsights-maps.md).

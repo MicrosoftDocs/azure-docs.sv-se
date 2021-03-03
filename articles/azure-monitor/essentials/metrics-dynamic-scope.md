@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 23507a01f3ed0015690d9655fde92a875f89c2da
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: a321361a7624f2b9016d6303df63501fd0d7e7c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095476"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734476"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Visa flera resurser i Azure Metrics Explorer
 
@@ -88,5 +88,5 @@ Om du vill fästa ett diagram med flera resurser på en instrument panel, se [f�
 ## <a name="next-steps"></a>Nästa steg
 
 * [Felsöka mått Utforskaren](../essentials/metrics-troubleshoot.md)
-* [Visa en lista över tillgängliga mått för Azure-tjänster](../platform/metrics-supported.md)
+* [Visa en lista över tillgängliga mått för Azure-tjänster](./metrics-supported.md)
 * [Visa exempel på konfigurerade diagram](../essentials/metric-chart-samples.md)

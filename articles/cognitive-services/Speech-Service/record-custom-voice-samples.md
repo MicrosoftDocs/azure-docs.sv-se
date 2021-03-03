@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722321"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Spela in röst exempel för att skapa en anpassad röst
 
@@ -29,9 +29,9 @@ Många små men viktiga uppgifter är att skapa en professionell röst inspelnin
 > Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. När du förbereder ditt inspelnings skript måste du se till att ta med nedanstående mening. 
 
 > "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
-Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](https://aka.ms/CNV-data-privacy) här.
+Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) här.
 
-> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
+> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [Använd åtkomsten här](https://aka.ms/customneural). 
 
 > [!TIP]
 > Överväg att engagera Microsoft för att hjälpa till att utveckla din anpassade röst för högsta kvalitet. Microsoft har omfattande erfarenhet av att skapa hög kvalitets röster för sina egna produkter, inklusive Cortana och Office.
@@ -112,7 +112,7 @@ Under upphovs rätts lagstiftning kan en aktörs läsning av upphovsrättsskydda
 
 Lyckligt vis är det möjligt att undvika dessa problem helt och hållet. Det finns många text källor som du kan använda utan behörighet eller licens.
 
-|Text källa|Description|
+|Text källa|Beskrivning|
 |-|-|
 |[CMU Arctic-sökkorpus](http://festvox.org/cmu_arctic/)|Om 1100 meningar som valts från frånvaro av upphovs rätts arbete som används i tal syntes projekt. En utmärkt start punkt.|
 |Fungerar inte längre<br>under Copyright|Vanligt vis publicerade Works före 1923. För engelska erbjuder [Project Gutenberg](https://www.gutenberg.org/) tusentals sådana arbeten. Du kanske vill fokusera på nyare arbeten, eftersom språket är närmare för modern engelska.|

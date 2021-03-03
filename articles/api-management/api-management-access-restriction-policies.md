@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 02/09/2021
+ms.date: 02/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367579"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688254"
 ---
 # <a name="api-management-access-restriction-policies"></a>Principer för åtkomstbegränsning i API Management
 
@@ -138,7 +138,7 @@ I följande exempel är antalet per prenumerations frekvens 20 anrop per 90 seku
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Namnet på det API som hastighets begränsningen ska tillämpas för.                                                | Ja      | Ej tillämpligt     |
 | fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
-| förnyelse-period | Den tids period i sekunder efter vilken frekvensen återställs.                                              | Ja      | Ej tillämpligt     |
+| förnyelse-period | Längden i sekunder för det glidande fönstret där antalet tillåtna begär Anden ska överskrida värdet som anges i `calls` .                                              | Ja      | Ej tillämpligt     |
 | nytt försök-efter-rubrik-namn    | Namnet på ett svars huvud vars värde är det rekommenderade intervallet för återförsök i sekunder efter det att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
 | försök igen – efter variabel namn    | Namnet på en princip uttrycks variabel som lagrar det rekommenderade återförsöksintervallet i sekunder efter att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
 | återstående-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde efter varje princip körning är antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
@@ -214,7 +214,7 @@ I följande exempel anges frekvens gränsen på 10 anrop per 60 sekunder av IP-a
 | fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
 | räknare-nyckel         | Den nyckel som ska användas för frekvens begränsnings principen.                                                             | Ja      | Ej tillämpligt     |
 | Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot frekvensen ( `true` ).        | Inga       | Ej tillämpligt     |
-| förnyelse-period      | Den tids period i sekunder efter vilken frekvensen återställs.                                              | Ja      | Ej tillämpligt     |
+| förnyelse-period      | Längden i sekunder för det glidande fönstret där antalet tillåtna begär Anden ska överskrida värdet som anges i `calls` .                                           | Ja      | Ej tillämpligt     |
 | nytt försök-efter-rubrik-namn    | Namnet på ett svars huvud vars värde är det rekommenderade intervallet för återförsök i sekunder efter det att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
 | försök igen – efter variabel namn    | Namnet på en princip uttrycks variabel som lagrar det rekommenderade återförsöksintervallet i sekunder efter att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
 | återstående-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde efter varje princip körning är antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
@@ -317,7 +317,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | kvot     | Rot element.                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Lägg till en eller flera av de här elementen för att införa anrops kvot för API: er i produkten. Kvoten för produkt-och API-anrop tillämpas oberoende av varandra. API: t kan refereras antingen via `name` eller `id` . Om båda attributen anges `id` används och `name` kommer att ignoreras.                    | Inga       |
-| operation | Lägg till en eller flera av de här elementen för att införa anrops kvoter för åtgärder inom ett API. Kvoter för produkt, API och åtgärds samtal tillämpas oberoende av varandra. Åtgärden kan refereras antingen via `name` eller `id` . Om båda attributen anges `id` används och `name` kommer att ignoreras. | Inga       |
+| operation | Lägg till en eller flera av de här elementen för att införa anrops kvoter för åtgärder inom ett API. Kvoter för produkt, API och åtgärds samtal tillämpas oberoende av varandra. Åtgärden kan refereras antingen via `name` eller `id` . Om båda attributen anges `id` används och `name` kommer att ignoreras. | Inga      |
 
 ### <a name="attributes"></a>Attribut
 
@@ -326,7 +326,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 | name           | Namnet på det API eller den åtgärd som kvoten gäller.                                             | Ja                                                              | Ej tillämpligt     |
 | bredd      | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
 | fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
-| förnyelse-period | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Ej tillämpligt     |
+| förnyelse-period | Tids perioden i sekunder efter vilken kvoten återställs. När den har ställts in för `0` perioden är oändlig. | Ja                                                              | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 
@@ -390,7 +390,7 @@ I följande exempel anges kvoten av IP-adressen för anroparen.
 | fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
 | räknare-nyckel         | Den nyckel som ska användas för kvot principen.                                                                      | Ja                                                              | Ej tillämpligt     |
 | Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot kvoten ( `true` )             | Inga                                                               | Ej tillämpligt     |
-| förnyelse-period      | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Ej tillämpligt     |
+| förnyelse-period      | Tids perioden i sekunder efter vilken kvoten återställs. När den har ställts in för `0` perioden är oändlig.                                                   | Ja                                                              | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 400f239f3e7b736196bf950e81148fa2e39aca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca19fdfa617b71b1465e4710d8ca52b18c9ebff5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621370"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731688"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-baserade mått
 
@@ -21,13 +21,13 @@ Med Application Insights loggbaserade mått kan du analysera hälso tillståndet
 * [Loggbaserade mått](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) bakom scenen översätts till Kusto- [frågor](/azure/kusto/query/) från lagrade händelser.
 * [Standard mått](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) lagras som församlade tids serier.
 
-Eftersom *standard mått* är församlade under samlingen har de bättre prestanda vid tidpunkten för frågan. Detta gör dem till ett bättre alternativ för instrument paneler och i real tids aviseringar. De *loggbaserade måtten* har fler dimensioner, vilket gör dem till det överordnade alternativet för data analys och ad hoc-diagnostik. Använd [namn områdes väljaren](../platform/metrics-getting-started.md#create-your-first-metric-chart) för att växla mellan log-baserade och standard mått i [Metrics Explorer](../platform/metrics-getting-started.md).
+Eftersom *standard mått* är församlade under samlingen har de bättre prestanda vid tidpunkten för frågan. Detta gör dem till ett bättre alternativ för instrument paneler och i real tids aviseringar. De *loggbaserade måtten* har fler dimensioner, vilket gör dem till det överordnade alternativet för data analys och ad hoc-diagnostik. Använd [namn områdes väljaren](./metrics-getting-started.md#create-your-first-metric-chart) för att växla mellan log-baserade och standard mått i [Metrics Explorer](./metrics-getting-started.md).
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>Tolka och använda frågor från den här artikeln
 
 Den här artikeln innehåller mått med agg regeringar och dimensioner som stöds. Informationen om loggbaserade mått inkluderar de underliggande Kusto-frågeuttryck. För enkelhetens skull använder varje fråga standardvärden för tids kornig het, diagram typ och delar ibland upp dimension som fören klar användningen av frågan i Log Analytics utan att behöva ändra.
 
-När du ritar samma mått i [Metrics Explorer](../platform/metrics-getting-started.md)finns det inga standardvärden – frågan justeras dynamiskt baserat på diagrammets inställningar:
+När du ritar samma mått i [Metrics Explorer](./metrics-getting-started.md)finns det inga standardvärden – frågan justeras dynamiskt baserat på diagrammets inställningar:
 
 - Det valda **tidsintervallet** översätts till en ytterligare *WHERE-timestamp...* -sats för att endast välja händelser från det valda tidsintervallet. Till exempel, ett diagram som visar data för de senaste 24 timmarna, inkluderar frågan *| där tidsstämpeln > sedan (24 h)*.
 
@@ -38,7 +38,7 @@ När du ritar samma mått i [Metrics Explorer](../platform/metrics-getting-start
 - Den markerade dimensionen för **delad diagram** översätts till en extra sammanfattnings egenskap. Om du till exempel delar diagrammet efter *plats* och ritar med en tids kornig het på 5 minuter sammanfattas *sammanfattnings* satsen *... per Bing (tidsstämpel, 5 m), plats*.
 
 > [!NOTE]
-> Om du är nybörjare på Kusto-frågespråket börjar du med att kopiera och klistra in Kusto-uttryck i rutan Log Analytics fråga utan att göra några ändringar. Klicka på **Kör** för att visa det grundläggande diagrammet. När du börjar förstå syntaxen för frågespråket kan du börja göra små ändringar och se hur ändringen påverkar. Att utforska dina egna data är ett bra sätt att börja realisera den fulla kraften hos [Log Analytics](../log-query/log-analytics-tutorial.md) och [Azure Monitor](../overview.md).
+> Om du är nybörjare på Kusto-frågespråket börjar du med att kopiera och klistra in Kusto-uttryck i rutan Log Analytics fråga utan att göra några ändringar. Klicka på **Kör** för att visa det grundläggande diagrammet. När du börjar förstå syntaxen för frågespråket kan du börja göra små ändringar och se hur ändringen påverkar. Att utforska dina egna data är ett bra sätt att börja realisera den fulla kraften hos [Log Analytics](../logs/log-analytics-tutorial.md) och [Azure Monitor](../overview.md).
 
 ## <a name="availability-metrics"></a>Tillgänglighets mått
 

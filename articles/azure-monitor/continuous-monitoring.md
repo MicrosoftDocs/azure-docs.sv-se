@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ca6185d829e5941145905e1bc63cc2fb9ac781e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731654"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuerlig övervakning med Azure Monitor
 
@@ -36,7 +36,7 @@ För att få till gång till hela din miljö måste du aktivera övervakning av 
 Program är bara tillförlitliga som den underliggande infrastrukturen. Om du har aktiverat övervakning i hela infrastrukturen kan du få fullständig information och göra det enklare att identifiera en potentiell rotorsak när något Miss lyckas. Azure Monitor hjälper dig att spåra hälso tillståndet och prestandan hos hela hybrid infrastrukturen, inklusive resurser som virtuella datorer, behållare, lagring och nätverk.
 
 - Du får automatiskt [plattforms statistik, aktivitets loggar och](agents/data-sources.md) diagnostikloggar från de flesta Azure-resurser utan konfiguration.
-- Aktivera djupare övervakning för virtuella datorer med [Azure Monitor for VMS](vm/vminsights-overview.md).
+- Aktivera djupare övervakning för virtuella datorer med [VM-insikter](vm/vminsights-overview.md).
 -  Aktivera djupare övervakning av AKS-kluster med [Azure Monitor för behållare](containers/container-insights-overview.md).
 - Lägg till [övervaknings lösningar](./monitor-reference.md) för olika program och tjänster i din miljö.
 

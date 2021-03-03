@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "96780220"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695778"
 ---
 # <a name="supported-data-stores"></a>Datalager som stöds
 
@@ -27,11 +27,15 @@ Avdelningens kontroll har stöd för följande data lager. Klicka på varje data
 ||[Azure-datautforskaren](register-scan-azure-data-explorer.md)|Ja| Ja| Ja| Ja| Ja| Ja|
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|Ja| Ja| Ja| Ja| Ja| Ja|
 ||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|Ja| Ja| Ja| Ja| Ja| Ja|
-||[Azure SQL Database](register-scan-azure-sql-database.md)|Ja| Ja| Nej| Ja| Ja| Ja|
-||[Hanterad Azure SQL Database-instans](register-scan-azure-sql-database-managed-instance.md)|Ja| Ja| Nej| Ja| Ja| Ja|
-||[Azure Synapse Analytics (tidigare SQL DW)](register-scan-azure-synapse-analytics.md)|Ja| Ja| Nej| Ja| Ja| Ja|
-|Databas|[SQL Server](register-scan-on-premises-sql-server.md)|Ja| Ja| Nej| Ja| Ja| Ja|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ja| Ja| Nej| Nej| Nej| Ja|
+||[Azure SQL Database](register-scan-azure-sql-database.md)|Ja| Ja| Inga| Ja| Ja| Ja|
+||[Azure SQL Database Hanterad instans](register-scan-azure-sql-database-managed-instance.md)|Ja| Ja| Inga| Ja| Ja| Ja|
+||[Azure Synapse Analytics (tidigare SQL DW)](register-scan-azure-synapse-analytics.md)|Ja| Ja| Inga| Ja| Ja| Ja|
+|Databas|[Oracle DB](register-scan-oracle-source.md)|Ja| Ja| Inga| Inga| Inga| Ja|
+||[SQL Server](register-scan-on-premises-sql-server.md)|Ja| Ja| Inga| Ja| Ja| Ja|
+||[Teradata](register-scan-teradata-source.md)|Ja| Ja| Inga| Inga| Inga| Ja|
+|Power BI|[Power BI](register-scan-power-bi-tenant.md)|Ja| Ja| Inga| Inga| Inga| Ja|
+|Tjänster och appar|[SAP ECC](register-scan-sapecc-source.md)|Ja| Ja| Inga| Ja| Ja| Ja|
+||[SAP-S4HANA](register-scan-saps4hana-source.md)|Ja| Ja| Inga| Ja| Ja| Ja|
 
 ## <a name="next-steps"></a>Nästa steg
 

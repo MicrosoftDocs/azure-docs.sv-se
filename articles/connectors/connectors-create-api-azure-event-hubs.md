@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88031424"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716609"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Övervaka, ta emot och skicka händelser med Azure Event Hub och Azure Logic Apps
 
@@ -37,20 +37,20 @@ För att se till att din Logi Kap par kan komma åt din Händelsehubben, kontrol
 
 1. Gå till din Event Hubs- *namnrymd*, inte en speciell händelsehubben. 
 
-1. Välj **principer för delad åtkomst**på namn områdes menyn under **Inställningar**. Under **anspråk**kontrollerar du att du har behörighet att **Hantera** för det namn området.
+1. Välj **principer för delad åtkomst** på namn områdes menyn under **Inställningar**. Under **anspråk** kontrollerar du att du har behörighet att **Hantera** för det namn området.
 
    ![Hantera behörigheter för ditt Event Hub-namnområde](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
 1. Om du senare vill ange din anslutnings information manuellt hämtar du anslutnings strängen för Event Hubs namn området.
 
-   1. Under **princip**väljer du **RootManageSharedAccessKey**.
+   1. Under **princip** väljer du **RootManageSharedAccessKey**.
 
    1. Hitta anslutnings strängen för primär nyckeln. Välj kopierings knappen och spara anslutnings strängen för senare användning.
 
       ![Kopiera Event Hubs namn områdets anslutnings sträng](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Kontrol lera att anslutnings strängen inte har parametern om du vill bekräfta att anslutnings strängen är kopplad till Event Hubs namn området eller med en speciell händelsehubben `EntityPath`   . Om du hittar den här parametern är anslutnings strängen för en speciell Händelsehubben "entity" och är inte rätt sträng som ska användas med din Logic app.
+      > Kontrol lera att anslutnings strängen inte har parametern om du vill bekräfta att anslutnings strängen är kopplad till Event Hubs namn området eller med en speciell händelsehubben `EntityPath` . Om du hittar den här parametern är anslutnings strängen för en speciell Händelsehubben "entity" och är inte rätt sträng som ska användas med din Logic app.
 
 1. Fortsätt nu med att [lägga till en Event Hubs utlösare](#add-trigger) eller [lägg till en Event Hubs-åtgärd](#add-action).
 
@@ -98,7 +98,7 @@ Det här exemplet visar hur du kan starta ett Logic app-arbetsflöde när nya h�
    | **Start tid** | Inga | Ange en start tid i följande format: <p>ÅÅÅÅ-MM-DDThh: mm: SS om du väljer en tidszon<p>\- eller -<p>ÅÅÅÅ-MM-DDThh: mm: ssZ om du inte väljer en tidszon<p>Mer information finns i [skapa och köra återkommande aktiviteter och arbets flöden med Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
    ||||
 
-1. När du är klar väljer du **Spara**i verktygsfältet designer.
+1. När du är klar väljer du **Spara** i verktygsfältet designer.
 
 1. Fortsätt nu att lägga till en eller flera åtgärder i din Logic app för de uppgifter som du vill utföra med utlösnings resultaten. 
 
@@ -140,7 +140,7 @@ Välj den här åtgärden i listan åtgärder: **skicka händelse-Event Hubs**
 
    ![Exempel på sändnings händelse](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
 
-1. När du är klar väljer du **Spara**i verktygsfältet designer.
+1. När du är klar väljer du **Spara** i verktygsfältet designer.
 
 <a name="create-connection"></a>
 

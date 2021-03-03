@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721743"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Arbetsflöden i ExpressRoute för kretsetablering och kretstillstånd
 
@@ -77,8 +77,12 @@ Konfigurera routningsdomäner. Om din anslutnings leverantör hanterar Layer 3-k
 
 Aktivera privat peering för att ansluta till virtuella datorer och moln tjänster som distribueras i det virtuella Azure-nätverket.
 
-* Peering-undernät för sökväg 1 (/30)
-* Peering-undernät för sökväg 2 (/30)
+* IPv4-undernät:
+    * Peering-undernät för sökväg 1 (/30)
+    * Peering-undernät för sökväg 2 (/30)
+* IPv6-undernät (valfritt):
+    * Peering-undernät för sökväg 1 (/126)
+    * Peering-undernät för sökväg 2 (/126)
 * VLAN-ID för peering
 * ASN för peering
 * ExpressRoute ASN = 12076
@@ -88,8 +92,12 @@ Aktivera privat peering för att ansluta till virtuella datorer och moln tjänst
 
 Aktivera detta för att få åtkomst till Microsoft onlinetjänster, till exempel Microsoft 365. Dessutom är alla Azure PaaS-tjänster tillgängliga via Microsoft-peering. Du måste se till att du använder en separat proxy/Edge för att ansluta till Microsoft än den som du använder för Internet. Att använda samma gräns för både ExpressRoute och Internet kommer att orsaka asymmetrisk Routning och orsaka anslutnings avbrott för nätverket.
 
-* Peering-undernät för sökväg 1 (/30) – måste vara offentlig IP
-* Peering-undernät för sökväg 2 (/30) – måste vara offentlig IP
+* IPv4-undernät:
+    * Peering-undernät för sökväg 1 (/30) – måste vara offentlig IP
+    * Peering-undernät för sökväg 2 (/30) – måste vara offentlig IP
+* IPv6-undernät (valfritt):
+    * Peering-undernät för sökväg 1 (/126) – måste vara offentlig IP
+    * Peering-undernät för sökväg 2 (/126) – måste vara offentlig IP
 * VLAN-ID för peering
 * ASN för peering
 * Annonserade prefix – måste vara offentliga IP-prefix

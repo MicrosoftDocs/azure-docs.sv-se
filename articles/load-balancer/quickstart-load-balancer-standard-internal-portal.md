@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715470"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
 
 Kom igång med Azure Load Balancer genom att använda Azure Portal för att skapa en intern belastningsutjämnare och tre virtuella datorer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -68,7 +68,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
     | Resursgrupp   | Välj **CreateIntLBQS-RG** |
     | **Instansinformation** |                                                                 |
     | Name             | Ange **myVNet**                                    |
-    | Region           | Välj **Europa, västra** |
+    | Region           | Välj **(Europa) Västeuropa** |
 
 3. Välj fliken **IP-adresser** eller Välj **Nästa: knappen Nästa: IP-adress** längst ned på sidan.
 
@@ -106,16 +106,17 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 ## <a name="create-load-balancer"></a>Skapa en lastbalanserare
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs**  >  **nätverk**  >  **Load Balancer**.
-
-2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
+1. Välj **Skapa en resurs**. 
+2. I rutan Sök anger du **Load Balancer**. Välj **Load Balancer** i Sök resultaten.
+3. På sidan **belastnings utjämning** väljer du **skapa**.
+4. På sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
-    | Name                   | Ange **myLoadBalancer**                                   |
-    | Region         | Välj **Europa, västra**.                                        |
+    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Region         | Välj **(Europa) Västeuropa**.                                        |
     | Typ          | Välj **Intern**.                                        |
     | SKU           | Välj **standard** |
     | Virtuellt nätverk | Välj **myVNet** som skapades i föregående steg. |
@@ -228,7 +229,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
     | Resursgrupp | Välj **CreateIntLBQS-RG** |
     | **Instansinformation** |  |
     | Namn på virtuell dator | Ange **myVM1** |
-    | Region | Välj **Europa, västra** |
+    | Region | Välj **(Europa) Västeuropa** |
     | Tillgänglighets alternativ | Välj **tillgänglighets zoner** |
     | Tillgänglighetszon | Välj **1** |
     | Bild | Välj **Windows Server 2019 Data Center** |
@@ -266,7 +267,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Name |  **myVM2** | **myVM3** |
+    | Namn |  **myVM2** | **myVM3** |
     | Tillgänglighetszon | **2** | **3** |
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**| Välj den befintliga **myNSG** |
 
@@ -303,7 +304,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
     | Resursgrupp   | Välj **CreateIntLBQS-RG** |
     | **Instansinformation** |                                                                 |
     | Name             | Ange **myVNet**                                    |
-    | Region           | Välj **Europa, västra** |
+    | Region           | Välj **(Europa) Västeuropa** |
 
 3. Välj fliken **IP-adresser** eller Välj **Nästa: knappen Nästa: IP-adress** längst ned på sidan.
 
@@ -349,8 +350,8 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
-    | Name                   | Ange **myLoadBalancer**                                   |
-    | Region         | Välj **Europa, västra**.                                        |
+    | Namn                   | Ange **myLoadBalancer**                                   |
+    | Region         | Välj **(Europa) Västeuropa**.                                        |
     | Typ          | Välj **Intern**.                                        |
     | SKU           | Välj **grundläggande** |
     | Virtuellt nätverk | Välj **myVNet** som skapades i föregående steg. |
@@ -506,7 +507,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
     | Inställning | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Name |  **myVM2** | **myVM3** |
+    | Namn |  **myVM2** | **myVM3** |
     | Tillgänglighetsuppsättning | Välj **myAvailabilitySet** | Välj **myAvailabilitySet** |
     | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG** | Välj den befintliga **myNSG** |
 

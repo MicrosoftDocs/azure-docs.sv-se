@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Amazon Web Services (AWS)
 
@@ -26,12 +26,29 @@ I den här självstudien får du lära dig hur du integrerar Amazon Web Services
 * Gör det möjligt för användarna att logga in automatiskt till Amazon Web Services (AWS) med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-> [!Note]
-> Azure AD stöder inte integrering med enkel inloggning med AWS SSO, men det är en annan produkt än AWS. Även om AWS nämner sig [här](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)rekommenderar Azure AD att kunderna använder AWS IAM-integrering i stället så att du kan uppnå bättre säkerhets kontroller med principer för villkorlig åtkomst för enskilda konton och även göra bättre styrning av dessa program.
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Förstå de olika AWS-programmen i Azure AD-programgalleriet
+Använd informationen nedan för att fatta ett beslut mellan att använda AWS-Sign-On och AWS-Single-Account åtkomst program i Azure AD-programgalleriet.
 
+**AWS enkel inloggning**
+
+[AWS för enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) lades till i Azure AD-programgalleriet i februari 2021. Det gör det enkelt att hantera åtkomst centralt till flera AWS-konton och AWS-program, med inloggning via Microsoft Azure AD. Federera Microsoft Azure AD med AWS SSO en gång och Använd AWS SSO för att hantera behörigheter för alla dina AWS-konton från en och samma plats. AWS SSO etablerar behörigheter automatiskt och behåller dem aktuella när du uppdaterar principer och åtkomst tilldelningar. Slutanvändare kan autentisera med sina autentiseringsuppgifter för Azure AD för att få åtkomst till AWS-konsolen, kommando rads gränssnittet och AWS SSO-integrerade program.
+
+**AWS Single-Account åtkomst**
+
+[AWS Single-Account åtkomst](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) har använts av kunder under de senaste åren och gör det möjligt att federera Azure AD till ett enda AWS-konto och använda Azure AD för att hantera åtkomst till AWS IAM-roller. AWS IAM-administratörer definierar roller och principer i varje AWS-konto. För varje AWS-konto federerar Azure AD-administratörerna till AWS IAM, tilldelar användare eller grupper till kontot och konfigurerar Azure AD för att skicka kontroller som godkänner roll åtkomst.  
+
+| Funktion | AWS enkla Sign-On | AWS Single-Account åtkomst |
+|:--- |:---:|:---:|
+|Villkorlig åtkomst| Har stöd för en enda princip för villkorlig åtkomst för alla AWS-konton. | Har stöd för en enda princip för villkorlig åtkomst för alla konton eller anpassade principer per konto|
+| CLI-åtkomst | Stöds | Stöds|
+| Privileged Identity Management | Stöds inte ännu | Stöds inte ännu |
+| Centralisera konto hantering | Centralisera konto hanteringen i AWS. | Centralisera konto hantering i Azure AD (kräver förmodligen ett Azure AD Enterprise-program per konto). |
+| SAML-certifikat| Enskilt certifikat| Separata certifikat per app/konto | 
+
+## <a name="aws-single-account-access-architecture"></a>AWS Single-Account åtkomst arkitektur
 ![Diagram över Azure AD-och AWS-relationer](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Du kan konfigurera flera identifierare för flera instanser. Ett exempel:
+Du kan konfigurera flera identifierare för flera instanser. Exempel:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -50,7 +67,7 @@ Vi rekommenderar den här metoden av följande orsaker:
 > [!Note]
 > Se till att du endast använder ett galleri program.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -113,7 +130,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig AWS-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Name  | Källattribut  | Namnområde |
+    | Namn  | Källattribut  | Namnområde |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
     | Roll | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -147,7 +164,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

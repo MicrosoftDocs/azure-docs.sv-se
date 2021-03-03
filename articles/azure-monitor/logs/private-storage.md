@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723069"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Använda kundhanterade lagringskonton i Azure Monitor-logganalys
 
@@ -51,6 +51,7 @@ För att lagrings kontot ska kunna ansluta till din privata länk måste det:
 * Tillåt Azure Monitor åtkomst till lagrings kontot. Om du väljer att endast tillåta Välj nätverk att komma åt ditt lagrings konto bör du välja undantaget: "Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot".
 ![Avbildning av lagrings konto förtroende MS Services](./media/private-storage/storage-trust.png)
 * Om din arbets yta även hanterar trafik från andra nätverk bör du konfigurera lagrings kontot så att inkommande trafik kommer från relevanta nätverk/Internet.
+* Koordinera TLS-versionen mellan agenterna och lagrings kontot – vi rekommenderar att du skickar data till Log Analytics med TLS 1,2 eller högre. Granska [plattformsspecifik vägledning](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12)och [Konfigurera dina agenter att använda TLS 1,2 om det](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12)behövs. Om det av någon anledning inte är möjligt konfigurerar du lagrings kontot så att det accepterar TLS 1,0.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>Använda ett kundhanterat lagrings konto för CMK data kryptering
 Azure Storage krypterar alla data i vila i ett lagrings konto. Som standard använder den Microsoft-hanterade nycklar (MMK) för att kryptera data. Azure Storage kan dock också använda CMK från Azure Key Vault för att kryptera dina lagrings data. Du kan antingen importera egna nycklar till Azure Key Vault, eller så kan du använda Azure Key Vault-API: er för att generera nycklar.

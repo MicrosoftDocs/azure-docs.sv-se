@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: 62bdafd2dba31d875b0befccca0fb4a0e94f4e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582822"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691254"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent datakryptering i Azure SQL med kundhanterad nyckel
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,7 +187,7 @@ Ytterligare överväganden för loggfiler: säkerhetskopierade loggfiler förbli
 
 Även om det inte finns någon konfigurerad GEO-redundans för Server, rekommenderar vi starkt att du konfigurerar servern att använda två olika nyckel valv i två olika regioner med samma nyckel material. Nyckeln i det sekundära nyckel valvet i den andra regionen ska inte markeras som TDE-skydd och det är inte ens tillåtet. Om det uppstår ett avbrott som påverkar primär nyckel valvet kommer systemet automatiskt att växla till den andra länkade nyckeln med samma tumavtryck i det sekundära nyckel valvet, om det finns. Observera att växeln inte sker om TDE-skyddskomponenten inte kan nås på grund av återkallade åtkomst rättigheter, eller att nyckel-eller nyckel valvet har tagits bort, eftersom det kan indikera att kunden avsiktligt ville begränsa servern från att komma åt nyckeln. Att tillhandahålla samma nyckel material till två nyckel valv i olika regioner kan göras genom att skapa nyckeln utanför nyckel valvet och importera dem till båda nyckel valven. 
 
-Du kan också åstadkomma detta genom att generera nyckeln med hjälp av primär nyckel valvet som finns i samma region som servern och klona nyckeln till ett nyckel valv i en annan Azure-region. Använd cmdleten [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) för att hämta nyckeln i krypterat format från primär nyckel valvet och sedan använda cmdleten [restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) och ange ett nyckel valv i den andra regionen för att klona nyckeln. Du kan också använda Azure Portal för att säkerhetskopiera och återställa nyckeln. Nyckel säkerhets kopiering/återställning tillåts bara mellan nyckel valv i samma Azure-prenumeration och [Azure geografi](https://azure.microsoft.com/global-infrastructure/geographies/).  
+Du kan också åstadkomma detta genom att generera nyckeln med hjälp av primär nyckel valvet som finns i samma region som servern och klona nyckeln till ett nyckel valv i en annan Azure-region. Använd cmdleten [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) för att hämta nyckeln i krypterat format från primär nyckel valvet och sedan använda cmdleten [restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) och ange ett nyckel valv i den andra regionen för att klona nyckeln. Du kan också använda Azure Portal för att säkerhetskopiera och återställa nyckeln. Nyckel säkerhets kopiering/återställning tillåts bara mellan nyckel valv i samma Azure-prenumeration och [Azure geografi](https://azure.microsoft.com/global-infrastructure/geographies/).  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

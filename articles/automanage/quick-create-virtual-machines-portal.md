@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 6e0e582ed37230ba3f379f193a229cfec06f066c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648041"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686998"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Snabb start: Aktivera Azure automanage för virtuella datorer i Azure Portal
 
@@ -43,11 +43,11 @@ Logga in på [Azure-portalen](https://aka.ms/AutomanagePortal-Ignite21).
 
 3. Välj **Kom igång**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-GetStarted.png" alt-text="Kom igång med en enda virtuell dator.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="Kom igång med en enda virtuell dator.":::
 
 4. Välj inställningar för autohantering (miljö, inställningar, autohantera konto) och tryck på **Aktivera**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMManage-Enable.png" alt-text="Aktivera på en enskild virtuell dator.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="Aktivera på en enskild virtuell dator.":::
 
 ## <a name="enable-automanage-for-multiple-vms"></a>Aktivera autohantering för flera virtuella datorer
 
@@ -64,42 +64,39 @@ Logga in på [Azure-portalen](https://aka.ms/AutomanagePortal-Ignite21).
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Välj befintlig virtuell dator i listan över tillgängliga virtuella datorer.":::
 
-4. Under **konfigurations profil** klickar du på **Bläddra och ändrar profiler och inställningar**.
+4. Under **miljö** väljer du din miljö typ: **utveckling/testning** eller **produktion**. 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Bläddra och ändra profiler och inställningar.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Välj miljöer.":::
 
-5. På bladet **Välj konfigurations profil + inställningar** :
-    1. Välj en profil till vänster: *utveckling/testning* för testning, *Prod* för produktion.
-    1. Klicka på knappen **Välj** .
+   Klicka på **Jämför miljö information** för att se skillnaderna mellan miljöerna.
+    1. Välj en miljö i list rutan: *utveckling/testning* för testning, *produktion* för produktion.
+    1. Klicka på **OK**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Bläddra i produktions konfigurations profil.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Bläddra i produktions miljö.":::
+
+5. Som standard väljs inställningen **Azure Best Practices** för konfigurations inställningarna. Om du vill ändra detta skapar du en ny inställning eller väljer en befintlig. 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Skapa preferens.":::
 
 6. Klicka på knappen **Aktivera**.
 
 
 ## <a name="enable-automanage-for-a-new-vm"></a>Aktivera automanage för en ny virtuell dator
 
-Logga in på Azure Portal [här](https://aka.ms/AutomanagePortal-Ignite21) om du vill skapa en ny virtuell dator och aktivera automanage.
+Logga in på Azure Portal [här](https://aka.ms/AzureAutomanagePreview) om du vill skapa en ny virtuell dator och aktivera automanage.
 
-1. Välj **Skapa en resurs** längst upp till vänster i Azure-portalen.
-
-2. Sök efter och välj den avbildning som du vill använda i sökrutan ovanför Azure Marketplace-resurser och välj sedan **skapa**.
+1. Fyll i fliken **grundläggande** med din VM-information.
 
 > [!NOTE]
-> Kontrol lera den automatiska hantering av [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions) och [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions)som stöds.
+> Kontrol lera de [regioner som stöds](automanage-virtual-machines#supported-regions) för att hantera och hantera [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions) och [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions)som stöds.
 
-3. Fyll i fliken **grundläggande** med din VM-information.
+2. Bläddra till fliken **hantering** och välj den **automatiska hanterings miljön**.
 
-> [!NOTE]
-> Kontrol lera de [regioner som stöds](automanage-virtual-machines#supported-regions)i den automatiska hanteringen.
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="Aktivera fliken Hantera på hantering.":::
 
-4. Bläddra till fliken **hantering** och välj den **automatiska hanterings miljön**.
+3. Låt de återstående standardinställningarna vara och välj sedan knappen **Granska + skapa** längst ned på sidan.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\VMCreate-Management-Tab.png" alt-text="Aktivera fliken Hantera på hantering.":::
-
-5. Låt de återstående standardinställningarna vara och välj sedan knappen **Granska + skapa** längst ned på sidan.
-
-6. När du ser meddelandet att valideringen har slutförts väljer du **skapa**.
+4. När du ser meddelandet att valideringen har slutförts väljer du **skapa**.
 
 ## <a name="disable-automanage-for-vms"></a>Inaktivera autohantering för virtuella datorer
 
@@ -131,4 +128,4 @@ I den här snabb starten aktiverade du Azure automanage för virtuella datorer.
 Upptäck hur du kan skapa och använda anpassade inställningar när du aktiverar automatisk hantering på den virtuella datorn.
 
 > [!div class="nextstepaction"]
-> [Automatisk Azure-hantering för virtuella datorer – anpassad konfigurations profil](virtual-machines-custom-preferences.md)
+> [Automatisk Azure-hantering för virtuella datorer – anpassade konfigurations inställningar](virtual-machines-custom-preferences.md)

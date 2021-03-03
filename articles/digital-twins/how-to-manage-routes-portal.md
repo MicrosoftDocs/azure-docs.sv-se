@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715725"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (portal)
 
@@ -76,7 +76,7 @@ När du har skapat slut punkts resurserna kan du använda dem för en Azure digi
 1. Slutför skapandet av slut punkten genom att välja _Spara_.
 
 >[!IMPORTANT]
-> För att kunna använda Identity-baserad autentisering för din slut punkt måste du skapa en hanterad identitet för din instans genom att följa stegen i [*instruktion: Aktivera en hanterad identitet för routning av händelser (för hands version)*](how-to-enable-managed-identities.md).
+> För att kunna använda Identity-baserad autentisering för din slut punkt måste du skapa en hanterad identitet för din instans genom att följa stegen i [*instruktion: Aktivera en hanterad identitet för routning av händelser (för hands version)*](./how-to-enable-managed-identities-portal.md).
 
 När du har skapat slut punkten kan du kontrol lera att slut punkten har skapats genom att kontrol lera meddelande ikonen i det översta Azure Portals fältet: 
 

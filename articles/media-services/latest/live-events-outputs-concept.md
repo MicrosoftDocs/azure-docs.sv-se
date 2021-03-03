@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fac823cc43ed4606db3e7f86bc5c1e36ee50fadb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955961"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730311"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-händelser och Live-utdata i Media Services
 
@@ -53,7 +53,7 @@ Du kan skicka bidragsflödet med upplösningar på upp till 4K och i en bildfrek
 > Att använda en direkt metod är det mest ekonomiska sättet att göra Direktsänd strömning när du utför flera händelser under en lång tids period och du redan har investerat i lokala kodare. Se [pris](https://azure.microsoft.com/pricing/details/media-services/) information.
 >
 
-Se ett .NET-kod exempel i [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
+Se exempel på .NET-kod för att skapa en direkt sändnings händelse i [Live event med DVR](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/4a436376e77bad57d6cbfdc02d7df6c615334574/Live/LiveEventWithDVR/Program.cs#L214).
 
 ### <a name="live-encoding"></a>Live Encoding  
 
@@ -154,7 +154,7 @@ Du kan antingen använda icke-anpassade eller anpassade URL:er.
 ### <a name="live-ingest-url-naming-rules"></a>Namn regler för Live-inmatnings-URL
 
 * Den *slumpmässiga* strängen nedan är ett 128-bitars hexadecimalt tal (som består av 32 tecken mellan 0 och 9 och a–f).
-* *din åtkomsttoken*: den giltiga GUID-sträng som du anger när du använder anpassad-läge. Ett exempel är `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *din åtkomsttoken*: den giltiga GUID-sträng som du anger när du använder anpassad-läge. Till exempel `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
 * *data ström namn*: anger data Ströms namnet för en speciell anslutning. Data ström namn svärdet läggs vanligt vis till av den Live-kodare som du använder. Du kan konfigurera Live-kodaren att använda ett namn som beskriver anslutningen, till exempel: "video1_audio1", "video2_audio1", "Stream".
 
 #### <a name="non-vanity-url"></a>Icke-anpassad URL

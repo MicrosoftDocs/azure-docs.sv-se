@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 9fba5b7636bcef68b55528350ea63ce9d386bb16
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1e61d0b8eb8312c78acabbd087208bb64a2d0d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734459"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Anpassade mått i Azure Monitor (förhands granskning)
 
-När du distribuerar resurser och program i Azure vill du börja samla in telemetri för att få insikter om prestanda och hälsa. Azure gör vissa mått tillgängliga i rutan. Dessa mått kallas [standard eller plattform](../platform/metrics-supported.md). De är dock begränsade. 
+När du distribuerar resurser och program i Azure vill du börja samla in telemetri för att få insikter om prestanda och hälsa. Azure gör vissa mått tillgängliga i rutan. Dessa mått kallas [standard eller plattform](./metrics-supported.md). De är dock begränsade. 
 
 Du kanske vill samla in vissa anpassade prestanda indikatorer eller företagsspecifika mått för att ge djupare insikter. Dessa **anpassade** mått kan samlas in via din programtelemetri, en agent som körs på dina Azure-resurser eller till och med ett externt övervaknings system och skickas direkt till Azure Monitor. När de har publicerats till Azure Monitor kan du bläddra i, fråga och avisering om anpassade mått för dina Azure-resurser och-program sida vid sida med de standard mått som genereras av Azure.
 
@@ -75,7 +75,7 @@ Varje data punkt som skickas till Azure Monitor måste markeras med en tidsstäm
 ### <a name="namespace"></a>Namnområde
 Namn områden är ett sätt att kategorisera eller gruppera likartade mått tillsammans. Genom att använda namn rymder kan du isolera olika grupper av mått som kan samla in olika insikter eller prestanda indikatorer. Du kan till exempel ha ett namn område med namnet **contosomemorymetrics** som spårar minnes användnings mått som innehåller en profil för din app. Ett annat namn område med namnet **contosoapptransaction** kan spåra alla mått för användar transaktioner i programmet.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Namn
 **Namn** är namnet på det mått som rapporteras. Vanligt vis är namnet tillräckligt beskrivande för att hjälpa dig att identifiera vad som mäts. Ett exempel är ett mått som mäter antalet minnes byte som används på en specifik virtuell dator. Det kan ha ett Metric-namn som **minnes byte som används**.
 
 ### <a name="dimension-keys"></a>Dimensions nycklar
@@ -223,5 +223,3 @@ Använd anpassade mått från olika tjänster:
  - [Virtuell Linux-dator med hjälp av teleympkvistar-agenten](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST-API](./metrics-store-custom-rest-api.md)
  - [Klassisk Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)
- 
-

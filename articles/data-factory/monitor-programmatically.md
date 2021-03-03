@@ -7,12 +7,12 @@ ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
 ms.custom: devx-track-python
-ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740451"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Övervaka en Azure-datafabrik via programmering
 
@@ -30,7 +30,7 @@ Om du vill behålla pipeline-körningar i mer än 45 dagar konfigurerar du din e
 
 ## <a name="pipeline-run-information"></a>Körnings information för pipeline
 
-För körnings egenskaper för pipeline, se [PIPELINERUN API-referens](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun). En pipeline-körning har olika status under livs cykeln, och möjliga värden för körnings status visas nedan:
+För körnings egenskaper för pipeline, se [PIPELINERUN API-referens](/rest/api/datafactory/pipelineruns/get#pipelinerun). En pipeline-körning har olika status under livs cykeln, och möjliga värden för körnings status visas nedan:
 
 * I kö
 * Pågår
@@ -163,5 +163,4 @@ En fullständig genom gång av hur du skapar och övervakar en pipeline med hjä
 Fullständig dokumentation om PowerShell-cmdlets finns i [referens för Data Factory PowerShell-cmdlet](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Nästa steg
-Se [övervaka pipelines med hjälp av Azure Monitor](monitor-using-azure-monitor.md) artikel om du vill lära dig mer om att använda Azure Monitor för att övervaka Data Factory pipelines. 
-
+Se [övervaka pipelines med hjälp av Azure Monitor](monitor-using-azure-monitor.md) artikel om du vill lära dig mer om att använda Azure Monitor för att övervaka Data Factory pipelines.

@@ -2,18 +2,18 @@
 title: ta med fil
 description: ta med fil
 services: multiple
-author: sharad4u
+author: duongau
 ms.service: multiple
 ms.topic: include
 ms.date: 10/30/2020
-ms.author: sharadag
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: eb3cc6a37e9116b2a28b72fc7a3779aafb2a1e21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750522"
 ---
 Följande ca: er tillåts när du skapar ett eget certifikat:
 
@@ -54,6 +54,7 @@ Följande ca: er tillåts när du skapar ett eget certifikat:
 - GlobalSign rot certifikat utfärdare
 - Go-Daddy rot certifikat utfärdare-G2
 - Go Daddy Secure Certificate Authority-G2
+- Hongkong efter rot certifikat utfärdare 1
 - Vi ska kryptera auktoritets x3
 - Mikrosek e-Szigno rot certifikat utfärdare 2009
 - QuoVadis root CA2 G3
@@ -61,6 +62,7 @@ Följande ca: er tillåts när du skapar ett eget certifikat:
 - RootCA1 för säkerhets kommunikation
 - RootCA2 för säkerhets kommunikation
 - RootCA3 för säkerhets kommunikation
+- Staat der Nederlanden EV Root CA
 - Symantec klass 3 EV SSL CA-G3
 - Symantec klass 3 säker server CA-G4
 - Symantec Enterprise Mobile root för Microsoft

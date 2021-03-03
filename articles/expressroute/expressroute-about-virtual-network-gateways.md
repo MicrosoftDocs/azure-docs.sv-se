@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: b721a9b8d8bdff3f3aaf05f15857c00347e7abb4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 45b059784cc0b442b615a2a1cb50386da6ee990f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740927"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Om ExpressRoute-gatewayer för virtuella nätverk
 
@@ -53,7 +53,7 @@ Innan du skapar en ExpressRoute-Gateway måste du skapa ett Gateway-undernät. G
 
 När du skapar gatewayundernätet anger du det antal IP-adresser som undernätet innehåller. IP-adresserna i Gateway-undernätet tilldelas till gateway-VM: ar och gateway-tjänsterna. Vissa konfigurationer kräver fler IP-adresser än andra. 
 
-När du planerar storleken på Gateway-undernätet läser du dokumentationen för den konfiguration som du planerar att skapa. Till exempel kräver ExpressRoute-och VPN Gateway-konfigurationer som är samtidigt ett större Gateway-undernät än de flesta andra konfigurationer. Dessutom kanske du vill kontrol lera att Gateway-undernätet innehåller tillräckligt med IP-adresser för att kunna hantera framtida ytterligare konfigurationer. Även om du kan skapa ett Gateway-undernät så litet som/29, rekommenderar vi att du skapar ett Gateway-undernät på/27 eller större (/27,/26 osv.) om du har det tillgängliga adress utrymmet. Detta kommer att hantera de flesta konfigurationer.
+När du planerar storleken på Gateway-undernätet läser du dokumentationen för den konfiguration som du planerar att skapa. Till exempel kräver ExpressRoute-och VPN Gateway-konfigurationer som är samtidigt ett större Gateway-undernät än de flesta andra konfigurationer. Dessutom kanske du vill kontrol lera att Gateway-undernätet innehåller tillräckligt med IP-adresser för att kunna hantera framtida ytterligare konfigurationer. Även om du kan skapa ett Gateway-undernät så litet som/29, rekommenderar vi att du skapar ett Gateway-undernät på/27 eller större (/27,/26 osv.) om du har det tillgängliga adress utrymmet. Om du skapar ett undernät med dubbla stack-Gateway rekommenderar vi att du även använder ett IPv6-intervall på/64 eller större. Detta kommer att hantera de flesta konfigurationer.
 
 Följande PowerShell-exempel i Resource Manager visar ett Gateway-undernät med namnet GatewaySubnet. Du kan se CIDR-noteringen anger en/27, vilket gör det möjligt för tillräckligt med IP-adresser för de flesta konfigurationer som för närvarande finns.
 
@@ -77,6 +77,11 @@ Zone – redundanta gateways använder vissa nya gateway-SKU: er för ExpressRou
 
 Nya gateway-SKU: er stöder också andra distributions alternativ för att passa dina behov bäst. När du skapar en virtuell nätverksgateway med hjälp av nya gateway-SKU: er, kan du också välja att distribuera gatewayen i en speciell zon. Detta kallas en zonindelade-Gateway. När du distribuerar en zonindelade-Gateway distribueras alla instanser av gatewayen i samma tillgänglighets zon.
 
+> [!IMPORTANT]
+> Om du planerar att använda IPv6-baserad privat peering över ExpressRoute, se till att välja en AZ-SKU för den gateway som du distribuerar i ett undernät med dubbla stack-gatewayer.
+> 
+>
+
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 ExpressRoute virtuella nätverksgateway är utformad för att utbyta nätverks vägar och dirigera nätverks trafik. FastPath är utformat för att förbättra data Sök vägens prestanda mellan ditt lokala nätverk och ditt virtuella nätverk. När aktive rad skickar FastPath nätverks trafik direkt till virtuella datorer i det virtuella nätverket, vilket kringgår gatewayen.
@@ -86,7 +91,7 @@ Mer information om FastPath, inklusive begränsningar och krav finns i [om FastP
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST-API: er och PowerShell-cmdletar
 För ytterligare tekniska resurser och särskilda syntax krav för att använda REST-API: er och PowerShell-cmdletar för konfigurationer för virtuella nätverksgateway, se följande sidor:
 
-| **Klassisk** | **Resource Manager** |
+| **Form** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](/powershell/module/az.network#networking) |
 | [REST-API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST-API](/rest/api/virtual-network/) |

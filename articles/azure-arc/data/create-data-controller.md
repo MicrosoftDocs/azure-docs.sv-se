@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384970"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688373"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Skapa data styrenheten för Azure-bågen
 
@@ -37,7 +37,7 @@ För närvarande är den lista över Kubernetes tjänster och distributioner som
 
 > [!IMPORTANT]
 > * Den lägsta versionen av Kubernetes som stöds är v-1.17. Se [kända problem](./release-notes.md#known-issues) för ytterligare information. 
-> * Den lägsta versionen av OCP som stöds är 4,3.
+> * Den lägsta versionen av OCP som stöds är 4,5.
 > * Se [anslutnings kraven](connectivity.md) för att förstå vilken anslutning som krävs mellan din miljö och Azure.
 > * Mer information om hur du konfigurerar beständiga lagrings enheter finns i [rikt linjer för lagrings konfiguration](storage-configuration.md) .
 > * Om du använder Azure Kubernetes-tjänsten bör klustrets virtuella dator storlek vara minst **Standard_D8s_v3** och använda **Premium diskar.** Klustret ska inte omfatta flera tillgänglighets zoner. 

@@ -1,17 +1,16 @@
 ---
 title: Felsöka Azure-diagnostik-tillägg
 description: Felsök problem när du använder Azure Diagnostics i Azure Virtual Machines Service Fabric eller Cloud Services.
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623650"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711526"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics-felsökning
 I den här artikeln beskrivs felsöknings information som är relevant för att använda Azure-diagnostik. Mer information om Azure Diagnostics finns i [Azure-diagnostik översikt](diagnostics-extension-overview.md).

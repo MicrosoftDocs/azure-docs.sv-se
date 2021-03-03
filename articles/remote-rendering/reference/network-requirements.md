@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd8686cc396d5fcee20590fbac8bccaf187b024d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83196534"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735955"
 ---
 # <a name="network-requirements"></a>Nätverkskrav
 
@@ -20,11 +20,13 @@ En stabil nätverks anslutning med låg latens till ett Azure-datacenter är avg
 
 De exakta nätverks kraven beror på ditt specifika användnings fall, t. ex. antal och frekvens för ändringar i grafen för fjärrscener samt komplexiteten för den renderade vyn, men det finns ett antal rikt linjer för att se till att din upplevelse är så bra som möjligt:
 
-* Din Internet anslutning behöver stöd för minst **40 Mbit/s** och **5 Mbit/s uppströms** konsekvent för en enda användarsession av Azure fjärrrendering, förutsatt att det inte finns någon konkurrerande trafik i nätverket. Vi rekommenderar högre priser för bättre upplevelser. Med fler användare i samma nätverk skalas dessa krav på motsvarande sätt.
+* Din Internet anslutning behöver stöd för minst **40 Mbit/s** och **5 Mbit/s uppströms** konsekvent för en enda användarsession av Azure fjärrrendering, förutsatt att det inte finns någon konkurrerande trafik i nätverket. Vi rekommenderar högre priser för bättre upplevelser. 
+* **Wi-Fi** är den rekommenderade nätverks typen eftersom den stöder en låg latens, hög bandbredd och stabil anslutning. Vissa mobila nätverk introducerar Darr som kan leda till en dålig upplevelse. 
 * Om du använder **5-ghz Wi-Fi-bandet** får du normalt bättre resultat än 2,4 GHz Wi-Fi-bandet, men båda bör fungera.
 * Om det finns andra Wi-Fi nätverk i närheten bör du undvika att använda Wi-Fi kanaler som används av dessa andra nätverk. Du kan använda verktyg för nätverks genomsökning som [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) för att kontrol lera om de kanaler som Wi-Fi nätverket använder är fria från konkurrerande trafik.
 * **Undvik att använda Wi-Fi repeterbarer** eller en LAN-överdrived vidarebefordring.
 * **Undvik konkurrerande bandbredds krävande trafik** – till exempel video eller spel direkt uppspelning – på samma Wi-Fi nätverk.
+* Om du har flera enheter på samma åtkomst punkt skalas kraven på motsvarande sätt. Om du har flera åtkomst punkter i en miljö, belastnings Utjämnings enheter över åtkomst punkterna så att de distribueras jämnt.
 * Det är viktigt att ha **bra Wi-Fi signal styrka** . Om möjligt ligger du nära din Wi-Fi åtkomst punkt och undviker hinder mellan din klient enhet och åtkomst punkterna.
 * Se till att du alltid ansluter till **närmaste Azure-datacenter** för din [region](regions.md). Ju närmare data centret, desto lägre nätverks fördröjning, vilket har stor inverkan på hologram stabiliteten.
 
@@ -43,8 +45,8 @@ Välj en server som är närmast dig och kör testet. Även om servern inte komm
    * **Rekommenderas** för Azure-fjärrrendering: ca. 100 Mbit/s och 10 Mbit/s överström.
 Vi rekommenderar att du kör testet flera gånger och tar de sämsta resultaten.
 1. **Använd ett verktyg som www.azurespeed.com som mäter svars tiden på Azures Data Center**. Välj det Azure-datacenter som stöds av Azure Remote rendering som är närmast dig (se [regioner som stöds](regions.md)) och kör ett **svars svar**. Om det finns variation i de siffror som du ser ger du resultatet lite tid för att stabilisera.
-   * **Minimi krav** för Azure-fjärrrendering: fördröjningen bör konsekvent vara mindre än 100 MS.
-   * **Rekommenderas** för Azure-fjärrrendering: fördröjningen bör konsekvent vara mindre än 70 MS.
+   * **Minimi krav** för Azure-fjärrrendering: fördröjningen bör konsekvent vara mindre än 80 ms.
+   * **Rekommenderas** för Azure-fjärrrendering: fördröjningen bör konsekvent vara mindre än 40 MS.
 
 Även om låg latens inte är en garanti för att Azures fjärrrendering fungerar bra i nätverket, har vi vanligt vis kunnat utföra böter i situationer där de här testerna lyckades.
 Om du stöter på artefakter som instabila, Darr eller rör hologram när du kör Azure fjärrrendering, se [fel söknings guiden](../resources/troubleshoot.md).

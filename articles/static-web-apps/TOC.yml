@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: Begrepp
   items:
+    - name: Konfiguration
+      href: configuration.md
+      displayName: Routing
     - name: API-stöd med Azure Functions
       href: apis.md
     - name: Vägar
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: Konfigurera ramverk och bibliotek för klientdelen
       href: front-end-frameworks.md
+    - name: Återställ distributions-token
+      href: deployment-token-management.md
 - name: Självstudier
   items:
     - name: Publicera från en generator av statiska webbplatser

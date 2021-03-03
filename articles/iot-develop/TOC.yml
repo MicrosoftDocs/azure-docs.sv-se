@@ -1,8 +1,8 @@
-- name: IoT-enhet och program utveckling
+- name: Utveckling av IoT-enheter
   href: index.yml
 - name: Översikt
   items:
-    - name: Vad är IoT-enheter och program utveckling?
+    - name: Vad är utveckling av IoT-enheter?
       href: about-iot-develop.md
     - name: Vilken SDK ska jag använda?
       href: about-iot-sdks.md
@@ -22,7 +22,7 @@
 - name: Självstudier
   items:
     - name: Ansluta IoT-enheter på ett säkert sätt till molnet
-      href: 'https://docs.microsoft.com/learn/paths/securely-connect-iot-devices/'
+      href: /learn/paths/securely-connect-iot-devices/
 - name: Begrepp
   items:
     - name: Anslutnings alternativ för enhets utvecklare

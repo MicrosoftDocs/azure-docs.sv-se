@@ -5,14 +5,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712710"
 ---
 # <a name="how-to-export-fhir-data"></a>Så här exporterar du FHIR-data
 
@@ -50,7 +50,7 @@ Det finns två obligatoriska huvud parametrar som måste anges för $export-jobb
 ### <a name="query-parameters"></a>Frågeparametrar
 Azure API för FHIR stöder följande frågeparametrar. Alla dessa parametrar är valfria:
 
-|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Description|
+|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Beskrivning|
 |------------------------|---|------------|
 | \_outputFormat | Ja | Stöder för närvarande tre värden för att justeras till FHIR-specifikationen: Application/FHIR + ndjson, Application/ndjson eller bara ndjson. Alla export jobb kommer att returneras `ndjson` och det skickade värdet påverkar inte kod beteendet. |
 | \_Starta | Ja | Gör att du endast kan exportera resurser som har ändrats sedan den angivna tiden |
@@ -58,7 +58,49 @@ Azure API för FHIR stöder följande frågeparametrar. Alla dessa parametrar ä
 | \_typefilter | Ja | Om du vill begära detaljerad filtrering kan du använda \_ typeFilter tillsammans med \_ typ parametern. Värdet för parametern _typeFilter är en kommaavgränsad lista över FHIR-frågor som ytterligare begränsar resultaten |
 | \_fönster | Inga |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
 
+## <a name="secure-export-to-azure-storage"></a>Säker export till Azure Storage
 
+Azure API för FHIR har stöd för en säker export åtgärd. Ett alternativ för att köra en säker export är att tillåta att vissa IP-adresser som är kopplade till Azure API för FHIR får åtkomst till Azure Storage-kontot. Konfigurationerna skiljer sig beroende på om lagrings kontot finns på samma eller en annan plats än Azure-API: t för FHIR.
+
+### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>När Azure Storage-kontot finns i en annan region
+
+Välj bladet nätverk för Azure Storage-kontot från portalen. 
+
+   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure Storage nätverks inställningar." lightbox="media/export-data/storage-networking.png":::
+   
+Välj "valda nätverk" och ange IP-adressen i rutan **adress intervall** under avsnittet i brand väggen \| Lägg till IP-intervall för att tillåta åtkomst från Internet eller dina lokala nätverk. Du hittar IP-adressen från tabellen nedan för den Azure-region där Azure API för FHIR-tjänsten är etablerad.
+
+|**Azure-region**         |**Offentlig IP-adress** |
+|:----------------------|:-------------------|
+| Australien, östra       | 20.53.44.80       |
+| Kanada, centrala       | 20.48.192.84      |
+| Central US           | 52.182.208.31     |
+| East US              | 20.62.128.148     |
+| USA, östra 2            | 20.49.102.228     |
+| USA, östra 2 EUAP       | 20.39.26.254      |
+| Tyskland, norra        | 51.116.51.33      |
+| Tyskland, västra centrala | 51.116.146.216    |
+| Japan, östra           | 20.191.160.26     |
+| Sydkorea, centrala        | 20.41.69.51       |
+| USA, norra centrala     | 20.49.114.188     |
+| Europa, norra         | 52.146.131.52     |
+| Sydafrika, norra   | 102.133.220.197   |
+| USA, södra centrala     | 13.73.254.220     |
+| Sydostasien       | 23.98.108.42      |
+| Schweiz, norra    | 51.107.60.95      |
+| Storbritannien, södra             | 51.104.30.170     |
+| Storbritannien, västra              | 51.137.164.94     |
+| USA, västra centrala      | 52.150.156.44     |
+| Europa, västra          | 20.61.98.66       |
+| USA, västra 2            | 40.64.135.77      |
+
+### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>När Azure Storage-kontot finns i samma region
+
+Konfigurations processen är samma som ovan, förutom ett särskilt IP-adressintervall i CIDR-format används istället 100.64.0.0/10. Anledningen till att IP-adressintervallet, som innehåller 100.64.0.0 – 100.127.255.255, måste anges beror på att den faktiska IP-adressen som används av tjänsten varierar, men är inom intervallet för varje $export begäran.
+
+> [!Note] 
+> Det är möjligt att en privat IP-adress inom intervallet 10.0.2.0/24 kan användas i stället. I så fall kommer $export åtgärden att Miss lyckas. Du kan försöka med $export begäran, men det finns ingen garanti för att en IP-adress inom intervallet 100.64.0.0/10 kommer att användas nästa gången. Det är det som är känt nätverks beteendet genom att utforma. Alternativet är att konfigurera lagrings kontot i en annan region.
+    
 ## <a name="next-steps"></a>Nästa steg
 
 I den här artikeln har du lärt dig hur du exporterar FHIR-resurser med hjälp av kommandot $export. Sedan kan du läsa mer om hur du exporterar de data som identifieras:

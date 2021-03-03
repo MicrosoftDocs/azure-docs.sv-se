@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 2614117d153b1db50d4487bf4045a63af430f3ac
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b36dec79e5d60d97c11b9f8c74790527e1bd19fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731365"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Använda grupper i arbets böcker
 
@@ -143,5 +143,5 @@ Så här omvandlar du en större mall till flera undermallar:
 6. Du kan sedan ändra det grupp steg som ska läsas in från mallen och ange fältet Mall-ID till den arbets bok/mall som du skapade i steg 5. För att arbeta med arbets boks-ID: n måste källan vara ett delat arbets boks resurs-ID. Tryck på *load* och innehållet i gruppen kommer nu att läsas in från den under mallen i stället för att sparas i den här yttre arbets boken.
 
 ## <a name="next-steps"></a>Nästa steg
-- [Översikt över arbets böcker](../platform/workbooks-overview.md)
+- [Översikt över arbets böcker](./workbooks-overview.md)
 - [Använda JSONPath med arbets böcker](workbooks-jsonpath.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730039"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrera till anslutnings övervakaren från anslutnings övervakaren (klassisk)
 
@@ -32,7 +32,7 @@ Migreringen hjälper till att producera följande resultat:
 
 * Agenter och brand Väggs inställningar fungerar som de är. Inga ändringar krävs. 
 * Befintliga anslutnings övervakare mappas till anslutnings övervakaren > test grupp > test format. Genom att välja **Redigera** kan du Visa och ändra egenskaperna för den nya anslutnings övervakaren, hämta en mall för att göra ändringar i anslutnings övervakaren och skicka den via Azure Resource Manager. 
-* Virtuella Azure-datorer med Network Watcher-tillägget skickar data till både arbets ytan och måtten. Anslutnings övervakaren gör data tillgängliga via de nya måtten (ChecksFailedPercent och RoundTripTimeMs) i stället för de gamla måtten (ProbesFailedPercent och AverageRoundtripMs). 
+* Virtuella Azure-datorer med Network Watcher-tillägget skickar data till både arbets ytan och måtten. Anslutnings övervakaren gör data tillgängliga via de nya måtten (ChecksFailedPercent och RoundTripTimeMs) i stället för de gamla måtten (ProbesFailedPercent och AverageRoundtripMs). De gamla måtten kommer att migreras till nya mått som ProbesFailedPercent-> ChecksFailedPercent-och AverageRoundtripMs-> RoundTripTimeMs.
 * Data övervakning:
    * **Aviseringar**: migreras automatiskt till de nya måtten.
    * **Instrument paneler och integreringar**: Kräv manuell redigering av de angivna måtten. 
@@ -49,7 +49,7 @@ Om du använder en anpassad arbets yta ser du till att Network Watcher är aktiv
     
 1. Välj din prenumeration och de anslutnings Övervakare som du vill migrera och välj sedan **Migrera markerade**. 
 
-Med bara några klick har du migrerat de befintliga anslutnings övervakarna till anslutnings övervakaren. 
+Med bara några klick har du migrerat de befintliga anslutnings övervakarna till anslutnings övervakaren. När du har migrerat från CM (klassisk) till CM kan du inte se övervakaren under CM (klassisk)
 
 Nu kan du anpassa egenskaperna för anslutnings övervakaren, ändra standard arbets ytan, hämta mallar och kontrol lera migreringens status. 
 

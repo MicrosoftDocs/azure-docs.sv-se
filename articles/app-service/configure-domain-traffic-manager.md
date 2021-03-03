@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709112"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurera ett anpassat domän namn i Azure App Service med Traffic Manager-integrering
 
@@ -75,7 +75,7 @@ När du har lagt till eller ändrat DNS-poster i din domän leverantör sparar d
 
 ### <a name="what-about-root-domains"></a>Vad är om rot domäner?
 
-Eftersom Traffic Manager endast stöder anpassad domän mappning med CNAME-poster och eftersom DNS-standarder inte stöder CNAME-poster för mappning av rot domäner (t. ex. **contoso.com**), stöder Traffic Manager inte mappning till rot domäner. Undvik det här problemet genom att använda en URL-omdirigering från på App-nivå. I ASP.NET Core kan du till exempel använda URL- [omskrivning](/aspnet/core/fundamentals/url-rewriting). Använd Traffic Manager för att belastningsutjämna under domänen (**www.contoso.com**). En annan metod är att du kan [skapa en aliasresurspost för domän namns toppen för att referera till en Azure Traffic Manager-profil](https://docs.microsoft.com/azure/dns/tutorial-alias-tm). Ett exempel kan vara contoso.com. I stället för att använda en omdirigerings tjänst kan du konfigurera Azure DNS att referera till en Traffic Manager profil direkt från din zon. 
+Eftersom Traffic Manager endast stöder anpassad domän mappning med CNAME-poster och eftersom DNS-standarder inte stöder CNAME-poster för mappning av rot domäner (t. ex. **contoso.com**), stöder Traffic Manager inte mappning till rot domäner. Undvik det här problemet genom att använda en URL-omdirigering från på App-nivå. I ASP.NET Core kan du till exempel använda URL- [omskrivning](/aspnet/core/fundamentals/url-rewriting). Använd Traffic Manager för att belastningsutjämna under domänen (**www.contoso.com**). En annan metod är att du kan [skapa en aliasresurspost för domän namns toppen för att referera till en Azure Traffic Manager-profil](../dns/tutorial-alias-tm.md). Ett exempel kan vara contoso.com. I stället för att använda en omdirigerings tjänst kan du konfigurera Azure DNS att referera till en Traffic Manager profil direkt från din zon. 
 
 I scenarier med hög tillgänglighet kan du implementera en DNS-installation med belastnings utjämning utan Traffic Manager genom att skapa flera *poster* som pekar från rot domänen till varje app-kopias IP-adress. Mappa sedan [samma rot domän till alla app-kopior](app-service-web-tutorial-custom-domain.md#map-an-a-record). Eftersom samma domän namn inte kan mappas till två olika appar i samma region fungerar den här konfigurationen endast när din app kopieras i olika regioner.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 502f93df8d9948a6d6682b14ea13b59e324833cb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4e626cb5cac29a0e5133eb77cbaff3f4131b8456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722355"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -38,8 +38,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Språk                 | Locale (BCP-47) | Anpassningar  | [Språk identifiering](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabiska (Bahrain), modern standard  | `ar-BH` | Text                                   | Yes                           | 
-| Arabiska (Egypten)                     | `ar-EG` | Text                                   | Yes                          |
+| Arabiska (Bahrain), modern standard  | `ar-BH` | Text                                   | Ja                           | 
+| Arabiska (Egypten)                     | `ar-EG` | Text                                   | Ja                          |
 | Arabiska (Irak)                      | `ar-IQ` | Text                                   |                           |
 | Arabiska (Israel)                    | `ar-IL` | Text                                   |                           |
 | Arabiska (Jordanien)                    | `ar-JO` | Text                                   |                           |
@@ -47,54 +47,61 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabiska (Libanon)                   | `ar-LB` | Text                                   |                           |
 | Arabiska (Oman)                      | `ar-OM` | Text                                   |                           |
 | Arabiska (Qatar)                     | `ar-QA` | Text                                   |                           |
-| Arabiska (Saudiarabien)              | `ar-SA` | Text                                   | Yes                          |
+| Arabiska (Saudiarabien)              | `ar-SA` | Text                                   | Ja                          |
 | Arabiska (tillstånd för Palestina)        | `ar-PS` | Text                                   |                           |
-| Arabiska (Syrien)                     | `ar-SY` | Text                                   | Yes                          |
+| Arabiska (Syrien)                     | `ar-SY` | Text                                   | Ja                          |
 | Arabiska (Förenade Arabemiraten)      | `ar-AE` | Text                                   |                           |
 | Bulgariska (Bulgarien)               | `bg-BG` | Text                                   |                           |
-| Katalanska (Spanien)                    | `ca-ES` | Text                                   | Yes                          |
-| Kinesiska (kantonesiska, traditionell)   | `zh-HK` | Ljud (20201015)<br>Text                 |        Yes                   |
-| Kinesiska (mandariner, förenklad)     | `zh-CN` | Ljud (20200910)<br>Text                 |     Yes                      |
-| Kinesiska (Taiwan-mandariner)       | `zh-TW` | Ljud (20190701, 20201015)<br>Text                 |           Yes                |
+| Katalanska (Spanien)                    | `ca-ES` | Text                                   | Ja                          |
+| Kinesiska (kantonesiska, traditionell)   | `zh-HK` | Ljud (20201015)<br>Text                 |        Ja                   |
+| Kinesiska (mandariner, förenklad)     | `zh-CN` | Ljud (20200910)<br>Text                 |     Ja                      |
+| Kinesiska (Taiwan-mandariner)       | `zh-TW` | Ljud (20190701, 20201015)<br>Text                 |           Ja                |
 | Kroatiska (Kroatien)                 | `hr-HR` | Text                                   |                           |
 | Tjeckiska (Tjeckien)             | `cs-CZ` | Text                                   |                           |
-| Danska (Danmark)                   | `da-DK` | Text                                   | Yes                          |
-| Nederländska (Nederländerna)                | `nl-NL` | Ljud (20201015)<br>Text                                   |    Yes                       |
-| Engelska (Australien)                | `en-AU` | Ljud (20201019)<br>Text                 | Yes                          |
-| Engelska (Kanada)                   | `en-CA` | Ljud (20201019)<br>Text                 | Yes                          |
+| Danska (Danmark)                   | `da-DK` | Text                                   | Ja                          |
+| Nederländska (Nederländerna)                | `nl-NL` | Ljud (20201015)<br>Text                                   |    Ja                       |
+| Engelska (Australien)                | `en-AU` | Ljud (20201019)<br>Text                 | Ja                          |
+| Engelska (Kanada)                   | `en-CA` | Ljud (20201019)<br>Text                 | Ja                          |
+| Engelska (Ghana)                    | `en-GH` | Text                                   |                           |
 | Engelska (Hongkong)                | `en-HK` | Text                                   |                           |
-| Engelska (Indien)                    | `en-IN` | Ljud (20200923)<br>Text                 | Yes                          |
+| Engelska (Indien)                    | `en-IN` | Ljud (20200923)<br>Text                 | Ja                          |
 | Engelska (Irland)                  | `en-IE` | Text                                   |                           |
-| Engelska (Nya Zeeland)              | `en-NZ` | Ljud (20201019)<br>Text                 |  Yes                         |
+| Engelska (Kenya)                    | `en-KE` | Text                                   |                           |
+| Engelska (Nya Zeeland)              | `en-NZ` | Ljud (20201019)<br>Text                 |  Ja                         |
 | Engelska (Nigeria)                  | `en-NG` | Text                                   |                           |
 | Engelska (Filippinerna)              | `en-PH` | Text                                   |                           |
 | Engelska (Singapore)                | `en-SG` | Text                                   |                           |
 | Engelska (Sydafrika)             | `en-ZA` | Text                                   |                           |
-| Engelska (Storbritannien)           | `en-GB` | Ljud (20201019)<br>Text<br>Uttal| Yes                          |
-| Engelska (USA)            | `en-US` | Ljud (20201019)<br>Text<br>Uttal| Yes                          |
+| Engelska (Tanzania)                 | `en-TZ` | Text                                   |                           |
+| Engelska (Storbritannien)           | `en-GB` | Ljud (20201019)<br>Text<br>Uttal| Ja                          |
+| Engelska (USA)            | `en-US` | Ljud (20201019)<br>Text<br>Uttal| Ja                          |
 | Estniska (Estland)                  | `et-EE` | Text                                   |                           |
-| Finska (Finland)                  | `fi-FI` | Text                                   |     Yes                      |
-| Franska (Kanada)                    | `fr-CA` | Ljud (20201015)<br>Text                 |     Yes                      |
-| Franska (Frankrike)                    | `fr-FR` | Ljud (20201015)<br>Text<br>Uttal|      Yes                     |
-| Tyska (Tyskland)                   | `de-DE` | Ljud (20190701, 20200619, 20201127)<br>Text<br>Uttal|  Yes                         |
+| Filippinska (Filippinerna)             | `fil-PH`| Text                                   |                           |
+| Finska (Finland)                  | `fi-FI` | Text                                   |     Ja                      |
+| Franska (Kanada)                    | `fr-CA` | Ljud (20201015)<br>Text                 |     Ja                      |
+| Franska (Frankrike)                    | `fr-FR` | Ljud (20201015)<br>Text<br>Uttal|      Ja                     |
+| Franska (Schweiz)               | `fr-CH` | Text                                   |                           |
+| Tyska (Österrike)                   | `de-AT` | Text                                   |                           |
+| Tyska (Tyskland)                   | `de-DE` | Ljud (20190701, 20200619, 20201127)<br>Text<br>Uttal|  Ja                         |
 | Grekiska (Grekland)                     | `el-GR` | Text                                   |                           |
 | Gujarati (indiska)                  | `gu-IN` | Text                                   |                           |
-| Hindi (Indien)                      | `hi-IN` | Ljud (20200701)<br>Text                 |     Yes                      |
+| Hindi (Indien)                      | `hi-IN` | Ljud (20200701)<br>Text                 |     Ja                      |
 | Ungerska (Ungern)                | `hu-HU` | Text                                   |                           |
+| Indonesiska (Indonesien)             | `id-ID` | Text                                   |                           |
 | Irländskt (Irland)                     | `ga-IE` | Text                                   |                           |
-| Italienska (Italien)                    | `it-IT` | Ljud (20201016)<br>Text<br>Uttal|      Yes                     |
-| Japanska (Japan)                   | `ja-JP` | Text                                   |      Yes                     |
-| Koreanska (Korea)                     | `ko-KR` | Ljud (20201015)<br>Text                 |      Yes                     |
+| Italienska (Italien)                    | `it-IT` | Ljud (20201016)<br>Text<br>Uttal|      Ja                     |
+| Japanska (Japan)                   | `ja-JP` | Text                                   |      Ja                     |
+| Koreanska (Korea)                     | `ko-KR` | Ljud (20201015)<br>Text                 |      Ja                     |
 | Lettiska (Lettland)                   | `lv-LV` | Text                                   |                           |
 | Litauiska (Litauen)             | `lt-LT` | Text                                   |                           |
 | Maltesiska (Malta)                     | `mt-MT` | Text                                   |                           |
 | Marathi (Indien)                    | `mr-IN` | Text                                   |                           |
-| norska (Bokmål, Norge)         | `nb-NO` | Text                                   |     Yes                      |
-| Polska (Polen)                    | `pl-PL` | Text                                   |       Yes                    |
-| Portugisiska (Brasilien)                | `pt-BR` | Ljud (20190620, 20201015)<br>Text<br>Uttal|          Yes                 |
-| Portugisiska (Portugal)              | `pt-PT` | Text                                   |             Yes              |
+| norska (Bokmål, Norge)         | `nb-NO` | Text                                   |     Ja                      |
+| Polska (Polen)                    | `pl-PL` | Text                                   |       Ja                    |
+| Portugisiska (Brasilien)                | `pt-BR` | Ljud (20190620, 20201015)<br>Text<br>Uttal|          Ja                 |
+| Portugisiska (Portugal)              | `pt-PT` | Text                                   |             Ja              |
 | Rumänska (Rumänien)                 | `ro-RO` | Text                                   |                           |
-| Ryska (Ryssland)                   | `ru-RU` | Ljud (20200907)<br>Text                 |                Yes           |
+| Ryska (Ryssland)                   | `ru-RU` | Ljud (20200907)<br>Text                 |                Ja           |
 | Slovakiska (Slovakien)                  | `sk-SK` | Text                                   |                           |
 | Slovenska (Slovenien)               | `sl-SI` | Text                                   |                           |
 | Spanska (Argentina)                | `es-AR` | Text                                   |                           |
@@ -109,21 +116,22 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Spanska (Ekvatorialguinea)        | `es-GQ` | Text                                   |                           |
 | Spanska (Guatemala)                | `es-GT` | Text                                   |                           |
 | Spanska (Honduras)                 | `es-HN` | Text                                   |                           |
-| Spanska (Mexiko)                   | `es-MX` | Ljud (20200907)<br>Text                 |    Yes                       |
+| Spanska (Mexiko)                   | `es-MX` | Ljud (20200907)<br>Text                 |    Ja                       |
 | Spanska (Nicaragua)                | `es-NI` | Text                                   |                           |
 | Spanska (Panama)                   | `es-PA` | Text                                   |                           |
 | Spanska (Paraguay)                 | `es-PY` | Text                                   |                           |
 | Spanska (Peru)                     | `es-PE` | Text                                   |                           |
 | Spanska (Puerto Rico)              | `es-PR` | Text                                   |                           |
-| Spanska (Spanien)                    | `es-ES` | Ljud (20201015)<br>Text                 |  Yes                         |
+| Spanska (Spanien)                    | `es-ES` | Ljud (20201015)<br>Text                 |  Ja                         |
 | Spanska (Uruguay)                  | `es-UY` | Text                                   |                           |
 | Spanska (USA)                      | `es-US` | Text                                   |                           |
 | Spanska (Venezuela)                | `es-VE` | Text                                   |                           |
-| Svenska (Sverige)                   | `sv-SE` | Text                                   |   Yes                        |
+| Svenska (Sverige)                   | `sv-SE` | Text                                   |   Ja                        |
 | Tamiliska (Indien)                      | `ta-IN` | Text                                   |                           |
 | Telugu (Indien)                     | `te-IN` | Text                                   |                           |
-| Thailändska (Thailand)                    | `th-TH` | Text                                   |      Yes                     |
+| Thailändska (Thailand)                    | `th-TH` | Text                                   |      Ja                     |
 | Turkiska (Turkiet)                   | `tr-TR` | Text                                   |                           |
+| Vietnamesiska (Vietnam)               | `vi-VN` | Text                                   |                           |
 
 ## <a name="text-to-speech"></a>Text till tal
 
@@ -399,19 +407,19 @@ Anpassad röst är tillgänglig i standard-och neurala-nivån. De språk som st�
 |--|--|--|--|
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Ja | Ja |
 | Kinesiska (mandariner, förenklad), engelsk tvåspråkig | `zh-CN` tvåspråkig | Ja | Ja |
-| Engelska (Australien) | `en-AU` | Nej | Ja |
+| Engelska (Australien) | `en-AU` | Inga | Ja |
 | Engelska (Indien) | `en-IN` | Ja | Ja |
 | Engelska (Storbritannien) | `en-GB` | Ja | Ja |
 | Engelska (USA) | `en-US` | Ja | Ja |
-| Franska (Kanada) | `fr-CA` | Nej | Ja |
+| Franska (Kanada) | `fr-CA` | Inga | Ja |
 | Franska (Frankrike) | `fr-FR` | Ja | Ja |
 | Tyska (Tyskland) | `de-DE` | Ja | Ja |
 | Italienska (Italien) | `it-IT` | Ja | Ja |
-| Japanska (Japan) | `ja-JP` | Nej | Ja |
-| Koreanska (Korea) | `ko-KR` | Nej | Ja |
+| Japanska (Japan) | `ja-JP` | Inga | Ja |
+| Koreanska (Korea) | `ko-KR` | Inga | Ja |
 | Portugisiska (Brasilien) | `pt-BR` | Ja | Ja |
 | Spanska (Mexiko) | `es-MX` | Ja | Ja |
-| Spanska (Spanien) | `es-ES` | Nej | Ja |
+| Spanska (Spanien) | `es-ES` | Inga | Ja |
 
 Välj rätt språk version som matchar de tränings data du behöver för att träna en anpassad röst modell. Om till exempel de inspelnings data du har talas på engelska med en brittisk accent väljer du `en-GB` .
 

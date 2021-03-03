@@ -1,25 +1,25 @@
 ---
-title: Inaktivera övervakning i Azure Monitor for VMs
-description: Den här artikeln beskriver hur du stoppar övervakningen av dina virtuella datorer i Azure Monitor for VMs.
+title: Inaktivera övervakning i VM Insights
+description: Den här artikeln beskriver hur du stoppar övervakningen av dina virtuella datorer i VM Insights.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7eca08abf1ef3bed1aa7fdd806853b94d5615854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717068"
 ---
-# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Inaktivera övervakning av de virtuella datorerna i Azure Monitor for VMs
+# <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>Inaktivera övervakning av de virtuella datorerna i VM Insights
 
-När du har aktiverat övervakning av dina virtuella datorer (VM) kan du senare välja att inaktivera övervakning i Azure Monitor for VMs. Den här artikeln visar hur du inaktiverar övervakning för en eller flera virtuella datorer.  
+När du har aktiverat övervakning av dina virtuella datorer (VM) kan du senare välja att inaktivera övervakning i VM Insights. Den här artikeln visar hur du inaktiverar övervakning för en eller flera virtuella datorer.  
 
-Azure Monitor for VMs stöder för närvarande inte selektiv inaktive ring av VM-övervakning. Din Log Analytics arbets yta kan ha stöd för Azure Monitor for VMs och andra lösningar. Den kan också samla in andra övervaknings data. Om din Log Analytics arbets yta tillhandahåller dessa tjänster måste du förstå hur du inaktiverar övervakningen och metoderna för att inaktivera övervakning innan du börjar.
+För närvarande stöder inte VM Insights selektiv inaktive ring av VM-övervakning. Din Log Analytics-arbetsyta kan stödja VM-insikter och andra lösningar. Den kan också samla in andra övervaknings data. Om din Log Analytics arbets yta tillhandahåller dessa tjänster måste du förstå hur du inaktiverar övervakningen och metoderna för att inaktivera övervakning innan du börjar.
 
-Azure Monitor for VMs förlitar sig på följande komponenter för att ge sitt erfarenhet:
+VM Insights förlitar sig på följande komponenter för att leverera sin upplevelse:
 
 * En Log Analytics-arbetsyta som lagrar övervaknings data från virtuella datorer och andra källor.
 * En samling prestanda räknare som har kon figurer ATS i arbets ytan. Samlingen uppdaterar övervaknings konfigurationen på alla virtuella datorer som är anslutna till arbets ytan.
@@ -34,19 +34,19 @@ När du förbereder för att inaktivera övervakning av dina virtuella datorer b
 >[!NOTE]
 > När du har tagit bort lösnings komponenterna från din arbets yta kan du fortsätta att se prestanda-och kart data för dina virtuella Azure-datorer. Data kommer slutligen att sluta visas i vyerna **prestanda** och **karta** . Alternativet **Aktivera** är tillgängligt från den valda virtuella Azure-datorn så att du kan återaktivera övervakningen i framtiden.  
 
-## <a name="remove-azure-monitor-for-vms-completely"></a>Ta bort Azure Monitor for VMs helt
+## <a name="remove-vm-insights-completely"></a>Ta bort VM Insights fullständigt
 
-Om du fortfarande behöver Log Analytics arbets ytan följer du de här stegen för att ta bort Azure Monitor for VMs helt. Du tar bort `VMInsights` lösningen från arbets ytan.  
+Om du fortfarande behöver Log Analytics arbets ytan följer du de här stegen för att helt ta bort VM-insikter. Du tar bort `VMInsights` lösningen från arbets ytan.  
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan enligt dina inaktuella inmatnings förslag. Välj **Log Analytics**.
-3. I listan med Log Analytics arbets ytor väljer du den arbets yta som du valde när du aktiverade Azure Monitor for VMs.
+3. I listan med Log Analytics arbets ytor väljer du den arbets yta som du valde när du aktiverade VM-insikter.
 4. Välj **lösningar** till vänster.  
 5. I listan med lösningar väljer du **VMInsights (arbets ytans namn)**. På sidan **Översikt** för lösningen väljer du **ta bort**. När du uppmanas att bekräfta väljer du **Ja**.
 
 ## <a name="disable-monitoring-and-keep-the-workspace"></a>Inaktivera övervakning och behåll arbets ytan  
 
-Om din Log Analytics arbets yta fortfarande behöver stöd för övervakning från andra källor, följer du dessa steg för att inaktivera övervakning av den virtuella dator som du använde för att utvärdera Azure Monitor for VMs. För virtuella Azure-datorer tar du bort den beroende agentens VM-tillägg och Log Analytics-agentens VM-tillägg för Windows eller Linux direkt från den virtuella datorn. 
+Om din Log Analytics arbets yta fortfarande behöver stöd för övervakning från andra källor, följer du dessa steg för att inaktivera övervakning av den virtuella dator som du använde för att utvärdera VM-insikter. För virtuella Azure-datorer tar du bort den beroende agentens VM-tillägg och Log Analytics-agentens VM-tillägg för Windows eller Linux direkt från den virtuella datorn. 
 
 >[!NOTE]
 >Ta inte bort den Log Analytics agenten om: 

@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736516"
 ---
-# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge för Linux på en Windows-enhet (förhands granskning)
+# <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
 Azure IoT Edge runtime är vad som förvandlar en enhet till en IoT Edge enhet. Körningen kan distribueras på enheter från dator klass till industriella servrar. När en enhet har konfigurerats med IoT Edge-körningen kan du börja distribuera affärslogiken till den från molnet. Mer information finns i [förstå Azure IoT Edge Runtime och dess arkitektur](iot-edge-runtime.md).
 
@@ -85,7 +85,7 @@ Azure IoT Edge för Linux på Windows stöder följande etablerings metoder:
 
 Manuell etablering är enklare att komma igång med några få enheter. Enhets etablerings tjänsten är användbar för att tillhandahålla många enheter.
 
-Om du planerar att använda en av DPS-metoderna för att etablera enheten eller enheterna följer du stegen i lämplig artikel som är länkad ovan för att skapa en instansen av DPS, länkar din DPS-instans till din IoT Hub och skapar en DPS-registrering. Du kan skapa en *enskild registrering* för en enskild enhet eller en *grupp registrering* för en grupp av enheter. Mer information om registrerings typerna finns i [Azure IoT Hub Device Provisioning service Concepts](https://docs.microsoft.com/azure/iot-dps/concepts-service#enrollment).
+Om du planerar att använda en av DPS-metoderna för att etablera enheten eller enheterna följer du stegen i lämplig artikel som är länkad ovan för att skapa en instansen av DPS, länkar din DPS-instans till din IoT Hub och skapar en DPS-registrering. Du kan skapa en *enskild registrering* för en enskild enhet eller en *grupp registrering* för en grupp av enheter. Mer information om registrerings typerna finns i [Azure IoT Hub Device Provisioning service Concepts](../iot-dps/concepts-service.md#enrollment).
 
 ## <a name="create-a-new-deployment"></a>Skapa en ny distribution
 
@@ -97,7 +97,7 @@ På Start sidan i Windows administrations Center, under listan över anslutninga
 
 Du kan använda Windows administrations Center för att installera och hantera Azure IoT Edge för Linux i Windows på en lokal enhet eller fjärrhanterade enheter. I den här hand boken fungerar den lokala värd anslutningen som mål enheten för distributionen av Azure IoT Edge för Linux i Windows.
 
-Om du vill distribuera till en fjär renhet i stället för den lokala enheten och du inte ser den önskade mål enheten i listan, följer du [anvisningarna för att lägga till din enhet.](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
+Om du vill distribuera till en fjär renhet i stället för den lokala enheten och du inte ser den önskade mål enheten i listan, följer du [anvisningarna för att lägga till din enhet.](/windows-server/manage/windows-admin-center/use/get-started#connecting-to-managed-nodes-and-clusters).
 
    ![Första instrument panel för Windows administrations Center med mål enheten listad](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
@@ -136,7 +136,7 @@ När distributionen är klar är du redo att etablera enheten. Välj **Nästa: A
 Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har gjort det.
 
 > [!NOTE]
-> Följande PowerShell-process beskriver hur du skapar en lokal värd distribution av Azure IoT Edge för Linux i Windows. Om du vill skapa en distribution till en fjärran sluten mål enhet med hjälp av PowerShell kan du använda [fjärr-PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote) för att upprätta en anslutning till en fjärran sluten enhet och köra kommandona på distans på enheten.
+> Följande PowerShell-process beskriver hur du skapar en lokal värd distribution av Azure IoT Edge för Linux i Windows. Om du vill skapa en distribution till en fjärran sluten mål enhet med hjälp av PowerShell kan du använda [fjärr-PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) för att upprätta en anslutning till en fjärran sluten enhet och köra kommandona på distans på enheten.
 
 1. Kör följande kommandon i en upphöjd PowerShell-session för att ladda ned IoT Edge för Linux i Windows.
 
@@ -173,9 +173,8 @@ Installera IoT Edge för Linux på Windows på mål enheten om du inte redan har
    Deploy-Eflow
    ```
 
-   <!-- Most likely temporary until cmdlet is fully documented -->
    > [!NOTE]
-   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Granska PowerShell-modulen AzureEFLOW. psm1 för att se parametrarna och deras innebörd (se under C:\Program Files\WindowsPowerShell\Modules\AzureEFLOW).
+   > Du kan köra det här kommandot utan parametrar eller anpassa distributionen med parametrar om du vill. Du kan referera till [referensen IoT Edge för Linux på Windows PowerShell-skript](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) för att se deras betydelser.
 
 1. Ange "Y" om du vill acceptera licens villkoren.
 
@@ -319,7 +318,10 @@ I det här avsnittet beskrivs hur du konfigurerar enheten automatiskt med hjälp
 
 Kontrol lera att IoT Edge för Linux på Windows har installerats och kon figurer ATS på IoT Edge enheten.
 
+# <a name="windows-admin-center"></a>[Windows administrations Center](#tab/windowsadmincenter)
+
 1. Välj din IoT Edge-enhet i listan över anslutna enheter i Windows administrations Center för att ansluta till den.
+
 1. På sidan enhets översikt visas viss information om enheten:
 
     1. I avsnittet **IoT Edge modul List** visas körning av moduler på enheten. När IoT Edge tjänsten startar för första gången bör du bara se modulen **edgeAgent** som körs. EdgeAgent-modulen körs som standard och hjälper till att installera och starta ytterligare moduler som du distribuerar till din enhet.
@@ -338,6 +340,38 @@ Kontrol lera att IoT Edge för Linux på Windows har installerats och kon figure
        ```bash
        sudo iotedge check
        ```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+1. Logga in på IoT Edge för Linux på en virtuell Windows-dator med hjälp av följande kommando i PowerShell-sessionen:
+
+   ```azurepowershell-interactive
+   Ssh-EflowVm
+   ```
+
+1. När du är inloggad kan du kontrol lera listan med att köra IoT Edge moduler med följande Linux-kommando:
+
+   ```bash
+   iotedge list
+   ```
+
+1. Om du behöver felsöka IoT Edge tjänsten använder du följande Linux-kommandon.
+
+    1. Hämta tjänstloggar om du behöver felsöka tjänsten.
+
+       ```bash
+       journalctl -u iotedge
+       ```
+
+    2. Använd `check` verktyget för att verifiera enhetens konfiguration och anslutnings status.
+
+       ```bash
+       sudo iotedge check
+       ```
+
+---
 
 ## <a name="next-steps"></a>Nästa steg
 

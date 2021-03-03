@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Arc-aktiverade servrar för att han
 keywords: Azure Automation, DSC, PowerShell, önskad tillstånds konfiguration, uppdaterings hantering, ändrings spårning, inventering, Runbooks, python, grafisk, hybrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 615835e5a11fac0b09a56e10084249ea493d794d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686231"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Vad är Azure Arc-aktiverade servrar?
 
@@ -57,7 +57,7 @@ Om datorn till exempel är registrerad i Azure-bågen i regionen USA, östra, la
 
 ### <a name="supported-environments"></a>Miljöer som stöds
 
-Arc-aktiverade servrar stöder hantering av fysiska servrar och virtuella datorer som finns *utanför* Azure. Mer information om vilka hybrid moln miljöer som är värdar för virtuella datorer finns i [Agent-overview. MD # Supported-Environments].
+Arc-aktiverade servrar stöder hantering av fysiska servrar och virtuella datorer som finns *utanför* Azure. För detaljerad information om vilka hybrid moln miljöer som är värdar för virtuella datorer, se [krav för anslutna maskin agenter](agent-overview.md#supported-environments).
 
 > [!NOTE]
 > Arc-aktiverade servrar har inte utformats eller stöds för att aktivera hantering av virtuella datorer som körs i Azure.

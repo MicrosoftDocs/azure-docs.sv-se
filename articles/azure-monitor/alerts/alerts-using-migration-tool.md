@@ -4,29 +4,20 @@ description: Lär dig hur du använder verktyget för frivillig migrering för a
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 02/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 28ccdde85f2873839fbe977c3c991177ac8bb3bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 644346c7355df581843fa8a838eea50cfeccefd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729104"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Använd verktyget för frivillig migrering för att migrera dina klassiska aviserings regler
 
-Som [tidigare](../platform/monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Ett Migreringsverktyg var tillgängligt i Azure Portal till kunder som använde klassiska aviserings regler och som vill utlösa migrering själva. Den här artikeln förklarar hur du använder det Migreringsverktyg, som även kommer att användas för återstående aviseringar som väntar på ytterligare meddelande.
+Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning till och med **31 maj 2021**. Klassiska aviseringar för Azure Government molnet och Azure Kina 21Vianet kommer att dra tillbaka den **29 februari 2024**.
 
-## <a name="benefits-of-new-alerts"></a>Fördelar med nya aviseringar
-
-Klassiska aviseringar ersätts med nya, enhetliga aviseringar i Azure Monitor. Den nya varnings plattformen har följande fördelar:
-
-- Du kan få aviseringar på en mängd olika flerdimensionella mått för [många fler Azure-tjänster](alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
-- De nya måtten Alerts stöder [varnings regler för flera resurser](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) som avsevärt minskar behovet av att hantera många regler.
-- Den enhetliga meddelande mekanismen, som stöder:
-  - [Åtgärds grupper](../platform/action-groups.md), en modulär meddelande funktion som fungerar med alla nya aviserings typer (statistik, logg och aktivitets logg).
-  - Nya aviserings metoder som SMS, röst och ITSM-anslutningsprogram.
-- Den [enhetliga aviserings upplevelsen](../platform/alerts-overview.md) ger alla aviseringar om olika signaler (mått, logg och aktivitets logg) till en enda plats.
+Ett Migreringsverktyg är tillgängligt i Azure Portal till kunder som använde klassiska aviserings regler och som vill utlösa migrering själva. Den här artikeln förklarar hur du använder migreringsverktyget.
 
 ## <a name="before-you-migrate"></a>Innan du migrerar
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 754e9516c5fd47668cbff5bdc64b8dfdeed050d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595764"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705148"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Vanliga frågor och svar om data insamling, agenter och arbets ytor
 
@@ -31,7 +31,7 @@ Nej. Arbets ytor som skapats av Security Center, och som kon figurer ATS för Az
 
 - **Azure Defender av** – Security Center aktiverar lösningen "SecurityCenterFree" på standard arbets ytan. Du debiteras inte om Azure Defender är inaktive rad.
 
-- **Azure Defender på** – Security Center aktiverar säkerhets lösningen på standard arbets ytan.
+- **Azure Defender på** – Security Center aktiverar "Security"-lösningen på standard arbets ytan.
 
 Mer information om priser finns i [Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -146,7 +146,7 @@ Om Log Analytics-agenten installeras direkt på den virtuella datorn (inte som e
 
 Den installerade agenten fortsätter att rapportera till sina redan konfigurerade arbets ytor och rapporterar dessutom till arbets ytan som kon figurer ATS i Security Center (Multi-värdar stöds på Windows-datorer).
 
-Om den konfigurerade arbets ytan är en användar arbets yta (inte Security Center standard arbets ytan) måste du installera lösningen "Security/" SecurityCenterFree på den för Security Center för att börja bearbeta händelser från virtuella datorer och datorer som rapporterar till arbets ytan.
+Om den konfigurerade arbets ytan är en användar arbets yta (inte Security Center standard arbets ytan) måste du installera lösningen "säkerhet" eller "SecurityCenterFree" på den för Security Center för att börja bearbeta händelser från virtuella datorer och datorer som rapporterar till arbets ytan.
 
 För Linux-datorer stöds inte agent multi-värdar ännu, vilket innebär att om en befintlig agent installation identifieras sker ingen automatisk etablering och datorns konfiguration ändras inte.
 
@@ -207,7 +207,7 @@ När migreringen är klar kan Security Center inte samla in säkerhets data frå
 
 Installera Log Analytics agent-tillägget manuellt så Security Center kan samla in säkerhets data från dina virtuella datorer och tillhandahålla rekommendationer och aviseringar. Se [agent installation för virtuell Windows-dator](../virtual-machines/extensions/oms-windows.md) eller [agent installation för virtuell Linux-dator](../virtual-machines/extensions/oms-linux.md) för att få hjälp med installationen.
 
-Du kan ansluta agenten till en befintlig anpassad arbets yta eller Security Center skapade arbets ytan. Om en anpassad arbets yta inte har lösningarna "säkerhet" eller "SecurityCenterFree" aktiverade måste du tillämpa en lösning. Om du vill använda väljer du den anpassade arbets ytan eller prenumerationen och använder en pris nivå via sidan **säkerhets policy – pris nivå** .
+Du kan ansluta agenten till en befintlig anpassad arbets yta eller Security Center skapade arbets ytan. Om en anpassad arbets yta inte har lösningarna "säkerhet" eller "SecurityCenterFree" aktiverade måste du använda en lösning. Om du vill använda väljer du den anpassade arbets ytan eller prenumerationen och använder en pris nivå via sidan **säkerhets policy – pris nivå** .
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Aktivera eller inaktivera Azure Defender":::
 

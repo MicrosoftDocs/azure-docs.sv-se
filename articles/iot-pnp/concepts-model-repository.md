@@ -1,26 +1,26 @@
 ---
 title: Förstå koncepten för enhets modellens lagrings plats | Microsoft Docs
-description: Som en lösnings utvecklare eller IT-proffs kan du läsa om de grundläggande begreppen i enhets modellens lagrings plats.
+description: Som en lösnings utvecklare eller IT-proffs kan du läsa om de grundläggande begreppen för enhets modellens lagrings plats.
 author: rido-min
 ms.author: rmpablos
 ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920550"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742151"
 ---
-# <a name="device-model-repository"></a>Enhets modellens lagrings plats
+# <a name="device-models-repository"></a>Lagrings plats för enhets modeller
 
 Enhets modellens lagrings plats (DMR) gör det möjligt för enhets byggare att hantera och dela IoT Plug and Play enhets modeller. Enhets modellerna är JSON LD-dokument som definierats med hjälp av [DTDL (Digital Garns Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 DMR definierar ett mönster för att lagra DTDL-gränssnitt i en mappstruktur baserat på enhetens dubbla modell identifierare (DTMI). Du kan hitta ett gränssnitt i DMR genom att konvertera DTMI till en relativ sökväg. Till exempel `dtmi:com:example:Thermostat;1` översätts DTMI till `/dtmi/com/example/thermostat-1.json` .
 
-## <a name="public-device-model-repository"></a>Lagrings plats för offentlig enhets modell
+## <a name="public-device-models-repository"></a>Lagrings plats för offentliga enhets modeller
 
 Microsoft är värd för en offentlig DMR med följande egenskaper:
 
@@ -28,7 +28,7 @@ Microsoft är värd för en offentlig DMR med följande egenskaper:
 - Oföränderlighets.  När den har publicerats går det inte att uppdatera ett gränssnitt.
 - Hyper-Scale. Microsoft tillhandahåller den infrastruktur som krävs för att skapa en säker, skalbar slut punkt där du kan publicera och använda enhets modeller.
 
-## <a name="custom-device-model-repository"></a>Anpassad lagrings plats för enhets modell
+## <a name="custom-device-models-repository"></a>Lagrings plats för anpassade enhets modeller
 
 Använd samma DMR-mönster för att skapa en anpassad DMR i valfritt lagrings medium, t. ex. lokalt fil system eller anpassade HTTP-webbservrar. Du kan hämta enhets modeller från den anpassade DMR på samma sätt som från den offentliga DMR genom att ändra bas-URL: en som används för att få åtkomst till DMR.
 

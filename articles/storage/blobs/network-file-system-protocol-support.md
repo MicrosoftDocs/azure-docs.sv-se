@@ -5,27 +5,48 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 52f7b328b013fd520787fca420a45ffdc5e9d9b1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a49c51d2afd464e7bea910ae0abe3dd02e939dbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718507"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage (för hands version)
 
-Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet gör att Windows-eller Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. 
+Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet ger kompatibilitet med Linux-filsystem vid objekt lagrings skala och priser och gör att Windows-eller Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. 
 
 > [!NOTE]
 > NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea Central och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
 
+Det är alltid en utmaning att köra storskaliga äldre arbets belastningar, till exempel HPC (data behandling med höga prestanda) i molnet. En orsak är att programmen ofta använder traditionella fil protokoll som NFS eller SMB (Server Message Block) för att få åtkomst till data. Interna moln lagrings tjänster fokuserar också på objekt lagring som har ett platt namn område och omfattande metadata i stället för fil system som tillhandahåller ett hierarkiskt namn område och effektiva metadata-åtgärder. 
+
+Blob Storage stöder nu ett hierarkiskt namn område och när det kombineras med NFS 3,0-protokoll stöd gör Azure det mycket enklare att köra äldre program i storskalig lagring av moln objekt. 
+
+## <a name="applications-and-workloads-suited-for-this-feature"></a>Program och arbets belastningar som passar för den här funktionen
+
+NFS 3,0-protokoll funktionen passar bäst för bearbetning av stora data flöden, storskaliga Läs intensiva arbets belastningar, till exempel medie bearbetning, risk simulering och genomik. Du bör överväga att använda den här funktionen för andra typer av arbets belastningar som använder flera läsare och många trådar, vilket kräver hög bandbredd. 
+
+## <a name="nfs-30-and-the-hierarchical-namespace"></a>NFS 3,0 och hierarkiskt namn område
+
+NFS 3,0 protokoll stöd kräver att blobbar organiseras i på ett hierarkiskt namn område. Du kan aktivera ett hierarkiskt namn område när du skapar ett lagrings konto. Möjligheten att använda ett hierarkiskt namn område introducerades av Azure Data Lake Storage Gen2. Den ordnar objekt (filer) i en hierarki med kataloger och under kataloger på samma sätt som fil systemet på datorn är ordnat.  Det hierarkiska namn området skalas linjärt och försämrar inte data kapaciteten eller prestandan. Olika protokoll sträcker sig från det hierarkiska namn området. NFS 3,0-protokollet är ett av de här tillgängliga protokollen.   
+
+> [!div class="mx-imgBorder"]
+> ![hierarkiskt namn område](./media/network-protocol-support/hierarchical-namespace-and-nfs-support.png)
+  
+## <a name="data-stored-as-block-blobs"></a>Data som lagras som block-blobbar
+
+Om du aktiverar stöd för NFS 3,0-protokoll kommer alla data i ditt lagrings konto att lagras som block-blobbar. Block-blobbar är optimerade för att effektivt bearbeta stora mängder Läs tung data. Block-blobar består av block. Varje block identifieras av ett block-ID. En Block-Blob kan innehålla upp till 50 000 block. Varje block i en Block-Blob kan ha olika storlek, upp till den högsta tillåtna storleken för den tjänst version som ditt konto använder.
+
+När programmet gör en begäran med hjälp av NFS 3,0-protokollet, översätts denna begäran till en kombination av Block-Blob-åtgärder. Till exempel översätts NFS 3,0 Read RPC-begäranden (Remote Procedure Call) till [Hämta BLOB](/rest/api/storageservices/get-blob) -åtgärd. NFS 3,0 Skriv RPC-begäranden översätts till en kombination av [listorna](/rest/api/storageservices/put-block-list) [Hämta block](/rest/api/storageservices/get-block-list), [placera block](/rest/api/storageservices/put-block)och placera block.
+
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Allmänt arbets flöde: montera en lagrings konto behållare
 
-För att montera en lagrings konto behållare måste du göra detta.
+Dina Windows-eller Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. För att montera en lagrings konto behållare måste du göra detta.
 
 1. Registrera NFS 3,0-protokoll funktion med din prenumeration.
 
@@ -58,7 +79,7 @@ En klient kan ansluta via en offentlig eller [privat slut punkt](../common/stora
 
 - Det virtuella nätverk som du konfigurerar för ditt lagrings konto. 
 
-  I den här artikeln hänvisar vi till det virtuella nätverket som det *primära virtuella* nätverket. Läs mer i [bevilja åtkomst från ett virtuellt nätverk](../common/storage-network-security.md#grant-access-from-a-virtual-network).
+  I den här artikeln kommer vi att se detta VNet som *primärt VNet*. Läs mer i [bevilja åtkomst från ett virtuellt nätverk](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
 - Ett peer-kopplat VNet som finns i samma region som det primära virtuella nätverket.
 
@@ -115,4 +136,6 @@ En transaktion debiteras inte under för hands versionen. Prissättningen för t
 
 ## <a name="next-steps"></a>Nästa steg
 
-För att komma igång, se [montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet (för hands version)](network-file-system-protocol-support-how-to.md).
+- För att komma igång, se [montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet (för hands version)](network-file-system-protocol-support-how-to.md).
+
+- Information om hur du optimerar prestanda finns [i Network File System (NFS) 3,0 prestanda överväganden i Azure Blob Storage (för hands version)](network-file-system-protocol-support-performance.md).

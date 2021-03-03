@@ -221,9 +221,9 @@
         - name: Härda Docker-värdarna
           displayName: containers
           href: harden-docker-hosts.md
-        - name: Använda Azure Defender för SQL
-          href: defender-for-sql-usage.md
-          displayName: 'hybrid, arc'
+    - name: Använda Azure Defender för SQL
+      href: defender-for-sql-usage.md
+      displayName: 'hybrid, arc'
     - name: Använda Azure Defender för containerregister
       items:
         - name: Sök igenom dina registeravbildningar efter sårbarheter
@@ -269,8 +269,6 @@
     - name: Skydda dina Kubernetes-arbetsbelastningar
       displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
-    - name: Hantera användardata för undersökning
-      href: security-center-investigation-user-data.md
     - name: Skaffa klientorganisationstäckande synlighet
       href: security-center-management-groups.md
     - name: Anpassa din SQL-informationsskyddsprincip
@@ -292,7 +290,7 @@
           href: faq-vms.md
         - name: Befintliga Azure Log Analytics-användare
           href: faq-azure-monitor-logs.md
-    - name: Inbyggda säkerhetsprinciper
+    - name: Inbyggda Azure Policy-program
       displayName: 'samples, policy'
       href: policy-reference.md
     - name: Blogg om Azure-översikt

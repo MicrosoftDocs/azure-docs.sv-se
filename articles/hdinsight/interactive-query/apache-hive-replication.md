@@ -4,12 +4,12 @@ description: Lär dig hur du använder Hive-replikering i HDInsight-kluster för
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733065"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Använda Apache Hive replikering i Azure HDInsight-kluster
 
@@ -17,9 +17,9 @@ I samband med databaser och lager, är replikering processen att duplicera entit
 
 Hive-replikering har utvecklats under åren med nyare versioner som ger bättre funktionalitet och är snabbare och mindre resurs krävande. I den här artikeln diskuterar vi Hive-replikering (Replv2) som stöds i båda kluster typerna HDInsight 3,6 och HDInsight 4,0.
 
-## <a name="advantages-of-replv2"></a>Fördelar med Replv2
+## <a name="advantages-of-replv2"></a>Fördelar med replv2
 
-[Hive-ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) eller (Replv2) har följande fördelar jämfört med den första versionen av Hive-replikering som använde Hive [import-export](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport):
+[Hive-ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (kallas även Replv2) har följande fördelar jämfört med den första versionen av Hive-replikering som använde Hive [import-export](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport):
 
 - Händelse-baserad stegvis replikering
 - Replikering vid tidpunkt  

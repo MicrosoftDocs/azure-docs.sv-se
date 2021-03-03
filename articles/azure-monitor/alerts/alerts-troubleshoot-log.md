@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/22/2020
-ms.openlocfilehash: b877cba794f97dd4736e30a72d91695774c8e688
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9352b27002162e08d53bc8166ceddd010be3c8d1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738658"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Felsöka logg aviseringar i Azure Monitor  
 
 Den här artikeln visar hur du löser vanliga problem med logg aviseringar i Azure Monitor. Den innehåller också lösningar på vanliga problem med funktioner och konfiguration av logg aviseringar.
 
-Logg aviseringar gör att användare kan använda en [Log Analytics](../log-query/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Regler kan utlösa en eller flera åtgärder med hjälp av [Åtgärds grupper](../platform/action-groups.md). [Lär dig mer om funktioner och terminologi för logg aviseringar](alerts-unified-log.md).
+Logg aviseringar gör att användare kan använda en [Log Analytics](../logs/log-analytics-tutorial.md) fråga för att utvärdera resurser loggar varje uppsättnings frekvens och utlösa en avisering baserat på resultaten. Regler kan utlösa en eller flera åtgärder med hjälp av [Åtgärds grupper](./action-groups.md). [Lär dig mer om funktioner och terminologi för logg aviseringar](alerts-unified-log.md).
 
 > [!NOTE]
 > Den här artikeln tar inte hänsyn till fall där Azure Portal visar en varnings regel som utlöses och en avisering inte utförs av en associerad åtgärds grupp. I sådana fall kan du läsa mer om fel sökning [här](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -26,7 +26,7 @@ Logg aviseringar gör att användare kan använda en [Log Analytics](../log-quer
 
 ### <a name="data-ingestion-time-for-logs"></a>Data hämtnings tid för loggar
 
-Azure Monitor bearbetar terabytes kunders loggar från hela världen, vilket kan orsaka [svars tid för loggar](../platform/data-ingestion-time.md).
+Azure Monitor bearbetar terabytes kunders loggar från hela världen, vilket kan orsaka [svars tid för loggar](../logs/data-ingestion-time.md).
 
 Loggar är halv strukturerade data och mycket mer latenta än mått. Om du har mer än 4 minuters fördröjning i utlösta aviseringar bör du överväga att använda [mått aviseringar](alerts-metric-overview.md). Du kan skicka data till mått lagret från loggar med hjälp av [mått aviseringar för loggar](alerts-metric-logs.md).
 
@@ -60,7 +60,7 @@ En konfigurerad [logg aviserings regel i Azure Monitor](./alerts-log.md) kan utl
 
 ### <a name="alert-triggered-by-partial-data"></a>Avisering utlöst av partiella data
 
-Azure Monitor bearbetar terabytes kunders loggar från hela världen, vilket kan orsaka [svars tid för loggar](../platform/data-ingestion-time.md).
+Azure Monitor bearbetar terabytes kunders loggar från hela världen, vilket kan orsaka [svars tid för loggar](../logs/data-ingestion-time.md).
 
 Loggar är halv strukturerade data och mycket mer latenta än mått. Om du har många fel vid fel tändning i notifieringar, bör du överväga att använda [mått aviseringar](alerts-metric-overview.md). Du kan skicka data till mått lagret från loggar med hjälp av [mått aviseringar för loggar](alerts-metric-logs.md).
 
@@ -87,7 +87,7 @@ SecurityEvent
 
 Du behöver inte lägga till aviserings logik i frågan och göra detta kan till och med orsaka problem. I exemplet ovan, om du inkluderar `count` i din fråga, resulterar det alltid i värdet 1, eftersom aviserings tjänsten kommer att göra `count` `count` .
 
-Den optimerade frågan är den som används för att köra logg aviserings tjänsten. Du kan köra den ändrade frågan i Log Analytics [Portal](../log-query/log-query-overview.md) eller [API](/rest/api/loganalytics/).
+Den optimerade frågan är den som används för att köra logg aviserings tjänsten. Du kan köra den ändrade frågan i Log Analytics [Portal](../logs/log-query-overview.md) eller [API](/rest/api/loganalytics/).
 
 För arbets ytor och Application Insights kallas det **fråga som ska köras** i villkors fönstret. I alla andra resurs typer väljer du **Visa slutgiltig varnings fråga** på fliken villkor.
 
@@ -108,7 +108,7 @@ Azure Monitor kommer att inaktivera logg aviseringen efter en vecka om den Miss 
 När en regel för logg avisering skapas, verifieras frågan för korrekt syntax. Men ibland kan det hända att frågan som anges i logg aviserings regeln börjar fungera. Några vanliga orsaker är:
 
 - Reglerna har skapats via API: et och verifieringen hoppades över av användaren.
-- Frågan [körs på flera resurser](../log-query/cross-workspace-query.md) och en eller flera av resurserna har tagits bort eller flyttats.
+- Frågan [körs på flera resurser](../logs/cross-workspace-query.md) och en eller flera av resurserna har tagits bort eller flyttats.
 - [Frågan misslyckades](https://dev.loganalytics.io/documentation/Using-the-API/Errors) på grund av följande:
     - Loggnings lösningen [distribuerades inte till arbets ytan](../insights/solutions.md#install-a-monitoring-solution), så tabellerna skapas inte.
     - Data slutade flöda till en tabell i frågan i mer än 30 dagar.
@@ -219,5 +219,5 @@ Om frågan Miss lyckas under sju dagar kontinuerligt, kommer Azure Monitor att i
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [logg aviseringar i Azure](./alerts-unified-log.md).
-- Läs mer om hur du [konfigurerar logg aviseringar](../log-query/log-query-overview.md).
-- Läs mer om [logg frågor](../log-query/log-query-overview.md).
+- Läs mer om hur du [konfigurerar logg aviseringar](../logs/log-query-overview.md).
+- Läs mer om [logg frågor](../logs/log-query-overview.md).

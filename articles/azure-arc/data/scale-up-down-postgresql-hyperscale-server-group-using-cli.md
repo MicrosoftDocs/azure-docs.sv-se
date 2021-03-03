@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148057"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687557"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Skala upp och ned en Azure Database for PostgreSQL storskalig Server grupp med CLI (azdata eller kubectl)
 
@@ -180,6 +180,21 @@ Den nya definitionen av Server gruppen visas:
 ## <a name="scale-down-the-server-group"></a>Skala ned Server gruppen
 
 För att skala ned Server gruppen som du kör samma kommando, men ange lägre värden för de inställningar som du vill skala ned. Om du vill ta bort begär Anden och/eller gränser anger du dess värde som tom sträng.
+
+## <a name="reset-to-default-values"></a>Återställ till standardvärden
+Om du vill återställa kärn-/minnes gränser/begär ande parametrar till standardvärdena redigerar du dem och skickar en tom sträng i stället för ett faktiskt värde. Om du till exempel vill återställa parametern för kärn gränsen (cl) kör du följande kommandon:
+- på en Linux-klient:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- på en Windows-klient: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>Nästa steg
 

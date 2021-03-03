@@ -4,19 +4,21 @@ description: Azure Security benchmark v2 till gångs hantering
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368910"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735819"
 ---
 # <a name="security-control-v2-asset-management"></a>Säkerhets kontroll v2: till gångs hantering
 
 Till gångs hantering omfattar kontroller för att säkerställa ökad säkerhet och styrning över Azure-resurser. Detta inkluderar rekommendationer om behörigheter för säkerhets personal, säkerhets åtkomst till till gångs inventering och hantering av godkännanden för tjänster och resurser (inventering, spårning och rätt).
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: nätverks säkerhet](../../governance/policy/samples/azure-security-benchmark#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Se till att säkerhetsteamet har insyn i risker gällande tillgångar
 
@@ -24,13 +26,13 @@ Till gångs hantering omfattar kontroller för att säkerställa ökad säkerhet
 |--|--|--|--|
 | AM-1 | 1,1, 1,2 | CM – 8, PM-5 |
 
-Se till att säkerhets teamen beviljas säkerhets läsar behörigheter i din Azure-klient och prenumerationer så att de kan övervaka säkerhets risker med hjälp av Azure Security Center. 
+Se till att säkerhets teamen beviljas säkerhets läsar behörigheter i din Azure-klient och prenumerationer så att de kan övervaka säkerhets risker med hjälp av Azure Security Center.
 
-Beroende på hur säkerhetsteamets ansvarsområden är strukturerade kan ansvaret för övervakning av säkerhetsrisker ligga hos en central säkerhetsgrupp eller ett lokalt team. Detta innebär att säkerhetsinsikter och -risker alltid måste samlas centralt inom en organisation. 
+Beroende på hur säkerhets teamets ansvars områden är strukturerade kan övervakning av säkerhets risker vara ansvaret för en central säkerhets grupp eller ett lokalt team. Detta innebär att säkerhetsinsikter och -risker alltid måste samlas centralt inom en organisation. 
 
 Behörigheter för säkerhetsläsare kan tillämpas brett över en hel klientorganisation (rothanteringsgrupp) eller omfattas av hanteringsgrupper eller specifika prenumerationer. 
 
-Obs! Ytterligare behörigheter kan krävas för att få insyn i arbetsbelastningar och tjänster. 
+Obs! Ytterligare behörigheter kan krävas för att få insyn i arbetsbelastningar och tjänster.
 
 - [Översikt över säkerhetsläsarrollen](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -52,9 +54,9 @@ Obs! Ytterligare behörigheter kan krävas för att få insyn i arbetsbelastning
 
 Se till att säkerhets teamen har åtkomst till en kontinuerligt uppdaterad inventering av till gångar på Azure. Säkerhetsteamet behöver den här inventeringen till att utvärdera organisationens potentiella exponering för nya risker samt som indata till löpande förbättringar av säkerheten. 
 
-Azure Security Center Inventory-funktionen och Azure Resource Graph kan fråga efter och identifiera alla resurser i dina prenumerationer, inklusive Azure-tjänster, program och nätverks resurser.  
+Azure Security Center Inventory-funktionen och Azure Resource Graph kan fråga efter och identifiera alla resurser i dina prenumerationer, inklusive Azure-tjänster, program och nätverks resurser.
 
-Organisera tillgångar logiskt enligt organisationens taxonomi med hjälp av taggar och andra metadata i Azure (namn, beskrivning och kategori).  
+Organisera till gångar logiskt enligt organisationens taxonomi med hjälp av taggar och andra metadata i Azure (namn, beskrivning och kategori).
 
 - [Skapa frågor med Azure Resource Graph Explorer](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Organisera tillgångar logiskt enligt organisationens taxonomi med hjälp av tag
 |--|--|--|--|
 | AM-3 | 2,3, 2,4 | CM – 7, CM-8 |
 
-Använd Azure Policy till att granska och begränsa vilka tjänster användarna kan etablera i miljön. Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Du kan också använda Azure Monitor till att skapa regler för att utlösa aviseringar när en icke-godkänd tjänst upptäcks.
+Använd Azure Policy till att granska och begränsa vilka tjänster användarna kan etablera i miljön. Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna. Du kan också använda Azure Monitor till att skapa regler för att utlösa aviseringar när en icke-godkänd tjänst upptäcks.
 
 - [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Använd Azure Policy till att granska och begränsa vilka tjänster användarna 
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Garantera säker livscykelhantering för tillgångar
 
@@ -110,7 +112,7 @@ Ta bort Azure-resurser när de inte längre behövs.
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Använd villkorlig åtkomst för Azure AD för att begränsa användarnas möjli
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Använd Azure Security Center (ASC) adaptiva program kontroller för att identif
 
 Använd Azure Automation Ändringsspårning och inventering för att automatisera insamlingen av inventerings information från dina virtuella Windows-och Linux-datorer. Program varu namn, version, utgivare och uppdaterings tid är tillgängliga från Azure Portal. Om du vill hämta programmets installations datum och annan information aktiverar du diagnostik på gästnivå och dirigerar Windows-händelseloggen till Log Analytics-arbetsyta.
 
-Beroende på typen av skript kan du använda konfigurationer för operativ system eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript i Azure Compute-resurser. 
+Beroende på typen av skript kan du använda konfigurationer för operativ system eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript i Azure Compute-resurser.
 
 Du kan också använda en lösning från tredje part för att identifiera och identifiera ej godkänd program vara.
 
@@ -160,6 +162,6 @@ Du kan också använda en lösning från tredje part för att identifiera och id
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

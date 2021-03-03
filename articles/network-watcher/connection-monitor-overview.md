@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712325"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Övervakning av nätverks anslutning med anslutnings övervakaren
 
@@ -89,7 +89,7 @@ PortNumbers som ska användas måste ändras manuellt för Linux-datorer.
 
  Observera att port nummer som används ska vara samma för alla agenter som används i en arbets yta. 
 
-Skriptet skapar register nycklar som krävs av lösningen. Det skapar också regler för Windows-brandväggen för att tillåta agenter att skapa TCP-anslutningar med varandra. Register nycklarna som skapas av skriptet anger om fel söknings loggarna och sökvägen till logg filen ska loggas. Skriptet definierar också den agent-TCP-port som används för kommunikation. Värdena för dessa nycklar anges automatiskt av skriptet. Ändra inte nycklarna manuellt. Porten som öppnas som standard är 8084. Du kan använda en anpassad port genom att ange parametern port nummer i skriptet. Använd samma port på alla datorer där skriptet körs. [Läs mer](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) om nätverks kraven för Log Analytics agenter
+Skriptet skapar register nycklar som krävs av lösningen. Det skapar också regler för Windows-brandväggen för att tillåta agenter att skapa TCP-anslutningar med varandra. Register nycklarna som skapas av skriptet anger om fel söknings loggarna och sökvägen till logg filen ska loggas. Skriptet definierar också den agent-TCP-port som används för kommunikation. Värdena för dessa nycklar anges automatiskt av skriptet. Ändra inte nycklarna manuellt. Porten som öppnas som standard är 8084. Du kan använda en anpassad port genom att ange parametern port nummer i skriptet. Använd samma port på alla datorer där skriptet körs. [Läs mer](../azure-monitor/agents/log-analytics-agent.md#network-requirements) om nätverks kraven för Log Analytics agenter
 
 Skriptet konfigurerar endast Windows-brandväggen lokalt. Om du har en nätverks brand vägg kontrollerar du att den tillåter trafik som är avsedd för TCP-porten som används av Övervakare av nätverksprestanda.
 

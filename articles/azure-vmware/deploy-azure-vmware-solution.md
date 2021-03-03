@@ -4,12 +4,12 @@ description: Lär dig hur du använder den information som samlas in i planering
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652742"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703870"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Distribuera och konfigurera Azure VMware-lösning
 
@@ -62,7 +62,14 @@ I det här exemplet har 10.74.72.0/22-nätverket inträffat under distributionen
 
 Logga in i hopp rutan som du skapade i föregående steg. När du har loggat in öppnar du en webbläsare och navigerar till och loggar in i både vCenter-och NSX-chef.  
 
-Du kan identifiera vCenter-och NSX-konsolens IP-adresser och autentiseringsuppgifter i Azure Portal.  Välj ditt privata moln och välj sedan **identitet > standard** i vyn **Översikt** . 
+Du kan identifiera vCenter-och NSX-konsolens IP-adresser och autentiseringsuppgifter i Azure Portal.  Välj ditt privata moln och **Hantera** sedan  >  **identiteten**.
+
+>[!TIP]
+>Välj **skapa ett nytt lösen ord** om du vill generera nya vCenter-och NSX-lösenord.
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Skapa ett nätverks segment i Azure VMware-lösningen
 

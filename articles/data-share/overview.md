@@ -5,13 +5,14 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 10/30/2020
-ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 3a7c73e4a5ba00155ab905f28edbcb0eb42c0539
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724871"
 ---
 # <a name="what-is-azure-data-share"></a>Vad är Azure Data Share?
 
@@ -19,7 +20,7 @@ I dagens värld visas data som en viktig strategisk till gång som många organi
 
 Många organisationer måste vara konto bara för de data som de har delat. Förutom ansvar skulle många organisationer vilja kunna styra, hantera och övervaka all sin data delning på ett enkelt sätt. I dagens värld, där data förväntas fortsätta att växa i en exponentiell takt, behöver organisationer ett enkelt sätt att dela Big data. Kunder efterfrågar de senaste data som krävs för att säkerställa att de kan komma i rätt tid.
 
-Azure Data Share gör det möjligt för organisationer att enkelt och säkert dela data med flera kunder och partner. Med bara några klick kan du etablera ett nytt data delnings konto, lägga till data uppsättningar och bjuda in kunder och partner till din data resurs. Data leverantörer har alltid kontroll över de data som de har delat. Azure Data Share gör det enkelt att hantera och övervaka vilka data som delades, när och av vem. 
+Azure Data Share gör det möjligt för organisationer att enkelt och säkert dela data med flera kunder och partner. Med bara några klick kan du etablera ett nytt datadelningskonto, lägga till datauppsättningar och bjuda in kunder och partner till din dataresurs. Dataleverantörer har alltid kontroll över de data som de har delat. Azure Data Share gör det enkelt att hantera och övervaka vilka data som delades, när och av vem. 
 
 En DataProvider kan hålla kontrollen över hur deras data hanteras genom att ange användnings villkoren för data resursen. Datakonsumenten måste acceptera dessa villkor innan de kan ta emot data. Dataleverantörer kan ange hur ofta datakonsumenter får uppdateringar. Åtkomsten till nya uppdateringar kan när som helst återkallas av dataleverantören. 
 
@@ -47,7 +48,7 @@ Data leverantörer kan erbjuda sina data konsumenters stegvisa uppdateringar av 
 
 När en data konsument accepterar en data resurs kan de ta emot data i ett valfritt data lager. Om dataprovidern t. ex. delar data med Azure Blob Storage kan data konsumenten ta emot dessa data i Azure Data Lake Store. Om data leverantören delar data från en Azure Synapse-analys kan data konsumenten välja om de vill ta emot data i en Azure Data Lake Store, en Azure SQL Database eller en Azure Synapse-analys. Vid delning från SQL-baserade källor kan data konsumenten även välja om de ska ta emot data i Parquet eller CSV. 
 
-Med delning på plats kan data leverantörer dela data där de finns utan att kopiera data. När delnings relationen har upprättats genom Inbjudnings flödet skapas en symbolisk länk mellan dataproviderns käll data lager och data konsument mål data lagret. Data konsumenten kan läsa och fråga efter data i real tid med hjälp av ett eget data lager. Ändringar i käll data lagret är omedelbart tillgängliga för data konsumenten. Delning på plats är för närvarande en för hands version för Azure Datautforskaren.
+Med delning på plats kan data leverantörer dela data där de finns utan att kopiera data. När delnings relationen har upprättats genom Inbjudnings flödet skapas en symbolisk länk mellan dataproviderns käll data lager och data konsument mål data lagret. Data konsumenten kan läsa och fråga efter data i real tid med hjälp av ett eget data lager. Ändringar i käll data lagret är omedelbart tillgängliga för data konsumenten. Delning på plats är för närvarande tillgängligt för Azure Datautforskaren.
 
 ## <a name="key-capabilities"></a>De viktigaste funktionerna
 
@@ -81,7 +82,7 @@ Alla viktiga funktioner som anges ovan stöds via Azure Portal eller via REST-AP
 
 En lista över Azure-regioner som gör Azure-dataresursen tillgänglig finns på sidan [produkter som är tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) och Sök efter Azure Data Share. 
 
-Azure Data Share lagrar inte en kopia av själva data. Data lagras i det underliggande data lager som delas. Om en data producent till exempel lagrar sina data i ett Azure Data Lake Store konto som finns i västra USA, är det där data lagras. Om de delar data med ett Azure Storage konto som finns i västra Europa via ögonblicks bilder, överförs vanligt vis data direkt till det Azure Storage-konto som finns i Västeuropa.
+För metadata som lagras av Azure Data Share, i Sydostasien (Singapore), lagras de i regionen och för alla andra regioner som stöds lagras de i Geo. Azure Data Share lagrar inte en kopia av själva delade data. Data lagras i det underliggande data lager som delas. Om en DataProvider till exempel lagrar sina data i ett Azure Data Lake Storage konto som finns i västra USA, är det där data lagras. Om de delar data med ett Azure Storage konto som finns i västra Europa via ögonblicks bilder, överförs vanligt vis data direkt till det Azure Storage-konto som finns i Västeuropa. 
 
 Azure Data Share-tjänsten behöver inte vara tillgänglig i din region för att utnyttja tjänsten. Om du till exempel har data som lagras i ett Azure Storage konto som finns i en region där Azure Data Share inte är tillgängligt ännu, kan du fortfarande använda tjänsten för att dela dina data. 
 

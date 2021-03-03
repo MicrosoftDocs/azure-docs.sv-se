@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732810"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Nätverks översikt – Azure Database for PostgreSQL – flexibel Server
 
@@ -61,6 +61,8 @@ Här följer några begrepp som du bör känna till när du använder virtuella 
 * **Delegerat undernät** – ett virtuellt nätverk innehåller undernät (under nätverk). Med undernät kan du segmentera ditt virtuella nätverk i mindre adress utrymmen. Azure-resurser distribueras till vissa undernät i ett virtuellt nätverk. 
 
    Din PostgreSQL-flexibla Server måste finnas i ett undernät som endast är **delegerat** för postgresql-flexibel Server användning. Den här delegeringen innebär att endast Azure Database for PostgreSQL flexibla servrar kan använda det under nätet. Inga andra Azure-resurstyper kan finnas i det delegerade undernätet. Du delegerar ett undernät genom att tilldela dess delegations egenskap som Microsoft. DBforPostgreSQL/flexibleServers.
+
+   Lägg till i `Microsoft.Storage` tjänst slut punkten för under nätet delegerad till flexibla servrar. 
 
 * **Nätverks säkerhets grupper (NSG)** Säkerhets regler i nätverks säkerhets grupper gör att du kan filtrera den typ av nätverks trafik som kan flöda in i och ut ur virtuella nätverks under nät och nätverks gränssnitt. Mer information hittar du i [Översikt över nätverks säkerhets gruppen](../../virtual-network/network-security-groups-overview.md) .
 

@@ -7,20 +7,20 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955288"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686401"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Skapa en Azure båg-datakontrollant med Kubernetes-verktyg
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Läs avsnittet [skapa data styrenheten för Azure båg](create-data-controller.md) för översikts information.
 
@@ -175,16 +175,27 @@ Redigera följande efter behov:
 **REKOMMENDERAS FÖR ATT GRANSKA OCH EVENTUELLT ÄNDRA STANDARDVÄRDEN**
 - **lagring.. className**: den lagrings klass som ska användas för datakontrollantens data och loggfiler.  Om du är osäker på tillgängliga lagrings klasser i Kubernetes-klustret kan du köra följande kommando: `kubectl get storageclass` .  Standardvärdet är att `default` det finns en lagrings klass som finns och som har ett namn som `default` inte är en lagrings klass som _är_ standard.  Obs! det finns två className-inställningar som ska anges till önskad lagrings klass – en för data och en för loggar.
 - **ServiceType**: ändra tjänst typen till `NodePort` om du inte använder en Loadbalancer.  Obs: det finns två serviceType-inställningar som måste ändras.
+- På Azure Red Hat OpenShift eller Red Hat OpenShift container Platform måste du tillämpa begränsningen för säkerhets kontext innan du skapar data kontrollen. Följ anvisningarna i [tillämpa en säkerhets kontext begränsning för Azure Arc-aktiverade data tjänster i OpenShift](how-to-apply-security-context-constraint.md).
+- **Säkerhet** Ersätt `security:` inställningarna med följande värden i data Controller yaml-filen för Azure Red Hat OpenShift eller Red Hat OpenShift container Platform. 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **VALFRITT**
 - **namn**: standard namnet för datakontrollanten är `arc` , men du kan ändra den om du vill.
 - **DisplayName**: Ange värdet till samma värde som attributet name överst i filen.
 - **register**: Microsoft container Registry är standard.  Om du hämtar bilderna från Microsoft Container Registry och skickar [dem till ett privat behållar register](offline-deployment.md), anger du IP-adressen eller DNS-namnet för ditt register här.
 - **dockerRegistry**: den image-pull-hemlighet som ska användas för att hämta avbildningar från ett privat behållar register om det behövs.
-- **databas**: standard lagrings platsen på Microsoft container Registry är `arcdata` .  Om du använder ett privat behållar register anger du sökvägen till den mapp/lagrings plats som innehåller de avbildningar av Azure arr-aktiverade data Services-behållare.
+- **databas**: standard lagrings platsen på Microsoft container Registry är `arcdata` .  Om du använder ett privat behållar register anger du sökvägen till den mapp/lagrings plats som innehåller de avbildningar av Azure Arc-aktiverade data Services-behållare.
 - **imageTag**: den aktuella senaste version-taggen är standard i mallen, men du kan ändra den om du vill använda en äldre version.
 
-Exempel på en slutförd datacontroller yaml-fil:
+I följande exempel visas en slutförd datakontrollants yaml-fil. Uppdatera exemplet för din miljö baserat på dina krav och informationen ovan.
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always

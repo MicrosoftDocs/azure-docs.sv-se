@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 90d526a58f4223fc70be5414ce5722238ce2c735
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733439"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Metod tips för en QnA Maker kunskaps bas
 
@@ -18,7 +18,7 @@ ms.locfileid: "100104526"
 
 ## <a name="extraction"></a>Extrahering
 
-QnA Makers tjänsten förbättrar ständigt de algoritmer som extraherar kring från innehåll och expanderar listan över fil-och HTML-format som stöds. Följ [rikt linjerna](../index.yml) för data extrahering baserat på din dokument typ.
+QnA Makers tjänsten förbättrar ständigt de algoritmer som extraherar kring från innehåll och expanderar listan över fil-och HTML-format som stöds. Följ [rikt linjerna](../Concepts/data-sources-and-content.md) för data extrahering baserat på din dokument typ.
 
 I allmänhet bör vanliga frågor och svar vara fristående och inte kombineras med annan information. Produkt handböcker bör ha tydliga rubriker och helst en index sida.
 

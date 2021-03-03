@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/16/2020
-ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/23/2021
+ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964107"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739270"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Dela och ta emot data från Azure Blob Storage och Azure Data Lake Storage
 
@@ -24,6 +24,7 @@ Azure Data Share stöder delning av filer, mappar och fil system från Azure Dat
 När fil system, behållare eller mappar delas i ögonblicks bilds-baserad delning, kan data konsumenter välja att göra en fullständig kopia av delnings data. Eller så kan de använda den stegvisa ögonblicks bilds funktionen för att endast kopiera nya eller uppdaterade filer. Den stegvisa ögonblicks bilds kapaciteten baseras på filernas senaste ändrings tid. 
 
 Befintliga filer med samma namn skrivs över under en ögonblicks bild. En fil som tas bort från källan tas inte bort från målet. Tomma undermappar på källan kopieras inte till målet. 
+
 ## <a name="share-data"></a>Dela data
 
 Använd informationen i följande avsnitt för att dela data med hjälp av Azure Data Share. 
@@ -59,7 +60,7 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
     |---|---|---|
     | Prenumeration | Din prenumeration | Välj en Azure-prenumeration för ditt data resurs konto.|
     | Resursgrupp | *test-resurs-grupp* | Använd en befintlig resurs grupp eller skapa en resurs grupp. |
-    | Plats | *USA, östra 2* | Välj en region för ditt data resurs konto.
+    | Location | *USA, östra 2* | Välj en region för ditt data resurs konto.
     | Namn | *datashareaccount* | Namnge ditt data resurs konto. |
     | | |
 
@@ -184,7 +185,7 @@ Följ stegen i det här avsnittet om du vill konfigurera en plats för att ta em
 ### <a name="trigger-a-snapshot"></a>Utlös en ögonblicks bild
 Stegen i det här avsnittet gäller endast för Snapshot-baserad delning.
 
-1. Du kan utlösa en ögonblicks bild från fliken **information** . På fliken väljer du **Utlös ögonblicks bild**. Du kan välja att utlösa en fullständig ögonblicks bild eller en stegvis ögonblicks bild av dina data. Om du tar emot data från data leverantören för första gången väljer du **fullständig kopia**. 
+1. Du kan utlösa en ögonblicks bild från fliken **information** . På fliken väljer du **Utlös ögonblicks bild**. Du kan välja att utlösa en fullständig ögonblicks bild eller en stegvis ögonblicks bild av dina data. Om du tar emot data från data leverantören för första gången väljer du **fullständig kopia**. När en ögonblicks bild körs kommer efterföljande ögonblicks bilder inte att starta förrän den tidigare slutförts.
 
    ![Skärm bild som visar alternativet Utlös ögonblicks bild.](./media/trigger-snapshot.png "Utlös ögonblicks bild.") 
 
@@ -194,6 +195,14 @@ Stegen i det här avsnittet gäller endast för Snapshot-baserad delning.
 
 ### <a name="view-history"></a>Visa historik
 Du kan bara visa historiken för dina ögonblicks bilder i ögonblicks bilds-baserad delning. Öppna **Historik-fliken för** att visa historiken. Här visas historiken för alla ögonblicks bilder som har genererats under de senaste 30 dagarna. 
+
+## <a name="storage-snapshot-performance"></a>Prestanda för lagrings ögonblicks bilder
+Lagrings ögonblicks bildernas prestanda påverkas av ett antal faktorer utöver antalet filer och storleken på delade data. Vi rekommenderar alltid att du utför dina egna prestanda testningar. Nedan visas några exempel faktorer som påverkar prestanda.
+
+* Samtidig åtkomst till käll-och mål data lager.  
+* Plats för käll-och mål data lager. 
+* För en stegvis ögonblicks bild kan antalet filer i den delade data mängden påverka tiden det tar att hitta listan med filer med senaste ändrings tid efter den senaste lyckade ögonblicks bilden. 
+
 
 ## <a name="next-steps"></a>Nästa steg
 Du har lärt dig hur du delar och tar emot data från ett lagrings konto med hjälp av Azure Data Share-tjänsten. Information om hur du delar från andra data källor finns i [data lager som stöds](supported-data-stores.md).

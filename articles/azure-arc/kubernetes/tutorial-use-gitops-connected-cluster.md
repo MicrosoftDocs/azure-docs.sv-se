@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0ff300a90876841e5a25e4e44ffdaecab2eaee95
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cf079c009e5f6c3ef1ba6f8b22636b9a53b51348
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689240"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Självstudie: distribuera konfigurationer med GitOps på ett Azure Arc-aktiverat Kubernetes-kluster 
 
@@ -26,7 +26,7 @@ I den här självstudien kommer du att använda konfigurationer med GitOps på e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt konto] (https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett befintligt Azure Arc-aktiverat Kubernetes-kopplat kluster.
     - Om du inte har anslutit ett kluster ännu kan du gå igenom vår [Anslut en Azure-båge som är aktive rad Kubernetes kluster snabb start](quickstart-connect-cluster.md).
 - En förståelse för den här funktionens fördelar och arkitektur. Läs mer i [konfigurationer och GitOps-Azure Arc-aktiverad Kubernetes-artikel](conceptual-configurations.md).
@@ -152,7 +152,7 @@ Anpassa konfigurationen med följande valfria parametrar:
 | ------------- | ------------- |
 | `--enable-helm-operator`| Växlar för att aktivera stöd för Helm-diagram distributioner. |
 | `--helm-operator-params` | Diagram värden för Helm-operator (om aktive rad). Till exempel `--set helm.versions=v3`. |
-| `--helm-operator-version` | Diagram version för Helm-operator (om aktive rad). Använd version 1.2.0 +. Standard: ' 1.2.0 '. |
+| `--helm-operator-chart-version` | Diagram version för Helm-operator (om aktive rad). Använd version 1.2.0 +. Standard: ' 1.2.0 '. |
 | `--operator-namespace` | Namn på namn området för operatorn. Standard: standard. Max: 23 tecken. |
 | `--operator-params` | Parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main'``` 
 

@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bc6632b55ba8fd90317a8b5046a3e84d863bf0ef
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221717"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701713"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Aktivera och hantera Azure-lagringsanalys loggar (klassisk)
 
-[Azure-lagringsanalys](storage-analytics.md) innehåller loggar för blobbar, köer och tabeller. Du kan använda [Azure Portal](https://portal.azure.com) för att konfigurera loggar registreras för ditt konto. Den här artikeln visar hur du aktiverar och hanterar loggar. Information om hur du aktiverar mått finns i [Aktivera och hantera Azure-lagringsanalys mått (klassisk)](storage-monitor-storage-account.md).  Det finns kostnader för att undersöka och lagra övervaknings data i Azure Portal. Mer information finns i [Lagringsanalys](storage-analytics.md).
+[Azure-lagringsanalys](storage-analytics.md) innehåller loggar för blobbar, köer och tabeller. Du kan använda [Azure Portal](https://portal.azure.com) för att konfigurera loggar registreras för ditt konto. Den här artikeln visar hur du aktiverar och hanterar loggar. Information om hur du aktiverar mått finns i [Aktivera och hantera Azure-lagringsanalys mått (klassisk)]().  Det finns kostnader för att undersöka och lagra övervaknings data i Azure Portal. Mer information finns i [Lagringsanalys](storage-analytics.md).
 
 > [!NOTE]
 > Vi rekommenderar att du använder Azure Storage loggar i Azure Monitor i stället för Lagringsanalys loggar. Azure Storage loggar i Azure Monitor finns i offentlig för hands version och är tillgänglig för för hands testning i alla offentliga moln regioner. Den här för hands versionen aktiverar loggar för blobbar (som innehåller Azure Data Lake Storage Gen2), filer, köer och tabeller. Mer information finns i följande artiklar:
@@ -191,7 +191,7 @@ Loggdata kan ackumuleras i ditt konto över tid som kan öka lagrings kostnadern
 
    * Ersätt platshållarvärdet `<storage-account-name>` med namnet på ditt lagringskonto. 
 
-6. Använd [Get-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageserviceloggingproperty) för att visa den aktuella logg bevarande principen. I följande exempel skrivs kvarhållningsperiod för blob-och Queue Storage-tjänster till-konsolen.
+6. Använd [Get-AzStorageServiceLoggingProperty](/powershell/module/az.storage/get-azstorageserviceloggingproperty) för att visa den aktuella logg bevarande principen. I följande exempel skrivs kvarhållningsperiod för blob-och Queue Storage-tjänster till-konsolen.
 
    ```powershell
    Get-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -Context $ctx
@@ -202,7 +202,7 @@ Loggdata kan ackumuleras i ditt konto över tid som kan öka lagrings kostnadern
    > [!div class="mx-imgBorder"]
    > ![Bevarande princip i PowerShell-utdata](./media/manage-storage-analytics-logs/retention-period-powershell.png)
 
-7. Använd [set-AzStorageServiceLoggingProperty](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageserviceloggingproperty) för att ändra kvarhållningsperioden. I följande exempel ändras kvarhållningsperioden till 4 dagar.  
+7. Använd [set-AzStorageServiceLoggingProperty](/powershell/module/az.storage/set-azstorageserviceloggingproperty) för att ändra kvarhållningsperioden. I följande exempel ändras kvarhållningsperioden till 4 dagar.  
 
    ```powershell
    Set-AzStorageServiceLoggingProperty -ServiceType Blob, Queue -RetentionDays 4 -Context $ctx
@@ -290,7 +290,6 @@ När du har hämtat dina loggdata kan du se logg posterna i filerna. Loggfilerna
 ## <a name="next-steps"></a>Nästa steg
 
 * Mer information om Lagringsanalys finns i [Lagringsanalys](storage-analytics.md) för Lagringsanalys.
-* [Konfigurera Lagringsanalys mått](storage-monitor-storage-account.md).
 * Mer information om hur du använder ett .NET-språk för att konfigurera lagrings loggning finns i [referens för lagrings klient bibliotek](/previous-versions/azure/dn261237(v=azure.100)). 
 * Allmän information om hur du konfigurerar lagrings loggning med hjälp av REST API finns i [Aktivera och konfigurera Lagringsanalys](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).
 * Läs mer om formatet för Lagringsanalys loggar. Se [Lagringsanalys logg format](/rest/api/storageservices/storage-analytics-log-format).

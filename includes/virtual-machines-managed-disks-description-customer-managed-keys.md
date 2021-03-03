@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/05/2020
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 52b9bee1d43c0f136889a6a54277d4bb45dd4a45
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98792437"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750260"
 ---
 Du kan välja att hantera kryptering på nivån för varje hanterad disk med dina egna nycklar. Kryptering på Server sidan för Managed disks med Kundhanterade nycklar ger en integrerad upplevelse med Azure Key Vault. Du kan antingen importera [dina RSA-nycklar](../articles/key-vault/keys/hsm-protected-keys.md) till Key Vault eller generera nya RSA-nycklar i Azure Key Vault. 
 
@@ -43,3 +43,7 @@ I följande lista beskrivs diagrammet i detalj:
 1. Vid läsning eller skrivning av data skickar Managed disks begär anden till Azure Key Vault att kryptera (omslutning) och dekryptera (unwrap) data krypterings nyckeln för att utföra kryptering och dekryptering av data. 
 
 Information om hur du återkallar åtkomst till Kundhanterade nycklar finns i [Azure Key Vault PowerShell](/powershell/module/azurerm.keyvault/) och [Azure Key Vault CLI](/cli/azure/keyvault). Att återkalla åtkomsten på ett effektivt sätt blockerar åtkomsten till alla data i lagrings kontot, eftersom krypterings nyckeln inte är tillgänglig via Azure Storage.
+
+#### <a name="automatic-key-rotation-of-customer-managed-keys-preview"></a>Automatisk nyckel rotation för Kundhanterade nycklar (förhands granskning)
+
+Du kan välja att aktivera automatisk nyckel rotation till den senaste nyckel versionen. En disk hänvisar till en nyckel via disk krypterings uppsättningen. När du aktiverar automatisk rotation för en disk krypterings uppsättning kommer systemet automatiskt att uppdatera alla hanterade diskar, ögonblicks bilder och avbildningar som refererar till disk krypterings uppsättningen för att använda den nya versionen av nyckeln inom en timme. Funktionen är för närvarande tillgänglig i begränsade regioner i för hands versionen. Information om regionala tillgänglighet finns i avsnittet [regioner som stöds](#supported-regions) .

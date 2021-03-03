@@ -2,13 +2,13 @@
 title: Variabler i mallar
 description: Beskriver hur du definierar variabler i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700345"
 ---
 # <a name="variables-in-arm-templates"></a>Variabler i ARM-mallar
 
@@ -70,10 +70,6 @@ var concatToParam = '${inputValue}-addtoparam'
 
 Du kan använda [mall funktioner](template-functions.md) för att skapa variabelvärdet.
 
-I JSON-mallar kan du inte använda [referens](template-functions-resource.md#reference) funktionen eller någon av [list](template-functions-resource.md#list) funktionerna i variabel deklarationen. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
-
-Referens-och list funktionerna är giltiga när du deklarerar en variabel i en bicep-fil.
-
 I följande exempel skapas ett sträng värde för ett lagrings konto namn. Den använder flera mallar för att hämta ett parameter värde och sammanfogar dem till en unik sträng.
 
 # <a name="json"></a>[JSON](#tab/json)
@@ -92,6 +88,10 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 ---
 
+I JSON-mallar kan du inte använda [referens](template-functions-resource.md#reference) funktionen eller någon av [list](template-functions-resource.md#list) funktionerna i variabel deklarationen. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
+
+I bicep-filer är referens-och list funktionerna giltiga när du deklarerar en variabel.
+
 ## <a name="use-variable"></a>Använd variabel
 
 I följande exempel visas hur du använder variabeln för en resurs egenskap.
@@ -101,6 +101,9 @@ I följande exempel visas hur du använder variabeln för en resurs egenskap.
 I en JSON-mall refererar du till värdet för variabeln med hjälp av funktionen [variabler](template-functions-deployment.md#variables) .
 
 ```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
+},
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
@@ -115,6 +118,8 @@ I en JSON-mall refererar du till värdet för variabeln med hjälp av funktionen
 I en bicep-fil refererar du till värdet för variabeln genom att ange variabel namnet.
 
 ```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+
 resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName
 ```

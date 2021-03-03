@@ -3,12 +3,12 @@ title: Felsöka fel vid säkerhets kopiering av SAP HANA databaser
 description: Beskriver hur du felsöker vanliga fel som kan uppstå när du använder Azure Backup för att säkerhetskopiera SAP HANA-databaser.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411333"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713345"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Felsöka säkerhets kopiering av SAP HANA databaser på Azure
 
@@ -46,13 +46,6 @@ Se [kraven](tutorial-backup-sap-hana-db.md#prerequisites) och [Vad skriptet för
 | Felmeddelande      | <span style="font-weight:normal">Den angivna SAP HANA åtgärden stöds inte</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Möjliga orsaker**    | Azure Backup för SAP HANA stöder inte stegvis säkerhets kopiering och åtgärder som utförs på SAP HANA ursprungliga klienter (Studio/cockpit/DBA-cockpit) |
-| **Rekommenderad åtgärd** | Mer information finns [här](./sap-hana-backup-support-matrix.md#scenario-support). |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| Felmeddelande      | <span style="font-weight:normal">Den här SAP HANA databasen har inte stöd för den begärda säkerhets kopierings typen</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **Möjliga orsaker**    | Azure Backup stöder inte stegvis säkerhets kopiering och säkerhets kopiering med ögonblicks bilder |
 | **Rekommenderad åtgärd** | Mer information finns [här](./sap-hana-backup-support-matrix.md#scenario-support). |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -116,7 +109,7 @@ Det här scenariot kan innehålla två möjliga fall. Lär dig hur du säkerhets
 
     - Tillägget finns redan på den virtuella datorn, men är inte synligt för någon av tjänsterna
     - Kör skriptet för för registrering
-    - Registrera tillägget på nytt för samma dator i Azure Portal (**Backup**  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
+    - Registrera tillägget på nytt för samma dator i Azure Portal (  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
     - De redan befintliga säkerhetskopierade databaserna (från den borttagna virtuella datorn) bör sedan börja säkerhets kopie ras
 
 2. Den nya virtuella datorn som skapas har antingen:
@@ -164,7 +157,7 @@ Uppgraderingar från SDC till MDC som inte orsakar en SID ändring kan hanteras 
 - [Stoppa skyddet med Behåll data](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) för den gamla SDC-databasen
 - Genomför uppgraderingen. Efter slut för ande är HANA-systemet nu MDC med system DB och klient databaser
 - Kör [skriptet för för registrering](https://aka.ms/scriptforpermsonhana) igen
-- Registrera tillägget på nytt för samma dator i Azure Portal (**Backup**  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
+- Registrera tillägget på nytt för samma dator i Azure Portal (  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
 - Välj **identifiera databaser** på samma virtuella dator. Den här åtgärden ska visa den nya databaser i steg 3 som SYSTEMDB och klient organisations databasen, inte SDC
 - Den äldre SDC-databasen fortsätter att finnas i valvet och har tidigare säkerhetskopierade data som kvarhålls enligt principen
 - Konfigurera säkerhets kopiering för dessa databaser
@@ -177,7 +170,7 @@ Uppgraderingar från SDC till MDC som orsakar en SID ändring kan hanteras på f
 - **Stoppa skyddet med Behåll data** för den gamla SDC-databasen
 - Genomför uppgraderingen. Efter slut för ande är HANA-systemet nu MDC med system DB och klient databaser
 - Kör [skriptet för för registrering](https://aka.ms/scriptforpermsonhana) med rätt information (ny sid-och MDC). På grund av en ändring i SID kan du stöta på problem med att köra skriptet. Kontakta Azure Backup support om du har problem.
-- Registrera tillägget på nytt för samma dator i Azure Portal (**Backup**  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
+- Registrera tillägget på nytt för samma dator i Azure Portal (  ->  **information om** säkerhets kopia-> Markera den relevanta Azure VM-> omregistrera)
 - Välj **identifiera databaser** på samma virtuella dator. Den här åtgärden ska visa den nya databaser i steg 3 som SYSTEMDB och klient organisations databasen, inte SDC
 - Den äldre SDC-databasen kommer fortfarande att finnas kvar i valvet och har tidigare säkerhetskopierade data som kvarhålls enligt principen
 - Konfigurera säkerhets kopiering för dessa databaser

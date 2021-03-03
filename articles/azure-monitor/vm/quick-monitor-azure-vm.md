@@ -7,34 +7,34 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa0360d6730293f3817d63e31b24464a0e4950ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725483"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Snabb start: övervaka en virtuell Azure-dator med Azure Monitor
-[Azure Monitor](../overview.md) börjar samla in data från virtuella Azure-datorer så snart de har skapats. I den här snabb starten tar du en kort genom gång av de data som samlas in automatiskt för en virtuell Azure-dator och hur du visar den i Azure Portal. Sedan aktiverar du [Azure Monitor for VMS](../vm/vminsights-overview.md) för din virtuella dator som gör det möjligt för agenter på den virtuella datorn att samla in och analysera data från gäst operativ systemet, inklusive processer och deras beroenden.
+[Azure Monitor](../overview.md) börjar samla in data från virtuella Azure-datorer så snart de har skapats. I den här snabb starten tar du en kort genom gång av de data som samlas in automatiskt för en virtuell Azure-dator och hur du visar den i Azure Portal. Du kommer sedan att aktivera [VM Insights](../vm/vminsights-overview.md) för din virtuella dator som gör det möjligt för agenter på den virtuella datorn att samla in och analysera data från gäst operativ systemet, inklusive processer och deras beroenden.
 
 För den här snabbstarten förutsätts det att du har en befintlig virtuell dator i Azure. Om du inte kan skapa en [virtuell Windows-dator](../../virtual-machines/windows/quick-create-portal.md) eller skapa en [virtuell Linux-dator](../../virtual-machines/linux/quick-create-cli.md) följer du snabb starten för den virtuella datorn.
 
-Mer detaljerad information om övervaknings data som samlas in från Azure-resurser finns i [övervaka virtuella Azure-datorer med Azure Monitor](../insights/monitor-vm-azure.md).
+Mer detaljerad information om övervaknings data som samlas in från Azure-resurser finns i [övervaka virtuella Azure-datorer med Azure Monitor](./monitor-vm-azure.md).
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Slutför övervakningen av en snabb start för Azure-resurser.
-Slutför [övervakningen av en Azure-resurs med Azure Monitor](../learn/quick-monitor-azure-resource.md) för att Visa översikts sidan, aktivitets loggen och måtten för en virtuell dator i din prenumeration. Virtuella Azure-datorer samlar in samma övervaknings data som andra Azure-resurser, men det är bara för den virtuella värddatorn. Resten av den här snabb starten fokuserar på att övervaka gäst operativ systemet och dess arbets belastningar.
+Slutför [övervakningen av en Azure-resurs med Azure Monitor](../essentials/quick-monitor-azure-resource.md) för att Visa översikts sidan, aktivitets loggen och måtten för en virtuell dator i din prenumeration. Virtuella Azure-datorer samlar in samma övervaknings data som andra Azure-resurser, men det är bara för den virtuella värddatorn. Resten av den här snabb starten fokuserar på att övervaka gäst operativ systemet och dess arbets belastningar.
 
 
-## <a name="enable-azure-monitor-for-vms"></a>Aktivera Azure Monitor for VMs
-Medan mått och aktivitets loggar samlas in för den virtuella värddatorn måste du ha en agent och viss konfiguration för att samla in och analysera övervaknings data från gäst operativ systemet och dess arbets belastningar. Azure Monitor for VMs installerar dessa agenter och ger ytterligare kraftfulla funktioner för övervakning av dina virtuella datorer.
+## <a name="enable-vm-insights"></a>Aktivera VM Insights
+Medan mått och aktivitets loggar samlas in för den virtuella värddatorn måste du ha en agent och viss konfiguration för att samla in och analysera övervaknings data från gäst operativ systemet och dess arbets belastningar. VM Insights installerar dessa agenter och ger ytterligare kraftfulla funktioner för övervakning av dina virtuella datorer.
 
 1. Gå till menyn för den virtuella datorn.
 2. Klicka antingen på **gå till insikter** från panelen på sidan **Översikt** eller klicka på **insikter** från menyn **övervakning** .
 
     ![Översiktssidan](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Om Azure Monitor for VMs ännu inte har Aktiver ATS för den virtuella datorn klickar du på **Aktivera**. 
+3. Om VM Insights ännu inte har Aktiver ATS för den virtuella datorn klickar du på **Aktivera**. 
 
     ![Aktivera insikter](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +42,7 @@ Medan mått och aktivitets loggar samlas in för den virtuella värddatorn måst
 
     ![Välj arbetsyta](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Onboarding tar några minuter eftersom tillägg är aktiverade och agenter är installerade på den virtuella datorn. När det är klart får du ett meddelande om att insikter har distribuerats. Öppna Azure Monitor for VMs genom att klicka på **Azure Monitor** .
+5. Onboarding tar några minuter eftersom tillägg är aktiverade och agenter är installerade på den virtuella datorn. När det är klart får du ett meddelande om att insikter har distribuerats. Öppna VM Insights genom att klicka på **Azure Monitor** .
 
     ![Öppna Azure Monitor](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -104,7 +104,7 @@ När du skapar en ny Log Analytics arbets yta måste den konfigureras för att s
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabb starten har du aktiverat Azure Monitor for VMs för en virtuell dator och konfigurerat arbets ytan Log Analytics för att samla in händelser för gäst operativ systemet. Om du vill lära dig hur du visar och analyserar data kan du fortsätta till självstudiekursen.
+I den här snabb starten har du aktiverat VM Insights för en virtuell dator och konfigurerat Log Analytics-arbetsytan för att samla in händelser för gäst operativ systemet. Om du vill lära dig hur du visar och analyserar data kan du fortsätta till självstudiekursen.
 
 > [!div class="nextstepaction"]
-> [Visa eller analysera data i Log Analytics](../log-query/log-analytics-tutorial.md)
+> [Visa eller analysera data i Log Analytics](../logs/log-analytics-tutorial.md)

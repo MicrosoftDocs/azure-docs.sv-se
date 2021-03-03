@@ -3,14 +3,15 @@ title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder klienten för gäst konfiguration för att granska inställningar i virtuella datorer.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702886"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
+
 
 Azure Policy kan granska inställningar i en dator, både för datorer som körs i Azure och [Arc-anslutna datorer](../../../azure-arc/servers/overview.md). Verifieringen utförs av gästkonfigurationstillägget och klienten. Tillägget kontrollerar inställningar via klienten, till exempel:
 
@@ -20,13 +21,15 @@ Azure Policy kan granska inställningar i en dator, både för datorer som körs
 
 För närvarande har de flesta Azure Policy endast gransknings inställningar på datorn. De tillämpar inte konfigurationer. Undantaget är en inbyggd princip som [refereras nedan](#applying-configurations-using-guest-configuration).
 
+[Det finns en video genom gång av det här dokumentet](https://youtu.be/Y6ryD3gTHOs).
+
 ## <a name="enable-guest-configuration"></a>Aktivera gäst konfiguration
 
 Om du vill granska statusen för datorer i din miljö, inklusive datorer i Azure och Arc-anslutna datorer, kan du läsa följande information.
 
 ## <a name="resource-provider"></a>Resursprovider
 
-Innan du kan använda gäst konfiguration måste du registrera resurs leverantören. Resurs leverantören registreras automatiskt om tilldelning av en princip för gäst konfiguration görs via portalen. Du kan registrera dig manuellt via [portalen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure POWERSHELL](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)eller [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
+Innan du kan använda gäst konfiguration måste du registrera resurs leverantören. Om tilldelningen av en princip för gäst konfiguration görs via portalen, eller om prenumerationen har registrerats i Azure Security Center, registreras resurs leverantören automatiskt. Du kan registrera dig manuellt via [portalen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure POWERSHELL](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)eller [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli).
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Distribuera krav för virtuella Azure-datorer
 
@@ -62,13 +65,13 @@ Princip definitioner för gäst konfiguration inkluderar nya versioner. Äldre v
 
 |Publisher|Namn|Versioner|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 – 18,04|
-|Credativ|Debian|8 och senare|
-|Microsoft|Windows Server|2012 och senare|
+|Canonical|Ubuntu Server|14,04 – 20,04|
+|Credativ|Debian|8 - 10|
+|Microsoft|Windows Server|2012 – 2019|
 |Microsoft|Windows-klient|Windows 10|
-|OpenLogic|CentOS|7,3 och senare|
-|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
-|SUSE|SLES|12 SP3-SP5|
+|OpenLogic|CentOS|7,3-8|
+|Red Hat|Red Hat Enterprise Linux|7,4-8|
+|SUSE|SLES|12 SP3-SP5, 15|
 
 Anpassade avbildningar av virtuella datorer stöds av princip definitioner för gäst konfiguration så länge de är ett av operativ systemen i tabellen ovan.
 
@@ -114,9 +117,26 @@ Princip definitioner för gäst konfiguration använder **AuditIfNotExists** -ef
 **AuditIfNotExists** princip definitioner returnerar inte några träffar förrän alla krav har uppfyllts på datorn. Kraven beskrivs i avsnittet [distribuera krav för Azure Virtual Machines](#deploy-requirements-for-azure-virtual-machines)
 
 > [!IMPORTANT]
-> I en tidigare version av gäst konfigurationen krävdes ett initiativ för att kombinera **DeployIfNoteExists** -och **AuditIfNotExists** -definitioner. **DeployIfNotExists** -definitioner krävs inte längre. Definitionerna och intiaitives är märkta `[Deprecated]` men befintliga tilldelningar fungerar fortfarande. Mer information finns i blogg inlägget: [viktig ändring har lanserats för gransknings principer för gäst konfiguration](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> I en tidigare version av gäst konfigurationen krävdes ett initiativ för att kombinera **DeployIfNoteExists** -och **AuditIfNotExists** -definitioner. **DeployIfNotExists** -definitioner krävs inte längre. Definitionerna och initiativen märks `[Deprecated]` men befintliga tilldelningar fortsätter att fungera. Mer information finns i blogg inlägget: [viktig ändring har lanserats för gransknings principer för gäst konfiguration](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure Policy använder **complianceStatus** -egenskapen för gäst konfiguration för att rapportera efterlevnad i noden **efterlevnad** . Mer information finns i [Hämta efterlevnadsprinciper](../how-to/get-compliance-data.md).
+### <a name="what-is-a-guest-assignment"></a>Vad är en gäst tilldelning?
+
+När en Azure Policy tilldelas, om den finns i kategorin "gäst konfiguration", finns det metadata som ingår för att beskriva en gäst tilldelning.
+Du kan tänka på en gäst tilldelning som en länk mellan en dator och ett Azure Policy scenario.
+Kodfragmentet nedan associerar till exempel Azure Windowss bas linje konfiguration med lägsta version `1.0.0` till alla datorer som omfattas av principen. Som standard utförs endast en granskning av datorn av gäst tilldelningen.
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+Gäst tilldelningar skapas automatiskt per dator av gäst konfigurations tjänsten. Resurstypen är `Microsoft.GuestConfiguration/guestConfigurationAssignments`.
+Azure Policy använder egenskapen **complianceStatus** för gäst tilldelnings resursen för att rapportera kompatibilitetsstatus. Mer information finns i [Hämta efterlevnadsprinciper](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Granska operativ system inställningar efter bransch bas linjer
 
@@ -201,6 +221,12 @@ Inbyggda princip exempel för gäst konfiguration finns på följande platser:
 - [Inbyggda princip definitioner – gäst konfiguration](../samples/built-in-policies.md#guest-configuration)
 - [Inbyggda initiativ – gäst konfiguration](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy exempel GitHub lagrings platsen](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>Videoöversikt
+
+Följande översikt över Azure Policy-gäst konfigurationen är från ITOps pratar 2021.
+
+[Styrande bas linjer i hybrid Server miljöer med Azure Policy gäst konfiguration](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>Nästa steg
 

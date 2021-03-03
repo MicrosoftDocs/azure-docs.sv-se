@@ -4,14 +4,14 @@ description: Den här artikeln innehåller en översikt över Azure Automation a
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708908"
 ---
 # <a name="automation-account-authentication-overview"></a>Översikt över autentisering av Automation-konto
 
@@ -44,6 +44,8 @@ Mer information om Azure Resource Manager och klassiska distributions modeller f
 >Azure Cloud Solution Provider (CSP)-prenumerationer stöder endast Azure Resource Managers modellen. Icke-Azure Resource Manager tjänster är inte tillgängliga i programmet. När du använder en CSP-prenumeration skapas inte det klassiska kör som-kontot i Azure, men kör som-kontot i Azure skapas. Mer information om CSP-prenumerationer finns i [tillgängliga tjänster i CSP-prenumerationer](/azure/cloud-solution-provider/overview/azure-csp-available-services).
 
 När du skapar ett Automation-konto skapas kör som-kontot som standard på samma gång. Om du väljer att inte skapa den tillsammans med Automation-kontot kan du skapa en separat vid ett senare tillfälle. Ett klassiskt kör som-konto i Azure är valfritt och skapas separat om du behöver hantera klassiska resurser.
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>Kör som-konto
 

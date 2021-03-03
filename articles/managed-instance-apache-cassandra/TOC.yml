@@ -1,0 +1,28 @@
+- name: Azure Managed instance för Apache Cassandra-dokumentation
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är Azure Managed instance för Apache Cassandra?
+      href: introduction.md
+- name: Begrepp
+  items:
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: faq.md
+    - name: Hanterad instans vs Azure Cosmos DB API för Cassandra
+      href: compare-cosmosdb-managed-instance.md
+- name: Snabbstarter
+  items:
+    - name: Skapa ett kluster – Portal
+      href: create-cluster-portal.md
+    - name: Skapa ett kluster – CLI
+      href: create-cluster-cli.md
+    - name: Konfigurera ett hybrid kluster
+      href: configure-hybrid-cluster.md
+    - name: Distribuera Spark-kluster med Databricks
+      href: deploy-cluster-databricks.md
+- name: Anvisningar
+  items:
+    - name: Hantera med Azure CLI
+      href: manage-resources-cli.md
+    - name: Visualisera mått i Prometheus med Grafana
+      href: visualize-prometheus-grafana.md

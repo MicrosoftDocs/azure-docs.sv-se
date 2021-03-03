@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715708"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Så här använder du Postman för att skicka förfrågningar till Azure Digitals dubbla API: er
 
@@ -25,7 +25,7 @@ Den här artikeln beskriver hur du konfigurerar [Postman rest-klienten](https://
 1. Konfigurera en Postman-samling och konfigurera Postman REST-klienten så att den använder din Bearer-token för att autentisera.
 1. Använd den konfigurerade Postman för att skapa och skicka en begäran till Azure Digitals dubbla API: er.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill fortsätta med att använda Postman för att komma åt Azures digitala dubbla API: er måste du konfigurera en digital Azure-instans och hämta Postman. Resten av det här avsnittet vägleder dig genom de här stegen.
 
@@ -140,7 +140,7 @@ Om du vill fortsätta med en exempel fråga kommer den här artikeln att använd
 1. Kontrol lera att rubrikerna som visas för begäran på fliken *sidhuvud* matchar de som beskrivs i referens dokumentationen. I den här begäran har flera rubriker fyllts i automatiskt. För fråge-API: t krävs inget av rubrik alternativen, så det här steget är färdigt.
 1. Kontrol lera att texten som visas för begäran på fliken *brödtext* stämmer överens med de behov som beskrivs i referens dokumentationen. För fråge-API krävs en JSON-text för att tillhandahålla frågetexten. Här är en exempel text för den här begäran som frågar efter alla digitala dubbla i instansen:
 
-   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="I informationen om den nya begäran visas fliken brödtext. Den innehåller en RAW JSON-text med en fråga av typen SELECT * FROM DIGITALTWINS."lightbox="media/how-to-use-postman/postman-request-body.png":::
+   :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="I informationen om den nya begäran visas fliken brödtext. Den innehåller en RAW JSON-text med en fråga av typen SELECT * FROM DIGITALTWINS." lightbox="media/how-to-use-postman/postman-request-body.png":::
 
    Mer information om hur du kan använda Azures digitala dubbla frågor finns i [*How-to: fråga den dubbla grafen*](how-to-query-graph.md).
 

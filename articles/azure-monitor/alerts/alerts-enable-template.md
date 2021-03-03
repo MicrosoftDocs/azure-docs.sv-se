@@ -4,19 +4,19 @@ description: Lär dig hur du använder en Resource Manager-mall för att skapa e
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 418dde8311c2555f8df5929dd96ce72611422ee9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0923be317d497e471724b7611fe6b831a4be6f37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718054"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Skapa en klassisk måttavisering med en Resource Manager-mall
 
 > [!WARNING]
-> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](../platform/alerts-overview.md). Klassiska aviseringar [dras tillbaka](../platform/monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna.
+> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](./alerts-overview.md). Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning till och med **31 maj 2021**. Klassiska aviseringar för Azure Government molnet och Azure Kina 21Vianet kommer att dra tillbaka den **29 februari 2024**.
 >
 
 Den här artikeln visar hur du kan använda en [Azure Resource Manager-mall](../../azure-resource-manager/templates/template-syntax.md) för att konfigurera klassiska Azure-Metric-aviseringar. På så sätt kan du automatiskt konfigurera aviseringar för dina resurser när de skapas för att säkerställa att alla resurser övervakas korrekt.
@@ -399,6 +399,6 @@ En avisering i en Resource Manager-mall är oftast användbar när du skapar en 
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* [Läs mer om aviseringar](../platform/alerts-overview.md)
-* [Lägg till diagnostikinställningar](../samples/resource-manager-diagnostic-settings.md) i Resource Manager-mallen
+* [Läs mer om aviseringar](./alerts-overview.md)
+* [Lägg till diagnostikinställningar](../essentials/resource-manager-diagnostic-settings.md) i Resource Manager-mallen
 * För JSON-syntax och egenskaper, se referens för [Microsoft. Insights/alertrules-](/azure/templates/microsoft.insights/alertrules) mallen.

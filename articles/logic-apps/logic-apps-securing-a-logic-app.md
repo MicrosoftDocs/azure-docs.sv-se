@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 02/18/2021
+ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104509"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702563"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Säker åtkomst och data i Azure Logic Apps
 
@@ -349,9 +349,9 @@ I [Azure Portal](https://portal.azure.com)påverkar det här filtret både utlö
 
 I ARM-mallen anger du tillåtna inkommande IP-adressintervall i din Logic Apps resurs definition med hjälp av `accessControl` avsnittet. I det här avsnittet använder du `triggers` , `actions` och de valfria `contents` avsnitten efter behov, genom att inkludera `allowedCallerIpAddresses` avsnittet med `addressRange` egenskapen och ange egenskap svärdet till det tillåtna IP-intervallet i *x. x* . x. x/x eller x. x. x *-x. x* . x. x-formatet.
 
-* Om din kapslade Logic-app använder alternativet **endast andra Logic Apps** , som tillåter inkommande anrop enbart från andra Logic Apps som använder åtgärden Azure Logic Apps, anger du `addressRange` egenskapen till en tom matris (**[]**).
+* Om din kapslade Logic-app använder alternativet **endast andra Logic Apps** , som tillåter inkommande samtal enbart från andra Logic Apps som använder den inbyggda Azure Logic Apps åtgärden, anger du `allowedCallerIpAddresses` egenskapen till en tom matris (**[]**) och *utelämnar* `addressRange` egenskapen.
 
-* Om din kapslade Logic-app använder alternativet **speciella IP-adressintervall** för andra inkommande anrop, till exempel andra Logic Apps som använder http-åtgärden, anger du `addressRange` egenskapen till tillåtet IP-intervall.
+* Om din kapslade Logic-app använder alternativet **speciella IP-adressintervall** för andra inkommande anrop, till exempel andra Logic Apps som använder http-åtgärden, inkluderar du `allowedCallerIpAddresses` avsnittet och anger `addressRange` egenskapen till tillåtet IP-intervall.
 
 I det här exemplet visas en resurs definition för en kapslad Logic-app som tillåter inkommande samtal enbart från Logic Apps som använder den inbyggda Azure Logic Apps åtgärden:
 
@@ -378,18 +378,14 @@ I det här exemplet visas en resurs definition för en kapslad Logic-app som til
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}

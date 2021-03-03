@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704811"
 ---
 # <a name="claim-sets"></a>Anspråksuppsättningar
 
@@ -22,11 +22,12 @@ Anspråk som genereras vid bestyrkande av enclaves med hjälp av Microsoft Azure
 
 - **Utgående anspråk**: anspråk som genereras av Azure-attestering och innehåller alla anspråk som ingår i attesterings-token
 
-- **Egenskaps anspråk**: anspråk som skapats som utdata av Azure-attestering. Den innehåller alla anspråk som representerar egenskaperna för attesterings-token, till exempel kodning av rapporten, rapportens giltighets tid och så vidare.
+- **Egenskaps anspråk**: de anspråk som skapats som utdata av Azure-attestering. Den innehåller alla anspråk som representerar egenskaperna för attesterings-token, till exempel kodning av rapporten, rapportens giltighets tid och så vidare.
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>Vanliga inkommande anspråk för alla attesterings typer
 
-Under anspråk genereras av Azure-attestering och kan användas för att definiera auktoriseringsregler i en anpassad princip:
+Under anspråk genereras av Azure-attestering och kan användas av princip författare för att definiera auktoriseringsregler i en anpassad princip för alla attesterings typer.
+
 - **x-MS-ver**: JWT-schema version (förväntas vara "1,0")
 - **x-MS-attestering-typ**: sträng värde som representerar typ av attestering 
 - **x-MS-policy-hash**: hash för utvärderings principen för Azure-attestering beräknad som BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (princip text))))
@@ -44,7 +45,9 @@ policy_signer | x-MS-policy-Signer
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>Vanliga utgående anspråk för alla attesterings typer
 
-Under anspråk som definieras av [IETF JWT](https://tools.ietf.org/html/rfc7519) och används av Azure-attestering i objektet Response:
+Under anspråk inkluderas i attesterings-token för alla attesterings typer av tjänsten.
+
+Källa: enligt definitionen i [IETF JWT](https://tools.ietf.org/html/rfc7519)
 
 - **"JTI"-anspråk (JWT ID)**
 - **"ISS"-anspråk (Issuer)**
@@ -52,10 +55,12 @@ Under anspråk som definieras av [IETF JWT](https://tools.ietf.org/html/rfc7519)
 - **"EXP"-anspråk (förfallo tid)**
 - **"NBF" (inte före)-anspråk**
 
-Under anspråk som definieras av IETF- [äta](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) och används av Azure-attestering i objektet Response:
+Källa: enligt definitionen i [IETF äta](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9)
+
 - **"Nonce-anspråk" (nonce)**
 
-Under anspråk genereras som standard baserat på inkommande anspråk
+Under anspråk ingår som standard i attesterings-token baserat på inkommande anspråk:
+
 - **x-MS-ver**: JWT-schema version (förväntas vara "1,0")
 - **x-MS-attestering-typ**: sträng värde som representerar typ av attestering 
 - **x-MS-policy-hash**: sträng värde som innehåller SHA256-hash för princip texten beräknad av BASE64URL (SHA256 (UTF8 (BASE64URL (UTF8 (princip text))))
@@ -65,7 +70,8 @@ Under anspråk genereras som standard baserat på inkommande anspråk
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Inkommande anspråk som är specifik för SGX-attestering
 
-Under anspråk genereras av tjänsten för SGX-attestering och kan användas för att definiera auktoriseringsregler i en anpassad princip:
+Under anspråk genereras av Azure-attestering och kan användas av princip författare för att definiera auktoriseringsregler i en anpassad princip för SGX-attestering.
+
 - **x-MS-SGX-är-fel sökning**: ett booleskt värde som anger om enklaven har fel sökning aktiverat eller inte
 - **x-MS-SGX-Product-ID**
 - **x-MS-SGX-mrsigner**: hex-kodat värde för fältet "mrsigner" för offerten
@@ -74,7 +80,8 @@ Under anspråk genereras av tjänsten för SGX-attestering och kan användas fö
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>Utgående anspråk som är speciella för SGX-attestering
 
-Under anspråk genereras av tjänsten och ingår i objektet Response för SGX-attestering:
+Under anspråk skapas och tas med i attesterings-token av tjänsten för SGX-attestering.
+
 - **x-MS-SGX-är-fel sökning**: ett booleskt värde som anger om enklaven har fel sökning aktiverat eller inte
 - **x-MS-SGX-Product-ID**
 - **x-MS-SGX-mrsigner**: hex-kodat värde för fältet "mrsigner" för offerten

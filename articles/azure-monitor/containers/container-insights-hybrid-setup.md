@@ -1,22 +1,22 @@
 ---
-title: Konfigurera hybrid Kubernetes-kluster med Azure Monitor för behållare | Microsoft Docs
-description: I den här artikeln beskrivs hur du kan konfigurera Azure Monitor för behållare för att övervaka Kubernetes-kluster som finns på Azure Stack eller annan miljö.
+title: Konfigurera hybrid Kubernetes-kluster med container Insights | Microsoft Docs
+description: I den här artikeln beskrivs hur du kan konfigurera behållar insikter för att övervaka Kubernetes-kluster som finns på Azure Stack eller annan miljö.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623021"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711254"
 ---
-# <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurera hybrid Kubernetes-kluster med Azure Monitor för behållare
+# <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Konfigurera hybrid Kubernetes-kluster med container Insights
 
-Azure Monitor for containers innehåller omfattande övervaknings upplevelse för Azure Kubernetes service (AKS) och [AKS-motorn på Azure](https://github.com/Azure/aks-engine), som är ett självhanterat Kubernetes-kluster som finns på Azure. I den här artikeln beskrivs hur du aktiverar övervakning av Kubernetes-kluster som finns utanför Azure och uppnår en liknande övervaknings upplevelse.
+Behållar insikter ger en omfattande övervaknings upplevelse för Azure Kubernetes service (AKS) och [AKS-motorn på Azure](https://github.com/Azure/aks-engine), som är ett självhanterat Kubernetes-kluster som finns på Azure. I den här artikeln beskrivs hur du aktiverar övervakning av Kubernetes-kluster som finns utanför Azure och uppnår en liknande övervaknings upplevelse.
 
 ## <a name="supported-configurations"></a>Konfigurationer som stöds
 
-Följande konfigurationer stöds officiellt med Azure Monitor för behållare. Om du har en annan version av Kubernetes och operativ system versioner skickar du ett e-postmeddelande till askcoin@microsoft.com .
+Följande konfigurationer stöds officiellt med behållar insikter. Om du har en annan version av Kubernetes och operativ system versioner skickar du ett e-postmeddelande till askcoin@microsoft.com .
 
 - Utrymmen
 
@@ -36,19 +36,19 @@ Följande konfigurationer stöds officiellt med Azure Monitor för behållare. O
 
 Kontrol lera att du har följande innan du börjar:
 
-- En [Log Analytics-arbetsyta](../platform/design-logs-deployment.md).
+- En [Log Analytics-arbetsyta](../logs/design-logs-deployment.md).
 
-    Azure Monitor for containers stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../samples/resource-manager-workspace.md), via [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../learn/quick-create-workspace.md).
+    Behållar insikter stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../logs/resource-manager-workspace.md), via [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../logs/quick-create-workspace.md).
 
     >[!NOTE]
     >Det finns inte stöd för att övervaka flera kluster med samma kluster namn till samma Log Analytics-arbetsyta. Kluster namn måste vara unika.
     >
 
-- Du är medlem i **rollen Log Analytics Contributor** för att aktivera övervakning av behållare. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [Hantera åtkomst till arbets ytan och loggdata](../platform/manage-access.md).
+- Du är medlem i **rollen Log Analytics Contributor** för att aktivera övervakning av behållare. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [Hantera åtkomst till arbets ytan och loggdata](../logs/manage-access.md).
 
-- Om du vill visa övervaknings data måste du ha [*Log Analytics läsar*](../platform/manage-access.md#manage-access-using-azure-permissions) roll på arbets ytan Log Analytics som kon figurer ats med Azure Monitor för behållare.
+- Om du vill visa övervaknings data måste du ha [*Log Analytics läsar*](../logs/manage-access.md#manage-access-using-azure-permissions) roll på arbets ytan Log Analytics som kon figurer ATS med behållar insikter.
 
-- [Helm-klienten](https://helm.sh/docs/using_helm/) för att publicera behållaren Azure Monitor för behållare för det angivna Kubernetes-klustret.
+- [Helm-klienten](https://helm.sh/docs/using_helm/) för att publicera behållar insikter-diagrammet för det angivna Kubernetes-klustret.
 
 - Följande konfigurations information för proxy och brand väggar krävs för den behållar version av Log Analytics-agenten för Linux för att kunna kommunicera med Azure Monitor:
 
@@ -67,11 +67,11 @@ Kontrol lera att du har följande innan du börjar:
 
 ## <a name="enable-monitoring"></a>Aktivera övervakning
 
-Att aktivera Azure Monitor för behållare för Hybrid Kubernetes-klustret består av att utföra följande steg i ordning.
+Att aktivera behållar insikter för Hybrid Kubernetes-klustret består av att utföra följande steg i ordning.
 
 1. Konfigurera din Log Analytics arbets yta med container Insights-lösning.   
 
-2. Aktivera Azure Monitor for containers HELM-diagrammet med Log Analytics-arbetsytan.
+2. Aktivera HELM-diagrammet för container Insights med Log Analytics arbets ytan.
 
 Mer information om övervakning av lösningar i Azure Monitor [här](../../azure-monitor/insights/solutions.md).
 
@@ -252,7 +252,7 @@ För att först identifiera det fullständiga resurs-ID: t för din Log Analytic
 
 ## <a name="install-the-helm-chart"></a>Installera HELM-diagrammet
 
-I det här avsnittet installerar du behållarens agent för Azure Monitor för behållare. Innan du fortsätter måste du identifiera det arbetsyte-ID som krävs för `omsagent.secret.wsid` parametern och den primära nyckel som krävs för `omsagent.secret.key` parametern. Du kan identifiera den här informationen genom att utföra följande steg och sedan köra kommandona för att installera agenten med hjälp av HELM-diagrammet.
+I det här avsnittet installerar du behållarens agent för behållar insikter. Innan du fortsätter måste du identifiera det arbetsyte-ID som krävs för `omsagent.secret.wsid` parametern och den primära nyckel som krävs för `omsagent.secret.key` parametern. Du kan identifiera den här informationen genom att utföra följande steg och sedan köra kommandona för att installera agenten med hjälp av HELM-diagrammet.
 
 1. Kör följande kommando för att identifiera arbetsyte-ID:
 
@@ -325,14 +325,14 @@ API-definitioner som stöds för Azure Stack Hub-klustret finns i det här exemp
 
 Stjärnor med diagram version 1.0.0 styrs inställningarna för agent data insamlingen från ConfigMap. Läs dokumentationen om inställningarna för insamling av agent data [här](container-insights-agent-config.md).
 
-När du har distribuerat diagrammet kan du granska data för ditt hybrid Kubernetes-kluster i Azure Monitor för behållare från Azure Portal.  
+När du har distribuerat diagrammet kan du granska data för ditt hybrid Kubernetes-kluster i behållar insikter från Azure Portal.  
 
 >[!NOTE]
 >Inmatnings fördröjningen är cirka fem till tio minuter från agenten som ska genomföras i Azure Log Analytics-arbetsytan. Status för klustret visar värdet **inga data** eller **okända** förrän alla nödvändiga övervaknings data är tillgängliga i Azure Monitor.
 
 ## <a name="configure-proxy-endpoint"></a>Konfigurera proxy-slutpunkt
 
-Från och med diagram version 2.7.1 stöder diagrammet att du anger proxy-slutpunkten med `omsagent.proxy` diagram parametern. Detta gör det möjligt att kommunicera via proxyservern. Kommunikation mellan Azure Monitor för behållare-agenten och Azure Monitor kan vara en HTTP-eller HTTPS-proxyserver, och både anonym och grundläggande autentisering (användar namn/lösen ord) stöds.
+Från och med diagram version 2.7.1 stöder diagrammet att du anger proxy-slutpunkten med `omsagent.proxy` diagram parametern. Detta gör det möjligt att kommunicera via proxyservern. Kommunikationen mellan container Insights-agenten och Azure Monitor kan vara en HTTP-eller HTTPS-proxyserver, och både anonym och grundläggande autentisering (användar namn/lösen ord) stöds.
 
 Konfiguration svärdet för proxyn har följande syntax: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -356,7 +356,7 @@ Om du anger protokollet som **http** skapas HTTP-begäranden med hjälp av SSL/T
 Om det uppstår ett fel vid försök att aktivera övervakning för ditt hybrid Kubernetes-kluster, kopierar du PowerShell-skriptet [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) och sparar det i en mapp på datorn. Det här skriptet används för att identifiera och åtgärda de problem som uppstått. Problemen som är utformade för att identifiera och försöka korrigera är följande:
 
 - Den angivna Log Analyticss arbets ytan är giltig
-- Log Analytics arbets ytan konfigureras med Azure Monitor för container lösning. Annars konfigurerar du arbets ytan.
+- Log Analytics arbets ytan konfigureras med container Insights-lösningen. Annars konfigurerar du arbets ytan.
 - OmsAgent REPLICASET-poddar körs
 - OmsAgent daemonset-poddar körs
 - OmsAgent-tjänsten för hälso tillstånd körs
@@ -372,4 +372,4 @@ Om du vill köra med Azure PowerShell använder du följande kommandon i mappen 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt hybrid Kubernetes-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) Azure Monitor för behållare.
+När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt hybrid Kubernetes-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) behållar insikter.

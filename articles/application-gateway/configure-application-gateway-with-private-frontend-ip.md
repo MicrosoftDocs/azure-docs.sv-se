@@ -6,20 +6,24 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: 64dfe284772faf2a345b7959f1a1bd6f474cd1bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224cbe1e34e5915a7fa5fc1cf415c35f86c3abe4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562493"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711662"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurera en Programgateway med en intern belastningsutjämnare (ILB)
 
 Azure Application Gateway kan konfigureras med en Internet-riktad VIP eller med en intern slut punkt som inte är exponerad för Internet. En intern slut punkt använder en privat IP-adress för klient delen, som även kallas en *intern belastningsutjämnare (ILB)*.
 
-Att konfigurera gatewayen med en privat IP-adress för klient delen är användbart för interna branschspecifika program som inte är utsatta för Internet. Det är också användbart för tjänster och nivåer i ett program med flera nivåer som är i en säkerhets gränser som inte är utsatt för Internet men som fortfarande kräver belastnings fördelning för resursallokering, varaktighet eller Transport Layer Security (TLS), som tidigare kallades Secure Sockets Layer (SSL), avslutning.
+Att konfigurera gatewayen med en privat IP-adress för klient delen är användbart för interna branschspecifika program som inte är utsatta för Internet. Det är också användbart för tjänster och nivåer i ett program med flera nivåer som är i en säkerhets gränser som inte är exponerad för Internet, utan:
+
+- Kräv fortfarande belastnings fördelning för resursallokering
+- varaktighet för session
+- eller Transport Layer Security (TLS) upphör (kallades tidigare Secure Sockets Layer (SSL)).
 
 Den här artikeln vägleder dig genom stegen för att konfigurera en Programgateway med en privat IP-adress för klient delen med hjälp av Azure Portal.
 
@@ -31,14 +35,16 @@ Logga in på Azure-portalen på <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-För att Azure ska kunna kommunicera mellan resurserna som du skapar krävs ett virtuellt nätverk. Du kan antingen skapa ett nytt virtuellt nätverk eller använda ett befintligt. I det här exemplet skapar du ett nytt virtuellt nätverk. Du kan skapa ett virtuellt nätverk samtidigt som du skapar programgatewayen. Application Gateway instanser skapas i separata undernät. Du skapar två undernät i det här exemplet: ett för programgatewayen och ett för backend-servrarna.
+För att Azure ska kunna kommunicera mellan resurserna som du skapar krävs ett virtuellt nätverk. Skapa ett nytt virtuellt nätverk eller Använd ett befintligt. 
+
+I det här exemplet skapar du ett nytt virtuellt nätverk. Du kan skapa ett virtuellt nätverk samtidigt som du skapar programgatewayen. Application Gateway instanser skapas i separata undernät. Det finns två undernät i det här exemplet: ett för programgatewayen och en annan för backend-servrarna.
 
 1. Expandera Portal-menyn och välj **skapa en resurs**.
 2. Välj **Nätverk** och sedan **Application Gateway** i listan Aktuella.
 3. Ange *myAppGateway* som namn på Application Gateway och *myResourceGroupAG* för den nya resurs gruppen.
-4. För **region**väljer du **(US) centrala USA**.
-5. För **nivå**väljer du **standard**.
-6. Under **Konfigurera virtuellt nätverk** väljer du **Skapa ny**och anger följande värden för det virtuella nätverket:
+4. För **region** väljer du **centrala USA**.
+5. För **nivå** väljer du **standard**.
+6. Under **Konfigurera virtuellt nätverk** väljer du **Skapa ny** och anger följande värden för det virtuella nätverket:
    - *myVnet* – Det virtuella nätverkets namn.
    - *10.0.0.0/16* – Det virtuella nätverkets adressutrymme.
    - *myBackendSubnet* – Undernätsnamnet.
@@ -48,29 +54,29 @@ För att Azure ska kunna kommunicera mellan resurserna som du skapar krävs ett 
 
     ![Skapa det virtuella nätverket](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 
-6. Välj **OK** för att skapa det virtuella nätverket och under nätet.
+6. Välj **OK** för att skapa det virtuella nätverket och undernät.
 7. Välj **Nästa: frontend**-klienter.
-8. För **IP-adress för klient**del väljer du **privat**.
+8. För **IP-adress för klient** del väljer du **privat**.
 
    Som standard är det en dynamisk IP-adresstilldelning. Den första tillgängliga adressen för det konfigurerade under nätet tilldelas som IP-adress för klient delen.
    > [!NOTE]
    > När det har allokerats kan IP-adress typen (statisk eller dynamisk) inte ändras senare.
 9. Välj **Nästa:** Server delar.
 10. Välj **Lägg till en backend-pool**.
-11. I **namn**skriver du *appGatewayBackendPool*.
-12. Välj **Ja**om du vill **lägga till en backend-pool utan mål**. Du kommer att lägga till målen senare.
+11. I **namn** skriver du *appGatewayBackendPool*.
+12. Välj **Ja** om du vill **lägga till en backend-pool utan mål**. Du kommer att lägga till målen senare.
 13. Välj **Lägg till**.
 14. Välj **Nästa: konfiguration**.
-15. Under **regler för routning**väljer du **Lägg till en regel**.
-16. För **regel namn**skriver du *Rrule-01*.
-17. För **lyssnar namn**skriver du *Listener-01*.
-18. För **klient delens IP-adress**väljer du **privat**.
+15. Under **regler för routning** väljer du **Lägg till en regel för routning**.
+16. För **regel namn** skriver du *Rrule-01*.
+17. För **lyssnar namn** skriver du *Listener-01*.
+18. För **klient delens IP-adress** väljer du **privat**.
 19. Acceptera återstående standardvärden och välj fliken **backend-mål** .
-20. För **måltyp**väljer du **backend-pool**och väljer sedan **appGatewayBackendPool**.
-21. För **http-inställning**väljer du **Skapa ny**.
-22. För **http-Inställningens namn**skriver du *http-Setting-01*.
-23. För **Server dels protokoll**väljer du **http**.
-24. För **Server dels port**skriver du *80*.
+20. För **måltyp** väljer du **backend-pool** och väljer sedan **appGatewayBackendPool**.
+21. För **http-inställning** väljer du **Lägg till ny**.
+22. För **http-Inställningens namn** skriver du *http-Setting-01*.
+23. För **Server dels protokoll** väljer du **http**.
+24. För **Server dels port** skriver du *80*.
 25. Acceptera återstående standardvärden och välj **Lägg till**.
 26. På sidan **Lägg till regel för routning** väljer du **Lägg till**.
 27. Välj **Nästa: Taggar**.
@@ -89,23 +95,23 @@ Gör så här:
 
 ### <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 
+
 1. Välj **Skapa en resurs**.
 2. Välj **Compute** och välj sedan **virtuell dator**.
 4. Ange följande värden för den virtuella datorn:
+   - Välj din prenumeration.
    - Välj *myResourceGroupAG* för **resurs grupp**.
-   - *myVM* – för **namnet på den virtuella datorn**.
+   - Skriv *myVM* som **namn på virtuell dator**.
    - Välj **Windows Server 2019 Data Center** för **avbildning**.
-   - ett giltigt **användar namn**.
-   - ett giltigt **lösen ord**.
-5. Acceptera återstående standardvärden och välj **Nästa: diskar**.
-6. Acceptera standardvärdena och välj **Nästa: nätverk**.
-7. Kontrollera att **myVNet** har valts för det virtuella nätverket och att undernätet är **myBackendSubnet**.
-8. Acceptera återstående standardvärden och välj **Nästa: hantering**.
-9. Välj **av** om du vill inaktivera startdiagnostik.
-10. Acceptera återstående standardvärden och välj **Nästa: Avancerat**.
-11. Välj **Nästa: Taggar**.
-12. Välj **Nästa: granska + skapa**.
-13. Granska inställningarna på sidan Sammanfattning och välj sedan **skapa**. Det kan ta flera minuter att skapa den virtuella datorn. Vänta tills distributionen har slutförts innan du går vidare till nästa avsnitt.
+   - Ange ett giltigt **användar namn**.
+   - Ange ett giltigt **lösen ord**.
+1. Acceptera återstående standardvärden och välj **Nästa: diskar**.
+1. Acceptera standardvärdena och välj **Nästa: nätverk**.
+1. Se till att **myVNet** har valts för det virtuella nätverket och att under nätet är **myBackendSubnet**.
+1. Acceptera återstående standardvärden och välj **Nästa: hantering**.
+1. Välj **inaktivera** om du vill inaktivera startdiagnostik.
+1. Välj **Granska + skapa**.
+1. Granska inställningarna på sidan Sammanfattning och välj sedan **skapa**. Det kan ta flera minuter att skapa den virtuella datorn. Vänta tills distributionen har slutförts innan du går vidare till nästa avsnitt.
 
 ### <a name="install-iis"></a>Installera IIS
 
@@ -115,44 +121,40 @@ Gör så här:
 
    ```azurepowershell
    Set-AzVMExtension `
-   
-     -ResourceGroupName myResourceGroupAG `
-   
-     -ExtensionName IIS `
-   
-     -VMName myVM `
-   
-     -Publisher Microsoft.Compute `
-   
-     -ExtensionType CustomScriptExtension `
-   
-     -TypeHandlerVersion 1.4 `
-
-     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-
-     -Location CentralUS `
+        -ResourceGroupName myResourceGroupAG `
+        -ExtensionName IIS `
+        -VMName myVM `
+        -Publisher Microsoft.Compute `
+        -ExtensionType CustomScriptExtension `
+        -TypeHandlerVersion 1.4 `
+        -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+         -Location CentralUS 
 
    ```
 
-
-
-3. Skapa en andra virtuell dator och installera IIS med hjälp av de steg som du just har slutfört. Ange myVM2 som namn och för VMName i set-AzVMExtension.
+3. Skapa en andra virtuell dator och installera IIS med hjälp av de steg som du just har slutfört. Använd myVM2 för namnet på den virtuella datorn och för `VMName` i `Set-AzVMExtension` .
 
 ### <a name="add-backend-servers-to-backend-pool"></a>Lägg till backend-servrar i backend-poolen
 
 1. Välj **Alla resurser** och välj sedan **myAppGateway**.
-2. Välj **backend-pooler**. Välj **appGatewayBackendPool**.
-3. Under **måltyp** väljer du **virtuell dator**  och under **mål**väljer du den vNIC som är kopplad till myVM.
+2. Välj **backend-pooler** och välj sedan **appGatewayBackendPool**.
+3. Under **måltyp** väljer du **virtuell dator**  och under **mål** väljer du den vNIC som är kopplad till myVM.
 4. Upprepa om du vill lägga till MyVM2.
-   ![Skärm bild som visar fönstret Redigera backend-pool med mål typer och mål markerade.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+   ![Redigera fönstret Server dels grupp med mål typer och mål markerade.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 5. Välj **Spara.**
+
+## <a name="create-a-client-virtual-machine"></a>Skapa en virtuell klient dator
+
+Den virtuella klient datorn används för att ansluta till programgatewayens backend-pool.
+
+- Skapa en tredje virtuell dator med hjälp av föregående steg. Använd myVM3 för namnet på den virtuella datorn.
 
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 
-1. Kontrol lera klient delens IP-adress som har tilldelats genom att klicka på sidan **IP-konfigurationer för klient** del i portalen.
-    ![Skärm bild som visar fönstret IP-konfigurationer för klient del med den privata typen markerad.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
-2. Kopiera den privata IP-adressen och klistra in den i webbläsarens Adress fält i en virtuell dator i samma VNet eller lokalt som har anslutning till det här virtuella nätverket och försök få åtkomst till Application Gateway.
+1. På sidan myAppGateway väljer du **klient delens IP-konfigurationer** för att anteckna klient delens privata IP-adress.
+    ![Fönstret IP-konfigurationer för klient del med den privata typen markerad.](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+2. Kopiera den privata IP-adressen och klistra in den i webbläsarens Adress fält på myVM3 för att få åtkomst till programgatewayens backend-pool.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill övervaka hälso tillståndet för Server delen, se [backend-hälsa och diagnostikloggar för Application Gateway](application-gateway-diagnostics.md).
+Om du vill övervaka hälso tillståndet för din backend-pool, se [backend-hälsa och diagnostikloggar för Application Gateway](application-gateway-diagnostics.md).

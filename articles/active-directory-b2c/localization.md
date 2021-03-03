@@ -1,22 +1,10 @@
 ---
-title: Lokalisering-Azure Active Directory B2C
-description: Ange lokaliserings element för en anpassad princip i Azure Active Directory B2C.
-services: active-directory-b2c
-author: msmimart
-manager: celestedg
-ms.service: active-directory
-ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
-ms.author: mimart
-ms.subservice: B2C
-ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108630"
+title: lokalisering-Azure Active Directory B2C Beskrivning: Ange lokaliserings elementet i en anpassad princip i Azure Active Directory B2C.
+tjänster: Active-Directory-B2C author: msmimart Manager: celestedg
+
+MS. service: Active Directory MS. arbets belastning: identitet MS. topic: referens MS. Date: 10/15/2020 MS. author: mimart MS. subservice: B2C MS. Custom: "B2C-support"
 ---
+
 # <a name="localization-element"></a>Lokaliserings element
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -41,7 +29,7 @@ ms.locfileid: "97108630"
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Enabled | Nej | Möjliga värden: `true` eller `false` . |
+| Enabled | Inga | Möjliga värden: `true` eller `false` . |
 
 **Lokaliserings** elementet innehåller följande XML-element
 
@@ -57,7 +45,7 @@ ms.locfileid: "97108630"
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Ja | Det språk som ska användas som standard för lokaliserade resurser. |
-| MergeBehavior | Nej | Ett uppräknings värde för värden som slås samman med en ClaimType som finns i en överordnad princip med samma identifierare. Använd det här attributet när du skriver över ett anspråk som anges i bas principen. Möjliga värden: `Append` , `Prepend` , eller `ReplaceAll` . `Append`Värdet anger att data uppsättningen som finns ska läggas till i slutet av den samling som anges i den överordnade principen. `Prepend`Värdet anger att data uppsättningen som finns ska läggas till innan den samling som anges i den överordnade principen. `ReplaceAll`Värdet anger att data uppsättningen som definieras i den överordnade principen ska ignoreras, med i stället de data som definierats i den aktuella principen. |
+| MergeBehavior | Inga | Ett uppräknings värde för värden som slås samman med en ClaimType som finns i en överordnad princip med samma identifierare. Använd det här attributet när du skriver över ett anspråk som anges i bas principen. Möjliga värden: `Append` , `Prepend` , eller `ReplaceAll` . `Append`Värdet anger att data uppsättningen som finns ska läggas till i slutet av den samling som anges i den överordnade principen. `Prepend`Värdet anger att data uppsättningen som finns ska läggas till innan den samling som anges i den överordnade principen. `ReplaceAll`Värdet anger att data uppsättningen som definieras i den överordnade principen ska ignoreras, med i stället de data som definierats i den aktuella principen. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
@@ -112,7 +100,7 @@ Elementet **item** innehåller följande attribut:
 | --------- | -------- | ----------- |
 | Text | Ja | Den användarvänliga visnings strängen som ska visas för användaren i användar gränssnittet för det här alternativet. |
 | Värde | Ja | Det sträng anspråks värde som är associerat med att välja det här alternativet. |
-| SelectByDefault | Nej | Anger om det här alternativet ska vara markerat som standard i användar gränssnittet. Möjliga värden: true eller false. |
+| SelectByDefault | Inga | Anger om det här alternativet ska vara markerat som standard i användar gränssnittet. Möjliga värden: true eller false. |
 
 I följande exempel visas användningen av **LocalizedCollections** -elementet. Den innehåller två **LocalizedCollection** -element, ett för engelska och ett för spanska. Båda anger **begränsnings** samlingen för anspråket `Gender` med en lista över objekt för engelska och spanska.
 
@@ -335,7 +323,7 @@ UxElement-värdet används för att lokalisera ett av användar gränssnitts ele
 
 ### <a name="displaycontrol"></a>Visa
 
-Värdet visnings värde används för att lokalisera ett av användar gränssnitts elementen för [visnings kontroll](display-controls.md) . I följande exempel visas hur du kan lokalisera knapparna skicka och verifiera. 
+Värdet visnings värde används för att lokalisera ett av användar gränssnitts elementen för [visnings kontroll](display-controls.md) . När den här inställningen är aktive rad tar localizedStrings ***prioritet** _ över några av _ *UxElement**-StringIDs **som ver_but_send**, **ver_but_edit**, **ver_but_resend** och **ver_but_verify**. I följande exempel visas hur du kan lokalisera knapparna skicka och verifiera. 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>

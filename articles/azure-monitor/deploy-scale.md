@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: f06ed85e362f15e36e030cd11639d9d17348e938
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd56e464419312e74aec01cf22ae56f797991ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731773"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Distribuera Azure Monitor i skala med Azure Policy
 Vissa Azure Monitor funktioner konfigureras en gång eller ett begränsat antal gånger, men andra måste upprepas för varje resurs som du vill övervaka. I den här artikeln beskrivs metoder för att använda Azure Policy för att implementera Azure Monitor i skala för att säkerställa att övervakningen är konsekvent och korrekt konfigurerad för alla dina Azure-resurser.
@@ -28,7 +28,7 @@ Azure Policy består av objekten i följande tabell. Se [Azure policy objekt](..
 
 | Objekt | Beskrivning |
 |:---|:---|
-| Principdefinition | Beskriver villkoren för resurs efterlevnad och den påverkan som ska vidtas om ett villkor är uppfyllt. Detta kan vara alla resurser av en viss typ eller endast resurser som matchar vissa egenskaper. Detta kan vara att helt enkelt flagga resursen för efterlevnad eller distribuera en relaterad resurs. Princip definitioner skrivs med JSON enligt beskrivningen i [Azure policy definitions struktur](../governance/policy/concepts/definition-structure.md). Effekter beskrivs i [förstå Azure policys effekter](../governance/policy/concepts/effects.md).
+| Definition av princip | Beskriver villkoren för resurs efterlevnad och den påverkan som ska vidtas om ett villkor är uppfyllt. Detta kan vara alla resurser av en viss typ eller endast resurser som matchar vissa egenskaper. Detta kan vara att helt enkelt flagga resursen för efterlevnad eller distribuera en relaterad resurs. Princip definitioner skrivs med JSON enligt beskrivningen i [Azure policy definitions struktur](../governance/policy/concepts/definition-structure.md). Effekter beskrivs i [förstå Azure policys effekter](../governance/policy/concepts/effects.md).
 | Princip initiativ | En grupp princip definitioner som ska appliceras tillsammans. Du kan till exempel ha en princip definition för att skicka resurs loggar till en Log Analytics-arbetsyta och en annan för att skicka resurs loggar till Event Hub. Skapa ett initiativ som innehåller båda princip definitionerna och tillämpa initiativet på resurser i stället för de enskilda princip definitionerna. Initiativ skrivs med JSON enligt beskrivningen i [Azure policy initiativets struktur](../governance/policy/concepts/initiative-definition-structure.md). |
 | Tilldelning | En princip definition eller ett initiativ börjar inte gälla förrän det har tilldelats en omfattning. Du kan till exempel tilldela en princip till en resurs grupp för att tillämpa den på alla resurser som skapats i den resursen, eller tillämpa den på en prenumeration för att tillämpa den på alla resurser i den prenumerationen.  Mer information finns i [Azure policy tilldelnings struktur](../governance/policy/concepts/assignment-structure.md). |
 
@@ -121,34 +121,34 @@ Initiativet kommer att gälla för varje virtuell dator när den skapas. En [rep
 ![Initiativ reparation](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor för virtuella datorer
-[Azure Monitor for VMS](vm/vminsights-overview.md) är det primära verktyget i Azure Monitor för övervakning av virtuella datorer. Om du aktiverar Azure Monitor for VMs installeras både Log Analytics-agenten och beroende agenten. Använd Azure Policy för att se till att varje virtuell dator har kon figurer ATS som du skapar i stället för att utföra dessa uppgifter manuellt.
+## <a name="vm-insights"></a>VM-insikter
+[VM Insights](vm/vminsights-overview.md) är det primära verktyget i Azure Monitor för övervakning av virtuella datorer. Om du aktiverar VM Insights installeras både Log Analytics-agenten och beroende agenten. Använd Azure Policy för att se till att varje virtuell dator har kon figurer ATS som du skapar i stället för att utföra dessa uppgifter manuellt.
 
 > [!NOTE]
-> Azure Monitor for VMs innehåller en funktion som kallas **Azure Monitor for VMS princip täckning** som gör att du kan identifiera och reparera icke-kompatibla virtuella datorer i din miljö. Du kan använda den här funktionen i stället för att arbeta direkt med Azure Policy för virtuella Azure-datorer och för virtuella hybrid datorer som är anslutna till Azure Arc. För skalnings uppsättningar för virtuella Azure-datorer måste du skapa tilldelningen med hjälp av Azure Policy.
+> VM Insights innehåller en funktion som kallas för **princip täckning för VM Insights** som gör att du kan identifiera och åtgärda icke-kompatibla virtuella datorer i din miljö. Du kan använda den här funktionen i stället för att arbeta direkt med Azure Policy för virtuella Azure-datorer och för virtuella hybrid datorer som är anslutna till Azure Arc. För skalnings uppsättningar för virtuella Azure-datorer måste du skapa tilldelningen med hjälp av Azure Policy.
  
 
-Azure Monitor for VMs innehåller följande inbyggda initiativ som installerar båda agenterna för att aktivera fullständig övervakning. 
+VM Insights innehåller följande inbyggda initiativ som installerar båda agenterna för att aktivera fullständig övervakning. 
 
-|Name |Beskrivning |
+|Namn |Beskrivning |
 |:---|:---|
-|Aktivera Azure Monitor for VMs | Installerar Log Analytics agent och beroende agent på virtuella Azure-datorer och hybrid virtuella datorer som är anslutna till Azure Arc. |
+|Aktivera VM Insights | Installerar Log Analytics agent och beroende agent på virtuella Azure-datorer och hybrid virtuella datorer som är anslutna till Azure Arc. |
 |Aktivera Azure Monitor för skalnings uppsättningar för virtuella datorer | Installerar den Log Analytics agenten och beroende agenten på skalnings uppsättningen för den virtuella Azure-datorn. |
 
 
 ### <a name="virtual-machines"></a>Virtuella datorer
-I stället för att skapa tilldelningar för de här initiativen med hjälp av Azure Policy-gränssnittet innehåller Azure Monitor for VMs en funktion som gör att du kan kontrol lera antalet virtuella datorer i varje omfattning för att avgöra om initiativet har tillämpats. Du kan sedan konfigurera arbets ytan och skapa obligatoriska tilldelningar med det gränssnittet.
+I stället för att skapa tilldelningar för de här initiativen med hjälp av Azure Policy-gränssnittet innehåller VM Insights en funktion som gör att du kan kontrol lera antalet virtuella datorer i varje omfattning för att avgöra om initiativet har tillämpats. Du kan sedan konfigurera arbets ytan och skapa obligatoriska tilldelningar med det gränssnittet.
 
-Mer information om den här processen finns i [aktivera Azure Monitor for VMS med hjälp av Azure policy](./vm/vminsights-enable-policy.md).
+Mer information om den här processen finns i [Aktivera VM-insikter med hjälp av Azure policy](./vm/vminsights-enable-policy.md).
 
-![Azure Monitor for VMs princip](media/deploy-scale/vminsights-policy.png)
+![Princip för VM Insights](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>Skalningsuppsättningar för virtuella datorer
 Om du vill använda Azure Policy för att aktivera övervakning av skalnings uppsättningar för virtuella datorer, tilldelar du initiativet **aktivera Azure Monitor för Virtual Machine Scale set** till en hanterings grupp, prenumeration eller resurs grupp i Azure beroende på vilka resurser som ska övervakas. En [hanterings grupp](../governance/management-groups/overview.md) är särskilt användbart för en princip som är särskilt användbar om din organisation har flera prenumerationer.
 
 ![Skärm bild av sidan tilldela initiativ i Azure Portal. Initiativ definitionen är inställd på att aktivera Azure Monitor för skalnings uppsättningar för virtuella datorer.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-Välj arbets ytan som data ska skickas till. Den här arbets ytan måste ha *VMInsights* -lösningen installerad enligt beskrivningen i [Konfigurera Log Analytics arbets yta för Azure Monitor for VMS](vm/vminsights-configure-workspace.md).
+Välj arbets ytan som data ska skickas till. Den här arbets ytan måste ha *VMInsights* -lösningen installerad enligt beskrivningen i [Konfigurera Log Analytics arbets yta för VM-insikter](vm/vminsights-configure-workspace.md).
 
 ![Välj arbetsyta](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,13 +157,13 @@ Skapa en reparations uppgift om du har en befintlig virtuell dators skalnings up
 ![Reparations uppgift](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
-Du kan ha scenarier där du vill installera Log Analytics agenten men inte beroende agenten. Det finns inget inbyggt initiativ för bara agenten, men du kan skapa egna baserat på de inbyggda princip definitionerna som tillhandahålls av Azure Monitor for VMs.
+Du kan ha scenarier där du vill installera Log Analytics agenten men inte beroende agenten. Det finns inget inbyggt initiativ för bara agenten, men du kan skapa egna baserat på de inbyggda princip definitionerna som tillhandahålls av VM Insights.
 
 > [!NOTE]
 > Det kan inte finnas någon anledning att distribuera beroende agenten på egen hand eftersom den kräver att den Log Analytics agenten levererar sina data till Azure Monitor.
 
 
-|Name |Beskrivning |
+|Namn |Beskrivning |
 |-----|------------|
 |Granska Log Analytics agent distribution – VM-avbildningen (OS) har inte listats |Rapporterar virtuella datorer som icke-kompatibla om VM-avbildningen (OS) inte är definierad i listan och agenten inte är installerad. |
 |Distribuera Log Analytics agent för virtuella Linux-datorer |Distribuera Log Analytics agent för virtuella Linux-datorer om VM-avbildningen (OS) definieras i listan och agenten inte är installerad. |

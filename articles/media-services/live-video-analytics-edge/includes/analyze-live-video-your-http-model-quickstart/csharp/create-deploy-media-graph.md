@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 374a7dd37c23cdc8391485ec8f87f3427fc61ef1
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 597a617f892ba00af13b4f88cad1eddf00f0d11b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569538"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750088"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Granska och redigera exempelfilerna
 
@@ -68,10 +68,10 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
         > Ovanstående steg förutsätter att du använder den virtuella datorn som skapats av installations skriptet. Om du använder en egen Edge-enhet i stället går du till din Edge-enhet och kör följande kommandon med **administratörs behörighet** för att hämta och lagra exempel video filen som används för den här snabb starten:  
         
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
         * `yolov3`Modulen, som är den YoloV3 objekt identifierings modell som tillämpar dator syn på avbildningarna och returnerar flera klasser av objekt typer
  

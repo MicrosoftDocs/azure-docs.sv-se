@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456967"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Självstudie: Azure Active Directory integration med bonus
 
@@ -30,7 +30,7 @@ Att integrera bonus med Azure AD ger följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med bonus behöver du följande objekt:
 
@@ -61,7 +61,7 @@ Om du vill konfigurera en bonus integrering i Azure AD måste du lägga till bon
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **bonus**och väljer **bonus** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **bonus** och väljer **bonus** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
     ![Bonus i resultat listan](common/search-new-app.png)
 
@@ -131,13 +131,13 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med bon
 1. I verktygsfältet högst upp klickar du på **Inställningar** och väljer sedan **integreringar och appar**.
 
     ![Bonus för sociala avdelningen](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. Under **enkel inloggning**väljer du **SAML**.
+1. Under **enkel inloggning** väljer du **SAML**.
 
 1. Utför följande steg på sidan **SAML** -dialog:
 
     ![Egenskaps sida för bonus SAML](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. I text rutan **IDP SSO target URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    a. I text rutan **IDP SSO target URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
     b. I text rutan för **inloggnings-URL för IDP** klistrar du in värdet för **inloggnings-URL**, som du har kopierat från Azure Portal.
 
@@ -175,7 +175,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till bonus.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **bonus**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **bonus**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -232,7 +232,7 @@ För att Azure AD-användare ska kunna logga in på bonus måste de tillhandahå
 
     b. I textrutan **Efternamn** skriver du efternamnet på användaren: **Simon**.
 
-    c. I textrutan **E-post** anger du e-postadressen för användaren, t.ex. `brittasimon\@contoso.com`.
+    c. I textrutan **E-post** anger du e-postadressen för användaren, t.ex. `brittasimon@contoso.com`.
 
     d. Klicka på **Spara**.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 6e65b828e2cf86614707c8a859abc0c4f2395899
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623074"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723647"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurera data insamling för Azure Monitor agenten (för hands version)
 
@@ -82,7 +82,7 @@ Följ stegen nedan för att skapa en data insamlings regel och associationer med
 
 ## <a name="create-association-using-resource-manager-template"></a>Skapa Association med Resource Manager-mall
 
-Du kan inte skapa en data insamlings regel med hjälp av en Resource Manager-mall, men du kan skapa en koppling mellan en virtuell Azure-dator eller Azure Arc-aktiverad server med hjälp av en Resource Manager-mall. Se exempel [på Resource Manager-mallar för data insamlings regler i Azure Monitor](../samples/resource-manager-data-collection-rules.md) för exempel-mallar.
+Du kan inte skapa en data insamlings regel med hjälp av en Resource Manager-mall, men du kan skapa en koppling mellan en virtuell Azure-dator eller Azure Arc-aktiverad server med hjälp av en Resource Manager-mall. Se exempel [på Resource Manager-mallar för data insamlings regler i Azure Monitor](./resource-manager-data-collection-rules.md) för exempel-mallar.
 
 ## <a name="next-steps"></a>Nästa steg
 

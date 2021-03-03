@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 02/25/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4d4cf7a0dc73070f4f48ed87f60a2458bc925b13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220912"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707361"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikering mellan regioner av Azure NetApp Files volymer
 
@@ -31,7 +31,7 @@ Den Azure NetApp Files replikeringsinställningarna ger data skydd genom replike
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Multiregion-replikeringskonflikter som stöds
 
-Azure NetApp Files Volume Replication stöds mellan olika [Azures regionala par](/azure/best-practices-availability-paired-regions#azure-regional-pairs) och icke-par. Azure NetApp Files Volume Replication är för närvarande tillgänglig mellan följande regioner:  
+Azure NetApp Files Volume Replication stöds mellan olika [Azures regionala par](../best-practices-availability-paired-regions.md#azure-regional-pairs) och icke-par. Azure NetApp Files Volume Replication är för närvarande tillgänglig mellan följande regioner:  
 
 ### <a name="azure-regional-pairs"></a>Regionala Azure-par
 
@@ -52,6 +52,7 @@ Azure NetApp Files Volume Replication stöds mellan olika [Azures regionala par]
 *   Södra centrala USA och östra USA
 *   Södra centrala USA och östra USA 2
 *   USA, östra och USA, östra 2
+*   USA, östra 2 och USA, västra 2
 *   Östra Australien och Sydostasien 
 *   Tyskland, västra centrala och Storbritannien, södra
 
@@ -125,5 +126,3 @@ Vanlig Azure NetApp Files lagrings kapacitet för månad 2 gäller för mål vol
 * [Mått för volym replikering](azure-netapp-files-metrics.md#replication)
 * [Ta bort volymreplikeringar eller volymer](cross-region-replication-delete.md)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)
-
-

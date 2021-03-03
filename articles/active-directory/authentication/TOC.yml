@@ -176,7 +176,7 @@
     - name: Rapportering
       items:
         - name: 'Autentiseringsmetod, aktivitet'
-          href: howto-authentication-methods-usage-insights.md
+          href: howto-authentication-methods-activity.md
         - name: SSPR-rapporter
           href: howto-sspr-reporting.md
         - name: MFA-rapporter

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a8ab7195958a6c2d5a730c38232eb348d505deda
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d1310e3c4b4a56a27219cce613e8f6109d32c8c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729407"
 ---
 # <a name="quickstart-set-up-azure-attestation-by-using-the-azure-portal"></a>Snabb start: Konfigurera Azure-attestering med hjälp av Azure Portal
 
@@ -90,7 +90,7 @@ Följ stegen i det här avsnittet om du vill visa, lägga till och ta bort princ
 1. Gå till Azure Portal-menyn eller start sidan och välj **alla resurser**.
 1. I rutan Filter anger du namnet på leverantören av attesteringen.
 1. Välj providern för attestering och gå till översikts sidan.
-1. Välj **princip signerings certifikat** på resurs menyn på vänster sida i fönstret eller i det nedre fönstret.
+1. Välj **princip signerings certifikat** på resurs menyn på vänster sida i fönstret eller i det nedre fönstret. Du ser en prompt för att välja certifikat för autentisering. Välj lämpligt alternativ för att fortsätta.
 1. Välj **Ladda ned princip signerings certifikat**. Knappen kommer att inaktive ras för attesterings leverantörer som skapats utan krav på policy signering.
 1. Den nedladdade text filen har alla certifikat i ett JWS-format.
 1. Kontrol lera antalet certifikat och de hämtade certifikaten.
@@ -122,7 +122,7 @@ I det här avsnittet beskrivs hur du visar en attesterings princip och hur du ko
 1.  Gå till Azure Portal-menyn eller start sidan och välj **alla resurser**.
 1.  I rutan Filter anger du namnet på leverantören av attesteringen.
 1.  Välj providern för attestering och gå till översikts sidan.
-1.  Välj **princip** på resurs menyn på vänster sida i fönstret eller i det nedre fönstret.
+1.  Välj **princip** på resurs menyn på vänster sida i fönstret eller i det nedre fönstret. Du ser en prompt för att välja certifikat för autentisering. Välj lämpligt alternativ för att fortsätta.
 1.  Välj önskad **attesterings typ** och visa den **aktuella principen**.
 
 ### <a name="configure-an-attestation-policy"></a>Konfigurera en princip för attestering
@@ -144,6 +144,7 @@ Följ de här stegen för att överföra en princip i JWT-eller text format om a
    För alternativet fil uppladdning visas princip för hands versionen i text format och kan inte redige ras.
 
 1. Välj **Uppdatera** på den övre menyn för att visa den konfigurerade principen.
+
 
 Om attesteringsservern har skapats med krav på signerings krav följer du dessa steg för att ladda upp en princip i JWT-format.
 

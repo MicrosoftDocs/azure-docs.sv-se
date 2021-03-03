@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f69de583dea14be3c7ce3ab6779af549e95de75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09b5a6bd11db1a8faa29e7b3871156f9c28d1140
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624940"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717391"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor loggar för tjänst leverantörer
 
@@ -48,7 +48,7 @@ Fördelarna med den distribuerade arkitekturen är:
 
 Nack delarna med den distribuerade arkitekturen är:
 
-* Att visualisera och analysera data centralt mellan kund klienter med verktyg som Azure Monitor arbets böcker kan resultera i långsammare upplevelser, särskilt när du analyserar data över 50 + arbets ytor.
+* Att visualisera och analysera data centralt [mellan kund klienter](cross-workspace-query.md) med verktyg som Azure Monitor arbets böcker kan resultera i långsammare upplevelser, särskilt när du analyserar data över 50 + arbets ytor.
 * Om kunderna inte har publicerats för Azure-delegerad resurs hantering måste tjänst leverantörs administratörerna vara etablerade i kund katalogen och det är svårare för tjänste leverantören att hantera ett stort antal kund klienter samtidigt.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. centrala loggar lagras på en arbets yta som finns i tjänste leverantörens klient organisation
@@ -85,7 +85,7 @@ Det finns två alternativ för att implementera loggar på en central plats:
 
 * Automatisera skapandet av arbets ytor med [PowerShell](../logs/powershell-workspace-configuration.md)
 
-* Använd [aviseringar](../platform/alerts-overview.md) för att integrera med befintliga system
+* Använd [aviseringar](../alerts/alerts-overview.md) för att integrera med befintliga system
 
 * Generera sammanfattnings rapporter med [Power BI](../visualize/powerbi.md)
 

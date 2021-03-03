@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718190"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Push-inställningar till app-konfiguration med Azure-pipeline
 
@@ -80,7 +80,7 @@ Följande parametrar används av app Configurations push-aktivitet:
 
 - **Azure-prenumeration**: en listruta som innehåller dina tillgängliga Azure Service-anslutningar. Om du vill uppdatera och uppdatera din lista över tillgängliga Azure-tjänst anslutningar trycker du på knappen **Uppdatera Azure-prenumeration** till höger om text rutan.
 - **Konfigurations namn för app**: en listruta som läser in dina tillgängliga konfigurations lager under den valda prenumerationen. Om du vill uppdatera och uppdatera listan över tillgängliga konfigurations lager trycker du på knappen **Uppdatera appens konfigurations namn** till höger om text rutan.
-- **Sökväg till konfigurations fil**: sökvägen till konfigurations filen. Du kan bläddra igenom din versions artefakt för att välja en konfigurations fil. ( `...` knappen till höger om text rutan).
+- **Sökväg till konfigurations fil**: sökvägen till konfigurations filen. Du kan bläddra igenom din versions artefakt för att välja en konfigurations fil. ( `...` knappen till höger om text rutan). De fil format som stöds är: yaml, JSON, Properties.
 - **Avgränsare**: avgränsare som används för att förenkla. JSON-och. yml-filer.
 - **Djup**: det djup som. JSON-och. yml-filerna kommer att förenkla.
 - **Prefix**: en sträng som läggs till i början av varje nyckel som skickas till appens konfigurations arkiv.

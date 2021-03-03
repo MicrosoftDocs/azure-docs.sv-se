@@ -1,17 +1,17 @@
 ---
-title: Rapporter i Azure Monitor för behållare
-description: Beskriver tillgängliga rapporter för att analysera data som samlas in av Azure Monitor för behållare.
+title: Rapporter i behållar insikter
+description: Beskriver rapporter som är tillgängliga för analys av data som samlas in av behållar insikter.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 94709cf4a8b579447c11f91f9bc6863ab4b4fe08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704284"
 ---
-# <a name="reports-in-azure-monitor-for-containers"></a>Rapporter i Azure Monitor för behållare
-Rapporter i Azure Monitor för behållare rekommenderas färdiga [Azure-arbetsböcker](../visualize/workbooks-overview.md). I den här artikeln beskrivs de olika rapporter som är tillgängliga och hur du kommer åt dem.
+# <a name="reports-in-container-insights"></a>Rapporter i behållar insikter
+Rapporter i behållar insikter rekommenderas som färdiga [Azure-arbetsböcker](../visualize/workbooks-overview.md). I den här artikeln beskrivs de olika rapporter som är tillgängliga och hur du kommer åt dem.
 
 ## <a name="viewing-reports"></a>Visa rapporter
 Från **Azure Monitor** -menyn i Azure Portal väljer du **behållare**. Välj **insikter** i avsnittet **övervakning** , Välj ett visst kluster och välj sedan sidan **rapporter (förhands granskning)** . 

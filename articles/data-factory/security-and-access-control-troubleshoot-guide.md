@@ -4,14 +4,14 @@ description: Lär dig hur du felsöker säkerhets-och åtkomst kontroll problem 
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: 0dac0dcb272b602be8b921bce0ffc68c05cb9cbd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706191"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Felsöka problem med Azure Data Factory säkerhet och åtkomst kontroll
 
@@ -107,7 +107,7 @@ Lös problemet genom att göra följande:
 
 Det går inte att registrera IR-autentiseringsnyckel på den virtuella datorn med egen värd eftersom den privata länken är aktive rad. Du får följande fel meddelande:
 
-"Det gick inte att hämta tjänstens token från ADF-tjänsten med nyckeln * * * * * * * * * * * * * * och tids kostnaden är: 0,1250079 sekunder: felkoden är: InvalidGatewayKey, activityId är: XXXXXXX och detaljerat fel meddelande är klientens IP-adress är inte giltig privat IP-orsak Data Factory kunde inte komma åt det offentliga nätverket och kan därför inte nå ut till molnet för att göra anslutningen korrekt."
+"Det gick inte att hämta tjänstens token från ADF-tjänsten med nyckeln * * * * * * * * * * * * * * och tids kostnaden är: 0,1250079 sekund: felkoden är: InvalidGatewayKey, activityId är: XXXXXXX och det detaljerade fel meddelandet är klientens IP-adress är inte en giltig privat IP-orsak Data Factory kunde inte komma åt det offentliga nätverket och kan därför inte nå ut till molnet för att göra anslutningen korrekt."
 
 #### <a name="cause"></a>Orsak
 
@@ -142,7 +142,6 @@ Lös problemet genom att göra följande:
 
 1. Lägg till IR-autentiseringsnyckel igen i integration Runtime.
 
-
 **Lösning 2**
 
 Lös problemet genom att gå till [Azures privata länk för Azure Data Factory](./data-factory-private-link.md).
@@ -150,6 +149,45 @@ Lös problemet genom att gå till [Azures privata länk för Azure Data Factory]
 Försök att aktivera offentlig nätverks åtkomst i användar gränssnittet, som visas på följande skärm bild:
 
 ![Skärm bild av "Enabled"-kontrollen för "Tillåt offentlig nätverks åtkomst" i fönstret nätverk.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>ADF, privat DNS-zon åsidosätter Azure Resource Manager DNS-matchning som orsakar fel som inte hittades
+
+#### <a name="cause"></a>Orsak
+Både Azure Resource Manager och ADF använder samma privata zon för att skapa en potentiell konflikt i kundens privata DNS med ett scenario där Azure Resource Managers poster inte hittas.
+
+#### <a name="solution"></a>Lösning
+1. Hitta Privat DNS zoner **privatelink.Azure.com** i Azure Portal.
+![Skärm bild av hitta Privat DNS zoner.](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+2. Kontrol lera om det finns en post **ADF**.
+![Skärm bild av en post.](media/security-access-control-troubleshoot-guide/a-record.png)
+3.  Gå till **virtuella nätverks länkar**, ta bort alla poster.
+![Skärm bild av länk till virtuellt nätverk.](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
+4.  Navigera till din data fabrik i Azure Portal och återskapa den privata slut punkten för Azure Data Factory Portal.
+![Skärm bild av återskapande av privat slut punkt.](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+5.  Gå tillbaka till Privat DNS zoner och kontrol lera om det finns en ny privat DNS-zon **privatelink.ADF.Azure.com**.
+![Skärm bild av ny DNS-post.](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+
+### <a name="connection-error-in-public-endpoint"></a>Anslutnings fel i offentlig slut punkt
+
+#### <a name="symptoms"></a>Symtom
+
+När du kopierar data med Azure Blob Storage offentlig åtkomst, körs pipelinen slumpmässigt och slutar fungera med följande fel.
+
+Exempel: Azure Blob Storage-mottagaren använde Azure IR (offentligt, inte hanterat VNet) och Azure SQL Database källan använde det hanterade VNet IR. Eller källa/mottagare använder hanterade VNet-IR endast med offentlig åtkomst för lagring.
+
+`
+<LogProperties><Text>Invoke callback url with req:
+"ErrorCode=UserErrorFailedToCreateAzureBlobContainer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Unable to create Azure Blob container. Endpoint: XXXXXXX/, Container Name: test.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.WindowsAzure.Storage.StorageException,Message=Unable to connect to the remote server,Source=Microsoft.WindowsAzure.Storage,''Type=System.Net.WebException,Message=Unable to connect to the remote server,Source=System,''Type=System.Net.Sockets.SocketException,Message=A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond public ip:443,Source=System,'","Details":null}}</Text></LogProperties>.
+`
+
+#### <a name="cause"></a>Orsak
+
+ADF kan fortfarande använda hanterade VNet IR, men du kan stöta på detta fel eftersom den offentliga slut punkten till Azure Blob Storage i Managed VNet inte är tillförlitlig baserat på test resultatet, och Azure Blob Storage och Azure Data Lake Gen2 inte stöds för anslutning via den offentliga slut punkten från ADF-hanterad Virtual Network enligt [hanterade privata slut punkter i hanterade virtuella nätverk &](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network).
+
+#### <a name="solution"></a>Lösning
+
+- Att ha en privat slut punkt aktive rad på källan och även mottagar sidan när du använder den hanterade VNet IR.
+- Om du fortfarande vill använda den offentliga slut punkten kan du bara växla till offentlig IR i stället för att använda det hanterade VNet-IR: t för källan och mottagaren. Även om du växlar tillbaka till offentlig IR kan ADF fortfarande använda det hanterade VNet IR om det hanterade VNet-IR: en fortfarande finns där.
 
 ## <a name="next-steps"></a>Nästa steg
 

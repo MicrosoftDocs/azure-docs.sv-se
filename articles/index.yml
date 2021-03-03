@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 58b5b8917aeeefb918914a598655da962019de34
-  ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+  ms.openlocfilehash: 2503d6f54efaa32ab76a9321543815e36f37cdcb
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 02/10/2021
-  ms.locfileid: "100102979"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101709978"
 highlightedContent:
   items:
   - title: Utvecklarens startguide för Azure
@@ -36,6 +36,12 @@ highlightedContent:
 productDirectory:
   title: Bläddra bland Azure-produkter
   items:
+  - title: Azure-percept
+    summary: Edge Intelligence från Silicon to service
+    imageSrc: ./media/index/azure-percept.svg
+    azureCategories:
+    - iot
+    url: azure-percept/index.yml
   - title: Avvikelseidentifiering
     summary: Lägg enkelt till funktioner för avvikelseidentifiering i dina appar
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
@@ -174,7 +180,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/Custom-Vision-Service/index.yml
+    url: cognitive-services/custom-vision-service/index.yml
   - title: Virtuella datorer för datavetenskap
     summary: Detaljerad, förkonfigurerad miljö för AI-utveckling
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
@@ -204,7 +210,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/ink-recognizer/index.yml
+    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
   - title: Kinect DK
     summary: Bygg modeller för visuellt innehåll och tal med hjälp av ett utvecklarkit med avancerade AI-sensorer
     imageSrc: ./media/index/kinect-viewer.svg
@@ -408,6 +414,12 @@ productDirectory:
     - databases
     - iot
     url: cosmos-db/index.yml
+  - title: Azure-hanterad instans för Apache Cassandra
+    summary: Automatisera distribution och skalning för hanterade Apache Cassandra-datacenter med öppen källkod
+    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+    azureCategories:
+    - databases
+    url: managed-instance-apache-cassandra/index.yml
   - title: Logic Apps
     summary: Automatisera åtkomsten och användningen av data mellan moln utan att skriva kod
     imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
@@ -507,7 +519,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/linux/index.yml
+    url: ./virtual-machines/index.yml
   - title: Service Fabric
     summary: Utveckla mikrotjänster och styr containrar i Windows eller Linux
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -557,7 +569,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/windows/index.yml
+    url: ./virtual-machines/index.yml
   - title: Azure Dev Spaces
     summary: Utveckla ditt mikrotjänstprogram genom att testa och upprepa det i Azure AKS
     imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -1192,6 +1204,12 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
+  - title: Azure Route Server (för hands version)
+    summary: Förenkla drift hanteringen av dina nätverks enheter
+    imageSrc: ./media/index/azure-route-server.svg
+    azureCategories:
+    - networking
+    url: route-server/index.yml
   - title: Virtual Network
     summary: Etablera privata nätverk, med möjlighet att ansluta till lokala datacenter
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg

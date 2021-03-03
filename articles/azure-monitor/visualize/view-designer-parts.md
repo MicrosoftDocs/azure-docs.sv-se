@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621622"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710880"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referens guide för att Visa designer visualiserings delar i Azure Monitor
 Med hjälp av View Designer i Azure Monitor kan du skapa en mängd olika anpassade vyer i Azure Portal som kan hjälpa dig att visualisera data i din Log Analytics-arbetsyta. Den här artikeln är en referens guide för inställningarna för de visualiserings delar som är tillgängliga i dina anpassade vyer.
@@ -24,7 +24,7 @@ Mer information om View Designer finns i:
 
 De tillgängliga panel typerna för Visa designer beskrivs i följande tabell:
 
-| Vytyp | Description |
+| Vytyp | Beskrivning |
 |:--- |:--- |
 | [Lista med frågor](#list-of-queries-part) |Visar en lista över logg frågor. Du kan välja varje fråga för att visa resultatet. |
 | [Nummer och lista](#number-and-list-part) |Rubriken visar ett enda tal som visar antalet poster från en logg fråga. I listan visas de tio främsta resultaten från en fråga, med en graf som visar det relativa värdet för en numerisk kolumn eller dess förändring över tid. |
@@ -39,7 +39,7 @@ De tillgängliga panel typerna för Visa designer beskrivs i följande tabell:
 I nästa avsnitt beskrivs panel typerna och deras egenskaper i detalj.
 
 > [!NOTE]
-> Delar i vyer baseras på [logg frågor](../log-query/log-query-overview.md) i Log Analytics arbets ytan. De stöder för närvarande inte [kors resurs frågor](../log-query/cross-workspace-query.md) för att hämta data från Application Insights.
+> Delar i vyer baseras på [logg frågor](../logs/log-query-overview.md) i Log Analytics arbets ytan. De stöder för närvarande inte [kors resurs frågor](../logs/cross-workspace-query.md) för att hämta data från Application Insights.
 
 ## <a name="list-of-queries-part"></a>Lista över frågor-del
 I listan med frågor-delen visas en lista över logg frågor. Du kan välja varje fråga för att visa resultatet. Vyn innehåller en enda fråga som standard, och du kan välja **+ fråga** om du vill lägga till fler frågor.
@@ -81,7 +81,7 @@ Rubriken visar ett enda tal som visar antalet poster från en logg fråga. I lis
 | Namn och värde avgränsare |Avgränsaren med ett tecken som används för att parsa egenskapen text till flera värden. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -112,7 +112,7 @@ Rubriken innehåller två siffror som visar antalet poster från separata logg f
 | Namn och värde avgränsare |Avgränsaren med ett tecken som används för att parsa egenskapen text till flera värden. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -153,7 +153,7 @@ Rubriken visar ett enstaka tal som sammanfattar en värde kolumn i en logg fråg
 | Namn och värde avgränsare |Avgränsaren med ett tecken som används för att parsa egenskapen text till flera värden. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -185,7 +185,7 @@ Rubriken visar resultatet av två logg frågor med tiden som stapeldiagram, med 
 | Åtgärd |Åtgärden som ska utföras för miniatyr diagrammet. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -246,7 +246,7 @@ I rubriken visas ett linje diagram med flera serier från en logg fråga med tid
 | Namn och värde avgränsare |Avgränsaren med ett tecken som används för att parsa egenskapen text till flera värden. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -282,7 +282,7 @@ I huvudet visas ett linje diagram med flera serier från en logg fråga över ti
 | Namn och värde avgränsare |Avgränsaren med ett tecken som används för att parsa egenskapen text till flera värden. Mer information finns i [vanliga inställningar](#sparklines). |
 | Klicka och navigera | Åtgärd som vidtas när du klickar på ett objekt i listan.  Mer information finns i [vanliga inställningar](#click-through-navigation). |
 | **Lista** |**> kolumn rubriker** |
-| Name |Texten som visas överst i den första kolumnen. |
+| Namn |Texten som visas överst i den första kolumnen. |
 | Värde |Den text som visas överst i den andra kolumnen. |
 | **Lista** |**> tröskelvärden** |
 | Aktivera tröskelvärden |Välj den här länken om du vill aktivera tröskelvärden. Mer information finns i [vanliga inställningar](#thresholds). |
@@ -318,7 +318,7 @@ Namn och värde avgränsare är en avgränsare för ett tecken som används för
 Anta till exempel att du har en egenskap som kallas *plats* som innehåller värden som *Redmond-Building 41* och *Bellevue 12*. Du kan ange ett bindestreck (-) för namn och värde avgränsare och *skapa stad* för namnet. Den här metoden tolkar varje värde i två egenskaper som kallas *stad* och *byggnad*.
 
 ### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Klicka och navigera
-Genom att klicka – navigera definieras vilken åtgärd som ska vidtas när du klickar på ett sidhuvud eller ett List objekt i en vy.  Det innebär att antingen öppna en fråga i [Log Analytics](../log-query/log-query-overview.md) eller starta en annan vy.
+Genom att klicka – navigera definieras vilken åtgärd som ska vidtas när du klickar på ett sidhuvud eller ett List objekt i en vy.  Det innebär att antingen öppna en fråga i [Log Analytics](../logs/log-query-overview.md) eller starta en annan vy.
 
 I följande tabell beskrivs inställningarna för klick-navigering.
 
@@ -352,9 +352,9 @@ I följande tabell beskrivs inställningarna för tröskelvärden:
 | Inställning | Beskrivning |
 |:--- |:--- |
 | Aktivera tröskelvärden |Välj den här länken om du vill visa en färg ikon till vänster om varje värde. Ikonen anger värdets hälsa relativt till angivna tröskelvärden. |
-| Name |Namnet på tröskelvärdet. |
+| Namn |Namnet på tröskelvärdet. |
 | Tröskelvärde |Värdet för tröskelvärdet. Hälso färgen för varje List objekt anges till färgen för det högsta tröskelvärdet som överskrids av objektets värde. Om inga tröskelvärden överskrids används en standard färg. |
 | Färg |Färgen som anger tröskelvärdet. |
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) som stöder frågor i visualiserings delar.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) som stöder frågor i visualiserings delar.

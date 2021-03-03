@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714501"
 ---
 # <a name="back-up-your-app-in-azure"></a>Säkerhetskopiera din app i Azure
 Med säkerhets kopierings-och återställnings funktionen i [Azure App Service](overview.md) kan du enkelt skapa säkerhets kopior av appar manuellt eller enligt ett schema. Du kan konfigurera säkerhets kopiorna så att de behålls på obestämd tid. Du kan återställa appen till en ögonblicks bild av ett tidigare tillstånd genom att skriva över den befintliga appen eller återställa till en annan app.
@@ -44,10 +44,10 @@ Följande databas lösningar stöds med funktionen säkerhets kopiering:
 * Funktionen säkerhets kopiering och återställning kräver att App Service plan finns på nivån **standard**, **Premium** eller **isolerad** . Mer information om hur du skalar App Service plan att använda en högre nivå finns i [skala upp en app i Azure](manage-scale-up.md). **Premium** -och **isolerade** nivåer tillåter ett större antal dagliga back versioner än **standard** nivån.
 * Du behöver ett Azure Storage-konto och en behållare i samma prenumeration som den app som du vill säkerhetskopiera. Mer information om Azure Storage-konton finns i [Översikt över Azure Storage-konto](../storage/common/storage-account-overview.md).
 * Säkerhets kopieringar kan vara upp till 10 GB app-och databas innehåll. Om säkerhets kopierings storleken överskrider den här gränsen får du ett fel meddelande.
-* Säkerhets kopiering av TLS-aktiverade Azure Database for MySQL stöds inte. Om du har konfigurerat en säkerhets kopia får du inte säkerhets kopior.
-* Säkerhets kopiering av TLS-aktiverade Azure Database for PostgreSQL stöds inte. Om du har konfigurerat en säkerhets kopia får du inte säkerhets kopior.
+* Säkerhets kopiering av TLS-aktiverade Azure Database for MySQL stöds inte. Om en säkerhets kopia har kon figurer ATS kommer du att stöta på säkerhets kopierings problem.
+* Säkerhets kopiering av TLS-aktiverade Azure Database for PostgreSQL stöds inte. Om en säkerhets kopia har kon figurer ATS kommer du att stöta på säkerhets kopierings problem.
 * MySQL-databaser i app säkerhets kopie ras automatiskt utan någon konfiguration. Om du gör inställningar manuellt för MySQL-databaser i-app, till exempel att lägga till anslutnings strängar, kanske säkerhets kopieringarna inte fungerar korrekt.
-* Det finns inte stöd för att använda ett brand Väggs aktiverat lagrings konto eftersom målet för dina säkerhets kopior inte stöds. Om du har konfigurerat en säkerhets kopia får du inte säkerhets kopior.
+* Det finns inte stöd för att använda ett brand Väggs aktiverat lagrings konto eftersom målet för dina säkerhets kopior inte stöds. Om en säkerhets kopia har kon figurer ATS kommer du att stöta på säkerhets kopierings problem.
 
 
 <a name="manualbackup"></a>
@@ -70,18 +70,18 @@ Följande databas lösningar stöds med funktionen säkerhets kopiering:
 
 3. På sidan **säkerhets kopierings konfiguration** klickar du på **lagring som inte är konfigurerad** för att konfigurera ett lagrings konto.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Skärm bild av en banderoll med ett meddelande för att uppgradera App Service plan för att få åtkomst till säkerhets kopierings-och återställnings funktionen.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Skärm bild av avsnittet säkerhets kopierings lagring med inställningen lagra inte konfigurerad valt.":::
 
 4. Välj mål för säkerhets kopian genom att välja ett **lagrings konto** och en **behållare**. Lagrings kontot måste tillhöra samma prenumeration som den app som du vill säkerhetskopiera. Om du vill kan du skapa ett nytt lagrings konto eller en ny behållare på respektive sidor. När du är klar klickar du på **Välj**.
 
-5. På sidan **säkerhets kopierings konfiguration** som fortfarande är öppen kan du konfigurera **säkerhets kopierings databasen**och sedan välja de databaser som du vill inkludera i säkerhets kopiorna (SQL Database eller MySQL) och sedan klicka på **OK**.
+5. På sidan **säkerhets kopierings konfiguration** som fortfarande är öppen kan du konfigurera **säkerhets kopierings databasen** och sedan välja de databaser som du vill inkludera i säkerhets kopiorna (SQL Database eller MySQL) och sedan klicka på **OK**.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Skärm bild av en banderoll med ett meddelande för att uppgradera App Service plan för att få åtkomst till säkerhets kopierings-och återställnings funktionen.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Skärm bild av avsnittet säkerhets kopierings databas som visar alternativet Inkludera i säkerhets kopiering.":::
 
     > [!NOTE]
     > För att en databas ska visas i listan måste dess anslutnings sträng finnas i avsnittet **anslutnings strängar** på sidan **program inställningar** för din app. 
     >
-    > MySQL-databaser i app säkerhets kopie ras automatiskt utan någon konfiguration. Om du gör inställningar manuellt för MySQL-databaser i-app, till exempel att lägga till anslutnings strängar, kanske säkerhets kopieringarna inte fungerar korrekt.
+    > MySQL-databaser i app säkerhets kopie ras automatiskt utan någon konfiguration. Om du gör inställningar för MySQL-databaser i app manuellt, t. ex. genom att lägga till anslutnings strängar, kanske säkerhets kopieringarna inte fungerar korrekt.
     > 
     > 
 

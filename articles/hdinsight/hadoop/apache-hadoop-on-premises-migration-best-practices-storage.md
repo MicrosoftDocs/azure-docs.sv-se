@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89a2a659e195afcae336c930a101ed0c0b470cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944860"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715419"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight
 
@@ -31,7 +31,7 @@ Azure Storage kan vara geo-replikerad. Även om geo-replikering ger geografisk �
 
 Ett av följande format kan användas för att komma åt data som lagras i Azure Storage:
 
-|Data åtkomst format |Description |
+|Data åtkomst format |Beskrivning |
 |---|---|
 |`wasb:///`|Få åtkomst till standard lagring med okrypterad kommunikation.|
 |`wasbs:///`|Få åtkomst till standard lagring med krypterad kommunikation.|
@@ -75,7 +75,7 @@ Mer information finns i följande artiklar:
 - [Skalbarhets-och prestanda mål för Blob Storage](../../storage/blobs/scalability-targets.md)
 - [Prestanda och skalbarhetschecklista för Microsoft Azure Storage](../../storage/blobs/storage-performance-checklist.md)
 - [Övervaka, diagnostisera och felsök Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
-- [Övervaka ett lagringskonto i Azure-portalen](../../storage/common/storage-monitor-storage-account.md)
+- [Övervaka ett lagringskonto i Azure-portalen](../../storage/common/manage-storage-analytics-logs.md)
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
@@ -153,7 +153,7 @@ HDInsight har som standard fullständig åtkomst till data i de Azure Storage ko
 
 1. Öppna filen  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) och ändra följande värden:
 
-    |Egenskap för token|Description|
+    |Egenskap för token|Beskrivning|
     |---|---|
     |policy_name|Namnet som ska användas för den lagrade principen som ska skapas.|
     |storage_account_name|Namnet på ditt lagringskonto.|
@@ -202,7 +202,7 @@ Azure Storage tillhandahåller lokalt redundant lagring (LRS), men du bör ocks�
 
 Mer information finns i följande artiklar:
 
-- [Azure Storage replikering](../../storage/common/storage-redundancy.md)
+- [Azure Storage-replikering](../../storage/common/storage-redundancy.md)
 - [Katastrof vägledning för Azure Data Lake Storage Gen1 (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Bifoga ytterligare Azure Storage konton till klustret

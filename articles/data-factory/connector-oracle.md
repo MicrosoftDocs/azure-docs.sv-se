@@ -4,14 +4,14 @@ description: Lär dig hur du kopierar data från käll arkiv som stöds till en 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: bba1ae991f2a4702a0d55a8dc3f6c7a44b9e7b65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ebafac024593767e884be908acbf0efb9ead50e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381349"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703311"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiera data från och till Oracle med hjälp av Azure Data Factory
 
@@ -363,7 +363,8 @@ När du kopierar data från och till Oracle gäller följande mappningar. Inform
 | LÅNG RAW |Byte [] |
 | NCHAR |Sträng |
 | NCLOB |Sträng |
-| MÅNGA |Decimal, sträng (om precision > 28) |
+| NUMMER (p, s) |Decimal, sträng (om p > 28) |
+| TAL utan precision och skala |Double |
 | NVARCHAR2 |Sträng |
 | OUTSPÄDD |Byte [] |
 | ROWID |Sträng |

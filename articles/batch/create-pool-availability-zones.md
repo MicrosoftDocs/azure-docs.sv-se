@@ -3,12 +3,12 @@ title: Skapa en pool över tillgänglighets zoner
 description: Lär dig hur du skapar en batch-pool med zonindelade-princip som skyddar mot fel.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: 98109e1b74106bc636eaa715575e4b30ab29f9e2
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 56e718bedf504b8e69598c2d99ab8b889a470b89
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725296"
 ---
 # <a name="create-an-azure-batch-pool-across-availability-zones"></a>Skapa en Azure Batch pool över Tillgänglighetszoner
 
@@ -22,7 +22,7 @@ Batch upprätthåller paritet med Azure på support Tillgänglighetszoner. Om du
 
 För att batch-poolen ska kunna allokeras mellan tillgänglighets zoner måste den Azure-region där poolen skapas ha stöd för den begärda VM-SKU: n i fler än en zon. Du kan verifiera detta genom att anropa [API: et för Resource SKU-listan](/rest/api/compute/resourceskus/list) och kontrol lera **locationInfo** -fältet för [resourceSku](/rest/api/compute/resourceskus/list#resourcesku). Se till att fler än en zon stöds för den begärda VM-SKU: n.
 
-För [batch-konton för användar prenumerations läge](accounts.md#batch-accounts)kontrollerar du att prenumerationen där du skapar poolen inte har en begränsning för zon erbjudandet på den BEGÄRda VM-SKU: n. Du kan kontrol lera detta genom att anropa [API: et för Resource SKU](/rest/api/compute/resourceskus/list) och kontrol lera [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Om det finns en zon begränsning kan du skicka ett [support ärende](../azure-portal/supportability/sku-series-unavailable.md) för att ta bort zon begränsningen.
+För [batch-konton för användar prenumerations läge](accounts.md#batch-accounts)kontrollerar du att prenumerationen där du skapar poolen inte har en begränsning för zon erbjudandet på den BEGÄRda VM-SKU: n. Du kan kontrol lera detta genom att anropa [API: et för Resource SKU](/rest/api/compute/resourceskus/list) och kontrol lera [ResourceSkuRestrictions](/rest/api/compute/resourceskus/list#resourceskurestrictions). Om det finns en zon begränsning kan du skicka ett [support ärende](/troubleshoot/azure/general/region-access-request-process) för att ta bort zon begränsningen.
 
 Observera också att du inte kan skapa en pool med en zonindelade-princip om kommunikationen mellan noder är aktive rad och använder en [VM-SKU som stöder InfiniBand](../virtual-machines/workloads/hpc/enable-infiniband.md).
 
@@ -83,4 +83,3 @@ Begärandetext
 - Lär dig mer om [batch-tjänstens arbets flöde och primära resurser](batch-service-workflow-features.md) som pooler, noder, jobb och aktiviteter.
 - Lär dig mer om [att skapa en pool i ett undernät för ett virtuellt Azure-nätverk](batch-virtual-network.md).
 - Lär dig mer om hur du [skapar en Azure Batch pool utan offentliga IP-adresser](./batch-pool-no-public-ip-address.md).
-

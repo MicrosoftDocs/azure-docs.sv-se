@@ -160,10 +160,10 @@
               href: create-data-source-web-sdk.md
             - name: Lägga till ett symbolskikt
               href: map-add-pin.md
-            - name: Lägg till ett popup-fönster
-              href: map-add-popup.md
             - name: Lägga till ett bubbelskikt
               href: map-add-bubble-layer.md
+            - name: Lägg till ett popup-fönster
+              href: map-add-popup.md
             - name: Lägga till HTML-markeringar
               href: map-add-custom-html.md
             - name: Lägg till ett linjeskikt
@@ -250,14 +250,14 @@
           href: how-to-add-symbol-to-android-map.md
         - name: Lägga till ett bubbelskikt
           href: map-add-bubble-layer-android.md
-        - name: Lägga till former
+        - name: Visa funktionsinformation
+          href: display-feature-information-android.md
+        - name: Lägg till ett linjeskikt
+          href: android-map-add-line-layer.md
+        - name: Lägg till ett polygonskikt
           href: how-to-add-shapes-to-android-map.md
         - name: Lägga till ett heatmapskikt
           href: map-add-heat-map-layer-android.md
-        - name: Lägg till ett linjeskikt
-          href: android-map-add-line-layer.md
-        - name: Visa funktionsinformation
-          href: display-feature-information-android.md
         - name: Lägga till ett panelskikt
           href: how-to-add-tile-layer-android-map.md
         - name: Visa trafikdata

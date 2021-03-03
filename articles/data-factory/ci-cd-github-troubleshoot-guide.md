@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727965"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Felsök problem med CI-CD, Azure DevOps och GitHub i ADF 
 
@@ -162,7 +162,7 @@ Tills det nyligen har du klickat på knappen för att publicera ADF-pipeline fö
 
 #### <a name="resolution"></a>Lösning
 
-CI/CD-processen har förbättrats. Funktionen **automatiserad publicering** tar, validerar och exporterar alla mallar för Azure Resource Manager (arm) från ADF-UX. Det gör det möjligt att använda logiken via ett offentligt tillgängligt NPM-paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . På så sätt kan du programmatiskt utlösa dessa åtgärder i stället för att behöva gå till ADF-ANVÄNDARGRÄNSSNITTET och göra en knapp klickning. Detta ger din CI/CD-pipeline en **verklig** kontinuerlig integrerings upplevelse. Följ [förbättringarna i ADF CI/CD-publicering](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) för mer information. 
+CI/CD-processen har förbättrats. Funktionen **automatiserad publicering** tar, validerar och exporterar alla mallar för Azure Resource Manager (arm) från ADF-UX. Det gör det möjligt att använda logiken via ett offentligt tillgängligt NPM-paket [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . På så sätt kan du programmatiskt utlösa dessa åtgärder i stället för att behöva gå till ADF-ANVÄNDARGRÄNSSNITTET och göra en knapp klickning. Detta ger din CI/CD-pipeline en **verklig** kontinuerlig integrerings upplevelse. Följ [förbättringarna i ADF CI/CD-publicering](./continuous-integration-deployment-improvements.md) för mer information. 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>Det går inte att publicera på grund av 4 MB ARM-mall  
 
@@ -176,7 +176,45 @@ Azure Resource Manager begränsar storleken på mallen till 4 MB. Begränsa stor
 
 #### <a name="resolution"></a>Lösning
 
-För små till medelstora lösningar är en enskild mall enklare att förstå och underhålla. Du kan se alla resurser och värden i en enda fil. I avancerade scenarier kan du använda länkade mallar till att dela upp lösningen i riktade komponenter. Följ bästa praxis vid [användning av länkade och kapslade mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell).
+För små till medelstora lösningar är en enskild mall enklare att förstå och underhålla. Du kan se alla resurser och värden i en enda fil. I avancerade scenarier kan du använda länkade mallar till att dela upp lösningen i riktade komponenter. Följ bästa praxis vid [användning av länkade och kapslade mallar](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
+
+### <a name="cannot-connect-to-git-enterprise"></a>Det går inte att ansluta till GIT Enterprise 
+
+##### <a name="issue"></a>Problem
+
+Du kan inte ansluta till GIT Enterprise på grund av behörighets problem. Du kan se felet som **422-en entitet som inte kan bearbetas.**
+
+#### <a name="cause"></a>Orsak
+
+Du har inte konfigurerat OAuth för ADF. URL: en är felkonfigurerad.
+
+##### <a name="resolution"></a>Lösning
+
+Du beviljar OAuth-åtkomst till ADF först. Sedan måste du använda rätt URL för att ansluta till GIT Enterprise. Konfigurationen måste vara inställd på kundens organisation (er) eftersom den första försöket med ADF-tjänsten körs... https://hostname/api/v3/search/repositories?q=user%3 <customer credential> . och fungerar inte. Sedan kommer den att försöka https://hostname/api/v3/orgs/ <vaorg> / <repo> och lyckas. 
+ 
+### <a name="recover-from-a-deleted-data-factory"></a>Återställa från en borttagen data fabrik
+
+#### <a name="issue"></a>Problem
+Kunden tog bort data fabriken eller resurs gruppen som innehåller Data Factory. Han vill veta hur du återställer en borttagen data fabrik.
+
+#### <a name="cause"></a>Orsak
+
+Det går bara att återställa Data Factory om kunden har en käll kontroll som kon figurer ATS (DevOps eller git). Detta tar all den senaste publicerade resursen och **kommer inte** att återställa den opublicerade pipelinen, data uppsättningen och den länkade tjänsten.
+
+Om det inte finns någon käll kontroll är det inte möjligt att återställa en borttagen Data Factory från Server delen eftersom när tjänsten tar emot borttagna kommando, raderas instansen och ingen säkerhets kopia har lagrats.
+
+#### <a name="resoloution"></a>Resoloution
+För att återställa den borttagna Data Factory som har käll kontroll, se stegen nedan:
+
+ * Skapa en ny Azure Data Factory.
+
+ * Konfigurera om git med samma inställningar, men se till att importera befintliga Data Factory resurser till den valda lagrings platsen och välj ny gren.
+
+ * Skapa en pull-begäran för att sammanfoga ändringarna i samarbets grenen och publicera.
+
+ * Om kunden hade en egen värd Integration Runtime i en borttagen ADF, måste de skapa en ny instans i ny ADF, även avinstallera och ominstallera instansen på sin lokal dator/VM med den nya nyckeln som hämtats. När installationen av IR har slutförts måste kunden ändra den länkade tjänsten så att den pekar på ny IR och testa anslutningen, annars Miss kan den fel **referens.**
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

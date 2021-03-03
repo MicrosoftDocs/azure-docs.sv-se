@@ -1,28 +1,28 @@
 ---
-title: Konfigurera Azure Arc-aktiverat Kubernetes-kluster med Azure Monitor för behållare | Microsoft Docs
-description: Den här artikeln beskriver hur du konfigurerar övervakning med Azure Monitor för behållare på Azure Arc-aktiverade Kubernetes-kluster.
+title: Konfigurera Azure Arc-aktiverat Kubernetes-kluster med container Insights | Microsoft Docs
+description: Den här artikeln beskriver hur du konfigurerar övervakning med behållar insikter om Azure Arc-aktiverade Kubernetes-kluster.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 77b536141f0e7c6094964011719a0e536e8d33f1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711305"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivera övervakning av Azure Arc-aktiverade Kubernetes-kluster
 
-Azure Monitor for containers innehåller omfattande övervaknings funktioner för AKS-och AKS-motorns kluster. Den här artikeln beskriver hur du aktiverar övervakning av Kubernetes-kluster som finns utanför Azure och som är aktiverade med Azure Arc, för att uppnå en liknande övervaknings upplevelse.
+Behållar insikter ger en omfattande övervaknings upplevelse för Azure Kubernetes service (AKS) och AKS-motor kluster. Den här artikeln beskriver hur du aktiverar övervakning av Kubernetes-kluster som finns utanför Azure och som är aktiverade med Azure Arc, för att uppnå en liknande övervaknings upplevelse.
 
-Azure Monitor för behållare kan aktive ras för en eller flera befintliga distributioner av Kubernetes med antingen ett PowerShell-eller bash-skript.
+Behållar insikter kan aktive ras för en eller flera befintliga distributioner av Kubernetes med antingen ett PowerShell-eller bash-skript.
 
 ## <a name="supported-configurations"></a>Konfigurationer som stöds
 
-Azure Monitor for containers stöder övervakning av Azure Arc-aktiverade Kubernetes (för hands version) enligt beskrivningen i [översikts](container-insights-overview.md) artikeln, förutom följande funktioner:
+Container Insights stöder övervakning av Azure Arc-aktiverade Kubernetes (för hands version) enligt beskrivningen i [översikts](container-insights-overview.md) artikeln, förutom följande funktioner:
 
 - Real tids data (förhands granskning)
 
-Följande stöds officiellt med Azure Monitor för behållare:
+Följande stöds officiellt med container Insights:
 
 - Versioner av Kubernetes och support policy är samma som versioner av [AKS som stöds](../../aks/supported-kubernetes-versions.md).
 
@@ -36,15 +36,15 @@ Kontrol lera att du har följande innan du börjar:
 
 - En Log Analytics-arbetsyta.
 
-    Azure Monitor for containers stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../samples/resource-manager-workspace.md), via [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../learn/quick-create-workspace.md).
+    Behållar insikter stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../logs/resource-manager-workspace.md), via [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../logs/quick-create-workspace.md).
 
-- Om du vill aktivera och komma åt funktionerna i Azure Monitor för behållare måste du minst vara medlem i Azure *Contributor* -rollen i Azure-prenumerationen och en medlem i rollen [*Log Analytics Contributor*](../platform/manage-access.md#manage-access-using-azure-permissions) för den Log Analytics arbets yta som kon figurer ATS med Azure Monitor för behållare.
+- Om du vill aktivera och komma åt funktionerna i behållar insikter måste du minst vara medlem i Azure *Contributor* -rollen i Azure-prenumerationen och en medlem i rollen [*Log Analytics Contributor*](../logs/manage-access.md#manage-access-using-azure-permissions) för den Log Analytics arbets yta som kon figurer ATS med behållar insikter.
 
 - Du är medlem i rollen [deltagare](../../role-based-access-control/built-in-roles.md#contributor) i Azure-resursens kluster resurs.
 
-- Om du vill visa övervaknings data är du medlem i behörighets rollen [*Log Analytics läsare*](../platform/manage-access.md#manage-access-using-azure-permissions) med den Log Analytics arbets yta som kon figurer ats med Azure Monitor för behållare.
+- Om du vill visa övervaknings data är du medlem i behörighets rollen [*Log Analytics läsare*](../logs/manage-access.md#manage-access-using-azure-permissions) med den Log Analytics arbets yta som kon figurer ATS med behållar insikter.
 
-- [Helm-klienten](https://helm.sh/docs/using_helm/) för att publicera behållaren Azure Monitor för behållare för det angivna Kubernetes-klustret.
+- [Helm-klienten](https://helm.sh/docs/using_helm/) för att publicera behållar insikter-diagrammet för det angivna Kubernetes-klustret.
 
 - Följande konfigurations information för proxy och brand väggar krävs för den behållar version av Log Analytics-agenten för Linux för att kunna kommunicera med Azure Monitor:
 
@@ -247,7 +247,7 @@ bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $
 
 ## <a name="configure-proxy-endpoint"></a>Konfigurera proxy-slutpunkt
 
-Med den behållar agenten för Azure Monitor för behållare kan du konfigurera en proxy-slutpunkt så att den kan kommunicera via proxyservern. Kommunikation mellan behållarens agent och Azure Monitor kan vara en HTTP-eller HTTPS-proxyserver, och både anonym och grundläggande autentisering (användar namn/lösen ord) stöds.
+Med behållarens agent för container Insights kan du konfigurera en proxy-slutpunkt så att den kan kommunicera via proxyservern. Kommunikation mellan behållarens agent och Azure Monitor kan vara en HTTP-eller HTTPS-proxyserver, och både anonym och grundläggande autentisering (användar namn/lösen ord) stöds.
 
 Konfiguration svärdet för proxyn har följande syntax: `[protocol://][user:password@]proxyhost[:port]`
 
@@ -284,10 +284,10 @@ export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>
 
 ## <a name="next-steps"></a>Nästa steg
 
-- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt Arc-aktiverade Kubernetes-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) Azure Monitor för behållare.
+- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt Arc-aktiverade Kubernetes-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) behållar insikter.
 
 - Som standard samlar den behållareade agenten STDOUT/stderr-behållar loggarna för alla behållare som körs i alla namn områden utom Kube-system. Om du vill konfigurera samling av behållar logg samlingar som är specifika för en viss namnrymd eller namnrymder granskar du [konfiguration av container Insights](container-insights-agent-config.md) för att konfigurera önskade inställningar för data insamling till ConfigMap-konfigurations filen.
 
 - Om du vill ta bort och analysera Prometheus-mått från klustret kan du läsa [Konfigurera Prometheus mått-kassationing](container-insights-prometheus-integration.md)
 
-- Information om hur du slutar övervaka ditt Arc-Kubernetes-kluster med Azure Monitor för behållare finns i [så här slutar du övervaka ditt hybrid kluster](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).
+- Information om hur du stoppar övervakningen av din ARC-aktiverad Kubernetes-kluster med container Insights finns i [så här slutar du övervaka ditt hybrid kluster](container-insights-optout-hybrid.md#how-to-stop-monitoring-on-arc-enabled-kubernetes).

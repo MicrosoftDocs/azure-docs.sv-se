@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 5b537b88052ce4042e346732f3dc63aaec6621cc
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/03/2021
 ms.locfileid: "100529723"
 ---
 1. I **Solution Explorer** högerklickar du på projektet och väljer **publicera** och i **mål** väljer du **Azure** och sedan **Nästa**.

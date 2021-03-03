@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: lagayhar
 ms.custom: include file
-ms.openlocfilehash: eda50bb9f65591cd837b7e74e9d783464de43367
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1c4f6b876a4aa80c7e51f2bb3ca88234203d0daa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726191"
 ---
 Det finns vissa begränsningar för antalet mått och händelser per program, det vill säga per Instrumentation-nyckel. Gränserna beror på vilken [prisplan](https://azure.microsoft.com/pricing/details/application-insights/) du väljer.
 
@@ -21,8 +21,8 @@ Det finns vissa begränsningar för antalet mått och händelser per program, de
 | --- | --- | --- |
 | Totala data per dag | 100 GB | Du kan minska datamängden genom att ange ett tak. Om du behöver mer data kan du öka gränsen i portalen, upp till 1 000 GB. Skicka e-post till för kapaciteter som är större än 1 000 GB AIDataCap@microsoft.com .
 | Begränsning | 32 000 händelser/sekund | Gränser är mätt under en minut.
-| Data lagrings loggar | [30-730 dagar](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Den här resursen är för [loggar](../articles/azure-monitor/log-query/log-query-overview.md).
-| Mått för datakvarhållning | 90 dagar| Den här resursen är för [Metrics Explorer](../articles/azure-monitor/platform/metrics-charts.md).
+| Data lagrings loggar | [30-730 dagar](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Den här resursen är för [loggar](../articles/azure-monitor/logs/log-query-overview.md).
+| Mått för datakvarhållning | 90 dagar| Den här resursen är för [Metrics Explorer](../articles/azure-monitor/essentials/metrics-charts.md).
 | [Flerstegstest för tillgänglighet](../articles/azure-monitor/app/availability-multistep.md) (kvarhållning av detaljerade resultat) | 90 dagar | Den här resursen innehåller detaljerade resultat för varje steg.
 | Maximal storlek för telemetri | 64 kB |
 | Maximalt antal telemetri objekt per batch | 64 KB |

@@ -47,12 +47,19 @@
       items:
         - name: Dina Marketplace-förmåner
           href: gtm-your-marketplace-benefits.md
-        - name: Deltagande i partnersäljsamarbete
-          href: marketplace-co-sell.md
-        - name: Alternativet för säljsamarbete i Partner Center
-          href: commercial-marketplace-co-sell.md
-        - name: Migrera lösningar för säljsamarbete från OCP GTM
-          href: co-sell-solution-migration.md
+          items: null
+        - name: Säljsamarbeta med Microsoft
+          items:
+            - name: Översikt över Co-försäljning
+              href: marketplace-co-sell.md
+            - name: Krav för samförsäljning
+              href: co-sell-requirements.md
+            - name: Konfigurera Co-försäljning
+              href: commercial-marketplace-co-sell.md
+            - name: Verifiera medförsäljnings status
+              href: co-sell-status.md
+            - name: Migrera lösningar för säljsamarbete från OCP GTM
+              href: co-sell-solution-migration.md
         - name: Sälja via CSP-partner
           href: cloud-solution-providers.md
         - name: Onboardingguiden Ansluta program
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: Förbereda tekniska tillgångar för IoT Edge-moduler
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: Check lista för certifiering
+          href: iot-edge-checklist.md
     - name: Hanterade tjänsterbjudanden
       items:
         - name: Planera ett erbjudande för hanterad tjänst
@@ -395,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Kod för tillstånd för säljsamarbete
       href: commercial-marketplace-co-sell-states.md
+    - name: Referens arkitektur diagram
+      href: reference-architecture-diagram.md
     - name: Kategorier och underkategorier
       href: categories.md
     - name: HTML-taggar som stöds

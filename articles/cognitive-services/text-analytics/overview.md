@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: aahi
 keywords: text utvinning, sentiment-analys, text analys
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563236"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722287"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Vad är API för textanalys?
 
 API för textanalys är en molnbaserad tjänst som tillhandahåller NLP-funktioner (Natural Language Processing) för text utvinning och text analys, inklusive: sentiment analys, uppläggnings utvinning, extrahering av nyckel fraser, språk identifiering och identifiering av namngivna enheter.
 
-API:et är en del av [Azure Cognitive Services](../index.yml), en samling maskininlärnings- och AI-algoritmer i molnet för dina utvecklingsprojekt. Du kan använda dessa funktioner med [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)eller [klient biblioteket](quickstarts/client-libraries-rest-api.md).
+API:et är en del av [Azure Cognitive Services](../index.yml), en samling maskininlärnings- och AI-algoritmer i molnet för dina utvecklingsprojekt. Du kan använda dessa funktioner med REST API [version 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) eller [version 3,1 – för hands](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)version eller [klient biblioteket](quickstarts/client-libraries-rest-api.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 

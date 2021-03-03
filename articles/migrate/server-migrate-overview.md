@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715130"
 ---
 # <a name="select-a-vmware-migration-option"></a>Välj ett alternativ för VMware-migrering
 
@@ -28,7 +28,7 @@ Använd de här valda jämförelserna för att bestämma vilken metod som ska an
 **Inställning** | **Utan agent** | **Agent-baserad**
 --- | --- | ---
 **Azure-behörigheter** | Du måste ha behörighet att skapa ett Azure Migrate-projekt och för att registrera Azure AD-appar som skapats när du distribuerar Azure Migrate-enheten. | Du behöver deltagar behörighet för Azure-prenumerationen. 
-**Replikering** | Högst 300 virtuella datorer kan replikeras samtidigt från en vCenter Server.<br/> Om du har fler än 50 virtuella datorer för migrering skapar du flera batchar för virtuella datorer.<br/> Att replikera mer i taget påverkar prestanda.<br/><br/> I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.| Replikeringens kapacitet ökar genom skalning av Replikerings enheten.
+**Replikering** | Högst 500 virtuella datorer kan replikeras samtidigt från en vCenter Server. I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.| Replikeringens kapacitet ökar genom skalning av Replikerings enheten.
 **Distribution av utrustning** | [Azure Migrate](migrate-appliance.md) -installationen distribueras lokalt. | [Azure Migrate Replication](migrate-replication-appliance.md) har distribuerats lokalt.
 **Site Recovery kompatibilitet** | Överensstämmelse. | Du kan inte replikera med Azure Migrate Server-migrering om du har konfigurerat replikering för en dator med Site Recovery.
 **Mål disk** | Hanterade diskar | Hanterade diskar

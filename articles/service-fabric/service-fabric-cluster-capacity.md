@@ -4,12 +4,12 @@ description: Nodtyper, hållbarhet, tillförlitlighet och andra saker att tänka
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790706"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714943"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Överväganden vid planering av Service Fabric kluster kapacitet
 
@@ -39,21 +39,21 @@ Den primära nodtypen konfigureras med hjälp av `isPrimary` attributet under no
 
 Antalet typer av inledande noder beror på syftet med ditt kluster och de program och tjänster som körs på den. Överväg följande frågor:
 
-* ***Har ditt program flera tjänster och behöver de vara offentliga eller Internet riktade?** _
+* ***Har ditt program flera tjänster och behöver de vara offentliga eller Internet riktade?***
 
     Typiska program innehåller en frontend Gateway-tjänst som tar emot indata från en klient och en eller flera backend-tjänster som kommunicerar med frontend-tjänsterna, med separata nätverk mellan frontend-och backend-tjänsterna. Dessa fall kräver vanligt vis tre nodtyper: en primär nodtyp och två typer av icke-primära noder (var och en för frontend-och backend-tjänsten).
 
-_ ***Har de tjänster som utgör ditt program olika infrastruktur behov, till exempel större RAM-minne eller högre CPU-cykler?** _
+* ***Har de tjänster som utgör ditt program olika infrastruktur behov, till exempel större RAM-minne eller högre CPU-cykler?***
 
-    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
+    Ofta kan frontend-tjänsten köras på mindre virtuella datorer (VM-storlekar som D2) som har portar öppna för Internet.  Beräknings intensiva Server dels tjänster kan behöva köras på större virtuella datorer (med VM-storlekar som D4, D6, D15) som inte är Internet-riktade. Genom att definiera olika nodtyper för dessa tjänster kan du göra mer effektiv och säker användning av underliggande Service Fabric virtuella datorer och göra det möjligt för dem att skala dem oberoende av varandra. Mer information om hur du uppskattar hur mycket resurser du behöver finns i [kapacitets planering för Service Fabric program](service-fabric-capacity-planning.md)
 
-_ ***Måste alla dina program tjänster skala ut bortom 100 noder?** _
+* ***Måste alla dina program tjänster skala ut bortom 100 noder?***
 
-    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
+    En enskild nodtyp kan inte på ett tillförlitligt sätt skala bortom 100 noder per skalnings uppsättning för virtuella datorer för Service Fabric program. Om du kör fler än 100 noder krävs ytterligare skalnings uppsättningar för virtuella datorer (och därför ytterligare nodtyper).
 
-_ ***Kommer klustret att sträcka sig över Tillgänglighetszoner?** _
+* ***Kommer klustret att sträcka sig över Tillgänglighetszoner?***
 
-    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric stöder kluster som sträcker sig över flera [Tillgänglighetszoner](../availability-zones/az-overview.md) genom att distribuera nodtyper som är fästa på vissa zoner och som garanterar hög tillgänglighet för dina program. Tillgänglighetszoner kräver ytterligare planering och minimi krav för Node-typ. Mer information finns i [Rekommenderad topologi för primär nodtyp för Service Fabric kluster som sträcker sig över Tillgänglighetszoner](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 När du bestämmer antalet och egenskaperna för nodtyper för den första skapandet av klustret, bör du tänka på att du alltid kan lägga till, ändra eller ta bort nodtyper (icke-primära) när klustret har distribuerats. [Primära nodtyper kan också ändras](service-fabric-scale-up-primary-node-type.md) i kluster som körs (även om sådana åtgärder kräver stor planering och försiktighet i produktions miljöer).
 
@@ -61,7 +61,7 @@ Ytterligare överväganden för egenskaperna för nodtypen är en hållbarhets n
 
 ## <a name="durability-characteristics-of-the-cluster"></a>Hållbarhets egenskaper för klustret
 
-_Durability nivå * anger de behörigheter som dina Service Fabric virtuella datorer har med den underliggande Azure-infrastrukturen. Med den här behörigheten kan Service Fabric pausa eventuell infrastruktur förfrågan på VM-nivå (till exempel omstart, avbildning eller migrering) som påverkar kraven för kvorum för Service Fabric system tjänster och dina tillstånds känsliga tjänster.
+*Hållbarhets nivån* anger de behörigheter som dina Service Fabric virtuella datorer har med den underliggande Azure-infrastrukturen. Med den här behörigheten kan Service Fabric pausa eventuell infrastruktur förfrågan på VM-nivå (till exempel omstart, avbildning eller migrering) som påverkar kraven för kvorum för Service Fabric system tjänster och dina tillstånds känsliga tjänster.
 
 > [!IMPORTANT]
 > Hållbarhets nivån har angetts per nodtyp. Om ingen anges används *brons* nivån, men den ger inte automatiska uppgraderingar av operativ systemet. *Silver* -eller *Gold* -hållbarhet rekommenderas för produktions arbets belastningar.
@@ -73,6 +73,9 @@ I tabellen nedan visas Service Fabric hållbarhets nivåer, deras krav och affor
 | Guld             | 5                              | Full-Node-storlekar som är dedikerade till en enskild kund (till exempel L32s, GS5, G5, DS15_v2 D15_v2) | Kan förskjutas tills de godkänts av Service Fabrics klustret | Kan pausas i 2 timmar per uppgraderings domän för att tillåta ytterligare tid för repliker att återställas från tidigare fel |
 | Silver           | 5                              | Virtuella datorer med en enda kärna eller över minst 50 GB lokal SSD                      | Kan förskjutas tills de godkänts av Service Fabrics klustret | Kan inte fördröjas under en viss tids period                                                    |
 | Brons          | 1                              | Virtuella datorer med minst 50 GB lokal SSD                                              | Kommer inte att fördröjas av Service Fabric-klustret           | Kan inte fördröjas under en viss tids period                                                    |
+
+> [!NOTE]
+> Ovannämnda lägsta antal virtuella datorer är ett nödvändigt krav för varje hållbarhets nivå. Vi har gjort en validering på plats som gör det möjligt att skapa eller ändra befintliga scalesets för virtuella datorer som inte uppfyller dessa krav.
 
 > [!WARNING]
 > Med brons hållbarhet är automatisk uppgradering av OS-avbildningen inte tillgänglig. Även om [program för uppdaterings dirigering](service-fabric-patch-orchestration-application.md) (endast avsett för icke-Azure-värdbaserade kluster) *inte rekommenderas* för silver eller större hållbarhets nivåer, är det bara ditt alternativ att automatisera Windows-uppdateringar med avseende på Service Fabric uppgraderings domäner.

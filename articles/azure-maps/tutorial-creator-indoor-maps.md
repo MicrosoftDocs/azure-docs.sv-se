@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625023"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720145"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Självstudie: använda Creator (för hands version) för att skapa inlednings kartor
 
@@ -116,6 +116,7 @@ API för data uppladdning är en tids krävande transaktion som implementerar de
 
     >[!IMPORTANT]
     > API-URL: er i det här dokumentet kan behöva justeras enligt platsen för din skapare-resurs. Mer information finns i [åtkomst till Creator Services (för hands version) ](how-to-manage-creator.md#access-to-creator-services).
+    > Om du får ett fel meddelande med kod `"RequiresCreatorResource"` kontrollerar du att du har [skapat en Azure Maps skapare-resurs](how-to-manage-creator.md) i Azure Maps konto.
 
 3. Klicka på knappen **Skicka** och vänta tills begäran har bearbetats. När begäran har slutförts går du till fliken **sidhuvud** i svaret och letar efter **plats** nyckeln. Kopiera värdet för **plats** nyckeln, som är `status URL` för konverterings förfrågan. Du kommer att använda det här i nästa steg.
 
@@ -314,7 +315,7 @@ En TILESET är en uppsättning vektor paneler som återges på kartan. Tilesets 
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Ange som i **rubrikerna** för **post** -begäran `Content-Type` `application/json` . Ange formaten nedan i **bröd texten** för att återspegla ändringar i och- `occupied` `temperature` *tillstånden*. När du är klar klickar du på **Skicka**.
+3. Ange som i **rubrikerna** för **post** -begäran `Content-Type` `application/json` . I **bröd texten** anger du RAW JSON-formaten nedan för att avspegla ändringar i `occupied` och- `temperature` *tillstånden*. När du är klar klickar du på **Skicka**.
 
     ```json
     {

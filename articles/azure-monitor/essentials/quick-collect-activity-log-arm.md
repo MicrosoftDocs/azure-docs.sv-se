@@ -7,16 +7,16 @@ ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 7465127ed9c52941d6c3ccfd40446546f0795455
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0a740b4c6c6e89c9a4990651779ea4f0b376c971
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635489"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734357"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Snabb start: skicka Azure aktivitets logg till Log Analytics arbets yta med en ARM-mall
 
-Aktivitetsloggen är en plattformslogg i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Den här snabb starten visar hur du använder Azure Resource Manager mallar (ARM-mallar) för att skapa en Log Analytics arbets yta och en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor loggar där du kan analysera den med hjälp av [logg frågor](../log-query/log-query-overview.md) och aktivera andra funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md).
+Aktivitetsloggen är en plattformslogg i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Den här snabb starten visar hur du använder Azure Resource Manager mallar (ARM-mallar) för att skapa en Log Analytics arbets yta och en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor loggar där du kan analysera den med hjälp av [logg frågor](../logs/log-query-overview.md) och aktivera andra funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -321,7 +321,7 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten konfigurerade du aktivitets loggen så att den skickas till en Log Analytics-arbetsyta. Nu kan du konfigurera andra data så att de samlas in i arbets ytan där du kan analysera dem tillsammans med hjälp av [logg frågor](../log-query/log-query-overview.md) i Azure Monitor och utnyttja funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). Du bör börja med att samla in [resurs loggar](../essentials/resource-logs.md) från dina Azure-resurser som kompletterar data i aktivitets loggen och ger insyn i de åtgärder som utfördes i varje resurs.
+I den här snabb starten konfigurerade du aktivitets loggen så att den skickas till en Log Analytics-arbetsyta. Nu kan du konfigurera andra data så att de samlas in i arbets ytan där du kan analysera dem tillsammans med hjälp av [logg frågor](../logs/log-query-overview.md) i Azure Monitor och utnyttja funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). Du bör börja med att samla in [resurs loggar](../essentials/resource-logs.md) från dina Azure-resurser som kompletterar data i aktivitets loggen och ger insyn i de åtgärder som utfördes i varje resurs.
 
 > [!div class="nextstepaction"]
 > [Samla in och analysera resurs loggar med Azure Monitor](../essentials/tutorial-resource-logs.md)

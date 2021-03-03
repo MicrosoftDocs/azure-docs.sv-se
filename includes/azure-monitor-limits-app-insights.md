@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e224faca3c384ee5b3df02b015199ac5eab403bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 03d83d96bb58ddaf9be4e46c4b62f10e2476e549
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750443"
 ---
 Det finns vissa begränsningar för antalet mått och händelser per program, det vill säga per Instrumentation-nyckel. Gränserna beror på vilken [prisplan](https://azure.microsoft.com/pricing/details/application-insights/) du väljer.
 
@@ -21,7 +21,7 @@ Det finns vissa begränsningar för antalet mått och händelser per program, de
 | --- | --- | --- |
 | Totala data per dag | 100 GB | Du kan minska datamängden genom att ange ett tak. Om du behöver mer data kan du öka gränsen i portalen, upp till 1 000 GB. Skicka e-post till för kapaciteter som är större än 1 000 GB AIDataCap@microsoft.com .
 | Begränsning | 32 000 händelser/sekund | Gränser är mätt under en minut.
-| Datakvarhållning | [30-730 dagar](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Den här resursen är för [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/log-query/log-query-overview.md) och [Metrics Explorer](../articles/azure-monitor/platform/metrics-charts.md).
+| Datakvarhållning | [30-730 dagar](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period) | Den här resursen är för [Search](../articles/azure-monitor/app/diagnostic-search.md), [Analytics](../articles/azure-monitor/logs/log-query-overview.md) och [Metrics Explorer](../articles/azure-monitor/essentials/metrics-charts.md).
 | [Flerstegstest för tillgänglighet](../articles/azure-monitor/app/availability-multistep.md) (kvarhållning av detaljerade resultat) | 90 dagar | Den här resursen innehåller detaljerade resultat för varje steg.
 | Maximal händelse storlek | 64 000 byte |
 | Namnlängd för egenskaper och mätvärden | 150 | Se [typ scheman](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).

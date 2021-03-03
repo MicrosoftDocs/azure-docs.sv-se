@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: adcfef19de5987b9b4c54f6765589f2ae9868c11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736754"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Fördefinierad faktura modell för formulär tolken
 
@@ -41,7 +41,7 @@ Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.micros
 
 ### <a name="input-requirements"></a>Krav för indatamängd 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-invoice-operation"></a>Faktura åtgärden analysera
 
@@ -74,14 +74,14 @@ JSON-utdata har 3 delar:
 
 Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. Nedan visas fälten som extraheras från en faktura i JSON-utdata (resultatet nedan använder den här [exempel fakturan](./media/sample-invoice.jpg))  
 
-|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sträng | Kunden faktureras | Microsoft Corp |  |
 | CustomerId | sträng | Referens-ID för kunden | CID – 12345 |  |
 | PurchaseOrder | sträng | Ett referens nummer för inköps order | PO – 3333 | |  |
 | InvoiceId | sträng | ID för den här aktuella fakturan (ofta "faktura nummer") | INV-100 | |  |
-| InvoiceDate | date | Datum då fakturan utfärdades | 11/15/2019 | 
-| DueDate | date | Datum betalning för den här fakturan är förfallen | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Datum då fakturan utfärdades | 11/15/2019 | 2019-11-15 |
+| DueDate | date | Datum betalning för den här fakturan är förfallen | 12/15/2019 | 2019-12-15 |
 | Namn | sträng | Leverantör som har skapat den här fakturan | CONTOSO LTD. | |
 | VendorAddress | sträng | E-postadress för leverantören | 123 456th St New York, Sverige, 10001 | |
 | VendorAddressRecipient | sträng | Namn som är associerat med VendorAddress | Contoso Headquarters | |

@@ -7,12 +7,12 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6897a863a0fd399d3c963d876404680026682dd
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654604"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735428"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Självstudier som använder Azure-tjänster med Azure Data Lake Storage Gen2
 
@@ -22,6 +22,7 @@ Den här artikeln innehåller länkar till självstudier som visar hur du använ
 
 | Azure-tjänst | Steg-för-steg-guide | 
 |---------------|-------------------|
+| Azure Synapse Analytics | [Kom igång med Azure Synapse Analytics](../../synapse-analytics/get-started.md) |
 | Azure Data Factory | [Läs in data i Azure Data Lake Storage Gen2 med Azure Data Factory](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 | Azure Databricks | [Använda med Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) |
 | Azure Databricks | [Extrahera, transformera och läsa in data med hjälp av Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse) |
@@ -29,7 +30,6 @@ Den här artikeln innehåller länkar till självstudier som visar hur du använ
 | Azure Event Grid | [Implementera data Lake Capture-mönstret för att uppdatera en Databricks delta tabell](data-lake-storage-events.md) |
 | Azure Machine Learning | [Få åtkomst till data i Azure Storage-tjänster](../../machine-learning/how-to-access-data.md) |
 | Azure Data Box | [Använd Azure Data Box för att migrera data från en lokal HDFS-lagring till Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md) |
-| Azure Synapse Analytics | [Kom igång med Azure Synapse Analytics](../../synapse-analytics/get-started.md) |
 | HDInsight | [Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [Extrahera, transformera och läsa in data med hjälp av Apache Hive i Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [Analysera data i Data Lake Storage Gen2 med Power BI](/power-query/connectors/datalakestorage) |

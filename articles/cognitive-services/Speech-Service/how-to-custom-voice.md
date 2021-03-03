@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733524"
 ---
 # <a name="get-started-with-custom-voice"></a>Komma igång med Custom Voice
 
@@ -39,10 +39,10 @@ Diagrammet nedan visar stegen för att skapa en anpassad röst modell med hjälp
 
 ## <a name="custom-neural-voices"></a>Anpassade neurala-röster
 
-Anpassad röst stöder för närvarande både standard-och neurala-nivåer. Anpassad neurala-röst ger användarna möjlighet att bygga bättre kvalitets röst modeller samtidigt som de kräver mindre data och tillhandahåller mått som hjälper dig att distribuera AI-ett ansvarsfullt sätt. Vi rekommenderar att du använder anpassad neurala-röst för att utveckla mer realistiska röster för mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. [Läs mer om den anpassade neurala rösten](https://aka.ms/CNV-Transparency-Note). 
+Anpassad röst stöder för närvarande både standard-och neurala-nivåer. Anpassad neurala-röst ger användarna möjlighet att bygga bättre kvalitets röst modeller samtidigt som de kräver mindre data och tillhandahåller mått som hjälper dig att distribuera AI-ett ansvarsfullt sätt. Vi rekommenderar att du använder anpassad neurala-röst för att utveckla mer realistiska röster för mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. [Läs mer om den anpassade neurala rösten](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 > [!NOTE]
-> Som en del av Microsofts engagemang för att utforma ansvarig AI har vi begränsat användningen av anpassad neurala röst. Du får bara till gång till tekniken när dina program har granskats och du har åtagit dig att använda det i justering med våra ansvariga AI-principer. Läs mer om vår [policy om att begränsa åtkomsten](https://aka.ms/gating-overview) och [tillämpa den här](https://aka.ms/customneural). De [språk](language-support.md#customization) och [regioner](regions.md#custom-voices) som stöds för standard-och neurala-versionen av den anpassade rösten är olika. Kontrol lera informationen innan du börjar.  
+> Som en del av Microsofts engagemang för att utforma ansvarig AI har vi begränsat användningen av anpassad neurala röst. Du får bara till gång till tekniken när dina program har granskats och du har åtagit dig att använda det i justering med våra ansvariga AI-principer. Läs mer om vår [policy om att begränsa åtkomsten](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [tillämpa den här](https://aka.ms/customneural). De [språk](language-support.md#customization) och [regioner](regions.md#custom-voices) som stöds för standard-och neurala-versionen av den anpassade rösten är olika. Kontrol lera informationen innan du börjar.  
 
 ## <a name="set-up-your-azure-account"></a>Konfigurera ditt Azure-konto
 
@@ -71,7 +71,7 @@ Skapa ditt första projekt genom att välja fliken **text-till-tal/anpassad rös
 
 Om du använder den anpassade rösten icke-neurala (eller standard) bör du överväga att migrera till anpassad neurala röst direkt genom att följa stegen nedan. Genom att flytta till den anpassade neurala rösten kan du utveckla mer realistiska röster för ännu mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. 
 
-1. Läs mer om vår [policy om att begränsa åtkomsten](https://aka.ms/gating-overview) och [tillämpa den här](https://aka.ms/customneural). Observera att åtkomsten till den anpassade röst tjänsten för neurala är föremål för Microsofts enda val utifrån våra Berättiganderegler. Kunder kan få till gång till tekniken först efter det att programmet har granskats och de har åtagit sig att använda det i sin egen anpassning med våra [ansvariga AI-principer](https://microsoft.com/ai/responsible-ai) och [uppförandekod](https://aka.ms/custom-neural-code-of-conduct). 
+1. Läs mer om vår [policy om att begränsa åtkomsten](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [tillämpa den här](https://aka.ms/customneural). Observera att åtkomsten till den anpassade röst tjänsten för neurala är föremål för Microsofts enda val utifrån våra Berättiganderegler. Kunder kan få till gång till tekniken först efter det att programmet har granskats och de har åtagit sig att använda det i sin egen anpassning med våra [ansvariga AI-principer](https://microsoft.com/ai/responsible-ai) och [uppförandekod](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 2. När ditt program har godkänts får du till gång till inlärnings funktionen "neurala". Se till att du loggar in på den [anpassade röst portalen](https://speech.microsoft.com/customvoice) med samma Azure-prenumeration som du anger i ditt program. 
     > [!IMPORTANT]
     > För att skydda röst-personal och förhindra utbildning av röst modeller med otillåten inspelning eller utan bekräftelse från röst-personal, kräver vi att kunden laddar upp en inspelad översikt över röst personal som ger sitt medgivande. När du förbereder ditt inspelnings skript ska du se till att ta med den här meningen. "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."

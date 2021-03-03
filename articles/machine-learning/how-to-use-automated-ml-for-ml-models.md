@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d7a0832fd15df402c88e1ba565c90a24e0d6eb8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692427"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Skapa, granska och distribuera automatiserade maskin inlärnings modeller med Azure Machine Learning
 
@@ -132,7 +132,7 @@ Annars visas en lista över dina senaste automatiserade maskin inlärnings exper
 
 1. Valfritt Visa ytterligare konfigurations inställningar: ytterligare inställningar som du kan använda för att styra utbildnings jobbet bättre. Annars tillämpas standardvärdena utifrån experiment val och data. 
 
-    Ytterligare konfigurationer|Description
+    Ytterligare konfigurationer|Beskrivning
     ------|------
     Primärt mått| Främsta mått som används för att värdera din modell. [Lär dig mer om modell mått](how-to-configure-auto-train.md#primary-metric).
     Förklara bästa modell | Välj om du vill aktivera eller inaktivera för att visa förklaringar för den rekommenderade bästa modellen. <br> Den här funktionen är för närvarande inte tillgänglig för [vissa algoritmer för Prognosticering](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -180,6 +180,21 @@ Fliken **Modeller** innehåller en lista över de modeller som skapats ordnade e
 
 [![Upprepnings information](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+## <a name="model-explanations"></a>Modell förklaringar
+
+För att bättre förstå din modell, se vilka data funktioner (RAW eller som är tillverkade) som påverkat modellens förutsägelser med modellen förklarings instrument panel. 
+
+Instrument panelen för modell förklaringar innehåller en övergripande analys av den tränade modellen tillsammans med dess förutsägelser och förklaringar. Du kan också öka detalj nivån i en enskild data punkt och dess enskilda funktioner. [Lär dig mer om förklaringens visualiseringar och vissa ritytor](how-to-machine-learning-interpretability-aml.md#visualizations).
+
+För att få förklaringar för en viss modell, 
+
+1. På fliken **modeller** väljer du den modell som du vill använda. 
+1. Välj knappen **förklara modell** och ange en beräkning som kan användas för att generera förklaringar.
+1. Kontrol lera status på fliken **underordnade körningar** . 
+1. När du är klar navigerar du till fliken **förklaringar (förhands granskning)** som innehåller förklarings instrument panelen. 
+
+    ![Instrument panel för modell förklaring](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
+
 ## <a name="deploy-your-model"></a>Distribuera din modell
 
 När du har den bästa modellen tillhands är det dags att distribuera den som en webbtjänst för att göra förutsägelser på nya data.
@@ -202,7 +217,7 @@ Automatiserad ML hjälper dig att distribuera modellen utan att skriva kod:
     Fält| Värde
     ----|----
     Namn| Ange ett unikt namn för din distribution.
-    Description| Ange en beskrivning för att bättre identifiera vad den här distributionen är för.
+    Beskrivning| Ange en beskrivning för att bättre identifiera vad den här distributionen är för.
     Typ av beräkning| Välj den typ av slut punkt som du vill distribuera: *Azure Kubernetes service (AKS)* eller *Azure Container Instance (ACI)*.
     Namn på beräkning| *Gäller endast för AKS:* Välj namnet på det AKS-kluster som du vill distribuera till.
     Aktivera autentisering | Välj för att tillåta tokenbaserad eller nyckelbaserad autentisering.

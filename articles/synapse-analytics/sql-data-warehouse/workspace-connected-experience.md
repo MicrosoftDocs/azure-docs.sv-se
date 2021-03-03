@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 6d71d9889701ec834747e4bec1dd111157c3206e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694622"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Aktivera Synapse-arbetsytans funktioner på en befintlig dedikerad SQL-pool (tidigare SQL DW)
 
@@ -32,7 +32,7 @@ Följande information gäller när du använder ett dedikerat SQL DW (tidigare S
 - **SQL-funktioner** Alla SQL-funktioner kommer att fortsätta med den logiska SQL-servern när funktionen Synapse Workspace har Aktiver ATS. Det går fortfarande att komma åt servern via SQL Resource Provider när arbets ytan har Aktiver ATS. Alla hanterings funktioner kan initieras via arbets ytan och åtgärden utförs på den logiska SQL Server som är värd för dina SQL-pooler. Ingen befintlig automatisering, verktyg eller anslutningar kommer att brytas eller avbrytas när en arbets yta aktive ras.  
 - **Resurs flytt**  Om du initierar en resurs förflyttning på en server med funktionen för Synapse-arbetsyta aktive rad kommer länken mellan servern och arbets ytan att brytas och du kommer inte längre att kunna komma åt din befintliga dedikerade SQL-pool (tidigare SQL DW) från arbets ytan. För att säkerställa att anslutningen bevaras rekommenderar vi att båda resurserna finns kvar i samma prenumeration och resurs grupp. 
 - **Övervakning** SQL-begäranden som skickats via Synapse Studio i en dedikerad arbets yta som är aktiverade dedikerad SQL-pool (tidigare SQL DW) kan visas i Monitor Hub. För alla andra övervaknings aktiviteter kan du gå till Azure Portal dedikerad SQL-pool (tidigare SQL DW) övervakning. 
-- **Säkerhets** -och **åtkomst kontroller** som anges ovan fortsätter alla hanterings funktioner för SQL Server-och dedikerade SQL-pooler (tidigare SQL DW) att finnas kvar på den logiska SQL-servern. Dessa funktioner omfattar, hantering av brand Väggs regler, inställning av serverns Azure AD-administratör och all åtkomst kontroll för data i din dedikerade SQL-pool (tidigare SQL DW). Följande steg måste utföras för att säkerställa att din dedikerade SQL-pool (tidigare SQL DW) är tillgänglig och kan användas via Synapse-arbetsytan. Medlemskap i arbets ytans roll ger inte användare behörighet till data i dedikerad SQL-pool (tidigare SQL DW). Följ dina principer för normal [SQL-autentisering](sql-data-warehouse-authentication.md) för att se till att användarna kan komma åt den dedikerade SQL-poolen (tidigare SQL DW)-instanser på den logiska servern. Om den dedikerade SQL-poolen (tidigare SQL DW) har en hanterad identitet som redan har tilldelats till den, kommer den här hanterade identitetens namn att vara samma som för den hanterade identiteten för arbets ytan som skapas automatiskt för att stödja arbets ytans partner tjänster (t. ex. ADF-pipeliner).  Två hanterade identiteter med samma namn kan finnas i ett anslutet scenario. En hanterad identitet kan särskiljas med sina Azure AD-objekt-ID: n, och funktionen för att skapa SQL-användare som använder objekt-ID: n kommer snart.
+- **Säkerhets** -och **åtkomst kontroller** som anges ovan fortsätter alla hanterings funktioner för SQL Server-och dedikerade SQL-pooler (tidigare SQL DW) att finnas kvar på den logiska SQL-servern. Dessa funktioner omfattar, hantering av brand Väggs regler, inställning av serverns Azure AD-administratör och all åtkomst kontroll för data i din dedikerade SQL-pool (tidigare SQL DW). Följande steg måste utföras för att säkerställa att din dedikerade SQL-pool (tidigare SQL DW) är tillgänglig och kan användas via Synapse-arbetsytan. Medlemskap i arbets ytans roll ger inte användare behörighet till data i dedikerad SQL-pool (tidigare SQL DW). Följ dina principer för normal [SQL-autentisering](sql-data-warehouse-authentication.md) för att se till att användarna kan komma åt den dedikerade SQL-poolen (tidigare SQL DW)-instanser på den logiska servern. Om den dedikerade SQL-poolen (tidigare SQL DW) har en hanterad identitet som redan har tilldelats till den, kommer den här hanterade identitetens namn att vara samma som för den hanterade identiteten för arbets ytan som skapas automatiskt för att stödja arbets ytans partner tjänster (t. ex. ADF-pipeliner).  Två hanterade identiteter med samma namn kan finnas i ett anslutet scenario. De hanterade identiteterna kan särskiljas med sina Azure AD-objekt-ID: n och funktioner för att skapa SQL-användare som använder objekt-ID: n kommer snart.
 
     ```sql
     CREATE USER [<workspace managed identity] FROM EXTERNAL PROVIDER 

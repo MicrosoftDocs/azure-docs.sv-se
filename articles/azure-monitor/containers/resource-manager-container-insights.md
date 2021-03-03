@@ -1,26 +1,26 @@
 ---
-title: Exempel på Resource Manager-mallar för Azure Monitor för behållare
-description: Exempel Azure Resource Manager mallar för att distribuera och configureAzure-övervakaren för behållare.
+title: Exempel på Resource Manager-mallar för container Insights
+description: Exempel Azure Resource Manager mallar för att distribuera och configureContainer insikter.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f75278663abde8d4b0f47c8df1dbbdbc298bcafb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723341"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Exempel på Resource Manager-mallar för Azure Monitor för behållare
+# <a name="resource-manager-template-samples-for-container-insights"></a>Exempel på Resource Manager-mallar för container Insights
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera Log Analytics agent för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>Aktivera för AKS-kluster
-Följande exempel aktiverar Azure Monitor för behållare i ett AKS-kluster.
+I följande exempel aktive ras behållar insikter i ett AKS-kluster.
 
 
 ### <a name="template-file"></a>Mallfil
@@ -357,4 +357,4 @@ Följande exempel aktiverar Azure Monitor för behållare i ett AKS-kluster.
 ## <a name="next-steps"></a>Nästa steg
 
 * [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
-* [Läs mer om Azure Monitor för behållare](../containers/container-insights-overview.md).
+* [Läs mer om behållar insikter](../containers/container-insights-overview.md).

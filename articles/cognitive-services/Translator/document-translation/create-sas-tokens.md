@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: 1425be4fc4e462185f9fee573dc87b04a68bfea4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739444"
 ---
 # <a name="create-sas-tokens-for-document-translation"></a>Skapa SAS-token för dokument Översättning
 
@@ -21,8 +21,8 @@ I den här artikeln får du lära dig hur du skapar SAS-token (signatur för del
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-* Du behöver en [**Azure Storage Explorer**](/azure/vs-azure-tools-storage-manage-with-storage-explorer) -app installerad i din Windows-, MacOS-eller Linux-utvecklings miljö. Azure Storage Explorer är ett kostnads fritt verktyg som gör att du enkelt kan hantera dina moln lagrings resurser i Azure.
-* När du har installerat Azure Storage Explorer-appen [ansluter du den till det lagrings konto](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#connect-to-a-storage-account-or-service) som du använder för dokument översättning.
+* Du behöver en [**Azure Storage Explorer**](../../../vs-azure-tools-storage-manage-with-storage-explorer.md) -app installerad i din Windows-, MacOS-eller Linux-utvecklings miljö. Azure Storage Explorer är ett kostnads fritt verktyg som gör att du enkelt kan hantera dina moln lagrings resurser i Azure.
+* När du har installerat Azure Storage Explorer-appen [ansluter du den till det lagrings konto](../../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#connect-to-a-storage-account-or-service) som du använder för dokument översättning.
 
 ### <a name="create-your-tokens"></a>Skapa dina token
 
@@ -65,7 +65,7 @@ I den här artikeln får du lära dig hur du skapar SAS-token (signatur för del
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Skapa SAS-token för blobbar i Azure Portal
 
 > [!NOTE]
-> Det finns för närvarande inte stöd för att skapa SAS-token för behållare direkt i Azure Portal. Du kan dock skapa en SAS-token med [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) eller slutföra aktiviteten [program mässigt](/azure/storage/blobs/sas-service-create).
+> Det finns för närvarande inte stöd för att skapa SAS-token för behållare direkt i Azure Portal. Du kan dock skapa en SAS-token med [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) eller slutföra aktiviteten [program mässigt](../../../storage/blobs/sas-service-create.md).
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Förutsättningar
@@ -104,7 +104,7 @@ Gå till [Azure Portal](https://ms.portal.azure.com/#home) och navigera enligt f
 
 ## <a name="learn-more"></a>Läs mer
 
-* [Skapa SAS-token för blobbar eller behållare program mässigt](/azure/storage/blobs/sas-service-create)
+* [Skapa SAS-token för blobbar eller behållare program mässigt](../../../storage/blobs/sas-service-create.md)
 * [Behörigheter för en katalog, behållare eller BLOB](/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob)
 
 ## <a name="next-steps"></a>Nästa steg

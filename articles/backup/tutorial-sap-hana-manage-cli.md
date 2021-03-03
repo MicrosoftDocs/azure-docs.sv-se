@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du hanterar säkerhe
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8baf7f2589cd7d9054911516253b49253397871
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713294"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Självstudie: hantera SAP HANA databaser i en virtuell Azure-dator med Azure CLI
 
@@ -80,7 +80,7 @@ cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 
 ## <a name="create-incremental-backup-policy"></a>Skapa en princip för stegvis säkerhets kopiering
 
-Om du vill skapa en princip för stegvis säkerhets kopiering kör du kommandot [AZ backup policy Create](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_create) med följande parametrar:
+Om du vill skapa en princip för stegvis säkerhets kopiering kör du kommandot [AZ backup policy Create](/cli/azure/backup/policy#az_backup_policy_create) med följande parametrar:
 
 * **--säkerhets kopiering-hantering-typ** – Azure-arbetsbelastning
 * **--arbets belastning-typ** -SAPHana
@@ -231,6 +231,7 @@ Exempel-JSON (sappolicy.jspå):
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+
 När principen har skapats visas den princip-JSON som du skickade som en parameter när du körde kommandot i kommandots utdata.
 
 Du kan ändra följande avsnitt i principen om du vill ange önskad säkerhets kopierings frekvens och kvarhållning för stegvis säkerhets kopiering.

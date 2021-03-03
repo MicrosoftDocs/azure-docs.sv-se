@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 116fb10956b02b5f6fe578565b9049d9fad54837
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693908"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -122,7 +122,7 @@ Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och
     Connect-AzAccount
     ```
 4. Definiera variabler i PowerShell: 
-    - Resurs grupp namn – du hittar det här i Azure Portal i Översikt över Synapse-arbetsytan.
+    - Resurs grupp namn – du hittar det här i Azure Portal i Översikt över lagrings kontot.
     - Konto namn – namnet på det lagrings konto som skyddas av brand Väggs regler.
     - Klient-ID – du kan hitta det här i Azure Portal i Azure Active Directory i klient information.
     - Arbets ytans namn – namnet på Synapse-arbetsytan.

@@ -2,13 +2,13 @@
 title: Planera distributionen av Azure VMware-lösningen
 description: Den här artikeln beskriver ett arbets flöde för distribution av Azure VMware-lösningar.  Det slutliga resultatet är en miljö som är redo för generering och migrering av virtuella datorer (VM).
 ms.topic: tutorial
-ms.date: 10/16/2020
-ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/22/2021
+ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762862"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733676"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planera distributionen av Azure VMware-lösningen
 
@@ -51,12 +51,6 @@ Identifiera de storleks värdar som du vill använda när du distribuerar Azure 
 Definiera antalet värdar som du vill distribuera till Azures privata moln för VMware-lösningen.  Det minsta antalet värdar är tre och det maximala värdet är 16 per kluster.  Mer information finns i dokumentationen för [Azure VMware-lösningen privat moln och kluster](concepts-private-clouds-clusters.md#clusters) .
 
 Du kan alltid utöka klustret senare om du behöver gå bortom det ursprungliga distributions numret.
-
-## <a name="vcenter-admin-password"></a>administratörs lösen ord för vCenter
-Definiera vCenter-administratörens lösen ord.  Under distributionen skapar du ett vCenter admin-lösenord. Lösen ordet är till cloudadmin@vsphere.local Administratörs kontot under vCenter-versionen. Du använder den för att logga in på vCenter.
-
-## <a name="nsx-t-admin-password"></a>NSX-T admin-lösenord
-Definiera NSX-T admin-lösenordet.  Under distributionen skapar du ett NSX-T-administratörs lösen ord. Lösen ordet tilldelas administratörs användaren i NSX-kontot under NSX-versionen. Du använder den för att logga in i NSX Manager.
 
 ## <a name="ip-address-segment"></a>IP-adress segment
 

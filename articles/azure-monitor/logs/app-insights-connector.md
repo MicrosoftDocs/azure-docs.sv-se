@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e103bb3cce364aeb5c25dcc2b54bf78c6993ca0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2dda18232e0cf3afa63a01814e776b90988e0b10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704352"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-anslutningsprogram hanterings lösning (inaktuell)
 
@@ -22,7 +22,7 @@ ms.locfileid: "100624461"
 >
 >Befintliga anslutningar fortsätter att fungera fram till den 30 juni 2019.  Med OMS-portalen är det inte möjligt att konfigurera och ta bort befintliga anslutningar från portalen. Se [ta bort anslutningen med PowerShell](#removing-the-connector-with-powershell) nedan för ett skript på att använda PowerShell för att ta bort befintliga anslutningar.
 >
->Anvisningar om hur du frågar Application Insights loggdata för flera program finns i [förena flera Azure Monitor Application Insights resurser](../log-query/unify-app-resource-data.md). Mer information om utfasningen av OMS-portalen finns i [OMS-portalen flytta till Azure](../platform/oms-portal-transition.md).
+>Anvisningar om hur du frågar Application Insights loggdata för flera program finns i [förena flera Azure Monitor Application Insights resurser](./unify-app-resource-data.md). Mer information om utfasningen av OMS-portalen finns i [OMS-portalen flytta till Azure](./oms-portal-transition.md).
 >
 > 
 
@@ -42,12 +42,12 @@ När du använder lösningen kan du:
 
 Till skillnad från de flesta andra Log Analytics lösningar samlas data inte in för Application Insights-anslutningsprogram av agenter. Alla data som används av lösningen kommer direkt från Azure.
 
-| Ansluten källa | Stöds | Description |
+| Ansluten källa | Stöds | Beskrivning |
 | --- | --- | --- |
-| [Windows-agenter](./../agents/agent-windows.md) | No | Lösningen samlar inte in information från Windows-agenter. |
-| [Linux-agenter](../vm/quick-collect-linux-computer.md) | No | Lösningen samlar inte in information från Linux-agenter. |
-| [SCOM-hanterings grupp](../agents/om-agents.md) | No | Lösningen samlar inte in information från agenter i en ansluten SCOM Management Group. |
-| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Lösningen samlar inte in information från Azure Storage. |
+| [Windows-agenter](./../agents/agent-windows.md) | Inga | Lösningen samlar inte in information från Windows-agenter. |
+| [Linux-agenter](../vm/quick-collect-linux-computer.md) | Inga | Lösningen samlar inte in information från Linux-agenter. |
+| [SCOM-hanterings grupp](../agents/om-agents.md) | Inga | Lösningen samlar inte in information från agenter i en ansluten SCOM Management Group. |
+| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Inga | Lösningen samlar inte in information från Azure Storage. |
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -318,5 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Använd [loggs ökningen](../log-query/log-query-overview.md) för att visa detaljerad information om dina Application Insights-appar.
-
+- Använd [loggs ökningen](./log-query-overview.md) för att visa detaljerad information om dina Application Insights-appar.

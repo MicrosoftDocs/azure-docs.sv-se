@@ -2,14 +2,14 @@
 title: Konfigurera en anpassad behållare
 description: Lär dig hur du konfigurerar en anpassad behållare i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007644"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704879"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurera en anpassad container för Azure App Service
 
@@ -111,7 +111,7 @@ I PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-När din app körs, matas App Service app-inställningarna in i processen som miljövariabler automatiskt. 
+När din app körs, matas App Service app-inställningarna in i processen som miljövariabler automatiskt. Du kan kontrol lera variabler för container miljön med URL: en `https://<app-name>.scm.azurewebsites.net/Env)` .
 
 ::: zone pivot="container-windows"
 För IIS-eller .NET Framework (4,0 eller senare)-baserade behållare matas de in i `System.ConfigurationManager` som inställningar och anslutnings strängar för .net-appar automatiskt av App Service. För alla andra språk och ramverk är de tillgängliga som miljövariabler för processen, med något av följande motsvarande prefix:
@@ -292,44 +292,55 @@ Grupphanterade tjänst konton (gMSAs) stöds för närvarande inte i Windows-beh
 
 ## <a name="enable-ssh"></a>Aktivera SSH
 
-SSH möjliggör säker kommunikation mellan en container och en klient. För att en anpassad behållare ska stödja SSH måste du lägga till den i själva Dockerfile.
+SSH möjliggör säker kommunikation mellan en container och en klient. För att en anpassad behållare ska stödja SSH måste du lägga till den i Docker-avbildningen.
 
 > [!TIP]
-> Alla inbyggda Linux-behållare har lagt till SSH-instruktionerna i sina avbildnings databaser. Du kan gå igenom följande instruktioner med [Node.js 10,14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktive rad där.
+> Alla inbyggda Linux-behållare i App Service har lagt till SSH-instruktionerna i sina avbildnings databaser. Du kan gå igenom följande instruktioner med [Node.js 10,14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktive rad där. Konfigurationen i den Node.js inbyggda avbildningen är något annorlunda, men samma princip.
 
-- Använd [Kör](https://docs.docker.com/engine/reference/builder/#run) -instruktionen för att installera SSH-servern och ange lösen ordet för rot kontot till `"Docker!"` . För en avbildning som baseras på [Alpine Linux](https://hub.docker.com/_/alpine)behöver du till exempel följande kommandon:
+- Lägg till [en sshd_config-fil](https://man.openbsd.org/sshd_config) till din lagrings plats, som i följande exempel.
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    Den här konfigurationen tillåter inte externa anslutningar till behållaren. SSH är endast tillgängligt via `https://<app-name>.scm.azurewebsites.net` och autentiseras med autentiseringsuppgifterna för publicering.
-
-- Lägg till [den här sshd_config-filen](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) till avbildnings lagrings platsen och Använd [kopierings](https://docs.docker.com/engine/reference/builder/#copy) instruktionen för att kopiera filen till */etc/ssh/* -katalogen. Mer information om *sshd_config* -filer finns i [OpenBSD-dokumentationen](https://man.openbsd.org/sshd_config).
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > Filen *sshd_config* måste innehålla följande objekt:
+    > Den här filen konfigurerar OpenSSH och måste innehålla följande objekt:
+    > - `Port` måste vara inställt på 2222.
     > - `Ciphers`måste innehålla minst ett objekt i listan: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`måste innehålla minst ett objekt i listan: `hmac-sha1,hmac-sha1-96`.
 
-- Använd instruktionen [exponera](https://docs.docker.com/engine/reference/builder/#expose) för att öppna port 2222 i behållaren. Även om rot lösen ordet är känt är port 2222 inte tillgänglig från Internet. Den är endast tillgänglig för behållare i brygga nätverket i ett privat virtuellt nätverk.
+- Lägg till följande kommandon i din Dockerfile:
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    Den här konfigurationen tillåter inte externa anslutningar till behållaren. Port 2222 i behållaren är bara tillgänglig i brygga nätverket i ett privat virtuellt nätverk och är inte tillgänglig för en angripare på Internet.
 
 - Starta SSH-servern i Start skriptet för din behållare.
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    Ett exempel finns i hur standard behållaren för [Node.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) startar SSH-servern.
 
 ## <a name="access-diagnostic-logs"></a>Få åtkomst till diagnostikloggar
 

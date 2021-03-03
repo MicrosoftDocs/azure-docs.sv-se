@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 5485d97638679651a3890e0b7578787e481437c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690421"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -115,7 +115,7 @@ I följande tabell jämförs rekommenderade migrerings alternativ:
 
 |Migreringsalternativ  |När du ska använda detta  |Överväganden  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrera enskilda databaser eller flera databaser i stor skala. </br> – Kan hantera stillestånd under migreringsprocessen. </br> </br> Källor som stöds: </br> -SQL Server (2005-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM |  – Migreringar i skala kan automatiseras via [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md). </br> – Tiden för att slutföra migreringen är beroende av databasens storlek och påverkas av säkerhets kopierings-och återställnings tiden. </br> – Tillräckligt med stillestånd kan krävas. |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | – Migrera enskilda databaser eller flera databaser i stor skala. </br> – Kan hantera stillestånd under migreringsprocessen. </br> </br> Källor som stöds: </br> -SQL Server (2005-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM |  – Migreringar i skala kan automatiseras via [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md). </br> – Tiden för att slutföra migreringen är beroende av databasens storlek och påverkas av säkerhets kopierings-och återställnings tiden. </br> – Tillräckligt med stillestånd kan krävas. |
 |[Inbyggd säkerhets kopiering och återställning](../../managed-instance/restore-sample-database-quickstart.md) | – Migrera enskilda affärs program databaser (n).  </br> – Snabb och enkel migrering utan en separat migrerings tjänst eller verktyg.  </br> </br> Källor som stöds: </br> -SQL Server (2005-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM | -Säkerhets kopiering av databasen använder flera trådar för att optimera data överföring till Azure Blob Storage, men ISV-bandbredd och databas storlek kan påverka överföringshastigheten. </br> – Nedtid bör vara tillräckligt lång tid som krävs för att utföra en fullständig säkerhets kopiering och återställning (vilket är en storlek på data åtgärd).| 
 |[Logg uppspelnings tjänsten (LRS)](../../managed-instance/log-replay-service-migrate.md) | – Migrera enskilda affärs program databaser (n).  </br> – Mer kontroll krävs för migrering av databasen.  </br> </br> Källor som stöds: </br> -SQL Server (2008-2019) lokalt eller virtuell Azure-dator </br> – AWS EC2 </br> – AWS FJÄRR SKRIVBORDS TJÄNSTER </br> -GCP Compute SQL Server VM | – Migreringen gör fullständiga databas säkerhets kopieringar på SQL Server och kopierar säkerhetskopieringsfiler till Azure Blob Storage. LRS används för att återställa säkerhetskopierade filer från Azure Blob Storage till SQL-hanterad instans. </br> -Databaser som återställs under migreringsprocessen är i ett återställnings läge och kan inte användas för att läsa eller skriva till dess att processen har slutförts.| 
 | | | |
@@ -163,7 +163,7 @@ Utöver den hög tillgänglighets arkitektur som ingår i SQL-hanterad instans f
 
 #### <a name="sql-agent-jobs"></a>SQL Agent-jobb
 
-Använd alternativet offline Azure Database Migration Service (DMS) för att migrera [SQL Agent-jobb](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations). Annars kan du skripta jobben i Transact-SQL (T-SQL) med SQL Server Management Studio och sedan manuellt återskapa dem på den SQL-hanterade instansen. 
+Använd alternativet offline Azure Database Migration Service (DMS) för att migrera [SQL Agent-jobb](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md). Annars kan du skripta jobben i Transact-SQL (T-SQL) med SQL Server Management Studio och sedan manuellt återskapa dem på den SQL-hanterade instansen. 
 
 > [!IMPORTANT]
 > Azure DMS stöder för närvarande endast jobb med del system i T-SQL. Jobb med stegen i SSIS-paketet måste migreras manuellt. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 040c487df83c117e177b8a8b0e8fddde8682c67f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700651"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app
 Den här artikeln beskriver en metod för att använda [Azure Logic Apps](../../logic-apps/index.yml) för att fråga efter data från en Log Analytics arbets yta i Azure Monitor och skicka till Azure Storage. Använd den här processen när du behöver exportera Azure Monitor loggdata för scenarier för granskning och efterlevnad, eller om du vill tillåta en annan tjänst att hämta dessa data.  
@@ -118,7 +118,7 @@ AzureActivity
     ResourceId = _ResourceId 
 ```
 
-**Tidsintervallet** anger de poster som ska ingå i frågan baserat på kolumnen **TimeGenerated** . Detta ska vara inställt på ett värde som är lika med eller högre än det tidsintervall som valts i frågan. Eftersom den här frågan inte använder **TimeGenerated** -kolumnen är **Ange i frågealternativet** inte tillgängligt. Se [omfånget för frågor](../log-query/scope.md) om du vill ha mer information om tidsintervallet. 
+**Tidsintervallet** anger de poster som ska ingå i frågan baserat på kolumnen **TimeGenerated** . Detta ska vara inställt på ett värde som är lika med eller högre än det tidsintervall som valts i frågan. Eftersom den här frågan inte använder **TimeGenerated** -kolumnen är **Ange i frågealternativet** inte tillgängligt. Se [omfånget för frågor](./scope.md) om du vill ha mer information om tidsintervallet. 
 
 Välj **senaste 4 timmarna** för **tidsintervallet**. På så sätt ser du till att alla poster med en större inmatnings tid än **TimeGenerated** tas med i resultatet.
    
@@ -210,6 +210,6 @@ Gå till menyn **lagrings konton** i Azure Portal och välj ditt lagrings konto.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [logg frågor i Azure Monitor](../log-query/log-query-overview.md).
+- Lär dig mer om [logg frågor i Azure Monitor](./log-query-overview.md).
 - Läs mer om [Logic Apps](../../logic-apps/index.yml)
 - Lär dig mer om att [Automatisera energi](https://flow.microsoft.com).

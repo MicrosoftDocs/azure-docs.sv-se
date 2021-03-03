@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: lagayhar
-ms.openlocfilehash: 0c657d84144ee7bd69a6de1d5d2e1e769dc59f4d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c91912f711b912c54c1673f2f92e998b4d9ea9db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736941"
 ---
 # <a name="honey-comb-visualizations"></a>Honung kamma-visualiseringar
 
@@ -95,4 +95,4 @@ Honung kamma-författare kan ange vilket innehåll som ska gå till olika delar 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du skapar en [sammansatt bar-återgivning i arbets böcker](workbooks-composite-bar.md).
-- Lär dig hur du [importerar Azure Monitor loggdata till Power BI](../platform/powerbi.md).
+- Lär dig hur du [importerar Azure Monitor loggdata till Power BI](./powerbi.md).

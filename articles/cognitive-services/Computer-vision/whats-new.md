@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738233"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -50,8 +50,8 @@ En ny version av [behållaren för rums analys](spatial-analysis-container.md) h
 * **Ändrad ändring**: *personZoneEvent* -händelsen har bytt namn till *personZoneEnterExitEvent*. Den här händelsen utlöses av *personcrossingpolygon* -åtgärden när en person går in eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som har korsats.
 * Video-URL kan anges som "privat parameter/fördunklade" i alla åtgärder. Döljande är valfritt och fungerar bara om `KEY` och `IV` tillhandahålls som miljövariabler.
 * Kalibrering är aktiverat som standard för alla åtgärder. Ange `do_calibration: false` för att inaktivera den.
-* Stöd har lagts till för automatisk omkalibrering (som standard inaktive rad) via `enable_recalibration` parametern. mer information finns i avsnittet om [spatial analys](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
-* Kamera kalibrerings parametrar till `DETECTOR_NODE_CONFIG` . Mer information finns i [åtgärder för spatial analys](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
+* Stöd har lagts till för automatisk omkalibrering (som standard inaktive rad) via `enable_recalibration` parametern. mer information finns i avsnittet om [spatial analys](./spatial-analysis-operations.md) .
+* Kamera kalibrerings parametrar till `DETECTOR_NODE_CONFIG` . Mer information finns i [åtgärder för spatial analys](./spatial-analysis-operations.md) .
 
 
 ## <a name="october-2020"></a>Oktober 2020

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 02/16/2021
-ms.openlocfilehash: f4ac384a9b1bce944397369cb93392f179643f96
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558760"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706749"
 ---
 # <a name="whats-new-in-language-understanding"></a>Vad är nytt i Language Understanding
 
@@ -56,7 +56,7 @@ Läs om vad som är nytt i tjänsten. Dessa objekt innehåller viktig informatio
 * Nya resurser för utvecklare
     * [Verktyg för kontinuerlig integrering](developer-reference-resource.md#continuous-integration-tools)
     * Workshop – lär dig metod tips för [ _naturliga language Understanding_ (NLU) med Luis](developer-reference-resource.md#workshops)
-* [Kundhanterade nycklar](luis-encryption-of-data-at-rest.md) – kryptera alla data du använder i Luis genom att använda din egen nyckel
+* [Kundhanterade nycklar](./encrypt-data-at-rest.md) – kryptera alla data du använder i Luis genom att använda din egen nyckel
 * [AI show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video) – Se de nya funktionerna i Luis
 
 

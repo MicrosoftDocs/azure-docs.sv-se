@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/02/2021
+ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736379"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Skapa tillstånds lösa och tillstånds lösa arbets flöden i Azure Portal med Azure Logic Apps för hands version
 
@@ -34,7 +34,7 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
 * Utlös en arbets flödes körning.
 
-* Visa körnings historiken för arbets flödet.
+* Visa arbets flödets körnings-och utlösnings historik.
 
 * Aktivera eller öppna Application Insights efter distribution.
 
@@ -43,7 +43,7 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 > [!NOTE]
 > Om du vill ha mer information om aktuella kända problem granskar du [sidan Logic Apps offentliga kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto och prenumeration. Om du inte har någon prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -51,6 +51,8 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
   > [!NOTE]
   > [Tillstånds känsliga Logic Apps](logic-apps-overview-preview.md#stateful-stateless) utför lagrings transaktioner, till exempel att använda köer för schemaläggning och lagring av arbets flödes tillstånd i tabeller och blobbar. Dessa transaktioner debiteras [Azure Storage avgifter](https://azure.microsoft.com/pricing/details/storage/). Mer information om hur tillstånds känsliga Logic Apps lagrar data i extern lagring finns i [tillstånds känsligt jämfört med tillstånds lösa](logic-apps-overview-preview.md#stateful-stateless).
+
+* Om du vill distribuera till en Docker-behållare behöver du en befintlig Docker-behållar avbildning. Du kan till exempel skapa avbildningen via [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)eller [Azure Container instance](../container-instances/container-instances-overview.md). 
 
 * Om du vill bygga samma exempel på Logic-appen i den här artikeln behöver du ett Office 365 Outlook-e-postkonto som använder ett arbets-eller skol konto från Microsoft för att logga in.
 
@@ -74,11 +76,11 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Prenumeration** | Yes | <*Azure-prenumeration-namn*> | Den Azure-prenumeration som ska användas för din Logic app. |
-   | **Resursgrupp** | Yes | <*Azure-resurs-grupp-namn*> | Den Azure-resurs grupp där du skapar din Logic app och relaterade resurser. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en resurs grupp med namnet `Fabrikam-Workflows-RG` . |
-   | **Namn på Logic app** | Yes | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en Logic-app med namnet `Fabrikam-Workflows` . <p><p>**Obs!** din Logic Apps namn hämtar automatiskt suffixet, `.azurewebsites.net` eftersom den **logiska appen (förhands granskning)** -resursen drivs av Azure Functions, som använder samma namngivnings konvention för appar. |
-   | **Publicera** | Yes | <*distribution – miljö*> | Distributions målet för din Logic app. Du kan distribuera till Azure genom att välja **arbets flöde** eller till en Docker-behållare. <p><p>I det här exemplet används **arbets flöde**, som är resurs för **Logic app (för hands version)** i Azure. <p><p>Om du väljer **Docker**-behållare [anger du den behållare som ska användas i din Logic Apps-inställningar](#set-docker-container). |
-   | **Region** | Yes | <*Azure-region*> | Den Azure-region som ska användas när du skapar resurs gruppen och resurserna. <p><p>I det här exemplet används **västra USA**. |
+   | **Prenumeration** | Ja | <*Azure-prenumeration-namn*> | Den Azure-prenumeration som ska användas för din Logic app. |
+   | **Resursgrupp** | Ja | <*Azure-resurs-grupp-namn*> | Den Azure-resurs grupp där du skapar din Logic app och relaterade resurser. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en resurs grupp med namnet `Fabrikam-Workflows-RG` . |
+   | **Namn på Logic app** | Ja | <*Logic – App-Name*> | Namnet som ska användas för din Logic app. Resurs namnet måste vara unikt i flera regioner och får bara innehålla bokstäver, siffror, bindestreck ( **-** ), under streck (**_**), parenteser (**()**) och punkter (**.**). <p><p>I det här exemplet skapas en Logic-app med namnet `Fabrikam-Workflows` . <p><p>**Obs!** din Logic Apps namn hämtar automatiskt suffixet, `.azurewebsites.net` eftersom den **logiska appen (förhands granskning)** -resursen drivs av Azure Functions, som använder samma namngivnings konvention för appar. |
+   | **Publicera** | Ja | <*distribution – miljö*> | Distributions målet för din Logic app. Du kan distribuera till Azure genom att välja **arbets flöde** eller **Docker-behållare**. <p><p>I det här exemplet används **arbets flöde**, som distribuerar **Logic app-resursen (förhands granskning)** till Azure Portal. <p><p>**Obs**: innan du väljer **Docker-behållaren** ser du till att skapa din Docker-behållar avbildning. Du kan till exempel skapa avbildningen via [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)eller [Azure Container instance](../container-instances/container-instances-overview.md). På så sätt kan du, när du har valt **Docker-behållare**, [Ange den behållare som du vill använda i din Logic Apps-inställningar](#set-docker-container). |
+   | **Region** | Ja | <*Azure-region*> | Den Azure-region som ska användas när du skapar resurs gruppen och resurserna. <p><p>I det här exemplet används **västra USA**. |
    |||||
 
    Här är ett exempel:
@@ -89,10 +91,10 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Lagringskonto** | Yes | <*Azure-Storage – konto-namn*> | Det [Azure Storage konto](../storage/common/storage-account-overview.md) som ska användas för lagrings transaktioner. Resurs namnet måste vara unikt i flera regioner och får innehålla 3-24 tecken med endast siffror och gemena bokstäver. Välj antingen ett befintligt konto eller skapa ett nytt konto. <p><p>I det här exemplet skapas ett lagrings konto med namnet `fabrikamstorageacct` . |
-   | **Plantyp** | Yes | <*Azure-värd – plan*> | [Värd planen](../app-service/overview-hosting-plans.md) som används för att distribuera din Logic app, som är antingen [**Premium**](../azure-functions/functions-premium-plan.md) -eller [**App Service-plan**](../azure-functions/dedicated-plan.md). Ditt val påverkar de pris nivåer som du kan välja senare. <p><p>I det här exemplet används **App Service-planen**. <p><p>**Obs!** på liknande sätt som Azure Functions kräver resurs typen **Logic app (för hands version)** en värd plan och pris nivå. Förbruknings värd planer stöds inte eller är inte tillgängliga för den här resurs typen. Mer information finns i följande avsnitt: <p><p>- [Azure Functions skala och vara värd](../azure-functions/functions-scale.md) <br>- [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
-   | **Windows-plan** | Yes | <*plan-namn*> | Det plan namn som ska användas. Välj antingen en befintlig plan eller ange namnet på en ny plan. <p><p>I det här exemplet används namnet `Fabrikam-Service-Plan` . |
-   | **SKU och storlek** | Yes | <*pris nivå*> | Den [pris nivå](../app-service/overview-hosting-plans.md) som ska användas för att vara värd för din Logic app. Dina val påverkas av den plan typ som du valde tidigare. Om du vill ändra standard nivån väljer du **ändra storlek**. Du kan sedan välja andra pris nivåer baserat på den arbets belastning du behöver. <p><p>I det här exemplet används den kostnads fria **F1-pris nivån** för arbets belastningar för **utveckling/testning** . Mer information hittar du i [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/). |
+   | **Lagringskonto** | Ja | <*Azure-Storage – konto-namn*> | Det [Azure Storage konto](../storage/common/storage-account-overview.md) som ska användas för lagrings transaktioner. Resurs namnet måste vara unikt i flera regioner och får innehålla 3-24 tecken med endast siffror och gemena bokstäver. Välj antingen ett befintligt konto eller skapa ett nytt konto. <p><p>I det här exemplet skapas ett lagrings konto med namnet `fabrikamstorageacct` . |
+   | **Plantyp** | Ja | <*Azure-värd – plan*> | [Värd planen](../app-service/overview-hosting-plans.md) som används för att distribuera din Logic app, som antingen [**fungerar som Premium**](../azure-functions/functions-premium-plan.md) eller [ **App Service-plan** (dedikerad)](../azure-functions/dedicated-plan.md). Ditt val påverkar de funktioner och pris nivåer som senare är tillgängliga för dig. <p><p>I det här exemplet används **App Service-planen**. <p><p>**Obs!** på liknande sätt som Azure Functions kräver resurs typen **Logic app (för hands version)** en värd plan och pris nivå. Förbruknings planer stöds inte eller är inte tillgängliga för den här resurs typen. Mer information finns i följande avsnitt: <p><p>- [Azure Functions skala och vara värd](../azure-functions/functions-scale.md) <br>- [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/) <p><p>Till exempel ger Functions Premium-planen åtkomst till nätverksfunktioner, till exempel ansluta och integrera privat med virtuella Azure-nätverk, ungefär som Azure Functions när du skapar och distribuerar dina Logi Kap par. Mer information finns i följande avsnitt: <p><p>- [Azure Functions nätverks alternativ](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps som kör nätverks möjligheter med Azure Logic Apps för hands version](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
+   | **Windows-plan** | Ja | <*plan-namn*> | Det plan namn som ska användas. Välj antingen en befintlig plan eller ange namnet på en ny plan. <p><p>I det här exemplet används namnet `Fabrikam-Service-Plan` . |
+   | **SKU och storlek** | Ja | <*pris nivå*> | Den [pris nivå](../app-service/overview-hosting-plans.md) som ska användas för att vara värd för din Logic app. Dina val påverkas av den plan typ som du valde tidigare. Om du vill ändra standard nivån väljer du **ändra storlek**. Du kan sedan välja andra pris nivåer baserat på den arbets belastning du behöver. <p><p>I det här exemplet används den kostnads fria **F1-pris nivån** för arbets belastningar för **utveckling/testning** . Mer information hittar du i [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
 
 1. Sedan kan du, om du skapar och distribuerar inställningarna med hjälp av [Application Insights](../azure-monitor/app/app-insights-overview.md), aktivera diagnostikloggning och spårning för din Logic app.
@@ -103,13 +105,16 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
 1. När Azure har verifierat dina Logic Apps-inställningar går du till fliken **Granska + skapa** och väljer **skapa**.
 
-   Ett exempel:
+   Exempel:
 
    ![Skärm bild som visar Azure Portal och nya resurs inställningar för Logic app.](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
+   > [!TIP]
+   > Om du får ett verifierings fel när du har valt **skapa**, öppna och granska fel informationen. Om din valda region till exempel når en kvot för resurser som du försöker skapa, kan du behöva testa en annan region.
+
    När Azure har slutfört distributionen är din Logic app automatiskt Live och körs, men det gör inget ännu eftersom det inte finns några arbets flöden.
 
-1. På sidan distributions slut för ande väljer du **gå till resurs** så att du kan börja skapa ditt arbets flöde.
+1. På sidan distributions slut för ande väljer du **gå till resurs** så att du kan börja skapa ditt arbets flöde. Om du har valt **Docker-behållare** för att distribuera din Logic app fortsätter du med [stegen för att ange information om den Docker-behållaren](#set-docker-container).
 
    ![Skärm bild som visar Azure Portal och den färdiga distributionen.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
 
@@ -117,15 +122,13 @@ Den här artikeln visar hur du skapar din Logi Kap par och ditt arbets flöde i 
 
 ## <a name="specify-docker-container-for-deployment"></a>Ange Docker-behållare för distribution
 
-Om du har valt **Docker-behållare** när du skapar din Logi Kap par, se till att du anger information om den behållare som du vill använda för distribution när Azure Portal skapar din **Logic app-resurs (förhands granskning)** .
+Innan du startar de här stegen behöver du en Docker-behållar avbildning. Du kan till exempel skapa avbildningen via [Azure Container Registry](../container-registry/container-registry-intro.md), [App Service](../app-service/overview.md)eller [Azure Container instance](../container-instances/container-instances-overview.md). Du kan sedan ange information om din Docker-behållare när du har skapat din Logic app.
 
 1. I Azure Portal går du till din Logic app-resurs.
 
-1. På menyn Logic app, under **Inställningar**, väljer du **behållar inställningar**. Ange information och plats för din Docker-behållar avbildning.
+1. På menyn Logic app, under **Inställningar**, väljer du **distributions Center**.
 
-   ![Skärm bild som visar menyn för Logic app med inställningen "behållar inställningar" valt.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-deploy-container-settings.png)
-
-1. Spara inställningarna när du är klar.
+1. I fönstret **distributions Center** följer du anvisningarna för att ange och hantera informationen för din Docker-behållare.
 
 <a name="add-workflow"></a>
 
@@ -223,9 +226,9 @@ Innan du kan lägga till en utlösare i ett tomt arbets flöde ser du till att a
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Om du vill** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Till** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
+   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
@@ -286,9 +289,11 @@ I det här exemplet körs arbets flödet när utlösaren för förfrågningar ta
 
       ![Skärm bild som visar Outlook-e-post enligt beskrivningen i exemplet](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
 
+<a name="view-run-history"></a>
+
 ## <a name="review-run-history"></a>Granska körningshistorik
 
-När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde kan du se körnings historiken, inklusive status för den övergripande körningen, för utlösaren och för varje åtgärd tillsammans med deras indata och utdata.
+När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde kan du se körnings historiken, inklusive status för den övergripande körningen, för utlösaren och för varje åtgärd tillsammans med deras indata och utdata. I Azure Portal visas historiken och utlösnings historiken på arbets flödes nivå, inte på Logic app-nivå. Information om hur du granskar Utlös ande historik utanför körnings historiken finns i [Granska utlösare historik](#view-trigger-histories).
 
 1. På arbets flödets meny i Azure Portal väljer du **övervaka**.
 
@@ -302,7 +307,7 @@ När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde
    | Körnings status | Beskrivning |
    |------------|-------------|
    | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
-   | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
+   | **Avbröts** | Körningen utlöstes och startades men en Cancel-begäran togs emot. |
    | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
    | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips**: om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
    | **Brutit** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
@@ -320,15 +325,15 @@ När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde
 
    | Åtgärds status | Ikon | Beskrivning |
    |---------------|------|-------------|
-   | Avbruten | ![Ikon för status för avbrutna åtgärder][aborted-icon] | Åtgärden stoppades eller avslutades inte på grund av externa problem, till exempel ett system avbrott eller en upphördende Azure-prenumeration. |
-   | Avbrutet | ![Ikon för status för avbrutna åtgärder][cancelled-icon] | Åtgärden kördes men tog emot en begäran om annullering. |
-   | Misslyckad | ![Ikon för åtgärds status misslyckades][failed-icon] | Det gick inte att utföra åtgärden. |
-   | Körs | ![Ikon för åtgärds status som körs][running-icon] | Åtgärden körs för närvarande. |
-   | Överhoppad | ![Ikon för åtgärds status "hoppar över"][skipped-icon] | Åtgärden hoppades över eftersom den direkt föregående åtgärden misslyckades. En åtgärd har ett `runAfter` villkor som kräver att föregående åtgärd har slutförts innan den aktuella åtgärden kan köras. |
-   | Lyckades | ![Ikon för status lyckad åtgärd][succeeded-icon] | Åtgärden har slutförts. |
-   | Lyckades med återförsök | ![Ikon för åtgärds status slutförd med återförsök][succeeded-with-retries-icon] | Åtgärden lyckades men endast efter ett eller flera återförsök. Om du vill granska återförsöks historiken går du till vyn körnings historik och väljer den åtgärden så att du kan visa indata och utdata. |
-   | Tids gränsen uppnåddes | ![Ikon för åtgärds status uppnåddes][timed-out-icon] | Åtgärden stoppades på grund av timeout-gränsen som anges i den åtgärdens inställningar. |
-   | Väntar | ![Ikon för status för "väntande" åtgärd][waiting-icon] | Gäller för en webhook-åtgärd som väntar på en inkommande begäran från en anropare. |
+   | **Avbruten** | ![Ikon för status för avbrutna åtgärder][aborted-icon] | Åtgärden stoppades eller avslutades inte på grund av externa problem, till exempel ett system avbrott eller en upphördende Azure-prenumeration. |
+   | **Avbröts** | ![Ikon för status för avbrutna åtgärder][cancelled-icon] | Åtgärden kördes men tog emot en Cancel-begäran. |
+   | **Misslyckades** | ![Ikon för åtgärds status misslyckades][failed-icon] | Det gick inte att utföra åtgärden. |
+   | **Körs** | ![Ikon för åtgärds status som körs][running-icon] | Åtgärden körs för närvarande. |
+   | **Överhoppad** | ![Ikon för åtgärds status "hoppar över"][skipped-icon] | Åtgärden hoppades över eftersom den direkt föregående åtgärden misslyckades. En åtgärd har ett `runAfter` villkor som kräver att föregående åtgärd har slutförts innan den aktuella åtgärden kan köras. |
+   | **Brutit** | ![Ikon för status lyckad åtgärd][succeeded-icon] | Åtgärden har slutförts. |
+   | **Lyckades med återförsök** | ![Ikon för åtgärds status slutförd med återförsök][succeeded-with-retries-icon] | Åtgärden lyckades men endast efter ett eller flera återförsök. Om du vill granska återförsöks historiken går du till vyn körnings historik och väljer den åtgärden så att du kan visa indata och utdata. |
+   | **Tids gränsen uppnåddes** | ![Ikon för åtgärds status uppnåddes][timed-out-icon] | Åtgärden stoppades på grund av timeout-gränsen som anges i den åtgärdens inställningar. |
+   | **Väntar** | ![Ikon för status för "väntande" åtgärd][waiting-icon] | Gäller för en webhook-åtgärd som väntar på en inkommande begäran från en anropare. |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
@@ -346,6 +351,18 @@ När varje arbets flöde har körts för ett tillstånds känsligt arbets flöde
    ![Skärm bild som visar indata och utdata i den valda åtgärden "skicka e-post".](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
 
 1. Om du vill granska rå data och utdata för det steget, väljer du **Visa rå data** eller **visar rå** data.
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>Granska utlösare historia
+
+För ett tillstånds känsligt arbets flöde kan du granska utlösarens historik för varje körning, inklusive utlösarens status tillsammans med indata och utdata, separat från [kontexten körnings historik](#view-run-history). I Azure Portal visas utlösarens historik och körnings historik på arbets flödes nivå, inte på Logic app-nivå. Följ dessa steg om du vill hitta dessa historiska data:
+
+1. På arbets flödets meny i Azure Portal väljer du **Utlös ande historik** under **utvecklare**.
+
+   I fönstret **utlösnings historik** visas utlösnings historiken för arbets flödets körningar.
+
+1. Om du vill granska en detaljerad utlösnings Historik väljer du ID: t för den körningen.
 
 <a name="enable-open-application-insights"></a>
 
@@ -365,7 +382,10 @@ Följ dessa steg om du vill aktivera Application Insights i en distribuerad Logi
 
    Om Application Insights är aktive rad väljer du **visa Application Insights data** i fönstret **Application Insights** .
 
-När Application Insights har öppnat kan du granska olika mått för din Logic app.
+När Application Insights har öppnat kan du granska olika mått för din Logic app. Mer information finns i följande avsnitt:
+
+* [Azure Logic Apps som körs överallt – övervakare med Application Insights del 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [Azure Logic Apps som körs överallt – övervakare med Application Insights del 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="enable-run-history-stateless"></a>
 
@@ -385,7 +405,7 @@ Om du vill felsöka ett tillstånds lösa arbets flöde enklare kan du aktivera 
 
 1. I rutan **värde** anger du följande värde: `WithStatelessRunHistory`
 
-   Ett exempel:
+   Exempel:
 
    ![Skärm bild som visar resursen Azure Portal och Logic app (för hands version) med inställningen "konfiguration" > nya program inställningar "<" Lägg till/redigera program inställning "och" arbets flöden. {yourWorkflowName}. Alternativet OperationOptions "är inställt på" WithStatelessRunHistory ".](./media/create-stateful-stateless-workflows-azure-portal/stateless-operation-options-run-history.png)
 

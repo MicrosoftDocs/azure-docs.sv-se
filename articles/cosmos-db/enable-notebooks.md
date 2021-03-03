@@ -5,15 +5,15 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 02/09/2021
+ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: fd7f663ee5b6ceb49e6f1a393fc30919d5b245e9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692784"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivera antecknings böcker för Azure Cosmos DB-konton (förhands granskning)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ Inbyggda Jupyter Notebook i Azure Cosmos DB gör att du kan analysera och visual
 Från och med 10 februari 2021 har nya Azure Cosmos-konton som skapats i en av de [regioner som stöds](#supported-regions) aktiverat automatiskt antecknings böcker. Det krävs ingen ytterligare konfiguration för att aktivera antecknings böcker. Använd följande instruktioner för att skapa ett nytt konto:
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Välj **skapa en resurs**  >  **databas**  >  **Azure Cosmos DB**.
-1. Ange grundläggande inställningar för kontot. 
- 
+1. Ange grundläggande inställningar för kontot.
+
    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Den nya kontosidan för Azure Cosmos DB":::
 
 1. Välj **Granska + skapa**. Du kan hoppa över alternativet **nätverk** och **taggar** . 
-1. Granska kontoinställningarna och välj sedan **Skapa**. Det tar några minuter att skapa kontot. Vänta tills portalsidan visar meddelandet **Distributionen är klar**. 
+1. Granska kontoinställningarna och välj sedan **Skapa**. Det tar några minuter att skapa kontot. Vänta tills portalsidan visar meddelandet **Distributionen är klar**.
 
    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Meddelandefönstret på Azure-portalen":::
 
@@ -60,12 +60,12 @@ Du kan också aktivera antecknings böcker på befintliga konton. Det här stege
 
 Du kan kontrol lera att du kan använda antecknings böcker genom att välja en av antecknings böckerna under exempel antecknings böcker. Då sparas en kopia av antecknings boken på din arbets yta och den öppnas.
 
-I det här exemplet använder vi **GettingStarted. ipynb**. 
+I det här exemplet använder vi **GettingStarted. ipynb**.
 
 :::image type="content" source="media/enable-notebooks/select-getting-started-notebook.png" alt-text="Visa GettingStarted. ipynb Notebook":::
 
 Så här kör du antecknings boken:
-1. Välj den första kod cellen som innehåller python-kod. 
+1. Välj den första kod cellen som innehåller python-kod.
 1. Välj **Kör** för att köra cellen. Du kan också använda **Shift + Retur** för att köra cellen.
 1. Uppdatera resurs fönstret om du vill se databasen och behållaren som har skapats.
 
@@ -76,7 +76,7 @@ Du kan också välja **ny Notebook** för att skapa en ny antecknings bok eller 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Skapa eller ladda upp en ny antecknings bok":::
 
 ## <a name="supported-regions"></a>Regioner som stöds
-Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i 29 Azure-regioner. Nya Azure Cosmos-konton som skapats i dessa regioner kommer att ha antecknings böcker automatiskt aktiverade. Antecknings böcker är kostnads fria med ditt konto. 
+Inbyggda notebook-filer för Azure Cosmos DB är för närvarande tillgängliga i 29 Azure-regioner. Nya Azure Cosmos-konton som skapats i dessa regioner kommer att ha antecknings böcker automatiskt aktiverade. Antecknings böcker är kostnads fria med ditt konto. 
 
 - Australien, centrala
 - Australien, centrala 2
@@ -112,8 +112,7 @@ Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgäng
 
 * Lär dig mer om fördelarna med att [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md)
 * [Utforska exempel galleriet för bärbara datorer](https://cosmos.azure.com/gallery.html)
+* [Publicera antecknings böcker i Azure Cosmos DB Notebook-galleriet](publish-notebook-gallery.md)
 * [Använda python-funktioner och-kommandon i python](use-python-notebook-features-and-commands.md)
 * [Använda C#-funktioner och-kommandon i C#](use-csharp-notebook-features-and-commands.md)
 * [Importera antecknings böcker från en GitHub-lagrings platsen](import-github-notebooks.md)
-
-

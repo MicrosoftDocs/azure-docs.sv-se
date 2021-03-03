@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Begrepp
       items:
-        - name: Apache-komponenter på HDInsight
-          href: ./hdinsight-component-versioning.md
+        - name: Versionshantering
+          items:
+            - name: Introduktion till versions hantering
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight-versioner
+              href: ./hdinsight-component-versioning.md
+            - name: 'HDInsight version 4,0'
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight version 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: Pensionerade HDInsight-versioner
+              href: ./hdinsight-retired-versions.md
         - name: Enterprise Security Package
           href: ./enterprise-security-package.md
         - name: Viktig information om Hortonworks
@@ -650,7 +660,7 @@
             - name: Använda Apache Kafka med IoT Hub
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Confluent-schemaregister
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: Skapa strömningspipelines
               items:
                 - name: 'Apache Spark, Apache Kafka och Azure Cosmos DB'
@@ -817,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Hantera
           items:
+            - name: Kopiera Hive-tabeller över lagrings konton
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Migrera standard Hive-metaarkiv till externa metaarkiv i Azure HDInsight
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Migrera Hive-arbetsbelastningar till HDInsight 4.0
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Optimera Apache Hive-frågor

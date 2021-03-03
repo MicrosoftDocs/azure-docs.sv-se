@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78eed4086c04ceca677a96f03875481e56206e0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724028"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-hanterad Azure Active Directory-integrering
 
@@ -231,6 +231,70 @@ I Azure Portal navigerar du till Azure Active Directory, väljer *företags prog
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Inloggnings posten misslyckades på grund av en princip för villkorlig åtkomst":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Konfigurera just-in-Time-kluster-åtkomst med Azure AD och AKS
+
+Ett annat alternativ för kluster åtkomst kontroll är att använda Privileged Identity Management (PIM) för just-in-Time-begäranden.
+
+>[!NOTE]
+> PIM är en Azure AD Premium-funktion som kräver Premium P2 SKU. Mer information om Azure AD SKU: er finns i [prissättnings guiden][aad-pricing].
+
+Utför följande steg för att integrera just-in-Time-begäranden med ett AKS-kluster med AKS-hanterad Azure AD-integrering:
+
+1. Sök efter och välj Azure Active Directory överst i Azure Portal.
+1. Anteckna klient-ID: t, som hänvisas till i resten av de här instruktionerna som `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="i en webbläsare, Azure Portal skärmen för Azure Active Directory visas med klientens ID markerat.":::
+1. På menyn för Azure Active Directory till vänster går du till gruppen *Hantera* Välj *grupper* och sedan *ny grupp*.
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="Visar skärmen Azure Portal Active Directory grupper med alternativet &quot;ny grupp&quot; markerat.":::
+1. Se till att en grupp typ av *säkerhet* är markerad och ange ett grupp namn, till exempel *myJITGroup*. Under *Azure AD-roller kan tilldelas den här gruppen (för hands version) väljer du* *Ja*. Välj slutligen *skapa*.
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Visar Azure Portalens skärm för att skapa en ny grupp.":::
+1. Du kommer tillbaka till sidan *grupper* . Välj den nya gruppen och anteckna det objekt-ID som refereras till i resten av dessa instruktioner som `<object-id>` .
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Visar Azure Portal skärmen för den just skapade gruppen och markerar objekt-ID: t":::
+1. Distribuera ett AKS-kluster med AKS-hanterad Azure AD-integrering genom att använda- `<tenant-id>` och- `<object-id>` värden från tidigare:
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. Gå tillbaka till Azure Portal och välj *privilegie rad åtkomst (för hands version)* på menyn för *aktivitet* på vänster sida och välj *Aktivera privilegie rad åtkomst*.
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Sidan Azure Portal privilegie rad åtkomst (för hands version) visas, med alternativet Aktivera privilegie rad åtkomst":::
+1. Välj *Lägg till tilldelningar* för att börja bevilja åtkomst.
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Azure Portalens skärm för privilegie rad åtkomst (för hands version) efter aktivering visas. Alternativet att lägga till tilldelningar är markerat.":::
+1. Välj en roll för *medlem* och välj de användare och grupper som du vill bevilja åtkomst till klustret. Tilldelningarna kan ändras när som helst av en grupp administratör. När du är redo att gå vidare väljer du *Nästa*.
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Skärmen för att lägga till medlemskap i Azure Portal på medlemskap visas, där en exempel användare har marker ATS för att läggas till som medlem. Alternativet Next är markerat.":::
+1. Välj en tilldelnings typ som *aktiv*, önskad varaktighet och ge en motivering. När du är redo att fortsätta väljer du *tilldela*. Mer information om tilldelnings typer finns [i tilldela berättigande till en privilegie rad åtkomst grupp (för hands version) i Privileged Identity Management][aad-assignments].
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Skärmen Azure Portal för att lägga till inställningen Lägg till tilldelning visas. Tilldelnings typen aktiv har valts och en exempel justering har angetts. Alternativet Assign är markerat.":::
+
+När tilldelningarna har gjorts kontrollerar du att åtkomsten till klustret är just-in-Time-åtkomst. Exempel:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Följ stegen för att logga in.
+
+Använd `kubectl get nodes` kommandot för att Visa noder i klustret:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Observera autentiseringskrav och följ de steg som krävs för att autentisera. Om det lyckas bör du se utdata som liknar följande:
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>Felsökning
+
+Om `kubectl get nodes` returnerar ett fel som liknar följande:
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+Se till att administratören för säkerhets gruppen har gett ditt konto en *aktiv* tilldelning.
+
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om [Azure RBAC-integrering för Kubernetes-auktorisering][azure-rbac-integration]
@@ -243,6 +307,7 @@ I Azure Portal navigerar du till Azure Active Directory, väljer *företags prog
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
@@ -260,3 +325,4 @@ I Azure Portal navigerar du till Azure Active Directory, väljer *företags prog
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

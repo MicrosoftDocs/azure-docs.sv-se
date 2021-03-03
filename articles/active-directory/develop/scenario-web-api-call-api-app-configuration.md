@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582374"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686588"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Ett webb-API som anropar webb-API: er kod konfiguration
 
@@ -245,6 +245,8 @@ class MsalAuthHelper {
 OBO-flödet (on-behalf-of) används för att hämta en token för att anropa det underordnade webb-API: et. I det här flödet tar ditt webb-API emot en Bearer-token med användar delegerade behörigheter från klient programmet och utbyter sedan denna token för en annan åtkomsttoken för att anropa det underordnade webb-API: et.
 
 Ett python-webb-API måste använda vissa mellanprogram för att verifiera Bearer-token som tas emot från klienten. Webb-API: et kan sedan hämta åtkomsttoken för underordnad API med hjälp av MSAL python Library genom att anropa [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) metoden. Ett exempel på hur du använder det här API: et finns i [test koden för Microsoft-Authentication-Library-for-python på GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472). Se även diskussionen om [problem 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) i samma lagrings plats för en metod som kringgår behovet av ett program på mellan nivå.
+
+Du kan också se ett exempel på OBO Flow-implementeringen i exemplet [MS-Identity-python-on-of-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) .
 
 ---
 

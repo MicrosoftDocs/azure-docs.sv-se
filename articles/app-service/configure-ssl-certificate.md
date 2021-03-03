@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653120"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711713"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Lägg till ett TLS-/SSL-certifikat i Azure App Service
 
@@ -32,7 +32,7 @@ I följande tabell visas de alternativ som du har för att lägga till certifika
 | Ladda upp ett privat certifikat | Om du redan har ett privat certifikat från en tredje part kan du ladda upp det. Se [krav för privata certifikat](#private-certificate-requirements). |
 | Ladda upp ett offentligt certifikat | Offentliga certifikat används inte för att skydda anpassade domäner, men du kan läsa in dem i koden om du behöver dem för att få åtkomst till fjär resurser. |
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att följa den här instruktions guiden:
 
@@ -148,7 +148,7 @@ På sidan **Key Vault status** klickar du på **Key Vault lagrings plats** för 
 |-|-|
 | Namn | Ett unikt namn som består av alfanumeriska tecken och bindestreck. |
 | Resursgrupp | Som en rekommendation väljer du samma resurs grupp som ditt App Service certifikat. |
-| Plats | Välj samma plats som App Service-appen. |
+| Location | Välj samma plats som App Service-appen. |
 | Prisnivå | Mer information finns [Azure Key Vault pris information](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Åtkomstprinciper| Definierar program och tillåten åtkomst till valv resurserna. Du kan konfigurera den senare genom att följa stegen i [tilldela en Key Vault åtkomst princip](../key-vault/general/assign-access-policy-portal.md). |
 | Virtual Network åtkomst | Begränsa valv åtkomst till vissa virtuella Azure-nätverk. Du kan konfigurera den senare genom att följa stegen i [konfigurera Azure Key Vault brand väggar och virtuella nätverk](../key-vault/general/network-security.md) |
@@ -394,5 +394,5 @@ Nu kan du ta bort App Service-certifikatet. Välj **Översikt**  >  **ta bort** 
 * [Skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service](configure-ssl-bindings.md)
 * [Använda HTTPS](configure-ssl-bindings.md#enforce-https)
 * [Använda TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [Använd ett TLS/SSL-certifikat i koden i Azure App Service](configure-ssl-certificate-in-code.md)
+* [Använda ett TLS-/SSL-certifikat i koden i Azure App Service](configure-ssl-certificate-in-code.md)
 * [Vanliga frågor och svar: App Service certifikat](./faq-configuration-and-management.md)

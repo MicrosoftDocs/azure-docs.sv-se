@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 02/24/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, båge, Azure, kluster
-ms.openlocfilehash: 8eb177f0c80d7ed2df70c75ca476a1dfe33c8425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c50266ce0afd6dd3f5860e3259d2b22af817834c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665597"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689257"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Snabb start: ansluta ett befintligt Kubernetes-kluster till Azure-bågen 
 
@@ -25,7 +25,7 @@ I den här snabb starten ska vi dra nytta av fördelarna med Azure Arc-aktiverad
 
 * Kontrol lera att du har:
     * Ett igång Kubernetes-kluster.
-    * En `kubeconfig` fil.
+    * En `kubeconfig` fil som pekar på det kluster som du vill ansluta till Azure-bågen.
     * Läs-och skriv behörigheter för användarens eller tjänstens huvud namn ansluter till resurs typen Azure Arc Enabled Kubernetes ( `Microsoft.Kubernetes/connectedClusters` ).
 * Installera den [senaste versionen av Helm 3](https://helm.sh/docs/intro/install).
 * Installera följande Azure Arc-aktiverade Kubernetes CLI-tillägg för versioner >= 1.0.0:
@@ -68,16 +68,6 @@ I den här snabb starten ska vi dra nytta av fördelarna med Azure Arc-aktiverad
 | `https://login.microsoftonline.com`                                                                            | Krävs för att hämta och uppdatera Azure Resource Manager tokens.                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Krävs för att hämta behållar avbildningar för Azure Arc-agenter.                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  Krävs för att hämta system tilldelade Hanterad tjänstidentitet-certifikat (MSI).                                                                  |
-
-
-## <a name="install-the-azure-arc-enabled-kubernetes-cli-extensions"></a>Installera Azure Arc-aktiverade Kubernetes CLI-tillägg
-
-Ange följande kommandon:  
-
-    ```azurecli
-    az extension add --name connectedk8s
-    az extension add --name k8s-configuration
-    ```
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registrera de två providers för Azure Arc-aktiverade Kubernetes
 
@@ -147,6 +137,9 @@ eastus      AzureArcTest
       "type": "Microsoft.Kubernetes/connectedClusters"
     }
     ```
+
+> [!TIP]
+> Kommandot ovan utan parametern location skapar den Azure Arc-aktiverade Kubernetes-resursen på samma plats som resurs gruppen. Om du vill skapa en Azure Arc-aktiverad Kubernetes-resurs på en annan plats anger `--location <region>` du antingen eller `-l <region>` när du kör `az connectedk8s connect` kommandot.
 
 ## <a name="verify-cluster-connection"></a>Verifiera kluster anslutning
 

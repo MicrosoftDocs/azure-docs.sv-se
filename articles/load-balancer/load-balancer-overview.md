@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 716acec51226e9e4ff47605c3ee2bd9a86be1933
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705508"
 ---
 # <a name="what-is-azure-load-balancer"></a>Vad är Azure Load Balancer?
 
@@ -56,7 +56,7 @@ Viktiga scenarier som du kan utföra med Standard Load Balancer inkluderar:
 
 - Aktivera stöd för **[belastnings utjämning](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** av **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer ger flerdimensionella mått via [Azure Monitor](../azure-monitor/overview.md).  Dessa mått kan filtreras, grupperas och delas upp för en specifik dimension.  De tillhandahåller aktuella och historiska insikter om prestanda och hälsa för din tjänst. [Insikter för Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) erbjuder en förkonfigurerad instrument panel med användbara visualiseringar för dessa mått.  Resource Health stöds också. Granska **[standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md)** för mer information.
+- Standard Load Balancer ger flerdimensionella mått via [Azure Monitor](../azure-monitor/overview.md).  Dessa mått kan filtreras, grupperas och delas upp för en specifik dimension.  De tillhandahåller aktuella och historiska insikter om prestanda och hälsa för din tjänst. [Insikter för Azure Load Balancer](./load-balancer-insights.md) erbjuder en förkonfigurerad instrument panel med användbara visualiseringar för dessa mått.  Resource Health stöds också. Granska **[standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md)** för mer information.
 
 - Belastnings Utjämnings tjänster på **[flera portar, flera IP-adresser eller både](./load-balancer-multivip-overview.md)** och.
 

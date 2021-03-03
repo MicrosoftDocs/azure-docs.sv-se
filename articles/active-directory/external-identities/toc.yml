@@ -86,8 +86,10 @@
               href: add-user-without-invite.md
             - name: Anpassa inbjudningar med API
               href: customize-invitation-api.md
-        - name: Federera med externa identitets leverantörer
+        - name: Identitetsprovidrar
           items:
+            - name: Microsoft-konto (för hands version)
+              href: microsoft-account.md
             - name: Google-federation
               href: google-federation.md
             - name: Facebook-federation

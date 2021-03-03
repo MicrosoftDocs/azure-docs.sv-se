@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5c2b88ad7bef5fb8f7ba576e5f7b416f7458378c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732317"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Snabb start: skapa en privat slut punkt med hjälp av Azure PowerShell
 
@@ -20,7 +20,10 @@ Kom igång med en privat Azure-länk genom att använda en privat slut punkt fö
 
 I den här snabb starten skapar du en privat slut punkt för Azure-attestering och distribuerar en virtuell dator för att testa den privata anslutningen.  
 
-## <a name="prerequisites"></a>Krav
+> [!NOTE]
+> Den aktuella implementeringen innehåller endast alternativet för automatiskt godkännande. Prenumerationen måste vara vit listad för att det ska gå att skapa privat slut punkt. Kontakta tjänst teamet eller skicka in en support förfrågan för Azure på [support sidan för Azure](https://azure.microsoft.com/support/options/) innan du fortsätter med stegen nedan.
+
+## <a name="prerequisites"></a>Förutsättningar
 
 * Lär dig mer om [Azures privata länk](../private-link/private-link-overview.md)
 * [Konfigurera Azure-attestering med Azure PowerShell](./quickstart-powershell.md)

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d43f794d6d73e26d791c5a11961470d2131b8951
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378629"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691203"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Följande alternativ kan inte ändras:
 - `SINGLE_USER`
 - `WITNESS`
 
-Vissa `ALTER DATABASE` instruktioner (till exempel [UPPSÄTTNINGS inne slutning](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) kan sluta fungera tillfälligt, till exempel under den automatiserade säkerhets kopieringen av databasen eller direkt efter att en databas har skapats. I den här Case- `ALTER DATABASE` instruktionen bör du göra ett nytt försök. Mer information om relaterade fel meddelanden finns i [avsnittet anmärkningar](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Vissa `ALTER DATABASE` instruktioner (till exempel [UPPSÄTTNINGS inne slutning](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)) kan sluta fungera tillfälligt, till exempel under den automatiserade säkerhets kopieringen av databasen eller direkt efter att en databas har skapats. I den här Case- `ALTER DATABASE` instruktionen bör du göra ett nytt försök. Mer information om relaterade fel meddelanden finns i [avsnittet anmärkningar](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2).
 
 Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -395,12 +395,12 @@ Mer information finns i [FILESTREAM](/sql/relational-databases/blob/filestream-s
 Länkade servrar i SQL-hanterad instans har stöd för ett begränsat antal mål:
 
 - Mål som stöds är SQL-hanterad instans, SQL Database, Azure Synapse SQL [Server](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) lös och dedikerade pooler och SQL Server instanser. 
-- Distribuerade skrivbara transaktioner är bara möjliga mellan hanterade instanser. Mer information finns i [distribuerade transaktioner](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). MS DTC stöds dock inte.
+- Distribuerade skrivbara transaktioner är bara möjliga mellan hanterade instanser. Mer information finns i [distribuerade transaktioner](../database/elastic-transactions-overview.md). MS DTC stöds dock inte.
 - Mål som inte stöds är filer, Analysis Services och andra RDBMS. Försök att använda intern CSV-import från Azure Blob Storage att använda `BULK INSERT` eller `OPENROWSET` som ett alternativ för fil import eller läsa in filer med en [Server lös SQL-pool i Azure Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Åtgärder: 
 
-- Skriv transaktioner över [instanser](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) stöds endast för hanterade instanser.
+- Skriv transaktioner över [instanser](../database/elastic-transactions-overview.md) stöds endast för hanterade instanser.
 - `sp_dropserver` stöds för att släppa en länkad server. Se [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`Funktionen kan endast användas för att köra frågor på SQL Server instanser. De kan antingen hanteras, lokalt eller på virtuella datorer. Se [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`Funktionen kan endast användas för att köra frågor på SQL Server instanser. De kan antingen hanteras, lokalt eller på virtuella datorer. Endast `SQLNCLI` -, `SQLNCLI11` -och- `SQLOLEDB` värden stöds som en provider. Ett exempel är `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Se [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).

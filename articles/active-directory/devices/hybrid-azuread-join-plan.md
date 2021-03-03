@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573338"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687301"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Gör så här: planera din hybrid Azure Active Directory delta-implementering
 
@@ -95,6 +95,7 @@ Som första planerings steg bör du granska din miljö och avgöra om du behöve
 Om dina Windows 10-domänanslutna enheter är [registrerade i Azure AD](overview.md#getting-devices-in-azure-ad) till din klient organisation, kan det leda till ett dubbelt tillstånd med hybrid Azure AD-anslutna och en registrerad Azure AD-enhet. Vi rekommenderar att du uppgraderar till Windows 10 1803 (med KB4489894 installerat) eller senare för att automatiskt hantera det här scenariot. I pre-1803-versioner måste du ta bort Azure AD-registrerat tillstånd manuellt innan du aktiverar hybrid Azure AD Join. I 1803 och senare versioner har följande ändringar gjorts för att undvika detta dubbla tillstånd:
 
 - Alla befintliga Azure AD-registrerade tillstånd för en användare tas bort automatiskt <i>när enheten är hybrid-Azure AD-ansluten och samma användare loggar in</i>. Om användaren till exempel hade ett registrerat Azure AD-tillstånd på enheten rensas det dubbla läget för användare A endast när användaren loggar in på enheten. Om det finns flera användare på samma enhet rensas det dubbla läget individuellt när användarna loggar in. Förutom att ta bort det registrerade Azure AD-läget avregistrerar Windows 10 även enheten från Intune eller andra MDM, om registreringen skedde som en del av Azure AD-registreringen via automatisk registrering.
+- Azure AD-registrerat tillstånd på lokala konton på enheten påverkas inte av den här ändringen. Den kan bara användas för domän konton. Därför tas inte Azure AD-registrerade tillstånd på lokala konton bort automatiskt, även efter användar inloggningen, eftersom användaren inte är en domän användare. 
 - Du kan förhindra att din domänanslutna enhet är registrerad i Azure AD genom att lägga till följande register värde i HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Om du har konfigurerat Windows Hello för företag i Windows 10 1803 måste användaren konfigurera Windows Hello för företag igen när dubbelt tillstånd rensas. Det här problemet har åtgärd ATS med KB4512509
 
@@ -166,7 +167,7 @@ Ibland kan dina lokala AD-användares UPN skilja sig från dina Azure AD-UPN. I 
 
 Tabellen nedan innehåller information om stöd för dessa lokala AD-UPN i Windows 10 hybrid Azure AD Join
 
-| Typ av lokalt AD-UPN | Domäntyp | Windows 10-version | Description |
+| Typ av lokalt AD-UPN | Domäntyp | Windows 10-version | Beskrivning |
 | ----- | ----- | ----- | ----- |
 | Dirigera | Federerade | Från 1703-version | Allmänt tillgänglig |
 | Ej dirigerbart | Federerade | Från 1803-version | Allmänt tillgänglig |

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: 304a7adf69ed3622cf2031cfbebb920bff5238cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5589697771227c8105adcce61e4daeebdb315391
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714348"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Skapa en måttvarning med en Resource Manager-mall
 
@@ -27,7 +27,7 @@ De grundläggande stegen är följande:
 
 1. Använd en av mallarna nedan som en JSON-fil som beskriver hur du skapar aviseringen.
 2. Redigera och använd motsvarande parameter fil som JSON för att anpassa aviseringen.
-3. För `metricName` -parametern, se tillgängliga mått i [Azure Monitor mått som stöds](../platform/metrics-supported.md).
+3. För `metricName` -parametern, se tillgängliga mått i [Azure Monitor mått som stöds](../essentials/metrics-supported.md).
 4. Distribuera mallen med [valfri distributions metod](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Mall för en mått avisering för enkel statisk tröskel
@@ -1247,7 +1247,7 @@ az deployment group create \
 
 Du kan använda följande mall för att skapa en mer avancerad varnings regel för statiskt tröskelvärde för ett anpassat mått.
 
-Mer information om anpassade mått i Azure Monitor finns i [anpassade mått i Azure Monitor](../platform/metrics-custom-overview.md).
+Mer information om anpassade mått i Azure Monitor finns i [anpassade mått i Azure Monitor](../essentials/metrics-custom-overview.md).
 
 När du skapar en varnings regel för ett anpassat mått måste du ange både måttets namn och mått namn området. Du bör också se till att det anpassade måttet redan rapporteras, eftersom du inte kan skapa en aviserings regel för ett anpassat mått som ännu inte finns.
 
@@ -1503,7 +1503,7 @@ az deployment group create \
 
 >[!NOTE]
 >
-> Du kan hitta mått namn området för en speciell anpassad mått genom [att bläddra bland dina anpassade mått via Azure Portal](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
+> Du kan hitta mått namn området för en speciell anpassad mått genom [att bläddra bland dina anpassade mått via Azure Portal](../essentials/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Mall för en mått avisering som övervakar flera resurser
@@ -3624,7 +3624,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [aviseringar i Azure](../platform/alerts-overview.md)
+- Läs mer om [aviseringar i Azure](./alerts-overview.md)
 - Lär dig hur du [skapar en åtgärds grupp med Resource Manager-mallar](../alerts/action-groups-create-resource-manager-template.md)
 - För JSON-syntax och egenskaper, se referens för [Microsoft. Insights/metricAlerts-](/azure/templates/microsoft.insights/metricalerts) mallen.
-

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492139"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737621"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Vanliga frågor och svar om Azure Files
 [Azure Files](storage-files-introduction.md) erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via [SMB-protokollet (Server Message Block](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ) som är bransch standard och [NFS-protokollet (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (för hands version). Du kan montera Azure-filresurser samtidigt i molnet eller lokala distributioner av Windows, Linux och macOS. Du kan också cachelagra Azure-filresurser på Windows Server-datorer med hjälp av Azure File Sync för snabb åtkomst nära var data används.
@@ -73,7 +73,7 @@ I den här artikeln besvaras vanliga frågor om Azure Files funktioner och funkt
 
 * <a id="tier-options"></a>
   **Vilka lagrings nivåer stöds i Azure Files?**  
-    Azure Files stöder två lagrings nivåer: Premium och standard. Standard fil resurser skapas i lagrings konton för generell användning (GPv1 eller GPv2) och Premium-filresurser skapas i FileStorage Storage-konton. Lär dig mer om hur du skapar [standard fil resurser](storage-how-to-create-file-share.md) och [Premium-filresurser](storage-how-to-create-premium-fileshare.md). 
+    Azure Files stöder två lagrings nivåer: Premium och standard. Standard fil resurser skapas i lagrings konton för generell användning (GPv1 eller GPv2) och Premium-filresurser skapas i FileStorage Storage-konton. Lär dig mer om hur du skapar [standard fil resurser](storage-how-to-create-file-share.md) och [Premium-filresurser](./storage-how-to-create-file-share.md). 
     
     > [!NOTE]
     > Du kan inte skapa Azure-filresurser från Blob Storage-konton eller *Premium* -GPv1-eller GPv2-lagrings konton. Standard Azure-filresurser måste skapas i *standard* konton för generell användning och endast Premium Azure-filresurser måste skapas i FileStorage lagrings konton. GPv1-och GPv2-lagrings konton ( *Premium* General Purpose) är endast för-blobar för Premium sidor. 

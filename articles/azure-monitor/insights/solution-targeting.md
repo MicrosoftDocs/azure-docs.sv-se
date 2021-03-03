@@ -1,17 +1,16 @@
 ---
 title: Mål för övervaknings lösningar i Azure Monitor | Microsoft Docs
 description: Med mål övervaknings lösningar kan du begränsa övervaknings lösningar till en angiven uppsättning agenter.  Den här artikeln beskriver hur du skapar en omfattnings konfiguration och tillämpar den på en lösning.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 338dc22c7a4f9fbca9f007ae76c092a3fe5f6762
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cb030456eb3b9e3c81fadd8451b5b0526920ba33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587231"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728577"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Mål för övervaknings lösningar i Azure Monitor (för hands version)
 När du lägger till en övervaknings lösning i din prenumeration distribueras den automatiskt som standard till alla Windows-och Linux-agenter som är anslutna till din Log Analytics-arbetsyta.  Du kanske vill hantera dina kostnader och begränsa mängden data som samlas in för en lösning genom att begränsa den till en viss uppsättning agenter.  Den här artikeln beskriver hur du använder **lösnings mål** som är en funktion som gör att du kan använda ett omfång för dina lösningar.

@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 72e00306563e8cccdd476cf0ae5bfb4ddaa63ecf
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661679"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750850"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -66,7 +66,7 @@ För autentisering måste klienten referera till `azure-communication-common` pa
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -141,11 +141,11 @@ Svaret `chatThreadClient` används för att utföra åtgärder på den skapade c
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(firstUser)
+    .setCommunicationIdentifier(firstUser)
     .setDisplayName("Participant Display Name 1");
     
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(secondUser)
+    .setCommunicationIdentifier(secondUser)
     .setDisplayName("Participant Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -207,13 +207,15 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` returnerar olika typer av meddelanden som kan identifieras av `chatMessage.getType()` . Dessa typer är:
 
-- `Text`: Vanligt chatt-meddelande som skickas av en tråd deltagare.
+- `text`: Vanligt chatt-meddelande som skickas av en tråd deltagare.
 
-- `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats.
+- `html`: HTML chat-meddelande som skickats av en tråd deltagare.
 
-- `ThreadActivity/AddMember`: System meddelande som anger att en eller flera medlemmar har lagts till i chatt-tråden.
+- `topicUpdated`: System meddelande som anger att ämnet har uppdaterats.
 
-- `ThreadActivity/DeleteMember`: System meddelande som anger att en medlem har tagits bort från chatt-tråden.
+- `participantAdded`: System meddelande som anger att en eller flera deltagare har lagts till i chatt-tråden.
+
+- `participantRemoved`: System meddelande som anger att en deltagare har tagits bort från chatt-tråden.
 
 Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
@@ -224,7 +226,7 @@ När en chatt-tråd har skapats kan du lägga till och ta bort användare från 
 Använd `addParticipants` metoden för att lägga till deltagare i tråden som identifieras av threadId.
 
 - Används `listParticipants` för att visa en lista över deltagare som ska läggas till i chatt-tråden.
-- `user`, krävs, är den CommunicationUserIdentifier som du har skapat av CommunicationIdentityClient i [användar åtkomst-token](../../access-tokens.md) snabb start.
+- `communicationIdentifier`, krävs, är den CommunicationIdentifier som du har skapat av CommunicationIdentityClient i [användar åtkomst-token](../../access-tokens.md) snabb start.
 - `display_name`, valfritt är visnings namnet för tråd deltagaren.
 - `share_history_time`, valfritt, är den tid från vilken chatt-historiken delas med deltagaren. Om du vill dela historiken på grund av att chatten är i gång, anger du den här egenskapen till ett datum som är lika med eller mindre än tiden för tråd skapande. Om du vill dela ingen Historik tidigare till när deltagaren lades in, ställer du in den på det aktuella datumet. Om du vill dela del historik anger du det datum som krävs.
 
@@ -232,11 +234,11 @@ Använd `addParticipants` metoden för att lägga till deltagare i tråden som i
 List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
 ChatParticipant firstThreadParticipant = new ChatParticipant()
-    .setUser(user1)
+    .setCommunicationIdentifier(identity1)
     .setDisplayName("Display Name 1");
 
 ChatParticipant secondThreadParticipant = new ChatParticipant()
-    .setUser(user2)
+    .setCommunicationIdentifier(identity2)
     .setDisplayName("Display Name 2");
 
 participants.add(firstThreadParticipant);
@@ -247,14 +249,14 @@ AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsO
 chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
-## <a name="remove-user-from-a-chat-thread"></a>Ta bort användare från en chatt-tråd
+## <a name="remove-participant-from-a-chat-thread"></a>Ta bort deltagare från en chatt-tråd
 
-På samma sätt som du lägger till en användare i en tråd kan du ta bort användare från en chatt-tråd. För att göra det måste du spåra användar identiteter för de deltagare som du har lagt till.
+På samma sätt som du lägger till en deltagare i en tråd kan du ta bort deltagare från en chatt-tråd. Om du vill göra det måste du spåra identiteterna för de deltagare som du har lagt till.
 
-Använd `removeParticipant` , där `user` är den CommunicationUserIdentifier som du har skapat.
+Använd `removeParticipant` , där `identifier` är den CommunicationIdentifier som du har skapat.
 
 ```Java
-chatThreadClient.removeParticipant(user);
+chatThreadClient.removeParticipant(identity);
 ```
 
 ## <a name="run-the-code"></a>Kör koden

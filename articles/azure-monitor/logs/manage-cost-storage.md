@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d4ead88fb34d6475dae66d9708d7203eb94eaef1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4e711eb70c1fa099dd67b1ec23a0e8014ee11e47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731399"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -268,7 +268,7 @@ För att komma igång är det här de rekommenderade inställningarna för avise
 - Varnings regel namn: daglig data gräns har nåtts
 - Allvarlighets grad: varning (allvarlighets grad 1)
 
-När en avisering har definierats och gränsen har uppnåtts utlöses en avisering och det svar som definieras i åtgärds gruppen utförs. Det kan meddela ditt team via e-post och textmeddelanden, eller automatisera åtgärder med Webhooks, Automation runbooks eller [integrera med en extern ITSM-lösning](../platform/itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
+När en avisering har definierats och gränsen har uppnåtts utlöses en avisering och det svar som definieras i åtgärds gruppen utförs. Det kan meddela ditt team via e-post och textmeddelanden, eller automatisera åtgärder med Webhooks, Automation runbooks eller [integrera med en extern ITSM-lösning](../alerts/itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Felsökning varför användningen är större än förväntat
 
@@ -488,8 +488,8 @@ Några förslag på hur du minskar mängden loggar som samlas in är:
 | AzureDiagnostics           | Ändra [resurs logg samling](../essentials/diagnostic-settings.md#create-in-azure-portal) till: <br> – Minska antalet resursloggar som skickas till Log Analytics <br> – Endast samla in nödvändiga loggar |
 | Lösningsdata från datorer som inte behöver lösningen | Använd [lösnings mål](../insights/solution-targeting.md) om du endast vill samla in data från nödvändiga grupper av datorer. |
 | Application Insights | Granska alternativ för [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL-analys](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Använd [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) för att finjustera gransknings inställningarna. |
-| Azure Sentinel | Granska alla [Sentinel-datakällor](https://docs.microsoft.com/azure/sentinel/connect-data-sources) som du nyligen har aktiverat som källor till ytterligare data volym. |
+| [SQL-analys](../insights/azure-sql.md) | Använd [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) för att finjustera gransknings inställningarna. |
+| Azure Sentinel | Granska alla [Sentinel-datakällor](../../sentinel/connect-data-sources.md) som du nyligen har aktiverat som källor till ytterligare data volym. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Hämtar noder som faktureras i pris nivån per nod
 

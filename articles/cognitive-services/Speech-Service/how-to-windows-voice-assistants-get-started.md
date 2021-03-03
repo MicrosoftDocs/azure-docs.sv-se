@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713056"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Komma igång med röst assistenter i Windows
 
@@ -34,7 +34,7 @@ För att börja utveckla en röst assistent för Windows måste du kontrol lera 
 
 Vissa resurser som krävs för en helt anpassad röst agent i Windows kräver resurser från Microsoft. [Exemplet på UWP röst assistenten](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample) innehåller exempel versioner av dessa resurser för inledande utveckling och testning, så det här avsnittet är inte nödvändigt för inledande utveckling.
 
-- **Nyckelords modell:** Röst aktivering kräver en nyckelords modell från Microsoft i form av en. bin-fil. . Bin-filen som anges i exemplet på UWP röst assistenten har tränats på nyckelordet "contoso".
+- **Nyckelords modell:** Röst aktivering kräver en nyckelords modell från Microsoft i form av en. bin-fil. . Bin-filen som anges i exemplet på UWP röst assistenten har tränats på nyckelordet *contoso*.
 - **Token för begränsad åtkomst funktion:** Eftersom ConversationalAgent-API: erna ger åtkomst till mikrofon ljud, skyddas de under begränsade åtkomst funktions begränsningar. Om du vill använda en begränsad åtkomst funktion måste du skaffa en begränsad åtkomst till funktions-token som är ansluten till paket identiteten för ditt program från Microsoft.
 
 ## <a name="establish-a-dialog-service"></a>Upprätta en dialog tjänst

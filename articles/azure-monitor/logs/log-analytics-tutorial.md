@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 038663a6b8fe015f36f70b7bf13d25accb470903
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723188"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-självstudie
 Log Analytics är ett verktyg i Azure Portal för att redigera och köra logg frågor från data som samlas in av Azure Monitor loggar och interaktivt analysera resultaten. Du kan använda Log Analytics frågor för att hämta poster som matchar vissa villkor, identifiera trender, analysera mönster och tillhandahålla en mängd olika insikter om dina data. 
@@ -33,7 +33,7 @@ Den här självstudien vägleder dig genom Log Analytics-gränssnittet, hjälper
 I den här självstudien används [Log Analytics demo miljö](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), som innehåller massor av exempel data som stöder exempel frågorna. Du kan också använda en egen Azure-prenumeration, men du kanske inte har data i samma tabeller.
 
 ## <a name="open-log-analytics"></a>Öppna Log Analytics
-Öppna [Log Analytics demo miljö](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) eller Välj **loggar** på Azure Monitor-menyn i din prenumeration. Detta ställer in det ursprungliga omfånget på en Log Analytics arbets yta, vilket innebär att din fråga väljer från alla data i den arbets ytan. Om du väljer **loggar** från en Azure-resurs meny, anges området till endast poster från den resursen. Se [området för logg frågor](../log-query/scope.md) för mer information om omfånget.
+Öppna [Log Analytics demo miljö](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) eller Välj **loggar** på Azure Monitor-menyn i din prenumeration. Detta ställer in det ursprungliga omfånget på en Log Analytics arbets yta, vilket innebär att din fråga väljer från alla data i den arbets ytan. Om du väljer **loggar** från en Azure-resurs meny, anges området till endast poster från den resursen. Se [området för logg frågor](./scope.md) för mer information om omfånget.
 
 Du kan visa omfånget i det övre vänstra hörnet på skärmen. Om du använder en egen miljö ser du ett alternativ för att välja ett annat omfång, men det här alternativet är inte tillgängligt i demo miljön.
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691220"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>Snabb start: skapa en Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -113,7 +113,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](ht
 
 ### <a name="tags"></a>Taggar
 
-- Lägg till taggar till resurser i din Azure Resource Manager-mall (ARM-mall). Med [taggar](/azure/azure-resource-manager/management/tag-resources) kan du logiskt organisera dina resurser. Taggattribut visas i kostnads rapporter och tillåter andra hanterings aktiviteter per tagg. 
+- Lägg till taggar till resurser i din Azure Resource Manager-mall (ARM-mall). Med [taggar](../../azure-resource-manager/management/tag-resources.md) kan du logiskt organisera dina resurser. Taggattribut visas i kostnads rapporter och tillåter andra hanterings aktiviteter per tagg. 
 
 - Överväg att minst tagga din nya SQL-hanterade instans med ägar tag gen för att identifiera vem som skapat och miljö tag gen för att identifiera om systemet är produktion, utveckling osv. Mer information finns i [utveckla din namngivnings-och taggnings strategi för Azure-resurser](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  

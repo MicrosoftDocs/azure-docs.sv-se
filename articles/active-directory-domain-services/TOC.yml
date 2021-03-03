@@ -21,7 +21,7 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurera synkronisering av lösenordshash
       href: tutorial-configure-password-hash-sync.md
-    - name: Skapa en replikuppsättning (förhandsversion)
+    - name: Skapa en replik uppsättning
       href: tutorial-create-replica-set.md
     - name: Skapa en anpassad hanterad domän
       href: tutorial-create-instance-advanced.md
@@ -43,7 +43,7 @@
       href: administration-concepts.md
     - name: Vanliga distributionsscenarier
       href: scenarios.md
-    - name: Replikuppsättningar (förhandsversion)
+    - name: Replikuppsättningar
       href: concepts-replica-sets.md
     - name: Skogar och förtroenden
       items:

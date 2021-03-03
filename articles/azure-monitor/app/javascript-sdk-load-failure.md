@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711424"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Felsöka SDK-inläsnings fel för JavaScript-webbappar
 
@@ -68,7 +68,7 @@ För att minimera tillfälliga problem med nätverks anslutningen har vi impleme
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-avbrott
 
-Du kan kontrol lera om det finns ett Application Insights CDN-avbrott genom att försöka komma åt CDN-slutpunkten direkt från webbläsaren (till exempel https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) från en annan plats än slutanvändarna från din egen utvecklings dator (förutsatt att din organisation inte har blockerat den här domänen).
+Du kan kontrol lera om det finns ett Application Insights CDN-avbrott genom att försöka komma åt CDN-slutpunkten direkt från webbläsaren (till exempel https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js eller https://js.monitor.azure.com/scripts/b/ai.2.min.js) från en annan plats än dina slutanvändare är förmodligen från din egen utvecklings dator (förutsatt att din organisation inte har blockerat den här domänen).
 
 Om du bekräftar att det finns ett avbrott kan du [skapa ett nytt support ärende](https://azure.microsoft.com/support/create-ticket/) eller prova att ändra den URL som används för att hämta SDK: n.
 
@@ -106,7 +106,7 @@ Om det finns undantag som rapporteras i SDK-skriptet (till exempel ai.2.min.js),
 
 Du kan kontrol lera om konfigurationen är felaktig genom att ändra konfigurationen som skickas till kodfragmentet (om det inte redan finns) så att den bara innehåller din Instrumentation-nyckel som ett sträng värde.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ Om det fortfarande inte går att initiera kan du försöka aktivera ```enableDeb
 > [!WARNING]
 > Detta är endast en utvecklare-inställning och ska aldrig aktive ras i en fullständig produktions miljö eftersom du förlorar telemetri.
 
-> src: " https://az416426.vo.msecnd.net/scripts/b/ai.2.js ",<br />
+> src: " https://js.monitor.azure.com/scripts/b/ai.2.min.js ",<br />
 > cfg: {<br />
 > instrumentationKey: "INSTRUMENTATION_KEY",<br />
 > enableDebug: sant<br />

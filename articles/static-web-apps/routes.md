@@ -7,14 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 39950b4d62b7dbfacba94f5ba3c5de50bbb974b3
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653681"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739652"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Vägar i för hands versionen av Azure statisk Web Apps
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 Routning i Azures statiska Web Apps definierar regler för Routning och auktorisering av både statiskt innehåll och API: er<sup>1</sup>. Reglerna definieras som en uppsättning regler i _routes.js_ i filen.
 
@@ -29,6 +32,9 @@ Routning i Azures statiska Web Apps definierar regler för Routning och auktoris
 Mer information finns i [exempel cirkulations filen](#example-route-file) .
 
 ## <a name="location"></a>Location
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 _routes.js_ filen måste finnas i roten i appens version av programartefakt. Om din webbapp innehåller ett build-steg som kopierar skapade filer från en speciell mapp till din version av en artefakt, måste _routes.js_ filen finnas i den specifika mappen.
 
@@ -46,16 +52,22 @@ Tabellen ovan är bara representativ för några ramverk och bibliotek som är k
 
 ## <a name="defining-routes"></a>Definiera vägar
 
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
+
 Vägar definieras i _routes.jspå_ filen som en matris med väg regler i `routes` egenskapen. Varje regel består av ett väg mönster, tillsammans med en eller flera av de valfria regel egenskaperna. Se [exempel på väg filen](#example-route-file) för användnings exempel.
 
 | Regel egenskap  | Obligatorisk | Standardvärde | Kommentar                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | saknas          | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar. Route _admin/ \*_ matchar till exempel alla vägar under _admin_ -sökvägen.<li>En vägs standard fil är _index.html_.</ul>|
-| `serve`        | No       | saknas          | Definierar filen eller sökvägen som returneras från begäran. Fil Sök vägen och namnet kan inte vara samma som den begärda sökvägen. Om ett `serve` värde inte är definierat används den begärda sökvägen. QueryString-parametrar stöds inte. `serve` värdena måste peka på faktiska filer.  |
-| `allowedRoles` | No       | antal     | En matris med roll namn. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen `anonymous` gäller för alla oautentiserade användare.<li>Den inbyggda rollen `authenticated` gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis. Om en användare finns i någon av rollerna i listan beviljas åtkomst.<li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
-| `statusCode`   | No       | 200           | [Http-status kod](https://wikipedia.org/wiki/List_of_HTTP_status_codes) svaret för begäran. |
+| `route`        | Ja      | saknas          | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar. Route _admin/ \*_ matchar till exempel alla vägar under _admin_ -sökvägen.<li>En vägs standard fil är _index.html_.</ul>|
+| `serve`        | Inga       | saknas          | Definierar filen eller sökvägen som returneras från begäran. Fil Sök vägen och namnet kan inte vara samma som den begärda sökvägen. Om ett `serve` värde inte är definierat används den begärda sökvägen. QueryString-parametrar stöds inte. `serve` värdena måste peka på faktiska filer.  |
+| `allowedRoles` | Inga       | antal     | En matris med roll namn. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen `anonymous` gäller för alla oautentiserade användare.<li>Den inbyggda rollen `authenticated` gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis. Om en användare finns i någon av rollerna i listan beviljas åtkomst.<li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
+| `statusCode`   | Inga       | 200           | [Http-status kod](https://wikipedia.org/wiki/List_of_HTTP_status_codes) svaret för begäran. |
 
 ## <a name="securing-routes-with-roles"></a>Skydda vägar med roller
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 Vägar skyddas genom att lägga till ett eller flera roll namn i en regels `allowedRoles` matris. Se [exempel på väg filen](#example-route-file) för användnings exempel.
 
@@ -81,6 +93,9 @@ Du kan skapa nya roller efter behov i `allowedRoles` matrisen. Om du vill begrä
 - Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).
 
 ## <a name="wildcards"></a>Jokertecken
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 Jokertecken matchar alla begär Anden under ett givet väg mönster. Om du definierar ett `serve` värde i regeln, hanteras den namngivna filen eller sökvägen som svar.
 
@@ -109,6 +124,9 @@ Du kan också skydda vägar med jokertecken. I följande exempel kräver alla fi
 
 ## <a name="fallback-routes"></a>Reserv vägar
 
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
+
 Program med en enda sida, oavsett om de använder front-end JavaScript-ramverk eller bibliotek eller WebAssembly-plattformar som till exempel blixt, är det ofta förlitande på klient sidans routning för navigering på webbappar. Dessa regler för routning av klient sidan uppdaterar webbläsarens fönster plats utan att göra förfrågningar tillbaka till servern. Om du uppdaterar sidan, eller navigerar direkt till platser som genereras av klient sidans routningsregler, krävs en återställnings väg på Server sidan för att kunna hantera rätt HTML-sida.
 
 En vanlig återställnings väg visas i följande exempel:
@@ -128,6 +146,9 @@ En vanlig återställnings väg visas i följande exempel:
 Återställnings vägen måste anges sist i reglerna för routning, eftersom den fångar upp alla begär Anden som inte fångats av tidigare definierade regler.
 
 ## <a name="redirects"></a>Omdirigerar
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 Du kan använda [301](https://en.wikipedia.org/wiki/HTTP_301) -och [302](https://en.wikipedia.org/wiki/HTTP_302) HTTP-statuskod för att omdirigera begär Anden från en väg till en annan.
 
@@ -153,6 +174,9 @@ Omdirigeringar fungerar också med sökvägar som inte definierar distinkta file
 
 ## <a name="custom-error-pages"></a>Anpassade felsidor
 
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
+
 Användare kan stöta på ett antal olika situationer som kan resultera i ett fel. Med hjälp av `platformErrorOverrides` matrisen kan du tillhandahålla en anpassad upplevelse som svar på dessa fel. Referera till [exempel cirkulations filen](#example-route-file) för placering av matrisen i _routes.jsi_ filen.
 
 > [!NOTE]
@@ -171,6 +195,9 @@ I följande tabell visas de tillgängliga plattforms fel åsidosättningarna:
 | `Unauthorized_Unknown` | 401 | Ett okänt problem har uppstått vid försök att autentisera användaren. En orsak till det här felet kan vara att användaren inte känns igen eftersom de inte beviljade något medgivande till programmet.|
 
 ## <a name="custom-mime-types"></a>Anpassade MIME-typer
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 `mimeTypes`Objektet, som visas på samma nivå som `routes` matrisen, gör att du kan associera [MIME-typer](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) med fil namns tillägg.
 
@@ -194,6 +221,9 @@ Följande överväganden är viktiga när du arbetar med MIME-typer:
 > Statiska Web Apps förstår program vara och de förväntade MIME-typerna för WASM-och DLL-filer, du behöver inte lägga till mappningar för dem.
 
 ## <a name="default-headers"></a>Standard rubriker
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 `defaultHeaders`Objektet, som visas på samma nivå som `routes` matrisen, gör att du kan lägga till, ändra eller ta bort [svarshuvuden](https://developer.mozilla.org/docs/Web/HTTP/Headers).
 
@@ -221,6 +251,9 @@ Följande överväganden är viktiga när du arbetar med huvuden:
 - Sidhuvuden som definieras iroutes.jstillämpas endast _på_ statiskt innehåll. Du kan anpassa svars rubriker för en API-slutpunkt i funktionens kod.
 
 ## <a name="example-route-file"></a>Exempel på cirkulations fil
+
+> [!IMPORTANT]
+> Funktioner som definieras i *routes.jspå* filen är nu föråldrade och implementeras bättre i [konfigurations filen](./configuration.md#routes)för Azure statisk Web Apps.
 
 I följande exempel visas hur du skapar väg regler för statiskt innehåll och API: er i en _routes.jspå_ en fil. Vissa vägar använder [ _/.auth_ -systemmappen](authentication-authorization.md) som använder autentiserings-relaterade slut punkter.
 

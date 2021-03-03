@@ -3,12 +3,12 @@ title: Azure snabb start – skapa en Event Hub med hjälp av Azure Portal
 description: I den här snabb starten får du lära dig hur du skapar en Azure Event Hub med hjälp av Azure Portal.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435509"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742049"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Snabbstart: Skapa en händelsehubb med hjälp av Azure Portal
 Azure Event Hubs är en stor data strömnings plattform och händelse inmatnings tjänst som kan ta emot och bearbeta miljon tals händelser per sekund. Event Hubs kan bearbeta och lagra händelser, data eller telemetri som producerats av distribuerade program och enheter. Data som skickas till en händelsehubb kan omvandlas och lagras med valfri provider för realtidsanalys eller batchbearbetnings-/lagringsadapter. En detaljerad översikt över Event Hubs finns i [Översikt över Event Hubs](event-hubs-about.md) och [Event Hubs-funktioner](event-hubs-features.md).
@@ -87,7 +87,7 @@ Gör följande om du vill skapa en händelsehubb i namnområdet:
 
     Med inställningen **antal partitioner** kan du parallellisera förbrukningen för många konsumenter. Mer information finns i [partitioner](event-hubs-scalability.md#partitions).
 
-    Inställningen för **kvarhållning av meddelanden** anger hur länge Event Hubs tjänsten behåller data. De maximala gränserna för den här inställningen finns i [kvoter och begränsningar](event-hubs-quotas.md).
+    Inställningen för **kvarhållning av meddelanden** anger hur länge Event Hubs tjänsten behåller data. Mer information finns i [Event kvarhållning](event-hubs-features.md#event-retention).
 1. Du kan kontrollera status för skapandet av händelsehubben i aviseringarna. När händelsehubben har skapats visas den i listan över händelse nav.
 
     ![Händelsehubben har skapats](./media/event-hubs-quickstart-portal/event-hub-created.png)

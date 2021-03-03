@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448659"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699580"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes på din Azure Stack Edge Pro GPU-enhet
 
@@ -107,6 +107,16 @@ Om du vill ha mer information om hur du distribuerar program i ditt Kubernetes-k
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes och Azure-båge
 
 Azure Arc är ett hybrid hanterings verktyg som gör att du kan distribuera program i Kubernetes-kluster. Med Azure ARC kan du också använda Azure Monitor för behållare för att visa och övervaka dina kluster. Mer information finns på [Azure-Arc aktiverade Kubernetes?](../azure-arc/kubernetes/overview.md). Information om priser för Azure Arc finns i [priser för Azure Arc](https://azure.microsoft.com/services/azure-arc/#pricing).
+
+Från och med mars 2021 blir Azure Arc-aktiverade Kubernetes allmänt tillgängliga för användarna och standard avgifterna för användning gäller. Som en värdefull förhands gransknings kund blir Azure Arc-aktiverade Kubernetes tillgängligt för dig utan kostnad för Azure Stack gräns enhet (er). Skapa en [supportbegäran](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)för att utnyttja för hands versions erbjudandet:
+
+1. Välj **Fakturering** under **Typ av problem**.
+2. Välj din prenumeration under **Prenumeration**.
+3. Under **tjänst** väljer du **Mina tjänster** och väljer sedan **Azure Stack Edge**.
+4. Under **resurs** väljer du din resurs.
+5. Under **Sammanfattning** anger du en beskrivning av problemet.
+6. Välj **oväntade avgifter** under **problem typ**.
+7. Under **typ av problem** väljer du **Hjälp mig att förstå debiteringar i min kostnads fria utvärderings version**.
 
 
 ## <a name="next-steps"></a>Nästa steg

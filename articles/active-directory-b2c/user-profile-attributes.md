@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675754"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688560"
 ---
 # <a name="user-profile-attributes"></a>Attribut för användarprofil
 
@@ -39,54 +39,54 @@ I tabellen nedan visas de egenskaper för [användar resurs typ](/graph/api/reso
 - Om attributet kan användas i ett användar flöde
 - Om attributet kan användas i en anpassad princip för [Azure AD-teknisk profil](active-directory-technical-profile.md) och i vilket avsnitt ( &lt; InputClaims &gt; , &lt; OutputClaims &gt; eller &lt; PersistedClaims &gt; )
 
-|Namn     |Typ     |Description|Azure Portal|Användarflöden|Anpassad princip|
+|Namn     |Typ     |Beskrivning|Azure Portal|Användarflöden|Anpassad princip|
 |---------|---------|----------|------------|----------|-------------|
-|accountEnabled  |Boolesk|Om användar kontot är aktiverat eller inaktiverat: **Sant** om kontot är aktiverat, annars **falskt**.|Ja|Nej|Bestående, utdata|
-|ageGroup        |Sträng|Användarens ålders grupp. Möjliga värden: null, odefinierad, minor, vuxen, NotAdult.|Ja|Nej|Bestående, utdata|
-|alternativeSecurityId ([identiteter](#identities-attribute))|Sträng|En enskild användar identitet från den externa identitets leverantören.|Nej|Nej|Indata, bestående, utdata|
-|alternativeSecurityIds ([identiteter](#identities-attribute))|alternativ securityId-samling|En samling användar identiteter från externa identitets leverantörer.|Nej|Nej|Bestående, utdata|
+|accountEnabled  |Boolesk|Om användar kontot är aktiverat eller inaktiverat: **Sant** om kontot är aktiverat, annars **falskt**.|Ja|Inga|Bestående, utdata|
+|ageGroup        |Sträng|Användarens ålders grupp. Möjliga värden: null, odefinierad, minor, vuxen, NotAdult.|Ja|Inga|Bestående, utdata|
+|alternativeSecurityId ([identiteter](#identities-attribute))|Sträng|En enskild användar identitet från den externa identitets leverantören.|Inga|Inga|Indata, bestående, utdata|
+|alternativeSecurityIds ([identiteter](#identities-attribute))|alternativ securityId-samling|En samling användar identiteter från externa identitets leverantörer.|Inga|Inga|Bestående, utdata|
 |city            |Sträng|Den ort där användaren befinner sig. Maxlängd 128.|Ja|Ja|Bestående, utdata|
-|consentProvidedForMinor|Sträng|Om medgivande har angetts för en mindre. Tillåtna värden: null, beviljat, nekat eller notRequired.|Ja|Nej|Bestående, utdata|
+|consentProvidedForMinor|Sträng|Om medgivande har angetts för en mindre. Tillåtna värden: null, beviljat, nekat eller notRequired.|Ja|Inga|Bestående, utdata|
 |land         |Sträng|Landet/regionen där användaren finns. Exempel: "oss" eller "Storbritannien". Maxlängd 128.|Ja|Ja|Bestående, utdata|
-|createdDateTime|DateTime|Det datum då användarobjektet skapades. Skrivskyddad.|Nej|Nej|Bestående, utdata|
-|creationType    |Sträng|Om användar kontot har skapats som ett lokalt konto för en Azure Active Directory B2C klient, är värdet LocalAccount eller nameCoexistence. Skrivskyddad.|Nej|Nej|Bestående, utdata|
-|dateOfBirth     |Date|Födelsedatum.|Nej|Nej|Bestående, utdata|
-|avdelning      |Sträng|Namnet på den avdelning där användaren arbetar. Maxlängd 64.|Ja|Nej|Bestående, utdata|
+|createdDateTime|DateTime|Det datum då användarobjektet skapades. Skrivskyddad.|Inga|Inga|Bestående, utdata|
+|creationType    |Sträng|Om användar kontot har skapats som ett lokalt konto för en Azure Active Directory B2C klient, är värdet LocalAccount eller nameCoexistence. Skrivskyddad.|Inga|Inga|Bestående, utdata|
+|dateOfBirth     |Datum|Födelsedatum.|Inga|Inga|Bestående, utdata|
+|avdelning      |Sträng|Namnet på den avdelning där användaren arbetar. Maxlängd 64.|Ja|Inga|Bestående, utdata|
 |displayName     |Sträng|Användarens visnings namn. Maxlängd 256.|Ja|Ja|Bestående, utdata|
-|facsimileTelephoneNumber<sup>1</sup>|Sträng|Telefonnumret till användarens företags Fax maskin.|Ja|Nej|Bestående, utdata|
+|facsimileTelephoneNumber<sup>1</sup>|Sträng|Telefonnumret till användarens företags Fax maskin.|Ja|Inga|Bestående, utdata|
 |förnamn       |Sträng|Användarens förnamn (förnamn). Maxlängd 64.|Ja|Ja|Bestående, utdata|
 |jobTitle        |Sträng|Användarens jobb titel. Maxlängd 128.|Ja|Ja|Bestående, utdata|
-|immutableId     |Sträng|En identifierare som vanligt vis används för användare som migrerats från lokala Active Directory.|Nej|Nej|Bestående, utdata|
-|legalAgeGroupClassification|Sträng|Juridisk ålders grupps klassificering. Skrivskyddad och beräknas utifrån egenskaperna ageGroup och consentProvidedForMinor. Tillåtna värden: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult och vuxen.|Ja|Nej|Bestående, utdata|
-|legalCountry<sup>1</sup>  |Sträng|Land/region för juridiskt syfte.|Nej|Nej|Bestående, utdata|
-|e-post            |Sträng|SMTP-adressen till användaren, till exempel " bob@contoso.com ". Skrivskyddad.|Nej|Nej|Bestående, utdata|
-|smeknamn för e-post    |Sträng|Användarens e-postalias. Maxlängd 64.|Nej|Nej|Bestående, utdata|
-|mobil (mobilePhone) |Sträng|Det primära mobiltelefon telefonnumret för användaren. Maxlängd 64.|Ja|Nej|Bestående, utdata|
-|netId           |Sträng|NET ID.|Nej|Nej|Bestående, utdata|
-|objectId        |Sträng|En globalt unik identifierare (GUID) som är den unika identifieraren för användaren. Exempel: 12345678-9ABC-def0-1234-56789abcde. Skrivskyddad, oföränderlig.|Skrivskyddad|Yes|Indata, bestående, utdata|
-|otherMails      |Sträng samling|En lista över andra e-postadresser för användaren. Exempel: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ja (alternativ e-post)|No|Bestående, utdata|
-|password        |Sträng|Lösen ordet för det lokala kontot när användaren skapas.|Nej|Nej|Beständiga|
-|passwordPolicies     |Sträng|Princip för lösen ordet. Det är en sträng som består av ett annat princip namn, avgränsat med kommatecken. Till exempel "DisablePasswordExpiration, DisableStrongPassword".|Nej|Nej|Bestående, utdata|
-|physicalDeliveryOfficeName (officeLocation)|Sträng|Arbets platsen på användarens arbets plats. Maxlängd 128.|Ja|Nej|Bestående, utdata|
-|postalCode      |Sträng|Post numret för användarens post adress. Post numret är speciellt för användarens land/region. I USA i Amerika innehåller det här attributet post numret. Maxlängd 40.|Ja|Nej|Bestående, utdata|
-|preferredLanguage    |Sträng|Det föredragna språket för användaren. Bör följa ISO 639-1-koden. Exempel: "en-US".|Nej|Nej|Bestående, utdata|
-|refreshTokensValidFromDateTime|DateTime|Alla uppdateringstoken som utfärdats före den här tiden är ogiltiga och program får ett fel meddelande när en ogiltig uppdateringstoken används för att hämta en ny åtkomsttoken. Om detta händer måste programmet skaffa en ny uppdateringstoken genom att göra en begäran till behörighets slut punkten. Skrivskyddad.|Nej|Nej|Utdata|
-|signInNames ([identiteter](#identities-attribute)) |Sträng|Det unika inloggnings namnet för den lokala konto användaren av valfri typ i katalogen. Använd det här attributet för att få en användare med inloggnings värde utan att ange den lokala konto typen.|Nej|Nej|Indata|
-|signInNames. userName ([identiteter](#identities-attribute)) |Sträng|Unikt användar namn för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings användar namn. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
-|signInNames. telefonnummer ([identiteter](#identities-attribute)) |Sträng|Det unika telefonnumret för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings telefonnummer. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
-|signInNames. emailAddress ([identiteter](#identities-attribute))|Sträng|Den unika e-postadressen för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med en speciell e-postadress för inloggning. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
+|immutableId     |Sträng|En identifierare som vanligt vis används för användare som migrerats från lokala Active Directory.|Inga|Inga|Bestående, utdata|
+|legalAgeGroupClassification|Sträng|Juridisk ålders grupps klassificering. Skrivskyddad och beräknas utifrån egenskaperna ageGroup och consentProvidedForMinor. Tillåtna värden: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult och vuxen.|Ja|Inga|Bestående, utdata|
+|legalCountry<sup>1</sup>  |Sträng|Land/region för juridiskt syfte.|Inga|Inga|Bestående, utdata|
+|e-post            |Sträng|SMTP-adressen till användaren, till exempel " bob@contoso.com ". Skrivskyddad.|Inga|Inga|Bestående, utdata|
+|smeknamn för e-post    |Sträng|Användarens e-postalias. Maxlängd 64.|Inga|Inga|Bestående, utdata|
+|mobil (mobilePhone) |Sträng|Det primära mobiltelefon telefonnumret för användaren. Maxlängd 64.|Ja|Inga|Bestående, utdata|
+|netId           |Sträng|NET ID.|Inga|Inga|Bestående, utdata|
+|objectId        |Sträng|En globalt unik identifierare (GUID) som är den unika identifieraren för användaren. Exempel: 12345678-9ABC-def0-1234-56789abcde. Skrivskyddad, oföränderlig.|Skrivskyddad|Ja|Indata, bestående, utdata|
+|otherMails      |Sträng samling|En lista över andra e-postadresser för användaren. Exempel: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ja (alternativ e-post)|Inga|Bestående, utdata|
+|password        |Sträng|Lösen ordet för det lokala kontot när användaren skapas.|Inga|Inga|Beständiga|
+|passwordPolicies     |Sträng|Princip för lösen ordet. Det är en sträng som består av ett annat princip namn, avgränsat med kommatecken. Till exempel "DisablePasswordExpiration, DisableStrongPassword".|Inga|Inga|Bestående, utdata|
+|physicalDeliveryOfficeName (officeLocation)|Sträng|Arbets platsen på användarens arbets plats. Maxlängd 128.|Ja|Inga|Bestående, utdata|
+|postalCode      |Sträng|Post numret för användarens post adress. Post numret är speciellt för användarens land/region. I USA i Amerika innehåller det här attributet post numret. Maxlängd 40.|Ja|Inga|Bestående, utdata|
+|preferredLanguage    |Sträng|Det föredragna språket för användaren. Bör följa ISO 639-1-koden. Exempel: "en-US".|Inga|Inga|Bestående, utdata|
+|refreshTokensValidFromDateTime|DateTime|Alla uppdateringstoken som utfärdats före den här tiden är ogiltiga och program får ett fel meddelande när en ogiltig uppdateringstoken används för att hämta en ny åtkomsttoken. Om detta händer måste programmet skaffa en ny uppdateringstoken genom att göra en begäran till behörighets slut punkten. Skrivskyddad.|Inga|Inga|Utdata|
+|signInNames ([identiteter](#identities-attribute)) |Sträng|Det unika inloggnings namnet för den lokala konto användaren av valfri typ i katalogen. Använd det här attributet för att få en användare med inloggnings värde utan att ange den lokala konto typen.|Inga|Inga|Indata|
+|signInNames. userName ([identiteter](#identities-attribute)) |Sträng|Unikt användar namn för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings användar namn. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Inga|Inga|Indata, bestående, utdata|
+|signInNames. telefonnummer ([identiteter](#identities-attribute)) |Sträng|Det unika telefonnumret för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings telefonnummer. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Inga|Inga|Indata, bestående, utdata|
+|signInNames. emailAddress ([identiteter](#identities-attribute))|Sträng|Den unika e-postadressen för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med en speciell e-postadress för inloggning. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Inga|Inga|Indata, bestående, utdata|
 |state           |Sträng|Region i användarens adress. Maxlängd 128.|Ja|Ja|Bestående, utdata|
 |streetAddress   |Sträng|Gatuadressen till användarens arbets plats. Maxlängd 1024.|Ja|Ja|Bestående, utdata|
-|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Sträng|Användarens sekundära telefonnummer, som används för Multi-Factor Authentication.|Ja|Nej|Bestående, utdata|
-|strongAuthenticationEmailAddress<sup>1</sup>|Sträng|SMTP-adressen för användaren. Exempel: " bob@contoso.com " Detta attribut används för inloggning med användar namn princip för att lagra användarens e-postadress. E-postadressen används sedan i ett flöde för återställning av lösen ord.|Ja|Nej|Bestående, utdata|
-|strongAuthenticationPhoneNumber<sup>2</sup>|Sträng|Användarens primära telefonnummer, som används för Multi-Factor Authentication.|Ja|Nej|Bestående, utdata|
+|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Sträng|Användarens sekundära telefonnummer, som används för Multi-Factor Authentication.|Ja|Inga|Bestående, utdata|
+|strongAuthenticationEmailAddress<sup>1</sup>|Sträng|SMTP-adressen för användaren. Exempel: " bob@contoso.com " Detta attribut används för inloggning med användar namn princip för att lagra användarens e-postadress. E-postadressen används sedan i ett flöde för återställning av lösen ord.|Ja|Inga|Bestående, utdata|
+|strongAuthenticationPhoneNumber<sup>2</sup>|Sträng|Användarens primära telefonnummer, som används för Multi-Factor Authentication.|Ja|Inga|Bestående, utdata|
 |surname         |Sträng|Användarens efter namn (familje namn eller efter namn). Maxlängd 64.|Ja|Ja|Bestående, utdata|
-|telephoneNumber (första posten i businessPhones)|Sträng|Det primära telefonnumret till användarens arbets plats.|Ja|Nej|Bestående, utdata|
-|userPrincipalName    |Sträng|Användarens huvudnamn (UPN). UPN är ett inloggnings namn för användaren som baseras på Internet standard RFC 822. Domänen måste finnas i klientens samling med verifierade domäner. Den här egenskapen krävs när ett konto skapas. Inte kan ändras.|Nej|Nej|Indata, bestående, utdata|
-|usageLocation   |Sträng|Krävs för användare som ska tilldelas licenser på grund av juridiskt krav för att kontrol lera tillgängligheten för tjänster i länder/regioner. Kan inte ha värdet null. En lands-/regionkod i två bokstäver (ISO standard 3166). Exempel: "US", "JP" och "GB".|Ja|Nej|Bestående, utdata|
-|userType        |Sträng|Ett sträng värde som kan användas för att klassificera användar typer i din katalog. Värdet måste vara medlem. Skrivskyddad.|Skrivskyddad|No|Bestående, utdata|
-|userState (externalUserState)<sup>3</sup>|Sträng|För Azure AD B2B-konto anger du om inbjudan är PendingAcceptance eller accepterad.|Nej|Nej|Bestående, utdata|
-|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Visar tidsstämpeln för den senaste ändringen av egenskapen UserState.|Nej|Nej|Bestående, utdata|
+|telephoneNumber (första posten i businessPhones)|Sträng|Det primära telefonnumret till användarens arbets plats.|Ja|Inga|Bestående, utdata|
+|userPrincipalName    |Sträng|Användarens huvudnamn (UPN). UPN är ett inloggnings namn för användaren som baseras på Internet standard RFC 822. Domänen måste finnas i klientens samling med verifierade domäner. Den här egenskapen krävs när ett konto skapas. Inte kan ändras.|Inga|Inga|Indata, bestående, utdata|
+|usageLocation   |Sträng|Krävs för användare som ska tilldelas licenser på grund av juridiskt krav för att kontrol lera tillgängligheten för tjänster i länder/regioner. Kan inte ha värdet null. En lands-/regionkod i två bokstäver (ISO standard 3166). Exempel: "US", "JP" och "GB".|Ja|Inga|Bestående, utdata|
+|userType        |Sträng|Ett sträng värde som kan användas för att klassificera användar typer i din katalog. Värdet måste vara medlem. Skrivskyddad.|Skrivskyddad|Inga|Bestående, utdata|
+|userState (externalUserState)<sup>3</sup>|Sträng|För Azure AD B2B-konto anger du om inbjudan är PendingAcceptance eller accepterad.|Inga|Inga|Bestående, utdata|
+|userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Visar tidsstämpeln för den senaste ändringen av egenskapen UserState.|Inga|Inga|Bestående, utdata|
 
 <sup>1 </sup> Stöds inte av Microsoft Graph<br><sup>2 </sup> Mer information finns i [attribut för MFA-telefonnummer](#mfa-phone-number-attribute)<br><sup>3 </sup> Ska inte användas med Azure AD B2C
 
@@ -105,7 +105,7 @@ En användare med ett kund konto kan logga in med flera identiteter. Till exempe
 
 I Microsoft Graph API lagras både lokala och federerade identiteter i användarattribut `identities` , vilket är av typen [objectIdentity] [Graph-objectIdentity]. `identities`Samlingen representerar en uppsättning identiteter som används för att logga in på ett användar konto. Den här samlingen gör att användaren kan logga in på användar kontot med någon av dess associerade identiteter.
 
-| Namn   | Typ |Description|
+| Namn   | Typ |Beskrivning|
 |:---------------|:--------|:----------|
 |signInType|sträng| Anger användarnas inloggnings typer i din katalog. För lokalt konto:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` eller någon annan typ som du vill ha. Socialt konto måste anges till  `federated` .|
 |utfärdare|sträng|Anger utfärdarens identitet. För lokala konton (där **signInType** inte är `federated` det) är den här egenskapen namnet på den lokala B2C-klientens standard domän, till exempel `contoso.onmicrosoft.com` . För sociala identiteter (där **signInType** är  `federated` ) är värdet namnet på utfärdaren, till exempel `facebook.com`|
@@ -137,7 +137,7 @@ För federerade identiteter, beroende på identitets leverantören, är **issuer
 
 ## <a name="password-profile-property"></a>Egenskap för lösen ords profil
 
-För en lokal identitet krävs attributet **passwordProfile** och det innehåller användarens lösen ord. `forceChangePasswordNextSignIn`Attributet måste anges till `false` .
+För en lokal identitet krävs attributet **passwordProfile** och det innehåller användarens lösen ord. `forceChangePasswordNextSignIn`Attributet anger om en användare måste återställa lösen ordet vid nästa inloggning. Om du vill hantera en Tvingad återställning av lösen ord [ställer du in flödet för Tvingad återställning av lösen ord](force-password-reset.md)
 
 För en federerad (social) identitet krävs inte attributet **passwordProfile** .
 
@@ -175,7 +175,7 @@ Utökade attribut [utökar schemat](/graph/extensibility-overview#schema-extensi
 > - Om programmet B2C-Extensions-app tas bort, tas dessa tilläggsfiler bort från alla användare tillsammans med alla data som de innehåller.
 > - Om ett attribut för tillägg tas bort av programmet tas det bort från alla användar konton och värdena tas bort.
 
-Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_AttributeName` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Till exempel:
+Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_AttributeName` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

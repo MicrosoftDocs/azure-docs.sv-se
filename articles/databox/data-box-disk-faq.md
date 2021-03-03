@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: alkohli
-ms.openlocfilehash: f4f1924ce19ccb0f48aa1a7c9a0515fa89505dae
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652317"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724837"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: vanliga frågor och svar
 
@@ -48,7 +49,7 @@ A. Information om priset för Data Box-diskar finns på [sidan med prisinformati
 A.  Du skaffar Azure Data Box-diskar genom att logga in på Azure-portalen och skapa en Data Box-beställning på diskar. Ange din kontakt- och aviseringsinformation. Beroende på tillgängligheten skickas diskarna till dig inom tio dagar.
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>F. Vad är den maximala mängden data kan överföra med Data Box-diskar?
-A. För 5 diskar, var och en med 8 TB-kapacitet (7 TB användbar kapacitet), är den största användbara kapaciteten 35 TB. Så du kan överföra 35 TB data i en instans. Om du vill överföra en större datamängd måste du beställa fler diskar.
+A. För fem diskar, var och en med 8 TB-kapacitet (7 TB användbar kapacitet), är den största användbara kapaciteten 35 TB. Så du kan överföra 35 TB data i en instans. Om du vill överföra en större datamängd måste du beställa fler diskar.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>F. Hur ser jag om Data Box-diskar finns tillgängliga i min region? 
 A.  Om du vill se var Data Box-enhet diskarna är tillgängliga går du till [regionens tillgänglighet](data-box-disk-overview.md#region-availability).  
@@ -72,6 +73,18 @@ Leverera en [disk som stöds](../import-export/storage-import-export-requirement
 2. När du har kopierat data från din lokala server till diskarna kan du returnera dem till Azure-datacentret i Kanada med Microsoft-angivna retur etiketter. De data som finns på Data Box Disken laddas sedan upp till mål lagrings kontot i Azure-regionen som du valde när du skapade ordningen.
 
 3. Du kan sedan använda ett verktyg som AzCopy för att kopiera data till ett lagrings konto i USA, västra. I det här steget debiteras standard [avgifterna](https://azure.microsoft.com/pricing/details/bandwidth/) för [lagring](https://azure.microsoft.com/pricing/details/storage/) och bandbredd som inte ingår i data Box disk fakturering.
+
+#### <a name="q-does-data-box-disk-store-any-customer-data-outside-of-the-service-region"></a>F. Lagrar Data Box Disk alla kund uppgifter utanför tjänst regionen?
+
+A. Nej. Data Box Disk lagrar ingen kund information utanför tjänst regionen. Kunden har full ägande rätt till sina data och kan spara data till en angiven plats baserat på det lagrings konto de väljer när de skapas.  
+
+Utöver kund informationen finns Data Box Disk data som innehåller metadata och övervaknings loggar. I alla regioner (förutom Brasilien, södra och Sydostasien), lagras och replikeras Data Box Disk data i en [kopplad region](../best-practices-availability-paired-regions.md) via ett Geo-redundant lagrings konto för att skydda mot data förlust.  
+
+På grund av [placering-krav för data](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) i brasilien och Sydostasien, lagras data Box disk data på ett ZRS-konto (Zone-redundant lagring) så att det finns i en enda region. För Sydostasien lagras alla Data Box Disk data i Singapore och för södra Brasilien, lagras data i Brasilien. 
+
+Om det uppstår ett tjänst avbrott i södra Brasilien och Sydostasien kan kunderna skapa nya beställningar från en annan region. De nya orderna kommer att behandlas från den region där de skapas och kunderna är ansvariga för till och från leverans av Data Box Disk.
+
+
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>F. Hur kan jag återställa mina data om en hel region Miss lyckas?
 
@@ -110,7 +123,7 @@ Dessa produktions tider är *uppskattningar*. Tiden för varje steg i order bear
 ## <a name="configure-and-connect"></a>Konfigurera och ansluta
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>F. Kan jag ange antal Data Box-diskar i beställningen?
-A.  Nej. Du får 8 TB diskar (högst 5 diskar) beroende på dina data storlek och tillgänglighet för diskarna.  
+A.  Nej. Du får 8 TB diskar (högst fem diskar) beroende på dina data storlek och tillgänglighet för diskarna.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>F. Hur låser jag upp Data Box-diskarna? 
 A.  Öppna Azure-portalen och öppna din Data Box-diskbeställning. Navigera till **Enhetsinformation**. Kopiera supportnyckeln. Ladda ned och extrahera upplåsningsverktyget för Data Box Disk från Azure-portalen för ditt operativsystem. Kör verktyget på den dator som har de data du vill kopiera till diskarna. Ange nyckeln för att låsa upp diskarna. Samma nyckel låser upp alla diskar. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 58987523d86b0e3acb63d3dc220f68753501830e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b88cc2d70d38d84436beaff41b5b40b9c06debca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695557"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Storlekar för GPU-optimerade virtuella datorer
 
@@ -43,7 +43,7 @@ För att kunna dra nytta av GPU-funktionerna i virtuella datorer i Azure N-serie
 
 - Virtuella datorer i N-serien kan bara distribueras i distributions modellen för Resource Manager.
 
-- Virtuella datorer i N-serien skiljer sig åt i den typ av Azure Storage de stöder för diskarna. NC och NV-virtuella datorer stöder bara virtuella hård diskar som backas upp av standard Disklagring (HDD). NCv2-, NCv3-, ND-, NDv2-och NVv2-VM: ar stöder bara virtuella hård diskar som backas upp av Premium Disklagring (SSD).
+- Virtuella datorer i N-serien skiljer sig åt i den typ av Azure Storage de stöder för diskarna. NC och NV-virtuella datorer stöder bara virtuella hård diskar som backas upp av standard Disklagring (HDD). Alla andra GPU-VM: ar stöder VM-diskar som backas upp av standard Disklagring och Premium Disklagring (SSD).
 
 - Om du vill distribuera fler än några få virtuella datorer i N-serien bör du överväga att betala per användning-prenumeration eller andra köp alternativ. Om du använder ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/) kan du bara använda ett begränsat antal Azure Compute-kärnor.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7a456057bc088264cefb91be9f3e5069b29474a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596800"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709826"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor loggar för Azure Standard Load Balancer
 
@@ -74,7 +74,7 @@ Aktivitetsloggning är automatiskt aktiverad för alla Resource Manager-resurser
 
 ## <a name="view-and-analyze-the-activity-log"></a>Visa och analysera aktivitetsloggar
 
-Aktivitets loggen skapas som standard. Du kan konfigurera den så att den exporteras på en prenumerations nivå genom att [följa anvisningarna i den här artikeln](../azure-monitor/platform/activity-log.md). Läs mer om dessa loggar genom att läsa artikeln [Visa aktivitets loggar för att övervaka åtgärder i resurser](../azure-resource-manager/management/view-activity-logs.md) .
+Aktivitets loggen skapas som standard. Du kan konfigurera den så att den exporteras på en prenumerations nivå genom att [följa anvisningarna i den här artikeln](../azure-monitor/essentials/activity-log.md). Läs mer om dessa loggar genom att läsa artikeln [Visa aktivitets loggar för att övervaka åtgärder i resurser](../azure-resource-manager/management/view-activity-logs.md) .
 
 Du kan visa och analysera aktivitets logg data med någon av följande metoder:
 
@@ -113,4 +113,4 @@ Export funktionen mått till-loggar för Azure Load Balancer har följande begr�
 
 ## <a name="next-steps"></a>Nästa steg
 * [Granska tillgängliga mått för belastningsutjämnaren](./load-balancer-standard-diagnostics.md)
-* [Skapa och testa frågor genom att följa Azure Monitor-instruktioner](../azure-monitor/log-query/log-query-overview.md)
+* [Skapa och testa frågor genom att följa Azure Monitor-instruktioner](../azure-monitor/logs/log-query-overview.md)

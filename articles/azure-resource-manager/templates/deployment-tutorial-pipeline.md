@@ -1,15 +1,15 @@
 ---
 title: Kontinuerlig integrering med Azure Pipelines
 description: Lär dig hur du kontinuerligt skapar, testar och distribuerar Azure Resource Manager mallar (ARM-mallar).
-ms.date: 02/16/2021
+ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d367da33d6b9997d77606e9a77a961808d66ff99
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560907"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722814"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Självstudie: kontinuerlig integrering av ARM-mallar med Azure-pipelines
 
@@ -83,8 +83,8 @@ Mappen _CreateWebApp_ är den mapp där mallen lagras. `pwd`Kommandot visar mapp
 
 I stället för att skapa mallarna kan du hämta mallarna och spara dem i mappen _CreateWebApp_ .
 
-* Huvud mal len: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* Den länkade mallen: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* Huvud mal len: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* Den länkade mallen: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 Både mappnamnet och fil namnen används som de är i pipelinen. Om du ändrar namnen måste du uppdatera namnen som används i pipelinen.
 
@@ -106,7 +106,7 @@ _azuredeploy.jspå_ har lagts till i den lokala lagrings platsen. Sedan laddar d
     Du kan få en varning om LF. Du kan ignorera varningen. **main** är huvud grenen.  Du skapar vanligt vis en gren för varje uppdatering. För att förenkla självstudien använder du huvud grenen direkt.
 
 1. Bläddra till GitHub-lagringsplatsen från en webbläsare. URL: en är `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Du ser mappen _CreateWebApp_ och de två filerna i mappen.
-1. Välj _linkedStorageAccount.jspå_ för att öppna mallen.
+1. Välj _azuredeploy.jspå_ för att öppna mallen.
 1. Välj **RAW** -knappen. URL: en börjar med `https://raw.githubusercontent.com` .
 1. Skapa en kopia av URL:en. Du måste ange det här värdet när du konfigurerar pipelinen senare i självstudien.
 
@@ -174,10 +174,10 @@ Så här skapar du en pipeline med ett steg för att distribuera en mall:
     * **Åtgärd**: Välj åtgärden **skapa eller uppdatera resurs grupp** utför 2 åtgärder-1. skapa en resurs grupp om ett nytt resurs grupps namn har angetts. 11.2. distribuera den angivna mallen.
     * **Resurs grupp**: Ange ett nytt resurs grupps namn. Till exempel **AzureRmPipeline-RG**.
     * **Plats**: Välj en plats för resurs gruppen, till exempel **centrala USA**.
-    * **Mallens plats**: Välj **länkad artefakt**, vilket innebär att aktiviteten söker efter mallfilen direkt från den anslutna lagrings platsen.
-    * **Mall**: ange _CreateWebApp/azuredeploy.jspå_. Om du har ändrat mappnamnet och fil namnet måste du ändra det här värdet.
-    * **Mallparametrar**: lämna fältet tomt. Du kommer att ange parameter värden i **parametrarna för åsidosättning-mallen**.
-    * **Åsidosätt mallparametrar**: ange `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` . Ersätt projekt namnet och den länkade mallens URL. Den länkade mallens URL är det du skrev ned i slutet av [skapa en GitHub-lagringsplats](#create-a-github-repository). Den börjar med `https://raw.githubusercontent.com` .
+    * **Mallens plats**: Välj **URL för filen**, vilket innebär att aktiviteten söker efter mallfilen genom att använda URL: en. Eftersom _relativePath_ används i huvud mal len och _relativePath_ bara stöds på URI-baserade distributioner, måste du använda URL: en här.
+    * **Mall länk**: Ange den URL som du fick i slutet av avsnittet [förbereda en GitHub-lagringsplats](#prepare-a-github-repository) . Den börjar med `https://raw.githubusercontent.com` .
+    * **Länk till mallparametrar**: lämna fältet tomt. Du kommer att ange parameter värden i **parametrarna för åsidosättning-mallen**.
+    * **Åsidosätt mallparametrar**: ange `-projectName [EnterAProjectName]` .
     * **Distributions läge**: Välj **stegvis**.
     * **Distributions namn**: ange **DeployPipelineTemplate**. Välj **Avancerat** innan du kan se **distributions namnet**.
 

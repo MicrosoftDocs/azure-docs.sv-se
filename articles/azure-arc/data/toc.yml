@@ -6,6 +6,8 @@
       href: overview.md
     - name: Viktig information
       href: release-notes.md
+    - name: Kända problem
+      href: known-issues.md
 - name: Snabbstarter
   items:
     - name: Skapa datakontrollant
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 'Övervakning, logganalys, faktureringsinformation Azure Portal'
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: Hög tillgänglighet
+              href: managed-instance-high-availability.md
             - name: Ta bort
               href: delete-managed-instance.md
         - name: Migrera

@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699662"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory hanterad Virtual Network (förhands granskning)
 
@@ -43,7 +43,7 @@ Fördelar med att använda hanterade Virtual Network:
 
 ## <a name="managed-private-endpoints"></a>Hanterade privata slutpunkter
 
-Hanterade privata slut punkter är privata slut punkter som skapats i den Azure Data Factory hanterade Virtual Network att upprätta en privat länk till Azure-resurser. Azure Data Factory hanterar de här privata slut punkterna för din räkning. 
+Hanterade privata slut punkter är privata slut punkter som skapats i den Azure Data Factory hanterade Virtual Network att upprätta en privat länk till Azure-resurser. Azure Data Factory hanterar de här privata slutpunkterna för din räkning. 
 
 ![Ny hanterad privat slut punkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
@@ -108,11 +108,13 @@ Under data källor finns stöd för att ansluta via en privat länk från ADF-ha
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Utgående kommunikation via offentlig slut punkt från ADF-hanterad Virtual Network
 - Endast port 443 är öppen för utgående kommunikation.
-- Azure Storage-och Azure Data Lake-Gen2 stöds inte för anslutning via den offentliga slut punkten från ADF-hanterad Virtual Network.
+- Azure Storage och Azure Data Lake-Gen2 stöds inte för anslutning via den offentliga slutpunkten från ett ADF-hanterat virtuellt nätverk.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault för att skapa länkade tjänster 
 - När du skapar en länkad tjänst för Azure Key Vault finns det ingen Azure Integration Runtime-referens. Det går inte att skapa en privat slut punkt under skapandet av den länkade tjänsten Azure Key Vault. Men när du skapar en länkad tjänst för data lager som refererar Azure Key Vault länkade tjänsten och den här länkade tjänsten refererar Azure Integration Runtime med hanterade Virtual Network aktiverade, kan du skapa en privat slut punkt för den Azure Key Vault länkade tjänsten under skapandet. 
 - **Test anslutnings** åtgärd för länkad tjänst för Azure Key Vault verifierar bara URL-formatet, men ingen nätverks åtgärd.
+- Kolumnen som **använder privat slut punkt** visas alltid som Tom även om du skapar en privat slut punkt för Azure Key Vault.
+![Privat slut punkt för AKV](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

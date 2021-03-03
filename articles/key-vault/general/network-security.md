@@ -2,20 +2,20 @@
 title: Konfigurera Azure Key Vault brand väggar och virtuella nätverk – Azure Key Vault
 description: Steg för steg-anvisningar för att konfigurera Key Vault brand väggar och virtuella nätverk
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936353"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742644"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurera Azure Key Vault brand väggar och virtuella nätverk
 
@@ -39,7 +39,7 @@ Om du vill ta reda på om en tjänst som du försöker använda finns i listan �
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault brand vägg aktive rad (IPv4-adresser och intervall – statiska IP-adresser)
 
-Om du vill auktorisera en viss tjänst för att få åtkomst till Key Vault via Key Vault brand väggen kan du lägga till dess IP-adress i listan över tillåtna brand vägg för nyckel valv. Den här konfigurationen är bäst för tjänster som använder statiska IP-adresser eller välkända intervall.
+Om du vill auktorisera en viss tjänst för att få åtkomst till Key Vault via Key Vault brand väggen kan du lägga till dess IP-adress i listan över tillåtna brand vägg för nyckel valv. Den här konfigurationen är bäst för tjänster som använder statiska IP-adresser eller välkända intervall. Det finns en gräns på 1000 CIDR-intervall för det här fallet.
 
 Utför följande steg för att tillåta en IP-adress eller ett intervall av en Azure-resurs, till exempel en webbapp eller en Logic app.
 

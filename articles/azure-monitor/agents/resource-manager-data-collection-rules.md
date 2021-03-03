@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: f98e22ba28dcd05d164f40c301a2e43df66898de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627952"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737332"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för data insamlings regler i Azure Monitor
-Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](../platform/log-analytics-agent.md) och [diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
+Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](./log-analytics-agent.md) och [diagnostiskt tillägg](./diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -144,6 +144,6 @@ Följande exempel skapar en koppling mellan en Azure Arc-aktiverad server och en
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hämta andra exempel mallar för Azure Monitor](../samples/resource-manager-samples.md).
-* [Läs mer om Log Analytics-agenten](../platform/log-analytics-agent.md).
-* [Läs mer om diagnostiskt tillägg](../platform/diagnostics-extension-overview.md).
+* [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
+* [Läs mer om Log Analytics-agenten](./log-analytics-agent.md).
+* [Läs mer om diagnostiskt tillägg](./diagnostics-extension-overview.md).

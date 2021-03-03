@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 7e01d234b5b94997cbfd275c4b4566ec4fa332a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 136e063f6d272589c609bad93532df025a15a68d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621442"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723630"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Felsöka problem med Log Analytics-agenten för Linux 
 
@@ -92,7 +92,7 @@ Vi har sett att en ren ominstallation av agenten kommer att åtgärda de flesta 
 | NOT_DEFINED | Eftersom nödvändiga beroenden inte är installerade kommer auoms-granskade plugin-programmet inte att installeras | Det gick inte att installera auoms, installations paketet har granskats. |
 | 2 | Ett ogiltigt alternativ angavs för gränssnitts paketet. Kör `sudo sh ./omsagent-*.universal*.sh --help` för användning |
 | 3 | Inget alternativ angavs för gränssnitts paketet. Kör `sudo sh ./omsagent-*.universal*.sh --help` för användning. |
-| 4 | Ogiltig pakettyp eller ogiltiga proxyinställningar. omsagent-*rpm*. sh-paket kan bara installeras på RPM-baserade system och omsagent-*deb*. sh-paket kan bara installeras på Debian-baserade system. Vi rekommenderar att du använder det universella installations programmet från den [senaste versionen](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Se även till att verifiera proxyinställningarna. |
+| 4 | Ogiltig pakettyp eller ogiltiga proxyinställningar. omsagent-*rpm*. sh-paket kan bara installeras på RPM-baserade system och omsagent-*deb*. sh-paket kan bara installeras på Debian-baserade system. Vi rekommenderar att du använder det universella installations programmet från den [senaste versionen](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux). Se även till att verifiera proxyinställningarna. |
 | 5 | Shell-paketet måste köras som rot eller så uppstod ett 403-fel under inregistreringen. Kör kommandot med hjälp av `sudo` . |
 | 6 | Ogiltig paket arkitektur eller så uppstod fel 200 vid registrering. omsagent-*x64.sh-paket kan bara installeras på 64-bitars system, och omsagent-x86.sh-* paket kan bara installeras på 32-bitars system. Hämta rätt paket för din arkitektur från den [senaste versionen](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Installationen av OMS-paketet misslyckades. Titta igenom kommandots utdata för rot felen. |
@@ -116,7 +116,7 @@ Vi har sett att en ren ominstallation av agenten kommer att åtgärda de flesta 
 | --- | --- |
 | 2 | Ett ogiltigt alternativ har angetts för omsadmin-skriptet. Kör `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` för användning. |
 | 3 | En ogiltig konfiguration angavs för omsadmin-skriptet. Kör `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` för användning. |
-| 4 | Ogiltig proxy angavs för omsadmin-skriptet. Verifiera proxyn och se vår [dokumentation för att använda en HTTP-proxy](../platform/log-analytics-agent.md#firewall-requirements). |
+| 4 | Ogiltig proxy angavs för omsadmin-skriptet. Verifiera proxyn och se vår [dokumentation för att använda en HTTP-proxy](./log-analytics-agent.md#firewall-requirements). |
 | 5 | 403 HTTP-fel togs emot från Azure Monitor. Mer information finns i omsadmin-skriptets fullständiga utdata. |
 | 6 | HTTP-fel som inte är 200 togs emot från Azure Monitor. Mer information finns i omsadmin-skriptets fullständiga utdata. |
 | 7 | Det går inte att ansluta till Azure Monitor. Mer information finns i omsadmin-skriptets fullständiga utdata. |
@@ -198,7 +198,7 @@ Under plugin-programmet för utdata tar du bort kommentaren till följande avsni
 
 2. Granska [proxyinställningarna](agent-manage.md#update-proxy-settings) för att kontrol lera att du har konfigurerat agenten korrekt för att kommunicera via en proxyserver.    
 
-3. Kontrol lera att de slut punkter som beskrivs i listan över Azure Monitor [nätverks brand Väggs krav](../platform/log-analytics-agent.md#firewall-requirements) har lagts till korrekt i listan över tillåtna. Om du använder Azure Automation länkas de nödvändiga stegen för nätverks konfigurationen ovan också.
+3. Kontrol lera att de slut punkter som beskrivs i listan över Azure Monitor [nätverks brand Väggs krav](./log-analytics-agent.md#firewall-requirements) har lagts till korrekt i listan över tillåtna. Om du använder Azure Automation länkas de nödvändiga stegen för nätverks konfigurationen ovan också.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problem: du får ett 403-fel vid försök att publicera
 
@@ -447,7 +447,7 @@ Du kan fortsätta att publicera igen när du har använt `--purge` alternativet
 ### <a name="resolution"></a>Lösning 
 Utför följande steg för att åtgärda problemet.
 1. Ta bort tillägget från Azure Portal.
-2. Installera agenten genom att följa [anvisningarna](../learn/quick-collect-linux-computer.md).
+2. Installera agenten genom att följa [anvisningarna](../vm/quick-collect-linux-computer.md).
 3. Starta om agenten genom att köra följande kommando: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 * Vänta några minuter och etablerings statusen ändras till **etableringen har slutförts**.
 

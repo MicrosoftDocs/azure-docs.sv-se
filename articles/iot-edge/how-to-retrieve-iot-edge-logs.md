@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 65d95533e4cff02866111881f036225f9f544852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719023"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Hämta loggar från IoT Edge-distributioner
 
@@ -33,7 +33,18 @@ Det krävs inte, för bästa kompatibilitet med den här funktionen, det rekomme
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` ska följa [formatet på syslog-allvarlighets](https://wikipedia.org/wiki/Syslog#Severity_level) grad och `{Timestamp}` ska formateras som `yyyy-MM-dd hh:mm:ss.fff zzz` .
+`{Timestamp}` ska formateras som `yyyy-MM-dd hh:mm:ss.fff zzz` och `{Log Level}` ska följa tabellen nedan, vilket härleder dess allvarlighets grader från [allvarlighets grad koden i syslog-standarden](https://wikipedia.org/wiki/Syslog#Severity_level).
+
+| Värde | Allvarlighetsgrad |
+|-|-|
+| 0 | Akut |
+| 1 | Varning |
+| 2 | Kritiskt |
+| 3 | Fel |
+| 4 | Varning |
+| 5 | anslagstavlan, |
+| 6 | Information |
+| 7 | Felsökning |
 
 [Klassen logga in IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) fungerar som en kanonisk implementering.
 

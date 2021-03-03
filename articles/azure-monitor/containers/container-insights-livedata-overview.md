@@ -1,26 +1,26 @@
 ---
-title: Visa real tids data (för hands version) med Azure Monitor för behållare | Microsoft Docs
-description: Den här artikeln beskriver real tids visningen av Kubernetes-loggar, händelser och Pod mått utan att använda kubectl i Azure Monitor för behållare.
+title: Visa real tids data (för hands version) med container Insights | Microsoft Docs
+description: Den här artikeln beskriver real tids visningen av Kubernetes-loggar, händelser och Pod mått utan att använda kubectl i behållar insikter.
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621850"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711237"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid
 
-Azure Monitor for containers innehåller funktionen Live data (för hands version), som är en avancerad diagnostisk funktion som gör att du direkt kan komma åt dina AKS (Azure Kubernetes service)-behållar loggar (STDOUT/stderror), händelser och Pod mått. Den visar direkt åtkomst till `kubectl logs -c` , `kubectl get` händelser och `kubectl top pods` . I ett konsol fönster visas loggar, händelser och mått som genereras av behållar motorn för att hjälpa till med fel sökning av problem i real tid.
+Behållar insikter innehåller funktionen real tids data (för hands version), som är en avancerad diagnostisk funktion som gör att du direkt kan komma åt dina AKS (Azure Kubernetes service) (STDOUT/stderror), händelser och Pod mått. Den visar direkt åtkomst till `kubectl logs -c` , `kubectl get` händelser och `kubectl top pods` . I ett konsol fönster visas loggar, händelser och mått som genereras av behållar motorn för att hjälpa till med fel sökning av problem i real tid.
 
 Den här artikeln innehåller en detaljerad översikt och hjälper dig att förstå hur du använder den här funktionen.
 
 Om du vill ha hjälp med att ställa in eller felsöka funktionen Live data (för hands version) läser du vår [installations guide](container-insights-livedata-setup.md). Den här funktionen har direkt åtkomst till Kubernetes-API: et och ytterligare information om Authentication-modellen finns [här](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
 ## <a name="view-deployment-live-logs-preview"></a>Visa distributions Live-loggar (för hands version)
-Använd följande procedur för att Visa Live-loggar för distributioner som ingår i AKS-kluster som inte övervakas av Azure Monitor för behållare. Om klustret använder Azure Monitor för behållare ska du använda processen nedan för att Visa real tids data för noder, styrenheter, behållare och distributioner.
+Använd följande procedur för att Visa Live-loggarna för distributioner som ingår i AKS-kluster som inte övervakas av behållar insikter. Om ditt kluster använder behållar insikter kan du använda processen nedan för att Visa real tids data för noder, styrenheter, behållare och distributioner.
 
 1. I Azure Portal bläddrar du till kluster resurs gruppen AKS och väljer din AKS-resurs.
 

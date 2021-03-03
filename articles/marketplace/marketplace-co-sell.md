@@ -1,96 +1,87 @@
 ---
-title: Samförsäljnings partner engagemang – Microsoft Commercial Marketplace
+title: Översikt över samförsäljning med Microsoft Sales Teams och partners
 description: Programmet Microsoft Partner Center Co-Sales för partner kan hjälpa dig att komma till en omfattande kund bas och skapa ny försäljning.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/05/2021
-ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 2/24/2021
+ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581575"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721148"
 ---
-# <a name="co-sell-partner-engagement"></a>Deltagande i partnersäljsamarbete
+# <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Översikt över samförsäljning med Microsoft Sales Teams och partners
 
-Du kan använda samförsäljnings programmet för att arbeta direkt med Microsoft-säljare om gemensamma Sälj möjligheter och för att få ut mer av ytterligare handels-och leverans förmåner som säljs via kommersiella marknads platser.
+Samförsäljning med Microsoft definieras som samarbets engagemang mellan Microsoft och vårt partner eko system. I den här processen ingår att skapa behov, försäljnings planering, dela försäljnings ledare, påskynda partner till partner som är bemyndigad att sälja och leverera marknads ledande handels LED.
 
-Programmet för samförsäljning är tillgängligt för **program vara som skapats med immateriell egendom (IP) som repeterbara, paketerade erbjudanden** och för **tjänster med Microsoft-teknik Embedded**. De flesta typer av erbjudanden i Co-försäljnings programmet är också tillgängliga i den kommersiella marknads platsen. Erbjudanden som uppfyller ytterligare krav blir **samförsäljnings färdiga** eller **medförsäljnings motiverade**.
+När du väljer att samsälja ett erbjudande kan du arbeta direkt med Microsofts försäljnings team och Microsoft-partner på gemensamma Sälj möjligheter. Detta ger förmåner när de säljs via kommersiella Marketplace online butiker: Azure Marketplace och Microsoft AppSource.
 
-- **Samförsäljnings färdiga** erbjudanden exponeras för Microsofts fält säljare. När du arbetar med Microsoft-säljare hjälper det samförsäljnings programmet att hjälpa dig att komma åt en omfattande community med Microsoft-hanterade kunder för att samar beta med affärs möjligheter som påskyndar företagets tillväxt.
+Samförsäljnings möjligheter är resultatet av att [agera på ett lead](./partner-center-portal/commercial-marketplace-get-customer-leads.md), samar beta med Microsoft Sales-team eller Microsoft-partners för att tillhandahålla en lösning för ett kund behov.
 
-    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Diagram över hur samförsäljning sker när Sälj leads delas, godkänns och tas emot mot Microsoft-hanterade kunder.":::
+[![Diagram över hur samförsäljning sker när Sälj leads delas, godkänns och tas emot mot Microsoft-hanterade kunder.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png#lightbox)
 
-- **Co-Sälj motiverade** IP-erbjudanden kan tjäna på Microsofts fält säljare när de säljs i samarbete med Microsoft Sales Teams, utöver de Marketplace-förmåner som anges nedan.</li></ul>
+Dessa lösningar (kallas även erbjudanden) kan innehålla program vara som är byggd med immateriell egendom (IP) och tjänster som stöder Microsoft-tekniker.
 
-## <a name="marketplace-benefits-for-incentivized-offers"></a>Marketplace-förmåner för motiverade-erbjudanden
+## <a name="co-sell-opportunities"></a>Samförsäljnings möjligheter
 
-Erbjudanden som når **Azure IP Co-Sälj motiverade-** status ger följande ytterligare marknads förmåner:
+En samförsäljnings möjlighet är en typ av samarbete med Microsoft Sales Teams, Microsoft-partner eller båda för att sälja produkter och lösningar som uppfyller kundernas behov. Några av de viktigaste kategorierna i Co-Sälj är:
 
-- Service avgiften för Marketplace minskas från 20 till 10%. Rabatten gäller för ditt IaaS-eller SaaS-erbjudande som säljs via den kommersiella marknads platsen. Mer information finns i [service avgifter för handels platser](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
-- Leverantörer av moln lösnings leverantörer (CSP) får 10% incitament att sälja ditt IaaS-eller SaaS-erbjudande. Läs mer om CSP-programmet i [Cloud Solution Provider-programmet](cloud-solution-providers.md).
-- Försäljning av ditt erbjudande via handels Marketplace bidrar till kundernas Azure-förbruknings åtaganden. Berättigade kunder ser erbjudandet som har marker ATS som **"Azure-förmåns berättigande"** i Azure Portal. Mer information finns i [Azures bidrag för konsumtions åtagande](azure-consumption-commitment-benefit.md).
-- Erbjudanden som ger **Azure IP Co-Sälj-motiverade** eller **Business Applications Co-försäljning motiverade** -status kommer att få märket **"prioriterade lösningar"** i butiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme. Lär dig mer [om önskade lösningar i Microsoft AppSource och Azure Marketplace](preferred-solutions.md).
+- Samar **beta med Microsoft Sales Teams** – arbeta med ett eller flera Microsoft-säljteam för att aktivt uppfylla kund behov. Detta kan inkludera Sälj erbjudanden, Microsofts erbjudanden eller både och. Du och Microsoft Sales Teams kan identifiera och dela kund möjligheter där dina lösningar kan vara en bra anpassning.
+- **Partner till partner (P2P)** – arbeta med en annan Microsoft-partner för att aktivt lösa ett kund problem.
+- **Privat** arbete – dela det du är oberoende av varandra med Microsoft så att det visas i Microsoft repor ting-systemet för analys och prognoser.
+- **Lösnings bedömning (sa)** – arbeta med partner som är testats av affärs teamet för lösnings bedömning för att få åtkomst till teknik behoven hos kunder som använder eller planerar att använda Microsoft-tekniker.
 
-## <a name="co-sell-publishing-steps-and-requirements"></a>Publicerings steg och krav för samtidig försäljning
+## <a name="co-sell-statuses"></a>Status för samförsäljning
 
-I den här tabellen listas de steg och krav som krävs för att hämta ditt utbud av Marketplace-erbjudanden som är färdiga eller medförsäljnings motiverade. Det går inte att konfigurera alla typer av kommersiella Marketplace-erbjudanden för samförsäljning än i Partner Center. Den senaste listan med erbjudande typer som stöder samförsäljning finns i [samförsäljnings alternativet på den kommersiella Marketplace](commercial-marketplace-co-sell.md). 
+Det finns fyra nivåer av samförsäljnings status som kan tillämpas på ett erbjudande:
 
-|Steg    |Erbjudandetyp    |Krav    |Status för samtidig försäljning    |
-|----    |-------------    |------------    |---------------   |
-|<ol start=1><li>Skapa ett konto i Partner Center och publicera ditt erbjudande på den kommersiella marknads platsen.</li>|Alla|<ul><li>Erbjudandet uppfyller de kommersiella publicerings kraven för Marketplace.</li><li>Du har en fullständig företags profil i Partner Center.</li></ul>| På marknaden |
-|<ol start=2><li>Skicka nödvändigt material för co-försäljning.</li>|IP-erbjudanden *med* [samförsäljnings alternativ i den kommersiella Marketplace](commercial-marketplace-co-sell.md)|[Överför nödvändigt material i Partner Center](#how-to-submit-co-sell-materials-in-partner-center)|Färdiga försäljnings produkter|
-||IP-erbjudanden *utan* [alternativet samförsäljning på den kommersiella marknaden](commercial-marketplace-co-sell.md)|<ul><li>En begäran om att [samar beta med en moln specialist](https://partner.microsoft.com/campaigns/ced-nomination-form/) för att tillhandahålla nödvändig dokumentation för co-försäljning.</li></ul>|Färdiga försäljnings produkter|
-||Rådgivningstjänster|<ul><li>En begäran om att [samar beta med en moln specialist](https://partner.microsoft.com/campaigns/ced-nomination-form/) för att tillhandahålla nödvändig dokumentation för co-försäljning.</li><li>Aktiv guld-kompetens.</li></ul>|Färdiga försäljnings produkter|
-|<ol start=3><li>Kvalificera för IP-incitament</li>|Azure-program, Azure-behållare, IoT Edge moduler, SaaS, virtuella datorer|När du har slutfört den färdiga försäljningen finns det två ytterligare krav: <ul> Krav 1: uppnå antingen:<ul><li>*På organisations nivå:* uppfyller eller överskrider $100 000 USD av Azures förbrukade intäkter under de efterföljande 12 månaderna.</li><li>*På erbjudande nivån:* ackumulerad marknads intäkt på $100 000 USD.</li></ul><br>Krav 2: mer än 50% av ditt erbjudandes infrastruktur måste köras på Azure:<ul><li>IP-erbjudanden *med* [alternativet samförsäljning på den kommersiella Marketplace](commercial-marketplace-co-sell.md): Ladda upp ett arkitektur diagram med dina samsäljande dokument i Partner Center för granskning.</li><li>IP-erbjudanden *utan* [alternativet samförsäljning på den kommersiella Marketplace](commercial-marketplace-co-sell.md): Ladda upp ett arkitektur diagram till OCP GTM.|Azure IP Co-Sälj motiverade|
-||Dynamics|<ul><li>Du har en aktiv registrering i ISV Connect Premium-nivån.</li></ul>|Business Applications Co-Sälj motiverade|
-|||
+- Är inte färdig att sälja
+- Färdiga försäljnings produkter
+- Azure IP Co-Sälj motiverade
+- BIZ-appar ISV Connect Premium  
 
-Mer information om kraven för erbjudanden för medförsäljnings lösningar finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
+Mer information om kraven för att uppnå de här samförsäljnings statusarna finns i [Co-Sälj krav](co-sell-requirements.md).
 
-## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Så här skickar du Co-försäljnings material i Partner Center
+## <a name="benefits-of-co-sell-ready-status"></a>Förmåner för färdig försäljnings status
 
-Starta din co-försäljnings resa direkt i Partner Center genom att följa stegen nedan. Mer information finns i [alternativet samförsäljning på den kommersiella Marketplace](commercial-marketplace-co-sell.md).
+Slutförd status för medförsäljning visar dina lösningar på Microsoft Sales Teams. Samförsäljning med Microsoft Sales Teams och Microsoft-partner hjälper dig att komma åt en omfattande community med Microsoft-hanterade kunder för att samar beta med affärs möjligheter som påskyndar företagets tillväxt.
 
-1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-1. I den vänstra rutan väljer du **extern Marketplace**  >  -**Översikt** och väljer sedan det erbjudande som du vill samsälja.
+Om du vill lära dig hur du uppnår status för alla samförsäljnings produkter i Azure IP kan du se samförsäljnings [färdiga och samförsäljnings motiverade-krav](co-sell-requirements.md).
 
-    > [!NOTE]
-    > Du kan gå med i samförsäljnings programmet med ett nytt erbjudande som ännu inte har publicerats eller med ett erbjudande som redan har publicerats.
+## <a name="benefits-of-co-sell-incentivized-status"></a>Förmåner för medförsäljning motiverade-status
 
-1. I menyn till vänster väljer du **Co-Sälj med Microsoft**.
+_Medförsäljning motiverade_ -status, inklusive _Azure IP Co-Sälj motiverade_ och _BIZ Apps ISV Connect Premium-incitament_. Dessa statusar incentivize partners för att sälja ditt erbjudande. För att uppnå denna status måste du också få en färdig status för medförsäljning. Motiverade-statusen Co-Sales får alla fördelar med färdiga lösningar för samförsäljning och kan tjäna på ytterligare incitament för Microsofts försäljnings team och vara berättigade till fler kommersiella Marketplace-förmåner.
 
-    [![Den här bilden visar platsen för samförsäljnings platsen med Microsoft-fliken.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+Azure IP Co-Sälj motiverade-status kan tillämpas på dessa erbjudande typer:
 
-1. Ange grundläggande registrerings information för att hjälpa Microsoft-säljare att snabbt sortera och identifiera ditt erbjudande i **list** avsnittet. (*Obligatoriskt: alla fält.*)
+- Azure Application
+- Azure-behållare
+- Virtuell Azure-dator
+- IoT Edge modul
+- Programvara som en tjänst (SaaS)
 
-    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="I den här bilden visas List avsnittet på fliken Co-försäljning.":::  
+BIZ Apps ISV Connect Premium-stimulans status kan tillämpas på dessa erbjudande typer:
 
-1. Ange information om ditt erbjudande och din överföring av säkerhet i avsnittet **dokument** . Microsoft-säljarna kommer att använda den här informationen för att rekommendera och sälja ditt erbjudande. *(Krävs: lösning/erbjud en lösning för att hitta en lösning/ett erbjudande/erbjudande. Krävs för att nå Azure IP Co-Sälj motiverade status: referens arkitektur diagram.)*
+- Dynamics 365 Business Central
+- Dynamics 365 för kund engagemang & PowerApps
+- Dynamics 365 för åtgärder
 
-    [![I den här bilden visas avsnittet dokument på fliken Co-försäljning.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
+Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect Premium stimulans_ status får de här kommersiella Marketplace-fördelarna:
 
-1. Överför Sälj kontakt information i avsnittet **kontakter** . Microsoft-säljare kan kontakta dessa kontakter för att begära ytterligare information om ditt erbjudande. (*Krävs: en kontakt för varje geografi där ditt erbjudande görs tillgängligt.*)
+- Service avgiften för Marketplace minskas från 20 till 10%. Rabatten gäller din IaaS-lösning (Infrastructure as a Service) eller SaaS-lösning (program vara som en tjänst) som säljs via den kommersiella marknads platsen. Mer information finns i [service avgifter för handels platser](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
+- Leverantörer av moln lösnings leverantörer får 10% incitament att sälja IaaS-lösningen eller SaaS-erbjudandet. Läs mer om CSP-programmet i [Cloud Solution Provider-program](cloud-solution-providers.md).
+- Försäljning av ditt erbjudande via den kommersiella marknaden bidrar till kundernas Azure-förbruknings åtaganden. Berättigade kunder kommer att se erbjudandet som är markerat som Azure-förmån som är **berättigat** till Azure Portal. Mer information finns i [bidrag för Azure konsumtions åtagande](azure-consumption-commitment-benefit.md).
+- Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ Apps ISV Connect Premium-stimulans_ status får en skylt för **föredragna lösningar** på sidan för erbjudande listan i onlinebutiker. Aktivitets ikonen främjar ett erbjudandes kvalitet, prestanda och möjlighet att adressera kund behov i ett visst bransch lodrätt eller lösnings utrymme. Mer information finns i [rekommenderade lösningar i Microsoft AppSource och Azure Marketplace](preferred-solutions.md).
 
-    [![I den här bilden visas avsnittet kontakter på fliken Co-försäljning.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
-
-1. Spara utkastet innan du fortsätter.
-1. När du har slutfört alla nödvändiga avsnitt i erbjudandet kan du skicka det till granskning och publicering. I det övre högra hörnet väljer du **Granska och publicera**. Granska erbjudande informationen och välj sedan **publicera**.
-
-> [!NOTE]
-> Du behöver inte längre kontakta oss för att nämna ditt erbjudande om Co-försäljning. När du har slutfört alla obligatoriska fält på sidan försäljning med Microsoft och publicerar om ditt erbjudande, kommer vi att granska ditt erbjudande för att avgöra om det uppfyller kraven för medförsäljnings status.
-
-## <a name="see-your-offers-co-sell-status"></a>Se ditt erbjudandes status för co-försäljning
-
-För erbjudanden med [alternativet samförsäljning på den kommersiella marknads platsen](commercial-marketplace-co-sell.md)kan du se erbjudandet aktuella medförsäljnings status på sidan erbjudande översikt:
-
-[![Den här bilden visar den aktuella medförsäljnings statusen för erbjudanden.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
+Information om hur du uppnår motiverade-status i Co-försäljning finns i samförsäljnings [färdiga och samförsäljnings krav för motiverade](co-sell-requirements.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om att [sälja med Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
-- Läs mer om [alternativet Co-Sälj på den kommersiella Marketplace](commercial-marketplace-co-sell.md).
-- Läs Spelbok (PDF) för [Co-försäljning](https://aka.ms/Co-sellPartnerengagementguidepartnerlink) .
+- Information om krav finns i [samförsäljnings färdiga och samförsäljnings motiverade krav](co-sell-requirements.md)
+- Information om hur du konfigurerar ett erbjudande för samförsäljning finns i [Konfigurera samförsäljning för ett erbjudande för handels platser](commercial-marketplace-co-sell.md)
+- Information om hur du verifierar status för samförsäljning finns i [Verifiera medförsäljnings status för ett erbjudande](co-sell-status.md).
+- Läs mer om [samförsäljning med Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).

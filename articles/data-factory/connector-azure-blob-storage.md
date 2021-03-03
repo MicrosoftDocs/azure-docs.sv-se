@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 63613307847ba2bf617d7a6a1018d083dc5db3fe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 809dc6d0958b754911362f933e9fe964bce9c679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393130"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727931"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Blob Storage med hjälp av Azure Data Factory
 
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
-> * [Version 1](v1/data-factory-azure-blob-connector.md)
-> * [Aktuell version](connector-azure-blob-storage.md)
+> - [Version 1](v1/data-factory-azure-blob-connector.md)
+> - [Aktuell version](connector-azure-blob-storage.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -39,7 +39,7 @@ Den här Azure Blob Storage-anslutningen stöds för följande aktiviteter:
 
 För kopierings aktiviteten stöder denna Blob Storage Connector:
 
-- Kopiera blobbar till och från allmänna Azure Storage-konton och varmt/cool Blob Storage. 
+- Kopiera blobbar till och från allmänna Azure Storage-konton och varmt/cool Blob Storage.
 - Kopiera blobbar med hjälp av en konto nyckel, en signatur för delad åtkomst för tjänsten (SAS), ett huvud namn för tjänsten eller hanterade identiteter för Azure-resurs-autentiseringar.
 - Kopiera blobbar från block-, tilläggs-eller sid-blobar och kopiera data till endast block-blobar.
 - Kopiera blobbar som är eller parsa eller generera blobbar med [fil format och komprimerings-codec som stöds](supported-file-formats-and-compression-codecs.md).
@@ -73,15 +73,15 @@ Data Factory stöder följande egenskaper för autentisering av lagrings konto n
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | **Typ** egenskapen måste anges till **AzureBlobStorage** (föreslagen) eller **AzureStorage** (se följande anmärkningar). |Ja |
-| Begär | Ange den information som behövs för att ansluta till lagringen för egenskapen **ConnectionString** . <br/> Du kan också ställa in konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Mer information finns i följande exempel och [Store-autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikeln. |Ja |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. |Inga |
+| typ | `type`Egenskapen måste anges till `AzureBlobStorage` (rekommenderas) eller `AzureStorage` (se följande anmärkningar). | Ja |
+| Begär | Ange den information som behövs för att ansluta till lagringen för `connectionString` egenskapen. <br/> Du kan också ställa in konto nyckeln i Azure Key Vault och hämta `accountKey` konfigurationen från anslutnings strängen. Mer information finns i följande exempel och [Store-autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikeln. | Ja |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 >[!NOTE]
 >Det finns inte stöd för en sekundär Blob Service-slutpunkt när du använder autentisering med konto nycklar. Du kan använda andra typer av autentisering.
 
 >[!NOTE]
->Om du använder den länkade tjänsten "AzureStorage"-typ, stöds den fortfarande som den är. Men vi rekommenderar att du använder den nya länkade tjänst typen "AzureBlobStorage" som går framåt.
+>Om du använder den `AzureStorage` länkade tjänst typen, stöds den fortfarande som den är. Men vi rekommenderar att du använder den nya `AzureBlobStorage` länkade tjänst typen som går framåt.
 
 **Exempel:**
 
@@ -91,11 +91,11 @@ Data Factory stöder följande egenskaper för autentisering av lagrings konto n
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
         }
     }
 }
@@ -110,19 +110,19 @@ Data Factory stöder följande egenskaper för autentisering av lagrings konto n
         "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
-        }            
+        }
     }
 }
 ```
@@ -131,7 +131,7 @@ Data Factory stöder följande egenskaper för autentisering av lagrings konto n
 
 En signatur för delad åtkomst ger delegerad åtkomst till resurser i ditt lagrings konto. Du kan använda en signatur för delad åtkomst för att ge en klient begränsad behörighet till objekt i ditt lagrings konto under en angiven tid. 
 
-Du behöver inte dela dina konto åtkomst nycklar. Signaturen för delad åtkomst är en URI som omfattar den information som krävs för autentiserad åtkomst till en lagrings resurs i dess frågeparametrar. För att få åtkomst till lagrings resurser med signaturen för delad åtkomst måste klienten bara skicka in signaturen för delad åtkomst till lämplig konstruktor eller metod. 
+Du behöver inte dela dina konto åtkomst nycklar. Signaturen för delad åtkomst är en URI som omfattar den information som krävs för autentiserad åtkomst till en lagrings resurs i dess frågeparametrar. För att få åtkomst till lagrings resurser med signaturen för delad åtkomst måste klienten bara skicka in signaturen för delad åtkomst till lämplig konstruktor eller metod.
 
 Mer information om signaturer för delad åtkomst finns i signaturer för delad åtkomst [: förstå signatur modellen för delad åtkomst](../storage/common/storage-sas-overview.md).
 
@@ -143,12 +143,12 @@ Data Factory stöder följande egenskaper för att använda autentisering med de
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | **Typ** egenskapen måste anges till **AzureBlobStorage** (föreslagen) eller **AzureStorage** (se följande anmärkning). |Ja |
-| sasUri | Ange signatur-URI för delad åtkomst till lagrings resurserna, till exempel BLOB eller container. <br/>Markera det här fältet som **SecureString** för att lagra det på ett säkert sätt i Data Factory. Du kan också ställa in SAS-token i Azure Key Vault att använda automatisk rotation och ta bort token-delen. Mer information finns i följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. |Inga |
+| typ | `type`Egenskapen måste anges till `AzureBlobStorage` (rekommenderas) eller `AzureStorage` (se följande anmärkning). | Ja |
+| sasUri | Ange signatur-URI för delad åtkomst till lagrings resurserna, till exempel BLOB eller container. <br/>Markera det här fältet som `SecureString` för att lagra det på ett säkert sätt i Data Factory. Du kan också ställa in SAS-token i Azure Key Vault att använda automatisk rotation och ta bort token-delen. Mer information finns i följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 >[!NOTE]
->Om du använder den länkade tjänsten "AzureStorage"-typ, stöds den fortfarande som den är. Men vi rekommenderar att du använder den nya länkade tjänst typen "AzureBlobStorage" som går framåt.
+>Om du använder den `AzureStorage` länkade tjänst typen, stöds den fortfarande som den är. Men vi rekommenderar att du använder den nya `AzureBlobStorage` länkade tjänst typen som går framåt.
 
 **Exempel:**
 
@@ -183,13 +183,13 @@ Data Factory stöder följande egenskaper för att använda autentisering med de
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.blob.core.windows.net/>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
+            "sasToken": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
                     "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
             }
         },
         "connectVia": {
@@ -227,14 +227,14 @@ Dessa egenskaper stöds för en länkad Azure Blob Storage-tjänst:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. |Ja |
-| serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . |Ja |
-| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. |Inga |
+| typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. | Ja |
+| serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . | Ja |
+| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
 | servicePrincipalId | Ange programmets klient-ID. | Ja |
 | servicePrincipalKey | Ange programmets nyckel. Markera det här fältet som **SecureString** för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Hämta det genom att hovra över det övre högra hörnet av Azure Portal. | Ja |
 | azureCloudType | För tjänstens huvud namn anger du den typ av moln miljö i Azure som Azure Active Directory programmet har registrerats för. <br/> Tillåtna värden är **AzurePublic**, **AzureChina**, **azureusgovernment eller** och **AzureGermany**. Som standard används data fabrikens moln miljö. | Inga |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. |Inga |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 >[!NOTE]
 >Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte tjänstens huvud namns autentisering i data flödet.
@@ -287,10 +287,10 @@ Dessa egenskaper stöds för en länkad Azure Blob Storage-tjänst:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. |Ja |
-| serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . |Ja |
-| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. |Inga |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. |Inga |
+| typ | Egenskapen **Type** måste anges till **AzureBlobStorage**. | Ja |
+| serviceEndpoint | Ange Azure Blob Storage-tjänstens slut punkt med mönstret för `https://<accountName>.blob.core.windows.net/` . | Ja |
+| accountKind | Ange typ av lagrings konto. Tillåtna värden är: **lagring** (generell användning v1), **StorageV2** (generell användning v2), **BlobStorage** eller **BlockBlobStorage**. <br/> När du använder en länkad Azure blob-tjänst i data flödet, stöds inte hanterad identitet eller tjänstens huvud namn när konto typen är tom eller "lagring". Ange rätt konto typ, Välj en annan autentisering eller uppgradera ditt lagrings konto till generell användning v2. | Inga |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure integration runtime eller den lokala integrerings körningen (om ditt data lager finns i ett privat nätverk). Om den här egenskapen inte anges använder tjänsten standard Azure integration Runtime. | Inga |
 
 > [!NOTE]
 > Om ditt BLOB-konto aktiverar [mjuk borttagning](../storage/blobs/soft-delete-blob-overview.md), stöds inte hanterad identitets autentisering i data flödet.
@@ -377,10 +377,10 @@ Följande egenskaper stöds för Azure Blob Storage under `storeSettings` Instä
 | ALTERNATIV 2: BLOB-prefix<br>-prefix | Prefix för BLOB-namnet under den angivna behållaren som kon figurer ATS i en data uppsättning för att filtrera käll-blobar. Blobbar vars namn börjar med `container_in_dataset/this_prefix` väljs. Det använder filter på tjänst sidan för Blob Storage, vilket ger bättre prestanda än ett Wildcard-filter.<br><br>När du använder prefix och väljer att kopiera till filbaserad mottagare med bevara hierarkin, noterar du under Sök vägen efter att det sista "/"-prefixet är bevarat. Du kan till exempel ha källa  `container/folder/subfolder/file.txt` och konfigurera prefixet som `folder/sub` , och den bevarade fil Sök vägen är `subfolder/file.txt` . | Inga                                                          |
 | ALTERNATIV 3: jokertecken<br>- wildcardFolderPath | Mappsökvägen med jokertecken under den angivna behållaren som kon figurer ATS i en data uppsättning för att filtrera källmappen. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om mappnamnet har jokertecken eller detta escape-tecken i. <br>Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Inga                                            |
 | ALTERNATIV 3: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den angivna behållaren och mappens sökväg (eller mappsökväg för jokertecken) för att filtrera källfiler. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om fil namnet har ett jokertecken eller detta escape-tecken i. Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
-| ALTERNATIV 4: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera, en fil per rad, som är den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen.<br/>När du använder det här alternativet ska du inte ange ett fil namn i data uppsättningen. Se fler exempel i [fil List exempel](#file-list-examples). |Inga |
+| ALTERNATIV 4: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera, en fil per rad, som är den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen.<br/>När du använder det här alternativet ska du inte ange ett fil namn i data uppsättningen. Se fler exempel i [fil List exempel](#file-list-examples). | Inga |
 | ***Ytterligare inställningar:*** |  | |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när **rekursivt** har angetts till **True** och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är **True** (standard) och **false**.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |Inga |
-| deleteFilesAfterCompletion | Anger om de binära filerna kommer att tas bort från käll arkivet efter att du har flyttat till mål lagret. Filen som ska tas bort är per fil, så när kopierings aktiviteten Miss lyckas visas några filer som redan har kopierats till målet och tagits bort från källan, medan andra fortfarande är kvar på käll arkivet. <br/>Den här egenskapen är endast giltig i ett binärt fil kopierings scenario. Standardvärdet: false. |Inga |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när **rekursivt** har angetts till **True** och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är **True** (standard) och **false**.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . | Inga |
+| deleteFilesAfterCompletion | Anger om de binära filerna kommer att tas bort från käll arkivet efter att du har flyttat till mål lagret. Filen som ska tas bort är per fil, så när kopierings aktiviteten Miss lyckas visas några filer som redan har kopierats till målet och tagits bort från källan, medan andra fortfarande är kvar på käll arkivet. <br/>Den här egenskapen är endast giltig i ett binärt fil kopierings scenario. Standardvärdet: false. | Inga |
 | modifiedDatetimeStart    | Filerna filtreras baserat på attributet: senast ändrad. <br>Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på en UTC-tidszon i formatet "2018-12-01T05:00:00Z". <br> Egenskaperna kan vara **Null**, vilket innebär att inget attribut filter används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är **Null** väljs de filer vars senast ändrade attribut är större än eller lika med värdet för DateTime.  När `modifiedDatetimeEnd` har ett datetime-värde `modifiedDatetimeStart` , men är **Null**, väljs filerna vars senast ändrade attribut är mindre än värdet för DateTime.<br/>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . | Inga                                            |
 | modifiedDatetimeEnd      | Samma som ovan.                                               | Inga                                            |
 | enablePartitionDiscovery | För filer som är partitionerade anger du om du vill parsa partitionerna från fil Sök vägen och lägga till dem som ytterligare käll kolumner.<br/>Tillåtna värden är **false** (standard) och **True**. | Inga                                            |
@@ -442,7 +442,7 @@ Följande egenskaper stöds för Azure Blob Storage under `storeSettings` Instä
 
 | Egenskap                 | Beskrivning                                                  | Krävs |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | **Typ** egenskapen under `storeSettings` måste anges till **AzureBlobStorageWriteSettings**. | Ja      |
+| typ                     | `type`Egenskapen under `storeSettings` måste anges till `AzureBlobStorageWriteSettings` . | Ja      |
 | copyBehavior             | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om filen eller BLOB-namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. | Inga       |
 | blockSizeInMB | Ange block storleken, i megabyte, som används för att skriva data för att blockera blobbar. Läs mer [om block-blobar](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Det tillåtna värdet är *mellan 4 MB och 100 MB*. <br/>Som standard bestämmer Data Factory automatiskt block storleken baserat på källans lagrings typ och data. För en binär kopia till Blob Storage är standard block storleken 100 MB så att den får plats i (högst) 4,95 TB data. Det kanske inte är optimalt om dina data inte är stora, särskilt när du använder den egen värdbaserade integrerings körningen med dåliga nätverks anslutningar som leder till åtgärds-timeout eller prestanda problem. Du kan uttryckligen ange en block storlek och se till att den `blockSizeInMB*50000` är tillräckligt stor för att lagra data. Annars går det inte att köra kopierings aktiviteten. | Inga |
 | maxConcurrentConnections | Antalet samtidiga anslutningar till lagringen. Ange bara när du vill begränsa samtidiga anslutningar till data lagret. | Inga       |
@@ -523,12 +523,13 @@ När du kopierar filer från Amazon S3, Azure Blob Storage eller Azure Data Lake
 ## <a name="mapping-data-flow-properties"></a>Mappa data flödes egenskaper
 
 När du transformerar data i mappnings data flöden kan du läsa och skriva filer från Azure Blob Storage i följande format:
-* [Avro](format-avro.md#mapping-data-flow-properties)
-* [Avgränsad text](format-delimited-text.md#mapping-data-flow-properties)
-* [Delta](format-delta.md#mapping-data-flow-properties)
-* [Excel](format-excel.md#mapping-data-flow-properties)
-* [JSON](format-json.md#mapping-data-flow-properties)
-* [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+- [Avro](format-avro.md#mapping-data-flow-properties)
+- [Avgränsad text](format-delimited-text.md#mapping-data-flow-properties)
+- [Delta](format-delta.md#mapping-data-flow-properties)
+- [Excel](format-excel.md#mapping-data-flow-properties)
+- [JSON](format-json.md#mapping-data-flow-properties)
+- [Parquet](format-parquet.md#mapping-data-flow-properties)
 
 Formatera vissa inställningar finns i dokumentationen för det formatet. Mer information finns i [käll omvandling i konvertering av data flöde](data-flow-source.md) och [omvandling av mottagare i data flödet](data-flow-sink.md).
 
@@ -544,17 +545,17 @@ Från din käll behållare väljer du en serie filer som matchar ett mönster. D
 
 Jokertecken exempel:
 
-* ```*``` Representerar en uppsättning tecken.
-* ```**``` Representerar rekursiv katalog kapsling.
-* ```?``` Ersätter ett Character.
-* ```[]``` Matchar ett eller flera tecken inom hakparenteserna.
+- `*` Representerar en uppsättning tecken.
+- `**` Representerar rekursiv katalog kapsling.
+- `?` Ersätter ett Character.
+- `[]` Matchar ett eller flera tecken inom hakparenteserna.
 
-* ```/data/sales/**/*.csv``` Hämtar alla CSV-filer under/data/Sales.
-* ```/data/sales/20??/**/``` Hämtar alla filer i 20-talet.
-* ```/data/sales/*/*/*.csv``` Hämtar. csv-filer två nivåer under/data/Sales.
-* ```/data/sales/2004/*/12/[XY]1?.csv``` Hämtar alla CSV-filer i december 2004 med X eller Y som föregås av ett tvåsiffrigt tal.
+- `/data/sales/**/*.csv` Hämtar alla CSV-filer under/data/Sales.
+- `/data/sales/20??/**/` Hämtar alla filer i 20-talet.
+- `/data/sales/*/*/*.csv` Hämtar. csv-filer två nivåer under/data/Sales.
+- `/data/sales/2004/*/12/[XY]1?.csv` Hämtar alla CSV-filer i december 2004 med X eller Y som föregås av ett tvåsiffrigt tal.
 
-**Partitionens rot Sök väg:** Om du har partitionerade mappar i din fil källa med ett ```key=value``` format (till exempel `year=2019` ), kan du tilldela den översta nivån i det partitionens mappträd till ett kolumn namn i data flödets data ström.
+**Partitionens rot Sök väg:** Om du har partitionerade mappar i din fil källa med ett `key=value` format (till exempel `year=2019` ), kan du tilldela den översta nivån i det partitionens mappträd till ett kolumn namn i data flödets data ström.
 
 Ange först ett jokertecken för att inkludera alla sökvägar som är de partitionerade mapparna plus de löv-filer som du vill läsa.
 
@@ -574,17 +575,17 @@ Om du vill flytta källfilerna till en annan plats efter bearbetning väljer du 
 
 Om du har en käll Sök väg med jokertecken kommer din syntax att se ut så här:
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 Du kan ange "från" som:
 
-```/data/sales```
+`/data/sales`
 
 Och du kan ange "till" som:
 
-```/backup/priorSales```
+`/backup/priorSales`
 
-I det här fallet flyttas alla filer som har ursprung under/data/Sales till/backup/priorSales.
+I det här fallet flyttas alla filer som skrevs under `/data/sales` till `/backup/priorSales` .
 
 > [!NOTE]
 > Fil åtgärder körs bara när du startar data flödet från en pipeline-körning (en pipeline för pipeline-fel eller körning) som använder aktiviteten kör data flöde i en pipeline. Fil åtgärder körs *inte* i fel söknings läge för data flöde.
@@ -600,11 +601,11 @@ I omvandling av mottagare kan du skriva till antingen en behållare eller en map
 **Rensa mappen:** Anger om målmappen ska rensas innan data skrivs.
 
 **Fil namns alternativ:** Anger hur målfiler namnges i målmappen. Fil namns alternativen är:
-   * **Standard**: Tillåt Spark att namnge filer baserat på del standarder.
-   * **Mönster**: Ange ett mönster som räknar upp dina utdatafiler per partition. Till exempel kommer **lån [n]. csv** att skapa loans1.csv, loans2.csv och så vidare.
-   * **Per partition**: Ange ett fil namn per partition.
-   * **Som data i kolumnen**: Ange utdatafilen till värdet för en kolumn. Sökvägen är relativ i förhållande till data uppsättnings behållaren, inte målmappen. Om du har en mappsökväg i din data uppsättning kommer den att åsidosättas.
-   * **Utdata till en enda fil**: kombinera de partitionerade utdatafilerna till en enda namngiven fil. Sökvägen är relativ i förhållande till dataset-mappen. Tänk på att sammanslagnings åtgärden kan sluta att fungera baserat på Node-storlek. Vi rekommenderar inte det här alternativet för stora data uppsättningar.
+   - **Standard**: Tillåt Spark att namnge filer baserat på del standarder.
+   - **Mönster**: Ange ett mönster som räknar upp dina utdatafiler per partition. Till exempel skapas `loans[n].csv` `loans1.csv` , `loans2.csv` och så vidare.
+   - **Per partition**: Ange ett fil namn per partition.
+   - **Som data i kolumnen**: Ange utdatafilen till värdet för en kolumn. Sökvägen är relativ i förhållande till data uppsättnings behållaren, inte målmappen. Om du har en mappsökväg i din data uppsättning kommer den att åsidosättas.
+   - **Utdata till en enda fil**: kombinera de partitionerade utdatafilerna till en enda namngiven fil. Sökvägen är relativ i förhållande till dataset-mappen. Tänk på att sammanslagnings åtgärden kan sluta att fungera baserat på Node-storlek. Vi rekommenderar inte det här alternativet för stora data uppsättningar.
 
 **Offert alla:** Anger om alla värden ska anges inom citat tecken.
 
@@ -629,13 +630,13 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens **typ** -egenskap måste anges till **AzureBlob**. |Ja |
-| folderPath | Sökväg till behållaren och mappen i Blob Storage. <br/><br/>Ett Wildcard-filter stöds för sökvägen, exklusive container namn. Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om ditt mappnamn har ett jokertecken eller detta escape-tecken inuti. <br/><br/>Ett exempel är: myblobcontainer/myblobfolder/. Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). |Ja för kopierings-eller söknings aktiviteten, nej för GetMetadata-aktiviteten |
-| fileName | Namn eller Wildcard-filter för Blobbarna under det angivna **folderPath** -värdet. Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla blobbar i mappen. <br/><br/>För filtret tillåts tillåtna jokertecken: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om fil namnet har ett jokertecken eller detta escape-tecken i.<br/><br/>När **fil namnet** inte har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren genererar kopierings aktiviteten automatiskt BLOB-namnet med följande mönster: "*data. [ aktivitetens körnings-ID GUID]. [GUID om FlattenHierarchy]. [format om det är konfigurerat]. [komprimering om konfigurerad]*". Till exempel: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Om du kopierar från en tabell källa med ett tabell namn i stället för en fråga, är namn mönstret "*[tabell namn]. [ format]. [komprimering om konfigurerad]*". Till exempel: "MyTable.csv". |Inga |
-| modifiedDatetimeStart | Filerna filtreras baserat på attributet: senast ändrad. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Tänk på att om du aktiverar den här inställningen kommer den övergripande prestandan för data förflyttning att påverkas när du vill filtrera enorma mängder filer. <br/><br/> Egenskaperna kan vara **Null**, vilket innebär att inget attribut filter används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är **Null** väljs de filer vars senast ändrade attribut är större än eller lika med värdet för DateTime.  När `modifiedDatetimeEnd` har ett datetime-värde `modifiedDatetimeStart` , men är **Null**, väljs filerna vars senast ändrade attribut är mindre än värdet för DateTime.| Inga |
-| modifiedDatetimeEnd | Filerna filtreras baserat på attributet: senast ändrad. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Tänk på att om du aktiverar den här inställningen kommer den övergripande prestandan för data förflyttning att påverkas när du vill filtrera enorma mängder filer. <br/><br/> Egenskaperna kan vara **Null**, vilket innebär att inget attribut filter används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är **Null** väljs de filer vars senast ändrade attribut är större än eller lika med värdet för DateTime.  När `modifiedDatetimeEnd` har ett datetime-värde `modifiedDatetimeStart` , men är **Null**, väljs filerna vars senast ändrade attribut är mindre än värdet för DateTime.| Inga |
-| format | Om du vill kopiera filer som är mellan filbaserade butiker (binär kopia) hoppar du över avsnittet format i både indata och utdata-datauppsättnings definitionerna.<br/><br/>Om du vill parsa eller generera filer med ett särskilt format stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nej (endast för binär kopierings scenario) |
-| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>De nivåer som stöds är **optimala** och **snabbaste**. |Inga |
+| typ | `type`Egenskapen för data uppsättningen måste anges till `AzureBlob` . | Ja |
+| folderPath | Sökväg till behållaren och mappen i Blob Storage. <br/><br/>Ett Wildcard-filter stöds för sökvägen, exklusive container namn. Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om ditt mappnamn har ett jokertecken eller detta escape-tecken inuti. <br/><br/>Ett exempel är: `myblobcontainer/myblobfolder/` . Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja för kopierings-eller söknings aktiviteten, nej för GetMetadata-aktiviteten |
+| fileName | Namn eller Wildcard-filter för Blobbarna under det angivna `folderPath` värdet. Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla blobbar i mappen. <br/><br/>För filtret tillåts tillåtna jokertecken: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om fil namnet har ett jokertecken eller detta escape-tecken i.<br/><br/>När `fileName` inte anges för en data uppsättning för utdata och `preserveHierarchy` inte anges i aktivitets mottagaren genererar kopierings aktiviteten automatiskt BLOB-namnet med följande mönster: "*data. [ aktivitetens körnings-ID GUID]. [GUID om FlattenHierarchy]. [format om det är konfigurerat]. [komprimering om konfigurerad]*". Till exempel: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Om du kopierar från en tabell källa med hjälp av ett tabell namn i stället för en fråga, är namn mönstret `[table name].[format].[compression if configured]` . Till exempel: "MyTable.csv". | Inga |
+| modifiedDatetimeStart | Filerna filtreras baserat på attributet: senast ändrad. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Tänk på att om du aktiverar den här inställningen kommer den övergripande prestandan för data förflyttning att påverkas när du vill filtrera enorma mängder filer. <br/><br/> Egenskaperna kan vara `NULL` , vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde `modifiedDatetimeEnd` , men är `NULL` , väljs de filer vars senast ändrade attribut är större än eller lika med värdet för datumtid.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är `NULL` , väljs filerna vars senast ändrade attribut är mindre än värdet för datum och tid.| Inga |
+| modifiedDatetimeEnd | Filerna filtreras baserat på attributet: senast ändrad. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Tänk på att om du aktiverar den här inställningen kommer den övergripande prestandan för data förflyttning att påverkas när du vill filtrera enorma mängder filer. <br/><br/> Egenskaperna kan vara `NULL` , vilket innebär att inget filter för filattribut används för data uppsättningen.  När `modifiedDatetimeStart` har ett datetime-värde `modifiedDatetimeEnd` , men är `NULL` , väljs de filer vars senast ändrade attribut är större än eller lika med värdet för datumtid.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är `NULL` , väljs filerna vars senast ändrade attribut är mindre än värdet för datum och tid.| Inga |
+| format | Om du vill kopiera filer som är mellan filbaserade butiker (binär kopia) hoppar du över avsnittet format i både indata och utdata-datauppsättnings definitionerna.<br/><br/>Om du vill parsa eller generera filer med ett särskilt format stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . | Nej (endast för binär kopierings scenario) |
+| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>De nivåer som stöds är **optimala** och **snabbaste**. | Inga |
 
 >[!TIP]
 >Om du vill kopiera alla blobbar under en mapp anger du endast **folderPath** .<br>Om du vill kopiera en enda BLOB med ett visst namn anger du **folderPath** som del av **och fil** namnet för fil namnet.<br>Om du vill kopiera en delmängd av blobbar under en mapp anger du **folderPath** för mappen del och **filename** med ett Wildcard-filter. 
@@ -674,8 +675,8 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **BlobSource**. |Ja |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när **rekursivt** har angetts till **True** och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren.<br/>Tillåtna värden är **True** (standard) och **false**. | Inga |
+| typ | `type`Egenskapen för kopierings aktivitets källan måste vara inställd på `BlobSource` . | Ja |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när `recursive` är inställt på `true` och mottagaren är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren.<br/>Tillåtna värden är `true` (standard) och `false` . | Inga |
 | maxConcurrentConnections | Antalet samtidiga anslutningar till lagringen. Ange bara när du vill begränsa samtidiga anslutningar till data lagret. | Inga |
 
 **Exempel:**
@@ -714,7 +715,7 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till **BlobSink**. |Ja |
+| typ | `type`Egenskapen för kopierings aktivitetens Sink måste anges till `BlobSink` . | Ja |
 | copyBehavior | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om filen eller BLOB-namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. | Inga |
 | maxConcurrentConnections | Antalet samtidiga anslutningar till lagringen. Ange bara när du vill begränsa samtidiga anslutningar till data lagret. | Inga |
 

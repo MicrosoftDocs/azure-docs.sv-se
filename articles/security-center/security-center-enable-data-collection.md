@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596158"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729869"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatiska etablerings agenter och tillägg från Azure Security Center
 
@@ -38,8 +38,8 @@ Data samlas in med:
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:          | **Funktion**: automatisk etablering är allmänt tillgänglig (ga)<br>**Agent och tillägg**: Log Analytics agent för virtuella Azure-datorer är ga, Microsoft Dependency agent är i för hands version, princip tillägg för KUBERNETES är ga                |
 | Priset                | Kostnadsfri                                                                                                                                                                                                                         |
-| Destinationer som stöds: | ![Yes](./media/icons/yes-icon.png) Azure-datorer<br>![No](./media/icons/no-icon.png) Azure Arc-datorer<br>![No](./media/icons/no-icon.png) Kubernetes-noder<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Moln                 | ![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
+| Destinationer som stöds: | ![Ja](./media/icons/yes-icon.png) Azure-datorer<br>![Inga](./media/icons/no-icon.png) Azure Arc-datorer<br>![Inga](./media/icons/no-icon.png) Kubernetes-noder<br>![Inga](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Moln                 | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 
@@ -85,7 +85,7 @@ Så här aktiverar du automatisk etablering av Log Analytics agent:
 
         Om du redan har en befintlig Log Analytics arbets yta kan du vilja använda samma arbets yta (kräver Läs-och Skriv behörighet på arbets ytan). Det här alternativet är användbart om du använder en central arbets yta i din organisation och vill använda den för säkerhets data insamling. Läs mer i [Hantera åtkomst till logg data och arbets ytor i Azure Monitor](../azure-monitor/logs/manage-access.md).
 
-        Om den valda arbets ytan redan har en säkerhets-eller SecurityCenterFree-lösning aktive rad, anges prissättningen automatiskt. Om inte, installerar du en Security Center-lösning på arbets ytan:
+        Om den valda arbets ytan har redan en "Security"-eller "SecurityCenterFree"-lösning aktive rad, anges prissättningen automatiskt. Om inte, installerar du en Security Center-lösning på arbets ytan:
 
         1. Från Security Center menyn öppnar du **pris &s inställningar**.
         1. Välj den arbets yta som du vill ansluta agenterna till.
@@ -235,7 +235,7 @@ Följande användnings fall anger hur automatisk etablering fungerar i fall när
 
 - **Log Analytics-agenten är installerad på datorn, men inte som ett tillägg (direkt agent)** – om Log Analytics agenten installeras direkt på den virtuella datorn (inte som ett Azure-tillägg) kommer Security Center att installera Log Analytics agent-tillägget och uppgradera Log Analytics-agenten till den senaste versionen.
 Den installerade agenten fortsätter att rapportera till sina redan konfigurerade arbets ytor och rapporterar även till arbets ytan som kon figurer ATS i Security Center (Multi-värdar stöds på Windows-datorer).
-Om den konfigurerade arbets ytan är en användar arbets yta (inte Security Center standard arbets ytan) måste du installera lösningen "Security/" securityFree på den för Security Center för att börja bearbeta händelser från virtuella datorer och datorer som rapporterar till arbets ytan.
+Om den konfigurerade arbets ytan är en användar arbets yta (inte Security Center standard arbets ytan) måste du installera lösningen "säkerhet" eller "SecurityCenterFree" på den för Security Center för att börja bearbeta händelser från virtuella datorer och datorer som rapporterar till arbets ytan.
 
     För Linux-datorer stöds inte agent multi-värdar ännu, vilket innebär att om en befintlig agent installation identifieras sker ingen automatisk etablering och datorns konfiguration ändras inte.
 
@@ -244,8 +244,8 @@ Om den konfigurerade arbets ytan är en användar arbets yta (inte Security Cent
 - **System Center Operations Manager agenten är installerad på datorn** – Security Center kommer att installera Log Analytics agent-tillägget vid sidan av den befintliga Operations Manager. Den befintliga Operations Manager-agenten fortsätter att rapportera till Operations Manager servern på normalt sätt. Den Operations Manager agenten och Log Analytics agent delar vanliga kör tids bibliotek, som kommer att uppdateras till den senaste versionen under den här processen. Om Operations Manager agent version 2012 är installerad ska **du inte** aktivera automatisk etablering.
 
 - **Det finns redan ett befintligt VM-tillägg**:
-    - När övervaknings agenten installeras som ett tillägg tillåter tilläggs konfigurationen rapportering till endast en enda arbets yta. Security Center åsidosätter inte befintliga anslutningar till användar arbets ytor. Security Center kommer att lagra säkerhets data från den virtuella datorn i arbets ytan som redan är ansluten, förutsatt att lösningen "säkerhet" eller "securityFree" har installerats på den. Security Center kan uppgradera tilläggs versionen till den senaste versionen i den här processen.  
-    - Om du vill se vilken arbets yta som det befintliga tillägget skickar data till kör du testet för att [Verifiera anslutningen med Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Du kan också öppna Log Analytics arbets ytor, välja en arbets yta, välja den virtuella datorn och titta på Log Analytics agent-anslutningen. 
+    - När övervaknings agenten installeras som ett tillägg tillåter tilläggs konfigurationen rapportering till endast en enda arbets yta. Security Center åsidosätter inte befintliga anslutningar till användar arbets ytor. Security Center kommer att lagra säkerhets data från den virtuella datorn i arbets ytan som redan är ansluten, förutsatt att lösningen "säkerhet" eller "SecurityCenterFree" har installerats på den. Security Center kan uppgradera tilläggs versionen till den senaste versionen i den här processen.
+    - Om du vill se vilken arbets yta som det befintliga tillägget skickar data till kör du testet för att [Verifiera anslutningen med Azure Security Center](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center). Du kan också öppna Log Analytics arbets ytor, välja en arbets yta, välja den virtuella datorn och titta på Log Analytics agent-anslutningen.
     - Om du har en miljö där Log Analytics-agenten är installerad på klient arbets stationer och rapporterar till en befintlig Log Analytics arbets yta, granskar du listan över [operativ system som stöds av Azure Security Center](security-center-os-coverage.md) för att kontrol lera att operativ systemet stöds. Mer information finns i [befintliga Log Analytics-kunder](./faq-azure-monitor-logs.md).
  
 

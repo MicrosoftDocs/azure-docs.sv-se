@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1453d43707a3680380e553fe69d738b27fe5ae3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c335c1cf7e5319b812345714dbdc6b87ddc4e81b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571352"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709180"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop-preview"></a>Felsöka Azure Monitor för Windows Virtual Desktop (för hands version)
 
@@ -42,7 +42,7 @@ Om dina data inte visas korrekt kontrollerar du konfigurationen, behörigheterna
     - Läs åtkomst till prenumerationens resurs grupper som innehåller dina virtuella Windows-värdar för fjärrskrivbordssession 
     - Läs åtkomst till arbets ytan Log Analytics
 
-- Du kan behöva öppna utgående portar i serverns brand vägg för att tillåta Azure Monitor att skicka data till portalen, se [utgående portar](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses). 
+- Du kan behöva öppna utgående portar i serverns brand vägg för att tillåta Azure Monitor att skicka data till portalen, se [utgående portar](../azure-monitor/app/ip-addresses.md). 
 
 - Ser du inte data från senaste aktivitet? Du kanske vill vänta i 15 minuter och uppdatera flödet. Azure Monitor har en svars tid på 15 minuter för att fylla logg data. Läs mer i logg data Inhämtnings [tid i Azure Monitor](../azure-monitor/logs/data-ingestion-time.md).
 
@@ -62,8 +62,8 @@ Lär dig mer om data termer på [Azure Monitor för Virtual Desktop-ordlista](az
 
 Om du vill övervaka fler prestanda räknare eller händelser kan du göra det möjligt för dem att skicka till din Log Analytics arbets yta och övervaka dem i Host Diagnostics: värd webbläsare. 
 
-- Information om hur du lägger till prestanda räknare finns i [Konfigurera prestanda räknare](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#configuring-performance-counters)
-- Information om hur du lägger till Windows-händelser finns i [Konfigurera händelse loggar i Windows](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-windows-events#configuring-windows-event-logs)
+- Information om hur du lägger till prestanda räknare finns i [Konfigurera prestanda räknare](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)
+- Information om hur du lägger till Windows-händelser finns i [Konfigurera händelse loggar i Windows](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)
 
 Kan du inte hitta någon data punkt för att diagnostisera ett problem? Skicka oss feedback!
 

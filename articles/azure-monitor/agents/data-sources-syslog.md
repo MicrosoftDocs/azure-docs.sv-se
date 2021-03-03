@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 2d7406c1e801a07f10342c47e7334e6a12bfd449
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729206"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Samla in syslog-datakällor med Log Analytics agent
 Syslog är ett händelse loggnings protokoll som är gemensamt för Linux. Program kommer att skicka meddelanden som kan lagras på den lokala datorn eller levereras till en syslog-insamlare. När Log Analytics-agenten för Linux installeras konfigureras den lokala syslog-daemonen för att vidarebefordra meddelanden till agenten. Agenten skickar sedan meddelandet till Azure Monitor där en motsvarande post skapas.  
 
 > [!IMPORTANT]
-> Den här artikeln beskriver hur du samlar in Syslog-händelser med [Log Analytics agent](../platform/log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
+> Den här artikeln beskriver hur du samlar in Syslog-händelser med [Log Analytics agent](./log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
 
 > [!NOTE]
 > Azure Monitor stöder insamling av meddelanden som skickats av rsyslog eller syslog-ng, där rsyslog är standard-daemon. Standard syslog-daemonen på version 5 av Red Hat Enterprise Linux, CentOS och Oracle Linux-version (sysklog) stöds inte för händelse insamling i syslog. Om du vill samla in syslog-data från den här versionen av dessa distributioner ska [rsyslog daemon](http://rsyslog.com) installeras och konfigureras för att ersätta sysklog.
@@ -57,7 +57,7 @@ Du kan lägga till en ny anläggning genom att först välja alternativet **Anv�
 Som standard flyttas alla konfigurations ändringar automatiskt till alla agenter. Om du vill konfigurera syslog manuellt på varje Linux-Agent avmarkerar du kryss rutan *Använd konfigurationen nedan för mina datorer*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurera syslog på Linux-agenten
-När [Log Analytics-agenten är installerad på en Linux-klient](../learn/quick-collect-linux-computer.md)installerar den en standard konfigurations fil för syslog som definierar funktionen och allvarlighets graden för de meddelanden som samlas in. Du kan ändra konfigurationen genom att ändra den här filen. Konfigurations filen är olika beroende på den syslog-daemon som klienten har installerat.
+När [Log Analytics-agenten är installerad på en Linux-klient](../vm/quick-collect-linux-computer.md)installerar den en standard konfigurations fil för syslog som definierar funktionen och allvarlighets graden för de meddelanden som samlas in. Du kan ändra konfigurationen genom att ändra den här filen. Konfigurations filen är olika beroende på den syslog-daemon som klienten har installerat.
 
 > [!NOTE]
 > Om du redigerar syslog-konfigurationen måste du starta om syslog-daemon för att ändringarna ska börja gälla.
@@ -222,7 +222,7 @@ Syslog-poster har en typ av **syslog** och har egenskaperna i följande tabell.
 ## <a name="log-queries-with-syslog-records"></a>Logga frågor med syslog-poster
 Följande tabell innehåller olika exempel på logg frågor som hämtar syslog-poster.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |:--- |:--- |
 | Syslog |Alla Syslogs. |
 | Syslog-&#124; där SeverityLevel = = "Error" |Alla syslog-poster med allvarlighets graden fel. |
@@ -230,7 +230,6 @@ Följande tabell innehåller olika exempel på logg frågor som hämtar syslog-p
 | Syslog &#124; sammanfatta AggregatedValue = Count () efter funktion |Antal syslog-poster per funktion. |
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.
-* Använd [anpassade fält](./../platform/custom-fields.md) för att parsa data från syslog-poster i enskilda fält.
-* [Konfigurera Linux-agenter](../learn/quick-collect-linux-computer.md) för att samla in andra typer av data.
-
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.
+* Använd [anpassade fält](../logs/custom-fields.md) för att parsa data från syslog-poster i enskilda fält.
+* [Konfigurera Linux-agenter](../vm/quick-collect-linux-computer.md) för att samla in andra typer av data.

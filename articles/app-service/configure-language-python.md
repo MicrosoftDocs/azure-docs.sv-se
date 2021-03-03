@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709095"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurera en Linux python-app för Azure App Service
 
@@ -372,6 +372,7 @@ I följande avsnitt finns ytterligare vägledning för specifika problem.
 - [Appen visas inte – standard app visas](#app-doesnt-appear)
 - [Appen visas inte-meddelandet "tjänsten är inte tillgänglig"](#service-unavailable)
 - [Det gick inte att hitta setup.py eller requirements.txt](#could-not-find-setuppy-or-requirementstxt)
+- [ModuleNotFoundError vid start](#modulenotfounderror-when-app-starts)
 - [Lösen ord visas inte i SSH-sessionen när de skrivs](#other-issues)
 - [Kommandon i SSH-sessionen förefaller vara avhuggna](#other-issues)
 - [Statiska till gångar visas inte i en django-app](#other-issues)
@@ -404,6 +405,10 @@ I följande avsnitt finns ytterligare vägledning för specifika problem.
 - **Logg strömmen visar att det inte gick att hitta setup.py eller requirements.txt. Det gick inte att installera pip. "**: det gick inte att hitta *requirements.txts* filen med Oryx-build-processen.
 
     - Anslut till webbappens behållare via [SSH](#open-ssh-session-in-browser) och kontrol lera att *requirements.txt* har namnet korrekt och finns direkt under *plats/wwwroot*. Om den inte finns gör du platsen som filen finns i din lagrings plats och ingår i distributionen. Om den finns i en separat mapp flyttar du den till roten.
+
+#### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError när appen startar
+
+Om du ser ett fel som `ModuleNotFoundError: No module named 'example'` det innebär att python inte kunde hitta en eller flera av dina moduler när programmet startade. Detta inträffar oftast om du distribuerar den virtuella miljön med din kod. Virtuella miljöer är inte bärbara, så en virtuell miljö bör inte distribueras med program koden. Låt Oryx skapa en virtuell miljö och installera dina paket på webbappen genom att skapa en app-inställning, `SCM_DO_BUILD_DURING_DEPLOYMENT` och Ställ in den på `1` . Detta tvingar Oryx att installera dina paket när du distribuerar till App Service. Mer information finns i [den här artikeln om virtuell Miljös portabilitet](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
 
 #### <a name="other-issues"></a>Andra problem
 

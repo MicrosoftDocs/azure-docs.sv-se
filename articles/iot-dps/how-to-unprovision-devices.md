@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c91cd8cbb1a927a88f05fcea603c6a4ed6e1c14
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950743"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719040"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Så här avetablerar du enheter som tidigare var automatiskt etablerade 
 
@@ -23,7 +23,7 @@ I allmänhet omfattar avetablering av en enhet två steg:
 1. Avregistrera enheten från etablerings tjänsten för att förhindra framtida automatisk etablering. Beroende på om du vill återkalla åtkomst tillfälligt eller permanent, kanske du vill inaktivera eller ta bort en registrerings post. För enheter som använder 509-attestering i X. kanske du vill inaktivera/ta bort en post i hierarkin för dina befintliga registrerings grupper.  
  
    - Information om hur du avregistrerar en enhet finns i [så här avregistrerar du en enhet från Azure IoT Hub Device Provisioning service](how-to-revoke-device-access-portal.md).
-   - Information om hur du avregistrerar en enhet program mässigt med hjälp av en av tjänst-SDK: erna för etablerings tjänsten finns i [Hantera enhets registreringar med tjänst-SDK](how-to-manage-enrollments-sdks.md): er.
+   - Information om hur du avregistrerar en enhet program mässigt med hjälp av en av tjänst-SDK: erna för etablerings tjänsten finns i [Hantera enhets registreringar med tjänst-SDK](./quick-enroll-device-x509-java.md): er.
 
 2. Avregistrera enheten från IoT Hub för att förhindra framtida kommunikation och data överföring. Återigen kan du tillfälligt inaktivera eller permanent ta bort enhetens post i identitets registret för den IoT Hub där den etablerades. Se [inaktivera enheter](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) om du vill veta mer om inaktive ring. Se "enhets hantering/IoT-enheter" för din IoT Hub-resurs i [Azure Portal](https://portal.azure.com).
 

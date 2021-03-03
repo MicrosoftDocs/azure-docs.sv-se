@@ -3,12 +3,12 @@ title: Självstudie – säkerhetskopiera SAP HANA databaser i virtuella Azure-d
 description: I den här självstudien lär du dig att säkerhetskopiera SAP HANA databaser som körs på virtuella Azure-datorer till ett Azure Backup Recovery Services-valv.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987792"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703689"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Självstudie: säkerhetskopiera SAP HANA databaser på en virtuell Azure-dator
 
@@ -105,7 +105,7 @@ Säkerhets kopiorna (logg och icke-logg) i SAP HANA virtuella Azure-datorer som 
 
 Backint-komponenten i HANA ger "pipes" (en pipe för att läsa från och en pipe att skriva till), ansluten till underliggande diskar där databasfilerna finns, som sedan läses av Azure Backup tjänsten och transporteras till Azure Recovery Services-valvet. I Azure Backups tjänsten utförs även en kontroll summa för att verifiera data strömmarna, utöver de inbyggda verifierings kontrollerna i backint. Dessa verifieringar ser till att de data som finns i Azure Recovery Services-valvet verkligen är pålitliga och kan återskapas.
 
-Eftersom data strömmar främst hanterar diskar måste du förstå disk prestanda för att mäta säkerhets kopierings-och återställnings prestanda. I [den här artikeln](https://docs.microsoft.com/azure/virtual-machines/disks-performance) hittar du en djupgående förståelse för disk data flöde och prestanda i virtuella Azure-datorer. Dessa gäller också för säkerhets kopierings-och återställnings prestanda.
+Eftersom data strömmar främst hanterar diskar måste du förstå disk prestanda för att mäta säkerhets kopierings-och återställnings prestanda. I [den här artikeln](../virtual-machines/disks-performance.md) hittar du en djupgående förståelse för disk data flöde och prestanda i virtuella Azure-datorer. Dessa gäller också för säkerhets kopierings-och återställnings prestanda.
 
 **Azure backups tjänsten försöker uppnå upp till ~ 420 Mbit/s för säkerhets kopieringar som inte är loggade (till exempel fullständig, differentiell och stegvis) och upp till 100 Mbit/s för logg säkerhets kopior för Hana**. Som nämnts ovan garanterar inte dessa hastigheter och är beroende av följande faktorer:
 
@@ -267,8 +267,8 @@ Ange princip inställningarna enligt följande:
    ![Princip för differentiell säkerhets kopiering](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >Stegvisa säkerhets kopieringar är nu tillgängliga i den offentliga för hands versionen. Du kan välja antingen en differentiell eller en ökning som en daglig säkerhets kopia, men inte båda.
-   >
+   >Du kan välja antingen en differentiell eller en ökning som en daglig säkerhets kopia, men inte båda.
+
 7. I **principen för stegvis säkerhets kopiering** väljer du **Aktivera** för att öppna kontrollerna frekvens och kvarhållning.
     * Högst kan du utlösa en stegvis säkerhets kopiering per dag.
     * Stegvisa säkerhets kopieringar kan behållas i högst 180 dagar. Om du behöver längre kvarhållning måste du använda fullständiga säkerhetskopior.

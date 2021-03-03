@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698220"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kund ansvar för att köra Azure våren Cloud i VNET
 Det här dokumentet innehåller specifikationer för användning av Azure våren Cloud i ett virtuellt nätverk.
@@ -34,13 +34,13 @@ Följande är en lista över resurs krav för Azure våren Cloud Services. Som e
 
   | Destinations slut punkt | Port | Användning | Anteckning |
   |------|------|------|
-  | *: 1194 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Underliggande hantering av Kubernetes-kluster. | |
-  | *: 443 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 443 | TCP: 443 | Azure våren Cloud Service Management. | Information om tjänst instansen "requiredTraffics" kan vara känd i resurs nytto lasten under avsnittet "networkProfile". |
-  | *: 9000 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Underliggande hantering av Kubernetes-kluster. |
+  | *: 1194 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Underliggande hantering av Kubernetes-kluster. | |
+  | *: 443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 443 | TCP: 443 | Azure våren Cloud Service Management. | Information om tjänst instansen "requiredTraffics" kan vara känd i resurs nytto lasten under avsnittet "networkProfile". |
+  | *: 9000 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Underliggande hantering av Kubernetes-kluster. |
   | *: 123 *eller* NTP.Ubuntu.com:123 | UDP: 123 | NTP-tidssynkronisering på Linux-noder. | |
-  | *. azure.io:443 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | Kan ersättas genom att aktivera *Azure Container Registry* [tjänstens slut punkt i virtuellt nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
-  | *. core.windows.net:443 och *. core.windows.net:445 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -Storage: 443 och lagring: 445 | TCP: 443, TCP: 445 | Azure File Storage | Kan ersättas genom att aktivera *Azure Storage* [tjänstens slut punkt i virtuellt nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
-  | *. servicebus.windows.net:443 *eller* [ServiceTag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Event Hub. | Kan ersättas genom att aktivera *Azure Event Hubs* [service-slutpunkten i det virtuella nätverket](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). |
+  | *. azure.io:443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | Kan ersättas genom att aktivera *Azure Container Registry* [tjänstens slut punkt i virtuellt nätverk](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *. core.windows.net:443 och *. core.windows.net:445 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -Storage: 443 och lagring: 445 | TCP: 443, TCP: 445 | Azure File Storage | Kan ersättas genom att aktivera *Azure Storage* [tjänstens slut punkt i virtuellt nätverk](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *. servicebus.windows.net:443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Event Hub. | Kan ersättas genom att aktivera *Azure Event Hubs* [service-slutpunkten i det virtuella nätverket](../virtual-network/virtual-network-service-endpoints-overview.md). |
   
 
 ## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Krav för Azure våren Cloud FQDN/applikations regler
@@ -63,4 +63,4 @@ Azure-brandväggen tillhandahåller en fullständigt kvalificerad domän namns k
 
 ## <a name="see-also"></a>Se även
 * [Få åtkomst till ditt program i ett privat nätverk](spring-cloud-access-app-virtual-network.md)
-* [Exponera appar med hjälp av Application Gateway och Azure-brandväggen](spring-cloud-expose-apps-gateway-azure-firewall.md) 
+* [Exponera appar med hjälp av Application Gateway och Azure-brandväggen](spring-cloud-expose-apps-gateway-azure-firewall.md)

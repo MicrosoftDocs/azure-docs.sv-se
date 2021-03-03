@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691526"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Granskning för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -46,7 +46,9 @@ Du kan använda SQL Database granskning för att:
 
 - **Premium Storage** **stöds inte** för närvarande.
 - Det finns för närvarande **inte stöd** för **hierarkiskt namn område** för **Azure Data Lake Storage Gen2 lagrings konto** .
-- Det finns inte stöd för att aktivera granskning på en pausad **Azure-Synapse** . Aktivera granskning genom att återuppta Azure-Synapse.
+- Det finns inte stöd för att aktivera granskning på en pausad **Azure-Synapse** . Du kan aktivera granskning genom att återuppta Azure Synapse.
+- Granskning för **Azure SYNAPSE SQL-pooler** stöder **endast** standard gransknings åtgärds grupper.
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>Definiera server nivå kontra gransknings princip på databas nivå
 
@@ -73,9 +75,9 @@ En gransknings princip kan definieras för en viss databas eller som en standard
 - Om du vill konfigurera ett oåterkalleligt logg Arkiv för gransknings händelser på Server-eller databas nivå följer du [instruktionerna som anges i Azure Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes). Kontrol lera att du har valt **Tillåt ytterligare tillägg** när du konfigurerar den oföränderliga blob-lagringen.
 - Du kan skriva gransknings loggar till ett Azure Storage konto bakom ett VNet eller en brand vägg. Mer information finns i [Skriv granskning till ett lagrings konto bakom VNet och brand vägg](audit-write-storage-account-behind-vnet-firewall.md).
 - Mer information om logg formatet, hierarkin för lagringsmappen och namngivnings konventioner finns i [referensen för logg format för BLOB-granskning](./audit-log-format.md).
-- Granskning på [skrivskyddade repliker](read-scale-out.md) aktive ras automatiskt. Mer information om hierarkin för lagrings-mappar, namngivnings konventioner och logg format finns i [SQL Database Gransknings logg format](audit-log-format.md).
+- Granskning är automatiskt aktiverat på [skrivskyddade repliker](read-scale-out.md). Mer information om hierarkin för lagrings-mappar, namngivnings konventioner och logg format finns i [SQL Database Gransknings logg format](audit-log-format.md).
 - När du använder Azure AD-autentisering visas *inte* poster för misslyckade inloggningar i SQL-gransknings loggen. Om du vill visa gransknings poster för misslyckad inloggning måste du gå till [Azure Active Directory Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)som loggar information om dessa händelser.
-- Inloggningar dirigeras av gatewayen till den angivna instansen där-databasen finns.  I händelse av AAD-inloggning verifieras autentiseringsuppgifterna innan ett försök görs att använda den användaren för att logga in på den begärda databasen.  Om det uppstår fel används inte den begärda databasen, så ingen granskning sker.  Om det gäller SQL-inloggningar verifieras autentiseringsuppgifterna för begärda data, så i så fall kan de granskas.  Lyckade inloggningar, som uppenbart når databasen, granskas i båda fallen.
+- Inloggningar dirigeras av gatewayen till den instans där databasen finns.  Vid en AAD-inloggning verifieras autentiseringsuppgifterna innan ett försök görs att logga in på den begärda databasen med aktuella användaren.  Om det uppstår ett fel går det inte att komma åt den begärda databasen, vilket innebär att det inte utförs någon granskning.  Om det gäller SQL-inloggningar verifieras autentiseringsuppgifterna för begärda data, så i så fall kan de granskas.  Lyckade inloggningar, som uppenbart når databasen, granskas i båda fallen.
 - När du har konfigurerat dina gransknings inställningar kan du aktivera den nya funktionen för hot identifiering och konfigurera e-postmeddelanden för att få säkerhets aviseringar. När du använder hot identifiering får du proaktiva aviseringar om avvikande databas aktiviteter som kan innebära potentiella säkerhetshot. Mer information finns i [komma igång med hot identifiering](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Konfigurera granskning för servern
@@ -175,7 +177,7 @@ Om du väljer att skriva gransknings loggar till Azure Monitor loggar:
 Om du väljer att skriva gransknings loggar till Händelsehubben:
 
 - Om du vill använda gransknings loggar från Händelsehubben måste du konfigurera en data ström för att använda händelser och skriva dem till ett mål. Mer information finns i [Azure Event Hubs-dokumentationen](../index.yml).
-- Gransknings loggar i Händelsehubben samlas in i bröd texten i [Apache Avro](https://avro.apache.org/) -händelser och lagras med JSON-FORMATERING med UTF-8-kodning. Om du vill läsa gransknings loggarna kan du använda [Avro-verktyg](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) eller liknande verktyg som bearbetar det här formatet.
+- Gransknings loggar i Händelsehubben samlas in i bröd texten i [Apache Avro](https://avro.apache.org/) -händelser och lagras med JSON-FORMATERING med UTF-8-kodning. Om du vill läsa granskningsloggarna kan du använda [Avro-verktyg](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) eller liknande verktyg som kan hantera det här formatet.
 
 Om du väljer att skriva gransknings loggar till ett Azure Storage-konto finns det flera metoder som du kan använda för att visa loggarna:
 

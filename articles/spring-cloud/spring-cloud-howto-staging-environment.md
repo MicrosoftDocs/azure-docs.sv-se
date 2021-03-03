@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82a8da9d2663b03d89ad0819ec6d918bebaf5f5e
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d610e79773dabb9942352747f1f032b17730ffca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574792"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738760"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Konfigurera en utvecklings miljö i Azure våren Cloud
 
@@ -23,7 +23,7 @@ Den här artikeln förklarar hur du konfigurerar en mellanlagrings distribution 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Azure våren Cloud-instans på *standard* **pris nivån**.
-* Azure CLI [Azure våren Cloud-tillägg](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
+* Azure CLI [Azure våren Cloud-tillägg](/cli/azure/azure-cli-extensions-overview)
 
 I den här artikeln används ett program som skapats från vår initierare. Om du vill använda ett annat program för det här exemplet måste du göra en enkel ändring i en offentlig del av programmet för att skilja din mellanlagrings distribution från produktionen.
 

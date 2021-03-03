@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 56965310c818f8d9089ab244641bdc562428a337
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720570"
 ---
 # <a name="introduction-to-azure-security"></a>Introduktion till Azure-säkerhet
 ## <a name="overview"></a>Översikt
@@ -53,7 +53,7 @@ Följande funktioner är funktioner som du kan granska för att garantera att Az
 | [Obligatorisk säkerhetsutbildning, bakgrunds kontroller](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontroll på data plats](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Hubb för vanliga kontroller](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Hur Microsoft hanterar data platser i Azure-tjänster](https://azuredatacentermap.azurewebsites.net/)|
 | [Testning av inträngande](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [intrångs identifiering, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [granskningar & loggning](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Ge data åtkomst på dina villkor](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Check lista för Cloud Services förfallna noggrannhet](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[Vem i Microsoft kan komma åt dina data på vilka villkor](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Tillstånd för konst Data Center](https://www.microsoft.com/cloud-platform/global-datacenters), fysisk säkerhet, [säkert nätverk](network-overview.md) | [Svara på juridisk tillämpning](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Efterlevnad per tjänst, plats & bransch](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Hur Microsoft skyddar kund information i Azure-tjänster](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [Svar på säkerhets incidenter](https://aka.ms/SecurityResponsepaper), [delat ansvar](./shared-responsibility.md) |[Stränga sekretess standarder](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Granska certifiering för Azure-tjänster, OH-hubb](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [Svar på säkerhets incidenter](/samples/browse/?redirectedfrom=TechNet-Gallery), [delat ansvar](./shared-responsibility.md) |[Stränga sekretess standarder](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Granska certifiering för Azure-tjänster, OH-hubb](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>Funktioner för att skydda data och program
 Beroende på moln tjänst modellen finns det varierande ansvar för vem som ansvarar för att hantera säkerheten för programmet eller tjänsten. Det finns funktioner som är tillgängliga i Azure-plattformen för att hjälpa dig att uppfylla dessa ansvars områden via inbyggda funktioner och genom partner lösningar som kan distribueras till en Azure-prenumeration.
@@ -288,7 +288,7 @@ Du kan aktivera följande diagnostiska logg kategorier för NSG: er:
 ### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-introduction.md) fort löp ande analyserar säkerhets läget för dina Azure-resurser för metod tips för nätverks säkerhet. När Security Center identifierar potentiella säkerhets risker skapar den [rekommendationer](../../security-center/security-center-recommendations.md) som vägleder dig genom processen att konfigurera de nödvändiga kontrollerna för att skärp och skydda dina resurser.
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Beräkning
 Avsnittet innehåller ytterligare information om viktiga funktioner i det här området och sammanfattnings information om dessa funktioner.
 
 ### <a name="antimalware--antivirus"></a>Antivirus program & Antivirus

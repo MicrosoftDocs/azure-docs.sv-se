@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: cab41c025f9f3e5b03f042a2bf5686cb08dbd0a9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62afc0ab4e65da53adb35510503051d39e0edc4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629078"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734238"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Snabb start: övervaka en Azure-resurs med Azure Monitor
 [Azure Monitor](../overview.md) börjar samla in data från Azure-resurser när de har skapats. Den här snabb starten innehåller en kort genom gång av de data som samlas in automatiskt för en resurs och hur du kan visa den i Azure Portal för en viss resurs. Senare kan du lägga till en konfiguration för att samla in ytterligare data och kan gå till Azure Monitor menyn för att använda samma verktyg för att få åtkomst till data som samlats in för alla resurser i din prenumeration.
@@ -67,7 +67,7 @@ Mått är numeriska värden som beskriver viss aspekt av din resurs vid en viss 
 
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabb starten visade du aktivitets loggen och måtten för en Azure-resurs som samlas in automatiskt av Azure Monitor. Fortsätt till nästa snabb start som visar hur du samlar in aktivitets loggen på en Log Analytics arbets yta där de kan analyseras med hjälp av [logg frågor](../log-query/log-query-overview.md).
+I den här snabb starten visade du aktivitets loggen och måtten för en Azure-resurs som samlas in automatiskt av Azure Monitor. Fortsätt till nästa snabb start som visar hur du samlar in aktivitets loggen på en Log Analytics arbets yta där de kan analyseras med hjälp av [logg frågor](../logs/log-query-overview.md).
 
 > [!div class="nextstepaction"]
-> [Skicka Azure aktivitets logg till Log Analytics arbets yta](../learn/quick-collect-activity-log-portal.md)
+> [Skicka Azure aktivitets logg till Log Analytics arbets yta](./quick-collect-activity-log-portal.md)

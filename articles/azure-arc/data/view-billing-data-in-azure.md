@@ -7,19 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687540"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Ladda upp fakturerings data till Azure och visa dem i Azure Portal
 
 > [!IMPORTANT] 
->  Det kostar inget att använda Azure Arc-aktiverade data tjänster under för hands versions perioden. Även om fakturerings systemet fungerar som slutdatum är fakturerings mätaren inställd på $0.  Om du följer det här scenariot visas poster i din fakturering för en tjänst som för närvarande heter **hybrid data tjänster** och för resurser av en typ som kallas **Microsoft. AzureData/ `<resource type>` **. Du kommer att kunna se en post för varje data tjänst – Azure-båge som du skapar, men varje post debiteras för $0.
+>  Det kostar inget att använda Azure Arc-aktiverade data tjänster under för hands versions perioden. Även om fakturerings systemet fungerar som slutdatum är fakturerings mätaren inställd på $0.  Om du följer det här scenariot visas poster i din fakturering för en tjänst som för närvarande heter **hybrid data tjänster** och för resurser av en typ som kallas **Microsoft. AzureData/ `<resource type>`**. Du kommer att kunna se en post för varje data tjänst – Azure-båge som du skapar, men varje post debiteras för $0.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -111,8 +111,9 @@ azdata arc dc upload -p usage.json
 
 Följ dessa steg om du vill visa fakturerings data i Azure Portal:
 
-1. Öppna Azure Portal med hjälp av den särskilda URL: en:  [https://aka.ms/arcdata](https://aka.ms/arcdata) .
+1. Öppna [Azure-portalen](https://portal.azure.com).
 1. I rutan Sök högst upp på skärmen skriver du **Cost Management** och klickar på tjänsten Cost Management.
+1. Klicka på fliken **Cost Management** under **Cost Management översikt**.
 1. Klicka på fliken **kostnads analys** till vänster.
 1. Klicka på knappen **kostnad per resurs** överst i vyn.
 1. Se till att ditt omfång är inställt på den prenumeration som dina data tjänst resurser skapades i.
@@ -158,5 +159,5 @@ Du kan verifiera fakturerings data filen i Azure Portal.
 7. Öka detalj nivån i de genererade mapparna och filerna och klicka på en av de genererade CSV-filerna.
 8. Klicka på knappen **Ladda ned** för att spara filen i mappen med lokala nedladdningar.
 9. Öppna filen med ett. CSV-filformat som Excel.
-10. Filtrera resultaten så att endast de rader som har **resurs typen**visas  =  `Microsoft.AzureData/<data service resource type` .
+10. Filtrera resultaten så att endast de rader som har **resurs typen** visas  =  `Microsoft.AzureData/<data service resource type` .
 11. Du kommer att se antalet timmar som instansen användes under den aktuella 24-timmarsperiod i kolumnen UsageQuantity.

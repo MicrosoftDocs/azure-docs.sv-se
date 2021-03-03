@@ -1,18 +1,18 @@
 ---
-title: Aktivera Azure Monitor för behållare | Microsoft Docs
-description: I den här artikeln beskrivs hur du aktiverar och konfigurerar Azure Monitor för behållare så att du kan förstå hur din behållare presterar och vilka prestandarelaterade problem som har identifierats.
+title: Aktivera container Insights | Microsoft Docs
+description: I den här artikeln beskrivs hur du aktiverar och konfigurerar behållar insikter så att du kan förstå hur din behållare presterar och vilka prestandarelaterade problem som har identifierats.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708364"
 ---
-# <a name="enable-azure-monitor-for-containers"></a>Aktivera Azure Monitor för behållare
+# <a name="enable-container-insights"></a>Aktivera container Insights
 
-Den här artikeln innehåller en översikt över de alternativ som är tillgängliga för att konfigurera Azure Monitor för behållare för att övervaka prestanda för arbets belastningar som distribueras till Kubernetes-miljöer och som finns på:
+Den här artikeln innehåller en översikt över de alternativ som är tillgängliga för att konfigurera behållar insikter för att övervaka prestanda för arbets belastningar som distribueras till Kubernetes-miljöer och som finns på:
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) version 3. x och 4. x  
@@ -23,7 +23,7 @@ Du kan också övervaka prestanda för arbets belastningar som distribueras till
 - Azure med hjälp av [AKS-motorn](https://github.com/Azure/aks-engine)
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) eller lokalt, genom att använda AKS-motorn.
 
-Du kan aktivera Azure Monitor för behållare för en ny distribution eller för en eller flera befintliga distributioner av Kubernetes med någon av följande metoder som stöds:
+Du kan aktivera behållar insikter för en ny distribution eller för en eller flera befintliga distributioner av Kubernetes med någon av följande metoder som stöds:
 
 - Azure Portal
 - Azure PowerShell
@@ -44,37 +44,37 @@ Innan du börjar kontrollerar du att du uppfyller följande krav:
 
 - Du har en Log Analytics-arbetsyta.
 
-   Azure Monitor for containers stöder en Log Analytics arbets yta i de regioner som listas i produkter som är [tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
+   Behållar insikter stöder en Log Analytics arbets yta i de regioner som listas i produkter som är [tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor).
 
    Du kan skapa en arbets yta när du aktiverar övervakning för ditt nya AKS-kluster, eller så kan du låta onboarding-upplevelsen skapa en standard arbets yta i standard resurs gruppen för AKS-kluster prenumerationen. 
    
    Om du väljer att skapa arbets ytan själv kan du skapa den genom att: 
-   - [Azure Resource Manager](../samples/resource-manager-workspace.md)
-   - [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
-   - [Azure-portalen](../learn/quick-create-workspace.md) 
+   - [Azure Resource Manager](../logs/resource-manager-workspace.md)
+   - [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+   - [Azure-portalen](../logs/quick-create-workspace.md) 
    
-   En lista över de mappnings par som stöds och som ska användas för standard arbets ytan finns i [regions mappning för Azure Monitor för behållare](container-insights-region-mapping.md).
+   En lista över de mappnings par som stöds och som ska användas för standard arbets ytan finns i [region mappning för behållar insikter](container-insights-region-mapping.md).
 
-- Du är medlem i gruppen *Log Analytics deltagare* för att aktivera övervakning av behållare. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [hantera arbets ytor](../platform/manage-access.md).
+- Du är medlem i gruppen *Log Analytics deltagare* för att aktivera övervakning av behållare. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [hantera arbets ytor](../logs/manage-access.md).
 
 - Du är medlem i [gruppen *ägare*](../../role-based-access-control/built-in-roles.md#owner) på kluster resursen AKS.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-- Om du vill visa övervaknings data måste du ha [*Log Analytics läsar*](../platform/manage-access.md#manage-access-using-azure-permissions) roll på arbets ytan Log Analytics som kon figurer ats med Azure Monitor för behållare.
+- Om du vill visa övervaknings data måste du ha [*Log Analytics läsar*](../logs/manage-access.md#manage-access-using-azure-permissions) roll på arbets ytan Log Analytics som kon figurer ATS med behållar insikter.
 
 - Prometheus-mått samlas inte in som standard. Innan du [konfigurerar agenten](container-insights-prometheus-integration.md) för att samla in måtten är det viktigt att granska [Prometheus-dokumentationen](https://prometheus.io/) för att ta reda på vilka data som kan kasseras och vilka metoder som stöds.
 
 ## <a name="supported-configurations"></a>Konfigurationer som stöds
 
-Azure Monitor för behållare som officiellt stöder följande konfigurationer:
+Behållar insikter har officiellt stöd för följande konfigurationer:
 
 - Miljöer: Azure Red Hat OpenShift, Kubernetes lokalt och AKS-motorn på Azure och Azure Stack. Mer information finns i [AKS-motorn på Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - Versionerna av Kubernetes och support policy är desamma som de som [stöds i Azure Kubernetes service (AKS)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Krav för nätverks brand vägg
 
-I följande tabell visas den konfigurations information för proxy och brand vägg som krävs för att behållarens agent ska kunna kommunicera med Azure Monitor för behållare. All nätverks trafik från agenten är utgående till Azure Monitor.
+I följande tabell visas den konfigurations information för proxy och brand vägg som krävs för att agenten ska kunna kommunicera med behållar insikter. All nätverks trafik från agenten är utgående till Azure Monitor.
 
 |Agentresurs|Port |
 |--------------|------|
@@ -86,7 +86,7 @@ I följande tabell visas den konfigurations information för proxy och brand vä
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure Kina 21Vianet:
 
-|Agentresurs|Port |Description | 
+|Agentresurs|Port |Beskrivning | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -94,7 +94,7 @@ I följande tabell visas konfigurations information för proxy och brand vägg f
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure amerikanska myndigheter:
 
-|Agentresurs|Port |Description | 
+|Agentresurs|Port |Beskrivning | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |
@@ -102,7 +102,7 @@ I följande tabell visas konfigurations information för proxy och brand vägg f
 
 ## <a name="components"></a>Komponenter
 
-Din möjlighet att övervaka prestanda är beroende av en container Log Analytics-agent för Linux som är särskilt utvecklad för Azure Monitor för behållare. Den här specialiserade agenten samlar in prestanda-och händelse data från alla noder i klustret och agenten distribueras automatiskt och registreras med den angivna Log Analytics arbets ytan under distributionen. 
+Din möjlighet att övervaka prestanda är beroende av en container Log Analytics-agent för Linux som är särskilt utvecklad för behållar insikter. Den här specialiserade agenten samlar in prestanda-och händelse data från alla noder i klustret och agenten distribueras automatiskt och registreras med den angivna Log Analytics arbets ytan under distributionen. 
 
 Agent versionen är Microsoft/OMS: ciprod04202018 eller senare, och den representeras av ett datum i följande format: *mmddyyyy*.
 
@@ -116,7 +116,7 @@ När en ny version av agenten släpps, uppgraderas den automatiskt i dina hanter
 >
 > Mallen måste distribueras i samma resurs grupp som klustret.
 
-Om du vill aktivera Azure Monitor för behållare använder du en av de metoder som beskrivs i följande tabell:
+Använd en av de metoder som beskrivs i följande tabell för att aktivera behållar insikter:
 
 | Distributions tillstånd | Metod | Beskrivning |
 |------------------|--------|-------------|
@@ -136,4 +136,4 @@ Om du vill aktivera Azure Monitor för behållare använder du en av de metoder 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har aktiverat övervakning kan du börja analysera prestanda för dina Kubernetes-kluster som finns i Azure Kubernetes service (AKS), Azure Stack eller någon annan miljö. Information om hur du använder Azure Monitor för behållare finns i [Visa Kubernetes kluster prestanda](container-insights-analyze.md).
+Nu när du har aktiverat övervakning kan du börja analysera prestanda för dina Kubernetes-kluster som finns i Azure Kubernetes service (AKS), Azure Stack eller någon annan miljö. Information om hur du använder behållar insikter finns i [Visa Kubernetes kluster prestanda](container-insights-analyze.md).

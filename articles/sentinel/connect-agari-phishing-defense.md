@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a60a0291d6669b2a9115dffa8e0d4d63fae4a440
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806994"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724446"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Anslut din agar-lösning för phishing-skydd och märkes skydd till Azure Sentinel
 
@@ -39,7 +39,7 @@ Följande krävs för att ansluta Agari lösningar för skydd mot nätfiske och 
 
 - Läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
-- Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
+- Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key).
 
 - Läs-och Skriv behörighet för Azure Functions för att skapa en Funktionsapp. [Läs mer om Azure Functions](../azure-functions/index.yml).
 

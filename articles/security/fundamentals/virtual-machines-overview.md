@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: ed2cb967b24ce5abdebadfe29847ae1a16b4e745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498752"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715045"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Översikt över Azure Virtual Machines-säkerhet
 Den här artikeln innehåller en översikt över de centrala Azure-säkerhetsfunktioner som kan användas med virtuella datorer.
@@ -51,13 +51,13 @@ Läs mer om [Microsofts program mot skadlig kod för Azure](antimalware.md) och 
 Lär dig mer om program mot skadlig kod för att hjälpa till att skydda dina virtuella datorer:
 
 * [Distribuera lösningar för skydd mot skadlig kod i Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Så här installerar och konfigurerar du Trend Micro djupgående säkerhet som en tjänst på en virtuell Windows-dator](../../virtual-machines/extensions/trend.md)
+* [Så här installerar och konfigurerar du Trend Micro djupgående säkerhet som en tjänst på en virtuell Windows-dator](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Så här installerar och konfigurerar du Symantec Endpoint Protection på en virtuell Windows-dator](../../virtual-machines/extensions/symantec.md)
 * [Säkerhetslösningar på Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
 Överväg att använda [Windows Defender Avancerat skydd](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)för ännu mer kraftfullt skydd. Med Windows Defender ATP får du:
 
-* [Minska attackytan](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Minskning av attack ytan](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Nästa generations skydd](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection och-svar](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Automatiserad undersökning och reparation](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)

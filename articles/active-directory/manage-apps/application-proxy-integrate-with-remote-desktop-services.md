@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687676"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publicera Fjärrskrivbord med Azure AD-programproxy
 
@@ -57,7 +57,7 @@ När du har konfigurerat RDS och Azure AD-programproxy för din miljö följer d
 ### <a name="publish-the-rd-host-endpoint"></a>Publicera värd slut punkten för fjärr skrivbord
 
 1. [Publicera ett nytt program för programproxy](application-proxy-add-on-premises-application.md) med följande värden:
-   - Intern URL: `https://\<rdhost\>.com/` , där `\<rdhost\>` är den gemensamma roten som resursen för webb-och Fjärrskrivbordsgateway-resurs.
+   - Intern URL: `https://<rdhost>.com/` , där `<rdhost>` är den gemensamma roten som resursen för webb-och Fjärrskrivbordsgateway-resurs.
    - Extern URL: det här fältet fylls i automatiskt baserat på namnet på programmet, men du kan ändra det. Användarna kommer att gå till denna URL när de ansluter till RDS.
    - Förautentiserings metod: Azure Active Directory
    - Översätt URL-huvuden: Nej
@@ -69,7 +69,7 @@ När du har konfigurerat RDS och Azure AD-programproxy för din miljö följer d
 
 4. Välj **Azure Active Directory** och sedan **app-registreringar**. Välj din app i listan.
 5. Under **Hantera** väljer du **märkes anpassning**.
-6. Uppdatera **Start sidans URL** -fält så att de pekar på din webb slut punkt för fjärr skrivbord (till exempel `https://\<rdhost\>.com/RDWeb` ).
+6. Uppdatera **Start sidans URL** -fält så att de pekar på din webb slut punkt för fjärr skrivbord (till exempel `https://<rdhost>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Dirigera fjärr skrivbords trafik till Application Proxy
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736649"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Vad är Azure Cognitive Services?
 
@@ -43,14 +43,14 @@ Följande avsnitt i den här artikeln innehåller en lista över tjänster som i
 |[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Med Custom Vision Service kan du bygga anpassade bild klassificerare.|
 |[Ansiktsigenkänning](./face/index.yml "Ansikte")| Ansikts tjänsten ger till gång till avancerade ansikts algoritmer, vilket möjliggör identifiering och igenkänning av ansikts attribut.|
 |[Formigenkänning](./form-recognizer/index.yml "Formigenkänning")|Formulär tolken identifierar och extraherar nyckel/värde-par och tabell data från formulär dokument. matar sedan ut strukturerade data, inklusive relationerna i original filen.|
-|[Tryck färgs tolkning](./ink-recognizer/index.yml "Handskriftsigenkänning") (tas ur bruk)|Med hjälp av hand SKRIFTS tolken kan du identifiera och analysera digitala pennan tecknings data, former och handskrivna innehåll och generera en dokument struktur med alla identifierade entiteter.|
+|[Tryck färgs tolkning](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Handskriftsigenkänning") (tas ur bruk)|Med hjälp av hand SKRIFTS tolken kan du identifiera och analysera digitala pennan tecknings data, former och handskrivna innehåll och generera en dokument struktur med alla identifierade entiteter.|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Med Video Indexer kan du extrahera insikter från videon.|
 
 ## <a name="speech-apis"></a>Tal-API: er
 
 |Tjänstens namn|Beskrivning av tjänst|
 |:-----------|:------------------|
-|[Tjänst för taligenkänning](./speech-service/index.yml "Tjänst för taligenkänning")|Tal tjänsten lägger till tal aktiverade funktioner i program. Tal tjänsten innehåller olika funktioner som tal-till-text, text till tal, tal översättning och många fler.|
+|[Tal tjänst](./speech-service/index.yml "Tjänst för taligenkänning")|Tal tjänsten lägger till tal aktiverade funktioner i program. Tal tjänsten innehåller olika funktioner som tal-till-text, text till tal, tal översättning och många fler.|
 <!--
 |[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
 |[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
@@ -86,7 +86,7 @@ Följande avsnitt i den här artikeln innehåller en lista över tjänster som i
 |[Videosökning i Bing](/azure/cognitive-services/Bing-Video-Search/ "Videosökning i Bing")|Videosökning i Bing returnerar en lista med videor som bedöms vara relevanta för användarens fråga.|
 |[Webbsökning i Bing](./bing-web-search/index.yml "Webbsökning i Bing")|Webbsökning i Bing returnerar en lista med Sök resultat som har fastställts vara relevanta för användarens fråga.|
 |[Automatiska förslag i Bing](/azure/cognitive-services/Bing-Autosuggest "Automatiska förslag i Bing")|Med Automatiska förslag i Bing kan du skicka en del sökords term till Bing och få tillbaka en lista över föreslagna frågor.|
-|[Anpassad sökning i Bing](/azure/cognitive-services/bing-custom-search "Anpassad sökning i Bing")|Med Anpassad sökning i Bing kan du skapa skräddarsydda Sök upplevelser för ämnen som du bryr dig om.|
+|[Anpassad sökning i Bing](/azure/cognitive-services/bing-custom-search "Anpassad sökning i Bing")|Med Anpassad Bing-sökning kan du skapa skräddarsydda Sök upplevelser för ämnen som du bryr dig om.|
 |[Entitetssökning i Bing](/azure/cognitive-services/bing-entities-search/ "Entitetssökning i Bing")|Entitetssökning i Bing returnerar information om entiteter som Bing avgör är relevant för användarens fråga.|
 |[Bildsökning i Bing](/azure/cognitive-services/bing-image-search "Bildsökning i Bing")|Bildsökning i Bing returnerar en visning av bilder som har fastställts vara relevanta för användarens fråga.|
 |[Visuell sökning i Bing](/azure/cognitive-services/bing-visual-search "Visuell sökning i Bing")|Visuell sökning i Bing returnerar insikter om en bild, till exempel visuellt likartade bilder, shopping källor för produkter som finns i avbildningen och relaterade sökningar.|

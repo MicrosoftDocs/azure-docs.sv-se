@@ -10,16 +10,16 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733218"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Självstudie: skapa en ny underordnad DNS-zon
 
-I de här självstudierna får du lära dig att 
+I den här guiden får du lära dig att: 
 
 > [!div class="checklist"]
 > * Logga in på Azure-portalen.
@@ -81,7 +81,8 @@ Du kan också skapa en ny underordnad DNS-zon och delegera den till den överord
 1.  Välj **Nästa: Taggar** och **Nästa: granska + skapa**.
 1.  På fliken **Granska + skapa** granskar du sammanfattningen, korrigera eventuella verifierings fel och väljer sedan **skapa**.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Skärm bild av markerad underordnad zon" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Skärm bild av markerad underordnad zon" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>Verifiera underordnad DNS-zon
 Nu när du har skapat en ny underordnad DNS-zon *subdomain.contoso.com* . Om du vill kontrol lera att delegeringen har genomförts korrekt ska du kontrol lera namnserver (NS) för din underordnade zon i den överordnade zonen enligt beskrivningen nedan.  
 

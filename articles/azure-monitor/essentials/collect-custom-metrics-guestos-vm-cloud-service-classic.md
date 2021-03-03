@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 971a3063ff86e2a6b7d1b11f72ff0a257f459da0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d6866361b78656d99888c4df70cc0c92ed096425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737077"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Skicka gäst operativ systemets mått till Azure Monitor mått lagrets klassiska Cloud Services 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Med Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md)kan du samla in mått och loggar från gäst operativ systemet (gäst operativ system) som körs som en del av en virtuell dator, moln tjänst eller Service Fabric kluster. Tillägget kan skicka telemetri till [flera olika platser.](../platform/data-platform.md?toc=/azure/azure-monitor/toc.json)
+Med Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md)kan du samla in mått och loggar från gäst operativ systemet (gäst operativ system) som körs som en del av en virtuell dator, moln tjänst eller Service Fabric kluster. Tillägget kan skicka telemetri till [flera olika platser.](../data-platform.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 Den här artikeln beskriver processen för att skicka gäst operativ systemets prestanda mått för den klassiska Azure-Cloud Services till Azure Monitor Metric-lagret. Från och med diagnostik version 1,11 kan du skriva mått direkt till lagrings platsen Azure Monitor mått, där standard plattforms mått redan har samlats in. 
 
@@ -34,7 +34,7 @@ Processen som beskrivs i den här artikeln fungerar bara för prestanda räknare
 
 - Du måste antingen ha [Azure PowerShell](/powershell/azure) eller [Azure Cloud Shell](../../cloud-shell/overview.md) installerat.
 
-- Moln tjänsten måste vara i en [region som stöder anpassade mått](../platform/metrics-custom-overview.md#supported-regions).
+- Moln tjänsten måste vara i en [region som stöder anpassade mått](./metrics-custom-overview.md#supported-regions).
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Etablera en moln tjänst och ett lagrings konto 
 
@@ -191,4 +191,4 @@ Du kan använda funktionerna för dimensions filtrering och delning för att vis
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [anpassade mått](../platform/metrics-custom-overview.md).
+- Lär dig mer om [anpassade mått](./metrics-custom-overview.md).

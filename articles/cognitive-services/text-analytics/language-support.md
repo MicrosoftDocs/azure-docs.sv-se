@@ -8,42 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: af7c3f85a75cfb425003b0da2af268fbba1d1d10
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092592"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736618"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Språk stöd för API för textanalys v3 
 
 #### <a name="sentiment-analysis"></a>[Attitydanalys](#tab/sentiment-analysis)
 
-| Språk              | Språkkod | v2-stöd | v3-stöd | Startar v3-modell version: |              Kommentarer |
-|:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
-| Chinese-Simplified    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` även godkänd |
-| Chinese-Traditional   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
-| Danska               |     `da`      |     ✓      |            |                            |                    |
-| Nederländska                 |     `nl`      |     ✓      |            |                            |                    |
-| Engelska               |     `en`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Finska               |     `fi`      |     ✓      |            |                            |                    |
-| Franska                |     `fr`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Tyska                |     `de`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Grekiska                 |     `el`      |     ✓      |            |                            |                    |
-| Hindi                 |     `hi`      |            |      ✓     |          2020-04-01        |                    |
-| Italienska               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Japanska              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Koreanska                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| Norska (bokmål)   |     `no`      |     ✓      |     ✓      |         2020-07-01         |                    |
-| Polska                |     `pl`      |     ✓      |            |                            |                    |
-| Portugisiska (Brasilien)   |    `pt-BR`    |            |     ✓      |         2020-04-01         |                    |
-| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` även godkänd |
-| Ryska               |     `ru`      |     ✓      |            |                            |                    |
-| Spanska               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
-| Svenska               |     `sv`      |     ✓      |            |                            |                    |
-| Turkiska               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
+| Språk              | Språkkod | v3-stöd | Startar v3-modell version: |              Kommentarer |
+|:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
+| Chinese-Simplified    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` även godkänd |
+| Chinese-Traditional   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
+| Engelska               |     `en`      |     ✓      |         2019-10-01         |                    |
+| Franska                |     `fr`      |     ✓      |         2019-10-01         |                    |
+| Tyska                |     `de`      |     ✓      |         2019-10-01         |                    |
+| Italienska               |     `it`      |     ✓      |         2019-10-01         |                    |
+| Japanska              |     `ja`      |     ✓      |         2019-10-01         |                    |
+| Koreanska                |     `ko`      |    ✓      |         2019-10-01         |                    |
+| Norska (bokmål)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| Portugisiska (Brasilien)   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
+| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` även godkänd |
+| Spanska               |     `es`      |     ✓      |         2019-10-01         |                    |
+| Turkiska               |     `tr`      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>Utåsikts utvinning (v 3.1 – endast för hands version)
 
@@ -85,31 +77,46 @@ ms.locfileid: "99092592"
 
 #### <a name="key-phrase-extraction"></a>[Extrahering av nyckel fraser](#tab/key-phrase-extraction)
 
-| Språk              | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: |       Kommentarer        |
-|:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
-| Danska                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
-| Nederländska                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Engelska               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Finska               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Franska                |     `fr`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Tyska                |     `de`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Italienska               |     `it`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Japanska              |     `ja`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Koreanska                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Norska (bokmål)   |     `no`      |     ✓      |     ✓      |                2020-07-01                 | `nb` även godkänd |
-| Polska                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugisiska (Brasilien)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` även godkänd |
-| Ryska               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Spanska               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Svenska               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Språk              | Språkkod |  v3-stöd | Tillgängligt från och med v3-modell version: |       Kommentarer        |
+|:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
+| Danska                |     `da`      |     ✓     |                2019-10-01                 |                    |
+| Nederländska                 |     `nl`      |     ✓      |                2019-10-01                 |                    |
+| Engelska               |     `en`      |     ✓      |                2019-10-01                 |                    |
+| Finska               |     `fi`      |     ✓      |                2019-10-01                 |                    |
+| Franska                |     `fr`      |     ✓      |                2019-10-01                 |                    |
+| Tyska                |     `de`      |     ✓      |                2019-10-01                 |                    |
+| Italienska               |     `it`      |     ✓      |                2019-10-01                 |                    |
+| Japanska              |     `ja`      |     ✓      |                2019-10-01                 |                    |
+| Koreanska                |     `ko`      |     ✓      |                2019-10-01                 |                    |
+| Norska (bokmål)   |     `no`      |     ✓      |                2020-07-01                 | `nb` även godkänd |
+| Polska                |     `pl`      |    ✓      |                2019-10-01                 |                    |
+| Portugisiska (Brasilien)   |    `pt-BR`    |     ✓      |                2019-10-01                 |                    |
+| Portugisiska (Portugal) |    `pt-PT`    |    ✓      |                2019-10-01                 | `pt` även godkänd |
+| Ryska               |     `ru`      |     ✓      |                2019-10-01                 |                    |
+| Spanska               |     `es`      |     ✓      |                2019-10-01                 |                    |
+| Svenska               |     `sv`      |     ✓      |                2019-10-01                 |                    |
 
 #### <a name="entity-linking"></a>[Länkning av entitet](#tab/entity-linking)
 
-| Språk | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: | Kommentarer |
-|:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
-| Engelska  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
-| Spanska  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
+| Språk | Språkkod |  v3-stöd | Tillgängligt från och med v3-modell version: | Kommentarer |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| Engelska  |     `en`      |     ✓      |                2019-10-01                 |       |
+| Spanska  |     `es`      |    ✓      |                2019-10-01                 |       |
+
+#### <a name="personally-identifiable-information-pii"></a>[Personligt identifierbar information (PII)](#tab/pii)
+
+| Språk               | Språkkod | v3-stöd | Från och med v3 modell version: |       Kommentarer        |
+|:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
+| Chinese-Simplified     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` även godkänd |
+| Engelska                |     `en`      |     ✓      |               2020-07-01        |                    |
+| Franska                 |     `fr`      |     ✓      |               2021-01-15        |                    |
+| Tyska                 |     `de`      |     ✓      |               2021-01-15        |                    |
+| Italienska               |     `it`      |     ✓       |               2021-01-15        |                    |
+| Japanska              |     `ja`      |     ✓       |               2021-01-15        |                    |
+| Koreanska                |     `ko`      |     ✓       |               2021-01-15        |                    |
+| Portugisiska (Brasilien)   |    `pt-BR`    |     ✓       |               2021-01-15        |                    |
+| Portugisiska (Portugal) |    `pt-PT`    |     ✓       |               2021-01-15        | `pt` även godkänd |
+| Spanska               |     `es`      |     ✓       |               2020-04-01        |                    |
 
 #### <a name="language-detection"></a>[Språkidentifiering](#tab/language-detection)
 
@@ -222,6 +229,7 @@ Om du har innehåll som uttrycks på ett mindre vanligt språk kan du prova Spr�
 |Tibetanska|`bo`|✓|2021-01-05|
 |Tigrinja|`ti`|✓|2021-01-05|
 |Tonganska|`to`|✓|2020-09-01|
+|Turkiska|`tr`|✓|2021-01-05|
 |Turkmeniska|`tk`|✓|2021-01-05|
 |Xhosa|`xh`|✓|2021-01-05|
 |Yoruba|`yo`|✓|2021-01-05|

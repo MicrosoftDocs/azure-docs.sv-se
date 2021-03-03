@@ -85,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: Verifiera en anslutning till VPN gateway
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: Återställ en VPN gateway
+        - name: Återställa en VPN-gateway eller anslutning
           href: reset-gateway.md
         - name: Ta bort en VPN-gateway
           items:
@@ -177,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune – distribuera VPN-klientprofil
               href: vpn-profile-intune.md
+        - name: Flera autentiseringstyper
+          items:
+            - name: Azure Portal
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: Konfigurera OpenVPN-tunnel typ
@@ -205,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP-diagnostik
+          href: bgp-diagnostics.md
         - name: Konfigurera tvingad tunneltrafik
           items:
             - name: Azure PowerShell

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: e8ee45a1bf6a45be1fd976d3fb1b8aba60d2b989
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734969"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Hantera och underhålla Log Analytics-agenten för Windows och Linux
 
@@ -164,7 +164,7 @@ Följande steg visar hur du konfigurerar om Linux-agenten om du väljer att regi
 Agent tjänsten behöver inte startas om för att ändringarna ska börja gälla.
 
 ## <a name="update-proxy-settings"></a>Uppdatera proxyinställningar
-Om du vill konfigurera agenten för att kommunicera med tjänsten via en proxyserver eller [Log Analytics Gateway](../platform/gateway.md) efter distributionen använder du någon av följande metoder för att slutföra uppgiften.
+Om du vill konfigurera agenten för att kommunicera med tjänsten via en proxyserver eller [Log Analytics Gateway](./gateway.md) efter distributionen använder du någon av följande metoder för att slutföra uppgiften.
 
 ### <a name="windows-agent"></a>Windows-agent
 

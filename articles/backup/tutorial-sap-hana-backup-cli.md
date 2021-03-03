@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du säkerhetskopiera
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: ba06ef876f30dc51e04fe7491d491621f5d8e21b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746753"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710608"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Självstudie: säkerhetskopiera SAP HANA databaser i en virtuell Azure-dator med Azure CLI
 
@@ -176,9 +176,7 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 Med svaret får du jobb namnet. Det här jobb namnet kan användas för att spåra jobb status med hjälp av [AZ säkerhets kopierings jobb show](/cli/azure/backup/job#az-backup-job-show) cmdlet.
 
 >[!NOTE]
->Förutom att schemalägga en fullständig eller differentiell säkerhets kopiering kan de också aktive ras manuellt. Logg säkerhets kopior aktive ras automatiskt och hanteras av SAP HANA internt.
->
-> Stegvisa säkerhets kopieringar stöds inte för närvarande av Azure Backup.
+>Logg säkerhets kopior aktive ras automatiskt och hanteras av SAP HANA internt.
 
 ## <a name="next-steps"></a>Nästa steg
 

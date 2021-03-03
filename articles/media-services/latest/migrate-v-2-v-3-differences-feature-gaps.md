@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2fa827bc2841a0bae4c9646c8a70e42dc2b500e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702461"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Funktions luckor mellan Azure Media Services v2 och v3
 
@@ -42,7 +42,7 @@ V3-API: et har följande funktions luckor med v2-API: et. Några av de avancerad
     - Vi har lagt till stöd för ljud kanal mappning till Standard-kodaren.  Se [ljud i Media Services Encoding Swagger-dokumentationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).
     - Om du använder avancerade funktioner eller utdataformat för en licensierad produkt från tredje part, till exempel MXF eller ProRes, använder du Azure-partner lösningen från multistream, som kommer att vara transaktionell vid tiden för den 2: a tiden. Du kan också använda föreställd kommunikation eller [Bitmovin](http://bitmovin.com).
 
-- Egenskapen "tillgänglighets uppsättning" i slut punkten för direkt uppspelning i v2 stöds inte längre. Se exempelprojektet och vägledning för VOD-leverans med [hög tillgänglighet](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding) i v3-API: et.
+- Egenskapen "tillgänglighets uppsättning" i slut punkten för direkt uppspelning i v2 stöds inte längre. Se exempelprojektet och vägledning för VOD-leverans med [hög tillgänglighet](./media-services-high-availability-encoding.md) i v3-API: et.
 
 - Det går inte att ange FairPlay IV i Media Services v3. Även om det inte påverkar kunder som använder Media Services för både paketering och licens leverans, kan det vara ett problem när du använder ett DRM-system från tredje part för att leverera FairPlay-licenser (hybrid läge).
 

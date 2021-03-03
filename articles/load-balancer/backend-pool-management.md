@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 65a00cd898ef63dd3194e48ad6dd3fb73a211d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709877"
 ---
 # <a name="backend-pool-management"></a>Hantering av Server dels pooler
 Backend-poolen är en kritisk komponent i belastningsutjämnaren. Backend-poolen definierar den grupp av resurser som kommer att betjäna trafik för en specifik belastnings Utjämnings regel.
@@ -255,8 +255,16 @@ Använd IP och Virtual Network i scenarier med förifyllda backend-pooler.
 
 All hantering av backend-pooler görs direkt på objektet för Server delen som marker ATS i exemplen nedan.
 
-  >[!IMPORTANT] 
-  >Den här funktionen finns för närvarande som en förhandsversion. I [avsnittet begränsningar](#limitations) finns aktuella begränsningar för den här funktionen.
+### <a name="limitations"></a>Begränsningar
+En backend-pool som kon figurer ATS av IP-adressen har följande begränsningar:
+  * Kan endast användas för standard belastnings utjämning
+  * Begränsning på 100 IP-adresser i backend-poolen
+  * Server dels resurserna måste finnas i samma virtuella nätverk som belastningsutjämnaren
+  * En Load Balancer med IP-baserad backend-pool kan inte fungera som en privat länk tjänst
+  * Den här funktionen stöds inte för närvarande i Azure Portal
+  * ACI-behållare stöds för närvarande inte av den här funktionen
+  * Belastnings utjämning eller tjänster som upprättas av belastningsutjämnare kan inte placeras i belastningsutjämnarens backend-pool
+  * Inkommande NAT-regler kan inte anges via IP-adress
 
 ### <a name="powershell"></a>PowerShell
 Skapa ny backend-pool:
@@ -517,17 +525,6 @@ Text för JSON-begäran:
   }
 }
 ```
-
-## <a name="limitations"></a>Begränsningar
-En backend-pool som kon figurer ATS av IP-adressen har följande begränsningar:
-  * Endast standard Load Balancer
-  * Begränsning på 100 IP-adresser i backend-poolen
-  * Server dels resurserna måste finnas i samma virtuella nätverk som belastningsutjämnaren
-  * En Load Balancer med IP-baserad backend-pool kan inte fungera som en privat länk tjänst
-  * Den här funktionen stöds inte för närvarande i Azure Portal
-  * ACI-behållare stöds för närvarande inte av den här funktionen
-  * Belastnings utjämning eller tjänster som upprättas av belastningsutjämnare kan inte placeras i belastningsutjämnarens backend-pool
-  * Inkommande NAT-regler kan inte anges via IP-adress
   
 ## <a name="next-steps"></a>Nästa steg
 I den här artikeln har du lärt dig om Azure Load Balancer hantering av Server dels pooler och hur du konfigurerar en backend-pool med IP-adress och virtuellt nätverk.

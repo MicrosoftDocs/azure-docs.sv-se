@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
-ms.openlocfilehash: 47134712bb953d9194bd943e228bae681877dcaa
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099445"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741896"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Konfigurera ett ursprung för Azure frontend standard/Premium (förhands granskning)
 
@@ -60,16 +60,16 @@ Innan du kan skapa ett ursprung för Azures främre dörr standard/Premium måst
     > [!IMPORTANT]
     > Under konfigurationen validerar inte API: erna om ursprunget inte är tillgängligt från miljöer i front dörren. Se till att front dörren kan komma till ditt ursprung.
 
-1. Välj **Lägg till** för att skapa det nya ursprunget. Det skapade ursprunget ska visas i ursprungs listan med gruppen
+1. Välj **Lägg till** för att skapa det nya ursprunget. Det skapade ursprunget ska visas i listan ursprungs lista med gruppen.
   
-    :::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Skärm bild av sidan Lägg till en ursprung.":::
+    :::image type="content" source="../media/how-to-create-origin/origin-list-view.png" alt-text="Skärm bild av ursprungs läge i listvyn.":::
 
 1. Välj **Lägg** till för att lägga till gruppen original i den aktuella slut punkten. Gruppen original bör visas på panelen för ursprungs gruppen.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 Om du vill ta bort en ursprungs grupp när du inte längre behöver den, klickar du på **...** och väljer **ta bort** i list rutan.
 
-:::image type="content" source="../media/how-to-create-origin/add-origin-view.png" alt-text="Skärm bild av hur du tar bort en ursprungs grupp.":::
+:::image type="content" source="../media/how-to-create-origin/delete-origin-group.png" alt-text="Skärm bild av hur du tar bort en ursprungs grupp.":::
 
 Om du vill ta bort ett ursprung när du inte längre behöver det klickar du på **...** och väljer sedan **ta bort** i list rutan. 
 

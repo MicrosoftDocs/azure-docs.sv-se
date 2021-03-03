@@ -3,12 +3,12 @@ title: Skapa ett privat moln för Azure VMware-lösningen
 description: Steg för att skapa ett privat moln för Azure VMware-lösningar med hjälp av Azure Portal.
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 983dccfaa9ea43955bfecc68bbbe432c579d51d1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653148"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725412"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -26,8 +26,6 @@ ms.locfileid: "100653148"
    | **Resurs namn** | Namnet på ditt privata moln i Azure VMware-lösningen. |
    | **SKU** | Välj följande SKU-värde: AV36 |
    | **Värdar** | Antalet värdar som ska läggas till i det privata moln klustret. Standardvärdet är 3, som kan höjas eller sänkas efter distributionen.  |
-   | **administratörs lösen ord för vCenter** | Ange ett lösen ord för moln administratören. |
-   | **Lösen ord för NSX-T Manager** | Ange ett NSX-T-administratörs lösen ord. |
    | **Adress block** | Ange ett IP-adressblock för CIDR-nätverket för det privata molnet, till exempel 10.175.0.0/22. |
    | **Virtual Network** | Välj en Virtual Network eller skapa en ny för det privata molnet Azure VMware-lösning.  |
 

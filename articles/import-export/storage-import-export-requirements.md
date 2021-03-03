@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712614"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemkrav för Azure Import/Export
 
@@ -43,7 +43,10 @@ Tjänsten Azure import/export stöder följande typer av lagrings konton:
 
 - Standard Generell användning v2-lagrings konton (rekommenderas för de flesta scenarier)
 - Blob Storage-konton
-- Generell användning v1-lagrings konton (både klassiska eller Azure Resource Manager distributioner),
+- Generell användning v1-lagrings konton (både klassiska eller Azure Resource Manager distributioner)
+
+> [!IMPORTANT]
+> NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage stöds inte med Azure import/export.
 
 Mer information om lagrings konton finns i [Översikt över Azure Storage-konton](../storage/common/storage-account-overview.md).
 

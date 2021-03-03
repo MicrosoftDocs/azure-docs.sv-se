@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d2162a5c3d88eaae69b3a67456fdc29f19b1a79a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7a57a39dd72e2330c2adde2b471bca2f9f2e00a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725857"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Översikt över Azure-plattformsloggar
 Plattforms loggar ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. De genereras automatiskt även om du behöver konfigurera vissa plattforms loggar som ska vidarebefordras till en eller flera mål som ska behållas. Den här artikeln innehåller en översikt över plattforms loggar, inklusive vilken information de ger och hur du kan konfigurera dem för insamling och analys.
@@ -22,7 +22,7 @@ I följande tabell visas de olika plattforms loggar som är tillgängliga på ol
 
 | Loggas | Skikt | Beskrivning |
 |:---|:---|:---|
-| [Resursloggar](../platform/resource-logs.md) | Azure-resurser | Ge insikter om åtgärder som utförts i en Azure-resurs ( *data planet*), till exempel för att få en hemlighet från en Key Vault eller göra en begäran till en databas. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen.<br><br>*Resurs loggar kallades tidigare för diagnostikloggar.*  |
+| [Resursloggar](./resource-logs.md) | Azure-resurser | Ge insikter om åtgärder som utförts i en Azure-resurs ( *data planet*), till exempel för att få en hemlighet från en Key Vault eller göra en begäran till en databas. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen.<br><br>*Resurs loggar kallades tidigare för diagnostikloggar.*  |
 | [Aktivitetslogg](../essentials/activity-log.md) | Azure Subscription (Azure-prenumeration) | Ger inblick i åtgärderna för varje Azure-resurs i prenumerationen från utsidan (*hanterings planet*) utöver uppdateringar av service Health händelser. Använd aktivitets loggen för att fastställa _vad_, _vem_ och _när_ för Skriv åtgärder (skicka, skicka och ta bort) som ska vidtas för resurserna i din prenumeration. Det finns en enda aktivitets logg för varje Azure-prenumeration. |
 | [Azure Active Directory-loggar](../../active-directory/reports-monitoring/overview-reports.md) | Azure-klientorganisation |  Innehåller historiken för inloggnings aktivitet och gransknings spårning av ändringar som gjorts i Azure Active Directory för en viss klient.   |
 
@@ -44,9 +44,9 @@ Det finns olika alternativ för att visa och analysera de olika Azure-plattforms
 ## <a name="destinations"></a>Mål
 Du kan skicka plattforms loggar till en eller flera av målen i följande tabell, beroende på dina övervaknings krav. Konfigurera mål för plattforms loggar genom att [skapa en diagnostisk inställning](../essentials/diagnostic-settings.md).
 
-| Mål | Description |
+| Mål | Beskrivning |
 |:---|:---|
-| Log Analytics-arbetsyta | Analysera loggarna för alla dina Azure-resurser och dra nytta av alla funktioner som finns tillgängliga för att [Azure Monitor loggar](../platform/data-platform-logs.md) , inklusive [logg frågor](../log-query/log-query-overview.md) och [logg aviseringar](../alerts/alerts-log.md). Fäst resultatet av en logg fråga på en Azure-instrumentpanel eller ta med den i en arbets bok som en del av en interaktiv rapport. |  |
+| Log Analytics-arbetsyta | Analysera loggarna för alla dina Azure-resurser och dra nytta av alla funktioner som finns tillgängliga för att [Azure Monitor loggar](../logs/data-platform-logs.md) , inklusive [logg frågor](../logs/log-query-overview.md) och [logg aviseringar](../alerts/alerts-log.md). Fäst resultatet av en logg fråga på en Azure-instrumentpanel eller ta med den i en arbets bok som en del av en interaktiv rapport. |  |
 | Händelsehubb | Skicka plattforms logg data utanför Azure, till exempel en SIEM-plattform från tredje part eller en anpassad telemetri-plattform.
 | Azure-lagring | Arkivera loggarna för granskning eller säkerhets kopiering. |
 
@@ -61,5 +61,4 @@ Du kan skicka plattforms loggar till en eller flera av målen i följande tabell
 ## <a name="next-steps"></a>Nästa steg
 
 * [Läs mer information om aktivitets loggen](../essentials/activity-log.md)
-* [Läs mer information om resurs loggar](../platform/resource-logs.md)
-
+* [Läs mer information om resurs loggar](./resource-logs.md)

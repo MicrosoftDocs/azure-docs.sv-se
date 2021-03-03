@@ -1,5 +1,5 @@
 ---
-title: Snabb start – skapa en Azure API Management instans med CLI (för hands version)
+title: Snabb start – skapa en Azure API Management-instans med CLI
 description: Skapa en ny Azure API Management Service-instans med hjälp av Azure CLI.
 author: dlepow
 ms.service: api-management
@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 09/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 863cb6cd10664e14966898045cb2b1861ef75b9f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 72d1faac02a21f23d46eb992af1d501bca89e71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887458"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688084"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli-preview"></a>Snabb start: skapa en ny Azure API Management Service-instans med hjälp av Azure CLI (för hands version)
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-cli"></a>Snabb start: skapa en ny Azure API Management Service-instans med hjälp av Azure CLI
 
 Azure API Management (APIM) hjälper organisationer att publicera API:er till externa partner och interna utvecklare så att de kan få ut maximalt av sina data och tjänster. API Management lägger grunden till ett effektivt API-program genom engagerade utvecklare, affärsinsikter, analyser, hög säkerhet och skydd. Med APIM kan du skapa och hantera moderna API-gatewayer för befintliga Server dels tjänster var som helst. Mer information finns i [Översikt](api-management-key-concepts.md).
 
-I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av [AZ APIM](/cli/azure/apim) -kommandon i Azure CLI. Kommandona i `az apim` kommando gruppen är för närvarande i för hands version och kan ändras eller tas bort i framtida versioner.
+I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av [AZ APIM](/cli/azure/apim) -kommandon i Azure CLI.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

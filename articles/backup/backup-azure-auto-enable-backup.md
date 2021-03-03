@@ -3,18 +3,18 @@ title: Aktivera automatisk säkerhetskopiering av skapande av virtuell dator med
 description: En artikel som beskriver hur du använder Azure Policy för att automatiskt aktivera säkerhets kopiering för alla virtuella datorer som skapats inom ett angivet omfång
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896875"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707310"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Aktivera automatisk säkerhetskopiering av skapande av virtuell dator med Azure Policy
 
 En av de viktigaste ansvars områdena för en säkerhets kopierings-eller efterlevnadsprincip i en organisation är att se till att alla affärs kritiska datorer säkerhets kopie ras med lämplig kvarhållning.
 
-I dag är Azure Backup en rad inbyggda principer (med [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview)) som hjälper dig att automatiskt se till att dina virtuella Azure-datorer har kon figurer ATS för säkerhets kopiering. Beroende på hur dina säkerhets kopierings team och resurser organiseras, kan du använda någon av följande principer:
+I dag är Azure Backup en rad inbyggda principer (med [Azure policy](../governance/policy/overview.md)) som hjälper dig att automatiskt se till att dina virtuella Azure-datorer har kon figurer ATS för säkerhets kopiering. Beroende på hur dina säkerhets kopierings team och resurser organiseras, kan du använda någon av följande principer:
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Princip 1 – Konfigurera säkerhets kopiering på virtuella datorer utan en tilldelad tagg till ett befintligt Recovery Services-valv på samma plats
 
@@ -29,7 +29,7 @@ Om du ordnar program i dedikerade resurs grupper och vill att de ska säkerhets 
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Princip 4-[för hands version] Konfigurera säkerhets kopiering på virtuella datorer med en specifik tagg till ett nytt Recovery Services-valv med en standard princip
 Den här principen fungerar på samma sätt som princip 3 ovan, men den enda skillnaden är att du kan använda den här principen för att **ta** med virtuella datorer som innehåller en viss tagg i omfånget för den här principen. 
 
-Förutom ovan visas Azure Backup även en princip för [endast granskning](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) – **Azure Backup ska vara aktive rad för Virtual Machines**. Den här principen identifierar vilka virtuella datorer som inte har säkerhets kopior aktiverade, men som inte automatiskt konfigurerar säkerhets kopior för dessa virtuella datorer. Detta är användbart när du bara vill utvärdera den övergripande kompatibiliteten för de virtuella datorerna, men inte att du behöver vidta några åtgärder direkt.
+Förutom ovan visas Azure Backup även en princip för [endast granskning](../governance/policy/concepts/effects.md#audit) – **Azure Backup ska vara aktive rad för Virtual Machines**. Den här principen identifierar vilka virtuella datorer som inte har säkerhets kopior aktiverade, men som inte automatiskt konfigurerar säkerhets kopior för dessa virtuella datorer. Detta är användbart när du bara vill utvärdera den övergripande kompatibiliteten för de virtuella datorerna, men inte att du behöver vidta några åtgärder direkt.
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 

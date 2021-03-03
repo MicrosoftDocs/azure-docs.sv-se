@@ -4,15 +4,15 @@ description: Den här artikeln förklarar hur du genererar och samlar in struktu
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/05/2021
 ms.author: brendanm
 ms.custom: devx-track-java
-ms.openlocfilehash: c5c35fe8a352a1bc3467e9512a7fcbc068375bfb
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e846da81444ae1632cb7f9a4cd413bc3f9b7b232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701951"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Strukturerad program logg för Azure våren Cloud
 
@@ -23,7 +23,7 @@ För att förbättra logg frågans upplevelse måste en program logg vara i JSON
 
 **Krav för JSON-schema:**
 
-| JSON-nyckel      | JSON-värdetyp|  Obligatorisk | Kolumn i Log Analytics| Description |
+| JSON-nyckel      | JSON-värdetyp|  Obligatorisk | Kolumn i Log Analytics| Beskrivning |
 | --------------| ------------|-----------|-----------------|--------------------------|
 | timestamp     | sträng      |     Ja   | AppTimestamp    | tidsstämpel i UTC-format  |
 | loggar        | sträng      |     No    | Loggar          | loggar                   |
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om logg frågan finns i [Kom igång med logg frågor i Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* Mer information om logg frågan finns i [Kom igång med logg frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)

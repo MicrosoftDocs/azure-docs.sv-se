@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91761840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740910"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Självstudie: Konfigurera en virtuell nätverksgateway för ExpressRoute med hjälp av Azure Portal
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ Stegen för den här aktiviteten använder ett VNet baserat på värdena i följ
 
 Du kan visa en [video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) om de här stegen innan du påbörjar konfigurationen.
 
+> [!IMPORTANT]
+> IPv6-stöd för privat peering är för närvarande en **offentlig för hands version**. Om du vill ansluta ditt virtuella nätverk till en ExpressRoute-krets med IPv6-baserad privat peering konfigurerad kontrollerar du att ditt virtuella nätverk är dubbel stack och följer rikt linjerna för [IPv6 för Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> 
+> 
+
 ## <a name="create-the-gateway-subnet"></a>Skapa gateway-undernätet
 
 1. I [portalen](https://portal.azure.com)navigerar du till det virtuella Resource Manager-nätverket för vilket du vill skapa en virtuell nätverksgateway.
@@ -58,9 +63,13 @@ Du kan visa en [video](https://azure.microsoft.com/documentation/videos/azure-ex
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Lägg till gateway-undernätet":::
 
-1. **Namnet** på undernätet fylls automatiskt i med värdet GatewaySubnet. Det här värdet krävs för att Azure ska kunna identifiera undernätet som gateway-undernätet. Justera värdena för automatiskt ifyllt **adress intervall** så att de överensstämmer med dina konfigurations krav. Vi rekommenderar att du skapar ett Gateway-undernät med en/27 eller större (/26,/25 osv.). Välj **OK** för att spara värdena och skapa Gateway-undernätet.
+1. **Namnet** på undernätet fylls automatiskt i med värdet GatewaySubnet. Det här värdet krävs för att Azure ska kunna identifiera undernätet som gateway-undernätet. Justera värdena för automatiskt ifyllt **adress intervall** så att de överensstämmer med dina konfigurations krav. Vi rekommenderar att du skapar ett Gateway-undernät med en/27 eller större (/26,/25 osv.).
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Lägga till ett undernät":::
+    Om du använder ett virtuellt nätverk med dubbla stackar och planerar att använda IPv6-baserad privat peering över ExpressRoute, klickar du på **Lägg till ip6-adress utrymme** och värden för **IPv6** -adressintervall.
+
+Välj **OK** för att spara värdena och skapa Gateway-undernätet.
+
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Skapa den virtuella nätverksgatewayen
 
@@ -78,6 +87,11 @@ Du kan visa en [video](https://azure.microsoft.com/documentation/videos/azure-ex
     | Virtuellt nätverk | Välj *TestVNet*. |
     | Offentlig IP-adress | Välj **Skapa ny**.|
     | Namn på offentlig IP-adress | Ange ett namn för den offentliga IP-adressen. |
+
+    > [!IMPORTANT]
+    > Om du planerar att använda IPv6-baserad privat peering över ExpressRoute, se till att välja en AZ SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) för **SKU**.
+    > 
+    > 
 
 1. Välj **Granska + skapa** och sedan **skapa** för att börja skapa gatewayen. Inställningarna verifieras och gatewayen distribueras. Det kan ta upp till 45 minuter att skapa en virtuell nätverksgateway.
 

@@ -1,22 +1,21 @@
 ---
 title: Prestanda övervakare i Övervakare av nätverksprestanda
 description: Prestanda övervaknings funktionen i Övervakare av nätverksprestanda hjälper dig att övervaka nätverks anslutningen mellan olika platser i nätverket. Du kan övervaka moln distributioner och lokala platser, flera data Center och avdelnings kontor och verksamhets kritiska program på flera nivåer eller mikrotjänster.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 5335882c11ee6a1a7352ef3dc9822cfa88eda196
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728630"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Övervakare av nätverksprestanda lösning: prestanda övervakning
 
 > [!IMPORTANT]
-> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Prestanda övervaknings funktionen i [övervakare av nätverksprestanda](network-performance-monitor.md) hjälper dig att övervaka nätverks anslutningen mellan olika platser i nätverket. Du kan övervaka moln distributioner och lokala platser, flera data Center och avdelnings kontor och verksamhets kritiska program på flera nivåer eller mikrotjänster. Med prestanda övervakaren kan du identifiera nätverks problem innan användarna klagar. Viktiga fördelar är att du kan: 
 
@@ -132,4 +131,3 @@ I följande bild visas den bakomliggande orsaken till problemen med de olika del
 
 ## <a name="next-steps"></a>Nästa steg
 [Sök i loggar](../logs/log-query-overview.md) om du vill visa detaljerade data poster för nätverks prestanda.
-

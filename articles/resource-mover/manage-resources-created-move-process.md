@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388489"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727047"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>Hantera resurser som har skapats för flytt av virtuella datorer
 
@@ -24,7 +24,7 @@ När du har flyttat virtuella datorer över flera regioner finns det ett antal r
 
 Ta bort flyttnings samlingen manuellt och Site Recovery resurser som skapats för flyttning av den virtuella datorn.
 
-1. Granska resurserna i resurs gruppen ```ResourceMoverRG-<sourceregion>-<target-region>``` .
+1. Granska resurserna i resurs gruppen ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>``` .
 2. Kontrol lera att den virtuella datorn och alla andra käll resurser i flyttnings samlingen har flyttats/tagits bort. Detta säkerställer att det inte finns några väntande resurser som använder dem.
 2. Ta bort dessa resurser.
 

@@ -1,19 +1,18 @@
 ---
 title: Information om princip definitions strukturen
 description: Beskriver hur princip definitioner används för att upprätta konventioner för Azure-resurser i din organisation.
-ms.date: 10/22/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 741cfce56554e05d0c5f5a9242a33502b8a6fbe6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699427"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy-definitionsstruktur
 
-Azure Policy skapar konventioner för resurser. Princip definitioner [beskriver kraven på resursanvändningen och vilken](#conditions) påverkan som ska vidtas om ett villkor är uppfyllt. Ett villkor jämför ett resurs egenskaps [fält](#fields) eller ett [värde](#value) till ett värde som krävs. Resurs egenskaps fält öppnas med hjälp av [alias](#aliases). När ett resurs egenskaps fält är en matris kan ett särskilt [mat ris Ali Aset](#understanding-the--alias) användas för att välja värden från alla mat ris medlemmar och tillämpa ett villkor för var och en.
-Läs mer om [villkor](#conditions).
+Azure Policy skapar konventioner för resurser. Princip definitioner [beskriver kraven på resursanvändningen och vilken](#conditions) påverkan som ska vidtas om ett villkor är uppfyllt. Ett villkor jämför ett resurs egenskaps [fält](#fields) eller ett [värde](#value) till ett värde som krävs. Resurs egenskaps fält öppnas med hjälp av [alias](#aliases). När ett resurs egenskaps fält är en matris kan ett särskilt [mat ris Ali Aset](#understanding-the--alias) användas för att välja värden från alla mat ris medlemmar och tillämpa ett villkor för var och en. Läs mer om [villkor](#conditions).
 
 Genom att definiera konventioner kan du kontrol lera kostnaderna och enklare hantera dina resurser. Du kan till exempel ange att endast vissa typer av virtuella datorer ska tillåtas. Du kan också kräva att resurserna har en viss tagg. Princip tilldelningar ärvs av underordnade resurser. Om en princip tilldelning tillämpas på en resurs grupp, gäller den för alla resurser i resurs gruppen.
 
@@ -118,7 +117,7 @@ Följande resurs leverantörs lägen stöds för närvarande som en för **hands
 
 ## <a name="metadata"></a>Metadata
 
-Den valfria `metadata` egenskapen innehåller information om princip definitionen. Kunder kan definiera egenskaper och värden som är användbara för deras organisation i `metadata` . Det finns dock några _gemensamma_ egenskaper som används av Azure policy och i inbyggda moduler.
+Den valfria `metadata` egenskapen innehåller information om princip definitionen. Kunder kan definiera egenskaper och värden som är användbara för deras organisation i `metadata` . Det finns dock några _gemensamma_ egenskaper som används av Azure policy och i inbyggda moduler. Varje `metadata` egenskap innehåller en gräns på 1024 tecken.
 
 ### <a name="common-metadata-properties"></a>Gemensamma egenskaper för metadata
 
@@ -189,7 +188,7 @@ Det här exemplet refererar till den **allowedLocations** -parameter som visades
 
 ### <a name="strongtype"></a>strongType
 
-I `metadata` egenskapen kan du använda **strongType** för att ange en lista med alternativ för flera val i Azure Portal. **strongType** kan vara en _resurs typ_ som stöds eller ett tillåtet värde. Använd [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)för att avgöra om en _resurs typ_ är giltig för **strongType**. Formatet för en _resurs typ_ **strongType** är `<Resource Provider>/<Resource Type>` . Ett exempel är `Microsoft.Network/virtualNetworks/subnets`.
+I `metadata` egenskapen kan du använda **strongType** för att ange en lista med alternativ för flera val i Azure Portal. **strongType** kan vara en _resurs typ_ som stöds eller ett tillåtet värde. Använd [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)för att avgöra om en _resurs typ_ är giltig för **strongType**. Formatet för en _resurs typ_ **strongType** är `<Resource Provider>/<Resource Type>` . Till exempel `Microsoft.Network/virtualNetworks/subnets`.
 
 Vissa _resurs typer_ som inte returneras av **Get-AzResourceProvider** stöds. Dessa typer är:
 
@@ -286,15 +285,13 @@ Ett villkor utvärderar om ett värde uppfyller vissa villkor. De villkor som st
 
 För **mindre**, **lessOrEquals**, **större** och **större**, om egenskaps typen inte matchar villkors typen, genereras ett fel. Sträng jämförelser görs med `InvariantCultureIgnoreCase` .
 
-När du använder **gilla** -och **notLike** -villkoren anger du ett jokertecken `*` i värdet.
-Värdet får inte ha fler än ett jokertecken `*` .
+När du använder **gilla** -och **notLike** -villkoren anger du ett jokertecken `*` i värdet. Värdet får inte ha fler än ett jokertecken `*` .
 
 När du använder **matchnings** -och **notMatch** -villkor, anger `#` du för att matcha en siffra, `?` för en bokstav, för `.` att matcha alla tecken och andra tecken som ska matcha det faktiska tecknet. Även om **match** -och **notMatch** är Skift läges känsliga, är alla andra villkor som utvärderar en _stringValue_ Skift läges känsliga. Skift läges känsliga alternativ är tillgängliga i **matchInsensitively** och **notMatchInsensitively**.
 
 ### <a name="fields"></a>Fält
 
-Villkor som utvärderar om värdena för egenskaper i resurs begär ande nytto Last uppfyller vissa villkor kan skapas med ett **fält** uttryck.
-Följande fält stöds:
+Villkor som utvärderar om värdena för egenskaper i resurs begär ande nytto Last uppfyller vissa villkor kan skapas med ett **fält** uttryck. Följande fält stöds:
 
 - `name`
 - `fullName`
@@ -324,8 +321,7 @@ Följande fält stöds:
 > `tags.<tagName>`, `tags[tagName]` , och `tags[tag.with.dots]` är fortfarande acceptabla sätt att deklarera ett Tags-fält. De prioriterade uttrycken är dock de som anges ovan.
 
 > [!NOTE]
-> I **fält** uttryck som refererar till **\[ \* \] alias** utvärderas varje element i matrisen individuellt med logiska element **och** mellan element.
-> Mer information finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+> I **fält** uttryck som refererar till **\[ \* \] alias** utvärderas varje element i matrisen individuellt med logiska element **och** mellan element. Mer information finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Använda taggar med parametrar
 
@@ -472,6 +468,7 @@ Följande egenskaper används med **antal fält**:
 Mer information om hur du arbetar med mat ris egenskaper i Azure Policy, inklusive detaljerad förklaring om hur ett **fält räknar** uttryck utvärderas, finns i [referera till mat ris resurs egenskaper](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="value-count"></a>Antal värden
+
 Räkna hur många medlemmar i en matris som uppfyller ett villkor. Matrisen kan vara en literal matris eller en [referens till en mat ris parameter](#using-a-parameter-value). Strukturen för **värde räknar** uttryck är:
 
 ```json
@@ -500,20 +497,20 @@ Följande gränser tillämpas:
 
 #### <a name="the-current-function"></a>Aktuell funktion
 
-`current()`Funktionen är endast tillgänglig i `count.where` villkoret. Den returnerar värdet för den mat ris medlem som för närvarande räknas upp av en utvärdering av **Count** -uttrycket.
+`current()`Funktionen är endast tillgänglig i `count.where` villkoret. Den returnerar värdet för den mat ris medlem som för närvarande räknas upp av utvärderingen av **Count** -uttrycket.
 
 **Användning av värde antal**
 
 - `current(<index name defined in count.name>)`. Exempel: `current('arrayMember')`.
-- `current()`. Tillåts bara när uttrycket **värde Count** inte är underordnat ett annat **Count** -uttryck. Returnerar samma värde som ovan.
+- `current()`. Tillåts endast när **värdet Count** -uttrycket inte är underordnat ett annat **Count** -uttryck. Returnerar samma värde som ovan.
 
 Om det värde som returneras av anropet är ett objekt, stöds egenskaps åtkomst. Exempel: `current('objectArrayMember').property`.
 
 **Användning av fält antal**
 
-- `current(<the array alias defined in count.field>)`. Ett exempel är `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current(<the array alias defined in count.field>)`. Till exempel `current('Microsoft.Test/resource/enumeratedArray[*]')`.
 - `current()`. Tillåts endast om **fältet Count** -uttryck inte är underordnat ett annat **Count** -uttryck. Returnerar samma värde som ovan.
-- `current(<alias of a property of the array member>)`. Ett exempel är `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+- `current(<alias of a property of the array member>)`. Till exempel `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
 
 #### <a name="field-count-examples"></a>Exempel på fält antal
 
@@ -600,7 +597,7 @@ Exempel 5: kontrol lera att minst en mat ris medlem matchar flera egenskaper i v
 }
 ```
 
-Exempel 6: `current()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen i en template-funktion. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte är under CIDR-intervallet 10.0.0.0/24.
+Exempel 6: `current()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen i en template-funktion. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte ligger under CIDR-intervallet 10.0.0.0/24.
 
 ```json
 {
@@ -615,7 +612,7 @@ Exempel 6: `current()` funktionen use inuti `where` villkoren för att få åtko
 }
 ```
 
-Exempel 7: `field()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte är under CIDR-intervallet 10.0.0.0/24.
+Exempel 7: `field()` funktionen use inuti `where` villkoren för att få åtkomst till värdet för den aktuella uppräknade mat ris medlemmen. Det här tillståndet kontrollerar om ett virtuellt nätverk innehåller ett adressprefix som inte ligger under CIDR-intervallet 10.0.0.0/24.
 
 ```json
 {
@@ -679,7 +676,7 @@ Exempel 3: kontrol lera om resurs namnet matchar något av de angivna namn möns
 }
 ```
 
-Exempel 4: kontrol lera om något av de virtuella nätverks adress prefixen inte finns med i listan över godkända prefix.
+Exempel 4: kontrol lera om något av prefixen för virtuella nätverks adresser inte finns med i listan över godkända prefix.
 
 ```json
 {
@@ -769,7 +766,7 @@ Azure Policy stöder följande typer av påverkan:
 - **Neka**: genererar en händelse i aktivitets loggen och Miss lyckas med begäran
 - **DeployIfNotExists**: distribuerar en relaterad resurs om den inte redan finns
 - **Disabled**: utvärderar inte resurser för efterlevnad för princip regeln
-- **Ändra**: lägger till, uppdaterar eller tar bort definierade taggar från en resurs
+- **Ändra**: lägger till, uppdaterar eller tar bort definierade taggar från en resurs eller prenumeration
 - **EnforceOPAConstraint** (inaktuell): konfigurerar styrenheten för öppna princip agent med Gatekeeper v3 för självhanterade Kubernetes-kluster på Azure
 - **EnforceRegoPolicy** (inaktuell): konfigurerar styrenheten för öppna Policy Agent-inspelare med Gatekeeper v2 i Azure Kubernetes-tjänsten
 
@@ -822,18 +819,18 @@ Följande funktioner är endast tillgängliga i princip regler:
   ```
 
 - `ipRangeContains(range, targetRange)`
-    - **intervall**: [required] sträng-sträng som anger ett intervall med IP-adresser.
-    - **targetRange**: [required] sträng sträng som anger ett intervall med IP-adresser.
+  - **intervall**: [required] sträng-sträng som anger ett intervall med IP-adresser.
+  - **targetRange**: [required] sträng sträng som anger ett intervall med IP-adresser.
 
-    Returnerar om det angivna IP-adressintervallet innehåller mål-IP-adressintervallet. Tomma intervall eller blandning mellan IP-familjer tillåts inte och resulterar i ett utvärderings problem.
+  Returnerar om det angivna IP-adressintervallet innehåller mål-IP-adressintervallet. Tomma intervall eller blandning mellan IP-familjer tillåts inte och resulterar i ett utvärderings problem.
 
-    Format som stöds:
-    - Enskild IP-adress (exempel: `10.0.0.0` , `2001:0DB8::3:FFFE` )
-    - CIDR-intervall (exempel: `10.0.0.0/24` , `2001:0DB8::/110` )
-    - Intervall som definieras av start-och slut-IP-adresser (exempel: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
+  Format som stöds:
+  - Enskild IP-adress (exempel: `10.0.0.0` , `2001:0DB8::3:FFFE` )
+  - CIDR-intervall (exempel: `10.0.0.0/24` , `2001:0DB8::/110` )
+  - Intervall som definieras av start-och slut-IP-adresser (exempel: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
 - `current(indexName)`
-    - Special-funktion som bara kan användas inuti [Count-uttryck](#count).
+  - Special-funktion som bara kan användas inuti [Count-uttryck](#count).
 
 #### <a name="policy-function-example"></a>Exempel på princip funktion
 
@@ -918,7 +915,7 @@ Aliaset "normal" representerar fältet som ett enda värde. Det här fältet är
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | Elementen i `ipRules` matrisen. |
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | Värdena för `action` egenskapen från varje element i `ipRules` matrisen. |
 
-När du använder i ett [fält](#fields) villkor gör mat ris Ali Aset det möjligt att jämföra varje enskilt mat ris element med ett målvärde. När det används med [Count](#count) -uttryck är det möjligt att:
+När du använder i ett [fält](#fields) villkor gör mat ris alias det möjligt att jämföra varje enskilt mat ris element med ett målvärde. När det används med [Count](#count) -uttryck är det möjligt att:
 
 - Kontrol lera storleken på en matris
 - Kontrol lera om all\any\none för mat ris element uppfyller ett komplext villkor

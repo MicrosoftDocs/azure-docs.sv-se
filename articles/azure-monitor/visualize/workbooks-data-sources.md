@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: ee4436d2b8445f2a1d368fb6c76e04d1ec790d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 862c6c5253c1bb4481476b67c7cfb203c2568e24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625691"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700583"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor arbets böcker data källor
 
@@ -34,7 +34,7 @@ Arbets boks författare kan enkelt fråga över flera resurser som skapar en ver
 
 ## <a name="metrics"></a>Mått
 
-Azure-resurser genererar [mått](../platform/data-platform-metrics.md) som kan nås via arbets böcker. Mått kan nås i arbets böcker via en specialiserad kontroll som gör att du kan ange mål resurserna, önskade mått och deras agg regering. Dessa data kan sedan ritas i diagram eller rutnät.
+Azure-resurser genererar [mått](../essentials/data-platform-metrics.md) som kan nås via arbets böcker. Mått kan nås i arbets böcker via en specialiserad kontroll som gör att du kan ange mål resurserna, önskade mått och deras agg regering. Dessa data kan sedan ritas i diagram eller rutnät.
 
 ![Skärm bild av mått diagram för arbets böcker med processor användning](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -145,6 +145,6 @@ Den här providern stöder [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång](../platform/workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
-* [Kontrol lera](../platform/workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.
-* [Tips för Log Analytics optimering av frågor](../log-query/query-optimization.md)
+* [Kom igång](./workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
+* [Kontrol lera](./workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.
+* [Tips för Log Analytics optimering av frågor](../logs/query-optimization.md)

@@ -4,14 +4,14 @@ description: Lär dig hur du skapar en logisk app-åtgärd för att bearbeta Azu
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/19/2021
 ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: adef1f729cbecd08b2cf99231423287bdc4c6ae0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701186"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Så här utlöser du komplexa åtgärder med Azure Monitor aviseringar
 
@@ -19,7 +19,7 @@ Den här artikeln visar hur du konfigurerar och utlöser en Logic app för att s
 
 ## <a name="overview"></a>Översikt
 
-När en Azure Monitor-avisering utlöses anropar den en [Åtgärds grupp](../platform/action-groups.md). Med åtgärds grupper kan du utlösa en eller flera åtgärder för att meddela andra om en avisering och även åtgärda det.
+När en Azure Monitor-avisering utlöses anropar den en [Åtgärds grupp](./action-groups.md). Med åtgärds grupper kan du utlösa en eller flera åtgärder för att meddela andra om en avisering och även åtgärda det.
 
 Den allmänna processen är:
 
@@ -35,29 +35,15 @@ Processen påminner om du vill att Logic app ska utföra en annan åtgärd.
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Skapa en aktivitets logg avisering: administrativ
 
-1.  I Azure Portal väljer du **skapa en resurs** i det övre vänstra hörnet.
+1. [Skapa en Logic app](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  Sök efter och välj **Logic app** och välj sedan **skapa**.
+2.  Välj utlösaren: **när en HTTP-begäran tas emot**.
 
-3.  **Namnge din Logic app, Välj** en **resurs grupp** och så vidare.
+1. I dialog rutan **när en HTTP-begäran tas emot** väljer **du Använd exempel nytto last för att generera schemat**.
 
-    ![Skapa en logikapp](media/action-groups-logic-app/create-logic-app-dialog.png "Skapa en logikapp")
+    ![Skärm bild som visar dialog rutan när en H T T P P-begäran och den använda exempel nytto lasten för att generera schema opion har valts. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  Välj **skapa** för att skapa Logic-appen. Ett popup-meddelande indikerar att Logic-appen har skapats. Välj **Starta resurs** för att öppna **Logic Apps designer**.
-
-5.  Välj utlösaren: **när en HTTP-begäran tas emot**.
-
-    ![Utlösare för logikappar](media/action-groups-logic-app/logic-app-triggers.png "Utlösare för logikappar")
-
-6.  Välj **Redigera** för att ändra utlösaren för http-begäran.
-
-    ![Utlösare för HTTP-begäran](media/action-groups-logic-app/http-request-trigger-shape.png "Utlösare för HTTP-begäran")
-
-7.  Välj **Generera schemat genom att använda en exempelnyttolast**.
-
-    ![Använda en exempel nytto Last](media/action-groups-logic-app/use-sample-payload-button.png "Använda en exempel nytto Last")
-
-8.  Kopiera och klistra in följande exempel nytto Last i dialog rutan:
+3.  Kopiera och klistra in följande exempel nytto Last i dialog rutan:
 
     ```json
         {
@@ -128,7 +114,7 @@ Processen påminner om du vill att Logic app ska utföra en annan åtgärd.
 
 14. Överst i **Logic Apps designer** väljer du **Spara** för att spara din Logic app.
 
-15. Öppna den befintliga åtgärds gruppen och Lägg till en åtgärd som refererar till Logic app. Om du inte har en befintlig åtgärds grupp kan du läsa [skapa och hantera åtgärds grupper i Azure Portal](../platform/action-groups.md) för att skapa en. Glöm inte att spara ändringarna.
+15. Öppna den befintliga åtgärds gruppen och Lägg till en åtgärd som refererar till Logic app. Om du inte har en befintlig åtgärds grupp kan du läsa [skapa och hantera åtgärds grupper i Azure Portal](./action-groups.md) för att skapa en. Glöm inte att spara ändringarna.
 
     ![Uppdatera åtgärds gruppen](media/action-groups-logic-app/update-action-group.png "Uppdatera åtgärds gruppen")
 
@@ -138,8 +124,8 @@ Nästa gången en avisering anropar din åtgärds grupp, anropas din Logic Apps.
 
 Azure Service Health poster ingår i aktivitets loggen. Processen för att skapa aviseringen liknar att [skapa en aktivitets logg avisering](#create-an-activity-log-alert-administrative), men med några få ändringar:
 
-- Steg 1 till 7 är desamma.
-- I steg 8 använder du följande exempel nytto last för utlösaren för HTTP-begäran:
+- Steg 1 till 3 är desamma.
+- I steg 4 använder du följande exempel nytto last för utlösare för HTTP-begäran:
 
     ```json
     {
@@ -183,8 +169,8 @@ Azure Service Health poster ingår i aktivitets loggen. Processen för att skapa
     }
     ```
 
--  Steg 9 och 10 är desamma.
--  I steg 11 till 14 använder du följande process:
+-  Steg 5 och 6 är desamma.
+-  I steg 7 till 11 använder du följande process:
 
    1. Välj **+** **nytt steg** och välj sedan **Lägg till ett villkor**. Ange följande villkor så att Logic app bara körs när indatan matchar värdena nedan.  När du anger version svärdet i text rutan sätter du citat tecken runt dem ("0.1.1") för att se till att den utvärderas som en sträng och inte en numerisk typ.  Systemet visar inte citat tecknen om du återgår till sidan, men den underliggande koden behåller fortfarande sträng typen.   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +212,8 @@ Azure Service Health poster ingår i aktivitets loggen. Processen för att skapa
 
 Processen för att skapa en måtta aviseringar liknar att [skapa en aktivitets logg avisering](#create-an-activity-log-alert-administrative), men med några få ändringar:
 
-- Steg 1 till 7 är desamma.
-- I steg 8 använder du följande exempel nytto last för utlösaren för HTTP-begäran:
+- Steg 1 till 3 är desamma.
+- I steg 4 använder du följande exempel nytto last för utlösare för HTTP-begäran:
 
     ```json
     {
@@ -271,8 +257,8 @@ Processen för att skapa en måtta aviseringar liknar att [skapa en aktivitets l
     }
     ```
 
-- Steg 9 och 10 är desamma.
-- I steg 11 till 14 använder du följande process:
+- Steg 5 och 6 är desamma.
+- I steg 7 till 11 använder du följande process:
 
   1. Välj **+** **nytt steg** och välj sedan **Lägg till ett villkor**. Ange följande villkor så att Logic app bara körs när indatan matchar dessa värden nedan. När du anger version svärdet i text rutan sätter du citat tecken runt dem ("2,0") för att se till att den utvärderas som en sträng och inte en numerisk typ.  Systemet visar inte citat tecknen om du återgår till sidan, men den underliggande koden behåller fortfarande sträng typen. 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +280,6 @@ Processen för att skapa en måtta aviseringar liknar att [skapa en aktivitets l
 Logic Apps har flera olika anslutningar som gör att du kan utlösa åtgärder i en mängd olika program och databaser. Slack, SQL Server, Oracle, Salesforce, är bara några exempel. Mer information om anslutningar finns i [Logic app-kopplingar](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Nästa steg
-* Få en [Översikt över Azure aktivitets logg aviseringar](../platform/alerts-overview.md) och lär dig hur du tar emot aviseringar.  
+* Få en [Översikt över Azure aktivitets logg aviseringar](./alerts-overview.md) och lär dig hur du tar emot aviseringar.  
 * Lär dig hur du [konfigurerar aviseringar när ett Azure Service Health-meddelande publiceras](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Läs mer om [Åtgärds grupper](../platform/action-groups.md).
-
+* Läs mer om [Åtgärds grupper](./action-groups.md).

@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724293"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Avancerad attack identifiering i Multistage i Azure Sentinel
 
-
 > [!IMPORTANT]
-> Vissa fusions funktioner i Azure Sentinel är för närvarande en **offentlig för hands version**.
-> Dessa funktioner tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Vissa fusions identifieringar (se de som anges nedan) finns för närvarande i för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
 
 Genom att använda fusions teknik som baseras på maskin inlärning kan Azure Sentinel automatiskt identifiera attacker med flera steg genom att identifiera kombinationer av avvikande beteenden och misstänkta aktiviteter som observeras i olika steg i Kill-kedjan. På grund av dessa identifieringar genererar Azure Sentinel incidenter som annars skulle vara svåra att fånga. Dessa incidenter består av två eller flera aviseringar eller aktiviteter. Som design är dessa incidenter låg volym, hög åter givning och hög allvarlighets grad.
 
@@ -60,12 +58,12 @@ Som nämnts ovan, eftersom fusionen korrelerar flera säkerhets aviseringar frå
 Alla data källor som anges måste matas in med de associerade Azure Sentinel-dataanslutningarna för att kunna aktivera dessa scenarier med fusions drivna angrepp.
 
 > [!NOTE]
-> Några av dessa scenarier finns i **offentlig för hands version**. De kommer att anges.
+> Några av dessa scenarier är i för **hands version**. De kommer att anges.
 
 ## <a name="compute-resource-abuse"></a>Missbruk av beräknings resurser
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>Flera aktiviteter för att skapa virtuella datorer efter misstänkt Azure Active Directory inloggning
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, påverkan 
 
@@ -214,7 +212,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Misstänkta regler för att ändra inkorgen efter misstänkt Azure AD-inloggning
 Det här scenariot hör till två hot klassificeringar i den här listan: **data exfiltrering** och **lateral förflyttning**. För tydlighetens skull visas den i båda avsnitten.
 
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, lateral förflyttning, exfiltrering
 
@@ -235,7 +233,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 - **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till misstänkt ändrings regel för Inkorgen**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>Flera Power BI rapport delnings aktiviteter efter misstänkt Azure AD-inloggning 
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, exfiltrering 
 
@@ -256,7 +254,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 - **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till flera Power BI rapport delnings aktiviteter**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>Misstänkt Power BI rapport delning efter misstänkt Azure AD-inloggning
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, exfiltrering 
 
@@ -299,7 +297,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 - **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till Mass borttagning av filer**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>Misstänkt e-post borttagnings aktivitet efter misstänkt Azure AD-inloggning
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, påverkan 
 
@@ -322,7 +320,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ## <a name="denial-of-service"></a>Denial of Service
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>Flera virtuella dator borttagnings aktiviteter efter misstänkt Azure AD-inloggning
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, påverkan
 
@@ -367,7 +365,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>Misstänkta regler för att ändra inkorgen efter misstänkt Azure AD-inloggning
 Det här scenariot hör till två hot klassificeringar i den här listan: **lateral förflyttning** och **data exfiltrering**. För tydlighetens skull visas den i båda avsnitten.
 
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, lateral förflyttning, exfiltrering
 
@@ -412,7 +410,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ## <a name="malicious-execution-with-legitimate-process"></a>Skadlig körning med en legitim process
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell gjorde en misstänkt nätverks anslutning, följt av avvikande trafik som flaggats av Palo-nätverkets brand vägg.
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Projektering
 
@@ -423,7 +421,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 **Beskrivning:** Fusions incidenter av den här typen indikerar att en utgående anslutningsbegäran gjordes via ett PowerShell-kommando och följer detta, vilket upptäcktes genom att avvikande inkommande aktivitet upptäcktes av brand väggen för Palo-nätverk. Detta ger en indikation på att en angripare har troligt vis fått åtkomst till nätverket och försöker utföra skadliga åtgärder. Anslutnings försök av PowerShell som följer det här mönstret kan vara en indikation på kommando-och kontroll aktivitet för skadlig kod, begär Anden om att hämta ytterligare skadlig kod eller en angripare som upprättar en fjärran sluten interaktiv åtkomst. Den här aktiviteten kan vara en legitim användning av PowerShell, precis som med alla "lever av" mark "-angrepp. Körningen av PowerShell-kommandot följt av misstänkt inkommande brand Väggs aktivitet ökar dock förtroendet att PowerShell används på ett skadligt sätt och bör undersökas vidare. I Palo-löpeld-loggar fokuserar Azure Sentinel på [hot loggar](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)och trafiken betraktas som misstänkt när hot tillåts (misstänkta data, filer, överbelastningar, paket, genomsökningar, spionprogram, webb adresser, virus, sårbarheter,-virus, Wildfires). Referera också till den Palo-som motsvarar [hotet/innehålls typen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) som visas i beskrivningen av fusions incidenten för ytterligare information om aviseringar.
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Misstänkt fjärr-WMI-körning följt av avvikande trafik som flaggats av Palo-nätverks brand vägg
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Körning, identifiering
 
@@ -456,7 +454,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ## <a name="malware-c2-or-download"></a>C2 eller hämtning av skadlig kod
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Nätverks förfrågan till TOR anonymisering-tjänsten följt av avvikande trafik som flaggats av Palo-nätverkets brand vägg.
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Kommando och kontroll
 
@@ -467,7 +465,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 **Beskrivning:** Fusions incidenter av den här typen indikerar att en utgående anslutningsbegäran gjordes till TOR anonymisering-tjänsten och följer detta, identifierade avvikande inkommande aktivitet av brand väggen för Palo-nätverks brand väggen. Detta ger en indikation på att en angripare har troligt vis fått åtkomst till nätverket och försöker dölja sina åtgärder och avsikter. Anslutningar till TOR-nätverket efter det här mönstret kan vara en indikation på kommando-och kontroll aktivitet för skadlig kod, begär Anden om att hämta ytterligare skadlig kod eller en angripare som upprättar en fjärran sluten interaktiv åtkomst. I Palo-löpeld-loggar fokuserar Azure Sentinel på [hot loggar](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)och trafiken betraktas som misstänkt när hot tillåts (misstänkta data, filer, överbelastningar, paket, genomsökningar, spionprogram, webb adresser, virus, sårbarheter,-virus, Wildfires). Referera också till den Palo-som motsvarar [hotet/innehålls typen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) som visas i beskrivningen av fusions incidenten för ytterligare information om aviseringar.
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Utgående anslutning till IP med en historik över obehöriga åtkomst försök följt av avvikande trafik som flaggats av Palo-nätverks brand vägg
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Kommando och kontroll
 
@@ -502,7 +500,7 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 ## <a name="remote-exploitation"></a>Fjärrhantering
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Misstänkt användning av angrepps ramverk följt av avvikande trafik som flaggats av Palo-nätverks brand vägg
-Det här scenariot är för närvarande en **offentlig för hands version**.
+Det här scenariot är för närvarande en för **hands version**.
 
 **Mitre att&CK taktiker:** Initial åtkomst, körning, lateral förflyttning, behörighets eskalering
 

@@ -3,12 +3,12 @@ title: Ta bort Application Insights i Visual Studio – Azure Monitor
 description: Ta bort Application Insights SDK för ASP.NET och ASP.NET Core i Visual Studio.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704318"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Ta bort Application Insights i Visual Studio
 
@@ -27,7 +27,7 @@ Om du vill ta bort Application Insights måste du ta bort NuGet-paketen och refe
     > [!NOTE]
     > Om spårnings insamling är aktiverat måste du först avinstallera Microsoft. ApplicationInsights. TraceListener. Ange `Uninstall-package Microsoft.ApplicationInsights.TraceListener` sedan följande steg för att ta bort Microsoft. ApplicationInsights. Web.
 
-1. Ange följande kommando: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Ange följande kommando: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     När du har angett kommandot kommer Application Insights-paketet och alla dess beroenden att avinstalleras från projektet.
     
@@ -39,17 +39,17 @@ Om du vill ta bort Application Insights måste du ta bort NuGet-paketen och refe
 
     ![På den översta menyn klickar du på verktyg > NuGet Package Manager > Package Manager-konsolen](./media/remove-application-insights/package-manager.png)
 
-1. Ange följande kommando: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Ange följande kommando: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     När du har angett kommandot kommer Application Insights-paketet och alla dess beroenden att avinstalleras från projektet.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Avinstallera med Visual Studio NuGet-ANVÄNDARGRÄNSSNITTET
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Avinstallera med Visual Studio NuGet-ANVÄNDARGRÄNSSNITTET
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. I *Solution Explorer*   till höger högerklickar du på **lösning**   och väljer **Hantera NuGet-paket för lösningen**.
+1. I *Solution Explorer* till höger högerklickar du på **lösning** och väljer **Hantera NuGet-paket för lösningen**.
 
     Sedan visas en skärm som gör att du kan redigera alla NuGet-paket som ingår i projektet.
     
@@ -57,26 +57,26 @@ Om du vill ta bort Application Insights måste du ta bort NuGet-paketen och refe
 
     > [!NOTE]
     > Om spårnings insamling är aktiverat måste du först avinstallera Microsoft. ApplicationInsights. TraceListener utan att ta bort beroenden och sedan följa stegen nedan för att avinstallera Microsoft. ApplicationInsights. Web med ta bort beroenden markerade.
-    
-1. Klicka på paketet "Microsoft. ApplicationInsights. Web".Till höger markerar du kryss rutan bredvid *projekt*   för att markera alla projekt.
-    
-1. Om du vill ta bort alla beroenden när du avinstallerar väljer du knappen **alternativ**i   list rutan under det avsnitt där du har valt projekt.
 
-    Under *avinstallations alternativ*markerar du kryss rutan bredvid *ta bort beroenden*.
+1. Klicka på paketet **Microsoft. ApplicationInsights. Web** . Till höger markerar du kryss rutan bredvid **projekt** för att markera alla projekt.
+
+1. Om du vill ta bort alla beroenden när du avinstallerar väljer du knappen **alternativ** i list rutan under det avsnitt där du har valt projekt.
+
+    Under *avinstallations alternativ* markerar du kryss rutan bredvid *ta bort beroenden*.
 
 1. Välj **Avinstallera**.
     
     ![Skärm bild som visar fönstret Microsoft. ApplicationInsights. Web med ta bort beroenden markerat och avinstallera markerat.](./media/remove-application-insights/uninstall-framework.png)
 
-    En dialog ruta som visar alla beroenden som ska tas bort från programmet visas.Välj **OK**   för att avinstallera.
+    En dialog ruta som visar alla beroenden som ska tas bort från programmet visas. Välj **OK** för att avinstallera.
     
     ![Skärm bild som visar en dialog ruta med de beroenden som ska tas bort.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  När allt har avinstallerats kan du fortfarande se "ApplicationInsights.config" och "AiHandleErrorAttribute.cs" i *Solution Explorer*.Du kan ta bort de två filerna manuellt.
+1.  När allt har avinstallerats kan du fortfarande se "ApplicationInsights.config" och "AiHandleErrorAttribute.cs" i *Solution Explorer*. Du kan ta bort de två filerna manuellt.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. I *Solution Explorer*   till höger högerklickar du på **lösning**   och väljer **Hantera NuGet-paket för lösningen**.
+1. I *Solution Explorer* till höger högerklickar du på **lösning** och väljer **Hantera NuGet-paket för lösningen**.
 
     Sedan visas en skärm som gör att du kan redigera alla NuGet-paket som ingår i projektet.
 

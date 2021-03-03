@@ -1,20 +1,20 @@
 ---
-title: Felsöka Azure Monitor for VMs gäst hälsa (för hands version)
-description: Beskriver fel söknings steg som du kan vidta när du har problem med Azure Monitor for VMs hälsa.
+title: Felsöka VM Insights-gäst hälsa (för hands version)
+description: Beskriver fel söknings steg som du kan vidta när du har problem med VM Insights-hälsa.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: da8097341f8499be4e28fa37c06d963d057966ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ae0a9e20d6aad7200729419ece333d80e652c3c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622174"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703927"
 ---
-# <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>Felsöka Azure Monitor for VMs gäst hälsa (för hands version)
-I den här artikeln beskrivs fel söknings steg som du kan vidta när du har problem med Azure Monitor for VMs hälsan.
+# <a name="troubleshoot-vm-insights-guest-health-preview"></a>Felsöka VM Insights-gäst hälsa (för hands version)
+I den här artikeln beskrivs fel söknings steg som du kan vidta när du har problem med VM Insights-hälsa.
 
 ## <a name="error-message-that-no-data-is-available"></a>Fel meddelande om att inga data är tillgängliga 
 
@@ -34,7 +34,7 @@ Verifiera att Azure Monitor Agent-tillägget och den virtuella gäst datorns hä
 ![VM-tillägg](media/vminsights-health-troubleshoot/extensions.png)
 
 ### <a name="verify-the-system-assigned-identity-is-enabled-on-the-virtual-machine"></a>Kontrol lera att den tilldelade system identiteten är aktive rad på den virtuella datorn
-Kontrol lera att systemets tilldelade identitet är aktive rad på den virtuella datorn. Välj **identitet** från den virtuella datorns meny i Azure Portal. 
+Kontrol lera att systemets tilldelade identitet är aktive rad på den virtuella datorn. Välj **identitet** från den virtuella datorns meny i Azure Portal. Om användarens hanterade identitet är aktive rad, oavsett status för systemets hanterade identitet, kommer Azure Monitor Agent inte att kunna kommunicera med konfigurations tjänsten och gäst hälso tillägget fungerar inte.
 
 ![Tilldelad identitet](media/vminsights-health-troubleshoot/system-identity.png)
 
@@ -48,4 +48,4 @@ Det här felet indikerar att **Microsoft. WorkloadMonitor** Resource Provider in
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Få en översikt över gäst hälso funktionen i Azure Monitor for VMs](vminsights-health-overview.md)
+- [Få en översikt över gäst hälso funktionen i VM Insights](vminsights-health-overview.md)

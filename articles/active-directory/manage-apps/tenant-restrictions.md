@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611dd5e53ae96e06677b1c4a6a6f009e582b33af
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646273"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687081"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram
 
@@ -109,19 +109,18 @@ Medan konfigurationen av klient begränsningar görs i infrastrukturen för för
 
 Administratören för den klient som anges som den begränsade åtkomst kontext klienten kan använda den här rapporten för att se vilka inloggningar som blockeras på grund av principen för klient begränsningar, inklusive den identitet som används och mål katalog-ID: t. Inloggningar inkluderas om klient inställningen begränsningen är antingen användar klienten eller resurs klienten för inloggningen.
 
-> [!NOTE]
-> Rapporten kan innehålla begränsad information, till exempel mål katalog-ID, när en användare som finns i en annan klient än den begränsade åtkomst kontexten loggar in. I det här fallet maskeras identifierbar information om användare, till exempel namn och User Principal Name, för att skydda användar data i andra klienter (" 00000000-0000-0000-0000-00000000@domain.com ") 
+Rapporten kan innehålla begränsad information, till exempel mål katalog-ID, när en användare som finns i en annan klient än den begränsade åtkomst kontexten loggar in. I det här fallet maskeras användarens identifierbara information, till exempel namn och User Principal Name, för att skydda användar data i andra klienter ("{PII borttaget} @domain.com " eller 00000000-0000-0000-0000-000000000000 i stället för användar namn och objekt-ID: n efter behov). 
 
 Precis som med andra rapporter i Azure Portal kan du använda filter för att ange omfattningen för rapporten. Du kan filtrera efter ett angivet tidsintervall, användare, program, klient eller status. Om du väljer knappen **kolumner** kan du välja att visa data med valfri kombination av följande fält:
 
-- **Användare**
+- **Användare** – det här fältet kan ha personligt identifierbar information borttagen, där den kommer att anges till `00000000-0000-0000-0000-000000000000` . 
 - **Program**
 - **Status**
 - **Datum**
-- **Datum (UTC)** (där UTC är UTC Universal Time)
+- **Datum (UTC)** – där UTC är UTC Universal Time
 - **IP-adress**
 - **Klient**
-- **Användarnamn**
+- **Username** – det här fältet kan ha personligt identifierbar information borttagen, där den ställs in på `{PII Removed}@domain.com`
 - **Plats**
 - **Mål klient-ID**
 
@@ -196,7 +195,7 @@ Beroende på funktionerna i din proxy-infrastruktur kan du gå vidare med att di
 
 Mer information finns i Proxy Server-dokumentationen.
 
-## <a name="blocking-consumer-applications"></a>Blockera konsument program
+## <a name="blocking-consumer-applications-public-preview"></a>Blockera konsument program (offentlig för hands version)
 
 Program från Microsoft som stöder både konsument konton och organisations konton, t. ex. [OneDrive](https://onedrive.live.com/) eller [Microsoft Learn](https://docs.microsoft.com/learn/), kan ibland finnas på samma URL.  Det innebär att användare som måste komma åt den URL: en för arbets sätt också har åtkomst till den för personligt bruk, vilket kanske inte tillåts enligt dina operativa rikt linjer.
 
@@ -204,11 +203,11 @@ Vissa organisationer försöker åtgärda detta genom att blockeras för `login.
 
 1. Blockering `login.live.com` förhindrar användning av personliga konton i B2B-gäst scenarier, vilket kan inkräktar på besökare och samarbete.
 1. [Autopilot kräver användning av `login.live.com` ](https://docs.microsoft.com/mem/autopilot/networking-requirements) för att kunna distribuera. Intune-och autopilot-scenarier kan sluta fungera när `login.live.com` blockeras.
-1. Organisatorisk telemetri och Windows-uppdateringar som är beroende av MSA-tjänsten för enhets-ID: n [upphör att fungera](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. Organisatorisk telemetri och Windows-uppdateringar som är beroende av login.live.com-tjänsten för enhets-ID: n [upphör att fungera](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Konfiguration för konsument program
 
-Även om `Restrict-Access-To-Tenants` rubriken fungerar som en Allow-List fungerar MSA-blocket som en neka-signal, vilket talar om för Microsoft-konto plattformen att inte tillåta användare att logga in på konsument program. För att skicka den här signalen `sec-Restrict-Tenant-Access-Policy` matas en rubrik in på trafik som finns `login.live.com` med samma företags-proxy eller brand vägg som [ovan](#proxy-configuration-and-requirements). Värdet för rubriken måste vara `restrict-msa` . När rubriken finns och en konsument app försöker logga in en användare direkt, kommer inloggningen att blockeras.
+Även om `Restrict-Access-To-Tenants` rubriken fungerar som en tillåten-lista fungerar Microsoft-konto (MSA)-blocket som en neka-signal, vilket talar om för Microsoft-konto plattformen att inte tillåta användare att logga in på konsument program. För att skicka den här signalen `sec-Restrict-Tenant-Access-Policy` matas rubriken in på trafik som finns `login.live.com` med samma företags-proxy eller brand vägg som [ovan](#proxy-configuration-and-requirements). Värdet för rubriken måste vara `restrict-msa` . När rubriken finns och en konsument app försöker logga in en användare direkt, kommer inloggningen att blockeras.
 
 För närvarande visas inte autentiseringen till klient program i [Administratörs loggarna](#admin-experience), eftersom login.live.com är värdbaserad separat från Azure AD.
 

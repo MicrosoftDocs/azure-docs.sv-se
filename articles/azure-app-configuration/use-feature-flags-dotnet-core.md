@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380244"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726435"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Självstudie: använda funktions flaggor i en ASP.NET Core app
 
@@ -74,7 +74,7 @@ public class Startup
 ```
 
 
-Om du använder filter i dina funktions flaggor måste du inkludera namn området [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) och lägga till ett anrop till [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) som anger typ namnet för filtret som du vill använda som generisk typ för metoden. Mer information om hur du använder funktions filter för att aktivera och inaktivera funktioner dynamiskt finns i [Aktivera stegvis distribution av funktioner för mål grupper](/azure/azure-app-configuration/howto-targetingfilter-aspnet-core).
+Om du använder filter i dina funktions flaggor måste du inkludera namn området [Microsoft. FeatureManagement. FeatureFilters](/dotnet/api/microsoft.featuremanagement.featurefilters) och lägga till ett anrop till [AddFeatureFilters](/dotnet/api/microsoft.featuremanagement.ifeaturemanagementbuilder.addfeaturefilter) som anger typ namnet för filtret som du vill använda som generisk typ för metoden. Mer information om hur du använder funktions filter för att aktivera och inaktivera funktioner dynamiskt finns i [Aktivera stegvis distribution av funktioner för mål grupper](./howto-targetingfilter-aspnet-core.md).
 
 I följande exempel visas hur du använder ett inbyggt funktions filter som heter `PercentageFilter` :
 
@@ -211,14 +211,14 @@ Efter konvention `FeatureManagement` används avsnittet i det här JSON-dokument
 
 * `FeatureA` är *på*.
 * `FeatureB` är *avstängd*.
-* `FeatureC` anger ett filter med namnet `Percentage` med en `Parameters` egenskap. `Percentage` är ett konfigurerbart filter. I det här exemplet `Percentage` anger en sannolikhet på 50 procent för att `FeatureC` flaggan ska vara *på*. En instruktions guide om hur du använder funktions filter finns i [använda funktions filter för att aktivera villkorliga funktions flaggor](/azure/azure-app-configuration/howto-feature-filters-aspnet-core).
+* `FeatureC` anger ett filter med namnet `Percentage` med en `Parameters` egenskap. `Percentage` är ett konfigurerbart filter. I det här exemplet `Percentage` anger en sannolikhet på 50 procent för att `FeatureC` flaggan ska vara *på*. En instruktions guide om hur du använder funktions filter finns i [använda funktions filter för att aktivera villkorliga funktions flaggor](./howto-feature-filters-aspnet-core.md).
 
 
 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Använd beroende insprutning för att få åtkomst till IFeatureManager 
 
-För vissa åtgärder, t. ex. kontroll av funktions flagg värden manuellt, måste du hämta en instans av [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). I ASP.NET Core MVC kan du komma åt funktions hanteraren `IFeatureManager` via beroende inmatning. I följande exempel läggs ett argument av typen `IFeatureManager` till i signaturen för konstruktorn för en kontrollant. Körningen löser automatiskt referensen och tillhandahåller ett av gränssnittet när du anropar konstruktorn. Om du använder en Programmall där kontrollanten redan har ett eller flera argument för beroende inmatning i konstruktorn, till exempel `ILogger` , kan du bara lägga till `IFeatureManager` som ett ytterligare argument:
+För vissa åtgärder, t. ex. kontroll av funktions flagg värden manuellt, måste du hämta en instans av [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). I ASP.NET Core MVC kan du komma åt funktions hanteraren `IFeatureManager` via beroende inmatning. I följande exempel läggs ett argument av typen `IFeatureManager` till i signaturen för konstruktorn för en kontrollant. Körningen löser automatiskt referensen och tillhandahåller ett av gränssnittet när du anropar konstruktorn. Om du använder en Programmall där kontrollanten redan har ett eller flera argument för beroende inmatning i konstruktorn, till exempel `ILogger` , kan du bara lägga till `IFeatureManager` som ett ytterligare argument:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

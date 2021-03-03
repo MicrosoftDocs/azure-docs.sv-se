@@ -6,13 +6,13 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/22/2021
+ms.openlocfilehash: f7002b3968e91447a26315f31347ad469aa5daca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339809"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690659"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Importera antecknings böcker från en GitHub-lagrings platsen till Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,12 @@ I det vanliga GitHub-flödet efter att du har genomfört ändringarna, skickar d
 
 :::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Redigera antecknings böcker och genomför ändringar i GitHub":::
 
+När du har redigerat antecknings boken kan du [publicera den i anteckningsbok-galleriet](publish-notebook-gallery.md). 
+
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om fördelarna med att [Azure Cosmos DB Jupyter-anteckningsböcker.](cosmosdb-jupyter-notebooks.md)
-
+* [Utforska exempel galleriet för bärbara datorer](https://cosmos.azure.com/gallery.html)
+* [Publicera antecknings böcker i Azure Cosmos DB Notebook-galleriet](publish-notebook-gallery.md)
+* [Använda python-funktioner och-kommandon i python](use-python-notebook-features-and-commands.md)
+* [Använda C#-funktioner och-kommandon i C#](use-csharp-notebook-features-and-commands.md)

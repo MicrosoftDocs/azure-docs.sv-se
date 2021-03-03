@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693636"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Snabb start: skapa en Synapse-arbetsyta
 I den här snabb starten beskrivs stegen för att skapa en Azure dataSynapses-arbetsyta med hjälp av Azure Portal.
@@ -34,7 +34,8 @@ I den här snabb starten beskrivs stegen för att skapa en Azure dataSynapses-ar
 1. Välj **Granska + skapa** > **Skapa**. Din arbets yta är klar på några minuter.
 
 > [!NOTE]
-> När du har skapat din Azure Synapse-arbetsyta kan du inte flytta arbets ytan till en annan Azure Active Directory-klient. Om du gör det via migrering av prenumerationer eller andra åtgärder kan du förlora åtkomsten till artefakterna i arbetsytan.  
+> När du har skapat din Azure Synapse-arbetsyta kan du inte flytta arbets ytan till en annan Azure Active Directory-klient. Om du gör det via migrering av prenumerationer eller andra åtgärder kan du förlora åtkomsten till artefakterna i arbetsytan.
+> Dessutom kan du för närvarande inte skapa en Synapse Analytics-arbetsyta i en prenumeration på [moln lösnings leverantörer (CSP)](https://docs.microsoft.com/partner-center/csp-overview) .
 
 ## <a name="open-synapse-studio"></a>Öppna Synapse Studio
 

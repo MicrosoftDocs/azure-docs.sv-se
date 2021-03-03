@@ -150,8 +150,10 @@
           href: disable-user-sign-in-portal.md
         - name: Konfigurera apptilldelning via självbetjäning
           href: manage-self-service-access.md
-        - name: Upptäckt av hemsfär
+        - name: Framtvinga automatisk acceleration via Start sfär identifierings princip
           href: configure-authentication-for-federated-users-portal.md
+        - name: Förhindra inloggning automatiskt acceleration med hjälp av start sfär identifierings princip
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Migrera identitetshantering till Azure Active Directory
       items:
         - name: Migreringsresurser

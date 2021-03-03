@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937285"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706817"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Gör så här: minimera svars tiden när du använder ansikts tjänsten
 
@@ -34,7 +34,7 @@ Det här avsnittet innehåller information om möjliga orsaker till att använda
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Långsam anslutning mellan kognitiva tjänster och en fjärr-URL
 
-Vissa Azure-Cognitive Services tillhandahåller metoder som hämtar data från en fjärran sluten URL som du anger. När du till exempel anropar [DetectWithUrlAsync-metoden](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) för ansikts tjänsten kan du ange URL: en för en avbildning där tjänsten försöker identifiera ansikten.
+Vissa Azure-Cognitive Services tillhandahåller metoder som hämtar data från en fjärran sluten URL som du anger. När du till exempel anropar [DetectWithUrlAsync-metoden](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) för ansikts tjänsten kan du ange URL: en för en avbildning där tjänsten försöker identifiera ansikten.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Ansikts tjänsten måste sedan ladda ned avbildningen från fjärrservern. Om anslutningen från ansikts tjänsten till fjärrservern är långsam, påverkas svars tiden för identifierings metoden.
 
-För att undvika detta bör du överväga att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Exempel:
+För att undvika detta bör du överväga att [lagra avbildningen i Azure Premium-Blob Storage](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Exempel:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>Storlek för stor uppladdning
 
-Vissa Azure-Cognitive Services tillhandahåller metoder som hämtar data från en fil som du överför. När du till exempel anropar [DetectWithStreamAsync-metoden](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) för ansikts tjänsten kan du ladda upp en avbildning där tjänsten försöker identifiera ansikten.
+Vissa Azure-Cognitive Services tillhandahåller metoder som hämtar data från en fil som du överför. När du till exempel anropar [DetectWithStreamAsync-metoden](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) för ansikts tjänsten kan du ladda upp en avbildning där tjänsten försöker identifiera ansikten.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -62,12 +62,12 @@ Om filen som ska överföras är stor, vilket påverkar svars tiden för `Detect
 - Tjänsten tar längre tid att bearbeta filen, i proportion till fil storleken.
 
 Åtgärder
-- Överväg att [lagra avbildningen i Azure Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet). Exempel:
+- Överväg att [lagra avbildningen i Azure Premium-Blob Storage](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet). Exempel:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
 - Överväg att ladda upp en mindre fil.
-    - Se rikt linjerna angående indata [för ansikts](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) igenkänning och [indata för ansikts igenkänning](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data).
+    - Se rikt linjerna angående indata [för ansikts](../concepts/face-detection.md#input-data) igenkänning och [indata för ansikts igenkänning](../concepts/face-recognition.md#input-data).
     - När identifierings modellen används i ansikts igenkänning `DetectionModel.Detection01` ökar bild filens storlek genom att minska bearbetnings hastigheten. När du använder identifierings modellen `DetectionModel.Detection02` ökar bild filens storlek bara bearbetnings hastigheten om bild filen är mindre än 1920x1080.
     - För ansikts igenkänning påverkar inte storleken på 200x200 bild punkter precisionen för igenkännings modellen.
     - Prestandan hos- `DetectWithUrlAsync` och- `DetectWithStreamAsync` metoderna beror också på hur många ansikten som finns i en bild. Ansikts tjänsten kan returnera upp till 100 ansikten för en bild. Ansikten rangordnas efter storleken på den bakre rektangeln från stor till liten.

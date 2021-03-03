@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: a95cacafc5b1d00b1e4d04fd84cdda2de72b6a59
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4545c3529baf92e2f90d9289ec6828ad9a720e3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738012"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 
@@ -132,7 +132,7 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
  
 - **Meddelande**: klustret fick ett slut på minnes problem under körningen, försök igen med en integrerings körning med större antal kärnor och/eller minnesoptimerade beräknings typ
 - **Orsaker**: klustret håller på att ta slut på minne.
-- **Rekommendation**: fel söknings kluster är avsedda för utvecklings syfte. Använd data samplings lämplig beräknings typ och storlek för att köra nytto lasten. Se [prestanda guiden](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance) för data flöde för att justera data flöden för bästa prestanda.
+- **Rekommendation**: fel söknings kluster är avsedda för utvecklings syfte. Använd data samplings lämplig beräknings typ och storlek för att köra nytto lasten. Se [prestanda guiden](./concepts-data-flow-performance.md) för data flöde för att justera data flöden för bästa prestanda.
 
 ### <a name="error-code-df-executor-illegalargument"></a>Felkod: DF-utförar-illegalArgument
 - **Meddelande**: kontrol lera att åtkomst nyckeln i den länkade tjänsten är korrekt.
@@ -182,7 +182,7 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 
 - **Meddelande**: ogiltigt intervall har angetts.
 - **Orsaker**: inte fastställt
-- **Rekommendation**: kontrol lera parametervärdet och ange ett giltigt intervall enligt referens: [Egenskaper för Excel](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+- **Rekommendation**: kontrol lera parametervärdet och ange ett giltigt intervall enligt referens: [Egenskaper för Excel](./format-excel.md#dataset-properties).
 
 - **Meddelande**: en ogiltig Excel-fil anges när endast. xlsx och. xls stöds
 - **Orsaker**: inte fastställt
@@ -204,7 +204,7 @@ Den här artikeln utforskar vanliga fel söknings metoder för att mappa data fl
 
 ### <a name="error-code-4502"></a>Felkod: 4502
 - **Meddelande**: det finns betydande samtidiga MappingDataflow-körningar som orsakar fel på grund av begränsning av integration Runtime.
-- **Orsaker**: en stor mängd data flödes aktiviteter körs samtidigt på integration Runtime. Läs mer om [Azure Data Factory gränserna](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#data-factory-limits).
+- **Orsaker**: en stor mängd data flödes aktiviteter körs samtidigt på integration Runtime. Läs mer om [Azure Data Factory gränserna](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 - **Rekommendation**: om du vill köra fler data flödes aktiviteter parallellt, måste du distribuera dem på flera integrerings körningar.
 
 

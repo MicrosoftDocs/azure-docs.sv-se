@@ -9,16 +9,16 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575491"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712461"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
-I den här artikeln förklaras hur du kan komma åt dina SAP-resurser från Logic Apps med hjälp av [SAP-anslutningen](https://docs.microsoft.com/connectors/sap/).
+I den här artikeln förklaras hur du kan komma åt dina SAP-resurser från Logic Apps med hjälp av [SAP-anslutningen](/connectors/sap/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -547,14 +547,14 @@ För lokala data Gateway-versioner från april 2020 och tidigare inaktive ras lo
 
 Om du använder en [lokal datagateway för Logic Apps](../logic-apps/logic-apps-gateway-install.md)kan du konfigurera en utökad logg fil för SAP-kopplingen. Du kan använda din lokala datagateway för att omdirigera ETW (Event Tracing for Windows)-händelser (ETW) till roterande loggfiler som ingår i din gateways log. zip-filer. 
 
-Du kan [Exportera alla gatewayens konfigurations-och tjänst loggar](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) till en. zip-fil i från Gateway-appens inställningar.
+Du kan [Exportera alla gatewayens konfigurations-och tjänst loggar](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) till en. zip-fil i från Gateway-appens inställningar.
 
 > [!NOTE]
 > Utökad loggning kan påverka dina Logi Kap par prestanda när de alltid är aktiverade. Vi rekommenderar att du inaktiverar utökade loggfiler när du är klar med att analysera och felsöka ett problem.
 
 #### <a name="capture-etw-events"></a>Fånga ETW-händelser
 
-Alternativt kan avancerade användare fånga ETW-händelser direkt. Du kan sedan [använda dina data i Azure-diagnostik i Event Hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs) eller [samla in data till Azure Monitor loggar](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs). Mer information finns i [metod tips för att samla in och lagra data](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Du kan använda [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) för att arbeta med de resulterande ETL-filerna, eller så kan du skriva ditt eget program. I den här genom gången används PerfView:
+Alternativt kan avancerade användare fånga ETW-händelser direkt. Du kan sedan [använda dina data i Azure-diagnostik i Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md) eller [samla in data till Azure Monitor loggar](/azure/azure-monitor/agents/diagnostics-extension-logs). Mer information finns i [metod tips för att samla in och lagra data](/azure/architecture/best-practices/monitoring#collecting-and-storing-data). Du kan använda [PerfView](https://github.com/Microsoft/perfview/blob/master/README.md) för att arbeta med de resulterande ETL-filerna, eller så kan du skriva ditt eget program. I den här genom gången används PerfView:
 
 1. På PerfView-menyn väljer du **samla** &gt; **in insamling** för att avbilda händelserna.
 
@@ -1264,7 +1264,7 @@ Om det uppstår ett problem med att duplicera IDocs skickas till SAP från din L
 
 1. Konfigurera följande inställningar i redigerings programmet för **variabeln åtgärd initiera**. Spara sedan ändringarna.
 
-    1. I **namn** anger du ett namn för din variabel. Ett exempel är `IDOCtransferID`.
+    1. I **namn** anger du ett namn för din variabel. Till exempel `IDOCtransferID`.
 
     1. I **typ** väljer du **sträng** som variabel typ.
 
@@ -1282,7 +1282,7 @@ Om det uppstår ett problem med att duplicera IDocs skickas till SAP från din L
 
     1. För **Bekräfta tid** väljer du **Nej**.
 
-    1. Välj **Lägg till ny parameter lista**  >  **transaktions-ID GUID**. Välj text rutan för att öppna menyn med dynamiskt innehåll. Under fliken **variabler** väljer du namnet på variabeln som du skapade. Ett exempel är `IDOCtransferID`.
+    1. Välj **Lägg till ny parameter lista**  >  **transaktions-ID GUID**. Välj text rutan för att öppna menyn med dynamiskt innehåll. Under fliken **variabler** väljer du namnet på variabeln som du skapade. Till exempel `IDOCtransferID`.
 
 1. I namn listen för åtgärden **Skicka iDOC** väljer du **...**  >  **Inställningar**. För **principer för återförsök** rekommenderar vi att du väljer **standard** &gt; **färdig**. Du kan dock istället konfigurera en anpassad princip för dina behov. För anpassade principer rekommenderar vi att du konfigurerar minst ett försök att lösa tillfälliga avbrott i nätverket.
 
@@ -1290,7 +1290,7 @@ Om det uppstår ett problem med att duplicera IDocs skickas till SAP från din L
 
 1. Konfigurera följande inställningar i redigerings programmet för åtgärd **Bekräfta transaktions-ID**. Spara sedan ändringarna.
 
-    1. För **transaktions-ID** anger du namnet på variabeln igen. Ett exempel är `IDOCtransferID`.
+    1. För **transaktions-ID** anger du namnet på variabeln igen. Till exempel `IDOCtransferID`.
 
 1. Du kan också verifiera dedupliceringen i din test miljö. Upprepa åtgärden **Skicka iDOC** med samma **transaktions-ID-** GUID som du använde i föregående steg. När du skickar samma IDoc två gånger kan du verifiera att SAP kan identifiera dupliceringen av tRFC-anropet och lösa de två anropen till ett enda inkommande IDoc-meddelande.
 
@@ -1336,7 +1336,7 @@ Detaljerade exempel på hur du använder åtgärden anropa BAPI finns i [XML-exe
 
 ### <a name="send-idoc-action"></a>Skicka IDoc-åtgärd
 
-Åtgärden [Skicka iDOC ( `SendIDoc` )](https://docs.microsoft.com/connectors/sap/#send-idoc-(preview)) skickar iDOC-meddelandet till din SAP-server.
+Åtgärden [Skicka iDOC ( `SendIDoc` )](/connectors/sap/) skickar iDOC-meddelandet till din SAP-server.
 
 Du måste använda följande parametrar för ditt anrop: 
 

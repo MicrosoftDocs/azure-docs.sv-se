@@ -2,17 +2,17 @@
 title: Hämta information om Azure IoT Central program version | Microsoft Docs
 description: Hämta information om det IoT Central program som du använder
 services: iot-central
-author: dominicbetts
-ms.author: dobett
-ms.date: 06/26/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/26/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b4a44433a9761bd387b24164653c8ed1538713ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721601"
 ---
 # <a name="about-your-application"></a>Om ditt program
 
@@ -25,7 +25,7 @@ Den här artikeln visar hur du hämtar information om ditt IoT Central-program. 
 
 ## <a name="get-information-about-your-application"></a>Hämta information om programmet
 
-Så här hämtar du information om ditt IoT Central-program:
+Så här hämtar du information om ditt IoT Central-program: 
 
 1. Välj **Hjälp** länken på den översta menyn.
 

@@ -97,9 +97,9 @@
           href: logs/resource-manager-log-queries.md
         - name: Arbetsböcker
           href: visualize/resource-manager-workbooks.md
-        - name: Azure Monitor för containrar
+        - name: Container Insights
           href: containers/resource-manager-container-insights.md
-        - name: Azure Monitor för virtuella datorer
+        - name: VM-insikter
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
       href: cli-samples.md
@@ -879,8 +879,6 @@
             - name: Översikt
               displayname: 'user behavior analytics, user behavior, usage, behavioral analytics'
               href: app/usage-overview.md
-            - name: Skicka användarkontext
-              href: app/usage-send-user-context.md
             - name: 'Användare, sessioner, händelser'
               href: app/usage-segmentation.md
             - name: Trattar
@@ -988,7 +986,7 @@
           href: app/change-analysis-visualizations.md
         - name: Felsöka
           href: app/change-analysis-troubleshoot.md
-    - name: Azure Monitor för virtuella datorer
+    - name: VM-insikter
       items:
         - name: Översikt
           href: vm/vminsights-overview.md
@@ -1042,7 +1040,7 @@
           href: vm/vminsights-workbooks.md
         - name: Inaktivera övervakning
           href: vm/vminsights-optout.md
-    - name: Azure Monitor för containrar
+    - name: Container Insights
       items:
         - name: Översikt
           href: containers/container-insights-overview.md

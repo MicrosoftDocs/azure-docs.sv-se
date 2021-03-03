@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0650a173b02e1b8f1f829953be1dd852024e6f65
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524523"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703379"
 ---
 # <a name="create-a-custom-voice"></a>Skapa en anpassad röst
 
@@ -60,7 +60,7 @@ En högre signal-till-brus-förhållande (SNR) indikerar lägre brus i ljudet. D
 
 > [!NOTE]
 > Om du använder anpassad neurala röst måste du registrera din röst personal på fliken **röst personal** . När du förbereder ditt inspelnings skript ska du se till att ta med nedanstående mening för att få röst personal bekräftelse på att använda sina röst data för att skapa en TTS-röst modell och generera syntetiskt tal. "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
-Den här meningen används för att kontrol lera om inspelningarna i dina utbildnings data uppsättningar utförs av samma person som godkänner godkännandet. [Läs mer om hur dina data kommer att bearbetas och hur röst personal-verifiering görs här](https://aka.ms/CNV-data-privacy). 
+Den här meningen används för att kontrol lera om inspelningarna i dina utbildnings data uppsättningar utförs av samma person som godkänner godkännandet. [Läs mer om hur dina data kommer att bearbetas och hur röst personal-verifiering görs här](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="build-your-custom-voice-model"></a>Bygg din anpassade röst modell
 
@@ -87,7 +87,7 @@ När din data uppsättning har verifierats kan du använda den för att bygga di
 5. Välj **inlärnings metoden** i nästa steg. 
 
     > [!NOTE]
-    > Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
+    > Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [Använd åtkomsten här](https://aka.ms/customneural). 
     
     På den här sidan kan du också välja att ladda upp skriptet för testning. Test skriptet måste vara en txt-fil som är mindre än 1 MB. Kodnings formatet som stöds omfattar ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE eller UTF-16. Varje stycke i uttryck resulterar i ett separat ljud. Om du vill kombinera alla meningar i ett ljud gör du dem i ett stycke. 
 
@@ -126,7 +126,7 @@ Varje övning kommer att generera 100-ljudfiler automatiskt för att hjälpa dig
 
 3.  På sidan modell information kan du hitta exempelfilerna på fliken **test** . 
 
-Kvaliteten på rösten är beroende av ett antal faktorer, inklusive storleken på tränings data, kvaliteten på inspelningen, precisionen för avskrifts filen, hur väl den inspelade rösten i tränings data matchar den personliga rösten för det avsedda användnings fallet med mera. [Läs mer om funktionerna och gränserna för vår teknik och bästa praxis för att förbättra modell kvaliteten](https://aka.ms/CNV-limits). 
+Kvaliteten på rösten är beroende av ett antal faktorer, inklusive storleken på tränings data, kvaliteten på inspelningen, precisionen för avskrifts filen, hur väl den inspelade rösten i tränings data matchar den personliga rösten för det avsedda användnings fallet med mera. [Läs mer om funktionerna och gränserna för vår teknik och bästa praxis för att förbättra modell kvaliteten](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Skapa och Använd en anpassad röst slut punkt
 

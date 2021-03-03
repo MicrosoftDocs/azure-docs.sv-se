@@ -5,18 +5,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/12/2021
-ms.openlocfilehash: 5a7ddcf25993ab4ce87bdc47c5e0ae32fa24b07f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7907c81e45680de49f6653891fb4204a59db1002
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956592"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710557"
 ---
 # <a name="private-endpoints"></a>Privata slutpunkter
 
 Azure Private Endpoint är ett nätverksgränssnitt som ger dig en privat och säker anslutning till en tjänst som drivs av Azure Private Link. QnA Maker har nu stöd för att skapa privata slut punkter till tjänsten Azure Search. Den här funktionen är tillgänglig i QnA Maker hanterad. 
 
-Privata slut punkter tillhandahålls av en [privat Azure-länk](https://docs.microsoft.com/azure/private-link/private-link-overview), som en separat tjänst. Mer information om kostnader finns på sidan med [priser.](https://azure.microsoft.com/pricing/details/private-link/) 
+Privata slut punkter tillhandahålls av en [privat Azure-länk](../../private-link/private-link-overview.md), som en separat tjänst. Mer information om kostnader finns på sidan med [priser.](https://azure.microsoft.com/pricing/details/private-link/) 
 
 ## <a name="prerequisites"></a>Krav
 > [!div class="checklist"]

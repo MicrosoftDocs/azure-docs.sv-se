@@ -3,14 +3,14 @@ title: Konfigurera Azure Backup-rapporter
 description: Konfigurera och Visa rapporter för Azure Backup med Log Analytics och Azure-arbetsböcker
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 78ab22bece54caa15e23021e594eaa0742505f79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710625"
 ---
-# <a name="configure-azure-backup-reports-preview"></a>Konfigurera Azure Backup rapporter (förhands granskning)
+# <a name="configure-azure-backup-reports"></a>Konfigurera Azure Backup-rapporter
 
 Ett vanligt krav för säkerhets kopierings administratörer är att få insikter om säkerhets kopieringar baserat på data som omfattar en lång tids period. Användnings fall för sådan lösning är:
 
@@ -139,6 +139,20 @@ Om du väljer panelen **princip optimeringar** följt av panelen **säkerhets ko
 Filter för **säkerhets kopierings hantering** överst på fliken ska ha objekts- **SQL i azure VM** och **SAP HANA på** den valda Azure-datorn för att rutnätet ska kunna visa databas arbets belastningar som förväntat.
 
 ![Optimera fliken – optimeringar av säkerhets kopierings schema](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>Princip inställning
+
+På den här fliken kan du identifiera om alla säkerhets kopierings instanser har minst en genomförd säkerhets kopiering varje dag. Du kan visa princip efter tids period eller säkerhets kopierings instans.
+
+###### <a name="email-azure-backup-reports"></a>E-Azure Backup rapporter
+
+Med hjälp av funktionen **e-postrapport** som är tillgänglig i säkerhets kopierings rapporter kan du skapa automatiska uppgifter som tar emot regelbundna rapporter via e-post. Den här funktionen fungerar genom att distribuera en Logic-app i din Azure-miljö som frågar data från dina valda Log Analytics (LA)-arbets ytor, baserat på de indata som du anger.
+
+När du har skapat Logic-appen måste du auktorisera anslutningar till Azure Monitor loggar och Office 365. Det gör du genom att gå till **Logic Apps** i Azure Portal och söka efter namnet på den uppgift som du har skapat. Om du väljer meny alternativet **API-anslutningar** öppnas listan över API-anslutningar som du behöver auktorisera.
+
+###### <a name="customize-azure-backup-reports"></a>Anpassa Azure Backup rapporter
+
+I Backup-rapporter används funktioner på Azure Monitor loggar. Dessa funktioner fungerar på data i rå Azure Backup tabeller i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor.
 
 ## <a name="export-to-excel"></a>Exportera till Excel
 

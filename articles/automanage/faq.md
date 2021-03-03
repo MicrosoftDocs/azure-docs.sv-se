@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 214730733780ef3492048f697b1c5e180434a527
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688016"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Vanliga frågor och svar om Azure automanage för virtuella datorer
 
@@ -80,7 +80,7 @@ Automatisk Azure-hantering är tillgängligt utan extra kostnad i den offentliga
 
 **Kan jag använda automanage via Azure policy?**
 
-Ja, vi har en inbyggd princip som automatiskt tillämpar automatisk hantering för alla virtuella datorer i det definierade omfånget. Du kommer också att ange konfigurations profilen (DevTest eller produktion) tillsammans med ditt konto för automatisk hantering. Läs mer om hur du aktiverar autohantering via Azure policy [här](virtual-machines-policy-enable.md).
+Ja, vi har en inbyggd princip som automatiskt tillämpar automatisk hantering för alla virtuella datorer i det definierade omfånget. Du kommer också att ange miljö konfigurationen (DevTest eller produktion) tillsammans med ditt konto för automatisk hantering. Läs mer om hur du aktiverar autohantering via Azure policy [här](virtual-machines-policy-enable.md).
 
 
 **Vad är ett konto för autohantering?**
@@ -93,9 +93,9 @@ Kontot för automatisk hantering är en MSI (Hanterad tjänstidentitet) som till
 Om den virtuella datorn är länkad till en befintlig Log Analytics arbets yta, kommer vi att återanvända den arbets ytan för att tillämpa dessa lösningar: Ändringsspårning, inventering och Uppdateringshantering. Alla virtuella datorer som är anslutna till den arbets ytan kommer att ha dessa lösningar aktiverade.
 
 
-**Kan jag ändra konfigurations profilen för min virtuella dator?**
+**Kan jag ändra miljön för min virtuella dator?**
 
-För tillfället måste du inaktivera automatisk hantering för den virtuella datorn och sedan återaktivera automatisk hantering med önskad konfigurations profil och inställningar.
+För tillfället måste du inaktivera autohantering för den virtuella datorn och sedan återaktivera autohantering med önskad miljö och preferenser.
 
 
 **Om min virtuella dator redan har kon figurer ATS för en tjänst, t. ex. Uppdateringshantering, kommer automatiskt att hantera den automatiskt?**

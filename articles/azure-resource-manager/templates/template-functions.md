@@ -3,12 +3,12 @@ title: Mallfunktioner
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att hämta värden, arbeta med strängar och siffror och hämta distributions information.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931715"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707327"
 ---
 # <a name="arm-template-functions"></a>ARM-mallens funktioner
 
@@ -34,6 +34,10 @@ De flesta funktioner fungerar på samma sätt när de distribueras till en resur
 <a id="take" aria-hidden="true"></a>
 <a id="union" aria-hidden="true"></a>
 
+## <a name="any-function"></a>Alla funktioner
+
+[Funktionen any](template-functions-any.md) är tillgänglig i bicep för att hjälpa till att lösa problem med data typs varningar.
+
 ## <a name="array-functions"></a>Matrisfunktioner
 
 Resource Manager innehåller flera funktioner för att arbeta med matriser.
@@ -51,7 +55,7 @@ Resource Manager innehåller flera funktioner för att arbeta med matriser.
 * [bekräftat](template-functions-array.md#max)
 * [intervall](template-functions-array.md#range)
 * [Ignorera](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
+* [gå](template-functions-array.md#take)
 * [Union](template-functions-array.md#union)
 
 <a id="coalesce" aria-hidden="true"></a>
@@ -125,7 +129,7 @@ Resource Manager innehåller följande funktioner för att arbeta med logiska vi
 
 Resource Manager innehåller följande funktioner för att arbeta med heltal:
 
-* [skapa](template-functions-numeric.md#add)
+* [add](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
@@ -148,7 +152,7 @@ Resource Manager innehåller flera funktioner för att arbeta med objekt.
 * [överlappning](template-functions-object.md#intersection)
 * [utgör](template-functions-object.md#json)
 * [length](template-functions-object.md#length)
-* [ha](template-functions-object.md#null)
+* [null](template-functions-object.md#null)
 * [Union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -239,7 +243,7 @@ Resource Manager innehåller följande funktioner för att arbeta med strängar:
 * [startsWith](template-functions-string.md#startswith)
 * [sträng](template-functions-string.md#string)
 * [under sträng](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
+* [gå](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
 * [reducera](template-functions-string.md#trim)

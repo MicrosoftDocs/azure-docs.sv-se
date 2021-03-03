@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83c9b0ece933ad71810c50e89ae296aa218ec75
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689325"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Krav för Azure AD Connect Cloud Sync
 Den här artikeln innehåller information om hur du väljer och använder Azure Active Directory (Azure AD) Connect Cloud Sync som din identitets lösning.
@@ -26,22 +26,22 @@ Du behöver följande för att kunna använda Azure AD Connect Cloud Sync:
 
 - Domän administratörs-eller företags administratörs behörighet för att skapa Azure AD Connect Cloud Sync-gMSA (grupphanterat tjänst konto) för att köra Agent tjänsten. 
 - Ett administratörs konto med hybrid identitet för din Azure AD-klient som inte är en gäst användare.
-- En lokal server för etablerings agenten med Windows 2012 R2 eller senare.  Den här servern måste vara en nivå 0-server som baseras på [Active Directory administratörs nivå modell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
+- En lokal server för etablerings agenten med Windows 2016 eller senare.  Den här servern måste vara en nivå 0-server som baseras på [Active Directory administratörs nivå modell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - Konfigurationer för lokala brand väggar.
 
 ## <a name="group-managed-service-accounts"></a>Grupphanterade tjänstkonton
 Ett grupphanterat tjänst konto är ett hanterat domän konto som tillhandahåller automatisk lösen ords hantering, förenklad hantering av tjänst huvud namn (SPN), möjlighet att delegera hanteringen till andra administratörer och även utöka den här funktionaliteten över flera servrar.  Azure AD Connect Cloud Sync stöder och använder en gMSA för att köra agenten.  Du uppmanas att ange administratörs behörighet under installationen för att kunna skapa det här kontot.  Kontot visas som (domain\provAgentgMSA $).  Mer information om en gMSA finns i [gruppera hanterade tjänst konton](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>Krav för gMSA:
-1.  Active Directory-schemat i gMSA-domänens skog måste uppdateras till Windows Server 2012
+1.  Active Directory-schemat i gMSA-domänens skog måste uppdateras till Windows Server 2012.
 2.  [PowerShell-moduler för RSAT](/windows-server/remote/remote-server-administration-tools) på en domänkontrollant
-3.  Minst en domänkontrollant i domänen måste köra Windows Server 2012.
+3.  Minst en domänkontrollant i domänen måste köra Windows Server 201.
 4.  En domänansluten server där agenten installeras måste vara antingen Windows Server 2012 eller senare.
 
 ### <a name="custom-gmsa-account"></a>Anpassat gMSA-konto
 Om du skapar ett anpassat gMSA-konto måste du kontrol lera att kontot har följande behörigheter.
 
-|Typ |Name |Access |Gäller för| 
+|Typ |Namn |Access |Gäller för| 
 |-----|-----|-----|-----|
 |Tillåt |gMSA-konto |Läsa alla egenskaper |Underordnade enhets objekt| 
 |Tillåt |gMSA-konto|Läsa alla egenskaper |Objekt för underordnade InetOrgPerson| 
@@ -65,7 +65,7 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
 
 ### <a name="in-your-on-premises-environment"></a>I din lokala miljö
 
-1. Identifiera en domänansluten värd server som kör Windows Server 2012 R2 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
+1. Identifiera en domänansluten värd server som kör Windows Server 2016 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
 
 2. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
 

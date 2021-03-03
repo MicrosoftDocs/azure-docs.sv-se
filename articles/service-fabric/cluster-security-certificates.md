@@ -3,12 +3,12 @@ title: 509-baserad autentisering med X. i ett Service Fabric kluster
 description: Lär dig mer om certifikatbaserad autentisering i Service Fabric kluster och hur du identifierar, minimerar och åtgärdar problem med certifikat.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729699"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>509-baserad autentisering med X. i Service Fabric kluster
 
@@ -182,7 +182,7 @@ Det nämndes tidigare att säkerhets inställningarna för ett Service Fabric-kl
 
 Som nämnts innebär certifikat valideringen alltid att skapa och utvärdera certifikat kedjan. För CA-utfärdade certifikat innebär detta ett enkelt OS API-anrop vanligt vis flera utgående anrop till olika slut punkter för den utfärdande PKI: n, cachelagring av svar och så vidare. Med tanke på att certifikat verifierings anropen visas i ett Service Fabric-kluster, kan eventuella problem i PKI: ns slut punkter leda till minskad tillgänglighet för klustret eller att uppnå en korrekt uppdelning. Även om utgående samtal inte kan undertryckas (se nedan i avsnittet Vanliga frågor och svar) kan du använda följande inställningar för att maskera verifierings fel som orsakas av misslyckade CRL-anrop.
 
-  * CrlCheckingFlag – under avsnittet Security, strängen konverterad till UINT. Värdet för den här inställningen används av Service Fabric för att maskera fel i certifikat kedjans status genom att ändra beteendet för skapande av kedja. den skickas till Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) -anropet som parametern "dwFlags" och kan ställas in på en giltig kombination av flaggor som accepteras av funktionen. Värdet 0 tvingar Service Fabric körningen att ignorera eventuella förtroende status fel – detta rekommenderas inte, eftersom användningen skulle utgöra en betydande säkerhets exponering. Standardvärdet är 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag – under avsnittet "säkerhet" är strängen konverterad till UINT. Värdet för den här inställningen används av Service Fabric för att maskera fel i certifikat kedjans status genom att ändra beteendet för skapande av kedja. den skickas till Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) -anropet som parametern "dwFlags" och kan ställas in på en giltig kombination av flaggor som accepteras av funktionen. Värdet 0 tvingar Service Fabric körningen att ignorera eventuella förtroende status fel – detta rekommenderas inte, eftersom användningen skulle utgöra en betydande säkerhets exponering. Standardvärdet är 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   När du ska använda: för lokal testning, med självsignerade certifikat eller certifikat för utvecklare som inte är fullständigt utformade/inte har en korrekt infrastruktur för offentliga nycklar för att stödja certifikaten. Kan också användas som en minskning i Air-gapped miljöer under över gången mellan PKI: er.
 
@@ -197,7 +197,7 @@ Som nämnts innebär certifikat valideringen alltid att skapa och utvärdera cer
     </Section>
   ```
 
-  * IgnoreCrlOfflineError – under avsnittet "säkerhet", booleskt värde med standardvärdet "false". Representerar en genväg för att undertrycka en fel status för återkallnings skapande av offline-kedja (eller efterföljande Status verifierings fel).
+  * IgnoreCrlOfflineError – under avsnittet "säkerhet", booleskt värde med standardvärdet FALSE. Representerar en genväg för att undertrycka en fel status för återkallnings skapande av offline-kedja (eller efterföljande Status verifierings fel).
 
   När du ska använda: lokal testning eller med utvecklarresurser som inte backas upp av en riktig PKI. Använd som lösning i Air – gapped miljöer eller när PKI: n är känd för att bli oåtkomlig.
 

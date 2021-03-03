@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738642"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709520"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisera nätverks trafik mönster till och från dina virtuella datorer med hjälp av verktyg med öppen källkod
 
@@ -47,7 +47,7 @@ Du kan direkt ladda upp en paket avbildning som tas av Network Watcher med hjäl
 
 När du tillhandahåller en länk till CapAnalysis, se till att lägga till en SAS-token till lagrings-BLOB-URL: en.  Det gör du genom att navigera till signaturen för delad åtkomst från lagrings kontot, ange tillåtna behörigheter och trycka på knappen generera SAS för att skapa en token. Du kan sedan lägga till SAS-token till Packet Capture Storage BLOB URL.
 
-Den resulterande URL: en kommer att se ut ungefär som följande URL: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Den resulterande URL: en kommer att se ut ungefär som följande URL: `http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>Analysera paket fångster

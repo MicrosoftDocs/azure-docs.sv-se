@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734095"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Nätverks gränser – Azure Resource Manager
 Följande begränsningar gäller endast för nätverks resurser som hanteras via **Azure Resource Manager** per region per prenumeration. Lär dig hur du [visar din aktuella resursanvändning mot dina prenumerations gränser](../articles/networking/check-usage-against-limits.md).
@@ -69,7 +69,7 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Resurs                                | Gräns         |
 |-----------------------------------------|-------------------------------|
 | Lastbalanserare                          | 1 000                         |
-| Regler per resurs                      | 1500                         |
+| Regler (Load Balancer + inkommande NAT) per resurs                      | 1500                         |
 | Regler per nätverkskort (över alla IP-adresser på ett nätverkskort) | 300                           |
 | IP-konfigurationer för klient del              | 600                           |
 | Storlek på serverdelspool                       | 1 000 IP-konfigurationer, enskilt virtuellt nätverk |
@@ -78,7 +78,7 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Utgående regler per Load Balancer        | 600                           |
 | Belastnings utjämning per virtuell dator                   | 2 (1 offentlig och 1 intern)   |
 
-<sup>1</sup> Gränsen är upp till 150 resurser, i valfri kombination av fristående virtuella dator resurser, tillgänglighets uppsättnings resurser och placerings grupper för virtuella datorers skalnings uppsättningar.
+<sup>1</sup> gränsen är upp till 150 resurser, i valfri kombination av fristående virtuella dator resurser, tillgänglighets uppsättnings resurser och placerings grupper för virtuella datorers skal uppsättning.
 
 **Grundläggande Load Balancer**
 
@@ -87,10 +87,12 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Lastbalanserare                          | 1 000                        |
 | Regler per resurs                      | 250                          |
 | Regler per nätverkskort (över alla IP-adresser på ett nätverkskort) | 300                          |
-| IP-konfigurationer för klient del              | 200                          |
+| IP-konfigurationer för klient del <sup> 2<sup>  | 200                          |
 | Storlek på serverdelspool                       | 300 IP-konfigurationer, enskild tillgänglighets uppsättning |
 | Tillgänglighets uppsättningar per Load Balancer     | 1                            |
 | Belastnings utjämning per virtuell dator                   | 2 (1 offentlig och 1 intern)  |
+
+<sup>2</sup> gränsen för en enskild, diskret resurs i en backend-pool (fristående virtuell dator, tillgänglighets uppsättning eller en placerings grupp för virtuell dators skal uppsättning) måste ha upp till 250 IP-konfigurationer för klient delen i en enskild grundläggande Load Balancer och basic Internal Load Balancer.
 
 <a name="virtual-networking-limits-classic"></a>Följande begränsningar gäller endast för nätverks resurser som hanteras via den **klassiska** distributions modellen per prenumeration. Lär dig hur du [visar din aktuella resursanvändning mot dina prenumerations gränser](../articles/networking/check-usage-against-limits.md).
 

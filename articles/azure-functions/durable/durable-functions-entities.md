@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85341569"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723681"
 ---
 # <a name="entity-functions"></a>Enhets funktioner
 
@@ -24,7 +24,10 @@ Entiteter ger ett sätt att skala ut program genom att distribuera arbetet över
 
 Entiteter fungerar på samma sätt som små tjänster som kommunicerar via meddelanden. Varje entitet har en unik identitet och ett internt tillstånd (om den finns). Precis som tjänster eller objekt utför entiteter åtgärder när de uppmanas att göra det. När en åtgärd körs kan den uppdatera entitetens interna status. Det kan också anropa externa tjänster och vänta på ett svar. Entiteter kommunicerar med andra entiteter, dirigeringar och klienter genom att använda meddelanden som är implicit skickade via pålitliga köer. 
 
-För att förhindra konflikter garanterar vi att alla åtgärder på en enskild enhet körs seriellt, det vill säga en efter en annan. 
+För att förhindra konflikter garanterar vi att alla åtgärder på en enskild enhet körs seriellt, det vill säga en efter en annan.
+
+> [!NOTE]
+> När en entitet anropas bearbetar den sin nytto last och schemalägger sedan en ny körning så att den kan aktive ras när framtida indata kommer in. Därför kan din enhets körnings loggar Visa en extra körning efter varje enhets anrop. Detta är förväntat.
 
 ### <a name="entity-id"></a>Enhets-ID
 Entiteter nås via en unik identifierare, *entitets-ID: t*. Ett entitets-ID är bara ett par med strängar som unikt identifierar en enhets instans. Det består av en:
@@ -51,7 +54,7 @@ En entitets åtgärd kan också skapa, läsa, uppdatera och ta bort status för 
 
 För närvarande är de två distinkta API: erna för att definiera entiteter:
 
-**Function-baserad syntax**där entiteter representeras som funktioner och åtgärder uttryckligen skickas av programmet. Den här syntaxen fungerar bra för entiteter med enkel status, få åtgärder eller en dynamisk uppsättning åtgärder som i program ramverk. Den här syntaxen kan vara omständlig att underhålla eftersom den inte fångar in typ fel vid kompilering.
+**Function-baserad syntax** där entiteter representeras som funktioner och åtgärder uttryckligen skickas av programmet. Den här syntaxen fungerar bra för entiteter med enkel status, få åtgärder eller en dynamisk uppsättning åtgärder som i program ramverk. Den här syntaxen kan vara omständlig att underhålla eftersom den inte fångar in typ fel vid kompilering.
 
 **Klass-baserad syntax (endast .net)**, där entiteter och åtgärder representeras av klasser och metoder. Den här syntaxen ger enklare läsbar kod och gör att åtgärder kan anropas på ett typ säkert sätt. Den klassbaserade syntaxen är ett tunt lager ovanpå den Function-baserade syntaxen, så att båda variantarna kan användas i samma program.
 
@@ -149,7 +152,48 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>Exempel: python-entitet
+
+Följande kod är `Counter` entiteten som implementeras som en varaktig funktion som skrivits i python.
+
+**Räknare/function.jspå**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Counter/__init__. py**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>Åtkomst till entiteter
@@ -201,6 +245,19 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
+```
+
 ---
 
 Termen *signal* innebär att entitets-API-anropet är enkelriktat och asynkront. Det är inte möjligt att en klient funktion vet när entiteten har bearbetat åtgärden. Dessutom kan inte klient funktionen Observera resultat värden eller undantag. 
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python stöder för närvarande inte läsning av enhets tillstånd från en klient. Använd en Orchestrator `callEntity` i stället.
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > Java Script stöder för närvarande inte att signalera en entitet från en Orchestrator. Använd `callEntity` i stället.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 Endast dirigering kan anropa entiteter och få svar, vilket kan vara antingen ett retur värde eller ett undantag. Klient funktioner som använder [klient bindningen](durable-functions-bindings.md#entity-client) kan bara signalerar entiteter.
@@ -318,6 +395,11 @@ Vi kan till exempel ändra föregående `Counter` entitet-exempel så att den sk
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python stöder inte enhets-till-enhet-signaler än. Använd en Orchestrator för att signalera entiteter i stället.
 
 ---
 
@@ -406,7 +488,7 @@ Till skillnad från primitiva primitiver på låg nivå i de flesta programmerin
 
 ## <a name="comparison-with-virtual-actors"></a>Jämförelse med virtuella aktörer
 
-Många av de varaktiga entiteternas funktioner inspireras av [aktörs modellen](https://en.wikipedia.org/wiki/Actor_model). Om du redan är bekant med aktörer kan du känna igen många av de begrepp som beskrivs i den här artikeln. Varaktiga enheter är särskilt likartade för [virtuella aktörer](https://research.microsoft.com/projects/orleans/), eller kärnor, som är populärt av [Orleans-projektet](http://dotnet.github.io/orleans/). Till exempel:
+Många av de varaktiga entiteternas funktioner inspireras av [aktörs modellen](https://en.wikipedia.org/wiki/Actor_model). Om du redan är bekant med aktörer kan du känna igen många av de begrepp som beskrivs i den här artikeln. Varaktiga enheter är särskilt likartade för [virtuella aktörer](https://research.microsoft.com/projects/orleans/), eller kärnor, som är populärt av [Orleans-projektet](http://dotnet.github.io/orleans/). Exempel:
 
 * Varaktiga entiteter kan adresseras via ett entitets-ID.
 * Varaktiga enhets åtgärder körs seriellt, en i taget, för att förhindra tävlings förhållanden.
@@ -421,7 +503,6 @@ Det finns några viktiga skillnader som är värda att notera:
 * Mönster för begär ande svar i entiteter är begränsade till dirigering. I entiteter tillåts endast enkelriktade meddelanden (även kallat Signaling), som i den ursprungliga aktörs modellen och till skillnad från kärnor i Orleans. 
 * Varaktiga entiteter är inte död läge. I Orleans kan död lägen ske och lösas inte förrän tids gränsen nåtts för meddelanden.
 * Varaktiga entiteter kan användas tillsammans med varaktiga dirigeringar och stöd för distribuerade Lås metoder. 
-
 
 ## <a name="next-steps"></a>Nästa steg
 

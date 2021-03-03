@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: fee285aa3beb308f5e6b3b233d40597c2a287eb7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690812"
 ---
 # <a name="data-discovery--classification"></a>Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -187,12 +187,12 @@ Du kan använda REST API för att program mässigt hantera klassificeringar och 
 
 ## <a name="faq---advanced-classification-capabilities"></a>Vanliga frågor och svar om avancerade funktioner
 
-**Fråga**: kommer [Azure AVDELNINGENS kontroll](https://docs.microsoft.com/azure/purview/overview) att ersätta SQL data Discovery & klassificering eller kommer att inaktive ras för SQL data Discovery &-klassificeringen snart?
-**Svar**: vi fortsätter att stödja SQL Data Discovery & klassificering och du uppmanas att använda [Azure-avdelningens kontroll](https://docs.microsoft.com/azure/purview/overview) som har rikare funktioner för att driva avancerade klassificerings funktioner och data styrning. Om vi bestämmer sig för att dra tillbaka alla tjänster, funktioner, API eller SKU: er, får du förhands meddelande, inklusive en migrering eller över gångs Sök väg. Läs mer om Microsofts livs cykel principer här.
+**Fråga**: kommer [Azure AVDELNINGENS kontroll](../../purview/overview.md) att ersätta SQL data Discovery & klassificering eller kommer att inaktive ras för SQL data Discovery &-klassificeringen snart?
+**Svar**: vi fortsätter att stödja SQL Data Discovery & klassificering och du uppmanas att använda [Azure-avdelningens kontroll](../../purview/overview.md) som har rikare funktioner för att driva avancerade klassificerings funktioner och data styrning. Om vi bestämmer sig för att dra tillbaka alla tjänster, funktioner, API eller SKU: er, får du förhands meddelande, inklusive en migrering eller över gångs Sök väg. Läs mer om Microsofts livs cykel principer här.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nästa steg
 
 - Överväg att konfigurera [Azure SQL-granskning](../../azure-sql/database/auditing-overview.md) för övervakning och granskning av åtkomst till dina klassificerade känsliga data.
 - En presentation som innehåller & klassificering för data identifiering finns i avsnittet [upptäcka, klassificera, etikettera & skydda SQL-data | Data som visas](https://www.youtube.com/watch?v=itVi9bkJUNc).
-- Information om hur du klassificerar dina Azure SQL-databaser och Azure Synapse-analys med Azure avdelningens kontroll-etiketter med hjälp av T-SQL-kommandon finns i [klassificera dina Azure SQL-data med Azure avdelningens kontroll-etiketter](https://docs.microsoft.com/azure/sql-database/scripts/sql-database-import-purview-labels).
+- Information om hur du klassificerar dina Azure SQL-databaser och Azure Synapse-analys med Azure avdelningens kontroll-etiketter med hjälp av T-SQL-kommandon finns i [klassificera dina Azure SQL-data med Azure avdelningens kontroll-etiketter](../../sql-database/scripts/sql-database-import-purview-labels.md).

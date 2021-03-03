@@ -3,12 +3,12 @@ title: Visa och filtrera information om Azure-resurser
 description: Filtrera informationen och Använd olika vyer för att bättre förstå dina Azure-resurser.
 ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: d1bd00a9e7f8c9c18484378f7c21d3bacdac2d3f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738641"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Visa och filtrera information om Azure-resurser
 
@@ -49,6 +49,18 @@ Ta bort en vy:
 1. Välj **Hantera vy** och **Bläddra sedan till alla vyer**.
 
 1. I fönstret **sparade vyer för alla resurser** väljer du vyn och sedan **ta bort** ikonen ![ ta bort vy ](media/manage-filter-resource-views/icon-delete.png) .
+
+## <a name="export-information-from-a-view"></a>Exportera information från en vy
+
+Du kan exportera resurs informationen från en vy. Exportera information i CSV-format:
+
+1. Välj **Exportera till CSV**.
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="Skärm bild av export till CSV-format":::
+
+1. Spara filen lokalt och öppna sedan i Excel eller något annat program som stöder CSV-formatet. 
+
+När du flyttar runt portalen ser du andra områden där du kan exportera information, till exempel en enskild resurs grupp.
 
 ## <a name="summarize-resources-with-visuals"></a>Sammanfatta resurser med visuella objekt
 

@@ -1,18 +1,18 @@
 ---
 title: Distribuera resurser med Azure CLI och mall
-description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall.
+description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall eller en bicep-fil.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/02/2021
+ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378680"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741131"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Distribuera resurser med ARM-mallar och Azure CLI
 
-Den här artikeln förklarar hur du använder Azure CLI med Azure Resource Manager mallar (ARM-mallar) för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md).
+Den här artikeln förklarar hur du använder Azure CLI med Azure Resource Manager mallar (ARM-mallar) eller bicep-fil för att distribuera dina resurser till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure-lösningar kan du läsa [Översikt över mall-distribution](overview.md) eller [bicep översikt](bicep-overview.md).
 
 Distributions kommandona ändrades i Azure CLI-version 2.2.0. Exemplen i den här artikeln kräver Azure CLI version 2.2.0 eller senare.
 
@@ -27,13 +27,13 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 * Om du vill distribuera till en **resurs grupp** använder du [AZ distributions grupp skapa](/cli/azure/deployment/group#az-deployment-group-create):
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
 * Om du vill distribuera till en **prenumeration** använder du [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create):
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template>
+  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på prenumerations nivå finns i [skapa resurs grupper och resurser på prenumerations nivå](deploy-to-subscription.md).
@@ -41,7 +41,7 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 * Om du vill distribuera till en **hanterings grupp** använder du [AZ Deployment mg Create](/cli/azure/deployment/mg#az-deployment-mg-create):
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template>
+  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på hanterings grupp nivå finns i [Skapa resurser på hanterings grupps nivå](deploy-to-management-group.md).
@@ -49,14 +49,14 @@ Du kan rikta distributionen till en resurs grupp, prenumeration, hanterings grup
 * Använd [AZ Deployment Tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)för att distribuera till en **klient organisation**:
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template>
+  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   Mer information om distributioner på klient nivå finns i [Skapa resurser på klient nivå](deploy-to-tenant.md).
 
-För varje omfång måste användaren som distribuerar mallen ha behörighet att skapa resurser.
+För varje omfång måste användaren som distribuerar mallen eller bicep-filen ha de behörigheter som krävs för att skapa resurser.
 
-## <a name="deploy-local-template"></a>Distribuera en lokal mall
+## <a name="deploy-local-template-or-bicep-file"></a>Distribuera lokal mall eller bicep-fil
 
 Du kan distribuera en mall från den lokala datorn eller en som lagras externt. I det här avsnittet beskrivs hur du distribuerar en lokal mall.
 
@@ -66,13 +66,13 @@ Om du distribuerar till en resurs grupp som inte finns skapar du resurs gruppen.
 az group create --name ExampleGroup --location "Central US"
 ```
 
-Om du vill distribuera en lokal mall använder du `--template-file` parametern i distributions kommandot. I följande exempel visas hur du anger ett parameter värde som kommer från mallen.
+Om du vill distribuera en lokal mall eller en bicep-fil använder du `--template-file` parametern i distributions kommandot. I följande exempel visas också hur du anger ett parameter värde.
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file azuredeploy.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,6 +83,9 @@ Det kan ta några minuter att slutföra distributionen. När det är klart visas
 ```
 
 ## <a name="deploy-remote-template"></a>Distribuera fjärran sluten mall
+
+> [!NOTE]
+> För närvarande stöder inte Azure CLI distribution av Remove bicep-filer.
 
 I stället för att lagra ARM-mallar på den lokala datorn kanske du föredrar att lagra dem på en extern plats. Du kan lagra mallar på en lagringsplats för versionskontroll (till exempel GitHub). Eller så kan du lagra dem i ett Azure Storage-konto för delad åtkomst i din organisation.
 
@@ -144,6 +147,9 @@ För att undvika konflikter med samtidiga distributioner och för att säkerstä
 
 ## <a name="deploy-template-spec"></a>Specifikation för att distribuera mall
 
+> [!NOTE]
+> För närvarande stöder inte Azure CLI skapandet av mall-specifikationer genom att tillhandahålla bicep-filer. Du kan dock skapa en ARM-mall eller en bicep-fil med resursen [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) för att distribuera en mall-specifikation. Här är ett [exempel](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+
 I stället för att distribuera en lokal mall eller en fjärran sluten mall kan du skapa en [mall-specifikation](template-specs.md). Mallen specifikation är en resurs i din Azure-prenumeration som innehåller en ARM-mall. Det gör det enkelt att på ett säkert sätt dela mallen med användare i din organisation. Du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att ge åtkomst till mallen specifikation. Den här funktionen är för närvarande en för hands version.
 
 I följande exempel visas hur du skapar och distribuerar en mall-specifikation.
@@ -186,7 +192,7 @@ Ange värdena i om du vill skicka in infogade parametrar `parameters` . Om du ti
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -197,7 +203,7 @@ Du kan också hämta innehållet i filen och ange innehållet som en infogad par
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -236,7 +242,7 @@ Använd dubbla citat tecken runt JSON som du vill skicka till objektet.
 
 ### <a name="parameter-files"></a>Parameter-filer
 
-I stället för att skicka parametrar som infogade värden i skriptet, kan det vara lättare att använda en JSON-fil som innehåller parametervärdena. Parameter filen måste vara en lokal fil. Externa parameter-filer stöds inte med Azure CLI.
+I stället för att skicka parametrar som infogade värden i skriptet, kan det vara lättare att använda en JSON-fil som innehåller parametervärdena. Parameter filen måste vara en lokal fil. Externa parameter-filer stöds inte med Azure CLI. Både ARM-mall och bicep-fil använder JSON-parameter-filer.
 
 Mer information om parameterfilen finns i [Skapa en parameterfil för Resource Manager](parameter-files.md).
 
@@ -274,7 +280,7 @@ Om du vill distribuera en mall med strängar med flera rader eller kommentarer m
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du vill återställa till en lyckad distribution när du får ett fel, se [återställa vid fel till lyckad distribution](rollback-on-error.md).
-- Information om hur du hanterar resurser som finns i resurs gruppen men som inte har definierats i mallen finns i [Azure Resource Manager distributions lägen](deployment-modes.md).
-- Information om hur du definierar parametrar i din mall finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-- Tips om hur du löser vanliga distributions fel finns i [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](common-deployment-errors.md).
+* Om du vill återställa till en lyckad distribution när du får ett fel, se [återställa vid fel till lyckad distribution](rollback-on-error.md).
+* Information om hur du hanterar resurser som finns i resurs gruppen men som inte har definierats i mallen finns i [Azure Resource Manager distributions lägen](deployment-modes.md).
+* Information om hur du definierar parametrar i din mall finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+* Tips om hur du löser vanliga distributions fel finns i [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](common-deployment-errors.md).

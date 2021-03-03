@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/02/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e90a6060a9c8202f7f743a0ee433f89b9dc9fdd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689036"
 ---
 # <a name="two-way-sms-unsupported"></a>Dubbelriktat SMS stöds inte
 
@@ -27,7 +27,7 @@ E-postmeddelanden och Azure Portal Service Health meddelanden (portal-popups) ha
 ## <a name="required-actions"></a>Nödvändiga åtgärder
 
 1. Aktivera mobilappen för dina användare om du inte redan har gjort det. Mer information finns i [Aktivera Mobile App-autentisering med MFA Server](howto-mfaserver-deploy-mobileapp.md).
-1. Meddela slutanvändarna att gå till din [användar Portal](howto-mfaserver-deploy-userportal.md) för MFA-servern för att aktivera mobilappen. Den [Microsoft Authenticator appen](https://www.microsoft.com/account/authenticator) är det rekommenderade verifierings alternativet eftersom det är säkrare än dubbelriktat SMS. Mer information finns i se [hur det är dags att lägga på telefon transporter för autentisering](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
+1. Meddela slutanvändarna att gå till din [användar Portal](howto-mfaserver-deploy-userportal.md) för MFA-servern för att aktivera mobilappen. Den [Microsoft Authenticator appen](https://www.microsoft.com/en-us/account/authenticator) är det rekommenderade verifierings alternativet eftersom det är säkrare än dubbelriktat SMS. Mer information finns i se [hur det är dags att lägga på telefon transporter för autentisering](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752).
 1. Ändra användar inställningarna från dubbelriktat textmeddelande till mobilapp som standard metod.
 
 ## <a name="faq"></a>Vanliga frågor

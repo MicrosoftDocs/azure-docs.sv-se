@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727948"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Ansluta Data Factory till Azure-avdelningens kontroll (för hands version)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -40,10 +40,10 @@ Om du ser varning i Azure Data Factory Portal när du har registrerat Azure avde
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Skärm bild för taggar för att registrera ett avdelningens kontroll-konto.":::
 
-2. Kontrol lera om behörigheten har beviljats för att registrera ett Azure avdelningens kontroll-konto till Data Factory. Se [hur du ansluter Azure Data Factory och Azure avdelningens kontroll](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+2. Kontrol lera om behörigheten har beviljats för att registrera ett Azure avdelningens kontroll-konto till Data Factory. Se [hur du ansluter Azure Data Factory och Azure avdelningens kontroll](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)
 
 ### <a name="register-data-factory-in-azure-purview"></a>Registrera Data Factory i Azure avdelningens kontroll
-Information om hur du registrerar Data Factory i Azure-avdelningens kontroll finns i [så här ansluter du Azure Data Factory och Azure avdelningens kontroll](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
+Information om hur du registrerar Data Factory i Azure-avdelningens kontroll finns i [så här ansluter du Azure Data Factory och Azure avdelningens kontroll](../purview/how-to-link-azure-data-factory.md). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Rapportera härkomst-data till Azure avdelningens kontroll
 När kunder kör SSIS för att kopiera, data flöde eller köra-paket i Azure Data Factory kan kunder få beroende relationen och få en översikt över hela arbets flödes processen mellan data källor och mål.

@@ -3,12 +3,13 @@ title: Vanliga frågor och svar om Azure Kubernetes service (AKS)
 description: Hitta svar på några vanliga frågor om Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.custom: references_regions
+ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820270"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739635"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Vanliga frågor om Azure Kubernetes Service (AKS)
 
@@ -134,7 +135,7 @@ Windows Server-stöd för Node-pool innehåller vissa begränsningar som ingår 
 
 AKS tillhandahåller SLA-garantier som en valfri tilläggs funktion med [SLA för drift tid][uptime-sla]. 
 
-Det kostnads fria SLA som erbjuds som standard garanterar inte en slut punkt för API-server med hög tillgänglighet (vårt service nivå mål är 99,5%). Det kan bero på att tillfälliga anslutnings problem uppstår vid uppgraderingar, felaktiga Underlay-noder, plattforms underhåll osv... Om din arbets belastning inte tolererar APIServer-omstarter, rekommenderar vi att du använder SLA för drift tid.
+Den kostnads fria SKU som erbjuds som standard har inget associerat service *avtal*, men har ett service nivå *mål* på 99,5%. Det kan bero på att tillfälliga anslutnings problem uppstår vid uppgraderingar, felaktiga Underlay-noder, plattforms underhåll, program som överbelastar API-servern med begär Anden osv. Om din arbets belastning inte tolererar att API-servern startas om, rekommenderar vi att du använder SLA för drift tid.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kan jag använda Azure reservation-rabatter på mina AKS-agent-noder?
 
@@ -202,7 +203,7 @@ Log Analytics agent stöds eftersom det är ett tillägg som hanteras av Microso
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Lagrar AKS kund information utanför klustrets region?
 
-Funktionen för att aktivera lagring av kund information i en enda region är för närvarande bara tillgänglig i Sydostasien region (Singapore) för Asien och stillahavsområdet geo. För alla andra regioner lagras kund information på Geo.
+Funktionen för att aktivera lagring av kunddata i en enda region är för närvarande endast tillgänglig i Sydostasien region (Singapore) i regionen Asien och stillahavsområdet Geo-och Brasilien syd (Sao Paulo State) i Brasilien geo. För alla andra regioner lagras kund information på Geo.
 
 ## <a name="are-aks-images-required-to-run-as-root"></a>Krävs AKS-avbildningar för att köras som rot?
 

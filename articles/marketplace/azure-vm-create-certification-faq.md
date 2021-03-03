@@ -4,15 +4,15 @@ description: Felsök vanliga problem som rör testning och certifiering av virtu
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600978"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721165"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Felsöka virtuell dator certifiering
 
@@ -54,7 +54,7 @@ Kontrol lera att du har följt den virtuella dator etablerings processen noggran
 
 Etablerings problem kan omfatta följande fel scenarier:
 
-|Scenario|Fel|Orsak|Lösning|
+|Scenario|Fel|Anledning|Lösning|
 |---|---|---|---|
 |1|Ogiltig virtuell hård disk (VHD)|Om det angivna cookie-värdet i VHD-foten är felaktigt anses den virtuella hård disken vara ogiltig.|Återskapa avbildningen och skicka begäran.|
 |2|Ogiltig Blob-typ|VM-etableringen misslyckades eftersom det använda blocket är en Blob-typ i stället för en typ av sida.|Återskapa avbildningen och skicka begäran.|
@@ -311,7 +311,7 @@ Skicka din begäran med SSH-inaktive rad avbildning för certifierings processen
 
 I följande tabell finns några problem som kan uppstå när du laddar ned den virtuella dator avbildningen med en URL för signatur för delad åtkomst (SAS).
 
-|Fel|Orsak|Lösning|
+|Fel|Anledning|Lösning|
 |---|---|---|
 |Blobben hittades inte|Den virtuella hård disken kan antingen tas bort eller flyttas från den angivna platsen.|| 
 |BLOB som används|Den virtuella hård disken används av en annan intern process.|Den virtuella hård disken ska vara i ett använt tillstånd när du laddar ned den med en SAS-URL.|
@@ -470,7 +470,7 @@ Om alla avbildningar som tas från Azure Marketplace ska återanvändas måste d
 
 Använd följande tabell för lösningar på fel som är relaterade till data disken:
 
-|Fel|Orsak|Lösning|
+|Fel|Anledning|Lösning|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|Det här felet kan inträffa på grund av en ogiltig Logical Unit Number (LUN) när erbjudandet skickas.|Kontrol lera att LUN-nummersekvensen för data disken är i Partner Center.|
 |`DataDisk- NotFound:`|Det här felet kan inträffa på grund av att en datadisk inte finns på en angiven SAS-URL.|Kontrol lera att data disken finns på den angivna SAS-webbadressen.|
@@ -594,8 +594,37 @@ Publicera sedan erbjudandet igen.
 
 Information om hur du slutför publicerings processen finns i [Granska och publicera erbjudanden](review-publish-offer.md).
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>VM-avbildningar med begränsad åtkomst eller kräver anpassade mallar
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>Låst (eller) SSH-inaktiverat erbjudande
+
+  Bilder som publiceras med antingen SSH Disabled (för Linux) eller RDP-inaktiverade (för Windows) behandlas som låsta virtuella datorer. Det finns särskilda affärs scenarier på grund av vilka utgivare endast tillåter begränsad åtkomst till inga/några få användare. Låsta virtuella datorer kanske inte tillåter körning av vissa certifierings kommandon under validerings kontrollerna.
+
+
+#### <a name="custom-templates"></a>Anpassade mallar
+
+   I allmänhet följer alla avbildningar som publiceras under enskilda VM-mallar standard ARM-mallen för distribution. Det finns dock scenarier där Publisher kan kräva anpassning vid distribution av virtuella datorer (t. ex. flera nätverkskort som ska konfigureras).
+    
+   Beroende på nedanstående scenarier (ej uttömmande) använder utgivare anpassade mallar för att distribuera den virtuella datorn:
+
+   * Virtuell dator kräver ytterligare undernät i nätverket.
+   * Ytterligare metadata som ska infogas i ARM-mallen.
+   * Kommandon som är nödvändiga för körning av ARM-mallen.
+
+### <a name="vm-extensions"></a>VM-tillägg   
+
+   Azure-tillägg för virtuella datorer är små program som ger konfigurations- och automationsuppgifter på virtuella Azure-datorer efter distribution. Om en virtuell dator till exempel behöver programvaruinstallation, antivirusskydd eller körning av ett skript på den kan ett VM-tillägg användas. 
+
+   Giltiga Linux VM-tillägg kräver följande för att vara en del av avbildningen:
+* Azure Linux-agenten är större 2.2.41
+* Python-version över 2,8 
+
+
+Mer information finns i VM- [tillägget](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+     
 ## <a name="next-steps"></a>Nästa steg
 
 - [Konfigurera egenskaper för VM-erbjudande](azure-vm-create-properties.md)
 - [Aktiva marknads förmåner](partner-center-portal/marketplace-rewards.md)
 - Kontakta [supporten för partner Center](https://aka.ms/marketplacepublishersupport)om du har frågor eller feedback om förbättringar.
+ 

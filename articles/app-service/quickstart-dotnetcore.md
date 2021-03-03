@@ -6,12 +6,16 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-dotnetcore-uiex
+ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701645"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Snabb start: skapa en ASP.NET Core webbapp i Azure
 
@@ -36,7 +40,7 @@ När du är klar har du en Azure-resurs grupp som består av en App Service vär
 
 Skapa en ASP.NET Core webbapp i Visual Studio genom att följa dessa steg:
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. Öppna Visual Studio och välj **skapa ett nytt projekt**.
 
@@ -107,7 +111,7 @@ Följ de här stegen för att skapa din App Service och publicera din webbapp:
 
 1. Ange de värden som anges i följande tabell i dialog rutan **värd plan: skapa ny** .
 
-   | Inställning  | Föreslaget värde | Description |
+   | Inställning  | Föreslaget värde | Beskrivning |
    | -------- | --------------- | ----------- |
    | **Värdplan**  | *myFirstAzureWebAppPlan* | Namnet på App Service-planen. |
    | **Plats**      | *Europa, västra* | Datacenter som är värd för webbappen. |
@@ -187,7 +191,7 @@ Gå vidare till nästa artikel om du vill lära dig hur du skapar en .NET Core-a
 ::: zone-end  
 
 ::: zone pivot="platform-linux"
-Med [App Service i Linux](overview.md#app-service-on-linux) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst som utgår från operativsystemet Linux. Den här snabbstarten visar hur du skapar en [.NET Core](/aspnet/core/)-app med App Service på Linux. Du skapar appen med [Azure CLI](/cli/azure/get-started-with-azure-cli) och använder Git för att distribuera .NET Core-koden till appen.
+Med [App Service i Linux](overview.md#app-service-on-linux) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst som utgår från operativsystemet Linux. Den här snabb starten visar hur du skapar en [.net Core](/aspnet/core/) -app och distribuerar till en Linux-värd app service med [Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 ![Exempelapp som körs i Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -197,7 +201,7 @@ Du kan följa stegen i den här artikeln på en Mac-, Windows- eller Linux-dator
 
 ## <a name="set-up-your-initial-environment"></a>Konfigurera din inledande miljö
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 För att slutföra den här snabbstarten behöver du:
 
@@ -258,7 +262,7 @@ az login
 Distribuera koden i din lokala mapp (*hellodotnetcore*) med hjälp av `az webapp up` kommandot:
 
 ```azurecli
-az webapp up --sku F1 --name <app-name> --os-type linux
+az webapp up --sku F1 --name <app-name>
 ```
 
 - Om `az` kommandot inte känns igen kontrollerar du att Azure CLI är installerat enligt beskrivningen i [Konfigurera din första miljö](#set-up-your-initial-environment).
@@ -268,7 +272,7 @@ az webapp up --sku F1 --name <app-name> --os-type linux
 
 Det kan ta några minuter att slutföra kommandot. Under körningen innehåller den meddelanden om att skapa resurs gruppen, App Service plan och värd appen, Konfigurera loggning och sedan utföra ZIP-distribution. Det ger meddelandet "du kan starta appen på http:// &lt; App-Name &gt; . azurewebsites.net", som är appens URL på Azure.
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 ![Exempel på utdata från kommandot AZ webapp up](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
 

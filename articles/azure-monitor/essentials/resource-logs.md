@@ -7,27 +7,27 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3560152ce5e3185e79c7a7ff34e5360f10236980
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcd6522c46b6ca35031092c634803267a8486647
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731467"
 ---
 # <a name="azure-resource-logs"></a>Azure-resursloggar
-Azures resurs loggar är [plattforms loggar](../essentials/platform-logs-overview.md) som ger inblick i åtgärder som utförts i en Azure-resurs. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen. Resurs loggar samlas inte in som standard. Du måste skapa en diagnostisk inställning för varje Azure-resurs för att skicka resurs loggarna till en Log Analytics arbets yta som ska användas med [Azure Monitor loggar](../platform/data-platform-logs.md), Azure Event Hubs som ska vidarebefordras utanför Azure, eller för att Azure Storage arkivering.
+Azures resurs loggar är [plattforms loggar](../essentials/platform-logs-overview.md) som ger inblick i åtgärder som utförts i en Azure-resurs. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen. Resurs loggar samlas inte in som standard. Du måste skapa en diagnostisk inställning för varje Azure-resurs för att skicka resurs loggarna till en Log Analytics arbets yta som ska användas med [Azure Monitor loggar](../logs/data-platform-logs.md), Azure Event Hubs som ska vidarebefordras utanför Azure, eller för att Azure Storage arkivering.
 
 Se [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika destinationer](../essentials/diagnostic-settings.md) för information om hur du skapar en diagnostisk inställning och [distribuerar Azure Monitor i skala med Azure policy](../deploy-scale.md) för information om hur du använder Azure policy för att automatiskt skapa en diagnostisk inställning för varje Azure-resurs som du skapar.
 
 ## <a name="send-to-log-analytics-workspace"></a>Skicka till Log Analytics-arbetsytan
- Skicka resurs loggar till en Log Analytics-arbetsyta för att aktivera funktionerna i [Azure Monitor loggar](../platform/data-platform-logs.md) som innehåller följande:
+ Skicka resurs loggar till en Log Analytics-arbetsyta för att aktivera funktionerna i [Azure Monitor loggar](../logs/data-platform-logs.md) som innehåller följande:
 
 - Korrelera resurs logg data med andra övervaknings data som samlas in av Azure Monitor.
 - Konsolidera logg poster från flera Azure-resurser, prenumerationer och klienter till en plats för analys.
 - Använd logg frågor för att utföra komplexa analyser och få djupgående insikter om loggdata.
 - Använd logg aviseringar med komplex aviserings logik.
 
-[Skapa en diagnostisk inställning](../essentials/diagnostic-settings.md) för att skicka resurs loggar till en Log Analytics-arbetsyta. Dessa data lagras i tabeller enligt beskrivningen i [strukturen i Azure Monitor loggar](../platform/data-platform-logs.md). Tabellerna som används av resurs loggar beror på vilken typ av samling resursen använder:
+[Skapa en diagnostisk inställning](../essentials/diagnostic-settings.md) för att skicka resurs loggar till en Log Analytics-arbetsyta. Dessa data lagras i tabeller enligt beskrivningen i [strukturen i Azure Monitor loggar](../logs/data-platform-logs.md). Tabellerna som används av resurs loggar beror på vilken typ av samling resursen använder:
 
 - Azure Diagnostics – alla data som skrivs är till _AzureDiagnostics_ -tabellen.
 - Resurs specifika data skrivs till en enskild tabell för varje resurs kategori.
@@ -90,7 +90,7 @@ De flesta Azure-resurser kommer att skriva data till arbets ytan i **Azure-diagn
    ![Läges väljare för diagnostiska inställningar](media/resource-logs/diagnostic-settings-mode-selector.png)
 
 > [!NOTE]
-> Ett exempel på hur du anger samlings läget med en Resource Manager-mall finns i [exempel på Resource Manager-mallar för diagnostikinställningar i Azure Monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
+> Ett exempel på hur du anger samlings läget med en Resource Manager-mall finns i [exempel på Resource Manager-mallar för diagnostikinställningar i Azure Monitor](./resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
 
 Du kan ändra en befintlig diagnostisk inställning till ett resurs speciellt läge. I det här fallet finns data som redan har samlats in kvar i _AzureDiagnostics_ -tabellen tills den tas bort enligt inställningen för kvarhållning för arbets ytan. Nya data samlas in i den dedikerade tabellen. Använd [union](/azure/kusto/query/unionoperator) -operatorn för att fråga efter data i båda tabellerna.

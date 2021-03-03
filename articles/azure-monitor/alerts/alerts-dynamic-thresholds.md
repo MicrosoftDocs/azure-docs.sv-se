@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 01/04/2021
-ms.openlocfilehash: 31a034a7f52efd915b7a07e1abb953a14839892e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9cf4caf77d14dd1296276ca48827c170ef265e9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718071"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Mått aviseringar med dynamiska tröskelvärden i Azure Monitor
 
@@ -22,7 +22,7 @@ Vi vill gärna höra dina synpunkter, se till att de kommer <azurealertsfeedback
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Varför och när använder dynamisk villkors typ rekommenderas?
 
-1. **Skalbar avisering** – aviserings regler för dynamiskt tröskelvärden kan skapa skräddarsydda tröskelvärden för hundratals mått serier i taget, men samtidigt ge samma enklare för att definiera en varnings regel för ett enda mått. De ger dig färre aviseringar för att skapa och hantera. Du kan använda antingen Azure Portal eller Azure Resource Manager-API: et för att skapa dem. Den skalbara metoden är särskilt användbar när du hanterar mått dimensioner eller när du tillämpar på flera resurser, t. ex. för alla prenumerations resurser.  [Lär dig mer om hur du konfigurerar mått aviseringar med dynamiska tröskelvärden med hjälp av mallar](../platform/alerts-metric-create-templates.md).
+1. **Skalbar avisering** – aviserings regler för dynamiskt tröskelvärden kan skapa skräddarsydda tröskelvärden för hundratals mått serier i taget, men samtidigt ge samma enklare för att definiera en varnings regel för ett enda mått. De ger dig färre aviseringar för att skapa och hantera. Du kan använda antingen Azure Portal eller Azure Resource Manager-API: et för att skapa dem. Den skalbara metoden är särskilt användbar när du hanterar mått dimensioner eller när du tillämpar på flera resurser, t. ex. för alla prenumerations resurser.  [Lär dig mer om hur du konfigurerar mått aviseringar med dynamiska tröskelvärden med hjälp av mallar](./alerts-metric-create-templates.md).
 
 1. **Smart metrisk mönster igenkänning** – med vår ml-teknik kan vi automatiskt identifiera Mät mönster och anpassa sig till mått förändringar över tid, vilket ofta kan innefatta säsongs beroende (per timme/dag/vecka). Att anpassa sig till måttets beteende över tid och avisering baserat på avvikelser från dess mönster innebär att du kan känna till "höger"-tröskelvärdet för varje mått. Den ML-algoritm som används i dynamiska tröskelvärden är utformad för att förhindra störningar (låg precision) eller ett begränsat (låg återställnings) tröskelvärden som inte har ett förväntat mönster.
 
@@ -75,7 +75,7 @@ Om du vill utlösa en avisering när det uppstod ett fel i ett dynamiskt tröske
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Hur tar du reda på varför en avisering om dynamiskt tröskelvärden utlöstes?
 
-Du kan utforska Utlös ande aviserings instanser i vyn aviseringar genom att klicka på länken i e-postmeddelandet eller textmeddelandet eller webbläsaren för att se vyn aviseringar i Azure Portal. [Läs mer om vyn aviseringar](../platform/alerts-overview.md#alerts-experience).
+Du kan utforska Utlös ande aviserings instanser i vyn aviseringar genom att klicka på länken i e-postmeddelandet eller textmeddelandet eller webbläsaren för att se vyn aviseringar i Azure Portal. [Läs mer om vyn aviseringar](./alerts-overview.md#alerts-experience).
 
 Aviserings visningen visar:
 
@@ -188,4 +188,4 @@ Använd följande information för att tolka föregående diagram.
 - **Röd punkt med en svart cirkel** – visar det första måttets värde utanför det tillåtna intervallet. Detta är värdet som utlöser en mått avisering och placerar den i ett aktivt tillstånd.
 - **Röda punkter**– ange ytterligare uppmätta värden utanför det tillåtna intervallet. De kommer inte att utlösa ytterligare mått varningar, men aviseringen stannar kvar i den aktiva.
 - **Rött område** – visar den tid då måttets värde var utanför det tillåtna intervallet. Aviseringen förblir i aktivt tillstånd så länge efterföljande uppmätta värden ligger utanför det tillåtna intervallet, men inga nya aviseringar utlöses.
-- **Slutet av det röda utrymmet** – när den blå linjen är tillbaka i de tillåtna värdena stoppas det röda arean och den uppmätta värde linjen blir blå. Status för måttet som utlöses vid tidpunkten för den röda punkten med svart kon tur är inställd på löst. 
+- **Slutet av det röda utrymmet** – när den blå linjen är tillbaka i de tillåtna värdena stoppas det röda arean och den uppmätta värde linjen blir blå. Status för måttet som utlöses vid tidpunkten för den röda punkten med svart kon tur är inställd på löst.

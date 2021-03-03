@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724497"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Förbered lokala datorer för migrering till Azure
 
@@ -35,7 +35,7 @@ Tabellen sammanfattar identifierings-, utvärderings-och migrations gränser fö
 
 **Scenario** | **Project** | **Identifiering/bedömning** | **Migrering**
 --- | --- | --- | ---
-**VMwares virtuella datorer** | Identifiera och utvärdera upp till 35 000 virtuella datorer i ett enda Azure Migrate projekt. | Identifiera upp till 10 000 virtuella VMware-datorer med en enda [Azure Migrate-apparat](common-questions-appliance.md) för VMware. | **Migrering utan agent**: du kan samtidigt replikera högst 300 virtuella datorer. För bästa prestanda rekommenderar vi att du skapar flera batchar av virtuella datorer om du har mer än 50.<br/><br/> **Agent-baserad migrering**: du kan [skala ut](./agent-based-migration-architecture.md#performance-and-scaling) [replikeringen](migrate-replication-appliance.md) för att replikera ett stort antal virtuella datorer.<br/><br/> I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.
+**VMwares virtuella datorer** | Identifiera och utvärdera upp till 35 000 virtuella datorer i ett enda Azure Migrate projekt. | Identifiera upp till 10 000 virtuella VMware-datorer med en enda [Azure Migrate-apparat](common-questions-appliance.md) för VMware. | **Migrering utan agent**: du kan samtidigt replikera högst 500 virtuella datorer från varje vCenter Server. **Agent-baserad migrering**: du kan [skala ut](./agent-based-migration-architecture.md#performance-and-scaling) [replikeringen](migrate-replication-appliance.md) för att replikera ett stort antal virtuella datorer.<br/><br/> I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.
 **Hyper-V:s virtuella datorer** | Identifiera och utvärdera upp till 35 000 virtuella datorer i ett enda Azure Migrate projekt. | Identifiera upp till 5 000 virtuella Hyper-V-datorer med en enda Azure Migrate-apparat | En apparat används inte för Hyper-V-migrering. I stället körs Hyper-V-Replikeringsprovidern på varje Hyper-V-värd.<br/><br/> Replikeringens kapacitet påverkas av prestanda faktorer som VM-omsättning och uppladdning av bandbredd för replikeringsdata.<br/><br/> I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.
 **Fysiska datorer** | Identifiera och utvärdera upp till 35 000 datorer i ett enda Azure Migrate projekt. | Identifiera upp till 250 fysiska servrar med en enda Azure Migrate-apparat för fysiska servrar. | Du kan [skala ut](./agent-based-migration-architecture.md#performance-and-scaling) [replikeringen](migrate-replication-appliance.md) för att replikera ett stort antal servrar.<br/><br/> I portalen kan du välja upp till 10 datorer på en gång för replikering. Om du vill replikera fler datorer lägger du till i batchar med 10.
 
@@ -116,7 +116,7 @@ Azure Migrate slutför de här åtgärderna automatiskt för dessa versioner
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
 - Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
-- Debian 8, 7
+- Debian 9, 8, 7
 - Oracle Linux 7,7, 7,7 – CI
 
 För andra versioner förbereder du datorer så att de sammanfattas i tabellen.  
@@ -138,12 +138,12 @@ I följande tabell sammanfattas de steg som utförs automatiskt för de operativ
 | Action                                      | Agent \- baserad VMware-migrering | Migrering utan agent | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
 | Installera Hyper- \- V Linux Integration Services | Ja                           | Ja                        | Krävs inte |
-| Aktivera loggning av Azures serie konsol         | Ja                           | Ja                        | Nej         |
-| Uppdatera enhets mappnings fil                      | Ja                           | Nej                         | Nej         |
-| Uppdatera fstab-poster                        | Ja                           | Ja                        | Nej         |
-| Ta bort udev-regel                            | Ja                           | Ja                        | Nej         |
-| Uppdatera nätverks gränssnitt                   | Ja                           | Ja                        | Nej         |
-| Aktivera SSH                                  | Nej                            | Nej                         | Nej         |
+| Aktivera loggning av Azures serie konsol         | Ja                           | Ja                        | Inga         |
+| Uppdatera enhets mappnings fil                      | Ja                           | Inga                         | Inga         |
+| Uppdatera fstab-poster                        | Ja                           | Ja                        | Inga         |
+| Ta bort udev-regel                            | Ja                           | Ja                        | Inga         |
+| Uppdatera nätverks gränssnitt                   | Ja                           | Ja                        | Inga         |
+| Aktivera SSH                                  | Inga                            | Inga                         | Inga         |
 
 Lär dig mer om hur du [kör en virtuell Linux-dator på Azure](../virtual-machines/linux/create-upload-generic.md)och få instruktioner för några av de populära Linux-distributionerna.
 

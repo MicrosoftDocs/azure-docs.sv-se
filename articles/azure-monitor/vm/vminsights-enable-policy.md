@@ -1,20 +1,20 @@
 ---
-title: Aktivera Azure Monitor for VMs med Azure Policy
-description: Beskriver hur du aktiverar Azure Monitor for VMs för flera virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure Policy.
+title: Aktivera VM-insikter med hjälp av Azure Policy
+description: Beskriver hur du aktiverar VM Insights för flera virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure Policy.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 4da0610de1f71cd422ec684ea633a4474c078862
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a63a647f3d76e3cc2616f05fe96d86dbdd36e74d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707548"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Aktivera Azure Monitor for VMs med Azure Policy
-I den här artikeln beskrivs hur du aktiverar Azure Monitor for VMs för virtuella Azure-datorer eller en hybrid virtuell dator som är ansluten till Azure ARC (för hands version) med Azure Policy. Med Azure Policy kan du tilldela princip definitioner som installerar de agenter som krävs för Azure Monitor for VMs i Azure-miljön och automatiskt aktivera övervakning av virtuella datorer när varje virtuell dator skapas. Azure Monitor for VMs tillhandahåller en funktion som gör att du kan identifiera och reparera icke-kompatibla virtuella datorer i din miljö. Använd den här funktionen i stället för att arbeta direkt med Azure Policy.
+# <a name="enable-vm-insights-by-using-azure-policy"></a>Aktivera VM-insikter med hjälp av Azure Policy
+Den här artikeln förklarar hur du aktiverar VM Insights för virtuella Azure-datorer eller en hybrid virtuell dator som är ansluten till Azure ARC (för hands version) med Azure Policy. Med Azure Policy kan du tilldela princip definitioner som installerar de nödvändiga agenterna för VM Insights i Azure-miljön och automatiskt aktivera övervakning för virtuella datorer när varje virtuell dator skapas. VM Insights innehåller en funktion som gör att du kan identifiera och reparera inkompatibla virtuella datorer i din miljö. Använd den här funktionen i stället för att arbeta direkt med Azure Policy.
 
 Om du inte är bekant med Azure Policy får du en kort introduktion vid [distribution Azure Monitor i skala med Azure policy](../deploy-scale.md).
 
@@ -22,15 +22,15 @@ Om du inte är bekant med Azure Policy får du en kort introduktion vid [distrib
 > Om du vill använda Azure Policy med skalnings uppsättningar för virtuella Azure-datorer, eller om du vill arbeta med Azure Policy direkt för att aktivera virtuella Azure-datorer, se [distribuera Azure Monitor i skala med hjälp av Azure policy](../deploy-scale.md#azure-monitor-for-vms).
 
 ## <a name="prerequisites"></a>Förutsättningar
-- [Skapa och konfigurera en Log Analytics-arbetsyta](../insights/vminsights-configure-workspace.md).
-- Se [operativ system som stöds](../insights/vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
+- [Skapa och konfigurera en Log Analytics-arbetsyta](./vminsights-configure-workspace.md).
+- Se [operativ system som stöds](./vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
 
 
-## <a name="azure-monitor-for-vms-initiative"></a>Azure Monitor for VMs initiativ
-Azure Monitor for VMs innehåller inbyggda princip definitioner för att installera Log Analytics agent och beroende agent på virtuella Azure-datorer. Initiativet **aktivera Azure Monitor for VMS** omfattar var och en av dessa princip definitioner. Tilldela det här initiativet till en hanterings grupp, prenumeration eller resurs grupp för att automatiskt installera agenterna på alla virtuella Windows-eller Linux Azure-datorer i det aktuella omfånget.
+## <a name="vm-insights-initiative"></a>Initiativ för VM Insights
+VM Insights innehåller inbyggda princip definitioner för att installera Log Analytics agent och beroende agent på virtuella Azure-datorer. Initiativet för **att aktivera VM Insights** inkluderar var och en av dessa princip definitioner. Tilldela det här initiativet till en hanterings grupp, prenumeration eller resurs grupp för att automatiskt installera agenterna på alla virtuella Windows-eller Linux Azure-datorer i det aktuella omfånget.
 
 ## <a name="open-policy-coverage-feature"></a>Öppna princip täcknings funktion
-Om du vill komma åt **Azure Monitor for VMS policy-täckning** går du till de **virtuella datorerna** på **Azure Monitor** -menyn i Azure Portal. Välj **andra onboarding-alternativ** och **Aktivera** sedan **Aktivera med hjälp av princip**.
+Om du vill komma åt **principen för VM Insights-principer** går du till de **virtuella datorerna** på **Azure Monitor** -menyn i Azure Portal. Välj **andra onboarding-alternativ** och **Aktivera** sedan **Aktivera med hjälp av princip**.
 
 [![Fliken för att komma igång med Azure Monitor från virtuella datorer](./media/vminsights-enable-policy/get-started-page.png)](./media/vminsights-enable-policy/get-started-page.png#lightbox)
 
@@ -39,7 +39,7 @@ Om du inte redan har en tilldelning skapar du en ny genom att klicka på **tilld
 
 [![Skapa tilldelning](media/vminsights-enable-policy/create-assignment.png)](media/vminsights-enable-policy/create-assignment.png#lightbox)
 
-Detta är samma sida för att tilldela ett initiativ i Azure Policy förutom att det är hårdkodad med det omfång som du har valt och definitionen för **att aktivera Azure Monitor for VMS** initiativ. Du kan också ändra **tilldelnings namnet** och lägga till en **Beskrivning**. Välj **undantag** om du vill ge ett undantag till omfånget. Ditt omfång kan till exempel vara en hanterings grupp och du kan ange en prenumeration i den hanterings gruppen som ska uteslutas från tilldelningen.
+Detta är samma sida för att tilldela ett initiativ i Azure Policy förutom att det är hårdkodad med det omfång som du har valt och definitionen för att **Aktivera VM Insights** -initiativ. Du kan också ändra **tilldelnings namnet** och lägga till en **Beskrivning**. Välj **undantag** om du vill ge ett undantag till omfånget. Ditt omfång kan till exempel vara en hanterings grupp och du kan ange en prenumeration i den hanterings gruppen som ska uteslutas från tilldelningen.
 
 [![Tilldela initiativ](media/vminsights-enable-policy/assign-initiative.png)](media/vminsights-enable-policy/assign-initiative.png#lightbox)
 
@@ -48,14 +48,14 @@ På sidan **parametrar** väljer du en **Log Analytics arbets yta** som ska anv�
    > [!NOTE]
    > Om arbets ytan överskrider tilldelningens omfattning beviljar du *Log Analytics deltagar* behörighet till princip tilldelningens huvud-ID. Om du inte gör det kan du se ett distributions haveri som `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
-[![Arbetsyta](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
+[![Platsen](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
 
 Klicka på **Granska + skapa** för att granska informationen om tilldelningen innan du klickar på **skapa** för att skapa den. Skapa inte en reparations uppgift just nu eftersom du förmodligen behöver flera åtgärder för att aktivera befintliga virtuella datorer. Se [åtgärda efterföljande resultat](#remediate-compliance-results) nedan.
 
 ## <a name="review-compliance"></a>Granska efterlevnad
-När du har skapat en tilldelning kan du granska och hantera täckning för **Azure Monitor for VMS** initiativ i hanterings grupper och prenumerationer. Detta visar hur många virtuella datorer som finns i varje hanterings grupp eller prenumerationer och deras kompatibilitetsstatus.
+När du har skapat en tilldelning kan du granska och hantera täckning för ditt initiativ för att **Aktivera VM Insights** i dina hanterings grupper och prenumerationer. Detta visar hur många virtuella datorer som finns i varje hanterings grupp eller prenumerationer och deras kompatibilitetsstatus.
 
-[![Sidan Azure Monitor for VMs hantera princip](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
+[![Sidan hantera princip för VM-insikter](media/vminsights-enable-policy/manage-policy-page-01.png)](media/vminsights-enable-policy/manage-policy-page-01.png#lightbox)
 
 
 Följande tabell innehåller en beskrivning av informationen i den här vyn.
@@ -105,11 +105,11 @@ Klicka på **Reparera** om du vill skapa en reparations uppgift och **Reparera**
 [![Skärm bild som visar fönstret princip reparation för övervakaren | Virtual Machines.](media/vminsights-enable-policy/remediation.png)](media/vminsights-enable-policy/remediation.png#lightbox)
 
 
-När reparations åtgärderna är klara bör de virtuella datorerna vara kompatibla med agenter installerade och aktiverade för Azure Monitor for VMs. 
+När reparations åtgärderna har slutförts bör de virtuella datorerna vara kompatibla med agenter installerade och aktiverade för VM-insikter. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när övervakning är aktiverat för dina virtuella datorer är den här informationen tillgänglig för analys med Azure Monitor for VMs. 
+Nu när övervakning har Aktiver ATS för dina virtuella datorer är den här informationen tillgänglig för analys med VM-insikter. 
 
-- Information om hur du visar identifierade program beroenden finns i [visa Azure Monitor for VMS karta](vminsights-maps.md). 
-- Information om hur du identifierar Flask halsar och övergripande användning med den virtuella datorns prestanda finns i [Visa prestanda för virtuella Azure-datorer](vminsights-performance.md). 
+- Information om hur du visar identifierade program beroenden finns i [Visa översikt över VM-insikter](vminsights-maps.md). 
+- Information om hur du identifierar Flask halsar och övergripande användning med den virtuella datorns prestanda finns i [Visa prestanda för virtuella Azure-datorer](vminsights-performance.md).

@@ -4,12 +4,12 @@ description: Lär dig vilka mått som används ofta för automatisk skalning av 
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: f358efb8f99066dc1d7a564ad36d6ed1290853e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4b763f39d3b88a7884e89dddbc2c483c1bb84d31
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717782"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor vanliga mått för autoskalning
 
@@ -33,8 +33,8 @@ Om något av föregående fall är sant kan du läsa igenom [Använd PowerShell 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Värd mått för Resource Manager-baserade virtuella Windows-och Linux-datorer
 Följande mått på värdnivå genereras som standard för virtuella Azure-datorer och VMSS i både Windows-och Linux-instanser. Dessa mått beskriver din virtuella Azure-dator, men samlas in från Azure VM-värden i stället för via agent som är installerad på den virtuella gäst datorn. Du kan använda dessa mått i regler för automatisk skalning.
 
-- [Värd mått för Resource Manager-baserade virtuella Windows-och Linux-datorer](../platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Värd mått för Resource Manager-baserade Windows-och Linux-VM Scale Sets](../platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Värd mått för Resource Manager-baserade virtuella Windows-och Linux-datorer](../essentials/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Värd mått för Resource Manager-baserade Windows-och Linux-VM Scale Sets](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Gäst operativ system mått för Resource Manager-baserade virtuella Windows-datorer
 När du skapar en virtuell dator i Azure aktive ras diagnostik med hjälp av tillägget Diagnostics. Tillägget Diagnostics ger en uppsättning mått som tas från den virtuella datorn. Det innebär att du kan Autoskala av mått som inte genereras som standard.
@@ -186,4 +186,3 @@ För VM Scale-uppsättningar kan du uppdatera inställningen för autoskalning i
 > För Service Bus finns inte det här konceptet för resurs grupp, men Azure Resource Manager skapar en standard resurs grupp per region. Resurs gruppen är vanligt vis i formatet default-Service Bus-[region]. Till exempel "default-Service Bus-öster", "default-Service Bus-väst", "default-Service Bus-AustraliaEast" osv.
 >
 >
-

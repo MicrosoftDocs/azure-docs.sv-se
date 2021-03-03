@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d0f1e711b325b1b9ce4e431c1438e511384e8a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b042049c803ad04b54bb6c2a242ca1008bc17dd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622373"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734527"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
 > [!NOTE]
-> Den här artikeln förutsätter att du är bekant med grundläggande funktioner i Azure Metrics Explorer-funktionen i Azure Monitor. Om du är en ny användare och vill lära dig hur du skapar ditt första mått diagram, se [komma igång med Metrics Explorer](../platform/metrics-getting-started.md).
+> Den här artikeln förutsätter att du är bekant med grundläggande funktioner i Azure Metrics Explorer-funktionen i Azure Monitor. Om du är en ny användare och vill lära dig hur du skapar ditt första mått diagram, se [komma igång med Metrics Explorer](./metrics-getting-started.md).
 
 I Azure Monitor är [måtten](data-platform-metrics.md) en serie med uppmätta värden och antal som samlas in och lagras över tid. Mått kan vara standard (kallas även "plattform") eller anpassad. 
 
@@ -49,11 +49,11 @@ När du är nöjd med ditt val väljer du **tillämpa**.
 ### <a name="view-metrics-across-multiple-resources"></a>Visa mått över flera resurser
 Vissa resurs typer kan fråga efter mått över flera resurser. Resurserna måste vara inom samma prenumeration och plats. Sök efter dessa resurs typer överst i menyn **resurs typer** . 
 
-Mer information finns i [Välj flera resurser](../platform/metrics-dynamic-scope.md#select-multiple-resources).
+Mer information finns i [Välj flera resurser](./metrics-dynamic-scope.md#select-multiple-resources).
 
 ![Skärm bild som visar olika typer av resurser.](./media/metrics-charts/multi-resource-scope.png)
 
-För typer som är kompatibla med flera resurser kan du fråga efter mått i en prenumeration eller flera resurs grupper. Mer information finns i [Välj en resurs grupp eller prenumeration](../platform/metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
+För typer som är kompatibla med flera resurser kan du fråga efter mått i en prenumeration eller flera resurs grupper. Mer information finns i [Välj en resurs grupp eller prenumeration](./metrics-dynamic-scope.md#select-a-resource-group-or-subscription).
 
 ## <a name="multiple-metric-lines-and-charts"></a>Flera mått linjer och diagram
 
@@ -67,7 +67,7 @@ Anta till exempel att du har fem lagrings konton och vill veta hur mycket utrymm
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>Flera mått i samma diagram
 
-Om du vill visa flera mått i samma diagram måste du först [skapa ett nytt diagram](../platform/metrics-getting-started.md#create-your-first-metric-chart). Välj sedan **Lägg till mått**. Upprepa det här steget om du vill lägga till ett mått i samma diagram.
+Om du vill visa flera mått i samma diagram måste du först [skapa ett nytt diagram](./metrics-getting-started.md#create-your-first-metric-chart). Välj sedan **Lägg till mått**. Upprepa det här steget om du vill lägga till ett mått i samma diagram.
 
 > [!NOTE]
 > Normalt ska dina diagram inte blanda mått som använder olika mått enheter. Undvik till exempel att blanda ett mått som använder millisekunder med en annan som använder kilobyte. Undvik också att blanda mått vars skalning skiljer sig avsevärt. 
@@ -86,7 +86,7 @@ När du lägger till ett mått i ett diagram tillämpar Metric Explorer automati
 
 Innan du använder olika agg regeringar i ett diagram bör du förstå hur mått Utforskaren hanterar dem. Mått är en serie mätningar (eller "mått värden") som har hämtats under en viss tids period. När du ritar ett diagram sammanställs värdena för de valda måtten separat under *tids kornig het*. 
 
-Du väljer storlek på tids kornig het genom att använda [panelen för tids väljare](../platform/metrics-getting-started.md#select-a-time-range)för mått Utforskaren. Om du inte uttryckligen väljer tids kornig het används det valda tidsintervallet som standard. När tids kornigheten har fastställts sammanställs Mät värdena som samlades in under varje tids kornig het i diagrammet, en data punkt per tids kornig het.
+Du väljer storlek på tids kornig het genom att använda [panelen för tids väljare](./metrics-getting-started.md#select-a-time-range)för mått Utforskaren. Om du inte uttryckligen väljer tids kornig het används det valda tidsintervallet som standard. När tids kornigheten har fastställts sammanställs Mät värdena som samlades in under varje tids kornig het i diagrammet, en data punkt per tids kornig het.
 
 Anta till exempel att ett diagram visar värdet för *Server svars tid* . Den använder *genomsnittlig* agg regering över tids perioden för de *senaste 24 timmarna*. I det här exemplet:
 
@@ -230,6 +230,42 @@ Fönstret Skapa aviserings regel öppnas. I fönstret visas diagrammets mått m�
 
 Mer information finns i [skapa, Visa och hantera mått varningar](../alerts/alerts-metric.md).
 
+## <a name="correlate-metrics-to-logs"></a>Korrelera mått till loggar
+För att hjälpa kunden att diagnostisera rotor saken till avvikelser i sina mått diagram, skapade vi mer information i loggarna. Med detaljerad information i loggar kan kunder korrelera toppar i sina mått diagram till loggar och frågor. 
+
+Innan vi går in på upplevelsen vill vi först introducera de olika typerna av loggar och frågor som tillhandahålls. 
+
+| Period             | Definition  | 
+|------------------|-------------|
+| Aktivitetsloggar    | Ger inblick i åtgärderna för varje Azure-resurs i prenumerationen från utsidan (hanterings planet) utöver uppdateringar av Service Health händelser. Använd aktivitets loggen för att fastställa vad, vem och när för Skriv åtgärder (skicka, skicka och ta bort) som ska vidtas för resurserna i din prenumeration. Det finns en enda aktivitets logg för varje Azure-prenumeration.  |   
+| Diagnostiklogg   | Ge insikter om åtgärder som utförts i en Azure-resurs (data planet), till exempel för att få en hemlighet från en Key Vault eller göra en begäran till en databas. Innehållet i resurs loggar varierar beroende på Azure-tjänsten och resurs typen. **Obs:** Måste tillhandahållas av tjänsten och aktive ras av kunden  | 
+| Rekommenderad logg | Scenariobaserade frågor som kunden kan utnyttja för att undersöka avvikelser i sin Metrics Explorer.  |
+
+För närvarande är detalj nivån i loggar tillgängliga för utvalda resurs leverantörer. Resurs leverantörerna som har fullständig detalj rikedom i loggar är: 
+
+* Application Insights 
+* Automatisk skalning 
+* App Services  
+* Storage  
+
+Nedan visas en exempel upplevelse för Application Insights Resource Provider.
+
+![Insamling av problem i bladet med App Insights-mått](./media/metrics-charts/drill-into-log-ai.png)
+
+Om du vill diagnostisera insamling i misslyckade förfrågningar klickar du på "granska i loggar".
+
+![Skärm bild av list rutan med loggar](./media/metrics-charts/drill-into-logs-dropdown.png)
+
+Genom att klicka på alternativet fel, kommer du att leda till ett anpassat fel blad som ger dig de misslyckade åtgärds åtgärderna, de viktigaste undantags typerna och beroenden. 
+
+![Skärm bild av bladet App Insights-problem](./media/metrics-charts/ai-failure-blade.png)
+
+### <a name="common-problems-with-drill-into-logs"></a>Vanliga problem med att öka detalj nivån i loggar
+
+* Loggen och frågorna är inaktiverade – om du vill visa rekommenderade loggar och frågor måste du dirigera diagnostikloggar till Log Analytics. Läs [det här dokumentet](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) om du vill veta hur du gör detta. 
+* Aktivitets loggar anges bara – funktionen detaljgranska i loggar är bara tillgänglig för utvalda resurs leverantörer. Aktivitets loggar tillhandahålls som standard. 
+
+ 
 ## <a name="troubleshooting"></a>Felsökning
 
 Om du inte ser några data i diagrammet kan du läsa följande felsöknings information:
@@ -242,6 +278,5 @@ Om du inte ser några data i diagrammet kan du läsa följande felsöknings info
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du skapar åtgärds bara instrument paneler med hjälp av mått finns i [skapa anpassade KPI-instrumentpaneler](../learn/tutorial-app-dashboards.md).
+Information om hur du skapar åtgärds bara instrument paneler med hjälp av mått finns i [skapa anpassade KPI-instrumentpaneler](../app/tutorial-app-dashboards.md).
 
- 

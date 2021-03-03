@@ -3,15 +3,15 @@ title: Skapa automatiserings uppgifter för att hantera och övervaka Azure-resu
 description: Konfigurera automatiserade uppgifter som hjälper dig att hantera Azure-resurser och övervaka kostnader genom att skapa arbets flöden som körs på Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719057"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Hantera Azure-resurser och övervaka kostnader genom att skapa automatiserings uppgifter (för hands version)
 
@@ -71,13 +71,15 @@ I jämförelse är Azure Automation en molnbaserad automatiserings-och konfigura
 
    ![Skärm bild som visar fönstret med lagrings kontots aktiviteter där verktygsfältet har valt Lägg till](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. I fönstret **Lägg till en åtgärd** under **Välj en mall**väljer du mallen för den aktivitet som du vill skapa och väljer **sedan Nästa: autentisering**.
+1. I fönstret **Lägg till en åtgärd** väljer du mallen för den aktivitet som du vill skapa under **Välj en mall**. Om nästa sida inte visas väljer du **Nästa: autentisering**.
 
    Det här exemplet fortsätter genom att välja den **Skicka månads kostnaden för resurs** aktivitets mal len.
 
    ![Skärm bild som visar valen, "skicka månatlig kostnad för resursen" och "Nästa: autentisering"](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. Under **autentisering**i avsnittet **anslutningar** väljer du **skapa** för varje anslutning så att du kan ange autentiseringsuppgifter för anslutningen. Typerna av anslutningar i varje aktivitet varierar beroende på aktiviteten.
+1. Under **autentisering** i avsnittet **anslutningar** väljer du **skapa** för varje anslutning som visas i aktiviteten så att du kan ange autentiseringsuppgifter för alla anslutningar. Typerna av anslutningar i varje aktivitet varierar beroende på aktiviteten.
+
+   I det här exemplet visas endast en av de anslutningar som krävs för den här aktiviteten.
 
    ![Skärm bild som visar det valda alternativet "skapa" för Azure Resource Manager anslutningen](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,9 +91,9 @@ I jämförelse är Azure Automation en molnbaserad automatiserings-och konfigura
 
    ![Skärm bild som visar att anslutningen har skapats](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. När du har autentiserat alla nödvändiga anslutningar väljer du **Nästa: konfiguration**.
+1. När du har autentiserat alla anslutningar väljer du **Nästa: konfiguration** om nästa sida inte visas.
 
-1. Under **konfiguration**anger du ett namn för uppgiften och annan information som krävs för uppgiften. När du är färdig väljer du **Skapa**.
+1. Under **konfiguration** anger du ett namn för uppgiften och annan information som krävs för uppgiften. När du är färdig väljer du **Skapa**.
 
    > [!NOTE]
    > Du kan inte ändra aktivitets namnet när det har skapats, så Överväg ett namn som fortfarande gäller om du [redigerar det underliggande arbets flödet](#edit-task-workflow). Ändringar som du gör i det underliggande arbets flödet gäller endast för den uppgift som du har skapat, inte uppgifts mal len.
@@ -121,7 +123,7 @@ Följ dessa steg om du vill visa en aktivitets historik för körningar tillsamm
 
 1. Leta upp den resurs som innehåller den aktivitets historik som du vill granska i [Azure Portal](https://portal.azure.com).
 
-1. Välj **automatiserings uppgifter**på resurs menyn under **Inställningar**.
+1. Välj **automatiserings uppgifter** på resurs menyn under **Inställningar**.
 
 1. Leta upp den uppgift som du vill granska i listan uppgifter. I den aktivitetens **körnings** kolumn väljer du **Visa**.
 
@@ -136,7 +138,7 @@ Följ dessa steg om du vill visa en aktivitets historik för körningar tillsamm
    | Status | Beskrivning |
    |--------|-------------|
    | **Avbröts** | Uppgiften avbröts under körning. |
-   | **Bröt** | Aktiviteten har minst en misslyckad åtgärd, men inga efterföljande åtgärder fanns för att hantera felen. |
+   | **Misslyckades** | Aktiviteten har minst en misslyckad åtgärd, men inga efterföljande åtgärder fanns för att hantera felen. |
    | **Körs** | Aktiviteten körs för närvarande. |
    | **Brutit** | Alla åtgärder har genomförts. En uppgift kan fortfarande slutföras om en åtgärd Miss lyckas, men en efterföljande åtgärd fanns för att hantera felet. |
    | **Väntar** | Körningen har inte startat ännu och pausats eftersom en tidigare instans av aktiviteten fortfarande körs. |
@@ -182,7 +184,7 @@ Om du vill ändra en uppgift kan du välja mellan följande alternativ:
 
 1. Leta upp den resurs som innehåller den uppgift som du vill uppdatera i [Azure Portal](https://portal.azure.com).
 
-1. På resurs menyn under **automatisering**väljer du **uppgifter**.
+1. På resurs menyn under **automatisering** väljer du **uppgifter**.
 
 1. Leta upp den uppgift som du vill uppdatera i listan uppgifter. Öppna menyn för aktivitets ellipser (**...**) och välj **Redigera i rad**.
 
@@ -213,7 +215,7 @@ När du ändrar det underliggande arbets flödet för en automatiserings uppgift
 
 1. Leta upp den resurs som innehåller den uppgift som du vill uppdatera i [Azure Portal](https://portal.azure.com).
 
-1. På resurs menyn under **automatisering**väljer du **uppgifter**.
+1. På resurs menyn under **automatisering** väljer du **uppgifter**.
 
 1. Leta upp den uppgift som du vill uppdatera i listan uppgifter. Öppna menyn för aktivitets ellipser (**...**) och välj **Öppna i Logic Apps**.
 
@@ -223,7 +225,7 @@ När du ändrar det underliggande arbets flödet för en automatiserings uppgift
 
    ![Skärm bild som visar uppgiften i Azure Logic Apps Visa med översikts fönstret markerat](./media/create-automation-tasks-azure-resources/task-logic-apps-view.png)
 
-1. Öppna det underliggande arbets flödet i Logic Apps designer genom att välja **Logic Apps designer**på menyn Logic Apps.
+1. Öppna det underliggande arbets flödet i Logic Apps designer genom att välja **Logic Apps designer** på menyn Logic Apps.
 
    ![Skärm bild som visar meny alternativet "Logic App Designer" valt och design ytan med det underliggande arbets flödet](./media/create-automation-tasks-azure-resources/view-task-workflow-logic-app-designer.png)
 
@@ -237,9 +239,9 @@ När du ändrar det underliggande arbets flödet för en automatiserings uppgift
 
    1. I fönstret för att skapa logiska appar, under **namn**, anger du ett nytt namn för ditt kopierade Logic app-arbetsflöde.
 
-      Förutom för **Logic app-status**är de andra egenskaperna inte tillgängliga för redigering. 
+      Förutom för **Logic app-status** är de andra egenskaperna inte tillgängliga för redigering. 
       
-   1. Under **Logic app-status**väljer du **inaktive rad** så att det klonade arbets flödet inte körs medan du gör dina ändringar. Du kan aktivera arbets flödet när du är redo att testa dina ändringar.
+   1. Under **Logic app-status** väljer du **inaktive rad** så att det klonade arbets flödet inte körs medan du gör dina ändringar. Du kan aktivera arbets flödet när du är redo att testa dina ändringar.
 
    1. När Azure har slutfört etableringen av ditt klonade arbets flöde kan du söka efter och öppna det arbets flödet i Logic Apps designer.
 
@@ -251,11 +253,11 @@ När du ändrar det underliggande arbets flödet för en automatiserings uppgift
 
    Mer information om upprepnings utlösaren finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med upprepnings utlösaren](../connectors/connectors-native-recurrence.md). Mer information om andra utlösare och åtgärder som du kan använda finns i [kopplingar för Azure Logic Apps](../connectors/apis-list.md).
 
-1. Spara ändringarna genom att välja **Spara**i verktygsfältet designer.
+1. Spara ändringarna genom att välja **Spara** i verktygsfältet designer.
 
    ![Skärm bild som visar verktygsfältet designer och det valda kommandot "Spara"](./media/create-automation-tasks-azure-resources/save-updated-workflow.png)
 
-1. Om du vill testa och köra det uppdaterade arbets flödet väljer du **Kör**i verktygsfältet designer.
+1. Om du vill testa och köra det uppdaterade arbets flödet väljer du **Kör** i verktygsfältet designer.
 
    När körningen är klar visar designern arbets flödets körnings information.
 
@@ -265,7 +267,7 @@ När du ändrar det underliggande arbets flödet för en automatiserings uppgift
 
 ## <a name="provide-feedback"></a>Ge feedback
 
-Vi vill gärna höra från dig! [Kontakta Azure Logic Apps-teamet](mailto:logicapps@microsoft.com)om du vill rapportera buggar, ge feedback eller ställa frågor om den här förhands gransknings funktionen.
+Vi vill gärna höra från dig! [Kontakta Azure Logic Apps-teamet](mailto:logicappspm@microsoft.com)om du vill rapportera buggar, ge feedback eller ställa frågor om den här förhands gransknings funktionen.
 
 ## <a name="next-steps"></a>Nästa steg
 

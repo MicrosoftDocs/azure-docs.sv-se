@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 9fe53a343a9f6675519b60d37d077886adaf8a9d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723834"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Felsöka problem med Ändringsspårning och inventering
 
@@ -34,7 +34,7 @@ Datorn har redan distribuerats till en annan arbets yta för Ändringsspårning.
 
 ### <a name="resolution"></a>Lösning
 
-1. Kontrol lera att datorn rapporterar till rätt arbets yta. Information om hur du kontrollerar detta finns i [Verifiera agent anslutning till Azure Monitor](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Kontrol lera också att arbets ytan är länkad till ditt Azure Automation-konto. Bekräfta genom att gå till ditt Automation-konto och välja **länkad arbets yta** under **relaterade resurser**.
+1. Kontrol lera att datorn rapporterar till rätt arbets yta. Information om hur du kontrollerar detta finns i [Verifiera agent anslutning till Azure Monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Kontrol lera också att arbets ytan är länkad till ditt Azure Automation-konto. Bekräfta genom att gå till ditt Automation-konto och välja **länkad arbets yta** under **relaterade resurser**.
 
 1. Se till att datorerna visas i Log Analytics arbets ytan som är länkad till ditt Automation-konto. Kör följande fråga i arbets ytan Log Analytics.
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: a858bcc0e6f6364a1eb5c37d555f5f1e7064b650
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879468"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702206"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrera virtuella VMware-datorer till Azure (utan agent)
 
@@ -57,7 +57,7 @@ När du har skapat enheten kontrollerar du att den kan ansluta till Azure Migrat
 
 När du har konfigurerat installationen och slutfört identifieringen kan du påbörja replikering av virtuella VMware-datorer till Azure. 
 
-- Du kan köra upp till 300 replikeringar samtidigt.
+- Du kan köra upp till 500 replikeringar samtidigt.
 - I portalen kan du välja upp till 10 virtuella datorer på en gång för migrering. Om du vill migrera fler datorer lägger du till dem i grupper i grupp 10.
 
 Aktivera replikering på följande sätt:
@@ -88,9 +88,10 @@ Aktivera replikering på följande sätt:
 9. I **disk krypterings typ** väljer du:
     - Kryptering – rest med plattforms hanterad nyckel
     - Kryptering – rest med kundhanterad nyckel
+    - Double Encryption med plattforms hanterade och Kundhanterade nycklar
 
    > [!NOTE]
-   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
+   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](https://go.microsoft.com/fwlink/?linkid=2151800) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
   
 10. I **Azure Hybrid-förmån**:
 

@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721522"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Skapa en CI/CD-pipeline för IoT Edge med Azure DevOps starter
 
@@ -29,6 +29,16 @@ DevOps starter skapar en CI/CD-pipeline i Azure DevOps. Du kan skapa en ny Azure
 1. Välj **skapa en resurs** i den vänstra rutan och Sök sedan efter **DevOps starter**.  
 
 1. Välj **Skapa**.
+
+1. Som standard konfigureras Start programmet för DevOps med GitHub. Om du vill använda funktionerna i den här instruktionen kan du växla DevOps starter för att konfigurera med Azure DevOps. Följ länken **ändra inställningar här** .
+
+   ![Välj Ändra inställningar här för att växla från GitHub till Azure DevOps](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. I den högra rutan väljer du panelen **Azure-DevOps** och sedan **slutförd**.
+
+   ![Välj Azure-DevOps för att konfigurera dina DevOps-startstarter](./media/how-to-devops-starter/select-azure-devops.png)
+
+   Nu bör du se att DevOps starter konfigureras med Azure DevOps.
 
 ## <a name="create-a-new-application-pipeline"></a>Skapa en ny program pipeline
 

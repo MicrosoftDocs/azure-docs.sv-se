@@ -4,19 +4,18 @@ description: Lär dig hur du skapar din första Azure-funktion för serverfri k�
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980954"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732195"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Skapa din första funktion i Azure Portal
 
 Med Azure Functions kan du köra din kod i en miljö utan server utan att först behöva skapa en virtuell dator (VM) eller publicera ett webb program. I den här artikeln får du lära dig hur du använder Azure Functions för att skapa en "Hello World" HTTP-utlösare i Azure Portal.
 
->[!NOTE]
->Redigering i portalen stöds endast för skript funktioner i Java Script, PowerShell, TypeScript och C#.<br><br>För funktionerna i C#-klass biblioteks-, Java-och python-funktioner kan du skapa Function-appen i portalen, men du måste också skapa funktionerna lokalt och sedan publicera dem i Azure. 
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
 Vi rekommenderar istället att du [utvecklar dina funktioner lokalt](functions-develop-local.md) och publicerar dem i en Function-app i Azure.  
 Använd någon av följande länkar för att komma igång med din valda lokala utvecklings miljö och ditt språk:

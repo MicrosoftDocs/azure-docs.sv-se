@@ -6,19 +6,19 @@ author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
-ms.date: 11/24/2020
-ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 02/24/2021
+ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611210"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712523"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med hjälp av Azure Portal
 
 En belastningsutjämnare för flera regioner säkerställer att en tjänst är tillgänglig globalt över flera Azure-regioner. Om en region Miss lyckas dirigeras trafiken till nästa närmaste felfria regionala belastnings utjämning.  
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en belastningsutjämnare för flera regioner.
@@ -41,28 +41,29 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 ## <a name="sign-in-to-azure-portal"></a>Logga in på Azure-portalen
 
-[Logga in](https://portal.azure.com) på Azure Preview Portal.
+[Logga in](https://preview.portal.azure.com) på Azure Preview Portal.
 
 ## <a name="create-cross-region-load-balancer"></a>Skapa en belastningsutjämnare för flera regioner
 
 I det här avsnittet ska du skapa en belastningsutjämnare för flera regioner och en offentlig IP-adress.
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs > nätverks > Load Balancer** eller söker efter **Load Balancer** i sökrutan.
-
-2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
+1. Välj **Skapa en resurs**. 
+2. I rutan Sök anger du **Load Balancer**. Välj **Load Balancer** i Sök resultaten.
+3. På sidan **belastnings utjämning** väljer du **skapa**.
+4. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och ange **CreateCRLBTutorial-RG** i text rutan.|
-    | Name                   | Ange **myLoadBalancer – CR**                                   |
-    | Region         | Välj **USA, västra**.                                        |
+    | Namn                   | Ange **myLoadBalancer – CR**                                   |
+    | Region         | Välj **(US) västra USA**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
-    | SKU           | Välj **standard** |
+    | SKU           | Låt standardvärdet vara **standard.** |
     | Nivå           | Välj **Global** |
     | Offentlig IP-adress | Välj **Skapa ny**.|
     | Namn på offentlig IP-adress | Skriv **myPublicIP – CR** i text rutan.|
-    | Routningsprioritet| Välj **Microsoft-nätverk** |
+    | Routningsprioritet| Välj **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](../virtual-network/routing-preference-overview.md). |
 
     > [!NOTE]
     > Belastnings utjämning för flera regioner kan bara distribueras i följande hem regioner: **östra USA 2, västra USA, Västeuropa, Sydostasien, centrala USA, norra Europa, Asien, östra**. Mer information finns i **https://aka.ms/homeregionforglb**.

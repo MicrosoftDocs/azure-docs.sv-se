@@ -1,22 +1,21 @@
 ---
 title: Vanliga frågor och svar om prissättning för Azure Övervakare av nätverksprestanda | Microsoft Docs
 description: Vanliga frågor och svar – Azure Övervakare av nätverksprestanda
-ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 56163d3267a69099cbf6a18266168e9198ea04c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717442"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Pris ändringar för Azure Övervakare av nätverksprestanda
 
 > [!IMPORTANT]
-> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Vi har lyssnat på din feedback och nyligen introducerade en [ny prissättnings upplevelse](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) för olika övervaknings tjänster i Azure. Den här artikeln samlar in pris ändringar som rör Azure [övervakare av nätverksprestanda](../../networking/network-monitoring-overview.md) (NPM) i ett lättläst fråge-och svars format.
 

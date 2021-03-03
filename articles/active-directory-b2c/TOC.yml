@@ -121,10 +121,14 @@
           href: add-sign-up-and-sign-in-policy.md
         - name: Inloggningsprincip
           href: add-sign-in-policy.md
-        - name: Princip för återställning av lösenord
-          href: add-password-reset-policy.md
-        - name: Princip för ändring av lösenord
-          href: add-password-change-policy.md
+        - name: Principer för lösenordsåterställning
+          items:
+            - name: Återställning av lösenord för självbetjäning
+              href: add-password-reset-policy.md
+            - name: Lösen ords ändring via självbetjäning
+              href: add-password-change-policy.md
+            - name: Framtvinga lösen ords återställning
+              href: force-password-reset.md
         - name: Princip för profilredigering
           href: add-profile-editing-policy.md
         - name: Princip för autentiseringsuppgifter för lösenord för resursägare
@@ -520,4 +524,4 @@
       href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: Videoklipp
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'
+      href: azure-ad-external-identities-videos.md

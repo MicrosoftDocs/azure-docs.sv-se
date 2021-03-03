@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 70f64813546c66c0f9e3533e09de192315f75600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698849"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Steg 1 – förstå fördelarna med att migrera till Media Services API v3
 
@@ -38,7 +38,7 @@ Det har gjorts betydande förbättringar av Media Services med v3.
 | Azure Portal uppdateringar | Azure Portal har uppdaterats för att inkludera hantering av v3-API-entiteter. Det gör att kunderna kan använda portalen för att starta Live Streaming, skicka v3-omvandlings jobb, hantera innehålls skydds principer, slut punkter för direkt uppspelning, få API-åtkomst, hantera länkade lagrings konton och utföra övervaknings aktiviteter. |
 | **Konton och lagring** | |
 | Rollbaserad åtkomst kontroll i Azure (RBAC) | Kunder kan nu definiera sina egna roller och kontrol lera åtkomsten till varje entitet i Media Services ARM-API: et. Detta hjälper till att kontrol lera åtkomsten till resurser av AAD-konton. |
-| Hanterade identiteter | Hanterade identiteter eliminerar behovet av utvecklare att hantera autentiseringsuppgifter genom att tillhandahålla en identitet för Azure-resursen i Azure AD. Se information om hanterade identiteter [här](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). |
+| Hanterade identiteter | Hanterade identiteter eliminerar behovet av utvecklare att hantera autentiseringsuppgifter genom att tillhandahålla en identitet för Azure-resursen i Azure AD. Se information om hanterade identiteter [här](../../active-directory/managed-identities-azure-resources/overview.md). |
 | Stöd för privata länkar | Kunderna får åtkomst till Media Services slut punkter för nyckel leverans, LiveEvents och strömnings slut punkter via en PrivateEndpoint på sitt VNet. |
 | [Kund – hanterade nycklar](concept-use-customer-managed-keys-byok.md) eller ta med din egen nyckel (BYOK) support | Kunder kan kryptera data i sina Media Services-konton med hjälp av en nyckel i deras Azure Key Vault. |
 | **Tillgångar** | |

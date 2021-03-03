@@ -3,20 +3,20 @@ title: Övervaka och arbeta med säkerhetskopieringar i Backup Center
 description: Den här artikeln förklarar hur du övervakar och använder säkerhets kopieringar i skala med Backup Center
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 9ce3b0f00c51e9b466a9ed040b677df811448b1d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893786"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719550"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center-preview"></a>Övervaka och använda säkerhets kopieringar med Backup Center (för hands version)
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Övervaka och arbeta med säkerhetskopieringar i Backup Center
 
 Som administratör för säkerhets kopiering kan du använda Backup Center som ett enda fönster i glas för att övervaka dina jobb och säkerhets kopierings inventering på en daglig basis. Du kan också använda Backup Center för att utföra vanliga åtgärder, till exempel svara på begär Anden om säkerhets kopiering på begäran, återställa säkerhets kopior, skapa säkerhets kopierings principer och så vidare.
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-* Backup Center stöds för närvarande för säkerhets kopiering av virtuella Azure-datorer, SQL i Azure VM backup, SAP HANA i Azure VM backup, Azure Files säkerhets kopiering och Azure Database for PostgreSQL säkerhets kopiering av Server.
+* Backup Center stöds för närvarande för säkerhets kopiering av virtuella Azure-datorer, SQL i Azure VM backup, SAP HANA i säkerhets kopiering av virtuella Azure-datorer, Azure Files säkerhets kopiering, Azure blobbar, Azure Managed Disks säkerhets kopiering och Azure Database for PostgreSQL Server säkerhets kopiering.
 * Se [support mat ris](backup-center-support-matrix.md) för en detaljerad lista över scenarier som stöds och som inte stöds.
 
 ## <a name="backup-instances"></a>Säkerhets kopierings instanser

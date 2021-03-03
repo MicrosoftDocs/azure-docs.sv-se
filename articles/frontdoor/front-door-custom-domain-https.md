@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740791"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Självstudiekurs: Konfigurera HTTPS på en anpassad Front Door-domän
 
@@ -44,7 +44,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan slutföra stegen i den här kursen måste du först skapa en Front Door och med minst en anpassad domän publicerad. Mer information finns i [Självstudiekurs: Lägga till en anpassad domän i din Front Door](front-door-custom-domain.md).
 
@@ -110,9 +110,9 @@ Ge Azures frontend-behörighet för att komma åt certifikaten i ditt Azure Key 
 
 2. I **Välj huvudkonto** söker du efter **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** och väljer **Microsoft.Azure.Frontdoor**. Klicka på **Välj**.
 
-3. I **hemliga behörigheter**väljer du **Hämta** för att tillåta front dörr att hämta certifikatet.
+3. I **hemliga behörigheter** väljer du **Hämta** för att tillåta front dörr att hämta certifikatet.
 
-4. I **certifikat behörigheter**väljer du **Hämta** för att tillåta front dörren att hämta certifikatet.
+4. I **certifikat behörigheter** väljer du **Hämta** för att tillåta front dörren att hämta certifikatet.
 
 5. Välj **OK**. 
 
@@ -133,12 +133,7 @@ Ge Azures frontend-behörighet för att komma åt certifikaten i ditt Azure Key 
     Azure-front dörren visar följande information: 
     - Nyckelvalvskonton för ditt prenumerations-ID. 
     - Certifikaten (hemligheterna) i det valda nyckelvalvet. 
-    - Tillgängliga certifikatversioner. 
-
-> [!NOTE]
-> Om du lämnar certifikat versionen som Tom leder det till:
-> - Den senaste versionen av certifikatet som har marker ATS.
-> - Automatisk rotation av certifikat till den senaste versionen när en nyare version av certifikatet är tillgänglig i din Key Vault.
+    - Tillgängliga certifikatversioner.
  
 5. Domänverifiering krävs inte om du använder ett eget certifikat. Gå vidare till [Vänta på spridning](#wait-for-propagation).
 
@@ -280,7 +275,7 @@ I den här självstudiekursen lärde du dig att:
 * Verifiera en domän.
 * Aktivera HTTPS för din anpassade domän.
 
-Fortsätt till nästa självstudie om du vill veta hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
+Fortsätt till nästa självstudie om du vill lära dig hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
 
 > [!div class="nextstepaction"]
 > [Konfigurera en princip för geo-filtrering](front-door-geo-filtering.md)

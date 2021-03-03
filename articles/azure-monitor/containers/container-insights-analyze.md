@@ -1,26 +1,26 @@
 ---
-title: Kubernetes-övervakning med Azure Monitor för behållare | Microsoft Docs
-description: Den här artikeln beskriver hur du kan visa och analysera prestanda för ett Kubernetes-kluster med Azure Monitor för behållare.
+title: Kubernetes övervakning med container Insights | Microsoft Docs
+description: Den här artikeln beskriver hur du kan visa och analysera prestanda för ett Kubernetes-kluster med behållar insikter.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 9bb21f7a651d773806a96bb19044abf3bc7dda5d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625378"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711356"
 ---
-# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Övervaka prestanda för Kubernetes-kluster med Azure Monitor för behållare
+# <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Övervaka Kubernetes-klustrets prestanda med behållar insikter
 
-Med Azure Monitor för behållare kan du använda prestanda diagram och hälso status för att övervaka arbets belastningen för Kubernetes-kluster som finns i Azure Kubernetes service (AKS), Azure Stack eller någon annan miljö från två perspektiv. Du kan övervaka direkt från klustret, eller så kan du Visa alla kluster i en prenumeration från Azure Monitor. Det går också att Visa Azure Container Instances när du övervakar ett enskilt AKS-kluster.
+Med behållar insikter kan du använda prestanda diagram och hälso status för att övervaka arbets belastningen för Kubernetes-kluster som finns i Azure Kubernetes service (AKS), Azure Stack eller någon annan miljö från två perspektiv. Du kan övervaka direkt från klustret, eller så kan du Visa alla kluster i en prenumeration från Azure Monitor. Det går också att Visa Azure Container Instances när du övervakar ett enskilt AKS-kluster.
 
 Den här artikeln hjälper dig att förstå de två perspektiven och hur Azure Monitor hjälper dig att snabbt utvärdera, undersöka och lösa identifierade problem.
 
-Information om hur du aktiverar Azure Monitor för behållare finns i [Onboard Azure Monitor for containers](container-insights-onboard.md).
+Information om hur du aktiverar container Insights finns i avsnittet om [inbyggd container Insights](container-insights-onboard.md).
 
 Azure Monitor ger en vy med flera kluster som visar hälso status för alla övervakade Kubernetes-kluster som kör Linux och Windows Server 2019 som har distribuerats över resurs grupper i dina prenumerationer. Den visar kluster som identifierats i alla miljöer som inte övervakas av lösningen. Du kan omedelbart förstå kluster hälsa och härifrån kan du gå nedåt till sidan prestanda för nod och kontrollant eller gå till Visa prestanda diagram för klustret. För AKS-kluster som har identifierats och identifierats som oövervakade kan du aktivera övervakning när som helst.
 
-De huvudsakliga skillnaderna vid övervakning av ett Windows Server-kluster med Azure Monitor för behållare jämfört med ett Linux-kluster beskrivs [här](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) i översikts artikeln.
+De största skillnaderna vid övervakning av ett Windows Server-kluster med behållar insikter jämfört med ett Linux-kluster beskrivs [här](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) i översikts artikeln.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -37,7 +37,7 @@ Du kan begränsa resultaten som visas i rutnätet för att Visa kluster som är:
 * **Azure** -AKS och AKS-Engine kluster som finns i Azure Kubernetes-tjänsten
 * **Azure Stack (för hands version)** – AKS-Engine kluster som finns på Azure Stack
 * **Icke-Azure (för hands version)** – Kubernetes-kluster som finns lokalt
-* **Alla** – Visa alla Kubernetes-kluster som finns i Azure, Azure Stack och lokala miljöer som har publicerats på Azure Monitor för behållare
+* **Alla** – Visa alla Kubernetes-kluster som finns i Azure, Azure Stack och lokala miljöer som har publicerats till behållar insikter
 
 Om du vill visa kluster från en speciell miljö väljer du den från **miljön** Pill i det övre vänstra hörnet på sidan.
 
@@ -59,7 +59,7 @@ De hälso status värden som ingår:
 * **Hittades inte**: arbets ytan, resurs gruppen eller prenumerationen som innehåller arbets ytan för den här lösningen har tagits bort.
 * **Tillåts** inte: användaren har inte behörighet att läsa data i arbets ytan.
 * **Fel**: ett fel uppstod vid försök att läsa data från arbets ytan.
-* **Felkonfigurerad**: Azure Monitor för behållare har inte kon figurer ATS korrekt på den angivna arbets ytan.
+* **Felkonfigurerad**: behållar insikter har inte kon figurer ATS korrekt på den angivna arbets ytan.
 * **Inga data**: data har inte rapporter ATS till arbets ytan under de senaste 30 minuterna.
 
 Hälso tillstånd beräknar övergripande kluster status som *sämsta av* de tre tillstånden med ett undantag. Om något av de tre tillstånden är okänt, visar det övergripande kluster tillståndet **Okänt**.
@@ -88,7 +88,7 @@ I listan över kluster kan du öka detalj nivån till **kluster** sidan genom at
 
 ## <a name="view-performance-directly-from-a-cluster"></a>Visa prestanda direkt från ett kluster
 
-Åtkomst till Azure Monitor för behållare är tillgänglig direkt från ett AKS-kluster genom att välja **insikts**  >  **kluster** i den vänstra rutan eller när du har valt ett kluster från vyn flera kluster. Information om klustret är indelat i fyra perspektiv:
+Åtkomst till behållar insikter är tillgängligt direkt från ett AKS-kluster genom att välja **Insights**  >  -**kluster** i den vänstra rutan eller när du valde ett kluster från vyn flera kluster. Information om klustret är indelat i fyra perspektiv:
 
 - Kluster
 - Noder
@@ -109,13 +109,13 @@ Prestanda diagrammen visar fyra prestanda mått:
 - **Antal noder**: antal noder och status från Kubernetes. Status för de klusternoder som visas är total, klar och inte redo. De kan filtreras separat eller kombineras i väljaren ovanför diagrammet.
 - **Antal aktiva Pod**: ett Pod-antal och status från Kubernetes. Status för poddar som visas är total, väntar, körs, okänd, lyckades eller misslyckades. De kan filtreras separat eller kombineras i väljaren ovanför diagrammet.
 
-Använd vänster och höger pilknappar för att bläddra igenom varje data punkt i diagrammet. Använd upp-och nedpilen för att gå igenom percentils linjerna. Välj PIN-ikonen i det övre högra hörnet i något av diagrammen för att fästa det valda diagrammet på den sista Azure-instrumentpanelen som du visade. På instrument panelen kan du ändra storlek på och flytta diagrammet. Genom att välja diagrammet på instrument panelen omdirigeras du till Azure Monitor för behållare och läsa in rätt omfång och vy.
+Använd vänster och höger pilknappar för att bläddra igenom varje data punkt i diagrammet. Använd upp-och nedpilen för att gå igenom percentils linjerna. Välj PIN-ikonen i det övre högra hörnet i något av diagrammen för att fästa det valda diagrammet på den sista Azure-instrumentpanelen som du visade. På instrument panelen kan du ändra storlek på och flytta diagrammet. Genom att välja diagrammet på instrument panelen omdirigeras du till behållar insikter och laddar rätt omfång och vy.
 
-Azure Monitor för behållare stöder också Azure Monitor [Metrics Explorer](../essentials/metrics-getting-started.md), där du kan skapa egna rit diagram, korrelera och undersöka trender och fästa på instrument paneler. Från metrics Explorer kan du också använda de kriterier som du anger för att visualisera måtten som grund för en [Metric-baserad aviserings regel](../alerts/alerts-metric.md).
+Behållar insikter stöder också Azure Monitor [Metrics Explorer](../essentials/metrics-getting-started.md), där du kan skapa egna rit diagram, korrelera och undersöka trender och fästa på instrument paneler. Från metrics Explorer kan du också använda de kriterier som du anger för att visualisera måtten som grund för en [Metric-baserad aviserings regel](../alerts/alerts-metric.md).
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Visa behållar mått i Metrics Explorer
 
-I Metrics Explorer kan du visa aggregerade noder och Pod användnings mått från Azure Monitor för behållare. I följande tabell sammanfattas information som hjälper dig att förstå hur du använder mått diagram för att visualisera container mått.
+I Metrics Explorer kan du visa aggregerade noder och Pod användnings mått från behållar insikter. I följande tabell sammanfattas information som hjälper dig att förstå hur du använder mått diagram för att visualisera container mått.
 
 |Namnområde | Metric | Beskrivning |
 |----------|--------|-------------|
@@ -191,7 +191,7 @@ Den information som visas när du visar fliken **noder** beskrivs i följande ta
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Name | Namnet på värden. |
+| Namn | Namnet på värden. |
 | Status | Kubernetes visar nodens status. |
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;%  | Genomsnittlig nod i procent baserat på percentil under den valda varaktigheten. |
 | Min, AVG, 50, nittionde, 95, max | Genomsnittligt antal noders faktiska värde baserat på percentil under den valda tids perioden. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en nod. För poddar och behållare är det det genomsnittliga värdet som rapporteras av värden. |
@@ -234,7 +234,7 @@ Den information som visas när du visar kontrollanter beskrivs i följande tabel
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Name | Namnet på kontrollanten.|
+| Namn | Namnet på kontrollanten.|
 | Status | Sammanslagnings statusen för behållarna när den har slutförts med status, till exempel *OK*, *avslutad*, *misslyckad*, *stoppad* eller *pausad*. Om behållaren körs men status antingen inte visas korrekt eller inte har hämtats av agenten och inte har svarat i mer än 30 minuter, är statusen *okänd*. Ytterligare information om status ikonen finns i följande tabell.|
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;%| Beräknat medelvärde för den genomsnittliga procent andelen av varje enhet för det valda måttet och percentilen. |
 | Min, AVG, 50, nittionde, 95, max  | Sammanslagning av genomsnittlig CPU-Millicore eller minnes prestanda för den valda percentilen. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en pod. |
@@ -271,7 +271,7 @@ Den information som visas när du visar behållare beskrivs i följande tabell.
 
 | Kolumn | Beskrivning |
 |--------|-------------|
-| Name | Namnet på kontrollanten.|
+| Namn | Namnet på kontrollanten.|
 | Status | Status för behållarna, om det finns några. Ytterligare information om status ikonen finns i nästa tabell.|
 | Min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95 &nbsp; %, max&nbsp;% | Sammanställning av den genomsnittliga procent andelen av varje enhet för det valda måttet och percentilen. |
 | Min, AVG, 50, nittionde, 95, max | Sammanslagning av genomsnittlig CPU-Millicore eller minnes prestanda för behållaren för den valda percentilen. Det genomsnittliga värdet mäts från PROCESSORns/minnes gränsen som angetts för en pod. |
@@ -297,12 +297,12 @@ Azure Network Policy Manager innehåller informativa Prometheus-mått som gör a
 
 ## <a name="workbooks"></a>Arbetsböcker
 
-Arbets böcker kombinerar text, logg frågor, mått och parametrar till omfattande interaktiva rapporter som gör att du kan analysera kluster prestanda. Se [arbets böcker i Azure Monitor för behållare](../insights/container-insights-reports.md) för en beskrivning av de arbets böcker som är tillgängliga för Azure Monitor för behållare.
+Arbets böcker kombinerar text, logg frågor, mått och parametrar till omfattande interaktiva rapporter som gör att du kan analysera kluster prestanda. Se [arbets böcker i behållar insikter](../insights/container-insights-reports.md) för en beskrivning av arbets böckerna som är tillgängliga för behållar insikter.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Granska [skapa prestanda varningar med Azure Monitor för behållare](./container-insights-log-alerts.md) för att lära dig hur du skapar aviseringar för hög processor-och minnes användning för att stödja DevOps eller operativa processer och procedurer.
+- Granska [skapa prestanda varningar med behållar insikter](./container-insights-log-alerts.md) för att lära dig hur du skapar aviseringar för hög processor-och minnes användning för att stödja DevOps eller operativa processer och procedurer.
 
 - Visa [exempel på logg frågor](container-insights-log-search.md#search-logs-to-analyze-data) för att se fördefinierade frågor och exempel för att utvärdera eller anpassa till avisering, visualisera eller analysera dina kluster.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 1cd90bc1906140e6e559c1557234458035e54042
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722372"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Förbereda data för att skapa en anpassad röst
 
@@ -27,9 +27,9 @@ Innan du kan träna din egen text till tal-röst modell behöver du ljud inspeln
 > Om du vill träna en neurala röst måste du ange en röst personal-profil med den ljud medgivande fil som du har fått från röst personal som kan bekräfta att hans/hennes tal-data används för att träna en anpassad röst modell. När du förbereder ditt inspelnings skript måste du se till att ta med nedanstående mening. 
 
 > "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
-Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](https://aka.ms/CNV-data-privacy) här.
+Den här meningen används för att kontrol lera om inlärnings data utförs av samma person som gör ditt medgivande. Läs mer om [röst personal-verifiering](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) här.
 
-> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](https://aka.ms/gating-overview) och [Använd åtkomsten här](https://aka.ms/customneural). 
+> Anpassad neurala-röst är tillgänglig med begränsad åtkomst. Se till att du förstår de [ansvariga AI-kraven](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) och [Använd åtkomsten här](https://aka.ms/customneural). 
 
 ## <a name="data-types"></a>Datatyper
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 474bad4c3d7250d93b3e926f6e71da6734d7a4d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702053"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Övervakning av fil integritet i Azure Security Center
 Lär dig hur du konfigurerar FIM (File Integrity Monitoring) i Azure Security Center att använda den här genom gången.
@@ -120,7 +120,7 @@ FIM är endast tillgängligt från Security Center sidor i Azure Portal. Det fin
 
     - Komma åt och Visa status och inställningar för varje arbets yta
 
-    - ![Uppgradera plan-ikonen ][4] Uppgradera arbets ytan för att använda Azure Defender. Den här ikonen anger att arbets ytan eller prenumerationen inte skyddas av Azure Defender. Din prenumeration måste skyddas av Azure Defender för att du ska kunna använda FIM-funktionerna. [Läs mer](security-center-pricing.md).
+    - ![Uppgradera plan-ikonen ][4] Uppgradera arbets ytan för att använda Azure Defender. Den här ikonen anger att arbets ytan eller prenumerationen inte skyddas av Azure Defender. Din prenumeration måste skyddas av Azure Defender för att du ska kunna använda FIM-funktionerna. Mer information finns i [Security Center kostnads fri vs Azure Defender aktiverat](security-center-pricing.md#security-center-free-vs-azure-defender-enabled).
 
     - ![Aktivera ikon][3] Aktivera FIM på alla datorer under arbets ytan och konfigurera FIM-alternativen. Den här ikonen anger att FIM inte är aktiverat för arbets ytan.
 

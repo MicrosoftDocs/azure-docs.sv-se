@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 19f051320aaa675ebe5ff148fb6580c2a5d8770c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430250"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719142"
 ---
 # <a name="features"></a>Funktioner
 
@@ -35,7 +35,7 @@ Tidigare versioner som också stöds är: `3.0.2`
 | uppdatera med optimistisk låsning | Ja       | Ja       | Ja       |                                                     |
 | uppdatering (villkorligt)           | Ja       | Ja       | Ja       |                                                     |
 | 9.0a                          | Inga        | Inga        | Inga        |                                                     |
-| ta bort                         | Ja       | Ja       | Ja       |                                                     |
+| delete                         | Ja       | Ja       | Ja       |  Se Obs! nedan                                                   |
 | ta bort (villkorligt)           | Inga        | Inga        | Inga        |                                                     |
 | historik                        | Ja       | Ja       | Ja       |                                                     |
 | skapa                         | Ja       | Ja       | Ja       | Stöd för både efter-och-placering                               |
@@ -48,6 +48,9 @@ Tidigare versioner som också stöds är: `3.0.2`
 | transaktionen                    | Inga        | Ja       | Inga        |                                                     |
 | växlings                         | Delvis   | Delvis   | Delvis   | `self` och `next` stöds                     |
 | mellanhand                 | Inga        | Inga        | Inga        |                                                     |
+
+> [!Note]
+> Borttagning som definieras av FHIR-specifikationen kräver att efter borttagningen, returnerar efterföljande icke-versions läsningar av en resurs en HTTP-statuskod på 410 och resursen hittas inte längre genom sökning. Med Azure API för FHIR kan du också helt ta bort (inklusive all historik) resursen. Om du vill ta bort resursen fullständigt kan du skicka en parameter inställning `hardDelete` till true ( `DELETE {server}/{resource}/{id}?hardDelete=true` ). Om du inte skickar den här parametern eller anger `hardDelete` till false är den historiska versionen av resursen fortfarande tillgänglig.
 
 ## <a name="search"></a>Sök
 
@@ -89,7 +92,7 @@ Alla typer av Sök parametrar stöds.
 | `_list`                 | Ja       | Ja       | Ja       |         |
 | `_type`                 | Ja       | Ja       | Ja       | Problem [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Ja       | Ja       | Ja       |         |
-| `_profile`              | Delvis   | Delvis   | Delvis   | Stöds bara i STU3, inget stöd i R4 |
+| `_profile`              | Delvis   | Delvis   | Delvis   | Stöds i STU3. Om du skapade din databas **efter** 20 februari 2021 har du även support i R4. Vi arbetar för att aktivera _profile på databaser som skapats före 20 februari 2021. |
 | `_text`                 | Inga        | Inga        | Inga        |         |
 | `_content`              | Inga        | Inga        | Inga        |         |
 | `_has`                  | Inga        | Inga        | Inga        |         |
@@ -99,7 +102,7 @@ Alla typer av Sök parametrar stöds.
 | Sök Resultat parametrar | Stöds – PaaS | Support – OSS (SQL) | Support – OSS (Cosmos DB) | Kommentar |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | Ja       | Ja       | Ja       | Problem [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Ja       | Ja       | Ja       | `_count` är begränsat till 100 tecken. Om värdet är högre än 100 kommer endast 100 att returneras och en varning returneras i paketet. |
+| `_count`                | Ja       | Ja       | Ja       | `_count` är begränsat till 1000 tecken. Om värdet är högre än 1000 kommer endast 1000 att returneras och en varning returneras i paketet. |
 | `_include`              | Ja       | Ja       | Ja       |Inkluderade objekt är begränsade till 100. Ta med på PaaS och OSS på Cosmos DB omfattar inte: stöd för iterering.|
 | `_revinclude`           | Ja       | Ja       | Ja       | Inkluderade objekt är begränsade till 100. Ta med på PaaS och OSS på Cosmos DB [omfattar inte: stöd för iterering](https://github.com/microsoft/fhir-server/issues/1313). Problem [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Delvis   | Delvis   | Delvis   | `_summary=count` stöds |

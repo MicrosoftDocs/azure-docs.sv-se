@@ -5,6 +5,8 @@
   items:
     - name: Vad är Azure Communication Services?
       href: overview.md
+    - name: Support-och hjälp alternativ
+      href: support.md
 - name: Snabbstarter
   expanded: true
   items:
@@ -12,10 +14,8 @@
       href: quickstarts/create-communication-resource.md
     - name: Skapa och hantera åtkomsttoken
       href: quickstarts/access-tokens.md
-    - name: Använda hanterade identiteter
+    - name: Använda hanterade identiteter (.NET)
       href: quickstarts/managed-identity.md
-    - name: Konfigurera hanterade identiteter från CLI
-      href: quickstarts/managed-identity-from-cli.md
     - name: Chatt
       items:
         - name: Lägga till chatt i din app
@@ -24,7 +24,7 @@
           href: quickstarts/chat/meeting-interop.md
     - name: Telefoni och SMS
       items:
-        - name: Hantera telefonnummer
+        - name: Hämta ett telefonnummer
           href: quickstarts/telephony-sms/get-phone-number.md
         - name: Lägg till telefonsamtal till din app
           href: quickstarts/voice-video-calling/pstn-call.md
@@ -152,8 +152,6 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
         - name: Chatt (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
-        - name: Chat (python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
     - name: SMS-bibliotek
       items:
         - name: SMS (JavaScript)
@@ -162,18 +160,14 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
         - name: SMS (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
-        - name: SMS (python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
-    - name: Identitets bibliotek
+    - name: Administrationsbibliotek
       items:
-        - name: Identitet (Java Script)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
-        - name: Identitet (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
-        - name: Identitet (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
-        - name: Identitet (python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
+        - name: Administration (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
+        - name: Administration (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
+        - name: Administration (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
     - name: Vanliga bibliotek
       items:
         - name: Vanliga (JavaScript)
@@ -182,8 +176,6 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
         - name: Vanliga (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
-        - name: Common (python)
-          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
 - name: Resurser
   items:
     - name: Viktig information

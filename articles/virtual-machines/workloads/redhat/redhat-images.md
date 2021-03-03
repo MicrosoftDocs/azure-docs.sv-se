@@ -7,13 +7,14 @@ ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 03c033ac5d0f20bbfd4f5dccfb5c2900596d2a41
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673135"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694690"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Översikt över Red Hat Enterprise Linux avbildningar
 
@@ -108,6 +109,8 @@ Information om typer av RHEL 8-avbildningar finns nedan.
 |----------|-------|------------|---------|--------
 |Redhat | RHEL | 8 | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.0.20191023) | De här avbildningarna är RHEL 8 LVM-partitionerade avbildningar anslutna till Red Hat-standarddatabaser.
 |Redhat | RHEL | 8-Gen2 | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.0.20191024) | De här avbildningarna är Hyper-V generation 2 RHEL 8 LVM-partitionerade avbildningar anslutna till Red Hat-standarddatabaser. Mer information om virtuella datorer i generation 2 i Azure finns i [stöd för virtuella datorer i generation 2 i Azure](../../generation-2.md).
+|Redhat | RHEL | RHEL – SAP-APPS | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.1.2021012201) | De här avbildningarna är RHEL för SAP-program. De har rätt att komma åt SAP-programdatabaser och bas RHEL-lagringsplatser.
+|Redhat | RHEL | RHEL – SAP-HA | Sammanfogade värden för den lägre RHEL-versionen och publicerings datumet (till exempel 8.1.2021010602) | De här avbildningarna är RHEL för SAP med bilder med hög tillgänglighet och uppdaterings tjänster. De har rätt att komma åt SAP-lösningar och program databaser och databaser för hög tillgänglighet samt RHEL E4S-databaser. Faktureringen omfattar RHEL Premium, SAP Premium och hög tillgänglighet Premium ovanpå bas beräknings avgiften.
 
 ## <a name="rhel-extended-support-add-ons"></a>RHEL Extended support-tillägg
 

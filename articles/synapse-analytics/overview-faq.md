@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 9a0fb8ed8ac54fa866b6db7d8f808c011c0c6758
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695829"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ För att skydda din Synapse-arbetsyta tilldelar du RBAC-rollerna till följande 
 
 Med dedikerade SQL-pooler har du dessutom alla samma säkerhetsfunktioner som du känner till och älskar.
 
-### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>F: Hur gör jag för att kontrol lera arbetsinriktade SQL-pooler, Server lös SQL-pooler och Server lös Spark-pooler?
+### <a name="q-how-do-i-control-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>F: Hur gör jag för att kontrol lera dedikerade SQL-pooler, Server lös SQL-pooler och Server lös Spark-pooler?
 
 A: som start punkt fungerar Azure Synapse med de inbyggda kostnads analys-och kostnads aviseringarna som finns på Azures prenumerations nivå.
 

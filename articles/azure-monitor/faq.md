@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 212828493a381ca118d3bdc54428bddba9bd842a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6840abe507543c4e03448401f091b6caa0a466c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717459"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -54,7 +54,7 @@ Se [IP-adresser som används av Application Insights och Log Analytics](app/ip-a
 Azure Monitor samlar in data från en mängd olika källor, inklusive loggar och mått från Azure-plattform och resurser, anpassade program och agenter som körs på virtuella datorer. Andra tjänster som Azure Security Center och Network Watcher samla in data i en Log Analytics arbets yta så att den kan analyseras med Azure Monitor data. Du kan också skicka anpassade data till Azure Monitor med hjälp av REST API för loggar eller mått. Se [källor för övervaknings data för Azure Monitor](agents/data-sources.md).
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Vilka data samlas in av Azure Monitor? 
-Azure Monitor samlar in data från en mängd olika källor i [loggar](logs/data-platform-logs.md) eller [mått](essentials/data-platform-metrics.md). Varje typ av data har sina egna relativa fördelar och var och en har stöd för en viss uppsättning funktioner i Azure Monitor. Det finns en enda mått databas för varje Azure-prenumeration, medan du kan skapa flera Log Analytics arbets ytor för att samla in loggar beroende på dina behov. Se [Azure Monitor data plattform](/data-platform.md).
+Azure Monitor samlar in data från en mängd olika källor i [loggar](logs/data-platform-logs.md) eller [mått](essentials/data-platform-metrics.md). Varje typ av data har sina egna relativa fördelar och var och en har stöd för en viss uppsättning funktioner i Azure Monitor. Det finns en enda mått databas för varje Azure-prenumeration, medan du kan skapa flera Log Analytics arbets ytor för att samla in loggar beroende på dina behov. Se [Azure Monitor data plattform](data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Finns det en maximal mängd data som jag kan samla in i Azure Monitor?
 Det finns ingen gräns för mängden Mät data som du kan samla in, men dessa data lagras i högst 93 dagar. Se [kvarhållning av mått](essentials/data-platform-metrics.md#retention-of-metrics). Det finns ingen gräns för mängden logg data som du kan samla in, men det kan påverkas av den pris nivå som du väljer för arbets ytan Log Analytics. Se [pris information](https://azure.microsoft.com/pricing/details/monitor/).
@@ -86,7 +86,7 @@ P
 Data tas bort från en arbets yta enligt kvarhållningsperioden [.](logs/manage-cost-storage.md#change-the-data-retention-period) Du kan ta bort vissa data för sekretess eller efterlevnad. Mer information finns i [Exportera och ta bort privata data](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
 ### <a name="is-log-analytics-storage-immutable"></a>Är Log Analytics lagring oföränderligt?
-Data i databas lagringen kan inte ändras när de har matats in men kan tas bort via [ *rensnings* -API-sökvägen för borttagning av privata data](platform/personal-data-mgmt.md#delete). Även om det inte går att ändra data, kräver vissa certifieringar att data förblir oföränderliga och inte kan ändras eller tas bort i lagrings utrymmet. Data oföränderlighets kan uppnås med hjälp av [data export](platform/logs-data-export.md) till ett lagrings konto som har kon figurer ATS som [oföränderligt lagrings utrymme](../storage/blobs/storage-blob-immutability-policies-manage.md).
+Data i databas lagringen kan inte ändras när de har matats in men kan tas bort via [ *rensnings* -API-sökvägen för borttagning av privata data](./logs/personal-data-mgmt.md#delete). Även om det inte går att ändra data, kräver vissa certifieringar att data förblir oföränderliga och inte kan ändras eller tas bort i lagrings utrymmet. Data oföränderlighets kan uppnås med hjälp av [data export](./logs/logs-data-export.md) till ett lagrings konto som har kon figurer ATS som [oföränderligt lagrings utrymme](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Vad är en Log Analytics-arbetsyta?
 Alla loggdata som samlas in av Azure Monitor lagras i en Log Analytics arbets yta. En arbets yta är i grunden en behållare där loggdata samlas in från olika källor. Du kan ha en enda Log Analytics arbets yta för alla dina övervaknings data eller så kan det finnas krav för flera arbets ytor. Se [utforma distributioner av Azure Monitor loggar](logs/design-logs-deployment.md).
@@ -607,7 +607,7 @@ Insamlaren opentelemetri beskrivs i [Readme-filen för GitHub](https://github.co
 [Openräkning](https://opencensus.io/) är markören till [opentelemetri](https://opentelemetry.io/). Microsoft hjälpte till att samla in [Opentracing](https://opentracing.io/) och openräkning för att skapa opentelemetri, en enda observerbar standard för världen. Azure Monitor s nuvarande [produktion – Rekommenderad python SDK](app/opencensus-python.md) baseras på openräkning, men till och med kommer alla Azure Monitor SDK: er att baseras på opentelemetri.
 
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor för containrar
+## <a name="container-insights"></a>Container Insights
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Vad representerar *andra processer* under vyn Node?
 
@@ -676,11 +676,11 @@ Om det första alternativet inte är bekvämt på grund av ändringar i frågan,
 
 ### <a name="can-i-view-metrics-collected-in-grafana"></a>Kan jag visa mått som samlats in i Grafana?
 
-Azure Monitor for containers stöder visning av mått som lagras i din Log Analytics arbets yta i Grafana-instrumentpaneler. Vi har angett en mall som du kan ladda ned från Grafana för [instrument panelen](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) för att komma igång och referera till att hjälpa dig att fråga efter ytterligare data från de övervakade klustren för att visualisera anpassade Grafana-instrumentpaneler. 
+Behållar insikter stöder visning av mått som lagras i Log Analytics-arbetsytan på Grafana-instrumentpaneler. Vi har angett en mall som du kan ladda ned från Grafana för [instrument panelen](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) för att komma igång och referera till att hjälpa dig att fråga efter ytterligare data från de övervakade klustren för att visualisera anpassade Grafana-instrumentpaneler. 
 
-### <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Kan jag övervaka mitt AKS-kluster med Azure Monitor för behållare?
+### <a name="can-i-monitor-my-aks-engine-cluster-with-container-insights"></a>Kan jag övervaka mitt AKS-kluster med behållar insikter?
 
-Azure Monitor för behållare stöder övervakning av arbets belastningar som distribueras till AKS-motorn (tidigare ACS-motor) som finns på Azure. Mer information och en översikt över de steg som krävs för att aktivera övervakning för det här scenariot finns i [använda Azure Monitor för behållare för AKS-Engine](https://github.com/microsoft/OMS-docker/tree/aks-engine).
+Behållar insikter stöder övervakning av arbets belastningar för arbets flöden som distribueras till AKS-motorn (tidigare ACS-Engine) som finns på Azure. Mer information och en översikt över de steg som krävs för att aktivera övervakning för det här scenariot finns i [använda behållar insikter för AKS-Engine](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>Varför visas inte data i min Log Analytics-arbetsyta?
 
@@ -696,11 +696,11 @@ Om du får ett fel meddelande om att **prenumerations registrering saknas för M
 
 ### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Finns det stöd för Kubernetes RBAC-aktiverade AKS-kluster?
 
-Lösningen för övervakning av behållare stöder inte Kubernetes RBAC, men stöds med Azure Monitor för behållare. Sidan lösnings information visar kanske inte rätt information i bladet som visar data för de här klustren.
+Lösningen för övervakning av behållare stöder inte Kubernetes RBAC, men stöds av container Insights. Sidan lösnings information visar kanske inte rätt information i bladet som visar data för de här klustren.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hur gör jag för att aktivera logg insamling för behållare i namn området Kube-system via Helm?
 
-Logg samlingen från behållare i Kube-systemets namnrymd är inaktive rad som standard. Logg insamling kan aktive ras genom att ställa in en miljö variabel på omsagent. Mer information finns på sidan [Azure Monitor for containers](https://aka.ms/azuremonitor-containers-helm-chart) GitHub. 
+Logg samlingen från behållare i Kube-systemets namnrymd är inaktive rad som standard. Logg insamling kan aktive ras genom att ställa in en miljö variabel på omsagent. Mer information finns på sidan [container Insights](https://aka.ms/azuremonitor-containers-helm-chart) GitHub. 
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>Hur gör jag för att du uppdatera omsagent till den senaste versionen?
 
@@ -708,7 +708,7 @@ Information om hur du uppgraderar agenten finns i [agent hantering](containers/c
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>Hur gör jag för att aktivera loggning på flera rader?
 
-För närvarande har Azure Monitor för behållare inte stöd för flera rader, men det finns lösningar som är tillgängliga. Du kan konfigurera alla tjänster som ska skrivas i JSON-format och sedan Docker/Moby att skriva dem som en enda rad.
+För närvarande har behållar insikter inte stöd för loggning på flera rader, men det finns tillgängliga lösningar. Du kan konfigurera alla tjänster som ska skrivas i JSON-format och sedan Docker/Moby att skriva dem som en enda rad.
 
 Du kan till exempel figursätta loggen som ett JSON-objekt, som du ser i exemplet nedan för ett exempel node.js program:
 
@@ -732,30 +732,30 @@ En detaljerad översikt över problemet finns i följande [GitHub-länk](https:/
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hur gör jag för att lösa Azure AD-fel när jag aktiverar Live-loggar? 
 
-Följande fel kan visas: svars-URL: en som **anges i begäran matchar inte de svars-URL: er som har kon figurer ATS \> för programmet: <program-ID**. Lösningen för att lösa problemet finns i artikeln [så här visar du behållar data i real tid med Azure Monitor för behållare](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Följande fel kan visas: svars-URL: en som **anges i begäran matchar inte de svars-URL: er som har kon figurer ATS \> för programmet: <program-ID**. Lösningen för att lösa problemet finns i artikeln [så här visar du behållar data i real tid med container Insights](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Varför kan jag inte uppgradera klustret efter onboarding?
 
-Om du när du har aktiverat Azure Monitor för behållare för ett AKS-kluster tar du bort arbets ytan Log Analytics som klustret skickade data till, vid försök att uppgradera klustret. För att undvika detta måste du inaktivera övervakning och sedan återaktivera den till en annan giltig arbets yta i din prenumeration. När du försöker utföra kluster uppgraderingen igen bör den bearbetas och slutföras.  
+Om du har aktiverat behållar insikter för ett AKS-kluster tar du bort arbets ytan Log Analytics som klustret skickade data till, vid försök att uppgradera klustret. För att undvika detta måste du inaktivera övervakning och sedan återaktivera den till en annan giltig arbets yta i din prenumeration. När du försöker utföra kluster uppgraderingen igen bör den bearbetas och slutföras.  
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>Vilka portar och domäner behöver jag öppna/tillåta för agenten?
 
 Se [nätverks brand Väggs kraven](containers/container-insights-onboard.md#network-firewall-requirements) för proxy-och brand Väggs konfigurations information som krävs för behållarens agent med Azure, Azure amerikanska myndigheter och Azure Kina 21Vianet-moln.
 
 
-## <a name="azure-monitor-for-vms"></a>Azure Monitor för virtuella datorer
+## <a name="vm-insights"></a>VM-insikter
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kan jag publicera till en befintlig arbets yta?
-Om dina virtuella datorer redan är anslutna till en Log Analytics arbets yta kan du fortsätta att använda arbets ytan vid registrering till Azure Monitor for VMs, förutsatt att den finns i någon av de [regioner som stöds](vm/vminsights-configure-workspace.md#supported-regions).
+Om dina virtuella datorer redan är anslutna till en Log Analytics arbets yta kan du fortsätta att använda arbets ytan vid registrering till VM-insikter, förutsatt att den finns i någon av de [regioner som stöds](vm/vminsights-configure-workspace.md#supported-regions).
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kan jag publicera till en ny arbets yta? 
-Om dina virtuella datorer inte är anslutna till en befintlig Log Analytics arbets yta måste du skapa en ny arbets yta för att lagra dina data. Att skapa en ny standard arbets yta görs automatiskt om du konfigurerar en enskild virtuell Azure-dator för Azure Monitor for VMs via Azure Portal.
+Om dina virtuella datorer inte är anslutna till en befintlig Log Analytics arbets yta måste du skapa en ny arbets yta för att lagra dina data. Att skapa en ny standard arbets yta görs automatiskt om du konfigurerar en enskild virtuell Azure-dator för VM-insikter via Azure Portal.
 
-Om du väljer att använda den skriptbaserade metoden beskrivs de här stegen i artikeln [aktivera Azure Monitor for VMS med hjälp av Azure PowerShell eller Resource Manager-mall](./vm/vminsights-enable-powershell.md) . 
+Om du väljer att använda den skriptbaserade metoden beskrivs de här stegen i artikeln [Aktivera VM Insights med hjälp av Azure PowerShell-eller Resource Manager-mall](./vm/vminsights-enable-powershell.md) . 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Vad gör jag om min virtuella dator redan rapporterar till en befintlig arbets yta?
-Om du redan samlar in data från dina virtuella datorer kanske du redan har konfigurerat den för att rapportera data till en befintlig Log Analytics-arbetsyta.  Så länge arbets ytan finns i en av våra regioner som stöds, kan du aktivera Azure Monitor for VMs till den befintliga arbets ytan.  Om den arbets yta som du redan använder inte finns i någon av våra regioner som stöds, kan du inte publicera till Azure Monitor for VMs för tillfället.  Vi arbetar aktivt med att stödja ytterligare regioner.
+Om du redan samlar in data från dina virtuella datorer kanske du redan har konfigurerat den för att rapportera data till en befintlig Log Analytics-arbetsyta.  Så länge arbets ytan finns i en av våra regioner som stöds, kan du aktivera VM Insights till den befintliga arbets ytan.  Om den arbets yta som du redan använder inte finns i någon av våra regioner som stöds, kommer du inte att kunna publicera till VM-insikter just nu.  Vi arbetar aktivt med att stödja ytterligare regioner.
 
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Varför gick det inte att publicera den virtuella datorn?
@@ -763,7 +763,7 @@ När du registrerar en virtuell Azure-dator från Azure Portal inträffar följa
 
 * En standard arbets yta Log Analytics skapas, om alternativet har valts.
 * Log Analytics Agent installeras på virtuella Azure-datorer med ett VM-tillägg, om det är klart krävs det.  
-* Azure Monitor for VMs mappnings beroende Agent installeras på virtuella Azure-datorer med ett tillägg, om det är bestämt krävs det. 
+* Agenten för den virtuella datorns Insights-mappning är installerad på virtuella Azure-datorer med ett tillägg, om det är klart krävs. 
 
 Under onboard-processen kontrollerar vi status för var och en av ovanstående för att returnera en meddelande status till dig i portalen. Konfigurationen av arbets ytan och Agent installationen tar vanligt vis 5 till 10 minuter. Det tar ytterligare 5 till 10 minuter att Visa övervaknings data i portalen.  
 
@@ -776,10 +776,10 @@ Våra prestanda diagram har uppdaterats för att använda data som lagras i *Ins
 Om du inte ser prestanda data i disk tabellen eller i vissa prestanda diagram, kanske prestanda räknarna inte konfigureras på arbets ytan. Kör följande [PowerShell-skript](./vm/vminsights-enable-powershell.md)för att lösa problemet.
 
 
-### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Hur skiljer sig Azure Monitor for VMs Map-funktionen från Tjänstkarta?
-Azure Monitor for VMs Map-funktionen baseras på Tjänstkarta, men har följande skillnader:
+### <a name="how-is-vm-insights-map-feature-different-from-service-map"></a>Hur skiljer sig funktionerna för VM Insights-mappar från Tjänstkarta?
+Kart funktionen för VM Insights baseras på Tjänstkarta, men har följande skillnader:
 
-* Du kan komma åt kart visningen från bladet VM och från Azure Monitor for VMs under Azure Monitor.
+* Du kan komma åt kart visningen från bladet VM och från VM-insikter under Azure Monitor.
 * Anslutningarna på kartan är nu klickbara och visar en vy över anslutnings måttets data på sido panelen för den valda anslutningen.
 * Det finns ett nytt API som används för att skapa Maps för att bättre stödja mer komplexa kartor.
 * Övervakade virtuella datorer ingår nu i noden klient grupp och ring diagrammet visar förhållandet mellan övervakade och oövervakade virtuella datorer i gruppen.  Den kan också användas för att filtrera listan över datorer när gruppen expanderas.
@@ -787,19 +787,19 @@ Azure Monitor for VMs Map-funktionen baseras på Tjänstkarta, men har följande
 * Kart formatet har uppdaterats så att det blir mer konsekvent med app Map från Application Insights.
 * Sido panelerna har uppdaterats och har inte den fullständiga uppsättningen integreringar som stöds i Tjänstkarta-Uppdateringshantering, Ändringsspårning, säkerhet och Service Desk. 
 * Alternativet för att välja grupper och datorer som ska mappas har uppdaterats och stöder nu prenumerationer, resurs grupper, skalnings uppsättningar för virtuella Azure-datorer och moln tjänster.
-* Du kan inte skapa nya Tjänstkarta dator grupper i Azure Monitor for VMs Map-funktionen.  
+* Du kan inte skapa nya Tjänstkarta dator grupper i funktionen för mappning av virtuell dator.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Varför visar mina prestanda diagram prickade linjer?
 Detta kan inträffa av några skäl.  I de fall där det finns en lucka i data insamlingen visas linjerna som prickade.  Om du har ändrat data samplings frekvensen för aktiverade prestanda räknare (Standardinställningen är att samla in data var 60 sekund). du kan se prickade linjer i diagrammet om du väljer ett smalt tidsintervall för diagrammet och samplings frekvensen är mindre än den Bucket-storlek som används i diagrammet (till exempel är samplings frekvensen var 10: e minut och varje Bucket i diagrammet är 5 minuter).  Om du väljer ett bredare tidsintervall som ska visas bör det leda till att diagram linjerna visas som heldragna linjer i stället för punkter i det här fallet.
 
-### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Stöds grupper med Azure Monitor for VMs?
+### <a name="are-groups-supported-with-vm-insights"></a>Stöds grupper med VM-insikter?
 Ja, när du har installerat beroende agenten samlar vi in information från de virtuella datorerna för att Visa grupper baserat på prenumeration, resurs grupp, skalnings uppsättningar för virtuella datorer och moln tjänster.  Om du har använt Tjänstkarta och skapat dator grupper visas dessa även.  Dator grupper visas också i filtret grupper om du har skapat dem för den arbets yta som du visar. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hur gör jag för att se information om vad som driver den 95 percentils linjen i de sammanställda prestanda diagrammen?
 Som standard sorteras listan för att visa de virtuella datorer som har det högsta värdet för 95-percentilen för det valda måttet, förutom det tillgängliga minnes diagrammet, som visar datorerna med det lägsta värdet för den femte percentilen.  Om du klickar på diagrammet öppnas den **översta N-listvyn**  med lämpligt mått valt.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hur hanterar kart funktionen dubbla IP-adresser över olika virtuella nätverk och undernät?
-Om du duplicerar IP-intervall med virtuella datorer eller skalnings uppsättningar för virtuella Azure-datorer över undernät och virtuella nätverk kan det orsaka att Azure Monitor for VMs karta visar felaktig information. Detta är ett känt problem och vi undersöker alternativ för att förbättra den här upplevelsen.
+Om du duplicerar IP-intervall med virtuella datorer eller skalnings uppsättningar för virtuella Azure-datorer över undernät och virtuella nätverk, kan det leda till att den virtuella datorns Insights-karta visar felaktig information. Detta är ett känt problem och vi undersöker alternativ för att förbättra den här upplevelsen.
 
 ### <a name="does-map-feature-support-ipv6"></a>Stöder kart funktionen IPv6?
 Kart funktionen stöder för närvarande endast IPv4 och vi undersöker stödet för IPv6. Vi stöder också IPv4 som är tunnlad i IPv6.
@@ -809,7 +809,7 @@ Vi har gjort förbättringar i kartan för att hantera stora och komplexa konfig
 
 ### <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Varför ser nätverks diagrammet på fliken prestanda annorlunda ut än nätverks diagrammet på översikts sidan för Azure VM?
 
-Översikts sidan för en virtuell Azure-dator visar diagram baserat på värdens mätning av aktivitet på den virtuella gäst datorn.  För nätverks diagrammet på Azure VM-översikten visar det bara nätverks trafik som kommer att faktureras.  Detta omfattar inte trafik mellan virtuella nätverk.  Data och diagram som visas för Azure Monitor for VMs baseras på data från den virtuella gäst datorn och nätverks diagrammet visar all TCP/IP-trafik som är inkommande och utgående till den virtuella datorn, inklusive mellan virtuella nätverk.
+Översikts sidan för en virtuell Azure-dator visar diagram baserat på värdens mätning av aktivitet på den virtuella gäst datorn.  För nätverks diagrammet på Azure VM-översikten visar det bara nätverks trafik som kommer att faktureras.  Detta omfattar inte trafik mellan virtuella nätverk.  Data och diagram som visas för VM-insikter baseras på data från den virtuella gäst datorn och nätverks diagrammet visar all TCP/IP-trafik som är inkommande och utgående till den virtuella datorn, inklusive mellan virtuella nätverk.
 
 ### <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hur mäts svars tiden för data som lagras i VMConnection och visas i anslutnings panelen och arbets böcker?
 
@@ -818,9 +818,9 @@ Svars tiden är en uppskattning. Eftersom vi inte instrumenterar koden för prog
 Den här uppskattningen fungerar bra för protokoll som är Request/Response-baserade: en enskild begäran skickas över anslutningen och ett enda svar tas emot. Detta är fallet för HTTP (S) (utan pipelinering), men inte uppfyllt för andra protokoll.
 
 ### <a name="are-there-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Finns det några begränsningar om jag är på Log Analytics kostnads fri pris sättnings plan?
-Om du har konfigurerat Azure Monitor med en Log Analytics arbets yta som använder den *kostnads fria* pris nivån, kommer Azure Monitor for VMS Map-funktionen bara att ha stöd för fem anslutna datorer som är anslutna till arbets ytan. Om du har fem virtuella datorer som är anslutna till en kostnads fri arbets yta, kopplar du från en av de virtuella datorerna och senare ansluter en ny virtuell dator. den nya virtuella datorn övervakas inte och visas inte på kart sidan.  
+Om du har konfigurerat Azure Monitor med en Log Analytics arbets yta som använder den *kostnads fria* pris nivån, kommer funktionen för VM Insights-mappning bara att ha stöd för fem anslutna datorer som är anslutna till arbets ytan. Om du har fem virtuella datorer som är anslutna till en kostnads fri arbets yta, kopplar du från en av de virtuella datorerna och senare ansluter en ny virtuell dator. den nya virtuella datorn övervakas inte och visas inte på kart sidan.  
 
-Under det här tillståndet uppmanas du att välja alternativet **prova nu** när du öppnar den virtuella datorn och väljer **insikter** i den vänstra rutan, även efter att den redan har installerats på den virtuella datorn.  Du uppmanas dock inte att ange alternativ som normalt skulle inträffa om den virtuella datorn inte har publicerats till Azure Monitor for VMs. 
+Under det här tillståndet uppmanas du att välja alternativet **prova nu** när du öppnar den virtuella datorn och väljer **insikter** i den vänstra rutan, även efter att den redan har installerats på den virtuella datorn.  Du tillfrågas dock inte om alternativ som normalt skulle inträffa om den virtuella datorn inte har publicerats i VM Insights. 
 
 
 ## <a name="next-steps"></a>Nästa steg

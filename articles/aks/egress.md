@@ -5,12 +5,12 @@ description: Lär dig hur du skapar och använder en statisk offentlig IP-adress
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563253"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726554"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Använd en statisk offentlig IP-adress för utgående trafik med en *Basic* SKU-belastningsutjämnare i Azure Kubernetes service (AKS)
 
@@ -24,7 +24,7 @@ I den här artikeln förutsätter vi att du använder Azure Basic-Load Balancer.
 
 Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du behöver ett AKS-kluster kan du läsa snabb starten för AKS [med hjälp av Azure CLI][aks-quickstart-cli] eller [Azure Portal][aks-quickstart-portal].
 
-Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konfigurerad. Kör  `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa  [Installera Azure CLI 2.0][install-azure-cli].
+Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
 > [!IMPORTANT]
 > I den här artikeln används *Basic* SKU-belastningsutjämnare med en enda Node-pool. Den här konfigurationen är inte tillgänglig för flera resurspooler eftersom den *grundläggande* SKU-belastningsutjämnaren inte stöds med flera noder. Mer information om hur du använder *standard* -SKU: n finns i [använda en offentlig standard Load Balancer i Azure KUBERNETES service (AKS)][slb] .
@@ -33,7 +33,7 @@ Du måste också ha Azure CLI-versionen 2.0.59 eller senare installerad och konf
 
 Utgående trafik från ett AKS-kluster följer [Azure Load Balancer konventioner][outbound-connections]. Innan den första Kubernetes-tjänsten av typen `LoadBalancer` skapas, ingår inte agent-noderna i ett AKS-kluster i någon Azure Load Balancer pool. I den här konfigurationen har noderna ingen offentlig IP-adress på instans nivå. Azure översätter det utgående flödet till en offentlig käll-IP-adress som inte kan konfigureras eller deterministisk.
 
-När en Kubernetes-tjänst av typen `LoadBalancer` har skapats läggs agent-noder till i en Azure Load Balancer-pool. För utgående flöden översätter Azure det till den första offentliga IP-adressen som kon figurer ATS i belastningsutjämnaren. Den här offentliga IP-adressen är bara giltig för livs längd för resursen. Om du tar bort Kubernetes LoadBalancer-tjänsten raderas även den tillhör ande belastningsutjämnaren och IP-adressen. Om du vill tilldela en speciell IP-adress eller behålla en IP-adress för omdistribuerade Kubernetes-tjänster kan du skapa och använda en statisk offentlig IP-adress.
+När en Kubernetes-tjänst av typen `LoadBalancer` har skapats läggs agent-noder till i en Azure Load Balancer-pool. Load Balancer Basic väljer en enda klient del som ska användas för utgående flöden när flera (offentliga) IP-frontend-klienter är kandidater för utgående flöden. Det här alternativet kan inte konfigureras och du bör fundera på att val av algoritm ska vara slumpmässigt. Den här offentliga IP-adressen är bara giltig för livs längd för resursen. Om du tar bort Kubernetes LoadBalancer-tjänsten raderas även den tillhör ande belastningsutjämnaren och IP-adressen. Om du vill tilldela en speciell IP-adress eller behålla en IP-adress för omdistribuerade Kubernetes-tjänster kan du skapa och använda en statisk offentlig IP-adress.
 
 ## <a name="create-a-static-public-ip"></a>Skapa en statisk offentlig IP-adress
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dada52dcf66db2f0d0e40f3dbf6d1a16560c2754
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8915d780e79fa219428c54bad5458ab5966df6c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688509"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Självstudie: integrera Replicon med Azure Active Directory
 
@@ -49,7 +49,7 @@ Om du vill konfigurera integreringen av Replicon i Azure AD måste du lägga til
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Replicon** i sökrutan.
 1. Välj **Replicon** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -109,7 +109,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. För att Visa dialog rutan **EnableSAML Authentication2** lägger du till följande i URL: en efter företagets nyckel: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Följande visar schemat för den fullständiga URL: en: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Följande visar schemat för den fullständiga URL: en: `https://na2.replicon.com/<YourCompanyKey>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. Klicka på alternativet **+** för att expandera **v20Configuration** -avsnittet.
 
@@ -123,7 +123,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -135,13 +135,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Replicon.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Replicon**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -174,13 +174,13 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
     > [!NOTE]
     > Inloggnings namnet måste matcha användarens e-postadress i Azure AD
 
-    b. Som **Autentiseringstyp**väljer du **SSO**.
+    b. Som **Autentiseringstyp** väljer du **SSO**.
 
     c. Ange autentiserings-ID till samma värde som inloggnings namnet (användarens Azure AD-e-postadress)
 
     d. Skriv användarens avdelning i text rutan **avdelning** .
 
-    e. Som **medarbetar typ**väljer du **administratör**.
+    e. Som **medarbetar typ** väljer du **administratör**.
 
     f. Klicka på **Spara användar profil**.
 

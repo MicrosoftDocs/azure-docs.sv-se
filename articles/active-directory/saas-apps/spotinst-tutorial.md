@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Spotinst
 
@@ -111,7 +111,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -171,9 +171,9 @@ Syftet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
     ![Skärm bild som visar avsnittet Lägg till användare där du kan ange de värden som beskrivs.](./media/spotinst-tutorial/adduser2.png)
 
-    * I text rutan **fullständigt namn** anger du det fullständiga namnet på användaren som **BrittaSimon**.
+    * I text rutan **fullständigt namn** anger du det fullständiga namnet på användaren som `BrittaSimon` .
 
-    * I text rutan **e-post** anger du användarens e-postadress `brittasimon\@contoso.com` .
+    * I text rutan **e-post** anger du användarens e-postadress `brittasimon@contoso.com` .
 
     * Välj information om organisationen för **organisations rollen, konto rollen och kontona**.
 

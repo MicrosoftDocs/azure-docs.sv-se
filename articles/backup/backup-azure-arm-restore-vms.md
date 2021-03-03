@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722695"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -160,7 +160,7 @@ Om CRR har Aktiver ATS kan du Visa säkerhets kopierings objekt i den sekundära
 
 Användar upplevelsen för sekundär regions återställning liknar den primära regionen återställa användar upplevelsen. När du konfigurerar information i fönstret Återställ konfiguration för att konfigurera återställningen uppmanas du bara att ange parametrar för sekundär region.
 
-För närvarande är sekundär region återställningen upp till 12 timmar från den [primära regionen,](azure-backup-glossary.md#rpo-recovery-point-objective) även om [GRS-replikering (Read-Access Geo-redundant lagring)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) är 15 minuter.
+För närvarande är sekundär region återställningen upp till 12 timmar från den [primära regionen,](azure-backup-glossary.md#rpo-recovery-point-objective) även om [GRS-replikering (Read-Access Geo-redundant lagring)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) är 15 minuter.
 
 ![Välj den virtuella dator som ska återställas](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -179,7 +179,7 @@ För närvarande är sekundär region återställningen upp till 12 timmar från
 >- Funktionen för återställning av kors region återställer CMK (Kundhanterade nycklar) aktiverade virtuella Azure-datorer, som inte säkerhets kopie ras i en CMK som är aktive rad Recovery Services valvet som icke-CMK aktiverade virtuella datorer i den sekundära regionen.
 >- De Azure-roller som krävs för att återställa i den sekundära regionen är desamma som de i den primära regionen.
 
-[Virtuella Azure-zoner som har fästs](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) kan återställas i alla [tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview) i samma region.
+[Virtuella Azure-zoner som har fästs](../virtual-machines/windows/create-portal-availability-zone.md) kan återställas i alla [tillgänglighets zoner](../availability-zones/az-overview.md) i samma region.
 
 I återställnings processen visas alternativ **tillgänglighets zon.** Du ser din standard zon först. Om du vill välja en annan zon väljer du önskat värde för valfri zon. Om den fästa zonen inte är tillgänglig kan du inte återställa data till en annan zon eftersom säkerhetskopierade data inte zonally replikeras.
 

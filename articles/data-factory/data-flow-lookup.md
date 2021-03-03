@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739376"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Söknings omvandling i data flöde för mappning
 
@@ -39,8 +39,6 @@ En uppslags omvandling liknar en vänster yttre koppling. Alla rader från den p
 
 **Sök villkor:** Välj vilka kolumner som ska matchas. Om likhets villkoret är uppfyllt, kommer raderna att anses vara en matchning. Hovra och välj beräknad kolumn för att extrahera ett värde med hjälp av [data flödets uttrycks språk](data-flow-expression-functions.md).
 
-Lookup-omvandlingen stöder bara likhets matchningar. Om du vill anpassa uppslags uttrycket så att det innehåller andra operatorer, till exempel större än, rekommenderar vi att du använder en [kors koppling i Join-omvandlingen](data-flow-join.md#custom-cross-join). En kors koppling gör att det inte går att kartesiska produkt fel vid körning.
-
 Alla kolumner från båda strömmarna ingår i utdata. Om du vill släppa dubbletter eller oönskade kolumner lägger du till en [Select-omvandling](data-flow-select.md) efter sökningens omvandling. Kolumner kan också tas bort eller byta namn i en Sink-omvandling.
 
 ### <a name="non-equi-joins"></a>Icke-Equi kopplingar
@@ -65,7 +63,7 @@ När du testar lookup-omvandlingen med data förhands granskning i fel söknings
 
 ![Sändnings anslutning](media/data-flow/broadcast.png "Sändnings anslutning")
 
-I kopplingar, sökningar och exists-omvandling, om en eller båda data strömmar får plats i arbetsnodens minne, kan du optimera prestandan genom att aktivera **sändning** . Som standard bestämmer Spark-motorn om en sida ska sändas automatiskt eller inte. Välj **fast** om du vill välja vilken sida som ska sändas manuellt.
+I kopplingar, sökningar och exists-omvandling, om en eller båda data strömmar får plats i arbetsnodens minne, kan du optimera prestandan genom att aktivera **sändning**. Som standard bestämmer Spark-motorn om en sida ska sändas automatiskt eller inte. Välj **fast** om du vill välja vilken sida som ska sändas manuellt.
 
 Vi rekommenderar inte att du inaktiverar sändning via alternativet **inaktivera** om inte dina kopplingar körs i tids gräns fel.
 

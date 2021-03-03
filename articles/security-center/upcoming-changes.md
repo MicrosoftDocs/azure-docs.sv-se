@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555144"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705100"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,9 +31,25 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- [Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - [Utfasning av 11 Azure Defender-aviseringar](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen 
+
+**Beräknat datum för ändring:** Mars 2021
+
+Security Center skickar data för nästan alla säkerhets rekommendationer till Azure Advisor vilket i sin tur skriver den till [Azure aktivitets logg](../azure-monitor/essentials/activity-log.md).
+
+För två rekommendationer skrivs data samtidigt direkt till Azure aktivitets loggen. Med den här ändringen slutar Security Center att skriva data för dessa äldre säkerhets rekommendationer direkt till aktivitets loggen. I stället ska vi exportera data till Azure Advisor som vi gör för alla andra rekommendationer. 
+
+De två tidigare rekommendationerna är:
+- Problem med slut punkts skydd bör lösas på dina datorer
+- Säkerhets problem i säkerhets konfiguration på dina datorer bör åtgärdas
+
+Om du har åtkomst till information för dessa två rekommendationer i aktivitets loggens "rekommendation av typen TaskDiscovery" kommer detta inte längre att vara tillgängligt.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
 

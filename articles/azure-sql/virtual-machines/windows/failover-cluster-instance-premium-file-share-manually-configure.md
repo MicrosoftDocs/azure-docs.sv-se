@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 2fb9677f0874de1fb715082d58a0e354880e654b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 86caf39e0d31a41ca454c65311ff2fab52b56f5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691169"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Skapa en FCI med en Premium-filresurs (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-I den här artikeln beskrivs hur du skapar en FCI (failover Cluster instance) med SQL Server på Azure Virtual Machines (VM) med hjälp av en [Premium-filresurs](../../../storage/files/storage-how-to-create-premium-fileshare.md).
+I den här artikeln beskrivs hur du skapar en FCI (failover Cluster instance) med SQL Server på Azure Virtual Machines (VM) med hjälp av en [Premium-filresurs](../../../storage/files/storage-how-to-create-file-share.md).
 
 Premium-filresurser är Lagringsdirigering (SSD)-backade, konsekventa fil resurser med låg latens som stöds fullt ut för användning med kluster instanser för växling vid fel för SQL Server 2012 eller senare på Windows Server 2012 eller senare. Premium-filresurser ger dig större flexibilitet, så att du kan ändra storlek på och skala en fil resurs utan drift avbrott.
 
@@ -37,7 +37,7 @@ Innan du slutför instruktionerna i den här artikeln bör du redan ha:
 - En Azure-prenumeration.
 - Ett konto som har behörighet att skapa objekt både på virtuella Azure-datorer och i Active Directory.
 - [Två eller fler för beredda virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md) i en [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) eller olika [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
-- En [Premium-filresurs](../../../storage/files/storage-how-to-create-premium-fileshare.md) som ska användas som den klustrade enheten, baserat på lagrings kvoten för din databas för dina datafiler.
+- En [Premium-filresurs](../../../storage/files/storage-how-to-create-file-share.md) som ska användas som den klustrade enheten, baserat på lagrings kvoten för din databas för dina datafiler.
 - Den senaste versionen av [PowerShell](/powershell/azure/install-az-ps). 
 
 ## <a name="mount-premium-file-share"></a>Montera Premium-filresurs
@@ -209,7 +209,7 @@ Om du vill dirigera trafiken korrekt till den aktuella primära noden konfigurer
 
 ## <a name="limitations"></a>Begränsningar
 
-- Microsoft koordinator för distribuerad transaktion (MSDTC) stöds inte på Windows Server 2016 och tidigare. 
+- Microsoft Distributed Transaction Coordinator (MSDTC) stöds inte på Windows Server 2016 och tidigare. 
 - FILESTREAM stöds inte för ett redundanskluster med en Premium-filresurs. Om du vill använda FILESTREAM distribuerar du klustret med hjälp av [Lagringsdirigering](failover-cluster-instance-storage-spaces-direct-manually-configure.md) eller [Azure delade diskar](failover-cluster-instance-azure-shared-disks-manually-configure.md) i stället.
 - Det finns bara stöd för registrering med SQL IaaS agent extension i [läget för förenklad hantering](sql-server-iaas-agent-extension-automate-management.md#management-modes) . 
 

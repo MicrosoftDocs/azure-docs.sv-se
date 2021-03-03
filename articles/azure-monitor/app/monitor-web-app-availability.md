@@ -2,14 +2,14 @@
 title: Övervaka tillgänglighet och svarstider på valfri webbplats | Microsoft Docs
 description: Konfigurera webbtester i Application Insights. Få aviseringar om en webbplats blir otillgänglig eller svarar långsamt.
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 41338760034918dce30ffb45c738588a2aa29786
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729036"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
@@ -72,7 +72,6 @@ Om du vill skapa din första tillgänglighets förfrågan öppnar du fönstret t
 |Inställning| Förklaring
 |----|----|----|
 |**Nära real tid (för hands version)** | Vi rekommenderar att du använder aviseringar i nästan real tid. Konfigurationen av den här typen av avisering görs efter att ditt tillgänglighets test har skapats.  |
-|**Form** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
 |**Tröskelvärde för aviserings plats**|Vi rekommenderar minst 3/5 platser. Den optimala relationen mellan aviserings platsens tröskelvärde och antalet test platser är **tröskelvärdet för aviserings platsens tröskel**  =  **antal test platser – 2, med minst fem test platser.**|
 
 ### <a name="location-population-tags"></a>Plats populations Taggar

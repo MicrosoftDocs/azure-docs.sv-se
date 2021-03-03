@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92a0cc93b4d159a4ba87c1cadc2d0dedc0a28b2d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688917"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Hantera enhetsidentiteter med hjälp av Azure-portalen
 
@@ -161,7 +161,7 @@ Du måste ha tilldelats någon av följande roller för att kunna visa eller han
 - **Användare kan ansluta enheter till Azure AD** – med den här inställningen kan du välja vilka användare som kan registrera sina enheter som Azure AD-anslutna enheter. Standardvärdet är **alla**.
 
 > [!NOTE]
-> **Användare kan ansluta enheter till Azure AD** -inställningen gäller bara för Azure AD Join i Windows 10.
+> **Användare kan ansluta enheter till Azure AD** -inställningen gäller bara för Azure AD Join i Windows 10. Den här inställningen gäller inte för Hybrid Azure AD-anslutna enheter, [Azure AD-anslutna virtuella datorer i Azure](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) -och Azure AD-anslutna enheter med hjälp av [själv distributions läge för Windows autopilot](/mem/autopilot/self-deploying) eftersom dessa metoder fungerar i en kontext som inte är en användare.
 
 - **Ytterligare lokala administratörer på Azure AD-anslutna enheter** – du kan välja de användare som har behörighet till lokal administratör på en enhet. Dessa användare läggs till i rollen *enhets administratörer* i Azure AD. Globala administratörer i Azure AD och enhets ägare beviljas lokal administratörs behörighet som standard. Det här alternativet är en Premium Edition-funktion som är tillgänglig via produkter som Azure AD Premium eller Enterprise Mobility Suite (EMS).
 - **Användare kan registrera sina enheter med Azure AD** – du måste konfigurera den här inställningen så att Windows 10 personal-, iOS-, Android-och MacOS-enheter kan registreras med Azure AD. Om du väljer **ingen**, tillåts inte enheter att registrera med Azure AD. Registrering med Microsoft Intune eller hantering av mobila enheter (MDM) för Microsoft 365 kräver registrering. Om du har konfigurerat någon av dessa tjänster är **alla** markerad och **ingen** är tillgänglig.

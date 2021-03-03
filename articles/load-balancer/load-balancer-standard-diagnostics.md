@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581888"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699087"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Standard Load Balancer-diagnostik med mått, aviseringar och resurshälsa
 
@@ -34,7 +34,7 @@ Azure Load Balancer tillhandahåller flerdimensionella mått via Azure-måtten i
 
 De olika Standard Load Balancer-konfigurationerna tillhandahåller följande mått:
 
-| Metric | Resurstyp | Description | Rekommenderad aggregering |
+| Metric | Resurstyp | Beskrivning | Rekommenderad aggregering |
 | --- | --- | --- | --- |
 | Tillgänglighet för databana | Offentlig och intern lastbalanserare | Standard Load Balancer använder kontinuerligt datasökvägen inifrån en region till lastbalanserarens klientdel, hela vägen till den SDN-stack som stöder den virtuella datorn. Så länge som felfria instanser är kvar, följer måtten samma sökväg som programmets belastningsutjämnade trafik. Den datasökväg som dina kunder använder verifieras också. Måttet är osynligt för ditt program och stör inte andra åtgärder.| Medel |
 | Status för hälsoavsökning | Offentlig och intern lastbalanserare | Standard Load Balancer använder en distribuerad hälso-/Bing-tjänst som övervakar din program slut punkts hälsa enligt dina konfigurations inställningar. Med det här måttet får du en sammanställd vy eller filtrerad vy per slutpunkt för varje instansslutpunkt i lastbalanserarens pool. Du kan visa hur Load Balancer ser hälsotillståndet för ditt program, som anges av din konfiguration för hälsoavsökningen. |  Medel |
@@ -72,18 +72,7 @@ Så här visar du måtten för dina Standard Load Balancer resurser:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Hämta flerdimensionella mått via programmerings gränssnitt
 
-API-vägledning för att hämta flerdimensionella mått definitioner och värden finns i [genom gång av Azure monitoring REST API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Dessa mått kan skrivas till ett lagrings konto genom att lägga till en [diagnostisk inställning](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) för kategorin "alla mått". 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurera aviseringar för flerdimensionella mått ###
-
-Azure Standard Load Balancer stöder enkelt konfigurerbara aviseringar för flerdimensionella mått. Konfigurera anpassade tröskelvärden för vissa mått för att utlösa aviseringar med varierande nivåer av allvarlighets grad för att ge en berörings lös resurs övervaknings upplevelse.
-
-Så här konfigurerar du varningar:
-1. Gå till under bladet avisering för belastningsutjämnaren
-1. Skapa en ny aviseringsregel
-    1.  Konfigurera aviserings villkor
-    1.  Valfritt Lägg till åtgärds grupp för automatisk reparation
-    1.  Tilldela allvarlighets grad, namn och beskrivning för aviseringar som möjliggör intuitiv reaktion
+API-vägledning för att hämta flerdimensionella mått definitioner och värden finns i [genom gång av Azure monitoring REST API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Dessa mått kan skrivas till ett lagrings konto genom att lägga till en [diagnostisk inställning](../azure-monitor/essentials/diagnostic-settings.md) för kategorin "alla mått". 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Vanliga diagnostiska scenarier och rekommenderade vyer
 
@@ -228,15 +217,41 @@ Diagrammet visar följande information:
 Med hjälp av diagrammet kan kunderna felsöka distributionen på egen hand utan att gissa eller be om andra problem. Tjänsten var inte tillgänglig eftersom hälso avsökningar misslyckades på grund av en felaktig konfiguration eller ett misslyckat program.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurera aviseringar för flerdimensionella mått ###
+
+Azure Standard Load Balancer stöder enkelt konfigurerbara aviseringar för flerdimensionella mått. Konfigurera anpassade tröskelvärden för vissa mått för att utlösa aviseringar med varierande nivåer av allvarlighets grad för att ge en berörings lös resurs övervaknings upplevelse.
+
+Så här konfigurerar du varningar:
+1. Gå till under bladet avisering för belastningsutjämnaren
+1. Skapa en ny aviseringsregel
+    1.  Konfigurera aviserings villkor
+    1.  Valfritt Lägg till åtgärds grupp för automatisk reparation
+    1.  Tilldela allvarlighets grad, namn och beskrivning för aviseringar som möjliggör intuitiv reaktion
+
+### <a name="inbound-availability-alerting"></a>Avisering om inkommande tillgänglighet
+Om du vill varna för inkommande tillgänglighet kan du skapa två separata aviseringar med hjälp av status mått för data Sök vägs tillgänglighet och hälso avsökning. Kunder kan ha olika scenarier som kräver en särskild aviserings logik, men exemplen nedan kommer att vara till hjälp för de flesta konfigurationer.
+
+Genom att använda data Sök vägs tillgänglighet kan du utlösa aviseringar när en bestämd belastnings Utjämnings regel blir otillgänglig. Du kan konfigurera den här aviseringen genom att ange ett varnings villkor för tillgänglighet och delning av data Sök vägen med alla aktuella värden och framtida värden för både frontend-port och IP-adress för klient del. Om du anger att aviserings logiken ska vara mindre än eller lika med 0 utlöses den här aviseringen när en belastnings Utjämnings regel slutar svara. Ange agg regerings precision och frekvens för utvärderingen enligt din önskade utvärdering. 
+
+Med status för hälso avsökning kan du varna när en specifik server dels instans inte svarar på hälso avsökningen under en betydande tids period. Konfigurera aviserings villkoret för att använda hälso avsökningens status mått och dela upp genom Server dels-IP-adress och backend-port. Detta säkerställer att du kan Avisera separat för varje enskild server dels instanss förmåga att betjäna trafik på en viss port. Använd den **genomsnittliga** agg regerings typen och ange tröskelvärdet enligt hur ofta Server dels instansen ska avsökas och vad du ska vara det felfria tröskelvärdet. 
+
+Du kan också varna på en nivå för backend-enheter genom att inte dela upp några dimensioner och använda den **genomsnittliga** agg regerings typen. På så sätt kan du ställa in aviserings regler som avisering när 50% av medlemmarna i Server delens medlemmar är felaktiga.
+
+### <a name="outbound-availability-alerting"></a>Avisering om utgående tillgänglighet
+Om du vill konfigurera för utgående tillgänglighet kan du konfigurera två separata aviseringar med antalet SNAT-anslutningar och använda SNAT-port mått.
+
+Om du vill identifiera utgående anslutnings fel, konfigurerar du en avisering med antalet SNAT-anslutningar och filtrering till anslutnings tillstånd = misslyckades. Använd **Total** agg regering. Du kan också dela upp detta genom att ange IP-adress för Server delen till alla aktuella och framtida värden för att varna separat för varje server dels instans som har misslyckade anslutningar. Ange att tröskelvärdet ska vara större än noll eller ett högre antal om du förväntar dig att se några utgående anslutnings problem.
+
+Via använda SNAT-portar kan du varna på en högre risk för utebliven SNAT och utgående anslutning. Se till att du delar upp IP-adress och protokoll för Server delen när du använder den här aviseringen och Använd den **genomsnittliga** agg regeringen. Ange att tröskelvärdet ska vara större än procent andelen av antalet portar som du har tilldelat per instans som du bedömer som osäkra. Du kan till exempel konfigurera en avisering om låg allvarlighets grad när en server dels instans använder 75% av dess allokerade portar och en hög allvarlighets grad när den använder 90% eller 100% av dess allokerade portar.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Resurs hälso status
 
 Hälso status för de Standard Load Balancer resurserna exponeras via den befintliga **resurs hälsan** under **övervaka > service Health**. Den utvärderas varannan **minut** genom att mäta data Sök vägs tillgänglighet som avgör om slut punkterna för belastnings utjämning för klient delen är tillgängliga.
 
-| Resurs hälso status | Description |
+| Resurs hälso status | Beskrivning |
 | --- | --- |
 | Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
-| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns händelser som initieras av användaren.
-| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
+| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns händelser som initieras av användaren.
+| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
 | Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspegla rätt status så snart data tas emot. |
 
 Så här visar du hälso tillståndet för dina offentliga Standard Load Balancer-resurser:
@@ -263,7 +278,7 @@ Beskrivning av allmän resurs hälso status finns i [RHC-dokumentationen](../ser
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om att använda [insikter](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) för att visa dessa mått som är förkonfigurerade för din Load Balancer
+- Lär dig mer om att använda [insikter](./load-balancer-insights.md) för att visa dessa mått som är förkonfigurerade för din Load Balancer
 - Mer information finns i [Standard Load Balancer](./load-balancer-overview.md).
 - Läs mer om den [utgående anslutningen till belastningsutjämnaren](./load-balancer-outbound-connections.md).
 - Läs mer om [Azure Monitor](../azure-monitor/overview.md).

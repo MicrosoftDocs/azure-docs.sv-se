@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581456"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720944"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Beräknings-och lagrings alternativ i Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -72,7 +72,7 @@ De detaljerade specifikationerna för de tillgängliga Server typerna är följa
 För att få mer information om beräknings serien tillgänglig, se Azure VM-dokumentation för [Burstable (B-serien)](../../virtual-machines/sizes-b-series-burstable.md), [generell användning (Ddsv4-serien)](../../virtual-machines/ddv4-ddsv4-series.md)och [minnesoptimerade (Edsv4-serien)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->Om den virtuella datorn har startats/stoppats eller startats om, kan krediterna gå förlorade för att kunna användas [(B-serien)](../../virtual-machines/sizes-b-series-burstable.md) . Mer information finns i [vanliga frågor och svar om Burst (B-serien)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Om den virtuella datorn har startats/stoppats eller startats om, kan krediterna gå förlorade för att kunna användas [(B-serien)](../../virtual-machines/sizes-b-series-burstable.md) . Mer information finns i [vanliga frågor och svar om Burst (B-serien)](../../virtual-machines/sizes-b-series-burstable.md#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Storage
 
@@ -83,7 +83,7 @@ Lagrings utrymmet du tillhandahåller är mängden lagrings kapacitet som är ti
 
 Du kan övervaka lagrings användningen i Azure Portal (med Azure Monitor) med hjälp av måtten lagrings gräns, lagrings utrymme och lagring som används. Läs artikeln om [övervakning](./concepts-monitoring.md) för att lära dig mer om Mät värden. 
 
-### <a name="reaching-the-storage-limit"></a>Nått lagrings gränsen
+### <a name="reaching-the-storage-limit"></a>Lagringsgränsen är nådd
 
 När det förbrukade lagrings utrymmet på servern är nära att nå den etablerade gränsen, sätts servern i skrivskyddat läge för att skydda eventuella förlorade skrivningar på servern. Servrar med mindre än lika med 100 GiB-allokerat lagrings utrymme markeras som skrivskyddade om det lediga lagrings utrymmet är mindre än 5% av den allokerade lagrings storleken. Servrar med fler än 100 GiB etablerade lagrings enheter markeras som skrivskyddade när det lediga lagrings utrymmet är mindre än 5 GiB.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d62c4b79fcb86080649c542e34b81d3213978604
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2a3bf022d178fbd0de3ca800e0a560235c3f33b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623201"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731501"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Felsöka måttdiagram
 
@@ -62,7 +62,7 @@ Insamling av mått för **gästoperativsystem** kräver att Azure Diagnostics-ti
 
 Det här problemet kan inträffa när instrumentpanelen har skapats med ett mått som senare blivit inaktuellt och tagits bort från Azure. Kontrol lera att det är fallet genom att öppna fliken **mått** i resursen och kontrol lera tillgängliga mått i mått väljaren. Om måttet inte visas, betyder det att det har tagits bort från Azure. När ett mätvärde har blivit inaktuellt och tagits bort finns det normalt ett nytt bättre mått som ger liknande information om resurshälsan.
 
-**Lösning:** Uppdatera panelen för att återställa genom att välja ett alternativt mått för diagrammet på instrument panelen. Du kan [granska en lista över tillgängliga mått för Azure-tjänster](../platform/metrics-supported.md).
+**Lösning:** Uppdatera panelen för att återställa genom att välja ett alternativt mått för diagrammet på instrument panelen. Du kan [granska en lista över tillgängliga mått för Azure-tjänster](./metrics-supported.md).
 
 ## <a name="chart-shows-dashed-line"></a>En streckad linje visas i diagrammet
 
@@ -104,5 +104,5 @@ Som standard lagras mått för gästoperativsystem i ett Azure Storage-konto, so
 
 * [Lär dig mer om att komma igång med Metric Explorer](metrics-getting-started.md)
 * [Lär dig mer om avancerade funktioner i Metric Explorer](../essentials/metrics-charts.md)
-* [Visa en lista över tillgängliga mått för Azure-tjänster](../platform/metrics-supported.md)
+* [Visa en lista över tillgängliga mått för Azure-tjänster](./metrics-supported.md)
 * [Visa exempel på konfigurerade diagram](../essentials/metric-chart-samples.md)

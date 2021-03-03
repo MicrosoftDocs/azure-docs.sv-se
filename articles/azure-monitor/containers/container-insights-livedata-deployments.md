@@ -1,19 +1,19 @@
 ---
-title: Visa Azure Monitor för behållare distributioner (för hands version) | Microsoft Docs
-description: Den här artikeln beskriver real tids visningen av Kubernetes-distributioner utan att använda kubectl i Azure Monitor för behållare.
+title: Visa distributioner av container Insights (för hands version) | Microsoft Docs
+description: Den här artikeln beskriver real tids visningen av Kubernetes-distributioner utan att använda kubectl i behållar insikter.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2f1eac82ce67818c7bf86ce3ca8924155d8ee2aa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713923"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Visa distributioner (för hands version) i real tid
 
-Med Azure Monitor för behållare emulerar funktionen Visa distributioner (för hands version) direkt åtkomst till Kubernetes-distributions objekt i real tid genom att exponera- `kubeclt get deployments` och- `kubectl describe deployment {your deployment}` kommandon.
+Med container Insights emulerar funktionen Visa distributioner (för hands version) direkt åtkomst till Kubernetes-distributions objekt i real tid genom att exponera- `kubeclt get deployments` och- `kubectl describe deployment {your deployment}` kommandon.
 
 >[!NOTE]
 >AKS-kluster som är aktiverade som [privata kluster](https://azure.microsoft.com/updates/aks-private-cluster/) stöds inte med den här funktionen. För den här funktionen krävs direktåtkomst till Kubernetes-API:et via en proxyserver från din webbläsare. Om nätverkssäkerheten blockerar Kubernetes-API:et från den här proxyn blockeras trafiken.
@@ -56,7 +56,7 @@ När du väljer en distribution i listan visas ett egenskaps fönster automatisk
 
 När du granskar distributions information kan du se behållar loggar och händelser i real tid. Välj konsol fönstret **Visa Live-konsolen** och live data (förhands granskning) visas under data rutnätet distributioner där du kan visa Live-loggdata i en kontinuerlig data ström. Om status indikatorn för hämtningen visar en grön bock markering, som är längst till höger i fönstret, innebär det att data kan hämtas och att det börjar strömma till konsolen.
 
-Du kan också filtrera efter namn område eller kluster nivå händelser. Mer information om hur du visar data i real tid i-konsolen finns i [Visa real tids data (för hands version) med Azure Monitor för behållare](container-insights-livedata-overview.md).
+Du kan också filtrera efter namn område eller kluster nivå händelser. Mer information om hur du visar data i real tid i-konsolen finns i [Visa real tids data (för hands version) med behållar insikter](container-insights-livedata-overview.md).
 
 ![Distributioner Visa real tids data i-konsolen](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 

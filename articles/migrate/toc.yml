@@ -68,6 +68,12 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: Migrera GCP-instanser
           href: tutorial-migrate-gcp-virtual-machines.md
+    - name: Använd
+      items:
+        - name: Använd ASP.NET-appar och migrera till AKS
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: Använd Java-webbappar och migrera till AKS
+          href: tutorial-containerize-java-kubernetes.md
 - name: Begrepp
   items:
     - name: Allmänt
@@ -180,6 +186,8 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: Skala migrering
           items:
+            - name: Migrera virtuella VMware-datorer i skala med hjälp av metoden utan agent
+              href: how-to-scale-out-for-migration.md
             - name: Automatisera migrering av ett stort antal virtuella datorer
               href: how-to-migrate-at-scale.md
             - name: Så automatiserar du VMware-migrering

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87490582"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737723"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planera kapacitet för haveriberedskap för virtuella Hyper-V-datorer 
 
@@ -43,7 +43,7 @@ Du kan köra verktyget i två lägen:
 
 
 ## <a name="run-the-quick-planner"></a>Kör snabb planeraren
-1. Ladda ned och öppna [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Du måste köra makron. När du uppmanas att göra det väljer du alternativ för att aktivera redigering och innehåll.
+1. Ladda ned och öppna [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery). Du måste köra makron. När du uppmanas att göra det väljer du alternativ för att aktivera redigering och innehåll.
 
 2. I list rutan **Välj en planerings typ** väljer du **snabb planering**.
 
@@ -51,13 +51,13 @@ Du kan köra verktyget i två lägen:
 
 3. Ange den information som krävs i kalkyl bladet **Capacity Planner** . Fyll i alla fält som är inringade i rött i följande skärm bild:
 
-   a. I **Välj ditt scenario**väljer du **Hyper-V till Azure** eller **VMware/fysisk till Azure**.
+   a. I **Välj ditt scenario** väljer du **Hyper-V till Azure** eller **VMware/fysisk till Azure**.
 
    b. I **genomsnittlig daglig data ändrings hastighet (%)** anger du den information som du samlar in med hjälp av [verktyget för kapacitets planering för Hyper-V](./hyper-v-deployment-planner-overview.md) eller [Site Recovery distributions](./site-recovery-deployment-planner.md)hanteraren.
 
    c. **Komprimerings** inställningen används inte när du replikerar virtuella Hyper-V-datorer till Azure. För komprimering använder du en tredjepartsprogram, till exempel Riverbed.
 
-   d. Under **kvarhållning i dagar**anger du i dagar hur länge repliker ska sparas.
+   d. Under **kvarhållning i dagar** anger du i dagar hur länge repliker ska sparas.
 
    e. I **antal timmar där inledande replikering för batchen av virtuella datorer ska slutföras** och **antalet virtuella datorer per inledande replikering**, anger du inställningar som används för att beräkna inledande replikerings krav. När Site Recovery distribueras överförs hela den ursprungliga data uppsättningen.
 
@@ -81,29 +81,29 @@ Du kan köra verktyget i två lägen:
 
 ## <a name="run-the-detailed-planner"></a>Kör den detaljerade planeraren
 
-1. Ladda ned och öppna [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Du måste köra makron. När du uppmanas att göra det väljer du alternativ för att aktivera redigering och innehåll.
+1. Ladda ned och öppna [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery). Du måste köra makron. När du uppmanas att göra det väljer du alternativ för att aktivera redigering och innehåll.
 
-2. I **Välj en planerings typ**väljer du **detaljerad Planner** i list rutan.
+2. I **Välj en planerings typ** väljer du **detaljerad Planner** i list rutan.
 
    ![Skärm bild av alternativet Välj en planerings typ, där detaljerad Planner har valts.](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. Ange den information som krävs i kalkyl bladet för **arbets belastnings kvalificering** . Du måste fylla i alla markerade fält.
 
-   a. I **processor kärnor**anger du det totala antalet kärnor på en käll Server.
+   a. I **processor kärnor** anger du det totala antalet kärnor på en käll Server.
 
    b. I **minnes tilldelning (i MB)** anger du ram-storleken för en käll Server.
 
-   c. I **antal nätverkskort**anger du antalet nätverkskort på en käll Server.
+   c. I **antal nätverkskort** anger du antalet nätverkskort på en käll Server.
 
    d. I **totalt lagrings utrymme (i GB)** anger du den totala storleken för VM-lagringen. Om käll servern till exempel har tre diskar med 500 GB vardera, är den totala lagrings storleken 1 500 GB.
 
-   e. I **Antal diskar anslutna**anger du det totala antalet diskar på en käll Server.
+   e. I **Antal diskar anslutna** anger du det totala antalet diskar på en käll Server.
 
    f. I **disk kapacitets användning (%)** anger du den genomsnittliga användningen.
 
    ex. I **daglig data ändrings hastighet (%)** anger du den dagliga data ändrings hastigheten för en käll Server.
 
-   h. I **avbilda storlek på virtuell Azure-dator**anger du storleken på den virtuella Azure-datorn som du vill mappa. Om du inte vill göra detta manuellt väljer du **Compute IaaS VM**. Om du anger en manuell inställning och sedan väljer **Compute IaaS VM**: ar, kan den manuella inställningen skrivas över. Beräknings processen identifierar automatiskt den bästa matchningen på storleken på den virtuella Azure-datorn.
+   h. I **avbilda storlek på virtuell Azure-dator** anger du storleken på den virtuella Azure-datorn som du vill mappa. Om du inte vill göra detta manuellt väljer du **Compute IaaS VM**. Om du anger en manuell inställning och sedan väljer **Compute IaaS VM**: ar, kan den manuella inställningen skrivas över. Beräknings processen identifierar automatiskt den bästa matchningen på storleken på den virtuella Azure-datorn.
 
    ![Skärm bild av kalkyl bladet arbets belastnings kvalificering som visar nödvändig information.](./media/site-recovery-capacity-planner/workload-qualification.png)
 

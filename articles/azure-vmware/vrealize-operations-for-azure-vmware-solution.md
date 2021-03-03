@@ -3,12 +3,12 @@ title: Konfigurera vRealize-åtgärder för Azure VMware-lösning
 description: Lär dig hur du konfigurerar vRealize-åtgärder för ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880699"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738437"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Konfigurera vRealize-åtgärder för Azure VMware-lösning
 
@@ -37,7 +37,7 @@ Granska noga [innan du börjar](#before-you-begin) och [förutsättningarna](#pr
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment
 De flesta kunder har en befintlig lokal distribution av vRealize-åtgärder för att hantera en eller flera lokala vCenter-domäner. När de etablerar ett privat moln i Azure VMware-lösningen ansluter de sin lokala miljö med sitt privata moln med hjälp av en Azure-ExpressRoute eller en Layer 3 VPN-lösning.  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment" border="false":::
 
 För att utöka vRealize-funktionerna till Azures privata moln för VMware-lösningar skapar du en kort [instans för de privata moln resurserna](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html). Den samlar in data från det privata molnet i Azure VMware-lösningen och tar den till lokala vRealize-åtgärder. Den lokala vRealize Operations Manager-instansen kan ansluta direkt till vCenter-och NSX-T-hanteraren på Azure VMware-lösningen. Alternativt kan du distribuera en vRealize-fjärrcollector i Azure VMware-lösningen privat moln. Insamlaren komprimerar och krypterar data som samlas in från det privata molnet innan de skickas över ExpressRoute eller VPN-nätverket till vRealize-Operations Manager som körs lokalt. 
 

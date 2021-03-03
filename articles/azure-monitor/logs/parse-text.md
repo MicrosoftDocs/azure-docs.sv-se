@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 29393126f94d77dbced0ef896616b945443184fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733949"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Parsa text data i Azure Monitor loggar
 Vissa loggdata som samlas in av Azure Monitor innehåller flera informations delar i en enda egenskap. Att parsa dessa data i flera egenskaper gör det enklare att använda i frågor. Ett vanligt exempel är en [anpassad logg](../agents/data-sources-custom-logs.md) som samlar in en hel logg post med flera värden i en enda egenskap. Genom att skapa separata egenskaper för de olika värdena kan du söka efter och aggregera dem.
@@ -188,4 +188,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.
+* Lär dig mer om [logg frågor](./log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

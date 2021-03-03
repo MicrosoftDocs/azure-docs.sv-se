@@ -160,8 +160,6 @@
           href: load-balancer-troubleshoot-health-probe-status.md
         - name: Trafik för serverdelspool (virtuell dator)
           href: load-balancer-troubleshoot-backend-traffic.md
-        - name: Vanliga distributionsfel
-          href: load-balancer-common-deployment-errors.md
         - name: Vanliga problem med utgående anslutningar
           href: troubleshoot-outbound-connection.md
         - name: Problem med resurshälsa och inkommande tillgänglighet
@@ -191,6 +189,8 @@
       displayName: ARM
     - name: Vanliga felkoder för Azure Instance Metadata Service (IMDS)
       href: troubleshoot-load-balancer-imds.md
+    - name: Vanliga distributionsfel
+      href: load-balancer-common-deployment-errors.md
 - name: Resurser
   items:
     - name: Utveckla dina färdigheter med Microsoft Learn

@@ -3,12 +3,12 @@ title: Konfigurera NSX Network-komponenter i Azure VMware-lösningen
 description: Lär dig hur du konfigurerar NSX-T-nätverksanslutningar med hjälp av Azure VMware Solution-konsolen.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: dbed29fb1063b78386f9ec1e2ee00d9c685a944e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716996"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurera NSX Network-komponenter i Azure VMware-lösningen
 
@@ -36,13 +36,9 @@ Du kan skapa och konfigurera ett NSX-T-segment från Azure VMware Solution-konso
 >[!NOTE]
 >Om du planerar att använda DHCP måste du [Konfigurera en DHCP-server eller DHCP-relä](#create-a-dhcp-server-or-dhcp-relay-in-the-azure-portal) innan du kan skapa och konfigurera ett NSX-T-segment.
 
-1. I ditt privata moln i Azure VMware-lösningen under **arbets belastnings nätverk** väljer du **segment**  >  **Lägg till**.
+1. I ditt privata moln i Azure VMware-lösningen under **arbets belastnings nätverk** väljer du **segment**  >  **Lägg till**. Ange information om det nya logiska segmentet och välj **OK**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/add-new-nsxt-segment.png" alt-text="Skärm bild som visar hur du lägger till ett nytt segment.":::
-
-1. Ange information om det nya logiska segmentet.
-
-   :::image type="content" source="media/configure-nsx-network-components-azure-portal/create-new-segment-details.png" alt-text="Skärm bild som visar information om det nya segmentet.":::
    
    - **Segment namn** – namnet på den logiska växel som är synlig i vCenter.
    - **Subnet Gateway** – Gateway-IP-adress för den logiska växelns undernät med en under nät mask. Virtuella datorer är anslutna till en logisk växel och alla virtuella datorer som ansluter till den här växeln tillhör samma undernät.  Alla virtuella datorer som är kopplade till det här logiska segmentet måste också ha en IP-adress från samma segment.
@@ -50,8 +46,6 @@ Du kan skapa och konfigurera ett NSX-T-segment från Azure VMware Solution-konso
    - **Ansluten Gateway**  -  *Markerad som standard och skrivskyddad.*  Nivå-1-gateway och typ av segment information. 
       - **T1** -namnet på nivån-1 gateway i NSX-T Manager. Ett privat moln i Azure VMware-lösningen levereras med en NSX-T-nivå-0-gateway i aktivt/aktivt läge och en standard NSX-T-nivå-1-gateway i aktivt/vänte läge.  Segment som skapats via Azure VMware-lösningen ansluter bara till standard nivå 1-gatewayen och arbets belastningarna för dessa segment får East-West och North-South anslutning. Du kan bara skapa fler nivå 1-gatewayer via NSX-T-hanteraren. Nivå 1-gatewayer som skapats från NSX-T Manager-konsolen visas inte i Azure VMware-lösnings konsolen. 
       - **Typ** – överläggs segment som stöds av Azure VMware-lösningen.
-
-1. Välj **OK** för att skapa segmentet och koppla det till nivån-1 Gateway. 
 
    Segmentet visas nu i Azure VMware-lösnings konsolen, NSX-T-hanteraren och vCenter.
 
@@ -157,24 +151,12 @@ Du konfigurerar en standard-DNS-zon och en FQDN-zon för att skicka DNS-frågor 
 
 ### <a name="step-2-configure-dns-service"></a>Steg 2. Konfigurera DNS-tjänsten
 
-1. Välj fliken **DNS-tjänst** , Välj **Lägg till** och ange sedan:
+1. Välj fliken **DNS-tjänst** och välj **Lägg till**. Ange informationen och välj **OK**.
 
    :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking-configure-dns-service.png" alt-text="Skärm bild som visar den information som krävs för DNS-tjänsten.":::
 
-   1. Ett namn för DNS-tjänsten.
-
-   1. Ange IP-adressen för DNS-tjänsten.
-
-   1. Välj den standard-DNS-zon som du skapade på fliken DNS-zoner.
-
-   1. Välj de FQDN-zoner som du lade till på fliken DNS-zoner.
-
-   1. Välj **loggnings nivå**.
-
    >[!TIP]
    >**Nivån-1 Gateway** är markerad som standard och återspeglar den gateway som skapades när du distribuerar Azure VMware-lösningen.
-
-1. Välj **OK**. 
 
    DNS-tjänsten har lagts till.
 

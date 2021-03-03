@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e7ec5569dd0de3b0535c3b0e3b3304848a5207
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687829"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Lägg till Google som en identitets leverantör för B2B-gäst användare
 
@@ -46,13 +46,7 @@ Gäst användare som ser ett "sidhuvud för lång"-fel kan ta bort sina cookies 
 
 ## <a name="sign-in-endpoints"></a>Inloggnings slut punkter
 
-Google gäst användare kan nu logga in till din klient-eller Microsoft-appar från första part genom att använda en [gemensam slut punkt](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (med andra ord en allmän App-URL som inte innehåller din klient kontext). Följande är exempel på vanliga slut punkter:
-
-- `https://teams.microsoft.com`
-- `https://myapps.microsoft.com`
-- `https://portal.azure.com`
-
-Under inloggnings processen väljer gäst användaren **inloggnings alternativ** och väljer sedan logga in i **en organisation**. Användaren skriver sedan namnet på din organisation och fortsätter att logga in med sina Google-autentiseringsuppgifter.
+Google gäst användare kan nu logga in till din klient-eller Microsoft-appar från första part genom att använda en [gemensam slut punkt](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (med andra ord en allmän App-URL som inte innehåller din klient kontext). Under inloggnings processen väljer gäst användaren **inloggnings alternativ** och väljer sedan logga in i **en organisation**. Användaren skriver sedan namnet på din organisation och fortsätter att logga in med sina Google-autentiseringsuppgifter.
 
 Google gäst användare kan också använda program slut punkter som innehåller din klient information, till exempel:
 

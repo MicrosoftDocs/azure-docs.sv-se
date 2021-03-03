@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741845"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurera kluster i HDInsight med Apache Hadoop, Apache Spark, Apache Kafka med mera
 
@@ -29,7 +29,7 @@ Om du använder flera kluster tillsammans, vill du skapa ett virtuellt nätverk 
 
 I följande tabell visas de olika metoder som du kan använda för att skapa ett HDInsight-kluster.
 
-| Kluster som skapats med | Webbläsare | Kommandorad | REST API | SDK |
+| Kluster som skapats med | Webbläsare | Kommandorad | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure-portalen](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
@@ -40,7 +40,7 @@ I följande tabell visas de olika metoder som du kan använda för att skapa ett
 
 Den här artikeln vägleder dig genom installationen i [Azure Portal](https://portal.azure.com), där du kan skapa ett HDInsight-kluster.
 
-## <a name="basics"></a>Grunder
+## <a name="basics"></a>Grundläggande inställningar
 
 ![snabb alternativ för HDInsight-skapande](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -216,7 +216,7 @@ Varje kluster typ har sitt eget antal noder, terminologi för noder och standard
 | Storm |Nimbus Node (2), övervaknings Server (1 +), ZooKeeper Node (3) |![Konfiguration av HDInsight Storm kluster typ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Head Node (2), arbetsnoden (1 +), ZooKeeper Node (3) (kostnads fri för a1 ZooKeeper VM-storlek) |![Konfiguration av HDInsight Spark kluster typ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
-Mer information finns i [standard konfiguration av noder och virtuella dator storlekar för kluster](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) i "Vad är Hadoop-komponenter och-versioner i HDInsight?"
+Mer information finns i [standard konfiguration av noder och virtuella dator storlekar för kluster](hdinsight-supported-node-configuration.md) i "Vad är Hadoop-komponenter och-versioner i HDInsight?"
 
 Kostnaden för HDInsight-kluster bestäms av antalet noder och storlekarna för virtuella datorer för noderna.
 

@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 200c4c536df4a3e32b59945ae4ad97d7b770f269
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 38f5743e8a80af1ec824b07833f66ad50d67b91f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723307"
 ---
 # <a name="azure-activity-log"></a>Azure-aktivitetslogg
-Aktivitetsloggen är en [plattformslogg](../platform/platform-logs-overview.md) i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Om du vill ha ytterligare funktioner bör du skapa en diagnostisk inställning för att skicka aktivitets loggen till [Azure Monitor loggar](../platform/data-platform-logs.md), till Azure Event Hubs att vidarebefordra utanför Azure eller till Azure Storage för arkivering. Den här artikeln innehåller information om hur du visar aktivitets loggen och skickar den till olika destinationer.
+Aktivitetsloggen är en [plattformslogg](./platform-logs-overview.md) i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Om du vill ha ytterligare funktioner bör du skapa en diagnostisk inställning för att skicka aktivitets loggen till [Azure Monitor loggar](../logs/data-platform-logs.md), till Azure Event Hubs att vidarebefordra utanför Azure eller till Azure Storage för arkivering. Den här artikeln innehåller information om hur du visar aktivitets loggen och skickar den till olika destinationer.
 
-Information om hur du skapar en diagnostisk inställning finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika destinationer](../platform/diagnostic-settings.md) .
+Information om hur du skapar en diagnostisk inställning finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika destinationer](./diagnostic-settings.md) .
 
 > [!NOTE]
 > Posterna i aktivitetsloggen skapas i systemet och kan inte ändras eller tas bort.
@@ -43,13 +43,13 @@ Om det finns några associerade ändringar i händelsen visas en lista över än
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>Andra metoder för att hämta aktivitets logg händelser
 Du kan också komma åt aktivitets logg händelser med följande metoder.
 
-- Använd cmdleten [Get-AzLog](/powershell/module/az.monitor/get-azlog) för att hämta aktivitets loggen från PowerShell. Se [Azure Monitor PowerShell-exempel](../samples/powershell-samples.md#retrieve-activity-log).
-- Använd [AZ övervaka aktivitet – logg](/cli/azure/monitor/activity-log) för att hämta aktivitets loggen från cli.  Se [Azure Monitor CLI-exempel](../samples/cli-samples.md#view-activity-log).
+- Använd cmdleten [Get-AzLog](/powershell/module/az.monitor/get-azlog) för att hämta aktivitets loggen från PowerShell. Se [Azure Monitor PowerShell-exempel](../powershell-samples.md#retrieve-activity-log).
+- Använd [AZ övervaka aktivitet – logg](/cli/azure/monitor/activity-log) för att hämta aktivitets loggen från cli.  Se [Azure Monitor CLI-exempel](../cli-samples.md#view-activity-log).
 - Använd [Azure Monitor REST API](/rest/api/monitor/) för att hämta aktivitets loggen från en rest-klient. 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Skicka till Log Analytics-arbetsytan
- Skicka aktivitets loggen till en Log Analytics-arbetsyta för att aktivera funktionerna i [Azure Monitor loggar](../platform/data-platform-logs.md) som innehåller följande:
+ Skicka aktivitets loggen till en Log Analytics-arbetsyta för att aktivera funktionerna i [Azure Monitor loggar](../logs/data-platform-logs.md) som innehåller följande:
 
 - Korrelera aktivitets logg data med andra övervaknings data som samlas in av Azure Monitor.
 - Konsolidera logg poster från flera Azure-prenumerationer och-klienter till en plats för analys av varandra.
@@ -59,9 +59,9 @@ Du kan också komma åt aktivitets logg händelser med följande metoder.
 - Inga data inmatnings avgifter för aktivitets logg data som lagras i en Log Analytics-arbetsyta.
 - Inga avgifter för datakvarhållning till 90 dagar för aktivitets logg data som lagras i en Log Analytics-arbetsyta.
 
-[Skapa en diagnostisk inställning](../platform/diagnostic-settings.md) för att skicka aktivitets loggen till en Log Analytics-arbetsyta. Du kan skicka aktivitets loggen från en enskild prenumeration till upp till fem arbets ytor. Om du vill samla loggar för flera klientorganisationer behöver du [Azure Lighthouse](../../lighthouse/index.yml).
+[Skapa en diagnostisk inställning](./diagnostic-settings.md) för att skicka aktivitets loggen till en Log Analytics-arbetsyta. Du kan skicka aktivitets loggen från en enskild prenumeration till upp till fem arbets ytor. Om du vill samla loggar för flera klientorganisationer behöver du [Azure Lighthouse](../../lighthouse/index.yml).
 
-Aktivitets logg data i en Log Analytics arbets yta lagras i en tabell med namnet *AzureActivity* som du kan hämta med en [logg fråga](../log-query/log-query-overview.md) i [Log Analytics](../log-query/log-analytics-tutorial.md). Strukturen för den här tabellen varierar beroende på vilken [kategori logg posten](activity-log-schema.md)har. En beskrivning av tabell egenskaperna finns i [referens för Azure Monitor-data](/azure/azure-monitor/reference/tables/azureactivity).
+Aktivitets logg data i en Log Analytics arbets yta lagras i en tabell med namnet *AzureActivity* som du kan hämta med en [logg fråga](../logs/log-query-overview.md) i [Log Analytics](../logs/log-analytics-tutorial.md). Strukturen för den här tabellen varierar beroende på vilken [kategori logg posten](activity-log-schema.md)har. En beskrivning av tabell egenskaperna finns i [referens för Azure Monitor-data](/azure/azure-monitor/reference/tables/azureactivity).
 
 Om du till exempel vill visa antalet aktivitets logg poster för varje kategori använder du följande fråga.
 
@@ -202,12 +202,12 @@ Om det redan finns en logg profil måste du först ta bort den befintliga logg p
 
     | Egenskap | Krävs | Beskrivning |
     | --- | --- | --- |
-    | Name |Yes |Namn på din logg profil. |
-    | StorageAccountId |No |Resurs-ID för det lagrings konto där aktivitets loggen ska sparas. |
-    | serviceBusRuleId |No |Service Bus regel-ID för det Service Bus namn område som du vill ha händelse hubbar skapade i. Det här är en sträng med formatet: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Namn |Ja |Namn på din logg profil. |
+    | StorageAccountId |Inga |Resurs-ID för det lagrings konto där aktivitets loggen ska sparas. |
+    | serviceBusRuleId |Inga |Service Bus regel-ID för det Service Bus namn område som du vill ha händelse hubbar skapade i. Det här är en sträng med formatet: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Plats |Ja |Kommaavgränsad lista över regioner för vilka du vill samla in aktivitets logg händelser. |
-    | RetentionInDays |Yes |Antal dagar som händelser ska behållas i lagrings kontot, mellan 1 och 365. Värdet noll lagrar loggarna oändligt. |
-    | Kategori |No |Kommaavgränsad lista över händelse kategorier som ska samlas in. Möjliga värden är _Write_, _Delete_ och _Action_. |
+    | RetentionInDays |Ja |Antal dagar som händelser ska behållas i lagrings kontot, mellan 1 och 365. Värdet noll lagrar loggarna oändligt. |
+    | Kategori |Inga |Kommaavgränsad lista över händelse kategorier som ska samlas in. Möjliga värden är _Write_, _Delete_ och _Action_. |
 
 ### <a name="example-script"></a>Exempelskript
 Följande är ett exempel på PowerShell-skript för att skapa en logg profil som skriver aktivitets loggen till både ett lagrings konto och en Event Hub.
@@ -245,12 +245,12 @@ Om det redan finns en logg profil måste du först ta bort den befintliga logg p
 
     | Egenskap | Krävs | Beskrivning |
     | --- | --- | --- |
-    | name |Yes |Namn på din logg profil. |
-    | lagrings konto-ID |Yes |Resurs-ID för det lagrings konto som aktivitets loggar ska sparas i. |
-    | platser |Yes |Blankstegsavgränsad lista över regioner för vilka du vill samla in aktivitets logg händelser. Du kan visa en lista över alla regioner för din prenumeration med hjälp av `az account list-locations --query [].name` . |
-    | antalet |Yes |Antal dagar som händelser ska behållas, mellan 1 och 365. Om värdet är noll lagras loggarna oändligt (för alltid).  Om värdet är noll ska parametern Enabled vara inställd på falskt. |
-    |enabled | Yes |Sant eller falskt.  Används för att aktivera eller inaktivera bevarande principen.  Om värdet är true måste parametern Days vara ett värde som är större än 0.
-    | kategorier |Yes |Blankstegsavgränsad lista över händelse kategorier som ska samlas in. Möjliga värden är Write, Delete och action. |
+    | name |Ja |Namn på din logg profil. |
+    | lagrings konto-ID |Ja |Resurs-ID för det lagrings konto som aktivitets loggar ska sparas i. |
+    | platser |Ja |Blankstegsavgränsad lista över regioner för vilka du vill samla in aktivitets logg händelser. Du kan visa en lista över alla regioner för din prenumeration med hjälp av `az account list-locations --query [].name` . |
+    | antalet |Ja |Antal dagar som händelser ska behållas, mellan 1 och 365. Om värdet är noll lagras loggarna oändligt (för alltid).  Om värdet är noll ska parametern Enabled vara inställd på falskt. |
+    |enabled | Ja |Sant eller falskt.  Används för att aktivera eller inaktivera bevarande principen.  Om värdet är true måste parametern Days vara ett värde som är större än 0.
+    | kategorier |Ja |Blankstegsavgränsad lista över händelse kategorier som ska samlas in. Möjliga värden är Write, Delete och action. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-arbetsyta
@@ -400,6 +400,6 @@ Du kommer snart inte längre att kunna lägga till aktivitets loggs analys lösn
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Läs en översikt över plattforms loggar](../platform/platform-logs-overview.md)
+* [Läs en översikt över plattforms loggar](./platform-logs-overview.md)
 * [Granska händelse schema för aktivitets logg](activity-log-schema.md)
-* [Skapa diagnostisk inställning för att skicka aktivitets loggar till andra destinationer](../platform/diagnostic-settings.md)
+* [Skapa diagnostisk inställning för att skicka aktivitets loggar till andra destinationer](./diagnostic-settings.md)

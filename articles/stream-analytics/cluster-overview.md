@@ -1,5 +1,5 @@
 ---
-title: Översikt över Azure Stream Analytics kluster (förhands granskning)
+title: Översikt över Azure Stream Analytics kluster
 description: Lär dig mer om ett dedikerat erbjudande för en klient Stream Analytics klustret.
 author: sidramadoss
 ms.author: sidram
@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e5157a02f97370b20db85bf5e3e8aae98a2d8668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019541"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709299"
 ---
-# <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Översikt över Azure Stream Analytics kluster (förhands granskning)
+# <a name="overview-of-azure-stream-analytics-cluster"></a>Översikt över Azure Stream Analytics kluster
 
 Azure Stream Analytics kluster erbjuder en distribution med en enda klient för komplexa och krävande strömnings scenarier. I full skala kan Stream Analytics kluster bearbeta mer än 200 MB/sekund i real tid. Stream Analytics jobb som körs på dedikerade kluster kan utnyttja alla funktioner i standard erbjudandet och har stöd för anslutningar med privat anslutning till dina indata och utdata.
 

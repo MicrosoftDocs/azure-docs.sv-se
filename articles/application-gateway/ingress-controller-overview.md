@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2564fd38056241fd48f58f5f6039bf64f92b6741
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714416"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Vad är Application Gateway ingress-styrenhet?
 Application Gateway ingress (AGIC) är ett Kubernetes-program som gör det möjligt för [Azure Kubernetes service-kunder (AKS)](https://azure.microsoft.com/services/kubernetes-service/) att utnyttja Azures inbyggda [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7-belastningsutjämnare för att exponera moln program vara till Internet. AGIC övervakar det Kubernetes-kluster som det finns på och uppdaterar kontinuerligt en Application Gateway, så att valda tjänster exponeras för Internet.
@@ -37,7 +37,7 @@ AGIC konfigureras via Kubernetes [ingress-resursen](https://kubernetes.io/docs/u
   - Integrerad brand vägg för webbaserade program
 
 ## <a name="difference-between-helm-deployment-and-aks-add-on"></a>Skillnaden mellan Helm-distribution och AKS Add-On
-Det finns två sätt att distribuera AGIC för ditt AKS-kluster. Det första sättet är genom Helm; den andra är via AKS som ett tillägg. Den främsta fördelen med att distribuera AGIC som ett AKS-tillägg är att det är mycket enklare än att distribuera genom Helm. För en ny installation kan du distribuera en ny Application Gateway och ett nytt AKS-kluster med AGIC aktiverat som tillägg på en rad i Azure CLI. Tillägget är också en fullständigt hanterad tjänst som ger ytterligare fördelar som automatiska uppdateringar och ökad support. AGIC som distribueras via Helm stöds inte av AKS, men AGIC som distribuerats som ett AKS-tillägg stöds av AKS. 
+Det finns två sätt att distribuera AGIC för ditt AKS-kluster. Det första sättet är genom Helm; den andra är via AKS som ett tillägg. Den främsta fördelen med att distribuera AGIC som ett AKS-tillägg är att det är mycket enklare än att distribuera genom Helm. För en ny installation kan du distribuera en ny Application Gateway och ett nytt AKS-kluster med AGIC aktiverat som tillägg på en rad i Azure CLI. Tillägget är också en fullständigt hanterad tjänst som ger ytterligare fördelar som automatiska uppdateringar och ökad support. Båda sätten att distribuera AGIC (Helm och AKS-tillägg) stöds fullt ut av Microsoft. Tillägget möjliggör dessutom bättre integrering med AKS som ett första klass tillägg.
 
 AGIC-tillägget distribueras fortfarande som en POD i kundens AKS-kluster, men det finns några skillnader mellan Helm-distributions versionen och tilläggs versionen av AGIC. Nedan visas en lista över skillnaderna mellan de två versionerna: 
   - Det går inte att ändra distributions värden för Helm i AKS-tillägget:
@@ -50,27 +50,7 @@ AGIC-tillägget distribueras fortfarande som en POD i kundens AKS-kluster, men d
   - Eftersom AGIC-tillägg är en hanterad tjänst kommer kunderna automatiskt att uppdateras till den senaste versionen av AGIC-tillägget, till skillnad från AGIC som distribueras via Helm där kunden måste uppdatera AGIC manuellt. 
 
 > [!NOTE]
-> AGIC AKS-tilläggs metoden för distribution är för närvarande en för hands version. Vi rekommenderar inte att du kör produktions arbets belastningar på funktioner som fortfarande finns i för hands versionen, så om du är nyfiken på att testa det, rekommenderar vi att du konfigurerar ett nytt kluster för att testa det med. 
-
-Följande tabeller sorterar vilka scenarier som för närvarande stöds med Helm-distributions versionen och AKS-tilläggs versionen av AGIC. 
-
-### <a name="aks-add-on-agic-single-aks-cluster"></a>AKS-AGIC (Single AKS Cluster)
-|                  |1 Application Gateway |2 + Application Gateway |
-|------------------|---------|--------|
-|**1 AGIC**|Ja, detta stöds |Nej, det är i vår efter släpning |
-|**2 + AGICs**|Nej, endast 1 AGIC som stöds/Cluster |Nej, endast 1 AGIC som stöds/Cluster |
-
-### <a name="helm-deployed-agic-single-aks-cluster"></a>Helm distribuerad AGIC (enskilt AKS-kluster)
-|                  |1 Application Gateway |2 + Application Gateway |
-|------------------|---------|--------|
-|**1 AGIC**|Ja, detta stöds |Nej, det är i vår efter släpning |
-|**2 + AGICs**|Måste använda delade ProhibitedTarget-funktioner och se separata namn områden |Ja, detta stöds |
-
-### <a name="helm-deployed-agic-2-aks-clusters"></a>Helm distribuerade AGIC (2 + AKS-kluster)
-|                  |1 Application Gateway |2 + Application Gateway |
-|------------------|---------|--------|
-|**1 AGIC**|Saknas |Saknas |
-|**2 + AGICs**|Måste använda delade ProhibitedTarget-funktioner |E.t. |
+> Kunder kan bara distribuera ett AGIC-tillägg per AKS-kluster och varje AGIC-tillägg kan för närvarande endast ha ett Application Gateway. För distributioner som kräver mer än en AGIC per kluster eller flera AGICs som riktar sig mot en Application Gateway kan du fortsätta att använda AGIC som distribueras via Helm. 
 
 ## <a name="next-steps"></a>Nästa steg
 - [**AKS Add-On Bygg-distribution**](tutorial-ingress-controller-add-on-new.md): instruktioner om hur du installerar AGIC-tillägg, AKS och Application Gateway på en tom infrastruktur.

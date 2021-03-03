@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721845"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-routningskrav
 För att kunna ansluta till Microsofts molntjänster med ExpressRoute måste du konfigurera och hantera routning. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av routning som en hanterad tjänst. Fråga din anslutningsleverantör om de erbjuder denna tjänst. Om inte måste du uppfylla följande krav:
@@ -30,13 +30,22 @@ Du behöver reservera några IP-adressblock för att kunna konfigurera routning 
 ### <a name="ip-addresses-used-for-azure-private-peering"></a>IP-adresser för Azures privata peering
 Du kan antingen använda privata IP-adresser eller offentliga IP-adresser för att konfigurera peerings. Adressintervallet som används för att konfigurera routning får inte överlappa de adressintervall som användes för att skapa virtuella nätverk i Azure. 
 
-* Du måste reservera ett /29-undernät eller två /30-undernät för routningsgränssnitten.
-* Undernät som används för routning kan vara antingen privata IP-adresser eller offentliga IP-adresser.
-* Undernäten får inte stå i konflikt med det intervall som reserverats av kunden för användning i Microsoft-molnet.
-* Om ett /29-undernät används delas det upp i två /30-undernät. 
-  * Det första /30-undernätet används för den primära länken och det andra/30-undernätet används för den sekundära länken.
-  * För båda /30-undernäten gäller att du måste använda den första IP-adressen för /30-undernätet på routern. Microsoft använder den andra IP-adressen för /30-undernätet för att konfigurera en BGP-session.
-  * Du måste konfigurera båda BGP-sessionerna för att vårt [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltigt.  
+* IPv6
+    * Du måste reservera ett /29-undernät eller två /30-undernät för routningsgränssnitten.
+    * Undernät som används för routning kan vara antingen privata IP-adresser eller offentliga IP-adresser.
+    * Undernäten får inte stå i konflikt med det intervall som reserverats av kunden för användning i Microsoft-molnet.
+    * Om ett /29-undernät används delas det upp i två /30-undernät. 
+      * Det första /30-undernätet används för den primära länken och det andra/30-undernätet används för den sekundära länken.
+      * För båda /30-undernäten gäller att du måste använda den första IP-adressen för /30-undernätet på routern. Microsoft använder den andra IP-adressen för /30-undernätet för att konfigurera en BGP-session.
+      * Du måste konfigurera båda BGP-sessionerna för att vårt [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltigt.
+* IPv6
+    * Du måste reservera ett/125-undernät eller två/126-undernät för routningsgränssnitt.
+    * Undernät som används för routning kan vara antingen privata IP-adresser eller offentliga IP-adresser.
+    * Undernäten får inte stå i konflikt med det intervall som reserverats av kunden för användning i Microsoft-molnet.
+    * Om ett /125-undernät används delas det upp i två /126-undernät. 
+      * Det första/126-undernätet används för den primära länken och det andra/30-undernätet används för den sekundära länken.
+      * För bägge /126-undernäten gäller att du måste använda den första IP-adressen för /126-undernätet på din router. Microsoft använder den andra IP-adressen för /126-undernätet för att konfigurera en BGP-session.
+      * Du måste konfigurera båda BGP-sessionerna för att vårt [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltigt.
 
 #### <a name="example-for-private-peering"></a>Exempel på privat peering
 Om du väljer att använda a.b.c.d/29 för att konfigurera peeringen delas den upp i två /30-undernät. I följande exempel ser du hur ett. b. c. d/29-undernät används:
@@ -122,7 +131,7 @@ Microsoft använder AS 12076 för offentliga Azure, privata Azure och Microsofts
 Det finns inga krav på symmetri vid dataöverföring. Sökvägar vid vidarebefordran och retur kan passera olika routerpar. Identiska vägar måste annonseras från båda sidor över flera krets par som tillhör dig. Vägmåtten behöver inte vara identiska.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Vägsammanställning och begränsningar för prefix
-Vi stöder upp till 4 000 prefix som annonseras till oss via Azures privata peering. Detta kan utökas upp till 10 000 prefix om ExpressRoute-premiumtillägget är aktiverat. Vi kan acceptera upp till 200 prefix per BGP-session för Azures offentliga och Microsofts peering. 
+Vi har stöd för upp till 4000 IPv4-prefix och 100 IPv6-prefix som annonseras till oss via Azures privata peering. Detta kan ökas upp till 10 000 IPv4-prefix om ExpressRoute Premium-tillägget är aktiverat. Vi kan acceptera upp till 200 prefix per BGP-session för Azures offentliga och Microsofts peering. 
 
 BGP-sessionen kommer att tas bort om antalet prefix överskrider gränsen. Vi kommer endast att acceptera standardvägar på den privata peeringlänken. Leverantören måste filtrera ut standardvägen och privata IP-adresser (RFC 1918) från Azures offentliga och Microsofts peeringsökvägar. 
 
@@ -169,7 +178,7 @@ Du kan köpa mer än en ExpressRoute-krets per geopolitisk region. Att ha flera 
 | **Sydamerika** | |
 | Brasilien, södra | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 | 12076:55014 |
 | **Europa** | |
-| Norra Europa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
+| Europa, norra | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 | 12076:55003 |
 | Europa, västra | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 | 12076:55002 |
 | Storbritannien, södra | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 | 12076:55024 |
 | Storbritannien, västra | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 | 12076:55025 |

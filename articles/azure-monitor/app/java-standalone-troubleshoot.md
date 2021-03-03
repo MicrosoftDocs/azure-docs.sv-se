@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737065"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -45,15 +45,23 @@ Loggning registreras endast om det stämmer överens med det konfigurerade trös
 
 Det bästa sättet att veta om ett visst loggnings uttryck uppfyller det konfigurerade tröskelvärdet för loggnings ramverk är att bekräfta att det visas i din normala program logg (t. ex. fil eller konsol).
 
+Observera också att om ett undantag skickas till loggen visas logg meddelandet (och undantaget) i Azure Portal under `exceptions` tabellen i stället för `traces` tabellen.
+
 Se den [automatiskt insamlade loggnings konfigurationen](./java-standalone-config.md#auto-collected-logging) för mer information.
 
 ## <a name="import-ssl-certificates"></a>Importera SSL-certifikat
 
 Det här avsnittet hjälper dig att felsöka och eventuellt åtgärda undantag som rör SSL-certifikat när du använder Java-agenten.
 
-Det finns två olika sökvägar för att felsöka problemet.
+Det finns två olika sökvägar nedan för att lösa problemet:
+* Om du använder en standard-Java-nyckel lagring
+* Om du använder ett anpassat Java-attributarkiv
 
-### <a name="if-using-a-default-java-keystore"></a>Om du använder en standard-Java-nyckel lagring:
+Om du inte är säker på vilken sökväg du ska följa, kontrollerar du om du har ett JVM-argument `-Djavax.net.ssl.trustStore=...` .
+Om du _inte_ har ett sådant JVM-argument använder du förmodligen Java-standardarkivet som standard.
+Om du _har ett_ sådant JVM-argument använder du förmodligen en anpassad nyckel lagring och JVM-arg kommer att peka dig på din anpassade nyckel lagring.
+
+### <a name="if-using-the-default-java-keystore"></a>Om du använder standard-Java-nyckel arkivet:
 
 Normalt har Java-standardarkivet redan alla certifikat utfärdarens rot certifikat. Det kan dock finnas vissa undantag, till exempel om inmatnings slut punkt certifikatet kan vara signerat av ett annat rot certifikat. Vi rekommenderar därför följande tre steg för att lösa problemet:
 

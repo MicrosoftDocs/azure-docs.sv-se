@@ -5,18 +5,18 @@ author: harelbr
 ms.author: harelbr
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 06/26/2020
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: b09c7f1ff429a3daf675b0f44cc8b64f27e79a07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435f7b9b585b4effe6b06d78587845bf53a7d051
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714212"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Så här uppdaterar du aviserings regler eller åtgärds regler när deras mål resurs flyttas till en annan Azure-region
 
-I den här artikeln beskrivs varför befintliga [varnings regler](../platform/alerts-overview.md) och [Åtgärds regler](./alerts-action-rules.md) kan påverkas när du flyttar andra Azure-resurser mellan regioner och hur du identifierar och löser problemen. Mer information om när är resurs förflyttningen mellan olika regioner finns i dokumentationen för huvud [resurs flytt](../../azure-resource-manager/management/move-region.md) .
+I den här artikeln beskrivs varför befintliga [varnings regler](./alerts-overview.md) och [Åtgärds regler](./alerts-action-rules.md) kan påverkas när du flyttar andra Azure-resurser mellan regioner och hur du identifierar och löser problemen. Mer information om när är resurs förflyttningen mellan olika regioner finns i dokumentationen för huvud [resurs flytt](../../azure-resource-manager/management/move-region.md) .
 
 ## <a name="why-the-problem-exists"></a>Varför problemet finns
 
@@ -48,7 +48,6 @@ Problemet gäller för följande regel typer:
 
 - Aviseringsregler för aktivitetsloggar
 - Åtgärdsregler
-- Klassiska aviseringar
 - Mått aviseringar – mer information finns i nästa avsnitt [aviserings regler baserat på mått](#alert-rules-based-on-metrics).
 
 > [!NOTE]
@@ -112,4 +111,4 @@ Om **bara några** av resurserna i omfånget har flyttats måste du ta bort de f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om att åtgärda andra problem med [aviserings meddelanden](alerts-troubleshoot.md), [mått varningar](alerts-troubleshoot-metric.md)och [logg aviseringar](alerts-troubleshoot-log.md). 
+Lär dig mer om att åtgärda andra problem med [aviserings meddelanden](alerts-troubleshoot.md), [mått varningar](alerts-troubleshoot-metric.md)och [logg aviseringar](alerts-troubleshoot-log.md).

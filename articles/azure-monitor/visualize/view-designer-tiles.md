@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: abcd95a0c433b59df6e7a564e5db948ea2a9eaf5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717221"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referens guide för att Visa designer-paneler i Azure Monitor
 Med hjälp av View Designer i Azure Monitor kan du skapa en mängd olika anpassade vyer i Azure Portal som kan hjälpa dig att visualisera data i din Log Analytics-arbetsyta. Den här artikeln är en referens guide för inställningarna för de paneler som är tillgängliga i dina anpassade vyer.
@@ -24,7 +24,7 @@ Mer information om View Designer finns i:
 
 De tillgängliga panelerna i designern beskrivs i följande tabell:  
 
-| Panel | Description |
+| Panel | Beskrivning |
 |:--- |:--- |
 | [Nummer](#number-tile) |Antalet poster från en fråga. |
 | [Två tal](#two-numbers-tile) |Antalet poster från två olika frågor. |
@@ -36,7 +36,7 @@ De tillgängliga panelerna i designern beskrivs i följande tabell:
 I nästa avsnitt beskrivs panel typerna och deras egenskaper i detalj.
 
 > [!NOTE]
-> Paneler i vyer baseras på [logg frågor](../log-query/log-query-overview.md) i Log Analytics arbets ytan. De stöder för närvarande inte [kors resurs frågor](../log-query/cross-workspace-query.md) för att hämta data från Application Insights.
+> Paneler i vyer baseras på [logg frågor](../logs/log-query-overview.md) i Log Analytics arbets ytan. De stöder för närvarande inte [kors resurs frågor](../logs/cross-workspace-query.md) för att hämta data från Application Insights.
 
 ## <a name="number-tile"></a>Siffer panel
 Panelen **tal** visar både antalet poster från en logg fråga och en etikett.
@@ -45,8 +45,8 @@ Panelen **tal** visar både antalet poster från en logg fråga och en etikett.
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | **Panel** | |
 | Förklaring |Texten som visas under värdet. |
 | Söka i data |Den fråga som körs. Antalet poster som returneras av frågan visas. |
@@ -63,8 +63,8 @@ Den här panelen visar antalet poster från två olika logg frågor och en etike
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | **Första panelen** | |
 | Förklaring |Texten som visas under värdet. |
 | Söka i data |Den fråga som körs. Antalet poster som returneras av frågan visas. |
@@ -84,8 +84,8 @@ Den här panelen visar antalet poster från två olika logg frågor och en etike
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | **Ring** | |
 | Söka i data |Den fråga som körs för ringen. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. |
 | **Ring** |**> Center** |
@@ -108,8 +108,8 @@ Den här panelen är ett linje diagram som visar flera serier från en logg frå
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | **Linje diagram** | |
 | Söka i data |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
 | **Linje diagram** |**> Y-axel** |
@@ -129,8 +129,8 @@ Den här panelen innehåller både ett linje diagram som visar flera serier frå
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | **Linje diagram** | |
 | Söka i data |Frågan som körs för linje diagrammet. Den första egenskapen är ett text värde och den andra egenskapen är ett numeriskt värde. Den här frågan använder vanligt vis *mått* nyckelordet för att summera resultat. Om frågan använder *intervall* nyckelordet använder x-axeln det här tidsintervallet. Om frågan inte använder *intervall* nyckelordet använder x-axeln Tim intervall. |
 | **Linje diagram** |**> prat bubbla** |
@@ -154,8 +154,8 @@ I panelen **två tids linjer** visas resultaten av två logg frågor med tiden s
 
 | Inställning | Beskrivning |
 |:--- |:--- |
-| Name |Den text som visas överst i panelen. |
-| Description |Texten som visas under panel namnet. |
+| Namn |Den text som visas överst i panelen. |
+| Beskrivning |Texten som visas under panel namnet. |
 | Första diagrammet | |
 | Förklaring |Texten som visas under bild texten för den första serien. |
 | Färg |Färgen som används för kolumnerna i den första serien. |
@@ -173,5 +173,5 @@ I panelen **två tids linjer** visas resultaten av två logg frågor med tiden s
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) som stöder frågor i brickor.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) som stöder frågor i brickor.
 * Lägg till [visualiserings delar](view-designer-parts.md) i din anpassade vy.

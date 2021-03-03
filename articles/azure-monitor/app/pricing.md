@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: db5506f1f1fcabf3a922115c24aa64e35b888fbd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726194"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Hantera användning och kostnader för Application Insights
 
@@ -294,7 +294,7 @@ För aktuella priser i din valuta och region, se [Application Insights priser](h
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Om fakturerad användning på den äldre nivån för Enterprise (per nod) 
 
-Som beskrivs nedan i detalj är den äldre nivån för Enterprise (per nod) att kombinera användning från alla Application Insights resurser i en prenumeration för att beräkna antalet noder och överförbrukningen av data. På grund av den här kombinations processen **rapporteras användningen för alla Application Insights resurser i en prenumeration mot bara en av resurserna**.  Detta gör att du kan synkronisera den [fakturerade användningen](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) med den användning som du ser för varje Application Insights resurser mycket komplicerade. 
+Som beskrivs nedan i detalj är den äldre nivån för Enterprise (per nod) att kombinera användning från alla Application Insights resurser i en prenumeration för att beräkna antalet noder och överförbrukningen av data. På grund av den här kombinations processen **rapporteras användningen för alla Application Insights resurser i en prenumeration mot bara en av resurserna**.  Detta gör att du kan synkronisera den [fakturerade användningen](#viewing-application-insights-usage-on-your-azure-bill) med den användning som du ser för varje Application Insights resurser mycket komplicerade. 
 
 > [!WARNING]
 > På grund av komplexiteten vid spårning och förståelse av användningen av Application Insights resurser på den äldre Enterprise-nivån (per nod) rekommenderar vi starkt att du använder den nuvarande pris nivån betala per användning. 

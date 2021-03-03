@@ -74,10 +74,14 @@
           href: azure-monitor-insights.md
     - name: Plats-till-plats
       items:
-        - name: Om IPSec-principer
+        - name: Om IPsec-principer för S2S
           href: virtual-wan-ipsec.md
         - name: Flera ISP-länkar – val av Azure-sökväg
           href: path-selection-multiple-links.md
+    - name: Punkt-till-plats
+      items:
+        - name: Om IPsec-principer för P2S
+          href: point-to-site-ipsec.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje
@@ -108,6 +112,8 @@
           href: connect-virtual-network-gateway-vwan.md
         - name: Konfigurera anpassad IPsec-princip
           href: virtual-wan-custom-ipsec-portal.md
+        - name: Konfigurera NAT-regler
+          href: nat-rules-vpn-gateway.md
     - name: Användar-VPN (punkt-till-plats)
       items:
         - name: Skapa en VPN-anslutning för användare

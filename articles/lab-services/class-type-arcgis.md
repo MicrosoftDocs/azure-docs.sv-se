@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740112"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Konfigurera ett labb för ArcMap\ArcGIS Desktop
 
@@ -24,7 +24,7 @@ När du har skaffat en Azure-prenumeration kan du skapa ett nytt labb konto i Az
 
 ### <a name="lab-account-settings"></a>Labb konto inställningar
 
-Aktivera inställningarna för ditt labb konto enligt beskrivningen i följande tabell.  Mer information om hur du aktiverar Azure Marketplace-avbildningar finns i [Ange de Azure Marketplace-avbildningar som är tillgängliga för labb skapare](https://docs.microsoft.com/azure/lab-services/specify-marketplace-images).
+Aktivera inställningarna för ditt labb konto enligt beskrivningen i följande tabell.  Mer information om hur du aktiverar Azure Marketplace-avbildningar finns i [Ange de Azure Marketplace-avbildningar som är tillgängliga för labb skapare](./specify-marketplace-images.md).
 
 | Inställning för labb konto | Instruktioner |
 | ------------------- | ------------ |
@@ -34,7 +34,7 @@ Aktivera inställningarna för ditt labb konto enligt beskrivningen i följande 
 
 En typ av licensiering som ArcGIS Desktop erbjuder är [samtidig användnings licenser](https://desktop.arcgis.com/en/license-manager/latest/license-manager-basics.htm).  Detta kräver att du installerar ArcGIS License Manager på licens servern.  Licens hanteraren håller reda på antalet kopior av program vara som kan köras samtidigt.  Mer information om hur du konfigurerar licens hanteraren på servern finns i [License Manager-guiden](https://desktop.arcgis.com/en/license-manager/latest/welcome.htm).
 
-Licens servern finns vanligt vis antingen i det lokala nätverket eller på en virtuell Azure-dator i ett virtuellt Azure-nätverk.  När licens servern har kon figurer ATS måste du koppla [det virtuella nätverket](https://docs.microsoft.com/azure/lab-services/how-to-connect-peer-virtual-network) till ditt [labb konto](https://docs.microsoft.com/azure/lab-services/tutorial-setup-lab-account).  Du måste använda nätverks-peering innan du skapar labbet så att dina virtuella labb datorer kan komma åt licens servern och vice versa.
+Licens servern finns vanligt vis antingen i det lokala nätverket eller på en virtuell Azure-dator i ett virtuellt Azure-nätverk.  När licens servern har kon figurer ATS måste du koppla [det virtuella nätverket](./how-to-connect-peer-virtual-network.md) till ditt [labb konto](./tutorial-setup-lab-account.md).  Du måste använda nätverks-peering innan du skapar labbet så att dina virtuella labb datorer kan komma åt licens servern och vice versa.
 
 Mer information finns i [Konfigurera en licens server som en delad resurs](how-to-create-a-lab-with-shared-resource.md).
 

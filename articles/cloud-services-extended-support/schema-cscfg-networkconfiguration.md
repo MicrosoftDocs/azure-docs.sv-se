@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 13fe83710c94c1ca37f05d59cb91f31aa8ca1bae
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700192"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (utökad support) konfiguration av networkConfiguration-schema
 
@@ -23,7 +23,7 @@ Du kan använda följande resurs för att lära dig mer om virtuella nätverk oc
 
 - [Konfigurations schema för moln tjänst (utökad support)](schema-cscfg-file.md).
 - [Definitions schema för moln tjänst (utökad support)](schema-csdef-file.md).
-- [Skapa en Virtual Network](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network).
+- [Skapa en Virtual Network](../virtual-network/manage-virtual-network.md).
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration-element
 I följande exempel visas `NetworkConfiguration` elementet och dess underordnade element.

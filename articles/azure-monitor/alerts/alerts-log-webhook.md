@@ -7,16 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: f90709431ea54a640554b642b96a63c7edac472e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19cf900b8e943b4f9ee69a6241ebc7ddb5a3dba6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623291"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704403"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-åtgärder för loggaviseringsregler
 
-[Logg aviseringen](alerts-log.md) har stöd för [konfiguration av åtgärds grupper för webhook](../platform/action-groups.md#webhook). I den här artikeln beskriver vi vilka egenskaper som är tillgängliga och hur du konfigurerar en anpassad JSON-webhook.
+[Logg aviseringen](alerts-log.md) har stöd för [konfiguration av åtgärds grupper för webhook](./action-groups.md#webhook). I den här artikeln beskriver vi vilka egenskaper som är tillgängliga och hur du konfigurerar en anpassad JSON-webhook.
 
 > [!NOTE]
 > Anpassad JSON-baserad webhook stöds för närvarande inte i API-versionen `2020-05-01-preview`
@@ -47,7 +47,7 @@ Standard egenskaper för webhook-åtgärd och deras anpassade JSON-parameter nam
 | *SearchQuery* |#searchquery |Loggs öknings fråga som används av varnings regeln. |
 | *SearchResults* |"IncludeSearchResults": true|Poster som returneras av frågan som en JSON-tabell, begränsade till de första 1 000 posterna. "IncludeSearchResults": true läggs till i en anpassad JSON webhook-definition som en egenskap på den översta nivån. |
 | *Dimensioner* |"IncludeDimensions": true|Dimensions värde kombinationer som utlöste denna avisering som ett JSON-avsnitt. "IncludeDimensions": true läggs till i en anpassad JSON webhook-definition som en egenskap på den översta nivån. |
-| *Aviserings typ*| #alerttype | Typ av logg aviserings regel som kon figurer ATS som [mått mätning eller antal resultat](../platform/alerts-unified-log.md#measure).|
+| *Aviserings typ*| #alerttype | Typ av logg aviserings regel som kon figurer ATS som [mått mätning eller antal resultat](./alerts-unified-log.md#measure).|
 | *WorkspaceID* |#workspaceid |ID för din Log Analytics-arbetsyta. |
 | *Program-ID* |#applicationid |ID för Application Insights-appen. |
 | *Prenumerations-ID* |#subscriptionid |ID för din Azure-prenumeration som används. |
@@ -84,7 +84,7 @@ I det här avsnittet visas exempel på nytto laster för Webhooks för logg avis
 Följande exempel på nytto Last är för en standard-webhook-åtgärd som används för aviseringar baserat på Log Analytics:
 
 > [!NOTE]
-> Värdet för fältet allvarlighets grad ändras om du har [växlat till det aktuella scheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md) från det [äldre Log Analytics aviserings-API: et](../platform/api-alerts.md).
+> Värdet för fältet allvarlighets grad ändras om du har [växlat till det aktuella scheduledQueryRules-API: et](../alerts/alerts-log-api-switch.md) från det [äldre Log Analytics aviserings-API: et](./api-alerts.md).
 
 ```json
 {
@@ -318,8 +318,8 @@ Följande exempel på nytto Last är för en anpassad webhook-åtgärd för valf
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [logg aviseringar i Azure-aviseringar](../platform/alerts-unified-log.md).
+- Lär dig mer om [logg aviseringar i Azure-aviseringar](./alerts-unified-log.md).
 - Förstå hur du [hanterar logg aviseringar i Azure](alerts-log.md).
-- Skapa och hantera [Åtgärds grupper i Azure](../platform/action-groups.md).
-- Läs mer om [Application Insights](../log-query/log-query-overview.md).
-- Läs mer om [logg frågor](../log-query/log-query-overview.md). 
+- Skapa och hantera [Åtgärds grupper i Azure](./action-groups.md).
+- Läs mer om [Application Insights](../logs/log-query-overview.md).
+- Läs mer om [logg frågor](../logs/log-query-overview.md).

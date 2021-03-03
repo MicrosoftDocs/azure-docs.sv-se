@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741369"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurera Azures brand Väggs regler
 Du kan konfigurera NAT-regler, nätverks regler och program regler på Azure-brandväggen. Regel samlingar bearbetas enligt regel typen i prioritetsordning, lägre siffror till högre tal från 100 till 65 000. Ett namn på en regel samling får bara innehålla bokstäver, siffror, under streck, punkter eller bindestreck. Det måste börja med en bokstav eller en siffra, och sluta med en bokstav, en siffra eller ett under streck. Den maximala namn längden är 80 tecken.
@@ -30,7 +30,7 @@ Om du konfigurerar nätverks regler och program regler tillämpas nätverks regl
 
 #### <a name="network-rule-protocol"></a>Nätverks regel protokoll
 
-Nätverks regler kan konfigureras för **TCP**-, **UDP**-, ICMP **-och IP-** protokoll. **ICMP** Alla IP-protokoll innehåller alla IP-protokoll som definieras i dokumentet med [IANA-protokollnummer (Internet Assigned Numbers Authority)](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) . Om en mål Port är explicit konfigurerad, översätts regeln till en TCP + UDP-regel.
+Nätverks regler kan konfigureras för **TCP**-, **UDP**-, ICMP **-och IP-** protokoll.  Alla IP-protokoll innehåller alla IP-protokoll som definieras i dokumentet med [IANA-protokollnummer (Internet Assigned Numbers Authority)](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) . Om en mål Port är explicit konfigurerad, översätts regeln till en TCP + UDP-regel.
 
 Före den 9 november 2020 **alla** avsedda **TCP**, eller **UDP** eller **ICMP**. Därför kan du ha konfigurerat en regel före det datumet med protokollet = any, och mål portarna = "*". Om du inte tänker tillåta något IP-protokoll som det är definierat, ändrar du sedan regeln till att uttryckligen konfigurera de protokoll som du vill använda (TCP, UDP eller ICMP).
 
@@ -38,7 +38,7 @@ Före den 9 november 2020 **alla** avsedda **TCP**, eller **UDP** eller **ICMP**
 
 ### <a name="nat-rules"></a>NAT-regler
 
-Inkommande Internet anslutning kan aktive ras genom konfiguration av mål nätverks adress översättning (DNAT) enligt beskrivningen i [Självstudier: filtrera inkommande trafik med Azure FIREWALL DNAt med hjälp av Azure Portal](tutorial-firewall-dnat.md). NAT-regler tillämpas i prioritetsordning före nätverks regler. Om en matchning hittas läggs en implicit motsvarande nätverks regel för att tillåta den översatta trafiken. Du kan åsidosätta det här beteendet genom att uttryckligen lägga till en nätverksregelsamling med neka-regler som matchar den översatta trafiken.
+Inkommande Internet anslutning kan aktive ras genom konfiguration av mål nätverks adress översättning (DNAT) enligt beskrivningen i [Självstudier: filtrera inkommande trafik med Azure FIREWALL DNAt med hjälp av Azure Portal](tutorial-firewall-dnat.md). NAT-regler tillämpas i prioritetsordning före nätverks regler. Om en matchning hittas läggs en implicit motsvarande nätverks regel för att tillåta den översatta trafiken. Av säkerhets skäl är den rekommenderade metoden att lägga till en speciell Internet källa för att ge DNAT åtkomst till nätverket och undvika att använda jokertecken.
 
 Program regler tillämpas inte för inkommande anslutningar. Så om du vill filtrera inkommande HTTP/S-trafik bör du använda brand vägg för webbaserade program (WAF). Mer information finns i [Vad är en brand vägg för Azure Web Application?](../web-application-firewall/overview.md)
 

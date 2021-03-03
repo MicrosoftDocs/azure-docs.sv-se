@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739839"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-komponenter
 
@@ -54,7 +54,7 @@ Belastnings utjämning konfigurerar genast om sig själv via automatisk omkonfig
 
 När du överväger att utforma en backend-pool bör du utforma för det minsta antalet enskilda resurser för Server dels poolen för att optimera längden på hanterings åtgärder. Det finns ingen skillnad i prestanda eller skalning för data planet.
 
-## <a name="health-probes"></a>Hälsoavsökningar
+## <a name="health-probes"></a>Hälsotillståndsavsökningar
 
 En hälso avsökning används för att fastställa hälso status för instanserna i backend-poolen. Under skapandet av belastningsutjämnare konfigurerar du en hälso avsökning för belastningsutjämnaren som ska användas.  Den här hälso avsökningen avgör om en instans är felfri och kan ta emot trafik.
 
@@ -133,6 +133,7 @@ Den grundläggande belastningsutjämnaren stöder inte utgående regler.
 - Utgående flöden från en VM-VM till en klient del för en intern Load Balancer Miss kommer att Miss förfaller.
 - En belastnings Utjämnings regel kan inte omfatta två virtuella nätverk.  Frontend-enheter och deras server dels instanser måste finnas i samma virtuella nätverk.  
 - Vidarebefordring av IP-fragment stöds inte för regler för belastnings utjämning. IP-fragmentering av UDP-och TCP-paket stöds inte i regler för belastnings utjämning. Belastnings Utjämnings regler för HA portar kan användas för att vidarebefordra befintliga IP-fragment. Mer information finns i [Översikt över portar med hög tillgänglighet](load-balancer-ha-ports-overview.md).
+- Du kan bara ha 1 offentlig Load Balancer och 1 intern Load Balancer per tillgänglighets uppsättning
 
 ## <a name="next-steps"></a>Nästa steg
 

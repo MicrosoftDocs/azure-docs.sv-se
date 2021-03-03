@@ -3,12 +3,12 @@ title: Felsöka återställning av virtuella Azure-filer
 description: Felsök problem när du återställer filer och mappar från en virtuell Azure-säkerhetskopiering.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ee856b10c6a5fbea6f6f76b2082949ab9c1e0db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700311"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Felsöka problem vid fil återställning av en virtuell Azure-säkerhetskopiering
 
@@ -36,7 +36,7 @@ Det här avsnittet innehåller anvisningar för att felsöka fel meddelanden som
 
 **Rekommenderad åtgärd**: 12 timmar efter att du hämtat skriptet blir det ogiltigt och kan inte köras. Gå till portalen och ladda ned ett nytt skript för att fortsätta med fil återställningen.
 
-### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>Det går inte att läsa in iscsi_tcp modul (eller) iscsi_tcp_module inte hittas
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>Det går inte att läsa in iscsi_tcp_module eller så går det inte att hitta modulen
 
 **Rekommenderad åtgärd**: Lös problemet genom att följa stegen i [skript hämtningarna, men inte köra](#the-script-downloads-successfully-but-fails-to-run).
 
@@ -88,7 +88,7 @@ Lös problemet genom att följa stegen för ditt operativ system.
 När du kör skriptet för första gången på Windows Server 2012 R2 och Windows Server 2016 (med lagringspooler) kan lagringspoolen vara kopplad till den virtuella datorn i skrivskyddat läge.
 
 >[!Tip]
-> Se till att du har [rätt dator för att köra skriptet](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+> Se till att du har [rätt dator för att köra skriptet](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 Lös problemet genom att manuellt tilldela läs-och Skriv behörighet till lagringspoolen och koppla de virtuella diskarna:
 
@@ -108,7 +108,7 @@ Lös problemet genom att manuellt tilldela läs-och Skriv behörighet till lagri
 
 När du utför fil återställning identifierar säkerhets kopierings tjänsten volymer och automatisk montering. Men om de säkerhetskopierade diskarna har RAW-partitioner, monteras inte diskarna automatiskt och du kan inte se data disken för återställning.
 
-Lös problemet genom att gå till [återställa filer från säkerhets kopiering av virtuella Azure-datorer](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Lös problemet genom att gå till [återställa filer från säkerhets kopiering av virtuella Azure-datorer](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 #### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>Det går inte att återställa Linux-filen eftersom operativ systemet inte kunde identifiera fil systemet
 
@@ -122,7 +122,7 @@ Lös problemet genom att kontrol lera om volymen är krypterad med ett program f
 
    ![Skärm bild som visar resultatet av kommandot för att visa en lista över block enheter.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-1. Verifiera fil systemet och krypteringen. Om volymen är krypterad stöds inte fil återställning. Läs mer i [support mat ris för säkerhets kopiering av virtuella Azure-datorer](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Verifiera fil systemet och krypteringen. Om volymen är krypterad stöds inte fil återställning. Läs mer i [support mat ris för säkerhets kopiering av virtuella Azure-datorer](./backup-support-matrix-iaas.md#support-for-file-level-restore).
 
 ### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Diskar är anslutna, men volymerna är inte monterade
 
@@ -139,7 +139,7 @@ När du kör fil återställnings skriptet för Windows visas meddelandet "0 åt
 Utför följande steg för att identifiera och lösa problemet:
 
 >[!Tip]
->Se till att du har [rätt dator för att köra skriptet](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Se till att du har [rätt dator för att köra skriptet](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
 1. Öppna **disk hantering** genom att köra **diskmgmt** i **kommando** fönstret.
 1. Sök efter eventuella ytterligare diskar. I följande exempel är **disk 2** en ytterligare disk.
@@ -159,9 +159,9 @@ Utför följande steg för att identifiera och lösa problemet:
 #### <a name="linux"></a>Linux
 
 >[!Tip]
->Se till att du har [rätt dator för att köra skriptet](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
+>Se till att du har [rätt dator för att köra skriptet](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script).
 
-Om den skyddade virtuella Linux-datorn använder LVM-eller RAID-matriser följer du stegen i [återställa filer från säkerhets kopian av virtuella Azure-datorer](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
+Om den skyddade virtuella Linux-datorn använder LVM-eller RAID-matriser följer du stegen i [återställa filer från säkerhets kopian av virtuella Azure-datorer](./backup-azure-restore-files-from-vm.md#lvmraid-arrays-for-linux-vms).
 
 ### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Du kan inte kopiera filerna från monterade volymer
 

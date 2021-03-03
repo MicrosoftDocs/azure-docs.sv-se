@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Azure Managed instance för Apache Cassandra-dokumentation
+summary: Azure Managed instance för Apache Cassandra tillhandahåller automatiserade distributions-och skalnings åtgärder för hanterade Apache Cassandra-datacenter med öppen källkod. Den påskyndar hybrid scenarier och minskar det löpande underhållet.
+metadata:
+  title: Azure-hanterad instans för Apache Cassandra
+  description: Azure Managed instance för Apache Cassandra tillhandahåller automatiserade distributions-och skalnings åtgärder för hanterade Apache Cassandra-datacenter med öppen källkod. Den påskyndar hybrid scenarier och minskar det löpande underhållet.
+  services: service
+  ms.service: managed-instance-apache-cassandra
+  ms.topic: landing-page
+  ms.collection: collection
+  author: TheovanKraay
+  ms.author: thvankra
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749156"
+landingContent:
+- title: Om Azure Managed instance för Apache Cassandra
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure Managed instance för Apache Cassandra?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Azure Managed instance för Apache Cassandra vs Azure Cosmos DB API för Cassandra
+      url: compare-cosmosdb-managed-instance.md
+  - linkListType: quickstart
+    links:
+    - text: Skapa ett kluster – Portal
+      url: create-cluster-portal.md
+    - text: Skapa ett kluster – CLI
+      url: create-cluster-cli.md
+    - text: Distribuera ett Spark-kluster med Azure Databricks
+      url: deploy-cluster-databricks.md
+  - linkListType: concept
+    links:
+    - text: Vanliga frågor och svar
+      url: faq.md
+- title: Konfigurera och hantera kluster resurserna
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurera ett hybrid kluster
+      url: configure-hybrid-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hantera resurser med Azure CLI
+      url: manage-resources-cli.md
+    - text: Visualisera mått i Prometheus med Grafana
+      url: visualize-prometheus-grafana.md

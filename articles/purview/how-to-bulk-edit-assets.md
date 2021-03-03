@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: c42a6894c33993dc9aee5a9fdd10b1c3a3627320
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693772"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Så här massr du redigera till gångar för att tagga ord listans villkor
 
@@ -63,11 +63,15 @@ Den här artikeln beskriver hur du tagga flera ord listor i en lista över valda
    
     :::image type="content" source="media/how-to-bulk-edit-assets/replace-list.png" alt-text="Skärm bild av borttagnings villkoren.":::
 
-7. När du är klar stänger du redigera bladet Mass redigering genom att välja **Stäng** eller **ta bort alla och Stäng**. Om du stänger tas de valda till gångarna bort, medan ta bort alla och Stäng tas alla valda till gångar bort.
+7. Upprepa ovanstående för klassificeringar, ägare och experter.
+
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Skärm bild av borttagnings villkoren.":::
+
+8. När du är klar stänger du redigera bladet Mass redigering genom att välja **Stäng** eller **ta bort alla och Stäng**. Om du stänger tas de valda till gångarna bort, medan ta bort alla och Stäng tas alla valda till gångar bort.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Skärm bild av stängningen.":::
 
    > [!Important]
-   > Det rekommenderade antalet till gångar för Mass redigering är 15. Om du väljer mer än 15 kan prestanda problem uppstå.
+   > Det rekommenderade antalet till gångar för Mass redigering är 15. Om du väljer fler än 25 kan prestanda problem uppstå.
    > Rutan **Visa markerad** visas bara om det finns minst en till gång vald.
 
 

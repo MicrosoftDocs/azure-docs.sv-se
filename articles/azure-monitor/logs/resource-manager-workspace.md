@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: f57ff130fcf61ae8f831cda33c9510b37a5880e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a908709e49bed1e07a5fdfecd165c45f8792987c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628336"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725602"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Exempel på Resource Manager-mallar för Log Analytics arbets ytor i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa och konfigurera Log Analytics arbets ytor i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -824,6 +824,6 @@ Följande exempel lägger till en samling [IIS-loggar](../agents/data-sources-ii
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hämta andra exempel mallar för Azure Monitor](../samples/resource-manager-samples.md).
-* [Läs mer om Log Analytics-arbetsytor](../learn/quick-create-workspace.md).
+* [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
+* [Läs mer om Log Analytics-arbetsytor](./quick-create-workspace.md).
 * [Läs mer om agent data källor](../agents/agent-data-sources.md).

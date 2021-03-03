@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731960"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Felsöka problem med att aktivera Application Insights Snapshot Debugger eller Visa ögonblicks bilder
 Om du har aktiverat Application Insights Snapshot Debugger för ditt program, men inte ser några ögonblicks bilder för undantag, kan du använda dessa instruktioner för att felsöka.
@@ -35,9 +35,10 @@ Om detta inte löser problemet kan du läsa följande manuella fel söknings ste
 
 Kontrol lera att du använder rätt Instrumentation-nyckel i det publicerade programmet. Instrumentation-nyckeln läses vanligt vis från ApplicationInsights.config-filen. Kontrol lera att värdet är samma som Instrumentation-nyckeln för den Application Insights resurs som du ser i portalen.
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>Kontrol lera inställningar för SSL-klient (ASP.NET)
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>Kontrol lera inställningar för TLS/SSL-klient (ASP.NET)
 
 Om du har ett ASP.NET-program som finns i Azure App Service eller i IIS på en virtuell dator kan programmet inte ansluta till Snapshot Debugger-tjänsten på grund av ett saknat SSL-säkerhetsprotokoll.
+
 [Snapshot debugger-slutpunkten kräver TLS version 1,2](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json). Uppsättningen SSL-säkerhetsprotokoll är ett av knep som Aktiver ATS av httpRuntime targetFramework-värdet i avsnittet system. Web i web.config. Om httpRuntime targetFramework är 4.5.2 eller lägre ingår inte TLS 1,2 som standard.
 
 > [!NOTE]
@@ -64,6 +65,10 @@ Om du använder en för hands version av .NET Core eller dina program referenser
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>Kontrol lera status sidan för diagnostiska tjänst webbplats tillägg
 Om Snapshot Debugger har Aktiver ATS via [Application Insightss fönstret](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) i portalen aktiverades det av tillägget för diagnostik Services-webbplatsen.
+
+> [!NOTE]
+> Kod installation av Application Insights Snapshot Debugger följer support policyn för .NET Core.
+> Mer information om körningar som stöds finns i [.net Core support policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Du kan kontrol lera status sidan för det här tillägget genom att gå till följande URL: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

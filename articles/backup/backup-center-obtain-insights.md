@@ -3,16 +3,16 @@ title: Få insikter med Backup Center
 description: Lär dig att analysera historiska trender och få djupare insikter om dina säkerhets kopior med Backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719465"
 ---
-# <a name="obtain-insights-using-backup-center-preview"></a>Få insikter med Backup Center (för hands version)
+# <a name="obtain-insights-using-backup-center"></a>Få insikter med Backup Center
 
-För att analysera historiska trender och få djupare insikter om dina säkerhets kopior, tillhandahåller backup Center ett gränssnitt för att [säkerhetskopiera rapporter (för hands version)](configure-reports.md), som använder [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md) och [Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md). Säkerhets kopierings rapporter innehåller följande funktioner:
+För att analysera historiska trender och få djupare insikter om dina säkerhets kopior, tillhandahåller backup Center ett gränssnitt för [säkerhets kopiering av rapporter](configure-reports.md), som använder [Azure Monitor loggar](../azure-monitor/logs/data-platform-logs.md) och [Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md). Säkerhets kopierings rapporter innehåller följande funktioner:
 
 - Allokering och Prognosticering av moln lagring förbrukat.
 
@@ -24,7 +24,7 @@ För att analysera historiska trender och få djupare insikter om dina säkerhet
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-- Säkerhets kopierings rapporter (förhands granskning) är för närvarande inte tillgänglig för Azure Database for PostgreSQL Server säkerhets kopiering.
+- Säkerhets kopierings rapporter är för närvarande inte tillgängliga för Azure Database for PostgreSQL Server säkerhets kopiering.
 
 - Se [support mat ris](backup-center-support-matrix.md) för en detaljerad lista över scenarier som stöds och som inte stöds.
 
@@ -53,6 +53,8 @@ Nedan visas tillgängliga vyer:
 1. **Principer** – Använd den här fliken om du vill visa information om alla dina aktiva principer, till exempel antalet associerade objekt och den totala moln lagring som förbrukas av objekt som har säkerhetskopierats under en specifik princip. [Läs mer](./configure-reports.md#policies)
 
 1. **Optimera** – Använd den här fliken för att få insyn i potentiella kostnads optimerings möjligheter för dina säkerhets kopieringar. [Läs mer](./configure-reports.md#optimize)
+
+1. **Princip** ökning – Använd den här fliken för att få insyn i om varje säkerhets kopierings instans har minst en lyckad säkerhets kopiering per dag.
 
 ## <a name="next-steps"></a>Nästa steg
 

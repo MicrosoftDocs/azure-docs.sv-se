@@ -7,12 +7,15 @@ ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b42abfda863ed38eb3c29004630f905edef075c4
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-nodejs-uiex
+ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359110"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735122"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Skapa en Node.js-webbapp i Azure
 
@@ -69,7 +72,7 @@ I det här avsnittet ska du distribuera din Node.js-app till Azure med VS Code o
 
     ![Logga in på Azure](media/quickstart-nodejs/sign-in.png)
 
-1. I **Azure App Service** Explorer med vs Code väljer du ikonen blå UPPIL för att distribuera appen till Azure. (Du kan också anropa samma kommando från **kommando rads verktyget** ( **CTRL** + **Shift** + **P** ) genom att skriva "distribuera till webbapp" och välja **Azure App Service: distribuera till Web App** ).
+1. I **Azure App Service** Explorer med vs Code väljer du ikonen blå UPPIL för att distribuera appen till Azure. (Du kan också anropa samma kommando från **kommando rads verktyget** (**CTRL** + **Shift** + **P**) genom att skriva "distribuera till webbapp" och välja **Azure App Service: distribuera till Web App**).
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Skärm bild av Azure App tjänsten i VS Code som visar den blå pilens ikon vald.":::
         
@@ -103,7 +106,7 @@ I det här avsnittet ska du distribuera din Node.js-app till Azure med VS Code o
 
 1. Om du distribuerar till Windows måste du först ange Node.js versions nummer för webbappen:
 
-    1. I VS Code expanderar du noden för den nya app service, högerklickar på **program inställningar** och väljer **Lägg till ny inställning...** :
+    1. I VS Code expanderar du noden för den nya app service, högerklickar på **program inställningar** och väljer **Lägg till ny inställning...**:
 
         ![Lägg till app Setting-kommando](media/quickstart-nodejs/add-setting.png)
 
@@ -272,11 +275,11 @@ I **Azure App Service** Explorer väljer du ikonen blå UPPIL för att distribue
 
 1. Välj den katalog som för närvarande är öppen `myExpressApp` .
 
-1. Välj **Skapa ny webbapp** , som distribueras till App Service på Linux som standard.
+1. Välj **Skapa ny webbapp**, som distribueras till App Service på Linux som standard.
 
 1. Ange ett globalt unikt namn för din webbapp och tryck på RETUR. Giltiga tecken för ett app-namn är "a-z", "0-9" och "-".
 
-1. Välj din **Node.js-version** , LTS rekommenderas.
+1. Välj din **Node.js-version**, LTS rekommenderas.
 
     Meddelande kanalen visar de Azure-resurser som skapas för din app.
 
@@ -297,7 +300,7 @@ När distributionen är klar väljer du **Bläddra webbplats** i prompten för a
 
 ### <a name="troubleshooting"></a>Felsökning
 
-Om du ser felet **"du har inte behörighet att visa den här katalogen eller sidan."** , kunde programmet antagligen inte starta korrekt. Gå till nästa avsnitt och Visa loggens utdata för att hitta och åtgärda felet. Om du inte kan åtgärda det, kontakta oss genom att välja knappen **jag körde i ett ärende** nedan. Vi är glada att hjälpa!
+Om du ser felet **"du har inte behörighet att visa den här katalogen eller sidan."**, kunde programmet antagligen inte starta korrekt. Gå till nästa avsnitt och Visa loggens utdata för att hitta och åtgärda felet. Om du inte kan åtgärda det, kontakta oss genom att välja knappen **jag körde i ett ärende** nedan. Vi är glada att hjälpa!
 
 > [!div class="nextstepaction"]
 > [Jag stötte på ett problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)

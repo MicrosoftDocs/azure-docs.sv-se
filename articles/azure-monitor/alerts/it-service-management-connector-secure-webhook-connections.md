@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 6b273b864c8329547ef91eb7063a064e0f5cb77d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b1295904f25d38c97578fa6fd6ede4ecd50c0456
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625780"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728985"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Ansluta Azure till ITSM-verktyg med säker export
 
 Den här artikeln visar hur du konfigurerar anslutningen mellan din ITSM-produkt (IT Service Management) eller tjänst med säker export.
 
-Säker export är en uppdaterad version av [anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC)](../platform/itsmc-overview.md). Med båda versionerna kan du skapa arbets objekt i ett ITSM-verktyg när Azure Monitor skickar aviseringar. Funktionerna omfattar statistik, logg och aktivitets logg aviseringar.
+Säker export är en uppdaterad version av [anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC)](./itsmc-overview.md). Med båda versionerna kan du skapa arbets objekt i ett ITSM-verktyg när Azure Monitor skickar aviseringar. Funktionerna omfattar statistik, logg och aktivitets logg aviseringar.
 
 ITSMC använder autentiseringsuppgifter för användar namn och lösen ord. Säker export har starkare autentisering eftersom den använder Azure Active Directory (Azure AD). Azure AD är Microsofts molnbaserade hanteringstjänst för identiteter och åtkomst. Det hjälper användarna att logga in och komma åt interna eller externa resurser. Med hjälp av Azure AD med ITSM kan du identifiera Azure-aviseringar (via Azure AD-programid: t) som skickades till det externa systemet.
 
@@ -55,4 +55,4 @@ De främsta fördelarna med integrationen är:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Skapa ITSM arbets objekt från Azure-aviseringar](../platform/itsmc-overview.md)
+* [Skapa ITSM arbets objekt från Azure-aviseringar](./itsmc-overview.md)

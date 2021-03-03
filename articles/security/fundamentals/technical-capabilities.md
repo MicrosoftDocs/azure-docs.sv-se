@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735785"
 ---
 # <a name="azure-security-technical-capabilities"></a>Tekniska funktioner för Azure-säkerhet
 Den här artikeln innehåller en introduktion till säkerhets tjänster i Azure som hjälper dig att skydda dina data, resurser och program i molnet och uppfylla verksamhetens behov av säkerhet.
 
 ## <a name="azure-platform"></a>Azure-plattformen
 
-[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) är en moln plattform som består av infrastruktur-och program tjänster, med integrerade data tjänster och avancerad analys samt utvecklingsverktyg och-tjänster, som finns i Microsofts offentliga moln Data Center. Kunder använder Azure för många olika kapaciteter och scenarier, från grundläggande beräkning, nätverk och lagring till mobila tjänster och webb program tjänster, till fullständiga moln scenarier som Sakernas Internet och kan användas med teknik för öppen källkod, och distribueras som ett hybrid moln eller som finns i en kunds Data Center. Azure tillhandahåller moln teknik som bygg stenar för att hjälpa företag att spara kostnader, förnya snabbt och hantera system proaktivt. När du bygger på, eller migrerar IT-tillgångar till en moln leverantör, förlitar du dig på organisationens möjligheter att skydda dina program och data med tjänsterna och de kontroller som de tillhandahåller för att hantera säkerheten för dina molnbaserade till gångar.
+[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/) är en moln plattform som består av infrastruktur-och program tjänster, med integrerade data tjänster och avancerad analys samt utvecklingsverktyg och-tjänster, som finns i Microsofts offentliga moln Data Center. Kunder använder Azure för många olika kapaciteter och scenarier, från grundläggande beräkning, nätverk och lagring till mobila tjänster och webb program tjänster, till fullständiga moln scenarier som Sakernas Internet och kan användas med tekniker med öppen källkod, och distribueras som hybrid moln eller värdbaserade inom en kunds Data Center. Azure tillhandahåller moln teknik som bygg stenar för att hjälpa företag att spara kostnader, förnya snabbt och hantera system proaktivt. När du bygger på, eller migrerar IT-tillgångar till en moln leverantör, förlitar du dig på organisationens möjligheter att skydda dina program och data med tjänsterna och de kontroller som de tillhandahåller för att hantera säkerheten för dina molnbaserade till gångar.
 
 Microsoft Azure är den enda molnbaserad data behandlings leverantören som erbjuder en säker, konsekvent program plattform och infrastruktur som en tjänst för team att arbeta inom deras olika moln-färdighetsuppsättningar och nivåer av projekt komplexitet. med integrerade data tjänster och analyser som avvisar information från data oavsett var de finns, kan du öppna ramverk och verktyg i både Microsoft och andra plattformar, öppna ramverk och verktyg, vilket ger möjlighet att integrera molnet med lokalt och Distribuera Azure Cloud Services i lokala data Center. Som en del av Microsoft Trusted Cloud förlitar sig kunderna på Azure för branschledande säkerhet, tillförlitlighet, efterlevnad, sekretess och det stora nätverket av människor, partners och processer för att stödja organisationer i molnet.
 
@@ -37,7 +37,7 @@ Med Microsoft Azure kan du:
 
 - Skydda sin verksamhet.
 
-## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>Tekniska funktioner för säkerhet för att uppfylla ditt ansvar
+## <a name="security-technical-capabilities-to-fulfill-your-responsibility"></a>Tekniska funktioner för säkerhet för att uppfylla ditt ansvar
 
 Microsoft Azure tillhandahåller tjänster som hjälper dig att uppfylla dina krav på säkerhet, sekretess och efterlevnad. Följande bild hjälper till att förklara olika Azure-tjänster som är tillgängliga för att bygga en säker och kompatibel program infrastruktur baserad på bransch standarder.
 
@@ -194,7 +194,7 @@ Du kan läsa mer om alternativet för Azure VPN genom att läsa artikeln [planer
 
 [Azure RMS](/azure/information-protection/what-is-azure-rms) använder krypterings-, identitets-och Auktoriseringsprinciper för att skydda dina filer och e-postmeddelanden. Azure RMS fungerar på flera enheter – telefoner, surfplattor och datorer genom att skydda både i din organisation och utanför organisationen. Den här funktionen är möjlig eftersom Azure RMS lägger till en skydds nivå som är kvar med data, även om den lämnar din organisations gränser.
 
-När du använder Azure RMS för att skydda dina filer använder du branschstandardiserade kryptografi med fullständigt stöd för [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). När du använder Azure RMS för data skydd kan du vara säker på att skyddet ligger kvar i filen, även om den kopieras till lagring som inte är underordnad, till exempel en moln lagrings tjänst. Samma sak gäller filer som delas via e-post, filen skyddas som en bifogad fil i ett e-postmeddelande med anvisningar för hur du öppnar den skyddade bilagan.
+När du använder Azure RMS för att skydda dina filer använder du branschstandardiserade kryptografi med fullständigt stöd för [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). När du använder Azure RMS för data skydd, kan du vara säker på att skyddet ligger kvar i filen, även om den kopieras till lagring som inte är underordnad, till exempel en moln lagrings tjänst. Samma sak gäller filer som delas via e-post, filen skyddas som en bifogad fil i ett e-postmeddelande med anvisningar för hur du öppnar den skyddade bilagan.
 När du planerar för Azure RMS antar vi att du rekommenderar följande:
 
 - Installera [RMS-delning-appen](/azure/information-protection/rms-client/sharing-app-windows). Den här appen integreras med Office-program genom att installera ett Office-tillägg så att användarna enkelt kan skydda filer direkt.
@@ -278,6 +278,8 @@ Azure-nätverk stöder möjligheten att anpassa routnings beteendet för nätver
 
 Azure har stöd för dedikerad WAN-anslutning till ditt lokala nätverk och en Azure-Virtual Network med [ExpressRoute](../../expressroute/expressroute-introduction.md). Länken mellan Azure och platsen använder en dedikerad anslutning som inte går via det offentliga Internet. Om ditt Azure-program körs i flera data Center kan du använda [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) för att dirigera begär Anden från användare intelligent över instanser av programmet. Du kan också dirigera trafik till tjänster som inte körs i Azure om de är tillgängliga från Internet.
 
+Azure stöder också privat och säker anslutning till dina PaaS-resurser (till exempel Azure Storage och SQL Database) från Azure-Virtual Network med [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). PaaS-resursen är mappad till en [privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) i det virtuella nätverket. Länken mellan privata slut punkter i ditt virtuella nätverk och din PaaS-resurs använder Microsoft stamnät nätverk och går inte via det offentliga Internet. Det är inte längre nödvändigt att exponera tjänsten för det offentliga Internet. Du kan också använda Azures privata länk för att få åtkomst till Azure-värdbaserade kund tjänster och partner tjänster i ditt virtuella nätverk.  Dessutom kan du med Azures privata länk skapa en egen [privat länk-tjänst](https://docs.microsoft.com/azure/private-link/private-link-service-overview) i ditt virtuella nätverk och leverera den till kunderna privat i sina virtuella nätverk. Installation och användning med Azure Private Link är konsekvent i Azure PaaS, kundägda och delade partner tjänster.
+
 ## <a name="virtual-machine-security"></a>Säkerhet för virtuella datorer
 
 Med [Azure Virtual Machines](../../virtual-machines/index.yml) kan du distribuera en mängd olika data behandlings lösningar på ett flexibelt sätt. Med stöd för Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP och Azure BizTalk Services kan du distribuera alla arbets belastningar och språk på nästan alla operativ system.
@@ -304,7 +306,7 @@ Dessutom visas check listan:
 
 - Visar viktiga diskussions ämnen för besluts fattare i början av moln införande processen.
 
-- Har stöd för noggranna affärs diskussioner om regler och organisationens egna mål för sekretess, personligt identifierbar information (PII) och data säkerhet.
+- Har stöd för noggranna affärs diskussioner om regler och organisationens egna mål för sekretess, personlig information och data säkerhet.
 
 - Hjälper organisationer att identifiera eventuella eventuella problem som kan påverka ett moln projekt.
 
@@ -316,7 +318,7 @@ Dessutom visas check listan:
 
 ![säkerhets verifiering (identifiera)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Azures drift säkerhet bygger på ett ramverk som införlivar den kunskap som du har fått via en mängd olika funktioner som är unika för Microsoft, inklusive Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Centre-programmet och djupgående medvetenhet om cybersäkerhet Threat landskap.
+Azures drift säkerhet bygger på ett ramverk som införlivar den kunskap som du har fått via en mängd olika funktioner som är unika för Microsoft, inklusive Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-programmet och djupgående medvetenhet om cybersäkerhet Threat landskap.
 
 ### <a name="microsoft-azure-monitor"></a>Övervakare för Microsoft Azure
 
@@ -383,7 +385,7 @@ Det är viktigt att granska nätverks säkerheten för att identifiera nätverks
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) är en utöknings bar APM-tjänst (Application Performance Management) för webbutvecklare på flera plattformar. Du kan använda den för att övervaka ditt live-webbprogram. Den identifierar automatiskt prestandaavvikelser. Den innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå vad användarna gör med din app. Den är avsedd för utvecklare och för att hjälpa dig att kontinuerligt förbättra prestanda och användbarhet. Det fungerar för appar på en mängd olika plattformar, inklusive .NET, Node.js och Java-EE, som finns lokalt eller i molnet. Den integreras med din devOps-process och har anslutnings punkter till olika utvecklingsverktyg.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) är en utöknings bar APM-tjänst (Application Performance Management) för webbutvecklare på flera plattformar. Du kan använda den för att övervaka ditt live-webbprogram. Den identifierar automatiskt prestandaavvikelser. Den innehåller kraftfulla analys verktyg som hjälper dig att diagnostisera problem och förstå vad användarna gör med din app. Den är avsedd för utvecklare och för att hjälpa dig att kontinuerligt förbättra prestanda och användbarhet. Det fungerar för appar på en mängd olika plattformar, inklusive .NET, Node.js och Java-EE, som finns lokalt eller i molnet. Den integreras med din DevOps-process och har anslutnings punkter till olika utvecklingsverktyg.
 
 Tjänsten övervakar:
 

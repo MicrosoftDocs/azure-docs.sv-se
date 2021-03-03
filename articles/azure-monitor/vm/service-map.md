@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624233"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717153"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Använda lösningen Tjänstkarta i Azure
 
@@ -26,7 +26,7 @@ I den här artikeln beskrivs hur du onboarding och använder Tjänstkarta. Krave
 * [Beroende agenten](vminsights-enable-overview.md#agents) som är installerad på Windows-datorn eller Linux-servern.
 
 >[!NOTE]
->Om du redan har distribuerat Tjänstkarta kan du nu även visa dina kartor i Azure Monitor for VMs, som innehåller ytterligare funktioner för att övervaka hälso tillstånd och prestanda för virtuella datorer. Läs mer i [Azure Monitor for VMS översikt](../vm/vminsights-overview.md). Mer information om skillnaderna mellan Tjänstkarta lösning och Azure Monitor for VMs kart funktion finns i följande [vanliga frågor och svar](../faq.md#azure-monitor-for-vms).
+>Om du redan har distribuerat Tjänstkarta kan du nu även visa dina kartor i VM Insights, vilket inkluderar ytterligare funktioner för övervakning av VM-hälsa och prestanda. Mer information finns i [Översikt över VM-insikter](../vm/vminsights-overview.md). Om du vill veta mer om skillnaderna mellan Tjänstkartas lösning och funktionen för VM Insights-mappning, se följande [vanliga frågor och svar](../faq.md#azure-monitor-for-vms).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -154,7 +154,7 @@ Klicka på menyn med tre punkter bredvid grupp namnet i grupp listan.
 
 Vissa processer har särskilda roller på datorer: webb servrar, program servrar, databas och så vidare. Tjänstkarta anteckningar i process-och dator rutor med roll ikoner för att snabbt kunna identifiera en process eller servers roll.
 
-| Roll ikon | Description |
+| Roll ikon | Beskrivning |
 |:--|:--|
 | ![Webbserver](media/service-map/role-web-server.png) | Webbserver |
 | ![Appserver](media/service-map/role-application-server.png) | Program Server |
@@ -241,7 +241,7 @@ Tjänstkarta integreras med loggs ökningen för att visa antalet tillgängliga 
 
 ## <a name="service-desk-integration"></a>Service Desk-integrering
 
-Tjänstkarta integration med Anslutningsprogram för hantering av IT-tjänster (ITSM) sker automatiskt när båda lösningarna är aktiverade och konfigurerade i din Log Analytics-arbetsyta. Integrationen i Tjänstkarta är märkt med "Service Desk". Mer information finns i [Central hantering av ITSM arbets objekt med hjälp av anslutningsprogram för hantering av IT-tjänster (ITSM)](../platform/itsmc-overview.md).
+Tjänstkarta integration med Anslutningsprogram för hantering av IT-tjänster (ITSM) sker automatiskt när båda lösningarna är aktiverade och konfigurerade i din Log Analytics-arbetsyta. Integrationen i Tjänstkarta är märkt med "Service Desk". Mer information finns i [Central hantering av ITSM arbets objekt med hjälp av anslutningsprogram för hantering av IT-tjänster (ITSM)](../alerts/itsmc-overview.md).
 
 **Skriv bords fönstret för Machine service** visar alla IT Service Management-händelser för den valda servern i det valda tidsintervallet. Servern visar en ikon om det finns aktuella objekt och dator tjänstens Skriv bords fönster visar dem.
 
@@ -304,7 +304,7 @@ I fönstret **dator uppdateringar** visas data från uppdateringshantering-lösn
 
 ## <a name="log-analytics-records"></a>Log Analytics-poster
 
-Tjänstkarta dator-och process inventerings data är tillgängliga för [sökning](../log-query/log-query-overview.md) i Log Analytics. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
+Tjänstkarta dator-och process inventerings data är tillgängliga för [sökning](../logs/log-query-overview.md) i Log Analytics. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
 
 En post skapas per timme för varje unik dator och process, förutom de poster som genereras när en process eller dator startar eller aktive ras för att Tjänstkarta. Dessa poster har egenskaperna i följande tabeller. Fälten och värdena i ServiceMapComputer_CL händelser mappar till fält i dator resursen i ServiceMap Azure Resource Manager API. Fälten och värdena i ServiceMapProcess_CL händelser mappar till fälten i process resursen i ServiceMap Azure Resource Manager API. Fältet ResourceName_s matchar fältet namn i motsvarande Resource Manager-resurs. 
 
@@ -550,7 +550,7 @@ Mer information om insamling och användning av data finns i [sekretess policy f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [loggs ökningar](../log-query/log-query-overview.md) i Log Analytics för att hämta data som samlas in av tjänstkarta.
+Läs mer om [loggs ökningar](../logs/log-query-overview.md) i Log Analytics för att hämta data som samlas in av tjänstkarta.
 
 ## <a name="troubleshooting"></a>Felsökning
 

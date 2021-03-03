@@ -1,17 +1,16 @@
 ---
 title: DNS-analys lösning i Azure Monitor | Microsoft Docs
 description: Konfigurera och Använd DNS-analys-lösningen i Azure Monitor för att samla in insikter om säkerhet, prestanda och åtgärder i DNS-infrastrukturen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: c3934af1af040b8b45175bacde43237802ab82cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582395"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708109"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Samla in insikter om din DNS-infrastruktur med DNS-analys för hands versions lösning
 
@@ -35,10 +34,10 @@ I följande tabell beskrivs de anslutna källor som stöds av den här lösninge
 
 | **Ansluten källa** | **Support** | **Beskrivning** |
 | --- | --- | --- |
-| [Windows-agenter](../agents/agent-windows.md) | Yes | Lösningen samlar in DNS-information från Windows-agenter. |
-| [Linux-agenter](../vm/quick-collect-linux-computer.md) | No | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
-| [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md) | Yes | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
-| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Storage används inte av lösningen. |
+| [Windows-agenter](../agents/agent-windows.md) | Ja | Lösningen samlar in DNS-information från Windows-agenter. |
+| [Linux-agenter](../vm/quick-collect-linux-computer.md) | Inga | Lösningen samlar inte in DNS-information från Direct Linux-agenter. |
+| [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md) | Ja | Lösningen samlar in DNS-information från agenter i en ansluten Operations Manager hanterings grupp. En direkt anslutning från Operations Manager agent till Azure Monitor krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| [Azure Storage-konto](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Inga | Azure Storage används inte av lösningen. |
 
 ### <a name="data-collection-details"></a>Information om data insamling
 

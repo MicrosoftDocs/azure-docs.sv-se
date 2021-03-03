@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709384"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Undanta resurser och rekommendationer från dina säkra Poäng 
 
@@ -35,7 +35,7 @@ I sådana fall kan du skapa ett undantag för en rekommendation att:
 |Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Priset|Det här är en förstklassig Azure policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.|
 |Nödvändiga roller och behörigheter:|**Prenumerations ägare** eller **princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="define-an-exemption"></a>Definiera ett undantag
@@ -110,9 +110,9 @@ Som tidigare förklarats på den här sidan, är undantags regler ett kraftfullt
 
 För att hålla reda på hur användarna utnyttjar den här funktionen har vi skapat en mall för Azure Resource Manager (ARM) som distribuerar en Logic app-Spelbok och alla nödvändiga API-anslutningar för att meddela dig när ett undantag har skapats.
 
-- Mer information om Spelbok finns i det här inlägget i [Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
+- Mer information om Spelbok finns i teknisk Community-bloggen [hur du håller reda på resurs undantag i Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
 - ARM-mallen finns i [Azure Security Center GitHub-lagringsplatsen](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
-- Du kan klicka [här](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) för att distribuera alla nödvändiga komponenter 
+- [Använd den här automatiserade processen](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) för att distribuera alla nödvändiga komponenter
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Hitta rekommendationer med undantag med hjälp av Azure Resource Graph

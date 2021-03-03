@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e872d28063a3e0671558ee4d388cad280b94f45b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 620afb0ca5de7c6a89db107fb4616748473f0809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701662"
 ---
 # <a name="monitoring-azure-files"></a>Övervaknings Azure Files
 
@@ -481,21 +481,10 @@ Logg poster skapas endast om det finns begär Anden som görs mot tjänst slut p
 
 - Lyckade begäranden
 - Misslyckade begäranden, inklusive timeout, begränsning, nätverk, auktorisering och andra fel
-- Begär Anden som använder en signatur för delad åtkomst (SAS) eller OAuth, inklusive misslyckade och lyckade förfrågningar
-- Begär Anden om analys av data (klassiska loggdata i **$logs** container-och klass mått data i **$Metric** tabeller)
+- Begär Anden som använder Kerberos, NTLM eller signatur för delad åtkomst (SAS), inklusive misslyckade och lyckade förfrågningar
+- Begär Anden om att analysera data (klassiska loggdata i **$logs** container och klassiska mått data i **$Metric** tabeller)
 
 Begär Anden som görs av själva tjänsten Azure Files, till exempel när loggen skapas eller tas bort, loggas inte. En fullständig lista över SMB-och REST-begäranden som loggas finns i [lagrings loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) och [Azure Files övervaknings data referens](storage-files-monitoring-reference.md).
-
-### <a name="log-anonymous-requests"></a>Logga anonyma begär Anden
-
- Följande typer av anonyma begär Anden loggas:
-
-- Lyckade begäranden
-- Serverfel
-- Timeoutfel för både klient och server
-- Misslyckade GET-begäranden med felkoden 304 (inte ändrad)
-
-Alla andra misslyckade anonyma begär Anden loggas inte. En fullständig lista över SMB-och REST-begäranden som loggas finns i [lagrings loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) och [Azure Files övervaknings data referens](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Åtkomst till loggar i ett lagrings konto
 
@@ -631,13 +620,12 @@ I följande tabell visas några exempel scenarier som du kan använda för att �
    > [!NOTE]
    > Om svars typerna inte visas i list rutan **Dimensions värden** innebär det att resursen inte har begränsats. Om du vill lägga till dimensionsvärdena väljer du **Lägg till anpassat värde** bredvid List rutan **Dimensions värden** , anger svaret-typen (till exempel **SuccessWithThrottling**), väljer **OK** och upprepar sedan de här stegen för att lägga till alla lämpliga svars typer för din fil resurs.
 
-8. Klicka på list rutan **Dimensions namn** och välj **fil resurs**.
-9. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
-
+8. För **Premium fil resurser** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**. För **standard fil resurser** går du vidare till **steg #10**.
 
    > [!NOTE]
-   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden visar inte fil resurserna eftersom det inte finns några tillgängliga fil resurser per resurs. Begränsnings varningar för standard fil resurser utlöses om någon fil resurs på lagrings kontot är begränsad och aviseringen inte kommer att identifiera vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
+   > Om fil resursen är en standard fil resurs, kommer **fil** resurs dimensionen inte att visa en lista över fil resurserna eftersom det inte finns några tillgängliga resurs mått för standard fil resurser. Begränsnings varningar för standard fil resurser utlöses om någon fil resurs på lagrings kontot är begränsad och aviseringen inte kommer att identifiera vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
 
+9. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
 10. Definiera **aviserings parametrarna** (tröskelvärde, Operator, agg regerings precision och frekvens för utvärderingen) och klicka på **Slutför**.
 
     > [!TIP]
@@ -654,12 +642,12 @@ I följande tabell visas några exempel scenarier som du kan använda för att �
 3. Klicka på **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och klicka sedan på **färdig**. Om lagrings kontots namn till exempel är `contoso` väljer du `contoso/file` resursen.
 4. Lägg till ett villkor genom att klicka på **Lägg till villkor** .
 5. Du ser en lista över signaler som stöds för lagrings kontot genom att välja **fil kapacitets** mått.
-6. På bladet **Konfigurera signal logik** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**.
-7. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
+6. För **Premium fil resurser** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**. För **standard fil resurser** går du vidare till **steg #8**.
 
    > [!NOTE]
-   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden visar inte fil resurserna eftersom det inte finns några tillgängliga fil resurser per resurs. Aviseringar för standard fil resurser baseras på alla fil resurser i lagrings kontot. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
+   > Om fil resursen är en standard fil resurs, kommer **fil** resurs dimensionen inte att visa en lista över fil resurserna eftersom det inte finns några tillgängliga resurs mått för standard fil resurser. Aviseringar för standard fil resurser baseras på alla fil resurser i lagrings kontot. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
 
+7. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
 8. Ange **tröskelvärdet** i byte. Om fil resursens storlek exempelvis är 100 TiB och du vill få en avisering när fil resurs storleken är 80% av kapaciteten, är tröskelvärdet i byte 87960930222080.
 9. Definiera resten av **aviserings parametrarna** (sammansättnings precision och utvärderings frekvens) och klicka på **Slutför**.
 10. Klicka på **Lägg till åtgärds grupper** för att lägga till en **Åtgärds grupp** (e-post, SMS osv.) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
@@ -673,12 +661,12 @@ I följande tabell visas några exempel scenarier som du kan använda för att �
 3. Klicka på **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och klicka sedan på **färdig**. Om lagrings konto namnet till exempel är contoso väljer du Contoso/File-resursen.
 4. Lägg till ett villkor genom att klicka på **Lägg till villkor** .
 5. Du kommer att se en lista över signaler som stöds för lagrings kontot och välja **utgående** mått.
-6. På bladet **Konfigurera signal logik** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**.
-7. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
+6. För **Premium fil resurser** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**. För **standard fil resurser** går du vidare till **steg #8**.
 
    > [!NOTE]
-   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden visar inte fil resurserna eftersom det inte finns några tillgängliga fil resurser per resurs. Aviseringar för standard fil resurser baseras på alla fil resurser i lagrings kontot. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
+   > Om fil resursen är en standard fil resurs, kommer **fil** resurs dimensionen inte att visa en lista över fil resurserna eftersom det inte finns några tillgängliga resurs mått för standard fil resurser. Aviseringar för standard fil resurser baseras på alla fil resurser i lagrings kontot. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
 
+7. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
 8. Ange **536870912000** byte för tröskel värde. 
 9. Klicka på list rutan **agg regerings granularitet** och välj **24 timmar**.
 10. Välj **utvärderings frekvens** och **Klicka på Slutför**.

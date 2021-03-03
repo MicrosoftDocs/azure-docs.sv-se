@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4ba5f50f5c66b404ec76128a828a1060328f81c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734587"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690999"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tids zoner i Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ När du anger parametrar för en ny instans väljer du en tidszon i listan över
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 
-Ange timezoneId-egenskapen i [Resource Manager-mallen](./scripts/create-powershell-azure-resource-manager-template.md) för att ställa in tids zonen under skapandet av instansen.
+Ange timezoneId-egenskapen i [Resource Manager-mallen](./create-template-quickstart.md) för att ställa in tids zonen under skapandet av instansen.
 
 ```json
 "properties": {

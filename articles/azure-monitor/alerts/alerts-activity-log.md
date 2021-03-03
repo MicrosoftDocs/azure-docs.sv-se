@@ -4,12 +4,12 @@ description: Skapa aktivitets logg aviseringar med hjälp av Azure Portal, en Az
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 83023cca6b034ee0e9acddfa081f09eb47b9fb1e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4c1410d046389ae9e82986c6b0ed3d133fcf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625870"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704471"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Skapa, Visa och hantera aktivitets logg aviseringar med hjälp av Azure Monitor  
 
@@ -26,7 +26,9 @@ Kontrol lera följande när du skapar varnings regler:
 
 - Prenumerationen i omfånget skiljer sig inte från prenumerationen där aviseringen skapades.
 - Kriterierna måste vara nivå, status, anropare, resurs grupp, resurs-ID eller händelse kategori för resurs typ som aviseringen har kon figurer ATS för.
-- Det finns inget "anyOf"-villkor eller kapslade villkor i aviserings konfigurationens JSON. I princip tillåts endast ett "allOf"-villkor utan ytterligare "allOf"-eller "anyOf"-villkor.
+- Endast ett "allOf"-villkor är tillåtet.
+- "AnyOf" kan användas för att tillåta flera villkor över flera fält (till exempel om "status" eller "substatus"-fälten motsvarar ett visst värde). Observera att användningen av "AnyOf" för närvarande är begränsad till att skapa aviserings regeln med hjälp av en distribution av ARM-mallar.
+- "ContainsAny" kan användas för att tillåta flera värden i samma fält (till exempel om "åtgärd" är antingen Delete eller Modify). Observera att användningen av "ContainsAny" för närvarande är begränsad till att skapa aviserings regeln med hjälp av en distribution av ARM-mallar.
 - När kategorin är "administrativ" måste du ange minst ett av de föregående kriterierna i aviseringen. Du får inte skapa en avisering som aktive ras varje gång en händelse skapas i aktivitets loggarna.
 - Det går inte att skapa aviseringar för händelser i aviserings kategorin för aktivitets loggen.
 
@@ -92,7 +94,7 @@ Använd följande procedur.
     - **Beskrivning**: beskrivningen av den nya varnings regeln.
     - **Spara avisering till resurs grupp**: Välj den resurs grupp där du vill spara den nya regeln.
 
-5. Under **Åtgärds grupp** i den nedrullningsbara menyn anger du den åtgärds grupp som du vill tilldela till den nya varnings regeln. Du kan också [skapa en ny åtgärds grupp](../platform/action-groups.md) och tilldela den till den nya regeln. Om du vill skapa en ny grupp väljer du **+ ny grupp**.
+5. Under **Åtgärds grupp** i den nedrullningsbara menyn anger du den åtgärds grupp som du vill tilldela till den nya varnings regeln. Du kan också [skapa en ny åtgärds grupp](./action-groups.md) och tilldela den till den nya regeln. Om du vill skapa en ny grupp väljer du **+ ny grupp**.
 
 6. Om du vill aktivera reglerna efter att du har skapat dem väljer du **Ja** för alternativet **Aktivera regel vid skapande** .
 7. Välj **Skapa varningsregel**.
@@ -287,6 +289,5 @@ Aktivitets logg aviserings regel resurser kan tas bort med hjälp av Azure CLI [
 
 - Lär dig mer om [webhook-scheman för aktivitets loggar](./activity-log-alerts-webhook.md).
 - Läs en [Översikt över aktivitets loggar](./activity-log-alerts.md).
-- Läs mer om [Åtgärds grupper](../platform/action-groups.md).  
+- Läs mer om [Åtgärds grupper](./action-groups.md).  
 - Läs mer om [meddelanden om tjänst hälsa](../../service-health/service-notifications.md).
-

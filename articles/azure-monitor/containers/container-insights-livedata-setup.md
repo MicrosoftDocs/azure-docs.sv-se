@@ -1,19 +1,19 @@
 ---
-title: Konfigurera Azure Monitor för behållare Live-data (för hands version) | Microsoft Docs
-description: Den här artikeln beskriver hur du konfigurerar real tids visningen av behållar loggar (STDOUT/STDERR) och händelser utan att använda kubectl med Azure Monitor för behållare.
+title: Konfigurera behållar insikter Live-data (för hands version) | Microsoft Docs
+description: Den här artikeln beskriver hur du konfigurerar real tids visningen av behållar loggar (STDOUT/STDERR) och händelser utan att använda kubectl med behållar insikter.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4302bdbb3d71c890f7fb0cfb82ab5f8d5aecbd43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621845"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713787"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Så här ställer du in funktionen Live data (för hands version)
 
-Om du vill visa real tids data (för hands version) med Azure Monitor för behållare från Azure Kubernetes service (AKS)-kluster, måste du konfigurera autentisering för att ge åtkomst till dina Kubernetes-data. Med den här säkerhets konfigurationen får du åtkomst till dina data i real tid via Kubernetes-API: et direkt i Azure Portal.
+Om du vill visa real tids data (för hands version) med behållar insikter från Azure Kubernetes service (AKS)-kluster måste du konfigurera autentisering för att ge åtkomst till dina Kubernetes-data. Med den här säkerhets konfigurationen får du åtkomst till dina data i real tid via Kubernetes-API: et direkt i Azure Portal.
 
 Den här funktionen stöder följande metoder för att kontrol lera åtkomsten till loggar, händelser och mått:
 
@@ -46,7 +46,7 @@ Azure Portal uppmanas du att verifiera dina inloggnings uppgifter för ett Azure
 
 För att eliminera behovet av att tillämpa ytterligare konfigurations ändringar för att tillåta Kubernetes- **clusterUser** åtkomst till funktionen Live data (för hands version) när du har [aktiverat Kubernetes RBAC](#configure-kubernetes-rbac-authorization) -auktorisering har AKS lagt till en ny Kubernetes kluster roll bindning som kallas **clusterMonitoringUser**. Den här kluster roll bindningen har alla nödvändiga behörigheter som är färdiga att komma åt Kubernetes-API: et och slut punkterna för att använda funktionen Live data (för hands version).
 
-För att kunna använda funktionen Live data (för hands version) med den nya användaren måste du vara medlem i rollen användare eller [deltagare](../../role-based-access-control/built-in-roles.md#contributor) i [Azure Kubernetes-tjänsten](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) för kluster resursen AKS. Azure Monitor for Containers, när det är aktiverat, konfigureras att autentisera med hjälp av clusterMonitoringUser som standard. Om clusterMonitoringUser-rolltjänsten inte finns i ett kluster används **clusterUser** för autentisering i stället. Contributor ger dig åtkomst till clusterMonitoringUser (om det finns) och Azure Kuberenetes service Cluster-användare ger dig till gång till clusterUser. Någon av dessa två roller ger tillräcklig åtkomst för att använda den här funktionen.
+För att kunna använda funktionen Live data (för hands version) med den nya användaren måste du vara medlem i rollen användare eller [deltagare](../../role-based-access-control/built-in-roles.md#contributor) i [Azure Kubernetes-tjänsten](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) för kluster resursen AKS. Behållar insikter, när aktive rad, har kon figurer ATS för att autentisera med clusterMonitoringUser som standard. Om clusterMonitoringUser-rolltjänsten inte finns i ett kluster används **clusterUser** för autentisering i stället. Contributor ger dig åtkomst till clusterMonitoringUser (om det finns) och Azure Kuberenetes service Cluster-användare ger dig till gång till clusterUser. Någon av dessa två roller ger tillräcklig åtkomst för att använda den här funktionen.
 
 AKS frigjorde den här nya roll bindningen i januari 2020, vilket innebär att kluster som skapats före januari 2020 inte har den. Om du har ett kluster som skapats före januari 2020 kan den nya **clusterMonitoringUser** läggas till i ett befintligt kluster genom att utföra en åtgärd i klustret eller utföra andra åtgärder på klustret som utför en åtgärd i klustret, till exempel uppdatering av kluster versionen.
 
@@ -106,7 +106,7 @@ Azure AD client Registration måste konfigureras på nytt för att tillåta att 
 Mer information om avancerade säkerhets inställningar i Kubernetes finns i Kubernetes- [dokumentationen](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Om du skapar ett nytt Kubernetes RBAC-aktiverat kluster, se [integrera Azure Active Directory med Azure Kubernetes service](../../aks/azure-ad-integration-cli.md) och följ stegen för att konfigurera Azure AD-autentisering. Under stegen för att skapa klient programmet visar en anteckning i avsnittet de två omdirigerings-URL: er som du måste skapa för att Azure Monitor för behållare som matchar de som anges i steg 3 nedan.
+>Om du skapar ett nytt Kubernetes RBAC-aktiverat kluster, se [integrera Azure Active Directory med Azure Kubernetes service](../../aks/azure-ad-integration-cli.md) och följ stegen för att konfigurera Azure AD-autentisering. Under stegen för att skapa klient programmet visar en anteckning i avsnittet de två omdirigerings-URL: er som du måste skapa för behållar insikter som matchar de som anges i steg 3 nedan.
 
 ### <a name="client-registration-reconfiguration"></a>Omkonfiguration av klient registrering
 

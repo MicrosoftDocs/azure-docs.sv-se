@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5487275b7bb99bae16dbef80842819647bccb08c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c712c488240926f07309bce8bdc7fdee4c0f8b76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569649"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750981"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Granska och redigera exempelfilerna
 
@@ -25,11 +25,11 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 1. Redigera *operations.jspå* filen:
  
     * Ändra länken till graf-topologin:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * Under GraphInstanceSet redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * Under GraphTopologyDelete redigerar du namnet:
-    * `"name"` : `"InferencingWithGrpcExtension"`
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
 
 > [!NOTE]
 > <p>
@@ -50,7 +50,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 >   },
 >   "dataTransfer": {
 >       "mode": "sharedMemory",
->       "SharedMemorySizeMiB": "5"
+>       "SharedMemorySizeMiB": "256"
 >   },
 >   "image": {
 >       "scale": {
@@ -107,10 +107,10 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
         > Ovanstående steg förutsätter att du använder den virtuella datorn som skapats av installations skriptet. Om du använder en egen Edge-enhet i stället går du till din Edge-enhet och kör följande kommandon med **administratörs behörighet** för att hämta och lagra exempel video filen som används för den här snabb starten:  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * **LvaExtension** -modulen, som är den YOLOv3 objekt identifierings modell som använder gRPC som kommunikations metod, och som använder dator syn på avbildningarna och returnerar flera klasser av objekt typer.
     
@@ -167,7 +167,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
       "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

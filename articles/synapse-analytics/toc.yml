@@ -552,6 +552,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Skicka Spark-jobbdefinitioner
           href: ./spark/apache-spark-job-definitions.md
+        - name: Anslut och övervaka Azure Synapse Spark-programnivå mått
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Övervaka Apache Spark mått på program nivå med Prometheus och Grafana
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: Begrepp
       items:
         - name: Apache Spark
@@ -566,17 +570,21 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: Notebooks
           href: ./spark/apache-spark-notebook-concept.md
+        - name: Pakethantering
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: Övervakningsverktyg
           href: monitoring/how-to-monitor-spark-applications.md
     - name: Anvisningar
       items:
         - name: Arbeta med Delta Lake
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Hantera bibliotek
+        - name: Hantera paket
           items:
-            - name: Lägg till och hantera bibliotek
-              href: ./spark/apache-spark-azure-portal-add-libraries.md
-            - name: Felsöka biblioteks installations fel
+            - name: Hantera python-paket
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Hantera Scala-paket
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Felsöka installations fel för python-paket
               href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Använda notebook-filer och IDE-verktyg
           items:

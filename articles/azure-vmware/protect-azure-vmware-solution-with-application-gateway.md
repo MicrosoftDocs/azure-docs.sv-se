@@ -3,12 +3,12 @@ title: Använd Azure Application Gateway för att skydda dina webbappar på Azur
 description: Konfigurera Azure Application Gateway för att på ett säkert sätt exponera dina webbappar som körs på Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384205"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733592"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 
@@ -35,7 +35,7 @@ Diagrammet visar test scenariot som används för att verifiera Application Gate
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagram som visar test scenariot som används för att verifiera Application Gateway med webb program för Azure VMware-lösningar." border="false":::
 
-Application Gateway-instansen distribueras på hubben i ett dedikerat undernät. Den har en offentlig Azure-IP-adress. Det rekommenderas att du aktiverar standard DDoS-skydd för det virtuella nätverket. Webb servern finns i ett privat moln i Azure VMware-lösningen bakom NSX t0 och T1-gatewayer. Azure VMware-lösningen använder [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) för att aktivera kommunikation med hubb och lokala system.
+Application Gateway-instansen distribueras på hubben i ett dedikerat undernät. Den har en offentlig Azure-IP-adress. Det rekommenderas att du aktiverar [Azure DDoS Protection standard](../ddos-protection/ddos-protection-overview.md) för det virtuella nätverket. Webb servern finns i ett privat moln i Azure VMware-lösningen bakom NSX t0 och T1-gatewayer. Azure VMware-lösningen använder [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) för att aktivera kommunikation med hubb och lokala system.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -193,3 +193,4 @@ Nu när du har använt Application Gateway för att skydda en webbapp som körs 
 - [Konfigurera Azure Application Gateway för olika scenarier](../application-gateway/configuration-overview.md).
 - [Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar](deploy-traffic-manager-balance-workloads.md).
 - [Integrera Azure NetApp Files med Azure VMware Solution-baserade arbets belastningar](netapp-files-with-azure-vmware-solution.md).
+- [Skydda Azure-resurser i virtuella nätverk](../ddos-protection/ddos-protection-overview.md)

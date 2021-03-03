@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 5a26e5d045be78772ee5dc940fcfecd3cfde9dc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f24947eba71588d8b97afafea35f9a0bcab33c86
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624365"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711016"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Fråga exporterade data från Azure Monitor med Azure Datautforskaren (förhands granskning)
 Export av data från Azure Monitor till ett Azure Storage-konto möjliggör låg kostnads kvarhållning och möjlighet att omfördela loggar till olika regioner. Använd Azure-Datautforskaren för att fråga data som har exporter ATS från dina Log Analytics arbets ytor. När den har kon figurer ATS kommer de tabeller som stöds som skickas från dina arbets ytor till ett Azure Storage-konto att vara tillgängliga som data källa för Azure-Datautforskaren.
@@ -30,9 +30,9 @@ Process flödet är följande:
 ## <a name="send-data-to-azure-storage"></a>Skicka data till Azure Storage
 Azure Monitor loggar kan exporteras till ett Azure Storage konto med något av följande alternativ.
 
-- Om du vill exportera alla data från din Log Analytics-arbetsyta till ett Azure Storage-konto eller en händelsehubben, använder du data export funktionen Log Analytics arbets yta för Azure Monitor loggar. Se [Log Analytics data export för arbets ytan i Azure Monitor (för hands version)](../platform/logs-data-export.md)
-- Schemalagd export från en logg fråga med hjälp av en Logic app. Detta liknar data export funktionen, men du kan skicka filtrerade eller aggregerade data till Azure Storage. Den här metoden kan vara beroende av [loggnings frågans gränser](../service-limits.md#log-analytics-workspaces)  se [arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app](../platform/logs-export-logic-app.md).
-- Exportera med hjälp av en logisk app. Se [Azure Monitor logs Connector för Logic Apps och energi automatisering](../platform/logicapp-flow-connector.md).
+- Om du vill exportera alla data från din Log Analytics-arbetsyta till ett Azure Storage-konto eller en händelsehubben, använder du data export funktionen Log Analytics arbets yta för Azure Monitor loggar. Se [Log Analytics data export för arbets ytan i Azure Monitor (för hands version)](./logs-data-export.md)
+- Schemalagd export från en logg fråga med hjälp av en Logic app. Detta liknar data export funktionen, men du kan skicka filtrerade eller aggregerade data till Azure Storage. Den här metoden kan vara beroende av [loggnings frågans gränser](../service-limits.md#log-analytics-workspaces)  se [arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app](./logs-export-logic-app.md).
+- Exportera med hjälp av en logisk app. Se [Azure Monitor logs Connector för Logic Apps och energi automatisering](./logicapp-flow-connector.md).
 - Exportera till en lokal dator med hjälp av PowerShell-skript. Se [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 > [!TIP]

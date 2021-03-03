@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: a319dbce2502f35272cf9b70da2022f581d64275
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694078"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Användar handbok för Azure avdelningens kontroll Data Catalog härkomst
 
@@ -74,39 +74,47 @@ Azure avdelningens kontroll stöder härkomst på till gångs nivå för data up
 
    :::image type="content" source="./media/catalog-lineage-user-guide/view-columns-from-lineage.png" alt-text="Skärm bild som visar hur du väljer Visa kolumner på härkomst-Sidan" border="true":::
 
-## <a name="column-level-lineage"></a>Härkomst på kolumn nivå
+## <a name="dataset-column-lineage"></a>Härkomst för data mängds kolumn
 
-Azure avdelningens kontroll stöder härkomst på kolumn nivå för data uppsättningarna. Om du vill se härkomst på kolumn nivå går du till fliken **härkomst** för den aktuella till gången i katalogen och följer stegen nedan:
+Om du vill se härkomst för en data uppsättning på kolumn nivå går du till fliken **härkomst** för den aktuella till gången i katalogen och följer stegen nedan:
 
 1. När du är på fliken härkomst i det vänstra fönstret markerar du kryss rutan bredvid varje kolumn som du vill visa i data härkomst.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png" alt-text="Skärm bild som visar hur du väljer kolumner som ska visas på härkomst-sidan." lightbox="./media/catalog-lineage-user-guide/select-columns-to-show-in-lineage.png":::
 
-1. Hovra över en markerad kolumn i det vänstra fönstret eller i data uppsättningen för härkomst-arbetsytan för att se kolumn mappningen. Alla kolumn instanser är markerade.
+2. Hovra över en markerad kolumn i det vänstra fönstret eller i data uppsättningen för härkomst-arbetsytan för att se kolumn mappningen. Alla kolumn instanser är markerade.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png" alt-text="Skärm bild som visar hur du hovrar över ett kolumn namn för att markera kolumn flödet i en data härkomst-sökväg." lightbox="./media/catalog-lineage-user-guide/show-column-flow-in-lineage.png":::
 
-1. Om antalet kolumner är större än vad som kan visas i den vänstra rutan använder du alternativet filter för att välja en angiven kolumn efter namn. Alternativt kan du använda musen för att bläddra i listan.
+3. Om antalet kolumner är större än vad som kan visas i den vänstra rutan använder du alternativet filter för att välja en angiven kolumn efter namn. Alternativt kan du använda musen för att bläddra i listan.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-columns-by-name.png" alt-text="Skärm bild som visar hur du filtrerar kolumner efter kolumn namn på härkomst-sidan." lightbox="./media/catalog-lineage-user-guide/filter-columns-by-name.png":::
 
-1. Om arbets ytan härkomst innehåller fler noder och kanter använder du filtret för att välja data till gångar eller bearbeta noder efter namn. Alternativt kan du använda musen för att panorera runt fönstret härkomst.
+4. Om arbets ytan härkomst innehåller fler noder och kanter använder du filtret för att välja data till gångar eller bearbeta noder efter namn. Alternativt kan du använda musen för att panorera runt fönstret härkomst.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/filter-assets-by-name.png" alt-text="Skärm bild som visar data till gång-noder efter namn på sidan härkomst." lightbox="./media/catalog-lineage-user-guide/filter-assets-by-name.png":::
 
-1. Använd växla i det vänstra fönstret för att markera listan över data uppsättningar på härkomst-arbetsytan. Om du inaktiverar växlingen visas alla till gångar som innehåller minst en av de markerade kolumnerna. Om du aktiverar växlingen visas endast data uppsättningar som innehåller alla kolumner.
+5. Använd växla i det vänstra fönstret för att markera listan över data uppsättningar på härkomst-arbetsytan. Om du inaktiverar växlingen visas alla till gångar som innehåller minst en av de markerade kolumnerna. Om du aktiverar växlingen visas endast data uppsättningar som innehåller alla kolumner.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png" alt-text="Skärm bild som visar hur du använder växla för att filtrera listan över noder på härkomst-sidan." lightbox="./media/catalog-lineage-user-guide/use-toggle-to-filter-nodes.png":::
 
+## <a name="process-column-lineage"></a>Härkomst för process kolumn
+Data processen kan ta en eller flera indata-datauppsättningar för att skapa en eller flera utdata. I avdelningens kontroll är kolumn nivå härkomst tillgänglig för process-noder. 
+1. Växla mellan data uppsättningar för indata och utdata från en listruta i panelen kolumner.
+2. Välj kolumner från en eller flera tabeller för att se den härkomst som flödar från data uppsättningen data uppsättning till motsvarande utdata-datauppsättning.
+
+   :::image type="content" source="./media/catalog-lineage-user-guide/process-column-lineage.png" alt-text="Skärm bild som visar kolumner härkomst i en processerver." lightbox="./media/catalog-lineage-user-guide/process-column-lineage.png":::
+
+## <a name="browse-assets-in-lineage"></a>Bläddra till till gångar i härkomst
 1. Välj **Växla till till gång** på en till gång för att visa motsvarande metadata från vyn härkomst. Det är ett effektivt sätt att bläddra till en annan till gång i katalogen från vyn härkomst.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="Skärm bild som visar hur du väljer växla till till gång i en härkomst data till gång." lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-1. Härkomst-arbetsytan kan bli komplex för populära data uppsättningar. För att undvika rörig visning visar standardvyn bara fem nivåer av härkomst för till gången i fokus. Resten av härkomst kan utökas genom att klicka på bubblorna på härkomst-arbetsytan. Data konsumenter kan också dölja till gångarna på arbets ytan som inte är av intresse. Du kan minska oredan genom att stänga av växlare **fler härkomst** längst upp på härkomst-arbetsytan. Den här åtgärden döljer alla bubblor på härkomst-arbetsytan.
+2. Härkomst-arbetsytan kan bli komplex för populära data uppsättningar. För att undvika rörig visning visar standardvyn bara fem nivåer av härkomst för till gången i fokus. Resten av härkomst kan utökas genom att klicka på bubblorna på härkomst-arbetsytan. Data konsumenter kan också dölja till gångarna på arbets ytan som inte är av intresse. Du kan minska oredan genom att stänga av växlare **fler härkomst** längst upp på härkomst-arbetsytan. Den här åtgärden döljer alla bubblor på härkomst-arbetsytan.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="Skärm bild som visar hur du växlar fler härkomst." lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 
-1. Använd smarta knappar på härkomst-arbetsytan för att få en optimal vy över härkomst. Autolayout, zooma in och zooma in/ut, hel skärm och navigerings karta är tillgängliga för en fördjupad härkomst-upplevelse i katalogen.
+3. Använd smarta knappar på härkomst-arbetsytan för att få en optimal vy över härkomst. Autolayout, zooma in och zooma in/ut, hel skärm och navigerings karta är tillgängliga för en fördjupad härkomst-upplevelse i katalogen.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png" alt-text="Skärm bild som visar hur du väljer smarta knappar för härkomst." lightbox="./media/catalog-lineage-user-guide/use-lineage-smart-buttons.png":::
 

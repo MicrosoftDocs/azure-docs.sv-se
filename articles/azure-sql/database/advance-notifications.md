@@ -1,6 +1,6 @@
 ---
 title: Förskotts aviseringar (för hands version) för planerade underhålls händelser
-description: Få ett meddelande innan planerat underhåll för Azure SQL Database eller Azure SQL-hanterad instans.
+description: Få ett meddelande innan planerat underhåll för Azure SQL Database.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -11,24 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: 3f63a8d2f75a58a771d837128c2b2498c28948ef
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 07f6267a14a4604e1a43dd1a1a9930d63a419336
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664071"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690897"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Förskotts aviseringar för planerade underhålls händelser (för hands version)
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Förhands aviseringar (för hands version) är tillgängligt för databaser som kon figurer ATS för [underhålls period](maintenance-window.md) Med aviseringar kan kunder Konfigurera meddelanden så att de skickas upp till 24 timmar innan eventuella planerade händelser.
 
 Aviseringar kan konfigureras så att du kan hämta texter, e-postmeddelanden, Azure push-meddelanden och röst meddelanden när planerat underhåll är på grund av att det har börjat att börja under de närmaste 24 timmarna. Ytterligare meddelanden skickas när underhållet påbörjas och underhålls slut.
 
+> [!Note]
+> Även om möjligheten att välja en underhålls period är tillgänglig för Azure SQL-hanterade instanser, är aviseringar för hands meddelanden för närvarande inte tillgängliga för Azure SQL-hanterade instanser.
 
 ## <a name="create-an-advance-notification"></a>Skapa ett förskotts meddelande
 
-Det finns aviseringar för avancerad tillgänglighet för Azure SQL-databaser och hanterade instanser där underhålls fönstret har kon figurer ATS. 
+Det finns avancerade aviseringar för Azure SQL-databaser som har kon figurer ATS för underhålls perioden. 
 
 Utför följande steg för att aktivera en avisering.  
 

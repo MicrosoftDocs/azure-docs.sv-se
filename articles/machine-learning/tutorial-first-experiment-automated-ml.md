@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691951"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Självstudie: skapa en klassificerings modell med automatiserad ML i Azure Machine Learning
 
@@ -159,7 +159,7 @@ När du har läst in och konfigurerat dina data kan du konfigurera experimentet.
 
     1. Välj **Visa ytterligare konfigurations inställningar** och fyll i fälten enligt följande. De här inställningarna är för att bättre styra utbildnings jobbet. Annars tillämpas standardvärdena utifrån experiment val och data.
 
-        Ytterligare &nbsp; konfigurationer|Description|Värde &nbsp; för &nbsp; självstudier
+        Ytterligare &nbsp; konfigurationer|Beskrivning|Värde &nbsp; för &nbsp; självstudier
         ------|---------|---
         Primärt mått| Bedömnings mått som ska mätas av Machine Learning-algoritmen.|AUC_weighted
         Förklara bästa modell| Visar automatiskt förklaringar för den bästa modellen som skapats av automatisk ML.| Aktivera
@@ -187,6 +187,30 @@ Följande navigerar via flikarna **information** och **mått** för att visa den
 
 ![Kör upprepnings information](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
+## <a name="model-explanations"></a>Modell förklaringar
+
+Medan du väntar på att modeller ska slutföras, kan du också ta en titt på modell förklaringar och se vilka data funktioner (RAW eller tekniker) som påverkas av en viss modells förutsägelser. 
+
+Dessa modell förklaringar kan genereras på begäran och sammanfattas i modellen förklarings instrument panel som är en del av fliken **förklaringar (för hands version)** .
+
+För att generera modell förklaringar, 
+ 
+1. Välj **Kör 1** längst upp för att gå tillbaka till **modell** skärmen. 
+1. Välj fliken **modeller** .
+1. I den här självstudien väljer du den första **MaxAbsScaler, LightGBM-** modellen.
+1. Välj knappen **förklara modell** överst. Till höger visas fönstret **förklarings modell** . 
+1. Välj den **automl-beräkning** som du skapade tidigare. Detta beräknings kluster initierar en underordnad körning för att generera modell förklaringar.
+1. Välj **skapa** längst ned. Ett grönt meddelande visas längst upp på skärmen. 
+    >[!NOTE]
+    > Välklarande körningen tar cirka 2-5 minuter att slutföra.
+1. Välj **förklarings knappen (förhands granskning)** . Den här fliken fylls när förklaringen är klar.
+1. Expandera fönstret till vänster och välj den rad som står för **rå** under **funktioner**. 
+1. Välj fliken **mängd funktions prioritet** till höger. Det här diagrammet visar vilka data funktioner som påverkas av förutsägelserna för den valda modellen. 
+
+    I det här exemplet verkar *varaktigheten* ha störst inverkan på förutsägelserna för den här modellen.
+    
+    ![Instrument panel för modell förklaring](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
+
 ## <a name="deploy-the-best-model"></a>Distribuera den bästa modellen
 
 Med det automatiserade Machine Learning-gränssnittet kan du distribuera den bästa modellen som en webb tjänst med några få steg. Distribution är integreringen av modellen så att den kan förutsäga nya data och identifiera potentiella områden i affärs möjligheten. 
@@ -211,7 +235,7 @@ Vi distribuerar den här modellen, men vi rekommenderar att distributionen tar u
     Distributions Beskrivning| Min första automatiserade test distribution av Machine Learning
     Typ av beräkning | Välj Azure Compute Instance (ACI)
     Aktivera autentisering| Inaktivera. 
-    Använd anpassade distributioner| Inaktivera. Tillåter att standard driv rutins filen (bedömnings skriptet) och miljö filen skapas automatiskt. 
+    Använd anpassade distributioner| Inaktivera. Tillåter att standard driv rutins filen (bedömnings skriptet) och miljö filen genereras automatiskt. 
     
     I det här exemplet använder vi de standardvärden som anges i menyn *Avancerat* . 
 

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0eedd5ce67e96c9d732cf24cbe56a8c3c5e92aaa
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aec26c0109b4aa8e0819e7f5e9b3c69db7f74648
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880499"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726911"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric versioner
 
@@ -48,6 +48,7 @@ Vi är glada över att kunna meddela att 7,2-versionen av Service Fabric Runtime
 | 10 november 2020  | Azure Service Fabric 7,2 tredje uppdaterings version | [Viktig information](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
 | 2 december 2020 | [Azure Service Fabric 7,2 fjärde uppdaterings version](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [Viktig information](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
 | 25 januari 2021 | [Azure Service Fabric 7,2 femte uppdaterings version](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [Viktig information](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
+| 17 februari 2021 | [Azure Service Fabric 7,2 sjätte uppdaterings version](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Viktig information](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 
 ## <a name="previous-versions"></a>Tidigare versioner
 

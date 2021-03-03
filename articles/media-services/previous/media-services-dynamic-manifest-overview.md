@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266926"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727336"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter och dynamiska manifest
 
@@ -29,7 +29,7 @@ ms.locfileid: "89266926"
 > * [Version 2](media-services-dynamic-manifest-overview.md)
 > * [Version 3](../latest/filters-dynamic-manifest-overview.md)
 
-Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör att dina kunder kan välja att göra saker som: spela bara upp en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar uppnås genom **dynamiskt manifest**s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
+Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör att dina kunder kan välja att göra saker som: spela bara upp en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar uppnås genom **dynamiskt manifest** s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
 
 I det här avsnittet beskrivs vanliga scenarier där du kan använda filter för dina kunder och länkar till ämnen som visar hur du skapar filter program mässigt.
 
@@ -88,11 +88,11 @@ För att uppnå den här flexibiliteten erbjuder Media Services **dynamiska mani
 
 MPEG-streck-URL med filter
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 Smooth Streaming URL med filter
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 Mer information om hur du levererar innehåll och skapar strömmande URL: er finns i [leverera innehåll översikt](media-services-deliver-content-overview.md).

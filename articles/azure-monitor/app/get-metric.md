@@ -5,12 +5,12 @@ ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b4a255235b2c6d772ab9a05dffacd4574ddd3280
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584195"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719788"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Anpassad mått samling i .NET och .NET Core
 
@@ -33,7 +33,7 @@ Begränsning är särskilt viktigt i likhet med provtagning, kan begränsningen 
 I sammanfattning `GetMetric()` är den rekommenderade metoden eftersom den utför för insamlingen, ackumulerar värden från alla spår ()-anrop och skickar en sammanfattning/samling en gång i minuten. Detta kan avsevärt minska kostnaderna och prestanda genom att skicka färre data punkter och samtidigt samla all relevant information.
 
 > [!NOTE]
-> Endast .NET-och .NET Core SDK: er har en GetMetric ()-metod. Om du använder Java kan du använda [micrometer-mått](./micrometer-java.md) eller `TrackMetric()` . För python kan du använda [openinventering. statistik](./opencensus-python.md#metrics) för att skicka anpassade mått. För Java Script och Node.js du fortfarande använda `TrackMetric()` , men tänk på vilka varningar som beskrivs i föregående avsnitt.
+> Endast .NET-och .NET Core SDK: er har en GetMetric ()-metod. Om du använder Java kan du använda [micrometer-mått](./micrometer-java.md) eller `TrackMetric()` . För Java Script och Node.js du fortfarande använda `TrackMetric()` , men tänk på vilka varningar som beskrivs i föregående avsnitt. För python kan du använda [openinventering. statistik](./opencensus-python.md#metrics) för att skicka anpassade mått, men måtten är annorlunda.
 
 ## <a name="getting-started-with-getmetric"></a>Komma igång med GetMetric
 
@@ -69,7 +69,7 @@ namespace WorkerService3
             // Here "computersSold", a custom metric name, is being tracked with a value of 42 every second.
             while (!stoppingToken.IsCancellationRequested)
             {
-                _telemetryClient.GetMetric("computersSold").TrackValue(42);
+                _telemetryClient.GetMetric("ComputersSold").TrackValue(42);
 
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
@@ -89,7 +89,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 "ai.internal.sdkVersion":"m-agg2c:2.12.0-21496",
 "ai.internal.nodeName":"Test-Computer-Name"},
 "data":{"baseType":"MetricData",
-"baseData":{"ver":2,"metrics":[{"name":"computersSold",
+"baseData":{"ver":2,"metrics":[{"name":"ComputersSold",
 "kind":"Aggregation",
 "value":1722,
 "count":41,
@@ -101,6 +101,9 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 ```
 
 Det här objektet för telemetri representerar en mängd med 41 distinkta mått mått. Eftersom vi skickade samma värde över och över igen, har vi en *standard avvikelse (STDAV)* på 0 med ett identiskt *maximum (max)* och *minst (min)* värden. Egenskapen *Value* representerar summan av alla enskilda värden som aggregerades.
+
+> [!NOTE]
+> GetMetric stöder inte spårning av det sista värdet (t. ex. mätare) eller spårning av histogram/distributioner.
 
 Om vi tittar på vår Application Insights-resurs i loggar (analys) kan det här enskilda telemetridata se ut så här:
 
@@ -283,7 +286,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` är det maximala antalet data tids serier som ett mått kan innehålla. När den här gränsen har uppnåtts anropar du `TrackValue()` .
+* `seriesCountLimit` är det maximala antalet data tids serier som ett mått kan innehålla. När den här gränsen har uppnåtts `TrackValue()` spåras inte anrop till.
 * `valuesPerDimensionLimit` begränsar antalet distinkta värden per dimension på liknande sätt.
 * `restrictToUInt32Values` Anger om endast positiva heltals värden ska spåras eller inte.
 

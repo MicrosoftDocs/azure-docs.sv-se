@@ -4,14 +4,14 @@ description: Automatisera hantering och konfiguration av regler för smart ident
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726129"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Hantera Application Insights regler för smart identifiering med Azure Resource Manager-mallar
 
@@ -21,18 +21,18 @@ Den här metoden kan användas när du distribuerar nya Application Insights-res
 ## <a name="smart-detection-rule-configuration"></a>Konfiguration av Smart identifierings regel
 
 Du kan konfigurera följande inställningar för en regel för smart identifiering:
-- Om regeln är aktive rad (Standardvärdet är **True** .)
-- Om e-postmeddelanden ska skickas till användare som är kopplade till prenumerationens Rolls [övervaknings läsare](../../role-based-access-control/built-in-roles.md#monitoring-reader) och [övervaknings deltagar](../../role-based-access-control/built-in-roles.md#monitoring-contributor) roller när en identifiering hittas (Standardvärdet är **True** .)
+- Om regeln är aktive rad (Standardvärdet är **True**.)
+- Om e-postmeddelanden ska skickas till användare som är kopplade till prenumerationens Rolls [övervaknings läsare](../../role-based-access-control/built-in-roles.md#monitoring-reader) och [övervaknings deltagar](../../role-based-access-control/built-in-roles.md#monitoring-contributor) roller när en identifiering hittas (Standardvärdet är **True**.)
 - Ytterligare e-postmottagare som bör få ett meddelande när en identifiering hittas.
-    -  E-postkonfiguration är inte tillgänglig för regler för smart identifiering som är markerade som för _hands version_ .
+    -  E-postkonfiguration är inte tillgänglig för regler för smart identifiering som är markerade som för _hands version_.
 
-För att tillåta konfigurering av regel inställningarna via Azure Resource Manager är konfigurationen av Smart identifierings regeln nu tillgänglig som en inre resurs i Application Insights resurs med namnet **ProactiveDetectionConfigs** .
+För att tillåta konfigurering av regel inställningarna via Azure Resource Manager är konfigurationen av Smart identifierings regeln nu tillgänglig som en inre resurs i Application Insights resurs med namnet **ProactiveDetectionConfigs**.
 För maximal flexibilitet kan varje smart identifierings regel konfigureras med unika meddelande inställningar.
 
 ## <a name="examples"></a>Exempel
 
 Nedan visas några exempel på hur du konfigurerar inställningarna för smart detekterings regler med hjälp av Azure Resource Manager mallar.
-Alla exempel refererar till en Application Insights resurs med namnet _"Mina program"_ och till regeln för smart identifiering av långa beroende varaktigheter, som är internt med namnet _"longdependencyduration"_ .
+Alla exempel refererar till en Application Insights resurs med namnet _"Mina program"_ och till regeln för smart identifiering av långa beroende varaktigheter, som är internt med namnet _"longdependencyduration"_.
 Se till att ersätta Application Insights resurs namn och ange det interna namnet för den aktuella Smart detekterings regeln. I tabellen nedan finns en lista över motsvarande interna Azure Resource Manager namn för varje smart identifierings regel.
 
 ### <a name="disable-a-smart-detection-rule"></a>Inaktivera en regel för smart identifiering
@@ -152,7 +152,7 @@ Nedan visas en tabell med namn på Smart identifierings regler som visas i porta
 
 ### <a name="failure-anomalies-alert-rule"></a>Varnings regel för fel avvikelser
 
-Den här Azure Resource Manager mallen visar hur du konfigurerar en varnings regel för fel avvikelser med allvarlighets graden 2. Den här nya versionen av varnings regeln för fel avvikelser är en del av den nya Azure Alerting-plattformen och ersätter den klassiska versionen som tas bort som en del av den [klassiska aviserings processen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Den här Azure Resource Manager mallen visar hur du konfigurerar en varnings regel för fel avvikelser med allvarlighets graden 2.
 
 > [!NOTE]
 > Fel avvikelser är en global tjänst därför skapas en regel plats på den globala platsen.

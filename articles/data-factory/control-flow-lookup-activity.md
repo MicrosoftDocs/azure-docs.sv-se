@@ -5,28 +5,32 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 5f46e2871aa0017f0a4b33df04a8ae9058c59e17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712920"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Sök aktivitet i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Söknings aktiviteten kan hämta en data uppsättning från någon av de Azure Data Factory data källor som stöds. Använd det i följande scenario:
-- Identifiera dynamiskt vilka objekt som ska användas i en efterföljande aktivitet, i stället för att hårdkoda objekt namnet. Några exempel på objekt är filer och tabeller.
+Söknings aktiviteten kan hämta en data uppsättning från någon av de Azure Data Factory data källor som stöds. Du kan använda den för att dynamiskt avgöra vilka objekt som ska användas i en efterföljande aktivitet, i stället för att hårdkoda objekt namnet. Några exempel på objekt är filer och tabeller.
 
-Lookup-aktiviteten läser och returnerar innehållet i en konfigurations fil eller tabell. Det returnerar också resultatet av att köra en fråga eller lagrad procedur. Utdata från lookup-aktiviteten kan användas i en efterföljande kopierings-eller omvandlings aktivitet om det är ett singleton-värde. Utdata kan användas i en förgrunds aktivitet om det är en matris med attribut.
+Lookup-aktiviteten läser och returnerar innehållet i en konfigurations fil eller tabell. Det returnerar också resultatet av att köra en fråga eller lagrad procedur. Utdata kan vara ett singleton-värde eller en matris med attribut som kan förbrukas i en efterföljande kopierings-, omvandlings-eller kontroll flödes aktivitet som till exempel aktiviteter.
 
 ## <a name="supported-capabilities"></a>Funktioner som stöds
 
-Följande data källor stöds för lookup-aktivitet. 
+. Tänk på följande:
 
-Sök aktiviteten kan returnera upp till 5000 rader. om resultat uppsättningen innehåller fler poster returneras de första 5000 raderna. Utdata för uppslags aktivitet har stöd för upp till ungefär 4 MB och det går inte att utföra aktiviteten om storleken överskrider gränsen. För närvarande är den längsta varaktigheten för uppslags aktivitet före timeout 24 timmar.
+- Sök aktiviteten kan returnera upp till **5000 rader**. om resultat uppsättningen innehåller fler poster returneras de första 5000 raderna.
+- Utdata för uppslags aktivitet har stöd för upp till **4 MB** och det går inte att utföra aktiviteten om storleken överskrider gränsen. 
+- Den längsta varaktigheten för söknings aktiviteten före timeout är **24 timmar**.
+- När du använder en fråga eller lagrad procedur för att söka efter data, se till att returnera en och exakt en resultat uppsättning. Annars Miss lyckas söknings aktiviteten.
+
+Följande data källor stöds för lookup-aktivitet. 
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -381,7 +385,7 @@ Här följer några begränsningar för söknings aktiviteten och föreslagna l�
 
 | Begränsning | Lösning |
 |---|---|
-| Sök aktiviteten har högst 5 000 rader och en maximal storlek på 2 MB. | Utforma en pipeline på två nivåer där den yttre pipelinen upprepas över en inre pipeline, som hämtar data som inte överskrider maximalt antal rader eller storlek. |
+| Sök aktiviteten har högst 5 000 rader och en maximal storlek på 4 MB. | Utforma en pipeline på två nivåer där den yttre pipelinen upprepas över en inre pipeline, som hämtar data som inte överskrider maximalt antal rader eller storlek. |
 | | |
 
 ## <a name="next-steps"></a>Nästa steg

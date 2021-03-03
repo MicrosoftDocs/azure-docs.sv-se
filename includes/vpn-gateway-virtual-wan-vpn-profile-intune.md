@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515106"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749902"
 ---
 Du kan distribuera profiler för Azure VPN-klienter (Windows 10) med hjälp av Microsoft Intune. Den här artikeln hjälper dig att skapa en Intune-profil med anpassade inställningar.
 
@@ -30,7 +30,7 @@ I följande steg använder vi en exempel-XML för en anpassad OMA-URI-profil fö
 * Anslut automatiskt
 * Identifiering av betrodda nätverk har Aktiver ATS.
 
-Andra alternativ som stöds finns i artikeln om [VPNV2 CSP](https://docs.microsoft.com/windows/client-management/mdm/vpnv2-csp) .
+Andra alternativ som stöds finns i artikeln om [VPNV2 CSP](/windows/client-management/mdm/vpnv2-csp) .
 
 1. Hämta VPN-profilen från Azure Portal och extrahera *azurevpnconfig.xml* -filen från paketet.
 1. Kopiera och klistra in texten nedan i en ny text redigerings fil.
@@ -82,4 +82,4 @@ I det här avsnittet skapar du en Microsoft Intune-profil med anpassade inställ
 1. På sidan **Granska och skapa** väljer du **skapa**.
 
     :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/create-profile.png" alt-text="Skapa profil":::
-1. Din anpassade profil skapas nu. Microsoft Intune stegen för att distribuera den här profilen finns i [Tilldela användar-och enhets profiler](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
+1. Din anpassade profil skapas nu. Microsoft Intune stegen för att distribuera den här profilen finns i [Tilldela användar-och enhets profiler](/mem/intune/configuration/device-profile-assign).

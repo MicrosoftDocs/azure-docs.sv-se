@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: bed9cd23abc96c51cad0a13e81ee0b64f0d433b6
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012323"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723851"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Ta bort Starta/stoppa virtuella datorer när de inte används från Automation-konto
 
@@ -94,7 +94,7 @@ Medan informationen verifieras och kontot tas bort, kan du följa förloppet und
 
 ## <a name="delete-the-feature"></a>Ta bort funktionen
 
-Utför följande steg för att ta bort Starta/stoppa virtuella datorer när de inte används från ditt Automation-konto. Automation-kontot och Log Analytics-arbetsytan tas inte bort som en del av den här processen. Om du inte vill behålla Log Analytics arbets ytan måste du ta bort den manuellt. Mer information om hur du tar bort din arbets yta finns i [ta bort och återställa Azure Log Analytics-arbetsytan](../azure-monitor/platform/delete-workspace.md).
+Utför följande steg för att ta bort Starta/stoppa virtuella datorer när de inte används från ditt Automation-konto. Automation-kontot och Log Analytics-arbetsytan tas inte bort som en del av den här processen. Om du inte vill behålla Log Analytics arbets ytan måste du ta bort den manuellt. Mer information om hur du tar bort din arbets yta finns i [ta bort och återställa Azure Log Analytics-arbetsytan](../azure-monitor/logs/delete-workspace.md).
 
 1. Gå till ditt Automation-konto och välj **länkad arbets yta** under **relaterade resurser**.
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: bccd1f001cca67a5be3d14c50e6a6db96cb6584c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7356b9bb814f8bca5465fe74d48409b9dbca6d3b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731705"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor data plattform
 
@@ -28,7 +28,7 @@ Att ge dig möjlighet att vara medveten om dagens komplexa dator miljöer som k�
 ## <a name="observability-data-in-azure-monitor"></a>Information om att observera data i Azure Monitor
 Mått, loggar och distribuerade spår kallas ofta tre pelare för att kunna observera. Det här är de olika typerna av data som ett övervaknings verktyg måste samla in och analysera för att ge en tillräckligt god lämplighet för ett övervakat system. Du kan se om du korrelerar data från flera pelare och aggregerar data över hela uppsättningen resurser som övervakas. Eftersom Azure Monitor lagrar data från flera källor tillsammans, kan data korreleras och analyseras med hjälp av en gemensam uppsättning verktyg. Den korrelerar också data över flera Azure-prenumerationer och-klienter, förutom att vara värd för data för andra tjänster.
 
-Azure-resurser genererar en betydande mängd övervaknings data. Azure Monitor konsoliderar dessa data tillsammans med övervaknings data från andra källor till antingen en mått-eller loggar plattform. Var och en är optimerad för särskilda övervaknings scenarier och har stöd för olika funktioner i Azure Monitor. Funktioner som data analys, visualiseringar eller varningar kräver att du förstår skillnaderna så att du kan implementera ditt nödvändiga scenario på det mest effektiva och kostnads effektiva sättet. Insikter i Azure Monitor som [Application Insights](app/app-insights-overview.md) eller [Azure Monitor for VMS](vm/vminsights-overview.md) har analys verktyg som gör att du kan fokusera på det specifika övervaknings scenariot utan att behöva förstå skillnaderna mellan de två typerna av data. 
+Azure-resurser genererar en betydande mängd övervaknings data. Azure Monitor konsoliderar dessa data tillsammans med övervaknings data från andra källor till antingen en mått-eller loggar plattform. Var och en är optimerad för särskilda övervaknings scenarier och har stöd för olika funktioner i Azure Monitor. Funktioner som data analys, visualiseringar eller varningar kräver att du förstår skillnaderna så att du kan implementera ditt nödvändiga scenario på det mest effektiva och kostnads effektiva sättet. Insikter i Azure Monitor som [Application Insights](app/app-insights-overview.md) eller [VM Insights](vm/vminsights-overview.md) har analys verktyg som gör att du kan fokusera på det specifika övervaknings scenariot utan att behöva förstå skillnaderna mellan de två typerna av data. 
 
 
 ### <a name="metrics"></a>Mått

@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 02/23/2021
-ms.openlocfilehash: c154699b7701b584e465ebea7950d4fe50be961f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691152"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierad manuell redundansväxling på SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -151,6 +151,7 @@ Kort förlusten av anslutning från klienten under redundansväxlingen, som vanl
 > - För BC-instanser måste det finnas kvorum med repliker för att redundansväxlingen ska godkännas.
 > - För BC-instanser går det inte att ange vilken läsbar sekundär replik som ska initiera redundansväxlingen.
 > - Redundans är inte tillåtet förrän den första fullständiga säkerhets kopieringen för en ny databas har slutförts av automatiska säkerhets kopierings system.
+> - Redundans tillåts inte om det finns en pågående databas återställning.
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig mer om hur du testar dina program för moln beredskap med att [testa appens moln beredskap för redundans med SQL-hanterad instans för](https://youtu.be/FACWYLgYDL8) video omkodning.

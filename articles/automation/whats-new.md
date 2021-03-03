@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/21/2021
+ms.date: 02/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690872"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729409"
 ---
 # <a name="whats-new-in-azure-automation"></a>Vad är nytt i Azure Automation?
 
@@ -24,7 +24,55 @@ Azure Automation tar emot förbättringar regelbundet. För att hålla dig uppda
 
 Den här sidan uppdateras varje månad, så du kan uppdatera den regelbundet.
 
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-japan-west"></a>Stöd för automatisering och tillstånds konfiguration som har deklarerats som GA i Japan, väst
+
+**Typ:** Ny funktion
+
+Automation-konto och tillstånds konfigurations tillgänglighet i regionen Japan, västra. Mer information hittar du i [meddelande](https://azure.microsoft.com/updates/azure-automation-in-japan-west-region/).
+
+### <a name="introduced-custom-azure-policy-compliance-to-enforce-runbook-execution-on-hybrid-worker"></a>Introducerade anpassad Azure Policy kompatibilitet för att verkställa Runbook-körning på Hybrid Worker
+
+**Typ:** Ny funktion
+
+Du kan använda regeln ny Azure Policy för att skapa jobb, Webhooks och jobb scheman som bara körs på Hybrid Worker grupper.
+
+### <a name="update-management-availability-in-east-us-france-central-and-north-europe-regions"></a>Uppdateringshantering tillgänglighet i regionerna östra USA, Frankrike, centrala och Europa, norra
+
+**Typ:** Ny funktion
+
+Automation Uppdateringshantering-funktionen finns i regionerna östra USA, centrala Frankrike och Europa, norra. Se den [region mappning som stöds](how-to/region-mappings.md) för uppdateringar av dokumentationen som reflekterar den här ändringen.
+
 ## <a name="january-2021"></a>Januari 2021
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-switzerland-west"></a>Stöd för automatisering och tillstånds konfiguration deklarerad GA i Schweiz, västra
+
+**Typ:** Ny funktion
+
+Automation-konto och tillstånds konfigurations tillgänglighet i Schweiz, västra regionen. Mer information finns i [meddelandet](https://azure.microsoft.com/updates/azure-automation-in-switzerland-west-region/).
+
+### <a name="added-python-3-script-to-import-module-with-multiple-dependencies"></a>Har lagt till python 3-skript för att importera modulen med flera beroenden
+
+**Typ:** Ny funktion
+
+Skriptet är tillgängligt för nedladdning från vår [GitHub-lagringsplats](https://github.com/azureautomation/runbooks/blob/master/Utility/Python/import_py3package_from_pypi.py). 
+ 
+### <a name="hybrid-runbook-worker-role-support-for-centos-8xrhel-8xsles-15"></a>Hybrid Runbook Worker roll stöd för CentOS 8. x/RHEL 8. x/SLES 15
+
+**Bastyp.** Ny funktion
+
+Hybrid Runbook Worker-funktionen stöder CentOS 8. x, REHL 8. x och SLES 15 distributioner för enbart process automatisering i hybrid Runbook Worker.  Se [vilka operativ system som stöds](automation-linux-hrw-install.md#supported-linux-operating-systems) för uppdateringar av dokumentationen för att avspegla dessa ändringar.
+
+### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>Uppdateringshantering & Ändringsspårning tillgänglighet i östra Australien, Asien, östra, västra USA & Central USA-regioner
+
+**Typ:** Ny funktion
+
+Automation-konto, Ändringsspårning och inventering och Uppdateringshantering är tillgängliga i östra Australien, Asien, östra, västra USA & centrala USA-regioner. 
+
+### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>Lanserade en offentlig för hands version av python 3-Runbooks i det amerikanska myndighets molnet
+
+**Typ:** Med den nya funktionen Azure Automation införs stöd för offentliga för hands versioner av python 3 Cloud och hybrid Run Book körning i amerikanska myndigheter i molnet.  Mer information finns i [meddelandet](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/).
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Automation runbooks som har flyttats från TechNet Script Center till GitHub
 

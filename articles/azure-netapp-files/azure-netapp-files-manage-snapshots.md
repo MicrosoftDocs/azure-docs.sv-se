@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2da2ae01e92ae2751f9f26e005579bad9911330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738743"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Hantera ögonblicksbilder med hjälp av Azure NetApp Files
 
@@ -257,6 +257,9 @@ Du hittar alternativet Återställ volym på menyn ögonblicks bilder på en vol
 ## <a name="delete-snapshots"></a>Ta bort ögonblicks bilder  
 
 Du kan ta bort ögonblicks bilder som du inte längre behöver behålla. 
+
+> [!IMPORTANT]
+> Det går inte att ta bort ögonblicks bilden. Det går inte att återställa en borttagen ögonblicks bild. 
 
 1. Gå till **ögonblicks bilds** menyn för en volym. Högerklicka på den ögonblicks bild som du vill ta bort. Välj **Ta bort**.
 

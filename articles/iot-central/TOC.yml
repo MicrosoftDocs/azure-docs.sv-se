@@ -66,10 +66,8 @@
     - name: Branschspecifika lösningar
       items:
         - name: Retail
-          href: retail/overview-iot-central-retail.md
           items:
             - name: Analys i butik för kassan
-              href: retail/store-analytics-architecture.md
               items:
                 - name: 1 – Skapa ett program för detaljhandeln
                   href: retail/tutorial-in-store-analytics-create-app.md
@@ -77,28 +75,15 @@
                   href: retail/tutorial-in-store-analytics-customize-dashboard.md
                 - name: 3 – Exportera data och visualisera insikter
                   href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
-            - name: Smart lagerhantering
-              href: retail/architecture-smart-inventory-management.md
-              items:
-                - name: Skapa ett program för smart lagerhantering
-                  href: retail/tutorial-iot-central-smart-inventory-management.md
-            - name: Ansluten logistik
-              href: retail/architecture-connected-logistics.md
-              items:
-                - name: Skapa ett anslutet logistikprogram
-                  href: retail/tutorial-iot-central-connected-logistics.md
-            - name: Digitalt distributionscenter
-              href: retail/architecture-digital-distribution-center.md
-              items:
-                - name: Skapa ett program för digitala distributionscenter
-                  href: retail/tutorial-iot-central-digital-distribution-center.md
-            - name: Mikrofullgörelsecenter
-              href: retail/architecture-micro-fulfillment-center.md
-              items:
-                - name: Skapa ett program för mikrofullgörelsecenter
-                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Skapa ett program för smart lagerhantering
+              href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Skapa ett anslutet logistikprogram
+              href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Skapa ett program för digitala distributionscenter
+              href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Skapa ett program för mikrofullgörelsecenter
+              href: retail/tutorial-micro-fulfillment-center.md
             - name: Videoanalys – objekt- och rörelseidentifiering
-              href: retail/architecture-video-analytics.md
               items:
                 - name: 0 – Distribuera program för objekt- och rörelseidentifiering
                   href: retail/tutorial-video-analytics-deploy.md
@@ -119,38 +104,21 @@
                 - name: 4 – Ändra och bygg gatewaymoduler för videoanalys
                   href: retail/tutorial-video-analytics-build-module.md
         - name: Energi
-          href: energy/overview-iot-central-energy.md
           items:
-            - name: Arkitektur för smarta mätarprogram
-              href: energy/concept-iot-central-smart-meter-app.md
             - name: Skapa en app för smart mätarövervakning
               href: energy/tutorial-smart-meter-app.md
-            - name: Arkitektur för solpanelsprogram
-              href: energy/concept-iot-central-solar-panel-app.md
             - name: Skapa en app för solpanelsövervakning
               href: energy/tutorial-solar-panel-app.md
         - name: Myndigheter
-          href: government/overview-iot-central-government.md
           items:
-            - name: Referensarkitektur för ansluten avfallsövervakning
-              href: government/concepts-connectedwastemanagement-architecture.md
             - name: Skapa en ansluten app för avfallshantering
               href: government/tutorial-connected-waste-management.md
-            - name: Referensarkitektur för övervakning av vattenförbrukning
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
             - name: Skapa en app för övervakning av vattenförbrukning
               href: government/tutorial-water-consumption-monitoring.md
-            - name: Referensarkitektur för övervakning av vattenkvalitet
-              href: government/concepts-waterqualitymonitoring-architecture.md
             - name: Skapa en app för övervakning av vattenkvalitet
               href: government/tutorial-water-quality-monitoring.md
-            - name: Anslut ditt Azure IoT Central-program med Dynamics 365 Field Services
-              href: government/how-to-configure-connected-field-services.md
         - name: Sjukvård
-          href: healthcare/overview-iot-central-healthcare.md
           items:
-            - name: Arkitektur för kontinuerlig övervakning av patienter
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
             - name: Skapa en app för kontinuerlig övervakning av patienter
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: Skapa en instrumentpanel för prioritering av hälsodata
@@ -162,9 +130,51 @@
     - name: Guide för enhetsutvecklare
       href: core/overview-iot-central-developer.md
     - name: Guide för Solution Builder
-      href: core/overview-iot-central-developer.md
+      href: core/overview-iot-central-solution-builder.md
     - name: Vad är programmallar?
       href: core/concepts-app-templates.md
+    - name: Branschspecifika programmallar
+      items:
+        - name: Retail
+          items:
+            - name: Översikt
+              href: retail/overview-iot-central-retail.md
+            - name: Arbets arkitektur i Store Analytics
+              href: retail/store-analytics-architecture.md
+            - name: Hanterings arkitektur för smart inventering
+              href: retail/architecture-smart-inventory-management.md
+            - name: Ansluten logistik arkitektur
+              href: retail/architecture-connected-logistics.md
+            - name: Digitalt distributionscenter
+              href: retail/architecture-digital-distribution-center.md
+            - name: Arkitektur för Micro-uppfyllelse Center
+              href: retail/architecture-micro-fulfillment-center.md
+            - name: Videoanalys – objekt- och rörelseidentifiering
+              href: retail/architecture-video-analytics.md
+        - name: Energi
+          items:
+            - name: Översikt
+              href: energy/overview-iot-central-energy.md
+            - name: Arkitektur för smarta mätarprogram
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Arkitektur för solpanelsprogram
+              href: energy/concept-iot-central-solar-panel-app.md
+        - name: Myndigheter
+          items:
+            - name: Översikt
+              href: government/overview-iot-central-government.md
+            - name: Arkitektur för ansluten avfalls övervakning
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Arkitektur för övervakning av vatten förbrukning
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Arkitektur för övervakning av vatten kvalitet
+              href: government/concepts-waterqualitymonitoring-architecture.md
+        - name: Sjukvård
+          items:
+            - name: Översikt
+              href: healthcare/overview-iot-central-healthcare.md
+            - name: Arkitektur för kontinuerlig övervakning av patienter
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: Vad är enhetsmallar?
       href: core/concepts-device-templates.md
     - name: Enhetsanslutning
@@ -221,6 +231,8 @@
           href: core/howto-create-custom-analytics.md
         - name: Visualisera dina data i Power BI
           href: core/howto-connect-powerbi.md
+        - name: Anslut ditt program med Dynamics 365 fält tjänster
+          href: government/how-to-configure-connected-field-services.md
     - name: Hantera dina enheter
       items:
         - name: Lägga till och ta bort enheter

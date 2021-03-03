@@ -1,29 +1,29 @@
 ---
-title: Integrera Azure Monitor for VMs karta med Operations Manager | Microsoft Docs
-description: Azure Monitor for VMs identifierar automatiskt program komponenter i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. Den här artikeln beskriver hur du använder Map-funktionen för att automatiskt skapa distribuerade program diagram i Operations Manager.
+title: Integrera VM Insights-karta med Operations Manager | Microsoft Docs
+description: VM Insights identifierar automatiskt program komponenter i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. Den här artikeln beskriver hur du använder Map-funktionen för att automatiskt skapa distribuerade program diagram i Operations Manager.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 0722a1806cc94102f92045c78850d96ed9890d02
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a39f40c2a284a743db258a49f36cb4f13c2a4d1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725500"
 ---
-# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrera System Center Operations Manager med Azure Monitor for VMs kart funktion
+# <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrera System Center Operations Manager med funktioner för VM Insights-mappning
 
-I Azure Monitor for VMs kan du Visa identifierade program komponenter på virtuella Windows-och Linux-datorer (VM: ar) som körs i Azure eller i din miljö. Med den här integreringen mellan kart funktionen och System Center Operations Manager kan du automatiskt skapa distribuerade program diagram i Operations Manager som baseras på de dynamiska beroende Maps i Azure Monitor for VMs. I den här artikeln beskrivs hur du konfigurerar din System Center Operations Manager hanterings grupp så att den stöder den här funktionen.
+I VM Insights kan du Visa identifierade program komponenter på virtuella Windows-och Linux-datorer (VM: ar) som körs i Azure eller i din miljö. Med den här integrationen mellan kart funktionen och System Center Operations Manager kan du automatiskt skapa distribuerade program diagram i Operations Manager som baseras på de dynamiska beroende Maps i VM Insights. I den här artikeln beskrivs hur du konfigurerar din System Center Operations Manager hanterings grupp så att den stöder den här funktionen.
 
 >[!NOTE]
->Om du redan har distribuerat Tjänstkarta kan du Visa dina kartor i Azure Monitor for VMs, som innehåller ytterligare funktioner för att övervaka hälso tillstånd och prestanda för virtuella datorer. Kart funktionen i Azure Monitor for VMs är avsedd att ersätta den fristående Tjänstkarta-lösningen. Läs mer i [Azure Monitor for VMS översikt](../vm/vminsights-overview.md).
+>Om du redan har distribuerat Tjänstkarta kan du Visa dina kartor i VM Insights, som innehåller ytterligare funktioner för att övervaka hälso tillstånd och prestanda för virtuella datorer. Kart funktionen i VM Insights är avsedd att ersätta den fristående Tjänstkarta-lösningen. Mer information finns i [Översikt över VM-insikter](../vm/vminsights-overview.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En System Center Operations Manager hanterings grupp (2012 R2 eller senare).
-* En Log Analytics arbets yta som har kon figurer ATS för att stödja Azure Monitor for VMs.
+* En Log Analytics arbets yta som har kon figurer ATS för att stödja VM-insikter.
 * En eller flera virtuella Windows-och Linux-datorer eller fysiska datorer som övervakas av Operations Manager och skickar data till Log Analytics-arbetsytan. Linux-servrar som rapporterar till en Operations Manager hanterings grupp måste konfigureras för att ansluta direkt till Azure Monitor. Mer information finns i översikten samla in [logg data med Log Analytics agenten](../agents/log-analytics-agent.md).
 * Ett huvud namn för tjänsten med åtkomst till den Azure-prenumeration som är associerad med Log Analytics-arbetsytan. Mer information finns i [skapa ett huvud namn för tjänsten](#create-a-service-principal).
 
@@ -43,7 +43,7 @@ När du har installerat Tjänstkarta hanterings paketet visas en ny nod **tjäns
 >[!NOTE]
 >[Operations Management Suite var en samling tjänster](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) som innehöll Log Analytics, är nu en del av [Azure Monitor](../overview.md).
 
-Gör så här för att konfigurera Azure Monitor for VMs Map-integrering:
+Gör följande för att konfigurera integrering av VM Insights-mappning:
 
 1. Öppna konfigurations guiden i fönstret **tjänstkarta översikt** genom att klicka på **Lägg till arbets yta**.  
 
@@ -66,7 +66,7 @@ Gör så här för att konfigurera Azure Monitor for VMs Map-integrering:
     För att integreringen ska kunna bygga ett distribuerat program diagram för en server måste servern vara:
 
    * Övervakad av Operations Manager
-   * Konfigurerad att rapportera till den Log Analytics arbets ytan som kon figurer ATS med Azure Monitor for VMs
+   * Konfigurerad att rapportera till den Log Analytics arbets ytan som kon figurer ATS med VM Insights
    * Visas i gruppen Tjänstkarta servrar
 
      ![Konfigurations gruppen Operations Manager](media/service-map-scom/scom-config-group.png)
@@ -92,7 +92,7 @@ Mappen Tjänstkarta innehåller fyra noder:
   >[!NOTE]
   >De här aviseringarna är inte Log Analytics-aviseringar som synkroniseras med Operations Manager, de genereras i hanterings gruppen baserat på arbets flöden som definierats i Tjänstkarta hanterings paketet.
 
-* **Servrar**: visar de övervakade servrar som är konfigurerade för synkronisering från Azure Monitor for VMS Map-funktion.
+* **Servrar**: visar de övervakade servrar som kon figurer ATS för synkronisering från funktionen för mappning av virtuell dator.
 
     ![Fönstret Operations Manager övervaknings servrar](media/service-map-scom/scom-monitoring-servers.png)
 
@@ -117,7 +117,7 @@ Du kan bara konfigurera en Log Analytics arbets yta i den här versionen.
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurera regler och åsidosättningar
 
-En regel, *Microsoft.SystemCenter. ServiceMapImport. Rule*, hämtar regelbundet information från Azure Monitor for VMS kart funktion. Om du vill ändra synkroniseringsfrekvensen kan du åsidosätta regeln och ändra värdet för parametern **IntervalMinutes**.
+En regel, *Microsoft.SystemCenter. ServiceMapImport. Rule*, hämtar regelbundet information från funktionen för VM Insights-mappning. Om du vill ändra synkroniseringsfrekvensen kan du åsidosätta regeln och ändra värdet för parametern **IntervalMinutes**.
 
 ![Fönstret Operations Manager åsidosätter egenskaper](media/service-map-scom/scom-overrides.png)
 
@@ -131,8 +131,8 @@ En regel, *Microsoft.SystemCenter. ServiceMapImport. Rule*, hämtar regelbundet 
 I den aktuella designen presenteras följande problem och begränsningar:
 
 * Du kan bara ansluta till en enda Log Analytics-arbetsyta.
-* Även om du kan lägga till servrar i gruppen Tjänstkarta servrar manuellt via fönstret **redigering** , synkroniseras inte kartorna för dessa servrar direkt. De kommer att synkroniseras från Azure Monitor for VMs Map-funktionen under nästa synkronisering.
-* Om du gör ändringar i de distribuerade program diagrammen som skapats av hanterings paketet kommer ändringarna förmodligen att skrivas över vid nästa synkronisering med Azure Monitor for VMs.
+* Även om du kan lägga till servrar i gruppen Tjänstkarta servrar manuellt via fönstret **redigering** , synkroniseras inte kartorna för dessa servrar direkt. De kommer att synkroniseras från funktionen för VM Insights-mappning under nästa synkronisering.
+* Om du gör ändringar i de distribuerade program diagrammen som skapats av hanterings paketet kommer ändringarna förmodligen att skrivas över vid nästa synkronisering med VM-insikter.
 
 ## <a name="create-a-service-principal"></a>Skapa ett huvudnamn för tjänsten
 
@@ -144,5 +144,5 @@ Officiella Azure-dokumentation om hur du skapar ett huvud namn för tjänsten fi
 
 ### <a name="suggestions"></a>Förslag
 
-Har du några kommentarer till oss om integrering med Azure Monitor for VMs kart funktion eller den här dokumentationen? Besök vår [användares röst sida](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)där du kan föreslå funktioner eller rösta på befintliga förslag.
+Har du några kommentarer till oss om integrering med funktionen för mappning av VM-insikter eller den här dokumentationen? Besök vår [användares röst sida](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)där du kan föreslå funktioner eller rösta på befintliga förslag.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699308"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Vanliga frågor och svar
 
@@ -61,7 +61,7 @@ Ja. Om du vill installera ytterligare komponenter eller anpassa kluster konfigur
 
 - [HDInsight-programplattform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) för att installera program.
 
-En lista över komponenter som stöds finns i [vilka Apache Hadoop-komponenter och versioner som är tillgängliga med HDInsight?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
+En lista över komponenter som stöds finns i [vilka Apache Hadoop-komponenter och versioner som är tillgängliga med HDInsight?](./hdinsight-component-versioning.md)
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kan jag uppgradera de enskilda komponenterna som är förinstallerade i klustret?
 
@@ -234,7 +234,7 @@ Gör något av följande:
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Hur kan jag konfigurera granskning för mitt Blob Storage-konto?
 
-Om du vill granska Blob Storage-konton konfigurerar du övervakning med hjälp av proceduren i [övervaka ett lagrings konto i Azure Portal](../storage/common/storage-monitor-storage-account.md). En HDFS – Gransknings logg innehåller bara gransknings information för det lokala HDFS-filsystemet (hdfs://mycluster).  Den omfattar inte åtgärder som utförs på Fjärrlagring.
+Om du vill granska Blob Storage-konton konfigurerar du övervakning med hjälp av proceduren i [övervaka ett lagrings konto i Azure Portal](../storage/common/manage-storage-analytics-logs.md). En HDFS – Gransknings logg innehåller bara gransknings information för det lokala HDFS-filsystemet (hdfs://mycluster).  Den omfattar inte åtgärder som utförs på Fjärrlagring.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Hur kan jag överföra filer mellan en BLOB-behållare och en HDInsight-Head-nod?
 
@@ -277,7 +277,7 @@ När du har skapat en Edge-nod kan du ansluta till den med hjälp av SSH på por
 
 Du använder sparade skript för att anpassa nya arbetsnoder som läggs till i klustret genom skalnings åtgärder. Bestående skript gäller inte för Edge-noder.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Vad är REST API anrop för att hämta en Tez från klustret?
 

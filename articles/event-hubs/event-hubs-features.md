@@ -2,13 +2,13 @@
 title: Översikt över funktioner – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om funktioner och terminologi i Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/19/2021
+ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791954"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739083"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funktioner och terminologi i Azure Event Hubs
 
@@ -47,7 +47,12 @@ Event Hubs garanterar att alla händelser som delar ett nyckel värde lagras til
 
 ### <a name="event-retention"></a>Kvarhållning av händelser
 
-Publicerade händelser tas bort från en Händelsehubben baserat på en konfigurerbar, tidsbaserad bevarande princip. Standardvärdet och kortast möjliga kvarhållningsperiod är 1 dag (24 timmar). För Event Hubs standard är den maximala kvarhållningsperioden 7 dagar. För Event Hubs Dedicated är den högsta kvarhållningsperioden 90 dagar.
+Publicerade händelser tas bort från en Händelsehubben baserat på en konfigurerbar, tidsbaserad bevarande princip. Här följer några viktiga punkter:
+
+- **Standardvärdet** och **kortast** möjliga kvarhållningsperiod är **1 dag (24 timmar)**.
+- För Event Hubs **standard** är den maximala kvarhållningsperioden **7 dagar**. 
+- För Event Hubs **dedikerad** är den högsta kvarhållningsperioden **90 dagar**.
+- Om du ändrar kvarhållningsperioden gäller den för alla meddelanden, inklusive meddelanden som redan finns i händelsehubben. 
 
 > [!NOTE]
 > Event Hubs är en händelse Ströms motor i real tid och är inte avsedd att användas i stället för en databas och/eller som ett permanent Arkiv för händelse strömmar med oändligt kvarhållna händelser. 
@@ -117,6 +122,9 @@ En *förskjutning* är en händelses position i en partition. Föreställ dig en
 *Att skapa kontrollpunkter* är en process genom vilken läsare markerar eller sparar sin position inom en händelsesekvens i en partition. Att skapa kontrollpunkter är konsumentens ansvar och görs för varje partition i en konsumentgrupp. Det här ansvaret innebär att varje läsare i partitionen måste hålla reda på sin nuvarande position i händelseströmmen för varje konsumentgrupp. Läsaren kan sedan informera tjänsten när de anser att dataströmmen är klar.
 
 Om en läsare kopplar från en partition och den sedan återansluts kan han börja läsa vid den kontrollpunkt som tidigare skickades in av den senaste läsaren i den aktuella partitionen inom just den konsumentgruppen. När läsaren ansluter skickar den förskjutningen till händelsehubben för att ange den plats där du vill börja läsa. På så sätt kan du använda kontrollpunkter både till att markera händelser som ”klara” i underordnade program och som skydd i händelse av en redundansväxling mellan läsare som körs på olika datorer. Du kan återgå till äldre data genom att ange en lägre offset i den här kontrollpunktsprocessen. Den här mekanismen möjliggör både återhämtning vid redundansväxlingar och återuppspelning av händelseströmmar.
+
+> [!IMPORTANT]
+> Förskjutningar tillhandahålls av Event Hubss tjänsten. Det är konsumentens ansvar att kontroll punkten ska bearbetas som händelser.
 
 > [!NOTE]
 > Om du använder Azure Blob Storage som kontroll punkts Arkiv i en miljö som har stöd för en annan version av Storage BLOB SDK än vad som normalt är tillgängligt på Azure, måste du använda kod för att ändra Storage Service API-versionen till den version som stöds av den aktuella miljön. Om du till exempel kör [Event Hubs på en Azure Stack hubb version 2002](/azure-stack/user/event-hubs-overview)är den högsta tillgängliga versionen för lagrings tjänsten version 2017-11-09. I så fall måste du använda kod för att rikta Storage Service API-versionen till 2017-11-09. Ett exempel på hur du riktar in en speciell Storage API-version finns i följande exempel på GitHub: 

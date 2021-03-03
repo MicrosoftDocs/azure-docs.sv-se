@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713413"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -110,7 +110,7 @@ Azure NetApp Files tillhandahåller volym prestanda mått. Du kan också använd
 
 ### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Vilken prestanda påverkas av Kerberos på NFSv 4.1?
 
-Se [prestanda påverkan för Kerberos på nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance) för information om säkerhets alternativ för nfsv 4.1, prestanda vektorer som testas och den förväntade prestanda påverkan. 
+Se [prestanda påverkan för Kerberos på nfsv 4.1-volymer](performance-impact-kerberos.md) för information om säkerhets alternativ för nfsv 4.1, de prestanda vektorer som testas och den förväntade prestanda påverkan. 
 
 ## <a name="nfs-faqs"></a>Vanliga frågor och svar om NFS
 

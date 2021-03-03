@@ -6,18 +6,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: 16f55dc88ed2d2d019a2fed355a14741263c20af
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735086"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Självstudie: skapa och konfigurera en Application Gateway som värd för flera webbplatser med hjälp av Azure Portal
 
-Du kan använda Azure Portal för att [Konfigurera värd för flera webbplatser](multiple-site-overview.md) när du skapar en [Programgateway](overview.md). I den här självstudien definierar du Server dels adress grupper med hjälp av virtuella datorer. Du konfigurerar sedan lyssnare och regler baserat på de domäner du äger för att kontrollera att webbtrafiken anländer till rätt servrar i poolerna. I den här självstudien förutsätts att du äger flera domäner. Vi använder *www.contoso.com* och *www.fabrikam.com* som exempel.
+Du kan använda Azure Portal för att [Konfigurera värd för flera webbplatser](multiple-site-overview.md) när du skapar en [Programgateway](overview.md). I den här självstudien definierar du Server dels adress grupper med hjälp av virtuella datorer. Du konfigurerar sedan lyssnare och regler baserat på två domäner för att kontrol lera att webb trafiken kommer till rätt servrar i poolerna. I den här självstudien används exempel på *www.contoso.com* och *www.fabrikam.com*.
 
 I den här guiden får du lära dig att:
 
@@ -47,8 +47,8 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 1. På fliken **grundläggande** anger du dessa värden för följande Programgateway-inställningar:
 
-   - **Resurs grupp** : Välj **myResourceGroupAG** för resurs gruppen. Om den inte finns väljer du **Skapa ny** för att skapa den.
-   - **Namn på Application Gateway** : ange *myAppGateway* som namn på Application Gateway.
+   - **Resurs grupp**: Välj **myResourceGroupAG** för resurs gruppen. Om den inte finns väljer du **Skapa ny** för att skapa den.
+   - **Namn på Application Gateway**: ange *myAppGateway* som namn på Application Gateway.
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Skapa Application Gateway":::
 
@@ -56,7 +56,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
     Under **Konfigurera virtuellt nätverk** väljer du **Skapa nytt** för att skapa ett nytt virtuellt nätverk. I fönstret **Skapa virtuellt nätverk** som öppnas anger du följande värden för att skapa det virtuella nätverket och två undernät:
 
-    - **Namn** : ange *myVNet* som namn på det virtuella nätverket.
+    - **Namn**: ange *myVNet* som namn på det virtuella nätverket.
 
     - **Under näts namn** (Application Gateway undernät): **under nätets** rutnät visas ett undernät med namnet *default*. Ändra namnet på det här under nätet till *myAGSubnet*.<br>Undernätet för en programgateway kan endast innehålla programgatewayer. Inga andra resurser är tillåtna.
 
@@ -68,7 +68,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="Skapa VNet":::
     
-3. På fliken **grundläggande** accepterar du standardvärdena för de andra inställningarna och väljer sedan **Nästa: frontend** -klienter.
+3. På fliken **grundläggande** accepterar du standardvärdena för de andra inställningarna och väljer sedan **Nästa: frontend**-klienter.
 
 ### <a name="frontends-tab"></a>Fliken frontend
 
@@ -76,7 +76,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
    > [!NOTE]
    > För Application Gateway v2 SKU: n kan du bara välja **offentlig** IP-konfiguration för klient delen. Den privata klient delens IP-konfiguration är för närvarande inte aktive rad för denna v2-SKU
 
-2. Välj **Skapa ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
+2. Välj **Lägg till ny** för den **offentliga IP-adressen** och ange *myAGPublicIPAddress* för den offentliga IP-adressen och välj sedan **OK**. 
 
      :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Skapa ett annat VNet":::
 
@@ -86,15 +86,16 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 Backend-poolen används för att dirigera begär anden till backend-servrar som hanterar begäran. Backend-pooler kan vara nätverkskort, skalnings uppsättningar för virtuella datorer, offentliga IP-adresser, interna IP-adresser, fullständigt kvalificerade domän namn (FQDN) och backend-ändar för flera klienter som Azure App Service. I det här exemplet ska du skapa en tom backend-pool med din Application Gateway och sedan lägga till Server dels mål i backend-poolen.
 
-1. **På fliken Server** delar väljer du **+ Lägg till en backend-pool**.
+1. **På fliken Server** delar väljer du **Lägg till en backend-pool**.
 
 2. I fönstret **Lägg till en server dels grupp** som öppnas anger du följande värden för att skapa en tom backend-pool:
 
-    - **Namn** : ange *contosoPool* som namn på backend-poolen.
-    - **Lägg till backend-pool utan mål** : Välj **Ja** om du vill skapa en backend-pool utan mål. Du kommer att lägga till Server dels mål när du har skapat programgatewayen.
+    - **Namn**: ange *contosoPool* som namn på backend-poolen.
+    - **Lägg till backend-pool utan mål**: Välj **Ja** om du vill skapa en backend-pool utan mål. Du kommer att lägga till Server dels mål när du har skapat programgatewayen.
 
 3. I fönstret **Lägg till en server dels grupp** väljer du **Lägg till** för att spara konfigurationen av backend-poolen och återgår till fliken back **ändar** .
-4. Lägg nu till en annan backend-pool med namnet *fabrikamPool*.
+4. Lägg nu till en annan backend-pool med namnet *fabrikamPool* på samma sätt som du lade till i den tidigare poolen.
+1. Välj **Lägg till**.
 
     :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Skapa server delar":::
 
@@ -104,18 +105,19 @@ Backend-poolen används för att dirigera begär anden till backend-servrar som 
 
 På fliken **konfiguration** ansluter du klient dels-och backend-pooler som du skapade med en regel för routning.
 
-1. Välj **Lägg till en regel** i kolumnen **routningsregler** .
+1. Välj **Lägg till en regel för routning** i kolumnen **routningsregler** .
 
 2. I fönstret **Lägg till regel för routning** som öppnas anger du *contosoRule* som **regel namn**.
 
 3. En regel för routning kräver en lyssnare. Ange följande värden för lyssnaren på fliken **lyssnare** i fönstret **Lägg till regel för vidarebefordran** :
 
-    - **Namn på lyssnare** : ange *contosoListener* som namn på lyssnaren.
+    - **Regel namn**: *contosoRule*.
+    - **Lyssnar namn**: *contosoListener*.
     - **IP-adress för klient** del: Välj **offentlig** för att välja den offentliga IP-adress som du skapade för klient delen.
 
-   Under **ytterligare inställningar** :
-   - **Typ av lyssnare** : flera platser
-   - **Värdnamn** : **www.contoso.com**
+   Under **ytterligare inställningar**:
+   - **Typ av lyssnare**: flera platser
+   - **Värdnamn**: **www.contoso.com**
 
    Acceptera standardvärdena för de andra inställningarna på fliken **lyssnare** och välj sedan fliken **backend-mål** för att konfigurera resten av regeln.
 
@@ -123,10 +125,10 @@ På fliken **konfiguration** ansluter du klient dels-och backend-pooler som du s
 
 4. På fliken **backend-mål** väljer du **ContosoPool** för **Server dels målet**.
 
-5. För **http-inställningen** väljer du **Skapa ny** för att skapa en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *contosoHTTPSetting* som **namn på http-inställningen**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
+5. För **http-inställningen** väljer du **Lägg till ny** för att skapa en ny http-inställning. HTTP-inställningen avgör hur routningsregler fungerar. I fönstret **Lägg till en HTTP-inställning** som öppnas anger du *contosoHTTPSetting* som **namn på http-inställningen**. Acceptera standardvärdena för de andra inställningarna i fönstret **Lägg till en HTTP-inställning** och välj sedan **Lägg till** för att återgå till fönstret **Lägg till regel för routning** . 
 
 6. I fönstret **Lägg till regel för routning** väljer du **Lägg till** för att spara regeln för Routning och återgå till fliken **konfiguration** .
-7. Välj **Lägg till en regel** och Lägg till en liknande regel, lyssnare, Server dels mål och http-inställning för fabrikam.
+7. Välj **Lägg till en regel för routning** och Lägg till en liknande regel, lyssnare, Server dels mål och http-inställning för fabrikam.
 
      :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam-regel":::
 
@@ -144,24 +146,26 @@ I det här exemplet ska du använda virtuella datorer som mål Server del. Du ka
 
 Om du vill lägga till Server dels mål gör du följande:
 
-1. Skapa två nya virtuella datorer, *contosoVM* och *fabrikamVM* , som ska användas som backend-servrar.
+1. Skapa två nya virtuella datorer, *contosoVM* och *fabrikamVM*, som ska användas som backend-servrar.
 2. Installera IIS på de virtuella datorerna för att kontrol lera att Application Gateway har skapats.
 3. Lägg till backend-servrarna i backend-poolerna.
 
 ### <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 
 1. Välj **Skapa en resurs** på Azure-portalen. Fönstret **Nytt** visas.
-2. Välj **Compute** och välj sedan **Windows Server 2016 Data Center** i listan **populär** . Sidan **Skapa en virtuell dator** visas.<br>Application Gateway kan dirigera trafik till vilken typ av virtuell dator som helst som används i dess backend-pool. I det här exemplet använder du ett Windows Server 2016 Data Center.
+2. Välj **Windows Server 2016 Data Center** i listan **populär** . Sidan **Skapa en virtuell dator** visas.<br>Application Gateway kan dirigera trafik till vilken typ av virtuell dator som helst som används i dess backend-pool. I det här exemplet använder du ett Windows Server 2016 Data Center.
 3. Ange dessa värden på fliken **Grundläggande inställningar** för följande inställningar för virtuella datorer:
 
-    - **Resurs grupp** : Välj **myResourceGroupAG** som resurs grupps namn.
-    - **Namn på virtuell dator** : ange *contosoVM* som namn på den virtuella datorn.
+    - **Prenumeration**: Välj din prenumeration.
+    - **Resurs grupp**: Välj **myResourceGroupAG** som resurs grupps namn.
+    - **Namn på virtuell dator**: ange *contosoVM* som namn på den virtuella datorn.
+    - **Region**: Välj samma region som du använde tidigare.
     - **Användar** namn: Ange ett namn för administratörs användar namnet.
-    - **Lösen ord** : Ange ett lösen ord för administratören.
+    - **Lösen ord**: Ange ett lösen ord för administratören.
 1. Godkänn de andra standardinställningarna och välj sedan **Nästa: diskar**.  
 2. Godkänn standardvärdena på fliken **diskar** och välj sedan **Nästa: nätverk**.
 3. På fliken **Nätverk** kontrollerar du att **myVNet** har valts för **Virtuellt nätverk** och att **Undernät** är inställt på **myBackendSubnet**. Godkänn de andra standardinställningarna och välj sedan **Nästa: hantering**.<br>Application Gateway kan kommunicera med instanser utanför det virtuella nätverk som det finns i, men du måste se till att det finns en IP-anslutning.
-4. På fliken **Hantering** anger du **Startdiagnostik** till **Av**. Acceptera de övriga standardinställningarna och välj sedan **Granska + skapa**.
+4. På fliken **hantering** ställer du in **startdiagnostik** som ska **inaktive ras**. Acceptera de övriga standardinställningarna och välj sedan **Granska + skapa**.
 5. Gå igenom inställningarna på fliken **Granska + skapa** och åtgärda eventuella verifieringsfel och välj sedan **Skapa**.
 6. Vänta på att skapandet av den virtuella datorn är klart innan du fortsätter.
 
@@ -197,9 +201,9 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
 3. Välj **contosoPool**.
 
-4. Välj **Virtuell dator** i listrutan under **Mål**.
+4. Under **måltyp** väljer du **virtuell dator** i den nedrullningsbara listan.
 
-5. Under **virtuella datorer** och **nätverks gränssnitt** väljer du den virtuella **contosoVM** -datorn och den är kopplad till nätverks gränssnittet från List rutorna.
+5. Under **mål** väljer du den virtuella **contosoVM** -datorns nätverks gränssnitt i list rutan.
 
     ![Lägga till serverdelsservrar](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
@@ -208,23 +212,57 @@ I det här exemplet installerar du bara IIS på de virtuella datorerna för att 
 
 Vänta tills distributionen har slutförts innan du fortsätter till nästa steg.
 
-## <a name="create-a-www-a-record-in-your-domains"></a>Skapa en www A-post i dina domäner
+## <a name="edit-your-hosts-file"></a>Redigera värd filen
 
-När Application Gateway har skapats med dess offentliga IP-adress kan du hämta IP-adressen och använda den för att skapa en post i dina domäner. 
+När Application Gateway har skapats med dess offentliga IP-adress kan du hämta IP-adressen och använda den för att redigera värd filen för att lösa `www.contoso.com` och `www.fabrikam.com` 
 
 1. Klicka på **alla resurser** och sedan på **myAGPublicIPAddress**.
 
     ![Registrera DNS-adress för Application Gateway](./media/create-multiple-sites-portal/public-ip.png)
 
-2. Kopiera IP-adressen och Använd den som värde för en ny *www* a-post i dina domäner.
+2. Kopiera IP-adressen och Använd den som värdet för nya poster i `hosts` filen.
+1. Öppna en administrativ kommando tolk på den lokala datorn och gå till `c:\Windows\System32\drivers\etc` .
+1. Öppna `hosts` filen och Lägg till följande poster, där `x.x.x.x` är programgatewayens offentliga IP-adress:
+   ```dos
+   # Copyright (c) 1993-2009 Microsoft Corp.
+   #
+   # This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+   #
+   # This file contains the mappings of IP addresses to host names. Each
+   # entry should be kept on an individual line. The IP address should
+   # be placed in the first column followed by the corresponding host name.
+   # The IP address and the host name should be separated by at least one
+   # space.
+   #
+   # Additionally, comments (such as these) may be inserted on individual
+   # lines or following the machine name denoted by a '#' symbol.
+   #
+   # For example:
+   #
+   #      102.54.94.97     rhino.acme.com          # source server
+   #       38.25.63.10     x.acme.com              # x client host
+   
+   # localhost name resolution is handled within DNS itself.
+   #    127.0.0.1       localhost
+   #    ::1             localhost
+   x.x.x.x www.contoso.com
+   x.x.x.x www.fabrikam.com
 
+   ```
+1. Spara filen.
+1. Kör följande kommandon för att läsa in och visa ändringarna i värd filen:
+   ```dos
+    ipconfig/registerdns
+    ipconfig/displaydns
+   ```
+   
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 
-1. Ange domännamnet i adressfältet i webbläsaren. Till exempel `http://www.contoso.com`.
+1. Skriv ett domän namn i adress fältet i webbläsaren. Till exempel `http://www.contoso.com`.
 
     ![Testa contoso-webbplatsen i programgatewayen](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 
-2. Om du ändrar adressen till din andra domän bör du se något som liknar följande exempel:
+2. Ändra adressen till den andra domänen så ser du något som liknar följande exempel:
 
     ![Testa fabrikam-webbplatsen i programgatewayen](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
@@ -238,6 +276,9 @@ Så här tar du bort resursgruppen:
 2. På sidan **Resursgrupper** söker du efter och väljer **myResourceGroupAG**.
 3. Välj **Ta bort resursgrupp** på sidan **Resursgrupp**.
 4. Ange *myResourceGroupAG* för **Skriv resurs gruppens namn** och välj sedan **ta bort**.
+
+Så här återställer du värd filen:
+1. Ta bort- `www.contoso.com` och- `www.fabrikam.com` raderna från hosts-filen och kör `ipconfig/registerdns` och `ipconfig/flushdns` från kommando tolken.
 
 ## <a name="next-steps"></a>Nästa steg
 

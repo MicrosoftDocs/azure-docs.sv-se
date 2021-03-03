@@ -6,12 +6,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: d8a21a5583ec4655a2ee8593e50be5c7b5f702b7
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702121"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Gransknings loggning i Azure Database for PostgreSQL-storskalig (citus)
 
@@ -20,7 +20,7 @@ Gransknings loggning av databas aktiviteter i Azure Database for PostgreSQL-stor
 > [!IMPORTANT]
 > pgAudit är en för hands version på Azure Database for PostgreSQL-storskalig (citus)
 
-Om du vill ha Azures resurs nivå loggar för åtgärder som beräkning och lagrings skalning, se [Azure aktivitets logg](../azure-monitor/platform/platform-logs-overview.md).
+Om du vill ha Azures resurs nivå loggar för åtgärder som beräkning och lagrings skalning, se [Azure aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Användnings överväganden
 Som standard genereras pgAudit-logginstruktioner tillsammans med dina vanliga logginstruktioner med hjälp av standardfunktionen för loggning i Postgres. I Azure Database for PostgreSQL-storskalig (citus) kan du konfigurera alla loggar så att de skickas till Azure Monitor logg lager för senare analyser i Log Analytics. Om du aktiverar Azure Monitor resurs loggning skickas loggarna automatiskt (i JSON-format) till Azure Storage, Event Hubs och/eller Azure Monitor loggar, beroende på vad du väljer.
@@ -54,9 +54,9 @@ Varje gransknings post anges i `AUDIT:` närheten av logg radens början. Format
 För att snabbt komma igång, ange `pgaudit.log` till `WRITE` och öppna dina Server loggar för att granska utdata. 
 
 ## <a name="viewing-audit-logs"></a>Visa gransknings loggar
-Hur du kommer åt loggarna beror på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
+Hur du kommer åt loggarna beror på vilken slut punkt du väljer. Information om Azure Storage finns i artikeln [Logga lagrings konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) . Information om Event Hubs finns i artikeln [Stream Azure-loggar](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) .
 
-För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../azure-monitor/log-query/log-query-overview.md) .
+För Azure Monitor loggar skickas loggar till den valda arbets ytan. Postgres-loggarna använder samlings läget **AzureDiagnostics** , så att de kan frågas från AzureDiagnostics-tabellen. Fälten i tabellen beskrivs nedan. Läs mer om frågor och aviseringar i Översikt över [Azure Monitor loggar frågor](../azure-monitor/logs/log-query-overview.md) .
 
 Du kan använda den här frågan för att komma igång. Du kan konfigurera aviseringar baserat på frågor.
 

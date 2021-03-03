@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968440"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP Fiori
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig hur du integrerar SAP Fiori med Azure
 * Hantera dina konton på en central plats – Azure Portal.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -146,7 +146,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![välj metadatafil](common/browse-upload-metadata.png)
 
-    c. När metadatafilen har laddats upp fylls **ID** -och **svars-URL** -värdena automatiskt i fönstret **grundläggande SAML-konfiguration** . I rutan **inloggnings-URL** anger du en URL som har följande mönster: `https:\//\<your company instance of SAP Fiori\>` .
+    c. När metadatafilen har laddats upp fylls **ID** -och **svars-URL** -värdena automatiskt i fönstret **grundläggande SAML-konfiguration** . I rutan **inloggnings-URL** anger du en URL som har följande mönster: `https://<your company instance of SAP Fiori>` .
 
     > [!NOTE]
     > Några kunder rapporterar fel relaterade till felaktigt konfigurerade **svars-URL** -värden. Om du ser det här felet kan du använda följande PowerShell-skript för att ange rätt svars-URL för din instans:
@@ -191,7 +191,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

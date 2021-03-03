@@ -4,16 +4,17 @@ description: Lär dig hur du kopierar data från och till IBM Informix genom att
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 02/20/2021
 ms.author: jingwang
-ms.openlocfilehash: 95ecb44f154ab84a60a1ee673826d83fc51305b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 23fc5cabb947f579177a26afc6baec873f2df154
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383508"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727914"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopiera data från och till IBM Informix med Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln beskriver hur du använder kopierings aktiviteten i Azure Data Factory för att kopiera data från ett IBM-data lager i Informix. Den bygger på [översikts artikeln om kopierings aktiviteten](copy-activity-overview.md) som visar en översikt över kopierings aktiviteten.
@@ -27,12 +28,13 @@ Den här Informix-anslutningen stöds för följande aktiviteter:
 
 Du kan kopiera data från en Informix-källa till alla mottagar data lager som stöds, eller kopiera från alla käll data lager som stöds till Informix-mottagare. En lista över data lager som stöds som källor/mottagare av kopierings aktiviteten finns i tabellen över [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
 
+
 ## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda den här Informix-anslutningen måste du:
 
 - Konfigurera en egen värd Integration Runtime. Mer information finns i artikeln om [egen värd integration runtime](create-self-hosted-integration-runtime.md) .
-- Installera Informix ODBC-drivrutinen för data lagret på den Integration Runtime datorn. Du kan till exempel använda driv rutinen "IBM INFORMIX Informix driv rutin (64-bitars)".
+- Installera Informix ODBC-drivrutinen för data lagret på den Integration Runtime datorn. Om du vill ha mer information om driv rutins installation och installation kan du läsa artikeln om driv rutins [Guide för Informix ODBC](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm) i IBM Knowledge Center eller kontakta IBM support team för att få installations vägledning
 
 ## <a name="getting-started"></a>Komma igång
 

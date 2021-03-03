@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b69e701177c6f017388521ed05c37de1271c7e60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689342"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Självstudie: utveckla en exempel SCIM-slutpunkt
 
@@ -57,6 +57,8 @@ Stegen här distribuerar SCIM-slutpunkten till en tjänst med hjälp av [Visual 
     ![Skärm bild som visar hur du skapar en ny app service.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-3.png)
 
 1. Välj den resurs grupp som du vill använda och välj **publicera**.
+
+    ![Skärm bild som visar publicering av en ny app service.](media/use-scim-to-build-users-and-groups-endpoints/cloud-publish-4.png)
 
 1. Gå till programmet i **Azure App Service**  >  **konfiguration** och välj **ny program inställning** för att lägga till inställningen *Token__TokenIssuer* med värdet `https://sts.windows.net/<tenant_id>/` . Ersätt `<tenant_id>` med ditt Azure AD-klient-ID. Om du vill testa SCIM-slutpunkten med [Postman](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)lägger du till en *ASPNETCORE_ENVIRONMENT* -inställning med värdet `Development` .
 

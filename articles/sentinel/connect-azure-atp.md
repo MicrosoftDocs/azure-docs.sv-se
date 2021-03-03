@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715011"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Anslut data från Microsoft Defender för identitet (tidigare Azure Advanced Threat Protection)
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656079"
 > Microsoft Defender för identitets data Connector i Azure Sentinel är för närvarande en offentlig för hands version.
 > Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Du kan strömma loggar från [Microsoft Defender för identitet](/azure-advanced-threat-protection/what-is-atp) i Azure Sentinel med ett enda klick.
+Den här artikeln beskriver hur du strömmar säkerhets aviseringar från [Microsoft Defender för att identifiera identiteter](/azure-advanced-threat-protection/what-is-atp) i Azure Sentinel. 
+
+Om du vill vidarebefordra hälso aviseringar, förutom säkerhets aviseringar, integrerar du Microsoft Defender för identitet med en Syslog-server. Mer information finns i dokumentationen till [Microsoft Defender för identitet](/defender-for-identity/setting-syslog). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor för områdes mappningar för behållare
-description: Beskriver de region mappningar som stöds mellan Azure Monitor för behållare, Log Analytics arbets yta och anpassade mått.
+title: Region mappningar för container Insights
+description: Beskriver de region mappningar som stöds mellan behållar insikter, Log Analytics arbets yta och anpassade mått.
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9b77242de3e7845a97874b663266103bf00a8e66
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f9e910b1352109608becb82609e85e26d27d2cd1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624905"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728883"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Region mappningar som stöds av Azure Monitor för behållare
+# <a name="region-mappings-supported-by-container-insights"></a>Region mappningar som stöds av container Insights
 
- När du aktiverar Azure Monitor för behållare, stöds bara vissa regioner för att länka en Log Analytics arbets yta och ett AKS-kluster och samla in anpassade mått som skickas till Azure Monitor.
+ När du aktiverar container Insights, stöds bara vissa regioner för att länka en Log Analytics-arbetsyta och ett AKS-kluster och samla in anpassade mått som skickas till Azure Monitor.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Mappningar som stöds av Log Analytics Workspace
 
@@ -53,4 +53,4 @@ Insamling av mått från Azure Kubernetes Services (AKS)-kluster noder och podda
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill börja övervaka ditt AKS-kluster läser du [så här aktiverar du Azure Monitor för behållare](container-insights-onboard.md) för att förstå kraven och tillgängliga metoder för att aktivera övervakning.  
+Om du vill börja övervaka ditt AKS-kluster läser du [så här aktiverar du behållar insikter](container-insights-onboard.md) för att förstå krav och tillgängliga metoder för att aktivera övervakning.  

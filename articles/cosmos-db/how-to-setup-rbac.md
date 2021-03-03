@@ -4,14 +4,14 @@ description: Lär dig hur du konfigurerar rollbaserad åtkomst kontroll med Azur
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/02/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663916"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690914"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurera rollbaserad åtkomst kontroll med Azure Active Directory för ditt Azure Cosmos DB-konto (för hands version)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ När du skapar en roll definition måste du ange:
     - `/` (konto nivå),
     - `/dbs/<database-name>` (databas nivå),
     - `/dbs/<database-name>/colls/<container-name>` (container nivå).
+
+> [!NOTE]
+> De åtgärder som beskrivs nedan är för närvarande tillgängliga i:
+> - Azure PowerShell: [AZ. CosmosDB-version 2.0.1-för hands version](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ["cosmosdb-Preview"-tilläggs version 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Använda Azure PowerShell
 
@@ -279,6 +284,11 @@ När du har skapat dina roll definitioner kan du koppla dem till dina AAD-identi
 > [!NOTE]
 > Om du vill skapa en roll tilldelning för ett huvud namn för tjänsten, se till att använda dess **objekt-ID** som finns i avsnittet **företags program** på bladet **Azure Active Directory** Portal.
 
+> [!NOTE]
+> De åtgärder som beskrivs nedan är för närvarande tillgängliga i:
+> - Azure PowerShell: [AZ. CosmosDB-version 2.0.1-för hands version](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ["cosmosdb-Preview"-tilläggs version 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>Använda Azure PowerShell
 
 Tilldela en roll till en identitet:
@@ -354,6 +364,12 @@ Denna ytterligare information flödar i **DataPlaneRequests** -logg kategorin oc
 
 - `aadPrincipalId_g` visar ägar-ID: t för AAD-identiteten som användes för att autentisera begäran.
 - `aadAppliedRoleAssignmentId_g` visar den [roll tilldelning](#role-assignments) som har lösts vid auktorisering av begäran.
+
+## <a name="limits"></a>Gränser
+
+- Du kan skapa upp till 100 roll definitioner och 2 000 roll tilldelningar per Azure Cosmos DB konto.
+- Azure AD Group-matchning stöds för närvarande inte för identiteter som tillhör fler än 200 grupper.
+- Azure AD-token skickas för närvarande som en rubrik med varje enskild begäran som skickas till den Azure Cosmos DB tjänsten, vilket ökar den totala nytto Last storleken.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

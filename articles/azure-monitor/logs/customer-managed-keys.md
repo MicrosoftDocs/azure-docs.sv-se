@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa826e951b9fe34eb27481718b8f026747011e4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621748"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717425"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -25,11 +25,11 @@ Vi rekommenderar att du granskar [begränsningar och](#limitationsandconstraints
 
 Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med hjälp av Microsoft-hanterade nycklar (MMK). Azure Monitor innehåller också ett alternativ för kryptering med hjälp av din egen nyckel som lagras i [Azure Key Vault](../../key-vault/general/overview.md), vilket ger dig kontrollen att återkalla åtkomsten till dina data när som helst. Azure Monitor krypterings användningen är identisk med hur [Azure Storage kryptering](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) fungerar.
 
-Kundhanterad nyckel levereras på [dedikerade kluster](../log-query/logs-dedicated-clusters.md) som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
+Kundhanterad nyckel levereras på [dedikerade kluster](./logs-dedicated-clusters.md) som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
 
 Data som matats in under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Dessa data förblir krypterade med Microsoft-nycklar oavsett kundhanterad nyckel konfiguration, men kontrollen över SSD-data följer [nyckel återkallning](#key-revocation). Vi arbetar med att ha SSD-data krypterade med kundhanterad nyckel under första hälften av 2021.
 
-Log Analytics dedikerade kluster använder en kapacitets reservation [pris modell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) som börjar med 1000 GB/dag.
+Log Analytics dedikerade kluster använder en kapacitets reservation [pris modell](./logs-dedicated-clusters.md#cluster-pricing-model) som börjar med 1000 GB/dag.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Hur kundhanterad nyckel fungerar i Azure Monitor
 
@@ -145,7 +145,7 @@ Kluster stöder två [hanterade identitets typer](../../active-directory/managed
 > [!IMPORTANT]
 > Du kan inte använda användardefinierad hanterad identitet om din Key Vault är i Private-Link (vNet). Du kan använda systemtilldelad hanterad identitet i det här scenariot.
 
-Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
+Följ proceduren som illustreras i [artikeln om dedikerade kluster](./logs-dedicated-clusters.md#creating-a-cluster). 
 
 ## <a name="grant-key-vault-permissions"></a>Bevilja Key Vault behörigheter
 
@@ -253,7 +253,7 @@ Ett svar på GET-begäran bör se ut så här när nyckel uppdateringen är slut
 
 Du måste ha Skriv behörighet till både din arbets yta och ditt kluster för att kunna utföra den här åtgärden, inklusive `Microsoft.OperationalInsights/workspaces/write` och `Microsoft.OperationalInsights/clusters/write` .
 
-Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster).
+Följ proceduren som illustreras i [artikeln om dedikerade kluster](./logs-dedicated-clusters.md#link-a-workspace-to-cluster).
 
 ## <a name="key-revocation"></a>Återkallande av nyckel
 
@@ -387,7 +387,7 @@ Läs mer om [Customer lockbox för Microsoft Azure](../../security/fundamentals/
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed nyckel åtgärder
 
-Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänvisas till i [dedikerat kluster artikel](../log-query/logs-dedicated-clusters.md#change-cluster-properties)
+Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänvisas till i [dedikerat kluster artikel](./logs-dedicated-clusters.md#change-cluster-properties)
 
 - Hämta alla kluster i resurs gruppen  
 - Hämta alla kluster i prenumerationen
@@ -470,8 +470,8 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 
   **Kluster uppdatering**
   -  400--klustrets status tas bort. En asynkron åtgärd pågår. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
-  -  400--KeyVaultProperties är inte tomt men har ett felaktigt format. Se [uppdatering av nyckel identifierare](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
-  -  400--det gick inte att verifiera nyckeln i Key Vault. Kan bero på otillräckliga behörigheter eller när nyckeln inte finns. Kontrol lera att du [ställer in nyckel-och åtkomst principer](../platform/customer-managed-keys.md#grant-key-vault-permissions) i Key Vault.
+  -  400--KeyVaultProperties är inte tomt men har ett felaktigt format. Se [uppdatering av nyckel identifierare](#update-cluster-with-key-identifier-details).
+  -  400--det gick inte att verifiera nyckeln i Key Vault. Kan bero på otillräckliga behörigheter eller när nyckeln inte finns. Kontrol lera att du [ställer in nyckel-och åtkomst principer](#grant-key-vault-permissions) i Key Vault.
   -  400--det går inte att återskapa nyckeln. Key Vault måste anges som mjuk borttagning och rensnings skydd. Se [Key Vault-dokumentation](../../key-vault/general/soft-delete-overview.md)
   -  400--åtgärden kan inte utföras nu. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
   -  400--klustrets status tas bort. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
@@ -492,5 +492,5 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
   -  409---arbets ytans länk eller ta bort länk i processen.
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Log Analytics dedikerad kluster fakturering](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
-- Lär dig om [rätt design av Log Analytics-arbetsytor](../platform/design-logs-deployment.md)
+- Läs mer om [Log Analytics dedikerad kluster fakturering](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- Lär dig om [rätt design av Log Analytics-arbetsytor](./design-logs-deployment.md)

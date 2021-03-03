@@ -1,18 +1,18 @@
 ---
-title: Konfigurera Azure Monitor för behållare agent data insamling | Microsoft Docs
-description: I den här artikeln beskrivs hur du kan konfigurera Azure Monitor för behållare agent för att styra logg insamling för STDOUT/stderr och miljövariabler.
+title: Konfigurera data insamling för container Insights-agent | Microsoft Docs
+description: Den här artikeln beskriver hur du kan konfigurera container Insights-agenten för att styra logg insamling för STDOUT/stderr och miljövariabler.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f21b841bc129012b684d2a1c59eb72989fe9e0e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625373"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708398"
 ---
-# <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurera agentdatainsamling för Azure Monitor för containrar
+# <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurera agent data insamling för container Insights
 
-Azure Monitor för behållare samlar in STDOUT-, stderr-och miljövariabler från behållar arbets belastningar som distribueras till hanterade Kubernetes-kluster från behållarens agent. Du kan konfigurera inställningar för data insamling för agenter genom att skapa en anpassad Kubernetes-ConfigMaps för att styra den här upplevelsen. 
+Behållar insikter samlar in STDOUT-, stderr-och miljövariabler från behållar arbets belastningar som distribueras till hanterade Kubernetes-kluster från behållarens agent. Du kan konfigurera inställningar för data insamling för agenter genom att skapa en anpassad Kubernetes-ConfigMaps för att styra den här upplevelsen. 
 
 Den här artikeln visar hur du skapar ConfigMap och konfigurerar data insamling utifrån dina krav.
 
@@ -142,8 +142,8 @@ Utdata ser ut ungefär så här med antecknings schema versioner:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Azure Monitor för behållare innehåller inte en fördefinierad uppsättning aviseringar. Mer information om hur du skapar rekommenderade aviseringar för hög processor-och minnes användning finns i avsnittet [skapa prestanda aviseringar med Azure Monitor för behållare](./container-insights-log-alerts.md) som stöder DevOps eller operativa processer och procedurer
+- Behållar insikter innehåller inte en fördefinierad uppsättning aviseringar. Läs om hur du skapar rekommenderade aviseringar för hög processor-och minnes användning för att få stöd för DevOps eller operativa processer och procedurer i avsnittet [skapa prestanda aviseringar med behållar insikter](./container-insights-log-alerts.md) .
 
-- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för AKS eller hybrid kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) Azure Monitor för behållare.
+- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande i AKS eller hybrid kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) behållar insikter.
 
 - Visa [exempel på logg frågor](container-insights-log-search.md#search-logs-to-analyze-data) för att se fördefinierade frågor och exempel för att utvärdera eller anpassa för aviseringar, visualisering eller analys av klustren.

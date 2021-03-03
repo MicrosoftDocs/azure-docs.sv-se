@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750694"
 ---
 ## <a name="create-an-image-gallery"></a>Skapa ett bild galleri
 
@@ -93,10 +93,7 @@ Det kan ta en stund att replikera avbildningen till alla mål regioner.
 
 Vi rekommenderar att du delar åtkomst på avbildnings Galleri nivån. Följande vägleder dig genom att dela galleriet som du nyss skapade.
 
-1. Öppna [Azure-portalen](https://portal.azure.com).
-1. I menyn till vänster väljer du **resurs grupper**. 
-1. I listan över resurs grupper väljer du **myGalleryRG**. Bladet för resurs gruppen öppnas.
-1. I menyn till vänster på sidan **myGalleryRG** väljer du **åtkomst kontroll (IAM)**. 
+1. På sidan för det nya bild galleriet väljer du **åtkomst kontroll (IAM)** på menyn till vänster. 
 1. Under **Lägg till en roll tilldelning** väljer du **Lägg till**. Fönstret **Lägg till en roll tilldelning** öppnas. 
 1. Välj **läsare** under **roll**.
 1. Lämna standardvärdet för **Azure AD-användare,-grupp eller tjänst objekt** under **tilldela åtkomst till**.

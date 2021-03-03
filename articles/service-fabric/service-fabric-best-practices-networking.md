@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732572"
 ---
 # <a name="networking"></a>Nätverk
 
@@ -39,7 +39,7 @@ Maximera prestandan för den virtuella datorn med accelererat nätverk, genom at
 ```
 Service Fabric kluster kan tillhandahållas i [Linux med accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md)och [Windows med accelererat nätverk](../virtual-network/create-vm-accelerated-networking-powershell.md).
 
-Accelererat nätverk stöds för Azure Virtual Machine serien SKU: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 och MS/MMS. Accelererat nätverk har testats med Standard_DS8_v3 SKU på 01/23/2019 för ett Service Fabric Windows-kluster och med Standard_DS12_v2 på 01/29/2019 för ett Service Fabric Linux-kluster.
+Accelererat nätverk stöds för Azure Virtual Machine serien SKU: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 och MS/MMS. Accelererat nätverk har testats med Standard_DS8_v3 SKU på 01/23/2019 för ett Service Fabric Windows-kluster och med Standard_DS12_v2 på 01/29/2019 för ett Service Fabric Linux-kluster. Observera att accelererade nätverk kräver minst 4 virtuella processorer. 
 
 Om du vill aktivera accelererat nätverk på ett befintligt Service Fabric-kluster måste du först [skala ett Service Fabric kluster genom att lägga till en skalnings uppsättning för virtuella datorer](./virtual-machine-scale-set-scale-node-type-scale-out.md)för att utföra följande:
 1. Etablera en NodeType med accelererat nätverk aktiverat
@@ -61,11 +61,11 @@ Att skala ut infrastruktur krävs för att aktivera accelererat nätverk i ett b
 
 De grundläggande reglerna här är minst för en säkerhets låsning av ett Azure-hanterat Service Fabric-kluster. Om du inte öppnar följande portar eller godkänner IP/URL, förhindras att klustret fungerar korrekt och kanske inte stöds. Med den här regeln är det absolut nödvändigt att använda [automatiska uppgraderingar av operativ Systems avbildningar](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), annars måste ytterligare portar öppnas.
 
-### <a name="inbound"></a>Inbound (Inkommande) 
+### <a name="inbound"></a>Inkommande 
 |Prioritet   |Namn               |Port        |Protokoll  |Källa             |Mål       |Action   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |Internet           |VirtualNetwork    |Tillåt
-|3910       |Client             |19000       |TCP       |Internet           |VirtualNetwork    |Tillåt
+|3910       |Klient             |19000       |TCP       |Internet           |VirtualNetwork    |Tillåt
 |3920       |Kluster            |1025-1027   |TCP       |VirtualNetwork     |VirtualNetwork    |Tillåt
 |3930       |Tillfälliga          |49152-65534 |TCP       |VirtualNetwork     |VirtualNetwork    |Tillåt
 |3940       |Program        |20000-30000 |TCP       |VirtualNetwork     |VirtualNetwork    |Tillåt
@@ -73,7 +73,7 @@ De grundläggande reglerna här är minst för en säkerhets låsning av ett Azu
 |3960       |RDP                |3389-3488   |TCP       |Internet           |VirtualNetwork    |Neka
 |3970       |SSH                |22          |TCP       |Internet           |VirtualNetwork    |Neka
 |3980       |Anpassad slut punkt    |80          |TCP       |Internet           |VirtualNetwork    |Tillåt
-|4100       |Blockera inkommande      |443         |Alla       |Alla                |Alla               |Tillåt
+|4100       |Blockera inkommande      |443         |Valfri       |Valfri                |Valfri               |Tillåt
 
 Mer information om inkommande säkerhets regler:
 
@@ -95,14 +95,14 @@ Mer information om inkommande säkerhets regler:
 
 * **Anpassad slut punkt**. Ett exempel på ditt program för att aktivera en tillgänglig slut punkt för Internet.
 
-### <a name="outbound"></a>Outbound (Utgående)
+### <a name="outbound"></a>Utgående
 
 |Prioritet   |Namn               |Port        |Protokoll  |Källa             |Mål       |Action   
 |---        |---                |---         |---       |---                |---               |---
-|3900       |Nätverk            |Alla         |TCP       |VirtualNetwork     |VirtualNetwork    |Tillåt
+|3900       |Nätverk            |Valfri         |TCP       |VirtualNetwork     |VirtualNetwork    |Tillåt
 |3910       |Resurs leverantör  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Tillåt
 |3920       |Uppgradera            |443         |TCP       |VirtualNetwork     |Internet          |Tillåt
-|3950       |Blockera utgående     |Alla         |Alla       |Alla                |Alla               |Neka
+|3950       |Blockera utgående     |Valfri         |Valfri       |Valfri                |Valfri               |Neka
 
 Mer information om utgående säkerhets regler:
 

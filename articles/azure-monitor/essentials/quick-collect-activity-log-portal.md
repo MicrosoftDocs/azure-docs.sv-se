@@ -6,15 +6,15 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e6dc55b54bc3abaea22544d457f98307596c5dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1316512badd69b545e39a47ea5da3ca6a0902482
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100629081"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734289"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Skicka Azure aktivitets logg till Log Analytics arbets ytan med Azure Portal
-Aktivitetsloggen är en plattformslogg i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Den här snabb starten visar hur du använder Azure Portal för att skapa en Log Analytics arbets yta och en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor loggar där du kan analysera den med hjälp av [logg frågor](../log-query/log-query-overview.md) och aktivera andra funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). 
+Aktivitetsloggen är en plattformslogg i Azure som ger inblick i händelser på prenumerationsnivå. Bland annat loggas information som när en resurs ändras eller när en virtuell dator startas. Du kan visa aktivitets loggen i Azure Portal eller hämta poster med PowerShell och CLI. Den här snabb starten visar hur du använder Azure Portal för att skapa en Log Analytics arbets yta och en diagnostisk inställning för att skicka aktivitets loggen till Azure Monitor loggar där du kan analysera den med hjälp av [logg frågor](../logs/log-query-overview.md) och aktivera andra funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). 
 
 ## <a name="sign-in-to-azure-portal"></a>Logga in på Azure-portalen
 Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com). 
@@ -73,7 +73,7 @@ Testa en mer komplex fråga, till exempel `AzureActivity | summarize count() by 
 
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabb starten konfigurerade du aktivitets loggen så att den skickas till en Log Analytics-arbetsyta. Nu kan du konfigurera andra data så att de samlas in i arbets ytan där du kan analysera dem tillsammans med hjälp av [logg frågor](../log-query/log-query-overview.md) i Azure Monitor och utnyttja funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). Du bör börja med att samla in [resurs loggar](../essentials/resource-logs.md) från dina Azure-resurser som kompletterar data i aktivitets loggen och ger insyn i de åtgärder som utfördes i varje resurs.
+I den här snabb starten konfigurerade du aktivitets loggen så att den skickas till en Log Analytics-arbetsyta. Nu kan du konfigurera andra data så att de samlas in i arbets ytan där du kan analysera dem tillsammans med hjälp av [logg frågor](../logs/log-query-overview.md) i Azure Monitor och utnyttja funktioner som [logg aviseringar](../alerts/alerts-log-query.md) och [arbets böcker](../visualize/workbooks-overview.md). Du bör börja med att samla in [resurs loggar](../essentials/resource-logs.md) från dina Azure-resurser som kompletterar data i aktivitets loggen och ger insyn i de åtgärder som utfördes i varje resurs.
 
 
 > [!div class="nextstepaction"]

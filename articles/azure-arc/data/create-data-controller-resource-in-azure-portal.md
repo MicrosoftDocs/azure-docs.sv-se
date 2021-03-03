@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737311"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686486"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Skapa en Azure båg-datakontrollant i Azure Portal
 
@@ -48,6 +48,10 @@ Följ stegen nedan för att skapa en Azure Arc-dataenhet med hjälp av Azure Por
 1. Välj en distributions konfigurations profil.
 1. Klicka på knappen **Öppna i Azure Studio** .
 1. På nästa skärm visas en sammanfattning av dina val och en antecknings bok som genereras.  Du kan hämta antecknings boken genom att klicka på knappen **Hämta antecknings bok för etablering** .
+
+   > [!IMPORTANT]
+   > På Azure Red Hat OpenShift eller Red Hat OpenShift container Platform måste du tillämpa begränsningen för säkerhets kontext innan du skapar data kontrollen. Följ anvisningarna i [tillämpa en säkerhets kontext begränsning för Azure Arc-aktiverade data tjänster i OpenShift](how-to-apply-security-context-constraint.md).
+
 1. Öppna den bärbara datorn i Azure Data Studio och klicka på knappen **Kör alla** överst.
 1. Följ anvisningarna och anvisningarna i antecknings boken för att slutföra skapandet av datakontrollanten.
 

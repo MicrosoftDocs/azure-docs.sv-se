@@ -2,13 +2,13 @@
 title: Utdata i mallar
 description: Beskriver hur du definierar utdataparametrar i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 0371a5293b302a2eb0febb010fc16caa8355eb18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 02/19/2021
+ms.openlocfilehash: 91feb1a0b653e4b6e96e38df57f87af27e4676f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653806"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703842"
 ---
 # <a name="outputs-in-arm-templates"></a>Utdata i ARM-mallar
 
@@ -35,7 +35,21 @@ För JSON lägger du till `outputs` avsnittet i mallen. Värdet för utdata häm
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+För bicep använder du `output` nyckelordet.
+
+I följande exempel `publicIP` är identifieraren för en offentlig IP-adress som distribuerats i bicep-filen. Värdet för utdata hämtar det fullständigt kvalificerade domän namnet för den offentliga IP-adressen.
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+---
+
 Om du behöver mata ut en egenskap som har ett bindestreck i namnet använder du hakparenteser runt namnet i stället för punkt notation. Använd till exempel  `['property-name']` i stället för `.property-name` .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -58,16 +72,6 @@ Om du behöver mata ut en egenskap som har ett bindestreck i namnet använder du
 ```
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
-
-För bicep använder du `output` nyckelordet.
-
-I följande exempel `publicIP` är det symboliska namnet för en offentlig IP-adress som distribuerats i bicep-filen. Värdet för utdata hämtar det fullständigt kvalificerade domän namnet för den offentliga IP-adressen.
-
-```bicep
-output hostname string = publicIP.properties.dnsSettings.fqdn
-```
-
-Om du behöver mata ut en egenskap som har ett bindestreck i namnet använder du hakparenteser runt namnet i stället för punkt notation. Använd till exempel  `['property-name']` i stället för `.property-name` .
 
 ```bicep
 var user = {
@@ -99,9 +103,7 @@ I JSON lägger du till `condition` elementet för att definiera om utdata return
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Villkorliga utdata är för närvarande inte tillgängliga för bicep.
-
-Du kan dock använda `?` operatorn för att returnera ett av två värden beroende på ett villkor.
+Om du vill ange en villkorlig utmatning i bicep använder du `?` operatorn. I följande exempel returnerar antingen en slut punkts-URL eller en tom sträng beroende på ett villkor.
 
 ```bicep
 param deployStorage bool = true

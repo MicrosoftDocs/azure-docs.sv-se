@@ -6,12 +6,12 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526314"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699699"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Spara kostnader för resurser med reserverad kapacitet – Azure Data Factory data flöden
 
@@ -21,12 +21,12 @@ Spara pengar med Azure Data Factory data flödes kostnader genom att gå till en
 
 Du behöver inte tilldela reservationen till en viss fabrik eller integrerings körning. Befintliga fabriker eller nyligen distribuerade fabriker erhåller automatiskt förmånen. Genom att köpa en reservation ska du allokera till användning för beräknings kostnaderna för data flödet under en period på en eller tre år. Så snart du köper en reservation debiteras inte längre de beräknings kostnader som matchar reservations-attributen enligt priserna för betala per användning. 
 
-Du kan köpa [reserverad kapacitet](https://portal.azure.com) genom att välja reservationer [upp eller månads vis betalningar](https://docs.microsoft.com/azure/cost-management-billing/reservations/prepare-buy-reservation.md). Så här köper du reserverad kapacitet:
+Du kan köpa [reserverad kapacitet](https://portal.azure.com) genom att välja reservationer [upp eller månads vis betalningar](../cost-management-billing/reservations/prepare-buy-reservation.md). Så här köper du reserverad kapacitet:
 
 - Du måste ha ägar rollen för minst ett företag eller en enskild prenumeration med priser enligt principen betala per användning.
 - För Enterprise-prenumerationer måste **Lägg till reserverade instanser** vara aktiverat i [EA-portalen](https://ea.azure.com). Eller, om inställningen är inaktive rad, måste du vara en EA-administratör i prenumerationen. Reserverad kapacitet.
 
-Mer information om hur företags kunder och kunder som betalar per användning debiteras för reservations köp finns i [förstå Azure reservation-användning för företagets registrering](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) och [förstå Azure reservation-användning för din prenumeration enligt principen betala per](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage)användning.
+Mer information om hur företags kunder och kunder som betalar per användning debiteras för reservations köp finns i [förstå Azure reservation-användning för företagets registrering](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) och [förstå Azure reservation-användning för din prenumeration enligt principen betala per](../cost-management-billing/reservations/understand-reserved-instance-usage.md)användning.
 
 > [!NOTE]
 > Köp reserverad kapacitet tar inte förallokerar eller reserverar vissa infrastruktur resurser (virtuella datorer eller kluster) för användning.
@@ -49,7 +49,7 @@ Anta till exempel att du kör en pipeline varje timme med ett minne som är opti
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Avbryta, byta ut eller återbetala reservationer
 
-Du kan avbryta, byta ut och återbetala reservationer med vissa begränsningar. Läs mer i [Byten och återbetalning för Azure-reservationer via självbetjäning](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Du kan avbryta, byta ut och återbetala reservationer med vissa begränsningar. Läs mer i [Byten och återbetalning för Azure-reservationer via självbetjäning](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss
 

@@ -7,15 +7,15 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: c7e18250a6f11504aa29d8df190da974499470ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dde18460862eb2ac61ed7e9bbf95d70ecf61496b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726027"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser
-[Plattforms loggar](../platform/platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](../platform/data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål.
+[Plattforms loggar](./platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](./data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål.
 
 > [!IMPORTANT]
 > Innan du skapar en diagnostisk inställning för aktivitets loggen bör du först inaktivera all äldre konfiguration. Se [tidigare samlings metoder](../essentials/activity-log.md#legacy-collection-methods) för mer information.
@@ -31,21 +31,21 @@ Följande video vägleder dig genom cirkulations plattforms loggar med diagnosti
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
 
 > [!NOTE]
-> [Plattforms mått](../platform/metrics-supported.md) skickas automatiskt till [Azure Monitor mått](../platform/data-platform-metrics.md). Diagnostiska inställningar kan användas för att skicka mått för vissa Azure-tjänster till Azure Monitor loggar för analys med andra övervaknings data med hjälp av [logg frågor](../log-query/log-query-overview.md) med vissa begränsningar. 
+> [Plattforms mått](./metrics-supported.md) skickas automatiskt till [Azure Monitor mått](./data-platform-metrics.md). Diagnostiska inställningar kan användas för att skicka mått för vissa Azure-tjänster till Azure Monitor loggar för analys med andra övervaknings data med hjälp av [logg frågor](../logs/log-query-overview.md) med vissa begränsningar. 
 >  
 >  
-> Det går för närvarande inte att skicka flerdimensionella mätvärden via diagnostikinställningar. Mått med dimensioner exporteras som tillplattade endimensionella mått som aggregeras över dimensionsvärden. *Exempel*: måttet ' IOReadBytes ' på en blockchain kan utforskas och ritas på en nivå per nod. Men när det exporteras via diagnostiska inställningar representerar det exporterade måttet som alla lästa byte för alla noder. Till följd av interna begränsningar kan inte alla mått exporteras till Azure Monitor loggar/Log Analytics. Mer information finns i [listan över exporterade mått](../platform/metrics-supported-export-diagnostic-settings.md). 
+> Det går för närvarande inte att skicka flerdimensionella mätvärden via diagnostikinställningar. Mått med dimensioner exporteras som tillplattade endimensionella mått som aggregeras över dimensionsvärden. *Exempel*: måttet ' IOReadBytes ' på en blockchain kan utforskas och ritas på en nivå per nod. Men när det exporteras via diagnostiska inställningar representerar det exporterade måttet som alla lästa byte för alla noder. Till följd av interna begränsningar kan inte alla mått exporteras till Azure Monitor loggar/Log Analytics. Mer information finns i [listan över exporterade mått](./metrics-supported-export-diagnostic-settings.md). 
 >  
 >  
-> För att komma runt de här begränsningarna för vissa mått rekommenderar vi att du extraherar dem manuellt med hjälp av [måtten REST API](/rest/api/monitor/metrics/list) och importerar dem till Azure Monitor loggar med hjälp av [Azure Monitor data insamlings-API](../platform/data-collector-api.md).  
+> För att komma runt de här begränsningarna för vissa mått rekommenderar vi att du extraherar dem manuellt med hjälp av [måtten REST API](/rest/api/monitor/metrics/list) och importerar dem till Azure Monitor loggar med hjälp av [Azure Monitor data insamlings-API](../logs/data-collector-api.md).  
 
 
 ## <a name="destinations"></a>Mål
 Plattforms loggar och-mått kan skickas till målen i följande tabell. 
 
-| Mål | Description |
+| Mål | Beskrivning |
 |:---|:---|
-| [Log Analytics arbets yta](../platform/design-logs-deployment.md) | Genom att skicka loggar och mått till en Log Analytics arbets yta kan du analysera dem med andra övervaknings data som samlas in av Azure Monitor använda kraftfulla logg frågor och även använda andra Azure Monitor funktioner, till exempel aviseringar och visualiseringar. |
+| [Log Analytics arbets yta](../logs/design-logs-deployment.md) | Genom att skicka loggar och mått till en Log Analytics arbets yta kan du analysera dem med andra övervaknings data som samlas in av Azure Monitor använda kraftfulla logg frågor och även använda andra Azure Monitor funktioner, till exempel aviseringar och visualiseringar. |
 | [Event Hubs](../../event-hubs/index.yml) | Genom att skicka loggar och mått till Event Hubs kan du strömma data till externa system, till exempel Siem för tredje part och andra Log Analytics-lösningar.  |
 | [Azure Storage-konto](../../storage/blobs/index.yml) | Arkivering av loggar och mått till ett Azure Storage-konto är användbart för granskning, statisk analys eller säkerhets kopiering. Jämfört med Azure Monitor loggar och en Log Analytics arbets yta är Azure Storage billigare och loggar kan sparas där på obestämd tid.  |
 
@@ -99,7 +99,7 @@ Du kan konfigurera diagnostikinställningar i Azure Portal antingen från Azure 
 
 4. **Kategori information (vad vill du dirigera)** – Markera kryss rutan för varje kategori av data som du vill skicka till destinationer som du har angett senare. Listan över kategorier varierar för varje Azure-tjänst.
 
-     - **AllMetrics** dirigerar en resurss plattforms mått till Azure logs Store, men i logg formuläret. De här måtten skickas vanligt vis endast till Azure Monitor Metrics Time-Series-databas. Genom att skicka dem till Azure Monitor loggar Store (som är sökbart via Log Analytics) kan du integrera dem i frågor som söker i andra loggar. Det här alternativet kanske inte är tillgängligt för alla resurs typer. När det stöds visas [Azure Monitor mått som stöds](../platform/metrics-supported.md) för vilka mått som samlas in för de olika resurs typerna.
+     - **AllMetrics** dirigerar en resurss plattforms mått till Azure logs Store, men i logg formuläret. De här måtten skickas vanligt vis endast till Azure Monitor Metrics Time-Series-databas. Genom att skicka dem till Azure Monitor loggar Store (som är sökbart via Log Analytics) kan du integrera dem i frågor som söker i andra loggar. Det här alternativet kanske inte är tillgängligt för alla resurs typer. När det stöds visas [Azure Monitor mått som stöds](./metrics-supported.md) för vilka mått som samlas in för de olika resurs typerna.
 
        > [!NOTE]
        > Se begränsning av routnings mått för att Azure Monitor loggar tidigare i den här artikeln.  
@@ -111,7 +111,7 @@ Du kan konfigurera diagnostikinställningar i Azure Portal antingen från Azure 
 
       ![Skicka till Log Analytics eller Event Hubs](media/diagnostic-settings/send-to-log-analytics-event-hubs.png)
 
-    1. **Log Analytics** -ange prenumerationen och arbets ytan.  Om du inte har en arbets yta måste du [skapa en innan du fortsätter](../learn/quick-create-workspace.md).
+    1. **Log Analytics** -ange prenumerationen och arbets ytan.  Om du inte har en arbets yta måste du [skapa en innan du fortsätter](../logs/quick-create-workspace.md).
 
     1. **Event Hub** – ange följande kriterier:
        - Den prenumeration som händelsehubben är en del av
@@ -132,14 +132,14 @@ Du kan konfigurera diagnostikinställningar i Azure Portal antingen från Azure 
 
 6. Klicka på **Spara**.
 
-Efter en liten stund visas den nya inställningen i listan med inställningar för den här resursen och loggarna strömmas till de angivna målen när nya händelse data genereras. Det kan ta upp till 15 minuter innan en händelse genereras och när den [visas i en Log Analytics-arbetsyta](../platform/data-ingestion-time.md).
+Efter en liten stund visas den nya inställningen i listan med inställningar för den här resursen och loggarna strömmas till de angivna målen när nya händelse data genereras. Det kan ta upp till 15 minuter innan en händelse genereras och när den [visas i en Log Analytics-arbetsyta](../logs/data-ingestion-time.md).
 
 ## <a name="create-using-powershell"></a>Skapa med PowerShell
 
-Använd cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) för att skapa en diagnostisk inställning med [Azure PowerShell](../samples/powershell-samples.md). I dokumentationen för den här cmdleten finns beskrivningar av parametrarna.
+Använd cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) för att skapa en diagnostisk inställning med [Azure PowerShell](../powershell-samples.md). I dokumentationen för den här cmdleten finns beskrivningar av parametrarna.
 
 > [!IMPORTANT]
-> Du kan inte använda den här metoden för Azures aktivitets logg. Använd i stället [skapa diagnostisk inställning i Azure monitor att använda en Resource Manager-mall](../samples/resource-manager-diagnostic-settings.md) för att skapa en Resource Manager-mall och distribuera den med PowerShell.
+> Du kan inte använda den här metoden för Azures aktivitets logg. Använd i stället [skapa diagnostisk inställning i Azure monitor att använda en Resource Manager-mall](./resource-manager-diagnostic-settings.md) för att skapa en Resource Manager-mall och distribuera den med PowerShell.
 
 Följande är ett exempel på en PowerShell-cmdlet för att skapa en diagnostisk inställning med alla tre mål.
 
@@ -152,7 +152,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 Använd kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) för att skapa en diagnostisk inställning med [Azure CLI](/cli/azure/monitor). I dokumentationen för det här kommandot finns beskrivningar av parametrarna.
 
 > [!IMPORTANT]
-> Du kan inte använda den här metoden för Azures aktivitets logg. Använd i stället [skapa diagnostisk inställning i Azure monitor att använda en Resource Manager-mall](../samples/resource-manager-diagnostic-settings.md) för att skapa en Resource Manager-mall och distribuera den med cli.
+> Du kan inte använda den här metoden för Azures aktivitets logg. Använd i stället [skapa diagnostisk inställning i Azure monitor att använda en Resource Manager-mall](./resource-manager-diagnostic-settings.md) för att skapa en Resource Manager-mall och distribuera den med cli.
 
 Följande är ett exempel på CLI-kommando för att skapa en diagnostisk inställning med alla tre mål.
 
@@ -168,7 +168,7 @@ az monitor diagnostic-settings create  \
 ```
 
 ## <a name="create-using-resource-manager-template"></a>Skapa med Resource Manager-mall
-Se [exempel på Resource Manager-mallar för diagnostikinställningar i Azure Monitor](../samples/resource-manager-diagnostic-settings.md) att skapa eller uppdatera diagnostikinställningar med en Resource Manager-mall.
+Se [exempel på Resource Manager-mallar för diagnostikinställningar i Azure Monitor](./resource-manager-diagnostic-settings.md) att skapa eller uppdatera diagnostikinställningar med en Resource Manager-mall.
 
 ## <a name="create-using-rest-api"></a>Skapa med REST-API
 Se [diagnostikinställningar](/rest/api/monitor/diagnosticsettings) för att skapa eller uppdatera diagnostikinställningar med hjälp av [Azure Monitor REST API](/rest/api/monitor/).
@@ -197,4 +197,4 @@ Om du får det här felet kan du uppdatera distributionerna för att ersätta al
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Läs mer om Azures plattforms loggar](../platform/platform-logs-overview.md)
+- [Läs mer om Azures plattforms loggar](./platform-logs-overview.md)

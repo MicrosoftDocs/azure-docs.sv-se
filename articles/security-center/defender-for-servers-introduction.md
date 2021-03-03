@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d9aaa00527462f5bbb999ddb76e125d1dfbee7a4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702002"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Introduktion till Azure Defender för servrar
 
@@ -27,7 +27,7 @@ För Linux samlar Azure Defender in gransknings poster från Linux-datorer med h
 
 De hot identifierings-och skydds funktioner som ingår i Azure Defender för servrar är:
 
-- **Integrerad licens för Microsoft Defender för slut punkt (endast Windows)** – Azure Defender för servrar innehåller  [Microsoft Defender för slut punkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Tillsammans tillhandahåller de omfattande funktioner för slut punkts identifiering och-svar (EDR). [Läs mer](security-center-wdatp.md).
+- **Integrerad licens för Microsoft Defender för slut punkt (endast Windows)** – Azure Defender för servrar innehåller  [Microsoft Defender för slut punkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Tillsammans tillhandahåller de omfattande funktioner för slut punkts identifiering och-svar (EDR). Mer information finns i [skydda dina slut punkter](security-center-wdatp.md).
 
     När Defender för slut punkten identifierar ett hot utlöses en avisering. Aviseringen visas i Security Center. Från Security Center kan du också pivotera till Defender för slut punkts konsolen och utföra en detaljerad undersökning för att få fram omfattningen av angreppet. Läs mer om Microsoft Defender för slut punkt.
 
@@ -36,25 +36,25 @@ De hot identifierings-och skydds funktioner som ingår i Azure Defender för ser
 
 - **Genomsökning av sårbarhets bedömning för virtuella datorer** – den sårbarhets-skanner som ingår i Azure Security Center drivs av Qualys. 
 
-    Qualys ' Scanner är ett av de ledande verktygen för real tids identifiering av sårbarheter i din Azure-Virtual Machines. Du behöver inte en Qualys-licens eller ens ett Qualys-konto – allt hanteras sömlöst i Security Center. [Läs mer](deploy-vulnerability-assessment-vm.md).
+    Qualys ' Scanner är ett av de ledande verktygen för real tids identifiering av sårbarheter i dina Azure-och hybridbaserade virtuella datorer. Du behöver inte en Qualys-licens eller ens ett Qualys-konto – allt hanteras sömlöst i Security Center. Mer information finns i [Azure Defender: s integrerade lösning för sårbarhets bedömning för Azure och hybrid datorer](deploy-vulnerability-assessment-vm.md).
 
 - **JIT (just-in-Time)-skydd för virtuella datorer (VM)** är aktivt för att nå datorer med öppna hanterings portar, som RDP eller ssh. Alla dina virtuella datorer är potentiella mål för ett angrepp. När en virtuell dator har komprometterats används den som start punkt för att angripa ytterligare resurser i din miljö.
 
-    När du aktiverar Azure Defender för-servrar kan du använda just-in-Time VM-åtkomst för att låsa inkommande trafik till dina virtuella datorer, vilket minskar exponeringen för attacker och ger enkel åtkomst till att ansluta till virtuella datorer när det behövs. [Läs mer](just-in-time-explained.md).
+    När du aktiverar Azure Defender för-servrar kan du använda just-in-Time VM-åtkomst för att låsa inkommande trafik till dina virtuella datorer, vilket minskar exponeringen för attacker och ger enkel åtkomst till att ansluta till virtuella datorer när det behövs. Mer information finns i [förstå JIT VM-åtkomst](just-in-time-explained.md).
 
 - **File Integrity Monitoring (FIM)** – File Integrity Monitoring (FIM), som även kallas för ändrings övervakning, undersöker filer och register över operativ system, program vara och andra för ändringar som kan tyda på ett angrepp. En jämförelse metod används för att avgöra om filens aktuella tillstånd skiljer sig från den senaste genomsökningen av filen. Du kan utnyttja den här jämförelsen för att avgöra om giltiga eller misstänkta ändringar har gjorts i dina filer.
 
-    När du aktiverar Azure Defender för-servrar kan du använda FIM för att verifiera integriteten för Windows-filer, dina Windows-register och Linux-filer. [Läs mer](security-center-file-integrity-monitoring.md).
+    När du aktiverar Azure Defender för-servrar kan du använda FIM för att verifiera integriteten för Windows-filer, dina Windows-register och Linux-filer. Mer information finns i avsnittet [om övervakning av fil integritet i Azure Security Center](security-center-file-integrity-monitoring.md).
 
 - **Adaptiva program kontroller (AAC)** – anpassningsbara program kontroller är en intelligent och automatiserad lösning för att definiera listor över kända säkra program för dina datorer.
 
-    När du har aktiverat och konfigurerat anpassade program kontroller får du säkerhets aviseringar om andra program körs än de som du har definierat som säkra. [Läs mer](security-center-adaptive-application.md).
+    När du har aktiverat och konfigurerat anpassade program kontroller får du säkerhets aviseringar om andra program körs än de som du har definierat som säkra. Mer information finns i [använda anpassningsbara program kontroller för att minska dina datorers angrepps ytor](security-center-adaptive-application.md).
 
 - **Anpassningsbar nätverks härdning (Anh)** – genom att använda nätverks säkerhets grupper (NSG) för att filtrera trafik till och från resurser, ökar nätverks säkerheten position. Det kan dock fortfarande finnas fall där den faktiska trafiken som flödar genom NSG är en del av de NSG-regler som definierats. I dessa fall kan ytterligare förbättra säkerheten position genom att skärpa NSG-reglerna, baserat på de faktiska trafik mönstren.
 
-    Anpassad nätverks härdning ger rekommendationer för ytterligare härdning av NSG-reglerna. Den använder en Machine Learning-algoritm som faktorer i faktisk trafik, känd betrodd konfiguration, Hot information och andra risk indikatorer och ger rekommendationer för att endast tillåta trafik från specifika IP/port-tupler. [Läs mer](security-center-adaptive-network-hardening.md).
+    Anpassad nätverks härdning ger rekommendationer för ytterligare härdning av NSG-reglerna. Den använder en Machine Learning-algoritm som faktorer i faktisk trafik, känd betrodd konfiguration, Hot information och andra risk indikatorer och ger rekommendationer för att endast tillåta trafik från specifika IP/port-tupler. Mer information finns i [förbättra din nätverks säkerhets position med anpassningsbar nätverks härdning](security-center-adaptive-network-hardening.md).
 
-- **Docker-värd härdning** – Azure Security Center identifierar ohanterade behållare som finns på virtuella Linux-datorer med IaaS eller andra Linux-datorer som kör Docker-behållare. Security Center kontinuerligt bedömer konfigurationen av dessa behållare. Den jämför sedan dem med Center for Internet Security (CIS) Docker-benchmark. Security Center innehåller hela ruleset av CIS Docker-benchmark och varnar dig om dina behållare inte uppfyller någon av kontrollerna. [Läs mer](harden-docker-hosts.md).
+- **Docker-värd härdning** – Azure Security Center identifierar ohanterade behållare som finns på virtuella Linux-datorer med IaaS eller andra Linux-datorer som kör Docker-behållare. Security Center kontinuerligt bedömer konfigurationen av dessa behållare. Den jämför sedan dem med Center for Internet Security (CIS) Docker-benchmark. Security Center innehåller hela ruleset av CIS Docker-benchmark och varnar dig om dina behållare inte uppfyller någon av kontrollerna. Mer information finns i [torka Docker-värdarna](harden-docker-hosts.md).
 
 - Identifiering av fillösa **attacker (endast Windows)** – fil lösa attacker injicera skadliga nytto laster i minnet för att undvika identifiering genom diskbaserade skannings tekniker. Angriparens nytto Last behålls sedan i minnet för komprometterade processer och utför en mängd olika skadliga aktiviteter.
 

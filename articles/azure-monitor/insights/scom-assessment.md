@@ -1,17 +1,16 @@
 ---
 title: Utvärdera System Center Operations Manager med Azure Monitor
 description: Du kan använda System Center Operations Manager-hälsokontroll-lösningen för att bedöma hälso tillståndet och hälsan för dina miljöer med jämna mellanrum.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 685bf35bfb6d6e85d70bd1f1b446370d66a320f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 35ae1e09fd0a06014a747cef99631a7bfe2dee1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573400"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731416"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimera din miljö med System Center Operations Manager-hälsokontrollösningen (förhandsversion)
 

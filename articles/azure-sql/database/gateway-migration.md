@@ -10,19 +10,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517832"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690540"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database trafikmigrering till nyare gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 När Azure-infrastrukturen förbättras kommer Microsoft regelbundet att uppdatera maskin varan så att vi ger bästa möjliga kund upplevelse. Under de kommande månaderna planerar vi att lägga till gatewayer som skapats på nyare maskin varu generationer, migrera trafik till dem och sedan göra inprovisionade gatewayer byggda på äldre maskin vara i vissa regioner.  
 
-Kunder kommer att meddelas via aviseringar på tjänstens hälso tillstånd i förväg om eventuella ändringar av gatewayerna som är tillgängliga i varje region. Kunder kan [använda Azure Portal för att ställa in aktivitets logg aviseringar](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal).
+Kunder kommer att meddelas via aviseringar på tjänstens hälso tillstånd i förväg om eventuella ändringar av gatewayerna som är tillgängliga i varje region. Kunder kan [använda Azure Portal för att ställa in aktivitets logg aviseringar](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 Den senaste informationen kommer att behållas i tabellen [Azure SQL Database Gateway IP-adresser](connectivity-architecture.md#gateway-ip-addresses) .
 

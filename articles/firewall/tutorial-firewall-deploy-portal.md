@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 07/15/2020
+ms.date: 02/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741964"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Självstudie: Distribuera och konfigurera Azure Firewall via Azure Portal
 
@@ -62,30 +62,32 @@ Resursgruppen innehåller alla resurser för den här självstudien.
 
 1. Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com).
 2. På Azure Portal-menyn väljer du **resurs grupper** eller söker efter och väljer *resurs grupper* från vilken sida som helst. Välj **Lägg till**.
-3. För **resurs grupp namn** anger du *test-VB-RG*.
 4. I fältet **Prenumeration** väljer du din prenumeration.
-5. I fältet **Resursgruppsplats** väljer du en plats. Alla andra resurser som du skapar måste finnas på samma plats.
-6. Välj **Skapa**.
+1. För **resurs grupp namn** anger du *test-VB-RG*.
+1. I fältet **Resursgruppsplats** väljer du en plats. Alla andra resurser som du skapar måste finnas på samma plats.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
 
 ### <a name="create-a-vnet"></a>Skapa ett virtuellt nätverk
 
-Det här virtuella nätverket innehåller tre undernät.
+Det virtuella nätverket kommer att ha tre undernät.
 
 > [!NOTE]
 > Storleken på AzureFirewallSubnet-undernätet är/26. Mer information om under näts storleken finns i [vanliga frågor och svar om Azure Firewall](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
 1. Välj **nätverk**  >  **virtuellt nätverk**.
-2. I fältet **Prenumeration** väljer du din prenumeration.
-3. För **resurs grupp** väljer du **test-VB-RG**.
-4. I fältet **Namn** skriver du **Test-FW-VN**.
-5. För **region** väljer du samma plats som du använde tidigare.
-6. Välj **Nästa: IP-adresser**.
-7. För **IPv4-adress utrymme**, Skriv **10.0.0.0/16**.
-8. Under **undernät** väljer du **standard**.
-9. För **under näts namn** skriver du **AzureFirewallSubnet**. Brandväggen kommer att ligga i det här undernätet, och namnet på undernätet **måste** vara AzureFirewallSubnet.
-10. För **adress intervall** skriver du **10.0.1.0/26**.
-11. Välj **Spara**.
+1. Välj **Skapa**.
+1. I fältet **Prenumeration** väljer du din prenumeration.
+1. För **resurs grupp** väljer du **test-VB-RG**.
+1. I fältet **Namn** skriver du **Test-FW-VN**.
+1. För **region** väljer du samma plats som du använde tidigare.
+1. Välj **Nästa: IP-adresser**.
+1. För **IPv4-adress utrymme**, Skriv **10.0.0.0/16**.
+1. Under **undernät** väljer du **standard**.
+1. För **under näts namn** skriver du **AzureFirewallSubnet**. Brandväggen kommer att ligga i det här undernätet, och namnet på undernätet **måste** vara AzureFirewallSubnet.
+1. För **adress intervall** skriver du **10.0.1.0/26**.
+1. Välj **Spara**.
 
    Skapa sedan ett undernät för arbets belastnings servern.
 
@@ -100,9 +102,8 @@ Det här virtuella nätverket innehåller tre undernät.
 
 Nu ska du skapa den virtuella arbets belastnings datorn och placera den i **arbets belastningen SN-** undernät.
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
-2. Välj **Compute** och välj sedan **virtuell dator**.
-3. **Windows Server 2016 Data Center** i den aktuella listan.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
+2. Välj **Windows Server 2016 Data Center**.
 4. Ange följande värden för den virtuella datorn:
 
    |Inställning  |Värde  |
@@ -120,14 +121,14 @@ Nu ska du skapa den virtuella arbets belastnings datorn och placera den i **arbe
 8. Kontrol lera att **test-VB-VN** är valt för det virtuella nätverket och att under nätet är **arbets belastning – SN**.
 9. För **offentlig IP-adress** väljer du **ingen**.
 11. Godkänn övriga standardvärden och välj **Nästa: hantering**.
-12. Välj **av** om du vill inaktivera startdiagnostik. Godkänn de andra standardinställningarna och välj **Granska + skapa**.
+12. Välj **inaktivera** om du vill inaktivera startdiagnostik. Godkänn de andra standardinställningarna och välj **Granska + skapa**.
 13. Granska inställningarna på sidan Sammanfattning och välj sedan **skapa**.
 
 ## <a name="deploy-the-firewall"></a>Distribuera brandväggen
 
 Distribuera brandväggen till det virtuella nätverket.
 
-1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+1. Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**.
 2. Skriv **brand väggen** i sökrutan och tryck på **RETUR**.
 3. Välj **brand vägg** och välj sedan **skapa**.
 4. På sidan **Skapa en brandvägg** använder du följande tabell till att konfigurera brandväggen:
@@ -137,11 +138,12 @@ Distribuera brandväggen till det virtuella nätverket.
    |Prenumeration     |\<your subscription\>|
    |Resursgrupp     |**Test-VB-RG** |
    |Namn     |**Test-FW01**|
-   |Plats     |Välj samma plats som tidigare|
+   |Region     |Välj samma plats som tidigare|
+   |Brand Väggs hantering|**Använd brand Väggs regler (klassisk) för att hantera den här brand väggen**|
    |Välj ett virtuellt nätverk     |**Använd befintlig**: **test-VB-VN**|
    |Offentlig IP-adress     |**Lägg till ny**<br>**Namn**:  **VB-pip**|
 
-5. Välj **Granska + skapa**.
+5. Godkänn de andra standardvärdena och välj sedan **Granska + skapa**.
 6. Granska sammanfattningen och välj sedan **skapa** för att skapa brand väggen.
 
    Distributionen kan ta några minuter.
@@ -155,15 +157,18 @@ För undernätet **Workload-SN** ställer du in att den utgående standardvägen
 1. Välj **alla tjänster** på Azure Portal-menyn eller Sök efter och välj *alla tjänster* från vilken sida som helst.
 2. Under **nätverk** väljer du **routningstabeller**.
 3. Välj **Lägg till**.
-4. I fältet **Namn** skriver du **Firewall-route**.
 5. I fältet **Prenumeration** väljer du din prenumeration.
 6. För **resurs grupp** väljer du **test-VB-RG**.
-7. Välj samma plats som tidigare i fältet **Plats**.
-8. Välj **Skapa**.
-9. Välj **Uppdatera** och välj sedan tabellen **brand Väggs** väg väg.
-10. Välj **undernät** och välj sedan **associera**.
-11. Välj **Virtual Network**  >  **test-VB-VN**.
-12. För **undernät** väljer du **arbets belastning-SN**. Se till att du bara väljer **arbets belastningen – SN** under nätet för den här vägen, annars fungerar inte brand väggen korrekt.
+7. För **region** väljer du samma plats som du använde tidigare.
+4. I fältet **Namn** skriver du **Firewall-route**.
+1. Välj **Granska + skapa**.
+1. Välj **Skapa**.
+
+När distributionen är klar väljer **du gå till resurs**.
+
+1. På sidan brand Väggs väg väljer du **undernät** och väljer sedan **associera**.
+1. Välj **Virtual Network**  >  **test-VB-VN**.
+1. För **undernät** väljer du **arbets belastning-SN**. Se till att du bara väljer **arbets belastningen – SN** under nätet för den här vägen, annars fungerar inte brand väggen korrekt.
 
 13. Välj **OK**.
 14. Välj **vägar** och välj sedan **Lägg till**.
@@ -180,7 +185,7 @@ För undernätet **Workload-SN** ställer du in att den utgående standardvägen
 Det här är den program regel som tillåter utgående åtkomst till `www.google.com` .
 
 1. Öppna mappen **test-VB-RG** och välj **test-FW01** -brandväggen.
-2. På sidan **test-FW01** under **Inställningar** väljer du **regler**.
+2. På sidan **test-FW01** under **Inställningar** väljer du **regler (klassisk)**.
 3. Välj fliken **samling av program regel** .
 4. Välj **Lägg till program regel samling**.
 5. I fältet **Namn** skriver du **App-Coll01**.
@@ -226,8 +231,8 @@ Med den här regeln kan du ansluta ett fjärr skrivbord till den Srv-Work virtue
 5. Under **regler**, för **namn**, skriver du **RDP-NAT**.
 6. I fältet **Protokoll** väljer du **TCP**.
 7. I **typ av källa** väljer du **IP-adress**.
-8. För **källa** skriver du * *\** _.
-9. För _ * mål adress * * anger du den offentliga IP-adressen för brand väggen.
+8. Som **källa** skriver du **\*** .
+9. Ange den offentliga IP-adressen för brand väggen för **mål adress**.
 10. För **mål portar** skriver du **3389**.
 11. För **översatt adress** anger du den privata IP-adressen för **SRV-arbete** .
 12. I fältet **Översatt port** skriver du **3389**.

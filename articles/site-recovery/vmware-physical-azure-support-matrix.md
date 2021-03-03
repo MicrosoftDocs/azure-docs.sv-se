@@ -3,12 +3,12 @@ title: Support mat ris för VMware/fysisk haveri beredskap i Azure Site Recovery
 description: Sammanfattar stöd för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med hjälp av Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: aecc7ccb6e633fc9c27b254f98931d682fa3d21b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 5eab1a1c8d085ab48dd54012908d40eec99ca4c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705083"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure
 
@@ -93,7 +93,7 @@ Linux: CentOS | 5,2 till 5,11</b><br/> 6,1 till 6,10</b><br/> </br> 7,0, 7,1, 7,
 Ubuntu | Ubuntu 14,04 * LTS [-Server (granska vilka kernel-versioner som stöds)](#ubuntu-kernel-versions)<br/>Ubuntu 16,04 * LTS [-Server (granska vilka kernel-versioner som stöds)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 * LTS [-Server (granska vilka kernel-versioner som stöds)](#ubuntu-kernel-versions) </br> Ubuntu 20,04 * LTS [-Server (granska vilka kernel-versioner som stöds)](#ubuntu-kernel-versions) </br> (*har stöd för alla 14,04.* x *, 16,04.* x *, 18,04.* x *, 20,04.* x *-versioner)
 Debian | Debian 7/Debian 8 (omfattar stöd för alla 7. *x*, 8. *x* -versioner); Debian 9 (innehåller stöd för 9,1 till 9,13. Debian 9,0 stöds inte.), Debian 10 [(granska stödda kernel-versioner)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(granska de kernel-versioner som stöds)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(granska stödda kernel-versioner)](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3. [Se till att hämta de senaste installations program för mobilitets agenten på konfigurations servern](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server). </br> SUSE Linux Enterprise Server 11 SP4 </br> **Obs!** det finns inte stöd för att uppgradera replikerade datorer från SUSE Linux Enterprise Server 11 SP3 till SP4. Om du vill uppgradera inaktiverar du replikeringen och aktiverar den igen efter uppgraderingen. <br/>|
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7, 7,8](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,9](https://support.microsoft.com/help/4597409/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), [8,2, 8,3](https://support.microsoft.com/help/4573888/) [](https://support.microsoft.com/help/4573888/) [](https://support.microsoft.com/help/4597409/)  <br/> Köra Red Hat-kompatibel kernel eller Enterprise kernel release 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Att köra på alla UEK-kerneler och RedHat kernel <= 3.10.0-1062. * stöds i [9,35](https://support.microsoft.com/help/4573888/) -stöd för rest av RedHat-kärnan finns i [9,36](https://support.microsoft.com/help/4578241/)
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9](https://support.microsoft.com/help/4597409/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), 8,3,,, [,](https://support.microsoft.com/help/4597409/)  <br/> Köra Red Hat-kompatibel kernel eller Enterprise kernel release 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Att köra på alla UEK-kerneler och RedHat kernel <= 3.10.0-1062. * stöds i [9,35](https://support.microsoft.com/help/4573888/) -stöd för rest av RedHat-kärnan finns i [9,36](https://support.microsoft.com/help/4578241/)
 
 > [!Note]
 >- För var och en av Windows-versionerna stöder Azure Site Recovery endast [LTSC-versioner (långsiktig Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  Det finns för närvarande inte stöd för de [halvårs tillgängliga Channel-](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) versionerna för tillfället.
@@ -203,72 +203,72 @@ Gäst-/Server nätverk flera nätverkskort | Ja.
 
 **Komponent** | **Stöds**
 --- | ---
-Azure ExpressRoute | Yes
-ILB | Yes
-ELB | Yes
-Azure Traffic Manager | Yes
-Multi-NIC | Yes
-Reserverad IP adress | Yes
-IPv4 | Yes
-Behåll Källans IP-adress | Yes
-Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Yes
-Snabbare nätverk | No
+Azure ExpressRoute | Ja
+ILB | Ja
+ELB | Ja
+Azure Traffic Manager | Ja
+Multi-NIC | Ja
+Reserverad IP adress | Ja
+IPv4 | Ja
+Behåll Källans IP-adress | Ja
+Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Ja
+Snabbare nätverk | Inga
 
 ## <a name="storage"></a>Storage
 **Komponent** | **Stöds**
 --- | ---
 Dynamisk disk | OS-disken måste vara en standard disk. <br/><br/>Data diskar kan vara dynamiska diskar
-Konfiguration av Docker-disk | No
+Konfiguration av Docker-disk | Inga
 Värd-NFS | Ja för VMware<br/><br/> Nej för fysiska servrar
-Värd-SAN (iSCSI/FC) | Yes
+Värd-SAN (iSCSI/FC) | Ja
 Värd virtuellt San | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
 Värd-multisökväg (MPIO) | Ja, testad med Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM för CLARiiON
 Virtuella värd volymer (VVols) | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
-Gäst/Server VMDK | Yes
-Gäst-/Server delad kluster disk | No
-Gäst/Server-krypterad disk | No
-Gäst-/Server-NFS | No
+Gäst/Server VMDK | Ja
+Gäst-/Server delad kluster disk | Inga
+Gäst/Server-krypterad disk | Inga
+Gäst-/Server-NFS | Inga
 Gäst-/Server-iSCSI | För migrering – Ja<br/>Vid haveri beredskap – nej kommer iSCSI att återställas efter fel som en ansluten disk till den virtuella datorn
-Gäst/Server SMB 3,0 | No
-Gäst/Server-RDM | Yes<br/><br/> Ej tillämpligt för fysiska servrar
+Gäst/Server SMB 3,0 | Inga
+Gäst/Server-RDM | Ja<br/><br/> Ej tillämpligt för fysiska servrar
 Gäst-/Server disk > 1 TB | Ja, disken måste vara större än 1024 MB<br/><br/>Upp till 8 192 GB vid replikering till hanterade diskar (9,26-version och senare)<br></br> Upp till 4 095 GB vid replikering till lagrings konton
-Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | No
-Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | No
-Gäst-/Server volym med Striped disk >4 TB | Yes
+Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | Inga
+Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | Inga
+Gäst-/Server volym med Striped disk >4 TB | Ja
 Hantering av logiska volymer (LVM)| Tjocka etablering – Ja <br></br> Tunn allokering – nej
-Gäst/Server – lagrings utrymmen | No
-Gäst/Server-NVMe-gränssnitt | No
-Gäst/Server Hot Lägg till/ta bort disk | No
-Gäst/Server – exkludera disk | Yes
-Multisökväg för gäst/Server (MPIO) | No
+Gäst/Server – lagrings utrymmen | Inga
+Gäst/Server-NVMe-gränssnitt | Inga
+Gäst/Server Hot Lägg till/ta bort disk | Inga
+Gäst/Server – exkludera disk | Ja
+Multisökväg för gäst/Server (MPIO) | Inga
 GPT-partitioner för gäst/Server | Det finns stöd för fem partitioner från samlad [uppdatering 37](https://support.microsoft.com/help/4508614/) (version 9,25 av mobilitets tjänsten) och senare. Tidigare fyra stöddes.
 ReFS | Elastiskt fil system stöds med mobilitets tjänst version 9,23 eller senare
-Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) med Site Recovery Mobility agent version 9,30 och senare. <br/> -Start typen för säker UEFI stöds inte. [Läs mer.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativsystem i Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) med Site Recovery Mobility agent version 9,30 och senare. <br/> -Start typen för säker UEFI stöds inte. [Läs mer.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Kanaler för replikering
 
 |**Typ av replikering**   |**Stöds**  |
 |---------|---------|
-|Avlästa data överföringar (ODX)    |       No  |
-|Seeding offline        |   No      |
-| Azure Data Box | No
+|Avlästa data överföringar (ODX)    |       Inga  |
+|Seeding offline        |   Inga      |
+| Azure Data Box | Inga
 
 ## <a name="azure-storage"></a>Azure-lagring
 
 **Komponent** | **Stöds**
 --- | ---
-Lokalt redundant lagring | Yes
-Geo-redundant lagring | Yes
-Geo-redundant lagring med läsbehörighet (RA-GRS) | Yes
-Cool Storage | No
-Frekvent lagring| No
-Blockblobar | No
-Kryptering vid vila (SSE)| Yes
+Lokalt redundant lagring | Ja
+Geo-redundant lagring | Ja
+Geo-redundant lagring med läsbehörighet (RA-GRS) | Ja
+Cool Storage | Inga
+Frekvent lagring| Inga
+Blockblobar | Inga
+Kryptering vid vila (SSE)| Ja
 Kryptering vid vila (CMK)| Ja (via PowerShell AZ 3.3.0-modul och senare)
 Dubbel kryptering i vila | Ja (via PowerShell AZ 3.3.0-modul och senare). Läs mer om regioner som stöds för [Windows](../virtual-machines/disk-encryption.md) och [Linux](../virtual-machines/disk-encryption.md).
-Premium Storage | Yes
-Alternativ för säker överföring | Yes
-Import/export-tjänst | No
+Premium Storage | Ja
+Alternativ för säker överföring | Ja
+Import/export-tjänst | Inga
 Azure Storage brand väggar för virtuella nätverk | Ja.<br/> Konfigurerat på mål lagring/cache lagrings konto (används för att lagra replikeringsdata).
 Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (transaktions kostnader är betydligt högre för v2 jämfört med v1)
 
@@ -276,10 +276,10 @@ Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (
 
 **Funktion** | **Stöds**
 --- | ---
-Tillgänglighetsuppsättningar | Yes
-Tillgänglighetszoner | No
-) | Yes
-Hanterade diskar | Yes
+Tillgänglighetsuppsättningar | Ja
+Tillgänglighetszoner | Inga
+) | Ja
+Hanterade diskar | Ja
 
 ## <a name="azure-vm-requirements"></a>Virtuella Azure VMware-datorer
 
@@ -344,10 +344,10 @@ Observera att gränserna ovan gäller endast för Hybrid DR-scenarier.
 
 **Åtgärd** | **Stöds**
 --- | ---
-Flytta valv över resurs grupper | No
-Flytta valvet inom och över prenumerationer | No
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | No
-Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | No
+Flytta valv över resurs grupper | Inga
+Flytta valvet inom och över prenumerationer | Inga
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | Inga
+Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | Inga
 
 
 ## <a name="obtain-latest-components"></a>Hämta de senaste komponenterna

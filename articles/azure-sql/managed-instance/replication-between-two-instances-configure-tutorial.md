@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690693"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Självstudie: Konfigurera replikering mellan två hanterade instanser
 
@@ -27,7 +27,7 @@ Med Transaktionsreplikering kan du replikera data från en databas till en annan
 
 Transaktionell replikering är för närvarande en offentlig för hands version för SQL-hanterad instans. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -51,7 +51,7 @@ Att konfigurera SQL-hanterad instans så att den fungerar som en utgivare och/el
 - Att utgivarens hanterade instans finns i samma virtuella nätverk som distributören och prenumeranten, eller [VPN-gatewayer](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) har kon figurer ATS mellan de virtuella nätverken i alla tre entiteter. 
 - Anslutningen använder SQL-autentisering mellan replikeringsdeltagare.
 - En Azure Storage-konto resurs för replikeringens arbets katalog.
-- Port 445 (TCP utgående) är öppen i säkerhets reglerna för NSG för de hanterade instanserna för åtkomst till Azure-filresursen.  Om felet uppstår `failed to connect to azure storage \<storage account name> with os error 53` måste du lägga till en utgående regel i NSG för rätt undernät för SQL-hanterad instans.
+- Port 445 (TCP utgående) är öppen i säkerhets reglerna för NSG för de hanterade instanserna för åtkomst till Azure-filresursen.  Om felet uppstår `failed to connect to azure storage <storage account name> with os error 53` måste du lägga till en utgående regel i NSG för rätt undernät för SQL-hanterad instans.
 
 ## <a name="1---create-a-resource-group"></a>1 – Skapa en resurs grupp
 

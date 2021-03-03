@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: a907bf61cb7ccb8b6d287840c12a00451cad782f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690285"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Felsökning av ParallelRunStep
 
@@ -119,7 +119,7 @@ Skapa ParallelRunStep med hjälp av skriptet, miljö konfigurationen och paramet
 - `parallel_run_config`: Ett `ParallelRunConfig` objekt som definieras tidigare.
 - `inputs`: En eller flera data uppsättningar med en enkel Azure Machine Learning typ som ska partitioneras för parallell bearbetning.
 - `side_inputs`: En eller flera referens data eller data uppsättningar som används som sid indata utan att behöva partitioneras.
-- `output`: Ett `OutputDatasetConfig` eller ett `PipelineData` objekt som motsvarar utdata-katalogen.
+- `output`: Ett `OutputFileDatasetConfig` objekt som representerar sökvägen till den katalog där utdata ska lagras.
 - `arguments`: En lista över argument som skickas till användar skriptet. Använd unknown_args för att hämta dem i ditt Entry-skript (valfritt).
 - `allow_reuse`: Om steget ska återanvända tidigare resultat när det körs med samma inställningar/indata. Om den här parametern är är `False` en ny körning alltid att skapas för det här steget under pipeline-körningen. (valfritt; standardvärdet är `True` .)
 

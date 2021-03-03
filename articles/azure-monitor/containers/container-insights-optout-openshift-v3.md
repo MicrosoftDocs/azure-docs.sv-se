@@ -1,14 +1,14 @@
 ---
 title: Så här stoppar du övervakningen av ditt Azure Red Hat OpenShift v3-kluster | Microsoft Docs
-description: Den här artikeln beskriver hur du kan stoppa övervakningen av ditt Azure Red Hat OpenShift-kluster med Azure Monitor för behållare.
+description: Den här artikeln beskriver hur du kan stoppa övervakningen av ditt Azure Red Hat OpenShift-kluster med behållar insikter.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a278898942e40d3347791d31a3c38341df01f7c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731824"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Så här stoppar du övervakning av Azure Red Hat OpenShift v3-kluster
 
@@ -21,7 +21,7 @@ ms.locfileid: "100625979"
 > Följ den här guiden för att [skapa ett Azure Red Hat OpenShift 4-kluster](../../openshift/tutorial-create-cluster.md).
 > Om du har frågor kan du [kontakta oss](mailto:aro-feedback@microsoft.com).
 
-När du har aktiverat övervakning av ditt Azure Red Hat OpenShift version 3. x-kluster kan du stoppa övervakningen av klustret med Azure Monitor för behållare om du inte längre vill övervaka det. Den här artikeln visar hur du gör detta med hjälp av Azure Resource Manager-mallen som tillhandahölls.  
+När du har aktiverat övervakning av ditt Azure Red Hat OpenShift version 3. x-kluster kan du sluta övervaka klustret med behållar insikter om du inte längre vill övervaka det. Den här artikeln visar hur du gör detta med hjälp av Azure Resource Manager-mallen som tillhandahölls.  
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 
@@ -137,4 +137,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om arbets ytan bara har skapats för att stödja övervakning av klustret och den inte längre behövs, måste du ta bort den manuellt. Om du inte är bekant med hur du tar bort en arbets yta, se [ta bort en Azure Log Analytics-arbetsyta](../platform/delete-workspace.md).
+Om arbets ytan bara har skapats för att stödja övervakning av klustret och den inte längre behövs, måste du ta bort den manuellt. Om du inte är bekant med hur du tar bort en arbets yta, se [ta bort en Azure Log Analytics-arbetsyta](../logs/delete-workspace.md).

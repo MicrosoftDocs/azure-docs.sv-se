@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584038"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704420"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Konfigurera Azure Monitor för ditt python-program
 
@@ -221,6 +221,15 @@ Mer information om hur du ändrar spårad telemetri innan det skickas till Azure
 
 ### <a name="metrics"></a>Mått
 
+Openaggity. stats stöder 4 agg regerings metoder men ger delvis stöd för Azure Monitor:
+
+- **Antal:** Antalet mått punkter. Värdet är kumulativt, kan bara öka och återställa till 0 vid omstart. 
+- **Sum:** En summering av mått punkterna. Värdet är kumulativt, kan bara öka och återställa till 0 vid omstart. 
+- **LastValue:** Behåller det senast registrerade värdet och släpper allt annat.
+- **Distribution:** Histogrammets distribution av mått punkter. Den här metoden **stöds inte av Azure-exporten**.
+
+### <a name="count-aggregation-example"></a>Exempel på antal sammansättningar
+
 1. Först ska vi generera några lokala mått data. Vi ska skapa ett enkelt mått för att spåra hur många gånger användaren väljer nyckeln **Enter** .
 
     ```python
@@ -320,7 +329,7 @@ Mer information om hur du ändrar spårad telemetri innan det skickas till Azure
         main()
     ```
 
-1. Export verktyget skickar mått data till Azure Monitor med ett fast intervall. Standardvärdet är var 15: e sekund. Vi håller på att spåra ett enda mått, så dessa mått data, med det värde och den tidsstämpel som den innehåller, skickas varje intervall. Du kan hitta data under `customMetrics` .
+1. Export verktyget skickar mått data till Azure Monitor med ett fast intervall. Standardvärdet är var 15: e sekund. Vi håller på att spåra ett enda mått, så dessa mått data, med det värde och den tidsstämpel som den innehåller, skickas varje intervall. Värdet är kumulativt, kan bara öka och återställa till 0 vid omstart. Du kan hitta data under `customMetrics` , men `customMetrics` egenskaperna ValueCount, ValueSum, ValueMin, VALUEMAX och valueStdDev används inte på ett effektivt sätt.
 
 #### <a name="performance-counters"></a>Prestandaräknare
 

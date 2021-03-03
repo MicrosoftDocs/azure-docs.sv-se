@@ -3,26 +3,28 @@ title: IP-adresser som används av Azure Monitor
 description: Undantag för Server brand väggen krävs av Application Insights
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 56ff33cc0a34cb254ca88f96d69a07bc131bebf4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584151"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714042"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>IP-adresser som används av Azure Monitor
+
 [Azure Monitor](../overview.md) använder ett antal IP-adresser. Azure Monitor består av kärn plattforms statistik och loggar förutom Log Analytics och Application Insights. Du kan behöva känna till dessa adresser om appen eller infrastrukturen som du övervakar ligger bakom en brand vägg.
 
 > [!NOTE]
 > Även om dessa adresser är statiska, är det möjligt att vi behöver ändra dem från tid till tid. All Application Insights trafik representerar utgående trafik med undantag för tillgänglighets övervakning och webhookar som kräver inkommande brand Väggs regler.
 
 > [!TIP]
-> Du kan använda Azure [Network Service-Taggar](../../virtual-network/service-tags-overview.md) för att hantera åtkomst om du använder Azures nätverks säkerhets grupper. Om du hanterar åtkomst för Hybrid-/lokala resurser kan du hämta motsvarande IP-datalistor som [JSON-filer](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) som uppdateras varje vecka:. Om du vill använda alla undantag i den här artikeln måste du använda tjänst taggarna: "ActionGroup", "ApplicationInsightsAvailability", "AzureMonitor".
+> Du kan använda Azure [Network Service-Taggar](../../virtual-network/service-tags-overview.md) för att hantera åtkomst om du använder Azures nätverks säkerhets grupper. Om du hanterar åtkomst för Hybrid-/lokala resurser kan du hämta motsvarande IP-datalistor som [JSON-filer](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) som uppdateras varje vecka:. Om du vill använda alla undantag i den här artikeln måste du använda tjänst taggarna: `ActionGroup` , `ApplicationInsightsAvailability` och `AzureMonitor` .
 
 Du kan också prenumerera på den här sidan som en RSS-feed genom att lägga till https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom i din favorit-RSS/Atom-läsare för att få meddelanden om de senaste ändringarna.
 
 
 ## <a name="outgoing-ports"></a>Utgående portar
+
 Du måste öppna vissa utgående portar i serverns brand vägg för att tillåta Application Insights SDK och/eller Statusövervakare att skicka data till portalen:
 
 | Syfte | URL | IP-adress | Portar |
@@ -31,6 +33,7 @@ Du måste öppna vissa utgående portar i serverns brand vägg för att tillåta
 | Live-ström med mätvärden | live.applicationinsights.azure.com<br/>rt.applicationinsights.microsoft.com<br/>rt.services.visualstudio.com|23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207<br/>157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113| 443 |
 
 ## <a name="status-monitor"></a>Statusövervakare
+
 Statusövervakare konfiguration – behövs bara när du gör ändringar.
 
 | Syfte | URL | IP-adress | Portar |
@@ -45,6 +48,7 @@ Statusövervakare konfiguration – behövs bara när du gör ändringar.
 | Installation | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Tillgänglighetstester
+
 Det här är listan över adresser från vilka [webb testerna för tillgänglighet](./monitor-web-app-availability.md) körs. Om du vill köra webbtester på din app, men webb servern är begränsad till att betjäna vissa klienter, måste du tillåta inkommande trafik från våra tillgänglighets test servrar.
 
 
@@ -207,7 +211,7 @@ USDoD East
 | Syfte | URI |  IP-adress | Portar |
 | --- | --- | --- | --- |
 | API |`api.applicationinsights.io`<br/>`api1.applicationinsights.io`<br/>`api2.applicationinsights.io`<br/>`api3.applicationinsights.io`<br/>`api4.applicationinsights.io`<br/>`api5.applicationinsights.io`<br/>`dev.applicationinsights.io`<br/>`dev.applicationinsights.microsoft.com`<br/>`dev.aisvc.visualstudio.com`<br/>`www.applicationinsights.io`<br/>`www.applicationinsights.microsoft.com`<br/>`www.aisvc.visualstudio.com`<br/>`api.loganalytics.io`<br/>`*.api.loganalytics.io`<br/>`dev.loganalytics.io`<br>`docs.loganalytics.io`<br/>`www.loganalytics.io` |20.37.52.188 <br/> 20.37.53.231 <br/> 20.36.47.130 <br/> 20.40.124.0 <br/> 20.43.99.158 <br/> 20.43.98.234 <br/> 13.70.127.61 <br/> 40.81.58.225 <br/> 20.40.160.120 <br/> 23.101.225.155 <br/> 52.139.8.32 <br/> 13.88.230.43 <br/> 52.230.224.237 <br/> 52.242.230.209 <br/> 52.173.249.138 <br/> 52.229.218.221 <br/> 52.229.225.6 <br/> 23.100.94.221 <br/> 52.188.179.229 <br/> 52.226.151.250 <br/> 52.150.36.187 <br/> 40.121.135.131 <br/> 20.44.73.196 <br/> 20.41.49.208 <br/> 40.70.23.205 <br/> 20.40.137.91 <br/> 20.40.140.212 <br/> 40.89.189.61 <br/> 52.155.118.97 <br/> 52.156.40.142 <br/> 23.102.66.132 <br/> 52.231.111.52 <br/> 52.231.108.46 <br/> 52.231.64.72 <br/> 52.162.87.50 <br/> 23.100.228.32 <br/> 40.127.144.141 <br/> 52.155.162.238 <br/> 137.116.226.81 <br/> 52.185.215.171 <br/> 40.119.4.128 <br/> 52.171.56.178 <br/> 20.43.152.45 <br/> 20.44.192.217 <br/> 13.67.77.233 <br/> 51.104.255.249 <br/> 51.104.252.13 <br/> 51.143.165.22 <br/> 13.78.151.158 <br/> 51.105.248.23 <br/> 40.74.36.208 <br/> 40.74.59.40 <br/> 13.93.233.49 <br/> 52.247.202.90 |80 443 |
-| Tillägg för Azure pipeline-anteckningar |aigs1.aisvc.visualstudio.com |dynamisk|443 | 
+| Tillägg för Azure pipeline-anteckningar | aigs1.aisvc.visualstudio.com |dynamisk|443 | 
 
 ## <a name="application-insights-analytics"></a>Application Insights analys
 
@@ -223,7 +227,7 @@ Obs!: *. applicationinsights.io-domänen ägs av Application Insights-teamet.
 
 | Syfte | URI | IP-adress | Portar |
 | --- | --- | --- | --- |
-| Portalen | portal.loganalytics.io | dynamisk | 80 443 |
+| Portal | portal.loganalytics.io | dynamisk | 80 443 |
 | CDN | applicationanalytics.azureedge.net | dynamisk | 80 443 |
 
 Obs!: *. loganalytics.io-domänen ägs av Log Analyticss teamet.
@@ -239,11 +243,11 @@ Obs!: *. loganalytics.io-domänen ägs av Log Analyticss teamet.
 
 | Syfte | URI | IP-adress | Portar |
 | --- | --- | --- | --- |
-| Application Insights JS SDK CDN | az416426.vo.msecnd.net | dynamisk | 80 443 |
+| Application Insights JS SDK CDN | az416426.vo.msecnd.net<br/>js.monitor.azure.com | dynamisk | 80 443 |
 
 ## <a name="action-group-webhooks"></a>Webhookar för åtgärds grupp
 
-Du kan fråga listan över IP-adresser som används av åtgärds grupper med hjälp av [PowerShell-kommandot Get-AzNetworkServiceTag](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag).
+Du kan fråga listan över IP-adresser som används av åtgärds grupper med hjälp av [PowerShell-kommandot Get-AzNetworkServiceTag](/powershell/module/az.network/Get-AzNetworkServiceTag).
 
 ### <a name="action-groups-service-tag"></a>Service tag-åtgärd för åtgärds grupper
 Det kan ta lång tid att hantera ändringar av käll-IP-adresser. Om du använder **service märken** elimineras behovet av att uppdatera konfigurationen. En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar IP-adresserna och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket eliminerar behovet av att uppdatera nätverks säkerhets regler för en åtgärds grupp.
@@ -261,14 +265,14 @@ Det kan ta lång tid att hantera ändringar av käll-IP-adresser. Om du använde
     1. Välj *inkommande säkerhets regler*.
     1. Klicka på **Lägg till**.
     
-    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Exempel på hur du lägger till en service tag-kod."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="Exempel på hur du lägger till en service tag-kod." border="true":::
 
 4. Ett nytt fönster öppnas i det högra fönstret.
     1.  Välj källa: **service tag**
     1.  Käll tjänst tag gen: **ActionGroup**
     1.  Klicka på **Lägg till**.
     
-    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Exempel på hur du lägger till service tag-koden."border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="Exempel på hur du lägger till service tag-koden." border="true":::
 
 
 ## <a name="profiler"></a>Profilerare
@@ -276,7 +280,7 @@ Det kan ta lång tid att hantera ändringar av käll-IP-adresser. Om du använde
 | Syfte | URI | IP-adress | Portar |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
-| Portalen | gateway.azureserviceprofiler.net | dynamisk | 443
+| Portal | gateway.azureserviceprofiler.net | dynamisk | 443
 | Storage | *.core.windows.net | dynamisk | 443
 
 ## <a name="snapshot-debugger"></a>Felsökning av ögonblicksbild
@@ -287,6 +291,5 @@ Det kan ta lång tid att hantera ändringar av käll-IP-adresser. Om du använde
 | Syfte | URI | IP-adress | Portar |
 | --- | --- | --- | --- |
 | Agent | agent.azureserviceprofiler.net<br/>*. agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
-| Portalen | gateway.azureserviceprofiler.net | dynamisk | 443
+| Portal | gateway.azureserviceprofiler.net | dynamisk | 443
 | Storage | *.core.windows.net | dynamisk | 443
-

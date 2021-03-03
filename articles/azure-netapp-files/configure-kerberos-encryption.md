@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 02/18/2021
 ms.author: b-juche
-ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571094"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740570"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurera NFSv4.1 Kerberos-kryptering för Azure NetApp Files
 
@@ -112,66 +112,11 @@ Följ anvisningarna i [Konfigurera en NFS-klient för att Azure NetApp Files](co
 
 ## <a name="performance-impact-of-kerberos-on-nfsv41"></a><a name="kerberos_performance"></a>Prestanda påverkan för Kerberos på NFSv 4.1 
 
-Det här avsnittet hjälper dig att förstå prestanda effekten hos Kerberos på NFSv 4.1.
-
-### <a name="available-security-options"></a>Tillgängliga säkerhets alternativ 
-
-De säkerhets alternativ som för närvarande är tillgängliga för NFSv 4.1-volymer är följande: 
-
-* **SEC = sys** använder lokala UNIX-UID och GIDs med hjälp av AUTH_SYS för att autentisera NFS-åtgärder.
-* **SEC = krb5** använder Kerberos V5 i stället för lokala UNIX-UID och GIDs för att autentisera användare.
-* **SEC = krb5i** använder Kerberos V5 för användarautentisering och utför integritets kontroll av NFS-åtgärder med hjälp av säkra kontroll summor för att förhindra manipulering av data.
-* **SEC = krb5p** använder Kerberos V5 för användarautentisering och integritets kontroll. Den krypterar NFS-trafik för att förhindra trafik avlyssning. Det här alternativet är den säkraste inställningen, men det innebär också högsta prestanda.
-
-### <a name="performance-vectors-tested"></a>Prestanda vektorer har testats
-
-I det här avsnittet beskrivs den enda prestanda påverkan på klient sidan för de olika `sec=*` alternativen.
-
-* Prestanda påverkan har testats på två nivåer: låg concurrency (låg belastning) och hög samtidighet (övre gräns för I/O och data flöde).  
-* Tre typer av arbets belastningar har testats:  
-    * Liten åtgärd slumpmässig läsning/skrivning (med FIO)
-    * Sekventiell läsning/skrivning av stor åtgärd (med FIO)
-    * Metadata, tungt arbets belastning som genereras av program som git
-
-### <a name="expected-performance-impact"></a>Förväntad prestanda påverkan 
-
-Det finns två fokus områden: låg belastning och övre gräns. I följande listor beskrivs säkerhets inställningen prestanda påverkan per säkerhets inställning och scenario efter scenario. Alla jämförelser görs mot `sec=sys` säkerhets parametern. Testet utfördes på en enda volym med hjälp av en enda klient. 
-
-Prestanda påverkan för krb5:
-
-* Låg samtidighet (r/w):
-    * En sekventiell fördröjning ökade 0,3 MS.
-    * Slumpmässig I/O-latens ökade 0,2 MS.
-    * I/O-latens för metadata ökade 0,2 MS.
-* Hög samtidighet (r/w): 
-    * Högsta sekventiella data flöde har påverkats av krb5.
-    * Högsta slumpmässiga I/O minskas med 30% för rena Läs arbets belastningar med den totala påverkan som släpps på noll när arbets belastningen flyttas till ren skrivning. 
-    * Maximal arbets belastning för metadata minskade 30%.
-
-Prestanda påverkan för krb5i: 
-
-* Låg samtidighet (r/w):
-    * En sekventiell fördröjning ökade 0,5 ms.
-    * Slumpmässig I/O-latens ökade 0,2 MS.
-    * I/O-latens för metadata ökade 0,2 MS.
-* Hög samtidighet (r/w): 
-    * Det maximala sekventiella data flödet minskade med 70% övergripande oberoende av arbets belastnings blandningen.
-    * Högsta slumpmässiga I/O minskade med 50% för rena Läs arbets belastningar med den totala påverkan som minskar till 25% när arbets belastningen flyttas till ren skrivning. 
-    * Maximal arbets belastning för metadata minskade 30%.
-
-Prestanda påverkan för krb5p:
-
-* Låg samtidighet (r/w):
-    * En sekventiell fördröjning ökade 0,8 ms.
-    * Slumpmässig I/O-latens ökade 0,2 MS.
-    * I/O-latens för metadata ökade 0,2 MS.
-* Hög samtidighet (r/w): 
-    * Det maximala sekventiella data flödet minskade med 85% övergripande oberoende av arbets belastnings blandningen. 
-    * Högsta slumpmässiga I/O minskade med 65% för rena Läs arbets belastningar med den totala påverkan som minskar till 43% när arbets belastningen flyttas till ren skrivning. 
-    * Maximal arbets belastning för metadata minskade 30%.
+Du bör förstå de säkerhets alternativ som är tillgängliga för NFSv 4.1-volymer, de testade prestanda vektorerna och den förväntade prestanda effekten av Kerberos. Mer information finns i [prestanda påverkan från Kerberos på nfsv 4.1-volymer](performance-impact-kerberos.md) .  
 
 ## <a name="next-steps"></a>Nästa steg  
 
+* [Prestanda påverkan för Kerberos på NFSv 4.1-volymer](performance-impact-kerberos.md)
 * [Felsök problem med NFSv 4.1 Kerberos-volymer](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Vanliga frågor och svar om Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Skapa en NFS-volym för Azure NetApp Files](azure-netapp-files-create-volumes.md)

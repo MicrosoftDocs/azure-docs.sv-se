@@ -7,15 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: e790486758d6a5e3181df01f85e1213cca3fa12d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628279"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701016"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Svara på händelser med Azure Monitor-aviseringar
-Med aviseringar i Azure Monitor kan du identifiera viktig information på Log Analytics-lagringsplatsen. De skapas från varningsregler som automatiskt kör regelbundna loggsökningar. Om resultatet från loggsökningen matchar särskilda kriterier, skapas en aviseringspost som kan konfigureras till en automatisk åtgärd.  Den här självstudien är en fortsättning på självstudien [Skapa och dela instrumentpaneler med Log Analytics-data](../learn/tutorial-logs-dashboards.md).   
+Med aviseringar i Azure Monitor kan du identifiera viktig information på Log Analytics-lagringsplatsen. De skapas från varningsregler som automatiskt kör regelbundna loggsökningar. Om resultatet från loggsökningen matchar särskilda kriterier, skapas en aviseringspost som kan konfigureras till en automatisk åtgärd.  Den här självstudien är en fortsättning på självstudien [Skapa och dela instrumentpaneler med Log Analytics-data](../visualize/tutorial-logs-dashboards.md).   
 
 I den här guiden får du lära dig att:
 
@@ -31,7 +31,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 ## <a name="create-alerts"></a>Skapa aviseringar
 Aviseringar skapas av aviseringsregler i Azure Monitor och kan automatiskt köra sparade frågor eller anpassade loggsökningar med jämna mellanrum.  Du kan skapa aviseringar baserat på specifika prestandamått, när vissa händelser skapas, om en händelse saknas, eller om flera händelser skapas inom ett visst tidsintervall.  Aviseringar kan exempelvis användas för att meddela dig när den genomsnittliga CPU-användningen överskrider ett visst tröskelvärde, när en saknad uppdatering eller när en händelse genereras när det upptäckts att en specifik Windows-tjänst eller Linux-daemon inte körs.  Om resultatet av loggsökningen matchar särskilda villkor, skapas en avisering. Regeln kan sedan automatiskt köra en eller flera åtgärder, som att t.ex. meddela dig om aviseringen eller anropa en annan process. 
 
-I följande exempel skapar du ett måttaviseringsregel som baseras på frågan *Virtuella datorer i Azure – processoranvändning* som sparats i kursen [Visualisera data](../learn/tutorial-logs-dashboards.md).  En avisering skapas för varje virtuell dator som överskrider ett tröskelvärde på 90 %.  
+I följande exempel skapar du ett måttaviseringsregel som baseras på frågan *Virtuella datorer i Azure – processoranvändning* som sparats i kursen [Visualisera data](../visualize/tutorial-logs-dashboards.md).  En avisering skapas för varje virtuell dator som överskrider ett tröskelvärde på 90 %.  
 
 1. Klicka på **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan baserat på det du skriver. Välj **Log Analytics**.
 2. Skapa en ny avisering genom att välja **Aviseringar** det vänstra fönstret och sedan klicka på **Ny aviseringsregel** högst upp på sidan.<br><br> ![Skapa en ny aviseringsregel](./media/tutorial-response/alert-rule-02.png)<br>
@@ -69,4 +69,4 @@ I den här självstudien har du lärt dig hur varningsregler proaktivt kan ident
 Följ den här länken om du vill se inbyggda skriptexempel för Log Analytics.  
 
 > [!div class="nextstepaction"]
-> [Skriptexempel för Log Analytics](../samples/powershell-samples.md)
+> [Skriptexempel för Log Analytics](../powershell-samples.md)

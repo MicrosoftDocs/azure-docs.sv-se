@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083777"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735513"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Konfigurera haveriberedskap för en IIS-baserad webbapp med flera nivåer
 
@@ -69,7 +69,7 @@ Azure|Ej tillämpligt|Ja
 
 Om du vill starta replikeringen av alla virtuella IIS-webbservergrupper till Azure, följer du anvisningarna i [testa redundans till Azure i Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Om du använder en statisk IP-adress kan du ange den IP-adress som du vill att den virtuella datorn ska ta. Ange IP-adressen genom att gå till mål-IP för **beräknings-och nätverks inställningar**  >  **TARGET IP**.
+Om du använder en statisk IP-adress kan du ange den IP-adress som du vill att den virtuella datorn ska ta. Ange IP-adressen genom att gå till mål-IP för **beräknings-och nätverks inställningar**  >  .
 
 ![Skärm bild som visar hur du ställer in mål-IP i fönstret Site Recovery beräkning och nätverk](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -118,14 +118,14 @@ Varje plats består av bindnings information. Bindnings informationen omfattar t
 
 > [!NOTE]
 >
-> Om du anger plats bindningen till **Alla otilldelade**behöver du inte uppdatera den här bindningen efter redundans. Om IP-adressen som är kopplad till en plats inte har ändrats efter redundansväxlingen, behöver du inte uppdatera plats bindningen. (Kvarhållning av IP-adressen beror på nätverks arkitekturen och undernät som har tilldelats till primära platser och återställnings platser. Det kanske inte är möjligt att uppdatera dem i din organisation.)
+> Om du anger plats bindningen till **Alla otilldelade** behöver du inte uppdatera den här bindningen efter redundans. Om IP-adressen som är kopplad till en plats inte har ändrats efter redundansväxlingen, behöver du inte uppdatera plats bindningen. (Kvarhållning av IP-adressen beror på nätverks arkitekturen och undernät som har tilldelats till primära platser och återställnings platser. Det kanske inte är möjligt att uppdatera dem i din organisation.)
 
 ![Skärm bild som visar inställningen TLS/SSL-bindning](./media/site-recovery-iis/sslbinding.png)
 
-Om du har associerat IP-adressen med en plats uppdaterar du alla webbplats bindningar med den nya IP-adressen. Om du vill ändra plats bindningarna lägger du till ett [uppdaterings skript för IIS-webbnivån](https://aka.ms/asr-web-tier-update-runbook-classic) efter grupp 3 i återställnings planen.
+Om du har associerat IP-adressen med en plats uppdaterar du alla webbplats bindningar med den nya IP-adressen. Om du vill ändra plats bindningarna lägger du till ett [uppdaterings skript för IIS-webbnivån](/samples/browse/?redirectedfrom=TechNet-Gallery) efter grupp 3 i återställnings planen.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Uppdatera IP-adressen för belastningsutjämnaren
-Om du har en virtuell ARR-dator för att uppdatera IP-adressen lägger du till ett [IIS arr-skript för växling vid fel](https://aka.ms/asr-iis-arrtier-failover-script-classic) efter grupp 4.
+Om du har en virtuell ARR-dator för att uppdatera IP-adressen lägger du till ett [IIS arr-skript för växling vid fel](/samples/browse/?redirectedfrom=TechNet-Gallery) efter grupp 4.
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL-certifikat bindning för en HTTPS-anslutning
 En webbplats kan ha ett tillhör ande TLS/SSL-certifikat som säkerställer en säker kommunikation mellan webb servern och användarens webbläsare. Om webbplatsen har en HTTPS-anslutning och även har en associerad HTTPS-plats bindning till IIS-serverns IP-adress med en TLS/SSL-certifikat bindning, måste du lägga till en ny plats bindning för certifikatet med IP-adressen för den virtuella IIS-datorn efter redundans.

@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3b6928b759d2349051dbb69258952f2f1ee10a31
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878146"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694350"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenarier på virtuella Linux-datorer
-
 
 Azure Disk Encryption för virtuella Linux-datorer (VM: ar) använder funktionen DM-Crypt i Linux för att tillhandahålla fullständig disk kryptering av OS-disken och data diskar. Dessutom ger den en kryptering av den temporära disken när du använder funktionen EncryptFormatAll.
 
@@ -408,7 +407,6 @@ Azure Disk Encryption fungerar inte för följande scenarier, funktioner och tek
 - Skapa en avbildning eller ögonblicks bild av en krypterad virtuell dator och använda den för att distribuera ytterligare virtuella datorer.
 - Kernel-krasch dump (kdump).
 - Oracle-ACFS (ASM Cluster File System).
-- Virtuella Gen2-datorer (se: [stöd för virtuella datorer i generation 2 på Azure](../generation-2.md#generation-1-vs-generation-2-capabilities)).
 - NVMe-diskarna för virtuella datorer i Lsv2-serien (se: [Lsv2-serien](../lsv2-series.md)).
 - En virtuell dator med "kapslade monterings punkter"; det vill säga flera monterings punkter i en enda sökväg (till exempel "/1stmountpoint/data/2stmountpoint").
 - En virtuell dator med en data enhet som är monterad ovanpå en OS-mapp.
@@ -416,7 +414,6 @@ Azure Disk Encryption fungerar inte för följande scenarier, funktioner och tek
 - Virtuella datorer i M-serien med Skrivningsaccelerator diskar.
 - Använda ADE på en virtuell dator som har diskar som är krypterade med [kryptering på Server sidan med Kundhanterade nycklar](../disk-encryption.md) (SSE + CMK). Att använda SSE + CMK till en datadisk på en virtuell dator som är krypterad med ADE är ett scenario som inte stöds.
 - Migrering av en virtuell dator som är krypterad med ADE eller **som har varit** krypterad med ade, till kryptering på [Server sidan med Kundhanterade nycklar](../disk-encryption.md).
-- [Azure VM-storlekar utan lokal temporär disk](../azure-vms-no-temp-disk.md); Mer specifikt, DV4, Dsv4, Ev4 och Esv4.
 - Kryptera virtuella datorer i kluster för växling vid fel.
 
 ## <a name="next-steps"></a>Nästa steg

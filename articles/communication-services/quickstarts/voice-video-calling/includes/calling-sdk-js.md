@@ -4,16 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 3830025d761c94e2b0b0bc3e66389d66794b946c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751007"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - En distribuerad kommunikations tjänst resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - A `User Access Token` för att aktivera anrops klienten. Mer information om [hur du hämtar en `User Access Token` ](../../access-tokens.md)
 - Valfritt: Slutför snabb starten för att [komma igång med att lägga till samtal till ditt program](../getting-started-with-calling.md)
@@ -63,7 +63,7 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>Placera ett utgående samtal
 
-Om du vill skapa och starta ett samtal måste du använda ett av API: erna på CallAgent och tillhandahålla en användare som du har skapat via klient biblioteket för kommunikations tjänstens identitet.
+Om du vill skapa och starta ett samtal måste du använda ett av API: erna på CallAgent och tillhandahålla en användare som du har skapat via administrations klient biblioteket för kommunikations tjänster.
 
 Skapande av anrop och start är synkront. Med anrops instansen kan du prenumerera på samtals händelser.
 
@@ -254,10 +254,10 @@ Om du vill stänga av eller stänga av den lokala slut punkten kan du använda d
 
 ```js
 
-//mute local device
+//mute local device 
 await call.mute();
 
-//unmute local device
+//unmute local device 
 await call.unmute();
 
 ```
@@ -401,7 +401,7 @@ För att visa en lista över video strömmar och skärm delnings strömmar av fj
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
-
+ 
 För att kunna återge en `RemoteVideoStream` måste du prenumerera på en `isAvailableChanged` händelse.
 Om `isAvailable` egenskapen ändras till `true` skickar en fjärran sluten deltagare en ström.
 När det händer skapar du en ny instans av `Renderer` och skapar sedan en ny `RendererView` instans med hjälp av den asynkrona `createView` metoden.  Du kan sedan koppla `view.target` till ett gränssnitts element.
@@ -581,7 +581,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-
+               
 ```
 
 ## <a name="call-transfer-management"></a>Hantering av samtals överföring

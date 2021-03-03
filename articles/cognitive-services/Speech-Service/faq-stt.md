@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388625"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738199"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -138,7 +138,9 @@ S **: samla** in data som är så nära program scenariot och användnings falle
 
 **A**: träna en modell med ljuddata kan vara en långvarig process. Beroende på mängden data kan det ta flera dagar att skapa en anpassad modell. Om den inte kan slutföras inom en vecka kan tjänsten avbryta inlärnings åtgärden och rapportera modellen som misslyckad.
 
-Använd en av [regionerna](custom-speech-overview.md#set-up-your-azure-account) där dedikerad maskin vara är tillgänglig för utbildning för snabbare resultat. I allmänhet bearbetar tjänsten cirka 10 timmar ljud data per dag i regioner med sådan maskin vara. Det kan bara bearbeta ungefär 1 timme ljud data per dag i andra regioner. Du kan kopiera den helt utbildade modellen till en annan region med hjälp av [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Utbildning med enbart text är mycket snabbare och slutförs vanligt vis inom några minuter.
+Använd en av de [regioner](custom-speech-overview.md#set-up-your-azure-account) där dedikerad maskin vara är tillgänglig för utbildning. Tal tjänsten kommer att använda upp till 20 timmars ljud för utbildning i dessa regioner. I andra regioner kommer den bara att använda upp till åtta timmar.
+
+I allmänhet bearbetar tjänsten cirka 10 timmar ljud data per dag i regioner med dedikerad maskin vara. Det kan bara bearbeta ungefär 1 timme ljud data per dag i andra regioner. Du kan kopiera den helt utbildade modellen till en annan region med hjälp av [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Utbildning med enbart text är mycket snabbare och slutförs vanligt vis inom några minuter.
 
 Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för utbildning och ignorerar ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.
 

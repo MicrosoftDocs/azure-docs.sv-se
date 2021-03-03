@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709417"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Private Link
 
@@ -65,6 +65,12 @@ Du kan skala din privata länk tjänst på ett par olika sätt:
 - Lägg till virtuella server delar till poolen bakom Standard Load Balancer 
 - Lägg till en IP-adress i den privata länk tjänsten. Vi tillåter upp till 8 IP-adresser per privat länk-tjänst.  
 - Lägg till en ny privat länk-tjänst i Standard Load Balancer. Vi tillåter upp till åtta privata länk tjänster per belastningsutjämnare.   
+
+### <a name="what-is-natnetwork-address-translation-ip-configuration-used-in-private-link-service-how-can-i-scale-in-terms-of-available-ports-and-connections"></a>Vad är NAT (Network Address Translation) IP-konfiguration som används i Private Link service? Hur kan jag skala i förhållande till tillgängliga portar och anslutningar? 
+
+NAT-IP-konfigurationen säkerställer att det inte finns någon IP-konflikt mellan käll-och mål adress utrymmet (tjänst leverantör) genom att tillhandahålla källans NAT på den privata länk trafiken på mål sidan (tjänst leverantörs sidan). IP-adressen för NAT visas som käll-IP för alla paket som tas emot av din tjänst och mål-IP för alla paket som skickas av din tjänst.  NAT IP kan väljas från alla undernät i tjänst leverantörens virtuella nätverk. 
+
+Varje NAT-IP tillhandahåller 64 KB TCP-anslutningar (64 KB portar) per virtuell dator bakom Standard Load Balancer. För att kunna skala och lägga till fler anslutningar kan du antingen lägga till nya NAT IP-adresser eller lägga till fler virtuella datorer bakom Standard Load Balancer. På så sätt kan du skala port tillgängligheten och tillåta fler anslutningar. Anslutningar kommer att distribueras mellan NAT-adresser och virtuella datorer bakom Standard Load Balancer.
 
 ### <a name="can-i-connect-my-service-to-multiple-private-endpoints"></a>Kan jag ansluta min tjänst till flera privata slut punkter?
 Ja. En privat länk-tjänst kan ta emot anslutningar från flera privata slut punkter. En privat slut punkt kan dock bara ansluta till en privat länk tjänst.  

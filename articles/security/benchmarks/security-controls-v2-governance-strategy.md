@@ -4,15 +4,15 @@ description: Azure-säkerhet för benchmark v2 och styrning och strategi
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369063"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727030"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Säkerhets kontroll v2: styrning och strategi
 
@@ -24,15 +24,15 @@ Styrning och strategi ger vägledning för att säkerställa en konsekvent säke
 |--|--|--|--|
 | GS-1 | 2, 13 | SC, AC |
 
-Se till att dokumentera och förmedla en tydlig strategi för kontinuerlig övervakning och skydd av system och data. Prioritera identifiering, utvärdering, skydd och övervakning av affärskritiska data och system. 
+Se till att dokumentera och förmedla en tydlig strategi för kontinuerlig övervakning och skydd av system och data. Prioritera identifiering, utvärdering, skydd och övervakning av affärskritiska data och system.
 
 Strategin bör omfatta dokumenterad vägledning, policyer och standarder för följande element: 
 
 - En standard för dataklassificering i enlighet med affärsrisker
 
-- Säkerhetsorganisationens insyn i risker och tillgångsinventering 
+- Säkerhetsorganisationens insyn i risker och tillgångsinventering
 
-- Säkerhetsorganisationens godkännande av de Azure-tjänster som används 
+- Säkerhetsorganisationens godkännande av de Azure-tjänster som används
 
 - Tillgångars säkerhet genom hela livscykeln
 
@@ -127,9 +127,9 @@ Se till att dokumentera och förmedla en tydlig strategi för roller och ansvar 
 |--|--|--|--|
 | GS-5 | 9 | CA, SC |
 
-Upprätta en Azure Network Security-metod som en del av din organisations övergripande strategi för säkerhets åtkomst kontroll.  
+Upprätta en Azure Network Security-metod som en del av din organisations övergripande strategi för säkerhets åtkomst kontroll.
 
-Strategin bör omfatta dokumenterad vägledning, policyer och standarder för följande element: 
+Strategin bör omfatta dokumenterad vägledning, policyer och standarder för följande element:
 
 - Centraliserade ansvarsområden kring nätverkshantering och säkerhet
 
@@ -141,7 +141,7 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 - Strategi för hybridmoln och lokala anslutningar
 
-- Aktuella nätverkssäkerhetsartefakter (som nätverksdiagram och referensnätverksarkitekturer)
+- Aktuella nätverks säkerhets artefakter (till exempel nätverks diagram, referens nätverks arkitektur)
 
 Läs mer i följande referenser:
 
@@ -165,9 +165,9 @@ Läs mer i följande referenser:
 |--|--|--|--|
 | GS-6 | 16, 4 | AC, AU, SC |
 
-Upprätta en Azure Identity-och Privileged Access-metod som en del av din organisations övergripande strategi för säkerhets åtkomst kontroll.  
+Upprätta en Azure Identity-och Privileged Access-metod som en del av din organisations övergripande strategi för säkerhets åtkomst kontroll.
 
-Strategin bör omfatta dokumenterad vägledning, policyer och standarder för följande element: 
+Strategin bör omfatta dokumenterad vägledning, policyer och standarder för följande element:
 
 - Ett centraliserat system för identiteter och autentisering och dess anslutningar till andra interna och externa identitetssystem
 
@@ -175,7 +175,7 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 - Skydda och användare med hög behörighet
 
-- Övervaka och hantera avvikande användaraktiviteter  
+- Övervaka och hantera avvikande användaraktiviteter
 
 - Process för att granska och stämma av identiteter och åtkomstbehörighet
 
@@ -205,7 +205,7 @@ Upprätta en strategi för loggning och hot svar för att snabbt upptäcka och �
 
 Strategin bör omfatta dokumenterad vägledning, principer och standarder för följande element: 
 
-- Säkerhetsorganisationens roller och ansvarsområden 
+- Organisationens roll och ansvars områden för säkerhets åtgärder (SecOps) 
 
 - En väldefinierad process för incidentsvar anpassad efter NIST eller något annat branschramverk 
 

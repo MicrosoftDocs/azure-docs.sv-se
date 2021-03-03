@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108515"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720281"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Vanliga frågor och svar om Windows Virtual Desktop
 
@@ -136,3 +136,7 @@ Azure Lighthouse stöder inte fullt hantering av Windows-miljöer med virtuella 
 Du kan inte heller använda CSP sandbox-prenumerationer med Windows Virtual Desktop-tjänsten. Mer information finns i [konto för integration sandbox](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Slutligen, om du har aktiverat resurs leverantören från kontot för CSP-ägare, kan inte CSP-kundens kund konton ändra resurs leverantören.
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Hur ofta ska jag aktivera mina virtuella datorer för att förhindra registrerings problem?
+
+När du registrerar en virtuell dator till en adresspool i Windows Virtual Desktop-tjänsten uppdaterar agenten regelbundet den virtuella datorns token när den virtuella datorn är aktiv. Certifikatet för registrerings-token är giltigt i 90 dagar. På grund av den här 90-dagars gränsen rekommenderar vi att du startar dina virtuella datorer var 90 dag. Om du aktiverar den virtuella datorn inom den här tids gränsen kommer dess registrerings token att upphöra att gälla eller bli ogiltig. Om du har startat den virtuella datorn efter 90 dagar och har problem med registreringen, följer du anvisningarna i [fel söknings guiden för Windows Virtual Desktop agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) för att ta bort den virtuella datorn från poolen, installera om agenten och registrera den på poolen igen.

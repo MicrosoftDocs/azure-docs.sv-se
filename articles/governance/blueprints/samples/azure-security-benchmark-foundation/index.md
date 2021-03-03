@@ -3,16 +3,16 @@ title: Översikt över översikt över Azure Security benchmark Foundation-exemp
 description: Översikt och arkitektur för skiss exemplet för Azure Security benchmark Foundation.
 ms.date: 02/17/2020
 ms.topic: sample
-ms.openlocfilehash: b3b58f2fb603e23e4b188e527fa4fc60f4041a29
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ed497eff85e07b6a51939907bc751f3b40c99b30
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095277"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741879"
 ---
 # <a name="overview-of-the-azure-security-benchmark-foundation-blueprint-sample"></a>Översikt över skiss exemplet för Azure Security benchmark Foundation
 
-Skiss exemplet för Azure Security benchmark Foundation innehåller en uppsättning mönster för bas linje infrastruktur som hjälper dig att skapa en säker och kompatibel Azure-miljö. Skissen hjälper dig att distribuera en molnbaserad arkitektur som erbjuder lösningar till scenarier som har ackrediterings-eller efterlevnads krav. Det här grundläggande skiss exemplet är ett tillägg till [utkastet av Azure Security benchmark-exempel](../azure-security-benchmark/index.md). Den distribuerar och konfigurerar nätverks gränser, övervakning och andra resurser i enlighet med principerna och andra guardrails som definierats i [Azures säkerhets benchmark](../../../../security/benchmarks/index.yml).
+Skiss exemplet för Azure Security benchmark Foundation innehåller en uppsättning mönster för bas linje infrastruktur som hjälper dig att skapa en säker och kompatibel Azure-miljö. Skissen hjälper dig att distribuera en molnbaserad arkitektur som erbjuder lösningar till scenarier som har ackrediterings-eller efterlevnads krav. Det här grundläggande skiss exemplet är ett tillägg till [utkastet av Azure Security benchmark-exempel](../azure-security-benchmark.md). Den distribuerar och konfigurerar nätverks gränser, övervakning och andra resurser i enlighet med principerna och andra guardrails som definierats i [Azures säkerhets benchmark](../../../../security/benchmarks/index.yml).
 
 ## <a name="architecture"></a>Arkitektur
 
@@ -23,7 +23,7 @@ Skissen distribuerar ett virtuellt hubb nätverk som innehåller gemensamma och 
 
 Den här skissen distribuerar flera Azure-tjänster för att tillhandahålla en säker, övervakad, företags färdig grund. Den här miljön består av:
 
-- [Azure Monitor loggar](../../../../azure-monitor/platform/data-platform-logs.md) och ett Azure Storage-konto för att säkerställa resurs loggar, aktivitets loggar, Mät värden och nätverk trafikflöden lagras på en central plats för enkel frågor, analys, arkivering och avisering.
+- [Azure Monitor loggar](../../../../azure-monitor/logs/data-platform-logs.md) och ett Azure Storage-konto för att säkerställa resurs loggar, aktivitets loggar, Mät värden och nätverk trafikflöden lagras på en central plats för enkel frågor, analys, arkivering och avisering.
 - [Azure Security Center](../../../../security-center/security-center-introduction.md) (standard version) för att skydda hot mot Azure-resurser.
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) i hubben som stöder undernät för anslutning tillbaka till ett lokalt nätverk, en ingångs-och utgångs stack till/för Internet anslutning och valfria undernät för distribution av ytterligare administrativa tjänster eller hanterings tjänster. Virtual Network i eker innehåller undernät som är värdar för program arbets belastningar. Ytterligare undernät kan skapas efter distributionen efter behov för att stödja tillämpliga scenarier.
 - [Azure-brandväggen](../../../../firewall/overview.md) för att dirigera all utgående Internet trafik och aktivera inkommande Internet trafik via hopp box. (Standard brand Väggs regler blockerar all inkommande och utgående trafik och regler måste konfigureras efter distributionen, efter vad som är tillämpligt.)

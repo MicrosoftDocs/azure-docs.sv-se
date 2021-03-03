@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461759"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730379"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testen het
 
@@ -73,9 +73,9 @@ Du kan använda valfritt giltigt namn för parametrarna. test enheten känner ig
 
 ### <a name="accepted-parameter-metadata-types"></a>Godkända typer av metadata för parameter
 
-| Typ av metadata   | Parameter typ  | Description     | Exempel värde    |
+| Typ av metadata   | Parameter typ  | Beskrivning     | Exempel värde    |
 |---|---|---|---|
-| **BaseUri**     | sträng          | Distributions paketets bas-URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **BaseUri**     | sträng          | Distributions paketets bas-URI| `https://<..>.blob.core.windows.net/<..>` |
 | **användar**    | sträng          | Nytt slumpmässigt användar namn.| admin68876      |
 | **lösenord**    | säker sträng    | Nytt slumpmässigt lösen ord | LP! ACS- \^ 2kh     |
 | **sessions-ID**   | sträng          | Unikt ID för test driven session-ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |

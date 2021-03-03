@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6c9e8938feb3c3444d01f9d37476589776707425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703192"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Returnera din Azure Stack Edge Pro-enhet
 
@@ -30,26 +30,16 @@ I den här artikeln kan du se hur du:
 
 ## <a name="erase-data-from-the-device"></a>Radera data från enheten
 
-Om du vill rensa bort data från enhetens data diskar måste du återställa enheten. Du kan återställa enheten med hjälp av det lokala webb gränssnittet eller PowerShell-gränssnittet.
+Om du vill rensa bort data från enhetens data diskar måste du återställa enheten.
 
-Innan du återställer skapar du en kopia av lokala data på enheten om det behövs. Du kan kopiera data från enheten till en Azure Storage behållare.
+Innan du återställer skapar du en kopia av lokala data på enheten om det behövs. Du kan kopiera data från enheten till en Azure Storage behållare. 
 
-Du kan initiera enhets returen även innan enheten återställs. 
+Du kan initiera enhets returen även innan enheten återställs.
 
-Utför följande steg för att återställa enheten med det lokala webb gränssnittet.
+Du kan återställa enheten i det lokala webb gränssnittet eller i PowerShell. PowerShell-instruktioner finns i [återställa din enhet](./azure-stack-edge-connect-powershell-interface.md#reset-your-device).
 
-1. I det lokala webb gränssnittet går du till **underhåll > enhets återställning**.
-2. Välj **Återställ enhet**.
 
-    ![Återställ enhet](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. När du uppmanas att bekräfta kontrollerar du varningen och väljer **Ja** för att fortsätta.
-
-    ![Bekräfta återställning](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-Vid återställning raderas data från enhetens data diskar. Den här processen tar cirka 30-40 minuter beroende på hur mycket data som finns på enheten.
-
-Du kan också ansluta till PowerShell-gränssnittet på enheten och använda `Reset-HcsAppliance` cmdleten för att radera data från data diskarna. Mer information finns i [återställa din enhet](azure-stack-edge-connect-powershell-interface.md#reset-your-device).
+[! INKLUDERA] [Återställ data från enheten](../../includes/azure-stack-edge-device-reset.md)
 
 > [!NOTE]
 > - Om du utbyter eller uppgraderar till en ny enhet rekommenderar vi att du återställer enheten först när du har fått den nya enheten.
@@ -67,15 +57,15 @@ Utför följande steg för att påbörja retur processen.
 
     1. Ange enhetens serie nummer. Hämta enhetens serie nummer genom att gå till enhetens lokala webb gränssnitt och gå till **Översikt**.  
     
-    ![Enhets serie nummer 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![Enhets serie nummer 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. Ange numret för service tag-numret, som är ett värde av fem eller flera bokstäver som är unika för enheten. Service Tag-numret finns i det nedre högra hörnet på enheten (när du står inför enheten). Dra ut informations tag gen (den är en uppskjuten etikett panel). Den här panelen innehåller system information, till exempel service tag, NIC, MAC-adress och så vidare. 
+    2. Ange Service Tag-numret. Service Tag-numret är en identifierare med fem eller flera tecken, som är unik för din enhet. Service Tag-numret finns i det nedre högra hörnet på enheten (när du står inför enheten). Dra ut informations tag gen (den är en uppskjuten etikett panel). Den här panelen innehåller system information, till exempel service tag, NIC, MAC-adress och så vidare. 
     
-    ![Service tag-nummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![Service tag-nummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. Välj en orsak för returen i list rutan.
 
-    ![Returnera enhet 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![Returnera enhet 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. Under **leverans information**:
 
@@ -84,7 +74,7 @@ Utför följande steg för att påbörja retur processen.
 
     ![Returnera enhet 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. Läs igenom **Sekretess villkoren** och markera kryss rutan mot den anteckning som du har granskat och godkänner sekretess villkoren.
+4. Läs igenom **Sekretess villkoren** och markera kryss rutan med den anteckning som du har granskat och godkänner sekretess villkoren.
 
 5. Välj **Starta retur**.
 
@@ -109,7 +99,7 @@ Följ stegen nedan om du vill schemalägga en upphämtning.
 
     1. Ring din lokala UPS (lands-/regionspecifikt avgiftsfritt nummer).
     2. I ditt samtal offerterar du det omvända försändelse spårnings numret som det visas på den utskrivna etiketten.
-    3. Om spårnings numret inte är citerat, kräver UPS att du betalar ytterligare en kostnad under upphämtningen.
+    3. Om spårnings numret inte är citerat, kräver UPS att du betalar extra kostnad under upphämtningen.
 
     I stället för att schemalägga upphämtningen kan du också ta bort Azure Stack Edge Pro på närmsta plats.
 
@@ -123,8 +113,8 @@ När enheten har tagits emot i Azure-datacentret, inspekteras enheten efter skad
 
 Du kan ta bort enheten i Azure Portal:
 
-- När du har placerat beställningen och innan enheten förbereds av Microsoft.
-- När du har returnerat enheten till Microsoft, skickas den fysiska kontrollen till Azure-datacentret och Azure Stack Edge Pro Operations-team anropar för att bekräfta att enheten returnerades.
+- När du har placerat en order och innan enheten förbereds av Microsoft.
+- När du har returnerat en enhet till Microsoft och Azure Stack Edge Pro Operations-teamet har anropat för att bekräfta att enheten returnerades. Drift teamet anropas inte förrän den returnerade enheten skickar den fysiska kontrollen till Azure-datacentret.
 
 Om du har aktiverat enheten mot en annan prenumeration eller plats flyttar Microsoft din beställning till den nya prenumerationen eller platsen inom en arbets dag. När ordningen har flyttats kan du ta bort den här resursen.
 

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/01/2021
-ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6c4d63862f4e02f3fd525021921b02cde6d10f61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699342"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Få åtkomst till Azure API för FHIR med Postman
 
@@ -24,7 +24,7 @@ Ett klient program har åtkomst till ett FHIR-API via en [REST API](https://www.
 
 - En FHIR-slutpunkt i Azure. Du kan ställa in detta med hjälp av det hanterade Azure-API: t för FHIR eller FHIR-servern med öppen källkod för Azure. Konfigurera det hanterade Azure-API: t för FHIR med hjälp av [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)eller [Azure CLI](fhir-paas-cli-quickstart.md).
 - Ett  [klient program](register-confidential-azure-ad-client-app.md) som du ska använda för att få åtkomst till FHIR-tjänsten.
-- Du har beviljat behörigheter, till exempel "FHIR data Contributor" till klient programmet för att få åtkomst till FHIR-tjänsten. Mer information finns i [Konfigurera Azure RBAC för FHIR](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)
+- Du har beviljat behörigheter, till exempel "FHIR data Contributor" till klient programmet för att få åtkomst till FHIR-tjänsten. Mer information finns i [Konfigurera Azure RBAC för FHIR](./configure-azure-rbac.md)
 - Postman installerat. Du kan hämta den från [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>Information om FHIR-Server och-autentisering

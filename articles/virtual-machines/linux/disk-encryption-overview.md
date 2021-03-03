@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91ef5ca35cc96aa2028522d370ffbade45ecc2de
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694384"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption för virtuella Linux-datorer 
 
-Azure Disk Encryption hjälper till att skydda dina data så att din verksamhet uppfyller både interna och externa krav och åtaganden. Den använder [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt) funktionen i Linux för att tillhandahålla volym kryptering för operativ system och data diskar för virtuella Azure-datorer (VM) och är integrerat med [Azure Key Vault](../../key-vault/index.yml) för att hjälpa dig att styra och hantera disk krypterings nycklar och hemligheter. 
+Azure Disk Encryption hjälper till att skydda dina data så att din verksamhet uppfyller både interna och externa krav och åtaganden. Den använder [dm-crypt-](https://en.wikipedia.org/wiki/Dm-crypt) funktionen i Linux för att tillhandahålla volym kryptering för operativ system och data diskar för virtuella Azure-datorer (VM) och är integrerat med [Azure Key Vault](../../key-vault/index.yml) för att hjälpa dig att styra och hantera disk krypterings nycklar och hemligheter.
+
+Azure Disk Encryption är zon elastisk, på samma sätt som Virtual Machines. Mer information finns i [Azure-tjänster som stöder Tillgänglighetszoner](../../availability-zones/az-region.md).
 
 Om du använder [Azure Security Center](../../security-center/index.yml)får du en avisering om du har virtuella datorer som inte är krypterade. Aviseringarna visas med hög allvarlighets grad och rekommendationen är att kryptera de virtuella datorerna.
 
@@ -26,7 +28,6 @@ Om du använder [Azure Security Center](../../security-center/index.yml)får du 
 > [!WARNING]
 > - Om du tidigare har använt Azure Disk Encryption med Azure AD för att kryptera en virtuell dator måste du fortsätta att använda det här alternativet för att kryptera den virtuella datorn. Mer information finns i [Azure Disk Encryption med Azure AD (tidigare version)](disk-encryption-overview-aad.md) . 
 > - Vissa rekommendationer kan öka användningen av data, nätverk eller beräknings resurser, vilket resulterar i ytterligare licens-eller prenumerations kostnader. Du måste ha en giltig aktiv Azure-prenumeration för att kunna skapa resurser i Azure i de regioner som stöds.
-> - Virtuella datorer i generation 2 har inte stöd för Azure Disk Encryption. Mer information finns i [stöd för virtuella datorer i generation 2 på Azure](../generation-2.md) .
 
 Du kan lära dig grunderna i Azure Disk Encryption för Linux på bara några minuter med [skapa och kryptera en virtuell Linux-dator med Azure CLI snabb start](disk-encryption-cli-quickstart.md) eller [skapa och kryptera en virtuell Linux-dator med Azure PowerShell snabb start](disk-encryption-powershell-quickstart.md).
 
@@ -34,7 +35,11 @@ Du kan lära dig grunderna i Azure Disk Encryption för Linux på bara några mi
 
 ### <a name="supported-vms"></a>Virtuella datorer som stöds
 
-Virtuella Linux-datorer är tillgängliga i [flera storlekar](../sizes.md). Azure Disk Encryption är inte tillgänglig på virtuella datorer med [Basic, A-serien](https://azure.microsoft.com/pricing/details/virtual-machines/series/)eller på virtuella datorer som inte uppfyller de minsta minnes kraven:
+Virtuella Linux-datorer är tillgängliga i [flera storlekar](../sizes.md). Azure Disk Encryption stöds på virtuella datorer i generation 1 och generation 2. Azure Disk Encryption är också tillgängligt för virtuella datorer med Premium Storage.
+
+Se [storlekar för virtuella Azure-datorer utan lokal temporär disk](../azure-vms-no-temp-disk.md).
+
+Azure Disk Encryption är inte heller tillgängligt på virtuella datorer med [Basic, A-serien](https://azure.microsoft.com/pricing/details/virtual-machines/series/)eller på virtuella datorer som inte uppfyller de minsta minnes kraven:
 
 | Virtuell dator | Minsta minnes krav |
 |--|--|
@@ -42,13 +47,9 @@ Virtuella Linux-datorer är tillgängliga i [flera storlekar](../sizes.md). Azur
 | Virtuella Linux-datorer vid kryptering av både data-och OS-volymer och där roten (/) fil systemets användning är 4 GB eller mindre | 8 GB |
 | Virtuella Linux-datorer vid kryptering av både data-och OS-volymer och där roten (/) fil systemets användning är större än 4 GB | Rot fil systemets användning * 2. Till exempel kräver en 16 GB rot fil system användning minst 32 GB RAM-minne |
 
-När operativ systemets disk krypterings process har slutförts på virtuella Linux-datorer kan den virtuella datorn konfigureras för att köras med mindre minne. 
+När operativ systemets disk krypterings process har slutförts på virtuella Linux-datorer kan den virtuella datorn konfigureras för att köras med mindre minne.
 
-Azure Disk Encryption är också tillgängligt för virtuella datorer med Premium Storage.
-
-Azure Disk Encryption är inte tillgänglig på virtuella datorer i [generation 2](../generation-2.md#generation-1-vs-generation-2-capabilities) och [virtuella datorer i Lsv2-serien](../lsv2-series.md). Mer undantag finns i [Azure Disk Encryption: scenarier som inte stöds](disk-encryption-linux.md#unsupported-scenarios).
-
-Azure Disk Encryption är inte tillgängligt på VM-avbildningar utan temporära diskar (DV4, Dsv4, Ev4 och Esv4).  Se [storlekar för virtuella Azure-datorer utan lokal temporär disk](../azure-vms-no-temp-disk.md).
+Mer undantag finns i [Azure Disk Encryption: scenarier som inte stöds](disk-encryption-linux.md#unsupported-scenarios).
 
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
@@ -58,6 +59,7 @@ Azure Disk Encryption stöds på en delmängd av [Azure-godkända Linux-distribu
 
 Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure Disk Encryption. för de som har påtecknats har endast följande distributioner och versioner stöd Azure Disk Encryption:
 
+
 | Publisher | Erbjudande | SKU | URN | Volym typ som stöds för kryptering |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Kanoniskt: UbuntuServer: 18.04-LTS: senaste | Operativ system och data disk |
@@ -65,9 +67,12 @@ Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure D
 | Canonical | Ubuntu 16.04 | 16,04 – DAGLIGEN – LTS | Kanoniskt: UbuntuServer: 16.04-DAILY-LTS: senaste | Operativ system och data disk |
 | Canonical | Ubuntu 14.04.5</br>[med Azures justerade kernel uppdaterat till 4,15 eller senare](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kanoniskt: UbuntuServer: 14.04.5-LTS: senaste | Operativ system och data disk |
 | Canonical | Ubuntu 14.04.5</br>[med Azures justerade kernel uppdaterat till 4,15 eller senare](disk-encryption-troubleshooting.md) | 14.04.5 – DAGLIGA LTS | Kanoniskt: UbuntuServer: 14.04.5-DAILY-LTS: senaste | Operativ system och data disk |
+| Redhat | RHEL 8 – LVM | 8-LVM | RedHat: RHEL: 8-LVM: senaste | Operativ system och data disk (se OBS! nedan) |
+| Redhat | RHEL 8,2 | 8,2 | RedHat: RHEL: 8.2: senaste | Operativ system och data disk (se OBS! nedan) |
+| Redhat | RHEL 8,1 | 8.1 | RedHat: RHEL: 8.1: senaste | Operativ system och data disk (se OBS! nedan) |
+| Redhat | RHEL 7 – LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.8.2020111201 | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7.7: senaste | Operativ system och data disk (se OBS! nedan) |
-| Redhat | RHEL 7 – LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.8.2020111201 | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7.6: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7.5 | 7.5 | RedHat: RHEL: 7.5: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,4 | 7,4 | RedHat: RHEL: 7.4: senaste | Operativ system och data disk (se OBS! nedan) |
@@ -75,9 +80,12 @@ Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure D
 | Redhat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6,8: senaste | Data disk (se OBS! nedan) |
 | Redhat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6,7: senaste | Data disk (se OBS! nedan) |
+| OpenLogic | CentOS 8 – LVM | 8-LVM | OpenLogic: CentOS-LVM: 8-LVM: senaste | Operativ system och data disk |
+| OpenLogic | CentOS 8,2 | 8_2 | OpenLogic: CentOS: 8_2: senaste | Operativ system och data disk |
+| OpenLogic | CentOS 8,1 | 8_1 | OpenLogic: CentOS: 8_1: senaste | Operativ system och data disk |
+| OpenLogic | CentOS 7 – LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operativ system och data disk |
 | OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7,7 | 7,7 | OpenLogic: CentOS: 7.7: senaste | Operativ system och data disk |
-| OpenLogic | CentOS 7 – LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operativ system och data disk |
 | OpenLogic | CentOS 7,6 | 7,6 | OpenLogic: CentOS: 7.6: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic: CentOS: 7.5: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7.4 | 7,4 | OpenLogic: CentOS: 7.4: senaste | Operativ system och data disk |
@@ -148,7 +156,7 @@ I följande tabell definieras några vanliga termer som används i dokumentation
 ## <a name="next-steps"></a>Nästa steg
 
 - [Snabb start – skapa och kryptera en virtuell Linux-dator med Azure CLI ](disk-encryption-cli-quickstart.md)
-- [Snabb start – skapa och kryptera en virtuell Linux-dator med Azure PowerShell](disk-encryption-powershell-quickstart.md)
+- [Snabb start – skapa och kryptera en virtuell Linux-dator med Azure PowerShell](disk-encryption-powershell-quickstart.md) 
 - [Azure Disk Encryption-scenarier på virtuella Linux-datorer](disk-encryption-linux.md)
 - [Azure Disk Encryption nödvändiga CLI-skript](https://github.com/ejarvi/ade-cli-getting-started)
 - [PowerShell-skript för Azure Disk Encryption krav](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

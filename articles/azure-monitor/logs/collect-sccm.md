@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
-ms.openlocfilehash: 540ca293afdd7514793b8eec390b4751885859df
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2d2670b974555b83ec622b22eb2dae8f3c9899b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710988"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Anslut Configuration Manager till Azure Monitor
 Du kan ansluta din Microsoft Endpoint Configuration Manager-miljö till Azure Monitor för att synkronisera enhets samlings data och referera till dessa samlingar i Azure Monitor och Azure Automation.  
@@ -44,7 +44,7 @@ Följande steg sammanfattar stegen för att konfigurera Configuration Manager-in
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Bevilja Configuration Manager behörighet att Log Analytics
 
-I följande procedur beviljar du rollen *deltagare* i din Log Analytics-arbetsyta till AD-programmet och tjänstens huvud namn som du skapade tidigare för Configuration Manager. Om du inte redan har en arbets yta, se [skapa en arbets yta i Azure Monitor](../learn/quick-create-workspace.md) innan du fortsätter. Detta gör att Configuration Manager kan autentisera och ansluta till din Log Analytics-arbetsyta.  
+I följande procedur beviljar du rollen *deltagare* i din Log Analytics-arbetsyta till AD-programmet och tjänstens huvud namn som du skapade tidigare för Configuration Manager. Om du inte redan har en arbets yta, se [skapa en arbets yta i Azure Monitor](./quick-create-workspace.md) innan du fortsätter. Detta gör att Configuration Manager kan autentisera och ansluta till din Log Analytics-arbetsyta.  
 
 > [!NOTE]
 > Du måste ange behörigheter i Log Analytics arbets ytan för Configuration Manager. Annars visas ett fel meddelande när du använder konfigurations guiden i Configuration Manager.
@@ -148,9 +148,8 @@ När samlingarna har importer ATS kan du se hur många datorer med samlings medl
 
 ![Skärm bild av datorn grupperar avancerade inställningar för S C C M visar alternativet för att importera Configuration Manager samlings medlemskap har valts.](./media/collect-sccm/sccm-computer-groups02.png)
 
-När du klickar på någon av dessa öppnas logg Frågeredigeraren som visar antingen alla importerade grupper eller alla datorer som tillhör varje grupp. Med [loggs ökning](../log-query/log-query-overview.md)kan du utföra ytterligare djupgående analys av medlemskaps data för samlingen.
+När du klickar på någon av dessa öppnas logg Frågeredigeraren som visar antingen alla importerade grupper eller alla datorer som tillhör varje grupp. Med [loggs ökning](./log-query-overview.md)kan du utföra ytterligare djupgående analys av medlemskaps data för samlingen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Använd [loggs ökningen](../log-query/log-query-overview.md) för att visa detaljerad information om dina Configuration Manager data.
-
+Använd [loggs ökningen](./log-query-overview.md) för att visa detaljerad information om dina Configuration Manager data.

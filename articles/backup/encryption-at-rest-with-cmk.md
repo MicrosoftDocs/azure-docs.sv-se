@@ -3,12 +3,12 @@ title: Kryptering av säkerhetskopieringsdata med kundhanterade nycklar
 description: Lär dig hur Azure Backup kan kryptera dina säkerhetskopierade data med Kundhanterade nycklar (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369466"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716745"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Kryptering av säkerhetskopieringsdata med kundhanterade nycklar
 
@@ -235,11 +235,11 @@ InfrastructureEncryptionState : Disabled
 >[!NOTE]
 > Den här processen är densamma när du vill uppdatera eller ändra krypterings nyckeln. Om du vill uppdatera och använda en nyckel från en annan Key Vault (skiljer sig från den som för närvarande används) kontrollerar du att:
 >
-> - Key Vault finns i samma region som Recovery Services-valvet
+> - Nyckel valvet finns i samma region som Recovery Services-valvet
 >
 > - Nyckel valvet har mjuk borttagnings-och rensnings skydd aktiverat
 >
-> - Recovery Services-valvet har de behörigheter som krävs för att komma åt Key Vault.
+> - Recovery Services-valvet har de behörigheter som krävs för att komma åt nyckel valvet.
 
 ## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Säkerhetskopiera till ett valv som är krypterat med Kundhanterade nycklar
 

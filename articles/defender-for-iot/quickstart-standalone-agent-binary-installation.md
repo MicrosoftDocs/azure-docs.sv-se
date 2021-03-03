@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 0841bbd8baa524d3eea3afcbffc0aa5ead41409e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703056"
 ---
 # <a name="install-defender-for-iot-micro-agent-preview"></a>Installera Defender för IoT Micro agent (för hands version)
 
@@ -25,7 +25,7 @@ Innan du installerar Defender for IoT-modulen måste du skapa en modul identitet
 
 ## <a name="install-the-package"></a>Installera paketet
 
-Installera och konfigurera Microsoft Package-lagringsplatsen genom att följa [dessa anvisningar](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software). 
+Installera och konfigurera Microsoft Package-lagringsplatsen genom att följa [dessa anvisningar](/windows-server/administration/linux-package-repository-for-microsoft-software). 
 
 För Debian 9 innehåller instruktionerna inte den lagrings plats som behöver läggas till, Använd följande kommandon för att lägga till lagrings platsen: 
 

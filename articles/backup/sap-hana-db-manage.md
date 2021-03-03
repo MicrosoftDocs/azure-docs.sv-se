@@ -3,12 +3,12 @@ title: Hantera säkerhetskopierade SAP HANA databaser på virtuella Azure-datore
 description: I den här artikeln lär du dig vanliga uppgifter för att hantera och övervaka SAP HANA databaser som körs på virtuella Azure-datorer.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703774"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Hantera och övervaka säkerhetskopierade SAP HANA-databaser
 
@@ -149,8 +149,6 @@ Du kan ändra den underliggande principen för ett SAP HANA säkerhets kopiering
 
 >[!NOTE]
 > Eventuella ändringar i kvarhållningsperioden tillämpas retroaktivt för alla äldre återställnings punkter förutom de nya.
->
-> Det går inte att använda stegvisa säkerhets kopierings principer för SAP HANA databaser. Stegvis säkerhets kopiering stöds för närvarande inte för de här databaserna.
 
 ### <a name="modify-policy"></a>Ändra princip
 

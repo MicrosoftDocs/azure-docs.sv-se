@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
 ms.date: 02/21/2021
-ms.openlocfilehash: 7acb891cc887fb118a338cc837c5c5c4c98a63d8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691917"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Jämförelse av funktioner: Azure SQL Database och Azure SQL-hanterad instans
 
@@ -48,7 +48,7 @@ I följande tabell visas de viktigaste funktionerna i SQL Server och innehåller
 | [BULK INSERTs instruktion](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ja, men precis från Azure Blob Storage som källa. | Ja, men precis från Azure Blob Storage som källa – se [skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset). |
 | [Certifikat och asymmetriska nycklar](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, utan åtkomst till fil systemet för `BACKUP` och- `CREATE` åtgärder. | Ja, utan åtkomst till fil system för `BACKUP` och `CREATE` -åtgärder – se [certifikat skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
 | [Registrering av ändrings data – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Inga | Ja |
-| [Sortering-Server/instans](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nej, standard Server sortering `SQL_Latin1_General_CP1_CI_AS` används alltid. | Ja, kan ställas in när [instansen skapas](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md) och kan inte uppdateras senare. |
+| [Sortering-Server/instans](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nej, standard Server sortering `SQL_Latin1_General_CP1_CI_AS` används alltid. | Ja, kan ställas in när [instansen skapas](../managed-instance/create-template-quickstart.md) och kan inte uppdateras senare. |
 | [Columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-nivå, standard nivå – S3 och över, generell användning nivå, affärskritisk och nivåer för storskalig skala](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [CLR (Common Language Runtime) – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Inga | Ja, men utan åtkomst till fil systemet i `CREATE ASSEMBLY` instruktionen – se [CLR-skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
 | [Autentiseringsuppgifter](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, men endast [databasens begränsade autentiseringsuppgifter](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, men endast **Azure Key Vault** och `SHARED ACCESS SIGNATURE` stöds – se [information](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |

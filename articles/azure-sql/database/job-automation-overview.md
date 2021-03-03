@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 942698e5c42e1f46ff05dacdacdb0d124135a6c4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390767"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690438"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Automatisera hanterings uppgifter med elastiska jobb (förhands granskning)
 
@@ -56,7 +56,7 @@ Elastiska jobb kan rikta in sig på [Azure SQL-databaser](sql-database-paas-over
 
 För skript för T-SQL-skript i SQL Server och Azure SQL-hanterad instans, Överväg [SQL-agenten](job-automation-managed-instances.md). 
 
-För skript för T-SQL-skript i Azure Synapse Analytics kan du överväga [pipelines med återkommande utlösare](/azure/synapse-analytics/data-integration/concepts-data-factory-differences.md), som [baseras på Azure Data Factory](/azure/synapse-analytics/data-integration/concepts-data-factory-differences).
+För skript för T-SQL-skript i Azure Synapse Analytics kan du överväga [pipelines med återkommande utlösare](../../synapse-analytics/data-integration/concepts-data-factory-differences.md), som [baseras på Azure Data Factory](../../synapse-analytics/data-integration/concepts-data-factory-differences.md).
 
 Det är värt att notera skillnaderna mellan SQL-agenten (tillgänglig i SQL Server och som en del av SQL-hanterad instans) och den elastiska jobb agenten i databasen (som kan köra T-SQL på Azure SQL-databaser eller databaser i SQL Server och Azure SQL Managed instance, Azure Synapse Analytics).
 

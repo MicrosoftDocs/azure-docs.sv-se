@@ -4,45 +4,34 @@ description: Lär dig hur du använder aktiviteten hämta metadata i en Data Fac
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710234"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Hämta metadata-aktivitet i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Du kan använda aktiviteten hämta metadata för att hämta metadata för alla data i Azure Data Factory. Du kan använda den här aktiviteten i följande scenarier:
+Du kan använda aktiviteten hämta metadata för att hämta metadata för alla data i Azure Data Factory. Du kan använda utdata från aktiviteten hämta metadata i villkors uttryck för att utföra verifiering eller använda metadata i efterföljande aktiviteter.
 
-- Verifiera metadata för alla data.
-- Utlös en pipeline när data är klara/tillgängliga.
+## <a name="supported-capabilities"></a>Funktioner som stöds
 
-Följande funktioner är tillgängliga i kontroll flödet:
-
-- Du kan använda utdata från aktiviteten hämta metadata i villkors uttryck för att utföra verifieringen.
-- Du kan utlösa en pipeline när ett villkor är uppfyllt genom att göra tills loopar.
-
-## <a name="capabilities"></a>Funktioner
-
-Aktiviteten hämta metadata tar en data uppsättning som indata och returnerar metadatainformation som utdata. För närvarande stöds följande anslutningar och motsvarande hämtnings bara metadata. Den maximala storleken för returnerade metadata är cirka 4 MB.
-
->[!NOTE]
->Om du kör aktiviteten hämta metadata i en integration runtime med egen värd, stöds de senaste funktionerna på version 3,6 eller senare.
+Aktiviteten hämta metadata tar en data uppsättning som indata och returnerar metadatainformation som utdata. För närvarande stöds följande anslutningar och motsvarande hämtnings bara metadata. Den maximala storleken för returnerade metadata är **4 MB**.
 
 ### <a name="supported-connectors"></a>Anslutningar som stöds
 
 **File Storage**
 
-| Koppling/metadata | itemName<br>(fil/mapp) | itemType<br>(fil/mapp) | ikoner<br>Arkiv | Create<br>(fil/mapp) | lastModified<br>(fil/mapp) |childItems<br>projektbevakningsmappen |contentMD5<br>Arkiv | hierarkistruktur<br/>Arkiv | Antal<br>Arkiv | finns<br>(fil/mapp) |
+| Koppling/metadata | itemName<br>(fil/mapp) | itemType<br>(fil/mapp) | ikoner<br>Arkiv | Create<br>(fil/mapp) | lastModified<sup>1</sup><br>(fil/mapp) |childItems<br>projektbevakningsmappen |contentMD5<br>Arkiv | struktur<sup>2</sup><br/>Arkiv | columnCount<sup>2</sup><br>Arkiv | finns<sup>3</sup><br>(fil/mapp) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -50,12 +39,23 @@ Aktiviteten hämta metadata tar en data uppsättning som indata och returnerar m
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- När du använder hämta metadata-aktivitet mot en mapp kontrollerar du att du har behörigheten lista/kör till den aktuella mappen.
-- För Amazon S3 och Google Cloud Storage `lastModified` gäller Bucket och nyckeln, men inte den virtuella mappen, och gäller även för `exists` Bucket och nyckeln, men inte till prefixet eller den virtuella mappen.
+<sup>1</sup> metadata `lastModified` :
+- För Amazon S3 och Google Cloud Storage `lastModified` gäller Bucket och nyckeln, men inte den virtuella mappen, och gäller även för `exists` Bucket och nyckeln, men inte till prefixet eller den virtuella mappen. 
 - För Azure Blob Storage `lastModified` gäller för behållaren och blobben, men inte i den virtuella mappen.
-- `lastModified` filtret används för närvarande för att filtrera underordnade objekt, men inte den angivna mappen/filen.
+
+<sup>2</sup> metadata `structure` och `columnCount` stöds inte när metadata hämtas från binär-, JSON-eller XML-filer.
+
+<sup>3</sup> metadata `exists` : för Amazon S3-och Google Cloud-lagring `exists` gäller för Bucket och nyckeln, men inte till prefixet eller den virtuella mappen.
+
+. Tänk på följande:
+
+- När du använder hämta metadata-aktivitet mot en mapp kontrollerar du att du har behörigheten lista/kör till den aktuella mappen.
 - Wildcard-filter i mappar/filer stöds inte för aktiviteten hämta metadata.
-- `structure` och `columnCount` stöds inte när metadata hämtas från binär-, JSON-eller XML-filer.
+- `modifiedDatetimeStart` och `modifiedDatetimeEnd` filter uppsättning på koppling:
+
+    - Dessa två egenskaper används för att filtrera underordnade objekt när du hämtar metadata från en mapp. Det gäller inte när du hämtar metadata från en fil.
+    - När ett sådant filter används, `childItems` innehåller i utdata bara de filer som har ändrats inom det angivna intervallet, men inte mappar.
+    - Om du vill använda ett sådant filter kommer GetMetadata-aktiviteten att räkna upp alla filer i den angivna mappen och kontrol lera den ändrade tiden. Undvik att peka på en mapp med ett stort antal filer även om antalet förväntade kvalificerade filer är litet. 
 
 **Relationsdatabas**
 
@@ -85,9 +85,6 @@ Du kan ange följande typer av metadata i listan Hämta metadata aktivitet fält
 
 >[!TIP]
 >När du vill kontrol lera att det finns en fil, mapp eller tabell, anger `exists` du i fält listan Hämta metadata-aktivitet. Sedan kan du kontrol lera `exists: true/false` resultatet i aktivitetens utdata. Om `exists` inte anges i fält listan, kommer get metadata-aktiviteten inte att fungera om objektet inte hittas.
-
->[!NOTE]
->När du hämtar metadata från fil Arkiv och konfigurerar `modifiedDatetimeStart` eller `modifiedDatetimeEnd` , `childItems` kommer i-utdata bara att innehålla filer på den angivna sökvägen som har en senaste ändrings tid inom det angivna intervallet. I innehåller inte objekt i undermappar.
 
 ## <a name="syntax"></a>Syntax
 

@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690975"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Komma igång med Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ Som ett första steg måste du skapa din första SQL-hanterade instans med nätv
   > - Du kan även använda ExpressRoute- eller plats-till-plats-anslutning från ditt lokala nätverk, men dessa metoder ligger utanför det område som behandlas i de här snabbstarterna.
   > - Om du ändrar kvarhållningsperioden från 0 (obegränsad kvarhållning) till ett annat värde, Observera att kvarhållning endast kommer att gälla för loggar som skrivits efter att kvarhållning har ändrats (loggar som skrivits under perioden när kvarhållning hade värdet obegränsat bevaras, även efter att kvarhållning har Aktiver ATS).
 
-Som ett alternativ till manuell generering av SQL-hanterad instans kan du använda [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell med Resource Manager-mall](scripts/create-powershell-azure-resource-manager-template.md)eller [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) för att skapa skript och automatisera processen.
+Som ett alternativ till manuell generering av SQL-hanterad instans kan du använda [PowerShell](scripts/create-configure-managed-instance-powershell.md), [PowerShell med Resource Manager-mall](./create-template-quickstart.md)eller [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) för att skapa skript och automatisera processen.
 
 ### <a name="migrate-your-databases"></a>Migrera dina databaser
 

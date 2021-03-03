@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693840"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenarier på virtuella Windows-datorer
 
@@ -151,7 +151,7 @@ Aktivera kryptering på NVMe-diskar:
 
 Krypteringen sparas på NVMe-diskarna i följande scenarier:
 - Omstart av virtuell dator
-- VMSS avbildning
+- Avbildning av skalnings uppsättning för virtuell dator
 - Växla OS
 
 NVMe-diskar kommer att avinitieras i följande scenarier:
@@ -262,7 +262,6 @@ Azure Disk Encryption fungerar inte för följande scenarier, funktioner och tek
 - Kryptering av delade/distribuerade fil system som (men inte begränsat till) DFS, GFS, DRDB och CephFS.
 - Flytta en krypterad virtuell dator till en annan prenumeration eller region.
 - Skapa en avbildning eller ögonblicks bild av en krypterad virtuell dator och använda den för att distribuera ytterligare virtuella datorer.
-- Virtuella Gen2-datorer (se: [stöd för virtuella datorer i generation 2 på Azure](../generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuella datorer i M-serien med Skrivningsaccelerator diskar.
 - Använda ADE på en virtuell dator som har diskar som är krypterade med [kryptering på Server sidan med Kundhanterade nycklar](../disk-encryption.md) (SSE + CMK). Att använda SSE + CMK till en datadisk på en virtuell dator som är krypterad med ADE är ett scenario som inte stöds.
 - Migrering av en virtuell dator som är krypterad med ADE eller **som har varit** krypterad med ade, till kryptering på [Server sidan med Kundhanterade nycklar](../disk-encryption.md).

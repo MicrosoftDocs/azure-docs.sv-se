@@ -1,17 +1,16 @@
 ---
 title: Kabel data lösning i Azure Monitor | Microsoft Docs
 description: Tråd data är konsoliderade nätverks-och prestanda data från datorer med Log Analytics agenter. Nätverksdata kombineras med dina loggdata, vilket hjälper dig att korrelera data.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 563104a82da3b6b2263fce46792cf4f627c8f6ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713634"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (för hands version)-lösning i Azure Monitor
 
@@ -26,7 +25,7 @@ Förutom Log Analytics-agenten använder enheten för data överföring Microsof
 > 
 >Befintliga kunder som använder data överförings lösningen kan fortsätta att använda den. Vi kommer att publicera rikt linjer för en migrerings tids linje för att flytta till Tjänstkarta.
 >
->Nya kunder bör installera [tjänstkarta lösning](../vm/service-map.md) eller [Azure Monitor for VMS](../vm/vminsights-overview.md).  Tjänstkarta data uppsättningen är jämförbar med data från ledningen.  Azure Monitor for VMs innehåller data uppsättningen Tjänstkarta med ytterligare prestanda data och funktioner för analys. 
+>Nya kunder bör installera [tjänstkarta-lösningen](../vm/service-map.md) eller [VM-insikter](../vm/vminsights-overview.md).  Tjänstkarta data uppsättningen är jämförbar med data från ledningen.  VM Insights innehåller Tjänstkarta data uppsättning med ytterligare prestanda data och funktioner för analys. 
 
 
 Som standard loggar Azure Monitor data för processor-, minnes-, disk-och nätverks prestanda data från räknare som är inbyggda i Windows och Linux, samt andra prestanda räknare som du kan ange. Nätverks- och annan datainsamling är klar i realtid för varje agent, inklusive de undernät och protokoll på programnivå som används av datorn.  Wire Data granskar nätverksdata på programnivå, inte ned på TCP-transportnivå.  Lösningen granskar inte enskilda ACK:er och SYN-förfrågningar.  När handskakningen har slutförts anses det finnas en live-anslutning, vilken markeras med Ansluten. Anslutningen finns så länge båda sidorna är överens om att socketen är öppen och data kan överföras fram och tillbaka.  När någon av sidorna stänger anslutningen markeras den som frånkopplad.  Därför räknar den bara bandbredden för paket som har slutförts, den rapporterar inte om återsända eller misslyckade paket.
@@ -56,10 +55,10 @@ Wire Data hämtar sina data från Microsofts beroendeagent. Dependency Agent är
 
 | **Ansluten källa** | **Stöds** | **Beskrivning** |
 | --- | --- | --- |
-| Windows-agenter | Yes | Wire Data analyserar och samlar in data från Windows-agentdatorer. <br><br> Utöver [Log Analytics agent för Windows](../agents/agent-windows.md)kräver Windows-agenter Microsoft-beroende agent. Se [Operativsystem som stöds](../vm/vminsights-enable-overview.md#supported-operating-systems) för en fullständig lista med operativsystemversioner. |
-| Linux-agenter | Yes | Wire Data analyserar och samlar in data från Linux-agentdatorer.<br><br> Utöver [Log Analytics-agenten för Linux](../vm/quick-collect-linux-computer.md)kräver Linux-agenterna Microsofts beroende agent. Se [Operativsystem som stöds](../vm/vminsights-enable-overview.md#supported-operating-systems) för en fullständig lista med operativsystemversioner. |
-| System Center Operations Manager-hanteringsgrupp | Yes | Wire Data analyserar och samlar in data från Windows- och Linux-agenter i en ansluten [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md). <br><br> En direkt anslutning från den System Center Operations Manager agent datorn till Azure Monitor krävs. |
-| Azure Storage-konto | No | Wire Data samlar in data från agentdatorer, så det finns inte några data att samla in från Azure Storage. |
+| Windows-agenter | Ja | Wire Data analyserar och samlar in data från Windows-agentdatorer. <br><br> Utöver [Log Analytics agent för Windows](../agents/agent-windows.md)kräver Windows-agenter Microsoft-beroende agent. Se [Operativsystem som stöds](../vm/vminsights-enable-overview.md#supported-operating-systems) för en fullständig lista med operativsystemversioner. |
+| Linux-agenter | Ja | Wire Data analyserar och samlar in data från Linux-agentdatorer.<br><br> Utöver [Log Analytics-agenten för Linux](../vm/quick-collect-linux-computer.md)kräver Linux-agenterna Microsofts beroende agent. Se [Operativsystem som stöds](../vm/vminsights-enable-overview.md#supported-operating-systems) för en fullständig lista med operativsystemversioner. |
+| System Center Operations Manager-hanteringsgrupp | Ja | Wire Data analyserar och samlar in data från Windows- och Linux-agenter i en ansluten [System Center Operations Manager-hanteringsgrupp](../agents/om-agents.md). <br><br> En direkt anslutning från den System Center Operations Manager agent datorn till Azure Monitor krävs. |
+| Azure Storage-konto | Inga | Wire Data samlar in data från agentdatorer, så det finns inte några data att samla in från Azure Storage. |
 
 I Windows används Microsoft Monitoring Agent (MMA) av både System Center Operations Manager och Azure Monitor för att samla in och skicka data. Beroende på kontexten kallas agenten System Center Operations Manager agent, Log Analytics agent, MMA eller Direct agent. System Center Operations Manager och Azure Monitor ger något annorlunda versioner av MMA. Med dessa versioner kan varje rapport System Center Operations Manager till Azure Monitor eller till båda.
 

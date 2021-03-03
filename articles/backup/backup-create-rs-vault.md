@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig hur du skapar och konfigurera
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525982"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716762"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Skapa och konfigurera ett Recovery Services valv
 
@@ -71,7 +71,7 @@ Eftersom den här processen är på lagrings nivå finns det [pris effekter](htt
 >- Efter väljer kan det ta upp till 48 timmar innan säkerhets kopierings objekten är tillgängliga i sekundära regioner.
 >- För närvarande stöds endast CRR för virtuella Azure-datorer i Azure Resource Manager virtuella Azure-datorer. Klassiska virtuella Azure-datorer stöds inte.  När ytterligare hanterings typer stöder CRR registreras de **automatiskt** .
 >- Återställning mellan regioner **kan för närvarande inte återställas** till GRS eller LRS när skyddet initieras för första gången.
->- För närvarande är sekundär region återställningen upp till 12 timmar från den [primära regionen,](azure-backup-glossary.md#rpo-recovery-point-objective) även om [GRS-replikering (Read-Access Geo-redundant lagring)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) är 15 minuter.
+>- För närvarande är sekundär region återställningen upp till 12 timmar från den [primära regionen,](azure-backup-glossary.md#rpo-recovery-point-objective) även om [GRS-replikering (Read-Access Geo-redundant lagring)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) är 15 minuter.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurera återställning mellan regioner
 

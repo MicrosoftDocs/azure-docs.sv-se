@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 991d37b097587e8e4a524c4fc8bc21e9b6af20b5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a01005231b5d775f79555ec10dedeb3f30b3426a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623255"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737213"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>Felsöka problem i Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -55,7 +55,7 @@ I följande avsnitt hittar du vanliga symptom, möjliga orsaker och lösningar.
 
 * Autentiseringsuppgifterna är felaktiga.
 * Behörigheterna är otillräckliga.
-* Webbappen har distribuerats felaktigt.
+* För Service Manager-anslutningar: webbappen har distribuerats felaktigt.
 
 **Lösning**:
 
@@ -95,3 +95,12 @@ I följande avsnitt hittar du vanliga symptom, möjliga orsaker och lösningar.
 **Orsak**: en nyligen skapad ITSMC-instans har ännu inte slutfört den inledande synkroniseringen.
 
 **Lösning**: granska [vanliga fel och lösningar](itsmc-dashboard-errors.md).
+
+### <a name="sync-connection"></a>Synkronisera anslutning 
+
+**Orsak**: det kan finnas flera orsaker till det här problemet:
+
+* Mallar visas inte som en del av åtgärds definitionen.
+* Incedents/Events skapas inte i ServiceNow.
+
+**Lösning**: [Synkronisera anslutningen](itsmc-resync-servicenow.md).

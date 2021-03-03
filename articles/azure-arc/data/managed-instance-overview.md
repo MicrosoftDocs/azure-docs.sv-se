@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 331d4a36e2e466ea4103bda4a7f8c9f443751beb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65f61324c496d4b76e6f599966a780c735114870
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948560"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686673"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>Översikt över Azure Arc-aktiverad SQL-hanterad instans
 
@@ -26,11 +26,11 @@ Azure Arc-aktiverad SQL-hanterad instans är en Azure SQL-datatjänst som kan sk
 
 Azure Arc-aktiverad SQL-hanterad instans har nära 100%-kompatibilitet med den senaste SQL Server databas motorn och gör det möjligt för befintliga SQL Server kunder att lyfta och flytta sina program till Azure Arc Data Services med minimala program-och databas ändringar samtidigt som data suveräniteten bibehålls. På samma gång innehåller SQL-hanterad instans inbyggda hanterings funktioner som drastiskt minskar hanterings kostnaderna. 
 
-Azure Arc-aktiverad SQL-hanterad instans är för närvarande en för hands version.
-
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig mer om [funktioner och funktioner i Azure Arc-aktiverad SQL-hanterad instans](managed-instance-features.md)
+
+[Azure Arc-aktiverad hanterad instans med hög tillgänglighet](managed-instance-high-availability.md)
 
 [Börja med att skapa en datakontrollant](create-data-controller.md)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7534052412c2bee0f31e352fc577d376c11215c3
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804938"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730719"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU-virtuella datorer för din Azure Stack Edge Pro-enhet
 
@@ -110,8 +110,8 @@ Följ dessa steg när du distribuerar GPU-virtuella datorer på enheten:
 1. När den virtuella datorn har skapats distribuerar du GPU-tillägget med hjälp av tilläggs mal len. För virtuella Linux-datorer, se [Installera GPU-tillägg för Linux](#gpu-extension-for-linux) och för virtuella Windows-datorer, se [Installera GPU-tillägg för Windows](#gpu-extension-for-windows).
 
 1. Om du vill kontrol lera installationen av GPU-tillägget ansluter du till den virtuella GPU-datorn:
-    1. Om du använder en virtuell Windows-dator följer du stegen i [ansluta till en virtuell Windows-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-windows-vm). [Verifiera installationen](#verify-windows-driver-installation).
-    1. Om du använder en virtuell Linux-dator följer du stegen i [ansluta till en virtuell Linux-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). [Verifiera installationen](#verify-linux-driver-installation).
+    1. Om du använder en virtuell Windows-dator följer du stegen i [ansluta till en virtuell Windows-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm). [Verifiera installationen](#verify-windows-driver-installation).
+    1. Om du använder en virtuell Linux-dator följer du stegen i [ansluta till en virtuell Linux-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). [Verifiera installationen](#verify-linux-driver-installation).
 
 1. Om det behövs kan du byta tillbaka beräknings nätverket till det du behöver. 
 
@@ -545,7 +545,7 @@ Utdata för att köra tillägg loggas i följande fil: `/var/log/azure/nvidia-vm
 
 Följ dessa steg för att verifiera installationen av driv rutinen:
 
-1. Anslut till den virtuella GPU-datorn. Följ anvisningarna i [ansluta till en virtuell Linux-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-linux-vm). 
+1. Anslut till den virtuella GPU-datorn. Följ anvisningarna i [ansluta till en virtuell Linux-dator](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-linux-vm). 
 
     Här är exempel på utdata:
 

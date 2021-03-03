@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712206"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Anslut dina datorer som inte är Azure-datorer till Security Center
 
@@ -40,7 +40,7 @@ Läs mer om [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md).
 
 **Så här distribuerar du Azure-bågen:**
 
-- Följ anvisningarna i [snabb start: Anslut hybrid dator med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)för en dator.
+- Följ anvisningarna i [snabb start: Anslut hybrid datorer med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)för en dator.
 - Om du vill ansluta flera datorer till en skala till Arc-aktiverade servrar, se [ansluta hybrid datorer till Azure i stor skala](../azure-arc/servers/onboard-service-principal.md)
 
 > [!TIP]

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710591"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet-peering och Azure-skydds (för hands version)
 
@@ -40,9 +40,15 @@ Den här bilden visar arkitekturen för en Azure skydds-distribution i en nav-oc
 **Sätt**
 
 1. Anslut till Azure Portal med valfri HTML5-webbläsare.
-1. Välj den virtuella dator som du vill ansluta till.
-1. Azure skydds har sömlöst identifierats i det peer-distribuerade virtuella nätverket.
-1. Med ett enda klick öppnas RDP/SSH-sessionen i webbläsaren. För gränser för RDP och SSH samtidigt, se [RDP-och SSH-sessioner](bastion-faq.md#limits).
+2. Se till att du har **Läs** behörighet till både den virtuella mål datorn och det peer-virtuella VNet. Kontrol lera dessutom under IAM att du har Läs behörighet till följande resurser:
+   * Rollen läsare på den virtuella datorn.
+   * Rollen läsare på NÄTVERKSKORTet med den virtuella datorns privata IP-adress.
+   * Rollen läsare på Azure skydds-resursen.
+   * Rollen läsare i Virtual Network (behövs inte om det inte finns något peer-kopplat virtuellt nätverk).
+3. Om du vill se skydds i den nedrullningsbara menyn **Anslut** måste du välja den åtkomst som du har åtkomst till i **prenumerationen > global prenumeration**.
+4. Välj den virtuella dator som du vill ansluta till.
+5. Azure skydds har sömlöst identifierats i det peer-distribuerade virtuella nätverket.
+6. Med ett enda klick öppnas RDP/SSH-sessionen i webbläsaren. För gränser för RDP och SSH samtidigt, se [RDP-och SSH-sessioner](bastion-faq.md#limits).
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Anslut":::
 
@@ -51,7 +57,7 @@ Den här bilden visar arkitekturen för en Azure skydds-distribution i en nav-oc
    * [Anslut till en VM-RDP](bastion-connect-vm-rdp.md).
    * [Anslut till en VM – SSH](bastion-connect-vm-ssh.md).
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 [!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
 

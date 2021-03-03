@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740383"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Dela och ta emot data från Azure SQL Database och Azure Synapse Analytics
 
@@ -100,7 +100,7 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
     |---|---|---|
     | Prenumeration | Din prenumeration | Välj den Azure-prenumeration som du vill använda för ditt data resurs konto.|
     | Resursgrupp | *test-resurs-grupp* | Använd en befintlig resursgrupp eller skapa en ny resursgrupp. |
-    | Plats | *USA, östra 2* | Välj en region för ditt data resurs konto.
+    | Location | *USA, östra 2* | Välj en region för ditt data resurs konto.
     | Namn | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
     | | |
 
@@ -275,7 +275,7 @@ Följ stegen nedan för att konfigurera var du vill ta emot data.
 ### <a name="trigger-a-snapshot"></a>Utlös en ögonblicks bild
 De här stegen gäller endast för Snapshot-baserad delning.
 
-1. Du kan utlösa en ögonblicks bild genom att välja fliken **information** följt av **Utlös ögonblicks bild**. Här kan du utlösa en fullständig eller stegvis ögonblicks bild av dina data. Om det är första gången du tar emot data från din dataprovider väljer du fullständig kopia. Endast fullständig ögonblicks bild stöds för SQL-källor.
+1. Du kan utlösa en ögonblicks bild genom att välja fliken **information** följt av **Utlös ögonblicks bild**. Här kan du utlösa en fullständig eller stegvis ögonblicks bild av dina data. Om det är första gången du tar emot data från din dataprovider väljer du fullständig kopia. Endast fullständig ögonblicks bild stöds för SQL-källor. När en ögonblicks bild körs kommer efterföljande ögonblicks bilder inte att starta förrän den tidigare slutförts.
 
    ![Utlös ögonblicks bild](./media/trigger-snapshot.png "Utlös ögonblicks bild") 
 
@@ -309,7 +309,7 @@ När du delar data från SQL-källa används följande mappning från SQL Server
 | ntext |Sträng, char [] |
 | numeric |Decimal |
 | nvarchar |Sträng, char [] |
-| real |Enskilt |
+| real |Enkel |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |

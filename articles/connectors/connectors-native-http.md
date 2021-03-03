@@ -3,16 +3,16 @@ title: Anropa tjänst slut punkter med HTTP eller HTTPS
 description: Skicka utgående HTTP-eller HTTPS-begäranden till tjänst slut punkter från Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/18/2021
 tags: connectors
-ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719448"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Anropa tjänstslutpunkter via HTTP eller HTTPS från Azure Logic Apps
 
@@ -104,7 +104,7 @@ Den här inbyggda åtgärden gör ett HTTP-anrop till den angivna URL: en för e
 
 Här är mer information om utdata från en HTTP-utlösare eller åtgärd som returnerar denna information:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 |----------|------|-------------|
 | `headers` | JSON-objekt | Huvudena från begäran |
 | `body` | JSON-objekt | Objektet med bröd text innehållet från begäran |
@@ -249,8 +249,8 @@ Om en HTTP-utlösare eller åtgärd inkluderar dessa huvuden, tar Logic Apps bor
 
 * `Accept-*` huvuden utom för `Accept-version`
 * `Allow`
-* `Content-*` rubriker förutom `Content-Disposition` , `Content-Encoding` , och `Content-Type` när du använder post-och placerings åtgärder, men inte ingår i get-åtgärder
-* `Cookie`
+* `Content-*` huvuden förutom `Content-Disposition` , `Content-Encoding` , och `Content-Type` , som används när du använder post-och placerings åtgärder. Logic Apps släpper dock dessa huvuden när du använder åtgärden Hämta.
+* `Cookie` sidhuvud, men Logic Apps följer alla värden som du anger med egenskapen **cookie** .
 * `Expires`
 * `Host`
 * `Last-Modified`

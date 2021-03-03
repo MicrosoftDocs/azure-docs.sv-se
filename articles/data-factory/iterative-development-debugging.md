@@ -1,17 +1,20 @@
 ---
 title: Iterativ utveckling och fel sökning i Azure Data Factory
 description: Lär dig att utveckla och felsöka Data Factory pipelines iterativt i ADF-UX
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392535"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712971"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativ utveckling och felsökning med Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Genom att mappa data flöden kan du bygga kod fria data omvandlings logik som k�
 Du kan övervaka aktiva data flödes fel söknings sessioner över en fabrik i **övervaknings** miljön.
 
 ![Visa fel söknings sessioner för data flöde](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+Data förhands granskning i data flödes design och pipeline-felsökning av data flöden är avsedda att fungera bäst med små exempel på data. Men om du behöver testa din logik i en pipeline eller ett data flöde mot stora mängder data, ökar du storleken på de Azure Integration Runtime som används i felsökningssessionen med fler kärnor och minst generell användnings beräkning.
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Felsöka en pipeline med en data flödes aktivitet
 
@@ -83,7 +88,7 @@ Om du använder en befintlig felsökningssession minskar data flödets start tid
 Genom att använda aktivitets körningen skapar du ett nytt kluster med de inställningar som anges i varje data flödes aktivitets integrerings körning. Detta gör att varje jobb kan isoleras och ska användas för komplexa arbets belastningar eller prestanda testning. Du kan också kontrol lera TTL i Azure IR så att de kluster resurser som används för fel sökning fortfarande är tillgängliga under den tids perioden för att betjäna ytterligare jobb förfrågningar.
 
 > [!NOTE]
-> Om du har en pipeline med data flöden som körs parallellt väljer du "Använd aktivitets körning" så att Data Factory kan använda de Integration Runtime som du har valt i din data flödes aktivitet. Detta gör att data flöden kan köras på flera kluster och kan hantera dina parallella data flödes körningar.
+> Om du har en pipeline med data flöden som körs parallellt eller data flöden som måste testas med stora data uppsättningar, väljer du Använd aktivitets körning så att Data Factory kan använda Integration Runtime som du har valt i din data flödes aktivitet. Detta gör att data flöden kan köras på flera kluster och kan hantera dina parallella data flödes körningar.
 
 ![Köra en pipeline med ett data flöde](media/iterative-development-debugging/iterative-development-dataflow.png)
 

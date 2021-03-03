@@ -6,15 +6,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 9f8ad1e9a3c69d4ab629694fb18eab4bce95bb38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628288"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737349"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Exempel på Resource Manager-mallar för agenter i Azure Monitor
-Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](../platform/log-analytics-agent.md) och [diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
+Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](./log-analytics-agent.md) och [diagnostiskt tillägg](./diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -421,7 +421,7 @@ I följande exempel installeras Log Analytics-agenten på en virtuell Linux Azur
 Exemplen i det här avsnittet installerar Diagnostic-tillägget på virtuella Windows-och Linux-datorer i Azure och konfigurerar det för data insamling.
 
 ### <a name="windows"></a>Windows
-I följande exempel aktive ras och konfigureras diagnostiskt tillägg på en virtuell Windows Azure-dator. Mer information om konfigurationen finns i [Windows Diagnostics Extension schema](../platform/diagnostics-extension-schema-windows.md).
+I följande exempel aktive ras och konfigureras diagnostiskt tillägg på en virtuell Windows Azure-dator. Mer information om konfigurationen finns i [Windows Diagnostics Extension schema](./diagnostics-extension-schema-windows.md).
 
 #### <a name="template-file"></a>Mallfil
 
@@ -807,6 +807,6 @@ I följande exempel aktive ras och konfigureras diagnostiskt tillägg på en vir
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hämta andra exempel mallar för Azure Monitor](../samples/resource-manager-samples.md).
-* [Läs mer om Log Analytics-agenten](../platform/log-analytics-agent.md).
-* [Läs mer om diagnostiskt tillägg](../platform/diagnostics-extension-overview.md).
+* [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
+* [Läs mer om Log Analytics-agenten](./log-analytics-agent.md).
+* [Läs mer om diagnostiskt tillägg](./diagnostics-extension-overview.md).

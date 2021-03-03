@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: c70e4a097a56b76089a26510bcf33b4c7c24c266
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720927"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL pris nivåer
 
@@ -21,7 +21,7 @@ Du kan skapa en Azure Database for MySQL-server på en av tre olika pris nivåer
 |:---|:----------|:--------------------|:---------------------|
 | Beräknings generation | Gen 4, gen 5 | Gen 4, gen 5 | Gen 5 |
 | Virtuella kärnor | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Minne per vCore | 2 GB | 5 GB | 10 GB |
+| Minne per vCore | 2 GB | 5 GB | 10 GB |
 | Lagrings storlek | 5 GB till 1 TB | 5 GB till 16 TB | 5 GB till 16 TB |
 | Kvarhållningsperiod för databas säkerhets kopior | 7 till 35 dagar | 7 till 35 dagar | 7 till 35 dagar |
 
@@ -47,7 +47,7 @@ Lagrings utrymmet du tillhandahåller är mängden lagrings kapacitet som är ti
 |:---|:----------|:--------------------|:---------------------|
 | Lagringstyp | Basic Storage | Generell användning lagring | Generell användning lagring |
 | Lagrings storlek | 5 GB till 1 TB | 5 GB till 16 TB | 5 GB till 16 TB |
-| Öknings storlek för lagring | 1 GB | 1 GB | 1 GB |
+| Öknings storlek för lagring | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabel |3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS |
 
 > [!NOTE]
@@ -65,9 +65,9 @@ Basic-nivån ger ingen IOPS-garanti. På den Generell användning och minnesopti
 
 Du kan övervaka i/O-förbrukningen i Azure Portal eller genom att använda Azure CLI-kommandon. De relevanta måtten för övervakning är [lagrings gränser, lagrings utrymme, lagring och i/o procent](concepts-monitoring.md).
 
-### <a name="reaching-the-storage-limit"></a>Nått lagrings gränsen
+### <a name="reaching-the-storage-limit"></a>Lagringsgränsen är nådd
 
-Servrar med mindre än lika med 100 GB allokerat lagrings utrymme markeras som skrivskyddade om det lediga lagrings utrymmet är mindre än 5% av den allokerade lagrings storleken. Servrar med mer än 100 GB allokerat lagringsutrymme markeras bara som skrivskyddade när det lediga lagringsutrymmet är mindre än 5 GB.
+Servrar med 100 GB eller mindre allokerat lagringsutrymme markeras som skrivskyddade om det lediga lagringsutrymmet är mindre än 5 % av den allokerade lagringsstorleken. Servrar med mer än 100 GB allokerat lagringsutrymme markeras bara som skrivskyddade när det lediga lagringsutrymmet är mindre än 5 GB.
 
 Om du till exempel har allokerat 110 GB lagrings utrymme och den faktiska användningen går över 105 GB, är servern markerad som skrivskyddad. Alternativt, om du har allokerat 5 GB lagring, markeras servern som skrivskyddad när den kostnads fria lagrings platsen når mindre än 256 MB.
 
@@ -91,7 +91,7 @@ Azure Database for MySQL tillhandahåller upp till 100% av din etablerade Server
 
 När du har skapat din server kan du oberoende ändra virtuella kärnor, maskin varu genereringen, pris nivån (förutom till och från Basic), mängden lagring och kvarhållningsperioden för säkerhets kopior. Du kan inte ändra lagrings typen för säkerhets kopia när en server har skapats. Antalet virtuella kärnor kan skalas upp eller ned. Kvarhållningsperioden för säkerhets kopior kan skalas upp eller ned från 7 till 35 dagar. Det går bara att öka lagrings storleken. Skalning av resurserna kan göras via portalen eller Azure CLI. Ett exempel på skalning med hjälp av Azure CLI finns i [övervaka och skala en Azure Database for MySQL server med hjälp av Azure CLI](scripts/sample-scale-server.md).
 
-När du ändrar antalet virtuella kärnor, maskin varu genereringen eller pris nivån skapas en kopia av den ursprungliga servern med den nya beräknings allokeringen. När den nya servern är igång växlar anslutningarna över till den nya servern. Under tiden då systemet växlar över till den nya servern kan inga nya anslutningar upprättas, och transaktioner som inte allokerats återställs. Hur lång tid detta tar varierar, men i de flesta fall tar det mindre än en minut.
+När du ändrar antalet virtuella kärnor, maskin varu genereringen eller pris nivån skapas en kopia av den ursprungliga servern med den nya beräknings allokeringen. När den nya servern är igång växlar anslutningarna över till den nya servern. Under tiden då systemet växlar över till den nya servern kan inga nya anslutningar upprättas, och transaktioner som inte allokerats återställs. Den här stillestånds tiden under skalning kan vara cirka 60-120 sekunder. Stillestånds tiden under skalningen beror på databas återställnings tiden, vilket kan göra att databasen blir online längre om du har tung transaktions aktivitet på servern vid skalnings åtgärden. För att undvika längre omstart av tiden rekommenderar vi att du utför skalnings åtgärder under perioder med låg transaktions aktivitet på servern.
 
 Skalning av lagring och ändring av kvarhållning av säkerhets kopior är true online-åtgärder. Det finns ingen nedtid och ditt program påverkas inte. Som IOPS-skala med storleken på den allokerade lagringen kan du öka tillgängligheten för IOPS för servern genom att skala upp lagringen.
 

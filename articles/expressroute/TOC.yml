@@ -130,12 +130,18 @@
           href: expressroute-howto-macsec.md
     - name: Konfigurera ExpressRoute Global Reach
       items:
-        - name: Azure-portalen
+        - name: Azure Portal
           href: expressroute-howto-set-global-reach-portal.md
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
+    - name: Lägg till stöd för IPv6 för privat peering (för hands version)
+      items:
+        - name: Azure Portal
+          href: expressroute-howto-add-ipv6-portal.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-ipv6-powershell.md
     - name: Övervakning
       items:
         - name: 'Övervakning, mått och aviseringar i ExpressRoute'
@@ -148,7 +154,7 @@
       items:
         - name: Aktivera och inaktivera peering-sessioner
           items:
-            - name: Azure-portalen
+            - name: Azure Portal
               href: expressroute-howto-reset-peering-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-reset-peering.md

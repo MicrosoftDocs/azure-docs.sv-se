@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373478"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737553"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appbifogning med Azure Portal
 
@@ -36,6 +36,7 @@ Det här behöver du för att konfigurera MSIX app Attach:
 - Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en fil resurs.
 - En fil resurs i Windows-distributionen för virtuella skriv bord där MSIX-paketet ska lagras.
 - Fil resursen där du laddade upp MSIX-avbildningen måste också vara tillgänglig för alla virtuella datorer i poolen. Användare behöver skrivskyddade behörigheter för att komma åt avbildningen.
+- Om certifikatet inte är offentligt betrott följer du anvisningarna i [Installera certifikat](app-attach.md#install-certificates).
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Inaktivera automatiska uppdateringar för MSIX app attaching Applications
 

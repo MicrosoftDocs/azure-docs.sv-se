@@ -14,42 +14,70 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 9628e46281e267bd1c1fd8277a3a975bc338c6dc
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724633"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Ansluta till Media Services v3 API – Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Den här artikeln visar hur du ansluter till Azure Media Services v3-node.js SDK med hjälp av inloggnings metoden för tjänstens huvud namn.
+Den här artikeln visar hur du ansluter till Azure Media Services v3-node.js SDK med hjälp av inloggnings metoden för tjänstens huvud namn. Du kommer att arbeta med filer i exempel databasen *Media-Services-v3-Node-självstudier* . Exemplet *HelloWorld-ListAssets* innehåller koden för att ansluta och sedan lista till gångar i kontot.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
+- En installation av Visual Studio Code.
 - Installera [Node.js](https://nodejs.org/en/download/).
 - Installera [typescript](https://www.typescriptlang.org/download).
 - [Skapa ett Media Services-konto](./create-account-howto.md). Glöm inte att komma ihåg resurs gruppens namn och namnet på Media Services kontot.
+- Skapa ett huvud namn för tjänsten för ditt program. Se [API: er för åtkomst](./access-api-howto.md).<br/>**Pro-tips!** Behåll fönstret öppet eller kopiera allt på JSON-fliken till anteckningar. 
+- Se till att hämta den senaste versionen av [AZUREMEDIASERVICES SDK för Java Script](https://www.npmjs.com/package/@azure/arm-mediaservices).
 
 > [!IMPORTANT]
-> Granska Azure Media Services [namngivnings konventioner](media-services-apis-overview.md#naming-conventions) för att förstå de viktiga namngivnings begränsningarna för entiteter. 
+> Granska Azure Media Services [namngivnings konventioner](media-services-apis-overview.md#naming-conventions) för att förstå de viktiga namngivnings begränsningarna för entiteter.
 
-## <a name="reference-documentation-for-azurearm-mediaservices"></a>Referens dokumentation för @Azure/arm-mediaservices
-- [Referens dokumentation för Azure Media Services-moduler för Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+## <a name="clone-the-nodejs-samples-repo"></a>Klona Node.JS-exempel lagrings platsen
 
-## <a name="more-developer-documentation-for-nodejs-on-azure"></a>Mer dokumentation om utvecklare för Node.js på Azure
-- [Azure för Java Script & Node.js-utvecklare](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
-- [Media Services käll kod i @azure/azure-sdk-for-js git Hub-lagrings platsen](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Dokumentation om Azure-paket för Node.js utvecklare](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+Du kommer att arbeta med några filer i Azure-exempel. Klona lagrings platsen för Node.JS-exempel.
+
+```git
+git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
+```
 
 ## <a name="install-the-packages"></a>Installera paketen
 
-1. Skapa en package.jspå en fil med hjälp av din favorit redigerare.
-1. Öppna filen och klistra in följande kod:
+### <a name="install-azurearm-mediaservices"></a>Installationer @azure/arm-mediaservices
 
-   Se till att hämta den senaste versionen av [AZUREMEDIASERVICES SDK för Java Script](https://www.npmjs.com/package/@azure/arm-mediaservices).
+```bash
+npm install @azure/arm-mediaservices
+```
+
+### <a name="install-azurems-rest-nodeauth"></a>Installationer @azure/ms-rest-nodeauth
+
+Installera den lägsta versionen av " @azure/ms-rest-nodeauth ": "^ 3.0.0".
+
+```bash
+npm install @azure/ms-rest-nodeauth@"^3.0.0"
+```
+
+I det här exemplet ska du använda följande paket i `package.json` filen.
+
+|Paket|Beskrivning|
+|---|---|
+|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Kontrol lera att du använder det senaste Azure Media Servicess paketet genom att kontrol lera [NPM install @azure/arm-mediaservices ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
+|`@azure/ms-rest-nodeauth` | Krävs för AAD-autentisering med tjänstens huvud namn eller hanterad identitet|
+|`@azure/storage-blob`|Storage SDK. Används vid överföring av filer till till gångar.|
+|`@azure/ms-rest-js`| Används för att logga in.|
+|`@azure/storage-blob` | Används för att ladda upp och ladda ned filer till till gångar i Azure Media Services för kodning.|
+|`@azure/abort-controller`| Används tillsammans med lagrings klienten för att ta bort tids krävande nedladdnings åtgärder|
+
+### <a name="create-the-packagejson-file"></a>Skapa package.jsfilen
+
+1. Skapa en `package.json` fil med hjälp av din favorit redigerare.
+1. Öppna filen och klistra in följande kod:
 
 ```json
 {
@@ -66,43 +94,18 @@ Den här artikeln visar hur du ansluter till Azure Media Services v3-node.js SDK
 }
 ```
 
-Följande paket ska anges:
-
-|Paket|Beskrivning|
-|---|---|
-|`@azure/arm-mediaservices`|Azure Media Services SDK. <br/>Kontrol lera att du använder det senaste Azure Media Servicess paketet genom att kontrol lera [NPM install @azure/arm-mediaservices ](https://www.npmjs.com/package/@azure/arm-mediaservices).|
-|`@azure/ms-rest-nodeauth` | Krävs för AAD-autentisering med tjänstens huvud namn eller hanterad identitet|
-|`@azure/storage-blob`|Storage SDK. Används vid överföring av filer till till gångar.|
-|`@azure/ms-rest-js`| Används för att logga in.|
-|`@azure/storage-blob` | Används för att ladda upp och ladda ned filer till till gångar i Azure Media Services för kodning.|
-|`@azure/abort-controller`| Används tillsammans med lagrings klienten för att ta bort tids krävande nedladdnings åtgärder|
-
-
-Du kan köra följande kommando för att kontrol lera att du använder det senaste paketet:
-
-### <a name="install-azurearm-mediaservices"></a>Installationer @azure/arm-mediaservices
-```
-npm install @azure/arm-mediaservices
-```
-
-### <a name="install-azurems-rest-nodeauth"></a>Installationer @azure/ms-rest-nodeauth
-
-Installera den lägsta versionen av " @azure/ms-rest-nodeauth ": "^ 3.0.0".
-
-```
-npm install @azure/ms-rest-nodeauth@"^3.0.0"
-```
-
 ## <a name="connect-to-nodejs-client-using-typescript"></a>Ansluta till Node.js-klienten med TypeScript
 
-1. Skapa en TypeScript. TS-fil med hjälp av din favorit redigerare.
-1. Öppna filen och klistra in följande kod.
-1. Skapa en. kuvert-fil och fyll i informationen från Azure Portal. Se [API: er för åtkomst](./access-api-howto.md).
 
-### <a name="sample-env-file"></a>Exempel på. kuvert-fil
-```
-# copy the content of this file to a file named ".env". It should be stored at the root of the repo.
-# The values can be obtained from the API Access page for your Media Services account in the portal.
+
+### <a name="sample-env-file"></a>Exempel på *. kuvert* -fil
+
+Kopiera innehållet i den här filen till en fil med namnet *. kuvert*. Den ska lagras i roten på din arbets plats. Detta är de värden som du fick från sidan API-åtkomst för ditt Media Services-konto i portalen.
+
+När du har skapat *. kuvert* -filen kan du börja arbeta med exemplen.
+
+```nodejs
+# Values from the API Access page in the portal
 AZURE_CLIENT_ID=""
 AZURE_CLIENT_SECRET= ""
 AZURE_TENANT_ID= ""
@@ -126,8 +129,42 @@ AZURE_ARM_ENDPOINT="https://management.azure.com"
 DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 ```
 
-## <a name="typescript---hello-world---list-assets"></a>Typescript-Hello World-list till gångar
-Det här exemplet visar hur du ansluter till den Media Services klienten med ett huvud namn för tjänsten och list till gångar i kontot. Om du använder ett nytt konto, kommer listan att vara tom. Du kan ladda upp några till gångar i portalen för att se resultatet.
+## <a name="run-the-sample-application-helloworld-listassets"></a>Kör exempel programmet *HelloWorld-ListAssets*
+
+1. Ändra katalog till mappen *AMSv3Samples*
+
+```bash
+cd AMSv3Samples
+```
+
+2. Installera de paket som används i *packages.jspå* filen.
+
+```
+npm install 
+```
+
+3. Ändra katalogen till mappen *HelloWorld-ListAssets* .
+
+```bash
+cd HelloWorld-ListAssets
+```
+
+4. Starta Visual Studio Code från mappen AMSv3Samples Detta krävs för att starta från mappen där mappen ". VSCode" och tsconfig.jspå filer finns
+
+```dotnetcli
+cd ..
+code .
+```
+
+Öppna mappen för *HelloWorld-ListAssets* och öppna *index. TS* -filen i Visual Studio Code Editor.
+
+När du är i *index. TS* -filen trycker du på F5 för att starta fel söknings programmet. Du bör se en lista över till gångar som visas om du redan har till gångar i kontot. Om kontot är tomt visas en tom lista.  
+
+Om du snabbt vill se de till gångar som visas använder du portalen för att ladda upp några videofiler. Till gångar skapas automatiskt var och en när du kör skriptet igen och returnerar sedan deras namn.
+
+### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>Titta närmare på exemplet *HelloWorld-ListAssets*
+
+Exemplet *HelloWorld-ListAssets* visar hur du ansluter till den Media Services klienten med ett huvud namn för tjänsten och en list till gångar i kontot. Se kommentarerna i koden om du vill ha en detaljerad förklaring av vad det gör.
 
 ```ts
 import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
@@ -174,38 +211,6 @@ main().catch((err) => {
 });
 ```
 
-## <a name="run-the-sample-application-helloworld-listassets"></a>Kör exempel programmet HelloWorld-ListAssets
-
-Klona lagrings platsen för Node.js exempel
-
-```git
-git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
-```
-
-Ändra katalog till mappen AMSv3Samples
-```bash
-cd AMSv3Samples
-```
-
-Installera de paket som används i packages.jspå
-```
-npm install 
-```
-
-Ändra katalog till mappen HelloWorld-ListAssets
-```bash
-cd HelloWorld-ListAssets
-```
-
-Starta Visual Studio Code från mappen AMSv3Samples Detta krävs för att starta från mappen där mappen ". VSCode" och tsconfig.jspå filer finns
-```dotnetcli
-cd ..
-code .
-```
-
-Öppna mappen för HelloWorld-ListAssets och öppna index. TS-filen i Visual Studio Code Editor.
-När du är i index. TS-filen trycker du på F5 för att starta fel söknings programmet. Du bör se en lista över till gångar som visas om du redan har till gångar i kontot. Om kontot är tomt visas en tom lista.  Ladda upp några till gångar i portalen för att se resultatet.
-
 ## <a name="more-samples"></a>Fler exempel
 
 Följande exempel är tillgängliga i [lagrings platsen](https://github.com/Azure-Samples/media-services-v3-node-tutorials)
@@ -219,6 +224,10 @@ Följande exempel är tillgängliga i [lagrings platsen](https://github.com/Azur
 
 ## <a name="see-also"></a>Se även
 
+- [Referens dokumentation för Azure Media Services-moduler för Node.js](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
+- [Azure för Java Script & Node.js-utvecklare](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Media Services käll kod i @azure/azure-sdk-for-js git Hub-lagrings platsen](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [Dokumentation om Azure-paket för Node.js utvecklare](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
 - [Media Services begrepp](concepts-overview.md)
 - [NPM-installation @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
 - [Azure för Java Script & Node.js-utvecklare](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)

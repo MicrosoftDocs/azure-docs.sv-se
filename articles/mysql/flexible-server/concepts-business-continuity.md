@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 4f9cc8321d5d1d19dbcb8294ad6205b01337ee72
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715062"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Översikt över affärs kontinuitet med Azure Database for MySQL flexibel Server (för hands version)
 
@@ -27,7 +27,7 @@ Tabellen nedan visar de funktioner som flexibla Server erbjuder.
 | **Säkerhets kopiering & återställning** | Flexibel Server utför automatiskt dagliga säkerhets kopieringar av databasfilerna och säkerhetskopierar regelbundet transaktions loggar. Säkerhets kopior kan bevaras under en period mellan 1 och 35 dagar. Du kommer att kunna återställa din databas server till alla tidpunkter inom säkerhets kopierings perioden. Återställnings tiden kommer att vara beroende av storleken på de data som ska återställas och för att utföra logg återställningen. Se [begrepp – säkerhets kopiering och återställning](./concepts-backup-restore.md) för mer information. |Säkerhets kopierings data förblir inom regionen |
 | **Lokal redundant säkerhets kopiering** | Flexibla Server säkerhets kopieringar lagras automatiskt på ett säkert sätt i en lokal redundant lagring inom en region och i samma tillgänglighets zon. De lokalt redundanta säkerhets kopieringarna replikerar datafilerna för Server säkerhets kopiering tre gånger inom en fysisk plats i den primära regionen. Lokalt redundant lagring för säkerhets kopiering ger minst 99,999999999% (11 nio) objekt hållbarhet under ett angivet år. Se [begrepp – säkerhets kopiering och återställning](./concepts-backup-restore.md) för mer information.| Tillämplig i alla regioner |
 | **Zon redundant hög tillgänglighet** | Flexibel Server kan distribueras i läget för hög tillgänglighet, vilket distribuerar primära och standby-servrar i två olika tillgänglighets zoner inom en region. Detta skyddar från felaktiga zon nivåer och hjälper till att minska avbrotts tiden för programmet under planerade och oplanerade drift stopp. Data från den primära servern replikeras synkront till standby-repliken. Under en händelse av stillestånds tid växlar databas servern automatiskt över till standby-repliken. Se [begrepp – hög tillgänglighet](./concepts-high-availability.md) för mer information. | Stöds i generell användnings-och minnesoptimerade beräknings nivåer. Endast tillgängligt i regioner där flera zoner är tillgängliga.|
-| **Premium fil resurser** | Databasfiler lagras i en mycket tålig och pålitliga Azure Premium-filresurser som ger dataredundans med tre kopior av repliker lagrade i en tillgänglighets zon med funktioner för automatisk data återställning. Mer information finns i [Premium File-resurser](../../storage/files/storage-how-to-create-premium-fileshare.md) . | Data som lagras i en tillgänglighets zon |
+| **Premium fil resurser** | Databasfiler lagras i en mycket tålig och pålitliga Azure Premium-filresurser som ger dataredundans med tre kopior av repliker lagrade i en tillgänglighets zon med funktioner för automatisk data återställning. Mer information finns i [Premium File-resurser](../../storage/files/storage-how-to-create-file-share.md) . | Data som lagras i en tillgänglighets zon |
 
 > [!IMPORTANT]
 > Ingen drift tid, RTO och återställnings service avtal erbjuds under för hands perioden. Information som anges på den här sidan för din information och planerings syfte.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7db19142f0387077af1487230e7891c255aa1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623770"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710948"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Övervaka hälsan för Log Analytics arbets ytan i Azure Monitor
 För att upprätthålla prestanda och tillgänglighet för din Log Analytics-arbetsyta i Azure Monitor måste du kunna identifiera eventuella problem som uppstår i proaktivt. Den här artikeln beskriver hur du övervakar hälso tillståndet för din Log Analytics-arbetsyta med hjälp av data i [Åtgärds](/azure/azure-monitor/reference/tables/operation) tabellen. Den här tabellen ingår i varje Log Analytics arbets yta och innehåller fel och varningar som inträffar i din arbets yta. Du bör regelbundet granska dessa data och skapa aviseringar för att proaktivt meddelas när det finns viktiga incidenter på arbets ytan.
@@ -58,10 +58,10 @@ Inmatnings åtgärder är problem som uppstod vid data inmatning, inklusive medd
 | Anpassad logg | Fel   | Kolumn gränsen för anpassade fält har nåtts. | [Azure Monitor tjänst gränser](../service-limits.md#log-analytics-workspaces) |
 | Anpassad logg | Fel   | Det gick inte att mata in anpassade loggar. | |
 | Metadatatjänst. | Fel | Ett konfigurations fel har identifierats. | |
-| Datainsamling | Fel   | Data utelämnades eftersom begäran skapades tidigare än antalet angivna dagar. | [Hantera användning och kostnader med Azure Monitor-loggar](../platform/manage-cost-storage.md#alert-when-daily-cap-reached)
+| Datainsamling | Fel   | Data utelämnades eftersom begäran skapades tidigare än antalet angivna dagar. | [Hantera användning och kostnader med Azure Monitor-loggar](./manage-cost-storage.md#alert-when-daily-cap-reached)
 | Datainsamling | Information    | Konfiguration av samlings dator har identifierats.| |
-| Datainsamling | Information    | Data insamlingen startades på grund av en ny dag. | [Hantera användning och kostnader med Azure Monitor-loggar](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| Datainsamling | Varning | Data insamlingen stoppades på grund av att den dagliga gränsen har uppnåtts.| [Hantera användning och kostnader med Azure Monitor-loggar](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Datainsamling | Information    | Data insamlingen startades på grund av en ny dag. | [Hantera användning och kostnader med Azure Monitor-loggar](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Datainsamling | Varning | Data insamlingen stoppades på grund av att den dagliga gränsen har uppnåtts.| [Hantera användning och kostnader med Azure Monitor-loggar](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Databearbetning | Fel   | Ogiltigt JSON-format. | [Skicka loggdata till Azure Monitor med API: t för HTTP-datainsamling (offentlig för hands version)](../logs/data-collector-api.md#request-body) | 
 | Databearbetning | Varning | Värdet har trimmats till den högsta tillåtna storleken. | [Azure Monitor tjänst gränser](../service-limits.md#log-analytics-workspaces) |
 | Databearbetning | Varning | Fält värde trimmat eftersom storleks gränsen har uppnåtts. | [Azure Monitor tjänst gränser](../service-limits.md#log-analytics-workspaces) | 
@@ -125,4 +125,4 @@ I följande exempel skapas en varning när data insamlingen har nått den daglig
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [logg aviseringar](../alerts/alerts-log.md).
-- [Samla in fråga gransknings data](../log-query/query-audit.md) för din arbets yta.
+- [Samla in fråga gransknings data](./query-audit.md) för din arbets yta.

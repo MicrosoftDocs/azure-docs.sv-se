@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0fc291403997cdccbfa190fcd5739e97c47eab6a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636988"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729444"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använda CSI-drivrutiner (Azure Files container Storage Interface) i Azure Kubernetes service (AKS) (för hands version)
 
@@ -33,13 +33,13 @@ Mer information om Kubernetes-volymer finns i [lagrings alternativ för program 
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Skapa Azure Files PVs dynamiskt med hjälp av de inbyggda lagrings klasserna
 
-En lagrings klass används för att definiera hur en Azure Files resurs skapas. Ett lagrings konto skapas automatiskt i [resurs gruppen resurs][node-resource-group] för användning med lagrings klassen som innehåller Azure Files resurser. Välj någon av följande [redundans-SKU: er för Azure Storage][storage-skus] för *skuName* :
+En lagrings klass används för att definiera hur en Azure Files resurs skapas. Ett lagrings konto skapas automatiskt i [resurs gruppen resurs][node-resource-group] för användning med lagrings klassen som innehåller Azure Files resurser. Välj någon av följande [redundans-SKU: er för Azure Storage][storage-skus] för *skuName*:
 
-* **Standard_LRS** : standard lokalt redundant lagring
-* **Standard_GRS** : standard Geo-redundant lagring
-* **Standard_ZRS** : standard zon – redundant lagring
-* **Standard_RAGRS** : standard Geo-redundant lagring med Läs behörighet
-* **Premium_LRS** : Premium lokalt redundant lagring
+* **Standard_LRS**: standard lokalt redundant lagring
+* **Standard_GRS**: standard Geo-redundant lagring
+* **Standard_ZRS**: standard zon – redundant lagring
+* **Standard_RAGRS**: standard Geo-redundant lagring med Läs behörighet
+* **Premium_LRS**: Premium lokalt redundant lagring
 
 > [!NOTE]
 > Azure Files stöder Azure Premium Storage. Den minsta Premium fil resursen är 100 GB.
@@ -226,7 +226,7 @@ az provider register --namespace Microsoft.Storage
 
 ### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Skapa ett lagrings konto för NFS-filresursen
 
-[Skapa en `Premium_LRS` Azure Storage-konto](../storage/files/storage-how-to-create-premium-fileshare.md) med följande konfigurationer för att stödja NFS-resurser:
+[Skapa en `Premium_LRS` Azure Storage-konto](../storage/files/storage-how-to-create-file-share.md) med följande konfigurationer för att stödja NFS-resurser:
 - konto typ: FileStorage
 - säker överföring krävs (Aktivera endast HTTPS-trafik): falskt
 - Välj det virtuella nätverket för dina agent-noder i brand väggar och virtuella nätverk – så du kanske föredrar att skapa lagrings kontot i MC_ resurs gruppen.

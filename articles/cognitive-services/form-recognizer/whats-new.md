@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c7b6586f02d14d4e49ce9a5024b19ea15c8d2267
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364700"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703396"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Vad är nytt i Formigenkänning?
 
@@ -91,7 +91,7 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 * **Valuta support** – identifiering och extrahering av globala valuta symboler.
 * **Azure gov** -tolken är nu också tillgänglig i Azure gov.
 * **Förbättrade säkerhetsfunktioner**: 
-   * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./form-recognizer-encryption-of-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
+   * **Ta med din egen nyckel** igenkännings funktion krypterar dina data automatiskt när de behålls i molnet för att skydda dem och hjälpa dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Du kan nu även hantera din prenumeration med dina egna krypterings nycklar. [Kundhanterade nycklar, som även kallas för att ta med din egen nyckel (BYOK)](./encrypt-data-at-rest.md), erbjuder större flexibilitet för att skapa, rotera, inaktivera och återkalla åtkomst kontroller. Du kan också granska krypteringsnycklarna som används för att skydda dina data.  
    * **Privata slut punkter** – gör att du på ett virtuellt nätverk (VNet) kan [komma åt data på ett säkert sätt via en privat länk.](../../private-link/private-link-overview.md)
 
 
@@ -123,7 +123,7 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 
 ### <a name="security-improvements"></a>Förbättringar av säkerhet
 
-* Customer-Managed nycklar är nu tillgängliga för FormRecognizer. Mer information finns i [data kryptering i vila för formulär igenkänning](./form-recognizer-encryption-of-data-at-rest.md).
+* Customer-Managed nycklar är nu tillgängliga för FormRecognizer. Mer information finns i [data kryptering i vila för formulär igenkänning](./encrypt-data-at-rest.md).
 * Använd hanterade identiteter för åtkomst till Azure-resurser med Azure Active Directory. Mer information finns i [ge åtkomst till hanterade identiteter](../authentication.md#authorize-access-to-managed-identities).
 
 ## <a name="march-2020"></a>Mars 2020 

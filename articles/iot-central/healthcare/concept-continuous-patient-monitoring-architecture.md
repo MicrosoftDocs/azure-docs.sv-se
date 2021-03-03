@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 9a38a14033fe295c36cf8ac17239b0b8e53f75dc
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727506"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Arkitektur för kontinuerlig övervakning av patienter
 
@@ -45,7 +45,7 @@ Använd Machine Learning-modeller med dina FHIR-data för att generera insikter 
 
 ### <a name="provider-dashboard"></a>Instrument panel för Provider
 
-Använd Azure-API: et för FHIR-data för att bygga en instrument panel för patient insikter eller integrera den direkt i en elektronisk medicinsk post som används av vård team. Vård team kan använda instrument panelen för att hjälpa patienter och identifiera tidiga varnings tecken på försämringen. Mer information finns i själv studie kursen [bygga en Power BI leverantörs instrument panel](howto-health-data-triage.md) .
+Använd Azure-API: et för FHIR-data för att bygga en instrument panel för patient insikter eller integrera den direkt i en elektronisk medicinsk post som används av vård team. Vård team kan använda instrument panelen för att hjälpa patienter och identifiera tidiga varnings tecken på försämringen. Mer information finns i själv studie kursen [bygga en Power BI leverantörs instrument panel](tutorial-health-data-triage.md) .
 
 ## <a name="next-steps"></a>Nästa steg
 

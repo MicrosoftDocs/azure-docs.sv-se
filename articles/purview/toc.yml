@@ -77,6 +77,8 @@ items:
                 href: manage-data-sources.md
               - name: Översikt över anslutningsprogram för Purview
                 href: purview-connector-overview.md
+              - name: Azure flera källor
+                href: register-scan-azure-multiple-sources.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -102,8 +104,16 @@ items:
                 href: register-scan-azure-synapse-analytics.md
               - name: Lokal SQL-server
                 href: register-scan-on-premises-sql-server.md
+              - name: Oracle
+                href: register-scan-oracle-source.md
               - name: Power BI-klientorganisation – Portalen
                 href: register-scan-power-bi-tenant.md
+              - name: SAP ECC
+                href: register-scan-sapecc-source.md
+              - name: SAP S/4HANA
+                href: register-scan-saps4hana-source.md
+              - name: Teradata
+                href: register-scan-teradata-source.md
               - name: Amazon S3
                 href: register-scan-amazon-s3.md
       - name: Företagsordlistan
@@ -113,6 +123,10 @@ items:
           - name: Hantera termmallar
             href: how-to-manage-term-templates.md
           - name: Massredigera tillgångar för att tilldela ordlistans villkor
+            href: how-to-bulk-edit-assets.md
+      - name: Mass redigering
+        items:
+          - name: Massredigera till gångar för att tagga anteckningar och kontakter
             href: how-to-bulk-edit-assets.md
       - name: Klassificera
         items:
@@ -158,3 +172,5 @@ items:
     items:
       - name: Klassificeringar som stöds
         href: supported-classifications.md
+      - name: Distributions guide för ABAP Function
+        href: abap-functions-deployment-guide.md

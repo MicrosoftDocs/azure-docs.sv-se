@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 12983f43e5f778cdf46c2ea3e0177d43838e5b47
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: ff20479062e31bb61756b3de7bbf04540b2d5598
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690404"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulator – viktig information och information om hämtning
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Den här artikeln visar viktig information om Azure Cosmos DB emulator med en lista över funktions uppdateringar som har gjorts i varje version. Den visar även den senaste versionen av emulatorn för att hämta och använda.
 
-## <a name="download"></a>Hämta
+## <a name="download"></a>Ladda ned
 
 | | |
 |---------|---------|
@@ -27,9 +27,14 @@ Den här artikeln visar viktig information om Azure Cosmos DB emulator med en li
 
 ## <a name="release-notes"></a>Viktig information
 
+### <a name="21111-22-february-2021"></a>2.11.11 (22 februari 2021)
+
+ - Den här versionen uppdaterar det lokala Datautforskaren innehållet till den senaste Azure Portal versionen.
+
+
 ### <a name="21110-5-january-2021"></a>2.11.10 (5 januari 2021)
 
- - Den här versionen uppdaterar det lokala Datautforskaren innehållet till den senaste versionen av Azure Portal och lägger till ett nytt offentligt alternativ, "/ExportPemCert", vilket gör att emulatorns användare kan exportera den offentliga emulatorns certifikat direkt som en. PEM-fil.
+ - Den här versionen uppdaterar det lokala Datautforskaren innehållet till den senaste Azure Portal versionen och lägger till ett nytt offentligt alternativ, "/ExportPemCert", vilket gör att emulatorns användare kan exportera den offentliga emulatorns certifikat direkt som en. PEM-fil.
 
 ### <a name="2119-3-december-2020"></a>2.11.9 (3 december 2020)
 

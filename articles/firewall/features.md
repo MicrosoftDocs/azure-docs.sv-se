@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: 9f89d84fc7033645b2b094e9f40a1d85b076623b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100544841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741437"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-funktioner
 
@@ -123,6 +123,18 @@ Om till exempel Azure-brandväggen fångar upp en HTTPS-begäran för `www.googl
 - Brand Väggs Premium – hela URL: en kommer att undersökas, så `www.google.com/news` kommer att kategoriseras som *Nyheter*.
 
 Kategorierna organiseras baserat på allvarlighets grad under **ansvar**, **hög bandbredd**, **företags användning**, **produktivitets förlust**, **allmän surfning** och **Okategoriserade**.
+
+### <a name="categorization-change"></a>Ändring av kategorisering
+
+Du kan begära en kategoriserings ändring om du:
+
+ - Tänk på att en FQDN eller URL ska vara under en annan kategori 
+ 
+eller 
+
+- ha en föreslagen kategori för en Okategoriserade-FQDN eller URL
+
+Du är välkommen att skicka en begäran till [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
 
 ### <a name="category-exceptions"></a>Kategori undantag
 

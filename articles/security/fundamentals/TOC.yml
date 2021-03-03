@@ -10,8 +10,6 @@
   items:
     - name: Tekniska funktioner för säkerhet
       href: technical-capabilities.md
-    - name: Inbyggda säkerhetskontroller
-      href: security-controls.md
 - name: Azure-plattform och -infrastruktur
   items:
     - name: Säkerhet för infrastruktur

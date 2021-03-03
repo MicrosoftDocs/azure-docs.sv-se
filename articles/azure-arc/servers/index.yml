@@ -7,14 +7,14 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 10/07/2020
+  ms.date: 02/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 3bdb85eea2f1227a566041badf11539923e7df44
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-  ms.translationtype: HT
+  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97672482"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101686384"
 landingContent:
 - title: Ansluta datorer till Azure med Azure Arc-aktiverade servrar
   linkLists:
@@ -22,6 +22,10 @@ landingContent:
     links:
     - text: Vad är Azure Arc-aktiverade servrar?
       url: overview.md
+  - linkListType: architecture
+    links:
+    - text: Planera en distribution i skala
+      url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
     - text: Ansluta datorer till Azure Arc från Microsoft Azure-portalen

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054965"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726401"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP-utlösare
 
@@ -547,7 +547,7 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `HttpTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 | **bastyp** | saknas| Required-måste anges till `httpTrigger` . |
 | **position** | saknas| Required-måste anges till `in` . |
@@ -751,7 +751,7 @@ Följande konfiguration visar hur `{id}` parametern skickas till bindningens `ro
 
 När du använder väg parametrar `invoke_URL_template` skapas automatiskt en för din funktion. Dina klienter kan använda URL-mallen för att förstå de parametrar som de behöver för att skicka in URL: en när funktionen anropas med hjälp av dess URL. Navigera till en av dina HTTP-utlösta funktioner i [Azure Portal](https://portal.azure.com) och välj **Hämta funktions webb adress**.
 
-Du kan via programmering få åtkomst till `invoke_URL_template` med hjälp av Azure Resource Manager-API: er för [list funktioner](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) eller [Hämta funktion](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction).
+Du kan via programmering få åtkomst till `invoke_URL_template` med hjälp av Azure Resource Manager-API: er för [list funktioner](/rest/api/appservice/webapps/listfunctions) eller [Hämta funktion](/rest/api/appservice/webapps/getfunction).
 
 ## <a name="working-with-client-identities"></a>Arbeta med klient identiteter
 

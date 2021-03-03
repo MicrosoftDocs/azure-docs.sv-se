@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 12/21/2020
+ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692070"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Vad är ansvaret för maskin inlärning? (förhandsversion)
 
@@ -42,7 +42,7 @@ Eftersom artificiell intelligens och autonoma system integrerar mer i samhället
 
 Svårt att förklara eller täckande system kan vara problematiska eftersom det gör det svårt för intressenter som systemutvecklare, tillsynsmyndigheter, användare och affärs besluts fattare att förstå varför system gör vissa beslut. Vissa AI-system är mer förklarare än andra och det finns ibland en kompromiss mellan ett system med högre precision och ett som är mer förklarat.
 
-Om du vill skapa tolknings bara AI-system använder du [InterpretML](https://github.com/interpretml/interpret), ett paket med öppen källkod som skapats av Microsoft. [InterpretML kan användas i Azure Machine Learning](how-to-machine-learning-interpretability.md) för att [tolka och förklara dina Machine Learning-modeller](how-to-machine-learning-interpretability-aml.md), inklusive [automatiserade maskin inlärnings modeller](how-to-machine-learning-interpretability-automl.md).
+Om du vill skapa tolknings bara AI-system använder du [InterpretML](https://github.com/interpretml/interpret), ett paket med öppen källkod som skapats av Microsoft. InterpretML-paketet har stöd för en mängd olika tolknings tekniker, till exempel SHapley additiva förklaringar (SHAP), efterlikna förklaringar och permutations funktions prioritet (PFI).  [InterpretML kan användas i Azure Machine Learning](how-to-machine-learning-interpretability.md) för att [tolka och förklara dina Machine Learning-modeller](how-to-machine-learning-interpretability-aml.md), inklusive [automatiserade maskin inlärnings modeller](how-to-machine-learning-interpretability-automl.md).
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>Minimera skälighet i Machine Learning-modeller
 

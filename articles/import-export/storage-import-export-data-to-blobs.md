@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 02/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: cc9431d08823bd3bfba423fcc5e9dc14d2a37faa
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652963"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738998"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Använd Azure import/export-tjänsten för att importera data till Azure Blob Storage
 
@@ -68,7 +68,7 @@ Utför följande steg för att förbereda enheterna.
 6. Kör följande kommando för att hämta BitLocker-nyckeln till enheten:
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. Kör följande kommando för att förbereda disken. **Beroende på data storleken kan detta ta flera timmar till dagar.**
+7. Kör följande kommando för att förbereda disken. **Disk förberedelse kan ta flera timmar beroende på data storleken.**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ Utför följande steg för att förbereda enheterna.
     |/bk:     |Enhetens BitLocker-nyckel. Det numeriska lösen ordet från utdata från `manage-bde -protectors -get D:`      |
     |/srcdir:     |Enhets beteckningen för den disk som ska levereras följt av `:\` . Till exempel `D:\`.         |
     |/dstdir:     |Namnet på mål behållaren i Azure Storage.         |
-    |/blobtype:     |Det här alternativet anger vilken typ av blobbar som du vill importera data till. För block-blobbar är detta `BlockBlob` och för sid blobbar `PageBlob` .         |
-    |/skipwrite:     |Alternativet som anger att det inte finns några nya data som behöver kopieras och befintliga data på disken måste förberedas.          |
+    |/blobtype:     |Det här alternativet anger vilken typ av blobbar som du vill importera data till. För block-blobbar är BLOB-typen `BlockBlob` och för sid blobbar `PageBlob` .         |
+    |/skipwrite:     | Anger att det inte finns några nya data som behöver kopieras och befintliga data på disken ska förberedas.          |
     |/enablecontentmd5:     |Alternativet när det är aktiverat, säkerställer att MD5 beräknas och anges som `Content-md5` egenskap för varje blob. Använd bara det här alternativet om du vill använda `Content-md5` fältet när data har överförts till Azure. <br> Det här alternativet påverkar inte data integritets kontrollen (som inträffar som standard). Inställningen ökar den tid det tar att ladda upp data till molnet.          |
 8. Upprepa föregående steg för varje disk som måste levereras. En journal fil med det angivna namnet skapas för varje körning av kommando raden.
 
     > [!IMPORTANT]
     > * Tillsammans med journal filen `<Journal file name>_DriveInfo_<Drive serial ID>.xml` skapas även en fil i samma mapp som verktyget finns i. XML-filen används i stället för journal filen när du skapar ett jobb om journal filen är för stor.
+   > * Den maximala storleken på Journal filen som portalen tillåter är 2 MB. Om journal filen överskrider den gränsen returneras ett fel.
 
 ## <a name="step-2-create-an-import-job"></a>Steg 2: skapa ett import jobb
 
@@ -132,7 +133,7 @@ Utför följande steg för att skapa ett import jobb i Azure Portal.
 
    * Välj operatören i list rutan. Om du vill använda en annan operatör än FedEx/DHL väljer du ett befintligt alternativ i list rutan. Kontakta Azure Data Box drifts teamet på `adbops@microsoft.com`  med information om den operatör som du planerar att använda.
    * Ange ett giltigt transportföretags konto nummer som du har skapat med transport företaget. Microsoft använder det här kontot för att skicka tillbaka enheterna till dig när ditt import jobb har slutförts. Om du inte har ett konto nummer skapar du ett [FedEx](https://www.fedex.com/us/oadr/) -eller [DHL](https://www.dhl.com/) -konto.
-   * Ange ett fullständigt och giltigt kontakt namn, telefon, e-postadress, gatuadress, ort, post, delstat/provins och land/region.
+   * Ange ett fullständigt och giltigt kontakt namn, telefon, e-postadress, gatuadress, ort, post, region och land/region.
 
        > [!TIP]
        > Ange en grupp-e-postadress i stället för att ange en e-postadress för en enskild användare. Detta säkerställer att du får meddelanden även om en administratör lämnar.
@@ -323,7 +324,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>Steg 3 (valfritt): Konfigurera kundens hanterad nyckel
 
-Hoppa över det här steget och gå till nästa steg om du vill använda Microsofts hanterade nyckel för att skydda dina BitLocker-nycklar för enheterna. Om du vill konfigurera en egen nyckel för att skydda BitLocker-nyckeln följer du anvisningarna i [Konfigurera Kundhanterade nycklar med Azure Key Vault för Azure import/export i Azure Portal](storage-import-export-encryption-key-portal.md)
+Hoppa över det här steget och gå till nästa steg om du vill använda Microsofts hanterade nyckel för att skydda dina BitLocker-nycklar för enheterna. Om du vill konfigurera en egen nyckel för att skydda BitLocker-nyckeln följer du anvisningarna i [Konfigurera Kundhanterade nycklar med Azure Key Vault för Azure import/export i Azure Portal](storage-import-export-encryption-key-portal.md).
 
 ## <a name="step-4-ship-the-drives"></a>Steg 4: leverera enheterna
 

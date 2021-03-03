@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/26/2020
+ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712767"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Kom igång med Defender för IoT
 
@@ -69,6 +69,8 @@ Så här registrerar du dig:
 1. Välj **onboard-prenumeration**.
 1. På sidan **prissättning** väljer du en prenumeration eller skapar en ny och lägger till antalet allokerade enheter.
 1. Välj fliken **Ladda ned den lokala hanterings konsolen** och spara den nedladdade aktiverings filen. Den här filen innehåller de aggregerade allokerade enheter som du har definierat. Filen laddas upp till hanterings konsolen efter den första inloggningen.
+
+Information om hur du avpublicera en prenumeration finns i [avpublicera a-prenumeration](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
 
 ## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. Installera och konfigurera den lokala hanterings konsolen
 
@@ -126,8 +128,9 @@ Mer information finns i [ansluta sensorer till den lokala hanterings konsolen](h
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Fyll i Azure Sentinel med varnings information (valfritt)
 
 Skicka aviserings information till Azure Sentinel genom att konfigurera Azure Sentinel. Se [Anslut dina data från Defender för IoT till Azure Sentinel](how-to-configure-with-sentinel.md).
-## <a name="next-steps"></a>Nästa steg
 
-[Välkommen till Azure Defender för IoT](overview.md)
+## <a name="see-also"></a>Se även
 
-[Azure Defender för IoT-arkitektur](architecture.md)
+- [Välkommen till Azure Defender för IoT](overview.md)
+
+- [Azure Defender för IoT-arkitektur](architecture.md)

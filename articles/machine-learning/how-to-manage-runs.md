@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691509"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starta, övervaka och avbryta inlärnings körningar i python
 
@@ -112,17 +112,7 @@ Du behöver följande objekt:
         > Fler exempel på runconfig-filer finns i [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
         Mer information finns i [AZ ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    För att starta en skicka en pipeline-körning i designern, använder du följande steg:
-    
-    1. Ange ett standard beräknings mål för din pipeline.
-    
-    1. Välj **Kör** överst i pipeline-arbetsytan.
-    
-    1. Välj ett experiment för att gruppera dina pipelines-körningar.
-    
+
     ---
 
 * Övervaka status för en körning
@@ -183,24 +173,128 @@ Du behöver följande objekt:
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    För att visa antalet aktiva körningar för experimentet i Studio.
+    Så här visar du dina körningar i Studio: 
     
-    1. Gå till avsnittet **experiment** .
+    1. Gå till fliken **experiment** .
     
-    1. Välj ett experiment.
+    1. Välj antingen **alla experiment** för att visa alla körningar i ett experiment eller Välj **alla körningar** för att visa alla körningar som skickats in i arbets ytan.
     
-        På experiment-sidan kan du se antalet aktiva beräknings mål och varaktigheten för varje körning. 
+        På sidan **alla körningar** kan du filtrera körnings listan efter taggar, experiment, Compute Target och mer för att bättre organisera och begränsa ditt arbete.  
     
-    1. Gör anpassningar av experimentet genom att välja körningar för att jämföra, lägga till diagram eller använda filter. Dessa ändringar kan sparas som en **anpassad vy** så att du enkelt kan gå tillbaka till ditt arbete. Användare med behörighet för arbets ytan kan redigera eller Visa den anpassade vyn. Du kan också dela den anpassade vyn med andra genom att kopiera och klistra in webb adressen i webbläsaren.  
+    1. Gör anpassningar på sidan genom att välja körningar för att jämföra, lägga till diagram eller använda filter. Dessa ändringar kan sparas som en **anpassad vy** så att du enkelt kan gå tillbaka till ditt arbete. Användare med behörighet för arbets ytan kan redigera eller Visa den anpassade vyn. Du kan också dela den anpassade vyn med grupp medlemmar för förbättrat samarbete genom att välja **vyn dela**.   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Skärm bild: skapa en anpassad vy":::
     
-    1. Välj ett speciellt körnings nummer.
-    
-    1. På fliken **loggar** kan du hitta diagnostik-och fel loggar för din pipeline-körning.
+    1. Om du vill visa körnings loggarna väljer du en speciell körning och på fliken **utdata + loggar** kan du hitta diagnostik-och fel loggar för din körning.
     
     ---
+
+## <a name="run-description"></a>Körnings Beskrivning 
+
+En körnings beskrivning kan läggas till i en körning för att ge mer kontext och information till körningen. Du kan också söka efter de här beskrivningarna i listan körningar och lägga till körnings beskrivningen som en kolumn i körnings listan. 
+
+Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort beskrivningar för din körning. Spara ändringarna i den befintliga anpassade vyn eller en ny anpassad vy om du vill spara ändringarna i körnings listan. Markdown-formatet stöds för körnings beskrivningar som gör att bilder kan bäddas in och djup länkas enligt nedan.
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="Skärm bild: skapa en körnings Beskrivning"::: 
     
+
+## <a name="tag-and-find-runs"></a>Tagga och hitta körningar
+
+I Azure Machine Learning kan du använda egenskaper och taggar för att organisera och fråga dina körningar efter viktig information.
+
+* Lägg till egenskaper och Taggar
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    Om du vill lägga till sökbara metadata i dina körningar använder du- [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metoden. Följande kod lägger till exempel till `"author"` egenskapen i kör:
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    Egenskaperna är oföränderliga så att de skapar en permanent post för gransknings syfte. Följande kod exempel resulterar i ett fel eftersom vi redan har lagts till `"azureml-user"` som `"author"` egenskaps värde i föregående kod:
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    Till skillnad från egenskaper är taggarna föränderligt. Använd-metoden för att lägga till sökbar och meningsfull information för användare av experimentet [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) .
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    Du kan också lägga till enkla sträng taggar. När taggarna visas i kod ord listan som nycklar har de värdet `None` .
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > Med CLI kan du bara lägga till eller uppdatera taggar.
+    
+    Använd följande kommando om du vill lägga till eller uppdatera en tagg:
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    Mer information finns i [AZ ml kör Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    Du kan lägga till, redigera eller ta bort Run-taggar från Studio. Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort taggar för dina körningar. Du kan också söka efter och filtrera dessa taggar från körnings List sidan.
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Skärm bild: Lägg till, redigera eller ta bort körnings Taggar":::
+    
+    ---
+
+* Frågeegenskaper och Taggar
+
+    Du kan köra frågor i ett experiment för att returnera en lista över körningar som matchar vissa egenskaper och taggar.
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Azure CLI stöder [JMESPath](http://jmespath.org) -frågor som kan användas för att filtrera körningar baserat på egenskaper och taggar. Om du vill använda en JMESPath-fråga med Azure CLI anger du den med `--query` parametern. I följande exempel visas några frågor med hjälp av egenskaper och Taggar:
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Mer information om hur du frågar Azure CLI-resultat finns i [läsa utdata från Azure CLI-kommandot](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    
+    # <a name="studio"></a>[Studio](#tab/azure-studio)
+    
+    1. Navigera till listan  **alla körningar** .
+    
+    1. Använd Sök fältet för att filtrera på metadata för körning, t. ex. taggar, beskrivningar, experiment namn och namn på översändare. Filtret taggar kan också användas för att filtrera på taggarna. 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>Avbryt eller kör inte
 
 Om du ser ett fel eller om körningen tar för lång tid att slutföra, kan du avbryta körningen.
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>Tagga och hitta körningar
-
-I Azure Machine Learning kan du använda egenskaper och taggar för att organisera och fråga dina körningar efter viktig information.
-
-* Lägg till egenskaper och Taggar
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    Om du vill lägga till sökbara metadata i dina körningar använder du- [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) metoden. Följande kod lägger till exempel till `"author"` egenskapen i kör:
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    Egenskaperna är oföränderliga så att de skapar en permanent post för gransknings syfte. Följande kod exempel resulterar i ett fel eftersom vi redan har lagts till `"azureml-user"` som `"author"` egenskaps värde i föregående kod:
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    Till skillnad från egenskaper är taggarna föränderligt. Använd-metoden för att lägga till sökbar och meningsfull information för användare av experimentet [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) .
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    Du kan också lägga till enkla sträng taggar. När taggarna visas i kod ord listan som nycklar har de värdet `None` .
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > Med CLI kan du bara lägga till eller uppdatera taggar.
-    
-    Använd följande kommando om du vill lägga till eller uppdatera en tagg:
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    Mer information finns i [AZ ml kör Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    Du kan visa egenskaperna och taggarna i Studio, men inte ändra dem där.
-    
-    ---
-
-* Frågeegenskaper och Taggar
-
-    Du kan köra frågor i ett experiment för att returnera en lista över körningar som matchar vissa egenskaper och taggar.
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Azure CLI stöder [JMESPath](http://jmespath.org) -frågor som kan användas för att filtrera körningar baserat på egenskaper och taggar. Om du vill använda en JMESPath-fråga med Azure CLI anger du den med `--query` parametern. I följande exempel visas några frågor med hjälp av egenskaper och Taggar:
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Mer information om hur du frågar Azure CLI-resultat finns i [läsa utdata från Azure CLI-kommandot](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
-    
-    # <a name="studio"></a>[Studio](#tab/azure-studio)
-    
-    1. Navigera till avsnittet **pipelines** .
-    
-    1. Använd Sök fältet för att filtrera pipelines med taggar, beskrivningar, experiment namn och namn på sändning.
-    
-    ---
 
 ## <a name="example-notebooks"></a>Exempelnotebook-filer
 

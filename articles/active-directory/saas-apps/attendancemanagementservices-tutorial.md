@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ec07d36ad544f293064e877520bb4a7a4c9b269d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f404d3613f9de8daadc4bb2ceb39282cf3b619e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457647"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Självstudie: Azure Active Directory integrering med närvaro hanterings tjänster
 
@@ -30,7 +30,7 @@ Att integrera närvaro hanterings tjänster med Azure AD ger följande fördelar
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med närvaro hanterings tjänster behöver du följande objekt:
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med närvaro hanterings tjänster i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan för program integration i **närvaro hanterings tjänster** .
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan för program integration i **närvaro hanterings tjänster** .
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -174,7 +174,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till närvaro hanterings tjänster.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **närvaro hanterings tjänster**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **närvaro hanterings tjänster**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -216,7 +216,7 @@ Om du vill att Azure AD-användare ska kunna logga in på närvaro hanterings tj
 
     ![Skärm bild som visar ett fönster där du kan utföra de uppgifter som beskrivs.](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. I text rutan **OBCiD** anger du e-postmeddelandet som användare `BrittaSimon\@contoso.com` .
+    a. I text rutan **OBCiD** anger du e-postmeddelandet som användare `BrittaSimon@contoso.com` .
 
     b. I textrutan **Password** (Lösenord) skriver du lösenordet för användaren.
 

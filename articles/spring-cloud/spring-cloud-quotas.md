@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 20ebeb23fe09ba4fd70a724828afadfaa3901abd
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02ccb3acb4546e08e7d58159ab9d85bca2d0eed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711883"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvoter och service planer för Azure våren Cloud
 
@@ -32,7 +32,7 @@ Anpassade domäner | per Azure våren Cloud Service-instans | 0 | 25
 Beständiga volymer | per Azure våren Cloud Service-instans | 1 GB/app x 10-appar | 50 GB/app x 10-appar
 
 > [!TIP]
-> Priser som anges för totalt antal App-instanser per tjänst instans gäller för appar/distributioner i stoppat tillstånd. Ta bort appar/distributioner som inte används.
+> Gränser som anges för totalt antal App-instanser per tjänst instans gäller för appar och distributioner i valfritt tillstånd, inklusive stoppat tillstånd. Ta bort appar eller distributioner som inte används.
 
 ## <a name="next-steps"></a>Nästa steg
 

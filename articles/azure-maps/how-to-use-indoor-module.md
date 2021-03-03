@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708687"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Använd modulen Azure Maps inomhus Maps
 
@@ -24,7 +24,7 @@ ms.locfileid: "96905289"
 
 Azure Maps Web SDK innehåller *Azure Maps* inliggande modul. I modulen  *Azure Maps inomhus* kan du rendera inliggande Maps som skapats i Azure Maps Creator Services (för hands version) 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Skapa en skapare (förhands granskning) resurs](how-to-manage-creator.md)
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 Om du vill läsa in panelernas tilesets och kart stil måste du instansiera den *inomhus Manager*. Instansiera den *inomhus Manager* genom att tillhandahålla *Map-objektet* och motsvarande `tilesetId` . Om du vill ha stöd för [dynamisk Map-formatering](indoor-map-dynamic-styling.md)måste du skicka `statesetId` . `statesetId`Variabel namnet är Skift läges känsligt. Koden bör likna JavaScript-koden nedan.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Om du vill aktivera avsökning av tillstånds data du anger måste du ange `statesetId` och anropa `indoorManager.setDynamicStyling(true)` . Med avsöknings tillstånds data kan du dynamiskt uppdatera tillståndet för dynamiska egenskaper eller *tillstånd*. Till exempel kan en funktion som till exempel rum ha en dynamisk egenskap (*State*) som kallas `occupancy` . Programmet kanske vill avsöka efter *status* ändringar för att avspegla ändringen i den visuella kartan. Koden nedan visar hur du aktiverar tillstånds avsökning:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ Filen bör nu se ut ungefär som i HTML-koden nedan.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ Filen bör nu se ut ungefär som i HTML-koden nedan.
 Om du vill se din inaktuella karta kan du läsa in den i en webbläsare. Den bör se ut som på bilden nedan. Om du klickar på Stairwell-funktionen visas *nivå väljaren* i det övre högra hörnet.
 
   ![bild av inomhus karta](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[Se live demo](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Nästa steg
 

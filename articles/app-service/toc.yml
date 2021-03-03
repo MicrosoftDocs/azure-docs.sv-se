@@ -248,7 +248,7 @@
         - name: Konfigurera PremiumV3-nivå
           href: app-service-configure-premium-tier.md
         - name: Skala ut till flera instanser
-          href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: Högdensitetsvärd
           href: manage-scale-per-app.md
     - name: Övervaka app

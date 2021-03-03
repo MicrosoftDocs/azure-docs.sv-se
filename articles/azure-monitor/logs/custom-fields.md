@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 685c54131e4a82950ea64e5374d9e1d260ffabc7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f35100d703e56d1fda731aab5e6a96c791c8f0d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713685"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Skapa anpassade fält i en Log Analytics arbets yta i Azure Monitor (förhands granskning)
 
 > [!NOTE]
-> Den här artikeln beskriver hur du tolkar text data i en Log Analytics arbets yta när den samlas in. Vi rekommenderar att du tolkar text data i ett frågefilter när den har samlats in efter den vägledning som beskrivs i [parsa text data i Azure Monitor](../log-query/parse-text.md). Det ger flera fördelar jämfört med att använda anpassade fält.
+> Den här artikeln beskriver hur du tolkar text data i en Log Analytics arbets yta när den samlas in. Vi rekommenderar att du tolkar text data i ett frågefilter när den har samlats in efter den vägledning som beskrivs i [parsa text data i Azure Monitor](./parse-text.md). Det ger flera fördelar jämfört med att använda anpassade fält.
 
 > [!IMPORTANT]
-> Anpassade fält ökar mängden data som samlas in i arbets ytan Log Analytics som kan öka din kostnad. Mer information finns i [Hantera användning och kostnader med Azure Monitor loggar](../platform/manage-cost-storage.md#pricing-model) .
+> Anpassade fält ökar mängden data som samlas in i arbets ytan Log Analytics som kan öka din kostnad. Mer information finns i [Hantera användning och kostnader med Azure Monitor loggar](./manage-cost-storage.md#pricing-model) .
 
 Med funktionen **anpassade fält** i Azure Monitor kan du utöka befintliga poster i arbets ytan Log Analytics genom att lägga till egna sökbara fält.  Anpassade fält fylls i automatiskt från data som extraheras från andra egenskaper i samma post.
 
@@ -42,9 +42,9 @@ I följande avsnitt beskrivs hur du skapar ett anpassat fält.  Längst ned i de
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Steg 1 – identifiera poster som ska ha det anpassade fältet
-Det första steget är att identifiera de poster som kommer att hämta det anpassade fältet.  Du börjar med en [standard logg fråga](../log-query/log-query-overview.md) och väljer sedan en post som ska fungera som den modell som Azure Monitor kommer att lära sig från.  När du anger att du ska extrahera data till ett anpassat fält öppnas **guiden extrahering av fält** där du kan validera och förfina kriterierna.
+Det första steget är att identifiera de poster som kommer att hämta det anpassade fältet.  Du börjar med en [standard logg fråga](./log-query-overview.md) och väljer sedan en post som ska fungera som den modell som Azure Monitor kommer att lära sig från.  När du anger att du ska extrahera data till ett anpassat fält öppnas **guiden extrahering av fält** där du kan validera och förfina kriterierna.
 
-1. Gå till **loggar** och Använd en [fråga för att hämta de poster](../log-query/log-query-overview.md) som ska ha det anpassade fältet.
+1. Gå till **loggar** och Använd en [fråga för att hämta de poster](./log-query-overview.md) som ska ha det anpassade fältet.
 2. Välj en post som Log Analytics använda för att agera som en modell för att extrahera data för att fylla i det anpassade fältet.  Du kommer att identifiera de data som du vill extrahera från den här posten. Log Analytics kommer att använda den här informationen för att fastställa logiken för att fylla i det anpassade fältet för alla liknande poster.
 3. Expandera post egenskaperna, klicka på ellipsen till vänster om postens översta egenskap och välj **extrahera fält från**.
 4. **Guiden extrahering av fält** öppnas och posten som du har valt visas i **huvud exempel** kolumnen.  Det anpassade fältet kommer att definieras för dessa poster med samma värden i de egenskaper som har marker ATS.  
@@ -128,6 +128,5 @@ Vi kan nu använda det anpassade fältet som vilken annan post egenskap som hels
 ![Gruppera efter fråga](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att bygga frågor med anpassade fält för villkor.
+* Lär dig mer om [logg frågor](./log-query-overview.md) för att bygga frågor med anpassade fält för villkor.
 * Övervaka [anpassade loggfiler](../agents/data-sources-custom-logs.md) som du tolkar med anpassade fält.
-

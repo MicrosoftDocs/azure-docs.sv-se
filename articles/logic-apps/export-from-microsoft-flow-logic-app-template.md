@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699104"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportera flöden från Power Automate och distribuera till Azure Logic Apps
 
-> För flöden som skapats efter den 2020 oktober kan du inte längre exportera från automatisk start och distribution till Azure Logic Apps.
-
 Om du vill utöka och utöka ditt flödes funktioner kan du migrera flödet från [energi spar läge](https://flow.microsoft.com) till [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Du kan exportera ditt flöde som en Azure Resource Manager mall för en Logic app, distribuera Logic app-mallen till en Azure-resurs grupp och sedan öppna den Logic-appen i Logic App Designer.
 
-> [!NOTE]
-> Alla Power inautomatiserade anslutningar är inte tillgängliga i Azure Logic Apps. Du kan bara migrera energi automatiserade flöden som har motsvarande kopplingar i Azure Logic Apps. Till exempel är knapp utlösaren, godkännande Connector och meddelande Connector särskilt för automatisk energi förbrukning. För närvarande stöds inte OpenAPI-baserade flöden i energi spar läge för export och distribution som Logic app-mallar.
->
-> * Om du vill ta reda på vilka PowerPivot-kopplingar som inte har Logic Apps motsvarigheter, se Power automater- [kopplingar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
->
-> * Om du vill ta reda på vilka Logic Apps kopplingar inte har Energis par motsvarigheter, se [Logic Apps kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors).
+> [!IMPORTANT]
+> Export till Logic Apps är inte tillgängligt för Energis par automatiserade flöden som skapats efter 2020 augusti. I oktober 2020 är automatisk automatisk generering av nya flöden i [OpenAPI 2,0-protokollet](https://swagger.io/specification/v2/). Nya flöden baserade på det här protokollet är inkompatibla med Logic Apps arbets flöden, så exportera dessa flöden till Logic Apps har inaktiverats. I stället måste du [skapa](quickstart-create-first-logic-app-workflow.md) Logi Kap par manuellt för dessa flöden.
+
+Alla Power inautomatiserade anslutningar är inte tillgängliga i Azure Logic Apps. Du kan bara migrera energi automatiserade flöden som har motsvarande kopplingar i Azure Logic Apps. Till exempel är knapp utlösaren, godkännande Connector och meddelande Connector särskilt för automatisk energi förbrukning. 
+
+* Om du vill ta reda på vilka PowerPivot-kopplingar som inte har Logic Apps motsvarigheter, se Power automater- [kopplingar](/connectors/connector-reference/connector-reference-powerautomate-connectors).
+
+* Om du vill ta reda på vilka Logic Apps kopplingar inte har Energis par motsvarigheter, se [Logic Apps kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du heller inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/).
+* Ett Azure-konto och prenumeration. Om du heller inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/).
 
 * Flödet som du vill exportera från Energis par
 

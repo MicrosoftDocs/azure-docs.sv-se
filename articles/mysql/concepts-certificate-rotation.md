@@ -5,50 +5,39 @@ author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a65ac8d52c17a288447193fb8c0fba2c6e6c5554
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/18/2021
+ms.openlocfilehash: 9ad2566188256dd23b0f479c2576636750e33b02
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715113"
 ---
-# <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for MySQL
+# <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for MySQL enskild server
 
-Azure Database for MySQL kommer att ändra rot certifikatet för klient programmet/driv rutinen som är aktive rad med SSL, som används för att [ansluta till databas servern](concepts-connectivity-architecture.md). Rot certifikatet som för närvarande är tillgängligt upphör att gälla den 15 februari 2021 (02/15/2021) som en del av standard underhåll och rekommenderade säkerhets metoder. Den här artikeln innehåller mer information om kommande ändringar, vilka resurser som kommer att påverkas och de steg som krävs för att säkerställa att programmet upprätthåller anslutningen till databas servern.
-
->[!NOTE]
-> Baserat på feedback från kunder har vi utökat rot certifikatets utfasning för vår befintliga Baltimore rot certifikat utfärdare från oktober 26, 2020 till 15 februari 2021. Vi hoppas att det här tillägget ger tillräckligt med ledtid för att våra användare ska kunna implementera klient ändringarna om de påverkas.
+Azure Database for MySQL en enda server slutförde rot certifikats ändringen den **15 februari 2021 (02/15/2021)** som en del av standard underhåll och säkerhets metoder. Den här artikeln innehåller mer information om ändringarna, de resurser som påverkas och de steg som krävs för att säkerställa att programmet upprätthåller anslutningen till databas servern.
 
 > [!NOTE]
-> Kompensations fri kommunikation
->
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till orden _Master_ och _slav_. Microsofts [stil guide för kommunikation utan fördjupad kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen dessa som undantags ord. Orden används i den här artikeln för konsekvens eftersom de är för närvarande de ord som visas i program varan. När program varan har uppdaterats för att ta bort orden uppdateras den här artikeln som en justering.
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 >
 
-## <a name="what-update-is-going-to-happen"></a>Vilken uppdatering ska ske?
+## <a name="why-root-certificate-update-is-required"></a>Varför uppdatering av rot certifikat krävs?
 
-I vissa fall använder program en lokal certifikat fil som genererats från en betrodd certifikat utfärdare (CA) certifikat fil för att ansluta på ett säkert sätt. För närvarande kan kunder bara använda det fördefinierade certifikatet för att ansluta till en Azure Database for MySQL-server som finns [här](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). [Certifikat utfärdare (ca) webbläsarens forum](https://cabforum.org/)   publicerade nyligen rapporter om flera certifikat som utfärdats av ca-leverantörer som icke-kompatibla.
+Azure Database för MySQL-användare kan bara använda det fördefinierade certifikatet för att ansluta till MySQL-servern som finns [här](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). [Certifikat utfärdare (ca) webbläsarens forum](https://cabforum.org/)   publicerade nyligen rapporter om flera certifikat som utfärdats av ca-leverantörer som icke-kompatibla.
 
-Som enligt branschens krav på efterlevnad började CA-leverantörer återkallade CA-certifikat för icke-kompatibla ca: er, vilket kräver att servrar använder certifikat som utfärdats av kompatibla ca: er och signeras av CA-certifikat från dessa kompatibla certifikat utfärdare. Eftersom Azure Database for MySQL för närvarande använder ett av dessa icke-kompatibla certifikat, som klient program använder för att verifiera sina SSL-anslutningar, måste vi se till att lämpliga åtgärder vidtas (beskrivs senare i det här avsnittet) för att minimera den potentiella påverkan på MySQL-servrarna.
+Som enligt branschens krav på efterlevnad började CA-leverantörer återkallade CA-certifikat för icke-kompatibla ca: er, vilket kräver att servrar använder certifikat som utfärdats av kompatibla ca: er och signeras av CA-certifikat från dessa kompatibla certifikat utfärdare. Eftersom Azure Database for MySQL använde något av dessa icke-kompatibla certifikat behövde vi att rotera certifikatet till den kompatibla versionen för att minimera det potentiella hotet till MySQL-servrarna.
 
-Det nya certifikatet kommer att användas från och med 15 februari 2021 (02/15/2021). Om du använder antingen CA-validering eller fullständig verifiering av Server certifikatet vid anslutning från en MySQL-klient (sslmode = verify-ca eller sslmode = verify-full) måste du uppdatera program konfigurationen före 15 februari 2021 (03/15/2021).
+Det nya certifikatet distribueras och börjar användas 15 februari 2021 (02/15/2021). 
 
-## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Hur gör jag för att veta om min databas kommer att påverkas?
+## <a name="what-change-was-performed-on-february-15-2021-02152021"></a>Vilken ändring utfördes den 15 februari 2021 (02/15/2021)?
 
-Alla program som använder SSL/TLS och kontrollerar att rot certifikatet måste uppdatera rot certifikatet. Du kan identifiera om dina anslutningar verifierar rot certifikatet genom att granska anslutnings strängen.
+Den 15 februari 2021 ersattes [rot certifikatet för BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) med en **kompatibel version** av samma [BaltimoreCyberTrustRoot-rotcertifikat](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) för att säkerställa att befintliga kunder inte behöver ändra något och det inte påverkar deras anslutningar till servern. Under den här ändringen har [BaltimoreCyberTrustRoot-rotcertifikatet](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) **inte ersatts** med [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) och denna ändring uppskjuts för att tillåta mer tid för kunderna att göra ändringen.
 
-* Om din anslutnings sträng innehåller `sslmode=verify-ca` eller `sslmode=verify-identity` måste du uppdatera certifikatet.
-* Om din anslutnings sträng innehåller `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` eller `sslmode=require` , behöver du inte uppdatera certifikat.
-* Om du använder Java-anslutningar och din anslutnings sträng innehåller useSSL = falskt eller requireSSL = false, behöver du inte uppdatera certifikat.
-* Om anslutnings strängen inte anger sslmode behöver du inte uppdatera certifikat.
+## <a name="do-i-need-to-make-any-changes-on-my-client-to-maintain-connectivity"></a>Behöver jag göra några ändringar på klienten för att upprätthålla anslutningen?
 
-Om du använder en-klient som sammanfattar anslutnings strängen går du igenom klientens dokumentation för att ta reda på om den verifierar certifikat.
-Mer information om Azure Database for MySQL sslmode finns i [beskrivningarna för SSL-läge](concepts-ssl-connection-security.md#ssl-default-settings).
+Ingen ändring krävs på klient sidan. Om du har följt vår tidigare rekommendation nedan kan du fortfarande fortsätta att ansluta så länge **BaltimoreCyberTrustRoot-certifikatet inte har tagits bort** från det kombinerade CA-certifikatet. **Vi rekommenderar att inte ta bort BaltimoreCyberTrustRoot från ditt kombinerade CA-certifikat förrän ytterligare meddelande om att upprätthålla anslutningen.**
 
-Om du vill undvika att programmets tillgänglighet avbryts på grund av att certifikaten har återkallats, eller om du vill uppdatera ett certifikat som har återkallats, kan du läsa avsnittet [**Vad behöver jag för att underhålla anslutningen**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity) .
-
-## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Vad behöver jag för att underhålla anslutningen
+### <a name="previous-recommendation"></a>Föregående rekommendation
 
 Om du vill undvika att programmets tillgänglighet avbryts på grund av att certifikaten har återkallats, eller om du vill uppdatera ett certifikat som har återkallats, kan du använda följande steg. Tanken är att skapa en ny *. pem* -fil som kombinerar det aktuella certifikatet och det nya och under verifieringen av SSL-certifikatet. ett av de tillåtna värdena kommer att användas. Se följande steg:
 
@@ -76,26 +65,37 @@ Om du vill undvika att programmets tillgänglighet avbryts på grund av att cert
 
   * För .NET-användare (MySQL Connector/NET, MySQLConnector) kontrollerar du att **BaltimoreCyberTrustRoot** och **DigiCertGlobalRootG2** finns både i Windows certifikat Arkiv, betrodda rot certifikat utfärdare. Importera certifikatet som saknas om det inte finns några certifikat.
 
-        ![Azure Database for MySQL .net cert](media/overview/netconnecter-cert.png)
+    :::image type="content" source="media/overview/netconnecter-cert.png" alt-text="Azure Database for MySQL .net-cert diagram":::
 
   * För .NET-användare på Linux med hjälp av SSL_CERT_DIR kontrollerar du att **BaltimoreCyberTrustRoot** och **DigiCertGlobalRootG2** båda finns i katalogen som anges av SSL_CERT_DIR. Om något certifikat inte finns skapar du den saknade certifikat filen.
 
-  * För andra (MySQL-klienter/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) användare kan du slå samman två CA-certifikatfiler i följande format:</b>
+  * För andra (MySQL-klienter/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) användare kan du slå samman två CA-certifikatfiler i följande format:
 
-     </br>-----BEGIN CERTIFICATE-----  </br>(Rot-CA1: BaltimoreCyberTrustRoot. CRT. pem)  </br>-----SLUT CERTIFIKAT-----  </br>-----BEGIN CERTIFICATE-----  </br>(Rot-CA2: DigiCertGlobalRootG2. CRT. pem)  </br>-----SLUT CERTIFIKAT-----
+      ```
+      -----BEGIN CERTIFICATE-----
+      (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      (Root CA2: DigiCertGlobalRootG2.crt.pem)
+      -----END CERTIFICATE-----
+      ```
 
 * Ersätt den ursprungliga PEM-filen för rot certifikat utfärdaren med den kombinerade rot-CA-filen och starta om programmet/klienten.
 * I framtiden kan du efter det nya certifikatet som distribuerats på Server sidan Ändra CA PEM-filen till DigiCertGlobalRootG2. CRT. pem.
 
-## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Vad kan vara effekten av att inte uppdatera certifikatet?
-
-Om du använder det Azure Database for MySQL utfärdade certifikatet som dokumenteras här kan programmets tillgänglighet avbrytas eftersom databasen inte går att komma åt. Beroende på ditt program kan du få olika fel meddelanden, inklusive, men inte begränsat till,:
-
-* Ogiltigt certifikat/återkallat certifikat
-* Anslutningens tidsgräns uppnåddes
-
 > [!NOTE]
-> Ta inte bort eller ändra **Baltimore-certifikatet** förrän certifikat ändringen har gjorts. Vi kommer att skicka en kommunikation när ändringen har gjorts, och sedan är det säkert att släppa Baltimore-certifikatet.
+> Ta inte bort eller ändra **Baltimore-certifikatet** förrän certifikat ändringen har gjorts. Vi kommer att skicka en kommunikation när ändringen har gjorts, och det är säkert att ta bort Baltimore-certifikatet. 
+
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Varför bytte BaltimoreCyberTrustRoot-certifikatet inte till DigiCertGlobalRootG2 under den här ändringen den 15 februari 2021?
+
+Vi utvärderade kundens beredskap för den här ändringen och realiserade många kunder sökte efter ytterligare ledtid för att hantera den här ändringen. För att tillhandahålla mer ledtid till kunder för beredskap har vi beslutat att skjuta upp certifikat ändringen till DigiCertGlobalRootG2 under minst ett år och tillhandahålla tillräckligt med ledtid för kunderna och slutanvändarna. 
+
+Våra rekommendationer till användare är, Använd de ovannämnda stegen för att skapa ett kombinerat certifikat och ansluta till servern, men ta inte bort BaltimoreCyberTrustRoot-certifikatet förrän vi skickar en kommunikation för att ta bort den. 
+
+## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Vad händer om vi har tagit bort BaltimoreCyberTrustRoot-certifikatet?
+
+Du kommer att påbörjar anslutnings fel när du ansluter till din Azure Database for MySQL-server. Du måste [Konfigurera SSL](howto-configure-ssl.md) med [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -certifikatet igen för att upprätthålla anslutningen.
+
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
@@ -107,16 +107,22 @@ Om du använder det Azure Database for MySQL utfärdade certifikatet som dokumen
 
 Nej, du behöver inte starta om databas servern för att börja använda det nya certifikatet. Detta rot certifikat är en ändring på klient sidan och inkommande klient anslutningar måste använda det nya certifikatet för att säkerställa att de kan ansluta till databas servern.
 
-### <a name="3-what-will-happen-if-i-dont-update-the-root-certificate-before-february-15-2021-02152021"></a>3. Vad händer om jag inte uppdaterar rot certifikatet före den 15 februari 2021 (02/15/2021)?
+### <a name="3-how-do-i-know-if-im-using-ssltls-with-root-certificate-verification"></a>3. Hur gör jag för att vet du om jag använder SSL/TLS med verifiering av rot certifikat?
 
-Om du inte uppdaterar rot certifikatet före den 15 februari 2021 (02/15/2021) kommer dina program som ansluter via SSL/TLS och som verifierar för rot certifikatet inte att kunna kommunicera med MySQL-databasservern och programmet kommer att uppleva anslutnings problem till din MySQL Database-Server.
+Du kan identifiera om dina anslutningar verifierar rot certifikatet genom att granska anslutnings strängen.
+
+- Om din anslutnings sträng innehåller `sslmode=verify-ca` eller `sslmode=verify-identity` måste du uppdatera certifikatet.
+- Om din anslutnings sträng innehåller `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` eller `sslmode=require` , behöver du inte uppdatera certifikat.
+- Om anslutnings strängen inte anger sslmode behöver du inte uppdatera certifikat.
+
+Om du använder en-klient som sammanfattar anslutnings strängen går du igenom klientens dokumentation för att ta reda på om den verifierar certifikat.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. Vad är effekten om du använder App Service med Azure Database for MySQL?
 
 När Azure App Services ansluter till Azure Database for MySQL finns det två möjliga scenarier och beroende på hur du använder SSL med ditt program.
 
-* Det nya certifikatet har lagts till App Service på plattforms nivå. Om du använder SSL-certifikat som finns på App Service plattform i ditt program krävs ingen åtgärd.
-* Om du uttryckligen inkluderar sökvägen till SSL-cert-filen i din kod måste du hämta det nya certifikatet och uppdatera koden för att använda det nya certifikatet. Ett användbart exempel på det här scenariot är när du använder anpassade behållare i App Service som delas i [App Service-dokumentationen](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)
+* Det nya certifikatet har lagts till App Service på plattforms nivå. Om du använder SSL-certifikat som finns på App Service plattform i ditt program krävs ingen åtgärd. Detta är det vanligaste scenariot. 
+* Om du uttryckligen inkluderar sökvägen till SSL-cert-filen i din kod måste du hämta det nya certifikatet och skapa ett kombinerat certifikat som nämnts ovan och använda certifikat filen. Ett användbart exempel på det här scenariot är när du använder anpassade behållare i App Service som delas i [App Service-dokumentationen](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress). Detta är ett ovanligt scenario men vi har sett vissa användare som använder detta.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. Vad är effekten om du använder Azure Kubernetes Services (AKS) med Azure Database for MySQL?
 
@@ -132,23 +138,19 @@ För en anslutning som använder sig av egen värd Integration Runtime där du u
 
 Nej. Eftersom ändringen bara finns på klient sidan för att ansluta till databas servern, finns det inga underhålls avbrott som krävs för databas servern för den här ändringen.
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. Vad händer om jag inte kan få en schemalagd stillestånds tid för den här ändringen före den 15 februari 2021 (02/15/2021)?
+### <a name="8-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>8. om jag skapar en ny server efter den 15 februari 2021 (02/15/2021) kommer jag att påverkas?
 
-Eftersom klienterna som används för att ansluta till servern måste uppdatera certifikat informationen enligt beskrivningen i avsnittet åtgärda [här](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), behöver vi inte några avbrott för-servern i det här fallet.
+För servrar som skapats efter den 15 februari 2021 (02/15/2021) kommer du fortsätta att använda [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) för dina program för att ansluta med SSL.
 
-### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. om jag skapar en ny server efter den 15 februari 2021 (02/15/2021) kommer jag att påverkas?
+### <a name="9-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>9. hur ofta kommer Microsoft att uppdatera sina certifikat eller vad är förfallo principen?
 
-För servrar som skapats efter den 15 februari 2021 (02/15/2021) kan du använda det nyligen utfärdade certifikatet för dina program för att ansluta med SSL.
+Dessa certifikat som används av Azure Database for MySQL tillhandahålls av betrodda certifikat utfärdare (CA). Detta innebär att stöd för dessa certifikat är knutet till stöd för dessa certifikat av CA. [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -certifikatet är schemalagt att förfalla i 2025 så att Microsoft måste utföra en ändring av certifikatet innan förfallo datum. Även om det finns oförutsedda buggar i dessa fördefinierade certifikat, måste Microsoft göra certifikats rotationen på det tidigaste sätt som genomfördes den 15 februari 2021 för att säkerställa att tjänsten är säker och kompatibel hela tiden.
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hur ofta uppdaterar Microsoft sina certifikat eller vad är förfallo principen?
-
-Dessa certifikat som används av Azure Database for MySQL tillhandahålls av betrodda certifikat utfärdare (CA). Stöd för dessa certifikat på Azure Database for MySQL är knutet till stöd för dessa certifikat av CA. Men i så fall kan det vara oförutsedda buggar i dessa fördefinierade certifikat, vilket måste åtgärdas tidigast.
-
-### <a name="11-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. om jag använder Läs repliker behöver jag bara utföra den här uppdateringen på käll servern eller Läs replikerna?
+### <a name="10-if-im-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>10. om jag använder Läs repliker behöver jag bara utföra den här uppdateringen på käll servern eller Läs replikerna?
 
 Eftersom den här uppdateringen är en ändring på klient sidan, om klienten som används för att läsa data från replik servern, måste du även tillämpa ändringarna för dessa klienter.
 
-### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. behöver jag utföra någon åtgärd om jag använder datareplikering?
+### <a name="11-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>11. om jag använder datareplikering måste jag utföra någon åtgärd?
 
 Om du använder [data i replikering](concepts-data-in-replication.md) för att ansluta till Azure Database for MySQL, finns det två saker att tänka på:
 
@@ -163,18 +165,18 @@ Om du använder [data i replikering](concepts-data-in-replication.md) för att a
     Master_SSL_Key                : ~\azure_mysqlclient_key.pem
     ```
 
-    Om du ser att certifikatet har angetts för CA_file, SSL_Cert och SSL_Key måste du uppdatera filen genom att lägga till det [nya certifikatet](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
+    Om du ser att certifikatet har angetts för CA_file, SSL_Cert och SSL_Key måste du uppdatera filen genom att lägga till det [nya certifikatet](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) och skapa en kombinerad certifikat fil.
 
 * Om datareplikeringen är mellan två Azure Database for MySQL måste du återställa repliken genom att köra **anrop MySQL.az_replication_change_master** och ange det nya dubbla rot certifikatet som sista parameter [master_ssl_ca](howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)
 
-### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. har vi en fråga på Server sidan för att kontrol lera om SSL används?
+### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. har vi en fråga på Server sidan för att kontrol lera om SSL används?
 
 För att kontrol lera om du använder SSL-anslutning för att ansluta till servern, se [SSL-verifiering](howto-configure-ssl.md#step-4-verify-the-ssl-connection).
 
-### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. finns det en åtgärd som behövs om jag redan har DigiCertGlobalRootG2 i min certifikat fil?
+### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. finns det en åtgärd som behövs om jag redan har DigiCertGlobalRootG2 i min certifikat fil?
 
 Nej. Det krävs ingen åtgärd om certifikat filen redan har **DigiCertGlobalRootG2**.
 
-###    <a name="15-what-if-i-have-further-questions"></a>15. Vad händer om jag har fler frågor?
+### <a name="14-what-if-i-have-further-questions"></a>14. Vad händer om jag har fler frågor?
 
 Om du har frågor kan du få svar från community-experter i [Microsoft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). [Kontakta oss](mailto:AzureDatabaseforMySQL@service.microsoft.com)om du har en Support plan och behöver teknisk hjälp.

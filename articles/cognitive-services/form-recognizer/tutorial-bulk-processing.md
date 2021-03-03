@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606075"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700005"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>Självstudie: extrahera formulär data i bulk med Azure Data Factory
 
@@ -30,7 +30,7 @@ Genom att extrahera data från formulär och kombinera dem med befintliga operat
 
 Med Azures formulär igenkänning kan vi hjälpa organisationer att utnyttja sina data, automatisera processer (faktura betalningar, skatte bearbetning osv.), Spara pengar och tid och få bättre data exakthet.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera Azure Data Lake för att lagra dina formulär
@@ -65,7 +65,7 @@ Azure Databricks Notebook använder sedan de tränade modellerna för att extrah
 
 Din efter släpning av formulär kan finnas i din lokala miljö eller på en (s) FTP-server. I den här självstudien används formulär i ett Azure Data Lake gen 2-lagrings konto. Du kan överföra filer där du använder Azure Data Factory, Azure Storage Explorer eller AzCopy. Data uppsättningarna utbildning och Poäng kan finnas i olika behållare, men inlärnings data uppsättningarna för alla formulär typer måste finnas i samma behållare (även om de kan finnas i olika mappar).
 
-Om du vill skapa en ny Data Lake följer du instruktionerna i [skapa ett lagrings konto som ska användas med Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account).
+Om du vill skapa en ny Data Lake följer du instruktionerna i [skapa ett lagrings konto som ska användas med Azure Data Lake Storage Gen2](../../storage/blobs/create-data-lake-storage-account.md).
 
 ## <a name="create-a-parameterization-table"></a>Skapa en Parameterisering-tabell
 
@@ -89,7 +89,7 @@ Följande fält kommer att användas i tabellen:
 
 ### <a name="create-the-table"></a>Skapa tabellen
 
-[Skapa en Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)och kör sedan följande SQL-skript i [Frågeredigeraren](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal) för att skapa den nödvändiga tabellen.
+[Skapa en Azure SQL Database](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)och kör sedan följande SQL-skript i [Frågeredigeraren](../../azure-sql/database/connect-query-portal.md) för att skapa den nödvändiga tabellen.
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ Du använder Azure Databricks för att lagra och köra python-koden som samverka
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Skapa en hemlig omfattning som backas upp av Azure Key Vault
 
-Om du vill referera till hemligheterna i Azure Key Vault vi skapade ovan måste du skapa en hemlig omfattning i Databricks. Följ stegen i [skapa ett hemligt Azure Key Vault hemligt omfång](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
+Om du vill referera till hemligheterna i Azure Key Vault vi skapade ovan måste du skapa en hemlig omfattning i Databricks. Följ stegen i [skapa ett hemligt Azure Key Vault hemligt omfång](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope).
 
 ### <a name="create-a-databricks-cluster"></a>Skapa ett Databricks-kluster
 
@@ -461,7 +461,7 @@ Nu kan vi skapa en bedömnings antecknings bok. På samma sätt som den bärbara
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Automatisera utbildning och poäng med Azure Data Factory
 
-Det enda återstående steget är att konfigurera tjänsten Azure Data Factory (ADF) för att automatisera inlärnings-och Poäng processerna. Börja med att följa stegen under [skapa en data fabrik](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory). När du har skapat en ADF-resurs måste du skapa tre pipelines: en för utbildning och två för poängsättning (förklaras nedan).
+Det enda återstående steget är att konfigurera tjänsten Azure Data Factory (ADF) för att automatisera inlärnings-och Poäng processerna. Börja med att följa stegen under [skapa en data fabrik](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory). När du har skapat en ADF-resurs måste du skapa tre pipelines: en för utbildning och två för poängsättning (förklaras nedan).
 
 ### <a name="training-pipeline"></a>Utbildnings pipeline
 

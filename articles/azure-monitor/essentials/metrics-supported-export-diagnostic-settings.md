@@ -5,20 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: 8f503623031b7071c5e0a206d078175e16a7e919
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d48dcb4e45bbaf3d516f2a45e14a6be0837b55c0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623519"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734391"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor-plattformsmått som kan exporteras via diagnostikinställningar
 
-Azure Monitor tillhandahåller [plattforms mått](../essentials/data-platform-metrics.md) som standard utan konfiguration. Det ger dig flera olika sätt att interagera med plattforms mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av PowerShell eller CLI. Se [mått – stöds](../platform/metrics-supported.md) för en fullständig lista över plattforms mått som för närvarande är tillgängliga med Azure Monitor den konsoliderade mått pipelinen. Använd [2018-01-01 API-versionen](/rest/api/monitor/metricdefinitions)för att fråga efter och komma åt dessa mått. Andra mått kan vara tillgängliga i portalen eller med äldre API: er.
+Azure Monitor tillhandahåller [plattforms mått](../essentials/data-platform-metrics.md) som standard utan konfiguration. Det ger dig flera olika sätt att interagera med plattforms mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av PowerShell eller CLI. Se [mått – stöds](./metrics-supported.md) för en fullständig lista över plattforms mått som för närvarande är tillgängliga med Azure Monitor den konsoliderade mått pipelinen. Använd [2018-01-01 API-versionen](/rest/api/monitor/metricdefinitions)för att fråga efter och komma åt dessa mått. Andra mått kan vara tillgängliga i portalen eller med äldre API: er.
 
 ## <a name="metrics-not-exportable-via-diagnostic-settings"></a>Mått som inte kan exporteras via diagnostikinställningar
 
-Det innehåll som användes för att finnas på den här platsen har flyttats till [listan över Azure Monitor mått som stöds](../platform/metrics-supported.md#exporting-platform-metrics-to-other-locations).
+Det innehåll som användes för att finnas på den här platsen har flyttats till [listan över Azure Monitor mått som stöds](./metrics-supported.md#exporting-platform-metrics-to-other-locations).
 
 Det finns begränsningar när du exporterar mått via diagnostikinställningar. Alla mått kan exporteras med REST API. 
 
@@ -548,5 +548,4 @@ Följande är en lista över de mått vars beteende har ändrats.
 | Microsoft. SQL/Servers/elasticPools | xtp_storage_percent | In-Memory OLTP-lagring i procent | 
 | Microsoft. SQL/Servers | dtu_consumption_percent | DTU-procent | 
 | Microsoft. SQL/Servers | dtu_used | Använt DTU | 
-| Microsoft. SQL/managedInstances | avg_cpu_percent | Genomsnittlig CPU-procent | 
-
+| Microsoft. SQL/managedInstances | avg_cpu_percent | Genomsnittlig CPU-procent |

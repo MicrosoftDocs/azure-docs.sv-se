@@ -3,16 +3,16 @@ title: Så här flyttar du en enhet till Azure IoT Central från IoT Hub
 description: Så här flyttar du enheten till Azure IoT Central från IoT Hub
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 12/20/2020
+ms.date: 02/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7898f842529b81b80febff444c97b199fbebba3c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f5a7693eeced1028d84598a6db3728776f845f7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741624"
 ---
 # <a name="how-to-transfer-a-device-to-azure-iot-central-from-iot-hub"></a>Överföra en enhet till Azure IoT Central från IoT Hub
 
@@ -24,7 +24,7 @@ En enhet ansluter först till en DPS-slutpunkt för att hämta den information s
 
 En enhet kan anslutas till en IoT-hubb direkt med hjälp av en anslutnings sträng eller med hjälp av DPS. [Azure IoT Hub Device Provisioning service (DPS)](../../iot-dps/about-iot-dps.md) är vägen för IoT Central.
 
-## <a name="to-move-the-device"></a>Flytta enheten
+## <a name="to-move-the-device-to-azure-iot-central"></a>Så här flyttar du enheten till Azure IoT Central
 
 För att ansluta en enhet till IoT Central från IOT Hub måste en enhet uppdateras med:
 

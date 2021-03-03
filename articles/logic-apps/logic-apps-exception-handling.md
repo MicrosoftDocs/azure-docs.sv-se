@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577945"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702512"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hantera fel och undantag i Azure Logic Apps
 
@@ -27,7 +27,7 @@ För flest grundläggande undantag och fel hantering kan du använda en *princip
 
 Här är princip typerna för återförsök:
 
-| Typ | Description |
+| Typ | Beskrivning |
 |------|-------------|
 | **Standardvärde** | Den här principen skickar upp till fyra återförsök med *exponentiellt ökande* intervall, som skalas med 7,5 sekunder, men är ett tak mellan 5 och 45 sekunder. |
 | **Exponentiellt intervall**  | Den här principen väntar ett slumpmässigt intervall som väljs från ett exponentiellt växande intervall innan nästa förfrågan skickas. |
@@ -69,7 +69,7 @@ Eller så kan du manuellt ange principen för återförsök i `inputs` avsnittet
 
 *Obligatoriskt*
 
-| Värde | Typ | Description |
+| Värde | Typ | Beskrivning |
 |-------|------|-------------|
 | <*återförsök-princip-typ*> | Sträng | Den princip typ för återförsök som du vill använda: `default` , `none` , `fixed` eller `exponential` |
 | <*retry-intervall*> | Sträng | Återförsöksintervall där värdet måste använda [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Standardvärdet för minimi intervallet är `PT5S` och det maximala intervallet är `PT1D` . När du använder exponentiell intervall princip kan du ange olika minimi-och max värden. |
@@ -78,7 +78,7 @@ Eller så kan du manuellt ange principen för återförsök i `inputs` avsnittet
 
 *Valfritt*
 
-| Värde | Typ | Description |
+| Värde | Typ | Beskrivning |
 |-------|------|-------------|
 | <*lägsta-intervall*> | Sträng | För principen för exponentiella intervall, det minsta intervallet för det slumpmässigt valda intervallet i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*högsta-intervall*> | Sträng | För principen för exponentiella intervall är det största intervallet för det slumpmässigt valda intervallet i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
@@ -263,13 +263,14 @@ Begränsningar för omfång finns i [gränser och konfiguration](../logic-apps/l
 
 ### <a name="get-context-and-results-for-failures"></a>Få kontext och resultat för problem
 
-Även om det är praktiskt att fånga fel från ett omfång, kan du också behöva kontext för att förstå exakt vilka åtgärder som misslyckats plus eventuella fel eller status koder som returnerades.
+Även om det är praktiskt att fånga fel från ett omfång, kan du också behöva kontext för att förstå exakt vilka åtgärder som misslyckats plus eventuella fel eller status koder som returnerades. [ `result()` Funktionen](../logic-apps/workflow-definition-language-functions-reference.md#result) returnerar resultatet från toppnivå åtgärderna i en åtgärdad åtgärd genom att acceptera en enda parameter, som är omfångets namn och returnera en matris som innehåller resultaten från de första nivå åtgärderna. Dessa åtgärds objekt innehåller samma attribut som de som returneras av `actions()` funktionen, till exempel start tid, slut tid, status, indata, korrelations-ID och utdata. 
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)Funktionen ger kontext om resultatet från alla åtgärder i ett omfång. `result()`Funktionen accepterar en enda parameter, som är omfångets namn och returnerar en matris som innehåller alla åtgärds resultat inom det omfånget. Dessa åtgärds objekt innehåller samma attribut som `actions()` objektet, till exempel start tid, slut tid, status, indata, korrelations-ID och utdata. Om du vill skicka kontext för åtgärder som misslyckats inom ett omfång kan du enkelt para ihop ett `@result()` uttryck med `runAfter` egenskapen.
+> [!NOTE]
+> `result()`Funktionen returnerar resultatet från *endast* de första nivå åtgärderna och inte från djupare kapslade åtgärder, till exempel switch-eller Condition-åtgärder.
 
-Om du vill köra en åtgärd för varje åtgärd i ett omfång som har ett `Failed` resultat, och för att filtrera matrisen med resultat nedåt till de misslyckade åtgärderna, kan du koppla ett `@result()` uttryck med en [**filter mat ris**](logic-apps-perform-data-operations.md#filter-array-action) åtgärd och en [**for each**](../logic-apps/logic-apps-control-flow-loops.md) -slinga. Du kan ta den filtrerade resultat mat ris och utföra en åtgärd för varje haveri med hjälp av `For_each` slingan.
+Om du vill få kontext om de åtgärder som misslyckats i ett omfång kan du använda `@result()` uttrycket med omfångets namn och `runAfter` egenskap. `Failed`Du kan lägga till [åtgärden **filtrera matris**](logic-apps-perform-data-operations.md#filter-array-action)för att filtrera ned den returnerade matrisen till åtgärder som har status. Om du vill köra en åtgärd för en returnerad misslyckad åtgärd, tar du den returnerade filtrerade matrisen och använder en [ **for each** -loop](../logic-apps/logic-apps-control-flow-loops.md).
 
-Här är ett exempel, följt av en detaljerad förklaring, som skickar en HTTP POST-begäran med svars texten för åtgärder som misslyckats inom omfånget "My_Scope":
+Här är ett exempel, följt av en detaljerad förklaring, som skickar en HTTP POST-begäran med svars texten för åtgärder som misslyckats inom omfattnings åtgärden med namnet "My_Scope":
 
 ```json
 "Filter_array": {

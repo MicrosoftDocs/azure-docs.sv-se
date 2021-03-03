@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
-ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 098fb0ed967dcacac24ce3abfd4843f9fe14ff49
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727183"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Kom igång med Notification Hubs genom att använda Baidu
 
@@ -134,7 +134,7 @@ Anteckna `DefaultListenSharedAccessSignature` och `DefaultFullSharedAccessSignat
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     !! <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" />
-    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME"android:protectionLevel="normal" />
+    !!<permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.YOURPACKAGENAME" android:protectionLevel="normal" />
 
     ```
 
@@ -473,7 +473,7 @@ I det här avsnittet kommer du att lära dig hur du skickar meddelanden med hjä
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 
 Om du vill testa den här appen med en riktig mobil behöver du bara ansluta den till datorn med en USB-kabel. Med den här åtgärden läses din app in på den anslutna mobilen.
 

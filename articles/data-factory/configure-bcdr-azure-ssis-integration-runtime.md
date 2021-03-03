@@ -1,275 +1,129 @@
 ---
-title: Konfigurera Azure-SSIS integration runtime för SQL Database redundans
-description: Den här artikeln beskriver hur du konfigurerar Azure-SSIS integration runtime med Azure SQL Database geo-replikering och redundans för SSISDB-databasen
+title: Konfigurera Azure-SSIS integration runtime för verksamhets kontinuitet och haveri beredskap (BCDR)
+description: Den här artikeln beskriver hur du konfigurerar Azure-SSIS integration runtime i Azure Data Factory med Azure SQL Database/Hanterad instans redundans grupp för affärs kontinuitet och haveri beredskap (BCDR).
+services: data-factory
 ms.service: data-factory
+ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
 ms.author: sawinark
+manager: mflasko
+ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/06/2020
-ms.openlocfilehash: e12939d1003ce708889ca0b3dbc710096f9ee955
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: 73c27204ee8730c95d1cbeecf8777767173e73d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710273"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Konfigurera Azure-SSIS integration runtime med SQL Database geo-replikering och redundans
+# <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>Konfigurera Azure-SSIS integration runtime för verksamhets kontinuitet och haveri beredskap (BCDR) 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Den här artikeln beskriver hur du konfigurerar Azure-SSIS integration Runtime (IR) med Azure SQL Database geo-replikering för SSISDB-databasen. När en redundansväxling inträffar kan du se till att Azure-SSIS IR fortsätter att arbeta med den sekundära databasen.
+Azure SQL Database/Hanterad instans och SQL Server Integration Services (SSIS) i Azure Data Factory (ADF) kan kombineras som den rekommenderade lösningen all-Platform as a Service (PaaS) för SQL Server migrering. Du kan distribuera dina SSIS-projekt till SSIS Catalog-databasen (SSISDB) som hanteras av Azure SQL Database/Hanterad instans och köra dina SSIS-paket på Azure SSIS integration Runtime (IR) i ADF.
 
-Mer information om geo-replikering och redundans för SQL Database finns i [Översikt: aktiva grupper för geo-replikering och automatisk redundans](../azure-sql/database/auto-failover-group-overview.md).
+För verksamhets kontinuitet och haveri beredskap (BCDR) kan Azure SQL Database/Hanterad instans konfigureras med en [grupp för geo-replikering/redundans](https://docs.microsoft.com/azure/azure-sql/database/auto-failover-group-overview)där SSISDB i en primär Azure-region med Läs-och skriv åtkomst (primär roll) kontinuerligt replikeras till en sekundär region med skrivskyddad åtkomst (sekundär roll). När en katastrof uppstår i den primära regionen utlöses en redundansväxling, där den primära och sekundära SSISDBs kommer att byta roll.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+För BCDR kan du också konfigurera ett dubbelt vänte läge för Azure SSIS-IR som fungerar i Sync med Azure SQL Database/Hanterad instans redundans grupp. På så sätt kan du ha ett par med att köra Azure-SSIS IRs som vid en specifik tidpunkt bara kan komma åt den primära SSISDB för att hämta och köra paket, samt köra loggar för Skriv paket (primär roll), medan den andra bara kan göra samma för paket som distribuerats någon annan stans, till exempel i Azure Files (sekundär roll). När SSISDB-redundans inträffar, kommer den primära och sekundära Azure-SSIS-IRs också att växla roller och om båda körs är det en stillestånds tid på nästan noll.
 
-## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>Azure-SSIS IR redundans med en SQL-hanterad instans
+I den här artikeln beskrivs hur du konfigurerar Azure-SSIS IR med gruppen Azure SQL Database/Hanterad instans redundans för BCDR.
 
-### <a name="prerequisites"></a>Förutsättningar
+## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-database-failover-group"></a>Konfigurera ett dubbelt standby Azure-SSIS IR-par med Azure SQL Database redundans
 
-En Azure SQL-hanterad instans använder en *huvud nyckel för databasen (DMK)* för att skydda data, autentiseringsuppgifter och anslutnings information som lagras i en databas. Om du vill aktivera automatisk dekryptering av DMK krypteras en kopia av nyckeln via *serverns huvud nyckel (SMK)*. 
+Om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par som fungerar i synkronisera med Azure SQL Database redundans, utför du följande steg.
 
-SMK replikeras inte i en failover-grupp. Du måste lägga till ett lösen ord på både den primära och sekundära instansen för DMK dekryptering efter redundansväxlingen.
+1. Med hjälp av Azure Portal/ADF UI kan du skapa en ny Azure-SSIS IR med din primära Azure SQL Database-Server som värd för SSISDB i den primära regionen. Om du har en befintlig Azure-SSIS IR som redan är kopplad till SSIDB som finns på den primära Azure SQL Database-servern och den fortfarande körs, måste du först stoppa den för att konfigurera om den. Detta är din primära Azure-SSIS IR. När [du väljer att använda SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) på sidan **distributions inställningar** i installations fönstret för **integration runtime** , markerar du kryss rutan **Använd dubbla vänte läge Azure-SSIS integration runtime par med SSISDB redundans** . Ange ett namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRs för **dubbla standby-par**. När du har skapat den primära Azure-SSIS IR startas den och ansluts till en primär SSISDB som skapas för din räkning med Läs-och Skriv behörighet. Om du precis har konfigurerat om den måste du starta om den.
 
-1. Kör följande kommando för SSISDB på den primära instansen. Det här steget lägger till ett nytt krypterings lösen ord.
+1. Med hjälp av Azure Portal kan du kontrol lera om den primära SSISDB har skapats på **översikts** sidan för den primära Azure SQL Database servern. När den har skapats kan du [skapa en failover-grupp för dina primära och sekundära Azure SQL Database-servrar och lägga till SSISDB till den](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#2---create-the-failover-group) på sidan **grupper för växling vid fel** . När du har skapat redundansväxlingen kan du kontrol lera om den primära SSISDB har repliker ATS till en sekundär med skrivskyddad åtkomst på sidan **Översikt** på den sekundära Azure SQL Database servern.
+
+1. Med hjälp av Azure Portal/ADF UI kan du skapa en annan Azure-SSIS IR med din sekundära Azure SQL Database-Server som värd för SSISDB i den sekundära regionen. Detta är din sekundära Azure-SSIS IR. För fullständig BCDR, se till att alla resurser som den är beroende av också skapas i den sekundära regionen, till exempel Azure Storage för att lagra anpassade installations skript/-filer, ADF för Orchestration/schema körningar osv. När [du väljer att använda SSISDB](./tutorial-deploy-ssis-packages-azure.md#creating-ssisdb) på sidan **distributions inställningar** i installations fönstret för **integration runtime** , markerar du kryss rutan **Använd dubbla vänte läge Azure-SSIS integration runtime par med SSISDB redundans** . För **dubbla standby-par** anger du samma namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRS. När du har skapat den sekundära Azure-SSIS IR kommer den att startas och kopplas till den sekundära SSISDB.
+
+1. Om du vill ha en avbrotts tid som är nästan noll när SSISDB-redundansväxlingen sker, behåller du båda Azure-SSIS-IRs som körs. Endast din primära Azure-SSIS IR kan komma åt den primära SSISDB för att hämta och köra paket, samt körnings loggar för Skriv paket, medan den sekundära Azure-SSIS IR bara kan göra samma för paket som distribuerats någon annan stans, till exempel i Azure Files. Om du vill minimera din löpande kostnad kan du stoppa den sekundära Azure-SSIS IR när den har skapats. När SSISDB-redundansväxlingen inträffar byter ditt primära och sekundära Azure-SSIS-IRs roller. Om din primära Azure-SSIS IR stoppas måste du starta om den. Beroende på om den har matats in i ett virtuellt nätverk och den inmatnings metod som används, tar det inom 5 minuter eller cirka 20-30 minuter innan den kan köras.
+
+1. Om du [använder ADF för Orchestration/schema körningar](./how-to-invoke-ssis-package-ssis-activity.md), se till att alla relevanta ADF-pipelines med kör SSIS-paket-aktiviteter och associerade utlösare kopieras till din sekundära ADF med utlösarna inaktiverade initialt. När SSISDB-redundansväxlingen inträffar måste du aktivera dem.
+
+1. Du kan [testa Azure SQL Database redundans-gruppen](https://docs.microsoft.com/azure/azure-sql/database/failover-group-add-single-database-tutorial?tabs=azure-portal#3---test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har växlat roller. 
+
+## <a name="configure-a-dual-standby-azure-ssis-ir-pair-with-azure-sql-managed-instance-failover-group"></a>Konfigurera ett dubbelt standby Azure-SSIS IR-par med en failover-grupp för Azure SQL-hanterad instans
+
+Följ stegen nedan om du vill konfigurera ett dubbelt standby Azure-SSIS IR-par som fungerar med synkronisering med en failover-grupp för Azure SQL-hanterad instans.
+
+1. Med hjälp av Azure Portal kan du [skapa en grupp för växling vid fel för dina primära och sekundära Azure SQL-hanterade instanser](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal) på sidan **grupper** i den primära Azure SQL-hanterade instansen.
+
+1. Med hjälp av Azure Portal/ADF UI kan du skapa en ny Azure-SSIS IR med din primära Azure SQL-hanterade instans som värd för SSISDB i den primära regionen. Om du har en befintlig Azure-SSIS IR som redan är kopplad till SSIDB som finns i den primära Azure SQL-hanterade instansen och den fortfarande körs, måste du först stoppa den för att konfigurera om den. Detta är din primära Azure-SSIS IR. När [du väljer att använda SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) på sidan **distributions inställningar** i installations fönstret för **integration runtime** , markerar du kryss rutan **Använd dubbla vänte läge Azure-SSIS integration runtime par med SSISDB redundans** . Ange ett namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRs för **dubbla standby-par**. När du har skapat den primära Azure-SSIS IR startas den och ansluts till en primär SSISDB som skapas för din räkning med Läs-och Skriv behörighet. Om du precis har konfigurerat om den måste du starta om den. Du kan också kontrol lera om den primära SSISDB har repliker ATS till en sekundär instans med skrivskyddad åtkomst på **översikts** sidan för den sekundära Azure SQL-hanterade instansen.
+
+1. Med hjälp av Azure Portal/ADF UI kan du skapa en annan Azure-SSIS IR med din sekundära Azure SQL-hanterade instans som värd för SSISDB i den sekundära regionen. Detta är din sekundära Azure-SSIS IR. För fullständig BCDR, se till att alla resurser som den är beroende av också skapas i den sekundära regionen, till exempel Azure Storage för att lagra anpassade installations skript/-filer, ADF för Orchestration/schema körningar osv. När [du väljer att använda SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb) på sidan **distributions inställningar** i installations fönstret för **integration runtime** , markerar du kryss rutan **Använd dubbla vänte läge Azure-SSIS integration runtime par med SSISDB redundans** . För **dubbla standby-par** anger du samma namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRS. När du har skapat den sekundära Azure-SSIS IR kommer den att startas och kopplas till den sekundära SSISDB.
+
+1. Azure SQL Managed instance kan skydda känsliga data i databaser, till exempel SSISDB, genom att kryptera dem med hjälp av huvud nyckeln för databasen (DMK). DMK är i sin tur krypterad med tjänstens huvud nyckel (SMK) som standard. Vid den tidpunkt då replikeringen inte replikeras replikeras inte SMK från den primära Azure SQL-hanterade instansen, så DMK och i sin tur SSISDB kan inte dekrypteras på den sekundära Azure SQL-hanterade instansen efter att redundansväxlingen inträffar. Du kan undvika detta genom att lägga till en lösen ords kryptering för DMK som ska dekrypteras på den sekundära Azure SQL-hanterade instansen. Utför följande steg med hjälp av SSMS.
+
+   1. Kör följande kommando för SSISDB i din primära Azure SQL-hanterade instans för att lägga till ett lösen ord för kryptering av DMK.
+
+      ```sql
+      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
+      ```
+   
+   1. Kör följande kommando för SSISDB i både dina primära och sekundära Azure SQL-hanterade instanser för att lägga till det nya lösen ordet för dekryptering av DMK.
+
+      ```sql
+      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
+      ```
+
+1. Om du vill ha en avbrotts tid som är nästan noll när SSISDB-redundansväxlingen sker, behåller du båda Azure-SSIS-IRs som körs. Endast din primära Azure-SSIS IR kan komma åt den primära SSISDB för att hämta och köra paket, samt körnings loggar för Skriv paket, medan den sekundära Azure-SSIS IR bara kan göra samma för paket som distribuerats någon annan stans, till exempel i Azure Files. Om du vill minimera din löpande kostnad kan du stoppa den sekundära Azure-SSIS IR när den har skapats. När SSISDB-redundansväxlingen inträffar byter ditt primära och sekundära Azure-SSIS-IRs roller. Om din primära Azure-SSIS IR stoppas måste du starta om den. Beroende på om den har matats in i ett virtuellt nätverk och den inmatnings metod som används, tar det inom 5 minuter eller cirka 20-30 minuter innan den kan köras.
+
+1. Om du [använder Azure SQL-hanterade instans agenter för Dirigerings-eller schema körningar](./how-to-invoke-ssis-package-managed-instance-agent.md), se till att alla relevanta SSIS-jobb med sina jobb steg och associerade scheman kopieras till den sekundära Azure SQL-hanterade instansen med scheman inaktiverade initialt. Utför följande steg med hjälp av SSMS.
+
+   1. För varje SSIS-jobb högerklickar du och väljer **skriptet jobb som**, **skapa till** och **nytt redigerings fönster** List Rute meny objekt för att generera skriptet.
+
+      ![Generera jobb skript för SSIS](media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png)
+
+   1. För varje genererat jobb skript för SSIS, hitta kommandot för att köra `sp_add_job` den lagrade proceduren och ändra/ta bort värde tilldelningen till `@owner_login_name` argumentet vid behov.
+
+   1. För varje uppdaterat SSIS jobb skript kör du det på din sekundära Azure SQL-hanterade instans för att kopiera jobbet med jobb stegen och associerade scheman.
+
+   1. Använd följande skript för att skapa ett nytt T-SQL-jobb för att aktivera/inaktivera SSIS-jobb scheman baserat på den primära/sekundära SSISDB-rollen i både dina primära och sekundära Azure SQL-hanterade instanser och kör den regelbundet. När SSISDB-redundansväxlingen inträffar aktive ras SSIS jobb scheman som inaktiverades och vice versa.
+
+      ```sql
+      IF (SELECT Top 1 role_desc FROM SSISDB.sys.dm_geo_replication_link_status WHERE partner_database = 'SSISDB') = 'PRIMARY'
+         BEGIN
+            IF (SELECT enabled FROM msdb.dbo.sysschedules WHERE schedule_id = <ScheduleID>) = 0
+               EXEC msdb.dbo.sp_update_schedule @schedule_id = <ScheduleID >, @enabled = 1
+         END
+      ELSE
+         BEGIN
+            IF (SELECT enabled FROM msdb.dbo.sysschedules WHERE schedule_id = <ScheduleID>) = 1
+               EXEC msdb.dbo.sp_update_schedule @schedule_id = <ScheduleID >, @enabled = 0
+         END
+      ```
+
+1. Om du [använder ADF för Orchestration/schema körningar](./how-to-invoke-ssis-package-ssis-activity.md), se till att alla relevanta ADF-pipelines med kör SSIS-paket-aktiviteter och associerade utlösare kopieras till din sekundära ADF med utlösarna inaktiverade initialt. När SSISDB-redundansväxlingen inträffar måste du aktivera dem.
+
+1. Du kan [testa din Azure SQL-grupp för hanterade instanser](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal#test-failover) och kontrol lera [Azure-SSIS IR övervaknings sidan på ADF-portalen](./monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal) om ditt primära och sekundära Azure-SSIS-IRS har bytt roll. 
+
+## <a name="attach-a-new-azure-ssis-ir-to-existing-ssisdb-hosted-by-azure-sql-databasemanaged-instance"></a>Bifoga en ny Azure-SSIS IR till befintliga SSISDB som hanteras av Azure SQL Database/hanterade instansen
+
+Om en katastrof inträffar och påverkar din befintliga Azure-SSIS IR men inte Azure SQL Database/Hanterad instans i samma region, kan du ersätta den med en ny region. Slutför följande steg för att koppla din befintliga SSISDB med Azure SQL Database/hanterade instansen till en ny Azure-SSIS IR.
+
+1. Om din befintliga Azure-SSIS IR fortfarande körs måste du stoppa den först med Azure Portal/ADF UI eller Azure PowerShell. Om haverien också påverkar ADF i samma region kan du hoppa över det här steget.
+
+1. Med hjälp av SSMS kör du följande kommando för SSISDB i Azure SQL Database/hanterade instansen för att uppdatera de metadata som ska tillåta anslutningar från din nya ADF/Azure-SSIS IR.
 
    ```sql
-   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name = 'YourNewADF', @integration_runtime_name = 'YourNewAzureSSISIR'
    ```
 
-2. Skapa en failover-grupp på en SQL-hanterad instans.
-
-3. Kör **sp_control_dbmasterkey_password** på den sekundära instansen genom att använda det nya krypterings lösen ordet.
-
-   ```sql
-   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
-   GO
-   ```
-
-### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Scenario 1: Azure-SSIS IR som pekar på en Läs-och skriv lyssnar-slutpunkt
-
-Om du vill att Azure-SSIS IR ska peka på en slut punkt för Läs/skriv-lyssnare måste du först peka på den primära server slut punkten. När du har angett SSISDB i en failover-grupp kan du stoppa Azure-SSIS IR, ändra den så att den pekar på slut punkten Läs/skriv lyssnare med Azure PowerShell och sedan starta om den.
-
-```powershell
-Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
-```
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar:
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Redigera Azure-SSIS IR med en ny region, ett virtuellt nätverk och en signatur för signatur för delad åtkomst (SAS) för anpassad installation på den sekundära instansen. Eftersom Azure-SSIS IR pekar på en Läs-och skriv lyssnare och slut punkten är transparent för Azure-SSIS IR, behöver du inte redigera slut punkten.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Starta om Azure-SSIS IR.
-
-### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>Scenario 2: Azure-SSIS IR pekar på en primär server slut punkt
-
-Det här scenariot är lämpligt om Azure-SSIS IR pekar på en primär server slut punkt.
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar:
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Redigera Azure-SSIS IR med ny region, slut punkt och information om virtuellt nätverk för den sekundära instansen.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database endpoint" `
-      -CatalogAdminCredential "Azure SQL Database admin credentials" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Starta om Azure-SSIS IR.
-
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>Scenario 3: Azure-SSIS IR pekar på en offentlig slut punkt för en SQL-hanterad instans
-
-Det här scenariot är lämpligt om Azure-SSIS IR pekar på en offentlig slut punkt för en hanterad Azure SQL-instans och det inte går att ansluta till ett virtuellt nätverk. Den enda skillnaden från scenario 2 är att du inte behöver redigera information om virtuellt nätverk för Azure-SSIS IR efter redundansväxlingen.
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar:
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Redigera Azure-SSIS IR med den nya regionen och slut punkts informationen för den sekundära instansen.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Starta om Azure-SSIS IR.
-
-### <a name="scenario-4-attach-an-existing-ssisdb-instance-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scenario 4: koppla en befintlig SSISDB-instans (SSIS Catalog) till en ny Azure-SSIS IR
-
-Det här scenariot är lämpligt om du vill att SSISDB ska fungera med en ny Azure-SSIS IR i en ny region när en Azure Data Factory eller Azure-SSIS IR katastrof inträffar i den aktuella regionen.
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar.
-
-> [!NOTE]
-> Använd PowerShell för steg 4 (generering av IR). Om du inte gör det rapporterar Azure Portal ett fel som säger att SSISDB redan finns.
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Kör en lagrad procedur för att uppdatera metadata i SSISDB för att godkänna anslutningar från **\<new_data_factory_name\>** och **\<new_integration_runtime_name\>** .
-   
-   ```sql
-   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-   ```
-
-3. Skapa en ny data fabrik med namnet **\<new_data_factory_name\>** i den nya regionen.
-
-   ```powershell
-   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-      -Location "new region"`
-      -Name "<new_data_factory_name>"
-   ```
-   
-   Mer information om PowerShell-kommandot finns i [skapa en Azure-datafabrik med hjälp av PowerShell](quickstart-create-data-factory-powershell.md).
-
-4. Skapa ett nytt Azure-SSIS IR med namnet **\<new_integration_runtime_name\>** i den nya regionen med hjälp av Azure PowerShell.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-      -DataFactoryName "new data factory name" `
-      -Name "<new_integration_runtime_name>" `
-      -Description $AzureSSISDescription `
-      -Type Managed `
-      -Location $AzureSSISLocation `
-      -NodeSize $AzureSSISNodeSize `
-      -NodeCount $AzureSSISNodeNumber `
-      -Edition $AzureSSISEdition `
-      -LicenseType $AzureSSISLicenseType `
-      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-      -VnetId "new vnet" `
-      -Subnet "new subnet" `
-      -CatalogServerEndpoint $SSISDBServerEndpoint `
-      -CatalogPricingTier $SSISDBPricingTier
-   ```
-   
-   Mer information om PowerShell-kommandot finns i [Skapa Azure-SSIS integration runtime i Azure Data Factory](create-azure-ssis-integration-runtime.md).
-
-## <a name="azure-ssis-ir-failover-with-sql-database"></a>Azure-SSIS IR redundans med SQL Database
-
-### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Scenario 1: Azure-SSIS IR som pekar på en Läs-och skriv lyssnar-slutpunkt
-
-Det här scenariot är lämpligt när:
-
-- Azure-SSIS IR pekar på den läsa/Skriv lyssnare-slutpunkten för gruppen redundans.
-- SQL Database servern har *inte* kon figurer ATS med regeln för tjänst slut punkten för virtuellt nätverk.
-
-Om du vill att Azure-SSIS IR ska peka på en slut punkt för Läs/skriv-lyssnare måste du först peka på den primära server slut punkten. När du har angett SSISDB i en failover-grupp kan du stoppa Azure-SSIS IR, ändra den så att den pekar på slut punkten Läs/skriv lyssnare med Azure PowerShell och sedan starta om den.
-
-```powershell
-Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
-```
-
-#### <a name="solution"></a>Lösning
-
-När redundansväxlingen inträffar är det transparent för Azure-SSIS IR. Azure-SSIS IR ansluter automatiskt till den nya primära gruppen för redundans. 
-
-Om du vill uppdatera regionen eller annan information i Azure-SSIS IR kan du stoppa den, redigera och starta om.
-
-
-### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>Scenario 2: Azure-SSIS IR pekar på en primär server slut punkt
-
-Det här scenariot är lämpligt om Azure-SSIS IR pekar på en primär server slut punkt.
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar:
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Redigera Azure-SSIS IR med ny region, slut punkt och information om virtuellt nätverk för den sekundära instansen.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-      -CatalogServerEndpoint "Azure SQL Database endpoint" `
-      -CatalogAdminCredential "Azure SQL Database admin credentials" `
-      -VNetId "new VNet" `
-      -Subnet "new subnet" `
-      -SetupScriptContainerSasUri "new custom setup SAS URI"
-   ```
-
-3. Starta om Azure-SSIS IR.
-
-### <a name="scenario-3-attach-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scenario 3: koppla en befintlig SSISDB (SSIS Catalog) till en ny Azure-SSIS IR
-
-Det här scenariot är lämpligt om du vill etablera en ny Azure-SSIS IR i en sekundär region. Det är också lämpligt om du vill att din SSISDB ska fortsätta att arbeta med en ny Azure-SSIS IR i en ny region när en Azure Data Factory eller Azure-SSIS IR katastrof inträffar i den aktuella regionen.
-
-#### <a name="solution"></a>Lösning
-
-Utför följande steg när redundans inträffar.
-
-> [!NOTE]
-> Använd PowerShell för steg 4 (generering av IR). Om du inte gör det rapporterar Azure Portal ett fel som säger att SSISDB redan finns.
-
-1. Stoppa Azure-SSIS IR i den primära regionen.
-
-2. Kör en lagrad procedur för att uppdatera metadata i SSISDB för att godkänna anslutningar från **\<new_data_factory_name\>** och **\<new_integration_runtime_name\>** .
-   
-   ```sql
-   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-   ```
-
-3. Skapa en ny data fabrik med namnet **\<new_data_factory_name\>** i den nya regionen.
-
-   ```powershell
-   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-      -Location "new region"`
-      -Name "<new_data_factory_name>"
-   ```
-   
-   Mer information om PowerShell-kommandot finns i [skapa en Azure-datafabrik med hjälp av PowerShell](quickstart-create-data-factory-powershell.md).
-
-4. Skapa ett nytt Azure-SSIS IR med namnet **\<new_integration_runtime_name\>** i den nya regionen med hjälp av Azure PowerShell.
-
-   ```powershell
-   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-      -DataFactoryName "new data factory name" `
-      -Name "<new_integration_runtime_name>" `
-      -Description $AzureSSISDescription `
-      -Type Managed `
-      -Location $AzureSSISLocation `
-      -NodeSize $AzureSSISNodeSize `
-      -NodeCount $AzureSSISNodeNumber `
-      -Edition $AzureSSISEdition `
-      -LicenseType $AzureSSISLicenseType `
-      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-      -VnetId "new vnet" `
-      -Subnet "new subnet" `
-      -CatalogServerEndpoint $SSISDBServerEndpoint `
-      -CatalogPricingTier $SSISDBPricingTier
-   ```
-
-   Mer information om PowerShell-kommandot finns i [Skapa Azure-SSIS integration runtime i Azure Data Factory](create-azure-ssis-integration-runtime.md).
+1. Använd [Azure Portal/ADF UI](./create-azure-ssis-integration-runtime.md#use-the-azure-portal-to-create-an-integration-runtime) eller [Azure PowerShell](./create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime)och skapa din nya ADF/Azure-SSIS IR med namnet *YourNewADF* / *YourNewAzureSSISIR* i en annan region. Om du använder Azure Portal/ADF-användargränssnitt kan du ignorera alternativet testa anslutnings fel på sidan **distributions inställningar** i installations fönstret för **integration runtime** .
 
 ## <a name="next-steps"></a>Nästa steg
 
-Överväg följande konfigurations alternativ för Azure-SSIS IR:
+Du kan tänka på följande konfigurations alternativ för din Azure-SSIS IR:
 
-- [Konfigurera Azure-SSIS integration runtime för hög prestanda](configure-azure-ssis-integration-runtime-performance.md)
+- [Konfigurera paket Arkiv för din Azure-SSIS IR](./create-azure-ssis-integration-runtime.md#creating-azure-ssis-ir-package-stores)
 
-- [Anpassa konfigurationen av Azure SSIS-integreringskörningen](how-to-configure-azure-ssis-ir-custom-setup.md)
+- [Konfigurera anpassade inställningar för din Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [Etablera Enterprise Edition för Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Konfigurera virtuell nätverks inmatning för din Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md)
+
+- [Konfigurera egen värd-IR som en proxy för din Azure-SSIS IR](./self-hosted-integration-runtime-proxy-ssis.md)

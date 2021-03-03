@@ -1,24 +1,24 @@
 ---
 title: Utöka Azure IoT Central med anpassad analys | Microsoft Docs
 description: Som en lösnings utvecklare konfigurerar du ett IoT Central program för att göra anpassade analyser och visualiseringar. Den här lösningen använder Azure Databricks.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/18/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1e261e8d5d9cd147f3157303b7a2a50db7c33e58
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123053"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741717"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Utöka Azure IoT Central med anpassad analys med Azure Databricks
 
-Den här instruktions guiden visar dig som lösnings utvecklare och hur du kan utöka ditt IoT Central program med anpassade analyser och visualiseringar. Exemplet använder en [Azure Databricks](/azure/azure-databricks/) arbets yta för att analysera IoT Central telemetri-dataströmmen och för att generera visualiseringar som [låddiagram](https://wikipedia.org/wiki/Box_plot).
+Den här instruktions guiden visar dig som lösnings utvecklare och hur du kan utöka ditt IoT Central program med anpassade analyser och visualiseringar. Exemplet använder en [Azure Databricks](/azure/azure-databricks/) arbets yta för att analysera IoT Central telemetri-dataströmmen och för att generera visualiseringar som [låddiagram](https://wikipedia.org/wiki/Box_plot).  
 
 Den här instruktions guiden visar hur du utökar IoT Central bortom det som redan kan utföras med de [inbyggda analys verktygen](./howto-create-custom-analytics.md).
 
@@ -31,7 +31,7 @@ I den här instruktions guiden får du lära dig att:
 
 För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ### <a name="iot-central-application"></a>IoT Central program
 
@@ -62,7 +62,7 @@ Använd [Azure Portal för att skapa ett Event Hubs-namnområde](https://portal.
 | Inställning | Värde |
 | ------- | ----- |
 | Namn    | Välj namn på namn område |
-| Prisnivå | Basic |
+| Prisnivå | Grundläggande |
 | Prenumeration | Din prenumeration |
 | Resursgrupp | IoTCentralAnalysis |
 | Plats | USA, östra |
@@ -89,7 +89,7 @@ När du har skapat de resurser som krävs ser **IoTCentralAnalysis** -resurs gru
 Du kan konfigurera ett IoT Central program för att kontinuerligt exportera telemetri till en Event Hub. I det här avsnittet skapar du en händelsehubben som tar emot telemetri från ditt IoT Central-program. Händelsehubben ger telemetri till din Stream Analytics jobb för bearbetning.
 
 1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
-1. Namnge Event Hub- **centralexport**och välj **skapa**.
+1. Namnge Event Hub- **centralexport** och välj **skapa**.
 1. I listan över händelse nav i namn området väljer du **centralexport**. Välj sedan **principer för delad åtkomst**.
 1. Välj **+ Lägg till**. Skapa en princip med namnet **Lyssna** med **lyssnings** anspråket.
 1. När principen är klar markerar du den i listan och kopierar sedan **anslutnings strängen – primär nyckel** värde.
@@ -103,7 +103,7 @@ Event Hubs namn området ser ut som på följande skärm bild:
 
 På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade från contoso-mallen. I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
 
-1. Gå till sidan **data export** , Välj **+ ny**och sedan **Azure Event Hubs**.
+1. Gå till sidan **data export (bakåtkompatibelt)** , Välj **+ ny** och sedan **Azure Event Hubs**.
 1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**:
 
     | Inställning | Värde |
@@ -134,9 +134,9 @@ Använd informationen i följande tabell för att skapa klustret:
 | ------- | ----- |
 | Klusternamn | centralanalysis |
 | Kluster läge | Standard |
-| Databricks Runtime version | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
+| Databricks Runtime version | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python-version | 3 |
-| Aktivera automatisk skalning | Nej |
+| Aktivera automatisk skalning | Inga |
 | Avsluta efter minuter av inaktivitet | 30 |
 | Typ av arbetare | Standard_DS3_v2 |
 | Arbetare | 1 |
@@ -154,7 +154,7 @@ Följande steg visar hur du importerar biblioteket som exempel behov i klustret:
 
 1. Välj klustret och välj sedan fliken **bibliotek** .
 
-1. Välj **installera ny**på fliken **bibliotek** .
+1. Välj **installera ny** på fliken **bibliotek** .
 
 1. På sidan **Installera bibliotek** väljer du **maven** som biblioteks källa.
 

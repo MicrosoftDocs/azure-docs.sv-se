@@ -4,19 +4,21 @@ description: Azure Security benchmark v2 data skydd
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c8d907062835f18393946b04f1f1e9d5ec345411
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735768"
 ---
 # <a name="security-control-v2-data-protection"></a>Säkerhets kontroll v2: data skydd
 
 Data skydd täcker kontroll av data skydd i vila, under överföring och via auktoriserade åtkomst metoder. Detta omfattar identifiering, klassificering, skydd och övervakning av känsliga data till gångar med hjälp av åtkomst kontroll, kryptering och loggning i Azure.
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-hälsokompatibilitet: data skydd](../../governance/policy/samples/azure-security-benchmark#data-protection)
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Identifiera, klassificera och märk upp känsliga data
 
@@ -24,9 +26,9 @@ Data skydd täcker kontroll av data skydd i vila, under överföring och via auk
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
-Identifiera, klassificera och märk känsliga data så att du kan utforma lämpliga kontroller för att se till att känslig information lagras, bearbetas och överförs säkert av organisationens teknik system. 
+Identifiera, klassificera och märk känsliga data så att du kan utforma lämpliga kontroller för att se till att känslig information lagras, bearbetas och överförs säkert av organisationens teknik system.
 
-Använd Azure Information Protection (och dess associerade skanningsverktyg) för känslig information i Office-dokument på Azure, lokalt, i Office 365 och på andra platser. 
+Använd Azure Information Protection (och dess associerade skanningsverktyg) för känslig information i Office-dokument på Azure, lokalt, i Office 365 och på andra platser.
 
 Du kan använda Azure SQL-Information Protection för att hjälpa till med klassificering och märkning av information som lagras i Azure SQL-databaser.
 
@@ -38,7 +40,7 @@ Du kan använda Azure SQL-Information Protection för att hjälpa till med klass
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Data säkerhet](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Azure Information Protection (AIP) innehåller övervakningsfunktioner för info
 
 Om det krävs för att förhindra skydd mot dataförlust (DLP) kan du använda en värdbaserad DLP-lösning för att genomdriva detektionskontroller och/eller förebyggande kontroller för att förhindra dataexfiltrering.
 
-- [Aktivera Azure SQL ATP](../../azure-sql/database/threat-detection-overview.md)
+- [Azure Defender för SQL](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Aktivera Azure Storage ATP](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Azure Defender för Storage](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **Ansvar**: Delad
 
@@ -104,11 +106,11 @@ Om det krävs för att förhindra skydd mot dataförlust (DLP) kan du använda e
 |--|--|--|--|
 | DP-4 | 14,4 | SC-8 |
 
-För att komplettera åtkomst kontroller bör data i överföring skyddas mot "out of band"-attacker (t. ex. trafik fångst) som använder kryptering för att säkerställa att angripare inte kan läsa eller ändra data. 
+För att komplettera åtkomst kontroller bör data i överföring skyddas mot "out of band"-attacker (t. ex. trafik avbildning) med kryptering för att säkerställa att angripare inte kan läsa eller ändra data.
 
-Även om det är valfritt för trafik i privata nätverk, är detta avgörande för trafik på externa och offentliga nätverk. För HTTP-trafik ser du till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS v 1.2 eller senare. För fjärrhantering använder du SSH (för Linux) eller RDP/TLS (för Windows) i stället för ett okrypterat protokoll. Inaktuella SSL-, TLS-och SSH-versioner och-protokoll och svaga chiffer bör inaktive ras.  
+Även om det är valfritt för trafik i privata nätverk, är detta avgörande för trafik på externa och offentliga nätverk. För HTTP-trafik ser du till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS v 1.2 eller senare. För fjärrhantering använder du SSH (för Linux) eller RDP/TLS (för Windows) i stället för ett okrypterat protokoll. Inaktuella SSL-, TLS-och SSH-versioner och-protokoll och svaga chiffer bör inaktive ras.
 
-Som standard tillhandahåller Azure kryptering för data i överföring mellan Azures Data Center. 
+Som standard tillhandahåller Azure kryptering för data i överföring mellan Azures Data Center.
 
 - [Förstå kryptering i överföring med Azure](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 

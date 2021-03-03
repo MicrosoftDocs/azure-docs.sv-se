@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698747"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Felsöka live video analys på IoT Edge
 
@@ -105,7 +105,7 @@ Du kan också stöta på problem när du kör **[installations skriptet för Liv
 * **Mallen kunde inte distribueras på grund av en princip överträdelse.**
     * Undvik det här problemet genom att kontakta IT-administratören för att se till att anropen för att skapa en virtuell dator för att kringgå blockering av SSH-autentisering. Detta behövs inte eftersom vi använder ett säkert skydds-nätverk som kräver ett användar namn och lösen ord för att kommunicera med Azure-resurserna. Autentiseringsuppgifterna lagras i filen **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** i Cloud Shell, när den virtuella datorn har skapats, distribuerats och anslutits till IoT Hub.
 * Installations skriptet kan inte skapa tjänstens huvud namn och/eller Azure-resurser.
-    * För att komma förbi det här problemet bör du kontrol lera att din prenumeration och Azure-klienten inte har nått sin maximala tjänst gräns. Lär dig mer om [Azure AD-tjänstens gränser och begränsningar](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) samt [Azure-prenumerationer, tjänst begränsningar, kvoter och begränsningar.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+    * För att komma förbi det här problemet bör du kontrol lera att din prenumeration och Azure-klienten inte har nått sin maximala tjänst gräns. Lär dig mer om [Azure AD-tjänstens gränser och begränsningar](../../active-directory/enterprise-users/directory-service-limits-restrictions.md) samt [Azure-prenumerationer, tjänst begränsningar, kvoter och begränsningar.](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 > [!TIP]
 > Om det finns några ytterligare problem som du kan behöva hjälp med kan du **[samla in loggar och skicka in ett support ärende](#collect-logs-for-submitting-a-support-ticket)**. Du kan också kontakta oss genom att skicka oss ett e-postmeddelande till **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .

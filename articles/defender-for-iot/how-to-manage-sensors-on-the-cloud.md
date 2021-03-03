@@ -1,20 +1,20 @@
 ---
-title: Publicera och hantera sensorer i Defender för IoT-portalen
+title: Publicera och hantera sensorer och prenumerationer i Defender for IoT-portalen
 description: Lär dig att publicera, Visa och hantera sensorer i Defender för IoT-portalen.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/27/2020
+ms.date: 2/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733269"
 ---
-# <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Publicera och hantera sensorer i Defender för IoT-portalen
+# <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Publicera och hantera sensorer och prenumerationer i Defender for IoT-portalen
 
 Den här artikeln beskriver hur du hanterar, visar och hanterar sensorer i [Defender for IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started).
 
@@ -64,7 +64,7 @@ I [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_I
 
 ## <a name="manage-onboarded-sensors"></a>Hantera inbyggda sensorer
 
-Du kan använda [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) för hanterings uppgifter som rör sensorer.
+Använd [Defender för IoT-portalen](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) för hanterings uppgifter som rör sensorer.
 
 Inbyggda sensorer kan visas på sidan **platser och sensorer** . Du kan också redigera sensor information från den här sidan.
 
@@ -78,8 +78,8 @@ Använd redigerings alternativen **platser och sensorer** för att redigera sens
 
 Redigera:
 
-1. Högerklicka på ellipsen (**...**) för den sensor som du vill redigera.
-1. Välj Redigera.
+1. Välj **ellipsen** (**...**) för den sensor som du vill redigera.
+1. Välj **Redigera**.
 1. Uppdatera sensor zonen eller skapa en ny zon.
 
 ### <a name="delete-a-sensor"></a>Ta bort en sensor
@@ -122,6 +122,24 @@ Så här återaktiverar du en sensor:
 8. Välj **överför** och välj filen som du sparade från den inbyggda sensor sidan.
 
 9. Välj **Aktivera**.
+
+## <a name="offboard-a-subscription"></a>Avpublicera en prenumeration
+
+Prenumerationer hanteras per månad. När du avpublicera en prenumeration debiteras du för den prenumerationen fram till slutet av månaden. 
+
+Avinstallera alla sensorer som är associerade med prenumerationen innan du offboarding prenumerationen. Mer information om hur du tar bort en sensor finns i [ta bort en sensor](#delete-a-sensor). 
+
+Så här avpublicera du en prenumeration:
+
+1. Gå till sidan med **priser** .
+1. Välj prenumerationen och välj sedan ikonen **ta bort** :::image type="icon" source="media/how-to-manage-sensors-on-the-cloud/delete-icon.png" border="false"::: .
+1. I popup-fönstret för bekräftelse markerar du kryss rutan för att bekräfta att du har tagit bort alla sensorer som är associerade med prenumerationen.
+
+    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/offboard-popup.png" alt-text="Markera kryss rutan och välj avpublicera för att avpublicera sensorn.":::
+
+1. Välj knappen **avpublicera** . 
+
+Den lokala miljön påverkas inte, men du bör avinstallera sensorn från den lokala miljön eller omtilldela sensorn till en annan prenumeration, så att inga relaterade data flödar till den lokala hanterings konsolen. 
 
 ## <a name="see-also"></a>Se även
 

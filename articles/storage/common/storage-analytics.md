@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737689"
 ---
 # <a name="storage-analytics"></a>Lagringsanalys
 
 Azure-lagringsanalys utför loggning och tillhandahåller mått data för ett lagrings konto. Du kan använda dessa data för att spåra begär Anden, analysera användnings trender och diagnostisera problem med ditt lagrings konto.
 
-Om du vill använda Lagringsanalys måste du aktivera det separat för varje tjänst som du vill övervaka. Du kan aktivera den från [Azure Portal](https://portal.azure.com). Mer information finns i [övervaka ett lagrings konto i Azure Portal](storage-monitor-storage-account.md). Du kan också aktivera Lagringsanalys program mässigt via REST API eller klient biblioteket. Använd egenskaperna [Ange BLOB service](/rest/api/storageservices/set-blob-service-properties), ange egenskaper för [Queue Service](/rest/api/storageservices/set-queue-service-properties), [Ange Table service-egenskaper](/rest/api/storageservices/set-table-service-properties)och [ange åtgärder för fil tjänst egenskaper](/rest/api/storageservices/Get-File-Service-Properties) för att aktivera Lagringsanalys för varje tjänst.
+Om du vill använda Lagringsanalys måste du aktivera det separat för varje tjänst som du vill övervaka. Du kan aktivera den från [Azure Portal](https://portal.azure.com). Mer information finns i [övervaka ett lagrings konto i Azure Portal](./manage-storage-analytics-logs.md). Du kan också aktivera Lagringsanalys program mässigt via REST API eller klient biblioteket. Använd egenskaperna [Ange BLOB service](/rest/api/storageservices/set-blob-service-properties), ange egenskaper för [Queue Service](/rest/api/storageservices/set-queue-service-properties), [Ange Table service-egenskaper](/rest/api/storageservices/set-table-service-properties)och [ange åtgärder för fil tjänst egenskaper](/rest/api/storageservices/Get-File-Service-Properties) för att aktivera Lagringsanalys för varje tjänst.
 
 De aggregerade data lagras i en välkänd BLOB (för loggning) och i välkända tabeller (för mått) som kan nås med hjälp av Blob Service-och Table service-API: er.
 
@@ -46,6 +46,6 @@ Varje begäran som görs till ett kontos lagrings tjänst är antingen fakturerb
 När du tittar på Lagringsanalys data kan du använda tabellerna i avsnittet [Lagringsanalys loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) för att avgöra vilka förfrågningar som är fakturerbara. Sedan kan du jämföra dina loggar och mät data med status meddelanden för att se om du debiteras för en viss begäran. Du kan också använda tabellerna i föregående avsnitt för att undersöka tillgänglighet för en lagrings tjänst eller en enskild API-åtgärd.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Övervaka ett lagringskonto i Azure-portalen](storage-monitor-storage-account.md)
+* [Övervaka ett lagringskonto i Azure-portalen](./manage-storage-analytics-logs.md)
 * [Lagringsanalys mått](storage-analytics-metrics.md)
 * [Loggning för lagringsanalys](storage-analytics-logging.md)

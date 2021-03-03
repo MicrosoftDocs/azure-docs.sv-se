@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: f9418b9a4bac9c458c530b246f7400ac067f5623
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9c20994c27680aaccb68db2ff78deb6b6bf9f8cf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624142"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718139"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Anslut Operations Manager till Azure Monitor
 
@@ -40,8 +40,8 @@ Läs igenom följande krav innan du börjar.
 * Azure Monitor stöder endast System Center Operations Manager 2016 eller senare, Operations Manager 2012 SP1 UR6 eller senare och Operations Manager 2012 R2 UR2 eller senare. Stöd för proxy har lagts till i Operations Manager 2012 SP1 UR7 och Operations Manager 2012 R2 UR3.
 * Att integrera System Center Operations Manager 2016 med det amerikanska myndighets molnet kräver ett uppdaterat Advisor-hanterings paket som ingår i Samlad uppdatering 2 eller senare. System Center Operations Manager 2012 R2 kräver ett uppdaterat Advisor Management Pack som ingår i Samlad uppdatering 3 eller senare.
 * Alla Operations Manager-agenter måste uppfylla minimikraven. Kontrol lera att agenterna har den lägsta uppdateringen, annars kan Windows agent-kommunikation Miss lyckas och generera fel i händelse loggen för Operations Manager.
-* En Log Analytics-arbetsyta. Mer information hittar du i [Översikt över Log Analytics-arbetsyta](../platform/design-logs-deployment.md).
-* Du autentiserar till Azure med ett konto som är medlem i [rollen Log Analytics Contributor](../platform/manage-access.md#manage-access-using-azure-permissions).
+* En Log Analytics-arbetsyta. Mer information hittar du i [Översikt över Log Analytics-arbetsyta](../logs/design-logs-deployment.md).
+* Du autentiserar till Azure med ett konto som är medlem i [rollen Log Analytics Contributor](../logs/manage-access.md#manage-access-using-azure-permissions).
 
 * Regioner som stöds – endast följande Azure-regioner stöds av System Center Operations Manager för att ansluta till en Log Analytics arbets yta:
     - USA, västra centrala
@@ -72,15 +72,15 @@ Informationen nedan visar den konfigurations information för proxy och brand v�
 |Resurs | Portnummer| Kringgå HTTPS-kontroll|  
 |---------|------|-----------------------|  
 |**Gent**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Ja|  
+|\*.oms.opinsights.azure.com| 443|Ja|  
+|\*.blob.core.windows.net| 443|Ja|  
+|\*.azure-automation.net| 443|Ja|  
 |**Hanteringsserver**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Ja|  
+|\*.ods.opinsights.azure.com| 443| Ja|  
+|*.azure-automation.net | 443| Ja|  
 |**Operations Manager-konsolen för att Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -95,7 +95,7 @@ Informationen nedan visar den konfigurations information för proxy och brand v�
 
 ### <a name="tls-12-protocol"></a>TLS 1,2-protokoll
 
-För att säkerställa säkerheten för data som överförs till Azure Monitor rekommenderar vi starkt att du konfigurerar agenten och hanterings gruppen så att de använder minst Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](../platform/data-security.md#sending-data-securely-using-tls-12).
+För att säkerställa säkerheten för data som överförs till Azure Monitor rekommenderar vi starkt att du konfigurerar agenten och hanterings gruppen så att de använder minst Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**. Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Ansluta Operations Manager till Azure Monitor
 
@@ -345,4 +345,3 @@ I framtiden om du planerar att återansluta din hanterings grupp till en Log Ana
 ## <a name="next-steps"></a>Nästa steg
 
 Information om hur du lägger till funktioner och samlar in data finns i [Lägg till Azure Monitor lösningar från Lösningsgalleriet](../insights/solutions.md).
-

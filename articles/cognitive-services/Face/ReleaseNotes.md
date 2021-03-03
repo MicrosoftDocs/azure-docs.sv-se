@@ -10,19 +10,19 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258090"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733473"
 ---
 # <a name="whats-new-in-face-service"></a>Vad är nytt i tjänsten Ansiktsigenkänning?
 
 Azure Face service uppdateras regelbundet. Använd den här artikeln för att hålla dig uppdaterad med funktions förbättringar, korrigeringar och dokumentations uppdateringar.
 
 ## <a name="january-2021"></a>Januari 2021
-* Minska svars tiden när du använder Ansikts-API: ansikts teamet publicerade en ny artikel med information om möjliga orsaker till svars tider när tjänsten och eventuella lösningar för möjlig minskning används. Se [minska svars tiden när du använder ansikts tjänsten](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency).
+* Minska svars tiden när du använder Ansikts-API: ansikts teamet publicerade en ny artikel med information om möjliga orsaker till svars tider när tjänsten och eventuella lösningar för möjlig minskning används. Se [minska svars tiden när du använder ansikts tjänsten](./face-api-how-to-topics/how-to-mitigate-latency.md).
 
 ## <a name="december-2020"></a>December 2020
 * Kund konfiguration för lagring med ansikts-ID: medan ansikts tjänsten inte lagrar kund bilder, kommer de extraherade ansikts funktionerna att lagras på servern. Ansikts-ID: t är en identifierare för ansikts funktionen och kommer att användas i [ansikts](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)igenkänning, [ansikts verifiering](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)och ansikte som [liknar varandra](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237). De lagrade ansikts funktionerna upphör att gälla och tas bort dygnet runt det ursprungliga identifierings anropet. Kunder kan nu bestämma hur lång tid dessa ansikts-ID: n cachelagras. Det maximala värdet är fortfarande upp till 24 timmar, men ett minimalt värde på 60 sekunder kan nu anges. De nya tidsintervallen för ansikts-ID: n är ett värde mellan 60 sekunder och 24 timmar. Mer information finns i API-referens för [ansikts igenkänning](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) ( *faceIdTimeToLive* -parametern).
@@ -31,10 +31,10 @@ Azure Face service uppdateras regelbundet. Använd den här artikeln för att h�
 * Publicerat en exempel-app för ansikts registrering för att demonstrera bästa praxis för att skapa ett meningsfullt godkännande och skapa högpresterande ansikts igenkännings system genom högkvalitativa registreringar. Exemplet med öppen källkod finns i [skapa en app](build-enrollment-app.md) -guide för registrering och på [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample), redo för utvecklare att distribuera eller anpassa. 
 
 ## <a name="august-2020"></a>Augusti 2020
-* Kundhanterad kryptering av data i vila: ansikts tjänsten krypterar automatiskt dina data när de sparas i molnet. Kryptering av ansikts tjänst skyddar dina data så att du kan uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Det finns också ett nytt alternativ för att hantera din prenumeration med dina egna nycklar som kallas Kundhanterade nycklar (CMK). Mer information hittar du på [Kundhanterade nycklar](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest).
+* Kundhanterad kryptering av data i vila: ansikts tjänsten krypterar automatiskt dina data när de sparas i molnet. Kryptering av ansikts tjänst skyddar dina data så att du kan uppfylla organisationens säkerhets-och efterlevnads åtaganden. Som standard använder din prenumeration krypteringsnycklar som hanteras av Microsoft. Det finns också ett nytt alternativ för att hantera din prenumeration med dina egna nycklar som kallas Kundhanterade nycklar (CMK). Mer information hittar du på [Kundhanterade nycklar](./encrypt-data-at-rest.md).
 
 ## <a name="april-2020"></a>April 2020
-* Ny Ansikts-API igenkännings modell: den nya igenkänning 03-modellen är den mest exakta modellen som är tillgänglig för närvarande. Om du är en ny kund rekommenderar vi att du använder den här modellen. Igenkänning 03 ger bättre precision för både likhets jämförelser och jämförelser med person matchningar. Mer information finns på [Ange en ansikts igenkännings modell](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model).
+* Ny Ansikts-API igenkännings modell: den nya igenkänning 03-modellen är den mest exakta modellen som är tillgänglig för närvarande. Om du är en ny kund rekommenderar vi att du använder den här modellen. Igenkänning 03 ger bättre precision för både likhets jämförelser och jämförelser med person matchningar. Mer information finns på [Ange en ansikts igenkännings modell](./face-api-how-to-topics/specify-recognition-model.md).
 
 ## <a name="june-2019"></a>Juni 2019
 

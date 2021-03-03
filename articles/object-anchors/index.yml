@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: Dokumentation om Azure Object ankare
+summary: Objekt ankare kan användas för att identifiera ett objekt i den fysiska världen och uppskatta dess 6-DoF-attityd med en 3D-modell för objektet.
+metadata:
+  title: Dokumentation om Azure Object ankare
+  description: Använd Azures objekt ankare för att identifiera ett objekt i den fysiska världen och beräkna dess 6-DoF-attityd med en 3D-modell för objektet.
+  services: azure-object-anchors
+  ms.service: azure-object-anchors
+  ms.topic: landing-page
+  author: craigktreasure
+  ms.author: crtreasu
+  ms.date: 04/01/2020
+  ms.openlocfilehash: 84ef8d771f4471c11dd77422444a5be98d5c8212
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101749174"
+landingContent:
+- title: Om objekt ankare i Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är Azure Object-ankare?
+      url: overview.md
+    - text: Visa viktig information på GitHub
+      url: https://github.com/Azure/azure-object-anchors/releases
+- title: Lär dig nyckelbegrepp
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Översikt över SDK
+      url: ./concepts/sdk-overview.md
+- title: Snabbstarter
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Modell konvertering
+      url: ./quickstarts/get-started-model-conversion.md
+    - text: Unity HoloLens
+      url: ./quickstarts/get-started-unity-hololens.md
+    - text: Uniting HoloLens med MRTK
+      url: ./quickstarts/get-started-unity-hololens-mrtk.md
+    - text: HoloLens DirectX
+      url: ./quickstarts/get-started-hololens-directx.md

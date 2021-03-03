@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572967"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726775"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Förstå Stream Analytics jobb övervakning och övervaka frågor
 
@@ -30,6 +30,7 @@ Fönstret visas som det visas:
 | ---------------------- | ---------------------------------------- |
 | Eftersläpande inloggade ingångs händelser       | Antal ingångs händelser som är eftersläpande. Ett värde som inte är noll för det här måttet innebär att jobbet inte kan fortsätta med antalet inkommande händelser. Om det här värdet ökar långsamt eller ständigt inte är noll, bör du skala ut jobbet. Du kan lära dig mer genom att besöka [förstå och justera strömnings enheter](stream-analytics-streaming-unit-consumption.md). |
 | Data konverterings fel | Antal utgående händelser som inte kunde konverteras till det förväntade schemat för utdata. Fel policyn kan ändras till Drop för att släppa händelser som stöter på det här scenariot. |
+| CPU%-användning (för hands version)       | Procent andelen CPU som används av ditt jobb. Om måttet är konsekvent högre än 80% kan det betyda att jobbet är Flask halsar i CPU-användningen och kommer troligen att orsaka att inloggade händelser blir eftersläpande. Du kan öka antalet SUs-allokerade SUs-jobb för att minimera sådana problem. |
 | Tidiga ingångs händelser       | Händelser vars programtidstämpel är tidigare än deras ankomst tid med mer än 5 minuter. |
 | Misslyckade funktions begär Anden | Antalet misslyckade Azure Machine Learning funktions anrop (om det finns). |
 | Funktions händelser        | Antalet händelser som skickats till Azure Machine Learning-funktionen (om det finns). |
@@ -42,7 +43,7 @@ Fönstret visas som det visas:
 | Händelser som inte är i ordning    | Antalet händelser som tagits emot utanför ordningen som antingen släpptes eller fått en anpassad tidsstämpel, baserat på händelse ordnings principen. Detta kan påverkas av konfigurationen av inställningen för avställnings tolerans fönstret. |
 | Utgående händelser          | Mängden data som skickas av Stream Analytics jobb till utmatnings målet, i antal händelser. |
 | Körnings fel         | Totalt antal fel som rör bearbetning av frågor (exklusive fel som påträffats vid inmatning av händelser eller resultat av resultat) |
-| SU%-användning       | Om resursutnyttjande ligger konsekvent över 80% ökar vattenstämpelns fördröjning och antalet eftersläpande händelser ökar, och det kan vara bra att öka enheter för strömning. Hög användning visar att jobbet använder nära maximalt allokerade resurser. |
+| SU%-användning       | Procent andelen minne som används av ditt jobb. Om SU%-användningen ligger konsekvent över 80% ökar vattenstämpelns fördröjning och antalet eftersläpande händelser ökar, och det kan ta upp enheter för strömning. Hög användning visar att jobbet använder nära maximalt allokerade resurser. |
 | Fördröjning för vattenstämpel       | Maximal vattenstämpel-fördröjning över alla partitioner i alla utdata i jobbet. |
 
 Du kan använda dessa mått för att [övervaka Stream Analytics jobbets prestanda](./stream-analytics-set-up-alerts.md#scenarios-to-monitor). 

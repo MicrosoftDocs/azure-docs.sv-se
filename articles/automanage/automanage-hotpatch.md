@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: bdd5a379afb9603c8966320d85c778632948cfd0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687574"
 ---
-# <a name="hotpatch-for-windows-server-azure-edition-preview"></a>Hotpatch för Windows Server Azure Edition (för hands version)
+# <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch för nya virtuella datorer (förhands granskning)
 
 HotPatching är ett nytt sätt att installera uppdateringar på nya virtuella Windows Server Azure-datorer (VM) som inte kräver en omstart efter installationen. Den här artikeln beskriver information om Hotpatch för virtuella Windows Server Azure-datorer, som har följande fördelar:
 * Lägre arbets belastnings påverkan med mindre omstarter
 * Snabbare distribution av uppdateringar eftersom paketen är mindre, installera snabbare och har enklare uppdaterings dirigering med Azure Update Manager
 * Bättre skydd eftersom Hotpatch uppdaterings paket är begränsade till Windows-säkerhetsuppdateringar som installeras snabbare utan att starta om
 
-## <a name="how-hotpatch-works"></a>Så här fungerar Hotpatch
+## <a name="how-hotpatch-works"></a>Så här fungerar hotpatch
 
 Hotpatch fungerar genom att först upprätta en bas linje med en Windows Update senaste kumulativa uppdateringen. Hotpatches släpps regelbundet (till exempel den andra tisdagen i månaden) som bygger på den bas linjen. Hotpatches kommer att innehålla uppdateringar som inte kräver en omstart. Med jämna mellanrum (från och med tre månader) uppdateras bas linjen med en ny senast ackumulerad uppdatering.
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Hotpatch Sample Schedule.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-sample-schedule.png" alt-text="Schema för Hotpatch-exempel.":::
 
 Det finns två typer av bas linjer: **planerade bas linjer** och **oplanerade** nivåer.
-*  **Planerade bas linjer** släpps på en vanlig takt med Hotpatch-versioner på mellan.  Planerade bas linjer inkluderar alla uppdateringar i en jämförbar _senaste kumulativa uppdatering_ för den månaden, och kräver en omstart.
+*  **Planerade bas linjer** släpps på en vanlig takt med hotpatch-versioner på mellan.  Planerade bas linjer inkluderar alla uppdateringar i en jämförbar _senaste kumulativa uppdatering_ för den månaden, och kräver en omstart.
     * Exemplet ovan illustrerar fyra planerade bas linje versioner under ett kalender år (fem totalt i diagrammet) och åtta hotpatch-versioner.
 * **Oplanerade bas linjer** släpps när en viktig uppdatering (till exempel en korrigering på noll dagar) släpps och den särskilda uppdateringen inte kan släppas som en Hotpatch.  När oplanerad bas linje släpps ersätts en hotpatch-version med en oplanerad bas linje under den månaden.  Oplanerade bas linjer innehåller även alla uppdateringar i en jämförbar _senaste kumulativ uppdatering_ för den månaden, och kräver även en omstart.
     * Exemplet ovan visar två oplanerade bas linjer som ersätter hotpatch-versionerna för dessa månader (det faktiska antalet oplanerade bas linjer under ett år som inte är känt i förväg).
@@ -154,7 +154,7 @@ Om du vill visa korrigerings status för den virtuella datorn går du till avsni
 På den här skärmen ser du Hotpatch-statusen för den virtuella datorn. Du kan också se om det finns några tillgängliga korrigeringsfiler för den virtuella datorn som inte har installerats. Som beskrivs i avsnittet "Installera korrigering" ovan installeras alla säkerhets-och kritiska uppdateringar automatiskt på den virtuella datorn med hjälp av [Automatisk uppdatering av virtuella gäst datorer](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) och inga extra åtgärder krävs. Korrigeringar med andra uppdaterings klassificeringar installeras inte automatiskt. De visas i stället i listan över tillgängliga korrigeringar på fliken "uppdatera efterlevnad". Du kan också visa historiken för uppdaterings distributioner på den virtuella datorn via uppdaterings historiken. Uppdaterings historiken från de senaste 30 dagarna visas, tillsammans med information om korrigerings installation.
 
 
-    :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch Management.":::
+:::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hantering av Hotpatch.":::
 
 Med den automatiska korrigeringen av den virtuella gästen uppdateras din virtuella dator regelbundet och beräknas automatiskt för tillgängliga uppdateringar. Dessa periodiska utvärderingar ser till att de tillgängliga korrigeringarna upptäcks. Du kan visa resultatet av utvärderingen på skärmen uppdateringar ovan, inklusive tidpunkten för den senaste utvärderingen. Du kan också välja att utlösa en utvärdering på begäran för din virtuella dator när som helst med hjälp av alternativet "utvärdera nu" och granska resultaten när utvärderingen är klar.
 
@@ -197,7 +197,7 @@ Det finns några viktiga överväganden för att köra en virtuell Windows Serve
 
 ### <a name="are-reboots-still-needed-for-a-vm-enrolled-in-hotpatch"></a>Behöver omstarter fortfarande för en virtuell dator som registrerats i Hotpatch?
 
-* Omstarter krävs fortfarande för att installera uppdateringar som inte ingår i Hotpatch-programmet, och de krävs regelbundet när en bas linje (Windows Update senaste kumulativa uppdateringen) har installerats. Den här omstarten håller den virtuella datorn synkroniserad med alla korrigeringsfiler som ingår i den kumulativa uppdateringen. Bas linjer (som kräver en omstart) börjar på en tre månaders takt och ökar med tiden till 6 + månader.
+* Omstarter krävs fortfarande för att installera uppdateringar som inte ingår i Hotpatch-programmet, och de krävs regelbundet när en bas linje (Windows Update senaste kumulativa uppdateringen) har installerats. Den här omstarten håller den virtuella datorn synkroniserad med alla korrigeringsfiler som ingår i den kumulativa uppdateringen. Bas linjer (som kräver en omstart) börjar på en tre månaders takt och ökar med tiden.
 
 ### <a name="are-my-applications-affected-when-a-hotpatch-update-is-installed"></a>Påverkas mina program när en Hotpatch-uppdatering installeras?
 

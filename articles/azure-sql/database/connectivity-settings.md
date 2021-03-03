@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691934"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Inställningar för Azure SQL-anslutning
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,7 +104,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Inställningen minimalt [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) ger kunderna möjlighet att välja vilken version av TLS deras SQL-databas använder.
 
-För närvarande finns stöd för TLS 1.0, 1.1 och 1.2. Genom att ange en lägsta TLS-version kan du vara säker på att senare TLS-versioner stöds. Om du till exempel väljer en TLS-version som är högre än 1.1 betyder det att endast anslutningar med TLS 1.1 och 1.2 accepteras, och anslutningar med TLS 1.0 avvisas. När du har testat och bekräftat att dina program stöder den, rekommenderar vi att du väljer 1.2 som den lägsta TLS-versionen. Den här versionen har korrigeringar som åtgärdar sårbarheter i tidigare versioner och är den högsta TLS-versionen som stöds i Azure SQL Database.
+För närvarande finns stöd för TLS 1.0, 1.1 och 1.2. Genom att ange en lägsta TLS-version kan du vara säker på att senare TLS-versioner stöds. Om du till exempel väljer en TLS-version 1,1 betyder det att endast anslutningar med TLS 1,1 och 1,2 godkänns, och anslutningar med TLS 1,0 avvisas. När du har testat och bekräftat att dina program stöder den, rekommenderar vi att du väljer 1.2 som den lägsta TLS-versionen. Den här versionen har korrigeringar som åtgärdar sårbarheter i tidigare versioner och är den högsta TLS-versionen som stöds i Azure SQL Database.
 
 > [!IMPORTANT]
 > Standardvärdet för den lägsta TLS-versionen är att tillåta alla versioner. När du har tillämpat en version av TLS går det inte att återgå till standardvärdet.

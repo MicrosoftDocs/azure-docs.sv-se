@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: beb82f8435aea817a074ce83fddc6a5417b86c26
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418084"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691900"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatisera hanterings uppgifter med hjälp av SQL Agent-jobb i Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ Det finns flera viktiga begrepp vad gäller SQL Agent-jobb:
 
 SQL Agent-jobbsteg är sekvenser med åtgärder som SQL Agent ska köra. Varje steg har följande steg som ska köras om steget lyckas eller misslyckas, antalet återförsök i fall av fel.
 
-Med SQL-agenten kan du skapa olika typer av jobb, t. ex. Transact-SQL-jobb, som kör en enskild Transact-SQL-batch mot databasen, eller operativ systemets kommando/PowerShell-steg som kan köra ett anpassat OS-skript, [SSIS jobb steg](/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent) som gör det möjligt att läsa in data med SSIS- [körning eller med](../managed-instance/replication-transactional-overview.md) hjälp av de steg som kan användas för att läsa
+Med SQL-agenten kan du skapa olika typer av jobb, t. ex. Transact-SQL-jobb, som kör en enskild Transact-SQL-batch mot databasen, eller operativ systemets kommando/PowerShell-steg som kan köra ett anpassat OS-skript, [SSIS jobb steg](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) som gör det möjligt att läsa in data med SSIS- [körning eller med](../managed-instance/replication-transactional-overview.md) hjälp av de steg som kan användas för att läsa
 
 > [!Note]
 > Mer information om hur du använder Azure SSIS Integration Runtime med SSISDB som hanteras av Azure SQL Managed instance finns i [använda Azure SQL Managed instance med SQL Server Integration Services (SSIS) i Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).

@@ -3,12 +3,12 @@ title: Resursstyrning för container och tjänster
 description: Med Azure Service Fabric kan du ange resurs begär Anden och begränsningar för tjänster som körs som processer eller behållare.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 889fce77c1a3a743e9805ec482a9c87b9bf8da65
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172870"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735666"
 ---
 # <a name="resource-governance"></a>Resursstyrning
 
@@ -95,12 +95,12 @@ Här är ett exempel på hur du kan instruera Service Fabric att använda 50% av
 För de flesta kunder och scenarier är den automatiska identifieringen av nodens kapacitet för processor och minne den rekommenderade konfigurationen (automatisk identifiering är aktiverat som standard). Men om du behöver fullständig manuell konfigurering av nods kapacitet kan du konfigurera dem per nodtyp med hjälp av mekanismen för att beskriva noder i klustret. Här är ett exempel på hur du ställer in nodtypen med fyra kärnor och 2 GB minne:
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 När automatisk identifiering av tillgängliga resurser är aktiverat och nodens kapacitet definieras manuellt i kluster manifestet, Service Fabric kontrollerar att noden har tillräckligt med resurser för att stödja den kapacitet som användaren har definierat:
@@ -120,8 +120,8 @@ Automatisk identifiering av tillgängliga resurser kan stängas av om det inte b
 För optimala prestanda bör följande inställning också aktive ras i kluster manifestet:
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" />
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -160,7 +160,7 @@ I det här exemplet `CpuCores` används attributet för att ange en begäran om 
 
 **ServicePackageA** placeras bara på en nod där den återstående processor kapaciteten efter att ha dragit **summan av CPU-begäranden för alla tjänst paket som har placerats på noden** är större än eller lika med 1 kärna. På noden är tjänst paketet begränsat till en kärna. Tjänste paketet innehåller två kod paket (**CodeA1** och **CodeA2**) och båda anger `CpuShares` attributet. Förhållandet mellan CpuShares 512:256 används för att beräkna processor gränserna för de enskilda kod paketen. Därför kommer CodeA1 att begränsas till två tredjedelar av en kärna, och CodeA2 kommer att begränsas till en tredjedel av en kärna. Om CpuShares inte anges för alla kod paket kan Service Fabric dividera CPU-gränsen jämnt mellan dem.
 
-Medan CpuShares som har angetts för kod paket representerar deras relativa andel av tjänst paketets övergripande processor gräns, anges minnes värden för kod paket i absoluta termer. I det här exemplet `MemoryInMB` används attributet för att ange minnes förfrågningar på 1024 MB för både CodeA1 och CodeA2. Eftersom minnes gränsen ( `MemoryInMBLimit` attribut) inte har angetts använder Service Fabric även de angivna värdena för begäran som begränsningar för kod paketen. Minnes förfrågan (och gränsen) för tjänst paketet beräknas som summan av värdena för minnes begär Ande (och gräns) för komponent kod paketen. För **ServicePackageA**beräknas dock minnes förfrågan och-gränsen som 2048 MB.
+Medan CpuShares som har angetts för kod paket representerar deras relativa andel av tjänst paketets övergripande processor gräns, anges minnes värden för kod paket i absoluta termer. I det här exemplet `MemoryInMB` används attributet för att ange minnes förfrågningar på 1024 MB för både CodeA1 och CodeA2. Eftersom minnes gränsen ( `MemoryInMBLimit` attribut) inte har angetts använder Service Fabric även de angivna värdena för begäran som begränsningar för kod paketen. Minnes förfrågan (och gränsen) för tjänst paketet beräknas som summan av värdena för minnes begär Ande (och gräns) för komponent kod paketen. För **ServicePackageA** beräknas dock minnes förfrågan och-gränsen som 2048 MB.
 
 **ServicePackageA** placeras bara på en nod där den återstående minnes kapaciteten efter att ha dragit **summan av minnes förfrågningar för alla tjänst paket som har placerats på noden** är större än eller lika med 2048 MB. På noden är båda kod paketen begränsade till 1024 MB minne var. Kod paket (behållare eller processer) kan inte allokera mer minne än den här gränsen och om du försöker göra det uppstår minnes brist.
 
@@ -249,7 +249,7 @@ När du använder resurs styrning för Service Fabric tjänster garanterar det a
 * Noder som slutar i ett ohälsosamt tillstånd
 * Inga svar på Service Fabric kluster hanterings-API: er
 
-För att förhindra att dessa situationer inträffar kan du med Service Fabric *upprätthålla resurs gränserna för alla Service Fabric användar tjänster som körs på noden* (både styrd och utan regler) för att garantera att användar tjänsterna aldrig kommer att använda mer än den angivna mängden resurser. Detta uppnås genom att ange värdet för EnforceUserServiceMetricCapacities-konfigurationen i avsnittet PlacementAndLoadBalancing i ClusterManifest till true. Den här inställningen är inaktive rad som standard.
+För att förhindra att dessa situationer inträffar kan du med Service Fabric *upprätthålla resurs gränserna för alla Service Fabric användar tjänster som körs på noden* (både styrd och utan regler) för att garantera att användar tjänsterna aldrig kommer att använda mer än den angivna mängden resurser. Detta uppnås genom att ange värdet för EnforceUserServiceMetricCapacities-konfigurationen i avsnittet PlacementAndLoadBalancing i ClusterManifest till true. Den här inställningen är inaktive rad som standard.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -260,7 +260,7 @@ För att förhindra att dessa situationer inträffar kan du med Service Fabric 
 Ytterligare anmärkningar:
 
 * Tvingande resurs gräns gäller endast för `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` resurs mått
-* Tillämpning av resurs begränsningen fungerar bara om nodens kapacitet för resurs måtten är tillgängligt för Service Fabric, antingen via mekanismen för automatisk identifiering eller genom att användare manuellt anger nodens kapacitet (enligt beskrivningen i [kluster konfigurationen för att aktivera avsnittet resurs styrning](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ).Om nodens kapacitet inte har kon figurer ATS kan du inte använda funktionen för tvingande resurs gräns eftersom Service Fabric inte vet hur mycket resurser som ska reserveras för användar tjänster.Service Fabric kommer att utfärda en hälso varning om "EnforceUserServiceMetricCapacities" är sant men nodens kapacitet inte har kon figurer ATS.
+* Tillämpning av resurs begränsningen fungerar bara om nodens kapacitet för resurs måtten är tillgängligt för Service Fabric, antingen via mekanismen för automatisk identifiering eller genom att användare manuellt anger nodens kapacitet (enligt beskrivningen i [kluster konfigurationen för att aktivera avsnittet resurs styrning](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Om nodens kapacitet inte har kon figurer ATS kan du inte använda funktionen för tvingande resurs gräns eftersom Service Fabric inte vet hur mycket resurser som ska reserveras för användar tjänster. Service Fabric kommer att utfärda en hälso varning om "EnforceUserServiceMetricCapacities" är sant men nodens kapacitet inte har kon figurer ATS.
 
 ## <a name="other-resources-for-containers"></a>Andra resurser för behållare
 

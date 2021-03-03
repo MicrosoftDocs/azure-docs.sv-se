@@ -696,7 +696,7 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: Skapa utlösare
       items:
-        - name: Skapa en händelsebaserad utlösare
+        - name: Skapa en utlösare för lagrings händelser
           href: how-to-create-event-trigger.md
         - name: Skapa en schemautlösare
           href: how-to-create-schedule-trigger.md

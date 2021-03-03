@@ -1,39 +1,37 @@
 ---
 title: Skapa ett Sök index i Azure Portal
 titleSuffix: Azure Cognitive Search
-description: I den här Azure Portal snabb starten använder du guiden Importera data för att skapa, läsa in och fråga ditt första Sök index i Azure Kognitiv sökning.
+description: Skapa, Läs in och fråga ditt första Sök index med hjälp av guiden Importera data i Azure Portal. I den här snabb starten används en fiktiv hotell data uppsättning för exempel data.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/12/2020
-ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 03/02/2021
+ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694843"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i Azure Portal
 
-Skapa ditt första index med hjälp av guiden **Importera data** och en inbyggd exempel data källa som består av fiktiva hotell data. Guiden vägleder dig genom skapandet av ett Sök index (Hotels-Sample-index) så att du kan skriva intressanta frågor på några minuter. 
+Skapa ditt första Sök index med hjälp av guiden **Importera data** och en inbyggd exempel data källa som består av fiktiva hotell data. Guiden vägleder dig genom skapandet av ett Sök index (Hotels-Sample-index) så att du kan skriva intressanta frågor på några minuter. 
 
 Även om du inte använder alternativen i den här snabb starten innehåller guiden en sida för AI-anrikning så att du kan extrahera text och struktur från bildfiler och ostrukturerad text. En liknande genom gång som innehåller AI-berikning finns i [snabb start: skapa en kognitiv färdigheter](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du börjar måste du ha följande:
-
 + Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/).
 
-+ En Azure Kognitiv sökning-tjänst. [Skapa en tjänst](search-create-service-portal.md) eller [hitta en befintlig tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under din aktuella prenumeration. Du kan använda en kostnads fri tjänst för den här snabb starten. 
++ En Azure Kognitiv sökning-tjänst (valfri nivå, vilken region som helst). [Skapa en tjänst](search-create-service-portal.md) eller [hitta en befintlig tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under din aktuella prenumeration. Du kan använda en kostnads fri tjänst för den här snabb starten. 
 
 ### <a name="check-for-space"></a>Kontrollera utrymmet
 
-Många kunder börjar med den kostnadsfria tjänsten. Den här versionen är begränsad till tre index, tre datakällor och tre indexerare. Kontrollera att du har plats för extra objekt innan du börjar. Med den här guiden kan du skapa ett objekt av varje sort.
+Många kunder börjar med den kostnadsfria tjänsten. Den kostnads fria nivån är begränsad till tre index, tre data källor och tre indexerare. Kontrollera att du har plats för extra objekt innan du börjar. Med den här guiden kan du skapa ett objekt av varje sort.
 
-Avsnitten i tjänstinstrumentpanelen visar hur många index, indexerare och datakällor som du redan har. 
+På sidan Översikt över tjänsten kan du ta reda på hur många index, indexerare och data källor som du redan har. 
 
 :::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="En lista över index, indexerare och datakällor":::
 
@@ -70,14 +68,18 @@ Vi hoppar över det här steget för tillfället och går direkt till **Anpassa 
 
 ### <a name="step-3---configure-index"></a>Steg 3 – Konfigurera index
 
-Skapandet av index är vanligtvis en kodbaserad övning som slutförs innan du läser in data. Som den här guiden visar kan dock guiden skapa ett grundläggande index för valfri datakälla som den kan crawla. Ett index kräver minst ett namn och en samling fält. Ett av fälten ska vara markerat som dokumentnyckeln som fungerar som en unik identifierare för dokumentet. Du kan också välja att använda språkanalys eller språkförslag för automatisk komplettering eller frågeförslag.
+För det inbyggda exempel indexet för hotell definieras ett standard index schema åt dig. Med undantag av några exempel på avancerade filter kan du använda frågor i dokumentationen och exemplen som riktar sig mot indexet hotell exempel på den här index definitionen:
+
+:::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Ett hotell index har skapats":::
+
+I en kod baserad övning slutförs vanligt vis skapandet av index innan data läses in. Guiden Importera data komprimerar de här stegen genom att generera ett grundläggande index för vilken data källa den kan crawla. Ett index kräver minst ett namn och en samling fält. Ett av fälten ska vara markerat som dokumentnyckeln som fungerar som en unik identifierare för dokumentet. Du kan också välja att använda språkanalys eller språkförslag för automatisk komplettering eller frågeförslag.
 
 Fälten har datatyper och attribut. Kryssrutorna högst upp är *indexattribut* som styr hur fältet används.
 
-* **Hämtningsbar** innebär att det visas i listor med sökresultat. Du kan markera enskilda fält som gränser för Sök resultat genom att avmarkera den här kryss rutan, till exempel för fält som endast används i filter uttryck.
-* **Nyckel** är den unika dokumentdentifieraren. Den är alltid en sträng och den är obligatorisk.
-* **Filtrerbar**, **Sorterbar** och **Fasetterbar** avgör om fält användas i ett filter, en sortering eller en fasetterad navigeringsstruktur.
-* **Sökbar** innebär att ett fält ingår i fulltextsökning. Strängarna är sökbara. Numeriska fält och fält för booleska värden är ofta markerade som icke sökbara.
++ **Hämtningsbar** innebär att det visas i listor med sökresultat. Du kan markera enskilda fält som gränser för Sök resultat genom att avmarkera den här kryss rutan, till exempel för fält som endast används i filter uttryck.
++ **Nyckel** är den unika dokumentdentifieraren. Den är alltid en sträng och den är obligatorisk.
++ **Filtrerbar**, **Sorterbar** och **Fasetterbar** avgör om fält användas i ett filter, en sortering eller en fasetterad navigeringsstruktur.
++ **Sökbar** innebär att ett fält ingår i fulltextsökning. Strängarna är sökbara. Numeriska fält och fält för booleska värden är ofta markerade som icke sökbara.
 
 Lagringskraven varierar inte till följd av ditt val. Om du till exempel anger attributet **Hämtningsbar** på flera fält så ökar inte lagringskraven.
 
@@ -87,10 +89,7 @@ Som standard söker guiden igenom datakällan för att hitta unika identifierare
 
    Om du kör guiden igen en andra gång med en befintlig hotell data källa, konfigureras indexet inte med standardattribut. Du måste då manuellt välja attribut för framtida importer. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Ett hotell index har skapats":::
-
-2. Fortsätt till nästa sida.
-
+1. Fortsätt till nästa sida.
 
 ### <a name="step-4---configure-indexer"></a>Steg 4 – Konfigurera indexeraren
 
@@ -104,7 +103,7 @@ Klicka på **Skicka** för att skapa och köra indexeraren samtidigt.
 
 ## <a name="monitor-progress"></a>Övervaka förloppet
 
-Guiden ska ta dig till listan med indexerare där du kan övervaka förloppet. För självnavigering går du till översikten över sidan och klickar på **indexerare**.
+Guiden ska ta dig till listan med indexerare där du kan övervaka förloppet. För egen navigering går du till sidan Översikt och klickar på fliken **indexerare** .
 
 Det kan ta några minuter för portalen att uppdatera sidan men du borde se den nyligen skapade indexeraren i listan med status Pågående eller Lyckades, tillsammans med antalet dokument som indexerats.
 
@@ -112,7 +111,7 @@ Det kan ta några minuter för portalen att uppdatera sidan men du borde se den 
 
 ## <a name="view-the-index"></a>Visa indexet
 
-Huvud tjänst sidan innehåller länkar till de resurser som skapats i Azure Kognitiv sökning-tjänsten.  Om du vill visa det index som du precis skapat klickar du på **Index** i listan över länkar. 
+Sidan tjänst översikt innehåller länkar till de resurser som skapats i Azure Kognitiv sökning-tjänsten.  Om du vill visa det index som du precis skapat klickar du på **Index** i listan över länkar. 
 
 Vänta tills Portal sidan har uppdaterats. Efter några minuter bör du se indexet med ett antal dokument och lagrings storlek.
 
@@ -120,7 +119,9 @@ Vänta tills Portal sidan har uppdaterats. Efter några minuter bör du se index
 
 I den här listan kan du klicka på det *hotell-exempel* index som du nyss skapade, Visa index schemat. Du kan också lägga till nya fält. 
 
-Fliken **Fält** visar indexschemat. Rulla till slutet av listan för att ange ett nytt fält. Oftast kan du inte ändra befintliga fält. Befintliga fält har en fysisk representation i Azure Kognitiv sökning och kan därför inte ändras, inte ens i kod. Om du vill ändra ett befintligt fält från grunden så skapar du ett nytt index och tar bort det ursprungliga.
+Fliken **Fält** visar indexschemat. Om du skriver frågor och behöver kontrol lera om ett fält är filtrerat eller sorterbart visar den här fliken attributen.
+
+Rulla till slutet av listan för att ange ett nytt fält. Du kan alltid skapa ett nytt fält, i de flesta fall kan du inte ändra befintliga fält. Befintliga fält har en fysisk representation i din Sök tjänst och kan därför inte ändras, inte ens i kod. Om du vill ändra ett befintligt fält från grunden så skapar du ett nytt index och tar bort det ursprungliga.
 
    :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="exempel på indexdefinition":::
 
@@ -142,11 +143,11 @@ Nu bör du ha ett sökindex som du kan börja köra frågor mot med hjälp av de
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Kommandot Sökutforskaren":::
 
-2. I list rutan **index** väljer du  *hotell-Sample-index*. Klicka på list rutan **API-version** för att se vilka REST-API: er som är tillgängliga. Använd den allmänt tillgängliga versionen (2020-06-30) för frågorna nedan.
+1. I list rutan **index** väljer du  *hotell-Sample-index*. Klicka på list rutan **API-version** för att se vilka REST-API: er som är tillgängliga. Använd den allmänt tillgängliga versionen (2020-06-30) för frågorna nedan.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index- och API-kommandon":::
 
-3. Klistra in frågesträngarna nedan i sökfältet och klicka på **Sök**.
+1. Klistra in frågesträngarna nedan i sökfältet och klicka på **Sök**.
 
    :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Frågesträng och sökknapp":::
 
@@ -158,19 +159,19 @@ Du kan ange termer och fraser på ett liknande sätt som du gör i en Bing- elle
 
 #### <a name="example-string-query-searchspa"></a>Exempel (strängfråga): `search=spa`
 
-* **Sök** parametern används för att mata in en nyckelords sökning för full texts ökning, i det här fallet returneras hotell data för de som innehåller *Spa* i valfritt sökbart fält i dokumentet.
++ **Sök** parametern används för att mata in en nyckelords sökning för full texts ökning, i det här fallet returneras hotell data för de som innehåller *Spa* i valfritt sökbart fält i dokumentet.
 
-* **Sökutforskaren** returnerar resultat i JSON, vilket kan vara detaljerat och svårläst om dokumenten har en kompakt struktur. Detta är avsiktligt eftersom det är viktigt för utvecklingssyften att kunna se hela dokumentet, särskilt under testning. För en bättre användarupplevelse måste du skriva kod som [hanterar sökresultaten](search-pagination-page-layout.md) så att viktiga element framhävs.
++ **Sökutforskaren** returnerar resultat i JSON, vilket kan vara detaljerat och svårläst om dokumenten har en kompakt struktur. Detta är avsiktligt eftersom det är viktigt för utvecklingssyften att kunna se hela dokumentet, särskilt under testning. För en bättre användarupplevelse måste du skriva kod som [hanterar sökresultaten](search-pagination-page-layout.md) så att viktiga element framhävs.
 
-* Dokument består av alla fält som är markerade som ”hämtningsbara” i indexet. Om du vill visa indexattribut i portalen klickar du på *hotell-exempel* i listan **index** .
++ Dokument består av alla fält som är markerade som ”hämtningsbara” i indexet. Om du vill visa indexattribut i portalen klickar du på *hotell-exempel* i listan **index** .
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>Exempel (parameteriserad fråga): `search=spa&$count=true&$top=10`
 
-* **&** Symbolen används för att lägga till Sök parametrar, som kan anges i valfri ordning.
++ **&** Symbolen används för att lägga till Sök parametrar, som kan anges i valfri ordning.
 
-* Parametern **$Count = True** returnerar det totala antalet returnerade dokument. Det här värdet visas längst upp i sökresultaten. Du kan verifiera filterfrågor genom att övervaka ändringar som rapporterats via **$count=true**. Mindre antal indikerar att filtret fungerar.
++ Parametern **$Count = True** returnerar det totala antalet returnerade dokument. Det här värdet visas längst upp i sökresultaten. Du kan verifiera filterfrågor genom att övervaka ändringar som rapporterats via **$count=true**. Mindre antal indikerar att filtret fungerar.
 
-* **$Top = 10** returnerar de högst rangordnade 10 dokumenten av totalt. Som standard returnerar Azure Kognitiv sökning de första 50 bästa matchningarna. Du kan öka eller minska antalet via **$top**.
++ **$Top = 10** returnerar de högst rangordnade 10 dokumenten av totalt. Som standard returnerar Azure Kognitiv sökning de första 50 bästa matchningarna. Du kan öka eller minska antalet via **$top**.
 
 ### <a name="filter-the-query"></a><a name="filter-query"></a> Filtrera frågan
 
@@ -178,9 +179,9 @@ Filter tas med i sökbegäranden när du lägger till parametern **$filter**.
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Exempel (filtrerat): `search=beach&$filter=Rating gt 4`
 
-* Parametern **$filter** returnerar resultat som matchar de kriterier som du har angett. I det här fallet är klassificeringarna större än 4.
++ Parametern **$filter** returnerar resultat som matchar de kriterier som du har angett. I det här fallet är klassificeringarna större än 4.
 
-* Syntaxen för filtret är en OData-konstruktion. Mer information finns i [OData-filtersyntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
++ Syntaxen för filtret är en OData-konstruktion. Mer information finns i [OData-filtersyntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> Fasettera frågan
 
@@ -188,19 +189,18 @@ Fasettfilter tas med i sökbegäranden. Du kan använda parametern facet för at
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Exempel (fasetterat med områdesreducering): `search=*&facet=Category&$top=2`
 
-* **search =** _ är en tom sökning. Tomma sökningar söker efter allt. En anledning till att skicka en tom fråga är att filtrera eller fasettera över hela uppsättningen dokument. Du vill till exempel att en aspekt navigerings struktur ska bestå av alla hotell i indexet.
-_ **fasett** returnerar en navigerings struktur som du kan skicka till en gränssnitts kontroll. Den returnerar kategorier och antal. I det här fallet baseras kategorierna på ett fält som är bekvämt kallat *kategori*. Det finns ingen agg regering i Azure Kognitiv sökning, men du kan uppskatta agg regering via `facet` , vilket ger ett antal dokument i varje kategori.
++ **search=*** är en tom sökning. Tomma sökningar söker efter allt. En anledning till att skicka en tom fråga är att filtrera eller fasettera över hela uppsättningen dokument. Du vill till exempel att en aspekt navigerings struktur ska bestå av alla hotell i indexet.
++ **facet** returnerar en navigeringsstruktur som du kan skicka till en kontroll i användargränssnittet. Den returnerar kategorier och antal. I det här fallet baseras kategorierna på ett fält som är bekvämt kallat *kategori*. Det finns ingen agg regering i Azure Kognitiv sökning, men du kan uppskatta agg regering via `facet` , vilket ger ett antal dokument i varje kategori.
 
-* **$top=2** hämtar tillbaka två dokument, som visar att du kan använda `top` för att både minska eller öka resultat.
++ **$top=2** hämtar tillbaka två dokument, som visar att du kan använda `top` för att både minska eller öka resultat.
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Exempel (fasetterat för numeriska värden): `search=spa&facet=Rating`
 
-* Frågan är aspekt för klassificering, i en texts ökning för *Spa*. Termen *klassificering* kan anges som en aspekt eftersom fältet är markerat som hämtnings Bart, filter Bart och fasettable i indexet, och de värden som den innehåller (numeriska, 1 till 5) är lämpliga för kategorisering av listor i grupper.
++ Frågan är aspekt för klassificering, i en texts ökning för *Spa*. Termen *klassificering* kan anges som en aspekt eftersom fältet är markerat som hämtnings Bart, filter Bart och fasettable i indexet, och de värden som den innehåller (numeriska, 1 till 5) är lämpliga för kategorisering av listor i grupper.
 
-* Endast filtrerbara fält kan fasetteras. Endast hämtningsbara fält kan returneras i resultatet.
++ Endast filtrerbara fält kan fasetteras. Endast hämtningsbara fält kan returneras i resultatet.
 
-* Fältet *gradering* är en flyttal med dubbel precision och grupperingen kommer att vara med exakt värde. Mer information om gruppering efter intervall (till exempel "3 stjärn klassificeringar," "4 stjärnor" osv.) finns i [så här implementerar du fasett-navigering i Azure kognitiv sökning](./search-faceted-navigation.md#filter-based-on-a-range).
-
++ Fältet *gradering* är en flyttal med dubbel precision och grupperingen kommer att vara med exakt värde. Mer information om gruppering efter intervall (till exempel "3 stjärn klassificeringar," "4 stjärnor" osv.) finns i [så här implementerar du fasett-navigering i Azure kognitiv sökning](./search-faceted-navigation.md#filter-based-on-a-range).
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> Markera sökresultat
 
@@ -208,13 +208,13 @@ Träffmarkering innebär att formatera all text som matchar sökordet på ett s�
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Exempel (markering): `search=beach&highlight=Description`
 
-* I det här exemplet är det formaterade ordet *strand* lättare att hitta i fältet Beskrivning.
++ I det här exemplet är det formaterade ordet *strand* lättare att hitta i fältet Beskrivning.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Exempel (språklig analys): `search=beaches&highlight=Description`
 
-* Full texts ökning känner igen grundläggande variationer i Word-formulär. I det här fallet innehåller Sök resultaten markerad text för "strand", för hotell som har ordet i sökbara fält, som svar på en nyckelords sökning på "stränder". Tack vare språkanalysen kan olika former av samma ord visas i resultaten. 
++ Full texts ökning känner igen grundläggande variationer i Word-formulär. I det här fallet innehåller Sök resultaten markerad text för "strand", för hotell som har ordet i sökbara fält, som svar på en nyckelords sökning på "stränder". Tack vare språkanalysen kan olika former av samma ord visas i resultaten. 
 
-* Azure Kognitiv sökning stöder 56-analyser från både Lucene och Microsoft. Som standard används av Azure Kognitiv sökning är standard Lucene Analyzer.
++ Azure Kognitiv sökning stöder 56-analyser från både Lucene och Microsoft. Som standard används av Azure Kognitiv sökning är standard Lucene Analyzer.
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Prova fuzzy-sökning
 

@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: ab49c294fb8923c9a1a47af016e5224a8bba846c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576349"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724956"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Använda anpassade aktiviteter i en Azure Data Factory-pipeline)
 
@@ -37,7 +37,7 @@ Se följande artiklar om du är nybörjare på Azure Batch-tjänsten:
 * [New-AzBatchPool-](/powershell/module/az.batch/New-AzBatchPool) cmdlet för att skapa en Azure Batch-pool.
 
 > [!IMPORTANT]
-> När du skapar en ny Azure Batch-pool måste "VirtualMachineConfiguration" användas och inte "CloudServiceConfiguration". Mer information finns i [vägledning för migrering av Azure Batch pool](https://docs.microsoft.com/azure/batch/batch-pool-cloud-service-to-virtual-machine-configuration). 
+> När du skapar en ny Azure Batch-pool måste "VirtualMachineConfiguration" användas och inte "CloudServiceConfiguration". Mer information finns i [vägledning för migrering av Azure Batch pool](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md). 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch länkad tjänst
 
@@ -102,16 +102,16 @@ I följande tabell beskrivs namn och beskrivningar av egenskaper som är unika f
 
 | Egenskap              | Beskrivning                              | Obligatorisk |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Namn på aktiviteten i pipelinen     | Yes      |
-| beskrivning           | Text som beskriver vad aktiviteten gör.  | No       |
-| typ                  | För anpassad aktivitet är aktivitets typen **anpassad**. | Yes      |
-| linkedServiceName     | Länkad tjänst till Azure Batch. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) .  | Yes      |
-| command               | Kommando för det anpassade program som ska köras. Om programmet redan är tillgängligt i noden Azure Batch pool kan resourceLinkedService och folderPath hoppas över. Du kan till exempel ange kommandot som `cmd /c dir` är inbyggt i Windows batch pool-noden. | Yes      |
+| name                  | Namn på aktiviteten i pipelinen     | Ja      |
+| beskrivning           | Text som beskriver vad aktiviteten gör.  | Inga       |
+| typ                  | För anpassad aktivitet är aktivitets typen **anpassad**. | Ja      |
+| linkedServiceName     | Länkad tjänst till Azure Batch. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) .  | Ja      |
+| command               | Kommando för det anpassade program som ska köras. Om programmet redan är tillgängligt i noden Azure Batch pool kan resourceLinkedService och folderPath hoppas över. Du kan till exempel ange kommandot som `cmd /c dir` är inbyggt i Windows batch pool-noden. | Ja      |
 | resourceLinkedService | Azure Storage länkad tjänst till lagrings kontot där det anpassade programmet lagras | Inga &#42;       |
 | folderPath            | Sökväg till mappen för det anpassade programmet och alla dess beroenden<br/><br/>Om du har beroenden lagrade i undermappar – det vill säga i en hierarkisk mappstruktur under *folderPath* , är mappstrukturen för närvarande utplattad när filerna kopieras till Azure Batch. Det innebär att alla filer kopieras till en enda mapp utan undermappar. Undvik problemet genom att komprimera filerna, kopiera den komprimerade filen och packa upp den med anpassad kod på önskad plats. | Inga &#42;       |
-| referenceObjects      | En matris med befintliga länkade tjänster och data uppsättningar. Refererade länkade tjänster och data uppsättningar skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till resurser i Data Factory | No       |
-| extendedProperties    | Användardefinierade egenskaper som kan skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till ytterligare egenskaper | No       |
-| retentionTimeInDays | Retentions tiden för de filer som skickas för den anpassade aktiviteten. Standardvärdet är 30 dagar. | No |
+| referenceObjects      | En matris med befintliga länkade tjänster och data uppsättningar. Refererade länkade tjänster och data uppsättningar skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till resurser i Data Factory | Inga       |
+| extendedProperties    | Användardefinierade egenskaper som kan skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till ytterligare egenskaper | Inga       |
+| retentionTimeInDays | Retentions tiden för de filer som skickas för den anpassade aktiviteten. Standardvärdet är 30 dagar. | Inga |
 
 &#42; egenskaperna `resourceLinkedService` och `folderPath` måste antingen anges eller båda utelämnas.
 
@@ -301,7 +301,7 @@ Activity Error section:
 Om du vill använda innehållet i stdout.txt underordnade aktiviteter kan du hämta sökvägen till stdout.txt-filen i uttrycket " \@ Activity (' MyCustomActivity '). output. outputs [0]".
 
 > [!IMPORTANT]
-> - activity.jspå, linkedServices.jspå och datasets.jspå lagras i mappen körning i batch-aktiviteten. I det här exemplet lagras activity.jspå, linkedServices.jspå och datasets.jspå i `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` sökvägen. Om det behövs måste du rensa dem separat.
+> - activity.jspå, linkedServices.jspå och datasets.jspå lagras i mappen körning i batch-aktiviteten. I det här exemplet lagras activity.jspå, linkedServices.jspå och datasets.jspå i `https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` sökvägen. Om det behövs måste du rensa dem separat.
 > - För länkade tjänster som använder Self-Hosted Integration Runtime krypteras känslig information, t. ex. nycklar och lösen ord, av Self-Hosted Integration Runtime för att säkerställa att autentiseringsuppgiften finns kvar i kundens definierade privata nätverks miljö. Vissa känsliga fält kan saknas när din anpassade program kod refereras till på det här sättet. Använd SecureString i extendedProperties i stället för att använda den länkade tjänst referensen om det behövs.
 
 ## <a name="pass-outputs-to-another-activity"></a>Skicka utdata till en annan aktivitet

@@ -1,19 +1,19 @@
 ---
-title: Visa mått i real tid med Azure Monitor för behållare | Microsoft Docs
-description: I den här artikeln beskrivs real tids visningen av mått utan att använda kubectl med Azure Monitor för behållare.
+title: Visa mått i real tid med container Insights | Microsoft Docs
+description: I den här artikeln beskrivs real tids visningen av mått utan att använda kubectl med behållar insikter.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731858"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Visa mått i real tid
 
-Med funktionen Azure Monitor för behållare Live data (för hands version) kan du visualisera mått om Node-och Pod-tillstånd i ett kluster i real tid. Den emulerar direkt åtkomst till `kubectl top nodes` kommandon, `kubectl get pods –all-namespaces` och `kubectl get nodes` för att anropa, parsa och visualisera data i prestanda diagram som ingår i den här insikten.
+Med funktionen för behållar insikter Live data (för hands version) kan du visualisera mått om Node-och Pod-tillstånd i ett kluster i real tid. Den emulerar direkt åtkomst till `kubectl top nodes` kommandon, `kubectl get pods –all-namespaces` och `kubectl get nodes` för att anropa, parsa och visualisera data i prestanda diagram som ingår i den här insikten.
 
 Den här artikeln innehåller en detaljerad översikt och hjälper dig att förstå hur du använder den här funktionen.
 
@@ -26,7 +26,7 @@ Om du vill ha hjälp med att ställa in eller felsöka funktionen Live data (fö
 
 Funktionen Live data (för hands version) har direkt åtkomst till Kubernetes-API: et och ytterligare information om Authentication Model finns [här](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Den här funktionen utför en avsöknings åtgärd mot Mät slut punkter (inklusive `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` och `/api/v1/pods` ), som är var femte sekund som standard. Dessa data cachelagras i webbläsaren och ritas i de fyra prestanda diagram som ingår i Azure Monitor för behållare på fliken **kluster** genom att välja **Go Live (för hands version)**. Varje efterföljande avsökning är i ett diagram till en rullande fem minuters visualiserings period.
+Den här funktionen utför en avsöknings åtgärd mot Mät slut punkter (inklusive `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` och `/api/v1/pods` ), som är var femte sekund som standard. Dessa data cachelagras i webbläsaren och ritas i de fyra prestanda diagram som ingår i behållar insikter på fliken **kluster** genom att välja **Go Live (för hands version)**. Varje efterföljande avsökning är i ett diagram till en rullande fem minuters visualiserings period.
 
 ![Alternativet gå live i vyn kluster](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 

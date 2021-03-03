@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ab7cdfb3d699a8415739565aae5d4326002bc43
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699690"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Hantera aviseringar om enhets händelser på Azure Stack Edge Pro-resurser
 
@@ -23,7 +23,7 @@ Den här artikeln beskriver hur du skapar åtgärds regler i Azure Portal för a
 
 En åtgärds regel kan utlösa eller ignorera aviserings meddelanden. Åtgärds regeln läggs till i en *Åtgärds grupp* – en uppsättning aviserings inställningar som används för att meddela användare som behöver agera på aviseringar som har utlösts i olika kontexter för en resurs eller uppsättning resurser.
 
-Mer information om åtgärds regler finns i [Konfigurera en åtgärds regel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule). Mer information om åtgärds grupper finns [i skapa och hantera åtgärds grupper i Azure Portal](/azure/azure-monitor/platform/action-groups).
+Mer information om åtgärds regler finns i [Konfigurera en åtgärds regel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule). Mer information om åtgärds grupper finns [i skapa och hantera åtgärds grupper i Azure Portal](../azure-monitor/alerts/action-groups.md).
 
 > [!NOTE]
 > Funktionen åtgärds regler är i för hands version. Vissa skärmar och steg kan ändras när processen är raffinerad.
@@ -34,7 +34,7 @@ Mer information om åtgärds regler finns i [Konfigurera en åtgärds regel](/az
 Utför följande steg i Azure Portal för att skapa en åtgärds regel för din Azure Stack Edge-enhet.
 
 > [!NOTE]
-> De här stegen skapar en åtgärds regel som skickar meddelanden till en åtgärds grupp. Mer information om hur du skapar en åtgärds regel för att utelämna meddelanden finns i [Konfigurera en åtgärds regel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+> De här stegen skapar en åtgärds regel som skickar meddelanden till en åtgärds grupp. Mer information om hur du skapar en åtgärds regel för att utelämna meddelanden finns i [Konfigurera en åtgärds regel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 1. Gå till Azure Stack Edge-enheten i Azure Portal och gå sedan till **övervakning > aviseringar**. Välj **Hantera åtgärder**.
 
@@ -72,7 +72,7 @@ Utför följande steg i Azure Portal för att skapa en åtgärds regel för din 
 
    2. Under **filter** lägger du till de filter som du vill använda. För varje filter väljer du filter typ, **operator** och **värde**.
    
-      En lista över filter alternativ finns i [filter villkor](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria).
+      En lista över filter alternativ finns i [filter villkor](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria).
 
       Exempel filtren nedan gäller för alla aviseringar på allvarlighets grad 2, 3 och 4 som övervaknings tjänsten genererar för Azure Stack Edge-resurser.
 
@@ -85,11 +85,11 @@ Utför följande steg i Azure Portal för att skapa en åtgärds regel för din 
    ![Åtgärds grupp alternativ för att skapa en åtgärds regel som skickar meddelanden](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > Om du vill skapa en regel som förhindrar meddelanden väljer du under **tryckning**. Mer information finns i [Konfigurera en åtgärds regel](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule).
+   > Om du vill skapa en regel som förhindrar meddelanden väljer du under **tryckning**. Mer information finns i [Konfigurera en åtgärds regel](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule).
 
 6. Välj den åtgärds grupp som du vill använda med den här åtgärds regeln. Välj sedan **Välj**. Din nya åtgärds regel kommer att läggas till i aviserings inställningarna för den valda åtgärds gruppen.
 
-   Om du behöver skapa en ny åtgärds grupp väljer du **+ skapa åtgärds grupp** och följer stegen i [skapa en åtgärds grupp med hjälp av Azure Portal](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal).
+   Om du behöver skapa en ny åtgärds grupp väljer du **+ skapa åtgärds grupp** och följer stegen i [skapa en åtgärds grupp med hjälp av Azure Portal](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal).
 
    ![Välj en åtgärds grupp som ska användas med regeln och välj sedan Välj.](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ E-postaviseringen kommer att se ut ungefär så här.
 
 ## <a name="next-steps"></a>Nästa steg
 
-<!-- - See [Create and manage action groups in the Azure portal](/azure/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - Se [övervaka Azure Stack Edge Pro](azure-stack-edge-monitor.md) för information om hur du kan granska enhets händelser, maskin varu status och mått diagram. 
 - Se [använda Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md) för information om att optimera Azure Monitor för Azure Stack Edge Pro GPU-enheter.
-- Se [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor länkmål](/azure/azure-monitor/platform/alerts-metric) för information om hur du hanterar enskilda aviseringar.
+- Se [skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor länkmål](../azure-monitor/alerts/alerts-metric.md) för information om hur du hanterar enskilda aviseringar.

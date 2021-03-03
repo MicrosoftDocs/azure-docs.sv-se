@@ -4,16 +4,16 @@ description: Få en översikt över vad du kan göra med mått aviseringar och h
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 989c3b8a50c3e613e67726684f35c6adce9c8b96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc0f41f23f1d9387f806c947ac27e6f31cc0e053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723613"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Förstå hur måttaviseringar fungerar i Azure Monitor
 
-Mått varningar i Azure Monitor fungerar ovanpå flerdimensionella mått. Dessa mått kan vara [plattforms mått](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [anpassade mått](../platform/metrics-custom-overview.md), [populära loggar från Azure Monitor konverteras till mått](./alerts-metric-logs.md) och Application Insights mått. Mått varningar utvärderas med jämna mellanrum för att kontrol lera om villkoren på en eller flera metriska tids serier är sanna och meddelar dig när utvärderingarna är uppfyllda. Mått varningar är tillstånds känsliga, det vill säga de skickar bara meddelanden när tillstånd ändras.
+Mått varningar i Azure Monitor fungerar ovanpå flerdimensionella mått. Dessa mått kan vara [plattforms mått](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [anpassade mått](../essentials/metrics-custom-overview.md), [populära loggar från Azure Monitor konverteras till mått](./alerts-metric-logs.md) och Application Insights mått. Mått varningar utvärderas med jämna mellanrum för att kontrol lera om villkoren på en eller flera metriska tids serier är sanna och meddelar dig när utvärderingarna är uppfyllda. Mått varningar är tillstånds känsliga, det vill säga de skickar bara meddelanden när tillstånd ändras.
 
 ## <a name="how-do-metric-alerts-work"></a>Hur fungerar mått varningar?
 
@@ -26,7 +26,7 @@ Anta att du har skapat en varnings regel för enkel statisk tröskel enligt föl
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: statisk
-- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](../platform/metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
+- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](../essentials/metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -43,7 +43,7 @@ Anta att du har skapat en mått regel för enkla dynamiska tröskelvärden enlig
 - Mål resurs (den Azure-resurs som du vill övervaka): myVM
 - Mått: procent andel CPU
 - Villkors typ: dynamisk
-- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](../platform/metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
+- Sammansättnings typ (en statistik som körs över rå metriska värden. [Sammansättnings typer som stöds](../essentials/metrics-aggregation-explained.md#aggregation-types) är minimum, maximum, Average, total, Count): genomsnitt
 - Period (fönstret för att se hur Mät värden kontrol leras): de senaste 5 minuterna
 - Frekvens (den frekvens med vilken måttets avisering kontrollerar om villkoren är uppfyllda): 1 min
 - Operator: större än
@@ -141,7 +141,7 @@ Den här funktionen stöds för närvarande för plattforms mått (inte anpassad
 
 | Tjänst | Offentlig Azure | Myndigheter | Kina |
 |:--------|:--------|:--------|:--------|
-| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | No |
+| Virtuella datorer<sup>1</sup>  | **Ja** | **Ja** | Inga |
 | SQL Server-databaser | **Ja** | **Ja** | **Ja** |
 | Elastiska SQL Server-pooler | **Ja** | **Ja** | **Ja** |
 | Kapacitets pooler för NetApp-filer | **Ja** | **Ja** | **Ja** |
@@ -180,9 +180,8 @@ Du hittar en fullständig lista över resurs typer som stöds i den här [artike
 ## <a name="next-steps"></a>Nästa steg
 
 - [Lär dig hur du skapar, visar och hanterar mått varningar i Azure](../alerts/alerts-metric.md)
-- [Lär dig hur du skapar aviseringar i Azure montior Metrics Explorer](../platform/metrics-charts.md#alert-rules)
+- [Lär dig hur du skapar aviseringar i Azure montior Metrics Explorer](../essentials/metrics-charts.md#alert-rules)
 - [Lär dig hur du distribuerar mått aviseringar med hjälp av Azure Resource Manager mallar](./alerts-metric-create-templates.md)
-- [Läs mer om åtgärds grupper](../platform/action-groups.md)
+- [Läs mer om åtgärds grupper](./action-groups.md)
 - [Läs mer om villkors typen för dynamiska tröskelvärden](../alerts/alerts-dynamic-thresholds.md)
 - [Läs mer om fel sökning av problem i mått aviseringar](alerts-troubleshoot-metric.md)
-

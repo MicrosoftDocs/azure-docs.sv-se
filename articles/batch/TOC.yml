@@ -158,9 +158,6 @@
           href: batch-sig-images.md
         - name: Skapa en pool med en hanterad avbildningsresurs
           href: batch-custom-images.md
-        - name: Skapa en pool över Tillgänglighetszoner
-          displayName: 'region, zonal policy'
-          href: create-pool-availability-zones.md
         - name: Skapa en pool med diskkryptering aktiverat
           href: disk-encryption.md
         - name: Skapa en pool i ett virtuellt nätverk
@@ -172,8 +169,6 @@
         - name: Skapa en pool utan offentliga IP-adresser
           displayName: private
           href: batch-pool-no-public-ip-address.md
-        - name: Använda tillägg med pooler
-          href: create-pool-extensions.md
         - name: Konfigurera hanterade identiteter
           displayName: user-assigned
           href: managed-identity-pools.md

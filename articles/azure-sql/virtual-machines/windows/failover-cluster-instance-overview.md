@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690931"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instanser av kluster för växling vid fel med SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,19 +41,19 @@ Instanser av redundanskluster med SQL Server på Azure Virtual Machines stöd f�
 Mer information finns i [metod tips för kvorum med SQL Server virtuella datorer i Azure](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 
 I traditionella lokala klustrade miljöer använder ett Windows-redundanskluster en storage area network (SAN) som är tillgänglig för båda noderna som den delade lagringen. SQL Server filer finns i den delade lagringen och bara den aktiva noden kan komma åt filerna samtidigt. 
 
 SQL Server på virtuella Azure-datorer erbjuder olika alternativ som en lösning för delad lagring för en distribution av SQL Server kluster instanser för växling vid fel: 
 
-||[Delade diskar i Azure](../../../virtual-machines/disks-shared.md)|[Premium fil resurser](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Lagringsdirigering (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Delade diskar i Azure](../../../virtual-machines/disks-shared.md)|[Premium fil resurser](../../../storage/files/storage-how-to-create-file-share.md) |[Lagringsdirigering (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**Lägsta version av operativsystemet**| Alla |Windows Server 2012|Windows Server 2016|
 |**Lägsta SQL Server-version**|Alla|SQL Server 2012|SQL Server 2016|
 |**Tillgänglighet för VM som stöds** |Tillgänglighets uppsättningar med närhets placerings grupper (för Premium SSD) </br> Samma tillgänglighets zon (för Ultra SSD) |Tillgänglighets uppsättningar och tillgänglighets zoner|Tillgänglighetsuppsättningar |
-|**Stöder FileStream**|Ja|Nej|Ja |
-|**Azure Blob-cache**|Nej|Nej|Ja|
+|**Stöder FileStream**|Ja|Inga|Ja |
+|**Azure Blob-cache**|Inga|Inga|Ja|
 
 Resten av det här avsnittet visar fördelarna och begränsningarna för varje lagrings alternativ som är tillgängligt för SQL Server på virtuella Azure-datorer. 
 
@@ -96,7 +96,7 @@ Information om hur du kommer igång finns [SQL Server kluster instans med Azure 
 - Stöder Azure Blob cache, så läsningar kan hanteras lokalt från cachen. (Uppdateringar replikeras samtidigt till båda noderna.) 
 - Stöder FileStream. 
 
-**Hos**
+**Begränsningar:**
 - Endast tillgängligt för Windows Server 2016 och senare. 
 - Tillgänglighets zoner stöds inte.
 - Kräver samma disk kapacitet som är kopplad till båda virtuella datorerna. 
@@ -107,7 +107,7 @@ Information om hur du kommer igång finns [SQL Server kluster instans med Lagrin
 
 ### <a name="premium-file-share"></a>Premium-filresurs
 
-[Premium File-resurser](../../../storage/files/storage-how-to-create-premium-fileshare.md) är en funktion i [Azure Files](../../../storage/files/index.yml). Premium-filresurserna är SSD-baserade och har en konsekvent låg latens. De stöds fullt ut för användning med kluster instanser för växling vid fel för SQL Server 2012 eller senare på Windows Server 2012 eller senare. Premium-filresurser ger dig större flexibilitet eftersom du kan ändra storlek och skala en fil resurs utan drift avbrott.
+[Premium File-resurser](../../../storage/files/storage-how-to-create-file-share.md) är en funktion i [Azure Files](../../../storage/files/index.yml). Premium-filresurserna är SSD-baserade och har en konsekvent låg latens. De stöds fullt ut för användning med kluster instanser för växling vid fel för SQL Server 2012 eller senare på Windows Server 2012 eller senare. Premium-filresurser ger dig större flexibilitet eftersom du kan ändra storlek och skala en fil resurs utan drift avbrott.
 
 **Operativ system som stöds**: Windows Server 2012 och senare   
 **SQL-version som stöds**: SQL Server 2012 och senare   
@@ -116,7 +116,7 @@ Information om hur du kommer igång finns [SQL Server kluster instans med Lagrin
 - Endast delad lagrings lösning för virtuella datorer sprids över flera tillgänglighets zoner. 
 - Fullständigt hanterat fil system med ensiffriga latens och prestanda med burst I/O. 
 
-**Hos**
+**Begränsningar:**
 - Endast tillgängligt för Windows Server 2012 och senare. 
 - FileStream stöds inte. 
 
@@ -161,7 +161,7 @@ Det fullständiga tillägget har stöd för funktioner som automatisk säkerhets
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines stöder Microsoft koordinator för distribuerad transaktion (MSDTC) på Windows Server 2019 med lagring på klusterdelade volymer (CSV) och [Azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) eller på SQL Server virtuella datorer som använder Azure delade diskar. 
+Azure Virtual Machines stöder Microsoft Distributed Transaction Coordinator (MSDTC) på Windows Server 2019 med lagring på klusterdelade volymer (CSV) och [Azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) eller på SQL Server virtuella datorer som använder Azure delade diskar. 
 
 I Azure Virtual Machines stöds inte MSDTC för Windows Server 2016 eller tidigare med klustrade delade volymer på grund av följande:
 

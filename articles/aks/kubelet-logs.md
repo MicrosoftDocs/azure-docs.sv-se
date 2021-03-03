@@ -4,12 +4,12 @@ description: Lär dig att Visa felsöknings information i kubelet-loggarna från
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 31605d1b6129c03dcd860d78f937a41ae36502a7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 355c665db2627fe04595a8b519b16bd475ebcadf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735156"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Hämta kubelet-loggar från AKS-klusternoder (Azure Kubernetes Service)
 
@@ -71,8 +71,8 @@ Om du behöver ytterligare felsöknings information från Kubernetes-huvudserver
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [azure-container-logs]: ../azure-monitor/containers/container-insights-overview.md

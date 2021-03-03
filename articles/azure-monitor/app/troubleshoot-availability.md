@@ -4,14 +4,14 @@ description: Felsök webbtester i Azure Application insikter. Få aviseringar om
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 11/19/2020
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 849701caf73a4fb289773c67bccaab2e0f39dbd1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 940a70de81df60f7b6c1545c992e1ee10e69fa9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583725"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728934"
 ---
 # <a name="troubleshooting"></a>Felsökning
 
@@ -58,7 +58,7 @@ Med fel söknings rapporten kan du enkelt diagnostisera vanliga problem som gör
 
 ### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Jag fick inget e-postmeddelande när aviseringen utlöstes eller matchades eller båda?
 
-Kontrol lera den klassiska aviserings konfigurationen för att bekräfta att ditt e-postmeddelande visas direkt eller att en distributions lista som du är på är konfigurerad för att ta emot meddelanden. Om så är fallet kontrollerar du konfigurationen av distributions listan för att bekräfta att den kan ta emot externa e-postmeddelanden. Kontrol lera också om din e-postadministratör kan ha några konfigurerade principer som kan orsaka det här problemet.
+Kontrol lera aviseringens åtgärds grupps konfiguration för att bekräfta att ditt e-postmeddelande visas direkt eller om en distributions lista som du är på är konfigurerad för att ta emot meddelanden. Om så är fallet kontrollerar du konfigurationen av distributions listan för att bekräfta att den kan ta emot externa e-postmeddelanden. Kontrol lera också om din e-postadministratör kan ha några konfigurerade principer som kan orsaka det här problemet.
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Jag fick inte webhook-meddelandet?
 
@@ -110,21 +110,6 @@ Det finns en gräns på 100 förfrågningar per test. Testet stoppas också om 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Hur kan jag köra ett test med klientcertifikat?
 
 Detta stöds inte för närvarande.
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Vem får aviseringarna (klassisk)?
-
-Det här avsnittet gäller endast för klassiska varningar och hjälper dig att optimera dina aviserings aviseringar så att endast dina mottagare får aviseringar. Om du vill veta mer om skillnaden mellan [klassiska aviseringar](../alerts/alerts-classic.overview.md)och den nya aviserings upplevelsen läser du [artikeln aviserings översikt](../alerts/alerts-overview.md). Om du vill kontrol lera aviseringar i den nya aviserings upplevelsen använder du [Åtgärds grupper](../alerts/action-groups.md).
-
-* Vi rekommenderar att du använder vissa mottagare för klassisk aviserings aviseringar.
-
-* För aviseringar vid haverier från X av Y-platser visas kryss rutan **Mass-/grupp** alternativ, om aktive rad, skickas till användare med administratörs-och medadministratörs roller.  I princip får _alla_ administratörer av _prenumerationen_ meddelanden.
-
-* För varningar om tillgänglighets mått är kryss rutan **Mass-/grupp** alternativ om aktive rad, skickas till användare med rollen ägare, deltagare eller läsare i prenumerationen. I praktiken är _alla_ användare som har åtkomst till prenumerationen Application Insightss resursen inom räckvidden och får meddelanden. 
-
-> [!NOTE]
-> Om du för närvarande använder alternativet **Mass-/grupp** incheckning, och inaktiverar det, kommer du inte att kunna återställa ändringen.
-
-Använd aviseringarna nya aviseringar/nästan-real tid om du behöver meddela användarna baserat på deras roller. Med [Åtgärds grupper](../alerts/action-groups.md)kan du konfigurera e-postaviseringar till användare med någon av rollerna deltagare/ägare/läsare (som inte kombineras tillsammans som ett enda alternativ).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 8f698aadc24d0dc0691743f1d8dd54c5d5fd287e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220964"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714739"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure-lagringsanalys mått (klassisk)
 
@@ -25,7 +25,7 @@ Azure Storage använder Lagringsanalys-lösningen för att lagra mått som inneh
 - Diagnostisera problem med begär Anden som görs mot lagrings tjänsten.
 - Förbättra prestanda för program som använder en tjänst.
 
- Lagringsanalys mått är aktiverade som standard för nya lagrings konton. Du kan konfigurera mått i [Azure Portal](https://portal.azure.com/), med hjälp av PowerShell eller med hjälp av Azure CLI. Steg-för-steg-anvisningar finns i [Aktivera och hantera Azure Storage analytiska mått (klassisk)](./storage-monitor-storage-account.md). Du kan också aktivera Lagringsanalys program mässigt via REST API eller klient biblioteket. Använd åtgärderna ange tjänst egenskaper för att aktivera Lagringsanalys för varje tjänst.  
+ Lagringsanalys mått är aktiverade som standard för nya lagrings konton. Du kan konfigurera mått i [Azure Portal](https://portal.azure.com/), med hjälp av PowerShell eller med hjälp av Azure CLI. Steg-för-steg-anvisningar finns i [Aktivera och hantera Azure Storage analytiska mått (klassisk)](./manage-storage-analytics-logs.md). Du kan också aktivera Lagringsanalys program mässigt via REST API eller klient biblioteket. Använd åtgärderna ange tjänst egenskaper för att aktivera Lagringsanalys för varje tjänst.  
 
 > [!NOTE]
 > Lagringsanalys mått är tillgängliga för Azure Blob Storage, Azure Queue Storage, Azure Table Storage och Azure Files.
@@ -69,7 +69,7 @@ Azure Storage använder Lagringsanalys-lösningen för att lagra mått som inneh
  Tabellerna skapas automatiskt när Lagringsanalys har Aktiver ATS för lagrings tjänstens slut punkt. De går att komma åt via lagrings kontots namnrymd, till exempel `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")` . Mått tabellerna visas inte i en List åtgärd och måste nås direkt via tabell namnet.
 
 ## <a name="metrics-alerts"></a>Mått varningar
-Överväg att konfigurera aviseringar i [Azure Portal](https://portal.azure.com) så att du automatiskt får ett meddelande om viktiga förändringar i hur dina lagrings tjänster fungerar. Steg-för-steg-anvisningar finns i [skapa mått aviseringar](storage-monitor-storage-account.md#create-metric-alerts).
+Överväg att konfigurera aviseringar i [Azure Portal](https://portal.azure.com) så att du automatiskt får ett meddelande om viktiga förändringar i hur dina lagrings tjänster fungerar. Steg-för-steg-anvisningar finns i [skapa mått aviseringar](./manage-storage-analytics-logs.md).
 
 Om du använder ett Storage Explorer-verktyg för att hämta data i ett avgränsat format kan du använda Microsoft Excel för att analysera data. En lista över tillgängliga Storage Explorer-verktyg finns i [Azure Storage klient verktyg](./storage-explorers.md).
 

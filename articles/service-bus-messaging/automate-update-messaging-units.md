@@ -3,12 +3,12 @@ title: Azure Service Bus – uppdatera meddelande enheter automatiskt
 description: Den här artikeln visar hur du kan använda automatisk uppdatering av meddelande enheter i ett Service Bus namn område.
 ms.topic: how-to
 ms.date: 09/15/2020
-ms.openlocfilehash: 932c7bb1235cb54aefe67253e38e1683187f4d2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581639"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720604"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Uppdatera meddelande enheter automatiskt i ett Azure Service Bus namn område 
 Med autoskalning kan du använda rätt mängd resurser för att hantera belastningen på ditt program. Det gör att du kan lägga till resurser för att hantera ökad belastning och även spara pengar genom att ta bort resurser som är inaktiva. I [Översikt över autoskalning i Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) kan du läsa mer om funktionen för autoskalning i Azure Monitor. 
@@ -57,7 +57,7 @@ Du kan konfigurera automatisk skalning av meddelande enheter med hjälp av villk
 Du kan inte ange ett schema för autoskalning på en angiven dag eller ett visst datum intervall för ett standard villkor. Det här skalnings villkoret körs när inget av de andra skalnings villkoren med scheman matchar. 
 
 ### <a name="scale-based-on-a-metric"></a>Skala baserat på ett mått
-Följande procedur visar hur du lägger till ett villkor för att automatiskt öka meddelande enheter (skala ut) när processor användningen är större än 75% och minska meddelande enheterna (skala in) när CPU-användningen är mindre än 25%. Stegvisa steg görs från 1 till 2, 2 till 4 och 4 till 8. På samma sätt görs minskningar från 8 till 4, 4 till 2 och 2 till 1. 
+Följande procedur visar hur du lägger till ett villkor för att automatiskt öka meddelande enheter (skala ut) när processor användningen är större än 75% och minska meddelande enheterna (skala in) när CPU-användningen är mindre än 25%. Stegvisa steg görs från 1 till 2, 2 till 4, 4 till 8 och 8 till 16. På samma sätt görs minskningar från 16 till 8, 8 till 4, 4 till 2 och 2 till 1. 
 
 1. På sidan automatisk **skalnings inställning** väljer du **anpassad autoskalning** för alternativet **Välj hur du vill skala din resurs** . 
 1. I **standard** avsnittet på sidan anger du ett **namn** för standard villkoret. Välj **Penn** ikonen för att redigera texten. 
@@ -74,7 +74,7 @@ Följande procedur visar hur du lägger till ett villkor för att automatiskt ö
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-75.png" alt-text="Standard – skala ut om CPU-användningen är större än 75%":::       
 
         > [!NOTE]
-        > Funktionen för autoskalning ökar meddelande enheterna för namn området om den totala processor användningen går över 75% i det här exemplet. Stegvisa steg görs från 1 till 2, 2 till 4 och 4 till 8. 
+        > Funktionen för autoskalning ökar meddelande enheterna för namn området om den totala processor användningen går över 75% i det här exemplet. Stegvisa steg görs från 1 till 2, 2 till 4, 4 till 8 och 8 till 16. 
 1. Välj **+ Lägg till en regel** igen och följ de här stegen på sidan **skalnings regel** :
     1. Välj ett mått i list rutan **mått namn** . I det här exemplet är det **CPU**. 
     1. Välj en operatör och tröskelvärdes värden. I det här exemplet är de **mindre än** och **25** för **mått tröskelvärdet för att utlösa skalnings åtgärder**. 
@@ -84,7 +84,7 @@ Följande procedur visar hur du lägger till ett villkor för att automatiskt ö
         :::image type="content" source="./media/automate-update-messaging-units/scale-rule-cpu-25.png" alt-text="Standard skala i om CPU-användningen är mindre än 25%":::       
 
         > [!NOTE]
-        > Funktionen för autoskalning minskar meddelande enheterna för namn området om den totala processor användningen går under 25% i det här exemplet. Minskningar görs från 8 till 4, 4 till 2 och 2 till 1. 
+        > Funktionen för autoskalning minskar meddelande enheterna för namn området om den totala processor användningen går under 25% i det här exemplet. Minskningar görs från 16 till 8, 8 till 4, 4 till 2 och 2 till 1. 
 1. Ange **lägsta** och **högsta** **antal meddelande** enheter.
 
     :::image type="content" source="./media/automate-update-messaging-units/default-scale-metric-based.png" alt-text="Standard regel baserat på ett mått":::

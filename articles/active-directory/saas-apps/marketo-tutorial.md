@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: f0bf99748363505e362d3c35e53a51be3a03e938
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 433303bf0d51eff3bd3ab37726c9e98e8a766d25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728713"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Självstudie: Azure Active Directory integrering med Marketo
 
@@ -27,7 +27,7 @@ Att integrera Marketo med Azure AD ger följande fördelar:
 * Du kan göra det möjligt för användarna att logga in automatiskt till Marketo (enkel inloggning) med sina Azure AD-konton.
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Marketo behöver du följande objekt:
 
@@ -82,7 +82,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. Skriv webb adressen i text rutan **identifierare** : `https://saml.marketo.com/sp`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://login.marketo.com/saml/assertion/<munchkinid>`
 
     c. Skriv en URL med följande mönster i textrutan **Vidarebefordransstatus**: `https://<munchkinid>.marketo.com/`
 
@@ -105,7 +105,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

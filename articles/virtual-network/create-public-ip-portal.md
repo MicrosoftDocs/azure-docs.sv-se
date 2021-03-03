@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: 5c5650d896442f10846e16903a1231010d032a44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675213"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694877"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Skapa en offentlig IP-adress med hjälp av Azure Portal
 
@@ -74,7 +74,6 @@ I det här avsnittet skapar du en grundläggande offentlig IP-adress med namnet 
     | IP-version              | Välj IPv4                 |    
     | SKU                     | Välj **grundläggande**         |
     | Namn                    | Ange *myBasicPublicIP*          |
-    | Cirkulations inställningar      | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](./routing-preference-overview.md). |
     | Tilldelning av IP-adress   | Välj **statisk** (se anmärkning nedan)                                     |
     | Tids gräns för inaktivitet (minuter)  | Lämna standardvärdet **4**.       |
     | DNS-namnetikett          | Lämna värdet tomt    |
@@ -82,7 +81,7 @@ I det här avsnittet skapar du en grundläggande offentlig IP-adress med namnet 
     | Resursgrupp          | Välj **Skapa ny**, ange **myResourceGroup**. </br> Välj **OK**. |
     | Location                | Välj **USA, östra 2**      |
 
-:::image type="content" source="./media/create-public-ip-portal/create-standard-ip.png" alt-text="Skapa standard-IP-adress i Azure Portal" border="false":::
+:::image type="content" source="./media/create-public-ip-portal/create-basic-ip.png" alt-text="Skapa standard-IP-adress i Azure Portal" border="false":::
 
 Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dynamisk** IP-tilldelning.
 

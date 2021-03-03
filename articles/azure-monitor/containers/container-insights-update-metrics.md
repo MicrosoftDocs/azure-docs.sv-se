@@ -1,19 +1,19 @@
 ---
-title: Uppdatera Azure Monitor för behållare för mått | Microsoft Docs
-description: I den här artikeln beskrivs hur du uppdaterar Azure Monitor för behållare för att aktivera funktionen anpassade mått som stöder utforska och aviserar på sammansatta mått.
+title: Så här uppdaterar du behållar insikter för mått | Microsoft Docs
+description: Den här artikeln beskriver hur du uppdaterar behållar insikter för att aktivera funktionen anpassade mått som har stöd för att utforska och Avisera om aggregerade mått.
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37c19cd074e9ce1985d5d0e82137d8603913d4bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622433"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708279"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Uppdatera Azure Monitor för containrar för att aktivera mått
+# <a name="how-to-update-container-insights-to-enable-metrics"></a>Så här uppdaterar du behållar insikter för att aktivera mått
 
-Azure Monitor for containers introducerar stöd för insamling av mått från Azure Kubernetes Services (AKS) och Azure Arc-aktiverade Kubernetes klustrar noder och poddar och skriver dem till Azure Monitor statistik lagringen. Den här ändringen är avsedd att ge förbättrad tids linje när du presenterar agg regerings beräkningar (medelvärde, antal, Max, min, summa) i prestanda diagram, stöd för att fästa prestanda diagram i Azure Portal instrument paneler och stöd för mått aviseringar.
+Behållar insikter introducerar stöd för insamling av mått från Azure Kubernetes Services (AKS) och Azure Arc-aktiverade Kubernetes klustrar noder och poddar och skriver dem till lagrings platsen Azure Monitor mått. Den här ändringen är avsedd att ge förbättrad tids linje när du presenterar agg regerings beräkningar (medelvärde, antal, Max, min, summa) i prestanda diagram, stöd för att fästa prestanda diagram i Azure Portal instrument paneler och stöd för mått aviseringar.
 
 >[!NOTE]
 >Den här funktionen stöder för närvarande inte Azure Red Hat OpenShift-kluster.
@@ -47,7 +47,7 @@ Om du väljer att använda Azure CLI måste du först installera och använda CL
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Uppgradera ett kluster från Azure Portal
 
-För befintliga AKS-kluster som övervakas av Azure Monitor för behållare, när du har valt klustret för att Visa hälsan från vyn multi-cluster i Azure Monitor eller direkt från klustret genom att välja **insikter** från den vänstra rutan, bör du se en banderoll överst i portalen.
+För befintliga AKS-kluster som övervakas av behållar insikter, när du har valt klustret för att Visa hälsan från vyn multi-cluster i Azure Monitor eller direkt från klustret genom att välja **insikter** i den vänstra rutan, bör du se en banderoll överst i portalen.
 
 ![Uppgradera AKS Cluster banderoll i Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 

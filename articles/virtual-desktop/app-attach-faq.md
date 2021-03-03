@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738709"
 ---
 # <a name="msix-app-attach-faq"></a>Vanliga frågor och svar om MSIX app
 
@@ -61,7 +61,7 @@ Alla virtuella datorer (VM) i en adresspool som använder MSIX app Attach måste
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Kan jag använda MSIX app Attach för HTTP eller HTTPs?
 
-Alla virtuella datorer som ingår i en modempool som använder MSIX app Attach måste ha Läs behörighet för fil resursen där MSIX-avbildningar lagras. Om Azure Files används både RBAC-och NTFS-behörigheter måste beviljas.
+Användning av MSIX-appen via HTTP eller HTTPs stöds inte för närvarande.
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Kan jag ommellanlagra samma MSIX-program?
 
@@ -69,7 +69,7 @@ Ja. Du kan återmellanlagra program som du redan har omberett och detta bör int
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Ansluter MSIX-appen support självsignerade certifikat?
 
-Användning av MSIX-appen via HTTP eller HTTPs stöds inte för närvarande.
+Ja. Du måste installera det självsignerade certifikatet på alla de virtuella datorerna i sessionen där MSIX app Attach används som värd för det självsignerade programmet.
 
 
 ## <a name="next-steps"></a>Nästa steg

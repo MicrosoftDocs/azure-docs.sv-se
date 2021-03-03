@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732232"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC-autentisering – REST API referens
 
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argument | Description  |
+|  Argument | Beskrivning  |
 | ------ | ------ |
 | **HMAC-SHA256** | Authorization-schema. _kunna_ |
 | **Autentiseringsuppgift** | ID för den åtkomst nyckel som används för att beräkna signaturen. _kunna_ |
@@ -87,7 +87,7 @@ _Sträng-till-tecken =_
 
 **HTTP_METHOD** + \n + **path_and_query** + \n + **signed_headers_values**
 
-|  Argument | Description  |
+|  Argument | Beskrivning  |
 | ------ | ------ |
 | **HTTP_METHOD** | Versaler HTTP-metod namn som används med begäran. Mer information finns i [avsnitt 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | Sammanfogning av begär ande absolut URI-sökväg och frågesträng. Mer information finns i [avsnitt 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).

@@ -6,18 +6,20 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: a81676b9985b134a8214f7f5f97d85d27259b71f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4db9503ea84ae13148a89a03048c73399413e5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418013"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710200"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>Parsa omvandling i data flöde för mappning
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Använd parse-omvandlingen för att parsa kolumner i dina data i dokument formulär. De aktuella typer av inbäddade dokument som stöds och som kan parsas är JSON och avgränsad text.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWykdO]
 
 ## <a name="configuration"></a>Konfiguration
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 5d8c5eb385baff4aac450c470fb6103e2fb315f3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702019"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -43,7 +43,7 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
 - **Azure Defender för SQL-servrar på datorer** utökar skydds inställningarna för dina Azure-inhemska SQL-servrar för att fullständigt stödja hybrid miljöer och skydda SQL-servrar (all version som stöds) som finns i Azure, andra moln miljöer och till och med lokala datorer:
     - [SQL Server på virtuella datorer](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Lokala SQL-servrar:
-        - [Azure Arc-aktiverad SQL Server (förhandsversion)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc-aktiverad SQL Server (förhandsversion)](/sql/sql-server/azure-arc/overview)
         - [SQL Server som körs på Windows-datorer utan Azure Arc](../azure-monitor/agents/agent-windows.md)
 
 

@@ -1,33 +1,33 @@
 ---
-title: Konfigurera GPU-övervakning med Azure Monitor för behållare | Microsoft Docs
-description: Den här artikeln beskriver hur du kan konfigurera övervakning av Kubernetes-kluster med NVIDIA-och AMD GPU-aktiverade noder med Azure Monitor för behållare.
+title: Konfigurera GPU-övervakning med container Insights | Microsoft Docs
+description: Den här artikeln beskriver hur du kan konfigurera övervakning av Kubernetes-kluster med NVIDIA-och AMD GPU-aktiverade noder med behållar insikter.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 11a9de0872fd3e7589332322b3f8fb855d2c88ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731875"
 ---
-# <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>Konfigurera GPU-övervakning med Azure Monitor för behållare
+# <a name="configure-gpu-monitoring-with-container-insights"></a>Konfigurera GPU-övervakning med container Insights
 
-Från och med agent version *ciprod03022019* har Azure Monitor for containers Integrated agent nu stöd för övervakning av GPU (grafiska bearbetnings enheter) på GPU-medvetna Kubernetes klusternoder och övervaka poddar/containers som begär och använder GPU-resurser.
+Från och med agent version *ciprod03022019* har den integrerade agenten för behållar insikter nu stöd för övervakning av GPU (grafik bearbetnings enheter) på GPU-medvetna Kubernetes klusternoder och övervakar poddar/behållare som begär och använder GPU-resurser.
 
 ## <a name="supported-gpu-vendors"></a>GPU-leverantörer som stöds
 
-Azure Monitor for containers stöder övervakning av GPU-kluster från följande GPU-leverantörer:
+Container Insights stöder övervakning av GPU-kluster från följande GPU-leverantörer:
 
 - [NVIDIA](https://developer.nvidia.com/kubernetes-gpu)
 
 - [EFFEKTIV](https://github.com/RadeonOpenCompute/k8s-device-plugin)
 
-Azure Monitor for containers startar automatiskt övervakning av GPU-användning på noder och GPU begär poddar och arbets belastningar genom att samla in följande mått vid 60sec-intervall och lagra dem i **InsightMetrics** -tabellen.
+Behållar insikter startar automatiskt övervakning av GPU-användning på noder, och GPU begär poddar och arbets belastningar genom att samla in följande mått vid 60sec-intervall och lagra dem i **InsightMetrics** -tabellen.
 
 >[!NOTE]
->När du har upprättat klustret med GPU-noder kontrollerar du att [GPU-drivrutinen](../../aks/gpu-cluster.md) installeras som krävs av AKS för att köra GPU-arbetsbelastningar. Azure Monitor for containers samlar in GPU-mått via GPU-drivrutinen poddar som körs i noden. 
+>När du har upprättat klustret med GPU-noder kontrollerar du att [GPU-drivrutinen](../../aks/gpu-cluster.md) installeras som krävs av AKS för att köra GPU-arbetsbelastningar. Container Insights samlar in GPU-mått via GPU-drivrutinen poddar som körs i noden. 
 
-|Måttnamn |Mått dimension (Taggar) |Description |
+|Måttnamn |Mått dimension (Taggar) |Beskrivning |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Procent andel av tiden under den senaste samplings perioden (60 sekunder) under vilken GPU var upptagen/aktivt bearbetas för en behållare. Månads cykel är ett tal mellan 1 och 100. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Varje behållare kan ange gränser som en eller flera GPU: er. Det går inte att begära eller begränsa en bråkdel av en GPU. |
@@ -39,7 +39,7 @@ Azure Monitor for containers startar automatiskt övervakning av GPU-användning
 
 ## <a name="gpu-performance-charts"></a>Diagram över GPU-prestanda 
 
-Azure Monitor för behållare innehåller förkonfigurerade diagram för de mått som anges tidigare i tabellen som en GPU-arbetsbok för varje kluster. Se [arbets böcker i Azure Monitor för behållare](../insights/container-insights-reports.md) för en beskrivning av de arbets böcker som är tillgängliga för Azure Monitor för behållare.
+Behållar insikter innehåller förkonfigurerade diagram för de mått som anges tidigare i tabellen som en GPU-arbetsbok för varje kluster. Se [arbets böcker i behållar insikter](../insights/container-insights-reports.md) för en beskrivning av arbets böckerna som är tillgängliga för behållar insikter.
 
 ## <a name="next-steps"></a>Nästa steg
 

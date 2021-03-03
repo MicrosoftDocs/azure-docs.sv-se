@@ -5,12 +5,12 @@ description: Se vanliga frågor och svar när du kör Windows Server-nodkonfigur
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739584"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Vanliga frågor och svar om Windows Server Node-pooler i AKS
 
@@ -54,6 +54,8 @@ För att få de senaste korrigeringarna för Windows-noder kan du antingen [Uppg
 
 AKS-kluster med Windows-noder måste använda nätverks modellen Azure CNI (avancerat). Kubernetes-nätverk (Basic) stöds inte. Mer information om skillnaderna i nätverks modeller finns i [nätverks koncept för program i AKS][azure-network-models]. Nätverks modellen i Azure CNI kräver ytterligare planering och överväganden för hantering av IP-adresser. Mer information om hur du planerar och implementerar Azure-CNI finns i [Konfigurera Azure cni Networking i AKS][configure-azure-cni].
 
+Windows-noder i AKS-kluster har också [direkt Server retur (DSR)][dsr] aktiverat som standard när Calico är aktiverat.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>Stöds IP-adressen för klient källan?
 
 För närvarande stöds inte [IP-konservering för klient källa][client-source-ip] med Windows-noder.
@@ -91,7 +93,7 @@ Du måste ha ett namn på högst 6 tecken (sex). Detta är en aktuell begränsni
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Stöds alla funktioner med Windows-noder?
 
-Nätverks principer och Kubernetes stöds för närvarande inte med Windows-noder.
+Kubernetes stöds för närvarande inte med Windows-noder.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kan jag köra ingångs styrenheter på Windows-noder?
 
@@ -197,3 +199,4 @@ Kom igång med Windows Server-behållare i AKS genom att [skapa en noduppsättni
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

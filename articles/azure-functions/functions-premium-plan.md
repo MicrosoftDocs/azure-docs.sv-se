@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610275"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708721"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-plan
 
@@ -154,7 +154,7 @@ Att köra på en dator med mer minne innebär inte alltid att din Function-app a
 
 Till exempel begränsas en JavaScript Function-app av standard minnes gränsen i Node.js. Om du vill öka den här fasta minnes gränsen lägger du till inställningen för appen `languageWorkers:node:arguments` med värdet `--max-old-space-size=<max memory in MB>` .
 
-För planer med mer än 4 GB minne ser du till att inställningen för bitness-plattformen är inställd på `64 Bit` under [allmänna inställningar](/azure/app-service/configure-common#configure-general-settings).
+För planer med mer än 4 GB minne ser du till att inställningen för bitness-plattformen är inställd på `64 Bit` under [allmänna inställningar](../app-service/configure-common.md#configure-general-settings).
 
 ## <a name="region-max-scale-out"></a>Region, Max skala ut
 

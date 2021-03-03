@@ -10,12 +10,12 @@ ms.date: 2/11/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d006168de89a2709ed607568f36cacf5f924efcb
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653554"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750939"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
@@ -53,9 +53,11 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
 
 Installera beroendena skapas även en arbets yta för Xcode: `pod install`
 
+**När du har kört Pod installerat öppnar du projektet på nytt i Xcode genom att välja det nya `.xcworkspace` .**
+
 ### <a name="setup-the-placeholders"></a>Konfigurera plats hållarna
 
-Öppna arbetsytefilen `ChatQuickstart.xcworkspace` i Xcode och öppna sedan `ViewController.swift` .
+Öppna arbets ytan `ChatQuickstart.xcworkspace` i Xcode och öppna sedan `ViewController.swift` .
 
 I den här snabb starten kommer vi att lägga till vår kod i `viewController` och visa utdata i Xcode-konsolen. Den här snabb starten tar inte itu med att skapa ett användar gränssnitt i iOS. 
 
@@ -128,7 +130,7 @@ Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
 ## <a name="object-model"></a>Objekt modell 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Servicess Chat-klient bibliotek för Java Script.
 
-| Name                                   | Beskrivning                                                                                                                                                                           |
+| Namn                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
 | ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |

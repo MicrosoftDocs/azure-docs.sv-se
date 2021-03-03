@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10aa5d96722b414d7384ceb81f393575d57e2a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858407"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688781"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Så här återställer du från LocalDB med en gräns på 10 GB
 Azure AD Connect kräver en SQL Server-databas för att lagra identitetsdata. Du kan antingen använda SQL Server 2012 Express LocalDB som är installerat som standard med Azure AD Connect eller använda din egen fullständiga SQL. SQL Server Express har en storleksgräns på 10 GB. När du använder LocalDB och gränsen har uppnåtts kan synkroniseringstjänsten för Azure AD Connect inte längre starta eller synkronisera korrekt. Den här artikeln innehåller återställnings stegen.
@@ -74,7 +74,7 @@ Namnet på databasen som skapades för Azure AD Connect är **ADSync**. Om du vi
 
 4. Starta **SQLCMD** -verktyget genom att köra kommandot `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` med autentiseringsuppgifterna för en sysadmin eller databasen dbo.
 
-5. För att krympa databasen går du till SQLCMD-prompten (1>) och anger `DBCC Shrinkdatabase(ADSync,1);` , följt av `GO` Nästa rad.
+5. För att krympa databasen går du till SQLCMD-prompten ( `1>` ) och anger `DBCC Shrinkdatabase(ADSync,1);` , följt av `GO` Nästa rad.
 
 6. Försök att starta synkroniseringstjänsten igen om åtgärden lyckas. Om du kan starta synkroniseringstjänsten går du till steget [ta bort körnings historik data](#delete-run-history-data) . Annars kontaktar du supporten.
 

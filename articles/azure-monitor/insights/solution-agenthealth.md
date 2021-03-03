@@ -1,17 +1,16 @@
 ---
 title: Agenthälsa lösning i Azure Monitor | Microsoft Docs
 description: Den här artikeln är avsedd att hjälpa dig att förstå hur du använder den här lösningen för att övervaka hälso tillståndet för agenter som rapporterar direkt till Log Analytics eller System Center Operations Manager.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: a498c229acce9359acfb4593ec5f833000ca2c39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 171230dc2ce6189e36c601c6c7d3b3612fce160c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573383"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711067"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agenthälsa lösning i Azure Monitor
 Agenthälsa lösning i Azure hjälper dig att förstå, för alla agenter som rapporterar direkt till arbets ytan Log Analytics i Azure Monitor eller en System Center Operations Manager hanterings grupp som är ansluten till Azure Monitor, som inte svarar och skickar drift data.  Du kan också hålla reda på hur många agenter distribueras, var de är fördelade geografiskt och utföra andra frågor för att övervaka distributionen av agenter i Azure, andra miljöer i molnet eller lokalt.    
@@ -38,10 +37,10 @@ Lägg till Agenthälsa-lösningen i Log Analytics arbets ytan med hjälp av proc
 ### <a name="supported-agents"></a>Agenter som stöds
 I följande tabell beskrivs de anslutna källor som stöds av den här lösningen.
 
-| Ansluten källa | Stöds | Description |
+| Ansluten källa | Stöds | Beskrivning |
 | --- | --- | --- |
-| Windows-agenter | Yes | Pulsslagshändelser som samlas in direkt från Windows-agenter.|
-| System Center Operations Manager-hanteringsgrupp | Yes | Pulsslags händelser samlas in från agenter som rapporterar till hanterings gruppen var 60 sekund och vidarebefordras sedan till Azure Monitor. En direkt anslutning från Operations Manager agenter till Azure Monitor krävs inte. Pulsslags händelse data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan.|
+| Windows-agenter | Ja | Pulsslagshändelser som samlas in direkt från Windows-agenter.|
+| System Center Operations Manager-hanteringsgrupp | Ja | Pulsslags händelser samlas in från agenter som rapporterar till hanterings gruppen var 60 sekund och vidarebefordras sedan till Azure Monitor. En direkt anslutning från Operations Manager agenter till Azure Monitor krävs inte. Pulsslags händelse data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan.|
 
 ## <a name="using-the-solution"></a>Använda lösningen
 När du lägger till lösningen i Log Analytics-arbetsytan läggs panelen **agenthälsa** till på instrument panelen. Den här panelen visar det totala antalet agenter och antalet agenter som inte har svarat under de senaste 24 timmarna.<br><br> ![Panelen för Agenthälsa på instrumentpanelen](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -90,7 +89,7 @@ Varje agent som rapporterar till en Operations Manager hanterings server skickar
 ## <a name="sample-log-searches"></a>Exempel på loggsökningar
 Följande tabell innehåller exempel på sökningar i loggen för poster som har samlats in av den här lösningen.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Totalt antal agenter |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Antal agenter som inte har svarat de senaste 24 timmarna |

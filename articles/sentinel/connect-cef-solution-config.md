@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 07685cccf5a8dce99ae13e6df5186a5da44b1338
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 368bae515697599dba35a913ebdb9f2b4065c152
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559427"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711918"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>STEG 2: Konfigurera säkerhets lösningen för att skicka CEF-meddelanden
 
@@ -31,6 +31,8 @@ Om din säkerhetslösning redan har en befintlig koppling använder du de anslut
 
 - [AI Vectra Detect](connect-ai-vectra-detect.md)
 - [Akamai säkerhets händelser](connect-akamai-security-events.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
 - [Check Point](connect-checkpoint.md)
 - [Cisco ASA](connect-cisco.md)
 - [Citrix WAF](connect-citrix-waf.md)

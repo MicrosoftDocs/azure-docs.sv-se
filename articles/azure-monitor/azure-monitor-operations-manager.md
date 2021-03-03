@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: b1262533c3398a774b85e4143289a9b7c342aeab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e9f0a285df6013334970b971e46079b9e78b19cb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593584"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728968"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor för befintliga Operations Manager-kunder
 Den här artikeln innehåller vägledning för kunder som för närvarande använder [System Center Operations Manager](/system-center/scom/welcome) och som planerar en över gång till [Azure Monitor](overview.md) när de migrerar affärs program och andra resurser till Azure. Det förutsätter att ditt slutgiltiga mål är en fullständig över gång till molnet, vilket ersätter så mycket Operations Manager funktioner som möjligt med Azure Monitor, utan att kompromissa med dina verksamhets-och drift krav. 
@@ -56,7 +56,7 @@ Miljön innan du flyttar några komponenter till Azure baseras på virtuella och
 
 Din migrering till Azure börjar med IaaS och flyttar virtuella datorer som stöder affärs program till Azure. Övervaknings kraven för dessa program och serverprogram varan är beroende av ändra inte och du fortsätter att använda Operations Manager på dessa servrar med dina befintliga hanterings paket. 
 
-Azure Monitor aktive ras för dina Azure-tjänster så snart du skapar en Azure-prenumeration. Den samlar automatiskt in plattforms mått och aktivitets loggen och du konfigurerar resurs loggar som ska samlas in så att du kan analysera all tillgänglig telemetri interaktivt med hjälp av logg frågor. Du aktiverar Azure Monitor for VMs på dina virtuella datorer för att analysera övervaknings data i hela miljön tillsammans och för att identifiera relationer mellan datorer och processer. Du kan utöka din användning av Azure Monitor till dina lokala fysiska och virtuella datorer genom att aktivera Azure Arc-aktiverade servrar. 
+Azure Monitor aktive ras för dina Azure-tjänster så snart du skapar en Azure-prenumeration. Den samlar automatiskt in plattforms mått och aktivitets loggen och du konfigurerar resurs loggar som ska samlas in så att du kan analysera all tillgänglig telemetri interaktivt med hjälp av logg frågor. Du kan använda VM Insights på dina virtuella datorer för att analysera övervaknings data i hela miljön och identifiera relationer mellan datorer och processer. Du kan utöka din användning av Azure Monitor till dina lokala fysiska och virtuella datorer genom att aktivera Azure Arc-aktiverade servrar. 
 
 Du aktiverar Application Insights för var och en av dina affärs program. Den identifierar de olika komponenterna i varje program, börjar samla in användnings-och prestanda data och identifierar eventuella fel som inträffar i koden. Du skapar tillgänglighets test för att proaktivt testa dina externa program och varna dig för eventuella prestanda-och tillgänglighets problem. Även om Application Insights ger dig kraftfulla funktioner som du inte har i Operations Manager, fortsätter du att förlita dig på anpassade hanterings paket som du har utvecklat för dina affärs program eftersom de innehåller övervaknings scenarier som ännu inte omfattas av Azure Monitor. 
 
@@ -89,21 +89,21 @@ Med [Azures hanterings paket](https://www.microsoft.com/download/details.aspx?id
 ## <a name="monitor-server-software-and-local-infrastructure"></a>Övervaka serverprogram vara och lokal infrastruktur
 När du flyttar datorer till molnet ändras inte övervaknings kraven för program varan. Du behöver inte längre övervaka deras fysiska komponenter eftersom de är virtualiserade, men gäst operativ systemet och dess arbets belastningar har samma krav oavsett miljö.
 
-[Azure Monitor for VMS](vm/vminsights-overview.md) är den primära funktionen i Azure Monitor för övervakning av virtuella datorer och deras gäst operativ system och arbets belastningar. I likhet med Operations Manager använder Azure Monitor for VMs en agent för att samla in data från gäst operativ systemet för virtuella datorer. Detta är samma prestanda-och händelse data som vanligt vis används av hanterings paket för analys och avisering. Det finns inte befintliga regler, till exempel för att identifiera och Varna vid problem för affärs program och serverprogram som körs på dessa datorer. Du måste skapa egna aviserings regler för att proaktivt meddela eventuella identifierade problem.
+[VM Insights](vm/vminsights-overview.md) är den primära funktionen i Azure Monitor för övervakning av virtuella datorer och deras gäst operativ system och arbets belastningar. På samma sätt som Operations Manager, använder VM Insights en agent för att samla in data från gäst operativ systemet för virtuella datorer. Detta är samma prestanda-och händelse data som vanligt vis används av hanterings paket för analys och avisering. Det finns inte befintliga regler, till exempel för att identifiera och Varna vid problem för affärs program och serverprogram som körs på dessa datorer. Du måste skapa egna aviserings regler för att proaktivt meddela eventuella identifierade problem.
 
-[![Azure Monitor for VMs prestanda](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![Prestanda för VM Insights](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Monitor mäter inte heller hälsan för olika program och tjänster som körs på en virtuell dator. Mått aviseringar kan automatiskt lösas när ett värde sjunker under ett tröskelvärde, men Azure Monitor inte för närvarande har möjlighet att definiera hälso kriterier för program och tjänster som körs på datorn, och inte heller tillhandahålla hälso sammanslagning för att gruppera hälso tillståndet för relaterade komponenter.
 
 > [!NOTE]
-> En ny [gäst hälso funktion för Azure Monitor for VMS](vm/vminsights-health-overview.md) finns nu i offentlig för hands version och aviserar baserat på hälso tillståndet för en uppsättning prestanda mått. Detta är inlednings vis begränsad till en viss uppsättning prestanda räknare som är relaterade till gäst operativ systemet, inte program eller andra arbets belastningar som körs på den virtuella datorn.
+> En ny [gäst hälso funktion för VM-insikter](vm/vminsights-health-overview.md) finns nu i en offentlig för hands version och avisering baserat på hälso tillståndet för en uppsättning prestanda mått. Detta är inlednings vis begränsad till en viss uppsättning prestanda räknare som är relaterade till gäst operativ systemet, inte program eller andra arbets belastningar som körs på den virtuella datorn.
 > 
-> [![Azure Monitor for VMs gäst hälsa](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![Gäst hälsa för VM Insights](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-Övervakning av program varan på dina datorer i en hybrid miljö använder vanligt vis en kombination av Azure Monitor for VMs och Operations Manager, beroende på kraven för varje dator och på din förfallo tid för att utveckla operativa processer kring Azure Monitor. Microsofts hanterings agent (kallas Log Analytics agent i Azure Monitor) används av båda plattformarna så att en enda dator kan övervakas samtidigt av båda.
+Övervakning av program varan på dina datorer i en hybrid miljö använder vanligt vis en kombination av VM-insikter och Operations Manager, beroende på kraven för varje dator och på din förfallo tid för att utveckla operativa processer kring Azure Monitor. Microsofts hanterings agent (kallas Log Analytics agent i Azure Monitor) används av båda plattformarna så att en enda dator kan övervakas samtidigt av båda.
 
 > [!NOTE]
-> I framtiden kommer Azure Monitor for VMs övergå till [Azure Monitor Agent](agents/azure-monitor-agent-overview.md), som för närvarande finns i en offentlig för hands version. Den kommer att vara kompatibel med Microsoft Monitoring Agent, så att samma virtuella dator fortsätter att kunna övervakas av båda plattformarna.
+> I framtiden kommer VM Insights att övergå till [Azure Monitor Agent](agents/azure-monitor-agent-overview.md), som för närvarande finns i en offentlig för hands version. Den kommer att vara kompatibel med Microsoft Monitoring Agent, så att samma virtuella dator fortsätter att kunna övervakas av båda plattformarna.
 
 Fortsätt att använda Operations Manager för funktioner som ännu inte kan tillhandahållas av Azure Monitor. Detta inkluderar hanterings paket för kritisk serverprogram vara som IIS, SQL Server eller Exchange. Du kan också ha anpassade hanterings paket som har utvecklats för lokal infrastruktur som inte kan nås med Azure Monitor. Fortsätt också att använda Operations Manager om det är nära integrerat i dina operativa processer tills du kan övergå till att göra dina tjänst åtgärder så att Azure Monitor och andra Azure-tjänster kan utöka eller ersätta. 
 
@@ -114,9 +114,9 @@ Använd Azure Monitor virtuella datorer för att förbättra din aktuella överv
 - Använd [logg frågor](logs/log-query-overview.md) för att interaktivt analysera telemetri från dina virtuella datorer med data från dina andra Azure-resurser.
 - Skapa [logg aviserings regler](alerts/alerts-log-query.md) baserade på komplex logik över flera virtuella datorer.
 
-[![Azure Monitor for VMs karta](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![Översikt över VM Insights](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Förutom Azure Virtual Machines kan Azure Monitor for VMs övervaka datorer lokalt och i andra moln med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md). Med ARC-aktiverade servrar kan du hantera dina Windows-och Linux-datorer utanför Azure, i företags nätverket eller annan moln leverantör som stämmer överens med hur du hanterar interna virtuella Azure-datorer.
+Förutom Azure Virtual Machines kan VM Insights övervaka datorer lokalt och i andra moln med hjälp av [Azure Arc-aktiverade servrar](../azure-arc/servers/overview.md). Med ARC-aktiverade servrar kan du hantera dina Windows-och Linux-datorer utanför Azure, i företags nätverket eller annan moln leverantör som stämmer överens med hur du hanterar interna virtuella Azure-datorer.
 
 
 
@@ -131,7 +131,7 @@ Om övervakningen av ett affärs program är begränsad till funktioner som till
 - Identifiera undantag och nedbrytning av stack spårning och relaterade begär Anden.
 - Utföra avancerad analys med hjälp av funktioner som [Distributed tracing](app/distributed-tracing.md) och [Smart identifiering](app/proactive-diagnostics.md).
 - Använd [Metrics Explorer](essentials/metrics-getting-started.md) för att interaktivt analysera prestanda data.
-- Använd [logg frågor](logs/log-query-overview.md) för att interaktivt analysera insamlad telemetri tillsammans med data som samlas in för Azure-tjänster och Azure Monitor for VMS.
+- Använd [logg frågor](logs/log-query-overview.md) för att interaktivt analysera insamlad telemetri tillsammans med data som samlas in för Azure-tjänster och VM-insikter.
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -150,5 +150,5 @@ Följ den grundläggande strategin i de andra avsnitten i den här hand boken oc
 - I [övervaknings guiden för molnet](/azure/cloud-adoption-framework/manage/monitor/) finns en detaljerad jämförelse av Azure Monitor och System Center Operations Manager och mer information om hur du utformar och implementerar en hybrid övervaknings miljö.
 - Läs mer om [övervakning av Azure-resurser i Azure Monitor](essentials/monitor-azure-resource.md).
 - Läs mer om [övervakning av virtuella Azure-datorer i Azure Monitor](vm/monitor-vm-azure.md).
-- Läs mer om [Azure Monitor for VMS](vm/vminsights-overview.md).
+- Läs mer om [VM Insights](vm/vminsights-overview.md).
 - Läs mer om [Application Insights](app/app-insights-overview.md).

@@ -6,18 +6,18 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3ee29e6c65dcd2b2226dc4dc7844b3b02a571a4f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3f8da7e985e62ce0b40c6dddcd137cce8561e59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717867"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Felsöka problem i Azure Monitor aviseringar
 
 I den här artikeln beskrivs vanliga problem i Azure Monitor aviseringar och meddelanden.
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Mer information om aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Mer information om aviseringar finns i [Översikt över aviseringar i Microsoft Azure](./alerts-overview.md).
 
 Om du har problem med att en avisering ska uppstå eller inte uppstår när du förväntar dig, se artiklarna nedan. Du kan se "utlöst" aviseringar i Azure Portal.
 
@@ -36,7 +36,7 @@ Om du kan se en utlöst avisering i Azure Portal, men inte har fått något e-po
 
 1. **Ignorerades e-postmeddelandet av en [Åtgärds regel](../alerts/alerts-action-rules.md)**?
 
-    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](../platform/action-groups.md):
+    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](./action-groups.md):
 
     ![Varnings historik för varnings åtgärds regel](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +92,7 @@ Om du kan se en utlöst avisering på portalen, men inte fick något SMS, rösts
 
 1. **Ignorerades åtgärden av en [Åtgärds regel](../alerts/alerts-action-rules.md)?**
 
-    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](../platform/action-groups.md): 
+    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](./action-groups.md): 
 
     ![Varnings historik för varnings åtgärds regel](media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +125,7 @@ Om du kan se en utlöst avisering på portalen, och om dess konfigurerade åtgä
 
 1. **Ignorerades åtgärden av en åtgärds regel?**
 
-    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](../platform/action-groups.md):
+    Kontrollera det genom att klicka på den utlösta aviseringen på portalen och gå till historikfliken där du kan se utelämnade [åtgärdsgrupper](./action-groups.md):
 
     ![Varnings historik för varnings åtgärds regel](media/alerts-troubleshoot/history-action-rule.png)
  
@@ -135,13 +135,13 @@ Om du kan se en utlöst avisering på portalen, och om dess konfigurerade åtgä
 
     1. **Har käll-IP-adresserna blockerats?**
     
-       Lägg till [IP-adresserna](../platform/action-groups.md#action-specific-information) som webhooken kallas från i listan över tillåtna.
+       Lägg till [IP-adresserna](./action-groups.md#action-specific-information) som webhooken kallas från i listan över tillåtna.
 
-    1. **Fungerar webhook-slutpunkten korrekt?**
+    1. **Fungerar webhook-slutpunkten som den ska?**
 
        Kontrollera att slutpunkten som du har konfigurerat för webhooken stämmer och att den fungerar som den ska. Kontrollera dina webhook-loggar eller instrumentera dess kod så att du kan undersöka den (logga exempelvis den inkommande nyttolasten).
 
-    1. **Ringer du slack eller Microsoft Teams?**  
+    1. **Anropar du Slack eller Microsoft Teams?**  
     Var och en av dessa slutpunkter förväntar sig ett specifikt JSON-format. Följ [de här anvisningarna](../alerts/action-groups-logic-app.md) för att konfigurera en åtgärd för en logikapp i stället.
 
     1. **Slutade webhooken att svara eller returnerade fel?** 
@@ -180,12 +180,12 @@ Om du har fått aviseringen men tror att några av fälten i aviseringen saknas 
 
     Kontrollera att formatet som anges på åtgärdsnivå stämmer. Du kanske exempelvis har skapat kod som svarar på aviseringar (webhook, funktion, logikapp osv.), som förväntar sig ett format, men senare i åtgärden har du eller någon annan angett ett annat format.  
 
-    Kontrollera också nyttolastformatet (JSON) för [aktivitetsloggaviseringar](../alerts/activity-log-alerts-webhook.md), för [loggsökningsaviseringar](../alerts/alerts-log-webhook.md) (både Application Insights och Log Analytics), för [måttaviseringar](alerts-metric-near-real-time.md#payload-schema), för [det gemensamma aviseringsschemat](../alerts/alerts-common-schema-definitions.md) och för de föråldrade [klassiska måttaviseringarna](../platform/alerts-webhooks.md).
+    Kontrollera också nyttolastformatet (JSON) för [aktivitetsloggaviseringar](../alerts/activity-log-alerts-webhook.md), för [loggsökningsaviseringar](../alerts/alerts-log-webhook.md) (både Application Insights och Log Analytics), för [måttaviseringar](alerts-metric-near-real-time.md#payload-schema), för [det gemensamma aviseringsschemat](../alerts/alerts-common-schema-definitions.md) och för de föråldrade [klassiska måttaviseringarna](./alerts-webhooks.md).
 
  
 1. **Aktivitets logg aviseringar: är informationen tillgänglig i aktivitets loggen?** 
 
-    [Aktivitets logg aviseringar](../platform/activity-log-alerts.md) är aviseringar som baseras på händelser som skrivits till Azures aktivitets logg, till exempel händelser för att skapa, uppdatera eller ta bort Azure-resurser, service hälsa och resurs hälso händelser eller resultat från Azure Advisor och Azure policy. Om du har fått en avisering baserat på aktivitetsloggen och vissa fält som du behöver saknas eller är felaktiga, börjar du med att kontrollera händelserna i själva aktivitetsloggen. Om Azure-resursen inte skrev de fält som du letar efter i aktivitetslogghändelsen, kommer dessa fält inte att finnas med i motsvarande avisering. 
+    [Aktivitets logg aviseringar](./activity-log-alerts.md) är aviseringar som baseras på händelser som skrivits till Azures aktivitets logg, till exempel händelser för att skapa, uppdatera eller ta bort Azure-resurser, service hälsa och resurs hälso händelser eller resultat från Azure Advisor och Azure policy. Om du har fått en avisering baserat på aktivitetsloggen och vissa fält som du behöver saknas eller är felaktiga, börjar du med att kontrollera händelserna i själva aktivitetsloggen. Om Azure-resursen inte skrev de fält som du letar efter i aktivitetslogghändelsen, kommer dessa fält inte att finnas med i motsvarande avisering. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Åtgärdsregeln fungerar inte som förväntat 
 
@@ -250,4 +250,4 @@ Följ dessa steg om du fick ett fel meddelande när du försökte skapa, uppdate
 
 ## <a name="next-steps"></a>Nästa steg
 - Om du använder en logg avisering kan du också se [fel söknings logg aviseringar](./alerts-troubleshoot-log.md).
-- Gå tillbaka till [Azure Portal](https://portal.azure.com) för att kontrol lera om du har löst problemet med vägledning ovan 
+- Gå tillbaka till [Azure Portal](https://portal.azure.com) för att kontrol lera om du har löst problemet med vägledning ovan

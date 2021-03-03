@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430805"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715215"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
@@ -38,7 +38,7 @@ Den här översikten täcker följande områden:
 
 * [Gränser i Azure Logic Apps för hands version](#limits).
 
-Mer information finns i följande artiklar:
+Mer information finns i följande avsnitt:
 
 * [Azure Logic Apps som körs på djupet-körning](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
@@ -50,7 +50,7 @@ Mer information finns i följande artiklar:
 
 Azure Logic Apps för hands versions körning använder [Azure Functions](../azure-functions/functions-overview.md) utöknings barhet och är värdbaserad som ett tillägg i Azure Functions Runtime. Den här arkitekturen innebär att du kan köra den nya Logic app-typen var som helst som Azure Functions körs. Du kan vara värd för Azure Logic Apps för hands versions körning på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som arbets flödet behöver. Mer information om Azure Functions utöknings barhet finns i [WebJobs SDK: skapa anpassade bindningar för indata och utdata](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-Med den här nya metoden är Azure Logic Apps Preview-körningsmiljön och dina arbets flöden båda delarna i din app som du kan paketera tillsammans. Med den här funktionen kan du distribuera och köra dina arbets flöden genom att helt enkelt kopiera artefakter till värd miljön och starta din app. Den här metoden ger också en mer standardiserad upplevelse för att skapa DevOps-pipeliner runt arbets flödes projekt för att köra nödvändiga tester och verifieringar innan du distribuerar ändringar i produktions miljöer. Mer information finns i [Azure Logic Apps som körs i djupet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
+Med den här nya metoden är Azure Logic Apps Preview-körningsmiljön och dina arbets flöden båda delarna i din app som du kan paketera tillsammans. Med den här funktionen kan du distribuera och köra dina arbets flöden genom att helt enkelt kopiera artefakter till värd miljön och starta din app. Den här metoden ger också en mer standardiserad upplevelse för att skapa distributions pipeliner runt arbets flödes projekt för att köra nödvändiga tester och verifieringar innan du distribuerar ändringar i produktions miljöer. Mer information finns i [Azure Logic Apps som körs i djupet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
 
 I följande tabell sammanfattas skillnaderna mellan hur arbets flöden delar resurser, baserat på miljön där de körs. För skillnader i gränser, se [gränser i Azure Logic Apps för hands version](#limits).
 
@@ -139,10 +139,17 @@ Azure Logic Apps för hands versionen innehåller många aktuella och ytterligar
 
 * Aktivera diagnostik-loggning och spårnings funktioner för din Logi Kap par genom att använda [Application Insights](../azure-monitor/app/app-insights-overview.md) när de stöds av dina Azure-prenumerationer och Logic app-inställningar.
 
+* Få åtkomst till nätverksfunktioner, till exempel Anslut och integrera privat med virtuella Azure-nätverk, ungefär som Azure Functions när du skapar och distribuerar dina Logi Kap par med [Azure Functions Premium-planen](../azure-functions/functions-premium-plan.md). Mer information finns i följande avsnitt:
+
+  * [Nätverksalternativ för Azure Functions](../azure-functions/functions-networking-options.md)
+
+  * [Azure Logic Apps som kör nätverks möjligheter med Azure Logic Apps för hands version](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * Återskapa åtkomst nycklar för hanterade anslutningar som används av enskilda arbets flöden i en **Logic app-resurs (för hands version)** . För den här uppgiften [följer du samma steg för **Logic Apps** resursen, men på den enskilda arbets flödes nivån](logic-apps-securing-a-logic-app.md#regenerate-access-keys), inte på resurs nivån för Logic app.
 
-> [!NOTE]
-> Om du vill ha mer information om aktuella kända problem granskar du [sidan Logic Apps offentliga kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+* Lägg till parallella grenar i den nya designern genom att följa samma steg som för hands designern.
+ 
+Mer information finns i avsnittet om [ändrade, begränsade, otillgängliga och ej stödda](#limited-unavailable-unsupported) på sidan med [kända problem med Logic Apps offentliga för hands versioner i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
 
 * **OS-support**: för närvarande fungerar inte designern i Visual Studio Code på Linux OS, men du kan fortfarande distribuera Logi Kap par som använder Logic Apps för hands versions körning till Linux-baserade virtuella datorer. Nu kan du bygga dina Logi Kap par i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
 
-* **Utlösare och åtgärder**: vissa inbyggda utlösare är inte tillgängliga, till exempel glidande fönster och batch. För att starta arbets flödet använder du den [inbyggda upprepningen, begäran, http, HTTP-webhook, Event Hubs eller Service Bus utlösare](../connectors/apis-list.md). Inbyggda utlösare och åtgärder körs internt i Azure Logic Apps Preview-körningsmiljön, medan hanterade anslutningar distribueras i Azure. I designern visas inbyggda utlösare och åtgärder under den **inbyggda** fliken, medan utlösare för hanterade anslutningar och åtgärder visas på fliken **Azure** .
+* **Utlösare och åtgärder**: inbyggda utlösare och åtgärder körs internt i Azure Logic Apps för hands versions körning, medan hanterade anslutningar distribueras i Azure. Vissa inbyggda utlösare är inte tillgängliga, till exempel glidande fönster och batch.
+
+  För att starta arbets flödet använder du den [inbyggda upprepningen, begäran, http, HTTP-webhook, Event Hubs eller Service Bus utlösare](../connectors/apis-list.md). I designern visas inbyggda utlösare och åtgärder under den **inbyggda** fliken, medan utlösare för hanterade anslutningar och åtgärder visas på fliken **Azure** .
 
   > [!NOTE]
   > För att du ska kunna köra lokalt i Visual Studio Code krävs ytterligare konfiguration för webhook-baserade utlösare och åtgärder. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
@@ -199,11 +208,11 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
 
       * Infogade kod åtgärder kräver inte längre något integrations konto.
 
-      * Om du använder macOS eller Linux är **infogade kod åtgärder** för närvarande inte tillgängligt när du använder tillägget Azure Logic Apps (för hands version) i Visual Studio Code.
+      * För macOS och Linux stöds nu **infogade kod åtgärder** när du använder tillägget Azure Logic Apps (för hands version) i Visual Studio Code.
 
-      * Om du gör ändringar i en infogad kod åtgärd måste du starta om din Logic app.
+      * Du behöver inte längre starta om din Logic-app om du gör ändringar i en **infogad Code Operations** -åtgärd.
 
-      * Inlined Code Operations-åtgärder har [uppdaterade gränser](logic-apps-overview-preview.md#inline-code-limits).
+      * **Inlined Code Operations** -åtgärder har [uppdaterade gränser](logic-apps-overview-preview.md#inline-code-limits).
 
     * Några [inbyggda B2B-utlösare och åtgärder för integrations konton](../connectors/apis-list.md#integration-account-connectors) är inte tillgängliga, till exempel den **flata fil** kodningen och avkodnings åtgärder.
 
@@ -211,17 +220,15 @@ I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är 
 
 * **Tillgänglighet för värd plan**: om du skapar en ny resurs typ för **Logic app (förhands granskning)** i Azure Portal eller distribuerar från Visual Studio Code, kan du bara använda Premium-eller App Service hosting-planen i Azure. Förbruknings värd planer är inte tillgängliga och stöds inte för distribution av den här resurs typen. Du kan distribuera från Visual Studio Code till en Docker-behållare, men inte till en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
-* **Parallella grenar**: för närvarande kan du inte lägga till parallella grenar genom den nya design upplevelsen. Du kan dock fortfarande lägga till dessa grenar genom den ursprungliga design upplevelsen och låta dem visas i den nya designern.
-
-  1. Inaktivera den nya upplevelsen längst ned i designern genom att välja den **nya arbets ytans** kontroll.
-
-  1. Lägg till parallella grenar i arbets flödet.
-
-  1. Aktivera den nya upplevelsen genom att välja den **nya arbets ytans** kontroll igen.
+* **Bryt punkts fel sökning i Visual Studio Code**: även om du kan lägga till och använda Bryt punkter i **workflow.jsi** filen för ett arbets flöde, stöds Bryt punkter endast för åtgärder för tillfället, inte utlösare. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
 * **Zoomnings kontroll**: zoomnings kontrollen är för närvarande inte tillgänglig i designern.
 
-* **Bryt punkts fel sökning i Visual Studio Code**: även om du kan lägga till och använda Bryt punkter i **workflow.jsi** filen för ett arbets flöde, stöds Bryt punkter endast för åtgärder för tillfället, inte utlösare. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Utlös ande historik och körnings historik**: för resurs typen **Logic app (förhands granskning)** , Utlös ande historik och körnings historik i Azure Portal visas på arbets flödes nivå, inte på Logic app-nivå. Följ dessa steg om du vill hitta dessa historiska data:
+
+   * Om du vill visa körnings historiken öppnar du arbets flödet i din Logic app. Välj **övervaka** under **utvecklare** på arbets flödes menyn.
+
+   * Om du vill granska utlösarens historik öppnar du arbets flödet i din Logic app. På arbets flödes menyn väljer du **Utlös historia** under **utvecklare**.
 
 <a name="limits"></a>
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386722"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721028"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Begränsningar i Azure Database for MySQL
 I följande avsnitt beskrivs kapacitet, stöd för lagrings motor, stöd för stöd för data manipulation och funktionella gränser i databas tjänsten. Se även [allmänna begränsningar](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) som gäller för databas motorn MySQL.
@@ -29,7 +29,7 @@ Lösen ords-plugin-program som "validate_password" och "caching_sha2_password" s
 
 ## <a name="storage-engines"></a>Lagrings motorer
 
-MySQL stöder många lagrings motorer. På Azure Database for MySQL flexibel Server stöds följande lagrings motorer och stöds inte:
+MySQL stöder många lagrings motorer. På Azure Database for MySQL stöds följande lagrings motorer och stöds inte:
 
 ### <a name="supported"></a>Stöds
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

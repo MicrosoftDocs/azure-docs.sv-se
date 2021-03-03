@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: e4f756631b51ce9c5fba32939d1c6651e7b328d0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/25/2021
+ms.openlocfilehash: c3c874b2e6362ceb5b4746f67614b5d85991efbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713005"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiera data från en SAP-tabell med hjälp av Azure Data Factory
 
@@ -66,7 +66,7 @@ Om du vill använda den här SAP Table Connector måste du:
 - Den SAP-användare som används i Data Factory SAP Table Connector måste ha följande behörigheter:
 
   - Auktorisering för att använda RFC-mål (Remote Function Call).
-  - Behörigheter till aktiviteten kör för S_SDSAUTH Authorization-objektet.
+  - Behörigheter till aktiviteten kör för S_SDSAUTH Authorization eller behörighet till aktiviteten kör för S_RFC: FUGR-RFC1, SYST, SYSU FUNC-RFCPING, RFC_FUNCTION_SEARCH ACTVT – 16. 
 
 ## <a name="get-started"></a>Kom igång
 

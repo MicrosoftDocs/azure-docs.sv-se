@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 02/08/2021
-ms.openlocfilehash: 92d75289fd4459db8c469a4cb562fe28e8aab779
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710333"
 ---
 # <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services dokument: Nyheter i den 1 januari 2021 – 31 januari 2021
 
@@ -29,31 +29,31 @@ Välkommen till nyheter i Cognitive Services dokumenten från den 1 januari 2021
 
 **Nya artiklar**
 
-- [Självstudie: extrahera formulär data i bulk med Azure Data Factory](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
+- [Självstudie: extrahera formulär data i bulk med Azure Data Factory](./form-recognizer/tutorial-bulk-processing.md)
 
 **Uppdaterade artiklar**
 
-- [Vad är formigenkänning?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Vad är formigenkänning?](./form-recognizer/overview.md)
 
 ## <a name="immersive-reader"></a>Avancerad läsare
 
 **Uppdaterade artiklar**
 
-- [Skapa en fördjupad läsar resurs och konfigurera Azure Active Directory autentisering](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
+- [Skapa en fördjupad läsar resurs och konfigurera Azure Active Directory autentisering](./immersive-reader/how-to-create-immersive-reader.md)
 
 ## <a name="personalizer"></a>Personanpassning
 
 **Uppdaterade artiklar**
 
-- [Funktioner är information om åtgärder och kontext](/azure/cognitive-services/personalizer/concepts-features.md)
+- [Funktioner är information om åtgärder och kontext](./personalizer/concepts-features.md)
 
 ## <a name="text-analytics"></a>Textanalys
 
 **Uppdaterade artiklar**
 
-- [Språk stöd för API för textanalys v3](/azure/cognitive-services/text-analytics/language-support.md)
-- [Migrera till version 3. x av API för textanalys](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Vad är nytt i API:et för textanalys?](/azure/cognitive-services/text-analytics/whats-new.md)
+- [Språk stöd för API för textanalys v3](./text-analytics/language-support.md)
+- [Migrera till version 3. x av API för textanalys](./text-analytics/migration-guide.md)
+- [Vad är nytt i API:et för textanalys?](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>Community-deltagare
 

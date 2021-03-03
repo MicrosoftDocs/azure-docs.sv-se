@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 12/14/2020
+ms.date: 02/23/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e87899010660eac11166275bdfd61151bb12c10f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585266"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686945"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Lägg till villkorlig åtkomst till användar flöden i Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Villkorlig åtkomst stöds i de senaste versionerna av användar flöden. Du kan
 
 Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identity-protection-overview.md) i Azure AD B2C eller i [så här konfigurerar du det](conditional-access-identity-protection-setup.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure AD B2C Premium 2 krävs för att skapa riskfyllda inloggnings principer. Premium P1-klienter kan skapa plats-, app-eller gruppbaserade principer.
 - I test syfte kan du [Registrera test webb programmet](tutorial-register-applications.md) `https://jwt.ms` , som är ett Microsoft-ägda webb program som visar det avkodade innehållet i en token (innehållet i token aldrig lämnar webbläsaren). 
@@ -129,6 +129,8 @@ Om du vill testa villkorlig åtkomst i ditt användar flöde [skapar du en princ
 ## <a name="add-conditional-access-to-your-policy"></a>Lägg till villkorlig åtkomst till principen
 
 Du kan hitta ett exempel på en princip för villkorlig åtkomst på [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access).
+
+Du kan också lära dig mer om hur du [definierar en teknisk profil för villkorlig åtkomst i en anpassad princip](conditional-access-technical-profile.md).
 
 ::: zone-end
 

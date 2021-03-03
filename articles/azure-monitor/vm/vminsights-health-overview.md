@@ -1,26 +1,26 @@
 ---
-title: Azure Monitor for VMs gäst hälsa (för hands version)
-description: Översikt över hälso funktionen i Azure Monitor for VMs inklusive hur du kan visa hälso tillståndet för dina virtuella datorer och få aviseringar när en virtuell dator blir ohälsosam.
+title: Gäst hälsa för VM Insights (förhands granskning)
+description: Översikt över hälso funktionen i VM Insights, inklusive hur du kan visa hälso tillståndet för dina virtuella datorer och få aviseringar när en virtuell dator blir ohälsosam.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 96bed9f3b04e54e2e9a5234d78f9a2660126742e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622192"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707463"
 ---
-# <a name="azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs gäst hälsa (för hands version)
-Azure Monitor for VMs gäst hälsa kan du Visa hälso tillståndet för virtuella datorer baserat på en uppsättning prestanda mätningar som samplas med jämna mellanrum från gäst operativ systemet. Du kan snabbt kontrol lera hälsan för alla virtuella datorer i en prenumeration eller resurs grupp, öka detalj nivån i den detaljerade hälsan för en viss virtuell dator eller proaktivt under rättas när en virtuell dator blir ohälsosam. 
+# <a name="vm-insights-guest-health-preview"></a>Gäst hälsa för VM Insights (förhands granskning)
+Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för virtuella datorer baserat på en uppsättning prestanda mätningar som samplas med jämna mellanrum från gäst operativ systemet. Du kan snabbt kontrol lera hälsan för alla virtuella datorer i en prenumeration eller resurs grupp, öka detalj nivån i den detaljerade hälsan för en viss virtuell dator eller proaktivt under rättas när en virtuell dator blir ohälsosam. 
 
 ## <a name="enable-virtual-machine-health"></a>Aktivera hälsa för virtuell dator
-Se [aktivera Azure Monitor for VMS gäst hälsa (för hands version)](vminsights-health-enable.md) om du vill ha mer information om hur du aktiverar funktionen för gäst hälsa och onboarding av virtuella datorer.
+Se [Aktivera VM Insights-gäst hälsa (för hands version)](vminsights-health-enable.md) för information om hur du aktiverar funktionen för gäst hälsa och onboarding av virtuella datorer.
 
 ## <a name="pricing"></a>Prissättning
-Det finns ingen direkt kostnad för funktionen för gäst hälsa, men det finns en kostnad för att mata in och lagra hälso tillstånds data i Log Analytics-arbetsytan. Alla data lagras i tabellen *HealthStateChangeEvent* . Mer information om pris modeller och kostnader finns i [Hantera användning och kostnader med Azure Monitor loggar](../platform/manage-cost-storage.md) .
+Det finns ingen direkt kostnad för funktionen för gäst hälsa, men det finns en kostnad för att mata in och lagra hälso tillstånds data i Log Analytics-arbetsytan. Alla data lagras i tabellen *HealthStateChangeEvent* . Mer information om pris modeller och kostnader finns i [Hantera användning och kostnader med Azure Monitor loggar](../logs/manage-cost-storage.md) .
 
 ## <a name="view-virtual-machine-health"></a>Visa hälsa för virtuell dator
 Kolumnen **gäst hälsa för virtuell dator** på sidan **Kom igång** ger dig en snabb överblick över hälso tillståndet för varje virtuell dator i en viss prenumeration eller resurs grupp. Den aktuella hälsan för varje virtuell dator visas medan ikoner för varje grupp visar antalet virtuella datorer för närvarande i varje tillstånd i gruppen.
@@ -35,7 +35,7 @@ Klicka på en virtuell dators hälso status om du vill visa detaljerad status f�
 
 I följande tabell visas de mängd-och enhets Övervakare som för närvarande är tillgängliga för varje virtuell dator. 
 
-| Monitor | Typ | Description |
+| Monitor | Typ | Beskrivning |
 |:---|:---|:---|
 | CPU-användning | Enhet | Processor användning i procent. |
 | Filsystem | Aggregera | Sammanställd hälsa för alla fil system på virtuella Linux-datorer. |
@@ -53,7 +53,7 @@ Varje övervakare har ett lookback-fönster och analyserar alla exempel som saml
 
 Övervaka var och en har de potentiella hälso tillstånden i följande tabell och kommer att vara i en och endast en specifik tidpunkt. När en övervakare initieras startar den i felfritt tillstånd.
 
-| Hälsotillstånd | Description |
+| Hälsotillstånd | Beskrivning |
 |:---|:---|
 | Felfri  | Övervakaren överskrider för närvarande inte varningen eller det kritiska tröskelvärdet. |
 | Varning  | Övervakaren överskred varnings tröskelvärdet (om det har definierats). |
@@ -66,7 +66,7 @@ Varje övervakare har ett lookback-fönster och analyserar alla exempel som saml
 
 Det finns två typer av Övervakare som visas i följande tabell.
 
-| Monitor | Description |
+| Monitor | Beskrivning |
 |:---|:---|
 | Enhetsövervakare | Mäter en viss aspekt av en resurs eller ett program. Det kan till exempel handla om att kontrollera en prestandaräknare för att fastställa resursens prestanda eller dess tillgänglighet. |
 | Samlingsövervakare | Grupperar flera övervakare för att visa ett sammanställt hälsotillstånd. En samlingsövervakare kan innehålla en eller flera enhetsövervakare och andra samlingsövervakare. |
@@ -95,7 +95,7 @@ Välj en Övervakare för att visa information som innehåller följande flikar.
 [![Övervaka informations historik](media/vminsights-health-overview/monitor-details-history.png)](media/vminsights-health-overview/monitor-details-history.png#lightbox)
 
 ### <a name="configuration"></a>Konfiguration
-Visa och ändra konfigurationen för övervakaren för den valda virtuella datorn. Mer information finns i [Konfigurera övervakning i Azure Monitor for VMS gäst hälsa (för hands version)](vminsights-health-enable.md) .
+Visa och ändra konfigurationen för övervakaren för den valda virtuella datorn. Mer information finns i [Konfigurera övervakning av gäst hälsa för VM Insights (för hands version)](vminsights-health-enable.md) .
 
 [![Konfiguration av övervaka Detaljer](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 
@@ -104,6 +104,6 @@ Visa och ändra konfigurationen för övervakaren för den valda virtuella dator
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Aktivera gäst hälsa i Azure Monitor for VMs och inbyggda agenter.](vminsights-health-enable.md)
+- [Aktivera gäst hälsa i VM Insights och inbyggda agenter.](vminsights-health-enable.md)
 - [Konfigurera övervakare med hjälp av Azure Portal.](vminsights-health-configure.md)
 - [Konfigurera övervakare med hjälp av data insamlings regler.](vminsights-health-configure-dcr.md)

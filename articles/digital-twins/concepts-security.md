@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d129890cc63e5a0e4cbc6139e1de2df7a31f6f77
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094563"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730515"
 ---
 # <a name="secure-azure-digital-twins"></a>Skydda digitala Azure-dubbla
 
@@ -92,7 +92,7 @@ Azure stöder två typer av hanterade identiteter: systemtilldelade och tilldela
 
 Du kan använda en systemtilldelad hanterad identitet för Azure Digital-instansen för att autentisera till en [anpassad definierad slut punkt](concepts-route-events.md#create-an-endpoint). Azure Digitals dubbla nätverk stöder systemtilldelad identitets baserad autentisering till slut punkter för [Event Hub](../event-hubs/event-hubs-about.md) och [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)   destinationer och till en [Azure Storage container](../storage/blobs/storage-blobs-introduction.md)   slut punkt för [händelser med obeställbara meddelanden](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)   slut punkter stöds för närvarande inte för hanterade identiteter.
 
-Instruktioner för hur du aktiverar en Systemhanterad identitet för digitala Azure-användare och använder den för att dirigera händelser finns i [*så här aktiverar du en hanterad identitet för vägvals händelser (för hands version)*](how-to-enable-managed-identities.md).
+Instruktioner för hur du aktiverar en Systemhanterad identitet för digitala Azure-användare och använder den för att dirigera händelser finns i [*så här aktiverar du en hanterad identitet för vägvals händelser (för hands version)*](./how-to-enable-managed-identities-portal.md).
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Åtkomst till privat nätverk med Azure Private Link (för hands version)
 
@@ -106,7 +106,7 @@ Den privata slut punkten använder en IP-adress från ditt Azure VNet-adressutry
 
 Genom att konfigurera en privat slut punkt för Azure Digital-instansen kan du skydda Azure Digitals-instansen och eliminera offentlig exponering, samt undvika data exfiltrering från ditt VNet.
 
-Instruktioner för hur du konfigurerar en privat länk för digital Digitals i Azure finns i [*så här aktiverar du privat åtkomst med privat länk (för hands version)*](how-to-enable-private-link.md).
+Instruktioner för hur du konfigurerar en privat länk för digital Digitals i Azure finns i [*så här aktiverar du privat åtkomst med privat länk (för hands version)*](./how-to-enable-private-link-portal.md).
 
 ### <a name="design-considerations"></a>Designöverväganden 
 
@@ -127,7 +127,7 @@ Nedan visas information om **AzureDigitalTwins** -tjänst tag gen.
 
 | Tagg | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
 | --- | --- | --- | --- | --- |
-| AzureDigitalTwins | Azure Digital Twins<br>OBS! den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att begränsa åtkomsten till slut punkter som kon figurer ATS för [händelse vägar](concepts-route-events.md). | Inkommande | Nej | Ja |
+| AzureDigitalTwins | Azure Digital Twins<br>OBS! den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att begränsa åtkomsten till slut punkter som kon figurer ATS för [händelse vägar](concepts-route-events.md). | Inkommande | Inga | Ja |
 
 ### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Använda service märken för att komma åt händelse vägens slut punkter 
 

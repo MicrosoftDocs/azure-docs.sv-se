@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795384"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700226"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Arbeta med NSG-åtkomst och Azure skydds
 
@@ -32,11 +32,15 @@ I det här diagrammet:
 
 I det här avsnittet visas nätverks trafiken mellan användaren och Azure-skydds och för virtuella datorer i det virtuella nätverket:
 
+> [!IMPORTANT]
+> Om du väljer att använda en NSG med din Azure skydds-resurs **måste** du skapa alla följande ingångs-och utgående trafik regler. Om du utelämnar någon av följande regler i NSG kommer din Azure skydds-resurs att blockeras från att ta emot nödvändiga uppdateringar i framtiden och därmed öppna din resurs för framtida säkerhets sårbarheter.
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure-skydds distribueras specifikt till ***AzureBastionSubnet** _.
+Azure-skydds distribueras specifikt till ***AzureBastionSubnet***.
 
-_ **Ingress trafik:**
+* **Ingress trafik:**
 
    * **Ingress trafik från offentlig Internet:** Azure-skydds skapar en offentlig IP-adress som behöver port 443 aktiverat på den offentliga IP-adressen för inkommande trafik. Port 3389/22 behöver inte öppnas på AzureBastionSubnet.
    * **Ingress trafik från Azure skydds Control plan:** För kontroll Plans anslutning aktiverar du port 443 inkommande från **GatewayManager** service tag. Detta gör det möjligt för kontroll planet, det vill säga att Gateway Manager kan kommunicera med Azure-skydds.

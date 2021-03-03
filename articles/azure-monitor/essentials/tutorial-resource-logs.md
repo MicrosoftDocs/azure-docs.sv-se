@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 88138cc1366dcef68aeccf652af05704e72c8e15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d3c3eff32120438fd891cb32fe98d73424f82b7f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734153"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Självstudie: samla in och analysera resurs loggar från en Azure-resurs
 
@@ -93,7 +93,7 @@ Data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som s
 
 
 5. Skriv in en fråga och klicka på **Kör** för att granska resultaten. 
-6. I [Kom igång med logg frågor i Azure Monitor](../log-query/get-started-queries.md) finns en själv studie kurs om hur du skriver logg frågor.
+6. I [Kom igång med logg frågor i Azure Monitor](../logs/get-started-queries.md) finns en själv studie kurs om hur du skriver logg frågor.
 
     ![Logg fråga](media/tutorial-resource-logs/log-query-1.png)
 
@@ -104,4 +104,4 @@ Data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som s
 Nu när du har lärt dig hur du samlar in resurs loggar i en Log Analytics arbets yta, fyller du i en själv studie kurs om hur du skriver logg frågor för att analysera data.
 
 > [!div class="nextstepaction"]
-> [Kom igång med loggfrågor i Azure Monitor](../log-query/get-started-queries.md)
+> [Kom igång med loggfrågor i Azure Monitor](../logs/get-started-queries.md)

@@ -1,24 +1,24 @@
 ---
-title: Aktivera Azure Monitor for VMs gäst hälsa (för hands version)
-description: Beskriver hur du aktiverar Azure Monitor for VMs gäst hälsa i din prenumeration och hur du kan publicera virtuella datorer.
+title: Aktivera gäst hälsa för VM Insights (förhands granskning)
+description: Beskriver hur du aktiverar gäst hälsa för VM Insights i din prenumeration och hur du kan publicera virtuella datorer.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5a65a986e95f333b6179c71a46edc69ca61acdea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3747e9190010bd3c0b88dfdbe9da01009316c275
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733728"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivera Azure Monitor for VMs gäst hälsa (för hands version)
-Azure Monitor for VMs gäst hälsa kan du se hälso tillståndet för en virtuell dator så som den definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du aktiverar den här funktionen i din prenumeration och hur du aktiverar gäst övervakning för varje virtuell dator.
+# <a name="enable-vm-insights-guest-health-preview"></a>Aktivera gäst hälsa för VM Insights (förhands granskning)
+Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du aktiverar den här funktionen i din prenumeration och hur du aktiverar gäst övervakning för varje virtuell dator.
 
 ## <a name="current-limitations"></a>Aktuella begränsningar
-Azure Monitor for VMs gäst hälsa har följande begränsningar i offentlig för hands version:
+Gäst hälsa för VM Insights har följande begränsningar i offentlig för hands version:
 
 - Endast virtuella Azure-datorer stöds för närvarande. Azure Arc för servrar stöds inte för närvarande.
 
@@ -36,19 +36,25 @@ Den virtuella datorn måste finnas i någon av följande regioner:
 - Australien, centrala
 - Australien, östra
 - Australien, sydöstra
+- Kanada, centrala
 - Indien, centrala
 - Central US
 - Asien, östra
 - East US
 - USA, östra 2
 - USA, östra 2 EUAP
+- Frankrike, centrala
 - Tyskland, västra centrala
 - Japan, östra
+- Sydkorea, centrala
 - USA, norra centrala
 - Europa, norra
 - USA, södra centrala
+- Sydafrika, norra
 - Sydostasien
+- Schweiz, norra
 - Storbritannien, södra
+- Storbritannien, västra
 - USA, västra centrala
 - Europa, västra
 - USA, västra
@@ -57,24 +63,36 @@ Den virtuella datorn måste finnas i någon av följande regioner:
 
 Log Analytics arbets ytan måste finnas i någon av följande regioner:
 
+- Australien, centrala
+- Australien, östra
+- Australien, sydöstra
+- Kanada, centrala
+- Kanada, Indien
 - Central US
+- Asien, östra
 - East US
 - USA, östra 2
 - USA, östra 2 EUAP
-- Norra Europa
+- Frankrike, centrala
+- Japan, östra
+- USA, norra centrala
+- Europa, norra
+- USA, södra centrala
 - Sydostasien
+- Schweiz, norra
 - Storbritannien, södra
 - Regionen Europa, västra
+- USA, västra
 - USA, västra 2
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Den virtuella datorn måste registreras Azure Monitor for VMs.
+- Virtuell dator måste registreras för VM-insikter.
 - Användare som kör onboarding-stegen måste ha en lägsta deltagar nivå åtkomst till prenumerationen där den virtuella datorn och data insamlings regeln finns.
 - Nödvändiga Azure-resurs leverantörer måste registreras enligt beskrivningen i följande avsnitt.
 
 ## <a name="register-required-azure-resource-providers"></a>Registrera nödvändiga Azure-resurs leverantörer
-Följande Azure-resurs leverantörer registreras för din prenumeration för att möjliggöra Azure Monitor for VMs gäst hälsa. 
+Följande Azure-resurs leverantörer registreras för din prenumeration för att ge VM Insights-gäst hälsa. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. Insights
@@ -90,7 +108,7 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 ## <a name="enable-a-virtual-machine-using-the-azure-portal"></a>Aktivera en virtuell dator med hjälp av Azure Portal
 När du aktiverar gästhälsa för en virtuell dator i Azure Portal utförs all konfiguration som krävs åt dig. Detta omfattar att skapa en regel för att kräva data insamling, installera gäst hälso tillägget på den virtuella datorn och skapa en Association med data insamlings regeln.
 
-Från vyn **Kom igång** i Azure Monitor for VMS klickar du på länken bredvid uppgraderings meddelandet för en virtuell dator och klickar sedan på knappen **Uppgradera** . Du kan också välja flera virtuella datorer för att uppgradera dem tillsammans.
+Från vyn **Kom igång** i VM Insights klickar du på länken bredvid uppgraderings meddelandet för en virtuell dator och klickar sedan på knappen **Uppgradera** . Du kan också välja flera virtuella datorer för att uppgradera dem tillsammans.
 
 ![Aktivera hälso funktion på virtuell dator](media/vminsights-health-enable/enable-agent.png)
 
@@ -107,10 +125,10 @@ Det krävs tre steg för att aktivera virtuella datorer med hjälp av Azure Reso
 > [!NOTE]
 > Om du aktiverar en virtuell dator med hjälp av Azure Portal skapas den data insamlings regel som beskrivs här. I så fall behöver du inte utföra det här steget.
 
-Konfiguration av övervakare i Azure Monitor for VMs gäst hälsa lagras i [data insamlings regler (DCR)](../agents/data-collection-rule-overview.md). Varje virtuell dator med gäst hälso tillägget behöver en Association med den här regeln.
+Konfigurationen av övervakarna i den virtuella datorns Insights-gäst hälsa lagras i [data insamlings regler (DCR)](../agents/data-collection-rule-overview.md). Varje virtuell dator med gäst hälso tillägget behöver en Association med den här regeln.
 
 > [!NOTE]
-> Du kan skapa ytterligare data insamlings regler för att ändra standard konfigurationen för övervakare enligt beskrivningen i [Konfigurera övervakning i Azure Monitor for VMS gäst hälsa (för hands version)](vminsights-health-configure.md).
+> Du kan skapa ytterligare data insamlings regler för att ändra standard konfigurationen för övervakare enligt beskrivningen i [Konfigurera övervakning i VM Insights-gäst hälsa (för hands version)](vminsights-health-configure.md).
 
 Mallen kräver värden för följande parametrar:
 
@@ -414,4 +432,4 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Anpassa Övervakare som Aktiver ATS av Azure Monitor for VMs](vminsights-health-configure.md)
+- [Anpassa Övervakare som Aktiver ATS av VM Insights](vminsights-health-configure.md)

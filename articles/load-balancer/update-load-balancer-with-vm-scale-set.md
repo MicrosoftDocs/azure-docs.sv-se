@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 1228462dc6437ecce7718c4747d2acb9ae7332cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721318"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Uppdatera eller ta bort en belastningsutjämnare som används av skalnings uppsättningar för virtuella datorer
 
@@ -111,6 +111,52 @@ Lägga till flera IP-konfigurationer:
 1. På sidan **Lägg till IP-adress för klient** del anger du värdena och väljer **OK**.
 1. Följ [steg 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) och [6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) i den här självstudien om nya regler för belastnings utjämning behövs.
 1. Skapa en ny uppsättning inkommande NAT-regler genom att använda de nyligen skapade frontend-IP-konfigurationerna om det behövs. Ett exempel finns i föregående avsnitt.
+
+## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>Flera Virtual Machine Scale Sets bakom samma Load Balancer
+
+Skapa en inkommande NAT-pool i Load Balancer, referera till den inkommande NAT-poolen i nätverks profilen för en skalnings uppsättning för virtuella datorer och uppdatera slutligen instanserna för att ändringarna ska börja gälla. Upprepa stegen för alla Virtual Machine Scale Sets.
+
+Se till att skapa separata inkommande NAT-pooler med icke-överlappande klient dels port intervall.
+  
+```azurecli-interactive
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool 
+          --protocol Tcp 
+          --frontend-port-range-start 80 
+          --frontend-port-range-end 89 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS
+          
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool2
+          --protocol Tcp 
+          --frontend-port-range-start 100 
+          --frontend-port-range-end 109 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig2
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS2 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS2
+```
 
 ## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>Ta bort klient delens IP-konfiguration som används av den virtuella datorns skal uppsättning
 

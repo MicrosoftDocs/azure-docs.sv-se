@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 4d4e868a181c216c29eeb5772b3e4c6108f514b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cd216e277a64d6e3edc87dc4027550bc8c7c5bfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623387"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726248"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Samla in anpassade JSON-datakällor med Log Analytics-agenten för Linux i Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Anpassade JSON-datakällor kan samlas in i [Azure Monitor](../platform/data-platform.md) med hjälp av Log Analytics-agenten för Linux.  De här anpassade data källorna kan vara enkla skript som returnerar JSON, till exempel [sväng](https://curl.haxx.se/) eller ett av de populäraste, [300 + plugin](https://www.fluentd.org/plugins/all)-programmen. I den här artikeln beskrivs den konfiguration som krävs för den här data insamlingen.
+Anpassade JSON-datakällor kan samlas in i [Azure Monitor](../data-platform.md) med hjälp av Log Analytics-agenten för Linux.  De här anpassade data källorna kan vara enkla skript som returnerar JSON, till exempel [sväng](https://curl.haxx.se/) eller ett av de populäraste, [300 + plugin](https://www.fluentd.org/plugins/all)-programmen. I den här artikeln beskrivs den konfiguration som krävs för den här data insamlingen.
 
 
 > [!NOTE]
@@ -104,4 +104,4 @@ Kapslade JSON-datakällor stöds, men indexeras baserat på överordnat fält. T
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar. 
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

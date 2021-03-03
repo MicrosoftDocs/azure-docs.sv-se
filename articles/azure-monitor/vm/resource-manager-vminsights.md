@@ -1,26 +1,26 @@
 ---
-title: Exempel på Resource Manager-mallar för Azure Monitor for VMs
-description: Exempel Azure Resource Manager mallar för att distribuera och configureAzure Övervakare för virtuella datorer.
+title: Exempel på Resource Manager-mallar för VM-insikter
+description: Exempel Azure Resource Manager mallar för att distribuera och configureVM insikter.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 91c8396795a85cd63fa502c4b091b7ca9a42865b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa18a5f2af79d75c4eba8c6822f1a7ed8ca4efa8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733762"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>Exempel på Resource Manager-mallar för Azure Monitor for VMs
-Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att aktivera Azure Monitor for VMS på virtuella datorer. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
+# <a name="resource-manager-template-samples-for-vm-insights"></a>Exempel på Resource Manager-mallar för VM-insikter
+Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) som möjliggör VM-insikter på virtuella datorer. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>Konfigurera arbetsyta
-Följande exempel aktiverar Azure Monitor for VMs för en Log Analytics arbets yta.
+I följande exempel aktive ras VM Insights för en Log Analytics-arbetsyta.
 
 
 ### <a name="template-file"></a>Mallfil
@@ -98,7 +98,7 @@ Följande exempel aktiverar Azure Monitor for VMs för en Log Analytics arbets y
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>Publicera en virtuell Azure-dator
-I följande exempel läggs en virtuell Azure-dator till Azure Monitor for VMs.
+Följande exempel lägger till en virtuell Azure-dator i VM-insikter.
 
 
 ### <a name="template-file"></a>Mallfil
@@ -219,7 +219,7 @@ I följande exempel läggs en virtuell Azure-dator till Azure Monitor for VMs.
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>Publicera en skalnings uppsättning för virtuella Azure-datorer
-I följande exempel läggs en skalnings uppsättning för virtuella Azure-datorer till Azure Monitor for VMs.
+I följande exempel läggs en skalnings uppsättning för virtuella Azure-datorer till i VM-insikter.
 
 
 ### <a name="template-file"></a>Mallfil
@@ -340,5 +340,5 @@ I följande exempel läggs en skalnings uppsättning för virtuella Azure-datore
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hämta andra exempel mallar för Azure Monitor](../samples/resource-manager-samples.md).
-* [Läs mer om Azure Monitor for VMS](../vm/vminsights-overview.md).
+* [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
+* [Läs mer om VM Insights](vminsights-overview.md).

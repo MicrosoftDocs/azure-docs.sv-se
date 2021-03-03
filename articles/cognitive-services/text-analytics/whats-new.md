@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 02/23/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3205e96bca6ce13afdfe06fede1112e6ddb1ab39
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653925"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736651"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
@@ -24,7 +24,12 @@ API för textanalys uppdateras regelbundet. Den här artikeln innehåller inform
 
 ## <a name="february-2021"></a>Februari 2021
 
+* `2021-01-15`Modell versionen för PII-slutpunkten i [namngiven entitet igenkänning](how-tos/text-analytics-how-to-entity-linking.md) v 3.1 – för hands version. x, som innehåller 
+  * Utökat stöd för 9 nya språk
+  * Förbättrad AI-kvalitet för namngivna enhets kategorier för språk som stöds.
 * Pris nivåerna S0 till S4 dras tillbaka den 8 mars 2021. Om du har en befintlig Textanalys resurs med hjälp av pris nivån S0 till S4, bör du uppdatera den för att använda [pris nivån](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)standard (S).
+* [Behållaren för språk identifiering](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment) är nu allmänt tillgänglig.
+* v 2.1 i API: et dras tillbaka. 
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -256,7 +261,7 @@ Det stöder engelska ( `en` ), japanska ( `ja` ), kinesiska (förenklad) `zh-Han
 
 * [Vad är API för textanalys?](overview.md)  
 * [Exempel på användarscenarier](text-analytics-user-scenarios.md)
-* [Sentiment-analys](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Attitydanalys](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Språk identifiering](how-tos/text-analytics-how-to-language-detection.md)
 * [Enhets igenkänning](how-tos/text-analytics-how-to-entity-linking.md)
 * [Extrahering av nyckel fraser](how-tos/text-analytics-how-to-keyword-extraction.md)

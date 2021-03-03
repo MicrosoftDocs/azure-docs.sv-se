@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d732f0e42bc5eef8f72a2b9ce2adee28deb9a67
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85987331"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690982"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure PowerShell exempel för Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Följande tabell innehåller länkar till exempel Azure PowerShell skript för A
 |---|---|
 |**Skapa och konfigurera hanterade instanser**||
 | [Skapa och hantera en hanterad instans](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | Det här PowerShell-skriptet visar hur du skapar och hanterar en hanterad instans med hjälp av Azure PowerShell. |
-| [Skapa och hantera en hanterad instans med hjälp av Azure Resource Manager mall](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Det här PowerShell-skriptet visar hur du skapar och hanterar en hanterad instans med hjälp av Azure PowerShell och Azure Resource Manager-mallen.|
+| [Skapa och hantera en hanterad instans med hjälp av Azure Resource Manager mall](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Det här PowerShell-skriptet visar hur du skapar och hanterar en hanterad instans med hjälp av Azure PowerShell och Azure Resource Manager-mallen.|
 | [Återställa databasen till en hanterad instans i en annan geo-region](../managed-instance/scripts/restore-geo-backup.md) | Det här PowerShell-skriptet tar en säkerhets kopia av en databas och återställer den till en annan region. Detta kallas för ett haveri återställnings scenario med geo-återställning. |
 | **Konfigurera transparent data kryptering**||
 | [Hantera transparent data kryptering i en hanterad instans med hjälp av din egen nyckel från Azure Key Vault](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Det här PowerShell-skriptet konfigurerar transparent data kryptering i ett Bring Your Own Key scenario för Azure SQL-hanterad instans med hjälp av en nyckel från Azure Key Vault.|

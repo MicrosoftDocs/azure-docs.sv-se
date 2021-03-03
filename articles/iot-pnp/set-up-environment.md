@@ -7,14 +7,14 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742661"
 ---
-# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Snabb start – konfigurera din miljö för IoT Plug and Play snabb starter och självstudier
+# <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Snabb start: Konfigurera din miljö för IoT Plug and Play snabb starter och självstudier
 
 Innan du kan slutföra någon av IoT-Plug and Play snabb starter och självstudier måste du konfigurera en IoT-hubb och enhets etablerings tjänsten (DPS) i din Azure-prenumeration. Du behöver också lokala kopior av de konsolfiler som används av exempel programmen och Azure IoT Explorer-verktyget.
 

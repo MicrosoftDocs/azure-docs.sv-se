@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 02/03/2021
-ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 84eed7d48dfe0230ea023d171e2b640bdf50dbe3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575630"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715674"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Självstudie: Migrera MongoDB till Azure Cosmos DB s API för MongoDB online med DMS
 
@@ -36,7 +36,7 @@ Den här självstudien visar de steg som är kopplade till att använda Azure Da
 > * Verifiera data i Azure Cosmos DB. 
 > * Slutför migreringen när du är klar. 
 
-I den här självstudien migrerar du en data uppsättning i MongoDB som finns på en virtuell Azure-dator till Azure Cosmos DB s API för MongoDB med minimal nedtid genom att använda Azure Database Migration Service. Om du inte har konfigurerat någon MongoDB-källa, kan du läsa artikeln [Installera och konfigurera MongoDB på en virtuell Windows-dator i Azure](../virtual-machines/windows/install-mongodb.md).
+I den här självstudien migrerar du en data uppsättning i MongoDB som finns på en virtuell Azure-dator till Azure Cosmos DB s API för MongoDB med minimal nedtid genom att använda Azure Database Migration Service. Om du inte har konfigurerat någon MongoDB-källa, kan du läsa artikeln [Installera och konfigurera MongoDB på en virtuell Windows-dator i Azure](/previous-versions/azure/virtual-machines/windows/install-mongodb).
 
 > [!NOTE]
 > Om du använder Azure Database Migration Service för att utföra en online-migrering måste du skapa en instans utifrån pris nivån Premium.

@@ -42,7 +42,7 @@ För att skydda dina till gångar i vila bör till gångarna krypteras med krypt
 
 ## <a name="storage-account-double-encryption"></a>Lagrings konto, dubbel kryptering
 
-Lagrings konton har stöd för dubbel kryptering, men det andra skiktet måste vara aktiverat. Se [Azure Storage kryptering för vilande data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption).  
+Lagrings konton har stöd för dubbel kryptering, men det andra skiktet måste vara aktiverat. Se [Azure Storage kryptering för vilande data](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).  
 
 ## <a name="storage-account-errors"></a>Fel vid lagrings konto
 

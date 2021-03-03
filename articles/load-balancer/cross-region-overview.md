@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946256"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742610"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Belastningsutjämnare för flera regioner (för hands version)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer stöder belastnings utjämning mellan regioner som 
 * [Bygg en befintlig lösning för belastnings utjämning](#build-cross-region-solution-on-existing-azure-load-balancer) utan inlärnings kurva
 
 > [!IMPORTANT]
-> Belastningsutjämnare för flera regioner är för närvarande en för hands version och kan distribueras i portalen. Logga in för **https://preview.portal.azure.com** att visa och distribuera funktionen.. </br> </br>
+> En belastningsutjämnare för flera regioner är för närvarande en för hands version.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Belastnings utjämning mellan regioner ger samma fördelar med hög prestanda och låg latens som regional standard Load Balancer. 
@@ -79,7 +79,7 @@ Mer information finns i [Konfigurera distributions läge för Azure Load Balance
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Möjlighet att skala upp/ned efter en enda slut punkt
 
-När du exponerar en global slut punkt för en belastningsutjämnare i flera regioner till kunder kan du lägga till eller ta bort regionala distributioner bakom den globala slut punkten utan kund påverkan. 
+När du exponerar en global slut punkt för en belastningsutjämnare i flera regioner till kunder kan du lägga till eller ta bort regionala distributioner bakom den globala slut punkten utan avbrott. 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -94,7 +94,7 @@ Backend-poolen för belastningsutjämnare i flera regioner innehåller en eller 
 
 Lägg till dina befintliga belastnings Utjämnings distributioner i en belastningsutjämnare för flera regioner för en hög tillgänglig distribution över flera regioner.
 
-**Hem regionen** är den plats där belastningsutjämnaren för flera regioner har distribuerats. Den här regionen påverkar inte hur trafiken kommer att dirigeras. Om en hem region kraschar, påverkar det inte trafikflödet.
+**Hem regionen** är den plats där belastningsutjämnaren för flera regioner har distribuerats. Den här regionen påverkar inte hur trafiken kommer att dirigeras. Om en hem region slutar fungera påverkas inte trafikflöde.
 
 ### <a name="home-regions"></a>Hem regioner
 * USA, östra 2
@@ -137,13 +137,13 @@ Belastnings utjämning mellan regioner dirigerar trafiken till lämplig regional
 
 * IP-konfigurationer för klient delen för flera regioner är endast offentliga. Det finns för närvarande inte stöd för en intern klient del.
 
-* Det går inte att lägga till en privat eller intern belastningsutjämnare i backend-poolen för Cross-regional belastningsutjämnare 
+* Det går inte att lägga till en privat eller intern belastningsutjämnare i backend-poolen för en belastningsutjämnare i flera regioner 
 
 * IP-konfigurationer för IPv6-frontend i flera regioner stöds inte. 
 
 * Det går inte att konfigurera en hälso avsökning för närvarande. En standard hälso avsökning samlar automatiskt in tillgänglighets information om den regionala belastningsutjämnaren var 20: e sekund. 
 
-* Azure Kubernetes service (AKS) kan för närvarande inte integreras med Load Balancer över flera regioner. Förlust av anslutning bör förväntas när du konfigurerar en Load Balancer över flera regioner framför en offentlig Load Balancer som distribueras med AKS.
+* Integrering med Azure Kubernetes service (AKS) är inte tillgänglig för tillfället. Förlust av anslutning sker när du distribuerar en belastningsutjämnare för flera regioner med AKS offentlig belastningsutjämnare.
 
 ## <a name="pricing-and-sla"></a>Priser och service nivå avtal
 Belastnings utjämning för flera regioner delar [service avtalet](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) för standard Load Balancer.

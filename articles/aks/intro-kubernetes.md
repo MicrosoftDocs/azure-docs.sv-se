@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: mvc
-ms.openlocfilehash: 1505366d9a91eac596b21804f93abb8245a84605
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 009244322b7c6625523bf46382a170577593f4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718377"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,9 +104,7 @@ Kom igång med ingående trafik, se [HTTP-programroutning][aks-http-routing].
 
 Kubernetes har ett omfattande eko system med utvecklings-och hanterings verktyg som fungerar sömlöst med AKS. Dessa verktyg omfattar Helm och Kubernetes-tillägget för Visual Studio Code. Dessa verktyg fungerar sömlöst med AKS.  
 
-Dessutom tillhandahåller Azure flera verktyg som hjälper dig att effektivisera Kubernetes, till exempel Azure dev Spaces och DevOps starter.  
-
-Azure Dev Spaces ger en snabb, iterativ Kubernetes-utvecklingsupplevelse för team. Du kan köra och felsöka containrar direkt i AKS med minimal konfiguration. Komma igång med [Azure Dev Spaces][azure-dev-spaces].
+Dessutom tillhandahåller Azure flera verktyg som hjälper dig att effektivisera Kubernetes, t. ex. DevOps starter.  
 
 DevOps starter ger en enkel lösning för att överföra befintlig kod och git-databaser till Azure. DevOps starter automatiskt:
 * Skapar Azure-resurser (t. ex. AKS). 
@@ -157,7 +155,7 @@ Lär dig mer om att distribuera och hantera AKS med snabb starten av Azure CLI.
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../azure-monitor/containers/container-insights-overview.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac

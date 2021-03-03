@@ -4,19 +4,21 @@ description: Azure Security benchmark v2 privilegie rad åtkomst
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720587"
 ---
 # <a name="security-control-v2-privileged-access"></a>Säkerhets kontroll v2: privilegie rad åtkomst
 
 Privilegie rad åtkomst täcker kontroller för att skydda privilegie rad åtkomst till din Azure-klient och dina resurser. Detta inkluderar ett antal kontroller för att skydda din administrativa modell, administrativa konton och arbets stationer med privilegie rad åtkomst mot avsiktliga och oavsiktliga risker.
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-hälsokompatibilitet: privilegie rad åtkomst](../../governance/policy/samples/azure-security-benchmark#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Skydda och begränsa privilegierade användare
 
@@ -30,7 +32,7 @@ Begränsa antalet starkt privilegierade användar konton och skydda dessa konton
 
 - Privilegie rad roll administratör: användare med den här rollen kan hantera roll tilldelningar i Azure AD, samt i Azure AD Privileged Identity Management (PIM). Dessutom tillåter den här rollen hantering av alla aspekter av PIM och administrativa enheter.
 
-Obs! Du kan ha andra viktiga roller som behöver regleras om du använder anpassade roller med vissa privilegierade behörigheter tilldelade. Och du kanske också vill använda liknande kontroller för administratörs kontot för kritiska företags till gångar.  
+Obs! Du kan ha andra viktiga roller som behöver regleras om du använder anpassade roller med vissa privilegierade behörigheter tilldelade. Och du kanske också vill använda liknande kontroller för administratörs kontot för kritiska företags till gångar.
 
 Du kan aktivera just-in-time (JIT)-privilegierad åtkomst till Azure-resurser och Azure AD med hjälp av Azure AD Privileged Identity Management (PIM). JIT beviljar temporära behörigheter för att utföra privilegierade uppgifter endast när användarna behöver det. PIM kan också generera säkerhetsaviseringar när det finns misstänkt eller osäker aktivitet i din Azure AD-organisation.
 
@@ -155,11 +157,11 @@ Använd funktioner för hantering av Azure AD-rättighet för att automatisera �
 |--|--|--|--|
 | PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känsliga roller som administratörer, utvecklare och kritiska tjänst operatörer. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst. 
+Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känsliga roller som administratör, utvecklare och kritiska tjänst operatörer. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst. 
 
-- [Förstå arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Förstå arbets stationer med privilegie rad åtkomst](/security/compass/privileged-access-deployment)
 
-- [Distribuera en arbetsstation med privilegierad åtkomst](/security/compass/privileged-access-deployment)
+- [Distribuera en arbetsstation med privilegierad åtkomst](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Ansvar**: Kund
 
@@ -178,7 +180,8 @@ Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känslig
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Med rollbaserad åtkomst kontroll i Azure (Azure RBAC) kan du hantera Azure Resource Access via roll tilldelningar. Du kan tilldela dessa roller till användare, grupp tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell och Azure Portal. De behörigheter som du tilldelar resurser via Azure RBAC bör alltid vara begränsade till vad som krävs av rollerna. Begränsade privilegier kompletterar JIT-metoden (just in Time) för Azure AD Privileged Identity Management (PIM) och dessa privilegier bör granskas regelbundet.
-Använd inbyggda roller för att allokera behörighet och skapa bara en anpassad roll vid behov. 
+
+Använd inbyggda roller för att allokera behörigheter och endast skapa anpassade roller vid behov.
 
 - [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)](../../role-based-access-control/overview.md)
 
@@ -192,9 +195,9 @@ Använd inbyggda roller för att allokera behörighet och skapa bara en anpassad
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Identitets-och nyckel hantering](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

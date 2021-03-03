@@ -4,12 +4,12 @@ description: 'Med Log Analytics aviserings REST API kan du skapa och hantera avi
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c347b7b8ddaac103019e15e32fb5c06219e0064
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4acb6cdcb544e8774fb60bf1ead1a4a13140024a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625804"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717816"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Skapa och hantera aviserings regler i Log Analytics med REST API 
 
@@ -21,7 +21,7 @@ Med Log Analytics aviserings REST API kan du skapa och hantera aviseringar i Log
 Log Analytics Sök REST API är RESTful och kan nås via Azure Resource Manager REST API. I det här dokumentet hittar du exempel där API: et kan nås från en PowerShell-kommandorad med hjälp av  [ARMClient](https://github.com/projectkudu/ARMClient), ett kommando rads verktyg med öppen källkod som gör det enklare att anropa Azure Resource Manager API. Användning av ARMClient och PowerShell är ett av många alternativ för att få åtkomst till API: et för Log Analytics search. Med dessa verktyg kan du använda RESTful-Azure Resource Manager-API: et för att skapa anrop till Log Analytics arbets ytor och utföra Sök kommandon i dem. API: n kommer att mata ut Sök resultat till dig i JSON-format, så att du kan använda Sök resultaten på många olika sätt program mässigt.
 
 ## <a name="prerequisites"></a>Förutsättningar
-Aviseringar kan för närvarande bara skapas med en sparad sökning i Log Analytics.  Du kan referera till [loggs öknings REST API](../log-query/log-query-overview.md) för mer information.
+Aviseringar kan för närvarande bara skapas med en sparad sökning i Log Analytics.  Du kan referera till [loggs öknings REST API](../logs/log-query-overview.md) för mer information.
 
 ## <a name="schedules"></a>Scheman
 En sparad sökning kan ha ett eller flera scheman. Schemat definierar hur ofta sökningen ska köras och det tidsintervall under vilket villkoren identifieras.
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Aviserings åtgärder
 Ett schema bör ha en och endast en aviserings åtgärd.  Aviserings åtgärder har ett eller flera av avsnitten i följande tabell.  Var och en beskrivs i detalj nedan.
 
-| Avsnitt | Description | Användning |
+| Avsnitt | Beskrivning | Användning |
 |:--- |:--- |:--- |
 | Tröskelvärde |Villkor för när åtgärden körs.| Krävs för varje avisering, innan eller efter att de har utökats till Azure. |
 | Allvarlighetsgrad |Etikett som används för att klassificera avisering när den utlöses.| Krävs för varje avisering, innan eller efter att de har utökats till Azure. |
@@ -387,7 +387,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Använd [REST API för att utföra loggs ökningar](../log-query/log-query-overview.md) i Log Analytics.
+* Använd [REST API för att utföra loggs ökningar](../logs/log-query-overview.md) i Log Analytics.
 * Lär dig mer om [logg aviseringar i Azure Monitor](./alerts-unified-log.md)
 * [Skapa, redigera eller hantera logg aviserings regler i Azure Monitor](./alerts-log.md)
-

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581586"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732844"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL data kryptering för enskild server med en kundhanterad nyckel
 
@@ -60,7 +60,7 @@ När servern har kon figurer ATS för att använda den Kundhanterade nyckeln som
 Följande är krav för att konfigurera Key Vault:
 
 * Key Vault och Azure Database for PostgreSQL en enskild server måste tillhöra samma Azure Active Directory-klient (Azure AD). Key Vault mellan klienter och Server interaktioner stöds inte. Om du flyttar Key Vault resursen måste du konfigurera om data krypteringen.
-* Key Vault måste anges med 90 dagar i dagar för att behålla borttagna valv. Om det befintliga nyckel valvet har kon figurer ATS med ett lägre antal måste du skapa ett nytt nyckel valv eftersom det inte kan ändras efter att det har skapats.
+* Nyckel valvet måste anges med 90 dagar i dagar för att behålla borttagna valv. Om det befintliga nyckel valvet har kon figurer ATS med ett lägre antal måste du skapa ett nytt nyckel valv eftersom det inte kan ändras efter att det har skapats.
 * Aktivera funktionen för mjuk borttagning i nyckel valvet för att skydda mot data förlust om en oavsiktlig nyckel (eller Key Vault) tas bort. Mjuka, borttagna resurser behålls i 90 dagar, om inte användaren återställer eller tar bort dem under tiden. Åtgärder för att återställa och rensa har sina egna behörigheter som är kopplade till en Key Vault åtkomst princip. Funktionen mjuk borttagning är inaktive rad som standard, men du kan aktivera den via PowerShell eller Azure CLI (Observera att du inte kan aktivera den via Azure Portal). 
 * Aktivera rensnings skydd om du vill framtvinga en obligatorisk kvarhållningsperiod för borttagna valv och valv objekt
 * Bevilja den Azure Database for PostgreSQL enskild server åtkomst till nyckel valvet med behörigheterna get, wrapKey och unwrapKey med hjälp av dess unika hanterade identitet. I Azure Portal skapas den unika tjänst identiteten automatiskt när data kryptering är aktiverat på den PostgreSQL enskilda servern. Se [data kryptering för Azure Database for PostgreSQL enskild server genom att använda Azure Portal](howto-data-encryption-portal.md) för detaljerade steg-för-steg-instruktioner när du använder Azure Portal.

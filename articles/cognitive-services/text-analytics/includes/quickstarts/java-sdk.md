@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 92b78cae7d1af5dc71509381afd7eaf3f962a8fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4c87dc9f11a6a9780d77b39597e0479ccb6863d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515019"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750532"
 ---
 <a name="HOLTop"></a>
 
@@ -26,10 +26,6 @@ ms.locfileid: "100515019"
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
 [Referens dokumentation](/java/api/overview/azure/ai-textanalytics-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
-
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
@@ -76,10 +72,6 @@ Skapa ett Maven-projekt i önskad IDE-eller utvecklings miljö. Lägg sedan till
 
 > [!TIP]
 > Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den [på GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java), som innehåller kod exemplen i den här snabb starten. 
-
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
@@ -136,10 +128,6 @@ public static void main(String[] args) {
         AnalyzeOperationExample(client)
 }
 ```
-
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
@@ -321,10 +309,6 @@ Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
-
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
@@ -570,10 +554,6 @@ Matches:
 Text: BASIC, Score: 0.33
 ```
 
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här artikeln beskriver endast version 3. x av API: et.
-
 ---
 
 ## <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
@@ -683,9 +663,5 @@ Du kan också använda analys åtgärden för att identifiera personligt identif
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
 Den här funktionen är inte tillgänglig i version 3,0.
-
-# <a name="version-21"></a>[Version 2,1](#tab/version-2)
-
-Den här funktionen är inte tillgänglig i version 2,1.
 
 ---

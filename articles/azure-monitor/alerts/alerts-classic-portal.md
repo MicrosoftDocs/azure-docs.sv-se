@@ -4,21 +4,21 @@ description: Lär dig hur du använder Azure Portal, CLI eller PowerShell för a
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.openlocfilehash: 015a84ab6f81875407f460c4a45423f3f5e22b7f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714382"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Skapa, Visa och hantera klassiska mått varningar med Azure Monitor
 
 > [!WARNING]
-> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](../platform/alerts-overview.md). Klassiska aviseringar [dras tillbaka](../platform/monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna.
+> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](./alerts-overview.md). Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning till och med **31 maj 2021**. Klassiska aviseringar för Azure Government molnet och Azure Kina 21Vianet kommer att dra tillbaka den **29 februari 2024**.
 >
 
-Klassiska mått varningar i Azure Monitor ger ett sätt att få ett meddelande när ett av dina mått överskrider ett tröskelvärde. Klassiska mått varningar är en äldre funktion som endast tillåter aviseringar på icke-dimensionella mått. Det finns en befintlig ny funktion som kallas mått aviseringar som har förbättrade funktioner i klassiska mått varningar. Du kan lära dig mer om de nya funktionerna för mått varningar i [Översikt över mått aviseringar](../platform/alerts-metric-overview.md). I den här artikeln beskriver vi hur du skapar, visar och hanterar klassiska mått för aviserings regler via Azure Portal, Azure CLI och PowerShell.
+Klassiska mått varningar i Azure Monitor ger ett sätt att få ett meddelande när ett av dina mått överskrider ett tröskelvärde. Klassiska mått varningar är en äldre funktion som endast tillåter aviseringar på icke-dimensionella mått. Det finns en befintlig ny funktion som kallas mått aviseringar som har förbättrade funktioner i klassiska mått varningar. Du kan lära dig mer om de nya funktionerna för mått varningar i [Översikt över mått aviseringar](./alerts-metric-overview.md). I den här artikeln beskriver vi hur du skapar, visar och hanterar klassiska mått för aviserings regler via Azure Portal, Azure CLI och PowerShell.
 
 ## <a name="with-azure-portal"></a>Med Azure Portal
 
@@ -134,6 +134,5 @@ I det här avsnittet visas hur du använder PowerShell-kommandon för att skapa,
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Skapa en klassisk måtta-avisering med en Resource Manager-mall](../platform/alerts-enable-template.md).
-- [Ha en klassisk mått avisering som meddelar ett icke-Azure-system med en webhook](../platform/alerts-webhooks.md).
-
+- [Skapa en klassisk måtta-avisering med en Resource Manager-mall](./alerts-enable-template.md).
+- [Ha en klassisk mått avisering som meddelar ett icke-Azure-system med en webhook](./alerts-webhooks.md).

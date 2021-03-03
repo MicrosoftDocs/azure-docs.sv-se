@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 016b8bf010f597e963e0901d1ec48486f79bbb35
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706834"
 ---
 # <a name="specify-a-face-recognition-model"></a>Ange en ansiktsigenkänningsmodell
 
@@ -24,7 +24,7 @@ Den här guiden visar hur du anger en ansikts igenkännings modell för ansikts 
 
 Ansikts tjänsten använder maskin inlärnings modeller för att utföra åtgärder på mänskliga ansikten i bilder. Vi fortsätter att förbättra noggrannheten i våra modeller baserat på kundfeedback och framsteg i forskningen, och vi levererar dessa förbättringar som modell uppdateringar. Utvecklare har möjlighet att ange vilken version av ansikts igenkännings modellen som de vill använda. de kan välja den modell som passar bäst för deras användnings fall.
 
-Azure Face service har tre igenkännings modeller tillgängliga. Modellerna _recognition_01_ (publicerat 2017) och _recognition_02_ (publicerad 2019) stöds kontinuerligt för att säkerställa bakåtkompatibilitet för kunder som använder FaceLists eller **PersonGroup** s som skapats med dessa modeller. En **FaceList** eller **persongroup** använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att kunderna har skapats och kunder måste använda motsvarande igenkännings modell med motsvarande **FaceList** eller **PersonGroup** .
+Azure Face service har tre igenkännings modeller tillgängliga. Modellerna _recognition_01_ (publicerat 2017) och _recognition_02_ (publicerad 2019) stöds kontinuerligt för att säkerställa bakåtkompatibilitet för kunder som använder FaceLists eller **PersonGroup** s som skapats med dessa modeller. En **FaceList** eller **persongroup** använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att kunderna har skapats och kunder måste använda motsvarande igenkännings modell med motsvarande **FaceList** eller **PersonGroup**.
 
 Du kan flytta till senare igenkännings modeller i din egen bekvämlighet. Du måste dock skapa nya FaceLists och PersonGroups med den igenkännings modell som du väljer.
 
@@ -53,7 +53,7 @@ När du använder API: et för [ansikts igenkänning] tilldelar du modell versio
 * recognition_03
 
 
-Alternativt kan du ange parametern _returnRecognitionModel_ (standard **falskt** ) för att ange om _recognitionModel_ ska returneras som svar. En fråge-URL för [ansikts igenkännings] REST API ser därför ut så här:
+Alternativt kan du ange parametern _returnRecognitionModel_ (standard **falskt**) för att ange om _recognitionModel_ ska returneras som svar. En fråge-URL för [ansikts igenkännings] REST API ser därför ut så här:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
@@ -66,9 +66,9 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Identifiera ansikten med angiven modell
 
-Ansikts tjänsten kan extrahera ansikts data från en avbildning och koppla den till ett **person** objekt (via [Lägg till ansikts](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) -API-anrop, till exempel) och flera **person** objekt kan lagras tillsammans i en **PersonGroup** . Sedan kan en ny ansikte jämföras med en **PersonGroup** (med [ansikts identifiera] -anropet) och den matchande personen i gruppen kan identifieras.
+Ansikts tjänsten kan extrahera ansikts data från en avbildning och koppla den till ett **person** objekt (via [Lägg till ansikts](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) -API-anrop, till exempel) och flera **person** objekt kan lagras tillsammans i en **PersonGroup**. Sedan kan en ny ansikte jämföras med en **PersonGroup** (med [ansikts identifiera] -anropet) och den matchande personen i gruppen kan identifieras.
 
-En **PersonGroup** bör ha en unik igenkännings modell för all **person** s, och du kan ange detta med hjälp av `recognitionModel` parametern när du skapar gruppen ( [PersonGroup-Create] eller [LargePersonGroup-Create]). Om du inte anger den här parametern används den ursprungliga `recognition_01` modellen. En grupp använder alltid den igenkännings modell som den skapades med, och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att en grupp har skapats. Om du vill se vilken modell en **PersonGroup** har kon figurer ATS med använder du [PersonGroup-get-] API med parametern _returnRecognitionModel_ inställd på **True** .
+En **PersonGroup** bör ha en unik igenkännings modell för all **person** s, och du kan ange detta med hjälp av `recognitionModel` parametern när du skapar gruppen ([PersonGroup-Create] eller [LargePersonGroup-Create]). Om du inte anger den här parametern används den ursprungliga `recognition_01` modellen. En grupp använder alltid den igenkännings modell som den skapades med, och nya ytor blir kopplade till den här modellen när de läggs till. Detta kan inte ändras efter att en grupp har skapats. Om du vill se vilken modell en **PersonGroup** har kon figurer ATS med använder du [PersonGroup-get-] API med parametern _returnRecognitionModel_ inställd på **True**.
 
 Se följande kod exempel för .NET-klient biblioteket.
 
@@ -80,13 +80,13 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 
 I den här koden skapas en **PersonGroup** med ID `mypersongroupid` och den har kon figurer ats att använda _recognition_02s_ modellen för att extrahera ansikts funktioner.
 
-På motsvarande sätt måste du ange vilken modell som ska användas för att identifiera ansikten som ska jämföras med den här **PersonGroup** (via API för [ansikts igenkänning] ). Modellen du använder bör alltid vara konsekvent med **PersonGroup** -konfigurationen. annars fungerar inte åtgärden på grund av inkompatibla modeller.
+På motsvarande sätt måste du ange vilken modell som ska användas för att identifiera ansikten som ska jämföras med den här **PersonGroup** (via API för [ansikts igenkänning] ). Modellen du använder bör alltid vara konsekvent med **PersonGroup**-konfigurationen. annars fungerar inte åtgärden på grund av inkompatibla modeller.
 
 Det finns ingen ändring i API för [ansikts identifiering] . du behöver bara ange modell versionen som ska identifieras.
 
 ## <a name="find-similar-faces-with-specified-model"></a>Hitta liknande ansikten med angiven modell
 
-Du kan också ange en igenkännings modell för sökning efter likheter. Du kan tilldela modell versionen med `recognitionModel` när du skapar ansikts listan med [FaceList-Create] API eller [LargeFaceList-Create]. Om du inte anger den här parametern `recognition_01` används modellen som standard. En ansikts lista använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till i listan. Du kan inte ändra det när du har skapat. Om du vill se vilken modell en ansikts lista har kon figurer ATS med använder du [FaceList-get-] API med parametern _returnRecognitionModel_ inställd som **Sant** .
+Du kan också ange en igenkännings modell för sökning efter likheter. Du kan tilldela modell versionen med `recognitionModel` när du skapar ansikts listan med [FaceList-Create] API eller [LargeFaceList-Create]. Om du inte anger den här parametern `recognition_01` används modellen som standard. En ansikts lista använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till i listan. Du kan inte ändra det när du har skapat. Om du vill se vilken modell en ansikts lista har kon figurer ATS med använder du [FaceList-get-] API med parametern _returnRecognitionModel_ inställd som **Sant**.
 
 Se följande kod exempel för .NET-klient biblioteket.
 
@@ -94,7 +94,7 @@ Se följande kod exempel för .NET-klient biblioteket.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-Den här koden skapar en ansikts lista `My face collection` med namnet med hjälp av _recognition_03s_ modellen för funktions extrahering. När du söker i den här ansikts listan efter liknande ansikten till en ny identifierad ansikte, måste det ansikte ha identifierats ( [upptäcka]) med _recognition_03_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
+Den här koden skapar en ansikts lista `My face collection` med namnet med hjälp av _recognition_03s_ modellen för funktions extrahering. När du söker i den här ansikts listan efter liknande ansikten till en ny identifierad ansikte, måste det ansikte ha identifierats ([upptäcka]) med _recognition_03_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
 
 Det finns ingen ändring i [FACET-identifiera liknande] API; du anger bara modell versionen som ska identifieras.
 
@@ -105,7 +105,7 @@ API för [ansikts verifiering] kontrollerar om två ansikten tillhör samma pers
 ## <a name="evaluate-different-models"></a>Utvärdera olika modeller
 
 Om du vill jämföra prestanda för olika igenkännings modeller på dina egna data måste du:
-1. Skapa tre PersonGroups med _recognition_01_ , _recognition_02_ respektive _recognition_03_ .
+1. Skapa tre PersonGroups med _recognition_01_, _recognition_02_ respektive _recognition_03_ .
 1. Använd dina bilddata för att identifiera ansikten och registrera dem för **personer** i dessa tre **PersonGroup** s. 
 1. Träna din PersonGroups med hjälp av PersonGroup-träna API.
 1. Testa med ansikte – identifiera på alla tre **PersonGroup** s och jämför resultaten.

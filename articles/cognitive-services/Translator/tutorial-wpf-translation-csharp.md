@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728016"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Självstudie: skapa en översättnings app med WPF
 
@@ -41,7 +41,7 @@ Den här listan innehåller de Cognitive Services som används i den här själv
 | Tjänst | Funktion | Beskrivning |
 |---------|---------|-------------|
 | Översättare | [Hämta språk](./reference/v3-0-languages.md) | Hämta en fullständig lista över språk som stöds för textöversättning. |
-| Översättare | [Översätta](./reference/v3-0-translate.md) | Översätt text till fler än 70 språk. |
+| Översättare | [Översätta](./reference/v3-0-translate.md) | Översätt text till 90 språk och dialekter. |
 | Översättare | [Identifiering](./reference/v3-0-detect.md) | Identifiera språket i indatatexten. Innehåller förtroendepoäng för identifiering. |
 | Stavningskontroll i Bing | [Stavningskontroll](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Förbättra översättningens noggrannhet genom att rätta stavfel. |
 
@@ -115,7 +115,7 @@ Vi tar en titt på vad vi skapar.
 
 Användar gränssnittet innehåller följande komponenter:
 
-| Namn | Typ | Description |
+| Namn | Typ | Beskrivning |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox (Kombinationsruta) | Visar en lista över de språk som stöds av Microsoft Translator för textöversättning. Användaren väljer det språk som översättningen görs från. |
 | `ToLanguageComboBox` | ComboBox (Kombinationsruta) | Visar samma lista över språk som `FromComboBox` men används för att välja det språk som användaren översätter till. |
@@ -251,7 +251,7 @@ Hela projektet är inkapslat i klassen `MainWindow : Window`. Vi börjar med att
 
 I det här kodblocket har vi deklarerat två medlemsvariabler som innehåller information om tillgängliga språk för översättning:
 
-| Variabel | Typ | Description |
+| Variabel | Typ | Beskrivning |
 |----------|------|-------------|
 |`languageCodes` | Strängmatris |Cachelagrar språkkoderna. Translator-tjänsten använder korta koder som `en` för engelska, för att identifiera språk. |
 |`languageCodesAndTitles` | Sorterad ordlista | Mappar ”egna” namn i användargränssnittet tillbaka till de korta koderna som används i API:et. Sorteras alfabetiskt utan hänsyn till skiftläge. |
@@ -264,7 +264,7 @@ Slutligen har vi lagt till kod för att anropa metoder för att hämta språk f�
 
 ## <a name="get-supported-languages"></a>Hämta språk som stöds
 
-Translator stöder för närvarande över 70 språk. Eftersom det nya språk stödet kommer att läggas till med tiden rekommenderar vi att du anropar de språk resurser som exponeras av Translator i stället för att hårdkoda språk listan i appen.
+Translator stöder för närvarande 90 språk och dialekter. Eftersom det nya språk stödet kommer att läggas till med tiden rekommenderar vi att du anropar de språk resurser som exponeras av Translator i stället för att hårdkoda språk listan i appen.
 
 I det här avsnittet skapar vi en `GET`-begäran till Language-resursen som anger att vi vill ha en lista över språk som är tillgängliga för översättning.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d914c9b5f96cf502247d40a913ce8ad4651a4a14
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68a9dd5cb24dda54e867580cf7c1bc869e692833
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622313"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734425"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -29,7 +29,7 @@ Azure Monitor Metrics Explorer är en komponent i Microsoft Azure-portalen som g
 
 Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenumeration eller Azure Monitor, öppnar fliken **mått** och följer de här stegen:
 
-1. Klicka på knappen "Välj ett omfång" för att öppna resurs omfattnings väljaren. På så kan du välja de resurser som du vill visa mått för. Resursen bör redan vara ifylld om du öppnade Metrics Explorer från resursens meny. [Läs den här artikeln](../platform/metrics-dynamic-scope.md)om du vill veta mer om hur du visar mått över flera resurser.
+1. Klicka på knappen "Välj ett omfång" för att öppna resurs omfattnings väljaren. På så kan du välja de resurser som du vill visa mått för. Resursen bör redan vara ifylld om du öppnade Metrics Explorer från resursens meny. [Läs den här artikeln](./metrics-dynamic-scope.md)om du vill veta mer om hur du visar mått över flera resurser.
     > ![Välj en resurs](./media/metrics-getting-started/scope-picker.png)
 
 2. För vissa resurser måste du välja ett namn område. Namn området är bara ett sätt att organisera mått så att du lätt kan hitta dem. Lagrings konton har till exempel separata namn rymder för lagring av filer, tabeller, blobbar och köers mått. Många resurs typer har bara ett namn område.
@@ -72,7 +72,7 @@ Du kan anpassa diagram stil, rubrik och ändra avancerade diagram inställningar
 ## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig mer om avancerade funktioner i Metrics Explorer](../essentials/metrics-charts.md)
-* [Visa flera resurser i Metrics Explorer](../platform/metrics-dynamic-scope.md)
+* [Visa flera resurser i Metrics Explorer](./metrics-dynamic-scope.md)
 * [Felsökning av Metrics Explorer](metrics-troubleshoot.md)
-* [Visa en lista över tillgängliga mått för Azure-tjänster](../platform/metrics-supported.md)
+* [Visa en lista över tillgängliga mått för Azure-tjänster](./metrics-supported.md)
 * [Visa exempel på konfigurerade diagram](../essentials/metric-chart-samples.md)

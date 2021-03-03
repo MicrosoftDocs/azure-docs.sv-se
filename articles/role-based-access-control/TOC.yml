@@ -59,7 +59,7 @@
       items:
         - name: Steg för att tilldela en roll
           href: role-assignments-steps.md
-        - name: Portalen
+        - name: Portal
           items:
             - name: Tilldela roller
               href: role-assignments-portal.md

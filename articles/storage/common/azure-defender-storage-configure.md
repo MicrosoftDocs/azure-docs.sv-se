@@ -1,5 +1,5 @@
 ---
-title: Konfigurera Azure Defender för lagring
+title: Konfigurera Azure Defender för Storage
 titleSuffix: Azure Storage
 description: Konfigurera Azure Defender för lagring för att identifiera avvikelser i konto aktivitet och få meddelanden om potentiellt skadliga försök att komma åt ditt konto.
 services: storage
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789020"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698152"
 ---
-# <a name="configure-azure-defender-for-storage"></a>Konfigurera Azure Defender för lagring
+# <a name="configure-azure-defender-for-storage"></a>Konfigurera Azure Defender för Storage
 
-Azure Defender för lagring ger ytterligare ett lager med säkerhets information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagrings konton. Med det här skydds lagret kan du åtgärda hot utan att vara säkerhets expert eller hantera säkerhets övervaknings system.
+Azure Defender för Storage ger ytterligare ett lager med säkerhet information som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja lagringskonton. Med det här skyddslagret kan du hantera hot utan att behöva vara säkerhetsexpert eller hantera säkerhetsövervakningssystem.
 
-Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med [Azure Security Center](https://azure.microsoft.com/services/security-center/)och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och åtgärdar hot.
+Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa säkerhets aviseringar är integrerade med [Azure Security Center](https://azure.microsoft.com/services/security-center/)och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och åtgärdar hot.
 
-Tjänsten matar in resurs loggar med Läs-, skriv-och borttagnings begär anden till Blob Storage och Azure Files för hot identifiering. Om du vill undersöka aviseringar från Azure Defender kan du Visa relaterad lagrings aktivitet med hjälp av Lagringsanalys loggning. Mer information finns i **Konfigurera loggning** i [övervaka ett lagrings konto i Azure Portal](storage-monitor-storage-account.md#configure-logging).
+Tjänsten matar in resurs loggar med Läs-, skriv-och borttagnings begär anden till Blob Storage och Azure Files för hot identifiering. Om du vill undersöka aviseringar från Azure Defender kan du Visa relaterad lagrings aktivitet med hjälp av Lagringsanalys loggning. Mer information finns i **Konfigurera loggning** i [övervaka ett lagrings konto i Azure Portal](./manage-storage-analytics-logs.md#configure-logging).
 
 ## <a name="availability"></a>Tillgänglighet
 
-Azure Defender för lagring är för närvarande tillgängligt för Blob Storage, Azure Files och Azure Data Lake Storage Gen2. Konto typer som stöder Azure Defender inkluderar generell-Purpose v2-, Block-Blob-och Blob Storage-konton. Azure Defender för lagring är tillgängligt i alla offentliga moln och i amerikanska myndigheter, men inte i andra suveräna eller Azure Government moln regioner.
+Azure Defender för Storage är för närvarande tillgängligt för Blob Storage, Azure Files och Azure Data Lake Storage Gen2. Kontotyper som stöder Azure Defender inkluderar konton för general-purpose v2, blockblob och Blob Storage. Azure Defender för Storage är tillgängligt i alla offentliga moln och moln för amerikanska myndigheter, men inte i andra nationella molnregioner eller Azure Government-molnregioner.
 
-Konton med hierarkiska namn rymder aktiverade för Data Lake Storage stöd transaktioner med både Azure Blob Storage-API: er och Data Lake Storage-API: er. Azure-filresurser stöder transaktioner över SMB.
+Konton med hierarkiska namnrymder aktiverade för Data Lake Storage stöder transaktioner med både Azure Blob Storage-API:er och Data Lake Storage-API:er. Azure-filresurser stöder transaktioner via SMB.
 
 För pris information, inklusive en kostnads fri 30-dagars utvärderings version, se [sidan Azure Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -66,10 +66,10 @@ Azure Defender har nu Aktiver ATS för alla lagrings konton i den här prenumera
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Starta [Azure Portal](https://portal.azure.com/).
-1. Navigera till ditt lagringskonto. Under **Inställningar** väljer du **avancerad säkerhet** .
-1. Välj **Aktivera Azure Defender för lagring** .
+1. Navigera till ditt lagringskonto. Under **Inställningar** väljer du **Avancerad säkerhet**.
+1. Välj **Aktivera Azure Defender för Storage**.
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för ett Azure Storage konto":::
 
 Azure Defender har nu Aktiver ATS för det här lagrings kontot.
 
@@ -84,15 +84,15 @@ Använd en Azure Policy för att aktivera Azure Defender över lagrings konton u
 1. Starta sidan Azure **policy-definitions** .
 1. Sök efter principen **Distribuera Azure Defender på lagrings konton** .
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Använd princip för att aktivera Azure Defender för lagrings konton":::
 
 1. Välj en Azure-prenumeration eller resurs grupp.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="Välj en prenumeration eller resurs grupp för principens omfattning ":::
 
 1. Tilldela principen.
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Tilldela en princip för att aktivera Azure Defender för lagring":::
 
 ### <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
@@ -111,25 +111,25 @@ Använd följande PowerShell-cmdletar:
 
 ---
 
-## <a name="explore-security-anomalies"></a>Utforska säkerhets avvikelser
+## <a name="explore-security-anomalies"></a>Utforska säkerhetsavvikelser
 
-När avvikelser i lagrings aktiviteter inträffar får du ett e-postmeddelande med information om den misstänkta säkerhets händelsen. Information om händelsen är:
+När avvikelser i lagringsaktiviteter inträffar får du en e-postavisering med information om den misstänkta säkerhetshändelsen. Information om händelsen omfattar:
 
 - Avvikelsens karaktär
 - Lagringskontots namn
-- Händelse tiden
-- Lagrings typ
+- Händelsetiden
+- Lagringstypen
 - Möjliga orsaker
-- Undersöknings stegen
-- Reparations stegen
+- Undersökningssteg
+- Reparationssteg
 
-E-postmeddelandet innehåller också information om möjliga orsaker och rekommenderade åtgärder för att undersöka och minimera det potentiella hotet.
+E-postmeddelandet innehåller även information om möjliga orsaker och rekommenderade åtgärder för att undersöka och åtgärda det potentiella hotet.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Azure Defender för lagrings aviserings-e-post":::
 
-Du kan granska och hantera dina aktuella säkerhets aviseringar från Azure Security Center [rutan säkerhets aviseringar](../../security-center/security-center-managing-and-responding-alerts.md). Om du klickar på en enskild avisering visas information och åtgärder för att undersöka det aktuella hotet och åtgärda framtida hot.
+Du kan granska och hantera dina aktuella säkerhets aviseringar från Azure Security Center [rutan säkerhets aviseringar](../../security-center/security-center-managing-and-responding-alerts.md). Om du klickar på en specifik avisering visas information och åtgärder för att undersöka det aktuella hotet och åtgärda framtida hot.
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Skärm bild som visar hur du aktiverar Azure Defender för lagring i Security Center":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Azure Defender för lagrings avisering":::
 
 ## <a name="security-alerts"></a>Säkerhetsaviseringar
 

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 46d8fe6427b2a3e7811719792ac4bf67ddbcc3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732776"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Skapa och hantera virtuella nätverk för Azure Database for PostgreSQL flexibel server med hjälp av Azure Portal
 
@@ -34,6 +34,13 @@ Om du vill skapa en flexibel server i ett virtuellt nätverk behöver du:
     > Det virtuella nätverket och under nätet måste finnas i samma region och prenumeration som din flexibla Server.
 
 -  [Delegera ett undernät](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service) till **Microsoft. DBforPostgreSQL/flexibleServers**. Den här delegeringen innebär att endast Azure Database for PostgreSQL flexibla servrar kan använda det under nätet. Inga andra Azure-resurstyper kan finnas i det delegerade undernätet.
+-  Lägg till i `Microsoft.Storage` tjänst slut punkten för under nätet delegerad till flexibla servrar. Detta görs genom att utföra följande steg:
+     1. Gå till sidan för ditt virtuella nätverk.
+     2. Välj det VNET som du planerar att distribuera den flexibla servern i.
+     3. Välj det undernät som är delegerat för flexibel Server.
+     4. Välj från List rutan under **tjänst slut punkt** på hämtnings skärmen `Microsoft.storage` .
+     5. Spara ändringarna.
+
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Skapa Azure Database for PostgreSQL-flexibel server i ett redan befintligt virtuellt nätverk
 
@@ -42,7 +49,7 @@ Om du vill skapa en flexibel server i ett virtuellt nätverk behöver du:
 3. Välj **flexibel Server** som distributions alternativ.
 4. Fyll i formuläret **grundläggande** information.
 5. Gå till fliken **nätverk** för att konfigurera hur du vill ansluta till servern.
-6. I **anslutnings metoden**väljer du **privat åtkomst (VNet-integrering)**. Gå till **Virtual Network** och välj det redan befintliga *virtuella nätverket* och *under nätet* som skapats som en del av kraven ovan.
+6. I **anslutnings metoden** väljer du **privat åtkomst (VNet-integrering)**. Gå till **Virtual Network** och välj det redan befintliga *virtuella nätverket* och *under nätet* som skapats som en del av kraven ovan.
 7. Välj **Granska + skapa** för att granska din flexibla Server konfiguration.
 8. Välj **Skapa** för att etablera servern. Etableringen kan ta några minuter.
 

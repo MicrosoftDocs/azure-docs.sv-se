@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
-ms.openlocfilehash: 0f932eed2f1d58e8470a24ea595e21712deb7f03
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 89d7a6f8beb004f57a00dfe75e4cc387c8591b1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021906"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716592"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Anpassade kommandon för kryptering av vilande data
 
 Anpassade kommandon krypterar automatiskt dina data när de sparas i molnet. Den anpassade kommando tjänst Krypteringen skyddar dina data och hjälper dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden.
 
 > [!NOTE]
-> Custom commands-tjänsten aktiverar inte automatiskt kryptering för de LUIS-resurser som är kopplade till ditt program. Om det behövs måste du aktivera kryptering för LUIS-resursen härifrån [.](./../LUIS/luis-encryption-of-data-at-rest.md)
+> Custom commands-tjänsten aktiverar inte automatiskt kryptering för de LUIS-resurser som är kopplade till ditt program. Om det behövs måste du aktivera kryptering för LUIS-resursen härifrån [.](../luis/encrypt-data-at-rest.md)
 
 ## <a name="about-cognitive-services-encryption"></a>Om Cognitive Services kryptering
 Data krypteras och dekrypteras med hjälp av [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [-kompatibla 256-bitars AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kryptering. Kryptering och dekryptering är transparent, vilket innebär att kryptering och åtkomst hanteras åt dig. Dina data skyddas som standard och du behöver inte ändra din kod eller dina program för att utnyttja krypteringen.
@@ -118,7 +118,7 @@ Om du vill ange en nyckel från ett nyckel valv måste du först kontrol lera at
 
 ## <a name="update-the-key-version"></a>Uppdatera nyckel versionen
 
-När du skapar en ny version av en nyckel uppdaterar du tal resursen för att använda den nya versionen. Följ de här stegen:
+När du skapar en ny version av en nyckel uppdaterar du tal resursen för att använda den nya versionen. Gör så här:
 
 1. Navigera till din tal resurs och visa **krypterings** inställningarna.
 1. Ange URI för den nya nyckel versionen. Alternativt kan du välja nyckel valvet och nyckeln igen för att uppdatera versionen.

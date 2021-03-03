@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735054"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-projekt med öppen källkod
 
@@ -70,9 +70,9 @@ Följande är en lista med projekt med öppen källkod som utökar funktionerna 
 
 | Projektnamn | Beskrivning |
 |-|-|
-| [Azure Maps cesium-plugin](https://github.com/azure-samples/azure-maps-cesium) | Ett [CESIUM JS](https://cesium.com/cesiumjs/) -pluginprogram som gör det enkelt att integrera Azure Maps tjänster, till exempel [panel lager](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) och [tjänster för kodning](https://docs.microsoft.com/rest/api/maps/search). |
-| [Azure Maps-plugin-program](https://github.com/azure-samples/azure-maps-leaflet) | Ett plugin-program [för en JavaScript](https://leafletjs.com/) -skript som gör det enkelt att täcka panel lager från [Azure Maps panels tjänster](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
- | [Plugin-program för openlagers Azure Maps](https://github.com/azure-samples/azure-maps-openlayers) | Ett [OpenLayers](https://www.openlayers.org/) JavaScript-plugin-program som gör det enkelt att täcka över panel lager från [Azure Maps panels tjänster](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
+| [Azure Maps cesium-plugin](https://github.com/azure-samples/azure-maps-cesium) | Ett [CESIUM JS](https://cesium.com/cesiumjs/) -pluginprogram som gör det enkelt att integrera Azure Maps tjänster, till exempel [panel lager](/rest/api/maps/renderv2/getmaptilepreview) och [tjänster för kodning](/rest/api/maps/search). |
+| [Azure Maps-plugin-program](https://github.com/azure-samples/azure-maps-leaflet) | Ett plugin-program [för en JavaScript](https://leafletjs.com/) -skript som gör det enkelt att täcka panel lager från [Azure Maps panels tjänster](/rest/api/maps/renderv2/getmaptilepreview). |
+ | [Plugin-program för openlagers Azure Maps](https://github.com/azure-samples/azure-maps-openlayers) | Ett [OpenLayers](https://www.openlayers.org/) JavaScript-plugin-program som gör det enkelt att täcka över panel lager från [Azure Maps panels tjänster](/rest/api/maps/renderv2/getmaptilepreview). |
 
 **Verktyg och resurser**
 

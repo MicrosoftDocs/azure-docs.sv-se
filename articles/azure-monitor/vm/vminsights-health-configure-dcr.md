@@ -1,36 +1,36 @@
 ---
-title: Konfigurera övervakning i Azure Monitor for VMs gäst hälsa med hjälp av data insamlings regler (för hands version)
-description: Beskriver hur du ändrar standard övervakning i Azure Monitor for VMs gäst hälsa i skala med hjälp av Resource Manager-mallar.
+title: Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
+description: Beskriver hur du ändrar standard övervakning i VM Insights-gäst hälsa i skala med hjälp av Resource Manager-mallar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625625"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731229"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Konfigurera övervakning i Azure Monitor for VMs gäst hälsa med hjälp av data insamlings regler (för hands version)
-[Azure Monitor for VMS gäst hälsa](vminsights-health-overview.md) kan du se hälso tillståndet för en virtuell dator så som den definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. Den här artikeln beskriver hur du kan ändra standard övervakning över flera virtuella datorer med hjälp av data insamlings regler.
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
+Med [gäst hälsa för virtuella datorer](vminsights-health-overview.md) kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. Den här artikeln beskriver hur du kan ändra standard övervakning över flera virtuella datorer med hjälp av data insamlings regler.
 
 
 ## <a name="monitors"></a>Övervakare
-Hälso tillståndet för en virtuell dator bestäms av [hälso](vminsights-health-overview.md#health-rollup-policy) tillståndet för varje övervakare. Det finns två typer av övervakare i Azure Monitor for VMs gäst hälsa som visas i följande tabell.
+Hälso tillståndet för en virtuell dator bestäms av [hälso](vminsights-health-overview.md#health-rollup-policy) tillståndet för varje övervakare. Det finns två typer av övervakare i gäst hälsa för VM Insights som visas i följande tabell.
 
-| Monitor | Description |
+| Monitor | Beskrivning |
 |:---|:---|
 | Enhetsövervakare | Mäter en viss aspekt av en resurs eller ett program. Det kan till exempel handla om att kontrollera en prestandaräknare för att fastställa resursens prestanda eller dess tillgänglighet. |
 | Samlingsövervakare | Grupperar flera övervakare för att visa ett sammanställt hälsotillstånd. En samlingsövervakare kan innehålla en eller flera enhetsövervakare och andra samlingsövervakare. |
 
-Den uppsättning Övervakare som används av Azure Monitor for VMs gäst hälsa och deras konfiguration kan inte ändras direkt. Du kan skapa [åsidosättningar](#overrides) om du ändrar beteendet för standard konfigurationen. Åsidosättningar definieras i data insamlings regler. Du kan skapa flera data insamlings regler som innehåller flera åsidosättningar för att uppnå nödvändig övervaknings konfiguration.
+Den uppsättning Övervakare som används av gäst hälsa för VM Insights och deras konfiguration kan inte ändras direkt. Du kan skapa [åsidosättningar](#overrides) om du ändrar beteendet för standard konfigurationen. Åsidosättningar definieras i data insamlings regler. Du kan skapa flera data insamlings regler som innehåller flera åsidosättningar för att uppnå nödvändig övervaknings konfiguration.
 
 ## <a name="monitor-properties"></a>Övervaka egenskaper
 I följande tabell beskrivs de egenskaper som kan konfigureras för varje övervakare.
 
-| Egenskap | Övervakare | Description |
+| Egenskap | Övervakare | Beskrivning |
 |:---|:---|:---|
 | Enabled | Aggregera<br>Enhet | Om värdet är true beräknas tillstånds övervakaren och bidrar till den virtuella datorns hälso tillstånd. Det kan utlösa en avisering om aviseringar har Aktiver ATS. |
 | Aviseringar | Aggregera<br>Enhet | Om värdet är true utlöses en avisering för övervakaren när den flyttas till ett ohälsosamt tillstånd. Om värdet är False kommer övervakaren fortfarande att bidra till hälso tillståndet för den virtuella datorn, vilket kan utlösa en avisering. |
@@ -103,9 +103,9 @@ Gäst hälsa implementeras som ett tillägg till Azure Monitor Agent, så åsido
 | Element | Krävs | Beskrivning |
 |:---|:---|:---|
 | `name` | Ja | Användardefinierad sträng för tillägget. |
-| `streams` | Yes | Lista över strömmar som gäst hälso data ska skickas till. Detta måste innehålla **Microsoft-HealthStateChange**.  |
-| `extensionName` | Yes | Namn på tillägget. Detta måste vara **HealthExtension**. |
-| `extensionSettings` | Yes | Matris med `healthRuleOverride` element som ska användas i standard konfigurationen. |
+| `streams` | Ja | Lista över strömmar som gäst hälso data ska skickas till. Detta måste innehålla **Microsoft-HealthStateChange**.  |
+| `extensionName` | Ja | Namn på tillägget. Detta måste vara **HealthExtension**. |
+| `extensionSettings` | Ja | Matris med `healthRuleOverride` element som ska användas i standard konfigurationen. |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings-element
@@ -122,8 +122,8 @@ Innehåller inställningar för tillägget.
 | Element | Krävs | Beskrivning |
 |:---|:---|:---|
 | `schemaVersion` | Ja | Strängen som definieras av Microsoft som representerar det förväntade schemat för elementet. Måste för närvarande vara inställt på 1,0 |
-| `contentVersion` | No | Sträng som definieras av användaren för att spåra olika versioner av hälso konfigurationen, om det behövs. |
-| `healthRuleOverrides` | Yes | Matris med `healthRuleOverride` element som ska användas i standard konfigurationen. |
+| `contentVersion` | Inga | Sträng som definieras av användaren för att spåra olika versioner av hälso konfigurationen, om det behövs. |
+| `healthRuleOverrides` | Ja | Matris med `healthRuleOverride` element som ska användas i standard konfigurationen. |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides-element
 Innehåller ett eller flera `healthRuleOverride` element som varje definierar en åsidosättning.
@@ -143,10 +143,10 @@ Innehåller ett eller flera `healthRuleOverride` element som varje definierar en
 | Element | Krävs | Beskrivning |
 |:---|:---|:---|
 | `scopes` | Ja | Lista över en eller flera omfattningar som anger de virtuella datorer som den här åsidosättningen gäller för. Även om DCR-filen är associerad med en virtuell dator måste den virtuella datorn falla inom ett omfång för att åsidosättningen ska tillämpas. |
-| `monitors` | Yes | Lista över en eller flera strängar som definierar vilka Övervakare som får den här åsidosättningen.  |
-| `monitorConfiguration` | No | Konfiguration av övervakaren inklusive hälso tillstånd och hur de beräknas. |
-| `alertConfiguration` | No | Aviserings konfiguration för övervakaren. |
-| `isEnabled` | No | Anger om övervakaren är aktive rad eller inte. Inaktiverade övervaknings växlar till särskilt *inaktiverat* hälso tillstånd och tillstånd inaktiverade om de inte aktive ras igen Om den utelämnas kommer övervakaren att ärva sin status från överordnad övervakare i hierarkin. |
+| `monitors` | Ja | Lista över en eller flera strängar som definierar vilka Övervakare som får den här åsidosättningen.  |
+| `monitorConfiguration` | Inga | Konfiguration av övervakaren inklusive hälso tillstånd och hur de beräknas. |
+| `alertConfiguration` | Inga | Aviserings konfiguration för övervakaren. |
+| `isEnabled` | Inga | Anger om övervakaren är aktive rad eller inte. Inaktiverade övervaknings växlar till särskilt *inaktiverat* hälso tillstånd och tillstånd inaktiverade om de inte aktive ras igen Om den utelämnas kommer övervakaren att ärva sin status från överordnad övervakare i hierarkin. |
 
 
 ## <a name="scopes-element"></a>element för omfattning
@@ -175,7 +175,7 @@ Lista över en eller flera strängar som definierar vilka övervakare i hälsohi
 
 I följande tabell visas de aktuella tillgängliga övervakarens namn.
 
-| Typnamn | Name | Beskrivning |
+| Typnamn | Namn | Beskrivning |
 |:---|:---|:---|
 | skogen | skogen | Övervakaren på den översta nivån representerar hälsa för den virtuella datorn. | |
 | processor användning | processor användning | Övervakaren för processor användning. | |
@@ -227,12 +227,12 @@ Om det finns mindre exempel i lookback intervall än `minSamples` , kommer över
 | Element | Obligatorisk | Beskrivning | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | Nej | Definierar frekvensen för utvärdering av hälso tillstånd. Varje övervakare utvärderas när agenten startar och enligt ett vanligt intervall som definieras av den här parametern därefter. |
-| `lookbackSecs`   | No | Storleken på lookback-fönstret på några sekunder. |
-| `evaluationType` | No | `min` – ta minsta värdet från hela exempel uppsättningen<br>`max` -ta Max värdet från hela exempel uppsättningen<br>`avg` – ta medelvärdet av exempel uppsättnings värden<br>`all` – jämför varje enskilt värde i uppsättningen med tröskelvärden. Övervaka växlar tillstånd om och endast om alla exempel i uppsättningen uppfyller tröskel villkor. |
-| `minSamples`     | No | Minsta antal värden som ska användas för att beräkna värdet. |
-| `maxSamples`     | No | Maximalt antal värden som ska användas för att beräkna värdet. |
-| `warningCondition`  | No | Tröskel-och jämförelse logik för varnings villkoret. |
-| `criticalCondition` | No | Tröskel och jämförelse logik för kritiskt villkor. |
+| `lookbackSecs`   | Inga | Storleken på lookback-fönstret på några sekunder. |
+| `evaluationType` | Inga | `min` – ta minsta värdet från hela exempel uppsättningen<br>`max` -ta Max värdet från hela exempel uppsättningen<br>`avg` – ta medelvärdet av exempel uppsättnings värden<br>`all` – jämför varje enskilt värde i uppsättningen med tröskelvärden. Övervaka växlar tillstånd om och endast om alla exempel i uppsättningen uppfyller tröskel villkor. |
+| `minSamples`     | Inga | Minsta antal värden som ska användas för att beräkna värdet. |
+| `maxSamples`     | Inga | Maximalt antal värden som ska användas för att beräkna värdet. |
+| `warningCondition`  | Inga | Tröskel-och jämförelse logik för varnings villkoret. |
+| `criticalCondition` | Inga | Tröskel och jämförelse logik för kritiskt villkor. |
 
 
 ## <a name="warningcondition-element"></a>warningCondition-element
@@ -249,8 +249,8 @@ Definierar tröskel och jämförelse logik för varnings villkoret. Om det här 
 | Egenskap | Obligatorisk | Beskrivning | 
 |:---|:---|:---|
 | `isEnabled` | Nej | Anger om villkor är aktiverat. Om värdet är **false** inaktive ras villkoret även om tröskelvärdet och operatörens egenskaper kan anges. |
-| `threshold` | No | Definierar tröskel för jämförelse av utvärderat värde. |
-| `operator`  | No | Definierar jämförelse operatorn som ska användas i tröskel uttryck. Möjliga värden: >, <, >=, <=, = =. |
+| `threshold` | Inga | Definierar tröskel för jämförelse av utvärderat värde. |
+| `operator`  | Inga | Definierar jämförelse operatorn som ska användas i tröskel uttryck. Möjliga värden: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>criticalCondition-element
@@ -267,8 +267,8 @@ Definierar tröskel och jämförelse logik för kritiskt villkor. Om det här el
 | Egenskap | Obligatorisk | Beskrivning | 
 |:---|:---|:---|
 | `isEnabled` | Nej | Anger om villkor är aktiverat. Om värdet är **false** inaktive ras villkoret även om tröskelvärdet och operatörens egenskaper kan anges. |
-| `threshold` | No | Definierar tröskel för jämförelse av utvärderat värde. |
-| `operator`  | No | Definierar jämförelse operatorn som ska användas i tröskel uttryck. Möjliga värden: >, <, >=, <=, = =. |
+| `threshold` | Inga | Definierar tröskel för jämförelse av utvärderat värde. |
+| `operator`  | Inga | Definierar jämförelse operatorn som ska användas i tröskel uttryck. Möjliga värden: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Exempel på data insamlings regel
 En exempel på data insamlings regel som aktiverar gäst övervakning finns i [Aktivera en virtuell dator med Resource Manager-mall](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).

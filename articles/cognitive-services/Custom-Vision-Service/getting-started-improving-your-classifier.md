@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731093"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Förbättra din Custom Visions modell
 
-I den här guiden får du lära dig hur du förbättrar kvaliteten på din Custom Vision Services modell. Kvaliteten på din [klassificerare](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) eller [objekt detektor](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) beror på mängden, kvaliteten och antalet olika märkta data som du anger och hur balanserade den övergripande data uppsättningen är. En bra modell har en bal anse rad inlärnings data uppsättning som är representativ för vad som kommer att skickas till den. Processen för att skapa en sådan modell är iterativ; Det är vanligt att ta några få avvisningar för att uppnå förväntade resultat.
+I den här guiden får du lära dig hur du förbättrar kvaliteten på din Custom Vision Services modell. Kvaliteten på din [klassificerare](./getting-started-build-a-classifier.md) eller [objekt detektor](./get-started-build-detector.md) beror på mängden, kvaliteten och antalet olika märkta data som du anger och hur balanserade den övergripande data uppsättningen är. En bra modell har en bal anse rad inlärnings data uppsättning som är representativ för vad som kommer att skickas till den. Processen för att skapa en sådan modell är iterativ; Det är vanligt att ta några få avvisningar för att uppnå förväntade resultat.
 
 Följande är ett allmänt mönster som hjälper dig att träna en mer exakt modell:
 

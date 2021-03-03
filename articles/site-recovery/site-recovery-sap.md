@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711951"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurera haveri beredskap för en distribution med flera nivåer av SAP NetWeaver-appar
 
@@ -24,7 +24,7 @@ Med Site Recovery kan du:
 
 Du kan skydda SAP NetWeaver program distributioner med hjälp av [Azure Site Recovery](site-recovery-overview.md). Den här artikeln beskriver metod tips för att skydda en SAP NetWeaver-distribution på tre nivåer i Azure när du replikerar till ett annat Azure-datacenter med hjälp av Site Recovery. I artikeln beskrivs scenarier och konfigurationer som stöds och hur du utför redundanstest (haveri beredskap) och faktiska redundans.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du se till att du vet hur du gör följande uppgifter:
 
@@ -119,7 +119,7 @@ Om du vill börja replikera alla virtuella SAP-program till data centret för Az
 
 ## <a name="networking-configuration"></a>Nätverkskonfiguration
 
-Om du använder en statisk IP-adress kan du ange den IP-adress som du vill att den virtuella datorn ska ta. Om du vill ange IP-adressen går du till nätverkskortet **beräknings-och nätverks inställningar**  >  **Network interface card**.
+Om du använder en statisk IP-adress kan du ange den IP-adress som du vill att den virtuella datorn ska ta. Om du vill ange IP-adressen går du till nätverkskortet **beräknings-och nätverks inställningar**  >  .
 
 ![Skärm bild som visar hur du ställer in en privat IP-adress i fönstret för nätverkskortet Site Recovery nätverkskort](./media/site-recovery-sap/sap-static-ip.png)
 
@@ -153,7 +153,7 @@ Du kan distribuera de mest använda Site Recovery-skripten till ditt Azure Autom
 1. Välj **Testa redundans**.
 1. Starta processen för redundanstest genom att välja återställnings punkten och det virtuella Azure-nätverket.
 1. Utföra verifieringar när den sekundära miljön är igång.
-1. När valideringen är klar rensar du redundansväxlingen genom att välja **rensning**av redundanstest.
+1. När valideringen är klar rensar du redundansväxlingen genom att välja **rensning** av redundanstest.
 
 Mer information finns i [testa redundans till Azure i Site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -167,5 +167,5 @@ Mer information finns i [testa redundans till Azure i Site Recovery](site-recove
 Mer information finns i [redundansväxlingen i Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om att skapa en katastrof återställnings lösning för SAP NetWeaver-distributioner med hjälp av Site Recovery. Se nedladdnings bara white paper [SAP-NetWeaver: skapa en lösning för katastrof återställning med Site Recovery](https://aka.ms/asr_sap). White paper diskuterar rekommendationer för olika SAP-arkitekturer. Du kan se program och VM-typer som stöds för SAP på Azure. Det finns också alternativ för att testa din katastrof återställnings lösning.
+* Lär dig mer om att skapa en katastrof återställnings lösning för SAP NetWeaver-distributioner med hjälp av Site Recovery. Se nedladdnings bara white paper [SAP-NetWeaver: skapa en lösning för katastrof återställning med Site Recovery](/samples/browse/?redirectedfrom=TechNet-Gallery). White paper diskuterar rekommendationer för olika SAP-arkitekturer. Du kan se program och VM-typer som stöds för SAP på Azure. Det finns också alternativ för att testa din katastrof återställnings lösning.
 * Lär dig mer om att [Replikera andra arbets belastningar](site-recovery-workload.md) med hjälp av Site Recovery.

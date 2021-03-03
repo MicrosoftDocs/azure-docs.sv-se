@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 79314db13531f1fcf518c7931d4a1aa9158a172b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708942"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Skriv om HTTP-begäran och svarshuvuden med Azure Application Gateway – Azure Portal
 
 Den här artikeln beskriver hur du använder Azure Portal för att konfigurera en instans av [Application Gateway v2-SKU](./application-gateway-autoscaling-zone-redundant.md) för att skriva om HTTP-huvudena i begär Anden och svar.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -31,17 +31,17 @@ Om du vill konfigurera omskrivning av HTTP-huvud måste du slutföra de här ste
 
 1. Skapa de objekt som krävs för omskrivning av HTTP-huvud:
 
-   - **Skriv om åtgärd** : används för att ange de rubrik fält för begäran och begär Ande som du tänker skriva om och det nya värdet för rubrikerna. Du kan associera ett eller flera omskrivnings villkor med en Skriv åtgärd.
+   - **Skriv om åtgärd**: används för att ange de rubrik fält för begäran och begär Ande som du tänker skriva om och det nya värdet för rubrikerna. Du kan associera ett eller flera omskrivnings villkor med en Skriv åtgärd.
 
-   - **Skriv villkor** : en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret.
+   - **Skriv villkor**: en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret.
 
      Om du associerar fler än ett villkor med en åtgärd sker åtgärden endast när alla villkor är uppfyllda. Med andra ord är åtgärden ett logiskt och en åtgärd.
 
-   - **Rewrite-regel** : innehåller flera kombinationer av åtgärder för omskrivning/omskrivning.
+   - **Rewrite-regel**: innehåller flera kombinationer av åtgärder för omskrivning/omskrivning.
 
-   - **Regel ordning** : hjälper till att fastställa i vilken ordning reglerna för att skriva om ska köras. Den här konfigurationen är användbar när du har flera omskrivnings regler i en omskrivnings uppsättning. En omskrivnings regel som har ett lägre regel ordnings värde körs först. Om du tilldelar samma regel ordnings värde till två omskrivnings regler är körnings ordningen icke-deterministisk.
+   - **Regel ordning**: hjälper till att fastställa i vilken ordning reglerna för att skriva om ska köras. Den här konfigurationen är användbar när du har flera omskrivnings regler i en omskrivnings uppsättning. En omskrivnings regel som har ett lägre regel ordnings värde körs först. Om du tilldelar samma regel ordnings värde till två omskrivnings regler är körnings ordningen icke-deterministisk.
 
-   - **Skriv över uppsättning** : innehåller flera omskrivnings regler som ska associeras med en regel för anslutningsbegäran.
+   - **Skriv över uppsättning**: innehåller flera omskrivnings regler som ska associeras med en regel för anslutningsbegäran.
 
 2. Koppla den omskrivnings uppsättningen till en regel för routning. Den omskrivna konfigurationen är kopplad till käll lyssnaren via regeln för routning. När du använder en regel för grundläggande routning associeras konfigurationen för omskrivning av huvuden med en käll lyssnare och är en omskrivning av globala huvuden. När du använder en regel för Sök vägs-baserad routning definieras konfigurationen för att skriva över rubriker i sökvägen till URL-sökvägen. I så fall gäller det bara för det angivna Sök vägs området på en plats.
 
@@ -59,7 +59,7 @@ I det här exemplet ska vi ändra en URL för omdirigering genom att skriva om p
 
 2. Välj **omarbetningar** i det vänstra fönstret.
 
-3. Välj **Skriv över uppsättning** :
+3. Välj **Skriv över uppsättning**:
 
    ![Lägg till Skriv över uppsättning](media/rewrite-http-headers-portal/add-rewrite-set.png)
 
@@ -99,7 +99,7 @@ I det här exemplet ska vi ändra en URL för omdirigering genom att skriva om p
 
    - I listan **operator** väljer du **lika med (=)**.
 
-   - Ange ett mönster för reguljära uttryck. I det här exemplet ska vi använda mönstret  `(https?):\/\/.*azurewebsites\.net(.*)$` .
+   - Ange ett mönster för reguljära uttryck. I det här exemplet ska vi använda mönstret `(https?)://.*azurewebsites.net(.*)$` .
 
    - Välj **OK**.
 

@@ -3,22 +3,22 @@ title: Skapa en Azure Image Builder-mall (förhands granskning)
 description: Lär dig hur du skapar en mall som ska användas med Azure Image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 02/18/2021
+ms.date: 03/02/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: c2e4a2c2700af99a074dfd640177a6baefe763e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670432"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693874"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>För hands version: skapa en Azure Image Builder-mall 
 
-Azure Image Builder använder en. JSON-fil för att skicka information till Image Builder-tjänsten. I den här artikeln går vi igenom avsnitten i JSON-filen så att du kan bygga egna. Se exempel på fullständiga. JSON-filer i [Azure Image Builder-GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
+Azure Image Builder använder en. JSON-fil för att skicka information till Image Builder-tjänsten. I den här artikeln går vi igenom avsnitten i JSON-filen så att du kan bygga egna. Se exempel på fullständiga. JSON-filer i [Azure Image Builder-GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts).
 
 Detta är det grundläggande mallformat:
 
@@ -249,7 +249,7 @@ När du använder `customize` :
 - Om en anpassning Miss lyckas, kommer hela anpassnings komponenten att Miss lyckas och rapportera ett fel.
 - Det rekommenderas starkt att du testar skriptet noggrant innan du använder det i en mall. Det blir enklare att felsöka skriptet på din egen virtuella dator.
 - Lägg inte till känsliga data i skripten. 
-- Skript platserna måste vara offentligt tillgängliga, såvida du inte använder [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
+- Skript platserna måste vara offentligt tillgängliga, såvida du inte använder [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity).
 
 ```json
         "customize": [
@@ -697,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>Nästa steg
 
-Det finns exempel på JSON-filer för olika scenarier i [Azure Image Builder-GitHub](https://github.com/danielsollondon/azvmimagebuilder).
+Det finns exempel på JSON-filer för olika scenarier i [Azure Image Builder-GitHub](https://github.com/azure/azvmimagebuilder).

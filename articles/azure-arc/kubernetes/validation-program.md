@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Beskriver Arc-validerings program för Kubernetes-distributioner
 keywords: Kubernetes, båge, Azure, K8s, verifiering
-ms.openlocfilehash: ad87fe3f11c97524595a517b17bb52fa1b771c9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663783"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689223"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc-validerings program
 
@@ -32,11 +32,11 @@ Följande providers och deras motsvarande Kubernetes-distributioner har klarat o
 
 | Providernamn | Distributions namn | Version |
 | ------------ | ----------------- | ------- |
-| Redhat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4,6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html) |
+| Redhat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4,5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html), [4,6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html), [4,7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes-rutnät](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes-version: v 1.17.5 |
 | Canonical    | [Snabb knapp Kubernetes](https://ubuntu.com/kubernetes) | [1,19](https://ubuntu.com/kubernetes/docs/1.19/components) |
-| Rancher      | [Rancher Kubernetes-motor](https://rancher.com/products/rke/) | RKE CLI-version: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-versioner: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
-| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | Version: [2,0](https://www.nutanix.com/blog/introducing-nutanix-karbon-2-kubernetes-simplicity-upgraded); Kubernetes-version: [1.17.0](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.0) |
+| SUSE rancher      | [Rancher Kubernetes-motor](https://rancher.com/products/rke/) | RKE CLI-version: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-versioner: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
+| Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | Version 2.2.1 |
 
 Azure båg-teamet körde också omslags test och godkända Azure Arc-aktiverade Kubernetes-scenarier för följande offentliga moln leverantörer:
 

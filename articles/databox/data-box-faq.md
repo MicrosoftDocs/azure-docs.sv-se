@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a60642e177a2bfb9e8fb996427ea45f6777468
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652793"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730583"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Vanliga frågor och svar
 
@@ -68,6 +69,16 @@ I import scenariot, om du till exempel hade de källdata i Kanada som du ville f
 2. När lokal data kopiering till Data Box-enhet görs, returnerar du enheten till Azure-datacentret i Kanada. De data som finns på Data Box-enhet laddas sedan upp till mål lagrings kontot i den Azure-region som du valde när du skapade ordern.
 
 3. Du kan sedan använda ett verktyg som AzCopy för att kopiera data till ett lagrings konto i USA, västra. I det här steget debiteras standard [avgifterna](https://azure.microsoft.com/pricing/details/bandwidth/) för [lagring](https://azure.microsoft.com/pricing/details/storage/) och bandbredd som inte ingår i data Box-enhet fakturering.
+
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>F. Lagrar Data Box-enhet alla kund uppgifter utanför tjänst regionen?
+
+A. Nej. Data Box-enhet lagrar ingen kund information utanför tjänst regionen. Kunden har full ägande rätt till sina data och kan spara data till en angiven plats baserat på det lagrings konto de väljer när de skapas.  
+
+Utöver kund informationen finns Data Box-enhet data som innehåller säkerhets artefakter relaterade till enheten, övervaknings loggar för enheten och tjänsten och tjänsterelaterade metadata. I alla regioner (förutom södra Brasilien och Sydostasien), lagras och replikeras Data Box-enhet data i den kopplade regionen via ett Geo-redundant lagrings konto för att skydda mot data förlust.  
+
+På grund av [placering-krav för data](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) i brasilien och Sydostasien, lagras data Box-enhet data på ett ZRS-konto (Zone-redundant lagring) så att det finns i en enda region. För Sydostasien lagras alla Data Box-enhet data i Singapore och för södra Brasilien, lagras data i Brasilien. 
+
+Om det uppstår ett tjänst avbrott i södra Brasilien och Sydostasien kan kunderna skapa nya beställningar från en annan region. De nya orderna kommer att hanteras från den region där de skapas och kunderna är ansvariga för till och från leverans av den Data Box-enhet enheten.
 
 ### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>F. Hur kan jag återställa mina data om en hel region Miss lyckas?
 

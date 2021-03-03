@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720247"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Åtkomst Azure Storage (för hands version) som en nätverks resurs från en behållare i App Service
 
 ::: zone pivot="container-windows"
 
-Den här guiden visar hur du kopplar Azure Storage-filer som en nätverks resurs till en Windows-behållare i App Service. Endast [Azure Files resurser](../storage/files/storage-how-to-use-files-cli.md) och [Premium fil resurser](../storage/files/storage-how-to-create-premium-fileshare.md) stöds. Fördelarna är skyddat innehåll, innehålls portabilitet, åtkomst till flera appar och flera överförings metoder.
+Den här guiden visar hur du kopplar Azure Storage-filer som en nätverks resurs till en Windows-behållare i App Service. Endast [Azure Files resurser](../storage/files/storage-how-to-use-files-cli.md) och [Premium fil resurser](../storage/files/storage-how-to-create-file-share.md) stöds. Fördelarna är skyddat innehåll, innehålls portabilitet, åtkomst till flera appar och flera överförings metoder.
 
 > [!NOTE]
 >Azure Storage i App Service är **i för hands version** och **stöds inte** för **produktions scenarier**.
@@ -33,7 +33,7 @@ Den här guiden visar hur du kopplar Azure Storage till en Linux-behållare App 
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ::: zone pivot="container-windows"
 

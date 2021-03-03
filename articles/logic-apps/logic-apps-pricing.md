@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699036"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Pris-och fakturerings modeller för Azure Logic Apps
 
@@ -94,7 +94,9 @@ Information om begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps
 
 ## <a name="integration-accounts"></a>Integrationskonton
 
-Ett [integrations konto](../logic-apps/logic-apps-pricing.md#integration-accounts) är en separat resurs som du skapar och länkar till logi Kap par så att du kan utforska, bygga och testa B2B-integrerings lösningar som använder funktioner för [EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md) . Azure Logic Apps erbjuder dessa nivåer eller nivåer för integrerings kontona:
+Ett [integrations konto](../logic-apps/logic-apps-pricing.md#integration-accounts) är en separat resurs som du skapar och länkar till logi Kap par så att du kan utforska, bygga och testa B2B-integrerings lösningar som använder funktioner för [EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md) .
+
+Azure Logic Apps erbjuder dessa integrerings konto nivåer eller nivåer som [varierar i prissättnings](https://azure.microsoft.com/pricing/details/logic-apps/) -och [fakturerings modell](logic-apps-pricing.md#integration-accounts), baserat på om dina Logi Kap par är konsumtions-eller ISE-baserade:
 
 | Nivå | Beskrivning |
 |------|-------------|

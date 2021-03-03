@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 32cbe31f95c03f9b0b5eb1a31a28033dce18b112
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 035d782321feb5d467638159fc191f65573b1042
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418324"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716133"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Aktivera en hanterad identitet för routning av Azure Digitals sammanflätade händelser (för hands version): Azure CLI
 
@@ -87,8 +87,7 @@ Mer information om slut punkter, vägar och typer av destinationer som stöds f�
 
 ### <a name="assign-the-role"></a>Tilldela rollen
 
->[!NOTE]
-> Det här avsnittet måste utföras av en Azure-användare med behörigheter för att hantera användar åtkomst till Azure-resurser (inklusive beviljande och delegering av behörigheter). Vanliga roller som uppfyller detta krav är *ägare*, *konto administratör* eller kombinationen av *användar åtkomst administratör* och *deltagare*. Mer information om behörighets kraven för Azure Digitals dubbla roller finns i [*How-to: set up instance and Authentication*](how-to-set-up-instance-portal.md#prerequisites-permission-requirements).
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Du kan lägga till `--scopes` parametern `az dt create` i kommandot för att tilldela identiteten till ett eller flera omfång med en angiven roll. Detta kan användas när du först skapar instansen eller senare genom att skicka namnet på en instans som redan finns.
 
@@ -102,7 +101,7 @@ Fler exempel på roll tilldelningar med det här kommandot finns i [ **AZ DT Cre
 
 Du kan också använda kommando gruppen [**AZ roll tilldelning**](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) för att skapa och hantera roller. Detta kan användas för att stödja ytterligare scenarier där du inte vill gruppera roll tilldelning med kommandot CREATE.
 
-## <a name="create-an-endpoint-with-identity-based-authorization"></a>Skapa en slut punkt med Identity-baserad auktorisering
+## <a name="create-an-endpoint-with-identity-based-authentication"></a>Skapa en slut punkt med Identity-baserad autentisering
 
 När du har konfigurerat en Systemhanterad identitet för din Azure Digital-instansen och tilldelar den rätt roll (er) kan du skapa Azure Digital- [slut punkter](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) som kan använda identiteten för autentisering. Det här alternativet är endast tillgängligt för Event Hub-och Service Bus-typ slut punkter (det stöds inte för Event Grid).
 

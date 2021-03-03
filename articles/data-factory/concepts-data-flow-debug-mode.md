@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/04/2020
-ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699767"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mappa fel söknings läge för data flöde
 
@@ -39,9 +39,9 @@ I de flesta fall är det en bra idé att skapa dina data flöden i fel söknings
 
 ## <a name="cluster-status"></a>Klusterstatus
 
-Kluster status indikatorn överst i design ytan blir grön när klustret är klart för fel sökning. Om klustret redan är varmt kommer den gröna indikatorn att visas nästan omedelbart. Om klustret inte redan kördes när du har angett fel söknings läge måste du vänta 5-7 minuter för att klustret ska kunna snurra. Indikatorn roteras tills den är klar.
+Kluster status indikatorn överst i design ytan blir grön när klustret är klart för fel sökning. Om klustret redan är varmt kommer den gröna indikatorn att visas nästan omedelbart. Om klustret inte redan kördes när du angav fel söknings läge, kommer Spark-klustret att utföra en kall omstart. Indikatorn kommer att snurra tills miljön är klar för interaktiv fel sökning.
 
-När du är färdig med fel sökningen aktiverar du fel söknings knappen så att ditt Azure Databricks-kluster kan avslutas och du kommer inte längre att faktureras för fel söknings aktivitet.
+När du är färdig med fel sökningen aktiverar du fel söknings knappen så att ditt Spark-kluster kan avslutas och du kommer inte längre att faktureras för fel söknings aktivitet.
 
 ## <a name="debug-settings"></a>Fel söknings inställningar
 
@@ -50,6 +50,8 @@ När du har aktiverat fel söknings läge kan du redigera hur ett data flöde f�
 ![Fel söknings inställningar](media/data-flow/debug-settings.png "Fel söknings inställningar")
 
 Om du har parametrar i ditt data flöde eller någon av dess refererade data uppsättningar, kan du ange vilka värden som ska användas vid fel sökning genom att välja fliken **parametrar** .
+
+Använd samplings inställningarna här för att peka på exempelfiler eller exempel tabeller med data så att du inte behöver ändra dina käll data uppsättningar. Genom att använda en exempel fil eller tabell här kan du behålla samma logik och egenskaps inställningar i ditt data flöde samtidigt som du testar mot en delmängd data.
 
 ![Parametrar för fel söknings inställningar](media/data-flow/debug-settings2.png "Parametrar för fel söknings inställningar")
 

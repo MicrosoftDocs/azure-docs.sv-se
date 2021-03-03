@@ -9,15 +9,15 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 01/11/2021
-ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698118"
 ---
-# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Snabb start: utforska Azure Time Series Insights Gen2 demo miljö
+# <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Snabbstart: Utforska demomiljön för Azure Time Series Insights Gen2
 
 Den här snabb starten hjälper dig att komma igång med en Azure Time Series Insights Gen2-miljö. I den kostnads fria demonstrationen guidar vi dig att guida viktiga funktioner som har lagts till Azure Time Series Insights Gen2.
 
@@ -129,13 +129,6 @@ Genom att använda Azure Time Series Insights Gen2 och sensor telemetri har vi u
     * Ändra visningen så att alla **Generator system** sensorer på samma diagram skala läggs till.
 
       [![Ändra visningen så att den innehåller allt](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
-
-## <a name="clean-up-resources"></a>Rensa resurser
-
-Nu när du har slutfört snabb starten rensar du de resurser som du har skapat:
-
-1. Välj **alla resurser** på den vänstra menyn i [Azure Portal](https://portal.azure.com)och leta upp resurs gruppen Azure Time Series Insights Gen2.
-1. Ta antingen bort hela resurs gruppen (och alla resurser som ingår i den) genom att välja **ta bort** eller ta bort varje resurs individuellt.
 
 ## <a name="next-steps"></a>Nästa steg
 

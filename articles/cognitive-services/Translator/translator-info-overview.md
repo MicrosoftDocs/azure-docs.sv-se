@@ -12,16 +12,16 @@ ms.date: 02/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: översättare, text översättning, maskin översättning, översättnings tjänst
-ms.openlocfilehash: 12f6d22f263747a8c43b2d98e6ade1de78aea1ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727982"
 ---
 # <a name="what-is-the-translator-service"></a>Vad är tjänsten Translator?
 
-Translator är en molnbaserad maskin översättnings tjänst och ingår i [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) -familjen av kognitiva API: er som används för att bygga smarta appar. Translator är enkelt att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan lägga till användar upplevelser med flera språk på [fler än 70 språk](./language-support.md). Och kan användas på alla maskin varu plattformar med alla operativ system för text översättning.
+Translator är en molnbaserad maskin översättnings tjänst och ingår i [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) -familjen av kognitiva API: er som används för att bygga smarta appar. Translator är enkelt att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan lägga till användar upplevelser med flera språk på [90 språk och dialekter](./language-support.md). Och kan användas på alla maskin varu plattformar med alla operativ system för text översättning.
 
 ## <a name="about-microsoft-translator"></a>Om Microsoft Translator
 

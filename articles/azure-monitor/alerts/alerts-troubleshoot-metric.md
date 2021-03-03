@@ -6,25 +6,25 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 1908232184218316a1a887f17f2fc8104529a0e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 79cc7e1e4b574533fcad4592134109c52897e9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621971"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737264"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
 I den här artikeln beskrivs vanliga problem i Azure Monitor [Metric-aviseringar](alerts-metric-overview.md) och fel sökning.
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Mer information om aviseringar finns i [Översikt över aviseringar i Microsoft Azure](../platform/alerts-overview.md).
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Mer information om aviseringar finns i [Översikt över aviseringar i Microsoft Azure](./alerts-overview.md).
 
 ## <a name="metric-alert-should-have-fired-but-didnt"></a>Mått aviseringen bör ha utlösts men inte 
 
 Om du tror att en måtta avisering ska ha utlösts men den inte har startats och inte finns i Azure Portal kan du prova följande steg:
 
 1. **Konfiguration** – granska varnings regel konfigurationen för att kontrol lera att den är korrekt konfigurerad:
-    - Kontrol lera att **sammansättnings typen** och **agg regerings precisionen (period)** är konfigurerade som förväntat. **Sammansättnings typen** avgör hur mått värden aggregeras (Läs mer [här](../platform/metrics-aggregation-explained.md#aggregation-types)) och **agg regerings kornig het (period)** styr hur långt tillbaka utvärderingen aggregerar mått värden varje gång som varnings regeln körs.
+    - Kontrol lera att **sammansättnings typen** och **agg regerings precisionen (period)** är konfigurerade som förväntat. **Sammansättnings typen** avgör hur mått värden aggregeras (Läs mer [här](../essentials/metrics-aggregation-explained.md#aggregation-types)) och **agg regerings kornig het (period)** styr hur långt tillbaka utvärderingen aggregerar mått värden varje gång som varnings regeln körs.
     -  Kontrol lera att **tröskelvärdet** eller **känslighets** värdet är konfigurerat som förväntat.
     - För en varnings regel som använder dynamiska tröskelvärden kontrollerar du om avancerade inställningar har kon figurer ATS. **antalet överträdelser** kan filtrera aviseringar och **Ignorera data innan** de kan påverka hur tröskelvärdena beräknas.
 
@@ -69,10 +69,10 @@ Om du tror att din måtta avisering inte borde ha utlösts utan den gjorde kan f
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Det går inte att hitta måttet för avisering på virtuella datorer gäst mått
 
 Se till att du har installerat den agent som krävs för att samla in data för att Azure Monitor måtten om du vill varna för gäst operativ systemets mått för virtuella datorer (till exempel minne, disk utrymme).
-- [För virtuella Windows-datorer](../platform/collect-custom-metrics-guestos-resource-manager-vm.md)
-- [För virtuella Linux-datorer](../platform/collect-custom-metrics-linux-telegraf.md)
+- [För virtuella Windows-datorer](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
+- [För virtuella Linux-datorer](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-Mer information om att samla in data från gäst operativ systemet på en virtuell dator finns [här](../insights/monitor-vm-azure.md#guest-operating-system).
+Mer information om att samla in data från gäst operativ systemet på en virtuell dator finns [här](../vm/monitor-vm-azure.md#guest-operating-system).
 
 > [!NOTE] 
 > Om du har konfigurerat gäst mått som ska skickas till en Log Analytics arbets yta visas måtten under arbets ytan Log Analytics arbets yta och kommer att börja visa **data när** du har skapat en varnings regel som övervakar dem. Det gör du genom att följa stegen för att [konfigurera en måttavisering för loggar](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
@@ -84,8 +84,8 @@ Mer information om att samla in data från gäst operativ systemet på en virtue
 
 Om du vill skapa aviseringar om ett visst mått men inte kan se det när du skapar en aviseringsregel kontrollerar du följande:
 - Om du inte kan se mått för resursen [kontrollerar du om resurstypen har stöd för måttaviseringar](./alerts-metric-near-real-time.md).
-- Om du kan se vissa mått för resursen, men inte ett specifikt mått, [kontrollerar du om måttet är tillgängligt](../platform/metrics-supported.md). I så fall kontrollerar du måttbeskrivningen för att se om måttet bara är tillgängligt i vissa versioner eller utgåvor av resursen.
-- Om måttet inte är tillgängligt för resursen kan det vara tillgängligt i resursloggarna och kan då övervakas med hjälp av loggaviseringar. Här kan du läsa mer om att [samla in och analysera resursloggar från en Azure-resurs](../learn/tutorial-resource-logs.md).
+- Om du kan se vissa mått för resursen, men inte ett specifikt mått, [kontrollerar du om måttet är tillgängligt](../essentials/metrics-supported.md). I så fall kontrollerar du måttbeskrivningen för att se om måttet bara är tillgängligt i vissa versioner eller utgåvor av resursen.
+- Om måttet inte är tillgängligt för resursen kan det vara tillgängligt i resursloggarna och kan då övervakas med hjälp av loggaviseringar. Här kan du läsa mer om att [samla in och analysera resursloggar från en Azure-resurs](../essentials/tutorial-resource-logs.md).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Det går inte att hitta mått dimensionen som ska aviseras
 
@@ -211,7 +211,7 @@ Kontrol lera att du använder rätt CLI-kommandon för mått varningar:
 
 - Om du får ett `Metric not found` fel meddelande:
 
-   - För ett plattforms mått: kontrol lera att du använder **mått** namnet på [sidan Azure Monitor mått som stöds](../platform/metrics-supported.md)och inte **måttets visnings namn**
+   - För ett plattforms mått: kontrol lera att du använder **mått** namnet på [sidan Azure Monitor mått som stöds](../essentials/metrics-supported.md)och inte **måttets visnings namn**
 
    - För ett anpassat mått: kontrol lera att måttet redan har skickats (du kan inte skapa en varnings regel för ett anpassat mått som ännu inte finns) och att du tillhandahåller det anpassade måttets namnrymd (se ett exempel på en Resource Manager-mall [här](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric))
 

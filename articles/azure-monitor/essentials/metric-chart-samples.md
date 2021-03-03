@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0430f8efedbcefba551ce3ee81d0db8a654f5b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 882c9e50c344b792d70d09017aeca3a2874cb106
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623531"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700753"
 ---
 # <a name="metric-chart-examples"></a>Exempel på mått diagram 
 
-Azure-plattformen erbjuder [över ett tusen mått](../platform/metrics-supported.md), varav många har dimensioner. Genom att använda [Dimensions filter](./metrics-charts.md), använda [delning](./metrics-charts.md), styra diagram typ och justera diagram inställningar kan du skapa kraftfulla diagnostiska vyer och instrument paneler som ger insikt i din infrastruktur och dina programs hälsa. I den här artikeln visas några exempel på de diagram som du kan bygga med [Metrics Explorer](./metrics-charts.md) och förklarar de steg som krävs för att konfigurera vart och ett av dessa diagram.
+Azure-plattformen erbjuder [över ett tusen mått](./metrics-supported.md), varav många har dimensioner. Genom att använda [Dimensions filter](./metrics-charts.md), använda [delning](./metrics-charts.md), styra diagram typ och justera diagram inställningar kan du skapa kraftfulla diagnostiska vyer och instrument paneler som ger insikt i din infrastruktur och dina programs hälsa. I den här artikeln visas några exempel på de diagram som du kan bygga med [Metrics Explorer](./metrics-charts.md) och förklarar de steg som krävs för att konfigurera vart och ett av dessa diagram.
 
 Vill du dela dina Fantastiska diagram exempel med världen? Bidra till den här sidan på GitHub och dela dina egna diagram exempel här!
 
@@ -54,4 +54,3 @@ I mått väljaren väljer du ditt lagrings konto och måttet för **transaktione
 
 * Lär dig mer om Azure Monitor- [arbetsböcker](../visualize/workbooks-overview.md)
 * Läs mer om [Metric Explorer](metrics-charts.md)
-

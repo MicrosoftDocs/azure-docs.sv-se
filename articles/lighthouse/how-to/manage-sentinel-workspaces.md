@@ -1,14 +1,14 @@
 ---
 title: Hantera Azure Sentinel-arbetsytor i skala
 description: Lär dig hur du effektivt hanterar Azure Sentinel på delegerade kund resurser.
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424091"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702529"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Hantera Azure Sentinel-arbetsytor i skala
 
@@ -80,9 +80,9 @@ Skapa och spara Log Analytics frågor för att identifiera hot centralt i hanter
 
 Du kan använda Automation för att hantera flera Azure Sentinel-arbetsytor och konfigurera [jakt frågor](../../sentinel/hunting.md), spel böcker och arbets böcker. Mer information finns i [hantering av flera arbets ytor med hjälp av Automation](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation).
 
-## <a name="manage-security-of-office-365-environments"></a>Hantera säkerhet för Office 365-miljöer
+## <a name="monitor-security-of-office-365-environments"></a>Övervaka säkerheten i Office 365-miljöer
 
-Använd Azure-Lighthouse tillsammans med Azure Sentinel för att hantera säkerheten för Office 365-miljöer mellan klienter. Först måste du vara inloggad [i box 365-data kopplingarna i den hanterade klienten](../../sentinel/connect-office-365.md) så att information om användar-och administratörs aktiviteter i Exchange och SharePoint (inklusive OneDrive) kan matas in till en Azure Sentinel-arbetsyta i den hanterade klienten. Detta omfattar information om åtgärder som fil hämtningar, åtkomst förfrågningar som skickats, ändringar av grupp händelser och post lådor, tillsammans med information om de användare som utförde åtgärderna. [Office 365 DLP-aviseringar](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) stöds också som en del av den inbyggda Office 365-anslutningen.
+Använd Azure-Lighthouse tillsammans med Azure Sentinel för att övervaka säkerheten för Office 365-miljöer mellan klienter. Först måste du vara inloggad [i box 365-data kopplingarna i den hanterade klienten](../../sentinel/connect-office-365.md) så att information om användar-och administratörs aktiviteter i Exchange och SharePoint (inklusive OneDrive) kan matas in till en Azure Sentinel-arbetsyta i den hanterade klienten. Detta omfattar information om åtgärder som fil hämtningar, åtkomst förfrågningar som skickats, ändringar av grupp händelser och post lådor, tillsammans med information om de användare som utförde åtgärderna. [Office 365 DLP-aviseringar](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820) stöds också som en del av den inbyggda Office 365-anslutningen.
 
 Du kan aktivera [Microsoft Cloud App Security-anslutningen (MCAS)](../../sentinel/connect-cloud-app-security.md) för att strömma aviseringar och Cloud Discovery loggar i Azure Sentinel. På så sätt kan du få insyn i molnappar, få sofistikerade analyser för att identifiera och bekämpa cyberhot, samt styra hur data överförs. Aktivitets loggar för MCAS kan [förbrukas med hjälp av CEF (common Event format)](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849).
 

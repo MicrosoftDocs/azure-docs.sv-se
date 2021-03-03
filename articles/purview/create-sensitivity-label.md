@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: c8d0ea43410b8d191d3d0b08c2f232bd72c80b20
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669619"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693534"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -102,7 +102,10 @@ Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan
 
 **Utöka känslighets etiketter till avdelningens kontroll:**
 
-I Microsoft 365 går du till **Information Protection** sidan. I rutan **utöka etiketter till till gångar i Azure avdelningens kontroll** väljer du knappen **slå på** och väljer sedan **Ja** i den bekräftelse dialog ruta som visas.
+Med följande steg kan du använda dina känslighets etiketter för användning i Azure avdelningens kontroll, där du kan använda dina känslighets etiketter till till gångar som SQL-kolumner, filer i Azure Blob Storage med mera.
+
+1. I Microsoft 365 går du till **Information Protection** sidan. 
+1. I rutan **utöka etiketter till till gångar i Azure avdelningens kontroll** väljer du knappen **slå på** och väljer sedan **Ja** i den bekräftelse dialog ruta som visas.
 
 Exempel:
 

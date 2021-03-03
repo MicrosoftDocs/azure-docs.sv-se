@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: c8fcd6e662a0beff61209de4b5c4331618b45ea1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715164"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -47,7 +47,7 @@ Funktionen nyligen tillagda ljud effekter är tillgänglig när du indexerar fil
 
 Händelse typen **Clapping** som ingick i föregående modell för ljud effekter, har nu extraherats till en del av händelse typen **full reaktion** .
 
-När du väljer att se **inplatsen** för videon på [video Indexer](https://www.videoindexer.ai/) webbplats visas ljud effekterna på sidan.
+När du väljer att visa **insikter** om videon på [video Indexer](https://www.videoindexer.ai/) webbplats visas ljud effekterna på sidan.
 
 :::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Ljud händelse identifiering":::
 

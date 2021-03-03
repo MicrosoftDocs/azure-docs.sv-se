@@ -3,18 +3,18 @@ title: Skapa en Function-app på Linux från Azure Portal
 description: Lär dig hur du skapar din första Azure-funktion på Linux med hjälp av Azure Portal.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d6787e1dd8312e368964a1f555025beff9a06a23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732266"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Skapa en Function-app i Linux i ett Azure App Service plan
 
 Med hjälp av Azure Functions kan Linux användas som värd för funktionerna i en Azure App Service-standardcontainer. Den här artikeln beskriver hur du använder [Azure Portal](https://portal.azure.com) för att skapa en Linux-värdbaserad Function-app som körs i en [App Service plan](dedicated-plan.md). Du kan även [använda en egen anpassad container](functions-create-function-linux-custom-image.md).
 
-![Skapa en funktionsapp i Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
+[!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

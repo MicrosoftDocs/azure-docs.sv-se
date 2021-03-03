@@ -1,58 +1,38 @@
 ---
-title: 'Självstudie: aktivera tillägg för ingångs kontroll för ett nytt AKS-kluster med en ny Azure Application Gateway-instans'
-description: I den här självstudien får du lära dig hur du använder Azure CLI för att aktivera tillägg för ingångs kontroll för ditt nya AKS-kluster med en ny Application Gateway-instans.
+title: 'Självstudie: aktivera tillägg för ingångs kontroll för ett nytt AKS-kluster med en ny Azure Application Gateway'
+description: I den här självstudien får du lära dig hur du aktiverar tillägg för ingångs kontroll för ditt nya AKS-kluster med en ny Application Gateway-instans.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: c37168c5165f5402dd4f57c8557bc2b7b3603533
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593832"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720196"
 ---
-# <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Självstudie: aktivera tillägg för ingångs kontroll (för hands version) för ett nytt AKS-kluster med en ny Application Gateway instans
+# <a name="tutorial-enable-the-ingress-controller-add-on-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Självstudie: aktivera tillägg för ingångs kontroll för ett nytt AKS-kluster med en ny Application Gateway-instans
 
-Du kan använda Azure CLI för att aktivera AGIC-tillägget [(Application Gateway ingress Controller)](ingress-controller-overview.md) för ett [Azure Kubernetes Services-kluster (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . Tillägget är för närvarande en för hands version.
+Du kan använda Azure CLI för att aktivera AGIC-tillägget [(Application Gateway ingress Controller)](ingress-controller-overview.md) för ett nytt [AKS-kluster (Azure Kubernetes Services](https://azure.microsoft.com/services/kubernetes-service/) ).
 
 I den här självstudien skapar du ett AKS-kluster med AGIC-tillägget aktiverat. När klustret skapas skapas automatiskt en Azure Application Gateway-instans som ska användas. Sedan distribuerar du ett exempel program som ska använda tillägget för att exponera programmet genom Application Gateway. 
 
-Tillägget är ett mycket snabbare sätt att distribuera AGIC för ditt AKS-kluster än [tidigare via Helm](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Det ger också en fullständigt hanterad upplevelse.    
+Tillägget är ett mycket snabbare sätt att distribuera AGIC för ditt AKS-kluster än [tidigare via Helm](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Det ger också en fullständigt hanterad upplevelse.
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en resursgrupp. 
-> * Skapa ett nytt AKS-kluster med AGIC-tillägget aktiverat. 
+> * Skapa ett nytt AKS-kluster med AGIC-tillägget aktiverat.
 > * Distribuera ett exempel program genom att använda AGIC för ingress i AKS-klustret.
 > * Kontrol lera att programmet kan kontaktas via Application Gateway.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. Om du använder Azure CLI måste du installera förhands gransknings tillägget i CLI med hjälp av följande kommando, om det inte redan finns:
-    ```azurecli-interactive
-    az extension add --name aks-preview
-    ```
-
- - Registrera funktions flaggan *AKS-IngressApplicationGatewayAddon* med hjälp av kommandot [AZ Feature register](/cli/azure/feature#az-feature-register) , som du ser i följande exempel. Du behöver bara göra detta en gång per prenumeration medan tillägget fortfarande finns i en för hands version.
-    ```azurecli-interactive
-    az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
-    ```
-
-   Det kan ta några minuter innan status visas `Registered` . Du kan kontrol lera registrerings statusen med hjälp av kommandot [AZ feature list](/cli/azure/feature#az-feature-register) :
-    ```azurecli-interactive
-    az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-    ```
-
- - När du är klar uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot [AZ Provider register](/cli/azure/provider#az-provider-register) :
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -74,10 +54,10 @@ Nu ska du distribuera ett nytt AKS-kluster med AGIC-tillägget aktiverat. Om du 
 
 I följande exempel distribuerar du ett nytt AKS-kluster *med namnet IT-kluster med hjälp* av [Azure cni](../aks/concepts-network.md#azure-cni-advanced-networking) och [hanterade identiteter](../aks/use-managed-identity.md). AGIC-tillägget aktive ras i resurs gruppen som du skapade, *myResourceGroup*. 
 
-Om du distribuerar ett nytt AKS-kluster med AGIC-tillägget aktiverat utan att ange en befintlig Application Gateway instans, innebär det att en automatisk generering av en Standard_v2 SKU Application Gateway-instans skapas automatiskt. Så du kan också ange namn och under näts adress utrymme för Application Gateway-instansen. Namnet på Application Gateway-instansen kommer att vara *myApplicationGateway* och adress utrymmet för under nätet som vi använder är 10.2.0.0/16. Se till att du har lagt till eller uppdaterat tillägget AKS-Preview i början av den här självstudien. 
+Om du distribuerar ett nytt AKS-kluster med AGIC-tillägget aktiverat utan att ange en befintlig Application Gateway instans, innebär det att en automatisk generering av en Standard_v2 SKU Application Gateway-instans skapas automatiskt. Så du kan också ange namn och under näts adress utrymme för Application Gateway-instansen. Namnet på Application Gateway-instansen kommer att vara *myApplicationGateway* och adress utrymmet för under nätet som vi använder är 10.2.0.0/16.
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
 ```
 
 Information om hur du konfigurerar ytterligare parametrar för `az aks create` kommandot finns i [följande referenser](/cli/azure/aks#az-aks-create). 

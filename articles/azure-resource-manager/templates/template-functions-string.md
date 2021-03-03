@@ -2,13 +2,13 @@
 title: Template Functions-String
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att arbeta med strängar.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920016"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731127"
 ---
 # <a name="string-functions-for-arm-templates"></a>Sträng funktioner för ARM-mallar
 
@@ -39,7 +39,7 @@ Resource Manager innehåller följande funktioner för att arbeta med strängar 
 * [startsWith](#startswith)
 * [sträng](#string)
 * [under sträng](#substring)
-* [take](#take)
+* [gå](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
 * [reducera](#trim)
@@ -306,6 +306,8 @@ Utdata från föregående exempel med standardvärdena är:
 
 Kombinerar flera sträng värden och returnerar den sammanfogade strängen, eller kombinerar flera matriser och returnerar den sammanfogade matrisen.
 
+För att förenkla sträng sammanfogningen stöder bicep en syntax för [String-interpolation](https://en.wikipedia.org/wiki/String_interpolation#) .
+
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
@@ -351,6 +353,14 @@ I följande [exempel mall](https://github.com/Azure/azure-docs-json-samples/blob
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+eller
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -1530,7 +1540,7 @@ I följande exempel används funktionen newGuid för att skapa ett unikt namn f�
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -2468,7 +2478,7 @@ I följande exempel visas hur du skapar ett unikt namn för ett lagrings konto b
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```
@@ -2535,7 +2545,7 @@ Skapar en absolut URI genom att kombinera baseUri-och relativeUri-strängen.
 
    * Om **baseUri** har vissa snedstreck, men inte slutar med ett snedstreck, tas allt från det sista snedstrecket bort från **BaseUri** och resultatet är **BaseUri** följt av **relativeUri**.
 
-Här följer några exempel:
+Här är några exempel:
 
 ```
 uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh

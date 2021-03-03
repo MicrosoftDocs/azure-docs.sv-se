@@ -1,24 +1,23 @@
 ---
 title: Övervakare av nätverksprestanda lösning i Azure | Microsoft Docs
 description: Övervakare av nätverksprestanda i Azure hjälper dig att övervaka nätverkets prestanda, i nära real tid, för att identifiera och hitta Flask halsar i nätverks prestanda.
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 92326ea4d3de896a67b2953fb612b79948044d08
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573428"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711135"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Övervakare av nätverksprestanda lösning i Azure
 
 ![Övervakare av nätverksprestanda symbol](./media/network-performance-monitor/npm-symbol.png)
 
 > [!IMPORTANT]
-> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Övervakare av nätverksprestanda är en molnbaserad hybrid nätverks övervaknings lösning som hjälper dig att övervaka nätverks prestanda mellan olika platser i din nätverks infrastruktur. Du kan också övervaka nätverksanslutningar till tjänsten och programslutpunkterna samt övervaka prestanda för Azure ExpressRoute. 
 
@@ -301,4 +300,4 @@ Information om priser är tillgänglig [online](network-performance-monitor-pric
 * **Delta i vår kohort:** Vi är alltid intresserade av att låta nya kunder delta i vår kohort. Som en del av det får du tidig till gång till nya funktioner och en möjlighet att hjälpa oss att förbättra Övervakare av nätverksprestanda. Om du är intresse rad av att ansluta kan du fylla i den här [snabb undersökningen](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Nästa steg 
-Läs mer om [prestanda övervakaren](network-performance-monitor-performance-monitor.md), [tjänst anslutnings övervakaren](network-performance-monitor-performance-monitor.md)och [ExpressRoute-övervakaren](network-performance-monitor-expressroute.md). 
+Läs mer om [prestanda övervakaren](network-performance-monitor-performance-monitor.md), [tjänst anslutnings övervakaren](network-performance-monitor-performance-monitor.md)och [ExpressRoute-övervakaren](network-performance-monitor-expressroute.md).

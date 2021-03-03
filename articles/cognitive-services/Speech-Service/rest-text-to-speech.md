@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733456"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-till-tal (REST API)
 
@@ -76,7 +76,7 @@ Med `voices/list` slut punkten kan du få en fullständig lista över röster f�
 
 I den här tabellen listas obligatoriska och valfria rubriker för text till tal-begäranden.
 
-| Huvud | Description | Obligatorisk/valfri |
+| Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Din prenumerations nyckel för röst tjänst. | Antingen den här rubriken eller `Authorization` krävs. |
 | `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Antingen den här rubriken eller `Ocp-Apim-Subscription-Key` krävs. |
@@ -211,7 +211,7 @@ Dessa regioner stöds för text till tal med hjälp av REST API. Se till att du 
 
 I den här tabellen listas obligatoriska och valfria rubriker för text till tal-begäranden.
 
-| Huvud | Description | Obligatorisk/valfri |
+| Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
 | `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatorisk |
 | `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Obligatorisk |
@@ -279,5 +279,5 @@ Om HTTP-statusen är `200 OK` , innehåller bröd texten i svaret en ljudfil i d
 ## <a name="next-steps"></a>Nästa steg
 
 - [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynkron syntes för lång Forms ljud](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynkron syntes för lång Forms ljud](./long-audio-api.md)
 - [Komma igång med Custom Voice](how-to-custom-voice.md)

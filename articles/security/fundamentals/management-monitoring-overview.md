@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747181"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712053"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Översikt över Azure Security Management och Monitoring
 Den här artikeln innehåller en översikt över de säkerhetsfunktioner och tjänster som Azure tillhandahåller för att hjälpa till med hantering och övervakning av Azure Cloud Services och Virtual Machines.
@@ -48,7 +48,7 @@ Läs mer:
 
 * [Distribuera lösningar för skydd mot skadlig kod i Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Microsoft Antimalware för Azure Cloud Services och Virtual Machines](antimalware.md)
-* [Så här installerar och konfigurerar du Trend Micro djupgående säkerhet som en tjänst på en virtuell Windows-dator](../../virtual-machines/extensions/trend.md)
+* [Så här installerar och konfigurerar du Trend Micro djupgående säkerhet som en tjänst på en virtuell Windows-dator](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Så här installerar och konfigurerar du Symantec Endpoint Protection på en virtuell Windows-dator](../../virtual-machines/extensions/symantec.md)
 * [Nya alternativ för program mot skadlig kod för att skydda Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 

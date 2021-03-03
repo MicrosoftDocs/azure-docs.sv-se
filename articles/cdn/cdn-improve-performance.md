@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993677"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728203"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Förbättra prestanda genom att komprimera filer i Azure CDN
 Fil komprimering är en enkel och effektiv metod för att förbättra fil överförings hastigheten och öka sid inläsnings prestandan genom att minska fil storleken innan den skickas från servern. Fil komprimering kan minska bandbredds kostnaderna och ge användarna ett mer svars upplevelser.
@@ -153,10 +153,10 @@ I följande tabeller beskrivs Azure CDN komprimerings beteende för varje scenar
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Komprimering är aktiverat och filen är tillgänglig för komprimering
 | Klientens begärda format (via Accept-Encoding huvud) | Cachelagrat fil format | CDN-svar på klienten | Kommentarer |
 | --- | --- | --- | --- |
-| Komprimerade |Komprimerade |Komprimerade |CDN-omkodningar mellan format som stöds. |
+| Komprimerade |Komprimerade |Komprimerade |CDN-omkodningar mellan format som stöds. <br/>**Azure CDN från Microsoft** stöder inte kodning mellan format och hämtar i stället data från ursprung, komprimerar och cachelagrar separat för formatet. |
 | Komprimerade |Okomprimerade |Komprimerade |CDN utför en komprimering. |
 | Komprimerade |Inte cachelagrad |Komprimerade |CDN utför en komprimering om ursprunget returnerar en okomprimerad fil. <br/>**Azure CDN från Verizon** överför den okomprimerade filen på den första begäran och komprimerar och cachelagrar sedan filen för efterföljande begär Anden. <br/>Filer med `Cache-Control: no-cache` rubriken komprimeras aldrig. |
-| Okomprimerade |Komprimerade |Okomprimerade |CDN utför en dekomprimering. |
+| Okomprimerade |Komprimerade |Okomprimerade |CDN utför en dekomprimering. <br/>**Azure CDN från Microsoft** stöder inte dekomprimering och hämtar i stället data från ursprung och cacheminne separat för okomprimerade klienter. |
 | Okomprimerade |Okomprimerade |Okomprimerade | |
 | Okomprimerade |Inte cachelagrad |Okomprimerade | |
 

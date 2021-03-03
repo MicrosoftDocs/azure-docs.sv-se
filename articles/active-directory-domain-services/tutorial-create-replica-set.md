@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687506"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Självstudie: skapa och Använd replik uppsättningar för återhämtning eller geolokalisering i Azure Active Directory Domain Services (för hands version)
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>Självstudie: skapa och Använd replik uppsättningar för återhämtning eller geolokalisering i Azure Active Directory Domain Services
 
 Om du vill förbättra återhämtningen hos en Azure Active Directory Domain Services (Azure AD DS)-hanterad domän, eller distribuera till ytterligare geografiska platser nära dina program, kan du använda *replik uppsättningar*. Varje Azure AD DS-hanterad domän namn rymd, till exempel *aaddscontoso.com*, innehåller en inledande replik uppsättning. Möjligheten att skapa ytterligare replik uppsättningar i andra Azure-regioner ger geografisk återhämtning för en hanterad domän.
 
 Du kan lägga till en replik uppsättning till ett peer-kopplat virtuellt nätverk i valfri Azure-region som stöder Azure AD DS.
-
-Replik uppsättningar är en offentlig för hands versions funktion i Azure AD Domain Services. Tänk på de support skillnader som finns för funktioner som fortfarande finns i för hands version. Mer information om för hands versioner finns [Azure Active Directory Service avtal för för hands versionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 I den här guiden får du lära dig att:
 
@@ -78,7 +76,7 @@ Utför följande steg för att skapa ytterligare en replik uppsättning:
 
 1. I Azure Portal söker du efter och väljer **Azure AD Domain Services**.
 1. Välj din hanterade domän, till exempel *aaddscontoso.com*.
-1. På den vänstra sidan väljer du **replik uppsättningar (förhands granskning)**. Varje hanterad domän innehåller en inledande replik uppsättning i den valda regionen, som visas i följande exempel skärm bild:
+1. På den vänstra sidan väljer du **replik uppsättningar**. Varje hanterad domän innehåller en inledande replik uppsättning i den valda regionen, som visas i följande exempel skärm bild:
 
     ![Exempel skärm bild som visar och lägger till en replik uppsättning i Azure Portal](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ Utför följande steg för att ta bort en replik uppsättning:
 
 1. I Azure Portal söker du efter och väljer **Azure AD Domain Services**.
 1. Välj din hanterade domän, till exempel *aaddscontoso.com*.
-1. På den vänstra sidan väljer du **replik uppsättningar (förhands granskning)**. I listan över replik uppsättningar väljer du snabb menyn **...** bredvid den replik uppsättning som du vill ta bort.
+1. På den vänstra sidan väljer du **replik uppsättningar**. I listan över replik uppsättningar väljer du snabb menyn **...** bredvid den replik uppsättning som du vill ta bort.
 1. Välj **ta bort** på snabb menyn och bekräfta att du vill ta bort replik uppsättningen.
 
 > [!NOTE]

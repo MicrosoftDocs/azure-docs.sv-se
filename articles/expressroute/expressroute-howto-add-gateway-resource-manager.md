@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739066"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Självstudie: Konfigurera en virtuell nätverksgateway för ExpressRoute med PowerShell
 > [!div class="op_single_selector"]
@@ -30,13 +30,13 @@ I den här guiden får du lära dig att:
 > - Skapa ett Gateway-undernät.
 > - Skapa Virtual Network Gateway.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="configuration-reference-list"></a>Konfigurations referens lista
 
 Stegen för den här aktiviteten använder ett VNet baserat på värdena i följande konfigurations referens lista. Ytterligare inställningar och namn beskrivs också i den här listan. Vi använder inte den här listan direkt i något av stegen, men vi lägger till variabler baserat på värdena i den här listan. Du kan kopiera listan som ska användas som referens och ersätta värdena med dina egna.
 
-| Inställningen                   | Värde                                              |
+| Inställning                   | Värde                                              |
 | ---                       | ---                                                |
 | Virtual Network namn | *TestVNet* |    
 | Virtual Network adress utrymme | *192.168.0.0/16* |
@@ -52,6 +52,11 @@ Stegen för den här aktiviteten använder ett VNet baserat på värdena i följ
 | Konfigurations namn för Gateway-IP | *gwipconf* |
 | Typ | *ExpressRoute* |
 | Gatewayens offentliga IP-namn  | *gwpip* |
+
+> [!IMPORTANT]
+> IPv6-stöd för privat peering är för närvarande en **offentlig för hands version**. Om du vill ansluta ditt virtuella nätverk till en ExpressRoute-krets med IPv6-baserad privat peering konfigurerad kontrollerar du att ditt virtuella nätverk är dubbel stack och följer rikt linjerna som beskrivs [här](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> 
+> 
 
 ## <a name="add-a-gateway"></a>Lägga till en gateway
 
@@ -76,6 +81,11 @@ Stegen för den här aktiviteten använder ett VNet baserat på värdena i följ
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
+    Om du använder ett virtuellt nätverk med dubbla stackar och planerar att använda IPv6-baserad privat peering över ExpressRoute, skapar du ett undernät med dubbla stack-gateway i stället.
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
    ```
 1. Ange konfigurationen.
 
@@ -102,6 +112,10 @@ Stegen för den här aktiviteten använder ett VNet baserat på värdena i följ
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> Om du planerar att använda IPv6-baserad privat peering över ExpressRoute, se till att välja en AZ SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) för **-GatewaySku**.
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>Kontrol lera att gatewayen har skapats
 Använd följande kommandon för att kontrol lera att gatewayen har skapats:

@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 12/23/2020
+ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 11958c54dd1f54e424b71eb00780f5309a1c0bab
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706049"
 ---
 Här är en lista över de lagrings konton och lagrings typer som stöds för en Data Box-enhet enhet. En fullständig lista över alla funktioner för alla typer av lagrings konton finns i [typer av lagrings konton](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
@@ -45,6 +45,7 @@ I följande tabell visas de lagrings konton som stöds för export order.
 > [!IMPORTANT]
 > - För generella konton har Data Box-enhet inte stöd för kö-, tabell-och disk lagrings typer för import order. För export order stöder Data Box-enhet inte kö-, tabell-, disk-och Azure Data Lake gen 2-lagrings typer för allmänna-syfte-konton.
 > - Data Box-enhet har inte stöd för att lägga till blobar för Blob Storage och blockera Blob Storage konton.
+> - NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage stöds inte med Data Box-enhet.
 > - Data som överförs till sid-blobar måste vara 512 byte justerade, till exempel virtuella hård diskar.
 > - Högst 80 TB kan exporteras.
 > - Fil historik och blob-ögonblicksbilder exporteras inte.

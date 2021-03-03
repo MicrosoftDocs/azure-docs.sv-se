@@ -1,17 +1,17 @@
 ---
-title: Skapa ett AKS-kluster i portalen
+title: 'Snabb start: Distribuera ett AKS-kluster med hjälp av Azure Portal'
 titleSuffix: Azure Kubernetes Service
 description: Lär dig hur du snabbt kan skapa ett Kubernetes-kluster, distribuera ett program och övervaka prestanda i Azure Kubernetes Service (AKS) med hjälp av Azure Portal.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 7f59924b2a50f29e01d46e12389e5ca52769225d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 443c9e0cebe2a45386b63b3a0bc4a813d243e49e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714569"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure Portal
 
@@ -47,7 +47,7 @@ Du skapar ett AKS-kluster genom att slutföra följande steg:
 
 4. Behåll standard alternativen på sidan **Node-pooler** . Längst ned på skärmen klickar du på **Nästa: autentisering**.
     > [!CAUTION]
-    > Det kan ta flera minuter att sprida nya AAD-tjänstens huvud namn och bli tillgängliga, vilket orsakar att tjänstens huvud namn inte hittades fel och validerings fel i Azure Portal. Om du når [den här lösningen går du](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) vidare till lösning.
+    > Det kan ta flera minuter att sprida nya AAD-tjänstens huvud namn och bli tillgängliga, vilket orsakar att tjänstens huvud namn inte hittades fel och validerings fel i Azure Portal. Om du klickar på detta går du till [Felsöka vanliga problem med Azure Kubernetes-tjänsten](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) för att undvika problemet.
 
 5. På sidan **Autentisering** konfigurerar du följande alternativ:
     - Skapa ett nytt tjänsthuvudnamn genom att låta fältet **tjänstens huvudnamn** vara **(nytt) standardtjänsthuvudnamn**. Eller så kan du välja *Konfigurera tjänstens huvudnamn* om du vill använda ett befintligt. Om du använder en befintlig måste du ange klient-ID och hemlighet för tjänstens huvud namn.
@@ -78,7 +78,7 @@ För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster anv
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Du kan kontrollera anslutningen till klustret genom att köra kommandot [kubectl get][kubectl-get] för att returnera en lista över klusternoderna.
+Om du vill kontrol lera anslutningen till klustret använder du `kubectl get` kommandot för att returnera en lista över klusternoderna.
 
 ```console
 kubectl get nodes
@@ -93,7 +93,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>Kör programmet
 
-En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. I den här snabbstarten används ett manifest för att skapa alla objekt som behövs för att köra Azure Vote-programmet. Det här manifestet innehåller två [Kubernetes-distributioner][kubernetes-deployment] – en för exemplet på Azure Vote Python-program och den andra för en Redis-instans. Två [Kubernetes-tjänster][kubernetes-service] skapas också – en intern tjänst för Redis-instansen och en extern tjänst för att komma åt Azure Vote-programmet från Internet.
+En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. I den här snabbstarten används ett manifest för att skapa alla objekt som behövs för att köra Azure Vote-programmet. Det här manifestet innehåller två Kubernetes-distributioner – en för exemplet på Azure Vote Python-program och den andra för en Redis-instans. Två Kubernetes-tjänster skapas också – en intern tjänst för Redis-instansen och en extern tjänst för att komma åt Azure Vote-programmet från Internet.
 
 I Cloud Shell använder du en redigerare för att skapa en fil med namnet `azure-vote.yaml` , till `code azure-vote.yaml` exempel `nano azure-vote.yaml` eller `vi azure-vote.yaml` . Kopiera sedan följande YAML-definition:
 
@@ -185,7 +185,7 @@ spec:
     app: azure-vote-front
 ```
 
-Distribuera programmet med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
+Distribuera programmet med `kubectl apply` kommandot och ange namnet på ditt yaml-manifest:
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -204,7 +204,7 @@ service "azure-vote-front" created
 
 När programmet körs så exponerar en Kubernetes-tjänst programmets klientdel mot Internet. Den här processen kan ta ett par minuter att slutföra.
 
-Du kan övervaka förloppet genom att använda kommandot [kubectl get service][kubectl-get] med argumentet `--watch`.
+Om du vill övervaka förloppet använder du `kubectl get service` kommandot med `--watch` argumentet.
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -267,7 +267,7 @@ I den här snabbstarten har fördefinierade containeravbildningar användes för
 
 I den här snabbstartsguiden distribuerade du ett Kubernetes-kluster och distribuerade sedan ett flercontainerprogram till det.
 
-Om du vill lära dig mer om AKS, och gå igenom ett exempel med fullständig distributionskod, fortsätter du till självstudiekursen om Kubernetes-kluster.
+Om du vill veta mer om AKS genom att gå igenom ett komplett exempel, till exempel skapa ett program, distribuera från Azure Container Registry, uppdatera ett program som körs och skala och uppgradera klustret, fortsätter du till självstudien för Kubernetes-kluster.
 
 > [!div class="nextstepaction"]
 > [Självstudiekurs om AKS][aks-tutorial]
@@ -288,6 +288,3 @@ Om du vill lära dig mer om AKS, och gå igenom ett exempel med fullständig dis
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-[azure-dev-spaces]: ../dev-spaces/index.yml
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services

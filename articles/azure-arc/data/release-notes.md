@@ -7,25 +7,44 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686690"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Viktig information – Azure Arc-aktiverade data tjänster (för hands version)
 
+I den här artikeln beskrivs funktioner, funktioner och förbättringar som nyligen har lanserats eller förbättrats för Azure Arc-aktiverade data tjänster. 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>Februari 2021
+
+### <a name="new-capabilities-and-features"></a>Nya funktioner och funktioner
+
+Versions nummer för Azure Data CLI ( `azdata` ): 20.3.1. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) . Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+Ytterligare uppdateringar är:
+
+- Azure Arc-aktiverad SQL-hanterad instans
+   - Hög tillgänglighet med Always on-tillgänglighetsgrupper
+
+- Azure Arc Enabled PostgreSQL Azure Data Studio: 
+   - På sidan Översikt visas nu status för Server grupps elementet per nod
+   - Det finns nu en ny egenskaps sida som visar mer information om Server gruppen
+   - Konfigurera postgres Engine-parametrar från **noden parametrar** Page =
+
+Problem som är associerade med den här versionen finns i [kända problem – Azure Arc-aktiverade data tjänster (för hands version)](known-issues.md)
 
 ## <a name="january-2021"></a>Januari 2021
 
 ### <a name="new-capabilities-and-features"></a>Nya funktioner och funktioner
 
 Versions nummer för Azure Data CLI ( `azdata` ): 20.3.0. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) . Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
-
 
 Ytterligare uppdateringar är:
 - Lokaliserad portal tillgänglig för 17 nya språk

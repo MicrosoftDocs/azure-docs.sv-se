@@ -235,3 +235,11 @@
   items:
     - name: Mappning mellan ASB och CIS-benchmark
       href: v2-cis-benchmark.md
+    - name: Grunderna i Azure-säkerhet
+      href: ../fundamentals/index.yml
+    - name: Delat ansvar i molnet
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Security Center
+      href: ../../security-center/index.yml
+    - name: Skiss exempel för Azure Security benchmark Foundation
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml

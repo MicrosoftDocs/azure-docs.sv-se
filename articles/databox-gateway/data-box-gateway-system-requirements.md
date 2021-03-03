@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583180"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739219"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway system krav
 
@@ -32,7 +32,7 @@ Det underliggande värd systemet för Data Box Gateway kan dedicera följande re
 | Specifikationer                                          | Beskrivning              |
 |---------------------------------------------------------|--------------------------|
 | Virtuella processorer (kärnor)   | Minst 4 |
-| Minne  | Minst 8 GB|
+| Minne  | Minst 8 GB. Vi rekommenderar starkt minst 16 GB. |
 | Tillgänglighet|Enkel nod|
 | Diskar| OS-disk: 250 GB <br> Datadisk: minst 2 TB, tunt allokerad och måste backas upp av SSD-enheter|
 | Nätverksgränssnitt|Minst 1 virtuellt nätverksgränssnitt|

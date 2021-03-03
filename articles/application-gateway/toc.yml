@@ -158,6 +158,8 @@
           href: ingress-controller-install-existing.md
         - name: Inkommande för AKS via Helm (Greenfield)
           href: ingress-controller-install-new.md
+        - name: Migrera från Helm-distribution till AKS-tillägg
+          href: ingress-controller-migration.md
         - name: Inaktivera och återaktivera tillägg för inkommande kontrollant för AKS
           href: ingress-controller-disable-addon.md
         - name: Aktivera cookietillhörighet

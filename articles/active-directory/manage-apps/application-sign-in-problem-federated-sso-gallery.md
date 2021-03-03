@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 97ce1fe43bc831661a8590921d8121a8a82ba7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430419"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687183"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 För att felsöka inloggnings problemen nedan rekommenderar vi följande för att bättre diagnostisera och automatisera lösnings stegen:
@@ -41,7 +41,8 @@ Så här öppnar du konfigurationssidan för SAML-baserad enkel inloggning:
 1. Välj SAML-baserad enkel inloggning.
 
 ## <a name="application-not-found-in-directory"></a>Programmet hittades inte i katalogen
-`Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
+
+`Error AADSTS70001: Application with Identifier 'https://contoso.com' was not found in the directory.`
 
 **Möjlig orsak**
 
@@ -69,7 +70,7 @@ Verifiera eller uppdatera värdet i text rutan svars-URL så att det matchar `As
 När du har uppdaterat svars-URL-värdet i Azure AD och det matchar värdet som skickas av programmet i SAML-begäran, bör du kunna logga in på programmet.
 
 ## <a name="user-not-assigned-a-role"></a>Användaren har inte tilldelats någon roll
-`Error AADSTS50105: The signed in user 'brian\@contoso.com' is not assigned to a role for the application.`
+`Error AADSTS50105: The signed in user 'brian@contoso.com' is not assigned to a role for the application.`
 
 **Möjlig orsak**
 
@@ -147,7 +148,7 @@ När programmet lades till som en icke-galleriapp skapade Azure Active Directory
 
 Ta bort de oanvända svars-URL: erna som kon figurer ATS för programmet.
 
-På sidan SAML-baserad SSO-konfiguration, i avsnittet **svars-URL för försäkrans konsument tjänst** , tar du bort oanvända eller vanliga svars-URL: er som skapats av systemet. Ett exempel är `https://127.0.0.1:444/applications/default.aspx`.
+På sidan SAML-baserad SSO-konfiguration, i avsnittet **svars-URL för försäkrans konsument tjänst** , tar du bort oanvända eller vanliga svars-URL: er som skapats av systemet. Till exempel `https://127.0.0.1:444/applications/default.aspx`.
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Autentiseringsmetoden med vilken användaren autentiseras med tjänsten matchar inte den begärda autentiseringsmetoden

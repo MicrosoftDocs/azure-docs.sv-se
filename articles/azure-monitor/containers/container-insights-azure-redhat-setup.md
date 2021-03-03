@@ -1,16 +1,16 @@
 ---
-title: Konfigurera Azure Red Hat OpenShift v3. x med Azure Monitor för behållare | Microsoft Docs
+title: Konfigurera Azure Red Hat OpenShift v3. x med container Insights | Microsoft Docs
 description: Den här artikeln beskriver hur du konfigurerar övervakning av ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 3 och senare.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625325"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708381"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurera Azure Red Hat OpenShift v3 med Azure Monitor för behållare
+# <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurera Azure Red Hat OpenShift v3 med container Insights
 
 >[!IMPORTANT]
 > Azure Red Hat OpenShift 3,11 kommer att dras tillbaka juni 2022.
@@ -21,33 +21,33 @@ ms.locfileid: "100625325"
 > Följ den här guiden för att [skapa ett Azure Red Hat OpenShift 4-kluster](../../openshift/tutorial-create-cluster.md).
 > Om du har frågor kan du [kontakta oss](mailto:aro-feedback@microsoft.com).
 
-Azure Monitor for containers innehåller omfattande övervaknings funktioner för AKS-och AKS-motorns kluster. Den här artikeln beskriver hur du aktiverar övervakning av Kubernetes-kluster som finns i [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) version 3 och den senaste version som stöds av version 3, för att uppnå en liknande övervaknings upplevelse.
+Behållar insikter ger en omfattande övervaknings upplevelse för Azure Kubernetes service (AKS) och AKS-motor kluster. Den här artikeln beskriver hur du aktiverar övervakning av Kubernetes-kluster som finns i [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) version 3 och den senaste version som stöds av version 3, för att uppnå en liknande övervaknings upplevelse.
 
 >[!NOTE]
 >Stöd för Azure Red Hat OpenShift är en funktion i offentlig för hands version för tillfället.
 >
 
-Azure Monitor för behållare kan aktive ras för nya eller en eller flera befintliga distributioner av Azure Red Hat OpenShift med följande metoder som stöds:
+Behållar insikter kan aktive ras för nya eller en eller flera befintliga distributioner av Azure Red Hat OpenShift med följande metoder som stöds:
 
 - För ett befintligt kluster från Azure Portal eller med hjälp av Azure Resource Manager-mall.
 - För ett nytt kluster med Azure Resource Manager mall, eller när du skapar ett nytt kluster med hjälp av [Azure CLI](/cli/azure/openshift#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Funktioner som stöds och som inte stöds
 
-Azure Monitor for containers stöder övervakning av Azure Red Hat OpenShift enligt beskrivningen i [översikts](container-insights-overview.md) artikeln, förutom följande funktioner:
+Behållar insikter har stöd för övervakning av Azure Red Hat OpenShift enligt beskrivningen i [översikts](container-insights-overview.md) artikeln, förutom följande funktioner:
 
 - Real tids data (förhands granskning)
 - [Samla in mått](container-insights-update-metrics.md) från klusternoder och poddar och lagra dem i Azure Monitor Metrics-databasen
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En [Log Analytics-arbetsyta](../platform/design-logs-deployment.md).
+- En [Log Analytics-arbetsyta](../logs/design-logs-deployment.md).
 
-    Azure Monitor for containers stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../samples/resource-manager-workspace.md), via [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../learn/quick-create-workspace.md).
+    Behållar insikter stöder en Log Analytics arbets yta i de regioner som anges i Azure- [produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om du vill skapa en egen arbets yta kan den skapas via [Azure Resource Manager](../logs/resource-manager-workspace.md), via [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../logs/quick-create-workspace.md).
 
-- Om du vill aktivera och komma åt funktionerna i Azure Monitor för behållare måste du minst vara medlem i Azure *Contributor* -rollen i Azure-prenumerationen och en medlem i rollen [*Log Analytics Contributor*](../platform/manage-access.md#manage-access-using-azure-permissions) för den Log Analytics arbets yta som kon figurer ATS med Azure Monitor för behållare.
+- Om du vill aktivera och komma åt funktionerna i behållar insikter måste du minst vara medlem i Azure *Contributor* -rollen i Azure-prenumerationen och en medlem i rollen [*Log Analytics Contributor*](../logs/manage-access.md#manage-access-using-azure-permissions) för den Log Analytics arbets yta som kon figurer ATS med behållar insikter.
 
-- Om du vill visa övervaknings data är du medlem i behörighets rollen [*Log Analytics läsare*](../platform/manage-access.md#manage-access-using-azure-permissions) med den Log Analytics arbets yta som kon figurer ats med Azure Monitor för behållare.
+- Om du vill visa övervaknings data är du medlem i behörighets rollen [*Log Analytics läsare*](../logs/manage-access.md#manage-access-using-azure-permissions) med den Log Analytics arbets yta som kon figurer ATS med behållar insikter.
 
 ## <a name="identify-your-log-analytics-workspace-id"></a>Identifiera ditt Log Analytics arbetsyte-ID
 
@@ -176,13 +176,13 @@ Utför följande steg för att aktivera övervakning av ett Azure Red Hat OpenSh
 
 4. I listan över icke-övervakade kluster letar du reda på klustret i listan och klickar på **Aktivera**. Du kan identifiera resultaten i listan genom att leta efter värdet **Aro** under kolumn **kluster typen**.
 
-5. På sidan **onboarding to Azure Monitor for containers** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.  
+5. På sidan **onboarding to container Insights** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.  
     I listan förväljs standard arbets ytan och platsen som klustret distribueras till i prenumerationen.
 
     ![Aktivera övervakning för icke-övervakade kluster](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../learn/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som RedHat OpenShift-klustret distribueras till.
+    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../logs/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som RedHat OpenShift-klustret distribueras till.
 
 När du har aktiverat övervakning kan det ta ungefär 15 minuter innan du kan visa hälso mått för klustret.
 
@@ -246,10 +246,10 @@ Om du väljer att använda Azure CLI måste du först installera och använda CL
 
 ## <a name="next-steps"></a>Nästa steg
 
-- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt RedHat OpenShift-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) Azure Monitor för behållare.
+- När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt RedHat OpenShift-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) behållar insikter.
 
 - Som standard samlar den behållareade agenten STDOUT/stderr-behållar loggarna för alla behållare som körs i alla namn områden utom Kube-system. Om du vill konfigurera samling av behållar logg samlingar som är specifika för en viss namnrymd eller namnrymder granskar du [konfiguration av container Insights](container-insights-agent-config.md) för att konfigurera önskade inställningar för data insamling till ConfigMap-konfigurations filen.
 
 - Om du vill ta bort och analysera Prometheus-mått från klustret kan du läsa [Konfigurera Prometheus mått-kassationing](container-insights-prometheus-integration.md)
 
-- Information om hur du stoppar övervakningen av klustret med Azure Monitor för behållare finns i [så här slutar du övervaka ditt Azure Red Hat OpenShift-kluster](./container-insights-optout-openshift-v3.md).
+- Information om hur du stoppar övervakningen av klustret med behållar insikter finns i [så här slutar du övervaka ditt Azure Red Hat OpenShift-kluster](./container-insights-optout-openshift-v3.md).

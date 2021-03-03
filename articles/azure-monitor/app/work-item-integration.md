@@ -3,12 +3,12 @@ title: Integration av arbets objekt (för hands version) – Application Insight
 description: Lär dig hur du skapar arbets objekt i GitHub eller Azure DevOps med Application Insights data som är inbäddade i dem.
 ms.topic: conceptual
 ms.date: 02/9/2021
-ms.openlocfilehash: 0c1d6ffd6a5a39fa49eadc558aa80f365f856df2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101485"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731926"
 ---
 # <a name="work-item-integration-preview"></a>Integration av arbets objekt (för hands version)
 
@@ -53,7 +53,7 @@ Om du vill redigera din mall går du till fliken **arbets uppgifter** under *Kon
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text=" Skärm bild av fliken arbets objekt med ikonen Redigera penna vald.":::
 
-Välj Redigera ![ Redigera-ikonen ](./media/work-item-integration/edit-icon.png) längst upp för att börja redigera mallen. Mallar för arbets objekt baseras på [Azure Monitor arbets böcker](../platform/workbooks-overview.md). Informationen om arbets objekt genereras med hjälp av nyckelordet frågespråk. Du kan ändra frågorna för att lägga till mer Sammanhangs beroende för ditt team. När du är klar med redigeringen sparar du arbets boken genom att välja ![ ikonen Spara ikon spara ](./media/work-item-integration/save-icon.png) i det översta verktygsfältet.
+Välj Redigera ![ Redigera-ikonen ](./media/work-item-integration/edit-icon.png) längst upp för att börja redigera mallen. Mallar för arbets objekt baseras på [Azure Monitor arbets böcker](../visualize/workbooks-overview.md). Informationen om arbets objekt genereras med hjälp av nyckelordet frågespråk. Du kan ändra frågorna för att lägga till mer Sammanhangs beroende för ditt team. När du är klar med redigeringen sparar du arbets boken genom att välja ![ ikonen Spara ikon spara ](./media/work-item-integration/save-icon.png) i det översta verktygsfältet.
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text=" Skärm bild av arbets mal len arbets objekt mal len i redigerings läge." lightbox="./media/work-item-integration/edit-workbook.png":::
 

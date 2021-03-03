@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 708a2369e5ba21f47f3d3fea509654b0385363f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bec42dabde64fed8126e47e39f19536b28014f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912322"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714841"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Kontrollera måtten för dataflöde och svarstid för ett lagringskonto
 
@@ -28,7 +28,7 @@ För [Azure-lagringsmått](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fbl
 
 ## <a name="configure-metrics"></a>Konfigurera mått
 
-Navigera till **Mått (förhandsgranskning)** under **INSTÄLLNINGAR** i ditt lagringskonto.
+Navigera till **mått** under **Inställningar** i ditt lagrings konto.
 
 Välj Blob i listrutan **UNDERORDNAD TJÄNST**.
 

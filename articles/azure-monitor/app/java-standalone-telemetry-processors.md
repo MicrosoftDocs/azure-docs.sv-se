@@ -1,70 +1,62 @@
 ---
 title: Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java
-description: Så här konfigurerar du telemetri-processorer i Azure Monitor Application Insights för Java
+description: Lär dig att konfigurera telemetri-processorer i Azure Monitor Application Insights för Java.
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632588"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734578"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java
 
 > [!NOTE]
-> Den här funktionen är fortfarande under för hands version.
+> Funktionen telemetri-processorer är i för hands version.
 
-Java 3,0-agenten för Application Insights har nu funktioner för att bearbeta telemetridata innan data exporteras.
+Java 3,0-agenten för Application Insights kan bearbeta telemetridata innan data exporteras.
 
-Följande är några användnings fall av telemetri-processorer:
- * Maskera känsliga data
- * Lägg till anpassade dimensioner villkorligt
- * Uppdatera namnet som används för agg regering och Visa i Azure Portal
- * Släpp span-attribut för att kontrol lera inmatnings kostnaden
+Här är några användnings fall för telemetri-processorer:
+ * Skapa känsliga data.
+ * Lägg villkorligt till anpassade dimensioner.
+ * Uppdatera intervall namnet, som används för att aggregera liknande telemetri i Azure Portal.
+ * Släpp span-attribut för att kontrol lera inmatnings kostnader.
 
 ## <a name="terminology"></a>Terminologi
 
-Innan vi hoppar till telemetri-processorer är det viktigt att förstå vad termen sträcker syftar på.
+Innan du lär dig om telemetri-processorer bör du förstå term *omfånget*. Ett intervall är en allmän term för:
 
-Ett intervall är en allmän term för någon av dessa tre saker:
+* En inkommande begäran.
+* Ett utgående beroende (till exempel ett fjärran rop till en annan tjänst).
+* Ett pågående beroende (till exempel arbete som utförs av under komponenter till tjänsten).
 
-* En inkommande begäran
-* Ett utgående beroende (t. ex. ett fjärran rop till en annan tjänst)
-* Ett pågående beroende (t. ex. arbete som utförs av underordnade komponenter i tjänsten)
+För telemetri-processorer är dessa intervall komponenter viktiga:
 
-För telemetri-processorer är de viktiga komponenterna i ett intervall:
-
-* Name
+* Namn
 * Attribut
 
-Intervall namnet är den primära visning som används för förfrågningar och beroenden i Azure Portal.
-
-Span-attributen representerar både standard-och anpassade egenskaper för en specifik begäran eller ett beroende.
+Intervall namnet är den primära visningen för begär Anden och beroenden i Azure Portal. Span-attribut representerar både standard-och anpassade egenskaper för en specifik begäran eller beroende.
 
 ## <a name="telemetry-processor-types"></a>Typer av telemetri-processorer
 
-Det finns för närvarande två typer av telemetri-processorer.
-
-#### <a name="attribute-processor"></a>Attribut processor
+De två typerna av telemetri-processorer är för närvarande attribut processorer och intervall processorer.
 
 En attribut processor kan infoga, uppdatera, ta bort eller hash-attribut.
-Det kan också extrahera (via ett reguljärt uttryck) ett eller flera nya attribut från ett befintligt attribut.
-
-#### <a name="span-processor"></a>Spänn processor
+Det kan också använda ett reguljärt uttryck för att extrahera ett eller flera nya attribut från ett befintligt attribut.
 
 En intervall processor kan uppdatera namnet på telemetri.
-Det kan också extrahera (via ett reguljärt uttryck) ett eller flera nya attribut från intervall namnet.
+Det kan också använda ett reguljärt uttryck för att extrahera ett eller flera nya attribut från intervall namnet.
 
 > [!NOTE]
-> Observera att för närvarande enbart telemetri processorer bearbetar attribut av typen sträng och inte bearbetar attribut av typen Boolean eller Number.
+> Telemetri-processorer bearbetar för närvarande endast attribut av typen sträng. De bearbetar inte attribut av typen Boolean eller Number.
 
 ## <a name="getting-started"></a>Komma igång
 
-Skapa en konfigurations fil med namnet `applicationinsights.json` och placera den i samma katalog som `applicationinsights-agent-*.jar` , med följande mall.
+Börja genom att skapa en konfigurations fil med namnet *applicationinsights.jspå*. Spara den i samma katalog som *applicationinsights-agent- \* . jar*. Använd följande mall.
 
 ```json
 {
@@ -88,29 +80,27 @@ Skapa en konfigurations fil med namnet `applicationinsights.json` och placera de
 }
 ```
 
-## <a name="includeexclude-criteria"></a>Inkludera/exkludera villkor
+## <a name="include-criteria-and-exclude-criteria"></a>Inkludera villkor och exkludera villkor
 
 Både attribut processorer och intervall processorer stöder valfria `include` och `exclude` kriterier.
-En processor tillämpas bara på de intervall som matchar dess `include` kriterier (om de finns) _och_ inte matchar dess `exclude` kriterier (om det finns).
+En processor används endast för att omfatta intervall som matchar dess `include` kriterier (om den finns) _och_ inte matchar dess `exclude` kriterier (om den är angiven).
 
-För att konfigurera det här alternativet under `include` och/eller `exclude` minst ett `matchType` och ett av `spanNames` eller `attributes` krävs.
-Konfigurationen inkludera/exkludera stöds för att ha mer än ett angivet villkor.
-Alla angivna villkor måste utvärderas till sant för att en matchning ska inträffa. 
+Om du vill konfigurera det här alternativet, under `include` eller `exclude` (eller båda), anger du minst ett `matchType` och antingen `spanNames` eller `attributes` .
+Med-exkludering-konfigurationen tillåts fler än ett angivet villkor.
+Alla angivna villkor måste utvärderas till sant för att resultera i en matchning. 
 
-**Obligatoriskt fält**: 
-* `matchType` styr hur objekt i `spanNames` och `attributes` matriser tolkas. Möjliga värden är `regexp` eller `strict`. 
+* **Obligatoriskt fält**: `matchType` styr hur objekt i `spanNames` matriser och `attributes` matriser tolkas. Möjliga värden är `regexp` och `strict` . 
 
-**Valfria fält**: 
-* `spanNames` måste matcha minst ett av objekten. 
-* `attributes` anger listan över attribut som ska matchas mot. Alla dessa attribut måste matcha exakt för att en matchning ska ske.
-
+* **Valfria fält**: 
+    * `spanNames` måste matcha minst ett av objekten. 
+    * `attributes` anger listan över attribut som ska matchas. Alla dessa attribut måste matcha exakt för att resultera i en matchning.
+    
 > [!NOTE]
-> Om både `include` och `exclude` anges, `include` kontrol leras egenskaperna innan `exclude` egenskaperna.
+> Om både `include` och `exclude` anges, `include` kontrol leras egenskaperna innan `exclude` egenskaperna kontrol leras.
 
-#### <a name="sample-usage"></a>Exempelanvändning
+### <a name="sample-usage"></a>Exempel användning
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Alla angivna villkor måste utvärderas till sant för att en matchning ska intr
   }
 ]
 ```
-Mer förståelse finns i exempel dokumentationen för [telemetri-processorn](./java-standalone-telemetry-processors-examples.md) .
+Mer information finns i [exempel på telemetri processor](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="attribute-processor"></a>Attribut processor
 
-Attributens processor ändrar attributen för ett intervall. Det kan också användas för att inkludera/exkludera intervall. Den tar en lista med åtgärder som utförs i den ordning som anges i konfigurations filen. De åtgärder som stöds är:
+Attributets processor ändrar attributen för ett intervall. Det kan ge stöd för möjligheten att ta med eller undanta intervall. Det tar en lista med åtgärder som utförs i den ordning som konfigurations filen anger. Processorn stöder följande åtgärder:
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-Infogar ett nytt attribut i intervall där nyckeln inte redan finns.   
+`insert`Åtgärden infogar ett nytt attribut i intervall där nyckeln inte redan finns.   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Infogar ett nytt attribut i intervall där nyckeln inte redan finns.
   }
 ]
 ```
-För `insert` åtgärden krävs följande:
-  * `key`
-  * en `value` eller `fromAttribute`
-  * `action`:`insert`
+`insert`Åtgärden kräver följande inställningar:
+* `key`
+* Antingen `value` eller `fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-Uppdaterar ett attribut i intervall där nyckeln finns
+`update`Åtgärden uppdaterar ett attribut i intervall där nyckeln redan finns.
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Uppdaterar ett attribut i intervall där nyckeln finns
   }
 ]
 ```
-För `update` åtgärden krävs följande:
-  * `key`
-  * en `value` eller `fromAttribute`
-  * `action`:`update`
+`update`Åtgärden kräver följande inställningar:
+* `key`
+* Antingen `value` eller `fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-Tar bort ett attribut från ett intervall
+`delete`Åtgärden tar bort ett attribut från ett intervall.
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Tar bort ett attribut från ett intervall
   }
 ]
 ```
-För `delete` åtgärden krävs följande:
-  * `key`
-  * `action`: `delete`
+`delete`Åtgärden kräver följande inställningar:
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-Hash-värden (SHA1) ett befintligt attributvärde
+`hash`Hash-värdet (SHA1) för ett befintligt attributvärde.
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Hash-värden (SHA1) ett befintligt attributvärde
   }
 ]
 ```
-För `hash` åtgärden krävs följande:
+`hash`Åtgärden kräver följande inställningar:
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> Den här funktionen är endast i 3.0.2 och senare
+> `extract`Funktionen är endast tillgänglig i version 3.0.2 och senare.
 
-Extraherar värden med en regel för reguljära uttryck från den inmatade nyckeln till mål nycklar som anges i regeln. Om det redan finns en mål nyckel kommer den att åsidosättas. Den fungerar på samma sätt som inställningen för [span-processorn](#extract-attributes-from-span-name) `toAttributes` med det befintliga attributet som källa.
+`extract`Åtgärden extraherar värden med hjälp av en regel för reguljära uttryck från den inmatade nyckeln till mål nycklar som regeln anger. Om det redan finns en mål nyckel, åsidosätts den. Den här åtgärden fungerar som inställningen för [span-processorer](#extract-attributes-from-the-span-name) `toAttributes` , där det befintliga attributet är källan.
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Extraherar värden med en regel för reguljära uttryck från den inmatade nycke
   }
 ]
 ```
-För `extract` åtgärden krävs följande:
+`extract`Åtgärden kräver följande inställningar:
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-Mer förståelse finns i exempel dokumentationen för [telemetri-processorn](./java-standalone-telemetry-processors-examples.md) .
+Mer information finns i [exempel på telemetri processor](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="span-processor"></a>Spänn processor
 
-Spänn processorn ändrar antingen intervall namnet eller attributen för ett intervall baserat på intervall namnet. Det kan också användas för att inkludera/exkludera intervall.
+Spänn processorn ändrar antingen intervall namnet eller attributen för ett intervall baserat på intervall namnet. Det kan ge stöd för möjligheten att ta med eller undanta intervall.
 
 ### <a name="name-a-span"></a>Namnge ett intervall
 
-Följande inställning krävs som en del av avsnittet Name:
+`name`Avsnittet kräver `fromAttributes` inställningen. Värdena från dessa attribut används för att skapa ett nytt namn, sammanfogat i den ordning som konfigurationen anger. Processorn kommer bara att ändra intervall namnet om alla dessa attribut finns i intervallet.
 
-* `fromAttributes`: Attributvärdet för nycklarna används för att skapa ett nytt namn i den ordning som anges i konfigurationen. Alla attributändringar måste anges i intervallet för att processorn ska kunna byta namn på den.
-
-Du kan konfigurera följande inställningar:
-
-* `separator`: En sträng som anges kommer att användas för att dela värden
+`separator`Inställningen är valfri. Den här inställningen är en sträng. Den har angetts för att dela värden.
 > [!NOTE]
-> Om namnbytet är beroende av attribut som ändras av attributets processor, se till att intervallet processor anges efter attributets processor i pipeline-specifikationen.
+> Om namnbytet är beroende av attributens processor för att ändra attribut, se till att intervallet processor har angetts efter attributets processor i pipeline-specifikationen.
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ Du kan konfigurera följande inställningar:
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahera attribut från intervall namn
+### <a name="extract-attributes-from-the-span-name"></a>Extrahera attribut från intervall namnet
 
-Använder en lista över reguljära uttryck för att matcha intervall namn mot och extrahera attribut från det baserat på under uttryck. Måste anges under `toAttributes` avsnittet.
+I `toAttributes` avsnittet visas de reguljära uttryck som matchar intervall namnet mot. Den extraherar attribut baserat på under uttryck.
 
-Följande inställningar krävs:
+`rules`Inställningen är obligatorisk. Den här inställningen visar de regler som används för att extrahera attributvärden från intervall namnet. 
 
-`rules` : En lista med regler för att extrahera attributvärden från intervall namn. Värdena i intervall namnet ersätts av extraherade attributnamn. Varje regel i listan är regex-mönster sträng. Intervall namnet kontrol leras mot regex. Om regex matchar extraheras alla namngivna under uttryck i regex som attribut och läggs till i intervallet. Varje under uttrycks namn blir ett attributnamn och en matchad del av under uttryck blir attributvärdet. Den matchade delen i intervall namnet ersätts av ett extraherat attributnamn. Om attributen redan finns i intervallet kommer de att skrivas över. Processen upprepas för alla regler i den ordning som de anges. Varje efterföljande regel fungerar på det intervall namn som är resultatet när föregående regel har bearbetats.
+Värdena i intervall namnet ersätts av extraherade attributnamn. Varje regel i listan är en uttryck för reguljära uttryck (regex). 
+
+Så här ersätts värden av extraherade attributnamn:
+
+1. Intervall namnet kontrol leras mot regex. 
+1. Om regex matchar extraheras alla namngivna under uttryck i regex som attribut. 
+1. De extraherade attributen läggs till i intervallet. 
+1. Varje underexpresss namn blir ett attributnamn. 
+1. Den matchade delen av under uttryck blir attributvärdet. 
+1. Den matchade delen i intervall namnet ersätts av namnet på det extraherade attributet. Om attributen redan finns i intervallet skrivs de över. 
+ 
+Den här processen upprepas för alla regler i den ordning som de har angetts. Varje efterföljande regel fungerar på det intervall namn som är resultatet av föregående regel.
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ Följande inställningar krävs:
 
 ```
 
-## <a name="list-of-attributes"></a>Lista över attribut
+## <a name="common-span-attributes"></a>Vanliga span-attribut
 
-Nedan visas en lista över några vanliga span-attribut som kan användas i telemetri-processorerna.
+I det här avsnittet listas några vanliga span-attribut som telemetri-processorer kan använda.
 
 ### <a name="http-spans"></a>HTTP-intervall
 
 | Attribut  | Typ | Description | 
 |---|---|---|
 | `http.method` | sträng | Metod för HTTP-begäran.|
-| `http.url` | sträng | Fullständig URL för HTTP-begäran i formuläret `scheme://host[:port]/path?query[#fragment]` . Vanligt vis skickas inte fragment över HTTP, men om det är känt bör det tas med.|
+| `http.url` | sträng | Fullständig URL för HTTP-begäran i formuläret `scheme://host[:port]/path?query[#fragment]` . Fragmentet skickas vanligt vis inte via HTTP. Men om fragmentet är känt bör det inkluderas.|
 | `http.status_code` | antal | [Status kod för HTTP-svar](https://tools.ietf.org/html/rfc7231#section-6).|
-| `http.flavor` | sträng | Typ av HTTP-protokoll som används |
+| `http.flavor` | sträng | Typ av HTTP-protokoll. |
 | `http.user_agent` | sträng | Värdet för [http-User-Agent-](https://tools.ietf.org/html/rfc7231#section-5.5.3) huvudet som skickas av klienten. |
 
 ### <a name="jdbc-spans"></a>JDBC-intervall
 
 | Attribut  | Typ | Description  |
 |---|---|---|
-| `db.system` | sträng | En identifierare för den DBMS-produkt (Database Management System) som används. |
+| `db.system` | sträng | Identifierare för den DBMS-produkt (Database Management System) som används. |
 | `db.connection_string` | sträng | Anslutnings strängen som används för att ansluta till databasen. Vi rekommenderar att du tar bort inbäddade autentiseringsuppgifter.|
 | `db.user` | sträng | Användar namn för åtkomst till databasen. |
-| `db.name` | sträng | Det här attributet används för att rapportera namnet på databasen som öppnas. För kommandon som växlar databasen ska detta ställas in på mål databasen (även om kommandot Miss lyckas).|
-| `db.statement` | sträng | Databas instruktionen som körs.|
+| `db.name` | sträng | Sträng som används för att rapportera namnet på databasen som öppnas. För kommandon som växlar databasen ska den här strängen anges till mål databasen, även om kommandot Miss lyckas.|
+| `db.statement` | sträng | Databas instruktion som körs.|

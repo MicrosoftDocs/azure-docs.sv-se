@@ -3,16 +3,16 @@ title: Registrera resurs leverantören för Azure VMware-lösningen
 description: Steg för att registrera resurs leverantören för Azure VMware-lösningen.
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: 80010a232f80865b20c2e3d953dc1d9d22ece1c6
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: cd4a6f3003945973f0fe5367eb198823595a412e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653182"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750312"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-Om du vill använda Azure VMware-lösningen måste du först registrera resurs leverantören med din prenumeration. Mer information om resurs leverantörer finns i [Azure Resource providers och-typer](/azure/azure-resource-manager/management/resource-providers-and-types).
+Om du vill använda Azure VMware-lösningen måste du först registrera resurs leverantören med din prenumeration. Mer information om resurs leverantörer finns i [Azure Resource providers och-typer](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="azure-cli"></a>Azure CLI 
 

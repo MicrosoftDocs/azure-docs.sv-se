@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 11a4798c0cb3bc010bbdbae1fcb709951c67781a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721903"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Självstudie: skapa och ändra peering för en ExpressRoute-krets med hjälp av Azure Portal
 
@@ -30,7 +30,7 @@ Den här självstudien visar hur du skapar och hanterar konfiguration av routnin
 
 Du kan konfigurera privat peering och Microsoft-peering för en ExpressRoute-krets (offentlig Azure-peering är inaktuell för nya kretsar). Peering kan konfigureras i vilken ordning du väljer. Dock måste du se till att du slutför konfigurationen av en peering i taget. Mer information om routningsdomäner och peering-domäner finns i [ExpressRoute](expressroute-circuit-peerings.md). Information om offentlig peering finns i [ExpressRoute offentlig peering](about-public-peering.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > - Konfigurera, uppdatera och ta bort Microsoft-peering för en krets
 > - Konfigurera, uppdatera och ta bort Azures privata peering för en krets
@@ -75,14 +75,17 @@ Det här avsnittet hjälper dig att skapa, Hämta, uppdatera och ta bort Microso
 
 2. Konfigurera Microsoft-peering för kretsen. Kontrol lera att du har följande information innan du fortsätter.
 
-   * Ett par med/30 undernät som ägs av dig och registrerats i en RIR/IR. Dessa måste vara giltiga offentliga IPv4-prefix. Ett undernät kommer att användas för den primära länken, medan det andra används för den sekundära länken. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router.
-   * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID. Både primära och sekundära länkar du måste använda samma VLAN-ID.
+   * Ett par med undernät som ägs av dig och registrerats i en RIR/IR. Ett undernät kommer att användas för den primära länken, medan det andra används för den sekundära länken. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router. Det finns tre alternativ för det här paret undernät:
+       * IPv4: två/30 undernät. Dessa måste vara giltiga offentliga IPv4-prefix.
+       * IPv6: två/126-undernät. Dessa måste vara giltiga offentliga IPv6-prefix.
+       * Både: två/30 undernät och två/126-undernät.
+   * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID. För både primära och sekundära länkar måste du använda samma VLAN-ID.
    * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal.
    * Annonserade prefix: du anger en lista över alla prefix som du planerar att annonsera över BGP-sessionen. Endast offentliga IP-adressprefix accepteras. Om du planerar att skicka en uppsättning prefix kan du skicka en kommaavgränsad lista. Dessa prefix måste vara registrerade åt dig i ett RIR/IR.
    * **Valfritt-** Kund-ASN: om du annonserar prefix som inte har registrerats på peering AS Number kan du ange det AS-nummer som de är registrerade på.
    * Routningens registernamn: Du kan ange den RIR/IR mot vilken AS-numret och prefixet är registrerade.
    * **Valfritt-** En MD5-hash om du väljer att använda en.
-3. Du kan välja den peering som du vill konfigurera, som du ser i följande exempel. Välj Microsofts peering-rad.
+1. Du kan välja den peering som du vill konfigurera, som du ser i följande exempel. Välj Microsofts peering-rad.
 
    :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/select-microsoft-peering.png" alt-text="Välj Microsoft-peering-raden":::
 
@@ -120,6 +123,11 @@ Du kan välja raden för peering som du vill ändra och sedan ändra peering-ege
 
 Det här avsnittet hjälper dig att skapa, Hämta, uppdatera och ta bort Azures konfiguration för privata peering för en ExpressRoute-krets.
 
+> [!IMPORTANT]
+> IPv6-stöd för privat peering är för närvarande en **offentlig för hands version**. Om du vill ansluta ditt virtuella nätverk till en ExpressRoute-krets med IPv6-baserad privat peering konfigurerad kontrollerar du att ditt virtuella nätverk är dubbel stack och följer rikt linjerna som beskrivs [här](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+> 
+> 
+
 ### <a name="to-create-azure-private-peering"></a>Så här skapar du Azures privata peering
 
 1. Konfigurera ExpressRoute-kretsen. Se till att kretsen är helt etablerad av anslutningsprovidern innan du fortsätter. 
@@ -136,8 +144,11 @@ Det här avsnittet hjälper dig att skapa, Hämta, uppdatera och ta bort Azures 
 
 2. Konfigurera Azures privata peering för kretsen. Kontrol lera att du har följande objekt innan du fortsätter med nästa steg:
 
-   * Ett par med/30 undernät som ägs av dig. Ett undernät kommer att användas för den primära länken, medan det andra används för den sekundära länken. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router.
-   * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID. Både primära och sekundära länkar du måste använda samma VLAN-ID.
+   * Ett par undernät som inte ingår i något adress utrymme som är reserverat för virtuella nätverk. Ett undernät kommer att användas för den primära länken, medan det andra används för den sekundära länken. Från vart och ett av dessa undernät tilldelar du den första användbara IP-adressen till routern som Microsoft använder den andra användbara IP-adressen för sin router. Det finns tre alternativ för det här paret undernät:
+       * IPv4: två/30 undernät.
+       * IPv6: två/126-undernät.
+       * Både: två/30 undernät och två/126-undernät.
+   * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID. För både primära och sekundära länkar måste du använda samma VLAN-ID.
    * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal. Du kan använda ett privat AS-nummer för denna peering förutom numret från 65515 till 65520.
    * Du måste annonsera vägarna från din lokala Edge-router till Azure via BGP när du konfigurerar privat peering.
    * **Valfritt-** En MD5-hash om du väljer att använda en.

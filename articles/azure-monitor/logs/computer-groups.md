@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734136"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Dator grupper i Azure Monitor logg frågor
-Med dator grupper i Azure Monitor kan du begränsa [logg frågor](../log-query/log-query-overview.md) till en viss uppsättning datorer.  Varje grupp fylls med datorer antingen med en fråga som du definierar eller genom att importera grupper från olika källor.  När gruppen ingår i en logg fråga begränsas resultatet till poster som matchar datorerna i gruppen.
+Med dator grupper i Azure Monitor kan du begränsa [logg frågor](./log-query-overview.md) till en viss uppsättning datorer.  Varje grupp fylls med datorer antingen med en fråga som du definierar eller genom att importera grupper från olika källor.  När gruppen ingår i en logg fråga begränsas resultatet till poster som matchar datorerna i gruppen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -50,7 +50,7 @@ I följande tabell beskrivs de egenskaper som definierar en dator grupp.
 
 | Egenskap | Beskrivning |
 |:---|:---|
-| Name   | Namnet på frågan som ska visas i portalen. |
+| Namn   | Namnet på frågan som ska visas i portalen. |
 | Funktions Ali Aset | Ett unikt alias som används för att identifiera dator gruppen i en fråga. |
 | Kategori       | Kategori för att organisera frågorna i portalen. |
 
@@ -135,5 +135,4 @@ En post skapas i arbets ytan Log Analytics för varje dator grupp medlemskap som
 | `TimeGenerated` |Datum och tid då dator gruppen skapades eller uppdaterades. |
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.  
-
+* Lär dig mer om [logg frågor](./log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

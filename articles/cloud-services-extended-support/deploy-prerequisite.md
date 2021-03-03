@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728118"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -42,7 +42,7 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Fil uppdateringar för tjänst konfiguration (. cscfg) som krävs
 
 ### <a name="1-virtual-network"></a>1) Virtual Network
-Distributioner av moln tjänster (utökad support) måste finnas i ett virtuellt nätverk. Det går att skapa virtuella nätverk via [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) eller [arm-mall](https://docs.microsoft.com/azure/virtual-network/quick-create-template). Det virtuella nätverket och undernät måste också refereras i tjänst konfigurationen (. cscfg) i avsnittet [NetworkConfiguration](schema-cscfg-networkconfiguration.md) . 
+Distributioner av moln tjänster (utökad support) måste finnas i ett virtuellt nätverk. Det går att skapa virtuella nätverk via [Azure Portal](../virtual-network/quick-create-portal.md), [POWERSHELL](../virtual-network/quick-create-powershell.md), [Azure CLI](../virtual-network/quick-create-cli.md) eller [arm-mall](../virtual-network/quick-create-template.md). Det virtuella nätverket och undernät måste också refereras i tjänst konfigurationen (. cscfg) i avsnittet [NetworkConfiguration](schema-cscfg-networkconfiguration.md) . 
 
 För ett virtuellt nätverk som tillhör samma resurs grupp som moln tjänsten räcker det att referera till det virtuella nätverks namnet i tjänst konfigurations filen (. cscfg). Om det virtuella nätverket och moln tjänsten finns i två olika resurs grupper måste det fullständiga Azure Resource Manager-ID: t för det virtuella nätverket anges i tjänst konfigurations filen (. cscfg).
  
@@ -103,7 +103,7 @@ Följande storlekar är föråldrade i Azure Resource Manager. Men om du vill fo
  Till exempel `<WorkerRole name="WorkerRole1" vmsize="Medium"` skulle bli `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"` .
  
 > [!NOTE]
-> Om du vill hämta en lista över tillgängliga storlekar se [resurs-SKU: er – lista](https://docs.microsoft.com/rest/api/compute/resourceskus/list) och tillämpa följande filter: <br>
+> Om du vill hämta en lista över tillgängliga storlekar se [resurs-SKU: er – lista](/rest/api/compute/resourceskus/list) och tillämpa följande filter: <br>
 `ResourceType = virtualMachines ` <br>
 `VMDeploymentTypes = PaaS `
 
@@ -120,7 +120,7 @@ Distributioner som använder gamla plugin-program för fjärr skrivbord måste t
 
 ## <a name="key-vault-creation"></a>Skapa Key Vault 
 
-Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Key Vault kan skapas via [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)och  [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell). Key Vault måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+Key Vault används för att lagra certifikat som är kopplade till Cloud Services (utökad support). Lägg till certifikaten i Key Vault och referera sedan till certifikatets tumavtrycken i tjänst konfigurations filen. Du måste också aktivera Key Vault för lämpliga behörigheter så att Cloud Services (utökad support) resurs kan hämta certifikat som lagras som hemligheter från Key Vault. Key Vault kan skapas via [Azure Portal](../key-vault/general/quick-create-portal.md)och  [PowerShell](../key-vault/general/quick-create-powershell.md). Key Vault måste skapas i samma region och prenumeration som moln tjänsten. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Nästa steg 
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).

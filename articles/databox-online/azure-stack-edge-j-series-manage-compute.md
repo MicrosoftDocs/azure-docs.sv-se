@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955549"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733422"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Hantera beräkning på Azure Stack Edge Pro GPU
 
@@ -21,11 +21,6 @@ ms.locfileid: "98955549"
 
 I den här artikeln beskrivs hur du hanterar Compute via IoT Edge-tjänsten på din Azure Stack Edge Pro GPU-enhet. Du kan hantera beräkningen via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att hantera moduler, utlösare och IoT Edge konfiguration och det lokala webb gränssnittet för att hantera beräknings nätverks inställningar.
 
-I den här artikeln kan du se hur du:
-
-> [!div class="checklist"]
-> * Hantera utlösare
-> * Hantera IoT Edge konfiguration
 
 
 ## <a name="manage-triggers"></a>Hantera utlösare
@@ -130,6 +125,22 @@ Utför följande steg i Azure Portal för att synkronisera åtkomst nycklarna f�
     ![Välj Ja när du tillfrågas](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 
 3. Avsluta dialogrutan när synkroniseringen är klar.
+
+## <a name="change-external-service-ips-for-containers"></a>Ändra IP-adresser för externa tjänster för behållare
+
+Kubernetes external service IP-adresser används för att kontakta tjänster som exponeras utanför Kubernetes-klustret. När enheten har Aktiver ATS kan du ange eller ändra de externa IP-adresserna för arbets belastningar för behållare för din enhet genom att använda det lokala användar gränssnittet.
+
+
+1. I enhetens lokala användar gränssnitt går du till **Compute**.
+1. Välj den port vars nätverk har kon figurer ATS för beräkning. I bladet som öppnas, anger du (ny) eller ändrar (om det finns befintliga) Kubernetes external service IP-adresser. Dessa IP-adresser används för alla tjänster som behöver exponeras utanför Kubernetes-klustret. 
+    - Du behöver minst 1 tjänst-IP för `edgehub` tjänsten som körs på enheten och används av IoT Edge moduler. 
+    - Du behöver en IP-adress för varje ytterligare IoT Edge modul eller behållare som du tänker distribuera. 
+    - Dessa är statiska och sammanhängande IP-adresser.
+
+    ![Ändra Kubernetes-tjänstens IP-adresser](media/azure-stack-edge-j-series-manage-compute/change-service-ips-1.png)
+
+1. Välj **Använd**. När IP-adresserna har tillämpats behöver enheten inte startas om eller startas om. Nya IP-adresser börjar gälla omedelbart.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

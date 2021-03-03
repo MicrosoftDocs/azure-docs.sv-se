@@ -6,18 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: e3a9810aef356b7acf5ae2522645c14ee445812b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bf55d66f7099717079190a538bad8bf777581825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723562"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Skapa, visa och hantera måttaviseringar med Azure Monitor
 
-Mått varningar i Azure Monitor ger dig ett sätt att få ett meddelande när ett av dina mått överskrider ett tröskelvärde. Du kan använda måttaviseringar för en mängd olika flerdimensionella plattformsmått, anpassade mått samt vanliga och anpassade Application Insights-mått. I den här artikeln beskriver vi hur du skapar, visar och hanterar aviserings regler för mått via Azure Portal och Azure CLI. Du kan också skapa Mät regler för mått med Azure Resource Manager mallar, som beskrivs i [en separat artikel](../platform/alerts-metric-create-templates.md).
+Mått varningar i Azure Monitor ger dig ett sätt att få ett meddelande när ett av dina mått överskrider ett tröskelvärde. Du kan använda måttaviseringar för en mängd olika flerdimensionella plattformsmått, anpassade mått samt vanliga och anpassade Application Insights-mått. I den här artikeln beskriver vi hur du skapar, visar och hanterar aviserings regler för mått via Azure Portal och Azure CLI. Du kan också skapa Mät regler för mått med Azure Resource Manager mallar, som beskrivs i [en separat artikel](./alerts-metric-create-templates.md).
 
-Du kan lära dig mer om hur mått aviseringar fungerar från [Översikt över mått aviseringar](../platform/alerts-metric-overview.md).
+Du kan lära dig mer om hur mått aviseringar fungerar från [Översikt över mått aviseringar](./alerts-metric-overview.md).
 
 ## <a name="create-with-azure-portal"></a>Skapa med Azure Portal
 
@@ -32,7 +32,7 @@ Följande procedur beskriver hur du skapar en regel för mått varningar i Azure
 
 3. Klicka på **Välj mål**, i kontext fönstret som läses in, väljer du en mål resurs som du vill Avisera om. Använd List rutorna **prenumeration** och **resurs typ** för att hitta den resurs som du vill övervaka. Du kan också använda Sök fältet för att hitta din resurs.
 
-4. Om den valda resursen har mått som du kan skapa aviseringar på, kommer **tillgängliga signaler** längst ned till höger att innehålla mått. Du kan visa en fullständig lista över resurs typer som stöds för mått aviseringar i den här [artikeln](../platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+4. Om den valda resursen har mått som du kan skapa aviseringar på, kommer **tillgängliga signaler** längst ned till höger att innehålla mått. Du kan visa en fullständig lista över resurs typer som stöds för mått aviseringar i den här [artikeln](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 5. När du har valt en mål resurs klickar du på **Lägg till villkor**.
 
@@ -45,7 +45,7 @@ Följande procedur beskriver hur du skapar en regel för mått varningar i Azure
     - Om det dimensions värde som du söker efter inte visas klickar du på Lägg till anpassat värde om du vill lägga till ett anpassat dimensions värde.
     - Du kan också **välja alla aktuella och framtida värden** för någon av dimensionerna. Detta skalar markeringen dynamiskt till alla aktuella och framtida värden för en dimension.
 
-    Mått varnings regeln utvärderar villkoret för alla kombinationer av värden som har valts. [Lär dig mer om hur aviseringar om flerdimensionella mått fungerar](../platform/alerts-metric-overview.md).
+    Mått varnings regeln utvärderar villkoret för alla kombinationer av värden som har valts. [Lär dig mer om hur aviseringar om flerdimensionella mått fungerar](./alerts-metric-overview.md).
 
 9. Välj typ av **tröskel** , **operator** och **sammansättning**. Detta fastställer logiken som varnings regeln för mått kommer att utvärdera.
     - Om du använder ett **statiskt** tröskelvärde kan du fortsätta att definiera ett **tröskelvärde**. Mått diagrammet kan hjälpa dig att avgöra vad som kan vara ett rimligt tröskelvärde.
@@ -154,8 +154,8 @@ Mått för varnings regler har dedikerade PowerShell-cmdlets tillgängliga:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Skapa mått aviseringar med hjälp av Azure Resource Manager mallar](../platform/alerts-metric-create-templates.md)
-- [Förstå hur mått aviseringar fungerar](../platform/alerts-metric-overview.md)
+- [Skapa mått aviseringar med hjälp av Azure Resource Manager mallar](./alerts-metric-create-templates.md)
+- [Förstå hur mått aviseringar fungerar](./alerts-metric-overview.md)
 - [Förstå hur mått aviseringar med villkor för dynamiskt tröskelvärden fungerar](../alerts/alerts-dynamic-thresholds.md)
-- [Förstå webbhook-schemat för mått varningar](../platform/alerts-metric-near-real-time.md#payload-schema)
-- [Felsöka problem i mått aviseringar](../platform/alerts-troubleshoot-metric.md)
+- [Förstå webbhook-schemat för mått varningar](./alerts-metric-near-real-time.md#payload-schema)
+- [Felsöka problem i mått aviseringar](./alerts-troubleshoot-metric.md)

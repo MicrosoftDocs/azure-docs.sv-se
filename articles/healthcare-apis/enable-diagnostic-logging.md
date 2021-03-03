@@ -7,23 +7,30 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
-author: CaitlinV39
-ms.date: 02/03/2021
-ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+author: zxue
+ms.date: 02/24/2021
+ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581971"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712784"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivera diagnostisk loggning i Azure API för FHIR
 
 I den här artikeln får du lära dig hur du aktiverar diagnostisk loggning i Azure API för FHIR och kan granska några exempel frågor för dessa loggar. Åtkomst till diagnostikloggar är nödvändig för alla sjukvårds tjänster där efterlevnaden av myndighets krav (t. ex. HIPAA) är en måste. Funktionen i Azure API för FHIR som möjliggör diagnostikloggar är [**diagnostikinställningar**](../azure-monitor/essentials/diagnostic-settings.md) i Azure Portal. 
 
+## <a name="view-and-download-fhir-metrics-data"></a>Visa och ladda ned FHIR Metrics-data
+
+Du kan visa måtten under övervakning | Mått från portalen. Måtten omfattar antalet begär Anden, genomsnittlig svars tid, antal fel, data storlek, ru: er som används, antalet begär Anden som överskrider kapacitet och tillgänglighet (i%). Skärm bilden nedan visar ru: er som används för en exempel miljö med mycket få aktiviteter under de senaste 7 dagarna. Du kan hämta data i JSON-format.
+
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Azure API för FHIR-mått från portalen" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+
 ## <a name="enable-audit-logs"></a>Aktivera gransknings loggar
 1. Om du vill aktivera diagnostisk loggning i Azure API för FHIR, väljer du din Azure API för FHIR-tjänst i Azure Portal 
-2. Navigera till   
- ![ diagnostikinställningar för diagnostikinställningar](media/diagnostic-logging/diagnostic-settings-screen.png) 
+2. Navigera till **diagnostikinställningar** 
+
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Lägg till inställningar för Azure FHIR-diagnostik." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. Välj **+ Lägg till diagnostisk inställning**
 
@@ -35,7 +42,7 @@ I den här artikeln får du lära dig hur du aktiverar diagnostisk loggning i Az
     2. **Strömma till händelsehubben** för inmatning av en tjänst från tredje part eller en anpassad analys lösning. Du måste skapa ett namn område och en Event Hub-princip innan du kan konfigurera det här steget.
     3. **Strömma till Log Analytics** arbets ytan i Azure Monitor. Du måste skapa din loggar Analytics-arbetsyta innan du kan välja det här alternativet.
 
-6. Välj **AuditLogs** och/eller **AllMetrics**. Måtten är bland annat tjänst namn, tillgänglighet, data storlek, total svars tid, totalt antal fel och tidsstämpel.
+6. Välj **AuditLogs** och/eller **AllMetrics**. Måtten är bland annat tjänst namn, tillgänglighet, data storlek, total svars tid, totalt antal fel och tidsstämpel. Du hittar mer information om [vilka mått som stöds](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices). 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Diagnostiska inställningar för Azure FHIR. Välj AuditLogs och/eller AllMetrics." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 

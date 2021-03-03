@@ -2,15 +2,15 @@
 title: Skapa och distribuera mallspecifikationer
 description: Beskriver hur du skapar specifikationer för mallar och delar dem med andra användare i din organisation.
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734923"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700396"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Specifikationer för Azure Resource Manager mall (för hands version)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>Versionshantering
+
+När du skapar en mall-specifikation anger du ett versions namn för den. När du itererar på mallkod kan du antingen uppdatera en befintlig version (för snabb korrigeringar) eller publicera en ny version. Versionen är en text sträng. Du kan välja att följa alla versioner av systemet, inklusive semantisk versions hantering. Användare av mallen specifikation kan ange det versions namn som de vill använda när de distribuerar den.
+
+## <a name="use-tags"></a>Använd taggar
+
+Med [taggar](../management/tag-resources.md) kan du logiskt organisera dina resurser. Du kan lägga till taggar till mall-specifikationer genom att använda Azure PowerShell och Azure CLI:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+När du skapar eller ändrar en mall-specifikation med parametern version angiven, men utan parametern tag/Taggar:
+
+- Om mallen finns och har taggar, men versionen inte finns, ärver den nya versionen samma taggar som den befintliga specifikationen för mallen.
+
+När du skapar eller ändrar en mall-specifikation med både taggen tag/Taggar och parametern version angiven:
+
+- Om både mallens specifikation och versionen inte finns, läggs taggarna till i både den nya mallen och den nya versionen.
+- Om mallen finns, men versionen inte finns, läggs taggarna bara till i den nya versionen.
+- Om både specifikationerna för mallen och versionen finns, gäller taggarna endast för-versionen.
+
+När du ändrar en mall med parametern tag/taggar, men utan den angivna versions parametern, läggs taggarna bara till i specifikationen för mallen.
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>Skapa en mall-specifikation med länkade mallar
 
 Om huvud mal len för din mall-spec refererar till länkade mallar kan PowerShell-och CLI-kommandona automatiskt hitta och paketera de länkade mallarna från den lokala enheten. Du behöver inte manuellt konfigurera lagrings konton eller lagrings platser som är värdar för mallens specifikationer – allt är självständigt i resursens Specifikations resurs.
@@ -331,10 +403,6 @@ Följande exempel liknar det tidigare exemplet, men du använder `id` egenskapen
 ```
 
 Mer information om hur du länkar mall-specifikationer finns i [Självstudier: Distribuera en mall specifikation som en länkad mall](template-specs-deploy-linked-template.md).
-
-## <a name="versioning"></a>Versionshantering
-
-När du skapar en mall-specifikation anger du ett versions namn för den. När du itererar på mallkod kan du antingen uppdatera en befintlig version (för snabb korrigeringar) eller publicera en ny version. Versionen är en text sträng. Du kan välja att följa alla versioner av systemet, inklusive semantisk versions hantering. Användare av mallen specifikation kan ange det versions namn som de vill använda när de distribuerar den.
 
 ## <a name="next-steps"></a>Nästa steg
 

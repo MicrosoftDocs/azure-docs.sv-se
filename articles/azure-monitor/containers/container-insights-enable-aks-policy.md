@@ -3,20 +3,20 @@ title: Aktivera AKS Monitoring addon med Azure Policy
 description: Beskriver hur du aktiverar AKS övervaknings tillägg med hjälp av en anpassad Azure-princip.
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 302fdbbbcadf211339952f4b1bd97dcbb4ab1a85
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808418"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713906"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Aktivera AKS Monitoring addon med Azure Policy
 I den här artikeln beskrivs hur du aktiverar AKS övervaknings tillägg med hjälp av en anpassad Azure-princip. Anpassad princip för övervaknings tillägg kan tilldelas antingen i prenumerations-eller resurs grupps omfånget. Om Azure Log Analytics-arbetsytan och AKS-klustret finns i olika prenumerationer, måste den hanterade identitet som används av princip tilldelningen ha de roll behörigheter som krävs för både prenumerationerna eller minst på resursen i arbets ytan Log Analytics. Om principen är begränsad till resurs gruppen, ska den hanterade identiteten ha de nödvändiga roll behörigheterna på arbets ytan Log Analytics om arbets ytan inte är i det valda resurs grupps omfånget.
 
 Övervaknings tillägg kräver följande roller på den hanterade identitet som används av Azure Policy:
 
- - [Azure-Kubernetes-service-Contributor-Role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-contributor-role)
- - [Log-Analytics – Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor)
+ - [Azure-Kubernetes-service-Contributor-Role](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-contributor-role)
+ - [Log-Analytics – Contributor](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="create-and-assign-policy-definition-using-azure-portal"></a>Skapa och tilldela princip definition med hjälp av Azure Portal
 
@@ -79,6 +79,5 @@ I den här artikeln beskrivs hur du aktiverar AKS övervaknings tillägg med hj�
 
 - Läs mer om [Azure policy](../../governance/policy/overview.md).
 - Lär dig hur [reparations säkerhet fungerar](../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works).
-- Läs mer om [Azure Monitor för behållare](../insights/container-insights-overview.md).
-- Installera [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
+- Läs mer om [behållar insikter](./container-insights-overview.md).
+- Installera [Azure CLI](/cli/azure/install-azure-cli).

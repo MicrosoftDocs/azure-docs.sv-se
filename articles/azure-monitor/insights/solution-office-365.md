@@ -1,17 +1,16 @@
 ---
 title: Hanterings lösning för Office 365 i Azure
 description: Den här artikeln innehåller information om konfiguration och användning av Office 365-lösningen i Azure.  Den innehåller en detaljerad beskrivning av de Office 365-poster som skapats i Azure Monitor.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: d031b64b36bd7ff91c64960642cfbf00fb1682ab
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587310"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728645"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-hanterings lösning i Azure (för hands version)
 
@@ -462,7 +461,7 @@ Dessa poster skapas som svar på fil åtgärder i SharePoint.
 
 Följande tabell innehåller exempel på logg frågor för uppdaterings poster som samlas in av den här lösningen.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 | --- | --- |
 |Antal åtgärder på din Office 365-prenumeration |OfficeActivity &#124; sammanfatta antal () efter åtgärd |
 |Användning av SharePoint-webbplatser|OfficeActivity &#124; där OfficeWorkload = ~ "SharePoint" &#124; sammanfatta antal () efter SiteUrl \| Sortera efter antal ASC|

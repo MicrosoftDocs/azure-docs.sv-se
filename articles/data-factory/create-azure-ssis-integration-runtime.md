@@ -3,15 +3,15 @@ title: Skapa en Azure-SSIS integration runtime i Azure Data Factory
 description: Lär dig hur du skapar en Azure-SSIS integration runtime i Azure Data Factory så att du kan distribuera och köra SSIS-paket i Azure.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4e3137b08c558c8e9dfadda07f0b8bb66433ee83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389424"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739425"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Skapa en Azure-SSIS integration runtime i Azure Data Factory
 
@@ -147,15 +147,21 @@ Om du markerar kryss rutan utför du följande steg för att ta med din egen dat
    
       Baserat på den valda databas servern kan SSISDB-instansen skapas för din räkning som en enda databas, som en del av en elastisk pool eller i en hanterad instans. Det kan vara tillgängligt i ett offentligt nätverk eller genom att ansluta till ett virtuellt nätverk. Information om hur du väljer vilken typ av databas server som ska vara värd för SSISDB finns i [jämför SQL Database och SQL-hanterad instans](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).   
 
-      Om du väljer en Azure SQL Database-Server med IP-brandväggs regler/slut punkter för virtuella nätverks tjänster eller en hanterad instans med privat slut punkt som värd för SSISDB, eller om du behöver åtkomst till lokala data utan att konfigurera en IR med egen värd, måste du ansluta din Azure-SSIS IR till ett virtuellt nätverk. Mer information finns i [skapa en Azure-SSIS IR i ett virtuellt nätverk]().
+      Om du väljer en Azure SQL Database-Server med IP-brandväggs regler/slut punkter för virtuella nätverks tjänster eller en hanterad instans med privat slut punkt som värd för SSISDB, eller om du behöver åtkomst till lokala data utan att konfigurera en IR med egen värd, måste du ansluta din Azure-SSIS IR till ett virtuellt nätverk. Mer information finns i [ansluta ett Azure-SSIS IR till ett virtuellt nätverk](./join-azure-ssis-integration-runtime-virtual-network.md).
 
    1. Markera kryss rutan **Använd Azure AD-autentisering med den hanterade identiteten för din ADF** för att välja autentiseringsmetod för din databas server som värd för SSISDB. Du väljer antingen SQL-autentisering eller Azure AD-autentisering med den hanterade identiteten för din data fabrik.
 
-      Om du markerar kryss rutan måste du lägga till den hanterade identiteten för din data fabrik i en Azure AD-grupp med åtkomst behörighet till din databas server. Mer information finns i [skapa en Azure-SSIS IR med Azure AD-autentisering]().
+      Om du markerar kryss rutan måste du lägga till den hanterade identiteten för din data fabrik i en Azure AD-grupp med åtkomst behörighet till din databas server. Mer information finns i [Aktivera Azure AD-autentisering för en Azure-SSIS IR](./enable-aad-authentication-azure-ssis-ir.md).
    
    1. För **Administratörs användar namn** anger du användar namnet för SQL-autentisering för din databas server som värd för SSISDB. 
 
    1. För **Administratörs lösen ord** anger du lösen ordet för SQL-autentisering för din databas server som värd för SSISDB. 
+
+   1. Markera kryss rutan **Använd dubbla standby-Azure-SSIS integration runtime med SSISDB redundans** om du vill konfigurera ett dubbelt vänte läge för Azure SSIS-IR som fungerar i sync med Azure SQL Database/Hanterad instans redundans grupp för verksamhets kontinuitet och haveri beredskap (BCDR).
+   
+      Om du markerar kryss rutan anger du ett namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRs i text rutan **namn på dubbel standby-ihopparning** . Du måste ange samma par namn när du skapar din primära och sekundära Azure-SSIS IRs.
+
+      Mer information finns i [Konfigurera din Azure-SSIS IR för BCDR](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. För **tjänst nivån katalog databas** väljer du tjänst nivå för din databas server som värd för SSISDB. Välj nivån Basic, standard eller Premium eller Välj ett namn för elastisk pool.
 

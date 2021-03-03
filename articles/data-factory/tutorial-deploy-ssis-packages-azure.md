@@ -4,15 +4,15 @@ description: Lär dig hur du etablerar Azure SSIS-integreringskörning i Azure D
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391362"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740417"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Etablera Azure-SSIS integration runtime i Azure Data Factory
 
@@ -149,6 +149,12 @@ Om du markerar kryss rutan utför du följande steg för att ta med din egen dat
    1. För **Administratörs användar namn** anger du användar namnet för SQL-autentisering för din databas server som värd för SSISDB. 
 
    1. För **Administratörs lösen ord** anger du lösen ordet för SQL-autentisering för din databas server som värd för SSISDB. 
+
+   1. Markera kryss rutan **Använd dubbla standby-Azure-SSIS integration runtime med SSISDB redundans** om du vill konfigurera ett dubbelt vänte läge för Azure SSIS-IR som fungerar i sync med Azure SQL Database/Hanterad instans redundans grupp för verksamhets kontinuitet och haveri beredskap (BCDR).
+   
+      Om du markerar kryss rutan anger du ett namn för att identifiera ditt par av primär och sekundär Azure-SSIS IRs i text rutan **namn på dubbel standby-ihopparning** . Du måste ange samma par namn när du skapar din primära och sekundära Azure-SSIS IRs.
+
+      Mer information finns i [Konfigurera din Azure-SSIS IR för BCDR](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. För **tjänst nivån katalog databas** väljer du tjänst nivå för din databas server som värd för SSISDB. Välj nivån Basic, standard eller Premium eller Välj ett namn för elastisk pool.
 

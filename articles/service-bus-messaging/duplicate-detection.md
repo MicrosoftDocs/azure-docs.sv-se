@@ -3,12 +3,12 @@ title: Azure Service Bus identifiering av duplicerade meddelanden | Microsoft Do
 description: Den här artikeln förklarar hur du kan identifiera dubbletter i Azure Service Bus meddelanden. Det duplicerade meddelandet kan ignoreras och tas bort.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711934"
 ---
 # <a name="duplicate-detection"></a>Dubblettidentifiering
 
@@ -48,7 +48,7 @@ I portalen aktive ras funktionen när entiteten skapas med kryss rutan **Aktiver
 
 Program mässigt ställer du in flaggan med egenskapen [QueueDescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) i hela Framework .NET-API: et. Med Azure Resource Manager API anges värdet med egenskapen [queueProperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
 
-Tids historiken för dubblettidentifiering är som standard 30 sekunder för köer och ämnen, med ett maximalt sju dagar. Du kan ändra den här inställningen i fönstret för kö-och ämnes egenskaper i Azure Portal.
+Tids historiken för dubblettidentifiering är som standard 10 minuter för köer och ämnen, med ett minsta värde på 20 sekunder till högsta värdet 7 dagar. Du kan ändra den här inställningen i fönstret för kö-och ämnes egenskaper i Azure Portal.
 
 ![Skärm bild av Service Bus-funktionen med egenskaps inställningen markerad och alternativet för dubblettidentifiering som anges i rött.][2]
 

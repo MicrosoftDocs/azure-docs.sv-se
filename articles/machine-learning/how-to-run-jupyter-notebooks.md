@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 18ccadcf43d41c677a665ed068d093f51389b576
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 82c11b913d38695c8738de88f3ce69b198ee099e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657340"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691883"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
@@ -190,7 +190,7 @@ Hitta information om dina beräknings instanser på **beräknings** sidan i [Stu
 
 * Om du inte kan ansluta till en bärbar dator kontrollerar du att WebSocket-kommunikation **inte** är inaktiverat. För att Compute instance Jupyter-funktionen ska fungera måste WebSocket-kommunikationen vara aktive rad. Kontrol lera att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
 
-* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås från det virtuella nätverket. Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för <instans-namn>. <region> . instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
+* När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås [från det virtuella nätverket](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för <instans-namn>. <region> . instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
     
 ## <a name="next-steps"></a>Nästa steg
 

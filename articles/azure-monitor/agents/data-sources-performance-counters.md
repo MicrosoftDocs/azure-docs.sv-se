@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: f885945dfb6910df919038106487db912d87caee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623056"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711560"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Samla in prestanda data källor för Windows och Linux med Log Analytics agent
 Prestanda räknare i Windows och Linux ger inblick i prestanda för maskin varu komponenter, operativ system och program.  Azure Monitor kan samla in prestanda räknare från Log Analytics agenter med frekventa intervall för NRT-analys (nära real tid), förutom att aggregera prestanda data för analys och rapportering på längre sikt.
 
 > [!IMPORTANT]
-> Den här artikeln beskriver hur du samlar in prestanda data med [Log Analytics agent](../platform/log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
+> Den här artikeln beskriver hur du samlar in prestanda data med [Log Analytics agent](./log-analytics-agent.md) som är en av de agenter som används av Azure Monitor. Andra agenter samlar in olika data och konfigureras på olika sätt. Se [Översikt över Azure Monitor agenter](../agents/agents-overview.md) för en lista över tillgängliga agenter och de data som de kan samla in.
 
 ![Prestandaräknare](media/data-sources-performance-counters/overview.png)
 
@@ -28,7 +28,7 @@ När du först konfigurerar Windows-eller Linux-prestandaräknare för en ny arb
 
 För prestanda räknare i Windows kan du välja en angiven instans för varje prestanda räknare. För prestanda räknare för Linux används instansen för varje räknare som du väljer för alla underordnade räknare för den överordnade räknaren. I följande tabell visas de vanliga instanser som är tillgängliga för prestanda räknare för både Linux och Windows.
 
-| Instansnamn | Description |
+| Instansnamn | Beskrivning |
 | --- | --- |
 | \_Totalt |Totalt antal instanser |
 | \* |Alla instanser |
@@ -77,7 +77,7 @@ Varje objekt eller kategori av prestanda mått som ska samlas in bör definieras
 
 Parametrarna i det här elementet beskrivs i följande tabell.
 
-| Parametrar | Description |
+| Parametrar | Beskrivning |
 |:--|:--|
 | objekt \_ namn | Objekt namn för samlingen. |
 | instans- \_ regex |  Ett *reguljärt uttryck* som definierar vilka instanser som ska samlas in. Värdet: `.*` anger alla instanser. Om du bara vill samla in processor mått för den \_ totala instansen kan du ange `_Total` . Om du bara vill samla in process mått för crond-eller sshd-instanser kan du ange: `(crond\|sshd)` . |
@@ -205,7 +205,7 @@ Prestanda poster har en typ av **prestanda** och har egenskaperna i följande ta
 ## <a name="log-queries-with-performance-records"></a>Logga frågor med prestanda poster
 Följande tabell innehåller olika exempel på logg frågor som hämtar prestanda poster.
 
-| Söka i data | Description |
+| Söka i data | Beskrivning |
 |:--- |:--- |
 | Prest |Alla prestanda data |
 | Perf &#124; där dator = = "Min Dator" |Alla prestanda data från en viss dator |
@@ -224,5 +224,5 @@ Följande tabell innehåller olika exempel på logg frågor som hämtar prestand
 
 ## <a name="next-steps"></a>Nästa steg
 * [Samla in prestanda räknare från Linux-program](data-sources-linux-applications.md) , inklusive MySQL och Apache HTTP server.
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.  
-* Exportera insamlade data till [Power BI](../platform/powerbi.md) för ytterligare visualiseringar och analyser.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.  
+* Exportera insamlade data till [Power BI](../visualize/powerbi.md) för ytterligare visualiseringar och analyser.

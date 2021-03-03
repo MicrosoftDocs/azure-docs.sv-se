@@ -1,24 +1,24 @@
 ---
-title: Alternativet samförsäljning på den kommersiella Marketplace | Azure Marketplace
-description: Den information som du anger på fliken Co-Sales med Microsoft i ditt erbjudande kommer att användas av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du utvärderar det för kundernas behov.
+title: Konfigurera samförsäljning för ett erbjudande för en kommersiell Marketplace | Azure Marketplace
+description: Den information som du anger på fliken Co-Sales med Microsoft för ditt erbjudande används av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du bedömer att det passar kund behoven.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/08/2020
-ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 2/24/2021
+ms.openlocfilehash: 6fdae505a4c2d05dc3e19d01ed52b0ef44ae3a40
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880969"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699019"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>Alternativet Säljsamarbete i den kommersiella marknadsplatsen
+# <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurera samförsäljning för ett erbjudande för handels platser
 
-Att tillhandahålla information på fliken **Co-Sälj med Microsoft** är helt valfritt. Det krävs för att uppnå samförsäljnings [motiverade status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)för alla produkter. Den information du anger kommer att användas av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du utvärderar den efter kund behov. Den är inte tillgänglig direkt för kunderna. Mer information finns i [Co-Sälj med Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Den här artikeln beskriver hur du konfigurerar fliken **Co-Sälj med Microsoft** för ett erbjudande från en kommersiell Marketplace. Att tillhandahålla information på den här fliken är helt valfritt, men det krävs för att uppnå samförsäljnings- [och motiverade-status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Den information du anger kommer att användas av Microsoft Sales Teams för att lära dig mer om ditt erbjudande när du utvärderar den efter kund behov. Den här informationen är inte tillgänglig direkt för kunderna. Mer information om samförsäljning finns i samförsäljning [med Microsoft-säljare och partner översikt](marketplace-co-sell.md) och [samförsäljning med Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
-Alternativet samförsäljning i Partner Center är tillgängligt för följande typer av erbjudanden.
+Alternativet Co-Sälj är tillgängligt för följande typer av erbjudanden.
 
 - Azure Application
 - Azure-behållare
@@ -32,95 +32,149 @@ Alternativet samförsäljning i Partner Center är tillgängligt för följande 
 - Power BI-app
 - Programvara som en tjänst (SaaS)
 
-## <a name="listing"></a>Lista
+## <a name="go-to-the-co-sell-with-microsoft-tab"></a>Gå till fliken Co-Sälj med Microsoft
 
-Med samförsäljnings listor kan du få en bredare publik på Microsoft Sales Teams-marknaden. *(Alla fält krävs.)*
+1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
+1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace**-  >  **Översikt**.
+    > [!TIP]
+    > Om du inte ser **kommersiell marknads** plats i det vänstra navigerings fönstret, [skapar du ett kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md) och kontrollerar att ditt konto har registrerats i det kommersiella Marketplace-programmet.
+1. På fliken **Översikt** väljer du det erbjudande du vill samsälja.
+    > [!NOTE]
+    > Du kan konfigurera samförsäljning för ett nytt erbjudande som ännu inte har publicerats eller med ett erbjudande som redan har publicerats.
 
-- Välj de Microsoft-plattformar som ditt erbjudande bygger på, utökar eller integrerar med.
-- Välj marknads segment som ditt erbjudande riktar sig mot.
-- Välj en [lösnings typ](#solution-type) för ditt erbjudande.
-- Välj upp till tre [lösnings områden](#solution-areas) och underordnade områden.
+1. I menyn till vänster väljer du **Co-Sälj med Microsoft**.
 
-### <a name="solution-type"></a>Lösnings typ
+    [![Visar den samförsäljning med Microsoft-länken i det vänstra navigerings fältet.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+
+## <a name="co-sell-listings"></a>Samförsäljnings listor
+
+Med samförsäljnings listor kan du få en större mål grupp på Microsoft Sales Teams marknad. Du måste ange följande information för att uppnå en färdig status för medförsäljning:
+
+- Microsoft-plattformar (Välj en eller flera)
+- Segment (Välj en eller flera)
+- Lösnings typ (Välj en)
+- Under område för lösning (Välj en eller två)
+
+### <a name="select-microsoft-platforms-and-segments"></a>Välj Microsoft-plattformar och-segment
+
+1. Under **lista** väljer du en eller flera Microsoft-plattformar som ditt erbjudande har skapats med, utökar eller integrerar med.
+1. Välj ett eller flera marknads segment som ditt erbjudande riktar sig till.
+
+### <a name="select-solution-types"></a>Välj lösnings typer
 
 Lösnings typer hjälper dig att definiera scenarier som ditt erbjudande är utformat för att åtgärda.
+
+- I listan **Välj en lösnings typ** väljer du en lösnings typ som bäst matchar ditt erbjudande. I den här tabellen beskrivs de tillgängliga lösnings typerna.
+
+***Tabell 1: tillgängliga lösnings typer***
 
 | **Lösnings typ**    | **Beskrivning**  |
 | :------------------- | :-------------------|
 | Enhet (maskin vara) | Ett erbjudande som inbegriper att skapa eller sälja maskin vara från en enhets tillverkare. |
-| IP (program) | Appar eller annat upphovsrättsskyddat material som är licensierat för kundens användning. Till exempel: ett CRM-program som kan licensieras och installeras lokalt. |
-| Tjänst | Praktiska expert kunskaper för ett särskilt projekt med en gång, som ofta levereras via konsulter. Exempel: Konfigurera en kund databas för en klient (med klienten som förutsätter ansvar för att hantera databasen efter leverans). |
-| Hanterad tjänst | Praktiska expert kunskaper om ett molnbaserad projekt, vanligt vis kontinuerligt. Exempel: tillhandahålla en plattform och verktyg för att köra en online-databas, med kontinuerlig hantering från den hanterade tjänst leverantören. |
+| IP (program) | Appar eller annat upphovsrättsskyddat material som är licensierat för kundens användning. Till exempel ett CRM-program som kan licensieras och installeras lokalt. |
+| Hanterad tjänst | Praktiska expert kunskaper om ett molnbaserad projekt, vanligt vis kontinuerligt. Du kan till exempel tillhandahålla en plattform och verktyg för att köra en online-databas med kontinuerlig hantering från den hanterade tjänst leverantören. |
+| Tjänst | Praktiska expert kunskaper för ett särskilt projekt med en gång, som ofta levereras via konsulter. Du kan till exempel skapa en kund databas för en kund (med kunden ett ansvar för att driva databasen efter leverans). |
+|||
 
-### <a name="solution-areas"></a>Lösnings områden
+### <a name="select-solution-areas"></a>Välj lösnings områden
 
-Lösnings områden hjälper till att ytterligare definiera din lösning.
+Lösnings områden hjälper till att ytterligare definiera din lösning. Detta hjälper Microsoft Sales team att hitta och förstå lösningens värde förslag. Du måste välja minst en och upp till tre lösnings områden för ditt erbjudande. För varje lösnings område kan du ytterligare välja upp till två underordnade delar av lösningen.
 
-Du kan lägga till upp till tre lösnings områden för ditt erbjudande. För varje lösnings områden kan du välja upp till två del områden för lösningen. Om du vill välja flera under Kategorier använder du `Ctrl` nyckeln (i Windows) eller kommando nyckel (på MacOS).
+1. Välj länken **+ Lägg till lösnings yta (3 max)** .
+1. Välj ett lösnings områden i list rutan som visas.
+1. Välj minst en och upp till två del områden för lösningen. Om du vill välja flera under områden använder du `Ctrl` nyckeln (i Windows) eller `Command` nyckel (på MacOS).
+1. Upprepa steg 1 till 3 om du vill lägga till ett annat lösnings utrymme.
 
-## <a name="documents"></a>Dokument
+## <a name="upload-documents"></a>Ladda upp dokument
 
-Du har möjlighet att tillhandahålla dokument som Microsoft kommer att använda för att lära dig mer om ditt erbjudande och utvärdera det efter dina kund behov.
+Du måste ange dokument för säkerhet som innehåller information om ditt erbjudande. Microsoft Sales Teams använder den här informationen för att utvärdera om ditt erbjudande är lämpligt för kund behov för att rekommendera och sälja ditt erbjudande. Mer information som du anger, desto mer information kommer Microsoft Sales team att behöva förstå och lansera din produkt.
+
+De filtyper som stöds är. pdf,. ppt,. pptx,. doc,. docx,. xls,. xlsx,. jpg,. png och. mp4. Mallar för vissa dokument finns i tabell 2 nedan.
+
+> [!NOTE]
+> **Lösningen/erbjudandet** och **lösningen/lösningen/erbjudandet för lösning/erbjudande** krävs för att få en färdig försäljnings status. De är också nödvändiga för att vissa erbjudanden ska vara Azure IP Co-Sälj-motiverade. Referens arkitektur diagrammet krävs också för Azure IP Co-Sälj motiverade-status. De andra dokumenten som beskrivs i den här tabellen är valfria men rekommenderas.
+
+***Tabell 2: dokument som stöder co-försäljning***
 
 | **Dokument**    | **Beskrivning**  |
 | :------------------- | :-------------------|
-| *Kunden One-pager (krävs)* | Kund färdig Beskrivning av ditt erbjudande. Microsoft Sales Teams kan dela den här informationen med kunder för att hjälpa till att avgöra om ditt erbjudande kan vara en bra passning och se till att det är kund klart. <br> <br> Använd en av de relevanta mallarna som är tillgängliga i Partner Center: <br> <ul> <li> Microsoft Azure One-pager-mall </li> <li> Microsoft Dynamics 365 1 – pager-mall </li> <li> Microsoft 365 1 – pager-mall </li> <li> Windows 10 1-pager-mall </li> </ul> |
-| *Kund presentation (krävs)* | Dra däcket för att ge ditt erbjudande ett värde och dess värde. När du har säkerställt att erbjudandet är kund klart kan Microsoft Sales-teamet dela med sig av din kund och tydliggör det värde som företaget och Microsoft får när de distribuerar en gemensam lösning. Presentationen bör avse vad ditt erbjudande gör, hur det kan hjälpa kunder, vilka branscher erbjudandet är relevanta för och hur det kan jämföras med konkurrerande lösningar. <br> <br> Använd mallen som är tillgänglig i Partner Center.|
-| *Fallstudie om kund* | Den här informationen visar en potentiell kund hur du och Microsoft har distribuerat erbjudandet i föregående fall. <br> <br> Använd mallen som är tillgänglig i Partner Center. |
-| *Kund-och verifierbar kund* | Specifika exempel på kund framgångar när ditt erbjudande har distribuerats. |
-| *Kanal bredds däck* | En bildkortlek med information som hjälper kanal åter försäljare att lära sig mer om ditt erbjudande och få sina försäljnings team redo att sälja dem. Däcket innehåller vanligt vis ett höjd/bredd steg, information om mål kunder, frågor för att be kunder, prata om punkter och länkar till videor, dokumentation och supportinformation. |
-| *Referens arkitektur diagram* | Ett diagram som visar modellen som representerar ditt erbjudande och dess relation med Microsofts moln tjänster, som demonstrerar hur det uppfyller de tekniska kraven i IP-Co-programmet. [Lär dig mer om referens arkitektur diagrammet.](#reference-architecture-diagram) |
-| *Andra dokument* | Alternativt kan du överföra upp till fem ytterligare dokument eller videor för att hjälpa Microsofts försäljnings team och kanal åter försäljare att lära sig mer om ditt erbjudande, din organisation och/eller differentiering. |
-| *Extern referens-URL* | Länken till produktens webbplats där Microsoft Sales Teams och Channel-återförsäljare kan lära sig mer om ditt erbjudande. |
+| *Lösning/erbjudande One-pager (krävs)* | Öka medvetenheten bland potentiella kunder med en professionellt utformad One-pager som demonstrerar det värde som är av din lösning.<br><br>Du kan använda en av de relevanta mallarna för att tillhandahålla en kund färdig Beskrivning av ditt erbjudande:<br><ul><li> [Microsoft Azure One-pager-mall](https://aka.ms/Customer-One-Pager_MicrosoftAzure)</li><li>[Microsoft Dynamics 365 1 – pager-mall](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365)</li> <li>[Microsoft 365 1 – pager-mall](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li><li>[Windows 10 1-pager-mall](https://aka.ms/Customer-One-Pager_Windows)</li></ul> <br> Microsoft Sales Teams kan dela den här informationen med kunder för att hjälpa till att avgöra om ditt erbjudande kan vara en bra passning och se till att det är kund klart. |
+| *Lösning/erbjud bredd-däck (krävs)* | Du kan använda [kund presentations mal len](https://aka.ms/GTMServices_CustomerPresentation) för att skapa en kanna. Den här däcken ska referera till [referens arkitektur diagrammet](reference-architecture-diagram.md). Syftet med det här bild däcket är att stämma av ditt erbjudande och dess värde förslag. När du har säkerställt att erbjudandet är kund klart kan Microsoft Sales-teamet dela den här presentationen med kunder för att tydliggör värdet som ditt företag och Microsoft tar när de distribuerar en gemensam lösning. Presentationen bör avse vad ditt erbjudande gör, hur det kan hjälpa kunder, vilka branscher erbjudandet är relevanta för och hur det kan jämföras med konkurrerande lösningar. |
+| *Fallstudie av kund* (valfritt)| Använd fallstudie [mal len](https://aka.ms/GTM_Case_Study_Template) för att skapa din kund fallstudie. Den här informationen visar en potentiell kund hur du och Microsoft har distribuerat erbjudandet i föregående fall. |
+| *Kund-och verifierbar kund* (valfritt) | Ange specifika exempel på kund framgångar när ditt erbjudande har distribuerats. |
+| *Kanal bredds däck* (valfritt) | En bildkortlek med information som hjälper kanal åter försäljare att lära sig mer om ditt erbjudande och få sina försäljnings team redo att sälja dem. Den här däcken innehåller vanligt vis ett höjd/bredd steg, information om mål kunder, frågor för att be kunder, prata om punkter och länkar till videor, dokumentation och supportinformation. |
+| *Referens arkitektur diagram* (krävs för Azure IP Co-Sälj motiverade-status) | Ett diagram som representerar ditt erbjudande och dess relation med Microsofts moln tjänster. Det kan också visa hur ditt erbjudande uppfyller de tekniska kraven för Azure IP Co-Sälj motiverade-status. [Lär dig mer om referens arkitektur diagrammet.](reference-architecture-diagram.md) |
+| *Andra dokument* (valfritt) | Du kan överföra upp till fem ytterligare dokument eller videor för att hjälpa Microsofts försäljnings team och kanal åter försäljare att lära sig mer om ditt erbjudande, din organisation och hur det skiljer sig från andra erbjudanden. |
+|||
 
-## <a name="contacts"></a>Kontakter
+- När du har skapat dina dokument drar du dem till lämplig ruta under **dokument** eller väljer **Bläddra bland dina filer** för att ladda upp ett dokument från datorn.
 
-Med din kontakt information kan Microsoft sälj team och kanal åter försäljare begära ytterligare information från den aktuella resursen i din organisation. Kontakt information är tillgänglig för alla Microsoft-säljteam. *(En kontakt för varje geografiskt område där ditt erbjudande är tillgängligt krävs för programmet Co-sälja.)* Om du väljer att göra ditt erbjudande tillgängligt i CSP-programmet är den här kontakt informationen också tillgänglig för kanal åter försäljare.
+    [![Illustrerar dokumentations avsnittet i Co-Sälj med Microsofts flik.](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
 
-Du kan ange dina kontakter genom att hämta CSV-mallen från Partner Center, fylla i varje rad med information om kontakten och importera den här CSV-filen. Om du importerar en CSV-fil skrivs befintliga kontakter över.
+## <a name="product-landing-page"></a>Sidan produkt landning
 
-Du kan också exportera din befintliga lista med kontakter från ett erbjudande och sedan göra ändringar i filen.
+- Under **dokument**, i rutan **produkt landning** , anger du länken till produktens webbplats där Microsoft Sales Teams och kanal åter försäljare kan lära sig mer om ditt erbjudande och se de senaste uppdateringarna.
 
-* *Namn (obligatoriskt)*: kontaktens namn.
-* *E-postadress (krävs)*: kontaktens e-postadress.
-* *Jobb titel (krävs)*: befattning.
-* *Roll (krävs)*: Använd någon av följande roller.
+## <a name="enter-your-contacts"></a>Ange dina kontakter
+
+En kontakt för varje geografi där ditt erbjudande är tillgängligt krävs för att uppnå en färdig status för medförsäljning. Om du väljer att göra ditt erbjudande tillgängligt i CSP-programmet är den här kontakt informationen också tillgänglig för kanal åter försäljare.
+
+Med din kontakt information kan Microsoft Sales Teams och kanal åter försäljare begära ytterligare information från lämplig resurs i din organisation. Kontakt information är tillgänglig för alla Microsoft-säljteam.
+
+> [!NOTE]
+> Det är viktigt att du håller dina kontakt uppgifter aktuella.
+
+1. Om du vill ladda ned mallen för att tillhandahålla kontakt information, under **kontakter**, väljer du **Hämta kontakt mall (. csv)** som visas på den här skärm bilden. Om du tidigare har laddat upp kontakter kan du exportera din befintliga lista med kontakter för ett erbjudande och sedan göra ändringar i den. CSV-fil.
+
+    [![Visar avsnittet kontakter i fliken Co-Sälj med Microsoft.](./media/co-sell/co-sell-contacts-section.png)](./media/co-sell/co-sell-contacts-section.png#lightbox)
+
+1. Öppna. CSV-fil i ett program, till exempel Microsoft Excel, och fyll sedan i varje rad med information om kontakten.
+
+    - Namn (obligatoriskt): kontaktens namn.
+    - E-post (krävs): kontaktens e-postadress.
+    - Jobb titel (krävs): befattning.
+    - Roll (krävs): Använd någon av följande roller.
+
+    ***Tabell 3: Beskrivning av roller***
 
     | **Role**    | **Beskrivning**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Den här rollen fokuserar på att marknadsföra ditt erbjudande och samar beta kring marknadsförings ansträngningar med Microsofts försäljnings team och kanal åter försäljare. Den huvudsakliga kontakt punkten för marknadsförings engagemang och erbjudande om att visa innehåll, till exempel produkt beskrivningar, bilder och videor. |
-    | *:::no-loc text="Partner sales":::* | Den här rollen fokuserar på att sälja ditt erbjudande och samar beta om försäljning med Microsoft Sales Teams och kanal åter försäljare. Ange minst en kontakt för partner försäljning per region där du vill att ditt erbjudande ska vara samförsäljnings klar. Samma partner Sälj kontakt kan avse flera regioner. |
-    | *:::no-loc text="Partner technical sales":::* | Har stöd för tekniska arkitektur-och distributions aspekter under Sälj cykeln, integreringen efter försäljning och distributions perioder. |
-    | *:::no-loc text="Partner customer success manager":::* | Har normalt stöd för kunder efter distribution, för att hjälpa dem att få ut mesta möjliga av ditt erbjudande och utöka sitt namn i kundens organisation. |
+    | Partner marknadsföring | Den här rollen fokuserar på att marknadsföra ditt erbjudande och samar beta kring marknadsförings ansträngningar med Microsofts försäljnings team och kanal åter försäljare. Den huvudsakliga kontakt punkten för marknadsförings engagemang och erbjudande om att visa innehåll, till exempel produkt beskrivningar, bilder och videor. |
+    | Partner försäljning | Den här rollen fokuserar på att sälja ditt erbjudande och samar beta om försäljning med Microsoft Sales Teams och kanal åter försäljare. Ange minst en kontakt för partner försäljning för varje region där du vill att ditt erbjudande ska vara samförsäljnings klar. Samma partner Sälj kontakt kan avse flera regioner. |
+    | Teknisk försäljning för partner | Har stöd för tekniska arkitektur-och distributions aspekter under Sälj cykeln, integreringen efter försäljning och distributions perioder. |
+    | Partner kund lyckad chef | Har normalt stöd för kunder efter distribution för att hjälpa dem att få ut mesta möjliga av ditt erbjudande och öka sin användning i kundens organisation. |
+    |||
 
-* *Länder/regioner (krävs):*  När du fyller i mallen använder du de [två lands koderna för brev/region som visas](commercial-marketplace-co-sell-countries.md). Om kontakten omfattar alla länder/regioner använder du den tre bokstavs koden "OOO". Om en kontakt täcker mer än ett land/region, anger du var och en av de två bokstavs koderna avgränsade med ett kommatecken (till exempel, ange "US, CA, FR" utan citat tecken i mallen).
+    - Länder/regioner (krävs): när du fyller i mallen använder du de två länderna [och region koderna i Co-försäljningen](commercial-marketplace-co-sell-countries.md). Om kontakten omfattar alla länder och regioner använder du koden med tre bokstäver "OOO". Om en kontakt täcker mer än ett land eller en region anger du var och en av de två bokstavs koderna avgränsade med ett kommatecken. Skriv till exempel "US, CA, FR" utan citat tecken till mallen.
 
-    Länderna/regionerna bör återspegla varje kontakts territorium. Microsoft Sales Teams och kanal åter försäljare använder den här informationen för att begära information eller samar beta med försäljning inom det angivna landet/regionen.
+        Länder och regioner bör återspegla varje kontakts territorium. Microsoft Sales Teams och kanal åter försäljare kommer att använda den här informationen när du begär information eller samarbetar om försäljning inom det angivna landet eller den aktuella regionen.
 
-* *Delstater/provinser (valfritt):*  När du fyller i mallen använder du XX-XX-formatet som anges i [tabellen delstater/provinser](commercial-marketplace-co-sell-states.md).
+    - Delstater/provinser (valfritt): när du fyller i mallen ska du använda XX-XX-formatet som anges i [tabellerna delstater, provinser och distrikt](commercial-marketplace-co-sell-states.md).
 
-## <a name="reference-architecture-diagram"></a>Referens arkitektur diagram
+1. Spara och Stäng. CSV-fil.
 
-### <a name="what-is-a-reference-architecture--diagram"></a>Vad är ett referens arkitektur diagram
-Referens arkitektur diagrammet är en modell som representerar den infrastruktur som ditt erbjudande förlitar sig på och hur ditt erbjudande utnyttjar våra moln tjänster enligt de tekniska kraven i IP-Co-programmet. Den är inte utformad för att utvärdera arkitekturens kvalitet, men hur den använder de olika tjänsterna.
+1. För att importera. CSV-fil väljer du länken **Importera kontakter (. csv)** .
+    > [!NOTE]
+    > Importerar. CSV-filen kommer skriva över befintliga kontakter.
 
-Dokumentet kan skapas via flera verktyg. Vi rekommenderar Microsoft Visio eftersom det finns flera stenciler som illustrerar Azure Architecture-modeller.
+1. Välj. CSV-fil och välj sedan **Öppna**. Ett meddelande visas som anger att kontakterna har importer ATS.
 
-En bra utgångs punkt för att skapa referens arkitektur diagram är att utnyttja [Azures arkitektur modeller](/azure/architecture/browse/).
+## <a name="save-and-republish-the-offer"></a>Spara och publicera om erbjudandet
 
-### <a name="typical-components-of-a-reference-architecture-diagram"></a>Typiska komponenter i ett referens arkitektur diagram
-- Moln tjänster som är värdar för och interagerar med ditt erbjudande, inklusive de som genererar Azure-förbrukning
-- Data anslutningar, data lager, data tjänster som används av ditt erbjudande
-- Moln tjänster som används för att kontrol lera säkerhet, autentisering, användare av erbjudandet
-- Användar gränssnitt och andra tjänster som visar erbjudandet för slutanvändare
-- Hybrid och/eller lokal anslutning och integrering 
+1. Välj **Spara utkast** för att spara ändringarna innan du fortsätter.
+1. När du har slutfört alla nödvändiga avsnitt i erbjudandet kan du skicka det till granskning och publicering. Välj **Granska och publicera**.
+1. Gör något av följande:
 
-### <a name="example-reference-architecture-diagram"></a>Exempel på referens arkitektur diagram
+    - Om du har slutfört eller uppdaterat **samförsäljning med fliken Microsoft** för ett erbjudande som redan har publicerats Live och du inte har uppdaterat några andra flikar, rekommenderar vi att du bara markerar kryss rutan **medförsäljning** .
 
-[![Den här bilden är ett exempel på ett arkitektur diagram i en gemensam försäljning.](./media/co-sell/co-sell-arch-diagram.png)](./media/co-sell/co-sell-arch-diagram.png#lightbox)
+    - Om det är ett nytt eller utkast erbjudande som aldrig har publicerats rekommenderar vi att du markerar alla rutor. Du kan också välja **Jämför** för att jämföra den aktuella versionen med de opublicerade ändringarna.
 
-(Exempel på referens arkitektur diagrammet ovan är för en vertikal bransch chattrobot som kan integreras med intranäts platser för att hjälpa till med prognoser för efter frågan via en Machine Learning-algoritm som använder sig av en-algoritm som använder sig av data från olika ERP-system. Roboten är utformad för att åtgärda frågor om när en säljare kan genomföra möjliga leverans datum för en beställning.)
+1. Starta validerings fasen genom att välja **publicera**. Observera att ditt erbjudande inte publiceras direkt förrän erbjudandet har granskats och att du väljer **gå live** när validerings fasen har slutförts. Om ditt erbjudande redan har publicerats och du har konfigurerat medförsäljning förblir erbjudandet aktivt medan vi validerar status för medförsäljning. Mer information om hur du granskar och publicerar ett erbjudande finns i [Granska och publicera ett erbjudande på den kommersiella Marketplace](review-publish-offer.md).
+
+> [!NOTE]
+> Du behöver inte längre kontakta oss för att nominera ditt erbjudande om säljsamarbete. När du har fyllt i alla obligatoriska fält på sidan Säljsamarbete med Microsoft och publicerat om ditt erbjudande granskar vi det för att avgöra om det uppfyller kraven för säljsamarbete.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information finns i [Sälj med Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
+- Mer information om hur du publicerar ett erbjudande finns i [Granska och publicera ett erbjudande på den kommersiella Marketplace](review-publish-offer.md).
+- För information om förmåner på marknaden och tekniska förmåner, se [dina kommersiella marknads förmåner](gtm-your-marketplace-benefits.md).

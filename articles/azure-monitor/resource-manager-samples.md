@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 0791ccf10c76f2a1781bf373c674f606ca365fff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9218886ded7827d4b7a1e2413f1470ee5cd1563d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733966"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Exempel på Resource Manager-mallar för Azure Monitor
 
@@ -54,7 +54,7 @@ az deployment group create \
 - [Logg frågor](logs/resource-manager-log-queries.md) – skapa sparade logg frågor på en Log Analytics-arbetsyta.
 - [Log Analytics arbets yta](logs/resource-manager-workspace.md) – skapa Log Analytics arbets yta och konfigurera insamling av olika data källor från Log Analytics agenten.
 - [Arbets böcker](visualize/resource-manager-workbooks.md) – skapa arbets böcker.
-- [Azure Monitor for containers](containers/resource-manager-container-insights.md) -onboarding-kluster som ska Azure Monitors för behållare.
+- [Behållar insikter](containers/resource-manager-container-insights.md) – publicera kluster till behållar insikter.
 - [Azure Monitor for VMS](vm/resource-manager-vminsights.md) virtuella datorer som ska Azure Monitor for VMS.
 
 

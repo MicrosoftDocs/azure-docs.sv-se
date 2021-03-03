@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5d314331059a96388f23cd43667fca20a689f167
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258854"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687632"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Felsöka problem med att logga in till ett program från Azure AD Mina appar
 
@@ -141,14 +141,15 @@ Följ dessa steg om du vill kontrol lera en användares grupp medlemskap:
 7.  Välj **grupper** för att se vilka grupper användaren är medlem i.
 
 ### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Kontrol lera om en användare har fler än 999 roll tilldelningar för appar
-Om en användare har fler än 999 roll tilldelningar för en användare kanske de inte ser alla sina appar i Mina appar.
+Om en användare har fler än 999 roll tilldelningar för appar kan de inte se alla sina appar i Mina appar.
 
 Detta beror på att mina appar för närvarande läser upp till 999 program roll tilldelningar för att fastställa vilka appar som användarna tilldelas till. Om en användare är tilldelad fler än 999 appar går det inte att styra vilka appar som ska visas i portalen för Mina appar.
 
-Följ dessa steg om du vill kontrol lera antalet program roll tilldelningar som har beviljats för en användare:
+Följ dessa steg om du vill kontrol lera om en användare har fler än 999 roll tilldelningar:
 1. Installera [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell-modulen.
-2. Kör `Connect-MgGraph -Scopes "Directory.Read.All"` och autentisera som **Global administratör.**
-3. Kör `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` för att fastställa antalet app Role-tilldelningar som användaren har beviljat.
+2. Kör `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"`.
+3. Kör `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` för att fastställa antalet app Role-tilldelningar som användaren har beviljat.
+4. Om resultatet är 999 har användaren troligen fler än 999 roll tilldelningar för appar.
 
 ### <a name="check-a-users-assigned-licenses"></a>Kontrol lera en användares tilldelade licenser
 Följ dessa steg om du vill kontrol lera en användares tilldelade licenser:

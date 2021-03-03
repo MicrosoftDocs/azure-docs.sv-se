@@ -4,16 +4,16 @@ description: Övervakning av program prestanda för Azure App Services. Diagramm
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 74b39219b3b18c8de0214367d141085f6dc5f674
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734731"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Övervaka Azure App Service-prestanda
 
-Nu är det enklare än någonsin att aktivera övervakning i ASP.NET och ASP.NET Core baserade webb program som körs på [Azure App Services](../../app-service/index.yml) . Tidigare var du tvungen att installera ett plats tillägg manuellt, det senaste tillägget/agenten är nu inbyggt i App Service-avbildningen som standard. Den här artikeln vägleder dig genom att aktivera Application Insights övervakning och ge preliminär vägledning för automatisering av processen för storskaliga distributioner.
+Nu är det enklare än någonsin att aktivera övervakning av ASP.NET, ASP.NET Core och Node.js baserade webb program som körs på [Azure App Services](../../app-service/index.yml) . Tidigare var du tvungen att installera ett plats tillägg manuellt, det senaste tillägget/agenten är nu inbyggt i App Service-avbildningen som standard. Den här artikeln vägleder dig genom att aktivera Application Insights övervakning och ge preliminär vägledning för automatisering av processen för storskaliga distributioner.
 
 > [!NOTE]
 > Att manuellt lägga till ett Application Insights webbplats tillägg via  >  **tillägg** för utvecklingsverktyg är föråldrad. Den här metoden för tilläggs installation var beroende av manuella uppdateringar för varje ny version. Den senaste stabila versionen av tillägget är nu  [förinstallerad](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) som en del av App Service avbildningen. Filerna finns i `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` och uppdateras automatiskt med varje stabil utgåva. Om du följer agentbaserade instruktioner för att aktivera övervakning nedan tas det inaktuella tillägget bort automatiskt.
@@ -65,7 +65,7 @@ Det finns två sätt att aktivera program övervakning för Azure App Services-v
 | Samlar in användningstrender och aktiverar korrelation från tillgänglighetsresultat till transaktioner | Ja |Ja |
 | Samlar in undantag som hanteras av värdprocessen | Ja |Ja |
 | Förbättrar precisionen för APM-mått under belastning när sampling används | Ja |Ja |
-| Korrelerar mikrotjänster över begärande-/beroendegränser | Inga (endast Single-Instance APM-funktioner) |Yes |
+| Korrelerar mikrotjänster över begärande-/beroendegränser | Inga (endast Single-Instance APM-funktioner) |Ja |
 
 3. Om du vill konfigurera inställningar som sampling, som du tidigare kan kontrol lera via applicationinsights.config-filen kan du nu interagera med samma inställningar via program inställningar med ett motsvarande prefix. 
 
@@ -97,7 +97,7 @@ Det finns för närvarande **inte stöd** för att rikta in hela framework från
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-I App Service webbapp under **Inställningar**  >  **väljer du Application Insights**  >  **Aktivera**. Node.js-agent baserad övervakning är för närvarande en för hands version.
+Windows agent-baserad övervakning stöds inte, för att aktivera med Linux går du till [Node.js App Service-dokumentationen](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,6 +170,7 @@ För att kunna aktivera telemetri-samling med Application Insights, behöver du 
 |XDT_MicrosoftApplicationInsights_Mode |  I standard läget är de viktigaste funktionerna aktiverade för att säkerställa optimala prestanda. | `default` eller `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Kontrollerar om den binära omskrivnings motorn `InstrumentationEngine` aktive ras. Den här inställningen har prestanda konsekvenser och påverkar start-och start tid för kall. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Kontrollerar om SQL & Azure Table text kommer att samlas in tillsammans med beroende anrop. Prestanda varning: tidpunkten för kall start av program kommer att påverkas. Den här inställningen kräver `InstrumentationEngine` . | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | Endast för ASP.NET Core appar. Aktiverar interop (interoperation) med Application Insights SDK. Läser in tillägget sida vid sida med SDK och använder det för att skicka telemetri (inaktiverar Application Insights SDK). |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service program inställningar med Azure Resource Manager
 

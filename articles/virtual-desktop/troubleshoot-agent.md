@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b71c5426b6fba6f232b5a7aa42347f6b25d46299
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732589"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -21,6 +21,14 @@ Windows Virtual Desktop-agenten kan orsaka anslutnings problem på grund av fler
    - Problem med att installera under Agent installationen, vilket stör anslutningen till sessionens värd.
 
 Den här artikeln vägleder dig genom lösningar på dessa vanliga scenarier och hur du löser anslutnings problem.
+
+>[!NOTE]
+>För fel sökning av problem som rör anslutning av sessioner och Windows Virtual Desktop-agenten rekommenderar vi att du granskar händelse loggarna i **Loggboken**  >  **Windows-loggar**  >  . Leta efter händelser som har någon av följande källor för att identifiera problemet:
+>
+>- WVD-Agent
+>- WVD-agent-Updater
+>- RDAgentBootLoader
+>- MsiInstaller
 
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>Fel: RDAgentBootLoader och/eller agent inläsaren för fjärr skrivbord har stoppats
 
@@ -63,9 +71,9 @@ Lös problemet genom att skapa en giltig registrerings-token:
    > [!div class="mx-imgBorder"]
    > ![Skärm bild av IsRegistered 1](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>Fel: agenten kan inte ansluta till Broker med INVALID_FORM eller NOT_FOUND. URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>Fel: agenten kan inte ansluta till Broker med INVALID_FORM
 
-Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3277, står det **INVALID_FORM** eller **NOT_FOUND. URL** i beskrivningen gick något fel med kommunikationen mellan agenten och Broker. Agenten kan inte ansluta till Broker och kan inte komma åt en viss URL. Detta kan bero på dina brand Väggs-eller DNS-inställningar.
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3277 som säger "INVALID_FORM" i beskrivningen gick något fel med kommunikationen mellan agenten och Broker. Agenten kan inte ansluta till Service Broker eller komma åt en viss URL på grund av vissa brand väggar eller DNS-inställningar.
 
 För att lösa det här problemet kontrollerar du att du kan komma åt BrokerURI och BrokerURIGlobal:
 1. Öppna Registereditorn. 
@@ -100,13 +108,43 @@ För att lösa det här problemet kontrollerar du att du kan komma åt BrokerURI
 8. Om nätverket blockerar dessa URL: er måste du avblockera de nödvändiga URL: erna. Mer information finns i [obligatorisk URL-lista](safe-url-list.md).
 9. Om detta inte löser problemet kontrollerar du att du inte har några grup principer med chiffer som blockerar agenten till Broker-anslutning. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). Mer information finns i [anslutnings säkerhet](network-connectivity.md#connection-security).
 
-## <a name="error-3703-or-3019"></a>Fel: 3703 eller 3019
+## <a name="error-3703"></a>Fel: 3703
 
-Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3703, som säger **RD Gateway-URL: en inte är tillgänglig** eller någon händelse med ID 3019 i beskrivningen, kan agenten inte nå Gateway-URL: erna eller URL: er för WebSocket-transport. För att kunna ansluta till din värd för sessionen och tillåta nätverks trafik till dessa slut punkter för att kringgå begränsningar, måste du avblockera URL: erna från [listan över obligatoriska URL](safe-url-list.md): er. Kontrol lera också att brand väggen eller proxyinställningarna inte blockerar dessa URL: er. Att avblockera dessa URL: er krävs för att använda Windows Virtual Desktop.
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3703 som säger "RD Gateway-URL: en inte är tillgänglig" i beskrivningen kan agenten inte nå Gateway-URL: erna. För att kunna ansluta till din värd för sessionen och tillåta nätverks trafik till dessa slut punkter för att kringgå begränsningar, måste du avblockera URL: erna från [listan över obligatoriska URL](safe-url-list.md): er. Kontrol lera också att brand väggen eller proxyinställningarna inte blockerar dessa URL: er. Att avblockera dessa URL: er krävs för att använda Windows Virtual Desktop.
 
 Lös problemet genom att kontrol lera att inställningarna för brand väggen och/eller DNS inte blockerar dessa URL: er:
 1. [Använd Azure-brandväggen för att skydda Windows-distributioner av virtuella datorer.](../firewall/protect-windows-virtual-desktop.md).
 2. Konfigurera dina [DNS-inställningar för Azure-brandväggen](../firewall/dns-settings.md).
+
+## <a name="error-3019"></a>Fel: 3019
+
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3019 innebär det att agenten inte kan komma åt URL: erna för WebSocket-transport. För att kunna ansluta till din värd för sessionen och tillåta nätverks trafik att kringgå dessa begränsningar måste du avblockera de URL: er som anges i [listan över obligatoriska URL](safe-url-list.md): er. Arbeta med Azures nätverks team för att se till att dina brand Väggs-, proxy-och DNS-inställningar inte blockerar dessa URL: er. Du kan också kontrol lera dina nätverks spårnings loggar för att identifiera var Windows Virtual Desktop-tjänsten blockeras. Om du öppnar en supportbegäran för det här problemet, se till att koppla dina nätverks spårnings loggar till begäran.
+
+## <a name="error-installationhealthcheckfailedexception"></a>Fel: InstallationHealthCheckFailedException
+
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3277 som säger "InstallationHealthCheckFailedException" i beskrivningen innebär det att stack lyssnaren inte fungerar eftersom Terminal-servern har växlat register nyckeln för stack lyssnaren.
+
+Lös problemet så här:
+1. Kontrol lera om [stack lyssnaren fungerar](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+2. Om stack lyssnaren inte fungerar [avinstallerar du och installerar om stack-komponenten manuellt](#error-vms-are-stuck-in-unavailable-or-upgrading-state).
+
+## <a name="error-endpoint_not_found"></a>Fel: ENDPOINT_NOT_FOUND
+
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3277 som säger "ENDPOINT_NOT_FOUND" i beskrivningen som innebär att det inte gick att hitta någon slut punkt för Broker för att upprätta en anslutning till. Det här anslutnings problemet kan bero på någon av följande orsaker:
+
+- Det finns inga virtuella datorer i din värd pool
+- De virtuella datorerna i din värd pool är inte aktiva
+- Alla virtuella datorer i din värd pool har överskridit gränsen för högsta antal sessioner
+- Ingen av de virtuella datorerna i din adresspool har Agent tjänsten igång
+
+Lös problemet så här:
+
+1. Kontrol lera att den virtuella datorn är påslagen och inte har tagits bort från värddatorn.
+2. Kontrol lera att den virtuella datorn inte har överskridit gränsen för högsta antal sessioner.
+3. Kontrol lera att [Agent tjänsten körs](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running) och [stack lyssnaren fungerar](#error-stack-listener-isnt-working-on-windows-10-2004-vm).
+4. Kontrol lera att [agenten kan ansluta till Broker](#error-agent-cannot-connect-to-broker-with-invalid_form).
+5. Se till att [den virtuella datorn har en giltig registrerings-token](#error-invalid_registration_token).
+6. Se till att [den virtuella datorns registrerings-token inte har gått ut](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues). 
 
 ## <a name="error-installmsiexception"></a>Fel: InstallMsiException
 
@@ -176,15 +214,21 @@ Lös problemet så här:
 8. Under **ClusterSettings** söker du efter **SessionDirectoryListener** och kontrollerar att dess data värde är **RDP-Sxs.**...
 9. Om **SessionDirectoryListener** inte är inställt på **RDP-Sxs...**, måste du följa stegen i avsnittet [avinstallera agenten och start inläsaren](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs) för att först avinstallera agent, start inläsare och stack-komponenter och sedan [installera om agenten och start inläsaren](#step-4-reinstall-the-agent-and-boot-loader). Detta kommer att installera om stacken sida vid sida.
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>Fel: användarna håller på att bli frånkopplade från värdarna i sessionen
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Fel: pulsslags problem där användare håller på att bli frånkopplade från sessionens värdar
 
-Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 0, som säger att **CheckSessionHostDomainIsReachableAsync** i beskrivningen och/eller användarna håller på att bli bortkopplad från deras värdar, kommer servern inte att hämta ett pulsslag från Windows Virtual Desktop-tjänsten.
+Om servern inte har ett pulsslag från tjänsten Windows Virtual Desktop måste du ändra tröskelvärdet för pulsslag. Följ anvisningarna i det här avsnittet om ett eller flera av följande scenarier gäller dig:
 
-Lös problemet genom att ändra tröskelvärdet för pulsslag:
+- Du får ett **CheckSessionHostDomainIsReachableAsync** -fel
+- Du får ett **ConnectionBrokenMissedHeartbeatThresholdExceeded** -fel
+- Du får ett **ConnectionEstablished: UnexpectedNetworkDisconnect** -fel
+- Användar klienterna kommer att bli frånkopplade
+- Användare kommer att bli bortkopplade från sina värdbaserade sessioner
+
+Så här ändrar du tröskelvärdet för pulsslag:
 1. Öppna kommando tolken som administratör.
 2. Ange kommandot **Qwinsta** och kör det.
 3. Två stack-komponenter ska visas: **RDP-TCP** och **RDP-SXS**. 
-   - Beroende på vilken version av operativ systemet du använder kan **RDP-SXS** följas av versions numret. Om det är det, så se till att skriva det här numret nedåt för senare.
+   - Beroende på vilken version av operativ systemet du använder kan **RDP-SXS** följas av versions numret. Om det är det, måste du skriva ned det här numret för senare.
 4. Öppna Registereditorn.
 5. Gå till **HKEY_LOCAL_MACHINE**  >  **system**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. Under **WinStations** kan du se flera mappar för olika stack-versioner. Välj den mapp som matchar versions numret från steg 3.
@@ -194,6 +238,9 @@ Lös problemet genom att ändra tröskelvärdet för pulsslag:
    - HeartbeatDropCount: 60 
 8. Starta om den virtuella datorn.
 
+>[!NOTE]
+>Om du ändrar tröskelvärdet för pulsslag inte löser problemet kan du ha ett underliggande nätverks problem som du måste kontakta Azures nätverks team om.
+
 ## <a name="error-downloadmsiexception"></a>Fel: DownloadMsiException
 
 Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3277, som står i **DownloadMsiException** i beskrivningen, finns det inte tillräckligt med utrymme på disken för RDAgent.
@@ -201,6 +248,11 @@ Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en h�
 Lös problemet genom att göra utrymme på disken genom att:
    - Ta bort filer som inte längre finns i användaren
    - Öka lagrings kapaciteten för den virtuella datorn
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>Fel: agenten kan inte uppdateras med MissingMethodException
+
+Gå till **Loggboken**  >  **Windows logs**-  >  **programmet**. Om du ser en händelse med ID 3389 som säger "MissingMethodException: metoden hittades inte" i beskrivningen innebär det att Windows Virtual Desktop-agenten inte har uppdaterats och återställts till en tidigare version. Detta kan bero på att versions numret för .NET Framework som är installerat på de virtuella datorerna är lägre än 4.7.2. För att lösa det här problemet måste du uppgradera .NET till version 4.7.2 eller senare genom att följa installations anvisningarna i .NET Framework- [dokumentationen](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2).
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>Fel: virtuella datorer är låsta i läget otillgänglig eller uppgradering
 
@@ -210,7 +262,7 @@ Lös problemet genom att göra utrymme på disken genom att:
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-Om statusen som anges för sessionens värd eller värdar i din värddator alltid står **otillgänglig** eller **uppgradering** kan agenten eller stack installationen ha misslyckats
+Om statusen som anges för sessionens värd eller värdar i din värddator alltid står "ej tillgänglig" eller "uppgradering", har agenten eller stacken inte installerats korrekt.
 
 Lös problemet genom att installera om stacken sida vid sida:
 1. Öppna en kommandotolk som administratör.
@@ -253,7 +305,7 @@ Namnet på den virtuella datorn har redan registrerats och är förmodligen en d
 Lös problemet så här:
 1. Följ stegen i avsnittet [ta bort Session Host från Host pool](#step-2-remove-the-session-host-from-the-host-pool) .
 2. [Skapa en annan virtuell dator](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal). Se till att välja ett unikt namn för den här virtuella datorn.
-3. Gå till Azure Portal] ( https://portal.azure.com) och öppna **översikts** sidan för den värddator som den virtuella datorn var i. 
+3. Gå till [Azure Portal](https://portal.azure.com) och öppna sidan **Översikt** för den värddator som den virtuella datorn var i. 
 4. Öppna fliken **värdar** och kontrol lera att alla värdar i sessionen finns i den aktuella poolen.
 5. Vänta i 5-10 minuter så att sessionens värd status **är tillgänglig**.
 
@@ -320,12 +372,12 @@ Du måste generera en ny registrerings nyckel som används för att registrera o
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>Steg 4: installera om agenten och start inläsaren
 
 Genom att installera om den uppdaterade versionen av agenten och start inläsaren installeras sidan-vid-sida-och Genèvekonventionen-övervaknings agenten automatiskt också. Så här installerar du om agenten och start inläsaren:
-1. Logga in på den virtuella datorn som administratör och följ instruktionerna i [Registrera virtuella datorer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) för att ladda ned **Windows-agenten för virtuella skriv bord** och **Start programmet för Windows-agenten för virtuella skriv bord**.
+1. Logga in på den virtuella datorn som administratör och Använd rätt version av agent installations programmet för din distribution beroende på vilken version av Windows som den virtuella datorn körs på. Om du har en virtuell Windows 10-dator följer du instruktionerna i [Registrera virtuella datorer](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool) för att ladda ned **Windows-agenten för virtuella skriv bord** och **Start programmet för Windows-agenten för virtuella skriv bord**. Om du har en virtuell Windows 7-dator följer du steg 13-14 i [Registrera virtuella datorer](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine) för att ladda ned **Windows-agenten för virtuella skriv bord** och **Windows Virtual Desktop Agent Manager**.
 
    > [!div class="mx-imgBorder"]
    > ![Skärm bild av hämtnings sidan för agent och Start programmet](media/download-agent.png)
 
-2. Högerklicka på installations program för agent och start program som du precis har laddat ned.
+2. Högerklicka på den agent och den Start programs installation som du har laddat ned.
 3. Välj **Egenskaper**.
 4. Välj **Avblockera**.
 5. Välj **OK**.

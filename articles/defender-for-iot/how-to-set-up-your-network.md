@@ -4,15 +4,15 @@ description: Lär dig om lösnings arkitektur, nätverks förberedelser, krav oc
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526518"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733252"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Om installation av Azure Defender för IoT-nätverk
 
@@ -22,7 +22,7 @@ Azure Defender för IoT ger kontinuerlig övervakning av ICS-hot och enhets iden
 
 **Defender för lokal IoT-hanterings konsol**: den lokala hanterings konsolen innehåller en sammanslagen vy över alla nätverks enheter. Den ger en real tids visning av viktiga indikatorer och IoT-riskfaktorer och aviseringar i alla dina anläggningar. Den är nära integrerad med dina SOC-arbetsflöden och spel böcker, vilket möjliggör enkel prioritering av minsknings aktiviteter och korrelationer mellan olika webbplatser av hot. 
 
-**Defender för IoT för IoT-portalen:** Med hjälp av Defender för IoT-programmet kan du köpa lösnings utrustning, installera och uppdatera program vara och uppdatera VÄRDEJÄMFÖRING-paket. 
+**Defender för IoT-portalen:** Med hjälp av Defender för IoT-programmet kan du köpa lösnings utrustning, installera och uppdatera program vara och uppdatera VÄRDEJÄMFÖRING-paket. 
 
 Den här artikeln innehåller information om lösnings arkitektur, förberedelser för nätverk, krav och mer som hjälper dig att konfigurera nätverket så att det fungerar med Defender för IoT-enheter. Läsarna som arbetar med informationen i den här artikeln bör ha erfarenhet av drift och hantering av nätverks-och IoT-nätverk. Exempel är Automation-tekniker, växt hanterare, nätverks infrastruktur tjänster, cybersäkerhet team, ciso eller CIO: er.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727013"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -42,11 +42,11 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
 | Priset                        | Kräver [Azure Defender för servrar](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| Plattformar som stöds:            | Azure-datorer som kör Windows<br>Azure Arc-datorer som kör Windows|
-| Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2019, 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br> •  [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)|
+| Plattformar som stöds:            |  • Azure-datorer som kör Windows<br> • Azure Arc-datorer som kör Windows|
+| Versioner av Windows som stöds:  |   • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br>Övervakning av Server slut punkt med hjälp av dessa integreringar har inaktiverats för Office 365 GCC-kunder|
 | Operativ system som inte stöds:  |  • Windows 10 (annat än EVD eller WVD)<br> • Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
-| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
+| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov<br>![Inga](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender för slut punkts funktioner i Security Center
@@ -76,10 +76,15 @@ När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licen
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Aktivera Microsoft Defender för slut punkts integrering
 
+1. Bekräfta att datorn uppfyller de nödvändiga kraven för Defender för slut punkten:
+
+    - För **alla versioner av Windows**:
+        - Konfigurera de nätverks inställningar som beskrivs i [Konfigurera inställningar för enhets proxyserver och Internet anslutning](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+        - Om du distribuerar Defender till slut punkt till en lokal dator ansluter du den till Azure-bågen enligt beskrivningen i [Connect hybrid Machines med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)
+    - För **Windows Server 2019-datorer** kontrollerar du dessutom att de kör en giltig agent och har MicrosoftMonitoringAgent-tillägget
+
 1. Aktivera **Azure Defender för servrar**. Se [prissättning för Azure Security Center](security-center-pricing.md#enable-azure-defender).
 
-    > [!NOTE]
-    > Du skyddar dina Azure Arc-aktiverade datorer genom att följa anvisningarna i [snabb start: ansluta hybrid dator med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 
 1. Om du redan har licensierat och distribuerat Microsoft Defender för slut punkter på dina servrar, tar du bort den med hjälp av proceduren som beskrivs i [avpublicera Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. Från Security Center menyn väljer du **pris & inställningar**.
@@ -94,7 +99,7 @@ När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licen
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Åtkomst till Microsoft Defender för slut punkts portalen
 
-1. Se till att användar kontot har de behörigheter som krävs. [Läs mer](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Se till att användar kontot har de behörigheter som krävs. Läs mer i [Tilldela användar åtkomst till Microsoft Defender Security Center](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 1. Kontrol lera om du har en proxy eller brand vägg som blockerar anonym trafik. Defender för slut punkts sensorn ansluter från system kontexten, så anonym trafik måste tillåtas. För att förhindra åtkomst till Defender för slut punkts portalen, följ instruktionerna i [ge åtkomst till tjänst-URL: er i proxyservern](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 

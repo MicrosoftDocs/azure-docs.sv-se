@@ -3,15 +3,15 @@ title: Skapa och hantera åtgärdsgrupper i Azure-portalen
 description: Lär dig hur du skapar och hanterar åtgärds grupper i Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 02/25/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8905c3e4dfa1053646ede5c0b62149844e21ee7d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 50fb898e1ea55d0bcc09fc10dfee051ca7b1d809
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701169"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
 En åtgärds grupp är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration. Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Olika aviseringar kan använda samma åtgärds grupp eller olika åtgärds grupper beroende på användarens krav. 
@@ -118,6 +118,8 @@ Se begränsningar för [Azure-prenumerations tjänsten](../../azure-resource-man
 Du kan ha ett begränsat antal Runbook-åtgärder i en åtgärds grupp. 
 
 ### <a name="azure-app-push-notifications"></a>Push-meddelanden i Azure App
+Aktivera push-meddelanden till [Azure-mobilapp](https://azure.microsoft.com/features/azure-portal/mobile-app/) genom att ange den e-postadress som du använder som ditt konto-ID när du konfigurerar Azure-mobilapp.
+
 Du kan ha ett begränsat antal Azure App-åtgärder i en åtgärds grupp.
 
 ### <a name="email"></a>E-post
@@ -139,11 +141,11 @@ Om du inte får meddelanden på ditt *primära e-postmeddelande* kan du prova f�
 2. Klicka på alla användare (i det vänstra fönstret) så visas en lista över användare (i den högra rutan).
 3. Välj den användare som du vill granska den *primära e-* postinformationen för.
 
-  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Exempel på hur du granskar användar profilen."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Exempel på hur du granskar användar profilen." border="true":::
 
 4. I användar profil under kontakt information om fliken "e-post" är tom klickar du på knappen *Redigera* högst upp och lägger till din *primära e-postadress* och knappen tryck på *Spara* längst upp.
 
-  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Exempel på hur du lägger till primär e-post."border="true":::
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Exempel på hur du lägger till primär e-post." border="true":::
 
 Du kan ha ett begränsat antal e-poståtgärder i en åtgärds grupp. Se artikeln [rate relimiting information](./alerts-rate-limiting.md) .
 
@@ -153,7 +155,7 @@ Anropar en befintlig HTTP trigger-slutpunkt i [Azure Functions](../../azure-func
 Du kan ha ett begränsat antal funktions åtgärder i en åtgärds grupp.
 
 ### <a name="itsm"></a>ITSM
-ITSM-åtgärden kräver en ITSM-anslutning. Lär dig hur du skapar en [ITSM-anslutning](../platform/itsmc-overview.md).
+ITSM-åtgärden kräver en ITSM-anslutning. Lär dig hur du skapar en [ITSM-anslutning](./itsmc-overview.md).
 
 Du kan ha ett begränsat antal ITSM-åtgärder i en åtgärds grupp. 
 
@@ -191,7 +193,7 @@ Med åtgärden åtgärds grupper webhook kan du dra nytta av Azure Active Direct
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
     
 # This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
+$myAzureADApplicationObjectId = "<the Object ID of your Azure AD Application>"
     
 # This is the Action Groups Azure AD AppId
 $actionGroupsAppId = "461e8683-5575-4561-ac7f-899cc907d62a"
@@ -334,7 +336,7 @@ Se [Åtgärds gruppens IP-adresser](../app/ip-addresses.md) för käll-IP-adress
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om [SMS-aviserings beteende](./alerts-sms-behavior.md).  
 * Få en [förståelse för aktivitets logg aviseringens webhook-schema](./activity-log-alerts-webhook.md).  
-* Läs mer om [ITSM-anslutningsprogram](../platform/itsmc-overview.md).
+* Läs mer om [ITSM-anslutningsprogram](./itsmc-overview.md).
 * Läs mer om [hastighets begränsning](./alerts-rate-limiting.md) av aviseringar.
-* Få en [Översikt över aktivitets logg aviseringar](../platform/alerts-overview.md)och lär dig hur du tar emot aviseringar.  
+* Få en [Översikt över aktivitets logg aviseringar](./alerts-overview.md)och lär dig hur du tar emot aviseringar.  
 * Lär dig hur du [konfigurerar aviseringar när ett meddelande om tjänst hälsa har publicerats](../../service-health/alerts-activity-log-service-notifications-portal.md).

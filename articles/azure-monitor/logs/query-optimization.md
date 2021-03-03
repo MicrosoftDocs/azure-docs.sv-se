@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 53f189921a44d63d7e344fb733519661f5b17dc6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7ab83b2b16a1340b354b9333d00c8166b5cfdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722967"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimera logg frågor i Azure Monitor
 Azure Monitor loggar använder [Azure datautforskaren (ADX)](/azure/data-explorer/) för att lagra loggdata och köra frågor för att analysera data. Den skapar, hanterar och underhåller ADX-kluster åt dig, och optimerar dem för din logg analys arbets belastning. När du kör en fråga optimeras den och dirigeras till lämpligt ADX-kluster som lagrar arbets ytans data. Både Azure Monitor loggar och Azure Datautforskaren använder många automatiska metoder för optimering av frågor. Även om automatiska optimeringar ger betydande ökning, finns det några fall där du kan förbättra dina frågeresultat dramatiskt. Den här artikeln beskriver prestanda överväganden och flera tekniker för att åtgärda dem.
@@ -322,7 +322,7 @@ Alla loggar i Azure Monitor loggar partitioneras enligt kolumnen **TimeGenerated
 
 Frågan med en tids period på mer än 15 dagar betraktas som en fråga som förbrukar för mycket resurser. Frågan med en tids period på mer än 90 dagar betraktas som en grov fråga och kan vara begränsad.
 
-Tidsintervallet kan anges med hjälp av tidsintervalls väljaren på Log Analytics skärmen enligt beskrivningen i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](../log-query/scope.md#time-range). Detta är den rekommenderade metoden eftersom det valda tidsintervallet skickas till Server delen med hjälp av metadata för frågan. 
+Tidsintervallet kan anges med hjälp av tidsintervalls väljaren på Log Analytics skärmen enligt beskrivningen i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](./scope.md#time-range). Detta är den rekommenderade metoden eftersom det valda tidsintervallet skickas till Server delen med hjälp av metadata för frågan. 
 
 En alternativ metod är att uttryckligen inkludera ett [WHERE](/azure/kusto/query/whereoperator) -villkor för **TimeGenerated** i frågan. Du bör använda den här metoden som försäkrar att tidsintervallet är fast, även om frågan används från ett annat gränssnitt.
 Se till att alla delar av frågan har **TimeGenerated** -filter. När en fråga har under frågor som hämtar data från olika tabeller eller samma tabell måste båda innehålla sina egna [WHERE](/azure/kusto/query/whereoperator) -villkor.

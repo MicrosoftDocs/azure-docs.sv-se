@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706766"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Förstå vilka bra yttranden är för din LUIS-app
 
@@ -21,7 +21,7 @@ Samla in yttranden som du tror att användarna kommer att ange. Ta med yttranden
 * Uttryck length – Short, medium och Long för ditt klient program
 * Ord och fras längd
 * Ord placering – entitet i början, mitten och slutet av uttryck
-* Grammatikfel
+* Grammatik
 * Pluralization
 * Följd
 * Val av Substantiv och verb
@@ -54,7 +54,7 @@ Gör följande exempel yttranden:
 |Jag vill skaffa en dator, hur gör jag?|
 |När kan jag ha en dator?|
 
-Kärn termen här, "dator", är inte varierande. Använd alternativ som stationär dator, bärbar dator, arbets Station eller till och med bara dator. LUIS kan på ett intelligent sätt härleda synonymer från kontexten, men när du skapar yttranden för utbildning är det alltid bättre att variera dem.
+Kärn termen här, *dator*, är inte varierande. Använd alternativ som stationär dator, bärbar dator, arbets Station eller till och med bara dator. LUIS kan på ett intelligent sätt härleda synonymer från kontexten, men när du skapar yttranden för utbildning är det alltid bättre att variera dem.
 
 ## <a name="example-utterances-in-each-intent"></a>Exempel på yttranden i varje avsikt
 

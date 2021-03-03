@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709554"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Så här konfigurerar du Azure Database for MySQL Datareplikering
 
@@ -80,7 +80,7 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
       ping <output of step 2b>
       ```
 
-      Här är några exempel:
+      Exempel:
 
       ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
@@ -101,9 +101,23 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
    ```
 
    Om variabeln [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) returneras med värdet "på" aktive ras binär loggning på servern.
-
-   Om `log_bin` returneras med värdet "off", aktiverar du binär loggning genom att redigera din. cnf-fil så att `log_bin=ON` och startar om servern för att ändringen ska börja gälla.
-
+   
+   Om `log_bin` returneras med värdet "off", 
+   1. Leta upp MySQL-konfigurationsfilen (My. cnf) på käll servern. Till exempel:/etc/My.cnf
+   2. Öppna konfigurations filen för att redigera den och hitta **mysqld** -avsnittet i filen.
+   3.  Lägg till följande rad i avsnittet mysqld
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. Starta om MySQL-källdomänkontrollanten för att ändringarna ska börja gälla.
+   5. När servern har startats om kontrollerar du att binär loggning har Aktiver ATS genom att köra samma fråga som tidigare:
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. Käll Server inställningar
 
    Datareplikering kräver `lower_case_table_names` att parametern är konsekvent mellan käll-och replik servrarna. Den här parametern är 1 som standard i Azure Database for MySQL.

@@ -1,22 +1,21 @@
 ---
 title: Övervakare av nätverksprestanda lösning i Azure Log Analytics | Microsoft Docs
 description: Använd ExpressRoute Monitor-funktionen i Övervakare av nätverksprestanda för att övervaka anslutnings möjligheter från slut punkt till slut punkt och prestanda mellan dina avdelnings kontor och Azure, via Azure ExpressRoute.
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 477512c0b1de8548e2aa1e2971a5d831e84d2139
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725704"
 ---
 # <a name="expressroute-monitor"></a>Övervakaren ExpressRoute
 
 > [!IMPORTANT]
-> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Du kan använda Azure ExpressRoute Monitor-funktionen i [övervakare av nätverksprestanda](network-performance-monitor.md) för att övervaka anslutnings möjligheter från slut punkt till slut punkt och prestanda mellan dina avdelnings kontor och Azure, via Azure ExpressRoute. Viktiga fördelar: 
 
@@ -112,7 +111,7 @@ I den här vyn visas virtuella nätverks anslutningar. 
 
 Du kan se meddelande koderna och ange aviseringar på dem via **LogAnalytics**. På sidan **NPM Diagnostics** kan du se beskrivningar för varje diagnostik-meddelande som utlöses.
 
-| Meddelande kod (loggar) | Description |
+| Meddelande kod (loggar) | Beskrivning |
 | --- | --- |
 | 5501 | Det går inte att passera genom den sekundära anslutningen av ExpressRoute-kretsen |
 | 5502 | Det gick inte att passera genom den primära anslutningen av ExpressRoute-kretsen |
@@ -144,4 +143,3 @@ Du kan se meddelande koderna och ange aviseringar på dem via **LogAnalytics**. 
 
 ## <a name="next-steps"></a>Nästa steg
 [Sök i loggar](../logs/log-query-overview.md) om du vill visa detaljerade data poster för nätverks prestanda.
-

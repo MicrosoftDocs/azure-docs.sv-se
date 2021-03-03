@@ -3,12 +3,12 @@ title: Azure Functions dedikerad värd
 description: Lär dig mer om fördelarna med att köra Azure Functions på en dedikerad App Service värd plan.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ee32d4c4a7d33664da88b133a1f7011fc09f298
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704573"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Dedikerade värd planer för Azure Functions
 
@@ -41,7 +41,7 @@ Med hjälp av en App Service plan kan du manuellt skala ut genom att lägga till
 
 ## <a name="app-service-environments"></a>Apptjänstmiljöer
 
-Genom att köra i en [App Service-miljön](../app-service/environment/intro.md) (ASE) kan du helt isolera dina funktioner och dra nytta av ett större antal instanser än en app service plan. Information om hur du kommer igång finns i.
+Genom att köra i en App Service-miljön (ASE) kan du helt isolera dina funktioner och dra nytta av ett större antal instanser än en App Service plan. Information om hur du kommer igång finns i [Introduktion till App Service miljöer](../app-service/environment/intro.md).
 
 Om du bara vill köra din Function-app i ett virtuellt nätverk kan du göra detta med hjälp av [Premium-prenumerationen](functions-premium-plan.md). Mer information finns i [upprätta Azure Functions privat plats åtkomst](functions-create-private-site-access.md). 
 

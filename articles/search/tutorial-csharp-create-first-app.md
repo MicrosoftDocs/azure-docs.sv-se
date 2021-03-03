@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695132"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Självstudie: skapa din första Sökapp med hjälp av .NET SDK
 
@@ -49,17 +49,21 @@ Bara ett anrop frågar indexet och returnerar resultat.
 
 ## <a name="overview"></a>Översikt
 
-I den här självstudien används ett befintligt, värdbaserad exempel index så att du kan fokusera på att skapa en Sök sida som samlar in en frågesträng för begäran och returnerar resultat. Indexet innehåller fiktiva hotell data. När du har en grundläggande sida kan du förbättra den i efterföljande lektioner för att inkludera sid indelning, ansikte och en typ i förväg-upplevelse.
+I den här självstudien används hotell-exempel-indexet, som du kan skapa snabbt på din egen Sök tjänst genom att stega genom snabb starten för att [Importera data](search-get-started-portal.md). Indexet innehåller fiktiva hotell data, som är tillgängliga som en inbyggd data källa i varje Sök tjänst.
 
-En färdig version av koden i den här självstudien finns i följande projekt:
+Den första lektionen i den här självstudien skapar en grundläggande fråga-struktur och Sök sida, som du kan förbättra i efterföljande lektioner för att ta med sid indelning, ansikte och en typ i förväg-upplevelse.
+
+Du hittar en färdig version av koden i följande projekt:
 
 * [1 – grundläggande – Sök-sida (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
 Den här självstudien har uppdaterats med Azure.Search.Documents-paketet (version 11). En tidigare version av .NET SDK finns i [kod exemplet Microsoft. Azure. search (version 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Eftersom du använder ett offentligt exempel söknings index som Microsoft är värd för, behöver du inte någon Sök tjänst eller ett Azure-konto för den här självstudien.
+* [Skapa](search-create-service-portal.md) eller [hitta en befintlig Sök tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+
+* Skapa hotell-exempel-indexet med hjälp av anvisningarna i [snabb start: skapa ett sökindex](search-get-started-portal.md).
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
@@ -103,12 +107,12 @@ Börja med ett Visual Studio-projekt för att skapa projektet från grunden och 
 
 För det här exemplet använder du offentligt tillgängliga hotell data. Dessa data är en godtycklig samling med 50 fiktiva hotell namn och beskrivningar, som skapas enbart för att tillhandahålla demo data. Ange ett namn och en API-nyckel för att komma åt dessa data.
 
-1. Öppna **appsettings.jspå** och ersätt standard raderna med följande namn och nyckel. API-nyckeln som visas här är inte ett exempel på en nyckel, det är *exakt* den nyckel du behöver för att komma åt hotell data. Filen bör nu se ut så här.
+1. Öppna **appsettings.jspå** och ersätt standard raderna med Sök tjänstens URL (i formatet `https://<service-name>.search.windows.net` ) och en [administratör eller API-nyckel](search-security-api-keys.md) för Sök tjänsten. Eftersom du inte behöver skapa eller uppdatera ett index kan du använda Frågeparametern för den här självstudien.
 
     ```csharp
     {
-        "SearchServiceName": "azs-playground",
-        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+        "SearchServiceName": "<YOUR-SEARCH-SERVICE-URI>",
+        "SearchServiceQueryApiKey": "<YOUR-SEARCH-SERVICE-API-KEY>"
     }
     ```
 

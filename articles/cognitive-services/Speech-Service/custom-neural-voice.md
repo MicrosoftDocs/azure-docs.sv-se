@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 36885e4673b83d1db7972f03c4a6309f766206c5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525270"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713107"
 ---
 # <a name="what-is-custom-neural-voice"></a>Vad är anpassat neurala röst?
 
-Anpassad neurala-röst är en [text till tal](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) -funktion som gör att du kan skapa en egen, anpassad syntetisk röst för dina program genom att tillhandahålla dina egna ljud data som ett exempel. Text till tal fungerar genom att konvertera text till syntetiskt tal med en maskin inlärnings modell som låter som en vald röst. Med [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)kan du göra det möjligt för dina appar att prata med [förbyggda röster](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) eller dina egna [anpassade röst](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data) modeller som utvecklats genom den anpassade röst funktionen för neurala. Den anpassade neurala-rösten baseras på neurala TTS-teknik som skapar en naturlig ljud röst som ofta är lätt att skilja jämfört med en mänsklig röst.
+Anpassad neurala-röst är en [text till tal](./text-to-speech.md) -funktion som gör att du kan skapa en egen, anpassad syntetisk röst för dina program genom att tillhandahålla dina egna ljud data som ett exempel. Text till tal fungerar genom att konvertera text till syntetiskt tal med en maskin inlärnings modell som låter som en vald röst. Med [REST API](./rest-text-to-speech.md)kan du göra det möjligt för dina appar att prata med [förbyggda röster](./language-support.md#neural-voices) eller dina egna [anpassade röst](./how-to-custom-voice-prepare-data.md) modeller som utvecklats genom den anpassade röst funktionen för neurala. Den anpassade neurala-rösten baseras på neurala TTS-teknik som skapar en naturlig ljud röst som ofta är lätt att skilja jämfört med en mänsklig röst.
 Den realistiska och naturliga ljud rösten i den anpassade neurala-rösten kan representera varumärken, personify datorer och tillåta användare att interagera med program på ett naturligt sätt.
 
 > [!NOTE]
@@ -35,7 +35,7 @@ Sedan går fonem-sekvensen till neurala-akustisk modell för att förutsäga aku
 
 Neurala TTS Voice-modeller tränas med djup neurala-nätverk baserat på inspelnings exemplen för mänskliga röster. I den här [bloggen](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)beskriver vi hur neurala TTS fungerar med neurala tal syntes modeller. Bloggen förklarar också hur en universell bas modell kan anpassas med mindre än 2 timmars tal data (eller mindre än 2 000 inspelade yttranden) från en riktad högtalare och lär dig mer om att tala i den aktuella rösten. Om du vill läsa om hur en neurala-vocoder är utbildad, se [blogg inlägget](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860).
 
-Med anpassnings funktionen för anpassad neurala röst kan du anpassa neurala TTS-motorn så att den passar dina användar scenarier bättre. Om du vill skapa en anpassad neurala röst använder du [tal Studio](https://speech.microsoft.com/customvoice) för att ladda upp det inspelade ljudet och motsvarande skript, träna modellen och distribuera rösten till en anpassad slut punkt. Beroende på användnings fallet kan anpassade neurala-röst användas för att konvertera text till tal i real tid (som används i en smart virtuell assistent) eller för att generera ljud innehåll offline (t. ex., som används som i ljud boken eller instruktioner i e-Learning-program) med den text som användaren har angett. Detta görs tillgängligt via [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech), [tal-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-text-to-speech?tabs=script%2Cwindowsinstall&pivots=programming-language-csharp)eller en [webb Portal](https://speech.microsoft.com/audiocontentcreation).
+Med anpassnings funktionen för anpassad neurala röst kan du anpassa neurala TTS-motorn så att den passar dina användar scenarier bättre. Om du vill skapa en anpassad neurala röst använder du [tal Studio](https://speech.microsoft.com/customvoice) för att ladda upp det inspelade ljudet och motsvarande skript, träna modellen och distribuera rösten till en anpassad slut punkt. Beroende på användnings fallet kan anpassade neurala-röst användas för att konvertera text till tal i real tid (som används i en smart virtuell assistent) eller för att generera ljud innehåll offline (t. ex., som används som i ljud boken eller instruktioner i e-Learning-program) med den text som användaren har angett. Detta görs tillgängligt via [REST API](./rest-text-to-speech.md), [tal-SDK](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall)eller en [webb Portal](https://speech.microsoft.com/audiocontentcreation).
 
 ## <a name="terms-and-definitions"></a>Villkor och definitioner
 

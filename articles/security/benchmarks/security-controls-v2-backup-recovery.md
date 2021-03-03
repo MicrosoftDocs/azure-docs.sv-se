@@ -4,19 +4,21 @@ description: Säkerhets kopiering och återställning av Azure-säkerhetsprestan
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368893"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724429"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Säkerhets kontroll v2: säkerhets kopiering och återställning
 
 Säkerhets kopiering och återställning täcker kontroller för att säkerställa att säkerhets kopiering av data och konfigurationer på olika tjänst nivåer utförs, verifieras och skyddas.
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa mer i avsnittet [om Azures säkerhetsmekanism för regelefterlevnad, inbyggt initiativ: säkerhets kopiering och återställning](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Säkerställ vanliga automatiserade säkerhets kopieringar
 
@@ -26,9 +28,9 @@ Säkerhets kopiering och återställning täcker kontroller för att säkerstäl
 
 Se till att du säkerhetskopierar system och data för att bibehålla affärs kontinuiteten efter en oväntad händelse. Detta bör definieras av alla mål för återställnings punkt mål (återställnings punkt mål) och återställnings tids mål (RTO).
 
-Aktivera Azure Backup och konfigurera säkerhets kopierings källan (t. ex. virtuella Azure-datorer, SQL Server, HANA-databaser eller fil resurser) samt önskad frekvens och kvarhållningsperiod.  
+Aktivera Azure Backup och konfigurera säkerhets kopierings källan (till exempel virtuella Azure-datorer, SQL Server, HANA-databaser eller fil resurser) samt önskad frekvens och kvarhållningsperiod.
 
-För en högre skydds nivå kan du aktivera alternativ för Geo-redundant lagring för att replikera säkerhetskopierade data till en sekundär region och återställa med hjälp av återställning mellan regioner.
+För en högre skydds nivå kan du aktivera alternativet Geo-redundant lagring för att replikera säkerhetskopierade data till en sekundär region och återställa med återställning mellan regioner.
 
 - [Affärskontinuitet och haveriberedskap i företagsskala](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
@@ -54,15 +56,15 @@ För en högre skydds nivå kan du aktivera alternativ för Geo-redundant lagrin
 |--|--|--|--|
 | BR-2 | 10,2 | CP-9 |
 
-Se till att säkerhets kopiorna skyddas mot attacker. Detta bör innefatta kryptering av säkerhets kopiorna för att skydda mot förlust av konfidentialitet.   
+Se till att säkerhets kopiorna skyddas mot attacker. Detta bör innefatta kryptering av säkerhets kopiorna för att skydda mot förlust av konfidentialitet.
 
-För lokala säkerhets kopieringar med Azure Backup anges kryptering vid vila med hjälp av den lösen fras som du anger. För vanliga säkerhets kopieringar av Azure-tjänster krypteras säkerhetskopierade data automatiskt med hjälp av Azure Platform-hanterade nycklar. Du kan välja att kryptera säkerhets kopiorna med hjälp av kund Managed Key. I det här fallet ser du till att den här Kundhanterade nyckeln i nyckel valvet också finns i säkerhets kopierings omfånget. 
+För lokala säkerhets kopieringar med Azure Backup anges kryptering vid vila med hjälp av den lösen fras som du anger. För vanliga säkerhets kopieringar av Azure-tjänster krypteras säkerhetskopierade data automatiskt med hjälp av Azure Platform-hanterade nycklar. Du kan välja att kryptera säkerhets kopiorna med hjälp av kund Managed Key. I det här fallet ser du till att den här Kundhanterade nyckeln i nyckel valvet också finns i säkerhets kopierings omfånget.
 
 Använd rollbaserad åtkomst kontroll i Azure i Azure Backup, Azure Key Vault eller andra resurser för att skydda säkerhets kopior och Kundhanterade nycklar. Dessutom kan du aktivera avancerade säkerhetsfunktioner så att du kan kräva MFA innan du kan ändra eller ta bort säkerhets kopior.
 
 - [Översikt över säkerhetsfunktioner i Azure Backup](../../backup/security-overview.md)
 
-- [Kryptering av säkerhets kopierings data med Kundhanterade nycklar](../../backup/encryption-at-rest-with-cmk.md) 
+- [Kryptering av säkerhetskopieringsdata med kundhanterade nycklar](../../backup/encryption-at-rest-with-cmk.md) 
 
 - [Säkerhetskopiera Key Vault nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -104,7 +106,7 @@ Regelbundet utföra Data återställning av säkerhets kopian. Se till att du ka
 |--|--|--|--|
 | BR-4 | 10,4 | CP-9 |
 
-Se till att du har mått på plats för att förhindra och återställa från förlust av nycklar. Aktivera mjuk borttagning och rensningsskydd i Azure Key Vault som skydd mot oavsiktlig eller skadlig borttagning.  
+Se till att du har mått på plats för att förhindra och återställa förlust av nycklar. Aktivera mjuk borttagning och rensningsskydd i Azure Key Vault som skydd mot oavsiktlig eller skadlig borttagning.
 
 - [Aktivera mjuk borttagning och rensningsskydd i Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

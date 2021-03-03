@@ -6,17 +6,14 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab719b47245f3adc2fba610f9c0473868889a7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711458"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Felsöka problem med att aktivera eller Visa Application Insights Profiler
-
-> [!CAUTION]
-> Det finns ett fel som kör profiler för ASP.NET Core appar på Azure App Service. Vi har en åtgärd, men det tar några veckor att distribuera World Wide. Du kan kringgå felet genom att lägga till Application Insights SDK i programmet med instruktioner [här](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Allmän fel sökning
 
@@ -67,6 +64,7 @@ Den tråd som snabbt övergår i vänte läge väntar vanligt vis på de andra t
 Skicka in ett support ärende i portalen. Se till att ta med korrelations-ID: t från fel meddelandet.
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Felsöka profileraren på Azure App Service
+
 För att profiler ska fungera korrekt:
 * Web App Service-planen måste vara Basic-nivå eller högre.
 * Din webbapp måste ha Application Insights aktive rad.
@@ -95,6 +93,10 @@ Om profiler inte fungerar för dig kan du hämta loggen och skicka den till vår
 
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>Kontrol lera status sidan för diagnostiska tjänst webbplats tillägg
 Om profiler har Aktiver ATS via [Application Insightss fönstret](profiler.md) i portalen aktiverades det av tillägget för diagnostik Services-webbplatsen.
+
+> [!NOTE]
+> Kod installation av Application Insights Profiler som följer support policyn för .NET Core.
+> Mer information om körningar som stöds finns i [.net Core support policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 Du kan kontrol lera status sidan för det här tillägget genom att gå till följande URL: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
@@ -140,7 +142,7 @@ Om du omdistribuerar din webbapp till en Web Apps-resurs där profileraren är a
 
 *Katalogen är inte tom: \\ Start \\ platsens \\ wwwroot \\ App_Data \\ jobb*
 
-Det här felet uppstår om du kör webb distribution från skript eller Azure-pipeliner. Lösningen är att lägga till följande ytterligare distributions parametrar till webb distributions uppgiften:
+Det här felet uppstår om du kör webb distribution från skript eller Azure-pipeliner. Lösningen är att lägga till följande distributions parametrar till webb distributions uppgiften:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

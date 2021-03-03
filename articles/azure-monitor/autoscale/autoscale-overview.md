@@ -4,12 +4,12 @@ description: Autoskala i Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: bd7c1582cdb4b2b1b72d3f969ad08879d208785f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623843"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726010"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Översikt över autoskalning i Microsoft Azure
 Den här artikeln beskriver vad Microsoft Azure autoskalning är, dess fördelar och hur du kommer igång med det.  
@@ -90,8 +90,8 @@ Den lodräta skalningen är däremot annorlunda. Det behåller samma antal virtu
 Du kan ställa in autoskalning via
 
 * [Azure-portalen](autoscale-get-started.md)
-* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
-* [Plattformsoberoende kommandoradsgränssnitt (CLI):](../samples/cli-samples.md#autoscale)
+* [PowerShell](../powershell-samples.md#create-and-manage-autoscale-settings)
+* [Plattformsoberoende kommandoradsgränssnitt (CLI):](../cli-samples.md#autoscale)
 * [REST-API:et för Azure Monitor](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>Tjänster som stöds för autoskalning

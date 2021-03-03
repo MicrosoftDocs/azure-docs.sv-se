@@ -4,19 +4,21 @@ description: Säkerhet för Azure Security benchmark v2-slutpunkt
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7672f4eb4530dbfb5d039b066fe7cf6eaf79e5a7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368961"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718649"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Säkerhets kontroll v2: slut punkts säkerhet
 
 Slut punkts säkerhet täcker kontroller i slut punkts identifiering och-svar. Detta inkluderar användning av slut punkts identifiering och-svar (EDR) och skydd mot skadlig kod för slut punkter i Azure-miljöer.
+
+Om du vill se tillämpliga inbyggda Azure Policy kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-övervakning: slut punkts säkerhet](../../governance/policy/samples/azure-security-benchmark#endpoint-security)
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: Använd slut punkts identifiering och-svar (EDR)
 
@@ -26,13 +28,13 @@ Slut punkts säkerhet täcker kontroller i slut punkts identifiering och-svar. D
 
 Aktivera funktioner för slut punkts identifiering och-svar (EDR) för servrar och klienter och integrera med SIEM-och säkerhets åtgärds processer.
 
-Microsoft Defender Avancerat skydd tillhandahåller EDR-funktioner som en del av en säkerhets plattform för företags slut punkt för att förhindra, upptäcka, undersöka och svara på avancerade hot. 
+Microsoft Defender för slut punkt ger EDR-kapacitet som en del av en säkerhets plattform för företags slut punkt för att förhindra, upptäcka, undersöka och svara på avancerade hot.
 
-- [Översikt över Microsoft Defender Avancerat skydd](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+- [Översikt över Microsoft Defender för slut punkt](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
 
-- [Microsoft Defender ATP-tjänsten för Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
+- [Microsoft Defender för slut punkt för Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)
 
-- [Microsoft Defender ATP-tjänsten för icke-Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
+- [Microsoft Defender för slut punkt för icke-Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
 **Ansvar**: Kund
 
@@ -56,7 +58,7 @@ Använd en centralt hanterad slut punkt för program mot skadlig kod som kan han
 
 Azure Security Center kan automatiskt identifiera användningen av ett antal populära lösningar mot skadlig kod för dina virtuella datorer och rapportera statusen för Endpoint Protection-körningen och göra rekommendationer. 
 
-Microsoft Antimalware för Azure Cloud Services är standard skyddet mot skadlig kod för virtuella Windows-datorer (VM: ar). För virtuella Linux-datorer använder du en lösning från tredje part för program mot skadlig kod.  Du kan också använda Azure Security Center s hot identifiering för data tjänster för att identifiera skadlig kod som laddats upp till Azure Storage-konton. 
+Microsoft Antimalware för Azure Cloud Services är standard skyddet mot skadlig kod för virtuella Windows-datorer (VM: ar). För virtuella Linux-datorer använder du en lösning från tredje part för program mot skadlig kod. Du kan också använda Azure Security Center s hot identifiering för data tjänster för att identifiera skadlig kod som laddats upp till Azure Storage-konton. 
 
 - [Så här konfigurerar du Microsoft Antimalware för Cloud Services och Virtual Machines](../fundamentals/antimalware.md)
 
@@ -80,9 +82,9 @@ Microsoft Antimalware för Azure Cloud Services är standard skyddet mot skadlig
 |--|--|--|--|
 | ES-3 | 8,2 | SI-2, SI-3 |
 
-Se till att signaturer mot skadlig kod uppdateras snabbt och konsekvent. 
+Se till att signaturer mot skadlig kod uppdateras snabbt och konsekvent.
 
-Följ rekommendationerna i Azure Security Center: "Compute &amp; Apps" för att se till att alla slut punkter är uppdaterade med de senaste signaturerna. Microsoft Antimalware kommer automatiskt att installera de senaste signaturerna och motorns uppdateringar som standard. För Linux använder du en lösning mot skadlig kod från tredje part.
+Följ rekommendationerna i Azure Security Center: "Compute & Apps" för att se till att alla slut punkter är uppdaterade med de senaste signaturerna. Microsoft Antimalware kommer automatiskt att installera de senaste signaturerna och motorns uppdateringar som standard. För Linux kontrollerar du att signaturerna uppdateras i den tredje partens lösning mot skadlig kod.
 
 - [Så här distribuerar du Microsoft Antimalware för Azure Cloud Services och Virtual Machines](../fundamentals/antimalware.md)
 

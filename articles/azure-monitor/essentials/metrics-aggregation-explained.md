@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: c47c316c82d8c510b4446e4335a219f400d476e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a88a52163f03d2bffb0c9c4eab53fd814d9554fb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622391"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725874"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Mät värden för Azure Monitor mått och Visa förklaring
 
@@ -101,7 +101,7 @@ Måtten fångas för varje enskild resurs. Den nivå där måtten samlas in, lag
 
 När du diagramerar ett mått i Metric Explorer kan du välja att dela upp diagrammet med en dimension.  Genom att dela ett diagram innebär det att du tittar på underliggande data för mer information och ser att data visas eller filtreras i Metric Explorer.
 
-Till exempel har [Microsoft. API Management/Service](../platform/metrics-supported.md#microsoftapimanagementservice) *plats* som en dimension för många mått. 
+Till exempel har [Microsoft. API Management/Service](./metrics-supported.md#microsoftapimanagementservice) *plats* som en dimension för många mått. 
 
 - **Kapaciteten** är ett sådant mått. Om du använder dimensionen *plats* kan det underliggande systemet lagra en mått post för kapaciteten för varje plats, i stället för bara en för den sammanlagda mängden. Sedan kan du hämta eller dela upp informationen i ett mått diagram.  
 
@@ -109,7 +109,7 @@ Till exempel har [Microsoft. API Management/Service](../platform/metrics-support
 
 - Ett av de flexibla måtten, **förfrågningarna**, har 7 olika dimensioner. 
  
-Se artikeln Azure Monitor [mått som stöds](../platform/metrics-supported.md) för information om varje mått och de dimensioner som är tillgängliga. Dessutom kan dokumentationen för varje resurs leverantör och typ ge ytterligare information om dimensionerna och vad de mäter.
+Se artikeln Azure Monitor [mått som stöds](./metrics-supported.md) för information om varje mått och de dimensioner som är tillgängliga. Dessutom kan dokumentationen för varje resurs leverantör och typ ge ytterligare information om dimensionerna och vad de mäter.
 
 Du kan använda dela och filtrera tillsammans för att säga upp ett problem. Nedan visas ett exempel på en bild som visar *genomsnitts diskens Skriv byte* för en grupp med virtuella datorer i en resurs grupp. Vi har samlat samman alla virtuella datorer med det här måttet, men vi kanske vill kunna se vilka som faktiskt är ansvariga för topparna runt 06:00. Är de samma dator? Hur många datorer ingår?  
 

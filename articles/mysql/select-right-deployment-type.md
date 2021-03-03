@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736193"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Välj rätt MySQL Server-alternativ i Azure
 
@@ -19,7 +19,7 @@ Med Azure kan dina MySQL server-arbetsbelastningar köras i en värdbaserad virt
 
 När du fattar ditt beslut bör du tänka på följande två alternativ:
 
-- **Azure Database for MySQL** . Det här alternativet är en fullständigt hanterad MySQL-databasmotor baserat på den stabila versionen av MySQL Community Edition. Den här Relations databas som en tjänst (DBaaS), som finns på Azure-molnets plattform, hamnar i bransch kategorin för PaaS.
+- **Azure Database for MySQL**. Det här alternativet är en fullständigt hanterad MySQL-databasmotor baserat på den stabila versionen av MySQL Community Edition. Den här Relations databas som en tjänst (DBaaS), som finns på Azure-molnets plattform, hamnar i bransch kategorin för PaaS.
 
   Med en hanterad instans av MySQL på Azure kan du använda inbyggda funktioner som automatiserad uppdatering, hög tillgänglighet, automatisk säkerhets kopiering, elastisk skalning, säkerhet för företags klass, efterlevnad och styrning, övervakning och avisering som annars kräver omfattande konfiguration när MySQL-servern är antingen lokalt eller i en virtuell Azure-dator. När du använder MySQL som en tjänst betalar du per användning med alternativ för att skala upp eller ut för bättre kontroll utan avbrott.
   
@@ -35,7 +35,7 @@ När du fattar ditt beslut bör du tänka på följande två alternativ:
   - Zon redundant hög tillgänglighet
   - Hanterade underhålls fönster
 
-- **MySQL på virtuella Azure-datorer** . Det här alternativet är inställt på IaaS för bransch kategorin. Med den här tjänsten kan du köra MySQL server i en hanterad virtuell dator på Azures moln plattform. Alla nya versioner och utgåvor av MySQL kan installeras på den virtuella datorn.
+- **MySQL på virtuella Azure-datorer**. Det här alternativet är inställt på IaaS för bransch kategorin. Med den här tjänsten kan du köra MySQL server i en hanterad virtuell dator på Azures moln plattform. Alla nya versioner och utgåvor av MySQL kan installeras på den virtuella datorn.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>Jämför distributions alternativen för MySQL i Azure
 
@@ -43,17 +43,19 @@ De huvudsakliga skillnaderna mellan dessa alternativ visas i följande tabell:
 
 | Attribut          | Azure Database for MySQL<br/>Enskild server |Azure Database for MySQL<br/>Flexibel Server  |MySQL på virtuella Azure-datorer                      |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| MySQL-versions stöd | 5,6, 5,7 & 8,0| 5.7 | Vilken version som helst|
+| MySQL-versions stöd | 5,6, 5,7 & 8,0| 5,7 & 8,0 | Vilken version som helst|
 | Beräknings skalning | Stöds (skalning från och till Basic-nivån stöds inte)| Stöds | Stöds|
 | Lagrings storlek | 5 GiB till 16 TiB| 5 GiB till 16 TiB | 32 GiB till 32 767 GiB|
 | Skalning av onlinelagring | Stöds| Stöds| Stöds inte|
 | Automatisk skalning av lagring | Stöds| Stöds inte i för hands versionen| Stöds inte|
+| Ytterligare IOPs-skalning | Stöds inte| Stöds| Stöds inte|
 | Nätverks anslutning | -Offentliga slut punkter med Server brand väggen.<br/> – Privat åtkomst med stöd för privata länkar.|-Offentliga slut punkter med Server brand väggen.<br/> – Privat åtkomst med Virtual Network-integrering.| -Offentliga slut punkter med Server brand väggen.<br/> – Privat åtkomst med stöd för privata länkar.|
 | Service nivå avtal (SLA) | service nivå avtal på 99,99% tillgänglighet |Inget service avtal för för hands version| 99,99% med Tillgänglighetszoner|
 | Uppdatering av operativ system| Automatiskt  | Automatisk med kontroll för anpassat underhålls fönster | Hanteras av slutanvändare |
 | MySQL-korrigering     | Automatiskt  | Automatisk med kontroll för anpassat underhålls fönster | Hanteras av slutanvändare |
 | Hög tillgänglighet | Inbyggt HA i en zon för enskild tillgänglighet| Inbyggda HA i och över tillgänglighets zoner | Anpassad hanterad med kluster, replikering osv.|
 | Zonredundans | Stöds inte | Stöds | Stöds|
+| Zon placering | Stöds inte | Stöds | Stöds|
 | Hybrid scenarier | Stöds med [datareplikering](./concepts-data-in-replication.md)| Inte tillgänglig i för hands version | Hanteras av slutanvändare |
 | Skrivskyddade repliker | Stöds (upp till 5 repliker)| Stöds (upp till 10 repliker)| Hanteras av slutanvändare |
 | Backup | Automatiserad med 7-35 dagars kvarhållning | Automatiserad med 1-35 dagars kvarhållning | Hanteras av slutanvändare |
@@ -70,7 +72,7 @@ De huvudsakliga skillnaderna mellan dessa alternativ visas i följande tabell:
 
 Det finns flera faktorer som kan påverka ditt beslut att välja PaaS eller IaaS för att vara värd för MySQL-databaserna.
 
-### <a name="cost"></a>Kostnad
+### <a name="cost"></a>Cost
 
 Kostnads minskning är ofta den främsta överväganden som avgör den bästa lösningen för dina databaser. Detta gäller oavsett om du är en start med lite kontant eller ett team i ett etablerat företag som arbetar under tätt budget begränsningar. I det här avsnittet beskrivs grundläggande om fakturering och licensiering i Azure eftersom de gäller för Azure Database for MySQL och MySQL på virtuella Azure-datorer.
 
@@ -86,7 +88,7 @@ Mer information om priser finns i följande artiklar:
 
 - [Azure Database for MySQL priser](https://azure.microsoft.com/pricing/details/mysql/)
 - [Prissättning för virtuell dator](https://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
+- [ Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/)
 
 ### <a name="administration"></a>Administration
 

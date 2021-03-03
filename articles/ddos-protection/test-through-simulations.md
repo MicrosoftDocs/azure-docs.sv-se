@@ -11,23 +11,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3be8682b3a12f06aa83db1791cb0ed125bbcee7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806247"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719244"
 ---
 # <a name="test-through-simulations"></a>Testa genom simuleringar
 
 Det är en bra idé att testa dina antaganden om hur dina tjänster kommer att svara på ett angrepp genom att utföra periodiska simuleringar. Under testningen kontrollerar du att tjänsterna eller programmen fortsätter att fungera som förväntat och att användar upplevelsen inte störs. Identifiera luckor från både en teknik och ett process syn och införliva dem i DDoS-svars strategin. Vi rekommenderar att du utför sådana tester i tillfälliga miljöer eller under låg belastnings tider för att minimera påverkan på produktions miljön.
 
-Vi samarbetar med [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud), en självbetjänings generator för att skapa ett gränssnitt där Azure-kunder kan generera trafik mot DDoS Protection-aktiverade offentliga slut punkter för simuleringar. Du kan använda simuleringen för att:
+Vi samarbetar med [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud), en självbetjäningsgenerator för att skapa ett gränssnitt där Azure-kunder kan generera trafik mot DDoS Protection-aktiverade offentliga slutpunkter för simuleringar. Du kan använda simuleringen för att:
 
-- Verifiera hur Azure DDoS Protection hjälper till att skydda dina Azure-resurser från DDoS-attacker.
-- Optimera incident svars processen under DDoS-angrepp.
+- Validera hur Azure DDoS Protection hjälper till att skydda dina Azure-resurser från DDoS-attacker.
+- Optimera incidenthanteringsprocessen under DDoS-angrepp.
 - Dokumentera DDoS-efterlevnad.
-- Träna dina nätverks säkerhets team.
+- Träna dina nätverkssäkerhetsgrupper.
+
+> [!NOTE]
+> BreakingPoint-molnet är endast tillgängligt för det offentliga molnet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

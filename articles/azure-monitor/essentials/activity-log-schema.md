@@ -7,21 +7,21 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a050e9832537dd9b6690c7f9409bfbb5b795af2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2cea95dba3be02b9db584b0650761cb2d640283
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621402"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728781"
 ---
 # <a name="azure-activity-log-event-schema"></a>Händelse schema för Azure aktivitets logg
-[Azure aktivitets loggen](../platform/platform-logs-overview.md) ger inblick i alla händelser på prenumerations nivå som har inträffat i Azure. I den här artikeln beskrivs aktivitets logg kategorier och schemat för var och en. 
+[Azure aktivitets loggen](./platform-logs-overview.md) ger inblick i alla händelser på prenumerations nivå som har inträffat i Azure. I den här artikeln beskrivs aktivitets logg kategorier och schemat för var och en. 
 
 Schemat kan variera beroende på hur du kommer åt loggen:
  
 - De scheman som beskrivs i den här artikeln är när du öppnar aktivitets loggen från [REST API](/rest/api/monitor/activitylogs). Detta är även det schema som används när du väljer **JSON** -alternativet när du visar en händelse i Azure Portal.
-- Se det sista avsnittets [schema från lagrings konto och händelse nav](#schema-from-storage-account-and-event-hubs) för schemat när du använder en [diagnostisk inställning](../platform/diagnostic-settings.md) för att skicka aktivitets loggen till Azure Storage eller Azure Event Hubs.
-- Se [Azure Monitor data referens](/azure/azure-monitor/reference/) för schemat när du använder en [diagnostisk inställning](../platform/diagnostic-settings.md) för att skicka aktivitets loggen till en Log Analytics arbets yta.
+- Se det sista avsnittets [schema från lagrings konto och händelse nav](#schema-from-storage-account-and-event-hubs) för schemat när du använder en [diagnostisk inställning](./diagnostic-settings.md) för att skicka aktivitets loggen till Azure Storage eller Azure Event Hubs.
+- Se [Azure Monitor data referens](/azure/azure-monitor/reference/) för schemat när du använder en [diagnostisk inställning](./diagnostic-settings.md) för att skicka aktivitets loggen till en Log Analytics arbets yta.
 
 ## <a name="severity-level"></a>Allvarlighetsnivå
 Varje post i aktivitets loggen har en allvarlighets grad. Allvarlighets grad kan ha ett av följande värden:  
@@ -36,7 +36,7 @@ Varje post i aktivitets loggen har en allvarlighets grad. Allvarlighets grad kan
 Ee för varje resurs leverantör väljer allvarlighets graderna för deras resurs poster. Det innebär att den faktiska allvarlighets graden kan variera beroende på hur programmet har skapats. Till exempel kanske objekt som är "kritiska" till en viss resurs som tas i isolering inte är lika viktiga som "fel" i en resurs typ som är central för Azure-programmet. Tänk på detta när du bestämmer vilka händelser som ska aviseras om.  
 
 ## <a name="categories"></a>Kategorier
-Varje händelse i aktivitets loggen har en viss kategori som beskrivs i följande tabell. I avsnitten nedan finns mer information om varje kategori och dess schema när du öppnar aktivitets loggen från portalen, PowerShell, CLI och REST API. Schemat skiljer sig när du [strömmar aktivitets loggen till lagrings-eller Event Hubs](../platform/resource-logs.md#send-to-azure-event-hubs). En mappning av egenskaperna till schemat för [resurs loggar](../platform/resource-logs-schema.md) finns i det sista avsnittet i artikeln.
+Varje händelse i aktivitets loggen har en viss kategori som beskrivs i följande tabell. I avsnitten nedan finns mer information om varje kategori och dess schema när du öppnar aktivitets loggen från portalen, PowerShell, CLI och REST API. Schemat skiljer sig när du [strömmar aktivitets loggen till lagrings-eller Event Hubs](./resource-logs.md#send-to-azure-event-hubs). En mappning av egenskaperna till schemat för [resurs loggar](./resource-logs-schema.md) finns i det sista avsnittet i artikeln.
 
 | Kategori | Beskrivning |
 |:---|:---|
@@ -141,7 +141,7 @@ Den här kategorin innehåller posten över alla åtgärder för att skapa, uppd
 ```
 
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | auktorisering |BLOB för Azure RBAC-egenskaper för händelsen. Innehåller vanligt vis egenskaperna "Action", "roll" och "omfattning". |
 | anroparen |E-postadressen till den användare som utförde åtgärden, UPN-anspråk eller SPN-anspråk baserat på tillgänglighet. |
@@ -288,7 +288,7 @@ Den här kategorin innehåller posten för eventuella resurs hälso händelser s
 ```
 
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | kanal | Always "admin, operation" |
 | correlationId | Ett GUID i sträng formatet. |
@@ -381,7 +381,7 @@ Den här kategorin innehåller posten över alla aktiveringar av klassiska Azure
 ```
 
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | anroparen | Always Microsoft. Insights/alertRules |
 | kanal | Always "admin, operation" |
@@ -407,7 +407,7 @@ Den här kategorin innehåller posten över alla aktiveringar av klassiska Azure
 Egenskaps fältet innehåller olika värden beroende på källan för aviserings händelsen. Två vanliga aviserings händelse leverantörer är aktivitets logg aviseringar och mått varningar.
 
 #### <a name="properties-for-activity-log-alerts"></a>Egenskaper för aktivitets logg aviseringar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | egenskaper. subscriptionId | Prenumerations-ID: t från aktivitets logg händelsen som gjorde att den här varnings regeln för aktivitets loggen aktiverades. |
 | egenskaper. eventDataId | Händelse data-ID: t från aktivitets logg händelsen som gjorde att den här aviserings regeln för aktivitets loggen aktiverades. |
@@ -418,7 +418,7 @@ Egenskaps fältet innehåller olika värden beroende på källan för aviserings
 | egenskaper. status | Status från aktivitets logg händelsen som gjorde att den här aviserings regeln för aktivitets loggen aktiverades.|
 
 #### <a name="properties-for-metric-alerts"></a>Egenskaper för mått varningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | egenskaperna. RuleUri | Resurs-ID för mått varnings regeln. |
 | egenskaperna. RuleName | Namnet på måttets aviserings regel. |
@@ -491,7 +491,7 @@ Den här kategorin innehåller posten för alla händelser som rör driften av a
 ```
 
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | anroparen | Always Microsoft. Insights/autoscaleSettings |
 | kanal | Always "admin, operation" |
@@ -581,7 +581,7 @@ Den här kategorin innehåller de aviseringar som genererats av Azure Security C
 ```
 
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | kanal | Always "operation" |
 | correlationId | Ett GUID i sträng formatet. |
@@ -662,7 +662,7 @@ Den här kategorin innehåller posten för eventuella nya rekommendationer som g
 
 ```
 ### <a name="property-descriptions"></a>Egenskaps beskrivningar
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | kanal | Always "operation" |
 | correlationId | Ett GUID i sträng formatet. |
@@ -772,7 +772,7 @@ Den här kategorin innehåller poster med åtgärder som utförs av alla åtgär
 
 ### <a name="policy-event-property-descriptions"></a>Beskrivning av princip händelse egenskaper
 
-| Elementnamn | Description |
+| Elementnamn | Beskrivning |
 | --- | --- |
 | auktorisering | Matris med Azure RBAC-egenskaper för händelsen. För nya resurser är detta åtgärd och omfattning för den begäran som utlöste utvärderingen. För befintliga resurser är åtgärden "Microsoft. Resources/checkPolicyCompliance/Read". |
 | anroparen | För nya resurser är identiteten som initierade en distribution. För befintliga resurser är GUID för Microsoft Azure policyn för insikter RP. |
@@ -804,10 +804,10 @@ Den här kategorin innehåller poster med åtgärder som utförs av alla åtgär
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Schema från lagrings konto och händelse nav
-När du strömmar Azure-aktivitets loggen till ett lagrings konto eller en händelsehubben, följer data [schemat för resurs loggen](../platform/resource-logs-schema.md). Tabellen nedan innehåller en mappning av egenskaper från ovanstående scheman till resursens loggar schema.
+När du strömmar Azure-aktivitets loggen till ett lagrings konto eller en händelsehubben, följer data [schemat för resurs loggen](./resource-logs-schema.md). Tabellen nedan innehåller en mappning av egenskaper från ovanstående scheman till resursens loggar schema.
 
 > [!IMPORTANT]
-> Formatet på de aktivitets logg data som skrivs till ett lagrings konto har ändrats till JSON-linjer på nov. 1st, 2018. Se [förbereda för format ändring till Azure Monitor resurs loggar arkiverade på ett lagrings konto](../platform/resource-logs-blob-format.md) för information om det här formatet.
+> Formatet på de aktivitets logg data som skrivs till ett lagrings konto har ändrats till JSON-linjer på nov. 1st, 2018. Se [förbereda för format ändring till Azure Monitor resurs loggar arkiverade på ett lagrings konto](./resource-logs-blob-format.md) för information om det här formatet.
 
 
 | Schema egenskap för resurs loggar | Aktivitets logg REST API schema egenskap | Kommentarer |
@@ -894,5 +894,5 @@ Följande är ett exempel på en händelse som använder det här schemat..
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Läs mer om aktivitets loggen](../platform/platform-logs-overview.md)
-* [Skapa en diagnostisk inställning för att skicka aktivitets loggen till Log Analytics arbets yta, Azure Storage eller Event Hub](../platform/diagnostic-settings.md)
+* [Läs mer om aktivitets loggen](./platform-logs-overview.md)
+* [Skapa en diagnostisk inställning för att skicka aktivitets loggen till Log Analytics arbets yta, Azure Storage eller Event Hub](./diagnostic-settings.md)

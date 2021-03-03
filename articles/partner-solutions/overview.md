@@ -4,14 +4,14 @@ description: Lär dig mer om lösningar som erbjuds av partner i Azure.
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/19/2021
+ms.date: 02/12/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6779596efdebf8220af99f4e86c1fe6cc0ec90d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cab246cf19e8a2e3f9e7b08019cd836e3d085266
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598776"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736057"
 ---
 # <a name="extend-azure-with-solutions-from-partners"></a>Utöka Azure med lösningar från partners
 
@@ -22,3 +22,4 @@ Partner lösningar är tillgängliga via Marketplace.
 | Partner lösning | Beskrivning |
 | :--- | :--- |
 | [Apache Kafka för samfluent-molnet](./apache-kafka-confluent-cloud/overview.md) | Helt hanterad händelse strömnings plattform som drivs av Apache Kafka |
+| [Datadog](./datadog/overview.md) | Övervaka dina servrar, moln, mått och appar på ett och samma ställe. |

@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Custom Vision för att bygga en beh
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698815"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Självstudie: analysera direktsänd video med real tids video analys på IoT Edge och Azure Custom Vision
 
@@ -221,7 +221,7 @@ Om du öppnar Graph-topologin för den här självstudien i en webbläsare ser d
         
    ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "CustomVisionWithHttpExtension",

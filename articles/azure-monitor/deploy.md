@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: c37693bc6c9ce1cc5fed6c06ecb7fe628c315176
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573582"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708262"
 ---
 # <a name="deploy-azure-monitor"></a>Distribuera Azure Monitor
 Att aktivera Azure Monitor att övervaka alla dina Azure-resurser är en kombination av att konfigurera Azure Monitor komponenter och konfigurera Azure-resurser för att generera övervaknings data för Azure Monitor att samla in. I den här artikeln beskrivs de olika stegen som krävs för en fullständig implementering av Azure Monitor att använda en gemensam konfiguration för att övervaka alla resurser i din Azure-prenumeration. Grundläggande beskrivningar för varje steg finns med länkar till annan dokumentation för detaljerade konfigurations krav.
@@ -22,7 +22,7 @@ Att aktivera Azure Monitor att övervaka alla dina Azure-resurser är en kombina
 ## <a name="configuration-goals"></a>Konfigurations mål
 Målet med en fullständig implementering av Azure Monitor är att samla in alla tillgängliga data från alla dina moln resurser och program och att aktivera så många funktioner som möjligt i Azure Monitor som möjligt baserat på dessa data.
 
-Data som samlas in av Azure Monitor skickas till antingen [Azure Monitor mått](essentials/data-platform-metrics.md) eller [Azure Monitor loggar](logs/data-platform-logs.md). Varje lagrar olika typer av data och möjliggör olika typer av analyser och aviseringar. Se [jämför Azure Monitor statistik och loggar](/data-platform.md) för en jämförelse av de två och [översikten över aviseringar i Microsoft Azure](alerts/alerts-overview.md) för en beskrivning av olika aviserings typer. 
+Data som samlas in av Azure Monitor skickas till antingen [Azure Monitor mått](essentials/data-platform-metrics.md) eller [Azure Monitor loggar](logs/data-platform-logs.md). Varje lagrar olika typer av data och möjliggör olika typer av analyser och aviseringar. Se [jämför Azure Monitor statistik och loggar](data-platform.md) för en jämförelse av de två och [översikten över aviseringar i Microsoft Azure](alerts/alerts-overview.md) för en beskrivning av olika aviserings typer. 
 
 Vissa data kan skickas till både mått och loggar för att kunna utnyttja dem med hjälp av olika funktioner. I dessa fall kan du behöva konfigurera varje separat. Till exempel skickas Metric-data automatiskt av Azure-resurser till mått, som stöder mått Utforskaren och mått varningar. Du måste skapa en diagnostisk inställning för varje resurs för att skicka samma mått data till loggar, vilket gör att du kan analysera prestanda trender med andra loggdata med hjälp av Log Analytics. I avsnitten nedan kan du se var data skickas och innehåller alla steg som krävs för att skicka data till alla möjliga platser.
 
@@ -84,32 +84,32 @@ Se [vad som övervakas av Azure Monitor?](monitor-reference.md) för en lista ö
 
 Virtuella datorer genererar liknande data som andra Azure-resurser, men du behöver en agent för att samla in data från gäst operativ systemet. Se [Översikt över Azure Monitor agenter](agents/agents-overview.md) för en jämförelse av de agenter som används av Azure Monitor. 
 
-[Azure Monitor for VMS](vm/vminsights-overview.md) använder Log Analytics agent och beroende agent för att samla in data från gäst operativ systemet för virtuella datorer, så att du kan distribuera dessa agenter som en del av implementeringen av den här insikten. Detta gör det möjligt för Log Analytics-agenten för andra tjänster som använder den, till exempel Azure Security Center.
+[VM Insights](vm/vminsights-overview.md) använder Log Analytics agent och beroende agent för att samla in data från gäst operativ systemet för virtuella datorer, så att du kan distribuera dessa agenter som en del av implementeringen av den här insikten. Detta gör det möjligt för Log Analytics-agenten för andra tjänster som använder den, till exempel Azure Security Center.
 
 
 [![Distribuera virtuell Azure-dator ](media/deploy/deploy-azure-vm.png)](media/deploy/deploy-azure-vm.png#lightbox)
 
 
-### <a name="configure-workspace-for-azure-monitor-for-vms"></a>Konfigurera arbets yta för Azure Monitor for VMs
-Azure Monitor for VMs kräver en Log Analytics arbets yta som vanligt vis är samma som den som skapades för att samla in data från andra Azure-resurser. Innan du aktiverar några virtuella datorer måste du lägga till den lösning som krävs för att Azure Monitor for VMs till arbets ytan.
+### <a name="configure-workspace-for-vm-insights"></a>Konfigurera arbets yta för VM-insikter
+VM Insights kräver en Log Analytics arbets yta som vanligt vis är samma som den som skapades för att samla in data från andra Azure-resurser. Innan du aktiverar några virtuella datorer måste du lägga till den lösning som krävs för VM-insikter på arbets ytan.
 
-Mer information om hur du konfigurerar din Log Analytics arbets yta för Azure Monitor for VMs finns i [konfigurera Log Analytics arbets yta för Azure Monitor for VMS](vm/vminsights-configure-workspace.md) .
+Mer information om hur du konfigurerar din Log Analytics arbets yta för VM-insikter finns i [konfigurera Log Analytics arbets yta för VM](vm/vminsights-configure-workspace.md) -insikter.
 
-### <a name="enable-azure-monitor-for-vms-on-each-virtual-machine"></a>Aktivera Azure Monitor for VMs på varje virtuell dator
-När en arbets yta har kon figurer ATS kan du aktivera varje virtuell dator genom att installera den Log Analytics agenten och beroende agenten. Det finns flera metoder för att installera dessa agenter, inklusive Azure Policy som gör att du automatiskt kan konfigurera varje virtuell dator när den skapas. Prestanda data och process information som samlas in av Azure Monitor for VMs lagras i Azure Monitor loggar.
+### <a name="enable-vm-insights-on-each-virtual-machine"></a>Aktivera VM-insikter på varje virtuell dator
+När en arbets yta har kon figurer ATS kan du aktivera varje virtuell dator genom att installera den Log Analytics agenten och beroende agenten. Det finns flera metoder för att installera dessa agenter, inklusive Azure Policy som gör att du automatiskt kan konfigurera varje virtuell dator när den skapas. Prestanda data och process information som samlas in av VM-insikter lagras i Azure Monitor loggar.
 
-Se [aktivera Azure Monitor for VMS översikt](vm/vminsights-enable-overview.md) för alternativ för att distribuera agenter till dina virtuella datorer och aktivera dem för övervakning.
+Se [Aktivera översikt över VM-insikter](vm/vminsights-enable-overview.md) för alternativ för att distribuera agenter till dina virtuella datorer och aktivera dem för övervakning.
 
 ### <a name="configure-workspace-to-collect-events"></a>Konfigurera arbets ytan för att samla in händelser
-Azure Monitor for VMs samlar in prestanda data och information och beroenden för processer från gäst operativ systemet på varje virtuell dator. Log Analytics agenten kan också samla in loggar från gästen, inklusive händelse loggen från Windows och syslog från Linux. Den hämtar konfigurationen för dessa loggar från Log Analytics arbets ytan som den är ansluten till. Du behöver bara konfigurera arbets ytan en gång, och varje gång en agent ansluter, hämtas eventuella konfigurations ändringar. 
+VM Insights samlar in prestanda data och information och beroenden för processer från gäst operativ systemet på varje virtuell dator. Log Analytics agenten kan också samla in loggar från gästen, inklusive händelse loggen från Windows och syslog från Linux. Den hämtar konfigurationen för dessa loggar från Log Analytics arbets ytan som den är ansluten till. Du behöver bara konfigurera arbets ytan en gång, och varje gång en agent ansluter, hämtas eventuella konfigurations ändringar. 
 
 Mer information om hur du konfigurerar Log Analytics-arbetsytan finns [i agent data källor i Azure Monitor](agents/agent-data-sources.md) för att samla in ytterligare data från agentens virtuella datorer.
 
 > [!NOTE]
-> Du kan också konfigurera arbets ytan så att den samlar in prestanda räknare, men detta är troligen överflödigt med prestanda data som samlas in av Azure Monitor for VMs. Prestanda data som samlas in av arbets ytan kommer att lagras i tabellen *prestanda* , medan prestanda data som samlas in av Azure Monitor for VMS lagras i tabellen *InsightsMetrics* . Konfigurera prestanda insamling i arbets ytan endast om du behöver räknare som inte redan har samlats in av Azure Monitor for VMs.
+> Du kan också konfigurera arbets ytan så att den samlar in prestanda räknare, men detta är förmodligen överflödigt med prestanda data som samlas in av VM Insights. Prestanda data som samlas in av arbets ytan kommer att lagras i tabellen *prestanda* , medan prestanda data som samlas in av VM Insights lagras i tabellen *InsightsMetrics* . Konfigurera prestanda insamling i arbets ytan endast om du behöver räknare som inte redan har samlats in av VM Insights.
 
 ### <a name="diagnostic-extension-and-telegraf-agent"></a>Diagnostiskt tillägg och teleympkvistar-agent
-Azure Monitor for VMs använder Log Analytics-agenten som skickar prestanda data till en Log Analytics arbets yta, men inte Azure Monitor mått. Genom att skicka data till mått kan den analyseras med Metrics Explorer och användas med mått varningar. Detta kräver Diagnostic-tillägget på Windows och gruppen för teleympkvistar på Linux.
+VM Insights använder Log Analytics agent som skickar prestanda data till en Log Analytics arbets yta men inte Azure Monitor mått. Genom att skicka data till mått kan den analyseras med Metrics Explorer och användas med mått varningar. Detta kräver Diagnostic-tillägget på Windows och gruppen för teleympkvistar på Linux.
 
 Mer information om hur du installerar och konfigurerar agenter finns i [Installera och konfigurera Windows Azure Diagnostics Extension (wad)](agents/diagnostics-extension-windows-install.md) och [samla in anpassade mått för en virtuell Linux-dator med InfluxData](essentials/collect-custom-metrics-linux-telegraf.md) .
 

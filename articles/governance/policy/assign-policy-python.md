@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: ny princip tilldelning med python'
 description: I den här snabb starten använder du python för att skapa en Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742355"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med python
 
@@ -40,7 +40,7 @@ Om du vill att python ska fungera med Azure Policy måste biblioteket läggas ti
    az login
    ```
 
-1. I din python-miljö väljer du de bibliotek som krävs för Azure Resource Graph:
+1. I din python-miljö väljer du de bibliotek som krävs för Azure Policy:
 
    ```bash
    # Add the Python library for Python
@@ -96,7 +96,7 @@ Tilldelnings information:
 - **policy_definition_id** – princip definitions Sök vägen, baserat på vilken du använder för att skapa tilldelningen. I det här fallet är det ID: t för granskning av princip definition för _virtuella datorer som inte använder hanterade diskar_. I det här exemplet är princip definitionen en inbyggd och sökvägen innehåller inte hanterings grupps-eller prenumerations information.
 - **omfång** – en omfattning avgör vilka resurser eller grupper av resurser som princip tilldelningen tillämpas på. Det kan vara ett intervall från en hanterings grupp till en enskild resurs. Se till att ersätta `{scope}` med något av följande mönster:
   - Hanterings grupp: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Prenumerera `/subscriptions/{subscriptionId}`
+  - Prenumeration: `/subscriptions/{subscriptionId}`
   - Resursgrupp: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Klusterresursen `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 - **Beskrivning** – en djupare förklaring av vad principen gör eller varför den är tilldelad till det här omfånget.

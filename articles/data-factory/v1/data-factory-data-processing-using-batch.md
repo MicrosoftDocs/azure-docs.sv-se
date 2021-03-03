@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730872"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Bearbeta data uppsättningar i stor skala med hjälp av Data Factory och batch
 > [!NOTE]
@@ -575,9 +575,7 @@ I det här steget skapar du en länkad tjänst för batch-kontot som används f�
    d. Ange batch-URI för **batchUri** JSON-egenskapen.
 
       > [!IMPORTANT]
-      > URL: en från **Batch-konto** -bladet har följande format: \<accountname\> . \<region\> . batch.azure.com. För egenskapen **batchUri** i JSON-skriptet måste du ta bort A88 "AccountName". * * från URL: en. Ett exempel är `"batchUri": "https://eastus.batch.azure.com"`.
-      >
-      >
+      > URL: en från **Batch-konto** -bladet har följande format: `<accountname>.<region>.batch.azure.com` . För `batchUri` egenskapen i JSON-skriptet måste du ta bort `<accountname>.` från URL: en. Ett exempel är `"batchUri": "https://eastus.batch.azure.com"`.
 
       ![Bladet för batch-kontot](./media/data-factory-data-processing-using-batch/image9.png)
 

@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: e1b6ba22c41e2061acfdf33351619512f9d7f424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e421676ab8c44abc3432ab7ac45aecf98c98c304
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708041"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Exempel frågor i Azure Monitor Log Analytics
 Log Analytics erbjuder uppsättningar med exempel frågor som du kan köra på egen hand eller använda som utgångs punkt för dina egna frågor. I den här artikeln beskrivs exempel frågor och hur du använder dem.
@@ -109,5 +109,4 @@ Query Explorer-upplevelsen för att spara och dela användardefinierade frågor 
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Kom igång med KQL-frågor](../log-query/get-started-queries.md)
-
+[Kom igång med KQL-frågor](./get-started-queries.md)

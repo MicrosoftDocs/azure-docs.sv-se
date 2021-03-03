@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687404"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gör så här: Migrera från Azure-Access Control Service
 
@@ -113,7 +113,7 @@ Från och med november 2017 stöds alla Access Control-komponenter fullständigt
 Här är schemat för inaktuella Access Control-komponenter:
 
 - **2017 november**: Azure AD-administrationskonsolen i den klassiska Azure-portalen [har dragits tillbaka](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Nu finns namn områdes hantering för Access Control på en ny, dedikerad URL: `https://manage.windowsazure.com?restoreClassic=true` . Använd den här URl: en för att visa befintliga namn områden, aktivera och inaktivera namn områden och ta bort namnrum om du väljer att.
-- **2 April 2018**: den klassiska Azure-portalen är helt tillbakadragen, vilket innebär att Access Control namn områdes hantering inte längre är tillgängligt via någon URL. I det här läget kan du inte inaktivera eller aktivera, ta bort eller räkna upp Access Control namnrum. Access Control hanterings portalen är dock helt funktionell och finns på `https://\<namespace\>.accesscontrol.windows.net` . Alla andra komponenter i Access Control fortsätta att arbeta normalt.
+- **2 April 2018**: den klassiska Azure-portalen är helt tillbakadragen, vilket innebär att Access Control namn områdes hantering inte längre är tillgängligt via någon URL. I det här läget kan du inte inaktivera eller aktivera, ta bort eller räkna upp Access Control namnrum. Access Control hanterings portalen är dock helt funktionell och finns på `https://<namespace>.accesscontrol.windows.net` . Alla andra komponenter i Access Control fortsätta att arbeta normalt.
 - **7 November 2018**: alla Access Control-komponenter stängs av permanent. Detta inkluderar Access Control hanterings Portal, hanterings tjänst, STS och token för token för omvandling av token. I det här läget fungerar inga förfrågningar som skickats till Access Control (finns på \<namespace\> . AccessControl.Windows.net). Du bör ha migrerat alla befintliga appar och tjänster till andra tekniker precis innan den här gången.
 
 > [!NOTE]

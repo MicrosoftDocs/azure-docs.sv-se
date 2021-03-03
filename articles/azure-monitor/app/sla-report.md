@@ -3,12 +3,12 @@ title: Arbets bok för avbrott, SLA och avbrott – Application Insights
 description: Beräkna och rapportera service avtal för webbtest i ett enda fönster ruta över dina Application Insights-resurser och Azure-prenumerationer.
 ms.topic: conceptual
 ms.date: 02/8/2021
-ms.openlocfilehash: 884d65d10ab0360957360efa8bf9dc4cac59949b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989401"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714059"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>Arbets bok för avbrott, SLA och avbrott
 
@@ -51,13 +51,13 @@ Fliken avbrott **och drift stopp** innehåller information om totala avbrotts in
 
 ## <a name="edit-the-report"></a>Redigera rapporten
 
-Du kan redigera rapporten precis som andra [Azure Monitor arbets böcker](../platform/workbooks-overview.md). Du kan anpassa frågorna och visualiseringarna baserat på ditt teams behov.
+Du kan redigera rapporten precis som andra [Azure Monitor arbets böcker](../visualize/workbooks-overview.md). Du kan anpassa frågorna och visualiseringarna baserat på ditt teams behov.
 
 :::image type="content" source="./media/sla-report/edit.gif" alt-text=" GIF om du väljer knappen Redigera för att ändra visualiseringen till ett cirkel diagram." lightbox="./media/sla-report/edit.gif":::
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Frågorna kan köras i [Log Analytics](../log-query/log-analytics-overview.md) och användas i andra rapporter eller instrument paneler. Ta bort parameter begränsningen och återanvänd kärn frågan.
+Frågorna kan köras i [Log Analytics](../logs/log-analytics-overview.md) och användas i andra rapporter eller instrument paneler. Ta bort parameter begränsningen och återanvänd kärn frågan.
 
 :::image type="content" source="./media/sla-report/logs.gif" alt-text=" GIF för logg fråga." lightbox="./media/sla-report/logs.gif":::
 
@@ -69,6 +69,6 @@ Rapporten kan delas med dina team, ledarskap eller fästa på en instrument pane
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Tips för optimering av Log Analytics-fråga](../log-query/query-optimization.md).
-- Lär dig hur du [skapar ett diagram i arbets böcker](../platform/workbooks-chart-visualizations.md).
+- [Tips för optimering av Log Analytics-fråga](../logs/query-optimization.md).
+- Lär dig hur du [skapar ett diagram i arbets böcker](../visualize/workbooks-chart-visualizations.md).
 - Lär dig hur du övervakar din webbplats med [tillgänglighets test](monitor-web-app-availability.md).

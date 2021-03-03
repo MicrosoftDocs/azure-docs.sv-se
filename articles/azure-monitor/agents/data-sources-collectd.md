@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: a0efeaa3df0ecc69fa29dcb2cbb50874c4ab486a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6848b4e0463be803fb4f41797d933386cb575a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623464"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732113"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Samla in data från insamlade på Linux-agenter i Azure Monitor
 [Insamlad](https://collectd.org/) är en Linux-daemon med öppen källkod som regelbundet samlar in prestanda mått från program och information på system nivå. Exempel på program är Java Virtual Machine (JVM), MySQL server och Nginx. Den här artikeln innehåller information om hur du samlar in prestanda data från insamlade Azure Monitor.
@@ -132,5 +132,5 @@ För att upprätthålla en välbekant modell mellan infrastruktur mått som reda
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar. 
-* Använd [anpassade fält](../platform/custom-fields.md) för att parsa data från syslog-poster i enskilda fält.
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar. 
+* Använd [anpassade fält](../logs/custom-fields.md) för att parsa data från syslog-poster i enskilda fält.

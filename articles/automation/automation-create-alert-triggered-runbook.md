@@ -3,18 +3,18 @@ title: Använda en avisering för att utlösa en Azure Automation Runbook
 description: Den här artikeln beskriver hur du utlöser en Runbook så att den körs när en Azure-avisering aktive ras.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2019
+ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732300"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Använda en avisering för att utlösa en Azure Automation Runbook
 
-Du kan använda [Azure Monitor](../azure-monitor/overview.md) för att övervaka mått och loggar på bas nivå för de flesta tjänster i Azure. Du kan anropa Azure Automation runbooks med hjälp av [Åtgärds grupper](../azure-monitor/alerts/action-groups.md) eller genom att använda klassiska aviseringar för att automatisera uppgifter baserat på aviseringar. Den här artikeln visar hur du konfigurerar och kör en Runbook med hjälp av aviseringar.
+Du kan använda [Azure Monitor](../azure-monitor/overview.md) för att övervaka mått och loggar på bas nivå för de flesta tjänster i Azure. Du kan anropa Azure Automation runbooks med hjälp av [Åtgärds grupper](../azure-monitor/platform/action-groups.md) för att automatisera uppgifter baserat på aviseringar. Den här artikeln visar hur du konfigurerar och kör en Runbook med hjälp av aviseringar.
 
 ## <a name="alert-types"></a>Aviseringstyper
 
@@ -29,7 +29,7 @@ Du kan använda Automation-runbooks med tre aviserings typer:
 
 När en avisering anropar en Runbook, är det faktiska anropet en HTTP POST-begäran till webhooken. Bröd texten i POST-begäran innehåller ett JSON-formaterat objekt som har användbara egenskaper som är relaterade till aviseringen. I följande tabell visas länkar till nytto Last schema för varje aviserings typ:
 
-|Varning  |Description|Nytto Last schema  |
+|Varning  |Beskrivning|Nytto Last schema  |
 |---------|---------|---------|
 |[Vanlig avisering](../azure-monitor/alerts/alerts-common-schema.md)|Det vanliga aviserings schema som standardiserar användnings upplevelsen för aviserings meddelanden i Azure idag.|Vanligt schema för aviserings nytto Last|
 |[Aktivitets logg avisering](../azure-monitor/alerts/activity-log-alerts.md)    |Skickar ett meddelande när en ny händelse i Azure aktivitets loggen matchar vissa villkor. Till exempel när en `Delete VM` åtgärd utförs i **myProductionResourceGroup** eller när en ny Azure Service Health-händelse med en aktiv status visas.| [Schema för aktivitets logg aviserings nytto Last](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |

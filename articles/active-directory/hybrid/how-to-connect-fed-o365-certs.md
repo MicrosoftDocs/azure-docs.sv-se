@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78dcd9d020923251439a05316569b559c19057d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89661454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686877"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Förnya Federations certifikat för Microsoft 365 och Azure Active Directory
 ## <a name="overview"></a>Översikt
@@ -157,7 +157,7 @@ Om du använder en icke-standardkonfiguration av AD FS (där **AutoCertificateRo
    >
 3. Titta på kommandoutdata i certifikaten i listan. Om AD FS har genererat ett nytt certifikat, bör du se två certifikat i utdata: ett för vilket **IsPrimary** -värdet är **Sant** och **NotAfter** -datumet infaller inom 5 dagar, och ett för vilka **IsPrimary** är **falskt** och **NotAfter** är ungefär ett år i framtiden.
 4. Om du bara ser ett certifikat och **NotAfter** -datumet ligger inom 5 dagar måste du generera ett nytt certifikat.
-5. Om du vill generera ett nytt certifikat kör du följande kommando i PowerShell-kommando tolken: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+5. Om du vill generera ett nytt certifikat kör du följande kommando i PowerShell-kommando tolken: `PS C:\Update-ADFSCertificate –CertificateType token-signing` .
 6. Verifiera uppdateringen genom att köra följande kommando igen: PS C: \> Get-ADFSCertificate – CertificateType token-signing
 
 Två certifikat bör visas nu, varav ett har ett **NotAftert** datum på ungefär ett år i framtiden och för vilka **IsPrimary** -värdet är **falskt**.

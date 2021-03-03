@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a9b93cf05141442901531e745971ee16348cdaae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d83ee4b53d4ccda9cb2af21fa0cb4c91822ec7c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622583"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732028"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor
 
@@ -89,7 +89,7 @@ Log Analytics Gateway finns på följande språk:
 
 Log Analytics Gateway stöder bara Transport Layer Security (TLS) 1,0, 1,1 och 1,2.  Den stöder inte Secure Sockets Layer (SSL).  Konfigurera gatewayen så att den använder minst TLS 1,2 för att säkerställa säkerheten för data som överförs till Log Analytics. Äldre versioner av TLS eller SSL är sårbara. Även om de för närvarande tillåter bakåtkompatibilitet, Undvik att använda dem.  
 
-Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](../platform/data-security.md#sending-data-securely-using-tls-12). 
+Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Antal agent anslutningar som stöds
 
@@ -248,7 +248,7 @@ Om du vill använda OMS-Gateway för att stödja Operations Manager måste du ha
 
 Om din Operations Manager hanterings grupp registreras med en Log Analytics arbets yta för första gången visas inte alternativet för att ange proxykonfigurationen för hanterings gruppen i drift konsolen. Det här alternativet är bara tillgängligt om hanterings gruppen har registrerats med tjänsten.  
 
-Om du vill konfigurera en integrering uppdaterar du konfigurationen av systemets proxy med hjälp av netsh på det system där du kör drift konsolen och på alla hanterings servrar i hanterings gruppen. Följ de här stegen:
+Om du vill konfigurera en integrering uppdaterar du konfigurationen av systemets proxy med hjälp av netsh på det system där du kör drift konsolen och på alla hanterings servrar i hanterings gruppen. Gör så här:
 
 1. Öppna en upphöjd kommando tolk:
 

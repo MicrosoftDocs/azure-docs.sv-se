@@ -2,14 +2,14 @@
 title: Skapa ett konto i Azure Portal
 description: Lär dig hur du skapar ett Azure Batch-konto på Azure-portalen för att köra storskaliga parallella arbetsbelastningar i molnet
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368514"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703672"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Skapa ett Batch-konto med Azure Portal
 
@@ -101,7 +101,7 @@ I användar prenumerations läge krävs en [Azure Key Vault](../key-vault/genera
 
 När du skapar batch-kontot i användar prenumerations läge anger du **användar prenumeration** som poolens fördelnings läge, väljer den Key Vault du skapade och markerar kryss rutan för att bevilja Azure Batch åtkomst till Key Vault.
 
-Om du vill bevilja åtkomst till Key Vault manuellt går du till avsnittet **åtkomst principer** i Key Vault och väljer **Lägg till åtkomst princip**. Välj länken bredvid **Välj huvud namn** och sök efter **Microsoft Azure Batch** (program-ID **ddbf3205-c6bd-46ae-8127-60eb93363864**). Välj detta huvud konto och konfigurera sedan de **hemliga behörigheterna** med hjälp av den nedrullningsbara menyn. Azure Batch måste ges minst behörigheterna **Get**, **list**, **set** och **Delete** .
+Om du vill bevilja åtkomst till Key Vault manuellt går du till avsnittet **åtkomst principer** i Key Vault och väljer **Lägg till åtkomst princip**. Välj länken bredvid **Välj huvud namn** och sök efter **Microsoft Azure Batch** (program-ID **ddbf3205-c6bd-46ae-8127-60eb93363864**). Välj detta huvud konto och konfigurera sedan de **hemliga behörigheterna** med hjälp av den nedrullningsbara menyn. Azure Batch måste ges minst behörigheterna **Get**, **list**, **set** och **Delete** . För [nyckel valv med mjuk borttagning aktive rad](../key-vault/general/soft-delete-overview.md)måste Azure Batch också tilldelas behörigheten **Återställ** .
 
 :::image type="content" source="media/batch-account-create-portal/secret-permissions.png" alt-text="Skärm bild av val av hemliga behörigheter för Azure Batch":::
 

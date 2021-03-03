@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703877"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705219"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Stödmatris för VMware-migrering
 
@@ -29,8 +29,8 @@ Läs [den här artikeln](server-migrate-overview.md) för att ta reda på vilken
 
 ## <a name="migration-limitations"></a>Migreringsbegränsningar
 
-- Du kan välja upp till 10 virtuella datorer på en gång för replikering. Om du vill migrera fler datorer kan du replikera i grupper om 10.
-- För VMware-agent lös migrering kan du köra upp till 300 replikeringar samtidigt.
+- Du kan välja upp till 10 virtuella datorer på en gång för replikering via Azure Portal. Om du vill migrera fler datorer kan du replikera i grupper om 10. Det finns ingen gräns för antalet virtuella datorer som kan replikeras via PowerShell-cmdletar. Vi rekommenderar att du replikerar högst 500 virtuella datorer i taget från en enda vCenter till PowerShell för att säkerställa optimala prestanda.
+- För VMware-agent lös migrering kan du köra upp till 500 replikeringar samtidigt från varje vCenter Server.
 
 ## <a name="agentless-migration"></a>Migrering utan agent 
 
@@ -54,9 +54,9 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 
 **Support** | **Information**
 --- | ---
-**Operativ system som stöds** | Du kan migrera [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -och [Linux](../virtual-machines/linux/endorsed-distros.md) -operativsystem som stöds av Azure.
+**Operativsystem som stöds** | Du kan migrera [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -och [Linux](../virtual-machines/linux/endorsed-distros.md) -operativsystem som stöds av Azure.
 **Virtuella Windows-datorer i Azure** | Du kan behöva [göra några ändringar](prepare-for-migration.md#verify-required-changes-before-migrating) på virtuella datorer innan migreringen. 
-**Virtuella Linux-datorer i Azure** | Vissa virtuella datorer kan kräva ändringar så att de kan köras i Azure.<br/><br/> För Linux gör Azure Migrate ändringarna automatiskt för dessa operativ system:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -% OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7 – CI<br/> För andra operativ system gör du [nödvändiga ändringar](prepare-for-migration.md#verify-required-changes-before-migrating) manuellt.
+**Virtuella Linux-datorer i Azure** | Vissa virtuella datorer kan kräva ändringar så att de kan köras i Azure.<br/><br/> För Linux gör Azure Migrate ändringarna automatiskt för dessa operativ system:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -% OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8, 9 <br/> Oracle Linux 7,7, 7,7 – CI<br/> För andra operativ system gör du [nödvändiga ändringar](prepare-for-migration.md#verify-required-changes-before-migrating) manuellt.
 **Linux-start** | Om/boot finns på en dedikerad partition bör den finnas på OS-disken och inte spridas över flera diskar.<br/> Om/Boot är en del av rot-partitionen (/) bör partitionen/-partitionen finnas på OS-disken och inte omfatta andra diskar.
 **UEFI-start** | Stöds. UEFI-baserade virtuella datorer kommer att migreras till virtuella datorer i Azure generation 2. 
 **Disk storlek** | 2 TB OS-disk;  32 TB för data diskar.
@@ -72,7 +72,7 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 **Grupperade nätverkskort** | Stöds inte.
 **IPv6** | Stöds inte.
 **Mål disk** | Virtuella datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
-**Samtidig replikering** | 300 virtuella datorer per vCenter Server. Om du har fler kan du migrera dem i batchar på 300.
+**Samtidig replikering** | 500 virtuella datorer per vCenter Server. Om du har fler kan du migrera dem i batchar på 500.
 **Automatisk installation av Azure VM-agenten (Windows-agent)** | Stöds för Windows Server 2008 R2 och senare.
 
 ### <a name="appliance-requirements-agentless"></a>Installations krav (utan agent)

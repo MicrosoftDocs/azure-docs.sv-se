@@ -4,14 +4,14 @@ description: Ändra till standard mottagare för meddelanden från Smart identif
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 03/13/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0bf3a95814aadf687efcc27294b760e14f7d45d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585639"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734510"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Ändra e-postavisering om Smart identifiering
 
@@ -27,7 +27,7 @@ Den här ändringen kommer att påverka alla regler för smart identifiering, f�
 
 * Regler för smart identifiering markerad som för hands version. Dessa regler för smart identifiering stöder inte e-postaviseringar idag.
 
-* Regel för fel avvikelser. Den här regeln börjar riktas mot de nya standard rollerna när den har migrerats från en klassisk avisering till den enhetliga aviserings plattformen (mer information finns [här](../alerts/monitoring-classic-retirement.md).)
+* Regel för fel avvikelser.
 
 ## <a name="how-to-prepare-for-this-change"></a>Hur förbereder du för den här ändringen?
 

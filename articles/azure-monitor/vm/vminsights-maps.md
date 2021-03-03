@@ -1,22 +1,22 @@
 ---
-title: Visa program beroenden med Azure Monitor for VMs
-description: Map är en funktion i Azure Monitor for VMs. Den identifierar automatiskt program komponenter i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. Den här artikeln innehåller information om hur du använder kart funktionen i olika scenarier.
+title: Visa program beroenden med VM Insights
+description: Map är en funktion i VM Insights. Den identifierar automatiskt program komponenter i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. Den här artikeln innehåller information om hur du använder kart funktionen i olika scenarier.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: ea11a2dbff9c05400f24ecfa86c66395032b8ac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 19da3e3e02581ce9fad080bb23bc48dcb9a3ceb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719652"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Använd kart funktionen i Azure Monitor for VMs för att förstå program komponenter
-I Azure Monitor for VMs kan du Visa identifierade program komponenter på virtuella Windows-och Linux-datorer (VM: ar) som körs i Azure eller i din miljö. Du kan titta på de virtuella datorerna på två sätt. Visa en karta direkt från en virtuell dator eller Visa en karta från Azure Monitor för att se komponenterna mellan grupper av virtuella datorer. Den här artikeln hjälper dig att förstå de här två visnings metoderna och hur du använder kart funktionen. 
+# <a name="use-the-map-feature-of-vm-insights-to-understand-application-components"></a>Använd kart funktionen för VM-insikter för att förstå program komponenter
+I VM Insights kan du Visa identifierade program komponenter på virtuella Windows-och Linux-datorer (VM: ar) som körs i Azure eller i din miljö. Du kan titta på de virtuella datorerna på två sätt. Visa en karta direkt från en virtuell dator eller Visa en karta från Azure Monitor för att se komponenterna mellan grupper av virtuella datorer. Den här artikeln hjälper dig att förstå de här två visnings metoderna och hur du använder kart funktionen. 
 
-Information om hur du konfigurerar Azure Monitor for VMs finns i [aktivera Azure Monitor for VMS](../insights/vminsights-enable-overview.md).
+Information om hur du konfigurerar VM Insights finns i [Aktivera VM-insikter](./vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 Logga in på [Azure-portalen](https://portal.azure.com).
@@ -49,7 +49,7 @@ Om du vill att kart funktionen ska visa relevanta aviseringar skapar du en varni
 - Inkludera en sats för att gruppera aviseringar efter dator (till exempel **efter dator intervall 1 minut**).
 - Basera aviseringen på ett mått.
 
-Mer information om Azure-aviseringar och hur du skapar aviserings regler finns [i enhetliga aviseringar i Azure Monitor](../platform/alerts-overview.md).
+Mer information om Azure-aviseringar och hur du skapar aviserings regler finns [i enhetliga aviseringar i Azure Monitor](../alerts/alerts-overview.md).
 
 I det övre högra hörnet beskriver **förklarings** alternativet symboler och roller på kartan. Titta närmare på kartan och flytta den runt genom att använda zoomnings kontrollerna i det nedre högra hörnet. Du kan ställa in zoomnings nivån och passa kartan på sidans storlek.  
 
@@ -85,7 +85,7 @@ Om gruppen innehåller övervakade och oövervakade servrar kan du filtrera serv
 
 ## <a name="view-a-map-from-a-vm"></a>Visa en karta från en virtuell dator 
 
-Så här får du åtkomst till Azure Monitor for VMs direkt från en virtuell dator:
+Få åtkomst till VM Insights direkt från en virtuell dator:
 
 1. I Azure Portal väljer du **Virtual Machines**. 
 2. Välj en virtuell dator i listan. I avsnittet **övervakning** väljer du **insikter**.  
@@ -99,7 +99,7 @@ Som standard visar kartan de senaste 30 minuterna. Om du vill se hur beroenden s
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Visa en karta från en skalnings uppsättning för virtuella datorer
 
-Få åtkomst till Azure Monitor for VMs direkt från en skalnings uppsättning för virtuella datorer:
+Få åtkomst till VM Insights direkt från en skalnings uppsättning för virtuella datorer:
 
 1. I Azure Portal väljer du **skalnings uppsättningar för virtuella datorer**.
 2. Välj en virtuell dator i listan. I avsnittet **övervakning** väljer du **insikter**.  
@@ -128,11 +128,10 @@ I Azure Monitor tillhandahåller Map-funktionen en global vy över dina virtuell
 
 Välj en arbets yta genom att använda **arbets ytans** väljare överst på sidan. Om du har fler än en arbets yta för Log Analytics väljer du den arbets yta som är aktive rad med lösningen och som har virtuella datorer som rapporterar till den. 
 
-**Grupp** väljaren returnerar prenumerationer, resurs grupper, [dator grupper](../platform/computer-groups.md)och virtuella datorers skalnings uppsättningar för datorer som är relaterade till den valda arbets ytan. Ditt val gäller endast för kart funktionen och kan inte överföras till prestanda eller hälsa.
+**Grupp** väljaren returnerar prenumerationer, resurs grupper, [dator grupper](../logs/computer-groups.md)och virtuella datorers skalnings uppsättningar för datorer som är relaterade till den valda arbets ytan. Ditt val gäller endast för kart funktionen och kan inte överföras till prestanda eller hälsa.
 
 Som standard visar kartan de senaste 30 minuterna. Om du vill se hur beroenden som såg ut tidigare kan du fråga efter historiska tidsintervall på upp till en timme. Använd **TimeRange** -väljaren för att köra frågan. Du kan köra en fråga, till exempel under en incident eller för att se status innan en ändring.  
 
 ## <a name="next-steps"></a>Nästa steg
 
-För att identifiera Flask halsar, kontrol lera prestanda och förstå den övergripande användningen av dina virtuella datorer, se [Visa prestanda status för Azure Monitor for VMS](vminsights-performance.md). 
-
+Om du vill identifiera Flask halsar, kontrol lera prestanda och förstå den övergripande användningen av dina virtuella datorer, se [Visa prestanda status för VM-insikter](vminsights-performance.md).

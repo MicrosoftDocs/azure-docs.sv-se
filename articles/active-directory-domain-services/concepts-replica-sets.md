@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 02/26/2021
 ms.author: justinha
-ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620043"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689070"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Replik anger koncept och funktioner för Azure Active Directory Domain Services (för hands version)
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Repliker anger koncept och funktioner för Azure Active Directory Domain Services
 
 När du skapar en Azure Active Directory Domain Services (Azure AD DS)-hanterad domän definierar du ett unikt namn område. Det här namn området är domän namnet, till exempel *aaddscontoso.com* och två domänkontrollanter (DCS) distribueras sedan till den valda Azure-regionen. Den här distributionen av DCs kallas för en replik uppsättning.
 
 Du kan expandera en hanterad domän så att den har fler än en replik uppsättning per Azure AD-klient. Replik uppsättningar kan läggas till i alla peer-kopplat virtuella nätverk i alla Azure-regioner som har stöd för Azure AD DS. Ytterligare replik uppsättningar i olika Azure-regioner ger geografisk haveri beredskap för äldre program om en Azure-region försätts i offlineläge.
-
-Replik uppsättningar är för närvarande en för hands version.
 
 > [!NOTE]
 > Med replik uppsättningar kan du inte distribuera flera unika hanterade domäner i en enda Azure-klient. Varje replik uppsättning innehåller samma data.
@@ -56,15 +54,11 @@ I följande exempel visas en hanterad domän med tre replik uppsättningar för 
 
 Standard-SKU: n för en hanterad domän är *företags* -SKU: n, som stöder flera replik uppsättningar. Om du vill skapa fler replik uppsättningar om du har ändrat till *standard* -SKU: n [uppgraderar du den hanterade domänen](change-sku.md) till *Enterprise* eller *Premium*.
 
-Det maximala antalet replik uppsättningar som stöds under för hands versionen är fyra, inklusive den första repliken som skapades när du skapade den hanterade domänen.
+Det högsta antalet replik uppsättningar som stöds är fyra, inklusive den första repliken som skapas när du skapade den hanterade domänen.
 
 Faktureringen för varje replik uppsättning baseras på SKU: n för domän konfiguration. Om du till exempel har en hanterad domän som använder *Enterprise* -SKU: n och du har tre replik uppsättningar debiteras din prenumeration per timme för var och en av de tre replik uppsättningarna.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>Kan jag använda min produktion hanterade domän med den här för hands versionen?
-
-Replik uppsättningar är en offentlig för hands versions funktion i Azure AD Domain Services. Du kan använda en hanterad domän för produktion, men du måste vara medveten om de support skillnader som finns för funktioner som fortfarande finns i för hands versionen. Mer information om för hands versioner finns [Azure Active Directory Service avtal för för hands versionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>Kan jag skapa en replik uppsättning i en annan prenumeration än min hanterade domän?
 
@@ -72,7 +66,7 @@ Nej. Replik uppsättningar måste vara i samma prenumeration som den hanterade d
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Hur många replik uppsättningar kan jag skapa?
 
-Förhands granskningen är begränsad till högst fyra replik uppsättningar – den inledande replik uppsättningen för den hanterade domänen plus tre ytterligare replik uppsättningar.
+Du kan skapa högst fyra replik uppsättningar – den inledande replik uppsättningen för den hanterade domänen plus tre ytterligare replik uppsättningar.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Hur kommer användar-och grupp information att synkroniseras med mina replik uppsättningar?
 

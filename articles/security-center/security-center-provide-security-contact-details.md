@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d5c8ad0c4d9995a36b95ad2e67878f678887bfd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701985"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurera e-postaviseringar för säkerhets aviseringar 
 
@@ -61,7 +61,7 @@ Du kan skicka e-postmeddelanden till enskilda användare eller till alla använd
 1. Om du vill använda säkerhets kontakt information för din prenumeration väljer du **Spara**.
 
 ## <a name="customize-the-alerts-email-notifications-through-the-api"></a>Anpassa e-postaviseringar via e-post via API: et
-Du kan också hantera dina e-postaviseringar via den tillhandahållna REST API. Fullständig information finns i [SECURITYCONTACTS API-dokumentationen](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+Du kan också hantera dina e-postaviseringar via den tillhandahållna REST API. Fullständig information finns i [SECURITYCONTACTS API-dokumentationen](/rest/api/securitycenter/securitycontacts).
 
 Det här är en exempel begär ande text för förfrågan om att skapa en säkerhets kontakt konfiguration:
 

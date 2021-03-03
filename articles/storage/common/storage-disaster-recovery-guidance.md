@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9a4453c29c52f8821643e93584666c3a6a8e6b4c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379836"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737655"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Haveriberedskap och lagringskontoredundans
 
@@ -55,7 +55,7 @@ Tänk också på följande rekommendationer för att upprätthålla hög tillgä
 
 - **Diskar:** Använd [Azure Backup](https://azure.microsoft.com/services/backup/) för att säkerhetskopiera de virtuella dator diskar som används av dina virtuella Azure-datorer. Överväg också att använda [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) för att skydda dina virtuella datorer i händelse av en regional katastrof.
 - **Blockera blobbar:** Aktivera [mjuk borttagning](../blobs/soft-delete-blob-overview.md) för att skydda mot borttagningar på objekt nivå och skriv över eller kopiera block-blobar till ett annat lagrings konto i en annan region [med AZCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)eller [Azure Data flyttnings bibliotek](storage-use-data-movement-library.md).
-- **Filer:** Använd [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview) för att säkerhetskopiera dina fil resurser. Aktivera även [mjuk borttagning](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) för att skydda mot oavsiktlig fil resurs borttagningar. För GEO-redundans när GRS inte är tillgängligt använder du [AzCopy](./storage-use-azcopy-v10.md) eller [Azure PowerShell](/powershell/module/az.storage/) för att kopiera filerna till ett annat lagrings konto i en annan region.
+- **Filer:** Använd [Azure Backup](../../backup/azure-file-share-backup-overview.md) för att säkerhetskopiera dina fil resurser. Aktivera även [mjuk borttagning](../files/storage-files-prevent-file-share-deletion.md) för att skydda mot oavsiktlig fil resurs borttagningar. För GEO-redundans när GRS inte är tillgängligt använder du [AzCopy](./storage-use-azcopy-v10.md) eller [Azure PowerShell](/powershell/module/az.storage/) för att kopiera filerna till ett annat lagrings konto i en annan region.
 - **Tabeller:** Använd [AzCopy](./storage-use-azcopy-v10.md) för att exportera tabell data till ett annat lagrings konto i en annan region.
 
 ## <a name="track-outages"></a>Spåra avbrott

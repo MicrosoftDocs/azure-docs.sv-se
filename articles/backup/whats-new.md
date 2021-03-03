@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762372"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728186"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -18,6 +18,8 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 
 ## <a name="updates-summary"></a>Uppdaterings Sammanfattning
 
+- Februari 2021
+  - [Säkerhets kopiering för Azure-blobar (i för hands version)](#backup-for-azure-blobs-in-preview)
 - Januari 2021
   - [Säkerhets kopiering av Azure-disk (i för hands version)](#azure-disk-backup-in-preview)
   - [Kryptering i vila med Kundhanterade nycklar (allmän tillgänglighet)](#encryption-at-rest-using-customer-managed-keys)
@@ -34,6 +36,14 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
   - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines (för hands version)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [ZRS (Zone redundant Storage) för säkerhets kopierings data (i för hands version)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Mjuk borttagning för SQL Server och SAP HANA arbets belastningar i virtuella Azure-datorer](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Säkerhets kopiering för Azure-blobar (i för hands version)
+
+Drift säkerhets kopiering för blobbar är en hanterad, lokal data skydds lösning som gör att du kan skydda dina block-blobar från olika data förlust scenarier som skador, BLOB-borttagningar och radering av lagrings kontot. Data lagras lokalt i själva käll lagrings kontot och kan återställas till en vald tidpunkt när det behövs. Det ger dig ett enkelt, säkert och kostnads effektivt sätt att skydda dina blobbar.
+
+Den operativa säkerhets kopieringen för blobbar integreras med Backup Center, bland annat funktioner för säkerhets kopierings hantering, för att tillhandahålla ett fönster med glas som kan hjälpa dig att styra, övervaka, hantera och analysera säkerhets kopior i stor skala.
+
+Mer information finns i [Översikt över drift säkerhets kopiering för Azure-blobbar (i för hands version)](blob-backup-overview.md).
 
 ## <a name="azure-disk-backup-in-preview"></a>Säkerhets kopiering av Azure-disk (i för hands version)
 

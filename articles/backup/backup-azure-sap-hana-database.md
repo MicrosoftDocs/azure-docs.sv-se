@@ -3,12 +3,12 @@ title: Säkerhetskopiera en SAP HANA-databas till Azure med Azure Backup
 description: I den här artikeln lär du dig hur du säkerhetskopierar en SAP HANA-databas till virtuella Azure-datorer med tjänsten Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e7735c4240529cc6fc9bb6470934dd335d22aa77
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831643"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719618"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Säkerhetskopiera SAP HANA-databaser i virtuella Azure-datorer
 
@@ -43,7 +43,7 @@ I följande tabell visas de olika alternativ som du kan använda för att upprä
 
 | **Alternativ**                        | **Fördelar**                                               | **Nackdelar**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Privata slut punkter                 | Tillåt säkerhets kopiering över privata IP-adresser i det virtuella nätverket  <br><br>   Ge detaljerad kontroll över nätverket och valv Sidan | Debiterar standard [avgifter](https://azure.microsoft.com/pricing/details/private-link/) för privata slut punkter |
+| Privata slutpunkter                 | Tillåt säkerhets kopiering över privata IP-adresser i det virtuella nätverket  <br><br>   Ge detaljerad kontroll över nätverket och valv Sidan | Debiterar standard [avgifter](https://azure.microsoft.com/pricing/details/private-link/) för privata slut punkter |
 | NSG service-Taggar                  | Enklare att hantera när intervall ändringar slås samman automatiskt   <br><br>   Inga ytterligare kostnader | Kan endast användas med NSG: er  <br><br>    Ger åtkomst till hela tjänsten |
 | Azure Firewall FQDN-Taggar          | Enklare att hantera eftersom de nödvändiga FQDN-namnen hanteras automatiskt | Kan endast användas med Azure brand vägg                         |
 | Tillåt åtkomst till tjänst-FQDN/IP-adresser | Inga ytterligare kostnader   <br><br>  Fungerar med alla nätverks säkerhetsutrustningar och brand väggar | En stor uppsättning IP-adresser eller FQDN-namn kan krävas för åtkomst   |
@@ -51,7 +51,7 @@ I följande tabell visas de olika alternativ som du kan använda för att upprä
 
 Mer information om hur du använder dessa alternativ delas nedan:
 
-#### <a name="private-endpoints"></a>Privata slut punkter
+#### <a name="private-endpoints"></a>Privata slutpunkter
 
 Med privata slut punkter kan du ansluta säkert från servrar i ett virtuellt nätverk till ditt Recovery Services-valv. Den privata slut punkten använder en IP-adress från VNET-adressutrymmet för ditt valv. Nätverks trafiken mellan resurserna i det virtuella nätverket och valvet överförs över ditt virtuella nätverk och en privat länk i Microsoft stamnät nätverket. Detta eliminerar exponeringen från det offentliga Internet. Läs mer om privata slut punkter för Azure Backup [här](./private-endpoints.md).
 
@@ -172,7 +172,7 @@ Ange princip inställningarna enligt följande:
     ![Princip för differentiell säkerhets kopiering](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > Stegvisa säkerhets kopieringar stöds nu i offentlig för hands version. Du kan välja antingen en differentiell eller en ökning som en daglig säkerhets kopia, men inte båda.
+    > Du kan välja antingen en differentiell eller en ökning som en daglig säkerhets kopia, men inte båda.
 1. I **principen för stegvis säkerhets kopiering** väljer du **Aktivera** för att öppna kontrollerna frekvens och kvarhållning.
     * Högst kan du utlösa en stegvis säkerhets kopiering per dag.
     * Stegvisa säkerhets kopieringar kan behållas i högst 180 dagar. Om du behöver längre kvarhållning måste du använda fullständiga säkerhetskopior.

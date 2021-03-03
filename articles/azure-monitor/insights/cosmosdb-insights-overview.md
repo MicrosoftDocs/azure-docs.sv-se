@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725808"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Utforska Azure Monitor för Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Välj **felen** överst på sidan och **felen** i arbets bokens mall öppnas. De
 
 ![Skärm bild av problem med nedbrytning efter HTTP-begäran](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod |  Description       | 
+| Kod |  Beskrivning       | 
 |-----------|:--------------------|
 | `200 OK`  | En av följande REST-åtgärder lyckades: </br>– Hämta på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en lagrad procedur resurs för att köra den lagrade proceduren.|
 | `201 Created` | En POST-åtgärd för att skapa en resurs har slutförts. |
@@ -87,13 +87,51 @@ Välj **kapacitet** överst på sidan och **kapacitets** delen i arbets boks mal
 
 Precis som med översikts arbets boken kan du välja den nedrullningsbara List rutan bredvid en Azure Cosmos DB-resurs i kolumnen **prenumeration** för att visa en uppdelning av de enskilda behållare som utgör databasen.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Operations
 
-Välj **åtgärder** överst på sidan och **drift** delen av arbets bokens mall öppnas. Det ger dig möjlighet att se dina begär Anden uppdelade efter den typ av förfrågningar som görs. 
+Välj **åtgärder** överst på sidan och **drift** delen av arbets bokens mall öppnas. Det ger dig möjlighet att se dina begär Anden uppdelade efter den typ av förfrågningar som görs.
 
 I exemplet nedan ser du att i `eastus-billingint` huvudsak tar emot Läs begär Anden, men med ett litet antal upsert-och Create-begäranden. `westeurope-billingint`Är skrivskyddad från ett ärende perspektiv, minst de senaste fyra timmarna som arbets boken för närvarande är begränsad till via dess tidsintervalls parameter.
 
-![Arbets bok](./media/cosmosdb-insights-overview/operation.png) 
+![Arbets bok](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Visa från en Azure Cosmos DB resurs
+
+1. Sök efter eller Välj något av dina befintliga Azure Cosmos DB-konton.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Sök efter Azure Cosmos DB." border="true":::
+
+2. När du har navigerat till ditt Azure Cosmos DB-konto i avsnittet övervakning väljer du **insikter (för hands version)** eller **arbets böcker** för att utföra ytterligare analys av data flöde, begär Anden, lagring, tillgänglighet, svars tid, system och konto hantering.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Översikt över Cosmos DB Insights." border="true":::
+
+### <a name="time-range"></a>Tidsintervall
+
+Fältet **tidsintervall** visar som standard data från de **senaste 24 timmarna**. Du kan ändra tidsintervallet för att visa data var som helst under de senaste 5 minuterna till de senaste sju dagarna. Tids intervalls väljaren innehåller också ett **anpassat** läge som gör att du kan ange start-/slutdatum för att visa en anpassad tidsram baserat på tillgängliga data för det valda kontot.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB tidsintervall." border="true":::
+
+### <a name="insights-overview"></a>Översikt över insikter
+
+Fliken **Översikt** visar de vanligaste måtten för det valda Azure Cosmos DB kontot, inklusive:
+
+* Totalt antal förfrågningar
+* Misslyckade förfrågningar (429s)
+* Normaliserad RU-förbrukning (max)
+* Användning av data & index
+* Cosmos DB konto mått per samling
+
+**Totalt antal förfrågningar:** I den här grafen visas en översikt över det totala antalet begär Anden för kontot uppdelat efter status kod. Enheterna längst ned i diagrammet är en summa av den totala antalet begär Anden för perioden.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Diagram över Cosmos DB totalt antal begär Anden." border="true":::
+
+**Misslyckade förfrågningar (429s)**: den här grafen visar en vy över misslyckade förfrågningar med status koden 429. Enheterna längst ned i diagrammet är en summa av de totala misslyckade förfrågningarna för perioden.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Diagram över Cosmos DB misslyckade förfrågningar." border="true":::
+
+**Normaliserad ru-förbrukning (max)**: det här diagrammet ger max procent andelen mellan 0-100% av NORMALISERAde ru-förbruknings enheter för den angivna perioden.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB normaliserad RU-förbrukning." border="true":::
 
 ## <a name="pin-export-and-expand"></a>Fäst, exportera och expandera
 

@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d4a4a2e6e04f8f6247df663aba033d387e66c437
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 1ee0ba89ef56d819fdc7553959a8a37fdbd6f7fe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730658"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Distribuera virtuella datorer på din Azure Stack Edge-enhet via Azure PowerShell
 
-Den här artikeln beskriver hur du skapar och hanterar en virtuell dator på din Azure Stack Edge-enhet med hjälp av Azure PowerShell. Den här artikeln gäller Azure Stack Edge Pro GPU, Azure Stack Edge Pro R och Azure Stack Edge Mini R-enheter.
+Den här artikeln beskriver hur du skapar och hanterar en virtuell dator (VM) på din Azure Stack Edge-enhet med hjälp av Azure PowerShell. Informationen gäller för Azure Stack Edge Pro med GPU (grafisk bearbetnings enhet), Azure Stack Edge Pro R och Azure Stack Edge Mini R-enheter.
 
 ## <a name="vm-deployment-workflow"></a>Arbets flöde för distribution av virtuell dator
 
-Så här ser arbets flödet för distribution:
+Arbets flödet för distribution visas i följande diagram:
 
 ![Diagram över arbets flödet för distribution av virtuella datorer.](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
@@ -30,24 +30,24 @@ Så här ser arbets flödet för distribution:
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 
-## <a name="query-for-built-in-subscription-on-the-device"></a>Fråga efter inbyggd prenumeration på enheten
+## <a name="query-for-a-built-in-subscription-on-the-device"></a>Fråga efter en inbyggd prenumeration på enheten
 
-För Azure Resource Manager stöds endast en enda fast prenumeration som är synlig för användaren. Den här prenumerationen är unik för varje enhet och prenumerations namnet eller prenumerations-ID: t kan inte ändras.
+För Azure Resource Manager stöds endast en enda fast prenumeration som är synlig för användaren. Den här prenumerationen är unik för varje enhet och prenumerations namnet och prenumerations-ID: t kan inte ändras.
 
-Den här prenumerationen innehåller alla resurser som skapas för att skapa virtuella datorer. 
+Prenumerationen innehåller alla resurser som krävs för att skapa virtuella datorer. 
 
 > [!IMPORTANT]
-> Den här prenumerationen skapas när du aktiverar virtuella datorer från Azure Portal och den finns lokalt på enheten.
+> Prenumerationen skapas när du aktiverar virtuella datorer från Azure Portal och den finns lokalt på enheten.
 
-Den här prenumerationen används för att distribuera de virtuella datorerna.
+Prenumerationen används för att distribuera de virtuella datorerna.
 
-1.  Ange följande om du vill visa den här prenumerationen:
+1.  Om du vill visa en lista över prenumerationen kör du följande kommando:
 
     ```powershell
     Get-AzureRmSubscription
     ```
     
-    Här är ett exempel på utdata:
+    Här är några exempel på utdata:
 
     ```powershell
     PS C:\windows\system32> Get-AzureRmSubscription
@@ -59,7 +59,7 @@ Den här prenumerationen används för att distribuera de virtuella datorerna.
     PS C:\windows\system32>
     ```
         
-1. Hämta listan över registrerade resurs leverantörer som körs på enheten. Den här listan innehåller vanligt vis beräkning, nätverk och lagring.
+1. Hämta en lista över de registrerade resurs leverantörer som körs på enheten. Listan innehåller vanligt vis beräkning, nätverk och lagring.
 
     ```powershell
     Get-AzureRMResourceProvider
@@ -68,7 +68,7 @@ Den här prenumerationen används för att distribuera de virtuella datorerna.
     > [!NOTE]
     > Resurs leverantörerna är förregistrerade och kan inte ändras eller ändras.
     
-    Här är ett exempel på utdata:
+    Här är några exempel på utdata:
 
     ```powershell
     Get-AzureRmResourceProvider
@@ -109,7 +109,7 @@ Skapa en Azure-resursgrupp med [New-AzureRmResourceGroup](/powershell/module/az.
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
 ```
 
-Här är ett exempel på utdata:
+Här är några exempel på utdata:
 
 ```powershell
 New-AzureRmResourceGroup -Name rg191113014333 -Location DBELocal 
@@ -118,16 +118,16 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
-Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här är ett lokalt lagrings konto som du använder för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
+Skapa ett nytt lagrings konto med hjälp av resurs gruppen som du skapade i föregående steg. Det här är ett lokalt lagrings konto som du använder för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
 ```
 
 > [!NOTE]
-> Med Azure Resource Manager kan du bara skapa lokala lagrings konton, t. ex. lokalt redundant lagring (standard eller Premium). Information om hur du skapar skiktade lagrings konton finns i [Självstudier: överföra data via lagrings konton med Azure Stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+> Genom att använda Azure Resource Manager kan du bara skapa lokala lagrings konton som lokalt redundant lagring (standard eller Premium). Information om hur du skapar skiktade lagrings konton finns i [Självstudier: överföra data via lagrings konton med Azure Stack Edge Pro med GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
 
-Här är ett exempel på utdata:
+Här är några exempel på utdata:
 
 ```powershell
 New-AzureRmStorageAccount -Name sa191113014333  -ResourceGroupName rg191113014333 -SkuName Standard_LRS -Location DBELocal
@@ -158,7 +158,7 @@ Context                : Microsoft.WindowsAzure.Commands.Common.Storage.LazyAzur
 ExtendedProperties     : {}
 ```
 
-Kör kommandot för att hämta lagrings konto nyckeln `Get-AzureRmStorageAccountKey` . Här är ett exempel på utdata från kommandot:
+Kör kommandot för att hämta lagrings konto nyckeln `Get-AzureRmStorageAccountKey` . Här är några exempel på utdata:
 
 ```powershell
 PS C:\Users\Administrator> Get-AzureRmStorageAccountKey
@@ -177,19 +177,19 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>Lägg till BLOB-URI: n i värd filen
 
-Du har redan lagt till BLOB-URI: n i värd filen för den klient som du använder för att ansluta till Azure Blob Storage i avsnittet [ändra värd filen för slut punkts namn matchning](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Den här posten användes för att lägga till BLOB-URI: n:
+Du har redan lagt till BLOB-URI: n i värd filen för den klient som du använder för att ansluta till Azure Blob Storage i "steg 5: ändra värd filen för slut punkts namn matchning" för att [distribuera virtuella datorer på din Azure Stack Edge-enhet via Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution). Den här posten användes för att lägga till BLOB-URI: n:
 
 \<Azure consistent network services VIP \>\<storage name\>. blob. \<appliance name\> .\<dnsdomain\>
 
 ## <a name="install-certificates"></a>Installera certifikat
 
-Om du använder *https* måste du installera lämpliga certifikat på enheten. I det här fallet installerar du Blob-slutpunktens certifikat. Mer information finns i så här skapar du och laddar upp certifikat i [använda certifikat med Azure Stack Edge Pro GPU-enhet](azure-stack-edge-gpu-manage-certificates.md).
+Om du använder HTTPS måste du installera lämpliga certifikat på enheten. Här installerar du Blob-slutpunktens certifikat. Mer information finns i [använda certifikat med Azure Stack Edge Pro med GPU-enhet](azure-stack-edge-gpu-manage-certificates.md).
 
 ## <a name="upload-a-vhd"></a>Ladda upp en virtuell hårddisk
 
-Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala lagrings kontot som du skapade i föregående steg. Du kan använda ett verktyg som [AzCopy](../storage/common/storage-use-azcopy-v10.md) för att ladda upp den virtuella hård disken till lagrings kontot. 
+Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala lagrings konto som du skapade tidigare. Du kan använda ett verktyg som [AzCopy](../storage/common/storage-use-azcopy-v10.md) för att ladda upp den virtuella hård disken (VHD) till lagrings kontot. 
 
-<!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
+<!--Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you're using with your Azure Stack Edge Pro device.
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -198,9 +198,9 @@ AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storag
 > [!NOTE]
 > Set `BlobType` to `page` for creating a managed disk out of VHD. Set `BlobType` to `block` when you're writing to tiered storage accounts by using AzCopy.
 
-You can download the disk images from Azure Marketplace. For detailed steps, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
+You can download the disk images from Azure Marketplace. For more information, see [Get the virtual disk image from Azure Marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
 
-Here's a sample output using AzCopy 7.3. For more information on this command, see [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
+Here's some example output that uses AzCopy 7.3. For more information about this command, see [Upload VHD file to storage account by using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
 
 
 ```powershell
@@ -220,7 +220,7 @@ $StorageAccountSAS = New-AzureStorageAccountSASToken -Service Blob,File,Queue,Ta
 <AzCopy exe path> cp "Full VHD path" "<BlobEndPoint>/<ContainerName><StorageAccountSAS>"
 ```
 
-Här är ett exempel på utdata: 
+Här är några exempel på utdata: 
 
 ```powershell
 $ContainerName = <ContainerName>
@@ -240,14 +240,14 @@ $StorageAccountSAS = New-AzureStorageAccountSASToken -Service Blob,File,Queue,Ta
 C:\AzCopy.exe  cp "$VHDPath\$VHDFile" "$endPoint$ContainerName$StorageAccountSAS"
 ```
 
-## <a name="create-managed-disks-from-the-vhd"></a>Skapa hanterade diskar från den virtuella hård disken
+## <a name="create-a-managed-disk-from-the-vhd"></a>Skapa en hanterad disk från den virtuella hård disken
 
-Skapa en hanterad disk från den uppladdade virtuella hård disken.
+Kör följande kommando för att skapa en hanterad disk från den överförda virtuella hård disken:
 
 ```powershell
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
-Här är ett exempel på utdata: 
+Här är några exempel på utdata: 
 
 <code>
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Här är ett exempel på utdata. Mer information om den här cmdleten finns på [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
+Här är några exempel på utdata. Mer information om den här cmdleten finns i [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -282,7 +282,7 @@ Tags               : {}
 
 ## <a name="create-a-vm-image-from-the-image-managed-disk"></a>Skapa en avbildning av en virtuell dator från den hanterade avbildnings disken
 
-Använd följande kommando för att skapa en avbildning av en virtuell dator från den hanterade disken. Ersätt värdena inom \< \> med de namn du väljer.
+Kör följande kommando för att skapa en avbildning av en virtuell dator från den hanterade disken. Ersätt *\<Disk name>* , *\<OS type>* , och *\<Disk size>* med verkliga värden.
 
 ```powershell
 $imageConfig = New-AzureRmImageConfig -Location DBELocal
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Här är ett exempel på utdata. Mer information om den här cmdleten finns på [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
+Här är några exempel på utdata. Mer information om den här cmdleten finns i [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -312,9 +312,9 @@ Location             : dbelocal
 Tags                 : {}
 ```
 
-## <a name="create-vm-with-previously-created-resources"></a>Skapa en virtuell dator med tidigare skapade resurser
+## <a name="create-your-vm-with-previously-created-resources"></a>Skapa din virtuella dator med tidigare skapade resurser
 
-Du måste skapa ett virtuellt nätverk och associera ett virtuellt nätverks gränssnitt innan du skapar och distribuerar den virtuella datorn.
+Innan du skapar och distribuerar den virtuella datorn måste du skapa ett virtuellt nätverk och associera ett virtuellt nätverks gränssnitt med det.
 
 > [!IMPORTANT]
 > Följande regler gäller:
@@ -324,7 +324,9 @@ Du måste skapa ett virtuellt nätverk och associera ett virtuellt nätverks gr�
 
 ### <a name="query-the-automatically-created-virtual-network"></a>Fråga det automatiskt skapade virtuella nätverket
 
-När du aktiverar beräkning från det lokala användar gränssnittet på din enhet skapas ett virtuellt nätverk `ASEVNET` automatiskt under `ASERG` resurs gruppen. Använd följande kommando för att fråga det befintliga virtuella nätverket:
+När du aktiverar beräkning från det lokala användar gränssnittet på din enhet skapas ett virtuellt nätverk `ASEVNET` automatiskt under `ASERG` resurs gruppen. 
+
+Använd följande kommando för att fråga det befintliga virtuella nätverket:
 
 ```powershell
 $aRmVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG 
@@ -337,14 +339,14 @@ $aRmVN = New-AzureRmVirtualNetwork -ResourceGroupName <Resource group name> -Nam
 
 ### <a name="create-a-virtual-network-interface-card"></a>Skapa ett kort för virtuellt nätverksgränssnitt
 
-Här är kommandot för att skapa ett virtuellt nätverks gränssnitts kort med hjälp av det virtuella nätverkets Undernäts-ID:
+Om du vill skapa ett virtuellt nätverks gränssnitts kort med hjälp av det virtuella nätverkets undernät-ID kör du följande kommando:
 
 ```powershell
 $ipConfig = New-AzureRmNetworkInterfaceIpConfig -Name <IP config Name> -SubnetId $aRmVN.Subnets[0].Id -PrivateIpAddress <Private IP>
 $Nic = New-AzureRmNetworkInterface -Name <Nic name> -ResourceGroupName <Resource group name> -Location DBELocal -IpConfiguration $ipConfig
 ```
 
-Här är exempel resultatet av dessa kommandon:
+Här är några exempel på utdata:
 
 ```powershell
 PS C:\Users\Administrator> $subNetId=New-AzureRmVirtualNetworkSubnetConfig -Name my-ase-subnet -AddressPrefix "5.5.0.0/16"
@@ -406,7 +408,7 @@ Primary                     : True
 MacAddress                  : 00155D18E432                :
 ```
 
-Om du skapar ett virtuellt nätverkskort för en virtuell dator kan du också skicka den offentliga IP-adressen. I den här instansen returnerar den offentliga IP-adressen den privata IP-adressen. 
+Om du vill skapa ett virtuellt nätverkskort för en virtuell dator kan du också skicka den offentliga IP-adressen. I den här instansen returnerar den offentliga IP-adressen den privata IP-adressen. 
 
 ```powershell
 New-AzureRmPublicIPAddress -Name <Public IP> -ResourceGroupName <ResourceGroupName> -AllocationMethod Static -Location DBELocal
@@ -421,9 +423,11 @@ Nu kan du använda den virtuella dator avbildningen för att skapa en virtuell d
 ```powershell
 $pass = ConvertTo-SecureString "<Password>" -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential("<Enter username>", $pass)
+```
 
-You will use this username, password to login to the VM, once it is created and powered up.
+När du har skapat och skapat den virtuella datorn använder du följande användar namn och lösen ord för att logga in på den.
 
+```powershell
 $VirtualMachine = New-AzureRmVMConfig -VMName <VM name> -VMSize "Standard_D1_v2"
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -<OS type> -ComputerName <Your computer Name> -Credential $cred
@@ -441,19 +445,19 @@ $VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -Id $image
 New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $VirtualMachine -Verbose
 ```
 
-## <a name="connect-to-a-vm"></a>Anslut till en virtuell dator
+## <a name="connect-to-the-vm"></a>Anslut till VM:en
 
-Stegen för att ansluta kan vara olika beroende på om du har skapat ett Windows eller en virtuell Linux-dator.
+Anslutnings anvisningarna kan vara olika beroende på om du har skapat en virtuell Windows-dator eller en virtuell Linux-dator.
 
-### <a name="connect-to-linux-vm"></a>Anslut till virtuell Linux-dator
+### <a name="connect-to-a-linux-vm"></a>Ansluta till en virtuell Linux-dator
 
-Följ dessa steg för att ansluta till en virtuell Linux-dator.
+Gör följande för att ansluta till en virtuell Linux-dator:
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-### <a name="connect-to-windows-vm"></a>Anslut till virtuell Windows-dator
+### <a name="connect-to-a-windows-vm"></a>Ansluta till en virtuell Windows-dator
 
-Följ dessa steg för att ansluta till en virtuell Windows-dator.
+Gör följande för att ansluta till en virtuell Windows-dator:
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
@@ -475,14 +479,14 @@ If you used a public IP address during VM creation, you can use that IP to conne
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-The public IP in this case is the same as the private IP that you passed during the virtual network interface creation.-->
+The public IP in this instance is the same as the private IP that you passed during the virtual network interface creation.-->
 
 
 ## <a name="manage-the-vm"></a>Hantera den virtuella datorn
 
 I följande avsnitt beskrivs några av de vanliga åtgärder som du kan skapa på din Azure Stack Edge Pro-enhet.
 
-### <a name="list-vms-running-on-the-device"></a>Visa lista över virtuella datorer som körs på enheten
+### <a name="list-vms-that-are-running-on-the-device"></a>Lista de virtuella datorer som körs på enheten
 
 Kör följande kommando för att returnera en lista över alla virtuella datorer som körs på din Azure Stack Edge-enhet:
 
@@ -494,10 +498,9 @@ Kör följande kommando för att returnera en lista över alla virtuella datorer
 
 Kör följande cmdlet för att aktivera en virtuell dator som körs på enheten:
 
-
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
-Mer information om den här cmdleten finns på [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Mer information om denna cmdlet finns i [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>Pausa eller stänga av den virtuella datorn
 
@@ -508,11 +511,11 @@ Kör följande cmdlet för att stoppa eller stänga av en virtuell dator som kö
 Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
-Mer information om den här cmdleten finns i [cmdleten Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Mer information om denna cmdlet finns i [cmdleten Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Lägg till en datadisk
 
-Om arbets belastnings kraven på den virtuella datorn ökar kan du behöva lägga till en datadisk.
+Om arbets belastnings kraven på den virtuella datorn ökar kan du behöva lägga till en datadisk. Detta gör du genom att köra följande kommando:
 
 ```powershell
 Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty 
@@ -522,13 +525,13 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 
 ### <a name="delete-the-vm"></a>Ta bort den virtuella datorn
 
-Kör följande cmdlet för att ta bort en virtuell dator från enheten:
+Om du vill ta bort en virtuell dator från enheten kör du följande cmdlet:
 
 ```powershell
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Mer information om den här cmdleten finns i [cmdleten Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
+Mer information om denna cmdlet finns i [cmdleten Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ## <a name="next-steps"></a>Nästa steg
 

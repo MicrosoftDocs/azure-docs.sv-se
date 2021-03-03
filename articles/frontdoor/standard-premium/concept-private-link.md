@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: dead60b9d8e0872f3d46b1f223ccf5e6697cbd90
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715521"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Skydda ditt ursprung med privat länk i Azure front dörr standard/Premium (för hands version)
 
@@ -30,7 +30,7 @@ Med [Azures privata länk](../../private-link/private-link-overview.md) kan du f
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure front dörr Premium SKU kan ansluta till ditt ursprung med hjälp av den privata länk tjänsten. Dina program kan finnas i ditt privata virtuella nätverk eller bakom en PaaS-tjänst, som inte är tillgänglig från offentliga Internet.
+Azure front dörr Premium SKU kan ansluta till ditt ursprung bakom webbapp och lagrings konto med hjälp av den privata länk tjänsten, och ta bort behovet av att ditt ursprung är offentligt tillgängligt.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Arkitektur för privata slut punkter i front dörren":::
 
@@ -38,7 +38,8 @@ När du aktiverar privat länk till ditt ursprung i Azure front dörr Premium-ko
 
 :::image type="content" source="../media/concept-private-link/enable-private-endpoint.png" alt-text="Aktivera privat slut punkt":::
 
-Azure front dörr Premium stöder olika typer av ursprung. Om ditt ursprung finns på en uppsättning virtuella datorer i ditt privata nätverk måste du först skapa en intern standard belastningsutjämnare, aktivera tjänsten för privat länk till standard belastnings utjämningen och sedan välja anpassad typ av ursprung. För konfiguration av privat länk väljer du "Microsoft. Network/PrivateLinkServices som resurs typ. För PaaS-tjänster, till exempel Azure-webbapp och lagrings konto, kan du aktivera Private Link service från motsvarande tjänster först och välja Microsoft. Web/Sites för Web App och Microsoft. Storage/StorageAccounts för privata tjänst typer för lagrings konton.
+> [!NOTE]
+> När du aktiverar ett privat länkat ursprung och godkänner den privata slut punkten conenction tar det några minuter för anslutningen att upprättas. Under den här tiden får förfrågningar till ursprunget ett fel meddelande om front dörren. Fel meddelandet skickas när anslutningen har upprättats.
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -50,6 +51,5 @@ Azures front dörr privata slut punkter får hanteras av plattformen och under p
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du ansluter Azure frontend-dörren till Virtual Machines med hjälp av Private Link service finns i [skapa en privat slut punkt](../../private-link/create-private-endpoint-portal.md).
 * Om du vill ansluta Azure frontend-dörren till din webbapp via Private Link service, se [ansluta till en webbapp med en privat slut punkt](../../private-link/tutorial-private-endpoint-webapp-portal.md).
 * Om du vill ansluta Azure frontend-dörren till ditt lagrings konto via tjänsten privata länkar går [du till Anslut till ett lagrings konto med hjälp av privat slut punkt](../../private-link/tutorial-private-endpoint-storage-portal.md).

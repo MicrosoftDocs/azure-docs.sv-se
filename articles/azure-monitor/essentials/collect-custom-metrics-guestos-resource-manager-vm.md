@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 0ab7d8548494e96b4a7570ef26ccde39456bf690
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0051ec15cafc60af6a0523631f77a9b52294e69c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621366"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731722"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Skicka gäst operativ systemets mått till Azure Monitor Mät lagringen med hjälp av en Azure Resource Manager mall för en virtuell Windows-dator
-Prestanda data från gäst operativ systemet för virtuella Azure-datorer samlas inte in automatiskt som andra [plattforms mått](../insights/monitor-azure-resource.md#monitoring-data). Installera Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md) för att samla in gäst operativ systemets mått i mått databasen så att den kan användas med alla funktioner i Azure Monitor mått, inklusive aviseringar i real tid, diagram, Routning och åtkomst från en REST API. Den här artikeln beskriver processen för att skicka gäst operativ systemets prestanda mått för en virtuell Windows-dator till mått databasen med hjälp av en Resource Manager-mall. 
+Prestanda data från gäst operativ systemet för virtuella Azure-datorer samlas inte in automatiskt som andra [plattforms mått](./monitor-azure-resource.md#monitoring-data). Installera Azure Monitor [Diagnostics-tillägget](../agents/diagnostics-extension-overview.md) för att samla in gäst operativ systemets mått i mått databasen så att den kan användas med alla funktioner i Azure Monitor mått, inklusive aviseringar i real tid, diagram, Routning och åtkomst från en REST API. Den här artikeln beskriver processen för att skicka gäst operativ systemets prestanda mått för en virtuell Windows-dator till mått databasen med hjälp av en Resource Manager-mall. 
 
 > [!NOTE]
 > Mer information om hur du konfigurerar Diagnostics-tillägget för att samla in gäst operativ systemets mått med hjälp av Azure Portal finns i [Installera och konfigurera Windows Azure Diagnostics Extension (wad)](../agents/diagnostics-extension-windows-install.md).
@@ -29,7 +29,7 @@ Om du är nybörjare på Resource Manager-mallar kan du läsa mer om [mall distr
 
 - Du måste antingen ha [Azure PowerShell](/powershell/azure) eller [Azure Cloud Shell](../../cloud-shell/overview.md) installerat.
 
-- Din VM-resurs måste finnas i en [region som stöder anpassade mått](../platform/metrics-custom-overview.md#supported-regions). 
+- Din VM-resurs måste finnas i en [region som stöder anpassade mått](./metrics-custom-overview.md#supported-regions). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Konfigurera Azure Monitor som en data mottagare
@@ -250,7 +250,7 @@ För att distribuera Resource Manager-mallen utnyttjar vi Azure PowerShell.
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > Kom ihåg att [använda en Azure-region som är aktive rad för anpassade mått](../platform/metrics-custom-overview.md).
+   > Kom ihåg att [använda en Azure-region som är aktive rad för anpassade mått](./metrics-custom-overview.md).
 
 1. Kör följande kommandon för att distribuera den virtuella datorn med Resource Manager-mallen.
    > [!NOTE]
@@ -285,4 +285,4 @@ För att distribuera Resource Manager-mallen utnyttjar vi Azure PowerShell.
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [anpassade mått](../platform/metrics-custom-overview.md).
+- Lär dig mer om [anpassade mått](./metrics-custom-overview.md).

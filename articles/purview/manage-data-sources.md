@@ -7,27 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 8714c3c3794186d6c21a0513bd7700764c000b6d
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694791"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694469"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Hantera data källor i Azure avdelningens kontroll (för hands version)
 
-I den här artikeln får du lära dig hur du registrerar nya data källor, hanterar samlingar av data källor och visar källor i Azure avdelningens kontroll (för hands version). Azure avdelningens kontroll stöder följande data Källor:
-
-* SQL Server lokalt
-* Azure Data Lake Storage Gen1 
-* Azure Data Lake Storage Gen2
-* Azure Blob Storage
-* Azure-datautforskaren
-* Azure SQL-databas
-* Hanterad Azure SQL DB-instans
-* Azure Synapse Analytics (tidigare SQL DW)
-* Azure Cosmos DB
-* Power BI
+I den här artikeln får du lära dig hur du registrerar nya data källor, hanterar samlingar av data källor och visar källor i Azure avdelningens kontroll (för hands version)
 
 ## <a name="register-a-new-source"></a>Registrera en ny källa
 

@@ -5,13 +5,13 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 02/10/2021
-ms.openlocfilehash: 006b2838a4e593397f8968e53ba2364d16753a40
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/02/2021
+ms.openlocfilehash: 24dd33495915a9f4d47a00fbbfe9e894df839d4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547068"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715079"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>Migrera virtuella VMware-datorer till Azure (utan agent) – PowerShell
 
@@ -37,22 +37,18 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 Innan du börjar de här självstudierna bör du:
 
 1. Slutför [självstudien: identifiera virtuella VMware-datorer med Server utvärdering](tutorial-discover-vmware.md) för att förbereda Azure och VMware för migrering.
-1. Slutför [självstudien: utvärdera virtuella VMware-datorer för migrering till virtuella Azure-datorer](./tutorial-assess-vmware-azure-vm.md) innan du migrerar dem till Azure.
-1. [Installera AZ PowerShell-modulen](/powershell/azure/install-az-ps)
+2. Slutför [självstudien: utvärdera virtuella VMware-datorer för migrering till virtuella Azure-datorer](./tutorial-assess-vmware-azure-vm.md) innan du migrerar dem till Azure.
+3. [Installera AZ PowerShell-modulen](/powershell/azure/install-az-ps)
 
 ## <a name="2-install-azure-migrate-powershell-module"></a>2. Installera Azure Migrate PowerShell-modul
 
-Azure Migrate PowerShell-modulen är tillgänglig som för hands version. Du måste installera PowerShell-modulen med hjälp av följande kommando.
-
-```azurepowershell-interactive
-Install-Module -Name Az.Migrate
-```
+Azure Migrate PowerShell-modulen är tillgänglig som en del av Azure PowerShell ( `Az` ). Kör `Get-InstalledModule -Name Az.Migrate` kommandot för att kontrol lera om Azure Migrate PowerShell-modulen är installerad på datorn.  
 
 ## <a name="3-sign-in-to-your-microsoft-azure-subscription"></a>3. Logga in på din Microsoft Azure-prenumeration
 
 Logga in på din Azure-prenumeration med cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
-```azurepowershell
+```azurepowershell-interactive
 Connect-AzAccount
 ```
 
@@ -88,12 +84,10 @@ Azure Migrate använder en förenklad [Azure Migrate-apparat](migrate-appliance-
 
 Om du vill hämta en enskild virtuell VMware-dator i ett Azure Migrate-projekt anger du namnet på Azure Migrate projektet ( `ProjectName` ), resurs gruppen för Azure Migrate-projektet ( `ResourceGroupName` ) och namnet på den virtuella datorn ( `DisplayName` ).
 
-> [!IMPORTANT]
-> **Parametervärdet för den virtuella datorns namn ( `DisplayName` ) är Skift läges känsligt**.
 
 ```azurepowershell-interactive
 # Get a specific VMware VM in an Azure Migrate project
-$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM
+$DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName MyTestVM | Format-Table DisplayName, Name, Type
 
 # View discovered server details
 Write-Output $DiscoveredServer
@@ -101,14 +95,14 @@ Write-Output $DiscoveredServer
 
 Vi migrerar den här virtuella datorn som en del av den här självstudien.
 
-Du kan också hämta alla virtuella VMware-datorer i ett Azure Migrate-projekt med hjälp av parametrarna **ProjectName** och **ResourceGroupName** .
+Du kan också hämta alla virtuella VMware-datorer i ett Azure Migrate-projekt med `ProjectName` parametrarna () och ( `ResourceGroupName` ).
 
 ```azurepowershell-interactive
 # Get all VMware VMs in an Azure Migrate project
 $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName
 ```
 
-Om du har flera enheter i ett Azure Migrate projekt kan du använda parametrarna **ProjectName**, **ResourceGroupName** och **ApplianceName** för att hämta alla virtuella datorer som har identifierats med en speciell Azure Migrate-installation.
+Om du har flera enheter i ett Azure Migrate-projekt kan du använda `ProjectName` parametrarna (), ( `ResourceGroupName` ) och () `ApplianceName` för att hämta alla virtuella datorer som har identifierats med en speciell Azure Migrate-installation.
 
 ```azurepowershell-interactive
 # Get all VMware VMs discovered by an Azure Migrate Appliance in an Azure Migrate project
@@ -125,41 +119,42 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 - **Logg lagrings konto**: Azure Migrate-installationen överför replik loggar för virtuella datorer till ett logg lagrings konto. Azure Migrate använder replikeringsinformation på de replik hanterade diskarna.
 - **Nyckel valv**: Azure Migrates enheten använder nyckel valvet för att hantera anslutnings strängar för Service Bus och åtkomst nycklar för de lagrings konton som används i replikeringen.
 
-Innan du replikerar den första virtuella datorn i Azure Migrate-projektet kör du följande skript för att etablera infrastrukturen för replikering. Det här skriptet etablerar och konfigurerar de ovannämnda resurserna så att du kan börja migrera dina virtuella VMware-datorer.
+Innan du replikerar den första virtuella datorn i Azure Migrate-projektet kör du följande kommando för att etablera infrastrukturen för replikering. Med det här kommandot etableras och konfigureras de tidigare resurserna så att du kan börja migrera dina virtuella VMware-datorer.
 
 > [!NOTE]
 > Ett Azure Migrate projekt har endast stöd för migrering till en Azure-region. När du har kört det här skriptet kan du inte ändra den mål region dit du vill migrera dina virtuella VMware-datorer.
-> Du måste köra `Initialize-AzMigrateReplicationInfrastructure` skriptet om du konfigurerar en ny installation i Azure Migrate-projektet.
+> Du måste köra `Initialize-AzMigrateReplicationInfrastructure` kommandot om du konfigurerar en ny installation i Azure Migrate-projektet.
 
-I artikeln initierar vi infrastrukturen för replikering så att vi kan migrera våra virtuella datorer till `Central US` regionen. Du kan [Hämta filen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) från GitHub-lagringsplatsen eller köra den med hjälp av följande kodfragment.
+I artikeln initierar vi infrastrukturen för replikering så att vi kan migrera våra virtuella datorer till `Central US` regionen.
 
 ```azurepowershell-interactive
-# Download the script from Azure Migrate GitHub repository
-Invoke-WebRequest https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-migrate/migrate-at-scale-vmware-agentles/Initialize-AzMigrateReplicationInfrastructure.ps1 -OutFile .\AzMigrateReplicationinfrastructure.ps1
+# Initialize replication infrastructure for the current Migrate project
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject. Name -Scenario agentlessVMware -TargetRegion "CentralUS" 
 
-# Run the script for initializing replication infrastructure for the current Migrate project
-.\AzMigrateReplicationInfrastructure.ps1 -ResourceGroupName $ResourceGroup.ResourceGroupName -ProjectName $MigrateProject.Name -Scenario agentlessVMware -TargetRegion CentralUS
 ```
 
 ## <a name="7-replicate-vms"></a>7. replikera virtuella datorer
 
-När du har slutfört identifieringen och initierat replikeringen kan du påbörja replikering av virtuella VMware-datorer till Azure. Du kan köra upp till 300 replikeringar samtidigt.
+När du har slutfört identifieringen och initierat replikeringen kan du påbörja replikering av virtuella VMware-datorer till Azure. Du kan köra upp till 500 replikeringar samtidigt.
 
 Du kan ange egenskaperna för replikering enligt följande.
 
-- **Mål prenumeration och resurs grupp** – ange den prenumeration och resurs grupp som den virtuella datorn ska migreras till genom att ange resurs grupps-ID: t med hjälp av `TargetResourceGroupId` parametern.
-- **Målets virtuella nätverk och undernät** – ange ID: t för Azure-Virtual Network och namnet på under nätet som den virtuella datorn ska migreras till med `TargetNetworkId` respektive `TargetSubnetName` parametrar.
-- **Namn på virtuell måldator** – ange namnet på den virtuella Azure-dator som ska skapas med hjälp av `TargetVMName` parametern.
-- **Storlek på virtuell måldator** – ange storleken på den virtuella Azure-datorn som ska användas för den REPLIKERADE virtuella datorn med hjälp av `TargetVMSize` parametern. Om du till exempel vill migrera en virtuell dator till D2_v2 virtuell dator i Azure anger du värdet `TargetVMSize` som "Standard_D2_v2".
-- **Licens** – om du vill använda Azure Hybrid-förmån för dina Windows Server-datorer som omfattas av aktiva Software Assurance-eller Windows Server-prenumerationer anger du värdet för `LicenseType` parametern "Windows Server". Annars anger du värdet för `LicenseType` parametern "NoLicenseType".
-- **OS-disk** – ange den unika identifieraren för den disk som innehåller operativ systemets start program och installations program. Det disk-ID som ska användas är egenskapen unik identifierare (UUID) för disken som hämtats med `Get-AzMigrateServer` cmdleten.
-- **Typ av disk** – ange värdet för `DiskType` parametern enligt följande.
-    - Om du vill använda Premium-hanterade diskar anger du "Premium_LRS" som värde för `DiskType` parametern.
-    - Om du vill använda standard SSD-diskar anger du "StandardSSD_LRS" som värde för `DiskType` parametern.
-    - Om du vill använda standard diskar för hård diskar anger du "Standard_LRS" som värde för `DiskType` parametern.
+- **Mål prenumeration och resurs grupp** – ange den prenumeration och resurs grupp som den virtuella datorn ska migreras till genom att ange resurs grupps-ID: t med `TargetResourceGroupId` parametern ().
+- **Målets virtuella nätverk och undernät** – ange ID för Azure-Virtual Network och namnet på under nätet som den virtuella datorn ska migreras till med `TargetNetworkId` parametrarna () `TargetSubnetName` respektive ().
+- **Namn på virtuell måldator** – ange namnet på den virtuella Azure-dator som ska skapas med hjälp av `TargetVMName` parametern ().
+- **Storlek på virtuell måldator** – ange storleken på den virtuella Azure-datorn som ska användas för den REPLIKERADE virtuella datorn med `TargetVMSize` parametern (). Om du till exempel vill migrera en virtuell dator till D2_v2 virtuell dator i Azure anger du värdet för ( `TargetVMSize` ) som "Standard_D2_v2".
+- **Licens** – om du vill använda Azure Hybrid-förmån för dina Windows Server-datorer som omfattas av aktiva Software Assurance-eller Windows Server-prenumerationer anger du värdet för `LicenseType` parametern () som **Windows Server**. Annars anger du värdet för parametern ( `LicenseType` ) som "NoLicenseType".
+- **OS-disk** – ange den unika identifieraren för den disk som innehåller operativ systemets start program och installations program. Det disk-ID som ska användas är egenskapen unik identifierare (UUID) för disken som hämtats med cmdleten [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) .
+- **Typ av disk** – ange värdet för parametern ( `DiskType` ) enligt följande.
+    - Om du vill använda Premium-hanterade diskar anger du "Premium_LRS" som värde för `DiskType` parametern ().
+    - Om du vill använda standard SSD-diskar anger du "StandardSSD_LRS" som värde för `DiskType` parametern ().
+    - Om du vill använda standard diskar för hård diskar anger du "Standard_LRS" som värde för `DiskType` parametern ().
 - **Redundans för infrastruktur** – ange alternativ för infrastrukturens redundans enligt följande.
-    - Tillgänglighets zon för att fästa den migrerade datorn i en angiven tillgänglighets zon i regionen. Använd det här alternativet för att distribuera servrar som utgör en program nivå med flera noder i Tillgänglighetszoner. Det här alternativet är bara tillgängligt om det valda mål området för migreringen stöder Tillgänglighetszoner. Om du vill använda tillgänglighets zoner anger du värdet tillgänglighets zon för `TargetAvailabilityZone` parametern.
-    - Tillgänglighets uppsättning för att placera den migrerade datorn i en tillgänglighets uppsättning. Den valda mål resurs gruppen måste ha en eller flera tillgänglighets uppsättningar för att kunna använda det här alternativet. Ange tillgänglighets uppsättnings-ID för parametern om du vill använda tillgänglighets uppsättning `TargetAvailabilitySet` .
+    - Tillgänglighets zon för att fästa den migrerade datorn i en angiven tillgänglighets zon i regionen. Använd det här alternativet för att distribuera servrar som utgör en program nivå med flera noder i Tillgänglighetszoner. Det här alternativet är bara tillgängligt om det valda mål området för migreringen stöder Tillgänglighetszoner. Om du vill använda tillgänglighets zoner anger du parametern tillgänglighets zon för ( `TargetAvailabilityZone` ).
+    - Tillgänglighets uppsättning för att placera den migrerade datorn i en tillgänglighets uppsättning. Den valda mål resurs gruppen måste ha en eller flera tillgänglighets uppsättningar för att kunna använda det här alternativet. Om du vill använda tillgänglighets uppsättning anger du parametern tillgänglighets uppsättnings-ID för ( `TargetAvailabilitySet` ).
+ - **Starta diagnostik lagrings konto** – om du vill använda ett lagrings konto för startdiagnostik anger du parametern ID för ( `TargetBootDiagnosticStorageAccount` ).
+    -  Det lagrings konto som används för startdiagnostik bör vara i samma prenumeration som du migrerar dina virtuella datorer till.  
+    - Som standard anges inget värde för den här parametern. 
 
 ### <a name="replicate-vms-with-all-disks"></a>Replikera virtuella datorer med alla diskar
 
@@ -187,11 +182,11 @@ Write-Output $MigrateJob.State
 
 ### <a name="replicate-vms-with-select-disks"></a>Replikera virtuella datorer med Välj diskar
 
-Du kan också selektivt replikera diskarna för den identifierade virtuella datorn genom att använda cmdleten [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) och tillhandahålla den som inmatad till parametern **DiskToInclude** i cmdleten [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) . Du kan också använda `New-AzMigrateDiskMapping` cmdlet för att ange olika mål disk typer för varje enskild disk som ska replikeras.
+Du kan också selektivt replikera diskarna för den identifierade virtuella datorn genom att använda cmdleten [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) och tillhandahålla den som inmatad till `DiskToInclude` parametern () i cmdleten [New-AzMigrateServerReplication](/powershell/module/az.migrate/new-azmigrateserverreplication) . Du kan också använda cmdleten [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) för att ange olika mål disk typer för varje enskild disk som ska replikeras.
 
-Ange värden för följande parametrar för `New-AzMigrateDiskMapping` cmdleten.
+Ange värden för följande parametrar för cmdleten [New-AzMigrateDiskMapping](/powershell/module/az.migrate/new-azmigratediskmapping) .
 
-- **DiskId** – ange den unika identifieraren för disken som ska migreras. Det disk-ID som ska användas är egenskapen unik identifierare (UUID) för disken som hämtats med `Get-AzMigrateServer` cmdleten.
+- **DiskId** – ange den unika identifieraren för disken som ska migreras. Det disk-ID som ska användas är egenskapen unik identifierare (UUID) för disken som hämtats med cmdleten [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) .
 - **IsOSDisk** – ange "true" om disken som ska migreras är den virtuella datorns OS-disk, annars "false".
 - **DiskType** – ange vilken typ av disk som ska användas i Azure.
 
@@ -224,7 +219,7 @@ while (($MigrateJob.State -eq 'InProgress') -or ($MigrateJob.State -eq 'NotStart
         sleep 10;
         $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $MigrateJob.State
 ```
 
@@ -238,24 +233,13 @@ Replikeringen sker på följande sätt:
 
 Spåra status för replikeringen med hjälp av cmdleten [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) .
 
-> [!NOTE]
-> Identifierat VM-ID och replikering av VM-ID: n är två olika unika identifierare. Båda dessa identifierare kan användas för att hämta information om en replikerande Server.
 
-### <a name="monitor-replication-using-discovered-vm-identifier"></a>Övervaka replikering med identifierat VM-ID
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
-```
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
 
-### <a name="monitor-replication-using-replicating-vm-identifier"></a>Övervaka replikering med replikering av VM-ID
-
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
+# Retrieve all properties of a replicating VM 
 $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 ```
 
@@ -336,25 +320,28 @@ $job = Get-AzMigrateJob -InputObject $job
 
 Följande egenskaper kan uppdateras för en virtuell dator.
 
-- **VM-namn** – ange namnet på den virtuella Azure-dator som ska skapas med hjälp av parametern **TargetVMName** .
-- **VM-storlek** – ange storleken på den virtuella Azure-datorn som ska användas för den REPLIKERADE virtuella datorn med hjälp av parametern **TargetVMSize** . Om du till exempel vill migrera en virtuell dator till D2_v2 virtuell dator i Azure anger du värdet för **TargetVMSize** som `Standard_D2_v2` .
-- **Virtual Network** -ange ID: t för den Azure-Virtual Network som den virtuella datorn ska migreras till med hjälp av parametern **TargetNetworkId** .
-- **Resurs grupp** – ange ID: t för den resurs grupp som den virtuella datorn ska migreras till genom att ange resurs grupps-ID: t med hjälp av parametern **TargetResourceGroupId** .
-- **Nätverks gränssnitt** – NIC-konfiguration kan anges med cmdleten [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) . Objektet skickas sedan in en indatamängd till parametern **NicToUpdate** i cmdleten [set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) .
+- **VM-namn** – ange namnet på den virtuella Azure-dator som ska skapas med hjälp av [ `TargetVMName` ]-parametern.
+- **VM-storlek** – ange storleken på den virtuella Azure-datorn som ska användas för den REPLIKERADE virtuella datorn med hjälp av [ `TargetVMSize` ]-parametern. Om du till exempel vill migrera en virtuell dator till D2_v2 virtuell dator i Azure anger du värdet för [ `TargetVMSize` ] som `Standard_D2_v2` .
+- **Virtual Network** -ange ID: t för den Azure-Virtual Network som den virtuella datorn ska migreras till med hjälp av `TargetNetworkId` parametern [].
+- **Resurs grupp** – ange ID: t för den resurs grupp som den virtuella datorn ska migreras till genom att ange resurs grupps-ID: t med hjälp av `TargetResourceGroupId` parametern [].
+- **Nätverks gränssnitt** – NIC-konfiguration kan anges med cmdleten [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) . Objektet skickas sedan in en indatamängd till parametern [ `NicToUpdate` ] i cmdleten [set-AzMigrateServerReplication](/powershell/module/az.migrate/set-azmigrateserverreplication) .
 
-    - **Ändra IP-allokering** – ange en statisk IP-adress för ett nätverkskort genom att ange IPv4-adressen som statisk IP för den virtuella datorn med parametern **TargetNicIP** . För att dynamiskt tilldela en IP-adress för ett nätverkskort, ange `auto` som värde för parametern **TargetNicIP** .
-    - Använd värden `Primary` `Secondary` eller `DoNotCreate` parametern **TargetNicSelectionType** för att ange om nätverkskortet ska vara primärt, sekundärt eller inte ska skapas på den migrerade virtuella datorn. Det går bara att ange ett nätverkskort som primärt nätverkskort för den virtuella datorn.
+    - **Ändra IP-allokering** – ange en statisk IP-adress för ett nätverkskort genom att ange IPv4-adressen som statisk IP för den virtuella datorn med `TargetNicIP` parametern []. För att dynamiskt tilldela en IP-adress för ett nätverkskort, ange `auto` som värde för parametern **TargetNicIP** .
+    - Använd värden `Primary` `Secondary` eller `DoNotCreate` för parametern [ `TargetNicSelectionType` ] för att ange om nätverkskortet ska vara primärt, sekundärt eller inte ska skapas på den migrerade virtuella datorn. Det går bara att ange ett nätverkskort som primärt nätverkskort för den virtuella datorn.
     - Om du vill göra ett primärt nätverkskort måste du också ange de andra nätverkskort som ska göras sekundära eller som inte ska skapas på den migrerade virtuella datorn.
-    - Om du vill ändra NÄTVERKSKORTets undernät anger du namnet på under nätet med hjälp av parametern **TargetNicSubnet** .
+    - Om du vill ändra NÄTVERKSKORTets undernät anger du namnet på under nätet med hjälp av parametern [ `TargetNicSubnet` ].
 
- - **Tillgänglighets zon** – du kan använda tillgänglighets zoner genom att ange värdet för tillgänglighets zonen för **TargetAvailabilityZone** -parametern.
- - **Tillgänglighets uppsättning** – Använd tillgänglighets uppsättningen för att ange tillgänglighets UPPSÄTTNINGS-ID för **TargetAvailabilitySet** -parametern.
+ - **Tillgänglighets zon** – du kan använda tillgänglighets zoner genom att ange värdet för tillgänglighets zonen för [ `TargetAvailabilityZone` ]-parametern.
+ - **Tillgänglighets uppsättning** – Använd tillgänglighets uppsättning för att ange värdet för tillgänglighets uppsättning för [ `TargetAvailabilitySet` ]-parametern.
 
-`Get-AzMigrateServerReplication`Cmdleten returnerar ett jobb som kan spåras för att övervaka status för åtgärden.
+Cmdlet [: en get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) returnerar ett jobb som kan spåras för att övervaka status för åtgärden.
 
 ```azurepowershell-interactive
-# Retrieve the replicating VM details by using the discovered VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId $DiscoveredServer.ID
+# List replicating VMs and filter the result for selecting a replicating VM. This cmdlet will not return all properties of the replicating VM.
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -MachineName MyTestVM
+
+# Retrieve all properties of a replicating VM 
+$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
 
 # View NIC details of the replicating server
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
@@ -380,20 +367,11 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
         sleep 10;
         $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
 
-Du kan också lista alla replikerande servrar i ett Azure Migrate projekt och sedan använda den replikerade VM-identifieraren för att uppdatera VM-egenskaperna.
 
-```azurepowershell-interactive
-# List all replicating VMs in an Azure Migrate project and filter the result for selecting the replication VM. This cmdlet will not return all properties of the replicating VM.
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName |
-                     Where-Object MachineName -eq $DiscoveredServer.DisplayName
-
-# Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $ReplicatingServer.Id
-```
 
 ## <a name="11-run-a-test-migration"></a>11. kör en testmigrering
 
@@ -403,7 +381,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 - Testmigrering simulerar migreringen genom att skapa en virtuell Azure-dator med replikerade data (vanligt vis migrera till ett virtuellt nätverk som inte är i Azure-prenumerationen).
 - Du kan använda den replikerade virtuella Azure-datorn för att verifiera migreringen, utföra app-testning och åtgärda eventuella problem före fullständig migrering.
 
-Välj den Azure-Virtual Network som ska användas för testning genom att ange ID: t för det virtuella nätverket med hjälp av parametern **TestNetworkID** .
+Välj den Azure-Virtual Network som ska användas för testning genom att ange ID: t för det virtuella nätverket med hjälp av `TestNetworkID` parametern [].
 
 ```azurepowershell-interactive
 # Retrieve the Azure virtual network created for testing
@@ -418,7 +396,7 @@ while (($TestMigrationJob.State -eq 'InProgress') -or ($TestMigrationJob.State -
         sleep 10;
         $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $TestMigrationJob.State
 ```
 
@@ -434,7 +412,7 @@ while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrat
         sleep 10;
         $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
 }
-#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+# Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $CleanupTestMigrationJob.State
 ```
 
@@ -442,7 +420,7 @@ Write-Output $CleanupTestMigrationJob.State
 
 När du har kontrollerat att testmigreringen fungerar som förväntat kan du migrera den replikerande servern med följande cmdlet. Cmdleten returnerar ett jobb som kan spåras för att övervaka status för åtgärden.
 
-Om du inte vill stänga av käll servern använder du inte **TurnOffSourceServer** -parametern.
+Om du inte vill inaktivera käll servern använder du inte `TurnOffSourceServer` parametern [].
 
 ```azurepowershell-interactive
 # Start migration for a replicating server and turn off source server as part of migration
@@ -472,7 +450,7 @@ Write-Output $MigrateJob.State
            sleep 10;
            $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
    }
-   #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
+   # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
    Write-Output $StopReplicationJob.State
    ```
 

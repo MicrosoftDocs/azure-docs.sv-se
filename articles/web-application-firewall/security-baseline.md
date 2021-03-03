@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1f0b0b36c8f0ed5ede7b5c3113207ae3cce10fd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737417"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azures säkerhets bas linje för Azure Web Application-brandvägg
 
@@ -164,7 +164,7 @@ Azure Sentinel har en inbyggd Azure WAF-arbetsbok som ger en översikt över sä
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
 
 **Vägledning**: skicka WAF-loggarna (Azure Web Application Firewall) till ett anpassat lagrings konto och definiera bevarande principen. Använd Azure Monitor för att ställa in din Log Analytics kvarhållningsperiod för arbets ytor baserat på organisationens krav på efterlevnad.
-- [Konfigurera övervakning för ett lagrings konto](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurera övervakning för ett lagrings konto](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

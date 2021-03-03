@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 64bdbf1005f0283438777b3bb2ba1d3312b6e140
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627964"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714124"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för logg aviserings regler i Azure Monitor
 Den här artikeln innehåller exempel på [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa och konfigurera loggnings fråga aviseringar i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -479,4 +479,4 @@ Följande exempel skapar en regel som kan riktas mot alla resurser.
 ## <a name="next-steps"></a>Nästa steg
 
 * [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
-* [Lär dig mer om aviserings regler](../platform/alerts-overview.md).
+* [Lär dig mer om aviserings regler](./alerts-overview.md).

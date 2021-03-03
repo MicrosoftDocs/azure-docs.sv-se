@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78958dc0f95d2bc7a9e393ac2e769a97f7e92efa
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556448"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726844"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -87,10 +87,11 @@ När du skapar ett lagrings konto väljer du den primära regionen för kontot. 
 
 Azure Storage erbjuder två alternativ för att kopiera data till en sekundär region:
 
-- **Geo-redundant lagring (GRS)** kopierar dina data synkront tre gånger inom en enda fysisk plats i den primära regionen med hjälp av LRS. Därefter kopieras dina data asynkront till en enda fysisk plats i den sekundära regionen.
-- **Geo-Zone-redundant lagring (GZRS)** kopierar dina data synkront över tre tillgänglighets zoner i Azure i den primära regionen med hjälp av ZRS. Därefter kopieras dina data asynkront till en enda fysisk plats i den sekundära regionen.
+- **Geo-redundant lagring (GRS)** kopierar dina data synkront tre gånger inom en enda fysisk plats i den primära regionen med hjälp av LRS. Därefter kopieras dina data asynkront till en enda fysisk plats i den sekundära regionen. I den sekundära regionen kopieras dina data synkront tre gånger med hjälp av LRS.
+- **Geo-Zone-redundant lagring (GZRS)** kopierar dina data synkront över tre tillgänglighets zoner i Azure i den primära regionen med hjälp av ZRS. Därefter kopieras dina data asynkront till en enda fysisk plats i den sekundära regionen. I den sekundära regionen kopieras dina data synkront tre gånger med hjälp av LRS.
 
-Den främsta skillnaden mellan GRS och GZRS är hur data replikeras i den primära regionen. I den sekundära regionen replikeras alltid data synkront under tre gånger med hjälp av LRS. LRS i den sekundära regionen skyddar dina data mot maskin varu problem.
+> [!NOTE]
+> Den främsta skillnaden mellan GRS och GZRS är hur data replikeras i den primära regionen. I den sekundära regionen replikeras alltid data synkront under tre gånger med hjälp av LRS. LRS i den sekundära regionen skyddar dina data mot maskin varu problem.
 
 Med GRS eller GZRS är data i den sekundära regionen inte tillgängliga för Läs-eller skriv åtkomst, såvida det inte finns någon redundansväxling till den sekundära regionen. För Läs behörighet till den sekundära regionen konfigurerar du ditt lagrings konto så att det använder Read-Access Geo-redundant lagring (RA-GRS) eller Läs åtkomst till geo-Zone-redundant lagring (RA-GZRS). Mer information finns i [Läs åtkomst till data i den sekundära regionen](#read-access-to-data-in-the-secondary-region).
 
@@ -180,9 +181,9 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Avbrott-scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | En nod i ett Data Center blir otillgänglig | Ja | Ja | Ja | Ja |
-| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Yes |
-| Ett områdes omfattande avbrott uppstår i den primära regionen | Nej | Nej | Ja<sup>1</sup> | Ja<sup>1</sup> |
-| Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Nej | Nej | Ja (med RA-GRS) | Ja (med RA-GZRS) |
+| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Inga | Ja | Ja<sup>1</sup> | Ja |
+| Ett områdes omfattande avbrott uppstår i den primära regionen | Inga | Inga | Ja<sup>1</sup> | Ja<sup>1</sup> |
+| Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Inga | Inga | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 
 <sup>1</sup> växling vid fel krävs för att återställa Skriv tillgängligheten om den primära regionen blir otillgänglig. Mer information finns i [haveri beredskap och redundans för lagrings konton](storage-disaster-recovery-guidance.md).
 

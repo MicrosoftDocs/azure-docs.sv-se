@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c1e2b6abe378df1450967ee0e1df6021ca0d5744
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650379"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701815"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Åtkomst kontrol listor (ACL: er) i Azure Data Lake Storage Gen2
 
@@ -285,7 +285,7 @@ Roll tilldelningar i Azure ärver. Tilldelnings flödet från prenumerations-, r
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Stöder Data Lake Storage Gen2 arv av ACL: er?
 
-Standard-ACL: er kan användas för att ange ACL: er för nya underordnade under kataloger och filer som skapas under den överordnade katalogen. Om du vill uppdatera ACL: er för befintliga underordnade objekt måste du lägga till, uppdatera eller ta bort ACL: er rekursivt för den önskade katalogpartitionen. Mer information finns i [ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2](recursive-access-control-lists.md). 
+Standard-ACL: er kan användas för att ange ACL: er för nya underordnade under kataloger och filer som skapas under den överordnade katalogen. Om du vill uppdatera ACL: er för befintliga underordnade objekt måste du lägga till, uppdatera eller ta bort ACL: er rekursivt för den önskade katalogpartitionen. Mer information finns i [ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2](#set-access-control-lists). 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Vilka behörigheter krävs för att rekursivt ta bort en katalog och dess innehåll?
 

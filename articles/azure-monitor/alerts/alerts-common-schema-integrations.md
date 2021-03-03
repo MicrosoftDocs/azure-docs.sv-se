@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en logisk app som använder det gemensamma a
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 4553ecc8d2df20ffdf9b76d381ecf3b88d84ef38
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4824c5ab1826260ee1eb3639712d7138c7c85bfe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738675"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Så här integrerar du det vanliga aviserings schemat med Logic Apps
 
@@ -23,8 +23,8 @@ Det [vanliga aviserings schemat](./alerts-common-schema.md) innehåller ett stan
 ## <a name="prerequisites"></a>Förutsättningar 
 
 Den här artikeln förutsätter att läsaren är bekant med 
-* Konfigurera aviserings regler ([mått](../alerts/alerts-metric.md), [logg](../platform/alerts-log.md), [aktivitets logg](../platform/alerts-activity-log.md))
-* Konfigurera [Åtgärds grupper](../platform/action-groups.md)
+* Konfigurera aviserings regler ([mått](../alerts/alerts-metric.md), [logg](./alerts-log.md), [aktivitets logg](./alerts-activity-log.md))
+* Konfigurera [Åtgärds grupper](./action-groups.md)
 * Aktivera det [vanliga aviserings schemat](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) i åtgärds grupper
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Skapa en logisk app som utnyttjar det vanliga aviserings schemat
@@ -137,5 +137,5 @@ Den här artikeln förutsätter att läsaren är bekant med
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Läs mer om åtgärds grupper](../platform/action-groups.md).
+* [Läs mer om åtgärds grupper](./action-groups.md).
 * [Läs mer om det vanliga aviserings schemat](./alerts-common-schema.md).

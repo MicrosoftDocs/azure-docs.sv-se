@@ -1,19 +1,19 @@
 ---
 title: Övervaka ett Azure Kubernetes service (AKS)-kluster distribuerat | Microsoft Docs
-description: Lär dig hur du aktiverar övervakning av ett Azure Kubernetes service-kluster (AKS) med Azure Monitor för behållare som redan har distribuerats i din prenumeration.
+description: Lär dig hur du aktiverar övervakning av ett Azure Kubernetes service-kluster (AKS) med behållar insikter som redan har distribuerats i din prenumeration.
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625295"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717680"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivera övervakning av AKS-kluster (Azure Kubernetes service) redan distribuerat
 
-Den här artikeln beskriver hur du konfigurerar Azure Monitor för behållare för att övervaka hanterade Kubernetes-kluster som finns i [Azure Kubernetes-tjänsten](../../aks/index.yml) som redan har distribuerats i din prenumeration.
+Den här artikeln beskriver hur du konfigurerar behållar insikter för att övervaka hanterade Kubernetes-kluster som finns i [Azure Kubernetes-tjänsten](../../aks/index.yml) som redan har distribuerats i din prenumeration.
 
 Du kan aktivera övervakning av ett AKS-kluster som redan har distribuerats med hjälp av en av de metoder som stöds:
 
@@ -113,13 +113,13 @@ Om du vill aktivera övervakning av ditt AKS-kluster i Azure Portal från Azure 
 
 4. I listan med oövervakade kluster letar du reda på behållaren i listan och klickar på **Aktivera**.
 
-5. På sidan **onboarding to Azure Monitor for containers** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.
+5. På sidan **onboarding to container Insights** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.
     I listan förväljs standard arbets ytan och platsen som AKS-behållaren distribueras till i prenumerationen.
 
     ![Aktivera övervakning av AKS container Insights](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../learn/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som AKS-behållaren distribueras till.
+    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../logs/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som AKS-behållaren distribueras till.
 
 När du har aktiverat övervakning kan det ta ungefär 15 minuter innan du kan visa hälso mått för klustret.
 
@@ -137,13 +137,13 @@ Gör så här för att aktivera övervakning direkt från ett av dina AKS-kluste
 
 5. På sidan Översikt över Kubernetes-tjänsten väljer du **övervakning-Insights**.
 
-6. På sidan **onboarding to Azure Monitor for containers** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.
+6. På sidan **onboarding to container Insights** , om du har en befintlig Log Analytics arbets yta i samma prenumeration som klustret, väljer du den i list rutan.
     I listan förväljs standard arbets ytan och platsen som AKS-behållaren distribueras till i prenumerationen.
 
     ![Aktivera övervakning av hälso tillstånd för AKS-behållare](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../learn/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som AKS-behållaren distribueras till.
+    >Om du vill skapa en ny Log Analytics-arbetsyta för lagring av övervaknings data från klustret, följer du anvisningarna i [skapa en Log Analytics arbets yta](../logs/quick-create-workspace.md). Se till att skapa arbets ytan i samma prenumeration som AKS-behållaren distribueras till.
 
 När du har aktiverat övervakning kan det ta ungefär 15 minuter innan du kan visa användnings data för klustret.
 
@@ -158,7 +158,7 @@ Den här metoden inkluderar två JSON-mallar. En mall anger konfigurationen för
 >Mallen måste distribueras i samma resurs grupp som klustret.
 >
 
-Log Analytics arbets ytan måste skapas innan du aktiverar övervakning med Azure PowerShell eller CLI. Om du vill skapa arbets ytan kan du konfigurera den genom [Azure Resource Manager](../samples/resource-manager-workspace.md), via [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../learn/quick-create-workspace.md).
+Log Analytics arbets ytan måste skapas innan du aktiverar övervakning med Azure PowerShell eller CLI. Om du vill skapa arbets ytan kan du konfigurera den genom [Azure Resource Manager](../logs/resource-manager-workspace.md), via [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)eller i [Azure Portal](../logs/quick-create-workspace.md).
 
 Om du inte känner till konceptet att distribuera resurser med hjälp av en mall, se:
 
@@ -380,4 +380,4 @@ Efter några minuter slutförs kommandot och returnerar JSON-formaterad informat
 
 * Läs [fel söknings guiden](container-insights-troubleshoot.md) om du får problem när du försöker publicera lösningen
 
-* När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt AKS-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) Azure Monitor för behållare.
+* När övervakning har Aktiver ATS för att samla in hälso-och resursutnyttjande för ditt AKS-kluster och arbets belastningar som körs på dem, lär [du dig hur du använder](container-insights-analyze.md) behållar insikter.

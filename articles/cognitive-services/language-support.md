@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5cde7e677bd0121954b01cf9bb8defe45111a5b2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369196"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706290"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Stöd för naturligt språk för Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Med Azure Cognitive Services kan du skapa program som kan se, höra, tala med oc
 Dessa Cognitive Services är språk oberoende och har inga begränsningar baserade på human språk.
 
 * [Avvikelseidentifiering (förhandsversion)](./anomaly-detector/index.yml)
-* [Custom Vision](./Custom-Vision-Service/index.yml)
+* [Custom Vision](./custom-vision-service/index.yml)
 * [Ansiktsigenkänning](./face/index.yml)
 * [Personanpassning](./personalizer/index.yml)
 
@@ -32,7 +32,7 @@ Dessa Cognitive Services är språk oberoende och har inga begränsningar basera
 
 * [Visuellt innehåll](./computer-vision/language-support.md)
 * [Formigenkänning (förhandsversion)](./form-recognizer/language-support.md)
-* [Handskriftsigenkänning (förhandsversion)](./ink-recognizer/language-support.md)
+* [Handskriftsigenkänning (förhandsversion)](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
 * [Video Indexer](../media-services/video-indexer/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>Språk

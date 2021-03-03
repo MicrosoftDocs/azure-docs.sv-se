@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695760"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
@@ -98,11 +98,13 @@ Lägg först till en särskild funktions flagga till din avdelningens kontroll-U
     > För Power BI tillåts registrering och genomsökning av data källor bara för en instans.
 
 
-4. Ge skanningen ett namn. Observera att den enda autentiseringsmetoden som stöds är **hanterad identitet**.
+4. Ge skanningen ett namn. Välj sedan alternativet för att inkludera eller exkludera de personliga arbets ytorna. Observera att den enda autentiseringsmetoden som stöds är **hanterad identitet**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Bild som visar Power BI skannings konfiguration":::
 
-    Skannings namnet måste innehålla mellan 3-63 tecken och får bara innehålla bokstäver, siffror, under streck och bindestreck.  Blank steg är inte tillåtna.
+    > [!Note]
+    > * Om du växlar konfigurationen av en sökning för att ta med eller undanta en personlig arbets yta utlöses en fullständig genomsökning av PowerBI-källan
+    > * Skannings namnet måste innehålla mellan 3-63 tecken och får bara innehålla bokstäver, siffror, under streck och bindestreck. Blank steg är inte tillåtna.
 
 5. Konfigurera en genomsöknings utlösare. Dina alternativ är **en gång**, **var sjunde dag** och **var 30: e dag**.
 

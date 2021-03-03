@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591520"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732878"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Princip för Azure Database for MySQL versions hantering
 
@@ -20,13 +20,18 @@ Den här sidan beskriver principen för Azure Database for MySQL versions hanter
 
 ## <a name="supported--mysql-versions"></a>MySQL-versioner som stöds
 
-Azure Database for MySQL stöder följande databas versioner.
+Azure Database for MySQL har utvecklats från [MySQL Community Edition](https://www.mysql.com/products/community/)med hjälp av lagrings motorn InnoDB. Tjänsten stöder all nuvarande huvud version som stöds av communityn, nämligen MySQL 5,6, 5,7 och 8,0. MySQL använder namngivnings schemat X. Y. Z där X är huvud versionen, Y är den lägre versionen och Z är versionen av fel korrigeringen. Mer information om schemat finns i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
-| Version | Enskild server | Flexibel server (förhandsversion) |
-| ----- | :------: | :----: |
-| MySQL 8 | X |  | 
-| MySQL 5,7 | X | X |
-| MySQL 5,6| X |  |
+> [!NOTE]
+> I distributions alternativet för enskild server används en gateway för att omdirigera anslutningarna till Server instanser. När anslutningen har upprättats visar MySQL-klienten den version av MySQL som har angetts i gatewayen, inte den faktiska versionen som körs på MySQL-serverinstansen. Du kan ta reda på vilken version MySQL-serverinstansen har med hjälp av kommandot `SELECT VERSION();` i MySQL-prompten.
+
+Azure Database for MySQL stöder för närvarande följande högre och lägre versioner av MySQL:
+
+| Version | Enskild server <br/> Aktuell del version |Flexibel server (förhandsversion) <br/> Aktuell del version  |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|
+|MySQL version 5,6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Stöds inte|
+|MySQL version 5,7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL version 8,0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 
 ## <a name="major-version-support"></a>Huvud versions stöd
@@ -50,7 +55,7 @@ I tabellen nedan visas pensions information för MySQLs huvud versioner. Datumen
 Tänk på följande begränsningar när du fortsätter att köra den indragna versionen för varje version av MySQL-databasen:
 - Eftersom communityn inte kommer att släppa några ytterligare fel korrigeringar eller säkerhets korrigeringar, kommer Azure Database for MySQL inte att uppdatera den indragna databas motorn för några buggar eller säkerhets problem eller på annat sätt vidta säkerhets åtgärder avseende den indragna databas motorn. Men Azure fortsätter att utföra periodiskt underhåll och korrigering för värden, operativ systemet, behållare och andra service komponenter.
 - Om ett support ärende som du kan stöta på är relaterat till MySQL-databasen kanske vi inte kan ge support. I sådana fall måste du uppgradera databasen för att vi ska kunna ge dig all support.
-- Du kommer inte att kunna skapa nya databas servrar för den tillbakadragna versionen. Du kommer dock att kunna utföra återställningar av tidpunkter och skapa Läs repliker för dina befintliga servrar.
+<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
 - Nya tjänst funktioner som har utvecklats av Azure Database for MySQL kanske bara är tillgängliga för databas server versioner som stöds.
 - Drift tiden service avtal gäller enbart för Azure Database for MySQL tjänstrelaterade problem och inte avbrotts tid som orsakas av databas motor-relaterade buggar.  
 - I extrema händelse av ett allvarligt hot mot tjänsten som orsakas av säkerhets problemet för MySQL-databasmotorn som identifierats i den indragna databas versionen, kan Azure välja att stoppa beräknings noden på databas servern för att skydda tjänsten först. Du uppmanas att uppgradera servern innan du tar servern online. Under uppgraderings processen skyddas dina data alltid med automatiska säkerhets kopieringar som utförs på tjänsten som kan användas för att återställa till den äldre versionen om du vill. 

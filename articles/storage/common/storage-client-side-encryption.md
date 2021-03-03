@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718530"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side kryptering och Azure Key Vault för Microsoft Azure Storage
 
@@ -132,6 +132,8 @@ Det finns två nödvändiga paket för Key Vault-integrering:
 * Azure. Core innehåller `IKeyEncryptionKey` och- `IKeyEncryptionKeyResolver` gränssnitten. Lagrings klient biblioteket för .NET definierar redan det som ett beroende.
 * Azure. Security. nyckel valv. nycklar (v4. x) innehåller Key Vault REST-klienten, samt kryptografiska klienter som används med kryptering på klient sidan.
 
+Key Vault är utformad för huvud nycklar med högt värde och begränsnings gränser per Key Vault har utformats med detta i åtanke. Från och med Azure. Security. Key Vault. Keys 4.1.0 finns det ingen `IKeyEncryptionKeyResolver` implementering som stöder cachelagring av nycklar. Ska cachelagring vara nödvändigt på grund av begränsningen kan [det här exemplet](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) följas för att mata in ett lagrings lager i en `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` instans.
+
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
 Det finns tre Key Vaults paket:
@@ -140,15 +142,15 @@ Det finns tre Key Vaults paket:
 * Microsoft. Azure. Vault (v3. x) innehåller Key Vault REST-klienten.
 * Microsoft. Azure. nyckel valv. tillägg (v3. x) innehåller tilläggs kod som innehåller implementeringar av krypteringsalgoritmer och en RSAKey och en SymmetricKey. Det beror på namn områdena Core och Key Vault och ger funktioner för att definiera en agg regerings lösare (när användare vill använda flera nyckel leverantörer) och en nyckel lösare för cachelagring. Även om lagrings klient biblioteket inte är direkt beroende av det här paketet, om användarna vill använda Azure Key Vault för att lagra sina nycklar eller använda Key Vault tillägg för att använda de lokala och molnbaserade kryptografiproviders, behöver de paketet.
 
-Mer information om Key Vault användning i V11 finns i [V11-krypterings kod exemplen](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
-
----
-
 Key Vault är utformad för huvud nycklar med högt värde och begränsnings gränser per Key Vault har utformats med detta i åtanke. När du utför kryptering på klient sidan med Key Vault, är den föredragna modellen att använda symmetriska huvud nycklar som lagras som hemligheter i Key Vault och cachelagras lokalt. Användarna måste göra följande:
 
 1. Skapa en hemlighet offline och ladda upp den till Key Vault.
 2. Använd hemlighetens bas-ID som en parameter för att matcha den aktuella versionen av hemligheten för kryptering och cachelagra den här informationen lokalt. Använda CachingKeyResolver för cachelagring; användare förväntas inte implementera sin egen cachelagring Logic.
 3. Använd Caching-matcharen som indatatyp när du skapar krypterings principen.
+
+Mer information om Key Vault användning i V11 finns i [V11-krypterings kod exemplen](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
+
+---
 
 ## <a name="best-practices"></a>Bästa praxis
 

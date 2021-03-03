@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 87951c0366090c1ea4eba490d114771e47bf452c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 304c359296c4fbff79dd367facd8bbb98c8903b5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731450"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Exempel på Resource Manager-mallar för diagnostikinställningar i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa diagnostiska inställningar för en Azure-resurs. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -349,7 +349,7 @@ I följande exempel skapas en diagnostisk inställning för en Azure SQL-databas
 ```
 
 ## <a name="diagnostic-setting-for-recovery-services-vault"></a>Diagnostisk inställning för Recovery Services valv
-I följande exempel skapas en diagnostisk inställning för ett Azure Recovery Services-valv genom att lägga till en resurs av typen `microsoft.recoveryservices/vaults/providers/diagnosticSettings` i mallen. I det här exemplet anges samlings läget enligt beskrivningen i [Azures resurs loggar](../platform/resource-logs.md#send-to-log-analytics-workspace). Ange `Dedicated` eller `AzureDiagnostics` för `logAnalyticsDestinationType` egenskapen.
+I följande exempel skapas en diagnostisk inställning för ett Azure Recovery Services-valv genom att lägga till en resurs av typen `microsoft.recoveryservices/vaults/providers/diagnosticSettings` i mallen. I det här exemplet anges samlings läget enligt beskrivningen i [Azures resurs loggar](./resource-logs.md#send-to-log-analytics-workspace). Ange `Dedicated` eller `AzureDiagnostics` för `logAnalyticsDestinationType` egenskapen.
 
 ### <a name="template-file"></a>Mallfil
 
@@ -812,5 +812,5 @@ I följande exempel skapas en diagnostisk inställning för varje lagrings tjän
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hämta andra exempel mallar för Azure Monitor](../samples/resource-manager-samples.md).
+* [Hämta andra exempel mallar för Azure Monitor](../resource-manager-samples.md).
 * [Läs mer om diagnostikinställningar](../essentials/diagnostic-settings.md).

@@ -5,20 +5,20 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 02/18/2021
 ms.author: victorh
-ms.openlocfilehash: ba344c3b1570c041e1602bdfcde1b3a4055dc396
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 8b1d1007e817bafe3d75f0f0d7c3fc6eb5470854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132762"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729478"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Självstudie: skapa en brand Väggs princip för webb program på Azure-frontend med hjälp av Azure Portal
 
 I den här självstudien får du lära dig hur du skapar en grundläggande WAF-princip (Azure Web Application Firewall) och använder den på en klient dels värd i Azures front dörr.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en WAF-princip
@@ -62,19 +62,21 @@ Börja med att skapa en grundläggande WAF-princip med hanterad standard regel u
 När du skapar en WAF-princip är standard principen för WAF i **identifierings** läge. I **identifierings** läge blockerar WAF inte några begär Anden, i stället loggas begär Anden som matchar WAF-reglerna på WAF-loggar.
 Om du vill se WAF i praktiken kan du ändra läges inställningarna från **identifiering** till **förebyggande**. I **skydds** läge blockeras och loggas begär Anden som matchar regler som definieras i standard regel UPPSÄTTNINGEN (DRS) och loggas på WAF-loggar.
 
- :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="Skärm bild av sidan Skapa en o-F-princip med en granska + skapa-knapp och list rutor för prenumerationen, resurs gruppen och princip namnet." border="false":::
+ :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="Skärm bild av avsnittet princip inställningar. Växla läge är inställt på förebyggande." border="false":::
 
 ### <a name="custom-rules"></a>Anpassade regler
 
 Du kan skapa en anpassad regel genom att välja **Lägg till anpassad regel** under avsnittet **anpassade regler** . Då startas sidan anpassad regel konfiguration. Nedan visas ett exempel på hur du konfigurerar en anpassad regel för att blockera en begäran om frågesträngen innehåller **blockme**.
 
-:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="Skärm bild av sidan Skapa en o-F-princip med en granska + skapa-knapp och list rutor för prenumerationen, resurs gruppen och princip namnet." border="false":::
+:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="Skärm bild av sidan anpassad regel konfiguration som visar inställningarna för en regel som kontrollerar om variabeln QueryString innehåller värdet blockme." border="false":::
 
 ### <a name="default-rule-set-drs"></a>Standard regel uppsättning (DRS)
 
-Azure-hanterad standard regel uppsättning är aktiverat som standard. Om du vill inaktivera en enskild regel i en regel grupp expanderar du reglerna inom den regel gruppen, markerar **kryss rutan** framför regel numret och väljer **inaktivera** på fliken ovan. Om du vill ändra åtgärds typer för enskilda regler i regel uppsättningen markerar du kryss rutan framför regel numret och väljer sedan fliken **ändra åtgärd** ovan.
+Azure-hanterad standard regel uppsättning är aktiverat som standard. Den aktuella standard versionen är DefaultRuleSet_1.0. Från WAF **Managed Rules**, **Assign**, nyligen tillgängliga ruleset Microsoft_DefaultRuleSet_1 1 finns i list rutan.
 
- :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="Skärm bild av sidan Skapa en o-F-princip med en granska + skapa-knapp och list rutor för prenumerationen, resurs gruppen och princip namnet." border="false":::
+Om du vill inaktivera en enskild regel i en regel grupp expanderar du reglerna inom den regel gruppen, markerar **kryss rutan** framför regel numret och väljer **inaktivera** på fliken ovan. Om du vill ändra åtgärds typer för enskilda regler i regel uppsättningen markerar du kryss rutan framför regel numret och väljer sedan fliken **ändra åtgärd** ovan.
+
+ :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="Skärm bild av sidan hanterade regler som visar en regel uppsättning, regel grupper, regler och knapparna Aktivera, inaktivera och ändra åtgärd. En regel har marker ATS." border="false":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

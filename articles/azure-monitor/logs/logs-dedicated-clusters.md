@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 818cf97a640952de79e84184c52c20575a0cc92b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fe7bd4b9f800b59d2c16d4aa3dadd3626c55b7e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707650"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -34,7 +34,7 @@ När klustret har skapats kan det konfigureras och arbets ytorna är länkade ti
 
 Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller [kundhanterad nyckel](../logs/customer-managed-keys.md), och en gång på infrastruktur nivå med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](../logs/customer-managed-keys.md#customer-lockbox-preview) kontroll.
 
-Alla åtgärder på kluster nivån kräver `Microsoft.OperationalInsights/clusters/write` behörigheten åtgärd i klustret. Den här behörigheten kan beviljas via den ägare eller deltagare som innehåller `*/write` åtgärden eller via rollen Log Analytics Contributor som innehåller `Microsoft.OperationalInsights/*` åtgärden. Mer information om Log Analytics behörigheter finns [i Hantera åtkomst till logg data och arbets ytor i Azure Monitor](../platform/manage-access.md). 
+Alla åtgärder på kluster nivån kräver `Microsoft.OperationalInsights/clusters/write` behörigheten åtgärd i klustret. Den här behörigheten kan beviljas via den ägare eller deltagare som innehåller `*/write` åtgärden eller via rollen Log Analytics Contributor som innehåller `Microsoft.OperationalInsights/*` åtgärden. Mer information om Log Analytics behörigheter finns [i Hantera åtkomst till logg data och arbets ytor i Azure Monitor](./manage-access.md). 
 
 
 ## <a name="cluster-pricing-model"></a>Kluster pris modell
@@ -77,7 +77,7 @@ Följande egenskaper måste anges:
 - **Kluster** namn: används i administrations syfte. Användare visas inte för det här namnet.
 - **ResourceGroupName**: för alla Azure-resurser tillhör kluster en resurs grupp. Vi rekommenderar att du använder en central IT-resurs grupp eftersom kluster vanligt vis delas av många team i organisationen. Om du vill ha mer design överväganden kan du läsa om [hur du utformar Azure Monitor loggar distribution](../logs/design-logs-deployment.md)
 - **Plats**: ett kluster finns i en angiven Azure-region. Endast arbets ytor i den här regionen kan länkas till det här klustret.
-- **SkuCapacity**: du måste ange *kapacitets reservations* nivån (SKU) när du skapar en *kluster* resurs. *Kapacitets reservations* nivån kan vara inom INTERVALLET 1 000 gb till 3 000 GB per dag. Du kan uppdatera den i steg om 100 senare om det behövs. Om du behöver kapacitets reservations nivå över 3 000 GB per dag kan du kontakta oss på LAIngestionRate@microsoft.com . Mer information om kluster kostnader finns i [hantera kostnader för Log Analytics kluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **SkuCapacity**: du måste ange *kapacitets reservations* nivån (SKU) när du skapar en *kluster* resurs. *Kapacitets reservations* nivån kan vara inom INTERVALLET 1 000 gb till 3 000 GB per dag. Du kan uppdatera den i steg om 100 senare om det behövs. Om du behöver kapacitets reservations nivå över 3 000 GB per dag kan du kontakta oss på LAIngestionRate@microsoft.com . Mer information om kluster kostnader finns i [hantera kostnader för Log Analytics kluster](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 När du har skapat en *kluster* resurs kan du redigera ytterligare egenskaper som *SKU*, * keyVaultProperties eller *billingType*. Se mer information nedan.
 
@@ -300,7 +300,7 @@ När du har skapat *kluster* resursen och den är helt etablerad kan du redigera
 - **keyVaultProperties** – uppdaterar nyckeln i Azure Key Vault. Se [Uppdatera kluster med information om nyckel identifierare](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details). Den innehåller följande parametrar: *KeyVaultUri*, *attributnamn*, *version*. 
 - **billingType** – egenskapen *billingType* bestämmer fakturerings behörigheten för *kluster* resursen och dess data:
   - **Kluster** (standard) – kapacitets reservationens kostnader för klustret är attribut till *kluster* resursen.
-  - **Arbets ytor** – kapacitets reservationens kostnader för klustret anges i proportion till arbets ytorna i klustret, där *kluster* resursen faktureras viss användning om den totala inmatade data för dagen är under kapacitets reservationen. Se [Log Analytics dedikerade kluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) för att lära dig mer om kluster pris modellen. 
+  - **Arbets ytor** – kapacitets reservationens kostnader för klustret anges i proportion till arbets ytorna i klustret, där *kluster* resursen faktureras viss användning om den totala inmatade data för dagen är under kapacitets reservationen. Se [Log Analytics dedikerade kluster](./manage-cost-storage.md#log-analytics-dedicated-clusters) för att lära dig mer om kluster pris modellen. 
 
 > [!NOTE]
 > Egenskapen *billingType* stöds inte i PowerShell.
@@ -573,5 +573,5 @@ Använd följande REST-anrop för att ta bort ett kluster:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Log Analytics dedikerad kluster fakturering](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- Läs mer om [Log Analytics dedikerad kluster fakturering](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 - Lär dig om [rätt design av Log Analytics-arbetsytor](../logs/design-logs-deployment.md)

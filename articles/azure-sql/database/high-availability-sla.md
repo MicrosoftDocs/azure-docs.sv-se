@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690591"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Zon redundant konfiguration för tjänst nivån generell användning använder [
 
 Zon redundant konfiguration för generell användnings nivån har två nivåer:  
 
-- Ett tillstånds känsligt data lager med databasfiler (. MDF/. ldf) som lagras i ZRS-PFS (Zone-redundant [lagring Premium-filresurs](../../storage/files/storage-how-to-create-premium-fileshare.md). Med [zon-redundant lagring](../../storage/common/storage-redundancy.md) kopieras data-och loggfilerna synkront över tre fysiskt isolerade tillgänglighets zoner i Azure.
+- Ett tillstånds känsligt data lager med databasfiler (. MDF/. ldf) som lagras i ZRS-PFS (Zone-redundant [lagring Premium-filresurs](../../storage/files/storage-how-to-create-file-share.md). Med [zon-redundant lagring](../../storage/common/storage-redundancy.md) kopieras data-och loggfilerna synkront över tre fysiskt isolerade tillgänglighets zoner i Azure.
 - Ett tillstånds löst beräknings lager som kör sqlservr.exes processen och bara innehåller temporära och cachelagrade data, till exempel TempDB, modell databaser på anslutna SSD och planera cache, resurspool och columnstore-pool i minnet. Den här tillstånds lösa noden drivs av Azure-Service Fabric som initierar sqlservr.exe, kontrollerar nodens hälsa och utför redundans till en annan nod vid behov. För zoner med redundanta databaser för generell användning är noder med reserv kapacitet lättillgängliga i andra Tillgänglighetszoner för redundans.
 
 Zonens redundanta version av hög tillgänglighets arkitektur för tjänst nivån generell användning illustreras av följande diagram:

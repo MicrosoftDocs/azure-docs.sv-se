@@ -1,20 +1,24 @@
 ---
 title: Regioner som stöder länkade Log Analytics-arbetsytor
 description: I den här artikeln beskrivs de region mappningar som stöds mellan ett Automation-konto och en Log Analytics arbets yta som relaterar till vissa funktioner i Azure Automation.
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720179"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Regioner som stöder länkade Log Analytics-arbetsytor
 
 I Azure Automation kan du aktivera Uppdateringshantering, Ändringsspårning och inventering och Starta/stoppa virtuella datorer när de inte används funktioner för dina servrar och virtuella datorer. Dessa funktioner är beroende av en Log Analytics arbets yta och måste därför länka arbets ytan till ett Automation-konto. Men endast vissa regioner stöds för att länka ihop dem. I allmänhet gäller mappningen *inte* om du planerar att länka ett Automation-konto till en arbets yta som inte har dessa funktioner aktiverade.
+
+Mappningarna som beskrivs här gäller endast för att länka Log Analytics arbets ytan till ett Automation-konto. De gäller inte för de virtuella datorer som är anslutna till arbets ytan som är länkad till Automation-kontot. Virtuella datorer är inte begränsade till de regioner som stöds av en viss Log Analytics-arbetsyta. De kan finnas i vilken region som helst. Tänk på att om de virtuella datorerna i en annan region kan påverka tillstånds-, lokal-och lands reglerande krav, eller företagets krav på efterlevnad. Att ha virtuella datorer i en annan region kan också införa avgifter för data bandbredd.
+
+Innan du ansluter virtuella datorer till en arbets yta i en annan region bör du granska kraven och potentiella kostnader för att bekräfta och förstå de juridiska och kostnads effekterna.
 
 Den här artikeln innehåller mappningar som stöds för att kunna aktivera och använda de här funktionerna i ditt Automation-konto.
 

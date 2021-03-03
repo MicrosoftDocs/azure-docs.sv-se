@@ -4,12 +4,12 @@ description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du 
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 5fc9b1f75faec7f2be8f9e6126fdacf9697413f6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1a837ac9aa94effa021d5395fb4856d1d5df2e90
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625571"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718156"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
@@ -103,9 +103,9 @@ Om du väljer **Åtgärds grupp** i växlingen, lägger du till en befintlig åt
 ### <a name="action-rule-details"></a>Åtgärds regel information
 
 Konfigurera senast följande information för åtgärds regeln:
-* Name
+* Namn
 * Resurs grupp där den sparas
-* Description
+* Beskrivning
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -209,7 +209,7 @@ Contoso vill undertrycka aviseringar för alla logg aviseringar som genererats f
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scenario 3: åtgärds grupp definierad i en resurs grupp
 
-Contoso har definierat [en mått avisering på en prenumerations nivå](../platform/alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Men det vill definiera de åtgärder som utlöser specifikt för aviseringar som genereras från resurs gruppen **conto sorg**.
+Contoso har definierat [en mått avisering på en prenumerations nivå](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Men det vill definiera de åtgärder som utlöser specifikt för aviseringar som genereras från resurs gruppen **conto sorg**.
 
 **Lösning:** Skapa en åtgärds regel med:
 * Omfång = **conto sorg**
@@ -253,11 +253,11 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 ## <a name="best-practices"></a>Bästa praxis
 
-Logg aviseringar som du skapar med alternativet [antal resultat](../platform/alerts-unified-log.md) genererar en enskild varnings instans genom att använda hela Sök resultatet (som kan sträcka sig över flera datorer). I det här scenariot, om en åtgärds regel använder filtret för **aviserings kontext (nytto Last)** , fungerar det på varnings instansen så länge det finns en matchning. I scenario 2, som beskrivs tidigare, om Sök resultaten för den genererade logg aviseringen innehåller både **dator-01** och **dator-02**, ignoreras hela meddelandet. Ingen avisering har genererats för **dator-02** alls.
+Logg aviseringar som du skapar med alternativet [antal resultat](./alerts-unified-log.md) genererar en enskild varnings instans genom att använda hela Sök resultatet (som kan sträcka sig över flera datorer). I det här scenariot, om en åtgärds regel använder filtret för **aviserings kontext (nytto Last)** , fungerar det på varnings instansen så länge det finns en matchning. I scenario 2, som beskrivs tidigare, om Sök resultaten för den genererade logg aviseringen innehåller både **dator-01** och **dator-02**, ignoreras hela meddelandet. Ingen avisering har genererats för **dator-02** alls.
 
 ![Diagrammet visar åtgärds regler och logg aviseringar med en enda varnings instans markerad.](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-Om du vill använda logg aviseringar med åtgärds regler skapar du logg aviseringar med alternativet [mått mått](../platform/alerts-unified-log.md) . Separata varnings instanser skapas med det här alternativet baserat på dess definierade grupp fält. I scenario 2 genereras separata varnings instanser för **dator-01** och **dator-02**. På grund av åtgärds regeln som beskrivs i scenariot ignoreras endast meddelandet för **dator-01** . Meddelandet för **dator-02** fortsätter att utlösa som vanligt.
+Om du vill använda logg aviseringar med åtgärds regler skapar du logg aviseringar med alternativet [mått mått](./alerts-unified-log.md) . Separata varnings instanser skapas med det här alternativet baserat på dess definierade grupp fält. I scenario 2 genereras separata varnings instanser för **dator-01** och **dator-02**. På grund av åtgärds regeln som beskrivs i scenariot ignoreras endast meddelandet för **dator-01** . Meddelandet för **dator-02** fortsätter att utlösa som vanligt.
 
 ![Åtgärds regler och logg aviseringar (antal resultat)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
@@ -287,7 +287,7 @@ När du har definierat mål resursen för aviserings regeln kan du se en lista �
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Kan jag se de aviseringar som har ignorerats av en åtgärds regel?
 
-På [sidan aviserings lista](../platform/alerts-managing-alert-instances.md)kan du välja ytterligare en kolumn som heter **undertrycks status**. Om meddelandet för en varnings instans ignoreras visas denna status i listan.
+På [sidan aviserings lista](./alerts-managing-alert-instances.md)kan du välja ytterligare en kolumn som heter **undertrycks status**. Om meddelandet för en varnings instans ignoreras visas denna status i listan.
 
 ![Undertryckta varnings instanser](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -321,4 +321,4 @@ För varje varning på VM1 skulle åtgärds gruppen AG1 utlösas en gång. När 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lär dig mer om aviseringar i Azure](../platform/alerts-overview.md)
+- [Lär dig mer om aviseringar i Azure](./alerts-overview.md)

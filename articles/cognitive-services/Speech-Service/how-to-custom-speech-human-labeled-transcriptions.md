@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700039"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Så här skapar du medmärkade avskrifter
 
 Om du vill förbättra igenkännings precisionen, särskilt problem som orsakas när ord tas bort eller på ett felaktigt sätt, bör du använda välmärkta avskrifter tillsammans med dina ljuddata. Vad är medmärkta avskrifter? Det är enkelt, de är ord för ord, orda Grant avskrifter av en ljudfil.
 
-Ett stort exempel på avskrifts data krävs för att förbättra igenkänningen. vi föreslår att du tillhandahåller mellan 10 och 20 timmar avskrifts data. På den här sidan kommer vi att gå igenom rikt linjerna som är utformade för att hjälpa dig att skapa hög kvalitets avskrifter. Den här guiden är uppdelad efter nationella inställningar, med avsnitt för amerikansk engelska, mandariner kinesiska och tyska.
+Ett stort exempel på avskrifts data krävs för att förbättra igenkänningen. vi föreslår att du tillhandahåller mellan 1 och 20 timmar avskrifts data. Tal tjänsten kommer att använda upp till 20 timmars ljud för utbildning. På den här sidan kommer vi att gå igenom rikt linjerna som är utformade för att hjälpa dig att skapa hög kvalitets avskrifter. Den här guiden är uppdelad efter nationella inställningar, med avsnitt för amerikansk engelska, mandariner kinesiska och tyska.
 
 > [!NOTE]
 > Alla bas modeller stöder inte anpassning med ljudfiler. Om en bas modell inte stöder den, kommer träningen bara att använda texten i avskrifterna på samma sätt som relaterad text används. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.

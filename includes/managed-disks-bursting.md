@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 634deb655620f99c7b7b2b55819c58308eaa5a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f85f2770b98507618d5cbfdec1b55f397c7f514
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275173"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750769"
 ---
-På Azure erbjuder vi möjlighet att öka prestandan för disk lagring IOPS och MB/s, vilket kallas burst-överföring på både Virtual Machines och diskar. Bursting är användbart i många fall, till exempel vid hantering av oväntad disk trafik eller bearbetning av batch-jobb. Du kan effektivt utnyttja VM och disknivå-överföring för att uppnå fantastiska bas linje-och burst-prestanda både på den virtuella datorn och på hård disken. På så sätt kan du få bra prestanda och prestanda för hög prestanda både för din virtuella dator och disk. 
+Azure ger möjlighet att öka prestanda för disk lagring IOPS och MB/s. Detta kallas för bursting för både virtuella datorer och diskar. Du kan effektivt utnyttja VM och disk-burst för att få bättre prestanda för att överföra både virtuella datorer och diskar.
 
-Observera att bursting på diskar och virtuella datorer är oberoende av varandra. Om du har en burst-disk behöver du inte en virtuell dator med burst-överföring för att tillåta att disken får burst. Om du har en virtuell dator med burst-överföring behöver du inte en mellanliggande disk för att tillåta att din virtuella dator får burst. 
+Burst-överföring för virtuella Azure-datorer och disk resurser är inte beroende av varandra. Du behöver inte ha en burst-kompatibel virtuell dator för en ansluten burst-kompatibel disk till burst. På samma sätt behöver du inte ha en burst-kompatibel disk ansluten till den virtuella datorn med burst-kapacitet för att den virtuella datorn ska kunna överföras till burst.

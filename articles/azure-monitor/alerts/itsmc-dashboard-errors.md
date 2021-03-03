@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0b0dd584aee4a7647a3028ea20b517c0d74a330a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734748"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Anslutnings status fel i ITSMC-instrumentpanelen
 
@@ -56,7 +56,9 @@ I följande avsnitt beskrivs vanliga fel som visas i avsnittet anslutnings statu
 
 ## <a name="invalid-refresh-token"></a>Ogiltig uppdateringstoken
 
-**Fel**: "AccessToken och RefreshToken är ogiltiga. Användaren måste autentisera igen. "
+**Fel**: 
+  * "AccessToken och RefreshToken är ogiltiga. Användaren måste autentisera igen. "
+  * "Det gick inte att synkronisera mallars konfigurationen för händelse, avisering, incident. Mer information finns i undantags meddelandet. "
 
 **Orsak**: en uppdaterad token har upphört att gälla.
 

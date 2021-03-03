@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2021
-ms.openlocfilehash: ffdafbe991d3cd78e45c4804fd6cc5377099acbc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29164bbb205e9f3ad59ac28200b5c6cd1e47bf39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589414"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707582"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisera data från Azure Monitor
 Den här artikeln innehåller en översikt över tillgängliga metoder för att visualisera logg-och mått data som lagras i Azure Monitor.
@@ -138,7 +138,7 @@ Med [vyer i Azure Monitor](visualize/view-designer.md) kan du skapa anpassade vi
 - Frågor är begränsade till svars storlek på 8 MB och frågekörningen på 110 sekunder.
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [data som samlas in av Azure Monitor](/data-platform.md).
+- Lär dig mer om [data som samlas in av Azure Monitor](data-platform.md).
 - Lär dig om [Azure-instrumentpaneler](../azure-portal/azure-portal-dashboards.md).
 - Läs mer om [Metrics Explorer](essentials/metrics-getting-started.md)
 - Lär dig mer om [arbets böcker](./visualize/workbooks-overview.md).

@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712223"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Beräknings-och lagrings alternativ i Azure Database for PostgreSQL-flexibel Server
 
@@ -120,6 +120,9 @@ Du kan övervaka i/O-förbrukningen i Azure Portal eller genom att använda Azur
 
 När det markeras med en \* begränsas IOPS av den VM-typ som du har valt. Annars begränsas IOPS av den valda lagrings storleken.
 
+>[!NOTE]
+> Du kan se högre IOPS i måtten på grund av disk nivå överföring. Mer information finns i [dokumentationen](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) . 
+
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximal I/O-bandbredd (MiB/s) för din konfiguration
 
 |SKU-namn            |Lagrings storlek, GiB                             |32 |64 |128 |256 |512  |1 024|2 048|4 096|8 192 |16 384|
@@ -147,7 +150,7 @@ När det markeras med en \* begränsas IOPS av den VM-typ som du har valt. Annar
 
 När du markerar med en \* begränsas i/O-bandbredden av den VM-typ som du har valt. Annars är I/O-bandbredden begränsad av den valda lagrings storleken.
 
-### <a name="reaching-the-storage-limit"></a>Nått lagrings gränsen
+### <a name="reaching-the-storage-limit"></a>Lagringsgränsen är nådd
 
 När du når lagrings gränsen börjar servern att returnera fel och förhindra ytterligare ändringar. Detta kan också orsaka problem med andra operativa aktiviteter, t. ex. säkerhets kopiering och WAL arkivering.
 

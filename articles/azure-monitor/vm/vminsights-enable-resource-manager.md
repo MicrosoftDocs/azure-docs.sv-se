@@ -1,20 +1,20 @@
 ---
-title: Aktivera Azure Monitor for VMs med Resource Manager-mallar
-description: I den här artikeln beskrivs hur du aktiverar Azure Monitor for VMs för en eller flera virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med Azure PowerShell eller Azure Resource Manager mallar.
+title: Aktivera VM Insights med Resource Manager-mallar
+description: I den här artikeln beskrivs hur du aktiverar VM Insights för en eller flera virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure PowerShell eller Azure Resource Manager mallar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: a719be730c76d8e334195fdc9b35bbcad0d06b13
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625126"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707497"
 ---
-# <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>Aktivera Azure Monitor for VMs med Resource Manager-mallar
-I den här artikeln beskrivs hur du aktiverar Azure Monitor for VMs för en virtuell dator eller skalnings uppsättning för virtuella datorer med hjälp av Resource Manager-mallar. Den här proceduren kan användas för följande:
+# <a name="enable-vm-insights-using-resource-manager-templates"></a>Aktivera VM Insights med Resource Manager-mallar
+I den här artikeln beskrivs hur du aktiverar VM Insights för en virtuell dator eller skalnings uppsättning för virtuella datorer med hjälp av Resource Manager-mallar. Den här proceduren kan användas för följande:
 
 - Virtuell Azure-dator
 - Skalnings uppsättning för virtuella Azure-datorer
@@ -22,8 +22,8 @@ I den här artikeln beskrivs hur du aktiverar Azure Monitor for VMs för en virt
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa och konfigurera en Log Analytics-arbetsyta](../insights/vminsights-configure-workspace.md). 
-- Se [operativ system som stöds](../insights/vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
+- [Skapa och konfigurera en Log Analytics-arbetsyta](./vminsights-configure-workspace.md). 
+- Se [operativ system som stöds](./vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att operativ systemet för den virtuella datorn eller skalnings uppsättningen för virtuella datorer som du aktiverar stöds. 
 
 ## <a name="resource-manager-templates"></a>Mallar för Resurshanteraren
 
@@ -37,14 +37,14 @@ Azure Resource Manager mallar finns i en arkivfil (. zip) som du kan [Ladda ned]
 
 Nedladdnings filen innehåller följande mallar för olika scenarier:
 
-- **ExistingVmOnboarding** -mallen aktiverar Azure Monitor for VMS om den virtuella datorn redan finns.
-- **NewVmOnboarding** -mallen skapar en virtuell dator och aktiverar Azure Monitor for VMS för att övervaka den.
-- **ExistingVmssOnboarding** -mallen aktiverar Azure Monitor for VMS om den virtuella datorns skal uppsättning redan finns.
-- **NewVmssOnboarding** -mallen skapar skalnings uppsättningar för virtuella datorer och aktiverar Azure Monitor for VMS för att övervaka dem.
-- **ConfigureWorkspace** -mallen konfigurerar Log Analytics arbets ytan till att stödja Azure Monitor for VMS genom att aktivera lösningar och samling av prestanda räknare för Linux och Windows-operativsystem.
+- **ExistingVmOnboarding** -mallen aktiverar VM-insikter om den virtuella datorn redan finns.
+- **NewVmOnboarding** -mallen skapar en virtuell dator och aktiverar VM-insikter för att övervaka den.
+- **ExistingVmssOnboarding** -mallen aktiverar VM-insikter om den virtuella datorns skalnings uppsättning redan finns.
+- **NewVmssOnboarding** -mallen skapar skalnings uppsättningar för virtuella datorer och aktiverar VM-insikter för att övervaka dem.
+- **ConfigureWorkspace** -mallen konfigurerar din Log Analytics arbets yta så att den stöder VM-insikter genom att aktivera lösningar och samling av prestanda räknare för Linux och Windows-operativsystem.
 
 >[!NOTE]
->Om den virtuella datorns skalnings uppsättningar redan finns och uppgraderings principen är inställd på **manuell**, aktive ras Azure Monitor for VMS inte för instanser som standard när du har kört **ExistingVmssOnboarding** Azure Resource Manager-mallen. Du måste uppgradera instanserna manuellt.
+>Om den virtuella datorns skalnings uppsättningar redan finns och uppgraderings principen är inställd på **manuell**, aktive ras inte VM-insikter för instanser som standard när du har kört **ExistingVmssOnboarding** Azure Resource Manager-mallen. Du måste uppgradera instanserna manuellt.
 
 ## <a name="deploy-templates"></a>Distribuera mallar
 Mallarna kan distribueras med [valfri distributions metod för Resource Manager-mallar](../../azure-resource-manager/templates/deploy-powershell.md) , inklusive följande exempel med POWERSHELL och CLI.
@@ -62,8 +62,8 @@ az deployment group create --resource-group <ResourceGroupName> --template-file 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när övervakning är aktiverat för dina virtuella datorer är den här informationen tillgänglig för analys med Azure Monitor for VMs.
+Nu när övervakning har Aktiver ATS för dina virtuella datorer är den här informationen tillgänglig för analys med VM-insikter.
 
-- Information om hur du visar identifierade program beroenden finns i [visa Azure Monitor for VMS karta](vminsights-maps.md).
+- Information om hur du visar identifierade program beroenden finns i [Visa översikt över VM-insikter](vminsights-maps.md).
 
 - Information om hur du identifierar Flask halsar och övergripande användning med den virtuella datorns prestanda finns i [Visa prestanda för virtuella Azure-datorer](vminsights-performance.md).

@@ -4,19 +4,21 @@ description: Azure-säkerhet för benchmark v2-loggning och hot identifiering
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2a0ce52c094739ffbbce2f93a41b2533222066b8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576817"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720689"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Säkerhets kontroll v2: loggning och hot identifiering
 
-Loggning och hot identifiering omfattar kontroller för att identifiera hot på Azure och aktivera, samla in och lagra gransknings loggar för Azure-tjänster. Detta inkluderar aktivering av identifierings-, undersöknings-och reparations processer med kontroller för att generera aviseringar med hög kvalitet med inbyggd hot identifiering i Azure-tjänster. den omfattar också insamling av loggar med Azure Monitor, centraliserad säkerhets analys med Azure Sentinel, tidssynkronisering och logg kvarhållning. 
+Loggning och hot identifiering omfattar kontroller för att identifiera hot på Azure och aktivera, samla in och lagra gransknings loggar för Azure-tjänster. Detta inkluderar aktivering av identifierings-, undersöknings-och reparations processer med kontroller för att generera aviseringar med hög kvalitet med inbyggd hot identifiering i Azure-tjänster. den omfattar också insamling av loggar med Azure Monitor, centraliserad säkerhets analys med Azure Sentinel, tidssynkronisering och logg kvarhållning.
+
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: loggning och hot identifiering](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
 
@@ -46,7 +48,7 @@ Använd dessutom Azure Sentinel för att bygga analys regler, som rör hot som m
 
 - [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -83,9 +85,9 @@ Azure Security Center kan även Varna vid vissa misstänkta aktiviteter, till ex
 
 - [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -95,7 +97,9 @@ Azure Security Center kan även Varna vid vissa misstänkta aktiviteter, till ex
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
-Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG), NSG Flow-loggar, Azure Firewall-loggar och WAF-loggar (Web Application Firewall) för säkerhets analys för att stödja incident undersökningar, Hot jakt och generering av säkerhets aviseringar. Du kan skicka flödes loggarna till en Azure Monitor Log Analytics arbets yta och sedan använda Trafikanalys för att ge insikter. Se till att du samlar in DNS-frågegrupper för att hjälpa till att korrelera andra nätverks data.
+Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG), NSG Flow-loggar, Azure Firewall-loggar och WAF-loggar (Web Application Firewall) för säkerhets analys för att stödja incident undersökningar, Hot jakt och generering av säkerhets aviseringar. Du kan skicka flödes loggarna till en Azure Monitor Log Analytics arbets yta och sedan använda Trafikanalys för att ge insikter.
+
+Se till att du samlar in DNS-frågegrupper för att hjälpa till att korrelera andra nätverks data.
 
 - [Så här aktiverar du flödes loggar för nätverks säkerhets grupper](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -117,7 +121,7 @@ Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG), NSG
 
 - [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
+- [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -131,7 +135,7 @@ Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG), NSG
 
 Aktivera loggning för Azure-resurser för att uppfylla kraven för efterlevnad, Hot identifiering, jakt och incident undersökning. 
 
-Du kan använda Azure Security Center och Azure Policy för att aktivera resurs loggar och logga data insamling på Azure-resurser för åtkomst till gransknings-, säkerhets-och resurs loggar. Aktivitets loggar, som är automatiskt tillgängliga, innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element. 
+Du kan använda Azure Security Center och Azure Policy för att aktivera resurs loggar och logga data insamling på Azure-resurser för åtkomst till gransknings-, säkerhets-och resurs loggar. Aktivitets loggar, som är automatiskt tillgängliga, innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
 
 - [Förstå loggning och olika logg typer i Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
@@ -145,7 +149,7 @@ Du kan använda Azure Security Center och Azure Policy för att aktivera resurs 
 
 Infrastruktur- och slutpunktssäkerhet 
 
-- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -161,7 +165,7 @@ Se till att du integrerar Azures aktivitets loggar i den centrala loggningen. Ma
 
 Du kan också aktivera och publicera data till Azure Sentinel eller en SIEM från tredje part.
 
-Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta. 
+Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
 
 - [Samla in plattforms loggar och mått med Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
@@ -189,7 +193,7 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 
 - [Ändra data lagrings perioden i Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Konfigurera bevarande princip för Azure Storage konto loggar](../../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Konfigurera bevarande princip för Azure Storage konto loggar](../../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 - [Azure Security Center aviseringar och rekommendationer exportera](../../security-center/continuous-export.md)
 
@@ -199,9 +203,9 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Hantering av säkerhetsefterlevnad](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -211,7 +215,7 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
-Microsoft hanterar tids källor för de flesta Azure-PaaS och SaaS-tjänster. För dina virtuella datorer använder du Microsoft standard NTP-server för tidssynkronisering om du inte har ett speciellt krav.  Om du behöver skapa en egen NTP-server (Network Time Protocol) ser du till att port 123 för UDP-tjänsten skyddas.
+Microsoft hanterar tids källor för de flesta Azure-PaaS och SaaS-tjänster. För dina virtuella datorer använder du Microsoft standard NTP-server för tidssynkronisering om du inte har ett speciellt krav. Om du behöver skapa en egen NTP-server (Network Time Protocol) ser du till att port 123 för UDP-tjänsten skyddas.
 
 Alla loggar som genereras av resurser i Azure tillhandahåller tidsstämplar med tids zonen som anges som standard.
 

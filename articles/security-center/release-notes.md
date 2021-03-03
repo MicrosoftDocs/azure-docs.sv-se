@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 02/18/2021
 ms.author: memildin
-ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e34d5520e13d45d15079a5f11775d2ef930fc62a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727098"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -37,9 +37,10 @@ Uppdateringar i februari inkluderar:
 
 - [Sidan nya säkerhets aviseringar i Azure Portal som publiceras för allmän tillgänglighet (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Microsoft Defender för slut punkts integrering med Azure Defender stöder nu Windows Server 2019 och Windows 10 Virtual Desktop (WVD) (för hands version)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Direkt länk till princip från rekommendations informations sida](#direct-link-to-policy-from-recommendation-details-page)
 - [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
-- [Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [Förbättringar av till gångs inventerings Sidan](#asset-inventory-page-enhancements)
 
 
@@ -75,6 +76,17 @@ Läs mer i [metod tips för arbets belastnings skydd med Kubernetes-åtkomstkont
 > Även om rekommendationerna var i för hands version visade de inte en AKS-klusterresurs, och de inkluderades inte i beräkningarna av dina säkra poäng. med detta GA-meddelande kommer dessa att ingå i Poäng beräkningen. Om du inte redan har reparerat dem kan det leda till en lätt inverkan på dina säkra poäng. Åtgärda dem när det är möjligt enligt beskrivningen i [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
 
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Microsoft Defender för slut punkts integrering med Azure Defender stöder nu Windows Server 2019 och Windows 10 Virtual Desktop (WVD) (för hands version)
+
+Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts säkerhets lösning. Den ger riskfylld sårbarhets hantering och utvärdering samt slut punkts identifiering och-svar (EDR). En fullständig lista över fördelarna med att använda Defender för slut punkt tillsammans med Azure Security Center finns i [skydda dina slut punkter med Security Center s integrerade EDR-lösning: Microsoft Defender för slut punkt](security-center-wdatp.md).
+
+När du aktiverar Azure Defender för servrar på en Windows-Server ingår en licens för Defender för slut punkt i planen. Om du redan har aktiverat Azure Defender för servrar och du har Windows 2019-servrar i din prenumeration tar de automatiskt emot Defender för slut punkten med denna uppdatering. Ingen manuell åtgärd krävs. 
+
+Support har nu utökats till att omfatta Windows Server 2019 och [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md).
+
+> [!NOTE]
+> Om du aktiverar Defender för slut punkt på en dator med Windows Server 2019 kontrollerar du att den uppfyller de krav som beskrivs i [aktivera Microsoft Defender för slut punkts integrering](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration).
+
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Direkt länk till princip från rekommendations informations sida
 
 När du granskar informationen om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip finns det en ny länk från rekommendations informations sidan:
@@ -91,9 +103,12 @@ Om du granskar listan över rekommendationer i [referens guiden för säkerhets 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng
 Rekommendations **känsliga data i SQL-databaserna ska klassificeras** inte längre påverkar dina säkra poäng. Detta är den enda rekommendationen i säkerhets kontrollen **tillämpa data klassificering** , så att kontrollen nu har ett säkert Poäng värde på 0.
 
+En fullständig lista över alla säkerhets kontroller i Security Center, tillsammans med deras resultat och en lista över rekommendationerna, finns i [säkerhets kontroller och deras rekommendationer](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)
 Vi har lagt till en tredje datatyp till Utlösar alternativen för arbets flödes automatiseringar: ändringar i regelefterlevnad.
+
+Lär dig hur du använder automatiserings verktygen för arbets flöde i [automatiserade svar på Security Center utlösare](workflow-automation.md).
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar i regelefterlevnad för att utlösa en arbets flödes automatisering" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 

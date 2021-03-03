@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: makromer
-ms.openlocfilehash: 3b97f09c2b6f4c5f5352bbaa081e0bcae900ebd5
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 12b640fd97f48e293320593b33ab2fdc54980c0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808426"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716303"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-data-factory-data-flows"></a>Hur en reservations rabatt tillämpas på Azure Data Factory data flöden
 
@@ -32,7 +32,7 @@ Följande exempel visar hur den reserverade kapacitets rabatten för ADF-datafl�
 - Scenario 1: du köper en data flödes reservation i en timme med 80 kärnor av minnesoptimerade data genom att ange 80 som kvantitet för minnesoptimerade beräknings typ. Du kör ett data flöde med en Azure integration runtime inställd på 144 kärnor av minne optimerat i en timme. Du debiteras priset för betala per användning för 64 kärnor i data flödes användningen i en timme. Du får reservations rabatten i en timme med 80 kärnor av minnesoptimerade användning.
 - Scenario 2: du köper ett flödes lager för data flöde i 1 timme med 32 kärnor av generell användnings beräkning genom att ange 32 som kvantitet för beräknings typen generell användning. Du felsöker dina data flöden i 1 timme med 32 kärnor i General Compute Azure integration Runtime. Du får reservations rabatten för hela timmen.
 
-Information om hur du förstår och visar tillämpningen av dina Azure-reservationer i rapporterna för faktureringsanvändning finns i avsnittet om [hur Azure-reservationsanvändning fungerar](https://docs.microsoft.com/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea).
+Information om hur du förstår och visar tillämpningen av dina Azure-reservationer i rapporterna för faktureringsanvändning finns i avsnittet om [hur Azure-reservationsanvändning fungerar](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Behöver du hjälp? Kontakta oss
 
@@ -42,4 +42,4 @@ Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https:
 
 Mer information om Azure Reservations finns i följande artikel:
 
-- [Vad är Azure-reservationer?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Vad är Azure-reservationer?](../cost-management-billing/reservations/save-compute-costs-reservations.md)

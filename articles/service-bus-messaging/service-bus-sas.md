@@ -4,12 +4,12 @@ description: 'Översikt över Service Bus åtkomst kontroll med signaturer för 
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737825"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus åtkomst kontroll med signaturer för delad åtkomst
 
@@ -130,9 +130,9 @@ Om du vet eller misstänker att en nyckel har komprometterats och du måste åte
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Autentisering med signatur för delad åtkomst med Service Bus
 
-Scenarierna som beskrivs nedan omfattar konfiguration av auktoriseringsregler, generering av SAS-token och klient auktorisering.
+Scenariot som beskrivs nedan omfattar konfiguration av auktoriseringsregler, generering av SAS-token och klient auktorisering.
 
-För ett komplett fungerande exempel på ett Service Bus program som illustrerar konfigurationen och använder SAS-auktorisering, se [signaturen för delad åtkomst-autentisering med Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Ett relaterat exempel som illustrerar användningen av SAS-auktoriseringsregler som kon figurer ATS på namn områden eller ämnen för att skydda Service Bus prenumerationer finns här: [använda autentisering med signatur för delad åtkomst (SAS) med Service Bus prenumerationer](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Ett exempel på ett Service Bus program som illustrerar konfigurationen och använder SAS-auktorisering finns i [autentisering med signatur för delad åtkomst med Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Åtkomst auktoriseringsregler för delad åtkomst på en entitet
 

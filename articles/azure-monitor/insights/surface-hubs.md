@@ -1,17 +1,16 @@
 ---
 title: Övervaka Surface Hub med Azure Monitor | Microsoft Docs
 description: Använd Surface Hub lösning för att spåra hälso tillståndet för dina Surface Hub och förstå hur de används.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: e38214174fd4e3aa6859f05fd24737d9e9d1f963
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587219"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711084"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Övervaka Surface Hub med Azure Monitor för att spåra deras hälsa
 

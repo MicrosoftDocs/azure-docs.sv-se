@@ -1,14 +1,14 @@
 ---
 title: Distribuera skiss exemplet för Azure Security benchmark Foundation
 description: Distribuera steg för utkastet till utkastet av Azure Security benchmark Foundation, inklusive information om skiss artefakts parametrar.
-ms.date: 02/17/2020
+ms.date: 02/18/2020
 ms.topic: sample
-ms.openlocfilehash: aaaabc8767c6d80548a26d64d8557587180fb6f3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: e48f3da383bdb6d5c9960595f3c0fdcabc27dc75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740689"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Distribuera skiss exemplet för Azure Security benchmark Foundation
 
@@ -136,7 +136,7 @@ Följande tabell innehåller en lista över skiss parametrar:
 |Mall för Azure Virtual Network eker|Resource Manager-mall|Prefix för under näts adress (valfritt)|Matris med IP-adressprefix för valfria undernät för det virtuella eker-nätverket; till exempel "10.0.7.0/24", "10.0.8.0/24"|
 |Mall för Azure Virtual Network eker|Resource Manager-mall|Distribuera eker|Ange true eller false för att ange om tilldelningen distribuerar eker-komponenterna i arkitekturen|
 |Azure Network Watcher-mall|Resource Manager-mall|Network Watcher plats|Plats för Network Watcher resursen|
-|Azure Network Watcher-mall|Resource Manager-mall|Plats för Network Watcher resurs grupp|Om Network Watcher redan har Aktiver ATS **måste** värdet för den här parametern matcha namnet på den befintliga Network Watcher resurs gruppen.|
+|Azure Network Watcher-mall|Resource Manager-mall|Plats för Network Watcher resurs grupp|Om Network Watcher redan har Aktiver ATS **måste** värdet för den här parametern matcha platsen för den befintliga Network Watcher resurs gruppen.|
 
 ## <a name="troubleshooting"></a>Felsökning
 

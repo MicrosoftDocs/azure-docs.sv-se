@@ -5,12 +5,12 @@ description: Lär dig hur du skyddar trafik som flödar in och ut ur poddar med 
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d3aa49a749890783fdae589edab3d1910b2ac73
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050475"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729427"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Skydda trafik mellan poddar med hjälp av nätverks principer i Azure Kubernetes service (AKS)
 
@@ -20,7 +20,7 @@ Den här artikeln visar hur du installerar nätverks princip motorn och skapar K
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Du behöver Azure CLI-versionen 2.0.61 eller senare installerad och konfigurerad. Kör  `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa  [Installera Azure CLI 2.0][install-azure-cli].
+Du behöver Azure CLI-versionen 2.0.61 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Om du använde funktionen nätverks princip under för hands versionen av, rekommenderar vi att du [skapar ett nytt kluster](#create-an-aks-cluster-and-enable-network-policy).
@@ -52,8 +52,8 @@ Båda implementeringarna använder Linux- *program varan iptables* för att geno
 
 | Funktion                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| Plattformar som stöds                      | Linux                      | Linux                       |
-| Nätverks alternativ som stöds             | Azure-CNI                  | Azure-CNI och Kubernetes       |
+| Plattformar som stöds                      | Linux                      | Linux, Windows Server 2019 (för hands version)  |
+| Nätverks alternativ som stöds             | Azure-CNI                  | Azure-CNI (Windows Server 2019 och Linux) och Kubernetes (Linux)  |
 | Efterlevnad med Kubernetes-specifikation | Alla princip typer som stöds |  Alla princip typer som stöds |
 | Ytterligare funktioner                      | Inget                       | Utökad princip modell bestående av global nätverks princip, global nätverks uppsättning och värd slut punkt. Mer information om hur du använder `calicoctl` CLI för att hantera dessa utökade funktioner finns i [calicoctl User Reference][calicoctl]. |
 | Support                                  | Stöds av support-och teknik teamet för Azure | Calico community-support. Mer information om ytterligare avgiftsbelagd support finns i [Support alternativ för Project Calico][calico-support]. |
@@ -67,7 +67,7 @@ För att se nätverks principer i praktiken ska vi skapa och sedan expandera i e
 * Tillåt trafik baserat på pod-etiketter.
 * Tillåt trafik baserat på namn område.
 
-Först ska vi skapa ett AKS-kluster som har stöd för nätverks principer. 
+Först ska vi skapa ett AKS-kluster som har stöd för nätverks principer.
 
 > [!IMPORTANT]
 >
@@ -120,25 +120,101 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
 # Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
+```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+### <a name="create-an-aks-cluster-for-azure-network-policies"></a>Skapa ett AKS-kluster för Azure nätverks principer
+
+Skapa AKS-klustret och ange det virtuella nätverket, tjänstens huvud namns information och *Azure* som nätverks-plugin och nätverks princip.
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
     --generate-ssh-keys \
-    --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
+    --network-plugin azure \
     --network-policy azure
 ```
 
 Det tar några minuter att skapa klustret. När klustret är klart konfigurerar `kubectl` du för att ansluta till ditt Kubernetes-kluster med hjälp av kommandot [AZ AKS get-credentials][az-aks-get-credentials] . Detta kommando hämtar autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem:
+
+```azurecli-interactive
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
+
+### <a name="create-an-aks-cluster-for-calico-network-policies"></a>Skapa ett AKS-kluster för Calico-nätverks principer
+
+Skapa AKS-klustret och ange det virtuella nätverket, tjänstens huvud namns information, *Azure* för nätverks-plugin-programmet och *Calico* för nätverks principen. Att använda *Calico* som nätverks princip aktiverar Calico-nätverk i både Linux-och Windows-adresspooler.
+
+Om du planerar att lägga till Windows-nodkonfigurationer i klustret inkluderar du `windows-admin-username` parametrarna och `windows-admin-password` med som uppfyller [lösen ords kraven för Windows Server][windows-server-password]. Om du vill använda Calico med Windows Node-pooler måste du också registrera `Microsoft.ContainerService/EnableAKSWindowsCalico` .
+
+Registrera `EnableAKSWindowsCalico` funktions flaggan med hjälp av kommandot [AZ Feature register][az-feature-register] som visas i följande exempel:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
+```
+
+ Du kan kontrol lera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAKSWindowsCalico')].{Name:name,State:properties.state}"
+```
+
+När du är klar uppdaterar du registreringen av resurs leverantören *Microsoft. container service* med hjälp av [AZ Provider register][az-provider-register] kommando:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+> [!IMPORTANT]
+> För närvarande är det möjligt att använda Calico-nätverks principer med Windows-noder på nya kluster med Kubernetes version 1,20 eller senare med Calico 3.17.2 och kräver användning av Azure CNI-nätverk. Windows-noder i AKS-kluster med Calico aktiverat har också aktiverat [direkt Server retur (DSR)][dsr] som standard.
+>
+> För kluster med endast Linux-nodkonfigurationer som kör Kubernetes 1,20 med tidigare versioner av Calico uppgraderas Calico-versionen automatiskt till 3.17.2.
+
+Calico nätverks principer med Windows-noder är för närvarande en för hands version.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+```azurecli
+PASSWORD_WIN="P@ssw0rd1234"
+
+az aks create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $CLUSTER_NAME \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWORD \
+    --windows-admin-password $PASSWORD_WIN \
+    --windows-admin-username azureuser \
+    --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
+    --network-plugin azure \
+    --network-policy calico
+```
+
+Det tar några minuter att skapa klustret. Som standard skapas klustret med bara en Linux-adresspool. Om du vill använda Windows-nodkonfigurationer kan du lägga till ett. Exempel:
+
+```azurecli
+az aks nodepool add \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --cluster-name $CLUSTER_NAME \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+```
+
+När klustret är klart konfigurerar `kubectl` du för att ansluta till ditt Kubernetes-kluster med hjälp av kommandot [AZ AKS get-credentials][az-aks-get-credentials] . Detta kommando hämtar autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -487,3 +563,7 @@ Mer information om principer finns i [Kubernetes Network policies][kubernetes-ne
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 77464ccfb5b80c84f091d8e6bc491908baed6486
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710472"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services och Machine Learning
 
@@ -97,7 +97,7 @@ Följande data kategoriserar varje tjänst enligt vilken typ av data den tillåt
 |[Ansiktsigenkänning](./Face/Overview.md)|x|x||
 |[Formigenkänning](./form-recognizer/overview.md)||x||
 |[Avancerad läsare](./immersive-reader/overview.md)|x|||
-|[Handskriftsigenkänning](./Ink-recognizer/overview.md)|x|x||
+|[Handskriftsigenkänning](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personanpassning](./personalizer/what-is-personalizer.md)|röntgen|röntgen|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
@@ -127,7 +127,7 @@ Cognitive Services som innehåller exporterade modeller för andra Machine Learn
 
 |Kognitiv tjänst|Modell information|
 |--|--|
-|[Custom Vision](./custom-vision-service/overview.md)|[Exportera](./Custom-Vision-Service/export-model-python.md) för Tensorflow för Android, CoreML för IOS11, ONNX för Windows ml|
+|[Custom Vision](./custom-vision-service/overview.md)|[Exportera](./custom-vision-service/export-model-python.md) för Tensorflow för Android, CoreML för IOS11, ONNX för Windows ml|
 
 ## <a name="learn-more"></a>Läs mer
 

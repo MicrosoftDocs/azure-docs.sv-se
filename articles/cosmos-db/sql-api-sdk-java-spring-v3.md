@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/18/2020
+ms.date: 02/28/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097132"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692733"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v3 for Core (SQL) API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,58 +57,41 @@ Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://az
 > * [Fjädra data Gremlin med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
-## <a name="start-here"></a>Börja här
+## <a name="get-started-fast"></a>Kom igång snabbt
 
-# <a name="explore"></a>[Utforska](#tab/explore)
+  Kom igång med vår data Azure Cosmos DB genom att följa vår guide för att [Starta](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)starter. Metoden våren Boot Starter är det rekommenderade sättet att komma igång med hjälp av våren data Azure Cosmos DB Connector.
 
-<img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
-
-#### <a name="these-tabs-contain-basic-spring-data-azure-cosmos-db-samples"></a>Dessa flikar innehåller exempel på grundläggande våren-data Azure Cosmos DB.
-
-# <a name="pomxml"></a>[pom.xml](#tab/pom)
-
-### <a name="configure-dependencies"></a>Konfigurera beroenden
+  Du kan också lägga till våren data Azure Cosmos DB beroende av `pom.xml` filen enligt nedan:
 
   ```xml
   <dependency>
       <groupId>com.azure</groupId>
       <artifactId>azure-spring-data-cosmos</artifactId>
-      <version>latest</version>
+      <version>latest-version</version>
   </dependency>
   ```
 
-# <a name="connect"></a>[Anslut](#tab/connect)
+## <a name="helpful-content"></a>Användbart innehåll
 
-### <a name="connect"></a>Ansluta
-
-Ange Azure Cosmos DB konto-och behållar information. Våren data Azure Cosmos DB skapar automatiskt klienten och ansluter till behållaren.
-
-[Application. Properties](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started/blob/main/azure-spring-data-cosmos-java-getting-started/src/main/resources/application.properties):
-```
-cosmos.uri=${ACCOUNT_HOST}
-cosmos.key=${ACCOUNT_KEY}
-cosmos.secondaryKey=${SECONDARY_ACCOUNT_KEY}
-
-dynamic.collection.name=spel-property-collection
-# Populate query metrics
-cosmos.queryMetricsEnabled=true
-```
-
-# <a name="doc-ops"></a>[Dok OPS](#tab/docs)
-
-### <a name="document-operations"></a>Dokument åtgärder
-
----
-
-## <a name="resources"></a>Resurser
-
-* **Bidra till SDK** : t: [våren data Azure Cosmos DB lagrings platsen på GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
-
-* **Självstudie** : [själv studie kurs om vår data Azure Cosmos DB GitHub](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
+| Innehåll | Länk |
+|---|---|
+|**SDK-nedladdning**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-spring-data-cosmos) |
+|**API-dokumentation** | [Referens dokumentation för Java API](/java/api/com.azure.spring.data.cosmos) |
+|**Bidra till SDK** | [Azure SDK för Java Central lagrings platsen på GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos) | 
+|**Komma igång** | [Snabb start: Bygg en våren data Azure Cosmos DB-app för att hantera Azure Cosmos DB SQL API-data](./create-sql-api-spring-data.md) <br> [GitHub lagrings platsen med snabb starts kod](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) | 
+|**Grundläggande kod exempel** | [Azure Cosmos DB: våren data Azure Cosmos DB exempel för SQL API](sql-api-spring-data-sdk-samples.md) <br> [GitHub lagrings platsen med exempel kod](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples)|
+| **Prestandatips**| [Prestanda tips för Java SDK v4 (gäller för våren-data)](performance-tips-java-sdk-v4-sql.md)| 
+| **Felsökning** | [Felsöka Java SDK v4 (gäller för våren data)](troubleshoot-java-sdk-v4-sql.md) | 
+| **Azure Cosmos DB workshops och labb** |[Start sida för Cosmos DB workshops](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="additional-notes"></a>Ytterligare information
+
+* Våren data Azure Cosmos DB stöder Java JDK 8 och Java JDK 11.
+* Våren data 2,3 stöds för närvarande, våren data 2,4 stöds inte för närvarande.
+
+## <a name="faq"></a>Vanliga frågor
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

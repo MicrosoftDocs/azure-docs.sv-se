@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5eaa2d686ecd38c006a720e9ffb97a4604f18ba8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625744"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708874"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Använda funktioner i Azure Monitor logg frågor
 
@@ -23,7 +23,7 @@ Skapa en funktion med Log Analytics i Azure Portal genom att klicka på **Spara*
 
 | Inställning | Beskrivning |
 |:---|:---|
-| Name           | Visnings namn för frågan i **query Explorer**. |
+| Namn           | Visnings namn för frågan i **query Explorer**. |
 | Spara som        | Funktion |
 | Funktions Ali Aset | Kort namn för att använda funktionen i andra frågor. Får inte innehålla blank steg och måste vara unikt. |
 | Kategori       | En kategori för att organisera sparade frågor och funktioner i **query Explorer**. |
@@ -35,7 +35,7 @@ Skapa en funktion med Log Analytics i Azure Portal genom att klicka på **Spara*
 Använd en funktion genom att inkludera dess alias i en annan fråga. Den kan användas som vilken annan tabell som helst.
 
 ## <a name="function-parameters"></a>Funktions parametrar 
-Du kan lägga till parametrar till en funktion så att du kan ange värden för vissa variabler när du anropar den. Det enda sättet för att skapa en funktion med parametrar är att använda en Resource Manager-mall. Se exempel på [Resource Manager-mallar för logg frågor i Azure Monitor](../samples/resource-manager-log-queries.md#parameterized-function) .
+Du kan lägga till parametrar till en funktion så att du kan ange värden för vissa variabler när du anropar den. Det enda sättet för att skapa en funktion med parametrar är att använda en Resource Manager-mall. Se exempel på [Resource Manager-mallar för logg frågor i Azure Monitor](./resource-manager-log-queries.md#parameterized-function) .
 
 ## <a name="example"></a>Exempel
 Följande exempel fråga returnerar alla saknade säkerhets uppdateringar som rapporter ATS under den senaste dagen. Spara den här frågan som en funktion med aliaset _security_updates_last_day_. 

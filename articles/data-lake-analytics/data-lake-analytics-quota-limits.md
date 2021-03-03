@@ -2,17 +2,14 @@
 title: Justera kvoter och gränser i Azure Data Lake Analytics
 description: Lär dig hur du justerar och ökar kvoter och gränser i Azure Data Lake Analytics-konton (ADLA).
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220847"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710183"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Justera kvoter och gränser i Azure Data Lake Analytics
 
@@ -53,7 +50,7 @@ Detta är det maximala antalet jobb som kan köras samtidigt i ditt konto. Utöv
 1. Logga in på [Azure Portal](https://portal.azure.com).
 2. Välj ett befintligt ADLA-konto.
 3. Klicka på **Egenskaper**.
-4. Justera värdena för **maximal Australien**, **maximalt antal jobb som körs**och begränsningar för **jobb överföring** för att passa dina behov.
+4. Justera värdena för **maximal Australien**, **maximalt antal jobb som körs** och begränsningar för **jobb överföring** för att passa dina behov.
 
 ## <a name="increase-maximum-quota-limits"></a>Öka gränserna för högsta kvot
 
@@ -65,7 +62,7 @@ Du hittar mer information om Azure-begränsningar i [dokumentationen för Azures
 
    ![Azure Data Lake Analytics Portal nytt support ärende](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 
-2. Välj **kvoten**för ärende typen.
+2. Välj **kvoten** för ärende typen.
 
 3. Välj din **prenumeration** (se till att det inte är en "utvärderings prenumeration").
 

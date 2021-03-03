@@ -860,87 +860,71 @@
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
                 - name: CLI
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
-        - name: Azure Disk Encryption scenarier
+        - name: Azure Disk Encryption
           items:
-            - name: Azure Disk Encryption översikter
-              items:
-                - name: Windows
-                - name: Linux
             - name: Linux
-              href: ./linux/disk-encryption-linux.md
-            - name: Windows
-              href: ./windows/disk-encryption-windows.md
-            - name: CLI
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-cli-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-cli-quickstart.md
-            - name: PowerShell
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-powershell-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portal
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-portal-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-portal-quickstart.md
-            - name: Nyckelvalv för Azure Disk Encryption
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-key-vault.md
-                - name: Windows
-                  href: ./windows/disk-encryption-key-vault.md
-            - name: Exempelskript
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-sample-scripts.md
-                - name: Windows
-                  href: ./windows/disk-encryption-sample-scripts.md
-            - name: Azure Disk Encryption i ett isolerat nätverk
-              href: ./linux/disk-encryption-isolated-network.md
-            - name: Så här verifierar du krypteringsstatus
-              href: ./linux/how-to-verify-encryption-status.md
-            - name: Så här konfigurerar du LVM RAID på crypt
-              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
-            - name: Ändra storlek på krypterade LVM-volymer
-              href: ./linux/how-to-resize-encrypted-lvm.md
-            - name: Ändra storlek på Linux GPT OS-partitioner
-              href: linux/resize-os-disk-gpt-partition.md
-            - name: felsökning
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-troubleshooting.md
-                - name: Windows
-                  href: ./windows/disk-encryption-troubleshooting.md
-            - name: VANLIGA FRÅGOR OCH SVAR
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-faq.md
-                - name: Windows
-                  href: ./windows/disk-encryption-faq.md
-            - name: Azure Disk Encryption-tidigare version
               items:
                 - name: Översikt
+                  href: ./linux/disk-encryption-overview.md
+                - name: Snabbstarter
                   items:
-                    - name: Linux
-                      href: ./linux/disk-encryption-overview-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Azure CLI
+                      href: ./linux/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./linux/disk-encryption-powershell-quickstart.md
+                    - name: Azure Portal
+                      href: ./linux/disk-encryption-portal-quickstart.md
                 - name: Nyckelvalv för Azure Disk Encryption
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Exempelskript för diskkryptering
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Diskkryptering på ett isolerat nätverk
+                  href: ./linux/disk-encryption-isolated-network.md
+                - name: Så här verifierar du krypteringsstatus
+                  href: ./linux/how-to-verify-encryption-status.md
+                - name: Så här konfigurerar du LVM RAID på crypt
+                  href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+                - name: Så här ändrar du storlek på krypterade lvm-volymer
+                  href: ./linux/how-to-resize-encrypted-lvm.md
+                - name: Felsökning för diskkryptering
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Vanliga frågor och svar om diskkryptering
+                  href: ./linux/disk-encryption-faq.md
+                - name: Diskkryptering – föregående version
                   items:
-                    - name: Linux
+                    - name: Översikt
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Nyckelvalv för Azure Disk Encryption
                       href: ./linux/disk-encryption-key-vault-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-key-vault-aad.md
-                - name: Disk krypterings scenarier
-                  items:
-                    - name: Linux
+                    - name: Diskkrypteringsscenarier för Linux
                       href: ./linux/disk-encryption-linux-aad.md
-                    - name: Windows
+            - name: Windows
+              items:
+                - name: Diskkrypteringsscenarier för Windows
+                  href: ./windows/disk-encryption-windows.md
+                - name: Snabbstarter
+                  items:
+                    - name: Azure CLI
+                      href: ./windows/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./windows/disk-encryption-powershell-quickstart.md
+                    - name: Azure Portal
+                      href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Nyckelvalv för Azure Disk Encryption
+                  href: ./windows/disk-encryption-key-vault.md
+                - name: Exempelskript för diskkryptering
+                  href: ./windows/disk-encryption-sample-scripts.md
+                - name: Felsökning för diskkryptering
+                  href: ./windows/disk-encryption-troubleshooting.md
+                - name: Vanliga frågor och svar om diskkryptering
+                  href: ./windows/disk-encryption-faq.md
+                - name: Diskkryptering – föregående version
+                  items:
+                    - name: Översikt
+                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Nyckelvalv för Azure Disk Encryption
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                    - name: Diskkrypteringsscenarier för Windows
                       href: ./windows/disk-encryption-windows-aad.md
     - name: Optimering av prestanda och kostnad
       items:

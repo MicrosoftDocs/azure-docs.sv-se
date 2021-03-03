@@ -272,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: Tillämpa uppdateringar
               href: azure-stack-edge-gpu-install-update.md
+            - name: 'Återställa, återaktivera enhet'
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: Returnera enheten
               href: azure-stack-edge-return-device.md
             - name: Ersätta enhet

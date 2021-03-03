@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8c2e2327667ccb9284a22e65418a80f3066d22df
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a588b37b270917524453419619fdad6f88f92338
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510802"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693585"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>Skydda autentiseringsuppgifter med länkade tjänster med TokenLibrary
 
@@ -275,7 +275,7 @@ Console.WriteLine(connectionString);
 
 GetConnectionStringAsMap är en hjälp funktion som är tillgänglig i Scala och python för att parsa vissa värden från ett _nyckel = värde_ -par i anslutnings strängen, till exempel
 
-_`DefaultEndpointsProtocol=https;AccountName=\<ACCOUNT NAME>;AccountKey=\<ACCOUNT KEY>`_
+_`DefaultEndpointsProtocol=https;AccountName=<ACCOUNT NAME>;AccountKey=<ACCOUNT KEY>`_
 
 Använd funktionen **getConnectionStringAsMap** och skicka nyckeln för att returnera värdet.  I ovanstående anslutnings sträng exempel 
 

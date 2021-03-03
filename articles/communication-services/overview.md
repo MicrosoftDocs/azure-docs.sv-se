@@ -8,14 +8,19 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 45ce295ceee9d5bd1c2393eaed854e8f2c5643ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27b1a2654a52c136c0b827b536f5cf99928e5947
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659247"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691594"
 ---
 # <a name="what-is-azure-communication-services"></a>Vad är Azure Communication Services?
+
+[!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> Program som du skapar med Azure Communication Services kan prata med Microsoft Teams. Mer information finns i vår [Teams interop](./quickstarts/voice-video-calling/get-started-teams-interop.md) -dokumentation.
 
 Med Azure Communication Services kan du enkelt lägga till funktioner för multimedia, video och telefoni för kommunikation i real tid till dina program. Klient biblioteken för kommunikations tjänster låter dig också lägga till chatt-och SMS-funktioner i kommunikations lösningarna.
 

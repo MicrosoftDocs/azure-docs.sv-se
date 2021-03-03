@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377507"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740041"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Övervaka en integreringskörning i Azure Data Factory
 
@@ -224,7 +224,17 @@ Om du vill övervaka din Azure-SSIS IR i Azure Portal går du till sidan **integ
 
 ![Övervaka alla integrerings körningar](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-Välj sedan namnet på din Azure-SSIS IR för att öppna sidan övervakning där du kan se dess övergripande/Node-/regionsspecifika egenskaper och status. På den här sidan, beroende på hur du konfigurerar inställningarna allmänt, distribution och avancerad för din Azure-SSIS IR, hittar du olika informations-och funktions paneler.  Informations panelerna **typ** och **region** visar Azure-SSIS IRens typ och region. I informations panelen för **Node-storlek** visas SKU (SSIS edition_VM tier_VM-serien), antal processor kärnor och storleken på RAM-minne per nod för din Azure-SSIS IR. Informations panelen för att **köra/begärda noder** jämför antalet noder som för närvarande körs på det totala antalet noder som tidigare begärts för din Azure-SSIS IR. De funktionella panelerna beskrivs i mer information nedan.
+Välj sedan namnet på din Azure-SSIS IR för att öppna sidan övervakning där du kan se dess övergripande/Node-/regionsspecifika egenskaper och status. På den här sidan, beroende på hur du konfigurerar inställningarna allmänt, distribution och avancerad för din Azure-SSIS IR, hittar du olika informations-och funktions paneler.
+
+Informations panelerna **typ** och **region** visar Azure-SSIS IRens typ och region.
+
+I informations panelen för **Node-storlek** visas SKU (SSIS edition_VM tier_VM-serien), antal processor kärnor och storleken på RAM-minne per nod för din Azure-SSIS IR. 
+
+Informations panelen för att **köra/begärda noder** jämför antalet noder som för närvarande körs på det totala antalet noder som tidigare begärts för din Azure-SSIS IR.
+
+Informations panelen **med dubbelt växlings-/roll** information visar namnet på ditt dubbla vänte läges Azure-SSIS IR-par som fungerar i sync med Azure SQL Database/hanterade instanser av redundans för affärs kontinuitet och haveri beredskap (BCDR) och den aktuella primära/sekundära rollen för din Azure-SSIS IR. När SSISDB-redundansväxlingen inträffar byter ditt primära och sekundära Azure-SSIS-IRs roller (mer information finns i [Konfigurera din Azure-SSIS IR för BCDR](./configure-bcdr-azure-ssis-integration-runtime.md)).
+
+De funktionella panelerna beskrivs i mer information nedan.
 
 ![Övervaka dina Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
@@ -254,13 +264,13 @@ Om du ansluter din Azure-SSIS IR till ett VNet visas panelen **Verifiera VNet-/u
 
 På panelen **diagnostisera anslutning** på sidan Azure-SSIS IR övervakning kan du välja länken **Testa anslutning** för att visa ett fönster, där du kan kontrol lera anslutningarna mellan din Azure-SSIS IR och relevanta paket/konfiguration/data lager, samt hanterings tjänster, via sitt fullständigt kvalificerade domän namn (FQDN)/IP-adress och avsedd port (se [testa anslutningar från din Azure-SSIS IR](./ssis-integration-runtime-diagnose-connectivity-faq.md)).
 
-![Skärm bild som visar var du kan testa anslutningarna mellan Azure-SSIS IR och relevanta paket/konfiguration/data lager.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Övervaka din Azure-SSIS IR-diagnosticera panel](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>Panelen statiska offentliga IP-adresser
 
 Om du använder egna statiska offentliga IP-adresser för Azure-SSIS IR visas panelen **statiska offentliga IP-adresser** på sidan för Azure-SSIS IR övervakning (se ta [med egna statiska IP-adresser för Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)). På den här panelen kan du välja länkar som anger dina första/andra statiska IP-adresser för Azure-SSIS IR för att öppna ett fönster, där du kan kopiera sitt resurs-ID ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) från en text ruta. I popup-fönstret kan du också välja länken **se din första/andra statiska offentliga IP-adress inställningar** för att hantera din första/andra statiska IP-adress i Azure Portal.
 
-![Skärm bild som visar var du kan ange dina första eller andra statiska offentliga IP-adresser.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Övervaka Azure-SSIS IR-statisk panel](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>Panel för paket arkiv
 
@@ -272,7 +282,7 @@ Om du använder paket distributions modell där paket lagras i fil systemet/Azur
 
 Om det uppstår problem med att starta/stoppa/underhålla/uppgradera Azure-SSIS IR visas en panel med ytterligare **fel** på sidan för Azure-SSIS IR övervakning. På den här panelen kan du välja en länk som anger antalet fel som har genererats av din Azure-SSIS IR att visa ett fönster, där du kan se dessa fel i mer information och kopiera dem för att hitta de rekommenderade lösningarna i vår fel söknings guide (se [fel sökning av Azure-SSIS IR](./ssis-integration-runtime-management-troubleshoot.md)).
 
-![Övervaka din Azure-SSIS IR-diagnosticera panel](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
+![Övervaka din Azure-SSIS IR – fel panel](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Övervaka Azure-SSIS integration runtime med Azure Monitor
 

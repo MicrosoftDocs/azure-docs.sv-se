@@ -1,0 +1,31 @@
+- name: Azure Storage validerade partner lösningar
+  href: /azure/storage/solution-integration
+- name: Azure-lagringsanalys och Big data partners
+  items:
+    - name: Översikt över verifierade partner
+      href: .\validated-partners\analytics\partner-overview.md
+  expanded: false
+- name: 'Azure Storage Arkiv, säkerhets kopiering och BCDR-partner'
+  items:
+    - name: Översikt över verifierade partner
+      href: .\validated-partners\backup-archive-disaster-recovery\partner-overview.md
+    - name: Snabb starts guide för CommVault
+      href: .\validated-partners\backup-archive-disaster-recovery\commvault\commvault-solution-guide.md
+    - name: Snabb starts guide för Veeam
+      href: .\validated-partners\backup-archive-disaster-recovery\veeam\veeam-solution-guide.md
+  expanded: false
+- name: Partners för Azure Storage container Solution
+  items:
+    - name: Översikt över verifierade partner
+      href: .\validated-partners\container-solutions\partner-overview.md
+  expanded: false
+- name: Azure Storage data hantering och migrations partner
+  items:
+    - name: Översikt över verifierade partner
+      href: .\validated-partners\data-management\partner-overview.md
+  expanded: false
+- name: Azure Storage primära och sekundära lagrings partner
+  items:
+    - name: Översikt över verifierade partner
+      href: .\validated-partners\primary-secondary-storage\partner-overview.md
+  expanded: false

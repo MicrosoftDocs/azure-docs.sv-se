@@ -1,211 +1,212 @@
 - name: Dokumentation om Cloud Services (klassisk)
   href: index.yml
-- name: Översikt
   items:
-    - name: Vad är Cloud Services (klassisk)?
-      href: cloud-services-choose-me.md
-    - name: Konfigurationsfiler och paketering av molntjänster
-      href: cloud-services-model-and-package.md
-- name: Kom igång
-  items:
-    - name: Exempel på .NET-molntjänst
-      href: cloud-services-dotnet-get-started.md
-    - name: Exempel på Python för Visual Studio-molntjänst
-      href: cloud-services-python-ptvs.md
-- name: Begrepp
-  items:
-    - name: Säkerhet
+    - name: Översikt
       items:
-        - name: Säkerhetsbaslinje
-          href: security-baseline.md
-- name: Gör så här för att
-  items:
-    - name: Planera
+        - name: Vad är Cloud Services (klassisk)?
+          href: cloud-services-choose-me.md
+        - name: Konfigurationsfiler och paketering av molntjänster
+          href: cloud-services-model-and-package.md
+    - name: Kom igång
       items:
-        - name: Storlekar för virtuella datorer
-          href: cloud-services-sizes-specs.md
-        - name: Uppdateringar
-          href: cloud-services-update-azure-service.md
-    - name: Utveckla
+        - name: Exempel på .NET-molntjänst
+          href: cloud-services-dotnet-get-started.md
+        - name: Exempel på Python för Visual Studio-molntjänst
+          href: cloud-services-python-ptvs.md
+    - name: Begrepp
       items:
-        - name: Skapa PHP webb- och arbetsroller
-          href: ../cloud-services-php-create-web-role.md
-        - name: Bygga och distribuera ett Node.js-program
-          href: cloud-services-nodejs-develop-deploy-app.md
-        - name: Skapa en Node.js-webbapp med Express
-          href: cloud-services-nodejs-develop-deploy-express-app.md
-        - name: Storage och Visual Studio
+        - name: Säkerhet
           items:
-            - name: Blob Storage och anslutna tjänster
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
-            - name: Queue Storage och anslutna tjänster
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
-            - name: Table Storage och anslutna tjänster
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
-        - name: Konfigurera trafikregler för en roll
-          href: cloud-services-enable-communication-role-instances.md
-        - name: Hantera livscykelhändelser för molntjänst
-          href: cloud-services-role-lifecycle-dotnet.md
-        - name: Socket.io (Node.js)
-          href: cloud-services-nodejs-chat-app-socketio.md
-        - name: Använda Twilio för att ringa ett telefonsamtal (.NET)
-          href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
-        - name: Konfigurera startuppgifter
-          items:
-            - name: Skapa startuppgifter
-              href: cloud-services-startup-tasks.md
-            - name: Vanliga startuppgifter
-              href: cloud-services-startup-tasks-common.md
-            - name: Använd en åtgärd för att installera .NET på en molntjänstroll
-              href: cloud-services-dotnet-install-dotnet.md
-        - name: Konfigurera Fjärrskrivbord
-          items:
-            - name: Portalen
-              href: cloud-services-role-enable-remote-desktop-new-portal.md
-            - name: PowerShell
-              href: cloud-services-role-enable-remote-desktop-powershell.md
-            - name: Visual Studio
-              href: cloud-services-role-enable-remote-desktop-visual-studio.md
-    - name: Distribuera
+            - name: Säkerhetsbaslinje
+              href: security-baseline.md
+    - name: Gör så här för att
       items:
-        - name: Skapa och distribuera en molntjänst i portalen
-          href: cloud-services-how-to-create-deploy-portal.md
-        - name: Skapa en tom molntjänstcontainer i PowerShell
-          href: cloud-services-powershell-create-cloud-container.md
-        - name: Konfigurera ett anpassat domännamn
-          href: cloud-services-custom-domain-name-portal.md
-        - name: Ansluta till en anpassad domänkontrollant
-          href: cloud-services-connect-to-custom-domain.md
-    - name: Hantera tjänst
-      items:
-        - name: Vanliga administrativa uppgifter
-          href: cloud-services-how-to-manage-portal.md
-        - name: Konfigurera en molntjänst
-          href: cloud-services-how-to-configure-portal.md
-        - name: Hantera en molntjänst med Azure Automation
-          href: automation-manage-cloud-services.md
-        - name: Konfigurera automatisk skalning
-          href: cloud-services-how-to-scale-portal.md
-        - name: Använd Python för att hantera Azure-resurser
-          href: cloud-services-python-how-to-use-service-management.md
-        - name: Minimera spekulativ körning
-          href: mitigate-se.md
-        - name: Gästoperativsystemets korrigeringsfiler
-          href: cloud-services-guestos-msrc-releases.md
-        - name: 'Gästoperativsystem, indragning'
+        - name: Planera
           items:
-            - name: Indragningsprincip
-              href: cloud-services-guestos-retirement-policy.md
-            - name: 'Meddelande om indragning, familj 1'
-              href: cloud-services-guestos-family1-retirement.md
-        - name: Versionsnyheter om gästoperativsystem
-          href: cloud-services-guestos-update-matrix.md
-        - name: XPath-facit för rollkonfiguration i Cloud Services
-          href: cloud-services-role-config-xpath.md
-    - name: Hantera certifikat
-      items:
-        - name: Cloud Services och hanteringscertifikat
-          href: cloud-services-certs-create.md
-        - name: Konfigurera SSL
-          href: cloud-services-configure-ssl-certificate-portal.md
-    - name: Övervaka
-      items:
-        - name: Övervaka molntjänster
-          href: cloud-services-how-to-monitor.md
-        - name: Använda prestandaräknare
-          href: diagnostics-performance-counters.md
-        - name: Testa prestanda
-          href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: Storlekar för virtuella datorer
+              href: cloud-services-sizes-specs.md
+            - name: Uppdateringar
+              href: cloud-services-update-azure-service.md
+        - name: Utveckla
           items:
-            - name: Testa med Visual Studio Profiler
-              href: cloud-services-performance-testing-visual-studio-profiler.md
-        - name: Aktivera diagnostik
+            - name: Skapa PHP webb- och arbetsroller
+              href: ../cloud-services-php-create-web-role.md
+            - name: Bygga och distribuera ett Node.js-program
+              href: cloud-services-nodejs-develop-deploy-app.md
+            - name: Skapa en Node.js-webbapp med Express
+              href: cloud-services-nodejs-develop-deploy-express-app.md
+            - name: Storage och Visual Studio
+              items:
+                - name: Blob Storage och anslutna tjänster
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
+                - name: Queue Storage och anslutna tjänster
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
+                - name: Table Storage och anslutna tjänster
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
+            - name: Konfigurera trafikregler för en roll
+              href: cloud-services-enable-communication-role-instances.md
+            - name: Hantera livscykelhändelser för molntjänst
+              href: cloud-services-role-lifecycle-dotnet.md
+            - name: Socket.io (Node.js)
+              href: cloud-services-nodejs-chat-app-socketio.md
+            - name: Använda Twilio för att ringa ett telefonsamtal (.NET)
+              href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+            - name: Konfigurera startuppgifter
+              items:
+                - name: Skapa startuppgifter
+                  href: cloud-services-startup-tasks.md
+                - name: Vanliga startuppgifter
+                  href: cloud-services-startup-tasks-common.md
+                - name: Använd en åtgärd för att installera .NET på en molntjänstroll
+                  href: cloud-services-dotnet-install-dotnet.md
+            - name: Konfigurera Fjärrskrivbord
+              items:
+                - name: Portalen
+                  href: cloud-services-role-enable-remote-desktop-new-portal.md
+                - name: PowerShell
+                  href: cloud-services-role-enable-remote-desktop-powershell.md
+                - name: Visual Studio
+                  href: cloud-services-role-enable-remote-desktop-visual-studio.md
+        - name: Distribuera
           items:
-            - name: Azure PowerShell
-              href: cloud-services-diagnostics-powershell.md
-            - name: .NET
-              href: cloud-services-dotnet-diagnostics.md
-            - name: Visual Studio
-              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
-        - name: Lagra och visa diagnostikdata i Azure Storage
-          href: diagnostics-extension-to-storage.md
-        - name: Spåra en molntjänst med diagnostik
-          href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: Felsöka
-      items:
-        - name: Felsökning
+            - name: Skapa och distribuera en molntjänst i portalen
+              href: cloud-services-how-to-create-deploy-portal.md
+            - name: Skapa en tom molntjänstcontainer i PowerShell
+              href: cloud-services-powershell-create-cloud-container.md
+            - name: Konfigurera ett anpassat domännamn
+              href: cloud-services-custom-domain-name-portal.md
+            - name: Ansluta till en anpassad domänkontrollant
+              href: cloud-services-connect-to-custom-domain.md
+        - name: Hantera tjänst
           items:
-            - name: Alternativ för en molntjänst
-              href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
-            - name: Lokal molntjänst med Visual Studio
-              href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
-            - name: Publicerad molntjänst med Visual Studio
-              href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
-        - name: Tilldelningsfel i molntjänst
-          href: cloud-services-allocation-failures.md
-        - name: Vanliga orsaker till rollåteranvändning i molntjänst
-          href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: Programmet stöder inte TLS 1.2
-          href: applications-dont-support-tls-1-2.md
-        - name: TEMP-standardmappen är för liten för en roll
-          href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
-        - name: Vanliga distributionsproblem
-          href: cloud-services-troubleshoot-deployment-problems.md
-        - name: Rollen startades inte
-          href: cloud-services-troubleshoot-roles-that-fail-start.md
-        - name: Vägledning för återställning
-          href: cloud-services-disaster-recovery-guidance.md
-        - name: Arbetsflöde för klassisk VM-arkitektur
-          href: cloud-services-workflow-process.md
-        - name: Resurshälsostöd för Cloud Services
-          href: resource-health-for-cloud-services.md
-        - name: Vanliga frågor och svar om Cloud Services
+            - name: Vanliga administrativa uppgifter
+              href: cloud-services-how-to-manage-portal.md
+            - name: Konfigurera en molntjänst
+              href: cloud-services-how-to-configure-portal.md
+            - name: Hantera en molntjänst med Azure Automation
+              href: automation-manage-cloud-services.md
+            - name: Konfigurera automatisk skalning
+              href: cloud-services-how-to-scale-portal.md
+            - name: Använd Python för att hantera Azure-resurser
+              href: cloud-services-python-how-to-use-service-management.md
+            - name: Minimera spekulativ körning
+              href: mitigate-se.md
+            - name: Gästoperativsystemets korrigeringsfiler
+              href: cloud-services-guestos-msrc-releases.md
+            - name: 'Gästoperativsystem, indragning'
+              items:
+                - name: Indragningsprincip
+                  href: cloud-services-guestos-retirement-policy.md
+                - name: 'Meddelande om indragning, familj 1'
+                  href: cloud-services-guestos-family1-retirement.md
+            - name: Versionsnyheter om gästoperativsystem
+              href: cloud-services-guestos-update-matrix.md
+            - name: XPath-facit för rollkonfiguration i Cloud Services
+              href: cloud-services-role-config-xpath.md
+        - name: Hantera certifikat
           items:
-            - name: Vanliga frågor och svar om program- och tjänsttillgänglighet
-              href: cloud-services-application-and-service-availability-faq.md
-            - name: Vanliga frågor och svar om konfiguration och hantering
-              href: cloud-services-configuration-and-management-faq.md
-            - name: Vanliga frågor och svar om anslutningar och nätverk
-              href: cloud-services-connectivity-and-networking-faq.md
-            - name: Vanliga frågor och svar om distribution
-              href: cloud-services-deployment-faq.md
-- name: Referens
-  items:
-    - name: Kodexempel
-      href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
-    - name: .csdef XML-schema
-      href: schema-csdef-file.md
+            - name: Cloud Services och hanteringscertifikat
+              href: cloud-services-certs-create.md
+            - name: Konfigurera SSL
+              href: cloud-services-configure-ssl-certificate-portal.md
+        - name: Övervaka
+          items:
+            - name: Övervaka molntjänster
+              href: cloud-services-how-to-monitor.md
+            - name: Använda prestandaräknare
+              href: diagnostics-performance-counters.md
+            - name: Testa prestanda
+              href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+              items:
+                - name: Testa med Visual Studio Profiler
+                  href: cloud-services-performance-testing-visual-studio-profiler.md
+            - name: Aktivera diagnostik
+              items:
+                - name: Azure PowerShell
+                  href: cloud-services-diagnostics-powershell.md
+                - name: .NET
+                  href: cloud-services-dotnet-diagnostics.md
+                - name: Visual Studio
+                  href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+            - name: Lagra och visa diagnostikdata i Azure Storage
+              href: diagnostics-extension-to-storage.md
+            - name: Spåra en molntjänst med diagnostik
+              href: cloud-services-dotnet-diagnostics-trace-flow.md
+        - name: Felsöka
+          items:
+            - name: Felsökning
+              items:
+                - name: Alternativ för en molntjänst
+                  href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
+                - name: Lokal molntjänst med Visual Studio
+                  href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
+                - name: Publicerad molntjänst med Visual Studio
+                  href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: Tilldelningsfel i molntjänst
+              href: cloud-services-allocation-failures.md
+            - name: Vanliga orsaker till rollåteranvändning i molntjänst
+              href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+            - name: Programmet stöder inte TLS 1.2
+              href: applications-dont-support-tls-1-2.md
+            - name: TEMP-standardmappen är för liten för en roll
+              href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
+            - name: Vanliga distributionsproblem
+              href: cloud-services-troubleshoot-deployment-problems.md
+            - name: Rollen startades inte
+              href: cloud-services-troubleshoot-roles-that-fail-start.md
+            - name: Vägledning för återställning
+              href: cloud-services-disaster-recovery-guidance.md
+            - name: Arbetsflöde för klassisk VM-arkitektur
+              href: cloud-services-workflow-process.md
+            - name: Resurshälsostöd för Cloud Services
+              href: resource-health-for-cloud-services.md
+            - name: Vanliga frågor och svar om Cloud Services
+              items:
+                - name: Vanliga frågor och svar om program- och tjänsttillgänglighet
+                  href: cloud-services-application-and-service-availability-faq.md
+                - name: Vanliga frågor och svar om konfiguration och hantering
+                  href: cloud-services-configuration-and-management-faq.md
+                - name: Vanliga frågor och svar om anslutningar och nätverk
+                  href: cloud-services-connectivity-and-networking-faq.md
+                - name: Vanliga frågor och svar om distribution
+                  href: cloud-services-deployment-faq.md
+    - name: Referens
       items:
-        - name: LoadBalancerProbe-schema
-          href: schema-csdef-loadbalancerprobe.md
-        - name: WebRole-schema
-          href: schema-csdef-webrole.md
-        - name: WorkerRole-schema
-          href: schema-csdef-workerrole.md
-        - name: NetworkTrafficRules-schema
-          href: schema-csdef-networktrafficrules.md
-    - name: .cscfg XML-schema
-      href: schema-cscfg-file.md
+        - name: Kodexempel
+          href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
+        - name: .csdef XML-schema
+          href: schema-csdef-file.md
+          items:
+            - name: LoadBalancerProbe-schema
+              href: schema-csdef-loadbalancerprobe.md
+            - name: WebRole-schema
+              href: schema-csdef-webrole.md
+            - name: WorkerRole-schema
+              href: schema-csdef-workerrole.md
+            - name: NetworkTrafficRules-schema
+              href: schema-csdef-networktrafficrules.md
+        - name: .cscfg XML-schema
+          href: schema-cscfg-file.md
+          items:
+            - name: Role-schema
+              href: schema-cscfg-role.md
+            - name: NetworkConfiguration-schema
+              href: schema-cscfg-networkconfiguration.md
+        - name: REST
+          href: /rest/api/compute/cloudservices/
+    - name: Resurser
       items:
-        - name: Role-schema
-          href: schema-cscfg-role.md
-        - name: NetworkConfiguration-schema
-          href: schema-cscfg-networkconfiguration.md
-    - name: REST
-      href: /rest/api/compute/cloudservices/
-- name: Resurser
-  items:
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Utbildningsväg
-      href: /learn/paths/azure-fundamentals/
-    - name: Frågesida på Microsoft Q&A
-      href: /answers/topics/azure-cloud-services.html
-    - name: Prissättning
-      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-    - name: Priskalkylator
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Tjänstuppdateringar
-      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-    - name: Videoklipp
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Azure-översikt
+          href: 'https://azure.microsoft.com/roadmap/?category=compute'
+        - name: Utbildningsväg
+          href: /learn/paths/azure-fundamentals/
+        - name: Frågesida på Microsoft Q&A
+          href: /answers/topics/azure-cloud-services.html
+        - name: Prissättning
+          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+        - name: Priskalkylator
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Tjänstuppdateringar
+          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+        - name: Videoklipp
+          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

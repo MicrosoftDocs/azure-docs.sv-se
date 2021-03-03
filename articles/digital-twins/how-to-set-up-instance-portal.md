@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a6355a08a936c74ae6a05f163a93a991ba82ab4d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953758"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702920"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Konfigurera en digital Azure-instans och autentisering (portal)
 
@@ -56,8 +56,8 @@ Om du vill konfigurera mer information för din instans beskriver nästa avsnitt
 
 Här följer ytterligare alternativ som du kan konfigurera under installationen med hjälp av de andra flikarna i processen **skapa resurs** .
 
-* **Nätverk**: på den här fliken kan du aktivera privata slut punkter med [Azures privata länk](../private-link/private-link-overview.md) för att eliminera den offentliga nätverks exponeringen för din instans. Instruktioner finns i [*instruktion: aktivera privat åtkomst med privat länk (för hands version)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Avancerat**: på den här fliken kan du aktivera en [Systemhanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) för din instans som kan användas för att vidarebefordra händelser till [slut punkter](concepts-route-events.md). Instruktioner finns i [*så här gör du för att aktivera hanterade identiteter för vägvals händelser (för hands version)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
+* **Nätverk**: på den här fliken kan du aktivera privata slut punkter med [Azures privata länk](../private-link/private-link-overview.md) för att eliminera den offentliga nätverks exponeringen för din instans. Instruktioner finns i [*instruktion: aktivera privat åtkomst med privat länk (för hands version)*](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation).
+* **Avancerat**: på den här fliken kan du aktivera en [Systemhanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) för din instans som kan användas för att vidarebefordra händelser till [slut punkter](concepts-route-events.md). Instruktioner finns i [*så här gör du för att aktivera hanterade identiteter för vägvals händelser (för hands version)*](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation).
 * **Taggar**: i den här fliken kan du lägga till taggar till din instans så att du kan organisera dem bland dina Azure-resurser. Mer information om Azure Resource-taggar finns i [*tagga resurser, resurs grupper och prenumerationer för logisk organisation*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Verifiera lyckade och samla in viktiga värden

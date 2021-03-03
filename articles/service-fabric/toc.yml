@@ -448,12 +448,14 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: Konfigurera ditt hanterade kluster
           href: how-to-managed-cluster-configuration.md
+        - name: Lägg till NSG-regler och andra nätverks alternativ för hanterade kluster
+          href: how-to-managed-cluster-networking.md
         - name: Distribuera hanterade kluster program med ARM-mall
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Konfigurera ett hanterat kluster med hanterad identitet
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Aktivera disk kryptering för hanterade klusternoder
           href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: Använd hanterad identitet för hanterade klusternoder
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Planera och förbereda
       items:
         - name: Planera klusterkapacitet

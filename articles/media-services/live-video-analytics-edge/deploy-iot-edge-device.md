@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på en IoT Edge enhet – Azure
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din IoT Edge-enhet. Du skulle göra detta, till exempel om du har åtkomst till en lokal Linux-dator och/eller om du tidigare har skapat ett Azure Media Services-konto.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718938"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Distribuera video analys i real tid på en IoT Edge enhet
 
@@ -23,7 +23,7 @@ Den här artikeln innehåller de steg som hjälper dig att distribuera video ana
 * En x86-64-eller ARM64-enhet som kör ett av de [Linux-operativsystem som stöds](../../iot-edge/support.md#operating-systems)
 * Azure-prenumeration som du har [ägar behörighet](../../role-based-access-control/built-in-roles.md#owner) till
 * [Skapa och konfigurera IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [Registrera IoT Edge enhet](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Registrera IoT Edge enhet](../../iot-edge/how-to-register-device.md)
 * [Installera Azure IoT Edge-körningen på Debian-baserade Linux-system](../../iot-edge/how-to-install-iot-edge.md)
 * [Skapa ett Azure Media Services-konto](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ Följ stegen i den här artikeln för att få autentiseringsuppgifter för att f
 Om du vill köra live video analys i IoT Edge-modulen skapar du ett lokalt användar konto med så få behörigheter som möjligt. Du kan till exempel köra följande kommandon på Linux-datorn:
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>Bevilja behörigheter till enhets lagring
@@ -72,15 +72,15 @@ Nu när du har skapat ett lokalt användar konto,
 * Du behöver en lokal mapp för att lagra programmets konfigurations data. Skapa en mapp och ge behörighet till lokal användare-kontot Skriv till den mappen med hjälp av följande kommandon:
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * Du behöver också en mapp för att [spela in videor till en lokal fil](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources). Använd följande kommandon för att skapa en lokal mapp för samma:
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Distribuera Live Video Analytics Edge-modulen

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553549"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694501"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Skapa, importera och exportera ord listans villkor
 
@@ -88,6 +88,10 @@ Du bör kunna exportera termer från ord lista så länge de valda villkoren til
 1. När du är i ord listan är **export** knappen som standard inaktive rad. När du har valt de villkor som du vill exportera aktive ras knappen **Exportera** om de valda villkoren tillhör samma mall.
 
 2. Välj **Exportera** för att ladda ned de valda villkoren.
+
+ > [!Important]
+   > Om villkoren i en hierarki tillhör olika term mallar måste du dela upp dem i olika. CSV-filer för import. Det går för närvarande inte att uppdatera en överordnad av en term med hjälp av import processen.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

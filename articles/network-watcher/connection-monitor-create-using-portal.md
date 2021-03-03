@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 61cb37e727808566db1bc9b1161960926e03cb91
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570895"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702172"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Skapa en övervakare i anslutnings övervakaren med hjälp av Azure Portal
 
@@ -121,7 +121,7 @@ Skapa en test grupp i en anslutnings övervakare genom att ange värden för fö
 
    * Välj fliken **ej – Azure-slutpunkter** om du vill välja lokala agenter. Som standard grupperas agenter i arbets ytor efter region. De här arbets ytorna har Övervakare av nätverksprestanda kon figurer ATS. 
    
-       Om du behöver lägga till Övervakare av nätverksprestanda i din arbets yta kan du hämta den från [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Information om hur du lägger till Övervakare av nätverksprestanda finns [i övervaknings lösningar i Azure Monitor](../azure-monitor/insights/solutions.md). 
+       Om du behöver lägga till Övervakare av nätverksprestanda i din arbets yta kan du hämta den från [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview). Information om hur du lägger till Övervakare av nätverksprestanda finns [i övervaknings lösningar i Azure Monitor](../azure-monitor/insights/solutions.md). 
    
        Under **skapa anslutnings övervakare** på fliken **grundläggande** väljs standard region. Om du ändrar region kan du välja agenter från arbets ytor i den nya regionen. Du kan välja en eller flera agenter eller undernät. I vyn **undernät** kan du välja vissa IP-adresser för övervakning. Om du lägger till flera undernät skapas ett anpassat lokalt nätverk med namnet **OnPremises_Network_1** . Du kan också ändra **Group** by-väljaren för att gruppera efter agenter.
 

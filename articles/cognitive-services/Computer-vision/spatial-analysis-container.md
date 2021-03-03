@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a43a27a8e880c76ba21639437c0c20f583620d50
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: af028499d84a767ccb2a888ec7e7f92c80dbdd36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653626"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710574"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
@@ -295,7 +295,7 @@ Installera 1.0.9-versionen:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrera sedan värddatorn som en IoT Edge enhet i IoT Hub-instansen med hjälp av en [anslutnings sträng](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06).
+Registrera sedan värddatorn som en IoT Edge enhet i IoT Hub-instansen med hjälp av en [anslutnings sträng](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06).
 
 Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
 
@@ -446,7 +446,7 @@ Installera 1.0.9-versionen:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Registrera sedan den virtuella datorn som en IoT Edge enhet i IoT Hub-instansen med hjälp av en [anslutnings sträng](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06).
+Registrera sedan den virtuella datorn som en IoT Edge enhet i IoT Hub-instansen med hjälp av en [anslutnings sträng](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06).
 
 Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
 

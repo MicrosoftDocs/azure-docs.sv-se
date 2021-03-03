@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714790"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändra hur ett lagringskonto replikeras
 
@@ -41,7 +41,7 @@ Följande tabell innehåller en översikt över hur du växlar från varje typ a
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>... från LRS</b> | Ej tillämpligt | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1, 2</sup> | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till GRS/RA-GRS först och begär sedan en Direktmigrering<sup>1</sup> |
 | <b>... från GRS/RA-GRS</b> | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | Ej tillämpligt | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till LRS först och begär sedan en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering |
-| <b>... från ZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Ej tillämpligt | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1, 3</sup> |
+| <b>... från ZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Ej tillämpligt | Begär en Direktmigrering |
 | <b>... från GZRS/RA-GZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | Ej tillämpligt |
 
 <sup>1</sup> ådrar sig en engångs avgift.<br />

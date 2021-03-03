@@ -4,12 +4,12 @@ description: Lär dig hur du skalar din resurs-webbapp, moln tjänst, virtuell d
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6ac3ebb4cf007141967786f51243c741a6045c83
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726061"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Kom igång med autoskalning i Azure
 I den här artikeln beskrivs hur du konfigurerar inställningarna för autoskalning för resursen i Microsoft Azure-portalen.
@@ -128,7 +128,7 @@ I det här avsnittet beskrivs hur du flyttar Azure autoskalning till en annan re
 ### <a name="move"></a>Flytta
 Använd [REST API](/rest/api/monitor/autoscalesettings/createorupdate) för att skapa en autoskalningsinställning i den nya miljön. Den autoskalningsinställning som skapats i mål regionen är en kopia av den automatiska skalnings inställningen i käll regionen.
 
-Det går inte att flytta [diagnostikinställningar](../platform/diagnostic-settings.md) som har skapats i Association med inställningen för autoskalning i käll regionen. Du måste återskapa diagnostikinställningar i mål regionen när du har skapat inställningarna för autoförsäljning. 
+Det går inte att flytta [diagnostikinställningar](../essentials/diagnostic-settings.md) som har skapats i Association med inställningen för autoskalning i käll regionen. Du måste återskapa diagnostikinställningar i mål regionen när du har skapat inställningarna för autoförsäljning. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Lär dig mer om att flytta resurser i Azure-regioner
 Mer information om hur du flyttar resurser mellan regioner och haveri beredskap i Azure finns i [Flytta resurser till en ny resurs grupp eller prenumeration](../../azure-resource-manager/management/move-resource-group-and-subscription.md)

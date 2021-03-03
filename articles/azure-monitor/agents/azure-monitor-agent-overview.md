@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 5c4cfe47fce07a09eeb48e2da76d3b10c1d204af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e4837de70e9f00308b440933e0cd433ad5b27cf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621410"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711543"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Översikt över Azure Monitor Agent (för hands version)
 Azure Monitor agenten (AMA) samlar in övervaknings data från gäst operativ systemet på virtuella datorer och levererar det till Azure Monitor. Den här artikeln innehåller en översikt över Azure Monitor Agent, inklusive hur du installerar den och hur du konfigurerar data insamling.
@@ -19,9 +19,9 @@ Azure Monitor agenten (AMA) samlar in övervaknings data från gäst operativ sy
 ## <a name="relationship-to-other-agents"></a>Förhållande till andra agenter
 Azure Monitor Agent ersätter följande agenter som för närvarande används av Azure Monitor för att samla in gäst data från virtuella datorer:
 
-- [Log Analytics-agent](../platform/log-analytics-agent.md) – skickar data till Log Analytics-arbetsytan och stöder Azure Monitor for VMS och övervaknings lösningar.
-- [Diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) – skickar data till Azure Monitor mått (endast Windows), Azure Event Hubs och Azure Storage.
-- [Teleympkvistar-agenten](../platform/collect-custom-metrics-linux-telegraf.md) – skickar data till Azure Monitor mått (endast Linux).
+- [Log Analytics agent](./log-analytics-agent.md) – skickar data till Log Analytics-arbetsytan och stöder lösningar för VM-insikter och övervakning.
+- [Diagnostiskt tillägg](./diagnostics-extension-overview.md) – skickar data till Azure Monitor mått (endast Windows), Azure Event Hubs och Azure Storage.
+- [Teleympkvistar-agenten](../essentials/collect-custom-metrics-linux-telegraf.md) – skickar data till Azure Monitor mått (endast Linux).
 
 Förutom att konsolidera den här funktionen i en enda agent ger Azure Monitor-agenten följande fördelar jämfört med befintliga agenter:
 
@@ -52,7 +52,7 @@ Azure Monitor Agent samexisterar med de [allmänt tillgängliga agenterna för A
 ## <a name="current-limitations"></a>Aktuella begränsningar
 Följande begränsningar gäller vid en offentlig för hands version av Azure Monitor agenten:
 
-- Azure Monitor agenten har inte stöd för lösningar och insikter som Azure Monitor for VMs och Azure Security Center. Det enda scenario som stöds för närvarande är att samla in data med de data insamlings regler som du konfigurerar. 
+- Azure Monitor agenten har inte stöd för lösningar och insikter som VM Insights och Azure Security Center. Det enda scenario som stöds för närvarande är att samla in data med de data insamlings regler som du konfigurerar. 
 - Data insamlings regler måste skapas i samma region som en Log Analytics arbets yta som används som mål.
 - Virtuella Azure-datorer, skalnings uppsättningar för virtuella datorer och Azure Arc-aktiverade servrar stöds för närvarande. Azure Kubernetes-tjänsten och andra beräknings resurs typer stöds inte för närvarande.
 - Den virtuella datorn måste ha åtkomst till följande HTTPS-slutpunkter:
@@ -64,7 +64,7 @@ Följande begränsningar gäller vid en offentlig för hands version av Azure Mo
 ## <a name="coexistence-with-other-agents"></a>Samexistens med andra agenter
 Azure Monitor agenten kan samverka med befintliga agenter så att du kan fortsätta att använda sina befintliga funktioner under utvärderingen eller migreringen. Detta är särskilt viktigt på grund av begränsningarna i offentlig för hands version i stöd för befintliga lösningar. Du bör vara försiktig när du samlar in dubblettdata eftersom detta kan skeva frågeresultat och leda till ytterligare avgifter för data inmatning och kvarhållning.
 
-Azure Monitor for VMs använder exempelvis Log Analytics-agenten för att skicka prestanda data till en Log Analytics-arbetsyta. Du kan också ha konfigurerat arbets ytan för att samla in Windows-händelser och Syslog-händelser från agenter. Om du installerar Azure Monitor agenten och skapar en data insamlings regel för dessa händelser och prestanda data, resulterar det i dubbla data.
+Till exempel använder VM Insights Log Analytics-agenten för att skicka prestanda data till en Log Analytics arbets yta. Du kan också ha konfigurerat arbets ytan för att samla in Windows-händelser och Syslog-händelser från agenter. Om du installerar Azure Monitor agenten och skapar en data insamlings regel för dessa händelser och prestanda data, resulterar det i dubbla data.
 
 
 ## <a name="costs"></a>Kostnader
@@ -76,7 +76,7 @@ I följande tabell visas de typer av data som du kan samla in med Azure Monitor-
 
 Azure Monitor Agent skickar data till Azure Monitor mått eller en Log Analytics arbets yta som stöder Azure Monitor loggar.
 
-| Datakälla | Mål | Description |
+| Datakälla | Mål | Beskrivning |
 |:---|:---|:---|
 | Prestanda        | Azure Monitor-statistik<br>Log Analytics-arbetsyta | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
 | Händelse loggar i Windows | Log Analytics-arbetsyta | Information som skickas till händelse loggnings systemet i Windows. |

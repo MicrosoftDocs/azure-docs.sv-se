@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725330"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Använda Azure CDN med SAS
 
@@ -77,10 +77,10 @@ Det här alternativet är endast tillgängligt för **Azure CDN Premium från Ve
 
    ![Motor knapp för CDN-regler](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Följande exempel på URL-omskrivning använder ett mönster för reguljära uttryck med en samlad grupp och en slut punkt med namnet *sasstoragedemo* :
+   Följande exempel på URL-omskrivning använder ett mönster för reguljära uttryck med en samlad grupp och en slut punkt med namnet *sasstoragedemo*:
    
    Källa:   
-   `(container1\/.*)`
+   `(container1/.*)`
 
 
    Mål:   
@@ -116,10 +116,10 @@ Om du vill använda autentisering med Azure CDN säkerhetstoken måste du ha ett
  
 2. Använd [regel motorn](./cdn-verizon-premium-rules-engine.md) för att skapa en regel för att skriva över en URL för att ge SAS-åtkomsttoken åtkomst till alla blobbar i behållaren. Det tar upp till 4 timmar att sprida nya regler.
 
-   Följande exempel på URL-omskrivning använder ett mönster för reguljära uttryck med en samlad grupp och en slut punkt med namnet *sasstoragedemo* :
+   Följande exempel på URL-omskrivning använder ett mönster för reguljära uttryck med en samlad grupp och en slut punkt med namnet *sasstoragedemo*:
    
    Källa:   
-   `(container1\/.*)`
+   `(container1/.*)`
    
    Mål:   
    ```

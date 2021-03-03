@@ -4,19 +4,19 @@ description: Lär dig hur du omdirigerar Azure Metric-aviseringar till andra ick
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 04/03/2017
+ms.date: 02/14/2021
 ms.subservice: alerts
-ms.openlocfilehash: 93b8a9935e1a26df5aa76ca45c890036589a48ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ead28618582ff670aca048bb92803d61c6ca938
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624076"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723528"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Anropa en webhook med en klassisk mått avisering i Azure Monitor
 
 > [!WARNING]
-> Den här artikeln beskriver hur du använder äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](../platform/alerts-overview.md). Klassiska aviseringar [dras tillbaka](../platform/monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna.
+> Den här artikeln beskriver hur du använder äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](./alerts-overview.md). Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning till och med **31 maj 2021**. Klassiska aviseringar för Azure Government molnet och Azure Kina 21Vianet kommer att dra tillbaka den **29 februari 2024**.
 >
 
 Du kan använda Webhooks för att dirigera ett meddelande om Azure-aviseringar till andra system för efter bearbetning eller anpassade åtgärder. Du kan använda en webhook för en avisering för att dirigera den till tjänster som skickar SMS-meddelanden, logga buggar för att meddela ett team via chatt-eller meddelande tjänster eller för olika andra åtgärder. 
@@ -30,7 +30,7 @@ Om du vill lägga till eller uppdatera webhook-URI: n går du till **Skapa/uppda
 
 ![Fönstret Lägg till en varnings regel](./media/alerts-webhooks/Alertwebhook.png)
 
-Du kan också konfigurera en avisering för att publicera till en webhook-URI genom att använda [Azure PowerShell cmdlets](../samples/powershell-samples.md#create-metric-alerts), ett [plattforms oberoende CLI](../samples/cli-samples.md#work-with-alerts)eller [Azure Monitor REST-API: er](/rest/api/monitor/alertrules).
+Du kan också konfigurera en avisering för att publicera till en webhook-URI genom att använda [Azure PowerShell cmdlets](../powershell-samples.md#create-metric-alerts), ett [plattforms oberoende CLI](../cli-samples.md#work-with-alerts)eller [Azure Monitor REST-API: er](/rest/api/monitor/alertrules).
 
 ## <a name="authenticate-the-webhook"></a>Autentisera webhooken
 Webhooken kan autentiseras med hjälp av token-baserad auktorisering. Webhook-URI: n sparas med ett token-ID. Exempelvis: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

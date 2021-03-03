@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 940f7efc7130ef80817be3b42e3c0eff83588a90
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737570"
 ---
 # <a name="monitoring-time-series-insights"></a>Övervaknings Time Series Insights
 
@@ -63,7 +63,7 @@ Du kan samla in loggar från följande kategorier för Azure Time Series Insight
 
 ## <a name="analyzing-metrics"></a>Analyserar mått
 
-Du kan analysera mått för Azure Time Series Insights, tillsammans med mått från andra Azure-tjänster, genom att öppna mått från Azure Monitor-menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) .
+Du kan analysera mått för Azure Time Series Insights, tillsammans med mått från andra Azure-tjänster, genom att öppna mått från Azure Monitor-menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../azure-monitor/essentials/metrics-getting-started.md) .
 
 En lista över de plattforms mått som samlas in finns i [övervaknings Azure Time Series Insights data referens](how-to-monitor-tsi-reference.md#metrics)
 
@@ -115,7 +115,7 @@ Följande är frågor som du kan använda för att övervaka din Azure Time Seri
 
 ## <a name="alerts"></a>Aviseringar
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](../azure-monitor/platform/alerts-metric-overview.md), [loggar](../azure-monitor/platform/alerts-unified-log.md)och [aktivitets loggen](../azure-monitor/platform/activity-log-alerts.md). Olika typer av aviseringar har fördelar och nack delar.
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](../azure-monitor/alerts/alerts-metric-overview.md), [loggar](../azure-monitor/alerts/alerts-unified-log.md)och [aktivitets loggen](../azure-monitor/alerts/activity-log-alerts.md). Olika typer av aviseringar har fördelar och nack delar.
 
 När du skapar en varnings regel baserat på plattforms mått bör du vara medveten om att för Time Series Insights plattforms mått som samlas in i antal enheter, kan vissa agg regeringar inte vara tillgängliga eller användbara.
 

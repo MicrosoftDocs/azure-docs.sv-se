@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981114"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704845"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service
 
@@ -33,7 +33,7 @@ I den här guiden får du lära dig att:
 > * Använda TLS 1.1/1.2
 > * Automatisera hantering av TLS med skript
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att följa den här instruktions guiden:
 
@@ -52,7 +52,7 @@ För att följa den här instruktions guiden:
 
 Gör så här:
 
-I <a href="https://portal.azure.com" target="_blank">Azure Portal</a>väljer du **app Services**på menyn till vänster  >  **\<app-name>** .
+I <a href="https://portal.azure.com" target="_blank">Azure Portal</a>väljer du **app Services** på menyn till vänster  >  **\<app-name>** .
 
 Starta dialog rutan **TLS/SSL-bindning** från den vänstra navigeringen i din app genom att:
 
@@ -61,7 +61,7 @@ Starta dialog rutan **TLS/SSL-bindning** från den vänstra navigeringen i din a
 
 ![Lägg till bindning till domän](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-I **anpassad domän**väljer du den anpassade domän som du vill lägga till en bindning för.
+I **anpassad domän** väljer du den anpassade domän som du vill lägga till en bindning för.
 
 Om din app redan har ett certifikat för den valda anpassade domänen går du till [skapa bindning](#create-binding) direkt. Annars fortsätter du.
 
@@ -79,7 +79,7 @@ Om din app inte har något certifikat för den valda anpassade domänen har du t
 
 Använd följande tabell som hjälp för att konfigurera TLS-bindning i dialog rutan **TLS/SSL-bindning** och klicka sedan på **Lägg till bindning**.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |-|-|
 | Anpassad domän | Domän namnet som TLS/SSL-bindningen ska läggas till för. |
 | Tumavtryck för privat certifikat | Certifikatet som ska bindas. |
@@ -159,13 +159,13 @@ Språkspecifika konfigurations guider, till exempel [konfigurations](configure-l
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Fler resurser
 
-* [Använd ett TLS/SSL-certifikat i koden i Azure App Service](configure-ssl-certificate-in-code.md)
+* [Använda ett TLS-/SSL-certifikat i koden i Azure App Service](configure-ssl-certificate-in-code.md)
 * [Vanliga frågor och svar: App Service certifikat](./faq-configuration-and-management.md)

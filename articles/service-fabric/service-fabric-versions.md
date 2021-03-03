@@ -3,12 +3,12 @@ title: Uppgradera Azure Service Fabric Cluster-versionen
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9c7e5e3778c9a38190be210ebb391bc8b0b58c76
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 7cb9a739572c667e0821a7a60f5c5d8cceb97957
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652062"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698390"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Uppgradera Azure Service Fabric Cluster-versionen
 
@@ -63,9 +63,9 @@ Azure Service Fabric-kluster som körs på oförändrade versioner senare än 6,
   
   - **För kluster som kör en version av Service Fabric som är större än 6,3 och som inte använder funktionen öppna nätverk**, är klustret kvar.
 
- - **För kluster som kör en version av Service Fabric som är större än 6,3 och använder [funktionen öppna nätverksfunktioner för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** , kan klustret bli otillgängligt och upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
+ - **För kluster som kör en version av Service Fabric som är större än 6,3 och använder [funktionen öppna nätverksfunktioner för behållare](./service-fabric-networking-modes.md#set-up-open-networking-mode)** , kan klustret bli otillgängligt och upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
  
- -   **För kluster som kör [Windows-versioner mellan 7.0.457 och 7.0.466 (båda versionerna som ingår)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) och Windows OS har funktionen Windows-behållare aktive rad. Obs! Linux-versionerna 7.0.457, 7.0.464 och 7.0.465 påverkas inte**.
+ -   **För kluster som kör [Windows-versioner mellan 7.0.457 och 7.0.466 (båda versionerna som ingår)](#supported-version-names) och Windows OS har funktionen Windows-behållare aktive rad. Obs! Linux-versionerna 7.0.457, 7.0.464 och 7.0.465 påverkas inte**.
     - **Påverkan**: klustret upphör att fungera, vilket kan orsaka avbrott i tjänsten för dina arbets belastningar.
     
 #### <a name="required-action"></a>Nödvändig åtgärd

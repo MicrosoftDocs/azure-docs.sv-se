@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735734"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bästa praxis i Azure för nätverkssäkerhet
 I den här artikeln beskrivs en samling Azure Best Practices för att förbättra nätverks säkerheten. Dessa bästa metoder är härledda från vår erfarenhet av Azure-nätverk och våra kunders upplevelser som du själv har.
@@ -206,7 +206,7 @@ Azure Private-länken ger följande fördelar:
 - **Global räckvidd**: Anslut privat till tjänster som körs i andra regioner. Användarens virtuella nätverk kan vara i region A och det kan ansluta till tjänster i region B.
 - **Enkel att konfigurera och hantera**: du behöver inte längre reserverade, offentliga IP-adresser i dina virtuella nätverk för att skydda Azure-resurser via en IP-brandvägg. Det krävs inga NAT-eller gateway-enheter för att konfigurera de privata slut punkterna. Privata slut punkter konfigureras via ett enkelt arbets flöde. På tjänst sidan kan du också hantera anslutnings förfrågningarna på Azure-tjänstens resurs på ett enkelt sätt. Azures privata länk fungerar för konsumenter och tjänster som tillhör olika Azure Active Directory klienter. 
     
-Mer information om privata slut punkter och de Azure-tjänster och regioner som privata slut punkter är tillgängliga för finns i [Azure privat länk](https://docs.microsoft.com/azure/private-link/private-link-overview).
+Mer information om privata slut punkter och de Azure-tjänster och regioner som privata slut punkter är tillgängliga för finns i [Azure privat länk](../../private-link/private-link-overview.md).
 
 
 ## <a name="next-steps"></a>Nästa steg

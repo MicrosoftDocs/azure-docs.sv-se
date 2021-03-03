@@ -7,94 +7,30 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: d27537f017707e937303dd0c08a589db28aac6ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8b3304c673e8606667246a7d0df9ad8f3be11d9b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686707"
 ---
-# <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Säkerhets kopiering och återställning av Azure Arc-aktiverade PostgreSQL för storskaliga Server grupper
+# <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Säkerhetskopiera och återställa Azure Arc-aktiverade PostgreSQL för storskaliga Server grupper
 
-Du kan göra en fullständig säkerhets kopiering/återställning av din Azure Arc-aktiverade PostgreSQL-Server grupp. När du gör det säkerhets kopie ras hela uppsättningen databaser på alla noder i din Azure Arc-aktiverade PostgreSQL-Server grupp, och/eller återställs.
-Om du vill göra en säkerhets kopia och återställa den måste du kontrol lera att en lagrings klass för säkerhets kopiering har kon figurer ATS för Server gruppen. För tillfället måste du ange en lagrings klass för säkerhets kopiering vid den tidpunkt då du skapar Server gruppen. Det går inte att konfigurera server gruppen för att använda en lagrings klass för säkerhets kopiering när den har skapats.
+[!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-> [!CAUTION]
-> För hands versionen stöder inte säkerhets kopiering/återställning för version 11 av postgres-motorn. Den stöder bara säkerhets kopiering/återställning för postgres version 12.
+När du säkerhetskopierar eller återställer en Azure-båge som är aktive rad PostgreSQL-Server grupp, säkerhets kopie ras och/eller återställs hela uppsättningen databaser på alla PostgreSQL-noder i Server gruppen.
 
-## <a name="verify-configuration"></a>Verifiera konfigurationen
-
-Kontrol lera först att den befintliga Server gruppen har kon figurer ATS för att använda säkerhets kopierings lagrings klass.
-
-Kör följande kommando när du har angett namnet på Server gruppen:
-```console
- azdata arc postgres server show -n postgres01
-```
-Titta på lagrings avsnittet i utdata:
-```console
-...
-"storage": {
-      "backups": {
-        "className": "local-storage"
-      },
-      "data": {
-        "className": "local-storage",
-        "size": "5Gi"
-      },
-      "logs": {
-        "className": "local-storage",
-        "size": "5Gi"
-      }
-    }
-...
-```
-Om du ser namnet på en lagrings klass som anges i avsnittet "säkerhets kopieringar" i kommandots utdata, betyder det att din server grupp har kon figurer ATS för att använda en lagrings klass för säkerhets kopiering och är redo för att du ska kunna säkerhetskopiera och återställa. Om du inte ser avsnittet "säkerhets kopiering" måste du ta bort och återskapa Server gruppen för att konfigurera säkerhets kopierings lagrings klass. I det här läget är det ännu inte möjligt att konfigurera en lagrings klass för säkerhets kopiering när Server gruppen har skapats.
-
->[!IMPORTANT]
->Om din server grupp redan har kon figurer ATS för att använda en lagrings klass för säkerhets kopiering hoppar du över nästa steg och går direkt till steg "gör en manuell fullständig säkerhets kopiering".
-
-## <a name="create-a-server-group"></a>Skapa en Server grupp 
-
-Skapa sedan en Server grupp som kon figurer ATS för säkerhets kopiering/återställning.
-
-För att kunna göra säkerhets kopior och återställa dem måste du skapa en server som är konfigurerad med en lagrings klass.
-
-Kör följande kommando för att hämta en lista över tillgängliga lagrings klasser i Kubernetes-klustret:
-
-```console
-kubectl get sc
-```
-
-<!--The general format of create server group command is documented [here](create-postgresql-instances.md)-->
-
-```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-backups <storage class name> [--storage-class-data <storage class name>] [--storage-class-logs <storage class name>]
-```
-
-Om du till exempel har skapat en enkel miljö baserat på kubeadm:
-```console
-azdata arc postgres server create -n postgres01 --workers 2 --storage-class-backups local-storage
-```
-
-## <a name="take-manual-full-backup"></a>Gör manuell fullständig säkerhets kopiering
-
-
-Ta sedan en manuell fullständig säkerhets kopiering.
-
-> [!CAUTION]
-> **Endast för användare av Azure Kubernetes service (AKS):** vi är medvetna om ett problem med att göra säkerhets kopior av en Server grupp som finns på Azure Kubernetes service (AKS). Vi arbetar redan med att åtgärda det. Innan uppdateringen har distribuerats i en framtida version/uppdatering måste du ta bort poddar för dina Server grupper innan du gör en säkerhets kopia. För var och en av poddar i Server gruppen (du visar poddar genom att köra **kubectl get poddar-n \<namespace name> **) tar du bort dem genom att köra **kubectl Delete Pod \<server group pod name> -n \<namespace name> **. Ta inte bort poddar som inte ingår i Server gruppen. Att ta bort poddar innebär inte att dina data riskerar att tas bort. Vänta tills alla poddar är online igen och i STATUS = kör innan du tar en säkerhets kopia. Status för Pod anges i utdata från kommandot kubectl get poddar ovan.
-
+## <a name="take-a-manual-full-backup"></a>Gör en manuell fullständig säkerhets kopiering
 
 Kör följande kommando för att göra en fullständig säkerhets kopia av hela data-och loggmappen i Server gruppen:
-
 ```console
-azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
+azdata arc postgres backup create [--name <backup name>] --server-name <server group name> [--no-wait] 
 ```
-Där:
+Plats:
 - __namn__ anger namnet på en säkerhets kopia
 - __Server namn__ anger en Server grupp
 - __no-wait__ anger att kommando raden inte väntar på att säkerhets kopieringen ska slutföras för att du ska kunna fortsätta att använda detta kommando rads fönster
@@ -102,18 +38,22 @@ Där:
 Det här kommandot koordinerar en distribuerad fullständig säkerhets kopiering över alla noder som utgör din Azure Arc-aktiverade PostgreSQL-Server grupp. Med andra ord säkerhets kopie ras alla data i koordinator-och arbetsnoderna.
 
 Exempel:
+
 ```console
-azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
+azdata arc postgres backup create --name backup12082020-0250pm --server-name postgres01
 ```
 
-När säkerhets kopieringen har slutförts returneras ID, namn och tillstånd för säkerhets kopian. Exempel:
+När säkerhets kopieringen är klar returneras ID, namn, storlek, tillstånd och tidsstämpel för säkerhets kopian. Exempel:
 ```console
 {
-  "ID": "d134f51aa87f4044b5fb07cf95cf797f",
-  "name": "MyBackup_Aug31_0730amPS",
-  "state": "Done"
+  "ID": "8085723fcbae4aafb24798c1458f4bb7",
+  "name": "backup12082020-0250pm",
+  "size": "9.04 MiB",
+  "state": "Done",
+  "timestamp": "2020-12-08 22:50:22+00:00"
 }
 ```
+`+xx:yy` anger tids zonen för tiden då säkerhets kopieringen gjordes. I det här exemplet betyder "+ 00:00" UTC-tid (UTC + 00 timme 00 minuter).
 
 > [!NOTE]
 > Det är ännu inte möjligt att:
@@ -122,8 +62,6 @@ När säkerhets kopieringen har slutförts returneras ID, namn och tillstånd f�
 
 ## <a name="list-backups"></a>Visa säkerhetskopior
 
-Lista de säkerhets kopior som är tillgängliga för återställning.
-
 Om du vill visa en lista över säkerhets kopior som är tillgängliga för återställning kör du följande kommando:
 
 ```console
@@ -131,55 +69,124 @@ azdata arc postgres backup list --server-name <servergroup name>
 ```
 
 Exempel:
+
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
 
-Den returnerar utdata som:
-```console
-ID                                Name                      State    Timestamp
---------------------------------  ------------------------  -------  ------------------------------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
+Returnerar utdata som:
+
+```output
+ID                                Name                   Size       State    Timestamp
+--------------------------------  ---------------------  ---------  -------  -------------------------
+d744303b1b224ef48be9cba4f58c7cb9  backup12072020-0731pm  13.83 MiB  Done     2020-12-08 03:32:09+00:00
+c4f964d28da34318a420e6d14374bd36  backup12072020-0819pm  9.04 MiB   Done     2020-12-08 04:19:49+00:00
+a304c6ef99694645a2a90ce339e94714  backup12072020-0822pm  9.1 MiB    Done     2020-12-08 04:22:26+00:00
+47d1f57ec9014328abb0d8fe56020760  backup12072020-0827pm  9.06 MiB   Done     2020-12-08 04:27:22+00:00
+8085723fcbae4aafb24798c1458f4bb7  backup12082020-0250pm  9.04 MiB   Done     2020-12-08 22:50:22+00:00
 ```
 
-Timestamp anger tidpunkten i UTC då säkerhets kopieringen gjordes.
+Kolumnen tidsstämpelkolumn anger tidpunkten i UTC då säkerhets kopieringen gjordes.
 
 ## <a name="restore-a-backup"></a>Återställ en säkerhetskopia
+I det här avsnittet visar vi hur du gör en fullständig återställning eller en återställning av en tidpunkt. När du återställer en fullständig säkerhets kopia återställer du hela innehållet i säkerhets kopian. När du gör en tidpunkts återställning återställer du upp till den tidpunkt som du anger. Alla transaktioner som har utförts senare än den här tidpunkten återställs inte.
 
-Om du vill återställa säkerhets kopian av en hel Server grupp kör du kommandot:
-
+### <a name="restore-a-full-backup"></a>Återställa en fullständig säkerhets kopia
+För att återställa hela innehållet i en säkerhets kopia kör du kommandot:
 ```console
-azdata arc postgres backup restore --server-name <server group name> --backup-id <backup id>
+azdata arc postgres backup restore --server-name <target server group name> [--source-server-name <source server group name> --backup-id <backup id>]
+or
+azdata arc postgres backup restore -sn <target server group name> [-ssn <source server group name> --backup-id <backup id>]
 ```
+<!--To read the general format of restore command, run: azdata arc postgres backup restore --help -->
 
-Där:
-- __säkerhets kopierings-ID__ är ID: t för säkerhets kopian som visas i listan med säkerhets kopierings kommandot (se steg 3).
+Plats:
+- __säkerhets kopierings-ID__ är ID: t för säkerhets kopian som visas i listan över säkerhets kopieringar som visas ovan.
 Detta koordinerar en distribuerad fullständig återställning över alla noder som utgör din Azure Arc-aktiverade PostgreSQL-Server grupp. Med andra ord återställs alla data i koordinator-och arbetsnoderna.
 
-Exempel:
+#### <a name="examples"></a>Exempel:
+
+__Återställ Server gruppen postgres01 till sig själv:__
+
 ```console
-azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
+azdata arc postgres backup restore -sn postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```
 
-När återställningen är klar returnerar den utdata som detta till kommando raden:
+Den här åtgärden stöds endast för PostgreSQL-version 12 och högre.
+
+__Återställa Server gruppens postgres01 till en annan server grupp postgres02:__
+
 ```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
+```
+Den här åtgärden stöds för alla versioner av PostgreSQL som startar version 11. Mål server gruppen måste skapas före återställnings åtgärden, måste vara av samma konfiguration och måste använda samma säkerhets kopierings-PVC som käll Server gruppen.
+
+När återställningen är klar returnerar den utdata som detta till kommando raden:
+
+```json
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
   "state": "Done"
 }
 ```
+
 > [!NOTE]
 > Det är ännu inte möjligt att:
 > - Återställa en säkerhets kopia genom att ange dess namn
-> - Återställa en Server grupp under ett annat namn eller i en annan server grupp
+> - Visa förloppet för en återställnings åtgärd
+
+
+### <a name="do-a-point-in-time-restore"></a>Gör en återställning vid ett tillfälle
+
+Om du vill återställa en Server grupp till en viss tidpunkt kör du kommandot:
+```console
+azdata arc postgres backup restore --server-name <target server group name> --source-server-name <source server group name> --time <point in time to restore to>
+or
+azdata arc postgres backup restore -sn <target server group name> -ssn <source server group name> -t <point in time to restore to>
+```
+
+Om du vill läsa det allmänna formatet för RESTORE-kommandot kör du: `azdata arc postgres backup restore --help` .
+
+Var `time` är tidpunkten för att återställa till. Ange antingen en tidstämpel eller en siffra och ett suffix ( `m` i minuter, i `h` timmar, `d` i dagar eller `w` i veckor). Till exempel `1.5h` går tillbaka 90 minuter.
+
+#### <a name="examples"></a>Exempel:
+__Gör en återställning till en tidpunkt för Server gruppen postgres01 till sig själv:__
+
+Det går inte att utföra återställnings punkt för en Server grupp på egen hand.
+
+__Gör en återställning av Server gruppen postgres01 till en annan server grupp postgres02 till en viss tidsstämpel:__
+```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 -t "2020-12-08 04:23:48.751326+00"
+``` 
+
+I det här exemplet återställs till Server gruppen postgres02 det tillstånd där Server grupp postgres01 skedde den 8 december 2020 vid 04:23:48.75 UTC. Observera att "+ 00" anger tids zonen för den tidpunkt som du anger. Om du inte anger en tidszon används den tidszon för klienten som du kör återställnings åtgärden från.
+
+Exempel:
+- `2020-12-08 04:23:48.751326+00` tolkas som `2020-12-08 04:23:48.751326` UTC
+- Om du befinner dig i Pacific Standard Time Zone (PST = UTC + 08) `2020-12-08 04:23:48.751326` tolkas den som `2020-12-08 12:23:48.751326` UTC den här åtgärden stöds för alla versioner av postgresql som startar version 11. Mål server gruppen måste skapas före återställnings åtgärden och måste använda samma säkerhets kopierings-PVC som käll Server gruppen.
+
+
+__Gör en återställning av Server gruppens postgres01 till en annan server grupp postgres02 till en viss tids period tidigare:__
+```console
+azdata arc postgres backup restore -sn postgres02 -ssn postgres01 -t "22m"
+```
+
+Det här exemplet återställer till Server gruppen postgres02 det tillstånd då Server grupp postgres01 var 22 minuter sedan.
+Den här åtgärden stöds för alla versioner av PostgreSQL som startar version 11. Mål server gruppen måste skapas före återställnings åtgärden och måste använda samma säkerhets kopierings-PVC som käll Server gruppen.
+
+> [!NOTE]
+> Det är ännu inte möjligt att:
 > - Visa förloppet för en återställnings åtgärd
 
 ## <a name="delete-backups"></a>Ta bort säkerhetskopior
+
 Kvarhållning av säkerhets kopior kan inte anges som för hands version. Du kan dock manuellt ta bort säkerhets kopior som du inte behöver.
 Det allmänna kommandot för att ta bort säkerhets kopior är:
+
 ```console
 azdata arc postgres backup delete  [--server-name, -sn] {[--name, -n], -id}
 ```
+
 där:
 - `--server-name` är namnet på den server grupp från vilken användaren vill ta bort en säkerhets kopia
 - `--name` är namnet på den säkerhets kopia som ska tas bort
@@ -188,17 +195,8 @@ där:
 > [!NOTE]
 > `--name` och `-id` är ömsesidigt uteslutande.
 
-Du kan hämta namnet och ID: t för dina säkerhets kopieringar genom att köra säkerhets kopierings kommandot enligt beskrivningen i föregående stycke.
+Exempel:
 
-Anta till exempel att du har följande säkerhets kopior i listan:
-```console
-azdata arc postgres backup list -sn postgres01
-ID                                Name                    State
---------------------------------  ----------------------  -------
-5b0481dfc1c94b4cac79dd56a1bb21f4  MyBackup091720200110am  Done
-0cf39f1e92344e6db4cfa285d36c7b14  MyBackup091720200111am  Done
-```
-och du vill ta bort den första av dem, kör du följande kommando:
 ```console
 azdata arc postgres backup delete -sn postgres01 -n MyBackup091720200110am
 {
@@ -207,15 +205,11 @@ azdata arc postgres backup delete -sn postgres01 -n MyBackup091720200110am
   "state": "Done"
 }
 ```
-Om du skulle se en lista över säkerhets kopiorna i det här läget skulle du få följande utdata:
-```console
-azdata arc postgres backup list -sn postgres01
-ID                                Name                    State
---------------------------------  ----------------------  -------
-0cf39f1e92344e6db4cfa285d36c7b14  MyBackup091720200111am  Done
-```
+
+Du kan hämta namnet och ID: t för dina säkerhets kopieringar genom att köra säkerhets kopierings kommandot enligt beskrivningen i föregående stycke.
 
 Om du vill ha mer information om kommandot Ta bort kör du:
+
 ```console
 azdata arc postgres backup delete --help
 ```

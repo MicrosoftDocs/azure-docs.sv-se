@@ -6,24 +6,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 485c2cc6c95f5922025fe887f7c25131e849a01d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ef8be3d1fd815362971d5ae2beb27edf47766c94
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625732"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723171"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Översikt över Log Analytics i Azure Monitor
 Log Analytics är ett verktyg i Azure Portal som används för att redigera och köra logg frågor med data i Azure Monitor loggar. Du kan skriva en enkel fråga som returnerar en uppsättning poster och sedan använda funktioner i Log Analytics för att sortera, filtrera och analysera dem. Du kan också skriva en mer avancerad fråga för att utföra statistisk analys och visualisera resultatet i ett diagram för att identifiera en viss trend. Oavsett om du arbetar med resultatet av dina frågor interaktivt eller använder dem med andra Azure Monitor funktioner som logg frågas aviseringar eller arbets böcker, Log Analytics är det verktyg som du tänker använda för att skriva och testa dem. 
 
 
 > [!TIP]
-> Den här artikeln innehåller en beskrivning av Log Analytics och var och en av dess funktioner. Om du vill gå direkt till en själv studie kurs kan du läsa [Log Analytics själv studie kursen](../log-query/log-analytics-tutorial.md).
+> Den här artikeln innehåller en beskrivning av Log Analytics och var och en av dess funktioner. Om du vill gå direkt till en själv studie kurs kan du läsa [Log Analytics själv studie kursen](./log-analytics-tutorial.md).
 
 
 
 ## <a name="starting-log-analytics"></a>Startar Log Analytics
-Starta Log Analytics från **loggar** i **Azure Monitor** -menyn i Azure Portal. Du ser även det här alternativet på menyn för de flesta Azure-resurser. Oavsett var du startar den, är det samma Log Analytics-verktyg. Den meny som du använder för att starta Log Analytics avgör vilka data som kommer att vara tillgängliga. Om du startar den från **Azure Monitor** -menyn eller **Log Analytics arbets ytans** meny, har du åtkomst till alla poster i en arbets yta. Om du väljer **loggar** från en annan typ av resurs, är dina data begränsade till att logga data för den resursen. Mer information finns i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](../log-query/scope.md) .
+Starta Log Analytics från **loggar** i **Azure Monitor** -menyn i Azure Portal. Du ser även det här alternativet på menyn för de flesta Azure-resurser. Oavsett var du startar den, är det samma Log Analytics-verktyg. Den meny som du använder för att starta Log Analytics avgör vilka data som kommer att vara tillgängliga. Om du startar den från **Azure Monitor** -menyn eller **Log Analytics arbets ytans** meny, har du åtkomst till alla poster i en arbets yta. Om du väljer **loggar** från en annan typ av resurs, är dina data begränsade till att logga data för den resursen. Mer information finns i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](./scope.md) .
 
 [![Starta Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
@@ -39,9 +39,9 @@ Kontroller för att arbeta med frågan i frågefönstret.
 
 | Alternativ | Beskrivning |
 |:---|:---|
-| Omfång | Anger omfattningen av data som används för frågan. Detta kan vara alla data i en Log Analytics arbets yta eller data för en viss resurs över flera arbets ytor. Se [frågans omfång](../log-query/scope.md). |
+| Omfång | Anger omfattningen av data som används för frågan. Detta kan vara alla data i en Log Analytics arbets yta eller data för en viss resurs över flera arbets ytor. Se [frågans omfång](./scope.md). |
 | Knappen Kör | Klicka om du vill köra den valda frågan i frågefönstret. Du kan också trycka på SKIFT + RETUR för att köra en fråga. |
-| Tids väljare | Välj tidsintervallet för de data som är tillgängliga för frågan. Detta åsidosätts om du inkluderar ett tids filter i frågan. Se [omfång och tidsintervall för logg frågor i Azure Monitor Log Analytics](../log-query/scope.md). |
+| Tids väljare | Välj tidsintervallet för de data som är tillgängliga för frågan. Detta åsidosätts om du inkluderar ett tids filter i frågan. Se [omfång och tidsintervall för logg frågor i Azure Monitor Log Analytics](./scope.md). |
 | Knappen Spara | Spara frågan i Query Explorer för arbets ytan. |
  Knappen Kopiera | Kopiera en länk till frågan, frågetexten eller frågeresultatet till Urklipp. |
 | Knappen Ny varnings regel | Skapa en ny flik med en tom fråga. |
@@ -55,7 +55,7 @@ Kontroller för att arbeta med frågan i frågefönstret.
 ### <a name="2-sidebar"></a>2. marginal List
 Listor över tabeller i arbets ytan, exempel frågor och filter alternativ för den aktuella frågan.
 
-| Flik | Description |
+| Flik | Beskrivning |
 |:---|:---|
 | Tabeller | Visar en lista över de tabeller som är en del av det valda omfånget. Välj **Gruppera efter** för att ändra grupperingen av tabellerna. Hovra över ett tabell namn för att visa en dialog ruta med en beskrivning av tabellen och alternativ för att visa dess dokumentation och för att förhandsgranska data. Expandera en tabell om du vill visa dess kolumner. Dubbelklicka på ett tabell-eller kolumn namn om du vill lägga till det i frågan. |
 | Frågor | Lista med exempel frågor som du kan öppna i frågefönstret. Det här är samma lista som visas när du öppnar Log Analytics. Välj **Gruppera efter** för att ändra grupperingen av frågorna. Dubbelklicka på en fråga för att lägga till den i frågefönstret eller hovra över den för andra alternativ. |
@@ -91,5 +91,5 @@ Visar resultatet som en av flera tillgängliga diagram typer. Du kan ange diagra
 Om du redan är bekant med Azure Datautforskaren Web UI ska du Log Analytics se bekant. Det beror på att det är byggt på Azure Datautforskaren och använder samma KQL (Kusto Query Language). Log Analytics lägger till funktioner som är speciella för Azure Monitor, till exempel filtrering efter tidsintervall och möjlighet att skapa en varnings regel från en fråga. Båda verktygen innehåller en utforskare som gör att du kan söka igenom strukturen för tillgängliga tabeller, men Azure Datautforskaren Web UI fungerar huvudsakligen med tabeller i Azure Datautforskaren-databaser medan Log Analytics fungerar med tabeller i en Log Analytics arbets yta. 
 
 ## <a name="next-steps"></a>Nästa steg
-- Gå igenom en [själv studie kurs om hur du använder Log Analytics i Azure Portal](../log-query/log-analytics-tutorial.md).
-- Gå igenom en [själv studie kurs om att skriva frågor](../log-query/get-started-queries.md).
+- Gå igenom en [själv studie kurs om hur du använder Log Analytics i Azure Portal](./log-analytics-tutorial.md).
+- Gå igenom en [själv studie kurs om att skriva frågor](./get-started-queries.md).

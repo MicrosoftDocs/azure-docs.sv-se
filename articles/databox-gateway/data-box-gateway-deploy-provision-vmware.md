@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: dfbc63ccbdf6f0a8abe1e955b43240d799d6783d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 948005942be193c8b15c363282aa06c006eb244e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727625"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Självstudie: Etablera Azure Data Box Gateway i VMware
 
@@ -55,7 +55,7 @@ Innan du distribuerar en virtuell enhet kontrollerar du att:
 * Värdsystemet kan dedikera följande resurser för att etablera den virtuella enheten:
 
   * Minst 4 kärnor.
-  * Minst 8 GB RAM.
+  * Minst 8 GB RAM. Vi rekommenderar starkt minst 16 GB RAM-minne.
   * Ett nätverksgränssnitt.
   * En operativsystemdisk på 250 GB.
   * En virtuell disk på 2 TB för systemdata.

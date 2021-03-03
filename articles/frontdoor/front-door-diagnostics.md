@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: d1f3e59cc88ea9cb30e7eacbd26591e08d71be61
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715555"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Övervaka mått och loggar i Azures front dörr
 
@@ -25,11 +25,11 @@ Genom att använda Azures front dörr kan du övervaka resurser på följande s�
 - **Mått**. Azures front dörr har för närvarande åtta mått för att visa prestanda räknare.
 - **Loggar**. Med aktivitets-och diagnostikloggar kan prestanda, åtkomst och annan information sparas eller förbrukas från en resurs i övervaknings syfte.
 
-### <a name="metrics"></a>Mått
+##  <a name="metrics"></a><a name="metrics"></a>Mått
 
 Mått är en funktion för vissa Azure-resurser som gör att du kan visa prestanda räknare i portalen. Följande är tillgängliga mått på front dörren:
 
-| Metric | Mått visnings namn | Enhet | Dimensioner | Description |
+| Metric | Mått visnings namn | Enhet | Dimensioner | Beskrivning |
 | --- | --- | --- | --- | --- |
 | RequestCount | Antal begäranden | Antal | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet klient förfrågningar som hanteras av frontend-dörren.  |
 | RequestSize | Begär ande storlek | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet byte som har skickats som begär Anden från klienter till front dörren. |

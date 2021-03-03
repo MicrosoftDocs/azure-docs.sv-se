@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727268"
 ---
 # <a name="create-a-video-indexer-account"></a>Skapa ett Video Indexer konto
 
@@ -201,7 +201,7 @@ Att automatisera skapandet av kontot är en process i två steg:
 
 ### <a name="prerequisites-for-connecting-to-azure-government"></a>Krav för att ansluta till Azure Government
 
--   En Azure-prenumeration i [Azure Government](https://docs.microsoft.com/azure/azure-government/).
+-   En Azure-prenumeration i [Azure Government](../../azure-government/index.yml).
 - Ett Azure AD-konto i Azure Government.
 - Alla före krav på behörigheter och resurser enligt beskrivningen ovan i [krav för att ansluta till Azure](#prerequisites-for-connecting-to-azure).
 
@@ -222,7 +222,7 @@ Så här skapar du ett betalt konto via Video Indexer-portalen:
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Skapa ett nytt konto via API: et på Azure Government
 
-Om du vill skapa ett betalt konto i Azure Government följer du instruktionerna i [skapa-betalt-Account](/azure/media-services/video-indexer/connect-to-azure). Den här API-slutpunkten inkluderar endast myndigheter i molnet.
+Om du vill skapa ett betalt konto i Azure Government följer du instruktionerna i [skapa-betalt-Account](). Den här API-slutpunkten inkluderar endast myndigheter i molnet.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Begränsningar för Video Indexer på Azure Government
 

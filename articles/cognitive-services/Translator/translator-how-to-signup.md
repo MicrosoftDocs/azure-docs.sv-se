@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 37b9860546f9fd16045906ce9385a1590c46b970
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100556351"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712937"
 ---
 # <a name="create-a-translator-resource"></a>Skapa en översättare-resurs
 
@@ -57,7 +57,7 @@ Tjänsten Translator kan nås via två olika resurs typer:
 
 1. **Resursgrupp**. Den Azure-resurs grupp som du väljer fungerar som en virtuell behållare för den nya resursen. Du kan skapa en ny resurs grupp eller lägga till din resurs i en befintlig resurs grupp som delar samma livs cykel, behörigheter och principer.
 
-1. **Resurs region**. Välj **Global** om inte ditt företag eller program kräver en specifik region. Translator är en icke-regional tjänst – det finns inget beroende av en speciell Azure-region. *Se* [regioner och Tillgänglighetszoner i Azure](/azure/availability-zones/az-overview).
+1. **Resurs region**. Välj **Global** om inte ditt företag eller program kräver en specifik region. Translator är en icke-regional tjänst – det finns inget beroende av en speciell Azure-region. *Se* [regioner och Tillgänglighetszoner i Azure](../../availability-zones/az-overview.md).
 
 1. **Namn**. Ange det namn som du har valt för din resurs. Det namn du väljer måste vara unikt i Azure.
 

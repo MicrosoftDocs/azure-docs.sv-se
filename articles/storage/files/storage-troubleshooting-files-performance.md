@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393861"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737638"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Felsöka prestanda problem i Azure-filresurser
 
@@ -50,7 +50,7 @@ Du kan kontrol lera om din resurs har begränsats genom att komma åt och använ
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    Om du vill veta mer om varje svars typ, se [mått mått](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+    Om du vill veta mer om varje svars typ, se [mått mått](./storage-files-monitoring-reference.md#metrics-dimensions).
 
     ![Skärm bild av mått alternativen för Premium-filresurser som visar egenskaps filtret "svars typ".](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -258,13 +258,12 @@ För att bekräfta kan du använda Azure-mått i portalen –
    > [!NOTE]
    > Om svars typerna inte visas i list rutan **Dimensions värden** innebär det att resursen inte har begränsats. Om du vill lägga till dimensionsvärdena väljer du **Lägg till anpassat värde** bredvid List rutan **Dimensions värden** , anger svaret-typen (till exempel **SuccessWithThrottling**), väljer **OK** och upprepar sedan de här stegen för att lägga till alla lämpliga svars typer för din fil resurs.
 
-8. Klicka på list rutan **Dimensions namn** och välj **fil resurs**.
-9. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
-
+8. För **Premium fil resurser** klickar du på list rutan **Dimensions namn** och väljer **fil resurs**. För **standard fil resurser** går du vidare till **steg #10**.
 
    > [!NOTE]
-   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden visar inte fil resurserna eftersom det inte finns några tillgängliga fil resurser per resurs. Begränsnings varningar för standard fil resurser utlöses om någon fil resurs på lagrings kontot är begränsad och aviseringen inte kommer att identifiera vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
+   > Om fil resursen är en standard fil resurs, kommer **fil** resurs dimensionen inte att visa en lista över fil resurserna eftersom det inte finns några tillgängliga resurs mått för standard fil resurser. Begränsnings varningar för standard fil resurser utlöses om någon fil resurs på lagrings kontot är begränsad och aviseringen inte kommer att identifiera vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
 
+9. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
 10. Definiera **aviserings parametrarna** (tröskelvärde, Operator, agg regerings precision och frekvens för utvärderingen) och klicka på **Slutför**.
 
     > [!TIP]

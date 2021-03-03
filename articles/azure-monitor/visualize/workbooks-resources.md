@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: b607cdd462becdcb37f88d35d934a10efd0bfe9b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d4a6d04f88544b3a4f9f9c0c0b290d17f5ef148d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725585"
 ---
 # <a name="workbook-resource-parameters"></a>Resurs parametrar för arbets bok
 
@@ -111,5 +111,5 @@ Värden från resurs väljare kan komma från arbets bokens kontext, statisk lis
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kom igång](../platform/workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
-* [Kontrol lera](../platform/workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.
+* [Kom igång](./workbooks-overview.md#visualizations) lär dig mer om arbets böcker många avancerade visualiserings alternativ.
+* [Kontrol lera](./workbooks-access-control.md) och dela åtkomst till dina arbets boks resurser.

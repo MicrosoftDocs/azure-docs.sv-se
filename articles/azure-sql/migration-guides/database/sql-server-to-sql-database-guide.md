@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a2ab63febbb4439e50ef0f7bcc0f9797dc50c62c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690948"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Guide för migrering: SQL Server till SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -157,8 +157,8 @@ För att påskynda migreringen till Azure SQL Database bör du tänka på följa
 |  | Resurs konkurrens | Rekommendation |
 |--|--|--|
 | **Källa (vanligt vis lokalt)** |Primär Flask hals under migreringen i källan är DATA I/O och svars tid på DATA filen som måste övervakas noggrant.  |Baserat på DATA-i/o-och DATA fils svars tid och beroende på om det är en virtuell dator eller fysisk server måste du engagera lagrings administratör och utforska alternativ för att minska Flask halsen. |
-|**Mål (Azure SQL Database)**|Största begränsnings faktor är loggens skapande frekvens och svars tid för logg filen. Med Azure SQL Database kan du få maximalt 96 MB/s logg skapande hastighet. | För att påskynda migreringen kan du skala upp målets SQL-databas till Affärskritisk Gen5 8-vCore för att få den maximala logg skapande frekvensen på 96 MB/s och även uppnå en låg latens för logg filen. Den [storskaliga](https://docs.microsoft.com/azure/azure-sql/database/service-tier-hyperscale) Service nivån ger 100 MB/s logg hastighet oavsett vilken service nivå som valts |
-|**Nätverk** |Den nödvändiga nätverks bandbredden är lika med max antalet logg inmatningar 96 MB/s (768 MB/s) |Beroende på nätverks anslutning från ditt lokala data Center till Azure, kontrol lera nätverks bandbredden (vanligt vis [Azure-ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction#bandwidth-options)) för att passa den maximala logg inmatnings hastigheten. |
+|**Mål (Azure SQL Database)**|Största begränsnings faktor är loggens skapande frekvens och svars tid för logg filen. Med Azure SQL Database kan du få maximalt 96 MB/s logg skapande hastighet. | För att påskynda migreringen kan du skala upp målets SQL-databas till Affärskritisk Gen5 8-vCore för att få den maximala logg skapande frekvensen på 96 MB/s och även uppnå en låg latens för logg filen. Den [storskaliga](../../database/service-tier-hyperscale.md) Service nivån ger 100 MB/s logg hastighet oavsett vilken service nivå som valts |
+|**Nätverk** |Den nödvändiga nätverks bandbredden är lika med max antalet logg inmatningar 96 MB/s (768 MB/s) |Beroende på nätverks anslutning från ditt lokala data Center till Azure, kontrol lera nätverks bandbredden (vanligt vis [Azure-ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)) för att passa den maximala logg inmatnings hastigheten. |
 |**Virtuell dator som används för Data Migration Assistant (DMA)** |CPU är den primära Flask halsen för den virtuella dator som kör DMA |Saker att tänka på för att påskynda migreringen av data med hjälp av </br>– Azure Compute-intensiva virtuella datorer </br>-Använd minst F8s_v2 (8 vCore) virtuell dator för att köra DMA </br>– Kontrol lera att den virtuella datorn körs i samma Azure-region som mål |
 |**Azure Database Migration Service (DMS)** |Överväganden för beräkning av resurs konkurrens och databas objekt för DMS |Använd Premium 4-vCore. DMS tar automatiskt hand om databas objekt som externa nycklar, utlösare, begränsningar och icke-grupperade index och behöver inte göra några manuella åtgärder.  |
 

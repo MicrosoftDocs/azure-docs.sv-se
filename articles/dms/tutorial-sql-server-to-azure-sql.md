@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 6c5d758f94a4ad4e70a8b02a02c7c61097725f63
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b02572f8f6f6531afba9e24af1d2eab53f5cb6ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094836"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742117"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database offline med hjälp av DMS
 
@@ -33,10 +33,6 @@ Du lär dig hur du:
 > - Skapa ett migreringsjobb med hjälp av Azure Database Migration Service.
 > - Köra migreringen.
 > - Övervaka migreringen.
-
-[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
-
-I den här artikeln beskrivs en offline-migrering från SQL Server till en databas i Azure SQL Database. En onlinemigrering beskrivs i [Migrera SQL Server till Azure SQL Database online med DMS](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -275,7 +271,5 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
 
 ### <a name="additional-resources"></a>Ytterligare resurser
 
-- [SQL-migrering med hjälp av Azure Data Migration service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) praktiska labb övningar.
-- Information om kända problem och begränsningar när du utför onlinemigreringar till Azure SQL Database finns i artikeln [Known issues and workarounds with Azure SQL Database online migrations](known-issues-azure-sql-online.md) (Kända problem och lösningar med Azure SQL Database-onlinemigreringar).
 - Mer information om Azure Database Migration Service finns i artikeln [Vad är Azure Database migration service?](./dms-overview.md).
 - Information om Azure SQL Database finns i artikeln [Vad är tjänsten SQL Database?](../azure-sql/database/sql-database-paas-overview.md).

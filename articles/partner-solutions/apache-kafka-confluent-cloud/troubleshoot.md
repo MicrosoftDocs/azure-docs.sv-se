@@ -3,15 +3,15 @@ title: Felsöka Apache Kafka för samspels moln – Azure-partner lösningar
 description: Den här artikeln innehåller information om fel sökning och vanliga frågor och svar om att samkänna molnet med Azure.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709408"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Felsöka Apache Kafka för samsiga moln lösningar
 
@@ -28,6 +28,16 @@ Använd följande steg för att hitta erbjudandet på Azure Marketplace:
 1. Välj panelen program.
 
 Om erbjudandet inte visas kontaktar du [supporten](https://support.confluent.io)för att få hjälp. Ditt Azure Active Directory klient-ID måste finnas i listan över tillåtna klienter. Information om hur du hittar klient-ID finns i [så här hittar du Azure Active Directory klient-ID](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md).
+
+## <a name="purchase-errors"></a>Köp fel
+
+* Köpet Miss lyckas eftersom ett giltigt kredit kort inte är anslutet till Azure-prenumerationen eller så är ingen betalnings metod kopplad till prenumerationen.
+
+  Använd en annan Azure-prenumeration. Eller Lägg till eller uppdatera kredit kortet eller betalnings metoden för prenumerationen. Mer information finns i [Uppdatera kredit-och betalnings metoden](../../cost-management-billing/manage/change-credit-card.md).
+
+* EA-prenumerationen tillåter inte Marketplace-inköp.
+
+  Använd en annan prenumeration. Eller kontrol lera om din EA-prenumeration är aktive rad för Marketplace-köp. Mer information finns i [Aktivera inköp på Marketplace](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Om dessa alternativ inte löser problemet kan du kontakta [supporten](https://support.confluent.io).
 
 ## <a name="conflict-error"></a>Konflikt fel
 

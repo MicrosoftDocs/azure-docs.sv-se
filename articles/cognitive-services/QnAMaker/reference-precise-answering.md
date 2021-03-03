@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582204"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703413"
 ---
 # <a name="precise-answering"></a>Exakta svar
 
@@ -32,7 +32,7 @@ Tjänsten returnerar också säkerhets poängen för det exakta svaret som ett *
 
 ## <a name="publishing-a-qna-maker-bot"></a>Publicera en QnA Maker robot
 
-När du publicerar en robot får du den exakta svars upplevelsen som är aktive rad som standard i ditt program, där du kommer att se ett kort svar tillsammans med svarets passage. Se API-referensen för att [generera svar](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) för att se hur du använder det exakta svaret (kallas AnswerSpan) i svaret. Användaren har möjlighet att välja andra upplevelser genom att uppdatera mallen via robot app service. 
+När du publicerar en robot får du den exakta svars upplevelsen som är aktive rad som standard i ditt program, där du kommer att se ett kort svar tillsammans med svarets passage. Se API-referensen för att [generera svar](/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) för att se hur du använder det exakta svaret (kallas AnswerSpan) i svaret. Användaren har möjlighet att välja andra upplevelser genom att uppdatera mallen via robot app service. 
 
 ## <a name="language-support"></a>Stöd för språk
 

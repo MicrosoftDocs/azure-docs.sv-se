@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 314404ef132c55a783ce4d2d0069eb8a930439a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537415"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691458"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurera en SQL Server Always on-tillgänglighets grupp i olika Azure-regioner
 
@@ -202,6 +202,6 @@ Mer information finns i följande avsnitt:
 ## <a name="next-steps"></a>Nästa steg
 
 * [AlwaysOn-tillgänglighetsgrupper](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
-* [Azure Virtual Machines](../../../virtual-machines/windows/index.yml)
+* [Azure Virtual Machines](../../../virtual-machines/index.yml)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Tillgänglighets uppsättningar i Azure](../../../virtual-machines/manage-availability.md)

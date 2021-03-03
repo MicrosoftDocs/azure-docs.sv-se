@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c1c56edacbc777b5e8b53da588bc763201379964
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718836"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Självstudie: utvärdera virtuella VMware-datorer för migrering till AVS
 
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure bedömer du dina lokala arbets belastningar
 
 Den här artikeln visar hur du bedömer identifierade virtuella VMware-datorer (VM) för migrering till Azure VMware-lösning (AVS) med hjälp av verktyget Azure Migrate: Server bedömning. AVS är en hanterad tjänst som gör att du kan köra VMware-plattformen i Azure.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 - Kör en utvärdering baserat på datorns metadata och konfigurations information.
 - Kör en utvärdering baserat på prestanda data.
@@ -50,6 +50,9 @@ Bestäm om du vill köra en utvärdering med storleks kriterier baserat på dato
 **Som lokalt** | Utvärdera baserat på dator konfigurations data/metadata.  | Den rekommenderade nodtypen i AVS baseras på den lokala virtuella dator storleken, tillsammans med de inställningar som du anger i utvärderingen för inställningen nodtyp, lagrings typ och problem-till-tolerera.
 **Prestandabaserad** | Utvärdera baserat på insamlade dynamiska prestanda data. | Rekommenderad nodadress i AVS baseras på processor-och minnes användnings data, tillsammans med de inställningar som du anger i utvärderingen för inställningen nodtyp, lagrings typ och typ av problem.
 
+> [!NOTE]
+> Azure VMware Solution (AVS)-utvärdering kan bara skapas för virtuella VMware-datorer.
+
 ## <a name="run-an-assessment"></a>Köra en utvärdering
 
 Kör en utvärdering på följande sätt:
@@ -60,7 +63,7 @@ Kör en utvärdering på följande sätt:
 
 1. Klicka på **utvärdera** i **Azure Migrate: Server bedömning**.
 
-1. I   >  **bedömnings typ** för utvärderings servrar väljer du **Azure VMware-lösning (AVS) (för hands version)**.
+1. I   >  **utvärderings typ av utvärderings** servrar väljer du **Azure VMware-lösning (AVS)**.
 
 1. I **identifierings källa**:
 
@@ -76,14 +79,14 @@ Kör en utvärdering på följande sätt:
 
     - Ange den Azure-region som du vill migrera till på **mål platsen**.
        - Storleks-och kostnads rekommendationer baseras på den plats som du anger.
-       - Du kan för närvarande utvärdera fyra regioner (östra Australien, östra USA, västra Europa, västra USA)
    - **Lagrings typen** är standard för **virtuellt San**. Detta är standard lagrings typen för ett privat AVS-moln.
    - **Reserverade instanser** stöds för närvarande inte för AVS-noder.
 1. I **VM-storlek**:
     - **Nodtypen** är standard för **AV36**. Azure Migrate rekommenderar noden med noder som behövs för att migrera de virtuella datorerna till AVS.
     - I **FTT-inställningen, RAID-nivå**, väljer du det går inte att TOLERERA och RAID-kombinationen.  Det valda alternativet FTT, kombinerat med kravet på lokal virtuell dator disk, bestämmer det totala virtuellt San-lagrings utrymmet som krävs i AVS.
     - I **CPU-överprenumeration** anger du förhållandet mellan virtuella kärnor som är associerade med en fysisk kärna i AVS-noden. Överprenumeration på över 4:1 kan orsaka prestanda försämring, men kan användas för arbets belastningar för webb server typ.
-
+    - I **minnes överinchecknings faktor** anger du förhållandet mellan minne och incheckning i klustret. Värdet 1 representerar 100% minnes användning, 0,5 till exempel 50% och 2 använder 200% av tillgängligt minne. Du kan bara lägga till värden från 0,5 till 10 till en decimal.
+    - I **deduplicera och komprimerings faktor** anger du den förväntade deduplicerade och komprimerings faktorn för dina arbets belastningar. Det faktiska värdet kan hämtas från lokala virtuellt SAN eller Storage config och detta kan variera beroende på arbets belastning. Värdet 3 innebär tre gånger så att endast 100 GB lagrings utrymme används för 300 GB disk. Värdet 1 innebär ingen deduplicerad eller komprimering. Du kan bara lägga till värden från 1 till 10 upp till en decimal.
 1. I **Node-storlek**: 
     - I **storleks kriterium** väljer du om du vill basera utvärderingen på statiska metadata eller på prestandabaserade data. Om du använder prestanda data:
         - I **prestanda historik** anger du den data varaktighet som du vill basera utvärderingen på.
@@ -127,7 +130,6 @@ En AVS-utvärdering beskriver:
 - Antal AVS-noder: uppskattat antal AVS-noder som krävs för att köra de virtuella datorerna.
 - Användning över AVS-noder: planerad processor, minne och lagrings belastning för alla noder.
     - Användningen inkluderar den främre faktorn i följande omkostnader för kluster hantering, till exempel vCenter Server, NSX Manager (stor), NSX Edge, om HCX har distribuerats även HCX Manager och IX-apparaten som använder ~ 44vCPU (11 CPU), 75 GB av RAM-och 722GB för lagring före komprimering och deduplicering. 
-    - Minne, deduplicera och komprimera är för närvarande inställt på 100%-användning för minne och 1,5 deduplicerar och komprimerat, vilket är en användardefinierad indata i andra versioner som gör det möjligt för användaren att finjustera storleken på den storlek som krävs.
 - Månads kostnads uppskattning: den uppskattade månads kostnaden för alla Azure VMware-lösningar (AVS)-noder som kör lokala virtuella datorer.
 
 ## <a name="view-an-assessment"></a>Visa en utvärdering
@@ -155,7 +157,7 @@ Så här visar du en utvärdering:
 
 3. Granska det föreslagna verktyget.
 
-    - VMware HCX eller Enterprise: för VMware-datorer är HCX-lösningen (VMWare Hybrid Cloud Extensions) det rekommenderade Migreringsverktyg för att migrera din lokala arbets belastning till ditt Azure VMware-lösning (AVS) privat moln. Lära sig mer.
+    - VMware HCX eller Enterprise: för VMware-datorer är HCX-lösningen (VMware Hybrid Cloud Extensions) det rekommenderade Migreringsverktyg för att migrera din lokala arbets belastning till ditt Azure VMware-lösning (AVS) privat moln. Lära sig mer.
     - Okänt: Standardmigreringsverktyget är okänt för datorer som importerats via en CSV-fil. Även för VMware-datorer rekommenderar vi att du använder HCX-lösningen (VMware Hybrid Cloud Extension).
 4. Klicka på en status för AVS-beredskap. Du kan visa information om VM-beredskap och öka detalj nivån för att se information om virtuella datorer, inklusive beräknings-, lagrings-och nätverks inställningar.
 
@@ -167,7 +169,7 @@ Utvärderings sammanfattningen visar den beräknade beräknings-och lagrings kos
 
     - Kostnads uppskattningar baseras på antalet AVS-noder som krävs med hänsyn till resurs kraven för alla virtuella datorer totalt.
     - Eftersom prissättningen för AVS är per nod, har den totala kostnaden ingen beräknings kostnad och distribution av lagrings kostnader.
-    - Kostnads uppskattningen är att köra lokala virtuella datorer i AVS. Azure Migrate Server-utvärderingen beaktar inte PaaS-eller SaaS-kostnader.
+    - Kostnads uppskattningen är att köra lokala virtuella datorer i AVS. I AVS-utvärderingen beaktas inte PaaS-eller SaaS-kostnader.
 
 2. Granska uppskattningar för månatlig lagring. Vyn visar de aggregerade lagrings kostnaderna för den utvärderade gruppen och delas över olika typer av lagrings diskar. 
 3. Du kan öka detalj nivån för att se kostnads information för vissa virtuella datorer.

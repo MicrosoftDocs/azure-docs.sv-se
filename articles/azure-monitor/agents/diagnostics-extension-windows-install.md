@@ -3,17 +3,16 @@ title: Installera och konfigurera Windows Azure Diagnostics-tillägget (WAD)
 description: Lär dig mer om att installera och konfigurera Windows Diagnostics-tillägget. Lär dig också hur en beskrivning av hur data lagras i och Azure Storage konto.
 services: azure-monitor
 author: bwren
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 865590ce67acee128863a7913aa844b951d07d56
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625888"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708568"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installera och konfigurera Windows Azure Diagnostics-tillägget (WAD)
 [Tillägget Azure Diagnostics](diagnostics-extension-overview.md) är en agent i Azure Monitor som samlar in övervaknings data från gäst operativ systemet och arbets belastningar på virtuella Azure-datorer och andra beräknings resurser. Den här artikeln innehåller information om hur du installerar och konfigurerar Windows Diagnostics-tillägget och en beskrivning av hur data lagras i och Azure Storage konto.
@@ -192,7 +191,7 @@ Se även [använda PowerShell för att aktivera Azure-diagnostik på en virtuell
 I följande tabell visas olika typer av data som har samlats in från diagnostikprogrammet och om de lagras som en tabell eller en blob. Data som lagras i tabeller kan också lagras i blobbar beroende på [inställningen StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) i din offentliga konfiguration.
 
 
-| Data | Lagringstyp | Description |
+| Data | Lagringstyp | Beskrivning |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabell | Diagnostisk övervakning och konfigurations ändringar. |
 | WADDirectoriesTable | Tabell | Kataloger som diagnostiken övervakar.  Detta inkluderar IIS-loggar, IIS misslyckade begär Anden och anpassade kataloger.  Platsen för blobb logg filen anges i fältet container och namnet på blobben är i fältet RelativePath.  Fältet AbsolutePath anger platsen och namnet på filen som den fanns på den virtuella Azure-datorn. |

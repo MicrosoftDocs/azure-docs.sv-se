@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b743b5be195f44c03adbee75c3108f4908d8d4e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717765"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilera Live Azure App Service-appar med Application Insights
 
@@ -25,8 +25,12 @@ Följ anvisningarna nedan om du vill aktivera profiler för en app. Om du kör e
 
 Application Insights Profiler är förinstallerat som en del av App Services Runtime. I stegen nedan visas hur du aktiverar det för App Service. Följ dessa steg även om du har inkluderat App Insights SDK i ditt program i bygge-tid.
 
+> [!NOTE]
+> Kod installation av Application Insights Profiler som följer support policyn för .NET Core.
+> Mer information om körningar som stöds finns i [.net Core support policy](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
 1. Navigera till Azures kontroll panel för din App Service.
-1. Aktivera inställningen "Always On" för din app service. Du hittar den här inställningen under **Inställningar**, **konfigurations** sida (se skärm bild i nästa steg) och klickar på fliken **allmänna inställningar** .
+1. Aktivera inställningen "Always On" för din app service. Du hittar den här inställningen under **Inställningar**, **konfigurations** sida (se skärm bild i nästa steg) och väljer fliken **allmänna inställningar** .
 1. Gå till **inställningar > Application Insights** sidan.
 
    ![Aktivera App Insights på App Services Portal](./media/profiler/AppInsights-AppServices.png)
@@ -63,7 +67,7 @@ Om du vill aktivera profileraren för andra moln kan du använda inställningarn
 
 ## <a name="disable-profiler"></a>Inaktivera profiler
 
-Om du vill stoppa eller starta om profiler för en enskild app-instans går du till **WebJobs och stoppar Webbjobbet** med namnet ApplicationInsightsProfiler3. Även om profileraren är inaktive rad med växeln på Application Insights sidan enligt beskrivningen ovan, körs profilens process fortfarande. Profileraren kontrollerar om den är aktive rad. Om den är inaktive rad kommer den att försättas i vilo läge under en viss tids period innan kontrollen görs igen. Ingen profilering sker om den är inaktive rad. Om du inaktiverar det här webb jobbet körs inte profilers processen alls, även om du vill kontrol lera om den är aktive rad.
+Om du vill stoppa eller starta om profiler för en enskild app-instans går du till vänster och väljer **WebJobs** och stoppar webb jobbet med namnet `ApplicationInsightsProfiler3` .
 
   ![Inaktivera profiler för ett webb jobb][disable-profiler-webjob]
 

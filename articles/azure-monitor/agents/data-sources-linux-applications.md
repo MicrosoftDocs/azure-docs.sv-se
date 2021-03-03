@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f924bcdce0937c74c3deeab96f3d4b2a85e3944d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704454"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Samla in prestanda räknare för Linux-program i Azure Monitor 
 
@@ -70,7 +70,7 @@ Ingår i installationen av MySQL OMI-providern är ett fil program för MySQL-OM
 
 Följande tabell innehåller information om syntaxen för att använda mycimprovauth.
 
-| Åtgärd | Exempel | Description
+| Åtgärd | Exempel | Beskrivning
 |:--|:--|:--|
 | uppdatera *Falskt eller sant* | mycimprovauth AutoUpdate false | Anger om autentiseringsprocessen ska uppdateras automatiskt vid omstart eller uppdatering. |
 | standard *lösen ord för bind-Address username* | mycimprovauth standard 127.0.0.1 rot-PWD | Ställer in standard instansen i OMI-autentiseringsprocessen för MySQL.<br>Fältet lösen ord ska anges i oformaterad text – lösen ordet i MySQL-OMI är 64 Base64-kodat. |
@@ -167,4 +167,4 @@ När du har konfigurerat Log Analytics-agenten för Linux för att skicka data t
 
 ## <a name="next-steps"></a>Nästa steg
 * [Samla in prestanda räknare](data-sources-performance-counters.md) från Linux-agenter.
-* Lär dig mer om [logg frågor](../log-query/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar. 
+* Lär dig mer om [logg frågor](../logs/log-query-overview.md) för att analysera data som samlas in från data källor och lösningar.

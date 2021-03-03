@@ -68,6 +68,8 @@
           href: azure-file-share-support-matrix.md
         - name: Stödmatris för säkerhetskopiering av Azure-disk
           href: disk-backup-support-matrix.md
+        - name: Support mat ris för Azure blobs-säkerhetskopiering
+          href: blob-backup-support-matrix.md
         - name: Active Directory-domänkontrollanter
           href: active-directory-backup-restore.md
         - name: 'VM-SKU:er som stöds för Azure Policy'
@@ -132,6 +134,8 @@
           href: backup-center-govern-environment.md
         - name: Utföra åtgärder
           href: backup-center-actions.md
+        - name: Gruppresurser
+          href: backup-center-community.md
     - name: Säkerhetskopiering av virtuell Azure-dator
       items:
         - name: Översikt
@@ -224,6 +228,14 @@
           href: backup-managed-disks.md
         - name: Återställ
           href: restore-managed-disks.md
+    - name: Azure blobs-säkerhetskopiering
+      items:
+        - name: Översikt
+          href: blob-backup-overview.md
+        - name: Konfigurera och hantera
+          href: blob-backup-configure-manage.md
+        - name: Återställ
+          href: blob-restore.md
     - name: Säkerhetskopiering av Azure-filresurser
       items:
         - name: Översikt
@@ -437,6 +449,10 @@
           href: ./security-controls-policy.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
+    - name: Åtkomstnivå
+      items:
+        - name: Arkiv lag ring
+          href: archive-tier-support.md
     - name: Felsöka
       items:
         - name: Azure VM

@@ -1,18 +1,18 @@
 ---
-title: Översikt över Azure Monitor för behållare | Microsoft Docs
-description: I den här artikeln beskrivs Azure Monitor för behållare som övervakar AKS container Insights-lösning och det värde den ger genom att övervaka hälso tillståndet för dina AKS-kluster och Container Instances i Azure.
+title: Översikt över container Insights | Microsoft Docs
+description: Den här artikeln beskriver behållar insikter som övervakar AKS container Insights-lösning och det värde den ger genom att övervaka hälso tillståndet för dina AKS-kluster och Container Instances i Azure.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: a9b9e155884b20c19b9b82994a3b9b1bdf53f27a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1055e2228c6625ae24e6bf388cf297e3e3363666
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625967"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723392"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Översikt över Azure Monitor för containrar
+# <a name="container-insights-overview"></a>Översikt över container Insights
 
-Azure Monitor för behållare är en funktion som har utformats för att övervaka prestanda för behållar arbets belastningar som distribueras till:
+Container Insights är en funktion som har utformats för att övervaka prestanda för behållar arbets belastningar som distribueras till:
 
 - Managed Kubernetes kluster som finns i [Azure Kubernetes service (AKS)](../../aks/intro-kubernetes.md)
 - Självhanterade Kubernetes-kluster som finns i Azure med hjälp av [AKS-motorn](https://github.com/Azure/aks-engine)
@@ -21,17 +21,17 @@ Azure Monitor för behållare är en funktion som har utformats för att överva
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure Arc Enabled-Kubernetes](../../azure-arc/kubernetes/overview.md) (för hands version)
 
-Azure Monitor for containers stöder kluster som kör operativ systemet Linux och Windows Server 2019. De behållar körningar som stöds är Docker, Moby och alla CRI-kompatibla kör som CRI-O och container.
+Container Insights stöder kluster som kör operativ systemet Linux och Windows Server 2019. De behållar körningar som stöds är Docker, Moby och alla CRI-kompatibla kör som CRI-O och container.
 
 Övervakning av behållare är avgörande, särskilt när du kör ett produktions kluster, i skala med flera program.
 
-Azure Monitor för behållare ger dig prestanda synlighet genom att samla in minnes-och processor mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. Containerloggar samlas också in.  När du har aktiverat övervakning från Kubernetes-kluster samlas mått och loggar in automatiskt åt dig via en behållar version av Log Analytics agent för Linux. Måtten skrivs till mått arkivet och loggdata skrivs till logg lagret som är kopplat till din [Log Analytics](../log-query/log-query-overview.md) -arbetsyta.
+Med behållar insikter får du bättre prestanda genom att samla in minnes-och processor mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. Containerloggar samlas också in.  När du har aktiverat övervakning från Kubernetes-kluster samlas mått och loggar in automatiskt åt dig via en behållar version av Log Analytics agent för Linux. Måtten skrivs till mått arkivet och loggdata skrivs till logg lagret som är kopplat till din [Log Analytics](../logs/log-query-overview.md) -arbetsyta.
 
-![Azure Monitor för behållare arkitektur](./media/container-insights-overview/azmon-containers-architecture-01.png)
+![Arkitektur för container Insights](./media/container-insights-overview/azmon-containers-architecture-01.png)
 
-## <a name="what-does-azure-monitor-for-containers-provide"></a>Vad ger Azure Monitor för behållare?
+## <a name="what-does-container-insights-provide"></a>Vad ger behållar insikter?
 
-Azure Monitor för behållare ger en omfattande övervaknings upplevelse som använder olika funktioner i Azure Monitor. Med de här funktionerna kan du förstå prestanda och hälsa för ditt Kubernetes-kluster som kör operativ systemet Linux och Windows Server 2019 och behållar arbets belastningarna. Med Azure Monitor för containrar kan du:
+Behållar insikter ger en omfattande övervaknings upplevelse som använder olika funktioner i Azure Monitor. Med de här funktionerna kan du förstå prestanda och hälsa för ditt Kubernetes-kluster som kör operativ systemet Linux och Windows Server 2019 och behållar arbets belastningarna. Med behållar insikter kan du:
 
 * Identifiera AKS-behållare som körs på noden och deras genomsnittliga processor-och minnes användning. Den här kunskapen kan hjälpa dig att identifiera resurs Flask halsar.
 * Identifiera processor-och minnes användning för behållar grupper och deras behållare som finns i Azure Container Instances.
@@ -56,19 +56,18 @@ De största skillnaderna vid övervakning av ett Windows Server-kluster jämför
 - Endast Pod-miljöer övervakas, inte Docker-miljöer.
 - I för hands versionen stöds maximalt 30 Windows Server-behållare. Den här begränsningen gäller inte för Linux-behållare.
 
-Titta på följande videoklipp med en mellanliggande nivå för att hjälpa dig att lära dig mer om att övervaka ditt AKS-kluster med Azure Monitor för behållare.
+Titta på följande videoklipp med en mellanliggande nivå för att hjälpa dig att lära dig att övervaka ditt AKS-kluster med behållar insikter.
 
-> [!VIDEO https://www.youtube.com/embed/RjsNmapggPU]
+> [!VIDEO https://youtu.be/XEdwGvS2AwA]
 
 ## <a name="how-do-i-access-this-feature"></a>Hur gör jag för att åtkomst till den här funktionen?
 
-Du kan komma åt Azure Monitor för behållare på två sätt, från Azure Monitor eller direkt från det valda AKS-klustret. Från Azure Monitor har du ett globalt perspektiv för alla behållare som distribueras, som övervakas och som inte är så att du kan söka efter och filtrera i dina prenumerationer och resurs grupper och sedan gå in på Azure Monitor för behållare från den valda behållaren.  Annars kan du komma åt funktionen direkt från en vald AKS-behållare från sidan AKS.
+Du kan komma åt behållar insikter på två sätt, från Azure Monitor eller direkt från det valda AKS-klustret. Från Azure Monitor har du ett globalt perspektiv för alla behållare som distribueras, som övervakas och som inte är så att du kan söka efter och filtrera i dina prenumerationer och resurs grupper och sedan gå vidare till behållar insikter från den valda behållaren.  Annars kan du komma åt funktionen direkt från en vald AKS-behållare från sidan AKS.
 
-![Översikt över metoder för att komma åt Azure Monitor för behållare](./media/container-insights-overview/azmon-containers-experience.png)
+![Översikt över metoder för att komma åt container Insights](./media/container-insights-overview/azmon-containers-experience.png)
 
-Om du är intresse rad av att övervaka och hantera dina Docker-och Windows-behållarobjekt som körs utanför AKS för att Visa konfigurations-, gransknings-och resursutnyttjande, se [lösningen för övervakning av behållare](../insights/containers.md).
+Om du är intresse rad av att övervaka och hantera dina Docker-och Windows-behållarobjekt som körs utanför AKS för att Visa konfigurations-, gransknings-och resursutnyttjande, se [lösningen för övervakning av behållare](./containers.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill börja övervaka ditt Kubernetes-kluster läser du [så här aktiverar du Azure Monitor för behållare](container-insights-onboard.md) för att förstå kraven och tillgängliga metoder för att aktivera övervakning.
-
+Om du vill börja övervaka ditt Kubernetes-kluster kan du läsa [så här aktiverar du behållar insikter](container-insights-onboard.md) för att förstå krav och tillgängliga metoder för att aktivera övervakning.

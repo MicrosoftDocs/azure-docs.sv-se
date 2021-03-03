@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 30b8cb2b5c8b1ccd0c927a6ff8a3a282d3d43c69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f19f8fb3811435e9bbc207d2d130c0655a6dee02
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386551"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706083"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-format i Azure Data Factory
 
@@ -218,7 +218,7 @@ I tabellen nedan visas de egenskaper som stöds av en JSON-källa. Du kan redige
 
 ### <a name="source-format-options"></a>Käll format alternativ
 
-Genom att använda en JSON-datauppsättning som källa i ditt data flöde kan du ange fem ytterligare inställningar. De här inställningarna finns under inställningen för **JSON-inställningar** på fliken **käll alternativ** .  
+Genom att använda en JSON-datauppsättning som källa i ditt data flöde kan du ange fem ytterligare inställningar. De här inställningarna finns under inställningen för **JSON-inställningar** på fliken **käll alternativ** . I **dokument formulärs** inställningen kan du välja ett **enskilt dokument**, **dokument per rad**  och **matris av dokument** typer.
 
 ![JSON-inställningar](media/data-flow/json-settings.png "JSON-inställningar")
 

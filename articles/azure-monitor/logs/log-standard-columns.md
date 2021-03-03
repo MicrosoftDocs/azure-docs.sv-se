@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: e8d89de079a50159bbed9c38487effb0c89448c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: c479f525435139b2f92838bf15edf4563aeed4e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100622786"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704131"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Standard kolumner i Azure Monitor loggar
 Data i Azure Monitor loggar [lagras som en uppsättning poster i antingen en Log Analytics arbets yta eller ett Application Insights program](../logs/data-platform-logs.md), var och en med en viss datatyp som har en unik uppsättning kolumner. Många data typer kommer att ha standard kolumner som är gemensamma för flera typer. Den här artikeln beskriver de här kolumnerna och innehåller exempel på hur du kan använda dem i frågor.
@@ -20,6 +20,10 @@ Arbets ytans program i Application Insights lagra sina data i en Log Analytics a
 
 > [!NOTE]
 > Några av standard kolumnerna visas inte i diagramvyn eller IntelliSense i Log Analytics och de visas inte i frågeresultaten om du inte uttryckligen anger kolumnen i utdata.
+> 
+
+## <a name="tenantid"></a>TenantId
+Kolumnen **TenantId** innehåller arbetsyte-ID för Log Analytics arbets ytan.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated och tidsstämpel
 Kolumnerna **TimeGenerated** (Log Analytics-arbetsyta) och **tidsstämpel** (Application Insights program) innehåller datum och tid då posten skapades av data källan. Mer information finns i [inmatnings tiden för logg data i Azure Monitor](../logs/data-ingestion-time.md) .
@@ -49,6 +53,10 @@ exceptions
 
 ## <a name="_timereceived"></a>\_TimeReceived
 Kolumnen **\_ TimeReceived** innehåller datum och tid då posten togs emot av Azure Monitor inmatnings punkt i Azure-molnet. Detta kan vara användbart för att identifiera svars tids problem mellan data källan och molnet. Ett exempel är ett nätverks problem som orsakar en fördröjning med data som skickas från en agent. Mer information finns i [inmatnings tiden för logg data i Azure Monitor](../logs/data-ingestion-time.md) .
+
+> [!NOTE]
+> Kolumnen **\_ TimeReceived** beräknas varje gången den används. Den här processen är resurs intensiv. Förfina från att använda den för att filtrera ett stort antal poster. Användningen av den här funktionen kan leda till ökad varaktighet för körning av fråga.
+
 
 Följande fråga ger den genomsnittliga svars tiden per timme för händelse poster från en agent. Detta inkluderar tiden från agenten till molnet och den totala tiden för posten som ska vara tillgänglig för logg frågor.
 
@@ -238,6 +246,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om hur [Azure Monitor loggdata lagras](../log-query/log-query-overview.md).
-- Få en lektion om att [skriva logg frågor](../log-query/get-started-queries.md).
+- Läs mer om hur [Azure Monitor loggdata lagras](./log-query-overview.md).
+- Få en lektion om att [skriva logg frågor](./get-started-queries.md).
 - Få en lektion om att [koppla tabeller i logg frågor](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).

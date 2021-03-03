@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.subservice: alerts
-ms.openlocfilehash: 55f433786ed9dd40b08bb64395a6bbc50800add4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e07abdda805205701a10ca3bf295b7b0d2e71766
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623027"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718037"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Uppgradera till den aktuella logg aviserings-API: n från äldre Log Analytics aviserings-API
 
@@ -19,23 +19,23 @@ ms.locfileid: "100623027"
 > Den här artikeln är endast relevant för Azures offentliga (**inte** till Azure Government eller Azure Kina-molnet).
 
 > [!NOTE]
-> När en användare väljer att växla inställningen till det aktuella [scheduledQueryRules-API: et](/rest/api/monitor/scheduledqueryrules) går det inte att återgå till den äldre [äldre Log Analytics varnings-API: et](../platform/api-alerts.md).
+> När en användare väljer att växla inställningen till det aktuella [scheduledQueryRules-API: et](/rest/api/monitor/scheduledqueryrules) går det inte att återgå till den äldre [äldre Log Analytics varnings-API: et](./api-alerts.md).
 
-Tidigare använde användare den [äldre Log Analytics aviserings-API: et](../platform/api-alerts.md) för att hantera logg aviserings regler. Aktuella arbets ytor använder [ScheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). I den här artikeln beskrivs fördelarna och processen för att växla från det äldre API: t till det aktuella API: et.
+Tidigare använde användare den [äldre Log Analytics aviserings-API: et](./api-alerts.md) för att hantera logg aviserings regler. Aktuella arbets ytor använder [ScheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). I den här artikeln beskrivs fördelarna och processen för att växla från det äldre API: t till det aktuella API: et.
 
 ## <a name="benefits"></a>Fördelar
 
 - En mall för att skapa aviserings regler (tidigare behövde tre separata mallar).
 - Enkelt API för både Log Analytics arbets ytor eller Application Insights resurser.
-- [Stöd för PowerShell-cmdletar](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- [Stöd för PowerShell-cmdletar](./alerts-log.md#managing-log-alerts-using-powershell).
 - Justering av allvarlighets grader med alla andra aviserings typer.
-- Möjlighet att skapa en [logg avisering mellan flera arbets ytor](../log-query/cross-workspace-query.md) som omfattar flera externa resurser som Log Analytics arbets ytor eller Application Insights resurser.
+- Möjlighet att skapa en [logg avisering mellan flera arbets ytor](../logs/cross-workspace-query.md) som omfattar flera externa resurser som Log Analytics arbets ytor eller Application Insights resurser.
 - Användare kan ange dimensioner för att dela upp aviseringar med hjälp av parametern "agg regering".
 - Logg aviseringar har en utökad period på upp till två dagars data (tidigare än en dag).
 
 ## <a name="impact"></a>Påverkan
 
-- Alla nya regler måste skapas/redige ras med aktuellt API. Se [exempel användning via Azure-resurs mal len](alerts-log-create-templates.md) och [exempel användning via PowerShell](../platform/alerts-log.md#managing-log-alerts-using-powershell).
+- Alla nya regler måste skapas/redige ras med aktuellt API. Se [exempel användning via Azure-resurs mal len](alerts-log-create-templates.md) och [exempel användning via PowerShell](./alerts-log.md#managing-log-alerts-using-powershell).
 - Eftersom regler blir Azure Resource Manager spårade resurser i det aktuella API: et och måste vara unika, kommer regel resurs-ID att ändras till den här strukturen: `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Visnings namnen för aviserings regeln förblir oförändrade.
 
 ## <a name="process"></a>Process
@@ -104,7 +104,7 @@ Om Log Analytics arbets ytan inte växlades är svaret:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [Azure Monitor-logg aviseringar](../platform/alerts-unified-log.md).
+- Lär dig mer om [Azure Monitor-logg aviseringar](./alerts-unified-log.md).
 - Lär dig hur du [hanterar dina logg aviseringar med hjälp av API: et](alerts-log-create-templates.md).
-- Lär dig hur du [hanterar logg aviseringar med hjälp av PowerShell](../platform/alerts-log.md#managing-log-alerts-using-powershell).
-- Lär dig mer om [Azures aviserings upplevelse](../platform/alerts-overview.md).
+- Lär dig hur du [hanterar logg aviseringar med hjälp av PowerShell](./alerts-log.md#managing-log-alerts-using-powershell).
+- Lär dig mer om [Azures aviserings upplevelse](./alerts-overview.md).

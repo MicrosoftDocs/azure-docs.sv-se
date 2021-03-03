@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: 3ca776a1869874042a6a97cdd59dc00d3a917d33
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98558c2b1525094277dd6c165349f25ce5cd3b23
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717884"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>Aviserings beteende i SMS i åtgärds grupper
 
@@ -30,7 +30,7 @@ En SMS-mottagare som kon figurer ATS som en del av en åtgärds grupp får ett S
 * ShortName för den åtgärds grupp som aviseringen skickades till
 * Rubriken på aviseringen
 
-| REPLY | Description |
+| REPLY | Beskrivning |
 | ----- | ----------- |
 | Tillåt `<Action Group Short name>` | Inaktiverar ytterligare SMS från åtgärds gruppen |
 | Använd `<Action Group Short name>` | Aktiverar SMS från åtgärds gruppen igen |
@@ -42,7 +42,6 @@ En SMS-mottagare som kon figurer ATS som en del av en åtgärds grupp får ett S
 >Om en användare har avbrutit prenumerationen på SMS-aviseringar, men sedan läggs till i en ny åtgärds grupp. de får SMS-aviseringar för den nya åtgärds gruppen, men de är fortfarande avbrutna från alla tidigare åtgärds grupper.
 
 ## <a name="next-steps"></a>Nästa steg
-Få en [Översikt över aktivitets logg aviseringar](../platform/alerts-overview.md) och lär dig hur du får aviseringar  
+Få en [Översikt över aktivitets logg aviseringar](./alerts-overview.md) och lär dig hur du får aviseringar  
 Läs mer om [begränsning av SMS-hastighet](alerts-rate-limiting.md)  
-Läs mer om [Åtgärds grupper](../platform/action-groups.md)
-
+Läs mer om [Åtgärds grupper](./action-groups.md)

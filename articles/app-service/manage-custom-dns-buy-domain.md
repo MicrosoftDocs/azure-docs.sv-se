@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608154"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704862"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Köpa ett anpassat domännamn för Azure App Service
 
@@ -132,7 +132,7 @@ Om du vill mappa ett anpassat DNS-namn till en webbapp måste webbappens [App Se
 
 1. Välj någon av betalnivåerna (**D1**, **B1**, **B2**, **B3** eller en nivå i kategorin **Produktion**). Klicka på **Visa ytterligare alternativ** om du vill se fler alternativ.
 
-1. Klicka på **Använd**.
+1. Klicka på **Applicera**.
 
     :::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Skärm bild av pris nivåerna för anpassade domäner i produktions kategorin med fliken produktion, B1 plan och knappen Använd markerat.":::
 
@@ -211,7 +211,7 @@ Azure följer förfaller eller förfaller App Service domäner på följande sä
 * Om automatisk förnyelse är inaktive rad: 90 dagar innan domänen upphör skickas ett e-postmeddelande med en förnyad avisering till dig och knappen **förnya domän** aktive ras i portalen.
 * Om automatisk förnyelse har Aktiver ATS: efter det att din domäns giltighets tid har gått ut försöker Azure debitera dig för förnyelsen av domän namn.
 * Om ett fel inträffar under den automatiska förnyelsen (till exempel om ditt kort på filen har upphört att gälla), eller om automatisk förnyelse har inaktiverats och du tillåter att domänen upphör att gälla, meddelar Azure dig om domänen upphör att gälla och parkerar ditt domän namn. Du kan [förnya](#renew-the-domain) din domän manuellt.
-* På dygnet runt och tolfte dagar efter förfallo datum skickar Azure ytterligare e-postmeddelanden. Du kan [förnya](#renew-the-domain) din domän manuellt.
+* På dygnet runt och tolfte dagar efter förfallo datum skickar Azure ytterligare e-postmeddelanden. Du kan [förnya](#renew-the-domain) din domän manuellt. På den femte dagen efter förfallo datum stoppas DNS-matchningen för den utgångna domänen.
 * På den 19: a dagen efter förfallo datum förblir din domän stoppad men blir föremål för en avgift för inlösen. Du kan ringa kund support för att förnya ditt domän namn, beroende på eventuella tillämpliga förnyelse-och inlösen avgifter.
 * På den 25: a dagen efter förfallo datum placerar Azure din domän för auktion med en auktions tjänst för domän namns branschen. Du kan ringa kund support för att förnya ditt domän namn, beroende på eventuella tillämpliga förnyelse-och inlösen avgifter.
 * Den 30: e dagen efter det att du har gått ut kan du inte längre lösa in din domän.

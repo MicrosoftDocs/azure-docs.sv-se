@@ -7,12 +7,12 @@ ms.date: 1/10/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: Aro, OpenShift, AZ Aro, Red Hat, CLI
-ms.openlocfilehash: 2c2c8607374493aa4e1135bbef0156b9c0b66fa6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634983"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720893"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Uppgradera ett Azure Red Hat OpenShift-kluster (ARO)
 
@@ -20,7 +20,7 @@ En del av ARO-klustrets livs cykel omfattar att utföra periodiska uppgraderinga
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln kräver att du kör Azure CLI-version 2.0.65 av senare. Kör `az --version` för att hitta din nuvarande version. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+Den här artikeln kräver att du kör Azure CLI-version 2.0.65 av senare. Kör `az --version` för att hitta din nuvarande version. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli)
 
 I den här artikeln förutsätter vi att du har till gång till ett befintligt kluster för att öppna i Azure Red Hat som en användare med `admin` behörighet.
 
@@ -39,4 +39,3 @@ Välj en version att uppdatera till och välj **Uppdatera**. Du ser uppdaterings
 ## <a name="next-steps"></a>Nästa steg
 - [Lär dig att uppgradera ett ARO-kluster med hjälp av OC CLI](https://docs.openshift.com/container-platform/4.6/updating/updating-cluster-between-minor.html)
 - Du hittar information om tillgängliga OpenShift container Platform-rådgivare och uppdateringar i [avsnittet errata](https://access.redhat.com/downloads/content/290/ver=4.6/rhel---8/4.6.0/x86_64/product-errata) i kund portalen.
-  

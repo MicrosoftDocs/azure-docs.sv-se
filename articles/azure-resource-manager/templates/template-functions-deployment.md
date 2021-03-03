@@ -2,13 +2,13 @@
 title: Mall funktioner – distribution
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att hämta distributions information.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/02/2021
+ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943471"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722729"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Distributions funktioner för ARM-mallar
 
@@ -321,7 +321,7 @@ Returnerar ett parameter värde. Det angivna parameter namnet måste definieras 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |sträng |Namnet på den parameter som ska returneras. |
 
@@ -470,7 +470,7 @@ Returnerar värdet för variabeln. Det angivna variabel namnet måste definieras
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Sträng |Namnet på variabeln som ska returneras. |
 
@@ -508,7 +508,7 @@ Normalt använder du variabler för att förenkla din mall genom att endast kons
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

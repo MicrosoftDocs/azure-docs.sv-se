@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
-ms.openlocfilehash: 553c5081947ad784a8cdae6ad0eb92fc3e2a2c85
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982262"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701526"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Självstudie: Använd dynamisk konfiguration med push-uppdatering i en .NET Core-app
 
@@ -27,7 +27,7 @@ App Configuration .NET Core klient bibliotek stöder uppdatering av konfiguratio
 
 1. Avsöknings modell: Detta är standard beteendet som använder avsökning för att identifiera ändringar i konfigurationen. När det cachelagrade värdet för en inställning förfaller, kan nästa anrop till `TryRefreshAsync` eller `RefreshAsync` skicka en begäran till servern för att kontrol lera om konfigurationen har ändrats och hämta den uppdaterade konfigurationen om det behövs.
 
-1. Push-modell: detta använder [konfigurations händelser för appar](./concept-app-configuration-event.md) för att identifiera ändringar i konfigurationen. När app-konfigurationen har ställts in för att skicka nyckel värdes ändrings händelser till Azure Event Grid kan programmet använda dessa händelser för att optimera det totala antalet begär Anden som krävs för att hålla konfigurationen uppdaterad. Program kan välja att prenumerera på dessa antingen direkt från Event Grid eller en av de [händelse hanterare som stöds](https://docs.microsoft.com/azure/event-grid/event-handlers) , till exempel en webhook, en Azure Function eller ett Service Bus ämne.
+1. Push-modell: detta använder [konfigurations händelser för appar](./concept-app-configuration-event.md) för att identifiera ändringar i konfigurationen. När app-konfigurationen har ställts in för att skicka nyckel värdes ändrings händelser till Azure Event Grid kan programmet använda dessa händelser för att optimera det totala antalet begär Anden som krävs för att hålla konfigurationen uppdaterad. Program kan välja att prenumerera på dessa antingen direkt från Event Grid eller en av de [händelse hanterare som stöds](../event-grid/event-handlers.md) , till exempel en webhook, en Azure Function eller ett Service Bus ämne.
 
 Program kan välja att prenumerera på dessa händelser antingen direkt från Event Grid eller via en webhook eller genom att vidarebefordra händelser till Azure Service Bus. Azure Service Bus SDK tillhandahåller ett API för att registrera en meddelande hanterare som fören klar processen för program som inte har någon HTTP-slutpunkt eller som inte vill avsöka händelse rutnätet efter ändringar kontinuerligt.
 
@@ -50,7 +50,7 @@ Om du vill göra den här själv studie kursen installerar du [.net Core SDK](ht
 
 ## <a name="set-up-azure-service-bus-topic-and-subscription"></a>Konfigurera Azure Service Bus ämne och prenumeration
 
-I den här självstudien används Service Bus-integrering för Event Grid för att förenkla identifieringen av konfigurations ändringar för program som inte vill söka efter ändringar kontinuerligt i appen. Azure Service Bus SDK tillhandahåller ett API för att registrera en meddelande hanterare som kan användas för att uppdatera konfigurationen när ändringar identifieras i appens konfiguration. Följ stegen i [snabb starten: använd Azure Portal för att skapa ett Service Bus ämne och en prenumeration](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal) för att skapa ett Service Bus-namnområde, ett ämne och en prenumeration.
+I den här självstudien används Service Bus-integrering för Event Grid för att förenkla identifieringen av konfigurations ändringar för program som inte vill söka efter ändringar kontinuerligt i appen. Azure Service Bus SDK tillhandahåller ett API för att registrera en meddelande hanterare som kan användas för att uppdatera konfigurationen när ändringar identifieras i appens konfiguration. Följ stegen i [snabb starten: använd Azure Portal för att skapa ett Service Bus ämne och en prenumeration](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) för att skapa ett Service Bus-namnområde, ett ämne och en prenumeration.
 
 När resurserna har skapats lägger du till följande miljövariabler. Dessa kommer att användas för att registrera en händelse hanterare för konfigurations ändringar i program koden.
 
@@ -81,7 +81,7 @@ När resurserna har skapats lägger du till följande miljövariabler. Dessa kom
     ![Händelse prenumerationer för app Configuration](./media/event-subscription-view.png)
 
 > [!NOTE]
-> När du prenumererar på konfigurations ändringar kan ett eller flera filter användas för att minska antalet händelser som skickas till ditt program. Dessa kan konfigureras antingen som [Event Grid prenumerations filter](https://docs.microsoft.com/azure/event-grid/event-filtering) eller [Service Bus prenumerations filter](https://docs.microsoft.com/azure/service-bus-messaging/topic-filters). Ett prenumerations filter kan till exempel användas för att endast prenumerera på händelser för ändringar i en nyckel som börjar med en viss sträng.
+> När du prenumererar på konfigurations ändringar kan ett eller flera filter användas för att minska antalet händelser som skickas till ditt program. Dessa kan konfigureras antingen som [Event Grid prenumerations filter](../event-grid/event-filtering.md) eller [Service Bus prenumerations filter](../service-bus-messaging/topic-filters.md). Ett prenumerations filter kan till exempel användas för att endast prenumerera på händelser för ändringar i en nyckel som börjar med en viss sträng.
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Registrera händelse hanterare för att läsa in data från App-konfigurationen igen
 
@@ -171,7 +171,7 @@ namespace TestConsole
 }
 ```
 
-Metoden [SetDirty](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) används för att ange det cachelagrade värdet för nyckel värden registrerade för att uppdatera som smutsig. Detta säkerställer att nästa anrop till `RefreshAsync` eller `TryRefreshAsync` omverifierar de cachelagrade värdena med app-konfigurationen och uppdaterar dem om det behövs.
+Metoden [SetDirty](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.iconfigurationrefresher.setdirty) används för att ange det cachelagrade värdet för nyckel värden registrerade för att uppdatera som smutsig. Detta säkerställer att nästa anrop till `RefreshAsync` eller `TryRefreshAsync` omverifierar de cachelagrade värdena med app-konfigurationen och uppdaterar dem om det behövs.
 
 En slumpmässig fördröjning läggs till innan det cachelagrade värdet markeras som smutsig för att minska eventuella begränsningar om flera instanser uppdateras samtidigt. Den största standard fördröjningen innan det cachelagrade värdet markeras som smutsig är 30 sekunder, men kan åsidosättas genom att en valfri `TimeSpan` parameter skickas till- `SetDirty` metoden.
 

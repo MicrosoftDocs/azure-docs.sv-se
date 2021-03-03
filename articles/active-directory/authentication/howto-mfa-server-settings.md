@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689053"
 ---
 # <a name="configure-mfa-server-settings"></a>Konfigurera inställningar för MFA-Server
 
@@ -44,7 +44,7 @@ Utför följande steg för att skapa en eng ång slö fördröjning:
 1. Sök efter och välj **Azure Active Directory** och bläddra sedan till **säkerhets**  >  **MFA**  >  **eng ång slö** sen.
 1. Välj **Lägg till**.
 1. Om det behövs väljer du replikeringsgruppen för bypass.
-1. Ange användar namnet som `username\@domain.com` . Ange antalet sekunder som förbikopplingen ska vara sist och orsaken till kringgåendet.
+1. Ange användar namnet som `username@domain.com` . Ange antalet sekunder som förbikopplingen ska vara sist och orsaken till kringgåendet.
 1. Välj **Lägg till**. Tids gränsen börjar gälla omedelbart. Användaren måste logga in innan eng ång slö tiden upphör att gälla.
 
 Du kan också visa en kringgå-rapport i taget i samma fönster.

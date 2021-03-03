@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 43ceaa716bf9b39dd1686be0c5a853e350cbe118
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582933"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717357"
 ---
 # <a name="azure-monitor-overview"></a>Översikt över Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor hjälper dig att maximera tillgängligheten och prestanda för din
 Några exempel på vad du kan göra med Azure Monitor är:
 
 - Identifiera och diagnostisera problem mellan program och beroenden med [Application Insights](app/app-insights-overview.md).
-- Korrelera infrastruktur problem med [Azure Monitor for VMS](vm/vminsights-overview.md) och [Azure Monitor för behållare](containers/container-insights-overview.md).
+- Korrelera infrastruktur problem med [VM Insights](vm/vminsights-overview.md) och [behållar insikter](containers/container-insights-overview.md).
 - Öka detalj nivån i dina övervaknings data med [Log Analytics](logs/log-query-overview.md) för fel sökning och djup diagnostik.
 - Stöd åtgärder i stor skala med [smarta aviseringar](alerts/alerts-smartgroups-overview.md) och [automatiserade åtgärder](alerts/alerts-action-rules.md).
 - Skapa visualiseringar med Azure- [instrumentpaneler](visualize/tutorial-logs-dashboards.md) och [arbets böcker](visualize/workbooks-overview.md).
@@ -33,13 +33,13 @@ Några exempel på vad du kan göra med Azure Monitor är:
 
 ## <a name="overview"></a>Översikt
 
-I följande diagram ges en översikt över Azure Monitor på hög nivå. I diagrammets centrum finns data lager för mått och loggar, som är de två grundläggande typer av data som används av Azure Monitor. Till vänster visas [källorna till de övervaknings data](agents/data-sources.md) som finns i dessa [data lager](/data-platform.md). Till höger finns olika funktioner som Azure Monitor utför med dessa insamlade data. Detta inkluderar sådana åtgärder som analys, aviseringar och strömning till externa system.
+I följande diagram ges en översikt över Azure Monitor på hög nivå. I diagrammets centrum finns data lager för mått och loggar, som är de två grundläggande typer av data som används av Azure Monitor. Till vänster visas [källorna till de övervaknings data](agents/data-sources.md) som finns i dessa [data lager](data-platform.md). Till höger finns olika funktioner som Azure Monitor utför med dessa insamlade data. Detta inkluderar sådana åtgärder som analys, aviseringar och strömning till externa system.
 
 ![Översikt över Azure Monitor](media/overview/overview.png)
 
 ## <a name="monitoring-data-platform"></a>Övervaknings data plattform
 
-Alla data som samlas in av Azure Monitor passar in i en av två grundläggande typer, [mått och loggar](/data-platform.md). [Mått](essentials/data-platform-metrics.md) är numeriska värden som beskriver någon aspekt av ett system vid en viss tidpunkt. De är lätta och stöder nästan real tids scenarier. [Loggar](logs/data-platform-logs.md) innehåller olika typer av data som är ordnade i poster med olika uppsättningar egenskaper för varje typ. Telemetri som händelser och spår lagras som loggar förutom prestanda data så att alla kan kombineras för analys.
+Alla data som samlas in av Azure Monitor passar in i en av två grundläggande typer, [mått och loggar](data-platform.md). [Mått](essentials/data-platform-metrics.md) är numeriska värden som beskriver någon aspekt av ett system vid en viss tidpunkt. De är lätta och stöder nästan real tids scenarier. [Loggar](logs/data-platform-logs.md) innehåller olika typer av data som är ordnade i poster med olika uppsättningar egenskaper för varje typ. Telemetri som händelser och spår lagras som loggar förutom prestanda data så att alla kan kombineras för analys.
 
 För många Azure-resurser kommer du att se data som samlas in av Azure Monitor direkt på sidan Översikt i Azure Portal. Ta en titt på vilken virtuell dator som helst, så ser du till exempel flera diagram som visar prestanda mått. Klicka på något av diagrammen för att öppna data i [mått Utforskaren](essentials/metrics-charts.md) i Azure Portal, vilket gör att du kan skapa diagram över värdena för flera mått över tid.  Du kan visa diagrammen interaktivt eller fästa dem på en instrument panel för att visa dem med andra visualiseringar.
 
@@ -47,7 +47,7 @@ För många Azure-resurser kommer du att se data som samlas in av Azure Monitor 
 
 Loggdata som samlas in av Azure Monitor kan analyseras med [frågor](logs/log-query-overview.md) för att snabbt hämta, konsolidera och analysera insamlade data.  Du kan skapa och testa frågor med hjälp av [Log Analytics](./logs/log-query-overview.md) i Azure Portal. Du kan sedan antingen analysera data direkt med olika verktyg eller spara frågor för användning med [visualiseringar](visualizations.md) eller [varnings regler](alerts/alerts-overview.md).
 
-Azure Monitor använder en version av [Kusto-frågespråket](/azure/kusto/query/) som passar för enkla logg frågor, men även avancerade funktioner som agg regeringar, kopplingar och smart analys. Du kan snabbt lära dig frågespråket med [flera lektioner](logs/get-started-queries.md).  Viss vägledning erbjuds användare som redan är bekanta med [SQL](log-query/sql-cheatsheet.md) och [Splunk](log-query/splunk-cheatsheet.md).
+Azure Monitor använder en version av [Kusto-frågespråket](/azure/kusto/query/) som passar för enkla logg frågor, men även avancerade funktioner som agg regeringar, kopplingar och smart analys. Du kan snabbt lära dig frågespråket med [flera lektioner](logs/get-started-queries.md).  Viss vägledning erbjuds användare som redan är bekanta med [SQL](/azure/data-explorer/kusto/query/sqlcheatsheet) och [Splunk](/azure/data-explorer/kusto/query/splunk-cheat-sheet).
 
 ![Diagrammet visar loggar data som flödar till Log Analytics för analys.](media/overview/logs.png)
 
@@ -61,7 +61,7 @@ Azure Monitor kan samla in data från [olika källor](monitor-reference.md). Det
 - **Övervaknings data för Azure-prenumeration**: data om drift och hantering av en Azure-prenumeration, samt data om hälso tillståndet och driften av Azure. 
 - **Azure-klient övervaknings data**: data om driften av Azure-tjänster på klient nivå, till exempel Azure Active Directory.
 
-När du skapar en Azure-prenumeration och börjar lägga till resurser, till exempel virtuella datorer och webbappar, börjar Azure Monitor samla in data.  [Aktivitets loggar](essentials/platform-logs-overview.md) poster när resurser skapas eller ändras. [Mått](/data-platform.md) visar hur resursen presterar och vilka resurser den använder. 
+När du skapar en Azure-prenumeration och börjar lägga till resurser, till exempel virtuella datorer och webbappar, börjar Azure Monitor samla in data.  [Aktivitets loggar](essentials/platform-logs-overview.md) poster när resurser skapas eller ändras. [Mått](data-platform.md) visar hur resursen presterar och vilka resurser den använder. 
 
 [Aktivera diagnostik](essentials/platform-logs-overview.md) för att utöka de data som du samlar in i den interna åtgärden för resurserna.  [Lägg till en agent](agents/agents-overview.md) för att beräkna resurser för att samla in telemetri från sina gäst operativ system. 
 
@@ -79,13 +79,13 @@ Azure Monitor kan samla in loggdata från alla REST-klienter med hjälp av [API:
 
 ![App Insights](media/overview/app-insights.png)
 
-### <a name="azure-monitor-for-containers"></a>Azure Monitor för containrar
-[Azure Monitor för behållare](containers/container-insights-overview.md) övervakar prestanda för behållar arbets belastningar som distribueras till hanterade Kubernetes-kluster som finns i Azure Kubernetes service (AKS). Det ger dig prestanda synlighet genom att samla in mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. Containerloggar samlas också in.  När du har aktiverat övervakning från Kubernetes-kluster samlas dessa mått och loggar in automatiskt åt dig via en behållar version av Log Analytics agent för Linux.
+### <a name="container-insights"></a>Container Insights
+[Behållar insikter](containers/container-insights-overview.md) övervakar prestanda för behållar arbets belastningar som distribueras till hanterade Kubernetes-kluster som finns i Azure Kubernetes service (AKS). Det ger dig prestanda synlighet genom att samla in mått från styrenheter, noder och behållare som är tillgängliga i Kubernetes via Metrics-API: et. Containerloggar samlas också in.  När du har aktiverat övervakning från Kubernetes-kluster samlas dessa mått och loggar in automatiskt åt dig via en behållar version av Log Analytics agent för Linux.
 
 ![Hälso tillstånd för behållare](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>Azure Monitor för virtuella datorer
-[Azure Monitor for VMS](vm/vminsights-overview.md) övervakar dina virtuella Azure-datorer (VM) i stor skala. Den analyserar prestanda och hälsa för dina virtuella Windows-och Linux-datorer och identifierar olika processer och sammankopplade beroenden för externa processer. Lösningen innehåller stöd för övervakning av prestanda-och program beroenden för virtuella datorer som finns lokalt eller i en annan moln leverantör.  
+### <a name="vm-insights"></a>VM-insikter
+[VM Insights](vm/vminsights-overview.md) övervakar dina virtuella Azure-datorer (VM) i stor skala. Den analyserar prestanda och hälsa för dina virtuella Windows-och Linux-datorer och identifierar olika processer och sammankopplade beroenden för externa processer. Lösningen innehåller stöd för övervakning av prestanda-och program beroenden för virtuella datorer som finns lokalt eller i en annan moln leverantör.  
 
 
 ![VM-insikter](media/overview/vm-insights.png)
@@ -145,7 +145,7 @@ Flera API: er är tillgängliga för att läsa och skriva mått och loggar till 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om:
 
-* [Mått och loggar](/data-platform.md) för data som samlas in av Azure Monitor.
+* [Mått och loggar](data-platform.md) för data som samlas in av Azure Monitor.
 * [Data källor](agents/data-sources.md) för hur de olika komponenterna i ditt program skickar telemetri.
 * [Logg frågor](logs/log-query-overview.md) för att analysera insamlade data.
 * [Metod tips](/azure/architecture/best-practices/monitoring) för övervakning av moln program och-tjänster.

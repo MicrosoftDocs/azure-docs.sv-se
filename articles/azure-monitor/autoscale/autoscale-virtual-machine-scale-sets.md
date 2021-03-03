@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 26cfdf05847b01d28a8574483acc89cfeced0ffa
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100623795"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101717748"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Avancerad automatisk skalnings konfiguration med Resource Manager-mallar för VM Scale Sets
 Du kan skala in och skala ut i Virtual Machine Scale Sets baserat på prestanda mätnings trösklar, med ett återkommande schema eller med ett visst datum. Du kan också konfigurera e-post-och webhook-meddelanden för skalnings åtgärder. Den här genom gången visar ett exempel på hur du konfigurerar alla dessa objekt med en Resource Manager-mall i en skalnings uppsättning för virtuella datorer.
@@ -36,7 +36,7 @@ I den här genom gången använder vi [Azure Resource Explorer](https://resource
 
 3. Nu kan du lägga till fler profiler och regler baserat på schemat eller särskilda krav. Vi skapar en inställning för autoskalning med tre profiler. Om du vill förstå profiler och regler i autoskalning bör du gå igenom [metod tipsen för autoskalning](autoscale-best-practices.md).  
 
-    | Profiler & regler | Description |
+    | Profiler & regler | Beskrivning |
     |--- | --- |
     | **Profil** |**Prestanda/mått baserat** |
     | Regel |Antal Service Bus Queue-meddelande > x |
@@ -243,9 +243,9 @@ Använd dessa länkar om du vill veta mer om autoskalning.
 
 [Metod tips för Azures autoskalning](autoscale-best-practices.md)
 
-[Hantera autoskalning med PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[Hantera autoskalning med PowerShell](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Hantera autoskalning med CLI](../samples/cli-samples.md#autoscale)
+[Hantera autoskalning med CLI](../cli-samples.md#autoscale)
 
 [Konfigurera webhook & e-postaviseringar för autoskalning](autoscale-webhook-email.md)
 

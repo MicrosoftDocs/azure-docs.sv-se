@@ -113,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Inbyggda Azure Policy-program
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Begrepp
       items:
         - name: Servrar
@@ -572,14 +575,6 @@
         - name: Utforma en instrumentpanel i realtid
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: Exempel
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Inbyggda Azure Policy-program
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: Begrepp
       items:
         - name: Distribuerad data

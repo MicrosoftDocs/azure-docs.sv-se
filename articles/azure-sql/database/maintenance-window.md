@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
 ms.date: 03/02/2021
-ms.openlocfilehash: 4006cedf5f24ab2fc08e41b58f8acf90c404f668
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680114"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692818"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Mer information om underhålls händelser finns i [Planera för Azure underhåll
 
 Azure utför planerade underhålls uppdateringar på Azure SQL Database-och SQL-hanterade instans resurser med jämna mellanrum som ofta omfattar uppdateringar av underliggande maskin vara, program inklusive underliggande operativ system (OS) och SQL-motorn. Under en underhålls uppdatering är resurserna fullständigt tillgängliga och tillgängliga, men vissa av underhålls uppdateringarna kräver en redundansväxling när Azure tar instanser offline under en kort tid för att tillämpa underhålls uppdateringar (åtta sekunder i varaktigheten i genomsnitt).  Planerade underhålls uppdateringar sker var 35: e dag i genomsnitt, vilket innebär att kunden kan vänta ungefär en planerad underhålls händelse per månad per Azure SQL Database eller SQL-hanterad instans, och endast under underhålls periodens platser som valts av kunden.   
 
-Underhålls perioden är avsedd för företags arbets belastningar som är känsliga för potentiella anslutnings avbrott som kan leda till planerade underhålls händelser i standard fönstret.  
+Underhålls perioden är avsedd för företags arbets belastningar som inte är elastiska till tillfälliga anslutnings problem som kan leda till planerade underhålls händelser.
 
 Underhålls perioden kan konfigureras med hjälp av Azure Portal, PowerShell, CLI eller Azure API. Den kan konfigureras vid skapande eller för befintliga SQL-databaser och SQL-hanterade instanser.
 
@@ -37,15 +37,15 @@ Underhålls perioden kan konfigureras med hjälp av Azure Portal, PowerShell, CL
 Som standard uppdateras alla Azure SQL-databaser och hanterade instans databaser endast under 17 till 8.00 dygnet för att undvika avbrott i arbets tiden. Lokal tid bestäms av den [Azure-region](https://azure.microsoft.com/global-infrastructure/geographies/) som är värd för resursen. Du kan ändra underhålls uppdateringar ytterligare till en tid som är lämplig för din databas genom att välja mellan två ytterligare underhålls fönster platser:
 
 * **Standard** fönster, 17 till 8.00 lokal tid måndag – söndag 
-* Vardags fönstret, 10PM till 06:00 lokal tid måndag – torsdag: **kräver kunddeltagande** 
-* Helg fönster, 10PM till 06:00 lokal tid fredag – söndag: **kräver kunddeltagande**  
+* Vardags fönstret, 10PM till 06:00 lokal tid måndag – torsdag
+* Helg fönstret, 10PM till 06:00 Local Time fredag – söndag
 
 När du har valt underhålls perioden utförs alla planerade underhålls uppdateringar bara under det fönster du väljer.   
 
 > [!Note]
 > Förutom planerade underhålls uppdateringar kan i sällsynta fall oplanerade underhålls händelser orsaka otillgänglighet. 
 
-### <a name="cost"></a>Cost
+### <a name="cost-and-eligibility"></a>Kostnader och berättigande
 
 Att välja ett underhålls fönster är kostnads fritt för följande prenumerations [erbjudande typer](https://azure.microsoft.com/support/legal/offer-details/): betala per användning, CSP (Cloud Solution Provider), Microsoft Enterprise eller Microsofts kund avtal.
 

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 13726009e07172c9038bc8b45001e390c5b7ad70
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511849"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709792"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en offentlig belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
 
 Kom igång med Azure Load Balancer genom att använda Azure Portal för att skapa en offentlig belastningsutjämnare och tre virtuella datorer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -49,26 +49,29 @@ I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella
 
 När du skapar en offentlig belastningsutjämnare, skapar du en ny offentlig IP-adress som är konfigurerad som klient del (kallas som **LoadBalancerFrontend** som standard) för belastningsutjämnaren.
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs**  >  **nätverk**  >  **Load Balancer**.
-
-2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
+1. Välj **Skapa en resurs**. 
+2. I rutan Sök anger du **Load Balancer**. Välj **Load Balancer** i Sök resultaten.
+3. På sidan **belastnings utjämning** väljer du **skapa**.
+4. På sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **Skapa ny** och ange **CreatePubLBQS-RG** i text rutan.|
     | Namn                   | Ange **myLoadBalancer**                                   |
-    | Region         | Välj **Europa, västra**.                                        |
+    | Region         | Välj **(Europa) Västeuropa**.                                        |
     | Typ          | Välj **Offentlig**.                                        |
-    | SKU           | Välj **standard** |
+    | SKU           | Lämna kvar standardinställningen **Standard**. |
+    | Nivå          | Lämna standard **regionen**. |
     | Offentlig IP-adress | Välj **Skapa ny**. Om du har en befintlig offentlig IP-adress som du vill använda väljer du **Använd befintlig**. |
     | Namn på offentlig IP-adress | Skriv **myPublicIP** i textrutan.|
     | Tillgänglighetszon | Välj **zon-redundant** för att skapa en elastisk belastningsutjämnare. Om du vill skapa en zonindelade-belastningsutjämnare väljer du en speciell zon från 1, 2 eller 3 |
     | Lägg till en offentlig IPv6-adress | Välj **Nej**. </br> Mer information om IPv6-adresser och belastningsutjämnare finns i [Vad är IPv6 för Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
+    | Routningsprioritet | Lämna standardvärdet för **Microsoft-nätverk**. </br> Mer information om inställningar för routning finns i [Vad är cirkulations inställningar (för hands version)?](./routing-preference-overview.md). |
 
-3. Acceptera standardinställningarna för återstående inställningar och välj sedan **Granska + skapa**.
+5. Acceptera standardinställningarna för återstående inställningar och välj sedan **Granska + skapa**.
 
-4. På fliken **Granska och skapa** väljer du **skapa**.   
+6. På fliken **Granska och skapa** väljer du **skapa**.   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="Skapa en standardlastbalanserare" border="true":::
  
@@ -334,9 +337,10 @@ I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella
 
 När du skapar en offentlig belastningsutjämnare, skapar du en ny offentlig IP-adress som är konfigurerad som klient del (kallas som **LoadBalancerFrontend** som standard) för belastningsutjämnaren.
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs**  >  **nätverk**  >  **Load Balancer**.
-
-2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
+1. Välj **Skapa en resurs**. 
+2. I rutan Sök anger du **Load Balancer**. Välj **Load Balancer** i Sök resultaten.
+3. På sidan **belastnings utjämning** väljer du **skapa**.
+4. På sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
     | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
@@ -351,9 +355,9 @@ När du skapar en offentlig belastningsutjämnare, skapar du en ny offentlig IP-
     | Tilldelning | Välj **dynamisk** |
     | Lägg till en offentlig IPv6-adress | Välj **Nej**. </br> Mer information om IPv6-adresser och belastningsutjämnare finns i [Vad är IPv6 för Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
 
-3. Acceptera standardinställningarna för återstående inställningar och välj sedan **Granska + skapa**.
+5. Acceptera standardinställningarna för återstående inställningar och välj sedan **Granska + skapa**.
 
-4. På fliken **Granska och skapa** väljer du **skapa**.   
+6. På fliken **Granska och skapa** väljer du **skapa**.   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Skapa en grundläggande belastningsutjämnare" border="true":::
 

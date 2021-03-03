@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044398"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736550"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digitals med hjälp av enhets etablerings tjänsten (DPS)
 
@@ -89,7 +89,7 @@ I den nyligen skapade funktions kod filen klistrar du in följande kod.
 
 Spara filen och publicera om din Function-app. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
-### <a name="configure-your-function"></a>Konfigurera din funktion
+### <a name="configure-your-function"></a>Konfigurera funktionen
 
 Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat. Om du använde självstudierna från slut punkt till slut punkt ([*Självstudier: ansluta en slut punkt till slut punkt*](tutorial-end-to-end.md)) är inställningen redan konfigurerad.
 
@@ -174,7 +174,7 @@ Gå igenom stegen som beskrivs i snabb starten för att [*skapa en Event Hub*](.
 
 ### <a name="create-an-azure-function"></a>Skapa en Azure-funktion
 
-Därefter skapar du en Event Hubs utlöst funktion i en Function-app. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen. 
+Nästa steg är att skapa en Event Hubs-utlöst funktion i en funktionsapp. Du kan använda Function-appen som skapats i kursen från slut punkt till slut punkt ([*Självstudier: Anslut en lösning från slut punkt till slut punkt*](tutorial-end-to-end.md)) eller din egen. 
 
 Namnge Event Hub-utlösaren *lifecycleevents* och Anslut Event Hub-utlösaren till händelsehubben som du skapade i föregående steg. Om du har använt ett annat händelsehubben, ändrar du det så att det matchar i Utlösarens namn nedan.
 
@@ -186,7 +186,7 @@ I din publicerade Function-app lägger du till en ny funktions klass av typen *E
 
 Spara projektet och publicera sedan Function-appen igen. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
-### <a name="configure-your-function"></a>Konfigurera din funktion
+### <a name="configure-your-function"></a>Konfigurera funktionen
 
 Därefter måste du ställa in miljövariabler i din Function-app från tidigare, som innehåller referensen till den Azure Digital-instans som du har skapat och Event Hub. Om du använde självstudien från slut punkt till slut punkt ([*Självstudier: ansluta en slut punkt till slut punkt*](./tutorial-end-to-end.md)) är den första inställningen redan konfigurerad.
 
@@ -223,7 +223,7 @@ Om du vill utlösa processen för pensionering måste du manuellt ta bort enhete
 
 I den [första halvan av den här artikeln](#auto-provision-device-using-device-provisioning-service)skapade du en enhet i IoT Hub och en motsvarande digital enhet. 
 
-Gå nu till IoT Hub och ta bort enheten (du kan göra detta med ett [Azure CLI-kommando](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete) eller i [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Gå nu till IoT Hub och ta bort enheten (du kan göra detta med ett [Azure CLI-kommando](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) eller i [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Enheten tas bort automatiskt från digitala Azure-enheter. 
 

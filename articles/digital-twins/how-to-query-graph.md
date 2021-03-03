@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044194"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737978"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -21,7 +21,7 @@ Den här artikeln innehåller exempel på frågor och mer detaljerade instruktio
 
 Den här artikeln börjar med exempel frågor som illustrerar frågans språk struktur och vanliga frågor för digitala enheter. Sedan beskrivs hur du kör dina frågor när du har skrivit dem med hjälp av Azure Digitals API för [frågor](/rest/api/digital-twins/dataplane/query) och svar eller ett [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis).
 
-> [!TIP]
+> [!NOTE]
 > Om du kör exempel frågorna nedan med ett API eller SDK-anrop måste du komprimera frågetexten till en enda rad.
 
 ## <a name="show-all-digital-twins"></a>Visa alla digitala dubbla
@@ -36,8 +36,8 @@ Hämta digitala dubbla med **Egenskaper** (inklusive ID och metadata):
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
-> ID: t för en digital delad frågas med hjälp av fältet metadata `$dtId` .
+> [!NOTE]
+> Det går att köra en fråga för en digital tvillings ID med fältet metadata `$dtId`.
 
 Du kan också skapa dubbla baserat på **om en viss egenskap har definierats**. Här är en fråga som hämtar dubbla med en definierad *plats* egenskap:
 
@@ -50,6 +50,10 @@ Detta kan hjälpa dig att få en upplösning med hjälp av taggarnas *egenskaper
 Du kan också få dubbla baserat på **typen av egenskap**. Här är en fråga som sammanfaller vars *temperatur* egenskap är ett tal:
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> Om en egenskap är av typen `Map` kan du använda mappa nycklar och värden direkt i frågan, så här:
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>Fråga efter modell
 
@@ -88,10 +92,10 @@ Här är ett exempel på en fråga som anger ett värde för alla tre parametrar
 
 När du frågar baserat på digitala dubbla **relationer**, har Azures digitala dubbla frågespråket frågespråk en speciell syntax.
 
-Relationerna hämtas till fråge omfånget i- `FROM` satsen. En viktig skillnad från "klassiska" SQL-typ språk är att varje uttryck i den här `FROM` satsen inte är en tabell. i stället `FROM` uttrycker satsen en relation mellan olika enheter och är skriven med en digital Azure-version av `JOIN` .
+Relationer hämtas in i frågeomfånget i `FROM`-satsen. En viktig skillnad från "klassiska" SQL-typ språk är att varje uttryck i den här `FROM` satsen inte är en tabell. i stället `FROM` uttrycker satsen en relation mellan olika enheter och är skriven med en digital Azure-version av `JOIN` .
 
-Kom ihåg att med Azure Digitals dubbla [modell](concepts-models.md) funktioner, finns det inga relationer oberoende av varandra. Det innebär att Azure Digitals-frågespråket `JOIN` är lite annorlunda än den allmänna SQL `JOIN` , eftersom relationer här inte kan frågas oberoende och måste vara knutna till ett dubbel.
-För att ta med den här skillnaden `RELATED` används nyckelordet i- `JOIN` satsen för att referera till en grupp med dubbla relationer.
+Kom ihåg att med Azure Digitals dubbla [modell](concepts-models.md) funktioner, finns det inga relationer oberoende av varandra. Det innebär att `JOIN` i Azure Digital Twins-frågespråket skiljer sig lite från den allmänna SQL-versionen av `JOIN`eftersom relationer här inte kan frågas separat och måste vara knutna till en tvilling.
+För att ta med den här skillnaden används nyckelordet `RELATED` i `JOIN`-satsen för att referera till en tvillings uppsättning av relationer.
 
 Följande avsnitt innehåller flera exempel på hur det ser ut.
 
@@ -107,11 +111,11 @@ Här är en exempel Relations hip-baserad fråga. Det här kodfragmentet väljer
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
-> Utvecklaren behöver inte korrelera detta `JOIN` med ett nyckel värde i `WHERE` -satsen (eller ange ett nyckel värde infogat med `JOIN` definitionen). Den här korrelationen beräknas automatiskt av systemet, eftersom Relations egenskaperna identifierar målentiteten.
+> Utvecklaren behöver inte korrelera detta `JOIN` med ett nyckel värde i `WHERE` -satsen (eller ange ett nyckel värde infogat med `JOIN` definitionen). Den här korrelationen beräknas automatiskt av systemet, eftersom relationsegenskaperna själva identifierar målentiteten.
 
-### <a name="query-the-properties-of-a-relationship"></a>Fråga egenskaperna för en relation
+### <a name="query-the-properties-of-a-relationship"></a>Ställ frågor till en relations egenskaper
 
-På samma sätt som digitala dubbla har egenskaper som beskrivs via DTDL, kan relationer också ha egenskaper. Du kan fråga efter varandra **utifrån egenskaperna för deras relationer**.
+På liknande sätt som digitala tvillingar har egenskaper som beskrivs via DTDL så kan även relationer ha egenskaper. Du kan fråga efter varandra **utifrån egenskaperna för deras relationer**.
 Med Azures digitala Flätaa frågespråk kan du filtrera och projicera relationer genom att tilldela ett alias till relationen i- `JOIN` satsen.
 
 Anta till exempel en *servicedBy* -relation som har en *reportedCondition* -egenskap. I nedanstående fråga får den här relationen ett alias för R för att referera till egenskapen.
@@ -220,7 +224,12 @@ Följande kodfragment illustrerar [.net (C#) SDK-](/dotnet/api/overview/azure/di
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Anropet returnerar frågeresultat i form av ett [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objekt.
+Frågan som används i det här anropet returnerar en lista över digitala dubbla, som exemplet ovan representerar med [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objekt. Retur typen för dina data för varje fråga beror på vilka villkor som du anger med `SELECT` instruktionen:
+* Frågor som börjar med `SELECT * FROM ...` returnerar en lista över digitala dubbla objekt (som kan serialiseras som `BasicDigitalTwin` objekt eller andra anpassade digitala, dubbla typer som du kan ha skapat).
+* Frågor som börjar i formatet `SELECT <A>, <B>, <C> FROM ...` returnerar en ord lista med nycklar `<A>` , `<B>` och `<C>` .
+* Andra `SELECT` uttrycks format kan användas för att returnera anpassade data. Du kan överväga att skapa egna klasser för att hantera mycket anpassade resultat uppsättningar. 
+
+### <a name="query-with-paging"></a>Fråga med sid indelning
 
 Fråge anrop stöder sid indelning. Här är ett fullständigt exempel som använder sig av `BasicDigitalTwin` typen frågeresultat med fel hantering och växling:
 

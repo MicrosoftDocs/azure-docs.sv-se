@@ -1,21 +1,21 @@
 ---
-title: Så här uppgraderar du den Azure Monitor for VMs beroende agenten
-description: Den här artikeln beskriver hur du uppgraderar Azure Monitor for VMs beroende agent med hjälp av kommando raden, installations guiden och andra metoder.
+title: Så här uppgraderar du den virtuella dator insikts beroende agent
+description: Den här artikeln beskriver hur du uppgraderar den virtuella datorns beroende agent med hjälp av kommando rad, installations guide och andra metoder.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 14ca614c1e108ce43f05f98520cff6ff215ec5cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722916"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Så här uppgraderar du den Azure Monitor for VMs beroende agenten
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>Så här uppgraderar du den virtuella dator insikts beroende agent
 
-Efter den första distributionen av den Azure Monitor for VMs beroende agenten släpps uppdateringar som innehåller fel korrigeringar eller stöd för nya funktioner eller funktioner.  Den här artikeln hjälper dig att förstå vilka metoder som är tillgängliga och hur du utför uppgraderingen manuellt eller genom automatisering.
+Efter den första distributionen av agenten för VM Insights-beroende agent släpps uppdateringar som innehåller fel korrigeringar eller stöd för nya funktioner eller funktioner.  Den här artikeln hjälper dig att förstå vilka metoder som är tillgängliga och hur du utför uppgraderingen manuellt eller genom automatisering.
 
 ## <a name="upgrade-options"></a>Uppgraderings alternativ 
 
@@ -70,4 +70,4 @@ Om det inte går att starta beroende agenten kontrollerar du om det finns detalj
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill stoppa övervakningen av dina virtuella datorer under en viss tids period eller ta bort Azure Monitor for VMs helt, se [inaktivera övervakning av dina virtuella datorer i Azure Monitor for VMS](../vm/vminsights-optout.md).
+Om du vill stoppa övervakningen av dina virtuella datorer under en viss tids period eller ta bort VM-insikter kan [du läsa inaktivera övervakning av dina virtuella datorer i VM Insights](../vm/vminsights-optout.md).

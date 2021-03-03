@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
-ms.openlocfilehash: aa18baf9739663c7132a49d3d07434b9d187f02b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588755"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691237"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resurs gränser för Azure SQL Database-och Azure Synapse Analytics-servrar
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -70,7 +70,7 @@ När du ska räkna med hög användnings utrymme är alternativen för minskning
 - Öka den maximala storleken på databasen eller den elastiska poolen eller lägga till mer lagrings utrymme. Se [skala resurser för enkel databas](single-database-scale.md) och [skala elastiska pooler](elastic-pool-scale.md).
 - Om databasen finns i en elastisk pool kan du eventuellt flytta databasen utanför poolen så att lagrings utrymmet inte delas med andra databaser.
 - Krymp en databas för att frigöra outnyttjat utrymme. Mer information finns i [Hantera fil utrymme i Azure SQL Database](file-space-manage.md).
-- Kontrol lera om det går att använda högt utrymme på grund av en ökning i storleken på det beständiga versions arkivet (PVS). PVS är en del av varje databas och används för att implementera  [accelererad databas återställning](../accelerated-database-recovery.md). För att fastställa aktuell PVS-storlek, se [fel sökning av PVS](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). En vanlig orsak till stor PVS-storlek är en transaktion som är öppen under en längre tid (timmar), vilket förhindrar rensning av äldre versioner i PVS.
+- Kontrol lera om det går att använda högt utrymme på grund av en ökning i storleken på det beständiga versions arkivet (PVS). PVS är en del av varje databas och används för att implementera  [accelererad databas återställning](../accelerated-database-recovery.md). För att fastställa aktuell PVS-storlek, se [fel sökning av PVS](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting). En vanlig orsak till stor PVS-storlek är en transaktion som är öppen under en längre tid (timmar), vilket förhindrar rensning av äldre versioner i PVS.
 
 ### <a name="sessions-and-workers-requests"></a>Sessioner och arbetare (begär Anden)
 
@@ -97,7 +97,7 @@ När du ska räkna ut minnes fel visas följande alternativ för minskning:
 - Öka tjänst nivån eller beräknings storleken för databasen eller den elastiska poolen. Se [skala resurser för enkel databas](single-database-scale.md) och [skala elastiska pooler](elastic-pool-scale.md).
 - Optimera frågor och konfiguration för att minska minnes användningen. Vanliga lösningar beskrivs i följande tabell.
 
-|Lösning|Description|
+|Lösning|Beskrivning|
 | :----- | :----- |
 |Minska storleken på minnes bidrag|Mer information om minnes bidrag finns i blogg inlägget om att [förstå SQL Server minnes tilldelning](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . En vanlig lösning för att undvika alltför stora minnes bidrag håller [statistiken](/sql/relational-databases/statistics/statistics) uppdaterad. Detta resulterar i mer exakta uppskattningar av minnes förbrukning av frågemotor, vilket undviker onödigt stora minnes bidrag.</br></br>I databaser som använder kompatibilitetsnivå 140 och senare, kan databas motorn automatiskt justera minnes tilldelningens storlek med hjälp av [återkoppling i batch-läge](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). I databaser som använder kompatibilitetsnivå 150 och senare, använder databas motorn samma [återkoppling i rad läge](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)för att ge fler vanliga frågor om rad läge. Den här inbyggda funktionen hjälper till att undvika minnes brists fel på grund av onödigt stora minnes bidrag.|
 |Minska storleken på cachen för frågeplan|Databas motorn cachelagrar fråge planer i minnet för att undvika att kompilera en frågeplan för varje frågekörningen. För att undvika överdriven storlek av frågor som orsakas av programplaner som bara används en gång, aktiverar du den OPTIMIZE_FOR_AD_HOC_WORKLOADS [databas-omfångs konfigurationen](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

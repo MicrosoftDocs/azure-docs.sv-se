@@ -1,25 +1,25 @@
 ---
-title: Så här frågar du efter loggar från Azure Monitor for VMs
-description: Azure Monitor for VMs lösning samlar in Mät värden och loggdata till och den här artikeln beskriver posterna och innehåller exempel frågor.
+title: Så här frågar du efter loggar från VM Insights
+description: Lösningen för VM Insights samlar in mått och loggdata till och den här artikeln beskriver posterna och innehåller exempel frågor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbecb15173c929aee46e7d1eeb5e83aab86430f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625121"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713532"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Så här frågar du efter loggar från Azure Monitor for VMs
+# <a name="how-to-query-logs-from-vm-insights"></a>Så här frågar du efter loggar från VM Insights
 
-Azure Monitor for VMs samlar in prestanda-och anslutnings mått, dator-och process inventerings data och hälso tillstånds information och vidarebefordrar den till arbets ytan Log Analytics i Azure Monitor.  Dessa data är tillgängliga för [fråga](../log-query/log-query-overview.md) i Azure Monitor. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
+VM Insights samlar in prestanda-och anslutnings mått, dator-och process inventerings data och hälso tillstånds information och vidarebefordrar den till Log Analytics arbets ytan i Azure Monitor.  Dessa data är tillgängliga för [fråga](../logs/log-query-overview.md) i Azure Monitor. Du kan använda dessa data i scenarier som omfattar migrerings planering, kapacitets analys, identifiering och prestanda fel sökning på begäran.
 
 ## <a name="map-records"></a>Mappa poster
 
-En post skapas per timme för varje unik dator och process, förutom de poster som genereras när en process eller dator startar eller aktive ras till Azure Monitor for VMs kart funktion. Dessa poster har egenskaperna i följande tabeller. Fälten och värdena i ServiceMapComputer_CL händelser mappar till fält i dator resursen i ServiceMap Azure Resource Manager API. Fälten och värdena i ServiceMapProcess_CL händelser mappar till fälten i process resursen i ServiceMap Azure Resource Manager API. Fältet ResourceName_s matchar fältet namn i motsvarande Resource Manager-resurs. 
+En post skapas per timme för varje unik dator och process, förutom de poster som genereras när en process eller dator startar eller är inaktive ras för funktionen för VM Insights-mappning. Dessa poster har egenskaperna i följande tabeller. Fälten och värdena i ServiceMapComputer_CL händelser mappar till fält i dator resursen i ServiceMap Azure Resource Manager API. Fälten och värdena i ServiceMapProcess_CL händelser mappar till fälten i process resursen i ServiceMap Azure Resource Manager API. Fältet ResourceName_s matchar fältet namn i motsvarande Resource Manager-resurs. 
 
 Det finns internt genererade egenskaper som du kan använda för att identifiera unika processer och datorer:
 
@@ -112,7 +112,7 @@ Varje RemoteIp-egenskap i *VMConnection* -tabellen kontrol leras mot en uppsätt
 |:--|:--|
 |MaliciousIp |RemoteIp-adressen |
 |IndicatorThreadType |En hot indikator upptäcktes av följande värden: *botnät*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *oönskade program*, *visnings lista*.   |
-|Description |Beskrivning av det observerade hotet. |
+|Beskrivning |Beskrivning av det observerade hotet. |
 |TLPLevel |TLP-nivån (trafik ljus protokoll) är en av de definierade värdena, *vitt*, *grönt*, *gult*, *rött*. |
 |Konfidensbedömning |Värdena är *0 – 100*. |
 |Allvarlighetsgrad |Värdena är *0 – 5*, där *5* är det allvarligaste och *0* inte är allvarligt. Standardvärdet är *3*.  |
@@ -233,7 +233,7 @@ Poster med en typ av *VMProcess* har inventerings data för TCP-anslutna process
 |Group | Namn på process grupp. Processer i samma grupp är logiskt relaterade, t. ex. en del av samma produkt-eller system komponent. |
 |StartTime | Start tid för process bassäng |
 |FirstPid | Det första PID i lagringspoolen |
-|Description | Beskrivning av processen |
+|Beskrivning | Beskrivning av processen |
 |CompanyName | Företagets namn |
 |InternalName | Det interna namnet |
 |ProductName | Produktens namn |
@@ -442,7 +442,7 @@ Poster med en typ av *InsightsMetrics* har prestanda data från gäst operativ s
 |Dator | Datorns FQDN | 
 |Ursprung | *vm.azm.ms* |
 |Namnområde | Prestanda räknarens kategori | 
-|Name | Namn på prestanda räknaren |
+|Namn | Namn på prestanda räknaren |
 |Val | Insamlat värde | 
 |Taggar | Relaterad information om posten. Se tabellen nedan för taggar som används med olika post typer.  |
 |AgentId | Unik identifierare för varje dators agent |
@@ -451,7 +451,7 @@ Poster med en typ av *InsightsMetrics* har prestanda data från gäst operativ s
 
 De prestanda räknare som för närvarande samlas in i tabellen *InsightsMetrics* visas i följande tabell:
 
-| Namnområde | Name | Beskrivning | Enhet | Taggar |
+| Namnområde | Namn | Beskrivning | Enhet | Taggar |
 |:---|:---|:---|:---|:---|
 | Dator    | Pulsslag             | Datorns pulsslag                        | | |
 | Minne      | AvailableMB           | Tillgängliga byte för minne                    | Megabyte      | memorySizeMB – total minnes storlek|
@@ -473,6 +473,6 @@ De prestanda räknare som för närvarande samlas in i tabellen *InsightsMetrics
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Om du inte har använt att skriva logg frågor i Azure Monitor kan du läsa om [hur du använder Log Analytics](../log-query/log-analytics-tutorial.md) i Azure Portal för att skriva logg frågor.
+* Om du inte har använt att skriva logg frågor i Azure Monitor kan du läsa om [hur du använder Log Analytics](../logs/log-analytics-tutorial.md) i Azure Portal för att skriva logg frågor.
 
-* Lär dig mer om att [skriva Sök frågor](../log-query/get-started-queries.md).
+* Lär dig mer om att [skriva Sök frågor](../logs/get-started-queries.md).
