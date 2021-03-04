@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: fa8dba12a050e42e258e4224f29e379ff53f09d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095025"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Traffic Manager
 
@@ -447,7 +447,18 @@ Om ingen anpassad värd huvud inställning anges, är värd rubriken som använd
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Vilka IP-adresser kommer hälso kontrollerna från?
 
-Klicka [här](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json) om du vill visa JSON-filen som visar de IP-adresser som Traffic Manager hälso kontroller kan härstamma från. Granska de IP-adresser som anges i JSON-filen för att se till att inkommande anslutningar från de här IP-adresserna är tillåtna vid slut punkterna för att kontrol lera dess hälso status.
+Klicka [här](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) om du vill veta mer om hur du hämtar listor över IP-adresser som Traffic Manager hälso kontroller kan härstamma från. Du kan använda REST API, Azure CLI eller Azure PowerShell för att hämta den senaste listan. Granska de IP-adresser som anges för att säkerställa att inkommande anslutningar från de här IP-adresserna är tillåtna vid slut punkterna för att kontrol lera dess hälso status.
+
+Exempel som använder Azure PowerShell:
+
+```azurepowershell-interactive
+$serviceTags = Get-AzNetworkServiceTag -Location eastus
+$result = $serviceTags.Values | Where-Object { $_.Name -eq "AzureTrafficManager" }
+$result.Properties.AddressPrefixes
+```
+
+> [!NOTE]
+> Offentliga IP-adresser kan ändras utan föregående meddelande. Se till att hämta den senaste informationen med hjälp av service tag Discovery API eller den nedladdnings bara JSON-filen.
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hur många hälso kontroller till min slut punkt kan jag förväntar mig från Traffic Manager?
 

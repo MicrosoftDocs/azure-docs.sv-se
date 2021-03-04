@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bbb0c5617696347b566ba09a481afae4f52379aa
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805402"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096045"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -40,8 +40,8 @@ En teknisk profil möjliggör följande typer av scenarier:
 - [OpenID Connect](openid-connect-technical-profile.md) -Federation med valfri OpenID Connect Protocol Identity Provider.
 - [Telefon faktor](phone-factor-technical-profile.md) – stöd för registrering och verifiering av telefonnummer.
 - [RESTful-Provider](restful-technical-profile.md) – anrop till REST API tjänster, till exempel verifiera användarindata, utöka användar data eller integrera med branschspecifika program.
-- [SAML Identity Provider](saml-identity-provider-technical-profile.md) – Federation med valfri SAML-protokoll identitets leverantör.
-- [Utfärdare av SAML-token](saml-issuer-technical-profile.md) – genererar en SAML-token som returneras tillbaka till den förlitande part appen.
+- [SAML Identity Provider](identity-provider-generic-saml.md) – Federation med valfri SAML-protokoll identitets leverantör.
+- [Utfärdare av SAML-token](saml-service-provider.md) – genererar en SAML-token som returneras tillbaka till den förlitande part appen.
 - [Självkontrollerad](self-asserted-technical-profile.md) – interagera med användaren. Du kan till exempel samla in användarens autentiseringsuppgifter för att logga in, återge registrerings sidan eller lösen ords återställning.
 - [Sessionshantering](custom-policy-reference-sso.md) – hantera olika typer av sessioner.
 
@@ -90,11 +90,11 @@ Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler
 
 **TechnicalProfile** innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | Domän namnet för den tekniska profilen. Om din tekniska profil exempelvis anger Facebook Identity Provider, är domän namnet Facebook.com. |
 | DisplayName | 1:1 | Visnings namnet för den tekniska profilen. |
-| Description | 0:1 | Beskrivningen av den tekniska profilen. |
+| Beskrivning | 0:1 | Beskrivningen av den tekniska profilen. |
 | Protokoll | 1:1 | Protokollet som används för kommunikation med den andra parten. |
 | Metadata | 0:1 | En samling nyckel/värde som styr beteendet för den tekniska profilen. |
 | InputTokenFormat | 0:1 | Formatet för Indataporten. Möjliga värden: `JSON` , `JWT` , `SAML11` eller `SAML2` . `JWT`Värdet representerar ett JSON Web token enligt IETF-specifikationen. `SAML11`Värdet representerar en SAML 1,1-säkerhetstoken som per Oasis-specifikation.  `SAML2`Värdet representerar en SAML 2,0-säkerhetstoken som per Oasis-specifikation. |
@@ -120,14 +120,14 @@ Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Name | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` eller `None` . |
+| Namn | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` eller `None` . |
 | Hanterare | Inga | När protokoll namnet är inställt på `Proprietary` anger du namnet på den sammansättning som används av Azure AD B2C för att fastställa protokoll hanteraren. |
 
 ## <a name="metadata"></a>Metadata
 
 Elementet **metadata** innehåller relevanta konfigurations alternativ för ett speciellt protokoll. Listan över metadata som stöds finns dokumenterade i motsvarande [tekniska profil](#type-of-technical-profiles) specifikation. Ett **metadataelement** innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | Objekt | 0: n | Metadata som relaterar till den tekniska profilen. Varje typ av teknisk profil har en annan uppsättning metadata-objekt. Mer information finns i avsnittet tekniska profil typer.  |
 
@@ -175,13 +175,13 @@ I följande exempel illustreras användningen av metadata som är relevanta för
 
 För att upprätta förtroende med de tjänster som den integrerar med, Azure AD B2C lagra hemligheter och certifikat i form av [princip nycklar](policy-keys-overview.md). Under den tekniska profilen som körs hämtar Azure AD B2C de kryptografiska nycklarna från Azure AD B2C princip nycklar. Använder sedan nycklarna för att upprätta förtroende, kryptera eller signera en token. Dessa förtroenden består av:
 
-- Federation med [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)och [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) Identity providers
+- Federation med [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)och [SAML](identity-provider-generic-saml.md) Identity providers
 - Skydda anslutningen till [REST API Services](secure-rest-api.md)
-- Signera och kryptera [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) -och [SAML](saml-issuer-technical-profile.md#cryptographic-keys) -token
+- Signera och kryptera [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) -och [SAML](saml-service-provider.md) -token
 
 **CryptographicKeys** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | Nyckel | 1: n | En kryptografisk nyckel som används i den här tekniska profilen. |
 
@@ -202,7 +202,7 @@ De utgående anspråken för en tidigare anspråk-omvandling i omvandlings samli
 
 **InputClaimsTransformations** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Identifieraren för en anspråks omvandling som ska köras innan anspråk skickas till anspråksprovidern eller den förlitande parten. En anspråks omvandling kan användas för att ändra befintliga ClaimsSchema-anspråk eller skapa nya. |
 
@@ -241,7 +241,7 @@ Följande tekniska profiler hänvisar till omvandlingen av **CreateOtherMailsFro
 
 **InputClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | En förväntad typ av Indatatyp. |
 
@@ -269,7 +269,7 @@ Ordningen på elementen i **DisplayClaims** anger i vilken ordning som Azure AD 
 
 **DisplayClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | En förväntad typ av Indatatyp. |
 
@@ -315,7 +315,7 @@ Namnet på anspråket är namnet på [Azure AD-attributet](user-profile-attribut
 
 **PersistedClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Anspråks typen som ska sparas. |
 
@@ -346,7 +346,7 @@ I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** e
 
 **OutputClaims** är en samling anspråk som returneras tillbaka till anspråks säcken när den tekniska profilen har slutförts. Du kan använda de här anspråken i nästa steg för att dirigera eller utföra anspråk på utdata. **OutputClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | En förväntad typ av utgående anspråk. |
 
@@ -369,7 +369,7 @@ De utgående anspråken för en tidigare anspråk-omvandling i insamlingen av an
 
 **OutputClaimsTransformations** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | Identifierare för anspråks omvandlingar som ska köras innan anspråk skickas till anspråksprovidern eller den förlitande parten. En anspråks omvandling kan användas för att ändra befintliga ClaimsSchema-anspråk eller skapa nya. |
 
@@ -412,7 +412,7 @@ Följande diagram illustrerar hur Azure AD B2C använder en teknisk validerings 
 
 **ValidationTechnicalProfiles** -elementet innehåller följande element:
 
-| Element | Förekomster | Description |
+| Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Identifierarna för de tekniska profiler som används validerar några eller alla utgående anspråk för den refererande tekniska profilen. Alla indata-anspråk för den refererade tekniska profilen måste visas i de utgående anspråken för den refererande tekniska profilen. |
 

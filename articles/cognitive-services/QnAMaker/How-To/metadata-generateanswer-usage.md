@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584750"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051913"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Få ett svar med GenerateAnswer-API och metadata
 
@@ -272,6 +272,44 @@ Du kan söka igenom den publicerade KB, använda `isTest=false` eller i test-KB 
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="return-precise-answers"></a>Returnera exakta svar
+
+### <a name="generate-answer-api"></a>Generera svars-API 
+
+Användaren kan aktivera [exakta svar](../reference-precise-answering.md) när du använder den QNA Maker hanterade resursen. AnswerSpanRequest-parametern måste uppdateras för samma.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+På samma sätt kan användarna välja att inaktivera exakta svar genom att inte ange parametern answerSpanRequest.
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>Inställningar för bot
+
+Om du vill konfigurera exakta svars inställningar för din bot-tjänst går du till App Service-resursen för bot. Sedan måste du uppdatera konfigurationerna genom att lägga till följande inställning.
+
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
+
+|Konfiguration av skärmen|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|Exakt svar|true|true|
+|Endast långa svar|falskt|falskt|
+|Både långa och exakta svar|true|falskt|
 
 ## <a name="common-http-errors"></a>Vanliga HTTP-fel
 

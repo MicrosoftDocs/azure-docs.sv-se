@@ -1,17 +1,16 @@
 ---
 title: Kom igång med logg frågor i Azure Monitor | Microsoft Docs
 description: Den här artikeln innehåller en självstudie för att komma igång med att skriva logg frågor i Azure Monitor.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8cbf3f00da8b647804d0f541b35d8f8c1acb4e04
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c87b70c74a5de9cc4b6c48935b93fdd13295f0f8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628423"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052338"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Kom igång med loggfrågor i Azure Monitor
 

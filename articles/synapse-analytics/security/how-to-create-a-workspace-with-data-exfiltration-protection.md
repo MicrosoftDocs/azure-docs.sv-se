@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3dc0b9e83af5a29172189f75e5a2174dc4d393d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694146"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096130"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Skapa en arbets yta med data exfiltrering Protection aktiverat
 Den här artikeln beskriver hur du skapar en arbets yta med data exfiltrering Protection aktiverat och hur du hanterar godkända Azure AD-klienter för den här arbets ytan.
@@ -50,7 +50,9 @@ Du kan skapa hanterade privata slut punkter för att ansluta till Azure-resurser
 >Resurser i andra klienter än arbets ytans klient organisation måste inte ha blockerade brand Väggs regler på plats för att SQL-poolerna ska kunna ansluta till dem. Resurser inom arbets ytans hanterade virtuella nätverk, till exempel Spark-kluster, kan ansluta via hanterade privata länkar till brand Väggs skyddade resurser.
 
 ## <a name="known-limitations"></a>Kända begränsningar
-Användare kan ange en miljö konfigurations fil för att installera python-paket från offentliga databaser som PyPI. I data exfiltrering skyddade arbets ytor blockeras anslutningar till utgående databaser. Det innebär att python-biblioteket som installeras från offentliga databaser som PyPI inte stöds. Ett annat alternativ är att användarna kan skapa en privat kanal inom sitt primära Azure Data Lake Storage konto och referera till den i konfigurations filen för Conda-miljön. 
+Användare kan ange en miljö konfigurations fil för att installera python-paket från offentliga databaser som PyPI. I data exfiltrering skyddade arbets ytor blockeras anslutningar till utgående databaser. Det innebär att python-biblioteket som installeras från offentliga databaser som PyPI inte stöds. 
+
+Alternativt kan användare ladda upp arbets ytans paket eller skapa en privat kanal inom sitt primära Azure Data Lake Storage-konto. Mer information finns [i paket hantering i Azure Synapse Analytics](./spark/../../spark/apache-spark-azure-portal-add-libraries.md) 
   
 ## <a name="next-steps"></a>Nästa steg
 

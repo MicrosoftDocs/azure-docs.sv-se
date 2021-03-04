@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 97517ad3ff260806108dc22686d49b43b0fc6609
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647565"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096028"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Lösen ords verifierings alternativ för Azure Active Directory
 
@@ -89,6 +89,8 @@ FIDO2-säkerhetsnycklar är en unphishable standard-baserad autentiseringsmetod 
 Användare kan registrera sig och sedan välja en säkerhets nyckel för FIDO2 i inloggnings gränssnittet som deras huvudsakliga autentiserings sätt. Dessa säkerhets nycklar för FIDO2 är vanligt vis USB-enheter, men kan också använda Bluetooth eller NFC. Med en maskin varu enhet som hanterar autentiseringen ökar säkerheten för ett konto eftersom det inte finns något lösen ord som kan exponeras eller gissas.
 
 FIDO2-säkerhetsnycklar kan användas för att logga in på sina Azure AD-eller hybrid Azure AD-anslutna Windows 10-enheter och få enkel inloggning till deras moln resurser och lokala resurser. Användare kan också logga in i webbläsare som stöds. FIDO2-säkerhetsnycklar är ett bra alternativ för företag som är mycket känsliga eller har scenarier eller anställda som inte är villiga eller kan använda sin telefon som en andra faktor.
+
+Vi har ett referens dokument för vilka [webbläsare stöder FIDO2-autentisering med Azure AD](fido2-compatibility.md), samt bästa praxis för utvecklare som vill [stödja FIDO2-autentisering i de program som de utvecklar](../develop/support-fido2-authentication.md).
 
 ![Logga in på Microsoft Edge med en säkerhets nyckel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

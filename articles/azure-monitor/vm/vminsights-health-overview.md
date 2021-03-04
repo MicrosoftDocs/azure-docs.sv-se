@@ -1,17 +1,16 @@
 ---
 title: Gäst hälsa för VM Insights (förhands granskning)
 description: Översikt över hälso funktionen i VM Insights, inklusive hur du kan visa hälso tillståndet för dina virtuella datorer och få aviseringar när en virtuell dator blir ohälsosam.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
-ms.openlocfilehash: 3db6c2f4da28bba2d12aacc90b2fa8e420aa6fbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707463"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052134"
 ---
 # <a name="vm-insights-guest-health-preview"></a>Gäst hälsa för VM Insights (förhands granskning)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för virtuella datorer baserat på en uppsättning prestanda mätningar som samplas med jämna mellanrum från gäst operativ systemet. Du kan snabbt kontrol lera hälsan för alla virtuella datorer i en prenumeration eller resurs grupp, öka detalj nivån i den detaljerade hälsan för en viss virtuell dator eller proaktivt under rättas när en virtuell dator blir ohälsosam. 

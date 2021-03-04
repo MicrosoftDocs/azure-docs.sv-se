@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e4e90d91b8e6ae017f00e37304c4da56cd618732
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508024"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095314"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Om anspråk matchare i Azure Active Directory B2C anpassade principer
 
@@ -66,16 +66,16 @@ I följande avsnitt listas tillgängliga anspråks lösningar.
 
 | Begär | Beskrivning | Exempel |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |Frågesträngparametern `acr_values` . | Saknas |
+| {OIDC: AuthenticationContextReferences} |Frågesträngparametern `acr_values` . | Ej tillämpligt |
 | {OIDC: ClientId} |Frågesträngparametern `client_id`  . | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |Frågesträngparametern `domain_hint`  . | facebook.com |
 | {OIDC: LoginHint} |  Frågesträngparametern `login_hint` . | someone@contoso.com |
-| {OIDC: MaxAge} | `max_age`. | Saknas |
+| {OIDC: MaxAge} | `max_age`. | Ej tillämpligt |
 | {OIDC: nonce} |Frågesträngparametern `Nonce`  . | defaultNonce |
 | {OIDC: lösen ord}| [Autentiseringsuppgifter för resurs ägarens lösen ord flödar](ropc-custom.md) användarens lösen ord.| password1| 
 | {OIDC: prompt} | Frågesträngparametern `prompt` . | inloggning |
 | {OIDC: RedirectUri} |Frågesträngparametern `redirect_uri`  . | https://jwt.ms |
-| {OIDC: resurs} |Frågesträngparametern `resource`  . | Saknas |
+| {OIDC: resurs} |Frågesträngparametern `resource`  . | Ej tillämpligt |
 | {OIDC: omfång} |Frågesträngparametern `scope`  . | OpenID |
 | {OIDC: username}| [Autentiseringsuppgifter för resurs ägar lösen ord flöda](ropc-custom.md) användarens användar namn.| emily@contoso.com| 
 
@@ -87,6 +87,7 @@ I följande avsnitt listas tillgängliga anspråks lösningar.
 | {Context: CorrelationId} | Korrelations-ID: t.  | 00000000-0000-0000-0000-000000000000 |
 | {Context: DateTimeInUtc} |Datum tid i UTC.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |Princip distributions läget.  | Produktion |
+| {Context: HostName} | Värd namnet för den aktuella begäran.  | contoso.b2clogin.com |
 | {Context: IPAddress} | Användarens IP-adress. | 11.111.111.11 |
 | {Context: KMSI avgör} | Anger om kryss rutan [Behåll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) är markerad. |  true |
 
@@ -106,14 +107,14 @@ Alla parameter namn som ingår i en OIDC-eller OAuth2-begäran kan mappas till e
 | {OAUTH-KV: campaignId} | En frågesträngparametern. | Hawaii |
 | {OAUTH-KV: app_session} | En frågesträngparametern. | A3C5R |
 | {OAUTH-KV: loyalty_number} | En frågesträngparametern. | 1234 |
-| {OAUTH-KV: valfri anpassad frågesträng} | En frågesträngparametern. | Saknas |
+| {OAUTH-KV: valfri anpassad frågesträng} | En frågesträngparametern. | Ej tillämpligt |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Begär | Beskrivning | Exempel |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Åtkomsttoken. | Saknas |
-| {OAuth2: refresh_token} | Refresh-token. | Saknas |
+| {OAuth2: access_token} | Åtkomsttoken. | Ej tillämpligt |
+| {OAuth2: refresh_token} | Refresh-token. | Ej tillämpligt |
 
 
 ### <a name="saml"></a>SAML
@@ -141,7 +142,7 @@ Du kan använda anspråk matchare med följande element:
 |[OpenID Connect](openid-connect-technical-profile.md) , teknisk profil| `InputClaim`, `OutputClaim`| 1, 2|
 |Teknisk profil för [anspråks omvandling](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
 |Teknisk profil för [RESTful-Provider](restful-technical-profile.md)| `InputClaim`| 1, 2|
-|Teknisk profil för [SAML Identity Provider](saml-identity-provider-technical-profile.md)| `OutputClaim`| 1, 2|
+|Teknisk profil för [SAML Identity Provider](identity-provider-generic-saml.md)| `OutputClaim`| 1, 2|
 |[Egen, kontrollerad](self-asserted-technical-profile.md) teknisk profil| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |

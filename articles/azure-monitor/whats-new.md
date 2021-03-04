@@ -1,17 +1,16 @@
 ---
 title: Nyheter i Azure Monitor-dokumentationen
 description: Viktiga uppdateringar av Azure Monitor-dokumentationen uppdateras varje månad.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713447"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051930"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Vad är nytt i Azure Monitor-dokumentationen?
 
@@ -48,7 +47,7 @@ Den här artikeln innehåller listor Azure Monitor artiklar som antingen är nya
 
 ### <a name="logs"></a>Loggar    
 - [Azure Monitor kundhanterad nyckel](./logs/customer-managed-keys.md) – introducera användare som tilldelats hanterad identitet.
-- [Azure Monitor loggar dedicerade kluster](./logs/logs-dedicated-clusters.md) -uppdaterad svars kod.
+- [Azure Monitor loggar dedicerade kluster](./logs/logs-dedicated-clusters.md) -uppdaterad svarskod.
 - [Fråga om Cross service – Azure Monitor och Azure datautforskaren (för hands version)](/azure/azure-monitor/platform/azure-data-explorer-monitor-cross-service-query) – ny artikel.
 
 ### <a name="metrics"></a>Mått
@@ -721,7 +720,7 @@ Flera uppdateringar som en del av omskrivning av innehåll för diagnostik-till�
 
 - [Översikt över Azure Monitoring agents](agents/agents-overview.md) – strukturerade tabeller för att bättre klargöra unika funktioner i varje agent.
 - [Översikt över Azure-diagnostik-tillägg](agents/diagnostics-extension-overview.md) – fullständig omskrivning.
-- [Använd Blob Storage för IIS och tabell lagring för händelser i Azure Monitor](essentials/diagnostics-extension-logs.md) – allmän omskrivning för uppdatering och tydlighet.
+- [Använd Blob Storage för IIS och tabell lagring för händelser i Azure Monitor](agents/diagnostics-extension-logs.md) – allmän omskrivning för uppdatering och tydlighet.
 - [Installera och konfigurera Windows Azure Diagnostics Extension (wad)](agents/diagnostics-extension-windows-install.md) – ny artikel. 
 - [Tilläggs schema för Windows-diagnostik](agents/diagnostics-extension-schema-windows.md) – omorganisera.
 - [Skicka data från Windows Azure Diagnostics-tillägget till Azure Event Hubs](agents/diagnostics-extension-stream-event-hubs.md) -helt omskrivna och uppdaterade.

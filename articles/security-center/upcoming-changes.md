@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 375e8a748e8833e9483d92353ed04add287e90fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705100"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051624"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,10 +31,28 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- [Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)
 - [Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
 - [Utfasning av 11 Azure Defender-aviseringar](#deprecation-of-11-azure-defender-alerts)
+
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)
+
+**Beräknat datum för ändring:** April 2021
+
+Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
+
+Rekommendationerna som kommer från AWS-säkerhetshubben har varit i för hands version eftersom moln anslutningarna introducerades. Rekommendationer som har flaggats som **förhands granskning** ingår inte i beräkningarna av dina säkra poäng, men bör fortfarande åtgärdas när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng.
+
+Med den här ändringen kommer två uppsättningar med AWS-rekommendationer att flyttas till GA:
+
+- [Säkerhets hubbens PCI DSS kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Säkerhets hubbens CIS-AWS grunder benchmark-kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultaten dina kombinerade säkra Poäng för alla dina resurser i flera och hybrid moln. 
+
 
 
 ### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Två tidigare rekommendationer kommer inte längre att skriva data direkt till Azure aktivitets loggen 
@@ -53,7 +71,7 @@ Om du har åtkomst till information för dessa två rekommendationer i aktivitet
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
 
-**Beräknat datum för ändring:** Februari 2021
+**Beräknat datum för ändring:** Mars 2021
 
 Följande två rekommendationer är schemalagda att bli föråldrade i februari 2021:
 
@@ -69,7 +87,7 @@ Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekom
 
 **Beräknat datum för ändring:** K2 2021
 
-Rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Som ett resultat kommer rekommendationens ID också att ändras (för närvarande b0df6f56-862d-4730-8597-38c0fd4ebd59).
+Rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Som ett resultat kommer rekommendationens ID också att ändras (för närvarande är det b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
 
 ### <a name="deprecation-of-11-azure-defender-alerts"></a>Utfasning av 11 Azure Defender-aviseringar

@@ -1,17 +1,16 @@
 ---
 title: Aviseringar om gäst hälsa för VM Insights (för hands version)
 description: Beskriver de aviseringar som skapats av gäst hälsa för VM Insights, inklusive hur du aktiverar dem och konfigurerar meddelanden.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: a32ba9f1c4cf5d6bb9de69e1a6860c858e3ee2a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707514"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052270"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Aviseringar om gäst hälsa för VM Insights (för hands version)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. En avisering kan skapas när en virtuell dator eller övervakar ändringar i ett ohälsosamt tillstånd. Du kan visa och hantera dessa aviseringar med [de som skapats av varnings regler i Azure Monitor](../alerts/alerts-overview.md) och välja att proaktivt meddelas när en ny avisering skapas.

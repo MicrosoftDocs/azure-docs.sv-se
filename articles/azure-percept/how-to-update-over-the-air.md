@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: aa8f696b6a26e812256be4e93975844f2c721b6e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b8f9e6f4bc091abbd1bb08ecbd649c1411e5ab20
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663855"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095399"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air"></a>Uppdatera din Azure percept DK över luften
 
@@ -92,7 +92,7 @@ Grupp märkes krav:
 1. Bekräfta att rätt enhets grupp har valts som mål enhets grupp. Välj ett **start datum** och **Start tid** för distributionen och klicka sedan på **skapa distribution**. 
 
     >[!CAUTION]
-    >När du anger start tiden kommer det tidigare att utlösa distributionen omedelbart.
+    >När du ställer in start tiden inaktive ras distributionen omedelbart.
  
 1. Kontrol lera diagrammet efterlevnad. Nu bör du se att uppdateringen pågår.
  

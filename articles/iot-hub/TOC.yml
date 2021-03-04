@@ -352,13 +352,13 @@
     - name: Distribuera uppdateringar
       items:
         - name: Skapa ett konto för enhets uppdatering
-          href: /iot-hub-device-update/create-device-update-account.md
+          href: ../iot-hub-device-update/create-device-update-account.md
         - name: Importera en uppdatering
-          href: /iot-hub-device-update/import-update.md
+          href: ../iot-hub-device-update/import-update.md
         - name: Skapa en uppdaterings grupp
-          href: /iot-hub-device-update/create-update-group.md
+          href: ../iot-hub-device-update/create-update-group.md
         - name: Distribuera en uppdatering
-          href: /iot-hub-device-update/deploy-update.md
+          href: ../iot-hub-device-update/deploy-update.md
     - name: Använda riktiga enheter
       items:
         - name: Använda en onlinesimulator

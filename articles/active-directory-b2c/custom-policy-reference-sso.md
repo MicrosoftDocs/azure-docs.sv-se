@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508058"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095773"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Hantering av enkel inloggning i Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Azure AD B2C har definierat ett antal SSO-användarsessioner som kan användas:
 
 |Replikeringsprovider  |Omfång  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Inga       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Inget       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C intern sessionshanteraren.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mellan Azure AD B2C och OAuth1, OAuth2 eller OpenId Connect Identity Provider.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mellan ett OAuth2-eller OpenId Connect-program för förlitande part och Azure AD B2C.        |        
@@ -120,7 +120,7 @@ Den här providern används för att utelämna skärmen "Välj identitetsprovide
 
 | Attribut | Krävs | Beskrivning|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nej | Används inte för närvarande, kan ignoreras. |
+| AlwaysFetchClaimsFromProvider | Inga | Används inte för närvarande, kan ignoreras. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -135,7 +135,7 @@ Den här providern används för att hantera Azure AD B2C-sessioner mellan en OA
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Den här providern används för att hantera Azure AD B2C SAML-sessioner mellan ett förlitande parts program eller en federerad SAML-identitetsprovider. När du använder SSO-providern för att lagra en SAML-identitetsprovider `RegisterServiceProviders` måste du ställa in på `false` . Följande `SM-Saml-idp` tekniska profil används av den [tekniska profilen för SAML Identity Provider](saml-identity-provider-technical-profile.md).
+Den här providern används för att hantera Azure AD B2C SAML-sessioner mellan ett förlitande parts program eller en federerad SAML-identitetsprovider. När du använder SSO-providern för att lagra en SAML-identitetsprovider `RegisterServiceProviders` måste du ställa in på `false` . Följande `SM-Saml-idp` tekniska profil används av [SAML Identity Provider](identity-provider-generic-saml.md).
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ Den här providern används för att hantera Azure AD B2C SAML-sessioner mellan 
 
 När du använder providern för att lagra B2C SAML-sessionen `RegisterServiceProviders` måste anges till `true` . Utloggningen av SAML-sessionen kräver `SessionIndex` och `NameID` slutförs.
 
-Följande `SM-Saml-issuer` tekniska profil används av den [tekniska profilen för SAML-utfärdaren](saml-issuer-technical-profile.md)
+Följande `SM-Saml-issuer` tekniska profil används av den [tekniska profilen för SAML-utfärdaren](saml-service-provider.md)
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -162,8 +162,8 @@ Följande `SM-Saml-issuer` tekniska profil används av den [tekniska profilen f�
 
 | Attribut | Krävs | Beskrivning|
 | --- | --- | --- |
-| IncludeSessionIndex | Nej | Används inte för närvarande, kan ignoreras.|
-| RegisterServiceProviders | Nej | Anger att leverantören ska registrera alla SAML-tjänstleverantörer som har utfärdat en kontroll. Möjliga värden: `true` (standard) eller `false` .|
+| IncludeSessionIndex | Inga | Används inte för närvarande, kan ignoreras.|
+| RegisterServiceProviders | Inga | Anger att leverantören ska registrera alla SAML-tjänstleverantörer som har utfärdat en kontroll. Möjliga värden: `true` (standard) eller `false` .|
 
 
 ## <a name="next-steps"></a>Nästa steg

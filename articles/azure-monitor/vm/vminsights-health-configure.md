@@ -1,17 +1,16 @@
 ---
 title: Konfigurera övervakning av gäst hälsa för VM Insights (för hands version)
 description: Beskriver hur du ändrar standard övervakning för VM Insights-gäst hälsa (för hands version) med hjälp av Azure Portal.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 8c15a44fc086c9c686e75879b3086436ea327560
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719601"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052219"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>Konfigurera övervakning av gäst hälsa för VM Insights (för hands version)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du kan ändra standard övervakning med hjälp av Azure Portal. Det beskriver också grundläggande koncept för Övervakare som krävs för att [Konfigurera övervakning med en data insamlings regel](vminsights-health-configure-dcr.md).

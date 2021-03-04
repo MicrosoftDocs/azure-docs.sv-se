@@ -1,17 +1,16 @@
 ---
 title: Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
 description: Beskriver hur du ändrar standard övervakning i VM Insights-gäst hälsa i skala med hjälp av Resource Manager-mallar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 907aea16b018fb5dd3846db546787d132f8f5a9f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731229"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052151"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
 Med [gäst hälsa för virtuella datorer](vminsights-health-overview.md) kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. Den här artikeln beskriver hur du kan ändra standard övervakning över flera virtuella datorer med hjälp av data insamlings regler.

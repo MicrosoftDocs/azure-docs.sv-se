@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b4fb7c6fb3bbf02e5f1aba25c868e4a44e8507dd
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 54869c14cf7c5a7e43f34102f5c95e37689dfee8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309638"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095348"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en teknisk profil för en SAML-token utfärdare i en Azure Active Directory B2C anpassad princip
 
@@ -57,10 +57,10 @@ I följande exempel visas en teknisk profil för `Saml2AssertionIssuer` :
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| IssuerUri | No | Utfärdarens namn som visas i SAML-svaret. Värdet ska vara samma namn som det som kon figurer ATS i programmet för förlitande part. |
-| XmlSignatureAlgorithm | No | Metoden som Azure AD B2C använder för att signera SAML-kontrollen. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Om du vill konfigurera SAML-svaret, se [SAML-metadata för förlitande part](relyingparty.md#metadata)|
-|TokenNotBeforeSkewInSeconds| No| Anger skevningen, som ett heltal, för den tidsstämpel som markerar början av giltighets perioden. Ju högre det här antalet är, desto längre tid börjar giltighets perioden med avseende på den tid som anspråken utfärdas för den förlitande parten. Om TokenNotBeforeSkewInSeconds till exempel är inställt på 60 sekunder, om token utfärdas vid 13:05:10 UTC, är token giltig från 13:04:10 UTC. Standardvärdet är 0. Det maximala värdet är 3600 (en timme). |
-|TokenLifeTimeInSeconds| No| Anger livs längden för SAML Assertion. Värdet är i sekunder från NotBefore-värdet refernced ovan. Standardvärdet är 300 sekunder (5 min). |
+| IssuerUri | Inga | Utfärdarens namn som visas i SAML-svaret. Värdet ska vara samma namn som det som kon figurer ATS i programmet för förlitande part. |
+| XmlSignatureAlgorithm | Inga | Metoden som Azure AD B2C använder för att signera SAML-kontrollen. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Information om hur du konfigurerar SAML-svar finns i [alternativ för att registrera ett SAML-program](saml-service-provider.md)|
+|TokenNotBeforeSkewInSeconds| Inga| Anger skevningen, som ett heltal, för den tidsstämpel som markerar början av giltighets perioden. Ju högre det här antalet är, desto längre tid börjar giltighets perioden med avseende på den tid som anspråken utfärdas för den förlitande parten. Om TokenNotBeforeSkewInSeconds till exempel är inställt på 60 sekunder, om token utfärdas vid 13:05:10 UTC, är token giltig från 13:04:10 UTC. Standardvärdet är 0. Det maximala värdet är 3600 (en timme). |
+|TokenLifeTimeInSeconds| Inga| Anger livs längden för SAML Assertion. Värdet är i sekunder från NotBefore-värdet som refereras ovan. Standardvärdet är 300 sekunder (5 min). |
 
 
 ## <a name="cryptographic-keys"></a>Kryptografiska nycklar
@@ -69,8 +69,8 @@ CryptographicKeys-elementet innehåller följande attribut:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| MetadataSigning | Yes | X509-certifikatet (RSA-nyckel uppsättning) som används för att signera SAML-metadata. Azure AD B2C använder den här nyckeln för att signera metadata. |
-| SamlMessageSigning| Yes| Ange det X509-certifikat (RSA-nyckel uppsättning) som ska användas för att signera SAML-meddelanden. Azure AD B2C använder den här nyckeln för att signera svaret `<samlp:Response>` som skickas till den förlitande parten.|
+| MetadataSigning | Ja | X509-certifikatet (RSA-nyckel uppsättning) som används för att signera SAML-metadata. Azure AD B2C använder den här nyckeln för att signera metadata. |
+| SamlMessageSigning| Ja| Ange det X509-certifikat (RSA-nyckel uppsättning) som ska användas för att signera SAML-meddelanden. Azure AD B2C använder den här nyckeln för att signera svaret `<samlp:Response>` som skickas till den förlitande parten.|
 
 ## <a name="session-management"></a>Sessionshantering
 
@@ -80,5 +80,5 @@ För att konfigurera Azure AD B2C SAML-sessioner mellan ett förlitande part pro
 
 Se följande artikel till exempel om du använder en teknisk profil för SAML Issuer:
 
-- [Registrera ett SAML-program i Azure AD B2C](connect-with-saml-service-providers.md)
+- [Registrera ett SAML-program i Azure AD B2C](saml-service-provider.md)
 
