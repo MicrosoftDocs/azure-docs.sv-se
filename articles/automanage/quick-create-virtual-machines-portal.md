@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: d00a9c6012da7ad8d1566ef82bce628c7d47e7a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686998"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038431"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Snabb start: Aktivera Azure automanage för virtuella datorer i Azure Portal
 
@@ -88,7 +88,7 @@ Logga in på Azure Portal [här](https://aka.ms/AzureAutomanagePreview) om du vi
 1. Fyll i fliken **grundläggande** med din VM-information.
 
 > [!NOTE]
-> Kontrol lera de [regioner som stöds](automanage-virtual-machines#supported-regions) för att hantera och hantera [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions) och [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions)som stöds.
+> Kontrol lera de [regioner som stöds](automanage-virtual-machines.md#supported-regions) för att hantera och hantera [Linux-distributioner](automanage-linux.md#supported-linux-distributions-and-versions) och [Windows Server-versioner](automanage-windows-server.md#supported-windows-server-versions)som stöds.
 
 2. Bläddra till fliken **hantering** och välj den **automatiska hanterings miljön**.
 

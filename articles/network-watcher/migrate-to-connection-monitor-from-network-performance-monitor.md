@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698696"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038721"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrera till anslutnings övervakaren från Övervakare av nätverksprestanda
 
@@ -41,7 +41,7 @@ Migreringen hjälper till att producera följande resultat:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Se till att Network Watcher är aktive rad i din prenumeration och regionen för arbets ytan Log Analytics. 
-* Om den virtuella Azure-datorn tillhör en annan region/prenumeration än Log Analytics arbets ytan används, kontrollerar du att Network Watcher har Aktiver ATS för den prenumerationen och regionen.   
+* Om den virtuella Azure-datorn tillhör en annan region/prenumeration än den Log Analytics arbets ytan används som en slut punkt, kontrollerar du att Network Watcher har Aktiver ATS för den prenumerationen och regionen.   
 * Virtuella Azure-datorer med Log Analytics installerade agenter måste vara aktiverade med Network Watcher-tillägget.
 
 ## <a name="migrate-the-tests"></a>Migrera testerna

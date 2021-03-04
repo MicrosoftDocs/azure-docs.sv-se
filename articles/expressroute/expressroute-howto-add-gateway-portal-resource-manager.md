@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 56e35c23eacdf98db283ba5d8c2e32687cbe0ea8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038925"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Självstudie: Konfigurera en virtuell nätverksgateway för ExpressRoute med hjälp av Azure Portal
 > [!div class="op_single_selector"]
@@ -67,9 +67,9 @@ Du kan visa en [video](https://azure.microsoft.com/documentation/videos/azure-ex
 
     Om du använder ett virtuellt nätverk med dubbla stackar och planerar att använda IPv6-baserad privat peering över ExpressRoute, klickar du på **Lägg till ip6-adress utrymme** och värden för **IPv6** -adressintervall.
 
-Välj **OK** för att spara värdena och skapa Gateway-undernätet.
+    Välj **OK** för att spara värdena och skapa Gateway-undernätet.
 
-    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Adding the subnet":::
+    :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="Lägga till ett undernät":::
 
 ## <a name="create-the-virtual-network-gateway"></a>Skapa den virtuella nätverksgatewayen
 

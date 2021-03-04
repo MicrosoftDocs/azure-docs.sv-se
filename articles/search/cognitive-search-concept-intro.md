@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828096"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037259"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-anrikning i Azure Kognitiv sökning
 
@@ -32,6 +33,17 @@ Inbyggda kunskaper ingår i följande kategorier:
 Inbyggda kunskaper i Azure Kognitiv sökning baseras på förtränade maskin inlärnings modeller i API:er för Cognitive Services: [visuellt innehåll](../cognitive-services/computer-vision/index.yml) och [textanalys](../cognitive-services/text-analytics/overview.md). Du kan koppla en Cognitive Services-resurs om du vill utnyttja dessa resurser under innehålls bearbetning.
 
 Naturligt språk och bild bearbetning används under fasen för data inmatning, med resultat som blir en del av ett dokuments sammansättning i ett sökbart index i Azure Kognitiv sökning. Data visas som en Azure-datauppsättning och flyttas sedan till en indexerings pipeline med hjälp av de [inbyggda kunskaper](cognitive-search-predefined-skills.md) du behöver.  
+
+## <a name="feature-availability"></a>Funktionstillgänglighet
+
+AI-berikning är tillgänglig i regioner där Azure Cognitive Services också är tillgängliga.  Du kan kontrol lera aktuell tillgänglighet för AI-berikning på sidan [tillgängliga Azure-produkter per region](https://azure.microsoft.com/global-infrastructure/services/?products=search) .  AI-anrikning är tillgängligt i alla regioner som stöds utom:
+
++ Australien, sydöstra
++ Kina, norra 2
++ Östra Norge
++ Tyskland, västra centrala
+
+Om Sök tjänsten finns i någon av dessa regioner kan du inte skapa och använda färdighetsuppsättningar, men alla andra Sök tjänst funktioner är tillgängliga och stöds fullt ut.
 
 ## <a name="when-to-use-ai-enrichment"></a>När AI-anrikning ska användas
 

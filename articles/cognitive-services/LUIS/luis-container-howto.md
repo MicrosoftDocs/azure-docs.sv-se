@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862004"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040200"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Installera och kör Docker-behållare för LUIS
 
@@ -37,7 +37,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 Observera följande krav för att köra LUIS-behållaren:
 
-|Obligatoriskt|Syfte|
+|Obligatorisk|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.|
@@ -281,7 +281,7 @@ Frågeparametrarna konfigurerar hur och vad som returneras i svaret för frågan
 |`staging`|boolean|Returnerar fråga från tillfälliga miljö resultat om värdet är true. |
 |`log`|boolean|Loggar frågor som kan användas senare för [aktiv inlärning](luis-how-to-review-endpoint-utterances.md). Standardvärdet är true.|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>Fråga LUIS-appen
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-Om du vill göra frågor till _ *Staging** Environment ersätter du `production` i vägen med `staging` :
+Om du vill göra frågor till **mellanlagrings** miljön ersätter du `production` i vägen med `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 Versions namnet får innehålla högst 10 tecken och innehåller endast tecken som tillåts i en URL.
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Importera slut punkts loggarna för aktiv inlärning
 
@@ -346,7 +346,7 @@ Följande plats visar den kapslade katalog strukturen för behållarens loggfile
 /output/luis/{INSTANCE_ID}/
 ```
 
-Välj din app från LUIS-portalen och välj sedan _ *Importera slut punkts loggar** för att ladda upp loggarna.
+Välj din app från LUIS-portalen och välj sedan **Importera slut punkts loggar** för att ladda upp loggarna.
 
 ![Importera behållarens loggfiler för aktiv inlärning](./media/luis-container-how-to/upload-endpoint-log-files.png)
 

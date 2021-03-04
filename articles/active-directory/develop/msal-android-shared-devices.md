@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754886"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038585"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Läge för delad enhet för Android-enheter
 
@@ -34,7 +34,7 @@ Delad enhets läge tillhandahåller även Microsoft-identitet för hantering av 
 För att skapa en app för delad enhets läge fungerar utvecklare och moln enhets administratörer tillsammans:
 
 - Utvecklare skriver en app med ett enda konto (appar med flera konton stöds inte i läget för delad enhet), lägger till i `"shared_device_mode_supported": true` appens konfiguration och skriver kod för att hantera saker som delade enhets utloggning.
-- Enhets administratörer förbereder enheten för delning genom att installera Authenticator-appen och ställa in enheten till delat läge med hjälp av Authenticator-appen. Endast användare som är i rollen som [moln enhets administratör](../roles/permissions-reference.md#cloud-device-administrator-permissions) kan lagra en enhet i delat läge med hjälp av [Authenticator-appen](../user-help/user-help-auth-app-overview.md). Du kan konfigurera medlemskap för dina organisations roller i Azure Portal via: **Azure Active Directory**  >  **roller och administratörer**  >  **moln enhets administratör**.
+- Enhets administratörer förbereder enheten för delning genom att installera Authenticator-appen och ställa in enheten till delat läge med hjälp av Authenticator-appen. Endast användare som är i rollen som [moln enhets administratör](../roles/permissions-reference.md#cloud-device-administrator) kan lagra en enhet i delat läge med hjälp av [Authenticator-appen](../user-help/user-help-auth-app-overview.md). Du kan konfigurera medlemskap för dina organisations roller i Azure Portal via: **Azure Active Directory**  >  **roller och administratörer**  >  **moln enhets administratör**.
 
  Den här artikeln fokuserar främst på vad utvecklare bör tänka på.
 

@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2021
+ms.date: 03/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d759ad0ebb1aa4f1b6a5f404812ab8149ed69e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671859"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038636"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -83,6 +83,7 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 ## <a name="change-log"></a>Ändrings logg
 
+- 03/03/2021: ändra i [ha-guide för SAP ASCS/SCS med WSFC och Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md) för att lägga till en försiktighets instruktion som förhöjda privilegier krävs för användaren som kör SWPM, under installationen av SAP-systemet
 - 02/11/2021: ändringar i [hög tillgänglighet för IBM DB2-LUW på virtuella Azure-datorer på Red Hat Enterprise Linux server](./high-availability-guide-rhel-ibm-db2-luw.md) för att ändra pacemaker-kluster kommandon för RHEL 8. x
 - 02/03/2021: ändra i [ställa in pacemaker på RHEL i Azure](./high-availability-guide-rhel-pacemaker.md) för att uppdatera pcmk_host_map i kommandot stonith Create
 - 02/03/2021: ändra i [ställa in pacemaker på SLES i Azure](./high-availability-guide-suse-pacemaker.md) för att lägga till pcmk_host_map i kommandot stonith Create 

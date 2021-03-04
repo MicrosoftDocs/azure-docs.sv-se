@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: fel sökning, uppdatering, bugg, Kinect, feedback, återställning, loggning, tips
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587289"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038828"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Kända problem och fel sökning i Azure Kinect
 
@@ -174,6 +174,10 @@ Azure Kinect djup Engine i Linux använder OpenGL. OpenGL kräver en fönster in
 2. Stäng av systemet, koppla från övervakaren och starta systemet. Med automatisk inloggning framtvingas skapandet av en x-Server-session.
 2. Anslut via SSH och ange VISNINGS miljö variabel `export DISPLAY=:0`
 3. Starta ditt Azure Kinect-program.
+
+[Xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) -verktyget kan användas för att omedelbart låsa skärmen efter automatisk inloggning. Lägg till följande kommando i Start programmet eller system tjänsten:
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>C#-dokumentation som saknas
 

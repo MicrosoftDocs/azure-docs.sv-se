@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor CLI-exempel
 description: 'Exempel på CLI-kommandon för Azure Monitor-funktioner. Azure Monitor är en Microsoft Azure tjänst som gör att du kan skicka aviseringar, anropa webb-URL: er baserat på värden för konfigurerade telemetridata och Autoskala Cloud Services, Virtual Machines och Web Apps.'
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 196a1d580bd5888a6604c3f98b108e39c08a3412
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eaf8c2e140f0b323db0c20a2e9946884c51df04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628482"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039180"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Monitor CLI-exempel
 Den här artikeln visar exempel kommandon för kommando rads gränssnitt (CLI) som hjälper dig att komma åt Azure Monitor-funktioner. Med Azure Monitor kan du Autoskala Cloud Services, Virtual Machines och Web Apps och skicka aviseringar eller anropa webb-URL: er baserat på värden för konfigurerade telemetridata.

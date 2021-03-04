@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cd4bba1bacbdb21a6bff4fcc5d3c1f3b2166ec35
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694078"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039995"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Användar handbok för Azure avdelningens kontroll Data Catalog härkomst
 
@@ -31,7 +31,7 @@ Data integrerings-och ETL-verktyg kan skicka härkomst till Azure avdelningens k
 
 | Data bearbetnings system | Omfattning som stöds |
 | ---------------------- | ------------|
-| Azure Data Factory | [Kopierings aktivitet](how-to-link-azure-data-factory.md#data-factory-copy-data-support) <br> [Data flödes aktivitet](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Kör SSIS-paket-aktivitet](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [Kopierings aktivitet](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [Data flödes aktivitet](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [Kör SSIS-paket-aktivitet](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
 | Azure Data Share | [Dela ögonblicks bild](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>Data lagrings system

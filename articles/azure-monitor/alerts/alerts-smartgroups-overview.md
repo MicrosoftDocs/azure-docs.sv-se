@@ -2,14 +2,13 @@
 title: Smarta grupper
 description: Smarta grupper är agg regeringar för aviseringar som hjälper dig att minska aviserings bruset
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8a164fe6e5fd5be58da969d9266329755705ea82
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621965"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037973"
 ---
 # <a name="smart-groups"></a>Smarta grupper
 
@@ -47,7 +46,7 @@ Sidan smart grupp information visas när du väljer en smart grupp. Den innehål
 
 Informations sidan för smart grupp innehåller följande avsnitt.
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 |:---|:---|
 | Aviseringar | Visar en lista över enskilda aviseringar som ingår i den smarta gruppen. Välj en avisering för att öppna sidan aviserings information. |
 | Historik | Visar en lista över varje åtgärd som utförs av den smarta gruppen och eventuella ändringar som görs i den. Detta är för närvarande begränsat för att ge status ändringar och ändringar i varnings medlemskap. |

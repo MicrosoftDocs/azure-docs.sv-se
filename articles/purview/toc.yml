@@ -122,8 +122,6 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Hantera termmallar
             href: how-to-manage-term-templates.md
-          - name: Massredigera tillgångar för att tilldela ordlistans villkor
-            href: how-to-bulk-edit-assets.md
       - name: Mass redigering
         items:
           - name: Massredigera till gångar för att tagga anteckningar och kontakter

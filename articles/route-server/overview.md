@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 98527ea5227fcdc2c35dbe3579657368e30fcdaa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680645"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039843"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Vad är Azure Route Server (för hands version)? 
 
@@ -49,5 +49,5 @@ Vanliga frågor och svar om Azure Route Server finns i [vanliga frågor och svar
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lär dig hur du konfigurerar Azure Route Server.](quickstart-configure-route-server-portal.md)
+- [Lär dig hur du konfigurerar Azure Route Server](quickstart-configure-route-server-powershell.md)
 - [Lär dig hur Azure Route Server fungerar med Azure ExpressRoute och Azure VPN](expressroute-vpn-support.md)

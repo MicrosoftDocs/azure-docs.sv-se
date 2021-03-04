@@ -1,18 +1,17 @@
 ---
 title: Svara på händelser med Azure Log Analytics-aviseringar | Microsoft Docs
 description: Den här självstudien hjälper dig att förstå aviseringar i Log Analytics som visar viktig information på din arbetsyta. Du kan få tidiga meddelanden om problem eller anropa åtgärder om du vill försöka åtgärda dem.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 67d03636b118db71502a6245e60f71c94afdddf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2564711fce6e8578829fb15fdbc04ae2b9d64959
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701016"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039435"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Svara på händelser med Azure Monitor-aviseringar
 Med aviseringar i Azure Monitor kan du identifiera viktig information på Log Analytics-lagringsplatsen. De skapas från varningsregler som automatiskt kör regelbundna loggsökningar. Om resultatet från loggsökningen matchar särskilda kriterier, skapas en aviseringspost som kan konfigureras till en automatisk åtgärd.  Den här självstudien är en fortsättning på självstudien [Skapa och dela instrumentpaneler med Log Analytics-data](../visualize/tutorial-logs-dashboards.md).   

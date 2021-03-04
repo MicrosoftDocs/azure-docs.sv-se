@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be5000b6f9153839b926932c82c9f8fa3ab93f5f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039809"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Skydda ett anpassat DNS-namn med en TLS/SSL-bindning i Azure App Service
 
@@ -42,7 +42,7 @@ För att följa den här instruktions guiden:
 - [Lägg till ett privat certifikat i din app](configure-ssl-certificate.md)
 
 > [!NOTE]
-> Det enklaste sättet att lägga till ett privat certifikat är att [skapa ett kostnads fritt App Service-hanterat certifikat](configure-ssl-certificate.md#create-a-free-certificate-preview) (förhands granskning).
+> Det enklaste sättet att lägga till ett privat certifikat är att [skapa ett kostnads fritt App Service-hanterat certifikat](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (förhands granskning).
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ Om din app inte har något certifikat för den valda anpassade domänen har du t
 - **Importera App Service Certificate** – Följ arbets flödet vid [Import av ett app service certifikat](configure-ssl-certificate.md#import-an-app-service-certificate)och välj sedan det här alternativet här.
 
 > [!NOTE]
-> Du kan också [skapa ett kostnads fritt certifikat](configure-ssl-certificate.md#create-a-free-certificate-preview) (förhands granskning) eller [Importera ett Key Vault certifikat](configure-ssl-certificate.md#import-a-certificate-from-key-vault), men du måste göra det separat och sedan gå tillbaka till dialog rutan **TLS/SSL-bindning** .
+> Du kan också [skapa ett kostnads fritt certifikat](configure-ssl-certificate.md#create-a-free-managed-certificate-preview) (förhands granskning) eller [Importera ett Key Vault certifikat](configure-ssl-certificate.md#import-a-certificate-from-key-vault), men du måste göra det separat och sedan gå tillbaka till dialog rutan **TLS/SSL-bindning** .
 
 ### <a name="create-binding"></a>Skapa bindning
 

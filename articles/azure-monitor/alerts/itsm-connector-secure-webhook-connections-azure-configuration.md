@@ -1,24 +1,23 @@
 ---
 title: Anslutningsprogram för hantering av IT-tjänster (ITSM) säker export i Azure Monitor – Azure-konfigurationer
 description: Den här artikeln visar hur du konfigurerar Azure för att ansluta dina ITSM-produkter/-tjänster med säker export i Azure Monitor för att centralt övervaka och hantera ITSM-arbetsobjekt.
-ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 62167b8fd72c660e50378a9492528aa5b70bbee7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8eb9430e3d280c52cf84c61f0a44cb12152ac054
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625757"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037548"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurera Azure för att ansluta ITSM-verktyg med säker export
 
 Den här artikeln innehåller information om hur du konfigurerar Azure för att använda "säker export".
 Följ de här stegen för att använda "säker export":
 
-1. [Registrera appen med Azure AD.](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
+1. [Registrera din app med Azure AD.](./itsm-connector-secure-webhook-connections-azure-configuration.md#register-with-azure-active-directory)
 1. [Definiera tjänstens huvud namn.](./itsm-connector-secure-webhook-connections-azure-configuration.md#define-service-principal)
 1. [Skapa en säker webhook-åtgärds grupp.](./itsm-connector-secure-webhook-connections-azure-configuration.md#create-a-secure-webhook-action-group)
 1. Konfigurera din partner miljö.
@@ -44,7 +43,7 @@ Som ett valfritt steg kan du definiera program rollen i den skapade appens manif
 
 Det här steget kan göras via samma [PowerShell-kommandon](../alerts/action-groups.md#secure-webhook-powershell-script).
 
-## <a name="create-a-secure-webhook-action-group"></a>Skapa en säker webhook-åtgärds grupp
+## <a name="create-a-secure-webhook-action-group"></a>Skapa en Säker webhook-åtgärdsgrupp
 
 När programmet har registrerats med Azure AD kan du skapa arbets objekt i ITSM-verktyget baserat på Azure-aviseringar med hjälp av åtgärden säker webhook i åtgärds grupper.
 

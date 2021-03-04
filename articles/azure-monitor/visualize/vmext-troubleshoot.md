@@ -1,17 +1,16 @@
 ---
 title: Felsöka Azure Log Analytics VM-tillägg
 description: Beskriv symptom, orsaker och lösningar för de vanligaste problemen med Log Analytics VM-tillägget för virtuella Windows-och Linux Azure-datorer.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: c499633931bd44fed5372f1f05521980f0b61a85
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 33bdff8d516929e7f615f3a7f8bd77463eea0c64
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040149"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Felsöka Log Analytics-tillägget för virtuella datorer i Azure Monitor
 Den här artikeln innehåller fel söknings fel som kan uppstå i Log Analytics VM-tillägget för virtuella Windows-och Linux-datorer som körs på Microsoft Azure och ger förslag på möjliga lösningar för att lösa dem.

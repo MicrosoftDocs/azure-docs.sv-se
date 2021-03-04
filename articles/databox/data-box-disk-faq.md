@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724837"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039112"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: vanliga frågor och svar
 
@@ -55,7 +55,7 @@ A. För fem diskar, var och en med 8 TB-kapacitet (7 TB användbar kapacitet), �
 A.  Om du vill se var Data Box-enhet diskarna är tillgängliga går du till [regionens tillgänglighet](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>F. I vilka regioner kan jag lagra data med Data Box-diskar?
-A. Data Box Disk stöds för alla regioner i USA, Kanada, Australien, Västeuropa och Nord Europa, Korea och Japan. Endast regionerna med offentligt Azure-moln stöds. Azure Government och andra begränsade moln stöds inte.
+A. Data Box Disk stöds för alla regioner inom USA, Kanada, EU, Storbritannien, Australien, Singapore, Indien, Kina, Hongkong, Japan, Korea och Sydafrika. Endast regionerna med offentligt Azure-moln stöds. Azure Government och andra begränsade moln stöds inte.
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>F. Hur kan jag importera källdata som finns på min plats i ett land/region till en Azure-region i ett annat land?
 A. Data Box Disk har endast stöd för data inmatning inom samma land/region som deras destination och kommer inte att korsa några internationella gränser. Det enda undantaget är för beställningar i Europeiska unionen (EU), där Data Box-enhet diskar kan levereras till och från valfritt EU-land/-region.
@@ -199,7 +199,7 @@ A.  Påskynda kopieringsprocessen:
 - Kopiera filer till den virtuella datorns disk.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>F. Kan jag använda flera lagringskonton med Data Box-diskar?
-A.  Nej. För närvarande går det endast att använda ett lagringskonto, allmänt eller klassiskt, med Data Box-diskar. Det går att använda både högfrekvent och lågfrekvent blob. För närvarande stöds endast lagringskontona i USA och i Europa, västra och Europa, norra i det offentliga Azure-molnet.
+A.  Nej. För närvarande går det endast att använda ett lagringskonto, allmänt eller klassiskt, med Data Box-diskar. Det går att använda både högfrekvent och lågfrekvent blob.
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>F. Vilken uppsättning verktyg är tillgängliga för mina data med Data Box-diskar?
 A. Verktygsuppsättningen som är tillgänglig med Data Box-diskar består av tre verktyg:

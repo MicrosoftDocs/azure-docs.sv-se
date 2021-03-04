@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specifikationer, maskin vara, DK, funktioner, djup, färg, RGB, IMU, matris, djup, multi, synkronisering
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592287"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039962"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synkronisera flera Azure Kinect DK-enheter
 
@@ -36,6 +36,9 @@ Det finns många skäl att använda flera Azure Kinect DK-enheter, inklusive fö
 ## <a name="plan-your-multi-device-configuration"></a>Planera konfigurationen för flera enheter
 
 Innan du börjar ska du kontrol lera att du har granskat [maskin varu specifikationerna för Azure Kinect DK](hardware-specification.md) och [Azure Kinect DK djup](depth-camera.md).
+
+> [!NOTE]  
+> Ta bort det yttre plast locket för att exponera synkroniseringen i och synkronisera ut-uttag.
 
 ### <a name="select-a-device-configuration"></a>Välj en enhets konfiguration
 
@@ -63,6 +66,9 @@ Utlösarens källa måste leverera signalen till den **synkroniserade** huvud en
 ![Kabelanslutna konfigurationer för en extern utlösnings signal](./media/resources/camera-trigger-signal.jpg)
 
 Mer information om hur du arbetar med extern utrustning finns i [använda Azure Kinect Recorder med externa synkroniserade enheter](record-external-synchronized-units.md)
+
+> [!NOTE]  
+> Sync out är VSync för RGB-kameran. Tidsstämplar för alla enheter är inställda på noll och räknas upp. Microsoft har inte karakteriserat den minsta och största bredden på synkroniseringsåtgärden och rekommenderar att mimicking-pulsen genereras av en synkronisering från en Azure Kinect DK.
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>Planera kamera inställningar och program varu konfiguration
 

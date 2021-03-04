@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 2/9/2021
 ms.author: duau
-ms.openlocfilehash: 67f296c7584fcf25af79f9125137aca07c9906fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 640e13261fa76fe89c9f5fbd038f20766c509025
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747202"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039078"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Lägg till stöd för IPv6 för privat peering med hjälp av Azure Portal (för hands version)
 
@@ -98,6 +98,7 @@ Följ stegen nedan om du planerar att ansluta till en ny uppsättning Azure-resu
 * Anslutningar till distributioner i Azure via en icke-AZ ExpressRoute Gateway-SKU
 * Anslutningar till distributioner i icke-AZ regioner
 * Global Reach anslutningar mellan ExpressRoute-kretsar
+* Användning av ExpressRoute med vWAN
 
 ## <a name="next-steps"></a>Nästa steg
 

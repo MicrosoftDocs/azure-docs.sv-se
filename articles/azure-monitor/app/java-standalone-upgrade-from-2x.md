@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704437"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040251"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Uppgradera från Application Insights Java 2. x SDK
 
@@ -219,11 +219,24 @@ För vissa program kan du fortfarande föredra den sammanställda vyn i U/X som 
 
 Tidigare i 2. x SDK angavs åtgärds namnet från telemetri för begäran även på beroende telemetri.
 Application Insights Java 3,0 fyller inte längre i åtgärds namn i beroende telemetri.
-Om du vill se åtgärds namnet för begäran som är överordnad för beroende telemetri, kan du skriva en loggare (Kusto) fråga för att ansluta från beroende tabellen till tabellen Request.
+Om du vill se åtgärds namnet för begäran som är överordnad för beroende telemetri, kan du skriva en loggare (Kusto) fråga för att ansluta från beroende tabellen till Request-tabellen, t. ex.
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2. x SDK-loggning tillägg
 
-3,0-agenten [automatiskt samlar in loggning](./java-standalone-config#auto-collected-logging) utan att behöva konfigurera några logg tillägg.
+3,0-agenten [automatiskt samlar in loggning](./java-standalone-config.md#auto-collected-logging) utan att behöva konfigurera några logg tillägg.
 Om du använder 2. x SDK-loggnings tillägg kan de tas bort, eftersom de ignoreras av 3,0-agenten ändå.
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2. x SDK våren start starter

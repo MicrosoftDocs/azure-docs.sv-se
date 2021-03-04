@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602058"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039146"
 ---
 # <a name="what-are-azure-reservations"></a>Vad är Azure Reservations?
 
@@ -91,7 +91,8 @@ Läs mer i [Byten och återbetalning för Azure-reservationer via självbetjäni
 - **Reserverad VM-instans** – en reservation omfattar bara den virtuella datorns och molntjänsternas beräkningskostnader. Den omfattar inte avgifter för ytterligare programvara, Windows, nätverk eller lagring.
 - **Reserverad kapacitet i Azure Storage** – En reservation omfattar lagringskapacitet för standardlagringskonton för blob-lagring eller Azure Data Lake Gen2-lagring. Reservationen omfattar inte bandbredds- eller transaktionsavgifter.
 - **Reserverad Azure Cosmos DB-kapacitet** – en reservation omfattar det dataflöde som allokeras för dina resurser. Den omfattar inte avgifter för lagring och nätverk.
-- **SQL Database-reserverad virtuell kärna** – Täcker både SQL Managed Instance och SQL Database – elastisk pool/enkel databas. Endast beräkningskostnaderna ingår i en reservation. SQL-licensen debiteras separat. 
+- **Azure Data Factory data flöden** – en reservation täcker integrerings körnings kostnaden för beräknings typen och antalet kärnor som du köper.
+- **SQL Database-reserverad virtuell kärna** – Täcker både SQL Managed Instance och SQL Database – elastisk pool/enkel databas. Endast beräkningskostnaderna ingår i en reservation. SQL-licensen debiteras separat.
 - **Azure Synapse Analytics** – en reservation omfattar cDWU-användningen. Den omfattar inte lagrings- eller nätverksavgifter som är kopplade till Azure Synapse Analytics-användningen.
 - **Azure Databricks** – En reservation täcker endast DBU-användningen. Andra avgifter för till exempel beräkning, lagring och nätverk debiteras separat.
 - **App Service-stämpelavgift** – en reservation omfattar stämpelanvändning. Den gäller inte för arbeten, och därför debiteras andra resurser som är kopplade till stämpeln separat.

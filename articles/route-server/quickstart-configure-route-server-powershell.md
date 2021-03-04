@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c56e7318e24b802ae9ad605a0c9ae5f88397ec8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680636"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039792"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Snabb start: skapa och konfigurera Route server med Azure PowerShell
 
@@ -70,7 +70,7 @@ RouteServerSubnet-ID: t ser ut ungefär så här:
 Skapa en Route-server med det här kommandot:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -Name myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
 ```
 
 Platsen måste matcha platsen för det virtuella nätverket. HostedSubnet är RouteServerSubnet-ID: t som du fick i föregående avsnitt.
@@ -80,7 +80,7 @@ Platsen måste matcha platsen för det virtuella nätverket. HostedSubnet är Ro
 Använd följande kommando för att upprätta BGP-peering från väg servern till NVA:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_asn” -RouteServerName "myRouteServer -ResourceGroupName ”RouteServerRG”
+Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 "nva_ip" är den virtuella nätverks-IP som tilldelats till NVA. "nva_asn" är det autonoma system numret (ASN) som kon figurer ATS i NVA. ASN kan vara andra 16-bitarsnummer än de som finns i intervallet 65515-65520. Detta ASN: er är reserverat för Microsoft.
@@ -88,7 +88,7 @@ Add-AzRouteServerPeer -PeerName "myNVA” -PeerIp “nva_ip” -PeerAsn “nva_a
 Använd följande kommando för att konfigurera peering med olika NVA eller en annan instans av samma NVA för redundans:
 
 ```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn “nva2_asn” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Slutför konfigurationen av NVA
@@ -96,7 +96,7 @@ Add-AzRouteServerPeer -PeerName “NVA2_name” -PeerIp “nva2_ip” -PeerAsn �
 För att slutföra konfigurationen på NVA och aktivera BGP-sessioner behöver du IP och ASN för Azure Route Server. Du kan hämta den här informationen med hjälp av det här kommandot:
 
 ```azurepowershell-interactive 
-Get-AzRouteServer -RouterName “myRouteServer” -ResourceGroupName “RouteServerRG”
+Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 Utdata har följande information:
@@ -113,13 +113,13 @@ Om du har en ExpressRoute-gateway och en Azure VPN-gateway i samma VNet och du v
 1. Om du vill aktivera Route Exchange mellan Azure Route Server och gatewayen använder du följande kommando:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” -AllowBranchToBranchTraffic 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
 ```
 
 2. Om du vill inaktivera Route Exchange mellan Azure Route Server och gatewayen använder du följande kommando:
 
 ```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="troubleshooting"></a>Felsökning
@@ -137,13 +137,13 @@ Om du inte längre behöver Azure Route-servern använder du dessa kommandon fö
 1. Ta bort BGP-peering mellan Azure Route Server och en NVA med det här kommandot:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Ta bort Azure Route server med det här kommandot:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName “myRouteServer” -ResourceGroupName “RouteServerRG” 
+Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
 ```
 
 ## <a name="next-steps"></a>Nästa steg

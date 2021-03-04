@@ -1,17 +1,16 @@
 ---
 title: Data insamlings regler i Azure Monitor (för hands version)
 description: Översikt över data insamlings regler (DCRs) i Azure Monitor inklusive innehåll och struktur och hur du kan skapa och arbeta med dem.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 0bae058804bdb1f199c39497c59e89bda8087424
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100625487"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039622"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Data insamlings regler i Azure Monitor (för hands version)
 Data insamlings regler (DCR) definierar data som kommer till Azure Monitor och anger var data ska skickas eller lagras. Den här artikeln innehåller en översikt över data insamlings regler, inklusive deras innehåll och struktur och hur du kan skapa och arbeta med dem.
@@ -40,7 +39,7 @@ Följande diagram visar komponenterna i en data insamlings regel och deras relat
 ### <a name="data-source-types"></a>Typer av datakälla
 Varje data källa har en typ av data källa. Varje typ definierar en unik uppsättning egenskaper som måste anges för varje data källa. De data käll typer som är tillgängliga visas i följande tabell.
 
-| Typ av data Källa | Description | 
+| Typ av data Källa | Beskrivning | 
 |:---|:---|
 | utöka | VM-baserad data Källa |
 | performanceCounters | Prestanda räknare för både Windows och Linux |

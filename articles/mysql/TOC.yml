@@ -413,7 +413,7 @@
         - name: Vad är flexibel server?
           href: flexible-server/overview.md
         - name: Versioner som stöds
-          href: flexible-server/concepts-supported-versions.md
+          href: concepts-supported-versions.md
         - name: Beräkning och lagring
           href: flexible-server/concepts-compute-storage.md
     - name: Snabbstarter

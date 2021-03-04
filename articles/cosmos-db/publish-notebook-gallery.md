@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693324"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039333"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Publicera antecknings böcker i Azure Cosmos DB Notebook-galleriet
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB inbyggda antecknings böcker för Jupyter är direkt integrerade i dina Azure Cosmos DB-konton i Azure Portal. Med hjälp av dessa antecknings böcker kan du analysera och visualisera data från Azure Portal. Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i [29 regioner](#supported-regions). Om du vill använda antecknings böcker [skapar du ett nytt Cosmos-konto](#create-a-new-cosmos-account) eller [aktiverar antecknings böcker på ett befintligt konto](#enable-notebooks-in-an-existing-cosmos-account) i någon av dessa regioner.
+Azure Cosmos DB inbyggda antecknings böcker för Jupyter är direkt integrerade i dina Azure Cosmos DB-konton i Azure Portal. Med hjälp av dessa antecknings böcker kan du analysera och visualisera data från Azure Portal. Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i [många regioner](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all). Om du vill använda antecknings böcker [skapar du ett nytt Cosmos-konto](create-cosmosdb-resources-portal.md) eller [aktiverar antecknings böcker på ett befintligt konto](enable-notebooks.md) i någon av dessa regioner.
 
 Notebook-miljön i Azure Portal har några exempel som publicerats av Azure Cosmos DBs teamet. Det har också ett offentligt galleri där du kan publicera och dela dina egna antecknings böcker. När en antecknings bok har publicerats i galleriet är den tillgänglig för alla Azure Cosmos DB användare att visa och använda. I den här artikeln får du lära dig hur du använder antecknings böcker från det offentliga galleriet och publicerar din antecknings bok i galleriet.
 
@@ -53,7 +53,7 @@ Använd följande steg för att publicera en antecknings bok:
 
    Du kan också hitta alternativet **Publicera till Galleri** genom att välja **...** bredvid namnet på antecknings boken:
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Välj en antecknings bok att publicera i galleriet.":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="En annan metod för att välja en antecknings bok att publicera i galleriet.":::
 
 1. Fyll i formuläret **Publicera till Galleri** med följande information:
 
@@ -61,11 +61,10 @@ Använd följande steg för att publicera en antecknings bok:
    * **Beskrivning:**  En kort beskrivning av vad din antecknings bok gör.
    * **Taggar:** Taggarna är valfria och används för att filtrera resultat när de genomsöks med ett nyckelord.
    * **Bild av omslag:** En bild som används på försättsbladet när antecknings boken publiceras. Du kan välja något av följande alternativ:
-
-     * **Anpassad avbildning** – du kan ladda upp en bild från datorn. Välj en avbildnings fil med proportioner 256x144.
-     * **URL** – ange en offentligt tillgänglig URL där bilden finns.
-     * **Ta skärm bild** – en skärm bild av din öppna antecknings bok tas automatiskt emot och laddas upp till för hands versionen.
-     * **Använd första visningen av utdata** för den första cellen som har ett visnings resultat. Celler som endast visar markdown/text räknas inte som en visning av utdata.
+   * **Anpassad avbildning** – du kan ladda upp en bild från datorn. Välj en avbildnings fil med proportioner 256x144.
+   * **URL** – ange en offentligt tillgänglig URL där bilden finns.
+   * **Ta skärm bild** – en skärm bild av din öppna antecknings bok tas automatiskt emot och laddas upp till för hands versionen.
+   * **Använd första visningen av utdata** för den första cellen som har ett visnings resultat. Celler som endast visar markdown/text räknas inte som en visning av utdata.
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="Fyll i formuläret publicera till Galleri.":::
 

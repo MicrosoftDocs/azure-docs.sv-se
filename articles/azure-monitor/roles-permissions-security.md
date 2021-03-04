@@ -6,13 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
-ms.subservice: ''
-ms.openlocfilehash: 5cd1f5442526b0eb08dffc5430cf1598cc8d14c3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d0877059dca01bf01df7a4f2aeaa5114278ecc97
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100621294"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040302"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Roller, behörigheter och säkerhet i Azure Monitor
 
@@ -70,7 +69,7 @@ Personer som har tilldelats rollen övervaknings deltagare kan visa alla överva
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Övervaknings behörigheter och Azure-anpassade roller
 Om de inbyggda rollerna ovan inte uppfyller de exakta behoven för ditt team, kan du [skapa en anpassad Azure-roll](../role-based-access-control/custom-roles.md) med mer detaljerade behörigheter. Nedan visas vanliga Azure RBAC-åtgärder för Azure Monitor med deras beskrivningar.
 
-| Åtgärd | Description |
+| Åtgärd | Beskrivning |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[läsa, skriva, ta bort] |Läs-/skriv-/ta bort åtgärds grupper. |
 | Microsoft. Insights/ActivityLogAlerts/[läsa, skriva, ta bort] |Läs/skriv/ta bort aktivitets logg aviseringar. |

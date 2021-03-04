@@ -1,17 +1,16 @@
 ---
 title: Parsa text data i Azure Monitor loggar | Microsoft Docs
 description: Beskriver olika alternativ för att parsa loggdata i Azure Monitor poster när data matas in och när de hämtas i en fråga, jämför de relativa fördelarna för var och en.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 8f6c35fd1bb6b46f512f9245d8e3d41df428692b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e2babd39dc9dadf06c9a3ca3292e021e0c1deaa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733949"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037191"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Parsa text data i Azure Monitor loggar
 Vissa loggdata som samlas in av Azure Monitor innehåller flera informations delar i en enda egenskap. Att parsa dessa data i flera egenskaper gör det enklare att använda i frågor. Ett vanligt exempel är en [anpassad logg](../agents/data-sources-custom-logs.md) som samlar in en hel logg post med flera värden i en enda egenskap. Genom att skapa separata egenskaper för de olika värdena kan du söka efter och aggregera dem.
