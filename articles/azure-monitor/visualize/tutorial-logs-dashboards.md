@@ -1,18 +1,17 @@
 ---
 title: Skapa och dela instrumentpaneler med data från Azure Log Analytics | Microsoft Docs
 description: Den här självstudien hjälper dig att förstå hur Log Analytics instrument paneler kan visualisera alla sparade logg frågor, vilket ger dig en enkel lins att visa din miljö.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: e268ae3a48117d7b1cf6ad00b22cbe3e4d37b5f4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 84c710e44fbbccdefd5bf811477e1fa4c3989114
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627979"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043464"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Skapa och dela instrumentpaneler för Log Analytics
 

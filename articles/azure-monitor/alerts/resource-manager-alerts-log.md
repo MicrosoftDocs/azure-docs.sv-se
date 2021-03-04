@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för aviseringar om logg frågor
 description: Exempel på Azure Resource Manager mallar för att distribuera Azure Monitor logg fråga om aviseringar.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/22/2020
-ms.openlocfilehash: 8dac947aea95dc79118032eb0996b6ba14f16363
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 19bbeba3db7e3df5ea5120d3562f24b447848f7f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714124"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044042"
 ---
 # <a name="resource-manager-template-samples-for-log-alert-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för logg aviserings regler i Azure Monitor
 Den här artikeln innehåller exempel på [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa och konfigurera loggnings fråga aviseringar i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

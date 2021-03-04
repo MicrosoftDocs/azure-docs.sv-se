@@ -4,16 +4,16 @@ description: Skapa test certifikat, installera och hantera dem på en Azure IoT 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1f07f9d481ca8ede29c8b8443dad81a442962a71
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044147"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044909"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Hantera certifikat på en IoT Edge enhet
 
@@ -31,7 +31,7 @@ Läs mer om de olika typerna av certifikat och deras roller i [förstå hur Azur
 >[!NOTE]
 >Termen "rot certifikat utfärdare" som används i den här artikeln refererar till det offentliga utfärdade certifikat kedjan för din IoT-lösning. Du behöver inte använda certifikat roten för en insyndikerad certifikat utfärdare eller roten för organisationens certifikat utfärdare. I många fall är det faktiskt ett offentligt certifikat för certifikat utfärdare.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * En IoT Edge enhet.
 
@@ -51,8 +51,13 @@ Du bör använda din egen certifikat utfärdare för att skapa följande filer:
 
 I den här artikeln refererar vi till som *rot certifikat utfärdare* är inte den översta certifikat utfärdaren för en organisation. Det är den översta certifikat utfärdaren för IoT Edge scenariot, som IoT Edge Hub-modulen, användarattribut och eventuella underordnade enheter använder för att upprätta förtroende mellan varandra.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 > [!NOTE]
 > För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
+
+:::moniker-end
 
 Om du vill se ett exempel på dessa certifikat granskar du skripten som skapar demo certifikat i [Hantera test CA-certifikat för exempel och självstudier](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -60,20 +65,21 @@ Om du vill se ett exempel på dessa certifikat granskar du skripten som skapar d
 
 Installera certifikat kedjan på den IoT Edge enheten och konfigurera IoT Edge runtime så att den refererar till de nya certifikaten.
 
+Kopiera de tre certifikat-och nyckelfilerna till din IoT Edge-enhet. Du kan använda en tjänst som [Azure Key Vault](../key-vault/index.yml) eller en funktion som [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) för att flytta certifikatfiler.  Om du har genererat certifikaten på själva enheten för IoT Edge kan du hoppa över det här steget och använda sökvägen till arbets katalogen.
+
 Om du till exempel använde exempel skripten för att [skapa demo certifikat](how-to-create-test-certificates.md), kopierar du följande filer till din IoT-Edge-enhet:
 
 * Enhetens CA-certifikat: `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
 * Privat nyckel för enhets certifikat utfärdare: `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 * Rot certifikat utfärdare: `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. Kopiera de tre certifikat-och nyckelfilerna till din IoT Edge-enhet.
-
-   Du kan använda en tjänst som [Azure Key Vault](../key-vault/index.yml) eller en funktion som [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) för att flytta certifikatfiler.  Om du har genererat certifikaten på själva enheten för IoT Edge kan du hoppa över det här steget och använda sökvägen till arbets katalogen.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. Öppna konfigurations filen för IoT Edge Security daemon.
 
-   * Aktivitets `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 1. Ange **certifikat** egenskaperna i config. yaml till fil-URI-sökvägen till certifikatet och nyckelfilen på den IoT Edge enheten. Ta bort tecknen innan du tar bort dem från `#` certifikat egenskaperna för att ta bort kommentarer till de fyra raderna. Se till att det inte finns några föregående blank steg i raden **certifikat:** rad och att kapslade objekt är indragna med två blank steg. Exempel:
 
@@ -102,6 +108,41 @@ Om du till exempel använde exempel skripten för att [skapa demo certifikat](ho
    * Windows: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys`
 
    * Linux: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Öppna konfigurations filen för IoT Edge Security daemon: `/etc/aziot/config.toml`
+
+1. Hitta `trust_bundle_cert` parametern i början av filen. Ta bort kommentaren till den här raden och ange filens URI till rot certifikat utfärdarens certifikat på enheten.
+
+   ```toml
+   trust_bundle_cert = "file:///<path>/<root CA cert>"
+   ```
+
+1. Hitta `[edge_ca]` avsnittet i filen config. toml. Ta bort kommentarer till raderna i det här avsnittet och ange fil-URI-sökvägar för certifikatet och nyckelfilen på den IoT Edge enheten.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Se till att användar **iotedge** har Läs behörighet för den katalog som innehåller certifikaten.
+
+1. Om du har använt andra certifikat för IoT Edge på enheten tidigare tar du bort filerna i följande två kataloger innan du startar eller startar om IoT Edge:
+
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!-- 1.1. -->
+<!-- Temporarily, customizable certificate lifetime not available in 1.2. Update before GA. -->
+:::moniker range="iotedge-2018-06"
 
 ## <a name="customize-certificate-lifetime"></a>Anpassa certifikatets livstid
 
@@ -112,31 +153,29 @@ IoT Edge automatiskt genererar certifikat på enheten i flera fall, inklusive:
 
 Mer information om funktionen för de olika certifikaten på en IoT Edge-enhet finns i [förstå hur Azure IoT Edge använder certifikat](iot-edge-certs.md).
 
-För dessa två automatiskt genererade certifikat har du möjlighet att ställa in **auto_generated_ca_lifetime_days** -flaggan i config. yaml för att konfigurera antalet dagar för certifikatens livs längd.
+För dessa två automatiskt genererade certifikat kan du välja att ställa in **auto_generated_ca_lifetime_days** -flaggan i konfigurations filen för att konfigurera antalet dagar för certifikatens livs längd.
 
 >[!NOTE]
 >Det finns ett tredje automatiskt genererat certifikat som IoT Edge Security Manager skapar, **IoT Edge Hub-servercertifikat**. Det här certifikatet har alltid en livs längd på 90 dagar, men förnyas automatiskt innan det upphör att gälla. **Auto_generated_ca_lifetime_days** -värdet påverkar inte det här certifikatet.
 
-Om du vill konfigurera certifikatets giltighets tid till något annat än standardvärdet 90 dagar lägger du till värdet i dagar i avsnittet **certifikat** i filen **config. yaml** .
+När det angivna antalet dagar har löpt ut måste IoT Edge startas om för att återskapa enhetens CA-certifikat. Enhetens CA-certifikat förnyas inte automatiskt.
 
-När det angivna antalet dagar har löpt ut måste IoT Edge Security daemon startas om för att återskapa enhetens CA-certifikat. det förnyas inte automatiskt.
+1. Om du vill konfigurera certifikatets giltighets tid till något annat än standardvärdet 90 dagar lägger du till värdet i dagar i avsnittet **certifikat** i konfigurations filen.
 
-```yaml
-certificates:
-  device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
-  device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
-  trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
-  auto_generated_ca_lifetime_days: <value>
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+     device_ca_pk: "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+     trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+     auto_generated_ca_lifetime_days: <value>
+   ```
 
-> [!NOTE]
-> För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
+   > [!NOTE]
+   > För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
 
-När du har angett värdet i filen config. yaml utför du följande steg:
+1. Ta bort innehållet i `hsm` mappen för att ta bort eventuella tidigare genererade certifikat.
 
-1. Ta bort innehållet i `hsm` mappen.
-
-   Windows: `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows: `C:\ProgramData\iotedge\hsm\certs` och `C:\ProgramData\iotedge\hsm\cert_keys` Linux: `/var/lib/iotedge/hsm/certs` och `/var/lib/iotedge/hsm/cert_keys`
 
 1. Starta om tjänsten IoT Edge.
 
@@ -167,6 +206,42 @@ När du har angett värdet i filen config. yaml utför du följande steg:
    ```
 
    Kontrol lera utdata från **produktions beredskap: certifikat** kontroll, som visar antalet dagar tills de automatiskt genererade ENHETens CA-certifikat upphör att gälla.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 
+<!-- 1.2 --
+:::moniker range=">=iotedge-2020-11"
+
+1. To configure the certificate expiration to something other than the default 90 days, add the value in days to the **certificates** section of the config file.
+
+   ```toml
+   [certificates]
+   device_ca_cert = "<ADD URI TO DEVICE CA CERTIFICATE HERE>"
+   device_ca_pk = "<ADD URI TO DEVICE CA PRIVATE KEY HERE>"
+   trusted_ca_certs = "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
+   auto_generated_ca_lifetime_days = <value>
+   ```
+
+1. Delete the contents of the `certd` and `keyd` folders to remove any previously generated certificates: `/var/lib/aziot/certd/certs` `/var/lib/aziot/keyd/keys`
+
+1. Restart IoT Edge.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+1. Confirm the new lifetime setting.
+
+   ```bash
+   sudo iotedge check --verbose
+   ```
+
+   Check the output of the **production readiness: certificates** check, which lists the number of days until the automatically generated device CA certificates expire.
+:::moniker-end
+<!-- end 1.2 --
+-->
 
 ## <a name="next-steps"></a>Nästa steg
 

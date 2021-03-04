@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 3e68be79a4405af103512a9009187857a0d9af39
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 62002b776262e97dd34db1d9ecd3b7b0e09f46f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681745"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044244"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>Lägg till ett linje lager till kartan (Android SDK)
 
@@ -110,20 +110,21 @@ Följande skärm bild visar ovanstående kod åter givning av två rader i ett l
 
 ![Mappa med data Drive-formaterade linjer som återges i ett linje lager](media/android-map-add-line-layer/android-line-layer-data-drive-style.png)
 
-## <a name="add-symbols-along-a-line"></a>Lägg till symboler längs en linje
+## <a name="add-a-stroke-gradient-to-a-line"></a>Lägg till en linje toning till en linje
 
-Det här exemplet visar hur du lägger till pil-ikoner längs en linje på kartan. När du använder ett symbol lager ställer du in `symbolPlacement` alternativet på `SymbolPlacement.LINE` . Med det här alternativet återges symbolerna längs linjen och ikonerna roteras (0 grader = höger).
+Du kan använda en enda linje färg för en linje. Du kan också fylla en linje med en toning av färger för att visa över gången från ett linje segment till nästa rad segment. Till exempel kan rad övertoningar användas för att representera ändringar över tid och avstånd, eller olika temperaturer över en ansluten linje med objekt. För att kunna använda den här funktionen på en rad måste data källan ha `lineMetrics` alternativet inställt på `true` och ett uttryck för färg toning kan skickas till `strokeColor` alternativet på raden. Uttrycket linje toning måste referera till det `lineProgress` data uttryck som visar de beräknade linje måtten för uttrycket.
 
 ```java
 //Create a data source and add it to the map.
-DataSource source = new DataSource();
+source = new DataSource(
+    //Enable line metrics on the data source. This is needed to enable support for strokeGradient.
+    withLineMetrics(true)
+);
 map.sources.add(source);
 
-//Load a image of an arrow into the map image sprite and call it "arrow-icon".
-map.images.add("arrow-icon", R.drawable.purple-arrow-right);
-
-//Create and add a line to the data source.
-source.add(LineString.fromLngLats(Arrays.asList(
+//Create a line and add it to the data source.
+source.add(LineString.fromLngLats(
+    Arrays.asList(
         Point.fromLngLat(-122.18822, 47.63208),
         Point.fromLngLat(-122.18204, 47.63196),
         Point.fromLngLat(-122.17243, 47.62976),
@@ -139,7 +140,65 @@ source.add(LineString.fromLngLats(Arrays.asList(
         Point.fromLngLat(-122.11595, 47.66712),
         Point.fromLngLat(-122.11063, 47.66735),
         Point.fromLngLat(-122.10668, 47.67035),
-        Point.fromLngLat(-122.10565, 47.67498))));
+        Point.fromLngLat(-122.10565, 47.67498)
+    )
+));
+
+//Create a line layer and pass in a gradient expression for the strokeGradient property.
+map.layers.add(new LineLayer(source,
+    strokeWidth(6f),
+
+    //Pass an interpolate or step expression that represents a gradient.
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+));
+```
+
+Följande skärm bild visar koden ovan som visar en linje som återges med hjälp av en linje färg för toning.
+
+![Mappa med en linje som återges som en tonings bana i ett linje lager](media/android-map-add-line-layer/android-line-layer-gradient.jpg)
+
+## <a name="add-symbols-along-a-line"></a>Lägg till symboler längs en linje
+
+Det här exemplet visar hur du lägger till pil-ikoner längs en linje på kartan. När du använder ett symbol lager ställer du in `symbolPlacement` alternativet på `SymbolPlacement.LINE` . Med det här alternativet återges symbolerna längs linjen och ikonerna roteras (0 grader = höger).
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Load a image of an arrow into the map image sprite and call it "arrow-icon".
+map.images.add("arrow-icon", R.drawable.purple-arrow-right);
+
+//Create and add a line to the data source.
+source.add(LineString.fromLngLats(Arrays.asList(
+    Point.fromLngLat(-122.18822, 47.63208),
+    Point.fromLngLat(-122.18204, 47.63196),
+    Point.fromLngLat(-122.17243, 47.62976),
+    Point.fromLngLat(-122.16419, 47.63023),
+    Point.fromLngLat(-122.15852, 47.62942),
+    Point.fromLngLat(-122.15183, 47.62988),
+    Point.fromLngLat(-122.14256, 47.63451),
+    Point.fromLngLat(-122.13483, 47.64041),
+    Point.fromLngLat(-122.13466, 47.64422),
+    Point.fromLngLat(-122.13844, 47.65440),
+    Point.fromLngLat(-122.13277, 47.66515),
+    Point.fromLngLat(-122.12779, 47.66712),
+    Point.fromLngLat(-122.11595, 47.66712),
+    Point.fromLngLat(-122.11063, 47.66735),
+    Point.fromLngLat(-122.10668, 47.67035),
+    Point.fromLngLat(-122.10565, 47.67498)))
+);
 
 //Create a line layer and add it to the map.
 map.layers.add(new LineLayer(source,
@@ -175,7 +234,7 @@ I det här exemplet lästes följande bild in i appens drawable-mapp.
 |:-----------------------------------------------------------------------:|
 |                                                  |
 
-Skärm bilden nedan visar ovanstående kod åter givning av en linje med pilar som visas längs den.
+Skärm bilden nedan visar ovanstående kod som visar en linje med pilar som visas längs den.
 
 ![Mappa med data Drive-formaterade linjer med pilar som återges i ett linje lager](media/android-map-add-line-layer/android-symbols-along-line-path.png)
 

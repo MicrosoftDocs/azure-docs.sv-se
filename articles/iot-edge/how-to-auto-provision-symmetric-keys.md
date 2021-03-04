@@ -5,25 +5,25 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 4/3/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 73d1d873df58c672e9db6b9e4e17ed58e1a6397e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046201"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Skapa och etablera en IoT Edge enhet med hjälp av symmetrisk nyckel attestering
 
 Azure IoT Edge enheter kan konfigureras automatiskt med [enhets etablerings tjänsten](../iot-dps/index.yml) , precis som enheter som inte är Edge-aktiverade. Om du inte är bekant med processen för automatisk etablering, granskar du [etablerings](../iot-dps/about-iot-dps.md#provisioning-process) översikten innan du fortsätter.
 
-Den här artikeln visar hur du skapar en individuell registrering av enhets etablerings tjänsten med hjälp av symmetrisk nyckel attestering på en IoT Edge enhet med följande steg:
+Den här artikeln visar hur du skapar en individuell eller grupp registrering av enhets etablerings tjänsten med hjälp av symmetrisk nyckel attestering på en IoT Edge enhet med följande steg:
 
 * Skapa en instans av IoT Hub Device Provisioning Service (DPS).
-* Skapa en enskild registrering för enheten.
+* Skapa en registrering för enheten.
 * Installera IoT Edge Runtime och Anslut till IoT Hub.
 
 Symmetrisk nyckel attestering är en enkel metod för att autentisera en enhet med en enhets etablerings tjänst instans. Den här attesterings metoden representerar en "Hello World"-upplevelse för utvecklare som är nya för enhets etablering eller som inte har strikta säkerhets krav. Enhets attestering med hjälp av [TPM](../iot-dps/concepts-tpm-attestation.md) -eller [X. 509-certifikat](../iot-dps/concepts-x509-attestation.md) är säkrare och bör användas för mer långtgående säkerhets krav.
@@ -72,8 +72,8 @@ När du skapar en registrering i DPS har du möjlighet att deklarera en **först
 
    1. Välj **Sant** för att deklarera att registreringen är för en IoT Edge enhet. För en grupp registrering måste alla enheter vara IoT Edge enheter eller så kan ingen av dem vara.
 
-   > [!TIP]
-   > I Azure CLI kan du skapa en [registrering](/cli/azure/ext/azure-iot/iot/dps/enrollment) eller en [registrerings grupp](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) och använda den **Edge-aktiverade** flaggan för att ange att en enhet, eller en grupp av enheter, är en IoT Edge enhet.
+      > [!TIP]
+      > I Azure CLI kan du skapa en [registrering](/cli/azure/ext/azure-iot/iot/dps/enrollment) eller en [registrerings grupp](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) och använda den **Edge-aktiverade** flaggan för att ange att en enhet, eller en grupp av enheter, är en IoT Edge enhet.
 
    1. Acceptera standardvärdet från enhets etablerings tjänstens Allokeringsregel för **hur du vill tilldela enheter till hubbar** eller välja ett annat värde som är särskilt för den här registreringen.
 
@@ -169,10 +169,12 @@ Ha följande information redo:
 * Den **primära nyckeln** som du kopierade från DPS-registreringen
 
 > [!TIP]
-> För grupp registreringar behöver du varje enhets [härledda nyckel](#derive-a-device-key) snarare än DPS-registrerings nyckeln.
+> För grupp registreringar behöver du varje enhets [härledda nyckel](#derive-a-device-key) snarare än den primära nyckeln för DPS-registrering.
 
 ### <a name="linux-device"></a>Linux-enhet
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 1. Öppna konfigurations filen på den IoT Edge enheten.
 
    ```bash
@@ -197,15 +199,66 @@ Ha följande information redo:
    #  dynamic_reprovisioning: false
    ```
 
-   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
-
 1. Uppdatera värdena för `scope_id` , `registration_id` och `symmetric_key` med din DPS-och enhets information.
+
+1. Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
 
 1. Starta om IoT Edge runtime så att den hämtar alla konfigurations ändringar som du har gjort på enheten.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Skapa en konfigurations fil för enheten baserat på en mallfil som tillhandahålls som en del av IoT Edge installationen.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Öppna konfigurations filen på den IoT Edge enheten.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Hitta **etablerings** avsnittet i filen. Ta bort kommentarer till raderna för DPS-etablering med symmetrisk nyckel och se till att alla andra etablerings rader är kommenterade.
+
+   ```toml
+   # DPS provisioning with symmetric key
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "symmetric_key"
+   registration_id = "<REGISTRATION_ID>"
+
+   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   ```
+
+1. Uppdatera värdena för `id_scope` , `registration_id` och `symmetric_key` med din DPS-och enhets information.
+
+   Den symmetriska nyckel parametern kan acceptera ett värde för en infogad nyckel, en fil-URI eller en PKCS # 11-URI. Ta bort en kommentar till en symmetrisk nyckel rad, baserat på vilket format du använder.
+
+   Om du använder några PKCS # 11-URI: er, letar du upp **PKCS # 11** -avsnittet i konfigurations filen och ger information om din PKCS # 11-konfiguration.
+
+1. Spara och Stäng filen config. toml.
+
+1. Tillämpa de konfigurations ändringar som du har gjort i IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows-enhet
 
@@ -228,6 +281,9 @@ Om körningen har startats kan du gå till IoT Hub och börja distribuera IoT Ed
 
 ### <a name="linux-device"></a>Linux-enhet
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Kontrollera status för IoT Edge-tjänsten.
 
 ```cmd/sh
@@ -245,6 +301,31 @@ Lista med moduler som körs.
 ```cmd/sh
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Kontrollera status för IoT Edge-tjänsten.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+Undersök tjänst loggar.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Lista med moduler som körs.
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows-enhet
 

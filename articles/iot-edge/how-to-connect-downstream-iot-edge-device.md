@@ -4,7 +4,7 @@ description: Så här konfigurerar du en IoT Edge-enhet för att ansluta till Az
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629411"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046099"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Ansluta en underordnad IoT Edge enhet till en Azure IoT Edge Gateway (förhands granskning)
 
@@ -25,6 +25,8 @@ Den här artikeln innehåller instruktioner för att upprätta en betrodd anslut
 
 >[!NOTE]
 >Den här funktionen kräver IoT Edge version 1,2, som finns i offentlig för hands version, som kör Linux-behållare.
+>
+>Den här artikeln visar den senaste för hands versionen av IoT Edge version 1,2. Kontrol lera att enheten kör version [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) eller senare. Anvisningar för hur du hämtar den senaste för hands versionen på enheten finns i [installera Azure IoT Edge för Linux (version 1,2)](how-to-install-iot-edge.md) eller [Uppdatera IoT Edge till version 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 I ett Gateway-scenario kan en IoT Edge enhet vara både en gateway och en underordnad enhet. Flera IoT Edge gatewayer kan skiktas för att skapa en hierarki med enheter. Underordnade (eller underordnade) enheter kan autentisera och skicka eller ta emot meddelanden via deras Gateway (eller överordnade) enhet.
 
@@ -103,9 +105,6 @@ Skapa följande certifikat:
 * Alla **mellanliggande certifikat** som du vill inkludera i rot certifikat kedjan.
 * Ett certifikat för **enhets certifikat** och dess **privata nyckel** som genereras av rot-och mellanliggande certifikat. Du behöver ett unikt enhets certifikat för varje IoT Edge enhet i Gateway-hierarkin.
 
->[!NOTE]
->För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
-
 Du kan antingen använda en självsignerad certifikat utfärdare eller köpa en från en betrodd kommersiell certifikat utfärdare som Baltimore, VeriSign, DigiCert eller GlobalSign.
 
 Om du inte har dina egna certifikat att använda kan du [skapa demonstrations certifikat för att testa IoT Edge enhets funktioner](how-to-create-test-certificates.md). Följ stegen i artikeln för att skapa en uppsättning rot-och mellanliggande certifikat och skapa sedan IoT Edge enhetens CA-certifikat för var och en av dina enheter.
@@ -124,7 +123,7 @@ Stegen i det här avsnittet hänvisar till **rot certifikat utfärdarens certifi
 
 Använd följande steg för att konfigurera IoT Edge på enheten.
 
-I Linux ser du till att användar **iotedge** har Läs behörighet för katalogen som innehåller certifikaten och nycklarna.
+Se till att användar **iotedge** har Läs behörighet för katalogen som innehåller certifikaten och nycklarna.
 
 1. Installera **rot certifikat utfärdarens certifikat** på den här IoT Edges enheten.
 
@@ -140,19 +139,16 @@ I Linux ser du till att användar **iotedge** har Läs behörighet för kataloge
 
    Det här kommandot ska mata ut ett certifikat som har lagts till i/etc/ssl/certs.
 
-1. Öppna konfigurations filen IoT Edge Security daemon.
+1. Öppna konfigurationsfilen för IoT Edge.
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. Hitta avsnittet **certifikat** i filen config. yaml. Uppdatera de tre certifikat fälten så att de pekar på dina certifikat. Ange fil-URI-sökvägar som tar formatet `file:///<path>/<filename>` .
+   >[!TIP]
+   >Om konfigurations filen inte finns på enheten ännu använder du `/etc/aziot/config.toml.edge.template` som mall för att skapa en.
 
-   * **device_ca_cert**: fil-URI-sökväg till ENHETens CA-certifikat som är unikt för den här enheten.
-   * **device_ca_pk**: fil-URI-sökväg till enhetens privata nyckel som är unik för den här enheten.
-   * **trusted_ca_certs**: fil-URI-sökväg till rot certifikat utfärdaren som delas av alla enheter i Gateway-hierarkin.
-
-1. Hitta parametern **hostname** i filen config. yaml. Uppdatera värd namnet till det fullständigt kvalificerade domän namnet (FQDN) eller IP-adressen för den IoT Edge enheten.
+1. Hitta **hostname** -avsnittet i konfigurations filen. Ta bort kommentaren till raden som innehåller `hostname` parametern och uppdatera värdet så att det är det fullständigt kvalificerade domän namnet (FQDN) eller IP-adressen för den IoT Edge enheten.
 
    Värdet för den här parametern är det som underordnade enheter kommer att använda för att ansluta till den här gatewayen. Värd namnet tar dator namnet som standard, men FQDN eller IP-adress krävs för att ansluta underordnade enheter.
 
@@ -160,33 +156,38 @@ I Linux ser du till att användar **iotedge** har Läs behörighet för kataloge
 
    Var konsekvent med värd namns mönstret i en gateway-hierarki. Använd antingen FQDN eller IP-adresser, men inte båda.
 
-1. **Om enheten är en underordnad enhet** hittar du **parent_hostname** -parametern. Uppdatera **parent_hostname** fältet som ska vara FQDN eller IP-adressen för den överordnade enheten, vilket motsvarar det som angavs som värdnamn i den överordnade filen config. yaml.
+1. *Om enheten är en underordnad enhet* hittar du avsnittet **överordnat värdnamn** . Ta bort kommentaren och uppdatera `parent_hostname` parametern så att den är FQDN eller IP-adress för den överordnade enheten, vilket matchar det som angavs som värdnamn i den överordnade enhetens konfigurations fil.
+
+1. Hitta avsnittet **TRUSTe Bundle cert** . Ta bort kommentaren och uppdatera `trust_bundle_cert` parametern med fil-URI: n till rot certifikat utfärdarens certifikat på enheten.
 
 1. Även om den här funktionen finns i en offentlig för hands version måste du konfigurera din IoT Edge-enhet så att den använder den offentliga för hands versionen av IoT Edge agenten när den startas.
 
-   Hitta avsnittet **agent** yaml och uppdatera avbildning svärdet till den offentliga förhands gransknings bilden:
+   Hitta standardvärdet för **Edge-agenten** och uppdatera avbildning svärdet till den offentliga förhands gransknings bilden:
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. Save ( `Ctrl+O` ) och Close ( `Ctrl+X` ) config. yaml-filen.
+1. Hitta avsnittet **Edge CA-certifikat** i konfigurations filen. Ta bort kommentarer till raderna i det här avsnittet och ange fil-URI-sökvägar för certifikatet och nyckelfilen på den IoT Edge enheten.
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. Spara ( `Ctrl+O` ) och Stäng ( `Ctrl+X` ) i konfigurations filen.
 
 1. Om du har använt andra certifikat för IoT Edge tidigare, tar du bort filerna i följande två kataloger för att se till att dina nya certifikat tillämpas:
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. Starta om IoT Edge tjänsten för att tillämpa ändringarna.
+1. Spara ändringarna.
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. Sök efter fel i konfigurationen.
@@ -202,16 +203,16 @@ I Linux ser du till att användar **iotedge** har Läs behörighet för kataloge
 
 Även om den här funktionen finns i en offentlig för hands version måste du konfigurera IoT Edge-enheten så att den använder de offentliga för hands versionerna av IoT Edge runtime-modulerna. I föregående avsnitt finns steg för att konfigurera edgeAgent vid start. Du måste också konfigurera körnings modulerna i distributioner för enheten.
 
-1. Konfigurera edgeHub-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Konfigurera edgeHub-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 1. Konfigurera följande miljövariabler för edgeHub-modulen:
 
-   | Name | Värde |
+   | Namn | Värde |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Konfigurera edgeAgent-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
+1. Konfigurera edgeAgent-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Isolerade enheter i nätverket
 
@@ -302,7 +303,7 @@ API-proxy modulen har utformats för att anpassas för att hantera de flesta van
    1. På fliken **Modulnamn** , bild- **URI**: `registry:latest`
    1. På fliken **miljövariabler** lägger du till följande miljövariabler:
 
-      * **Name**: `REGISTRY_PROXY_REMOTEURL` **värde**: URL: en för det behållar register som du vill att den här Registry-modulen ska mappa till. Ett exempel är `https://myregistry.azurecr`.
+      * **Name**: `REGISTRY_PROXY_REMOTEURL` **värde**: URL: en för det behållar register som du vill att den här Registry-modulen ska mappa till. Till exempel `https://myregistry.azurecr`.
 
         Registret kan bara mappas till ett behållar register, så vi rekommenderar att du har alla behållar avbildningar i ett enda privat behållar register.
 
@@ -328,7 +329,7 @@ API-proxy modulen har utformats för att anpassas för att hantera de flesta van
 
 1. Välj **Lägg till** för att lägga till modulen i distributionen.
 1. Välj **Nästa: vägar** för att gå vidare till nästa steg.
-1. Om du vill aktivera meddelanden från enheten till molnet från efterföljande enheter för att uppnå IoT Hub, lägger du till en väg som skickar alla meddelanden till IoT Hub. Till exempel:
+1. Om du vill aktivera meddelanden från enheten till molnet från efterföljande enheter för att uppnå IoT Hub, lägger du till en väg som skickar alla meddelanden till IoT Hub. Exempel:
     1. **Namn**: `Route`
     1. **Värde**: `FROM /messages/* INTO $upstream`
 1. Välj **Granska + skapa** för att gå till det sista steget.
@@ -356,21 +357,20 @@ Om du inte vill att lägre lager enheter ska skapa pull-begäranden via en gatew
 
 IoT Edge agent är den första körnings komponenten som startar på alla IoT Edge enheter. Du måste se till att alla underordnade IoT Edge enheter kan komma åt edgeAgent-modulens avbildning när de startar, och sedan kan de komma åt distributioner och starta resten av modulens avbildningar.
 
-När du går till filen config. yaml på en IoT Edge-enhet för att ange autentiseringsinformation, certifikat och överordnat värdnamn, uppdaterar också edgeAgent-behållar avbildningen.
+När du går till konfigurations filen på en IoT Edge-enhet för att tillhandahålla autentiseringsinformation, certifikat och överordnat värdnamn, uppdaterar också behållar avbildningen för edgeAgent.
 
-Om gateway-enheten på den översta nivån har kon figurer ATS för att hantera behållar avbildnings begär Anden, ersätter `mcr.microsoft.com` du med den överordnade värdnamn-och API-proxy I distributions manifestet kan du använda `$upstream` som en genväg, men det kräver att edgeHub-modulen hanterar Routning och att modulen inte har startats i det här läget. Till exempel:
+Om gateway-enheten på den översta nivån har kon figurer ATS för att hantera behållar avbildnings begär Anden, ersätter `mcr.microsoft.com` du med den överordnade värdnamn-och API-proxy I distributions manifestet kan du använda `$upstream` som en genväg, men det kräver att edgeHub-modulen hanterar Routning och att modulen inte har startats i det här läget. Exempel:
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-Om du använder ett lokalt behållar register eller om du tillhandahåller behållar avbildningarna manuellt på enheten uppdaterar du filen config. yaml.
+Om du använder ett lokalt behållar register eller om du tillhandahåller behållar avbildningarna manuellt på enheten uppdaterar du konfigurations filen på motsvarande sätt.
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>Konfigurera Runtime och distribuera Proxy-modulen
 
@@ -435,7 +435,7 @@ API-proxy modulen har utformats för att anpassas för att hantera de flesta van
 
 1. Spara ändringarna i körnings inställningarna genom att välja **Spara** .
 1. Välj **Nästa: vägar** för att gå vidare till nästa steg.
-1. Om du vill aktivera meddelanden från enheten till molnet från efterföljande enheter för att uppnå IoT Hub, lägger du till en väg som skickar alla meddelanden till `$upstream` . Den överordnade parametern pekar på den överordnade enheten när det gäller lägre lager enheter. Till exempel:
+1. Om du vill aktivera meddelanden från enheten till molnet från efterföljande enheter för att uppnå IoT Hub, lägger du till en väg som skickar alla meddelanden till `$upstream` . Den överordnade parametern pekar på den överordnade enheten när det gäller lägre lager enheter. Exempel:
     1. **Namn**: `Route`
     1. **Värde**: `FROM /messages/* INTO $upstream`
 1. Välj **Granska + skapa** för att gå till det sista steget.

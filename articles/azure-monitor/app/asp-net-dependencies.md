@@ -4,12 +4,12 @@ description: Övervaka beroende anrop från din lokala eller Microsoft Azure web
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652011"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045300"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Beroende spårning i Azure Application insikter 
 
@@ -88,6 +88,9 @@ Om du vill inaktivera standard modulen för beroende spårning tar du bort refer
 För webb sidor samlar Application Insights JavaScript SDK automatiskt in AJAX-anrop som beroenden.
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Avancerad SQL-spårning för att få en fullständig SQL-fråga
+
+> [!NOTE]
+> Azure Functions kräver separata inställningar för att aktivera insamlingen av SQL-text finns i [Konfigurera övervakning av Azure Functions](../../azure-functions/configure-monitoring.md) för mer information.
 
 För SQL-anrop samlas och lagras alltid namnet på servern och databasen som namn på den insamlade informationen `DependencyTelemetry` . Det finns ytterligare ett fält med namnet "data" som kan innehålla den fullständiga SQL-frågetexten.
 

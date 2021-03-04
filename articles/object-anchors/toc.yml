@@ -14,7 +14,7 @@
   expanded: true
   items:
     - name: Skapa en modell
-      href: quickstarts/get-started-model-ingestion.md
+      href: quickstarts/get-started-model-conversion.md
     - name: Skapa en Unity-app
       expanded: true
       items:

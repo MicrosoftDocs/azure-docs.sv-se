@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679954"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044195"
 ---
 # <a name="clustering-point-data"></a>Kluster plats data
 
@@ -26,17 +26,17 @@ Vid visualisering av många data punkter på kartan kan data punkterna överlapp
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Aktivera klustring på en data Källa
 
-Aktivera klustring i `DataSource` klassen genom att ange `cluster` alternativet till sant. Ange `ClusterRadius` om du vill markera närliggande punkter och kombinera dem i ett kluster. Värdet för `ClusterRadius` är i bild punkter. Använd `clusterMaxZoom` för att ange en zoomnings nivå där kluster logiken ska inaktive ras. Här är ett exempel på hur du aktiverar klustring i en data källa.
+Aktivera klustring i `DataSource` klassen genom att ange `cluster` alternativet till sant. Ange `clusterRadius` om du vill markera närliggande punkter och kombinera dem i ett kluster. Värdet för `clusterRadius` är i bild punkter. Använd `clusterMaxZoom` för att ange en zoomnings nivå där kluster logiken ska inaktive ras. Här är ett exempel på hur du aktiverar klustring i en data källa.
 
 ```javascript
 //Create a data source and enable clustering.
 var datasource = new atlas.source.DataSource(null, {
     //Tell the data source to cluster point data.
     cluster: true,
-
+    
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
-
+    
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15
@@ -46,7 +46,7 @@ var datasource = new atlas.source.DataSource(null, {
 > [!TIP]
 > Om två data punkter ligger nära varandra på marken är det möjligt att klustret aldrig delas upp, oavsett hur nära användaren zoomar in. Du kan åtgärda detta genom att ställa in `clusterMaxZoom` alternativet för att inaktivera kluster logiken och bara Visa allt.
 
-Här följer ytterligare metoder som `DataSource` klassen tillhandahåller för kluster:
+`DataSource`Klassen tillhandahåller följande metoder för kluster även.
 
 | Metod | Returtyp | Beskrivning |
 |--------|-------------|-------------|

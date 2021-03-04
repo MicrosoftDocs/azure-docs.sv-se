@@ -4,16 +4,16 @@ description: Upptäck vad som är nytt i IoT Edge med information om nya funktio
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9db51fe9298b7f3329d35df375d027046e1f272e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9b06a9d1065fe27a7ac38d45c2a0aaba635b40eb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366157"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044858"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge versioner och viktig information
 
@@ -24,8 +24,7 @@ Azure IoT Edge är en produkt som är byggd från projektet med öppen källkod 
 IoT Edge-dokumentationen på den här webbplatsen är tillgänglig för två olika versioner av produkten så att du kan välja det innehåll som gäller för din IoT Edge-miljö. För närvarande är de två versionerna som stöds:
 
 * **IoT Edge 1,1 (LTS)** är den första långsiktiga support versionen (LTS) av IoT Edge. Dokumentationen för den här versionen omfattar alla funktioner och funktioner från alla tidigare versioner till 1,1. Den här dokumentations versionen blir stabil genom den livs längd som stöds för version 1,1 och kommer inte att återspegla nya funktioner som lanseras i senare versioner. 1,1-versionen är den senaste allmänt tillgängliga versionen av IoT Edge.
-* **IoT Edge 1,2 (för hands version)** innehåller ytterligare innehåll för funktioner och funktioner i den senaste för hands versionen, [1,2 – rc1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)
-  * Medan IoT Edge 1,2 är i för hands version måste du installera versions kandidat versionerna. Mer information finns i [offline-eller en speciell versions installation](how-to-install-iot-edge.md?tabs=linux#offline-or-specific-version-installation-optional).
+* **IoT Edge 1,2 (för hands version)** innehåller ytterligare innehåll för funktioner och funktioner i den senaste för hands versionen, [1,2-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4).
 
 Mer information om IoT Edge-versioner finns i [Azure IoT Edge system som stöds](support.md).
 
@@ -35,6 +34,7 @@ Den här tabellen innehåller den senaste versions historiken för IoT Edge pake
 
 | Viktig information och till gångar | Typ | Datum | Höjdpunkter |
 | ------------------------ | ---- | ---- | ---------- |
+| [1,2 – RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) | Förhandsgranskning | Mars 2021 | Nya IoT Edges paket som introducerades, med nya installations-och konfigurations steg. Mer information finns i [Uppdatera från 1,0 eller 1,1 till 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 | [1.1](https://github.com/Azure/azure-iotedge/releases/tag/1.1.0) | Långsiktigt stöd (LTS) | Februari 2021 | [Långsiktig Support plan och system uppdateringar som stöds](support.md) |
 | [1,2 – rc1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) | Förhandsgranskning | November 2020 | [IoT Edge enheter bakom gatewayer](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge MQTT-Broker](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true) |
 | [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | Oktober 2020 | [UploadSupportBundle Direct-metod](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Överför körnings mått](how-to-access-built-in-metrics.md)<br>[Väg prioritet och Time-to-Live](module-composition.md#priority-and-time-to-live)<br>[Start ordning för modul](module-composition.md#configure-modules)<br>[509 manuell etablering för X.](how-to-register-device.md) |

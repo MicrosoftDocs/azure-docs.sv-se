@@ -4,19 +4,19 @@ description: Använd en Azure IoT Edge enhet som en transparent gateway som kan 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 431c116fee22da27ed0487fc6d2fe3644575491f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370435"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046031"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurera en IoT Edge-enhet till att fungera som en transparent gateway
 
@@ -26,10 +26,9 @@ Den här artikeln innehåller detaljerade anvisningar för hur du konfigurerar e
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->Öppet
+>I IoT Edge versioner 1,1 och äldre kan en IoT Edge enhet inte visas bakom en IoT Edge Gateway.
 >
-> * Edge-aktiverade enheter kan inte ansluta till IoT Edge gatewayer.
-> * Underordnade enheter kan inte använda fil uppladdning.
+>Underordnade enheter kan inte använda fil uppladdning.
 
 ::: moniker-end
 
@@ -37,9 +36,7 @@ Den här artikeln innehåller detaljerade anvisningar för hur du konfigurerar e
 ::: moniker range=">=iotedge-2020-11"
 
 >[!NOTE]
->Öppet
->
-> * Underordnade enheter kan inte använda fil uppladdning.
+>Underordnade enheter kan inte använda fil uppladdning.
 
 ::: moniker-end
 
@@ -51,7 +48,17 @@ Det finns tre allmänna steg för att konfigurera en lyckad transparent Gateway-
 
 För att en enhet ska fungera som en gateway måste den ansluta till dess underordnade enheter på ett säkert sätt. Med Azure IoT Edge kan du använda en PKI (Public Key Infrastructure) för att konfigurera säkra anslutningar mellan enheter. I det här fallet låter vi en underordnad enhet ansluta till en IoT Edge-enhet som fungerar som en transparent Gateway. För att upprätthålla rimlig säkerhet bör den underordnade enheten bekräfta gateway-enhetens identitet. Den här identitets kontrollen förhindrar att enheterna ansluter till potentiellt skadliga gatewayer.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 En underordnad enhet kan vara ett program eller en plattform som har en identitet som skapats med [Azure IoT Hub](../iot-hub/index.yml) Cloud service. De här programmen använder ofta [Azure IoT-enhetens SDK](../iot-hub/iot-hub-devguide-sdks.md). En underordnad enhet kan även vara ett program som körs på själva IoT Edge gateway-enheten. En IoT Edge enhet kan dock inte underordnas IoT Edge Gateway.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+En underordnad enhet kan vara ett program eller en plattform som har en identitet som skapats med [Azure IoT Hub](../iot-hub/index.yml) Cloud service. De här programmen använder ofta [Azure IoT-enhetens SDK](../iot-hub/iot-hub-devguide-sdks.md). En underordnad enhet kan även vara ett program som körs på själva IoT Edge gateway-enheten.
+:::moniker-end
+<!-- end 1.2 -->
 
 Du kan skapa en certifikat infrastruktur som aktiverar det förtroende som krävs för din enhets-Gateway-topologi. I den här artikeln förutsätter vi samma certifikat inställningar som du använde för att aktivera [x. 509 ca-säkerhet](../iot-hub/iot-hub-x509ca-overview.md) i IoT Hub, vilket inbegriper ett X. 509 CA-certifikat som är kopplat till en speciell IoT-hubb (IoT Hub rot certifikat utfärdare), en serie med certifikat som har signerats med denna certifikat utfärdare och en certifikat utfärdare för IoT Edges enheten.
 
@@ -64,7 +71,7 @@ Följande steg vägleder dig genom processen att skapa certifikaten och installe
 
 En Linux-eller Windows-enhet med IoT Edge installerat.
 
-Om du inte har en enhet redo kan du skapa en på en virtuell Azure-dator. Följ stegen i [distribuera din första IoT Edge-modul till en virtuell Linux-enhet](quickstart-linux.md) för att skapa en IoT Hub, skapa en virtuell dator och konfigurera IoT Edge Runtime. 
+Om du inte har en enhet redo kan du skapa en på en virtuell Azure-dator. Följ stegen i [distribuera din första IoT Edge-modul till en virtuell Linux-enhet](quickstart-linux.md) för att skapa en IoT Hub, skapa en virtuell dator och konfigurera IoT Edge Runtime.
 
 ## <a name="set-up-the-device-ca-certificate"></a>Konfigurera enhetens CA-certifikat
 
@@ -72,7 +79,7 @@ Alla IoT Edge gateways behöver ett certifikat för enhets certifikat utfärdare
 
 ![Konfiguration av Gateway-certifikat](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Rot-CA-certifikatet och enhetens CA-certifikat (med dess privata nyckel) måste finnas på IoT Edge gateway-enheten och konfigureras i IoT Edge config. yaml-filen. Kom ihåg att i det här fallet är *rot certifikat* utfärdaren den översta certifikat utfärdaren för den här IoT Edge scenariot. Gateway-enhetens CA-certifikat och certifikat för efterföljande enheter måste sammanställas till samma rot certifikat för certifikat utfärdare.
+Rot-CA-certifikatet och enhetens CA-certifikat (med dess privata nyckel) måste finnas på IoT Edge gateway-enheten och konfigureras i IoT Edge konfigurations filen. Kom ihåg att i det här fallet är *rot certifikat* utfärdaren den översta certifikat utfärdaren för den här IoT Edge scenariot. Gateway-enhetens CA-certifikat och certifikat för efterföljande enheter måste sammanställas till samma rot certifikat för certifikat utfärdare.
 
 >[!TIP]
 >Processen för att installera rot certifikat utfärdarens certifikat och enhetens CA-certifikat på en IoT Edge enhet förklaras också i detalj i [Hantera certifikat på en IoT Edge enhet](how-to-manage-device-certificates.md).
@@ -85,7 +92,7 @@ Ha följande filer klara:
 
 För produktions scenarier bör du generera dessa filer med din egen certifikat utfärdare. Du kan använda demo certifikat för utvecklings-och test scenarier.
 
-1. Om du använder demo certifikat kan du använda anvisningarna i [skapa demonstrations certifikat för att testa IoT Edge enhets funktioner](how-to-create-test-certificates.md) för att skapa dina filer. På den sidan måste du utföra följande steg:
+Om du inte har en egen certifikat utfärdare och vill använda demo certifikat, följer du anvisningarna i [skapa demonstrations certifikat för att testa IoT Edge enhets funktioner](how-to-create-test-certificates.md) för att skapa dina filer. På den sidan måste du utföra följande steg:
 
    1. Starta genom att ställa in skripten för att skapa certifikat på enheten.
    2. Skapa ett rot certifikat för certifikat utfärdare. I slutet av dessa instruktioner har du en certifikat fil för rot certifikat utfärdaren:
@@ -94,24 +101,55 @@ För produktions scenarier bör du generera dessa filer med din egen certifikat 
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` särskilt
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Om du har skapat certifikaten på en annan dator kopierar du dem till din IoT Edge-enhet.
+Om du har skapat certifikaten på en annan dator kopierar du dem till din IoT Edge-enhet och fortsätter sedan med nästa steg.
 
-3. Öppna konfigurations filen för daemon på din IoT Edge-enhet.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+1. Öppna konfigurations filen för daemon på din IoT Edge-enhet.
+
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. Hitta avsnittet **certifikat inställningar** i filen. Ta bort kommentarer till de fyra raderna som börjar med **certifikat:** och ange fil-URI: erna till dina tre filer som värden för följande egenskaper:
+1. Hitta avsnittet **certifikat inställningar** i filen. Ta bort kommentarer till de fyra raderna som börjar med **certifikat:** och ange fil-URI: erna till dina tre filer som värden för följande egenskaper:
    * **device_ca_cert**: ENHETens CA-certifikat
    * **device_ca_pk**: ENHETens ca-privata nyckel
    * **trusted_ca_certs**: rot certifikat utfärdarens certifikat
 
    Se till att det inte finns något föregående blank steg på raden **certifikat:** och att de andra raderna har indrag ATS av två blank steg.
 
-5. Spara och stäng filen.
+1. Spara och stäng filen.
 
-6. Starta om IoT Edge.
+1. Starta om IoT Edge.
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Öppna konfigurations filen på din IoT Edge-enhet: `/etc/aziot/config.toml`
+
+   >[!TIP]
+   >Om konfigurations filen inte finns på enheten ännu använder du `/etc/aziot/config.toml.edge.template` som mall för att skapa en.
+
+1. Hitta `trust_bundle_cert` parametern. Ta bort kommentaren till den här raden och ange fil-URI: n för rot certifikat utfärdarens certifikat fil på enheten.
+
+1. Hitta `[edge_ca]` avsnittet i filen. Ta bort kommentarer till de tre raderna i det här avsnittet och ange fil-URI: er för ditt certifikat och viktiga filer som värden för följande egenskaper:
+   * **certifikat**: ENHETens CA-certifikat
+   * **PK**: ENHETens ca-privata nyckel
+
+1. Spara och stäng filen.
+
+1. Starta om IoT Edge.
+
+   ```bash
+   sudo iotedge system restart
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>Distribuera edgeHub och dirigera meddelanden
 

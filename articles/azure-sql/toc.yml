@@ -337,6 +337,8 @@
               href: migration-guides/database/sql-server-to-sql-database-overview.md
             - name: Migrera
               href: migration-guides/database/sql-server-to-sql-database-guide.md
+            - name: Utvärderings regler
+              href: migration-guides/database/sql-server-to-sql-database-assessment-rules.md
     - name: Begrepp
       items:
         - name: Anslutningsarkitektur
@@ -757,6 +759,8 @@
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Baslinje för prestanda
               href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
+            - name: Utvärderings regler
+              href: migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules.md
     - name: Begrepp
       items:
         - name: Resursbegränsningar

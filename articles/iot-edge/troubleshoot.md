@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376518"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045929"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Felsöka IoT Edge-enheten
 
@@ -42,7 +42,7 @@ iotedge check
 
 Fel söknings verktyget kör många kontroller som är sorterade i följande tre kategorier:
 
-* *Konfigurations kontroller* undersöker information som kan förhindra IoT Edge enheter från att ansluta till molnet, inklusive problem med *config. yaml* och behållar motorn.
+* *Konfigurations kontroller* undersöker information som kan förhindra IoT Edge enheter från att ansluta till molnet, inklusive problem med konfigurations filen och behållar motorn.
 * *Anslutnings kontroller* verifierar att IoT Edge runtime kan komma åt portar på värd enheten och att alla IoT Edge-komponenter kan ansluta till IoT Hub. Den här uppsättningen kontroller returnerar fel om IoT Edge enheten ligger bakom en proxyserver.
 * I *produktions beredskaps kontrollerna* kan du söka efter rekommenderade produktions metoder, t. ex. tillstånd för certifikat från enhetens certifikat utfärdare och logg fils konfigurationen för modulen.
 
@@ -102,6 +102,9 @@ Det här kommandot kommer att mata ut alla edgeAgent- [rapporterade egenskaper](
 
 I Linux:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * Visa status för IoT Edge Security Manager:
 
    ```bash
@@ -110,32 +113,68 @@ I Linux:
 
 * Visa loggarna för IoT Edge Security Manager:
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * Visa mer detaljerade loggar av IoT Edge Security Manager:
 
-  * Redigera inställningarna för IoT Edge daemon:
+  1. Redigera inställningarna för IoT Edge daemon:
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * Uppdatera följande rader:
+  2. Uppdatera följande rader:
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * Starta om IoT Edge Security daemon:
+  3. Starta om IoT Edge Security daemon:
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* Visa status för IoT Edge system tjänster:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Visa loggarna för IoT Edge system tjänster:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* Aktivera fel söknings nivå loggar om du vill visa mer detaljerade loggar av IoT Edge system tjänster:
+
+  1. Aktivera fel söknings nivå loggar.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Växla tillbaka till standard informations nivå loggarna efter fel sökning.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 I Windows:
 
@@ -159,52 +198,17 @@ I Windows:
 
 * Visa mer detaljerade loggar av IoT Edge Security Manager:
 
-  * Lägg till en miljö variabel på system nivå:
+  1. Lägg till en miljö variabel på system nivå:
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * Starta om IoT Edge Security daemon:
+  2. Starta om IoT Edge Security daemon:
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Om IoT Edge Security Manager inte körs kontrollerar du konfigurations filen för yaml
-
-> [!WARNING]
-> YAML-filer får inte innehålla tabbar som indrag. Använd 2 Blank steg i stället. Element på den översta nivån får inte innehålla några inledande blank steg.
-
-I Linux:
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-I Windows:
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>Starta om IoT Edge Security Manager
-
-Om problemet fortfarande kvarstår kan du prova att starta om IoT Edge Security Manager.
-
-I Linux:
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-I Windows:
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>Kontrol lera behållar loggar för problem
 
@@ -217,6 +221,9 @@ iotedge logs <container name>
 Du kan också använda ett [direkt metod](how-to-retrieve-iot-edge-logs.md#upload-module-logs) anrop till en modul på enheten för att ladda upp loggarna för den modulen till Azure Blob Storage.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Visa meddelanden som går via IoT Edge Hub
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Du kan visa meddelanden som går via IoT Edge hubben och samla in insikter från utförliga loggar från runtime-behållare. Om du vill aktivera utförliga loggar på de här behållarna anger `RuntimeLogLevel` du konfigurations filen för yaml. Så här öppnar du filen:
 
@@ -256,7 +263,29 @@ Ersätt `env: {}` med:
 
 Spara filen och starta om IoT Edge Security Manager.
 
-Du kan också kontrollera meddelandena som skickas mellan IoT Hub och IoT Edge-enheterna. Visa dessa meddelanden med hjälp av [Azure IoT Hub-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Mer information finns i [användbart verktyg när du utvecklar med Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Du kan visa meddelanden som går via IoT Edge Hub och samla in insikter från utförliga loggar från runtime-behållare. Om du vill aktivera utförliga loggar i dessa behållare anger du `RuntimeLogLevel` miljövariabeln i distributions manifestet.
+
+Om du vill visa meddelanden som går via IoT Edge Hub ställer du in `RuntimeLogLevel` miljövariabeln på `debug` för edgeHub-modulen.
+
+Både edgeHub-och edgeAgent-modulerna har den här miljövariabeln för körnings loggen, med standardvärdet inställt på `info` . Den här miljövariabeln kan ha följande värden:
+
+* döds
+* fel
+* varning
+* information
+* felsökning
+* utförlig
+
+<!-- end 1.2 -->
+:::moniker-end
+
+Du kan också kontrol lera meddelanden som skickas mellan IoT Hub-och IoT-enheter. Visa dessa meddelanden med hjälp av [Azure IoT Hub-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Mer information finns i [användbart verktyg när du utvecklar med Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ## <a name="restart-containers"></a>Starta om behållare
 

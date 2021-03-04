@@ -3,17 +3,17 @@ title: Analysera Azure-kostnader med Power BI-appen
 description: Den här artikeln beskriver hur du installerar och använder Azure Cost Management Power BI-appen.
 author: bandersmsft
 ms.author: banders
-ms.date: 1/29/2021
+ms.date: 02/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070165"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045106"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analysera kostnader med Azure Cost Management Power BI-appen för Enterprise-avtal (EA)
 
@@ -36,24 +36,23 @@ Appen begränsar anpassningsbarhet. Om du vill ändra och utöka de standard fil
 Så här installerar du appen:
 
 1. Öppna [Azure Cost Management Power BI-appen](https://aka.ms/costmgmt/ACMApp).
-2. På sidan Power BI AppSource väljer du **Hämta nu**.
-3. Välj **Fortsätt** för att godkänna användningsvillkoren och sekretesspolicyn.
-4. I rutan **Installera den här Power BI-appen** väljer du **Installera**.
-5. Om det behövs skapar du en arbetsyta och väljer **Fortsätt**.
-6. När installationen är klar visas ett meddelande om att din nya app är klar.
-7. Välj **Gå till app**.
-8. I **Kom igång med din nya app**, under **Anslut dina data**, väljer du **Anslut**.  
-  ![Kom igång med din nya app – Anslut](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. I dialogrutan som visas anger du ditt EA-registreringsnummer för **BillingProfileIdOrEnrollmentNumber**. Ange hur många månaders data som ska hämtas. Lämna **Omfång**-standardvärdet som **Registreringsnummer** och välj **Nästa**.  
-  ![Ange EA-registreringsinformation](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. I nästa dialogruta görs en anslutning till Azure för att hämta de data som krävs för rekommendationer för reserverad instans. *Lämna standardvärdena som de är* och välj **Logga in**.  
-  ![Skärmbild som visar dialogrutan Anslut till Azure Cost Management-appen med standardvärden.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. I det sista installationssteget görs en anslutning till din EA-registrering och ett [företagsadministratörskonto](../manage/understand-ea-roles.md) krävs. Välj **Logga in** för att autentisera med din EA-registrering. Det här steget startar också en datauppdateringsåtgärd i Power BI.  
-  ![Ansluta till EA-registrering](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+1. På sidan Power BI AppSource väljer du **Hämta nu**.
+1. Välj **Fortsätt** för att godkänna användningsvillkoren och sekretesspolicyn.
+1. I rutan **Installera den här Power BI-appen** väljer du **Installera**.
+1. Om det behövs skapar du en arbetsyta och väljer **Fortsätt**.
+1. När installationen är klar visas ett meddelande om att din nya app är klar.
+1. Välj den app som du har installerat.
+1. På sidan komma igång väljer du **Anslut dina data**.
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="Skärm bild som markerar länken Anslut din data." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
+1. I dialogrutan som visas anger du ditt EA-registreringsnummer för **BillingProfileIdOrEnrollmentNumber**. Ange hur många månaders data som ska hämtas. Lämna **Omfång**-standardvärdet som **Registreringsnummer** och välj **Nästa**.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="Skärm bild som visar var du anger din E-postregistrerings information." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
+1. Nästa dialog ansluter till Azure och hämtar data. *Låt standardvärdena vara konfigurerade* och välj **Logga in och fortsätt**.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="Skärm bild som visar dialog rutan Anslut till Azure Cost Management app med standardvärden." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+1. I det sista installationssteget görs en anslutning till din EA-registrering och ett [företagsadministratörskonto](../manage/understand-ea-roles.md) krävs. Lämna alla standardvärden. Välj **Logga in och Anslut**.  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="Skärm bild som visar dialog rutan Anslut till Azure Cost Management app med standardvärden för att ansluta till." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. Du uppmanas att autentisera med din EA-registrering. Autentisera med Power BI. När du har autentiserats startar en Power BI data uppdatering.
     > [!NOTE]
     > Det kan ta en stund att slutföra datauppdateringen. Hur lång tid det tar beror på hur många månader som har angetts och hur mycket data som behöver synkroniseras.
-12. Om du vill kontrollera statusen för datauppdateringen kan du välja fliken **Datauppsättningar** i arbetsytan. Titta bredvid tidsstämpeln för uppdateringen. Om data fortfarande uppdateras visas en indikator som anger att uppdateringen pågår.  
-  ![Uppdatera data](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 När datauppdateringen är klar väljer du appen Azure Cost Management för att visa de rapporter som skapats i förväg.
 
@@ -78,11 +77,11 @@ Följande rapporter är tillgängliga i appen.
 
 **Windows Server AHB Usage** (AHB-användning för Windows Server) – Rapporten visar antal virtuella datorer som har Azure Hybrid-förmånen aktiverad. Den visar också antalet kärnor/virtuella processorer som används av de virtuella datorerna.
 
-![Fullständig rapport om Azure Hybrid-förmåner](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" alt-text="Skärm bild som visar den fullständiga Azure Hybrid Benefits-rapporten." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" :::
 
 Rapporten visar om det finns virtuella Windows-datorer som har Hybrid-förmånen **aktiverad** och _mindre än_ 8 virtuella processorer. Den visar också om Hybrid-förmånen **inte är aktiverad** och det finns 8 _eller fler_ virtuella processorer. Den här informationen hjälper dig att få ut mesta möjliga av Hybrid-förmånen. Du gör störst besparingar om du använder förmånen med dina dyraste virtuella datorer.
 
-![Azure Hybrid-förmåner – det finns mindre än 8 virtuella processorer och virtuella processorer har inte aktiverats](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" alt-text="Skärm bild som visar mindre än 8 virtuella processorer och virtuella processorer som inte är aktiverade i Azure Hybrid Benefits Report." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" :::
 
 **RI Chargeback** (Återbetalning för reserverad instans) – rapporten beskriver var och hur mycket av en reserverad instans (RI) som används per region, prenumeration, resursgrupp eller resurs. I rapporten används amorterade användningsdata för att visa vyn.
 
@@ -105,7 +104,7 @@ Du kan använda amorterade användningsdata för att bygga på data.
 
 Om du vill använda rapporten väljer du filtret för att öka detaljnivån.
 
-![Rapporten VM RI Coverage (VM RI-täckning) – välja ökad detaljnivå](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" alt-text="Skärm bild som visar alternativet Välj detalj nivå ned i rapporten VM RI-disponering." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" :::
 
 Välj den region som du vill analysera. Välj sedan grupp för flexibel instansstorlek och så vidare.
 
@@ -118,7 +117,7 @@ Rekommendationstabellen innehåller rekommendationer för reservationsköp, utif
 
 Värdena för _normaliserad storlek_ och _rekommenderat normaliserat antal_ hjälper dig att normalisera köpet till den minsta storleken för en grupp för flexibel instansstorlek. Den här informationen är användbar om du planerar att köpa bara en reservation för alla storlekar i gruppen för flexibel instansstorlek.
 
-![RI-rekommendationer](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" alt-text="Skärm bild som visar rapporten för RI-rekommendationer." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" :::
 
 **VM RI Coverage (single recommendation)** (VM RI-täckning (enskild rekommendation)) – Rapporten är uppdelad på VM-användning på begäran och VM-användning för reserverad instans under den tidsperiod som valts. Rapporten ger rekommendationer för VM RI-köp i ett prenumerationsomfång.
 
@@ -151,7 +150,7 @@ Standardvärdet för **omfång** för `Enrollment Number` ändrades i anslutning
 
 Återanslut till Cost Management och ange värdet för **omfång** till `Enrollment Number`. Ange inte organisationens registreringsnummer. Skriv i stället `Enrollment Number` exakt som det visas i följande bild.
 
-![Ange EA-registreringsinformation](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" alt-text="Skärm bild som visar att standard texten för registrerings nummer inte får ändras." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" :::
 
 ### <a name="budgetamount-error"></a>BudgetAmount-fel
 
@@ -166,12 +165,11 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>Orsak
 
-Det här felet orsakas av ett fel i underliggande metadata. Problemet uppstår eftersom det inte finns någon tillgänglig budget i **Cost Management > Budget** i Microsoft Azure-portalen. En felkorrigering håller på att distribueras till Power BI Desktop och Power BI-tjänsten. 
+Det här felet orsakas av ett fel i underliggande metadata. Problemet uppstår eftersom det inte finns någon tillgänglig budget i **Cost Management > Budget** i Microsoft Azure-portalen. En felkorrigering håller på att distribueras till Power BI Desktop och Power BI-tjänsten.
 
 #### <a name="solution"></a>Lösning
 
 - Tills felet har åtgärdats kan du kringgå problemet genom att lägga till en testbudget i Microsoft Azure-portalen på faktureringskonto-/EA-registreringsnivån. Testbudgeten avblockerar anslutningen till Power BI. Mer information om hur du skapar en budget finns i [Självstudie: Skapa och hantera Azure-budgetar](tutorial-acm-create-budgets.md).
-
 
 ### <a name="invalid-credentials-for-azureblob-error"></a>Ogiltiga autentiseringsuppgifter för AzureBlob-fel
 
@@ -183,15 +181,14 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 #### <a name="cause"></a>Orsak
 
-Det här felet uppstår om du ändrar autentiseringsmetoden för blob-anslutningen AutoFitComboMeter.
+Det här felet uppstår om du ändrar autentiseringsmetoden för anslutningen till data källan.
 
 #### <a name="solution"></a>Lösning
 
 1. Ansluta till data.
 1. När du har angett din EA-registrering och antalet månader bör du se till att du inte ändrar standardvärdet **Anonym** som autentiseringsmetod och **Ingen** som inställning för sekretessnivå.  
-  ![Skärmbild som visar dialogrutan Anslut till Azure Cost Management-appen med de angivna värdena Anonym och Inget.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="Skärmbild som visar dialogrutan Anslut till Azure Cost Management-appen med de angivna värdena Anonym och Inget." lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. På nästa sida anger du **OAuth2** som autentiseringsmetod och **Ingen** som sekretessnivå. Sedan loggar du in för att autentisera med din registrering. Det här steget startar också en datauppdatering i Power BI.
-
 
 ## <a name="data-reference"></a>Datareferens
 

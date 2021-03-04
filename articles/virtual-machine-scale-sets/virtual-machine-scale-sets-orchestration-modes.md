@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 1a276915f8132f2941bfb4425011c2d34454093b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693891"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043719"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -73,7 +73,7 @@ Den bästa metoden är att använda Azure Resource Graph för att fråga efter a
 | order by resourceGroup desc, name desc 
 ```
 
-Att fråga resurser med [Azure Resource Graph](../governance/resource-graph/overview) är ett bekvämt och effektivt sätt att fråga Azure-resurser och minimera API-anrop till resurs leverantören. Azure Resource Graph är ett konsekvent cacheminne där nya eller uppdaterade resurser kanske inte återspeglas i upp till 60 sekunder. Du kan:
+Att fråga resurser med [Azure Resource Graph](../governance/resource-graph/overview.md) är ett bekvämt och effektivt sätt att fråga Azure-resurser och minimera API-anrop till resurs leverantören. Azure Resource Graph är ett konsekvent cacheminne där nya eller uppdaterade resurser kanske inte återspeglas i upp till 60 sekunder. Du kan:
 - Lista virtuella datorer i en resurs grupp eller prenumeration.
 - Använd alternativet Expand för att hämta instans visningen (fel domän tilldelning, energi-och etablerings tillstånd) för alla virtuella datorer i din prenumeration.
 - Använd Get VM API och kommandon för att hämta modell-och instans läge för en enda instans.

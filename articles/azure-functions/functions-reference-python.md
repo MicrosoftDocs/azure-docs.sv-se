@@ -4,12 +4,12 @@ description: Förstå hur du utvecklar funktioner med python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 78965a1a09272663c52469b8ccd91988f30b53cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044263"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Guide för Azure Functions python-utvecklare
 
@@ -22,7 +22,7 @@ Som python-utvecklare kanske du också är intresse rad av någon av följande a
 | <ul><li>[Python-funktionen med Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-funktionen med Terminal/kommando-prompt](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Utvecklarguide](functions-reference.md)</li><li>[Värdalternativ](functions-scale.md)</li><li>[Prestanda &nbsp; överväganden](functions-best-practices.md)</li></ul> | <ul><li>[Bildklassificering med PyTorch](machine-learning-pytorch.md)</li><li>[Azure Automation-exempel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maskininlärning med TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Sök i python-exempel](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
-> Även om du kan [utveckla din python-baserade Azure Functions lokalt i Windows](./azure-functions/create-first-function-vs-code-python#run-the-function-locally), stöds python bara på en Linux-baserad värd plan när den körs i Azure. Se listan över kombinationer av [operativ system/körning](./azure-functions/functions-scale#operating-systemruntime) som stöds.
+> Även om du kan [utveckla din python-baserade Azure Functions lokalt i Windows](create-first-function-vs-code-python.md#run-the-function-locally), stöds python bara på en Linux-baserad värd plan när den körs i Azure. Se listan över kombinationer av [operativ system/körning](functions-scale.md#operating-systemruntime) som stöds.
 
 ## <a name="programming-model"></a>Programmeringsmodell
 

@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927710"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046048"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Skapa democertifikat för att testa funktioner på IoT Edge-enheter
 
@@ -32,7 +32,7 @@ Följ de här stegen för att skapa demonstrations certifikat för att testa IoT
 1. [Konfigurera skript](#set-up-scripts) för att skapa certifikat på enheten.
 2. [Skapa rot certifikat utfärdarens certifikat](#create-root-ca-certificate) som du använder för att signera alla andra certifikat för ditt scenario.
 3. Generera de certifikat du behöver för scenariot du vill testa:
-   * [Skapa IoT Edge enhets identitets certifikat](#create-iot-edge-device-identity-certificates) för automatisk etablering med IoT Hub Device Provisioning service.
+   * [Skapa IoT Edge enhets identitets certifikat](#create-iot-edge-device-identity-certificates) för etablering av enheter med X. 509-certifikatautentisering, antingen manuellt eller med IoT Hub Device Provisioning service.
    * [Skapa IoT Edge enhets certifikat utfärdare](#create-iot-edge-device-ca-certificates) för IoT Edge enheter i Gateway-scenarier.
    * [Skapa certifikat för underordnad enhet](#create-downstream-device-certificates) för autentisering av underordnade enheter i ett Gateway-scenario.
 
@@ -183,9 +183,9 @@ Innan du fortsätter med stegen i det här avsnittet följer du stegen i avsnitt
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>Skapa IoT Edge enhets identitets certifikat
 
-Enhets identitets certifikat används för att etablera IoT Edge enheter via Azure-IoT Hub Device Provisioning Service (DPS).
+Enhets identitets certifikat används för att etablera IoT Edge enheter om du väljer att använda X. 509-certifikatautentisering. Dessa certifikat fungerar oavsett om du använder manuell etablering eller automatisk etablering via Azure-IoT Hub Device Provisioning Service (DPS).
 
-Enhets identitets certifikat finns i **etablerings** avsnittet i filen config. yaml på den IoT Edge enheten.
+Enhets identitets certifikat finns i **etablerings** avsnittet i konfigurations filen på den IoT Edge enheten.
 
 Innan du fortsätter med stegen i det här avsnittet följer du stegen i avsnitten [Konfigurera skript](#set-up-scripts) och [Skapa certifikat för rot certifikat utfärdare](#create-root-ca-certificate) .
 
@@ -223,11 +223,19 @@ Skriptet skapar flera certifikat och viktiga filer, inklusive tre som du ska anv
 
 ## <a name="create-iot-edge-device-ca-certificates"></a>Skapa IoT Edge enhets certifikat för certifikat utfärdare
 
-Varje IoT Edge enhet som kommer till produktion behöver ett CA-certifikatutfärdarcertifikat som refereras från config. yaml-filen.
+Varje IoT Edge enhet som kommer till produktion behöver ett CA-certifikatutfärdarcertifikat som refereras från konfigurations filen.
 Enhetens CA-certifikat ansvarar för att skapa certifikat för moduler som körs på enheten.
 Det är också nödvändigt för Gateway-scenarier, eftersom enhetens CA-certifikat är så att den IoT Edge enheten verifierar identiteten för underordnade enheter.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Enhetens CA-certifikat finns i avsnittet **certifikat** i filen config. yaml på den IoT Edge enheten.
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Enhetens CA-certifikat finns i avsnittet **Edge ca** i filen config. toml på den IoT Edge enheten.
+:::moniker-end
 
 Innan du fortsätter med stegen i det här avsnittet följer du stegen i avsnitten [Konfigurera skript](#set-up-scripts) och [Skapa certifikat för rot certifikat utfärdare](#create-root-ca-certificate) .
 
@@ -241,12 +249,12 @@ Innan du fortsätter med stegen i det här avsnittet följer du stegen i avsnitt
    New-CACertsEdgeDevice "<CA cert name>"
    ```
 
-   Det här kommandot skapar flera certifikat och viktiga filer. Följande certifikat och nyckel par måste kopieras till en IoT Edge-enhet och refereras till i filen config. yaml:
+   Det här kommandot skapar flera certifikat och viktiga filer. Följande certifikat och nyckel par måste kopieras till en IoT Edge-enhet och refereras till i konfigurations filen:
 
    * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
-Namnet som skickas till kommandot **New-CACertsEdgeDevice** får inte vara detsamma som hostname-parametern i config. yaml, eller enhetens ID i IoT Hub.
+Namnet som skickas till kommandot **New-CACertsEdgeDevice** får inte vara detsamma som parametern hostname i konfigurations filen, eller enhetens ID i IoT Hub.
 
 ### <a name="linux"></a>Linux
 
@@ -258,12 +266,12 @@ Namnet som skickas till kommandot **New-CACertsEdgeDevice** får inte vara detsa
    ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
-   Det här skript kommandot skapar flera certifikat och viktiga filer. Följande certifikat och nyckel par måste kopieras till en IoT Edge-enhet och refereras till i filen config. yaml:
+   Det här skript kommandot skapar flera certifikat och viktiga filer. Följande certifikat och nyckel par måste kopieras till en IoT Edge-enhet och refereras till i konfigurations filen:
 
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-Namnet som skickas till **create_edge_device_ca_certificate** -kommandot får inte vara samma som hostname-parametern i config. yaml eller enhetens ID i IoT Hub.
+Namnet som skickas till **create_edge_device_ca_certificate** -kommandot ska inte vara detsamma som parametern hostname i konfigurations filen, eller enhetens ID i IoT Hub.
 
 ## <a name="create-downstream-device-certificates"></a>Skapa certifikat för underordnad enhet
 

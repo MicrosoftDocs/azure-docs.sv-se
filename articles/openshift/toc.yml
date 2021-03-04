@@ -28,6 +28,8 @@
           href: dns-forwarding.md
     - name: Storage
       items:
+        - name: 'Kryptera PVC: er med kundhanterad nyckel (förhands granskning)'
+          href: howto-encrypt-data-disks.md
         - name: Skapa en Azure Files Storageclass
           href: howto-create-a-storageclass.md
         - name: Använda det inbyggda containerregistret

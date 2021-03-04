@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för data insamlings regler
 description: Exempel Azure Resource Manager mallar för att skapa associationer mellan data insamlings regler och virtuella datorer i Azure Monitor.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 60de25231f5fad3e7b1ddec21048d048e31f3416
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5ceaaa7ed9288299019f3e87d8c214e53013f5ec
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737332"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045759"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för data insamlings regler i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](./log-analytics-agent.md) och [diagnostiskt tillägg](./diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

@@ -6,17 +6,17 @@ author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817518"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043736"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Client-Side kryptering och Azure Key Vault med Java för Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ Dekryptering via kuvert tekniken fungerar på följande sätt:
 Lagrings klient biblioteket använder [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) för att kryptera användar data. Särskilt [CBC-läge (cipher block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) med AES. Varje tjänst fungerar något annorlunda, så vi diskuterar var och en av dem här.
 
 ### <a name="blobs"></a>Blobar
-Klient biblioteket har för närvarande endast stöd för kryptering av hela blobbar. Mer specifikt stöds kryptering när användarna använder metoderna **upload*** eller metoden **openOutputStream** . För hämtnings bara filer stöds både fullständig och intervall hämtning.  
+Klient biblioteket har för närvarande endast stöd för kryptering av hela blobbar. Mer specifikt stöds kryptering när användare använder metoderna **upload _ upload** eller _ *openOutputStream**. För hämtnings bara filer stöds både fullständig och intervall hämtning.  
 
 Under krypteringen genererar klient biblioteket en slumpmässig initierings vektor (IV) av 16 byte, tillsammans med en slumpmässig innehålls krypterings nyckel (CEK) på 32 byte och utför kuvert kryptering av BLOB-data med hjälp av den här informationen. Den omslutna CEK och vissa ytterligare krypterings-metadata lagras sedan som BLOB-metadata tillsammans med den krypterade blobben i tjänsten.
 
@@ -57,7 +57,7 @@ Under krypteringen genererar klient biblioteket en slumpmässig initierings vekt
 > 
 > 
 
-Genom att hämta en krypterad BLOB måste du hämta innehållet i hela blobben med hjälp av **hämtnings** / metoder för**openInputStream** . Den omslutna CEK är unwrap och används tillsammans med IV (lagras som BLOB-metadata i det här fallet) för att returnera dekrypterade data till användarna.
+Genom att hämta en krypterad BLOB måste du hämta innehållet i hela blobben med hjälp av **hämtnings** / metoder för **openInputStream** . Den omslutna CEK är unwrap och används tillsammans med IV (lagras som BLOB-metadata i det här fallet) för att returnera dekrypterade data till användarna.
 
 Genom att ladda ned ett godtyckligt intervall (**downloadRange** -metoder) i den krypterade blobben måste du justera intervallet som anges av användarna för att få en liten mängd ytterligare data som kan användas för att dekryptera det begärda intervallet.  
 
@@ -154,6 +154,12 @@ Använd till exempel **CloudBlobClient. getDefaultRequestOptions (). setRequireE
 ### <a name="blob-service-encryption"></a>Blob Service kryptering
 Skapa ett **BlobEncryptionPolicy** -objekt och ange det i alternativ för begäran (per API eller på klient nivå med hjälp av **DefaultRequestOptions**). Allt annat kommer att hanteras av klient biblioteket internt.
 
+# <a name="java-v12"></a>[Java-V12](#tab/java)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java-V8](#tab/java8)
+
 ```java
 // Create the IKey used for encryption.
 RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Kötjänst kryptering
 Skapa ett **QueueEncryptionPolicy** -objekt och ange det i alternativ för begäran (per API eller på klient nivå med hjälp av **DefaultRequestOptions**). Allt annat kommer att hanteras av klient biblioteket internt.
+
+# <a name="java-v12"></a>[Java-V12](#tab/java)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java-V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Table service kryptering
-Förutom att skapa en krypterings princip och ställa in den på begär ande alternativ måste du antingen ange en **EncryptionResolver** i **TableRequestOptions**eller ange attributet [kryptera] för entitetens get och set.
+Förutom att skapa en krypterings princip och ställa in den på begär ande alternativ måste du antingen ange en **EncryptionResolver** i **TableRequestOptions** eller ange attributet [kryptera] för entitetens get och set.
 
 ### <a name="using-the-resolver"></a>Använda matcharen
+
+# <a name="java-v12"></a>[Java-V12](#tab/java)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java-V8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>Använda attribut
 Som nämnts ovan, om entiteten implementerar TableEntity, kan egenskaperna get och set anges med attributet [kryptera] i stället för att ange **EncryptionResolver**.
+
+# <a name="java-v12"></a>[Java-V12](#tab/java)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java-V8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Kryptering och prestanda
 

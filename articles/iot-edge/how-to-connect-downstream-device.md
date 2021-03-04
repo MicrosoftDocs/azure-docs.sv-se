@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437039"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046133"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Ansluta en underordnad enhet till en Azure IoT Edge-gateway
 
@@ -127,7 +127,7 @@ Ha två saker klara innan du använder program nivå exempel:
 
 * Den fullständiga sökvägen till rot certifikat utfärdarens certifikat som du kopierade och sparade någonstans på din underordnade enhet.
 
-    Exempelvis `<path>/azure-iot-test-only.root.ca.cert.pem`.
+    Till exempel `<path>/azure-iot-test-only.root.ca.cert.pem`.
 
 ### <a name="nodejs"></a>NodeJS
 
@@ -214,7 +214,7 @@ Utdata från det här kommandot kan vara långa, inklusive information om alla c
 
 Om din löv enhet har en tillfällig anslutning till sin gateway-enhet kan du prova följande steg för att lösa problemet.
 
-1. Är Gateway-värdnamnet i anslutnings strängen detsamma som hostname-värdet i filen IoT Edge config. yaml på gateway-enheten?
+1. Är Gateway-värdnamnet i anslutnings strängen detsamma som hostname-värdet i IoT Edge konfigurations filen på gatewayenheten?
 2. Går det att matcha Gateway-värdnamnet till en IP-adress? Du kan lösa tillfälliga anslutningar antingen genom att använda DNS eller genom att lägga till en värd fil post på löv enheten.
 3. Är kommunikations portar öppna i brand väggen? Kommunikation baserat på det protokoll som används (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) måste vara möjlig mellan underordnad enhet och transparent IoT Edge.
 

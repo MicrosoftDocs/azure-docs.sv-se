@@ -1,17 +1,16 @@
 ---
 title: Distribuera Azure Monitor
 description: Beskriver de olika stegen som krävs för en fullständig implementering av Azure Monitor för att övervaka alla resurser i din Azure-prenumeration.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: f5855d7ab1f7ba8e11334f1373fb10166f47003a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7656efeb26a8a8b3c752ea996c8e644c68a48626
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708262"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044008"
 ---
 # <a name="deploy-azure-monitor"></a>Distribuera Azure Monitor
 Att aktivera Azure Monitor att övervaka alla dina Azure-resurser är en kombination av att konfigurera Azure Monitor komponenter och konfigurera Azure-resurser för att generera övervaknings data för Azure Monitor att samla in. I den här artikeln beskrivs de olika stegen som krävs för en fullständig implementering av Azure Monitor att använda en gemensam konfiguration för att övervaka alla resurser i din Azure-prenumeration. Grundläggande beskrivningar för varje steg finns med länkar till annan dokumentation för detaljerade konfigurations krav.

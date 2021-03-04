@@ -1,26 +1,24 @@
 ---
 title: Konfigurera beroende analys utan agent i Azure Migrate Server bedömning
 description: Konfigurera en agent lös beroende analys i Azure Migrate Server bedömning.
-author: rashi-ms
-ms.author: rajosh
+author: vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: d84c85326c6f5d87189a2c24a3b13654f157cb05
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754291"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045861"
 ---
-# <a name="analyze-machine-dependencies-agentless"></a>Analysera datorberoenden (agentlösa)
+# <a name="analyze-server-dependencies-agentless"></a>Analysera Server beroenden (utan agent)
 
-I den här artikeln beskrivs hur du konfigurerar en agent lös beroende analys i Azure Migrate: Server bedömning. Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera och förstå beroenden mellan datorer för utvärdering och migrering till Azure.
-
+Den här artikeln beskriver hur du konfigurerar beroende analyser utan agent med hjälp av Azure Migrate: Server bedömning. Beroende [analys](concepts-dependency-visualization.md) hjälper dig att identifiera och förstå beroenden mellan servrar för utvärdering och migrering till Azure.
 
 > [!IMPORTANT]
-> Det finns för närvarande en för hands version av en beroende visualisering för virtuella VMware-datorer som har identifierats med verktyget Azure Migrate: Server bedömning.
-> Funktioner kan vara begränsade eller ofullständiga.
+> En för hands version av en beroende analys är för närvarande en för hands version för servrar som körs i din VMware-miljö, som identifieras med verktyget Azure Migrate: Server bedömning.
 > Den här för hands versionen täcks av kund support och kan användas för produktions arbets belastningar.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -28,68 +26,74 @@ I den här artikeln beskrivs hur du konfigurerar en agent lös beroende analys i
 
 - I vyn beroende analys kan du för närvarande inte lägga till eller ta bort en server från en grupp.
 - En beroende karta för en grupp med servrar är inte tillgänglig för närvarande.
-- I ett Azure Migrate projekt kan beroende data insamling konfigureras samtidigt för 1000-servrar. Du kan analysera ett större antal servrar genom att sekvensera i batchar på 1000.
+- I ett Azure Migrate projekt kan beroende data insamling aktive ras samtidigt för 1000-servrar. Du kan analysera ett större antal servrar genom att sekvensera i batchar på 1000-servrar.
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-- [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds och de behörigheter som krävs.
-- Kontrol lera att du:
-    - Ha ett Azure Migrate-projekt. Om du inte gör det [skapar](./create-manage-projects.md) du en nu.
-    - Kontrol lera att du har [lagt](how-to-assess.md) till verktyget Azure Migrate: Server utvärderings verktyg i projektet.
-    - Konfigurera en [Azure Migrate-apparat](migrate-appliance.md) för att identifiera lokala datorer. [Konfigurera en installation](how-to-set-up-appliance-vmware.md) för virtuella VMware-datorer. Enheten identifierar lokala datorer och skickar metadata-och prestanda data till Azure Migrate: Server utvärdering.
-- Kontrol lera att VMware-verktygen (senare än 10,2) är installerade på varje virtuell dator som du vill analysera.
+- Se till att du har [skapat ett Azure Migrate-projekt](./create-manage-projects.md) med verktyget Azure Migrate: Server bedömning har lagts till.
+- Granska [VMware-kraven](migrate-support-matrix-vmware.md#vmware-requirements) för att utföra beroende analyser.
+- Granska installations [kraven](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) innan du konfigurerar installationen.
+- [Granska kraven för beroende analys](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) innan du aktiverar beroende analys på servrar.
 
+## <a name="deploy-and-configure-the-azure-migrate-appliance"></a>Distribuera och konfigurera Azure Migrate-enheten
 
-## <a name="create-a-user-account-for-discovery"></a>Skapa ett användar konto för identifiering
+1. [Granska](migrate-appliance.md#appliance---vmware) kraven för att distribuera Azure Migrate-enheten.
+2. Granska de Azure-URL: er som krävs för att få åtkomst till [molnet](migrate-appliance.md#government-cloud-urls) [offentliga](migrate-appliance.md#public-cloud-urls) och myndigheter.
+3. [Granska data](migrate-appliance.md#collected-data---vmware) som samlas in under identifiering och bedömning.
+4. [Antecknings](migrate-support-matrix-vmware.md#port-access-requirements) portens åtkomst krav för produkten.
+5. [Distribuera Azure Migrate-apparaten](how-to-set-up-appliance-vmware.md) för att starta identifieringen. För att distribuera installationen kan du hämta och importera en ägg-mall till VMware för att skapa en server som körs i din vCenter Server. När du har distribuerat installationen måste du registrera den med Azure Migrate-projektet och konfigurera den för att initiera identifieringen.
+6. När du konfigurerar installationen måste du ange följande i Konfigurations hanteraren för installationen:
+    - Information om de vCenter Server som du vill ansluta till.
+    - vCenter Server autentiseringsuppgifter som är begränsade för att identifiera servrarna i VMware-miljön.
+    - Autentiseringsuppgifter för servern, som kan vara domän-/Windows-eller Linux-autentiseringsuppgifter (inte domän). [Lär dig mer](add-server-credentials.md) om hur du anger autentiseringsuppgifter och hur vi hanterar dem.
 
-Konfigurera ett användar konto så att Server utvärderingen kan komma åt den virtuella datorn för att identifiera beroenden. [Lär dig](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) mer om konto krav för virtuella Windows-och Linux-datorer.
+## <a name="verify-permissions"></a>Kontrollera behörigheter
 
+- Du måste [skapa ett vCenter Server skrivskyddat konto](./tutorial-discover-vmware.md#prepare-vmware) för identifiering och utvärdering. Det skrivskyddade kontot måste ha behörighet för **Virtual Machines**  >  **gäst åtgärder** för att kunna samverka med servrarna för att samla in beroende data.
+- Du behöver ett användar konto så att Server utvärderingen kan få åtkomst till servern för att samla in beroende data. [Lär dig](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) mer om konto krav för Windows-och Linux-servrar.
 
-## <a name="add-the-user-account-to-the-appliance"></a>Lägg till användar kontot till enheten
+### <a name="add-credentials-and-initiate-discovery"></a>Lägg till autentiseringsuppgifter och initiera identifiering
 
-Lägg till användar kontot till enheten.
+1. Öppna Konfigurations hanteraren för installationen, slutför de nödvändiga kontrollerna och registreringen av enheten.
+2. Gå till panelen **Hantera autentiseringsuppgifter och identifierings källor** .
+1.  I **steg 1: ange vCenter Server autentiseringsuppgifter** klickar du på **Lägg till autentiseringsuppgifter** för att ange autentiseringsuppgifter för det vCenter servers konto som ska användas av enheten för att identifiera servrar som kör på vCenter Server.
+1. I **steg 2: ange vCenter Server information** klickar du på **Lägg till identifierings källa** för att välja det egna namnet för autentiseringsuppgifter i list rutan. Ange **IP-adressen/FQDN** för vCenter Server instans :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="panel 3 på installations programmet för vCenter Server information i Configuration Manager":::
+1. I **steg 3: ange autentiseringsuppgifter för servern för att utföra program varu inventering, hantering av agenter och identifiering av SQL Server instanser och databaser**, klickar du på **Lägg till autentiseringsuppgifter** för att tillhandahålla flera autentiseringsuppgifter för att initiera program varu inventeringen.
+1. Klicka på **Starta identifiering** för att starta vCenter Server identifiering.
 
-1. Öppna appen för hantering av appar. 
-2. Navigera till panelen **Tillhandahåll vCenter-information** .
-3. I **identifiera program och beroenden på virtuella datorer** klickar du på **Lägg till autentiseringsuppgifter**
-3. Välj **operativ system**, ange ett eget namn för kontot och **User name** / **lösen ordet** för användar namn
-6. Klicka på **Spara**.
-7. Klicka på **Spara och starta identifiering**.
-
-    ![Lägg till användar konto för virtuell dator](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+ När vCenter Server identifieringen är klar initierar installations programmet identifieringen av installerade program, roller och funktioner (program varu inventering). Under program varu inventeringen upprepas de tillagda servrarnas autentiseringsuppgifter mot servrar och val IDE ras för agent avsöknings analys. Du kan aktivera agent avsöknings analys för servrar från portalen. Det går bara att välja de servrar där verifieringen lyckas, för att aktivera en agent lös beroende analys.
 
 ## <a name="start-dependency-discovery"></a>Starta beroende identifiering
 
-Välj de datorer där du vill aktivera beroende identifiering. 
+Välj de servrar som du vill aktivera beroende identifiering för.
 
 1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
-2. Klicka på ikonen **beroende analys** .
-3. Klicka på **Lägg till servrar**.
-4. På sidan **Lägg till servrar** väljer du den installation som identifierar relevanta datorer.
-5. Välj datorerna i listan dator.
-6. Klicka på **Lägg till servrar**.
+2. Välj **namnet** på den enhet vars identifiering du vill granska.
+1. Du kan se validerings statusen för servrarna under **beroenden (utan agent)** .
+1. Klicka på list rutan **beroende analys** .
+1. Klicka på **Lägg till servrar**.
+1. På sidan **Lägg till servrar** väljer du de servrar där du vill aktivera beroende analys. Du kan endast aktivera beroende mappning på de servrar där verifieringen lyckades. Nästa validerings cykel körs 24 timmar efter den sista tidsstämpeln för valideringen.
+1. När du har valt servrar klickar du på **Lägg till servrar**.
 
-    ![Starta beroende identifiering](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png" alt-text="Starta beroende analys":::
 
-Du kan visualisera beroenden runt sex timmar efter start av beroende identifiering. Om du vill aktivera flera datorer kan du använda [PowerShell](#start-or-stop-dependency-discovery-using-powershell) för att göra det.
+Du kan visualisera beroenden runt sex timmar efter aktivering av beroende analys på servrar. Om du samtidigt vill aktivera flera servrar för beroende analys kan du använda [PowerShell](#start-or-stop-dependency-analysis-using-powershell) för att göra det.
 
 ## <a name="visualize-dependencies"></a>Visualisera beroenden
 
 1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
-2. Sök efter den dator som du vill visa.
-3. I kolumnen **beroenden** klickar du på **Visa beroenden**
-4. Ändra den tids period som du vill visa kartan med i list rutan **tids längd** .
-5. Expandera **klient** gruppen för att visa en lista med datorer som är beroende av den valda datorn.
-6. Expandera **port** gruppen om du vill visa en lista med datorer som är beroende av den valda datorn.
-7. Om du vill navigera till vyn karta för någon av de beroende datorerna klickar du på dator namnet > **belastnings Server karta**
+1. Välj **namnet** på den enhet vars identifiering du vill granska.
+1. Sök efter den server vars beroenden som du vill granska.
+1. Under kolumnen **beroenden (utan agent)** klickar du på **Visa beroenden**
+1. Ändra den tids period som du vill visa kartan med i list rutan **tids längd** .
+1. Expandera **klient** gruppen för att lista servrarna med ett beroende på den valda servern.
+1. Expandera **port** gruppen om du vill visa en lista över de servrar som har ett beroende från den valda servern.
+1. Om du vill navigera till kartan för någon av de beroende servrarna klickar du på Server namnet > **belastnings Server karta** 
+ :::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png" alt-text="Expandera server port grupp och läsa in Server karta":::
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/expand-client-group.png" alt-text="Expandera klient grupp":::
 
-    ![Expandera server port grupp och läsa in Server karta](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
-
-    ![Expandera klient grupp ](./media/how-to-create-group-machine-dependencies-agentless/expand-client-group.png)
-
-8. Expandera den valda datorn om du vill visa information på process nivå för varje beroende.
-
-    ![Expandera Server för att visa processer](./media/how-to-create-group-machine-dependencies-agentless/expand-server-processes.png)
+8. Expandera den valda servern om du vill visa information på process nivå för varje beroende.
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/expand-server-processes.png" alt-text="Expandera Server för att visa processer":::
 
 > [!NOTE]
 > Process information för ett beroende är inte alltid tillgängligt. Om det inte är tillgängligt visas beroendet med processen markerad som "okänd process".
@@ -97,53 +101,49 @@ Du kan visualisera beroenden runt sex timmar efter start av beroende identifieri
 ## <a name="export-dependency-data"></a>Exportera beroende data
 
 1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
-2. Klicka på ikonen **beroende analys** .
+2. Klicka på list rutan **beroende analys** .
 3. Klicka på **Exportera program beroenden**.
-4. På sidan **Exportera program beroenden** väljer du den installation som identifierar relevanta datorer.
+4. På sidan **Exportera program beroenden** väljer du namnet på den apparat som identifierar önskade servrar.
 5. Välj start tid och slut tid. Observera att du bara kan hämta data under de senaste 30 dagarna.
 6. Klicka på **Exportera beroende**.
 
-Beroende data exporteras och hämtas i CSV-format. Den hämtade filen innehåller beroende data över alla datorer som är aktiverade för beroende analys. 
-
-![Exportera beroenden](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+Beroende data exporteras och hämtas i CSV-format. Den hämtade filen innehåller beroende data över alla servrar som är aktiverade för beroende analys. 
+:::image type="content" source="./media/how-to-create-group-machine-dependencies-agentless/export.png" alt-text="Exportera beroenden":::
 
 ### <a name="dependency-information"></a>Beroende information
 
-Varje rad i den exporterade CSV-filen motsvarar ett beroende som observerats inom den angivna tids perioden. 
+Varje rad i den exporterade CSV-filen motsvarar ett beroende som observerats inom den angivna tids perioden.
 
 I följande tabell sammanfattas fälten i den exporterade CSV-filen. Observera att fälten Server namn, program och process endast fylls i för servrar som har en agent lös beroende analys aktive rad.
 
 **Fältnamn** | **Information**
 --- | --- 
 Timeslot | Timeslot under vilken beroendet observerades. <br/> Beroende data samlas in över 6 timmars fack för närvarande.
-Käll Server namn | Namnet på käll datorn 
-Käll program | Namnet på programmet på käll datorn 
-Käll process | Namnet på processen på käll datorn 
-Mål server namn | Namnet på mål datorn
-Mål-IP-adress | Mål datorns IP-adress
-Mål program | Namnet på programmet på mål datorn
-Mål process | Namnet på processen på mål datorn 
-Målport | Port nummer på mål datorn
-
+Käll Server namn | Namn på käll servern 
+Käll program | Namnet på programmet på käll servern  
+Käll process | Namnet på processen på käll servern  
+Mål server namn | Namnet på mål servern
+Mål-IP-adress | IP-adress för mål servern
+Mål program | Namnet på programmet på mål servern
+Mål process | Namnet på processen på mål servern  
+Målport | Port nummer på mål servern
 
 ## <a name="stop-dependency-discovery"></a>Stoppa beroende identifiering
 
-Välj de datorer där du vill stoppa beroende identifiering. 
+Välj de servrar som du vill stoppa beroende identifiering för.
 
 1. Klicka på **identifierade servrar** i **Azure Migrate: Server bedömning**.
-2. Klicka på ikonen **beroende analys** .
-3. Klicka på **ta bort servrar**.
-3. På sidan **ta bort servrar** **väljer du den installation som identifierar** de virtuella datorer där du vill stoppa beroende identifiering.
-4. Välj datorerna i listan dator.
-5. Klicka på **ta bort servrar**.
+1. Välj **namnet** på den enhet vars identifiering du vill granska.
+1. Klicka på list rutan **beroende analys** .
+1. Klicka på **ta bort servrar**.
+1. På sidan **ta bort servrar** väljer du den server som du vill stoppa för beroende analys.
+1. När du har valt servrar klickar du på **ta bort servrar**.
 
-Om du vill stoppa beroendet på flera datorer kan du använda [PowerShell](#start-or-stop-dependency-discovery-using-powershell) för att göra det.
+Om du vill stoppa beroende samtidigt på flera servrar kan du använda [PowerShell](#start-or-stop-dependency-analysis-using-powershell) för att göra det.
 
-
-## <a name="start-or-stop-dependency-discovery-using-powershell"></a>Starta eller stoppa beroende identifiering med PowerShell
+## <a name="start-or-stop-dependency-analysis-using-powershell"></a>Starta eller stoppa beroende analys med hjälp av PowerShell
 
 Ladda ned PowerShell-modulen från [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) lagrings platsen på GitHub.
-
 
 ### <a name="log-in-to-azure"></a>Logga in på Azure
 
@@ -171,23 +171,23 @@ Ladda ned PowerShell-modulen från [Azure PowerShell samples](https://github.com
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>Aktivera eller inaktivera insamling av beroende data
 
-1. Hämta listan med identifierade virtuella VMware-datorer i ditt Azure Migrate-projekt med hjälp av följande kommandon. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Listan över datorer kommer att sparas i FabrikamDemo_VMs.csv
+1. Hämta listan över identifierade servrar i ditt Azure Migrate-projekt med hjälp av följande kommandon. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Listan över servrar kommer att sparas i FabrikamDemo_VMs.csv
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
     ```
 
-    I filen kan du se namnet på den virtuella datorns visnings namn, aktuell status för beroende samling och ARM-ID för alla identifierade virtuella datorer. 
+    I filen kan du se serverns visnings namn, aktuell status för beroende samling och ARM-ID för alla identifierade servrar. 
 
-2. Om du vill aktivera eller inaktivera beroenden skapar du en CSV-fil med indata. Filen måste ha en kolumn med huvudet "ARM-ID". Eventuella ytterligare rubriker i CSV-filen ignoreras. Du kan skapa en CSV-fil med hjälp av filen som genererades i föregående steg. Skapa en kopia av filen som behåller de virtuella datorer som du vill aktivera eller inaktivera beroenden för. 
+2. Om du vill aktivera eller inaktivera beroenden skapar du en CSV-fil med indata. Filen måste ha en kolumn med huvudet "ARM-ID". Eventuella ytterligare rubriker i CSV-filen ignoreras. Du kan skapa en CSV-fil med hjälp av filen som genererades i föregående steg. Skapa en kopia av filen som behåller de servrar som du vill aktivera eller inaktivera beroenden för. 
 
-    I följande exempel aktive ras beroende analys i listan över virtuella datorer i indatafilen FabrikamDemo_VMs_Enable.csv.
+    I följande exempel aktive ras beroende analys på listan med servrar i indatafilen FabrikamDemo_VMs_Enable.csv.
 
     ```PowerShell
     Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Enable.csv -Enable
     ```
 
-    I följande exempel inaktive ras beroende analys i listan över virtuella datorer i indatafilen FabrikamDemo_VMs_Disable.csv.
+    I följande exempel inaktive ras beroende analys på listan med servrar i indatafilen FabrikamDemo_VMs_Disable.csv.
 
     ```PowerShell
     Set-AzMigDependencyMappingAgentless -InputCsvFile .\FabrikamDemo_VMs_Disable.csv -Disable
@@ -200,23 +200,23 @@ Azure Migrate erbjuder en Power BI mall som du kan använda för att visualisera
 1. Ladda ned PowerShell-modulen och Power BI mal len från [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) lagrings platsen på GitHub.
 
 2. Logga in på Azure med hjälp av anvisningarna nedan: 
-- Logga in på Azure-prenumerationen med hjälp av Connect-AzAccount cmdlet.
+    - Logga in på Azure-prenumerationen med hjälp av Connect-AzAccount cmdlet.
 
-    ```PowerShell
-    Connect-AzAccount
-    ```
+        ```PowerShell
+        Connect-AzAccount
+        ```
 
-- Om du använder Azure Government använder du följande kommando.
+    - Om du använder Azure Government använder du följande kommando.
 
-    ```PowerShell
-    Connect-AzAccount -EnvironmentName AzureUSGovernment
-    ```
+        ```PowerShell
+        Connect-AzAccount -EnvironmentName AzureUSGovernment
+        ```
 
-- Välj den prenumeration där du har skapat Azure Migrate-projektet 
+    - Välj den prenumeration där du har skapat Azure Migrate-projektet
 
-    ```PowerShell
-    select-azsubscription -subscription "Fabrikam Demo Subscription"
-    ```
+        ```PowerShell
+        select-azsubscription -subscription "Fabrikam Demo Subscription"
+        ```
 
 3. Importera den hämtade AzMig_Dependencies PowerShell-modulen
 
@@ -224,7 +224,7 @@ Azure Migrate erbjuder en Power BI mall som du kan använda för att visualisera
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-4. Kör följande kommando. Det här kommandot hämtar beroende data i en CSV och bearbetar dem för att generera en lista med unika beroenden som kan användas för visualisering i Power BI. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Beroendena hämtas för datorer som identifieras av FabrikamAppliance. De unika beroendena kommer att sparas i FabrikamDemo_Dependencies.csv
+4. Kör följande kommando. Det här kommandot hämtar beroende data i en CSV och bearbetar dem för att generera en lista med unika beroenden som kan användas för visualisering i Power BI. I exemplet nedan är projekt namnet FabrikamDemoProject och den resurs grupp som det tillhör är FabrikamDemoRG. Beroendena hämtas för servrar som identifieras av FabrikamAppliance. De unika beroendena kommer att sparas i FabrikamDemo_Dependencies.csv
 
     ```PowerShell
     Get-AzMigDependenciesAgentless -ResourceGroup FabrikamDemoRG -Appliance FabrikamAppliance -ProjectName FabrikamDemoProject -OutputCsvFile "FabrikamDemo_Dependencies.csv"
@@ -245,7 +245,6 @@ Azure Migrate erbjuder en Power BI mall som du kan använda för att visualisera
 
 7. Visualisera kartan över filtrering av nätverks anslutningar efter servrar och processer. Spara filen.
 
-
 ## <a name="next-steps"></a>Nästa steg
 
-[Gruppera datorer](how-to-create-a-group.md) för utvärdering.
+[Grupp servrar](how-to-create-a-group.md) för utvärdering.

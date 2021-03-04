@@ -4,19 +4,19 @@ description: Använd den här artikeln för att lösa vanliga problem som uppst�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382216"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045980"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Vanliga problem och lösningar för Azure IoT Edge
 
@@ -216,6 +216,9 @@ IoT Edge runtime kan bara stödja värdnamn som är kortare än 64 tecken. Fysis
 
 När du ser det här felet kan du lösa det genom att konfigurera den virtuella datorns DNS-namn och sedan ange DNS-namnet som värdnamn i installations kommandot.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. I Azure Portal går du till översikts sidan för den virtuella datorn.
 2. Välj **Konfigurera** under DNS-namn. Om du redan har konfigurerat ett DNS-namn på den virtuella datorn behöver du inte konfigurera någon ny.
 
@@ -236,6 +239,39 @@ När du ser det här felet kan du lösa det genom att konfigurera den virtuella 
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. I Azure Portal går du till översikts sidan för den virtuella datorn.
+
+2. Välj **Konfigurera** under DNS-namn. Om du redan har konfigurerat ett DNS-namn på den virtuella datorn behöver du inte konfigurera någon ny.
+
+   ![Konfigurera DNS-namnet för den virtuella datorn](./media/troubleshoot/configure-dns.png)
+
+3. Ange ett värde för **DNS-namn etikett** och välj **Spara**.
+
+4. Kopiera det nya DNS-namnet som ska vara i formatet **\<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
+
+5. Öppna konfigurations filen på den IoT Edge enheten.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. Ersätt värdet för `hostname` med ditt DNS-namn.
+
+7. Spara och Stäng filen och tillämpa sedan ändringarna på IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Det går inte att hämta IoT Edge daemon-loggar i Windows
 
@@ -343,7 +379,7 @@ IoT Edge daemon är aktiv med en giltig konfigurations fil, men kan inte starta 
 
 **Rotor saken:**
 
-IoT Edge enheter bakom en gateway får sina modulblad från den överordnade IoT Edges enhet som anges i `parent_hostname` fältet i filen config. yaml. `Could not perform HTTP request`Felet innebär att den underordnade enheten inte kan komma åt den överordnade enheten via http.
+IoT Edge enheter bakom en gateway får sina modulblad från den överordnade IoT Edges enhet som anges i `parent_hostname` fältet i konfigurations filen. `Could not perform HTTP request`Felet innebär att den underordnade enheten inte kan komma åt den överordnade enheten via http.
 
 **Lösning:**
 

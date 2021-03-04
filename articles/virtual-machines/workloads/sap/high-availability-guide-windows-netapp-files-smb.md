@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669825"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045844"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hög tillgänglighet för SAP NetWeaver på virtuella Azure-datorer i Windows med Azure NetApp Files (SMB) för SAP-program
 
@@ -82,6 +82,9 @@ Läs följande SAP-anteckningar och dokument först:
 * [Installation av en (A) SCS-instans i ett redundanskluster](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Skapa en SMB-volym för Azure NetApp Files](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp SAP-program på Microsoft Azure med Azure NetApp Files][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> Varning! Du kan vara medveten om att installationen av ett SAP-system med SWPM på SMB-resurs, som finns på [Azure NetApp Files][anf-azure-doc] SMB-volym, Miss lyckas med installations fel för otillräckliga behörigheter som "warningPerm har inte definierats". För att undvika felet, behöver användaren under vilka kontext-SWPM körs, ha förhöjd behörighet "domän administratör" under installationen av SAP-systemet.  
 
 ## <a name="overview"></a>Översikt
 

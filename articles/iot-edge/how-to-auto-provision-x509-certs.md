@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 04/09/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ee51b31246760e4619eef1e16e800b16ea886de0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: f4b33b0156f1a5e27f71509cad637684a0332413
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430721"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046167"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Skapa och etablera en IoT Edge-enhet med X. 509-certifikat
 
@@ -52,10 +52,14 @@ Du behöver följande filer för att konfigurera automatisk etablering med X. 50
 * Ett fullständigt kedje certifikat, som minst måste ha enhets identitet och mellanliggande certifikat. Det fullständiga kedje certifikatet skickas till IoT Edge Runtime.
 * Ett mellanliggande certifikat eller rotcertifikatutfärdarcertifikat från certifikat kedjan. Det här certifikatet överförs till DPS om du skapar en grupp registrering.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 > [!NOTE]
 > För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
 
-### <a name="use-test-certificates"></a>Använd test certifikat
+:::moniker-end
+
+### <a name="use-test-certificates-optional"></a>Använd test certifikat (valfritt)
 
 Om du inte har någon certifikat utfärdare som är tillgänglig för att skapa nya identitets certifikat och vill testa det här scenariot innehåller Azure IoT Edge git-lagringsplats skript som du kan använda för att generera test certifikat. Dessa certifikat är endast utformade för utvecklings testning och får inte användas i produktion.
 
@@ -227,18 +231,21 @@ Ha följande information redo:
 
 ### <a name="linux-device"></a>Linux-enhet
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Öppna konfigurations filen på den IoT Edge enheten.
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. Hitta konfigurations avsnittet för etablering i filen. Ta bort kommentarer till raderna för etablering av DPS symmetrisk nyckel och se till att alla andra etablerings rader är kommenterade.
+1. Hitta konfigurations avsnittet för etablering i filen. Ta bort kommentarer till raderna för DPS-509 för DPS X. och se till att alla andra etablerings rader är kommenterade.
 
    `provisioning:`Raden ska inte ha något föregående blank steg, och kapslade objekt bör dras av två blank steg.
 
    ```yml
-   # DPS TPM provisioning configuration
+   # DPS X.509 provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
@@ -252,8 +259,6 @@ Ha följande information redo:
    #  dynamic_reprovisioning: false
    ```
 
-   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
-
 1. Uppdatera värdena för `scope_id` , `identity_cert` och `identity_pk` med din DPS-och enhets information.
 
    När du lägger till X. 509-certifikatet och nyckelinformation i filen config. yaml ska Sök vägarna anges som fil-URI: er. Exempel:
@@ -261,13 +266,74 @@ Ha följande information redo:
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. Ange en `registration_id` för enheten om du vill, eller lämna den här raden kommenterad om du vill registrera enheten med CN-namnet för identitets certifikatet.
+1. Du kan också ange en `registration_id` för enheten. Annars lämnar du raden kommenterad för att registrera enheten med CN-namnet på identitets certifikatet.
+
+1. Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
+
+1. Spara och Stäng filen config. yaml.
 
 1. Starta om IoT Edge runtime så att den hämtar alla konfigurations ändringar som du har gjort på enheten.
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Skapa en konfigurations fil för enheten baserat på en mallfil som tillhandahålls som en del av IoT Edge installationen.
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. Öppna konfigurations filen på den IoT Edge enheten.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Hitta **etablerings** avsnittet i filen. Ta bort kommentarer till raderna för DPS-etablering med X. 509-certifikat och se till att alla andra etablerings rader är kommenterade.
+
+   ```toml
+   # DPS provisioning with X.509 certificate
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "x509"
+   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+
+   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+1. Uppdatera värdena för `id_scope` , `identity_cert` och `identity_pk` med din DPS-och enhets information.
+
+   Värdet för identitets certifikatet kan anges som en fil-URI eller dynamiskt utfärdas med hjälp av EST eller en lokal certifikat utfärdare. Ta bort kommentaren till en rad, baserat på det format som du väljer att använda.
+
+   Värdet för identitetens privata nyckel kan anges som en fil-URI eller en PKCS # 11-URI. Ta bort kommentaren till en rad, baserat på det format som du väljer att använda.
+
+   Om du använder några PKCS # 11-URI: er, letar du upp **PKCS # 11** -avsnittet i konfigurations filen och ger information om din PKCS # 11-konfiguration.
+
+1. Du kan också ange en `registration_id` för enheten. Annars lämnar du raden kommenterad för att registrera enheten med identitets certifikatets eget namn.
+
+1. Spara och stäng filen.
+
+1. Tillämpa de konfigurations ändringar som du har gjort i IoT Edge.
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows-enhet
 
@@ -287,7 +353,7 @@ Ha följande information redo:
    ```
 
    >[!TIP]
-   >Config. yaml-filen lagrar ditt certifikat och viktig information som fil-URI: er. Men kommandot Initialize-IoTEdge hanterar den här formateringen för dig, så att du kan ange den absoluta sökvägen till certifikatet och nyckelfilen på enheten.
+   >Konfigurations filen lagrar ditt certifikat och viktig information som fil-URI: er. Men kommandot Initialize-IoTEdge hanterar den här formateringen för dig, så att du kan ange den absoluta sökvägen till certifikatet och nyckelfilen på enheten.
 
 ## <a name="verify-successful-installation"></a>Verifiera lyckad installation
 
@@ -298,6 +364,9 @@ Du kan kontrol lera att den enskilda registrering som du skapade i enhets etable
 Använd följande kommandon på enheten för att kontrol lera att körningen har installerats och startats.
 
 ### <a name="linux-device"></a>Linux-enhet
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Kontrollera status för IoT Edge-tjänsten.
 
@@ -316,6 +385,29 @@ Lista med moduler som körs.
 ```cmd/sh
 iotedge list
 ```
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Kontrollera status för IoT Edge-tjänsten.
+
+```cmd/sh
+sudo iotedge system status
+```
+
+Undersök tjänst loggar.
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+Lista med moduler som körs.
+
+```cmd/sh
+sudo iotedge list
+```
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows-enhet
 

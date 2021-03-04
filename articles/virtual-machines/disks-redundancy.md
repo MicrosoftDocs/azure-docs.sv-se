@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cafbff86a55ad0bed7da17fcef1aea2b0a53d1b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680208"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043651"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>Alternativ för redundans för hanterade diskar
 
@@ -34,7 +34,7 @@ Om arbets flödet inte stöder synkrona skrivningar på program nivå över zone
 
 Zone-redundant lagring (ZRS) replikerar din Azure-hanterade disk synkront över tre tillgänglighets zoner i Azure i den valda regionen. Varje tillgänglighetszon är en separat fysisk plats med fristående strömförsörjning, nedkylning och nätverk. 
 
-Med ZRS-diskar kan du återställa från fel i tillgänglighets zoner. Om en hel zon har gått ned kan en ZRS-disk kopplas till en virtuell dator i en annan zon. Du kan också använda ZRS diskar i kombination med delade diskar för att ge bättre tillgänglighet för klustrade eller distribuerade program som SQL FCI, SAP ASCS/SCS eller GFS2. Du kan koppla en delad ZRS-disk till primära och sekundära virtuella datorer i olika zoner för att dra nytta av både ZRS och [Tillgänglighetszoner](../availability-zones/az-overview.md). Om din primära zon Miss lyckas kan du snabbt redundansväxla till den sekundära virtuella datorn med hjälp av [SCSI-beständig reservation](disks-shared-enable.md#supported-scsi-pr-commands).
+Med ZRS-diskar kan du återställa från fel i tillgänglighets zoner. Om en hel zon har gått ned kan en ZRS-disk kopplas till en virtuell dator i en annan zon. Du kan också använda ZRS diskar som en delad disk för att ge förbättrad tillgänglighet för klustrade eller distribuerade program som SQL FCI, SAP ASCS/SCS eller GFS2. Du kan koppla en delad ZRS-disk till primära och sekundära virtuella datorer i olika zoner för att dra nytta av både ZRS och [Tillgänglighetszoner](../availability-zones/az-overview.md). Om din primära zon Miss lyckas kan du snabbt redundansväxla till den sekundära virtuella datorn med hjälp av [SCSI-beständig reservation](disks-shared-enable.md#supported-scsi-pr-commands).
 
 ### <a name="limitations"></a>Begränsningar
 
@@ -56,7 +56,7 @@ Med undantag för mer Skriv fördröjning är diskar som använder ZRS identiska
 
 ### <a name="create-zrs-managed-disks"></a>Skapa ZRS Managed disks
 
-Du måste använda `2020-12-01` API: et med din Azure Resource Manager-mall för att skapa en ZRS-disk.
+Använd `2020-12-01` API: et med din Azure Resource Manager-mall för att skapa en ZRS-disk.
 
 #### <a name="create-a-vm-with-zrs-disks"></a>Skapa en virtuell dator med ZRS-diskar
 
@@ -120,3 +120,7 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+
+## <a name="next-steps"></a>Nästa steg
+
+- Använd dessa exempel [Azure Resource Manager mallar för att skapa en virtuell dator med ZRS-diskar](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks).

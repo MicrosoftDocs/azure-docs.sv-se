@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8752886bc5304de420083212d29ccd3e1cb14084
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488246"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043702"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Justera brand vägg för webbaserade program (WAF) för Azure-front dörr
  
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 Om du testar begäran blockerar WAF trafik som innehåller din *1 = 1* -sträng i valfri parameter eller fält. Detta är en sträng som ofta är kopplad till en SQL-attack. Du kan titta igenom loggarna och se tidsstämpeln för begäran och reglerna som har blockerats/matchats.
  
-I följande exempel utforskar vi en `FrontdoorWebApplicationFirewallLog` logg som genererats på grund av en regel matchning.
+I följande exempel utforskar vi en `FrontdoorWebApplicationFirewallLog` logg som genererats på grund av en regel matchning. Följande Log Analytics fråga kan användas för att söka efter begär Anden som har blockerats under de senaste 24 timmarna:
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-I fältet "requestUri" kan du se att begäran har gjorts `/api/Feedbacks/` specifikt. Nu hittar vi regel-ID: t `942110` i fältet "ruleName". Genom att känna till regel-ID: t kan du gå till [OWASP ModSecurity Core Rule uppsättnings officiella lagrings plats](https://github.com/coreruleset/coreruleset) och söka utifrån [regel-ID: t](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) för att granska koden och förstå exakt vad den här regeln matchar. 
+I `requestUri` fältet kan du se att begäran har gjorts `/api/Feedbacks/` specifikt. Nu hittar vi regel-ID: t `942110` i `ruleName` fältet. Genom att känna till regel-ID: t kan du gå till [OWASP ModSecurity Core Rule uppsättnings officiella lagrings plats](https://github.com/coreruleset/coreruleset) och söka utifrån [regel-ID: t](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) för att granska koden och förstå exakt vad den här regeln matchar. 
  
 När du sedan kontrollerar `action` fältet ser vi att den här regeln är inställd på blockera begär Anden vid matchning, och vi bekräftar att begäran faktiskt blockeras av WAF eftersom `policyMode` är inställt på `prevention` . 
  
@@ -181,7 +189,7 @@ I exemplet nedan har vi skapat en anpassad regel med två villkor. Det första v
 
 Med hjälp av en anpassad regel kan du vara mest detaljerad när du finjusterar dina WAF-regler och hanterar falska positiva identifieringar. I det här fallet vidtar vi inte åtgärder baserat på värdet för `comment` begär ande texten, som kan finnas på flera webbplatser eller i appar i samma WAF-princip. Genom att inkludera ett annat villkor som också matchar i en viss begär ande-URI `/api/Feedbacks/` , ser vi till att den här anpassade regeln verkligen gäller för det explicita användnings fall som vi testats ut. Detta säkerställer att samma attack, om det utförs mot olika villkor, fortfarande kommer att inspekteras och förhindras av WAF-motorn.
 
-![Logga](../media/waf-front-door-tuning/custom-rule.png)
+![Loggas](../media/waf-front-door-tuning/custom-rule.png)
 
 När du utforskar loggen kan du se att `ruleName_s` fältet innehåller det namn som angavs för den anpassade regel som vi skapade: `redirectcomment` . I `action_s` fältet kan du se att *omdirigerings* åtgärden vidtogs för den här händelsen. I `details_matches_s` fältet kan vi se information om båda villkoren matchades.
 
@@ -196,6 +204,9 @@ Att inaktivera en regel är dock en global inställning som gäller för alla kl
 Om du vill använda Azure PowerShell för att inaktivera en hanterad regel, se [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) objekt dokumentationen. Om du vill använda Azure CLI kan du läsa mer i [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) dokumentationen.
 
 ![WAF-regler](../media/waf-front-door-tuning/waf-rules.png)
+
+> [!TIP]
+> Det är en bra idé att dokumentera eventuella ändringar som du gör i WAF-principen. Inkludera exempel begär Anden för att illustrera falsk positiv identifiering och klart förklara varför du har lagt till en anpassad regel, inaktiverat en regel eller ruleset eller lagt till ett undantag. Den här dokumentationen kan vara till hjälp om du omdesignerar programmet i framtiden och behöver kontrol lera att ändringarna fortfarande är giltiga. Det kan också hjälpa om du någonsin har granskat eller behöver motivera att du har konfigurerat om WAF-principen från standardinställningarna.
 
 ## <a name="finding-request-fields"></a>Hitta begär ande fält
 

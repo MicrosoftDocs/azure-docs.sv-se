@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för agenter
 description: Exempel Azure Resource Manager mallar för att distribuera och konfigurera virtuella dator agenter i Azure Monitor.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4d4f9b7caed81f8c01e7e2d7e9f94ec3acf3ba92
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9aae62b9f4ca74b11c4f62c44f6d310628d36316
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737349"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045776"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Exempel på Resource Manager-mallar för agenter i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](./log-analytics-agent.md) och [diagnostiskt tillägg](./diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

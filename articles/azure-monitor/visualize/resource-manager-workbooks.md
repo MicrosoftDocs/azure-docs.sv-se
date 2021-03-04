@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för arbets böcker
 description: Exempel Azure Resource Manager mallar för att distribuera Azure Monitor arbets böcker.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 1a3a67ff223199663d35ffad3b39cdbf0c020d98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bcd477d30c74f12e2836f41facec23103547c31b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043515"
 ---
 # <a name="resource-manager-template-samples-for-workbooks-in-azure-monitor"></a>Exempel på Resource Manager-mallar för arbets böcker i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa arbets böcker i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

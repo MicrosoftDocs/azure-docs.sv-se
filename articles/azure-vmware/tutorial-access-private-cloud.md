@@ -3,12 +3,12 @@ title: Självstudie – åtkomst till ditt privata moln
 description: Lär dig hur du kommer åt ett privat moln i Azure VMware-lösningen
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 81296223ab941633a4b0f1316e359a0eb2ff73ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738488"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045011"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Självstudie: få åtkomst till ett privat moln i Azure VMware-lösningen
 
@@ -37,7 +37,7 @@ I den här guiden får du lära dig att:
    >[!TIP]
    >Välj **skapa ett nytt lösen ord** om du vill generera nya vCenter-och NSX-lösenord.
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Visa URL: er och autentiseringsuppgifter för privata moln-vCenter och NSX Manager." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. Navigera till den virtuella dator som du skapade i föregående steg och Anslut till den virtuella datorn. 
 

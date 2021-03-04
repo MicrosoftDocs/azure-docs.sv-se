@@ -1,17 +1,16 @@
 ---
 title: En referens guide till View Designer-delar i Azure Monitor | Microsoft Docs
 description: Med hjälp av View Designer i Azure Monitor kan du skapa anpassade vyer som visas i Azure Portal och som innehåller en mängd olika visualiseringar på data i arbets ytan Log Analytics. Den här artikeln är en referens guide för inställningarna för de visualiserings delar som är tillgängliga i dina anpassade vyer.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 074c5dda8ff8d5f837e8ea2a85c183c69421bedb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e971db01322fc031dd0fa8abe82f76a5b45d256
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710880"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045266"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referens guide för att Visa designer visualiserings delar i Azure Monitor
 Med hjälp av View Designer i Azure Monitor kan du skapa en mängd olika anpassade vyer i Azure Portal som kan hjälpa dig att visualisera data i din Log Analytics-arbetsyta. Den här artikeln är en referens guide för inställningarna för de visualiserings delar som är tillgängliga i dina anpassade vyer.

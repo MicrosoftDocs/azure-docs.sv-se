@@ -6,14 +6,14 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 509b6efbbd8f40b0787ea2cc9a4bdc1b3370a0f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055203"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044365"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Så här kopplar du bort en datadisk från en virtuell Windows-dator
 
@@ -53,10 +53,10 @@ Du kan ta bort en datadisk med *snabb* borttagning, men se till att inget aktivt
 1. På den vänstra menyn väljer du **Virtual Machines**.
 1. Välj den virtuella dator som innehåller den datadisk som du vill koppla från.
 1. Välj **Diskar** under **Inställningar**.
-1. I rutan **diskar** längst till höger på den datadisk som du vill koppla från, klickar du på knappen X- **koppla** .
+1. I rutan **diskar** längst till höger på den datadisk som du vill koppla från väljer du knappen **X** för att koppla från.
 1. Spara ändringarna genom att välja **Spara** längst upp på sidan.
 
-Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtuell dator.
+Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtuell dator. Disken tas inte bort.
 
 ## <a name="next-steps"></a>Nästa steg
 

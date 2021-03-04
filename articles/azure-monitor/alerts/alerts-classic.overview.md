@@ -3,13 +3,12 @@ title: Översikt över klassiska varningar i Azure Monitor
 description: Klassiska varningar är inaktuella. Med aviseringar kan du övervaka Azures resurs mått, händelser eller loggar och meddelas när ett villkor som du anger är uppfyllt.
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.subservice: alerts
-ms.openlocfilehash: 38b393281692ac14083a0a8bbf5b8908b5758a39
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bce29c94c3cbacd5b7e38cf30b699ab5ca57f904
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737315"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045436"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Vad är klassiska aviseringar i Microsoft Azure?
 
