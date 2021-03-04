@@ -2,15 +2,15 @@
 title: ARM-mall vanliga frågor och svar
 description: Vanliga frågor och svar om Azure Resource Manager mallar (ARM-mallar).
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561910"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036148"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Vanliga frågor om ARM-mallar
 
@@ -88,7 +88,7 @@ I den här artikeln får du svar på vanliga frågor om Azure Resource Manager m
 
 * **Jag har hört att du arbetar med ett nytt språk för mallar. Var hittar jag mer information?**
 
-  För att förhandsgranska det nya språket, se [projekt bicep-lagringsplatsen](https://github.com/Azure/bicep). [Registrera dig för meddelanden för](https://aka.ms/armLangUpdates)att hålla dig informerad om det nya språket.
+  Läs mer om det nya språket i [Vad är bicep (för hands version)?](bicep-overview.md).
 
 * **Finns det någon plan för att stödja att skapa mallar i YAML?**
 
@@ -100,7 +100,7 @@ I den här artikeln får du svar på vanliga frågor om Azure Resource Manager m
 
 * **Kommer du att erbjuda ett verktyg för att konvertera mina JSON-mallar till det nya mall språket?**
 
-  Ja.
+  Ja. Se [dekompilera JSON till bicep](compare-template-syntax.md#decompile-json-to-bicep).
 
 ## <a name="template-specs"></a>Mallspecifikationer
 

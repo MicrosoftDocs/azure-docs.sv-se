@@ -4,21 +4,21 @@ description: Incident svar för Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 002/22/2021
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 40a88349040482b3325e63d7035dea35df444cdb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9295482c2464eb80bc49fa707744f49a2fbebfd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698594"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035385"
 ---
 # <a name="security-control-v2-incident-response"></a>Säkerhets kontroll v2: incident svar
 
 Incident svar omfattar kontroller i incident svars livs cykel-förberedelse, identifiering och analys, inne slutning och efter incident aktiviteter. Detta inkluderar användning av Azure-tjänster som Azure Security Center och Sentinel för att automatisera incident svars processen.
 
-Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: incident svar](../../governance/policy/samples/azure-security-benchmark#incident-response)
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: incident svar](../../governance/policy/samples/azure-security-benchmark.md#incident-response)
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Förberedelse – uppdatera processen för svar på incidenter i Azure
 

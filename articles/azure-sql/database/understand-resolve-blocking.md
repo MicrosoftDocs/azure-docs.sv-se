@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034905"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Förstå och lösa Azure SQL Database spärrnings problem
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>Samla in information från utökade händelser
 
-Förutom ovanstående information är det ofta nödvändigt att samla in en spårning av aktiviteterna på servern för att noggrant undersöka ett blockerande problem på Azure SQL Database. Om en session exempelvis kör flera instruktioner i en transaktion, visas bara den sista instruktionen som skickades. Ett av de tidigare instruktionerna kan dock vara orsaken till att låsen fortfarande hålls. En spårning gör att du kan se alla kommandon som körs av en session i den aktuella transaktionen.
+Förutom den tidigare informationen är det ofta nödvändigt att samla in en spårning av aktiviteterna på servern för att noggrant undersöka ett blockerande problem på Azure SQL Database. Om en session exempelvis kör flera instruktioner i en transaktion, visas bara den sista instruktionen som skickades. Ett av de tidigare instruktionerna kan dock vara orsaken till att låsen fortfarande hålls. En spårning gör att du kan se alla kommandon som körs av en session i den aktuella transaktionen.
 
 Det finns två sätt att samla in spårningar i SQL Server. Utökade händelser (XEvents) och profiler spårar. Men [SQL Server profiler](/sql/tools/sql-server-profiler/sql-server-profiler) är föråldrad spårnings teknik som inte stöds för Azure SQL Database. [Utökade händelser](/sql/relational-databases/extended-events/extended-events) är den nyare spårnings tekniken som ger mer mångsidighet och mindre påverkan på det observerade systemet, och dess gränssnitt är integrerat i SQL Server Management Studio (SSMS). 
 
@@ -238,7 +238,7 @@ Se dokumentet som förklarar hur du använder [guiden Ny session för utökade h
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>Identifiera och lösa vanliga spärrnings scenarier
 
-Genom att undersöka ovanstående information kan du fastställa orsaken till de flesta spärrnings problem. Resten av den här artikeln är en beskrivning av hur du använder den här informationen för att identifiera och lösa några vanliga spärrnings scenarier. Den här diskussionen förutsätter att du har använt blockerade skript (refererad tidigare) för att samla in information om blockerade SPID och har insamlat program aktivitet med hjälp av en XEvent-session.
+Genom att undersöka föregående information kan du fastställa orsaken till de flesta spärrnings problem. Resten av den här artikeln är en beskrivning av hur du använder den här informationen för att identifiera och lösa några vanliga spärrnings scenarier. Den här diskussionen förutsätter att du har använt blockerade skript (refererad tidigare) för att samla in information om blockerade SPID och har insamlat program aktivitet med hjälp av en XEvent-session.
 
 ## <a name="analyze-blocking-data"></a>Analysera data som blockeras 
 
@@ -334,7 +334,7 @@ Tabellen nedan mappar vanliga symtom till troliga orsaker.
 | 5 | NULL | \>0,0 | ånger | Ja. | En Attention-signal kan visas i den utökade händelse-sessionen för denna SPID, vilket indikerar att tids gränsen för frågor är slut eller Avbryt har inträffat, eller att en återställnings instruktion har utfärdats. |  
 | 6 | NULL | \>0,0 | sätt | Slutligen. När Windows NT fastställer att sessionen inte längre är aktiv, kommer Azure SQL Database anslutningen att brytas. | `last_request_start_time`Värdet i sys.dm_exec_sessions är mycket tidigare än den aktuella tiden. |
 
-Följande scenarier kommer att utökas i dessa scenarier. 
+## <a name="detailed-blocking-scenarios"></a>Detaljerade spärrnings scenarier
 
 1.  Blockering som orsakas av en fråga som normalt körs med en lång körnings tid
 
@@ -366,7 +366,7 @@ Följande scenarier kommer att utökas i dessa scenarier.
 
     Utdata från den andra frågan anger att transaktions kapslings nivån är en. Alla lås som har köpts i transaktionen hålls kvar tills transaktionen genomfördes eller återställdes. Om program explicit öppnar och genomför transaktioner kan en kommunikation eller ett annat fel lämna sessionen och dess transaktion i öppet tillstånd. 
 
-    Använd skriptet ovan baserat på sys.dm_tran_active_transactions för att identifiera transaktioner som inte är allokerade.
+    Använd skriptet tidigare i den här artikeln baserat på sys.dm_tran_active_transactions för att identifiera ej allokerade transaktioner över instansen.
 
     **Lösningar**:
 
@@ -377,6 +377,7 @@ Följande scenarier kommer att utökas i dessa scenarier.
             *    Kör följande fel i klient programmets fel hanterare `IF @@TRANCOUNT > 0 ROLLBACK TRAN` , även om klient programmet inte tror att en transaktion är öppen. Det krävs en sökning efter öppna transaktioner, eftersom en lagrad procedur som anropas under batchen kunde starta en transaktion utan klient programmets kunskap. Vissa villkor, till exempel att avbryta frågan, förhindrar att proceduren körs förbi den aktuella instruktionen, så även om proceduren har logik för att kontrol lera `IF @@ERROR <> 0` och avbryta transaktionen utförs inte återställnings koden i sådana fall.  
             *    Om anslutningspoolen används i ett program som öppnar anslutningen och kör ett litet antal frågor innan anslutningen till poolen skickas tillbaka till poolen, t. ex. ett webbaserat program, kan tillfälliga inaktive ring av anslutningspoolen minimera problemet tills klient programmet har ändrats för att hantera felen på lämpligt sätt. Genom att inaktivera anslutningspoolen, orsakar en anslutning av anslutningen en fysisk från koppling av Azure SQL Database anslutningen, vilket leder till att servern återställer eventuella öppna transaktioner.  
             *    Används `SET XACT_ABORT ON` för anslutningen eller i alla lagrade procedurer som påbörjar transaktioner och som inte rensas efter ett fel. Om ett körnings fel inträffar avbryts den här inställningen eventuella öppna transaktioner och retur kontroll skickas till klienten. Mer information hittar du i [SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql).
+
     > [!NOTE]
     > Anslutningen återställs inte förrän den återanvänds från anslutningspoolen, så det är möjligt att en användare kan öppna en transaktion och sedan släppa anslutningen till anslutningspoolen, men den kan inte återanvändas i flera sekunder, medan transaktionen förblir öppen. Om anslutningen inte återanvänds avbryts transaktionen när tids gränsen för anslutningen uppnåddes och tas bort från anslutningspoolen. Därför är det optimalt att klient programmet kan avbryta transaktioner i sin fel hanterare eller använda `SET XACT_ABORT ON` för att undvika denna möjliga fördröjning.
 
@@ -385,14 +386,14 @@ Följande scenarier kommer att utökas i dessa scenarier.
 
 1.  Blockering orsakad av ett SPID vars motsvarande klient program inte hämtade alla resultat rader till slut för ande
 
-    När du har skickat en fråga till servern måste alla program omedelbart hämta alla resultat rader för att kunna slutföras. Om ett program inte hämtar alla resultat rader, kan låsen vara kvar i tabellerna och blockera andra användare. Om du använder ett program som transparent skickar SQL-uttryck till servern måste programmet hämta alla resultat rader. Om det inte är (och om det inte kan konfigureras för det) kanske du inte kan lösa blockerings problemet. Du kan undvika problemet genom att begränsa dåligt ansvars program till rapporter eller databas för besluts support.
+    När du har skickat en fråga till servern måste alla program omedelbart hämta alla resultat rader för att kunna slutföras. Om ett program inte hämtar alla resultat rader, kan låsen vara kvar i tabellerna och blockera andra användare. Om du använder ett program som transparent skickar SQL-uttryck till servern måste programmet hämta alla resultat rader. Om det inte är (och om det inte kan konfigureras för det) kanske du inte kan lösa blockerings problemet. Du kan undvika problemet genom att begränsa dåligt ansvars program till en rapportering eller en databas för besluts support, skilt från huvud OLTP-databasen.
     
     > [!NOTE]
     > Se [rikt linjer för omprövnings logik](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) för program som ansluter till Azure SQL Database. 
     
     **Lösning**: programmet måste skrivas om för att hämta alla rader i resultatet till slut för ande. Detta gäller inte för att använda [förskjutning och hämta i order by-satsen](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) i en fråga för att utföra växling på Server sidan.
 
-1.  Blockering som orsakas av ett SPID som är i återställnings läge
+1.  Blockering som orsakas av en session i återställnings läge
 
     En data ändrings fråga som har stoppats eller avbrutits utanför en användardefinierad transaktion, kommer att återställas. Detta kan också inträffa som en sido effekt av klientens nätverks session från koppling, eller när en begäran har valts som död läge. Detta kan ofta identifieras genom att observera resultatet av sys.dm_exec_requests, vilket kan indikera återställnings **kommandot** och **kolumnen percent_complete** kan visa förloppet. 
 

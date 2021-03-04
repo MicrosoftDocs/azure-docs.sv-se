@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573334"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034752"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Tekniska specifikationer och efterlevnad för Azure Stack Edge Pro med GPU 
 
@@ -25,7 +25,7 @@ Azure Stack Edge Pro-enheten har följande specifikationer för beräkning och m
 
 | Specifikation           | Värde                  |
 |-------------------------|----------------------------|
-| Processor                     | 2 X Intel Xeon silver 4214-processor (kaskad)            |
+| Processor                     | 2 X Intel Xeon silver 4214-processor (kaskad)<br> 24 fysiska kärnor (12 per processor)<br>48 logiska kärnor (virtuella processorer) (24 per CPU)       |
 | Minne                  | 128 GB RAM-minne (8x16 GB) <br> Dell-kompatibel 16 GB PC4 – 23400 DDR4 – 2933Mhz 2Rx8 1.2 v ECC registrerat RDIMM       |
 
 

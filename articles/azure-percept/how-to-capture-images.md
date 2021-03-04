@@ -1,20 +1,20 @@
 ---
-title: Distribuera en vision AI-modell till din Azure percept DK
-description: Lär dig hur du distribuerar en vision AI-modell till din Azure percept DK från Azure percept Studio
+title: Avbilda avbildningar för en lösning utan kod i Azure percept Studio
+description: Lär dig hur du samlar in bilder med din Azure percept DK i Azure percept Studio för en lösning utan kod
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5ad263f5ae3b0b8e91de30b620002e33086608b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663792"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035542"
 ---
-# <a name="capture-images-for-a-vision-project"></a>Avbilda avbildningar för ett syn projekt
+# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Avbilda avbildningar för ett syn projekt i Azure percept Studio
 
 Följ den här guiden för att avbilda bilder med hjälp av den vision som finns i Azure percept DK för ett befintligt syn projekt i Azure percept Studio. Om du inte har skapat ett vision-projekt ännu kan du läsa [själv studie kursen utan kod](./tutorial-nocode-vision.md).
 
@@ -56,7 +56,7 @@ Följ den här guiden för att avbilda bilder med hjälp av den vision som finns
         1. Välj önskad bild hastighet under **avbildnings takten**.
         1. Välj det totala antalet avbildningar som du vill samla in under **mål**.
 
-    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Sidan percept-enheter med tillgängliga åtgärder visas.":::
+    :::image type="content" source="./media/how-to-capture-images/take-photo.png" alt-text="Skärm för avbildnings insamling.":::
 
 Alla avbildningar är tillgängliga i [Custom vision](https://www.customvision.ai/).
 

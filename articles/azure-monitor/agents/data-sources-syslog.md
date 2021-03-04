@@ -1,17 +1,16 @@
 ---
 title: Samla in syslog-datakällor med Log Analytics agent i Azure Monitor
 description: Syslog är ett händelse loggnings protokoll som är gemensamt för Linux. Den här artikeln beskriver hur du konfigurerar insamling av syslog-meddelanden i Log Analytics och information om de poster som de skapar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729206"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036747"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Samla in syslog-datakällor med Log Analytics agent
 Syslog är ett händelse loggnings protokoll som är gemensamt för Linux. Program kommer att skicka meddelanden som kan lagras på den lokala datorn eller levereras till en syslog-insamlare. När Log Analytics-agenten för Linux installeras konfigureras den lokala syslog-daemonen för att vidarebefordra meddelanden till agenten. Agenten skickar sedan meddelandet till Azure Monitor där en motsvarande post skapas.  
@@ -48,11 +47,11 @@ Följande anläggningar stöds med syslog-insamlaren:
 Log Analytics agent för Linux samlar endast in händelser med de funktioner och allvarlighets grader som anges i konfigurationen. Du kan konfigurera syslog genom Azure Portal eller genom att hantera konfigurationsfiler på Linux-agenterna.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurera syslog i Azure Portal
-Konfigurera syslog från [Data-menyn i avancerade inställningar](../agents/agent-data-sources.md#configuring-data-sources) för arbets ytan Log Analytics. Den här konfigurationen skickas till konfigurations filen på varje Linux-Agent.
+Konfigurera syslog från [agent konfigurations menyn](../agents/agent-data-sources.md#configuring-data-sources) för Log Analytics arbets ytan. Den här konfigurationen skickas till konfigurations filen på varje Linux-Agent.
 
-Du kan lägga till en ny anläggning genom att först välja alternativet **Använd konfigurationen nedan för mina datorer** och sedan skriva in dess namn och klicka på **+** . För varje funktion samlas endast meddelanden med de valda allvarlighets graderna in.  Kontrol lera allvarlighets graderna för den specifika funktionen som du vill samla in. Du kan inte ange några ytterligare kriterier för att filtrera meddelanden.
+Du kan lägga till en ny funktion genom att klicka på **Lägg till funktion**. För varje funktion samlas endast meddelanden med de valda allvarlighets graderna in.  Kontrol lera allvarlighets graderna för den specifika funktionen som du vill samla in. Du kan inte ange några ytterligare kriterier för att filtrera meddelanden.
 
-![Konfigurera syslog](media/data-sources-syslog/configure.png)
+[![Konfigurera syslog](media/data-sources-syslog/configure.png)](media/data-sources-syslog/configure.png#lightbox)
 
 Som standard flyttas alla konfigurations ändringar automatiskt till alla agenter. Om du vill konfigurera syslog manuellt på varje Linux-Agent avmarkerar du kryss rutan *Använd konfigurationen nedan för mina datorer*.
 

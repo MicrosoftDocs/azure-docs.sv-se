@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e1ed39edfd3c395fbc3e4d26a4aa358d48a1d5b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035491"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Distribuera en vision AI-modell till din Azure percept DK
 
@@ -40,13 +40,11 @@ Följ den här guiden för att distribuera en vision AI-modell till din Azure pe
 
 1. På nästa sida klickar du på **distribuera en exempel modell** om du vill distribuera en av de förtränade exempel Visions modellerna. Om du vill distribuera en befintlig [anpassad lösning utan kod](./tutorial-nocode-vision.md)klickar du på **distribuera ett Custom vision projekt**.
 
-    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Lista med percept-enheter.":::
+    :::image type="content" source="./media/how-to-deploy-model/deploy-model.png" alt-text="Modell val för distribution.":::
 
 1. Om du valde att distribuera en lösning utan kod, väljer du projektet och önskad modell iteration och klickar på **distribuera**.
 
 1. Om du har valt att distribuera en exempel modell väljer du modellen och klickar på **distribuera till enhet**.
-
-    :::image type="content" source="./media/how-to-deploy-model/select-sample-model.png" alt-text="Lista med percept-enheter.":::
 
 1. När modell distributionen lyckas får du ett status meddelande i det övre högra hörnet på skärmen. Om du vill se hur din modell inferencing fungerar klickar du på länken **Visa ström** i status meddelandet för att Visa RTSP-videoströmmen från den vision som du har devkit.
 

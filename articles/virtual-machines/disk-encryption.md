@@ -2,18 +2,18 @@
 title: Kryptering på Server sidan av Azure Managed disks
 description: Azure Storage skyddar dina data genom att kryptera dem i vila innan du sparar dem i lagrings kluster. Du kan använda Kundhanterade nycklar för att hantera kryptering med dina egna nycklar, eller så kan du lita på Microsoft-hanterade nycklar för kryptering av dina hanterade diskar.
 author: roygara
-ms.date: 10/22/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9152e341ac04209754bbf5f008cd56373967b9f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a1fbd536943023d3e6724b9c1638f7a0bd97d847
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036953"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Kryptering på Server sidan av Azure-disklagring
 
@@ -66,6 +66,8 @@ Automatisk nyckel rotation är i för hands version och endast tillgängligt i f
 > [!IMPORTANT]
 > Kundhanterade nycklar är beroende av hanterade identiteter för Azure-resurser, en funktion i Azure Active Directory (Azure AD). När du konfigurerar Kundhanterade nycklar, tilldelas en hanterad identitet automatiskt till dina resurser under försättsblad. Om du senare flyttar prenumerationen, resurs gruppen eller den hanterade disken från en Azure AD-katalog till en annan överförs inte den hanterade identitet som är kopplad till hanterade diskar till den nya klienten, så Kundhanterade nycklar kanske inte längre fungerar. Mer information finns i [överföra en prenumeration mellan Azure AD-kataloger](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
+Om du vill aktivera Kundhanterade nycklar för hanterade diskar kan du läsa våra artiklar som beskriver hur du aktiverar den med antingen [Azure PowerShell-modulen](windows/disks-enable-customer-managed-keys-powershell.md), [Azure CLI](linux/disks-enable-customer-managed-keys-cli.md) eller [Azure Portal](disks-enable-customer-managed-keys-portal.md). Information om hur du aktiverar Kundhanterade nycklar med automatisk nyckel rotation finns i [Konfigurera ett Azure Key Vault och DiskEncryptionSet med automatisk nyckel rotation (för hands version)](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview).
+
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Kryptering vid värd-slutpunkt-till-slutpunkt-kryptering för dina VM-data
 
 När du aktiverar kryptering på värden startar krypteringen på själva VM-värden, den Azure-server som den virtuella datorn är tilldelad till. Data för dina temporära diskar och OS/datadisk-cachen lagras på den virtuella dator värden. När du har aktiverat kryptering på värden krypteras alla dessa data i vila och flöden krypteras till lagrings tjänsten, där de är bestående. Kryptering på värden krypterar i princip dina data från slut punkt till slut punkt. Kryptering på värden använder inte den virtuella datorns CPU och påverkar inte den virtuella datorns prestanda. 
@@ -84,6 +86,8 @@ Temporära diskar och tillfälliga OS-diskar är krypterade i vila med plattform
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
+Om du vill aktivera kryptering från slut punkt till slut punkt med kryptering på värden, Se våra artiklar som beskriver hur du aktiverar det med antingen [Azure PowerShell-modulen](windows/disks-enable-host-based-encryption-powershell.md), [Azure CLI](linux/disks-enable-host-based-encryption-cli.md)eller [Azure Portal](disks-enable-host-based-encryption-portal.md).
+
 ## <a name="double-encryption-at-rest"></a>Dubbel kryptering i vila
 
 Hög säkerhets känsliga kunder som är intresserade av den risk som är kopplad till en viss krypteringsalgoritm, implementering eller nyckel som komprometteras kan nu välja ytterligare lager av kryptering med hjälp av en annan krypteringsalgoritm/läge på infrastruktur lagret med hjälp av plattforms hanterade krypterings nycklar. Det nya lagret kan tillämpas på beständiga operativ system och data diskar, ögonblicks bilder och avbildningar, som är krypterade i vila med dubbel kryptering.
@@ -91,6 +95,8 @@ Hög säkerhets känsliga kunder som är intresserade av den risk som är koppla
 ### <a name="supported-regions"></a>Regioner som stöds
 
 Double Encryption är tillgängligt i alla regioner som hanterade diskar är tillgängliga.
+
+Om du vill aktivera dubbel kryptering i vila för hanterade diskar kan du läsa våra artiklar som beskriver hur du aktiverar det med antingen [Azure PowerShell-modulen](windows/disks-enable-double-encryption-at-rest-powershell.md), [Azure CLI](linux/disks-enable-double-encryption-at-rest-cli.md) eller [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kryptering på Server sidan jämfört med Azure Disk Encryption
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693255"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034544"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Styrande Azure AD-tjänstekonton
 
@@ -51,13 +51,13 @@ Vi rekommenderar följande metoder för behörigheter för tjänst konton.
 
 **Behörigheter**
 
-* Tilldela inte inbyggda roller till tjänst konton. Använd i stället [OAuth2-modellen för behörighets beviljande för Microsoft Graph](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0),
+* Tilldela inte inbyggda roller till tjänst konton. Använd i stället [OAuth2-modellen för behörighets beviljande för Microsoft Graph](/graph/api/resources/oauth2permissiongrant),
 
 * Om tjänstens huvud namn måste tilldelas en privilegie rad roll, bör du överväga att tilldela en [anpassad roll](https://docs.microsoft.com/azure/active-directory/roles/custom-create) med särskilda, nödvändiga privilegier, i en tids gräns.
 
 * Ta inte med tjänst konton som medlemmar i grupper med utökade behörigheter. 
 
-* [Använd PowerShell för att räkna upp medlemmar i privilegierade roller](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0), till exempel   
+* [Använd PowerShell för att räkna upp medlemmar i privilegierade roller](/powershell/module/azuread/get-azureaddirectoryrolemember), till exempel   
 `Get-AzureADDirectoryRoleMember`och filter för objectType "tjänstens huvud namn".
 
    eller Använd  
@@ -117,7 +117,7 @@ Vi rekommenderar att du exporterar inloggnings loggar för Azure AD och importer
 
 Granska de behörigheter som har beviljats och omfattningarna som används av tjänst konton regelbundet för att se om de kan minskas.
 
-* Använd [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) för att [bygga automatisering för att kontrol lera och dokumentera](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) omfånget som medgivande beviljas till ett tjänst konto.
+* Använd [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) för att [bygga automatisering för att kontrol lera och dokumentera](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) omfånget som medgivande beviljas till ett tjänst konto.
 
 * Använd PowerShell för att [granska befintliga autentiseringsuppgifter för tjänstens huvud namn](https://github.com/AzureAD/AzureADAssessment) och kontrol lera deras giltighet.
 
@@ -172,7 +172,7 @@ Upprätta en gransknings process för att säkerställa att tjänst konton regel
 
 **Processerna för avetablering bör omfatta följande uppgifter.**
 
-1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md) och resurs åtkomst av tjänst kontot.
+1. När det associerade programmet eller skriptet har avetablerats, [övervakar du inloggningar](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) och resurs åtkomst av tjänst kontot.
 
    * Om kontot fortfarande är aktivt, avgör du hur det används innan du vidtar efterföljande steg.
  

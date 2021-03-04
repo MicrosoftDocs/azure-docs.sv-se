@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735598"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035143"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Snabb start: bygga och distribuera appar till Azure våren Cloud
 
@@ -143,7 +143,7 @@ Testa programmet genom att skicka en HTTP GET-begäran till `solar-system-weathe
 1. Kör följande kommando för att tilldela slut punkten.
 
    ```azurecli
-   az spring-cloud app update -n solar-system-weather --is-public true
+   az spring-cloud app update -n solar-system-weather --assign-endpoint true
    ```
 
 1. Kör följande kommando för att hämta slut punktens URL.
@@ -222,7 +222,7 @@ Kompilering av projektet tar cirka 5 minuter. När du är klar bör du ha enskil
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Skapa Azure våren Cloud-mikrotjänster med hjälp av JAR-filerna som skapats i föregående steg. Du kommer att skapa tre appar: **Gateway** , **auth-service** och **Account-service** .
+1. Skapa Azure våren Cloud-mikrotjänster med hjälp av JAR-filerna som skapats i föregående steg. Du kommer att skapa tre appar: **Gateway**, **auth-service** och **Account-service**.
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -245,7 +245,7 @@ Vi behöver ett sätt att komma åt programmet via en webbläsare. Vårt Gateway
 1. Tilldela slut punkten med följande kommando:
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
 2. Fråga **Gateway** -appen efter dess offentliga IP-adress så att du kan kontrol lera att programmet körs:
@@ -306,23 +306,23 @@ Vi behöver ett sätt att komma åt programmet via en webbläsare. Vårt Gateway
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Distribuera Gateway-appen till Azure våren Cloud
 För att kunna distribuera till Azure måste du logga in med ditt Azure-konto med Azure Toolkit for IntelliJ och välja din prenumeration. Information om inloggning finns i [installation och inloggning](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. Högerklicka på projektet i IntelliJ Project Explorer och välj **Azure**  ->  **Deploy till Azure våren Cloud** .
+1. Högerklicka på projektet i IntelliJ Project Explorer och välj **Azure**  ->  **Deploy till Azure våren Cloud**.
 
     ![Distribuera till Azure 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. I fältet **namn** lägger du till *: Gateway* till det befintliga **namnet** .
-1. I text rutan **artefakt** väljer du *com. piggymetrics: Gateway: 1.0-Snapshot* .
+1. I fältet **namn** lägger du till *: Gateway* till det befintliga **namnet**.
+1. I text rutan **artefakt** väljer du *com. piggymetrics: Gateway: 1.0-Snapshot*.
 1. I text rutan **prenumeration** verifierar du din prenumeration.
 1. I text rutan **fjäder moln** väljer du instansen av Azure våren-molnet som du skapade i [etablera Azure våren Cloud-instansen](./spring-cloud-quickstart-provision-service-instance.md).
-1. Ange den **offentliga slut punkten** som ska *aktive ras* .
-1. I text rutan **app:** väljer du **skapa app...** .
-1. Ange *Gateway* och klicka sedan på **OK** .
+1. Ange den **offentliga slut punkten** som ska *aktive ras*.
+1. I text rutan **app:** väljer du **skapa app...**.
+1. Ange *Gateway* och klicka sedan på **OK**.
 
     ![Distribuera till Azure OK](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. I avsnittet **före start** i dialog rutan dubbelklickar du på *Kör maven-mål* .
+1. I avsnittet **före start** i dialog rutan dubbelklickar du på *Kör maven-mål*.
 1. I text rutan **arbets katalog** navigerar du till mappen *piggymetrics/Gateway* .
-1. I text rutan **kommando rad** anger du *Package-DskipTests* . Klicka på **OK** .
+1. I text rutan **kommando rad** anger du *Package-DskipTests*. Klicka på **OK**.
 1. Starta distributionen genom att klicka på knappen **Kör** längst ned i dialog rutan **Distribuera Azure våren Cloud App** . Plugin-programmet kör kommandot `mvn package` på `gateway` appen och distribuerar jar som genereras av `package` kommandot.
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Distribuera auth-service-och konto-service-appar till Azure våren Cloud
@@ -330,7 +330,7 @@ Du kan upprepa stegen ovan för att distribuera `auth-service` och `account-serv
 
 1. Ändra **namnet** och **artefakten** för att identifiera `auth-service` appen.
 1. I text rutan **app:** väljer du **skapa app...** för att skapa `auth-service` appar.
-1. Kontrol lera att alternativet **offentlig slut punkt** är inställt på *inaktive rad* .
+1. Kontrol lera att alternativet **offentlig slut punkt** är inställt på *inaktive rad*.
 1. I avsnittet **före start** i dialog rutan byter du **arbets katalog** till mappen *piggymetrics/auth-service* .
 1. Starta distributionen genom att klicka på knappen **Kör** längst ned i dialog rutan **Distribuera Azure våren Cloud App** . 
 1. Upprepa dessa procedurer för att konfigurera och distribuera `account-service` .

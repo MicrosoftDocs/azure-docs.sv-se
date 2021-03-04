@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: HT
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362787"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036246"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisera kostnader genom att anpassa ditt faktureringskonto
 
 Ditt faktureringskonto för Microsoft-kundavtal ger dig flexibiliteten att organisera kostnader baserat på dina behov, oavsett om det är efter avdelning, projekt eller utvecklingsmiljö.
 
 I den här artikeln beskrivs hur du kan använda Azure-portalen för att organisera kostnader. Detta gäller för ett faktureringskonto för ett Microsoft-kundavtal. [Kontrollera om du har åtkomst till ett Microsoft-kundavtal](#check-access-to-a-microsoft-customer-agreement).
+
+Se hur du [ordnar kostnaderna genom att anpassa ditt fakturerings konto i Microsoft Customer Agreement](https://www.youtube.com/watch?v=7RxTfShGHwU) och lär dig hur du ordnar kostnader för ditt fakturerings konto.
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>Strukturera ditt konto med faktureringsprofiler och fakturaavsnitt
 

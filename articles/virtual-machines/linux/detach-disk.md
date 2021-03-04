@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897147"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035712"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Så här kopplar du bort en datadisk från en virtuell Linux-dator
 
@@ -108,13 +108,10 @@ Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtu
 
 1. På den vänstra menyn väljer du **Virtual Machines**.
 1. På bladet virtuell dator väljer du **diskar**.
-1. Överst på bladet **diskar** väljer du **Redigera**.
-1. I bladet **diskar** , längst till höger om den datadisk som du vill koppla från, klickar du på knappen ![ Koppla bort bild ](./media/detach-disk/detach.png) från.
-1. När disken har tagits bort klickar du på **Spara** överst på bladet.
+1. I bladet **diskar** längst till höger på den datadisk som du vill koppla från, väljer du knappen **X** för att koppla bort disken.
+1. När disken har tagits bort väljer du **Spara** längst upp på bladet.
 
-Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtuell dator.
-
-
+Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtuell dator. Disken tas inte bort.
 
 ## <a name="next-steps"></a>Nästa steg
 Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](add-disk.md).

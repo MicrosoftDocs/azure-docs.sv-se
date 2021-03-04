@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 3c0e348e62184f839ce38e4c364fb5c6b81f1131
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726231"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036545"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Översikt över Azure Diagnostics-tillägg
 Azure-diagnostik tillägget är en [agent i Azure Monitor](../agents/agents-overview.md) som samlar in övervaknings data från gäst operativ systemet i Azure Compute-resurser, inklusive virtuella datorer. Den här artikeln innehåller en översikt över Azure-diagnostik-tillägget, inklusive de funktioner som stöds och alternativ för installation och konfiguration. 
@@ -78,7 +78,7 @@ Konfigurera en eller flera *data mottagare* för att skicka data till andra ytte
 | Azure Storage blobbar | Skriv till data till blobbar i Azure Storage förutom tabeller. |
 | Application Insights | Samla in data från program som körs i den virtuella datorn till Application Insights integrera med andra program övervakning. Se [Skicka diagnostikdata till Application Insights](diagnostics-extension-to-application-insights.md). |
 
-Du kan också samla in WAD-data från lagring till en Log Analytics arbets yta för att analysera den med Azure Monitor loggar även om Log Analytics agent vanligt vis används för den här funktionen. Den kan skicka data direkt till en Log Analytics-arbetsyta och har stöd för lösningar och insikter som ger ytterligare funktioner.  Se [samla in Azure-diagnostikloggar från Azure Storage](../essentials/diagnostics-extension-logs.md). 
+Du kan också samla in WAD-data från lagring till en Log Analytics arbets yta för att analysera den med Azure Monitor loggar även om Log Analytics agent vanligt vis används för den här funktionen. Den kan skicka data direkt till en Log Analytics-arbetsyta och har stöd för lösningar och insikter som ger ytterligare funktioner.  Se [samla in Azure-diagnostikloggar från Azure Storage](../agents/diagnostics-extension-logs.md). 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>LAD (Linux Diagnostics Extension)

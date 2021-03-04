@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6601cd31cf6e332bf292cd887b498a92946d8af7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c336c1632cf206cdf2bf7151dc191c4de5ef820d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668307"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036936"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Tillgänglighetsalternativ för virtuella datorer i Azure
 
@@ -55,7 +55,7 @@ Skalnings uppsättningar för virtuella datorer fören klar designen för hög t
 
 **Orchestration-lägen för skalnings uppsättningar**
 
-I Orchestration-lägena för skalnings uppsättningar för virtuella datorer kan du få bättre kontroll över hur virtuella dator instanser hanteras av skalnings uppsättningen. Du kan aktivera ett enhetligt eller flexibelt Orchestration-läge på din skalnings uppsättning. Enhetlig dirigering är optimerad för storskaliga tillstånds lösa arbets belastningar med identiska instanser. Flexibel dirigering (för hands version) är avsedd för hög tillgänglighet i skala med identiska eller flera typer av virtuella datorer. Läs mer om de här [Dirigerings lägena](./virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) och hur du aktiverar dem.
+I Orchestration-lägena för skalnings uppsättningar för virtuella datorer kan du få bättre kontroll över hur virtuella dator instanser hanteras av skalnings uppsättningen. Du kan aktivera ett enhetligt eller flexibelt Orchestration-läge på din skalnings uppsättning. Enhetlig dirigering är optimerad för storskaliga tillstånds lösa arbets belastningar med identiska instanser. Flexibel dirigering (för hands version) är avsedd för hög tillgänglighet i skala med identiska eller flera typer av virtuella datorer. Läs mer om de här [Dirigerings lägena](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) och hur du aktiverar dem.
 
 
 ## <a name="availability-sets"></a>Tillgänglighetsuppsättningar

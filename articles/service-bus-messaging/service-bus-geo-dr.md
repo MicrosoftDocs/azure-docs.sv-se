@@ -3,12 +3,12 @@ title: Azure Service Bus geo-haveri beredskap | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och haveri beredskap i Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 86d35465e5b31514f4d215095932b857ce7dcb35
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384350"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035402"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-haveri beredskap
 
@@ -47,11 +47,7 @@ Följande villkor används i den här artikeln:
 -  *Alias*: namnet på en katastrof återställnings konfiguration som du ställer in. Aliaset innehåller en enda stabil fullständigt kvalificerad domän namns anslutnings sträng (FQDN). Program använder den här Ali Aset-anslutningssträngen för att ansluta till ett namn område. Genom att använda ett alias ser du till att anslutnings strängen är oförändrad När redundansväxlingen utlöses.
 
 -  *Primär/sekundär namnrymd*: de namn områden som motsvarar aliaset. Det primära namn området är "aktivt" och tar emot meddelanden (det kan vara ett befintligt eller nytt namn område). Det sekundära namn området är "passiv" och tar inte emot meddelanden. Metadata mellan båda är synkroniserade, så båda kan sömlöst acceptera meddelanden utan program kod eller anslutnings sträng ändringar. För att säkerställa att endast det aktiva namn området tar emot meddelanden måste du använda aliaset. 
-
-    > [!IMPORTANT]
-    > Funktionen för geo-katastrof återställning kräver att prenumerationen och resurs gruppen är samma för primära och sekundära namn områden.
 -  *Metadata*: entiteter som köer, ämnen och prenumerationer. och deras egenskaper för tjänsten som är associerad med namn området. Endast entiteter och deras inställningar replikeras automatiskt. Meddelanden replikeras inte.
-
 -  *Redundans*: processen att aktivera det sekundära namn området.
 
 ## <a name="setup"></a>Installation
@@ -63,13 +59,13 @@ Följande avsnitt är en översikt över hur du konfigurerar ihopparning mellan 
 Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. 
 
 1. Skapa det primära namn området.
-1. Skapa det sekundära namn området i prenumerationen och resurs gruppen som har det primära namn området, men i en annan region. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
+1. Skapa det sekundära namn området i en annan region. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
 1. I Azure Portal navigerar du till ditt primära namn område.
 1. Välj **geo-återställning** på den vänstra menyn och välj **Starta koppling** i verktygsfältet. 
 
     :::image type="content" source="./media/service-bus-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Starta koppling från det primära namn området":::    
 1. På sidan **initiera koppling** , följer du dessa steg:
-    1. Välj ett befintligt sekundärt namn område eller skapa ett i prenumerationen och resurs gruppen som har det primära namn området. I det här exemplet används ett befintligt namn område som sekundärt namn område.  
+    1. Välj ett befintligt sekundärt namn område eller skapa ett i en annan region. I det här exemplet används ett befintligt namn område som sekundärt namn område.  
     1. Ange ett alias för geo-Dr-paret för **alias**. 
     1. Välj sedan **Skapa**. 
 

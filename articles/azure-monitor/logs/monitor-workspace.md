@@ -1,17 +1,16 @@
 ---
 title: Övervaka hälsan för Log Analytics arbets ytan i Azure Monitor
 description: Beskriver hur du övervakar hälso tillståndet för din Log Analytics-arbetsyta med hjälp av data i åtgärds tabellen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 09df1c2ecb94089f23a88dd36c5343bb4cf2feea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710948"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034973"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Övervaka hälsan för Log Analytics arbets ytan i Azure Monitor
 För att upprätthålla prestanda och tillgänglighet för din Log Analytics-arbetsyta i Azure Monitor måste du kunna identifiera eventuella problem som uppstår i proaktivt. Den här artikeln beskriver hur du övervakar hälso tillståndet för din Log Analytics-arbetsyta med hjälp av data i [Åtgärds](/azure/azure-monitor/reference/tables/operation) tabellen. Den här tabellen ingår i varje Log Analytics arbets yta och innehåller fel och varningar som inträffar i din arbets yta. Du bör regelbundet granska dessa data och skapa aviseringar för att proaktivt meddelas när det finns viktiga incidenter på arbets ytan.

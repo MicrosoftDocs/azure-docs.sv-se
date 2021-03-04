@@ -1,17 +1,16 @@
 ---
 title: Samla in Windows händelse logg data källor med Log Analytics agent i Azure Monitor
 description: Beskriver hur du konfigurerar Windows-händelseloggen med Azure Monitor och information om de poster som de skapar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719873"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036611"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Samla in data källor för Windows-händelseloggen med Log Analytics agent
 Windows-händelseloggar är en av de vanligaste [data källorna](../agents/agent-data-sources.md) för Log Analytics agenter på virtuella Windows-datorer eftersom många program skriver till händelse loggen i Windows.  Du kan samla in händelser från standard loggar som system och program, förutom att ange anpassade loggar som skapats av program som du behöver övervaka.
@@ -22,13 +21,13 @@ Windows-händelseloggar är en av de vanligaste [data källorna](../agents/agent
 ![Windows-händelser](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurera händelse loggar i Windows
-Konfigurera Windows-händelseloggar från [Data-menyn i avancerade inställningar](../agents/agent-data-sources.md#configuring-data-sources) för arbets ytan Log Analytics.
+Konfigurera Windows-händelseloggar från [konfigurations menyn agenter](../agents/agent-data-sources.md#configuring-data-sources) för Log Analytics arbets ytan.
 
 Azure Monitor samlar endast in händelser från Windows-händelseloggen som anges i inställningarna.  Du kan lägga till en händelse logg genom att skriva namnet på loggen och klicka på **+** .  Endast händelser med de valda allvarlighets graderna samlas in för varje logg.  Kontrol lera allvarlighets graderna för den specifika logg som du vill samla in.  Du kan inte ange några ytterligare kriterier för att filtrera händelser.
 
 När du skriver namnet på en händelse logg ger Azure Monitor förslag på vanliga händelse logg namn. Om loggen som du vill lägga till inte visas i listan kan du fortfarande lägga till den genom att skriva i det fullständiga namnet på loggen. Du kan hitta det fullständiga namnet på loggen med hjälp av logg boken. I logg boken öppnar du sidan *Egenskaper* för loggen och kopierar strängen från fältet *fullständigt namn* .
 
-![Konfigurera Windows-händelser](media/data-sources-windows-events/configure.png)
+[![Konfigurera Windows-händelser](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > Kritiska händelser från händelse loggen i Windows har allvarlighets graden "Error" i Azure Monitor loggar.

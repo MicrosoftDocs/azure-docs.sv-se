@@ -4,12 +4,12 @@ description: I den här självstudien får du se hur du skapar ett program med e
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a783f5338dbc7ce0832b346492490525da332e39
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 8fe9f1fcb85e58122290f89819aa721c8f0e632a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297125"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035334"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Självstudie: Skapa och distribuera en app med en ASP.NET Core Web API-klientdelstjänst och en tillståndskänslig serverdelstjänst
 
@@ -32,7 +32,7 @@ I den här självstudieserien får du lära du dig att:
 > * [Konfigurera CI/CD med hjälp av Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Konfigurera övervakning och diagnostik för programmet](service-fabric-tutorial-monitoring-aspnet.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 * Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
@@ -147,7 +147,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
                 </div>
                 <div class="row top-buffer" ng-repeat="vote in votes.data">
                     <div class="col-xs-8">
-                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.Key)">
+                        <button class="btn btn-success text-left btn-block" ng-click="add(vote.key)">
                             <span class="pull-left">
                                 {{vote.Key}}
                             </span>
@@ -157,7 +157,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
                         </button>
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.Key)">
+                        <button class="btn btn-danger pull-right btn-block" ng-click="remove(vote.key)">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             Remove
                         </button>

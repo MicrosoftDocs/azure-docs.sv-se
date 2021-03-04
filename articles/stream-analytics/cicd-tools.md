@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718428"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036970"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Automatisera byggen, tester och distributioner av ett Azure Stream Analytics jobb med CI/CD-verktyg
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | Sökvägen till **asaproj.jspå** filen för ditt Visual Studio Code-projekt eller **[ditt projekt namn]. Asaproj** för Visual Studio-projekt. |
 | `-testConfigPath` | Sökvägen till test konfigurations filen. Om den inte anges kommer filen att sökas i **\test** under den aktuella katalogen i **asaproj.js** filen, med standard fil namnet **testConfig.jspå**. En ny fil kommer att skapas om den inte existerade. |
+
+> [!NOTE]
+> `Script`Värdet i den genererade **testConfig.jsi** filen är endast för att tillhandahålla kontexten. Den används inte i test logiken. 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

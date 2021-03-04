@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952246"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033630"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
 
@@ -137,6 +137,14 @@ Azure AD B2C tillhandahåller en katalog som kan innehålla 100 anpassade attrib
 - [Lista gransknings loggar](/graph/api/directoryaudit-list)
 
 Mer information om hur du kommer åt Azure AD B2C gransknings loggar finns i avsnittet [komma åt Azure AD B2C gransknings loggar](view-audit-logs.md).
+
+## <a name="conditional-access"></a>Villkorlig åtkomst
+
+- [Lista alla principer för villkorlig åtkomst](/graph/api/resources/conditionalaccessroot-list-policies)
+- [Läsa egenskaper och relationer för en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-get)
+- [Skapa en ny princip för villkorlig åtkomst](/graph/api/resources/application)
+- [Uppdatera en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-update)
+- [Ta bort en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod exempel: program mässigt hantera användar konton
 

@@ -1,17 +1,16 @@
 ---
 title: Övervaka Azure-resurser med Azure Monitor | Microsoft Docs
 description: Beskriver hur du samlar in och analyserar övervaknings data från resurser i Azure med hjälp av Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 7d5fcd4da5ab8b8516794bf99b8aab69ada24644
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: af2803a945821a23ff59f196967d792a6593009f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708126"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033392"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Övervaka Azure-resurser med Azure Monitor
 När du har viktiga program och affärs processer som förlitar sig på Azure-resurser, vill du övervaka resurserna för deras tillgänglighet, prestanda och drift. I den här artikeln beskrivs övervaknings data som genereras av Azure-resurser och hur du kan använda funktionerna i Azure Monitor för att analysera och varna för dessa data.

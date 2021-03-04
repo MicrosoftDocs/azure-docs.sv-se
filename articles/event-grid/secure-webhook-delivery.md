@@ -3,12 +3,12 @@ title: Säker webhook-leverans med Azure AD i Azure Event Grid
 description: Beskriver hur du levererar händelser till HTTPS-slutpunkter som skyddas av Azure Active Directory att använda Azure Event Grid
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: b01f0342e185883c4d1552800ab9bdb30cea3040
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: be38edfb4edfee5b3a3b42d7b1c5a44c9d72ceef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549160"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035453"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publicera händelser till Azure Active Directory-skyddade slutpunkter
 
@@ -26,7 +26,7 @@ Börja med att skapa ett Azure AD-program för den skyddade slut punkten. Se htt
 Det här avsnittet visar hur du aktiverar Event Grid att använda Azure AD-programmet. 
 
 > [!NOTE]
-> Du måste vara medlem i [rollen Azure AD-programadministratör](../active-directory/roles/permissions-reference.md#available-roles) för att köra det här skriptet.
+> Du måste vara medlem i [rollen Azure AD-programadministratör](../active-directory/roles/permissions-reference.md#all-roles) för att köra det här skriptet.
 
 ### <a name="connect-to-your-azure-tenant"></a>Anslut till din Azure-klient
 Anslut först till din Azure-klient med hjälp av `Connect-AzureAD` kommandot. 

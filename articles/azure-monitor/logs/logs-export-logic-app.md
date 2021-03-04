@@ -2,17 +2,16 @@
 title: Arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app
 description: Beskriver en metod för att använda Azure Logic Apps för att fråga efter data från en Log Analytics arbets yta och skicka till Azure Storage.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ae95580a8c192f0815623461fb21ec9ecf52ae26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700651"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035695"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Arkivera data från Log Analytics arbets yta till Azure Storage med hjälp av Logic app
 Den här artikeln beskriver en metod för att använda [Azure Logic Apps](../../logic-apps/index.yml) för att fråga efter data från en Log Analytics arbets yta i Azure Monitor och skicka till Azure Storage. Använd den här processen när du behöver exportera Azure Monitor loggdata för scenarier för granskning och efterlevnad, eller om du vill tillåta en annan tjänst att hämta dessa data.  

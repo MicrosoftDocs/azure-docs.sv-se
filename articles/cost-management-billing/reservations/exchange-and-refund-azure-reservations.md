@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601457"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036001"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Byten och återbetalning för Azure-reservationer via självbetjäning
 
-Azure-reservationer ger flexibilitet för att tillgodose dina föränderliga behov. Du kan byta en reservation mot en annan reservation av samma typ. Du kan till exempel byta en reservation för virtuell dator och köpa en annan reservation för någon annan storlek eller region för virtuella datorer. På samma sätt kan du byta en SQL PaaS Database-reservation och köpa en annan reservation för valfri typ eller region för SQL PaaS Database. Du kan också återbetala reservationer, men summan av alla avbrutna reservationsåtaganden i faktureringsomfånget (till exempel EA, Microsoft-kundavtal eller Microsoft-partneravtal) får inte överstiga 50 000 USD under en rullande period på 12 månader. Reserverad kapacitet för Azure Databricks, Azure VMware solution by CloudSimple-reservation, Azure Red Hat Open Shift-reservation, Red Hat-avtal och SUSE Linux-planer är inte berättigade till återbetalningar.
+Azure-reservationer ger flexibilitet för att tillgodose dina föränderliga behov. Du kan byta reservationer för en annan reservation av samma typ. Du kan till exempel returnera flera beräknings reservationer, inklusive Azure-dedikerad värd, Azure VMware-lösning och Azure Virtual Machines med varandra samtidigt. Reservations produkter är med andra ord utbytbara med varandra om de är samma typ av reservation. I ett annat exempel kan du utbyta flera typer av SQL-databas reservation, inklusive hanterade instanser och Elastisk pool med varandra.
+
+Du kan dock inte byta ut olika reservationer. Du kan till exempel inte byta Cosmos DB reservation för SQL Database.
+
+Du kan också byta ut en reservation för att köpa en annan reservation av en liknande typ i en annan region. Du kan till exempel byta ut en reservation i USA, västra 2, för en som är i Västeuropa.
+
+När du utbyter en reservation kan du ändra din period från ett år till tre år.
+
+Du kan också återbetala reservationer, men summan av alla avbrutna reservationsåtaganden i faktureringsomfånget (till exempel EA, Microsoft-kundavtal eller Microsoft-partneravtal) får inte överstiga 50 000 USD under en rullande period på 12 månader.
+
+Reserverad kapacitet för Azure Databricks, Azure VMware solution by CloudSimple-reservation, Azure Red Hat Open Shift-reservation, Red Hat-avtal och SUSE Linux-planer är inte berättigade till återbetalningar.
 
 Byte eller annullering av kapacitet via självbetjäning är inte tillgängligt för US Government-kunder med Enterprise-avtal. Andra typer av US Government-prenumerationer, inklusive Pay-As-You-Go (betala per användning) och CSP (molnlösningsleverantör) stöds.
 
@@ -37,9 +47,26 @@ Du kan byta din reservation i [Azure-portalen](https://portal.azure.com/#blade/M
 
 Om du vill få en reservation återbetald går du till **Reservationsinformation** och väljer **Återbetalning**.
 
+## <a name="exchange-multiple-reservations"></a>Exchange flera reservationer
+
+Du kan returnera liknande typer av reservationer i en åtgärd.
+
+När du utbyter reservationer måste den nya inköps valuta mängden vara större än bidrags beloppet. Om din nya inköps belopp är lägre än bidrags beloppet får du ett fel meddelande. Om du ser felet minskar du antalet som du vill returnera eller ökar beloppet för att köpa.
+
+1. Logga in på Azure-portalen och gå till **Reservationer**.
+1. I listan över reservationer markerar du kryss rutan för varje reservation som du vill byta ut.
+1. Välj **Exchange** längst upp på sidan.
+1. Om det behövs ändrar du antalet som ska returneras för varje reservation.
+1. Om du väljer automatiskt Fill-antal kan du välja att **återbetala alla** för att fylla i listan med den totala kvantitet som du äger för varje reservation eller **optimera för användning (7 dagar)** för att fylla i listan med en kvantitet som optimerar för användning baserat på den senaste sju dagars användningen. **Välj Använd**.
+1. Längst ned på sidan väljer du **Nästa: Köp**.
+1. På fliken köp väljer du de tillgängliga produkter som du vill byta ut för. Du kan välja flera olika typer av produkter.
+1. I fönstret Välj den produkt som du vill köpa väljer du de produkter som du vill använda och väljer sedan **Lägg till i kundvagn** och väljer sedan **Stäng**.
+1. När du är färdig väljer du **Nästa: granska**.
+1. Granska dina reservationer för att returnera och nya reservationer att köpa och välj sedan **Bekräfta Exchange**.
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Byta icke-Premium-lagring mot Premium-lagring
 
-Du kan byta en reservation som köpts för en VM-storlek som inte stöder Premium-lagring till en motsvarande VM-storlek som gör det. Det kan till exempel gälla byte av _F1_ mot en _F1s_. Om du vill göra bytet går du till Reservationsinformation och väljer **Byt**. Bytet återställer inte perioden för den reserverade instansens och skapar inte någon ny transaktion. 
+Du kan byta en reservation som köpts för en VM-storlek som inte stöder Premium-lagring till en motsvarande VM-storlek som gör det. Det kan till exempel gälla byte av _F1_ mot en _F1s_. Om du vill göra bytet går du till Reservationsinformation och väljer **Byt**. Bytet återställer inte perioden för den reserverade instansens och skapar inte någon ny transaktion.
 
 ## <a name="how-transactions-are-processed"></a>Så bearbetas transaktioner
 

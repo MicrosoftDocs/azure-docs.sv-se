@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240757"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034667"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Server koncept i Azure Database for MySQL flexibel Server (för hands version)
 
@@ -38,7 +38,7 @@ En Azure Database for MySQL flexibel Server:
 - Tillhandahåller en virtuell nätverks integrering för databas Server åtkomst
 - Ger möjlighet att spara kostnader genom att pausa den flexibla servern när den inte används
 - Tillhandahåller omfattning för hanterings principer som gäller för databaserna: inloggning, brand vägg, användare, roller, konfigurationer osv.
-- Stöds för närvarande med version MySQL 5,7. Mer information finns i [Azure Database for MySQL motor versioner som stöds](./concepts-supported-versions.md).
+- Stöder huvud version MySQL 5,7 och MySQL 8,0. Mer information finns i [Azure Database for MySQL motor versioner som stöds](./../concepts-supported-versions.md).
 
 I en Azure Database for MySQL flexibel Server kan du skapa en eller flera databaser. Du kan välja att skapa en enskild databas per server för att använda alla resurser eller för att skapa flera databaser för att dela resurserna. Priserna är strukturerad per server, baserat på konfiguration av beräknings nivå, virtuella kärnor och lagring (GB). Mer information finns i [beräkning och lagring](./concepts-compute-storage.md).
 

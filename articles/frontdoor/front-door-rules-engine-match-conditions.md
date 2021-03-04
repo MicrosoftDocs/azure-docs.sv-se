@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569759"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035882"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Motor matchnings villkor för Azures frontend-dörr
 
@@ -142,7 +142,7 @@ Operator | Begärans-URL | Skift läges omvandling
 
 #### <a name="key-information"></a>Viktig information
 
-- När du använder det här regel villkoret ska du se till att inkludera protokoll information. Exempel: * https://www . \<yourdomain\> . com*.
+- När du använder det här regel villkoret ska du se till att inkludera protokoll information. Exempel: `https://www.<yourdomain\>.com`.
 
 ## <a name="request-file-extension"></a>Begär fil tillägg
 
@@ -182,11 +182,15 @@ Operator | Värde | Skift läges omvandling
 ---------|-------|---------------
 [Lista med standard operatorer](#standard-operator-list) | Sträng, heltal | Gemener, versaler, trim, ta bort blank steg, URL-kod, URL-avkodning
 
+#### <a name="key-information"></a>Viktig information
+
+- Observera att matchningen börjar efter den första av sökvägen när du använder det här regel villkoret `/` . Till exempel: `https://www.<yourdomain>.com/folder/page` skulle börja matcha på `folder/page` .
+
 ## <a name="standard-operator-list"></a>Lista med standard operatorer
 
 Följande operatorer är giltiga för regler som accepterar värden från standard operator listan:
 
-- Alla
+- Valfri
 - Lika med 
 - Innehåller 
 - Börjar med 

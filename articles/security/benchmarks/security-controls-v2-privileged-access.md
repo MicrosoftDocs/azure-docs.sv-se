@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a4f1c6e32bbc679a7ec946384903b2bda3887d05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720587"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035425"
 ---
 # <a name="security-control-v2-privileged-access"></a>Säkerhets kontroll v2: privilegie rad åtkomst
 
 Privilegie rad åtkomst täcker kontroller för att skydda privilegie rad åtkomst till din Azure-klient och dina resurser. Detta inkluderar ett antal kontroller för att skydda din administrativa modell, administrativa konton och arbets stationer med privilegie rad åtkomst mot avsiktliga och oavsiktliga risker.
 
-Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-hälsokompatibilitet: privilegie rad åtkomst](../../governance/policy/samples/azure-security-benchmark#privileged-access)
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-hälsokompatibilitet: privilegie rad åtkomst](../../governance/policy/samples/azure-security-benchmark.md#privileged-access)
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Skydda och begränsa privilegierade användare
 
@@ -160,8 +160,6 @@ Använd funktioner för hantering av Azure AD-rättighet för att automatisera �
 Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känsliga roller som administratör, utvecklare och kritiska tjänst operatörer. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst. 
 
 - [Förstå arbets stationer med privilegie rad åtkomst](/security/compass/privileged-access-deployment)
-
-- [Distribuera en arbetsstation med privilegierad åtkomst](../../active-directory/devices/howto-azure-managed-workstation)
 
 **Ansvar**: Kund
 

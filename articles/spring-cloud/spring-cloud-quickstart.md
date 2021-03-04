@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226177"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035177"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Snabb start: Distribuera ditt första Azure våren Cloud-program
 
@@ -242,7 +242,7 @@ Följande procedur skapar och distribuerar det projekt som du skapade tidigare.
 1. Skapa en app i Azure våren Cloud-instansen med en offentlig slut punkt tilldelad. Använd samma program namn "Hello-World" som du angav i *appsettings.jspå*.
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --assign-endpoint --runtime-version NetCore_31
    ```
 
 1. Distribuera *. zip* -filen till appen.
@@ -416,7 +416,7 @@ Följande procedur skapar och distribuerar programmet med hjälp av Azure CLI. K
 1. Skapa appen med en offentlig slut punkt som tilldelats:
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. Distribuera jar-filen för appen ( `target\hellospring-0.0.1-SNAPSHOT.jar` i Windows):

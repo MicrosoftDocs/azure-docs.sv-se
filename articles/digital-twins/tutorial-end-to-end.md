@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545946"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "102036186"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -107,7 +107,7 @@ I Visual Studio-fönstret där _**AdtE2ESample**_ -projektet är öppet finns Fu
 
 Innan du publicerar appen är det en bra idé att se till att dina beroenden är uppdaterade och se till att du har den senaste versionen av alla paket som ingår.
 
-I fönstret *Solution Explorer* expanderar du *SampleFunctionsApp >-beroenden*. Högerklicka på *paket* och välj *Hantera NuGet-paket...*.
+I fönstret *Solution Explorer* expanderar du _**SampleFunctionsApp** >-beroenden_. Högerklicka på *paket* och välj *Hantera NuGet-paket...*.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: hantera NuGet-paket för SampleFunctionsApp-projektet" border="false":::
 
@@ -131,15 +131,17 @@ I Azure Cloud Shell använder du följande kommando för att ange en program ins
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-Utdata är listan över inställningar för Azure-funktionen som nu ska innehålla en post som kallas *ADT_SERVICE_URL*.
+Utdata är listan över inställningar för Azure-funktionen som nu ska innehålla en post som kallas **ADT_SERVICE_URL**.
 
-Använd följande kommando för att skapa den systemhanterade identiteten. Anteckna fältet *principalId* i utdata.
+Använd följande kommando för att skapa den systemhanterade identiteten. Leta efter fältet **principalId** i utdata.
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Använd *principalId* -värdet från utdata i följande kommando för att tilldela Function-appens identitet till den *digitala Azure-dataägarens data ägar* roll för Azure Digitals-instansen:
+Använd **principalId** -värdet från utdata i följande kommando för att tilldela Function-appens identitet till den *digitala Azure-dataägarens data ägar* roll för Azure Digitals-instansen.
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 Utdata från det här kommandot är information om IoT-hubben som skapades.
 
-Spara det namn som du gav din IoT Hub. Du ska använda det senare.
+Spara det **namn** som du gav din IoT Hub. Du ska använda det senare.
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>Anslut IoT-hubben till Azure Function
 
@@ -269,7 +271,10 @@ I fönstret projekt konsol som öppnas kör du följande kommando för att få d
 ObserveProperties thermostat67 Temperature
 ```
 
-Du bör se de direktsända uppdaterade temperaturerna *från din Azure Digital-instans* som loggas till-konsolen var tionde sekund.
+Du bör se de direktsända uppdaterade temperaturerna *från din Azure Digital-instans* som loggas till-konsolen varannan sekund.
+
+>[!NOTE]
+> Det kan ta några sekunder innan data från enheten sprids till den dubbla. De första temperatur avläsningarna kan visas som 0 innan data börjar tas emot.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="Konsol utdata som visar loggen över temperatur meddelanden från digitala dubbla thermostat67":::
 
@@ -327,7 +332,7 @@ Leta efter `provisioningState` fältet i utdata och kontrol lera att värdet är
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Resultat av slut punkts frågan, som visar slut punkten med en provisioningState slutförd":::
 
-Spara de namn som du gav ditt event Grid-ämne och din Event Grid slut punkt i Azure Digitals, dubbla. Du kommer att använda dem senare.
+Spara de namn som du gav ditt **Event Grid-ämne** och din event Grid **slut punkt** i Azure Digitals, dubbla. Du kommer att använda dem senare.
 
 ### <a name="set-up-route"></a>Konfigurera väg
 
@@ -346,7 +351,7 @@ Utdata från det här kommandot är viss information om den väg som du har skap
 
 Sedan prenumererar du på *ProcessDTRoutedData* Azure-funktionen i Event Grid-avsnittet som du skapade tidigare, så att telemetridata kan flöda från *thermostat67en* dubbla genom Event Grid-ämnet till funktionen, som går tillbaka till Azure Digital-dubbla och uppdaterar *Room21* dubbelt.
 
-Om du vill göra det skapar du en **Event Grid-prenumeration** från ditt event Grid-ämne till din *ProcessDTRoutedData* Azure-funktion som en slut punkt.
+Om du vill göra det skapar du en **Event Grid-prenumeration** som skickar data från det **Event Grid-ämne** som du skapade tidigare till din *ProcessDTRoutedData* Azure-funktion.
 
 I [Azure Portal](https://portal.azure.com/)navigerar du till ditt event Grid-ämne genom att söka efter dess namn i det övre Sök fältet. Välj *+ Händelseprenumeration*.
 
@@ -381,7 +386,7 @@ I fönstret projekt konsol som öppnas kör du följande kommando för att få d
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-Du bör se de direktsända uppdaterade temperaturerna *från din Azure Digital-instans* som loggas till-konsolen var tionde sekund. Observera att temperaturen för *Room21* uppdateras för att matcha uppdateringarna till *thermostat67*.
+Du bör se de direktsända uppdaterade temperaturerna *från din Azure Digital-instans* som loggas till-konsolen varannan sekund. Observera att temperaturen för *Room21* uppdateras för att matcha uppdateringarna till *thermostat67*.
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="Konsol utdata som visar loggen över temperatur meddelanden från en termostat och ett rum":::
 

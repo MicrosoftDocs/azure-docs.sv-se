@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en SSH-anslutning med AKS-klusternoder (Azur
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 96334985862c65000d783df3a205406f046be07a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034463"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Ansluta med SSH till AKS-klusternoder (Azure Kubernetes Service) vid underhåll eller felsökning
 
@@ -168,7 +168,7 @@ Om du vill skapa en SSH-anslutning till en AKS-nod kör du en hjälp-Pod i ditt 
 1. Gå tillbaka till sessionen till din behållare, uppdatera behörigheterna för den kopierade `id_rsa` privata SSH-nyckeln så att den är skrivskyddad:
 
     ```console
-    chmod 0600 id_rsa
+    chmod 0400 id_rsa
     ```
 
 1. Skapa en SSH-anslutning till AKS-noden. Igen är standard användar namnet för AKS-noder *azureuser*. Acceptera uppvarningen för att fortsätta med anslutningen eftersom SSH-nyckeln först är betrodd. Du tillhandahålls sedan med bash-prompten för AKS-noden:

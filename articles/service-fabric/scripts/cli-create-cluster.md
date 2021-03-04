@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a6f23a5f4ce497c38358f06394f0f0aa97f9889
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b69f62f6f47c656921f4f2230a296e293e423fa4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739669"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035300"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>skapa ett säkert Service Fabric Linux-kluster i Azure
 
 Med det här kommandot skapar du ett självsignerat certifikat, lägger till det i ett nyckelvalv och hämtar certifikatet lokalt.  Det nya certifikatet används för att skydda klustret när distribueras.  Du kan också använda ett befintligt certifikat i stället för att skapa ett nytt.  Oavsett hur du gör måste certifikatets ämnesnamn överensstämma med den domän du använder för att få åtkomst till Service Fabric-klustret. Den här matchningen krävs för att tillhandahålla TLS för klustrets slut punkter för HTTPS-hantering och Service Fabric Explorer. Det går inte att hämta ett TLS/SSL-certifikat från en certifikat utfärdare för `.cloudapp.azure.com` domänen. Du måste skaffa ett anpassat domännamn för ditt kluster. När du begär ett certifikat från en certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamn du använder för klustret.
 
-Installera vid behov [Azure CLI](cli/azure/install-azure-cli).
+Installera vid behov [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Exempelskript
 

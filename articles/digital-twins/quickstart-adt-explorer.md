@@ -1,24 +1,24 @@
 ---
 title: Snabb start – utforska ett exempel scenario
 titleSuffix: Azure Digital Twins
-description: Snabb start – Använd ADT Explorer-exemplet för att visualisera och utforska ett fördefinierat scenario.
+description: Snabb start – Använd exemplet Azure Digital flätat Explorer för att visualisera och utforska ett fördefinierat scenario.
 author: baanders
 ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cb501dd8e548ea2f6ce8b63fbffb1c4b2403c9a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575698"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035967"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Snabb start – utforska ett exempel på Azure Digitals dubbla scenarier med ADT Explorer
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Snabb start – utforska ett Azure-exempel med Azure Digitals dubblare med Azure Digitals Internet Explorer
 
 Med Azure Digitals dubbla, kan du skapa och interagera med Live-modeller i dina verkliga miljöer. Först ska du modellera enskilda element som *digitala dubbla*. Sedan ansluter du dem till ett kunskaps *diagram* som kan svara på Live-händelser och frågas efter information.
 
-I den här snabb starten ska du utforska ett fördefinierat Azure Digital-diagram med hjälp av ett exempel program som kallas [Azure Digitals ADT-Utforskare](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Du använder ADT Explorer för att:
+I den här snabb starten ska du utforska ett fördefinierat Azure Digital-diagram med hjälp av ett exempel program som kallas [Azure Digitals flätade Utforskare](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Du kan använda Azure Digitals Internet Explorer för att:
 
 - Ladda upp en digital representation av en miljö.
 - Visa visuella bilder av de dubbla och grafer som skapas för att representera miljön i digitala Azure-nätverk.
@@ -26,7 +26,7 @@ I den här snabb starten ska du utforska ett fördefinierat Azure Digital-diagra
 
 Snabb starten innehåller följande viktiga steg:
 
-1. Konfigurera en digital Azure-instans och ADT Explorer.
+1. Konfigurera en digital Azure-instans och Azure Digitals-Utforskare.
 1. Ladda upp fördefinierade modeller och diagram data för att skapa exempel scenariot.
 1. Utforska scenario diagrammet som skapas.
 1. Gör ändringar i grafen.
@@ -41,11 +41,11 @@ Du behöver en Azure-prenumeration för att slutföra den här snabb starten. Om
 
 Du behöver också **Node.js** på din dator. För att hämta den senaste versionen, se [Node.js](https://nodejs.org/).
 
-Slutligen måste du hämta exemplet som ska användas under snabb starten. Exempel programmet är **ADT Explorer**. Det här exemplet innehåller den app som du använder i snabb starten för att läsa in och utforska ett Azure Digital-scenario. Den innehåller också exempel scenariots filer. Hämta exemplet genom att gå till [Azure Digitals-Utforskaren (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Välj **Hämta zip** -knappen för att ladda ned en zip-fil av den här exempel koden till din dator. Zippa upp **Azure_Digital_Twins__ADT__explorer.zip** -mappen och extrahera filerna.
+Slutligen måste du hämta exemplet som ska användas under snabb starten. Exempel programmet är **Azure Digitals-Utforskaren**. Det här exemplet innehåller den app som du använder i snabb starten för att läsa in och utforska ett Azure Digital-scenario. Den innehåller också exempel scenariots filer. Hämta exemplet genom att gå till [Azure Digitals-Utforskaren](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Välj **Hämta zip** -knappen för att ladda ned en zip-fil av den här exempel koden till din dator. Zippa upp **Azure_Digital_Twins__ADT__explorer.zip** -mappen och extrahera filerna.
 
-## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Konfigurera Azure Digital-och ADT Explorer
+## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>Konfigurera Azure Digitals, dubbla och Azure Digitals-Utforskare
 
-Det första steget när du arbetar med Azure Digitals dubbla är att konfigurera en digital Azure-instans. När du har skapat en instans av tjänsten och konfigurerat dina autentiseringsuppgifter för att autentisera med ADT Explorer, kan du ansluta till instansen i ADT Explorer och fylla den med exempel data senare i snabb starten.
+Det första steget när du arbetar med Azure Digitals dubbla är att konfigurera en digital Azure-instans. När du har skapat en instans av tjänsten och konfigurerat dina autentiseringsuppgifter för att autentisera med Azure Digitals Internet Explorer kan du ansluta till instansen i Azure Digitals Internet Explorer och fylla den med exempel data senare i snabb starten.
 
 Resten av det här avsnittet vägleder dig genom de här stegen.
 
@@ -55,11 +55,11 @@ Resten av det här avsnittet vägleder dig genom de här stegen.
 
 ### <a name="set-up-local-azure-credentials"></a>Konfigurera lokala autentiseringsuppgifter för Azure
 
-ADT Explorer-programmet använder [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (del av `Azure.Identity` biblioteket) för att autentisera användare med Azure Digitals-instansen när du kör den på den lokala datorn. Mer information om olika sätt som en klient-app kan autentisera med Azure Digitals dubbla finns i [Write app authentication code](how-to-authenticate-client.md).
+Azure Digitals Internet Explorer-appen använder [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (del av `Azure.Identity` biblioteket) för att autentisera användare med Azure Digitals-instansen när du kör den på din lokala dator. Mer information om olika sätt som en klient-app kan autentisera med Azure Digitals dubbla finns i [Write app authentication code](how-to-authenticate-client.md).
 
-Med den här typen av autentisering söker ADT Explorer efter autentiseringsuppgifter i din lokala miljö, t. ex. en Azure-inloggning i ett lokalt [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller i Visual Studio eller Visual Studio Code. Därför bör du *Logga in på Azure lokalt* via någon av dessa metoder för att ställa in AUTENTISERINGSUPPGIFTER för ADT Explorer-appen.
+Med den här typen av autentisering söker Azure Digitals Internet Explorer efter autentiseringsuppgifter i din lokala miljö, t. ex. en Azure-inloggning i ett lokalt [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) eller i Visual Studio eller Visual Studio Code. Av den anledningen bör du *Logga in på Azure lokalt* via någon av dessa metoder för att ställa in autentiseringsuppgifter för appen Azure Digital-appens Utforskare.
 
-Om du redan är inloggad på Azure på något av följande sätt kan du gå vidare till [Nästa avsnitt](#run-and-configure-adt-explorer).
+Om du redan är inloggad på Azure på något av följande sätt kan du gå vidare till [Nästa avsnitt](#run-and-configure-azure-digital-twins-explorer).
 
 Annars kan du installera den lokala Azure CLI med följande steg:
 
@@ -68,13 +68,13 @@ Annars kan du installera den lokala Azure CLI med följande steg:
 1. Kör `az login` och följ de begärda autentiseringarna för att logga in på ditt Azure-konto.
 1. Möjligt sista steget: om du använder flera Azure-prenumerationer under det här kontot anger du autentiserings kontexten till den Azure-prenumeration som innehåller din Azure Digital-instansen genom att köra `az account set --subscription "<your-subscription-name-or-ID>"` (antingen namnet eller ID-värdet för prenumerationen fungerar).
 
-När du har loggat in ska ADT Explorer hämta dina Azure-autentiseringsuppgifter automatiskt när du kör det i nästa avsnitt.
+När du har loggat in ska Azure Digitals Internet Explorer automatiskt hämta dina Azure-autentiseringsuppgifter när du kör det i nästa avsnitt.
 
 Du kan stänga fönstret för verifierings konsolen om du vill. Eller så kan du fortsätta vara öppen att använda i nästa steg.
 
-### <a name="run-and-configure-adt-explorer"></a>Köra och konfigurera ADT Explorer
+### <a name="run-and-configure-azure-digital-twins-explorer"></a>Köra och konfigurera Azure Digitals Internet Explorer
 
-Kör sedan ADT Explorer-programmet och konfigurera det för din Azure Digital-instansen.
+Sedan kör du Azure Digitals program Utforskaren och konfigurerar den för din Azure Digital-instansen.
 
 1. Gå till mappen hämtade och zippade **Azure_Digital_Twins__ADT__explorer** .
 Öppna ett konsol fönster till mappens plats **Azure_Digital_Twins__ADT__explorer/client/src**.
@@ -85,11 +85,11 @@ Kör sedan ADT Explorer-programmet och konfigurera det för din Azure Digital-in
 
    Efter några sekunder öppnas ett webbläsarfönster och appen visas i webbläsaren.
 
-   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Webbläsarfönster som visar en app som körs på localhost: 3000. Appen kallas ADT Explorer och innehåller rutor för Query Explorer, vyn modell, diagramvy och Property Explorer. Det finns inga skärm data ännu." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Webbläsarfönster som visar en app som körs på localhost: 3000. Appen kallas Azure Digital-Utforskare och innehåller rutor för Query Explorer, vyn modell, diagramvy och Property Explorer. Det finns inga skärm data ännu." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-1. Välj knappen **Logga** in i det övre högra hörnet i fönstret, som du ser i följande bild, för att konfigurera ADT Explorer att fungera med den instans som du har konfigurerat.
+1. Välj knappen **Logga** in i det övre högra hörnet i fönstret, som du ser i följande bild, för att konfigurera Azure Digitals Internet Explorer så att den fungerar med den instans som du har konfigurerat.
 
-   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer markerar ikonen Logga in längst upp i fönstret. Ikonen visar en enkel Silhouette av en person som har en Silhouette av en nyckel." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Azure Digitals flätade Utforskare markerar ikonen Logga in längst upp i fönstret. Ikonen visar en enkel Silhouette av en person som har en Silhouette av en nyckel." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 1. Ange den URL som du har samlat in tidigare i avsnittet [Konfigurera en digital Azure Digitals-instans](#set-up-an-azure-digital-twins-instance) i formatet *https://{instans värd namn}*.
 
@@ -103,7 +103,7 @@ Om du ser en **behörighet som begärs** i popup-fönstret från Microsoft, bevi
 
 ## <a name="add-the-sample-data"></a>Lägg till exempel data
 
-Därefter importerar du exempel scenariot och grafen till ADT Explorer. Exempel scenariot finns också i mappen **Azure_Digital_Twins__ADT__explorer** som du laddade ned tidigare.
+Därefter importerar du exempel scenariot och grafen till Azure Digitals-Utforskaren. Exempel scenariot finns också i mappen **Azure_Digital_Twins__ADT__explorer** som du laddade ned tidigare.
 
 ### <a name="models"></a>Modeller
 
@@ -138,7 +138,7 @@ Följ de här stegen för att ladda upp modeller.
 >Om du ser följande fel meddelande: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="en popup-ruta som läser fel: fel vid hämtning av modeller: ClientAuthError: det gick inte att öppna popup-fönstret. Detta kan inträffa om du använder IE eller om popup-fönster blockeras i webbläsaren. &quot;med en stängnings knapp längst ned." border="false"::: 
 > Försök inaktivera blockering av popup-fönster eller använda en annan webbläsare.
 
-ADT Explorer överför nu dessa modell filer till din Azure Digital-instansen. De bör visas i rutan **modell** och visa sina egna namn och fullständiga modell-ID: n. Du kan välja **Visa modell** informations ikoner för att se DTDL-koden bakom dem.
+Azure Digitals sammanflätade Explorer överför nu dessa modell filer till din Azure Digital-instansen. De bör visas i rutan **modell** och visa sina egna namn och fullständiga modell-ID: n. Du kan välja **Visa modell** informations ikoner för att se DTDL-koden bakom dem.
 
 :::row:::
     :::column:::
@@ -173,7 +173,7 @@ Följ dessa steg om du vill importera grafen.
 
 2. I rutan fil väljare går du till mappen **Azure_Digital_Twins__ADT__explorer/client/examples** och väljer kalkyl blads filen **buildingScenario.xlsx** . Den här filen innehåller en beskrivning av exempel diagrammet. Välj **OK**.
 
-   Efter några sekunder öppnar ADT Explorer en **import** visning som visar en för hands version av grafen som ska läsas in.
+   Efter några sekunder öppnar Azure Digitals Explorer en **import** -vy som visar en för hands version av grafen som ska läsas in.
 
 3. Om du vill bekräfta att diagrammet laddas upp väljer du ikonen **Spara** i det övre högra hörnet i rutan **diagramvy** .
 
@@ -185,7 +185,7 @@ Följ dessa steg om du vill importera grafen.
     :::column-end:::
    :::row-end:::
 
-4. ADT Explorer använder nu den uppladdade filen för att skapa de begärda dubblarna och relationerna mellan dem. En dialog ruta visas när den är färdig. Välj **Stäng**.
+4. Den överförda filen i Azure Digitals Internet Explorer använder nu den överförda filen för att skapa de begärda delningarna och relationerna. En dialog ruta visas när den är färdig. Välj **Stäng**.
 
    :::row:::
     :::column:::
@@ -197,11 +197,11 @@ Följ dessa steg om du vill importera grafen.
     :::column-end:::
    :::row-end:::
 
-5. Grafen har nu laddats upp till ADT Explorer. Om du vill se diagrammet väljer du knappen **Kör fråga** i rutan **diagram Utforskaren** , längst upp i fönstret ADT Explorer.
+5. Grafen har nu laddats upp till Azure Digitals flätade Utforskare. Om du vill se grafen, väljer du knappen **Kör fråga** i rutan **diagram Utforskaren** , längst upp i fönstret Azure Digitals flätade Explorer.
 
    :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Knappen Kör fråga i det övre högra hörnet i fönstret är markerad." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
-Den här åtgärden kör standard frågan för att välja och Visa alla digitala dubbla. ADT Explorer hämtar alla dubbla och relationer från tjänsten. Den ritar diagrammet som definieras av dem i rutan **diagram** .
+Den här åtgärden kör standard frågan för att välja och Visa alla digitala dubbla. Azure Digitals sammanflätade Utforskare hämtar alla dubbla och relationer från tjänsten. Den ritar diagrammet som definieras av dem i rutan **diagram** .
 
 ## <a name="explore-the-graph"></a>Utforska grafen
 
@@ -262,7 +262,7 @@ Kom ihåg att visa de dubbla egenskaperna tidigare att Room0 har en temperatur p
 
 ## <a name="edit-data-in-the-graph"></a>Redigera data i grafen
 
-Du kan använda ADT Explorer för att redigera egenskaperna för de dubbla som representeras i grafen. I det här avsnittet ska vi öka temperaturen på Room0 till 76.
+Du kan använda Azure Digitals sammanflätade Utforskaren för att redigera egenskaperna för de dubbla som representeras i grafen. I det här avsnittet ska vi öka temperaturen på Room0 till 76.
 
 Starta genom att välja **Room0** för att visa dess egenskaps lista i rutan **egenskaps Utforskaren** .
 
@@ -290,7 +290,7 @@ Nu när temperaturen för Room0 har ändrats från 70 till 76, ska båda delarna
 
 ## <a name="review-and-contextualize-learnings"></a>Granska och sätta-information
 
-I den här snabb starten skapade du en Azure Digital-instansen, anslöt den till ADT Explorer och fyllde den med ett exempel scenario.
+I den här snabb starten skapade du en Azure Digital-instansen, anslöt den till Azure Digitals Internet Explorer och fyllde den med ett exempel scenario.
 
 Du utforskar sedan diagrammet genom att:
 
@@ -304,7 +304,7 @@ I den här snabb starten gjorde du temperatur uppdateringen manuellt. Det är va
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-För att packa upp arbetet för den här snabb starten ska du först avsluta den aktiva konsolen. Den här åtgärden stänger av anslutningen till ADT Explorer-appen i webbläsaren. Du kommer inte längre att kunna visa real tids data i webbläsaren. Du kan stänga fliken webbläsare.
+För att packa upp arbetet för den här snabb starten ska du först avsluta den aktiva konsolen. Den här åtgärden stänger av anslutningen till appen Azure Digitals-Utforskaren i webbläsaren. Du kommer inte längre att kunna visa real tids data i webbläsaren. Du kan stänga fliken webbläsare.
 
 Sedan kan du välja vilka resurser du vill ta bort, beroende på vad du vill göra härnäst.
 

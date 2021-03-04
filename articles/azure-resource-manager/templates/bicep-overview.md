@@ -2,21 +2,19 @@
 title: Bicep-språk för Azure Resource Manager mallar
 description: Beskriver bicep-språket för att distribuera infrastruktur till Azure via Azure Resource Manager mallar.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 6a2750dc99e82c9cf8c9b8b97d156d3a9fe30f31
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 2fb13bca9e9d456889185d512ee2fc9d4cbbe673
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747192"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036392"
 ---
 # <a name="what-is-bicep-preview"></a>Vad är bicep (för hands version)?
 
-Bicep är ett språk för deklarativ distribution av Azure-resurser. Det fören klar redigerings upplevelsen genom att tillhandahålla koncis syntax och bättre stöd för modulär användning och kod åter användning. Bicep är ett domänbaserat språk (DSL), vilket innebär att det är utformat för ett visst scenario eller en viss domän. Bicep är inte avsett som ett allmänt programmeringsspråk för att skriva program.
+Bicep är ett språk för deklarativ distribution av Azure-resurser. Det fören klar redigerings upplevelsen genom att tillhandahålla kortfattad syntax och bättre stöd för kod åter användning. Bicep är ett domänbaserat språk (DSL), vilket innebär att det är utformat för ett visst scenario eller en viss domän. Bicep är inte avsett som ett allmänt programmeringsspråk för att skriva program.
 
-Bicep är en transparent abstraktion över Azure Resource Manager mallar (ARM-mallar). Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil.
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+Tidigare utvecklade du Azure Resource Manager mallar (ARM-mallar) med JSON. JSON-syntaxen för att skapa mallen kan vara utförlig och kräva ett komplicerat uttryck. Bicep förbättrar upplevelsen utan att förlora någon av funktionerna i en JSON-mall. Det är en transparent abstraktion över JSON för ARM-mallar. Varje bicep-fil kompileras till en standard ARM-mall. Resurs typer, API-versioner och egenskaper som är giltiga i en ARM-mall är giltiga i en bicep-fil.
 
 ## <a name="get-started"></a>Kom igång
 
@@ -30,7 +28,26 @@ Om du har en befintlig ARM-mall som du vill konvertera till bicep, se [dekompile
 
 ## <a name="bicep-improvements"></a>Bicep-förbättringar
 
-Bicep erbjuder en enklare och mer koncis syntax jämfört med motsvarande JSON. Du använder inte `[...]` uttryck. I stället anropar du functions, hämtar värden från parametrar och variabler och refererar till resurser. En fullständig jämförelse av syntaxen finns i [jämföra JSON och bicep för mallar](compare-template-syntax.md).
+Bicep erbjuder en enklare och mer koncis syntax jämfört med motsvarande JSON. Du använder inte `[...]` uttryck. I stället anropar du funktioner direkt och hämtar värden från parametrar och variabler. Du ger varje distribuerad resurs ett symboliskt namn som gör det enkelt att referera till resursen i mallen.
+
+Följande JSON returnerar till exempel ett utdata-värde från en resurs egenskap.
+
+```json
+"outputs": {
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
+}
+```
+
+Motsvarande utmatnings uttryck i bicep är enklare att skriva. I följande exempel returneras samma egenskap med det symboliska namnet **publicIP** för en resurs som definieras i mallen:
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+En fullständig jämförelse av syntaxen finns i [jämföra JSON och bicep för mallar](compare-template-syntax.md).
 
 Bicep hanterar automatiskt beroenden mellan resurser. Du kan undvika att ange `dependsOn` när det symboliska namnet för en resurs används i en annan resurs deklaration.
 

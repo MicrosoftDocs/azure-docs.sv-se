@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704913"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036899"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scenario: dirigera trafik genom NVA med anpassade inställningar
 
@@ -176,7 +176,7 @@ I det här arbets flödet ansluter du inte virtuella nätverk 1, 2 och 3 till VN
    >
    > * Portal användare måste aktivera "Sprid till standard väg" på anslutningar (VPN/ER/P2S/VNet) för att vägen 0.0.0.0/0 ska börja gälla.
    > * PS/CLI/REST-användare måste ange flaggan ' enableinternetsecurity ' till true för att vägen 0.0.0.0/0 ska börja gälla.
-   >
+   > * Virtual Network anslutningen har inte stöd för nästa hopp-IP för nästa hopp till samma virtuella nätverks program i ett eker-VNet om "en av vägarna med nästa hopp-IP anges som offentlig IP-adress eller 0.0.0.0/0 (Internet)
 
 ## <a name="next-steps"></a>Nästa steg
 

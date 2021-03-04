@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för åtgärds grupper
 description: Exempel Azure Resource Manager mallar för att distribuera Azure Monitor åtgärds grupper.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 12/03/2020
-ms.openlocfilehash: 13a353ba469f0a01011b72b9c014b8f97e4d6fae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c7982c108cf6c238c28c843e1dfbb881a6e0bb4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628351"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036409"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>Exempel på Resource Manager-mallar för åtgärds grupper i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa [Åtgärds grupper](../alerts/action-groups.md) i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

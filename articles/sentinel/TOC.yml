@@ -25,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: Begrepp
   items:
-    - name: Tilldela behörigheter med hjälp av roller
-      href: roles.md
+    - name: Hantera åtkomst
+      items:
+        - name: Behörigheter i Azure Sentinel
+          href: roles.md
+        - name: Hantera åtkomst efter resurs
+          href: resource-context-rbac.md
     - name: Avancerad attackidentifiering i flera faser
       href: fusion.md
     - name: Ta med en egen maskininlärningsmodell
@@ -236,7 +240,7 @@
           href: connect-azure-stack.md
         - name: Övervaka hälsotillstånd för dataanslutningsprogram
           href: monitor-data-connector-health.md
-    - name: Aktivera beteendeanalys för användare och entiteter
+    - name: Aktivera användar-och enhets beteende analys
       href: enable-entity-behavior-analytics.md
     - name: Hantera flera klientorganisationer (MSSP)
       href: multiple-tenants-service-providers.md
@@ -248,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: Hantera SOC bättre med incidentmått
       href: manage-soc-with-incident-metrics.md
+    - name: Granska Azure Sentinel-frågor och-aktiviteter
+      href: audit-sentinel-data.md
     - name: Hotjakt
       href: hunting.md
       items:
@@ -259,6 +265,8 @@
           href: livestream.md
     - name: Ta bort Azure Sentinel
       href: offboard.md
+    - name: Implementera avancerad RBAC
+      items: null
 - name: Referens
   items:
     - name: Azure RBAC-roller
@@ -293,8 +301,8 @@
   items:
     - name: Användbara resurser
       href: resources.md
-    - name: 'Blogg om säkerhet, sekretess och efterlevnad i Azure'
-      href: /archive/blogs/azuresecurity/
+    - name: Azure Sentinel-blogg
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: Prissättning
