@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: ae31265aee7b0919daf0fec9efbe4d5c6aa7cd91
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3df3d4a3e87f67678833f097a1e2aa3633a5991e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653464"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096436"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och få en åtkomsttoken i en reakta SPA med auth Code Flow
 
@@ -26,6 +26,8 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 I den här snabb starten används MSAL reagera med Authorization Code Flow. En liknande snabb start som använder MSAL.js med det implicita flödet finns i [snabb start: Logga in användare i Java Script-appar med en sida](./quickstart-v2-javascript.md).
+
+Den här funktionen [!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 

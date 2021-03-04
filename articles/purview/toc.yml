@@ -166,6 +166,10 @@ items:
             href: sensitivity-insights.md
           - name: Visa insikter för filnamnstillägg
             href: file-extension-insights.md
+      - name: Säkerhet & nätverk
+        items:
+          - name: Hantera privata slut punkter
+            href: catalog-private-link.md
   - name: Referens
     items:
       - name: Klassificeringar som stöds

@@ -7,26 +7,27 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4fd0a7cb575a109d1393527b48de3fa4e3446167
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098340"
 ---
 # <a name="azure-percept-dk-overview"></a>Översikt över Azure percept DK
 
-Azure percept DK är ett Edge AI Development Kit som har utformats för att utveckla visioner för korrektur i koncept. När den kombineras med [Azure percept Studio](./overview-azure-percept-studio.md)blir den en kraftfull men lätt att använda-plattform för att bygga Edge AI-lösningar för en mängd olika AI-program. Den kan köpas på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+Azure percept DK är ett Edge AI och IoT Development Kit som utformats för att utveckla koncept för vision och Audio AI. När de kombineras med [Azure percept Studio](./overview-azure-percept-studio.md) -och [Azure percept-ljud](./overview-azure-percept-audio.md), blir det en kraftfull plattform som du kan använda för att bygga Edge AI-lösningar för en mängd olika vision-eller audio AI-program. Den kan köpas på [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Avbildning.":::
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure percept DK-enhet.":::
 
 ## <a name="key-features"></a>Viktiga funktioner
 
 - **Möjligheten att köra AI på gränsen**. Med inbyggd maskin varu acceleration kan den köra vision AI-modeller utan anslutning till molnet.
 - **Inbyggd förtroende säkerhet i maskin varu roten**. Mer information finns i den här översikten över [Azure percept Security](./overview-percept-security.md) .
 - **Sömlös integrering med [Azure percept Studio](./overview-azure-percept-studio.md)** och andra Azure-tjänster. Till exempel Azure IoT Hub, Azure Cognitive Services och [live video analys](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Sömlös integrering med valfritt [Azure percept-ljud](./overview-azure-percept-audio.md)**
 - **Stöd för de viktigaste AI-plattformarna**. Till exempel ONNX och TensorFlow.
-- **Integrering med 80/20-järnvägs systemet**. Gör det enklare att skapa prototyper i produktions miljöer. Läs mer om [8/20-integrering](./overview-8020-integration.md).
+- **Integrering med 80/20-järnvägs systemet**. Gör det enklare att skapa prototyper i produktions miljöer. Läs mer om [80/20-integrering](./overview-8020-integration.md).
 
 ## <a name="hardware-components"></a>Maskin varu komponenter
 

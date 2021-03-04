@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 54d4f1fe983cf20b734351754bb8eba191894dbc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665191"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097915"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Skapa en lösning utan kod i Azure percept Studio
 
@@ -23,6 +23,7 @@ Med Azure percept Studio kan du bygga och distribuera anpassade lösningar för 
 - Namnge utbildnings avbildningarna i [Custom vision](https://www.customvision.ai/)
 - Träna din anpassade objekt identifierings-eller klassificerings modell
 - Distribuera din modell till din devkit
+- Förbättra din modell genom att ställa in omträning
 
 Den här självstudien är lämplig för utvecklare med liten till ingen AI-upplevelse och de är bara att komma igång med Azure percept.
 
@@ -30,15 +31,13 @@ Den här självstudien är lämplig för utvecklare med liten till ingen AI-uppl
 
 - Azure percept DK (devkit)
 - [Azure-prenumeration](https://azure.microsoft.com/free/)
-- OOBE (out-of-Box Experience): du anslöt din devkit till ett Wi-Fi nätverk, skapat ett IoT Hub och anslöt din devkit till IoT Hub
+- Installations upplevelse för Azure percept DK: du anslöt din devkit till ett Wi-Fi nätverk, skapat ett IoT Hub och anslöt din devkit till IoT Hub
 
 ## <a name="create-a-vision-prototype"></a>Skapa en vision-prototyp
 
 1. Starta webbläsaren och gå till [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819).
 
-1. På sidan Översikt klickar du på fliken **demonstrationer & självstudier** .
-
-    :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Översikts skärm för Azure percept Studio." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
+1. På sidan Översikt klickar du på fliken **demonstrationer & självstudier** .  :::image type="content" source="./media/tutorial-nocode-vision/percept-studio-overview-inline.png" alt-text="Översikts skärm för Azure percept Studio." lightbox="./media/tutorial-nocode-vision/percept-studio-overview.png":::
 
 1. Klicka på **skapa en vision-prototyp** under **synskadade och demonstrationer**.
 
@@ -142,11 +141,23 @@ När du har stängt det här fönstret kan du gå tillbaka och redigera ditt vis
 
 :::image type="content" source="./media/tutorial-nocode-vision/vision-project-inline.png" alt-text="Sidan syn." lightbox="./media/tutorial-nocode-vision/vision-project.png":::
 
+## <a name="improve-your-model-by-setting-up-retraining"></a>Förbättra din modell genom att ställa in omträning
+
+När du har tränat din modell och distribuerat den till enheten kan du förbättra modell prestanda genom att ställa in omskolnings parametrar för att samla in fler tränings data. Den här funktionen används för att förbättra en utbildad modells prestanda genom att ge dig möjlighet att avbilda avbildningar baserat på ett sannolikhets intervall. Du kan till exempel ange att enheten bara ska fånga utbildnings bilder när sannolikheten är låg. Här följer några [ytterligare anvisningar](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) om hur du lägger till fler avbildningar och hur du balanserar utbildnings data.
+
+1. Om du vill konfigurera omskolning går du tillbaka till **projektet**, sedan till **projekt Sammanfattning**
+1. På fliken **avbildnings insamling** väljer du **Automatisk avbildnings insamling** och **Konfigurera omträning**.
+1. Konfigurera den automatiserade avbildnings fångsten för att samla in en stor mängd avbildningar i taget genom att markera rutan **Automatisk bild tagning** .
+1. Välj önskad bild hastighet under **bild frekvensen** och det totala antalet avbildningar som du vill samla in under **mål**.
+1. I avsnittet **Konfigurera omskolning** väljer du den iteration som du vill samla in fler utbildnings data för och väljer sedan sannolikhets intervallet. Endast bilder som uppfyller sannolikhets frekvensen laddas upp till projektet.
+
+    :::image type="content" source="./media/tutorial-nocode-vision/vision-image-capture.png" alt-text="bild tagning.":::
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 Om du har skapat en ny Azure-resurs för den här självstudien och du inte längre vill utveckla eller använda din vision lösning utför du följande steg för att ta bort resursen:
 
-1. Gå till [Azure-portalen](https://ms.portal.azure.com/#home).
+1. Gå till [Azure-portalen](https://ms.portal.azure.com/).
 1. Klicka på **alla resurser**.
 1. Klicka på kryss rutan bredvid resursen som skapades under den här självstudien. Resurs typen visas som **Cognitive Services**.
 1. Klicka på ikonen **ta bort** längst upp på skärmen.

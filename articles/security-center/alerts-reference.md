@@ -1,23 +1,20 @@
 ---
 title: Referens tabell för alla säkerhets aviseringar i Azure Security Center
-description: Den här artikeln innehåller en lista över säkerhets aviseringar som visas i Azure Security Center Azure Defender-instrumentpanelen.
+description: Den här artikeln innehåller en lista över säkerhets aviseringar som visas i Azure Security Center Azure Defender-instrumentpanelen
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/21/2021
+ms.date: 03/03/2021
 ms.author: memildin
-ms.openlocfilehash: a9ba66580d6b98cfde0abe934f53f05d27edc57f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8ebf47420150c82c8e94299291e9ea6bd7d4d88
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735853"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096963"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Säkerhetsaviseringar – en referensguide
 
@@ -278,6 +275,9 @@ Längst ned på den här sidan finns det en tabell som beskriver Azure Security 
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>Aviseringar för behållare – värd nivå
 
+Azure Defender-aviseringar för behållar värdar är inte begränsade till aviseringarna nedan. Många av de aviseringar som anges i [aviseringarna för Azure nätverks lager](#alerts-azurenetlayer), [varningar för Windows-datorer](#alerts-windows)och [aviseringar för Linux-datorer](#alerts-linux) kan också aktive ras på behållar värdarna. Microsofts globala Threat Intelligence-team mäter och justerar många typer av aviseringar mot Kubernetes-kluster för att optimera identifieringen och minska antalet falska positiva identifieringar.
+
+
 [Mer information och anmärkningar](defender-for-kubernetes-introduction.md)
 
 | Varning                                                                          | Beskrivning                                                                                                                                                                                                                                                                                                | MITRE taktiker<br>([Läs mer](#intentions)) | Allvarlighetsgrad |
@@ -294,9 +294,7 @@ Längst ned på den här sidan finns det en tabell som beskriver Azure Security 
 
 ## <a name="alerts-for-sql-database-and-azure-synapse-analytics"></a><a name="alerts-sql-db-and-warehouse"></a>Aviseringar för SQL Database-och Azure Synapse-analys
 
-[Mer information och anmärkningar](defender-for-sql-introduction.md)
-
-| Varning                                                    | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktiker<br>([Läs mer](#intentions)) | Allvarlighetsgrad |
+[Mer information och anmärkningar](defender-for-sql-introduction.md)| Varning                                                    | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                               | MITRE taktiker<br>([Läs mer](#intentions)) | Allvarlighetsgrad |
 |----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | **En möjlig sårbarhet vid SQL-inmatning**            | Ett program har genererat en felaktig SQL-instruktion i databasen. Detta kan tyda på en möjlig sårbarhet vid SQL-injektering. Det finns två möjliga orsaker till en felaktig instruktion. Ett fel i program koden kan ha konstruerat den felaktiga SQL-instruktionen. Eller, program kod eller lagrade procedurer har inte sanerat användarindata vid konstruktion av den felaktiga SQL-instruktionen, som kan utnyttjas för SQL-inmatning. | -                                            | Medel   |
 | **Försök till inloggning av ett potentiellt skadligt program** | Ett potentiellt skadligt program försökte få åtkomst till SQL Server {Name}.                                                                                                                                                                                                                                                                                                                                                               | För attack                                    | Högt     |
@@ -477,8 +475,7 @@ Längst ned på den här sidan finns det en tabell som beskriver Azure Security 
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>Aviseringar om säkerhets incidenter
 
-[Mer information och anmärkningar](security-center-alerts-cloud-smart.md)
-
+[Mer information och anmärkningar](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
 
 | Varning                                   | Beskrivning                                                          | MITRE taktiker<br>([Läs mer](#intentions)) | Allvarlighetsgrad |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|

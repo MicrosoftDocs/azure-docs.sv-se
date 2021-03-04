@@ -6,18 +6,23 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 10/12/2020
-ms.author: matjazl
-ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.author: zxue
+ms.openlocfilehash: 5e24c7666fd2ece7d284b7705bc481866d7604de
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621886"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097048"
 ---
 # <a name="configure-private-link"></a>Konfigurera privat länk
 
 Med privat länk kan du komma åt Azure API för FHIR över en privat slut punkt, ett nätverks gränssnitt som ansluter dig privat och på ett säkert sätt med en privat IP-adress från det virtuella nätverket. Med privat länk kan du komma åt våra tjänster på ett säkert sätt från ditt VNet som en första parts tjänst utan att behöva gå igenom en offentlig DNS. Den här artikeln vägleder dig genom hur du skapar, testar och hanterar din privata slut punkt för Azure API för FHIR.
+
+>[!Note]
+>Varken privat länk eller Azure API för FHIR kan flyttas från en resurs grupp eller prenumeration till en annan när den privata länken är aktive rad. Om du vill flytta tar du bort den privata länken först och flyttar sedan Azure API för FHIR och skapar en ny privat länk när flyttningen är klar. Utvärdera potentiella säkerhets aspekterna innan du tar bort en privat länk.
+>
+>Om det är aktiverat att exportera gransknings loggar och/mät värden för Azure API för FHIR, uppdaterar du export inställningen via diagnostikinställningar från portalen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

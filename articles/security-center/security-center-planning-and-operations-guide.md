@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0868c99a29b8da4376b639a54988fc821433e26d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a8b285ca0b8d0dae88bfe8dd19ac7e1bc8372e32
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099207"
 ---
 # <a name="planning-and-operations-guide"></a>Planerings- och drifthandbok
 Den här guiden är till för IT-experter, IT-arkitekter, informations säkerhets analytiker och moln administratörer som planerar att använda Azure Security Center.
@@ -232,7 +232,6 @@ I [hur du utnyttjar Azure Security Center & Microsoft Operations Management Suit
 I det här dokumentet har du lärt dig hur du planerar integreringen av Security Center. I följande avsnitt kan du lära dig mer om Security Center:
 
 * [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md) – Lär dig hur du övervakar Azure-resursernas hälsa.
 * [Övervaka partner lösningar med Azure Security Center](./security-center-partner-integration.md) – lär dig hur du övervakar dina partner lösningars hälso status.
 * [Azure Security Center vanliga frågor och svar](faq-general.md) – hitta vanliga frågor om att använda tjänsten.
 * [Azures säkerhetsblogg](/archive/blogs/azuresecurity/) – Här hittar du blogginlägg om säkerhet och regelefterlevnad i Azure.

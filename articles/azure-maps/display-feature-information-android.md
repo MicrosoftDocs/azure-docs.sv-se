@@ -3,21 +3,24 @@ title: Visa funktions information i Android Maps | Microsoft Azure Maps
 description: Lär dig hur du visar information när användare interagerar med kart funktioner. Använd Azure Maps Android SDK för att visa popup-meddelanden och andra typer av meddelanden.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047729"
+ms.locfileid: "102097252"
 ---
 # <a name="display-feature-information"></a>Visa funktionsinformation
 
 Spatialdata representeras ofta med punkter, linjer och polygoner. Informationen innehåller ofta information om metadata. En punkt kan till exempel representera platsen för en restaurang och metadata om att restaurangens namn, adress och typ av livsmedel fungerar. Du kan lägga till dessa metadata som egenskaper för en interjson `Feature` . Följande kod skapar en enkel punkt funktion med en `title` egenskap som har värdet "Hello World!"
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -34,9 +37,32 @@ feature.addStringProperty("title", "Hello World!");
 source.add(feature);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Create a point feature, pass in the metadata properties, and add it to the data source.
+source.add(feature)
+```
+
+::: zone-end
+
 Se avsnittet [skapa en data källa](create-data-source-android-sdk.md) för att skapa och lägga till data till kartan.
 
 När en användare interagerar med en funktion på kartan kan händelser användas för att reagera på dessa åtgärder. Ett vanligt scenario är att visa ett meddelande om metadata-egenskaperna för en funktion som användaren interagerar med. `OnFeatureClick`Händelsen är den huvudsakliga händelsen som används för att identifiera när användaren tryckte på en funktion på kartan. Det finns också en `OnLongFeatureClick` händelse. När du lägger till `OnFeatureClick` händelsen i kartan kan den begränsas till ett enda lager genom att skicka i ID: t för ett lager för att begränsa det till. Om inget lager-ID skickas i, kan du trycka på en funktion på kartan, oavsett vilket lager det finns i, så att den här händelsen utlöses. Följande kod skapar ett symbol lager för att återge punkt data på kartan och lägger sedan till en `OnFeatureClick` händelse och begränsar den till det här symbol skiktet.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a symbol and add it to the map.
@@ -52,9 +78,31 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a symbol and add it to the map.
+val layer = SymbolLayer(source)
+map.layers.add(layer)
+
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Do something with the message.
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
 ## <a name="display-a-toast-message"></a>Visa ett popup-meddelande
 
 Ett popup-meddelande är ett av de enklaste sätten att visa information till användaren och är tillgänglig i alla versioner av Android. Den har inte stöd för någon typ av användarindata och visas bara under en kort tids period. Om du snabbt vill låta användaren veta vad de tryckte på, kan ett popup-meddelande vara ett bra alternativ. Följande kod visar hur ett popup-meddelande kan användas med `OnFeatureClick` händelsen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Add a feature click event to the map.
@@ -67,7 +115,24 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
-![Animering av en funktion som knackas och ett popup-meddelande visas](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Display a toast message with the title information.
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
+![Animering av en funktion som knackas och ett popup-meddelande visas](media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 Förutom popup-meddelanden finns det många andra sätt att presentera egenskaperna för metadata för en funktion, till exempel:
 
@@ -104,6 +169,8 @@ Azure Maps Android SDK är en `Popup` klass som gör det enkelt att skapa gräns
 ```
 
 Om du antar att ovanstående layout är lagrad i en fil som kallas `popup_text.xml` i `res -> layout` mappen för en app, skapar följande kod en popup-meny, lägger till den i kartan. När användaren klickar på en funktion `title` visas egenskapen med hjälp av `popup_text.xml` layouten och längst ned i mitten av layouten till den angivna placeringen på kartan.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a popup and add it to the map.
@@ -144,8 +211,54 @@ map.events.add((OnFeatureClick)(feature) -> {
     //Open the popup.
     popup.open();
 });
-
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a popup and add it to the map.
+val popup = Popup()
+map.popups.add(popup)
+
+map.events.add(OnFeatureClick { feature: List<Feature> ->
+    //Get the first feature and it's properties.
+    val f = feature[0]
+    val props = f.properties()
+
+    //Retrieve the custom layout for the popup.
+    val customView: View = LayoutInflater.from(this).inflate(R.layout.popup_text, null)
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    val tv: TextView = customView.findViewById(R.id.message)
+    tv.text = props!!["title"].asString
+
+    //Get the coordinates from the clicked feature and create a position object.
+    val c: List<Double> = (f.geometry() as Point?).coordinates()
+    val pos = Position(c[0], c[1])
+
+    //Set the options on the popup.
+    popup.setOptions( 
+        //Set the popups position.
+        position(pos),  
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),  
+
+        //Set the content of the popup.
+        content(customView) 
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    )
+
+    //Open the popup.
+    popup.open()
+})
+```
+
+::: zone-end
 
 I följande skärm bild visas popup-fönster som visas när du klickar på funktioner och som ligger kvar på den angivna platsen på kartan när den flyttas.
 

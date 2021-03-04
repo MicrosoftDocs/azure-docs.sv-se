@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: a514edef1ef1f67fba3efae883ceb46dee249d6e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 14e6990579f61b28c091f18b45a06d1ddcc00e89
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705508"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097541"
 ---
 # <a name="what-is-azure-load-balancer"></a>Vad är Azure Load Balancer?
 
 *Belastnings utjämning* syftar på att fördela belastningen jämnt (inkommande nätverks trafik) över en grupp server dels resurser eller servrar. 
 
-Azure Load Balancer arbetar i lager fyra av OSI-modellen (Open Systems Interconnection). Det är den enda kontakt punkten för-klienter. Load Balancer distribuerar inkommande flöden som anländer till belastningsutjämnarens klient del till instanser av backend-poolen. Dessa flöden sker enligt konfigurerade regler för belastnings utjämning och hälso avsökningar. Instanserna för backend-poolen kan vara Azure-Virtual Machines eller instanser i en skalnings uppsättning för virtuella datorer.
+Azure Load Balancer arbetar på nivå 4 i OSI-modellen (Open Systems Interconnection). Det är den enda kontakt punkten för-klienter. Load Balancer distribuerar inkommande flöden som anländer till belastningsutjämnarens klient del till instanser av backend-poolen. Dessa flöden sker enligt konfigurerade regler för belastnings utjämning och hälso avsökningar. Instanserna för backend-poolen kan vara Azure-Virtual Machines eller instanser i en skalnings uppsättning för virtuella datorer.
 
 En **[offentlig belastningsutjämnare](./components.md#frontend-ip-configurations)** kan tillhandahålla utgående anslutningar för virtuella datorer (VM) i det virtuella nätverket. Dessa anslutningar utförs genom att översätta sina privata IP-adresser till offentliga IP-adresser. Offentliga belastnings utjämning används för att belastningsutjämna Internet trafik till dina virtuella datorer.
 
@@ -39,10 +39,20 @@ En **[intern (eller privat) belastningsutjämnare](./components.md#frontend-ip-c
 
 Mer information om de enskilda komponenterna för belastnings utjämning finns i [Azure Load Balancer-komponenter](./components.md).
 
-## <a name="why-use-azure-load-balancer"></a>Varför ska jag använda Azure Load Balancer?
-Med Standard Load Balancer kan du skala dina program och skapa tjänster med hög tillgänglighet. Belastnings utjämning stöder både inkommande och utgående scenarier. Load Balancer ger låg latens och högt data flöde, och skalar upp till miljon tals flöden för alla TCP-och UDP-program.
+>[!NOTE]
+> Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier. 
+> * Om du vill göra DNS-baserad global Routning och **inte** har kraven för Transport Layer Security (TLS) protokoll terminering ("SSL-avlastning"), per http/https-begäran eller bearbetning av program lager, granska [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
+> * Om du vill belastningsutjämna mellan servrarna i en region i program lagret granskar du [Application Gateway](../application-gateway/overview.md)
+> * Om du behöver optimera en global routning av din webb trafik och optimera prestanda och tillförlitlighet på toppnivå med hjälp av snabb global redundans, se [front dörren](../frontdoor/front-door-overview.md)
+> 
+> Dina scenarier från slut punkt till slut punkt kan dra nytta av att kombinera de här lösningarna efter behov.
+> En alternativ jämförelse för Azure-belastnings utjämning finns i [Översikt över belastnings Utjämnings alternativ i Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-Viktiga scenarier som du kan utföra med Standard Load Balancer inkluderar:
+
+## <a name="why-use-azure-load-balancer"></a>Varför ska jag använda Azure Load Balancer?
+Med Azure Load Balancer kan du skala dina program och skapa tjänster med hög tillgänglighet. Belastnings utjämning stöder både inkommande och utgående scenarier. Load Balancer ger låg latens och högt data flöde, och skalar upp till miljon tals flöden för alla TCP-och UDP-program.
+
+Viktiga scenarier som du kan utföra med Azure Standard Load Balancer är:
 
 - Belastningsutjämna **[intern](./quickstart-load-balancer-standard-internal-portal.md)** och **[extern](./quickstart-load-balancer-standard-public-portal.md)** trafik till virtuella Azure-datorer.
 
@@ -56,7 +66,7 @@ Viktiga scenarier som du kan utföra med Standard Load Balancer inkluderar:
 
 - Aktivera stöd för **[belastnings utjämning](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** av **[IPv6](../virtual-network/ipv6-overview.md)**.
 
-- Standard Load Balancer ger flerdimensionella mått via [Azure Monitor](../azure-monitor/overview.md).  Dessa mått kan filtreras, grupperas och delas upp för en specifik dimension.  De tillhandahåller aktuella och historiska insikter om prestanda och hälsa för din tjänst. [Insikter för Azure Load Balancer](./load-balancer-insights.md) erbjuder en förkonfigurerad instrument panel med användbara visualiseringar för dessa mått.  Resource Health stöds också. Granska **[standard Load Balancer Diagnostics](load-balancer-standard-diagnostics.md)** för mer information.
+- Standard Load Balancer tillhandahåller flerdimensionella mått via [Azure Monitor](../azure-monitor/overview.md).  Dessa mått kan filtreras, grupperas och delas upp för en specifik dimension.  De tillhandahåller aktuella och historiska insikter om prestanda och hälsa för din tjänst. [Insikter för Azure Load Balancer](./load-balancer-insights.md) erbjuder en förkonfigurerad instrument panel med användbara visualiseringar för dessa mått.  Resource Health stöds också. Granska **[standarddiagnostiken för belastningsutjämnare](load-balancer-standard-diagnostics.md)** för mer information.
 
 - Belastnings Utjämnings tjänster på **[flera portar, flera IP-adresser eller både](./load-balancer-multivip-overview.md)** och.
 
@@ -66,13 +76,20 @@ Viktiga scenarier som du kan utföra med Standard Load Balancer inkluderar:
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Säker som standard
 
-Standard Load Balancer bygger på den nolla förtroendet för nätverks säkerhets modellen i dess kärna. Standard Load Balancer är säker som standard och ingår i ditt virtuella nätverk. Det virtuella nätverket är ett privat och isolerat nätverk.  Det innebär att standard belastnings utjämning och offentliga standard-IP-adresser stängs till inkommande flöden om de inte öppnas av nätverks säkerhets grupper. NSG: er används för att uttryckligen tillåta tillåten trafik.  Om du inte har en NSG på ett undernät eller ett nätverkskort för den virtuella dator resursen, tillåts inte trafik att komma åt den här resursen. Mer information om NSG: er och hur du tillämpar dem för ditt scenario finns i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md).
-Basic Load Balancer är öppet för Internet som standard. Dessutom lagrar Load Balancer inte kund information.
+* Standard Load Balancer bygger på den nolla förtroende nätverks säkerhets modellen.
+
+* Standard Load Balancer är säker som standard och ingår i ditt virtuella nätverk. Det virtuella nätverket är ett privat och isolerat nätverk.  
+
+* Standard belastnings utjämning och offentliga standard-IP-adresser stängs till inkommande anslutningar om de inte öppnas av nätverks säkerhets grupper. NSG: er används för att uttryckligen tillåta tillåten trafik.  Om du inte har en NSG på ett undernät eller ett nätverkskort för din virtuella dator resurs, tillåts inte trafik att komma åt den här resursen. Mer information om NSG: er och hur du tillämpar dem i ditt scenario finns i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md).
+
+* Den grundläggande belastningsutjämnaren är öppen för Internet som standard. 
+
+* Load Balancer lagrar inte kund information.
 
 ## <a name="pricing-and-sla"></a>Priser och service nivå avtal
 
-Standard Load Balancer pris information finns i [Load Balancer prissättning](https://azure.microsoft.com/pricing/details/load-balancer/).
-Basic Load Balancer tillhandahålls kostnadsfritt.
+Information om priser för standard belastningsutjämnare finns i [priser för belastnings utjämning](https://azure.microsoft.com/pricing/details/load-balancer/).
+Basic Load Balancer erbjuds utan kostnad.
 Se [SLA för Load Balancer](https://aka.ms/lbsla). Basic Load Balancer har inget service avtal.
 
 ## <a name="whats-new"></a>Nyheter
@@ -83,4 +100,4 @@ Prenumerera på RSS-flödet och Visa de senaste Azure Load Balancer funktions up
 
 Se [skapa en offentlig standard belastningsutjämnare](quickstart-load-balancer-standard-public-portal.md) för att komma igång med att använda en belastningsutjämnare.
 
-Mer information om Azure Load Balancer begränsningar och komponenter finns [Azure Load Balancer komponenter](./components.md) och [Azure Load Balancer koncept](./concepts.md)
+Mer information om Azure Load Balancer begränsningar och komponenter finns i [Azure Load Balancer komponenter](./components.md) och [Azure Load Balancer begrepp](./concepts.md)

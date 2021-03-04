@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d150228be2cf6deff3bc2fd0a0599cca70d24ac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8dda18271de9b7d65246f0882ee7a68191031c05
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663856"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096623"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-ssh"></a>Ansluta till din Azure percept DK över SSH
 
@@ -25,6 +25,7 @@ Följ stegen nedan för att konfigurera en SSH-anslutning till din Azure percept
     - Om värddatorn kör Windows är [SparaTillFil](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) en effektiv SSH-klient och kommer att användas i den här guiden.
     - Om värddatorn kör Linux eller OS X ingår SSH-tjänster i dessa operativ system och kan köras utan ett separat klient program. Mer information om hur du kör SSH-tjänster finns i produkt dokumentationen för operativ systemet.
 - Azure percept DK
+- Konfigurera ett SSH-inloggningsnamn under den [inspelade Azure PERCEPT DK-upplevelsen](./quickstart-percept-dk-set-up.md)
 
 ## <a name="initiate-the-ssh-connection"></a>Initiera SSH-anslutningen
 
@@ -48,15 +49,8 @@ Följ stegen nedan för att konfigurera en SSH-anslutning till din Azure percept
 
     :::image type="content" source="./media/how-to-ssh-into-percept-dk/ssh-putty.png" alt-text="Avbildning.":::
 
-1. Logga in på den SparaTillFil-terminalen. Om du konfigurerar ett SSH-användarnamn och-lösen ord under OOBE, anger du inloggnings uppgifterna när du uppmanas till det. Annars anger du följande:  
-
-    1. Logga in som: rot
-    1. Lösenord: p@ssw0rd
-
-    :::image type="content" source="./media/how-to-ssh-into-percept-dk/putty-terminal.png" alt-text="Fönstret SparaTillFil.":::  
+1. Logga in på den SparaTillFil-terminalen med SSH-användarnamnet och lösen ordet som skapades under den här insikts upplevelsen.
 
 ## <a name="next-steps"></a>Nästa steg
 
 När du har anslutit till din Azure percept DK via SSH kan du utföra en mängd olika uppgifter, inklusive fel sökning, USB-uppdateringar och köra verktyget DiagTool eller SoftAP.
-
-

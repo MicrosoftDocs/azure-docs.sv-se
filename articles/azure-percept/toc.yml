@@ -38,12 +38,6 @@
           href: tutorial-nocode-vision.md
         - name: Bygg och distribuera en tal lösning utan kod
           href: tutorial-no-code-speech.md
-    - name: Avancerad utveckling
-      items:
-        - name: Självstudie för avancerad utveckling (moln)
-          href: advanced-development-cloud.md
-        - name: Självstudie för avancerad utveckling (lokal)
-          href: advanced-development-local.md
 - name: Begrepp
   items:
     - name: Azure percept-ljud
@@ -106,5 +100,3 @@
           href: azure-percept-vision-datasheet.md
         - name: Data blad för Azure percept-ljud
           href: azure-percept-audio-datasheet.md
-- name: Resurser
-  items: null

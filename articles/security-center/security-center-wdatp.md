@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: b9095d78d902bf5e44bffaba5db19bf2c26e0845
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a659ea897f013e504668789a7d5671420ff70a9f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727013"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099088"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -41,7 +41,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Aspekt                          | Information                                                                                                                                                                                                                                                                                                       |
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
-| Priset                        | Kräver [Azure Defender för servrar](security-center-pricing.md)                                                                                                                                                                                                                                             |
+| Priset                        | Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | Plattformar som stöds:            |  • Azure-datorer som kör Windows<br> • Azure Arc-datorer som kör Windows|
 | Versioner av Windows som stöds:  |   • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br>Övervakning av Server slut punkt med hjälp av dessa integreringar har inaktiverats för Office 365 GCC-kunder|
 | Operativ system som inte stöds:  |  • Windows 10 (annat än EVD eller WVD)<br> • Linux|
@@ -83,8 +83,7 @@ När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licen
         - Om du distribuerar Defender till slut punkt till en lokal dator ansluter du den till Azure-bågen enligt beskrivningen i [Connect hybrid Machines med Azure Arc-aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)
     - För **Windows Server 2019-datorer** kontrollerar du dessutom att de kör en giltig agent och har MicrosoftMonitoringAgent-tillägget
 
-1. Aktivera **Azure Defender för servrar**. Se [prissättning för Azure Security Center](security-center-pricing.md#enable-azure-defender).
-
+1. Aktivera **Azure Defender för servrar**. Se [snabb start: Aktivera Azure Defender](enable-azure-defender.md).
 
 1. Om du redan har licensierat och distribuerat Microsoft Defender för slut punkter på dina servrar, tar du bort den med hjälp av proceduren som beskrivs i [avpublicera Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. Från Security Center menyn väljer du **pris & inställningar**.

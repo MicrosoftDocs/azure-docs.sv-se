@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 532c46c50d0b422946af649801e43904b4b6ed7d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702019"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096878"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -26,7 +26,7 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|**Azure Defender för Azure SQL Database-servrar** – allmänt tillgängliga (ga)<br>**Azure Defender för SQL-servrar på datorer** – allmänt tillgängliga (ga) |
-|Priset|De två planer som utgör **Azure Defender för SQL** debiteras enligt [pris sidan](security-center-pricing.md)|
+|Priset|De två planer som utgör **Azure Defender för SQL** debiteras enligt [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/)|
 |Skyddade SQL-versioner:|[SQL på virtuella Azure-datorer](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc-aktiverade SQL-servrar](/sql/sql-server/azure-arc/overview)<br>Lokala SQL-servrar på Windows-datorer utan Azure Arc<br>Enkla Azure SQL- [databaser](../azure-sql/database/single-database-overview.md) och [elastiska pooler](../azure-sql/database/elastic-pool-overview.md)<br>[Hanterad Azure SQL-instans](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (tidigare SQL DW) dedikerad SQL-pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Moln|![Ja ](./media/icons/yes-icon.png) kommersiella moln<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Ja ](./media/icons/yes-icon.png) Kina gov (**partiell**: delmängd av aviseringar och sårbarhets bedömning för SQL-servrar. Beteendet hot skydd är inte tillgängligt.)|
 |||

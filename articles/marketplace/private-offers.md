@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 01/28/2021
-ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/22/2021
+ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063104"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097184"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privata erbjudanden på Microsofts kommersiella marknads plats
 
@@ -22,11 +22,11 @@ Privata erbjudanden, även kallade privata planer, som gör det möjligt för ut
 
 Genom att skapa privata erbjudanden kan utgivare privat erbjuda anpassade lösningar till riktade kunder med funktioner som företag kräver:
 
-- Med _förhandlad prissättning_ kan utgivare utöka rabatter och priser utanför listan från offentligt tillgängliga erbjudanden.
-- _Privata allmänna_ villkor gör det möjligt för utgivare att skräddarsy villkor för en specifik kund.
-- _Specialiserade konfigurationer_ gör att utgivare skräddarsyr sina Virtual Machines, Azure-program och program vara som en tjänst (SaaS) till en enskild kunds behov. Det här alternativet gör det också möjligt för utgivare att tillhandahålla för hands versions åtkomst till nya produkt funktioner innan de startas till alla kunder.
+- Med *förhandlad prissättning* kan utgivare utöka rabatter och priser utanför listan från offentligt tillgängliga erbjudanden.
+- *Privata allmänna* villkor gör det möjligt för utgivare att skräddarsy villkor för en specifik kund.
+- *Specialiserade konfigurationer* gör att utgivare skräddarsyr sina Virtual Machines, Azure-program och program vara som en tjänst (SaaS) till en enskild kunds behov. Det här alternativet gör det också möjligt för utgivare att tillhandahålla för hands versions åtkomst till nya produkt funktioner innan de startas till alla kunder.
 
-Privata erbjudanden gör att utgivare kan dra nytta av skalbarheten och den globala tillgängligheten för en offentlig marknads plats, med flexibilitet och kontroll som behövs för att förhandla fram och leverera anpassade erbjudanden och konfigurationer. Företag kan nu köpa och sälja på det sätt de förväntar sig 
+Privata erbjudanden gör att utgivare kan dra nytta av skalbarheten och den globala tillgängligheten för en offentlig marknads plats, med flexibilitet och kontroll som behövs för att förhandla fram och leverera anpassade erbjudanden och konfigurationer. Företag kan nu köpa och sälja på det sätt de förväntar sig.
 
 ## <a name="create-private-offers-using-plans"></a>Skapa privata erbjudanden med hjälp av planer
 
@@ -41,7 +41,7 @@ Privata planer är tillgängliga för följande erbjudande typer:
 - Hanterad tjänst
 - SaaS-erbjudanden
 
-Privata planer är komponenter i ett erbjudande och är bara synliga och köpbara av de riktade kunderna. Privata planer är bara synliga och köpbara av de riktade kunderna.  Privata planer kan göras tillgängliga för kunder i både Azure Global och Azure Government.
+Privata planer är komponenter i ett erbjudande och är bara synliga och köpbara av de riktade kunderna. Privata planer är bara synliga och köpbara av de riktade kunderna. Privata planer kan göras tillgängliga för kunder i både Azure Global och Azure Government.
 
 Privata planer kan återanvända bas avbildningar och/eller erbjudna metadata som redan har publicerats för ett offentligt abonnemang. Med det här alternativet kan utgivare skapa flera privata varianter av ett offentligt erbjudande utan att behöva publicera flera versioner av samma bas avbildning och erbjuda metadata. När en privat plan delar en bas avbildning med ett offentligt abonnemang för Azure Virtual Machine och Azure-program, kommer alla ändringar i bas avbildningen av erbjudandet att spridas över alla offentliga och privata planer med den bas avbildningen.
 
@@ -70,13 +70,12 @@ När du har loggat in på Azure Portal kan kunderna följa de här stegen för a
 
 Privata erbjudanden visas också i Sök Resultat och kan distribueras via kommando raden och Azure Resource Manager mallar, precis som med andra erbjudanden.
 
-![[Privata erbjudanden]](./media/marketplace-publishers-guide/private-offer.png)
+[![[Privata erbjudanden visas i Sök resultaten.]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
 Privata erbjudanden visas också i Sök resultaten. Leta bara efter det **privata** märket.
 
 >[!Note]
 >Privata erbjudanden stöds inte med prenumerationer som upprättats via en åter försäljare av CSP-programmet (Cloud Solution Provider).
-
 
 <!---
 ## Next steps

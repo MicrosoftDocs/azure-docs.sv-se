@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
-ms.date: 02/24/2021
-ms.openlocfilehash: 73e1db2754749e1fb1142231e7179771bcce8e76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 8dde5c6206087c8bb1c1f456a0c858abbccf0cc4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712784"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096317"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivera diagnostisk loggning i Azure API för FHIR
 
@@ -50,7 +50,7 @@ Du kan visa måtten under övervakning | Mått från portalen. Måtten omfattar 
 
 
 > [!Note] 
-> Det kan ta upp till 15 minuter innan de första loggarna visas i Log Analytics.  
+> Det kan ta upp till 15 minuter innan de första loggarna visas i Log Analytics. Om Azure API för FHIR flyttas från en resurs grupp eller prenumeration till en annan, uppdaterar du inställningen när flyttningen är klar. 
  
 Mer information om hur du arbetar med diagnostikloggar finns i [dokumentationen till Azure Resource log](../azure-monitor/essentials/platform-logs-overview.md)
 

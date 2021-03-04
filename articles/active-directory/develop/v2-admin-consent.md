@@ -12,12 +12,12 @@ ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 13cff9f3a6037a16d7c3b9cf233d26c6e9518bc1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b6fb5f680dfa5e2c87533083e3df4c2bae1ed12a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756107"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097031"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administrativt medgivande på Microsoft Identity Platform
 
@@ -33,19 +33,16 @@ När du registrerar användaren i din app kan du identifiera den organisation so
 
 När du är redo att begära behörigheter från din organisations administratör kan du omdirigera användaren till Microsoft Identity Platform *admin medgivande-slutpunkten*.
 
-```HTTP
-// Line breaks are for legibility only.
-GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&state=12345
-&redirect_uri=http://localhost/myapp/permissions
-&scope=
-https://graph.microsoft.com/calendars.read
-https://graph.microsoft.com/mail.send
+```none
+https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
+        ?client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+        &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+        &redirect_uri=http://localhost/myapp/permissions
+        &state=12345
 ```
 
 | Parameter | Villkor | Beskrivning |
-| ---: | ---: | :---: |
+| :--- | :--- | :--- |
 | `tenant` | Krävs | Den katalog klient som du vill begära behörighet från. Kan anges i GUID eller eget namn format eller allmänt refereras till `organizations` som visas i exemplet. Använd inte "common", eftersom personliga konton inte kan tillhandahålla administrativt medgivande, förutom i kontexten för en klient. För att säkerställa bästa kompatibilitet med personliga konton som hanterar klienter använder du klient-ID när det är möjligt. |
 | `client_id` | Obligatorisk | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
 | `redirect_uri` | Obligatorisk |Den omdirigerings-URI där du vill att svaret på din app ska hanteras. Det måste exakt matcha en av de omdirigerings-URI: er som du registrerade i registrerings portalen för appen. |
@@ -58,12 +55,16 @@ I det här läget kräver Azure AD en klient administratör för att logga in f�
 
 Om administratören godkänner behörigheterna för din app ser det lyckade svaret ut så här:
 
-```
-http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
+```none
+http://localhost/myapp/permissions
+    ?admin_consent=True
+    &tenant=fa00d692-e9c7-4460-a743-29f2956fd429
+    &scope=https://graph.microsoft.com/Calendars.Read https://graph.microsoft.com/Mail.Send
+    &state=12345
 ```
 
 | Parameter | Beskrivning |
-| ---: | :---: |
+| :--- | :--- |
 | `tenant`| Den katalog klient som beviljade programmet de behörigheter som begärdes, i GUID-format.|
 | `state` | Ett värde som ingår i begäran som också kommer att returneras i svaret från token. Det kan vara en sträng med valfritt innehåll som du vill ha. Statusen används för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, t. ex. sidan eller vyn de var på.|
 | `scope` | Den uppsättning behörigheter som har beviljats åtkomst till för programmet.|
@@ -71,12 +72,19 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 ### <a name="error-response"></a>Fel svar
 
-`http://localhost/myapp/permissions?error=consent_required&error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z&admin_consent=True&tenant=fa15d692-e9c7-4460-a743-29f2956fd429&state=12345`
+```none
+http://localhost/myapp/permissions
+        ?admin_consent=True
+        &tenant=fa15d692-e9c7-4460-a743-29f2956fd429
+        &error=consent_required
+        &error_description=AADSTS65004%3a+The+resource+owner+or+authorization+server+denied+the+request.%0d%0aTrace+ID%3a+d320620c-3d56-42bc-bc45-4cdd85c41f00%0d%0aCorrelation+ID%3a+8478d534-5b2c-4325-8c2c-51395c342c89%0d%0aTimestamp%3a+2019-09-24+18%3a34%3a26Z
+        &state=12345
+```
 
 Om du lägger till parametrarna som visas i ett lyckat svar visas fel parametrarna nedan.
 
 | Parameter | Beskrivning |
-|-------------------:|:-------------------------------------------------------------------------------------------------:|
+|:-------------------|:-------------------------------------------------------------------------------------------------|
 | `error` | En fel kods sträng som kan användas för att klassificera typer av fel som inträffar och som kan användas för att reagera på fel.|
 | `error_description` | Ett fel meddelande som kan hjälpa en utvecklare att identifiera rotor saken till ett fel.|
 | `tenant`| Den katalog klient som beviljade programmet de behörigheter som begärdes, i GUID-format.|

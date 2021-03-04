@@ -3,17 +3,18 @@ title: Visa trafik data på Android-kartor | Microsoft Azure Maps
 description: I den här artikeln lär du dig hur du visar trafik data på en karta med hjälp av Microsoft Azure Maps Android SDK.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/04/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680430"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098544"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Visa trafik data på kartan (Android SDK)
 
@@ -39,6 +40,8 @@ Det finns två typer av trafik data tillgängliga i Azure Maps:
 
 Följande kod visar hur du visar trafik data på kartan.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 //Show traffic on the map using the traffic options.
 map.setTraffic(
@@ -47,6 +50,19 @@ map.setTraffic(
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+```
+
+::: zone-end
+
 Följande skärm bild visar ovanstående kod Rending information om real tids trafik på kartan.
 
 ![Karta som visar trafik information i real tid](media/how-to-show-traffic-android/android-show-traffic.png)
@@ -54,6 +70,8 @@ Följande skärm bild visar ovanstående kod Rending information om real tids tr
 ## <a name="get-traffic-incident-details"></a>Hämta incident information för trafik
 
 Information om en trafik incident är tillgänglig i egenskaperna för den funktion som används för att Visa incidenten på kartan. Trafik incidenter läggs till i kartan med hjälp av tjänsten Azure Maps Traffic incident Vector panel. Formatet på data i dessa vektor paneler om det [dokumenteras här](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles). Följande kod lägger till en klick händelse till kartan och hämtar den trafik incident funktion som klickade och visar ett popup-meddelande med några av detaljerna.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Show traffic information on the map.
@@ -107,6 +125,59 @@ map.events.add((OnFeatureClick) (features) -> {
     }
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+)
+
+//Add a click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature>? ->
+    if (features != null && features.size > 0) {
+        val incident = features[0]
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+            val sb = StringBuilder()
+            val incidentType = incident.getStringProperty("incidentType")
+
+            if (incidentType != null) {
+                sb.append(incidentType)
+            }
+
+            if (sb.length > 0) {
+                sb.append("\n")
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed" == incidentType) {
+                val from = incident.getStringProperty("from")
+                if (from != null) {
+                    sb.append(from)
+                }
+            } else { //Get the description of the traffic incident.
+                val description = incident.getStringProperty("description")
+                if (description != null) {
+                    sb.append(description)
+                }
+            }
+
+            val message = sb.toString()
+            if (message.length > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+})
+```
+
+::: zone-end
 
 Följande skärm bild visar ovanstående kod Rending information om real tids trafik på kartan med ett popup-meddelande som visar incident information.
 

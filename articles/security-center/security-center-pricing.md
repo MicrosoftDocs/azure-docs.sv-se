@@ -1,30 +1,23 @@
 ---
-title: Prissättning för Azure Security Center
-description: Azure Security Center erbjuds i två lägen med och utan Azure Defender.
-services: security-center
-documentationcenter: na
+title: Azure Security Center kostnads fri vs Azure Defender aktiverat
+description: Lär dig mer om fördelarna med att aktivera Azure-skydd för skydd av arbets belastning i Azure Security Center
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d8ef4236a9dd993faaaa2aacfd40a7592e9017f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 02/14/2021
+ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099111"
 ---
-# <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
-Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center kostnads fri vs Azure Defender aktiverat
+Azure Defender är kostnads fritt under de första 30 dagarna. Om du väljer att fortsätta använda tjänsten i slutet av 30 dagar börjar vi automatiskt att debitera för användning.
 
-
-## <a name="security-center-free-vs-azure-defender-enabled"></a>Security Center kostnads fri vs Azure Defender aktiverat
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Vilka är fördelarna med att aktivera Azure Defender?
 
 Security Center erbjuds i två lägen:
 
@@ -41,43 +34,22 @@ Security Center erbjuds i två lägen:
     - **Bredd skydd för resurser som är anslutna till Azure-miljön** – Azure Defender innehåller Azure-inbyggt bredd skydd för de Azure-tjänster som är gemensamma för alla dina resurser: Azure Resource Manager, Azure DNS, Azure nätverks lager och Azure Key Vault. Azure Defender har unik insyn i Azures hanterings lager och Azure DNS skiktet, och kan därför skydda moln resurser som är anslutna till dessa lager.
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>Prova Azure Defender kostnadsfritt i 30 dagar
-Azure Defender är kostnads fritt under de första 30 dagarna. Om du väljer att fortsätta använda tjänsten i slutet av 30 dagar börjar vi automatiskt att debitera för användning.
-
-## <a name="enable-azure-defender"></a>Aktivera Azure Defender
-Du kan skydda en hel Azure-prenumeration med Azure Defender och skyddet kommer att ärvas av alla resurser i prenumerationen.
-
-Så här aktiverar du Azure Defender:
-
-1. Från Security Centerens huvud meny väljer du **pris & inställningar**.
-1. Välj den prenumeration som du vill uppgradera.
-1. Välj **Azure Defender på** för att uppgradera.
-1. Välj **Spara**.
-
-Nedan visas pris sidan för en exempel prenumeration. Du märker att varje plan i Azure Defender priss ätts separat och kan ställas in på eller av separat.
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="Security Center sidan med priser i portalen":::
-
-> [!NOTE]
-> Om du vill aktivera alla Security Center funktioner, inklusive hot skydds funktioner, måste du aktivera Azure Defender på prenumerationen som innehåller de aktuella arbets belastningarna. Att aktivera den på arbets ytans nivå ger inte just-in-Time-åtkomst till virtuella datorer, anpassningsbara program kontroller och nätverks identifieringar för Azure-resurser. Dessutom är de enda Azure Defender-planer som är tillgängliga på arbets ytans nivå Azure Defender för servrar och Azure Defender för SQL-servrar på datorer.
->
-> Du kan aktivera **Azure Defender för lagrings konton** på antingen prenumerations nivå eller resurs nivå.
-> Du kan aktivera **Azure Defender för SQL** på antingen prenumerations nivån eller resurs nivån.
-> Du kan aktivera skydd mot hot för **Azure Database for MariaDB/MySQL/postgresql** endast på resurs nivå.
-
-
 ## <a name="faq---pricing-and-billing"></a>Vanliga frågor och svar – priser och fakturering 
 
-- [Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
-- [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
-- [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
-- [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
-- [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
-- [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
-- [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
-- [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
-- [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
-- [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [Azure Security Center kostnads fri vs Azure Defender aktiverat](#azure-security-center-free-vs-azure-defender-enabled)
+  - [Vilka är fördelarna med att aktivera Azure Defender?](#what-are-the-benefits-of-enabling-azure-defender)
+  - [Vanliga frågor och svar – priser och fakturering](#faq---pricing-and-billing)
+    - [Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+    - [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
+    - [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
+    - [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+    - [Om jag redan har en licens för Microsoft Defender för slut punkten får jag en rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+    - [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+    - [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+    - [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+    - [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+    - [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+  - [Nästa steg](#next-steps)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?
 Azure-prenumerationer kan ha flera administratörer som har behörighet att ändra pris inställningarna. Om du vill ta reda på vilken användare som har gjort en ändring använder du Azure-aktivitets loggen.
@@ -100,7 +72,7 @@ Du kan använda något av följande sätt för att aktivera Azure Defender för 
 
 |Metod  |Instruktioner  |
 |---------|---------|
-|Azure Security Center sidor i Azure Portal|[Aktivera Azure Defender](#enable-azure-defender)|
+|Azure Security Center sidor i Azure Portal|[Aktivera Azure Defender](enable-azure-defender.md)|
 |REST-API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
 |Azure CLI|[AZ Security-prissättning](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922602"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099190"
 ---
 # <a name="permissions-in-azure-security-center"></a>Behörigheter i Azure Security Center
 
@@ -59,6 +59,5 @@ I den här artikeln förklaras hur Security Center använder Azure RBAC för att
 
 - [Ange säkerhetsprinciper i Security Center](tutorial-security-policy.md)
 - [Hantera säkerhets rekommendationer i Security Center](security-center-recommendations.md)
-- [Övervaka Azure-resursernas säkerhets hälsa](security-center-monitoring.md)
 - [Hantera och besvara säkerhetsaviseringar i Security Center](security-center-managing-and-responding-alerts.md)
 - [Övervaka säkerhets lösningar för partner](./security-center-partner-integration.md)

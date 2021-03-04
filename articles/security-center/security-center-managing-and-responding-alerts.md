@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: a47ece762f2df3fa18cf2b79d338c28d4069c4ad
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633490"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099343"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Hantera och svara på säkerhets aviseringar i Azure Security Center
 
 Det här avsnittet visar hur du visar och bearbetar Security Centers aviseringar och skyddar dina resurser.
 
-Avancerade identifieringar som utlöser säkerhets aviseringar är bara tillgängliga med Azure Defender. Det finns en kostnadsfri utvärderingsversion. Information om hur du uppgraderar finns i [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender).
+Avancerade identifieringar som utlöser säkerhets aviseringar är bara tillgängliga med Azure Defender. Det finns en kostnadsfri utvärderingsversion. Information om hur du uppgraderar finns i [Aktivera Azure Defender](enable-azure-defender.md).
 
 ## <a name="what-are-security-alerts"></a>Vad är säkerhetsaviseringar?
 Security Center samlar automatiskt in, analyserar och integrerar loggdata från Azure-resurser, nätverket och anslutna partnerlösningar som brandväggs- och slutpunktsskyddslösningar för att identifiera verkliga hot och minimera antalet falska positiva identifieringar. En lista över prioriterade säkerhetsvarningar visas i Security Center tillsammans med den information som du behöver för att snabbt undersöka problemet, samt rekommendationer för hur du åtgärdar ett angrepp.

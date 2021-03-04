@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663868"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099020"
 ---
 # <a name="managing-your-voice-assistant"></a>Hantera din röst assistent
 
@@ -28,7 +28,7 @@ Ett nyckelord är ett ord eller en kort fras som används för att aktivera en r
 
 1. Klicka på **ändra** bredvid **anpassat nyckelord** på demonstrations sidan.
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Skärm bild av service demo-fönstret.":::
 
     Om demonstrations sidan inte är öppen går du till sidan enhet (se nedan) och klickar på **testa din röst assistent** under **åtgärder** för att få åtkomst till demon.
 
@@ -40,17 +40,17 @@ Ett nyckelord är ett ord eller en kort fras som används för att aktivera en r
 
 1. På sidan Översikt i [Azure percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)klickar du på **enheter** i den vänstra meny rutan.
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="Skärm bild av översikts sidan för Azure percept Studio med enheter markerade.":::
 
 1. Välj den enhet som ditt röst assistent program har distribuerats till.
 
 1. Öppna fliken **tal** .
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="Skärm bild av sidan Edge-enhet med fliken Speech markerat.":::
 
 1. Klicka på **ändra** bredvid **nyckelord**.
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="Skärm bild av de tillgängliga funktionerna för tal lösning.":::
 
 1. Välj ett av de tillgängliga nyckelorden och klicka på **Spara** för att tillämpa ändringarna.
 

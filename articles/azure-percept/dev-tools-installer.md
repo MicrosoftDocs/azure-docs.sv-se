@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663824"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097711"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Översikt över installation av dev tools Pack
 
@@ -84,6 +84,8 @@ Installations programmet för dev tools är en lösning som installerar och konf
 
         > [!NOTE]
         > Docker har stöd för Docker Desktop i de senaste versionerna av macOS. Det vill säga den aktuella versionen av macOS och de två tidigare versionerna. Eftersom nya huvud versioner av macOS görs allmänt tillgängliga, slutar Docker att stödja den äldsta versionen och har stöd för den senaste versionen av macOS (utöver de tidigare två versionerna). Docker Desktop stöder för närvarande macOS Mojave, macOS Catalina och macOS Big Sur.
+        > 
+        - Installations programmet stöds inte på Apple M1.
 
 ## <a name="instructions"></a>Instruktioner
 
@@ -99,7 +101,7 @@ Installations programmet för dev tools är en lösning som installerar och konf
     
         1. När du har laddat ned flyttar du filen Dev-Tools-Pack-Installer. app till mappen program.
         
-        1. Klicka på "Dev-Tools-Pack-Installer. app" för att öppna installations guiden.
+        1. Klicka på **dev-tools-Pack-Installer. app** för att öppna installations guiden.
         
         1. Om du får en "oidentifierad utvecklare"-säkerhets dialog ruta:
         
@@ -123,7 +125,7 @@ Installations programmet för dev tools är en lösning som installerar och konf
                 
             1. Skriv följande i terminalen för att skapa den körbara AppImage
             
-                1. chmod + x dev-tools-Pack-Installer. AppImage
+                1. chmod + x **dev-tools-Pack-Installer. AppImage**
                 
             1. Skriv följande i terminalen för att köra installations programmet
             
@@ -141,11 +143,11 @@ Installations programmet för dev tools är en lösning som installerar och konf
 
 1. På sidan **Installera installations verktyg för dev-verktyget** klickar du på **Visa licens** för att Visa licens avtalet för varje program varu paket som ingår i installations programmet. Om du godkänner villkoren i licens avtalet markerar du kryss rutan och klickar på **Nästa**.
 
-    ![Fönstret licens avtal i installations programmet.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="Fönstret licens avtal i installations programmet.":::
 
 1. Klicka på **sekretess policy** för att läsa sekretess policyn för Microsoft. Om du godkänner villkoren för sekretess policyn och vill skicka diagnostikdata till Microsoft väljer du **Ja** och klickar på **Nästa**. Annars väljer du **Nej** och klickar på **Nästa**.
 
-    ![Sidan sekretess policy avtal i installations programmet.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="Sidan sekretess policy avtal i installations programmet.":::
 
 1. På sidan **Konfigurera komponenter** väljer du de valfria verktyg som du vill installera (de obligatoriska verktygen installeras som standard).
 
@@ -153,11 +155,11 @@ Installations programmet för dev tools är en lösning som installerar och konf
 
     1. Klicka på **Installera** om du vill fortsätta med installationen.
 
-    ![Installations skärmen visar tillgängliga program varu paket.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="Installations skärmen visar tillgängliga program varu paket.":::
 
 1. När installationen av alla valda komponenter har slutförts fortsätter guiden att **slutföra installations guide** sidan. Klicka på **Slutför** om du vill avsluta installations programmet.
 
-    ![Installations programmets slut för ande skärm.](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="Installations programmets slut för ande skärm.":::
 
 ## <a name="docker-status-check"></a>Status kontroll för Docker
 
@@ -168,12 +170,12 @@ Om installations programmet meddelar dig att kontrol lera att Docker Skriv borde
       1. Expandera dolda ikoner i system fältet:
       
          1. Expandera dolda ikoner i system fältet om det är dolt:
-         
-            * ![System fält](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="System fält.":::
          
          1. Kontrol lera Docker-skrivbordets ikon visar att Docker Desktop körs:
-         
-            * ![Docker-status](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker-status.":::
          
          1. Om du inte ser ikonen ovan som visas i system fältet kan du starta Docker Desktop från Start-menyn.
          
@@ -181,4 +183,4 @@ Om installations programmet meddelar dig att kontrol lera att Docker Skriv borde
 
 ## <a name="next-steps"></a>Nästa steg
 
-Ta en titt på den [avancerade utvecklings kursen (lokal)](./advanced-development-local.md)för att komma igång med avancerad utveckling för Azure percept dk.
+Kolla in [Azure percept Advanced Development-lagringsplatsen](https://github.com/microsoft/azure-percept-advanced-development) för att komma igång med avancerad utveckling för Azure percept dk.

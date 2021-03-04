@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018946"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097082"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Skapa ExpressRoute Direct med hjälp av Azure Portal
 
@@ -21,12 +21,19 @@ Med ExpressRoute Direct kan du ansluta direkt till Microsofts globala nätverk v
 
 ## <a name="before-you-begin"></a><a name="before"></a>Innan du börjar
 
-Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att skicka ett e-postmeddelande till <ExpressRouteDirect@microsoft.com> med ditt prenumerations-ID, inklusive följande information:
+Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att göra följande via Azure PowerShell:
+1.  Logga in på Azure och välj den prenumeration som du vill registrera.
 
-* Scenarier som du behöver utföra med **ExpressRoute Direct**
-* Plats inställningar – Se [partner och peering-platser](expressroute-locations-providers.md) för en fullständig lista över alla platser
-* Tidslinje för implementering
-* Andra frågor
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Registrera din prenumeration för offentlig för hands version med följande kommando:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
 
 När du har registrerat dig kontrollerar du att **Microsoft. Network** Resource-providern är registrerad i din prenumeration. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören.
 

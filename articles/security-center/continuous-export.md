@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634076"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096980"
 ---
 # <a name="continuously-export-security-center-data"></a>Exportera Security Center data kontinuerligt
 
@@ -44,7 +44,7 @@ Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Ana
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|<ul><li>**Säkerhets administratör** eller **ägare** av resurs gruppen</li><li>Skriv behörigheter för mål resursen</li><li>Om du använder Azure Policy "DeployIfNotExist"-principer som beskrivs nedan måste du också ha behörighet för att tilldela principer</li></ul>|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov, annan gov<br>![Yes](./media/icons/yes-icon.png) Kina, gov (till Event Hub)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, annan gov<br>![Ja](./media/icons/yes-icon.png) Kina, gov|
 |||
 
 
@@ -65,7 +65,7 @@ Vid kontinuerlig export kan följande data typer exporteras när de ändras:
 
 Du kan konfigurera kontinuerlig export från Security Center sidor i Azure Portal, via Security Center REST API eller i skala med hjälp av de angivna Azure Policy mallarna. Välj lämplig flik nedan för information om var och en.
 
-### <a name="use-the-azure-portal"></a>[**Använda Azure-portalen**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Använd Azure Portal**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Konfigurera kontinuerlig export från Security Center sidor i Azure Portal
 
@@ -171,7 +171,7 @@ Om du vill analysera Azure Security Center data i en Log Analytics arbets yta el
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics tabeller och scheman
 
-Säkerhets aviseringar och rekommendationer lagras i tabellerna *SecurityAlert* respektive *SecurityRecommendations* . 
+Säkerhets aviseringar och rekommendationer lagras i tabellerna *SecurityAlert* respektive *SecurityRecommendation* . 
 
 Namnet på Log Analytics-lösningen som innehåller dessa tabeller beror på om du har aktiverat Azure Defender: Security (' Säkerhet och granskning ') eller SecurityCenterFree. 
 

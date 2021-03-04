@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 79bac3f057412f3973121f48cd735f72d0a97d04
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01ce213f71fc2ac070ca0b09780bd45ede4e61c1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680015"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097763"
 ---
 # <a name="device-update-agent"></a>Enhets uppdaterings agent
 
@@ -32,7 +32,7 @@ När agenten har skapats, är det dags att [köra](https://github.com/Azure/iot-
 
 ## <a name="modifying-the-device-update-agent"></a>Ändra enhets uppdaterings agenten
 
-Nu ska du göra ändringarna som krävs för att införliva agenten i din avbildning.  Se hur du [ändrar](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.m) enhets uppdaterings agenten för vägledning.
+Nu ska du göra ändringarna som krävs för att införliva agenten i din avbildning.  Se hur du [ändrar](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.md) enhets uppdaterings agenten för vägledning.
 
 ### <a name="troubleshooting-guide"></a>Felsökningsguide
 

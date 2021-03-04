@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: de85c4f8cdcd9781345ee1488549aab23e38ec5c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665220"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098034"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Skapa en röst assistent med Azure percept DK och Azure percept-ljud
 
@@ -24,30 +24,11 @@ Den här guiden vägleder dig genom processen med att konfigurera dina enheter, 
 
 - Azure percept DK (devkit)
 - Azure percept-ljud
-- Talare eller hörlurar (valfritt)
+- Högtalare eller hörlurar som kan ansluta till 3,5 mm-ljud uttag (valfritt)
 - [Azure-prenumeration](https://azure.microsoft.com/free/)
 - [Installations upplevelse för Azure PERCEPT DK](./quickstart-percept-dk-set-up.md): du anslöt din devkit till ett Wi-Fi nätverk, skapat ett IoT Hub och anslöt din devkit till IoT Hub
+- [Installation av Azure percept-ljud](./quickstart-percept-audio-setup.md)
 
-## <a name="device-setup"></a>Enhetskonfiguration
-
-1. (Valfritt) Anslut din högtalare eller hörlurar till ljudet som via hörlurs uttaget, som är märkt "line ut". Det gör att du kan höra röst assistentens ljud svar. Om du inte ansluter en talare eller hörlurar kommer du fortfarande att kunna se svaren som text i demonstrations fönstret.
-
-1. Anslut ljudet som till devkit-tavlan med USB-A till Micro B-kabeln.
-
-1. Starta devkit.
-
-    - INDIKATORn l01 på ljudet som ändras till solid grönt för att indikera att enheten var påslagen.
-    - LEDDE L02 ändras till blinkande grönt för att indikera att ljudet som autentiseras.
-
-1. Vänta tills autentiseringen har slutförts – det kan ta upp till 3 minuter.
-
-1. Fortsätt till nästa avsnitt när du ser något av följande:
-
-    - LAMPAn l01 stängs av och L02 blir vit. Detta anger att autentiseringen är klar och att devkit inte har kon figurer ATS med ett nyckelord än.
-    - Alla tre lamporna blir blå. Detta anger att autentiseringen är klar och att devkit har kon figurer ATS med ett nyckelord.
-
-    > [!NOTE]
-    > Kontakta support om din devkit inte autentiserar sig.
 
 ## <a name="create-a-voice-assistant-using-an-available-template"></a>Skapa en röst assistent med en tillgänglig mall
 
@@ -119,6 +100,7 @@ Den fordonsbaserade demonstrationen har en virtuell plats som är varm, avfrostn
 * "Ange temperatur till X grader." (X är den önskade temperaturen, t. ex. 75.)
 * "Öka/minska temperaturen efter Y-grader."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/auto-demo.png" alt-text="Skärm bild av fönstret för bil demonstrations fönstret.":::
 
 ### <a name="inventory-demo-commands"></a>Kommandon för inventerings demonstration
@@ -131,19 +113,30 @@ Inventerings demonstrationen har ett urval av virtuella blå, gula och gröna ru
 * "Antal Y-rutor". (Y är färgen på rutorna, t. ex. gul.)
 * "Leverera allt i lager."
 
+
 :::image type="content" source="./media/tutorial-no-code-speech/inventory-demo.png" alt-text="Skärm bild av inventerings demonstrations fönstret.":::
 
 ## <a name="configure-your-keyword"></a>Konfigurera ditt nyckelord
 
-Om du vill ändra ditt nyckelord klickar du på **ändra** bredvid **anpassat nyckelord** i demonstrations fönstret. Välj ett av de tillgängliga nyckelorden och klicka på **Spara**. Du kan välja bland ett urval av fördefinierade nyckelord och eventuella anpassade nyckelord som du har skapat.
+Du kan anpassa nyckelord för ditt röst assistent program.
 
-:::image type="content" source="./media/tutorial-no-code-speech/change-keyword.png" alt-text="Skärm bild av val av tillgängliga nyckelord.":::
+1. Klicka på **ändra** bredvid **anpassat nyckelord** i demonstrations fönstret.
+
+1. Välj ett av de tillgängliga nyckelorden. Du kan välja bland ett urval av exempel nyckelord och eventuella anpassade nyckelord som du har skapat.
+
+1. Klicka på **Spara**.
 
 ### <a name="create-a-custom-keyword"></a>Skapa ett anpassat nyckelord
 
-Skapa ett anpassat nyckelord genom att klicka på **+ skapa anpassat nyckelord** längst upp i demonstrations fönstret. Ange önskat nyckelord, som kan vara ett enstaka ord eller en kort fras, välj din **tal resurs** (visas bredvid **anpassat kommando** i demonstrations fönstret och innehåller ditt programprefix) och klicka på **Spara**. Träning för ditt anpassade nyckelord kan slutföras på bara några sekunder.
+Du kan skapa egna nyckelord för röst programmet. Träning för ditt anpassade nyckelord kan slutföras på bara några minuter.
 
-:::image type="content" source="./media/tutorial-no-code-speech/custom-keyword.png" alt-text="Skärm bild av fönstret för att skapa egna nyckelord.":::
+1. Klicka på **+ skapa anpassat nyckelord** nästan överst i demonstrations fönstret. 
+
+1. Ange önskat nyckelord, som kan vara ett enstaka ord eller en kort fras.
+
+1. Välj din **tal resurs** (detta visas bredvid **anpassat kommando** i demonstrations fönstret och innehåller ditt programprefix).
+
+1. Klicka på **Spara**. 
 
 ## <a name="create-a-custom-command"></a>Skapa ett anpassat kommando
 
@@ -185,13 +178,13 @@ Mer information om hur du utvecklar anpassade kommandon finns i [dokumentationen
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Röst assistenten skapades men svarar inte på kommandon
 
-Kontrol lera lysdiod lamporna på ljudet som:
+Kontrol lera LYSDIODerna på den samspelande tavlan:
 
 * Tre fyllda blå lampor visar att röst assistenten är klar och väntar på nyckelordet.
 * Om den mittersta LAMPAn (L02) är vit, slutförs devkit initiering och måste konfigureras med ett nyckelord.
-* En kombination av gröna lampor indikerar att ljudet som inte har slutfört initieringen ännu. Initieringen kan ta några minuter att slutföra.
+* Om mitt lampa (L02) blinkar vitt är ljudet som inte slutfört initieringen ännu. Initieringen kan ta några minuter att slutföra.
 
-Mer information om ljudet som indikator indikatorer finns i artikeln LED.
+Mer information om LYSDIODs indikatorer finns i [artikeln LED](./audio-button-led-behavior.md).
 
 ### <a name="voice-assistant-does-not-respond-to-a-custom-keyword-created-in-speech-studio"></a>Röst assistenten svarar inte på ett anpassat nyckelord som skapats i tal Studio
 
@@ -207,22 +200,20 @@ Detta kan inträffa om modulen Speech är inaktuell. Följ dessa steg om du vill
 
 1. Kontrol lera versionen av talfunktionen. Om det finns en tillgänglig uppdatering visas en **uppdaterings** knapp bredvid versions numret.
 
-    :::image type="content" source="./media/tutorial-no-code-speech/devkit.png" alt-text="Skärm bild av fönstret devkit Speech Settings.":::
-
 1. Klicka på **Uppdatera** för att distribuera talfunktionen uppdatera. Uppdaterings processen tar vanligt vis 2-3 minuter att slutföra.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När du är klar med ditt röst assistent program följer du dessa steg för att rensa de tal resurser som du har distribuerat under den här självstudien:
 
-1. Från [Azure Portal](https://ms.portal.azure.com/#home)väljer du **resurs grupper** på den vänstra panelen eller skriver in det i Sök fältet.
+1. Från [Azure Portal](https://portal.azure.com)väljer du **resurs grupper** på den vänstra panelen eller skriver in det i Sök fältet.
 
     :::image type="content" source="./media/tutorial-no-code-speech/azure-portal.png" alt-text="Skärm bild av Azure Portal start sidan visar den vänstra meny panelen och resurs grupper.":::
 
 1. Välj din resursgrupp.
 
 1. Välj alla sex resurser som innehåller ditt programprefix och klicka på ikonen **ta bort** på den övre meny panelen.
-
+\
     :::image type="content" source="./media/tutorial-no-code-speech/select-resources.png" alt-text="Skärm bild av tal resurser som valts för borttagning.":::
 
 1. Bekräfta borttagningen genom att skriva **Ja** i bekräftelse rutan, kontrol lera att du har valt rätt resurser och klicka på **ta bort**.

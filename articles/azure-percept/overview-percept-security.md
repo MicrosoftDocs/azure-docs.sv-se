@@ -7,25 +7,25 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: b5a345139114842c83cb1f11792076efb1461870
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664103"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098153"
 ---
 # <a name="azure-percept-security-overview"></a>Översikt över Azure percept-säkerhet
 
-Azure percept DK-enheter är utformade med en maskin varu rot med förtroende – inbyggd säkerhet på varje enhet. Det hjälper till att skydda integritets känsliga sensorer som kameror och mikrofoner, data härlednings data och autentisering av enheter och auktorisering för Azure percept Studio-tjänster.
+Azure percept DK-enheter är utformade med en maskin varu rot med förtroende: ytterligare inbyggd säkerhet på varje enhet. Det hjälper till att skydda integritets känsliga sensorer som kameror och mikrofoner, data härlednings data och autentisering av enheter och auktorisering för Azure percept Studio-tjänster.
 
 > [!NOTE]
-> Azure percept DK är avsett för användning i utvecklings-och test miljöer och för scenarier med koncept bevis.
+> Azure percept DK är licensierat för användning i utvecklings-och test miljöer.
 
 ## <a name="devices"></a>Enheter
 
 ### <a name="azure-percept-dk"></a>Azure percept DK
 
-Azure percept DK innehåller en Trusted Platform Module (TPM) version 2,0 som kan användas för att ansluta enheten säkert till Azure Device Provisioning-tjänster. TPM är en ISO-standard som är bransch standard från Trusted Computing Group och du kan läsa mer om TPM i den [fullständiga tpm 2,0-specifikationen](https://trustedcomputinggroup.org/resource/tpm-library-specification/) eller ISO/IEC 11889-specifikationen. Mer information om hur DPS kan etablera enheter på ett säkert sätt finns i [Azure-IoT Hub Device Provisioning service – TPM-attestering](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
+Azure percept DK innehåller en Trusted Platform Module (TPM) version 2,0 som kan användas för att ansluta enheten till Azure Device Provisioning-tjänster med ytterligare säkerhet. TPM är en ISO-standard som är bransch standard från Trusted Computing Group och du kan läsa mer om TPM i den [fullständiga tpm 2,0-specifikationen](https://trustedcomputinggroup.org/resource/tpm-library-specification/) eller ISO/IEC 11889-specifikationen. Mer information om hur DPS kan etablera enheter på ett säkert sätt finns i [Azure-IoT Hub Device Provisioning service – TPM-attestering](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation).
 
 ### <a name="azure-percept-system-on-module-som"></a>Azure percept-system för modul (som)
 
@@ -37,11 +37,11 @@ Azure percept-enheter använder maskin varu rot förtroende för att skydda inby
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure percept DK ansluter säkert till Azure percept Studio och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06).
+Azure percept DK ansluter till Azure percept Studio med ytterligare säkerhet och andra Azure-tjänster som använder Transport Layer Security-protokollet (TLS). Azure percept DK är en Azure IoT Edge aktive rad enhet. IoT Edge runtime är en samling program som omvandlar en enhet till en IoT Edge-enhet. IoT Edges körnings komponenter gör det möjligt för IoT Edge enheter att ta emot kod som ska köras vid gränsen och förmedla resultatet. Azure percept DK använder Docker-behållare för att isolera IoT Edge arbets belastningar från värd operativ systemet och Edge-aktiverade program. Mer information om säkerhets ramverket Azure IoT Edge finns i [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06).
 
 ### <a name="device-update-for-iot-hub"></a>Enhets uppdatering för IoT Hub
 
-Enhets uppdatering för IoT Hub möjliggör säker, skalbar och pålitlig uppdatering via luften som ger förnybar säkerhet till Azure percept-enheter. Det ger omfattande hanterings kontroller och kompatibilitet med hjälp av insikter. Azure percept DK innehåller en förintegrerad enhets uppdaterings lösning som tillhandahåller elastisk uppdatering (A/B) från inbyggd program vara till OS-lager.
+Enhets uppdatering för IoT Hub möjliggör säkrare, skalbar och pålitlig uppdatering via luften som ger förnybar säkerhet till Azure percept-enheter. Det ger omfattande hanterings kontroller och kompatibilitet med hjälp av insikter. Azure percept DK innehåller en förintegrerad enhets uppdaterings lösning som tillhandahåller elastisk uppdatering (A/B) från inbyggd program vara till OS-lager.
 
 <!---I think the below topics need to be somewhere else, (i.e. not on the main page)
 --->
@@ -59,14 +59,17 @@ Den här check listan är en start punkt för brand Väggs regler:
 
 Granska dessutom listan över anslutningar som [används av Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices).
 
-## <a name="additional-recommendations-for-deployment-to-production"></a>Ytterligare rekommendationer för distribution till produktion
+<!---
+## Additional Recommendations for Deployment to Production
 
-Azure percept DK erbjuder ett stort utbud av säkerhetsfunktionerna i kartongen. Förutom de kraftfulla säkerhetsfunktioner som ingår i den aktuella versionen, rekommenderar Microsoft även följande rikt linjer när du överväger produktions distributioner:
+Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
 
-- Starkt fysiskt skydd av själva enheten
-- Säkerställa att data i rest-kryptering är aktiverade
-- Kontinuerligt övervaka enhetens position och snabbt svara på aviseringar
-- Begränsa antalet administratörer som har åtkomst till enheten
+- Strong physical protection of the device itself
+- Ensuring data at rest encryption is enabled
+- Continuously monitoring the device posture and quickly responding to alerts
+- Limiting the number of administrators who have access to the device
+--->
+
 
 ## <a name="next-steps"></a>Nästa steg
 

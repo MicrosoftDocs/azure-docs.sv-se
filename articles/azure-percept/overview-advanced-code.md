@@ -7,24 +7,26 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: bd366c05be1b9d5b2a1bff238cfbaaa9dd290508
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663927"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098408"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Avancerad utveckling med Azure percept
 Med Azure percept kan programutvecklare och data forskare använda avancerade kod arbets flöden för hantering av AI-livscykler. Genom ett växande bibliotek med öppen källkod kan de använda exempel för att komma igång med deras utveckling av AI-utveckling och skapa produktions klara lösningar.
 
 ## <a name="get-started-with-the-advanced-development-tutorials"></a>Kom igång med de avancerade utvecklings självstudierna
 
-Den här [Jupyter Notebook](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) utför överförings inlärning med en förtränad TensorFlow-modell (MobileNetSSDV2Lite) på azureml i python med en anpassad data uppsättning för att identifiera bowls. Det finns två själv studie alternativ som hjälper dig att arbeta med antecknings boken för att träna och distribuera din Bowl-detektor till Project Santa Cruz-devkit:
+Lär dig mer om alla tillgängliga [Azure PERCEPT AI-modeller](./overview-ai-models.md).
 
-- [Moln utveckling](./advanced-development-cloud.md): i den här självstudien kommer du att köra antecknings boken i [Azure Machine Learning-portalen](https://ml.azure.com) med en fjärrinstans av data bearbetningen.
+Se [Azure percept Advanced Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) för Uppdaterad vägledning, självstudier och exempel för saker som:
 
-- [Lokal utveckling](./advanced-development-local.md): i den här självstudien kommer du att köra antecknings boken lokalt i vs Code med en fjärrinstans av beräknings instansen.
+* Placera en anpassad AI-modell på enheten
+* Uppdatering av en modell som vi redan har stöd för med överförings Inlärning
+* och mycket mer.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om alla tillgängliga [Azure PERCEPT AI-modeller](./overview-ai-models.md).
+Lär dig mer om alla tillgängliga [Azure PERCEPT AI-modeller](./overview-ai-models.md). Om ingen av dessa modeller passar dina behov, är det kostnads fritt att använda den avancerade kod resan för att ta med din egen modell eller en pipeline för visuellt innehåll till percept DK, och om du tycker att den skulle hjälpa andra kan du öppna en pull-begäran.

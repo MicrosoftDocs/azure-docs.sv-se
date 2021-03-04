@@ -2,23 +2,18 @@
 title: Integrera säkerhetslösningar i Azure Security Center | Microsoft Docs
 description: Läs hur Azure Security Center integrerar med partners för att förbättra den övergripande säkerheten för dina Azure-resurser.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032685"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099258"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrera säkerhetslösningar i Azure Security Center
 Det här dokumentet hjälper dig att hantera säkerhetslösningar som redan är anslutna till Azure Security Center och lägga till nya.
@@ -39,7 +34,7 @@ Mer information om hur du integrerar verktyg för sårbarhets sökning från Qua
 
 Security Center erbjuder även sårbarhets analys för din:
 
-* SQL-databaser – Se [utforska rapporter om sårbarhets bedömning på instrument panelen för sårbarhets bedömning](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
+* SQL-databaser – Se [utforska rapporter om sårbarhets bedömning på instrument panelen för sårbarhets bedömning](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
 * Azure Container Registry avbildningar – se [använda Azure Defender för behållar register för att söka igenom dina avbildningar efter sårbarheter](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Så här integreras säkerhetslösningar
@@ -88,8 +83,7 @@ Välj **Visa** för ytterligare information och alternativ, till exempel:
 Security Center identifierar automatiskt säkerhetslösningar som körs i Azure men inte är anslutna till Security Center och visar lösningarna i avsnittet **identifierade lösningar** . Dessa lösningar omfattar Azure-lösningar som [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)och partner lösningar.
 
 > [!NOTE]
-> Aktivera **Azure Defender** på prenumerations nivå för funktionen identifierade lösningar. Se [prissättning](security-center-pricing.md) för att lära dig mer om pris nivåerna.
->
+> Aktivera **Azure Defender** på prenumerations nivå för funktionen identifierade lösningar. Läs mer i [snabb start: Aktivera Azure Defender](enable-azure-defender.md).
 
 Välj **Anslut** under en lösning för att integrera med Security Center och bli informerad om säkerhets aviseringar.
 
@@ -103,7 +97,4 @@ Avsnittet **Lägg till datakällor** innehåller andra tillgängliga datakällor
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln berättade om hur man integrerar partnerlösningar i Security Center. Relaterad information finns i följande artiklar:
-
-* [Exportera Security Center data kontinuerligt](continuous-export.md). Lär dig hur du ställer in en integrering med Azure Sentinel eller någon annan SIEM.
-* [Övervakning av säkerhetshälsa i Security Center](security-center-monitoring.md). Lär dig att övervaka hälsotillståndet för dina Azure-resurser.
+Den här artikeln berättade om hur man integrerar partnerlösningar i Security Center. Information om hur du konfigurerar en integrering med Azure Sentinel eller någon annan SIEM finns i [exportera Security Center data kontinuerligt](continuous-export.md).

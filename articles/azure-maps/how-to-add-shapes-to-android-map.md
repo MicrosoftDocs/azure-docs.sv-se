@@ -3,17 +3,18 @@ title: Lägg till ett polygon-lager till Android Maps | Microsoft Azure Maps
 description: Lär dig hur du lägger till polygoner eller cirklar till kartor. Se hur du använder Azure Maps Android SDK för att anpassa geometriska former och göra dem enkla att uppdatera och underhålla.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 68d68424e71bcf60bf504ae174b84b9c361b8637
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047626"
+ms.locfileid: "102097269"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Lägg till ett polygon-lager till kartan (Android SDK)
 
@@ -26,6 +27,8 @@ Se till att slutföra stegen i snabb starten [: skapa ett Android-appaket](quick
 ## <a name="use-a-polygon-layer"></a>Använda ett polygon-lager
 
 När ett polygon-lager är anslutet till en data källa och läses in på kartan, återges ytan med `Polygon` och- `MultiPolygon` funktioner. Om du vill skapa en polygon lägger du till den i en data källa och återger den med ett polygon lager med hjälp av `PolygonLayer` klassen.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -52,13 +55,51 @@ map.layers.add(new PolygonLayer(source,
 ), "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a rectangular polygon.
+source.add(
+    Polygon.fromLngLats(
+        Arrays.asList(
+            Arrays.asList(
+                Point.fromLngLat(-73.98235, 40.76799),
+                Point.fromLngLat(-73.95785, 40.80044),
+                Point.fromLngLat(-73.94928, 40.79680),
+                Point.fromLngLat(-73.97317, 40.76437),
+                Point.fromLngLat(-73.98235, 40.76799)
+            )
+        )
+    )
+)
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(
+    PolygonLayer(
+        source,
+        fillColor("red"),
+        fillOpacity(0.7f)
+    ), "labels"
+)
+```
+
+::: zone-end
+
 Följande skärm bild visar ovanstående kod som återger ytan i en polygon med ett polygon-lager.
 
 ![Polygon med sitt fyllnings yta återges](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Använda ett polygon-och linje lager tillsammans
 
-Ett linje lager används för att återge konturen för polygoner. I följande kod exempel återges en polygon som i föregående exempel, men nu läggs ett linje lager till. Detta linje skikt är ett andra lager som är anslutet till data källan.  
+Ett linje lager används för att återge konturen för polygoner. I följande kod exempel återges en polygon som i föregående exempel, men nu läggs ett linje lager till. Detta linje skikt är ett andra lager som är anslutet till data källan.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -90,6 +131,50 @@ map.layers.add(new LineLayer(source,
 ));
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a rectangular polygon.
+source.add(
+    Polygon.fromLngLats(
+        Arrays.asList(
+            Arrays.asList(
+                Point.fromLngLat(-73.98235, 40.76799),
+                Point.fromLngLat(-73.95785, 40.80044),
+                Point.fromLngLat(-73.94928, 40.79680),
+                Point.fromLngLat(-73.97317, 40.76437),
+                Point.fromLngLat(-73.98235, 40.76799)
+            )
+        )
+    )
+)
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(
+    PolygonLayer(
+        source,
+        fillColor("rgba(0, 200, 200, 0.5)")
+    ), "labels"
+)
+
+//Create and add a line layer to render the outline of the polygon.
+map.layers.add(
+    LineLayer(
+        source,
+        strokeColor("red"),
+        strokeWidth(2f)
+    )
+)
+```
+
+::: zone-end
+
 Följande skärm bild visar ovanstående kod åter givning av en polygon med dess kontur med ett linje lager.
 
 ![Polygon med sitt fyllnads yta och disposition som återges](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
@@ -100,6 +185,8 @@ Följande skärm bild visar ovanstående kod åter givning av en polygon med des
 ## <a name="fill-a-polygon-with-a-pattern"></a>Fylla en polygon med ett mönster
 
 Förutom att fylla i en polygon med en färg kan du använda ett bild mönster för att fylla polygonen. Läs in ett bild mönster i Maps-avbildningen Sprite-resurser och referera sedan till den här bilden med `fillPattern` alternativet för polygon-lagret.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Load an image pattern into the map image sprite.
@@ -127,6 +214,44 @@ map.layers.add(new PolygonLayer(source,
         fillOpacity(0.5f)
 ), "labels");
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red)
+
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a polygon.
+source.add(
+    Polygon.fromLngLats(
+        Arrays.asList(
+            Arrays.asList(
+                Point.fromLngLat(-50, -20),
+                Point.fromLngLat(0, 40),
+                Point.fromLngLat(50, -20),
+                Point.fromLngLat(-50, -20)
+            )
+        )
+    )
+)
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(
+    PolygonLayer(
+        source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+    ), "labels"
+)
+```
+
+::: zone-end
 
 I det här exemplet lästes följande bild in i appens drawable-mapp.
 

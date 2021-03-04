@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675034"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096861"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Zscaler privat åtkomst med Azure Active Directory B2C
 
@@ -100,11 +100,11 @@ Information om hur du konfigurerar anpassade principer på Azure AD B2C klient o
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Steg 3: registrera ZPA som ett SAML-program i Azure AD B2C
 
-Information om hur du konfigurerar ett SAML-program i Azure AD B2C finns i [Registrera ett SAML-program i Azure AD B2C](./connect-with-saml-service-providers.md). 
+Information om hur du konfigurerar ett SAML-program i Azure AD B2C finns i [Registrera ett SAML-program i Azure AD B2C](./saml-service-provider.md). 
 
-I steg ["3,2 Ladda upp och testa dina principens metadata"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)kopierar eller noterar du IDP SAML metadata URL som används av Azure AD B2C. Du behöver det senare.
+I steg ["Ladda upp din princip"](./saml-service-provider.md#upload-your-policy)kopierar eller noterar du IDP SAML metadata URL som används av Azure AD B2C. Du behöver det senare.
 
-Följ anvisningarna genom steg ["4,2 uppdatera app-manifestet"](./connect-with-saml-service-providers.md#42-update-the-app-manifest). I steg 4,2 uppdaterar du appens manifest egenskaper enligt följande:
+Följ anvisningarna i steg ["konfigurera programmet i Azure AD B2C"](./saml-service-provider.md#configure-your-application-in-azure-ad-b2c). I steg 4,2 uppdaterar du appens manifest egenskaper enligt följande:
 
 - För **identifierUris**: Använd tjänste leverantörens ENTITETS-ID som du kopierade eller noterade tidigare i "steg 1.6. b".  
 - För **samlMetadataUrl**: hoppa över den här egenskapen eftersom ZPA inte är värd för en SAML-metadata-URL.  
@@ -150,6 +150,6 @@ Gå till en användar Portal för ZPA eller ett program för webb läsar åtkoms
 Mer information finns i följande artiklar:
 
 - [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md)
-- [Registrera ett SAML-program i Azure AD B2C](./connect-with-saml-service-providers.md)
+- [Registrera ett SAML-program i Azure AD B2C](./saml-service-provider.md)
 - [Steg-för-steg-konfigurations guide för ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Konfigurera en IdP för enkel inloggning](https://help.zscaler.com/zpa/configuring-idp-single-sign)

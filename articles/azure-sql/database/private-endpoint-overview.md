@@ -6,15 +6,15 @@ ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094173"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097286"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure privat länk för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,6 +61,8 @@ Med privat länk kan kunder aktivera åtkomst till lokala slut punkter via [Expr
 Klienter kan ansluta till den privata slut punkten från samma virtuella nätverk, peer-kopplat virtuella nätverk i samma region eller via virtuellt nätverk till virtuell nätverks anslutning mellan regioner. Dessutom kan klienter ansluta lokalt med ExpressRoute, privat peering eller VPN-tunnlar. Nedan visas ett förenklat diagram som visar vanliga användnings fall.
 
  ![Diagram över anslutnings alternativ][1]
+
+Dessutom kan tjänster som inte körs direkt i det virtuella nätverket, men som är integrerade med det (till exempel App Service webbappar eller funktioner) också få privat anslutning till-databasen. Mer information om det här speciella användnings fallet finns i [webb programmet med en privat anslutning till arkitektur scenariot för Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) .
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Testa anslutningen till SQL Database från en virtuell Azure-dator i samma virtuella nätverk
 
@@ -183,6 +185,7 @@ PolyBase och KOPIERINGs instruktionen används ofta för att läsa in data i Azu
 
 - En översikt över Azure SQL Database säkerhet finns i [skydda databasen](security-overview.md)
 - En översikt över Azure SQL Database-anslutningar finns i [arkitektur för Azure SQL-anslutning](connectivity-architecture.md)
+- Du kanske också är intresse rad av [webbappen med privat anslutning till arkitektur scenario för Azure SQL Database](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) , som ansluter ett webb program utanför det virtuella nätverket till den privata slut punkten för en databas.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

@@ -3,18 +3,18 @@ title: Komma igång med Android Map-kontroll | Microsoft Azure Maps
 description: Bekanta dig med Azure Maps Android SDK. Se hur du skapar ett projekt i Android Studio, installerar SDK och skapar en interaktiv karta.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/10/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: mvc
-ms.openlocfilehash: a7533e079ca13f8ac891fa96f11f740a21c1a3dc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 5888a5f34ef65fc1015b6e73af1d03368a8329b2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680374"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098527"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Komma igång med Azure Maps Android SDK
 
@@ -30,10 +30,15 @@ Azure Maps Android SDK innehåller tre olika sätt att ange språk och regional 
 
 Det första alternativet är att skicka språket och Visa regional information i `AzureMaps` klassen med hjälp av metoderna static `setLanguage` och `setView` Global. Detta anger standard språket och den regionala vyn för alla Azure Maps kontroller som läses in i din app.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 static {
     //Set your Azure Maps Key.
     AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+    //Alternatively use Azure Active Directory authenticate.
+    //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -42,6 +47,30 @@ static {
     AzureMaps.setView("Auto");
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+companion object {
+    init {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
+    
+        //Set the regional view to be used by Azure Maps.
+        AzureMaps.setView("Auto");
+    }
+}
+```
+
+::: zone-end
 
 Det andra alternativet är att skicka språket och Visa information i kart kontrollens XML-fil.
 
@@ -57,6 +86,8 @@ Det andra alternativet är att skicka språket och Visa information i kart kontr
 
 Det tredje alternativet är att program mässigt ange språket och den regionala vyn för kartan med hjälp av Maps- `setStyle` metoden. Detta kan göras när som helst för att ändra språket och den regionala vyn för kartan.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     map.setStyle(
@@ -65,6 +96,21 @@ mapControl.onReady(map -> {
     );
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl.onReady(OnReady { map: AzureMap ->
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    )
+})
+```
+
+::: zone-end
 
 Här är ett exempel på Azure Maps med språket "fr-FR" och regional View inställd på "Auto".
 
@@ -101,9 +147,21 @@ Azure Maps Android SDK stöder Azure Government molnet. Azure Maps Android SDK n
 
 På samma plats där Azure Maps autentiseringsinformation anges lägger du till följande kodrad för att se till att kartan använder moln domänen Azure Maps myndighet.
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 AzureMaps.setDomain("atlas.azure.us");
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+AzureMaps.setDomain("atlas.azure.us")
+```
+
+::: zone-end
 
 Se till att använda Azure Maps autentiseringsinformation från Azure Government moln plattform när du autentiserar kartan och tjänsterna.
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1e2ad920afb55066f07430568f976154f6d7cae1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680130"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097983"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Fel sökning av Azure percept-ljud och tal-modul
 
@@ -38,35 +38,32 @@ När du har omdirigerat utdata till en txt-fil kopierar du filen till värddator
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-[lokal värd fil Sök väg] refererar till den plats på värddatorn som du vill kopiera. txt-filen till. [fjärranvändarnamn] är SSH-användarnamnet som valdes under [installationen](./quickstart-percept-dk-set-up.md). Om du inte har konfigurerat en SSH-inloggning under OOBE, är ditt fjärranvändarnamn rot.
+[lokal värd fil Sök väg] refererar till den plats på värddatorn som du vill kopiera. txt-filen till. [fjärran sluten användar namn] är SSH-användarnamnet som väljs under den här [insikts upplevelsen](./quickstart-percept-dk-set-up.md). Om du inte har konfigurerat en SSH-inloggning under den inspelade versionen av Azure percept DK, är ditt fjärranvändarnamn rot.
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>Kontrollerar körnings status för modulen tal
 
-Kontrol lera om körnings statusen för **azureearspeechclientmodule** visas som **körs**. Om du vill hitta körnings statusen för dina enhets moduler öppnar du [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) och navigerar till **alla resurser**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Klicka på fliken **moduler** om du vill se körnings status för alla installerade moduler.
+Kontrol lera om körnings statusen för **azureearspeechclientmodule** visas som **körs**. Om du vill hitta körnings statusen för dina enhets moduler öppnar du [Azure Portal](https://portal.azure.com/) och navigerar till **alla resurser**  ->  **\<your IoT hub>**  ->  **IoT Edge**  ->  **\<your device ID>** . Klicka på fliken **moduler** om du vill se körnings status för alla installerade moduler.
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Edge Device-sidan i Azure Portal.":::
 
 Om körnings statusen för **azureearspeechclientmodule** inte visas i listan som **körs** klickar du på **Ange moduler**  ->  **azureearspeechclientmodule**. På sidan **Modulnamn** anger du **önskad status** för att **köra** och klickar på **Uppdatera**.
 
-:::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/firmware-desired-status-stopped.png" alt-text="Skärmen Ange moduler i Azure Portal.":::
-
 ## <a name="understanding-ear-som-led-indicators"></a>Förstå öron indikator indikatorer
 
 Du kan använda indikator indikatorer för att förstå vilket tillstånd som enheten är i. Det tar vanligt vis ungefär 2 minuter för modulen att initiera efter *strömförsörjningen*. När du går igenom initierings stegen visas:
 
-1. 1 vänster grön lampa – enheten är påslagen. 
-2. 1 vänster grön ljus-och mitt punkt blinkar grönt-autentisering pågår. 
+1. 1 centrera vit lampa – enheten är påslagen. 
+2. 1 mitten vit lampa blinkar-autentisering pågår. 
 3. Alla tre lysdioder ändras till blått när enheten har autentiserats och är redo att användas.
 
-|LEDande tillstånd                  |Öron som status            |
-|----------------------------|---------------------------|
-|1x, grön (vänster LED)         |slå på |
-|1x, grön (vänster LED) <br> 1x blinkande grönt (centrerat) |autentisering pågår |
-|3x av                      |initiering slutförd |
-|3x, blå                     |redo att användas |
-|3x blinkar blå            |nyckelordet känns igen |
-|3x, racing blå              |bearbetning |
-|3x röd                      |mikrofon |
+|SPOLNING|   LEDande tillstånd|  Öron som status|
+|---|------------|----------------| 
+|L02|   1x-vit, statisk på |Slå på |
+|L02|   1x-vit, 0,5 Hz blinkar|  Autentisering pågår |
+|L01 & L02 & L03|   3x, blå, statisk på|     Väntar på nyckelord|
+|L01 & L02 & L03|   Indikator för blinkande matris, 20fps | Lyssna eller tala|
+|L01 & L02 & L03|   LED mat ris racing, 20fps|    Tänka|
+|L01 & L02 & L03|   3x röd, statisk på | Mikrofon|
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797115"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096912"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender-instrumentpanelen
 
@@ -33,11 +33,11 @@ Instrument panelen innehåller följande avsnitt:
 
 1. **Azure Defender-täckning** – här kan du se de resurs typer som finns i din prenumeration och som är berättigade till skydd av Azure Defender. I tillämpliga fall har du möjlighet att uppgradera. Om du vill uppgradera alla tillgängliga resurser väljer du **Uppgradera alla**.
 
-1. **Avsnittet säkerhets aviseringar** – när Azure Defender identifierar ett hot i alla områden i miljön genererar den en avisering. De här aviseringarna beskriver information om de resurser som påverkas, föreslagna åtgärds steg och i vissa fall ett alternativ för att utlösa en logisk app som svar. Om du väljer var som helst i det här diagrammet öppnas **sidan säkerhets aviseringar**.
+2. **Säkerhets aviseringar** – när Azure Defender identifierar ett hot i alla områden i miljön genererar den en avisering. De här aviseringarna beskriver information om de resurser som påverkas, föreslagna åtgärds steg och i vissa fall ett alternativ för att utlösa en logisk app som svar. Om du väljer var som helst i det här diagrammet öppnas **sidan säkerhets aviseringar**.
 
-1. **Avancerat skydd** – Azure Defender innehåller många avancerade hot skydds funktioner för virtuella datorer, SQL-databaser, behållare, webb program, nätverk och mycket annat. I det här avsnittet om Avancerat skydd kan du se statusen för resurserna i de valda prenumerationerna för var och en av dessa skydd. Välj någon av dem för att gå direkt till konfigurations ytan för den skydds typen.
+3. **Avancerat skydd** – Azure Defender innehåller många avancerade hot skydds funktioner för virtuella datorer, SQL-databaser, behållare, webb program, nätverk och mycket annat. I det här avsnittet om Avancerat skydd kan du se statusen för resurserna i de valda prenumerationerna för var och en av dessa skydd. Välj någon av dem för att gå direkt till konfigurations ytan för den skydds typen.
 
-1. **Insikter** – det här åtgärds fönstret med nyheter, förslag på läsningar och aviseringar med hög prioritet ger Security Center insikter om att trycka på säkerhets frågor som är relevanta för dig och din prenumeration. Oavsett om det är en lista med hög allvarlighets grad CVEs som identifierats på dina virtuella datorer av ett sårbarhets analys verktyg, eller ett nytt blogg inlägg från en medlem i Security Center-teamet, hittar du det här i fönstret insikter på **Azure Defender-instrumentpanelen**.
+4. **Insikter** – det här åtgärds fönstret med nyheter, förslag på läsningar och aviseringar med hög prioritet ger Security Center insikter om att trycka på säkerhets frågor som är relevanta för dig och din prenumeration. Oavsett om det är en lista med hög allvarlighets grad CVEs som identifierats på dina virtuella datorer av ett sårbarhets analys verktyg, eller ett nytt blogg inlägg från en medlem i Security Center-teamet, hittar du det här i fönstret insikter på **Azure Defender-instrumentpanelen**.
 
 
 
@@ -49,4 +49,4 @@ I den här artikeln har du lärt dig om Azure Defender-instrumentpanelen.
 Mer information om Azure Defender finns i [Introduktion till Azure Defender](azure-defender.md)
 
 > [!div class="nextstepaction"]
-> [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivera Azure Defender](enable-azure-defender.md)
