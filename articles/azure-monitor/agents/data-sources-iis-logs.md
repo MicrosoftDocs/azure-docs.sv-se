@@ -1,17 +1,16 @@
 ---
 title: Samla in IIS-loggar med Log Analytics agent i Azure Monitor
 description: Internet Information Services (IIS) lagrar användar aktivitet i loggfiler som kan samlas in av Azure Monitor.  Den här artikeln beskriver hur du konfigurerar insamling av IIS-loggar och information om de poster som de skapar i Azure Monitor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732062"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050740"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Samla in IIS-loggar med Log Analytics agent i Azure Monitor
 Internet Information Services (IIS) lagrar användar aktivitet i loggfiler som kan samlas in av Log Analytics-agenten och lagras i [Azure Monitor loggar](../data-platform.md).
@@ -26,7 +25,7 @@ Azure Monitor samlar in poster från loggfiler som skapats av IIS, så du måste
 
 Azure Monitor stöder endast IIS-loggfiler som lagras i W3C-format och stöder inte anpassade fält eller avancerad IIS-loggning. Det samlar inte in loggar i NCSA eller ursprungligt IIS-format.
 
-Konfigurera IIS-loggar i Azure Monitor från [menyn Avancerade inställningar](../agents/agent-data-sources.md#configuring-data-sources) för Log Analytics agenten.  Ingen konfiguration krävs förutom att välja **samla in W3C-format IIS-loggfiler**.
+Konfigurera IIS-loggar i Azure Monitor från [agent konfigurations menyn](../agents/agent-data-sources.md#configuring-data-sources) för Log Analytics agenten.  Ingen konfiguration krävs förutom att välja **samla in W3C-format IIS-loggfiler**.
 
 
 ## <a name="data-collection"></a>Datainsamling

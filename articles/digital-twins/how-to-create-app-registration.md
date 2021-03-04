@@ -1,5 +1,5 @@
 ---
-title: Skapa en app-registrering
+title: Skapa en appregistrering
 titleSuffix: Azure Digital Twins
 description: Se så här skapar du en Azure AD-App-registrering som ett autentiseringsalternativ för klient program.
 author: baanders
@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f252471cd3cd7e3a950bf2cfe324e580da129041
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: acb5457f10c54a741a738dd8a1008e703b0f23b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210173"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051029"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Skapa en app-registrering som ska användas med Azure Digitals dubbla
 
-När du arbetar med en digital Azure-instans är det vanligt att interagera med den instansen via klient program, till exempel en anpassad app för klienter eller ett exempel som [ADT Explorer](quickstart-adt-explorer.md). Dessa program behöver autentiseras med Azures digitala dubblare för att kunna interagera med det, och vissa av [de autentiseringsmekanismer](how-to-authenticate-client.md) som appar kan använda inbegriper en [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) -app- **registrering**.
+När du arbetar med en digital Azure-instans, är det vanligt att interagera med den instansen via klient program, till exempel en anpassad app för klienter eller ett exempel som [Azure Digitals Internet Explorer](quickstart-adt-explorer.md). Dessa program behöver autentiseras med Azures digitala dubblare för att kunna interagera med det, och vissa av [de autentiseringsmekanismer](how-to-authenticate-client.md) som appar kan använda inbegriper en [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) -app- **registrering**.
 
 Detta krävs inte för alla autentiserings scenarier. Men om du använder en strategi för autentisering eller kod som kräver en registrering av appen, inklusive ett **klient-ID** och klient **-ID**, visar den här artikeln hur du konfigurerar en.
 
@@ -42,7 +42,7 @@ På sidan *Registrera en program* som följer fyller du i de begärda värdena:
 
 Tryck på knappen *Registrera* när du är färdig.
 
-:::image type="content" source="media/how-to-create-app-registration/register-an-application.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/register-an-application.png" alt-text="Vy av sidan Registrera ett program med de beskrivna värdena ifyllda i":::
 
 När registreringen är färdig kommer portalen att omdirigera dig till sidan med information.
 
@@ -50,7 +50,7 @@ När registreringen är färdig kommer portalen att omdirigera dig till sidan me
 
 Sedan samlar du in några viktiga värden om appens registrering från informations sidan:
 
-:::image type="content" source="media/how-to-create-app-registration/app-important-values.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/app-important-values.png" alt-text="Portal visning av viktiga värden för appens registrering":::
 
 Anteckna _**program**_ -ID och _**katalog (klient)-ID: t**_ som **visas på sidan** . Det här är de värden som en klient app måste använda för att autentisera med Azure Digital-dubbla.
 
@@ -60,19 +60,19 @@ Konfigurera sedan den app-registrering som du har skapat med baseline-behörighe
 
 Välj *API-behörigheter* på menyn på Portal sidan för din app-registrering. På sidan följande behörigheter trycker du på knappen *+ Lägg till en behörighet* .
 
-:::image type="content" source="media/how-to-create-app-registration/add-permission.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/add-permission.png" alt-text="Vy av appens registrering i Azure Portal, markera meny alternativet API-behörigheter och knappen + Lägg till en behörighet":::
 
 På sidan *begär API-behörigheter* som följer växlar du till fliken *API: er som min organisation använder* och söker efter *Azure Digital-dubbla*. Välj _**Azure Digitals flätar**_ från Sök resultaten om du vill fortsätta med att tilldela behörigheter för Azures digitala dubbla API: er.
 
-:::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1.png" alt-text="Visning av sid Sök resultatet &quot;begär API-behörigheter&quot; som visar Azure Digitals, med ett program (klient) ID för 0b07f429-9f4b-4714-9392-cc5e8e80c8b0.":::
 
 >[!NOTE]
 > Om prenumerationen fortfarande har en befintlig Azure Digital-instans från den tidigare offentliga för hands versionen av tjänsten (före den 2020 juli) måste du söka efter och välja _**Azure Smart Spaces-tjänst**_ i stället. Detta är ett äldre namn för samma uppsättning API: er (Observera att *program-ID: t (klient) ID* är detsamma som i skärm bilden ovan) och att din upplevelse inte ändras utanför det här steget.
-> :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1-smart-spaces.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+> :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1-smart-spaces.png" alt-text="Vy av Sök resultatet för sidan begär API-behörigheter som visar Azure Smart Spaces-tjänsten":::
 
 Sedan väljer du vilka behörigheter som ska beviljas för dessa API: er. Expandera **Läs-(1)-** behörigheten och markera kryss rutan med texten *Read. Write* för att ge appen registrerings läsare och skrivar behörigheter.
 
-:::image type="content" source="media/how-to-create-app-registration/request-api-permissions-2.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/request-api-permissions-2.png" alt-text="Vy av sidan begär API-behörigheter väljer Läs. Skriv-behörigheter för Azure Digitals dubbla API: er":::
 
 Tryck på *Lägg till behörigheter* när du är färdig.
 
@@ -80,27 +80,27 @@ Tryck på *Lägg till behörigheter* när du är färdig.
 
 På sidan *API-behörigheter* kontrollerar du att det nu finns en post för Azure Digitals dubbla som återspeglar Läs-/skriv behörigheter:
 
-:::image type="content" source="media/how-to-create-app-registration/verify-api-permissions.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/verify-api-permissions.png" alt-text="Portal visning av API-behörigheterna för Azure AD-appens registrering, med Läs-/skriv åtkomst för Azure digitala dubbla":::
 
 Du kan också kontrol lera anslutningen till Azure Digitals dubbla i program registreringens *manifest.jspå*, som automatiskt uppdaterades med den digitala Azure-informations informationen när du lade till API-behörigheterna.
 
 Om du vill göra det väljer du *manifest* på menyn för att visa appens registrerings manifest kod. Bläddra till slutet av kod fönstret och leta efter dessa fält under `requiredResourceAccess` . Värdena ska matcha dem i skärm bilden nedan:
 
-:::image type="content" source="media/how-to-create-app-registration/verify-manifest.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+:::image type="content" source="media/how-to-create-app-registration/verify-manifest.png" alt-text="Portal visning av manifestet för Azure AD-appens registrering. Kapslad under ' requiredResourceAccess ', ett ' resourceAppId '-värde för 0b07f429-9f4b-4714-9392-cc5e8e80c8b0 och ett ' resourceAccess >-ID '-värde för 4589bd03-58cb-4e6c-b17f-b580e39652f8":::
 
 Om dessa värden saknas, gör om stegen i [avsnittet för att lägga till API-behörigheten](#provide-azure-digital-twins-api-permission).
 
 ## <a name="other-possible-steps-for-your-organization"></a>Andra möjliga steg för din organisation
 
-Det är möjligt att organisationen kräver ytterligare åtgärder från prenumerations ägare/-administratörer för att kunna konfigurera en app-registrering. De steg som krävs kan variera beroende på organisationens aktuella inställningar.
+Det är möjligt att organisationen kräver ytterligare åtgärder från prenumerations ägare/-administratörer för att kunna konfigurera en app-registrering. Vilka steg som krävs kan variera beroende på organisationens aktuella inställningar.
 
-Här följer några vanliga potentiella aktiviteter som en ägare/administratör på prenumerationen kan behöva utföra. Dessa och andra åtgärder kan utföras från sidan [*Azure AD App registreringar*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) i Azure Portal.
-* Bevilja administrativt medgivande för appens registrering. Din organisation kan ha ett *administrativt medgivande som måste* aktive ras globalt i Azure AD för alla app-registreringar i din prenumeration. I så fall måste ägaren/administratören välja den här knappen för ditt företag på registrerings sidan för appens *API-behörigheter* för att appen ska vara giltig:
+Här följer några vanliga potentiella aktiviteter som en ägare/administratör för prenumerationen kan behöva utföra. Dessa och andra åtgärder kan utföras från sidan [*Azure AD App registreringar*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) i Azure Portal.
+* Bevilja administratörsmedgivande för appregistreringen. Din organisation kan ha ett *administrativt medgivande som måste* aktive ras globalt i Azure AD för alla app-registreringar i din prenumeration. I så fall måste ägaren/administratören välja den här knappen för ditt företag på registrerings sidan för appens *API-behörigheter* för att appen ska vara giltig:
 
-    :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
-  - Om medgivande har beviljats, bör posten för Azure Digital-dubbla, Visa ett *status* värde för _beviljat **(ditt företag)** _
+    :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text="Portal visning av knappen bevilja administrativt medgivande under API-behörigheter":::
+  - Om medgivande har beviljats, bör posten för Azure Digital-dubbla, Visa ett *status* värde för _beviljat **(ditt företag)**_
    
-    :::image type="content" source="media/how-to-create-app-registration/granted-admin-consent-done.png" alt-text="Vy av sidan Azure AD-tjänst i Azure Portal, markera meny alternativet &quot;Appregistreringar&quot; och knappen &quot;+ ny registrering&quot;":::
+    :::image type="content" source="media/how-to-create-app-registration/granted-admin-consent-done.png" alt-text="Portal visning av administrativt medgivande som beviljats för företaget under API-behörigheter":::
 * Aktivera offentlig klient åtkomst
 * Ange vissa svars-URL: er för webb-och skriv bords åtkomst
 * Tillåt för implicita OAuth2-autentiserings flöden

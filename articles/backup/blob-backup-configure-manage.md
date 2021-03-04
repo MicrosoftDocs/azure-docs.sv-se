@@ -3,12 +3,12 @@ title: Konfigurera drift säkerhets kopiering för Azure-blobar
 description: Lär dig hur du konfigurerar och hanterar drift säkerhets kopiering för Azure-blobar (i för hands version)
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 7fe302de0e93575e7bb62f7c5cdefd7acc0720c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0dc490842389ba9286799aef5d37c1cf7c1ba64e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746785"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051080"
 ---
 # <a name="configure-operational-backup-for-azure-blobs-in-preview"></a>Konfigurera drift säkerhets kopiering för Azure-blobar (i för hands version)
 
@@ -170,4 +170,4 @@ Mer information finns i [Översikt över säkerhets kopierings Center (för hand
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Återställa Azure-blobbar](blob-backup-support-matrix.md)
+- [Återställa Azure-blobbar](blob-restore.md)

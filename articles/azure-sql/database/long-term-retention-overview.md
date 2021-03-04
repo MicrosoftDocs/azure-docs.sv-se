@@ -8,25 +8,28 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale-msft
 ms.reviewer: mathoma, sstein
-ms.date: 05/18/2019
-ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/25/2021
+ms.openlocfilehash: cd1ba0516d8cb7fdaf3b8d4786cfe68240231303
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782628"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050978"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Långsiktig kvarhållning – Azure SQL Database och Azure SQL-hanterad instans
 
-Många program har regler, efterlevnad eller andra affärs behov som kräver att du bevarar databas säkerhets kopior över 7-35 dagar från Azure SQL Database och [Automatisk säkerhets kopiering](automated-backups-overview.md)av Azure SQL-hanterade instanser. Med hjälp av funktionen för långsiktig kvarhållning (brv) kan du lagra angivna SQL Database-och SQL-hanterade instanser med fullständig säkerhets kopiering i Azure Blob Storage med [konfigurerad redundans](automated-backups-overview.md#backup-storage-redundancy) i upp till 10 år. Du kan sedan återställa en säkerhets kopia som en ny databas.
+Många program har regler, efterlevnad eller andra affärs behov som kräver att du bevarar databas säkerhets kopior över 7-35 dagar från Azure SQL Database och [Automatisk säkerhets kopiering](automated-backups-overview.md)av Azure SQL-hanterade instanser. Med hjälp av funktionen för långsiktig kvarhållning (brv) kan du lagra angivna SQL Database-och SQL-hanterade instanser med fullständig säkerhets kopiering i Azure Blob Storage med [konfigurerad redundans](automated-backups-overview.md#backup-storage-redundancy) i upp till 10 år. Säkerhets kopieringar med LTR kan sedan återställas som en ny databas.
 
-Lång tids kvarhållning kan aktive ras för Azure SQL Database och är i begränsad offentlig för hands version för Azure SQL-hanterad instans. Den här artikeln innehåller en konceptuell översikt över långsiktig kvarhållning. Information om hur du konfigurerar långsiktig kvarhållning finns i [konfigurera Azure SQL Database LTR](long-term-backup-retention-configure.md) och [Konfigurera Azure SQL Managed instance LTR](../managed-instance/long-term-backup-retention-configure.md). 
+Långsiktig kvarhållning kan aktive ras för Azure SQL Database och finns tillgänglig i offentlig för hands version för Azure SQL-hanterad instans. Den här artikeln innehåller en konceptuell översikt över långsiktig kvarhållning. Information om hur du konfigurerar långsiktig kvarhållning finns i [konfigurera Azure SQL Database LTR](long-term-backup-retention-configure.md) och [Konfigurera Azure SQL Managed instance LTR](../managed-instance/long-term-backup-retention-configure.md). 
 
 > [!NOTE]
 > Du kan använda SQL Agent-jobb för att schemalägga [säkerhets kopiering av skrivskyddade databaser](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) som ett alternativ till vä-hö över 35 dagar.
+
+> [!IMPORTANT]
+> Långsiktig kvarhållning av hanterade instanser är för närvarande endast tillgänglig i offentlig för hands version i offentliga Azure-regioner. 
 
 
 ## <a name="how-long-term-retention-works"></a>Så här fungerar långsiktig kvarhållning
@@ -77,25 +80,20 @@ Om du använder aktiv geo-replikering eller failover-grupper som verksamhets kon
 > [!NOTE]
 > När den ursprungliga primära databasen återställs från ett avbrott som orsakade redundansväxlingen, blir det en ny sekundär. Därför återupptas inte skapandet av säkerhets kopieringen och den befintliga LTR-principen börjar inte gälla förrän den blir primär igen. 
 
-## <a name="sql-managed-instance-support"></a>Stöd för SQL Managed Instance
-
-Användning av långsiktig kvarhållning av säkerhets kopior med Azure SQL Managed instance har följande begränsningar:
-
-- **Begränsad offentlig för hands version** – den här för hands versionen är endast tillgänglig för EA-och CSP-prenumerationer och har begränsad tillgänglighet.  
-- [**Endast PowerShell**](../managed-instance/long-term-backup-retention-configure.md) – det finns för närvarande inget stöd för Azure Portal. VÄ-hö måste vara aktive rad med PowerShell. 
-
-Om du vill begära registrering skapar du ett [support ärende för Azure](https://azure.microsoft.com/support/create-ticket/). Välj tekniskt problem för tjänsten Välj SQL-hanterad instans och för problem typen väljer du **säkerhets kopiering, återställning och affärs kontinuitet/långsiktig kvarhållning av säkerhets kopior** . I din begäran kan du ange det tillstånd som du vill ska registreras i begränsad offentlig för hands version av LTR för SQL-hanterad instans.
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurera långsiktig kvarhållning av säkerhetskopior
 
-Du kan konfigurera långsiktig kvarhållning av säkerhets kopior med hjälp av Azure Portal och PowerShell för Azure SQL Database och PowerShell för Azure SQL-hanterad instans. Om du vill återställa en databas från den lokala lagrings platsen kan du välja en speciell säkerhets kopia baserat på dess tidsstämpel. Databasen kan återställas till en befintlig server eller hanterad instans under samma prenumeration som den ursprungliga databasen.
+Du kan konfigurera långsiktig kvarhållning av säkerhets kopior med hjälp av Azure Portal och PowerShell för Azure SQL Database och Azure SQL-hanterad instans. Om du vill återställa en databas från den lokala lagrings platsen kan du välja en speciell säkerhets kopia baserat på dess tidsstämpel. Databasen kan återställas till en befintlig server eller hanterad instans under samma prenumeration som den ursprungliga databasen.
 
-Information om hur du konfigurerar långsiktig kvarhållning eller återställer en databas från en säkerhets kopia för SQL Database med hjälp av Azure Portal eller PowerShell finns i [hantera Azure SQL Database långsiktig kvarhållning av säkerhets kopior](long-term-backup-retention-configure.md)
+Information om hur du konfigurerar långsiktig kvarhållning eller återställer en databas från en säkerhets kopia för SQL Database med hjälp av Azure Portal eller PowerShell finns i [hantera Azure SQL Database långsiktig kvarhållning av säkerhets kopior](long-term-backup-retention-configure.md).
 
 Information om hur du konfigurerar långsiktig kvarhållning eller återställer en databas från en säkerhets kopia för SQL-hanterad instans med hjälp av PowerShell finns i [Hantera Azure SQL Managed instance kvarhållning av säkerhets kopior](../managed-instance/long-term-backup-retention-configure.md).
 
-Om du vill återställa en databas från den lokala lagrings platsen kan du välja en speciell säkerhets kopia baserat på dess tidsstämpel. Databasen kan återställas till en befintlig server under samma prenumeration som den ursprungliga databasen. Information om hur du återställer databasen från en LTR-säkerhetskopiering med hjälp av Azure Portal eller PowerShell finns i [hantera Azure SQL Database långsiktig kvarhållning av säkerhets kopior](long-term-backup-retention-configure.md). I din begäran kan du ange det tillstånd som du vill ska registreras i den begränsade offentliga för hands versionen av LTR för SQL-hanterad instans.
+Om du vill återställa en databas från den lokala lagrings platsen kan du välja en speciell säkerhets kopia baserat på dess tidsstämpel. Databasen kan återställas till en befintlig server under samma prenumeration som den ursprungliga databasen. Information om hur du återställer databasen från en LTR-säkerhetskopiering med hjälp av Azure Portal eller PowerShell finns i [hantera Azure SQL Database långsiktig kvarhållning av säkerhets kopior](long-term-backup-retention-configure.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Eftersom säkerhets kopiering av databasen skyddar data från oavsiktlig skada eller borttagning, är de en viktig del av all affärs kontinuitet och katastrof återställnings strategi. Mer information om andra SQL Database lösningar för företags kontinuitet finns i [Översikt över affärs kontinuitet](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+Eftersom säkerhets kopiering av databasen skyddar data från oavsiktlig skada eller borttagning, är de en viktig del av all affärs kontinuitet och katastrof återställnings strategi. 
+
+- Mer information om andra SQL Database lösningar för företags kontinuitet finns i [Översikt över affärs kontinuitet](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+- Mer information om tjänstgenererade automatiska säkerhetskopior finns i avsnittet om [automatiska säkerhetskopior](../database/automated-backups-overview.md)

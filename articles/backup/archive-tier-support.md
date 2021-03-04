@@ -3,12 +3,12 @@ title: Stöd för Arkiv nivå (för hands version)
 description: Lär dig mer om Arkiv nivå stöd för Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: cd9cfc5722dc644dd257738be797f162ac6dc995
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 30a7915332d1d7ecab87b0db1ddc6dacc0fa69c9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746912"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050652"
 ---
 # <a name="archive-tier-support-preview"></a>Stöd för Arkiv nivå (för hands version)
 
@@ -35,6 +35,9 @@ Klienter som stöds:
 
 - Funktionen tillhandahålls med PowerShell
 
+>[!NOTE]
+>Arkiv nivå stöd för virtuella Azure-datorer och SQL Server på virtuella Azure-datorer är i begränsad offentlig för hands version med begränsade registreringar. Om du vill registrera dig för Archive support använder du den här [länken](https://aka.ms/ArchivePreviewInterestForm).
+
 ## <a name="get-started-with-powershell"></a>Kom igång med PowerShell
 
 1. Hämta den [senaste PowerShell-modulen](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (för hands version).
@@ -43,12 +46,30 @@ Klienter som stöds:
 
    `Set-AzContext -Subscription "SubscriptionName"`
 
+1. Hämta valvet:
+
+    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+
+1. Hämta listan med säkerhets kopierings objekt:
+
+    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+
+1. Hämta säkerhets kopierings objekt.
+
+    - För virtuella Azure-datorer:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
+
+    - För SQL Server på virtuella Azure-datorer:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+
 ## <a name="use-powershell"></a>Använd PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>Kontrol lera återställnings bara återställnings punkter
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
 Detta visar en lista över alla återställnings punkter som är associerade med ett visst säkerhets kopierings objekt som är redo att flyttas till arkivet.
@@ -56,7 +77,7 @@ Detta visar en lista över alla återställnings punkter som är associerade med
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Kontrol lera varför en återställnings punkt inte kan flyttas till arkivet
 
 ```azurepowershell
-$rp.RecoveryPointMoveReadinessInfo["ArchivedRP"]
+$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
 Var `$rp[0]` finns den återställnings punkt som du vill kontrol lera varför den inte kan arkiveras.
@@ -79,13 +100,13 @@ Azure Backup har en rekommenderad uppsättning återställnings punkter som kan 
 >Kostnads besparingarna beror på olika orsaker och kanske inte är samma för två instanser.
 
 ```azurepowershell
-$recommendedRPs = SGet-AzRecoveryServicesRecommendedArchivableRPGroup -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID 
+$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
 ```
 
 ### <a name="move-to-archive"></a>Flytta till Arkiv
 
 ```azurepowershell
-Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $RecoveryPoint[10] -SourceTier VaultStandard -DestinationTier VaultArchive 
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
 
 Detta kommando flyttar en återställnings punkt som kan arkiveras. Det returnerar ett jobb som kan användas för att spåra flyttnings åtgärden både från portalen och med PowerShell.
@@ -95,7 +116,7 @@ Detta kommando flyttar en återställnings punkt som kan arkiveras. Det returner
 Det här kommandot returnerar alla arkiverade återställnings punkter.
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
 ```
 
 ### <a name="restore-with-powershell"></a>Återställa med PowerShell
@@ -122,7 +143,7 @@ Följ [dessa steg](backup-azure-sql-automation.md#restore-sql-dbs)om du vill åt
 Om du vill visa flytt-och återställnings jobben använder du följande PowerShell-cmdlet:
 
 ```azurepowershell
-Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
 
 ## <a name="use-the-portal"></a>Använda portalen

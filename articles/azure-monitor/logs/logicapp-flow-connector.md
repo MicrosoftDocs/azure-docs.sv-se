@@ -2,17 +2,16 @@
 title: Använd Azure Monitor loggar med Azure Logic Apps och energi automatisering
 description: Lär dig hur du kan använda Azure Logic Apps och energi automatisering för att snabbt automatisera upprepade processer med hjälp av Azure Monitor-anslutningen.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 9d93e3ec08ff16a1fcca0c914b9e817d4ca89d60
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a25d7a23d486c8ce22fa433cc1ead390726facc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707956"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048870"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor loggar Connector för Logic Apps och energi automatisering
 Med [Azure Logic Apps](../../logic-apps/index.yml) och [energi spar läge](https://flow.microsoft.com) kan du skapa automatiserade arbets flöden med hundratals åtgärder för olika tjänster. Med anslutnings programmet för Azure Monitor loggar kan du bygga arbets flöden som hämtar data från en Log Analytics arbets yta eller ett Application Insights program i Azure Monitor. I den här artikeln beskrivs de åtgärder som ingår i kopplingen och en genom gång av hur du skapar ett arbets flöde med dessa data.

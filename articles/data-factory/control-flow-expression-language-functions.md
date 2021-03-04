@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 997700b27f52af174dab914097ceeef8d20ff148
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 829afda7ba49d60e51f3a074d38e5a1d0ca924a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385633"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050060"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Uttryck och funktioner i Azure Data Factory
 
@@ -59,13 +59,33 @@ Uttryck kan finnas var som helst i ett JSON-sträng värde och resulterar alltid
 |"Svar är: @ {pipeline (). Parameters. Number}"| Returnerar strängen `Answer is: 42` .|  
 |" \@ concat (" svar är:, String (pipeline (). Parameters. Number)) "| Returnerar strängen `Answer is: 42`|  
 |"Svar är: \@ \@ {pipeline (). Parameters. Number}"| Returnerar strängen `Answer is: @{pipeline().parameters.myNumber}` .|  
-  
+
 ## <a name="examples"></a>Exempel
 
 ### <a name="complex-expression-example"></a>Exempel på komplexa uttryck
 Exemplet nedan visar ett komplext exempel som refererar till ett djup under fält med aktivitets utdata. Om du vill referera till en pipeline-parameter som utvärderas till ett under fält använder du []-syntaxen i stället för punkt (.)-operatorn (som i händelse av subfield1 och subfield2)
 
-@activity('*activityName*'). output. *subfield1*. *subfield2*[pipeline (). Parameters.*subfield3*]. *subfield4*
+`@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*`
+
+### <a name="dynamic-content-editor"></a>Redigeraren för dynamiskt innehåll
+
+I redigeraren för dynamiskt innehåll undantas automatiskt tecken i innehållet när du är klar med redigeringen. Följande innehåll i innehålls redigeraren är till exempel en sträng interpolation med två uttrycks funktioner. 
+
+```json
+{ 
+  "type": "@{if(equals(1, 2), 'Blob', 'Table' )}",
+  "name": "@{toUpper('myData')}"
+}
+```
+
+Redigeraren för dynamiskt innehåll konverterar över innehåll till uttryck `"{ \n  \"type\": \"@{if(equals(1, 2), 'Blob', 'Table' )}\",\n  \"name\": \"@{toUpper('myData')}\"\n}"` . Resultatet av det här uttrycket är en JSON-format sträng som visas nedan.
+
+```json
+{
+  "type": "Table",
+  "name": "MYDATA"
+}
+```
 
 ### <a name="a-dataset-with-a-parameter"></a>En data uppsättning med en parameter
 I följande exempel tar BlobDataset en parameter med namnet **Path**. Värdet används för att ange ett värde för egenskapen **folderPath** med hjälp av uttrycket: `dataset().path` . 

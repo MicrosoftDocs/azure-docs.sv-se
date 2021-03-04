@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 8c69f477f363654b8bd707949f0a5b4c46a4e8df
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561112"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050349"
 ---
 # <a name="view-azure-reservations"></a>Visa Azure-reservationer
 
@@ -32,23 +32,30 @@ Du kan välja mellan två alternativ för att låta andra hantera reservationer:
     1. Logga in på [Azure-portalen](https://portal.azure.com).
     1. Välj **Alla tjänster** > **Reservationer** så visas de reservationer du har åtkomst till.
     1. Markera den reservation som du vill ge andra användare åtkomst till.
-    1. Välj reservationsbeställningen i reservationsinformationen.
+    1. Välj reservationsbeställningen i informationen om reservationer.
     1. Välj **Åtkomstkontroll (IAM)** .
     1. Välj **Lägg till rolltilldelning** > **Roll** > **Ägare**. Du kan välja en annan roll om du vill ge begränsad åtkomst.
     1. Ange e-postadressen för den användare som du vill lägga till som ägare.
     1. Välj användaren och sedan **Spara**.
 
 - Lägg till en användare som faktureringsadministratör för ett Enterprise-avtal eller ett Microsoft-kundavtal:
-    - För ett Enterprise-avtal lägger du till användare med rollen _Företagsadministratör_ för att visa och hantera alla reservationsbeställningar som gäller för Enterprise-avtalet. Användare med rollen _Enterprise-administratör (skrivskyddad)_ kan bara visa reservationen. Avdelningsadministratörer och kontoägare kan inte visa reservationer _om de inte_ uttryckligen läggs till i dem via åtkomstkontroll (IAM). Mer information finns i [Hantera Azure Enterprise-roller](../manage/understand-ea-roles.md).
+    - Om du har ett Enterprise-avtal lägger du till användare med rollen _Företagsadministratör_ så att de kan visa och hantera reservationsbeställningar under Enterprise-avtalet. Användare med rollen _Enterprise-administratör (skrivskyddad)_ kan bara visa reservationen. Avdelningsadministratörer och kontoägare kan inte visa reservationer _om de inte_ uttryckligen läggs till i dem via åtkomstkontroll (IAM). Mer information finns i [Hantera Azure Enterprise-roller](../manage/understand-ea-roles.md).
 
         _Enterprise-administratörer kan bli ägare till en reservationsbeställning och kan lägga till andra användare till en reservation via åtkomstkontroll (IAM)._
-    - För ett Microsoft-kundavtal kan användare med rollen som faktureringsprofilägare eller rollen som faktureringsprofildeltagare hantera alla reservationsköp som görs via faktureringsprofilen. Debiteringsprofilläsare och fakturahanterare kan visa alla reservationer som betalas via faktureringsprofilen. De kan dock inte göra ändringar i reservationer.
+    - Med ett Microsoft-kundavtal kan användare med rollen som faktureringsprofilägare eller faktureringsprofildeltagare hantera alla reservationsköp som görs via faktureringsprofilen. Debiteringsprofilläsare och fakturahanterare kan visa alla reservationer som betalas via faktureringsprofilen. Däremot kan de inte göra ändringar i reservationer.
     Mer information finns i [Roller och uppgifter för faktureringsprofiler](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>Så här kan faktureringsadministratörer visa och hantera reservationer
 
-1. Gå till **Cost Management + Billing** och välj **Reservationstransaktioner** till vänster på sidan.
-2. Om du har nödvändiga faktureringsbehörigheter kan du visa och hantera reservationer. Om du inte ser några reservationer kontrollerar du att du är inloggad med den Azure AD-klientorganisation där reservationerna skapades.
+Om du har åtkomst till reservationer eller reservations order med Azure RBAC-åtkomst kan du se endast en delmängd av reservations transaktioner eller ingen när du navigerar till reservationer. Använd följande steg för att visa och hantera alla reservationer och reservations transaktioner.
+
+1. Logga in på [Azure Portal](https://portal.azure.com) och gå till **Cost Management + fakturering**.
+    - Om du är en EA-administratör väljer du **fakturerings omfång** i den vänstra menyn och väljer sedan en i listan över fakturerings omfång.
+    - Om du är Microsoft kund avtal ägare av fakturerings profil väljer du **fakturerings profiler** på den vänstra menyn. I listan över fakturerings profiler väljer du ett.
+1. På den vänstra menyn väljer du **reservations transaktioner**. Listan över reservations transaktioner visas.
+1. En banderoll överst på sidan läser *nu fakturerings administratörerna kan hantera reservationer. Klicka här för att hantera reservationer.* Välj banderollen.
+1. Den fullständiga listan över reservationer för din EA-registrering eller fakturerings profil visas.
+1. Om du vill bli ägare till en reservation väljer du den. På sidan Konfigurera behörigheter väljer du **bevilja åtkomst**. Du har fått ägar åtkomst till reservations-och reservations ordern.
 
 ## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Visa reservation och användning i Azure-portalen
 

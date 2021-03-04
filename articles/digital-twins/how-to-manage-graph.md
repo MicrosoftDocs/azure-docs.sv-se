@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530458"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050944"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
@@ -30,7 +30,7 @@ Den här artikeln fokuserar på att hantera relationer och diagrammet som helhet
 
 [!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
-Du kan också göra ändringar i grafen med hjälp av ADT (Azure Digital flätas) som gör att du kan visualisera dina sammanställningar och grafer och använda SDK i bakgrunden. I nästa avsnitt beskrivs det här exemplet i detalj.
+Du kan också göra ändringar i grafen med hjälp av Azure Digitals Explorer-exemplet, vilket gör att du kan visualisera dina dubbla och grafer och använda SDK: n bakom kulisserna. I nästa avsnitt beskrivs det här exemplet i detalj.
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 

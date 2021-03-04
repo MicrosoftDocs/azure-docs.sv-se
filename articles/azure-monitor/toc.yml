@@ -416,7 +416,7 @@
                 - name: Skicka till Event Hubs
                   href: agents/diagnostics-extension-stream-event-hubs.md
                 - name: Skicka till loggar
-                  href: essentials/diagnostics-extension-logs.md
+                  href: agents/diagnostics-extension-logs.md
                 - name: Skicka till Application Insights
                   href: agents/diagnostics-extension-to-application-insights.md
                 - name: Versionshistorik
@@ -993,7 +993,7 @@
         - name: Vanliga frågor och svar om allmän tillgänglighet
           href: vm/vminsights-ga-release-faq.md
         - name: VANLIGA FRÅGOR OCH SVAR
-          href: faq.md#azure-monitor-for-vms
+          href: faq.md#vm-insights
         - name: Konfigurera arbetsyta
           href: vm/vminsights-configure-workspace.md
         - name: Installera agenter
@@ -1045,7 +1045,7 @@
         - name: Översikt
           href: containers/container-insights-overview.md
         - name: VANLIGA FRÅGOR OCH SVAR
-          href: faq.md#azure-monitor-for-containers
+          href: faq.md#container-insights
         - name: Aktivera övervakning
           items:
             - name: Aktivera övervakningsöversikt

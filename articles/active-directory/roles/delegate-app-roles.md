@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071279"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051199"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegera registrerings behörigheter för app i Azure Active Directory
 
@@ -77,7 +77,7 @@ Azure AD har en uppsättning inbyggda administratörs roller för att bevilja å
 - Program administratör: användare med den här rollen kan skapa och hantera alla aspekter av företags program, program registreringar och programproxy-inställningar. Den här rollen ger också möjlighet att godkänna delegerade behörigheter och program behörigheter exklusive Microsoft Graph. Användare som har tilldelats den här rollen läggs inte till som ägare när de skapar nya program registreringar eller företags program.
 - Moln program administratör: användare med den här rollen har samma behörigheter som program administratörs rollen, förutom möjligheten att hantera programproxyn. Användare som har tilldelats den här rollen läggs inte till som ägare när de skapar nya program registreringar eller företags program.
 
-Mer information och se beskrivningen av dessa roller finns i [tillgängliga roller](permissions-reference.md#available-roles).
+Mer information och se beskrivningen av dessa roller finns i [inbyggda Azure AD-roller](permissions-reference.md).
 
 Följ anvisningarna i guiden [tilldela roller till användare med Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md) instruktions guide för att tilldela rollen program administratör eller moln program administratör.
 

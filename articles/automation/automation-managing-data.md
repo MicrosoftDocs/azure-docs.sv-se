@@ -3,14 +3,14 @@ title: Azure Automation data säkerhet
 description: Den här artikeln hjälper dig att lära dig hur Azure Automation skyddar din integritet och skyddar dina data.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581114"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050825"
 ---
 # <a name="management-of-azure-automation-data"></a>Hantera Azure Automation-data
 
@@ -41,7 +41,7 @@ Information om stöd för TLS 1,2 med Log Analytics-agenten för Windows och Lin
 
 ## <a name="data-retention"></a>Datakvarhållning
 
-När du tar bort en resurs i Azure Automation sparas den i ett antal dagar för gransknings syfte innan permanent borttagning. Du kan inte se eller använda resursen under den här tiden. Den här principen gäller även för resurser som tillhör ett borttaget Automation-konto.
+När du tar bort en resurs i Azure Automation sparas den i ett antal dagar för gransknings syfte innan permanent borttagning. Du kan inte se eller använda resursen under den här tiden. Den här principen gäller även för resurser som tillhör ett borttaget Automation-konto. Bevarande principen gäller för alla användare och kan för närvarande inte anpassas. Men om du behöver lagra data under en längre period kan du [vidarebefordra Azure Automation jobb data till Azure Monitor loggar](automation-manage-send-joblogs-log-analytics.md).
 
 I följande tabell sammanfattas bevarande principen för olika resurser.
 
@@ -54,9 +54,9 @@ I följande tabell sammanfattas bevarande principen för olika resurser.
 | Moduler |En modul tas bort permanent 30 dagar efter att användaren tagit bort den eller 30 dagar efter att användaren tagit bort det konto som innehåller modulen. |
 | Nodkonfigurationer/MOF-filer |En gammal Node-konfiguration tas bort permanent 30 dagar efter att en ny nod har skapats. |
 | Node-rapporter |En Node-rapport tas bort permanent 90 dagar efter att en ny rapport har genererats för noden. |
-| Runbooks |En Runbook tas bort permanent 30 dagar efter att en användare tagit bort resursen, eller 30 dagar efter att användaren tagit bort det konto som innehåller resursen. |
+| Runbooks |En Runbook tas bort permanent 30 dagar efter att en användare tagit bort resursen, eller 30 dagar efter att användaren tagit bort kontot som innehåller resursen<sup>1</sup>. |
 
-Bevarande principen gäller för alla användare och kan för närvarande inte anpassas. Men om du behöver lagra data under en längre period kan du [vidarebefordra Azure Automation jobb data till Azure Monitor loggar](automation-manage-send-joblogs-log-analytics.md).
+<sup>1</sup> Runbooken kan återställas inom 30-dagars period genom att skicka in en support incident för Azure med Microsoft Azure support. Gå till [Support webbplatsen för Azure](/support/options) och välj **skicka en support förfrågan**.
 
 ## <a name="data-backup"></a>Säkerhets kopiering av data
 

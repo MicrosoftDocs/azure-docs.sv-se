@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693772"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049498"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Så här massr du redigera till gångar för att tagga ord listans villkor
 
@@ -65,13 +65,13 @@ Den här artikeln beskriver hur du tagga flera ord listor i en lista över valda
 
 7. Upprepa ovanstående för klassificeringar, ägare och experter.
 
-    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Skärm bild av borttagnings villkoren.":::
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Skärm bild av klassificeringar och kontakter.":::
 
 8. När du är klar stänger du redigera bladet Mass redigering genom att välja **Stäng** eller **ta bort alla och Stäng**. Om du stänger tas de valda till gångarna bort, medan ta bort alla och Stäng tas alla valda till gångar bort.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Skärm bild av stängningen.":::
 
    > [!Important]
-   > Det rekommenderade antalet till gångar för Mass redigering är 15. Om du väljer fler än 25 kan prestanda problem uppstå.
+   > Det rekommenderade antalet till gångar för Mass redigering är 25. Om du väljer fler än 25 kan prestanda problem uppstå.
    > Rutan **Visa markerad** visas bara om det finns minst en till gång vald.
 
 

@@ -3,60 +3,84 @@ title: Synkronisera innehåll från en molnbaserad mapp
 description: Lär dig hur du distribuerar din app för att Azure App Service via synkronisering av innehåll från en molnbaserad mapp, inklusive OneDrive eller Dropbox.
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/25/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bfee320c7a8b4cbe8439c376350d1234b393bfb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150301"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051247"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synkronisera innehåll från en molnbaserad mapp till Azure App Service
 Den här artikeln visar hur du synkroniserar ditt innehåll till [Azure App Service](./overview.md) från Dropbox och OneDrive. 
 
-Distributionen av innehålls synkronisering på begäran drivs av App Service [kudu-distributions motor](https://github.com/projectkudu/kudu/wiki). Du kan arbeta med din app-kod och innehåll i en angiven molnbaserad mapp och sedan synkronisera till App Service med en knapp klickning. Synkronisering av innehåll använder kudu build-servern. 
+Med metoden för synkronisering av innehåll kan du arbeta med din app-kod och innehåll i en angiven distributionsmapp för att kontrol lera att den är i ett läge som är redo att distribuera och sedan synkronisera till App Service med en knapp tryckning. 
+
+På grund av underliggande skillnader i API: erna stöds inte **OneDrive för företag för** tillfället.
+
+> [!NOTE]
+> **Utvecklings Center sidan (klassisk)** i Azure Portal, vilket är den gamla distributions miljön, kommer att bli inaktuell i mars 2021. Den här ändringen påverkar inte några befintliga distributions inställningar i appen och du kan fortsätta att hantera distribution av appar på sidan **distributions Center** .
 
 ## <a name="enable-content-sync-deployment"></a>Aktivera distribution av innehålls synkronisering
 
-Om du vill aktivera synkronisering av innehåll går du till sidan App Service app i [Azure Portal](https://portal.azure.com).
+1. Gå till hanterings sidan för din App Service-app i [Azure Portal](https://portal.azure.com).
 
-I den vänstra menyn klickar du på **distributions Center**  >  **OneDrive** eller **Dropbox**  >  **auktorisera**. Följ anvisningarna i auktoriseringen. 
+1. I den vänstra menyn klickar du på Inställningar för **distributions Center**  >  . 
 
-![Visar hur du godkänner OneDrive eller Dropbox i distributions centret i Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
+1. I **källa** väljer du **OneDrive** eller **Dropbox**.
 
-Du behöver bara auktorisera med OneDrive eller Dropbox en gång. Om du redan har behörighet klickar du bara på **Fortsätt**. Du kan ändra det auktoriserade OneDrive-eller Dropbox-kontot genom att klicka på **Ändra konto**.
+1. Klicka på **auktorisera** och följ instruktionerna för auktorisering. 
 
-![Visar hur du ändrar det auktoriserade OneDrive-eller Dropbox-kontot i distributions Center i Azure Portal.](media/app-service-deploy-content-sync/continue.png)
+    ![Visar hur du godkänner OneDrive eller Dropbox i distributions centret i Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
 
-På sidan **Konfigurera** väljer du den mapp som du vill synkronisera. Den här mappen skapas under följande angivna innehålls Sök väg i OneDrive eller Dropbox. 
+    Du behöver bara auktorisera med OneDrive eller Dropbox en gång för ditt Azure-konto. Om du vill auktorisera ett annat OneDrive-eller Dropbox-konto för en app klickar du på **Ändra konto**.
+
+1. I **mapp** väljer du den mapp som ska synkroniseras. Den här mappen skapas under följande angivna innehålls Sök väg i OneDrive eller Dropbox. 
    
-* **OneDrive**: `Apps\Azure Web Apps`
-* **Dropbox**: `Apps\Azure`
-
-När du är färdig klickar du på **Fortsätt**.
-
-På sidan **Sammanfattning** kontrollerar du dina alternativ och klickar på **Slutför**.
+    * **OneDrive**: `Apps\Azure Web Apps`
+    * **Dropbox**: `Apps\Azure`
+    
+1. Klicka på **Spara**.
 
 ## <a name="synchronize-content"></a>Synkronisera innehåll
 
-När du vill synkronisera innehåll i din Cloud-mapp med App Service går du tillbaka till sidan **distributions Center** och klickar på **Synkronisera**.
+# <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-![Visar hur du synkroniserar din Cloud-mapp med App Service.](media/app-service-deploy-content-sync/synchronize.png)
+1. Gå till hanterings sidan för din App Service-app i [Azure Portal](https://portal.azure.com).
+
+1. Klicka på **distributions Center**  >  **omdistribuera/synkronisera** på den vänstra menyn. 
+
+    ![Visar hur du synkroniserar din Cloud-mapp med App Service.](media/app-service-deploy-content-sync/synchronize.png)
    
-   > [!NOTE]
-   > På grund av underliggande skillnader i API: erna stöds inte **OneDrive för företag för** tillfället. 
-   > 
-   > 
+1. Bekräfta synkroniseringen genom att klicka på **OK** .
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+Starta en synkronisering genom att köra följande kommando och Ersätt \<group-name> och \<app-name> :
+
+```azurecli-interactive
+az webapp deployment source sync –-resource-group <group-name> –-name <app-name>
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Starta en synkronisering genom att köra följande kommando och Ersätt \<group-name> och \<app-name> :
+
+```azurepowershell-interactive
+Invoke-AzureRmResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.Web/sites -ResourceName <app-name> -Action sync -ApiVersion 2019-08-01 -Force –Verbose
+```
+
+-----
 
 ## <a name="disable-content-sync-deployment"></a>Inaktivera distribution av innehålls synkronisering
 
-Om du vill inaktivera synkronisering av innehåll går du till sidan App Service app i [Azure Portal](https://portal.azure.com).
+1. Gå till hanterings sidan för din App Service-app i [Azure Portal](https://portal.azure.com).
 
-I den vänstra menyn klickar du på **distributions Center**  >  **Koppla från**.
+1. På den vänstra menyn klickar du på **distributions Center**  >  **Inställningar**  >  **Koppla från**. 
 
-![Visar hur du kopplar från din mapp för molnappar med App Service-appen i Azure Portal.](media/app-service-deploy-content-sync/disable.png)
+    ![Visar hur du kopplar från din mapp för molnappar med App Service-appen i Azure Portal.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

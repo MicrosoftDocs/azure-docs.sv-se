@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5fa729ae68d091d9810430bdc0ea55ce1c876b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586273"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049244"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivera diagnostikloggning för appar i Azure App Service
 ## <a name="overview"></a>Översikt
@@ -23,7 +23,7 @@ I den här artikeln används [Azure Portal](https://portal.azure.com) och Azure 
 >
 >
 
-|Typ|Plattform|Location|Description|
+|Typ|Plattform|Location|Beskrivning|
 |-|-|-|-|
 | Programloggning | Windows, Linux | App Service fil system och/eller Azure Storage blobbar | Loggar meddelanden som genereras av din program kod. Meddelandena kan genereras av det webb ramverk du väljer eller från din program kod direkt med hjälp av standard loggnings mönstret för ditt språk. Varje meddelande tilldelas en av följande kategorier: **kritisk**, **fel**, **Varning**, **information**, **fel sökning** och **spårning**. Du kan välja hur utförlig loggning ska ske genom att ange allvarlighets grad när du aktiverar program loggning.|
 | Webb Server loggning| Windows | App Service fil system eller Azure Storage blobbar| Rå data för HTTP-begäran i [utökat logg fils format för W3C](/windows/desktop/Http/w3c-logging). Varje logg meddelande innehåller data, till exempel HTTP-metoden, resurs-URI, klient-IP, klient port, användar agent, svars kod och så vidare. |
@@ -116,7 +116,7 @@ I program koden använder du vanliga loggnings funktioner för att skicka logg m
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Som standard använder ASP.NET Core loggnings leverantören [Microsoft. Extensions. logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Mer information finns i [ASP.net Core loggning i Azure](/aspnet/core/fundamentals/logging/).
+- Som standard använder ASP.NET Core loggnings leverantören [Microsoft. Extensions. logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) . Mer information finns i [ASP.net Core loggning i Azure](/aspnet/core/fundamentals/logging/). Information om WebJobs SDK-loggning finns i [Kom igång med Azure WEBJOBS SDK](/azure/app-service/webjobs-sdk-get-started#enable-console-logging)
 
 ## <a name="stream-logs"></a>Strömningsloggar
 
@@ -166,7 +166,7 @@ För Linux/container-appar innehåller ZIP-filen konsolens utgående loggar för
 
 För Windows-appar innehåller ZIP-filen innehållet i *D:\Home\LogFiles* -katalogen i App Service fil system. Den har följande struktur:
 
-| Loggtyp | Katalog | Description |
+| Loggtyp | Katalog | Beskrivning |
 |-|-|-|
 | **Program loggar** |*/LogFiles/Application/* | Innehåller en eller flera textfiler. Formatet på logg meddelandena beror på vilken loggnings leverantör du använder. |
 | **Spårning av misslyckade begär Anden** | */LogFiles/W3SVC#########/* | Innehåller XML-filer och en XSL-fil. Du kan visa de formaterade XML-filerna i webbläsaren. |
@@ -185,11 +185,11 @@ Med den nya [Azure Monitor-integreringen](https://aka.ms/appsvcblog-azmon)kan du
 
 I följande tabell visas de logg typer och beskrivningar som stöds: 
 
-| Loggtyp | Windows | Windows-behållare | Linux | Linux-behållare | Description |
+| Loggtyp | Windows | Windows-behållare | Linux | Linux-behållare | Beskrivning |
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE & Tomcat | Ja | Ja | Ja | Standardutdata och standard fel |
 | AppServiceHTTPLogs | Ja | Ja | Ja | Ja | Webb server loggar |
-| AppServiceEnvironmentPlatformLogs | Yes | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
+| AppServiceEnvironmentPlatformLogs | Ja | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
 | AppServiceAuditLogs | Ja | Ja | Ja | Ja | Inloggnings aktivitet via FTP och kudu |
 | AppServiceFileAuditLogs | Ja | Ja | TBA | TBA | Fil ändringar som har gjorts i webbplatsens innehåll. **endast tillgängligt för Premium-nivån och över** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Program loggar |

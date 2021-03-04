@@ -242,4 +242,4 @@
     - name: Azure Security Center
       href: ../../security-center/index.yml
     - name: Skiss exempel för Azure Security benchmark Foundation
-      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.yml
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

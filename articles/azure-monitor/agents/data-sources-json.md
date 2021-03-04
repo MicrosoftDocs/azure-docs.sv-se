@@ -1,17 +1,16 @@
 ---
 title: Samla in anpassade JSON-datakällor med Log Analytics-agenten för Linux i Azure Monitor
 description: Anpassade JSON-datakällor kan samlas in i Azure Monitor med hjälp av Log Analytics-agenten för Linux.  De här anpassade data källorna kan vara enkla skript som returnerar JSON, till exempel sväng eller ett av de populäraste, 300 + plugin-programmen. I den här artikeln beskrivs den konfiguration som krävs för den här data insamlingen.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: cd216e277a64d6e3edc87dc4027550bc8c7c5bfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fe80a5c117e8c94e5df946813a1c025747ff40e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726248"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050706"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Samla in anpassade JSON-datakällor med Log Analytics-agenten för Linux i Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]

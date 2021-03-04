@@ -2,17 +2,16 @@
 title: Samla in ETW (Event Tracing for Windows)-händelser (ETW) för analys Azure Monitor loggar
 description: Lär dig hur du samlar in ETW (Event Tracing for Windows) (ETW) för analys i Azure Monitor loggar.
 services: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: d0ded409d76d0b26a76aebb47b8de8f6143ceba5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 096d16bb2c7249ec99f37fbee9d8ffc8f0e45db2
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719907"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050774"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>Samla in ETW (Event Tracing for Windows)-händelser (ETW) för analys Azure Monitor loggar
 
@@ -72,7 +71,7 @@ När du har genererat händelser bör du börja se vilka ETW-händelser som visa
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>Steg 4: Konfigurera Log Analytics lagrings konto samling
 
-Följ [dessa anvisningar](/azure/azure-monitor/agents/diagnostics-extension-logs#collect-logs-from-azure-storage) för att samla in loggarna från Azure Storage. När den har kon figurer ATS ska ETW-händelsens data visas i Log Analytics under tabellen **ETWEvent** .
+Följ [dessa anvisningar](https://docs.microsoft.com/azure/azure-monitor/essentials/diagnostics-extension-logs#collect-logs-from-azure-storage) för att samla in loggarna från Azure Storage. När den har kon figurer ATS ska ETW-händelsens data visas i Log Analytics under tabellen **ETWEvent** .
 
 ## <a name="next-steps"></a>Nästa steg
 - Använd [anpassade fält](../logs/custom-fields.md) för att skapa en struktur i dina ETW-händelser

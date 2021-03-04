@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 02/08/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699257"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050400"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -113,9 +113,11 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 [Azure policy](../../governance/policy/index.yml):
 
 - Skapa och redigera princip definitioner i delegerade prenumerationer
+- Distribuera princip definitioner och princip tilldelningar över flera klienter
 - Tilldela kunddefinierade princip definitioner inom delegerade prenumerationer
 - Kunder ser principer som skapats av tjänst leverantören tillsammans med eventuella principer som de har skapat själva
 - Kan [åtgärda deployIfNotExists eller ändra tilldelningar i den hanterade klient organisationen](../how-to/deploy-policy-remediation.md)
+- Observera att det inte finns stöd för att visa information om kompatibilitet för icke-kompatibla resurser i kund klienter
 
 [Azure-resurs diagram](../../governance/resource-graph/index.yml):
 

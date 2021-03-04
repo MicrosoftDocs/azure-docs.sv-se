@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb3ba4ad49cc78b6082d347521cd87be5409cd34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749037"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050128"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Snabb start: skapa din första funktion i Azure med Visual Studio
 
@@ -27,9 +27,10 @@ Att slutföra den här snabb starten innebär en låg kostnad av några USD cent
 
 ![Installera Visual Studio med arbets belastningen Azure Development](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
+<br/>
 <details>
-<summary>Använd ett Azure Functions-projekt i stället</summary>
-Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskilda funktioner som kan distribueras och hanteras tillsammans. "> Azure Functions projekt</abbr> genom att använda Visual Studio 2017 i stället måste du först installera de [senaste Azure Functions verktygen](functions-develop-vs.md#check-your-tools-version).
+<summary><strong>Använd ett Azure Functions-projekt i stället</strong></summary>
+Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskilda funktioner som kan distribueras och hanteras tillsammans.">Azure Functions projekt</abbr> genom att använda Visual Studio 2017 i stället måste du först installera de [senaste Azure Functions verktygen](functions-develop-vs.md#check-your-tools-version).
 </details>
 
 ## <a name="2-create-a-function-app-project"></a>2. skapa ett Function app-projekt
@@ -42,13 +43,13 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
 
 1. Ange följande information för program inställningarna **skapa en ny Azure Functions** :
 
-    + Välj **<abbr title=" det här värdet för att skapa ett funktions projekt som använder version 3. x-körningen av Azure Functions, som stöder .net Core 3. x. Azure Functions 1. x stöder .NET Framework. Mer information finns i [Översikt över Azure Functions körnings versioner](functions-versions.md). "> Azure Functions v3 (.NET Core) </abbr>** från List rutan Functions runtime
+    + Välj **<abbr title=" det här värdet för att skapa ett funktions projekt som använder version 3. x-körningen av Azure Functions, som stöder .net Core 3. x. Azure Functions 1. x stöder .NET Framework. "> Azure Functions v3 (.NET Core) </abbr>** från List rutan Functions Runtime. (Mer information finns i [Översikt över Azure Functions körnings versioner](functions-versions.md).)
     
     + Välj **<abbr title=" det här värdet skapar en funktion som utlöses av en http-begäran. "> HTTP- </abbr> utlösare** som funktions mal len.
     
-    + Välj **<abbr = "eftersom en Azure-funktion kräver ett lagrings konto, tilldelas eller skapas det när du publicerar projektet till Azure. En HTTP-utlösare använder inte en anslutnings sträng för Azure Storage konto. alla andra utlösnings typer kräver en giltig anslutnings sträng för Azure Storage konto. " >Storage- </abbr> emulatorn** från List rutan lagrings konto.
+    + Välj **<abbr title=" eftersom en Azure-funktion kräver ett lagrings konto, en tilldelas eller skapas när du publicerar projektet till Azure. En HTTP-utlösare använder inte en anslutnings sträng för Azure Storage konto. alla andra utlösare kräver en giltig anslutnings sträng för Azure Storage konto. "> Storage- </abbr> emulator** från List rutan lagrings konto.
         
-    + Välj **Anonym** från <abbr title="Funktionen som skapats kan utlösas av alla klienter utan att en nyckel anges. Den här auktoriseringsinställningen gör det enkelt att testa den nya funktionen. Mer information om nycklar och auktorisering finns i [auktoriseringsarkiv](functions-bindings-http-webhook-trigger.md#authorization-keys) och [http-och webhook-bindningar](functions-bindings-http-webhook.md).">Auktoriseringsnivå</abbr> Rute
+    + Välj **Anonym** från <abbr title="Funktionen som skapats kan utlösas av alla klienter utan att en nyckel anges. Den här auktoriseringsinställningen gör det enkelt att testa den nya funktionen.">Auktoriseringsnivå</abbr> Rute. (Mer information om nycklar och auktorisering finns i [auktoriseringsarkiv](functions-bindings-http-webhook-trigger.md#authorization-keys) och [http-och webhook-bindningar](functions-bindings-http-webhook.md).)
 
     + Välj **Skapa**
         
@@ -77,8 +78,9 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
 
 1. Stoppa fel sökningen genom att trycka på <kbd>SKIFT</kbd> + <kbd>F5</kbd> i Visual Studio.
 
+<br/>
 <details>
-<summary>Felsökning</summary>
+<summary><strong>Felsökning</strong></summary>
  Du kan behöva aktivera ett brand Väggs undantag så att verktygen kan hantera HTTP-förfrågningar. Tillstånds nivåer tillämpas aldrig när du kör en funktion lokalt.
 </details>
 
@@ -102,7 +104,7 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
     
     + **Välj** en befintlig <abbr title="En logisk behållare för relaterade Azure-resurser som du kan hantera som en enhet.">Resursgrupp</abbr> i list rutan eller väljer du **nytt** för att skapa en ny resurs grupp.
     
-    + **Välj** <abbr title="När du publicerar projektet till en Function-app som körs i en [förbruknings plan](consumption-plan.md)betalar du bara för körningar av Functions-appen. Andra värd planer ådrar sig högre kostnader.">Förbrukning</abbr> i list rutan uppspelnings typ
+    + **Välj** <abbr title="När du publicerar projektet till en Function-app som körs i en förbruknings plan betalar du bara för körningar av Functions-appen. Andra värd planer ådrar sig högre kostnader.">Förbrukning</abbr> i list rutan uppspelnings typ. (Mer information finns i [förbruknings plan](consumption-plan.md).)
     
     + **Välj** en  <abbr title="En geografisk referens till ett särskilt Azure-datacenter där resurser allokeras. Se [regioner](https://azure.microsoft.com/regions/) för en lista över tillgängliga regioner.">location</abbr> i list rutan.
     
@@ -116,8 +118,9 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
 
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Slutför skapande av profil":::
 
+    <br/>
     <details>
-    <summary>Vad gör den här inställningen?</summary>
+    <summary><strong>Vad gör den här inställningen?</strong></summary>
     När du använder **Kör från paketfil** distribueras din Function-app med hjälp av [zip Deploy](functions-deployment-technologies.md#zip-deploy) med läget [Kör-inpaket](run-functions-from-deployment-package.md) aktiverat. Detta är den rekommenderade distributions metoden för ditt Functions-projekt, eftersom den resulterar i bättre prestanda.    
     </details>   
 
@@ -127,14 +130,14 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
 
 1. På sidan publicera granskar du rot-URL: en för Function-appen.
 
-1. På fliken publicera väljer **du hantera i <abbr title=" Cloud Explorer för att visa innehållet på platsen, starta och stoppa Function-appen, och bläddra direkt för att använda program resurser i Azure och i Azure Portal. "></>i Cloud Explorer**.
+1. På fliken publicera väljer **du hantera i <abbr title=" Cloud Explorer för att visa innehållet på platsen, starta och stoppa Function-appen, och bläddra direkt för att använda program resurser i Azure och i Azure Portal. "> Cloud Explorer </abbr>**.
     
     :::image type="content" source="../../includes/media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Meddelande som anger att publiceringen lyckades":::
     
 
 ## <a name="6-test-your-function-in-azure"></a>6. testa din funktion i Azure
 
-1. I Cloud Explorer ska din nya Function-app väljas. Om inte, expanderar du prenumerationen > **app Services** och väljer sedan den nya Function-appen.
+1. I Cloud Explorer ska din nya Function-app väljas. Om inte, expanderar du din prenumeration, expanderar **app Services** och väljer sedan den nya Function-appen.
 
 1. Högerklicka på Function-appen och välj **Öppna i webbläsare**. Detta öppnar roten för din Function-app i din standard webbläsare och visar sidan som visar att funktions programmet körs. 
 
@@ -154,7 +157,7 @@ Om du vill skapa en <abbr title="En logisk behållare för en eller flera enskil
 
 Ta bort Function-appen och dess resurser för att undvika ytterligare kostnader.
 
-1. I Cloud Explorer expanderar du prenumerationen > **app Services**, högerklickar på din Function-app och väljer **Öppna i portalen**. 
+1. I Cloud Explorer expanderar du din prenumeration, expanderar **app Services**, högerklickar på din Function-app och väljer **Öppna i portalen**. 
 
 1. På sidan Function-app väljer du fliken **Översikt** och väljer sedan länken under **resurs grupp**.
 

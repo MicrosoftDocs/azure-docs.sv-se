@@ -1,17 +1,16 @@
 ---
 title: Översikt över Log Analytics agent
 description: Det här avsnittet hjälper dig att förstå hur du samlar in data och övervakar datorer som finns i Azure, lokalt eller i en annan moln miljö med Log Analytics.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: c2a97e5e54fea8d80160c1df7007d51871501ef8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050672"
 ---
 # <a name="log-analytics-agent-overview"></a>Översikt över Log Analytics agent
 

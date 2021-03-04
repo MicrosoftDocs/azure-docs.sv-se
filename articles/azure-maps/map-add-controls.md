@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bbcfe4935843a00bc5274273e79f4ffc72dc25ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895298"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051063"
 ---
 # <a name="add-controls-to-a-map"></a>Lägga till kontroller till en karta
 
@@ -58,11 +58,11 @@ Nedan visas det fullständiga kod exemplet för ovanstående funktioner.
 
 ## <a name="add-compass-control"></a>Lägg till kompass kontroll
 
-En kompass-kontroll lägger till en knapp för att rotera kartan. Följande kod exempel skapar en instans av kontroll klassen [kompass](/javascript/api/azure-maps-control/atlas.control.compasscontrol) och lägger till den i det nedre vänstra hörnet på kartan.
+En kompass-kontroll lägger till en knapp för att rotera kartan. Följande kod exempel skapar en instans av klassen [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) och lägger till det i det nedre vänstra hörnet på kartan.
 
 ```javascript
 //Construct a compass control and add it to the map.
-map.controls.add(new atlas.control.Compass(), {
+map.controls.add(new atlas.control.CompassControl(), {
     position: 'bottom-left'
 });
 ```

@@ -3,15 +3,15 @@ title: Lägga till och hantera TLS/SSL-certifikat
 description: Skapa ett kostnads fritt certifikat, importera ett App Service certifikat, importera ett Key Vault certifikat eller köp ett App Service-certifikat i Azure App Service.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711713"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051352"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Lägg till ett TLS-/SSL-certifikat i Azure App Service
 
@@ -26,7 +26,7 @@ I följande tabell visas de alternativ som du har för att lägga till certifika
 
 |Alternativ|Beskrivning|
 |-|-|
-| Skapa ett kostnads fritt App Service-hanterat certifikat (förhands granskning) | Ett privat certifikat som är enkelt att använda om du bara behöver skydda din `www` [anpassade domän](app-service-web-tutorial-custom-domain.md) eller någon annan icke-blott domän i App Service. |
+| Skapa ett kostnads fritt App Service-hanterat certifikat (förhands granskning) | Ett privat certifikat som är kostnads fritt och enkelt att använda om du bara behöver skydda din [anpassade domän](app-service-web-tutorial-custom-domain.md) i App Service. |
 | Köp ett App Service-certifikat | Ett privat certifikat som hanteras av Azure. Den kombinerar den automatiserade certifikat hanteringen och flexibiliteten i förnyelse-och export alternativen. |
 | Importera ett certifikat från Key Vault | Användbart om du använder [Azure Key Vault](../key-vault/index.yml) för att hantera dina [PKCS12-certifikat](https://wikipedia.org/wiki/PKCS_12). Se [krav för privata certifikat](#private-certificate-requirements). |
 | Ladda upp ett privat certifikat | Om du redan har ett privat certifikat från en tredje part kan du ladda upp det. Se [krav för privata certifikat](#private-certificate-requirements). |
@@ -34,19 +34,17 @@ I följande tabell visas de alternativ som du har för att lägga till certifika
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att följa den här instruktions guiden:
-
 - [Skapa en app service-app](./index.yml).
-- Endast kostnads fria certifikat: mappa en under domän (till exempel `www.contoso.com` ) för att app service med en [CNAME-post](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
+- För ett privat certifikat kontrollerar du att det uppfyller alla [krav från App Service](#private-certificate-requirements).
+- **Endast kostnads fria certifikat**:
+    - Mappa den domän som du vill att ett certifikat ska App Service för. Mer information finns i [Självstudier: mappa ett befintligt anpassat DNS-namn till Azure App Service](app-service-web-tutorial-custom-domain.md).
+    - För en rotdomän (som contoso.com) kontrollerar du att din app inte har några konfigurerade [IP-begränsningar](app-service-ip-restrictions.md) . Både att skapa och regelbundet förnyade certifikat för en rot domän beror på att din app kan komma åt från Internet.
 
 ## <a name="private-certificate-requirements"></a>Krav för privata certifikat
 
-> [!NOTE]
-> Azure Web Apps har **inte** stöd för AES256 och alla PFX-filer bör krypteras med TripleDES.
+Det [kostnads fria app service-hanterade certifikatet](#create-a-free-managed-certificate-preview) och [App Service certifikatet](#import-an-app-service-certificate) uppfyller redan kraven i App Service. Om du väljer att överföra eller importera ett privat certifikat till App Service måste certifikatet uppfylla följande krav:
 
-Det [kostnads fria app service-hanterade certifikatet](#create-a-free-certificate-preview) eller [app Services certifikatet](#import-an-app-service-certificate) uppfyller redan kraven i App Service. Om du väljer att överföra eller importera ett privat certifikat till App Service måste certifikatet uppfylla följande krav:
-
-* Exporterad som en [lösenordsskyddad PFX-fil](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
+* Exporteras som en [lösenordsskyddad PFX-fil](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions), krypterad med tredubbel des.
 * Innehålla en privat nyckel som är minst 2 048 bitar lång
 * Innehålla alla mellanliggande certifikat i certifikatkedjan
 
@@ -60,21 +58,21 @@ För att skydda en anpassad domän i en TLS-bindning har certifikatet ytterligar
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>Skapa ett kostnads fritt certifikat (förhands granskning)
+## <a name="create-a-free-managed-certificate-preview"></a>Skapa ett kostnads fritt hanterat certifikat (förhands granskning)
+
+> [!NOTE]
+> Innan du skapar ett kostnads fritt hanterat certifikat måste du kontrol lera att du har [uppfyllt kraven](#prerequisites) för din app.
 
 Det kostnads fria App Service-hanterade certifikatet är en lösning för att skydda ditt anpassade DNS-namn i App Service. Det är ett fullständigt fungerande TLS/SSL-certifikat som hanteras av App Service och förnyas automatiskt. Det kostnads fria certifikatet levereras med följande begränsningar:
 
 - Har inte stöd för certifikat med jokertecken.
-- Stöder inte blott-domäner.
 - Kan inte exporteras.
-- Stöds inte på App Service-miljön (ASE)
-- Stöder inte poster. Till exempel fungerar inte automatisk förnyelse med en post.
+- Stöds inte på App Service-miljön (ASE).
+- Stöds inte med rot domäner som är integrerade med Traffic Manager.
 
 > [!NOTE]
 > Det kostnads fria certifikatet utfärdas av DigiCert. För vissa toppnivå domäner måste du uttryckligen tillåta DigiCert som en certifikat utfärdare genom att skapa en [CAA-domän post](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) med värdet: `0 issue digicert.com` .
 > 
-
-Så här skapar du ett kostnads fritt App Service-hanterat certifikat:
 
 I <a href="https://portal.azure.com" target="_blank">Azure Portal</a>väljer du **app Services** på menyn till vänster  >  **\<app-name>** .
 
@@ -82,7 +80,7 @@ Välj **TLS/SSL-inställningar**  >  **privat nyckel certifikat (. pfx)** i den 
 
 ![Skapa ett kostnads fritt certifikat i App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
-En icke-blott domän som är korrekt mappad till din app med en CNAME-post visas i dialog rutan. Välj den anpassade domän som du vill skapa ett kostnads fritt certifikat för och välj **skapa**. Du kan bara skapa ett certifikat för varje anpassad domän som stöds.
+Välj den anpassade domän som du vill skapa ett kostnads fritt certifikat för och välj **skapa**. Du kan bara skapa ett certifikat för varje anpassad domän som stöds.
 
 När åtgärden har slutförts visas certifikatet i listan med certifikat för **privat nyckel** .
 

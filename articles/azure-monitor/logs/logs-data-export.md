@@ -1,18 +1,17 @@
 ---
 title: Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 description: Med Log Analytics data export kan du kontinuerligt exportera data för markerade tabeller från din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in.
-ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: df165b83a6635fbcf72c94a4d16cbdf16c337636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713600"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048819"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -36,9 +35,9 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 
 - Konfigurationen kan utföras med CLI-eller REST-begäranden för närvarande. Azure Portal eller PowerShell stöds inte än.
 - ```--export-all-tables```Alternativet i CLI och rest stöds inte och kommer att tas bort. Du bör ange listan över tabeller i export regler uttryckligen.
-- Tabeller som stöds är för närvarande begränsade i avsnittet [tabeller som stöds](#supported-tables) nedan. 
+- Tabeller som stöds är för närvarande begränsade i avsnittet [tabeller som stöds](#supported-tables) nedan. Anpassade logg tabeller stöds till exempel inte för närvarande.
 - Om data export regeln innehåller en tabell som inte stöds kommer åtgärden att lyckas, men inga data exporteras för tabellen förrän tabellen har stöd för. 
-- Om data export regeln innehåller en tabell som inte finns kommer den att Miss ändå med felet ```Table <tableName> does not exist in the workspace``` .
+- Om data export regeln innehåller en tabell som inte finns fungerar den med fel ```Table <tableName> does not exist in the workspace``` .
 - Din Log Analytics arbets yta kan finnas i vilken region som helst, förutom följande:
   - Azure Government-regioner
   - Japan, västra
@@ -76,7 +75,7 @@ Log Analytics data export kan skriva till att lägga till blobar till oförände
 Data skickas till händelsehubben i nära real tid när den når Azure Monitor. En Event Hub skapas för varje datatyp som du exporterar med namnet *am –* följt av namnet på tabellen. Tabellen *SecurityEvent* skulle till exempel skickas till en Event Hub med namnet ' *am-SecurityEvent*'. Om du vill att exporterade data ska uppnå en viss händelsehubben, eller om du har en tabell med ett namn som överskrider tecken gränsen på 47, kan du ange ett eget namn på händelsehubben och exportera alla data för definierade tabeller till den.
 
 > [!IMPORTANT]
-> [Antalet Event Hub som stöds per namnrymd är 10](../../event-hubs/event-hubs-quotas#common-limits-for-all-tiers). Om du exporterar fler än 10 tabeller anger du ett eget namn på händelsehubben för att exportera alla tabeller till den händelsehubben. 
+> [Antalet Event Hub som stöds per namnrymd är 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Om du exporterar fler än 10 tabeller anger du ett eget namn på händelsehubben för att exportera alla tabeller till den händelsehubben. 
 
 Överväganden:
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.

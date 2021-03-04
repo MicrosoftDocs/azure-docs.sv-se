@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ecbf07c1a85c708d4117c83bca546cd8bd6ccd2b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546082"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050009"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
 
@@ -65,7 +65,7 @@ Högerklicka på projektet och välj _Hantera NuGet-paket_ i listan. Sedan välj
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core`
+* `Azure.Core.Pipeline`
 
 **Alternativ 2. Lägg till paket med `dotnet` kommando rads verktyget:**
 
@@ -75,7 +75,7 @@ Du kan också använda följande `dotnet add` kommandon i ett kommando rads verk
 dotnet add package Azure.DigitalTwins.Core
 dotnet add package Azure.Identity
 dotnet add package System.Net.Http
-dotnet add package Azure.Core
+dotnet add package Azure.Core.Pipeline
 ```
 
 Öppna sedan _Function1.cs_ -filen i Visual Studio-Solution Explorer där du har exempel kod och Lägg till följande `using` instruktioner i din funktion. 

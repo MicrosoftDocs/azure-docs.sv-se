@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 924397c9c81d2a38ae74b95a8f7133ced8bde0d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736550"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050927"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digitals med hjälp av enhets etablerings tjänsten (DPS)
 
@@ -85,7 +85,7 @@ Lägg till en ny funktion i projektet för Function-appen. Lägg också till ett
 
 I den nyligen skapade funktions kod filen klistrar du in följande kod.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
 Spara filen och publicera om din Function-app. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
@@ -182,7 +182,7 @@ Den här funktionen använder IoT Hub enhetens livs cykel händelse för att dra
 
 I din publicerade Function-app lägger du till en ny funktions klass av typen *Event Hub-utlösare* och klistrar in koden nedan.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
 Spara projektet och publicera sedan Function-appen igen. Anvisningar om hur du publicerar Function-appen finns i avsnittet [*Publicera appen*](tutorial-end-to-end.md#publish-the-app) i slut punkt till slut punkt.
 
@@ -223,7 +223,7 @@ Om du vill utlösa processen för pensionering måste du manuellt ta bort enhete
 
 I den [första halvan av den här artikeln](#auto-provision-device-using-device-provisioning-service)skapade du en enhet i IoT Hub och en motsvarande digital enhet. 
 
-Gå nu till IoT Hub och ta bort enheten (du kan göra detta med ett [Azure CLI-kommando](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest#ext_azure_iot_az_iot_hub_module_identity_delete) eller i [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Gå nu till IoT Hub och ta bort enheten (du kan göra detta med ett [Azure CLI-kommando](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete) eller i [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Enheten tas bort automatiskt från digitala Azure-enheter. 
 

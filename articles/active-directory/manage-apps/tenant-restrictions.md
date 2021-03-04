@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687081"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050910"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram
 
@@ -29,7 +29,7 @@ Med klient begränsningar kan organisationer ange listan över klienter som anv�
 
 Den här artikeln fokuserar på klient begränsningar för Microsoft 365, men funktionen skyddar alla appar som skickar användaren till Azure AD för enkel inloggning. Om du använder SaaS-appar med en annan Azure AD-klient än den klient organisation som används av din Microsoft 365, se till att alla begärda klienter är tillåtna (t. ex. i B2B-samarbets scenarier). Mer information om SaaS-molnappar finns på [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-Dessutom stöder funktionen klient begränsningar en funktion som [blockerar användningen av alla Microsoft-konsumentprogram](#blocking-consumer-applications) (MSA-appar) som OneDrive, Hotmail och Xbox.com.  Detta använder en separat rubrik för `login.live.com` slut punkten och beskrivs i slutet av dokumentet.
+Dessutom stöder funktionen klient begränsningar en funktion som [blockerar användningen av alla Microsoft-konsumentprogram](#blocking-consumer-applications-public-preview) (MSA-appar) som OneDrive, Hotmail och Xbox.com.  Detta använder en separat rubrik för `login.live.com` slut punkten och beskrivs i slutet av dokumentet.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 

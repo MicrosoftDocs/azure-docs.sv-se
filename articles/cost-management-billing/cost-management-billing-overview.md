@@ -4,17 +4,17 @@ description: Du använder funktioner i Azure Cost Management + Fakturering för 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051101"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050551"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Vad är Azure Cost Management + Fakturering?
 
@@ -33,6 +33,8 @@ Med Azure-produkter och -tjänster betalar du bara för det du använder. När d
 
 Om du vill veta mer om metoder för kostnadshantering för organisationer kan du läsa artikeln om [metodtips för Azure Cost Management](./costs/cost-mgt-best-practices.md).
 
+![Diagram över Cost Management + fakturerings optimerings processen.](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>Förstå Azure-faktureringen
 
 Funktionerna i Azure-fakturering används för att granska dina fakturerade kostnader och hantera åtkomst till faktureringsinformation. I större organisationer genomförs faktureringsuppgifter vanligtvis av inköps- och ekonomiteamen.
@@ -48,32 +50,6 @@ Azure-portalen stöder för närvarande följande typer av faktureringskonton:
 - **Enterprise-avtal**: Ett faktureringskonto för ett Enterprise-avtal skapas när din organisation tecknar ett Enterprise-avtal (EA) för att använda Azure.
 
 - **Microsoft-kundavtal**: Ett faktureringskonto för ett Microsoft-kundavtal skapas när din organisation arbetar med en Microsoft-representant för att teckna ett Microsoft-kundavtal. Vissa kunder i utvalda regioner som registrerar sig via Azure-webbplatsen för ett konto med Betala per användning-priser eller uppgraderar sitt [kostnadsfria Azure-konto](./manage/create-free-services.md) kan även ha ett faktureringskonto för ett Microsoft-kundavtal.
-
-### <a name="scopes-for-billing-accounts"></a>Omfång för faktureringskonton
-Ett omfång är en nod i ett faktureringskonto som du använder för att visa och hantera fakturering. Där hanterar du faktureringsdata, betalningar, fakturor och utför vanliga kontohanteringsuppgifter.
-
-#### <a name="microsoft-online-services-program"></a>Microsoft Online Services-programmet
-
-|Omfång  |Definition  |
-|---------|---------|
-|Faktureringskonto     | Representerar en enskild ägare (kontoadministratör) för en eller flera Azure-prenumerationer. Kontoadministratörer är auktoriserade att utföra olika faktureringsuppgifter som att skapa prenumerationer, visa fakturor eller ändra faktureringen för prenumerationer.  |
-|Prenumeration     |  Representerar en gruppering av Azure-resurser. En faktura genereras i prenumerationsomfånget. Den har sina egna betalningsmetoder som används för att betala fakturan.|
-
-#### <a name="enterprise-agreement"></a>Enterprise-avtal
-
-|Omfång  |Definition  |
-|---------|---------|
-|Faktureringskonto    | Representerar en Enterprise-avtalsregistrering. Fakturan genereras i omfång för faktureringskonto. Den struktureras med hjälp av avdelningar och registreringskonton.  |
-|Avdelning     |  Valfri gruppering av registreringskonton.      |
-|Registreringskonto     |  Representerar en enskild kontoägare. Azure-prenumerationer skapas under omfånget för registreringskonto.  |
-
-#### <a name="microsoft-customer-agreement"></a>Microsoft-kundavtal
-
-|Omfång  |Aktiviteter  |
-|---------|---------|
-|Faktureringskonto     |   Representerar ett kundavtal för flera Microsoft-produkter och -tjänster. Faktureringskontot struktureras med hjälp av faktureringsprofiler och fakturaavsnitt.   |
-|Faktureringsprofil     |  Representerar en faktura och dess betalningsmetod. Fakturan genereras i detta omfång. Faktureringsprofilen kan ha flera fakturaavsnitt.      |
-|Fakturaavsnitt     |   Representerar en grupp med kostnader i en faktura. Prenumerationer och andra inköp är associerade med omfånget för fakturaavsnitt.    |
 
 ## <a name="understand-azure-cost-management"></a>Förstå Azure Cost Management
 

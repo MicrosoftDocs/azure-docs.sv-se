@@ -2,13 +2,13 @@
 title: Efterlevnad med Azure Policy
 description: Tilldela inbyggda principer i Azure Policy för att granska kompatibiliteten för dina Azure Container register
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 26c56616bcc411063d0ebfda28ba1e6fdf44c7fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/01/2021
+ms.openlocfilehash: 3f6809698171950060b54257a365889242f4636e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291031"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050587"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Granska kompatibilitet för Azure Container register med hjälp av Azure Policy
 
@@ -22,7 +22,7 @@ Det kostar inget att använda Azure Policy.
 
 Följande inbyggda princip definitioner är bara för Azure Container Registry:
 
-[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
 Se även den inbyggda nätverks princip definitionen: [container Registry bör använda en tjänst slut punkt för virtuella nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
@@ -43,7 +43,7 @@ När en resurs är icke-kompatibel finns det många möjliga orsaker. Informatio
 
 ### <a name="policy-compliance-in-the-portal"></a>Efterlevnadsprincip i portalen:
 
-1. Välj **alla tjänster**och Sök efter **princip**.
+1. Välj **alla tjänster** och Sök efter **princip**.
 1. Välj **efterlevnad**.
 1. Använd filtren för att begränsa kompatibilitetstillstånd eller söka efter principer.
 

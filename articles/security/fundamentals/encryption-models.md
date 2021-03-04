@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854622"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051386"
 ---
 # <a name="data-encryption-models"></a>Datakrypteringsmodeller
 
@@ -152,7 +152,7 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | Azure Machine Learning Studio (klassisk) | Ja         | För hands version, RSA 2048-bitars | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Ansikte                             | Ja                | Ja                | -                  |
-| Språkförståelse           | Ja                | Ja                | -                  |
+| Language Understanding           | Ja                | Ja                | -                  |
 | Personanpassning                     | Ja                | Ja                | -                  |
 | QnA Maker                        | Ja                | Ja                | -                  |
 | Speech Services                  | Ja                | Ja                | -                  |
@@ -161,7 +161,7 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | **Analys**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | Ja\*\*            | -                  |
 | Event Hubs                       | Ja                | Ja                | -                  |
-| Funktioner                        | Ja                | Ja                | -                  |
+| Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Azure HDInsight                  | Ja                | Alla                | -                  |
@@ -175,7 +175,7 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | Container Instances              | Ja                | Ja                | -                  |
 | Container Registry               | Ja                | Ja                | -                  |
 | **Beräkning**                      |                    |                    |                    |
-| Virtuella datorer                 | Ja                | Ja                | -                  |
+| Virtual Machines                 | Ja                | Ja                | -                  |
 | Skalnings uppsättning för virtuell dator        | Ja                | Ja                | -                  |
 | SAP HANA                         | Ja                | Ja                | -                  |
 | App Service                      | Ja                | Ja\*\*            | -                  |
@@ -187,7 +187,7 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | Service Bus                      | Ja                | Ja                | -                  |
 | Site Recovery                    | Ja                | Ja                | -                  |
 | **Databaser**                    |                    |                    |                    |
-| SQL Server på Virtual Machines   | Ja                | Ja                | Ja                |
+| SQL Server på virtuella datorer   | Ja                | Ja                | Ja                |
 | Azure SQL Database               | Ja                | Ja, RSA 3072-bitars  | Ja                |
 | Azure SQL Database för MariaDB   | Ja                | -                  | -                  |
 | Azure SQL Database för MySQL     | Ja                | Ja                | -                  |
@@ -197,10 +197,10 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
-| Azure Database Migration Service | Ja                | EJ TILLÄMPLIGT\*              | -                  |
+| Azure Database Migration Service | Ja                | Ej tillämpligt\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Ja                | -                  | Ja                |
-| Azure-lagringsplatser                      | Ja                | -                  | Ja                |
+| Azure DevOps Services            | Ja                | -                  | -                  |
+| Azure-lagringsplatser                      | Ja                | -                  | -                  |
 | **Identitet**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja                | -                  |
@@ -230,7 +230,7 @@ De Azure-tjänster som har stöd för varje krypterings modell:
 | File Sync                         | Ja                | Ja                | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
-| Azure Cache for Redis            | Ja                | EJ TILLÄMPLIGT\*              | -                  |
+| Azure Cache for Redis            | Ja                | Ej tillämpligt\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
 | Arkivlagring                  | Ja                | Ja                | -                  |
 | StorSimple                       | Ja                | Ja                | Ja                |

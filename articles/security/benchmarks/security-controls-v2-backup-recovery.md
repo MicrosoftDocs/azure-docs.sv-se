@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd9a01868230efd9e9078171359d81302b472cd3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051556"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Säkerhets kontroll v2: säkerhets kopiering och återställning
 
 Säkerhets kopiering och återställning täcker kontroller för att säkerställa att säkerhets kopiering av data och konfigurationer på olika tjänst nivåer utförs, verifieras och skyddas.
 
-Om du vill se vilka inbyggda Azure Policy som finns kan du läsa mer i avsnittet [om Azures säkerhetsmekanism för regelefterlevnad, inbyggt initiativ: säkerhets kopiering och återställning](../../governance/policy/samples/azure-security-benchmark#backup-and-recovery)
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa mer i avsnittet [om Azures säkerhetsmekanism för regelefterlevnad, inbyggt initiativ: säkerhets kopiering och återställning](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Säkerställ vanliga automatiserade säkerhets kopieringar
 
@@ -66,7 +66,7 @@ Använd rollbaserad åtkomst kontroll i Azure i Azure Backup, Azure Key Vault el
 
 - [Kryptering av säkerhetskopieringsdata med kundhanterade nycklar](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Säkerhetskopiera Key Vault nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Säkerhetskopiera Key Vault nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [Säkerhetsfunktioner som hjälper till att skydda hybrid säkerhets kopieringar från attacker](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -90,7 +90,7 @@ Regelbundet utföra Data återställning av säkerhets kopian. Se till att du ka
 
 - [Återställa filer från säkerhets kopiering av virtuella Azure-datorer](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Så här återställer du Key Vault nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Så här återställer du Key Vault nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Ansvar**: Kund
 
