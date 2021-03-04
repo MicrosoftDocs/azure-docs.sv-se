@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f3331504540e8c23c3a83fe245bae27ca6c49385
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041288"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Felsöka Azure Migrate-installationen och identifieringen
 
@@ -167,6 +167,19 @@ Om identifierade virtuella datorer inte visas i portalen eller om VM-data är in
 
 Om du tar bort virtuella datorer och de fortfarande visas i portalen väntar du i 30 minuter. Om de fortfarande visas uppdaterar du enligt beskrivningen ovan.
 
+## <a name="discovered-applications-and-sql-server-instances-and-databases-not-in-portal"></a>Identifierade program och SQL Server instanser och databaser som inte är i portalen
+
+När du har påbörjat identifieringen av enheten kan det ta upp till 24 timmar innan du börjar Visa inventerings data i portalen.
+
+Om du inte har angett Windows-autentisering eller SQL Server autentiseringsuppgifter för Konfigurations hanteraren för installationen lägger du till autentiseringsuppgifterna så att enheten kan använda dem för att ansluta till respektive SQL Server-instanser.
+
+När enheten är ansluten samlar den in konfigurations-och prestanda data för SQL Server instanser och databaser. SQL Server konfigurations data uppdateras en gång var 24: e timme och prestanda data samlas in var 30: e sekund. Därför kan alla ändringar i egenskaperna för SQL Server-instansen och databaser, till exempel databas status, kompatibilitetsnivå osv. ta upp till 24 timmar att uppdatera på portalen.
+
+## <a name="sql-server-instance-is-showing-up-in-not-connected-state-on-portal"></a>SQL Server instans visas i läget "inte ansluten" på portalen
+Om du vill visa de problem som uppstått under identifieringen av SQL Server instanser och databaser klickar du på status "inte ansluten" i kolumnen anslutnings status på sidan identifierade servrar i projektet.
+
+Om du skapar en utvärdering ovanpå servrar som innehåller SQL-instanser som inte har identifierats fullständigt eller som inte är anslutna, kan det leda till att beredskapen är "okänd".
+
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Jag ser inte prestanda data för vissa nätverkskort på mina fysiska servrar
 
 Detta kan inträffa om Hyper-V-virtualisering är aktiverat på den fysiska servern. På grund av en produkt lucka samlas nätverks data flödet på de virtuella nätverkskort som identifierats.
@@ -199,9 +212,9 @@ Vanliga fel för identifiering av appar sammanfattas i tabellen.
 
 | **Fel** | **Orsak** | **Åtgärd** |
 |--|--|--|
-| 9000: det går inte att identifiera VMware-verktygets status. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
-| 9001: VMware-verktyg är inte installerat. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
-| 9002: VMware-verktyg körs inte. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9000: det går inte att identifiera VMware-verktygets status. | VMware-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9001: VMware-verktyg är inte installerat. | VMware-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9002: VMware-verktyg körs inte. | VMware-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
 | 9003: operativ system typen stöds inte för identifiering av gäst datorer. | Operativ system som körs på servern är varken Windows eller Linux. | Operativ system typer som stöds är endast Windows och Linux. Om servern verkligen är Windows eller Linux kontrollerar du vilken typ av operativ system som anges i vCenter Server. |
 | 9004: den virtuella datorn körs inte. | Den virtuella datorn är avstängd. | Se till att den virtuella datorn är påslagen. |
 | 9005: operativ system typen stöds inte för identifiering av gäst datorer. | Typ av operativ system stöds inte för identifiering av gäst datorer. | Operativ system typer som stöds är endast Windows och Linux. |

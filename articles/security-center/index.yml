@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 08/17/2020
-  ms.openlocfilehash: 0ee97ba1d0190cfb3331372329677b8ffe740439
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
+  ms.openlocfilehash: 3049f7598990a97e6647011012bae0ddd2651944
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "90883847"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102095535"
 landingContent:
 - title: Om Security Center
   linkLists:
@@ -24,38 +24,38 @@ landingContent:
     links:
     - text: Vilka är de viktigaste funktionerna i Security Center?
       url: security-center-introduction.md
+    - text: Vilka är de viktigaste funktionerna i Azure Defender?
+      url: azure-defender.md
     - text: Vilka versioner av Windows Server och Linux stöds?
       url: security-center-os-coverage.md
-    - text: Vad är Azure Defender?
-      url: azure-defender.md
 - title: Håll dig uppdaterad
   linkLists:
   - linkListType: whats-new
     links:
     - text: Viktig information för Security Center
       url: release-notes.md
-    - text: Utforska den nya översiktssidan
+    - text: Utforska översikts instrument panelen
       url: overview-page.md
-    - text: Skydda dina Kubernetes-arbetsbelastningar
-      url: kubernetes-workload-protections.md
+    - text: Använda rapporterna för integrerade arbets böcker
+      url: custom-dashboards-azure-workbooks.md
     - text: Svara på Azure Defender för Key Vault-aviseringar
       url: defender-for-key-vault-usage.md
     - text: Säkerhetspoängs-API
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+      url: secure-score-access-and-track.md#get-your-secure-score-from-the-rest-api
 - title: Kom igång
   linkLists:
   - linkListType: get-started
     links:
-    - text: Kom igång med Security Center
+    - text: Aktivera Security Center på dina prenumerationer
       url: security-center-get-started.md
-    - text: Konfigurera säkerhetsprinciper
-      url: tutorial-security-policy.md
-    - text: Utvärdera säkerhetsläget
-      url: secure-score-security-controls.md
-    - text: Anslut ditt AWS-konto
-      url: quickstart-onboard-aws.md
-    - text: Anslut ditt GCP-konto
-      url: quickstart-onboard-gcp.md
+    - text: Aktivera Azure Defender
+      url: enable-azure-defender.md
+    - text: Konfigurera automatisk etablering
+      url: security-center-enable-data-collection.md
+    - text: Konfigurera e-postmeddelanden
+      url: security-center-provide-security-contact-details.md
+    - text: Ansluta icke-Azure-datorer
+      url: quickstart-onboard-machines.md
 - title: Förbättra dina säkerhetspoäng
   linkLists:
   - linkListType: how-to-guide
@@ -66,10 +66,8 @@ landingContent:
       url: security-center-remediate-recommendations.md
     - text: Undanta en resurs från en rekommendation
       url: exempt-resource.md
-    - text: Använda rekommendationer för att förbättra säkerheten
-      url: security-center-using-recommendations.md
-    - text: Spåra med säkerhetspoängs-API:et
-      url: secure-score-security-controls.md#get-your-secure-score-from-the-rest-api
+    - text: Spåra dina poäng över tid
+      url: custom-dashboards-azure-workbooks.md#use-the-secure-score-over-time-report
 - title: Minimera hot
   linkLists:
   - linkListType: how-to-guide
@@ -80,7 +78,5 @@ landingContent:
       url: security-center-adaptive-application.md
     - text: Implementera anpassningsbar nätverkshärdning
       url: security-center-adaptive-network-hardening.md
-    - text: Prova Azure Defender kostnadsfritt i 30 dagar
-      url: security-center-pricing.md#try-azure-defender-free-for-30-days
     - text: Använda instrumentpanelen för Azure Defender
       url: azure-defender-dashboard.md

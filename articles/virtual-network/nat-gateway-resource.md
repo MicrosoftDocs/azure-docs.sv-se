@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954672"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094974"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Utforma virtuella nätverk med NAT-gateway-resurser
 
@@ -224,7 +224,7 @@ Ett zonindelade Promise-does't finns när a) zonen i en virtuell dator instans o
 >Egenskapen zoner för en NAT-gateway-resurs är inte föränderligt.  Distribuera om NAT-gateway-resursen med den avsedda regionala eller zon inställningen.
 
 >[!NOTE] 
->IP-adresser som själva inte är zoner – redundanta om ingen zon anges.  Klient delen för en [standard Load Balancer är zon-redundant](../load-balancer/load-balancer-standard-availability-zones.md#frontend) om en IP-adress inte har skapats i en speciell zon.  Detta gäller inte för NAT.  Endast regional eller zon isolering stöds.
+>IP-adresser som själva inte är zoner – redundanta om ingen zon anges.  Klient delen för en [standard Load Balancer är zon-redundant](../load-balancer/load-balancer-standard-availability-zones.md) om en IP-adress inte har skapats i en speciell zon.  Detta gäller inte för NAT.  Endast regional eller zon isolering stöds.
 
 ## <a name="performance"></a>Prestanda
 
@@ -350,20 +350,3 @@ Vi vill veta hur vi kan förbättra tjänsten. Saknas en funktion? Gör ditt är
 * Läs mer om [NAT för virtuella nätverk](nat-overview.md).
 * Lär dig mer om [mått och aviseringar för NAT gateway-resurser](nat-metrics.md).
 * Lär dig mer om att [Felsöka resurser för NAT-gateway](troubleshoot-nat.md).
-* Självstudie för att verifiera NAT-gateway
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Portal](tutorial-create-validate-nat-gateway-portal.md)
-* Snabb start för distribution av en NAT-gateway-resurs
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Mall](./quickstart-create-nat-gateway-template.md)
-* Lär dig mer om resurs-API för NAT-gateway
-  - [REST-API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* Lär dig mer om [tillgänglighets zoner](../availability-zones/az-overview.md).
-* Läs mer om [standard Load Balancer](../load-balancer/load-balancer-overview.md).
-* Lär dig mer om [tillgänglighets zoner och standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md).
-* [Berätta för oss vad du ska bygga härnäst för Virtual Network NAT i UserVoice](https://aka.ms/natuservoice).

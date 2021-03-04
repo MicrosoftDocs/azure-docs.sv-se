@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049805"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Skapa anpassade SDK: er för Azure Digitals dubbla med AutoRest
 
@@ -44,10 +44,10 @@ Följ dessa steg om du vill köra AutoRest mot Azure Digitals Swagger-filen:
 3. Kör AutoRest med följande kommando. Ersätt `<language>` plats hållaren med önskat språk: `python` ,, `java` `go` och så vidare. (Du hittar den fullständiga listan med alternativ i README- [filen för AutoRest](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-Därför visas en ny mapp med namnet *ADTApi* i din arbets katalog. De genererade SDK-filerna kommer att ha namn området *ADTApi*. Du kommer att fortsätta att använda det namn området genom resten av användnings exemplen i den här artikeln.
+Därför visas en ny mapp med namnet *DigitalTwinsApi* i din arbets katalog. De genererade SDK-filerna kommer att ha namn området *DigitalTwinsApi*. Du kommer att fortsätta att använda det namn området genom resten av användnings exemplen i den här artikeln.
 
 AutoRest har stöd för en mängd olika språk kods generatorer.
 
@@ -60,8 +60,8 @@ Det här avsnittet innehåller anvisningar om hur du skapar SDK som ett klass bi
 Här är stegen:
 
 1. Skapa en ny Visual Studio-lösning för ett klass bibliotek
-2. Använd *ADTApi* som projekt namn
-3. I Solution Explorer högerklickar du på *ADTApi* -projektet för den genererade lösningen och väljer *Lägg till > befintligt objekt...*
+2. Använd *DigitalTwinsApi* som projekt namn
+3. I Solution Explorer högerklickar du på *DigitalTwinsApi* -projektet för den genererade lösningen och väljer *Lägg till > befintligt objekt...*
 4. Hitta mappen där du genererade SDK och välj filerna på rotnivån
 5. Tryck på OK
 6. Lägg till en mapp i projektet (Högerklicka på projektet i Solution Explorer och välj *Lägg till > ny mapp*)

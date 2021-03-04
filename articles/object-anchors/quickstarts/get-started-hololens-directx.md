@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 7e71719d83426a3444435ed78d0d63a2599a9157
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749055"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049666"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>Snabb start: skapa en HoloLens-app med Azure Object-ankare, i C++/WinRT och DirectX
 
@@ -23,7 +23,6 @@ Du lär dig följande:
 > [!div class="checklist"]
 > * Skapa och Läs in ett HoloLens-program på sidan
 > * Identifiera ett objekt och visualisera modellen
-> * Avbilda körnings diagnostik
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,7 +63,7 @@ Starta och Felsök appen genom att välja **felsök > starta fel sökning**. Om 
 
 ## <a name="ingest-object-model-and-detect-its-instance"></a>Mata in objekt modell och identifiera dess instans
 
-Du måste skapa en objekt modell för att köra exempel appen. Anta att du redan har antingen en CAD-eller skannad 3D-modell för ett objekt på ditt space. Se [snabb start: mata in en 3D-modell](./get-started-model-ingestion.md) för att skapa en modell.
+Du måste skapa en objekt modell för att köra exempel appen. Anta att du redan har antingen en CAD-eller skannad 3D-modell för ett objekt på ditt space. Se [snabb start: mata in en 3D-modell](./get-started-model-conversion.md) för att skapa en modell.
 
 Hämta modellen, **stol. ou** i vårt fall till din dator. På HoloLens-enhetens Portal väljer du sedan **System > utforskaren > LocalAppData > AoaSampleApp > LocalState** och väljer **Bläddra.**... Välj sedan din modell fil, **stol. ou** till exempel och välj **Ladda upp**. Du bör sedan se modell filen i det lokala cacheminnet.
 
@@ -86,7 +85,7 @@ Appen justerar en 3D-modell till dess fysiska motsvarighet. En användare kan kn
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Snabb start: mata in en 3D-modell](./get-started-model-ingestion.md)
+> [Snabb start: mata in en 3D-modell](./get-started-model-conversion.md)
 
 > [!div class="nextstepaction"]
 > [Begrepp: SDK-översikt](../concepts/sdk-overview.md)

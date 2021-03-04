@@ -3,12 +3,12 @@ title: Nyheter i Azure Backup
 description: Lär dig mer om nya funktioner i Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: dd9546002e63072ce9631f5b8e7ac09ab0f5352b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728186"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095722"
 ---
 # <a name="whats-new-in-azure-backup"></a>Nyheter i Azure Backup
 
@@ -18,6 +18,9 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
 
 ## <a name="updates-summary"></a>Uppdaterings Sammanfattning
 
+- Mars 2021
+  - [Backup Center är nu allmänt tillgängligt](#backup-center-is-now-generally-available)
+  - [Arkiv nivå stöd för Azure Backup (för hands version)](#archive-tier-support-for-azure-backup-in-preview)
 - Februari 2021
   - [Säkerhets kopiering för Azure-blobar (i för hands version)](#backup-for-azure-blobs-in-preview)
 - Januari 2021
@@ -36,6 +39,18 @@ Du kan lära dig mer om de nya versionerna genom att skriva bok märken på den 
   - [Säkerhetskopiera SAP HANA i RHEL Azure Virtual Machines (för hands version)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [ZRS (Zone redundant Storage) för säkerhets kopierings data (i för hands version)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Mjuk borttagning för SQL Server och SAP HANA arbets belastningar i virtuella Azure-datorer](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-center-is-now-generally-available"></a>Backup Center är nu allmänt tillgängligt
+
+Backup Center fören klar hanteringen av data skydd i skala genom att hjälpa dig att identifiera, styra, övervaka, hantera och optimera säkerhets kopierings hantering från en enda central konsol.
+
+Mer information finns i [Översikt över säkerhets kopierings Center](backup-center-overview.md).
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>Arkiv nivå stöd för Azure Backup (för hands version)
+
+Med Azure Backup kan du nu minska kostnaden för långsiktiga säkerhets kopieringar med tillgänglighet för Arkiv nivå för virtuella Azure-datorer och SQL Server i Azure Virtual Machines.
+
+Mer information finns i [Support för Arkiv nivå (för hands version)](archive-tier-support.md).
 
 ## <a name="backup-for-azure-blobs-in-preview"></a>Säkerhets kopiering för Azure-blobar (i för hands version)
 

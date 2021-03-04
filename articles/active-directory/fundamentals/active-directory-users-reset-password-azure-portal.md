@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b42ac7b4e379559d86942279eaa19fe58533840
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651895"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034599"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Återställa en användares lösenord med hjälp av Azure Active Directory
 
@@ -33,7 +33,7 @@ Som administratör kan du återställa en användares lösen ord om lösen ordet
 
 ## <a name="to-reset-a-password"></a>Återställa ett lösen ord
 
-1. Logga in på [Azure Portal](https://portal.azure.com/) som användar administratör eller lösen ords administratör. Mer information om tillgängliga roller finns [i tilldela administratörs roller i Azure Active Directory](../roles/permissions-reference.md#available-roles)
+1. Logga in på [Azure Portal](https://portal.azure.com/) som användar administratör eller lösen ords administratör. Mer information om tillgängliga roller finns i [inbyggda Azure AD-roller](../roles/permissions-reference.md)
 
 2. Välj **Azure Active Directory**, Välj **användare**, Sök efter och välj den användare som behöver återställas och välj sedan **Återställ lösen ord**.
 

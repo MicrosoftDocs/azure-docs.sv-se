@@ -3,12 +3,12 @@ title: Service Fabric hanterade kluster (förhands granskning)
 description: Service Fabric hanterade kluster är en utveckling av resurs modellen för Azure Service Fabric-kluster som effektiviserar distribution och kluster hantering.
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: 8b90b73ef5f3202788ac7857875427673ebb562b
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635153"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041237"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric hanterade kluster (förhands granskning)
 
@@ -59,8 +59,8 @@ Service Fabric hanterade kluster finns i både Basic-och standard-SKU: er.
 | Antal för min nod (VM-instans) | 3 | 5 |
 | Maximalt antal noder per nodtyp | 100 | 100 |
 | Maximalt antal nodtyper | 1 | 20 |
-| Lägga till/ta bort nodtyper | Nej | Ja |
-| Zonredundans | Nej | Ja |
+| Lägga till/ta bort nodtyper | Inga | Ja |
+| Zonredundans | Inga | Ja |
 
 ## <a name="whats-new-for-service-fabric-managed-clusters"></a>Vad är nytt för Service Fabric hanterade kluster
 
@@ -69,7 +69,7 @@ De senaste funktionerna för för hands versionen av Service Fabric hanterade kl
 * [Distribuera program med ARM-mallar](how-to-managed-cluster-app-deployment-template.md)
 * [Automatiska uppgraderingar av operativsystem](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
 * [Disk kryptering](how-to-enable-managed-cluster-disk-encryption.md)
-* [Tillämpa NSG-regler](how-to-managed-cluster-configuration.md#apply-nsg-rules)
+* [Tillämpa NSG-regler](how-to-managed-cluster-networking.md)
 
 Funktioner som ska läggas till i kommande versioner är:
 

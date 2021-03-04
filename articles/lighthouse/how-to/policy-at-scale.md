@@ -1,14 +1,14 @@
 ---
 title: Distribuera Azure Policy till delegerade prenumerationer i stor skala
 description: Lär dig hur Azure Lighthouse låter dig distribuera en princip definition och princip tilldelning över flera klienter.
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 5af938c61ad3e42e36360a15c6011b54fa1e823d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412076"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049788"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Distribuera Azure Policy till delegerade prenumerationer i stor skala
 
@@ -51,6 +51,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
+> [!NOTE]
+> Även om du kan distribuera principer över flera klienter kan du för närvarande inte [Visa kompatibilitetsinformation](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) för icke-kompatibla resurser i dessa klienter.
+
 ## <a name="validate-the-policy-deployment"></a>Verifiera princip distributionen
 
 När du har distribuerat Azure Resource Manager-mallen kan du bekräfta att princip definitionen har tillämpats genom att försöka skapa ett lagrings konto med **EnableHttpsTrafficOnly** inställt på **false** i en av dina delegerade prenumerationer. På grund av princip tilldelningen bör du inte skapa det här lagrings kontot.  
@@ -90,9 +93,6 @@ foreach ($ManagedSub in $ManagedSubscriptions)
     }
 }
 ```
-
-> [!NOTE]
-> Även om du kan distribuera principer över flera klienter kan du för närvarande inte [Visa kompatibilitetsinformation](../../governance/policy/how-to/determine-non-compliance.md#compliance-details) för icke-kompatibla resurser i dessa klienter.
 
 ## <a name="next-steps"></a>Nästa steg
 

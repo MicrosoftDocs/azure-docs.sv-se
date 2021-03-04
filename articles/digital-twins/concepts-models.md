@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558147"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034769"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå tvillingmodeller i Azure Digital Twins
 
@@ -65,7 +65,7 @@ Skillnaden mellan egenskaper och telemetri för Azures digitala dubbla modeller 
 
 När du designar en modell i Azure Digitals, kommer du förmodligen att använda **Egenskaper** i de flesta fall för att modellera dina dubbla. På så sätt kan du använda lagrings utrymmet och kunna läsa och fråga data fälten.
 
-Telemetri och egenskaper fungerar ofta tillsammans för att hantera data från enheter. Eftersom alla ingångar till Azure Digitals dubbla är via [API: er](how-to-use-apis-sdks.md), använder du normalt din ingångs funktion för att läsa telemetri-eller egenskaps händelser från enheter och ange en egenskap i ADT som svar. 
+Telemetri och egenskaper fungerar ofta tillsammans för att hantera data från enheter. Eftersom alla ingångar till Azure Digitals dubbla är via [API: er](how-to-use-apis-sdks.md), använder du vanligt vis din ingångs funktion för att läsa telemetri-eller egenskaps händelser från enheter och ange en egenskap i Azure Digital-dubbla i svar. 
 
 Du kan också publicera en telemetri-händelse från Azure Digitals dubbla API: er. Precis som med andra telemetri är det en kort periods händelse som kräver att en lyssnare hanterar.
 
@@ -154,7 +154,7 @@ Men om du har många modeller som ska överföras – eller om de har många ber
 
 _**För visualisering av modeller**_
 
-När du har överfört modeller till din Azure Digitals-instans kan du Visa modellerna i din Azure Digital-instansen, inklusive eventuella arv och modell relationer, med [**ADT modell-visualiseraren**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Det här exemplet är för närvarande i ett utkast tillstånd. Vi rekommenderar att du utvecklar communityn för Digitals utvecklings utveckling för att utöka och bidra till exemplet. 
+När du har överfört modeller till din Azure Digital-instansen kan du Visa modellerna i din Azure Digital-instansen, inklusive eventuella arv och modell relationer, med hjälp av [**modell visualiserare för Azure Digital**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Det här exemplet är för närvarande i ett utkast tillstånd. Vi rekommenderar att du utvecklar communityn för Digitals utvecklings utveckling för att utöka och bidra till exemplet. 
 
 ## <a name="next-steps"></a>Nästa steg
 

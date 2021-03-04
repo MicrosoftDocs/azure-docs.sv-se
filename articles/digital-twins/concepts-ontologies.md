@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b53cac6e732fb568ba799534d9ad9168fd65eab1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561535"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034701"
 ---
 # <a name="what-is-an-ontology"></a>Vad är en Ontology? 
 
@@ -40,7 +40,7 @@ Eftersom modeller i digitala Azure-grupper representeras i [Digitals definitions
 
 Det finns tre möjliga strategier för integrering av bransch standard Ontologies med DTDL. Du kan välja den som passar bäst för dig, beroende på dina behov:
 
-| Strategi | Description | Resurser |
+| Strategi | Beskrivning | Resurser |
 | --- | --- | --- |
 | **Implementera** | Du kan starta din lösning med en DTDL-Ontology med öppen källkod som har byggts på de mest tillämpade bransch standarderna. Du kan antingen använda de här modell uppsättningarna i rutan eller utöka dem med dina egna tillägg för en anpassad lösning. | [*Koncept: &nbsp; anta &nbsp; bransch &nbsp; standard Ontologies*](concepts-ontologies-adopt.md)<br><br>[*Koncept: &nbsp; Utöka &nbsp; Ontologies*](concepts-ontologies-extend.md) |
 | **Omvandla** | Om du redan har befintliga modeller som representeras i ett annat standardformat kan du konvertera dem till DTDL för att använda dem med Azure Digital-enheter. | [*Begrepp: &nbsp; konvertera &nbsp; Ontologies*](concepts-ontologies-convert.md)<br><br>[*Koncept: &nbsp; Utöka &nbsp; Ontologies*](concepts-ontologies-extend.md) |
@@ -58,7 +58,7 @@ Oavsett vilken strategi du väljer för att integrera en Ontology i Azure Digita
 
 Därefter bör du kunna använda dina modeller i din Azure Digital-instansen. 
 
-Du kan visualisera dem med exempel som [Azure Digitals ADT-Utforskare](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) eller [ADT Model-visualisering](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer), eller gå vidare till att använda dem för att skapa [digitala dubbla](concepts-twins-graph.md).
+Du kan visualisera dem med exempel som [Azure Digitals flätade Utforskare](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) eller [Azure Digitals modell visualiserare](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer), eller gå vidare till att använda dem för att skapa [digitala dubbla](concepts-twins-graph.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

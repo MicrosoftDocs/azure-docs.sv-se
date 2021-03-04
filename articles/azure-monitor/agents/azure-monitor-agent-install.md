@@ -1,17 +1,16 @@
 ---
 title: Installera Azure Monitor Agent
 description: Alternativ för att installera Azure Monitor Agent (AMA) på virtuella Azure-datorer och Azure Arc-aktiverade servrar.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 17c7609afeef8b5129e3bfe252def74b45cb4208
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719958"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034325"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Installera Azure Monitor Agent (förhands granskning)
 Den här artikeln innehåller de olika alternativ som för närvarande är tillgängliga för att installera [Azure Monitor Agent](azure-monitor-agent-overview.md) på både virtuella Azure-datorer och Azure Arc-aktiverade servrar, samt alternativen för att skapa [associationer med data insamlings regler](data-collection-rule-azure-monitor-agent.md) som definierar vilka data som agenten ska samla in.

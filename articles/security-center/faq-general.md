@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341693"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095552"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Vanliga frågor och svar – allmänna frågor om Azure Security Center
 
@@ -29,7 +29,7 @@ Security Center använder Log Analytics-agenten för att samla in och lagra data
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Hur gör jag för att hämta Azure Security Center?
-Azure Security Center aktive ras med din Microsoft Azure-prenumeration och nås från [Azure Portal](https://azure.microsoft.com/features/azure-portal/). För att få åtkomst till den [loggar du in på portalen](https://portal.azure.com), väljer **Bläddra**och bläddrar till **Security Center**.
+Azure Security Center aktive ras med din Microsoft Azure-prenumeration och nås från [Azure Portal](https://azure.microsoft.com/features/azure-portal/). För att få åtkomst till den [loggar du in på portalen](https://portal.azure.com), väljer **Bläddra** och bläddrar till **Security Center**.
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>Vilka Azure-resurser övervakas av Azure Security Center?
@@ -46,10 +46,10 @@ På sidan **Security Center översikt** visas den övergripande säkerhets posit
 
 
 
-## <a name="what-is-a-security-policy"></a>Vad är en säkerhets princip?
-En säkerhets princip definierar en uppsättning kontroller som rekommenderas för resurser i den angivna prenumerationen. I Azure Security Center definierar du principer för dina Azure-prenumerationer enligt företagets säkerhets krav och typ av program eller känslighet för data i varje prenumeration.
+## <a name="what-is-a-security-initiative"></a>Vad är ett säkerhets initiativ?
+Ett säkerhets initiativ definierar den uppsättning kontroller (principer) som rekommenderas för resurser i den angivna prenumerationen. I Azure Security Center tilldelar du initiativ för dina Azure-prenumerationer enligt företagets säkerhets krav och typ av program eller känslighet för data i varje prenumeration.
 
-Säkerhets principerna som är aktiverade i Azure Security Center säkerhets rekommendationer och övervakning. Mer information om säkerhets principer finns [i övervakning av säkerhets hälsa i Azure Security Center](security-center-monitoring.md).
+Säkerhets principerna som är aktiverade i Azure Security Center säkerhets rekommendationer och övervakning. Läs mer i [Vad är säkerhets principer, initiativ och rekommendationer?](security-policy-concept.md).
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Vem kan ändra en säkerhets princip?

@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532670"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049516"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-flexibel Server
 
@@ -56,7 +56,7 @@ Bilden nedan visar över gången för virtuell dator och lagrings problem.
 
 Om zonens redundanta hög tillgänglighet har kon figurer ATS, etableras tjänsten och upprätthåller en snabb växlings Server mellan tillgänglighets zoner i samma Azure-region. Data ändringarna på käll servern replikeras synkront till vänte läges servern för att säkerställa noll data förlust. Med zon redundant hög tillgänglighet när den planerade eller oplanerade redundansväxlingen utlöses, kommer standby-servern att bli online omedelbart och är tillgänglig för bearbetning av inkommande transaktioner. Detta gör att tjänsten kan återhämtning från tillgänglighets zon felet i en Azure-region som stöder flera tillgänglighets zoner som visas på bilden nedan.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexibel Server – VM och lagrings problem":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Zon redundant hög tillgänglighet":::
 
  Mer information finns i [dokumentet med hög tillgänglighet](./concepts-high-availability.md) .
 
@@ -76,7 +76,7 @@ Den flexibla Server tjänsten är tillgänglig i tre beräknings nivåer: Burst,
 
 Med tjänsten flexibel Server kan du stoppa och starta Server på begäran för att sänka TCO. Faktureringen av beräknings nivån stoppas omedelbart när servern stoppas. Detta kan göra att du kan få avsevärda kostnads besparingar under utveckling, testning och tidsbegränsade förutsägbara produktions arbets belastningar. Servern är i stoppat tillstånd i sju dagar om den inte startas om tidigare.
 
-## <a name="enterprise-grade-security"></a>Säkerhet i företags klass
+## <a name="enterprise-grade-security"></a>Säkerhet i företagsklass
 
 Den flexibla Server tjänsten använder FIPS 140-2-validerade kryptografisk modul för lagrings kryptering av data i vila. Data, inklusive säkerhets kopieringar och temporära filer som skapas när frågor körs, krypteras. Tjänsten använder AES 256-bit-chiffer som ingår i Azure Storage-kryptering och nycklarna kan hanteras av systemet (standard). Tjänsten krypterar data i rörelse med SSL/TLS (Transport Layer Security) som standard. Tjänsten upprätthåller och stöder endast TLS-versioner 1,2.
 
@@ -85,6 +85,24 @@ Flexibla servrar ger fullständig privat åtkomst till servrarna med Azure Virtu
 ## <a name="monitoring-and-alerting"></a>Övervakning och avisering
 
 Den flexibla Server tjänsten är utrustad med inbyggda funktioner för prestanda övervakning och avisering. Alla Azure-mått har en frekvens på en minut och varje mått ger 30 dagars historik. Du kan konfigurera aviseringar för måtten. Tjänsten exponerar värd Server mått för att övervaka resursernas användning och gör det möjligt att konfigurera långsamma frågemeddelanden. Med dessa verktyg kan du snabbt optimera dina arbets belastningar och konfigurera servern för bästa prestanda.
+
+## <a name="azure-regions"></a>Azure-regioner
+
+En av fördelarna med att köra din arbets belastning i Azure är den globala räckvidden. Den flexibla servern är tillgänglig idag i följande Azure-regioner:
+
+| Region | Tillgänglighet | Zonens redundanta HA | 
+| --- | --- | --- |
+| Europa, västra | :heavy_check_mark: | :heavy_check_mark: |
+| Europa, norra | :heavy_check_mark: | :heavy_check_mark: |
+| Storbritannien, södra | :heavy_check_mark: | :heavy_check_mark: | 
+| USA, östra 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA, västra 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Central US | :heavy_check_mark: | :heavy_check_mark: | 
+| East US | :heavy_check_mark: | :heavy_check_mark: | 
+| Sydostasien | :heavy_check_mark: | :heavy_check_mark: |
+| Japan, östra | :heavy_check_mark: | :heavy_check_mark: | 
+
+Vi fortsätter att lägga till nya regioner. 
 
 ## <a name="migration"></a>Migrering
 

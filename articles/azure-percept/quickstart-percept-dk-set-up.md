@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 3540204d66bb589c567514f92a9a8acb2159e343
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665645"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041696"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Konfigurera Azure percept DK och distribuera din första AI-modell
 
@@ -205,8 +205,6 @@ Följ [dessa steg](https://docs.microsoft.com/azure/cost-management-billing/mana
     
 1. Distribuera ett nytt fördefinierat exempel till din anslutna enhet. Välj ett exempel från biblioteket och klicka på "distribuera till enhet"
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-1-select-prebuilt.png" alt-text="Välj en fördefinierad.":::
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Se objekt identifiering i åtgärd.":::
 
 ## <a name="next-steps"></a>Nästa steg

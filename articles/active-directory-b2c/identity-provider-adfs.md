@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e344d85bbdac92aa372fc5d5e59ef90b11dfac6c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361272"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095739"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Lägg till AD FS som en SAML Identity-Provider med anpassade principer i Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361272"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Den här artikeln visar hur du aktiverar inloggning för ett AD FS användar konto med hjälp av [anpassade principer](custom-policy-overview.md) i Azure Active Directory B2C (Azure AD B2C). Du aktiverar inloggning genom att lägga till en [teknisk profil för SAML Identity Provider](saml-identity-provider-technical-profile.md) i en anpassad princip.
+Den här artikeln visar hur du aktiverar inloggning för ett AD FS användar konto med hjälp av [anpassade principer](custom-policy-overview.md) i Azure Active Directory B2C (Azure AD B2C). Du aktiverar inloggning genom att lägga till en [SAML-identitetsprovider](identity-provider-generic-saml.md) i en anpassad princip.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -62,7 +62,7 @@ Du måste lagra ditt certifikat i Azure AD B2C-klienten.
 
 Om du vill att användarna ska logga in med ett AD FS konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
 
-Du kan definiera ett AD FS-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil. Mer information finns i [definiera en teknisk profil för SAML Identity Provider](saml-identity-provider-technical-profile.md).
+Du kan definiera ett AD FS-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil. Mer information finns i [definiera en SAML Identity Provider](identity-provider-generic-saml.md).
 
 1. Öppna *TrustFrameworkExtensions.xml*.
 1. Hitta **ClaimsProviders** -elementet. Om den inte finns lägger du till den under rot elementet.
@@ -217,7 +217,7 @@ Det här felet indikerar att SAML-begäran som skickats av Azure AD B2C inte är
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>Alternativ 1: Ange signeringsalgoritmen i Azure AD B2C  
 
-Du kan konfigurera hur SAML-begäran ska signeras i Azure AD B2C. [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata) metadata styr värdet för `SigAlg` parametern (frågesträng eller post parameter) i SAML-begäran. I följande exempel konfigureras Azure AD B2C att använda `rsa-sha256` signeringsalgoritmen.
+Du kan konfigurera hur SAML-begäran ska signeras i Azure AD B2C. [XmlSignatureAlgorithm](identity-provider-generic-saml.md) metadata styr värdet för `SigAlg` parametern (frågesträng eller post parameter) i SAML-begäran. I följande exempel konfigureras Azure AD B2C att använda `rsa-sha256` signeringsalgoritmen.
 
 ```xml
 <Metadata>

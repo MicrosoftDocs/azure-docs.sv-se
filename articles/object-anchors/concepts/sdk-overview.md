@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747122"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034616"
 ---
 # <a name="runtime-sdk-overview"></a>Översikt över Runtime SDK
 
@@ -25,7 +25,7 @@ Alla typer som beskrivs nedan finns i namn området **Microsoft. MixedReality. O
 
 ### <a name="objectmodel"></a>ObjectModel
 
-En [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) representerar ett fysiskt objekts geometri och kodar nödvändiga parametrar för identifiering och attityd uppskattning. Det måste skapas med hjälp av [tjänsten objekt ankare](../quickstarts/get-started-model-ingestion.md). Sedan kan ett program läsa in den genererade modell filen med hjälp av API: et för objekt ankare och fråga nätet som är inbäddat i modellen för visualisering.
+En [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) representerar ett fysiskt objekts geometri och kodar nödvändiga parametrar för identifiering och attityd uppskattning. Det måste skapas med hjälp av [tjänsten objekt ankare](../quickstarts/get-started-model-conversion.md). Sedan kan ett program läsa in den genererade modell filen med hjälp av API: et för objekt ankare och fråga nätet som är inbäddat i modellen för visualisering.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-Därefter skapar programmet en objekt observatör och läser in nödvändiga modeller som genereras av [objekt ankar tjänsten](../quickstarts/get-started-model-ingestion.md).
+Därefter skapar programmet en objekt observatör och läser in nödvändiga modeller som genereras av [konverterings tjänsten för objekt ankare](../quickstarts/get-started-model-conversion.md).
 
 ```cs
 var observer = new ObjectObserver();

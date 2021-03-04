@@ -8,22 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4be73c126d9f153243b833a7b348244f4d1efcaa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0477153b466702bec0fa2d5221fee1e054d06314
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693311"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033779"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Konfigurera ett lösen ord för tvångs återställning av lösen ord i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Som administratör kan du återställa en användares lösen ord om användaren glömmer bort sitt lösen ord. Eller om du vill tvinga dem att återställa lösen ordet. I den här artikeln får du lära dig hur du tvingar fram en återställning av lösen ord i dessa scenarier.
+Som administratör kan du [återställa en användares lösen ord](manage-users-portal.md#reset-a-users-password) om användaren glömmer bort sitt lösen ord. Eller om du vill tvinga dem att återställa lösen ordet. I den här artikeln får du lära dig hur du tvingar fram en återställning av lösen ord i dessa scenarier.
 
 ## <a name="overview"></a>Översikt
 
@@ -37,7 +37,7 @@ Flödet för lösen ords återställning gäller för lokala konton i Azure AD B
 
 ### <a name="force-a-password-reset-after-90-days"></a>Framtvinga ett lösen ords återställning efter 90 dagar
 
-Som administratör kan du ange att användarens lösen ord upphör att gälla 90 dagar med [MS Graph](microsoft-graph-operation.md). Efter 90 dagar anges värdet för attributet [forceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) automatiskt till `true` . Mer information om hur du anger en användares förfallo princip för lösen ord finns i [attribut för lösen ords princip](user-profile-attributes.md#password-policy-attribute).
+Som administratör kan du ange att användarens lösen ord upphör att gälla 90 dagar med [MS Graph](microsoft-graph-operations.md). Efter 90 dagar anges värdet för attributet [forceChangePasswordNextSignIn](user-profile-attributes.md#password-profile-property) automatiskt till `true` . Mer information om hur du anger en användares förfallo princip för lösen ord finns i [attribut för lösen ords princip](user-profile-attributes.md#password-policy-attribute).
 
 När du har angett en princip för lösen ordets giltighets tid, måste du också konfigurera flödet för lösen ords återställning enligt beskrivningen i den här artikeln.  
 
@@ -62,7 +62,7 @@ Så här aktiverar du inställningen för **Tvingad återställning av lösen or
 
 ### <a name="test-the-user-flow"></a>Testa användar flödet
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som användar administratör eller administratör för lösen ord. Mer information om tillgängliga roller finns [i tilldela administratörs roller i Azure Active Directory](../active-directory/roles/permissions-reference#available-roles).
+1. Logga in på [Azure Portal](https://portal.azure.com) som användar administratör eller administratör för lösen ord. Mer information om tillgängliga roller finns [i tilldela administratörs roller i Azure Active Directory](../active-directory/roles/permissions-reference.md#all-roles).
 1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
 1. Välj **Användare**. Sök efter och välj den användare som du ska använda för att testa lösen ords återställningen och välj sedan **Återställ lösen ord**.
@@ -79,7 +79,23 @@ Så här aktiverar du inställningen för **Tvingad återställning av lösen or
 
 ::: zone pivot="b2c-custom-policy"
 
-Den här funktionen är för närvarande endast tillgänglig för användar flöden.
+1. Hämta exemplet på en tvingande lösen ords återställning på [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/force-password-reset).
+1. Ersätt strängen `yourtenant` med namnet på din Azure AD B2C-klient i varje fil. Om namnet på din B2C-klient till exempel är *contosob2c*, blir alla instanser av `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com` .
+1. Överför principfiler i följande ordning: tilläggs principen `TrustFrameworkExtensionsCustomForcePasswordReset.xml` , sedan den förlitande part principen `SignUpOrSigninCustomForcePasswordReset.xml` .
+
+### <a name="test-the-policy"></a>Testa principen
+
+1. Logga in på [Azure Portal](https://portal.azure.com) som användar administratör eller administratör för lösen ord. Mer information om tillgängliga roller finns [i tilldela administratörs roller i Azure Active Directory](../active-directory/roles/permissions-reference.md#all-roles).
+1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
+1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
+1. Välj **Användare**. Sök efter och välj den användare som du ska använda för att testa lösen ords återställningen och välj sedan **Återställ lösen ord**.
+1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
+1. Under **principer** väljer du **Identity Experience Framework**.
+1. Välj den `B2C_1A_signup_signin_Custom_ForcePasswordReset` princip som du vill öppna. 
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
+1. Logga in med det användar konto som du vill återställa lösen ordet för.
+1. Du måste nu ändra lösen ordet för användaren. Ändra lösen ordet och välj **Fortsätt**. Token returneras till `https://jwt.ms` och ska visas för dig.
 
 ::: zone-end
 

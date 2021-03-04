@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525152"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033528"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivera multifaktorautentisering i Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Den här funktionen hjälper program att hantera scenarier som:
 1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA tvång** väljer du **Always on**, eller **villkorlig (rekommenderas)**.
    > [!NOTE]
    >
-   > - Om du väljer **villkorlig (rekommenderas)** måste du också [lägga till en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) och ange de appar som du vill att principen ska tillämpas på.
+   > - Om du väljer **villkorlig (rekommenderas)** måste du också [lägga till villkorlig åtkomst till användar flöden](conditional-access-user-flow.md)och ange de appar som du vill att principen ska tillämpas på.
    > - Multi-Factor Authentication (MFA) är inaktiverat som standard för registrering av användar flöden. Du kan aktivera MFA i användar flöden med telefon registrering, men eftersom ett telefonnummer används som primär identifierare är email eng ång slö sen ord det enda alternativet som är tillgängligt för den andra autentiserings faktorn.
 
 1. Välj **Spara**. MFA har nu Aktiver ATS för det här användar flödet.

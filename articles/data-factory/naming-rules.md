@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: f0d14760ce3e6403c9b6fe8cc7a2100aeb3f39a6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bef8706d9dcef966397dcddc64ffbd567a8431f6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372917"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034412"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Namngivnings regler för Azure Data Factory
 
@@ -27,6 +27,8 @@ Följande tabell innehåller namngivnings regler för Data Factory artefakter.
 | Integration Runtime |Unikt inom en data fabrik. Namn är inte Skift läges känsliga. |<ul><li>Namnet på integration runtime får bara innehålla bokstäver, siffror och bindestreck (-).</li><li>Det första och sista tecknet måste vara en bokstav eller en siffra. Varje bindestreck (-) måste föregås omedelbart och följas av en bokstav eller en siffra.</li><li>Efterföljande bindestreck tillåts inte i integration runtime-namn. </li></ul> |
 | Dataflödesomvandlingar | Unikt inom ett data flöde. Namn är inte Skift läges känsliga | <ul><li>Transformerings namn för data flöde får bara innehålla bokstäver och siffror</li><li>Det första tecknet måste vara en bokstav. </li></ul> |
 | Resursgrupp |Unikt mellan Microsoft Azure. Namn är inte Skift läges känsliga. | Mer information finns i [namngivnings regler och begränsningar för Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). |
+| Pipeline-parametrar & variabel  |Unikt i pipelinen. Namn är inte Skift läges känsliga. | <ul><li>Validerings kontrollen av parameter namn och variabel namn är begränsad till unikhet på grund av bakåtkompatibilitet.</li><li>När du använder parametrar eller variabler för att referera till entitetsnamn, till exempel länkad tjänst, gäller reglerna för namngivning av entiteter.</li><li>En bra idé är att följa namngivnings regler för data flödes omvandling för att namnge dina pipelines parametrar och variabler.</li></ul> |
 
 ## <a name="next-steps"></a>Nästa steg
+
 Lär dig hur du skapar data fabriker genom att följa steg-för-steg-instruktioner i [snabb start: skapa en data fabriks](quickstart-create-data-factory-powershell.md) artikel. 

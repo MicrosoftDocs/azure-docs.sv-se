@@ -8,16 +8,17 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b527cd7b3f841b6cb3dcf2dce6930f3bd9bcc184
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 8300a7c120ce816c8068a88fa69f4f978fa664ca
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034514"
 ---
 # <a name="tutorial-load-geojson-data-into-azure-maps-android-sdk"></a>Självstudie: läsa in data i interjson till Azure Maps Android SDK
 
-I den här självstudien får du stegvisa instruktioner för hur du importerar en multijson-fil med plats data till Azure Maps Android SDK. I de här självstudierna får du lära dig att
+I den här självstudien får du stegvisa instruktioner för hur du importerar en multijson-fil med plats data till Azure Maps Android SDK. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Lägg till Azure Maps i ett Android-program.
@@ -31,13 +32,16 @@ I den här självstudien får du stegvisa instruktioner för hur du importerar e
 
 ### <a name="import-geojson-data-from-web-or-assets-folder"></a>Importera data för en webbdel från en webbplats eller till gångar
 
-De flesta inkapslade JSON-filer omsluter alla data i en `FeatureCollection` . Om t. ex. de interjson-filerna läses in i programmet som en sträng, kan de skickas till funktions samlingens statiska `fromJson` metod som deserialiserar strängen till ett INTERjson- `FeatureCollection` objekt som kan läggas till i mappningen.
+De flesta inkapslade JSON-filer omsluter alla data i en `FeatureCollection` . Om t. ex. är inläst i programmet som en sträng i åtanke, kan de skickas till funktions samlingens statiska `fromJson` metod, vilket deserialiserar strängen till ett INTERjson- `FeatureCollection` objekt som kan läggas till i kartan.
 
 Följande steg visar hur du importerar en multijson-fil till programmet och deserialiserar den som ett interjson- `FeatureCollection` objekt.
 
 1. Slutför [snabb starten: skapa en Android-app](quick-android-map.md) som följande steg bygger på det här programmet.
 2. I panelen projekt i Android Studio högerklickar du på **app** -mappen och går till `New > Folder > Assets Folder` .
 3. Dra och släpp [exempel punkterna i Interest](https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json) -språkjson-filen i mappen till gångar.
+
+::: zone pivot="programming-language-java-android"
+
 4. Skapa en ny fil med namnet **utils. java** och Lägg till följande kod i filen. Den här koden innehåller en statisk metod `importData` som kallas att asynkront importerar en fil från `assets` mappen i programmet eller från webben med en URL som en sträng och tillbaka tillbaka till UI-tråden med en enkel callback-metod.
 
     ```java
@@ -248,7 +252,7 @@ Följande steg visar hur du importerar en multijson-fil till programmet och dese
         });
     ```
 
-6. Nu när det finns kod för att läsa in de lokala JSON-data till kartan med en data källa måste vi ange hur data ska visas på kartan. Det finns flera olika åter givnings skikt för punkt data. [Bubbeldiagram](map-add-bubble-layer-android.md), [symbol lagret](how-to-add-symbol-to-android-map.md)och [värme kart skiktet](map-add-heat-map-layer-android.md) är de vanligaste lagren. Lägg till följande kod för att rendera data i ett Bubble-lager i motringningen för `mapControl.onReady` händelsen efter koden för att importera data.
+6. Genom att använda koden för att läsa in de lokala JSON-data i en data källa måste vi nu ange hur data ska visas på kartan. Det finns flera olika åter givnings skikt för punkt data. [Bubbeldiagram](map-add-bubble-layer-android.md), [symbol lagret](how-to-add-symbol-to-android-map.md)och [värme kart skiktet](map-add-heat-map-layer-android.md) är de vanligaste lagren. Lägg till följande kod för att rendera data i ett Bubble-lager i motringningen för `mapControl.onReady` händelsen efter koden för att importera data.
 
     ```java
     //Create a layer and add it to the map.
@@ -256,10 +260,122 @@ Följande steg visar hur du importerar en multijson-fil till programmet och dese
     map.layers.add(layer);
     ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+4. Skapa en ny fil med namnet **utils. kt** och Lägg till följande kod i filen. Den här koden innehåller en statisk metod `importData` som kallas att asynkront importerar en fil från `assets` mappen i programmet eller från webben med en URL som en sträng och tillbaka tillbaka till UI-tråden med en enkel callback-metod.
+
+    ```kotlin
+    //Modify the package name as needed to align with your application.
+    package com.example.myapplication;
+
+    import android.content.Context
+    import android.os.Handler
+    import android.os.Looper
+    import android.webkit.URLUtil
+    import java.net.URL
+    import java.util.concurrent.ExecutorService
+    import java.util.concurrent.Executors
+    
+    class Utils {
+        companion object {
+    
+            /**
+             * Imports data from a web url or asset file name and returns it to a callback.
+             * @param urlOrFileName A web url or asset file name that points to data to load.
+             * @param context The context of the app.
+             * @param callback The callback function to return the data to.
+             */
+            fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit) {
+                importData(urlOrFileName, context, callback, null)
+            }
+    
+            /**
+             * Imports data from a web url or asset file name and returns it to a callback.
+             * @param urlOrFileName A web url or asset file name that points to data to load.
+             * @param context The context of the app.
+             * @param callback The callback function to return the data to.
+             * @param error A callback function to return errors to.
+             */
+            public fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit, error: ((String?) -> Unit)?) {
+                if (urlOrFileName != null && callback != null) {
+                    val executor: ExecutorService = Executors.newSingleThreadExecutor()
+                    val handler = Handler(Looper.getMainLooper())
+                    executor.execute {
+                        var data: String? = null
+                        
+                        try {
+                            data = if (URLUtil.isNetworkUrl(urlOrFileName)) {
+                                URL(urlOrFileName).readText()
+                            } else { //Assume file is in assets folder.
+                                context.assets.open(urlOrFileName).bufferedReader().use{
+                                    it.readText()
+                                }
+                            }
+    
+                            handler.post {
+                                //Ensure the resulting data string is not null or empty.
+                                if (data != null && !data.isEmpty()) {
+                                    callback(data)
+                                } else {
+                                    error!!("No data imported.")
+                                }
+                            }
+                        } catch (e: Exception) {
+                            error!!(e.message)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+5. Gå till filen **MainActivity. kt** och Lägg till följande kod inuti återanropet för `mapControl.onReady` händelsen, finns i- `onCreate` metoden. I den här koden används import verktyget för att läsa **SamplePoiDataSet.jspå** filen som en sträng, och sedan deserialiseras den som en funktions samling med hjälp av `fromJson` `FeatureCollection` klassens statiska metod. Den här koden beräknar också avgränsnings rutans område för alla data i funktions samlingen och använder detta för att ställa in kartans kamera så att den fokuserar på data.
+
+    ```kotlin
+    //Create a data source and add it to the map.
+    DataSource source = new DataSource();
+    map.sources.add(source);
+    
+    //Import the GeoJSON data and add it to the data source.
+    Utils.importData("SamplePoiDataSet.json", this) { 
+        result: String? ->
+            //Parse the data as a GeoJSON Feature Collection.
+             val fc = FeatureCollection.fromJson(result!!)
+    
+            //Add the feature collection to the data source.
+            source.add(fc)
+    
+            //Optionally, update the maps camera to focus in on the data.
+    
+            //Calculate the bounding box of all the data in the Feature Collection.
+            val bbox = MapMath.fromData(fc);
+
+            //Update the maps camera so it is focused on the data.
+            map.setCamera(
+                bounds(bbox),
+
+                //Padding added to account for pixel size of rendered points.
+                padding(20)
+            )
+        }
+    ```
+
+6. Genom att använda koden för att läsa in de lokala JSON-data i en data källa måste vi nu ange hur data ska visas på kartan. Det finns flera olika åter givnings skikt för punkt data. [Bubbeldiagram](map-add-bubble-layer-android.md), [symbol lagret](how-to-add-symbol-to-android-map.md)och [värme kart skiktet](map-add-heat-map-layer-android.md) är de vanligaste lagren. Lägg till följande kod för att rendera data i ett Bubble-lager i motringningen för `mapControl.onReady` händelsen efter koden för att importera data.
+
+    ```kotlin
+    //Create a layer and add it to the map.
+    val layer = new BubbleLayer(source)
+    map.layers.add(layer)
+    ```
+
+::: zone-end
+
 7. Kör appen. En karta kommer att visas fokuserat över USA, med cirklar som är placerade för varje plats i den riktade JSON-filen.
 
     ![Karta över USA med data från en injson-fil som visas](media/tutorial-load-geojson-file-android/android-import-geojson.png)
-
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8828b2dc48a8865e43a176757dc973a5cf85b784
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703009"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041509"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrera Azure Digitals dubbla med Azure SignalR-tjänsten
 
@@ -51,7 +51,7 @@ Ladda först ned de exempel appar som krävs. Du behöver båda följande:
 
     Då hämtas en kopia av exempel lagrings platsen till din dator, som **digital-twins-samples-master.zip**. Packa upp mappen.
 * [**Exempel på integrations-**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)webbapp: det här är ett exempel på att en webbapp används för att använda Azure Digitals informations data från en Azure SignalR-tjänst.
-    -  Navigera till exempel länken och tryck på *hämtnings zip* -knappen för att ladda ned en kopia av exemplet till din dator, som _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_. Packa upp mappen.
+    -  Navigera till exempel länken och Använd samma hämtnings process för att ladda ned en kopia av exemplet till din dator, som _**digitaltwins-signalr-webapp-sample-main.zip**_. Packa upp mappen.
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
 
@@ -139,7 +139,7 @@ Sedan konfigurerar du exempel klientens webbapp. Börja med att samla in **URL-a
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure Portal visning av funktionen Negotiate. Knappen &quot;Hämta funktions webb adress&quot; är markerad och del av URL: en från början till &quot;/API&quot;":::
 
-1. Öppna den zippade _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappen som du laddade ned i avsnittet [*Ladda ned exempel program*](#download-the-sample-applications) , genom att använda Visual Studio eller valfri valfri kod redigerare.
+1. Med hjälp av Visual Studio eller valfri valfri kod redigerare, öppnar du den zippade _**digitaltwins-signaler-webapp-exempel-main**_ -mappen som du laddade ned i avsnittet [*Hämta exempel program*](#download-the-sample-applications) .
 
 1. Öppna filen *src/App.js* och ersätt funktions webb adressen i `HubConnectionBuilder` med URL: en för http-slutpunkten för den **Negotiate** -funktion som du sparade i föregående steg:
 
@@ -148,7 +148,7 @@ Sedan konfigurerar du exempel klientens webbapp. Börja med att samla in **URL-a
             .withUrl('<Function URL>')
             .build();
     ```
-1. I Visual Studios *kommando tolk för utvecklare* eller ett kommando fönster på datorn går du till mappen *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* . Kör följande kommando för att installera de beroende Node-paketen:
+1. I Visual Studios *kommando tolk för utvecklare* eller ett kommando fönster på datorn går du till mappen *digitaltwins-SignalR-webapp-Sample-main\src* . Kör följande kommando för att installera de beroende Node-paketen:
 
     ```cmd
     npm install
@@ -175,7 +175,7 @@ Du behöver inte göra något annat i den här konsolen, men lämna det samtidig
 
 ### <a name="see-the-results"></a>Visa resultaten
 
-Om du vill se resultatet av åtgärden startar du avsnittet för **signal integrerings-appen**. Du kan göra detta från alla konsol fönster på *Azure_Digital_Twins_SignalR_integration_web_app_sample \src* -platsen genom att köra det här kommandot:
+Om du vill se resultatet av åtgärden startar du avsnittet för **signal integrerings-appen**. Du kan göra detta från alla konsol fönster på *digitaltwins-SignalR-webapp-Sample-main\src* -platsen genom att köra det här kommandot:
 
 ```cmd
 npm start
@@ -203,7 +203,7 @@ Med hjälp av Azure Cloud Shell eller lokalt Azure CLI kan du ta bort alla Azure
 az group delete --name <your-resource-group>
 ```
 
-Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator (*digital-twins-samples-master.zip* och *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
+Slutligen tar du bort de exempel mappar för Project som du laddade ned till din lokala dator (*digital-twins-samples-master.zip*, *digitaltwins-signalr-webapp-sample-main.zip* och deras zippade motsvarigheter).
 
 ## <a name="next-steps"></a>Nästa steg
 

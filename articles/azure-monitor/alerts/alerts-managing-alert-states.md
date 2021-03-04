@@ -1,16 +1,15 @@
 ---
 title: Hantera tillstånd för aviseringar och smarta grupper
 description: Hantera tillstånd för aviseringen och de smarta grupp instanserna
-ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: fa1701c59f099f5222ab6454cc67b9dc20d1e7e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cac926c3c56c7f58e5237b820e0328999ffe2c52
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701118"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033579"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Hantera tillstånd för aviseringar och smarta grupper
 
