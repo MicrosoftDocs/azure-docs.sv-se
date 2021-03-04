@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695972"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098782"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera python-bibliotek för Apache Spark i Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ Det finns två huvudsakliga sätt att installera ett bibliotek på ett kluster:
 > [!IMPORTANT]
 > - Om paketet som du installerar är stort eller tar lång tid att installera, påverkar detta start tiden för Spark-instansen.
 > - Det finns inte stöd för att ändra PySpark-, python-, Scala-/Java-, .NET-eller Spark-versionen.
-> - Det finns inte stöd för att installera paket från PyPI i DEP-aktiverade arbets ytor.
+> - Det går inte att installera paket från externa databaser som PyPI, Conda-falska eller standard Conda-kanaler i DEP-aktiverade arbets ytor.
 
 ### <a name="install-python-packages"></a>Installera python-paket
 Python-paket kan installeras från databaser som PyPI och Conda-Forge genom att tillhandahålla en miljö Specifikations fil. 
@@ -140,9 +140,6 @@ Så här lägger du till paket för arbets ytor:
 
 ![Skärm bild som visar arbets ytans paket.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Visa paket för arbets ytor")
 
-> [!IMPORTANT]
-> Det finns för närvarande inte stöd för att installera arbets ytans paket i data exfiltrering skyddade (DEP)-arbets ytor.
-
 ### <a name="storage-account"></a>Lagringskonto
 Anpassade hjul paket kan installeras på den Apache Spark poolen genom att ladda upp alla hjul till Azure Data Lake Storage-kontot (Gen2) som är länkat till arbets ytan Synapse. 
 
@@ -160,8 +157,8 @@ Du kan behöva lägga till ```python``` mappen i ```libraries``` mappen om den i
 >[!WARNING]
 > När du tillhandahåller anpassade Wheel-filer kan användarna inte ange drivrutinsfiler i både lagrings kontot och i bibliotekets biblioteks gränssnitt. Om båda anges installeras bara de Wheel-filer som anges i listan med paket för arbets ytor. 
 
-## <a name="session-scoped-libraries-preview"></a>Bibliotek för sessionsbaserade bibliotek (förhands granskning)
-Förutom bibliotek på en samlings nivå kan du också ange bibliotek för sessionsläge i början av en Notebook-session.  Med session-definitions bibliotek kan du ange och använda anpassade python-miljöer i en Notebook-session. 
+## <a name="session-scoped-packages-preview"></a>Paket med sessionsbaserade paket (för hands version)
+Förutom paket på Poolnivå kan du också ange bibliotek för sessionsbaserade i början av en Notebook-session.  Med session-definitions bibliotek kan du ange och använda anpassade python-miljöer i en Notebook-session. 
 
 När du använder bibliotek med sessionsbaserade bibliotek är det viktigt att tänka på följande saker:
    - När du installerar sessionsbaserade bibliotek har endast den aktuella antecknings boken åtkomst till de angivna biblioteken. 
@@ -187,3 +184,4 @@ I vissa fall kan du behöva kontrol lera paket versionen separat för att kunna 
 ## <a name="next-steps"></a>Nästa steg
 - Visa standard biblioteken: [Apache Spark versions stöd](apache-spark-version-support.md)
 - Felsöka biblioteks installations fel: [Felsöka biblioteks fel](apache-spark-troubleshoot-library-errors.md)
+- Skapa en privat Conda-kanal med ditt Azure Data Lake Storage-konto: [Conda privata kanaler](./spark/../apache-spark-custom-conda-channel.md)

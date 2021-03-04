@@ -4,17 +4,17 @@ description: Lär dig hur du migrerar databaser från SQL Server till SQL-hanter
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74403b7ec1469ce7cdaadc9931eb5ac95f55f6f5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690795"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096844"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Migrera databaser från SQL Server till SQL-hanterad instans med hjälp av logg uppspelnings tjänsten (för hands version)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ LRS kan startas i Autoavsluta eller kontinuerligt läge. När du startar i Autoa
 
 När LRS har stoppats, antingen automatiskt vid automatisk komplettering eller manuellt på Start punkt, går det inte att återuppta återställnings processen för en databas som har kopplats online på SQL-hanterad instans. Om du vill återställa ytterligare säkerhetskopieringsfiler när migreringen har slutförts via Autoavsluta, eller manuellt på Start punkt, måste databasen tas bort och hela säkerhets kopierings kedjan måste återställas från början genom att du startar om LRS.
 
-![Åtgärder för att logga in Replay-tjänstens dirigering förklaras för SQL-hanterad instans](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+   :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="Åtgärder för att logga in Replay-tjänstens dirigering förklaras för SQL-hanterad instans" border="false":::
     
 | Åtgärd | Information |
 | :----------------------------- | :------------------------- |
@@ -193,18 +193,30 @@ WITH COMPRESSION, CHECKSUM
 Azure Blob Storage används som ett mellanliggande lagrings utrymme för säkerhets kopior mellan SQL Server-och SQL-hanterade instanser. SAS-autentiseringstoken med list-och Läs behörighet måste genereras för användning av LRS-tjänsten. Detta gör att LRS-tjänsten kan komma åt Azure-Blob Storage och använda säkerhetskopieringsfilerna för att återställa dem på SQL-hanterad instans. Följ de här stegen för att generera SAS-autentisering för LRS-användning:
 
 1. Få åtkomst till Storage Explorer från Azure Portal
+
 2. Expandera BLOB-behållare
-3. Högerklicka på BLOB-behållaren och välj Hämta signatur för signatur för delad åtkomst  ![ generera SAS-autentiseringstoken](./media/log-replay-service-migrate/lrs-sas-token-01.png)
+
+3. Högerklicka på BLOB-behållaren och välj Hämta signatur för delad åtkomst
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Logga repetitions tjänst – Hämta signatur för delad åtkomst":::
+
 4. Välj tidsintervall för förfallo tid för token. Se till att token är giltig för migreringens varaktighet.
+
 5. Välj tidszon för token-UTC eller lokal tid
-    - Tids zonen för token och din SQL-hanterade instans kan ha fel matchnings fel. Se till att SAS-token har lämplig giltighets tid för tids zoner. Ange om möjligt tids zonen till en tidigare och senare tid för det planerade migrerings fönstret.
+
+   - Tids zonen för token och din SQL-hanterade instans kan ha fel matchnings fel. Se till att SAS-token har lämplig giltighets tid för tids zoner. Ange om möjligt tids zonen till en tidigare och senare tid för det planerade migrerings fönstret.
+
 6. Välj läsa och lista endast behörigheter
-    - Inga andra behörigheter måste väljas eller annars kommer LRS inte att kunna starta. Detta säkerhets krav är avsiktligt.
-7. Klicka på knappen Skapa knapp  ![ Logga uppspelning för att skapa SAS-autentiseringstoken](./media/log-replay-service-migrate/lrs-sas-token-02.png)
 
-SAS-autentisering kommer att skapas med den giltighets tid som du har angett tidigare. Du behöver URI-versionen av den token som genereras – som visas på skärm bilden nedan.
+   - Inga andra behörigheter måste väljas eller annars kommer LRS inte att kunna starta. Detta säkerhets krav är avsiktligt.
 
-![Generera SAS-autentiserings-URI-exempel för logg uppspelning](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+7. Klicka på knappen Skapa
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Logga repetitions tjänst – generera SAS-autentiseringstoken":::
+
+   SAS-autentisering kommer att skapas med den giltighets tid som du har angett tidigare. Du behöver URI-versionen av den token som genereras – som visas på skärm bilden nedan.
+
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Logg repetitions tjänst – kopiera signaturen för URI-delad åtkomst":::
 
 ### <a name="copy-parameters-from-sas-token-generated"></a>Kopiera parametrar från SAS-token som genererats
 
@@ -212,7 +224,7 @@ För att kunna använda SAS-token korrekt för att starta LRS måste vi förstå
 - StorageContainerUri och 
 - StorageContainerSasToken, åtskiljt med ett frågetecken (?) som visas på bilden nedan.
 
-    ![Generera SAS-autentiserings-URI-exempel för logg uppspelning](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Generera SAS-autentiserings-URI-exempel för logg uppspelning" border="false":::
 
 - Den första delen börjar med "https://" tills frågetecknet (?) används för parametern StorageContainerURI som matas in som inmatad till LRS. Detta ger LRS information om mappen där säkerhetskopierade databasfiler lagras.
 - Den andra delen, som börjar efter frågetecknet (?), i exemplet "SP =" och hela vägen till slutet av strängen är StorageContainerSasToken-parameter. Detta är den faktiska signerade autentiseringstoken som är giltig under den angivna tids perioden. Den här delen behöver inte nödvändigt vis börja med "SP =" som det visas och att ditt ärende kan skilja sig.
@@ -221,11 +233,11 @@ Kopiera parametrar enligt följande:
 
 1. Kopiera den första delen av token från https://hela vägen tills frågetecknet (?) och Använd den som StorageContainerUri-parameter i PowerShell eller CLI för att starta LRS, som visas på skärm bilden nedan.
 
-    ![Logga StorageContainerUri-parameter för logg uppspelnings tjänsten](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="Logga StorageContainerUri-parameter för logg uppspelnings tjänsten":::
 
 2. Kopiera den andra delen av token från frågetecknet (?), hela vägen till slutet av strängen och Använd den som StorageContainerSasToken-parameter i PowerShell eller CLI för att starta LRS, som visas på skärm bilden nedan.
 
-    ![Logga StorageContainerSasToken-parameter för logg uppspelnings tjänsten](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="Logga StorageContainerSasToken-parameter för logg uppspelnings tjänsten":::
 
 > [!IMPORTANT]
 > - Behörigheter för SAS-token för Azure Blob Storage behöver läsas och lista. Om andra behörigheter beviljas för SAS-autentiseringstoken, kommer starten av LRS-tjänsten inte att fungera. Dessa säkerhets krav är avsiktliga.

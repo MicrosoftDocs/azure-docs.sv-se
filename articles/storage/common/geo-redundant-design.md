@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480691"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035109"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Använd GEO-redundans för att skapa program med hög tillgänglighet
 
@@ -148,6 +148,12 @@ Du har tre huvud alternativ för att övervaka frekvensen för återförsök i d
 
 * Lägg till en hanterare för händelsen [**försök igen**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) på [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -objektet som du skickar till dina lagrings begär anden – det här är metoden som visas i den här artikeln och används i det medföljande exemplet. De här händelserna utlöses när klienten gör en begäran så att du kan spåra hur ofta klienten påträffar nya fel på en primär slut punkt.
 
+    # <a name="net-v12"></a>[.NET-V12](#tab/current)
+
+    Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET-v11](#tab/legacy)
+
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
@@ -156,8 +162,15 @@ Du har tre huvud alternativ för att övervaka frekvensen för återförsök i d
             ...
     };
     ```
+    ---
 
 * I metoden [**utvärdera**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) i en anpassad princip för återförsök kan du köra anpassad kod när ett nytt försök görs. Förutom att registrera när ett nytt försök görs, ger du också möjlighet att ändra beteendet för återförsök.
+
+    # <a name="net-v12"></a>[.NET-V12](#tab/current)
+
+    Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET-v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Du har tre huvud alternativ för att övervaka frekvensen för återförsök i d
         return info;
     }
     ```
+    ---
 
 * Den tredje metoden är att implementera en anpassad övervaknings komponent i ditt program som kontinuerligt pingar din primära lagrings slut punkt med Läs begär Anden (till exempel läsning av en liten BLOB) för att fastställa dess hälsa. Detta skulle ta upp några resurser, men inte en betydande mängd. När ett problem upptäcks som når ditt tröskelvärde, utför du sedan växeln till **SecondaryOnly** och skrivskyddat läge.
 
@@ -209,7 +223,7 @@ I följande tabell visas ett exempel på vad som kan hända när du uppdaterar i
 
 I det här exemplet antar du att klienten växlar till att läsa från den sekundära regionen på T5. Det går att läsa entiteten **Administratörs roll** just nu, men entiteten innehåller ett värde för antalet administratörer som inte är konsekvent med antalet **anställdas** enheter som är markerade som administratörer i den sekundära regionen just nu. Klienten kan enkelt visa det här värdet, med risken att det är inkonsekvent information. Alternativt kan klienten försöka fastställa att **Administratörs rollen** är i ett potentiellt inkonsekvent tillstånd eftersom uppdateringarna har inträffat i rätt ordning och sedan informerar användaren om detta faktum.
 
-För att identifiera att den har potentiellt inkonsekventa data kan klienten använda värdet för den *senaste synkroniseringstid* som du kan hämta när som helst genom att skicka en fråga till en lagrings tjänst. Detta anger den tid då data i den sekundära regionen senast var konsekventa och när tjänsten hade tillämpat alla transaktioner innan den tidpunkten. I exemplet ovan har den senaste synkroniseringstid angetts till *T1*när tjänsten infogar entiteten **anställda** i den sekundära regionen. Den finns kvar i *T1* tills tjänsten uppdaterar den **anställdas** entitet i den sekundära regionen när den är inställd på *T6*. Om klienten hämtar den senaste synkroniseringen när den läser entiteten *T5*, kan den jämföra den med tidsstämpeln för entiteten. Om tidsstämpeln i entiteten är senare än den senaste synkroniseringen, är entiteten i ett potentiellt inkonsekvent tillstånd och du kan vidta det som är lämplig åtgärd för ditt program. Om du använder det här fältet måste du känna till när den senaste uppdateringen till den primära uppdateringen slutfördes.
+För att identifiera att den har potentiellt inkonsekventa data kan klienten använda värdet för den *senaste synkroniseringstid* som du kan hämta när som helst genom att skicka en fråga till en lagrings tjänst. Detta anger den tid då data i den sekundära regionen senast var konsekventa och när tjänsten hade tillämpat alla transaktioner innan den tidpunkten. I exemplet ovan har den senaste synkroniseringstid angetts till *T1* när tjänsten infogar entiteten **anställda** i den sekundära regionen. Den finns kvar i *T1* tills tjänsten uppdaterar den **anställdas** entitet i den sekundära regionen när den är inställd på *T6*. Om klienten hämtar den senaste synkroniseringen när den läser entiteten *T5*, kan den jämföra den med tidsstämpeln för entiteten. Om tidsstämpeln i entiteten är senare än den senaste synkroniseringen, är entiteten i ett potentiellt inkonsekvent tillstånd och du kan vidta det som är lämplig åtgärd för ditt program. Om du använder det här fältet måste du känna till när den senaste uppdateringen till den primära uppdateringen slutfördes.
 
 Information om hur du kontrollerar tidpunkten för senaste synkronisering finns i [kontrol lera den senaste synkroniseringstid-egenskapen för ett lagrings konto](last-sync-time-get.md).
 
@@ -218,6 +232,13 @@ Information om hur du kontrollerar tidpunkten för senaste synkronisering finns 
 Det är viktigt att testa att programmet fungerar som förväntat när det påträffar nya försök att köra fel. Du måste till exempel testa att programmet växlar till den sekundära och till skrivskyddat läge när ett problem upptäcks, och växlar tillbaka när den primära regionen blir tillgänglig igen. Om du vill göra det behöver du ett sätt att simulera nya försök och kontrol lera hur ofta de inträffar.
 
 Du kan använda [Fiddler](https://www.telerik.com/fiddler) för att avlyssna och ändra http-svar i ett skript. Det här skriptet kan identifiera svar som kommer från den primära slut punkten och ändra HTTP-statuskoden till en som lagrings klient biblioteket identifierar som ett försök till fel. Det här kodfragmentet visar ett enkelt exempel på ett Fiddler-skript som fångar upp svar på läsnings begär Anden mot **employeedata** -tabellen för att returnera en 502-status:
+
+
+# <a name="java-v12"></a>[Java-V12](#tab/current)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v11"></a>[Java-v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -233,6 +254,6 @@ Du kan utöka det här exemplet för att fånga upp ett större antal förfrågn
 
 Om du har gjort tröskelvärdena för att växla ditt program till skrivskyddat läge, blir det enklare att testa beteendet med icke-produktions transaktions volymer.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Ett fullständigt exempel som visar hur du ändrar fram och tillbaka mellan de primära och sekundära slut punkterna finns i Azure- [exempel – använda krets brytar mönstret med RA-GRS-lagring](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

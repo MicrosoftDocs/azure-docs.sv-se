@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff9d1f0ff75a6df6c115ecfe2b8c5f71b12049e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023282"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036187"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurera exempelprojektet
 
@@ -22,7 +22,7 @@ När du är i mappen navigerar du till _AdtSampleApp_. Öppna _**AdtE2ESample. S
 
 I Visual Studio väljer du den _SampleClientApp-> **appsettings.jspå**_ filen för att öppna den i redigerings fönstret. Detta fungerar som en för hands uppsättnings-JSON-fil med nödvändiga konfigurationsfiler för att köra projektet.
 
-I fil texten ändrar du `instanceUrl` till din Azure Digital-instansen med *hostname* -URL (med *https://* framför den som visas nedan).
+I fil texten ändrar du `instanceUrl` till *URL: en* för Azure Digital-instansen med värdnamn (genom att lägga till **_https://_** framför *värd namnet*, som visas nedan).
 
 ```json
 {
@@ -32,7 +32,7 @@ I fil texten ändrar du `instanceUrl` till din Azure Digital-instansen med *host
 
 Spara och stäng filen. 
 
-Konfigurera sedan *appsettings.jspå* filen som ska kopieras till utdatakatalogen när du skapar *SampleClientApp*. Det gör du genom att högerklicka på *appsettings.jspå* filen och välja *Egenskaper.* I *egenskaps* panelen ändrar du värdet för egenskapen *Kopiera till utdata-katalog* som ska *kopieras om senare*.
+Konfigurera sedan *appsettings.jspå* filen som ska kopieras till utdatakatalogen när du skapar *SampleClientApp*. Det gör du genom att högerklicka på *appsettings.jspå* filen och välja **Egenskaper**. I panelen **Egenskaper** letar du reda på egenskapen *Kopiera till utdata-katalog* . Ändra värdet till **Kopiera om** det är senare om det inte redan är inställt på det.
 
 :::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Utdrag från Visual Studio-fönstret som visar Solution Explorer fönstret med appsettings.jsmarkerat och egenskaps fönstret med egenskapen kopiera till utgående katalog inställt på Kopiera om nyare" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 

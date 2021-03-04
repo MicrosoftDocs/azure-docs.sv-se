@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: daab07a72f61cfdf4f39cae03a1c61bd18f37a8f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 24ff39fba5ce4b484f23595a9f7d718b12faae10
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557429"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037276"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassiska administratörs roller för prenumeration, Azure-roller och Azure AD-roller
 
@@ -99,7 +99,7 @@ Azure AD-roller används för att hantera Azure AD-resurser i en katalog, till e
 
 | Azure AD-roll | Behörigheter | Kommentarer |
 | --- | --- | --- |
-| [Global administratör](../active-directory/roles/permissions-reference.md#global-administrator-permissions) | <ul><li>Hantera åtkomst till alla administrativa funktioner i Azure Active Directory samt tjänster som federerar till Azure Active Directory</li><li>Tilldela administratörsroller till andra</li><li>Återställa lösenordet för valfri användare och alla andra administratörer</li></ul> | Den person som registrerar sig för Azure Active Directory-klientorganisationen blir en global administratör. |
+| [Global administratör](../active-directory/roles/permissions-reference.md#global-administrator) | <ul><li>Hantera åtkomst till alla administrativa funktioner i Azure Active Directory samt tjänster som federerar till Azure Active Directory</li><li>Tilldela administratörsroller till andra</li><li>Återställa lösenordet för valfri användare och alla andra administratörer</li></ul> | Den person som registrerar sig för Azure Active Directory-klientorganisationen blir en global administratör. |
 | [Användar administratör](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>Skapa och hantera alla aspekter av användare och grupper</li><li>Hantera supportbegäranden</li><li>Övervaka tjänstens hälsa</li><li>Ändra lösenord för användare, supportadministratörer och andra användaradministratörer</li></ul> |  |
 | [Fakturerings administratör](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Genomför inköp</li><li>Hantera prenumerationer</li><li>Hantera supportbegäranden</li><li>Övervakar tjänstens hälsa</li></ul> |  |
 

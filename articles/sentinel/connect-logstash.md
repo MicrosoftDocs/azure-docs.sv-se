@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: d388478fb3bc9b4e355d8c3cd3f16c0a785b8b27
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578917"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035436"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Använd Logstash för att ansluta data källor till Azure Sentinel
 
 > [!IMPORTANT]
 > Data inmatning med Logstash output-plugin-programmet är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Med hjälp av Azure Sentinels nya plugin-program för **data insamlings motorn för Logstash** kan du nu skicka vilken typ av logg du vill via Logstash direkt till din Log Analytics arbets yta i Azure Sentinel. Loggarna skickas till en anpassad tabell som du definierar med hjälp av plugin-programmet för utdata.
+Med hjälp av plugin-programmet för Azure Sentinel för **data insamlings motorn för Logstash** kan du skicka vilken typ av logg du vill via Logstash direkt till din Log Analytics arbets yta i Azure Sentinel. Loggarna skickas till en anpassad tabell som du definierar med hjälp av plugin-programmet för utdata.
 
 Mer information om hur du arbetar med Logstash data insamlings motor finns i [komma igång med Logstash](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html).
 
@@ -65,7 +65,7 @@ Plugin-programmet för Azure Sentinel-utdata är tillgängligt i Logstash-samlin
 
 Använd informationen i Logstash- [strukturen i ett konfigurations fil](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) dokument och Lägg till plugin-programmet för Azure Sentinel-utdata i konfigurationen med följande nycklar och värden. (Rätt syntax för config-filen visas efter tabellen.)
 
-| Fältnamn | Datatyp | Description |
+| Fältnamn | Datatyp | Beskrivning |
 |----------------|---------------|-----------------|
 | `workspace_id` | sträng | Ange arbets ytans ID-GUID. * |
 | `workspace_key` | sträng | Ange arbets ytans primära nyckel-GUID. * |
@@ -76,8 +76,10 @@ Använd informationen i Logstash- [strukturen i ett konfigurations fil](https://
 | `plugin_flush_interval` | antal | Valfritt fält. Ange för att definiera det maximala intervallet (i sekunder) mellan meddelande överföring till Log Analytics. Standardvärdet är 5. |
     | `amount_resizing` | boolean | Sant eller falskt. Aktivera eller inaktivera funktionen för automatisk skalning, vilket justerar storleken på meddelandets buffertstorlek enligt volymen av loggdata som tagits emot. |
 | `max_items` | antal | Valfritt fält. Gäller endast om `amount_resizing` värdet är "false". Används för att ange ett tak för buffertstorleken (i poster). Standardvärdet är 2 000.  |
+| `azure_resource_id` | sträng | Valfritt fält. Definierar ID: t för den Azure-resurs där data finns. <br>Värdet resurs-ID är särskilt användbart om du använder [resurs kontexten RBAC](resource-context-rbac.md) för att endast ge åtkomst till vissa data. |
+| | | |
 
-\* Du kan hitta arbetsyte-ID: t och primär nyckeln i arbets ytans resurs under **agent hantering**.
+* Du kan hitta arbetsyte-ID: t och primär nyckeln i arbets ytans resurs under **agent hantering**.
 
 #### <a name="sample-configurations"></a>Exempel på konfigurationer
 

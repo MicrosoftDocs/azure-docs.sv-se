@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 574c4967c1e45ce1ae2be92d8648d654322e2244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727829"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042444"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory-anslutningsprogram
 
@@ -831,7 +831,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
     Om innehållet i den privata nyckeln kommer från ditt nyckel valv, kan den ursprungliga nyckel filen fungera om du laddar upp den direkt till den länkade SFTP-tjänsten.
 
-    Mer information finns i [Kopiera data från och till SFTP-servern med hjälp av Azure Data Factory](./connector-sftp.md#using-ssh-public-key-authentication). Innehållet i den privata nyckeln är Base64-kodat innehåll för den privata SSH-nyckeln.
+    Mer information finns i [Kopiera data från och till SFTP-servern med hjälp av Azure Data Factory](./connector-sftp.md#use-ssh-public-key-authentication). Innehållet i den privata nyckeln är Base64-kodat innehåll för den privata SSH-nyckeln.
 
     Koda *hela* den ursprungliga privata nyckel filen med base64-kodning och lagra den kodade strängen i nyckel valvet. Den ursprungliga privata nyckel filen är den som kan arbeta med den länkade SFTP-tjänsten om du väljer **Ladda upp** från filen.
 

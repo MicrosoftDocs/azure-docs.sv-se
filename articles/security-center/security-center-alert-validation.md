@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 3bdc0af2ea581954cb5edd2c7d00d286f814506c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633605"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099530"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Aviserings validering i Azure Security Center
 I det här dokumentet får du hjälp med att verifiera systemet är rätt konfigurerat för aviseringar från Azure Security Center.
@@ -97,5 +97,4 @@ I den här artikeln förklaras processen för aviseringsverifiering. Nu när du 
 
 * [Validera Azure Key Vault Threat Detection i Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Hantera och svara på säkerhets aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) – lär dig hur du hanterar aviseringar och svarar på säkerhets incidenter i Security Center.
-* [Övervakning av säkerhets hälsa i Azure Security Center](security-center-monitoring.md) – lär dig hur du övervakar Azure-resursernas hälsa.
 * [Förstå säkerhets aviseringar i Azure Security Center](./security-center-alerts-overview.md) – lär dig mer om de olika typerna av säkerhets aviseringar.

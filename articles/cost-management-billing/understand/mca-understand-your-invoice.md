@@ -9,18 +9,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 766136731cb92b1bd4f0965d4929b1ac5eda14dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690501"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050451"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Termer på din Microsoft-kundavtalsfaktura
 
-Den här artikeln gäller ett Azure-faktureringskonto för ett Microsoft-kundavtal. [Kontrollera om du har åtkomst till ett Microsoft-kundavtal](#check-access-to-a-microsoft-customer-agreement).
+Den här artikeln gäller för ett Azure-faktureringskonto för ett Microsoft-kundavtal. [Kontrollera om du har åtkomst till ett Microsoft-kundavtal](#check-access-to-a-microsoft-customer-agreement).
 
 Din faktura innehåller en sammanfattning av dina avgifter och instruktioner för betalning. Du kan ladda ned den i PDF-format (.pdf) från [Azure-portalen](https://portal.azure.com/) eller få den skickad via e-post. Mer information finns i [Visa och ladda ned din Microsoft Azure-faktura](download-azure-invoice.md).
+
+Titta på videon om [kund avtals faktura i Microsoft](https://www.youtube.com/watch?v=e2LGZZ7GubA) om du vill veta mer om din faktura och hur du analyserar avgifterna.
+
+>[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Faktureringsperiod
 
@@ -41,7 +45,7 @@ I följande avsnitt anges viktiga termer som står på fakturan samt beskrivning
 | Såldes till |Adress för din juridiska person, som finns i egenskaperna för faktureringskonto|
 | Fakturera till |Faktureringsadressen för den faktureringsprofil som tar emot fakturan, som finns i egenskaperna för faktureringsprofil|
 | Faktureringsprofil |Namnet på den faktureringsprofil som tar emot fakturan |
-| IO- nummer |Ett valfritt inköpsordernummer som du tilldelar i spårningssyfte |
+| IO- antal |Ett valfritt inköpsordernummer som du tilldelar i spårningssyfte |
 | Fakturanummer |Ett unikt fakturanummer som Microsoft genererar i spårningssyfte |
 | Fakturadatum |Det datum då fakturan genereras, vanligtvis fem till tolv dagar efter faktureringsperiodens slut. Du kan kontrollera fakturadatumet i egenskaperna för faktureringsprofil.|
 | Betalningsvillkor |Hur du betalar för din Microsoft-faktura. *30 dagar netto* innebär att du betalar inom 30 dagar från fakturadatumet. |

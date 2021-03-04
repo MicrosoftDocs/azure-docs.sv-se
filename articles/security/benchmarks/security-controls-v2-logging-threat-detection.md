@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 43119a51be2359ed2ddfb4e5d5fa629badedb054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a274ec1aab3f530700f89ef810fa667fdf4d08e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720689"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042988"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Säkerhets kontroll v2: loggning och hot identifiering
 
 Loggning och hot identifiering omfattar kontroller för att identifiera hot på Azure och aktivera, samla in och lagra gransknings loggar för Azure-tjänster. Detta inkluderar aktivering av identifierings-, undersöknings-och reparations processer med kontroller för att generera aviseringar med hög kvalitet med inbyggd hot identifiering i Azure-tjänster. den omfattar också insamling av loggar med Azure Monitor, centraliserad säkerhets analys med Azure Sentinel, tidssynkronisering och logg kvarhållning.
 
-Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: loggning och hot identifiering](../../governance/policy/samples/azure-security-benchmark#logging-and-threat-detection)
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: loggning och hot identifiering](../../governance/policy/samples/azure-security-benchmark.md#logging-and-threat-detection)
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
 

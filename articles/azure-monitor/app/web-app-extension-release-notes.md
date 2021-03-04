@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539728"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042614"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Viktig information för Azure Web App-tillägg för Application Insights
 
@@ -27,6 +27,24 @@ Den här artikeln innehåller information om uppdateringar för Azure Web Apps-t
     - Avinstallera privata webbplats tillägg eftersom det inte längre stöds.
 
 ## <a name="release-notes"></a>Viktig information
+
+### <a name="2838"></a>2.8.38
+
+- JAVA-tillägg: uppgraderat till [Java agent 3.0.2 (ga)](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.0.2) från 2.5.1.
+- Node.js-tillägg: uppdaterade AI SDK till [1.8.8](https://github.com/microsoft/ApplicationInsights-node.js/releases/tag/1.8.8) från 1.8.7.
+- .NET Core: borttagna versioner som inte stöds (2,0, 2,2, 3,0). Versioner som stöds är 2,1 och 3,1.
+
+### <a name="2837"></a>2.8.37
+
+- AppSvc Windows-tillägg: genomförd .net Core-åtgärd med valfri version av System.Diagnostics.DiagnosticSource.dll.
+
+### <a name="2836"></a>2.8.36
+
+- AppSvc Windows-tillägg: aktive rad mellan-op med AI SDK i .NET Core.
+
+### <a name="2835"></a>2.8.35
+
+- AppSvc Windows-tillägg: stöd för .NET Core 3,1 har lagts till.
 
 ### <a name="2833"></a>2.8.33
 

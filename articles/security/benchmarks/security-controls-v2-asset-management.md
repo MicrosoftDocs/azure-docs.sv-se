@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 32b0a7e31fc0d595eacc2bf5257f41e4ce35566b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbeb88b6aa542666481458fde97d7c63f467fa30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735819"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051539"
 ---
 # <a name="security-control-v2-asset-management"></a>Säkerhets kontroll v2: till gångs hantering
 
 Till gångs hantering omfattar kontroller för att säkerställa ökad säkerhet och styrning över Azure-resurser. Detta inkluderar rekommendationer om behörigheter för säkerhets personal, säkerhets åtkomst till till gångs inventering och hantering av godkännanden för tjänster och resurser (inventering, spårning och rätt).
 
-Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: nätverks säkerhet](../../governance/policy/samples/azure-security-benchmark#asset-management)
+Om du vill se vilka inbyggda Azure Policy som finns kan du läsa [mer i information om det inbyggda initiativet för Azure Security benchmark-efterlevnad: nätverks säkerhet](../../governance/policy/samples/azure-security-benchmark.md#asset-management)
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Se till att säkerhetsteamet har insyn i risker gällande tillgångar
 
@@ -154,7 +154,7 @@ Du kan också använda en lösning från tredje part för att identifiera och id
 
 - [Förstå Azure Automation Ändringsspårning och inventering](../../automation/change-tracking/overview.md)
 
-- [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Ansvar**: Kund
 

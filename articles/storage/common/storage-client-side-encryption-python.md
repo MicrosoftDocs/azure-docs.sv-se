@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008948"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043753"
 ---
 # <a name="client-side-encryption-with-python"></a>Kryptering på klient sidan med python
 
@@ -54,7 +54,7 @@ Dekryptering via kuvert tekniken fungerar på följande sätt:
 Lagrings klient biblioteket använder [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) för att kryptera användar data. Särskilt [CBC-läge (cipher block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) med AES. Varje tjänst fungerar något annorlunda, så vi diskuterar var och en av dem här.
 
 ### <a name="blobs"></a>Blobar
-Klient biblioteket har för närvarande endast stöd för kryptering av hela blobbar. Mer specifikt stöds kryptering när användarna använder metoderna **create** _. För hämtningar stöds både fullständig och intervall hämtningar, och parallellisering av både överföring och nedladdning är tillgängligt.
+Klient biblioteket har för närvarande endast stöd för kryptering av hela blobbar. Mer specifikt stöds kryptering när användarna använder metoderna **create***. För hämtningar stöds både fullständig och intervall hämtningar, och parallellisering av både överföring och nedladdning är tillgängligt.
 
 Under krypteringen genererar klient biblioteket en slumpmässig initierings vektor (IV) av 16 byte, tillsammans med en slumpmässig innehålls krypterings nyckel (CEK) på 32 byte och utför kuvert kryptering av BLOB-data med hjälp av den här informationen. Den omslutna CEK och vissa ytterligare krypterings-metadata lagras sedan som BLOB-metadata tillsammans med den krypterade blobben i tjänsten.
 
@@ -63,9 +63,9 @@ Under krypteringen genererar klient biblioteket en slumpmässig initierings vekt
 > 
 > 
 
-Genom att hämta en krypterad BLOB måste du hämta innehållet i hela blobben med hjälp av _*Get* *_ -metoderna. Den omslutna CEK är unwrap och används tillsammans med IV (lagras som BLOB-metadata i det här fallet) för att returnera dekrypterade data till användarna.
+Genom att hämta en krypterad BLOB måste du hämta innehållet i hela blobben med hjälp av **Get***-bekvämlighets metoderna. Den omslutna CEK är unwrap och används tillsammans med IV (lagras som BLOB-metadata i det här fallet) för att returnera dekrypterade data till användarna.
 
-Att ladda ned ett godtyckligt intervall (_*Get* *_ -metoder med intervall parametrar som skickas in) i den krypterade blobben innefattar justering av intervallet som anges av användarna för att få en liten mängd ytterligare data som kan användas för att dekryptera det begärda intervallet.
+Att ladda ned ett godtyckligt intervall (**Get*** metoder med intervall parametrar som skickas in) i den krypterade blobben innefattar justering av intervallet som anges av användarna för att få en liten mängd ytterligare data som kan användas för att dekryptera det begärda intervallet.
 
 Block-blobbar och Page blobbar kan bara krypteras/dekrypteras med det här schemat. Det finns för närvarande inget stöd för kryptering av tilläggs-blobar.
 
@@ -114,7 +114,7 @@ Observera att entiteter krypteras när de infogas i batchen med hjälp av batche
 > [!IMPORTANT]
 > Tänk på följande viktiga punkter när du använder kryptering på klient sidan:
 > 
-> _ Vid läsning från eller skrivning till en krypterad BLOB använder du kommandon för att ladda upp hela bloben och kommandot intervall/fullständig BLOB-hämtning. Undvik att skriva till en krypterad BLOB med hjälp av protokoll åtgärder som till exempel spärra block, lista över blockerade sidor, skriv sidor eller rensa sidor. Annars kan du skada den krypterade blobben och göra den oläslig.
+> * När du läser från eller skriver till en krypterad BLOB använder du kommandona för att ladda upp hela bloben och hämta intervall/hela BLOB-kommandon. Undvik att skriva till en krypterad BLOB med hjälp av protokoll åtgärder som till exempel spärra block, lista över blockerade sidor, skriv sidor eller rensa sidor. Annars kan du skada den krypterade blobben och göra den oläslig.
 > * För tabeller finns det liknande villkor. Var noga med att inte uppdatera krypterade egenskaper utan att uppdatera metadata för kryptering.
 > * Om du ställer in metadata på den krypterade blobben kan du skriva över de krypterings-relaterade metadata som krävs för dekryptering, eftersom inställning av metadata inte är additiv. Detta gäller även för ögonblicks bilder. Undvik att ange metadata när du skapar en ögonblicks bild av en krypterad blob. Om metadata måste anges måste du anropa metoden **get_blob_metadata** först för att hämta aktuella krypterings-metadata och undvika samtidiga skrivningar medan metadata anges.
 > * Aktivera **require_encryption** -flaggan på serviceobjektet för användare som endast ska arbeta med krypterade data. Se nedan för mer information.
@@ -150,6 +150,12 @@ Användare kan välja att aktivera ett läge med en åtgärd där alla överför
 ### <a name="blob-service-encryption"></a>Blob Service kryptering
 Ange krypterings princip fält för blockblobservice-objektet. Allt annat kommer att hanteras av klient biblioteket internt.
 
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
@@ -171,9 +177,16 @@ my_block_blob_service.create_blob_from_stream(
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Kötjänst kryptering
 Ange krypterings princip fält för queueservice-objektet. Allt annat kommer att hanteras av klient biblioteket internt.
+
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -195,11 +208,18 @@ my_queue_service.put_message(queue_name, content)
 # Retrieve message
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
+---
 
 ### <a name="table-service-encryption"></a>Table service kryptering
 Förutom att skapa en krypterings princip och ställa in den på begär ande alternativ måste du antingen ange en **encryption_resolver_function** på **tableservice** eller ange attributet kryptera på EntityProperty.
 
 ### <a name="using-the-resolver"></a>Använda matcharen
+
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -233,13 +253,21 @@ my_table_service.insert_entity(table_name, entity)
 my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
+---
 
 ### <a name="using-attributes"></a>Använda attribut
 Som nämnts ovan kan en egenskap markeras för kryptering genom att den lagras i ett EntityProperty-objekt och inställning av fältet kryptera.
 
+# <a name="python-v12"></a>[Python-V12](#tab/python)
+
+Vi arbetar för närvarande för att skapa kodfragment som återspeglar version 12. x av Azure Storage klient bibliotek. Mer information finns i avsnittet [om att presentera Azure Storage V12-klient bibliotek](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="python-v21"></a>[Python v 2.1](#tab/python2)
+
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Kryptering och prestanda
 Observera att kryptering av lagrings data ger ytterligare prestanda. Innehålls nyckeln och IV måste genereras, själva innehållet måste vara krypterat och ytterligare metadata måste formateras och överföras. Den här omkostnaderna varierar beroende på mängden data som krypteras. Vi rekommenderar att kunderna alltid testar sina program för prestanda under utvecklingen.

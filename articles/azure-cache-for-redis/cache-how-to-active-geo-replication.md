@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d52998e477e44f89a35a70f7e2b5d49cbc68e386
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: edf7a7cdbd24249205fedb4654aa092755700910
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663768"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035661"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurera aktiv geo-replikering för Enterprise Azure-cache för Redis-instanser (för hands version)
 
@@ -36,7 +36,7 @@ Aktiv geo-replikering grupperar två eller flera Enterprise Azure-cache för Red
 
 1. Klicka på **Konfigurera** för att avsluta.
 
-    ![Länka cacheminnen](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
+    ![Aktiv geo-replikering har kon figurer ATS](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
 1. Upprepa stegen ovan för varje extra cache-instans i Geo-replikeringsgruppen.
 

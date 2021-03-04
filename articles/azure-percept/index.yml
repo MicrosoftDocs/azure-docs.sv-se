@@ -10,12 +10,12 @@ metadata:
   author: elqu20
   ms.author: v-elqu
   ms.date: 02/11/2021
-  ms.openlocfilehash: 6c7479b33a78432d5b6aea2c02656e8b250b70c7
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
+  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101665771"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102097503"
 landingContent:
 - title: Vad är Azure percept?
   linkLists:
@@ -45,8 +45,22 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Data blad för Azure percept vision
       url: azure-percept-vision-datasheet.md
+    - text: Felsökning
+      url: troubleshoot-dev-kit.md
+- title: Kom igång med Azure percept-ljud
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Konfigurera Azure percept-ljud
+      url: quickstart-percept-audio-setup.md
+  - linkListType: reference
+    links:
     - text: Data blad för Azure percept-ljud
       url: azure-percept-audio-datasheet.md
+    - text: Fel sökning av Azure percept-ljud
+      url: troubleshoot-audio-accessory-speech-module.md
+    - text: Indikator för Azure percept-ljud
+      url: audio-button-led-behavior.md
 - title: Skapa en AI-prototyp utan kod vision
   linkLists:
   - linkListType: tutorial
@@ -63,20 +77,10 @@ landingContent:
       url: how-to-capture-images.md
     - text: Visa din devkit-telemetri
       url: how-to-view-telemetry.md
-- title: Kom igång med Azure percept-ljud
-  linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: Konfigurera Azure percept-ljud
-      url: quickstart-percept-audio-setup.md
-  - linkListType: reference
-    links:
-    - text: Data blad för Azure percept-ljud
-      url: azure-percept-audio-datasheet.md
-    - text: Fel sökning av Azure percept-ljud
-      url: troubleshoot-audio-accessory-speech-module.md
-    - text: Indikator för Azure percept-ljud
-      url: audio-button-led-behavior.md
+    - text: Arbeta med AI-lösningar
+      url: overview-ai-models.md
 - title: Bygg en no-Code-lösning för röst assistent
   linkLists:
   - linkListType: tutorial
@@ -85,22 +89,20 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurera din röst assistent
-      url: how-to-configure-voice-assistant.md
     - text: Hantera din röst assistent
       url: how-to-manage-voice-assistant.md
+    - text: Konfigurera röst assistenten med IoT Hub
+      url: how-to-configure-voice-assistant.md
 - title: Avancerad utveckling med Azure percept
   linkLists:
   - linkListType: overview
     links:
     - text: Översikt över avancerad utveckling
       url: overview-advanced-code.md
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: Avancerad utveckling med moln tjänster
-      url: advanced-development-cloud.md
-    - text: Avancerad utveckling med hjälp av lokala verktyg
-      url: advanced-development-local.md
+    - text: Installations program för dev tools Pack
+      url: dev-tools-installer.md
 - title: Håll din Azure percept-DK uppdaterad
   linkLists:
   - linkListType: overview
@@ -109,7 +111,7 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurera uppdateringar
+    - text: Konfigurera över-Air-uppdateringar
       url: how-to-set-up-over-the-air-updates.md
     - text: Överliggande Air-uppdateringar
       url: how-to-update-over-the-air.md

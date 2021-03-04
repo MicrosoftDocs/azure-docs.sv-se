@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/03/2021
+ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807656"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049380"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -73,7 +73,7 @@ Följ stegen nedan för att ansluta ett befintligt Data Factory-konto till din a
 
 När en avdelningens kontroll-användare registrerar en Data Factory som de har åtkomst till, sker följande i Server delen:
 
-1. **Data Factory MSI** läggs till i avdelningens kontroll RBAC-rollen: **avdelningens kontroll data curator**.
+1. **Data Factory hanterad identitet** läggs till i avdelningens kontroll RBAC-roll: **avdelningens kontroll data curator**.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Skärm bild som visar Azure Data Factory MSI." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,91 @@ Gör så här om du vill ta bort en data fabriks anslutning:
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Skärm bild som visar hur du väljer data fabriker för att ta bort anslutningen." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurera en egen värd-IR för att samla in härkomst från lokal SQL
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>Konfigurera en egen värd Integration Runtime att samla in härkomst
 
-Härkomst för aktiviteten Data Factory kopiering är tillgänglig för lokala SQL-databaser. Om du kör integration runtime med egen värd för data förflyttningen med Azure Data Factory och vill avbilda härkomst i Azure avdelningens kontroll, kontrollerar du att versionen är 4.8.7418.1 eller senare. Mer information om integration runtime med egen värd finns i [skapa och konfigurera en integration runtime med egen värd](../data-factory/create-self-hosted-integration-runtime.md).
+Härkomst för aktiviteten Data Factory kopiering är tillgänglig för lokala data lager som SQL-databaser. Om du kör integration runtime med egen värd för data förflyttningen med Azure Data Factory och vill avbilda härkomst i Azure avdelningens kontroll, se till att versionen är 5,0 eller senare. Mer information om integration runtime med egen värd finns i [skapa och konfigurera en integration runtime med egen värd](../data-factory/create-self-hosted-integration-runtime.md).
 
 ## <a name="supported-azure-data-factory-activities"></a>Azure Data Factory aktiviteter som stöds
 
 Azure avdelningens kontroll fångar upp runtime-härkomst från följande Azure Data Factory aktiviteter:
 
-- Kopiera data
-- Dataflöde
-- Kör SSIS-paket
+- [Kopiera data](../data-factory/copy-activity-overview.md)
+- [Dataflöde](../data-factory/concepts-data-flow-overview.md)
+- [Kör SSIS-paket](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > Azure avdelningens kontroll släpper härkomst om källan eller målet använder ett data lagrings system som inte stöds.
 
 Integrationen mellan Data Factory och avdelningens kontroll har endast stöd för en delmängd av de data system som Data Factory stöder, enligt beskrivningen i följande avsnitt.
 
-### <a name="data-factory-copy-data-support"></a>Data Factory Kopiera data support
+### <a name="data-factory-copy-activity-support"></a>Support för Data Factory kopierings aktivitet
 
-| Data lagrings system | Stöds som källa | 
+| Datalager | Stöds | 
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Ja | 
-| ADLS Gen2 | Ja | 
-| Azure-blobb | Ja |
-| Azure Cosmos DB (SQL API) | Ja | 
-| Azure Cosmos DB (Mongo-API) | Ja |
+| Azure Blob Storage | Ja |
 | Azure Cognitive Search | Ja | 
-| Azure-datautforskaren | Ja | 
+| Azure Cosmos DB (SQL API) \* | Ja | 
+| Azure Cosmos DB s API för MongoDB \* | Ja |
+| Azure-Datautforskaren \* | Ja | 
+| Azure Data Lake Storage Gen1 | Ja | 
+| Azure Data Lake Storage Gen2 | Ja | 
 | Azure Database för Maria DB \* | Ja | 
-| Azure Database för MYSQL \* | Ja | 
+| Azure Database for MySQL \* | Ja | 
 | Azure Database for PostgreSQL \* | Ja |
 | Azure File Storage | Ja | 
-| Azure Table Storage | Ja |
 | Azure SQL Database \* | Ja | 
-| Azure SQL MI \* | Ja | 
-| Azure Synapse Analytics (tidigare SQL DW) \* | Ja | 
-| SQL Server lokal  \* | Ja | 
+| Azure SQL-hanterad instans \* | Ja | 
+| Azure Synapse-analys \* | Ja | 
+| Azure-Table Storage \* | Ja |
+| SQL Server \* | Ja | 
 | Amazon S3 | Ja | 
-| Teradata | Ja | 
-| SAP Table Connector | Ja |
-| SAP ECC | Ja | 
-| Hive | Ja | 
+| Rot \* | Ja | 
+| SAP ECC \* | Ja |
+| SAP-tabell \* | Ja |
+| Teradata \* | Ja |
+
+*\* Azure avdelningens kontroll stöder för närvarande inte frågor eller lagrade procedurer för härkomst eller genomsökning. Härkomst är begränsat till tabell-och visnings källor.*
 
 > [!Note]
 > Härkomst-funktionen har vissa prestanda kostnader i Data Factory kopierings aktivitet. För de som installerar Data Factory-anslutningar i avdelningens kontroll kan du se att vissa kopierings jobb tar längre tid att slutföra. Det mesta av effekten är att ingen ska vara försumbar. Kontakta supporten med tids jämförelse om kopierings jobben tar betydligt längre tid att slutföra än vanligt.
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>Kända begränsningar för kopierings aktivitetens härkomst
+
+Om du använder följande funktioner för kopierings aktivitet stöds inte härkomst ännu:
+
+- Kopiera data till Azure Data Lake Storage Gen1 med binärt format.
+- Kopiera data till Azure Synapse Analytics med PolyBase-eller COPY-instruktion.
+- Komprimerings inställning för binär, avgränsad text, Excel, JSON och XML-filer.
+- Alternativ för käll partition för Azure SQL Database, Azure SQL-hanterad instans, Azure Synapse Analytics, SQL Server och SAP Table.
+- Kopiera data till filbaserad Sink med inställningen Maximalt antal rader per fil.
+- Lägg till ytterligare kolumner under kopieringen.
+
 ### <a name="data-factory-data-flow-support"></a>Stöd för Data Factory data flöde
 
-| Data lagrings system | Stöds |
+| Datalager | Stöds |
 | ------------------- | ------------------- | 
-| ADLS Gen1 | Ja |
-| ADLS Gen2 | Ja |
-| Azure-blobb | Ja |
+| Azure Blob Storage | Ja |
+| Azure Data Lake Storage Gen1 | Ja |
+| Azure Data Lake Storage Gen2 | Ja |
 | Azure SQL Database \* | Ja |
-| Azure Synapse Analytics (tidigare SQL DW) \* | Ja |
+| Azure Synapse-analys \* | Ja |
+
+*\* Azure avdelningens kontroll stöder för närvarande inte frågor eller lagrade procedurer för härkomst eller genomsökning. Härkomst är begränsat till tabell-och visnings källor.*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory köra stöd för SSIS-paket
 
-| Data lagrings system | Stöds |
+| Datalager | Stöds |
 | ------------------- | ------------------- |
-| Azure-blobb | Ja |
-| ADLS Gen1 | Ja |
-| ADLS Gen2 | Ja |
-| Azure SQL Database \* | Ja |
-| Azure SQL MI \*| Ja |
-| Azure Synapse Analytics (tidigare SQL DW) \* | Ja |
-| SQL Server lokal \* | Ja |
+| Azure Blob Storage | Ja |
+| Azure Data Lake Storage Gen1 | Ja |
+| Azure Data Lake Storage Gen2 | Ja |
 | Azure File Storage | Ja |
+| Azure SQL Database \* | Ja |
+| Azure SQL-hanterad instans \*| Ja |
+| Azure Synapse-analys \* | Ja |
+| SQL Server \* | Ja |
 
-*\* För SQL-scenarier (Azure och lokalt) stöder Azure avdelningens kontroll inte lagrade procedurer eller skript för härkomst eller genomsökning. Härkomst är begränsat till tabell-och visnings källor.*
+*\* Azure avdelningens kontroll stöder för närvarande inte frågor eller lagrade procedurer för härkomst eller genomsökning. Härkomst är begränsat till tabell-och visnings källor.*
 
 > [!Note]
 > Azure Data Lake Storage Gen2 är nu allmänt tillgänglig. Vi rekommenderar att du börjar använda den idag. Mer information finns på [produkt sidan](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
@@ -172,7 +187,7 @@ Några ytterligare sätt att hitta information i vyn härkomst innehåller följ
 
 - På fliken **härkomst** håller du mus pekaren över former för att förhandsgranska ytterligare information om till gången i knapp beskrivningen.
 - Välj noden eller kanten för att se den till gångs typen den tillhör eller för att byta till gångar.
-- Kolumner i en data uppsättning visas till vänster på fliken **härkomst** . Mer information om härkomst på kolumn nivå finns i [härkomst på kolumn nivå](catalog-lineage-user-guide.md#column-level-lineage).
+- Kolumner i en data uppsättning visas till vänster på fliken **härkomst** . Mer information om härkomst på kolumn nivå finns i [kolumnen härkomst för data uppsättning](catalog-lineage-user-guide.md#dataset-column-lineage).
 
 ### <a name="data-lineage-for-11-operations"></a>Data härkomst för 1:1-åtgärder
 

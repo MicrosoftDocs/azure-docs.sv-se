@@ -10,6 +10,8 @@
   items:
     - name: Distribuera konfigurationer med GitOps
       href: tutorial-use-gitops-connected-cluster.md
+    - name: Implementera CI/CD med GitOps
+      href: tutorial-gitops-ci-cd.md
 - name: Snabbstarter
   items:
     - name: Ansluta ett kluster till Azure-bågen
@@ -20,6 +22,8 @@
       href: conceptual-agent-architecture.md
     - name: Konfigurationer och GitOps
       href: conceptual-configurations.md
+    - name: CI/CD-arbetsflöde med GitOps
+      href: conceptual-gitops-ci-cd.md
     - name: Vanliga frågor och svar
       href: faq.md
 - name: Anvisningar

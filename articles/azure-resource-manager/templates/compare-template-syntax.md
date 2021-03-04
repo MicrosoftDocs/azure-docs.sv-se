@@ -1,14 +1,14 @@
 ---
-title: Konvertera Azure Resource Manager mallar mellan JSON och bicep
-description: Jämför Azure Resource Manager mallar som har utvecklats med JSON och bicep.
+title: Jämför syntaxen för Azure Resource Manager mallar i JSON och bicep
+description: Jämför Azure Resource Manager mallar som har utvecklats med JSON och bicep och visar hur du konverterar mellan språken.
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 9388ed50f13d6885d0a0668b61a9141dae375244
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 29c2b9948957ebc10a26f22f0fe3daf383dfe5ba
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746131"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036222"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>Jämför JSON-och bicep för mallar
 
@@ -18,40 +18,21 @@ I den här artikeln jämförs bicep-syntax med JSON-syntax för Azure Resource M
 
 Om du är van att använda JSON för att utveckla ARM-mallar kan du använda följande tabell för att lära dig om motsvarande syntax för bicep.
 
-| Scenario | ARM-mall | Bicep |
+| Scenario | Bicep | JSON |
 | -------- | ------------ | ----- |
-| Redigera ett uttryck | `"[func()]"` | `func()` |
-| Hämta parameter värde | `[parameters('exampleParameter'))]` | `exampleParameter` |
-| Hämta variabel värde | `[variables('exampleVar'))]` | `exampleVar` |
-| Sammanfoga strängar | `[concat(parameters('namePrefix'), '-vm')]` | `'${namePrefix}-vm'` |
-| Ange resurs egenskap | `"sku": "2016-Datacenter",` | `sku: '2016-Datacenter'` |
-| Returnera det logiska och | `[and(parameter('isMonday'), parameter('isNovember'))]` | `isMonday && isNovember` |
-| Hämta resurs-ID för resursen i mallen | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` | `nic1.id` |
-| Hämta egenskap från en resurs i mallen | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` | `diagsAccount.properties.primaryEndpoints.blob` |
-| Ange ett värde enligt villkor | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` |
-| Separera en lösning i flera filer | Använd länkade mallar | Använda moduler |
-| Ange mål omfånget för distributionen | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` | `targetScope = 'subscription'` |
-| Ange beroende | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` | Förlita dig antingen på automatisk identifiering av beroenden eller Ställ in beroende manuellt med `dependsOn: [ stg ]` |
-
-Om du vill deklarera typ och version för en resurs använder du följande i bicep:
-
-```bicep
-resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
-I stället för motsvarande syntax i JSON:
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2020-06-01",
-    ...
-  }
-]
-```
+| Redigera ett uttryck | `func()` | `"[func()]"` |
+| Hämta parameter värde | `exampleParameter` | `[parameters('exampleParameter'))]` |
+| Hämta variabel värde | `exampleVar` | `[variables('exampleVar'))]` |
+| Sammanfoga strängar | `'${namePrefix}-vm'` | `[concat(parameters('namePrefix'), '-vm')]` |
+| Ange resurs egenskap | `sku: '2016-Datacenter'` | `"sku": "2016-Datacenter",` |
+| Returnera det logiska och | `isMonday && isNovember` | `[and(parameter('isMonday'), parameter('isNovember'))]` |
+| Hämta resurs-ID för resursen i mallen | `nic1.id` | `[resourceId('Microsoft.Network/networkInterfaces', variables('nic1Name'))]` |
+| Hämta egenskap från en resurs i mallen | `diagsAccount.properties.primaryEndpoints.blob` | `[reference(resourceId('Microsoft.Storage/storageAccounts', variables('diagStorageAccountName'))).primaryEndpoints.blob]` |
+| Ange ett värde enligt villkor | `isMonday ? 'valueIfTrue' : 'valueIfFalse'` | `[if(parameters('isMonday'), 'valueIfTrue', 'valueIfFalse')]` |
+| Separera en lösning i flera filer | Använda moduler | Använd länkade mallar |
+| Ange mål omfånget för distributionen | `targetScope = 'subscription'` | `"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#"` |
+| Ange beroende | Förlita dig antingen på automatisk identifiering av beroenden eller Ställ in beroende manuellt med `dependsOn: [ stg ]` | `"dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', 'parameters('storageAccountName'))]"]` |
+| Resurs deklaration | `resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {...}` | `"resources": [ { "type": "Microsoft.Compute/virtualMachines", "apiVersion": "2020-06-01", ... } ]` |
 
 ## <a name="recommendations"></a>Rekommendationer
 
@@ -63,10 +44,7 @@ I stället för motsvarande syntax i JSON:
 
 Bicep CLI innehåller ett kommando för att dekompilera alla befintliga ARM-mallar till en bicep-fil. Om du vill dekompilera en JSON-fil använder du: `bicep decompile "path/to/file.json"`
 
-Det här kommandot ger en start punkt för bicep redigering, men kommandot fungerar inte för alla mallar. Kommandot kan Miss lyckas eller så kan du behöva åtgärda problem efter dekompileringen. För närvarande har kommandot följande begränsningar:
-
-* Det går inte att dekompilera mallar med hjälp av kopierings slingor.
-* Kapslade mallar kan bara dekompileras om de använder utvärderings området internt uttryck.
+Det här kommandot ger en start punkt för bicep redigering, men kommandot fungerar inte för alla mallar. Kommandot kan Miss lyckas eller så kan du behöva åtgärda problem efter dekompileringen. För närvarande kan kapslade mallar bara dekompileras om de använder utvärderings omfattningen "internt".
 
 Du kan exportera mallen för en resurs grupp och sedan skicka den direkt till bicep Decompile-kommandot. I följande exempel visas hur du dekompilerar en exporterad mall.
 
@@ -100,4 +78,4 @@ Med [bicep-Playground](https://aka.ms/bicepdemo) kan du Visa motsvarande JSON-oc
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om bicep-projektet finns i [Project bicep](https://github.com/Azure/bicep).
+Information om bicep finns i [själv studie kursen om bicep](./bicep-tutorial-create-first-bicep.md).

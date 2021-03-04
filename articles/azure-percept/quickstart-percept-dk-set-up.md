@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 77ccf09903b6cff83b52d60d43d0c52533c9c1ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041696"
+ms.locfileid: "102098255"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Konfigurera Azure percept DK och distribuera din första AI-modell
 
@@ -25,7 +25,7 @@ Om det uppstår problem under Snabbstart kan du läsa [fel söknings](./troubles
 - En Azure percept DK.
 - En Windows-, Linux-eller OS X-baserad värd dator med Wi-Fi-funktion och en webbläsare.
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure-kontot måste ha rollen ägare eller deltagar för prenumerationen. Läs mer om roll definitioner för Azure
+- Azure-kontot måste ha rollen ägare eller deltagar för prenumerationen. Läs mer om [roll definitioner för Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
 
 ### <a name="prerequisite-check"></a>Krav kontroll
 

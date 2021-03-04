@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 161aafce1c04e5d09cf08529bcbf1baf6b8a86b1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674929"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043685"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändra prestanda nivån med hjälp av Azure PowerShell-modulen eller Azure CLI
 
@@ -117,7 +117,7 @@ $disk.Tier
 
 ## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>Ändra prestanda nivån för en disk utan stillestånds tid (för hands version)
 
-Du kan också ändra prestanda nivån utan nedtid, så du behöver inte frigöra den virtuella datorn eller koppla från disken för att ändra nivån. Mer information och länken registrera dig för för hands versionen finns i avsnittet [ändra prestanda nivå utan stillestånds tid (för hands version)](#changing-performance-tier-without-downtime-preview) .
+Du kan också ändra prestanda nivån utan nedtid, så du behöver inte frigöra den virtuella datorn eller koppla från disken för att ändra nivån. Mer information och länken registrera dig för för hands versionen finns i avsnittet [ändra prestanda nivå utan stillestånds tid (för hands version)](#change-performance-tier-without-downtime-preview) .
 
 
 Följande skript uppdaterar nivån på en disk som är högre än bas linje nivån med exempel mal len [CreateUpdateDataDiskWithTier.jspå](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json). Ersätt `<yourSubScriptionID>` ,,, `<yourResourceGroupName>` `<yourDiskName>` `<yourDiskSize>` och `<yourDesiredPerformanceTier>` kör sedan skriptet:

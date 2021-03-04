@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: Byta till dedikerad SQL-pool (tidigare SQL DW)
+- name: Växla till dedikerad SQL-pool (tidigare SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Översikt
   items:
@@ -48,17 +48,19 @@
   items:
     - name: Snabbstarter
       items:
-        - name: Skapa en arbetsyta med hjälp av Azure-portalen
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Skapa en arbetsyta med hjälp av Azure CLI
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Skapa en arbetsyta med hjälp av Azure PowerShell
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: Distribuera med en mall
-          href: quickstart-deployment-template-workspaces.md
+        - name: Skapa en arbetsyta
+          items:
+            - name: Azure Portal
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM-mall
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Länka en Power BI-arbetsyta
           href: quickstart-power-bi.md
@@ -586,6 +588,8 @@
               href: ./spark/apache-spark-manage-scala-packages.md
             - name: Felsöka installations fel för python-paket
               href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Skapa en privat Conda-kanal
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: Använda notebook-filer och IDE-verktyg
           items:
             - name: Hantera anteckningsböcker

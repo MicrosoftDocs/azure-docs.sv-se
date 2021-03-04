@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695969"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098714"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Hantera Scala-och Java-paket för Apache Spark i Azure Synapse Analytics
 
@@ -37,13 +37,10 @@ Arbets ytans paket kan vara anpassade eller privata jar-filer. Du kan ladda upp 
 
 Så här lägger du till paket för arbets ytor:
 1. Gå till fliken **Hantera**  >  **arbets yta paket** .
-2. Ladda upp dina Wheel-filer med hjälp av fil väljaren.
-3. När filerna har laddats upp till Azure dataSynapses-arbetsytan kan du lägga till dessa Wheel-filer till en specifik Apache Spark pool.
+2. Överför dina jar-filer med hjälp av fil väljaren.
+3. När filerna har laddats upp till Azure dataSynapses-arbetsytan kan du lägga till dessa JAR-filer till en specifik Apache Spark pool.
 
 ![Skärm bild som visar arbets ytans paket.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Visa paket för arbets ytor")
-
-> [!IMPORTANT]
-> Det finns för närvarande inte stöd för att installera arbets ytans paket i data exfiltrering skyddade (DEP)-arbets ytor.
 
 ## <a name="pool-libraries"></a>Bibliotek för pooler
 När du har identifierat de Scala-och Java-paket som du vill använda för ditt Spark-program kan du installera dem i en spark-pool. Bibliotek på Poolnivå är tillgängliga för alla antecknings böcker och jobb som körs på poolen.

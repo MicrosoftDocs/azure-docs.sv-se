@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ec3e06b2d161785b5e6978cdf4cc6415fc0eb592
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663884"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095790"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Konfigurera programmet röst assistent med Azure IoT Hub
 
@@ -20,7 +20,7 @@ I den här artikeln beskrivs hur du konfigurerar röst assistent programmet med 
 
 ## <a name="update-your-voice-assistant-configuration"></a>Uppdatera din röst assistents konfiguration
 
-1. Öppna [Azure Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod&microsoft_azure_marketplace_ItemHideKey=Microsoft_Azure_ADUHidden#home) och skriv **IoT Hub** i Sök fältet. Klicka på ikonen för att öppna sidan IoT Hub.
+1. Öppna [Azure Portal](https://portal.azure.com) och skriv **IoT Hub** i Sök fältet. Klicka på ikonen för att öppna sidan IoT Hub.
 
 1. På sidan IoT Hub väljer du IoT Hub som enheten har tillhandahållits till.
 
@@ -30,7 +30,7 @@ I den här artikeln beskrivs hur du konfigurerar röst assistent programmet med 
 
 1. Klicka på **Ange moduler**.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/set-modules.png" alt-text="Skärm bild av enhets sidan med angivna moduler markerade.":::
 
 1. Kontrol lera att följande post finns i avsnittet **container Registry autentiseringsuppgifter** . Lägg till autentiseringsuppgifter om det behövs.
 
@@ -40,30 +40,17 @@ I den här artikeln beskrivs hur du konfigurerar röst assistent programmet med 
 
 1. I avsnittet **IoT Edge modules** väljer du **azureearspeechclientmodule**.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/modules.png" alt-text="Skärm bild som visar en lista över alla IoT Edge moduler på enheten.":::
 
 1. Klicka på fliken **Inställningar för modul** . Verifiera följande konfiguration:
 
-    |Bild-URI|Starta om princip|Önskad status|
-    |---------|--------------|--------------|
-    |azureedgedevices.azurecr.io/azureearspeechclientmodule:preload-devkit |alltid|kör|
+    Bild-URI|Starta om princip|Önskad status
+    ---------|--------------|--------------
+    mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit|alltid|kör
 
     Om inställningarna inte matchar redigerar du dem och klickar på **Uppdatera**.
 
 1. Klicka på fliken **miljövariabler** . Kontrol lera att inga miljövariabler har definierats.
-
-1. Klicka på fliken **container skapa alternativ** . Kontrol lera att dina **HostConfig** -inställningar matchar de som visas nedan. Om de inte matchar, uppdaterar du inställningarna.
-
-    ```
-    {
-        "HostConfig": {
-            "Privileged": true,
-            "Binds": [
-                "/dev:/dev"
-            ]
-        }
-    }
-    ```
 
 1. Klicka på fliken **dubbla inställningar för modul** . Uppdatera **speechConfigs** -avsnittet enligt följande:
 
@@ -72,7 +59,7 @@ I den här artikeln beskrivs hur du konfigurerar röst assistent programmet med 
         "appId": "<Application id for custom command project>",
         "key": "<Speech Resource key for custom command project>",
         "region": "<Region for the speech service>",
-        "keywordModelUrl": "https://aedspeechscenarios.blob.core.windows.net/keyword-tables/computer.table",
+        "keywordModelUrl": "https://aedsamples.blob.core.windows.net/speech/keyword-tables/computer.table",
         "keyword": "computer"
     }
     ```
@@ -88,16 +75,16 @@ För att hitta ditt **AppID**, **nyckel** och **region** går du till [tal Studi
 1. På Start sidan för **tal Studio** klickar du på **anpassade kommandon** under **röst assistenter**.
 1. Välj mål projekt.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/project.png" alt-text="Skärm bild av projekt sida i tal Studio.":::
 
 1. Klicka på **Inställningar** i den vänstra meny panelen.
 1. **AppID** och **nyckeln** kommer att finnas på fliken **allmänna** inställningar.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/general-settings.png" alt-text="Skärm bild av allmänna inställningar för tal projekt.":::
 
 1. Du hittar din **region** genom att öppna fliken **Luis-resurser** i inställningarna. Val av **resurs** val kommer att innehålla regions information.
 
-    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Avbildning.":::
+    :::image type="content" source="./media/manage-voice-assistant-using-iot-hub/luis-resources.png" alt-text="Skärm bild av tal projekt LUIS-resurser.":::
 
 1. När du har angett din **speechConfigs** -information klickar du på **Uppdatera**.
 
@@ -113,6 +100,8 @@ För att hitta ditt **AppID**, **nyckel** och **region** går du till [tal Studi
 
 1. Klicka på **Skapa**.
 
+
 ## <a name="next-steps"></a>Nästa steg
 
 När du har uppdaterat din röst assistents konfiguration återgår du till demonstrationen i Azure percept Studio för att interagera med programmet.
+

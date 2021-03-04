@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367813"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036834"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Distribuera Azure AD Privileged Identity Management (PIM)
 
@@ -78,7 +78,7 @@ I följande avsnitt får du hjälp att identifiera alla intressenter som ingår 
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Intressenter: Privileged Identity Management för Azure AD-roller
 
-| Namn | Roll | Åtgärd |
+| Namn | Roll | Action |
 | --- | --- | --- |
 | Namn och e-postadress | **Identitets arkitekt eller Global Azure-administratör**<br/>En representant från identitets hanterings teamet som är ansvarig för att definiera hur den här ändringen ska justeras med infrastrukturen för kärn identitets hantering i din organisation. | SÅ/R/I |
 | Namn och e-postadress | **Tjänst ägare/rads hanterare**<br/>En representant från IT-ägare till en tjänst eller en grupp av tjänster. De är viktiga för att fatta beslut och hjälpa till att distribuera Privileged Identity Management för sitt team. | SÅ/R/I |
@@ -88,7 +88,7 @@ I följande avsnitt får du hjälp att identifiera alla intressenter som ingår 
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Intressenter: Privileged Identity Management för Azure-roller
 
-| Namn | Roll | Åtgärd |
+| Namn | Roll | Action |
 | --- | --- | --- |
 | Namn och e-postadress | **Prenumeration/resurs ägare**<br/>En representant från IT-ägarna till varje prenumeration eller resurs som du vill distribuera Privileged Identity Management för | SÅ/R/I |
 | Namn och e-postadress | **Säkerhets ägare**<br/>En representant från säkerhets teamet som kan signera att planen uppfyller organisationens säkerhets krav. | SÅ/R |
@@ -111,7 +111,7 @@ För Azure AD-roller är det vanligt att organisationer tilldelar rollen global 
 
 Följ dessa steg för att implementera principen om minsta behörighet för dina Azure AD-roller.
 
-1. Förstå rollernas granularitet genom att läsa och förstå de [tillgängliga administratörs rollerna för Azure AD](../roles/permissions-reference.md#available-roles). Du och ditt team bör också referera till [Administratörs roller efter identitets uppgift i Azure AD](../roles/delegate-by-task.md), som förklarar den minst privilegierade rollen för särskilda uppgifter.
+1. Förstå rollernas granularitet genom att läsa och förstå de tillgängliga [inbyggda Azure AD-rollerna](../roles/permissions-reference.md). Du och ditt team bör också referera till [Administratörs roller efter identitets uppgift i Azure AD](../roles/delegate-by-task.md), som förklarar den minst privilegierade rollen för särskilda uppgifter.
 
 1. Lista med privilegierade roller i din organisation. Du kan använda Privileged Identity Management [identifiering och insikter (för hands version)](pim-security-wizard.md) för att minska exponeringen.
 
@@ -230,7 +230,7 @@ Innan du implementerar din Privileged Identity Management-lösning är det bra a
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Privileged Identity Management inställningar för Azure AD-roller
 
-| Roll | Krav på MFA | Meddelande | Incident biljett | Kräv godkännande | God kännare | Varaktighet för aktivering | Permanent administratör |
+| Roll | Krav på MFA | Meddelande | Incident biljett | Kräv godkännande | Godkännare | Varaktighet för aktivering | Permanent administratör |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Global administratör | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andra globala administratörer | 1 timme | Konton för nöd åtkomst |
 | Exchange-administratör | :heavy_check_mark: | :heavy_check_mark: | röntgen | röntgen | Inget | 2 timme | Inget |
@@ -238,11 +238,11 @@ Innan du implementerar din Privileged Identity Management-lösning är det bra a
 
 #### <a name="privileged-identity-management-settings-for-azure-roles"></a>Privileged Identity Management inställningar för Azure-roller
 
-| Roll | Krav på MFA | Meddelande | Kräv godkännande | God kännare | Varaktighet för aktivering | Aktiv administratör | Aktiv utgång | Giltig förfallo datum |
+| Roll | Krav på MFA | Meddelande | Kräv godkännande | Godkännare | Varaktighet för aktivering | Aktiv administratör | Aktiv utgång | Giltig förfallo datum |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Ägare till kritiska prenumerationer | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andra ägare till prenumerationen | 1 timme | Inget | Saknas | 3 månad |
-| Administratör för användar åtkomst för mindre kritiska prenumerationer | :heavy_check_mark: | :heavy_check_mark: | röntgen | Inget | 1 timme | Inget | Saknas | 3 månad |
-| Virtuell datordeltagare | röntgen | :heavy_check_mark: | röntgen | Inget | 3 timmar | Inget | Saknas | 6 månad |
+| Ägare till kritiska prenumerationer | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andra ägare till prenumerationen | 1 timme | Inget | saknas | 3 månad |
+| Administratör för användar åtkomst för mindre kritiska prenumerationer | :heavy_check_mark: | :heavy_check_mark: | röntgen | Inget | 1 timme | Inget | saknas | 3 månad |
+| Virtuell datordeltagare | röntgen | :heavy_check_mark: | röntgen | Inget | 3 timmar | Inget | saknas | 6 månad |
 
 I följande tabell beskrivs var och en av inställningarna.
 
@@ -253,7 +253,7 @@ I följande tabell beskrivs var och en av inställningarna.
 | Meddelande | Om detta är inställt på Sant får du ett e-postmeddelande när en berättigad användare aktiverar rollen.<br/><br/>**Obs:** Vissa organisationer har ingen e-postadress knutna till sina administratörs konton, för att få dessa e-postaviseringar ska du ange en alternativ e-postadress så att administratörer får e-postmeddelandena. |
 | Incident biljett | Om den berättigade användaren behöver registrera ett incident biljett nummer när de aktiverar sin roll. Med den här inställningen kan en organisation identifiera varje aktivering med ett internt incident nummer för att minimera oönskade aktiveringar.<br/><br/> : heavy_check_mark: **Microsoft rekommenderar** att man drar nytta av incident nummer för att koppla Privileged Identity Management till ditt interna system. Den här metoden kan vara användbar för god kännare som behöver kontext för aktiveringen. |
 | Kräv godkännande | Om den kvalificerade användaren behöver få godkännande för att aktivera rollen.<br/><br/> : heavy_check_mark: **Microsoft rekommenderar** att du ställer in godkännande för roller med mest behörighet. Baserat på användnings mönster för alla Privileged Identity Management-kunder, global administratör, användar administratör, Exchange-administratör, säkerhets administratör och lösen ords administratör är de vanligaste rollerna med godkännande inställningar. |
-| God kännare | Om godkännande krävs för att aktivera den berättigade rollen, listar du de personer som ska godkänna begäran. Som standard ställer Privileged Identity Management god kännaren till alla användare som är privilegierade roll administratörer oavsett om de är permanenta eller berättigade.<br/><br/>**Obs:** Om en användare både är berättigad till en Azure AD-roll och en god kännare av rollen, kan de inte godkänna sig själva.<br/><br/> : heavy_check_mark: **Microsoft rekommenderar** att du väljer god kännare som användare som är mest kunniga om rollen och dess frekventa användare i stället för en global administratör. |
+| Godkännare | Om godkännande krävs för att aktivera den berättigade rollen, listar du de personer som ska godkänna begäran. Som standard ställer Privileged Identity Management god kännaren till alla användare som är privilegierade roll administratörer oavsett om de är permanenta eller berättigade.<br/><br/>**Obs:** Om en användare både är berättigad till en Azure AD-roll och en god kännare av rollen, kan de inte godkänna sig själva.<br/><br/> : heavy_check_mark: **Microsoft rekommenderar** att du väljer god kännare som användare som är mest kunniga om rollen och dess frekventa användare i stället för en global administratör. |
 | Varaktighet för aktivering | Hur lång tid en användare aktive ras i rollen innan den upphör att gälla. |
 | Permanent administratör | Lista över användare som kommer att vara permanent administratör för rollen (måste aldrig aktivera).<br/><br/> : heavy_check_mark: **Microsoft rekommenderar** att du har ingen ständig administratör för alla roller förutom globala administratörer. Läs mer om dem i som ska vara berättigade och som bör vara aktiva permanent i den här planen. |
 | Aktiv administratör | För Azure-resurser är Active Administrator en lista över användare som aldrig kommer att behöva aktivera för att använda rollen. Den här listan kallas inte permanent administratör som i Azure AD-roller eftersom du kan ange en förfallo tid för när användaren ska förlora den här rollen. |
@@ -286,7 +286,7 @@ Nu när du har identifierat test användare kan du använda det här steget för
 
 1. [Konfigurera roll inställningarna för Azure AD](pim-how-to-change-default-settings.md) baserat på vad du har planerat.
 
-1. Gå till **Azure AD-roller**, Välj **roller**och välj sedan den roll som du konfigurerade.
+1. Gå till **Azure AD-roller**, Välj **roller** och välj sedan den roll som du konfigurerade.
 
 1. För gruppen av test användare, om de redan är permanent administratör, kan du göra dem tillgängliga genom att söka efter dem och konvertera dem från permanenta till kvalificerade genom att välja de tre punkterna på raden. Om de inte har roll tilldelningarna ännu kan du [göra en ny berättigad tilldelning](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role).
 
@@ -298,7 +298,7 @@ Nu när du har identifierat test användare kan du använda det här steget för
 
 1. [Konfigurera Azures resurs roll inställningar](pim-resource-roles-configure-role-settings.md) för en roll i en prenumeration eller resurs som du vill testa.
 
-1. Gå till **Azure-resurser** för den prenumerationen och välj **roller**och välj den roll som du har konfigurerat.
+1. Gå till **Azure-resurser** för den prenumerationen och välj **roller** och välj den roll som du har konfigurerat.
 
 1. För gruppen av test användare, om de redan är en aktiv administratör, kan du göra dem tillgängliga genom att söka efter dem och [Uppdatera roll tilldelningen](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment). Om de inte har rollen än kan du [tilldela en ny roll](pim-resource-roles-assign-roles.md#assign-a-role).
 

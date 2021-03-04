@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: b58119ccc1551d12dfc9b09f76f6980618ba6221
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 91f93faded7c18a1bc24f17053231f9011080c57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556309"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036256"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Vanliga frågor och svar om SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -91,9 +91,15 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
 
    Det finns tre sätt att göra detta på. Om du är en Enterprise-avtal (EA)-kund kan du etablera en av de [virtuella dator avbildningar som har stöd för licenser](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL), som även kallas för att ta din egen licens (BYOL). Om du har [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)kan du aktivera [Azure Hybrid-förmån](licensing-model-azure-hybrid-benefit-ahb-change.md) på en befintlig PAYG-avbildning (betala per användning). Ett annat alternativ är att kopiera SQL Server-installationsmedia till en virtuell Windows Server-dator och installera SQL Server på den virtuella datorn. Se till att registrera SQL Server VM med [tillägget](sql-agent-extension-manually-register-single-vm.md) för funktioner som till exempel portal hantering, automatisk säkerhets kopiering och automatisk uppdatering. 
 
+
+1. **Behöver kunden SQL Server klient åtkomst licenser (CAL) för att ansluta till en SQL Server avbildning med betala per användning som körs på Azure Virtual Machines?**
+
+   Nej. Kunderna behöver CAL när de använder en egen licens och flyttar sin SQL Server SA-Server/CAL VM till virtuella Azure-datorer. 
+
 1. **Kan jag ändra en virtuell till att använda min egen SQL Server-licens om den skapades från en av galleriavbildningarna med betala per användning?**
 
    Ja. Du kan enkelt byta en PAYG (betala per användning)-Galleri avbildningen (BYOL) genom att aktivera [Azure Hybrid-förmån](https://azure.microsoft.com/pricing/hybrid-benefit/faq/).  Mer information finns i [så här ändrar du licensierings modellen för en SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md). Den här funktionen är för närvarande endast tillgänglig för offentliga och Azure Government moln kunder.
+
 
 1. **Kräver byte av licensieringsmodeller någon avbrottstid för SQL Server?**
 
@@ -135,7 +141,7 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
    Omfattande program som erbjuder Software Assurance-likvärdiga prenumerationsrättigheter som en fast förmån har stöd för DR-förmånen. Det här omfattar, men är inte begränsat till, öppning svärdet (OV), Open Value-prenumerationen (OVS), Enterprise-avtal (EA), Enterprise-avtal-prenumeration (EAS) och server-och moln registrering (SCE). Mer information hittar du i [produkt villkoren](https://www.microsoft.com/licensing/product-licensing/products) och pratar med licens kontakterna eller konto chefen. 
 
    
- ## <a name="extension"></a>Filnamnstillägg
+ ## <a name="extension"></a>Anknytning
 
 1. **Kommer den virtuella datorn att registreras med det nya SQL IaaS agent-tillägget få ytterligare kostnader?**
 
@@ -145,11 +151,11 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
  
    Ja, så länge som SQL Server VM distribuerades i det offentliga molnet med Resource Manager-modellen och inte den klassiska modellen. Alla andra kunder kan registrera sig med det nya SQL IaaS agent-tillägget. Men endast kunder med [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) -förmånen kan använda sin egen licens genom att aktivera [Azure Hybrid-förmån (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) på en SQL Server VM. 
 
-1. **Vad händer med tilläggs resursen ( _Microsoft. SqlVirtualMachine_ ) om den virtuella dator resursen flyttas eller tas bort?** 
+1. **Vad händer med tilläggs resursen (_Microsoft. SqlVirtualMachine_) om den virtuella dator resursen flyttas eller tas bort?** 
 
    När resursen Microsoft. Compute/VirtualMachine släpps eller flyttas, meddelas den associerade Microsoft. SqlVirtualMachine-resursen för att asynkront replikera åtgärden.
 
-1. **Vad händer med den virtuella datorn om tilläggs resursen ( _Microsoft. SqlVirtualMachine_ ) släpps?**
+1. **Vad händer med den virtuella datorn om tilläggs resursen (_Microsoft. SqlVirtualMachine_) släpps?**
 
     Resursen Microsoft. Compute/VirtualMachine påverkas inte när resursen Microsoft. SqlVirtualMachine släpps. Licensierings ändringarna kommer dock att återställas till den ursprungliga avbildnings källan. 
 
@@ -239,9 +245,98 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
    
     Ja. Lokal DTC stöds för SQL Server 2016 SP2 och senare. Program måste dock testas när du använder Always on-tillgänglighetsgrupper, eftersom transaktioner under flygningen inte går att redundansväxla och måste göras om. Klustrad DTC är tillgänglig från och med Windows Server 2019. 
 
+## <a name="sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent-tillägg
+
+1. **Bör jag registrera mina SQL Server VM som tillhandahålls från en SQL Server-avbildning på Azure Marketplace?**
+
+   Nej. Microsoft registrerar automatiskt virtuella datorer som tillhandahålls från SQL Server avbildningar på Azure Marketplace. Registrering med tillägget krävs bara om den virtuella datorn *inte* har tillhandahållits från SQL Server avbildningar på Azure Marketplace och SQL Server var själv installerad.
+
+1. **Är SQL IaaS agent-tillägget tillgängligt för alla kunder?** 
+
+   Ja. Kunderna bör registrera sina SQL Server virtuella datorer med tillägget om de inte använde en SQL Server avbildning från Azure Marketplace och i stället själv installerade SQL Server eller om de har gjort sin anpassade virtuella hård disk. Virtuella datorer som ägs av alla typer av prenumerationer (direkt, Enterprise-avtal och moln lösnings leverantör) kan registreras med SQL IaaS agent-tillägget.
+
+1. **Vad är standard hanterings läget vid registrering med SQL IaaS agent-tillägget?**
+
+   Standard hanterings läget när du registrerar med tillägget SQL IaaS-agent är *Lightweight*. Om egenskapen SQL Server hantering inte anges när du registrerar dig med tillägget, anges läget som Lightweight och tjänsten SQL Server kommer inte att starta om. Vi rekommenderar att du registrerar med SQL IaaS agent extension i Lightweight-läge först och sedan uppgraderar till fullständig under underhålls perioden. På samma sätt är standard hantering också Lightweight när du använder [funktionen för automatisk registrering](sql-agent-extension-automatic-registration-all-vms.md).
+
+1. **Vilka är kraven för att registreras med SQL IaaS agent-tillägget?**
+
+   Det finns inga krav på att registrera med SQL IaaS-agent tillägget, förutom att ha SQL Server installerat på den virtuella datorn. Observera att om SQL IaaS agent-tillägget installeras i full läge startas SQL Server-tjänsten om, så att du kan göra det under en underhålls period rekommenderas.
+
+1. **Kommer att registreras med SQL IaaS agent-tillägget installera en agent på den virtuella datorn?**
+
+   Ja, om du registrerar med SQL IaaS agent-tillägget i fullständig hanterbarhets läge installeras en agent på den virtuella datorn. Det går inte att registrera i Lightweight-eller noagent-läge. 
+
+   När du registrerar med SQL IaaS agent-tillägget i Lightweight-läge kopieras endast *binärfilerna* för SQL IaaS-agenttjänsten till den virtuella datorn. agenten installeras inte. Dessa binärfiler används sedan för att installera agenten när hanterings läget har uppgraderats till full.
+
+
+1. **Kommer att registreras med IaaS för att starta om SQL Server på den virtuella datorn?**
+
+   Det beror på vilket läge som anges under registreringen. Om läget för enkel eller utan agent anges, kommer SQL Server-tjänsten inte att starta om. Men om du anger hanterings läget som full kommer SQL Server-tjänsten att starta om. Funktionen för automatisk registrering registrerar SQL Server virtuella datorer i Lightweight-läge, om inte Windows Server-versionen är 2008, vilket innebär att SQL Server VM registreras i noagent-läge. 
+
+1. **Vad är skillnaden mellan lägena för enkel och noagent hantering vid registrering med SQL IaaS agent-tillägget?** 
+
+   Hanterings läget för noagent är det enda tillgängliga hanterings läget för SQL Server 2008 och SQL Server 2008 R2 på Windows Server 2008. För alla senare versioner av Windows Server är de två tillgängliga lägena för hanterbarhet lätta och fullständiga. 
+
+   I noagent-läge krävs att SQL Server versions-och versions egenskaper anges av kunden. I läget för lätta från den virtuella datorn hittar du versionen och versionen av SQL Server-instansen.
+
+1. **Kan jag registrera mig för SQL IaaS agent-tillägget utan att ange licens typen SQL Server?**
+
+   Nej. Den SQL Server licens typen är inte en valfri egenskap när du registrerar med SQL IaaS agent-tillägget. Du måste ange SQL Server licens typ som betala per användning eller Azure Hybrid-förmån när du registrerar med SQL IaaS agent extension i alla hanterbarhets lägen (noagent, Lightweight och full). Om du har någon av de kostnads fria versionerna av SQL Server installerade, till exempel Developer eller Evaluation Edition, måste du registrera dig med betala per användning-licens. Azure Hybrid-förmån är endast tillgängligt för betalda versioner av SQL Server som Enterprise-och standard-versioner.
+
+1. **Kan jag uppgradera SQL Server IaaS-tillägget från noagent-läge till fullständigt läge?**
+
+   Nej. Att uppgradera hanterbarhets läget till full eller Lightweight är inte tillgängligt för noagent-läge. Detta är en teknisk begränsning i Windows Server 2008. Du måste först uppgradera operativ systemet till Windows Server 2008 R2 eller senare och sedan kan du uppgradera till fullständigt hanterings läge. 
+
+1. **Kan jag uppgradera SQL Server IaaS-tillägget från förenklat läge till fullständigt läge?**
+
+   Ja. Uppgradering av hanterbarhets läget från Lightweight till full stöds via Azure PowerShell eller Azure Portal. Då aktive ras en omstart av SQL Servers tjänsten.
+
+1. **Kan jag nedgradera SQL Server IaaS-tillägget från fullständigt läge till noagent eller läget för förenklad hantering?**
+
+   Nej. Det finns inte stöd för att nedgradera SQL Server IaaS-tilläggets hanterbarhets läge. Läget för hanterbarhets kan inte nedgraderas från fullständigt läge till läget för enkel eller utan agent, och det kan inte nedgraderas från läget Lightweight till noagent. 
+
+   Om du vill ändra hanterbarhets läget från fullständig hanterbarhet [avregistrerar](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) du SQL Server VM från SQL IaaS agent-tillägget genom att släppa den virtuella SQL-datorns _resurs_ och omregistrera SQL Server VM med agent tillägget för SQL-IaaS igen i ett annat hanterings läge.
+
+1. **Kan jag registrera mig för SQL IaaS agent-tillägget från Azure Portal?**
+
+   Nej. Registrering med SQL IaaS agent-tillägget är inte tillgängligt i Azure Portal. Det går bara att registrera med SQL IaaS agent Extension med Azure CLI eller Azure PowerShell. 
+
+1. **Kan jag registrera en virtuell dator med SQL IaaS agent-tillägget innan SQL Server installeras?**
+
+   Nej. En virtuell dator måste ha minst en SQL Server-instans (databas motor) för att kunna registreras med SQL IaaS agent-tillägget. Om det inte finns någon SQL Server instans på den virtuella datorn, kommer den nya Microsoft. SqlVirtualMachine-resursen att vara i ett felaktigt tillstånd.
+
+1. **Kan jag registrera en virtuell dator med SQL IaaS agent-tillägget om det finns flera SQL Server instanser?**
+
+   Ja, förutsatt att det finns en standard instans på den virtuella datorn. SQL IaaS agent-tillägget registrerar endast en SQL Server-instans (databas motor). SQL IaaS agent-tillägget registrerar standard SQL Server-instansen om flera instanser används.
+
+1. **Kan jag registrera en SQL Server-redundanskluster med agent tillägget för SQL-IaaS?**
+
+   Ja. SQL Server instanser av kluster för växling vid fel på en virtuell Azure-dator kan registreras med SQL IaaS agent-tillägget i Lightweight-läge. SQL Server kan dock inte uppgraderas till läget fullständig hanterbarhet.
+
+1. **Kan jag registrera min virtuella dator med SQL IaaS agent-tillägget om en Always on-tillgänglighetsgruppen har kon figurer ATS?**
+
+   Ja. Det finns inga begränsningar för att registrera en SQL Server-instans på en virtuell Azure-dator med agent tillägget för SQL IaaS om du deltar i en konfiguration för Always on-tillgänglighetsgrupper.
+
+1. **Vad kostar det att registrera med SQL IaaS agent Extension eller med att uppgradera till fullständigt hanterbarhets läge?**
+
+   Inga. Det finns ingen avgift kopplad till registrering med SQL IaaS agent-tillägget eller med något av de tre hanterbarhets lägena. Att hantera dina SQL Server VM med tillägget är helt kostnads fritt. 
+
+1. **Vilken prestanda påverkas av att använda olika hanterbarhets lägen?**
+
+   Det påverkas inte när du använder *Noagent* -och *Lightweight* hanterbarhets läge. Det finns minimal påverkan när du använder läget *fullständig* hantering från två tjänster som är installerade på operativ systemet. Dessa kan övervakas via aktivitets hanteraren och visas i den inbyggda konsolen för Windows-tjänster. 
+
+   De två tjänst namnen är:
+   - `SqlIaaSExtensionQuery` (Visnings namn- `Microsoft SQL Server IaaS Query Service` )
+   - `SQLIaaSExtension` (Visnings namn- `Microsoft SQL Server IaaS Agent` )
+
+1. **Hur gör jag för att ta bort tillägget?**
+
+   Ta bort tillägget genom att [avregistrera](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM från SQL IaaS agent-tillägget. 
+
 ## <a name="resources"></a>Resurser
 
-**Virtuella Windows-datorer** :
+**Virtuella Windows-datorer**:
 
 * [Översikt över SQL Server på en virtuell Windows-dator](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Etablera SQL Server på en virtuell Windows-dator](create-sql-vm-portal.md)
@@ -250,7 +345,7 @@ Den här artikeln innehåller svar på några av de vanligaste frågorna om att 
 * [Metod tips för prestanda för SQL Server på Azure Virtual Machines](performance-guidelines-best-practices.md)
 * [Program mönster och utvecklings strategier för SQL Server på Azure Virtual Machines](application-patterns-development-strategies.md)
 
-**Virtuella Linux-datorer** :
+**Virtuella Linux-datorer**:
 
 * [Översikt över SQL Server på en virtuell Linux-dator](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Etablera SQL Server på en virtuell Linux-dator](../linux/sql-vm-create-portal-quickstart.md)
