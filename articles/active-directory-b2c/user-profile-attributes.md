@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688560"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120223"
 ---
 # <a name="user-profile-attributes"></a>Attribut för användarprofil
 
@@ -101,9 +101,9 @@ Ett kund konto, som kan vara en konsument, partner eller medborgare, kan associe
 - **Lokal** identitet – användar namn och lösen ord lagras lokalt i Azure AD B2C-katalogen. Vi refererar ofta till dessa identiteter som "lokala konton".
 - **Federerad** identitet – även kallat *sociala* eller *företags* konton, användarens identitet hanteras av en federerad identitets leverantör som Facebook, Microsoft, ADFS eller Salesforce.
 
-En användare med ett kund konto kan logga in med flera identiteter. Till exempel användar namn, e-post, medarbetar-ID, myndighets-ID och andra. Ett enda konto kan ha flera identiteter, både lokala och sociala, med samma lösen ord.
+En användare med ett kund konto kan logga in med flera identiteter. Till exempel användar namn, e-post, medarbetar-ID, myndighets-ID och andra. Ett enda konto kan ha flera identiteter, både lokala och sociala, med samma lösen ord. 
 
-I Microsoft Graph API lagras både lokala och federerade identiteter i användarattribut `identities` , vilket är av typen [objectIdentity] [Graph-objectIdentity]. `identities`Samlingen representerar en uppsättning identiteter som används för att logga in på ett användar konto. Den här samlingen gör att användaren kan logga in på användar kontot med någon av dess associerade identiteter.
+I Microsoft Graph API lagras både lokala och federerade identiteter i `identities` attributet User, som är av typen [objectIdentity](/graph/api/resources/objectidentity). `identities`Samlingen representerar en uppsättning identiteter som används för att logga in på ett användar konto. Den här samlingen gör att användaren kan logga in på användar kontot med någon av dess associerade identiteter. Attributet identiteter kan innehålla upp till tio [objectIdentity](/graph/api/resources/objectidentity) -objekt. Varje-objekt innehåller följande egenskaper:
 
 | Namn   | Typ |Beskrivning|
 |:---------------|:--------|:----------|

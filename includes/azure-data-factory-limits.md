@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680864"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109179"
 ---
 Azure Data Factory är en tjänst för flera innehavare som har följande standard gränser på plats för att se till att kund prenumerationer skyddas från var and ras arbets belastningar. Kontakta supporten om du vill höja gränserna upp till max gränsen för din prenumeration.
 
@@ -56,9 +56,9 @@ Azure Data Factory är en tjänst för flera innehavare som har följande standa
 
 | Region grupp | Regioner |
 | -------- | ------ |
-| Region grupp 1 | Centrala USA, östra USA, östra 2; USA, Nord Europa, Västeuropa, västra USA, västra USA 2 |
-| Region grupp 2 | Östra Australien, sydöstra Australien, södra Brasilien, centrala Indien, Östra Japan, Northcentral US, Southcentral US Sydostasien, USA, USA, västra centrala |
-| Region grupp 3 | Centrala Kanada, Asien, östra, centrala Frankrike, centrala Korea, Storbritannien, södra |
+| Region grupp 1 | Centrala USA, östra USA, östra USA 2, norra Europa, Västeuropa, västra USA, västra USA 2 |
+| Region grupp 2 | Östra Australien, sydöstra Australien, södra Brasilien, centrala Indien, Östra Japan, norra centrala USA, södra centrala USA, Sydostasien, västra centrala USA |
+| Region grupp 3 | Andra regioner |
 
 <sup>3</sup> pipeline, data uppsättning och länkade tjänst objekt representerar en logisk gruppering av arbets belastningen. Gränserna för de här objekten relaterar inte till mängden data som du kan flytta och bearbeta med Azure Data Factory. Data Factory är utformad för att skalas för att hantera petabyte av data.
 

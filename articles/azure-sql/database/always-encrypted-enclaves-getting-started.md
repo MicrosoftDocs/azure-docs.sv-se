@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733825"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120954"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Självstudie: komma igång med Always Encrypted med säker enclaves i Azure SQL Database
 
@@ -31,7 +31,7 @@ I den här självstudien lär du dig att komma igång med [Always Encrypted med 
 > - Hur du skapar en miljö för att testa och utvärdera Always Encrypted med säkra enclaves.
 > - Hur du krypterar data på plats och utfärdar omfattande konfidentiella frågor mot krypterade kolumner med SQL Server Management Studio (SSMS).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här självstudien kräver Azure PowerShell-och [SSMS](/sql/ssms/download-sql-server-management-studio-ssms).
 
@@ -71,40 +71,45 @@ Information om hur du hämtar SSMS finns i [hämta SQL Server Management Studio 
 Den nödvändiga lägsta versionen av SSMS är 18,8.
 
 
-## <a name="step-1-create-a-server-and-a-dc-series-database"></a>Steg 1: skapa en server och en databas för DC-serien
+## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>Steg 1: skapa och konfigurera en server och en databas för DC-serien
 
- I det här steget ska du skapa en ny Azure SQL Database logisk server och en ny databas med hjälp av maskin varu konfigurationen för DC-serien. Always Encrypted med säker enclaves i Azure SQL Database använder Intel SGX-enclaves, som stöds i maskin varu konfigurationen för DC-serien. Mer information finns i [DC-serien](service-tiers-vcore.md#dc-series).
+I det här steget ska du skapa en ny Azure SQL Database logisk server och en ny databas med hjälp av maskin varu generering i DC-serien, som krävs för att Always Encrypted med säker enclaves. Mer information finns i [DC-serien](service-tiers-vcore.md#dc-series).
 
-1. Öppna en PowerShell-konsol och logga in på Azure. Om det behövs [växlar du till den prenumeration](/powershell/azure/manage-subscriptions-azureps) som du använder för den här självstudien.
+1. Öppna en PowerShell-konsol och importera den nödvändiga versionen av AZ.
+
+  ```PowerShell
+  Import-Module "Az" -MinimumVersion "4.5.0"
+  ```
+  
+2. Logga in på Azure. Om det behövs [växlar du till den prenumeration](/powershell/azure/manage-subscriptions-azureps) som du använder för den här självstudien.
 
   ```PowerShell
   Connect-AzAccount
-  $subscriptionId = <your subscription ID>
-  Set-AzContext -Subscription $serverSubscriptionId
+  $subscriptionId = "<your subscription ID>"
+  Set-AzContext -Subscription $subscriptionId
   ```
 
-2. Skapa en resurs grupp som innehåller din databas server. 
-
-  ```powershell
-  $serverResourceGroupName = "<server resource group name>"
-  $serverLocation = "<Azure region that supports DC-series in SQL Database>"
-  New-AzResourceGroup -Name $serverResourceGroupName -Location $serverLocation 
-  ```
+3. Skapa en ny resursgrupp. 
 
   > [!IMPORTANT]
-  > Du måste skapa en resurs grupp i en region som har stöd för maskin varu konfigurationen i DC-serien. En lista över regioner som stöds för närvarande finns i [tillgänglighet för DC-serien](service-tiers-vcore.md#dc-series-1).
-
-3. Skapa en databas server. När du uppmanas till det anger du Server administratörens namn och lösen ord.
+  > Du måste skapa en resurs grupp i en region (plats) som stöder både maskin varu generering i DC-serien och Microsoft Azure attestering. En lista över regioner som stöder DC-serien finns i [tillgänglighet för DC-serien](service-tiers-vcore.md#dc-series-1). [Här](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation) är den regionala tillgängligheten för Microsoft Azure attestering.
 
   ```powershell
-  $serverName = "<server name>" 
-  New-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -Location $serverLocation
+  $resourceGroupName = "<your new resource group name>"
+  $location = "<Azure region supporting DC-series and Microsoft Azure Attestation>"
+  New-AzResourceGroup -Name $resourceGroupName -Location $location
   ```
 
-4. Skapa en server brand Väggs regel som tillåter åtkomst från det angivna IP-intervallet
+4. Skapa en logisk Azure SQL-Server. När du uppmanas till det anger du Server administratörens namn och lösen ord. Se till att du kommer ihåg administratörens namn och lösen ordet – du behöver dem senare för att kunna ansluta till servern.
+
+  ```powershell
+  $serverName = "<your server name>" 
+  New-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -Location $location 
+  ```
+
+5. Skapa en server brand Väggs regel som tillåter åtkomst från det angivna IP-intervallet.
   
   ```powershell
-  # The ip address range that you want to allow to access your server
   $startIp = "<start of IP range>"
   $endIp = "<end of IP range>"
   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
@@ -112,21 +117,11 @@ Den nödvändiga lägsta versionen av SSMS är 18,8.
     -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
   ```
 
-5. Tilldela en hanterad system identitet till servern. Du behöver den senare för att ge åtkomst till servern för att Microsoft Azure attestering.
-
-  ```powershell
-  Set-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -AssignIdentity 
-  ```
-
-6. Hämta ett objekt-ID för den identitet som har tilldelats servern. Spara det resulterande objekt-ID: t. Du behöver ID i ett senare avsnitt.
-
-  > [!NOTE]
-  > Det kan ta några sekunder för den nyligen tilldelade hanterade system identiteten att spridas i Azure Active Directory. Om skriptet nedan returnerar ett tomt resultat försöker du igen.
+6. Tilldela en hanterad system identitet till servern. 
 
   ```PowerShell
-  $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
+  $server = Set-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -AssignIdentity
   $serverObjectId = $server.Identity.PrincipalId
-  $serverObjectId
   ```
 
 7. Skapa en databas för DC-serien.
@@ -136,12 +131,26 @@ Den nödvändiga lägsta versionen av SSMS är 18,8.
   $edition = "GeneralPurpose"
   $vCore = 2
   $generation = "DC"
-  New-AzSqlDatabase -ResourceGroupName $serverResourceGroupName -ServerName $serverName -DatabaseName $databaseName -Edition $edition -Vcore $vCore -ComputeGeneration $generation
+  New-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition $edition `
+    -Vcore $vCore `
+    -ComputeGeneration $generation
   ```
 
-## <a name="step-2-configure-an-attestation-provider"></a>Steg 2: Konfigurera en provider för attestering
+8. Hämta och spara informationen om servern och databasen. Du behöver den här informationen, samt administratörs namnet och lösen ordet från steg 4 i det här avsnittet i senare avsnitt.
 
-I det här steget ska du skapa och konfigurera en attesterings leverantör i Microsoft Azure attestering. Detta krävs för att intyga säker enklaven i din databas server.
+  ```powershell
+  Write-Host 
+  Write-Host "Fully qualified server name: $($server.FullyQualifiedDomainName)" 
+  Write-Host "Server Object Id: $serverObjectId"
+  Write-Host "Database name: $databaseName"
+  ```
+  
+## <a name="step-2-configure-an-attestation-provider"></a>Steg 2: Konfigurera en provider för attestering 
+
+I det här steget ska du skapa och konfigurera en attesterings leverantör i Microsoft Azure attestering. Detta krävs för att intyga de säkra enklaven som databasen använder.
 
 1. Kopiera nedanstående princip för attestering och spara principen i en textfil (txt). Information om principen nedan finns i [skapa och konfigurera en attesterings leverantör](always-encrypted-enclaves-configure-attestation.md#create-and-configure-an-attestation-provider).
 
@@ -157,60 +166,60 @@ I det här steget ska du skapa och konfigurera en attesterings leverantör i Mic
   };
   ```
 
-2. Importera de nödvändiga versionerna av `Az.Accounts` och `Az.Attestation` .  
+2. Importera den nödvändiga versionen av `Az.Attestation` .  
 
   ```powershell
-  Import-Module "Az.Accounts" -MinimumVersion "1.9.2"
   Import-Module "Az.Attestation" -MinimumVersion "0.1.8"
   ```
-
-3. Skapa en resurs grupp för attesterings leverantören.
-
-  ```powershell
-  $attestationLocation = $serverLocation
-  $attestationResourceGroupName = "<attestation provider resource group name>"
-  New-AzResourceGroup -Name $attestationResourceGroupName -Location $location  
-  ```
-
-4. Skapa en attesterings leverantör. 
+  
+3. Skapa en attesterings leverantör. 
 
   ```powershell
-  $attestationProviderName = "<attestation provider name>" 
-  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Location $attestationLocation
+  $attestationProviderName = "<your attestation provider name>" 
+  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
   ```
 
-5. Konfigurera din attesterings princip.
+4. Konfigurera din attesterings princip.
   
   ```powershell
-  $policyFile = "<the pathname of the file from step 1 in this section"
+  $policyFile = "<the pathname of the file from step 1 in this section>"
   $teeType = "SgxEnclave"
   $policyFormat = "Text"
   $policy=Get-Content -path $policyFile -Raw
-  Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Tee $teeType -Policy $policy -PolicyFormat  $policyFormat
+  Set-AzAttestationPolicy -Name $attestationProviderName `
+    -ResourceGroupName $resourceGroupName `
+    -Tee $teeType `
+    -Policy $policy `
+    -PolicyFormat  $policyFormat
   ```
 
-6. Ge din Azure SQL-Server åtkomst till din attesterings leverantör. I det här steget ska vi använda objekt-ID: t för den hanterade tjänst identitet som du tilldelade till servern tidigare.
+5. Ge din Azure SQL-Server åtkomst till din attesterings leverantör. I det här steget använder du objekt-ID: t för den hanterade tjänst identitet som du tilldelade till servern tidigare.
 
   ```powershell
-  New-AzRoleAssignment -ObjectId $serverObjectId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName  
+  New-AzRoleAssignment -ObjectId $serverObjectId `
+    -RoleDefinitionName "Attestation Reader" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName  
   ```
 
-7. Hämta attesterings-URL: en.
+6. Hämta den attesterings-URL som pekar på en princip för attestering som du har konfigurerat för SGX-enklaven. Spara URL: en eftersom du behöver den senare.
 
   ```powershell
-  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
+  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName 
   $attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-  Write-Host "Your attestation URL is: " $attestationUrl 
+  Write-Host
+  Write-Host "Your attestation URL is: $attestationUrl"
   ```
-
-8.  Spara den resulterande attesterings-URL: en som pekar på en attesterings princip som du har konfigurerat för SGX-enklaven. Du behöver det senare. URL: en för attestering bör se ut så här: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
+  
+  URL: en för attestering bör se ut så här: `https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave`
 
 ## <a name="step-3-populate-your-database"></a>Steg 3: Fyll i databasen
 
 I det här steget ska du skapa en tabell och fylla den med data som du senare ska kryptera och fråga.
 
 1. Öppna SSMS och Anslut till **ContosoHR** -databasen i den logiska Azure SQL-servern som du skapade **utan att** Always Encrypted aktive rad i databas anslutningen.
-    1. I dialog rutan **Anslut till Server** anger du Server namnet (till exempel *myserver123.Database.Windows.net*) och anger användar namnet och lösen ordet som du konfigurerade tidigare.
+    1. I dialog rutan **Anslut till Server** anger du det fullständigt kvalificerade namnet på servern (till exempel *myserver123.Database.Windows.net*) och anger administratörs användar namnet och lösen ordet du angav när du skapade servern.
     2. Klicka på **alternativ >>** och välj fliken **anslutnings egenskaper** . Se till att välja **ContosoHR** -databasen (inte standard huvud databasen). 
     3. Välj fliken **Always Encrypted** .
     4. Kontrol lera att kryss rutan **aktivera Always Encrypted (kolumn kryptering)** **inte** är markerad.
@@ -292,7 +301,7 @@ I det här steget ska du kryptera data som lagras i kolumnerna **SSN** och **lö
 
 1. Öppna en ny SSMS-instans och Anslut till databasen **med** Always Encrypted aktive rad för databas anslutningen.
     1. Starta en ny instans av SSMS.
-    2. I dialog rutan **Anslut till Server** anger du Server namnet, väljer en autentiseringsmetod och anger dina autentiseringsuppgifter.
+    2. I dialog rutan **Anslut till Server** anger du det fullständigt kvalificerade namnet på servern (till exempel *myserver123.Database.Windows.net*) och anger administratörs användar namnet och lösen ordet du angav när du skapade servern.
     3. Klicka på **alternativ >>** och välj fliken **anslutnings egenskaper** . Se till att välja **ContosoHR** -databasen (inte standard huvud databasen). 
     4. Välj fliken **Always Encrypted** .
     5. Kontrol lera att kryss rutan **aktivera Always Encrypted (kolumn kryptering)** är markerad.

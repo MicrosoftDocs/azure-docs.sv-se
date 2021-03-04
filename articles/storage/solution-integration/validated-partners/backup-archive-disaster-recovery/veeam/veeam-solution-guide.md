@@ -3,18 +3,18 @@ title: Säkerhetskopiera dina data till Azure med Veeam
 titleSuffix: Azure Blob Storage Docs
 description: Webb sidan ger en översikt över faktorer att överväga och steg att följa för att utnyttja Azure som ett lagrings mål och en återställnings plats för Veeam säkerhets kopiering och återställning
 keywords: Veeam,, säkerhets kopiering till molnet, säkerhets kopiering, säkerhets kopiering till Azure, haveri beredskap, affärs kontinuitet
-author: Karl Rautenstrauch
+author: karauten
 ms.author: karauten
 ms.date: 11/11/2020
 ms.topic: article
 ms.service: Storage
 ms.subservice: Blob Storage
-ms.openlocfilehash: 9f07703d23c3be6e842a54ba4bb0d46467ccb71d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b7bc20d80887df5a5ad235c87238b0239abadc0a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101587"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Säkerhetskopiera till Azure med Veeam
 

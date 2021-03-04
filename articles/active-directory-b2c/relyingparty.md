@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea23be06939d58b08516a00bbe8aba97c6ccc87d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095280"
+ms.locfileid: "102120597"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -153,7 +153,7 @@ I följande exempel visas en förlitande part med [UserInfo-slutpunkten](userinf
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | Omfång | Ja | Omfattningen av det enkla inloggnings beteendet. Möjliga värden: `Suppressed` , `Tenant` , `Application` eller `Policy` . `Suppressed`Värdet anger att beteendet ignoreras och att användaren alltid uppmanas att ange ett val av identitetsprovider.  `Tenant`Värdet anger att beteendet tillämpas på alla principer i klienten. Till exempel behöver en användare som navigerar genom två princip resor för en klient inte uppmanas att välja ett val av identitetsprovider. `Application`Värdet anger att beteendet tillämpas på alla principer för programmet som gör begäran. Till exempel behöver en användare som navigerar genom två princip resor för ett program inte ange något val av en identitetsprovider. `Policy`Värdet anger att beteendet bara gäller för en princip. Till exempel, en användare som navigerar genom två princip resor för ett förtroende Framework, uppmanas du att ange en identitets leverantör när du växlar mellan principer. |
-| KeepAliveInDays | Ja | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+| KeepAliveInDays | Inga | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
 |EnforceIdTokenHintOnLogout| Inga|  Tvinga att skicka en tidigare utfärdad ID-token till utloggnings slut punkten som ett tips om slutanvändarens aktuella autentiserade session med-klienten. Möjliga värden: `false` (standard) eller `true` . Mer information finns i [webb inloggning med OpenID Connect](openid-connect.md).  |
 
 

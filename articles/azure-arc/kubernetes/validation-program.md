@@ -2,18 +2,18 @@
 title: Azure Arc Enabled Kubernetes-validerings program
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Beskriver Arc-validerings program för Kubernetes-distributioner
 keywords: Kubernetes, båge, Azure, K8s, verifiering
-ms.openlocfilehash: 0d7756f407a3a176c8913d99bdb45a5026300569
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689223"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121379"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc-validerings program
 
@@ -61,6 +61,6 @@ Omställnings testerna körs som en del av den Azure Arc-aktiverade Kubernetes-v
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./connect-cluster.md)
-* [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md)
-* [Använd Azure Policy för att tillämpa konfigurationer i skala](./use-azure-policy.md)
+Lär dig hur du ansluter ett kluster till Azure-bågen.
+> [!div class="nextstepaction"]
+> [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)

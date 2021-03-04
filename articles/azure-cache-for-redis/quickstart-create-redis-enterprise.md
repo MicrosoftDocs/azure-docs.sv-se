@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 37496b9358ec72c79f8d26e32a92485f001e0e9d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8dbde1f74c700e772823d61b3e35a464f9bbc17e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031675"
+ms.locfileid: "102120971"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Snabb start: skapa en Redis Enterprise-cache (för hands version)
 
@@ -49,13 +49,7 @@ Du behöver en Azure-prenumeration innan du börjar. Skapa ett [konto](https://a
 
 1. Välj **Nästa: nätverk** och hoppa över.
 
-   > [!NOTE] 
-   > Alternativet för privat länk hämtas och kanske inte är tillgängligt omedelbart i din region.
-   >
-
-1. Välj **Nästa: Avancerat** och ange **kluster princip** till **företag**.
-   
-   Du kan behålla standardinställningarna eller ändra dem efter behov. När du aktiverar **Tillåt endast åtkomst via TLS** måste du använda TLS för att komma åt den nya cachen från ditt program.
+1. Välj **Nästa: Avancerat** och ange **kluster princip** till **företag**. Aktivera **icke-TLS-åtkomst endast** om du planerar att ansluta till den nya cachen utan att använda TLS. Detta rekommenderas dock inte.
 
    :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Fliken Avancerat på företags nivå":::
 

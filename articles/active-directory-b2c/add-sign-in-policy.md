@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c84966f7b4dc1740235fe6414da2ba832a1334fd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660377"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119917"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Konfigurera ett inloggnings flöde i Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Med inloggnings principen kan användare:
 * Användare kan logga in med ett Azure AD B2C lokalt konto
 * Registrera dig eller logga in med ett socialt konto
 * Lösenordsåterställning
-* Användare kan inte registrera sig för ett Azure AD B2C lokalt konto – en administratör kan använda [MS Graph API](microsoft-graph-operations.md)för att skapa ett konto.
+* Användare kan inte registrera sig för ett Azure AD B2C lokalt konto. En administratör kan använda [Azure Portal](manage-users-portal.md#create-a-consumer-user)eller [MS Graph API](microsoft-graph-operations.md)för att skapa ett konto.
 
 ![Profil redigerings flöde](./media/add-sign-in-policy/sign-in-user-flow.png)
 
@@ -75,26 +75,34 @@ Den tekniska profilen **SelfAsserted-LocalAccountSignin-email** är en [självko
 1. Lägg till följande anspråks leverantör i- `ClaimsProviders` elementet:
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Local Account</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-          <Metadata>
-            <Item Key="setting.showSignupLink">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+    <!--
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Local Account</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+            <Metadata>
+              <Item Key="setting.showSignupLink">false</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!--
+    </ClaimsProviders> -->
     ```
 
 1. I `<BuildingBlocks>` -elementet lägger du till följande [ContentDefinition](contentdefinitions.md) för att referera till version 1.2.0 eller nyare data-URI:
 
     ```XML
-    <ContentDefinitions>
-     <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
+    <!-- 
+    <BuildingBlocks> 
+      <ContentDefinitions>-->
+        <ContentDefinition Id="api.localaccountsignup">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        </ContentDefinition>
+      <!--
+      </ContentDefinitions>
+    </BuildingBlocks> -->
     ```
 
 ## <a name="update-and-test-your-policy"></a>Uppdatera och testa principen
@@ -103,7 +111,7 @@ Den tekniska profilen **SelfAsserted-LocalAccountSignin-email** är en [självko
 1. Kontrol lera att du använder den katalog som innehåller din Azure AD-klient genom att välja filtret **katalog + prenumeration** på den översta menyn och välja den katalog som innehåller din Azure AD-klient.
 1. Välj **alla tjänster** i det övre vänstra hörnet av Azure Portal och Sök sedan efter och välj **Appregistreringar**.
 1. Välj **ramverk för identitets upplevelse**.
-1. Välj **överför anpassad princip** och ladda upp de två principfiler som du har ändrat.
+1. Välj **överför anpassad princip** och ladda upp den princip fil som du har ändrat, *TrustFrameworkExtensions.xml*.
 1. Välj den inloggnings princip som du laddade upp och klicka på knappen **Kör nu** .
 1. Du bör kunna logga in med det konto som du skapade (med MS Graph API), utan registrerings länken.
 

@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: b55a706aa25b21620226690c172c996fe10a84fa
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203513"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121107"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>Snabb start: Använd Azure cache för Redis med Rust
 
 I den här artikeln får du lära dig hur du använder [Rust-programmeringsspråk](https://www.rust-lang.org/) för att interagera med [Azure cache för Redis](./cache-overview.md). Det visar exempel på vanliga Redis-datastrukturer, till exempel [String](https://redis.io/topics/data-types-intro#redis-strings), [hash](https://redis.io/topics/data-types-intro#redis-hashes), [list](https://redis.io/topics/data-types-intro#redis-lists) osv. använda [Redis-RS-](https://github.com/mitsuhiko/redis-rs) biblioteket för Redis. Den här klienten visar både höga och lågnivå-API: er och du ser båda dessa format i åtgärd med hjälp av exempel koden som visas i den här artikeln.
+
+## <a name="skip-to-the-code-on-github"></a>Hoppa till koden på GitHub
+
+Om du vill hoppa över direkt till koden går du till snabb starten för [Rust](https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart/) på GitHub.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

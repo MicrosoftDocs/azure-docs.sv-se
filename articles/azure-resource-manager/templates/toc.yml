@@ -328,6 +328,8 @@
       items:
         - name: Jämför JSON med bicep
           href: compare-template-syntax.md
+    - name: Datatyper
+      href: data-types.md
     - name: Vanliga frågor och svar
       href: frequently-asked-questions.md
     - name: Mallar för molnkonsekvens

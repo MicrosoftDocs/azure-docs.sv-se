@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en översikt över GitOps-och konfigurations funktionerna i Azure Arc Enabled Kubernetes.
 keywords: Kubernetes, båge, Azure, behållare, konfiguration, GitOps
-ms.openlocfilehash: d016e2bae9fcef21642f00cf6f25a8b595d54710
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650381"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121804"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Konfigurationer och GitOps med Azure Arc-aktiverade Kubernetes
 
@@ -50,6 +50,6 @@ Den här funktionen garanterar att en gemensam bas linje konfiguration (som inne
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)
-* [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md)
-* [Använd Azure Policy för att tillämpa konfigurationer i skala](./use-azure-policy.md)
+* Gå igenom vår snabb start för att [ansluta ett Kubernetes-kluster till Azure-bågen](./connect-cluster.md).
+* Har du redan ett Kubernetes-kluster anslutet Azure Arc? [Skapa konfigurationer på ditt Arc-aktiverade Kubernetes-kluster](./use-gitops-connected-cluster.md).
+* Lär dig hur du [använder Azure policy för att tillämpa konfigurationer i stor skala](./use-azure-policy.md).

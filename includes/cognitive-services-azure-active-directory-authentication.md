@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95553950"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109157"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Autentisering via Azure Active Directory
 
 > [!IMPORTANT]
-> 1. För närvarande är det **bara** API för visuellt innehåll, Ansikts-API, API för textanalys, fördjupad läsare, formulär igenkänning, avvikelse detektor och alla Bing-tjänster utom anpassad sökning i Bing stöd för autentisering med Azure Active Directory (AAD).
+> 1. För närvarande är det **bara** API för visuellt innehåll, Ansikts-API, API för textanalys, fördjupad läsare, formulär igenkänning, avvikelse detektor, QNA Maker och alla Bing-tjänster förutom anpassad Bing-sökning stöd för autentisering med Azure Active Directory (AAD).
 > 2. AAD-autentisering måste alltid användas tillsammans med det anpassade under domän namnet för din Azure-resurs. [Regionala slut punkter](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) stöder inte AAD-autentisering.
 
 I föregående avsnitt visade vi dig hur du autentiserar mot Azure Cognitive Services med en prenumerations nyckel för en enda tjänst eller flera tjänster. Även om dessa nycklar ger en snabb och enkel väg för att börja utveckla, är de korta i mer komplexa scenarier som kräver rollbaserad åtkomst kontroll i Azure (Azure RBAC). Låt oss ta en titt på vad som krävs för att autentisera med hjälp av Azure Active Directory (AAD).

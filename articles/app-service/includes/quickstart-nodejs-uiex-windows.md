@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 302e0dc79d13eedebf810df042dc31f78b173fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 324919c1d085302e675e0bc9a370ce35f52a0f1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748857"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109318"
 ---
 <!-- advanced for windows -->
 
@@ -70,10 +70,14 @@ ms.locfileid: "101748857"
 
 1. När distributionen är klar väljer du **Bläddra webbplats** i prompten för att visa din nyligen distribuerade webbapp.
 
-<br>
+<br/>
 <details>
-<summary>Felsökning</summary>
+<summary><strong>Felsökning</strong></summary>
+
+Kontrol lera följande om du inte kunde utföra de här stegen:
+
 * Se till att ditt program lyssnar på porten som tillhandahålls av PORT miljö variabeln: `process.env.PORT` .
+
 * Om du ser felet **"du har inte behörighet att visa den här katalogen eller sidan."**, kunde programmet antagligen inte starta korrekt. Granska logg resultatet för att hitta och åtgärda felet. 
 
 </details>
@@ -83,5 +87,5 @@ ms.locfileid: "101748857"
 [Rapportera ett problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&prepare-your-environment)
 
 
-<br>
+<br/>
 <hr/>

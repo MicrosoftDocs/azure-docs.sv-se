@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20480a252d7aedfd48a59bc05166f645e02e37e9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998440"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119883"
 ---
 # <a name="json-claims-transformations"></a>JSON-anspråk omvandlingar
 
@@ -117,8 +117,8 @@ Följande anspråks omvandling matar ut ett JSON-sträng anspråk som kommer att
 - Inmatade anspråk:
   - **e-post**, omvandlings anspråks typ  **customerEntity. e-post**: " john.s@contoso.com "
   - **ObjectID**, omvandlings anspråks typ **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
-  - **ObjectID**, omvandlings anspråks typ **customerEntity. FirstName** "John"
-  - **ObjectID**, omvandlings anspråks typ **customerEntity. LastName** "Svensson"
+  - **givenName**, omvandlings anspråks typ **customerEntity. FirstName** "John"
+  - Efter **namn**, typ av omvandlings anspråk **customerEntity. LastName** "Svensson"
 - Indataparameter:
   - **customerEntity.Role.name**: "administratör"
   - **customerEntity.Role.ID** 1

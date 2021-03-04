@@ -2,13 +2,13 @@
 title: Mallens struktur och syntax
 description: Beskriver strukturen och egenskaperna för Azure Resource Manager mallar (ARM-mallar) med deklarativ JSON-syntax.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722712"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120424"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Förstå strukturen och syntaxen för ARM-mallar
 
@@ -46,62 +46,6 @@ I sin enklaste struktur har en mall följande element:
 
 Varje element har egenskaper som du kan ange. I den här artikeln beskrivs mallens avsnitt mer detaljerat.
 
-## <a name="data-types"></a>Datatyper
-
-I en ARM-mall kan du använda dessa data typer:
-
-* sträng
-* SecureString
-* int
-* boolesk
-* objekt
-* secureObject
-* matris
-
-Följande mall visar formatet för data typerna. Varje typ har ett standardvärde i korrekt format.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-En säker sträng använder samma format som sträng, och det skyddade objektet använder samma format som objektet. När du anger en parameter till en säker sträng eller ett säkert objekt, sparas inte värdet för parametern i distributions historiken och loggas inte. Men om du anger ett säkert värde till en egenskap som inte förväntar ett säkert värde, skyddas inte värdet. Om du till exempel anger en säker sträng till en tagg lagras värdet som oformaterad text. Använd säkra strängar för lösen ord och hemligheter.
-
-För heltal som skickas som infogade parametrar kan värde intervallet begränsas av SDK eller kommando rads verktyget som du använder för distribution. När du till exempel använder PowerShell för att distribuera en mall kan heltals typer vara mellan-2147483648 och 2147483647. Undvik den här begränsningen genom att ange stora heltals värden i en [parameter fil](parameter-files.md). Resurs typer tillämpar egna gränser för heltals egenskaper.
-
-När du anger booleska värden och heltals värden i mallen omger du värdet med citat tecken. Start-och slut sträng värden med dubbla citat tecken ( `"string value"` ).
-
-Objekt börjar med en vänster klammerparentes ( `{` ) och slutar med en höger klammerparentes ( `}` ). Matriser börjar med en vänsterparentes ( `[` ) och slutar med en höger hak paren tes ( `]` ).
-
 ## <a name="parameters"></a>Parametrar
 
 I `parameters` avsnittet i mallen anger du vilka värden som du kan ange när du distribuerar resurserna. Du kan ha högst 256 parametrar i en mall. Du kan minska antalet parametrar genom att använda objekt som innehåller flera egenskaper.
@@ -128,7 +72,7 @@ Tillgängliga egenskaper för en parameter är:
 | Elementnamn | Krävs | Beskrivning |
 |:--- |:--- |:--- |
 | parameter-Name |Ja |Parameterns namn. Måste vara ett giltigt JavaScript-ID. |
-| typ |Ja |Typ av parameter värde. De tillåtna typerna och värdena är **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** och **array**. Se [data typer](#data-types). |
+| typ |Ja |Typ av parameter värde. De tillåtna typerna och värdena är **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject** och **array**. Se [data typer i arm-mallar](data-types.md). |
 | Standar |Inga |Standardvärdet för parametern, om det inte finns något värde för parametern. |
 | allowedValues |Inga |Matris med tillåtna värden för parametern för att kontrol lera att rätt värde har angetts. |
 | minValue |Inga |Det minsta värdet för int-typ parametrar, detta värde är inkluderat. |
@@ -141,7 +85,7 @@ Exempel på hur du använder parametrar finns i [parametrar i arm-mallar](templa
 
 ## <a name="variables"></a>Variabler
 
-I `variables` avsnittet skapar du värden som kan användas i hela mallen. Du behöver inte definiera variabler, men de fören klar ofta mallen genom att minska komplexa uttryck. Formatet för varje variabel matchar en av [data typerna](#data-types).
+I `variables` avsnittet skapar du värden som kan användas i hela mallen. Du behöver inte definiera variabler, men de fören klar ofta mallen genom att minska komplexa uttryck. Formatet för varje variabel matchar en av [data typerna](data-types.md).
 
 I följande exempel visas tillgängliga alternativ för att definiera en variabel:
 

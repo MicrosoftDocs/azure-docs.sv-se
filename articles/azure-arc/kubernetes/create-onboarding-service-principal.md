@@ -2,18 +2,18 @@
 title: Skapa ett onboarding service-huvud för Azure Arc-aktiverade Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/09/2021
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 'Skapa en Azure Arc-aktiverad onboarding-tjänstens huvud namn '
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: bda088bdae5c866493718db94c9a2da89cada8c9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 610b355073473f0e492350753a523b7943666f13
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650354"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121753"
 ---
 # <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Skapa ett onboarding service-huvud för Azure Arc-aktiverade Kubernetes
 
@@ -89,4 +89,4 @@ az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Använd Azure Policy för att styra kluster konfigurationen](./use-azure-policy.md)
+Styr kluster konfigurationen [med hjälp av Azure policy](./use-azure-policy.md).

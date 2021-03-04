@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120750"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -80,7 +80,7 @@ I följande exempel visas ett användar resa-element med tekniska profiler för 
 
 En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. Om ett steg Miss lyckas, Miss lyckas transaktionen. Dessa steg hänvisar till både de bygg stenar och de anspråks leverantörer som tillåts i princip filen. Alla Orchestration-steg som är ansvariga för att visa eller återge en användar upplevelse har också en referens till motsvarande innehålls definitions identifierare.
 
-Orchestration-steg kan utföras villkorligt baserat på de villkor som definieras i elementet Orchestration-steg. Du kan till exempel kontrol lera att du bara utför ett Dirigerings steg om det finns ett specifikt anspråk eller om ett anspråk är lika med eller inte det angivna värdet.
+Orchestration-steg kan utföras villkorligt baserat på de villkor som definieras i elementet Orchestration-steg. Du kan till exempel kontrol lera att du endast utför ett Dirigerings steg om det finns ett specifikt anspråk eller om ett anspråk är lika med eller inte det angivna värdet.
 
 Om du vill ange den sorterade listan över Orchestration-steg läggs ett **OrchestrationSteps** -element till som en del av principen. Det här elementet är obligatoriskt.
 
@@ -131,7 +131,7 @@ Elementet **villkor** innehåller följande element:
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | Värde | 1: n | En ClaimTypeReferenceId som ska frågas efter. Ett annat värde element innehåller det värde som ska kontrol leras.</li></ul>|
-| Åtgärd | 1:1 | Den åtgärd som ska utföras om villkors kontrollen i ett Orchestration-steg är sann. Om värdet för `Action` är inställt på `SkipThisOrchestrationStep` , ska den associerade `OrchestrationStep` inte utföras. |
+| Action | 1:1 | Den åtgärd som ska utföras om villkors kontrollen i ett Orchestration-steg är sann. Om värdet för `Action` är inställt på `SkipThisOrchestrationStep` , ska den associerade `OrchestrationStep` inte utföras. |
 
 #### <a name="preconditions-examples"></a>Exempel på villkor
 
@@ -189,9 +189,12 @@ Villkor kan kontrol lera flera villkor. I följande exempel kontrol leras om "ob
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection
+## <a name="identity-provider-selection"></a>Val av identitetsprovider
 
-Ett Dirigerings steg av typen `ClaimsProviderSelection` eller `CombinedSignInAndSignUp` kan innehålla en lista över anspråks leverantörer som en användare kan logga in med. Ordningen på elementen inuti `ClaimsProviderSelections` elementen styr ordningen för de identitets leverantörer som visas för användaren.
+Med val av identitetsprovider kan användarna välja en åtgärd från en lista med alternativ. Valet av identitetsprovider består av två Dirigerings steg: 
+
+1. **Knappar** – den börjar med typen `ClaimsProviderSelection` eller `CombinedSignInAndSignUp` som innehåller en lista med alternativ som en användare kan välja bland. Ordningen på alternativen i `ClaimsProviderSelections` elementet styr ordningen för de knappar som visas för användaren.
+2. **Åtgärder** – följt av typ av `ClaimsExchange` . ClaimsExchange innehåller en lista med åtgärder. Åtgärden är en referens till en teknisk profil, t. ex. [OAuth2](oauth2-technical-profile.md), [OpenID Connect](openid-connect-technical-profile.md), [Claim Transformation](claims-transformation-technical-profile.md)eller [Self-assertioned](self-asserted-technical-profile.md). När en användare klickar på en av knapparna utförs motsvarande åtgärd.
 
 **ClaimsProviderSelections** -elementet innehåller följande element:
 
@@ -242,7 +245,7 @@ I följande Orchestration-steg kan användaren välja att logga in med Facebook,
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

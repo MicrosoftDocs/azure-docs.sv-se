@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4667e8fa3a5624dddc3cb0dd792fc73ea812332
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693231"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122008"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Kända problem – Azure Arc-aktiverade data tjänster (för hands version)
 
@@ -22,10 +22,7 @@ ms.locfileid: "101693231"
 
 ## <a name="february-2021"></a>Februari 2021
 
-
 - Anslutet kluster läge har inaktiverats
-- Azure Arc Enabled PostgreSQL-skalning returnerar ett felaktigt fel meddelande när det inte går att återställa till den relativa tidpunkt som du anger. Om du till exempel har angett en tidpunkt för återställning som är äldre än vad dina säkerhets kopior innehåller, Miss lyckas återställningen med ett fel meddelande som: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` . När detta händer startar du om kommandot efter att ha angett en tidpunkt som ligger inom det datum intervall som du har säkerhets kopior för. Ta reda på intervallet genom att lista dina säkerhets kopior och titta på de datum då de togs.
-- Ett säkerhets kopierings-ID krävs vid fullständig återställning. Om du inte anger ett säkerhets kopierings-ID kommer den senaste säkerhets kopian att användas som standard. Detta fungerar inte i den här versionen.
 
 ## <a name="introduced-prior-to-february-2021"></a>Infördes före februari 2021
 

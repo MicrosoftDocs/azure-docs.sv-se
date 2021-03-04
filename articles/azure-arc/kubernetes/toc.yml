@@ -2,20 +2,20 @@
   href: index.yml
 - name: Översikt
   items:
-    - name: Om Arc-aktiverat Kubernetes
+    - name: Om Azure Arc-aktiverade Kubernetes
       href: overview.md
     - name: Azure Arc-validerings program
       href: validation-program.md
+- name: Snabbstarter
+  items:
+    - name: Ansluta ett kluster till Azure-bågen
+      href: quickstart-connect-cluster.md
 - name: Självstudier
   items:
     - name: Distribuera konfigurationer med GitOps
       href: tutorial-use-gitops-connected-cluster.md
     - name: Implementera CI/CD med GitOps
       href: tutorial-gitops-ci-cd.md
-- name: Snabbstarter
-  items:
-    - name: Ansluta ett kluster till Azure-bågen
-      href: quickstart-connect-cluster.md
 - name: Begrepp
   items:
     - name: Agent arkitektur

@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: Beskriver CloudSimple-tjänstens process för schemalagt underhåll och uppdateringar
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 08/20/2019
+ms.date: 03/04/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025035"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120716"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Underhåll och uppdateringar av CloudSimple
 
@@ -49,7 +49,7 @@ CloudSimple säkerhetskopierar, underhåller och uppdaterar dessa VMware-element
 
 * ESXi
 * vCenter Platform-tjänster
-* Domänkontrollant
+* Kontrollant
 * Virtuellt San
 * NSX
 
@@ -100,7 +100,7 @@ Program uppdateringar omfattar:
 * **Uppdateringar**. Lägre versions ändring av en VMware stack-komponent.
 * **Uppgraderingar**. Huvud versions ändring av en VMware stack-komponent.
 
-CloudSimple testar en kritisk säkerhets korrigering så snart den blir tillgänglig från VMware. Enligt SLA samlar CloudSimple ut säkerhets korrigeringen till privata moln miljöer inom en vecka.
+CloudSimple testar en kritisk säkerhets korrigering så snart den blir tillgänglig från VMware. 
 
 CloudSimple tillhandahåller kvartals Visa uppdateringar av VMware-programkomponenter. När en ny huvud version av VMware-programvaran är tillgänglig fungerar CloudSimple med kunder för att samordna en lämplig underhålls period för uppgradering.
 

@@ -1,5 +1,5 @@
 ---
-title: Händelse agg regering (för hands version)
+title: Händelsesammansättning
 titleSuffix: Azure Defender for IoT
 description: Defender för IoT-säkerhetsagenter samlar in data-och system händelser från den lokala enheten och skickar data till Azure-molnet för bearbetning och analys.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809995"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120053"
 ---
-# <a name="event-aggregation-preview"></a>Händelse agg regering (för hands version)
+# <a name="event-aggregation"></a>Händelsesammansättning 
 
 Defender för IoT-säkerhetsagenter samlar in data-och system händelser från den lokala enheten och skickar data till Azure-molnet för bearbetning och analys. Defender for IoT Micro agent samlar in många typer av enhets händelser, inklusive nya processer och alla nya anslutnings händelser. Både den nya processen och nya anslutnings händelser kan uppstå ofta på en enhet inom en sekund. Den här funktionen är viktig för omfattande säkerhet, men antalet meddelanden som skickas av säkerhets agenter kan dock uppfyllas snabbt eller överskrida dina IoT Hub kvot-och kostnads gränser. Dessa händelser innehåller dock mycket värdefull säkerhets information som är viktig för att skydda enheten. 
 

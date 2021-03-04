@@ -2,30 +2,31 @@
 title: CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/26/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: tcare
 ms.author: tcare
 description: Den här artikeln innehåller en konceptuell översikt över ett CI/CD-arbetsflöde med GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes service, behållare, CI, CD, Azure DevOps
-ms.openlocfilehash: 044275db0977a20474aa1451324486ad1750a7f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055126"
+ms.locfileid: "102121787"
 ---
-# <a name="overview"></a>Översikt
+# <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes
 
 Moderna Kubernetes-distributioner House flera program, kluster och miljöer. Med GitOps kan du enkelt hantera dessa komplexa installations program och spåra det önskade läget för Kubernetes-miljöerna med git. Genom att använda vanliga git-verktyg för att spåra kluster status kan du öka ansvars perioden, under lätta fel undersökningen och aktivera automatisering för att hantera miljöer.
 
-Den här artikeln innehåller en översikt över hur du gör GitOps till en verklighet i hela livs cykeln för en program ändring med Azure Arc, Azure databaser och Azure-pipelines. Gå igenom ett slut punkt till slut punkt-exempel på en enda ändring i ett program från en utvecklare till GitOps Kubernetes-miljöer.
+Den här konceptuella översikten förklarar GitOps som en verklighet i hela livs cykeln för program ändringar med Azure Arc, Azure databaser och Azure pipelines. [Hoppa till ett exempel](#example-workflow) på en enda program ändring till GitOps-styrda Kubernetes-miljöer.
 
 ## <a name="architecture"></a>Arkitektur
 
 Överväg att ett program distribueras till en eller flera Kubernetes-miljöer.
 
 ![GitOps CI/CD-arkitektur](./media/gitops-arch.png)
+
 ### <a name="application-repo"></a>Program lagrings platsen
 Programmet lagrings platsen innehåller den program kod som utvecklare arbetar med under sin inre slinga. Programmets distributionsmall är Live i den här lagrings platsen i ett allmänt formulär, som Helm eller Kustomize. Miljöbaserade värden lagras inte. Ändringar i den här lagrings platsen anropar en PR-eller CI-pipeline som startar distributions processen.
 ### <a name="container-registry"></a>Container Registry
@@ -39,9 +40,9 @@ Flöde är en tjänst som körs i varje kluster och som ansvarar för att underh
 ### <a name="cd-pipeline"></a>CD-pipeline
 CD-pipelinen utlöses automatiskt av lyckade CI-versioner. Den använder tidigare publicerade mallar, byter ut miljö värden och öppnar en PR till GitOps-lagrings platsen för att begära en ändring av det önskade läget för ett eller flera Kubernetes-kluster. Kluster administratörer granskar status ändrings PR och godkänner sammanslagningen till GitOps-lagrings platsen. Pipelinen väntar sedan på att PR-processen ska slutföras, vilket gör att flödet kan hämta tillstånds ändringen.
 ### <a name="gitops-repo"></a>GitOps lagrings platsen
-GitOps-lagrings platsen representerar det aktuella önskade läget för alla miljöer i kluster. Alla ändringar av den här lagrings platsen hämtas av flödes tjänsten i varje kluster och distribueras. Pull skapas med ändringar i det önskade läget, granskas och sammanfogas. Dessa pull innehåller ändringar i både distributionsmall och de resulterande åter givnings Kubernetes manifesten. De lågnivå manifest som återges på låg nivå undviker eventuella överraskningar bakom mallens ersättning genom att tillåta noggrann granskning av ändringar vanligt vis osett på mallnivå.
+GitOps-lagrings platsen representerar det aktuella önskade läget för alla miljöer i kluster. Alla ändringar av den här lagrings platsen hämtas av flödes tjänsten i varje kluster och distribueras. Pull skapas med ändringar i det önskade läget, granskas och sammanfogas. Dessa pull innehåller ändringar i både distributionsmall och de resulterande åter givnings Kubernetes manifesten. Manifest med låg nivå som återges ger en mer noggrann granskning av förändringar vanligt vis osett på mallnivå.
 ### <a name="kubernetes-clusters"></a>Kubernetes-kluster
-Ett eller flera Azure Arc-aktiverade Kubernetes-kluster hanterar de olika miljöer som programmet behöver. Till exempel kan ett enskilt kluster betjäna både en utvecklings-och miljö kontroll miljö via olika namn områden. Ett andra kluster kan ge enklare separering av miljöer och mer detaljerad kontroll.
+Minst ett Azure Arc-aktiverade Kubernetes-kluster hanterar de olika miljöer som programmet behöver. Till exempel kan ett enskilt kluster betjäna både en utvecklings-och miljö kontroll miljö via olika namn områden. Ett andra kluster kan ge enklare separering av miljöer och mer detaljerad kontroll.
 ## <a name="example-workflow"></a>Exempel arbets flöde
 Som programutvecklare, Alice:
 * Skriver program kod.
@@ -60,7 +61,7 @@ Anta att Alice vill göra en program ändring som ändrar den Docker-avbildning 
     * Ändringen är säker att distribuera till klustret och artefakterna sparas i körningen av CI-pipeline.
 4. Alices ändrings sammanslagningar och utlöser CD-pipelinen.
     * CD-pipeline hämtar de artefakter som lagras av Alices pipeline-körning.
-    * CD-pipelinen byter ut mallarna mot miljöspecificerade värden och stegar om eventuella ändringar mot det befintliga kluster läget i GitOps-lagrings platsen.
+    * CD-pipelinen byter ut mallarna efter miljöbaserade värden och steg för steg alla ändringar mot det befintliga klustrets tillstånd i GitOps-lagrings platsen.
     * CD-pipeline skapar en PR till GitOps-lagrings platsen med önskade ändringar i kluster tillstånd.
 5. Alices team granskar och godkänner hennes PR.
     * Ändringen slås samman i mål grenen som motsvarar miljön.
@@ -73,4 +74,4 @@ Anta att Alice vill göra en program ändring som ändrar den Docker-avbildning 
 8.  När alla miljöer har tagit emot lyckade distributioner slutförs pipelinen.
 
 ## <a name="next-steps"></a>Nästa steg
-[Konfigurationer och GitOps med Azure Arc-aktiverade Kubernetes](./conceptual-configurations.md)
+Lär dig mer om att skapa anslutningar mellan klustret och en git-lagringsplats som en [konfigurations resurs med Azure Arc-aktiverade Kubernetes](./conceptual-configurations.md)

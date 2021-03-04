@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: active-directory
 author: eross-msft
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 5bcc770c730b53a9523415a4978b439ac0079410
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6cbdf96571ece4f714affb13aa97d495cc84dab3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974076"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109393"
 ---
->[!Note]
->Om du vill visa eller ta bort personliga data läser du Microsofts riktlinjer på webbplatsen för [dataämnesförfrågningar om GDPR för Windows](/microsoft-365/compliance/gdpr-data-subject-requests). Om du vill ha allmän information om GDPR går du till [GDPR-avsnittet på Service Trust-portalen](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Information om hur du visar eller tar bort person uppgifter finns i Microsofts vägledning om [Windows data subject-begäranden för GDPR](/microsoft-365/compliance/gdpr-dsr-windows) -webbplatsen. Allmän information om GDPR finns i [avsnittet GDPR i avsnittet Microsoft säkerhets Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) och [avsnittet GDPR i service Trust-portalen](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

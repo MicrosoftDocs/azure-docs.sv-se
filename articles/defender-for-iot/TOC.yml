@@ -27,12 +27,12 @@
         - name: Publicera till Defender för IoT-agent-baserad lösning
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: Installera Defender för IoT Micro agent (för hands version)
+        - name: Installera Defender för IoT Micro agent
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: 'Skapa en Defender IoT Micro agent-modul, delad (för hands version)'
+        - name: Skapa en Defender IoT Micro agent-modul med dubbla
           href: quickstart-create-micro-agent-module-twin.md
-        - name: Bygg in Defender för IoT Micro agent från käll koden (för hands version)
+        - name: Bygg in Defender för IoT Micro agent från käll koden
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Konfigurera säkerhetsmodulen för Azure-återställnings tider
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Översikt över agent portfölj och OS-support (för hands version)
+        - name: Översikt över agent portfölj och OS-stöd
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: Översikt över fristående Micro agent (för hands version)
+        - name: Översikt över fristående Micro agent
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: Autentisering av säkerhets agent (för hands version)
+        - name: Autentisering av säkerhetsagent
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: Säkerhet position – CIS-benchmark
           href: concept-security-posture.md
-        - name: Händelse agg regering (för hands version)
+        - name: Händelsesammansättning
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: Inbyggda aviseringar för IoT Hub
@@ -249,9 +249,6 @@
           displayName: 'data, collection, geolocation, log analytics, raw events'
           href: how-to-configure-agent-based-solution.md
         - name: Undersök benchmark-rekommendation för CIS
-          displayName: 'investigation, queries, investigate'
-          href: how-to-configure-agent-based-solution.md
-        - name: Undersök benchmark-rekommendation för CIS
           href: how-to-investigate-cis-benchmark.md
         - name: Skapa anpassade aviseringar
           displayName: security group
@@ -300,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: Felsökning
   items:
-    - name: Fel sökning av Defender IoT Micro-agent (för hands version)
+    - name: Fel sökning av Defender IoT Micro-agent
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: Funktions support och pensionering

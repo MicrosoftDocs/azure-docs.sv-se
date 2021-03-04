@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203256"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120290"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection-anspråk omvandlingar
 
@@ -28,10 +28,10 @@ Den här artikeln innehåller exempel på hur du kan använda anspråks omvandli
 
 Lägger till ett sträng anspråk till ett nytt unikt värde stringCollection-anspråk.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | objekt | sträng | Den ClaimType som ska läggas till i utgående anspråk. |
-| InputClaim | samling | stringCollection | Valfritt Om det här alternativet anges kopierar anspråks omvandlingen objekten från den här samlingen och lägger till objektet i slutet av utmatnings samlingens anspråk. |
+| InputClaim | samling | stringCollection | Den sträng samling som ska läggas till i utgående anspråk. Om samlingen innehåller objekt, kopierar anspråks omvandlingen objekten och lägger till objektet i slutet av anspråket för utgående data insamling. |
 | OutputClaim | samling | stringCollection | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats, med det värde som anges i indatamängden. |
 
 Använd den här anspråks omvandlingen för att lägga till en sträng till en ny eller befintlig stringCollection. Den används ofta i en **AAD-UserWriteUsingAlternativeSecurityId** teknisk profil. Innan ett nytt socialt konto skapas läser **CreateOtherMailsFromEmail** Claims-omvandlingen claimType och lägger till värdet i **otherMails** -claimType.
@@ -62,9 +62,9 @@ Följande påstående-omvandling lägger till **e-** **otherMails** för claimTy
 
 Lägger till en sträng parameter till ett nytt unikt värde stringCollection-anspråk.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | samling | stringCollection | Valfritt Om det här alternativet anges kopierar anspråks omvandlingen objekten från den här samlingen och lägger till objektet i slutet av utmatnings samlingens anspråk. |
+| InputClaim | samling | stringCollection | Den sträng samling som ska läggas till i utgående anspråk. Om samlingen innehåller objekt, kopierar anspråks omvandlingen objekten och lägger till objektet i slutet av anspråket för utgående data insamling. |
 | InputParameter | objekt | sträng | Det värde som ska läggas till i utgående anspråk. |
 | OutputClaim | samling | stringCollection | Den ClaimType som skapas efter att den här anspråks omvandlingen har anropats, med det angivna värdet i indataparametern. |
 
@@ -97,7 +97,7 @@ Använd den här anspråks omvandlingen för att lägga till ett sträng värde 
 
 Hämtar det första objektet från den angivna sträng samlingen.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | samling | stringCollection | ClaimTypes som används av anspråks omvandlingen för att hämta objektet. |
 | OutputClaim | extractedItem | sträng | ClaimTypes som skapas efter att denna ClaimsTransformation har anropats. Det första objektet i samlingen. |
@@ -125,9 +125,9 @@ I följande exempel läses **otherMails** -anspråket och det första objektet r
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Kontrollerar om en StringCollection-anspråks typ innehåller ett-element
+Kontrollerar om en StringCollection-anspråks typ innehåller ett-element.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | Anspråks typen som ska genomsökas. |
 |InputParameter|objekt|sträng|Det värde som ska genomsökas.|
@@ -163,7 +163,7 @@ Följande exempel kontrollerar om `roles` stringCollection-anspråks typen inneh
 
 Kontrollerar om en StringCollection-anspråks typ innehåller ett anspråks värde.
 
-| Objekt | TransformationClaimType | Datatyp | Obs! |
+| Objekt | TransformationClaimType | Datatyp | Kommentarer |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | samling | stringCollection | Anspråks typen som ska genomsökas. |
 | InputClaim | objekt|sträng| Anspråks typen som innehåller värdet som ska genomsökas.|

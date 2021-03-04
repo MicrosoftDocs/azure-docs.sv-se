@@ -2,18 +2,18 @@
 title: Azure Arc Enabled Kubernetes-agent arkitektur
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/19/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en arkitektur översikt över Azure Arc-aktiverade Kubernetes-agenter
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: b4fb836cc7782f4026a28f4af0ca372c76486a31
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650540"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121906"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc Enabled Kubernetes-agent arkitektur
 
@@ -93,5 +93,5 @@ De flesta lokal data Center tillämpar strikta nätverks regler som förhindrar 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ansluta ett kluster till Azure-bågen](./quickstart-connect-cluster.md)
-* [Konceptuell översikt över konfigurationer](./conceptual-configurations.md)
+* Gå igenom vår snabb start för att [ansluta ett Kubernetes-kluster till Azure-bågen](./connect-cluster.md).
+* Lär dig mer om att skapa anslutningar mellan klustret och en git-lagringsplats som en [konfigurations resurs med Azure Arc-aktiverade Kubernetes](./conceptual-configurations.md).

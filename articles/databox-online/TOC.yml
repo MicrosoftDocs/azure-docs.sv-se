@@ -102,7 +102,7 @@
     - name: Översikt
       items:
         - name: Vad är Azure Stack Edge Mini R?
-          href: azure-stack-edge-k-series-overview.md
+          href: azure-stack-edge-mini-r-overview.md
     - name: Begrepp
       items:
         - name: Säkerhetsinställningar

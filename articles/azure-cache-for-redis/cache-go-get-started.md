@@ -7,18 +7,22 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165135"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121345"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Snabb start: Använd Azure cache för Redis med go
 
 I den här artikeln får du lära dig hur du skapar en REST API i go som lagrar och hämtar användar information som backas upp av en [hash](https://redis.io/topics/data-types-intro#redis-hashes) -datastruktur i [Azure cache för Redis](./cache-overview.md). 
 
-## <a name="prerequisites"></a>Krav
+## <a name="skip-to-the-code-on-github"></a>Hoppa till koden på GitHub
+
+Om du vill hoppa över direkt till koden kan du läsa [gå till snabb start](https://github.com/Azure-Samples/azure-redis-cache-go-quickstart/) på GitHub.
+
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Go](https://golang.org/doc/install) (helst version 1,13 eller senare)

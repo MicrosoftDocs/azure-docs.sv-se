@@ -7,16 +7,20 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536614"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121141"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Snabb start: Använd Azure cache för Redis med en ASP.NET-webbapp 
 
 I den här snabb starten använder du Visual Studio 2019 för att skapa ett ASP.NET-webbprogram som ansluter till Azure cache för Redis för att lagra och hämta data från cachen. Sedan distribuerar du appen till Azure App Service.
+
+## <a name="skip-to-the-code-on-github"></a>Hoppa till koden på GitHub
+
+Om du vill hoppa över direkt till koden går du till snabb starten för [ASP.net](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/aspnet) på GitHub.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -25,27 +29,27 @@ I den här snabb starten använder du Visual Studio 2019 för att skapa ett ASP.
 
 ## <a name="create-the-visual-studio-project"></a>Skapa Visual Studio-projektet
 
-1. Öppna Visual Studio och välj sedan **Arkiv**  > **nytt**  >  **projekt** .
+1. Öppna Visual Studio och välj sedan **Arkiv**  > **nytt**  >  **projekt**.
 
-2. Gör följande i dialogrutan **Nytt projekt** :
+2. Gör följande i dialogrutan **Nytt projekt**:
 
     ![Skapa projekt](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. Expandera noden **Visual C#** i listan **Mallar** .
+    a. Expandera noden **Visual C#** i listan **Mallar**.
 
-    b. Välj **moln** .
+    b. Välj **moln**.
 
-    c. Välj **ASP.NET-webbapp** .
+    c. Välj **ASP.NET-webbapp**.
 
     d. Kontrollera att **.NET Framework 4.5.2** eller senare har valts.
 
-    e. Ge projektet ett namn i rutan **Namn** . I det här exemplet använde vi **ContosoTeamStats** .
+    e. Ge projektet ett namn i rutan **Namn**. I det här exemplet använde vi **ContosoTeamStats**.
 
-    f. Välj **OK** .
+    f. Välj **OK**.
    
 3. Välj **MVC** som projekttyp.
 
-4. Kontrollera att **Ingen autentisering** är angivet i **autentiseringsinställningarna** . Beroende på din version av Visual Studio kan det vara en annan standardinställning för **Autentisering** . För att ändra detta väljer du **Ändra autentisering** och sedan **Ingen autentisering** .
+4. Kontrollera att **Ingen autentisering** är angivet i **autentiseringsinställningarna**. Beroende på din version av Visual Studio kan det vara en annan standardinställning för **Autentisering**. För att ändra detta väljer du **Ändra autentisering** och sedan **Ingen autentisering**.
 
 5. Klicka på **OK** för att skapa projektet.
 
@@ -59,9 +63,9 @@ Nu ska skapa du cachen för appen.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Redigera filen *CacheSecrets.config*
 
-1. Skapa en fil på din dator med namnet *CacheSecrets.config* . Lägg till den på en plats där den inte checkas in med käll koden för ditt exempel program. För den här snabbstarten finns filen *CacheSecrets.config* i *C:\AppSecrets\CacheSecrets.config* .
+1. Skapa en fil på din dator med namnet *CacheSecrets.config*. Lägg till den på en plats där den inte checkas in med käll koden för ditt exempel program. För den här snabbstarten finns filen *CacheSecrets.config* i *C:\AppSecrets\CacheSecrets.config*.
 
-1. Redigera filen *CacheSecrets.config* . Lägg sedan till följande innehåll:
+1. Redigera filen *CacheSecrets.config*. Lägg sedan till följande innehåll:
 
     ```xml
     <appSettings>
@@ -98,16 +102,16 @@ Eftersom *CacheSecrets.config* inte har distribuerats till Azure med din app anv
 
     ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
-2. Leta reda på elementet `<appSetting>` i filen *web.config* . Lägg sedan till följande `file`-attribut. Om du använder ett annat namn eller en annan plats, byter du ut dessa värden mot de som visas i exemplet.
+2. Leta reda på elementet `<appSetting>` i filen *web.config*. Lägg sedan till följande `file`-attribut. Om du använder ett annat namn eller en annan plats, byter du ut dessa värden mot de som visas i exemplet.
 
 * Innan: `<appSettings>`
 * När  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeringen i `<appSettings>`-elementet. Vid körningen ignoreras filattributet om det inte går att hitta den angivna filen. Din hemliga information (anslutningssträngen till cachen) ingår inte i källkoden för programmet. När du distribuerar din webbapp till Azure så distribueras inte filen *CacheSecrets.config* .
+ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeringen i `<appSettings>`-elementet. Vid körningen ignoreras filattributet om det inte går att hitta den angivna filen. Din hemliga information (anslutningssträngen till cachen) ingår inte i källkoden för programmet. När du distribuerar din webbapp till Azure så distribueras inte filen *CacheSecrets.config*.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Konfigurera appen till att använda StackExchange.Redis
 
-1. Konfigurera appen att använda NuGet-paketet i [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) för Visual Studio genom att välja **Verktyg > NuGet Package Manager > Package Manager-konsolen** .
+1. Konfigurera appen att använda NuGet-paketet i [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) för Visual Studio genom att välja **Verktyg > NuGet Package Manager > Package Manager-konsolen**.
 
 2. Kör följande kommando från fönstret `Package Manager Console`:
 
@@ -119,7 +123,7 @@ ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeri
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>Uppdatera HomeController och layout
 
-1. I **Solution Explorer** expanderar du mappen **Controllers** och öppnar filen *HomeController.cs* .
+1. I **Solution Explorer** expanderar du mappen **Controllers** och öppnar filen *HomeController.cs*.
 
 2. Lägg till följande två `using`-instruktioner överst i filen för att stödja cacheklienten och appinställningarna.
 
@@ -189,7 +193,7 @@ ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeri
 
     ```
 
-4. I **Solution Explorer** expanderar du mappen **Vyer** > **Delad** . Öppna sedan filen *_Layout.cshtml* .
+4. I **Solution Explorer** expanderar du mappen **Vyer** > **Delad**. Öppna sedan filen *_Layout.cshtml*.
 
     Ersätt:
     
@@ -205,9 +209,9 @@ ASP.NET-körningsmiljön sammanfogar innehållet i den externa filen med markeri
 
 ### <a name="to-add-a-new-rediscache-view"></a>Lägga till en ny RedisCache-vy
 
-1. I **Solution Explorer** expanderar du mappen **Vyer** och högerklickar sedan på mappen **Start** . Välj **Lägg till**  >  **vy...** .
+1. I **Solution Explorer** expanderar du mappen **Vyer** och högerklickar sedan på mappen **Start**. Välj **Lägg till**  >  **vy...**.
 
-2. Ange **RedisCache** som vynamn i dialogrutan **Lägg till vy** . Välj **Lägg till** .
+2. Ange **RedisCache** som vynamn i dialogrutan **Lägg till vy**. Välj **Lägg till**.
 
 3. Ersätt koden i filen *RedisCache.cshtml* med följande kod:
 
@@ -266,22 +270,22 @@ När du har testat appen lokalt distribuerar du den till Azure och kör den i mo
 
 ### <a name="to-publish-the-app-to-azure"></a>Publicera appen i Azure
 
-1. Högerklicka på projektnoden i Solution Explorer i Visual Studio. Välj sedan **Publicera** .
+1. Högerklicka på projektnoden i Solution Explorer i Visual Studio. Välj sedan **Publicera**.
 
     ![Publicera](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. Välj **Microsoft Azure App Service** , välj **Skapa ny** och välj sedan **Publicera** .
+2. Välj **Microsoft Azure App Service**, välj **Skapa ny** och välj sedan **Publicera**.
 
     ![Publicera i App Service](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
-3. Gör följande ändringar i dialogrutan **Skapa App Service** :
+3. Gör följande ändringar i dialogrutan **Skapa App Service**:
 
     | Inställningen | Rekommenderat värde | Beskrivning |
     | ------- | :---------------: | ----------- |
     | **Appens namn** | Använd standardvärdet. | Appnamnet blir värdnamnet för appen när den har distribuerats till Azure. Namnet kan ha ett tidsstämpelsuffix som lagts till för att göra det unikt, om det behövs. |
     | **Prenumeration** | Välj din Azure-prenumeration. | Den här prenumerationen debiteras för eventuella relaterade värdkostnader. Om du har flera Azure-prenumerationer kontrollerar du att den önskade prenumerationen har valts.|
-    | **Resursgrupp** | Använd den resursgrupp som du skapade cachen i (till exempel *TestResourceGroup* ). | Resursgruppen hjälper dig att hantera alla resurser som en grupp. Senare när du vill ta bort appen är det bara att ta bort gruppen. |
-    | **App Service-plan** | Välj **Nytt** och skapa en ny App Service-Plan med namnet *TestingPlan* . <br />Använd samma **plats** du använde när du skapade cachen. <br />Välj **Ledigt** som storlek. | En App Service-plan definierar en uppsättning beräkningsresurser för en webbapp att köra med. |
+    | **Resursgrupp** | Använd den resursgrupp som du skapade cachen i (till exempel *TestResourceGroup*). | Resursgruppen hjälper dig att hantera alla resurser som en grupp. Senare när du vill ta bort appen är det bara att ta bort gruppen. |
+    | **App Service-plan** | Välj **Nytt** och skapa en ny App Service-Plan med namnet *TestingPlan*. <br />Använd samma **plats** du använde när du skapade cachen. <br />Välj **Ledigt** som storlek. | En App Service-plan definierar en uppsättning beräkningsresurser för en webbapp att köra med. |
 
     ![Dialogrutan App Service](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
@@ -301,7 +305,7 @@ Lägg till en ny appinställning när den nya appen har publicerats. Den här in
 
     ![Leta efter appen](./media/cache-web-app-howto/cache-find-app-service.png)
 
-2. Lägg till en ny appinställning med namnet **CacheConnection** som appen ska använda för att ansluta till cachen. Använd samma värde som du har konfigurerat för `CacheConnection` i filen *CacheSecrets.config* . Värdet innehåller cachens värdnamn och åtkomstnyckel.
+2. Lägg till en ny appinställning med namnet **CacheConnection** som appen ska använda för att ansluta till cachen. Använd samma värde som du har konfigurerat för `CacheConnection` i filen *CacheSecrets.config*. Värdet innehåller cachens värdnamn och åtkomstnyckel.
 
     ![Lägga till appinställning](./media/cache-web-app-howto/cache-add-app-setting.png)
 
@@ -324,13 +328,13 @@ Om du är klar med exempelappen i snabbstarten kan du ta bort Azure-resurserna s
 
 ### <a name="to-delete-a-resource-group"></a>Ta bort en resursgrupp
 
-1. Logga in på [Azure-portalen](https://portal.azure.com) och välj **Resursgrupper** .
+1. Logga in på [Azure-portalen](https://portal.azure.com) och välj **Resursgrupper**.
 
-2. Skriv namnet på din resursgrupp i rutan **Filtrera efter namn...** . Anvisningarna för den här artikeln använde en resursgrupp med namnet *TestResources* . På din resursgrupp i resultatlistan väljer du **...** och sedan **Ta bort resursgrupp** .
+2. Skriv namnet på din resursgrupp i rutan **Filtrera efter namn...**. Anvisningarna för den här artikeln använde en resursgrupp med namnet *TestResources*. På din resursgrupp i resultatlistan väljer du **...** och sedan **Ta bort resursgrupp**.
 
     ![Ta bort](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på din resursgrupp för att bekräfta och välj sedan **Ta bort** .
+Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på din resursgrupp för att bekräfta och välj sedan **Ta bort**.
 
 Efter en liten stund tas resursgruppen och de resurser som finns i den bort.
 

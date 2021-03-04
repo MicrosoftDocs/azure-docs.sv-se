@@ -1,5 +1,5 @@
 ---
-title: Installera Defender för IoT Micro agent (för hands version)
+title: Installera Defender för IoT Micro agent
 titleSuffix: Azure Defender for IoT
 description: Lär dig hur du installerar och autentiserar Defender Micro-agenten.
 author: shhazam-ms
@@ -8,20 +8,20 @@ ms.author: shhazam
 ms.date: 3/3/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 4125fc3c2f03104eeca108a73d83f2fad44bebc1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051760"
+ms.locfileid: "102120444"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>Installera Defender för IoT Micro agent (för hands version)
+# <a name="install-defender-for-iot-micro-agent"></a>Installera Defender för IoT Micro agent 
 
 Den här artikeln innehåller en förklaring av hur du installerar och autentiserar Defender Micro-agenten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du installerar Defender for IoT-modulen måste du skapa en modul identitet i IoT Hub. Mer information om hur du skapar en modul identitet finns i [skapa en Defender IoT Micro agent-modul, delad (för hands version)](quickstart-create-micro-agent-module-twin.md).
+Innan du installerar Defender for IoT-modulen måste du skapa en modul identitet i IoT Hub. Mer information om hur du skapar en modul identitet finns i [skapa en Defender IoT Micro agent-modul, dubbla ](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>Installera paketet
 

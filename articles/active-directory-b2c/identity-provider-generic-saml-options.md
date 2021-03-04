@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44a084266a083b2cc7c0609e4bfedb10a018585d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107811"
+ms.locfileid: "102119832"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurera alternativ för SAML-identitetsprovider med Azure Active Directory B2C
 
@@ -43,8 +43,8 @@ Du kan också inkludera anspråk som inte returneras av identitets leverantören
 Elementet utdata-anspråk innehåller följande attribut:
 
 - **ClaimTypeReferenceId** är referensen till en anspråks typ. 
-- **PartnerClaimType** är namnet på den egenskap som visas i Azure Insights. Använd syntaxen `{property:NAME}` där `NAME` är egenskapen som läggs till i händelsen.
-- **DefaultValue** är ett fördefinierat värde som ska registreras, t. ex. händelse namn. Ett anspråk som används i användar resan, till exempel namnet på identitets leverantören. Om anspråket är tomt används standardvärdet. `identityProvider`Anspråket anges till exempel av de tekniska profilerna för federationen, t. ex. Facebook. Om anspråket är tomt, anger det att användaren loggar in med ett lokalt konto. Standardvärdet är alltså inställt på *Local*. Du kan också registrera en [anspråks lösare](claim-resolver-overview.md) med ett sammanhangsbaserad värde, till exempel program-ID eller ANVÄNDAREns IP-adress.
+- **PartnerClaimType** är namnet på egenskapen som visar SAML Assertion. 
+- **DefaultValue** är ett fördefinierat standardvärde. Om anspråket är tomt används standardvärdet. Du kan också använda en [anspråks lösare](claim-resolver-overview.md) med ett sammanhangsbaserad värde, till exempel KORRELATIONS-ID eller ANVÄNDAREns IP-adress.
 
 ### <a name="subject-name"></a>Mottagarnamn
 

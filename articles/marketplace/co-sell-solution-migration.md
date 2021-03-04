@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880363"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120189"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrering av samförsäljnings lösningar från OCP GTM till den kommersiella marknaden
 
@@ -136,7 +136,7 @@ Detaljerade anvisningar om vilka uppgifter du måste ange innan du kan publicera
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Fliken erbjudande översikt konfigureras i Partner Center.":::
 
-3. Några av Microsofts säljar information kopierades från OCP GTM-lösningen. Slutför den återstående information som krävs på fliken **medförsäljning med Microsoft** för att göra ditt erbjudande i Co-försäljningen klart. När du är klar väljer du **Granska och publicera**. Mer information finns i [Skicka Co-säljer material i Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
+3. Några av Microsofts säljar information kopierades från OCP GTM-lösningen. Slutför den återstående information som krävs på fliken **medförsäljning med Microsoft** för att göra ditt erbjudande i Co-försäljningen klart. När du är klar väljer du **Granska och publicera**. Mer information finns i [Skicka Co-säljer material i Partner Center](marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Fliken erbjud Co-försäljning i Partner Center.":::
 
@@ -154,5 +154,5 @@ Detaljerade anvisningar om vilka uppgifter du måste ange innan du kan publicera
 ## <a name="next-steps"></a>Nästa steg
 
 - [Sälja via CSP-partner](cloud-solution-providers.md)
-- [Så här skickar du Co-försäljnings material i Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
+- [Så här skickar du Co-försäljnings material i Partner Center](marketplace-co-sell.md)
 - Visa dessa [vanliga frågor och svar](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)
