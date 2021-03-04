@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547204"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040387"
 ---
 # <a name="versions-in-azure-api-management"></a>Versioner i Azure API Management
 
@@ -42,7 +42,7 @@ När schema versions schema används måste versions-ID: t inkluderas i URL-sök
 
 Till exempel, `https://apis.contoso.com/products/v1` och `https://apis.contoso.com/products/v2` kan referera till samma `products` API, men till versioner `v1` respektive `v2` .
 
-Formatet på en URL för API-begäran när du använder en rubrik baserad versions hantering är: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
+Formatet på en URL för API-begäran när du använder en sökväg baserad versions hantering är: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` .
 
 ### <a name="header-based-versioning"></a>Rubrik baserad versions hantering
 

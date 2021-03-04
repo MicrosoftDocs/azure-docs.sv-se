@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500911"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042529"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Aktivera automatisk justering i Azure Portal för att övervaka frågor och förbättra arbets Belastningens prestanda
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL Database hanterar automatiskt data tjänster som kontinuerligt övervakar dina frågor och identifierar den åtgärd som du kan utföra för att förbättra arbets Belastningens prestanda. Du kan granska rekommendationer och manuellt tillämpa dem, eller låta Azure SQL Database automatiskt tillämpa korrigerande åtgärder – detta kallas **automatiskt justerings läge**.
 
@@ -111,11 +110,26 @@ Om du ställer in alternativet för enskild justering till på åsidosätts alla
 
 För att få mer om verifieringen T-SQL-alternativ för att konfigurera automatisk justering, se [Alter Database set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
-## <a name="disabled-by-the-system"></a>Inaktiverat av systemet
+## <a name="troubleshooting"></a>Felsökning
 
-Automatisk justering övervakar alla åtgärder som det tar i databasen och i vissa fall kan det ta reda på att automatisk justering inte fungerar korrekt i databasen. I den här situationen inaktive ras justerings alternativet av systemet. I de flesta fall beror detta på att Frågearkivet inte är aktiverat eller att det är i skrivskyddat läge för en speciell databas.
+### <a name="automated-recommendation-management-is-disabled"></a>Automatisk rekommendations hantering har inaktiverats
 
-## <a name="permissions"></a>Behörigheter
+I händelse av fel meddelanden om att en automatiserad rekommendations hantering har inaktiverats eller helt enkelt har inaktiverats av systemet är de vanligaste orsakerna:
+- Query Store är inte aktiverat eller
+- Query Store är i skrivskyddat läge för en angiven databas eller
+- Frågearkivet slutade köras eftersom det använde det allokerade lagrings utrymmet.
+
+Följande steg kan övervägas för att åtgärda det här problemet:
+- Rensa Frågearkivet eller ändra data lagrings perioden till "Auto" med hjälp av T-SQL. Se [Konfigurera Rekommenderad kvarhållning och avbildnings princip för frågearkivet](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy).
+- Använd SQL Server Management Studio (SSMS) och följ dessa steg:
+  - Anslut till Azure SQL Database
+  - Högerklicka på databasen
+  - Gå till egenskaper och klicka på Frågearkivet
+  - Ändra arbets läget till Read-Write
+  - Ändra lagra inspelnings läge till automatiskt
+  - Ändra storleks baserat rensnings läge till automatiskt
+
+### <a name="permissions"></a>Behörigheter
 
 Eftersom automatisk justering är en Azure-funktion måste du använda Azures inbyggda roller för att använda den. Att endast använda SQL-autentisering är inte tillräckligt för att använda funktionen från Azure Portal.
 
@@ -123,7 +137,7 @@ För att kunna använda automatisk justering är den minsta behörighet som krä
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurera e-postmeddelanden för automatisk justering
 
-Se guiden [Automatisk justering av e-postaviseringar](automatic-tuning-email-notifications-configure.md) .
+Om du vill ta emot automatiserade e-postaviseringar om rekommendationer som görs vid automatisk justering, se guiden [Automatisk justering e-postaviseringar](automatic-tuning-email-notifications-configure.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

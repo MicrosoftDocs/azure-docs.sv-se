@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ce77021e74507ead6d225081debc7024cb89a15a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042410"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Skapa en FCI med Azure Shared disks (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -205,7 +205,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurera anslutning 
 
-Om du vill dirigera trafiken korrekt till den aktuella primära noden konfigurerar du anslutnings alternativet som är lämpligt för din miljö. Du kan skapa en [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) eller, om du använder SQL Server 2019 CU2 (eller senare) och Windows Server 2016 (eller senare), kan du använda funktionen [distribuerat nätverks namn](failover-cluster-instance-distributed-network-name-dnn-configure.md) i stället. 
+Om du vill dirigera trafiken korrekt till den aktuella primära noden konfigurerar du anslutnings alternativet som är lämpligt för din miljö. Du kan skapa en [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) eller, om du använder SQL Server 2019 CU2 (eller senare) och Windows Server 2016 (eller senare), kan du använda funktionen [distribuerat nätverks namn](failover-cluster-instance-distributed-network-name-dnn-configure.md) i stället.  
+
+Mer information om kluster anslutnings alternativ finns i [dirigera hadr-anslutningar till SQL Server på virtuella Azure-datorer](hadr-cluster-best-practices.md#connectivity). 
 
 ## <a name="limitations"></a>Begränsningar
 

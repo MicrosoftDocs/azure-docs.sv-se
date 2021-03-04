@@ -4,14 +4,14 @@ description: Lär dig hur du konfigurerar rollbaserad åtkomst kontroll med Azur
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.author: thweiss
-ms.openlocfilehash: d83109f380a3044073cf2dd8d10f29027ebb9f41
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: acb82a66c8ef4adcfeef0fcb527c44512ad4feaf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690914"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040880"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurera rollbaserad åtkomst kontroll med Azure Active Directory för ditt Azure Cosmos DB-konto (för hands version)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -370,6 +370,7 @@ Denna ytterligare information flödar i **DataPlaneRequests** -logg kategorin oc
 - Du kan skapa upp till 100 roll definitioner och 2 000 roll tilldelningar per Azure Cosmos DB konto.
 - Azure AD Group-matchning stöds för närvarande inte för identiteter som tillhör fler än 200 grupper.
 - Azure AD-token skickas för närvarande som en rubrik med varje enskild begäran som skickas till den Azure Cosmos DB tjänsten, vilket ökar den totala nytto Last storleken.
+- Att komma åt dina data med Azure AD via [Azure Cosmos DB Explorer](data-explorer.md) stöds inte ännu. Om du använder Azure Cosmos DB Explorer kräver det fortfarande att användaren har åtkomst till kontots primära nyckel för tillfället.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

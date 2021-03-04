@@ -3,15 +3,14 @@ title: Panel konverteringar Azure Monitor Visa designer till arbets böcker
 description: Information om hur du konverterar paneler till arbets böcker vid över gången från vyer i Azure Monitor.
 author: austonli
 ms.author: aul
-ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 0fe1c5a4e6da1cb2955542c2651fcaf2d015b8f8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624671"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043345"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor Visa designer panels konverteringar
 [View Designer](view-designer.md) är en funktion i Azure Monitor som gör att du kan skapa anpassade vyer som hjälper dig att visualisera data i arbets ytan Log Analytics, med diagram, listor och tids linjer. De fasas ut och ersätts med arbets böcker som tillhandahåller ytterligare funktioner. Den här artikeln innehåller information om hur du konverterar olika paneler till arbets böcker.

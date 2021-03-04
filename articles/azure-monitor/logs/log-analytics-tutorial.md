@@ -1,17 +1,16 @@
 ---
 title: Log Analytics-självstudie
 description: Lär dig i den här självstudien om hur du använder funktioner i Log Analytics i Azure Monitor för att skapa en körnings logg fråga och analysera resultatet i Azure Portal.
-ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: a7a6ba395769677fe46ddfff675640f6e15060a0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723188"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041152"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-självstudie
 Log Analytics är ett verktyg i Azure Portal för att redigera och köra logg frågor från data som samlas in av Azure Monitor loggar och interaktivt analysera resultaten. Du kan använda Log Analytics frågor för att hämta poster som matchar vissa villkor, identifiera trender, analysera mönster och tillhandahålla en mängd olika insikter om dina data. 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.date: 03/03/2021
+ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400819"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043022"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
@@ -84,8 +84,8 @@ Du kan också behöva filter för att anropa ett specialiserat fråge formulär,
 
 | Filter scenario | Beskrivning |
 |-----------------|-------------|
-| Intervall filter | I Azure Kognitiv sökning skapas intervall frågor med hjälp av filter parametern. Mer information och exempel finns i [exempel på Range filter](search-query-simple-examples.md#example-4-range-filters). |
-| Sökning på Geo-platser | Om ett sökbart fält är av [typen EDM. GeographyPoint](/rest/api/searchservice/supported-data-types)kan du skapa ett filter uttryck för "hitta nära mig" eller mappnings-baserade Sök kontroller. Fält som driver geo-search innehåller koordinater. Mer information och ett exempel finns i [exempel på Geo-sökning](search-query-simple-examples.md#example-5-geo-search). |
+| Intervall filter | I Azure Kognitiv sökning skapas intervall frågor med hjälp av filter parametern. Mer information och exempel finns i [exempel på Range filter](search-query-simple-examples.md#example-5-range-filters). |
+| Sökning på Geo-platser | Om ett sökbart fält är av [typen EDM. GeographyPoint](/rest/api/searchservice/supported-data-types)kan du skapa ett filter uttryck för "hitta nära mig" eller mappnings-baserade Sök kontroller. Fält som driver geo-search innehåller koordinater. Mer information och ett exempel finns i [exempel på Geo-sökning](search-query-simple-examples.md#example-6-geo-search). |
 | Aspektbaserad navigering | En aspekt navigerings struktur blir instrumentell i användar riktad navigering när du anropar ett filter som svar på en `onclick` händelse på en aspekt. Det gör att ansikte och filter går hand i hand. Om du lägger till aspekt navigering måste du ha filter för att slutföra upplevelsen. Mer information finns i [så här skapar du ett aspekt filter](search-filters-facets.md). |
 
 > [!NOTE]
@@ -101,12 +101,12 @@ Ett avancerat fråge formulär är beroende av en fullständig Lucene-parser och
 
 | Frågetyp | Användning | Exempel och mer information |
 |------------|--------|------------------------------|
-| [Sökning efter fält](query-lucene-syntax.md#bkmk_fields) | **`search`**  ProfileServiceApplicationProxy **`queryType=full`**  | Bygg ett sammansatt frågeuttryck riktade mot ett enskilt fält. <br/>[Exempel på fält som söks](search-query-lucene-examples.md#example-2-fielded-search) |
-| [Fuzzy-sökning](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Matchningar på villkor som har en liknande konstruktion eller stavning. <br/>[Exempel på fuzzy-sökning](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [närhets sökning](query-lucene-syntax.md#bkmk_proximity) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Söker efter termer som är nära varandra i ett dokument. <br/>[Exempel på närhet](search-query-lucene-examples.md#example-4-proximity-search) |
-| [term förstärkning](query-lucene-syntax.md#bkmk_termboost) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Rangordna ett dokument högre om det innehåller den ökade termen, i förhållande till andra som inte är det. <br/>[Exempel på term förstärkning](search-query-lucene-examples.md#example-5-term-boosting) |
-| [sökning efter reguljära uttryck](query-lucene-syntax.md#bkmk_regex) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Matchningar baserat på innehållet i ett reguljärt uttryck. <br/>[Exempel på reguljära uttryck](search-query-lucene-examples.md#example-6-regex) |
-|  [sökning med jokertecken eller prefix](query-lucene-syntax.md#bkmk_wildcard) | **`search`** parameter med * *_`~`_* eller **`?`** , **`queryType=full`**| Matchar baserat på ett prefix och tilde ( `~` ) eller ett enskilt tecken ( `?` ). <br/>[Sök exempel i jokertecken](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Sökning efter fält](query-lucene-syntax.md#bkmk_fields) | **`search`**  ProfileServiceApplicationProxy **`queryType=full`**  | Bygg ett sammansatt frågeuttryck riktade mot ett enskilt fält. <br/>[Exempel på fält som söks](search-query-lucene-examples.md#example-1-fielded-search) |
+| [Fuzzy-sökning](query-lucene-syntax.md#bkmk_fuzzy) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Matchningar på villkor som har en liknande konstruktion eller stavning. <br/>[Exempel på fuzzy-sökning](search-query-lucene-examples.md#example-2-fuzzy-search) |
+| [närhets sökning](query-lucene-syntax.md#bkmk_proximity) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Söker efter termer som är nära varandra i ett dokument. <br/>[Exempel på närhet](search-query-lucene-examples.md#example-3-proximity-search) |
+| [term förstärkning](query-lucene-syntax.md#bkmk_termboost) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Rangordna ett dokument högre om det innehåller den ökade termen, i förhållande till andra som inte är det. <br/>[Exempel på term förstärkning](search-query-lucene-examples.md#example-4-term-boosting) |
+| [sökning efter reguljära uttryck](query-lucene-syntax.md#bkmk_regex) | **`search`** ProfileServiceApplicationProxy **`queryType=full`** | Matchningar baserat på innehållet i ett reguljärt uttryck. <br/>[Exempel på reguljära uttryck](search-query-lucene-examples.md#example-5-regex) |
+|  [sökning med jokertecken eller prefix](query-lucene-syntax.md#bkmk_wildcard) | **`search`** parameter med * *_`~`_* eller **`?`** , **`queryType=full`**| Matchar baserat på ett prefix och tilde ( `~` ) eller ett enskilt tecken ( `?` ). <br/>[Sök exempel i jokertecken](search-query-lucene-examples.md#example-6-wildcard-search) |
 
 ## <a name="next-steps"></a>Nästa steg
 

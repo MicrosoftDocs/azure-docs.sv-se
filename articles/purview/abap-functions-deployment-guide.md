@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695996"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042103"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>Distribuera ABAP för metadata extrahering för SAP R3-familjen för bryggor 
 Den här artikeln beskriver stegen för att distribuera ABAP Function-modul i SAP server
@@ -74,7 +74,7 @@ När modulen har skapats anger du följande information:
 
 3.  Navigera till \" fliken käll kod \" . Det finns två sätt att distribuera kod för-funktionen:
 
-    a.  Från huvud menyn laddar du upp Z- \_ MITI \_DOWNLOAD.txt filen genom att välja verktyg = \> fler verktyg = \> Ladda upp/ladda ned = \> Ladda upp.
+    a.  Från huvud menyn laddar du ned filen med [Z- \_ MITI \_ ](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) för text filen genom att välja verktyg = \> fler verktyg = \> Ladda upp/ladda ned = \> Ladda upp.
 
     b.  Du kan också öppna filen, kopiera dess innehåll och klistra in i \" käll kods \" ytan.
 

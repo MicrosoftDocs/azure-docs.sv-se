@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377813"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043107"
 ---
 # <a name="iot-central-device-development-guide"></a>Guide för utveckling av IoT Central enhet
 
@@ -68,7 +68,7 @@ Genom att använda DPS kan du:
 - Du kan använda dina egna enhets-ID: n för att registrera enheter i IoT Central. Genom att använda dina egna enhets-ID: er blir det enklare att integrera med befintliga Back Office-system.
 - Ett enda, konsekvent sätt att ansluta enheter till IoT Central.
 
-Mer information finns i Anslut [till Azure IoT Central](./concepts-get-connected.md).
+Mer information finns i [bli ansluten till Azure IoT Central](./concepts-get-connected.md) och [bästa praxis](concepts-best-practices.md).
 
 ### <a name="security"></a>Säkerhet
 

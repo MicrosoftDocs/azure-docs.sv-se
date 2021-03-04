@@ -3,12 +3,12 @@ title: Azure Service Bus-förfallo datum för meddelande
 description: I den här artikeln beskrivs förfallo datum och tid för Azure Service Bus meddelanden. Efter en sådan deadline levereras meddelandet inte längre.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 505a041d2f6129b159166e9f99ce7fef779e1e66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042835"
 ---
 # <a name="message-expiration-time-to-live"></a>Förfallodatum för meddelanden (Time to Live)
 Nytto lasten i ett meddelande, eller ett kommando eller en fråga om att ett meddelande skickas till en mottagare, är nästan alltid beroende av en viss typ av förfallo datum för program nivå. Efter en sådan tids gräns levereras inte längre innehållet eller så körs inte den begärda åtgärden längre.
@@ -21,7 +21,7 @@ Efter **att ha gått ut från och med UTC** blir meddelanden inte berättigade t
 
 Även om meddelandet är under låst kan programmet ha ett meddelande som har upphört att gälla. Huruvida programmet är villigt att fortsätta med bearbetning eller väljer att överge meddelandet är upp till Implementeraren.
 
-Vi rekommenderar att du anger **TTL-värdet (Time to Live** ) på ett meddelande som ska vara i timmar eller dagar. Om du ställer in det till ett lågt värde i sekunder eller millisekunder kan meddelandet gå ut innan kunderna har möjlighet att använda det. 
+Extremt låg TTL i ordningen på millisekunder eller sekunder kan orsaka att meddelanden upphör att gälla innan mottagar programmen tar emot dem. Överväg den högsta TTL som fungerar för ditt program.
 
 ## <a name="entity-level-expiration"></a>Förfallo datum för enhets nivå
 Alla meddelanden som skickas till en kö eller ett ämne är underkastade ett standard förfallo datum som anges på enhets nivå. Det kan också ställas in i portalen under skapandet och justeras senare. Standard förfallo datum används för alla meddelanden som skickas till entiteten där Time-to-Live inte anges explicit. Standard förfallo tiden fungerar också som ett tak för Time to Live-värdet. Meddelanden som har en längre tid till Live utgångs datum än standardvärdet justeras tyst till standardvärdet för Time-to-Live innan de placeras i kö.

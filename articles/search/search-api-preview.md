@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: a03707133b384f7717a624e810d0f7a41267969d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 596113f9fcb7326010090e67b3a52ca03faa25d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670891"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041985"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Förhands gransknings funktioner i Azure Kognitiv sökning
 
@@ -25,7 +25,7 @@ Förhands gransknings funktioner som övergår till allmän tillgänglighet tas 
 |---------|------------------|-------------|---------------|
 | [**Semantisk sökning**](semantic-search-overview.md) | Relevans (Poängsättning) | En semantisk ranknings algoritm, frågetyp och svar på frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
 | [**stavningskontroll**](cognitive-search-aml-skill.md) | Söka i data | Valfri stavnings korrigering för frågeterm-indata för enkla, fullständiga och semantiska frågor. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
-| SharePoint Online-indexerare | Indexerare data Källa | Ny data källa för indexerad indexering av SharePoint-innehåll. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
+| [**SharePoint Online-indexerare**](search-howto-index-sharepoint-online.md) | Indexerare data Källa | Ny data källa för indexerad indexering av SharePoint-innehåll. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) |
 | [**Azure Machine Learning (AML) kunskap**](cognitive-search-aml-skill.md) | AI-berikning| En ny färdighets typ som integrerar en inferencing-slutpunkt från Azure Machine Learning. Kom igång med [den här självstudien](cognitive-search-tutorial-aml-custom-skill.md). | Använd [sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/) eller 2019-05-06 – för hands version. Det finns även i portalen, i färdigheter design, förutsatt att Kognitiv sökning och Azure ML-tjänster distribueras i samma prenumeration. |
 | [**featuresMode-parameter**](/rest/api/searchservice/preview-api/search-documents#query-parameters) | Relevans (Poängsättning) | Utökning av relevans för att inkludera information: per fält likhets poäng, per fält villkors frekvens och per fält antal unika tokens matchade. Du kan använda dessa data punkter i [anpassade bedömnings lösningar](https://github.com/Azure-Samples/search-ranking-tutorial). | Lägg till den här Frågeparametern med [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) med API-version = 2020-06 -30-preview eller 2019-05-06-Preview. |
 | [**Felsöka sessioner**](cognitive-search-debug-session.md) | Portal, AI-anrikning (färdigheter) | Ett färdigheter-redigeringsprogram i sessionen som används för att undersöka och lösa problem med en färdigheter. Korrigeringar som tillämpas under en felsökningssession kan sparas i en färdigheter i tjänsten. | Endast Portal, med länkar mellan sidor på översikts sidan för att öppna en felsökningssession. |

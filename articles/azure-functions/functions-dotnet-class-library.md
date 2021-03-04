@@ -1,21 +1,24 @@
 ---
-title: Referens för Azure Functions C#-utvecklare
-description: Lär dig hur du utvecklar Azure Functions med C#.
+title: Utveckla C#-funktioner med hjälp av Azure Functions
+description: Lär dig hur du använder C# för att utveckla och publicera kod som körs i processen med Azure Functions Runtime.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806329"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041203"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Referens för Azure Functions C#-utvecklare
+# <a name="develop-c-functions-using-azure-functions"></a>Utveckla C#-funktioner med hjälp av Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Den här artikeln är en introduktion till att utveckla Azure Functions med hjälp av C# i .NET-klass bibliotek.
+
+>[!IMPORTANT]
+>Den här artikeln stöder funktioner i .NET-klass bibliotek som körs i processen med körnings miljön. Functions stöder även .NET 5. x genom att köra C#-funktioner utanför processen och isolerade från körnings miljön. Mer information finns i [.net-isolerade process funktioner](dotnet-isolated-process-guide.md).
 
 Som C#-utvecklare kanske du också är intresse rad av någon av följande artiklar:
 
@@ -31,9 +34,11 @@ Versioner av Functions runtime fungerar med vissa versioner av .NET. I följande
 
 | Functions runtime-version | Högsta .NET-version |
 | ---- | ---- |
-| Functions 3. x | .NET Core 3.1 |
+| Functions 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4,7 |
+
+<sup>*</sup> Måste köras [utanför processen](dotnet-isolated-process-guide.md).
 
 Mer information finns i [Översikt över Azure Functions körnings versioner](functions-versions.md)
 
@@ -94,9 +99,11 @@ Metodsignaturen kan innehålla andra parametrar än den som används med Utlösa
 
 Ordningen på parametrarna i funktions signaturen spelar ingen roll. Du kan till exempel ange utlösarens parametrar före eller efter andra bindningar, och du kan ange parametern för loggning före eller efter utlösare eller bindnings parametrar.
 
-### <a name="output-binding-example"></a>Exempel på utgående bindning
+### <a name="output-bindings"></a>Utdatabindningar
 
-I följande exempel ändras föregående, genom att lägga till en bindning för utgående köer. Funktionen skriver det köa meddelande som utlöser funktionen till ett nytt Queue-meddelande i en annan kö.
+En funktion kan ha noll eller en utgående bindning som definieras med hjälp av utdataparametrar. 
+
+I följande exempel ändras föregående, genom att lägga till en bindning för utgående kö med namnet `myQueueItemCopy` . Funktionen skriver innehållet i meddelandet som utlöser funktionen till ett nytt meddelande i en annan kö.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +119,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+Värden som tilldelas till utgående bindningar skrivs när funktionen avslutas. Du kan använda mer än en utgående bindning i en funktion genom att helt enkelt tilldela värden till flera utdataparametrar. 
 
 I referens artiklarna för bindning (till exempel[lagrings köer](functions-bindings-storage-queue.md)) förklaras vilka parameter typer du kan använda med attributen utlösare, indata eller utgående bindning.
 
@@ -361,7 +370,7 @@ Här är ett exempel på en JSON-representation av `customDimensions` data:
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>Logga anpassad telemetri i C#-funktioner
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Logga anpassad telemetri
 
 Det finns en Functions-speciell version av Application Insights SDK som du kan använda för att skicka anpassade telemetridata från dina funktioner till Application Insights: [Microsoft. Azure. WebJobs. logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Använd följande kommando från kommando tolken för att installera det här paketet:
 
@@ -618,7 +627,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Exempel på flera attribut
 
-I föregående exempel hämtas app-inställningen för funktions programmets huvud anslutnings sträng för lagrings konto (som är `AzureWebJobsStorage` ). Du kan ange en anpassad app-inställning som ska användas för lagrings kontot genom att lägga till [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) och skicka attributhierarkin till `BindAsync<T>()` . Använd en `Binder` parameter, inte `IBinder` .  Ett exempel:
+I föregående exempel hämtas app-inställningen för funktions programmets huvud anslutnings sträng för lagrings konto (som är `AzureWebJobsStorage` ). Du kan ange en anpassad app-inställning som ska användas för lagrings kontot genom att lägga till [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) och skicka attributhierarkin till `BindAsync<T>()` . Använd en `Binder` parameter, inte `IBinder` .  Exempel:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

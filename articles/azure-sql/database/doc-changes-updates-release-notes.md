@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703775"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042512"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Vad är nytt i Azure SQL Database & SQL-hanterad instans?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,7 +89,7 @@ Följande funktioner är aktiverade i distributions modellen SQL-hanterad instan
   - Stöd för <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> sharepoint 2016 och sharepoint 2019 </a> och <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
   - Skapa en hanterad instans med <a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">sortering på instans nivå</a> och en <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tidszon</a> som du väljer.
   - Hanterade instanser skyddas nu med [inbyggd brand vägg](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Konfigurera SQL-hanterad instans så att den använder [offentliga slut punkter](../managed-instance/public-endpoint-configure.md), [åsidosätter proxy](connectivity-architecture.md#connection-policy) -anslutning för att få bättre nätverks prestanda, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuella kärnor på Gen5-maskinvarukompatibilitet</a> eller <a href="/azure/azure-sql/database/automated-backups-overview">Konfigurera kvarhållning av säkerhets kopior upp till 35 dagar</a> för återställning vid tidpunkter. [Långsiktig kvarhållning av säkerhets kopior](long-term-retention-overview.md#sql-managed-instance-support) (upp till 10 år) är för närvarande en begränsad offentlig för hands version.  
+  - Konfigurera SQL-hanterad instans så att den använder [offentliga slut punkter](../managed-instance/public-endpoint-configure.md), [åsidosätter proxy](connectivity-architecture.md#connection-policy) -anslutning för att få bättre nätverks prestanda, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuella kärnor på Gen5-maskinvarukompatibilitet</a> eller <a href="/azure/azure-sql/database/automated-backups-overview">Konfigurera kvarhållning av säkerhets kopior upp till 35 dagar</a> för återställning vid tidpunkter. [Långsiktig kvarhållning av säkerhets kopior](long-term-retention-overview.md) (upp till 10 år) är för närvarande en offentlig för hands version.  
   - Med nya funktioner kan du <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geo-återställa databasen till ett annat data Center med hjälp av PowerShell</a>, [byta namn på databas](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [ta bort virtuellt kluster](../managed-instance/virtual-cluster-delete.md).
   - Den nya inbyggda [rollen instans deltagar roll](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) möjliggör separering av tull (SOD) efterlevnad av säkerhets principer och efterlevnad av företags standarder.
   - SQL-hanterad instans finns i följande Azure Government regioner till GA (US Gov, Texas, US Gov, Arizona) och i Kina, norra 2 och Kina, östra 2. Den är också tillgänglig i följande offentliga regioner: Australien, centrala, Australien, centrala, södra Frankrike, södra Förenade Arabemiraten Central, Förenade Arabemiraten Nord, Sydafrika, norra, södra Afrika, västra.

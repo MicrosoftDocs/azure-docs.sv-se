@@ -3,12 +3,12 @@ title: Autentisera med hanterad identitet
 description: Ge till gång till avbildningar i ditt privata behållar register med hjälp av en användar tilldelad eller systemtilldelad hanterad Azure-identitet.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987757"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041475"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Använd en Azure-hanterad identitet för att autentisera till ett Azure Container Registry 
 
@@ -107,13 +107,13 @@ Avsluta SSH-sessionen.
 
 ### <a name="create-an-identity"></a>Skapa en identitet
 
-Skapa en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identit#az-identity-create) . Du kan använda samma resurs grupp som du använde tidigare för att skapa behållar registret eller den virtuella datorn, eller en annan.
+Skapa en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identity#az_identity_create) . Du kan använda samma resurs grupp som du använde tidigare för att skapa behållar registret eller den virtuella datorn, eller en annan.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Om du vill konfigurera identiteten i följande steg använder du kommandot [AZ Identity show][az-identity-show] för att lagra identitetens resurs-ID och tjänstens huvud NAMNS-ID i variabler.
+Om du vill konfigurera identiteten i följande steg använder du kommandot [AZ Identity show] [az_identity_show] för att lagra identitetens resurs-ID och tjänstens huvud namns-ID i variabler.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

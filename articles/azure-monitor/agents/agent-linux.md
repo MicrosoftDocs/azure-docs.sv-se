@@ -1,17 +1,16 @@
 ---
 title: Installera Log Analytics-agenten på Linux-datorer
 description: Den här artikeln beskriver hur du ansluter Linux-datorer som finns i andra moln eller lokalt för att Azure Monitor med Log Analytics-agenten för Linux.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 06b59aa1fe6b51bf237c0cd64117166ca4ece10b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734935"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041849"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installera Log Analytics-agenten på Linux-datorer
 Den här artikeln innehåller information om hur du installerar Log Analytics-agenten på Linux-datorer med följande metoder:

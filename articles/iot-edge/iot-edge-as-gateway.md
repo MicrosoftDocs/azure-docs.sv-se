@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec0bf6330b7b2268db84d86dc5a0d141fc24ce74
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371114"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040659"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Så kan en IoT Edge-enhet användas som gateway
 
@@ -95,7 +95,7 @@ På underordnade IoT-enheter använder du parametern **gatewayHostname** i anslu
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
-På underordnade IoT Edge enheter använder du parametern **parent_hostname** i filen config. yaml för att peka på den överordnade enheten.
+På underordnade IoT Edge enheter använder du parametern **parent_hostname** i konfigurations filen för att peka på den överordnade enheten.
 ::: moniker-end
 
 #### <a name="secure-connection"></a>Säker anslutning

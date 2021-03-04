@@ -4,19 +4,19 @@ description: Lär dig hur du tar din Azure IoT Edge-lösning från utveckling ti
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 65710047d5d5d1cc6b835144f7778392fb20b797
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388778"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042274"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Förbered för att distribuera din IoT Edge-lösning i produktion
 
@@ -38,14 +38,19 @@ IoT Edge enheter kan vara allt från en Raspberry Pi till en bärbar dator till 
 
 ### <a name="install-production-certificates"></a>Installera produktionscertifikat
 
-Varje IoT Edge enhet i produktionen måste ha ett certifikat för enhetens certifikat utfärdare installerat på den. CA-certifikatet deklareras sedan till IoT Edge runtime i filen config. yaml. För utvecklings-och testnings scenarier skapar IoT Edge runtime temporära certifikat om inga certifikat deklareras i filen config. yaml. Dessa tillfälliga certifikat upphör dock att gälla efter tre månader och är inte säkra för produktions scenarier. För produktions scenarier bör du ange ditt eget certifikat för enhets certifikat utfärdare, antingen från en självsignerad certifikat utfärdare eller köpas från en kommersiell certifikat utfärdare.
+Varje IoT Edge enhet i produktionen måste ha ett certifikat för enhetens certifikat utfärdare installerat på den. CA-certifikatet deklareras sedan till IoT Edge runtime i konfigurations filen. För utvecklings-och testnings scenarier skapar IoT Edge runtime tillfälliga certifikat om inga certifikat har deklarerats i konfigurations filen. Dessa tillfälliga certifikat upphör dock att gälla efter tre månader och är inte säkra för produktions scenarier. För produktions scenarier bör du ange ditt eget certifikat för enhets certifikat utfärdare, antingen från en självsignerad certifikat utfärdare eller köpas från en kommersiell certifikat utfärdare.
+
+<!--1.1-->
+:::moniker range="iotedge-2018-06"
 
 > [!NOTE]
 > För närvarande förhindrar en begränsning i libiothsm användningen av certifikat som upphör att gälla den 1 januari 2038.
 
+:::moniker-end
+
 Information om hur du förstår rollen för enhetens CA-certifikat finns i [hur Azure IoT Edge använder certifikat](iot-edge-certs.md).
 
-Mer information om hur du installerar certifikat på en IoT Edge-enhet och refererar till dem från filen config. yaml finns i [Hantera certifikat på en IoT Edge enhet](how-to-manage-device-certificates.md).
+Mer information om hur du installerar certifikat på en IoT Edge-enhet och refererar till dem från konfigurations filen finns i [Hantera certifikat på en IoT Edge enhet](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Ha en plan för enhets hantering
 
@@ -54,10 +59,10 @@ Innan du sätter en enhet i produktion bör du veta hur du ska hantera framtida 
 * Enhetens inbyggda programvara
 * Operativ system bibliotek
 * Container motor, t. ex. Moby
-* IoT Edge daemon
+* IoT Edge
 * CA-Certifikat
 
-Mer information finns i [uppdatera IoT Edge runtime](how-to-update-iot-edge.md). Aktuella metoder för att uppdatera IoT Edge daemon kräver fysisk eller SSH-åtkomst till IoT Edge-enheten. Om du har många enheter att uppdatera kan du överväga att lägga till uppdaterings stegen i ett skript eller använda ett Automation-verktyg som Ansible.
+Mer information finns i [uppdatera IoT Edge runtime](how-to-update-iot-edge.md). Aktuella metoder för att uppdatera IoT Edge kräver fysisk eller SSH-åtkomst till IoT Edge-enheten. Om du har många enheter att uppdatera kan du överväga att lägga till uppdaterings stegen i ett skript eller använda ett Automation-verktyg som Ansible.
 
 ### <a name="use-moby-as-the-container-engine"></a>Använd Moby som behållar motor
 
@@ -74,7 +79,7 @@ De två modulerna för körning har båda en **UpstreamProtocol** -miljö variab
 * MQTTWS
 * AMQPWS
 
-Konfigurera variabeln UpstreamProtocol för IoT Edge agenten i filen config. yaml på själva enheten. Om din IoT Edge enhet till exempel ligger bakom en proxyserver som blockerar AMQP-portar kan du behöva konfigurera IoT Edge-agenten att använda AMQP över WebSocket (AMQPWS) för att upprätta den första anslutningen till IoT Hub.
+Konfigurera variabeln UpstreamProtocol för IoT Edge agenten i konfigurations filen på själva enheten. Om din IoT Edge enhet till exempel ligger bakom en proxyserver som blockerar AMQP-portar kan du behöva konfigurera IoT Edge-agenten att använda AMQP över WebSocket (AMQPWS) för att upprätta den första anslutningen till IoT Hub.
 
 När din IoT Edge enhet ansluter måste du fortsätta konfigurera variabeln UpstreamProtocol för båda körnings modulerna i framtida distributioner. Ett exempel på den här processen finns i [Konfigurera en IoT Edge enhet för att kommunicera via en proxyserver](how-to-configure-proxy-support.md).
 
@@ -203,7 +208,7 @@ Se sedan till att uppdatera avbildnings referenserna i deployment.template.jsfil
 
 ### <a name="review-outboundinbound-configuration"></a>Granska utgående/inkommande konfiguration
 
-Kommunikations kanaler mellan Azure IoT Hub och IoT Edge är alltid konfigurerade att vara utgående. För de flesta IoT Edge-scenarier behövs bara tre anslutningar. Behållar motorn måste ansluta till behållar registret (eller registren) som innehåller modul avbildningarna. IoT Edge runtime måste ansluta till IoT Hub för att hämta information om enhets konfigurationen och för att skicka meddelanden och telemetri. Om du använder automatisk etablering måste IoT Edge daemon ansluta till enhets etablerings tjänsten. Mer information finns i [brand Väggs-och port konfigurations regler](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
+Kommunikations kanaler mellan Azure IoT Hub och IoT Edge är alltid konfigurerade att vara utgående. För de flesta IoT Edge-scenarier behövs bara tre anslutningar. Behållar motorn måste ansluta till behållar registret (eller registren) som innehåller modul avbildningarna. IoT Edge runtime måste ansluta till IoT Hub för att hämta information om enhets konfigurationen och för att skicka meddelanden och telemetri. Om du använder automatisk etablering måste IoT Edge ansluta till enhets etablerings tjänsten. Mer information finns i [brand Väggs-och port konfigurations regler](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>Tillåt anslutningar från IoT Edge enheter
 
@@ -211,7 +216,7 @@ Om nätverks konfigurationen kräver att du uttryckligen tillåter anslutningar 
 
 * **IoT Edge agent** öppnar en beständig AMQP/MQTT-anslutning till IoT Hub, möjligen över WebSockets.
 * **IoT Edge hubb** öppnar en enda beständig AMQP-anslutning eller flera MQTT-anslutningar för att IoT Hub, möjligen över WebSockets.
-* **IoT Edge daemon** gör tillfälliga https-anrop till IoT Hub.
+* **IoT Edge tjänsten** gör tillfälliga https-anrop till IoT Hub.
 
 I samtliga tre fall matchar DNS-namnet mönstret \* . Azure-Devices.net.
 
@@ -248,7 +253,28 @@ Om dina enheter ska distribueras i ett nätverk som använder en proxyserver må
 
 ### <a name="set-up-logs-and-diagnostics"></a>Konfigurera loggar och diagnostik
 
-I Linux använder IoT Edge daemon journaler som standard driv rutin för loggning. Du kan använda kommando rads verktyget `journalctl` för att skicka frågor till daemon-loggarna. I Windows använder IoT Edge daemon PowerShell-diagnostik. Använd `Get-IoTEdgeLog` för att fråga efter loggar från daemonen. IoT Edge moduler använder JSON-drivrutinen för loggning, vilket är standardvärdet.  
+I Linux använder IoT Edge daemon journaler som standard driv rutin för loggning. Du kan använda kommando rads verktyget `journalctl` för att skicka frågor till daemon-loggarna.
+
+<!--1.2-->
+:::moniker range=">=iotedge-2020-11"
+
+Från och med version 1,2 förlitar sig IoT Edge på flera bakgrunds program. Även om varje daemons loggar kan frågas individuellt med `journalctl` , är `iotedge system` kommandona ett bekvämt sätt att fråga samman de kombinerade loggarna.
+
+* Konsoliderat `iotedge` kommando:
+
+  ```bash
+  sudo iotedge system logs
+  ```
+
+* Motsvarande `journalctl` kommando:
+
+  ```bash
+  journalctl -u aziot-edge -u aziot-identityd -u aziot-keyd -u aziot-certd -u aziot-tpmd
+  ```
+
+:::moniker-end
+
+I Windows använder IoT Edge daemon PowerShell-diagnostik. Använd `Get-IoTEdgeLog` för att fråga efter loggar från daemonen. IoT Edge moduler använder JSON-drivrutinen för loggning, vilket är standardvärdet.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

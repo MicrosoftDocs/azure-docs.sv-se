@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6165499ef0dad61910f26bc9d740bd19a28c43c7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 7374c2727048e323ce0483dd42c574134e7315bd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106252"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040556"
 ---
 Du kan kontrol lera länkarna i det här avsnittet om du vill ha mer information om tjänster som erbjuds av partner. Om din grenen hets partner inte visas i avsnittet nedan, måste du kontakta oss på din avdelnings enhets leverantör. De kan kontakta oss genom att skicka ett e-postmeddelande till azurevirtualwan@microsoft.com .
 
@@ -32,7 +32,7 @@ Du kan kontrol lera länkarna i det här avsnittet om du vill ha mer information
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[Palo-nätverk Azure Virtual WAN distributions guide](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|[Azure Virtual WAN & SteelConnect EX](https://www.riverbed.com/partners/microsoft-azure-virtual-wan.html) |
 |[Silver – högsta]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect och Microsoft Azure virtuell WAN-integrerings guide](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
-|[Velocloud – VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Distributions guide för Azure Virtual WAN-Velocloud](https://kb.vmware.com/s/article/79000)|
+|[VMware SD – WAN]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Distributions guide för Azure Virtual WAN VMware SD-WAN](https://kb.vmware.com/s/article/79000)|
 | [Versa](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [Konfigurera versa-SD – WAN och Microsoft Azure vWAN (tillgängligt för registrerade kunder)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
 *\* Direkt länk är inte tillgänglig. Kontakta partner företaget om du vill ha hjälp.*

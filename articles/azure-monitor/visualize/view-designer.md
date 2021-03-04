@@ -1,17 +1,16 @@
 ---
 title: Skapa vyer för att analysera loggdata i Azure Monitor | Microsoft Docs
 description: Med hjälp av View Designer i Azure Monitor kan du skapa anpassade vyer som visas i Azure Portal och som innehåller en mängd olika visualiseringar på data i arbets ytan Log Analytics. Den här artikeln innehåller en översikt över hur du skapar och redigerar anpassade vyer i designern.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
-ms.openlocfilehash: 11a6d21a7a066d331a92453e9aaa876800da0bf4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb0274260022c55ae657b5b28b2c9ad1903d0296
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700549"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043277"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Skapa anpassade vyer med hjälp av View Designer i Azure Monitor
 Med hjälp av View Designer i Azure Monitor kan du skapa en mängd olika anpassade vyer i Azure Portal som kan hjälpa dig att visualisera data i din Log Analytics-arbetsyta. Den här artikeln innehåller en översikt över Visa designer och procedurer för att skapa och redigera anpassade vyer.

@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834044"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043056"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Vad är nytt i Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) hjälper dig att identifiera, utvärdera och migrera lokala servrar, appar och data till Microsoft Azure molnet. I den här artikeln sammanfattas nya versioner och funktioner i Azure Migrate.
+
+## <a name="update-march-2021"></a>Uppdatering (mars 2021)
+- Stöd för att tillhandahålla flera autentiseringsuppgifter för servern på Azure Migrate-enheten för att identifiera installerade program (program varu inventering), agent lös beroende analys och identifiera SQL Server instanser och databaser i VMware-miljön. [Läs mer](tutorial-discover-vmware.md#provide-server-credentials)
+- Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. [Läs mer](concepts-azure-sql-assessment-calculation.md)<br/>Om du vill testa den här funktionen använder du [den här länken](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Gå till vägledningen för [identifiering](tutorial-discover-vmware.md) och [utvärdering](tutorial-assess-sql.md) för att komma igång.
 
 ## <a name="update-january-2021"></a>Uppdatering (januari 2021)
 -  Azure Migrate: verktyget Migreringsverktyg nu kan du migrera virtuella VMware-datorer, fysiska servrar och virtuella datorer från andra moln till virtuella Azure-datorer med diskar som är krypterade med kryptering på Server sidan med Kundhanterade nycklar (CMK).

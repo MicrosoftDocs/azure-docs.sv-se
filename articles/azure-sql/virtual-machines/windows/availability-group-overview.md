@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131907"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042461"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always on-tillgänglighetsgrupper på SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Om du vill öka redundansen och hög tillgänglighet bör SQL Server virtuella d
 
 Att placera en uppsättning virtuella datorer i samma tillgänglighets uppsättning skyddar mot avbrott i ett Data Center som orsakas av utrustnings problem (virtuella datorer i en tillgänglighets uppsättning delar inte resurser) eller från uppdateringar (virtuella datorer i en tillgänglighets uppsättning uppdateras inte samtidigt). Tillgänglighetszoner skydda mot ett helt data centers haveri, med varje zon som representerar en uppsättning data Center inom en region.  Genom att se till att resurser placeras i olika Tillgänglighetszoner kan du inte göra något av dina virtuella datorer offline på data center nivå.
 
-När du skapar virtuella Azure-datorer måste du välja mellan att konfigurera tillgänglighets uppsättningar jämfört med Tillgänglighetszoner.  En virtuell Azure-dator är inte medlem i båda.
+När du skapar virtuella Azure-datorer måste du välja mellan att konfigurera tillgänglighets uppsättningar jämfört med Tillgänglighetszoner.  En virtuell Azure-dator kan inte delta i båda.
 
 
 ## <a name="connectivity"></a>Anslutning 
@@ -51,6 +51,7 @@ I en traditionell lokal distribution ansluter klienter till tillgänglighets gru
 
 Med SQL Server på virtuella Azure-datorer konfigurerar du en [belastningsutjämnare](availability-group-vnn-azure-load-balancer-configure.md) för att dirigera trafik till din tillgänglighets grupps lyssnare eller, om du är på SQL Server 2019 CU8 och senare, kan du konfigurera en [DNN-lyssnare (Distributed Network Name)](availability-group-distributed-network-name-dnn-listener-configure.md) för att ersätta den traditionella VNN tillgänglighets gruppens lyssnare. 
 
+Mer information om kluster anslutnings alternativ finns i [dirigera hadr-anslutningar till SQL Server på virtuella Azure-datorer](hadr-cluster-best-practices.md#connectivity). 
 
 ### <a name="vnn-listener"></a>VNN-lyssnare 
 
@@ -82,17 +83,17 @@ Följande tabell innehåller en jämförelse av tillgängliga alternativ:
 |**SQL Server-version** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-utgåva** |Stora företag |Stora företag |Stora företag |Enterprise, standard|
 |**Windows Server-version**| 2016 + | 2016 + | 2016 + | Alla|
-|**Skapar klustret åt dig**|Ja|Ja | Ja |Nej|
-|**Skapar tillgänglighets gruppen åt dig** |Ja |Nej|Nej|Nej|
-|**Skapar lyssnare och belastningsutjämnare separat** |Nej|Nej|Nej|Ja|
-|**Möjligt att skapa DNN-lyssnare med den här metoden?**|Nej|Nej|Nej|Ja|
+|**Skapar klustret åt dig**|Ja|Ja | Ja |Inga|
+|**Skapar tillgänglighets gruppen åt dig** |Ja |Inga|Inga|Inga|
+|**Skapar lyssnare och belastningsutjämnare separat** |Inga|Inga|Inga|Ja|
+|**Möjligt att skapa DNN-lyssnare med den här metoden?**|Inga|Inga|Inga|Ja|
 |**Konfiguration av WSFC-kvorum**|Molnvittne|Molnvittne|Molnvittne|Alla|
-|**DR med flera regioner** |Nej|Nej|Nej|Ja|
+|**DR med flera regioner** |Inga|Inga|Inga|Ja|
 |**Stöd för multinätet** |Ja|Ja|Ja|Ja|
 |**Stöd för en befintlig AD**|Ja|Ja|Ja|Ja|
 |**DR med flera zoner i samma region**|Ja|Ja|Ja|Ja|
-|**Distribuerad AG utan AD**|Nej|Nej|Nej|Ja|
-|**Distribuerad AG utan kluster** |Nej|Nej|Nej|Ja|
+|**Distribuerad AG utan AD**|Inga|Inga|Inga|Ja|
+|**Distribuerad AG utan kluster** |Inga|Inga|Inga|Ja|
 
 Mer information finns i [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [snabb starts mallar](availability-group-quickstart-template-configure.md)och [manuell](availability-group-manually-configure-prerequisites-tutorial.md).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042433"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatisk registrering med SQL IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ Att registrera din SQL Server VM med [SQL IaaS agent-tillägget](sql-server-iaas
 
 När automatisk registrering har Aktiver ATS körs ett jobb dagligen för att identifiera om SQL Server har installerats på alla oregistrerade virtuella datorer i prenumerationen. Det gör du genom att kopiera binärfilerna för SQL IaaS-agenttjänsten till den virtuella datorn och sedan köra ett engångs verktyg som söker efter registrerings data filen SQL Server. Om SQL Server Hive identifieras, registreras den virtuella datorn med tillägget i lättviktigt läge. Om det inte finns någon SQL Server Hive i registret tas binärfilerna bort.
 
-När automatisk registrering har Aktiver ATS för en prenumeration registreras alla aktuella och framtida virtuella datorer som har SQL Server installerat med tillägget SQL IaaS agent i Lightweight-läge. Du måste fortfarande [Uppgradera till fullständigt hanterings läge manuellt](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) för att kunna dra nytta av den fullständiga funktions uppsättningen. 
+När automatisk registrering har Aktiver ATS för en prenumeration registreras alla aktuella och framtida virtuella datorer som har SQL Server installerat med SQL IaaS agent-tillägget **i lättviktigt läge utan drift avbrott, och utan att starta om tjänsten SQL Server**. Du måste fortfarande [Uppgradera till fullständigt hanterings läge manuellt](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full) för att kunna dra nytta av den fullständiga funktions uppsättningen. 
 
 > [!IMPORTANT]
 > SQL IaaS agent-tillägget samlar in data i Express syfte att ge kunderna valfria förmåner när de använder SQL Server i Azure Virtual Machines. Microsoft kommer inte att använda dessa data för licens granskningar utan kundens medgivande. Se [SQL Server sekretess tillägg](/sql/sql-server/sql-server-privacy#non-personal-data) för mer information.

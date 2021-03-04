@@ -1,17 +1,16 @@
 ---
 title: Filter i Azure Monitor vyer | Microsoft Docs
 description: Ett filter i en Azure Monitor-vy låter användare filtrera data i vyn med värdet för en viss egenskap utan att ändra vyn.  I den här artikeln beskrivs hur du använder ett filter och lägger till ett i en anpassad vy.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 988bb1467e7bf2cca31151d85c57677b235cab30
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624652"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043311"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filter i Azure Monitor vyer
 Ett **filter** i en [Azure Monitor-vy](view-designer.md) låter användare filtrera data i vyn med värdet för en viss egenskap utan att ändra vyn.  Du kan till exempel tillåta att användare av vyn filtrerar vyn för data enbart från en viss dator eller uppsättning datorer.  Du kan skapa flera filter i en enskild vy så att användarna kan filtrera efter flera egenskaper.  I den här artikeln beskrivs hur du använder ett filter och lägger till ett i en anpassad vy.

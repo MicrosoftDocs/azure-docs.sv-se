@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7f3d32a782c653b3be8b3d6f6714bc9065a73518
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680483"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042903"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Självstudie: Migrera en Android-app från Google Maps
 
@@ -35,7 +35,7 @@ Mer information om hur du utvecklar med Android SDK genom att Azure Maps finns i
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Skapa ett Azure Maps-konto genom att logga in på [Azure Portal](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Skapa ett Azure Maps-konto genom att logga in på [Azure Portal](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -187,7 +187,7 @@ Om du vill visa en karta som använder Azure Maps SDK för Android måste du utf
     3. Uppdatera beroende blocket. Lägg till en ny implementerings beroende linje för den senaste Azure Maps Android SDK: n:
 
         ```Java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
         > [!Note]

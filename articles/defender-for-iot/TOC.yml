@@ -113,12 +113,12 @@
             - name: Identifiera apparater som krävs
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
               href: how-to-identify-required-appliances.md
-            - name: Installera programvara
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install, deploy'
-              href: how-to-install-software.md
             - name: Konfigurera ditt nätverk
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
+            - name: Installera programvara
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              href: how-to-install-software.md
         - name: Förbereda sensorer
           items:
             - name: Registrera sensorer
@@ -155,7 +155,7 @@
         - name: Hantera sensorer i molnet
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Hantera den lokala hanteringskonsolen
-          displayName: 'upgrade, activation, certificate, SSL, TLS, connect, sync, backup, restore, software update, failure'
+          displayName: 'upgrade, activation, certificate, software update, backup, restore, proxy, password recovery'
           href: how-to-manage-the-on-premises-management-console.md
         - name: Arbeta med paket för hotinformation
           href: how-to-work-with-threat-intelligence-packages.md

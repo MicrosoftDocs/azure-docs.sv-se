@@ -1,17 +1,16 @@
 ---
 title: Logg frågor i Azure Monitor
 description: Referensinformation för Kusto-frågespråket som används av Azure Monitor. Innehåller ytterligare element som är speciella för Azure Monitor och element som inte stöds i Azure Monitor logg frågor.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: 7ce73fc69ac0ff88c6048aad39fd07ae802b978d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 529fc432bf8777ef7e2b527f08e9cb59e42bf156
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704233"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041033"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Logg frågor i Azure Monitor
 Azure Monitor loggar baseras på Azure Datautforskaren, och logg frågor skrivs med samma KQL (Kusto Query Language). Detta är ett stort språk utformat för att vara lätt att läsa och redigera, så du bör kunna börja skriva frågor med några grundläggande rikt linjer.

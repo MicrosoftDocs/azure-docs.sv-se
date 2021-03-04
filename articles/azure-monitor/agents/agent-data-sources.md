@@ -1,17 +1,16 @@
 ---
 title: Log Analytics agent data källor i Azure Monitor
 description: Data källor definierar de loggdata som Azure Monitor samlar in från agenter och andra anslutna källor.  I den här artikeln beskrivs hur Azure Monitor använder data källor, förklarar hur du konfigurerar dem och ger en översikt över de olika data källor som är tillgängliga.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041950"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics agent data källor i Azure Monitor
 De data som Azure Monitor samlar in från virtuella datorer med [Log Analytics](./log-analytics-agent.md) agent definieras av de data källor som du konfigurerar på [arbets ytan Log Analytics](../logs/data-platform-logs.md).   Varje data källa skapar poster av en viss typ med varje typ som har en egen uppsättning egenskaper.
@@ -40,11 +39,11 @@ I följande tabell visas de agent data källor som för närvarande är tillgän
 
 
 ## <a name="configuring-data-sources"></a>Konfigurera data källor
-Om du vill konfigurera data källor för Log Analytics agenter går du till menyn **Log Analytics arbets ytor** i Azure Portal och väljer en arbets yta. Klicka på **Avancerade inställningar** och sedan på **data**. Välj den data källa som du vill konfigurera. Du kan följa länkarna i tabellen ovan för dokumentation för varje data källa och information om deras konfiguration.
+Om du vill konfigurera data källor för Log Analytics agenter går du till menyn **Log Analytics arbets ytor** i Azure Portal och väljer en arbets yta. Klicka på **agent konfiguration**. Välj fliken för den data källa som du vill konfigurera. Du kan följa länkarna i tabellen ovan för dokumentation för varje data källa och information om deras konfiguration.
 
 Alla konfigurationer levereras till alla agenter som är anslutna till arbets ytan.  Du kan inte utesluta anslutna agenter från den här konfigurationen.
 
-![Konfigurera Windows-händelser](media/agent-data-sources/configure-events.png)
+[![Konfigurera Windows-händelser](media/agent-data-sources/configure-events.png)](media/agent-data-sources/configure-events.png#lightbox)
 
 
 

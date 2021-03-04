@@ -1,26 +1,21 @@
 ---
 title: Visa aktivitets loggar för Azure RBAC-ändringar
-description: Visa aktivitets loggar för Azure-rollbaserad åtkomst kontroll (Azure RBAC) ändringar av Azure-resurser under de senaste 90 dagarna.
+description: Visa aktivitets loggar för Azure-rollbaserad åtkomst kontroll (Azure RBAC) ändringar under de senaste 90 dagarna.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 03/01/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042149"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Visa aktivitets loggar för Azure RBAC-ändringar
 
@@ -41,6 +36,10 @@ Det enklaste sättet att komma igång på är att visa aktivitetsloggarna i Azur
 
 ![Aktivitets loggar med portalen-skärm bild](./media/change-history-report/activity-log-portal.png)
 
+Klicka på en post för att öppna fönstret Sammanfattning om du vill ha mer information. Klicka på **JSON** -fliken för att få en detaljerad logg.
+
+![Aktivitets loggar med hjälp av portalen med Summary-fönstret öppen skärm bild](./media/change-history-report/activity-log-summary-portal.png)
+
 Aktivitets loggen på portalen har flera filter. Här är Azure RBAC-relaterade filter:
 
 | Filtrera | Värde |
@@ -50,9 +49,24 @@ Aktivitets loggen på portalen har flera filter. Här är Azure RBAC-relaterade 
 
 Mer information om aktivitets loggar finns i [Visa aktivitets loggar för att övervaka åtgärder på resurser](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+## <a name="interpret-a-log-entry"></a>Tolka en loggpost
+
+Logg resultatet från JSON-fliken, Azure PowerShell eller Azure CLI kan innehålla mycket information. Här följer några av de nyckel egenskaper som du kan söka efter när du försöker tolka en loggpost. Information om hur du filtrerar logg resultatet med Azure PowerShell eller Azure CLI finns i följande avsnitt.
+
+> [!div class="mx-tableFixed"]
+> | Egenskap | Exempelvärden | Beskrivning |
+> | --- | --- | --- |
+> | auktorisering: åtgärd | Microsoft.Authorization/roleAssignments/write | Skapa roll tilldelning |
+> |  | Microsoft. Authorization/roleAssignments/Delete | Ta bort roll tilldelning |
+> |  | Microsoft. Authorization/roleDefinitions/Write | Skapa eller uppdatera roll definition |
+> |  | Microsoft. Authorization/roleDefinitions/Delete | Ta bort roll definition |
+> | auktorisering: omfång | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | Åtgärdens omfång |
+> | anroparen | admin@example.com<br/>objectID | Som initierade åtgärden |
+> | eventTimestamp | 2021-03-01T22:07:41.126243 Z | Tid då åtgärden utfördes |
+> | status: värde | Börjat<br/>Lyckades<br/>Misslyckad | Status för åtgärden |
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Om du vill visa aktivitets loggar med Azure PowerShell använder du kommandot [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) .
 
@@ -68,56 +82,115 @@ Det här kommandot visar en lista över alla roll definitions ändringar i en re
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Det här kommandot visar alla ändringar av roll tilldelning och roll definition i en prenumeration under de senaste sju dagarna och visar resultatet i en lista:
+### <a name="filter-log-output"></a>Filtrera logg utdata
+
+Logg resultatet kan innehålla mycket information. Det här kommandot visar alla ändringar av roll tilldelning och roll definition i en prenumeration under de senaste sju dagarna och filtrerar utdata:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-```Example
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:07 PM
+Följande visar ett exempel på den filtrerade loggen när du skapar en roll tilldelning:
+
+```azurepowershell
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:42 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
-                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          serviceRequestId: {serviceRequestId}
                           eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:05 PM
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:41 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
-                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
+                          requestbody    : {"Id":"{roleAssignmentId}","Properties":{"PrincipalId":"{principalId}","PrincipalType":"User","RoleDefinitionId":"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64","Scope":"/subscriptions/
+                          {subscriptionId}/resourceGroups/example-group"}}
+                          eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
 ```
 
-Om du använder ett huvud namn för tjänsten för att skapa roll tilldelningar, är egenskapen anropare ett objekt-ID. Du kan använda [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) för att hämta information om tjänstens huvud namn.
+Om du använder ett huvud namn för tjänsten för att skapa roll tilldelningar, kommer egenskapen Caller att vara ett objekt-ID för tjänstens huvud namn. Du kan använda [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) för att hämta information om tjänstens huvud namn.
 
 ```Example
-Caller                  : 44444444-4444-4444-4444-444444444444
-EventTimestamp          : 6/4/2020 9:43:08 PM
+Caller                  : {objectId}
+EventTimestamp          : 3/1/2021 9:43:08 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              : 
                           statusCode     : Created
-                          serviceRequestId: 55555555-5555-5555-5555-555555555555
-                          category       : Administrative
+                          serviceRequestId: {serviceRequestId}
+                          eventCategory  : Administrative
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Om du vill visa aktivitets loggar med Azure CLI använder du kommandot [AZ Monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) .
+Om du vill visa aktivitets loggar med Azure CLI använder du kommandot [AZ Monitor Activity-Log List](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) .
 
-Det här kommandot visar en lista över aktivitets loggarna i en resurs grupp från den 27 februari, som ser fram sju dagar:
+Det här kommandot visar en lista över aktivitets loggarna i en resurs grupp från 1 mars, som ser framåt sju dagar:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-Det här kommandot visar aktivitets loggarna för providern för auktorisering från den 27 februari, som ser fram sju dagar:
+Det här kommandot listar aktivitets loggarna för providern för auktorisering från 1 mars, vilket ser till att vidarebefordra sju dagar:
 
 ```azurecli
-az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
+```
+
+### <a name="filter-log-output"></a>Filtrera logg utdata
+
+Logg resultatet kan innehålla mycket information. Detta kommando visar en lista över alla ändringar av roll tilldelning och roll definition i en prenumeration som ser fram sju dagar och filtrerar utdata:
+
+```azurecli
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
+```
+
+Följande visar ett exempel på den filtrerade loggen när du skapar en roll tilldelning:
+
+```azurecli
+[
+ {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:42.456241+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "serviceRequestId": "{serviceRequestId}",
+      "statusCode": "Created"
+    }
+  },
+  {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:41.126243+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "requestbody": "{\"Id\":\"{roleAssignmentId}\",\"Properties\":{\"PrincipalId\":\"{principalId}\",\"PrincipalType\":\"User\",\"RoleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64\",\"Scope\":\"/subscriptions/{subscriptionId}/resourceGroups/example-group\"}}"
+    }
+  }
+]
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-loggar
@@ -139,7 +212,7 @@ Här är de grundläggande stegen för att komma igång:
 
    ![Alternativ för Azure Monitor-loggar i portalen](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Du kan också använda [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) för att fråga och visa loggarna. Mer information finns i [Kom igång med Azure Monitor logg frågor](../azure-monitor/logs/get-started-queries.md).
+1. Du kan också använda [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) för att fråga och visa loggarna. Mer information finns i [Kom igång med logg frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
 Här är en fråga som returnerar nya roll tilldelningar organiserade efter mål resurs leverantör:
 
@@ -162,5 +235,5 @@ AzureActivity
 ![Aktivitets loggar med hjälp av Advanced Analytics-portalen – skärm bild](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* [Visa händelser i aktivitetsloggen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Övervaka prenumerationsaktivitet med Azure-aktivitetsloggen](../azure-monitor/essentials/platform-logs-overview.md)
+* [Visa aktivitets loggar för att övervaka åtgärder på resurser](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Övervaka prenumerations aktivitet med Azures aktivitets logg](../azure-monitor/essentials/platform-logs-overview.md)

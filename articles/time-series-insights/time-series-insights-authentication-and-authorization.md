@@ -2,7 +2,6 @@
 title: API-autentisering och auktorisering – Azure Time Series Insights | Microsoft Docs
 description: 'Den här artikeln beskriver hur du konfigurerar autentisering och auktorisering för ett anpassat program som anropar Azure Time Series Insights-API: et.'
 ms.service: time-series-insights
-services: time-series-insights
 author: deepakpalled
 ms.author: shresha
 manager: dpalled
@@ -12,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 58c0f408e3ad80109efd3db79d6e4a0d881aed78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724188"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041220"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Autentisering och auktorisering för Azure Time Series Insights API
 
-Beroende på dina affärs behov kan din lösning innehålla ett eller flera klient program som du använder för att interagera med din Azure Time Series Insights-Miljös [API: er](https://docs.microsoft.com/en-us/rest/api/time-series-insights/reference-data-access-overview). Azure Time Series Insights utför autentisering med [Azure AD-säkerhetstoken baserat på OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). För att autentisera dina klienter måste du skaffa en Bearer-token med rätt behörigheter och skicka den tillsammans med dina API-anrop. I det här dokumentet beskrivs flera autentiseringsuppgifter för att hämta metoder som du kan använda för att hämta en Bearer-token och autentisera.
+Beroende på dina affärs behov kan din lösning innehålla ett eller flera klient program som du använder för att interagera med din Azure Time Series Insights-Miljös [API: er](/rest/api/time-series-insights/reference-data-access-overview). Azure Time Series Insights utför autentisering med [Azure AD-säkerhetstoken baserat på OAUTH 2,0](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). För att autentisera dina klienter måste du skaffa en Bearer-token med rätt behörigheter och skicka den tillsammans med dina API-anrop. I det här dokumentet beskrivs flera autentiseringsuppgifter för att hämta metoder som du kan använda för att hämta en Bearer-token och autentisera.
 
 
   registrera en app i Azure Active Directory att använda bladet ny Azure Active Directory. Appar som registrerats i Azure Active Directory gör det möjligt för användare att autentisera till och ha behörighet att använda Azure Time Series Insight-API som är associerat med en Azure Time Series Insights miljö.
@@ -34,7 +33,7 @@ I följande avsnitt beskrivs hur du använder en hanterad identitet från Azure 
 - Du kan använda hanterade identiteter för att autentisera till valfri Azure-tjänst som stöder Azure AD-autentisering, inklusive Azure Key Vault.
 - Hanterade identiteter kan användas utan ytterligare kostnader.
 
-Mer information om de två typerna av hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Mer information om de två typerna av hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md)
 
 Du kan använda hanterade identiteter från din:
 
@@ -44,7 +43,7 @@ Du kan använda hanterade identiteter från din:
 - Azure Container instances
 - med mera...
 
-Se [Azure-tjänster som har stöd för hanterade identiteter för Azure-resurser](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) för den fullständiga listan.
+Se [Azure-tjänster som har stöd för hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) för den fullständiga listan.
 
 ## <a name="azure-active-directory-app-registration"></a>Azure Active Directory app-registrering
 
@@ -54,9 +53,9 @@ När du har slutfört registreringen av appen har du en globalt unik instans av 
 
 Om du registrerar ett program i portalen skapas ett program objekt och ett huvud namn för tjänsten automatiskt i din hem klient. Om du registrerar/skapar ett program med hjälp av Microsoft Graph-API: erna, är det ett separat steg att skapa tjänstens huvud namns objekt. Ett huvud objekt för tjänsten krävs för att begära token.
 
-Se till att granska [säkerhets](https://docs.microsoft.com/azure/active-directory/develop/identity-platform-integration-checklist#security) check listan för ditt program. Som bästa praxis bör du använda autentiseringsuppgifter för [certifikat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials), inte autentiseringsuppgifter för lösen ord (klient hemligheter).
+Se till att granska [säkerhets](../active-directory/develop/identity-platform-integration-checklist.md#security) check listan för ditt program. Som bästa praxis bör du använda autentiseringsuppgifter för [certifikat](../active-directory/develop/active-directory-certificate-credentials.md), inte autentiseringsuppgifter för lösen ord (klient hemligheter).
 
-Se [program-och tjänst huvud objekt i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) för mer information.
+Se [program-och tjänst huvud objekt i Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) för mer information.
 
 ## <a name="step-1-create-your-managed-identity-or-app-registration"></a>Steg 1: skapa din hanterade identitet eller registrera din app
 
@@ -64,16 +63,16 @@ När du har identifierat om du ska använda en hanterad identitets-eller app-reg
 
 ### <a name="managed-identity"></a>Hanterad identitet
 
-De steg som du ska använda för att skapa en hanterad identitet varierar beroende på var koden finns och huruvida du skapar ett systemtilldelat eller en tilldelad identitet. Läs [hanterade identitets typer](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) för att förstå skillnaden. När du har valt din identitets typ letar du reda på och följer rätt självstudie i [dokumentationen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/)för Azure AD-hanterade identiteter. Där hittar du instruktioner för hur du konfigurerar hanterade identiteter för:
+De steg som du ska använda för att skapa en hanterad identitet varierar beroende på var koden finns och huruvida du skapar ett systemtilldelat eller en tilldelad identitet. Läs [hanterade identitets typer](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) för att förstå skillnaden. När du har valt din identitets typ letar du reda på och följer rätt självstudie i [dokumentationen](../active-directory/managed-identities-azure-resources/index.yml)för Azure AD-hanterade identiteter. Där hittar du instruktioner för hur du konfigurerar hanterade identiteter för:
 
-- [Virtuella Azure-datorer](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#enable-system-assigned-managed-identity-during-creation-of-a-vm)
-- [App Service och Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+- [Virtuella Azure-datorer](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-during-creation-of-a-vm)
+- [App Service och Azure Functions](../app-service/overview-managed-identity.md)
+- [Azure Container Instances](../container-instances/container-instances-managed-identity.md)
 - med mera...
 
 ### <a name="application-registration"></a>Programregistrering
 
-Följ stegen som visas i [Registrera ett program](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#register-an-application).
+Följ stegen som visas i [Registrera ett program](../active-directory/develop/quickstart-register-app.md#register-an-application).
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
@@ -81,16 +80,16 @@ Följ stegen som visas i [Registrera ett program](https://docs.microsoft.com/azu
 
 När din Azure Time Series Insights-miljö tar emot en begäran, verifieras först anroparens token-token. Om verifieringen lyckas har anroparen autentiserats och en annan kontroll görs för att se till att anroparen har behörighet att utföra den begärda åtgärden. Om du vill auktorisera användarens eller tjänstens huvud namn måste du först ge dem åtkomst till miljön genom att tilldela dem antingen rollen läsare eller deltagare.
 
-- Om du vill bevilja åtkomst via [Azure Portal](https://portal.azure.com/) användar gränssnitt, följer du instruktionerna som anges i artikeln [ge åtkomst till en miljö](https://docs.microsoft.com/azure/time-series-insights/concepts-access-policies) . När du väljer användaren kan du söka efter den hanterade identiteten eller appens registrering med hjälp av namnet eller med ID.
+- Om du vill bevilja åtkomst via [Azure Portal](https://portal.azure.com/) användar gränssnitt, följer du instruktionerna som anges i artikeln [ge åtkomst till en miljö](concepts-access-policies.md) . När du väljer användaren kan du söka efter den hanterade identiteten eller appens registrering med hjälp av namnet eller med ID.
 
-- Kör följande kommando för att bevilja åtkomst med hjälp av Azure CLI. Läs dokumentationen [här](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/access-policy?view=azure-cli-latest) för en fullständig lista över kommandon som är tillgängliga för att hantera åtkomst.
+- Kör följande kommando för att bevilja åtkomst med hjälp av Azure CLI. Läs dokumentationen [här](/cli/azure/ext/timeseriesinsights/tsi/access-policy) för en fullständig lista över kommandon som är tillgängliga för att hantera åtkomst.
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"
    ```
 
 > [!Note]
-> Timeseriesinsights-tillägget för Azure CLI kräver version 2.11.0 eller senare. Tillägget installeras automatiskt första gången du kör ett AZ-kommando för åtkomst princip för TSD. [Läs mer](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview) om tillägg.
+> Timeseriesinsights-tillägget för Azure CLI kräver version 2.11.0 eller senare. Tillägget installeras automatiskt första gången du kör ett AZ-kommando för åtkomst princip för TSD. [Läs mer](/cli/azure/azure-cli-extensions-overview) om tillägg.
 
 ## <a name="step-3-requesting-tokens"></a>Steg 3: begära token
 
@@ -107,37 +106,37 @@ När din hanterade identitet eller app-registrering har etablerats och tilldelat
 
 ### <a name="managed-identities"></a>Hanterade identiteter
 
-När du kommer åt från Azure App Service eller funktioner följer du rikt linjerna i [Hämta token för Azure-resurser](https://docs.microsoft.com/azure/app-service/overview-managed-identity).
+När du kommer åt från Azure App Service eller funktioner följer du rikt linjerna i [Hämta token för Azure-resurser](../app-service/overview-managed-identity.md).
 
 > [!TIP]
-> För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via [klient biblioteket för Azure Identity](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) för .net. 
+> För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via [klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme) för .net. 
 
-För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via paketet Microsoft. Azure. Services. AppAuthentication. Det här paketet är populärt på grund av dess enkelhet-och säkerhets förmåner. Utvecklare kan skriva kod en gång och låta klient biblioteket bestämma hur de ska autentiseras baserat på program miljön – om en utvecklares arbets Station använder ett utvecklares konto eller distribueras i Azure med hjälp av en hanterad tjänst identitet. För information om migrering från det föregående AppAuthentication-biblioteket läser [du AppAuthentication till Azure. vägledning för identitets migrering](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration?view=azure-dotnet).
+För .NET-program och-funktioner är det enklaste sättet att arbeta med en hanterad identitet via paketet Microsoft. Azure. Services. AppAuthentication. Det här paketet är populärt på grund av dess enkelhet-och säkerhets förmåner. Utvecklare kan skriva kod en gång och låta klient biblioteket bestämma hur de ska autentiseras baserat på program miljön – om en utvecklares arbets Station använder ett utvecklares konto eller distribueras i Azure med hjälp av en hanterad tjänst identitet. För information om migrering från det föregående AppAuthentication-biblioteket läser [du AppAuthentication till Azure. vägledning för identitets migrering](/dotnet/api/overview/azure/app-auth-migration).
 
 Begär en token för Azure Time Series Insights med C# och klient biblioteket för Azure Identity för .NET:
 
-    ```csharp
-    using Azure.Identity;
-    // ...
-    var credential = new DefaultAzureCredential();
-    var token = credential.GetToken(
-    new Azure.Core.TokenRequestContext(
-        new[] { "https://api.timeseries.azure.com/" }));
-   var accessToken = token. Åtkomsttokenbegäran
-    ```
+   ```csharp
+   using Azure.Identity;
+   // ...
+   var credential = new DefaultAzureCredential();
+   var token = credential.GetToken(
+   new Azure.Core.TokenRequestContext(
+       new[] { "https://api.timeseries.azure.com/" }));
+   var accessToken = token.Token;
+   ```
 
 ### <a name="app-registration"></a>Appregistrering
 
-* Utvecklare kan använda [Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) (MSAL) för att hämta token för registrerings program.
+* Utvecklare kan använda [Microsoft Authentication Library](../active-directory/develop/msal-overview.md) (MSAL) för att hämta token för registrerings program.
 
 MSAL kan användas i många program scenarier, inklusive, men inte begränsat till:
 
-* [Program med en sida (Java Script)](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview.md)
-* [Webb program som loggar in en användare och anropar ett webb-API för användarens räkning](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-overview.md)
-* [Webb-API som anropar ett annat underordnat webb-API å den inloggade användarens vägnar](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-overview.md)
-* [Skriv bords program som anropar ett webb-API å den inloggade användarens vägnar](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview.md)
-* [Mobil program som anropar ett webb-API åt användaren som är inloggad interaktivt](https://docs.microsoft.com/azure/active-directory/develop/scenario-mobile-overview.md).
-* [Desktop/Service daemon-program som anropar webb-API: et åt sig själv](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-overview.md)
+* [Program med en sida (Java Script)](../active-directory/develop/scenario-spa-overview.md)
+* [Webb program som loggar in en användare och anropar ett webb-API för användarens räkning](../active-directory/develop/scenario-web-app-call-api-overview.md)
+* [Webb-API som anropar ett annat underordnat webb-API å den inloggade användarens vägnar](../active-directory/develop/scenario-web-api-call-api-overview.md)
+* [Skriv bords program som anropar ett webb-API å den inloggade användarens vägnar](../active-directory/develop/scenario-desktop-overview.md)
+* [Mobil program som anropar ett webb-API åt användaren som är inloggad interaktivt](../active-directory/develop/scenario-mobile-overview.md).
+* [Desktop/Service daemon-program som anropar webb-API: et åt sig själv](../active-directory/develop/scenario-daemon-overview.md)
 
 För exempel C#-kod som visar hur man hämtar en token som en app-registrering och fråga data från en Gen2-miljö, se exempel appen på [GitHub](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)
 

@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753883"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043073"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate utrustning: vanliga frågor
 
@@ -36,21 +36,20 @@ Här är mer information om Azure Migrate-enheten:
 
 ## <a name="how-can-i-deploy-the-appliance"></a>Hur kan jag distribuera installationen?
 
-Enheten kan distribueras på följande sätt:
+Installationen kan distribueras med ett par olika metoder:
 
-- Använda en mall för identifiering av virtuella VMware-datorer (. ÄGG fil) och virtuella Hyper-V-datorer (. VHD-fil) för att skapa en ny virtuell dator som är värd för-enheten.
-- Om du inte vill använda en mall kan du distribuera-installationen på en befintlig fysisk eller virtuell dator för identifiering av virtuella VMware-datorer eller virtuella Hyper-V-datorer med ett PowerShell-installations skript som är tillgängligt för hämtning i en zip-fil från portalen.
-- För fysiska eller virtuella servrar från lokalt eller i ett moln distribuerar du alltid installationen med hjälp av ett skript på en befintlig server.
-- För Azure Government kan alla tre apparater bara distribueras med hjälp av PowerShell-installationsprogrammet.
+- Installationen kan distribueras med hjälp av en mall för servrar som kör i VMware-eller Hyper-V-miljön ([ägg-mall för VMware](how-to-set-up-appliance-vmware.md) eller [VHD för Hyper-v](how-to-set-up-appliance-hyper-v.md)).
+- Om du inte vill använda en mall kan du distribuera-installationen för VMware-eller Hyper-V-miljön med hjälp av ett [PowerShell-skript](deploy-appliance-script.md).
+- I Azure Government bör du distribuera installationen med hjälp av ett PowerShell-skript. Se distributions stegen [här](deploy-appliance-script-government.md).
+- För fysiska eller virtualiserade servrar lokalt eller i andra moln distribuerar du alltid installationen med hjälp av ett PowerShell-skript. Se distributions stegen [här](how-to-set-up-appliance-physical.md).
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hur ansluter-enheten till Azure?
 
 Enheten kan ansluta via Internet eller med hjälp av Azure-ExpressRoute. 
 
 - Kontrol lera att enheten kan ansluta till dessa [Azure-URL: er](./migrate-appliance.md#url-access). 
-- Du kan använda ExpressRoute med Microsoft-peering.  Offentlig peering är inaktuell och är inte tillgänglig för nya ExpressRoute-kretsar.
+- Du kan använda ExpressRoute med Microsoft-peering. Offentlig peering är inaktuell och är inte tillgänglig för nya ExpressRoute-kretsar.
 - Privat peering stöds bara.
-
 
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Påverkar enhets analysen prestanda?
@@ -109,7 +108,7 @@ Nej. Det finns en en-till-en-mappning mellan en [Azure Migrate-apparat](migrate-
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Kan ett Azure Migrate projekt ha flera anordningar?
 
-Ett projekt kan ha flera anslutna enheter. En installation kan dock bara kopplas till ett projekt. 
+Ett projekt kan ha flera registrerade enheter. En apparat kan dock bara registreras med ett projekt.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kan Azure Migrate utrustning/-replikering ansluta till samma vCenter?
 
@@ -135,7 +134,7 @@ Du kan inte heller återanvända en befintlig Azure Migrate projekt nyckel på e
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Kan jag konfigurera enheten på en virtuell Azure-dator?
 
-Nej. Det här alternativet stöds för närvarande inte. 
+Nej. Det här alternativet stöds för närvarande inte.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Kan jag identifiera på en ESXi-värd?
 
@@ -150,6 +149,19 @@ Endast apparaten och installations agenterna uppdateras av dessa automatiska upp
 ## <a name="can-i-check-agent-health"></a>Kan jag kontrol lera agent hälsan?
 
 Ja. På portalen går du till sidan **agent hälsa** för Azure Migrate: Server utvärdering eller Azure Migrate Migreringsverktyg för Server. Där kan du kontrol lera anslutnings statusen mellan Azure och identifierings-och utvärderings agenterna på enheten.
+
+## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>Kan jag lägga till flera autentiseringsuppgifter för servern på VMware-enheten?
+
+Ja, vi har nu stöd för flera autentiseringsuppgifter för servern för att utföra program varu inventering (identifiering av installerade program), en agent lös beroende analys och identifiering av SQL Server instanser och databaser. [Läs mer](tutorial-discover-vmware.md#provide-server-credentials) om hur du anger autentiseringsuppgifter för installationen av Configuration Manager.
+
+## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>Vilken typ av autentiseringsuppgifter för servern kan jag lägga till på VMware-enheten?
+Du kan ange domän/Windows (icke-domän)/Linux (icke-domän)/SQL Server autentiseringsuppgifter för Konfigurations hanteraren. [Lär dig mer](add-server-credentials.md) om hur du anger autentiseringsuppgifter och hur vi hanterar dem.
+
+## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Vilken typ av SQL Server anslutnings egenskaper stöds av Azure Migrate för SQL-identifiering?
+Azure Migrate krypterar kommunikationen mellan Azure Migrates utrustning och källa SQL Server instanser (med egenskapen krypterad anslutning inställd på TRUE). Dessa anslutningar är krypterade med [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) (anges till sant). transport lagret använder SSL för att kryptera kanalen och kringgå certifikat kedjan för att verifiera förtroende. Installations servern måste vara konfigurerad för att [lita på certifikatets rot utfärdare](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+
+Om inget certifikat har etablerats på servern när det startas, genererar SQL Server ett självsignerat certifikat som används för att kryptera inloggnings paket. [Läs mer](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+
 
 ## <a name="next-steps"></a>Nästa steg
 

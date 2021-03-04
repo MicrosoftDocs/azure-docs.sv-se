@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: 1daf5fef1383272f728ff3dac7557e55398f7d50
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040437"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>Självstudie: Aktivera Application Gateway ingress Controller-tillägg för ett befintligt AKS-kluster med en befintlig Application Gateway
 
@@ -82,7 +82,7 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 
 Om du vill använda Azure Portal för att aktivera AGIC-tillägg går du till [( https://aka.ms/azure/portal/aks/agic) ](https://aka.ms/azure/portal/aks/agic) och navigerar till ditt AKS-kluster via portal länken. Därifrån går du till fliken nätverk i ditt AKS-kluster. Du ser avsnittet Application Gateway ingångs kontroll, som gör att du kan aktivera/inaktivera tillägg för ingångs styrenheten med hjälp av Portal gränssnittet. Markera kryss rutan bredvid "Aktivera ingångs styrenhet" och välj den Application Gateway du skapade, *myApplicationGateway* från List menyn. 
 
-![Application Gateway ingress-kontrollanten](./media/tutorial-ingress-controller-add-on-existing/portal_ingress_controller_addon.png)
+![Application Gateway ingress-kontrollanten](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
 ## <a name="peer-the-two-virtual-networks-together"></a>Peer de två virtuella nätverken tillsammans
 

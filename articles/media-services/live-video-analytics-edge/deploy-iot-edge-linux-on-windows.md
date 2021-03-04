@@ -3,12 +3,12 @@ title: Distribuera till en IoT Edge för Linux på Windows – Azure
 description: Den här artikeln innehåller rikt linjer för hur du distribuerar till en IoT Edge för Linux på Windows-enheter.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 5cf4184857f12065d808d7b528dbfe8258950cd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042189"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Distribuera till en IoT Edge för Linux på Windows-enheten (EFLOW)
 
@@ -107,7 +107,7 @@ Följande visar det övergripande flödet av dokumentet och i fem enkla steg som
 ## <a name="next-steps"></a>Nästa steg
 
 * Testa rörelse identifiering tillsammans med att spela in relevanta videor i molnet. Följ stegen från avsnittet [identifiera rörelse, spela in videoklipp för att Media Services](detect-motion-record-video-clips-media-services-quickstart.md#review-the-sample-video) snabb start.
-* Kör [AI på live video](use-your-model-quickstart#overview) (du kan hoppa över den nödvändiga installationen eftersom den redan har gjorts ovan)
+* Kör [AI på live video](use-your-model-quickstart.md#overview) (du kan hoppa över den nödvändiga installationen eftersom den redan har gjorts ovan)
 * Använd vårt [vs Code-tillägg](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) för att visa fler medie diagram.
 * Använd en [IP-kamera](https://en.wikipedia.org/wiki/IP_camera)  som stöder RTSP i stället för att använda RTSP-simulatorn. Du hittar IP-kameror som har stöd för RTSP på sidan [ONVIF-produkter](https://www.onvif.org/conformant-products/) . Sök efter enheter som uppfyller profilerna G, S eller T.
 

@@ -183,6 +183,8 @@
       href: core/concepts-telemetry-properties-commands.md
     - name: Ansluta IoT Edge-enheter
       href: core/concepts-iot-edge.md
+    - name: Bästa praxis
+      href: core/concepts-best-practices.md
 - name: Anvisningar
   items:
     - name: Utveckla och ansluta enheter
