@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 keywords: kognitiva tjänster, kognitiv intelligens, kognitiva lösningar, AI-tjänster
 ms.service: cognitive-services
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 3fd1d9e708a5f1a500440f20c2947ddfe4bc7460
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0ad2d0a10b20aa049147d61bd4e8168ea956392c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368924"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031930"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Snabb start: skapa en Cognitive Services resurs med hjälp av Azure Portal
 
@@ -64,9 +64,9 @@ Azure Cognitive Services är molnbaserade tjänster med REST API: er och SDK: er
     | [Handskriftsigenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Textanalys](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Stavningskontroll i Bing](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [Översättare](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Automatiska förslag i Bing](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
 
-    **_
+    ***
 
-3. Ange följande information på sidan _ *skapa* *:
+3. Ange följande information på sidan **skapa** :
 
     #### <a name="multi-service-resource"></a>[Resurs för flera tjänster](#tab/multiservice)
 
@@ -96,13 +96,13 @@ Azure Cognitive Services är molnbaserade tjänster med REST API: er och SDK: er
 
     Klicka på **Skapa**.
 
-    **_
+    ***
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
 
 ## <a name="get-the-keys-for-your-resource"></a>Hämta nycklar för din resurs
 
-1. När resursen har distribuerats klickar du på _ *gå till resurs* * under **Nästa steg**.
+1. När resursen har distribuerats klickar **du på gå till resurs** under **Nästa steg**.
 
     ![Sök efter Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 2/24/2021
-ms.openlocfilehash: 5d6b05b9656879f174d92d75ca8b188f7e74e5a1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef90a21ab8fad0e18542c1c88ee808237ff150c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721148"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032593"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Översikt över samförsäljning med Microsoft Sales Teams och partners
 
@@ -70,7 +70,7 @@ BIZ Apps ISV Connect Premium-stimulans status kan tillämpas på dessa erbjudand
 - Dynamics 365 för kund engagemang & PowerApps
 - Dynamics 365 för åtgärder
 
-Erbjudanden som ger _Azure IP Co-Sälj-motiverade_ eller _BIZ-appar ISV Connect Premium stimulans_ status får de här kommersiella Marketplace-fördelarna:
+Erbjudanden som ger _Azure IP Co-Sälj motiverade-_ status får de här kommersiella Marketplace-fördelarna:
 
 - Service avgiften för Marketplace minskas från 20 till 10%. Rabatten gäller din IaaS-lösning (Infrastructure as a Service) eller SaaS-lösning (program vara som en tjänst) som säljs via den kommersiella marknads platsen. Mer information finns i [service avgifter för handels platser](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - Leverantörer av moln lösnings leverantörer får 10% incitament att sälja IaaS-lösningen eller SaaS-erbjudandet. Läs mer om CSP-programmet i [Cloud Solution Provider-program](cloud-solution-providers.md).

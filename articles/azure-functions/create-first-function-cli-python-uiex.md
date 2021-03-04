@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 76ec99e5f892438aaa637b15bb7382843d90f334
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749040"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031658"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Snabb start: skapa en python-funktion i Azure från kommando raden
 
@@ -62,7 +62,7 @@ Verifiera dina krav, beroende på om du använder Azure CLI eller Azure PowerShe
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ I ett terminalfönster eller kommando fönster, kör `func --version` för att kontrol lera att Azure Functions Core Tools är version 3. x.
++ I en terminal-eller kommando fönster, kör `func --version` för att kontrol lera att <abbr title="Uppsättningen kommando rads verktyg för att arbeta med Azure Functions på den lokala datorn.">Azure Functions Core Tools</abbr> är version 3. x.
 
 + Kör `(Get-Module -ListAvailable Az).Version` och verifiera version 5,0 eller senare. 
 
@@ -292,7 +292,7 @@ Innan du kan distribuera funktions koden till Azure måste du skapa en <abbr tit
 
     ---
 
-    Ersätt `<STORAGE_NAME>` med ett namn som passar dig och <abbr title="Namnet måste vara unikt för alla lagrings konton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga eller företagets namn, program namn och en numerisk identifierare, som i contosobizappstorage20">unikt i Azure Storage</abbr>. Namn måste innehålla mellan 3 och 24 tecken och endast små bokstäver. `Standard_LRS` anger ett allmänt-syfte-konto, som [stöds av Functions](storage-considerations.md#storage-account-requirements).
+    Ersätt `<STORAGE_NAME>` med ett namn som passar dig och <abbr title="Namnet måste vara unikt för alla lagrings konton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga eller företagets namn, program namn och en numerisk identifierare, som i contosobizappstorage20.">unikt i Azure Storage</abbr>. Namn måste innehålla mellan 3 och 24 tecken och endast små bokstäver. `Standard_LRS` anger ett allmänt-syfte-konto, som [stöds av Functions](storage-considerations.md#storage-account-requirements).
     
     Lagrings kontot förväntar sig bara några cent (USD) för den här snabb starten.
 

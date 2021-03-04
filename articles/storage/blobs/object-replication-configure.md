@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762937"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031709"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurera objekt replikering för block-blobar
 
@@ -238,10 +238,10 @@ Tänk på att du måste tilldelas rollen som Azure Resource Managers **deltagare
 
 I följande tabell sammanfattas vilka värden som ska användas för princip-ID och regel-ID: n i JSON-filen i varje scenario.
 
-| När du skapar JSON-filen för det här kontot... | Ange princip-ID och regel-ID: n till det här värdet... |
-|-|-|
-| Mål konto | Standardvärdet för sträng *värde.* Azure Storage skapar princip-ID och regel-ID: n åt dig. |
-| Käll konto | Värdena för princip-ID och regel-ID: n returneras när du hämtar principen som definierats på mål kontot som en JSON-fil. |
+| När du skapar JSON-filen för det här kontot... | Ange princip-ID: t till det här värdet | Ange regel-ID: n till det här värdet |
+|-|-|-|
+| Mål konto | Standardvärdet för sträng *värde.* Azure Storage skapar ett princip-ID-värde åt dig. | En tom sträng. Azure Storage skapar regel-ID-värdena åt dig. |
+| Käll konto | Värdet för princip-ID: t som returneras när du laddar ned principen som definierats på mål kontot som en JSON-fil. | Värdena för de regel-ID: n som returneras när du laddar ned principen som definierats på mål kontot som en JSON-fil. |
 
 I följande exempel definieras en replikeringsprincip på mål kontot med en enda regel som matchar prefixet *b* och anger den minsta skapande tiden för blobbar som ska replikeras. Kom ihåg att ersätta värden inom vinkelparenteser med dina egna värden:
 
@@ -253,7 +253,7 @@ I följande exempel definieras en replikeringsprincip på mål kontot med en end
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ I följande exempel definieras en replikeringsprincip på mål kontot med en end
 
 Följ dessa steg om du vill konfigurera objekt replikering på mål kontot med en JSON-fil i Azure Portal:
 
-1. Skapa en lokal JSON-fil som definierar replikeringsprincipen på mål kontot. Ange **policyId** -fältet som **standard** så att Azure Storage definierar princip-ID: t.
+1. Skapa en lokal JSON-fil som definierar replikeringsprincipen på mål kontot. Ange **policyId** -fältet som *standard* så att Azure Storage definierar princip-ID: t.
 
     Ett enkelt sätt att skapa en JSON-fil som definierar en replikeringsprincip är att först skapa en princip för redundanstest mellan två lagrings konton i Azure Portal. Du kan sedan hämta reglerna för replikering och ändra JSON-filen efter behov.
 

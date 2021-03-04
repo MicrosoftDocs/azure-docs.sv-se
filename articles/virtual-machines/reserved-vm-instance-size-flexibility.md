@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: yashar
-ms.openlocfilehash: 6b04caec380a481569de4a33ea0159fd641c000f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673961"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030716"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibel storlek för virtuella datorer med reserverade VM-instanser
 
@@ -48,7 +48,13 @@ CSV nedan har grupper som är flexibla för instans storlek, ArmSkuName och för
 
 [Flexibilitet för instans storlek](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-Vi behåller fil-URL: en och schemat åtgärdat så att du kan använda den här filen program mässigt. Data kommer också att vara tillgängliga via API snart.
+Azure håller länken och schemat uppdaterat så att du kan använda filen program mässigt.
+
+## <a name="view-vm-size-recommendations"></a>Visa rekommendationer för VM-storlek
+
+Azure visar rekommendationer för VM-storlek i inköps upplevelsen. Om du vill visa de minsta storleks rekommendationerna väljer du **Gruppera efter minsta storlek**.
+
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="Skärm bild som visar rekommenderade kvantiteter." lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>Nästa steg
 

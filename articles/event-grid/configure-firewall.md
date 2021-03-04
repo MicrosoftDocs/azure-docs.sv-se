@@ -2,13 +2,13 @@
 title: Konfigurera IP-brandvägg för Azure Event Grid ämnen eller domäner
 description: I den här artikeln beskrivs hur du konfigurerar brand Väggs inställningar för Event Grid ämnen eller domäner.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324169"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031845"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurera IP-brandvägg för Azure Event Grid ämnen eller domäner 
 Som standard är ämne och domän tillgängligt från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Utgivare som härstammar från andra IP-adresser avvisas och får ett 403-svar (förbjuden). Mer information om nätverks säkerhets funktioner som stöds av Event Grid finns i [nätverks säkerhet för Event Grid](network-security.md).
@@ -34,19 +34,6 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa regler fö
 ## <a name="use-azure-cli"></a>Använda Azure CLI
 Det här avsnittet visar hur du använder Azure CLI-kommandon för att skapa ämnen med inkommande IP-regler. Stegen som visas i det här avsnittet gäller för ämnen. Du kan använda liknande steg för att skapa inkommande IP-regler för **domäner**. 
 
-
-### <a name="prerequisites"></a>Förutsättningar
-Uppdatera Azure Event Grid-tillägget för CLI genom att köra följande kommando: 
-
-```azurecli-interactive
-az extension update -n eventgrid
-```
-
-Om tillägget inte är installerat kör du följande kommando för att installera det: 
-
-```azurecli-interactive
-az extension add -n eventgrid
-```
 
 ### <a name="enable-or-disable-public-network-access"></a>Aktivera eller inaktivera offentlig nätverks åtkomst
 Som standard är den offentliga nätverks åtkomsten aktive rad för ämnen och domäner. Du kan också aktivera det explicit eller inaktivera det. Du kan begränsa trafiken genom att konfigurera regler för inkommande IP-brandvägg. 

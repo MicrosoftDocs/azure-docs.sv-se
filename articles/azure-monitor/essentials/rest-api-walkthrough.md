@@ -1,16 +1,15 @@
 ---
 title: Genomgång av REST-API:et för Azure Monitoring
 description: Autentisera begär Anden och Använd Azure Monitor REST API för att hämta tillgängliga mått definitioner och mät värden.
-ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: b22387272ebeae7a7db8f0e0940841415e345279
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7cd6ff7c0c3b5d4bee859ef288f16673ebe0835
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734221"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033086"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Genomgång av REST-API:et för Azure Monitoring
 

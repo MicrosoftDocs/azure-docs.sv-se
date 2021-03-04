@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917101"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031624"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
@@ -64,13 +64,13 @@ Azure Synapse erbjuder ett enda sätt för företag att hantera analys resurser,
 * Detaljerad åtkomst kontroll för data och kod
 * En enda instrument panel för att övervaka resurser, användning och användare i SQL och Spark
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>Enhetlig upplevelse
 
-**Synapse Studio** är den webb inbyggda upplevelsen som kopplar ihop allt för data tekniker, så att de kan utföra alla uppgifter som behövs för att skapa en komplett lösning.
+**Synapse Studio** är användar upplevelsen som kopplar ihop allt för data tekniker. Det gör att de kan göra varje uppgift som de behöver för att skapa en komplett analys lösning.
 
-* Bygg en lösning från slut punkt till slut punkt på en plats: mata in, utforska, förbereda, dirigera, visualisera
-* Branschledande produktivitet för data tekniker som skriver SQL-eller Spark-kod: redigering, fel sökning och prestanda optimering
-* Integrera med Enterprise CI/CD-processer
+* Viktiga data engingeer uppgifter på ett ställe: mata in, utforska, förbereda, dirigera, visualisera
+* Branschledande produktivitet för att skriva SQL-eller Spark-kod: redigering, fel sökning och prestanda optimering
+* Integrera med Enterprise CI/CD process
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>Engagera dig med Synapse Engineering-teamet
 

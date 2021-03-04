@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241615"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030621"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Lär dig hur du felsöker U-SQL runtime-fel på grund av körnings ändringar
 
@@ -55,7 +55,7 @@ Det finns två möjliga problem med körnings versioner som du kan stöta på:
 
 ## <a name="known-issues"></a>Kända problem
 
-* Om du refererar till Newtonsoft.Jspå fil version 12.0.3 eller senare i ett USQL-skript uppstår följande kompileringsfel:
+1. Om du refererar till Newtonsoft.Jspå fil version 12.0.3 eller senare i ett USQL-skript uppstår följande kompileringsfel:
 
     *"Vi beklagar! jobb som körs i ditt Data Lake Analytics-konto körs förmodligen långsammare eller kan inte slutföras. Ett oväntat problem hindrar oss från att automatiskt återställa den här funktionen till ditt Azure Data Lake Analytics-konto. Azure Data Lake tekniker har kontakt ATS för att undersöka. "*  
 
@@ -65,6 +65,10 @@ Det finns två möjliga problem med körnings versioner som du kan stöta på:
     `...`
 
     **Lösning**: Använd Newtonsoft.Jspå fil v-12.0.2 eller lägre.
+2. Kunder kan se temporära filer och mappar i butiken. De skapas som en del av den normala jobb körningen, men tas vanligt vis bort innan kunderna ser dem. Under vissa omständigheter, som är ovanliga och slumpmässiga, kan de förbli synliga under en viss tids period. De är slutligen borttagna och räknas aldrig som en del av användar lagringen eller genererar eventuella former av avgifter. Beroende på kundens jobb logik kan det orsaka problem. Om jobbet till exempel räknar upp alla filer i mappen och sedan jämför fil listor, kan det hända att det inte går att köra på grund av att de oväntade temporära filerna är tillgängliga. På samma sätt kan det hända att om ett underordnat jobb räknar upp alla filer från en specifik mapp för ytterligare bearbetning, kan det också räkna upp de temporära filerna.  
+
+    **Lösning**: en korrigering identifieras i körnings miljön där temporära filer lagras i Temp-mappen på konto nivå än den aktuella mappen utdata. De temporära filerna skrivs i den nya Temp-mappen och tas bort när jobb körningen avbryts.  
+    Eftersom den här korrigeringen hanterar kunddata är det mycket viktigt att du har den här snabb korrigeringen verifierad i MSFT innan den släpps. Den här korrigerings filen förväntas vara tillgänglig som beta runtime i mitten av år 2021 och som standard körning under den andra halvan av år 2021. 
 
 
 ## <a name="see-also"></a>Se även

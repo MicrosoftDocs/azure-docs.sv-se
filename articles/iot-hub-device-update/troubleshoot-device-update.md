@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6329e93bb5e628d68afbb2700ce0b9e3a2a711ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680007"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030638"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Enhets uppdatering för IoT Hub fel söknings guide
 
@@ -46,7 +46,7 @@ _Det kan ta upp till 5 minuter att uppdatera enhetens kompatibilitetsstatus. Vä
 ### <a name="q-my-devices-deployment-status-shows-incompatible-what-should-i-do"></a>F: distributions statusen för min enhet visar inkompatibel, vad ska jag göra?
 _Tillverkare och modell egenskaper för en riktad enhet kan ha ändrats efter att enheten anslutits till IoT Hub, vilket gör att enheten nu anses vara inkompatibel med uppdaterings innehållet i den aktuella distributionen._
 
-_Kontrol lera [ADU Core-gränssnittet](./device-update-plug-and-play) för att se vilken tillverkare och modell enheten rapporterar till enhets uppdaterings tjänsten och se till att den matchar den tillverkare och modell som du angav i [import manifestet](./import-concepts.md) för det uppdaterings innehåll som distribueras. Du kan ändra dessa egenskaper för en specifik enhet med hjälp av [konfigurations filen för enhets uppdateringar](./device-update-cofiguration-file.md)._
+_Kontrol lera [ADU Core-gränssnittet](./device-update-plug-and-play.md) för att se vilken tillverkare och modell enheten rapporterar till enhets uppdaterings tjänsten och se till att den matchar den tillverkare och modell som du angav i [import manifestet](./import-concepts.md) för det uppdaterings innehåll som distribueras. Du kan ändra dessa egenskaper för en specifik enhet med hjälp av [konfigurations filen för enhets uppdateringar](./device-update-configuration-file.md)._
 
 ### <a name="q-i-see-my-deployment-is-in-active-stage-but-none-of-my-devices-are-in-progress-with-the-update-what-should-i-do"></a>F: Jag ser att min distribution är i "aktivt" Stadium men ingen av mina enheter är "pågående" med uppdateringen. Vad ska jag göra?
 _Se till att start datumet för distributionen inte är inställt i framtiden. När du skapar en ny distribution, används distributions start datumet som standard till nästa dag som skydd om du inte uttryckligen ändrar det. Du kan antingen vänta tills start datumet för distributionen tas emot eller avbryta den pågående distributionen och skapa en ny distribution med önskat start datum._

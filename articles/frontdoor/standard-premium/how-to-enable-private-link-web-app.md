@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: tyao
-ms.openlocfilehash: f3250101449971ffd985fcfcce400870e2a3d50f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 805c3ba0360fcffe2bfd4217c0ef625fe61e5d64
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746371"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030587"
 ---
 # <a name="connect-azure-front-door-premium-to-a-web-app-origin-with-private-link"></a>Anslut Azure front dörr Premium till ett webb programs ursprung med privat länk
 
@@ -73,4 +73,4 @@ I det här avsnittet ska du mappa den privata länk tjänsten till en privat slu
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig om [tjänsten för privat länk med Azure Web App](../../app-service/networking/private-endpoint).
+Lär dig om [tjänsten för privat länk med Azure Web App](../../app-service/networking/private-endpoint.md).

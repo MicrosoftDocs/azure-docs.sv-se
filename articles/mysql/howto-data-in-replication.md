@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 29ac0c5991964de48cedd15622d15e929bc9d733
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709554"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030757"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Så här konfigurerar du Azure Database for MySQL Datareplikering
 
@@ -102,7 +102,7 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
 
    Om variabeln [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) returneras med värdet "på" aktive ras binär loggning på servern.
    
-   Om `log_bin` returneras med värdet "off", 
+    Om `log_bin` returneras med värdet "off" och käll servern körs lokalt eller på virtuella datorer där du kan komma åt konfigurations filen (My. cnf), kan du följa stegen nedan:
    1. Leta upp MySQL-konfigurationsfilen (My. cnf) på käll servern. Till exempel:/etc/My.cnf
    2. Öppna konfigurations filen för att redigera den och hitta **mysqld** -avsnittet i filen.
    3.  Lägg till följande rad i avsnittet mysqld

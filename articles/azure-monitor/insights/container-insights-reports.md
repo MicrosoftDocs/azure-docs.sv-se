@@ -2,19 +2,19 @@
 title: Rapporter i behållar insikter
 description: Beskriver rapporter som är tillgängliga för analys av data som samlas in av behållar insikter.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/02/2021
+ms.openlocfilehash: ca74521a08d4edaa498e00e6452d8f69912e4bb9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704284"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032807"
 ---
 # <a name="reports-in-container-insights"></a>Rapporter i behållar insikter
 Rapporter i behållar insikter rekommenderas som färdiga [Azure-arbetsböcker](../visualize/workbooks-overview.md). I den här artikeln beskrivs de olika rapporter som är tillgängliga och hur du kommer åt dem.
 
 ## <a name="viewing-reports"></a>Visa rapporter
-Från **Azure Monitor** -menyn i Azure Portal väljer du **behållare**. Välj **insikter** i avsnittet **övervakning** , Välj ett visst kluster och välj sedan sidan **rapporter (förhands granskning)** . 
+Från **Azure Monitor** -menyn i Azure Portal väljer du **behållare**. Välj **insikter** i avsnittet **övervakning** , Välj ett visst kluster och välj sedan sidan **rapporter** . 
 
 [![Sidan rapporter](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 

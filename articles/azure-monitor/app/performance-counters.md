@@ -4,12 +4,12 @@ description: Övervaka system-och anpassade .NET-prestanda räknare i Applicatio
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583890"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031369"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>System prestanda räknare i Application Insights
 
@@ -21,7 +21,7 @@ Fönstret mått visar standard uppsättningen med prestanda räknare.
 
 ![Prestanda räknare som rapporter ATS i Application Insights](./media/performance-counters/performance-counters.png)
 
-De aktuella standard räknare som har kon figurer ATS för att samlas in för ASP.NET/ASP.NET Core-webbprogram är:
+De aktuella standard räknare som har kon figurer ATS för att samlas in för ASP.NET-webb program är:
 - Processor tid i procent för processor \\
 - % Process \\ processor tid normaliserad
 - \\Tillgängliga byte för minne
@@ -31,6 +31,14 @@ De aktuella standard räknare som har kon figurer ATS för att samlas in för AS
 - \\Privata byte för process
 - Bearbeta \\ IO-databyte/s
 - ASP.NET program \\ begär anden i program kön
+- Processor (_Total) \\ % processor tid
+
+De aktuella standard räknare som har kon figurer ATS för att samlas in för ASP.NET Core webb program är:
+- Processor tid i procent för processor \\
+- % Process \\ processor tid normaliserad
+- \\Tillgängliga byte för minne
+- \\Privata byte för process
+- Bearbeta \\ IO-databyte/s
 - Processor (_Total) \\ % processor tid
 
 ## <a name="add-counters"></a>Lägg till räknare

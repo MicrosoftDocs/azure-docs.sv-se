@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717408"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030842"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Utforma en distribution med Azure Monitor-loggar
 
@@ -87,9 +87,9 @@ Användare har två alternativ för att komma åt data:
 
     > [!NOTE]
     > Loggarna är bara tillgängliga för resurs kontext frågor om de var korrekt kopplade till den aktuella resursen. För närvarande har följande resurser begränsningar:
-    > - Datorer utanför Azure
+    > - Datorer utanför Azure – stöds endast för resurs kontext via Azure- [båge för servrar](../../azure-arc/servers/index.yml)
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights – stöds endast för resurs kontext när du använder [arbets ytans baserade Application Insights-resurs](../app/create-workspace-resource.md)
     >
     > Du kan testa om loggarna är korrekt kopplade till sin resurs genom att köra en fråga och granska de poster som du är intresse rad av. Om rätt resurs-ID är i egenskapen [_ResourceId](./log-standard-columns.md#_resourceid) är data tillgängliga för resursbaserade frågor.
 

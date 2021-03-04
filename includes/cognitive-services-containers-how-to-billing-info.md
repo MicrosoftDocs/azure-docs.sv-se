@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
-ms.author: dapine
-ms.date: 02/19/2020
+author: aahill
+ms.author: aahi
+ms.date: 03/02/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996484"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032943"
 ---
 Frågor till behållaren debiteras enligt pris nivån för den Azure-resurs som används för `ApiKey` .
 
@@ -17,7 +17,7 @@ Azure Cognitive Services-behållare är inte licensierade för att köras utan a
 
 ### <a name="connect-to-azure"></a>Anslut till Azure
 
-Containern behöver de fakturerings argument värden som ska köras. Dessa värden tillåter att behållaren ansluter till fakturerings slut punkten. Behållar rapporteringen visar var 10 till 15: e minut. Om behållaren inte ansluter till Azure inom den tillåtna tids perioden fortsätter behållaren att köras men hanterar inte frågor förrän fakturerings slut punkten återställs. Anslutnings försöket görs 10 gånger med samma tidsintervall 10 till 15 minuter. Om den inte kan ansluta till fakturerings slut punkten inom 10 försök slutar behållaren att betjäna begär Anden.
+Containern behöver de fakturerings argument värden som ska köras. Dessa värden tillåter att behållaren ansluter till fakturerings slut punkten. Behållar rapporteringen visar var 10 till 15: e minut. Om behållaren inte ansluter till Azure inom den tillåtna tids perioden fortsätter behållaren att köras men hanterar inte frågor förrän fakturerings slut punkten återställs. Anslutnings försöket görs 10 gånger med samma tidsintervall 10 till 15 minuter. Om den inte kan ansluta till fakturerings slut punkten inom 10 försök slutar behållaren att betjäna begär Anden. Se [vanliga frågor och svar om Cognitive Services container](../articles/cognitive-services/containers/container-faq.yml#how-does-billing-work) för att få ett exempel på den information som skickas till Microsoft för fakturering.
 
 ### <a name="billing-arguments"></a>Fakturerings argument
 

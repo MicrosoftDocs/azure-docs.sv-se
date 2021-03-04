@@ -3,12 +3,12 @@ title: Planera för en storskalig distribution av Azure Arc-aktiverade servrar
 description: Lär dig hur du aktiverar ett stort antal datorer till Azure Arc-aktiverade servrar för att förenkla konfigurationen av viktiga säkerhets-, hanterings-och övervaknings funktioner i Azure.
 ms.date: 02/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: fd02e7c0b4d65efde13fbc428a15d60adab174d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693221"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032236"
 ---
 # <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Planera för en storskalig distribution av Azure Arc-aktiverade servrar
 
@@ -71,7 +71,7 @@ Därefter lägger vi till den grund som anges i fas 1 genom att förbereda distr
 
 |Uppgift |Detalj |Varaktighet |
 |-----|-------|---------|
-| Hämta det fördefinierade installations skriptet | Granska och anpassa det fördefinierade installations skriptet för distribution av den anslutna dator agenten för att stödja de automatiserade distributions kraven.<br><br> Exempel på för inskalning av onboarding-resurser:<br><br> * [Skript för grundläggande distribution i skala](servers/onboard-service-principal.md)<br><br> * [Onboarding-VMware vSphere virtuella Windows Server-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)<br><br> * [Onboarding-VMware vSphere virtuella Linux-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)<br><br> * [Vid skalning av onboarding AWS EC2-instanser med Ansible](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)<br><br> * [Vid skalnings distribution med PowerShell-fjärrkommunikation](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (endast Windows)| En eller flera dagar beroende på kraven, organisatoriska processer (till exempel hantering av ändringar och utgåvor) och vilken Automation-metod som används. |
+| Hämta det fördefinierade installations skriptet | Granska och anpassa det fördefinierade installations skriptet för distribution av den anslutna dator agenten för att stödja de automatiserade distributions kraven.<br><br> Exempel på för inskalning av onboarding-resurser:<br><br> <ul><li> [Skript för grundläggande distribution i skala](onboard-service-principal.md)</ul></li> <ul><li>[Onboarding-VMware vSphere virtuella Windows Server-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Onboarding-VMware vSphere virtuella Linux-datorer](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Vid skalning av onboarding AWS EC2-instanser med Ansible](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Vid skalnings distribution med PowerShell-fjärrkommunikation](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (endast Windows)</ul></li>| En eller flera dagar beroende på kraven, organisatoriska processer (till exempel hantering av ändringar och utgåvor) och vilken Automation-metod som används. |
 | [Skapa tjänstens huvudnamn](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Skapa ett huvud namn för tjänsten för att ansluta datorer icke-interaktivt med hjälp av Azure PowerShell eller från portalen.| En timme |
 | Distribuera den anslutna dator agenten till mål servrarna och datorerna |Använd Automation-verktyget för att distribuera skripten till dina servrar och ansluta dem till Azure.| En eller flera dagar beroende på din versions plan och efter en stegvis distribution. |
 
@@ -83,7 +83,7 @@ Fas 3 ser administratörer eller system tekniker som möjliggör automatisering 
 |-----|-------|---------|
 |Skapa en Resource Health-avisering |Om en server slutar att skicka pulsslag till Azure under mer än 15 minuter, kan det betyda att den är offline, att nätverks anslutningen har blockerats eller att agenten inte körs. Utveckla en plan för hur du ska svara på och undersöka dessa incidenter och Använd [Resource Health aviseringar](../..//service-health/resource-health-alert-monitor-guide.md) för att få ett meddelande när de startar.<br><br> Ange följande när du konfigurerar aviseringen:<br> **Resurs typ**  =  **Azure Arc-aktiverade servrar**<br> **Aktuell resurs status**  =  **Inte tillgänglig**<br> Status för tidigare **resurs**  =  **Tillgänglig** | En timme |
 |Skapa en Azure Advisor-avisering | För bästa möjliga upplevelse och de senaste säkerhets-och fel korrigeringarna rekommenderar vi att du håller Azure Arc-aktiverade servrar uppdaterade. Inaktuella agenter kommer att identifieras med en [Azure Advisor-avisering](../../advisor/advisor-alerts-portal.md).<br><br> Ange följande när du konfigurerar aviseringen:<br> **Rekommendations typ**  =  **Uppgradera till den senaste versionen av Azure Connected Machine agent** | En timme |
-|[Tilldela Azure-principer](../../governance/policy/assign-policy-portal.md) till din prenumeration eller resurs grupps omfång |Tilldela principen **aktivera Azure Monitor for VMS** och andra som uppfyller dina behov för prenumerationen eller resurs grupps omfånget för att säkerställa att alla dina Arc-aktiverade servrar konfigureras automatiskt för övervakning med Azure Monitor for VMS.| Det varierar |
+|[Tilldela Azure-principer](../../governance/policy/assign-policy-portal.md) till din prenumeration eller resurs grupps omfång |Tilldela [principen](../../azure-monitor/vm/vminsights-enable-policy.md) för att **Aktivera Azure Monitor for VMS** (och andra som uppfyller dina behov) till prenumerations-eller resurs grupps omfånget. Med Azure Policy kan du tilldela princip definitioner som installerar de agenter som krävs för Azure Monitor for VMs i din miljö.| Det varierar |
 |[Aktivera Uppdateringshantering för dina Arc-aktiverade servrar](../../automation/update-management/enable-from-automation-account.md) |Konfigurera Uppdateringshantering i Azure Automation för att hantera operativ system uppdateringar för virtuella Windows-och Linux-datorer som är registrerade med ARC-aktiverade servrar. | 15 minuter |
 
 ## <a name="next-steps"></a>Nästa steg

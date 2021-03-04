@@ -4,15 +4,14 @@ description: Använd Azure Monitor för att utföra kors produkt frågor mellan 
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
-ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8bc47eb2a6a22224f4df186136da2c184979ea24
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624352"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031131"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
 Azure Monitor stöder frågor över olika tjänster mellan Azure Datautforskaren, [Application Insights](../app/app-insights-overview.md)och [Log Analytics](../logs/data-platform-logs.md). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.

@@ -1,17 +1,16 @@
 ---
 title: OMS-portalen flyttar till Azure | Microsoft Docs
 description: OMS-portalen sunsetted med alla funktioner som flyttas till Azure Portal. Den här artikeln innehåller information om den här över gången.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: ab7d4bf0b8d8ca32dafe6f19b46047eca89a7734
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fc9da5c9bc6c9f1b5afd0dbcd74b19d13fe42222
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733983"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032066"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portalen flyttar till Azure
 

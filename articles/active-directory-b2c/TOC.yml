@@ -150,6 +150,8 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
+        - name: Apple (för hands version)
+          href: identity-provider-apple-id.md
         - name: Azure AD (en enda klient)
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (flera klienter)
@@ -217,11 +219,11 @@
           href: configure-tokens.md
     - name: Definiera anpassade attribut
       href: user-flow-custom-attributes.md
-    - name: Identitetsskydd och villkorsstyrd åtkomst
+    - name: Riskfylld autentisering
       items:
-        - name: Konfigurera identitetsskydd och villkorsstyrd åtkomst
-          href: conditional-access-identity-protection-setup.md
-        - name: Lägg till villkorsstyrd åtkomst
+        - name: Undersök risker med identitets skydd
+          href: identity-protection-investigate-risk.md
+        - name: Konfigurera villkorlig åtkomst
           href: conditional-access-user-flow.md
     - name: Konfigurera åldershantering
       href: basic-age-gating.md
@@ -327,9 +329,6 @@
                       href: aad-sspr-technical-profile.md
                     - name: Anspråkstransformering
                       href: claims-transformation-technical-profile.md
-                    - name: Villkorlig åtkomst
-                      href: conditional-access-technical-profile.md
-                      displayName: ca
                     - name: ID-tokentips
                       href: id-token-hint.md
                     - name: JWT-tokenutfärdare

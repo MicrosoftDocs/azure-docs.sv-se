@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589068"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032576"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -36,12 +36,17 @@ Du kan identifiera upp till 10 000 virtuella VMware-datorer, upp till 5 000 virt
 
 - Använd **Azure VM-utvärderingar** när du vill utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md), [virtuella Hyper-V-datorer](how-to-set-up-appliance-hyper-v.md)och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer. [Läs mer](concepts-assessment-calculation.md)
 
+- Använd utvärderings typ **Azure SQL** när du vill utvärdera din lokala SQL Server från VMware-miljön för migrering till Azure SQL Database eller Azure SQL-hanterad instans. [Läs mer](concepts-assessment-calculation.md)
+
+    > [!Note]
+    > Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Om du vill testa den här funktionen använder du [**den här länken**](https://aka.ms/AzureMigrate/SQL) för att skapa ett projekt i regionen **östra Australien** . Om du redan har ett projekt i östra Australien och vill testa den här funktionen, måste du se till att du har slutfört dessa [**krav**](how-to-discover-sql-existing-project.md) på portalen.
+
 - Använd **Azure VMware Solution (AVS)-** utvärderingar när du vill utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till [Azure VMware-lösningen (AVS)](../azure-vmware/introduction.md) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Du kan använda en gemensam grupp med endast VMware-datorer om du vill köra båda utvärderingstyperna. Om du kör AVS-utvärderingar i Azure Migrate för första gången rekommenderar vi att du skapar en ny grupp med VMware-datorer.
  
 
-## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Varför saknas prestandadata för vissa/alla virtuella datorer i min utvärderingsrapport?
+## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Varför saknas prestanda data för vissa/alla servrar i min Azure VM-och/eller AVS-bedömnings rapport?
 
 Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissing för prestandabaserad utvärdering i utvärderingsrapporten när Azure Migrate-installationen inte kan samla in prestandadata för lokala virtuella datorer. Kontrollera följande:
 
@@ -50,24 +55,111 @@ Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissi
 
 - Om alla prestanda räknare saknas kontrollerar du att utgående anslutningar på portarna 443 (HTTPS) är tillåtna.
 
-Obs! Om någon av prestandaräknarna saknas återgår Azure Migrate: Server Assessment till de allokerade kärnorna/minnet lokalt och rekommenderar lämplig VM-storlek.
+    > [!Note]
+    > Om någon av prestanda räknarna saknas, Azure Migrate: Server utvärdering återgår till allokerade kärnor/minne lokalt och rekommenderar en VM-storlek enligt detta.
+
+
+## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Varför saknas prestanda data för vissa/alla SQL-instanser/-databaser i min Azure SQL-utvärdering?
+
+För att säkerställa att prestanda data samlas in kontrollerar du följande:
+
+- Om SQL-servrarna är påslagna under den tid som du skapar utvärderingen
+- Om anslutnings statusen för SQL-agenten i Azure Migrate är ansluten och kontrol lera senaste pulsslag 
+- Om Azure Migrate anslutnings status för alla SQL-instanser är "ansluten" på bladet identifierad SQL-instans
+- Om alla prestanda räknare saknas kontrollerar du att utgående anslutningar på portarna 443 (HTTPS) är tillåtna
+
+Om någon av prestanda räknarna saknas rekommenderar Azure SQL-utvärderingen den minsta Azure SQL-konfigurationen för den instansen/databasen.
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Varför har min utvärdering lågt säkerhetsomdöme?
 
 Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat på den procentandel av [tillgängliga datapunkter](./concepts-assessment-calculation.md#ratings) som behövdes för att beräkna utvärderingen. Ett lågt säkerhetsomdöme för en utvärdering kan bero på något av följande:
 
-- Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar en utvärdering med en varaktighet på en vecka måste du vänta minst en vecka efter att identifieringen startade, tills alla datapunkter har samlats in. Om du inte kan vänta hela varaktigheten ändrar du varaktigheten för prestanda till en kortare period och ”räknar om” utvärderingen.
+- Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar en utvärdering med en varaktighet på en vecka måste du vänta minst en vecka efter att identifieringen startade, tills alla datapunkter har samlats in. Om du inte kan vänta i varaktigheten ändrar du varaktigheten för prestanda till en kortare period och **beräknar om** utvärderingen.
  
-- Server utvärderingen kan inte samla in prestanda data för vissa eller alla virtuella datorer under utvärderings perioden. För en hög exakthet bör du se till att: 
-    - Virtuella datorer är påslagna under utvärderings perioden
+- Utvärderingen kan inte samla in prestanda data för vissa eller alla servrar i utvärderings perioden. För en hög exakthet bör du se till att: 
+    - Servrarna är påslagna under utvärderings perioden
     - Utgående anslutningar på portarna 443 tillåts
-    - För Hyper-V virtuella datorer är dynamiskt minne aktiverat 
+    - För Hyper-V-servrar är dynamiskt minne aktiverat 
+    - Anslutnings statusen för agenter i Azure Migrate är ansluten och kontrollerar senaste pulsslag
+    - För Azure SQL-utvärderingar är Azure Migrate anslutnings status för alla SQL-instanser "ansluten" på bladet identifierad SQL-instans
 
-    Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet.
+    **Beräkna** om utvärderingen så att den återspeglar de senaste ändringarna i förtroende klassificeringen.
 
-- Få virtuella datorer skapades efter att identifieringen startades i Server Assessment. Om du till exempel skapar en utvärdering för prestandahistoriken för den senaste månaden, men några virtuella datorer skapades i miljön för en vecka sedan. I detta fall kommer prestandadata för de nya virtuella datorerna inte att vara tillgängliga för hela tidsperioden och säkerhetsomdömet blir lågt.
+- För virtuella Azure-datorer och AVS-bedömningar skapades några servrar efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några servrar har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-[Läs mer](./concepts-assessment-calculation.md#confidence-ratings-performance-based) om säkerhetsomdömen.
+- För Azure SQL-utvärderingar skapades några SQL-instanser eller databaser efter att identifieringen startades. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några SQL-instanser eller databaser har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Jag vill prova den nya funktionen för Azure SQL-utvärdering i Azure Migrate
+Om du vill testa den här funktionen använder du [den här länken](https://go.microsoft.com/fwlink/?linkid=2155668L) för att skapa ett projekt i regionen **östra Australien** .
+- Gå till vägledningen för [identifiering](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) och [utvärdering](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) för att komma igång.
+- Observera att identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är för närvarande en för hands version.
+
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Jag kan inte se vissa servrar när jag skapar en Azure SQL-utvärdering
+
+- Azure SQL-utvärderingen kan bara utföras på servrar som kör där SQL-instanser identifierades. Om du inte ser de servrar och SQL-instanser som du vill utvärdera väntar du en stund tills identifieringen har slutförts och skapar sedan utvärderingen. 
+- Om du inte kan se en tidigare skapad grupp när du har skapat utvärderingen tar du bort alla icke-VMware-servrar eller servrar utan SQL-instans från gruppen.
+- Om du kör Azure SQL-utvärderingar i Azure Migrate för första gången är det lämpligt att skapa en ny grupp med servrar.
+
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>Jag vill veta hur är beredskapen för min instans Beräknad?
+Beredskap för dina SQL-instanser har beräknats efter en funktions kompatibilitetskontroll med den mål distributions typ för Azure SQL (Azure SQL Database eller Azure SQL-hanterad instans). [Läs mer](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+
+## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>Varför är beredskapen för alla mina SQL-instanser markerade som okända?
+Om din identifiering har startats nyligen och fortfarande pågår, kan det hända att du ser beredskap för vissa eller alla SQL-instanser som okända. Vi rekommenderar att du väntar ett tag på att installationen ska profilera miljön och sedan beräknar om utvärderingen.
+SQL-identifieringen utförs en gång var 24: e timme och du kan behöva vänta upp till en dag för att de senaste konfigurations ändringarna ska avspeglas. 
+
+## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>Varför är beredskap för några av mina SQL-instanser markerade som okända?
+Detta kan inträffa om: 
+- Identifieringen pågår fortfarande. Vi rekommenderar att du väntar ett tag på att installationen ska profilera miljön och sedan beräknar om utvärderingen.
+- Det finns vissa identifierings problem som du behöver åtgärda på bladet fel och meddelanden.
+
+SQL-identifieringen utförs en gång var 24: e timme och du kan behöva vänta upp till en dag för att de senaste konfigurations ändringarna ska avspeglas.
+
+## <a name="my-assessment-is-in-outdated-state"></a>Min utvärdering är i inaktuellt tillstånd
+
+### <a name="azure-vmavs-assessment"></a>Azure VM/AVS-utvärdering
+Om det finns lokala ändringar av virtuella datorer som finns i en grupp som har bedömts, markeras utvärderingen som föråldrad. En utvärdering kan markeras som "inaktuell" på grund av en eller flera ändringar i nedanstående egenskaper:
+- Antal processor kärnor
+- Allokerat minne
+- Start typ eller inbyggd program vara
+- Operativ systemets namn, version och arkitektur
+- Antal diskar
+- Antal nätverkskort
+- Ändring av disk storlek (GB allokerat)
+- Uppdatera NIC-egenskaper. Exempel: Mac-adress ändringar, IP-adress tillägg osv.
+
+**Beräkna** om utvärderingen så att den återspeglar de senaste ändringarna i utvärderingen.
+
+### <a name="azure-sql-assessment"></a>Azure SQL-utvärdering
+Om det finns ändringar i lokala SQL-instanser och databaser som finns i en grupp som har utvärderats, markeras utvärderingen som **föråldrad**:
+- SQL-instans lades till eller togs bort från en server
+- SQL Database lades till eller togs bort från en SQL-instans
+- Den totala databas storleken i en SQL-instans har ändrats med mer än 20%
+- Ändring i antal processor kärnor och/eller allokerat minne
+
+**Beräkna** om utvärderingen så att den återspeglar de senaste ändringarna i utvärderingen.
+
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Varför rekommenderar jag en viss mål distributions typ?
+Azure Migrate rekommenderar en unik distributions typ för Azure SQL som är kompatibel med SQL-instansen. Om du migrerar till ett Microsoft-rekommenderat mål minskar du din totala migrering. Den här Azure SQL-konfigurationen (SKU) rekommenderas efter att ha beaktat prestanda egenskaperna för din SQL-instans och de databaser som den hanterar. Om flera Azure SQL-konfigurationer är berättigade rekommenderar vi den som är mest kostnads effektiv. [Läs mer](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>Vilket distributions mål ska jag välja om min SQL-instans är redo för Azure SQL DB och Azure SQL MI? 
+Om instansen är klar för både Azure SQL DB och Azure SQL MI rekommenderar vi mål distributions typen för vilken den uppskattade kostnaden för Azure SQL-konfigurationen är lägre.
+
+## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Varför har min instans marker ATS som potentiellt redo för virtuell Azure-dator i min Azure SQL-utvärdering?
+Detta kan inträffa när den mål distributions typ som valts i utvärderings egenskaperna **rekommenderas** och SQL-instansen inte är klar för Azure SQL Database och Azure SQL-hanterad instans. Användaren rekommenderas att skapa en utvärdering i Azure Migrate med utvärderings typ som **virtuell Azure-dator** för att avgöra om den server där instansen körs är redo att migrera till en virtuell Azure-dator.
+Användaren rekommenderas att skapa en utvärdering i Azure Migrate med utvärderings typ som **virtuell Azure-dator** för att avgöra om den server där instansen körs är redo att migrera till en virtuell Azure-dator i stället:
+- Azure VM-utvärderingar i Azure Migrate lyfts för närvarande – en-Shift-fokuserad och kommer inte att beakta de exakta prestanda måtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. 
+- När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnads uppskattningarna att vara för alla instanser som körs på servern och kan migreras till en virtuell Azure-dator med hjälp av verktyget Migreringsverktyg. Innan du migrerar bör du [gå igenom rikt linjerna för prestanda](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
+
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Jag kan inte se vissa databaser i min utvärdering trots att instansen ingår i utvärderingen
+
+Azure SQL-utvärderingen inkluderar bara databaser som har statusen online. Om databasen är i någon annan status ignorerar utvärderingen beredskapen, storleks ändringen och kostnads beräkningen för dessa databaser. Om du vill utvärdera sådana databaser, ändra databasens status och beräkna om utvärderingen i en viss tid.
+
+## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Jag vill jämföra kostnader för att köra mina SQL-instanser på Azure VM vs Azure SQL Database/Azure SQL Managed instance
+
+Du kan skapa en utvärdering med typen **virtuell Azure-dator** i samma grupp som användes i din **Azure SQL** -utvärdering. Du kan sedan jämföra de två rapporterna sida vid sida. Azure VM-utvärderingar i Azure Migrate lyfts för närvarande och flyttas och kommer inte att beakta de exakta prestanda måtten för att köra SQL-instanser och databaser på den virtuella Azure-datorn. När du kör en Azure VM-utvärdering på en server, kommer de rekommenderade storlekarna och kostnads uppskattningarna att vara för alla instanser som körs på servern och kan migreras till en virtuell Azure-dator med hjälp av verktyget Migreringsverktyg. Innan du migrerar bör du [gå igenom rikt linjerna för prestanda](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) för SQL Server på virtuella Azure-datorer.
+
+## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Lagrings kostnaden i min Azure SQL-utvärdering är noll
+För Azure SQL-hanterad instans finns ingen lagrings kostnad tillagd för den första 32 GB/instans/månad-lagringen och ytterligare lagrings kostnader läggs till för lagring i 32 GB steg. [Läs mer](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Jag kan inte se vissa grupper när jag skapar en Azure VMware-lösning (AVS)-utvärdering
 

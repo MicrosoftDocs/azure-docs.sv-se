@@ -1,17 +1,16 @@
 ---
 title: Aktivera VM Insights med Resource Manager-mallar
 description: I den här artikeln beskrivs hur du aktiverar VM Insights för en eller flera virtuella Azure-datorer eller skalnings uppsättningar för virtuella datorer med hjälp av Azure PowerShell eller Azure Resource Manager mallar.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 57e2649dfe651bfa1e2ef18ff52ca611c122d696
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fc0c304a3fea81f44e01d3e815f34e44728ea42e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707497"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031893"
 ---
 # <a name="enable-vm-insights-using-resource-manager-templates"></a>Aktivera VM Insights med Resource Manager-mallar
 I den här artikeln beskrivs hur du aktiverar VM Insights för en virtuell dator eller skalnings uppsättning för virtuella datorer med hjälp av Resource Manager-mallar. Den här proceduren kan användas för följande:

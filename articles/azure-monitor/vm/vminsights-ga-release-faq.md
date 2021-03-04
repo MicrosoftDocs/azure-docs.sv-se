@@ -1,17 +1,16 @@
 ---
 title: Vanliga frågor och svar om VM Insights (GA) | Microsoft Docs
 description: VM Insights är en lösning i Azure som kombinerar hälso-och prestanda övervakning av operativ systemet för virtuella Azure-datorer, samt identifierar program komponenter och beroenden automatiskt med andra resurser och mappar kommunikationen mellan dem. I den här artikeln besvaras vanliga frågor om GA-versionen.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710761"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031890"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>VM Insights allmänt tillgängliga (GA) vanliga frågor och svar
 Vanliga frågor och svar om allmän tillgänglighet omfattar ändringar som gjorts i Q4 2019 och Q1 2020 när vi för beredde för GA.
@@ -20,15 +19,15 @@ Vanliga frågor och svar om allmän tillgänglighet omfattar ändringar som gjor
 Vi har lanserat en ny version av VM Insights i januari 2020 före vårt GA-meddelande. Kunder som aktiverar VM Insights får nu GA-versionen, men befintliga kunder som använder versionen av VM Insights från Q4 2019 och tidigare uppmanas att uppgradera. Det här vanliga avsnittet innehåller vägledning för att utföra en uppgradering i stor skala om du har stora distributioner över flera arbets ytor.
 
 
-Med den här uppgraderingen lagras Azure Monitor for VMs prestanda data i samma *InsightsMetrics* -tabell som [behållar insikter](../containers/container-insights-overview.md), vilket gör det enklare för dig att fråga de två data uppsättningarna. Du kan också lagra Mer Diverse data uppsättningar som vi inte kunde lagra i tabellen som användes tidigare. 
+Med den här uppgraderingen lagras prestanda data för VM Insights i samma *InsightsMetrics* -tabell som [behållar insikter](../containers/container-insights-overview.md), vilket gör det enklare för dig att fråga de två data uppsättningarna. Du kan också lagra Mer Diverse data uppsättningar som vi inte kunde lagra i tabellen som användes tidigare. 
 
 Våra prestanda visningar använder nu de data som vi lagrar i *InsightsMetrics* -tabellen.  Om du ännu inte har uppgraderat för att använda den senaste VMInsights-lösningen på arbets ytan visas inte längre information i dina diagram.  Du kan uppgradera från vår **Kom igång** -sida enligt beskrivningen nedan.
 
 
 ## <a name="what-is-changing"></a>Vad ändras?
-Vi har släppt en ny lösning med namnet VMInsights, som innehåller ytterligare funktioner för data insamling tillsammans med en ny plats för att lagra dessa data i din Log Analytics-arbetsyta. 
+Vi har släppt en ny lösning med namnet VMInsights, som innehåller fler funktioner för data insamling tillsammans med en ny plats för att lagra dessa data i din Log Analytics-arbetsyta. 
 
-Tidigare aktiverade vi ServiceMap-lösningen på din arbets yta och ställer in prestanda räknare i Log Analytics arbets ytan för att skicka data till *perf* -tabellen. Den här nya lösningen skickar data till en tabell med namnet *InsightsMetrics* som också används av behållar insikter. Det här tabell schemat gör att vi kan lagra ytterligare mått och tjänst data uppsättningar som inte är kompatibla med tabell formatet *perf* .
+Tidigare aktiverade vi ServiceMap-lösningen på din arbets yta och ställer in prestanda räknare i Log Analytics arbets ytan för att skicka data till *perf* -tabellen. Den här nya lösningen skickar data till en tabell med namnet *InsightsMetrics* som också används av behållar insikter. Det här tabell schemat gör att vi kan lagra fler mått och tjänst data uppsättningar som inte är kompatibla med tabell formatet *perf* .
 
 Vi har uppdaterat våra prestanda diagram för att använda de data som vi lagrar i *InsightsMetrics* -tabellen. Du kan uppgradera för att använda *InsightsMetrics* -tabellen från vår sida för att **komma igång** enligt beskrivningen nedan.
 
@@ -58,7 +57,7 @@ Om du har skapat [logg aviseringar](../alerts/alerts-unified-log.md) som frågar
 
 Vi kommer att uppdatera dessa vanliga frågor och svar och vår dokumentation för att inkludera exempel på loggs öknings varningar för de data uppsättningar som vi samlar in.
 
-## <a name="how-will-this-affect-my-bill"></a>Hur kommer detta att påverka min faktura?
+## <a name="how-will-this-change-affect-my-bill"></a>Hur påverkar den här ändringen min faktura?
 
 Faktureringen baseras fortfarande på inmatade data och behålls i Log Analytics arbets ytan.
 
@@ -78,7 +77,7 @@ Om du väljer att inte uppgradera till **VMInsights** -lösningen kommer vi fort
 
 Data uppsättningarna kommer inte att dupliceras om du använder båda lösningarna. Båda erbjudandena delar de data uppsättningar som ska lagras i `VMComputer` (tidigare ServiceMapComputer_CL), `VMProcess` (tidigare ServiceMapProcess_CL), `VMConnection` och `VMBoundPort` tabeller för att lagra de kart data uppsättningar som vi samlar in.  
 
-`InsightsMetrics`Tabellen kommer att lagra data uppsättningar för virtuella datorer, processer och tjänster som vi samlar in och kommer bara att fyllas i om du använder VM Insights och lösningen för VM-insikter. Tjänstkarta lösning samlar inte in eller lagrar data i `InsightsMetrics` tabellen.
+`InsightsMetrics`Tabellen kommer att lagra data uppsättningar för virtuella datorer, processer och tjänster som vi samlar in och kommer bara att fyllas i om du använder VM Insights och lösningen för VM-insikter. Tjänstkarta-lösningen samlar inte in eller lagrar data i `InsightsMetrics` tabellen.
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Får jag dubbla avgifter om jag har Tjänstkarta-och VMInsights-lösningar i min arbets yta?
 
@@ -90,7 +89,7 @@ Nej, de två lösningarna delar mappnings data uppsättningar som vi lagrar i `V
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Hälso funktionen är i begränsad offentlig för hands version
 
-Vi har fått mycket bra feedback från kunder om vår funktions uppsättning för VM-hälsa. Det är mycket intressantare för den här funktionen och du kan piffa över dess potential för att stödja övervaknings arbets flöden. Vi planerar att göra en serie ändringar för att lägga till funktioner och åtgärda den feedback vi har fått. 
+Vi har fått mycket bra feedback från kunder om vår funktions uppsättning för VM-hälsa. Det finns asignificant intresse för den här funktionen och kan leda till att det går att stödja övervaknings arbets flöden. Vi planerar att göra en serie ändringar för att lägga till funktioner och åtgärda den feedback vi har fått. 
 
 Vi har flyttat den här funktionen till en **begränsad offentlig för hands version** för att minimera effekten av dessa ändringar för nya kunder. Den här uppdateringen skedde i oktober 2019.
 
@@ -108,7 +107,7 @@ Som en befintlig kund kan du fortsätta att använda hälso funktionen på virtu
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>Jag använder VM-hälsa nu med en miljö och vill distribuera den till en ny
 
-Om du är en befintlig kund som använder hälso funktionen och vill använda den för en ny lansering kan du kontakta oss på vminsights@microsoft.com att be om anvisningar.
+Om du är en befintlig kund som använder hälso funktionen och vill använda den för en ny utdistribution, kan du kontakta oss på vminsights@microsoft.com att begära instruktioner.
 
 ## <a name="next-steps"></a>Nästa steg
 

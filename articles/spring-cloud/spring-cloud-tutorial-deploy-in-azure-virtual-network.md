@@ -4,15 +4,15 @@ description: Distribuera Azure våren Cloud i ett virtuellt nätverk (VNet-inspr
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880613"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031811"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Distribuera Azure våren Cloud i ett virtuellt nätverk
 
@@ -50,7 +50,7 @@ Det virtuella nätverk som du distribuerar din Azure våren-moln instans till m�
     * En för dina våren Boot-mikrotjänstprogram.
     * Det finns en 1-till-1-relation mellan dessa undernät och en Azure våren Cloud-instans. Använd ett nytt undernät för varje tjänst instans som du distribuerar. Varje undernät kan bara innehålla en enda tjänst instans.
 * **Adress utrymme**: CIDR-block blockerar upp till */28* för både service runtime-undernätet och våren Boot Boot-programtjänstprogram.
-* **Routningstabell**: under näten får inte ha någon befintlig routningstabell kopplad.
+* **Routningstabell: som** standard behöver inte under näten befintliga väg tabeller associeras. Du kan [ta med din egen routningstabell](#bring-your-own-route-table).
 
 Följande procedurer beskriver hur du installerar det virtuella nätverket som innehåller instansen av Azure våren Cloud.
 
@@ -66,7 +66,7 @@ Om du redan har ett virtuellt nätverk som värd för en Azure våren-moln insta
     |-----------------|--------------------------------------------------|
     |Prenumeration     |Välj din prenumeration.                         |
     |Resursgrupp   |Välj en resurs grupp eller skapa en ny.  |
-    |Name             |Ange **Azure-våren-Cloud-VNet**.                 |
+    |Namn             |Ange **Azure-våren-Cloud-VNet**.                 |
     |Location         |Välj **USA, östra**.                               |
 
 1. Välj **Nästa: IP-adresser**.
@@ -179,6 +179,26 @@ Den här tabellen visar det maximala antalet App-instanser Azure våren Cloud st
 För undernät är fem IP-adresser reserverade av Azure och minst fyra adresser krävs av Azure våren Cloud. Minst nio IP-adresser krävs, så/29 och/30 är inte drift.
 
 För ett undernät för service runtime är den minsta storleken/28. Den här storleken har ingen betydelse för antalet App-instanser.
+
+## <a name="bring-your-own-route-table"></a>Ta med din egen routningstabell
+
+Azure våren Cloud stöder användning av befintliga undernät och routningstabeller.
+
+Om dina anpassade undernät inte innehåller routningstabeller skapar Azure våren Cloud dem för varje undernät och lägger till regler till dem under hela instans livs cykeln. Om dina anpassade undernät innehåller routningstabeller, bekräftar Azure våren Cloud de befintliga väg tabellerna under instans åtgärder och lägger till/uppdaterar och/eller regler för åtgärder.
+
+> [!Warning] 
+> Anpassade regler kan läggas till i de anpassade routningstabeller och uppdateras. Regler läggs dock till av Azure våren-molnet och de får inte uppdateras eller tas bort. Regler som 0.0.0.0/0 måste alltid finnas i en specifik routningstabell och mappas till målet för din Internet-gateway, till exempel en NVA eller andra utgående Gateway. Var försiktig när du uppdaterar regler när endast dina anpassade regler ändras.
+
+
+### <a name="route-table-requirements"></a>Flödes tabell krav
+
+De routningstabeller som ditt anpassade VNet associeras med måste uppfylla följande krav:
+
+* Du kan bara koppla dina Azure Route-tabeller till ditt VNet när du skapar en ny Azure våren Cloud Service-instans. Du kan inte ändra till att använda en annan routningstabell när Azure våren Cloud har skapats.
+* Både under nätet för mikrotjänst programmet och service runtime-undernätet måste kopplas till andra routningstabeller eller något av dem.
+* Behörigheter måste tilldelas innan en instans skapas. Se till att ge Azure *våren Cloud ägar* behörighet till dina routningstabeller.
+* Den tillhör ande väg tabell resursen kan inte uppdateras efter att klustret har skapats. Medan väg tabell resursen inte kan uppdateras kan anpassade regler ändras i routningstabellen.
+* Du kan inte återanvända en routningstabell med flera instanser på grund av potentiella regler för routning i konflikt.
 
 ## <a name="next-steps"></a>Nästa steg
 

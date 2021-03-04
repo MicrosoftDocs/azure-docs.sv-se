@@ -1,17 +1,16 @@
 ---
 title: Dator grupper i Azure Monitor logg frågor | Microsoft Docs
 description: Med dator grupper i Azure Monitor kan du begränsa logg frågor till en viss uppsättning datorer.  I den här artikeln beskrivs de olika metoder som du kan använda för att skapa dator grupper och hur du använder dem i en logg fråga.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 3dffab040b8ee17760e23aa8b1d8fb65aa0417e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734136"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031097"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Dator grupper i Azure Monitor logg frågor
 Med dator grupper i Azure Monitor kan du begränsa [logg frågor](./log-query-overview.md) till en viss uppsättning datorer.  Varje grupp fylls med datorer antingen med en fråga som du definierar eller genom att importera grupper från olika källor.  När gruppen ingår i en logg fråga begränsas resultatet till poster som matchar datorerna i gruppen.

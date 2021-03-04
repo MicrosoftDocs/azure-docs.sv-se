@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c9df24a255d640c463bd62e8bdfe8a576df3b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eaad4995abcf54e9ca7040d570c7a9abbdbc9cf5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693244"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032423"
 ---
 # <a name="securing-service-principals"></a>Skydda tjänstens huvud namn
 
@@ -107,7 +107,7 @@ Det går inte att hantera tjänstens huvud namn med villkorlig åtkomst.| Överv
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Flytta från ett användar konto till ett huvud namn för tjänsten  
 Om du använder ett Azure-användarkonto som tjänstens huvud namn kan du utvärdera om du kan flytta till en [hanterad identitet](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) eller ett huvud namn för tjänsten. Om du inte kan använda en hanterad identitet, etablerar du ett huvud namn för tjänsten som bara har tillräcklig behörighet och omfattning för att köra de uppgifter som krävs. Du kan skapa ett huvud namn för tjänsten genom att [Registrera ett program](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)eller med [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell).
 
-När du använder Microsoft Graph bör du kontrol lera dokumentationen för det specifika API: t, [som i det här exemplet](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.0.0), och se till att behörighets typen för programmet visas som stöds.
+När du använder Microsoft Graph bör du kontrol lera dokumentationen för det specifika API: t, [som i det här exemplet](/powershell/azure/create-azure-service-principal-azureps), och se till att behörighets typen för programmet visas som stöds.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -115,7 +115,7 @@ När du använder Microsoft Graph bör du kontrol lera dokumentationen för det 
 
 [Skapa ett huvudnamn för tjänsten](../develop/howto-create-service-principal-portal.md)
 
- [Övervaka inloggningar för tjänstens huvud namn](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)
+ [Övervaka inloggningar för tjänstens huvud namn](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)
 
 **Lär dig mer om att skydda tjänst konton:**
 
@@ -125,4 +125,4 @@ När du använder Microsoft Graph bör du kontrol lera dokumentationen för det 
 
 [Styrande Azure-tjänstekonton](service-accounts-governing-azure.md)
 
-[Introduktion till lokala tjänst konton](service-accounts-on-poremises.md)
+[Introduktion till lokala tjänst konton](service-accounts-on-premises.md)

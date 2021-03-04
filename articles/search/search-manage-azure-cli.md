@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: bb132baf3e93242c1b228f0ac7f0cfb7f41e1164
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680371"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032525"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Hantera Azure Kognitiv sökning-tjänsten med Azure CLI
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ I en tjänst är skapandet och hanteringen av innehåll via [Search Service REST
 
 Exemplen i den här artikeln är interaktiva och kräver förhöjd behörighet. Azure CLI måste vara installerat. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
-Nu kan du köra Azure CLI med `az` kommandot från antingen Windows kommando tolk, PowerShell eller [Azure Cloud Shell](../cloud-shell/overview). PowerShell erbjuder vissa funktioner för tabbifyllning som inte är tillgängliga från Windows-kommandotolken. 
+Nu kan du köra Azure CLI med `az` kommandot från antingen Windows kommando tolk, PowerShell eller [Azure Cloud Shell](../cloud-shell/overview.md). PowerShell erbjuder vissa funktioner för tabbifyllning som inte är tillgängliga från Windows-kommandotolken. 
 
 ### <a name="check-the-azure-cli-version"></a>Kontrol lera Azure CLI-versionen
 
@@ -152,7 +152,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 
 ## <a name="create-or-delete-a-service"></a>Skapa eller ta bort en tjänst
 
-Om du vill [skapa en ny Sök tjänst](search-create-service-portal)använder du kommandot [**AZ search service Create**](/cli/azure/search/service#az_search_service_show) .
+Om du vill [skapa en ny Sök tjänst](search-create-service-portal.md)använder du kommandot [**AZ search service Create**](/cli/azure/search/service#az_search_service_show) .
 
 ```azurecli-interactive
 az search service create \

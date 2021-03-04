@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 0212ed1378dbb1d2165e9333a38fa911598c4c6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032695"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Inställning av en modell med Azure Machine Learning
 
@@ -332,7 +332,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
                              max_concurrent_runs=4)
 ```
 
-`HyperDriveConfig`Anger de parametrar som skickas till `ScriptRunConfig script_run_config` . `script_run_config`I sin tur skickar parametrar till övnings skriptet. Kodfragmentet ovan hämtas från exempel på antecknings bok för bärbara datorer, för att [Justera och distribuera med PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). I det här exemplet är `learning_rate` `momentum` parametrarna och justerade. Tidig avstängning av körningar bestäms av ett `BanditPolicy` , vilket stoppar en körning vars primära mått ligger utanför `slack_factor` (se [BanditPolicy-klass referens](python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py)). 
+`HyperDriveConfig`Anger de parametrar som skickas till `ScriptRunConfig script_run_config` . `script_run_config`I sin tur skickar parametrar till övnings skriptet. Kodfragmentet ovan hämtas från exempel på antecknings bok för bärbara datorer, för att [Justera och distribuera med PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch). I det här exemplet är `learning_rate` `momentum` parametrarna och justerade. Tidig avstängning av körningar bestäms av ett `BanditPolicy` , vilket stoppar en körning vars primära mått ligger utanför `slack_factor` (se [BanditPolicy-klass referens](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy)). 
 
 Följande kod från exemplet visar hur de injusterade värdena tas emot, parsas och skickas till övnings skriptets `fine_tune_model` funktion:
 

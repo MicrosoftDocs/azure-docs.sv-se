@@ -1,17 +1,17 @@
 ---
 title: Så här importerar du en ny uppdatering | Microsoft Docs
 description: How-Tos guide för att importera en ny uppdatering till IoT Hub enhets uppdatering för IoT Hub.
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663959"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030740"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
 Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hub.
@@ -53,7 +53,7 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Här är några exempel värden för en snabb referens för ovanstående parametrar. Fullständig dokumentation finns i det fullständiga import manifest schemat nedan.
+    Här är några exempel värden för en snabb referens för ovanstående parametrar. Du kan också visa det fullständiga [import Manifestets schema](import-schema.md) för mer information.
 
     | Parameter | Beskrivning |
     | --------- | ----------- |
@@ -66,19 +66,6 @@ Lär dig hur du importerar en ny uppdatering till enhets uppdatering för IoT Hu
     | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdaterings typ</li><li>Ange Rekommenderat värde för `microsoft/apt:1` uppdaterings typen.
     | updateFilePath (s) | Sökväg till uppdaterings filen (-erna) på datorn
 
-    Fullständigt import manifest schema
-
-    | Namn | Typ | Beskrivning | Begränsningar |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | `UpdateId` jobbobjektet | Uppdatera identitet. |
-    | Uppdateringstyp | sträng | Uppdateringstyp: <ul><li>Ange `microsoft/apt:1` när en Package-baserad uppdatering ska utföras med hjälp av referens agent.</li><li>Ange `microsoft/swupdate:1` när du utför en avbildningsbaserad uppdatering med hjälp av referens agenten.</li><li>Ange `microsoft/simulator:1` när du använder exempel agent Simulator.</li><li>Ange en anpassad typ om du utvecklar en anpassad agent.</li></ul> | <ul><li>Formatering `{provider}/{type}:{typeVersion}`</li><li>Maximalt 32 tecken totalt</li></ul> |
-    | InstalledCriteria | sträng | Sträng som tolkas av agenten för att avgöra om uppdateringen har genomförts:  <ul><li>Ange **värdet** för SWVersion för uppdaterings typen `microsoft/swupdate:1` .</li><li>Ange `{name}-{version}` för uppdaterings typ `microsoft/apt:1` , vars namn och version hämtas från apt-filen.</li><li>Ange hash för uppdaterings filen för uppdaterings typ `microsoft/simulator:1` .</li><li>Ange en anpassad sträng om du utvecklar en anpassad agent.</li></ul> | Högst 64 tecken |
-    | Kompatibilitet | Objekt mat ris `CompatibilityInfo` | Kompatibilitetsinformation för enhet som är kompatibel med den här uppdateringen. | Högst 10 objekt |
-    | CreatedDateTime | datum/tid | Datum och tid då uppdateringen skapades. | Avgränsat ISO 8601 datum-och tids format, i UTC |
-    | ManifestVersion | sträng | Importera manifest schema version. Ange `2.0` , som är kompatibel med `urn:azureiot:AzureDeviceUpdateCore:1` gränssnittet och `urn:azureiot:AzureDeviceUpdateCore:4` gränssnittet.</li></ul> | Måste vara `2.0` |
-    | Filer | Objekt mat ris `File` | Uppdatera nytto Last filer | Högst 5 filer |
-
-Obs: alla fält är obligatoriska.
 
 ## <a name="review-generated-import-manifest"></a>Granska genererat import manifest
 

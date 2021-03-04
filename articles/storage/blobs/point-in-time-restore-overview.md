@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031641"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Återställning av tidpunkter för block-blobar
 
 Återställning vid tidpunkt ger skydd mot oavsiktlig borttagning eller skada genom att göra det möjligt att återställa block BLOB-data till ett tidigare tillstånd. Återställning på plats-till-tid är användbart i scenarier där en användare eller ett program oavsiktligt tar bort data eller där ett program fel skadar data. Vid tidpunkts återställning aktive ras även testnings scenarier som kräver att en data uppsättning återställs till ett känt tillstånd innan ytterligare tester körs.
 
-Återställning av punkt-i-tid stöds endast för generella v2-lagrings konton. Endast data i nivåerna frekvent och låg frekvent åtkomst kan återställas med återställning vid tidpunkter.
+Återställning av punkt-till-tid stöds endast för generella v2-lagrings konton i standard prestanda nivån. Endast data i nivåerna frekvent och låg frekvent åtkomst kan återställas med återställning vid tidpunkter.
 
 Information om hur du aktiverar återställning av tidpunkter för ett lagrings konto finns i [utföra en tidpunkts återställning på block BLOB-data](point-in-time-restore-manage.md).
 

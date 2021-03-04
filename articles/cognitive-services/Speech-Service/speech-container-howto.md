@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575796"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032946"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installera och kör Docker-behållare för tal tjänstens API: er 
 
@@ -320,7 +320,7 @@ Det här kommandot:
 #### <a name="diarization-on-the-speech-to-text-output"></a>Diarization för utdata från tal till text
 Diarization är aktiverat som standard. Använd om du vill hämta diarization i ditt svar `diarize_speech_config.set_service_property` .
 
-1. Ställ in utmatnings formatet för fraser på `Detailed` .
+1. Ange utmatnings formatet för frasen till `Detailed` .
 2. Ange läget för diarization. De lägen som stöds är `Identity` och `Anonymous` .
 ```python
 diarize_speech_config.set_service_property(
