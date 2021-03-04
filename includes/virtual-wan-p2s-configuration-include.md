@@ -4,13 +4,15 @@ ms.author: cherylmc
 ms.date: 02/23/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: b5c0bdbb29af7b8894d86233520ff09854faa201
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 567c0bb75c30a1f0ccdcde7ec1b0f04f5d6e54c5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732501"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048273"
 ---
+[!INCLUDE [Portal feature rollout](virtual-wan-portal-feature-rollout.md)]
+
 1. Gå till **alla resurser** och välj det virtuella WAN som du skapade och välj sedan **User VPN-konfigurationer** på menyn till vänster.
 1. På sidan **VPN-konfigurationer för användare** väljer du **+ skapa användare VPN-konfiguration** längst upp på sidan för att öppna sidan **Skapa ny användare VPN-konfiguration** .
 
@@ -23,7 +25,7 @@ ms.locfileid: "101732501"
    **IKEv2 VPN**
 
    * **Krav:** När du väljer **IKEv2** -tunnel typen visas ett meddelande som uppmanar dig att välja en autentiseringsmetod. För IKEv2 kan du bara ange en autentiseringsmetod. Du kan välja Azure-certifikat, Azure Active Directory eller RADIUS-baserad autentisering.
- 
+
    * **Anpassade IPsec-parametrar:** Om du vill anpassa parametrarna för IKE fas 1 och IKE fas 2 växlar du till **anpassad** IPSec-växel och väljer parameter värden. Mer information om anpassningsbara parametrar finns i artikeln [anpassad IPsec](../articles/virtual-wan/point-to-site-ipsec.md) .
 
      :::image type="content" source="media/virtual-wan-p2s-configuration/custom.png" alt-text="Skärm bild av IPsec-växel till anpassad.":::

@@ -36,6 +36,8 @@
           items:
             - name: Utvärdera virtuella VMware-datorer för migrering till virtuella Azure-datorer
               href: tutorial-assess-vmware-azure-vm.md
+            - name: Utvärdera SQL-instanser för migrering till Azure SQL
+              href: tutorial-assess-sql.md
             - name: Utvärdera virtuella VMware-datorer för migrering till AVS
               href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: Utvärdera virtuella Hyper-V-datorer för migrering till Azure
@@ -102,6 +104,8 @@
       items:
         - name: Översikt av utvärderingar (migrera till virtuella Azure-datorer)
           href: concepts-assessment-calculation.md
+        - name: Översikt över utvärderingar (migrera till Azure SQL)
+          href: concepts-azure-sql-assessment-calculation.md
         - name: Översikt över utvärdering (migrera till AVS)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: Bästa praxis för utvärdering
@@ -144,8 +148,12 @@
               href: deploy-appliance-script-government.md
         - name: Begränsa identifieringsomfång för virtuella VMware-datorer
           href: set-discovery-scope.md
+        - name: Så här lägger du till autentiseringsuppgifter för servern
+          href: add-server-credentials.md
         - name: Identifiera program/roller/funktioner
           href: how-to-discover-applications.md
+        - name: Identifiera SQL-instanser i ett befintligt projekt
+          href: how-to-discover-sql-existing-project.md
         - name: Analysera datorberoenden (agentbaserade)
           href: how-to-create-group-machine-dependencies.md
         - name: Analysera datorberoenden (agentlösa)
@@ -158,6 +166,8 @@
           href: how-to-create-a-group.md
         - name: Skapa en Azure VM-utvärdering
           href: how-to-create-assessment.md
+        - name: Skapa en Azure SQL-utvärdering
+          href: how-to-create-azure-sql-assessment.md
         - name: Skapa en AVS-utvärdering
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: Utvärdera en SQL Server-databas
@@ -176,6 +186,8 @@
       items:
         - name: Lägga till migreringsverktyg
           href: how-to-migrate.md
+        - name: Replikera med ExpressRoute
+          href: replicate-using-expressroute.md
         - name: Förbereda datorer för migrering
           href: prepare-for-migration.md
         - name: Förbereda Windows 2003-servrar för migrering

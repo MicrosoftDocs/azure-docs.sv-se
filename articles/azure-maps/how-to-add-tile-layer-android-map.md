@@ -3,17 +3,18 @@ title: Lägg till ett panel lager till Android Maps | Microsoft Azure Maps
 description: Lär dig hur du lägger till ett panel lager till en karta. Se ett exempel som använder Azure Maps Android SDK för att lägga till ett väderleks överlägg i en karta.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679309"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047510"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Lägga till ett panel lager till en karta (Android SDK)
 
@@ -36,6 +37,7 @@ Panel-URL: en som skickas till ett panel lager måste vara en HTTP/HTTPS-URL til
 * `{quadkey}` -Panel quadkey identifierare baserat på Bing Maps-panelens system namngivnings konvention.
 * `{bbox-epsg-3857}` – En sträng med avgränsnings rutor med formatet `{west},{south},{east},{north}` i EPSG 3857 rums referens system.
 * `{subdomain}` – En plats hållare för under domänens värden, om värdet under domän är angivet.
+* `azmapsdomain.invalid` – En plats hållare för att justera domänen och autentiseringen av panel begär Anden med samma värden som används av kartan. Använd det här när du anropar en panel tjänst som körs av Azure Maps.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -44,6 +46,8 @@ För att slutföra processen i den här artikeln måste du installera [Azure Map
 ## <a name="add-a-tile-layer-to-the-map"></a>Lägg till ett panel lager på kartan
 
 Det här exemplet visar hur du skapar ett panel lager som pekar på en uppsättning paneler. Det här exemplet använder systemet "x, y, zoom". Källan till det här panel lagret är [OpenSeaMap-projektet](https://openseamap.org/index.php), som innehåller massor av förflyttade nautiska diagram. Ofta när du visar panel lager, är det önskvärt att kunna se etiketterna för städer på kartan tydligt. Detta kan uppnås genom att infoga panel lagret under kart etikettens lager.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 Följande skärm bild visar ovanstående kod som visar ett panel lager med nautisk information på en karta som har ett mörkt grå Skale format.
 
 ![Android-karta som visar panel lager](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I följande artikel finns mer information om hur du anger kart format
+I följande artikel finns mer information om hur du kan täcka över bilder på en karta.
 
 > [!div class="nextstepaction"]
-> [Ändra kart stil](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [Lägg till en värme karta](map-add-heat-map-layer-android.md)
+> [Bild skikt](map-add-image-layer-android.md)

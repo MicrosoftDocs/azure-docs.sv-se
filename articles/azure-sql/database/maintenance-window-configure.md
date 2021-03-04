@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/02/2021
-ms.openlocfilehash: ae31b329cbea82ac664af24e42ec58d094b3a7ae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664011"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048630"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurera underhålls fönstret (förhands granskning)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -275,7 +275,7 @@ Följande steg anger underhålls perioden för en befintlig databas, elastisk po
 1. Navigera till den hanterade instans som du vill ange underhålls perioden för.
 1. Välj **Underhåll** på menyn **Inställningar** och välj sedan önskad underhålls period.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="Sidan underhåll av SQL-databas":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="Underhålls sida för SQL-hanterad instans":::
 
 
 

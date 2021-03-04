@@ -2,17 +2,16 @@
 title: Övervaka virtuella Azure-datorer med Azure Monitor
 description: Beskriver hur du samlar in och analyserar övervaknings data från virtuella datorer i Azure med hjälp av Azure Monitor.
 ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 6209389843b19d933bdce2726b55946b8839a264
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047051"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Övervaka virtuella Azure-datorer med Azure Monitor
 Den här artikeln beskriver hur du använder Azure Monitor för att samla in och analysera övervaknings data från virtuella Azure-datorer för att upprätthålla deras hälsa. Virtuella datorer kan övervakas för tillgänglighet och prestanda med Azure Monitor som [andra Azure](../essentials/monitor-azure-resource.md)-resurser, men de är unika för andra resurser eftersom du också behöver övervaka gäst operativ systemet och de arbets belastningar som körs i den. 
@@ -56,7 +55,7 @@ Om du vill aktivera alla funktioner i Azure Monitor för övervakning av en virt
 | Konfigurations steg | Slutförda åtgärder | Aktiverade funktioner |
 |:---|:---|:---|
 | Ingen konfiguration | -Värd plattforms mått som samlas in på mått.<br>– Aktivitets logg insamlad. | – Metrics Explorer för värden.<br>– Mått aviseringar för värden.<br>– Aktivitets logg aviseringar. |
-| [Aktivera VM Insights](#enable-azure-monitor-for-vms) | -Log Analytics-agenten installerad.<br>-Beroende agent installerad.<br>– Gäst prestanda data som samlas in i loggar.<br>– Bearbeta och beroende information som samlas in i loggar. | – Prestanda diagram och arbets böcker för gäst prestanda data.<br>-Logga frågor om prestanda data för gäst.<br>– Logg aviseringar för prestanda data för gäst.<br>-Beroende karta. |
+| [Aktivera VM Insights](#enable-vm-insights) | -Log Analytics-agenten installerad.<br>-Beroende agent installerad.<br>– Gäst prestanda data som samlas in i loggar.<br>– Bearbeta och beroende information som samlas in i loggar. | – Prestanda diagram och arbets böcker för gäst prestanda data.<br>-Logga frågor om prestanda data för gäst.<br>– Logg aviseringar för prestanda data för gäst.<br>-Beroende karta. |
 | [Installera Diagnostics-tillägget och teleympkvistar-agenten](#enable-diagnostics-extension-and-telegraf-agent) | – Gäst prestanda data som samlas in på mått. | – Metrics Explorer för gäst.<br>– Mått aviseringar för gäst.  |
 | [Konfigurera Log Analytics-arbetsyta](#configure-log-analytics-workspace) | -Händelser som samlas in från gäst. | – Logga frågor om gäst händelser.<br>– Logga aviseringar för gäst händelser. |
 | [Skapa diagnostisk inställning för virtuell dator](#collect-platform-metrics-and-activity-log) | -Plattforms mått som samlas in i loggar.<br>– Aktivitets logg som samlas in i loggar. | -Logga frågor för värd mått.<br>– Logg aviseringar för värd mått.<br>-Logga frågor för aktivitets loggen.

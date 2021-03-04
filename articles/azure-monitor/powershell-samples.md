@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor PowerShell-exempel
 description: Använd PowerShell för att få åtkomst till Azure Monitor funktioner som autoskalning, aviseringar, Webhooks och sökning av aktivitets loggar.
-ms.subservice: ''
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f43531e6b81b9bd4a294d70e9b8091463cf507a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1aa0d44dcb73a925494c0bc4aae43dc93e5a33d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100627970"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047085"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell-exempel
 Den här artikeln visar exempel på PowerShell-kommandon som hjälper dig att komma åt Azure Monitor-funktioner.
@@ -151,7 +150,7 @@ I följande tabell beskrivs de parametrar och värden som används för att skap
 
 | parameter | värde |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Namn |simpletestdiskwrite |
 | Plats för den här aviserings regeln |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

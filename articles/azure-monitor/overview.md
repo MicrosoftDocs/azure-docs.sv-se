@@ -1,17 +1,16 @@
 ---
 title: Översikt över Azure Monitor | Microsoft Docs
 description: Översikt över Microsoft-tjänster och funktioner som bidrar till en fullständig övervakningsstrategi för dina Azure-tjänster och program.
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 00f1bec4d4117d9ccebb4440e3649dd9dff32058
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717357"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047170"
 ---
 # <a name="azure-monitor-overview"></a>Översikt över Azure Monitor
 
@@ -145,7 +144,7 @@ Flera API: er är tillgängliga för att läsa och skriva mått och loggar till 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om:
 
-* [Mått och loggar](data-platform.md) för data som samlas in av Azure Monitor.
+* [Mått och loggar](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) för data som samlas in av Azure Monitor.
 * [Data källor](agents/data-sources.md) för hur de olika komponenterna i ditt program skickar telemetri.
 * [Logg frågor](logs/log-query-overview.md) för att analysera insamlade data.
 * [Metod tips](/azure/architecture/best-practices/monitoring) för övervakning av moln program och-tjänster.

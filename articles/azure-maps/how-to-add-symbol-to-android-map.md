@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1706b60a61bd3b507d9fbcf555e478b388f51168
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679346"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047578"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>Lägg till ett symbol lager (Android SDK)
 
@@ -132,6 +132,52 @@ Följande skärm bild visar ovanstående kod Rending en punkt funktion med hjäl
 
 > [!TIP]
 > Om du bara vill rendera text med ett symbol lager kan du dölja ikonen genom `iconImage` att ange egenskapen för ikon alternativen till `"none"` .
+
+## <a name="modify-symbol-colors"></a>Ändra symbol färger
+
+Azure Maps Android SDK levereras med en uppsättning fördefinierade färg variationer för standard markör ikonen. Kan till exempel `marker-red` skickas till `iconImage` alternativet för ett symbol lager för att återge en röd version av markörens ikon i lagret. 
+
+```java
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("marker-red")
+);
+```
+
+I tabellen nedan visas alla avbildnings namn för inbyggda ikoner som är tillgängliga. Alla dessa märken hämtar sina färger från färg resurser som du kan åsidosätta. Förutom att åsidosätta huvud fyllnings färgen för den här markören. Observera dock att åsidosätta färgen på en av dessa markörer gäller dock för alla lager som använder den ikon bilden.
+
+| Ikon bildens namn | Färg resurs namn |
+|-----------------|---------------------|
+| `marker-default` | `mapcontrol_marker_default` |
+| `marker-black` | `mapcontrol_marker_black` |
+| `marker-blue` | `mapcontrol_marker_blue` |
+| `marker-darkblue` | `mapcontrol_marker_darkblue` |
+| `marker-red` | `mapcontrol_marker_red` |
+| `marker-yellow` | `mapcontrol_marker_yellow` |
+
+Du kan även åsidosätta kant linje färgen för alla markörer med hjälp av `mapcontrol_marker_border` färg resurs namnet. Färgerna på dessa markörer kan åsidosättas genom att du lägger till en färg med samma namn i `colors.xml` appens fil. Följande fil skulle till exempel `colors.xml` göra standard markör färgen ljus grönt.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mapcontrol_marker_default">#00FF00</color>
+</resources>
+```
+
+Följande är en ändrad version av standard markör vektorn XML som du kan ändra för att skapa ytterligare anpassade versioner av standard markören. Den ändrade versionen kan läggas till i `drawable` mappen i din app och läggas till i Maps-bildspriten med hjälp av `map.images.add` och sedan användas med ett symbol lager.
+
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24.5dp"
+    android:height="36.5dp"
+    android:viewportWidth="24.5"
+    android:viewportHeight="36.5">
+    <path
+        android:pathData="M12.25,0.25a12.2543,12.2543 0,0 0,-12 12.4937c0,6.4436 6.4879,12.1093 11.059,22.5641 0.5493,1.2563 1.3327,1.2563 1.882,0C17.7621,24.8529 24.25,19.1857 24.25,12.7437A12.2543,12.2543 0,0 0,12.25 0.25Z"
+        android:strokeWidth="0.5"
+        android:fillColor="@color/mapcontrol_marker_default"
+        android:strokeColor="@color/mapcontrol_marker_border"/>
+</vector>
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

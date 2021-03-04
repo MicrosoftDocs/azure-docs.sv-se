@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: fda9026adf46a26927912b9e1983a537470c37ee
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746575"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048020"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skala agent lös migrering av virtuella VMware-datorer till Azure
 
@@ -153,7 +153,7 @@ Nu bör du kontrol lera att den skalbara enheten kan ansluta till vCenter-server
 :::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Importen lyckades":::
 
 > [!IMPORTANT]
-> Om du redigerar vCenter Server autentiseringsuppgifter på den primära installationen, se till att du importerar konfigurationsfilerna igen till den skalbara enheten för att få den senaste konfigurationen och fortsätta att utföra pågående replikeringar.<br/> Om du inte behöver den skalbara installationen längre, se till att du inaktiverar den skalbara enheten. [**Läs mer**](./common-questions-appliance) om hur du inaktiverar den skalbara installationen när det inte behövs.
+> Om du redigerar vCenter Server autentiseringsuppgifter på den primära installationen, se till att du importerar konfigurationsfilerna igen till den skalbara enheten för att få den senaste konfigurationen och fortsätta att utföra pågående replikeringar.<br/> Om du inte behöver den skalbara installationen längre, se till att du inaktiverar den skalbara enheten. [**Läs mer**](./common-questions-appliance.md) om hur du inaktiverar den skalbara installationen när det inte behövs.
 
 ## <a name="replicate"></a>Replikera
 

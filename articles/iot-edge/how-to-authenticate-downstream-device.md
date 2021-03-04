@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391991"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046354"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Autentisera en underordnad enhet på Azure IoT Hub
 
@@ -35,7 +35,7 @@ Slutför stegen i [Konfigurera en IoT Edge-enhet så att den fungerar som en tra
 
 Om du använder X. 509-autentisering kommer du att generera certifikat för din underordnade enhet. Ha samma certifikat från rot certifikat utfärdaren och skriptet som du använde för att kunna använda den transparenta Gateway-artikeln.
 
-Den här artikeln hänvisar till *Gateway-värdnamnet* på flera punkter. Gateway-värdnamnet deklareras i parametern **hostname** i filen config. yaml på den IoT Edge gateway-enheten. Det kallas i anslutnings strängen för den underordnade enheten. Gateway-värdnamnet måste matchas till en IP-adress, antingen med DNS eller en värd fil post på den underordnade enheten.
+Den här artikeln hänvisar till *Gateway-värdnamnet* på flera punkter. Gateway-värdnamnet anges i parametern **hostname** för konfigurations filen på IoT Edge gateway-enheten. Det kallas i anslutnings strängen för den underordnade enheten. Gateway-värdnamnet måste matchas till en IP-adress, antingen med DNS eller en värd fil post på den underordnade enheten.
 
 ## <a name="register-device-with-iot-hub"></a>Registrera enheten med IoT Hub
 
@@ -192,7 +192,7 @@ Anslutnings strängar för underordnade enheter behöver följande komponenter:
 * Autentiseringsmetoden, om symmetrisk nyckel eller X. 509-certifikat
   * Om du använder autentisering med symmetrisk nyckel ger du antingen den primära eller sekundära nyckeln: `SharedAccessKey={key}`
   * Om du använder autentisering med X. 509-certifikat anger du en flagga: `x509=true`
-* Den gateway-enhet som enheten ansluter via. Ange **hostname** -värdet från filen config. yaml för IoT Edge gateway-enheten: `GatewayHostName={gateway hostname}`
+* Den gateway-enhet som enheten ansluter via. Ange **hostname** -värdet från IoT Edge gateway-enhetens konfigurations fil: `GatewayHostName={gateway hostname}`
 
 Tillsammans ser en fullständig anslutnings sträng ut så här:
 

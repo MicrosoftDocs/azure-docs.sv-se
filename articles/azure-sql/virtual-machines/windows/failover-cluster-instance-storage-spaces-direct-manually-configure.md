@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357815"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048649"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Skapa en FCI med Lagringsdirigering (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -236,9 +236,11 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 Om du vill dirigera trafiken korrekt till den aktuella primära noden konfigurerar du anslutnings alternativet som är lämpligt för din miljö. Du kan skapa en [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) eller, om du använder SQL Server 2019 CU2 (eller senare) och Windows Server 2016 (eller senare), kan du använda funktionen [distribuerat nätverks namn](failover-cluster-instance-distributed-network-name-dnn-configure.md) i stället. 
 
+Mer information om kluster anslutnings alternativ finns i [dirigera hadr-anslutningar till SQL Server på virtuella Azure-datorer](hadr-cluster-best-practices.md#connectivity). 
+
 ## <a name="limitations"></a>Begränsningar
 
-- Azure Virtual Machines stöder Microsoft koordinator för distribuerad transaktion (MSDTC) på Windows Server 2019 med lagring på CSV: er och en [standard belastningsutjämnare](../../../load-balancer/load-balancer-overview.md).
+- Azure Virtual Machines stöder Microsoft Distributed Transaction Coordinator (MSDTC) på Windows Server 2019 med lagring på CSV: er och en [standard belastningsutjämnare](../../../load-balancer/load-balancer-overview.md).
 - Diskar som har bifogats som NTFS-formaterade diskar kan bara användas med Lagringsdirigering om alternativet för disk behörighet är omarkerat eller avmarkerat när lagring läggs till i klustret. 
 - Det finns bara stöd för registrering med SQL IaaS agent extension i [läget för förenklad hantering](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
 

@@ -4,6 +4,8 @@
   items:
     - name: Vad är ARM-mallar?
       href: overview.md
+    - name: Översikt över bicep
+      href: bicep-overview.md
 - name: Snabbstarter
   items:
     - name: Skapa mallar – portal
@@ -324,9 +326,7 @@
       href: template-best-practices.md
     - name: Bicep
       items:
-        - name: Översikt
-          href: bicep-overview.md
-        - name: Gå från JSON till bicep
+        - name: Jämför JSON med bicep
           href: compare-template-syntax.md
     - name: Vanliga frågor och svar
       href: frequently-asked-questions.md

@@ -1,17 +1,16 @@
 ---
 title: Använda kundhanterade lagringskonton i Azure Monitor-logganalys
 description: Använd ditt eget lagrings konto för Log Analytics scenarier
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 4161f2f4ced848eb02d395dfb2da35d64f0c0fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723069"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047463"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Använda kundhanterade lagringskonton i Azure Monitor-logganalys
 
@@ -23,7 +22,7 @@ Log Analytics förlitar sig på Azure Storage i olika scenarier. Den här använ
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Mata in Azure-diagnostik anknytnings loggar (WAD/LAD)
 Azure-diagnostik tilläggs agenter (kallas även WAD och LAD för Windows respektive Linux-agenter) samlar in olika operativ system loggar och lagrar dem på ett kundhanterat lagrings konto. Du kan sedan mata in dessa loggar i Log Analytics för att granska och analysera dem.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Samla in Azure-diagnostik tilläggs loggar från ditt lagrings konto
-Anslut lagrings kontot till din Log Analytics-arbetsyta som en lagrings data källa med hjälp av [Azure Portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) eller genom att anropa [API: et för Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
+Anslut lagrings kontot till din Log Analytics-arbetsyta som en lagrings data källa med hjälp av [Azure Portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) eller genom att anropa [API: et för Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
 
 Data typer som stöds:
 * Syslog

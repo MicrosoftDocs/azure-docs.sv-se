@@ -1,6 +1,6 @@
 - name: Dedikerad SQL-pool (tidigare SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Byta till Azure Synapse
+- name: Växla till Azure Synapse >
   href: ../overview-what-is.md
 - name: Översikt
   items:

@@ -1,17 +1,16 @@
 ---
 title: Exempel på Resource Manager-mallar för logg frågor
 description: Exempel Azure Resource Manager mallar för att distribuera Azure Monitor logg frågor.
-ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: ad8d984f7d363499ed2e85d7d46b95c05460f3eb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b3ac4d693afb8ee2f2dba362e1e2f307e50f78
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100628339"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047272"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>Exempel på Resource Manager-mallar för logg frågor i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa och konfigurera logg frågor i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.

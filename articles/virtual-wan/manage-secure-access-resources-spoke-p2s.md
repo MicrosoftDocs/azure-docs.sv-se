@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051538"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048274"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Hantera säker åtkomst till resurser i eker-virtuella nätverk för användares VPN-klienter
 
@@ -50,8 +50,6 @@ När du väljer autentiseringsmetoden har du tre alternativ. Varje metod har sä
 * **RADIUS-baserad autentisering:** Hämta RADIUS-serverns IP-adress, RADIUS-server hemlighet och certifikat information.
 
 * **Azure-certifikat:** För den här konfigurationen krävs certifikat. Du måste antingen generera eller skaffa certifikat. Ett klient certifikat krävs för varje klient. Dessutom måste rot certifikats informationen (offentlig nyckel) överföras. Mer information om de certifikat som krävs finns i [skapa och exportera certifikat](../vpn-gateway/vpn-gateway-certificates-point-to-site.md).
-
-I följande exempel visas autentisering med Azure-certifikat.
 
 [!INCLUDE [Define parameters](../../includes/virtual-wan-p2s-configuration-include.md)]
 

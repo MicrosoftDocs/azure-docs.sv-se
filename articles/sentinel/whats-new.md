@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: 887245bbbefa1c0232313b638203206b623d506b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729716"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048190"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -32,8 +32,44 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 
 ## <a name="february-2021"></a>Februari 2021
 
+- [Data anslutningar från tredje part](#third-party-data-connectors)
 - [UEBA insikter på sidan entitet](#ueba-insights-in-the-entity-page)
 - [Förbättrad incident sökning](#improved-incident-search)
+
+### <a name="third-party-data-connectors"></a>Data anslutningar från tredje part
+
+Vår samling tredjeparts integreringar fortsätter att växa, med trettio kopplingar som läggs till under de senaste två månaderna. Här är en lista:
+
+- [Agari phishing-skydd och varumärkes skydd](connect-agari-phishing-defense.md)
+- [Akamai säkerhets händelser](connect-akamai-security-events.md)
+- [Alsid för Active Directory](connect-alsid-active-directory.md)
+- [Apache HTTP-Server](connect-apache-http-server.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Black Berry-CylancePROTECT](connect-data-sources.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
+- [Cisco Firepower-eStreamer](connect-data-sources.md)
+- [Cisco Meraki](connect-cisco-meraki.md)
+- [Cisco Umbrella](connect-cisco-umbrella.md)
+- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
+- [ESET Enterprise-kontrollant](connect-data-sources.md)
+- [ESET Security Management Center](connect-data-sources.md)
+- [Google-arbetsyta (tidigare G Suite)](connect-google-workspace.md)
+- [Imperva WAF-Gateway](connect-imperva-waf-gateway.md)
+- [Juniper SRX](connect-juniper-srx.md)
+- [Netskope](connect-data-sources.md)
+- [NXLog DNS-loggar](connect-nxlog-dns.md)
+- [NXLog Linux-granskning](connect-nxlog-linuxaudit.md)
+- [Onapsis-plattform](connect-data-sources.md)
+- [E-postsäkerhet för Proofpoint på begäran (POD)](connect-proofpoint-pod.md)
+- [Qualys sårbarhets hantering, kunskaps bas](connect-data-sources.md)
+- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
+- [SonicWall-brandvägg](connect-data-sources.md)
+- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
+- [Squid Proxy](connect-squid-proxy.md)
+- [Symantec-Endpoint Protection](connect-data-sources.md)
+- [Thycotic Secret Server](connect-thycotic-secret-server.md)
+- [Trend Micro XDR](connect-data-sources.md)
+- [VMWare-ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA insikter på sidan entitet
 
@@ -66,6 +102,7 @@ När du söker efter incidenter i Azure Sentinel kan du nu söka efter följande
 - [Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [PowerShell-modulen AZ. SecurityInsights (offentlig för hands version)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-anslutning](#sql-database-connector)
+- [Dynamics 365-anslutning](#dynamics-365-connector)
 - [Förbättrade incident kommentarer](#improved-incident-comments)
 - [Dedikerade Log Analytics kluster](#dedicated-log-analytics-clusters)
 - [Hanterade identiteter för Logic Apps](#logic-apps-managed-identities)
@@ -81,7 +118,7 @@ Guiden regel för schemalagd analys i Azure Sentinel innehåller nu följande f�
 -   Utökad stöd för automatisk komplettering.
 -   Valideringar av frågor i real tid. Fel i frågan visas nu som ett rött block i rullnings listen och som en röd prick på fliken **Ange regelns logiska** namn. Dessutom går det inte att spara en fråga med fel.
 
-Mer information finns i [Självstudier: identifiera hot direkt från rutan](tutorial-detect-threats-built-in.md).
+Mer information finns i [Självstudier: skapa anpassade analys regler för att identifiera hot](tutorial-detect-threats-custom.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>PowerShell-modulen AZ. SecurityInsights (offentlig för hands version)
 
 Azure Sentinel stöder nu den nya [AZ. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modulen.
@@ -99,6 +136,12 @@ Azure Sentinel tillhandahåller nu en Azure SQL Database-anslutning, som du kan 
 Azure SQL är en fullständigt hanterad databas motor för PaaS (Platform-as-a-Service) som hanterar de flesta funktioner för databas hantering, till exempel uppgradering, uppdatering, säkerhets kopiering och övervakning, utan medverkan från användaren.
 
 Mer information finns i [ansluta Azure SQL Database-diagnostik och gransknings loggar](connect-azure-sql-logs.md).
+
+### <a name="dynamics-365-connector"></a>Dynamics 365-anslutning
+
+Azure Sentinel tillhandahåller nu en koppling för Microsoft Dynamics 365 som gör att du kan samla in dina Dynamics 365-programs användar-, administratörs-och support aktivitets loggar i Azure Sentinel. Du kan använda dessa data för att granska den helheten för data bearbetnings åtgärder som äger rum och analysera dem för möjliga säkerhets överträdelser.
+
+Mer information finns i [ansluta Dynamics 365 aktivitets loggar till Azure Sentinel](connect-dynamics-365.md).
 
 ### <a name="improved-incident-comments"></a>Förbättrade incident kommentarer
 
@@ -185,15 +228,14 @@ Azure Sentinel använder Log Analytics agent för att skicka händelser till din
 Mer information finns i Log Analytics- [dokumentationen](../azure-monitor/agents/log-analytics-agent.md) och viktig information om [Log Analytics agent](https://github.com/microsoft/OMS-Agent-for-Linux/releases).
 ## <a name="november-2020"></a>November 2020
 
-- [Övervaka din Logic Apps spel böcker i Azure Sentinel](#monitor-your-logic-apps-playbooks-in-azure-sentinel)
+- [Övervaka din spel böcker-hälsa i Azure Sentinel](#monitor-your-playbooks-health-in-azure-sentinel)
 - [Microsoft 365 Defender-koppling (offentlig för hands version)](#microsoft-365-defender-connector-public-preview)
-### <a name="monitor-your-logic-apps-playbooks-in-azure-sentinel"></a>Övervaka din Logic Apps spel böcker i Azure Sentinel
 
-Azure Sentinel integreras nu med [Azure log Apps](../logic-apps/index.yml), en moln tjänst som hjälper dig att schemalägga, automatisera och dirigera uppgifter, affärs processer och arbets flöden.
+### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>Övervaka din spel böcker-hälsa i Azure Sentinel
 
-Använd en Azure Logic-app i Azure Sentinel som en Spelbok, som kan anropas automatiskt när en incident skapas, eller när sorterar och arbetar med incidenter. 
+Azure Sentinel-spel böcker baseras på arbets flöden som skapats i [Azure log-appar](../logic-apps/index.yml), en moln tjänst som hjälper dig att schemalägga, automatisera och dirigera uppgifter, affärs processer och arbets flöden. Spel böcker kan anropas automatiskt när en incident skapas, eller när sorterar och arbetar med incidenter. 
 
-För att ge insikter om hälso tillståndet, prestandan och användningen av din spel böcker, inklusive de som du lägger till med Azure Logic Apps, har vi lagt till en [Azure-arbetsbok](../azure-monitor/visualize/workbooks-overview.md) med namnet **spel böcker Health Monitoring**. 
+För att ge insikter om hälso tillståndet, prestandan och användningen av din spel böcker har vi lagt till en [arbets bok](../azure-monitor/visualize/workbooks-overview.md) med namnet **spel böcker Health Monitoring**. 
 
 Använd arbets boken **spel böcker Health Monitoring** för att övervaka hälso tillståndet för din spel böcker eller leta efter avvikelser i mängden lyckade eller misslyckade körningar. 
 

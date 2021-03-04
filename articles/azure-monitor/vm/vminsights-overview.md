@@ -1,23 +1,22 @@
 ---
 title: Vad är VM Insights?
 description: Översikt över VM Insights, som övervakar hälso tillstånd och prestanda för virtuella Azure-datorer och identifierar och mappar program komponenter och deras beroenden automatiskt.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707378"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046422"
 ---
 # <a name="overview-of-vm-insights"></a>Översikt över VM Insights
 
 VM Insights övervakar prestanda och hälsa för dina virtuella datorer och skalnings uppsättningar för virtuella datorer, inklusive processer som körs och beroenden för andra resurser. Det kan hjälpa till att leverera förutsägbar prestanda och tillgänglighet för viktiga program genom att identifiera Flask halsar och nätverks problem och kan också hjälpa dig att förstå om ett problem är relaterat till andra beroenden.
 
-VM Insights stöder Windows-och Linux-operativ system på följande:
+VM Insights stöder Windows-och Linux-operativsystem på följande datorer:
 
 - Virtuella Azure-datorer
 - Azure Virtual Machine Scale Sets
@@ -39,7 +38,7 @@ Det finns ingen direkt kostnad för VM-insikter, men du debiteras för aktivitet
 - Aviserings regler baserade på logg-och hälso data.
 - Meddelanden som skickas från varnings regler.
 
-Logg storleken varierar med sträng längden för prestanda räknare och kan öka med antalet logiska diskar och nätverkskort som allokeras till den virtuella datorn. Om du redan använder Tjänstkarta, är den enda ändringen som visas de ytterligare prestanda data som skickas till `InsightsMetrics` data typen Azure Monitor.
+Logg storleken varierar med sträng längden för prestanda räknare och kan öka med antalet logiska diskar och nätverkskort som allokeras till den virtuella datorn. Om du redan använder Tjänstkarta, är den enda ändringen som visas de extra prestanda data som skickas till `InsightsMetrics` data typen Azure Monitor.
 
 
 ## <a name="configuring-vm-insights"></a>Konfigurera VM Insights

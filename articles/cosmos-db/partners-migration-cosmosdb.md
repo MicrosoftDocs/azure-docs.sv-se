@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090511"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048156"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrering och program utvecklings partner
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,6 @@ Från NoSQL-migrering till program utveckling kan du välja bland flera olika er
 | [Cap Gemini](https://www.capgemini.com/) | Detalj handel (inventering), IoT, operativa analyser (Spark), utveckling av appar | USA, Frankrike, Storbritannien, Nederländerna, Finland  |
 | [Cognizant](https://www.cognizant.com/) | IoT, anpassning, detalj handel (inventering), operativa analyser (Spark), utveckling av appar |USA, Kanada, Storbritannien, Danmark, Nederländerna, Schweiz, Australien, Japan |
 |[Infosys](https://www.infosys.com/)     | Apputveckling      |    USA    |  
-| [Lagash-system](https://www.devex.com/organizations/lagash-systems-131346) | IoT, arkitektur utan server, utveckling av appar | Argentina, Chile, Colombia, Mexiko|
 | [Lambda3 Personalen](https://www.lambda3.com.br/) | Anpassning i real tid, detalj handels inventering, utveckling av appar | Brasilien|
 |[Neal-analys](https://www.nealanalytics.com/)    |     Anpassning, detalj handel (inventering), operativa analyser (Spark), utveckling av appar  |    USA     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL-migrering      |   USA      |

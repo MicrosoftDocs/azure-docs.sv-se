@@ -1,17 +1,16 @@
 ---
 title: Aktivera Azure Monitor för en hybrid miljö
 description: I den här artikeln beskrivs hur du aktiverar VM Insights för en hybrid moln miljö som innehåller en eller flera virtuella datorer.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 6518906f264077ac88a90513a237840f7f814247
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731280"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046648"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Aktivera VM-insikter för en hybrid virtuell dator
 I den här artikeln beskrivs hur du aktiverar VM Insights för en virtuell dator utanför Azure, inklusive lokala miljöer och andra moln miljöer.

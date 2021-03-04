@@ -7,12 +7,12 @@ author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4f3210fb46d5b4a772cdbb125cc5481d7cdd5995
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5dc5d27d0364bf64d9f8b695213c2f71cc822949
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048496"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure Policy inbyggda definitioner för Azure Container Registry
 
@@ -26,6 +26,7 @@ Namnet på varje inbyggd princip definition länkar till princip definitionen i 
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Se rikt linjer för att [tilldela principer och granska efterlevnad](container-registry-azure-policy.md).
 - Se de inbyggda programmen på [Azure Policy GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 - Granska [Azure Policy-definitionsstrukturen](../governance/policy/concepts/definition-structure.md).
 - Granska [Förstå policy-effekter](../governance/policy/concepts/effects.md).

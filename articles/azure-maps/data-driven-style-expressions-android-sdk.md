@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7e4af0647a2810a27001c15a5030fca660828147
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681733"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047748"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Data drivna format uttryck (Android SDK)
 
@@ -545,7 +545,7 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 Det finns tre typer av interpolation-metoder som kan användas i ett `interpolate` uttryck:
 
-| Name | Beskrivning | 
+| Namn | Beskrivning | 
 |------|-------------|
 | `linear()` | Interpolerar linjärt mellan stopp paret.  |
 | `exponential(number)` \| `exponential(Expression)` | Interpolerar exponentiellt mellan stoppen. En "base" anges och styr den hastighet som utdata ökar. Högre värden gör att utdata ökar till den övre delen av intervallet. Ett "bas"-värde nära 1 ger en utmatning som ökar linjärt.|
@@ -662,7 +662,7 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 Förutom att använda en mjuk toning för att färga en värme karta kan färger anges inom en uppsättning intervall med hjälp av ett `step` uttryck. `step`Om du använder ett uttryck för att färgsätta värme kartan visas det visuellt i områden som liknar en profil-eller radar format karta.  
 
-```java 
+```java
 HeatMapLayer layer = new HeatMapLayer(dataSource,
     heatmapColor(
         step(
@@ -679,6 +679,36 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 ```
 
 Mer information finns i dokumentationen för att [lägga till en termisk kart skikt](map-add-heat-map-layer-android.md) .
+
+### <a name="line-progress-expression"></a>Uttryck för linje förlopp
+
+Ett uttryck för linje förlopp hämtar förloppet längs en övertoningsfyllning i ett linje lager och definieras som `lineProgress()` . Värdet är ett tal mellan 0 och 1. Den används i kombination med ett `interpolation` or- `step` uttryck. Det här uttrycket kan bara användas med `strokeGradient` alternativet för linje skiktet.
+
+> [!NOTE]
+> Alternativet `strokeGradient` för linje skiktet kräver att du `lineMetrics` anger alternativet för den data källa som ska anges till `true` .
+
+**Exempel**
+
+I det här exemplet används `lineProgress()` uttrycket för att tillämpa en färg toning på linjen för en linje.
+
+```javascript
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+[Se live-exempel](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Format uttryck för text fält
 

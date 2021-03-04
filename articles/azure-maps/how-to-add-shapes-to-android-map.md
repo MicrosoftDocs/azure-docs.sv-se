@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 25785ae7a214d6122fb90b80e8f0725a3468c48d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679481"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047626"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Lägg till ett polygon-lager till kartan (Android SDK)
 
@@ -97,6 +97,47 @@ Följande skärm bild visar ovanstående kod åter givning av en polygon med des
 > [!TIP]
 > När du ska disponera en polygon med ett linje lager måste du stänga alla ringar i polygoner, så att varje matris med punkter har samma start-och slut punkt. Om detta inte är färdigt, kan inte rad lagret ansluta den sista punkten i polygonen till den första punkten.
 
+## <a name="fill-a-polygon-with-a-pattern"></a>Fylla en polygon med ett mönster
+
+Förutom att fylla i en polygon med en färg kan du använda ett bild mönster för att fylla polygonen. Läs in ett bild mönster i Maps-avbildningen Sprite-resurser och referera sedan till den här bilden med `fillPattern` alternativet för polygon-lagret.
+
+```java
+//Load an image pattern into the map image sprite.
+map.images.add("fill-checker-red", R.drawable.fill_checker_red);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-50, -20),
+            Point.fromLngLat(0, 40),
+            Point.fromLngLat(50, -20),
+            Point.fromLngLat(-50, -20)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+        fillPattern("fill-checker-red"),
+        fillOpacity(0.5f)
+), "labels");
+```
+
+I det här exemplet lästes följande bild in i appens drawable-mapp.
+
+| ![Bild av lila piltangent](media/how-to-add-shapes-to-android-map/fill-checker-red.png)|
+|:-----------------------------------------------------------------------:|
+| fill_checker_red.png                                                    |
+
+Följande är en skärm bild av koden ovan som återger en polygon med ett fyllnings mönster på kartan.
+
+![Polygon med ett fyllnings mönster återges på kartan](media/how-to-add-shapes-to-android-map/android-polygon-pattern.jpg)
+
 ## <a name="next-steps"></a>Nästa steg
 
 Se följande artiklar för fler kod exempel som du kan lägga till i dina kartor:
@@ -109,3 +150,6 @@ Se följande artiklar för fler kod exempel som du kan lägga till i dina kartor
 
 > [!div class="nextstepaction"]
 > [Lägg till ett linjeskikt](android-map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [Lägga till ett polygonprojektionslager](map-extruded-polygon-android.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 37b5ab1c144ed81d995da40b87edeaccdcad7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 4e84bd821d53048b134db635c7ec541db74fbf11
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680011"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047729"
 ---
 # <a name="display-feature-information"></a>Visa funktionsinformation
 
@@ -75,6 +75,81 @@ Förutom popup-meddelanden finns det många andra sätt att presentera egenskape
 - [Dialog rutor](https://developer.android.com/guide/topics/ui/dialogs) – en dialog ruta är ett litet fönster som efterfrågar användaren att fatta ett beslut eller ange ytterligare information. En dialog ruta fyller inte på skärmen och används vanligt vis för modala händelser som kräver att användarna vidtar en åtgärd innan de kan fortsätta.
 - Lägg till ett [fragment](https://developer.android.com/guide/components/fragments) i den aktuella aktiviteten.
 - Navigera till en annan aktivitet eller vy.
+
+## <a name="display-a-popup"></a>Visa ett popup-fönster
+
+Azure Maps Android SDK är en `Popup` klass som gör det enkelt att skapa gränssnitts antecknings element som är förankrade till en placering på kartan. För popup-fönster som du måste skicka i en vy med en relativ layout i `content` alternativet i popup-fönstret. Här är ett enkelt exempel på en layout som visar mörk text ovanpå en medan bakgrunden.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+Om du antar att ovanstående layout är lagrad i en fil som kallas `popup_text.xml` i `res -> layout` mappen för en app, skapar följande kod en popup-meny, lägger till den i kartan. När användaren klickar på en funktion `title` visas egenskapen med hjälp av `popup_text.xml` layouten och längst ned i mitten av layouten till den angivna placeringen på kartan.
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText(props.get("title").getAsString());
+
+    //Get the coordinates from the clicked feature and create a position object.
+    List<Double> c = ((Point)(f.geometry())).coordinates();
+    Position pos = new Position(c.get(0), c.get(1));
+
+    //Set the options on the popup.
+    popup.setOptions(
+        //Set the popups position.
+        position(pos),
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),
+
+        //Set the content of the popup.
+        content(customView)
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    );
+
+    //Open the popup.
+    popup.open();
+});
+
+```
+
+I följande skärm bild visas popup-fönster som visas när du klickar på funktioner och som ligger kvar på den angivna platsen på kartan när den flyttas.
+
+![Animering av en popup som visas och kartan har flyttats med ett popup-fönster till en position på kartan](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>Nästa steg
 

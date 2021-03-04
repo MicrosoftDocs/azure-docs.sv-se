@@ -2,13 +2,13 @@
 title: Översikt över mallar
 description: Beskriver fördelarna med Azure Resource Manager mallar (ARM-mallar) för att distribuera resurser.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/03/2021
+ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621847"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046388"
 ---
 # <a name="what-are-arm-templates"></a>Vad är ARM-mallar?
 
@@ -17,6 +17,8 @@ Med flytten till molnet har många team antagit smidiga utvecklings metoder. Des
 För att möta dessa utmaningar kan du automatisera distributioner och använda infrastrukturen som kod. I kod definierar du den infrastruktur som måste distribueras. Infrastruktur koden blir en del av projektet. Precis som program kod, lagrar du infrastruktur koden i en käll lagrings plats och version. Vilken som helst av dina team kan köra koden och distribuera liknande miljöer.
 
 Använd Azure Resource Manager mallar (ARM-mallar) om du vill implementera infrastruktur som kod för dina Azure-lösningar. Mallen är en JavaScript Object Notation-fil (JSON) som definierar infrastrukturen och konfigurationen för ditt projekt. Mallen använder deklarativ syntax, som låter dig ange vad du vill distribuera utan att du behöver skriva sekvensen med programmeringskommandon för att skapa det. I mallen anger du de resurser som ska distribueras och egenskaperna för dessa resurser.
+
+Vi har introducerat ett nytt språk för att utveckla ARM-mallar. Språket heter bicep och är för närvarande en för hands version. Bicep-och JSON-mallar ger samma funktioner. Du kan konvertera en mall mellan de två språken. Bicep innehåller en syntax som är enklare att använda för att skapa mallar. Mer information finns i [Vad är bicep (för hands version)?](bicep-overview.md).
 
 ## <a name="why-choose-arm-templates"></a>Varför ska du välja ARM-mallar?
 
@@ -68,7 +70,7 @@ Mallen innehåller följande avsnitt:
 
 * [Användardefinierade funktioner](template-user-defined-functions.md) – skapa anpassade funktioner som fören klar din mall.
 
-* [Resurser](template-syntax.md#resources) – ange vilka resurser som ska distribueras.
+* [Resurser](resource-declaration.md) – ange vilka resurser som ska distribueras.
 
 * [Utdata](template-outputs.md) – returnera värden från de distribuerade resurserna.
 

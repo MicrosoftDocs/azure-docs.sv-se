@@ -1,17 +1,16 @@
 ---
 title: Logg frågans omfång i Azure Monitor Log Analytics
 description: Beskriver omfånget och tidsintervallet för en logg fråga i Azure Monitor Log Analytics.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 892c79d7908903b95a3bbbae2857933d877c7fba
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 43e4e861905352c2818dfb08b8cb442bd70481c1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100624946"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047187"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Logg frågans omfång och tidsintervall i Azure Monitor Log Analytics
 När du kör en [logg fråga](../logs/log-query-overview.md) i [Log Analytics i Azure Portal](../logs/log-analytics-tutorial.md), beror den uppsättning data som utvärderas av frågan på omfattningen och tidsintervallet som du väljer. I den här artikeln beskrivs omfattning och tidsintervall och hur du kan ställa in dem beroende på dina behov. Det beskriver också beteendet för olika typer av omfång.
@@ -48,7 +47,7 @@ När fråge omfånget är en Log Analytics arbets yta eller ett Application Insi
 Du kan inte använda följande kommandon i en fråga som är begränsad till en resurs eftersom fråge omfånget redan innehåller arbets ytor med data för resursen eller en uppsättning resurser:
 
 - [mobilappar](../logs/app-expression.md)
-- [platsen](../logs/workspace-expression.md)
+- [arbetsyta](../logs/workspace-expression.md)
  
 
 ## <a name="query-scope-limits"></a>Omfattnings gränser för fråga

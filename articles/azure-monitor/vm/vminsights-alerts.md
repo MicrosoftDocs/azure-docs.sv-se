@@ -1,17 +1,16 @@
 ---
 title: Aviseringar från VM Insights
 description: Beskriver hur du skapar aviserings regler från prestanda data som samlas in av VM-insikter.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: e3b5f49d9a4ed7af40afba5b267ba0c7bb9cd73a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 06c58b7081ed68724a3c907f8fe76dcf5f7b8057
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704063"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046813"
 ---
 # <a name="how-to-create-alerts-from-vm-insights"></a>Så här skapar du aviseringar från VM Insights
 [Aviseringar i Azure Monitor](../alerts/alerts-overview.md) proaktivt meddela dig om intressanta data och mönster i dina övervaknings data. VM Insights innehåller inte förkonfigurerade aviserings regler, men du kan skapa egna baserat på data som samlas in. Den här artikeln innehåller vägledning om hur du skapar aviserings regler, inklusive en uppsättning exempel frågor.

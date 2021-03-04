@@ -1,18 +1,17 @@
 ---
 title: Konfigurera Log Analytics arbets yta för VM-insikter
 description: Beskriver hur du skapar och konfigurerar arbets ytan Log Analytics som används av VM Insights.
-ms.subservice: ''
 ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: dc7e6c42837ccaa56c7a211deb646c934ec137a4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717136"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046728"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>Konfigurera Log Analytics arbets yta för VM-insikter
 VM Insights samlar in data från en eller flera Log Analytics arbets ytor i Azure Monitor. Innan du onboarding agents måste du skapa och konfigurera en arbets yta. I den här artikeln beskrivs kraven för arbets ytan och för att konfigurera den för VM-insikter.

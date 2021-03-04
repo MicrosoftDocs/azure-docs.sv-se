@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 9b07af72983931e0e1cab9e7d5093fd845b363bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692206"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048513"
 ---
 # <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurera privata slut punkter för Azure Cosmos DB analys lager
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -118,7 +118,8 @@ Så här konfigurerar du nätverks isolering för det här kontot från en Synap
    az cosmosdb update --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --network-acl-bypass AzureServices --network-acl-bypass-resource-ids "/subscriptions/subId/resourceGroups/rgName/providers/Microsoft.Synapse/workspaces/wsName"
    ```
 
-   > Lägg Azure Cosmos DB konto och Azure Synapse Analytics-arbetsytan bör ligga under samma Azure Active Directory (AD)-klient.
+   > [!NOTE]
+   > Azure Cosmos DB konto och Azure Synapse Analytics-arbetsytan bör ligga under samma Azure Active Directory (AD)-klient.
 
 2. Du kan nu komma åt kontot från serverbaserade SQL-pooler med hjälp av T-SQL-frågor över Azure Synapse-länken. För att säkerställa nätverks isolering för data i analytisk lagring måste du dock lägga till en **analytisk** hanterad privat slut punkt för det här kontot. Annars blockeras inte data i analys lagret från offentlig åtkomst.
 

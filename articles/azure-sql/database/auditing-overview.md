@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/28/2021
+ms.date: 03/03/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e01f44d363d038bd2ea4b985e12c9afc200f2c20
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046456"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Granskning för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -58,6 +58,11 @@ En gransknings princip kan definieras för en viss databas eller som en standard
 
 - Om *Server granskning är aktiverat* *gäller det alltid för-databasen*. Databasen kommer att granskas, oavsett databas gransknings inställningar.
 
+- När gransknings principen definieras på databas nivå till en Log Analytics arbets yta eller ett mål för Event Hub, kommer följande åtgärder inte att behålla gransknings principen på käll databas nivå:
+    - [Databaskopia](database-copy.md)
+    - [Återställning av tidpunkt](recovery-using-backups.md)
+    - [Geo-replikering](active-geo-replication-overview.md) (sekundär databas kommer inte att ha granskning på databas nivå)
+
 - Att aktivera granskning av databasen, förutom att aktivera den på-servern, Åsidosätt eller ändra *inte* inställningarna för Server granskning. Båda granskningarna kommer att finnas sida vid sida. Med andra ord granskas databasen två gånger parallellt. en gång av Server principen och en gång av databas principen.
 
    > [!NOTE]
@@ -94,7 +99,8 @@ Azure SQL Database och Azure Synapse audit lagrar 4000 tecken data för tecken f
 I följande avsnitt beskrivs konfigurationen av granskning med hjälp av Azure Portal.
 
   > [!NOTE]
-  > Det går inte att aktivera granskning på en pausad dedikerad SQL-pool. Om du vill aktivera granskning avbryter du den dedikerade SQL-poolen. Läs mer om [dedikerad SQL-pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Det går inte att aktivera granskning på en pausad dedikerad SQL-pool. Om du vill aktivera granskning avbryter du den dedikerade SQL-poolen. Läs mer om [dedikerad SQL-pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - När granskning har kon figurer ATS till en Log Analytics-arbetsyta eller till ett jämnt nav-mål via Azure Portal eller PowerShell-cmdleten skapas en [diagnostisk inställning](../../azure-monitor/essentials/diagnostic-settings.md) med "SQLSecurityAuditEvents"-kategorin aktive rad.
 
 1. Gå till [Azure-portalen](https://portal.azure.com).
 2. Navigera till **granskning** under säkerhets rubriken i **SQL Database** eller **SQL Server** -fönstret.
@@ -104,18 +110,18 @@ I följande avsnitt beskrivs konfigurationen av granskning med hjälp av Azure P
 
 4. Om du föredrar att aktivera granskning på databas nivån växlar du **granskning** till **på**. Om Server granskning är aktive rad, finns den databas-konfigurerade granskningen sida vid sida med Server granskningen.
 
-5. Du har flera alternativ för att konfigurera var gransknings loggar ska skrivas. Du kan skriva loggar till ett Azure Storage-konto till en Log Analytics arbets yta för användning med hjälp av Azure Monitor loggar (för hands version) eller till Event Hub för användning med Event Hub (för hands version). Du kan konfigurera valfri kombination av dessa alternativ och gransknings loggarna skrivs till var och en.
+5. Du har flera alternativ för att konfigurera var gransknings loggar ska skrivas. Du kan skriva loggar till ett Azure Storage-konto till en Log Analytics arbets yta för användning genom att Azure Monitor loggar eller till Event Hub för användning med Event Hub. Du kan konfigurera valfri kombination av dessa alternativ och gransknings loggarna skrivs till var och en.
   
    ![lagrings alternativ](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Granskning av Microsoft Support åtgärder (för hands version)
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Granskning av Microsoft Support åtgärder
 
-Granskning av Microsoft Support åtgärder (för hands version) för Azure SQL Server gör att du kan granska Microsofts support tekniker för att få åtkomst till servern under en support förfrågan. Användningen av den här funktionen, tillsammans med din granskning, möjliggör mer insyn i personalen och möjliggör avvikelse identifiering, trend visualisering och data förlust skydd.
+Granskning av Microsoft Support åtgärder för Azure SQL Server gör att du kan granska Microsofts support tekniker för att få åtkomst till servern under en support förfrågan. Användningen av den här funktionen, tillsammans med din granskning, möjliggör mer insyn i personalen och möjliggör avvikelse identifiering, trend visualisering och data förlust skydd.
 
-Om du vill aktivera granskning av Microsoft Support åtgärder (för hands version) går du till **granskning** under säkerhets rubriken i **Azure SQL Server** -fönstret och växlar **granskning av Microsofts support åtgärder (för hands version)** till **på**.
+Om du vill aktivera granskning av Microsoft Support åtgärder navigerar du till **granskning** under säkerhets rubriken i **Azure SQL Server** -fönstret och växlar **granskning av Microsofts support åtgärder** till **på**.
 
   > [!IMPORTANT]
-  > Granskning av Microsofts support åtgärder (för hands version) stöder inte lagrings kontots destination. Om du vill aktivera funktionen måste en Log Analytics arbets yta eller ett mål för Event Hub konfigureras.
+  > Granskning av Microsofts support åtgärder stöder inte lagrings kontots destination. Om du vill aktivera funktionen måste en Log Analytics arbets yta eller ett mål för Event Hub konfigureras.
 
 ![Skärm bild av Microsoft Support åtgärder](./media/auditing-overview/support-operations.png)
 
@@ -137,7 +143,7 @@ Om du vill konfigurera att skriva gransknings loggar till ett lagrings konto vä
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Granska till Log Analytics destination
   
-Om du vill konfigurera att skriva gransknings loggar till en Log Analytics arbets yta väljer du **Log Analytics (förhands granskning)** och öppnar **Log Analytics information**. Välj eller skapa arbets ytan Log Analytics där loggarna ska skrivas och klicka sedan på **OK**.
+Om du vill konfigurera att skriva gransknings loggar till en Log Analytics arbets yta väljer du **Log Analytics** och öppnar **Log Analytics information**. Välj eller skapa arbets ytan Log Analytics där loggarna ska skrivas och klicka sedan på **OK**.
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -145,7 +151,7 @@ Mer information om Azure Monitor Log Analytics arbets ytan finns i [utforma dist
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Granska till Event Hub-målet
 
-Om du vill konfigurera att skriva gransknings loggar till en Event Hub väljer du **Event Hub (för hands version)** och **information om** att öppna händelsehubben. Välj den händelsehubben där loggar ska skrivas och klicka sedan på **OK**. Se till att händelsehubben är i samma region som din databas och server.
+Om du vill konfigurera att skriva gransknings loggar till en händelsehubben väljer du **händelsehubben** och **information om** öppna händelsehubben. Välj den händelsehubben där loggar ska skrivas och klicka sedan på **OK**. Se till att händelsehubben är i samma region som din databas och server.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 

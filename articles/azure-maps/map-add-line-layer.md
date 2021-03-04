@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891167"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048145"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Lägg till ett linje skikt i kartan
 
@@ -66,7 +66,7 @@ Se pilen för Penn <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Visa utmed
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Lägg till en linje toning till en linje
 
-Du kan använda en enda linje färg för en linje. Du kan också fylla en linje med en toning av färger för att visa över gången från ett linje segment till nästa rad segment. Till exempel kan rad övertoningar användas för att representera ändringar över tid och avstånd, eller olika temperaturer över en ansluten linje med objekt. För att kunna använda den här funktionen på en rad måste data källan ha `lineMetrics` alternativet inställt på sant och ett färg tonings uttryck kan skickas till `strokeColor` alternativet på raden. Uttrycket linje toning måste referera till det `['line-progress']` data uttryck som visar de beräknade linje måtten för uttrycket.
+Du kan använda en enda linje färg för en linje. Du kan också fylla en linje med en toning av färger för att visa över gången från ett linje segment till nästa rad segment. Till exempel kan rad övertoningar användas för att representera ändringar över tid och avstånd, eller olika temperaturer över en ansluten linje med objekt. För att kunna använda den här funktionen på en rad måste data källan ha `lineMetrics` alternativet inställt på `true` och ett uttryck för färg toning kan skickas till `strokeColor` alternativet på raden. Uttrycket linje toning måste referera till det `['line-progress']` data uttryck som visar de beräknade linje måtten för uttrycket.
 
 <br/>
 

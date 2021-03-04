@@ -1,17 +1,16 @@
 ---
 title: Använda Tjänstkarta lösning i Azure | Microsoft Docs
 description: Tjänstkarta är en lösning i Azure som automatiskt identifierar programkomponenter i Windows- och Linux-system och mappar kommunikationen mellan olika tjänster. Den här artikeln innehåller information om hur du distribuerar Tjänstkarta i din miljö och använder den i flera olika scenarier.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 688adcf0012f8871c4034cbba6ce2ddcacdbcc43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717153"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047017"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Använda lösningen Tjänstkarta i Azure
 
@@ -26,7 +25,7 @@ I den här artikeln beskrivs hur du onboarding och använder Tjänstkarta. Krave
 * [Beroende agenten](vminsights-enable-overview.md#agents) som är installerad på Windows-datorn eller Linux-servern.
 
 >[!NOTE]
->Om du redan har distribuerat Tjänstkarta kan du nu även visa dina kartor i VM Insights, vilket inkluderar ytterligare funktioner för övervakning av VM-hälsa och prestanda. Mer information finns i [Översikt över VM-insikter](../vm/vminsights-overview.md). Om du vill veta mer om skillnaderna mellan Tjänstkartas lösning och funktionen för VM Insights-mappning, se följande [vanliga frågor och svar](../faq.md#azure-monitor-for-vms).
+>Om du redan har distribuerat Tjänstkarta kan du nu även visa dina kartor i VM Insights, vilket inkluderar ytterligare funktioner för övervakning av VM-hälsa och prestanda. Mer information finns i [Översikt över VM-insikter](../vm/vminsights-overview.md). Om du vill veta mer om skillnaderna mellan Tjänstkartas lösning och funktionen för VM Insights-mappning, se följande [vanliga frågor och svar](../faq.md#vm-insights).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 

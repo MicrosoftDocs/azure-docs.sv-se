@@ -13,81 +13,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570434"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048241"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Användbara resurser för att arbeta med Azure Sentinel
 
-
-
 Den här artikeln innehåller resurser som kan hjälpa dig att få mer information om hur du arbetar med Azure Sentinel.
 
-- **Azure Logic Apps kopplingar**: <https://docs.microsoft.com/connectors/>
+## <a name="learn-more-about-creating-queries"></a>Lär dig mer om att skapa frågor
 
+Azure Sentinel använder Azure Monitor Log Analyticss KQL (Kusto Query Language) för att bygga frågor. Mer information finns i:
 
-## <a name="auditing-and-reporting"></a>Granskning och rapportering
-Gransknings loggar för Azure Sentinel finns kvar i [Azures aktivitets loggar](../azure-monitor/essentials/platform-logs-overview.md).
+- [KQL-begrepp](/azure/data-explorer/kusto/concepts/)
+- [KQL-frågor](/azure/data-explorer/kusto/query/)
+- [Snabb referens guide för KQL](/azure/data-explorer/kql-quick-reference).
+- [Kom igång med KQL-frågor](../azure-monitor/logs/get-started-queries.md)
 
-Följande åtgärder som stöds kan granskas.
+## <a name="learn-more-about-creating-automation"></a>Lär dig mer om att skapa automatisering
 
-|Åtgärdsnamn|    Resurstyp|
-|----|----|
-|Skapa eller uppdatera arbets bok  |Microsoft. Insights/arbets böcker|
-|Ta bort arbets bok    |Microsoft. Insights/arbets böcker|
-|Ange arbets flöde   |Microsoft. Logic/arbets flöden|
-|Ta bort arbets flöde    |Microsoft. Logic/arbets flöden|
-|Skapa Sparad sökning    |Microsoft. OperationalInsights/arbets ytor/savedSearches|
-|Ta bort Sparad sökning    |Microsoft. OperationalInsights/arbets ytor/savedSearches|
-|Uppdatera aviserings regler |Microsoft. SecurityInsights/alertRules|
-|Ta bort aviserings regler |Microsoft. SecurityInsights/alertRules|
-|Uppdatera svars åtgärder för aviserings regeln |Microsoft. SecurityInsights/alertRules/Actions|
-|Ta bort svars åtgärder för aviserings regel |Microsoft. SecurityInsights/alertRules/Actions|
-|Uppdatera bok märken   |Microsoft. SecurityInsights/bok märken|
-|Ta bort bok märken   |Microsoft. SecurityInsights/bok märken|
-|Uppdatera ärenden   |Microsoft. SecurityInsights/fall|
-|Uppdatera ärende undersökning  |Microsoft. SecurityInsights/fall/undersökningar|
-|Skapa ärende kommentarer   |Microsoft. SecurityInsights/Cases/comments|
-|Uppdatera data anslutningar |Microsoft. SecurityInsights/dataConnectors|
-|Ta bort data anslutningar |Microsoft. SecurityInsights/dataConnectors|
-|Uppdatera inställningarna    |Microsoft. SecurityInsights/inställningar|
+Skapa automatisering i Azure Sentinel med Azure Logic Apps, med ett växande galleri med inbyggda spel böcker. 
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Visa gransknings-och rapporterings data i Azure Sentinel
+Mer information finns i [Azure Logic Apps kopplingar](https://docs.microsoft.com/connectors/).
 
-Du kan visa dessa data genom att strömma den från Azures aktivitets logg till Azure Sentinel där du sedan kan utföra forskning och analys på den.
+## <a name="comment-on-our-blogs-and-forums"></a>Kommentera våra Bloggar och forum
 
-1. Anslut [Azure-aktivitetens](connect-azure-activity.md) data källa. När du har gjort det strömmas gransknings händelser till en ny tabell på skärmen **loggar** som kallas AzureActivity.
+Vi älskar att bli hörda från våra användare.
 
-1. Sedan kan du köra frågor mot data med KQL, precis som med andra tabeller.
+I TechCommunity-utrymmet för Azure Sentinel:
 
-    Om du till exempel vill ta reda på vem som senast hade redigerat en viss analys regel använder du följande fråga (Ersätt `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` med regel-ID för regeln som du vill kontrol lera):
+- [Visa och kommentera de senaste blogg inläggen](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)
+- [Publicera dina egna frågor om Azure Sentinel](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)
 
-    ```kusto
-    AzureActivity
-    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
-    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    | project Caller , TimeGenerated , Properties
-    ```
+Du kan också skicka förslag på förbättringar via vårt [användar röst](https://feedback.azure.com/forums/920458-azure-sentinel) program.
 
+## <a name="join-the-azure-sentinel-github-community"></a>Delta i Azure Sentinel GitHub-communityn
 
-## <a name="blogs-and-forums"></a>Bloggar och forum
+[Azure Sentinel GitHub-lagringsplatsen](https://github.com/Azure/Azure-Sentinel) är en kraftfull resurs för hot identifiering och automatisering. 
 
-Vi älskar att höra från våra användare!
+Våra Microsoft-säkerhetsanalytiker skapar och lägger till nya arbets böcker, spel böcker, jakt frågor med mera, så att du kan använda dem i din miljö. 
 
-- **Publicera dina frågor** på [TechCommunity-utrymmet](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) för Azure Sentinel. 
-
-- **Skicka förslag på förbättringar** via vårt [User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) -program.
-
-- **Visa och kommentera** våra blogg inlägg i Azure Sentinel:
-
-    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
-    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
+Hämta exempel innehåll från den privata gruppen GitHub-lagringsplatsen för att skapa anpassade arbets böcker, jakt frågor, antecknings böcker och spel böcker för Azure Sentinel.
 
 ## <a name="next-steps"></a>Nästa steg
 
