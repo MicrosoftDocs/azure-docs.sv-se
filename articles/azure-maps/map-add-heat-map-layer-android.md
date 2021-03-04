@@ -3,17 +3,18 @@ title: Lägga till ett termiskt kart skikt i Android Maps | Microsoft Azure Maps
 description: Lär dig hur du skapar en värme karta. Se hur du använder Azure MapsAndroid SDK för att lägga till ett värme kart skikt till en karta. Lär dig hur du anpassar värme kart skikt.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/01/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 4de59bd0b2a9dc9b11acf55a59b82724d2c7b862
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681781"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100193"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>Lägg till ett termiskt kart skikt (Android SDK)
 
@@ -43,6 +44,8 @@ Se till att slutföra stegen i snabb starten [: skapa ett Android-appaket](quick
 Om du vill rendera en data källa med punkter som en värme karta kan du skicka data källan till en instans av `HeatMapLayer` klassen och lägga till den i kartan.
 
 Följande kod exempel läser in en jord bävningar från den senaste veckan och återger dem som en värme karta. Varje data punkt återges med en radie på 10 bild punkter på alla zoomnings nivåer. För att säkerställa en bättre användar upplevelse är värme kartan under etikett lagret så att etiketterna förblir tydligt synliga. Data i det här exemplet är från [USGS datauppsättningen jord bävning-riskhanterings program](https://earthquake.usgs.gov/). Det här exemplet läser in data från en webbdel från webben med hjälp av kod blocket data import verktyg som finns i [skapa ett dokument för data källa](create-data-source-android-sdk.md) .
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -80,6 +83,49 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
     });
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a heat map layer.
+val layer = HeatMapLayer(
+    source,
+    heatmapRadius(10f),
+    heatmapOpacity(0.8f)
+)
+
+//Add the layer to the map, below the labels.
+map.layers.add(layer, "labels")
+
+//Import the geojson data and add it to the data source.
+Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    this
+) { result: String? ->
+    //Parse the data as a GeoJSON Feature Collection.
+    val fc = FeatureCollection.fromJson(result!!)
+
+    //Add the feature collection to the data source.
+    source.add(fc)
+
+    //Optionally, update the maps camera to focus in on the data.
+    //Calculate the bounding box of all the data in the Feature Collection.
+    val bbox = MapMath.fromData(fc)
+
+    //Update the maps camera so it is focused on the data.
+    map.setCamera(
+        bounds(bbox),
+        padding(20)
+    )
+}
+```
+
+::: zone-end
+
 Följande skärm bild visar en karta som läser in en värme karta med ovanstående kod.
 
 ![Mappa med värme kart skiktet senaste jord bävningar](media/map-add-heat-map-layer-android/android-heat-map-layer.png)
@@ -110,6 +156,8 @@ I föregående exempel har du anpassat värme kartan genom att ange alternativ f
 - `visible`: Döljer eller visar lagret.
 
 Följande är ett exempel på en termisk karta där ett liner-interpolationsmetod används för att skapa en mjuk färg toning. `mag`Egenskapen som definieras i data används med en exponentiell interpolation för att ange vikten eller relevansen för varje data punkt.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -143,6 +191,44 @@ HeatMapLayer layer = new HeatMapLayer(source,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(10f),
+
+    //A linear interpolation is used to create a smooth color gradient based on the heat map density.
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.BLACK)),
+            stop(0.25, color(Color.MAGENTA)),
+            stop(0.5, color(Color.RED)),
+            stop(0.75, color(Color.YELLOW)),
+            stop(1, color(Color.WHITE))
+        )
+    ),
+
+    //Using an exponential interpolation since earthquake magnitudes are on an exponential scale.
+    heatmapWeight(
+       interpolate(
+            exponential(2),
+            get("mag"),
+            stop(0,0),
+
+            //Any earthquake above a magnitude of 6 will have a weight of 1
+            stop(6, 1)
+       )
+    )
+)
+```
+
+::: zone-end
+
 Följande skärm bild visar det anpassade värme kart skiktet ovan med samma data från det föregående exemplet för termisk karta.
 
 ![Mappa med anpassat termiskt kart skikt med senaste jord bävningar](media/map-add-heat-map-layer-android/android-custom-heat-map-layer.png)
@@ -156,6 +242,8 @@ Som standard har radien för data punkter som återges i värme kart skiktet ett
 Använd ett `zoom` uttryck för att skala radien för varje zoomnings nivå, så att varje data punkt täcker samma fysiska område av kartan. Det här uttrycket gör att värme kart lagret ser mer statiskt och konsekvent. Varje zoomnivå på kartan har två gånger så många bild punkter lodrätt och vågrätt som föregående zoomnings nivå.
 
 Att skala radien så att den dubbleras med varje zoomnivå skapar en värme karta som ser konsekvent ut på alla zoomnings nivåer. Om du vill använda den här skalningen använder du `zoom` med ett bas-2- `exponential interpolation` uttryck med pixel-radien inställd på minsta zoomnivå och en skalad radie för den högsta zoomnings nivån som `2 * Math.pow(2, minZoom - maxZoom)` visas i följande exempel. Zooma kartan för att se hur värme kartan skalar med zoomnings nivån.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 HeatMapLayer layer = new HeatMapLayer(source,
@@ -174,6 +262,30 @@ HeatMapLayer layer = new HeatMapLayer(source,
   heatmapOpacity(0.75f)
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+  heatmapRadius(
+    interpolate(
+      exponential(2),
+      zoom(),
+
+      //For zoom level 1 set the radius to 2 pixels.
+      stop(1, 2f),
+
+      //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+      stop(19, Math.pow(2.0, 19 - 1.0) * 2f)
+    )
+  ),
+  heatmapOpacity(0.75f)
+)
+```
+
+::: zone-end
 
 Följande video visar en karta som kör ovanstående kod, som skalar radien medan kartan zoomas för att skapa en enhetlig kart åter givning på zoomnings nivåer.
 

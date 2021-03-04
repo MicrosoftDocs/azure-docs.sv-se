@@ -1,44 +1,32 @@
 ---
 title: Arbeta med säkerhets principer | Microsoft Docs
 description: Den här artikeln beskriver hur du arbetar med säkerhets principer i Azure Security Center.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986634"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101332"
 ---
 # <a name="manage-security-policies"></a>Hantera säkerhetsprinciper
 
 Den här artikeln förklarar hur du konfigurerar säkerhets principer och hur du visar dem i Security Center. 
 
-## <a name="introduction-to-security-policies"></a>Introduktion till säkerhets principer
+## <a name="who-can-edit-security-policies"></a>Vem kan redigera säkerhets principer?
 
-En säkerhets princip definierar den önskade konfigurationen av dina arbets belastningar och hjälper dig att se till att du följer säkerhets kraven för ditt företag eller din regulator.
+Du kan redigera säkerhets principer via Azure Policy-portalen via REST API eller med hjälp av Windows PowerShell.
 
-Azure Security Center gör säkerhets rekommendationerna baserade på dina valda principer. Security Center principer baseras på princip initiativ som skapats i Azure Policy. Du kan använda [Azure policy](../governance/policy/overview.md) för att hantera principer och ange principer över hanterings grupper och över flera prenumerationer.
+Security Center använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) som innehåller inbyggda roller som du kan tilldela till Azure-användare, grupper och tjänster. När användare öppnar Security Center ser de bara information om de resurser som de har åtkomst till. Det innebär att användare tilldelas rollen som *ägare*, *deltagare* eller *läsare* till resursens prenumeration. Det finns också två olika Security Centers roller:
 
-Security Center erbjuder följande alternativ för att arbeta med säkerhets principer:
-
-* **Visa och redigera den inbyggda standard principen** – när du aktiverar Security Center tilldelas initiativet med namnet "Azure Security benchmark" automatiskt till alla Security Center registrerade prenumerationer. Du kan anpassa det här initiativet genom att aktivera eller inaktivera enskilda principer i den. Se listan över [inbyggda säkerhets principer](./policy-reference.md) för att förstå alternativen som är tillgängliga direkt.
-
-* **Lägg till egna anpassade principer** – om du vill anpassa de säkerhets initiativ som tillämpas på din prenumeration kan du göra det i Security Center. Du får sedan rekommendationer om datorerna inte följer de principer som du skapar. Anvisningar om hur du skapar och tilldelar anpassade principer finns i [använda anpassade säkerhets principer](custom-security-policies.md).
-
-* **Lägg till regler för efterlevnadsprinciper** -Security Centers instrument panelen för kontroll av efterlevnad visar status för alla utvärderingar i din miljö i samband med en viss standard eller regel (till exempel Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020). Mer information finns i [förbättra din regelefterlevnad](security-center-compliance-dashboard.md).
-
+- **Säkerhets läsare**: har behörighet att Visa Security Center objekt, till exempel rekommendationer, aviseringar, principer och hälsa. Det går inte att göra ändringar.
+- **Säkerhets administratör**: har samma visnings rättigheter som *säkerhets läsaren*. Kan också uppdatera säkerhets principen och ignorera aviseringar.
 
 ## <a name="manage-your-security-policies"></a>Hantera dina säkerhets principer
 
@@ -59,14 +47,13 @@ Visa dina säkerhetsprinciper i Security Center:
     > [!NOTE]
     > Om det finns en etikett "MG ärvd" tillsammans med standard principen, innebär det att principen har tilldelats till en hanterings grupp och ärvts av den prenumeration som du visar.
 
-
 1. Välj bland de tillgängliga alternativen på den här sidan:
 
-    1. Om du vill arbeta med bransch principer väljer du **Lägg till fler standarder**. Mer information finns i [Uppdatera till dynamiska Compliance-paket](update-regulatory-compliance-packages.md).
+    1. Om du vill arbeta med bransch standarder väljer du **Lägg till fler standarder**. Mer information finns i [Anpassa uppsättningen med standarder på instrument panelen för kontroll av efterlevnad](update-regulatory-compliance-packages.md).
 
-    1. Om du vill tilldela och hantera anpassade initiativ väljer du **Lägg till anpassade initiativ**. Mer information finns i [använda anpassade säkerhets principer](custom-security-policies.md).
+    1. Om du vill tilldela och hantera anpassade initiativ väljer du **Lägg till anpassade initiativ**. Mer information finns i [använda anpassade säkerhets initiativ och principer](custom-security-policies.md).
 
-    1. Om du vill visa och redigera standard principen väljer du **Visa gällande princip** och fortsätter enligt beskrivningen nedan. 
+    1. Om du vill visa och redigera standard initiativet väljer du **Visa en effektiv princip** och fortsätter enligt beskrivningen nedan. 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Skärmen gällande princip":::
 
@@ -80,16 +67,6 @@ Visa dina säkerhetsprinciper i Security Center:
 
        > [!NOTE]
        > När du visar tilldelade principer kan du se flera tilldelningar och du kan se hur varje tilldelning har kon figurer ATS på egen hand.
-
-
-## <a name="who-can-edit-security-policies"></a>Vem kan redigera säkerhets principer?
-
-Du kan redigera säkerhets principer via Azure Policy-portalen via REST API eller med hjälp av Windows PowerShell.
-
-Security Center använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) som innehåller inbyggda roller som du kan tilldela till Azure-användare, grupper och tjänster. När användare öppnar Security Center ser de bara information om de resurser som de har åtkomst till. Det innebär att användare tilldelas rollen som *ägare*, *deltagare* eller *läsare* till resursens prenumeration. Det finns också två olika Security Centers roller:
-
-- **Säkerhets läsare**: har behörighet att Visa Security Center objekt, till exempel rekommendationer, aviseringar, principer och hälsa. Det går inte att göra ändringar.
-- **Säkerhets administratör**: har samma visnings rättigheter som *säkerhets läsaren*. Kan också uppdatera säkerhets principen och ignorera aviseringar.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Inaktivera säkerhets principer och inaktivera rekommendationer
@@ -129,7 +106,7 @@ Mer information om rekommendationer finns i [hantera säkerhets rekommendationer
 ## <a name="next-steps"></a>Nästa steg
 Den här sidan förklaras säkerhets principer. Relaterad information finns på följande sidor:
 
-- [Lär dig hur du ställer in principer med PowerShell](../governance/policy/assign-policy-powershell.md) - 
-- [Lär dig hur du redigerar en säkerhets princip i Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 
-- [Lär dig hur du ställer in en princip över prenumerationer eller på hanterings grupper med Azure policy](../governance/policy/overview.md).
+- [Lär dig hur du ställer in principer med PowerShell](../governance/policy/assign-policy-powershell.md)
+- [Lär dig hur du redigerar en säkerhets princip i Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Lär dig hur du ställer in en princip över prenumerationer eller på hanterings grupper med hjälp av Azure Policy](../governance/policy/overview.md)
 - [Lär dig hur du aktiverar Security Center för alla prenumerationer i en hanterings grupp](onboard-management-group.md)

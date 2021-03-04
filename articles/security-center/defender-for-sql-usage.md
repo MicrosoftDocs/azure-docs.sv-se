@@ -1,6 +1,6 @@
 ---
-title: Så här använder du Azure Defender för SQL
-description: Lär dig hur du använder Azure Security Center s valfria Azure Defender för SQL-plan
+title: Så här konfigurerar du Azure Defender för SQL
+description: Lär dig hur du aktiverar Azure Security Center s valfria Azure Defender för SQL-plan
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590388"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100584"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender för SQL-servrar på datorer 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Aktivera Azure Defender för SQL-servrar på datorer 
 
 Den här Azure Defender-planen identifierar avvikande aktiviteter som visar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja databaser.
 
@@ -31,20 +31,19 @@ Du ser aviseringar när det finns misstänkta databas aktiviteter, potentiella s
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
-|Priset|**Azure Defender för SQL-servrar på datorer** faktureras enligt [pris sidan](security-center-pricing.md)|
+|Priset|**Azure Defender för SQL-servrar på datorer** faktureras på det sätt som visas på [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/)|
 |Skyddade SQL-versioner:|Azure SQL Server (alla versioner som omfattas av Microsofts support)|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Konfigurera Azure Defender för SQL-servrar på datorer
 
 Så här aktiverar du den här planen:
 
-* Etablera Log Analytics-agenten på SQL Server-värden. Detta ger anslutningen till Azure.
+[Steg 1. Etablera Log Analytics-agenten på SQL Server-värden:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Aktivera den valfria planen på Security Center pris-och inställnings sida.
+[Steg 2. Aktivera den valfria planen på Security Center pris-och inställnings sida:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-Båda beskrivs nedan.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Steg 1. Etablera Log Analytics-agenten på SQL Server-värden:
 
@@ -62,7 +61,7 @@ Båda beskrivs nedan.
 
 1. På Security Center menyn öppnar du sidan **Inställningar för pris &** .
 
-    - Om du använder **Azure Security Center standard arbets ytan** (med namnet "defaultworkspace-[ditt prenumerations-ID]-[region]") väljer du den relevanta **prenumerationen**.
+    - Om du använder **Azure Security Center standard arbets ytan** (med namnet "defaultworkspace-[ditt PRENUMERATIONS-ID]-[region]") väljer du den relevanta **prenumerationen**.
 
     - Om du använder **en arbets yta som inte är standard** väljer du relevant **arbets yta** (ange arbets ytans namn i filtret om det behövs):
 
@@ -81,31 +80,6 @@ Båda beskrivs nedan.
 1. Du kan också konfigurera e-postavisering om säkerhets aviseringar. 
     Du kan ange en lista över mottagare som ska få ett e-postmeddelande när Security Center aviseringar genereras. E-postmeddelandet innehåller en direkt länk till aviseringen i Azure Security Center med all relevant information. Mer information finns i [Konfigurera e-postaviseringar för säkerhets aviseringar](security-center-provide-security-contact-details.md).
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>Utforska rapporter om sårbarhets bedömning
-
-Tjänsten sårbarhets bedömning söker igenom dina databaser en gång i veckan. Genomsökningarna körs samma dag i veckan då du aktiverade tjänsten.
-
-Instrument panelen för sårbarhets bedömning ger en översikt över dina utvärderings resultat över alla dina databaser, tillsammans med en sammanfattning av felfria och felaktiga databaser, och en översikt över misslyckade kontroller efter risk distribution.
-
-Du kan visa resultaten för sårbarhets bedömning direkt från Security Center.
-
-1. Från Security Centerens marginal List öppnar du sidan **rekommendationer** och väljer **säkerhets risker på dina SQL-servrar på datorer som ska åtgärdas (för hands version)**. Mer information finns i [Security Center rekommendationer](security-center-recommendations.md). 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="Utvärderings resultat av säkerhets risker på dina SQL-servrar på datorer bör åtgärdas (för hands version)":::
-
-    Den detaljerade vyn för den här rekommendationen visas.
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Detaljerad vy för rekommendationen":::
-
-1. Mer information finns i öka detalj nivån:
-
-    * Om du vill ha en översikt över scannade resurser (databaser) och en lista över säkerhets kontroller som har testats väljer du Server av intresse.
-
-    * En översikt över sårbarheter grupperade efter en speciell SQL-databas får du genom att välja databasens intresse.
-
-    I varje vy sorteras säkerhets kontrollerna efter **allvarlighets grad**. Klicka på en säkerhets kontroll för att visa ett informations fönster med en **Beskrivning**, hur du **åtgärdar** den och annan relaterad information som **påverkan** eller **benchmark**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender för SQL-aviseringar
 Aviseringar genereras av ovanliga och potentiellt skadliga försök att komma åt eller utnyttja SQL-datorer. Dessa händelser kan utlösa aviseringar som visas på [referens sidan aviseringar](alerts-reference.md#alerts-sql-db-and-warehouse).

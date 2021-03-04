@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: dffb505719e6778adfdd8e99f62790df9ebd615a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797003"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100703"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Introduktion till Azure Defender för DNS
 
@@ -28,8 +28,8 @@ Azure Defender för DNS ger ett ytterligare skydds lager för dina moln resurser
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Priset|**Azure Defender för DNS** faktureras så som visas på [sidan med priser](security-center-pricing.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Priset|**Azure Defender för DNS** faktureras enligt [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Vilka är fördelarna med Azure Defender för DNS?
@@ -47,7 +47,7 @@ En fullständig lista över de aviseringar som tillhandahålls av Azure Defender
 
 Azure Defender för DNS använder inte några agenter. 
 
-Om du vill skydda ditt DNS-lager aktiverar du Azure Defender för DNS för var och en av dina prenumerationer enligt beskrivningen i [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender).
+Om du vill skydda ditt DNS-lager aktiverar du Azure Defender för DNS för var och en av dina prenumerationer enligt beskrivningen i [Aktivera Azure Defender](enable-azure-defender.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
@@ -57,4 +57,4 @@ I den här artikeln har du lärt dig om Azure Defender för DNS. Information om 
 - Säkerhets aviseringar kan genereras av Security Center eller tas emot av Security Center från olika säkerhets produkter. Om du vill exportera alla dessa aviseringar till Azure Sentinel, SIEM eller andra externa verktyg, följer du anvisningarna i [Exportera aviseringar till en Siem](continuous-export.md).
 
 - > [!div class="nextstepaction"]
-    > [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [Aktivera Azure Defender](enable-azure-defender.md)

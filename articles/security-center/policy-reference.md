@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3b5860cc4ada88e2e7c7813e3441db3ec89f31af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b80ceffe22c797d46b82ec33a47c726d68bf4cdb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729934"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099836"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Inbyggda definitioner för Azure Policy i Azure Security Center
 
@@ -44,13 +44,4 @@ Mer information om de inbyggda principer som övervakas av Security Center finns
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig mer om Azure Policy säkerhets princips definitioner i Security Center. Mer information finns i följande artiklar.
-
-- Se de inbyggda programmen på [Azure Policy GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
-- Granska [Azure Policy-definitionsstrukturen](../governance/policy/concepts/definition-structure.md).
-- Granska [Förstå policy-effekter](../governance/policy/concepts/effects.md).
-- [Azure Security Center planering och drifts guide](./security-center-planning-and-operations-guide.md): Lär dig hur du planerar och förstår design överväganden i Azure Security Center.
-- [Övervakning av säkerhetshälsa i Azure Security Center](./security-center-monitoring.md): Lär dig hur du övervakar dina Azure-resursers hälsa.
-- [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](./security-center-managing-and-responding-alerts.md): Här får du lära dig hur du hanterar och åtgärdar säkerhetsaviseringar.
-- [Övervaka partnerlösningar med Azure Security Center](./security-center-partner-integration.md): Lär dig hur du övervakar dina partnerlösningars hälsostatus.
-- [Azure policy](../governance/policy/overview.md): Lär dig att granska och styra dina Azure-resurser.
+I den här artikeln har du lärt dig mer om Azure Policy säkerhets princips definitioner i Security Center. Om du vill veta mer om initiativ, principer och hur de relaterar till Security Centers rekommendationer, se [Vad är säkerhets principer, initiativ och rekommendationer?](security-policy-concept.md).

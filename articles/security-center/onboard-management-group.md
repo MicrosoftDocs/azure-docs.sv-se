@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 9db276425d510316c41126f8e942a1e2a362ea35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796072"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101298"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Aktivera Security Center för alla prenumerationer i en hanterings grupp
 
@@ -60,7 +60,7 @@ Det finns flera olika sätt du kan välja att ändra Azure Policy definition:
     Den angivna definitionen definierar *någon* av pris inställningarna nedan som kompatibel. Innebär att en prenumeration som är "standard" eller "Free" är kompatibel.
 
     > [!TIP]
-    > När en Azure Defender-plan är aktive rad beskrivs den som i "standard"-inställningen. När den är inaktive rad är den "ledig". [Läs mer om Azure Defender-planer](security-center-pricing.md).
+    > När en Azure Defender-plan aktive ras beskrivs den i en princip definition som på "standard"-inställningen. När den är inaktive rad är den "ledig". Läs mer om skillnaderna mellan dessa planer i [Security Center kostnads fri vs Azure Defender aktiverat](security-center-pricing.md). 
 
     ```
     "existenceCondition": {
@@ -98,4 +98,4 @@ Det finns flera olika sätt du kan välja att ändra Azure Policy definition:
 Nu när du har publicerat en hel hanterings grupp aktiverar du avancerade skydd för Azure Defender. 
 
 > [!div class="nextstepaction"]
-> [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivera Azure Defender](enable-azure-defender.md)

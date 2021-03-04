@@ -6,22 +6,25 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+zone_pivot_groups: manage-asc-initiatives
+ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559039"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100873"
 ---
-# <a name="using-custom-security-policies"></a>Använda anpassade säkerhetsprinciper
+# <a name="create-custom-security-initiatives-and-policies"></a>Skapa anpassade säkerhets initiativ och principer
 
 Azure Security Center skapar säkerhets rekommendationer för att skydda dina system och miljöer. De här rekommendationerna baseras på bransch bästa praxis, som ingår i den allmänna, Standard säkerhets policy som tillhandahålls alla kunder. De kan också komma från Security Centers kunskaper om bransch-och reglerings standarder.
 
 Med den här funktionen kan du lägga till egna *anpassade* initiativ. Du får sedan rekommendationer om din miljö inte följer de principer som du skapar. Alla anpassade initiativ som du skapar visas tillsammans med de inbyggda initiativen på instrument panelen för kontroll av efterlevnad, enligt beskrivningen i självstudien [förbättra din efterlevnad](security-center-compliance-dashboard.md).
 
 Som beskrivs i [Azure policy-dokumentationen](../governance/policy/concepts/definition-structure.md#definition-location), och när du anger en plats för ditt eget initiativ, måste det vara en hanterings grupp eller en prenumeration. 
+
+::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Lägga till ett anpassat initiativ i din prenumeration 
 
@@ -68,6 +71,113 @@ Som beskrivs i [Azure policy-dokumentationen](../governance/policy/concepts/defi
 1. Om du vill se de rekommendationer som finns i principen klickar du på **rekommendationer** från sid panelen för att öppna sidan rekommendationer. Rekommendationerna visas med etiketten "anpassad" och är tillgänglig inom cirka en timme.
 
     [![Anpassade rekommendationer](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+::: zone-end
+
+::: zone pivot="rest-api"
+
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurera en säkerhets princip i Azure Policy med hjälp av REST API
+
+Som en del av den interna integreringen med Azure Policy kan du Azure Security Center dra nytta av Azure Policy REST API för att skapa princip tilldelningar. Följande anvisningar beskriver hur du skapar princip tilldelningar, samt anpassningar av befintliga tilldelningar. 
+
+Viktiga begrepp i Azure Policy: 
+
+- En **princip definition** är en regel 
+
+- Ett **initiativ** är en samling princip definitioner (regler) 
+
+- En **tilldelning** är ett program för ett initiativ eller en princip för en specifik omfattning (hanterings grupp, prenumeration osv.) 
+
+Security Center har ett inbyggt initiativ, Azure Security benchmark, som innehåller alla säkerhets principer. Om du vill utvärdera Security Centers principer på dina Azure-resurser, bör du skapa en tilldelning i hanterings gruppen eller prenumerationen som du vill utvärdera.
+
+Det inbyggda initiativet har alla Security Centers principer som är aktiverade som standard. Du kan välja att inaktivera vissa principer från det inbyggda initiativet. Om du till exempel vill använda alla Security Centers principer utom **brand vägg för webbaserade program**, ändrar du värdet för principens gällande parameter till **inaktive rad**.
+
+## <a name="api-examples"></a>API-exempel
+
+Ersätt följande variabler i följande exempel:
+
+- **{scope}** ange namnet på hanterings gruppen eller prenumerationen som du tillämpar principen för
+- **{policyAssignmentName}** ange namnet på den relevanta princip tilldelningen
+- **{Name}** ange ditt namn eller namnet på administratören som godkände princip ändringen
+
+Det här exemplet visar hur du tilldelar det inbyggda Security Center initiativ för en prenumeration eller hanterings grupp
+ 
+ ```
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+ ```
+
+Det här exemplet visar hur du tilldelar det inbyggda Security Center initiativ för en prenumeration, med följande principer inaktiverade: 
+
+- System uppdateringar ("systemUpdatesMonitoringEffect") 
+
+- Säkerhetskonfigurationer ("systemConfigurationsMonitoringEffect") 
+
+- Endpoint Protection ("endpointProtectionMonitoringEffect") 
+
+ ```
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+ ```
+Det här exemplet visar hur du tar bort en tilldelning:
+ ```
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
+
+::: zone-end
+
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>Förbättra dina anpassade rekommendationer med detaljerad information
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511992"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101315"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Skydda resurser i Windows administrations Center med Security Center
 
@@ -21,7 +21,7 @@ Windows administrations Center är ett hanterings verktyg för dina Windows-serv
 
 > [!NOTE]
 > Din Azure-prenumeration och den associerade Log Analytics arbets ytan måste båda ha Azure Defender aktiverat för att kunna aktivera integrering av Windows administrations Center.
-> Azure Defender är kostnads fritt under de första 30 dagarna om du inte tidigare har använt det på prenumerationen och arbets ytan. Mer information finns [på sidan med pris information](security-center-pricing.md).
+> Azure Defender är kostnads fritt under de första 30 dagarna om du inte tidigare har använt det på prenumerationen och arbets ytan. Information om priser i din valuta och enligt din region finns [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).
 >
 
 När du har registrerat en server från Windows administrations Center till Azure Security Center kan du:

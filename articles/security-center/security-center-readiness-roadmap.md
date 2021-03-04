@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4f905b7a08564eadb20d65d651c137ef3741376
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784175"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100329"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center beredskaps översikt
 I det här dokumentet får du en beredskapsöversikt som hjälper dig att komma igång med Azure Security Center.
@@ -59,7 +59,6 @@ Security Center samlar automatiskt in, analyserar och integrerar loggdata från 
 Följande resurser hjälper dig att hantera säkerhetsaviseringar och skydda dina resurser.
 
 Artiklar    
-- [Övervakning av säkerhetshälsa i Azure Security Center](./security-center-monitoring.md)
 - [Skydda nätverket i Azure Security Center](./security-center-network-recommendations.md)
 - [Skydda Azure SQL-tjänsten och data i Azure Security Center](./security-center-remediate-recommendations.md)
 

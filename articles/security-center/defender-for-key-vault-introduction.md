@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: b1dd559db2d736fa27de2884d2fe82edaaeaaf3c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: f127a24bec5567a3868ae77cb8a52f0af2a19603
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916650"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100686"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Introduktion till Azure Defender för Key Vault
 
@@ -26,7 +26,7 @@ Aktivera **Azure Defender för Key Vault** för Azure-internt Avancerat skydd mo
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
-|Priset|**Azure Defender för Key Vault** faktureras så som visas på [sidan med priser](security-center-pricing.md)|
+|Priset|**Azure Defender för Key Vault** faktureras enligt [Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/)|
 |Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 

@@ -78,6 +78,18 @@
           href: synapse-link-use-cases.md
         - name: Vanliga frågor och svar om Synapse Link
           href: synapse-link-frequently-asked-questions.md
+    - name: Säkerhetskopiering och återställning
+      items:
+        - name: Introduktion till säkerhets kopiering och återställning
+          href: online-backup-and-restore.md
+        - name: Kontinuerlig säkerhets kopiering
+          items:
+            - name: Kontinuerlig säkerhets kopiering – introduktion
+              href: continuous-backup-restore-introduction.md
+            - name: Kontinuerlig säkerhets kopiering – vanliga frågor och svar
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: Kontinuerlig säkerhets kopiering – resurs modell
+              href: continuous-backup-restore-resource-model.md
     - name: Optimera dina kostnader för Azure Cosmos DB
       items:
         - name: Planera och hantera kostnader
@@ -112,34 +124,6 @@
       href: concepts-limits.md
     - name: Företagsberedskap
       items:
-        - name: Introduktion till säkerhets kopiering och återställning
-          href: online-backup-and-restore.md
-        - name: Kontinuerlig säkerhets kopiering
-          items:
-            - name: Kontinuerlig säkerhets kopiering – introduktion
-              href: continuous-backup-restore-introduction.md
-            - name: Kontinuerlig säkerhets kopiering – vanliga frågor och svar
-              href: continuous-backup-restore-frequently-asked-questions.md
-            - name: Kontinuerlig säkerhets kopiering – resurs modell
-              items:
-                - name: Översikt över resurs modell
-                  href: continuous-backup-restore-resource-model.md
-                - name: Återställas-konton – lista
-                  href: restorable-database-accounts-list.md
-                - name: Återställas-konton – lista efter plats
-                  href: restorable-database-accounts-list-by-location.md
-                - name: Återställas SQL-resurser – lista
-                  href: restorable-sql-resources-list.md
-                - name: Återställas SQL-databaser – lista
-                  href: restorable-sql-databases-list.md
-                - name: Återställas SQL-behållare – lista
-                  href: restorable-sql-containers-list.md
-                - name: Återställas MongoDB-resurser – lista
-                  href: restorable-mongodb-resources-list.md
-                - name: Återställas MongoDB Collections-List
-                  href: restorable-mongodb-collections-list.md
-                - name: Återställas MongoDB-databaser – lista
-                  href: restorable-mongodb-databases-list.md
         - name: Efterlevnad
           href: compliance.md
     - name: Automatiska rekommendationer
@@ -1391,6 +1375,22 @@
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Använda Power BI med Synapse Link
           href: synapse-link-power-bi.md
+    - name: Säkerhetskopiering och återställning
+      items:
+        - name: Hantera kontinuerlig säkerhets kopiering
+          items:
+            - name: Kontinuerlig säkerhets kopiering – behörigheter och roller
+              href: continuous-backup-restore-permissions.md
+            - name: Kontinuerlig säkerhets kopiering – Portal
+              href: continuous-backup-restore-portal.md
+            - name: Kontinuerlig säkerhets kopiering – PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: Kontinuerlig säkerhets kopiering – CLI
+              href: continuous-backup-restore-command-line.md
+            - name: Kontinuerlig säkerhets kopiering – Resource Manager
+              href: continuous-backup-restore-template.md
+        - name: Hantera periodisk säkerhets kopiering
+          href: configure-periodic-backup-restore.md
     - name: Säkerhet
       items:
         - name: Konfigurera IP-brandvägg
@@ -1410,20 +1410,6 @@
           href: how-to-setup-cmk.md
     - name: Företagsberedskap
       items:
-        - name: Hantera kontinuerlig säkerhets kopiering
-          items:
-            - name: Kontinuerlig säkerhets kopiering – behörigheter och roller
-              href: continuous-backup-restore-permissions.md
-            - name: Kontinuerlig säkerhets kopiering – Portal
-              href: continuous-backup-restore-portal.md
-            - name: Kontinuerlig säkerhets kopiering – PowerShell
-              href: continuous-backup-restore-powershell.md
-            - name: Kontinuerlig säkerhets kopiering – CLI
-              href: continuous-backup-restore-command-line.md
-            - name: Kontinuerlig säkerhets kopiering – ARM
-              href: continuous-backup-restore-template.md
-        - name: Hantera periodisk säkerhets kopiering
-          href: configure-periodic-backup-restore.md
         - name: Begära kvotökning
           href: create-support-request-quota-increase.md
     - name: Övervaka

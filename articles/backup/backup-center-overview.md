@@ -3,12 +3,12 @@ title: Översikt över säkerhets kopierings Center
 description: Den här artikeln innehåller en översikt över backup Center för Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0acf3a17e41b89b462a7fb07c5d3ebd55d4052af
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fee7bf41d0c72238231d9c4aba52a26cac9fb960
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725381"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100006"
 ---
 # <a name="overview-of-backup-center"></a>Översikt över säkerhets kopierings Center
 
@@ -27,7 +27,7 @@ Några av de viktigaste fördelarna med säkerhets kopierings Center är:
 
 ## <a name="get-started"></a>Kom igång
 
-Kom igång med att använda Backup Center genom att söka efter **Backup Center** i Azure Portal och gå till instrument panelen för **säkerhets kopierings Center (för hands version)** .
+Kom igång med att använda Backup Center genom att söka efter **Backup Center** i Azure Portal och gå till instrument panelen för **säkerhets kopierings Center** .
 
 ![Sök Center för säkerhets kopiering](./media/backup-center-overview/backup-center-search.png)
 
@@ -37,7 +37,7 @@ Den första skärmen som visas är **översikten**. Den innehåller två paneler
 
 På panelen **jobb** får du en sammanfattande vy över alla säkerhets kopierings-och återställnings jobb som har utlösts i reserv fastigheten under de senaste 24 timmarna. Du kan visa information om antalet jobb som har slutförts, misslyckats och pågår. Genom att välja något av talen på den här panelen kan du Visa mer information om jobb för en viss typ av data källa, åtgärds typ och status.
 
-På panelen **säkerhets kopierings instanser** får du en sammanfattande vy över alla säkerhets kopierings instanser i reserv egendomen. Du kan till exempel se antalet säkerhets kopierings instanser som är i läget Soft Deleted jämfört med antalet instanser som fortfarande har kon figurer ATS för skydd. Genom att välja något av talen på den här panelen kan du Visa mer information om säkerhets kopierings instanser för en viss typ av data källa och skydds tillstånd.
+På panelen **säkerhets kopierings instanser** får du en sammanfattande vy över alla säkerhets kopierings instanser i reserv egendomen. Du kan till exempel se antalet säkerhets kopierings instanser som är i läget Soft Deleted jämfört med antalet instanser som fortfarande har kon figurer ATS för skydd. Genom att välja något av talen på den här panelen kan du Visa mer information om säkerhets kopierings instanser för en viss typ av data källa och skydds tillstånd. Du kan också Visa alla säkerhets kopierings instanser vars underliggande data källa inte hittas (data källan kan ha tagits bort eller så har du inte åtkomst till data källan).
 
 Titta på följande video för att förstå funktionerna i säkerhets kopierings Center:
 

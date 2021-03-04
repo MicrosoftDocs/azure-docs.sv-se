@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007828"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101349"
 ---
 # <a name="container-security-in-security-center"></a>Containersäkerhet i Security Center
 
@@ -42,7 +42,7 @@ Du lär dig hur Security Center hjälper till med dessa kärn aspekter av behål
 
 Följande skärm bild visar sidan till gångs inventering och de olika behållar resurs typerna som skyddas av Security Center.
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Behållar resurser i Security Center till gångs inventerings Sidan" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="Behållar resurser i Security Center till gångs inventerings Sidan" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>Sårbarhets hantering – Skanna behållar avbildningar
 
@@ -92,7 +92,7 @@ Mer information om relevanta Security Center rekommendationer som kan visas för
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Bästa metoder för arbets belastnings skydd med Kubernetes-åtkomstkontroll
 
-För ett paket med rekommendationer för att skydda arbets belastningarna för dina Kubernetes-behållare, installerar du  **Azure policy-tillägget för Kubernetes**. Du kan också distribuera tillägget automatiskt enligt beskrivningen i [Aktivera automatisk etablering av tillägg](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions). När automatisk etablering för tillägget har angetts till "på" aktive ras tillägget som standard i alla befintliga och framtida kluster (som uppfyller installations kraven för tillägg).
+För ett paket med rekommendationer för att skydda arbets belastningarna för dina Kubernetes-behållare, installerar du  **Azure policy-tillägget för Kubernetes**. Du kan också distribuera tillägget automatiskt enligt beskrivningen i [Aktivera automatisk etablering av Log Analytics agent och tillägg](security-center-enable-data-collection.md#auto-provision-mma). När automatisk etablering för tillägget har angetts till "på" aktive ras tillägget som standard i alla befintliga och framtida kluster (som uppfyller installations kraven för tillägg).
 
 Som det förklaras på [sidan Azure policy för Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), utökar tillägget en [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)-   åtkomst kontroll för öppen källkod för [öppen Policy Agent](https://www.openpolicyagent.org/). Kubernetes-styrenheter är plugin-program som framtvingar hur klustren används. Tillägget registrerar sig som en webhook för att Kubernetes-åtkomstkontroll och gör det möjligt att tillämpa i skala och skydda dina kluster på ett centraliserat, konsekvent sätt. 
 

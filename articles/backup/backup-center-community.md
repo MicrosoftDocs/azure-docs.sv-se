@@ -3,12 +3,12 @@ title: Få åtkomst till community-resurser med Backup Center
 description: Använd Backup Center för att få åtkomst till exempel mallar, skript och funktions begär Anden
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ee377ed393aa4afe1f41d243230686020f5825aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23892c11df26bd3799ca247ef31a7d4c1b6e8bf5
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747182"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100040"
 ---
 # <a name="access-community-resources-using-backup-center"></a>Få åtkomst till community-resurser med Backup Center
 
@@ -26,7 +26,7 @@ Några av de resurser som är tillgängliga via Community-hubb är:
 
 - **Funktions begär Anden**: du kan navigera till UserVoice-och fil funktions begär Anden.
 
-- **Exempel för automatiserade distributioner**: med hjälp av community-hubb kan du identifiera mallar för exempel Azure Resource Manager (arm) och Azure-principer som du kan använda direkt i rutan. Du kan också hitta PowerShell-skript, CLI-kommandon och MSDB-skript.
+- **Exempel för automatiserade distributioner**: med hjälp av community-hubb kan du identifiera mallar för exempel Azure Resource Manager (arm) och Azure-principer som du kan använda direkt i rutan. Du kan också hitta PowerShell-skript, CLI-kommandon och Microsoft Database Backup-skript.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,15 +1,16 @@
 ---
 title: Distribuera en huvud boks infrastrukturs konsortium i Azure Kubernetes-tjänsten
 description: Så här distribuerar och konfigurerar du ett huvud nätverk för ett huvud nätverk i Azure Kubernetes service
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897266"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101111"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Distribuera en huvud boks infrastrukturs konsortium i Azure Kubernetes-tjänsten
 
@@ -31,34 +32,6 @@ Alternativ | Tjänst modell | Vanligt användnings fall
 Lösningsmallar | IaaS | Solution templates är Azure Resource Manager mallar som du kan använda för att etablera en helt konfigurerad blockchain-nätverkstopologi. Mallarna distribuerar och konfigurerar Microsoft Azure beräknings-, nätverks-och lagrings tjänster för en blockchain-nätverks typ. Solution templates tillhandahålls utan ett service nivå avtal. Använd [Microsoft Q&en sida](/answers/topics/azure-blockchain-workbench.html) för support.
 [Azure Blockchain Service](../service/overview.md) | PaaS | För hands versionen av Azure blockchain service fören klar investeringen, hanteringen och styrningen av konsortiet blockchain-nätverk. Använd Azure blockchain-tjänsten för lösningar som kräver PaaS, konsortiets hantering eller kontrakt och transaktions sekretess.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS och PaaS | Azure blockchain Workbench Preview är en samling Azure-tjänster och-funktioner som hjälper dig att skapa och distribuera blockchain-program för att dela affärs processer och data med andra organisationer. Använd Azure blockchain Workbench för prototyp av en blockchain-lösning eller ett koncept bevis för ett blockchain-program. Azure blockchain Workbench tillhandahålls utan ett service nivå avtal. Använd [Microsoft Q&en sida](/answers/topics/azure-blockchain-workbench.html) för support.
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Arkitektur för mikroredovisningens Fabric-konsortiet
-
-Om du vill bygga ett huvud nätverk i ett huvud nätverk på Azure måste du distribuera en beställnings tjänst och organisation med peer-noder. Genom att använda huvud mal len för huvud boken i Azure Kubernetes service kan du skapa order noder eller peer-noder. Du måste distribuera mallen för varje nod som du vill skapa.
-
-De grundläggande komponenter som skapas som en del av mall distributionen är:
-
-- **Beställnings noder**: en nod som ansvarar för transaktions sortering i redovisningen. Tillsammans med andra noder utgör de beställda noderna beställnings tjänsten för det högliggande Fabric-nätverket.
-
-- **Peer-noder**: en nod som främst är värd för redovisning och smarta kontrakt, som är grundläggande element i nätverket.
-
-- **Infrastruktur certifikat utfärdare**: certifikat utfärdare (ca) för huvud-Fabric. Med infrastruktur certifikat utfärdaren kan du initiera och starta en server process som är värd för certifikat utfärdaren. Med den kan du hantera identiteter och certifikat. Varje AKS-kluster som distribueras som en del av mallen kommer att ha en POD för Fabric-certifikat som standard.
-
-- **Couchdb eller LevelDB**: världs tillstånds databaser för peer-noderna. LevelDB är standard läges databasen som är inbäddad i peer-noden. Den lagrar chaincode-data som enkla nyckel/värde-par och stöder nyckel-, nyckel intervall och sammansatta nyckel frågor. CouchDB är en valfri alternativ tillstånds databas som stöder omfattande frågor när chaincode-datavärden modelleras som JSON.
-
-Mallen för distributioner snurrar upp olika Azure-resurser i din prenumeration. De distribuerade Azure-resurserna är:
-
-- **AKS-kluster**: Azure Kubernetes service Cluster som är konfigurerat enligt de indataparametrar som tillhandahålls av kunden. AKS-klustret har olika poddar som har kon figurer ATS för att köra de olika nätverks komponenterna i huvud boks infrastrukturen. De skapade poddar är:
-
-  - **Infrastruktur verktyg**: verktyg som ansvarar för att konfigurera de båda komponenterna i huvud boken.
-  - **Ordnings-/peer-poddar**: noderna i det mikroredovisningen i Fabric-nätverket.
-  - **Proxy**: en ngnix proxy-Pod som klient programmen kan kommunicera med AKS-klustret.
-  - **Infrastruktur certifikat utfärdare**: Pod som kör Fabric ca: n.
-- **Postgresql**: databas instans som underhåller Fabric ca-identiteter.
-
-- **Key Vault**: en instans av den Azure Key Vault tjänst som har distribuerats för att spara autentiseringsuppgifterna för Fabric-certifikat utfärdare och de rot certifikat som tillhandahålls av kunden. Valvet används vid försök att distribuera mallar för att hantera Mechanics för mallen.
-- **Hanterad disk**: instans av Azure Managed disks-tjänsten som tillhandahåller ett beständigt arkiv för redovisningen och för peer-nodens databas för världs tillstånd.
-- **Offentlig IP**: slut punkt för det AKS-kluster som har distribuerats för kommunikation med klustret.
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>Distribuera beställnings-och peer-organisationen
 
@@ -85,10 +58,10 @@ Gå till [Azure Portal](https://portal.azure.com)om du vill komma igång med dis
     - **Organisations namn**: Ange namnet på den huvud organisations organisation som krävs för olika data Plans åtgärder. Organisations namnet måste vara unikt för varje distribution.
     - **Nätverks komponent för infrastruktur resurser**: Välj antingen **beställnings tjänst** eller **peer-noder** baserat på den blockchain nätverks komponent som du vill konfigurera.
     - **Antal noder**: följande två typer av noder:
-        - **Beställnings tjänst**: Välj antalet noder för att ge fel tolerans till nätverket. Antalet noder som stöds är 3, 5 och 7.
-        - **Peer-noder**: du kan välja 1 till 10 noder baserat på ditt krav.
-    - **Peer-nodens världs tillstånds databas**: Välj mellan LevelDB och couchdb. Det här fältet visas när du väljer **peer-noder** i list rutan för **nätverks komponent för infrastruktur resurser** .
-    - **Fabric ca-användarnamn**: Ange det användar namn som används för Fabric ca-autentisering.
+        - **Beställnings tjänst**: noder som ansvarar för transaktions beställning i redovisningen. Välj antalet noder för att ge fel tolerans till nätverket. Antalet noder som stöds är 3, 5 och 7.
+        - **Peer-noder**: noder som är värdar för redovisning och smarta kontrakt. Du kan välja 1 till 10 noder baserat på ditt krav.
+    - **Peer-nodens världs tillstånds databas**: världs tillstånds databaser för peer-noderna. LevelDB är standard läges databasen som är inbäddad i peer-noden. Den lagrar chaincode-data som enkla nyckel/värde-par och stöder nyckel-, nyckel intervall och sammansatta nyckel frågor. CouchDB är en valfri alternativ tillstånds databas som stöder omfattande frågor när chaincode-datavärden modelleras som JSON. Det här fältet visas när du väljer **peer-noder** i list rutan för **nätverks komponent för infrastruktur resurser** .
+    - **Infrastruktur certifikat utfärdarens användar namn**: infrastruktur certifikat utfärdaren gör det möjligt att initiera och starta en server process som är värd för certifikat utfärdaren. Med den kan du hantera identiteter och certifikat. Varje AKS-kluster som distribueras som en del av mallen kommer att ha en POD för Fabric-certifikat som standard. Ange det användar namn som används för Fabric CA-autentisering.
     - **Lösen ord för infrastruktur certifikat utfärdare**: Ange lösen ordet för Fabric-ca-autentisering.
     - **Bekräfta lösen ord**: bekräfta lösen ordet för infrastruktur certifikat utfärdaren.
     - **Certifikat**: om du vill använda dina egna rot certifikat för att initiera Fabric-ca: n väljer du alternativet **för att ladda upp rot certifikat för infrastruktur certifikat utfärdare** . Annars skapar Fabric CA: n självsignerade certifikat som standard.
@@ -96,11 +69,21 @@ Gå till [Azure Portal](https://portal.azure.com)om du vill komma igång med dis
     - **Privat nyckel för rot certifikat**: Ladda upp den privata nyckeln för rot certifikatet. Om du har ett. PEM-certifikat, som har en kombinerad offentlig och privat nyckel, laddar du upp det här även.
 
 
-6. Välj fliken **AKS Cluster Settings** för att definiera Azure Kubernetes service Cluster-konfigurationen som är den underliggande infrastruktur där nätverks komponenterna för huvud nätverket ska konfigureras.
+6. Välj fliken **AKS-kluster inställningar** för att definiera Azure Kubernetes service Cluster-konfigurationen. AKS-klustret har olika poddar som har kon figurer ATS för att köra de olika nätverks komponenterna i huvud boks infrastrukturen. De distribuerade Azure-resurserna är:
+
+    - **Infrastruktur verktyg**: verktyg som ansvarar för att konfigurera de båda komponenterna i huvud boken.
+    - **Ordnings-/peer-poddar**: noderna i det mikroredovisningen i Fabric-nätverket.
+    - **Proxy**: en ngnix proxy-Pod som klient programmen kan kommunicera med AKS-klustret.
+    - **Infrastruktur certifikat utfärdare**: Pod som kör Fabric ca: n.
+    - **Postgresql**: databas instans som underhåller Fabric ca-identiteter.
+    - **Key Vault**: en instans av den Azure Key Vault tjänst som har distribuerats för att spara autentiseringsuppgifterna för Fabric-certifikat utfärdare och de rot certifikat som tillhandahålls av kunden. Valvet används vid försök att distribuera mallar för att hantera Mechanics för mallen.
+    - **Hanterad disk**: instans av Azure Managed disks-tjänsten som tillhandahåller ett beständigt arkiv för redovisningen och för peer-nodens databas för världs tillstånd.
+    - **Offentlig IP**: slut punkt för det AKS-kluster som har distribuerats för kommunikation med klustret.
+
+    Ange följande information: 
 
     ![Skärm bild som visar fliken A K S kluster inställningar.](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Ange följande information:
     - **Kubernetes-kluster namn**: ändra namnet på AKS-klustret, om det behövs. Det här fältet fylls i automatiskt baserat på det resurs prefix som anges.
     - **Kubernetes-version**: Välj den version av Kubernetes som ska distribueras i klustret. Utifrån den region som du valde på fliken **grundläggande** kan de tillgängliga versionerna ändras.
     - **DNS-prefix**: Ange ett namn för Domain Name System (DNS) för AKS-klustret. Du använder DNS för att ansluta till Kubernetes-API: et när du hanterar behållare när du har skapat klustret.
@@ -334,7 +317,7 @@ Kör följande kommando för att installera chaincode på peer-organisationen.
 ```
 Kommandot installerar chaincode på alla peer-noder i peer-organisationen som anges i `ORGNAME` miljö variabeln. Om två eller flera peer-organisationer finns i din kanal och du vill installera chaincode på alla, kör du kommandot separat för varje peer-organisation.  
 
-Följ de här stegen:  
+Gör så här:  
 
 1.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg1` och kör `./azhlf chaincode install` kommandot.  
 2.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg2` och kör `./azhlf chaincode install` kommandot.  

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: b18b498f250e9ff62180ba21c3bcbda562b13b8c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735870"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099547"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -193,6 +193,12 @@ Så här åtgärdar du problemen:
 
 1. Om du vill ha mer information och listan över berörda datorer väljer du en avisering.
 
+    Sidan aviseringar visar mer information om aviseringarna och ger en **Åtgärds** länk med rekommendationer för hur du minimerar hotet.
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="Start tiden för aviseringar om anpassningsbara program kontroller är ":::
+
+    > [!NOTE]
+    > Anpassningsbara program kontroller beräknar händelser en gång var tolfte timme. "Aktivitetens start tid" som visas på sidan aviseringar är den tid som anpassade program kontroller skapade aviseringen, **inte** den tid då den misstänkta processen var aktiv.
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>Flytta en dator från en grupp till en annan

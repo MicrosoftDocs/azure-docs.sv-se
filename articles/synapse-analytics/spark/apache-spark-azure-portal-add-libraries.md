@@ -1,5 +1,5 @@
 ---
-title: Biblioteks hantering
+title: Pakethantering
 description: Lär dig hur du lägger till och hanterar bibliotek som används av Apache Spark i Azure Synapse Analytics.
 services: synapse-analytics
 author: midesa
@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 955d7f8c2d2ce5ea126d4cce67b0e4e55152ac72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 76d3bdc8a6eb133daa2d241bdf4c3b73271f0173
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695098"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100210"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera bibliotek för Apache Spark i Azure Synapse Analytics
 Bibliotek ger återanvändbar kod som du kanske vill inkludera i dina program eller projekt. 
@@ -38,17 +38,17 @@ När du utvecklar anpassade program eller modeller kan ditt team utveckla olika 
 I Synapse kan arbets ytans paket vara anpassade eller privata hjul-eller jar-filer. Du kan ladda upp dessa paket till din arbets yta och senare tilldela dem till en speciell Spark-pool. När de har tilldelats installeras dessa arbets ytans paket automatiskt på alla sessioner med Spark-pool.
 
 Mer information om hur du hanterar bibliotek för arbets ytor finns i följande instruktions guider:
-- [Python-arbetsyte paket: ](./apache-spark-manage-python-packages.md#Install-wheel-files) Ladda upp python-Wheel-filer som ett paket för arbets ytor och Lägg senare till paketen till vissa Server lös Apache Spark pooler.
-- [Scala/Java-arbetsyte paket (för hands version): ](./apache-spark-manage-scala-packages.md#Workspace-packages) Ladda upp Scala och java jar-filer som ett paket för arbets ytor och Lägg senare till paketen till vissa Server lös Apache Spark pooler.
+- [Python-arbetsyte paket (för hands version): ](./apache-spark-manage-python-packages.md#install-wheel-files) Ladda upp python-Wheel-filer som ett paket för arbets ytor och Lägg senare till paketen till vissa Server lös Apache Spark pooler.
+- [Scala/Java-arbetsyte paket (för hands version): ](./apache-spark-manage-scala-packages.md#workspace-packages) Ladda upp Scala och java jar-filer som ett paket för arbets ytor och Lägg senare till paketen till vissa Server lös Apache Spark pooler.
 
-## <a name="pool-management"></a>Hantering av pooler
+## <a name="pool-packages"></a>Paket för pool
 I vissa fall kanske du vill standardisera den uppsättning paket som används på en viss Apache Spark pool. Den här standardiseringen kan vara användbar om samma paket ofta installeras av flera personer i din grupp. 
 
 Med hjälp av funktionerna för hantering av Azure Synapse Analytics-pooler kan du konfigurera standard uppsättningen bibliotek som du vill installera på en specifik server lös Apache Spark pool. De här biblioteken installeras ovanpå [bas körnings miljön](./apache-spark-version-support.md). 
 
 För närvarande stöds inte pool hantering för python. För python använder Synapse Spark-pooler Conda för att installera och hantera ett python-paket beroenden. När du anger dina bibliotek på en samlings nivå kan du nu ange en requirements.txt eller en miljö. yml. Den här miljö konfigurations filen används varje gång en spark-instans skapas från den Spark-poolen. 
 
-Mer information om dessa funktioner finns i dokumentationen om hantering av [python-pooler](./apache-spark-manage-python-packages.md#Pool-libraries).
+Mer information om dessa funktioner finns i dokumentationen om hantering av [python-pooler](./apache-spark-manage-python-packages.md#pool-libraries).
 
 > [!IMPORTANT]
 > - Om paketet som du installerar är stort eller tar lång tid att installera, påverkar detta start tiden för Spark-instansen.
@@ -61,8 +61,8 @@ När du utför interaktiv data analys eller maskin inlärning kan du ofta se att
 Med session-omfångs paket kan användare definiera paket beroenden i början av sessionen. När du installerar ett paket som omfattas av en session har endast den aktuella sessionen åtkomst till de angivna paketen. Detta innebär att de här sessionens omfångs paket inte påverkar andra sessioner eller jobb med samma Apache Spark pool. Dessutom installeras dessa bibliotek ovanpå bas körnings-och Poolnivå-paketen. 
 
 Mer information om hur du hanterar sessionsbaserade paket finns i följande instruktions guider:
-- [Python-sessionsobjekt (för hands version):](./apache-spark-manage-python-packages.md#Session-scoped-libraries-(preview)) I början av en session anger du en Conda- *miljö. yml* för att installera ytterligare python-paket från populära databaser. 
-- [Scala/Java-sessionsobjekt: ](./apache-spark-manage-scala-packages.md#Workspace-packages) I början av sessionen anger du en lista över jar-filer att installera med ```%%configure``` .
+- [Python-sessionsobjekt (för hands version):](./apache-spark-manage-python-packages.md) I början av en session anger du en Conda- *miljö. yml* för att installera ytterligare python-paket från populära databaser. 
+- [Scala/Java-sessionsobjekt: ](./apache-spark-manage-scala-packages.md) I början av sessionen anger du en lista över jar-filer att installera med ```%%configure``` .
 
 ## <a name="next-steps"></a>Nästa steg
 - Visa standard biblioteken: [Apache Spark versions stöd](apache-spark-version-support.md)

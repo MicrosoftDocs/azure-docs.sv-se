@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014590"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100737"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Använd Azure Defender för containerregister för att genomsöka dina avbildningar efter säkerhetsrisker
 
@@ -21,8 +21,6 @@ På den här sidan förklaras hur du använder den inbyggda sårbarhets-skannern
 När **Azure Defender för containerregister** är aktiverat genomsöks alla avbildningar du överför till registret omedelbart. Dessutom genomsöks även alla bilder som hämtas under de senaste 30 dagarna. 
 
 När skannern rapporterar sårbarheter för att Security Center, Security Center visar resultaten och relaterad information som rekommendationer. Dessutom innehåller undersökningarna relaterad information, till exempel reparations steg, relevanta CVEs, CVSS resultat och mycket annat. Du kan visa identifierade sårbarheter för en eller flera prenumerationer eller för ett enskilt register.
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifiera sårbarheter i avbildningar i Azure Container register 

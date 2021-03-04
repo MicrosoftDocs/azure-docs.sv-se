@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/02/2021
-ms.openlocfilehash: e8f7e5451b48066f52a4c1038e58b1efa99951e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/04/2021
+ms.openlocfilehash: f5692f2bcaaadfc56084ec8db745eae48112ecf3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048630"
+ms.locfileid: "102101247"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurera underhålls fönstret (förhands granskning)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,6 +26,8 @@ Konfigurera [underhålls perioden (förhands granskning)](maintenance-window.md)
 
 Möjligheten att ändra till en annan underhålls period är inte tillgänglig för varje service nivå eller i varje region. Mer information om tillgänglighet finns i [tillgänglighet för underhålls fönster](maintenance-window.md#availability).
 
+> [!Important]
+> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort redundansväxling som sker i slutet av åtgärden och som vanligt vis varar i upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du utföra åtgärden utanför det högsta antalet timmar.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurera underhålls fönstret när databasen skapas 
 

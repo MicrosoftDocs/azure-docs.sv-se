@@ -1,57 +1,22 @@
 ---
 title: Säkerhetsrekommendationer i Azure Security Center
 description: Det här dokumentet vägleder dig genom hur rekommendationer i Azure Security Center hjälper dig att skydda dina Azure-resurser och hålla dem kompatibla med säkerhets principer.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526532"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100346"
 ---
-# <a name="security-recommendations-in-azure-security-center"></a>Säkerhetsrekommendationer i Azure Security Center 
+# <a name="review-your-security-recommendations"></a>Granska dina säkerhets rekommendationer
 
 I det här avsnittet beskrivs hur du visar och förstår rekommendationerna i Azure Security Center som hjälper dig att skydda dina Azure-resurser.
-
-
-## <a name="what-are-security-recommendations"></a>Vad är säkerhets rekommendationer?
-
-Security Center analyserar regelbundet säkerhets status för dina Azure-resurser för att identifiera potentiella säkerhets risker. Därefter får du rekommendationer om hur du åtgärdar problemen.
-
-Rekommendationer är åtgärder som du kan vidta för att skydda och skärp dina resurser. 
-
-Varje rekommendation ger dig följande:
-
-- En kort beskrivning av problemet
-- De åtgärder som vidtas för att genomföra rekommendationen
-- De berörda resurserna
-
-## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hur avgör Microsoft vad som behöver säkras och skärpas?
-
-Security Centers rekommendationer baseras på Azures säkerhets benchmark. Nästan alla rekommendationer har en underliggande princip som härleds från ett krav i benchmark.
-
-Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet. Läs mer om [Azure Security Benchmark](../security/benchmarks/introduction.md).
-
-När du granskar informationen om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip använder du länken **Visa princip definition** från rekommendations informations sidan för att gå direkt till Azure policy posten för den aktuella principen:
-
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Länk till Azure Policy sida för den speciella principen som stöder en rekommendation":::
-
-Använd den här länken för att Visa princip definitionen och granska utvärderings logiken. 
-
-Om du granskar listan över rekommendationer i [referens guiden för säkerhets rekommendationer](recommendations-reference.md)kan du också se länkar till princip definitions sidorna:
-
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Åtkomst till Azure Policy sidan för en speciell princip direkt från referens sidan för Azure Security Center rekommendationer":::
 
 ## <a name="monitor-recommendations"></a>Övervaka rekommendationer <a name="monitor-recommendations"></a>
 

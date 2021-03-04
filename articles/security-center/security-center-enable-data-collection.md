@@ -1,21 +1,37 @@
 ---
 title: Distribuera agenter automatiskt för Azure Security Center | Microsoft Docs
-description: Den här artikeln beskriver hur du konfigurerar automatisk etablering av Log Analytics agent och andra agenter som används av Azure Security Center.
-services: security-center
+description: Den här artikeln beskriver hur du konfigurerar automatisk etablering av Log Analytics agent och andra agenter och tillägg som används av Azure Security Center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6130572cedaaabb9d63758a2bc25f6ebd0396562
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729869"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099428"
 ---
-# <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatiska etablerings agenter och tillägg från Azure Security Center
+# <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurera automatisk etablering för agenter och tillägg från Azure Security Center
+
+Security Center samlar in data från dina resurser med hjälp av relevanta agenter eller tillägg för den resursen och den typ av data insamling som du har aktiverat. Använd precedures nedan för att se till att din resurs har den här artikeln som beskriver hur du konfigurerar automatisk etablering av den Log Analytics agenten och andra agenter och tillägg som används av Azure Security Center
+
+## <a name="prerequisites"></a>Förutsättningar
+Du måste ha en prenumeration på Microsoft Azure för att komma igång med Security Center. Om du inte har någon prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
+
+## <a name="availability"></a>Tillgänglighet
+
+| Aspekt                  | Information                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Versions tillstånd:          | **Funktion**: automatisk etablering är allmänt tillgänglig (ga)<br>**Agent och tillägg**: Log Analytics agent för virtuella Azure-datorer är ga, Microsoft Dependency agent är i för hands version, princip tillägg för KUBERNETES är ga                |
+| Priset                | Kostnadsfri                                                                                                                                                                                                                         |
+| Destinationer som stöds: | ![Ja](./media/icons/yes-icon.png) Azure-datorer<br>![Inga](./media/icons/no-icon.png) Azure Arc-datorer<br>![Inga](./media/icons/no-icon.png) Kubernetes-noder<br>![Inga](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Moln                 | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
+
+## <a name="how-does-security-center-collect-data"></a>Hur samlar Security Center in data?
 
 Security Center samlar in data från dina virtuella Azure-datorer, skalnings uppsättningar för virtuella datorer, IaaS behållare och icke-Azure (inklusive lokala) datorer för att övervaka säkerhets problem och hot. 
 
@@ -29,20 +45,6 @@ Data samlas in med:
 > [!TIP]
 > Som Security Center har växt, har de typer av resurser som kan övervakas också växt. Antalet tillägg har också växt. Automatisk etablering har utökats för att stödja ytterligare resurs typer genom att använda funktionerna i Azure Policy.
 
-:::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Security Center sidan Inställningar för automatisk etablering":::
-
-
-## <a name="availability"></a>Tillgänglighet
-
-| Aspekt                  | Information                                                                                                                                                                                                                      |
-|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Versions tillstånd:          | **Funktion**: automatisk etablering är allmänt tillgänglig (ga)<br>**Agent och tillägg**: Log Analytics agent för virtuella Azure-datorer är ga, Microsoft Dependency agent är i för hands version, princip tillägg för KUBERNETES är ga                |
-| Priset                | Kostnadsfri                                                                                                                                                                                                                         |
-| Destinationer som stöds: | ![Ja](./media/icons/yes-icon.png) Azure-datorer<br>![Inga](./media/icons/no-icon.png) Azure Arc-datorer<br>![Inga](./media/icons/no-icon.png) Kubernetes-noder<br>![Inga](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Moln                 | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
-|                         |                                                                                                                                                                                                                              |
-
-
 ## <a name="why-use-auto-provisioning"></a>Varför ska jag använda automatisk etablering?
 Alla agenter och tillägg som beskrivs på den här sidan *kan* installeras manuellt (se [manuell installation av Log Analytics agent](#manual-agent)). **Automatisk etablering** minskar dock hanterings kostnader genom att installera alla nödvändiga agenter och tillägg på befintliga och nya datorer för att säkerställa snabbare säkerhets täckning för alla resurser som stöds. 
 
@@ -54,14 +56,19 @@ Security Center inställningarna för automatisk etablering har en växling för
 > [!TIP]
 > Läs mer om Azure Policy effekter, inklusive distribuera om de inte finns i [förstå Azure policys effekter](../governance/policy/concepts/effects.md).
 
-## <a name="enable-auto-provisioning-of-the-log-analytics-agent"></a>Aktivera automatisk etablering av Log Analytics agent <a name="auto-provision-mma"></a>
+
+## <a name="enable-auto-provisioning-of-the-log-analytics-agent-and-extensions"></a>Aktivera automatisk etablering av Log Analytics agent och tillägg <a name="auto-provision-mma"></a>
+
 När automatisk etablering är aktiverat för Log Analytics agent distribuerar Security Center agenten på alla virtuella Azure-datorer som stöds och eventuella nya som skapats. En lista över plattformar som stöds finns [i plattformar som stöds i Azure Security Center](security-center-os-coverage.md).
 
 Så här aktiverar du automatisk etablering av Log Analytics agent:
 
 1. Från Security Center menyn väljer du **pris & inställningar**.
 1. Välj relevant prenumeration.
-1. På sidan **Automatisk etablering** ställer du in agentens status **på på**.
+1. På sidan **Automatisk etablering** ställer du in Log Analytics agentens status **på på**.
+
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Aktivera automatisk etablering av Log Analytics agenten":::
+
 1. I fönstret konfigurations alternativ definierar du arbets ytan som ska användas.
 
     :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="Konfigurations alternativ för automatisk etablering Log Analytics agenter till virtuella datorer" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
@@ -104,6 +111,22 @@ Så här aktiverar du automatisk etablering av Log Analytics agent:
 
 1. Välj **Använd** i konfigurations fönstret.
 
+1. Aktivera automatisk etablering av ett tillägg som inte är Log Analytics-agenten: 
+
+    1. Om du aktiverar automatisk etablering för Microsofts beroende agent kontrollerar du att Log Analytics-agenten är inställd på automatisk distribution.
+    1. Växla statusen till **på** för det relevanta tillägget.
+
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Växla för att aktivera automatisk etablering för K8s policy-tillägg":::
+
+    1. Välj **Spara**. Azure-principen är tilldelad och en reparations uppgift skapas.
+
+        |Anknytning  |Policy  |
+        |---------|---------|
+        |Princip tillägg för Kubernetes|[Distribuera Azure Policy-tillägg till Azure Kubernetes service-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Microsoft-beroende agent (för hands version) (Windows VM)|[Distribuera beroende agent för virtuella Windows-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
+        |Microsoft-beroende agent (för hands version) (virtuella Linux-datorer)|[Distribuera beroende agent för virtuella Linux-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |||
+
 1. Välj **Spara**. Om en arbets yta behöver tillhandahållas kan Agent installationen ta upp till 25 minuter.
 
 1. Du får frågan om du vill konfigurera om övervakade virtuella datorer som tidigare var anslutna till en standard arbets yta:
@@ -115,28 +138,6 @@ Så här aktiverar du automatisk etablering av Log Analytics agent:
 
    > [!NOTE]
    > Om du väljer **Ja** tar du inte bort arbets ytorna som skapats av Security Center tills alla virtuella datorer har återanslutits till den nya mål arbets ytan. Den här åtgärden Miss lyckas om en arbets yta tas bort för tidigt.
-
-
-## <a name="enable-auto-provisioning-of-extensions"></a>Aktivera automatisk etablering av tillägg
-
-Aktivera automatisk etablering av ett tillägg som inte är Log Analytics-agenten: 
-
-1. Från Security Center menyn i Azure Portal väljer du **pris & inställningar**.
-1. Välj relevant prenumeration.
-1. Välj **Automatisk etablering**.
-1. Om du aktiverar automatisk etablering för Microsofts beroende agent kontrollerar du att Log Analytics-agenten är inställd på automatisk distribution. 
-1. Växla statusen till **på** för det relevanta tillägget.
-
-    :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="Växla för att aktivera automatisk etablering för K8s policy-tillägg":::
-
-1. Välj **Spara**. Azure-principen är tilldelad och en reparations uppgift skapas.
-
-    |Anknytning  |Policy  |
-    |---------|---------|
-    |Princip tillägg för Kubernetes|[Distribuera Azure Policy-tillägg till Azure Kubernetes service-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
-    |Microsoft-beroende agent (för hands version) (Windows VM)|[Distribuera beroende agent för virtuella Windows-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-    |Microsoft-beroende agent (för hands version) (virtuella Linux-datorer)|[Distribuera beroende agent för virtuella Linux-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
-
 
 
 ## <a name="windows-security-event-options-for-the-log-analytics-agent"></a>Windows säkerhets händelse alternativ för Log Analytics agent <a name="data-collection-tier"></a> 
@@ -275,24 +276,10 @@ Så här inaktiverar du automatisk etablering av en agent:
 ## <a name="troubleshooting"></a>Felsökning
 
 -   Information om hur du identifierar installations problem med automatisk etablering finns i [övervaka agentens hälso problem](security-center-troubleshooting-guide.md#mon-agent).
-
 -  Information om hur du identifierar nätverks krav för övervaknings agenten finns i [Felsöka nätverks krav för övervaknings agenten](security-center-troubleshooting-guide.md#mon-network-req).
 -   Information om hur du identifierar manuella onboarding-problem finns i [så här felsöker du problem med Operations Management Suite onboarding](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
-
-- Identifiera oövervakade virtuella datorer och problem med datorer:
-
-    En virtuell dator eller dator är inte övervakad av Security Center om datorn inte kör Log Analytics agent-tillägget. En dator kan ha en lokal agent som redan är installerad, till exempel OMS Direct-agenten eller System Center Operations Manager agenten. Datorer med dessa agenter identifieras som oövervakade eftersom de här agenterna inte stöds fullt ut i Security Center. Om du vill använda alla funktioner i Security Center behöver du tillägget för Log Analytics-agenten.
-
-    Mer information om varför Security Center inte kan övervaka virtuella datorer och datorer som har initierats för automatisk etablering finns i [övervaknings agentens hälso problem](security-center-troubleshooting-guide.md#mon-agent).
-
 
 
 
 ## <a name="next-steps"></a>Nästa steg
-Den här artikeln visar hur data samlas in och automatisk etablering i Security Center fungerar. Mer information om Security Center finns på följande sidor:
-
-- [Vanliga frågor och svar om Azure Security Center](faq-general.md): Här finns vanliga frågor om tjänsten.
-- [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md): Här kan du läsa om hur du övervakar dina Azure-resursers hälsa.
-
-Den här artikeln beskriver hur du installerar en Log Analytics agent och anger en Log Analytics arbets yta där insamlade data ska lagras. Båda åtgärderna krävs för att aktivera data insamling. Om du lagrar data i Log Analytics, oavsett om du använder en ny eller befintlig arbets yta, kan ytterligare kostnader för data lagring uppstå. Mer information finns på sidan med [priser](https://azure.microsoft.com/pricing/details/security-center/).
-
+Den här sidan förklaras hur du aktiverar automatisk etablering för Log Analytics agent och andra Security Center tillägg. Det beskrivs också hur du definierar en Log Analytics arbets yta där insamlade data ska lagras. Båda åtgärderna krävs för att aktivera data insamling. Om du lagrar data i Log Analytics, oavsett om du använder en ny eller befintlig arbets yta, kan ytterligare kostnader för data lagring uppstå. Information om priser i din valuta och enligt din region finns [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/).

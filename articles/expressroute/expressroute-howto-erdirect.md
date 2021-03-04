@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014526"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099955"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Så här konfigurerar du ExpressRoute Direct
 
@@ -20,12 +20,21 @@ ExpressRoute Direct ger dig möjlighet att ansluta direkt till Microsofts global
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att skicka ett e-postmeddelande till <ExpressRouteDirect@microsoft.com> med ditt prenumerations-ID, inklusive följande information:
+Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Innan du använder ExpressRoute Direct måste du först registrera din prenumeration. Registrera dig genom att göra följande via Azure PowerShell:
+1.  Logga in på Azure och välj den prenumeration som du vill registrera.
 
-* Scenarier som du behöver utföra med **ExpressRoute Direct**
-* Plats inställningar – Se [partner och peering-platser](expressroute-locations-providers.md) för en fullständig lista över alla platser
-* Tidslinje för implementering
-* Andra frågor
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. Registrera din prenumeration för offentlig för hands version med följande kommando:
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+När du har registrerat dig kontrollerar du att **Microsoft. Network** Resource-providern är registrerad i din prenumeration. När du registrerar en resurs leverantör konfigureras din prenumeration så att den fungerar med resurs leverantören.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Skapa resursen
 

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bf9ffe3640c704fb1da51f6f9c2fe42ca5d46851
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047561"
+ms.locfileid: "102101485"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Använd Azure Private Link för att ansluta nätverk till Azure Monitor på ett säkert sätt
 
@@ -172,7 +172,8 @@ Den privata slut punkten som du skapade ska nu ha fyra konfigurerade DNS-zoner:
 * privatelink-ODS-OpInsights-Azure-com
 * privatelink-agentsvc-Azure-Automation-net
 
-Var och en av dessa zoner mappar vissa Azure Monitor slut punkter till privata IP-adresser från poolen med IP-adresser för den privata slut punktens VNet.
+> [!NOTE]
+> Var och en av dessa zoner mappar vissa Azure Monitor slut punkter till privata IP-adresser från VNet-poolen med IP-adresser. De IP-adresser som visas i nedanstående bilder är bara exempel. Konfigurationen bör i stället Visa privata IP-adresser från ditt eget nätverk.
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-Monitor-Azure-com
 Den här zonen täcker de globala slut punkter som används av Azure Monitor, vilket innebär att dessa slut punkter betjänar begär Anden som överväger alla resurser, inte en annan. Den här zonen ska ha slut punkter mappade för:
@@ -218,7 +219,7 @@ Inställningarna på den nedre delen av den här sidan styr åtkomsten från off
 
 ### <a name="exceptions"></a>Undantag
 Att begränsa åtkomsten enligt beskrivningen ovan gäller inte för Azure Resource Manager och har därför följande begränsningar:
-* Åtkomst till data – samtidigt som du blockerar/tillåter frågor från offentliga nätverk gäller de flesta Log Analyticss upplevelser, men vissa upplevelser frågar data via Azure Resource Manager och kommer därför inte att kunna fråga efter data, om inte inställningarna för privata länkar tillämpas på Resource Manager också (funktionen kommer snart snart). Detta omfattar exempelvis Azure Monitor lösningar, arbets böcker och insikter och LogicApp-anslutningen.
+* Åtkomst till data – samtidigt som du blockerar/tillåter frågor från offentliga nätverk gäller de flesta Log Analyticss upplevelser, men vissa upplevelser frågar data via Azure Resource Manager och kommer därför inte att kunna fråga efter data, om inte inställningarna för privata länkar tillämpas på Resource Manager också (funktionen kommer snart snart). Exempel är Azure Monitor lösningar, arbets böcker och insikter och LogicApp-anslutningen.
 * Arbets ytans hantering – inställning av arbets yta och konfigurations ändringar (inklusive aktivering av de här åtkomst inställningarna på eller av) hanteras av Azure Resource Manager. Begränsa åtkomsten till hantering av arbets ytor med lämpliga roller, behörigheter, nätverks kontroller och granskning. Mer information finns i [Azure Monitor roller, behörigheter och säkerhet](../roles-permissions-security.md).
 
 > [!NOTE]
@@ -248,17 +249,17 @@ För det andra kan du styra hur den här resursen kan nås utanför AMPLS (Priva
 > [!NOTE]
 > Användnings upplevelser som inte är portalen måste också köras på det privata, länkade VNET som innehåller de övervakade arbets belastningarna.
 
-Du måste lägga till resurser som är värdar för de övervakade arbets belastningarna till den privata länken. Här är en [dokumentation](../../app-service/networking/private-endpoint.md) om hur du gör detta för app Services.
+Du måste lägga till resurser som är värdar för de övervakade arbets belastningarna till den privata länken. Se till exempel [användning av privata slut punkter för Azure Web App](../../app-service/networking/private-endpoint.md).
 
 Att begränsa åtkomsten på det här sättet gäller endast för data i Application Insights-resursen. Konfigurations ändringar, inklusive aktivering av dessa åtkomst inställningar på eller av, hanteras dock av Azure Resource Manager. Därför bör du begränsa åtkomsten till Resource Manager med hjälp av lämpliga roller, behörigheter, nätverks kontroller och granskning. Mer information finns i [Azure Monitor roller, behörigheter och säkerhet](../roles-permissions-security.md).
 
 > [!NOTE]
 > För att helt skydda arbets ytans baserade Application Insights måste du låsa både åtkomst till Application Insights resurs och den underliggande Log Analytics arbets ytan.
 >
-> Kod på kod nivå (profilerings-/fel sökning) behöver du ange ditt eget lagrings konto för att stödja privat länk. Här är en [dokumentation](../app/profiler-bring-your-own-storage.md) om hur du gör detta.
+> Kod på kod nivå (profilerings-/fel sökning) behöver du [Ange ditt eget lagrings konto](../app/profiler-bring-your-own-storage.md) för att stödja privat länk.
 
 ### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Hantera privata länkars allt-eller-Nothing-natur
-Som förklaras i [planera konfigurationen av den privata länken](#planning-your-private-link-setup), ställer in en privat länk även för en enskild resurs, påverkar alla Azure Monitor resurser i nätverken och i andra nätverk som delar samma DNS. Detta kan göra din onboarding-process utmanande. Överväg följande alternativ:
+Som förklaras i [planera konfigurationen av den privata länken](#planning-your-private-link-setup), ställer in en privat länk även för en enskild resurs, påverkar alla Azure Monitor resurser i nätverken och i andra nätverk som delar samma DNS. Detta kan göra att din onboarding-process är krävande. Överväg följande alternativ:
 
 * Allt i den enklaste och säkraste metoden är att lägga till alla Application Insights-komponenter i AMPLS. För komponenter som du vill ha åtkomst till från andra nätverk måste du lämna flaggorna "Tillåt offentlig Internet åtkomst för inmatnings/fråga" inställda till Ja (standard).
 * Isolera nätverk – om du är (eller kan justera med) med ekrar virtuella nätverk följer du rikt linjerna i nätverkstopologi [för NAV-ekrar i Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Konfigurera sedan separata inställningar för privata länkar i relevanta eker-virtuella nätverk. Se även till att avgränsa DNS-zoner, eftersom om du delar DNS-zoner med andra eker-nätverk kommer [DNS att åsidosättas](#the-issue-of-dns-overrides).

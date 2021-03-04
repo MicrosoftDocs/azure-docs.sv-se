@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590465"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100669"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Introduktion till Azure Defender för Resource Manager
 
@@ -20,15 +20,15 @@ ms.locfileid: "100590465"
 
 Moln hanterings lagret är en viktig tjänst som är ansluten till alla moln resurser. Därför är det också ett potentiellt mål för angripare. Därför rekommenderar vi säkerhets åtgärds teamen att övervaka resurs hanterings nivån nära. 
 
-Azure Defender för Resource Manager övervakar automatiskt resurs hanterings åtgärderna i din organisation, oavsett om de utförs via Azure Portal, Azure REST-API: er, Azure CLI eller andra Azure-programmatiska klienter. Azure Defender kör avancerade säkerhets analyser för att identifiera hot och varna dig om misstänkt aktivitet.
+Azure Defender för Resource Manager övervakar automatiskt resurs hanterings åtgärderna i din organisation, oavsett om de utförs via Azure Portal, Azure REST-API: er, Azure CLI eller andra Azure-programmatiska klienter. Azure Defender kör avancerade säkerhets analyser för att identifiera hot och varnar dig om misstänkt aktivitet.
 
 ## <a name="availability"></a>Tillgänglighet
 
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Priset|**Azure Defender för Resource Manager** faktureras enligt [pris sidan](security-center-pricing.md)|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Priset|**Azure Defender för Resource Manager** faktureras enligt [Security Center priser](https://azure.microsoft.com/pricing/details/security-center/)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Vilka är fördelarna med Azure Defender för Resource Manager?
@@ -75,4 +75,4 @@ I den här artikeln har du lärt dig om Azure Defender för Resource Manager. In
 - Säkerhets aviseringar kan genereras av Security Center eller tas emot av Security Center från olika säkerhets produkter. Om du vill exportera alla dessa aviseringar till Azure Sentinel, SIEM eller andra externa verktyg, följer du anvisningarna i [Exportera aviseringar till en Siem](continuous-export.md).
 
 - > [!div class="nextstepaction"]
-    > [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [Aktivera Azure Defender](enable-azure-defender.md)

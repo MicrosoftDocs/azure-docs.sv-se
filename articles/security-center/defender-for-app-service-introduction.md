@@ -7,31 +7,43 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393317"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100822"
 ---
-# <a name="introduction-to-azure-defender-for-app-service"></a>Introduktion till Azure Defender för App Service
+# <a name="protect-your-web-apps-and-apis"></a>Skydda dina webbappar och API: er
+
+## <a name="prerequisites"></a>Förutsättningar
+
+Security Center är internt integrerat med App Service, vilket eliminerar behovet av distribution och onboarding – integreringen är transparent.
+
+För att skydda din Azure App Service-plan med Azure Defender för App Service behöver du:
+
+- Ett App Service plan som stöds för dedikerade datorer. Planer som stöds visas i [tillgänglighet](#availability).
+
+- Azure Defender aktiverat i din prenumeration enligt beskrivningen i [snabb start: Aktivera Azure Defender](enable-azure-defender.md).
+
+    > [!TIP]
+    > Du kan välja att aktivera enskilda planer i Azure Defender (till exempel Azure Defender för App Service).
+
+## <a name="availability"></a>Tillgänglighet
+
+| Aspekt                       | Information                                                                                                                                                                                        |
+|------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Versions tillstånd:               | Allmän tillgänglighet (GA)                                                                                                                                                                      |
+| Priset                     | [Azure Defender för App Service](azure-defender.md) faktureras enligt [Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/)<br>Faktureringen sker enligt de totala beräknings instanserna i alla planer       |
+| App Services planer som stöds: | [Alla app Services planer](https://azure.microsoft.com/pricing/details/app-service/plans/) stöds förutom [Azure Functions i förbruknings planen](../azure-functions/functions-scale.md). |
+| Moln                      | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                     |
+|                              |                                                                                                                                                                                                |
+
+## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Vilka är fördelarna med Azure Defender för App Service?
 
 Azure App Service är en helt hanterad plattform för att bygga och vara värd för dina webbappar och API: er. Eftersom plattformen är fullständigt hanterad behöver du inte oroa dig över infrastrukturen. Den ger hantering, övervakning och Operational Insights för att uppfylla prestanda-, säkerhets-och efterlevnads krav i företags klass. Mer information finns i [Azure App Service](https://azure.microsoft.com/services/app-service/).
 
 **Azure Defender för App Service** använder molnets skala för att identifiera angrepps mål program som körs över App Service. Angripare avsöker webb program för att hitta och utnyttja svagheter. Innan de dirigeras till vissa miljöer går förfrågningar till program som körs i Azure genom flera gatewayer, där de inspekteras och loggas. Dessa data används sedan för att identifiera sårbarheter och angripare och för att lära dig nya mönster som ska användas senare.
-
-
-## <a name="availability"></a>Tillgänglighet
-
-| Aspekt                       | Information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Versions tillstånd:               | Allmän tillgänglighet (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Priset                     | [Azure Defender för App Service](azure-defender.md) faktureras så som visas på [sidan med priser](security-center-pricing.md)<br>Faktureringen sker enligt de totala beräknings instanserna i alla planer|
-| App Services planer som stöds: | Alla App Services planer stöds (med ett undantag, se nedan). [Läs mer om app Services planer](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>Azure Functions i förbruknings planen stöds inte. [Läs mer om Azure Functions värd alternativ](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
-| Moln                      | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                                                                                                                                                                                                                 |
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Vilka är fördelarna med Azure Defender för App Service?
 
 När du aktiverar Azure Defender för App Service drar du omedelbart nytta av följande tjänster som erbjuds av den här Azure Defender-planen:
 
@@ -77,19 +89,6 @@ En fullständig lista över Azure App Service aviseringar finns i [referens tabe
 > [!NOTE]
 > Defender kanske inte utlöser Dangling DNS-aviseringar om din anpassade domän inte pekar direkt till en App Service resurs, eller om Defender inte har övervakat trafik till webbplatsen sedan Dangling-DNS-skyddet aktiverades (eftersom det inte finns några loggar för att hjälpa till att identifiera den anpassade domänen).
 
-## <a name="how-to-protect-your-azure-app-service-web-apps-and-apis"></a>Skydda dina Azure App Service-webbappar och API: er
-
-För att skydda din Azure App Service-plan med Azure Defender för App Service:
-
-1. Se till att du har ett App Service plan som är associerat med dedikerade datorer. De planer som stöds anges ovan i [tillgänglighet](#availability).
-
-2. Aktivera **Azure Defender** på din prenumeration enligt beskrivningen i [prissättningen av Azure Security Center](security-center-pricing.md).
-
-    Du kan välja att aktivera enskilda planer i Azure Defender (till exempel Azure Defender för App Service).
-
-    Security Center är internt integrerat med App Service, vilket eliminerar behovet av distribution och onboarding – integreringen är transparent.
-
-
 ## <a name="next-steps"></a>Nästa steg
 
 I den här artikeln har du lärt dig om Azure Defender för App Service. 
@@ -100,4 +99,4 @@ Information om relaterade material finns i följande artiklar:
 - En lista över Azure Defender för App Service-aviseringar finns i [referens tabellen för aviseringar](alerts-reference.md#alerts-azureappserv).
 - Mer information om App Service-planer finns i [App Service planer](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivera Azure Defender](enable-azure-defender.md)

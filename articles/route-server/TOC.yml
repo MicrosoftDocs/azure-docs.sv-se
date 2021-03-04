@@ -6,6 +6,8 @@
       href: overview.md
 - name: Snabbstarter
   items:
+    - name: Konfigurera en Route-Server – Portal
+      href: quickstart-configure-route-server-portal.md
     - name: Konfigurera en Route Server – PowerShell
       href: quickstart-configure-route-server-powershell.md
     - name: Konfigurera en Route Server – CLI

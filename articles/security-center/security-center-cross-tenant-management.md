@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: d76ecc55c2e156199b2db789721946fd1f36de27
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 493a06e85ad6c8260c342cf8167386394835b1c6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922909"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099496"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Hantering av flera innehavare i Security Center
 
@@ -41,7 +41,7 @@ Klicka på filter ikonen i det övre meny fältet och välj prenumerationer frå
 
   ![Filtrera klient organisationer](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Vyer och åtgärder är i princip samma. Här följer några exempel:
+Vyer och åtgärder är i princip samma. Här är några exempel:
 
 - **Hantera säkerhets principer**: från en vy, hantera säkerhets position för många resurser med [principer](tutorial-security-policy.md), vidta åtgärder med säkerhets rekommendationer och samla in och hantera säkerhetsrelaterade data.
 - **Förbättra position för säker Poäng och efterlevnad**: visning av flera klienter gör att du kan visa den övergripande säkerhets position för alla klienter och var och hur du bäst förbättrar den [säkra poängen](secure-score-security-controls.md) och [efterlevnaden position](security-center-compliance-dashboard.md) för var och en av dem.
@@ -51,8 +51,4 @@ Vyer och åtgärder är i princip samma. Här följer några exempel:
 - **Hantera avancerade funktioner för moln skydd och mer**: hantera de olika skydds tjänsterna, till exempel [just-in-Time (JIT) VM-åtkomst](security-center-just-in-time.md), [anpassningsbar nätverks härdning](security-center-adaptive-network-hardening.md), [anpassningsbara program kontroller](security-center-adaptive-application.md)och mycket annat.
  
 ## <a name="next-steps"></a>Nästa steg
-Den här artikeln förklarar hur hantering av flera innehavare fungerar i Security Center. I följande avsnitt kan du lära dig mer om Security Center:
-
-* [Förbättra din säkerhets position med Azure Security Center](security-center-monitoring.md) – lär dig att övervaka hälso tillståndet för dina Azure-resurser.
-* [Azure Security Center FAQ](faq-general.md) – hitta vanliga frågor om att använda tjänsten.
-* [Lär dig om Azure Lighthouse i Enterprise-scenarier](../lighthouse/concepts/enterprise.md) – Upptäck hur Azure Lighthouse kan förenkla hantering av flera innehavare i ett företag som använder flera Azure AD-klienter.
+Den här artikeln förklarar hur hantering av flera innehavare fungerar i Security Center. För att upptäcka hur Azure Lighthouse kan förenkla hantering av flera innehavare i ett företag som använder flera Azure AD-klienter, se [Azure Lighthouse i företags scenarier](../lighthouse/concepts/enterprise.md).

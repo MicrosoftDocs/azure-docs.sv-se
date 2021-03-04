@@ -3,19 +3,19 @@ title: Skapa en ny Azure Application Insights-resurs | Microsoft Docs
 description: Konfigurera Application Insights övervakning manuellt för ett nytt Live-program.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575617"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100941"
 ---
 # <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
 Azure Application Insights visar data om ditt program i en Microsoft Azure *resurs*. Att skapa en ny resurs är därför en del av [att konfigurera Application Insights för att övervaka ett nytt program][start]. När du har skapat din nya resurs kan du hämta dess instrument nyckel och använda den för att konfigurera Application Insights SDK. Instrumentation-nyckeln länkar din telemetri till resursen.
 
 > [!IMPORTANT]
-> Den klassiska Application Insights är föråldrad. Följ de här [anvisningarna om hur du uppgraderar till arbets ytans baserade Application Insights](convert-classic-resource.md).
+> Den [klassiska Application Insights är föråldrad](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/). Följ de här [anvisningarna om hur du uppgraderar till arbets ytans baserade Application Insights](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Logga in på Microsoft Azure
 

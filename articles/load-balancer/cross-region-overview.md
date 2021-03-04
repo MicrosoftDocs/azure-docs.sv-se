@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 64432e2717057c1ff6bb09e0158ddb779d5b5373
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742610"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101383"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Belastningsutjämnare för flera regioner (för hands version)
 
@@ -143,7 +143,7 @@ Belastnings utjämning mellan regioner dirigerar trafiken till lämplig regional
 
 * Det går inte att konfigurera en hälso avsökning för närvarande. En standard hälso avsökning samlar automatiskt in tillgänglighets information om den regionala belastningsutjämnaren var 20: e sekund. 
 
-* Integrering med Azure Kubernetes service (AKS) är inte tillgänglig för tillfället. Förlust av anslutning sker när du distribuerar en belastningsutjämnare för flera regioner med AKS offentlig belastningsutjämnare.
+* Integrering med Azure Kubernetes service (AKS) är inte tillgänglig för tillfället. Förlust av anslutning sker när du distribuerar en belastningsutjämnare för flera regioner med standard belastnings utjämningen med AKS-kluster som distribueras i Server delen.
 
 ## <a name="pricing-and-sla"></a>Priser och service nivå avtal
 Belastnings utjämning för flera regioner delar [service avtalet](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) för standard Load Balancer.

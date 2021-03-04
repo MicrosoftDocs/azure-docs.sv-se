@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/02/2021
-ms.openlocfilehash: 9dc4d17ea95362dd915bd1dfdfd82f4cdec611b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 0a9a4b2de03c62640bb1c643d3ff3da4139d42a4
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692818"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101213"
 ---
 # <a name="maintenance-window-preview"></a>Underhålls period (för hands version)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,29 +32,31 @@ Underhålls perioden är avsedd för företags arbets belastningar som inte är 
 
 Underhålls perioden kan konfigureras med hjälp av Azure Portal, PowerShell, CLI eller Azure API. Den kan konfigureras vid skapande eller för befintliga SQL-databaser och SQL-hanterade instanser.
 
+> [!Important]
+> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort redundansväxling som sker i slutet av åtgärden och som vanligt vis varar i upp till åtta sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av redundans bör du utföra åtgärden utanför det högsta antalet timmar.
+
 ### <a name="gain-more-predictability-with-maintenance-window"></a>Få mer förutsägbart med underhålls perioden
 
 Som standard uppdateras alla Azure SQL-databaser och hanterade instans databaser endast under 17 till 8.00 dygnet för att undvika avbrott i arbets tiden. Lokal tid bestäms av den [Azure-region](https://azure.microsoft.com/global-infrastructure/geographies/) som är värd för resursen. Du kan ändra underhålls uppdateringar ytterligare till en tid som är lämplig för din databas genom att välja mellan två ytterligare underhålls fönster platser:
-
-* **Standard** fönster, 17 till 8.00 lokal tid måndag – söndag 
+ 
 * Vardags fönstret, 10PM till 06:00 lokal tid måndag – torsdag
 * Helg fönstret, 10PM till 06:00 Local Time fredag – söndag
 
-När du har valt underhålls perioden utförs alla planerade underhålls uppdateringar bara under det fönster du väljer.   
+När valet av underhålls fönster har gjorts och tjänst konfigurationen har slutförts sker alla planerade underhålls uppdateringar bara under det fönster du väljer.   
 
 > [!Note]
 > Förutom planerade underhålls uppdateringar kan i sällsynta fall oplanerade underhålls händelser orsaka otillgänglighet. 
 
 ### <a name="cost-and-eligibility"></a>Kostnader och berättigande
 
-Att välja ett underhålls fönster är kostnads fritt för följande prenumerations [erbjudande typer](https://azure.microsoft.com/support/legal/offer-details/): betala per användning, CSP (Cloud Solution Provider), Microsoft Enterprise eller Microsofts kund avtal.
+Att konfigurera och använda underhålls perioden är kostnads fritt för alla [typer](https://azure.microsoft.com/support/legal/offer-details/)av berättigade erbjudanden: betala per användning, CSP (Cloud Solution Provider), Microsoft Enterprise eller Microsofts kund avtal.
 
 > [!Note]
 > Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Till exempel är en prenumeration med [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/)användning, [Azure i Open](https://azure.microsoft.com/en-us/offers/ms-azr-0111p/)och [Visual Studio Enterprise](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) alla Azure-erbjudanden. Varje erbjudande eller plan har olika villkor och fördelar. Ditt erbjudande eller din plan visas i prenumerationens översikt. Mer information om hur du byter prenumeration på ett annat erbjudande finns i [ändra din Azure-prenumeration till ett annat erbjudande](/azure/cost-management-billing/manage/switch-azure-offer).
 
 ## <a name="advance-notifications"></a>Avancerade aviseringar
 
-Underhålls aviseringar kan konfigureras för att meddela kunder om kommande planerade underhålls händelser 24 timmar i förväg, vid tidpunkten för underhållet och när underhålls perioden är slutförd. Mer information finns i [förskotts aviseringar](advance-notifications.md).
+Underhålls aviseringar kan konfigureras för att varna dig om kommande planerade underhålls händelser för dig Azure SQL Database 24 timmar i förväg, vid tidpunkten för underhållet och när underhålls perioden är slutförd. Mer information finns i [förskotts aviseringar](advance-notifications.md).
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -62,6 +64,7 @@ Underhålls aviseringar kan konfigureras för att meddela kunder om kommande pla
 
 Att välja ett annat underhålls fönster än standardinställningen är tillgängligt på alla SLO: erna **utom**:
 * Hyperskala 
+* Instanspooler
 * Äldre Gen4-vCore
 * Basic, S0 och S1 
 * DC, Fsv2, M-serien
@@ -93,7 +96,7 @@ För att få maximal nytta av underhålls perioder kontrollerar du att klient pr
 
 * I Azure SQL Database kan alla anslutningar som använder proxy-anslutningssträngen påverkas av både det valda underhålls fönstret och en underhålls period för gateway Node. Klient anslutningar som använder den rekommenderade principen för att omdirigera anslutningar påverkas dock inte av en gateway-nod underhåll redundans. 
 
-* I en Azure SQL-hanterad instans finns Gateway-noderna [i det virtuella klustret](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) och har samma underhålls fönster som den hanterade instansen, så att du inte kan exponera anslutningar till ytterligare en underhålls period med hjälp av principen för proxy-anslutningen.
+* I Azure SQL-hanterad instans finns Gateway-noderna [i det virtuella klustret](../../azure-sql/managed-instance/connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture) och har samma underhålls fönster som den hanterade instansen, men att använda anslutnings principen för omdirigering rekommenderas fortfarande för att minimera antalet avbrott under underhålls händelsen.
 
 Mer information om klient anslutnings principen i Azure SQL Database finns [Azure SQL Database anslutnings princip](../database/connectivity-architecture.md#connection-policy). 
 

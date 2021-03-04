@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590447"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100635"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Introduktion till Azure Defender för Kubernetes
 
@@ -29,9 +29,9 @@ Hot identifiering på värdnivå för dina Linux AKS-noder är tillgängligt om 
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
-|Priset|**Azure Defender for Kubernetes** faktureras så som det visas på [sidan med priser](security-center-pricing.md)|
+|Priset|**Azure Defender for Kubernetes** faktureras enligt [Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/)|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratören** kan stänga aviseringar.<br>**Säkerhets läsaren** kan visa resultat.|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Vilka är fördelarna med Azure Defender för Kubernetes?
@@ -79,7 +79,7 @@ Om dina kluster redan kör Azure Monitor för behållare agent kan du installera
 I den här artikeln har du lärt dig om Security Center Kubernetes Protection, inklusive Azure Defender för Kubernetes. 
 
 > [!div class="nextstepaction"]
-> [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivera Azure Defender](enable-azure-defender.md)
 
 Information om relaterade material finns i följande artiklar: 
 
