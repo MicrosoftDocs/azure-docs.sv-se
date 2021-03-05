@@ -3,21 +3,25 @@ title: Konfigurera Azure Image Builder-tjänstens behörigheter med Azure CLI
 description: Konfigurera krav för tjänsten Azure VM Image Builder inklusive behörigheter och behörigheter med hjälp av Azure CLI
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695438"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201489"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurera Azure Image Builder-tjänstens behörigheter med Azure CLI
 
-Azure Image Builder-tjänsten kräver konfiguration av behörigheter och behörigheter innan en avbildning skapas. Följande avsnitt beskriver hur du konfigurerar möjliga scenarier med hjälp av Azure CLI.
+När du registrerar dig för (AIB) ger detta behörigheten AIB-tjänst för att skapa, hantera och ta bort en resurs grupp för mellanlagring (IT_ *) och har behörighet att lägga till resurser i den, vilket krävs för avbildnings versionen. Detta görs av ett AIB tjänst huvud namn (SPN) som görs tillgängligt i prenumerationen vid en lyckad registrering.
+
+Om du vill tillåta att Azure VM Image Builder distribuerar avbildningar till antingen de hanterade avbildningarna eller till ett delat avbildnings Galleri måste du skapa en Azure User-tilldelad identitet som har behörighet att läsa och skriva bilder. Om du använder Azure Storage måste du ha behörighet att läsa privata eller offentliga behållare.
+
+Du måste konfigurera behörigheter och privilegier innan du skapar en avbildning. Följande avsnitt beskriver hur du konfigurerar möjliga scenarier med hjälp av Azure CLI.
 
 > [!IMPORTANT]
 > Azure Image Builder är för närvarande en offentlig för hands version.

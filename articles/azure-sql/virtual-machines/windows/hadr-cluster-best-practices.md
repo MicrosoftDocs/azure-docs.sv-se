@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358817"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201778"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Metod tips för klusterkonfiguration (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,9 +47,9 @@ Genom att konfigurera en kvorumresurs kan klustret fortsätta att vara online me
 I följande tabell visas de tillgängliga alternativen i den ordning som rekommenderas för användning med en virtuell Azure-dator, med det disk vittne som du föredrar: 
 
 
-||[Diskvittne](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Molnvittne](/windows-server/failover-clustering/deploy-cloud-witness)  |[Filresursvittne](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
+||[Disk vittne](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Moln vittne](/windows-server/failover-clustering/deploy-cloud-witness)  |[Fil resurs vittne](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**Operativ system som stöds**| Alla |Windows Server 2016 +| Alla|
+|**Operativsystem som stöds**| Alla |Windows Server 2016 +| Alla|
 
 
 ### <a name="disk-witness"></a>Diskvittne
@@ -76,9 +76,7 @@ Information om hur du kommer igång finns i [Konfigurera ett moln vittne](/windo
 
 ### <a name="file-share-witness"></a>Filresursvittne
 
-Ett fil resurs vittne är en SMB-filresurs som vanligt vis konfigureras på en fil server som kör Windows Server. Den upprätthåller kluster informationen i en vittne. log-fil, men lagrar inte en kopia av kluster databasen. I Azure kan du konfigurera en [Azure-filresurs](../../../storage/files/storage-how-to-create-file-share.md) som ska användas som fil resurs vittnet, eller så kan du använda en fil resurs på en separat virtuell dator.
-
-Om du ska använda en Azure-filresurs kan du montera den med samma process som används för att [montera Premium-filresursen](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Ett fil resurs vittne är en SMB-filresurs som vanligt vis konfigureras på en fil server som kör Windows Server. Den upprätthåller kluster informationen i en vittne. log-fil, men lagrar inte en kopia av kluster databasen. I Azure kan du konfigurera en fil resurs på en separat virtuell dator.
 
 Information om hur du kommer igång finns i [Konfigurera ett fil resurs vittne](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
@@ -140,7 +138,7 @@ Tänk på följande begränsningar när du arbetar med FCI-eller tillgänglighet
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines stöder Microsoft koordinator för distribuerad transaktion (MSDTC) på Windows Server 2019 med lagring på klusterdelade volymer (CSV) och [Azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) eller på SQL Server virtuella datorer som använder Azure delade diskar. 
+Azure Virtual Machines stöder Microsoft Distributed Transaction Coordinator (MSDTC) på Windows Server 2019 med lagring på klusterdelade volymer (CSV) och [Azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) eller på SQL Server virtuella datorer som använder Azure delade diskar. 
 
 I Azure Virtual Machines stöds inte MSDTC för Windows Server 2016 eller tidigare med klustrade delade volymer på grund av följande:
 

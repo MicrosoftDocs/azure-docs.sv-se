@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573045"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201438"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Använd Azure Digitals flätas för att uppdatera en Azure Maps inomhus karta
 
@@ -64,7 +64,7 @@ Det här mönstret läser från rummet direkt, i stället för IoT-enheten, vilk
     >[!NOTE]
     >Det finns ett **känt problem** i Cloud Shell som påverkar dessa kommandogrupper: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Du kan lösa problemet genom att köra `az login` i Cloud Shell innan du kör kommandot eller använda det [lokala kommandoradsgränssnittet](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) i stället för Cloud Shell. Mer information finns i [*fel sökning: kända problem i Azure Digitals*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
+    >Du kan lösa problemet genom att köra `az login` i Cloud Shell innan du kör kommandot eller använda det [lokala kommandoradsgränssnittet](/cli/azure/install-azure-cli) i stället för Cloud Shell. Mer information finns i [*fel sökning: kända problem i Azure Digitals*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell).
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"

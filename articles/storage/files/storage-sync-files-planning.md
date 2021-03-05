@@ -1,6 +1,6 @@
 ---
 title: Planera för distribution av Azure File Sync | Microsoft Docs
-description: Planera för en distribution med Azure File Sync, en tjänst som gör att du kan cachelagra ett antal Azure-filresurser på en lokal Windows Server eller virtuell dator i molnet.
+description: Planera för en distribution med Azure File Sync, en tjänst som gör att du kan cachelagra flera Azure-filresurser på en lokal Windows Server eller virtuell dator i molnet.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219484"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202390"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -22,7 +22,7 @@ ms.locfileid: "99219484"
         [![Intervju och demo introduktion till Azure File Sync – Klicka för att spela upp!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
     :::column-end:::
     :::column:::
-        Azure File Sync är en tjänst som gör att du kan cachelagra ett antal Azure-filresurser på en lokal Windows Server eller virtuell dator i molnet. 
+        Azure File Sync är en tjänst som gör att du kan cachelagra flera Azure-filresurser på en lokal Windows Server eller virtuell dator i molnet. 
         
         I den här artikeln beskrivs hur du Azure File Sync koncept och funktioner. När du är bekant med Azure File Sync bör du tänka på följande [Azure File Sync distributions guide](storage-sync-files-deployment-guide.md) för att prova den här tjänsten.        
     :::column-end:::
@@ -52,16 +52,19 @@ Innan du kan skapa en Sync-grupp i en tjänst för synkronisering av lagring må
 En Sync-grupp innehåller en moln slut punkt, en Azure-filresurs och minst en server slut punkt. Serverns slut punkts objekt innehåller de inställningar som konfigurerar kapaciteten för **moln nivåer** , som tillhandahåller cachelagring-funktionen för Azure File Sync. För att synkronisera med en Azure-filresurs måste lagrings kontot som innehåller Azure-filresursen finnas i samma Azure-region som tjänsten för synkronisering av lagring.
 
 > [!Important]  
-> Du kan göra ändringar i alla moln slut punkter eller Server slut punkter i synkroniseringsresursen och låta filerna vara synkroniserade med de andra slut punkterna i den synkroniserade gruppen. Om du gör en ändring i moln slut punkten (Azure-filresursen) direkt måste ändringarna först identifieras av ett Azure File Sync ändrings identifierings jobb. Ett ändrings identifierings jobb initieras bara för en moln slut punkt var 24: e timme. Mer information finns i [Azure Files vanliga frågor och svar](storage-files-faq.md#afs-change-detection).
+> Du kan göra ändringar i namn området för alla moln slut punkter eller Server slut punkter i den synkroniserade gruppen och låta filerna vara synkroniserade med andra slut punkter i Sync-gruppen. Om du gör en ändring i moln slut punkten (Azure-filresursen) direkt måste ändringarna först identifieras av ett Azure File Sync ändrings identifierings jobb. Ett ändrings identifierings jobb initieras bara för en moln slut punkt var 24: e timme. Mer information finns i [Azure Files vanliga frågor och svar](storage-files-faq.md#afs-change-detection).
 
-### <a name="management-guidance"></a>Vägledning för hantering
-När du distribuerar Azure File Sync rekommenderar vi att:
+### <a name="consider-the-count-of-storage-sync-services-needed"></a>Överväg att räkna antalet lagrings Sync-tjänster som behövs
+I ett föregående avsnitt beskrivs kärn resursen som ska konfigureras för Azure File Sync: en *tjänst för synkronisering av lagring*. Det går bara att registrera en Windows Server till en lagrings tjänst för synkronisering. Det är oftast bäst att bara distribuera en enda tjänst för synkronisering av lagring och registrera alla servrar. 
 
-- Distribuera Azure File-resurser 1:1 med Windows-filresurser. Med serverns slut punkt objekt får du en stor flexibilitet för hur du ställer in topologin på Server sidan i den synkroniserade relationen. För att förenkla hanteringen ska du göra sökvägen till Server slut punkten matcha sökvägen till Windows-filresursen. 
+Skapa bara flera tjänster för synkronisering av lagring om du har:
+* distinkta uppsättningar av servrar som aldrig måste utbyta data med varandra. I det här fallet vill du utforma systemet så att det utesluter vissa uppsättningar av servrar som ska synkroniseras med en Azure-filresurs som redan används som en moln slut punkt i en Sync-grupp i en annan tjänst för synkronisering av lagring. Ett annat sätt att titta på detta är att Windows-servrar som har registrerats för en annan tjänst för synkronisering av lagring inte kan synkronisera med samma Azure-filresurs.
+* ett behov av att ha mer registrerade servrar eller synkroniserade grupper än en enskild tjänst för synkronisering av lagrings enheter kan stödja. Granska [Azure File Sync skalnings mål](storage-files-scale-targets.md#azure-file-sync-scale-targets) för mer information.
 
-- Använd så få tjänster som möjligt för Storage-synkronisering. Detta fören klar hanteringen när du har synkronisera grupper som innehåller flera Server slut punkter, eftersom en Windows Server bara kan registreras till en lagrings tjänst för synkronisering i taget. 
+## <a name="plan-for-balanced-sync-topologies"></a>Planera för balanserade topologier för synkronisering
+Innan du distribuerar några resurser är det viktigt att planera vad du ska synkronisera på en lokal server, med vilken Azure-filresurs. Genom att göra en plan får du hjälp att avgöra hur många lagrings konton, Azure-filresurser och vilka synkroniserings resurser du behöver. Dessa överväganden är fortfarande relevanta, även om dina data inte finns på en Windows-Server eller på den server som du vill använda lång sikt. [Avsnittet migrering](#migration) kan hjälpa dig att fastställa lämpliga sökvägar för din situation.
 
-- Betala till ett lagrings kontos IOPS-begränsningar när du distribuerar Azure-filresurser. Vi rekommenderar att du mappar fil resurser 1:1 med lagrings konton, men det kanske inte alltid är möjligt på grund av olika begränsningar och begränsningar, både från din organisation och från Azure. Om det inte går att ha en enda fil resurs som har distribuerats i ett lagrings konto bör du överväga vilka resurser som ska vara hög aktiva och vilka resurser som är mindre aktiva för att säkerställa att de hetaste fil resurserna inte placeras i samma lagrings konto tillsammans.
+[!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
 ## <a name="windows-file-server-considerations"></a>Windows fil Server-överväganden
 Om du vill aktivera Sync-funktionen på Windows Server måste du installera den Azure File Sync nedladdnings bara agenten. Azure File Sync agenten innehåller två huvud komponenter: `FileSyncSvc.exe` , den bakgrunds fönster tjänst som ansvarar för att övervaka ändringar på Server slut punkter och initiera svarssessioner, och `StorageSync.sys` ett fil system filter som aktiverar moln nivåer och snabb haveri beredskap.  
@@ -203,7 +206,7 @@ Azure File Sync stöder inte datadeduplicering och moln nivåer på samma volym 
 - Om datadeduplicering har Aktiver ATS på en volym efter att moln nivån har Aktiver ATS optimerar optimerings jobbet för den inledande dedupliceringen filer på volymen som inte redan är i nivå och kommer att ha följande påverkan på moln nivåer:
     - Principen för ledigt utrymme kommer att fortsätta att göra filer på nivå av filer efter det lediga utrymmet på volymen med hjälp av termisk karta.
     - Datum policyn hoppar över nivåer av filer som annars kan ha kvalificerats för lagrings nivåer på grund av att optimerings jobbet för deduplicering har åtkomst till filerna.
-- För pågående optimerings jobb för deduplicering kommer moln nivåer med datum policyn att förskjutas av [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) -inställningen för datadeduplicering, om filen inte redan är i nivå. 
+- För pågående optimerings jobb för deduplicering kommer moln nivåer med datum policyn att förskjutas av [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps&preserve-view=true) -inställningen för datadeduplicering, om filen inte redan är i nivå. 
     - Exempel: om MinimumFileAgeDays-inställningen är sju dagar och den datum policyn för molnnivå är 30 dagar, kommer datum principen att nivånamn efter 37 dagar.
     - Obs! när en fil har en nivå av Azure File Sync hoppar optimerings jobbet för deduplicering över filen.
 - Om en server som kör Windows Server 2012 R2 med Azure File Sync-agenten installerad uppgraderas till Windows Server 2016 eller Windows Server 2019, måste följande steg utföras för att stödja datadeduplicering och moln nivåer på samma volym:  
@@ -320,15 +323,9 @@ Följ processen i [det här dokumentet](https://azure.microsoft.com/global-infra
 > Redundant lagring för geo-redundanta och geo-zoner har möjlighet att manuellt redundansväxla lagring till den sekundära regionen. Vi rekommenderar att du inte gör detta utanför en katastrof när du använder Azure File Sync på grund av den ökade sannolikheten för data förlust. I händelse av en katastrof där du vill initiera en manuell redundansväxling av lagring måste du öppna ett support ärende med Microsoft för att få Azure File Sync att återuppta synkroniseringen med den sekundära slut punkten.
 
 ## <a name="migration"></a>Migrering
-Om du har en befintlig Windows-fil Server kan Azure File Sync installeras direkt på plats, utan att behöva flytta data till en ny server. Om du planerar att migrera till en ny Windows-filserver som en del av att anta Azure File Sync finns det flera olika metoder för att flytta data över:
+Om du har en befintlig Windows-2012R2 eller senare kan Azure File Sync installeras direkt på plats utan att du behöver flytta data till en ny server. Om du planerar att migrera till en ny Windows-filserver som en del av att anta Azure File Sync, eller om dina data för närvarande finns på en nätverksansluten lagrings plats (NAS) finns det flera möjliga migrerings metoder att använda Azure File Sync med dessa data. Vilken metod för migrering som du bör välja beror på var dina data finns. 
 
-- Skapa server slut punkter för din gamla fil resurs och den nya fil resursen och låt Azure File Sync synkronisera data mellan server slut punkterna. Fördelen med den här metoden är att det är mycket enkelt att överprenumerera lagringen på den nya fil servern, eftersom Azure File Sync är beroende av moln nivåer. När du är klar kan du klippa över slutanvändare till fil resursen på den nya servern och ta bort den gamla fil resursens Server slut punkt.
-
-- Skapa bara en server slut punkt på den nya fil servern och kopiera data till från den gamla fil resursen med hjälp av `robocopy` . Beroende på topologin för fil resurser på din nya server (hur många resurser du har på varje volym, hur det kostar varje volym osv.) kan du tillfälligt behöva etablera ytterligare lagrings utrymme eftersom det förväntas att `robocopy` från den gamla servern till den nya servern i det lokala data centret kommer att bli snabbare än Azure File Sync att flytta data till Azure.
-
-Du kan också använda Data Box-enhet för att migrera data till en Azure File Sync-distribution. I de flesta fall, när kunder vill använda Data Box-enhet för att mata in data, gör de det eftersom de tror att de kommer att öka hastigheten på sin distribution, eller så kan de hjälpa till med begränsade bandbredds scenarier. Även om det är sant att när du använder en Data Box-enhet för att mata in data i din Azure File Sync-distribution minskar bandbredds användningen, kommer det förmodligen att gå snabbare för de flesta scenarier för att kunna använda en data uppladdning online via en av de metoder som beskrivs ovan. Mer information om hur du använder Data Box-enhet för att mata in data i din Azure File Sync-distribution finns i [migrera data till Azure File Sync med Azure Data Box](storage-sync-offline-data-transfer.md).
-
-Vanliga misstag som kunder gör när de migrerar data till sin nya Azure File Sync-distribution är att kopiera data direkt till Azure-filresursen i stället för på sina Windows-filservrar. Även om Azure File Sync kommer att identifiera alla nya filer på Azure-filresursen och synkronisera tillbaka dem till dina Windows-filresurser, är detta normalt betydligt långsammare än att läsa in data via Windows-filservern. När du använder Azure Copy-verktyg, till exempel AzCopy, är det viktigt att använda den senaste versionen. Se [tabellen fil kopierings verktyg](storage-files-migration-overview.md#file-copy-tools) för att få en översikt över Azure Copy-verktyg så att du kan kopiera alla viktiga metadata för en fil, till exempel tidsstämplar och ACL: er.
+Läs artikeln om [migrering av Azure File Sync och Azure-filresursen](storage-files-migration-overview.md) där du hittar detaljerad vägledning för ditt scenario.
 
 ## <a name="antivirus"></a>Antivirus
 Eftersom antivirus programmet fungerar genom att söka igenom filer efter känd skadlig kod kan ett antivirus program orsaka återkallande av nivåbaserade filer, vilket resulterar i högt utgående kostnader. I version 4,0 och senare av Azure File Sync agenten har filer på nivån säker Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS angett. Vi rekommenderar att du rådfrågar din program varu leverantör för att lära dig hur du konfigurerar lösningen för att hoppa över att läsa filer med den här attributuppsättningen (många gör det automatiskt). 
@@ -342,6 +339,9 @@ Microsofts interna antivirus lösningar, Windows Defender och System Center Endp
 Om moln skiktning är aktiverat ska lösningar som direkt säkerhetskopierar Server slut punkten eller en virtuell dator där Server slut punkten finns inte användas. Moln nivåer gör att endast en delmängd av dina data lagras på Server slut punkten, med den fullständiga data uppsättningen som finns i Azure-filresursen. Beroende på vilken säkerhets kopierings lösning som används kommer filer i nivå antingen att hoppas över och inte säkerhets kopie ras (eftersom de har attributet FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS), eller så kommer de att återkallas till disk, vilket resulterar i höga utgående kostnader. Vi rekommenderar att du använder en lösning för säkerhets kopiering i molnet för att säkerhetskopiera Azure-filresursen direkt. Mer information finns i [om säkerhets kopiering av Azure-filresurser](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) eller kontakta säkerhets kopierings leverantören för att se om de stöder säkerhets kopiering av Azure-filresurser.
 
 Om du föredrar att använda en lokal lösning för säkerhets kopiering ska säkerhets kopieringar utföras på en server i den synkroniserade grupp där moln nivå inaktive ras. När du utför en återställning använder du alternativen på volym-eller fil nivå återställning. Filer som återställs med alternativet Återställning på filnivå synkroniseras till alla slut punkter i Sync-gruppen och befintliga filer ersätts med den version som återställs från säkerhets kopian.  Återställningar på volym nivå ersätter inte nyare fil versioner i Azure-filresursen eller andra server slut punkter.
+
+> [!WARNING]
+> Robocopy/B-växeln stöds inte med Azure File Sync. Om du använder Robocopy/B-växeln med en Azure File Sync Server slut punkt när källan kan leda till skadade filer.
 
 > [!Note]  
 > Återställning utan operativ system (BMR) kan orsaka oväntade resultat och stöds inte för närvarande.

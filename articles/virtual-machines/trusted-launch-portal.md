@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fca11ce1cfa09fb680c2b288e40fa5f51337bdb8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200792"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Distribuera en virtuell dator med Trusted Launch Enabled (för hands version)
 
@@ -37,7 +37,7 @@ Skapa en virtuell dator med betrodd start aktiverat.
 1. På sidan **virtuella datorer** väljer du **Lägg till** och väljer sedan **virtuell dator**.
 1. Under **projekt information** kontrollerar du att rätt prenumeration har valts.
 1. Under **resurs grupp** väljer du **Skapa nytt** och skriver ett namn för din resurs grupp eller väljer en befintlig resurs grupp i list rutan.
-1. Under **instans information** anger du ett namn för namnet på den virtuella datorn och väljer en region som stöder betrodd start.
+1. Under **instans information** anger du ett namn för namnet på den virtuella datorn och väljer en region som stöder [betrodd start](trusted-launch.md#public-preview-limitations).
 1. Under **bild** väljer du en [avbildning som stöder betrodd start](trusted-launch.md#public-preview-limitations). Du kanske bara ser gen 1-versionen av avbildningen, som du kan gå vidare till nästa steg.
 1. Växla över till fliken **Avancerat** genom att markera den överst på sidan.
 1. Rulla ned till avsnittet **VM generation** och välj sedan **gen 2**.
@@ -140,7 +140,7 @@ För att få vTPM och säkra start rekommendationer för betrodda virtuella dato
 
 I vissa fall kan du behöva signera saker för UEFI säker start.  Du kan till exempel behöva gå igenom [hur du ska logga in saker för säker start](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) för Ubuntu. I dessa fall måste du ange MOK-verktyget registrera nycklar för den virtuella datorn. För att göra detta måste du använda Azures serie konsol för att få åtkomst till MOK-verktyget.
 
-1. Aktivera Azures serie konsol för Linux.
+1. Aktivera Azures serie konsol för Linux. Mer information finns i [serie konsol för Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Logga in på [Azure Portal](https://portal.azure.com).
 1. Sök efter **virtuella datorer** och välj den virtuella datorn i listan.
 1. I den vänstra menyn, under **support + fel sökning**, väljer du **seriell konsol**. En sida öppnas till höger med serie konsolen.

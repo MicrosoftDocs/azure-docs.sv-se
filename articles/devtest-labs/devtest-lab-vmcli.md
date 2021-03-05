@@ -3,12 +3,12 @@ title: Skapa och hantera virtuella datorer i DevTest Labs med Azure CLI
 description: Lär dig hur du använder Azure DevTest Labs för att skapa och hantera virtuella datorer med Azure CLI
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482844"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201472"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Skapa och hantera virtuella datorer med DevTest Labs med Azure CLI
 Den här snabb starten hjälper dig att skapa, starta, ansluta, uppdatera och rensa en utvecklings dator i labbet. 
@@ -153,4 +153,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Se följande innehåll: [Azure CLI-dokumentation för Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Se följande innehåll: [Azure CLI-dokumentation för Azure DevTest Labs](/cli/azure/lab). 

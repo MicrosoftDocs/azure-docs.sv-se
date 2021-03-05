@@ -3,12 +3,12 @@ title: Azure Event Grid prenumerations schema
 description: I den här artikeln beskrivs egenskaperna för att prenumerera på en händelse med Azure Event Grid. Event Grid prenumerations schema.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119080"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199959"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid prenumerations schema
 
@@ -25,7 +25,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 Händelse prenumerationens namn måste vara 3-64 tecken långt och får bara innehålla a-z, A-Z, 0-9 och "-". I artikeln beskrivs egenskaperna och schemat för bröd texten i begäran.
- 
+ 
 ## <a name="event-subscription-properties"></a>Egenskaper för händelse prenumeration
 
 | Egenskap | Typ | Beskrivning |
@@ -48,6 +48,7 @@ Händelse prenumerationens namn måste vara 3-64 tecken långt och får bara inn
 | subjectBeginsWith | sträng | Ett prefix-match-filter till ämnes fältet i händelse meddelandet. Standardvärdet eller den tomma strängen matchar alla. | 
 | subjectEndsWith | sträng | Ett suffix matchnings filter till ämnes fältet i händelse meddelandet. Standardvärdet eller den tomma strängen matchar alla. |
 | isSubjectCaseSensitive | sträng | Kontrollerar Skift läges känslig matchning för filter. |
+| enableAdvancedFilteringOnArrays | boolean | Aktiverar användning av matriser för nycklar i avancerad filtrering. Mer information finns i [avancerad filtrering](event-filtering.md#advanced-filtering). |
 
 
 ## <a name="example-subscription-schema"></a>Exempel på prenumerations schema

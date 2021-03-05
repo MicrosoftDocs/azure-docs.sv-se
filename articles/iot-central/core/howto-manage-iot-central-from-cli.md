@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: 6496e944d30724fe9e8db7168f9c9cb1552dcd1b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: d414b86ff81a33f9e818a0a28031e73d88cabec2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "98203344"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202271"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Hantera IoT Central från Azure CLI
 
@@ -26,13 +26,13 @@ I stället för att skapa och hantera IoT Central-program på webbplatsen för [
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Om du behöver köra CLI-kommandon i en annan Azure-prenumeration kan du läsa mer i [ändra den aktiva prenumerationen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription&preserve-view=true).
+ - Om du behöver köra CLI-kommandon i en annan Azure-prenumeration kan du läsa mer i [ändra den aktiva prenumerationen](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription).
 
 ## <a name="create-an-application"></a>Skapa ett program
 
 [!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
-Använd kommandot [AZ IoT Central app Create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create&preserve-view=true) för att skapa ett IoT Central-program i din Azure-prenumeration. Exempel:
+Använd kommandot [AZ IoT Central app Create](/cli/azure/iot/central/app#az-iot-central-app-create) för att skapa ett IoT Central-program i din Azure-prenumeration. Exempel:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -65,11 +65,11 @@ Dessa kommandon skapar först en resurs grupp i regionen USA, östra för progra
 
 ## <a name="view-your-applications"></a>Visa dina program
 
-Använd kommandot [AZ IoT Central app List](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-list&preserve-view=true) för att visa en lista över IoT Central program och visa metadata.
+Använd kommandot [AZ IoT Central app List](/cli/azure/iot/central/app#az-iot-central-app-list) för att visa en lista över IoT Central program och visa metadata.
 
 ## <a name="modify-an-application"></a>Ändra ett program
 
-Använd kommandot [AZ IoT Central app Update](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-update&preserve-view=true) för att uppdatera metadata för ett IoT Central program. Om du till exempel vill ändra visnings namnet för ditt program:
+Använd kommandot [AZ IoT Central app Update](/cli/azure/iot/central/app#az-iot-central-app-update) för att uppdatera metadata för ett IoT Central program. Om du till exempel vill ändra visnings namnet för ditt program:
 
 ```azurecli-interactive
 az iot central app update --name myiotcentralapp \
@@ -79,7 +79,7 @@ az iot central app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Ta bort ett program
 
-Använd kommandot [AZ IoT Central app Delete](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete&preserve-view=true) för att ta bort ett IoT Central-program. Exempel:
+Använd kommandot [AZ IoT Central app Delete](/cli/azure/iot/central/app#az-iot-central-app-delete) för att ta bort ett IoT Central-program. Exempel:
 
 ```azurecli-interactive
 az iot central app delete --name myiotcentralapp \

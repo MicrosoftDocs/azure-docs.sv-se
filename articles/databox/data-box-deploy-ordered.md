@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797622"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201897"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Självstudie: Beställa Azure Data Box
 
@@ -413,7 +413,7 @@ Utför följande steg med Azure CLI för att beställa en enhet:
 
 1. Skriv ned inställningarna för din Data Box-enhets ordning. Inställningarna omfattar din personliga/affärs information, prenumerations namn, enhets information och information om leverans. Du måste använda de här inställningarna som parametrar när du kör CLI-kommandot för att skapa Data Box-enhets ordningen. I följande tabell visas de parameter inställningar som används för `az databox job create` :
 
-   | Inställning (parameter) | Description |  Exempelvärde |
+   | Inställning (parameter) | Beskrivning |  Exempelvärde |
    |---|---|---|
    |resource-group| Använd ett befintligt eller skapa ett nytt. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |name| Namnet på den ordning som du skapar. | "mydataboxorder"|
@@ -437,7 +437,7 @@ Utför följande steg med Azure CLI för att beställa en enhet:
    |DocumentDB| Frågesträngen JMESPath. Mer information finns i [JMESPath](http://jmespath.org/). | --fråga <string>|
    |utförlig| Inkludera utförlig loggning. | --utförlig |
 
-2. I kommando tolken för Choice eller Terminal kör du [AZ data Box Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) för att skapa din Azure Data boxs order.
+2. I kommando tolken för Choice eller Terminal kör du [AZ data Box Create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) för att skapa din Azure Data boxs order.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -532,7 +532,7 @@ Utför följande steg med Azure PowerShell för att beställa en enhet:
 
 2. Skriv ned inställningarna för din Data Box-enhets ordning. Inställningarna omfattar din personliga/affärs information, prenumerations namn, enhets information och information om leverans. Du måste använda de här inställningarna som parametrar när du kör PowerShell-kommandot för att skapa Data Box-enhets ordningen. I följande tabell visas de parameter inställningar som används för [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob).
 
-    | Inställning (parameter) | Description |  Exempelvärde |
+    | Inställning (parameter) | Beskrivning |  Exempelvärde |
     |---|---|---|
     |ResourceGroupName [krävs]| Använd en befintlig resurs grupp. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
     |Namn [obligatoriskt]| Namnet på den ordning som du skapar. | "mydataboxorder"|
@@ -605,7 +605,7 @@ Microsoft förbereder sedan enheten och skickar den via en regional transportör
 
 ### <a name="track-a-single-order"></a>Spåra en enskild order
 
-För att få spårnings information om en enskild, befintlig Azure Data Boxs ordning, kör [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Kommandot visar information om ordningen, till exempel, men inte begränsat till: namn, resurs grupp, spårnings information, prenumerations-ID, kontakt information, leverans typ och enhets-SKU.
+För att få spårnings information om en enskild, befintlig Azure Data Boxs ordning, kör [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) . Kommandot visar information om ordningen, till exempel, men inte begränsat till: namn, resurs grupp, spårnings information, prenumerations-ID, kontakt information, leverans typ och enhets-SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -646,7 +646,7 @@ För att få spårnings information om en enskild, befintlig Azure Data Boxs ord
 
 ### <a name="list-all-orders"></a>Lista alla beställningar
 
-Om du har ordnat flera enheter kan du köra [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) för att visa alla dina Azure Data boxs beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
+Om du har ordnat flera enheter kan du köra [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) för att visa alla dina Azure Data boxs beställningar. Kommandot visar alla beställningar som tillhör en speciell resurs grupp. Visas också i utdata: order namn, leverans status, Azure-region, leverans typ, order status. Annullerade order ingår också i listan.
 Kommandot visar även tidsstämplar för varje order.
 
 ```azurecli
@@ -765,7 +765,7 @@ Om du vill ta bort en annullerad order går du till **Översikt** och väljer **
 
 ### <a name="cancel-an-order"></a>Annullera en beställning
 
-Om du vill avbryta en Azure Data Boxs ordning kör du [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Du måste ange orsaken till annulleringen av ordern.
+Om du vill avbryta en Azure Data Boxs ordning kör du [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) . Du måste ange orsaken till annulleringen av ordern.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -802,7 +802,7 @@ Om du vill avbryta en Azure Data Boxs ordning kör du [`az databox job cancel`](
 
 ### <a name="delete-an-order"></a>Ta bort en order
 
-Om du har avbrutit en Azure Data Box order kan du köra [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) för att ta bort ordern.
+Om du har avbrutit en Azure Data Box order kan du köra [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) för att ta bort ordern.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

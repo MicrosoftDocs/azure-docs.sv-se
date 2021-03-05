@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588802"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200030"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisera real tids sensor data från din Azure IoT Hub i ett webb program
 
@@ -153,7 +153,7 @@ Du bör också se utdata i-konsolen som visar de meddelanden som din webbapp ski
 
 [Web Apps funktionen i Azure App Service](../app-service/overview.md) tillhandahåller en PaaS (Platform as a Service) för att vara värd för webb program. Webb program som finns i Azure App Service kan dra nytta av kraftfulla Azure-funktioner som ytterligare säkerhet, belastnings utjämning och skalbarhet samt Azure-och partner DevOps-lösningar som kontinuerlig distribution, paket hantering och så vidare. Azure App Service stöder webb program som utvecklats på många populära språk och distribueras i Windows-eller Linux-infrastruktur.
 
-I det här avsnittet etablerar du en webbapp i App Service och distribuerar din kod till den med hjälp av Azure CLI-kommandon. Du hittar information om de kommandon som används i [AZ webapp](/cli/azure/webapp?view=azure-cli-latest) -dokumentationen. Innan du börjar ska du kontrol lera att du har slutfört stegen för att [lägga till en resurs grupp i IoT-hubben](#add-a-consumer-group-to-your-iot-hub), [Hämta en tjänst anslutnings sträng för IoT Hub](#get-a-service-connection-string-for-your-iot-hub)och [Hämta webbappen från GitHub](#download-the-web-app-from-github).
+I det här avsnittet etablerar du en webbapp i App Service och distribuerar din kod till den med hjälp av Azure CLI-kommandon. Du hittar information om de kommandon som används i [AZ webapp](/cli/azure/webapp) -dokumentationen. Innan du börjar ska du kontrol lera att du har slutfört stegen för att [lägga till en resurs grupp i IoT-hubben](#add-a-consumer-group-to-your-iot-hub), [Hämta en tjänst anslutnings sträng för IoT Hub](#get-a-service-connection-string-for-your-iot-hub)och [Hämta webbappen från GitHub](#download-the-web-app-from-github).
 
 1. En [App Service plan](../app-service/overview-hosting-plans.md) definierar en uppsättning beräknings resurser för en app som är värd för App Service som ska köras. I den här självstudien använder vi den utvecklings-/kostnads fria nivån som värd för webbappen. Med den kostnads fria nivån körs din webbapp på delade Windows-resurser med andra App Service appar, inklusive appar från andra kunder. Azure erbjuder också App Service planer för att distribuera webbappar på Linux Compute-resurser. Du kan hoppa över det här steget om du redan har ett App Service plan som du vill använda.
 

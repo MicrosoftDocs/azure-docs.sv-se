@@ -3,12 +3,12 @@ title: Använd kommando rads verktyg för att starta och stoppa virtuella datore
 description: Lär dig hur du använder kommando rads verktyg för att starta och stoppa virtuella datorer i Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476424"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201200"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Använd kommando rads verktyg för att starta och stoppa Azure DevTest Labs virtuella datorer
 Den här artikeln visar hur du använder Azure PowerShell eller Azure CLI för att starta eller stoppa virtuella datorer i ett labb i Azure DevTest Labs. Du kan skapa PowerShell/CLI-skript för att automatisera dessa åtgärder. 
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) är ett annat sätt att automatisera starten och stopp av virtuella datorer med DevTest Labs. Azure CLI kan [installeras](/cli/azure/install-azure-cli?view=azure-cli-latest) på olika operativ system. Följande skript innehåller kommandon för att starta och stoppa en virtuell dator i ett labb. 
+[Azure CLI](/cli/azure/get-started-with-azure-cli) är ett annat sätt att automatisera starten och stopp av virtuella datorer med DevTest Labs. Azure CLI kan [installeras](/cli/azure/install-azure-cli) på olika operativ system. Följande skript innehåller kommandon för att starta och stoppa en virtuell dator i ett labb. 
 
 ```azurecli
 # Sign in to Azure

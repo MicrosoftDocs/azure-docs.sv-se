@@ -7,18 +7,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: f731236b235883f019c74ef0b32f5066ca5b7514
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200945"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurera utvecklings miljön för distributions skript i ARM-mallar
 
 Lär dig hur du skapar en utvecklings miljö för att utveckla och testa distributions skript för ARM-mallar med en distributions skript avbildning. Du kan antingen skapa en [Azure Container instance](../../container-instances/container-instances-overview.md) eller använda [Docker](https://docs.docker.com/get-docker/). Båda alternativen beskrivs i den här artikeln.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="azure-powershell-container"></a>Azure PowerShell behållare
 
@@ -357,7 +357,7 @@ Standardvärdet för monterings Sök vägen är `/mnt/azscripts/azscriptinput` .
 Standard behållar avbildningen som anges i mallen är **MCR.Microsoft.com/Azure-CLI:2.9.1**. Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
 > [!IMPORTANT]
-> Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för ett distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Om du använder en version som inte stöds visar fel meddelandet de versioner som stöds.
+> Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för ett distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli). Om du använder en version som inte stöds visar fel meddelandet de versioner som stöds.
 
 Mallen pausar behållar instansen efter 1 800 sekunder. Du har 30 minuter innan behållar instansen hamnar i ett Terminal-tillstånd och sessionen avslutas.
 

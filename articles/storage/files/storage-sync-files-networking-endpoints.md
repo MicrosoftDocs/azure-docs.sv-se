@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673865"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201608"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurera nätverksslutpunkter i Azure File Sync
 Azure Files och Azure File Sync ger två huvud typer av slut punkter för åtkomst till Azure-fil resurser: 
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>Skapa den privata slut punkten för lagrings-synkronisering
+### <a name="create-the-storage-sync-service-private-endpoint"></a>Skapa privat slut punkt för synkroniseringstjänsten för lagring
 > [!Important]  
 > Du måste använda Azure File Sync agent version 10,1 eller senare för att kunna använda privata slut punkter i resursens synkroniseringstjänst för lagring. Agent versioner före 10,1 stöder inte privata slut punkter på tjänsten för synkronisering av lagring. Alla tidigare agent versioner stöder privata slut punkter på lagrings konto resursen.
 
@@ -597,19 +597,44 @@ För att inaktivera åtkomst till lagrings tjänstens offentliga slut punkt stä
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Azure CLI har inte stöd för att ange `incomingTrafficPolicy` egenskapen för synkroniseringstjänsten för lagring. Välj fliken Azure PowerShell för att få anvisningar om hur du inaktiverar den offentliga slut punkten för Storage Sync-tjänsten.
 
 ---
+
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy hjälper till att upprätthålla organisations standarder och utvärdera efterlevnaden mot dessa standarder i stor skala. Azure Files och Azure File Sync visar flera användbara nätverks principer för granskning och reparationer som hjälper dig att övervaka och automatisera distributionen.
+
+Principer granskar din miljö och varnar dig om dina lagrings konton eller lagrings Sync-tjänster avviker från det definierade beteendet. Till exempel om en offentlig slut punkt är aktive rad när din princip har ställts in för att låta de offentliga slut punkterna vara inaktiverade. Med ändra/distribuera principer får du ett steg ytterligare och proaktivt ändra en resurs (till exempel tjänsten för synkronisering av lagring) eller distribuera resurser (t. ex. privata slut punkter) för att anpassa sig efter principerna.
+
+Följande fördefinierade principer är tillgängliga för Azure Files och Azure File Sync:
+
+| Action | Tjänst | Villkor | Principnamn |
+|-|-|-|-|
+| Granska | Azure Files | Lagrings kontots offentliga slut punkt är aktive rad. Mer information finns i [inaktivera åtkomst till den offentliga slut punkten för lagrings kontot](#disable-access-to-the-storage-account-public-endpoint) . | Lagrings konton bör begränsa nätverks åtkomsten |
+| Granska | Azure File Sync | Den offentliga slut punkten för Storage Sync-tjänsten är aktive rad. Mer information finns i [inaktivera åtkomst till den offentliga slut punkten för Storage Sync-tjänsten](#disable-access-to-the-storage-sync-service-public-endpoint) . | Åtkomst till offentligt nätverk ska inaktive ras för Azure File Sync |
+| Granska | Azure Files | Lagrings kontot måste ha minst en privat slut punkt. Mer information finns i [skapa lagrings kontots privata slut punkt](#create-the-storage-account-private-endpoint) . | Lagrings kontot bör använda en anslutning för privat anslutning |
+| Granska | Azure File Sync | Tjänsten Storage Sync kräver minst en privat slut punkt. Mer information finns i [skapa en privat slut punkt för Storage Sync-tjänsten](#create-the-storage-sync-service-private-endpoint) . | Azure File Sync ska använda privat länk |
+| Ändra | Azure File Sync | Inaktivera den offentliga slut punkten för synkroniseringstjänsten för lagring. | Ändra-konfigurera Azure File Sync för att inaktivera offentlig nätverks åtkomst |
+| Distribuera | Azure File Sync | Distribuera en privat slut punkt för lagrings tjänsten för synkronisering. | Konfigurera Azure File Sync med privata slut punkter |
+| Distribuera | Azure File Sync | Distribuera en A-post till privatelink.afs.azure.net DNS-zon. | Konfigurera Azure File Sync att använda privata DNS-zoner |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>Konfigurera en distributions princip för privat slut punkt
+Om du vill konfigurera en distributions princip för en privat slut punkt går du till [Azure Portal](https://portal.azure.com/)och söker efter **princip**. Azure Policy Center bör vara ett bästa resultat. Navigera till **redigerings**  >  **definitioner** i princip Centers innehålls förteckning. **Definitions** fönstret som innehåller de fördefinierade principerna i alla Azure-tjänster. Om du vill hitta en viss princip väljer du **lagrings** kategori i kategori filtret eller söker efter **Konfigurera Azure File Sync med privata slut punkter**. Välj **...** och **tilldela** för att skapa en ny princip från definitionen.
+
+På bladet **grundläggande** i guiden **tilldela princip** kan du ange en undantags lista för en omfattning, resurs eller resurs grupp och ge principen ett eget namn som hjälper dig att särskilja det. Du behöver inte ändra dessa för att principen ska fungera, men du kan om du vill göra ändringar. Välj **Nästa** för att gå vidare till sidan **parametrar** . 
+
+På bladet **parametrar** väljer du **...** bredvid List rutan **privateEndpointSubnetId** och väljer det virtuella nätverk och undernät där de privata slut punkterna för dina resurser för synkroniseringstjänst för lagring ska distribueras. Den resulterande guiden kan ta flera sekunder att läsa in tillgängliga virtuella nätverk i din prenumeration. Välj lämpligt virtuellt nätverk/undernät för din miljö och klicka på **Välj**. Välj **Nästa** för att gå vidare till **reparations** bladet.
+
+För att den privata slut punkten ska kunna distribueras när en tjänst för synkronisering av lagring utan en privat slut punkt identifieras måste du välja **åtgärden Skapa en reparation** på **reparations** sidan. Slutligen väljer du **Granska + skapa** för att granska princip tilldelningen och **skapa** för att skapa den.
+
+Den resulterande princip tilldelningen utförs regelbundet och kan inte köras omedelbart efter att den har skapats.
 
 ## <a name="see-also"></a>Se även
 - [Planera för distribution av Azure File Sync](storage-sync-files-planning.md)

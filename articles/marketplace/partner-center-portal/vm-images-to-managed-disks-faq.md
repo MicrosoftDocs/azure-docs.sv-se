@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.openlocfilehash: 814a4012ace95e84e75bcb4071c549822b2b0633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: kriti-ms
+ms.author: krsh
+ms.openlocfilehash: e3d20b5e9206cf05d749f75982a07937a8caf078
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182436"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201098"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Vi flyttar virtuella dator avbildningar på Azure Marketplace till hanterad disk lagring
 
@@ -29,8 +29,6 @@ Om du har några frågor kan du [kontakta oss](https://support.microsoft.com/sup
 ### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Skulle användarna av mina VM-avbildningar uppleva ett avbrott?
 
 Användare av de virtuella dator avbildningarna kommer inte att drabbas av avbrott. 
-
-I den första fasen kommer vi bara att flytta VM-avbildningar som inte har några virtuella datorer som körs. Eftersom det inte finns några användare för de här avbildningarna påverkas ingen påverkan. För de efterföljande faserna påverkas inte användarna.
 
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Hur lång tid tar det för processen att slutföras?
 

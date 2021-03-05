@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279225"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201064"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Självstudie: snabbt skala och skydda ett webb program med hjälp av Azures frontend och brand vägg för Azure Web Application (WAF)
 
@@ -36,7 +36,7 @@ I den här självstudien får du lära dig att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Anvisningarna i den här självstudien använder Azure CLI. [Visa den här guiden](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) för att komma igång med Azure CLI.
+- Anvisningarna i den här självstudien använder Azure CLI. [Visa den här guiden](/cli/azure/get-started-with-azure-cli) för att komma igång med Azure CLI.
 
   > [!TIP] 
   > Ett enkelt och snabbt sätt att komma igång med Azure CLI är med [bash i Azure Cloud Shell](../cloud-shell/quickstart.md).
@@ -48,7 +48,7 @@ I den här självstudien får du lära dig att:
    ```
 
 > [!NOTE] 
-> Mer information om de kommandon som används i den här självstudien finns i [Azure CLI-referens för front dörren](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
+> Mer information om de kommandon som används i den här självstudien finns i [Azure CLI-referens för front dörren](/cli/azure/ext/front-door).
 
 ## <a name="create-an-azure-front-door-resource"></a>Skapa en resurs för Azures frontend-dörr
 
@@ -56,9 +56,9 @@ I den här självstudien får du lära dig att:
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-`--backend-address`: Det fullständigt kvalificerade domän namnet (FQDN) för det program som du vill skydda. Exempelvis `myapplication.contoso.com`.
+`--backend-address`: Det fullständigt kvalificerade domän namnet (FQDN) för det program som du vill skydda. Till exempel `myapplication.contoso.com`.
 
-`--accepted-protocols`: Anger de protokoll som du vill att Azures frontend-dörr ska stödja för ditt webb program. Exempelvis `--accepted-protocols Http Https`.
+`--accepted-protocols`: Anger de protokoll som du vill att Azures frontend-dörr ska stödja för ditt webb program. Till exempel `--accepted-protocols Http Https`.
 
 `--name`: Namnet på din Azure-frontend-resurs.
 
@@ -144,7 +144,7 @@ Vi rekommenderar att du endast ser till att Azures front dörrs kanter kan kommu
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du inte längre behöver de resurser som används i den här självstudien använder du kommandot [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) för att ta bort resurs gruppen, frontend-dörren och WAF-principen:
+När du inte längre behöver de resurser som används i den här självstudien använder du kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen, frontend-dörren och WAF-principen:
 
 ```azurecli-interactive
   az group delete \

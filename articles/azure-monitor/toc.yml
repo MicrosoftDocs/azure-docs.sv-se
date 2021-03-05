@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: Visa livedata
           items:
-            - name: Livedataöversikt (förhandsversion)
+            - name: Översikt över real tids data
               href: containers/container-insights-livedata-overview.md
             - name: Installation
               href: containers/container-insights-livedata-setup.md

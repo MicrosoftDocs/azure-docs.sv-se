@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: tyao
-ms.openlocfilehash: 885582481e3783bdd4fbad40a24499f42a40ce24
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193514"
+ms.locfileid: "102201676"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>Anslut Azure front dörr Premium till ett lagrings konto ursprung med privat länk
 
@@ -23,7 +23,7 @@ Den här artikeln beskriver hur du konfigurerar Azure frontend-SKU: n för att a
 
 Logga in på [Azure-portalen](https://portal.azure.com).
 
-## <a name="enable-private-link-to-a-storage-account-in-azure-front-door-premium"></a>Aktivera privat länk till ett lagrings konto i Azure front dörr Premium
+## <a name="enable-private-link-to-a-storage-account"></a>Aktivera privat länk till ett lagrings konto
  
 I det här avsnittet ska du mappa den privata länk tjänsten till en privat slut punkt som skapats i Azures front dörrs privata nätverk. 
 
@@ -47,7 +47,7 @@ I det här avsnittet ska du mappa den privata länk tjänsten till en privat slu
 
 1. Välj sedan **Lägg till** för att spara konfigurationen.
 
-## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-the-storage-account"></a>Godkänn privat slut punkts anslutning för Azure front dörr från lagrings kontot
+## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>Godkänn privat slut punkts anslutning från lagrings kontot
 
 1. Gå till det lagrings konto som du konfigurerar privat länk för i det sista avsnittet. Välj **nätverk** under **Inställningar**.
 

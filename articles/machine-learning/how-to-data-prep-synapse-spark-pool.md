@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eeb7b82d9c3bfe21019d5d68f82c2e6d7a2bf68
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 22945cdaff2696a15d5b119bd0f32fd0a179ebf7
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171521"
+ms.locfileid: "102202101"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>Bifoga Apache Spark pooler (drivs av Azure Synapse Analytics) för förberedelse av data (för hands version)
 
@@ -357,10 +357,6 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
-
-## <a name="example-notebook"></a>Exempelnotebook-fil
-
-I den här [slut antecknings boken](../synapse-analytics/overview-what-is.md) för slutförandet finns ett detaljerat kod exempel på hur du utför förberedelse av data och modell utbildning från en enda bärbar dator med Azure Synapse Analytics och Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nästa steg
 

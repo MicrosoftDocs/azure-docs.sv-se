@@ -1,161 +1,387 @@
 ---
-title: Integrera Azure Functions med ett virtuellt Azure-nätverk
-description: En steg-för-steg-självstudie som visar hur du ansluter en funktion till ett virtuellt Azure-nätverk
+title: Använd privata slut punkter för att integrera Azure Functions med ett virtuellt nätverk
+description: En steg-för-steg-självstudie som visar hur du ansluter en funktion till ett virtuellt Azure-nätverk och låser den med privata slut punkter
 ms.topic: article
-ms.date: 4/23/2020
-ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 2/22/2021
+ms.openlocfilehash: a7bad58167009b4089724165813eb061996f1e6b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937030"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200214"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Självstudie: integrera Functions med ett virtuellt Azure-nätverk
+# <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-using-private-endpoints"></a>Självstudie: integrera Azure Functions med ett virtuellt Azure-nätverk med privata slut punkter
 
-Den här självstudien visar hur du använder Azure Functions för att ansluta till resurser i ett virtuellt Azure-nätverk. du skapar en funktion som har åtkomst till både Internet och en virtuell dator som kör WordPress i det virtuella nätverket.
+Den här självstudien visar hur du använder Azure Functions för att ansluta till resurser i ett virtuellt Azure-nätverk med privata slut punkter. Du skapar en funktion med ett lagrings konto som är låst bakom ett virtuellt nätverk som använder en Service Bus-kö.
 
 > [!div class="checklist"]
 > * Skapa en Function-app i Premium-planen
-> * Distribuera en WordPress-webbplats till en virtuell dator i ett virtuellt nätverk
-> * Anslut Function-appen till det virtuella nätverket
-> * Skapa en Function proxy för att få åtkomst till WordPress-resurser
-> * Begär en WordPress-fil inifrån det virtuella nätverket
-
-## <a name="topology"></a>Topologi
-
-Följande diagram visar arkitekturen för den lösning som du skapar:
-
- ![Användar gränssnitt för integrering av virtuella nätverk](./media/functions-create-vnet/topology.png)
-
-Funktioner som körs i Premium-planen har samma värd funktioner som webbappar i Azure App Service, vilket omfattar funktionen VNet-integrering. Mer information om VNet-integrering, inklusive fel sökning och Avancerad konfiguration finns i [integrera din app med ett virtuellt Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md).
-
-## <a name="prerequisites"></a>Krav
-
-I den här självstudien är det viktigt att du förstår IP-adressering och undernät. Du kan börja med [den här artikeln som beskriver grunderna för adressering och undernät](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Många fler artiklar och videor är tillgängliga online.
-
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+> * Skapa Azure-resurser (Service Bus, lagrings konto Virtual Network)
+> * Lås ditt lagrings konto bakom en privat slut punkt
+> * Lås Service Bus bakom en privat slut punkt
+> * Distribuera en Function-app med både Service Bus-och HTTP-utlösare.
+> * Lås din Function-app bakom en privat slut punkt
+> * Testa att se att din Function-app är säker bakom det virtuella nätverket
+> * Rensa resurser
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Skapa en Function-app i en Premium-plan
 
-Först skapar du en Function-app i [Premium-planen]. Den här planen ger en server lös skalning utan stöd för integrering av virtuella nätverk.
+Först skapar du en .NET Function-app i [Premium-planen] eftersom den här självstudien använder C#. Andra språk stöds också i Windows. Den här planen ger en server lös skalning utan stöd för integrering av virtuella nätverk.
 
-[!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
+1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
 
-Du kan fästa appens funktion på instrument panelen genom att välja ikonen fäst i det övre högra hörnet. Genom att fästa blir det enklare att återgå till den här funktions appen när du har skapat din virtuella dator.
+1. På den **nya** sidan väljer du **Compute**  >  **Funktionsapp**.
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>Skapa en virtuell dator i ett virtuellt nätverk
+1. På sidan **grundläggande** inställningar använder du funktionen appinställningar som anges i följande tabell:
 
-Skapa sedan en förkonfigurerad virtuell dator som kör WordPress i ett virtuellt nätverk ([WordPress LEMP7 Max prestanda](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) per Jetware). En virtuell WordPress-dator används på grund av sin låga kostnad och bekvämlighet. Samma scenario fungerar med alla resurser i ett virtuellt nätverk, till exempel REST-API: er, App Service miljöer och andra Azure-tjänster. 
+    | Inställning      | Föreslaget värde  | Beskrivning |
+    | ------------ | ---------------- | ----------- |
+    | **Prenumeration** | Din prenumeration | Prenumerationen som den nya funktionsappen skapas under. |
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Namnet på den nya resursgrupp där du vill skapa funktionsappen. |
+    | **Funktionsappens namn** | Globalt unikt namn | Namn som identifierar din nya funktionsapp. Giltiga tecken är `a-z` (skiftlägesokänsligt), `0-9` och `-`.  |
+    |**Publicera**| Kod | Alternativ för att publicera kodfiler eller en Docker-container. |
+    | **Körningsstack** | .NET | I den här självstudien används .NET |
+    |**Region**| Önskad region | Välj en [region](https://azure.microsoft.com/regions/) nära dig eller nära andra tjänster som dina funktioner kommer åt. |
 
-1. I portalen väljer du **+ skapa en resurs** i det vänstra navigerings fönstret, i Sök fältet typ `WordPress LEMP7 Max Performance` och trycker på RETUR.
+1. Välj **Nästa: värd**. Ange följande inställningar på sidan **värd** :
 
-1. Välj **WordPress Lemp högsta prestanda** i Sök resultaten. Välj en program plan för **WordPress Lemp högsta prestanda för CentOS** som **program varu plan** och välj **skapa**.
+    | Inställning      | Föreslaget värde  | Beskrivning |
+    | ------------ | ---------------- | ----------- |
+    | **[Lagringskonto](../storage/common/storage-account-create.md)** |  Globalt unikt namn |  Skapa ett lagringskonto som används av din funktionsapp. Namnet på ett lagringskonto måste vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener. Du kan också använda ett befintligt konto som måste uppfylla kraven för [lagrings kontot](./storage-considerations.md#storage-account-requirements). |
+    |**Operativsystem**| Windows | I den här självstudien används Windows |
+    | **[Planera](./functions-scale.md)** | Premium | Värdplan som definierar hur resurser allokeras till din funktionsapp. Välj **Premium**. Som standard skapas en ny App Service plan. Standard- **SKU och-storlek** är **EP1**, där EP står för _elastisk Premium_. Mer information finns i [listan över Premium-SKU: er](./functions-premium-plan.md#available-instance-skus).<br/>När du kör JavaScript-funktioner i en Premium-plan bör du välja en instans som har färre virtuella processorer. Mer information finns i [Välj Premium-](./functions-reference-node.md#considerations-for-javascript-functions)prenumerationer med en kärna.  |
 
-1. På fliken **grundläggande** använder du de VM-inställningar som anges i tabellen nedanför bilden:
+1. Välj **Nästa: övervakning**. Ange följande inställningar på sidan **övervakning** :
 
-    ![Fliken grunder för att skapa en virtuell dator](./media/functions-create-vnet/create-vm-1.png)
+    | Inställning      | Föreslaget värde  | Beskrivning |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](./functions-monitoring.md)** | Standardvärde | Skapar en Application Insights resurs av samma *app-namn* i den närmaste region som stöds. Genom att utöka den här inställningen kan du ändra det **nya resurs namnet** eller välja en annan plats i ett [Azure-geografiskt](https://azure.microsoft.com/global-infrastructure/geographies/) **område** för att lagra dina data. |
+
+1. Välj **Granska + skapa** för att granska konfigurations valen för appen.
+
+1. På sidan **Granska + skapa** granskar du inställningarna och väljer sedan **skapa** för att etablera och distribuera Function-appen.
+
+1. Välj **aviserings** ikonen i det övre högra hörnet i portalen och titta efter ett meddelande om att **distributionen har slutförts** .
+
+1. Välj **Gå till resurs** att visa den nya funktionsappen. Du kan också välja **Fäst vid instrument panelen**. Genom att fästa blir det enklare att återgå till den här funktions program resursen från instrument panelen.
+
+1. Grattis! Du har skapat Premium Function-appen!
+
+## <a name="create-azure-resources"></a>Skapa Azure-resurser
+
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
+
+Ett separat lagrings konto från det som skapades i den första skapandet av din Function-app krävs för virtuella nätverk.
+
+1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
+
+1. På sidan ny söker du efter **lagrings konto** och väljer **skapa**
+
+1. På fliken **grundläggande** inställningar anger du inställningarna som anges i tabellen nedan. Resten kan lämnas som standard:
 
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj `myResourceGroup` eller resurs gruppen som du skapade med din Function-app. Om du använder samma resurs grupp för Function-appen, WordPress VM och värd prenumerationen blir det enklare att rensa resurser när du är klar med den här självstudien. |
-    | **Namn på virtuell dator** | VNET-Wordpress | Det virtuella dator namnet måste vara unikt i resurs gruppen |
-    | **[Region](https://azure.microsoft.com/regions/)** | Östeuropa Västeuropa | Välj en region nära dig eller nära de funktioner som har åtkomst till den virtuella datorn. |
-    | **Storlek** | B1S | Välj **ändra storlek** och välj sedan B1S Standard avbildning, som har 1 vCPU och 1 GB minne. |
-    | **Autentiseringstyp** | Lösenord | Om du vill använda lösenordsautentisering måste du också ange ett **användar namn**, ett säkert **lösen ord** och sedan **Bekräfta lösen ordet**. I den här självstudien behöver du inte logga in på den virtuella datorn om du inte behöver felsöka. |
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. |
+    | **Namn** | mysecurestorage| Namnet på ditt lagrings konto som den privata slut punkten ska tillämpas på. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region som du skapade din Function-app i. |
 
-1. Välj fliken **nätverk** och under Konfigurera virtuella nätverk väljer du **Skapa ny**.
+1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
 
-1. I **Skapa virtuellt nätverk** använder du inställningarna i tabellen under bilden:
+### <a name="create-a-service-bus"></a>Skapa en Service Bus
 
-    ![Fliken nätverk i Create VM](./media/functions-create-vnet/create-vm-2.png)
+1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
 
-    | Inställning      | Föreslaget värde  | Beskrivning      |
-    | ------------ | ---------------- | ---------------- |
-    | **Namn** | myResourceGroup-VNet | Du kan använda standard namnet som genereras för det virtuella nätverket. |
-    | **Adressintervall** | 10.10.0.0/16 | Använd ett enda adress intervall för det virtuella nätverket. |
-    | **Namn på undernät** | Tutorial-Net | Namnet på under nätet. |
-    | **Adress intervall** (undernät) | 10.10.1.0/24   | Under näts storleken definierar hur många gränssnitt som kan läggas till i under nätet. Det här under nätet används av WordPress-webbplatsen.  Ett `/24` undernät tillhandahåller 254-värd adresser. |
+1. På sidan ny söker du efter **Service Bus** och väljer **skapa**.
 
-1. Välj **OK** för att skapa det virtuella nätverket.
-
-1. Gå tillbaka till fliken **nätverk** och välj **ingen** för **offentlig IP**.
-
-1. Välj fliken **hantering** , sedan i **lagrings konto för diagnostik** väljer du det lagrings konto som du skapade med din Function-app.
-
-1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**. Processen för att skapa virtuella datorer tar några minuter. Den skapade virtuella datorn har bara åtkomst till det virtuella nätverket.
-
-1. När den virtuella datorn har skapats väljer du **gå till resurs** för att visa sidan för din nya virtuella dator och väljer sedan **nätverk** under **Inställningar**.
-
-1. Kontrol lera att det inte finns någon **offentlig IP-adress**. Anteckna den **privata IP-adressen** som du använder för att ansluta till den virtuella datorn från din Function-app.
-
-    ![Nätverks inställningar på den virtuella datorn](./media/functions-create-vnet/vm-networking.png)
-
-Nu har du en WordPress-webbplats som har distribuerats helt i det virtuella nätverket. Den här webbplatsen kan inte nås från det offentliga Internet.
-
-## <a name="connect-your-function-app-to-the-virtual-network"></a>Anslut din Function-app till det virtuella nätverket
-
-Med en WordPress-webbplats som körs i en virtuell dator i ett virtuellt nätverk kan du nu ansluta din Function-app till det virtuella nätverket.
-
-1. I din nya Function-app väljer du **nätverk** på den vänstra menyn.
-
-1. Under **VNet-integrering** väljer **du klicka här för att konfigurera**.
-
-    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="Välj nätverk i Function-appen":::
-
-1. På sidan **VNet-integration** väljer du **Lägg till VNet**.
-
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="Lägg till för hands versionen av VNet-integrering":::
-
-1. I **nätverks funktions status** använder du inställningarna i tabellen under bilden:
-
-    ![Definiera funktions programmet virtuellt nätverk](./media/functions-create-vnet/networking-3.png)
+1. På fliken **grundläggande** inställningar anger du inställningarna som anges i tabellen nedan. Resten kan lämnas som standard:
 
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
-    | **Virtual Network** | MyResourceGroup-VNet | Det här virtuella nätverket är det som du skapade tidigare. |
-    | **Undernät** | Skapa nytt undernät | Skapa ett undernät i det virtuella nätverket som din Function-app ska använda. VNet-integrering måste konfigureras för att använda ett tomt undernät. Det spelar ingen roll att dina funktioner använder ett annat undernät än den virtuella datorn. Det virtuella nätverket dirigerar automatiskt trafik mellan de två under näten. |
-    | **Namn på undernät** | Function-Net | Namnet på det nya undernätet. |
-    | **Adress block för virtuellt nätverk** | 10.10.0.0/16 | Välj samma adress block som används av WordPress-platsen. Du bör bara ha ett definierat adress block. |
-    | **Adressintervall** | 10.10.2.0/24   | Under näts storleken begränsar det totala antalet instanser som din Premium plan Function-app kan skala ut till. I det här exemplet används ett `/24` undernät med 254 tillgängliga värd adresser. Det här under nätet är överallokerat, men enkelt att beräkna. |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. |
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. |
+    | **Namn** | myServiceBus| Namnet på din Service Bus som den privata slut punkten ska tillämpas på. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region som du skapade din Function-app i. |
+    | **Prisnivå** | Premium | Välj den här nivån om du vill använda privata slut punkter med Service Bus. |
 
-1. Välj **OK** för att lägga till under nätet. Stäng sidan **VNet-integrering** och **status för nätverks funktions** sidan för att återgå till din Function-app-sida.
+1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
 
-Function-appen kan nu komma åt det virtuella nätverk där WordPress-platsen körs. Sedan använder du [Azure Functions-proxyservrar](functions-proxies.md) för att returnera en fil från WordPress-webbplatsen.
+### <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>Skapa en proxy för att komma åt VM-resurser
+Azure-resurser i den här självstudien integreras antingen med eller placeras i ett virtuellt nätverk. Du använder privata slut punkter för att hålla nätverks trafiken i det virtuella nätverket.
 
-Med VNet-integrering aktiverat kan du skapa en proxy i din Function-app för att vidarebefordra begär anden till den virtuella datorn som körs i det virtuella nätverket.
+I självstudien skapas två undernät:
+- **standard**: undernät för privata slut punkter. Privata IP-adresser anges från det här under nätet.
+- **Functions**: undernät för Azure Functions virtuell nätverks integrering. Det här under nätet är delegerat till Function-appen.
 
-1. I din Function-app väljer du  **proxyservrar** på den vänstra menyn och väljer sedan **Lägg till**. Använd proxyinställningarna i tabellen under bilden:
+Skapa nu det virtuella nätverk som Function-appen ska integreras med.
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definiera proxyinställningarna":::
+1. I menyn i Azure-portalen eller på sidan Start väljer du **Skapa en resurs**.
 
-    | Inställning  | Föreslaget värde  | Beskrivning      |
-    | -------- | ---------------- | ---------------- |
-    | **Namn** | Anläggning | Namnet kan vara vilket värde som helst. Den används för att identifiera proxyservern. |
-    | **Route-mall** | /plant | Väg som mappar till en VM-resurs. |
-    | **Webbadress för serverdel** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Ersätt `<YOUR_VM_IP>` med IP-adressen för din WordPress-VM som du skapade tidigare. Den här mappningen returnerar en enskild fil från platsen. |
+1. På sidan ny söker du efter **Virtual Network** och väljer **skapa**.
 
-1. Välj **skapa** för att lägga till proxy i din Function-app.
+1. På fliken **grundläggande** inställningar använder du de virtuella nätverks inställningarna som anges nedan:
 
-## <a name="try-it-out"></a>Prova
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. |
+    | **Namn** | myVirtualNet| Namnet på ditt virtuella nätverk som din Function-app ska ansluta till. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region som du skapade din Function-app i. |
 
-1. Försök att komma åt den URL som du använde som **Server dels-URL** i webbläsaren. Som förväntat, tids gränsen för begäran. En timeout inträffar eftersom WordPress-platsen bara är ansluten till ditt virtuella nätverk och inte Internet.
+1. På fliken **IP-adresser** väljer du **Lägg till undernät**. Använd de inställningar som anges nedan när du lägger till ett undernät:
 
-1. Kopiera URL-värdet för **proxyn** från din nya proxy och klistra in det i adress fältet i webbläsaren. Den returnerade avbildningen är från WordPress-webbplatsen som körs i det virtuella nätverket.
+    :::image type="content" source="./media/functions-create-vnet/1-create-vnet-ip-address.png" alt-text="Skärm bild av vyn Skapa konfiguration för virtuellt nätverk.":::
 
-    ![Växt avbildnings fil som returneras från WordPress-platsen](./media/functions-create-vnet/plant.png)
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Namn på undernät** | funktionen | Namnet på under nätet som Function-appen kommer att ansluta till. | 
+    | **Adressintervall för undernätet** | 10.0.1.0/24 | Observera att vårt IPv4-adress utrymme i bilden ovan är 10.0.0.0/16. Om ovanstående var 10.1.0.0/16 skulle det rekommenderade *adress intervallet för under nätet* vara 10.1.1.0/24. |
 
-Din Function-app är ansluten till både Internet och det virtuella nätverket. Proxyservern tar emot en begäran via det offentliga Internet och agerar sedan som en enkel HTTP-proxy för att vidarebefordra begäran till det anslutna virtuella nätverket. Proxyn vidarebefordrar sedan svaret tillbaka till dig offentligt via Internet.
+1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
+
+## <a name="lock-down-your-storage-account-with-private-endpoints"></a>Lås ditt lagrings konto med privata slut punkter
+
+Privata Azure-slutpunkter används för att ansluta till vissa Azure-resurser med en privat IP-adress. Den här anslutningen säkerställer att nätverks trafiken förblir i det valda virtuella nätverket och att åtkomst endast är tillgängligt för vissa resurser. Skapa nu privata slut punkter för Azure File Storage och Azure Blob Storage med ditt lagrings konto.
+
+1. I ditt nya lagrings konto väljer du **nätverk** på den vänstra menyn.
+
+1. Välj fliken **anslutningar för privata slut punkter** och välj **privat slut punkt**.
+
+    :::image type="content" source="./media/functions-create-vnet/2-navigate-private-endpoint-store.png" alt-text="Skärm bild av hur du navigerar för att skapa privata slut punkter för lagrings kontot.":::
+
+1. På fliken **grundläggande** inställningar använder du inställningarna för privata slut punkter som anges nedan:
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. | |
+    | **Namn** | fil slut punkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region som du skapade ditt lagrings konto i. |
+
+1. På fliken **resurs** använder du inställningarna för privata slut punkter som anges nedan:
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **Resurstyp**  | Microsoft. Storage/storageAccounts | Detta är resurs typen för lagrings konton. |
+    | **Resurs** | mysecurestorage | Det lagrings konto som du nyss skapade |
+    | **Målunderresurs** | file | Den här privata slut punkten kommer att användas för filer från lagrings kontot. |
+
+1. Välj **standard** för under näts inställningen på fliken **konfiguration** .
+
+1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**. Resurser i det virtuella nätverket kan nu prata med Storage-filer.
+
+1. Skapa en annan privat slut punkt för blobbar. På fliken **resurser** använder du inställningarna nedan. För alla andra inställningar använder du samma inställningar från filen för att skapa filer med privat slut punkt som du precis följt av.
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **Resurstyp**  | Microsoft. Storage/storageAccounts | Detta är resurs typen för lagrings konton. |
+    | **Resurs** | mysecurestorage | Det lagrings konto som du nyss skapade |
+    | **Målunderresurs** | blob | Den här privata slut punkten kommer att användas för blobbar från lagrings kontot. |
+
+## <a name="lock-down-your-service-bus-with-a-private-endpoint"></a>Lås din Service Bus med en privat slut punkt
+
+Skapa nu den privata slut punkten för Azure Service Bus.
+
+1. I din nya Service Bus väljer du **nätverk** på den vänstra menyn.
+
+1. Välj fliken **anslutningar för privata slut punkter** och välj **privat slut punkt**.
+
+    :::image type="content" source="./media/functions-create-vnet/3-navigate-private-endpoint-service-bus.png" alt-text="Skärm bild av hur du navigerar till privata slut punkter för Service Bus.":::
+
+1. På fliken **grundläggande** inställningar använder du inställningarna för privata slut punkter som anges nedan:
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. |
+    | **Namn** | SB-slutpunkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region som du skapade ditt lagrings konto i. |
+
+1. På fliken **resurs** använder du inställningarna för privata slut punkter som anges nedan:
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
+    | **Resurstyp**  | Microsoft. Service Bus/namnrymder | Detta är resurs typen för Service Bus. |
+    | **Resurs** | myServiceBus | Service Bus som du skapade tidigare i självstudien. |
+    | **Mål under resurs** | namnområde | Den här privata slut punkten kommer att användas för namn området från Service Bus. |
+
+1. Välj **standard** för under näts inställningen på fliken **konfiguration** .
+
+1. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**. Resurser i det virtuella nätverket kan nu kommunicera med Service Bus.
+
+## <a name="create-a-file-share"></a>Skapa en filresurs
+
+1. I det lagrings konto som du har skapat väljer du **fil resurser** på den vänstra menyn.
+
+1. Välj **+ fil resurser**. Ange **filer** som fil resursens namn i den här självstudien.
+
+    :::image type="content" source="./media/functions-create-vnet/4-create-file-share.png" alt-text="Skärm bild av hur du skapar en fil resurs i lagrings kontot.":::
+
+## <a name="get-storage-account-connection-string"></a>Hämta anslutnings sträng för lagrings konto
+
+1. I det lagrings konto som du har skapat väljer du **åtkomst nycklar** i den vänstra menyn.
+
+1. Välj **Visa nycklar**. Kopiera anslutnings strängen för KEY1 och spara den. Vi behöver den här anslutnings strängen senare när du konfigurerar inställningarna för appen.
+
+    :::image type="content" source="./media/functions-create-vnet/5-get-store-connection-string.png" alt-text="Skärm bild av hur du hämtar en anslutnings sträng för lagrings konton.":::
+
+## <a name="create-a-queue"></a>Skapa en kö
+
+Detta är den kö som Azure Functions Service Bus-utlösaren kommer att hämta händelser från.
+
+1. I Service Bus väljer du **köer** på den vänstra menyn.
+
+1. Välj **principer för delad åtkomst**. Ange **kö** som namn för kön i den här självstudien.
+
+    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="Skärm bild av hur du skapar en Service Bus-kö.":::
+
+## <a name="get-service-bus-connection-string"></a>Hämta anslutnings sträng för Service Bus
+
+1. I Service Bus väljer du **principer för delad åtkomst** på den vänstra menyn.
+
+1. Välj **RootManageSharedAccessKey**. Kopiera den **primära anslutnings strängen** och spara den. Vi behöver den här anslutnings strängen senare när du konfigurerar inställningarna för appen.
+
+    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="Skärm bild av hur du hämtar en anslutnings sträng för Service Bus.":::
+
+## <a name="integrate-function-app-with-your-virtual-network"></a>Integrera Function-appen med ditt virtuella nätverk
+
+Om du vill använda din Function-app med virtuella nätverk måste du ansluta den till ett undernät. Vi använder ett särskilt undernät för Azure Functions virtuell nätverks integrering och standard under nätet för alla andra privata slut punkter som skapas i den här självstudien.
+
+1. I din Function-app väljer du **nätverk** på den vänstra menyn.
+
+1. Välj **Klicka här för att konfigurera** under VNet-integrering.
+
+    :::image type="content" source="./media/functions-create-vnet/8-connect-app-vnet.png" alt-text="Skärm bild av hur du navigerar till integrering med virtuella nätverk.":::
+
+1. Välj **Lägg till VNet**
+
+1. På bladet som öppnas under **Virtual Network** väljer du det virtuella nätverk som du skapade tidigare.
+
+1. Välj **under nätet** som vi skapade tidigare anropade **funktioner**. Din Function-app är nu integrerad med ditt virtuella nätverk!
+
+    :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="Skärm bild av hur du ansluter en Function-app till ett undernät.":::
+
+## <a name="configure-your-function-app-settings-for-private-endpoints"></a>Konfigurera dina funktions program inställningar för privata slut punkter
+
+1. I din Function-app väljer du **konfiguration** på den vänstra menyn.
+
+1. Följande appinställningar måste uppdateras för att du ska kunna använda din Function-app med virtuella nätverk. Välj **+ ny program inställning** eller blyertspennan genom att **Redigera** i kolumnen längst till höger i tabellen App Settings efter behov. Välj **Spara** när du är klar.
+
+    :::image type="content" source="./media/functions-create-vnet/10-configure-app-settings.png" alt-text="Skärm bild av hur du konfigurerar funktions program inställningar för privata slut punkter.":::
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **AzureWebJobsStorage** | mysecurestorageConnectionString | Anslutnings strängen för det lagrings konto som du har skapat. Det här är lagrings anslutnings strängen från [Hämta lagrings kontots anslutnings sträng](#get-storage-account-connection-string). Genom att ändra den här inställningen använder din Function-app nu det säkra lagrings kontot för normala åtgärder vid körning. | 
+    | **WEBSITE_CONTENTAZUREFILECONNECTIONSTRING**  | mysecurestorageConnectionString | Anslutnings strängen för det lagrings konto som du har skapat. Genom att ändra den här inställningen använder din Function-app nu det säkra lagrings kontot för Azure Files, som används vid distribution. |
+    | **WEBSITE_CONTENTSHARE** | filer | Namnet på fil resursen som du skapade i lagrings kontot. Den här appens inställning används tillsammans med WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. |
+    | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | Skapa en app-inställning för anslutnings strängen för din Service Bus. Det här är lagrings anslutnings strängen från [Hämta Service Bus-anslutningssträng](#get-service-bus-connection-string).|
+    | **WEBSITE_CONTENTOVERVNET** | 1 | Skapa den här appens inställningen. Värdet 1 gör att din Function-app kan skalas när ditt lagrings konto är begränsat till ett virtuellt nätverk. Du bör aktivera den här inställningen när du begränsar ditt lagrings konto till ett virtuellt nätverk. |
+    | **WEBSITE_DNS_SERVER** | 168.63.129.16 | Skapa den här appens inställningen. När din app integreras med ett virtuellt nätverk, kommer den att använda samma DNS-server som det virtuella nätverket. Det här är en av två inställningar som krävs för att din Function-app ska fungera med Azure DNS privata zoner och krävs när du använder privata slut punkter. De här inställningarna kommer att skicka alla utgående samtal från din app till ditt virtuella nätverk. |
+    | **WEBSITE_VNET_ROUTE_ALL** | 1 | Skapa den här appens inställningen. När din app integreras med ett virtuellt nätverk, kommer den att använda samma DNS-server som det virtuella nätverket. Det här är en av två inställningar som krävs för att din Function-app ska fungera med Azure DNS privata zoner och krävs när du använder privata slut punkter. De här inställningarna kommer att skicka alla utgående samtal från din app till ditt virtuella nätverk. |
+
+1. Håll dig uppdaterad i vyn **konfiguration** och välj fliken **funktion runtime-inställningar** .
+
+1. Ange **körnings skalnings övervakning** till **på** och välj **Spara**. Med runtime drived skalning kan du ansluta funktioner som inte är HTTP-utlösare till tjänster som körs i det virtuella nätverket.
+
+    :::image type="content" source="./media/functions-create-vnet/11-enable-runtime-scaling.png" alt-text="Skärm bild av hur du aktiverar körnings driven skalning för Azure Functions.":::
+
+## <a name="deploy-a-service-bus-trigger-and-http-trigger-to-your-function-app"></a>Distribuera en Service Bus-utlösare och http-utlösare till din Function-app
+
+1. I GitHub bläddrar du till följande exempel lagrings plats, som innehåller en Function-app med två funktioner, en HTTP-utlösare och en Service Bus Queue-utlösare.
+
+    <https://github.com/Azure-Samples/functions-vnet-tutorial>
+
+1. Klicka på knappen **förgrening** längst upp på sidan för att skapa en förgrening av den här lagrings platsen i ditt eget GitHub-konto eller organisation.
+
+1. I din Function-app väljer du **Deployment Center** på den vänstra menyn. Välj sedan **Inställningar**.
+
+1. På fliken **Inställningar** använder du distributions inställningarna som anges nedan:
+
+    | Inställning      | Föreslaget värde  | Beskrivning      |
+    | ------------ | ---------------- | ---------------- |
+    | **Källa** | GitHub | Du borde ha skapat en GitHub-lagrings platsen med exempel koden i steg 2. | 
+    | **Organisation**  | Organisation | Det här är organisationen som din lagrings platsen checkas in i, vanligt vis ditt konto. |
+    | **Lagringsplats** | myRepo | Lagrings platsen som du skapade med exempel koden. |
+    | **Gren** | main | Det här är den lagrings platsen som du nyss skapade, så Använd huvud grenen. |
+    | **Körningsstack** | .NET | Exempel koden finns i C#. |
+
+1. Välj **Spara**. 
+
+    :::image type="content" source="./media/functions-create-vnet/12-deploy-portal.png" alt-text="Skärm bild av hur du distribuerar Azure Functions kod via portalen.":::
+
+1. Den första distributionen kan ta några minuter. Ett **lyckat (aktivt)** status meddelande visas på fliken **loggar** när appen har distribuerats. Om det behövs uppdaterar du sidan. 
+
+1. Grattis! Vi har distribuerat exempel funktions programmet.
+
+## <a name="lock-down-your-function-app-with-a-private-endpoint"></a>Lås din funktions app med en privat slut punkt
+
+Skapa nu den privata slut punkten för din Function-app. Den här privata slut punkten ansluter din funktions app privat och säkert till ditt virtuella nätverk med en privat IP-adress. Mer information om privata slut punkter finns i [dokumentationen för privata slut punkter](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+1. I din Function-app väljer du **nätverk** på den vänstra menyn.
+
+1. Välj **Klicka här för att konfigurera** under privata slut punkts anslutningar.
+
+    :::image type="content" source="./media/functions-create-vnet/14-navigate-app-private-endpoint.png" alt-text="Skärm bild av hur du navigerar till en Funktionsapp privat slut punkt.":::
+
+1. Välj **Lägg till**.
+
+1. På menyn som öppnas, använder du inställningarna för den privata slut punkten som anges nedan:
+
+    :::image type="content" source="./media/functions-create-vnet/15-create-app-private-endpoint.png" alt-text="Skärm bild av hur du skapar en Funktionsapp privat slut punkt.":::
+
+1. Välj **OK** för att lägga till den privata slut punkten. Grattis! Du har skyddat din Function-app, Service Bus och lagrings konto med privata slut punkter!
+
+### <a name="test-your-locked-down-function-app"></a>Testa din låsta Function-app
+
+1. I din Function-app väljer du **Functions** i den vänstra menyn.
+
+1. Välj **ServiceBusQueueTrigger**.
+
+1. På den vänstra menyn väljer du **övervaka**. du ser att du inte kan övervaka din app. Det beror på att din webbläsare inte har åtkomst till det virtuella nätverket, så den kan inte komma åt resurser i det virtuella nätverket direkt. Nu visar vi en annan metod som gör att du fortfarande kan övervaka din funktion, Application Insights.
+
+1. I din Function-app väljer du **Application Insights** på menyn till vänster och väljer **Visa Application Insights data**.
+
+    :::image type="content" source="./media/functions-create-vnet/16-app-insights.png" alt-text="Skärm bild av hur du visar Application Insights för en Funktionsapp.":::
+
+1. Välj **Live-mått** på den vänstra menyn.
+
+1. Öppna en ny flik. I Service Bus väljer du **köer** på den vänstra menyn.
+
+1. Välj din kö.
+
+1. Välj **Service Bus Explorer** på den vänstra menyn. Under **Skicka** väljer du **text/oformaterad** som **innehålls typ** och anger ett meddelande. 
+
+1. Välj **Skicka** för att skicka meddelandet.
+
+    :::image type="content" source="./media/functions-create-vnet/17-send-service-bus-message.png" alt-text="Skärm bild av hur du skickar Service Bus meddelanden med hjälp av portalen.":::
+
+1. På fliken med **Live-måtten** öppen bör du se att utlösaren för Service Bus kö har utlöst. Om den inte har det kan du skicka meddelandet från **Service Bus Explorer**
+
+    :::image type="content" source="./media/functions-create-vnet/18-hello-world.png" alt-text="Skärm bild av hur du visar meddelanden med Live-mått för Function-appar.":::
+
+1. Grattis! Du har testat din funktions program konfiguration med privata slut punkter!
+
+### <a name="private-dns-zones"></a>Privat DNS zoner
+Att använda en privat slut punkt för att ansluta till Azure-resurser innebär att ansluta till en privat IP-adress i stället för den offentliga slut punkten. Befintliga Azure-tjänster konfigureras för att använda befintlig DNS för att ansluta till den offentliga slut punkten. DNS-konfigurationen måste åsidosättas för att ansluta till den privata slut punkten.
+
+En privat DNS-zon har skapats för varje Azure-resurs som kon figurer ATS med en privat slut punkt. En DNS A-post skapas för varje privat IP-adress som är associerad med den privata slut punkten.
+
+Följande DNS-zoner skapades i den här självstudien:
+
+- privatelink.file.core.windows.net
+- privatelink.blob.core.windows.net
+- privatelink.servicebus.windows.net
+- privatelink.azurewebsites.net
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien fungerar WordPress-webbplatsen som ett API som anropas med hjälp av en proxy i Function-appen. Det här scenariot gör en bra självstudie eftersom det är enkelt att konfigurera och visualisera. Du kan använda alla andra API som distribueras i ett virtuellt nätverk. Du kan också ha skapat en funktion med kod som anropar API: er som distribueras i det virtuella nätverket. Ett mer realistiskt scenario är en funktion som använder API: er för data klient för att anropa en SQL Server-instans som distribueras i det virtuella nätverket.
-
-Funktioner som körs i en Premium-plan delar samma underliggande App Service-infrastruktur som webbappar på PremiumV2-planer. All dokumentation för [webbappar i Azure App Service](../app-service/overview.md) gäller för dina Premium plan-funktioner.
+I den här självstudien har du skapat en Premium Function-app, ett lagrings konto och Service Bus och du har skyddat dem alla bakom privata slut punkter! Lär dig mer om de olika nätverks funktionerna som finns nedan:
 
 > [!div class="nextstepaction"]
 > [Lär dig mer om nätverks alternativen i functions](./functions-networking-options.md)

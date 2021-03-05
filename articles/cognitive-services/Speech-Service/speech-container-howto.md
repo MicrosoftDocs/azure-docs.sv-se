@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 4970b33d51ed7ef54727c1c15e2482ff10d70506
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032946"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201132"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installera och kör Docker-behållare för tal tjänstens API: er 
 
@@ -41,12 +41,12 @@ Speech-containrar gör det möjligt för kunder att bygga en arkitektur för tal
 
 | Container | Funktioner | Senast |
 |--|--|--|
-| Tal till text | Analyserar sentiment och beskrivar kontinuerliga tal i real tid eller batch-ljudinspelningar med mellanliggande resultat.  | 2.9.0 |
-| Custom Speech till text | Genom att använda en anpassad modell från [Custom Speech portalen](https://speech.microsoft.com/customspeech), kan du skriva över kontinuerliga tal i real tid eller köra ljud inspelningar i text med mellanliggande resultat. | 2.9.0 |
-| Text till tal | Konverterar text till tal med naturligt ljud med text indata eller SSML (Speech syntes Markup Language). | 1.11.0 |
-| Anpassad text till tal | Med hjälp av en anpassad modell från den [anpassade röst portalen](https://aka.ms/custom-voice-portal)konverteras text till tal med naturligt ljud med text-eller tal syntess språk (SSML). | 1.11.0 |
+| Tal till text | Analyserar sentiment och beskrivar kontinuerliga tal i real tid eller batch-ljudinspelningar med mellanliggande resultat.  | 2.10.0 |
+| Custom Speech till text | Genom att använda en anpassad modell från [Custom Speech portalen](https://speech.microsoft.com/customspeech), kan du skriva över kontinuerliga tal i real tid eller köra ljud inspelningar i text med mellanliggande resultat. | 2.10.0 |
+| Text till tal | Konverterar text till tal med naturligt ljud med text indata eller SSML (Speech syntes Markup Language). | 1.12.0 |
+| Anpassad text till tal | Med hjälp av en anpassad modell från den [anpassade röst portalen](https://aka.ms/custom-voice-portal)konverteras text till tal med naturligt ljud med text-eller tal syntess språk (SSML). | 1.12.0 |
 | Tal Språkidentifiering | Identifiera det språk som talas i ljudfiler. | 1.0 |
-| Neurala text till tal | Konverterar text till naturligt ljuds tal med djup neurala nätverks teknik, vilket ger mer naturliga syntetiskt syntetiskt tal. | 1.3.0 |
+| Neurala text till tal | Konverterar text till naturligt ljuds tal med djup neurala nätverks teknik, vilket ger mer naturliga syntetiskt syntetiskt tal. | 1.4.0 |
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
@@ -386,7 +386,12 @@ Om du vill konfigurera en fras lista måste du lägga till egna fraser när du g
         audio_config=audio_config)
     phrase_list_grammer = speechsdk.PhraseListGrammar.from_recognizer(recognizer)
     phrase_list_grammer.addPhrase(phrase)
-
+    
+    dict_speech_config.set_service_property(
+        name='setflight',
+        value='xonlineinterp',
+        channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+    )
 ```
 
 Om du har flera fraser att lägga till ska du anropa `.addPhrase()` för varje fras för att lägga till den i fras listan. 

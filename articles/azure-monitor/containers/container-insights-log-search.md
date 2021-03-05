@@ -2,13 +2,13 @@
 title: Så här frågar du efter loggar från container Insights | Microsoft Docs
 description: Behållar insikter samlar in statistik och loggdata och den här artikeln beskriver posterna och innehåller exempel frågor.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c2b7331255e1109f27f89a84d66e25eb07a20569
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711118"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201387"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Så här frågar du efter loggar från behållar insikter
 
@@ -25,10 +25,11 @@ I följande tabell ges information om poster som samlas in av behållar insikter
 | Inventering av container nod | Kube-API | `ContainerNodeInventory`| TimeGenerated, dator, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Inventering av poddar i ett Kubernetes-kluster | Kube-API | `KubePodInventory` | TimeGenerated, dator, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, container status, ContainerStatusReason, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, kluster namn, PodIp, SourceSystem |
 | Inventering av noder som ingår i ett Kubernetes-kluster | Kube-API | `KubeNodeInventory` | TimeGenerated, dator, kluster namn, ClusterId, LastTransitionTimeReady, etiketter, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+|Inventering av beständiga volymer i ett Kubernetes-kluster |Kube-API |`KubePVInventory` | TimeGenerated, PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, ClusterId, kluster namn, _ResourceId, SourceSystem |
 | Kubernetes-händelser | Kube-API | `KubeEvents` | TimeGenerated, dator, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, meddelande, SourceSystem | 
 | Tjänster i Kubernetes-klustret | Kube-API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Prestanda mått för noder som ingår i Kubernetes-klustret | Användnings statistik hämtas från cAdvisor och begränsningar från Kube-API: et | Perf &#124; WHERE ObjectName = = "K8SNode" | Dator, ObjectName, CounterName &#40;cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Prestanda mått för container delar i Kubernetes-klustret | Användnings statistik hämtas från cAdvisor och begränsningar från Kube-API: et | Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Prestanda mått för noder som ingår i Kubernetes-klustret | Användnings statistik hämtas från cAdvisor och begränsningar från Kube-API: et | `Perf \| where ObjectName == "K8SNode"` | Dator, ObjectName, CounterName &#40;cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Prestanda mått för container delar i Kubernetes-klustret | Användnings statistik hämtas från cAdvisor och begränsningar från Kube-API: et | `Perf \| where ObjectName == "K8SContainer"` | CounterName &#40;cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Anpassade mått ||`InsightsMetrics` | Dator, namn, namn område, ursprung, SourceSystem, Taggar<sup>1</sup>, TimeGenerated, typ, Va, _ResourceId | 
 
 <sup>1</sup> egenskapen *taggar* representerar [flera dimensioner](../essentials/data-platform-metrics.md#multi-dimensional-metrics) för motsvarande mått. Mer information om de mått som samlas in och lagras i `InsightsMetrics` tabellen och en beskrivning av post egenskaperna finns i [Översikt över InsightsMetrics](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
@@ -37,7 +38,7 @@ I följande tabell ges information om poster som samlas in av behållar insikter
 
 Azure Monitor loggar kan hjälpa dig att söka efter trender, diagnostisera Flask halsar, prognostisera eller korrelera data som kan hjälpa dig att avgöra om den aktuella kluster konfigurationen fungerar optimalt. Fördefinierade loggs ökningar tillhandahålls så att du direkt kan börja använda eller anpassa för att returnera den information som du vill.
 
-Du kan utföra interaktiv analys av data i arbets ytan genom att välja alternativet **Visa Kubernetes händelse loggar** eller **Visa behållar loggar** i förhands gransknings fönstret i list rutan **Visa i Analytics** . Sidan **loggs ökning** visas till höger om Azure Portal sidan som du var på.
+Du kan analysera data interaktivt i arbets ytan genom att välja alternativet **Visa Kubernetes händelse loggar** eller **Visa behållar loggar** i fönstret för förhands granskning i list rutan **Visa i Analytics** . Sidan **loggs ökning** visas till höger om Azure Portal sidan som du var på.
 
 ![Analysera data i Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)
 
@@ -47,14 +48,58 @@ Behållaren loggar utdata som vidarebefordras till din arbets yta är STDOUT och
 
 Det är ofta användbart att skapa frågor som börjar med ett exempel eller två och sedan ändra dem så att de passar dina behov. För att hjälpa till att bygga mer avancerade frågor kan du experimentera med följande exempel frågor:
 
-| Söka i data | Beskrivning | 
-|-------|-------------|
-| ContainerInventory<br> &#124; projekt dator, namn, bild, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; återge tabell | Lista all information om livs cykeln för en behållare| 
-| KubeEvents_CL<br> &#124; där inte (IsEmpty (Namespace_s))<br> &#124; sortera efter TimeGenerated DESC<br> &#124; återge tabell | Kubernetes-händelser|
-| ContainerImageInventory<br> &#124; sammanfatta AggregatedValue = Count () efter bild, ImageTag, kör | Bild inventering | 
-| **Välj visnings alternativ för linje diagram**:<br> Prest<br> &#124; där ObjectName = = "K8SContainer" och CounterName = = "cpuUsageNanoCores" &#124; sammanfatta AvgCPUUsageNanoCores = AVG (CounterValue) per bin (TimeGenerated, 30M), InstanceName | Container-CPU | 
-| **Välj visnings alternativ för linje diagram**:<br> Prest<br> &#124; där ObjectName = = "K8SContainer" och CounterName = = "memoryRssBytes" &#124; sammanfatta AvgUsedRssMemoryBytes = AVG (CounterValue) per bin (TimeGenerated, 30M), InstanceName | Container minne |
-| InsightsMetrics<br> &#124; där name = = "requests_count"<br> &#124; sammanfatta val = any (val) av TimeGenerated = bin (TimeGenerated, 1m)<br> &#124; sortera efter TimeGenerated ASC<br> &#124; Project RequestsPerMinute = val-föreg (val), TimeGenerated <br> &#124; rendera Barchart  | Begär Anden per minut med anpassade mått |
+### <a name="list-all-of-a-containers-lifecycle-information"></a>Lista all information om livs cykeln för en behållare
+
+```kusto
+ContainerInventory
+| project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime
+| render table
+```
+
+### <a name="kubernetes-events"></a>Kubernetes-händelser
+
+``` kusto
+KubeEvents_CL
+| where not(isempty(Namespace_s))
+| sort by TimeGenerated desc
+| render table
+```
+### <a name="image-inventory"></a>Bild inventering
+
+``` kusto
+ContainerImageInventory
+| summarize AggregatedValue = count() by Image, ImageTag, Running
+```
+
+### <a name="container-cpu"></a>Container-CPU
+
+**Välj visnings alternativ för linje diagram**
+
+``` kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" 
+| summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName 
+```
+
+### <a name="container-memory"></a>Container minne
+
+**Välj visnings alternativ för linje diagram**
+
+```kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes"
+| summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName
+```
+
+### <a name="requests-per-minute-with-custom-metrics"></a>Begär Anden per minut med anpassade mått
+
+```kusto
+InsightsMetrics
+| where Name == "requests_count"
+| summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)
+| sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated
+| render barchart 
+```
 
 ## <a name="query-prometheus-metrics-data"></a>Fråga Prometheus Metrics-data
 
@@ -79,7 +124,7 @@ InsightsMetrics
 
 ```
 
-Om du vill visa Prometheus-mått som har klippts av Azure Monitor filtrerade efter namnrymd anger du "Prometheus". Här är en exempel fråga som visar Prometheus-mått från `default` namn området Kubernetes.
+Om du vill visa Prometheus-mått som har klippts av Azure Monitor filtrerade efter namnrymd anger du "Prometheus". Här är en exempel fråga för att Visa Prometheus-mått från `default` namn området Kubernetes.
 
 ```
 InsightsMetrics 

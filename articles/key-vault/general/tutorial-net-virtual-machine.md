@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181558"
+ms.locfileid: "102201183"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Självstudie: använda Azure Key Vault med en virtuell dator i .NET
 
@@ -42,7 +42,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 För Windows, Mac och Linux:
   * [Git](https://git-scm.com/downloads)
   * [.Net Core 3,1 SDK eller senare](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+  * [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-resources-and-assign-permissions"></a>Skapa resurser och tilldela behörigheter
 
@@ -74,7 +74,7 @@ Skapa en virtuell Windows-eller Linux-dator med någon av följande metoder:
 | [Azure-portalen](../../virtual-machines/windows/quick-create-portal.md) | [Azure-portalen](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>Tilldela en identitet till den virtuella datorn
-Skapa en systemtilldelad identitet för den virtuella datorn med kommandot [AZ VM Identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+Skapa en systemtilldelad identitet för den virtuella datorn med kommandot [AZ VM Identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ Observera den systemtilldelade identiteten som visas i följande kod. Utdata fr�
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Tilldela behörigheter till VM-identiteten
-Tilldela de tidigare skapade identitets behörigheterna till ditt nyckel valv med kommandot [AZ-nyckel valv set-princip](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) :
+Tilldela de tidigare skapade identitets behörigheterna till ditt nyckel valv med kommandot [AZ-nyckel valv set-princip](/cli/azure/keyvault#az-keyvault-set-policy) :
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

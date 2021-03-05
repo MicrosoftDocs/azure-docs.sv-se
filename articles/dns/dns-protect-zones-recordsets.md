@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 8163fcb3b349e298bc89f06523e3e784bdc4ed49
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2280d6243f468708269569cd24cb8c7a3e2a8191
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965685"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202305"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Så här skyddar du DNS-zoner och -poster
 
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Motsvarande kommando är också [tillgängligt via Azure CLI](/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Motsvarande kommando är också [tillgängligt via Azure CLI](/cli/azure/lock#az-lock-create):
 
 ```azurecli
 # Lock a DNS zone

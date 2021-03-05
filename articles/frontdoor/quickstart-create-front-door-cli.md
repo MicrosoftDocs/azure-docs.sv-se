@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0b82c11dcd615dfbdcfd70f5f90edd7ba41b4562
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327261"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201625"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Snabb start: skapa en front dörr för ett globalt webb program med hög tillgänglighet med hjälp av Azure CLI
 
@@ -46,7 +46,7 @@ I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen an
 
 I den här snabb starten behöver du två resurs grupper. En i *Central USA* och den andra i *södra centrala USA*.
 
-Skapa en resurs grupp med [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true):
+Skapa en resurs grupp med [AZ Group Create](/cli/azure/group#az-group-create):
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Om du inte redan har en webbapp använder du följande skript för att konfigure
 
 Innan du kan skapa webbappar behöver du två App Service-planer, en i *Central USA* och den andra i *södra centrala USA*.
 
-Skapa App Service-planer med [AZ AppService plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true):
+Skapa App Service-planer med [AZ AppService plan Create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true):
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Genom att köra följande kommandon skapar du en webbapp i var och en av App Service-planerna i föregående steg. Webb program namn måste vara globalt unika.
 
-Skapa en webbapp med [AZ webapp Create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Skapa en webbapp med [AZ webapp Create](/cli/azure/webapp#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Anteckna standard värd namnet för varje webbapp så att du kan definiera serve
 
 Skapa en grundläggande front dörr med standardinställningar för belastnings utjämning, hälso avsökning och regler för routning genom att köra:
 
-Skapa en frontend-dörr med [AZ Network frontend-dörr skapa](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true):
+Skapa en frontend-dörr med [AZ Network frontend-dörr skapa](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Anteckna värd namnet i avsnittet *frontEndpoints* när distributionen har slutf
 
 Ta bort båda resurs grupperna när du inte längre behöver de resurser som du skapade med frontend-dörren. När du tar bort resurs gruppen tar du även bort frontend-dörren och alla relaterade resurser. 
 
-Ta bort resurs gruppen med hjälp av [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Ta bort resurs gruppen med hjälp av [AZ Group Delete](/cli/azure/group#az_group_delete&preserve-view=true):
 
 ```azurecli-interactive
 az group delete \

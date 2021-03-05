@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628925"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202356"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrera till Azure-filresurser
 
@@ -34,8 +34,8 @@ Nyckeln i en migrering är att avbilda all tillämplig fil åter givning när du
 
 Här är de två grundläggande komponenterna i en fil:
 
-- **Data ström** : data strömmen i en fil lagrar fil innehållet.
-- **Fil-metadata** : filens metadata har följande del komponenter:
+- **Data ström**: data strömmen i en fil lagrar fil innehållet.
+- **Fil-metadata**: filens metadata har följande del komponenter:
    * Filattribut som skrivskyddade
    * Fil behörigheter, som kan kallas för NTFS- *behörigheter* eller *ACL: er för filer och mappar*
    * Tidsstämplar, främst när de skapas och senaste ändrade tidsstämplar
@@ -111,7 +111,7 @@ Det finns flera verktyg för fil kopiering som är tillgängliga från Microsoft
 
     Första gången du kör verktyget kopieras data mängden. Den första körningen kan vara en stund. Det varar ofta längre än du vill för att ta data källan offline för dina affärs processer.
 
-    Genom att spegla en källa till ett mål (som med **Robocopy/Mir** ) kan du köra verktyget igen på samma källa och mål. Körningen är mycket snabbare eftersom den bara behöver transportera käll ändringar som inträffar efter föregående körning. Om du kör ett kopierings verktyg på det här sättet kan det minska stillestånds tiden avsevärt.
+    Genom att spegla en källa till ett mål (som med **Robocopy/Mir**) kan du köra verktyget igen på samma källa och mål. Körningen är mycket snabbare eftersom den bara behöver transportera käll ändringar som inträffar efter föregående körning. Om du kör ett kopierings verktyg på det här sättet kan det minska stillestånds tiden avsevärt.
 
 I följande tabell klassificerar vi Microsoft-verktyg och deras aktuella lämplighet för Azure-fil resurser:
 
@@ -153,4 +153,4 @@ Här är mer information om Azure Files tekniker som nämns i den här artikeln:
 
 * [Översikt över Azure-filresurs](storage-files-introduction.md)
 * [Planera för distribution av Azure File Sync](storage-sync-files-planning.md)
-* [Azure File Sync: moln nivåer](storage-sync-cloud-tiering.md)
+* [Azure File Sync: moln nivåer](storage-sync-cloud-tiering-overview.md)

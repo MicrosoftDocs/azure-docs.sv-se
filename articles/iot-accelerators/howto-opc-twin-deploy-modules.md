@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445497"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201506"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Distribuera OPC, sammanflätade moduler och beroenden från grunden
 
@@ -182,7 +182,7 @@ Det enklaste sättet att distribuera modulerna till en Azure IoT Edge gateway-en
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-1. Installera den senaste versionen av [Azures kommando rads gränssnitt (AZ)](/cli/azure/?view=azure-cli-latest) [här](/cli/azure/install-azure-cli?view=azure-cli-latest).
+1. Installera den senaste versionen av [Azures kommando rads gränssnitt (AZ)](/cli/azure/) [här](/cli/azure/install-azure-cli).
 
 ### <a name="quickstart"></a>Snabbstart
 
