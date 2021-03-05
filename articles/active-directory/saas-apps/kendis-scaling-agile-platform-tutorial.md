@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651562"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184499"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Kendis-Azure AD-integrering
 
@@ -123,13 +123,21 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Konfigurera Kendis-Azure AD-integration SSO
 
-1. I ett annat webbläsarfönster loggar du in på företags platsen för Kendis-Azure AD-integration som administratör.
+1. Om du vill automatisera konfigurationen i Kendis-Azure AD-integrering måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
-1. Gå till **inställningarna > SAML-konfigurationer**.
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera Kendis – Azure AD-integrering** dirigerar dig till integrerings programmet för Kendis-Azure AD. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Kendis-Azure AD-integrering. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-5.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera Kendis – Azure AD-integrering manuellt, i ett annat webbläsarfönster, loggar du in på din Kendis-Azure AD integration företags webbplats som administratör.
+
+4. Gå till **inställningarna > SAML-konfigurationer**.
 
     ![inställningar för SAML-konfigurationer](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. Klicka på knappen **Redigera** längst ned på sidan och utför följande steg.
+5. Klicka på knappen **Redigera** längst ned på sidan och utför följande steg.
 
     ![SAML-konfigurationer](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

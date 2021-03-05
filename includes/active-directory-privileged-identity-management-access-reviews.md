@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: active-directory
 author: barclayn
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/07/2020
 ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842266"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102193710"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Skapa en eller flera åtkomst granskningar
 
@@ -53,7 +53,7 @@ ms.locfileid: "96842266"
 
     - **Valda användare** – Använd det här alternativet om du inte vet vem som behöver åtkomst. Med det här alternativet kan du tilldela granskningen till en resurs ägare eller grupp hanterare för att slutföra.
     - **Medlemmar (Self)** – Använd det här alternativet om du vill att användarna ska granska sina egna roll tilldelningar.
-    - **(För hands version)-hanteraren** – Använd det här alternativet om du vill att användarens chef ska granska roll tilldelningen. När du väljer (för hands version) Manager kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att granska en användare när användaren inte har angett någon chef i katalogen.
+    - **Manager** – Använd det här alternativet om du vill att användarens chef ska granska roll tilldelningen. När du väljer chef kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att granska en användare när användaren inte har angett någon chef i katalogen.
 
 ### <a name="upon-completion-settings"></a>Vid slut för ande inställningar
 

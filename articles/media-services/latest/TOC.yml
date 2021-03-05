@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: Konfigurera Azure Cloud Shell
           href: ../../cloud-shell/overview.md
-        - name: Utveckla med REST
+        - name: Ansluta till Media Services
           items:
-            - name: Ansluta med Postman
+            - name: Ansluta till REST och Postman
               href: media-rest-apis-with-postman.md
-        - name: 'Utveckla med SDK:er'
-          items:
             - name: Ansluta med Java
               href: configure-connect-java-howto.md
             - name: Ansluta med .NET
@@ -51,6 +49,8 @@
       items:
         - name: Skapa ett konto med ARM
           href: quickstart-arm-template-account.md
+    - name: Snabb start för python Basic encoding
+      href: quickstart-basic-encoding-python.md
 - name: Självstudier
   items:
     - name: .NET

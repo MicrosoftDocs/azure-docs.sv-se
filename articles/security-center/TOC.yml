@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Skapa anpassade säkerhets initiativ och principer
           href: custom-security-policies.md
-    - name: Skydda dina datorer med Azure Defender för servrar
+    - name: Skydda dina datorer med Defender för servrar
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Översikt över Azure Defender för servrar
@@ -143,10 +143,10 @@
         - name: Använda den integrerade licensen för Microsoft Defender för slutpunkter
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: Definiera listor över säkra program för dina datorer
+        - name: Definiera listor över säkra program för datorer
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Spåra ändringar i filer och register med fil integritets övervakning
+        - name: Spåra ändringar i filer och register
           items:
             - name: Översikt över övervakning av filintegritet
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: Jämför bas linjer med hjälp av fil integritets övervakning
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: Förbättra din nätverks säkerhets position med anpassningsbar nätverks härdning
-          displayName: anh
+        - name: Förbättra nätverks säkerheten position
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: Härda Docker-värdarna
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Översikt över Azure Defender för Key Vault
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Svara på Azure Defender för Key Vault-aviseringar
+        - name: Hantera Defender för Key Vault aviseringar
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: Övervaka dina resurs hanterings åtgärder
@@ -217,7 +217,7 @@
         - name: Översikt över Azure Defender för Resource Manager
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Svara på aviseringar från Azure Defender för Resource Manager
+        - name: Hantera Defender för Resource Manager-aviseringar
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: Övervaka DNS-frågor från dina Azure-resurser

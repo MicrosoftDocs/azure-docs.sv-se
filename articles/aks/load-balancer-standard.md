@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000869"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184431"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Använda en offentlig Standard Load Balancer i Azure Kubernetes service (AKS)
 
@@ -96,13 +96,13 @@ Azure Load Balancer tillhandahåller utgående anslutning från ett virtuellt n�
 
 Precis som alla Load Balancer regler följer utgående regler samma välkända syntax som belastnings utjämning och inkommande NAT-regler:
 
-***klient del IP + parametrar + backend-pool** _
+***klient del IP + parametrar + backend-pool***
 
 En utgående regel konfigurerar utgående NAT för alla virtuella datorer som identifieras av backend-poolen som ska översättas till klient delen. Parametrarna och ger ytterligare detaljerad kontroll över den utgående NAT-algoritmen.
 
 Även om en utgående regel kan användas med bara en enda offentlig IP-adress, underlättar utgående regler konfigurations bördan för skalning av utgående NAT. Du kan använda flera IP-adresser för att planera för storskaliga scenarier och du kan använda utgående regler för att minska mönstren för SNAT-överbelastningar. Varje ytterligare IP-adress som tillhandahållits av en frontend tillhandahåller 64 KB tillfälliga portar för Load Balancer som ska användas som SNAT-portar. 
 
-När du använder en _Standard * SKU-belastningsutjämnare med hanterade utgående offentliga IP-adresser, som skapas som standard, kan du skala antalet hanterade utgående offentliga IP-adresser med hjälp av **`load-balancer-managed-ip-count`** parametern.
+När du använder en *standard* -SKU för belastningsutjämnare med hanterade utgående offentliga IP-adresser, som skapas som standard, kan du skala antalet hanterade utgående offentliga IP-adresser med hjälp av **`load-balancer-managed-ip-count`** parametern.
 
 Kör följande kommando för att uppdatera ett befintligt kluster. Den här parametern kan också ställas in i klustret Create-Time för att ha flera hanterade utgående offentliga IP-adresser.
 
@@ -403,17 +403,17 @@ Läs mer om hur du använder interna Load Balancer för inkommande trafik i [AKS
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
-[az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
-[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
