@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 2feabda5ea3f0c0748b92de9fcb7ef05abbdcf4c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209448"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182493"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
@@ -33,16 +33,16 @@ I den här självstudien får du lära dig de grundläggande stegen för att lä
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
-    data_df = data.to_spark_dataframe()
+    df = data.to_spark_dataframe()
     # Display 10 rows
-    display(data_df.limit(10))
+    display(df.limit(10))
     ```
 1. I antecknings boken, på menyn **Anslut till** , väljer du den **Spark1** -server som vi skapade tidigare.
 1. Välj **Kör** i cellen
 1. Om du bara vill se schemat för dataframe kör du en cell med följande kod:
     ```
 
-    data_df.printSchema()
+    df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Läs in NYC taxi-data till Spark nyctaxi-databasen

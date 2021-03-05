@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392807"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181235"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -134,8 +134,8 @@ Som nämnts är virtuell nätverks-peering ett sätt att komma åt ditt privata 
 * När det gäller underhåll i kontroll planet kan din [AKS-IP-adress](./limit-egress-traffic.md) ändras. I det här fallet måste du uppdatera en post som pekar på den privata IP-adressen för API-servern på din anpassade DNS-server och starta om anpassade poddar eller distributioner med hjälp av hostNetwork.
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations

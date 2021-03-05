@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720329"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182595"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Självstudie: mappa ett befintligt anpassat DNS-namn till Azure App Service
 
@@ -308,10 +308,7 @@ Bläddra till de DNS-namn som du konfigurerade tidigare (till exempel,,, `contos
 
 ## <a name="resolve-404-not-found"></a>Lös 404 "hittades inte"
 
-Om du får ett HTTP 404-fel (hittades inte) när du bläddrar till URL: en för din anpassade domän, kontrollerar du att domänen matchar appens IP-adress med hjälp av <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>. Om inte, kan det bero på någon av följande orsaker:
-
-- Den anpassade domänen som har kon figurer ATS saknar en A-post eller en CNAME-post.
-- Webbläsarklienten har cachat din domäns gamla IP-adress. Rensa cacheminnet och testa DNS-matchningen igen. På en Windows-dator rensar du cachen med `ipconfig /flushdns`.
+Om du får ett HTTP 404-fel (hittades inte) när du bläddrar till URL: en för din anpassade domän, kontrollerar du att domänen matchar appens IP-adress med hjälp av <a href="https://www.nslookup.io/" target="_blank">nslookup.io</a>. Om inte kontrollerar du att posterna A och CNAME är korrekt konfigurerade med samma plats. Om den löser in IP-adressen korrekt, men du ändå får en 404, kan din webbläsare ha cachelagrat den gamla IP-adressen för din domän. Rensa cacheminnet och testa DNS-matchningen igen. På en Windows-dator rensar du cachen med `ipconfig /flushdns`.
 
 ## <a name="migrate-an-active-domain"></a>Migrera en aktiv domän
 

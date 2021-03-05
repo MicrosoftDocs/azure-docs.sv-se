@@ -3,14 +3,14 @@ title: Distribuera ett Linux-Hybrid Runbook Worker i Azure Automation
 description: Den här artikeln beskriver hur du installerar en Azure Automation Hybrid Runbook Worker för att köra Runbooks på Linux-baserade datorer i ditt lokala data Center eller i moln miljön.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/18/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708925"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182340"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Distribuera ett Linux-Hybrid Runbook Worker
 
@@ -48,7 +48,7 @@ Funktionen Hybrid Runbook Worker stöder följande distributioner. Alla operativ
 * Red Hat Enterprise Linux Server 5, 6, 7 och 8
 * Debian GNU/Linux 6, 7 och 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS och 18,04 LTS
-* SUSE Linux Enterprise Server 12 och 15
+* SUSE Linux Enterprise Server 12 och 15 (SUSE släpptes inte version 13 eller 14)
 
 > [!IMPORTANT]
 > Innan du aktiverar funktionen Uppdateringshantering, som är beroende av system Hybrid Runbook Worker-rollen, bekräftar du de distributioner som den stöder [här](update-management/overview.md#supported-operating-systems).
@@ -66,7 +66,7 @@ Minimi kraven för Linux-system och användar Hybrid Runbook Worker:
 |Glibc |GNU C-bibliotek| 2.5-12 |
 |Openssl| OpenSSL-bibliotek | 1,0 (TLS 1,1 och TLS 1,2 stöds)|
 |Curl | webb klient för sväng | 7.15.5|
-|Python – ctypes | Python 2. x krävs |
+|Python – ctypes | Python 2. x eller python 3. x krävs |
 |PAM | Pluggable Authentication Modules|
 | **Valfritt paket** | **Beskrivning** | **Lägsta version**|
 | PowerShell Core | För att köra PowerShell-Runbooks måste PowerShell-kärnan installeras. Se [Installera PowerShell Core på Linux](/powershell/scripting/install/installing-powershell-core-on-linux) för att lära dig hur du installerar det. | 6.0.0 |
@@ -90,13 +90,16 @@ Linux hybrid Runbook Worker stöder en begränsad uppsättning Runbook-typer i A
 
 |Typ av Runbook | Stöds |
 |-------------|-----------|
-|Python 2 |Ja |
-|PowerShell |Ja<sup>1</sup> |
+|Python 3 (för hands version)|Ja, krävs endast för dessa distributioner: SUSE LES 15, RHEL 8 och CentOS 8|
+|Python 2 |Ja, för alla distribution som inte kräver python 3<sup>1</sup> |
+|PowerShell |Ja<sup>2</sup> |
 |PowerShell-arbetsflöde |Inga |
 |Grafisk |Inga |
 |Grafiskt PowerShell-arbetsflöde |Inga |
 
-<sup>1</sup> PowerShell-Runbooks kräver att PowerShell Core installeras på Linux-datorn. Se [Installera PowerShell Core på Linux](/powershell/scripting/install/installing-powershell-core-on-linux) för att lära dig hur du installerar det.
+<sup>1</sup> Se [Linux-operativsystem som stöds](#supported-linux-operating-systems).
+
+<sup>2</sup> PowerShell-Runbooks kräver att PowerShell Core installeras på Linux-datorn. Se [Installera PowerShell Core på Linux](/powershell/scripting/install/installing-powershell-core-on-linux) för att lära dig hur du installerar det.
 
 ### <a name="network-configuration"></a>Konfiguration av nätverk
 

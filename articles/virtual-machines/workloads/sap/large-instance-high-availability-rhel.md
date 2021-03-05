@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: 5a02901b2dfc589033c7249cddf463a581eea720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182442"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Azure stora instanser hög tillgänglighet för SAP på RHEL
 
@@ -648,19 +648,20 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
 
 18. Testa SBD-avgränsningen genom att krascha kärnan.
 
-   * Utlös kernel-kraschen.
+    * Utlös kernel-kraschen.
 
-    ```
-    echo c > /proc/sysrq-trigger
+      ```
+      echo c > /proc/sysrq-trigger
 
-    System must reboot after 5 Minutes (BMC timeout) or the value which is
-    set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
-    ```
+      System must reboot after 5 Minutes (BMC timeout) or the value which is
+      set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
+      ```
   
-   * Det andra testet att köra är att stängsela en nod med hjälp av PC-kommandon.
-    ```
-    pcs stonith fence sollabdsm36
-    ```
+    * Det andra testet att köra är att stängsela en nod med hjälp av PC-kommandon.
+
+      ```
+      pcs stonith fence sollabdsm36
+      ```
   
 
 19. För resten av SAP HANA klustring kan du inaktivera STONITH genom att ställa in:

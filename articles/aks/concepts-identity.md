@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572698"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181456"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Åtkomst och identitetsalternativ för Azure Kubernetes Service (AKS)
 
@@ -42,6 +42,7 @@ Följande behörigheter används av AKS-kluster identiteten, som skapas och asso
 
 | Behörighet | Anledning |
 |---|---|
+| Microsoft. container service/managedClusters/*  <br/> | Krävs för att skapa användare och driva klustret
 | Microsoft. Network/belastningsutjämnare/Delete <br/> Microsoft. Network/belastningsutjämnare/Read <br/> Microsoft. Network/belastningsutjämnare/Write | Krävs för att konfigurera belastningsutjämnaren för en LoadBalancer-tjänst. |
 | Microsoft. Network/publicIPAddresses/Delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | Krävs för att hitta och konfigurera offentliga IP-adresser för en LoadBalancer-tjänst. |
 | Microsoft.Network/publicIPAddresses/join/action | Krävs för att konfigurera offentliga IP-adresser för en LoadBalancer-tjänst. |
@@ -198,7 +199,7 @@ I den här tabellen sammanfattas hur användare kan autentiseras för Kubernetes
 
 Det roll anslag som refereras till i den andra kolumnen är Azure RBAC-rollen som visas på fliken **Access Control** i Azure Portal. Azure AD-gruppen kluster admin visas på fliken **konfiguration** i portalen (eller med parameter namnet `--aad-admin-group-object-ids` i Azure CLI).
 
-| Description        | Roll beviljande krävs| Kluster administratör Azure AD-grupp (er) | När du ska använda detta |
+| Beskrivning        | Roll beviljande krävs| Kluster administratör Azure AD-grupp (er) | När du ska använda detta |
 | -------------------|------------|----------------------------|-------------|
 | Äldre Administratörs inloggning med klient certifikat| **Administratörs roll för Azure-Kubernetes**. Den här rollen kan `az aks get-credentials` användas med `--admin` -flaggan, som laddar ned ett [äldre kluster administratörs certifikat (inte Azure AD)](control-kubeconfig-access.md) till användarens `.kube/config` . Detta är det enda syftet med administratörs rollen för Azure-Kubernetes.|saknas|Om du har blockerat permanent genom att inte ha åtkomst till en giltig Azure AD-grupp med åtkomst till klustret.| 
 | Azure AD med manuellt (kluster) RoleBindings| **Användar rollen Azure-Kubernetes**. Rollen "användare" tillåter `az aks get-credentials` användning utan `--admin` flaggan. (Detta är det enda syftet med användar rollen Azure-Kubernetes.) Resultatet, i ett Azure AD-aktiverat kluster, är hämtningen av [en tom post](control-kubeconfig-access.md) till `.kube/config` , vilket utlöser webbläsarbaserad autentisering när den används första gången `kubectl` .| Användaren finns inte i någon av dessa grupper. Eftersom användaren inte finns i några kluster administratörs grupper, kommer deras rättigheter att kontrol leras helt av alla RoleBindings eller ClusterRoleBindings som har kon figurer ATS av kluster administratörer. RoleBindings (kluster) [nominerade Azure AD-användare eller Azure AD-grupper](azure-ad-rbac.md) som deras `subjects` . Om inga sådana bindningar har kon figurer ATS kommer användaren inte att kunna Excute några `kubectl` kommandon.|Om du vill ha detaljerad åtkomst kontroll och du inte använder Azure RBAC för Kubernetes-auktorisering. Observera att den användare som konfigurerar bindningarna måste logga in med någon av de andra metoderna som anges i den här tabellen.|

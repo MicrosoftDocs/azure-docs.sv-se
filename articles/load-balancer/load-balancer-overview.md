@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 14e6990579f61b28c091f18b45a06d1ddcc00e89
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 51ceb72d53f78264edcadd2255e20c8fbdac2cae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097541"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181218"
 ---
 # <a name="what-is-azure-load-balancer"></a>Vad är Azure Load Balancer?
 
@@ -42,8 +42,8 @@ Mer information om de enskilda komponenterna för belastnings utjämning finns i
 >[!NOTE]
 > Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier. 
 > * Om du vill göra DNS-baserad global Routning och **inte** har kraven för Transport Layer Security (TLS) protokoll terminering ("SSL-avlastning"), per http/https-begäran eller bearbetning av program lager, granska [Traffic Manager](../traffic-manager/traffic-manager-overview.md). 
-> * Om du vill belastningsutjämna mellan servrarna i en region i program lagret granskar du [Application Gateway](../application-gateway/overview.md)
-> * Om du behöver optimera en global routning av din webb trafik och optimera prestanda och tillförlitlighet på toppnivå med hjälp av snabb global redundans, se [front dörren](../frontdoor/front-door-overview.md)
+> * Om du vill belastningsutjämna mellan servrarna i en region i program lagret granskar du [Application Gateway](../application-gateway/overview.md).
+> * Om du behöver optimera en global routning av din webb trafik och optimera prestanda och tillförlitlighet på toppnivå med hjälp av snabb global redundans, se [front dörren](../frontdoor/front-door-overview.md).
 > 
 > Dina scenarier från slut punkt till slut punkt kan dra nytta av att kombinera de här lösningarna efter behov.
 > En alternativ jämförelse för Azure-belastnings utjämning finns i [Översikt över belastnings Utjämnings alternativ i Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).

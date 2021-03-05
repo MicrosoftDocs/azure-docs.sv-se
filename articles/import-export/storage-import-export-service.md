@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706729"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181856"
 ---
 # <a name="what-is-azure-importexport-service"></a>Vad är Azure import/export-tjänsten?
 
@@ -79,7 +79,7 @@ På hög nivå omfattar ett import jobb följande steg:
 >
 > För utgångs punkt (utanför Data Center land/region) kan du dela ett internationellt transport konto.
 
- ![Bild 1: importera jobb flöde](./media/storage-import-export-service/importjob.png)
+ ![Bild 1: importera jobb flöde](./media/storage-import-export-service/import-job.png)
 
 Steg-för-steg-instruktioner om data import finns på:
 
@@ -108,7 +108,7 @@ Ett export jobb på hög nivå omfattar följande steg:
 >
 > För utgångs punkt (utanför Data Center land/region) kan du dela ett internationellt transport konto.
   
- ![Bild 2: Exportera jobb flöde](./media/storage-import-export-service/exportjob.png)
+ ![Bild 2: Exportera jobb flöde](./media/storage-import-export-service/export-job.png)
 
 Steg-för-steg-instruktioner om data export finns i [Exportera data från Azure-blobar](storage-import-export-data-from-blobs.md).
 

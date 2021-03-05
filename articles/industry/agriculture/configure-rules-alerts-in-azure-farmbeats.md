@@ -4,13 +4,13 @@ description: Beskriver hur du konfigurerar regler och hanterar aviseringar i Far
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 5e6a5d414c341f482c3fddf95a2f8bb8e55a3ca2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168553"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182935"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>Konfigurera regler och hantera aviseringar
 
@@ -28,7 +28,7 @@ Med Azure FarmBeats kan du skapa regler baserade på affärs logiken, förutom d
 
     ![Skärm bild som visar avsnittet villkor.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-condition-1.png)
 
-5. I **villkor**anger du värden för **mått**, **operator** och **värde**.
+5. I **villkor** anger du värden för **mått**, **operator** och **värde**.
 6. Skriv mått namnet i den nedrullningsbara menyn **mått** .
 7. Välj **+ Lägg till villkor** om du vill lägga till fler villkor i regeln.
 8. Välj **allvarlighets grad**.
@@ -37,7 +37,7 @@ Med Azure FarmBeats kan du skapa regler baserade på affärs logiken, förutom d
     ![Skärm bild som visar alternativet e-postaktive rad.](./media/configure-rules-and-alerts-in-azure-farmbeats/new-rule-email-1.png)
 
 10. Ange de **e-postadresser** som du vill skicka e-postaviseringen till, tillsammans med **e-** postmeddelandets ämne och **ytterligare anteckningar**.  
-11. I **regel status**växlar du till den **aktiverade** växlings knappen för att aktivera eller inaktivera regeln.
+11. I **regel status** växlar du till den **aktiverade** växlings knappen för att aktivera eller inaktivera regeln.
     Du kan visa antalet enheter som kommer att påverkas av regeln.
 12. Välj **Använd** för att skapa regeln.
 
@@ -69,7 +69,7 @@ Följ dessa steg om du vill redigera en regel:
 
     ![Skärm bild som visar skärmen Redigera regel.](./media/configure-rules-and-alerts-in-azure-farmbeats/edit-rule-one-1.png)
 
-4. Ändra **regel namnet**och **regel beskrivningen** och välj sedan en Server grupp på list menyn **Välj grupp** .
+4. Ändra **regel namnet** och **regel beskrivningen** och välj sedan en Server grupp på list menyn **Välj grupp** .
 5. Ange server gruppens namn för att välja Server gruppen och **villkoren** visas i samma fönster.  
 6. I **villkor**, redigera **mått**, **operator** och **värde**.
 7. Skriv mått namnet i den nedrullningsbara menyn **mått** .
@@ -80,7 +80,7 @@ Följ dessa steg om du vill redigera en regel:
 9.  Välj **allvarlighets grad**.  
 10. I **åtgärd**, växlar du till knappen för **e-** postaktiverad växling för att aktivera e-postaviseringar.
 11. Redigera **e-postadresserna** som du vill skicka e-postaviseringen för, tillsammans med **e-** postmeddelandets ämne och **ytterligare anteckningar**.  
-12. I **regel status**växlar du till den **aktiverade** växlings knappen för att aktivera eller inaktivera regeln.
+12. I **regel status** växlar du till den **aktiverade** växlings knappen för att aktivera eller inaktivera regeln.
 Du kan visa antalet enheter som kommer att påverkas av den här regeln.
 13. Välj **Använd** för att redigera regeln.
 

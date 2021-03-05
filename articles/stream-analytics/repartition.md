@@ -4,15 +4,15 @@ description: Den här artikeln beskriver hur du använder ompartitionering för 
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014203"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182544"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Använd ompartitionering för att optimera bearbetningen med Azure Stream Analytics
 
@@ -23,25 +23,47 @@ Du kanske inte kan använda [parallellisering](stream-analytics-parallelization.
 * Du styr inte partitionsnyckel för indataströmmen.
 * Källan "sprayar" i flera partitioner som senare behöver slås samman.
 
-Ompartitionering eller reshuffling krävs när du bearbetar data på en data ström som inte är shardade enligt ett naturligt indata schema, till exempel **PartitionID** för Event Hubs. När du partitionerar om kan varje Shard bearbetas separat, vilket gör att du kan skala ut den strömmande pipelinen linjärt.
+Ompartitionering eller reshuffling krävs när du bearbetar data på en data ström som inte är shardade enligt ett naturligt indata schema, till exempel **PartitionID** för Event Hubs. När du partitionerar om kan varje Shard bearbetas separat, vilket gör att du kan skala ut den strömmande pipelinen linjärt. 
 
 ## <a name="how-to-repartition"></a>Partitionera om
+Du kan partitionera om dina inaktuella ingångar på två sätt:
+1. Använd ett separat Stream Analytics jobb som gör ompartitionering
+2. Använd ett enskilt jobb men gör om ompartitionering först innan din anpassade analys logik
 
-Om du vill partitionera om, använder du nyckelordet **i** efter en **partition by** -sats i frågan. I följande exempel partitioneras data efter **DeviceID** till antalet partitioner på 10. Hashing av **DeviceID** används för att avgöra vilken partition som ska acceptera vilken under data ström. Data rensas oberoende för varje partitionerad ström, förutsatt att utdata har stöd för partitionerade skrivningar och har 10 partitioner.
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>Skapa ett separat Stream Analytics jobb för att partitionera om inmatade
+Du kan skapa ett jobb som läser in indata och skriver till en Event Hub-utdata med en partitionsnyckel. Den här Händelsehubben kan sedan fungera som inmatare för ett annat Stream Analytics jobb där du implementerar din analys logik. När du konfigurerar den här Event Hub-utdata i jobbet måste du ange den partitionsnyckel som Stream Analytics kommer att partitionera om dina data. 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>Partitionera om indatamängden inom ett enda Stream Analytics jobb
+Du kan också lägga till ett steg i din fråga som först partitionerar om inaktuella inaktuella inmatade och kan sedan användas av andra steg i frågan. Om du till exempel vill partitionera om indatamängden baserat på **DeviceID**, skulle din fråga vara:
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 Följande exempel fråga ansluter två strömmar av ompartitionerade data. När du ansluter två strömmar av ompartitionerade data måste strömmarna ha samma partitionsnyckel och antal. Resultatet är en ström som har samma partitionsschema.
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

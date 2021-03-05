@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181133"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Lägga till en skalningsuppsättningsnodpool för VM med oanvänd kapacitet till ett Azure Kubernetes Service-kluster (AKS)
 
@@ -42,7 +42,7 @@ Följande begränsningar gäller när du skapar och hanterar AKS-kluster med en 
 * En Node-pool måste använda Virtual Machine Scale Sets.
 * Du kan inte ändra ScaleSetPriority eller SpotMaxPrice när du har skapat.
 * När du anger SpotMaxPrice måste värdet vara-1 eller ett positivt värde med upp till fem decimaler.
-* En kubernetes.azure.com/scalesetpriority:spot har etiketten *kubernetes.azure.com/scalesetpriority:spot* , *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* och system poddar har anti-tillhörighet.
+* En kubernetes.azure.com/scalesetpriority:spot har etiketten , *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* och system poddar har anti-tillhörighet.
 * Du måste lägga till en [motsvarande tolererande][spot-toleration] för att schemalägga arbets belastningar på en resurspool för en plats.
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Lägga till en skalningsuppsättningsnodpool för VM med oanvänd kapacitet i ett AKS-kluster
@@ -64,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Som standard skapar du en Node-pool med en *prioritet* som är *vanlig* i ditt AKS-kluster när du skapar ett kluster med flera noder i pooler. Kommandot ovan lägger till en extra Node-pool i ett befintligt AKS-kluster med en *prioritet* på *plats* . *Prioriteten* för *dekor* gör Node-poolen till en plats för Node. Parametern Delete *-policy* är inställd på *ta bort* i exemplet ovan, vilket är standardvärdet. När du *anger borttagnings* [principen][eviction-policy] tas noderna i den underliggande skalnings uppsättningen i noden bort när de avlägsnas. Du kan också ange att principen för borttagning ska *Deallocate* frigöras. När du ställer in principen för att *frigöra* , anges noder i den underliggande skalnings uppsättningen till stoppad-frigjord-tillstånd vid borttagning. Noder i det stoppade-friallokerade tillstånds antalet mot din beräknings kvot och kan orsaka problem med kluster skalning eller uppgradering. *Prioriteten* och *avtagningen – princip* värden kan bara anges när du skapar en resurspool. Dessa värden kan inte uppdateras senare.
+Som standard skapar du en Node-pool med en *prioritet* som är *vanlig* i ditt AKS-kluster när du skapar ett kluster med flera noder i pooler. Kommandot ovan lägger till en extra Node-pool i ett befintligt AKS-kluster med en *prioritet* på *plats*. *Prioriteten* för *dekor* gör Node-poolen till en plats för Node. Parametern Delete *-policy* är inställd på *ta bort* i exemplet ovan, vilket är standardvärdet. När du *anger borttagnings* [principen][eviction-policy] tas noderna i den underliggande skalnings uppsättningen i noden bort när de avlägsnas. Du kan också ange att principen för borttagning ska frigöras. När du ställer in principen för att *frigöra*, anges noder i den underliggande skalnings uppsättningen till stoppad-frigjord-tillstånd vid borttagning. Noder i det stoppade-friallokerade tillstånds antalet mot din beräknings kvot och kan orsaka problem med kluster skalning eller uppgradering. *Prioriteten* och *avtagningen – princip* värden kan bara anges när du skapar en resurspool. Dessa värden kan inte uppdateras senare.
 
 Kommandot aktiverar också [klustrets autoskalning][cluster-autoscaler], vilket rekommenderas att användas med resurspooler för plats-noder. Med hjälp av de arbets belastningar som körs i klustret skalar klustret autoskalning upp och skalar upp antalet noder i Node-poolen. För resurspooler för flera noder skalar klustret autoskalning upp antalet noder efter en avtagning om ytterligare noder fortfarande behövs. Om du ändrar det maximala antalet noder som en Node-pool kan ha måste du också justera `maxCount` värdet som är associerat med klustrets autoskalning. Om du inte använder en kluster autoskalning, vid borttagning, kommer lagringspoolen att minska till noll och kräver en manuell åtgärd för att ta emot ytterligare noder.
 
@@ -79,7 +79,7 @@ Så här kontrollerar du att Node-poolen har lagts till som en adresspool för p
 az aks nodepool show --resource-group myResourceGroup --cluster-name myAKSCluster --name spotnodepool
 ```
 
-Bekräfta att *scaleSetPriority* är *dekor* .
+Bekräfta att *scaleSetPriority* är *dekor*.
 
 Om du vill schemalägga en pod som ska köras på en-nod, lägger du till ett tolererande som motsvarar den färg som används på din datornod. I följande exempel visas en del av en yaml-fil som definierar en tolererande som motsvarar en *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* -smak som används i föregående steg.
 
@@ -113,7 +113,7 @@ I den här artikeln har du lärt dig hur du lägger till en adresspool för en p
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

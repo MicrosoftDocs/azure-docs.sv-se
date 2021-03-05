@@ -1,23 +1,18 @@
 ---
 title: Arkiv av nyheter i Azure Security Center
 description: En beskrivning av vad som är nytt och ändrat i Azure Security Center från sex månader sedan och tidigare.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/02/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f24785336642570ae3f21d96462317890526a4c9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578956"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182584"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Vill du arkivera vad som är nytt i Azure Security Center?
 
@@ -28,6 +23,225 @@ På den här sidan får du information om:
 - Nya funktioner
 - Felkorrigeringar
 - Föråldrade funktioner
+
+
+
+## <a name="september-2020"></a>September 2020
+
+Uppdateringar i september omfattar:
+- [Security Center får ett nytt utseende!](#security-center-gets-a-new-look)
+- [Azure Defender lanserad](#azure-defender-released)
+- [Azure Defender för Key Vault är allmänt tillgänglig](#azure-defender-for-key-vault-is-generally-available)
+- [Azure Defender för lagrings skydd för filer och ADLS Gen2 är allmänt tillgängligt](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
+- [Till gångs inventerings verktyg är nu allmänt tillgängliga](#asset-inventory-tools-are-now-generally-available)
+- [Inaktivera en särskilt sårbarhet som söker efter genomsökningar av behållar register och virtuella datorer](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
+- [Undanta en resurs från en rekommendation](#exempt-a-resource-from-a-recommendation)
+- [AWS-och GCP-anslutningar i Security Center ta en upplevelse i flera moln](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
+- [Paket för Kubernetes-skydds rekommendation](#kubernetes-workload-protection-recommendation-bundle)
+- [Rön om sårbarhets bedömning är nu tillgängliga i löpande export](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
+- [Förhindra felaktig säkerhet genom att tvinga rekommendationer när du skapar nya resurser](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
+- [Bättre rekommendationer för nätverks säkerhets grupp](#network-security-group-recommendations-improved)
+- [Föråldrad för hands version AKS-rekommendation "Pod Security Policies definieras i Kubernetes Services"](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
+- [E-postaviseringar från Azure Security Center bättre](#email-notifications-from-azure-security-center-improved)
+- [Säkra Poäng omfattar inte för hands versions rekommendationer](#secure-score-doesnt-include-preview-recommendations)
+- [Rekommendationerna innehåller nu en allvarlighets grad och aktualitets intervallet](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
+
+
+### <a name="security-center-gets-a-new-look"></a>Security Center får ett nytt utseende!
+
+Vi har publicerat ett uppdaterat användar gränssnitt för Security Center Portal sidor. De nya sidorna innehåller en ny översikts sida och instrument paneler för säker poäng, till gångs inventering och Azure Defender.
+
+På sidan för den omdesignade översikten finns nu en panel för att komma åt säkra poäng-, inventarie-och Azure Defender-instrumentpaneler. Den har också en panel som länkar till instrument panelen för kontroll av efterlevnad.
+
+Läs mer om [översikts sidan](overview-page.md).
+
+
+### <a name="azure-defender-released"></a>Azure Defender lanserad
+
+**Azure Defender** är CWPP (Cloud Protection Platform) som är integrerad i Security Center för avancerad, intelligent, skydd av dina Azure-och hybrid arbets belastningar. Den ersätter Security Center standard alternativ för pris nivå. 
+
+När du aktiverar Azure Defender från avsnittet **priser och inställningar** i Azure Security Center, aktive ras följande Defender-planer samtidigt och ger omfattande försvars områden i din miljö:
+
+- [Azure Defender för servrar](defender-for-servers-introduction.md)
+- [Azure Defender för App Service](defender-for-app-service-introduction.md)
+- [Azure Defender för Storage](defender-for-storage-introduction.md)
+- [Azure Defender för SQL](defender-for-sql-introduction.md)
+- [Azure Defender för Key Vault](defender-for-key-vault-introduction.md)
+- [Azure Defender för Kubernetes](defender-for-kubernetes-introduction.md)
+- [Azure Defender för containerregister](defender-for-container-registries-introduction.md)
+
+Var och en av dessa planer beskrivs separat i Security Center-dokumentationen.
+
+Med dess dedikerade instrument panel tillhandahåller Azure Defender säkerhets aviseringar och Avancerat skydd för virtuella datorer, SQL-databaser, behållare, webb program, nätverk och mycket annat.
+
+[Läs mer om Azure Defender](azure-defender.md)
+
+### <a name="azure-defender-for-key-vault-is-generally-available"></a>Azure Defender för Key Vault är allmänt tillgänglig
+
+Azure Key Vault är en moln tjänst som skyddar krypterings nycklar och hemligheter som certifikat, anslutnings strängar och lösen ord. 
+
+**Azure Defender för Key Vault** ger Azure-inbyggt Avancerat skydd för Azure Key Vault, vilket ger ytterligare ett lager av säkerhets information. Som tillägg skyddar Azure Defender för Key Vault därför många av resurserna beroende på dina Key Vault-konton.
+
+Den valfria planen är nu GA. Funktionen var i för hands version som "Avancerat skydd för Azure Key Vault".
+
+Key Vault sidorna i Azure Portal innehåller nu också en särskild **säkerhets** sida för **Security Center** rekommendationer och aviseringar.
+
+Läs mer i [Azure Defender för Key Vault](defender-for-key-vault-introduction.md).
+
+
+### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Azure Defender för lagrings skydd för filer och ADLS Gen2 är allmänt tillgängligt 
+
+**Azure Defender för lagring** identifierar potentiellt skadlig aktivitet på dina Azure Storage-konton. Dina data kan skyddas oavsett om de lagras som BLOB-behållare, fil resurser eller data sjöar.
+
+Support för [Azure Files](../storage/files/storage-files-introduction.md) och [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) är nu allmänt tillgänglig.
+
+Från 1 oktober 2020 börjar vi debitera för att skydda resurser på de här tjänsterna.
+
+Läs mer i [Azure Defender för lagring](defender-for-storage-introduction.md).
+
+
+### <a name="asset-inventory-tools-are-now-generally-available"></a>Till gångs inventerings verktyg är nu allmänt tillgängliga
+
+Sidan till gångs inventeringen för Azure Security Center ger en enda sida för att Visa säkerhets position för de resurser som du har anslutit till Security Center.
+
+Security Center analyserar regelbundet säkerhets status för dina Azure-resurser för att identifiera potentiella säkerhets risker. Därefter får du rekommendationer om hur du åtgärdar problemen.
+
+När en resurs har utestående rekommendationer visas de i inventeringen.
+
+Läs mer i [utforska och hantera dina resurser med till gångs inventering](asset-inventory.md).
+
+
+
+### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>Inaktivera en särskilt sårbarhet som söker efter genomsökningar av behållar register och virtuella datorer
+
+Azure Defender innehåller sårbarhets skannrar för att skanna bilder i dina Azure Container Registry och dina virtuella datorer.
+
+Om du har ett organisations behov av att ignorera en sökning i, i stället för att åtgärda det, kan du inaktivera det. Inaktiverade resultat påverkar inte din säkra poäng eller genererar oönskad brus.
+
+När en sökning matchar de kriterier som du har definierat i inaktiverade regler visas de inte i listan över resultat.
+
+Det här alternativet är tillgängligt från sidan rekommendationer information för:
+
+- **Säkerhets risker i Azure Container Registry avbildningar bör åtgärdas**
+- **Säkerhets risker på dina virtuella datorer bör åtgärdas**
+
+Läs mer i [inaktivera speciella resultat för dina behållar avbildningar](defender-for-container-registries-usage.md#disable-specific-findings-preview) och [inaktivera de olika resultaten för dina virtuella datorer](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview).
+
+
+### <a name="exempt-a-resource-from-a-recommendation"></a>Undanta en resurs från en rekommendation
+
+Ibland visas en resurs som inte är felfri för en speciell rekommendation (och därmed sänka dina säkra poäng) även om du känner till att den inte borde vara det. Den kan ha åtgärd ATS av en process som inte spåras av Security Center. Eller så kanske din organisation har valt att godkänna risken för den aktuella resursen. 
+
+I sådana fall kan du skapa en undantags regel och se till att resursen inte listas bland de felaktiga resurserna i framtiden. Dessa regler kan omfatta dokumenterade motiveringar som beskrivs nedan.
+
+Läs mer i [undanta en resurs från rekommendationer och säkra Poäng](exempt-resource.md).
+
+
+### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>AWS-och GCP-anslutningar i Security Center ta en upplevelse i flera moln
+
+Med moln arbets belastningar som ofta spänner över flera moln plattformar måste moln säkerhets tjänster göra samma sak.
+
+Azure Security Center skyddar nu arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
+
+När du registrerar dina AWS-och GCP-konton i Security Center integreras AWS-säkerhetshubben, GCP säkerhets kommando och Azure Security Center. 
+
+Läs mer i [Anslut dina AWS-konton till Azure Security Center](quickstart-onboard-aws.md) och [Anslut dina GCP-konton till Azure Security Center](quickstart-onboard-gcp.md).
+
+
+### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Paket för Kubernetes-skydds rekommendation
+
+För att säkerställa att Kubernetes-arbetsbelastningar är säkra som standard, lägger Security Center till Kubernetes nivå skärp rekommendationer, inklusive verk ställnings alternativ med Kubernetes-åtkomstkontroll.
+
+När du har installerat Azure Policy-tillägget för Kubernetes i ditt AKS-kluster, kommer varje begäran till Kubernetes API-servern att övervakas mot den fördefinierade uppsättningen med bästa metoder innan den sparas i klustret. Du kan sedan konfigurera för att tillämpa bästa praxis och bestämma dem för framtida arbets belastningar.
+
+Du kan till exempel bestämma att privilegierade behållare inte ska skapas och eventuella framtida förfrågningar om detta kommer att blockeras.
+
+Läs mer i [metod tips för arbets belastnings skydd med Kubernetes-åtkomstkontroll](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
+
+
+### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Rön om sårbarhets bedömning är nu tillgängliga i löpande export
+
+Använd kontinuerlig export för att strömma aviseringar och rekommendationer i real tid till Azure Event Hubs, Log Analytics arbets ytor eller Azure Monitor. Därifrån kan du integrera dessa data med Siem (till exempel Azure Sentinel, Power BI, Azure Datautforskaren med mera.
+
+Security Center s verktyg för integrerad sårbarhets bedömning returnerar resultat om dina resurser som åtgärds bara rekommendationer i en överordnad rekommendation, till exempel säkerhets risker i dina virtuella datorer, bör åtgärdas. 
+
+Säkerhets resultaten är nu tillgängliga för export genom löpande export när du väljer rekommendationer och aktiverar alternativet **Inkludera säkerhets resultat** .
+
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Ta med säkerhets brister växla i kontinuerlig export konfiguration" :::
+
+Relaterade sidor:
+
+- [Security Center är en integrerad lösning för sårbarhets bedömning för Azure Virtual Machines](deploy-vulnerability-assessment-vm.md)
+- [Security Center är en integrerad lösning för sårbarhets bedömning för Azure Container Registry avbildningar](defender-for-container-registries-usage.md)
+- [Löpande export](continuous-export.md)
+
+### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Förhindra felaktig säkerhet genom att tvinga rekommendationer när du skapar nya resurser
+
+Fel konfiguration av säkerhet är en stor orsak till säkerhets incidenter. Security Center kan nu hjälpa till *att förhindra* fel konfiguration av nya resurser med avseende på vissa rekommendationer. 
+
+Den här funktionen kan hjälpa till att hålla arbets belastningarna säkra och stabilisera dina säkra poäng.
+
+Att framtvinga en säker konfiguration, som baseras på en viss rekommendation, erbjuds i två lägen:
+
+- Genom att använda Azure Policy **neka** kan du förhindra att resurser som inte är felfria skapas
+
+- Med alternativet **tillämpa** kan du dra nytta av Azure policys **DeployIfNotExist** -påverkan och automatiskt reparera icke-kompatibla resurser när de skapas
+ 
+Detta är tillgängligt för de valda säkerhets rekommendationerna och finns överst på sidan med resurs information.
+
+Läs mer i [förhindra felaktig konfiguration med tvinga/neka-rekommendationer](prevent-misconfigurations.md).
+
+###  <a name="network-security-group-recommendations-improved"></a>Bättre rekommendationer för nätverks säkerhets grupp
+
+Följande säkerhets rekommendationer relaterade till nätverks säkerhets grupper har förbättrats för att minska vissa instanser av falska positiva identifieringar.
+
+- Alla nätverks portar bör vara begränsade på NSG som är kopplade till den virtuella datorn
+- Hanterings portar bör stängas på dina virtuella datorer
+- Virtuella datorer som är riktade mot Internet bör skyddas med nätverks säkerhets grupper
+- Undernät ska associeras med en nätverks säkerhets grupp
+
+
+### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Föråldrad för hands version AKS-rekommendation "Pod Security Policies definieras i Kubernetes Services"
+
+Förhands gransknings rekommendationen "Pod Security Policies" måste definieras i Kubernetes Services ", vilket beskrivs i dokumentationen för [Azure Kubernetes-tjänsten](../aks/use-pod-security-policies.md) .
+
+Funktionen Pod Security Policy (för hands version) är inställd för utfasning och kommer inte längre att vara tillgänglig efter den 15 oktober 2020 med Azure Policy för AKS.
+
+När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
+
+
+### <a name="email-notifications-from-azure-security-center-improved"></a>E-postaviseringar från Azure Security Center bättre
+
+Följande delar av e-postmeddelandena om säkerhets aviseringar har förbättrats: 
+
+- Har lagt till möjligheten att skicka e-postmeddelanden om aviseringar för alla allvarlighets nivåer
+- Har lagt till möjligheten att meddela användare med olika Azure-roller i prenumerationen
+- Vi meddelar proaktivt prenumerations ägare som standard på aviseringar med hög allvarlighets grad (som har hög sannolikhet för att vara äkta)
+- Vi har tagit bort fältet telefonnummer från konfigurations sidan för e-postaviseringar
+
+Läs mer i [Konfigurera e-postaviseringar för säkerhets aviseringar](security-center-provide-security-contact-details.md).
+
+
+### <a name="secure-score-doesnt-include-preview-recommendations"></a>Säkra Poäng omfattar inte för hands versions rekommendationer 
+
+Security Center utvärderar kontinuerligt dina resurser, prenumerationer och din organisation efter säkerhets problem. Den sammanställer sedan alla resultat i en enda poäng så att du snabbt kan tala om din aktuella säkerhets situation: ju högre poäng, desto lägre är den identifierade risk nivån.
+
+När nya hot upptäcks görs nya säkerhets rådgivning i Security Center via nya rekommendationer. För att undvika oväntade ändringar av dina säkra poäng och för att tillhandahålla en respitperiod där du kan utforska nya rekommendationer innan de påverkar dina resultat, ingår rekommendationer som har flaggats som för **hands version** inte längre i beräkningarna av dina säkra poäng. De bör fortfarande åtgärdas när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng.
+
+För **hands versions** rekommendationer återges inte heller en resurs "ohälsosam".
+
+Ett exempel på en förhands gransknings rekommendation:
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Rekommendation med förhands gransknings flaggan":::
+
+[Läs mer om säkra Poäng](secure-score-security-controls.md).
+
+
+### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>Rekommendationerna innehåller nu en allvarlighets grad och aktualitets intervallet
+
+På informations sidan för rekommendationer finns nu en indikator för aktualitets intervall (när det är relevant) och en tydlig visning av rekommendationens allvarlighets grad.
+
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Sidan rekommendation visar aktualitet och allvarlighets grad":::
 
 
 ## <a name="august-2020"></a>Augusti 2020
@@ -259,6 +473,7 @@ Läs mer om [inbyggda principer](./policy-reference.md).
 ## <a name="june-2020"></a>Juni 2020
 
 Uppdateringarna i juni inkluderar:
+
 - [Secure score-API (för hands version)](#secure-score-api-preview)
 - [Avancerad data säkerhet för SQL-datorer (Azure, andra moln och lokalt) (för hands version)](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview)
 - [Två nya rekommendationer för att distribuera Log Analytics agent till Azure Arc-datorer (för hands version)](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)

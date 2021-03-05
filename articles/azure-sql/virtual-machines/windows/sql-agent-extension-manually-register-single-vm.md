@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964532"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181439"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrera SQL Server VM med SQL IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Om du vill använda SQL IaaS agent-tillägget måste du först [Registrera din p
 > [!IMPORTANT]
 > SQL IaaS agent-tillägget samlar in data i Express syfte att ge kunderna valfria förmåner när de använder SQL Server i Azure Virtual Machines. Microsoft kommer inte att använda dessa data för licens granskningar utan kundens medgivande. Se [SQL Server sekretess tillägg](/sql/sql-server/sql-server-privacy#non-personal-data) för mer information.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill registrera SQL Server VM med tillägget måste du: 
 
@@ -304,7 +304,7 @@ Följ dessa steg om du vill avregistrera SQL Server VM från tillägget med hjä
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill avregistrera SQL Server VM från tillägget med Azure CLI använder du kommandot [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) . Detta tar bort den SQL Server VM *resursen* men tar inte bort den virtuella datorn. 
+Om du vill avregistrera SQL Server VM från tillägget med Azure CLI använder du kommandot [AZ SQL VM Delete](/cli/azure/sql/vm#az-sql-vm-delete) . Detta tar bort den SQL Server VM *resursen* men tar inte bort den virtuella datorn. 
 
 
 ```azurecli-interactive

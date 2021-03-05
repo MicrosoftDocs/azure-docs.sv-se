@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: Komprimering
       href: how-to-compression.md
-    - name: Aktivera privat länk till webbapp
-      href: how-to-enable-private-link-web-app.md
+    - name: Aktivera privat länk
+      items:
+        - name: Ansluta till ett lagringskonto
+          href: how-to-enable-private-link-storage-account.md
+        - name: Ansluta till en webbapp
+          href: how-to-enable-private-link-web-app.md
     - name: Loggning
       href: how-to-logs.md
     - name: Övervakning och aviseringar

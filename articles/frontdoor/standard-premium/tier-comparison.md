@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 0f5ecef1716a503b7d27d0f5cdde15a4560c0e61
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1753f2bb649e73d7a5fe6c1cc32361a418ea7f63
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100588"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181813"
 ---
 # <a name="overview-of-azure-front-door-standardpremium-sku-preview"></a>Översikt över SKU för Azure front dörr standard/Premium (för hands version)
 
@@ -58,12 +58,12 @@ Azures front dörr erbjuds för tre olika SKU: er, [Azure-frontend](../front-doo
 | Layer 7-routning | Ja | Ja |
 | URL-omskrivning | Ja | Ja |
 | Regelmotor | Ja | Ja |
-| Privat ursprung (privat länk) | Nej | Ja |
-| Brandvägg för webbaserade program | Nej | Ja |
-| Bot-skydd | Nej | Ja |
+| Privat ursprung (privat länk) | Inga | Ja |
+| Brandvägg för webbaserade program | Endast anpassade regler | Ja |
+| Bot-skydd | Inga | Ja |
 | Förbättrade mått och diagnostik | Ja | Ja |
-| Trafik rapporter | Ja | Ja |
-| Säkerhets rapport | Nej | Ja | 
+| Trafik rapport | Ja | Ja |
+| Säkerhets rapport | Inga | Ja | 
 
 ## <a name="next-steps"></a>Nästa steg
 

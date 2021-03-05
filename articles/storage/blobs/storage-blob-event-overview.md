@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 31b2d562d4d0c53b23e8e3f454057b4e26e41ba9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875254"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181524"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagera på Blob Storage-händelser
 
@@ -29,7 +29,7 @@ Om du vill testa Blob Storage-händelser kan du läsa följande snabb starts art
 
 |Om du vill använda det här verktyget:    |Se den här artikeln: |
 |--|-|
-|Azure-portalen    |[Snabb start: dirigera Blob Storage-händelser till webb slut punkt med Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Portal    |[Snabb start: dirigera Blob Storage-händelser till webb slut punkt med Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Snabb start: dirigera lagrings händelser till webb slut punkt med PowerShell](./storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[Snabb start: dirigera lagrings händelser till webb slut punkt med Azure CLI](./storage-blob-event-quickstart.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
@@ -98,7 +98,7 @@ Program som hanterar Blob Storage-händelser bör följa några rekommenderade m
 > * På samma sätt kan du kontrol lera att eventType är att du är för beredd att bearbeta och inte förutsätter att alla händelser som du tar emot är de typer som du förväntar dig.
 > * När meddelanden kan komma efter en viss fördröjning använder du etag-fälten för att ta reda på om din information om objekt fortfarande är uppdaterad. Information om hur du använder etag-fältet finns i [Hantera samtidighet i Blob Storage](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
 > * När meddelanden kan komma in i turordning använder du fälten sekvenser för att förstå händelse ordningen för ett visst objekt. Fältet Sequencer är ett sträng värde som representerar den logiska sekvensen av händelser för ett visst BLOB-namn. Du kan använda standard sträng jämförelse för att förstå den relativa sekvensen av två händelser på samma BLOB-namn.
-> * Lagrings händelser garanterar minst en leverans till prenumeranter, vilket säkerställer att alla meddelanden är i kö. Men på grund av återförsök eller tillgänglighet för prenumerationer kan det ibland hända att duplicerade meddelanden inträffar. Läs mer om meddelande leverans och försök igen i [Event Grid meddelande leverans och försök igen](../../event-grid/delivery-and-retry.md).
+> * Lagrings händelser garanterar minst en leverans till prenumeranter, vilket säkerställer att alla meddelanden är i kö. Men på grund av återförsök mellan backend-noder och-tjänster eller prenumerations tillgänglighet kan duplicerade meddelanden uppstå. Läs mer om meddelande leverans och försök igen i [Event Grid meddelande leverans och försök igen](../../event-grid/delivery-and-retry.md).
 > * Använd fältet blobType för att förstå vilken typ av åtgärder som tillåts i blobben och vilka klient biblioteks typer som du ska använda för att få åtkomst till bloben. Giltiga värden är antingen `BlockBlob` eller `PageBlob` . 
 > * Använd fältet URL med- `CloudBlockBlob` och- `CloudAppendBlob` konstruktörer för att komma åt blobben.
 > * Ignorera fält som du inte förstår. Den här övningen hjälper dig att hålla dig flexibel till nya funktioner som kan läggas till i framtiden.

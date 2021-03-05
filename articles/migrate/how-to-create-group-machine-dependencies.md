@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596701"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183071"
 ---
 # <a name="set-up-dependency-visualization"></a>Konfigurera beroende visualisering
 
@@ -22,14 +22,14 @@ I den här artikeln beskrivs hur du konfigurerar en agent beroende analys i Azur
 - Granska support-och distributions kraven för agent-baserad beroende analys för:
     - [VMwares virtuella datorer](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fysiska servrar](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Virtuella Hyper-V-datorer](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+    - [Hyper-V:s virtuella datorer](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - Kontrol lera att du:
     - Ha ett Azure Migrate-projekt. Om du inte gör det [skapar](./create-manage-projects.md) du en nu.
     - Kontrol lera att du har [lagt](how-to-assess.md) till verktyget Azure Migrate: Server utvärderings verktyg i projektet.
     - Konfigurera en [Azure Migrate-apparat](migrate-appliance.md) för att identifiera lokala datorer. Enheten identifierar lokala datorer och skickar metadata-och prestanda data till Azure Migrate: Server utvärdering. Konfigurera en installation för:
-        - [VMware](how-to-set-up-appliance-vmware.md) VMS.
-        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VMS.
-        - [Fysiska servrar](how-to-set-up-appliance-physical.md).
+        - [VMware](how-to-set-up-appliance-vmware.md) VMs
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VMs
+        - [Fysiska servrar](how-to-set-up-appliance-physical.md)
 - Om du vill använda beroende visualisering associerar du en [Log Analytics arbets yta](../azure-monitor/logs/manage-access.md) med ett Azure Migrate-projekt:
     - Du kan bara koppla en arbets yta när du har konfigurerat Azure Migrate-installationen och identifierat datorer i Azure Migrate projektet.
     - Se till att du har en arbets yta i prenumerationen som innehåller det Azure Migrate projektet.

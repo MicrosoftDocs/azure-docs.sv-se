@@ -3,12 +3,12 @@ title: Distribuera Horisont på Azure VMware-lösning
 description: Lär dig hur du distribuerar VMware-Horisont på Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684883"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181405"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distribuera Horisont på Azure VMware-lösning 
 
@@ -212,6 +212,10 @@ Arbeta med din VMware EUC-säljteam för att fastställa Horisont licens kostnad
 ### <a name="azure-instance-types"></a>Azure instance types
 
 För att förstå de storlekar på virtuella Azure-datorer som krävs för Horisont infrastrukturen, se VMwares rikt linjer som du hittar [här](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution).
+
+## <a name="references"></a>Referenser
+[System krav för Horisont agent för Linux](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)
+
 
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om VMware-Horisont på Azure VMware-lösningen i [vanliga frågor och svar om VMware-Horisont](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf).

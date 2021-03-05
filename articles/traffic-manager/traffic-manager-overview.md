@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8c8897218b153c8584c89abab98934268ccd555d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624917"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182170"
 ---
 # <a name="what-is-traffic-manager"></a>Vad är Traffic Manager?
 Azure Traffic Manager är en DNS-baserad trafikbelastnings utjämning. Med den här tjänsten kan du distribuera trafik till dina offentliga program i globala Azure-regioner. Traffic Manager också tillhandahålla dina offentliga slut punkter med hög tillgänglighet och snabb svars tid.
@@ -24,8 +24,12 @@ Azure Traffic Manager är en DNS-baserad trafikbelastnings utjämning. Med den h
 Traffic Manager använder DNS för att dirigera klient begär anden till lämplig tjänst slut punkt baserat på en metod för trafik dirigering. Traffic Manager tillhandahåller också hälso övervakning för varje slut punkt. Slut punkten kan vara valfri Internet-riktad tjänst som finns i eller utanför Azure. Traffic Manager tillhandahåller en uppsättning [trafikdirigeringsmetoder](traffic-manager-routing-methods.md) och [alternativ för slutpunktsövervakning](traffic-manager-monitoring.md) som passar olika programbehov och modeller för automatisk redundansväxling. Traffic Manager har bra återhämtningsförmåga i händelse av fel, inklusive fel som påverkar en hel Azure-region.
 
 >[!NOTE]
-> Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier. Om du är intresserad av TLS-avslut (Transport Layer Security) (”SSL-avlastning”) eller bearbetning på programnivå för enskilda HTTP/HTTPS-begäranden läser du avsnittet om [Application Gateway](../application-gateway/overview.md). Om du är intresserad av regional belastningsutjämning läser du avsnittet om [Load Balancer](../load-balancer/load-balancer-overview.md). Du kan med fördel kombinera dessa lösningar efter behov för dina slutpunkts-till-slutpunkts-scenarier.
->
+> Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier. 
+> * Om du vill belastningsutjämna mellan servrarna i en region i program lagret granskar du [Application Gateway](../application-gateway/overview.md).
+> * Om du behöver optimera en global routning av din webb trafik och optimera prestanda och tillförlitlighet på toppnivå med hjälp av snabb global redundans, se [front dörren](../frontdoor/front-door-overview.md).
+> * Om du vill använda belastnings utjämning för nätverks lager granskar du [Load Balancer](../load-balancer/load-balancer-overview.md). 
+> 
+> Dina scenarier från slut punkt till slut punkt kan dra nytta av att kombinera de här lösningarna efter behov.
 > En alternativ jämförelse för Azure-belastnings utjämning finns i [Översikt över belastnings Utjämnings alternativ i Azure](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager erbjuder följande funktioner:

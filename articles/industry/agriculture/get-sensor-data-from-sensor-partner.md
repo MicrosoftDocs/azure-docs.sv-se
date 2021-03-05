@@ -4,13 +4,13 @@ description: Den här artikeln beskriver hur du hämtar sensor data från partne
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168536"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182782"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Hämta sensor data från sensor partner
 
@@ -32,7 +32,7 @@ För att starta strömning av sensor data kontrollerar du följande:
 När du har startat strömningen av sensor data kan du påbörja processen med att hämta data till FarmBeats-systemet. Ange följande information för din enhets leverantör så att du kan integrera med FarmBeats:
 
  - API-slutpunkt
- - Klientorganisations-ID
+ - Klient-ID:t
  - Klient-ID
  - Klienthemlighet
  - EventHub-anslutningssträng
@@ -92,7 +92,7 @@ Följ stegen nedan för att generera ovanstående information:
 > 1. Datahub API-slutpunktens namn måste anges i gemener.
 > 2. Om du kopierar farmbeats-webbplatsens namn-URL för Datahub API-slutpunkt ser du till att det inte finns något avslutande snedstreck (/).
 
-9. Följ anvisningarna på skärmen för att samla in värdena för **API-slutpunkt**, klient-ID, **klient-ID**, **klient hemlighet**och EventHub **-** **anslutningssträng**.
+9. Följ anvisningarna på skärmen för att samla in värdena för **API-slutpunkt**, klient-ID, **klient-ID**, **klient hemlighet** och EventHub **-** **anslutningssträng**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrera enhets data med hjälp av de genererade autentiseringsuppgifterna
 
@@ -101,7 +101,7 @@ Nu har du följande information som genereras från föregående avsnitt.
  - EventHub-anslutningssträng
  - Klient-ID
  - Klienthemlighet
- - Klientorganisations-ID
+ - Klient-ID:t
 
 Du måste ange detta till din enhets partner för att kunna länka FarmBeats. Gå till enhets partner portalen för att göra samma sak. Om du till exempel använder enheter från Davis instrument, Teralytic-eller Pessl-instrument (Metos.at) går du till motsvarande sidor som anges nedan:
 
@@ -124,7 +124,7 @@ För närvarande stöder FarmBeats följande enheter:
 - **Nod**: en enhet som en eller flera sensorer är kopplade till.
 - **Gateway**: en enhet som en eller flera noder är kopplade till.
 
-Följ de här stegen:
+Gör så här:
 
 1. På sidan start väljer du **enheter** på menyn.
   Sidan **enheter** visar enhets typ, modell, status, den server grupp som den placerats i och senaste uppdaterade datum för metadata. Som standard har kolumnen Server grupp värdet *Null*. Du kan välja att tilldela en enhet till en Server grupp. Mer information finns i [tilldela enheter](#assign-devices).
@@ -134,7 +134,7 @@ Följ de här stegen:
 
 ### <a name="view-sensors"></a>Visa sensorer
 
-Följ de här stegen:
+Gör så här:
 
 1. På Start sidan väljer du **sensorer** på menyn.
   På sidan **sensorer** visas information om typen av sensor, Server grupp den är ansluten till, överordnad enhet, portnamn, porttyp och senaste uppdaterade status.
@@ -163,7 +163,7 @@ När sensor data flödar in kan du tilldela den till Server gruppen där du har 
 
 ### <a name="visualize-sensor-data"></a>Visualisera sensordata
 
-Följ de här stegen:
+Gör så här:
 
 1. På sidan start väljer du **Server grupper** på menyn för att visa sidan **grupper** .
 2. Välj den **Server grupp** som du vill visa sensor data för.
@@ -173,7 +173,7 @@ Följ de här stegen:
 
 ## <a name="delete-a-sensor"></a>Ta bort en sensor
 
-Följ de här stegen:
+Gör så här:
 
 1. På Start sidan väljer du **sensorer** på menyn för att visa sidan **sensorer** .
 2. Välj den enhet som du vill ta bort och välj **ta bort** i bekräftelse fönstret.
@@ -184,7 +184,7 @@ Ett bekräftelse meddelande visas om att sensorn har tagits bort.
 
 ## <a name="delete-devices"></a>Ta bort enheter
 
-Följ de här stegen:
+Gör så här:
 
 1. På sidan start väljer du **enheter** på menyn för att visa sidan **enheter** .
 2. Välj den enhet som du vill ta bort och välj **ta bort** i bekräftelse fönstret.

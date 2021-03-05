@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a42601b696f292e9d2a9da90070fea3662acae87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100461"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181031"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Vanliga frågor och svar om Azures front dörr standard/Premium (för hands version)
 
@@ -85,7 +85,11 @@ Ja. Azure-front dörren stöder faktiskt värd, sökväg, omdirigering av fråge
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hur gör jag för att du bara låsa åtkomsten till min server del till Azures front dörr?
 
-Om du vill låsa ditt program så att det bara accepterar trafik från din specifika front dörr måste du konfigurera IP-ACL: er för Server delen. Begränsa sedan trafiken för Server delen till det angivna värdet för sidhuvudet "X-Azure-FDID" som skickas av front dörren. De här stegen beskrivs nedan:
+Det bästa sättet att låsa ditt program för att endast acceptera trafik från din specifika instans av front dörren är att publicera programmet via privat slut punkt. Nätverks trafiken mellan front dörren och programmet passerar över VNet och en privat länk i Microsoft stamnät nätverket, vilket eliminerar exponering från det offentliga Internet.
+
+Lär dig mer om att [skydda ursprung för front dörr med privat länk](concept-private-link.md).  
+
+Alternativt sätt att låsa ditt program för att endast acceptera trafik från din specifika front dörr måste du konfigurera IP ACL: er för Server delen. Begränsa sedan trafiken för Server delen till det angivna värdet för sidhuvudet "X-Azure-FDID" som skickas av front dörren. De här stegen beskrivs nedan:
 
 * Konfigurera IP-ACLing för dina Server delar för att acceptera trafik från Azure-klientens Server dels IP-adressutrymme och Azures infrastruktur tjänster. Se IP-informationen nedan för att ACLing din server del:
  

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575354"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183088"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Till gångs insikter om dina data i Azure avdelningens kontroll
 
@@ -25,7 +25,7 @@ I den här instruktions guiden lär du dig att:
 > * Få en fågel ögon-vy över dina data.
 > * Öka detalj nivån för mer information om till gångar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar med avdelningens kontroll Insights bör du kontrol lera att du har slutfört följande steg:
 
@@ -40,7 +40,7 @@ Mer information finns i [Hantera data källor i Azure avdelningens kontroll (fö
 I Azure avdelningens kontroll kan du registrera och skanna käll typer. När genomsökningen är klar kan du Visa till gångs distributionen i till gångs information, vilket ger dig tillstånd för din datafastighet efter klassificering och resurs uppsättningar. Du får också information om hur data storleken ändras.
 
 > [!NOTE]
-> När du har skannat dina käll typer ger du till gångs insikter upp till en timme för att avspegla de nya till gångarna.
+> När du har skannat dina käll typer ger du till gångs Insights 3-8 timmar för att avspegla de nya till gångarna. Fördröjningen kan bero på hög trafik i distributions regionen eller storleken på din arbets belastning. Om du vill ha mer information kan du kontakta support teamet för fältet.
 
 1. Navigera till din Azure avdelningens kontroll-resurs i Azure Portal.
 
@@ -94,7 +94,7 @@ I nästa par grafer i Asset Insights visas en distribution av filbaserade käll 
 
 1. Välj sökvägen för att visa till gångs listan.
 
-Den andra grafen i filbaserade käll typer är **_filer som inte är associerade med en resurs uppsättning_**. Om du förväntar dig att alla filer ska samlas in i en resurs uppsättning, kan det här grafen hjälpa dig att förstå vilka till gångar som inte har registrerats. Saknade till gångar kan vara en indikation på fel fil mönster i mappen. Följ samma steg som i andra grafer om du vill visa mer information om filerna.
+Den andra grafen i filbaserade käll typer är ***filer som inte är associerade med en resurs uppsättning***. Om du förväntar dig att alla filer ska samlas in i en resurs uppsättning, kan det här grafen hjälpa dig att förstå vilka till gångar som inte har registrerats. Saknade till gångar kan vara en indikation på fel fil mönster i mappen. Följ samma steg som i andra grafer om du vill visa mer information om filerna.
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="Visa filbaserade till gångar":::  
 

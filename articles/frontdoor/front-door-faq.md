@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 06ad8bf169e2b4b44f4f6a8ec5155aa6722a038c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124065"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182901"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Vanliga frågor och svar om Azures front dörr
 
@@ -86,6 +86,8 @@ Ja. I själva verket stöder Azures front dörr värd, sökväg och omdirigering
 Vägar för din front dörr sorteras inte och en viss väg väljs utifrån den bästa matchningen. Läs mer om [hur front dörr matchar begär anden till en regel för routning](front-door-route-matching.md).
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hur gör jag för att du bara låsa åtkomsten till min server del till Azures front dörr?
+
+> [! MEDDELANDE] ny SKU front dörr Premium är ett mer rekommenderat sätt att låsa ditt program via privat slut punkt. [Läs mer om privat slut punkt](./standard-premium/concept-private-link.md)
 
 Om du vill låsa ditt program för att endast acceptera trafik från din specifika front dörr måste du konfigurera IP-ACL: er för Server delen och sedan begränsa trafiken på Server delen till det specifika värdet för huvudet "X-Azure-FDID" som skickas av en front dörr. De här stegen beskrivs nedan:
 
